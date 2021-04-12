@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# yulin Gong <540538248@qq.com>, 2019
+# Roberto Rosario, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-"
-"edms/language/zh-Hans/)\n"
-"Language: zh-Hans\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:38+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
@@ -50,20 +50,16 @@ msgid "Edit"
 msgstr "编辑"
 
 #: models.py:18
-#, fuzzy
-#| msgid "Short description of this message."
 msgid "Short description of this announcement."
-msgstr "此消息的简短描述。"
+msgstr ""
 
 #: models.py:19
 msgid "Label"
 msgstr "标签"
 
 #: models.py:22
-#, fuzzy
-#| msgid "The actual message to be displayed."
 msgid "The actual test to be displayed."
-msgstr "要显示的实际消息。"
+msgstr ""
 
 #: models.py:23
 msgid "Text"
@@ -74,20 +70,16 @@ msgid "Enabled"
 msgstr "启用"
 
 #: models.py:28
-#, fuzzy
-#| msgid "Date and time after which this message will be displayed."
 msgid "Date and time after which this announcement will be displayed."
-msgstr "开始显示此消息的日期和时间。"
+msgstr ""
 
 #: models.py:29
 msgid "Start date time"
 msgstr "开始日期时间"
 
 #: models.py:33
-#, fuzzy
-#| msgid "Date and time until when this message is to be displayed."
 msgid "Date and time until when this announcement is to be displayed."
-msgstr "停止显示此消息的日期和时间。"
+msgstr ""
 
 #: models.py:34
 msgid "End date time"
@@ -154,51 +146,12 @@ msgid "Edit announcement: %s"
 msgstr ""
 
 #: views.py:114
-#, fuzzy
-#| msgid ""
-#| "Messages are displayed in the login view. You can use messages to convery "
-#| "information about your organzation, announcements or usage guidelines for "
-#| "your users."
 msgid ""
 "Announcements are displayed in the login view. You can use announcements to "
 "convery information about your organzation, announcements or usage "
 "guidelines for your users."
 msgstr ""
-"消息显示在登录视图中。您可以使用消息向您的用户传达有关您组织，公告或使用指南"
-"的信息。"
 
 #: views.py:118
-#, fuzzy
-#| msgid "No messages available"
 msgid "No announcements available"
-msgstr "没有可用的消息"
-
-#~ msgid "Message of the day"
-#~ msgstr "当天的消息"
-
-#~ msgid "Messages"
-#~ msgstr "消息"
-
-#~ msgid "Create message"
-#~ msgstr "创建消息"
-
-#~ msgid "Message"
-#~ msgstr "消息"
-
-#~ msgid "Create messages"
-#~ msgstr "创建消息"
-
-#~ msgid "Delete messages"
-#~ msgstr "删除消息"
-
-#~ msgid "Edit messages"
-#~ msgstr "编辑消息"
-
-#~ msgid "View messages"
-#~ msgstr "查看消息"
-
-#~ msgid "Messages of the day"
-#~ msgstr "当天的消息"
-
-#~ msgid "Edit message: %s"
-#~ msgstr "编辑消息：%s"
+msgstr ""

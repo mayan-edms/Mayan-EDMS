@@ -1,25 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
-# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
-# Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
+# Roberto Rosario, 2021
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-05-02 12:46+0000\n"
-"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
+"Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:41 events.py:5 links.py:32
@@ -71,10 +70,8 @@ msgid "Check out expiration"
 msgstr "Uitchecken verloopt"
 
 #: forms.py:51
-#, fuzzy
-#| msgid "New versions allowed?"
 msgid "New files allowed?"
-msgstr "Nieuwe versies toegestaan?"
+msgstr ""
 
 #: forms.py:52
 msgid "Yes"
@@ -129,16 +126,12 @@ msgid "Check out expiration date and time"
 msgstr "Uitcheck verloopdatum en tijd"
 
 #: models.py:45
-#, fuzzy
-#| msgid "Do not allow new version of this document to be uploaded."
 msgid "Do not allow new file of this document to be uploaded."
-msgstr "Sta niet toe dat een nieuwe versie van dit document wordt geüpload."
+msgstr ""
 
 #: models.py:47
-#, fuzzy
-#| msgid "Block new version upload"
 msgid "Block new file upload"
-msgstr "Nieuwe versie uploaden blokkeren"
+msgstr ""
 
 #: models.py:55 permissions.py:5
 msgid "Document checkout"
@@ -194,10 +187,9 @@ msgid "Unable to check in document \"%(instance)s\"; %(exception)s"
 msgstr ""
 
 #: views.py:29
-#, fuzzy, python-format
-#| msgid "Document not checked out."
+#, python-format
 msgid "Document \"%(object)s\" checked in successfully."
-msgstr "Document niet uitgecheckt."
+msgstr ""
 
 #: views.py:32
 #, python-format
@@ -210,24 +202,19 @@ msgid "%(count)d documents checked in successfully."
 msgstr ""
 
 #: views.py:37
-#, fuzzy, python-format
-#| msgid "Check in document: %s"
+#, python-format
 msgid "Check in document \"%(object)s\"."
-msgstr "Inchecken document: %s"
+msgstr ""
 
 #: views.py:38
-#, fuzzy, python-format
-#| msgid "Check in %(count)d document"
-#| msgid_plural "Check in %(count)d documents"
+#, python-format
 msgid "Check in %(count)d document."
-msgstr "%(count)d document in-checken"
+msgstr ""
 
 #: views.py:39
-#, fuzzy, python-format
-#| msgid "Check in %(count)d document"
-#| msgid_plural "Check in %(count)d documents"
+#, python-format
 msgid "Check in %(count)d documents."
-msgstr "%(count)d document in-checken"
+msgstr ""
 
 #: views.py:93
 #, python-format
@@ -235,16 +222,14 @@ msgid "Unable to checkout document \"%(instance)s\"; %(exception)s"
 msgstr ""
 
 #: views.py:100
-#, fuzzy, python-format
-#| msgid "Document not checked out."
+#, python-format
 msgid "Document \"%(object)s\" checked out successfully."
-msgstr "Document niet uitgecheckt."
+msgstr ""
 
 #: views.py:103
-#, fuzzy, python-format
-#| msgid "Amount of time to hold the document checked out in minutes."
+#, python-format
 msgid "%(count)d document checked out successfully."
-msgstr "Hoelang in minuten uitgedrukt het document uitgecheckt houden. "
+msgstr ""
 
 #: views.py:106
 #, python-format
@@ -252,30 +237,23 @@ msgid "%(count)d documents checked out successfully."
 msgstr ""
 
 #: views.py:108
-#, fuzzy, python-format
-#| msgid "Check out document: %s"
+#, python-format
 msgid "Checkout document \"%(object)s\"."
-msgstr "Uitchecken document: %s"
+msgstr ""
 
 #: views.py:109
-#, fuzzy, python-format
-#| msgid "Checkout %(count)d document"
-#| msgid_plural "Checkout %(count)d documents"
+#, python-format
 msgid "Checkout %(count)d document."
-msgstr "%(count)d document uit-checken"
+msgstr ""
 
 #: views.py:110
-#, fuzzy, python-format
-#| msgid "Checkout %(count)d document"
-#| msgid_plural "Checkout %(count)d documents"
+#, python-format
 msgid "Checkout %(count)d documents."
-msgstr "%(count)d document uit-checken"
+msgstr ""
 
 #: views.py:114
-#, fuzzy
-#| msgid "Checkouts"
 msgid "Checkout"
-msgstr "Checkouts"
+msgstr ""
 
 #: views.py:158
 #, python-format
@@ -297,9 +275,3 @@ msgstr "Er zijn geen documenten uitgecheckt"
 #: widgets.py:23
 msgid "Amount"
 msgstr "Aantal"
-
-#~ msgid "New version block"
-#~ msgstr "Nieuwe versie blokkering"
-
-#~ msgid "New version blocks"
-#~ msgstr "Nieuwe versie blokkeringen"

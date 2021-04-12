@@ -1,26 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Ben <bzweekhorst@gmail.com>, 2019
-# bwakkie <bwakkie@gmail.com>, 2020
-# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
-# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
+# Roberto Rosario, 2021
+# bwakkie <bwakkie@gmail.com>, 2021
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-11-11 01:45+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
+"Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:37
@@ -41,8 +40,8 @@ msgstr "E-mail verzonden"
 
 #: forms.py:60 forms.py:120
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
 msgstr ""
 "E-mailadres van de ontvanger. Kunnen meerdere adressen zijn gescheiden door "
 "een komma of puntkomma."
@@ -148,11 +147,11 @@ msgstr "Van"
 
 #: mailers.py:22 mailers.py:111
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value "
-"is not set."
+"The sender's address. Some system will refuse to send messages if this value"
+" is not set."
 msgstr ""
-"Het adres van de verzender. Sommige systemen weigeren berichten te verzenden "
-"als deze waarde niet is ingevuld."
+"Het adres van de verzender. Sommige systemen weigeren berichten te verzenden"
+" als deze waarde niet is ingevuld."
 
 #: mailers.py:28
 msgid "Host"
@@ -180,8 +179,8 @@ msgid ""
 "This is used for explicit TLS connections, generally on port 587."
 msgstr ""
 "Of een TLS (veilige) verbinding gebruikt wordt om te communiceren met de "
-"SMTP server. Dit wordt gebruikt voor expliciete TLS verbindingen, meestal op "
-"poort 587."
+"SMTP server. Dit wordt gebruikt voor expliciete TLS verbindingen, meestal op"
+" poort 587."
 
 #: mailers.py:48
 msgid "Use SSL"
@@ -193,15 +192,15 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
-"True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
 msgstr ""
-"Of een impliciete TLS (veilige) verbinding gebruikt wordt om te communiceren "
-"met de SMTP server. In de meeste e-mailconfiguratie staat dit type TLS "
+"Of een impliciete TLS (veilige) verbinding gebruikt wordt om te communiceren"
+" met de SMTP server. In de meeste e-mailconfiguratie staat dit type TLS "
 "bekend als SSL. Deze wordt meestal gebruikt op poort 465. Als u problemen "
 "ondervindt, bekijk dan de expliciete TLS-instelling \"TLS gebruiken\". Merk "
-"op dat \"TLS gebruiken\" en \"SSL gebruiken\" elkaar uitsluiten, dus u hoeft "
-"maar één van deze instellingen aan te zetten."
+"op dat \"TLS gebruiken\" en \"SSL gebruiken\" elkaar uitsluiten, dus u hoeft"
+" maar één van deze instellingen aan te zetten."
 
 #: mailers.py:60
 msgid "Username"
@@ -222,8 +221,8 @@ msgstr "Wachtwoord"
 #: mailers.py:72
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these "
-"settings is empty, authentication won't be attempted."
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
 msgstr ""
 "Wachtwoord voor de SMTP server. Deze instelling wordt gebruikt samen met de "
 "gebruikersnaam voor authenticatie op de SMTP server. Als een van deze "
@@ -335,8 +334,8 @@ msgstr ""
 #: settings.py:33
 msgid "Template for the document link email form body text. Can include HTML."
 msgstr ""
-"Sjabloon voor de inhoudstekst van het \"Documentlink mailen\" formulier. Kan "
-"HTML bevatten."
+"Sjabloon voor de inhoudstekst van het \"Documentlink mailen\" formulier. Kan"
+" HTML bevatten."
 
 #: validators.py:12
 #, python-format
@@ -417,8 +416,9 @@ msgstr "Ontvanger"
 
 #: workflow_actions.py:28
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon. A template can be used to reference properties of the document."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon. A template can be used to reference properties of the "
+"document."
 msgstr ""
 "E-mailadres van de ontvanger. Kunnen meerdere adressen zijn gescheiden door "
 "komma of puntkomma. Een sjabloon kan worden gebruikt om naar document-"
@@ -429,19 +429,11 @@ msgid "CC"
 msgstr ""
 
 #: workflow_actions.py:39 workflow_actions.py:51
-#, fuzzy
-#| msgid ""
-#| "Email address of the recipient. Can be multiple addresses separated by "
-#| "comma or semicolon. A template can be used to reference properties of the "
-#| "document."
 msgid ""
 "Address used in the \"Bcc\" header when sending the email. Can be multiple "
 "addresses separated by comma or semicolon. A template can be used to "
 "reference properties of the document."
 msgstr ""
-"E-mailadres van de ontvanger. Kunnen meerdere adressen zijn gescheiden door "
-"komma of puntkomma. Een sjabloon kan worden gebruikt om naar document-"
-"eigenschappen te verwijzen."
 
 #: workflow_actions.py:48
 msgid "BCC"
@@ -452,19 +444,11 @@ msgid "Reply to"
 msgstr ""
 
 #: workflow_actions.py:63
-#, fuzzy
-#| msgid ""
-#| "Email address of the recipient. Can be multiple addresses separated by "
-#| "comma or semicolon. A template can be used to reference properties of the "
-#| "document."
 msgid ""
 "Address used in the \"Reply-To\" header when sending the email. Can be "
 "multiple addresses separated by comma or semicolon. A template can be used "
 "to reference properties of the document."
 msgstr ""
-"E-mailadres van de ontvanger. Kunnen meerdere adressen zijn gescheiden door "
-"komma of puntkomma. Een sjabloon kan worden gebruikt om naar document-"
-"eigenschappen te verwijzen."
 
 #: workflow_actions.py:75
 msgid "Subject of the email. Can be a string or a template."
@@ -481,10 +465,8 @@ msgid "Attachment"
 msgstr ""
 
 #: workflow_actions.py:93
-#, fuzzy
-#| msgid "Send document via email"
 msgid "Attach the document to the mail."
-msgstr "Verzend document via e-mail"
+msgstr ""
 
 #: workflow_actions.py:102
 msgid "Send email"

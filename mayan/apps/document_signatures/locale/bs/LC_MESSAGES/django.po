@@ -1,27 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Atdhe Tabaku <Atdhe617@gmail.com>, 2018
-# Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
-# www.ping.ba <jomer@ping.ba>, 2013
+# Roberto Rosario, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-08-18 04:38+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bs/)\n"
-"Language: bs\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:54 events.py:6 permissions.py:6 settings.py:12
 msgid "Document signatures"
@@ -29,7 +26,7 @@ msgstr "Potpisi dokumenta"
 
 #: apps.py:111
 msgid "Date and time"
-msgstr ""
+msgstr "Datum i vreme"
 
 #: apps.py:115 models.py:52
 msgid "Key ID"
@@ -48,22 +45,16 @@ msgid "Type"
 msgstr "Tip"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Delete detached signatures"
 msgid "Detached signature created"
-msgstr "Izbrišite odvojene potpise"
+msgstr ""
 
 #: events.py:13
-#, fuzzy
-#| msgid "Delete detached signatures"
 msgid "Detached signature uploaded"
-msgstr "Izbrišite odvojene potpise"
+msgstr ""
 
 #: events.py:17
-#, fuzzy
-#| msgid "Signature date"
 msgid "Embedded signature created"
-msgstr "Datum potpisa"
+msgstr ""
 
 #: forms.py:17 forms.py:31 workflow_actions.py:19
 msgid "Key"
@@ -128,10 +119,8 @@ msgid "Key type"
 msgstr "Ključni tip"
 
 #: links.py:40
-#, fuzzy
-#| msgid "Verify key signatures"
 msgid "Refresh all signatures"
-msgstr "Potvrdite ključne potpise"
+msgstr ""
 
 #: links.py:46
 msgid "Verify all documents"
@@ -166,16 +155,12 @@ msgid "Upload signature"
 msgstr "Otpremi potpis"
 
 #: models.py:42
-#, fuzzy
-#| msgid "Document version"
 msgid "Document file"
-msgstr "Verzija dokumenta"
+msgstr ""
 
 #: models.py:47
-#, fuzzy
-#| msgid "Date signed"
 msgid "Date and time signed"
-msgstr "Datum prijave"
+msgstr ""
 
 #: models.py:51
 msgid "ID of the key that will be used to sign the document."
@@ -186,16 +171,12 @@ msgid "Public key fingerprint"
 msgstr "Otisak prsta javnog ključa"
 
 #: models.py:68
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file signature"
-msgstr "Potpisi dokumenta"
+msgstr ""
 
 #: models.py:69
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file signatures"
-msgstr "Potpisi dokumenta"
+msgstr ""
 
 #: models.py:88
 msgid "Detached"
@@ -214,32 +195,24 @@ msgid "Signature file"
 msgstr "Datoteka potpisa"
 
 #: models.py:164
-#, fuzzy
-#| msgid "Document version detached signature"
 msgid "Document file detached signature"
-msgstr "Verzija dokumenta odvojen potpis"
+msgstr ""
 
 #: models.py:165
-#, fuzzy
-#| msgid "Document version detached signatures"
 msgid "Document file detached signatures"
-msgstr "Verzija dokumenta odvojen potpisima"
+msgstr ""
 
 #: models.py:168
 msgid "signature"
 msgstr "potpis"
 
 #: models.py:210
-#, fuzzy
-#| msgid "Document version embedded signature"
 msgid "Document file embedded signature"
-msgstr "Verzija dokumenta sa ugrađenim potpisom"
+msgstr ""
 
 #: models.py:211
-#, fuzzy
-#| msgid "Document version embedded signatures"
 msgid "Document file embedded signatures"
-msgstr "Verzija dokumenta sa ugrađenim potpisima"
+msgstr ""
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
@@ -278,10 +251,8 @@ msgid "Unverify key signatures"
 msgstr "Ne verifikujte ključne potpise"
 
 #: queues.py:21
-#, fuzzy
-#| msgid "Verify document version"
 msgid "Verify document file"
-msgstr "Proverite verziju dokumenta"
+msgstr ""
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
@@ -322,26 +293,22 @@ msgid "Passphrase is incorrect."
 msgstr "Govorna fraza je netačna."
 
 #: views.py:92 views.py:161
-#, fuzzy
-#| msgid "Document version signed successfully."
 msgid "Document file signed successfully."
-msgstr "Verzija dokumenta uspešno je potpisana."
+msgstr ""
 
 #: views.py:102 views.py:178
 msgid "Sign"
 msgstr ""
 
 #: views.py:104
-#, fuzzy, python-format
-#| msgid "Sign document version \"%s\" with a detached signature"
+#, python-format
 msgid "Sign document file \"%s\" with a detached signature"
-msgstr "Potpisati verziju dokumenta \"%s\" sa odvojenim potpisom"
+msgstr ""
 
 #: views.py:180
-#, fuzzy, python-format
-#| msgid "Sign document version \"%s\" with a embedded signature"
+#, python-format
 msgid "Sign document file \"%s\" with a embedded signature"
-msgstr "Potpisati verziju dokumenta \"%s\" sa ugrađenim potpisom"
+msgstr ""
 
 #: views.py:196
 #, python-format
@@ -365,16 +332,14 @@ msgid "There are no signatures for this document file."
 msgstr ""
 
 #: views.py:301
-#, fuzzy, python-format
-#| msgid "Signatures for document version: %s"
+#, python-format
 msgid "Signatures for document file: %s"
-msgstr "Potpisi za verziju dokumenta: %s"
+msgstr ""
 
 #: views.py:322
-#, fuzzy, python-format
-#| msgid "Upload detached signature for document version: %s"
+#, python-format
 msgid "Upload detached signature for document file: %s"
-msgstr "Otpremanje odvojenog potpisa za verziju dokumenta: %s"
+msgstr ""
 
 #: views.py:340 views.py:359
 msgid "On large databases this operation may take some time to execute."
@@ -385,10 +350,8 @@ msgid "Refresh all signatures information?"
 msgstr ""
 
 #: views.py:351
-#, fuzzy
-#| msgid "Signature verification queued successfully."
 msgid "Signature information refresh queued successfully."
-msgstr "Provera potpisa je u redu."
+msgstr ""
 
 #: views.py:360
 msgid "Verify all document for signatures?"
@@ -415,12 +378,3 @@ msgstr ""
 #: workflow_actions.py:80
 msgid "Sign document (embedded)"
 msgstr ""
-
-#~ msgid "Date"
-#~ msgstr "Datum"
-
-#~ msgid "Document version signature"
-#~ msgstr "Potpis verzija dokumenta"
-
-#~ msgid "Document version signatures"
-#~ msgstr "Potpisi verzija dokumenta"

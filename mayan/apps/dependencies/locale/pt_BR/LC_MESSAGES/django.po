@@ -2,28 +2,27 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Rogerio Falcone <rogerio@falconeit.com.br>, 2019
-# Aline Freitas <aline@alinefreitas.com.br>, 2019
-# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2019
-# Roberto Rosario, 2019
-# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2019
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020
-#
+# Roberto Rosario, 2021
+# Rogerio Falcone <rogerio@falconeit.com.br>, 2021
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
+# Aline Freitas <aline@alinefreitas.com.br>, 2021
+# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2021
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
-"teams/13584/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:24 links.py:38 permissions.py:5
@@ -126,8 +125,8 @@ msgstr "Binary"
 
 #: classes.py:418
 msgid ""
-"JavaScript libraries downloaded the from NPM registry and used for front-end "
-"functionality."
+"JavaScript libraries downloaded the from NPM registry and used for front-end"
+" functionality."
 msgstr ""
 "As bibliotecas JavaScript são baixadas do registro NPM e são usadas para "
 "funcionalidades de interface de usuário."
@@ -195,8 +194,8 @@ msgid ""
 "dependencies is missing or an incorrect version is present."
 msgstr ""
 "Mostrar os diferentes estados das dependências. True significa que as "
-"dependências estão instaladas e estão na versão correta. False significa que "
-"as dependências não estão instaladas ou estão na versão incorreta."
+"dependências estão instaladas e estão na versão correta. False significa que"
+" as dependências não estão instaladas ou estão na versão incorreta."
 
 #: classes.py:782
 msgid ""
@@ -223,8 +222,8 @@ msgid ""
 "Environment used for developers to make code changes. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
-"Ambiente usado por desenvolvedores realizarem alterações no código. Usuários "
-"finais podem ignorar dependências faltantes neste ambiente."
+"Ambiente usado por desenvolvedores realizarem alterações no código. Usuários"
+" finais podem ignorar dependências faltantes neste ambiente."
 
 #: environments.py:27
 msgid "Development"

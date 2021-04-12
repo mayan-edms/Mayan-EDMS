@@ -1,24 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Marco Camplese <marco.camplese.mc@gmail.com>, 2016
-# Roberto Rosario, 2020-2021
+# Roberto Rosario, 2021
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
+# Giovanni Tricarico <gtricarico92@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-01-19 03:50+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:38+0000\n"
+"Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2021\n"
+"Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
@@ -28,7 +30,7 @@ msgstr ""
 
 #: apps.py:74 apps.py:78
 msgid "None"
-msgstr "Nessuna "
+msgstr "Nessuno"
 
 #: events.py:8
 msgid "Announcement created"
@@ -51,44 +53,36 @@ msgid "Edit"
 msgstr "Modifica"
 
 #: models.py:18
-#, fuzzy
-#| msgid "Short description of this message."
 msgid "Short description of this announcement."
-msgstr "Descrizione breve di questo messaggio"
+msgstr ""
 
 #: models.py:19
 msgid "Label"
 msgstr "Etichetta"
 
 #: models.py:22
-#, fuzzy
-#| msgid "The actual message to be displayed."
 msgid "The actual test to be displayed."
-msgstr "Messaggio effettivo da visualizzare."
+msgstr ""
 
 #: models.py:23
 msgid "Text"
-msgstr ""
+msgstr "Testo"
 
 #: models.py:25
 msgid "Enabled"
 msgstr "Abilitato"
 
 #: models.py:28
-#, fuzzy
-#| msgid "Date and time after which this message will be displayed."
 msgid "Date and time after which this announcement will be displayed."
-msgstr "Orario di inizio visualizzazione di questo messaggio."
+msgstr ""
 
 #: models.py:29
 msgid "Start date time"
 msgstr "Data e ora inizio"
 
 #: models.py:33
-#, fuzzy
-#| msgid "Date and time until when this message is to be displayed."
 msgid "Date and time until when this announcement is to be displayed."
-msgstr "Orario di fine visualizzazione di questo messaggio."
+msgstr ""
 
 #: models.py:34
 msgid "End date time"
@@ -115,28 +109,24 @@ msgid "View announcements"
 msgstr ""
 
 #: views.py:41
-#, fuzzy, python-format
-#| msgid "Error deleting message \"%(message)s\": %(error)s"
+#, python-format
 msgid "Error deleting announcement \"%(instance)s\"; %(exception)s"
-msgstr "Errore durante l'eliminazione del messaggio \"%(message)s\": %(error)s"
+msgstr ""
 
 #: views.py:50
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "Announcement \"%(object)s\" deleted successfully."
-msgstr "Messaggio \"%s\" eliminato correttamente."
+msgstr ""
 
 #: views.py:53
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d announcement deleted successfully."
-msgstr "Messaggio \"%s\" eliminato correttamente."
+msgstr ""
 
 #: views.py:56
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d announcements deleted successfully."
-msgstr "Messaggio \"%s\" eliminato correttamente."
+msgstr ""
 
 #: views.py:58
 #, python-format
@@ -144,18 +134,14 @@ msgid "Delete announcement: %(object)s."
 msgstr ""
 
 #: views.py:59
-#, fuzzy, python-format
-#| msgid "Delete the selected message?"
-#| msgid_plural "Delete the selected messages?"
+#, python-format
 msgid "Delete the %(count)d selected announcement."
-msgstr "Eliminare il messaggio selezionato?"
+msgstr ""
 
 #: views.py:60
-#, fuzzy, python-format
-#| msgid "Delete the selected message?"
-#| msgid_plural "Delete the selected messages?"
+#, python-format
 msgid "Delete the %(count)d selected announcements."
-msgstr "Eliminare il messaggio selezionato?"
+msgstr ""
 
 #: views.py:92
 #, python-format
@@ -163,67 +149,12 @@ msgid "Edit announcement: %s"
 msgstr ""
 
 #: views.py:114
-#, fuzzy
-#| msgid ""
-#| "Messages are displayed in the login view. You can use messages to convery "
-#| "information about your organzation, announcements or usage guidelines for "
-#| "your users."
 msgid ""
 "Announcements are displayed in the login view. You can use announcements to "
 "convery information about your organzation, announcements or usage "
 "guidelines for your users."
 msgstr ""
-"I messaggi vengono visualizzati nella vista di accesso. È possibile "
-"utilizzare i messaggi per trasmettere informazioni sulla propria "
-"organizzazione, annunci o linee guida sull'utilizzo per gli utenti."
 
 #: views.py:118
-#, fuzzy
-#| msgid "No messages available"
 msgid "No announcements available"
-msgstr "Nessun messaggio disponibile"
-
-#~ msgid "Message of the day"
-#~ msgstr "Messaggio del giorno"
-
-#~ msgid "Messages"
-#~ msgstr "Messaggi"
-
-#~ msgid "Message created"
-#~ msgstr "Messaggio creato"
-
-#~ msgid "Message edited"
-#~ msgstr "Messaggio modificato"
-
-#~ msgid "Create message"
-#~ msgstr "Crea messaggio"
-
-#~ msgid "Message"
-#~ msgstr "Messaggio"
-
-#~ msgid "Create messages"
-#~ msgstr "Crea messaggi"
-
-#~ msgid "Delete messages"
-#~ msgstr "Cancella messaggi"
-
-#~ msgid "Edit messages"
-#~ msgstr "Modifica messaggi"
-
-#~ msgid "View messages"
-#~ msgstr "Vedi messaggi"
-
-#~ msgid "Messages of the day"
-#~ msgstr "Messaggi del giorno"
-
-#~ msgid "Delete request performed on %(count)d message"
-#~ msgstr "Richiesta di eliminazione eseguita sul %(count)d messaggio"
-
-#~ msgid "Delete request performed on %(count)d messages"
-#~ msgstr "Richiesta di eliminazione eseguita sui %(count)d messaggi "
-
-#~ msgid "Delete message: %s?"
-#~ msgstr "Eliminare il messaggio: %s?"
-
-#~ msgid "Edit message: %s"
-#~ msgstr "Modificare il messaggio: %s?"
+msgstr ""

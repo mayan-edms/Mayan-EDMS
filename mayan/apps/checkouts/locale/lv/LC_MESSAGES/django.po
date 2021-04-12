@@ -1,25 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Māris Teivāns <maris.teivans@gmail.com>, 2019
+# Māris Teivāns <maris.teivans@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-04-28 03:38+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/lv/)\n"
-"Language: lv\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
+"Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:41 events.py:5 links.py:32
 msgid "Checkouts"
@@ -70,10 +69,8 @@ msgid "Check out expiration"
 msgstr "Izrakstīšanas derīguma termiņš"
 
 #: forms.py:51
-#, fuzzy
-#| msgid "New versions allowed?"
 msgid "New files allowed?"
-msgstr "Atļautas jaunas versijas?"
+msgstr ""
 
 #: forms.py:52
 msgid "Yes"
@@ -128,16 +125,12 @@ msgid "Check out expiration date and time"
 msgstr "Izrakstīšanas derīguma termiņš un laiks"
 
 #: models.py:45
-#, fuzzy
-#| msgid "Do not allow new version of this document to be uploaded."
 msgid "Do not allow new file of this document to be uploaded."
-msgstr "Neļaujiet augšupielādēt jaunu šī dokumenta versiju."
+msgstr ""
 
 #: models.py:47
-#, fuzzy
-#| msgid "Block new version upload"
 msgid "Block new file upload"
-msgstr "Bloķēt jaunu versiju augšupielādi"
+msgstr ""
 
 #: models.py:55 permissions.py:5
 msgid "Document checkout"
@@ -208,24 +201,19 @@ msgid "%(count)d documents checked in successfully."
 msgstr ""
 
 #: views.py:37
-#, fuzzy, python-format
-#| msgid "Check in document: %s"
+#, python-format
 msgid "Check in document \"%(object)s\"."
-msgstr "Pierakstīt dokumentu: %s"
+msgstr ""
 
 #: views.py:38
-#, fuzzy, python-format
-#| msgid "Check in %(count)d document"
-#| msgid_plural "Check in %(count)d documents"
+#, python-format
 msgid "Check in %(count)d document."
-msgstr "Pierakstīt %(count)d dokumentus"
+msgstr ""
 
 #: views.py:39
-#, fuzzy, python-format
-#| msgid "Check in %(count)d document"
-#| msgid_plural "Check in %(count)d documents"
+#, python-format
 msgid "Check in %(count)d documents."
-msgstr "Pierakstīt %(count)d dokumentus"
+msgstr ""
 
 #: views.py:93
 #, python-format
@@ -233,16 +221,14 @@ msgid "Unable to checkout document \"%(instance)s\"; %(exception)s"
 msgstr ""
 
 #: views.py:100
-#, fuzzy, python-format
-#| msgid "Document already checked out."
+#, python-format
 msgid "Document \"%(object)s\" checked out successfully."
-msgstr "Dokuments jau ir izrakstīts."
+msgstr ""
 
 #: views.py:103
-#, fuzzy, python-format
-#| msgid "Amount of time to hold the document checked out in minutes."
+#, python-format
 msgid "%(count)d document checked out successfully."
-msgstr "Laiks minūtēs, cik ilgi turēt dokumentu izrakstītu."
+msgstr ""
 
 #: views.py:106
 #, python-format
@@ -250,30 +236,23 @@ msgid "%(count)d documents checked out successfully."
 msgstr ""
 
 #: views.py:108
-#, fuzzy, python-format
-#| msgid "Check out document: %s"
+#, python-format
 msgid "Checkout document \"%(object)s\"."
-msgstr "Izrakstīt dokumentu: %s"
+msgstr ""
 
 #: views.py:109
-#, fuzzy, python-format
-#| msgid "Checkout %(count)d document"
-#| msgid_plural "Checkout %(count)d documents"
+#, python-format
 msgid "Checkout %(count)d document."
-msgstr "Izrakstīt %(count)d dokumentus"
+msgstr ""
 
 #: views.py:110
-#, fuzzy, python-format
-#| msgid "Checkout %(count)d document"
-#| msgid_plural "Checkout %(count)d documents"
+#, python-format
 msgid "Checkout %(count)d documents."
-msgstr "Izrakstīt %(count)d dokumentus"
+msgstr ""
 
 #: views.py:114
-#, fuzzy
-#| msgid "Checkouts"
 msgid "Checkout"
-msgstr "Izraksti"
+msgstr ""
 
 #: views.py:158
 #, python-format
@@ -294,9 +273,3 @@ msgstr "Neviens dokuments nav izrakstīts"
 #: widgets.py:23
 msgid "Amount"
 msgstr "Apjoms"
-
-#~ msgid "New version block"
-#~ msgstr "Jauna versijas bloks"
-
-#~ msgid "New version blocks"
-#~ msgstr "Jaunas versijas bloki"

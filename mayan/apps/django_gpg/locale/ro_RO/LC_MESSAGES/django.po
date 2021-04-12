@@ -1,26 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Badea Gabriel <gcbadea@gmail.com>, 2013
-# Harald Ersch, 2019-2020
+# Roberto Rosario, 2021
+# Badea Gabriel <gcbadea@gmail.com>, 2021
+# Harald Ersch, 2021
+# Stefaniu Criste <gupi@hangar.ro>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-04-21 07:43+0000\n"
-"Last-Translator: Harald Ersch\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
+"Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:33
 msgid "Django GPG"
@@ -63,16 +64,12 @@ msgid "Key management"
 msgstr "Gestionare chei"
 
 #: events.py:8
-#, fuzzy
-#| msgid "Key data"
 msgid "Key created"
-msgstr "Datele cheii"
+msgstr ""
 
 #: events.py:12
-#, fuzzy
-#| msgid "Download"
 msgid "Key downloaded"
-msgstr "Descarcă"
+msgstr ""
 
 #: forms.py:26
 msgid "None"
@@ -104,7 +101,7 @@ msgstr "Detalii"
 
 #: links.py:27
 msgid "Download"
-msgstr "Descarcă"
+msgstr "Descărcare"
 
 #: links.py:32 permissions.py:26
 msgid "Query keyservers"
@@ -281,7 +278,7 @@ msgstr "Rezultatele interogării cheii"
 
 #: views.py:145
 msgid "Search"
-msgstr "Căută"
+msgstr "Căutare"
 
 #: views.py:147
 msgid "Query key server"
@@ -293,11 +290,11 @@ msgstr "Încărcați o cheie nouă"
 
 #: views.py:187
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded "
-"by the user. The view to upload private and public keys is the same."
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user. The view to upload private and public keys is the same."
 msgstr ""
-"Cheile private sunt folosite pentru a semna documente. Cheile private pot fi "
-"încărcate doar de către utilizator. Vizualizarea pentru a încărca cheile "
+"Cheile private sunt folosite pentru a semna documente. Cheile private pot fi"
+" încărcate doar de către utilizator. Vizualizarea pentru a încărca cheile "
 "private și publice este aceeași."
 
 #: views.py:192
@@ -306,8 +303,8 @@ msgstr "Nu există chei private"
 
 #: views.py:210
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded "
-"by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr ""
 "Cheile publice sunt utilizate pentru a verifica documentele semnate. Cheile "

@@ -1,27 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Annunnaky <doublemiu@gmail.com>, 2015
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020
+# Roberto Rosario, 2021
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
+# Przemysław Bodio <przemyslawbodio.dev@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-02-13 19:04+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Przemysław Bodio <przemyslawbodio.dev@gmail.com>, 2021\n"
+"Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:27 events.py:5 links.py:38 links.py:43 links.py:53 permissions.py:5
 #: queues.py:7 views/event_views.py:30
@@ -65,10 +64,8 @@ msgid "Event list export to CSV"
 msgstr ""
 
 #: classes.py:108
-#, fuzzy
-#| msgid "Event type"
 msgid "Events exported."
-msgstr "Typ zdarzenia"
+msgstr ""
 
 #: classes.py:110
 #, python-format
@@ -83,10 +80,8 @@ msgid "Unknown or obsolete event type: %s"
 msgstr "Nieznany lub nieaktualny typ zdarzenia: %s"
 
 #: events.py:8
-#, fuzzy
-#| msgid "Event type"
 msgid "Events exported"
-msgstr "Typ zdarzenia"
+msgstr ""
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
@@ -109,10 +104,8 @@ msgid "My events"
 msgstr "Moje zdarzenia"
 
 #: links.py:34 links.py:49 links.py:56 views/export_views.py:57
-#, fuzzy
-#| msgid "My events"
 msgid "Export events"
-msgstr "Moje zdarzenia"
+msgstr ""
 
 #: links.py:61 models.py:63 views/subscription_views.py:56
 msgid "Event subscriptions"
@@ -179,36 +172,24 @@ msgid "Object event subscriptions"
 msgstr "Subskrypcje zdarzeń obiektowych"
 
 #: permissions.py:8
-#, fuzzy
-#| msgid "Access the events of an object"
 msgid "Export the events of an object"
-msgstr "Dostęp do zdarzeń obiektu"
+msgstr ""
 
 #: permissions.py:11
 msgid "Access the events of an object"
 msgstr "Dostęp do zdarzeń obiektu"
 
 #: queues.py:13
-#, fuzzy
-#| msgid "Stored event types"
 msgid "Export event querysets"
-msgstr "Przechowywane typy zdarzeń"
+msgstr ""
 
 #: views/event_views.py:26
-#, fuzzy
-#| msgid ""
-#| "Events are actions that have been performed to this object or using this "
-#| "object."
 msgid "Events track actions that have been performed on, to, or with objects."
 msgstr ""
-"Zdarzenia to akcje, które zostały wykonane na tym obiekcie lub przy użyciu "
-"tego obiektu."
 
 #: views/event_views.py:29
-#, fuzzy
-#| msgid "There are no notifications"
 msgid "There are no events"
-msgstr "Brak powiadomień"
+msgstr ""
 
 #: views/event_views.py:44
 msgid "There are no events for this object"
@@ -220,10 +201,8 @@ msgid "Events for: %s"
 msgstr "Zdarzenia dla: %s"
 
 #: views/event_views.py:68
-#, fuzzy
-#| msgid "There are no events for this object"
 msgid "There are no events of this type"
-msgstr "Brak zdarzeń dla tego obiektu"
+msgstr ""
 
 #: views/event_views.py:70 views/export_views.py:105
 #, python-format
@@ -232,21 +211,18 @@ msgstr "Zdarzenia typu: %s"
 
 #: views/export_views.py:26
 msgid ""
-"The process will be performed in the background. The exported events will be "
-"available in the downloads area."
+"The process will be performed in the background. The exported events will be"
+" available in the downloads area."
 msgstr ""
 
 #: views/export_views.py:45
-#, fuzzy
-#| msgid "Event subscriptions updated successfully"
 msgid "Event list export task queued successfully."
-msgstr "Subskrypcje zdarzeń zostały zaktualizowane pomyślnie"
+msgstr ""
 
 #: views/export_views.py:76
-#, fuzzy, python-format
-#| msgid "Events for: %s"
+#, python-format
 msgid "Export events for: %s"
-msgstr "Zdarzenia dla: %s"
+msgstr ""
 
 #: views/notification_views.py:25
 msgid "Subscribe to global or object events to receive notifications."
@@ -262,16 +238,12 @@ msgid "Mark the selected notification as read?"
 msgstr ""
 
 #: views/notification_views.py:56
-#, fuzzy
-#| msgid "Notifications"
 msgid "Notification marked as read."
-msgstr "Powiadomienia"
+msgstr ""
 
 #: views/notification_views.py:67
-#, fuzzy
-#| msgid "There are no notifications"
 msgid "Mark all notification as read?"
-msgstr "Brak powiadomień"
+msgstr ""
 
 #: views/notification_views.py:77
 msgid "All notifications marked as read."

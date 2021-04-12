@@ -1,22 +1,19 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Translators:
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-10-26 13:26+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:39+0000\n"
+"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:30 apps.py:56 links.py:14
@@ -32,16 +29,12 @@ msgid "Null backend"
 msgstr ""
 
 #: duplicate_backends.py:9
-#, fuzzy
-#| msgid "Execute document modifying tools"
 msgid "Exact document file checksum"
-msgstr "Executar ferramentas de modificação de documento"
+msgstr ""
 
 #: duplicate_backends.py:28
-#, fuzzy
-#| msgid "Edit document types"
 msgid "Exact document label"
-msgstr "Editar tipos de documentos"
+msgstr ""
 
 #: links.py:18 models.py:40 views.py:77
 msgid "Duplicated documents"
@@ -95,8 +88,8 @@ msgstr ""
 #: views.py:68
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
 msgstr ""
 
 #: views.py:75
@@ -110,171 +103,3 @@ msgstr ""
 #: views.py:92
 msgid "Duplicated document scan queued successfully."
 msgstr ""
-
-#~ msgid "Documents"
-#~ msgstr "Documentos"
-
-#~ msgid "Pages"
-#~ msgstr "Páginas"
-
-#~ msgid "Type"
-#~ msgstr "Tipo"
-
-#~ msgid "UUID"
-#~ msgstr "UUID"
-
-#~ msgid "Compress"
-#~ msgstr "Comprimir"
-
-#~ msgid "Quick document rename"
-#~ msgstr "Renomeação rápida de documento"
-
-#~ msgid "Date added"
-#~ msgstr "Data de adição"
-
-#~ msgid "File mimetype"
-#~ msgstr "Tipo MIME do ficheiro"
-
-#~ msgid "None"
-#~ msgstr "Nenhum"
-
-#~ msgid "File size"
-#~ msgstr "Tamanho do ficheiro"
-
-#~ msgid "Exists in storage"
-#~ msgstr "Existe no armazenamento"
-
-#~ msgid "File path in storage"
-#~ msgstr "Caminho do ficheiro no armazenamento"
-
-#~ msgid "Checksum"
-#~ msgstr "Soma de verificação"
-
-#~ msgid "Page range"
-#~ msgstr "Intervalo de páginas"
-
-#~ msgid "Document type"
-#~ msgstr "Tipo de documento"
-
-#~ msgid "Delete"
-#~ msgstr "Eliminar"
-
-#~ msgid "Edit"
-#~ msgstr "Editar"
-
-#~ msgid "Page image"
-#~ msgstr "Imagem da página"
-
-#~ msgid "Default"
-#~ msgstr "Padrão"
-
-#~ msgid "Label"
-#~ msgstr "Nome"
-
-#~ msgid "Description"
-#~ msgstr "Descrição"
-
-#~ msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
-#~ msgstr "Página %(page_num)d de %(total_pages)d de %(document)s"
-
-#~ msgid "Comment"
-#~ msgstr "Comentário"
-
-#~ msgid "File"
-#~ msgstr "Ficheiro"
-
-#~ msgid "MIME type"
-#~ msgstr "Tipo MIME"
-
-#~ msgid "User"
-#~ msgstr "Utilizador"
-
-#~ msgid "Create documents"
-#~ msgstr "Criar documentos"
-
-#~ msgid "Delete documents"
-#~ msgstr "Excluir documentos"
-
-#~ msgid "Download documents"
-#~ msgstr "Descarregar documentos"
-
-#~ msgid "Edit documents"
-#~ msgstr "Editar documentos"
-
-#~ msgid "Create new document versions"
-#~ msgstr "Criar novas versões do documento"
-
-#~ msgid "Edit document properties"
-#~ msgstr "Editar propriedades de documento"
-
-#~ msgid "Revert documents to a previous version"
-#~ msgstr "Reverter documentos para uma versão anterior"
-
-#~ msgid "View documents"
-#~ msgstr "Ver documentos"
-
-#~ msgid "Create document types"
-#~ msgstr "Criar tipos de documentos"
-
-#~ msgid "Delete document types"
-#~ msgstr "Excluir tipos de documentos"
-
-#~ msgid "View document types"
-#~ msgstr "Ver tipos de documento"
-
-#~ msgid "Amount in degrees to rotate a document page per user interaction."
-#~ msgstr ""
-#~ "Valor em graus para rodar uma página de documento por interação do "
-#~ "utilizador."
-
-#~ msgid ""
-#~ "Maximum amount in percent (%) to allow user to zoom in a document page "
-#~ "interactively."
-#~ msgstr ""
-#~ "Percentagem (%) máxima para o utilizador aumentar o zoom de uma página de "
-#~ "documento de forma interativa."
-
-#~ msgid ""
-#~ "Minimum amount in percent (%) to allow user to zoom out a document page "
-#~ "interactively."
-#~ msgstr ""
-#~ "Percentagem (%) mínima para o utilizador diminuir o zoom de uma página de "
-#~ "documento de forma interativa."
-
-#~ msgid ""
-#~ "Amount in percent zoom in or out a document page per user interaction."
-#~ msgstr "Percentagem de zoom in/out por interação do utilizador."
-
-#~ msgid "There are no more pages in this document"
-#~ msgstr "Não há mais páginas neste documento"
-
-#~ msgid "You are already at the first page of this document"
-#~ msgstr "Já está na primeira página deste documento"
-
-#~ msgid "All later version after this one will be deleted too."
-#~ msgstr "Todas as versões posteriores a esta também serão eliminadas."
-
-#~ msgid "Document version reverted successfully"
-#~ msgstr "Versão do documento revertida com sucesso"
-
-#~ msgid "Error reverting document version; %s"
-#~ msgstr "Erro ao reverter versão do documento; %s"
-
-#~ msgid "Download"
-#~ msgstr "Descarregar"
-
-#~ msgid ""
-#~ "Error deleting the page transformations for document: %(document)s; "
-#~ "%(error)s."
-#~ msgstr ""
-#~ "Erro ao excluir as transformações de página para o documento: "
-#~ "%(document)s; %(error)s ."
-
-#~ msgid "Submit"
-#~ msgstr "Submeter"
-
-#~ msgid "Add"
-#~ msgstr "Adicionar"
-
-#~ msgid "Remove"
-#~ msgstr "Remover"

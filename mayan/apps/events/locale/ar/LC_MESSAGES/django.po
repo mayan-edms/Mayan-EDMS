@@ -1,26 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Marwan Rahhal <Marwanr@sssit.net>, 2020
-# WM Shinkada <shinkadawasim@gmail.com>, 2020
+# Roberto Rosario, 2021
+# Mohammed ALDOUB <voulnet@gmail.com>, 2021
+# Yaman Sanobar <yman.snober@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# WM Shinkada <shinkadawasim@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-12-24 01:42+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:27 events.py:5 links.py:38 links.py:43 links.py:53 permissions.py:5
 #: queues.py:7 views/event_views.py:30
@@ -64,10 +66,8 @@ msgid "Event list export to CSV"
 msgstr ""
 
 #: classes.py:108
-#, fuzzy
-#| msgid "Event type"
 msgid "Events exported."
-msgstr "أنواع الأحداث"
+msgstr ""
 
 #: classes.py:110
 #, python-format
@@ -82,10 +82,8 @@ msgid "Unknown or obsolete event type: %s"
 msgstr "نوع الحدث غير معروف أو قديم: %s"
 
 #: events.py:8
-#, fuzzy
-#| msgid "Event type"
 msgid "Events exported"
-msgstr "أنواع الأحداث"
+msgstr ""
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
@@ -108,10 +106,8 @@ msgid "My events"
 msgstr "الأحداث الخاص بي"
 
 #: links.py:34 links.py:49 links.py:56 views/export_views.py:57
-#, fuzzy
-#| msgid "My events"
 msgid "Export events"
-msgstr "الأحداث الخاص بي"
+msgstr ""
 
 #: links.py:61 models.py:63 views/subscription_views.py:56
 msgid "Event subscriptions"
@@ -147,7 +143,7 @@ msgstr "مستخدم"
 
 #: models.py:56 models.py:113
 msgid "Event type"
-msgstr "أنواع الأحداث"
+msgstr "نوع الحدث"
 
 #: models.py:62
 msgid "Event subscription"
@@ -178,35 +174,24 @@ msgid "Object event subscriptions"
 msgstr "اشتراكات أحداث الكائن"
 
 #: permissions.py:8
-#, fuzzy
-#| msgid "Access the events of an object"
 msgid "Export the events of an object"
-msgstr "الوصول إلى أحداث الكائن"
+msgstr ""
 
 #: permissions.py:11
 msgid "Access the events of an object"
 msgstr "الوصول إلى أحداث الكائن"
 
 #: queues.py:13
-#, fuzzy
-#| msgid "Stored event types"
 msgid "Export event querysets"
-msgstr "أنواع الحدث المخزن"
+msgstr ""
 
 #: views/event_views.py:26
-#, fuzzy
-#| msgid ""
-#| "Events are actions that have been performed to this object or using this "
-#| "object."
 msgid "Events track actions that have been performed on, to, or with objects."
 msgstr ""
-"الأحداث هي الإجراءات التي تم تنفيذها على هذا الكائن أو باستخدام هذا الكائن."
 
 #: views/event_views.py:29
-#, fuzzy
-#| msgid "There are no notifications"
 msgid "There are no events"
-msgstr "لا توجد تنبيهات"
+msgstr ""
 
 #: views/event_views.py:44
 msgid "There are no events for this object"
@@ -218,10 +203,8 @@ msgid "Events for: %s"
 msgstr "سجل التعديلات: %s"
 
 #: views/event_views.py:68
-#, fuzzy
-#| msgid "There are no events for this object"
 msgid "There are no events of this type"
-msgstr "لا توجد أحداث لهذا الكائن"
+msgstr ""
 
 #: views/event_views.py:70 views/export_views.py:105
 #, python-format
@@ -230,21 +213,18 @@ msgstr "أحداث من النوع: %s"
 
 #: views/export_views.py:26
 msgid ""
-"The process will be performed in the background. The exported events will be "
-"available in the downloads area."
+"The process will be performed in the background. The exported events will be"
+" available in the downloads area."
 msgstr ""
 
 #: views/export_views.py:45
-#, fuzzy
-#| msgid "Event subscriptions updated successfully"
 msgid "Event list export task queued successfully."
-msgstr "تم تحديث اشتراكات المستخدم بنجاح"
+msgstr ""
 
 #: views/export_views.py:76
-#, fuzzy, python-format
-#| msgid "Events for: %s"
+#, python-format
 msgid "Export events for: %s"
-msgstr "سجل التعديلات: %s"
+msgstr ""
 
 #: views/notification_views.py:25
 msgid "Subscribe to global or object events to receive notifications."
@@ -259,16 +239,12 @@ msgid "Mark the selected notification as read?"
 msgstr ""
 
 #: views/notification_views.py:56
-#, fuzzy
-#| msgid "Notifications"
 msgid "Notification marked as read."
-msgstr "التنبيهات"
+msgstr ""
 
 #: views/notification_views.py:67
-#, fuzzy
-#| msgid "There are no notifications"
 msgid "Mark all notification as read?"
-msgstr "لا توجد تنبيهات"
+msgstr ""
 
 #: views/notification_views.py:77
 msgid "All notifications marked as read."

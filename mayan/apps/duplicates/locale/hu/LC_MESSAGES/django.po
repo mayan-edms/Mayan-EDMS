@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# molnars <szabolcs.molnar@gmail.com>, 2017
+# molnars <szabolcs.molnar@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-10-26 13:26+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/hu/)\n"
-"Language: hu\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:39+0000\n"
+"Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2021\n"
+"Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:30 apps.py:56 links.py:14
@@ -25,26 +25,20 @@ msgid "Duplicates"
 msgstr "Duplikátum"
 
 #: apps.py:62
-#, fuzzy
-#| msgid "Duplicated document"
 msgid "Duplicate backend"
-msgstr "Duplikált dokumentum"
+msgstr ""
 
 #: classes.py:83
 msgid "Null backend"
 msgstr ""
 
 #: duplicate_backends.py:9
-#, fuzzy
-#| msgid "Edit document type: %s"
 msgid "Exact document file checksum"
-msgstr "Dokumentum típus %s szerkesztése"
+msgstr ""
 
 #: duplicate_backends.py:28
-#, fuzzy
-#| msgid "Edit document types"
 msgid "Exact document label"
-msgstr "Dokumentum típus szerkesztése"
+msgstr ""
 
 #: links.py:18 models.py:40 views.py:77
 msgid "Duplicated documents"
@@ -67,16 +61,12 @@ msgid "Document"
 msgstr "Dokumentum"
 
 #: models.py:47
-#, fuzzy
-#| msgid "Duplicated document"
 msgid "Duplicated backend entry"
-msgstr "Duplikált dokumentum"
+msgstr ""
 
 #: models.py:48
-#, fuzzy
-#| msgid "Duplicated document"
 msgid "Duplicated backend entries"
-msgstr "Duplikált dokumentum"
+msgstr ""
 
 #: queues.py:8
 msgid "Clean empty duplicate lists"
@@ -102,8 +92,8 @@ msgstr ""
 #: views.py:68
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
 msgstr ""
 
 #: views.py:75
@@ -117,460 +107,3 @@ msgstr ""
 #: views.py:92
 msgid "Duplicated document scan queued successfully."
 msgstr ""
-
-#~ msgid "Added"
-#~ msgstr "Hozzáadva"
-
-#~ msgid "Documents"
-#~ msgstr "dokumentumok"
-
-#~ msgid "Create a document type"
-#~ msgstr "Dokumentum típus létrehozása"
-
-#~ msgid ""
-#~ "Every uploaded document must be assigned a document type, it is the basic "
-#~ "way Mayan EDMS categorizes documents."
-#~ msgstr ""
-#~ "Minden betöltött dokumentumhoz hozzá kell rendelni egy típust, ez az "
-#~ "alapvető kategorizálási elv a Mayan EDMS-ben."
-
-#~ msgid "Document version"
-#~ msgstr "Dokumentum verzió"
-
-#~ msgid "Page number"
-#~ msgstr "Oldalszám"
-
-#~ msgid "Thumbnail"
-#~ msgstr "bélyegkép"
-
-#~ msgid "Pages"
-#~ msgstr "Lapok"
-
-#~ msgid "Type"
-#~ msgstr "Típus"
-
-#~ msgid "UUID"
-#~ msgstr "UUID"
-
-#~ msgid "Total documents"
-#~ msgstr "Dokumentumok száma"
-
-#~ msgid "Documents in trash"
-#~ msgstr "Dokumentumok a kukában"
-
-#~ msgid "Document types"
-#~ msgstr "Dokumentum típusok"
-
-#~ msgid "New documents this month"
-#~ msgstr "Új dokumentumok a hónapban"
-
-#~ msgid "New pages this month"
-#~ msgstr "Új oldalad a hónapban"
-
-#~ msgid "Document created"
-#~ msgstr "Dokumentum létrehozva"
-
-#~ msgid "Document downloaded"
-#~ msgstr "Dokumentum letöltve"
-
-#~ msgid "New version uploaded"
-#~ msgstr "Új verzió betöltve"
-
-#~ msgid "Document properties edited"
-#~ msgstr "Dokumentum tulajdonságok szerkesztve"
-
-#~ msgid "Document type changed"
-#~ msgstr "Dokumentum típus megváltoztatva"
-
-#~ msgid "Document version reverted"
-#~ msgstr "Dokumentum verzió visszaállítva"
-
-#~ msgid "Document viewed"
-#~ msgstr "Dokumentum megtekintve"
-
-#~ msgid "Compress"
-#~ msgstr "Tömörítés"
-
-#~ msgid "Compressed filename"
-#~ msgstr "Tömörített fájlnév"
-
-#~ msgid ""
-#~ "The filename of the compressed file that will contain the documents to be "
-#~ "downloaded, if the previous option is selected."
-#~ msgstr ""
-#~ "A tömörített fájl neve, amely a letöltött dokumentumokat tartalmazni "
-#~ "fogja, ha az előző opció van kiválasztva."
-
-#~ msgid "Quick document rename"
-#~ msgstr "Dokumentum gyors átnevezése"
-
-#~ msgid "Date added"
-#~ msgstr "Dátum megadása"
-
-#~ msgid "Language"
-#~ msgstr "Nyelv"
-
-#~ msgid "File mimetype"
-#~ msgstr "Fájl MIME-típusa"
-
-#~ msgid "None"
-#~ msgstr "Semmi"
-
-#~ msgid "File encoding"
-#~ msgstr "Állomány kódolás"
-
-#~ msgid "File size"
-#~ msgstr "Fájl mérete"
-
-#~ msgid "Exists in storage"
-#~ msgstr "Létezik a tárolóban"
-
-#~ msgid "File path in storage"
-#~ msgstr "A fájl elérési útja a tárolóban"
-
-#~ msgid "Checksum"
-#~ msgstr "Ellenőrző összeg"
-
-#~ msgid "Page range"
-#~ msgstr "Oldal tartomány"
-
-#~ msgid "Document type"
-#~ msgstr "Dokumentum típus"
-
-#~ msgid "Clear transformations"
-#~ msgstr "transzformálás elvétele"
-
-#~ msgid "Clone transformations"
-#~ msgstr "transformálás klónozása"
-
-#~ msgid "Change type"
-#~ msgstr "Típus változtatása"
-
-#~ msgid "Edit properties"
-#~ msgstr "Tulajdonságok szerkesztése"
-
-#~ msgid "All documents"
-#~ msgstr "Minden dokumentum"
-
-#~ msgid "Preview"
-#~ msgstr "Előnézet"
-
-#~ msgid "Properties"
-#~ msgstr "Tulajdonságok"
-
-#~ msgid "Print"
-#~ msgstr "Nyomtatás"
-
-#~ msgid "Create document type"
-#~ msgstr "Dokumentum típus létrehozása"
-
-#~ msgid "Delete"
-#~ msgstr "Törlés"
-
-#~ msgid "Edit"
-#~ msgstr "Szerkesztés"
-
-#~ msgid "Add quick label to document type"
-#~ msgstr "Gyorscímke dokumentum típushoz adása"
-
-#~ msgid "Quick labels"
-#~ msgstr "Gyorscímkék"
-
-#~ msgid "Versions"
-#~ msgstr "Verziók"
-
-#~ msgid "Download version"
-#~ msgstr "Verzió letöltésése"
-
-#~ msgid "Revert"
-#~ msgstr "Visszaállít"
-
-#~ msgid "First page"
-#~ msgstr "Első oldal"
-
-#~ msgid "Last page"
-#~ msgstr "Utolsó oldal"
-
-#~ msgid "Previous page"
-#~ msgstr "Előző oldal"
-
-#~ msgid "Next page"
-#~ msgstr "Következő oldal"
-
-#~ msgid "Rotate left"
-#~ msgstr "Balra forgat"
-
-#~ msgid "Rotate right"
-#~ msgstr "Jobbra forgat"
-
-#~ msgid "Page image"
-#~ msgstr "Oldal kép"
-
-#~ msgid "Reset view"
-#~ msgstr "Nézet visszaállítása"
-
-#~ msgid "Zoom in"
-#~ msgstr "Közelít"
-
-#~ msgid "Zoom out"
-#~ msgstr "Távolít"
-
-#~ msgid "Recalculate page count"
-#~ msgstr "Oldalszámok újraszámlálása"
-
-#~ msgid "Move to trash"
-#~ msgstr "Kukába dob"
-
-#~ msgid "Trash can"
-#~ msgstr "Kuka"
-
-#~ msgid "Restore"
-#~ msgstr "Visszaállít"
-
-#~ msgid "Empty trash"
-#~ msgstr "Kuka ürítése"
-
-#~ msgid "Default"
-#~ msgstr "Alapéretelmezett"
-
-#~ msgid "All pages"
-#~ msgstr "Minden oldal"
-
-#~ msgid "Label"
-#~ msgstr "Cimke"
-
-#~ msgid "Description"
-#~ msgstr "Leírás"
-
-#~ msgid "In trash?"
-#~ msgstr "Kukázva?"
-
-#~ msgid "Date and time trashed"
-#~ msgstr "Kukázás dátuma és ideje"
-
-#~ msgid "Is stub?"
-#~ msgstr "Hivatkozás?"
-
-#~ msgid "Document stub, id: %d"
-#~ msgstr "Dokumentum hivatkozás, id: %d"
-
-#~ msgid "Enabled"
-#~ msgstr "Bekapcsolt"
-
-#~ msgid "Document page"
-#~ msgstr "Dokumentum oldal"
-
-#~ msgid "Document pages"
-#~ msgstr "Dokumentum oldalak"
-
-#~ msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
-#~ msgstr ""
-#~ "Az oldalak száma %(page_num)d  nagyobb mint a  %(document)s oldalainak  "
-#~ "száma: %(total_pages)d "
-
-#~ msgid "Trash time period"
-#~ msgstr "Kuka időtartam"
-
-#~ msgid "Trash time unit"
-#~ msgstr "Kuka időegység"
-
-#~ msgid "Delete time period"
-#~ msgstr "Törlési időtartam"
-
-#~ msgid "Delete time unit"
-#~ msgstr "Törlési időegység"
-
-#~ msgid "Documents types"
-#~ msgstr "Dokumentum típusok"
-
-#~ msgid "Quick label"
-#~ msgstr "Gyorscímke"
-
-#~ msgid "Timestamp"
-#~ msgstr "Időbélyeg"
-
-#~ msgid "Comment"
-#~ msgstr "Megjegyzés"
-
-#~ msgid "File"
-#~ msgstr "Állomány"
-
-#~ msgid "MIME type"
-#~ msgstr "MIME típus"
-
-#~ msgid "Encoding"
-#~ msgstr "Kódolás"
-
-#~ msgid "User"
-#~ msgstr "Felhasználó"
-
-#~ msgid "Accessed"
-#~ msgstr "Hozzáfért"
-
-#~ msgid "Recent document"
-#~ msgstr "legutóbbi dokumentum"
-
-#~ msgid "Recent documents"
-#~ msgstr "Mostanában használt dokumentumok"
-
-#~ msgid "Create documents"
-#~ msgstr "Új dokumentum"
-
-#~ msgid "Delete documents"
-#~ msgstr "Dokumentum törlése"
-
-#~ msgid "Trash documents"
-#~ msgstr "Kukázott dokumentumok"
-
-#~ msgid "Download documents"
-#~ msgstr "Dokumentum letöltése"
-
-#~ msgid "Edit documents"
-#~ msgstr "Dokumentum szerkesztése"
-
-#~ msgid "Create new document versions"
-#~ msgstr "Új dokumentum verzió"
-
-#~ msgid "Edit document properties"
-#~ msgstr "Dokumentum tulajdonságok szerkesztése"
-
-#~ msgid "Print documents"
-#~ msgstr "Dokumentumok nyomtatása"
-
-#~ msgid "Restore trashed document"
-#~ msgstr "Kukázott dokumentum visszaállítása"
-
-#~ msgid "Execute document modifying tools"
-#~ msgstr "Dokumentum módosító futtatása"
-
-#~ msgid "Revert documents to a previous version"
-#~ msgstr "Visszatérés a dokumentum előző verziójához"
-
-#~ msgid "View documents' versions list"
-#~ msgstr "Dokumentum verziólistájának megtekíntése"
-
-#~ msgid "View documents"
-#~ msgstr "Dokumentum megtekintése"
-
-#~ msgid "Create document types"
-#~ msgstr "Új dokumentum típus készítése"
-
-#~ msgid "Delete document types"
-#~ msgstr "Dokumentum típus törlése"
-
-#~ msgid "View document types"
-#~ msgstr "Dokumentum típus megtekintése"
-
-#~ msgid "Converter"
-#~ msgstr "Konverter"
-
-#~ msgid "Uploads"
-#~ msgstr "Betöltések"
-
-#~ msgid "Delete a document"
-#~ msgstr "Egy dokumentum törlése"
-
-#~ msgid "Amount in degrees to rotate a document page per user interaction."
-#~ msgstr ""
-#~ "A felhasználó ennyi fokkal lesz képes elforgatni a dokumentumot oldalt "
-#~ "egy lépésben."
-
-#~ msgid ""
-#~ "Maximum amount in percent (%) to allow user to zoom in a document page "
-#~ "interactively."
-#~ msgstr ""
-#~ "Egy dokumentum oldal százalékos (%) nagyításának aránya egy lépésben."
-
-#~ msgid ""
-#~ "Minimum amount in percent (%) to allow user to zoom out a document page "
-#~ "interactively."
-#~ msgstr ""
-#~ "Egy dokumentum oldal százalékos (%) kicsinyítésének aránya egy lépésben."
-
-#~ msgid ""
-#~ "Amount in percent zoom in or out a document page per user interaction."
-#~ msgstr ""
-#~ "Egy dokumentum oldal százalékos nagyításának vagy kicsinyítésének aránya "
-#~ "egy lépésben."
-
-#~ msgid "New documents per month"
-#~ msgstr "Új dokumentumok havonta"
-
-#~ msgid "New document versions per month"
-#~ msgstr "Új dokumentum verziók havonta"
-
-#~ msgid "New document pages per month"
-#~ msgstr "Új dokumentum oldalak havonta"
-
-#~ msgid "Total documents at each month"
-#~ msgstr "Dokumentumok számossága havonta"
-
-#~ msgid "Total document versions at each month"
-#~ msgstr "Dokumentum verziók számossága havonta"
-
-#~ msgid "Total document pages at each month"
-#~ msgstr "Dokumentum oldalak számossága havonta"
-
-#~ msgid "Pages for document: %s"
-#~ msgstr "Dokumentum oldalak: %s"
-
-#~ msgid "There are no more pages in this document"
-#~ msgstr "a dokumentumnak nincs több oldala"
-
-#~ msgid "You are already at the first page of this document"
-#~ msgstr "Ez már a dokumentum első oldala"
-
-#~ msgid "Image of: %s"
-#~ msgstr "%s képe"
-
-#~ msgid "Documents of type: %s"
-#~ msgstr "%s típusú dokumentumok"
-
-#~ msgid "All documents of this type will be deleted too."
-#~ msgstr "Minden ilyen típusú dokumentum törlésre kerül."
-
-#~ msgid "Delete the document type: %s?"
-#~ msgstr "Törli a dokumentum típust: %s?"
-
-#~ msgid "Create quick label for document type: %s"
-#~ msgstr "Gyorscímke létrehozása a %s dokumentum típushoz"
-
-#~ msgid ""
-#~ "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
-#~ msgstr ""
-#~ "\"%(document_type)s\" dokumentum típushoz tartozó \"%(filename)s\" "
-#~ "gyorscímke szerkesztése"
-
-#~ msgid "Quick labels for document type: %s"
-#~ msgstr "Dokumentum típushoz tartozó gyorscímkék:%s "
-
-#~ msgid "Versions of document: %s"
-#~ msgstr "%s dokumentum verziói"
-
-#~ msgid "All later version after this one will be deleted too."
-#~ msgstr "Minden ezután következő verzió is törölve lesz."
-
-#~ msgid "Revert to this version?"
-#~ msgstr "Visszaáll erre a verzióra?"
-
-#~ msgid "Document version reverted successfully"
-#~ msgstr "Dokumentum verzió sikeresen visszaállt"
-
-#~ msgid "Error reverting document version; %s"
-#~ msgstr "Hiba a dokumentum verzió visszaállítása közben; %s"
-
-#~ msgid "Change"
-#~ msgstr "Módosít"
-
-#~ msgid "Download"
-#~ msgstr "Letöltés"
-
-#~ msgid ""
-#~ "Error deleting the page transformations for document: %(document)s; "
-#~ "%(error)s."
-#~ msgstr ""
-#~ "Hiba %(error)s a dokumentum %(document)s oldal átalakítójának törlése "
-#~ "közben."
-
-#~ msgid "Remove"
-#~ msgstr "Levétel"

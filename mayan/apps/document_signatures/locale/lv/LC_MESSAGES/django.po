@@ -1,33 +1,32 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Māris Teivāns <maris.teivans@gmail.com>, 2019
+# Māris Teivāns <maris.teivans@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-08-18 04:38+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/lv/)\n"
-"Language: lv\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
+"Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:54 events.py:6 permissions.py:6 settings.py:12
 msgid "Document signatures"
-msgstr "Dokumentu paraksti"
+msgstr ""
 
 #: apps.py:111
 msgid "Date and time"
-msgstr ""
+msgstr "Datums un laiks"
 
 #: apps.py:115 models.py:52
 msgid "Key ID"
@@ -39,110 +38,93 @@ msgstr "Nav neviens"
 
 #: apps.py:120 forms.py:60 models.py:57
 msgid "Signature ID"
-msgstr "Paraksta ID"
+msgstr ""
 
 #: apps.py:125
 msgid "Type"
 msgstr "Tips"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Delete detached signatures"
 msgid "Detached signature created"
-msgstr "Dzēsiet atdalītos parakstus"
+msgstr ""
 
 #: events.py:13
-#, fuzzy
-#| msgid "Delete detached signatures"
 msgid "Detached signature uploaded"
-msgstr "Dzēsiet atdalītos parakstus"
+msgstr ""
 
 #: events.py:17
-#, fuzzy
-#| msgid "Signature date"
 msgid "Embedded signature created"
-msgstr "Paraksta datums"
+msgstr ""
 
 #: forms.py:17 forms.py:31 workflow_actions.py:19
 msgid "Key"
 msgstr "Atslēga"
 
 #: forms.py:22 serializers.py:66 workflow_actions.py:30
-#, fuzzy
-#| msgid ""
-#| "The passphrase to unlock the key and allow it to be used to sign the "
-#| "document version."
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document file."
 msgstr ""
-"Ieejas frāze, lai atbloķētu atslēgu un ļautu to izmantot dokumenta versijas "
-"parakstīšanai."
 
 #: forms.py:24 workflow_actions.py:27
 msgid "Passphrase"
-msgstr "Ieejas frāze"
+msgstr ""
 
 #: forms.py:33
-#, fuzzy
-#| msgid "Private key that will be used to sign this document version."
 msgid "Private key that will be used to sign this document file."
 msgstr ""
-"Privāta atslēga, kas tiks izmantota, lai parakstītu šo dokumenta versiju."
 
 #: forms.py:44
 msgid "Signature is embedded?"
-msgstr "Paraksts ir iestrādāts?"
+msgstr ""
 
 #: forms.py:46
 msgid "Signature date"
-msgstr "Paraksta datums"
+msgstr ""
 
 #: forms.py:49
 msgid "Signature key ID"
-msgstr "Paraksta atslēgas ID"
+msgstr ""
 
 #: forms.py:51
 msgid "Signature key present?"
-msgstr "Vai ir paraksta atslēga?"
+msgstr ""
 
 #: forms.py:62
 msgid "Key fingerprint"
-msgstr "Galvenais pirkstu nospiedums"
+msgstr ""
 
 #: forms.py:66
 msgid "Key creation date"
-msgstr "Atslēgas izveides datums"
+msgstr ""
 
 #: forms.py:71
 msgid "Key expiration date"
-msgstr "Atslēgas derīguma termiņš"
+msgstr ""
 
 #: forms.py:76
 msgid "Key length"
-msgstr "Atslēgu garums"
+msgstr ""
 
 #: forms.py:80
 msgid "Key algorithm"
-msgstr "Galvenais algoritms"
+msgstr ""
 
 #: forms.py:84
 msgid "Key user ID"
-msgstr "Galvenais lietotāja ID"
+msgstr ""
 
 #: forms.py:88
 msgid "Key type"
-msgstr "Atslēgu tips"
+msgstr ""
 
 #: links.py:40
-#, fuzzy
-#| msgid "Verify key signatures"
 msgid "Refresh all signatures"
-msgstr "Pārbaudiet galvenos parakstus"
+msgstr ""
 
 #: links.py:46
 msgid "Verify all documents"
-msgstr "Pārbaudiet visus dokumentus"
+msgstr ""
 
 #: links.py:53
 msgid "Delete"
@@ -150,7 +132,7 @@ msgstr "Dzēst"
 
 #: links.py:60
 msgid "Sign detached"
-msgstr "Sign atdalīts"
+msgstr ""
 
 #: links.py:67
 msgid "Details"
@@ -162,7 +144,7 @@ msgstr "Lejupielādēt"
 
 #: links.py:80
 msgid "Sign embedded"
-msgstr "Zīme ir iestrādāta"
+msgstr ""
 
 #: links.py:86 queues.py:8
 msgid "Signatures"
@@ -170,19 +152,15 @@ msgstr "Paraksti"
 
 #: links.py:92
 msgid "Upload signature"
-msgstr "Augšupielādes paraksts"
+msgstr ""
 
 #: models.py:42
-#, fuzzy
-#| msgid "Document version"
 msgid "Document file"
-msgstr "Dokumenta versija"
+msgstr ""
 
 #: models.py:47
-#, fuzzy
-#| msgid "Date signed"
 msgid "Date and time signed"
-msgstr "Parakstīšanas datums"
+msgstr ""
 
 #: models.py:51
 msgid "ID of the key that will be used to sign the document."
@@ -190,27 +168,23 @@ msgstr ""
 
 #: models.py:61
 msgid "Public key fingerprint"
-msgstr "Publiskās atslēgas pirkstu nospiedums"
+msgstr ""
 
 #: models.py:68
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file signature"
-msgstr "Dokumentu paraksti"
+msgstr ""
 
 #: models.py:69
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file signatures"
-msgstr "Dokumentu paraksti"
+msgstr ""
 
 #: models.py:88
 msgid "Detached"
-msgstr "Atdalīts"
+msgstr ""
 
 #: models.py:90
 msgid "Embedded"
-msgstr "Iegultās"
+msgstr ""
 
 #: models.py:155
 msgid "Signature file previously generated."
@@ -218,87 +192,75 @@ msgstr ""
 
 #: models.py:158
 msgid "Signature file"
-msgstr "Paraksta fails"
+msgstr ""
 
 #: models.py:164
-#, fuzzy
-#| msgid "Document version detached signature"
 msgid "Document file detached signature"
-msgstr "Dokumenta versijas atdalītais paraksts"
+msgstr ""
 
 #: models.py:165
-#, fuzzy
-#| msgid "Document version detached signatures"
 msgid "Document file detached signatures"
-msgstr "Dokumenta versijas atdalītie paraksti"
+msgstr ""
 
 #: models.py:168
 msgid "signature"
-msgstr "parakstu"
+msgstr ""
 
 #: models.py:210
-#, fuzzy
-#| msgid "Document version embedded signature"
 msgid "Document file embedded signature"
-msgstr "Dokumenta versijas iegultais paraksts"
+msgstr ""
 
 #: models.py:211
-#, fuzzy
-#| msgid "Document version embedded signatures"
 msgid "Document file embedded signatures"
-msgstr "Dokumenta versijas iegultie paraksti"
+msgstr ""
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
-msgstr "Parakstiet dokumentus ar atdalītiem parakstiem"
+msgstr ""
 
 #: permissions.py:14
 msgid "Sign documents with embedded signatures"
-msgstr "Parakstiet dokumentus ar iegulto parakstu"
+msgstr ""
 
 #: permissions.py:18
 msgid "Delete detached signatures"
-msgstr "Dzēsiet atdalītos parakstus"
+msgstr ""
 
 #: permissions.py:22
 msgid "Download detached document signatures"
-msgstr "Lejupielādējiet atdalītos dokumentu parakstus"
+msgstr ""
 
 #: permissions.py:26
 msgid "Upload detached document signatures"
-msgstr "Augšupielādējiet atdalītos dokumentu parakstus"
+msgstr ""
 
 #: permissions.py:30
 msgid "Verify document signatures"
-msgstr "Pārbaudiet dokumentu parakstus"
+msgstr ""
 
 #: permissions.py:34
 msgid "View details of document signatures"
-msgstr "Skatiet dokumenta parakstu datus"
+msgstr ""
 
 #: queues.py:13
 msgid "Verify key signatures"
-msgstr "Pārbaudiet galvenos parakstus"
+msgstr ""
 
 #: queues.py:17
 msgid "Unverify key signatures"
-msgstr "Atceliet galvenos parakstus"
+msgstr ""
 
 #: queues.py:21
-#, fuzzy
-#| msgid "Verify document version"
 msgid "Verify document file"
-msgstr "Pārbaudiet dokumenta versiju"
+msgstr ""
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
-msgstr "Pārbaudiet trūkstošo iegulto parakstu"
+msgstr ""
 
 #: queues.py:30
-#, fuzzy
-#| msgid "There are no signatures for this document."
 msgid "Refresh existing signature information"
-msgstr "Šim dokumentam nav parakstu."
+msgstr ""
 
 #: serializers.py:60
 msgid "Primary key of the tag to add to the document."
@@ -307,7 +269,6 @@ msgstr ""
 #: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."
 msgstr ""
-"Ceļš uz glabāšanas apakšklasi, kas jāizmanto, uzglabājot atdalītos parakstus."
 
 #: settings.py:27
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
@@ -325,43 +286,39 @@ msgstr ""
 
 #: views.py:66 views.py:135
 msgid "Passphrase is needed to unlock this key."
-msgstr "Lai atslēgtu šo atslēgu, ir nepieciešama ieejas frāze."
+msgstr ""
 
 #: views.py:79 views.py:148
 msgid "Passphrase is incorrect."
-msgstr "Parole ir nepareiza."
+msgstr ""
 
 #: views.py:92 views.py:161
-#, fuzzy
-#| msgid "Document version signed successfully."
 msgid "Document file signed successfully."
-msgstr "Dokumenta versija ir veiksmīgi parakstīta."
+msgstr ""
 
 #: views.py:102 views.py:178
 msgid "Sign"
 msgstr ""
 
 #: views.py:104
-#, fuzzy, python-format
-#| msgid "Sign document version \"%s\" with a detached signature"
+#, python-format
 msgid "Sign document file \"%s\" with a detached signature"
-msgstr "Parakstiet dokumenta versiju \"%s\" ar atdalītu parakstu"
+msgstr ""
 
 #: views.py:180
-#, fuzzy, python-format
-#| msgid "Sign document version \"%s\" with a embedded signature"
+#, python-format
 msgid "Sign document file \"%s\" with a embedded signature"
-msgstr "Parakstiet dokumenta versiju \"%s\" ar iegulto parakstu"
+msgstr ""
 
 #: views.py:196
 #, python-format
 msgid "Delete detached signature: %s"
-msgstr "Noņemt atdalīto parakstu: %s"
+msgstr ""
 
 #: views.py:226
 #, python-format
 msgid "Details for signature: %s"
-msgstr "Sīkāka informācija par parakstu: %s"
+msgstr ""
 
 #: views.py:268
 msgid ""
@@ -369,58 +326,44 @@ msgid ""
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr ""
-"Paraksti palīdz nodrošināt autorības pierādījumus un manipulāciju atklāšanu. "
-"Viņi ir ļoti droši un grūti veidojami. Parakstu var ievietot kā daļu no "
-"dokumenta vai augšupielādēt kā atsevišķu failu."
 
 #: views.py:297
-#, fuzzy
-#| msgid "There are no signatures for this document."
 msgid "There are no signatures for this document file."
-msgstr "Šim dokumentam nav parakstu."
+msgstr ""
 
 #: views.py:301
-#, fuzzy, python-format
-#| msgid "Signatures for document version: %s"
+#, python-format
 msgid "Signatures for document file: %s"
-msgstr "Paraksti dokumenta versijai: %s"
+msgstr ""
 
 #: views.py:322
-#, fuzzy, python-format
-#| msgid "Upload detached signature for document version: %s"
+#, python-format
 msgid "Upload detached signature for document file: %s"
-msgstr "Augšupielādējiet atdalītu parakstu dokumenta versijai: %s"
+msgstr ""
 
 #: views.py:340 views.py:359
 msgid "On large databases this operation may take some time to execute."
-msgstr "Lielās datubāzēs šī darbība var aizņemt kādu laiku, lai izpildītu."
+msgstr ""
 
 #: views.py:341
-#, fuzzy
-#| msgid "There are no signatures for this document."
 msgid "Refresh all signatures information?"
-msgstr "Šim dokumentam nav parakstu."
+msgstr ""
 
 #: views.py:351
-#, fuzzy
-#| msgid "Signature verification queued successfully."
 msgid "Signature information refresh queued successfully."
-msgstr "Paraksta verifikācija veiksmīgi rindā."
+msgstr ""
 
 #: views.py:360
 msgid "Verify all document for signatures?"
-msgstr "Pārbaudiet visus dokumentus parakstiem?"
+msgstr ""
 
 #: views.py:370
 msgid "Signature verification queued successfully."
-msgstr "Paraksta verifikācija veiksmīgi rindā."
+msgstr ""
 
 #: workflow_actions.py:22
-#, fuzzy
-#| msgid "Private key that will be used to sign this document version."
 msgid "Private key that will be used to sign the document file."
 msgstr ""
-"Privāta atslēga, kas tiks izmantota, lai parakstītu šo dokumenta versiju."
 
 #: workflow_actions.py:37
 msgid "Sign document (detached)"
@@ -435,12 +378,3 @@ msgstr ""
 #: workflow_actions.py:80
 msgid "Sign document (embedded)"
 msgstr ""
-
-#~ msgid "Date"
-#~ msgstr "Datums"
-
-#~ msgid "Document version signature"
-#~ msgstr "Dokumenta versijas parakstīšana"
-
-#~ msgid "Document version signatures"
-#~ msgstr "Dokumenta versijas paraksti"

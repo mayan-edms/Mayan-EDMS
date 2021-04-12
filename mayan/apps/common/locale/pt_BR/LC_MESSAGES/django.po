@@ -1,29 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Aline Freitas <aline@alinefreitas.com.br>, 2016
-# Emerson Soares <on.emersonsoares@gmail.com>, 2011
-# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
-# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018
-# Roberto Rosario, 2012
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
-# Rogerio Falcone <rogerio@falconeit.com.br>, 2015
+# Roberto Rosario, 2021
+# Rogerio Falcone <rogerio@falconeit.com.br>, 2021
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
+# Aline Freitas <aline@alinefreitas.com.br>, 2021
+# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2021
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-10-01 22:12+0000\n"
-"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:125 permissions.py:5 settings.py:15
@@ -153,7 +152,7 @@ msgstr "Secundário"
 
 #: menus.py:18
 msgid "Return"
-msgstr ""
+msgstr "Voltar"
 
 #: menus.py:22
 msgid "User"
@@ -175,57 +174,38 @@ msgstr ""
 
 #: settings.py:30
 msgid ""
-"In list mode, show the \"object\" menu options as a dropdown menu instead of "
-"individual buttons."
+"In list mode, show the \"object\" menu options as a dropdown menu instead of"
+" individual buttons."
 msgstr ""
 
 #: settings.py:37
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
 msgstr ""
 "Tempo para atrasar as tarefas de fundo que dependem da propagação de "
 "informação na base de dados."
 
 #: settings.py:44
-#, fuzzy
-#| msgid ""
-#| "A list of strings designating all applications that are to be removed "
-#| "from the list normally installed by Mayan EDMS. Each string should be a "
-#| "dotted Python path to: an application configuration class (preferred), or "
-#| "a package containing an application."
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
-"Uma lista de strings designando todas as aplicações que serão removidas "
-"daquelas normamente instaladas pelo Mayan EDMS. Cada string deve ser um "
-"caminho Python pontuado para uma classe de configuração da aplicação "
-"(preferencialmente) ou um pacote contendo uma aplicação."
 
 #: settings.py:54
-#, fuzzy
-#| msgid ""
-#| "A list of strings designating all applications that are installed beyond "
-#| "those normally installed by Mayan EDMS. Each string should be a dotted "
-#| "Python path to: an application configuration class (preferred), or a "
-#| "package containing an application."
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
-"Uma lista de strings designando todas as aplicações que serão instaladas "
-"para além daquelas normamente instaladas pelo Mayan EDMS. Cada string deve "
-"ser um caminho Python pontuado para uma classe de configuração da aplicação "
-"(preferencialmente) ou um pacote contendo uma aplicação."
 
 #: settings.py:64
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
 msgstr ""
 "Nome da tela associada à âncora da marca no menu principal. Esta é também a "
 "tela para qual os usuários serão direcionados após o login."
@@ -244,11 +224,11 @@ msgstr "Caminho do URL base a ser usado em todas as visualizações."
 
 #: templates/common/app/viewport.html:9
 msgid "Warning"
-msgstr ""
+msgstr "Advertência"
 
 #: templates/common/app/viewport.html:21
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Clique aqui para corrigir isso"
 
 #: validators.py:41
 msgid "Enter a valid JSON value."
@@ -310,27 +290,3 @@ msgstr "Aqui você pode configurar todos os aspectos do sistema."
 #: views.py:124
 msgid "These modules are used to do system maintenance."
 msgstr "Estes módulos são usados para a manutenção do sistema."
-
-#~ msgid "Locale profile"
-#~ msgstr "Perfil do locale"
-
-#~ msgid "Edit locale profile"
-#~ msgstr "Editar perfil do locale"
-
-#~ msgid "Timezone"
-#~ msgstr "Fuso horário"
-
-#~ msgid "Language"
-#~ msgstr "Idioma"
-
-#~ msgid "User locale profile"
-#~ msgstr "Perfil de locale do usuário"
-
-#~ msgid "User locale profiles"
-#~ msgstr "Perfis de localidade do usuário"
-
-#~ msgid "Current user locale profile details"
-#~ msgstr "Detalhes do perfil de locale do usuário atual"
-
-#~ msgid "Edit current user locale profile details"
-#~ msgstr "Editar detalhes do perfil de locale do usuário atual"

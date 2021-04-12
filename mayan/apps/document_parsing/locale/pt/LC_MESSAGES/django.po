@@ -2,24 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Roberto Rosario, 2017
-# Emerson Soares <on.emersonsoares@gmail.com>, 2018
-#
+# Roberto Rosario, 2021
+# Emerson Soares <on.emersonsoares@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2017-08-25 00:49+0000\n"
-"Last-Translator: Emerson Soares <on.emersonsoares@gmail.com>, 2018\n"
-"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/"
-"pt/)\n"
-"Language: pt\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Emerson Soares <on.emersonsoares@gmail.com>, 2021\n"
+"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:53 events.py:6 permissions.py:6 settings.py:10
@@ -89,10 +88,8 @@ msgid "Parse documents per type"
 msgstr ""
 
 #: models.py:18
-#, fuzzy
-#| msgid "Document type"
 msgid "Document file page"
-msgstr "Tipo de documento"
+msgstr ""
 
 #: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."
@@ -123,10 +120,8 @@ msgid "Document types settings"
 msgstr ""
 
 #: models.py:69
-#, fuzzy
-#| msgid "Document type"
 msgid "Document file"
-msgstr "Tipo de documento"
+msgstr ""
 
 #: models.py:72
 msgid "Date time submitted"
@@ -171,10 +166,8 @@ msgid "Document file parsing"
 msgstr ""
 
 #: search.py:16 search.py:23
-#, fuzzy
-#| msgid "Document type"
 msgid "Document file content"
-msgstr "Tipo de documento"
+msgstr ""
 
 #: settings.py:15
 msgid "Set new document types to perform parsing automatically by default."
@@ -182,7 +175,8 @@ msgstr ""
 
 #: settings.py:21
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr ""
 "Caminho para o programa pdftotext de poppler, usado para extrair texto de "
 "ficheiros PDF."

@@ -1,29 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Carlo Zanatto <>, 2012
-# Daniele Bortoluzzi <daniele@elkos.it>, 2019
-# Giovanni Tricarico <gtricarico92@gmail.com>, 2014
-# Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
-# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012,2015
-# Roberto Rosario, 2012
-# Roberto Rosario, 2020
+# Roberto Rosario, 2021
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
+# Giovanni Tricarico <gtricarico92@gmail.com>, 2021
+# Daniele Bortoluzzi <daniele@elkos.it>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-09-30 04:19+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>, 2021\n"
+"Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:125 permissions.py:5 settings.py:15
@@ -118,8 +116,8 @@ msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr ""
-"Il tuo database attuale è impostato a SQLite, che dovrebbe essere usato solo "
-"per sviluppo e test, non in produzione."
+"Il tuo database attuale è impostato a SQLite, che dovrebbe essere usato solo"
+" per sviluppo e test, non in produzione."
 
 #: literals.py:32
 msgid "Days"
@@ -155,7 +153,7 @@ msgstr "Secondario"
 
 #: menus.py:18
 msgid "Return"
-msgstr ""
+msgstr "Ritorno"
 
 #: menus.py:22
 msgid "User"
@@ -177,57 +175,38 @@ msgstr ""
 
 #: settings.py:30
 msgid ""
-"In list mode, show the \"object\" menu options as a dropdown menu instead of "
-"individual buttons."
+"In list mode, show the \"object\" menu options as a dropdown menu instead of"
+" individual buttons."
 msgstr ""
 
 #: settings.py:37
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
 msgstr ""
-"Il ritardo per i task in background dipende dalla propagazione del commit su "
-"database."
+"Il ritardo per i task in background dipende dalla propagazione del commit su"
+" database."
 
 #: settings.py:44
-#, fuzzy
-#| msgid ""
-#| "A list of strings designating all applications that are to be removed "
-#| "from the list normally installed by Mayan EDMS. Each string should be a "
-#| "dotted Python path to: an application configuration class (preferred), or "
-#| "a package containing an application."
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
-"Un elenco di stringhe che designano tutte le applicazioni che devono essere "
-"rimosse dall'elenco normalmente installato da Mayan EDMS. Ogni stringa "
-"dovrebbe essere un percorso Python puntato a: una classe di configurazione "
-"dell'applicazione (preferita) o un pacchetto contenente un'applicazione."
 
 #: settings.py:54
-#, fuzzy
-#| msgid ""
-#| "A list of strings designating all applications that are installed beyond "
-#| "those normally installed by Mayan EDMS. Each string should be a dotted "
-#| "Python path to: an application configuration class (preferred), or a "
-#| "package containing an application."
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
-"Un elenco di stringhe che designano tutte le applicazioni installate oltre a "
-"quelle normalmente installate da Mayan EDMS. Ogni stringa dovrebbe essere un "
-"percorso Python puntato a: una classe di configurazione dell'applicazione "
-"(preferita) o un pacchetto contenente un'applicazione."
 
 #: settings.py:64
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
 msgstr ""
 "Nome della vista collegata all'ancora brand nel menù principale. Questa è "
 "anche la vista alla quale gli utenti verranno reindirizzati dopo il login."
@@ -246,11 +225,11 @@ msgstr "Percorso URL di base da utilizzare per tutte le visualizzazioni."
 
 #: templates/common/app/viewport.html:9
 msgid "Warning"
-msgstr ""
+msgstr "Attenzione"
 
 #: templates/common/app/viewport.html:21
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Clicca qui per risolvere questo problema."
 
 #: validators.py:41
 msgid "Enter a valid JSON value."
@@ -265,7 +244,8 @@ msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
 msgstr ""
-"Inserisci un 'internal name' valido composto da lettere, numeri e underscore."
+"Inserisci un 'internal name' valido composto da lettere, numeri e "
+"underscore."
 
 #: views.py:22
 msgid "About"
@@ -303,7 +283,7 @@ msgstr "Nessuna opzione di configurazione disponibile."
 
 #: views.py:107
 msgid "Setup items"
-msgstr "Impostazione elementi"
+msgstr "Parametri di configurazione"
 
 #: views.py:109
 msgid "Here you can configure all aspects of the system."
@@ -313,27 +293,3 @@ msgstr "Qui puoi configurare tutti gli aspetti del sistema."
 msgid "These modules are used to do system maintenance."
 msgstr ""
 "Questi moduli vengono utilizzati per eseguire la manutenzione del sistema."
-
-#~ msgid "Locale profile"
-#~ msgstr "Profilo Locale"
-
-#~ msgid "Edit locale profile"
-#~ msgstr "Modifica profilo locale"
-
-#~ msgid "Timezone"
-#~ msgstr "Fuso orario"
-
-#~ msgid "Language"
-#~ msgstr "Lingua"
-
-#~ msgid "User locale profile"
-#~ msgstr "Profilo utente locale"
-
-#~ msgid "User locale profiles"
-#~ msgstr "Profili dell'utente locale"
-
-#~ msgid "Current user locale profile details"
-#~ msgstr "Dettagli del profilo dell'utente attuale"
-
-#~ msgid "Edit current user locale profile details"
-#~ msgstr "Modificare i dettagli del profilo corrente dell'utente"

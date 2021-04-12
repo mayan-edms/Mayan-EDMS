@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# bwakkie <bwakkie@gmail.com>, 2020
-# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
-# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
+# Roberto Rosario, 2021
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
+# bwakkie <bwakkie@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: bwakkie <bwakkie@gmail.com>, 2021\n"
+"Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:47 apps.py:120 apps.py:124 apps.py:128 apps.py:133 apps.py:137
@@ -142,54 +142,44 @@ msgid "Remove tags from documents"
 msgstr "Labels van documenten verwijderen"
 
 #: serializers.py:33
-#, fuzzy
-#| msgid "Primary key of the tag to be added."
 msgid "Primary key of the tag to add to the document."
-msgstr "Primaire sleutel van het label dat wordt toegevoegd."
+msgstr ""
+"Primaire sleutel van de tag die aan het document moet worden toegevoegd."
 
 #: serializers.py:41
-#, fuzzy
-#| msgid "Tags to remove from the document"
 msgid "Primary key of the tag to remove from the document."
-msgstr "Labels om te verwijderen van document"
+msgstr ""
+"Primaire sleutel van de label die uit het document moet worden verwijderd."
 
 #: views.py:36
-#, fuzzy, python-format
-#| msgid "Tag attached to document"
+#, python-format
 msgid "Tags attached to document \"%(object)s\" successfully."
-msgstr "Label toegevoegd aan document"
+msgstr "Labels die zijn gekoppeld aan document &quot;%(object)s&quot;."
 
 #: views.py:39
-#, fuzzy, python-format
-#| msgid "Tag attach request performed on %(count)d documents"
+#, python-format
 msgid "Tags attached to %(count)d document successfully."
-msgstr "Label toevoegen uitgevoerd voor %(count)d documenten"
+msgstr "Labels attached to %(count)d document successfully."
 
 #: views.py:42
-#, fuzzy, python-format
-#| msgid "Tag attach request performed on %(count)d documents"
+#, python-format
 msgid "Tags attached to %(count)d documents successfully."
-msgstr "Label toevoegen uitgevoerd voor %(count)d documenten"
+msgstr "Labels die zijn gekoppeld aan %(count)d-documenten."
 
 #: views.py:44
-#, fuzzy, python-format
-#| msgid "Attach tags to document: %s"
+#, python-format
 msgid "Attach tags to document: %(object)s"
-msgstr "Labels toevoegen aan document: %s"
+msgstr "Voeg labels toe aan document: %(object)s"
 
 #: views.py:45
-#, fuzzy, python-format
-#| msgid "Attach tags to %(count)d document"
-#| msgid_plural "Attach tags to %(count)d documents"
+#, python-format
 msgid "Attach tags to %(count)d document."
-msgstr "Labels toevoegen aan %(count)d document"
+msgstr "Voeg labels toe aan het document %(count)d."
 
 #: views.py:46
-#, fuzzy, python-format
-#| msgid "Attach tags to %(count)d document"
-#| msgid_plural "Attach tags to %(count)d documents"
+#, python-format
 msgid "Attach tags to %(count)d documents."
-msgstr "Labels toevoegen aan %(count)d document"
+msgstr "Voeg labels toe aan %(count)d-documenten."
 
 #: views.py:50
 msgid "Attach"
@@ -204,49 +194,40 @@ msgid "Create tag"
 msgstr "Label aanmaken"
 
 #: views.py:116
-#, fuzzy, python-format
-#| msgid "Error deleting tag \"%(tag)s\": %(error)s"
+#, python-format
 msgid "Error deleting tag \"%(instance)s\"; %(exception)s"
 msgstr ""
-"Fout bij het verwijderen van label: \"%(tag)s\". Foutmelding: %(error)s"
+"Fout bij verwijderen van label &quot;%(instance)s&quot;; %(exception)s"
 
 #: views.py:121
-#, fuzzy, python-format
-#| msgid "Tag \"%s\" deleted successfully."
+#, python-format
 msgid "Tag \"%(object)s\" deleted successfully."
-msgstr "Label \"%s\" verwijderd."
+msgstr "Label &quot;%(object)s&quot; succesvol verwijderd."
 
 #: views.py:122
-#, fuzzy, python-format
-#| msgid "Tag \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d tag deleted successfully."
-msgstr "Label \"%s\" verwijderd."
+msgstr "%(count)d label succesvol verwijderd."
 
 #: views.py:123
-#, fuzzy, python-format
-#| msgid "Tag \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d tags deleted successfully."
-msgstr "Label \"%s\" verwijderd."
+msgstr "%(count)d label succesvol verwijderd."
 
 #: views.py:124
-#, fuzzy, python-format
-#| msgid "Delete tags"
+#, python-format
 msgid "Delete tag: %(object)s."
-msgstr "Labels verwijderen"
+msgstr "Verwijder label: %(object)s."
 
 #: views.py:125
-#, fuzzy, python-format
-#| msgid "Delete the selected tag?"
-#| msgid_plural "Delete the selected tags?"
+#, python-format
 msgid "Delete the %(count)d selected tag."
-msgstr "Geselecteerd label verwijderen?"
+msgstr "Verwijder de geselecteerde label %(count)d."
 
 #: views.py:126
-#, fuzzy, python-format
-#| msgid "Delete the selected tag?"
-#| msgid_plural "Delete the selected tags?"
+#, python-format
 msgid "Delete the %(count)d selected tags."
-msgstr "Geselecteerd label verwijderen?"
+msgstr "Verwijder de geselecteerde labels %(count)d."
 
 #: views.py:131
 msgid "Will be removed from all documents."
@@ -284,44 +265,34 @@ msgid "Tags for document: %s"
 msgstr "Labels voor document: %s"
 
 #: views.py:257
-#, fuzzy, python-format
-#| msgid "Tag removed from document"
+#, python-format
 msgid "Tags removed from document \"%(object)s\" successfully."
-msgstr "Label verwijderd van document"
+msgstr "Labels succesvol verwijderd uit document &quot;%(object)s&quot;."
 
 #: views.py:260
-#, fuzzy, python-format
-#| msgid "Remove tags from %(count)d document"
-#| msgid_plural "Remove tags from %(count)d documents"
+#, python-format
 msgid "Tags removed from %(count)d document successfully."
-msgstr "Labels verwijderen van %(count)d document"
+msgstr "Labels succesvol verwijderd uit %(count)d document."
 
 #: views.py:263
-#, fuzzy, python-format
-#| msgid "Remove tags from %(count)d document"
-#| msgid_plural "Remove tags from %(count)d documents"
+#, python-format
 msgid "Tags removed from %(count)d documents successfully."
-msgstr "Labels verwijderen van %(count)d document"
+msgstr "Labels succesvol verwijderd uit %(count)d-documenten."
 
 #: views.py:265
-#, fuzzy, python-format
-#| msgid "Remove tags from document: %s"
+#, python-format
 msgid "Remove tags from document: %(object)s"
-msgstr "Labels verwijderen van document: %s"
+msgstr "Verwijder labels uit document: %(object)s"
 
 #: views.py:266
-#, fuzzy, python-format
-#| msgid "Remove tags from %(count)d document"
-#| msgid_plural "Remove tags from %(count)d documents"
+#, python-format
 msgid "Remove tags from %(count)d document."
-msgstr "Labels verwijderen van %(count)d document"
+msgstr "Verwijder labels uit %(count)d document."
 
 #: views.py:267
-#, fuzzy, python-format
-#| msgid "Remove tags from %(count)d document"
-#| msgid_plural "Remove tags from %(count)d documents"
+#, python-format
 msgid "Remove tags from %(count)d documents."
-msgstr "Labels verwijderen van %(count)d document"
+msgstr "Verwijder labels uit %(count)d-documenten."
 
 #: views.py:272
 msgid "Remove"
@@ -346,45 +317,3 @@ msgstr "Label toevoegen"
 #: workflow_actions.py:63
 msgid "Tags to remove from the document"
 msgstr "Labels om te verwijderen van document"
-
-#~ msgid ""
-#~ "Comma separated list of document primary keys to which this tag will be "
-#~ "attached."
-#~ msgstr ""
-#~ "Kommagescheiden lijst met primaire sleutels van documenten waaraan dit "
-#~ "label wordt toegevoegd."
-
-#~ msgid ""
-#~ "API URL pointing to a tag in relation to the document attached to it. "
-#~ "This URL is different than the canonical tag URL."
-#~ msgstr ""
-#~ "API URL verwijzend naar een label in verband met het document waaraan het "
-#~ "toegevoegd is. Deze URL is verschillend van de canonical URL van het "
-#~ "label."
-
-#~ msgid "Tag attach request performed on %(count)d document"
-#~ msgstr "Label toevoegen uitgevoerd voor %(count)ddocument"
-
-#~ msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
-#~ msgstr "Document \"%(document)s\" is al gelabeld met \"%(tag)s\""
-
-#~ msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-#~ msgstr "Label \"%(tag)s\" is toegevoegd aan document \"%(document)s\"."
-
-#~ msgid "Tag delete request performed on %(count)d tag"
-#~ msgstr "Label verwijderen uitgevoerd voor %(count)d label"
-
-#~ msgid "Tag delete request performed on %(count)d tags"
-#~ msgstr "Label verwijderen uitgevoerd voor %(count)d labels"
-
-#~ msgid "Tag remove request performed on %(count)d document"
-#~ msgstr "Label verwijderingsverzoek gedaan voor %(count)d document"
-
-#~ msgid "Tag remove request performed on %(count)d documents"
-#~ msgstr "Label verwijderingsverzoek gedaan voor %(count)d documenten"
-
-#~ msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
-#~ msgstr "Document \"%(document)s\" was niet gelabeld met \"%(tag)s"
-
-#~ msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-#~ msgstr "Label: \"%(tag)s\" is verwijderd van document \"%(document)s\"."

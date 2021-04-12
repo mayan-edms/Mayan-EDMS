@@ -1,50 +1,49 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Jože Detečnik <joze.detecnik@3tav.si>, 2020
+# Roberto Rosario, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-12-25 11:48+0000\n"
-"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
-"Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/sl/)\n"
-"Language: sl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #: apps.py:27 events.py:5 links.py:38 links.py:43 links.py:53 permissions.py:5
 #: queues.py:7 views/event_views.py:30
 msgid "Events"
-msgstr "Dogodki"
+msgstr ""
 
 #: apps.py:49 apps.py:77
 msgid "Date and time"
-msgstr "Datum in čas"
+msgstr ""
 
 #: apps.py:52 apps.py:80
 msgid "Actor"
-msgstr "Igralec"
+msgstr ""
 
 #: apps.py:56 apps.py:85
 msgid "Event"
-msgstr "Dogodek"
+msgstr ""
 
 #: apps.py:60 apps.py:90
 msgid "Target"
-msgstr "Cilj"
+msgstr ""
 
 #: apps.py:64 apps.py:94
 msgid "Action object"
-msgstr "Predmet akcije"
+msgstr ""
 
 #: apps.py:69 forms.py:10 forms.py:67
 msgid "Namespace"
@@ -56,17 +55,15 @@ msgstr "Oznaka"
 
 #: apps.py:99
 msgid "Seen"
-msgstr "Videl"
+msgstr ""
 
 #: classes.py:79
 msgid "Event list export to CSV"
 msgstr ""
 
 #: classes.py:108
-#, fuzzy
-#| msgid "Event type"
 msgid "Events exported."
-msgstr "Vrsta dogodka"
+msgstr ""
 
 #: classes.py:110
 #, python-format
@@ -78,17 +75,15 @@ msgstr ""
 #: classes.py:274
 #, python-format
 msgid "Unknown or obsolete event type: %s"
-msgstr "Neznana ali zastarela vrsta dogodka: %s"
+msgstr ""
 
 #: events.py:8
-#, fuzzy
-#| msgid "Event type"
 msgid "Events exported"
-msgstr "Vrsta dogodka"
+msgstr ""
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
-msgstr "Naročnina"
+msgstr ""
 
 #: forms.py:20 forms.py:77
 msgid "No"
@@ -96,37 +91,35 @@ msgstr "Ne"
 
 #: forms.py:21 forms.py:78
 msgid "Subscribed"
-msgstr "Naročeni"
+msgstr ""
 
 #: html_widgets.py:22
 msgid "System"
-msgstr "Sistem"
+msgstr ""
 
 #: links.py:30
 msgid "My events"
-msgstr "Moji dogodki"
+msgstr ""
 
 #: links.py:34 links.py:49 links.py:56 views/export_views.py:57
-#, fuzzy
-#| msgid "My events"
 msgid "Export events"
-msgstr "Moji dogodki"
+msgstr ""
 
 #: links.py:61 models.py:63 views/subscription_views.py:56
 msgid "Event subscriptions"
-msgstr "Naročnine na dogodke"
+msgstr ""
 
 #: links.py:66
 msgid "Mark as seen"
-msgstr "Označi kot videno"
+msgstr ""
 
 #: links.py:69
 msgid "Mark all as seen"
-msgstr "Označi vse kot videno"
+msgstr ""
 
 #: links.py:75
 msgid "Subscriptions"
-msgstr "Naročnine"
+msgstr ""
 
 #: models.py:22
 msgid "Name"
@@ -134,142 +127,120 @@ msgstr "Ime"
 
 #: models.py:26
 msgid "Stored event type"
-msgstr "Vrsta shranjenega dogodka"
+msgstr ""
 
 #: models.py:27
 msgid "Stored event types"
-msgstr "Shranjene vrste dogodkov"
+msgstr ""
 
 #: models.py:52 models.py:78 models.py:109
 msgid "User"
-msgstr "Uporabnik"
+msgstr ""
 
 #: models.py:56 models.py:113
 msgid "Event type"
-msgstr "Vrsta dogodka"
+msgstr ""
 
 #: models.py:62
 msgid "Event subscription"
-msgstr "Naročnina na prireditve"
+msgstr ""
 
 #: models.py:82
 msgid "Action"
-msgstr "Ukrepanje"
+msgstr ""
 
 #: models.py:84
 msgid "Read"
-msgstr "Preberite"
+msgstr ""
 
 #: models.py:90
 msgid "Notification"
-msgstr "Obvestilo"
+msgstr ""
 
 #: models.py:91 views/notification_views.py:30
 msgid "Notifications"
-msgstr "Obvestila"
+msgstr ""
 
 #: models.py:119
 msgid "Object event subscription"
-msgstr "Naročnina na dogodek predmeta"
+msgstr ""
 
 #: models.py:120
 msgid "Object event subscriptions"
-msgstr "Naročnine na dogodke predmeta"
+msgstr ""
 
 #: permissions.py:8
-#, fuzzy
-#| msgid "Access the events of an object"
 msgid "Export the events of an object"
-msgstr "Dostopajte do dogodkov predmeta"
+msgstr ""
 
 #: permissions.py:11
 msgid "Access the events of an object"
-msgstr "Dostopajte do dogodkov predmeta"
+msgstr ""
 
 #: queues.py:13
-#, fuzzy
-#| msgid "Stored event types"
 msgid "Export event querysets"
-msgstr "Shranjene vrste dogodkov"
+msgstr ""
 
 #: views/event_views.py:26
-#, fuzzy
-#| msgid ""
-#| "Events are actions that have been performed to this object or using this "
-#| "object."
 msgid "Events track actions that have been performed on, to, or with objects."
 msgstr ""
-"Dogodki so dejanja, ki so bila izvedena s tem predmetom ali z uporabo tega "
-"predmeta."
 
 #: views/event_views.py:29
-#, fuzzy
-#| msgid "There are no notifications"
 msgid "There are no events"
-msgstr "Ni obvestil"
+msgstr ""
 
 #: views/event_views.py:44
 msgid "There are no events for this object"
-msgstr "Za ta objekt ni dogodkov"
+msgstr ""
 
 #: views/event_views.py:46
 #, python-format
 msgid "Events for: %s"
-msgstr "Dogodki za: %s"
+msgstr ""
 
 #: views/event_views.py:68
-#, fuzzy
-#| msgid "There are no events for this object"
 msgid "There are no events of this type"
-msgstr "Za ta objekt ni dogodkov"
+msgstr ""
 
 #: views/event_views.py:70 views/export_views.py:105
 #, python-format
 msgid "Events of type: %s"
-msgstr "Dogodki tipa: %s"
+msgstr ""
 
 #: views/export_views.py:26
 msgid ""
-"The process will be performed in the background. The exported events will be "
-"available in the downloads area."
+"The process will be performed in the background. The exported events will be"
+" available in the downloads area."
 msgstr ""
 
 #: views/export_views.py:45
-#, fuzzy
-#| msgid "Event subscriptions updated successfully"
 msgid "Event list export task queued successfully."
-msgstr "Naročnine na dogodke so bile uspešno posodobljene"
+msgstr ""
 
 #: views/export_views.py:76
-#, fuzzy, python-format
-#| msgid "Events for: %s"
+#, python-format
 msgid "Export events for: %s"
-msgstr "Dogodki za: %s"
+msgstr ""
 
 #: views/notification_views.py:25
 msgid "Subscribe to global or object events to receive notifications."
 msgstr ""
-"Naročite se na globalne ali predmetne dogodke, če želite prejemati obvestila."
 
 #: views/notification_views.py:28
 msgid "There are no notifications"
-msgstr "Ni obvestil"
+msgstr ""
 
 #: views/notification_views.py:44
 msgid "Mark the selected notification as read?"
 msgstr ""
 
 #: views/notification_views.py:56
-#, fuzzy
-#| msgid "Notifications"
 msgid "Notification marked as read."
-msgstr "Obvestila"
+msgstr ""
 
 #: views/notification_views.py:67
-#, fuzzy
-#| msgid "There are no notifications"
 msgid "Mark all notification as read?"
-msgstr "Ni obvestil"
+msgstr ""
 
 #: views/notification_views.py:77
 msgid "All notifications marked as read."
@@ -278,22 +249,22 @@ msgstr ""
 #: views/subscription_views.py:40
 #, python-format
 msgid "Error updating event subscription; %s"
-msgstr "Napaka pri posodabljanju naročnine na dogodek; %s"
+msgstr ""
 
 #: views/subscription_views.py:45
 msgid "Event subscriptions updated successfully"
-msgstr "Naročnine na dogodke so bile uspešno posodobljene"
+msgstr ""
 
 #: views/subscription_views.py:114
 #, python-format
 msgid "Error updating object event subscription; %s"
-msgstr "Napaka pri posodabljanju naročnine na dogodek predmeta; %s"
+msgstr ""
 
 #: views/subscription_views.py:120
 msgid "Object event subscriptions updated successfully"
-msgstr "Naročnine na dogodke predmeta so bile uspešno posodobljene"
+msgstr ""
 
 #: views/subscription_views.py:131
 #, python-format
 msgid "Event subscriptions for: %s"
-msgstr "Naročnine na dogodke za: %s"
+msgstr ""

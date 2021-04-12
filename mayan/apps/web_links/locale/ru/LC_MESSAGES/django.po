@@ -2,30 +2,27 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Sergey Glita <gsv70@mail.ru>, 2019
-# lilo.panic, 2019
-# Panasoft, 2019
-# D Muzzle <muzzlerator@gmail.com>, 2019
-# Alex Chigrin <chalex84@mail.ru>, 2020
+# Sergey Glita <gsv70@mail.ru>, 2021
+# lilo.panic, 2021
+# Panasoft, 2021
+# Alex Chigrin <chalex84@mail.ru>, 2021
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2019-12-03 05:24+0000\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:39
 msgid "Links"
@@ -46,7 +43,7 @@ msgstr "Веб-ссылка изменена"
 
 #: events.py:16
 msgid "Web link navigated"
-msgstr "Веб-ссылка пройдена"
+msgstr "Выполнен переход по веб-ссылке"
 
 #: links.py:29 views.py:94
 msgid "Create new web link"
@@ -74,7 +71,7 @@ msgstr "Краткое описание веб-ссылки."
 
 #: models.py:25
 msgid "Label"
-msgstr "Ярлык"
+msgstr "Заголовок"
 
 #: models.py:29
 msgid "Template that will be used to craft the final URL of the web link."
@@ -88,7 +85,7 @@ msgstr "Шаблон"
 
 #: models.py:33
 msgid "Enabled"
-msgstr "Доступно"
+msgstr "Включено"
 
 #: models.py:41
 msgid "Web link"
@@ -116,11 +113,11 @@ msgstr "Просмотр экземпляров веб-ссылок"
 
 #: serializers.py:16
 msgid "Primary key of the document type to add to the web link."
-msgstr ""
+msgstr "Первичный ключ типа документа, который нужно добавить в веб-ссылку."
 
 #: serializers.py:25
 msgid "Primary key of the document type to remove from the web link."
-msgstr ""
+msgstr "Первичный ключ типа документа, который нужно удалить из веб-ссылки."
 
 #: views.py:38
 msgid "Available web links"
@@ -128,12 +125,12 @@ msgstr "Доступные веб-ссылки"
 
 #: views.py:39
 msgid "Web links enabled"
-msgstr "Веб-ссылки включены"
+msgstr "Включенные веб-ссылки"
 
 #: views.py:63
 #, python-format
 msgid "Web links to enable for document type: %s"
-msgstr "Веб-ссылки для включения для типа документа: %s"
+msgstr "Веб-ссылки для типа документа: %s"
 
 #: views.py:116
 #, python-format
@@ -163,8 +160,8 @@ msgid ""
 "Web links allow generating HTTP links from documents to external resources. "
 "The link URL's can contain document properties values."
 msgstr ""
-"Веб-ссылки позволяют создавать HTTP-ссылки из документов на внешние ресурсы. "
-"URL-адреса ссылки могут содержать значения свойств документа."
+"Веб-ссылки позволяют создавать HTTP-ссылки из документов на внешние ресурсы."
+" URL-адрес ссылок может содержать значения свойств документа."
 
 #: views.py:180
 msgid "There are no web links"
@@ -178,10 +175,3 @@ msgstr "Для этого документа нет веб-ссылок"
 #, python-format
 msgid "Web links for document: %s"
 msgstr "Веб-ссылки для документа: %s"
-
-#~ msgid ""
-#~ "Comma separated list of document type primary keys to which this web link "
-#~ "will be attached."
-#~ msgstr ""
-#~ "Разделенный запятыми список первичных ключей типа документа, к которому "
-#~ "будет прикреплена эта веб-ссылка."

@@ -1,25 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
-# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
-# Johan Braeken, 2017
+# Roberto Rosario, 2021
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-05-02 12:56+0000\n"
-"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
+"Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:33
@@ -63,16 +62,12 @@ msgid "Key management"
 msgstr "Sleutelbeheer"
 
 #: events.py:8
-#, fuzzy
-#| msgid "Key data"
 msgid "Key created"
-msgstr "Sleutelgegevens"
+msgstr ""
 
 #: events.py:12
-#, fuzzy
-#| msgid "Download"
 msgid "Key downloaded"
-msgstr "Download"
+msgstr ""
 
 #: forms.py:26
 msgid "None"
@@ -104,7 +99,7 @@ msgstr "Details"
 
 #: links.py:27
 msgid "Download"
-msgstr "Download"
+msgstr "Downloaden"
 
 #: links.py:32 permissions.py:26
 msgid "Query keyservers"
@@ -268,8 +263,8 @@ msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
 msgstr ""
-"Gebruik namen, achternamen, sleutel-ids of e-mail om op openbare sleutels te "
-"zoeken om te importeren van de sleutelserver."
+"Gebruik namen, achternamen, sleutel-ids of e-mail om op openbare sleutels te"
+" zoeken om te importeren van de sleutelserver."
 
 #: views.py:123
 msgid "No results returned"
@@ -293,12 +288,12 @@ msgstr "Nieuwe sleutel uploaden"
 
 #: views.py:187
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded "
-"by the user. The view to upload private and public keys is the same."
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user. The view to upload private and public keys is the same."
 msgstr ""
-"Privésleutels worden gebruikt om documenten te tekenen. Privésleutels kunnen "
-"alleen door de gebruiker worden geüpload. Het overzicht om privé en openbare "
-"sleutels te uploaden is hetzelfde."
+"Privésleutels worden gebruikt om documenten te tekenen. Privésleutels kunnen"
+" alleen door de gebruiker worden geüpload. Het overzicht om privé en "
+"openbare sleutels te uploaden is hetzelfde."
 
 #: views.py:192
 msgid "There no private keys"
@@ -306,8 +301,8 @@ msgstr "Er zijn geen privésleutels"
 
 #: views.py:210
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded "
-"by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr ""
 "Openbare sleutels worden gebruikt om getekende documenten te verifiëren. "

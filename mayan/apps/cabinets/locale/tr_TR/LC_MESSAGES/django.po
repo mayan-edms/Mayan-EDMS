@@ -2,23 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# serhatcan77 <serhat_can@yahoo.com>, 2020
-#
+# emreunal <bywant@gmail.com>, 2021
+# serhatcan77 <serhat_can@yahoo.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2017-04-21 16:25+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2020\n"
-"Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/"
-"teams/13584/tr_TR/)\n"
-"Language: tr_TR\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2021\n"
+"Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
@@ -53,7 +53,7 @@ msgstr "Dolaplara Ekle"
 
 #: links.py:60
 msgid "Add new level"
-msgstr "Yeni seviye ekle"
+msgstr ""
 
 #: links.py:65 views.py:40
 msgid "Create cabinet"
@@ -114,7 +114,7 @@ msgstr "Ana ve Etiket"
 #: models.py:154
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
-msgstr "%(model_name)s bu %(field_labels)s ile zaten var."
+msgstr ""
 
 #: models.py:183
 msgid "Document cabinet"
@@ -134,7 +134,7 @@ msgstr "Dolap oluştur"
 
 #: permissions.py:16
 msgid "Delete cabinets"
-msgstr "Dolapları sil"
+msgstr ""
 
 #: permissions.py:19
 msgid "Edit cabinets"
@@ -146,7 +146,7 @@ msgstr "Dolaplardan belgeleri çıkar"
 
 #: permissions.py:25
 msgid "View cabinets"
-msgstr "Dolapları görüntüle"
+msgstr ""
 
 #: search.py:33
 msgid "Document type"
@@ -178,16 +178,16 @@ msgstr "Alt dolapların listesi."
 
 #: serializers.py:22
 msgid "The name of this cabinet level appended to the names of its ancestors."
-msgstr "Bu dolap seviyesinin adı atalarının adlarına eklendi."
+msgstr ""
 
 #: serializers.py:28
-msgid "URL of the API endpoint showing the list documents inside this cabinet."
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
-"Bu kabin içindeki liste belgelerini gösteren API bitiş noktasının URL'si."
 
 #: templates/cabinets/cabinet_details.html:17
 msgid "Navigation:"
-msgstr "Navigasyon:"
+msgstr ""
 
 #: views.py:56
 #, python-format
@@ -197,7 +197,7 @@ msgstr "Yeni seviye ekleyin: %s"
 #: views.py:80
 #, python-format
 msgid "Delete the cabinet: %s?"
-msgstr "Kabini silin: %s?"
+msgstr ""
 
 #: views.py:116
 msgid ""
@@ -212,12 +212,12 @@ msgstr ""
 #: views.py:123
 #, python-format
 msgid "Details of cabinet: %s"
-msgstr "Kabin ayrıntıları: %s"
+msgstr ""
 
 #: views.py:141
 #, python-format
 msgid "Edit cabinet: %s"
-msgstr "Dolabı düzenle: %s"
+msgstr ""
 
 #: views.py:161
 msgid ""
@@ -230,40 +230,34 @@ msgid "No cabinets available"
 msgstr ""
 
 #: views.py:180
-#, fuzzy, python-format
-#| msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
+#, python-format
 msgid "Document \"%(object)s\" added to cabinets successfully."
-msgstr " %(document)s belgesi %(cabinet)s dolabına başarıyla eklendi."
+msgstr ""
 
 #: views.py:183
-#, fuzzy, python-format
-#| msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
+#, python-format
 msgid "%(count)d document added to cabinets successfully."
-msgstr " %(document)s belgesi %(cabinet)s dolabına başarıyla eklendi."
+msgstr ""
 
 #: views.py:186
-#, fuzzy, python-format
-#| msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
+#, python-format
 msgid "%(count)d documents added to cabinets successfully."
-msgstr " %(document)s belgesi %(cabinet)s dolabına başarıyla eklendi."
+msgstr ""
 
 #: views.py:188
-#, fuzzy, python-format
-#| msgid "Add document \"%s\" to cabinets"
+#, python-format
 msgid "Add document \"%(object)s\" to cabinets."
-msgstr "Dolaplara \"%s\" belgesini ekleyin"
+msgstr ""
 
 #: views.py:189
-#, fuzzy, python-format
-#| msgid "Add documents to cabinets"
+#, python-format
 msgid "Add %(count)d document to cabinets."
-msgstr "Dolaplara belge ekle"
+msgstr ""
 
 #: views.py:190
-#, fuzzy, python-format
-#| msgid "Add documents to cabinets"
+#, python-format
 msgid "Add %(count)d documents to cabinets."
-msgstr "Dolaplara belge ekle"
+msgstr ""
 
 #: views.py:194
 msgid "Add"
@@ -284,47 +278,41 @@ msgstr ""
 #: views.py:262
 #, python-format
 msgid "Cabinets containing document: %s"
-msgstr "Belgeyi içeren dolaplar: %s"
+msgstr ""
 
 #: views.py:278
-#, fuzzy, python-format
-#| msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
+#, python-format
 msgid "Document \"%(object)s\" removed from cabinets successfully."
-msgstr " %(document)s belgesi dolaptan kaldırıldı: %(cabinet)s."
+msgstr ""
 
 #: views.py:281
-#, fuzzy, python-format
-#| msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
+#, python-format
 msgid "%(count)d document removed from cabinets successfully."
-msgstr " %(document)s belgesi dolaptan kaldırıldı: %(cabinet)s."
+msgstr ""
 
 #: views.py:284
-#, fuzzy, python-format
-#| msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
+#, python-format
 msgid "%(count)d documents removed from cabinets successfully."
-msgstr " %(document)s belgesi dolaptan kaldırıldı: %(cabinet)s."
+msgstr ""
 
 #: views.py:286
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
+#, python-format
 msgid "Remove document \"%(object)s\" from cabinets."
-msgstr "Dolaplardan belgeleri çıkar"
+msgstr ""
 
 #: views.py:287
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
+#, python-format
 msgid "Remove %(count)d document from cabinets."
-msgstr "Dolaplardan belgeleri çıkar"
+msgstr ""
 
 #: views.py:288
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
+#, python-format
 msgid "Remove %(count)d documents from cabinets."
-msgstr "Dolaplardan belgeleri çıkar"
+msgstr ""
 
 #: views.py:292
 msgid "Remove"
-msgstr "Çıkar"
+msgstr "Sil"
 
 #: views.py:307
 msgid "Cabinets from which the selected documents will be removed."
@@ -341,24 +329,3 @@ msgstr ""
 #: workflow_actions.py:67
 msgid "Cabinets from which the document will be removed."
 msgstr ""
-
-#~ msgid "Number of documents on this cabinet level."
-#~ msgstr "Bu dolap seviyesindeki belge sayısı."
-
-#~ msgid ""
-#~ "Comma separated list of document primary keys to add to this cabinet."
-#~ msgstr ""
-#~ "Bu dolaba eklemek üzere birincil anahtarların virgülle ayrılmış listesi."
-
-#~ msgid ""
-#~ "API URL pointing to a document in relation to the cabinet storing it. "
-#~ "This URL is different than the canonical document URL."
-#~ msgstr ""
-#~ "Bir belgeyi depolayan kabine ilişkin olarak API URL'si. Bu URL, kanonik "
-#~ "belge URL'sinden farklı."
-
-#~ msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
-#~ msgstr " %(document)s belgesi zaten dolapta: %(cabinet)s."
-
-#~ msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
-#~ msgstr "%(document)s belgesi dolapta değil: %(cabinet)s."

@@ -2,26 +2,27 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Roberto Rosario, 2020
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2020
-# Thierry Schott <DarkDare@users.noreply.github.com>, 2020
-# Yves Dubois <ydubois@gmail.com>, 2020
-# Frédéric Sheedy <sheedf@gmail.com>, 2020
-#
+# Roberto Rosario, 2021
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
+# Yves Dubois <ydubois@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-03-28 07:24+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2020\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:36 events.py:6 links.py:34 models.py:32 permissions.py:5
@@ -55,7 +56,7 @@ msgstr "Backend"
 
 #: forms.py:16
 msgid "The quota driver for this entry."
-msgstr ""
+msgstr "Le pilote de quota pour cette entrée."
 
 #: links.py:16
 msgid "Create quota"
@@ -121,8 +122,8 @@ msgid ""
 "selection."
 msgstr ""
 "Appliquez le quota à tous les utilisateurs du système, à l'exception des "
-"administrateurs et du personnel. En activant cette option, le quota ignorera "
-"la sélection individuelle des utilisateurs et des groupes."
+"administrateurs et du personnel. En activant cette option, le quota ignorera"
+" la sélection individuelle des utilisateurs et des groupes."
 
 #: mixins.py:115
 msgid "Users"
@@ -167,7 +168,7 @@ msgstr "Quota"
 
 #: models.py:54
 msgid "Driver used for this quota entry."
-msgstr ""
+msgstr "Pilote utilisé pour cette entrée de quota."
 
 #: models.py:59
 msgid "Arguments"
@@ -233,7 +234,7 @@ msgstr "Dépassement du quota concernant la taille de document."
 
 #: views.py:24
 msgid "New quota backend selection"
-msgstr ""
+msgstr "Nouvelle sélection du backend de quota"
 
 #: views.py:54
 #, python-format

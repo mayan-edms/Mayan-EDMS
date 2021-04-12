@@ -1,29 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# mic <winterfall24@gmail.com>, 2012,2015
-# Tomasz Szymanowicz <alakdae@gmail.com>, 2020
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016,2020
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016-2018
+# Roberto Rosario, 2021
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-03-06 15:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
+"Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: admin.py:22
 msgid "None"
@@ -58,16 +55,12 @@ msgid "Documents"
 msgstr "Dokumenty"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index template created"
-msgstr "Węzeł szablonu indeksu"
+msgstr ""
 
 #: events.py:13
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index template edited"
-msgstr "Węzeł szablonu indeksu"
+msgstr ""
 
 #: forms.py:16
 msgid "Index templates to be queued for rebuilding."
@@ -112,7 +105,7 @@ msgstr "Tworzenie indeksu"
 
 #: links.py:89 links.py:114
 msgid "Delete"
-msgstr "Usunąć"
+msgstr "Usuń"
 
 #: links.py:98 links.py:118
 msgid "Edit"
@@ -145,14 +138,15 @@ msgid "Slug"
 msgstr "Slug"
 
 #: models.py:47
-msgid "Causes this index to be visible and updated when document data changes."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
 msgstr ""
 "Powoduje że  ten wskaźnik będzie widoczny i zaktualizowany podczas zmiany "
 "danych dokumentów."
 
 #: models.py:50 models.py:229
 msgid "Enabled"
-msgstr "Włączony"
+msgstr "Włączone"
 
 #: models.py:61 models.py:213
 msgid "Index"
@@ -172,15 +166,16 @@ msgstr "Wyrażenie indeksujące"
 
 #: models.py:226
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr "Causes this node to be visible and updated when document data changes."
+msgstr ""
+"Causes this node to be visible and updated when document data changes."
 
 #: models.py:234
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 msgstr ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 
 #: models.py:237
 msgid "Link documents"
@@ -256,40 +251,28 @@ msgid "Indexing"
 msgstr "Indeksowanie"
 
 #: permissions.py:8
-#, fuzzy
-#| msgid "View document index instances"
 msgid "View index instances"
-msgstr "Wyświetl instancje indeksu dokumentów"
+msgstr ""
 
 #: permissions.py:11
-#, fuzzy
-#| msgid "Delete the index template node: %s?"
 msgid "Create new index templates"
-msgstr "Usunąć węzeł szablonu indeksu: %s?"
+msgstr ""
 
 #: permissions.py:14
-#, fuzzy
-#| msgid "Index templates"
 msgid "Edit index templates"
-msgstr "Szablony indeksów"
+msgstr ""
 
 #: permissions.py:17
-#, fuzzy
-#| msgid "Delete the index template node: %s?"
 msgid "Delete index templates"
-msgstr "Usunąć węzeł szablonu indeksu: %s?"
+msgstr ""
 
 #: permissions.py:20
-#, fuzzy
-#| msgid "Index templates"
 msgid "View index templates"
-msgstr "Szablony indeksów"
+msgstr ""
 
 #: permissions.py:23 views/index_template_views.py:310
-#, fuzzy
-#| msgid "Rebuild indexes"
 msgid "Rebuild index templates"
-msgstr "Przebudowa indeksów"
+msgstr ""
 
 #: queues.py:12
 msgid "Delete empty index nodes"
@@ -337,8 +320,8 @@ msgstr "Element nadrzędny musi pochodzić z tego samego szablonu indeksu."
 
 #: serializers.py:215
 msgid ""
-"URL of the API endpoint showing the list document types associated with this "
-"index template."
+"URL of the API endpoint showing the list document types associated with this"
+" index template."
 msgstr ""
 
 #: serializers.py:222
@@ -351,22 +334,18 @@ msgid ""
 msgstr ""
 
 #: serializers.py:277
-#, fuzzy
-#| msgid "Parent must be from the same index template."
 msgid "Primary key of the document type to add to the index template."
-msgstr "Element nadrzędny musi pochodzić z tego samego szablonu indeksu."
+msgstr ""
 
 #: serializers.py:286
-#, fuzzy
-#| msgid "Parent must be from the same index template."
 msgid "Primary key of the document type to remove from the index template."
-msgstr "Element nadrzędny musi pochodzić z tego samego szablonu indeksu."
+msgstr ""
 
 #: settings.py:14
 msgid ""
-"Amount of time in seconds, a failed indexing task will wait before retrying. "
-"Lower values will increase the speed at which documents are indexed but will "
-"cause a higher count of failed/retried tasks in the queue."
+"Amount of time in seconds, a failed indexing task will wait before retrying."
+" Lower values will increase the speed at which documents are indexed but "
+"will cause a higher count of failed/retried tasks in the queue."
 msgstr ""
 "Czas w sekundach, po którym nastąpi ponowne wykonanie nieudanego zadania "
 "indeksowania.  Niższe wartości zwiększą szybkość indeksowania dokumentów, "
@@ -435,15 +414,13 @@ msgstr "Indeksy powiązane z typem dokumentu: %s"
 #: views/index_template_views.py:90
 msgid ""
 "Indexes group document automatically into levels. Indexes are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views/index_template_views.py:95
-#, fuzzy
-#| msgid "There are no indexes."
 msgid "There are no index templates."
-msgstr "Brak indeksów."
+msgstr ""
 
 #: views/index_template_views.py:124
 #, python-format
@@ -465,7 +442,8 @@ msgid ""
 "updates in the index."
 msgstr ""
 "Po utworzeniu w indeksie będą wyświetlane tylko dokumenty wybranych typów. "
-"Tylko zdarzenia dokumentów wybranych typów spowodują aktualizacje w indeksie."
+"Tylko zdarzenia dokumentów wybranych typów spowodują aktualizacje w "
+"indeksie."
 
 #: views/index_template_views.py:151
 #, python-format
@@ -498,61 +476,32 @@ msgid "Edit the index template node: %s?"
 msgstr "Edytować węzeł szablonu indeksu: %s?"
 
 #: views/index_template_views.py:283
-#, fuzzy, python-format
-#| msgid "Rebuild index: %s"
+#, python-format
 msgid "Rebuild index template: %s"
-msgstr "Przebuduj indeks: %s"
+msgstr ""
 
 #: views/index_template_views.py:303
-#, fuzzy
-#| msgid "Index templates to be queued for rebuilding."
 msgid "Index template queued for rebuild."
-msgstr "Szablony indeksów w kolejce do przebudowy."
+msgstr ""
 
 #: views/index_template_views.py:324
-#, fuzzy, python-format
-#| msgid "%(count)d index queued for rebuild."
-#| msgid_plural "%(count)d indexes queued for rebuild."
+#, python-format
 msgid "%(count)d index template queued for rebuild."
 msgid_plural "%(count)d index templates queued for rebuild."
-msgstr[0] "Indeks %(count)d w kolejce do przebudowania."
-msgstr[1] "Indeksy %(count)d w kolejce do przebudowania."
-msgstr[2] "Indeksy %(count)d w kolejce do przebudowania."
-msgstr[3] "Indeksy %(count)d w kolejce do przebudowania."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views/index_template_views.py:357
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] "."
-msgstr[1] "Reset %(count)d indeksów."
-msgstr[2] "Reset %(count)d indeksów."
-msgstr[3] "Reset %(count)d indeksów."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views/index_template_views.py:370
 msgid "Index templates for which their instances will be deleted."
 msgstr "Szablony indeksów, dla których ich instancje zostaną usunięte."
-
-#~ msgid "Index created"
-#~ msgstr "Utworzono indeks"
-
-#~ msgid "Index edited"
-#~ msgstr "Zmodyfikowano indeks"
-
-#~ msgid "Create new document indexes"
-#~ msgstr "Tworzenie nowych indeksów dokumentów"
-
-#~ msgid "Edit document indexes"
-#~ msgstr "Edytuj indeksy dokumentów"
-
-#~ msgid "Delete document indexes"
-#~ msgstr "Usuń indeksy dokumentów"
-
-#~ msgid "View document indexes"
-#~ msgstr "Zobacz indeksy dokumentów"
-
-#~ msgid "Rebuild document indexes"
-#~ msgstr "Odbuduj indeksy dokumentów"
-
-#~ msgid "Index queued for rebuild."
-#~ msgstr "Indeks w kolejce do przebudowania."

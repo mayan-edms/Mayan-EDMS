@@ -2,24 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Roberto Rosario, 2020
-# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
+# Roberto Rosario, 2021
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
 # bwakkie <bwakkie@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: bwakkie <bwakkie@gmail.com>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
-"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:15 settings.py:7
@@ -36,11 +36,11 @@ msgstr "Geen"
 
 #: forms.py:284
 msgid "Label"
-msgstr ""
+msgstr "Label"
 
 #: forms.py:288
 msgid "Relationship"
-msgstr ""
+msgstr "Relatie"
 
 #: generics.py:146
 msgid ""
@@ -81,13 +81,11 @@ msgstr "Verwijderen"
 #: generics.py:531
 #, python-format
 msgid "Error updating relationship; %s"
-msgstr ""
+msgstr "Fout bij bijwerken relatie: %s"
 
 #: generics.py:538
-#, fuzzy
-#| msgid "%(object)s updated successfully."
 msgid "Relationships updated successfully"
-msgstr "%(object)s werden met succes bijgewerkt."
+msgstr "Relaties met succes bijgewerkt"
 
 #: generics.py:597
 #, python-format
@@ -125,37 +123,34 @@ msgid "%(object)s updated successfully."
 msgstr "%(object)s werden met succes bijgewerkt."
 
 #: generics.py:885
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "\"%(object)s\" deleted successfully."
-msgstr "%(object)s met succes verwijderd."
+msgstr "‘%(object)s’ is succesvol verwijderd."
 
 #: generics.py:886
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "%(count)d object deleted successfully."
-msgstr "%(object)s met succes verwijderd."
+msgstr "%(count)d object succesvol verwijderd."
 
 #: generics.py:887
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "%(count)d objects deleted successfully."
-msgstr "%(object)s met succes verwijderd."
+msgstr "%(count)d objecten succesvol verwijderd."
 
 #: generics.py:888
 #, python-format
 msgid "Delete \"%(object)s\"."
-msgstr ""
+msgstr "Verwijder &quot;%(object)s&quot;."
 
 #: generics.py:889
 #, python-format
 msgid "Delete %(count)d object."
-msgstr ""
+msgstr "Verwijder %(count)d-object."
 
 #: generics.py:890
 #, python-format
 msgid "Delete %(count)d objects."
-msgstr ""
+msgstr "Verwijder %(count)d-objecten."
 
 #: mixins.py:325
 #, python-format
@@ -165,37 +160,37 @@ msgstr "Geen %(verbose_name)s gevonden die aan zoekopdracht voldoet"
 #: mixins.py:350
 #, python-format
 msgid "Unable to perform operation on object %(instance)s; %(exception)s."
-msgstr ""
+msgstr "Kan geen bewerking uitvoeren op object %(instance)s; %(exception)s."
 
 #: mixins.py:352
 #, python-format
 msgid "Operation performed on %(object)s."
-msgstr ""
+msgstr "Bewerking uitgevoerd op %(object)s."
 
 #: mixins.py:353
 #, python-format
 msgid "Operation performed on %(count)d object."
-msgstr ""
+msgstr "Bewerking uitgevoerd op %(count)d-object."
 
 #: mixins.py:354
 #, python-format
 msgid "Operation performed on %(count)d objects."
-msgstr ""
+msgstr "Bewerking uitgevoerd op %(count)d-objecten."
 
 #: mixins.py:355
 #, python-format
 msgid "Perform operation on %(object)s."
-msgstr ""
+msgstr "Voer een bewerking uit op %(object)s."
 
 #: mixins.py:356
 #, python-format
 msgid "Perform operation on %(count)d object."
-msgstr ""
+msgstr "Voer een bewerking uit op een %(count)d-object."
 
 #: mixins.py:357
 #, python-format
 msgid "Perform operation on %(count)d objects."
-msgstr ""
+msgstr "Voer een bewerking uit op %(count)d-objecten."
 
 #: mixins.py:439
 msgid "Object"

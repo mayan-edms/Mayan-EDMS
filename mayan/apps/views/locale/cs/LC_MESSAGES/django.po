@@ -2,25 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Sebastian Fait <seba.fait@gmail.com>, 2020
-# Michal Švábík <snadno@lehce.cz>, 2020
-#
+# Sebastian Fait <seba.fait@gmail.com>, 2021
+# Michal Švábík <snadno@lehce.cz>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2020\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
-"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:15 settings.py:7
 msgid "Views"
@@ -36,11 +35,11 @@ msgstr "Žádný"
 
 #: forms.py:284
 msgid "Label"
-msgstr ""
+msgstr "Jmenovka"
 
 #: forms.py:288
 msgid "Relationship"
-msgstr ""
+msgstr "Vztah"
 
 #: generics.py:146
 msgid ""
@@ -81,13 +80,11 @@ msgstr "Odstranit"
 #: generics.py:531
 #, python-format
 msgid "Error updating relationship; %s"
-msgstr ""
+msgstr "Chyba při aktualizaci vztahu; %s"
 
 #: generics.py:538
-#, fuzzy
-#| msgid "%(object)s updated successfully."
 msgid "Relationships updated successfully"
-msgstr "%(object)s byl úspěšně aktualizován."
+msgstr "Vztahy byly úspěšně aktualizovány"
 
 #: generics.py:597
 #, python-format
@@ -125,22 +122,19 @@ msgid "%(object)s updated successfully."
 msgstr "%(object)s byl úspěšně aktualizován."
 
 #: generics.py:885
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "\"%(object)s\" deleted successfully."
-msgstr "%(object)s byl úspěšně smazán."
+msgstr ""
 
 #: generics.py:886
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "%(count)d object deleted successfully."
-msgstr "%(object)s byl úspěšně smazán."
+msgstr ""
 
 #: generics.py:887
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "%(count)d objects deleted successfully."
-msgstr "%(object)s byl úspěšně smazán."
+msgstr ""
 
 #: generics.py:888
 #, python-format

@@ -1,30 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Māris Teivāns <maris.teivans@gmail.com>, 2019
+# Māris Teivāns <maris.teivans@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/lv/)\n"
-"Language: lv\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:28+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
+"Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:52 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
 #: search.py:17 settings.py:11
 msgid "OCR"
-msgstr "OCR"
+msgstr ""
 
 #: apps.py:103
 msgid "The OCR content."
@@ -48,27 +47,23 @@ msgstr "Rezultāts"
 
 #: backends/tesseract.py:89
 msgid "Tesseract OCR not found."
-msgstr "Tesseract OCR nav atrasts."
+msgstr ""
 
 #: dependencies.py:23
 msgid "Free Open Source OCR Engine"
-msgstr "Bezmaksas atvērtā koda OCR dzinējs"
+msgstr ""
 
 #: events.py:8
 msgid "Document OCR content deleted"
 msgstr ""
 
 #: events.py:12
-#, fuzzy
-#| msgid "Document version submitted for OCR"
 msgid "Document file submitted for OCR"
-msgstr "Dokumenta versija iesniegta OCR"
+msgstr ""
 
 #: events.py:16
-#, fuzzy
-#| msgid "Document version OCR finished"
 msgid "Document file OCR finished"
-msgstr "Dokumenta versija OCR ir pabeigta"
+msgstr ""
 
 #: forms.py:14 forms.py:45
 msgid "Contents"
@@ -81,11 +76,11 @@ msgstr "Lapa %(page_number)d"
 
 #: links.py:24
 msgid "Setup OCR"
-msgstr "Iestatiet OCR"
+msgstr ""
 
 #: links.py:30
 msgid "OCR documents per type"
-msgstr "OCR dokumenti katram tipam"
+msgstr ""
 
 #: links.py:45 links.py:50
 msgid "Delete OCR content"
@@ -93,15 +88,15 @@ msgstr ""
 
 #: links.py:56 links.py:61
 msgid "Submit for OCR"
-msgstr "Iesniegt OCR"
+msgstr ""
 
 #: links.py:67 links.py:88 views.py:221
 msgid "OCR errors"
-msgstr "OCR kļūdas"
+msgstr ""
 
 #: links.py:72
 msgid "Download OCR text"
-msgstr "Lejupielādējiet OCR tekstu"
+msgstr ""
 
 #: models.py:20
 msgid "Document type"
@@ -109,7 +104,7 @@ msgstr "Dokumenta veids"
 
 #: models.py:24
 msgid "Automatically queue newly created documents for OCR."
-msgstr "Automātiski rindā jaunizveidotus OCR dokumentus."
+msgstr ""
 
 #: models.py:30
 msgid "Document type settings"
@@ -129,81 +124,67 @@ msgstr "Iesniegtais datums"
 
 #: models.py:54
 msgid "Document version OCR error"
-msgstr "Dokumenta versijas OCR kļūda"
+msgstr ""
 
 #: models.py:55
 msgid "Document version OCR errors"
-msgstr "Dokumenta versijas OCR kļūdas"
+msgstr ""
 
 #: models.py:67
-#, fuzzy
-#| msgid "Document version"
 msgid "Document version page"
-msgstr "Dokumenta versija"
+msgstr ""
 
 #: models.py:71
 msgid "The actual text content extracted by the OCR backend."
-msgstr "Faktiskais teksta saturs, ko iegūst no OCR backend."
+msgstr ""
 
 #: models.py:72
 msgid "Content"
 msgstr "Saturs"
 
 #: models.py:78
-#, fuzzy
-#| msgid "Document page OCR content"
 msgid "Document version page OCR content"
-msgstr "Dokumenta lapas OCR saturs"
+msgstr ""
 
 #: models.py:79
-#, fuzzy
-#| msgid "Document pages OCR contents"
 msgid "Document version pages OCR contents"
-msgstr "Dokumenta lapu OCR saturs"
+msgstr ""
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
-msgstr "Iesniedziet dokumentus OCR"
+msgstr ""
 
 #: permissions.py:11
 msgid "View the transcribed text from document"
-msgstr "Skatiet pārrakstīto tekstu no dokumenta"
+msgstr ""
 
 #: permissions.py:15
 msgid "Change document type OCR settings"
-msgstr "Mainīt dokumenta tipa OCR iestatījumus"
+msgstr ""
 
 #: queues.py:10
-#, fuzzy
-#| msgid "Submit documents for OCR"
 msgid "Finish document file OCR"
-msgstr "Iesniedziet dokumentus OCR"
+msgstr ""
 
 #: queues.py:14
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file page OCR"
-msgstr "Dokumenta lapa"
+msgstr ""
 
 #: queues.py:18
-#, fuzzy
-#| msgid "Document version OCR"
 msgid "Document file OCR"
-msgstr "Dokumenta versija OCR"
+msgstr ""
 
 #: search.py:11 search.py:23
 msgid "Document version OCR"
-msgstr "Dokumenta versija OCR"
+msgstr ""
 
 #: settings.py:17
 msgid "Set new document types to perform OCR automatically by default."
 msgstr ""
-"Iestatiet jaunus dokumentu tipus, lai pēc noklusējuma automātiski izpildītu "
-"OCR."
 
 #: settings.py:22
 msgid "Full path to the backend to be used to do OCR."
-msgstr "Pilns ceļš uz backend, kas jāizmanto OCR."
+msgstr ""
 
 #: views.py:39
 msgid "Delete the OCR content of the selected document version?"
@@ -215,42 +196,38 @@ msgstr[2] ""
 #: views.py:74
 #, python-format
 msgid "OCR result for document: %s"
-msgstr "Dokumenta OCR rezultāts: %s"
+msgstr ""
 
 #: views.py:99
 #, python-format
 msgid "OCR errors for document: %s"
-msgstr "OCR kļūdas dokumentam: %s"
+msgstr ""
 
 #: views.py:118
-#, fuzzy
-#| msgid "Submit the selected document to the OCR queue?"
-#| msgid_plural "Submit the selected documents to the OCR queue?"
 msgid "Submit the selected document version to the OCR queue?"
 msgid_plural "Submit the selected document versions to the OCR queue?"
-msgstr[0] "Iesniegt atlasītos dokumentus OCR rindā?"
-msgstr[1] "Iesniegt atlasīto dokumentu OCR rindā?"
-msgstr[2] "Iesniegt atlasītos dokumentus OCR rindā?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: views.py:152
-#, fuzzy, python-format
-#| msgid "OCR result for document page: %s"
+#, python-format
 msgid "OCR result for document version page: %s"
-msgstr "Dokumenta lapas OCR rezultāts: %s"
+msgstr ""
 
 #: views.py:158
 msgid "Submit all documents of a type for OCR"
-msgstr "Iesniedziet visus OCR tipa dokumentus"
+msgstr ""
 
 #: views.py:175
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
-msgstr "%(count)d dokumenti, kas pievienoti OCR rindai."
+msgstr ""
 
 #: views.py:210
 #, python-format
 msgid "Edit OCR settings for document type: %s."
-msgstr "OCR iestatījumu rediģēšana dokumenta tipam: %s."
+msgstr ""
 
 #: workflow_actions.py:15
 msgid "Page condition"

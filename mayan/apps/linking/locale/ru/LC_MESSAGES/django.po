@@ -1,26 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Roberto Rosario, 2021
+# Sergey Glita <gsv70@mail.ru>, 2021
+# lilo.panic, 2021
+# Panasoft, 2021
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-03-22 08:04+0000\n"
-"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:26+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:40
 msgid "Linking"
@@ -28,7 +30,7 @@ msgstr "Связи"
 
 #: apps.py:94 models.py:29
 msgid "Label"
-msgstr "Ярлык"
+msgstr "Заголовок"
 
 #: events.py:6 links.py:24 links.py:75 links.py:80 links.py:85 models.py:48
 #: permissions.py:5 views.py:191
@@ -161,7 +163,7 @@ msgstr "Динамический ярлык"
 
 #: models.py:37 models.py:186
 msgid "Enabled"
-msgstr "Доступно"
+msgstr "Включено"
 
 #: models.py:47 models.py:164
 msgid "Smart link"
@@ -190,8 +192,8 @@ msgstr "Атрибут другого документа"
 
 #: models.py:178
 msgid ""
-"The expression using document properties to be evaluated against the foreign "
-"document field."
+"The expression using document properties to be evaluated against the foreign"
+" document field."
 msgstr ""
 "Выражение, использующее свойства документа для оценки по полю другого "
 "документа."
@@ -226,27 +228,27 @@ msgstr "Полный ярлык"
 
 #: permissions.py:8
 msgid "Create new smart links"
-msgstr "Создать отношения"
+msgstr "Создать связи"
 
 #: permissions.py:11
 msgid "Delete smart links"
-msgstr "Удалить отношения"
+msgstr "Удалить связи"
 
 #: permissions.py:14
 msgid "Edit smart links"
-msgstr "Редактировать отношения"
+msgstr "Редактировать связи"
 
 #: permissions.py:17
 msgid "View existing smart links"
-msgstr "Просмотр отношений"
+msgstr "Просмотр существующих связей"
 
 #: serializers.py:52
 msgid "Primary key of the document type to add to the smart link."
-msgstr ""
+msgstr "Первичный ключ типа документа, который нужно добавить в связь."
 
 #: serializers.py:61
 msgid "Primary key of the document type to remove from the smart link."
-msgstr ""
+msgstr "Первичный ключ типа документа, который нужно удалить из связи."
 
 #: views.py:41
 msgid "Available smart links"
@@ -273,8 +275,7 @@ msgstr "Связанные документы: %s"
 
 #: views.py:117
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr "Документы в \"%(smart_link)s\", связанные с \"%(document)s\""
 
 #: views.py:153
@@ -296,9 +297,9 @@ msgid ""
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
 msgstr ""
-"Связи группируют документы с похожими свойствами или типами. Связи позволяют "
-"определять отношения между документами, даже если они находятся в разных "
-"индексах и имеют разные типы."
+"Индексы группируют документы с похожими свойствами или типами. Связи "
+"позволяют определять отношения между документами, даже если они находятся в "
+"разных индексах и имеют разные типы."
 
 #: views.py:189
 msgid "There are no smart links"
@@ -360,14 +361,4 @@ msgstr "Удалить условие связи: %s?"
 
 #: views.py:376
 msgid "Edit smart link condition"
-msgstr "Изменить условие связи"
-
-#~ msgid ""
-#~ "Comma separated list of document type primary keys to which this smart "
-#~ "link will be attached."
-#~ msgstr ""
-#~ "Разделенный запятыми список первичных ключей типов документа, к которым "
-#~ "будет прикреплена эта связь."
-
-#~ msgid "No such document type: %s"
-#~ msgstr "Нет такого типа документа: %s"
+msgstr "Редактировать условие связи"

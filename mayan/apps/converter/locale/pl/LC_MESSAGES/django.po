@@ -1,28 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# mic <winterfall24@gmail.com>, 2012,2015
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016,2020
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2017-2018
+# mic <winterfall24@gmail.com>, 2021
+# Roberto Rosario, 2021
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-12-01 17:18+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021\n"
+"Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
 msgid "Converter"
@@ -71,8 +69,8 @@ msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
 msgstr ""
-"Narzędzie z pakietu popper-utils używane do wyodrębniania stron z plików PDF "
-"do obrazów w formacie PPM."
+"Narzędzie z pakietu popper-utils używane do wyodrębniania stron z plików PDF"
+" do obrazów w formacie PPM."
 
 #: events.py:8
 msgid "Asset created"
@@ -84,7 +82,7 @@ msgstr "Zmodyfikowano zasób"
 
 #: forms.py:16
 msgid "Preview"
-msgstr ""
+msgstr "Podgląd"
 
 #: forms.py:36
 msgid "Available transformations for this layer."
@@ -99,8 +97,8 @@ msgstr "„%s” nie jest prawidłowym wpisem."
 msgid ""
 "Decorations are visual elements that add contextual information to images."
 msgstr ""
-"Dekoracje są wizualnymi elementami, który dostarczają kontekstową informację "
-"do obrazów."
+"Dekoracje są wizualnymi elementami, który dostarczają kontekstową informację"
+" do obrazów."
 
 #: layers.py:13
 msgid "Decorations"
@@ -267,17 +265,13 @@ msgid ""
 msgstr ""
 
 #: settings.py:44
-#, fuzzy
-#| msgid "Path to the Storage subclass to use when storing assets."
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
-msgstr "Ścieżka do Storage class używana podczas zapisywania zasobów."
+msgstr ""
 
 #: settings.py:52
-#, fuzzy
-#| msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
-msgstr "Argumenty dla CONVERTER_ASSET_STORAGE_BACKEND."
+msgstr ""
 
 #: settings.py:58
 msgid "Path to the Storage subclass to use when storing assets."
@@ -304,22 +298,14 @@ msgstr ""
 "ustawienia {} i {} z powodu błędów formatowania."
 
 #: storages.py:28
-#, fuzzy
-#| msgid ""
-#| "Unable to initialize the converter asset storage. Check the settings {} "
-#| "and {} for formatting errors."
 msgid ""
-"Unable to initialize the converter asset cachestorage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the converter asset cachestorage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""
-"Brak możliwości inicjalizacji magazynu zasobów konwertera. Sprawdź "
-"ustawienia {} i {} z powodu błędów formatowania."
 
 #: storages.py:34
-#, fuzzy
-#| msgid "Asset created"
 msgid "Assets cache"
-msgstr "Utworzono zasób"
+msgstr ""
 
 #: transformations.py:196
 msgid "Paste an asset"
@@ -402,10 +388,10 @@ msgstr "Usuń żądanie wykonane na zasobach %(count)d"
 #: views.py:62
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] "Usunąć wybrany zasób?"
-msgstr[1] "Usunąć wybrane zasoby?"
-msgstr[2] "Usunąć wybrane zasoby?"
-msgstr[3] "Usunąć wybrane zasoby?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views.py:72
 #, python-format
@@ -423,10 +409,9 @@ msgid "Error deleting asset \"%(asset)s\": %(error)s"
 msgstr "Błąd podczas usuwania zasobu \"%(asset)s\": %(error)s"
 
 #: views.py:103
-#, fuzzy, python-format
-#| msgid "Delete asset: %s?"
+#, python-format
 msgid "Details asset: %s"
-msgstr "Usunąć zasób: %s?"
+msgstr ""
 
 #: views.py:117
 #, python-format
@@ -435,7 +420,8 @@ msgstr "Modyfikuj zasób: %s"
 
 #: views.py:139
 msgid ""
-"Assets are files that can be used in conjuction with certain transformations."
+"Assets are files that can be used in conjuction with certain "
+"transformations."
 msgstr ""
 "Zasoby to pliki, które mogą być wykorzystane w połączeniu z właściwymi "
 "przekształceniami."
@@ -455,7 +441,8 @@ msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
 msgstr ""
-"Utwórz warstwę %(layer)s przekształcenia „%(transformation)s” dla: %(object)s"
+"Utwórz warstwę %(layer)s przekształcenia „%(transformation)s” dla: "
+"%(object)s"
 
 #: views.py:240
 #, python-format
@@ -496,12 +483,10 @@ msgstr "Strony"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas and/"
-"or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
-"Strony, do których zostaną dodane nowe przekształcenia. Oddziel przecinkami "
-"i / lub użyj myślników dla zakresów. Pozostaw puste, aby zaznaczyć wszystkie "
-"strony. \n"
+"Strony, do których zostaną dodane nowe przekształcenia. Oddziel przecinkami i / lub użyj myślników dla zakresów. Pozostaw puste, aby zaznaczyć wszystkie strony. \n"
 " \n"
 " "
 

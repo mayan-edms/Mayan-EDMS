@@ -1,27 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Marwan Rahhal <Marwanr@sssit.net>, 2020
-# Mohammed ALDOUB <voulnet@gmail.com>, 2013
-# WM Shinkada <shinkadawasim@gmail.com>, 2020
+# Roberto Rosario, 2021
+# Mohammed ALDOUB <voulnet@gmail.com>, 2021
+# Yaman Sanobar <yman.snober@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# WM Shinkada <shinkadawasim@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-12-24 01:42+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:63 apps.py:191 apps.py:197 apps.py:201 apps.py:206 apps.py:210
 #: events.py:5 links.py:49 permissions.py:5 queues.py:7 settings.py:9
@@ -161,17 +162,8 @@ msgid "Edit"
 msgstr "تعديل"
 
 #: methods.py:20
-#, fuzzy
-#| msgid "Remove metadata types from the document"
-#| msgid_plural "Remove metadata types from the documents"
 msgid "Return the metadata of the document."
-msgstr "قم بإزالة أنواع البيانات الوصفية من المستندات"
-
-#: methods.py:22
-#, fuzzy
-#| msgid "Edit metadata"
-msgid "get_metadata()"
-msgstr "تعديل البيانات الوصفية"
+msgstr ""
 
 #: mixins.py:19
 msgid "Selected documents must be of the same type."
@@ -182,8 +174,8 @@ msgid ""
 "Name used by other apps to reference this metadata type. Do not use python "
 "reserved words, or spaces."
 msgstr ""
-"الاسم المستخدم من قبل التطبيقات الأخرى للإشارة إلى نوع البيانات الوصفية هذا. "
-"لا تستخدم كلمات أو مسافات محجوزة في لغة python."
+"الاسم المستخدم من قبل التطبيقات الأخرى للإشارة إلى نوع البيانات الوصفية هذا."
+" لا تستخدم كلمات أو مسافات محجوزة في لغة python."
 
 #: models.py:55
 msgid "Short description of this metadata type."
@@ -223,7 +215,8 @@ msgstr "المدقق"
 
 #: models.py:78
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
+"The parser will reformat the value entered to conform to the expected "
+"format."
 msgstr ""
 "سيقوم المحلل اللغوي بإعادة تنسيق القيمة التي تم إدخالها لتتوافق مع التنسيق "
 "المتوقع."
@@ -321,16 +314,12 @@ msgid "Metadata value"
 msgstr "قيمة البيانات الوصفية"
 
 #: search.py:24 search.py:35 search.py:46 search.py:57
-#, fuzzy
-#| msgid "Document metadata"
 msgid "Document metadata type"
-msgstr "بيانات تعريف الوثيقة"
+msgstr ""
 
 #: search.py:28 search.py:39 search.py:50 search.py:61
-#, fuzzy
-#| msgid "Document metadata added"
 msgid "Document metadata value"
-msgstr "إضافة بيانات وصفية للوثيقة"
+msgstr ""
 
 #: serializers.py:56
 msgid "Primary key of the metadata type to be added."
@@ -357,12 +346,12 @@ msgstr "إضافة"
 #: views.py:67
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
-msgstr[0] "أضف أنواع بيانات التعريف إلى المستندات"
-msgstr[1] "أضف أنواع البيانات الأولية إلى الوثيقة"
-msgstr[2] "أضف أنواع بيانات التعريف إلى المستندات"
-msgstr[3] "أضف أنواع بيانات التعريف إلى المستندات"
-msgstr[4] "أضف أنواع بيانات التعريف إلى المستندات"
-msgstr[5] "إضافة بيانات وصفية إلى الوثائق"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: views.py:78
 #, python-format
@@ -381,7 +370,8 @@ msgstr ""
 #: views.py:172
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
 msgstr ""
 "تم اضافة نوع البيانات الوصفية %(metadata_type)s بنجاح للوثيقة %(document)s ."
 
@@ -417,12 +407,12 @@ msgstr "لا توجد بيانات وصفية للتحرير"
 #: views.py:240
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
-msgstr[0] "تحرير البيانات الوصفية للوثائق"
-msgstr[1] "تحرير بيانات تعريف الوثيقة"
-msgstr[2] "تحرير البيانات الوصفية للوثائق"
-msgstr[3] "تحرير البيانات الوصفية للوثائق"
-msgstr[4] "تحرير البيانات الوصفية للوثائق"
-msgstr[5] "تحرير البيانات الوصفية للوثائق"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: views.py:251
 #, python-format
@@ -441,8 +431,9 @@ msgstr "تم تعديل البيانات الوصفية للوثيقة %s بنج
 
 #: views.py:374
 msgid ""
-"Add metadata types this document's type to be able to add them to individual "
-"documents. Once added to individual document, you can then edit their values."
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
 msgstr ""
 "أضف أنواع البيانات الوصفية لنوع هذا المستند لتتمكن من إضافتها إلى المستندات "
 "الفردية. بمجرد إضافتها إلى مستند فردي ، يمكنك بعد ذلك تعديل قيمها."
@@ -469,12 +460,12 @@ msgstr "تم إجراء طلب إزالة البيانات الوصفية على
 #: views.py:409
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
-msgstr[0] "قم بإزالة أنواع البيانات الوصفية من المستندات"
-msgstr[1] "إزالة أنواع البيانات الأولية من الوثيقة"
-msgstr[2] "قم بإزالة أنواع البيانات الوصفية من المستندات"
-msgstr[3] "قم بإزالة أنواع البيانات الوصفية من المستندات"
-msgstr[4] "قم بإزالة أنواع البيانات الوصفية من المستندات"
-msgstr[5] "قم بإزالة أنواع البيانات الوصفية من الوثائق"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: views.py:420
 #, python-format
@@ -521,8 +512,8 @@ msgid ""
 "type will block the upload of documents of that type until a metadata value "
 "is provided."
 msgstr ""
-"أنواع البيانات الوصفية هي خصائص يحددها المستخدمون ويمكن تعيين قيم لها. بمجرد "
-"إنشائها ، يجب ربطها بأنواع المستندات ، إما اختيارية أو مطلوبة ، لكل منها. "
+"أنواع البيانات الوصفية هي خصائص يحددها المستخدمون ويمكن تعيين قيم لها. بمجرد"
+" إنشائها ، يجب ربطها بأنواع المستندات ، إما اختيارية أو مطلوبة ، لكل منها. "
 "سيؤدي تعيين نوع البيانات الوصفية كما هو مطلوب لنوع المستند إلى حظر تحميل "
 "المستندات من هذا النوع حتى يتم توفير قيمة البيانات الوصفية."
 
@@ -531,31 +522,24 @@ msgid "There are no metadata types"
 msgstr "لا توجد أنواع بيانات وصفية"
 
 #: views.py:600
-#, fuzzy
-#| msgid ""
-#| "Create metadata types to be able to associate them to this document type."
 msgid ""
 "Create metadata type relationships to be able to associate them to this "
 "document type."
-msgstr "قم بإنشاء أنواع بيانات التعريف لتتمكن من ربطها بنوع المستند هذا."
+msgstr ""
 
 #: views.py:604
-#, fuzzy
-#| msgid "There are no metadata types available"
 msgid "There are no metadata type relationships available"
-msgstr "لا توجد أنواع بيانات وصفية متاحة"
+msgstr ""
 
 #: views.py:608
-#, fuzzy, python-format
-#| msgid "Metadata types for document type: %s"
+#, python-format
 msgid "Metadata type relationships for document type: %s"
-msgstr "أنواع البيانات الوصفية لنوع المستند: %s"
+msgstr ""
 
 #: views.py:652
-#, fuzzy, python-format
-#| msgid "Document types for metadata type: %s"
+#, python-format
 msgid "Document type relationships for metadata type: %s"
-msgstr "أنواع المستندات لنوع البيانات الوصفية: %s"
+msgstr ""
 
 #: wizard_steps.py:13
 msgid "Enter document metadata"
@@ -606,12 +590,3 @@ msgid ""
 msgstr ""
 "غير قادر على إزالة نوع البيانات الوصفية &quot;%(metadata_type)s&quot; من "
 "الوثيقة: %(document)s. بإستثناء: %(exception)s"
-
-#~ msgid "Relationship"
-#~ msgstr "صلة"
-
-#~ msgid "Error updating relationship; %s"
-#~ msgstr "خطأ في تحديث العلاقة ؛ %s"
-
-#~ msgid "Relationships updated successfully"
-#~ msgstr "تم تحديث العلاقات بنجاح"

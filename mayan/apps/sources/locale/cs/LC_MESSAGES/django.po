@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019-2020
+# Jiri Fait <fait@orkasolutions.cz>, 2021
+# Michal Švábík <snadno@lehce.cz>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-10-11 07:15+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
-"cs/)\n"
-"Language: cs\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
 #: settings.py:14 views/source_views.py:173
@@ -70,7 +70,7 @@ msgstr "Komentář"
 
 #: forms.py:31
 msgid "Action"
-msgstr ""
+msgstr "Akce"
 
 #: forms.py:33
 msgid ""
@@ -132,17 +132,15 @@ msgstr "Odstranit"
 
 #: links.py:118
 msgid "Edit"
-msgstr "Editovat"
+msgstr "Upravit"
 
 #: links.py:123
 msgid "Document sources"
 msgstr "Zdroje dokumentů"
 
 #: links.py:137
-#, fuzzy
-#| msgid "Upload new version"
 msgid "Upload new file"
-msgstr "Nahrajte novou verzi"
+msgstr ""
 
 #: links.py:141
 msgid "Check now"
@@ -218,7 +216,7 @@ msgstr "Krátký text popisující tento zdroj."
 
 #: models/base.py:27
 msgid "Label"
-msgstr "Označení"
+msgstr "Jmenovka"
 
 #: models/base.py:29
 msgid "Enabled"
@@ -318,8 +316,8 @@ msgid ""
 "Select a metadata type to store the email's subject value. Must be a valid "
 "metadata type for the document type selected previously."
 msgstr ""
-"Vyberte typ metadat pro uložení hodnoty předmětu e-mailu. Musí to být platný "
-"typ metadat pro dříve vybraný typ dokumentu."
+"Vyberte typ metadat pro uložení hodnoty předmětu e-mailu. Musí to být platný"
+" typ metadat pro dříve vybraný typ dokumentu."
 
 #: models/email_sources.py:62
 msgid "Subject metadata type"
@@ -385,8 +383,8 @@ msgid ""
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 msgstr ""
 "Kritéria, která se použijí při vyhledávání zpráv ke zpracování. Použijte "
-"formát uvedený na adrese https://tools.ietf.org/html/rfc2060."
-"html#section-6.4.4"
+"formát uvedený na adrese "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
 #: models/email_sources.py:224
 msgid "Search criteria"
@@ -395,12 +393,14 @@ msgstr "Kritéria vyhledávání"
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 "Příkaz IMAP STORE, který se má po zpracování zpracovat na zprávy. Jeden "
-"příkaz na řádek. Použijte příkazy uvedené v https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 nebo vlastní příkazy pro váš server IMAP."
+"příkaz na řádek. Použijte příkazy uvedené v "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 nebo vlastní příkazy "
+"pro váš server IMAP."
 
 #: models/email_sources.py:232
 msgid "Store commands"
@@ -674,30 +674,23 @@ msgid "Server responded with {{statusCode}} code."
 msgstr "Server odpověděl kódem {{statusCode}}."
 
 #: views/document_file_views.py:61
-#, fuzzy, python-format
-#| msgid ""
-#| "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+#, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
-msgstr "Nelze nahrát nové verze dokumentu „%(document)s“. %(exception)s"
+msgstr ""
 
 #: views/document_file_views.py:125
-#, fuzzy, python-format
-#| msgid "Error executing document upload task; %(exception)s"
+#, python-format
 msgid "Error executing document file upload task; %(exception)s"
-msgstr "Při provádění úlohy nahrávání dokumentu došlo k chybě; %(exception)s"
+msgstr ""
 
 #: views/document_file_views.py:140
-#, fuzzy
-#| msgid "New document queued for upload and will be available shortly."
 msgid "New document file queued for upload and will be available shortly."
-msgstr "Nový dokument zařazený do fronty k nahrání bude brzy k dispozici."
+msgstr ""
 
 #: views/document_file_views.py:165
-#, fuzzy, python-format
-#| msgid ""
-#| "Upload a new version for document \"%(document)s\" from source: %(source)s"
+#, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
-msgstr "Nahrajte novou verzi dokumentu „%(document)s“ ze zdroje: %(source)s"
+msgstr ""
 
 #: views/document_file_views.py:168
 msgid "Submit"
@@ -705,8 +698,8 @@ msgstr "Odeslat"
 
 #: views/document_views.py:79 wizards.py:50
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 "Nebyly definovány žádné interaktivní zdroje dokumentů nebo nebyly povoleny "
 "žádné, vytvořte je před pokračováním."
@@ -719,8 +712,8 @@ msgstr "Vlastnosti dokumentu"
 #: views/document_views.py:116
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
 "To by mohlo znamenat, že pracovní složka je prázdná. Může to také znamenat, "
 "že uživatelský účet operačního systému používaný pro Mayský EDMS nemá "
@@ -759,8 +752,8 @@ msgid ""
 "tested. Check the source's error log for information during testing. A "
 "successful test will clear the error log."
 msgstr ""
-"Tím se spustí kontrola kódu zdroje, i když zdroj není povolen. Zdroje, které "
-"odstraní obsah po stažení, tak během testování neučiní. Během testování "
+"Tím se spustí kontrola kódu zdroje, i když zdroj není povolen. Zdroje, které"
+" odstraní obsah po stažení, tak během testování neučiní. Během testování "
 "zkontrolujte informace o chybách zdrojů. Úspěšný test vymaže protokol chyb."
 
 #: views/source_views.py:56
@@ -794,10 +787,10 @@ msgid ""
 "email sources, are automatic and run on the background without user "
 "intervention."
 msgstr ""
-"Zdroje poskytují prostředky pro nahrávání dokumentů. Některé zdroje, jako je "
-"webový formulář, jsou interaktivní a vyžadují součinnost uživatele. Ostatní, "
-"jako jsou e-mailové zdroje, jsou automatické a běží na pozadí bez zásahu "
-"uživatele."
+"Zdroje poskytují prostředky pro nahrávání dokumentů. Některé zdroje, jako je"
+" webový formulář, jsou interaktivní a vyžadují součinnost uživatele. "
+"Ostatní, jako jsou e-mailové zdroje, jsou automatické a běží na pozadí bez "
+"zásahu uživatele."
 
 #: views/source_views.py:172
 msgid "No sources available"
@@ -824,18 +817,3 @@ msgstr "Další krok"
 #: wizards.py:77
 msgid "Document upload wizard"
 msgstr "Průvodce nahráváním dokumentů"
-
-#~ msgid "Error deleting staging file; %s"
-#~ msgstr "Chyba při mazání pracovního souboru; %s"
-
-#~ msgid "Unable get list of staging files: %s"
-#~ msgstr "Nelze získat seznam pracovních souborů: %s"
-
-#~ msgid "Error executing document version upload task; %(exception)s"
-#~ msgstr ""
-#~ "Při provádění úlohy nahrávání verze dokumentu došlo k chybě; %(exception)s"
-
-#~ msgid ""
-#~ "New document version queued for upload and will be available shortly."
-#~ msgstr ""
-#~ "Nová verze dokumentu zařazená do fronty k nahrání a brzy bude k dispozici."

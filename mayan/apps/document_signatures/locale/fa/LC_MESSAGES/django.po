@@ -1,23 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2018
+# Roberto Rosario, 2021
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2021
+# Nima Towhidi <nima.towhidi@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-08-18 04:38+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Nima Towhidi <nima.towhidi@gmail.com>, 2021\n"
+"Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:54 events.py:6 permissions.py:6 settings.py:12
@@ -26,7 +28,7 @@ msgstr "امضا سند"
 
 #: apps.py:111
 msgid "Date and time"
-msgstr ""
+msgstr "تاریخ و زمان"
 
 #: apps.py:115 models.py:52
 msgid "Key ID"
@@ -42,25 +44,19 @@ msgstr "شناسه امضا"
 
 #: apps.py:125
 msgid "Type"
-msgstr "تایپ کنید"
+msgstr "نوع"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Delete detached signatures"
 msgid "Detached signature created"
-msgstr "امضاهای جداگانه را حذف کنید"
+msgstr ""
 
 #: events.py:13
-#, fuzzy
-#| msgid "Delete detached signatures"
 msgid "Detached signature uploaded"
-msgstr "امضاهای جداگانه را حذف کنید"
+msgstr ""
 
 #: events.py:17
-#, fuzzy
-#| msgid "Signature date"
 msgid "Embedded signature created"
-msgstr "تاریخ امضاء"
+msgstr ""
 
 #: forms.py:17 forms.py:31 workflow_actions.py:19
 msgid "Key"
@@ -125,10 +121,8 @@ msgid "Key type"
 msgstr "نوع کلید"
 
 #: links.py:40
-#, fuzzy
-#| msgid "Verify key signatures"
 msgid "Refresh all signatures"
-msgstr "تأیید امضاهای کلیدی"
+msgstr ""
 
 #: links.py:46
 msgid "Verify all documents"
@@ -163,16 +157,12 @@ msgid "Upload signature"
 msgstr "امضا آپلود"
 
 #: models.py:42
-#, fuzzy
-#| msgid "Document version"
 msgid "Document file"
-msgstr "نسخه سند"
+msgstr ""
 
 #: models.py:47
-#, fuzzy
-#| msgid "Date signed"
 msgid "Date and time signed"
-msgstr "تاریخ امضا شده"
+msgstr ""
 
 #: models.py:51
 msgid "ID of the key that will be used to sign the document."
@@ -183,16 +173,12 @@ msgid "Public key fingerprint"
 msgstr "اثر انگشت کلید عمومی"
 
 #: models.py:68
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file signature"
-msgstr "امضا سند"
+msgstr ""
 
 #: models.py:69
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file signatures"
-msgstr "امضا سند"
+msgstr ""
 
 #: models.py:88
 msgid "Detached"
@@ -211,32 +197,24 @@ msgid "Signature file"
 msgstr "فایل امضا"
 
 #: models.py:164
-#, fuzzy
-#| msgid "Document version detached signature"
 msgid "Document file detached signature"
-msgstr "نسخه سند امضای جداگانه"
+msgstr ""
 
 #: models.py:165
-#, fuzzy
-#| msgid "Document version detached signatures"
 msgid "Document file detached signatures"
-msgstr "نسخه سند امضاهای جداگانه"
+msgstr ""
 
 #: models.py:168
 msgid "signature"
 msgstr "امضا"
 
 #: models.py:210
-#, fuzzy
-#| msgid "Document version embedded signature"
 msgid "Document file embedded signature"
-msgstr "نسخه سند embedded امضا"
+msgstr ""
 
 #: models.py:211
-#, fuzzy
-#| msgid "Document version embedded signatures"
 msgid "Document file embedded signatures"
-msgstr "نسخه سند embedded امضا"
+msgstr ""
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
@@ -275,10 +253,8 @@ msgid "Unverify key signatures"
 msgstr "امضاهای کلیدی را تأیید نکنید"
 
 #: queues.py:21
-#, fuzzy
-#| msgid "Verify document version"
 msgid "Verify document file"
-msgstr "نسخه سند را تایید کنید"
+msgstr ""
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
@@ -319,26 +295,22 @@ msgid "Passphrase is incorrect."
 msgstr "عبارت عبور اشتباه است"
 
 #: views.py:92 views.py:161
-#, fuzzy
-#| msgid "Document version signed successfully."
 msgid "Document file signed successfully."
-msgstr "نسخه سند با موفقیت امضا شد"
+msgstr ""
 
 #: views.py:102 views.py:178
 msgid "Sign"
 msgstr ""
 
 #: views.py:104
-#, fuzzy, python-format
-#| msgid "Sign document version \"%s\" with a detached signature"
+#, python-format
 msgid "Sign document file \"%s\" with a detached signature"
-msgstr "نسخه سند \"%s\" را با امضای جداگانه وارد کنید"
+msgstr ""
 
 #: views.py:180
-#, fuzzy, python-format
-#| msgid "Sign document version \"%s\" with a embedded signature"
+#, python-format
 msgid "Sign document file \"%s\" with a embedded signature"
-msgstr "نسخه سند \"%s\" را با امضای جاسازی شده وارد کنید"
+msgstr ""
 
 #: views.py:196
 #, python-format
@@ -362,16 +334,14 @@ msgid "There are no signatures for this document file."
 msgstr ""
 
 #: views.py:301
-#, fuzzy, python-format
-#| msgid "Signatures for document version: %s"
+#, python-format
 msgid "Signatures for document file: %s"
-msgstr "امضا برای نسخه سند: %s"
+msgstr ""
 
 #: views.py:322
-#, fuzzy, python-format
-#| msgid "Upload detached signature for document version: %s"
+#, python-format
 msgid "Upload detached signature for document file: %s"
-msgstr "امضای جداگانه برای نسخه سند آپلود: %s"
+msgstr ""
 
 #: views.py:340 views.py:359
 msgid "On large databases this operation may take some time to execute."
@@ -384,10 +354,8 @@ msgid "Refresh all signatures information?"
 msgstr ""
 
 #: views.py:351
-#, fuzzy
-#| msgid "Signature verification queued successfully."
 msgid "Signature information refresh queued successfully."
-msgstr "تأیید امضا با موفقیت انجام شد."
+msgstr ""
 
 #: views.py:360
 msgid "Verify all document for signatures?"
@@ -414,12 +382,3 @@ msgstr ""
 #: workflow_actions.py:80
 msgid "Sign document (embedded)"
 msgstr ""
-
-#~ msgid "Date"
-#~ msgstr "تاریخ"
-
-#~ msgid "Document version signature"
-#~ msgstr "امضای نسخه اسناد"
-
-#~ msgid "Document version signatures"
-#~ msgstr "امضای سند نسخه"

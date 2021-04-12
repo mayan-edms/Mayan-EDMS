@@ -1,27 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Marwan Rahhal <Marwanr@sssit.net>, 2020
-# Mohammed ALDOUB <voulnet@gmail.com>, 2013
-# WM Shinkada <shinkadawasim@gmail.com>, 2020
+# Roberto Rosario, 2021
+# Mohammed ALDOUB <voulnet@gmail.com>, 2021
+# Yaman Sanobar <yman.snober@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# WM Shinkada <shinkadawasim@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-12-23 23:58+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
 msgid "Converter"
@@ -79,7 +80,7 @@ msgstr "تم التعديل"
 
 #: forms.py:16
 msgid "Preview"
-msgstr ""
+msgstr "استعراض "
 
 #: forms.py:36
 msgid "Available transformations for this layer."
@@ -113,7 +114,7 @@ msgstr "حذف"
 
 #: links.py:48 links.py:72
 msgid "Edit"
-msgstr "تحرير"
+msgstr "تعديل"
 
 #: links.py:56 models.py:62 storages.py:21 views.py:143
 msgid "Assets"
@@ -256,17 +257,13 @@ msgid ""
 msgstr ""
 
 #: settings.py:44
-#, fuzzy
-#| msgid "Path to the Storage subclass to use when storing assets."
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
-msgstr "المسار إلى فئة التخزين الفرعية لاستخدامها عند التخزين ."
+msgstr ""
 
 #: settings.py:52
-#, fuzzy
-#| msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
-msgstr "تم "
+msgstr ""
 
 #: settings.py:58
 msgid "Path to the Storage subclass to use when storing assets."
@@ -291,20 +288,14 @@ msgid ""
 msgstr "تعذر تهيئة تخزين التغيرات. تحقق من إعدادات {} و {} لأخطاء ."
 
 #: storages.py:28
-#, fuzzy
-#| msgid ""
-#| "Unable to initialize the converter asset storage. Check the settings {} "
-#| "and {} for formatting errors."
 msgid ""
-"Unable to initialize the converter asset cachestorage. Check the settings {} "
-"and {} for formatting errors."
-msgstr "تعذر تهيئة تخزين التغيرات. تحقق من إعدادات {} و {} لأخطاء ."
+"Unable to initialize the converter asset cachestorage. Check the settings {}"
+" and {} for formatting errors."
+msgstr ""
 
 #: storages.py:34
-#, fuzzy
-#| msgid "Asset created"
 msgid "Assets cache"
-msgstr "تم الانشاء"
+msgstr ""
 
 #: transformations.py:196
 msgid "Paste an asset"
@@ -387,12 +378,12 @@ msgstr "حذف الطلب  %(count)d"
 #: views.py:62
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] "حذف الأصول المحددة؟"
-msgstr[1] "هل تريد حذف الأصل المحدد؟"
-msgstr[2] "حذف الأصول المحددة؟"
-msgstr[3] "حذف الأصول المحددة؟"
-msgstr[4] "حذف الأصول المحددة؟"
-msgstr[5] "حذف الأصول المحددة؟"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: views.py:72
 #, python-format
@@ -410,10 +401,9 @@ msgid "Error deleting asset \"%(asset)s\": %(error)s"
 msgstr "خطأ في حذف الأصل &quot;%(asset)s&quot;: %(error)s"
 
 #: views.py:103
-#, fuzzy, python-format
-#| msgid "Delete asset: %s?"
+#, python-format
 msgid "Details asset: %s"
-msgstr "حذف الأصل: %s؟"
+msgstr ""
 
 #: views.py:117
 #, python-format
@@ -422,7 +412,8 @@ msgstr "تعديل الأصل: %s"
 
 #: views.py:139
 msgid ""
-"Assets are files that can be used in conjuction with certain transformations."
+"Assets are files that can be used in conjuction with certain "
+"transformations."
 msgstr "الأصول هي ملفات يمكن استخدامها ."
 
 #: views.py:142
@@ -472,7 +463,7 @@ msgstr "تم إنشاء التحول بنجاح."
 
 #: views.py:415
 msgid "Select"
-msgstr "إختيار "
+msgstr "إختيار"
 
 #: views.py:417
 #, python-format
@@ -485,8 +476,8 @@ msgstr "صفحات"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas and/"
-"or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
 msgstr "الصفحات التي ستضاف إليها التحولات الجديدة."
 
 #: workflow_actions.py:32

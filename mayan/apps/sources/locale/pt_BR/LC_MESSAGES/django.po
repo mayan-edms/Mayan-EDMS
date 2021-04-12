@@ -1,27 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Aline Freitas <aline@alinefreitas.com.br>, 2016
-# Emerson Soares <on.emersonsoares@gmail.com>, 2011
-# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
-# Rogerio Falcone <rogerio@falconeit.com.br>, 2015
+# Roberto Rosario, 2021
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
+# Aline Freitas <aline@alinefreitas.com.br>, 2021
+# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2021
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-10-11 07:15+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
@@ -39,8 +39,8 @@ msgid ""
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr ""
-"Fontes de documentos são a forma como os novos documentos são alimentados ao "
-"Mayan EDMS. Crie pelo menos uma fonte de formulário da web para poder "
+"Fontes de documentos são a forma como os novos documentos são alimentados ao"
+" Mayan EDMS. Crie pelo menos uma fonte de formulário da web para poder "
 "carregar documentos a partir de um navegador."
 
 #: apps.py:91
@@ -73,7 +73,7 @@ msgstr "Comentário"
 
 #: forms.py:31
 msgid "Action"
-msgstr ""
+msgstr "Ação"
 
 #: forms.py:33
 msgid ""
@@ -143,10 +143,8 @@ msgid "Document sources"
 msgstr "Fontes de documentos"
 
 #: links.py:137
-#, fuzzy
-#| msgid "Upload new version"
 msgid "Upload new file"
-msgstr "Upload de uma nova versão"
+msgstr ""
 
 #: links.py:141
 msgid "Check now"
@@ -226,7 +224,7 @@ msgstr "Rótulo"
 
 #: models/base.py:29
 msgid "Enabled"
-msgstr "habilitado"
+msgstr "Habilitado"
 
 #: models/base.py:35
 msgid "Source"
@@ -259,7 +257,7 @@ msgstr ""
 
 #: models/base.py:162 serializers.py:17
 msgid "Document type"
-msgstr "Tipo de Documentos"
+msgstr "Tipo de documento"
 
 #: models/base.py:166
 msgid "Whether to expand or not, compressed archives."
@@ -335,8 +333,8 @@ msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
 msgstr ""
-"Selecione um tipo de metadado para armazenar o \"de\" do e-mail. Deve ser um "
-"tipo de metadado válido para o tipo de documento previamente selecionado."
+"Selecione um tipo de metadado para armazenar o \"de\" do e-mail. Deve ser um"
+" tipo de metadado válido para o tipo de documento previamente selecionado."
 
 #: models/email_sources.py:70
 msgid "From metadata type"
@@ -390,8 +388,8 @@ msgid ""
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 msgstr ""
 "Critérios a serem usados ao buscar mensagens para processamento. Use o "
-"formato especificado em https://tools.ietf.org/html/rfc2060."
-"html#section-6.4.4"
+"formato especificado em "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
 #: models/email_sources.py:224
 msgid "Search criteria"
@@ -400,13 +398,14 @@ msgstr "Critérios de busca"
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 "Comando IMAP STORE a ser executado em mensagens após seu processamento. Um "
-"comando por linha. Use os comandos especificados em https://tools.ietf.org/"
-"html/rfc2060.html#section-6.4.6 ou comandos customizados do seu servidor "
-"IMAP."
+"comando por linha. Use os comandos especificados em "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 ou comandos "
+"customizados do seu servidor IMAP."
 
 #: models/email_sources.py:232
 msgid "Store commands"
@@ -415,8 +414,8 @@ msgstr "Armazenar comandos"
 #: models/email_sources.py:236
 msgid "Execute the IMAP expunge command after processing each email message."
 msgstr ""
-"Executar o comando IMAP expunge após o processamento de cada mensagem de e-"
-"mail."
+"Executar o comando IMAP expunge após o processamento de cada mensagem de "
+"e-mail."
 
 #: models/email_sources.py:238
 msgid "Execute expunge"
@@ -467,8 +466,8 @@ msgid ""
 "blank."
 msgstr ""
 "Define a resolução da imagem escaneada em DPI (pontos por polegada). Um "
-"valor típico é 200. Se essa opção não for suportada pelo seu scanner, deixe-"
-"a em branco."
+"valor típico é 200. Se essa opção não for suportada pelo seu scanner, "
+"deixe-a em branco."
 
 #: models/scanner_sources.py:46
 msgid "Resolution"
@@ -557,7 +556,8 @@ msgstr "Pastas temporárias"
 
 #: models/watch_folder_sources.py:32
 msgid "Server side filesystem path to scan for files."
-msgstr "Caminho do sistema de arquivos do servidor para escanear por arquivos."
+msgstr ""
+"Caminho do sistema de arquivos do servidor para escanear por arquivos."
 
 #: models/watch_folder_sources.py:37
 msgid ""
@@ -687,33 +687,23 @@ msgid "Server responded with {{statusCode}} code."
 msgstr "O servidor responder com o código {{statusCode}}."
 
 #: views/document_file_views.py:61
-#, fuzzy, python-format
-#| msgid ""
-#| "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+#, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
-"Não foi possível fazer o upload de novas versões para o documento "
-"\"%(document)s\". %(exception)s"
 
 #: views/document_file_views.py:125
-#, fuzzy, python-format
-#| msgid "Error executing document upload task; %(exception)s"
+#, python-format
 msgid "Error executing document file upload task; %(exception)s"
-msgstr "Erro ao executar a tarefa de upload de documentos; %(exception)s"
+msgstr ""
 
 #: views/document_file_views.py:140
-#, fuzzy
-#| msgid "New document queued for upload and will be available shortly."
 msgid "New document file queued for upload and will be available shortly."
-msgstr "O novo documento enfileirado para upload estará disponível em breve."
+msgstr ""
 
 #: views/document_file_views.py:165
-#, fuzzy, python-format
-#| msgid ""
-#| "Upload a new version for document \"%(document)s\" from source: %(source)s"
+#, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
-"Carregue uma nova versão do documento \"%(document)s\" da fonte: %(source)s"
 
 #: views/document_file_views.py:168
 msgid "Submit"
@@ -721,8 +711,8 @@ msgstr "Enviar"
 
 #: views/document_views.py:79 wizards.py:50
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 "Nenhuma fonte interativa de documentos fora definida ou nenhum foi ativada. "
 "Criar uma antes de prosseguir."
@@ -735,8 +725,8 @@ msgstr "Propriedades do documento"
 #: views/document_views.py:116
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
 "Isso pode significar que a pasta temporária está vazia. Também pode "
 "significar que o usuário do sistema operacional usado para o Mayan EDMS nao "
@@ -766,8 +756,7 @@ msgstr "O novo documento enfileirado para upload estará disponível em breve."
 #: views/document_views.py:309
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr ""
-"Carregue um documento do tipo \"%(document_type)s\" da fonte: %(source)s"
+msgstr "Carregue um documento do tipo \"%(document_type)s\" da fonte: %(source)s"
 
 #: views/source_views.py:50
 msgid ""
@@ -814,7 +803,8 @@ msgid ""
 msgstr ""
 "Fontes são meios de carregar documentos. Algumas fontes como o webform são "
 "interativas e demandam entradas do usuário para funcionar. Outras, como a "
-"fonte em e-mail, são automáticas e são executadas sem intervenção do usuário."
+"fonte em e-mail, são automáticas e são executadas sem intervenção do "
+"usuário."
 
 #: views/source_views.py:172
 msgid "No sources available"
@@ -841,19 +831,3 @@ msgstr "Próximo passo"
 #: wizards.py:77
 msgid "Document upload wizard"
 msgstr "Assistente de upload de documentos"
-
-#~ msgid "Error deleting staging file; %s"
-#~ msgstr "Error removendo arquivo temporário; %s"
-
-#~ msgid "Unable get list of staging files: %s"
-#~ msgstr "Não foi possível obter a lista de arquivos temporários: %s"
-
-#~ msgid "Error executing document version upload task; %(exception)s"
-#~ msgstr ""
-#~ "Erro ao executar a tarefa de upload da versão do documento; %(exception)s"
-
-#~ msgid ""
-#~ "New document version queued for upload and will be available shortly."
-#~ msgstr ""
-#~ "Nova versão do documento enfileirada para upload e estará disponível em "
-#~ "breve."

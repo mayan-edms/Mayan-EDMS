@@ -1,27 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Aline Freitas <aline@alinefreitas.com.br>, 2016
-# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
-# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
-# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2019
+# Roberto Rosario, 2021
+# Rogerio Falcone <rogerio@falconeit.com.br>, 2021
+# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
+# wolvsky <gustavo@infomania.com.br>, 2021
+# Aline Freitas <aline@alinefreitas.com.br>, 2021
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-03-28 12:48+0000\n"
-"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:12+0000\n"
+"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:24 classes.py:143 links.py:27
@@ -35,10 +37,8 @@ msgid ""
 msgstr ""
 
 #: apps.py:63
-#, fuzzy
-#| msgid "Object ID"
 msgid "Object"
-msgstr "ID do objeto"
+msgstr "Objeto"
 
 #: events.py:6 permissions.py:5
 msgid "Access control lists"
@@ -49,10 +49,8 @@ msgid "ACL created"
 msgstr "ACL criada"
 
 #: events.py:13
-#, fuzzy
-#| msgid "ACL edited"
 msgid "ACL deleted"
-msgstr "ACL editada"
+msgstr ""
 
 #: events.py:16
 msgid "ACL edited"
@@ -115,20 +113,12 @@ msgid "View ACLs"
 msgstr "Visualizar Controle de Acesso \"ACLs\""
 
 #: serializers.py:125
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
-"Chave primária da nova permissão a conceder à lista de controle de acesso."
 
 #: serializers.py:132
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
-"Chave primária da nova permissão a conceder à lista de controle de acesso."
 
 #: views.py:40
 #, python-format
@@ -190,21 +180,17 @@ msgid ""
 "menu."
 msgstr ""
 "Permissões desabilitadas são herdadas de um objeto pai ou concedidas "
-"diretamente ao papel e não podem ser removidas dessa exibição. As permissões "
-"herdadas precisam ser removidas da ACL do objeto pai ou delas por meio do "
+"diretamente ao papel e não podem ser removidas dessa exibição. As permissões"
+" herdadas precisam ser removidas da ACL do objeto pai ou delas por meio do "
 "menu Configuração."
 
 #: views.py:256
-#, fuzzy
-#| msgid "There are no ACLs for this object"
 msgid "There are no ACLs"
-msgstr "Não há Controle de Acesso \"ACLs\" para este objeto"
+msgstr ""
 
 #: views.py:265
-#, fuzzy
-#| msgid "Access control lists"
 msgid "Global access control lists"
-msgstr "Listas de controle de acesso"
+msgstr ""
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -219,7 +205,8 @@ msgid "Object ID"
 msgstr "ID do objeto"
 
 #: workflow_actions.py:35
-msgid "Numeric identifier of the object for which the access will be modified."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
 msgstr "Identificador numérico do objeto cujo acesso será modificado."
 
 #: workflow_actions.py:40 workflow_actions.py:155
@@ -252,33 +239,3 @@ msgstr "Conceder acesso ao documento"
 #: workflow_actions.py:211
 msgid "Revoke document access"
 msgstr "Revogar acesso ao documento"
-
-#~ msgid ""
-#~ "API URL pointing to the list of permissions for this access control list."
-#~ msgstr ""
-#~ "URL da API apontando para a lista de permissões para esta lista de "
-#~ "controle de acesso."
-
-#~ msgid ""
-#~ "API URL pointing to a permission in relation to the access control list "
-#~ "to which it is attached. This URL is different than the canonical "
-#~ "workflow URL."
-#~ msgstr ""
-#~ "URL da API apontando para uma permissão em relação à lista de controle de "
-#~ "acesso à qual ela está anexada. Esse URL é diferente da URL de fluxo de "
-#~ "trabalho canônico."
-
-#~ msgid "No such permission: %s"
-#~ msgstr "Não existe a permissão: %s"
-
-#~ msgid ""
-#~ "Comma separated list of permission primary keys to grant to this access "
-#~ "control list."
-#~ msgstr ""
-#~ "Lista de chaves primárias de permissão separadas por vírgulas para "
-#~ "conceder a esta lista de controle de acesso."
-
-#~ msgid "Primary keys of the role to which this access control list binds to."
-#~ msgstr ""
-#~ "As chaves primárias da função a que esta lista de controle de acesso se "
-#~ "liga."

@@ -2,20 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+# Roberto Rosario, 2021
+# xisafe <root@xisafe.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:39+0000\n"
+"Last-Translator: xisafe <root@xisafe.com>, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:34 events.py:5 permissions.py:5
@@ -24,7 +27,7 @@ msgstr ""
 
 #: apps.py:56
 msgid "None"
-msgstr ""
+msgstr "没有"
 
 #: apps.py:62
 msgid "Sender"
@@ -40,15 +43,15 @@ msgstr ""
 
 #: forms.py:9 models.py:38
 msgid "Body"
-msgstr ""
+msgstr "正文"
 
 #: links.py:28 views.py:33
 msgid "Create message"
-msgstr ""
+msgstr "创建消息"
 
 #: links.py:31 links.py:37
 msgid "Delete"
-msgstr ""
+msgstr "删除"
 
 #: links.py:45 links.py:49
 msgid "Mark as read"
@@ -60,15 +63,15 @@ msgstr ""
 
 #: models.py:30
 msgid "User"
-msgstr ""
+msgstr "用户"
 
 #: models.py:33
 msgid "Short description of this message."
-msgstr ""
+msgstr "此消息的简短描述。"
 
 #: models.py:34
 msgid "Subject"
-msgstr ""
+msgstr "主题"
 
 #: models.py:37
 msgid "The actual content of the message."
@@ -80,7 +83,7 @@ msgstr ""
 
 #: models.py:43
 msgid "Read"
-msgstr ""
+msgstr "读取"
 
 #: models.py:47
 msgid "Date and time of the message creation."
@@ -92,36 +95,36 @@ msgstr ""
 
 #: models.py:53
 msgid "Message"
-msgstr ""
+msgstr "消息"
 
 #: models.py:54 views.py:121
 msgid "Messages"
-msgstr ""
+msgstr "消息"
 
 #: models.py:70
 msgid "Label"
-msgstr ""
+msgstr "标签"
 
 #: models.py:91
 #, python-format
 msgid "Template error; %(exception)s"
-msgstr ""
+msgstr "模板错误%(exception)s"
 
 #: permissions.py:8
 msgid "Create messages"
-msgstr ""
+msgstr "创建消息"
 
 #: permissions.py:11
 msgid "Delete messages"
-msgstr ""
+msgstr "删除消息"
 
 #: permissions.py:14
 msgid "View messages"
-msgstr ""
+msgstr "查看消息"
 
 #: views.py:34
 msgid "Send"
-msgstr ""
+msgstr "发送"
 
 #: views.py:46
 #, python-format

@@ -1,25 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
-# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
-# Lucas Weel <ljj.weel@gmail.com>, 2012
+# Roberto Rosario, 2021
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-10-11 07:15+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
+"Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
@@ -71,7 +70,7 @@ msgstr "Commentaar"
 
 #: forms.py:31
 msgid "Action"
-msgstr ""
+msgstr "Actie"
 
 #: forms.py:33
 msgid ""
@@ -139,10 +138,8 @@ msgid "Document sources"
 msgstr "Documentbronnen"
 
 #: links.py:137
-#, fuzzy
-#| msgid "Upload new version"
 msgid "Upload new file"
-msgstr "Nieuwe versie uploaden"
+msgstr ""
 
 #: links.py:141
 msgid "Check now"
@@ -256,7 +253,7 @@ msgstr ""
 
 #: models/base.py:162 serializers.py:17
 msgid "Document type"
-msgstr "Documentsoort"
+msgstr "Documenttype"
 
 #: models/base.py:166
 msgid "Whether to expand or not, compressed archives."
@@ -386,9 +383,9 @@ msgid ""
 "Criteria to use when searching for messages to process. Use the format "
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 msgstr ""
-"Criteria om te gebruiken wanneer gezocht wordt op berichten om te verwerken. "
-"Gebruik opmaak zoals vastgelegd in https://tools.ietf.org/html/rfc2060."
-"html#section-6.4.4"
+"Criteria om te gebruiken wanneer gezocht wordt op berichten om te verwerken."
+" Gebruik opmaak zoals vastgelegd in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
 #: models/email_sources.py:224
 msgid "Search criteria"
@@ -397,13 +394,14 @@ msgstr "Zoekcriteria"
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 "IMAP STORE opdracht om uit te voeren op berichten nadat ze zijn verwerkt. "
-"Een opdracht per regel. Gebruik de opdrachten zoals beschreven in https://"
-"tools.ietf.org/html/rfc2060.html#section-6.4.6 of de aangepaste opdrachten "
-"voor uw IMAP-server."
+"Een opdracht per regel. Gebruik de opdrachten zoals beschreven in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 of de aangepaste "
+"opdrachten voor uw IMAP-server."
 
 #: models/email_sources.py:232
 msgid "Store commands"
@@ -412,8 +410,8 @@ msgstr "Opdrachten opslaan"
 #: models/email_sources.py:236
 msgid "Execute the IMAP expunge command after processing each email message."
 msgstr ""
-"Voer de IMAP-verwijderingsopdracht uit na het verwerken van elk e-"
-"mailbericht. "
+"Voer de IMAP-verwijderingsopdracht uit na het verwerken van elk "
+"e-mailbericht. "
 
 #: models/email_sources.py:238
 msgid "Execute expunge"
@@ -461,8 +459,8 @@ msgid ""
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
 msgstr ""
-"Stelt de resolutie van de gescande afbeeldingen in DPI (punten per inch) in. "
-"Gebruikelijke waarde is 200. Als deze optie niet wordt ondersteund door uw "
+"Stelt de resolutie van de gescande afbeeldingen in DPI (punten per inch) in."
+" Gebruikelijke waarde is 200. Als deze optie niet wordt ondersteund door uw "
 "scanner, laat dan leeg."
 
 #: models/scanner_sources.py:46
@@ -625,7 +623,8 @@ msgstr "Document uploaden"
 #: settings.py:21
 msgid "File path to the scanimage program used to control image scanners."
 msgstr ""
-"Bestandspad naar het scanprogramma dat wordt gebruikt om scanners te beheren."
+"Bestandspad naar het scanprogramma dat wordt gebruikt om scanners te "
+"beheren."
 
 #: settings.py:27
 msgid ""
@@ -682,44 +681,32 @@ msgid "Server responded with {{statusCode}} code."
 msgstr "Server antwoordde met {{statusCode}} code."
 
 #: views/document_file_views.py:61
-#, fuzzy, python-format
-#| msgid ""
-#| "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+#, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
-"Niet mogelijk om nieuwe versies te uploaden voor document \"%(document)s\". "
-"%(exception)s"
 
 #: views/document_file_views.py:125
-#, fuzzy, python-format
-#| msgid "Error executing document upload task; %(exception)s"
+#, python-format
 msgid "Error executing document file upload task; %(exception)s"
-msgstr "Fout bij uitvoeren document upload taak; %(exception)s"
+msgstr ""
 
 #: views/document_file_views.py:140
-#, fuzzy
-#| msgid "New document queued for upload and will be available shortly."
 msgid "New document file queued for upload and will be available shortly."
 msgstr ""
-"Nieuw document in wachtrij voor upload en zal spoedig beschikbaar zijn."
 
 #: views/document_file_views.py:165
-#, fuzzy, python-format
-#| msgid ""
-#| "Upload a new version for document \"%(document)s\" from source: %(source)s"
+#, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
-"Een nieuwe versie uploaden voor document \"%(document)s\" van bron: "
-"%(source)s"
 
 #: views/document_file_views.py:168
 msgid "Submit"
-msgstr "Versturen"
+msgstr "Indienen"
 
 #: views/document_views.py:79 wizards.py:50
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 "Er zijn geen interactieve documentbronnen gedefinieerd of ze zijn niet "
 "ingeschakeld. Maak er een aan voordat u verdergaat."
@@ -732,8 +719,8 @@ msgstr "Document-eigenschappen"
 #: views/document_views.py:116
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
 "Dit kan betekenen dat de netwerkmap leeg is. Het is ook mogelijk dat het "
 "besturingssysteem van het gebruikersaccount dat voor Mayan EDMS gebruikt "
@@ -764,8 +751,7 @@ msgstr ""
 #: views/document_views.py:309
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr ""
-"Een document upload van soort \"%(document_type)s\" van bron: %(source)s"
+msgstr "Een document upload van soort \"%(document_type)s\" van bron: %(source)s"
 
 #: views/source_views.py:50
 msgid ""
@@ -812,8 +798,8 @@ msgid ""
 msgstr ""
 "Bronnen zijn manieren om documenten te uploaden. Bronnen zoals het "
 "webformulier zijn interactief en vereisen gebruikersinvoer bij verwerking. "
-"Andere, zoals de e-mailbronnen, zijn automatisch en worden op de achtergrond "
-"uitgevoerd zonder interactie met de gebruiker."
+"Andere, zoals de e-mailbronnen, zijn automatisch en worden op de achtergrond"
+" uitgevoerd zonder interactie met de gebruiker."
 
 #: views/source_views.py:172
 msgid "No sources available"
@@ -840,20 +826,3 @@ msgstr "Volgende stap"
 #: wizards.py:77
 msgid "Document upload wizard"
 msgstr "Document uploadwizard"
-
-#~ msgid "Error deleting staging file; %s"
-#~ msgstr "Fout bij verwijderen bestand in netwerkmap; %s"
-
-#~ msgid "Unable get list of staging files: %s"
-#~ msgstr ""
-#~ "Het is niet mogelijk om een lijst van bestanden in netwerkmap aan te "
-#~ "maken:%s"
-
-#~ msgid "Error executing document version upload task; %(exception)s"
-#~ msgstr "Fout bij uitvoeren documentversie uploadtaak; %(exception)s"
-
-#~ msgid ""
-#~ "New document version queued for upload and will be available shortly."
-#~ msgstr ""
-#~ "Nieuwe versie document in wachtrij voor upload en zal spoedig beschikbaar "
-#~ "zijn."

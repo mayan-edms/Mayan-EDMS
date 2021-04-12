@@ -1,26 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Badea Gabriel <gcbadea@gmail.com>, 2013
-# Harald Ersch, 2019-2020
+# Roberto Rosario, 2021
+# Badea Gabriel <gcbadea@gmail.com>, 2021
+# Harald Ersch, 2021
+# Stefaniu Criste <gupi@hangar.ro>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-09-29 12:31+0000\n"
-"Last-Translator: Harald Ersch\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
+"Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
 msgid "Converter"
@@ -84,7 +85,7 @@ msgstr "Element modificat"
 
 #: forms.py:16
 msgid "Preview"
-msgstr ""
+msgstr "Previzualizare"
 
 #: forms.py:36
 msgid "Available transformations for this layer."
@@ -120,7 +121,7 @@ msgstr "Șterge"
 
 #: links.py:48 links.py:72
 msgid "Edit"
-msgstr "Editează"
+msgstr "Editați"
 
 #: links.py:56 models.py:62 storages.py:21 views.py:143
 msgid "Assets"
@@ -191,8 +192,8 @@ msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
 msgstr ""
-"Ordinea în care vor fi executate transformările. Dacă este lăsat neschimbat, "
-"va fi alocată o ordine automată."
+"Ordinea în care vor fi executate transformările. Dacă este lăsat neschimbat,"
+" va fi alocată o ordine automată."
 
 #: models.py:231 workflow_actions.py:45
 msgid ""
@@ -267,17 +268,13 @@ msgid ""
 msgstr ""
 
 #: settings.py:44
-#, fuzzy
-#| msgid "Path to the Storage subclass to use when storing assets."
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
-msgstr "Calea către subclasa de stocare de utilizat la stocarea elementelor."
+msgstr ""
 
 #: settings.py:52
-#, fuzzy
-#| msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
-msgstr "Argumente de transmis la CONVERTER_ASSET_STORAGE_BACKEND."
+msgstr ""
 
 #: settings.py:58
 msgid "Path to the Storage subclass to use when storing assets."
@@ -304,22 +301,14 @@ msgstr ""
 "setările {} și {} pentru erori de formatare."
 
 #: storages.py:28
-#, fuzzy
-#| msgid ""
-#| "Unable to initialize the converter asset storage. Check the settings {} "
-#| "and {} for formatting errors."
 msgid ""
-"Unable to initialize the converter asset cachestorage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the converter asset cachestorage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""
-"Imposibil de inițializat stocarea elementelor convertizorului. Verificați "
-"setările {} și {} pentru erori de formatare."
 
 #: storages.py:34
-#, fuzzy
-#| msgid "Asset created"
 msgid "Assets cache"
-msgstr "Element creat"
+msgstr ""
 
 #: transformations.py:196
 msgid "Paste an asset"
@@ -402,9 +391,9 @@ msgstr "Solicitare de ștergere efectuată asupra %(count)d elemente"
 #: views.py:62
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] "Ștergeți materialul selectat?"
-msgstr[1] "Ștergeți activele selectate?"
-msgstr[2] "Ștergeți elementele selectate?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: views.py:72
 #, python-format
@@ -422,10 +411,9 @@ msgid "Error deleting asset \"%(asset)s\": %(error)s"
 msgstr "Eroare la ștergerea elementului„%(asset)s”: %(error)s"
 
 #: views.py:103
-#, fuzzy, python-format
-#| msgid "Delete asset: %s?"
+#, python-format
 msgid "Details asset: %s"
-msgstr "Ștergeți elementul: %s?"
+msgstr ""
 
 #: views.py:117
 #, python-format
@@ -434,7 +422,8 @@ msgstr "Editați elementul: %s"
 
 #: views.py:139
 msgid ""
-"Assets are files that can be used in conjuction with certain transformations."
+"Assets are files that can be used in conjuction with certain "
+"transformations."
 msgstr ""
 "Elementele sunt fișiere care pot fi utilizate împreună cu anumite "
 "transformări."
@@ -460,14 +449,12 @@ msgstr ""
 #: views.py:240
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
-"Ștergeți transformarea \"%(transformation)s\" pentru: %(content_object)s?"
+msgstr "Ștergeți transformarea \"%(transformation)s\" pentru: %(content_object)s?"
 
 #: views.py:289
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
-"Editați transformarea \"%(transformation)s\" pentru: %(content_object)s"
+msgstr "Editați transformarea \"%(transformation)s\" pentru: %(content_object)s"
 
 #: views.py:343
 #, python-format
@@ -498,8 +485,8 @@ msgstr "Pagini"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas and/"
-"or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
 "Pagini la care se vor adăuga noile transformări. Separați prin virgule și / "
 "sau utilizați liniuțe pentru intervale. Lăsați necompletat pentru a selecta "

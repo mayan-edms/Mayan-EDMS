@@ -1,25 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
+# Roberto Rosario, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-02-14 02:20+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bs/)\n"
-"Language: bs\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:27 events.py:5 links.py:38 links.py:43 links.py:53 permissions.py:5
 #: queues.py:7 views/event_views.py:30
@@ -63,10 +62,8 @@ msgid "Event list export to CSV"
 msgstr ""
 
 #: classes.py:108
-#, fuzzy
-#| msgid "Event type"
 msgid "Events exported."
-msgstr "Tip događaja"
+msgstr ""
 
 #: classes.py:110
 #, python-format
@@ -81,10 +78,8 @@ msgid "Unknown or obsolete event type: %s"
 msgstr "Nepoznati ili zastarjeli tip događaja:%s"
 
 #: events.py:8
-#, fuzzy
-#| msgid "Event type"
 msgid "Events exported"
-msgstr "Tip događaja"
+msgstr ""
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
@@ -107,10 +102,8 @@ msgid "My events"
 msgstr ""
 
 #: links.py:34 links.py:49 links.py:56 views/export_views.py:57
-#, fuzzy
-#| msgid "Events"
 msgid "Export events"
-msgstr "Događaji"
+msgstr ""
 
 #: links.py:61 models.py:63 views/subscription_views.py:56
 msgid "Event subscriptions"
@@ -177,20 +170,16 @@ msgid "Object event subscriptions"
 msgstr "Pretplate događaja objekata"
 
 #: permissions.py:8
-#, fuzzy
-#| msgid "Access the events of an object"
 msgid "Export the events of an object"
-msgstr "Pristup događajima objekta"
+msgstr ""
 
 #: permissions.py:11
 msgid "Access the events of an object"
 msgstr "Pristup događajima objekta"
 
 #: queues.py:13
-#, fuzzy
-#| msgid "Stored event types"
 msgid "Export event querysets"
-msgstr "Sačuvani tipovi događaja"
+msgstr ""
 
 #: views/event_views.py:26
 msgid "Events track actions that have been performed on, to, or with objects."
@@ -220,21 +209,18 @@ msgstr "Događaji tipa:%s"
 
 #: views/export_views.py:26
 msgid ""
-"The process will be performed in the background. The exported events will be "
-"available in the downloads area."
+"The process will be performed in the background. The exported events will be"
+" available in the downloads area."
 msgstr ""
 
 #: views/export_views.py:45
-#, fuzzy
-#| msgid "Event subscriptions updated successfully"
 msgid "Event list export task queued successfully."
-msgstr "Pretplate za događaj su uspešno ažurirane"
+msgstr ""
 
 #: views/export_views.py:76
-#, fuzzy, python-format
-#| msgid "Events for: %s"
+#, python-format
 msgid "Export events for: %s"
-msgstr "Događaji za:%s"
+msgstr ""
 
 #: views/notification_views.py:25
 msgid "Subscribe to global or object events to receive notifications."
@@ -249,10 +235,8 @@ msgid "Mark the selected notification as read?"
 msgstr ""
 
 #: views/notification_views.py:56
-#, fuzzy
-#| msgid "Notifications"
 msgid "Notification marked as read."
-msgstr "Obaveštenja"
+msgstr ""
 
 #: views/notification_views.py:67
 msgid "Mark all notification as read?"

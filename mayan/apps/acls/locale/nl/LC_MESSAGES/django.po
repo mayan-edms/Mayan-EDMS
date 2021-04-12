@@ -1,26 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# bwakkie <bwakkie@gmail.com>, 2020
-# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
-# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
-# Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
+# Roberto Rosario, 2021
+# bwakkie <bwakkie@gmail.com>, 2021
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-09-06 08:23+0000\n"
-"Last-Translator: bwakkie <bwakkie@gmail.com>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:12+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
+"Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:24 classes.py:143 links.py:27
@@ -34,10 +33,8 @@ msgid ""
 msgstr ""
 
 #: apps.py:63
-#, fuzzy
-#| msgid "Object ID"
 msgid "Object"
-msgstr "Object ID"
+msgstr "Object"
 
 #: events.py:6 permissions.py:5
 msgid "Access control lists"
@@ -48,10 +45,8 @@ msgid "ACL created"
 msgstr "Authorisatie Controle Lijst aangemaakt"
 
 #: events.py:13
-#, fuzzy
-#| msgid "ACL edited"
 msgid "ACL deleted"
-msgstr "Authorisatie Controle Lijst bewerkt"
+msgstr ""
 
 #: events.py:16
 msgid "ACL edited"
@@ -80,8 +75,7 @@ msgstr ""
 #: managers.py:228
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
-msgstr ""
-"Voorwerp \"%s\" is geen model en kan niet aangevinkt worden voor toegang."
+msgstr "Voorwerp \"%s\" is geen model en kan niet aangevinkt worden voor toegang."
 
 #: managers.py:248
 #, python-format
@@ -114,22 +108,12 @@ msgid "View ACLs"
 msgstr "Authorisatielijsten bekijken"
 
 #: serializers.py:125
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
-"Primaire sleutel van de nieuwe permissie die aan de authorisatielijst wordt "
-"toegekend."
 
 #: serializers.py:132
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
-"Primaire sleutel van de nieuwe permissie die aan de authorisatielijst wordt "
-"toegekend."
 
 #: views.py:40
 #, python-format
@@ -161,8 +145,8 @@ msgid ""
 "but only for a specific object or set of objects."
 msgstr ""
 "Een authorisatielijst is een methode om gebruikerstoegang tot objecten in "
-"het systeem te beheren. Authorisatielijsten kennen een permissie toe aan een "
-"rol maar enkel voor een bepaald object of verzamelingen van objecten."
+"het systeem te beheren. Authorisatielijsten kennen een permissie toe aan een"
+" rol maar enkel voor een bepaald object of verzamelingen van objecten."
 
 #: views.py:149
 #, python-format
@@ -195,16 +179,12 @@ msgstr ""
 "gebruikersrol via het Instellingen menu. "
 
 #: views.py:256
-#, fuzzy
-#| msgid "There are no ACLs for this object"
 msgid "There are no ACLs"
-msgstr "Er zijn geen authorisatielijsten voor dit object"
+msgstr ""
 
 #: views.py:265
-#, fuzzy
-#| msgid "Access control lists"
 msgid "Global access control lists"
-msgstr "Authorisatielijsten"
+msgstr ""
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -219,12 +199,13 @@ msgid "Object ID"
 msgstr "Object ID"
 
 #: workflow_actions.py:35
-msgid "Numeric identifier of the object for which the access will be modified."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
 msgstr "Nummer van het object waarvoor de toegang wordt gewijzigd."
 
 #: workflow_actions.py:40 workflow_actions.py:155
 msgid "Roles"
-msgstr "Gebruikersrollen"
+msgstr "gebruikersrollen"
 
 #: workflow_actions.py:42 workflow_actions.py:157
 msgid "Roles whose access will be modified."
@@ -252,32 +233,3 @@ msgstr "Toegang tot document toekennen"
 #: workflow_actions.py:211
 msgid "Revoke document access"
 msgstr "Toegang tot document intrekken"
-
-#~ msgid ""
-#~ "API URL pointing to the list of permissions for this access control list."
-#~ msgstr ""
-#~ "API URL verwijzend naar de permissielijst voor deze authorisatielijst."
-
-#~ msgid ""
-#~ "API URL pointing to a permission in relation to the access control list "
-#~ "to which it is attached. This URL is different than the canonical "
-#~ "workflow URL."
-#~ msgstr ""
-#~ "API URL verwijzend naar een permissie gerelateerd aan de "
-#~ "authorisatielijst waarvan het een aanhangsel is. Deze URL is anders dan "
-#~ "de canonical Workflow URL"
-
-#~ msgid "No such permission: %s"
-#~ msgstr "Permissie niet gevonden: %s"
-
-#~ msgid ""
-#~ "Comma separated list of permission primary keys to grant to this access "
-#~ "control list."
-#~ msgstr ""
-#~ "Kommagescheiden lijst van primaire permissiesleutels die aan deze "
-#~ "authorisatielijst worden toegekend."
-
-#~ msgid "Primary keys of the role to which this access control list binds to."
-#~ msgstr ""
-#~ "Primaire sleutels van de rol waar deze authorisatielijst aan gekoppeld "
-#~ "is. "

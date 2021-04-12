@@ -2,32 +2,29 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Roberto Rosario, 2017
-# D Muzzle <muzzlerator@gmail.com>, 2017
-# Panasoft, 2017
-# Daler Abdulloev <abdulloevdaler@gmail.com>, 2019
-# Sergey Glita <gsv70@mail.ru>, 2020
-# OLeg Si <olegsm35@gmail.com>, 2020
-# Alex Chigrin <chalex84@mail.ru>, 2020
+# Roberto Rosario, 2021
+# Sergey Glita <gsv70@mail.ru>, 2021
+# Panasoft, 2021
+# Daler Abdulloev <abdulloevdaler@gmail.com>, 2021
+# Alex Chigrin <chalex84@mail.ru>, 2021
+# OLeg Si <olegsm35@gmail.com>, 2021
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2017-04-21 16:25+0000\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
 #: events.py:5 forms.py:14 links.py:31 menus.py:14 models.py:48 models.py:172
@@ -97,7 +94,7 @@ msgstr "Краткое описание кабинета."
 
 #: models.py:35
 msgid "Label"
-msgstr "Ярлык"
+msgstr "Заголовок"
 
 #: models.py:39
 msgid "Documents"
@@ -189,10 +186,9 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr "Имя этого кабинета, соединенное с именами его предков."
 
 #: serializers.py:28
-msgid "URL of the API endpoint showing the list documents inside this cabinet."
-msgstr ""
-"URL-адрес API, показывающий показывающий список документов внутри этого "
-"кабинета."
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
+msgstr "URL-адрес API, показывающий список документов внутри этого кабинета."
 
 #: templates/cabinets/cabinet_details.html:17
 msgid "Navigation:"
@@ -244,42 +240,34 @@ msgid "No cabinets available"
 msgstr "Нет доступных кабинетов"
 
 #: views.py:180
-#, fuzzy, python-format
-#| msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
+#, python-format
 msgid "Document \"%(object)s\" added to cabinets successfully."
-msgstr "\"%(document)s\" добавлен в кабинет \"%(cabinet)s\""
+msgstr "Документ \"%(object)s\" добавлен в кабинеты."
 
 #: views.py:183
-#, fuzzy, python-format
-#| msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
+#, python-format
 msgid "%(count)d document added to cabinets successfully."
-msgstr "\"%(document)s\" добавлен в кабинет \"%(cabinet)s\""
+msgstr "%(count)d документ добавлен в кабинеты."
 
 #: views.py:186
-#, fuzzy, python-format
-#| msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
+#, python-format
 msgid "%(count)d documents added to cabinets successfully."
-msgstr "\"%(document)s\" добавлен в кабинет \"%(cabinet)s\""
+msgstr "%(count)d документов добавлено в кабинеты."
 
 #: views.py:188
-#, fuzzy, python-format
-#| msgid "Add document \"%s\" to cabinets"
+#, python-format
 msgid "Add document \"%(object)s\" to cabinets."
-msgstr "Добавить документ \"%s\" в кабинеты"
+msgstr "Добавить документ \"%(object)s\" в кабинеты"
 
 #: views.py:189
-#, fuzzy, python-format
-#| msgid "Add %(count)d document to cabinets"
-#| msgid_plural "Add %(count)d documents to cabinets"
+#, python-format
 msgid "Add %(count)d document to cabinets."
-msgstr "Добавить %(count)d документ в кабинеты"
+msgstr "Добавить %(count)d документ в кабинеты."
 
 #: views.py:190
-#, fuzzy, python-format
-#| msgid "Add %(count)d document to cabinets"
-#| msgid_plural "Add %(count)d documents to cabinets"
+#, python-format
 msgid "Add %(count)d documents to cabinets."
-msgstr "Добавить %(count)d документ в кабинеты"
+msgstr "Добавить %(count)d документов в кабинеты."
 
 #: views.py:194
 msgid "Add"
@@ -303,42 +291,34 @@ msgid "Cabinets containing document: %s"
 msgstr "Кабинеты, содержащие документ: %s"
 
 #: views.py:278
-#, fuzzy, python-format
-#| msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
+#, python-format
 msgid "Document \"%(object)s\" removed from cabinets successfully."
-msgstr "Документ \"%(document)s\" удален из кабинета \"%(cabinet)s\""
+msgstr "Документ \"%(object)s\" удален из кабинетов."
 
 #: views.py:281
-#, fuzzy, python-format
-#| msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
+#, python-format
 msgid "%(count)d document removed from cabinets successfully."
-msgstr "Документ \"%(document)s\" удален из кабинета \"%(cabinet)s\""
+msgstr "%(count)d документ удален из кабинетов."
 
 #: views.py:284
-#, fuzzy, python-format
-#| msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
+#, python-format
 msgid "%(count)d documents removed from cabinets successfully."
-msgstr "Документ \"%(document)s\" удален из кабинета \"%(cabinet)s\""
+msgstr "%(count)d документов удалено из кабинетов."
 
 #: views.py:286
-#, fuzzy, python-format
-#| msgid "Remove document \"%s\" from cabinets"
+#, python-format
 msgid "Remove document \"%(object)s\" from cabinets."
-msgstr "Удалить документ \"%s\" из кабинетов"
+msgstr "Удалить документ \"%(object)s\" из кабинетов."
 
 #: views.py:287
-#, fuzzy, python-format
-#| msgid "Remove %(count)d document from cabinets"
-#| msgid_plural "Remove %(count)d documents from cabinets"
+#, python-format
 msgid "Remove %(count)d document from cabinets."
-msgstr "Удалить %(count)d документ из кабинетов"
+msgstr "Удалить %(count)d документ из кабинетов."
 
 #: views.py:288
-#, fuzzy, python-format
-#| msgid "Remove %(count)d document from cabinets"
-#| msgid_plural "Remove %(count)d documents from cabinets"
+#, python-format
 msgid "Remove %(count)d documents from cabinets."
-msgstr "Удалить %(count)d документ из кабинетов"
+msgstr "Удалить %(count)d документов из кабинетов."
 
 #: views.py:292
 msgid "Remove"
@@ -359,38 +339,3 @@ msgstr "Кабинеты, в которые будет добавлен доку
 #: workflow_actions.py:67
 msgid "Cabinets from which the document will be removed."
 msgstr "Кабинеты, из которых документ будет удален."
-
-#~ msgid "Number of documents on this cabinet level."
-#~ msgstr "Количество документов в этом кабинете."
-
-#~ msgid ""
-#~ "Comma separated list of document primary keys to add to this cabinet."
-#~ msgstr ""
-#~ "Разделенный запятыми список первичных ключей документов, добавляемых в "
-#~ "этот кабинет."
-
-#~ msgid ""
-#~ "API URL pointing to a document in relation to the cabinet storing it. "
-#~ "This URL is different than the canonical document URL."
-#~ msgstr ""
-#~ "URL-адрес API, указывающий на документ относительно кабинета, в котором "
-#~ "он хранится. Этот URL-адрес отличается от канонического URL-адреса "
-#~ "документа."
-
-#~ msgid "Add to cabinet request performed on %(count)d document."
-#~ msgstr "Запрос на добавление в кабинет выполнен для %(count)d документа"
-
-#~ msgid "Add to cabinet request performed on %(count)d documents."
-#~ msgstr "Запрос на добавление в кабинет выполнен для %(count)d документов"
-
-#~ msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
-#~ msgstr "\"%(document)s\" уже находится в кабинете \"%(cabinet)s\""
-
-#~ msgid "Remove from cabinet request performed on %(count)d document."
-#~ msgstr "Запрос на удаление из кабинета выполнен для %(count)d документа."
-
-#~ msgid "Remove from cabinet request performed on %(count)d documents."
-#~ msgstr "Запрос на удаление из кабинета выполнен для %(count)d документов."
-
-#~ msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
-#~ msgstr "Документа \"%(document)s\" нет в кабинете \"%(cabinet)s\""

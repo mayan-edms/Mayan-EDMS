@@ -1,22 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Roberto Rosario, 2021
+# Adek Lanin, 2021
+# Sehat <sehat75@yahoo.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/id/)\n"
-"Language: id\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:28+0000\n"
+"Last-Translator: Sehat <sehat75@yahoo.com>, 2021\n"
+"Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:52 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
@@ -130,10 +133,8 @@ msgid "Document version OCR errors"
 msgstr ""
 
 #: models.py:67
-#, fuzzy
-#| msgid "Document version"
 msgid "Document version page"
-msgstr "Versi dokumen"
+msgstr ""
 
 #: models.py:71
 msgid "The actual text content extracted by the OCR backend."
@@ -144,16 +145,12 @@ msgid "Content"
 msgstr "Isi"
 
 #: models.py:78
-#, fuzzy
-#| msgid "Document version"
 msgid "Document version page OCR content"
-msgstr "Versi dokumen"
+msgstr ""
 
 #: models.py:79
-#, fuzzy
-#| msgid "Document version"
 msgid "Document version pages OCR contents"
-msgstr "Versi dokumen"
+msgstr ""
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
@@ -172,16 +169,12 @@ msgid "Finish document file OCR"
 msgstr ""
 
 #: queues.py:14
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file page OCR"
-msgstr "Halaman dokumen"
+msgstr ""
 
 #: queues.py:18
-#, fuzzy
-#| msgid "Document type"
 msgid "Document file OCR"
-msgstr "Jenis dokumen"
+msgstr ""
 
 #: search.py:11 search.py:23
 msgid "Document version OCR"

@@ -2,26 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Roberto Rosario, 2020
-# Jože Detečnik <joze.detecnik@3tav.si>, 2020
-#
+# Roberto Rosario, 2021
+# Jože Detečnik <joze.detecnik@3tav.si>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2020\n"
-"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/"
-"sl/)\n"
-"Language: sl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2021\n"
+"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #: apps.py:15 settings.py:7
 msgid "Views"
@@ -33,11 +31,11 @@ msgstr "Izbira"
 
 #: forms.py:100
 msgid "None"
-msgstr "Brez"
+msgstr "Nobenega"
 
 #: forms.py:284
 msgid "Label"
-msgstr ""
+msgstr "Oznaka"
 
 #: forms.py:288
 msgid "Relationship"
@@ -60,8 +58,8 @@ msgid ""
 "to activate the action."
 msgstr ""
 "Izberite vnose, ki jih želite dodati. Pridržite tipko Ctrl, da izberete več "
-"vnosov. Ko je izbor končan, kliknite spodnji gumb ali dvokliknite seznam, da "
-"aktivirate dejanje."
+"vnosov. Ko je izbor končan, kliknite spodnji gumb ali dvokliknite seznam, da"
+" aktivirate dejanje."
 
 #: generics.py:289
 msgid "Add all"
@@ -85,10 +83,8 @@ msgid "Error updating relationship; %s"
 msgstr ""
 
 #: generics.py:538
-#, fuzzy
-#| msgid "%(object)s updated successfully."
 msgid "Relationships updated successfully"
-msgstr "%(object)s uspešno posodobljen."
+msgstr ""
 
 #: generics.py:597
 #, python-format
@@ -98,50 +94,47 @@ msgstr "Napaka podvojenih podatkov: %(error)s"
 #: generics.py:616
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
-msgstr "%(object)s ni ustvarjen, napaka: %(error)s"
+msgstr ""
 
 #: generics.py:627
 #, python-format
 msgid "%(object)s created successfully."
-msgstr "%(object)s uspešno ustvarjen."
+msgstr ""
 
 #: generics.py:666
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
-msgstr "%(object)s ni izbrisano, napaka: %(error)s."
+msgstr ""
 
 #: generics.py:675
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr "%(object)s je bil uspešno izbrisan."
+msgstr ""
 
 #: generics.py:814
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
-msgstr "%(object)s ni posodobljeno, napaka: %(error)s."
+msgstr ""
 
 #: generics.py:823
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr "%(object)s uspešno posodobljen."
+msgstr ""
 
 #: generics.py:885
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "\"%(object)s\" deleted successfully."
-msgstr "%(object)s je bil uspešno izbrisan."
+msgstr ""
 
 #: generics.py:886
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "%(count)d object deleted successfully."
-msgstr "%(object)s je bil uspešno izbrisan."
+msgstr ""
 
 #: generics.py:887
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "%(count)d objects deleted successfully."
-msgstr "%(object)s je bil uspešno izbrisan."
+msgstr ""
 
 #: generics.py:888
 #, python-format
@@ -161,7 +154,7 @@ msgstr ""
 #: mixins.py:325
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
-msgstr "Najden ni bil noben %(verbose_name)s, ki bi se ujemal s poizvedbo"
+msgstr ""
 
 #: mixins.py:350
 #, python-format
@@ -213,7 +206,7 @@ msgstr "Potrdi izbris"
 #: templatetags/views_tags.py:33
 #, python-format
 msgid "Edit %s"
-msgstr "Uredi %s"
+msgstr ""
 
 #: templatetags/views_tags.py:36
 msgid "Confirm"
@@ -222,12 +215,12 @@ msgstr "Potrdi"
 #: templatetags/views_tags.py:40
 #, python-format
 msgid "Details for: %s"
-msgstr "Podrobnosti za: %s"
+msgstr ""
 
 #: templatetags/views_tags.py:44
 #, python-format
 msgid "Edit: %s"
-msgstr "Uredi: %s"
+msgstr ""
 
 #: templatetags/views_tags.py:48
 msgid "Create"

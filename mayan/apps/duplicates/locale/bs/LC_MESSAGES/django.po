@@ -1,52 +1,44 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Atdhe Tabaku <Atdhe617@gmail.com>, 2018
-# Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
+# Roberto Rosario, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-10-26 13:26+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bs/)\n"
-"Language: bs\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:39+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:30 apps.py:56 links.py:14
 msgid "Duplicates"
 msgstr "Duplikati"
 
 #: apps.py:62
-#, fuzzy
-#| msgid "Duplicated document"
 msgid "Duplicate backend"
-msgstr "Duplirani dokument"
+msgstr ""
 
 #: classes.py:83
 msgid "Null backend"
 msgstr ""
 
 #: duplicate_backends.py:9
-#, fuzzy
-#| msgid "Edit document type: %s"
 msgid "Exact document file checksum"
-msgstr "Izmeni tip dokumenta: %s"
+msgstr ""
 
 #: duplicate_backends.py:28
-#, fuzzy
-#| msgid "Edit document types"
 msgid "Exact document label"
-msgstr "Izmijeni tipove dokumenata"
+msgstr ""
 
 #: links.py:18 models.py:40 views.py:77
 msgid "Duplicated documents"
@@ -57,32 +49,24 @@ msgid "Duplicated document scan"
 msgstr "Duplikat skeniranja dokumenata"
 
 #: models.py:23 models.py:33
-#, fuzzy
-#| msgid "Scan for duplicated documents?"
 msgid "Stored duplicate backend"
-msgstr "Skeniraj za duplirana dokumenta?"
+msgstr ""
 
 #: models.py:24
-#, fuzzy
-#| msgid "Scan for duplicated documents?"
 msgid "Stored duplicate backends"
-msgstr "Skeniraj za duplirana dokumenta?"
+msgstr ""
 
 #: models.py:37
 msgid "Document"
 msgstr "Dokument"
 
 #: models.py:47
-#, fuzzy
-#| msgid "Duplicated document"
 msgid "Duplicated backend entry"
-msgstr "Duplirani dokument"
+msgstr ""
 
 #: models.py:48
-#, fuzzy
-#| msgid "Duplicated documents"
 msgid "Duplicated backend entries"
-msgstr "Duplirani dokumenti"
+msgstr ""
 
 #: queues.py:8
 msgid "Clean empty duplicate lists"
@@ -108,8 +92,8 @@ msgstr "Duplikati za dokument: %s"
 #: views.py:68
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
 msgstr ""
 
 #: views.py:75
@@ -123,675 +107,3 @@ msgstr "Skeniraj za duplirana dokumenta?"
 #: views.py:92
 msgid "Duplicated document scan queued successfully."
 msgstr "Duplirano skeniranje dokumenata je u redu."
-
-#~ msgid "Added"
-#~ msgstr "Dodaj"
-
-#~ msgid "Documents"
-#~ msgstr "Dokumenti"
-
-#~ msgid "Create a document type"
-#~ msgstr "Kreirajte tip dokumenta"
-
-#~ msgid ""
-#~ "Every uploaded document must be assigned a document type, it is the basic "
-#~ "way Mayan EDMS categorizes documents."
-#~ msgstr ""
-#~ "Svaki uploadovani dokument mora biti dodeljen tipu dokumenta, to je "
-#~ "osnovni način koji Maian EDMS kategorizuje dokumente."
-
-#~ msgid "Document version"
-#~ msgstr "Verzija dokumenta"
-
-#~ msgid "Page number"
-#~ msgstr "Broj stranice"
-
-#~ msgid "Thumbnail"
-#~ msgstr "Thumbnail"
-
-#~ msgid "Pages"
-#~ msgstr "Stranice"
-
-#~ msgid "Type"
-#~ msgstr "Tip"
-
-#~ msgid "UUID"
-#~ msgstr "UUID"
-
-#~ msgid "Total documents"
-#~ msgstr "Ukupni dokumenti"
-
-#~ msgid "Documents in trash"
-#~ msgstr "Dokumenti u smeću"
-
-#~ msgid "Document types"
-#~ msgstr "Tipovi dokumenta"
-
-#~ msgid "New documents this month"
-#~ msgstr "Novi dokumenti ovog meseca"
-
-#~ msgid "New pages this month"
-#~ msgstr "Nove stranice ovog meseca"
-
-#~ msgid "Document created"
-#~ msgstr "Kreirani dokument"
-
-#~ msgid "Document downloaded"
-#~ msgstr "Dokument je preuzet"
-
-#~ msgid "New version uploaded"
-#~ msgstr "Nova verzija je otpremljena"
-
-#~ msgid "Document properties edited"
-#~ msgstr "Karakteristike dokumenata izmenjene"
-
-#~ msgid "Document type changed"
-#~ msgstr "Tip dokumenta promenjen"
-
-#~ msgid "Document version reverted"
-#~ msgstr "Verzija dokumenta se povukla"
-
-#~ msgid "Document viewed"
-#~ msgstr "Dokument je pregledan"
-
-#~ msgid "Compress"
-#~ msgstr "Kompresuj"
-
-#~ msgid ""
-#~ "Download the document in the original format or in a compressed manner. "
-#~ "This option is selectable only when downloading one document, for "
-#~ "multiple documents, the bundle will always be downloads as a compressed "
-#~ "file."
-#~ msgstr ""
-#~ "Preuzmite dokument u originalnom formatu ili na kompresivan način. Ova "
-#~ "opcija se može izabrati samo prilikom preuzimanja jednog dokumenta, za "
-#~ "više dokumenata, paket će uvek biti preuzet kao komprimirana datoteka."
-
-#~ msgid "Compressed filename"
-#~ msgstr "Naziv kompresovane datoteke"
-
-#~ msgid ""
-#~ "The filename of the compressed file that will contain the documents to be "
-#~ "downloaded, if the previous option is selected."
-#~ msgstr ""
-#~ "Naziv kompresovane datoteke koji sadrži dokumente koji su za download, "
-#~ "ako je ova opcija odabrana."
-
-#~ msgid "Quick document rename"
-#~ msgstr "Brzo preimenuj dokument"
-
-#~ msgid "Preserve extension"
-#~ msgstr "Sačuvaj produžetak"
-
-#~ msgid "Date added"
-#~ msgstr "Datum dodavanja"
-
-#~ msgid "Language"
-#~ msgstr "Jezik"
-
-#~ msgid "File mimetype"
-#~ msgstr "Mimetype datoteke"
-
-#~ msgid "None"
-#~ msgstr "Nijedno"
-
-#~ msgid "File encoding"
-#~ msgstr "Kodiranje datoteka"
-
-#~ msgid "File size"
-#~ msgstr "Veličina datoteke"
-
-#~ msgid "Exists in storage"
-#~ msgstr "Postoji u pohrani"
-
-#~ msgid "File path in storage"
-#~ msgstr "Putanja dokumenta u pohrani"
-
-#~ msgid "Checksum"
-#~ msgstr "Checksum"
-
-#~ msgid "Page range"
-#~ msgstr "Opseg stranice"
-
-#~ msgid "Document type"
-#~ msgstr "Tip dokumenta"
-
-#~ msgid ""
-#~ "Takes the file extension and moves it to the end of the filename allowing "
-#~ "operating systems that rely on file extensions to open the downloaded "
-#~ "document version correctly."
-#~ msgstr ""
-#~ "Uzima produžetak datoteke i pomera je do kraja imena datoteke koja "
-#~ "omogućava operativne sisteme koji se oslanjaju na produžetak datoteka da "
-#~ "bi ispravno otvorili preuzetu verziju dokumenta."
-
-#~ msgid "Clear transformations"
-#~ msgstr "Izbriši transformacije"
-
-#~ msgid "Clone transformations"
-#~ msgstr "Kloniraj transformacije"
-
-#~ msgid "Change type"
-#~ msgstr "Izmjeni tip"
-
-#~ msgid "Edit properties"
-#~ msgstr "Izmenite svojstva"
-
-#~ msgid "All documents"
-#~ msgstr "Svi dokumenti"
-
-#~ msgid "Preview"
-#~ msgstr "Pregled"
-
-#~ msgid "Properties"
-#~ msgstr "Osobine"
-
-#~ msgid "Print"
-#~ msgstr "Print"
-
-#~ msgid "Create document type"
-#~ msgstr "Kreirajte tip dokumenta"
-
-#~ msgid "Delete"
-#~ msgstr "Obriši"
-
-#~ msgid "Edit"
-#~ msgstr "Urediti"
-
-#~ msgid "Add quick label to document type"
-#~ msgstr "Dodajte brzi nalepnicu u tip dokumenta"
-
-#~ msgid "Quick labels"
-#~ msgstr "Brze etikete"
-
-#~ msgid "Versions"
-#~ msgstr "Verzije"
-
-#~ msgid "Download version"
-#~ msgstr "Preuzmite verziju"
-
-#~ msgid "Revert"
-#~ msgstr "Vraćaj"
-
-#~ msgid "First page"
-#~ msgstr "Prva stranica"
-
-#~ msgid "Last page"
-#~ msgstr "Zadnja stranica"
-
-#~ msgid "Previous page"
-#~ msgstr "Prethodna stranica"
-
-#~ msgid "Next page"
-#~ msgstr "Sledeća stranica"
-
-#~ msgid "Rotate left"
-#~ msgstr "Rotirajte levo"
-
-#~ msgid "Rotate right"
-#~ msgstr "Rotirajte desno"
-
-#~ msgid "Page image"
-#~ msgstr "Slika za stranicu"
-
-#~ msgid "Reset view"
-#~ msgstr "Resetiraj prikaz"
-
-#~ msgid "Zoom in"
-#~ msgstr "Uveličaj"
-
-#~ msgid "Zoom out"
-#~ msgstr "Smanji"
-
-#~ msgid "Recalculate page count"
-#~ msgstr "Ponovo izračunajte broj stranica"
-
-#~ msgid "Move to trash"
-#~ msgstr "Pošalji u đubre"
-
-#~ msgid "Trash can"
-#~ msgstr "Kanta za smeće"
-
-#~ msgid "Restore"
-#~ msgstr "Vratiti"
-
-#~ msgid "Empty trash"
-#~ msgstr "Prazni smeće"
-
-#~ msgid "Default"
-#~ msgstr "default"
-
-#~ msgid "All pages"
-#~ msgstr "Sve stranice"
-
-#~ msgid "Label"
-#~ msgstr "Labela"
-
-#~ msgid "Description"
-#~ msgstr "Opis"
-
-#~ msgid "In trash?"
-#~ msgstr "U smeće?"
-
-#~ msgid "Date and time trashed"
-#~ msgstr "Datum i vreme uklonjeni"
-
-#~ msgid ""
-#~ "A document stub is a document with an entry on the database but no file "
-#~ "uploaded. This could be an interrupted upload or a deferred upload via "
-#~ "the API."
-#~ msgstr ""
-#~ "Stub dokumenta je dokument sa unosom u bazu podataka, ali datoteka nije "
-#~ "otpremljena. Ovo bi moglo biti prekinuto otpremanje ili odloženo "
-#~ "otpremanje preko API-ja."
-
-#~ msgid "Is stub?"
-#~ msgstr "Da li je stub?"
-
-#~ msgid "Document stub, id: %d"
-#~ msgstr "Dokument stub, id: %d"
-
-#~ msgid "Enabled"
-#~ msgstr "Omogućeno"
-
-#~ msgid "Document page"
-#~ msgstr "Strnica dokumenta"
-
-#~ msgid "Document pages"
-#~ msgstr "Dokumenti dokumenta"
-
-#~ msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
-#~ msgstr "Stranica %(page_num)d od ukupno %(total_pages)d u %(document)s"
-
-#~ msgid ""
-#~ "Amount of time after which documents of this type will be moved to the "
-#~ "trash."
-#~ msgstr ""
-#~ "Količina vremena nakon koje će se dokumenti ove vrste prebaciti u smeće."
-
-#~ msgid "Trash time period"
-#~ msgstr "Period u smeću"
-
-#~ msgid "Trash time unit"
-#~ msgstr "Jedinica za otpatke"
-
-#~ msgid ""
-#~ "Amount of time after which documents of this type in the trash will be "
-#~ "deleted."
-#~ msgstr ""
-#~ "Količina vremena nakon čega će se dokumenti ove vrste u smeću izbrisati."
-
-#~ msgid "Delete time period"
-#~ msgstr "Obrišite vremenski period"
-
-#~ msgid "Delete time unit"
-#~ msgstr "Izbrišite vremensku jedinicu"
-
-#~ msgid "Documents types"
-#~ msgstr "Tipovi dokumenata"
-
-#~ msgid "Quick label"
-#~ msgstr "Brza etiketa"
-
-#~ msgid "Timestamp"
-#~ msgstr "Vremenska oznaka"
-
-#~ msgid "Comment"
-#~ msgstr "Komentar"
-
-#~ msgid "File"
-#~ msgstr "Datoteka"
-
-#~ msgid "MIME type"
-#~ msgstr "MIME tip"
-
-#~ msgid "Encoding"
-#~ msgstr "Enkoding"
-
-#~ msgid "User"
-#~ msgstr "Korisnik"
-
-#~ msgid "Accessed"
-#~ msgstr "Omogućeno"
-
-#~ msgid "Recent document"
-#~ msgstr "Predhodni dokument"
-
-#~ msgid "Recent documents"
-#~ msgstr "Nedavni dokumenti"
-
-#~ msgid "Create documents"
-#~ msgstr "Kreiraj dokumente"
-
-#~ msgid "Delete documents"
-#~ msgstr "Obriši dokumente"
-
-#~ msgid "Trash documents"
-#~ msgstr "Dokumenti za otpatke"
-
-#~ msgid "Download documents"
-#~ msgstr "Download dokumenata"
-
-#~ msgid "Edit documents"
-#~ msgstr "Izmijeni dokument"
-
-#~ msgid "Create new document versions"
-#~ msgstr "Kreiraj novu verziju dokumenta"
-
-#~ msgid "Edit document properties"
-#~ msgstr "Izmijeni osobine dokumenta"
-
-#~ msgid "Print documents"
-#~ msgstr "Štampajte dokumente"
-
-#~ msgid "Restore trashed document"
-#~ msgstr "Obnovite povučeni dokument"
-
-#~ msgid "Execute document modifying tools"
-#~ msgstr "Izvrši alate za izmjenu dokumenta"
-
-#~ msgid "Revert documents to a previous version"
-#~ msgstr "Vrati dokument na prethodnu verziju"
-
-#~ msgid "View documents' versions list"
-#~ msgstr "Pregledajte listu verzija dokumenata"
-
-#~ msgid "View documents"
-#~ msgstr "Pregled dokumenata"
-
-#~ msgid "Create document types"
-#~ msgstr "Kreiraj tipove dokumenata"
-
-#~ msgid "Delete document types"
-#~ msgstr "Obriši tipove dokumenata"
-
-#~ msgid "View document types"
-#~ msgstr "Pregledaj tipove dokumenata"
-
-#~ msgid "Converter"
-#~ msgstr "Konverter"
-
-#~ msgid "Documents periodic"
-#~ msgstr "Dokumenti periodični"
-
-#~ msgid "Uploads"
-#~ msgstr "Uploads"
-
-#~ msgid "Generate document page image"
-#~ msgstr "Generišite sliku dokumenta dokumenta"
-
-#~ msgid "Delete a document"
-#~ msgstr "Izbrišite dokument"
-
-#~ msgid "Check document type delete periods"
-#~ msgstr "Proverite periode izbrisanja dokumenta"
-
-#~ msgid "Check document type trash periods"
-#~ msgstr "Proverite periode otpada dokumenta"
-
-#~ msgid "Delete document stubs"
-#~ msgstr "Obrišite ispravke dokumenata"
-
-#~ msgid "Update document page count"
-#~ msgstr "Ažurirajte broj stranice dokumenta"
-
-#~ msgid "Upload new document version"
-#~ msgstr "Otpremite novu verziju dokumenta"
-
-#~ msgid ""
-#~ "Detect the orientation of each of the document's pages and create a "
-#~ "corresponding rotation transformation to display it rightside up. This is "
-#~ "an experimental feature and it is disabled by default."
-#~ msgstr ""
-#~ "Otkrijte orijentaciju svake stranice dokumenta i kreirajte odgovarajuću "
-#~ "transformaciju rotacije da biste je prikazali. Ovo je eksperimentalna "
-#~ "funkcija i ona je podrazumevano onemogućena."
-
-#~ msgid "Default documents language (in ISO639-3 format)."
-#~ msgstr "Podrazumevani jezik dokumenta (u formatu ISO639-3)."
-
-#~ msgid "List of supported document languages. In ISO639-3 format."
-#~ msgstr "Lista podržanih jezika dokumenata. U formatu ISO639-3."
-
-#~ msgid "Amount in degrees to rotate a document page per user interaction."
-#~ msgstr "Iznos u stepenima za rotaciju stranice dokumenta po korisniku."
-
-#~ msgid ""
-#~ "Maximum amount in percent (%) to allow user to zoom in a document page "
-#~ "interactively."
-#~ msgstr ""
-#~ "Maksimalni dozvoljeni iznos u procentima (%)  korisniku da zumira "
-#~ "stranicu dokumenta."
-
-#~ msgid ""
-#~ "Minimum amount in percent (%) to allow user to zoom out a document page "
-#~ "interactively."
-#~ msgstr ""
-#~ "Minimalni dozvoljeni iznos u procentima (%) po korisniku da zumira "
-#~ "stranicu dokumenta."
-
-#~ msgid ""
-#~ "Amount in percent zoom in or out a document page per user interaction."
-#~ msgstr ""
-#~ "Iznos u procentima zumiranja stranice dokumenta po korisničkoj sesiji."
-
-#~ msgid "January"
-#~ msgstr "Januar"
-
-#~ msgid "February"
-#~ msgstr "Februar"
-
-#~ msgid "March"
-#~ msgstr "Mart"
-
-#~ msgid "April"
-#~ msgstr "April"
-
-#~ msgid "May"
-#~ msgstr "Maj"
-
-#~ msgid "June"
-#~ msgstr "Jun"
-
-#~ msgid "July"
-#~ msgstr "Juli"
-
-#~ msgid "August"
-#~ msgstr "Avgust"
-
-#~ msgid "September"
-#~ msgstr "Septembar"
-
-#~ msgid "October"
-#~ msgstr "Oktobar"
-
-#~ msgid "November"
-#~ msgstr "Novembar"
-
-#~ msgid "December"
-#~ msgstr "Decembar"
-
-#~ msgid "New documents per month"
-#~ msgstr "Novi dokumenti mesečno"
-
-#~ msgid "New document versions per month"
-#~ msgstr "Nove verzije dokumenta mesečno"
-
-#~ msgid "New document pages per month"
-#~ msgstr "Nove stranice dokumenta mesečno"
-
-#~ msgid "Total documents at each month"
-#~ msgstr "Ukupni dokumenti svakog meseca"
-
-#~ msgid "Total document versions at each month"
-#~ msgstr "Ukupne verzije dokumenata svakog meseca"
-
-#~ msgid "Total document pages at each month"
-#~ msgstr "Ukupne stranice dokumenta svakog meseca"
-
-#~ msgid ""
-#~ "\n"
-#~ "                    Page %(page_number)s of %(total_pages)s\n"
-#~ "                "
-#~ msgstr ""
-#~ "\n"
-#~ "                    Stranica %(page_number)s od %(total_pages)s\n"
-#~ "                "
-
-#~ msgid "No pages to display"
-#~ msgstr "Nema stranica za prikazivanje"
-
-#~ msgid "Pages for document: %s"
-#~ msgstr "Stranice za dokument: %s"
-
-#~ msgid "There are no more pages in this document"
-#~ msgstr "Ovaj dokument nema više stranica."
-
-#~ msgid "You are already at the first page of this document"
-#~ msgstr "Već ste na prvoj stranici ovog dokumenta"
-
-#~ msgid "Image of: %s"
-#~ msgstr "Slika od: %s"
-
-#~ msgid "Documents of type: %s"
-#~ msgstr "Dokumenti tipa: %s"
-
-#~ msgid "All documents of this type will be deleted too."
-#~ msgstr "Svi dokumenti ovog tipa takođe će biti izbrisani."
-
-#~ msgid "Delete the document type: %s?"
-#~ msgstr "Izbrišite tip dokumenta: %s?"
-
-#~ msgid "Create quick label for document type: %s"
-#~ msgstr "Kreirajte brzu etiketu za tip dokumenta: %s"
-
-#~ msgid ""
-#~ "Delete the quick label: %(label)s, from document type \"%(document_type)s"
-#~ "\"?"
-#~ msgstr ""
-#~ "Izbrišite brzu etiketu: %(label)s, iz dokumenta tipa \"%(document_type)s"
-#~ "\"?"
-
-#~ msgid ""
-#~ "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
-#~ msgstr ""
-#~ "Izmenite brzi znak \"%(filename)s\" iz dokumenta tipa \"%(document_type)s"
-#~ "\""
-
-#~ msgid "Quick labels for document type: %s"
-#~ msgstr "Brze etikete za tip dokumenta: %s"
-
-#~ msgid "Download document version"
-#~ msgstr "Preuzmite verziju dokumenta"
-
-#~ msgid "Versions of document: %s"
-#~ msgstr "Verzije dokumenta: %s"
-
-#~ msgid "All later version after this one will be deleted too."
-#~ msgstr "Sve naknadne verzije nakon ove će također biti obrisane."
-
-#~ msgid "Revert to this version?"
-#~ msgstr "Vratite se na ovu verziju?"
-
-#~ msgid "Document version reverted successfully"
-#~ msgstr "Verzija dokumenta uspješno vraćena"
-
-#~ msgid "Error reverting document version; %s"
-#~ msgstr "Greška pri vraćanju verzije dokumenta; %s"
-
-#~ msgid "Preview of document version: %s"
-#~ msgstr "Pregled verzije dokumenta: %s"
-
-#~ msgid "Document type change request performed on %(count)d document"
-#~ msgstr "Zahtev za izmenu tipa dokumenta izvršen na dokumentu %(count)d"
-
-#~ msgid "Document type change request performed on %(count)d documents"
-#~ msgstr "Zahtev za izmenu vrste dokumenta izvršen na dokumentima %(count)d"
-
-#~ msgid "Change"
-#~ msgstr "Promeni"
-
-#~ msgid "Change the type of the selected document"
-#~ msgid_plural "Change the type of the selected documents"
-#~ msgstr[0] "Promenite vrstu izabranog dokumenta"
-#~ msgstr[1] "Promenite vrstu izabranih dokumenata"
-#~ msgstr[2] "Promenite vrstu izabranih dokumenata"
-
-#~ msgid "Change the type of the document: %s"
-#~ msgstr "Promijenite vrstu dokumenta: %s"
-
-#~ msgid "Document type for \"%s\" changed successfully."
-#~ msgstr "Tip dokumenta za \"%s\" se uspešno promjenio."
-
-#~ msgid "Download"
-#~ msgstr "Download"
-
-#~ msgid "Preview of document: %s"
-#~ msgstr "Pregled dokumenta: %s"
-
-#~ msgid "Edit properties of document: %s"
-#~ msgstr "Izmenite svojstva dokumenta: %s"
-
-#~ msgid "Properties for document: %s"
-#~ msgstr "Osobine za dokument: %s"
-
-#~ msgid "%(count)d document queued for page count recalculation"
-#~ msgstr "%(count)d dokument stavljen u red za ponovni izračun broja stranica"
-
-#~ msgid "%(count)d documents queued for page count recalculation"
-#~ msgstr ""
-#~ "%(count)d dokumenti postavljeni redom za ponovni izračun broja stranica"
-
-#~ msgid "Recalculate the page count of the selected document?"
-#~ msgid_plural "Recalculate the page count of the selected documents?"
-#~ msgstr[0] "Ponovo izračunajte broj stranica izabranog dokumenta?"
-#~ msgstr[1] "Ponovo izračunajte broj stranica izabranih dokumenata?"
-#~ msgstr[2] "Ponovo izračunajte broj stranica izabranih dokumenata?"
-
-#~ msgid "Recalculate the page count of the document: %s?"
-#~ msgstr "Ponovo izračunajte broj stranica dokumenta: %s?"
-
-#~ msgid "Transformation clear request processed for %(count)d document"
-#~ msgstr "Zahtev za transformaciju obrađen za dokument %(count)d"
-
-#~ msgid "Transformation clear request processed for %(count)d documents"
-#~ msgstr "Zahtev za transformaciju obrađen za dokumente %(count)d"
-
-#~ msgid "Clear all the page transformations for the selected document?"
-#~ msgid_plural "Clear all the page transformations for the selected document?"
-#~ msgstr[0] "Obrišite sve transformacije stranice za izabrani dokument?"
-#~ msgstr[1] "Obrišite sve transformacije stranice za izabrani dokument?"
-#~ msgstr[2] "Obrišite sve transformacije stranice za izabrani dokument?"
-
-#~ msgid "Clear all the page transformations for the document: %s?"
-#~ msgstr "Obrišite sve transformacije stranice za dokument: %s?"
-
-#~ msgid ""
-#~ "Error deleting the page transformations for document: %(document)s; "
-#~ "%(error)s."
-#~ msgstr ""
-#~ "Greška brisanja transformacija za dokument: %(document)s; %(error)s."
-
-#~ msgid "Transformations cloned successfully."
-#~ msgstr "Transformacije su uspešno klonirane."
-
-#~ msgid "Submit"
-#~ msgstr "Podnijeti"
-
-#~ msgid "Clone page transformations for document: %s"
-#~ msgstr "Transformacije stranica klonova za dokument: %s"
-
-#~ msgid "Print: %s"
-#~ msgstr "Štampa: %s"
-
-#~ msgid "Add"
-#~ msgstr "Dodati"
-
-#~ msgid "Remove"
-#~ msgstr "Ukloniti"
-
-#~ msgid "Empty trash?"
-#~ msgstr "Prazno smeće?"
-
-#~ msgid "Pages: %d"
-#~ msgstr "Stranice: %d"

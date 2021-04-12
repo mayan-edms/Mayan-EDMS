@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
 "PO-Revision-Date: 2020-04-02 06:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -257,7 +257,7 @@ msgid "Document file created (historic)"
 msgstr ""
 
 #: events.py:113
-msgid "Document version revert"
+msgid "Document version reverted"
 msgstr ""
 
 #: events.py:116
@@ -839,7 +839,7 @@ msgid "Document version export to PDF"
 msgstr ""
 
 #: models/document_version_models.py:167
-msgid "Document exported."
+msgid "Document version exported."
 msgstr ""
 
 #: models/document_version_models.py:169
@@ -1187,8 +1187,8 @@ msgstr ""
 
 #: settings.py:167
 msgid ""
-"Maximum number of recently accessed documents (created, edited, viewed) "
-"documents to remember per user."
+"Maximum number of recently accessed documents (created, edited, viewed) to "
+"remember per user."
 msgstr ""
 
 #: settings.py:174

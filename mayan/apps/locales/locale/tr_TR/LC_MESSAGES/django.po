@@ -2,20 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+# serhatcan77 <serhat_can@yahoo.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:39+0000\n"
+"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2021\n"
+"Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:27
 msgid "Locales"
@@ -23,36 +26,36 @@ msgstr ""
 
 #: links.py:13
 msgid "Locale profile"
-msgstr ""
+msgstr "Yerel profil ayarı"
 
 #: links.py:18
 msgid "Edit locale profile"
-msgstr ""
+msgstr "Yerel profili düzenle"
 
 #: models.py:18
 msgid "User"
-msgstr ""
+msgstr "Kullanıcı"
 
 #: models.py:22
 msgid "Timezone"
-msgstr ""
+msgstr "Saat dilimi"
 
 #: models.py:25
 msgid "Language"
-msgstr ""
+msgstr "Dil"
 
 #: models.py:31
 msgid "User locale profile"
-msgstr ""
+msgstr "Kullanıcı yerel ayar profili"
 
 #: models.py:32
 msgid "User locale profiles"
-msgstr ""
+msgstr "Kullanıcı yerel ayar profilleri"
 
 #: views.py:24
 msgid "Current user locale profile details"
-msgstr ""
+msgstr "Geçerli kullanıcı yerel ayarları profil ayrıntıları"
 
 #: views.py:30
 msgid "Edit current user locale profile details"
-msgstr ""
+msgstr "Geçerli kullanıcı yerel ayarları ayrıntılarını düzenle"

@@ -2,26 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Roberto Rosario, 2019
-# Aline Freitas <aline@alinefreitas.com.br>, 2019
-# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2019
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020
-#
+# Roberto Rosario, 2021
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
+# Aline Freitas <aline@alinefreitas.com.br>, 2021
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2019-04-27 22:54+0000\n"
-"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
-"teams/13584/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: admin.py:13
@@ -61,17 +60,12 @@ msgid "EXIF Tool"
 msgstr "Ferramenta EXIF"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Document version submitted for file metadata processing"
 msgid "Document file submitted for file metadata processing"
 msgstr ""
-"Versão do documento enviada para processamento de metadados do arquivo."
 
 #: events.py:14
-#, fuzzy
-#| msgid "Document version file metadata processing finished"
 msgid "Document file file metadata processing finished"
-msgstr "Processamento de metadados do arquivo da versão do documento"
+msgstr ""
 
 #: links.py:23
 msgid "Attributes"
@@ -99,10 +93,8 @@ msgid "Return the specified document file metadata entry."
 msgstr "Retorne a entrada dos metadados do documento especificado."
 
 #: methods.py:66
-#, fuzzy
-#| msgid "Return the specified document file metadata entry."
 msgid "Return the specified document file file metadata entry."
-msgstr "Retorne a entrada dos metadados do documento especificado."
+msgstr ""
 
 #: models.py:18
 msgid "Driver path"
@@ -122,7 +114,7 @@ msgstr "Drivers"
 
 #: models.py:48
 msgid "Document type"
-msgstr "Tipo de Documento"
+msgstr "Tipo de documento"
 
 #: models.py:52
 msgid "Automatically queue newly created documents for processing."
@@ -138,22 +130,16 @@ msgid "Document types settings"
 msgstr "Configurações de tipos de documentos"
 
 #: models.py:74
-#, fuzzy
-#| msgid "Document type"
 msgid "Document file"
-msgstr "Tipo de Documento"
+msgstr ""
 
 #: models.py:80 models.py:95
-#, fuzzy
-#| msgid "Document version driver entry"
 msgid "Document file driver entry"
-msgstr "Entrada do driver da versão do documento"
+msgstr ""
 
 #: models.py:81
-#, fuzzy
-#| msgid "Document version driver entries"
 msgid "Document file driver entries"
-msgstr "Entradas do drivers da versão do documento"
+msgstr ""
 
 #: models.py:88
 msgid "Attribute count"
@@ -196,10 +182,8 @@ msgid "View file metadata"
 msgstr "Ver metadados do arquivo"
 
 #: queues.py:10
-#, fuzzy
-#| msgid "Process document version"
 msgid "Process document file"
-msgstr "Processar versão do documento"
+msgstr ""
 
 #: settings.py:18
 msgid ""
@@ -215,24 +199,22 @@ msgstr "Argumentos para os drivers"
 
 #: views.py:44
 msgid ""
-"File metadata are the attributes of the document's file. They can range from "
-"camera information used to take a photo to the author that created a file. "
+"File metadata are the attributes of the document's file. They can range from"
+" camera information used to take a photo to the author that created a file. "
 "File metadata are set when the document's file was first created. File "
 "metadata attributes reside in the file itself. They are not the same as the "
 "document metadata, which are user defined and reside in the database."
 msgstr ""
 "Metadados do arquivo são atributos do arquivo do documento. Eles podem ser "
-"desde informações da câmera usada para tirar a foto até o author que criou o "
-"arquivo. Metadados do arquivos são inicialmente definidos quando o documento "
-"é inicialmente criado. Os atributos de metadados residem no arquivo em si. "
-"Eles não são a mesma coisa que os metadados do documento, que são definidos "
-"pelo usuário e são armazenados no banco de dados."
+"desde informações da câmera usada para tirar a foto até o author que criou o"
+" arquivo. Metadados do arquivos são inicialmente definidos quando o "
+"documento é inicialmente criado. Os atributos de metadados residem no "
+"arquivo em si. Eles não são a mesma coisa que os metadados do documento, que"
+" são definidos pelo usuário e são armazenados no banco de dados."
 
 #: views.py:52
-#, fuzzy
-#| msgid "No file metadata available"
 msgid "No file metadata available."
-msgstr "Nenhum metadado de arquivo disponível"
+msgstr "Não há metadados do arquivo disponíveis"
 
 #: views.py:55
 #, python-format
@@ -250,27 +232,20 @@ msgstr ""
 "para o tipo de arquivo deste documento."
 
 #: views.py:86
-#, fuzzy
-#| msgid "No file metadata available for this driver"
 msgid "No file metadata available for this driver."
-msgstr "Nenhum metadado de arquivo disponível para este driver"
+msgstr ""
 
 #: views.py:90
-#, fuzzy, python-format
-#| msgid "File metadata attribures for: %(document)s, for driver: %(driver)s"
-msgid "File metadata attributes for: %(document_file)s with driver: %(driver)s"
+#, python-format
+msgid ""
+"File metadata attributes for: %(document_file)s with driver: %(driver)s"
 msgstr ""
-"Atributos de metadados de arquivo para: %(document)s do driver: %(driver)s"
 
 #: views.py:119
-#, fuzzy
-#| msgid "Submit the selected document to the file metadata queue?"
-#| msgid_plural "Submit the selected documents to the file metadata queue?"
 msgid "Submit the selected document file to the file metadata queue?"
 msgid_plural "Submit the selected documents files to the file metadata queue?"
-msgstr[0] "Enviar o documento selecionado para a fila de metadados de arquivo?"
+msgstr[0] ""
 msgstr[1] ""
-"Enviar os documentos selecionados para a fila de metadados de arquivo?"
 
 #: views.py:145
 #, python-format
@@ -289,10 +264,3 @@ msgid "%(count)d documents added to the file metadata processing queue."
 msgstr ""
 "%(count)d documentos adicionados para a fila de processamento de metadados "
 "de arquivo."
-
-#~ msgid "Return the specified document version file metadata entry."
-#~ msgstr ""
-#~ "Retorne a entrada dos metadados da versão do documento especificado."
-
-#~ msgid "Document version"
-#~ msgstr "Versão do Documento"

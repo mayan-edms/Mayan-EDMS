@@ -1,24 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Renata Oliveira <renatabels@gmail.com>, 2011
-# Vítor Figueiró <vfigueiro@gmail.com>, 2012
+# Roberto Rosario, 2021
+# Emerson Soares <on.emersonsoares@gmail.com>, 2021
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-03-06 15:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021\n"
+"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:22
@@ -135,7 +136,8 @@ msgid "Slug"
 msgstr "Slug"
 
 #: models.py:47
-msgid "Causes this index to be visible and updated when document data changes."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
 msgstr ""
 "Faz com que este índice seja visível e atualizado quando os dados do "
 "documento forem alterados."
@@ -166,8 +168,8 @@ msgstr ""
 
 #: models.py:234
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 msgstr ""
 "Escolha esta opção para que este nó atue como contentor para documentos e "
 "não como pai de outros nós."
@@ -244,36 +246,28 @@ msgid "Indexing"
 msgstr "Indexação"
 
 #: permissions.py:8
-#, fuzzy
-#| msgid "Index instance"
 msgid "View index instances"
-msgstr "index instance"
+msgstr ""
 
 #: permissions.py:11
-#, fuzzy
-#| msgid "Create new document indexes"
 msgid "Create new index templates"
-msgstr "Criar novos índices de documento"
+msgstr ""
 
 #: permissions.py:14
 msgid "Edit index templates"
 msgstr ""
 
 #: permissions.py:17
-#, fuzzy
-#| msgid "Delete document indexes"
 msgid "Delete index templates"
-msgstr "Eliminar índices de documento"
+msgstr ""
 
 #: permissions.py:20
 msgid "View index templates"
 msgstr ""
 
 #: permissions.py:23 views/index_template_views.py:310
-#, fuzzy
-#| msgid "Rebuild document indexes"
 msgid "Rebuild index templates"
-msgstr "Reconstruir índices de documento"
+msgstr ""
 
 #: queues.py:12
 msgid "Delete empty index nodes"
@@ -321,8 +315,8 @@ msgstr ""
 
 #: serializers.py:215
 msgid ""
-"URL of the API endpoint showing the list document types associated with this "
-"index template."
+"URL of the API endpoint showing the list document types associated with this"
+" index template."
 msgstr ""
 
 #: serializers.py:222
@@ -344,9 +338,9 @@ msgstr ""
 
 #: settings.py:14
 msgid ""
-"Amount of time in seconds, a failed indexing task will wait before retrying. "
-"Lower values will increase the speed at which documents are indexed but will "
-"cause a higher count of failed/retried tasks in the queue."
+"Amount of time in seconds, a failed indexing task will wait before retrying."
+" Lower values will increase the speed at which documents are indexed but "
+"will cause a higher count of failed/retried tasks in the queue."
 msgstr ""
 
 #: views/index_instance_views.py:38
@@ -407,8 +401,8 @@ msgstr ""
 #: views/index_template_views.py:90
 msgid ""
 "Indexes group document automatically into levels. Indexes are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views/index_template_views.py:95
@@ -466,10 +460,9 @@ msgid "Edit the index template node: %s?"
 msgstr ""
 
 #: views/index_template_views.py:283
-#, fuzzy, python-format
-#| msgid "Rebuild document indexes"
+#, python-format
 msgid "Rebuild index template: %s"
-msgstr "Reconstruir índices de documento"
+msgstr ""
 
 #: views/index_template_views.py:303
 msgid "Index template queued for rebuild."
@@ -492,9 +485,3 @@ msgstr[1] ""
 #: views/index_template_views.py:370
 msgid "Index templates for which their instances will be deleted."
 msgstr ""
-
-#~ msgid "Edit document indexes"
-#~ msgstr "Editar índices de documento"
-
-#~ msgid "View document indexes"
-#~ msgstr "Ver índices  de documento"

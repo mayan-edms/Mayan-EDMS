@@ -1,29 +1,30 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014,2017
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014
-# Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
-# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2012
-# SadE54 <yannsuisini@gmail.com>, 2013
-# Thierry Schott <DarkDare@users.noreply.github.com>, 2016
-# Yves Dubois <ydubois@gmail.com>, 2018
+# Roberto Rosario, 2021
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
+# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2021
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
+# Baptiste GAILLET <baptiste.gaillet@cstb.fr>, 2021
+# Yves Dubois <ydubois@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:76 events.py:6 permissions.py:6
@@ -124,10 +125,8 @@ msgid "User details"
 msgstr "Détails de l'utilisateur"
 
 #: links.py:24
-#, fuzzy
-#| msgid "Edit details"
 msgid "Edit user details"
-msgstr "Modifier les informations"
+msgstr "Modifier les détails de l'utilisateur"
 
 #: links.py:29 views.py:54
 msgid "Create new group"
@@ -205,7 +204,8 @@ msgstr ""
 
 #: serializers.py:60
 msgid "List of group primary keys to which to add the user."
-msgstr "Liste des clés primaires de groupe auxquelles ajouter cet utilisateur."
+msgstr ""
+"Liste des clés primaires de groupe auxquelles ajouter cet utilisateur."
 
 #: utils.py:6
 msgid "Anonymous"
@@ -236,9 +236,9 @@ msgid ""
 "roles for permissions and access control, add groups to them."
 msgstr ""
 "Les groupes d'utilisateurs sont des unités d'organisation. Ils doivent "
-"refléter les unités organisationnelles de votre organisation. Les groupes ne "
-"peuvent pas être utilisés pour le contrôle d'accès. Utilisez les rôles pour "
-"les autorisations et le contrôle d'accès, ajoutez-leur des groupes."
+"refléter les unités organisationnelles de votre organisation. Les groupes ne"
+" peuvent pas être utilisés pour le contrôle d'accès. Utilisez les rôles pour"
+" les autorisations et le contrôle d'accès, ajoutez-leur des groupes."
 
 #: views.py:119
 msgid "There are no user groups"
@@ -272,7 +272,7 @@ msgstr ""
 #: views.py:185
 msgid "Delete user"
 msgid_plural "Delete users"
-msgstr[0] "Supprimer l'utilisateur"
+msgstr[0] "Supprimer l&#39;utilisateur"
 msgstr[1] "Supprimer les utilisateurs"
 
 #: views.py:195
@@ -296,8 +296,7 @@ msgstr "Utilisateur \"%s\" supprimé avec succès."
 #: views.py:220
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
-msgstr ""
-"Erreur lors de la suppression de l'utilisateur \"%(user)s\" : %(error)s"
+msgstr "Erreur lors de la suppression de l'utilisateur \"%(user)s\" : %(error)s"
 
 #: views.py:238
 #, python-format

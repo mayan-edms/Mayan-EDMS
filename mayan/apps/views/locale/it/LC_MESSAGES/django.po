@@ -2,25 +2,26 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2020
-# Marco Camplese <marco.camplese.mc@gmail.com>, 2020
-# Daniele Bortoluzzi <daniele@elkos.it>, 2020
 # Roberto Rosario, 2021
-#
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
+# Giovanni Tricarico <gtricarico92@gmail.com>, 2021
+# Daniele Bortoluzzi <daniele@elkos.it>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
-"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:15 settings.py:7
@@ -37,11 +38,11 @@ msgstr "Nessuno"
 
 #: forms.py:284
 msgid "Label"
-msgstr ""
+msgstr "Etichetta"
 
 #: forms.py:288
 msgid "Relationship"
-msgstr ""
+msgstr "Relazione"
 
 #: generics.py:146
 msgid ""
@@ -82,13 +83,11 @@ msgstr "Rimuovi"
 #: generics.py:531
 #, python-format
 msgid "Error updating relationship; %s"
-msgstr ""
+msgstr "Errore durante l'aggiornamento della relazione; %s"
 
 #: generics.py:538
-#, fuzzy
-#| msgid "%(object)s updated successfully."
 msgid "Relationships updated successfully"
-msgstr "%(object)s aggiornato con successo."
+msgstr "Relazioni aggiornate con successo"
 
 #: generics.py:597
 #, python-format
@@ -126,22 +125,19 @@ msgid "%(object)s updated successfully."
 msgstr "%(object)s aggiornato con successo."
 
 #: generics.py:885
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "\"%(object)s\" deleted successfully."
-msgstr "%(object)s cancellato con successo.."
+msgstr ""
 
 #: generics.py:886
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "%(count)d object deleted successfully."
-msgstr "%(object)s cancellato con successo.."
+msgstr ""
 
 #: generics.py:887
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "%(count)d objects deleted successfully."
-msgstr "%(object)s cancellato con successo.."
+msgstr ""
 
 #: generics.py:888
 #, python-format

@@ -1,26 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
-# www.ping.ba <jomer@ping.ba>, 2013
+# Roberto Rosario, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-02-14 02:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bs/)\n"
-"Language: bs\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:26+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:40
 msgid "Linking"
@@ -188,8 +186,8 @@ msgstr "Atribut inostranih dokumenata"
 
 #: models.py:178
 msgid ""
-"The expression using document properties to be evaluated against the foreign "
-"document field."
+"The expression using document properties to be evaluated against the foreign"
+" document field."
 msgstr ""
 
 #: models.py:180
@@ -269,8 +267,7 @@ msgstr "Dokumenti u pametnom linku:%s"
 
 #: views.py:117
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr ""
 "Dokumenti u pametnom linku \"%(smart_link)s\" koji se odnose na "
 "\"%(document)s\""
@@ -352,13 +349,3 @@ msgstr "Izbriši uslov za smart link:\"%s\"?"
 #: views.py:376
 msgid "Edit smart link condition"
 msgstr "Izmjeniti uslove smart linka"
-
-#~ msgid ""
-#~ "Comma separated list of document type primary keys to which this smart "
-#~ "link will be attached."
-#~ msgstr ""
-#~ "Lista odvojenih primarnih ključeva tipova dokumenata na koje se povezuje "
-#~ "ova pametna veza."
-
-#~ msgid "No such document type: %s"
-#~ msgstr "Nema takve vrste dokumenta:%s"

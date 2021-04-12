@@ -1,23 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# molnars <szabolcs.molnar@gmail.com>, 2017
+# Dezső József <dejo60@gmail.com>, 2021
+# molnars <szabolcs.molnar@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/hu/)\n"
-"Language: hu\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2021\n"
+"Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:47 apps.py:120 apps.py:124 apps.py:128 apps.py:133 apps.py:137
@@ -140,55 +141,42 @@ msgid "Remove tags from documents"
 msgstr "Címkék levétele a dokumentumokról"
 
 #: serializers.py:33
-#, fuzzy
-#| msgid "Primary key of the tag to be added."
 msgid "Primary key of the tag to add to the document."
-msgstr "A hozzáadandó címke elsődleges kulcsa."
+msgstr ""
 
 #: serializers.py:41
-#, fuzzy
-#| msgid "Primary key of the tag to be added."
 msgid "Primary key of the tag to remove from the document."
-msgstr "A hozzáadandó címke elsődleges kulcsa."
+msgstr ""
 
 #: views.py:36
-#, fuzzy, python-format
-#| msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
+#, python-format
 msgid "Tags attached to document \"%(object)s\" successfully."
 msgstr ""
-"A \"%(tag)s\" címke sikeresen hozzárendelve a \"%(document)s\" dokumentumhoz."
 
 #: views.py:39
-#, fuzzy, python-format
-#| msgid "Tag attach request performed on %(count)d documents"
+#, python-format
 msgid "Tags attached to %(count)d document successfully."
-msgstr "Címke hozzárendelés elvégezve %(count)d dokumentumokon"
+msgstr ""
 
 #: views.py:42
-#, fuzzy, python-format
-#| msgid "Tag attach request performed on %(count)d documents"
+#, python-format
 msgid "Tags attached to %(count)d documents successfully."
-msgstr "Címke hozzárendelés elvégezve %(count)d dokumentumokon"
+msgstr ""
 
 #: views.py:44
-#, fuzzy, python-format
-#| msgid "Attach tags to document: %s"
+#, python-format
 msgid "Attach tags to document: %(object)s"
-msgstr "Cimkék hozzárendelése dokumentumhoz: %s"
+msgstr ""
 
 #: views.py:45
-#, fuzzy, python-format
-#| msgid "Attach tags to %(count)d document"
-#| msgid_plural "Attach tags to %(count)d documents"
+#, python-format
 msgid "Attach tags to %(count)d document."
-msgstr "Cimkék hozzárendelése %(count)d dokumentumhoz"
+msgstr ""
 
 #: views.py:46
-#, fuzzy, python-format
-#| msgid "Attach tags to %(count)d document"
-#| msgid_plural "Attach tags to %(count)d documents"
+#, python-format
 msgid "Attach tags to %(count)d documents."
-msgstr "Cimkék hozzárendelése %(count)d dokumentumhoz"
+msgstr ""
 
 #: views.py:50
 msgid "Attach"
@@ -203,48 +191,39 @@ msgid "Create tag"
 msgstr "Címke készítése"
 
 #: views.py:116
-#, fuzzy, python-format
-#| msgid "Error deleting tag \"%(tag)s\": %(error)s"
+#, python-format
 msgid "Error deleting tag \"%(instance)s\"; %(exception)s"
-msgstr "Hiba a \"%(tag)s\" címke törlése közben: %(error)s"
+msgstr ""
 
 #: views.py:121
-#, fuzzy, python-format
-#| msgid "Tag \"%s\" deleted successfully."
+#, python-format
 msgid "Tag \"%(object)s\" deleted successfully."
-msgstr "\"%s\" címke sikeres törlése."
+msgstr ""
 
 #: views.py:122
-#, fuzzy, python-format
-#| msgid "Tag \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d tag deleted successfully."
-msgstr "\"%s\" címke sikeres törlése."
+msgstr ""
 
 #: views.py:123
-#, fuzzy, python-format
-#| msgid "Tag \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d tags deleted successfully."
-msgstr "\"%s\" címke sikeres törlése."
+msgstr ""
 
 #: views.py:124
-#, fuzzy, python-format
-#| msgid "Delete tags"
+#, python-format
 msgid "Delete tag: %(object)s."
-msgstr "Címkék tölrése"
+msgstr ""
 
 #: views.py:125
-#, fuzzy, python-format
-#| msgid "Delete the selected tag?"
-#| msgid_plural "Delete the selected tags?"
+#, python-format
 msgid "Delete the %(count)d selected tag."
-msgstr "Törli a kiválasztott címkét?"
+msgstr ""
 
 #: views.py:126
-#, fuzzy, python-format
-#| msgid "Delete the selected tag?"
-#| msgid_plural "Delete the selected tags?"
+#, python-format
 msgid "Delete the %(count)d selected tags."
-msgstr "Törli a kiválasztott címkét?"
+msgstr ""
 
 #: views.py:131
 msgid "Will be removed from all documents."
@@ -280,42 +259,34 @@ msgid "Tags for document: %s"
 msgstr "Címkék a dokumentumon: %s"
 
 #: views.py:257
-#, fuzzy, python-format
-#| msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
+#, python-format
 msgid "Tags removed from document \"%(object)s\" successfully."
 msgstr ""
-"A \"%(tag)s\" címke sikeresen leszedésre került a \"%(document)s\" "
-"dokumentumról."
 
 #: views.py:260
-#, fuzzy, python-format
-#| msgid "Tag remove request performed on %(count)d documents"
+#, python-format
 msgid "Tags removed from %(count)d document successfully."
-msgstr "Címke levételi kérés végrehajtva %(count)d dokumentumon"
+msgstr ""
 
 #: views.py:263
-#, fuzzy, python-format
-#| msgid "Tag remove request performed on %(count)d documents"
+#, python-format
 msgid "Tags removed from %(count)d documents successfully."
-msgstr "Címke levételi kérés végrehajtva %(count)d dokumentumon"
+msgstr ""
 
 #: views.py:265
-#, fuzzy, python-format
-#| msgid "Remove tags from document: %s"
+#, python-format
 msgid "Remove tags from document: %(object)s"
-msgstr "Címkék levétele %s dokumentumról"
+msgstr ""
 
 #: views.py:266
-#, fuzzy, python-format
-#| msgid "Remove tags from documents"
+#, python-format
 msgid "Remove tags from %(count)d document."
-msgstr "Címkék levétele a dokumentumokról"
+msgstr ""
 
 #: views.py:267
-#, fuzzy, python-format
-#| msgid "Remove tags from documents"
+#, python-format
 msgid "Remove tags from %(count)d documents."
-msgstr "Címkék levétele a dokumentumokról"
+msgstr ""
 
 #: views.py:272
 msgid "Remove"
@@ -340,35 +311,3 @@ msgstr ""
 #: workflow_actions.py:63
 msgid "Tags to remove from the document"
 msgstr ""
-
-#~ msgid ""
-#~ "Comma separated list of document primary keys to which this tag will be "
-#~ "attached."
-#~ msgstr ""
-#~ "Vesszővel elválasztott lista az elsődleges dokumentum kulcsokkal amihez "
-#~ "ez a címke hozzá lesz rendelve."
-
-#~ msgid ""
-#~ "API URL pointing to a tag in relation to the document attached to it. "
-#~ "This URL is different than the canonical tag URL."
-#~ msgstr ""
-#~ "A dokumentumhoz kapcsolt címke API URL hivatkozása. Ez az URL más a "
-#~ "kanonikus címke URL-től. "
-
-#~ msgid "Tag attach request performed on %(count)d document"
-#~ msgstr "Címke hozzárendelés elvégezve %(count)d dokumentumra"
-
-#~ msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
-#~ msgstr "A \"%(document)s\" dokumentum már meg van címkézve mint \"%(tag)s\""
-
-#~ msgid "Tag delete request performed on %(count)d tag"
-#~ msgstr "Címke tölrési kérés végrehajtva %(count)d címkén"
-
-#~ msgid "Tag delete request performed on %(count)d tags"
-#~ msgstr "Címke tölrési kérés végrehajtva %(count)d címkén"
-
-#~ msgid "Tag remove request performed on %(count)d document"
-#~ msgstr "Címke levételi kérés végrehajtva %(count)d dokumentumon"
-
-#~ msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
-#~ msgstr "A \"%(document)s\" dokumentum nem lett \"%(tag)s\"-el megcímkézve"

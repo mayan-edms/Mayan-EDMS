@@ -1,25 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Māris Teivāns <maris.teivans@gmail.com>, 2019-2020
+# Māris Teivāns <maris.teivans@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-11-23 10:24+0000\n"
-"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/lv/)\n"
-"Language: lv\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:12+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
+"Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:24 classes.py:143 links.py:27
 msgid "ACLs"
@@ -32,10 +31,8 @@ msgid ""
 msgstr ""
 
 #: apps.py:63
-#, fuzzy
-#| msgid "Object ID"
 msgid "Object"
-msgstr "Objekta ID"
+msgstr "Objekts"
 
 #: events.py:6 permissions.py:5
 msgid "Access control lists"
@@ -46,10 +43,8 @@ msgid "ACL created"
 msgstr "PKS izveidots"
 
 #: events.py:13
-#, fuzzy
-#| msgid "ACL edited"
 msgid "ACL deleted"
-msgstr "PKS rediģēts"
+msgstr ""
 
 #: events.py:16
 msgid "ACL edited"
@@ -111,22 +106,12 @@ msgid "View ACLs"
 msgstr "Skatīt PKS"
 
 #: serializers.py:125
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
-"Primārā atslēga priekš jaunās atļaujas, ko piešķirt piekļuves kontroles "
-"sarakstam."
 
 #: serializers.py:132
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
-"Primārā atslēga priekš jaunās atļaujas, ko piešķirt piekļuves kontroles "
-"sarakstam."
 
 #: views.py:40
 #, python-format
@@ -191,16 +176,12 @@ msgstr ""
 "mātes objekta PKS vai no lomas, izmantojot Setup izvēlni."
 
 #: views.py:256
-#, fuzzy
-#| msgid "There are no ACLs for this object"
 msgid "There are no ACLs"
-msgstr "Šim objektam nav neviens PKS"
+msgstr ""
 
 #: views.py:265
-#, fuzzy
-#| msgid "Access control lists"
 msgid "Global access control lists"
-msgstr "Piekļuves kontroles saraksti"
+msgstr ""
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -215,7 +196,8 @@ msgid "Object ID"
 msgstr "Objekta ID"
 
 #: workflow_actions.py:35
-msgid "Numeric identifier of the object for which the access will be modified."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
 msgstr "Objekta, kuram tiks rediģēta piekļuve, skaitliskais identifikators."
 
 #: workflow_actions.py:40 workflow_actions.py:155
@@ -246,31 +228,3 @@ msgstr "Piešķirt piekļuvi dokumentam"
 #: workflow_actions.py:211
 msgid "Revoke document access"
 msgstr "Atsaukt piekļuvi dokumentam"
-
-#~ msgid ""
-#~ "API URL pointing to the list of permissions for this access control list."
-#~ msgstr ""
-#~ "API URL, kas norāda uz piekļuves kontroles saraksta atļauju sarakstu."
-
-#~ msgid ""
-#~ "API URL pointing to a permission in relation to the access control list "
-#~ "to which it is attached. This URL is different than the canonical "
-#~ "workflow URL."
-#~ msgstr ""
-#~ "API URL, kas norāda uz atļauju saistībā ar piekļuves kontroles sarakstu, "
-#~ "kuram tas ir pievienots. Šis URL atšķiras no kanoniskā darbplūsmas URL."
-
-#~ msgid "No such permission: %s"
-#~ msgstr "Šādas atļaujas nav: %s"
-
-#~ msgid ""
-#~ "Comma separated list of permission primary keys to grant to this access "
-#~ "control list."
-#~ msgstr ""
-#~ "Ar komatu atdalīts saraksts ar atļauju primārajām atslēgām, kuras "
-#~ "piešķirt šim piekļuves kontroles sarakstam."
-
-#~ msgid "Primary keys of the role to which this access control list binds to."
-#~ msgstr ""
-#~ "Primārās atslēgas lomai, pie kuras šis piekļuves kontroles saraksts ir "
-#~ "piesaistīts."

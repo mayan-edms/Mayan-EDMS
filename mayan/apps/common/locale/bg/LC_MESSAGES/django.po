@@ -1,24 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2012
+# Roberto Rosario, 2021
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-10-02 19:24+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:125 permissions.py:5 settings.py:15
@@ -148,7 +149,7 @@ msgstr "Допълнително"
 
 #: menus.py:18
 msgid "Return"
-msgstr ""
+msgstr "Връщане"
 
 #: menus.py:22
 msgid "User"
@@ -170,57 +171,38 @@ msgstr ""
 
 #: settings.py:30
 msgid ""
-"In list mode, show the \"object\" menu options as a dropdown menu instead of "
-"individual buttons."
+"In list mode, show the \"object\" menu options as a dropdown menu instead of"
+" individual buttons."
 msgstr ""
 
 #: settings.py:37
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
 msgstr ""
-"Време за забавяне на фоновите задачи, които зависят от запис в базата данни, "
-"за да се изпълнят."
+"Време за забавяне на фоновите задачи, които зависят от запис в базата данни,"
+" за да се изпълнят."
 
 #: settings.py:44
-#, fuzzy
-#| msgid ""
-#| "A list of strings designating all applications that are to be removed "
-#| "from the list normally installed by Mayan EDMS. Each string should be a "
-#| "dotted Python path to: an application configuration class (preferred), or "
-#| "a package containing an application."
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
-"Списък с низове, обозначаващи всички приложения, които трябва да бъдат "
-"премахнати от списъка, обикновено инсталиран от Mayan EDMS. Всеки низ трябва "
-"да бъде подчертан Python път към: клас на конфигурация на приложението "
-"(предпочитан) или пакет, съдържащ приложение."
 
 #: settings.py:54
-#, fuzzy
-#| msgid ""
-#| "A list of strings designating all applications that are installed beyond "
-#| "those normally installed by Mayan EDMS. Each string should be a dotted "
-#| "Python path to: an application configuration class (preferred), or a "
-#| "package containing an application."
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
-"Списък на низове, обозначаващи всички приложения, които са инсталирани извън "
-"тези, които обикновено се инсталират от Mayan EDMS. Всеки низ трябва да бъде "
-"подчертан Python път към: клас на конфигурация на приложението (предпочитан) "
-"или пакет, съдържащ приложение."
 
 #: settings.py:64
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
 msgstr ""
 "Име на изгледа, прикрепен към котвата на марката в главното меню. Това е и "
 "изгледът, към който потребителите ще бъдат пренасочени след влизане."
@@ -239,11 +221,11 @@ msgstr "Основен път за URL адрес, който да се изпо
 
 #: templates/common/app/viewport.html:9
 msgid "Warning"
-msgstr ""
+msgstr "Предупреждение"
 
 #: templates/common/app/viewport.html:21
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Кликнете тук, за да поправите това."
 
 #: validators.py:41
 msgid "Enter a valid JSON value."
@@ -258,7 +240,8 @@ msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
 msgstr ""
-"Въведете валидно „вътрешно име“, състоящо се от букви, цифри и подчертавания."
+"Въведете валидно „вътрешно име“, състоящо се от букви, цифри и "
+"подчертавания."
 
 #: views.py:22
 msgid "About"
@@ -305,27 +288,3 @@ msgstr "Тук можете да конфигурирате всички асп�
 #: views.py:124
 msgid "These modules are used to do system maintenance."
 msgstr "Тези модули се използват за поддръжка на системата."
-
-#~ msgid "Locale profile"
-#~ msgstr "Локален профил"
-
-#~ msgid "Edit locale profile"
-#~ msgstr "Редактиране на локален профил"
-
-#~ msgid "Timezone"
-#~ msgstr "Часова зона"
-
-#~ msgid "Language"
-#~ msgstr "Език"
-
-#~ msgid "User locale profile"
-#~ msgstr "Профил на местоположението на потребителя"
-
-#~ msgid "User locale profiles"
-#~ msgstr "Профили на местоположението на потребителя"
-
-#~ msgid "Current user locale profile details"
-#~ msgstr "Данни от текущия локален потребителски профил "
-
-#~ msgid "Edit current user locale profile details"
-#~ msgstr "Редактиране на данни за текущия локален потребителски профил"

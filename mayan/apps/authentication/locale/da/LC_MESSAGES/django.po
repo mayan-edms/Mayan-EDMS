@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Roberto Rosario, 2021
+# René Rovsing Bach <reroba@outlook.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: René Rovsing Bach <reroba@outlook.com>\n"
-"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"da/)\n"
-"Language: da\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: René Rovsing Bach <reroba@outlook.com>, 2021\n"
+"Language-Team: Danish (https://www.transifex.com/rosarior/teams/13584/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:32 events.py:6 permissions.py:6 settings.py:10
@@ -97,8 +99,8 @@ msgstr ""
 
 #: settings.py:22
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
-"in. Value is time in seconds."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
 msgstr ""
 
 #: settings.py:29
@@ -205,10 +207,3 @@ msgstr "Fejl ved nulstilling af password for bruger \"%(user)s\": %(error)s"
 #, python-format
 msgid "Impersonate user: %s"
 msgstr ""
-
-#~ msgid ""
-#~ "Super user and staff user password reseting is not allowed, use the admin "
-#~ "interface for these cases."
-#~ msgstr ""
-#~ "Det er ikke tilladt at nulstille Superbruger og personale "
-#~ "brugeradgangskode. Anvend administrator brugerflade istedet."

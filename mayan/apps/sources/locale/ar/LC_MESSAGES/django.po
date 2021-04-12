@@ -1,26 +1,30 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Marwan Rahhal <Marwanr@sssit.net>, 2020
-# Mohammed ALDOUB <voulnet@gmail.com>, 2013
+# Roberto Rosario, 2021
+# Mohammed ALDOUB <voulnet@gmail.com>, 2021
+# Bashar Al-Abdulhadi, 2021
+# Yaman Sanobar <yman.snober@gmail.com>, 2021
+# John Kawas <john@clinicalclouds.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# WM Shinkada <shinkadawasim@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-12-24 01:42+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
 #: settings.py:14 views/source_views.py:173
@@ -69,7 +73,7 @@ msgstr "الشرح"
 
 #: forms.py:31
 msgid "Action"
-msgstr ""
+msgstr "إجراء"
 
 #: forms.py:33
 msgid ""
@@ -130,17 +134,15 @@ msgstr "حذف"
 
 #: links.py:118
 msgid "Edit"
-msgstr "تحرير"
+msgstr "تعديل"
 
 #: links.py:123
 msgid "Document sources"
 msgstr "مصادر الوثائق"
 
 #: links.py:137
-#, fuzzy
-#| msgid "Upload new version"
 msgid "Upload new file"
-msgstr "تحميل نسخة جديدة"
+msgstr ""
 
 #: links.py:141
 msgid "Check now"
@@ -392,12 +394,13 @@ msgstr "معايير البحث"
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 "أمر IMAP STORE لتنفيذه على الرسائل بعد معالجتها. أمر واحد لكل سطر. استخدم "
-"الأوامر المحددة في https://tools.ietf.org/html/rfc2060.html#section-6.4.6 أو "
-"الأوامر المخصصة لخادم IMAP."
+"الأوامر المحددة في https://tools.ietf.org/html/rfc2060.html#section-6.4.6 أو"
+" الأوامر المخصصة لخادم IMAP."
 
 #: models/email_sources.py:232
 msgid "Store commands"
@@ -453,8 +456,8 @@ msgid ""
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
 msgstr ""
-"يضبط دقة الصورة الممسوحة ضوئيًا في DPI (نقاط في البوصة). القيمة النموذجية هي "
-"200. إذا كان هذا الخيار لا يدعمه الماسح الضوئي الخاص بك ، فاتركه فارغًا."
+"يضبط دقة الصورة الممسوحة ضوئيًا في DPI (نقاط في البوصة). القيمة النموذجية هي"
+" 200. إذا كان هذا الخيار لا يدعمه الماسح الضوئي الخاص بك ، فاتركه فارغًا."
 
 #: models/scanner_sources.py:46
 msgid "Resolution"
@@ -669,44 +672,35 @@ msgid "Server responded with {{statusCode}} code."
 msgstr "استجاب الخادم برمز {{statusCode}}."
 
 #: views/document_file_views.py:61
-#, fuzzy, python-format
-#| msgid ""
-#| "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+#, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
-"تعذر تحميل إصدارات جديدة من الوثيقة&quot;%(document)s&quot;. %(exception)s"
 
 #: views/document_file_views.py:125
-#, fuzzy, python-format
-#| msgid "Error executing document upload task; %(exception)s"
+#, python-format
 msgid "Error executing document file upload task; %(exception)s"
-msgstr "خطأ في تحميل الوثيقة؛ %(exception)s"
+msgstr ""
 
 #: views/document_file_views.py:140
-#, fuzzy
-#| msgid "New document queued for upload and will be available shortly."
 msgid "New document file queued for upload and will be available shortly."
-msgstr "إصدار جديد في قائمة الانتظار من الوثيقة قيد التحميل وسيكون متاحًا قريبًا"
+msgstr ""
 
 #: views/document_file_views.py:165
-#, fuzzy, python-format
-#| msgid ""
-#| "Upload a new version for document \"%(document)s\" from source: %(source)s"
+#, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
-"تحميل نسخة جديدة للمستند &quot;%(document)s&quot; من المصدر: %(source)s"
 
 #: views/document_file_views.py:168
 msgid "Submit"
-msgstr "ارسال"
+msgstr "اعتماد"
 
 #: views/document_views.py:79 wizards.py:50
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
-"لم يتم تحديد أية مصادر تفاعلية للمستندات أو لم يتم تمكين أي منها ، قم بإنشاء "
-"واحدة قبل المتابعة."
+"لم يتم تحديد أية مصادر تفاعلية للمستندات أو لم يتم تمكين أي منها ، قم بإنشاء"
+" واحدة قبل المتابعة."
 
 #: views/document_views.py:107 views/document_views.py:136
 #: views/document_views.py:146
@@ -716,8 +710,8 @@ msgstr "خصائص المستند"
 #: views/document_views.py:116
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr "المجلد فارغ ! أو لا تمتلك الاذونات الكافية"
 
 #: views/document_views.py:123
@@ -739,7 +733,8 @@ msgstr "خطأ في تحميل الوثيقة؛ %(exception)s"
 
 #: views/document_views.py:292
 msgid "New document queued for upload and will be available shortly."
-msgstr "إصدار جديد في قائمة الانتظار من الوثيقة قيد التحميل وسيكون متاحًا قريبًا"
+msgstr ""
+"إصدار جديد في قائمة الانتظار من الوثيقة قيد التحميل وسيكون متاحًا قريبًا"
 
 #: views/document_views.py:309
 #, python-format
@@ -790,8 +785,8 @@ msgid ""
 "email sources, are automatic and run on the background without user "
 "intervention."
 msgstr ""
-"توفر المصادر وسيلة لتحميل المستندات. بعض المصادر ، مثل نموذج الويب ، تفاعلية "
-"وتتطلب إدخال المستخدم للعمل. البعض الآخر مثل مصادر البريد الإلكتروني ، يتم "
+"توفر المصادر وسيلة لتحميل المستندات. بعض المصادر ، مثل نموذج الويب ، تفاعلية"
+" وتتطلب إدخال المستخدم للعمل. البعض الآخر مثل مصادر البريد الإلكتروني ، يتم "
 "تشغيله تلقائيًا في الخلفية دون تدخل المستخدم."
 
 #: views/source_views.py:172
@@ -819,16 +814,3 @@ msgstr "الخطوة التالية"
 #: wizards.py:77
 msgid "Document upload wizard"
 msgstr "تحميل الوثيقة"
-
-#~ msgid "Error deleting staging file; %s"
-#~ msgstr "خطأ في حذف الملف المرحلي ؛ %s"
-
-#~ msgid "Unable get list of staging files: %s"
-#~ msgstr "غير قادر على ايجاد قائمة بملفات الاعداد: %s"
-
-#~ msgid "Error executing document version upload task; %(exception)s"
-#~ msgstr "خطأ في تحميل نسخة الوثيقة؛ %(exception)s"
-
-#~ msgid ""
-#~ "New document version queued for upload and will be available shortly."
-#~ msgstr "إصدار جديد من الوثيقة قيد التحميل وسيكون متاحًا قريبًا"

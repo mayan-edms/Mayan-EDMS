@@ -1,25 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Emerson Soares <on.emersonsoares@gmail.com>, 2011
-# Roberto Rosario, 2012
-# Vítor Figueiró <vfigueiro@gmail.com>, 2012
+# Roberto Rosario, 2021
+# Vítor Figueiró <vfigueiro@gmail.com>, 2021
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
+# Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:28+0000\n"
+"Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021\n"
+"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:43 events.py:6 models.py:37 models.py:157 permissions.py:5
@@ -195,6 +196,3 @@ msgstr ""
 #: views.py:170
 msgid "There are no roles"
 msgstr ""
-
-#~ msgid "No such permission: %s"
-#~ msgstr "Permissão não existente: \"%s\""

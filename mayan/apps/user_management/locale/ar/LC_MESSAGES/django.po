@@ -1,26 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Marwan Rahhal <Marwanr@sssit.net>, 2020
-# Mohammed ALDOUB <voulnet@gmail.com>, 2013
+# Roberto Rosario, 2021
+# Mohammed ALDOUB <voulnet@gmail.com>, 2021
+# Bashar Al-Abdulhadi, 2021
+# Yaman Sanobar <yman.snober@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-12-23 23:58+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:76 events.py:6 permissions.py:6
 msgid "User management"
@@ -120,10 +122,8 @@ msgid "User details"
 msgstr "تفاصيل المستخدم"
 
 #: links.py:24
-#, fuzzy
-#| msgid "Edit details"
 msgid "Edit user details"
-msgstr "تعديل بيانات المستخدم"
+msgstr ""
 
 #: links.py:29 views.py:54
 msgid "Create new group"
@@ -135,7 +135,7 @@ msgstr "حذف"
 
 #: links.py:38 links.py:65
 msgid "Edit"
-msgstr "تحرير"
+msgstr "تعديل"
 
 #: links.py:56 views.py:152
 msgid "Create new user"
@@ -229,9 +229,9 @@ msgid ""
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
 msgstr ""
-"مجموعات المستخدمين هي وحدات تنظيمية. يجب أن تنعكس الوحدات التنظيمية "
-"للمنشأة ، لا يمكن استخدام المجموعات للتحكم في الوصول. استخدم الأدوار "
-"للأذونات والتحكم في الوصول ، أضف مجموعات إليها"
+"مجموعات المستخدمين هي وحدات تنظيمية. يجب أن تنعكس الوحدات التنظيمية للمنشأة "
+"، لا يمكن استخدام المجموعات للتحكم في الوصول. استخدم الأدوار للأذونات "
+"والتحكم في الوصول ، أضف مجموعات إليها"
 
 #: views.py:119
 msgid "There are no user groups"
@@ -263,12 +263,12 @@ msgstr "طلب حذف %(count)d مستخدمين"
 #: views.py:185
 msgid "Delete user"
 msgid_plural "Delete users"
-msgstr[0] "حذف المستخدمين"
-msgstr[1] "مسح المستخدم"
-msgstr[2] "حذف المستخدمين"
-msgstr[3] "حذف المستخدمين"
-msgstr[4] "حذف المستخدمين"
-msgstr[5] "حذف المستخدمين"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: views.py:195
 #, python-format

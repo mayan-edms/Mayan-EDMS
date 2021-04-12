@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Adek Lanin, 2021
+# Sehat <sehat75@yahoo.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-08-18 04:38+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/id/)\n"
-"Language: id\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Sehat <sehat75@yahoo.com>, 2021\n"
+"Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:54 events.py:6 permissions.py:6 settings.py:12
@@ -25,7 +27,7 @@ msgstr ""
 
 #: apps.py:111
 msgid "Date and time"
-msgstr ""
+msgstr "Tanggal dan waktu"
 
 #: apps.py:115 models.py:52
 msgid "Key ID"
@@ -154,10 +156,8 @@ msgid "Upload signature"
 msgstr ""
 
 #: models.py:42
-#, fuzzy
-#| msgid "Document version"
 msgid "Document file"
-msgstr "Versi dokumen"
+msgstr ""
 
 #: models.py:47
 msgid "Date and time signed"
@@ -172,16 +172,12 @@ msgid "Public key fingerprint"
 msgstr ""
 
 #: models.py:68
-#, fuzzy
-#| msgid "Document version"
 msgid "Document file signature"
-msgstr "Versi dokumen"
+msgstr ""
 
 #: models.py:69
-#, fuzzy
-#| msgid "Document version"
 msgid "Document file signatures"
-msgstr "Versi dokumen"
+msgstr ""
 
 #: models.py:88
 msgid "Detached"

@@ -1,23 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# pyrotech <anastasios@tutamail.com>, 2020-2021
+# Hmayag Antonian <hmayag@freemail.gr>, 2021
+# pyrotech <anastasios@tutamail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-12-27 16:45+0000\n"
-"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
-"el/)\n"
-"Language: el\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:38+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
@@ -50,44 +51,36 @@ msgid "Edit"
 msgstr "Τροποποίηση"
 
 #: models.py:18
-#, fuzzy
-#| msgid "Short description of this message."
 msgid "Short description of this announcement."
-msgstr "Περιληπτική περιγραφή του μηνύματος"
+msgstr ""
 
 #: models.py:19
 msgid "Label"
 msgstr "Ετικέτα"
 
 #: models.py:22
-#, fuzzy
-#| msgid "The actual message to be displayed."
 msgid "The actual test to be displayed."
-msgstr "Το μήνυμα που θα προβληθεί."
+msgstr ""
 
 #: models.py:23
 msgid "Text"
-msgstr ""
+msgstr "Κείμενο"
 
 #: models.py:25
 msgid "Enabled"
 msgstr "Ενεργοποιημένο"
 
 #: models.py:28
-#, fuzzy
-#| msgid "Date and time after which this message will be displayed."
 msgid "Date and time after which this announcement will be displayed."
-msgstr "Ημέρα και ώρα μετά από την οποία θα εμφανιστεί αυτό το μήνυμα."
+msgstr ""
 
 #: models.py:29
 msgid "Start date time"
 msgstr "Ημερομηνία και ώρα έναρξης"
 
 #: models.py:33
-#, fuzzy
-#| msgid "Date and time until when this message is to be displayed."
 msgid "Date and time until when this announcement is to be displayed."
-msgstr "Ημέρα και ώρα μέχρι την οποία θα εμφανίζεται αυτό το μήνυμα."
+msgstr ""
 
 #: models.py:34
 msgid "End date time"
@@ -114,28 +107,24 @@ msgid "View announcements"
 msgstr ""
 
 #: views.py:41
-#, fuzzy, python-format
-#| msgid "Error deleting message \"%(message)s\": %(error)s"
+#, python-format
 msgid "Error deleting announcement \"%(instance)s\"; %(exception)s"
-msgstr "Σφάλμα διαγραφής μηνύματος \"%(message)s\": %(error)s"
+msgstr ""
 
 #: views.py:50
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "Announcement \"%(object)s\" deleted successfully."
-msgstr "Το μηνύμα \"%s\" διαγράφηκε επιτυχώς."
+msgstr ""
 
 #: views.py:53
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d announcement deleted successfully."
-msgstr "Το μηνύμα \"%s\" διαγράφηκε επιτυχώς."
+msgstr ""
 
 #: views.py:56
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d announcements deleted successfully."
-msgstr "Το μηνύμα \"%s\" διαγράφηκε επιτυχώς."
+msgstr ""
 
 #: views.py:58
 #, python-format
@@ -143,18 +132,14 @@ msgid "Delete announcement: %(object)s."
 msgstr ""
 
 #: views.py:59
-#, fuzzy, python-format
-#| msgid "Delete the selected message?"
-#| msgid_plural "Delete the selected messages?"
+#, python-format
 msgid "Delete the %(count)d selected announcement."
-msgstr "Διαγραφή των επιλεγμένων μηνυμάτων"
+msgstr ""
 
 #: views.py:60
-#, fuzzy, python-format
-#| msgid "Delete the selected message?"
-#| msgid_plural "Delete the selected messages?"
+#, python-format
 msgid "Delete the %(count)d selected announcements."
-msgstr "Διαγραφή των επιλεγμένων μηνυμάτων"
+msgstr ""
 
 #: views.py:92
 #, python-format
@@ -162,67 +147,12 @@ msgid "Edit announcement: %s"
 msgstr ""
 
 #: views.py:114
-#, fuzzy
-#| msgid ""
-#| "Messages are displayed in the login view. You can use messages to convery "
-#| "information about your organzation, announcements or usage guidelines for "
-#| "your users."
 msgid ""
 "Announcements are displayed in the login view. You can use announcements to "
 "convery information about your organzation, announcements or usage "
 "guidelines for your users."
 msgstr ""
-"Τα μηνύματα προβάλλονται στην οθόνη εισόδου. Μπορείτε να χρησιμοποιήσετε "
-"μηνύματα για να παρέχετε πληροφορίες σχετικές με τον οργανισμό σας, "
-"ανακοινώσεις ή οδηγίες χρήσης για τους χρήστες σας."
 
 #: views.py:118
-#, fuzzy
-#| msgid "No messages available"
 msgid "No announcements available"
-msgstr "Δεν υπάρχουν διαθέσιμα μηνύματα"
-
-#~ msgid "Message of the day"
-#~ msgstr "Το μήνυμα της ημέρας"
-
-#~ msgid "Messages"
-#~ msgstr "Μηνύματα"
-
-#~ msgid "Message created"
-#~ msgstr "Δημιουργήθηκε μήνυμα"
-
-#~ msgid "Message edited"
-#~ msgstr "Μήνυμα τροποποιήθηκε"
-
-#~ msgid "Create message"
-#~ msgstr "Δημιουργία μηνύματος"
-
-#~ msgid "Message"
-#~ msgstr "Μήνυμα"
-
-#~ msgid "Create messages"
-#~ msgstr "Δημιουργία μηνυμάτων"
-
-#~ msgid "Delete messages"
-#~ msgstr "Διαγραφή μηνυμάτων"
-
-#~ msgid "Edit messages"
-#~ msgstr "Τροποποίηση μηνυμάτων"
-
-#~ msgid "View messages"
-#~ msgstr "Προβολή μηνυμάτων"
-
-#~ msgid "Messages of the day"
-#~ msgstr "Μηνύματα της ημέρας"
-
-#~ msgid "Delete request performed on %(count)d message"
-#~ msgstr "Αίτημα διαγραφής πραγματοποιήθηκε για %(count)d μήνυμα"
-
-#~ msgid "Delete request performed on %(count)d messages"
-#~ msgstr "Αίτημα διαγραφής πραγματοποιήθηκε για %(count)d μηνύματα"
-
-#~ msgid "Delete message: %s?"
-#~ msgstr "Διαγραφή μηνύματος: %s;"
-
-#~ msgid "Edit message: %s"
-#~ msgstr "Τροποποίηση μηνύματος: %s"
+msgstr ""

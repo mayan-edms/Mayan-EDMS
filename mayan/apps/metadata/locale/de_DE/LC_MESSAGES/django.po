@@ -1,29 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Berny <berny@bernhard-marx.de>, 2015
-# Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
-# Jesaja Everling <jeverling@gmail.com>, 2017
-# Mathias Behrle <mathiasb@m9s.biz>, 2018-2019
-# Mathias Behrle <mbehrle@m9s.biz>, 2014
-# Stefan Lodders <sl@suchreflex.de>, 2012
-# Tobias Paepke <tobias.paepke@paepke.net>, 2014,2016
+# Roberto Rosario, 2021
+# Mathias Behrle <mathiasb@m9s.biz>, 2021
+# Tobias Paepke <tobias.paepke@paepke.net>, 2021
+# Berny <berny@bernhard-marx.de>, 2021
+# Jesaja Everling <jeverling@gmail.com>, 2021
+# Ingo Buchholz <ingo.buchholz@takwa.de>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2021\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:63 apps.py:191 apps.py:197 apps.py:201 apps.py:206 apps.py:210
@@ -164,17 +163,8 @@ msgid "Edit"
 msgstr "Bearbeiten"
 
 #: methods.py:20
-#, fuzzy
-#| msgid "Remove metadata types from the document"
-#| msgid_plural "Remove metadata types from the documents"
 msgid "Return the metadata of the document."
-msgstr "Metadatentypen von Dokument entfernen"
-
-#: methods.py:22
-#, fuzzy
-#| msgid "Edit metadata"
-msgid "get_metadata()"
-msgstr "Metadaten bearbeiten"
+msgstr ""
 
 #: mixins.py:19
 msgid "Selected documents must be of the same type."
@@ -227,7 +217,8 @@ msgstr "Validierer"
 
 #: models.py:78
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
+"The parser will reformat the value entered to conform to the expected "
+"format."
 msgstr ""
 "Der Parser wird den eingegebenen Wert so reformatieren, dass er dem "
 "geforderten Format entspricht."
@@ -327,16 +318,12 @@ msgid "Metadata value"
 msgstr "Metadatenwert"
 
 #: search.py:24 search.py:35 search.py:46 search.py:57
-#, fuzzy
-#| msgid "Document metadata"
 msgid "Document metadata type"
-msgstr "Dokument Metadaten"
+msgstr ""
 
 #: search.py:28 search.py:39 search.py:50 search.py:61
-#, fuzzy
-#| msgid "Document metadata added"
 msgid "Document metadata value"
-msgstr "Dokumentmetadaten hinzugefügt"
+msgstr ""
 
 #: serializers.py:56
 msgid "Primary key of the metadata type to be added."
@@ -363,8 +350,8 @@ msgstr "Hinzufügen"
 #: views.py:67
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
-msgstr[0] "Metadatentypen zu Dokument hinzufügen"
-msgstr[1] "Metadatentypen zu Dokumenten hinzufügen"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:78
 #, python-format
@@ -383,7 +370,8 @@ msgstr ""
 #: views.py:172
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
 msgstr ""
 "Metadatentyp %(metadata_type)s erfolgreich hinzugefügt zu Dokument "
 "%(document)s."
@@ -420,8 +408,8 @@ msgstr "Keine Metadaten zum Bearbeiten vorhanden"
 #: views.py:240
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
-msgstr[0] "Metadaten bearbeiten"
-msgstr[1] "Metadaten bearbeiten"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:251
 #, python-format
@@ -442,8 +430,9 @@ msgstr "Metadaten des Dokuments %s erfolgreich bearbeitet."
 
 #: views.py:374
 msgid ""
-"Add metadata types this document's type to be able to add them to individual "
-"documents. Once added to individual document, you can then edit their values."
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
 msgstr ""
 "Fügen Sie Metadatentype für diesen Dokumententyp hinzu, um sie zu "
 "individuellen Dokumenten dieses Typs hinzufügen zu können. Sobald sie "
@@ -471,8 +460,8 @@ msgstr "Metadaten für %(count)d Dokumente gelöscht"
 #: views.py:409
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
-msgstr[0] "Metadatentypen von Dokument entfernen"
-msgstr[1] "Metadatentypen von Dokumenten entfernen"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:420
 #, python-format
@@ -530,32 +519,24 @@ msgid "There are no metadata types"
 msgstr "Keine Metadatentypen vorhanden"
 
 #: views.py:600
-#, fuzzy
-#| msgid ""
-#| "Create metadata types to be able to associate them to this document type."
 msgid ""
 "Create metadata type relationships to be able to associate them to this "
 "document type."
 msgstr ""
-"Erstellen Sie Metadatentype um sie diesem Dokumententyp zuordnen zu können."
 
 #: views.py:604
-#, fuzzy
-#| msgid "There are no metadata types available"
 msgid "There are no metadata type relationships available"
-msgstr "Kein Metadatentyp vorhanden"
+msgstr ""
 
 #: views.py:608
-#, fuzzy, python-format
-#| msgid "Metadata types for document type: %s"
+#, python-format
 msgid "Metadata type relationships for document type: %s"
-msgstr "Metadatentypen für Dokumententyp %s"
+msgstr ""
 
 #: views.py:652
-#, fuzzy, python-format
-#| msgid "Document types for metadata type: %s"
+#, python-format
 msgid "Document type relationships for metadata type: %s"
-msgstr "Dokumententypen für Metadatentyp %s"
+msgstr ""
 
 #: wizard_steps.py:13
 msgid "Enter document metadata"
@@ -599,12 +580,3 @@ msgid ""
 "Unable to remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
 msgstr ""
-
-#~ msgid "Relationship"
-#~ msgstr "Beziehung"
-
-#~ msgid "Error updating relationship; %s"
-#~ msgstr "Fehler bei der Aktualisierung von Beziehung %s"
-
-#~ msgid "Relationships updated successfully"
-#~ msgstr "Beziehungen erfolgreich aktualisiert"

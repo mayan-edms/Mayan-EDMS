@@ -2,23 +2,27 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+# Sergey Glita <gsv70@mail.ru>, 2021
+# lilo.panic, 2021
+# Panasoft, 2021
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
+# OLeg Si <olegsm35@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:39+0000\n"
+"Last-Translator: OLeg Si <olegsm35@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:34 events.py:5 permissions.py:5
 msgid "Messaging"
@@ -26,7 +30,7 @@ msgstr ""
 
 #: apps.py:56
 msgid "None"
-msgstr ""
+msgstr "Нет"
 
 #: apps.py:62
 msgid "Sender"
@@ -34,23 +38,23 @@ msgstr ""
 
 #: events.py:8
 msgid "Message created"
-msgstr ""
+msgstr "Объявление создано"
 
 #: events.py:11
 msgid "Message edited"
-msgstr ""
+msgstr "Объявление изменено"
 
 #: forms.py:9 models.py:38
 msgid "Body"
-msgstr ""
+msgstr "Тело письма"
 
 #: links.py:28 views.py:33
 msgid "Create message"
-msgstr ""
+msgstr "Создать объявление"
 
 #: links.py:31 links.py:37
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
 #: links.py:45 links.py:49
 msgid "Mark as read"
@@ -62,15 +66,15 @@ msgstr ""
 
 #: models.py:30
 msgid "User"
-msgstr ""
+msgstr "Пользователь"
 
 #: models.py:33
 msgid "Short description of this message."
-msgstr ""
+msgstr "Краткое описание объявления."
 
 #: models.py:34
 msgid "Subject"
-msgstr ""
+msgstr "Тема"
 
 #: models.py:37
 msgid "The actual content of the message."
@@ -82,7 +86,7 @@ msgstr ""
 
 #: models.py:43
 msgid "Read"
-msgstr ""
+msgstr "Прочитано"
 
 #: models.py:47
 msgid "Date and time of the message creation."
@@ -94,36 +98,36 @@ msgstr ""
 
 #: models.py:53
 msgid "Message"
-msgstr ""
+msgstr "Сообщение"
 
 #: models.py:54 views.py:121
 msgid "Messages"
-msgstr ""
+msgstr "Объявления"
 
 #: models.py:70
 msgid "Label"
-msgstr ""
+msgstr "Заголовок"
 
 #: models.py:91
 #, python-format
 msgid "Template error; %(exception)s"
-msgstr ""
+msgstr "Ошибка в шаблоне; %(exception)s"
 
 #: permissions.py:8
 msgid "Create messages"
-msgstr ""
+msgstr "Создать объявления"
 
 #: permissions.py:11
 msgid "Delete messages"
-msgstr ""
+msgstr "Удалить объявления"
 
 #: permissions.py:14
 msgid "View messages"
-msgstr ""
+msgstr "Просмотр объявлений"
 
 #: views.py:34
 msgid "Send"
-msgstr ""
+msgstr "Отправить"
 
 #: views.py:46
 #, python-format

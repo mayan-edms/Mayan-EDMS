@@ -2,20 +2,26 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+# Roberto Rosario, 2021
+# Mathias Behrle <mathiasb@m9s.biz>, 2021
+# Berny <berny@bernhard-marx.de>, 2021
+# Ingo Buchholz <ingo.buchholz@takwa.de>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:39+0000\n"
+"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2021\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:34 events.py:5 permissions.py:5
 msgid "Messaging"
@@ -23,7 +29,7 @@ msgstr ""
 
 #: apps.py:56
 msgid "None"
-msgstr ""
+msgstr "Keine"
 
 #: apps.py:62
 msgid "Sender"
@@ -39,15 +45,15 @@ msgstr ""
 
 #: forms.py:9 models.py:38
 msgid "Body"
-msgstr ""
+msgstr "Nachrichtenteil"
 
 #: links.py:28 views.py:33
 msgid "Create message"
-msgstr ""
+msgstr "Nachricht erstellen"
 
 #: links.py:31 links.py:37
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: links.py:45 links.py:49
 msgid "Mark as read"
@@ -59,15 +65,15 @@ msgstr ""
 
 #: models.py:30
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 #: models.py:33
 msgid "Short description of this message."
-msgstr ""
+msgstr "Kurze Beschreibung dieser Nachricht."
 
 #: models.py:34
 msgid "Subject"
-msgstr ""
+msgstr "Betreff"
 
 #: models.py:37
 msgid "The actual content of the message."
@@ -79,7 +85,7 @@ msgstr ""
 
 #: models.py:43
 msgid "Read"
-msgstr ""
+msgstr "Gelesen"
 
 #: models.py:47
 msgid "Date and time of the message creation."
@@ -91,36 +97,36 @@ msgstr ""
 
 #: models.py:53
 msgid "Message"
-msgstr ""
+msgstr "Nachricht"
 
 #: models.py:54 views.py:121
 msgid "Messages"
-msgstr ""
+msgstr "Nachrichten"
 
 #: models.py:70
 msgid "Label"
-msgstr ""
+msgstr "Bezeichner"
 
 #: models.py:91
 #, python-format
 msgid "Template error; %(exception)s"
-msgstr ""
+msgstr "Fehler in der Vorlage; %(exception)s "
 
 #: permissions.py:8
 msgid "Create messages"
-msgstr ""
+msgstr "Nachrichten erstellen"
 
 #: permissions.py:11
 msgid "Delete messages"
-msgstr ""
+msgstr "Nachrichten löschen"
 
 #: permissions.py:14
 msgid "View messages"
-msgstr ""
+msgstr "Nachrichten anzeigen"
 
 #: views.py:34
 msgid "Send"
-msgstr ""
+msgstr "Senden"
 
 #: views.py:46
 #, python-format

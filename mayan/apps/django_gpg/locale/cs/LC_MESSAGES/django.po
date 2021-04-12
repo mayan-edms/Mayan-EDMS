@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019-2020
+# Jiri Fait <fait@orkasolutions.cz>, 2021
+# Michal Švábík <snadno@lehce.cz>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-06-22 15:11+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
-"cs/)\n"
-"Language: cs\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:33
 msgid "Django GPG"
@@ -62,20 +62,16 @@ msgid "Key management"
 msgstr "Správa klíčů"
 
 #: events.py:8
-#, fuzzy
-#| msgid "Key data"
 msgid "Key created"
-msgstr "Data klíče"
+msgstr ""
 
 #: events.py:12
-#, fuzzy
-#| msgid "Download"
 msgid "Key downloaded"
-msgstr "Stažení"
+msgstr ""
 
 #: forms.py:26
 msgid "None"
-msgstr "žádný"
+msgstr "Žádný"
 
 #: forms.py:29 models.py:48
 msgid "Fingerprint"
@@ -290,8 +286,8 @@ msgstr "Nahrajte nový klíč"
 
 #: views.py:187
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded "
-"by the user. The view to upload private and public keys is the same."
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user. The view to upload private and public keys is the same."
 msgstr ""
 "Soukromé klíče se používají k podepsaným dokumentům. Soukromé klíče může "
 "vkládat pouze uživatel. Pohled na nahrávání soukromých a veřejných klíčů je "
@@ -303,8 +299,8 @@ msgstr "Neexistují žádné soukromé klíče"
 
 #: views.py:210
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded "
-"by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr ""
 "Veřejné klíče se používají k ověření podepsaných dokumentů. Veřejné klíče "

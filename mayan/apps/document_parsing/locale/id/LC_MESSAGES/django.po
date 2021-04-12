@@ -2,24 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Sehat <sehat75@yahoo.com>, 2018
-# Adek Lanin, 2019
-#
+# Sehat <sehat75@yahoo.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2017-08-25 00:49+0000\n"
-"Last-Translator: Adek Lanin, 2019\n"
-"Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/"
-"id/)\n"
-"Language: id\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Sehat <sehat75@yahoo.com>, 2021\n"
+"Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:53 events.py:6 permissions.py:6 settings.py:10
@@ -52,10 +50,8 @@ msgid "Document file submitted for parsing"
 msgstr ""
 
 #: events.py:17
-#, fuzzy
-#| msgid "Document version"
 msgid "Document file parsing finished"
-msgstr "Versi dokumen"
+msgstr ""
 
 #: forms.py:37
 #, python-format
@@ -91,26 +87,20 @@ msgid "Parse documents per type"
 msgstr ""
 
 #: models.py:18
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file page"
-msgstr "Halaman dokumen"
+msgstr ""
 
 #: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr ""
 
 #: models.py:30
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file page content"
-msgstr "Halaman dokumen"
+msgstr ""
 
 #: models.py:31
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file page contents"
-msgstr "Halaman dokumen"
+msgstr ""
 
 #: models.py:43
 msgid "Document type"
@@ -129,26 +119,20 @@ msgid "Document types settings"
 msgstr ""
 
 #: models.py:69
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file"
-msgstr "Halaman dokumen"
+msgstr ""
 
 #: models.py:72
 msgid "Date time submitted"
 msgstr ""
 
 #: models.py:78
-#, fuzzy
-#| msgid "Document version"
 msgid "Document file parse error"
-msgstr "Versi dokumen"
+msgstr ""
 
 #: models.py:79
-#, fuzzy
-#| msgid "Document version"
 msgid "Document file parse errors"
-msgstr "Versi dokumen"
+msgstr ""
 
 #: parsers.py:90
 #, python-format
@@ -177,16 +161,12 @@ msgid "Parsing"
 msgstr ""
 
 #: queues.py:9
-#, fuzzy
-#| msgid "Document version"
 msgid "Document file parsing"
-msgstr "Versi dokumen"
+msgstr ""
 
 #: search.py:16 search.py:23
-#, fuzzy
-#| msgid "Document version"
 msgid "Document file content"
-msgstr "Versi dokumen"
+msgstr ""
 
 #: settings.py:15
 msgid "Set new document types to perform parsing automatically by default."
@@ -194,7 +174,8 @@ msgstr ""
 
 #: settings.py:21
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr ""
 
 #: views.py:39

@@ -2,90 +2,87 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Roberto Rosario, 2020
-# Jože Detečnik <joze.detecnik@3tav.si>, 2020
-#
+# Roberto Rosario, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
-"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2020\n"
-"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/"
-"sl/)\n"
-"Language: sl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #: apps.py:25 events.py:6 permissions.py:5
 msgid "File caching"
-msgstr "Predpomnjenje datotek"
+msgstr ""
 
 #: events.py:10
 msgid "Cache created"
-msgstr "Ustvarjen je predpomnilnik"
+msgstr ""
 
 #: events.py:13
 msgid "Cache edited"
-msgstr "Predpomnilnik urejen"
+msgstr ""
 
 #: events.py:16
 msgid "Cache purged"
-msgstr "Predpomnilnik je očiščen"
+msgstr ""
 
 #: links.py:24
 msgid "File caches"
-msgstr "Predpomnilniki datotek"
+msgstr ""
 
 #: links.py:29 links.py:35 links.py:39
 msgid "Purge cache"
-msgstr "Izprazni predpomnilnik"
+msgstr ""
 
 #: models.py:30
 msgid "Internal name of the defined storage for this cache."
-msgstr "Interno ime definiranega pomnilnika za ta predpomnilnik."
+msgstr ""
 
 #: models.py:31
 msgid "Defined storage name"
-msgstr "Določeno ime pomnilnika"
+msgstr ""
 
 #: models.py:34
 msgid "Maximum size of the cache in bytes."
-msgstr "Največja velikost predpomnilnika v bajtih."
+msgstr ""
 
 #: models.py:36 models.py:62
 msgid "Maximum size"
-msgstr "Največja velikost"
+msgstr ""
 
 #: models.py:40 models.py:144
 msgid "Cache"
-msgstr "predpomnilnik"
+msgstr ""
 
 #: models.py:41
 msgid "Caches"
-msgstr "Predpomnilniki"
+msgstr ""
 
 #: models.py:60
 msgid "Size at which the cache will start deleting old entries."
-msgstr "Velikost, pri kateri bo predpomnilnik začel brisati stare vnose."
+msgstr ""
 
 #: models.py:69
 msgid "Unknown"
-msgstr "Neznano"
+msgstr ""
 
 #: models.py:86
 msgid "Current size"
-msgstr "Trenutna velikost"
+msgstr ""
 
 #: models.py:87
 msgid "Current size of the cache."
-msgstr "Trenutna velikost predpomnilnika."
+msgstr ""
 
 #: models.py:147
 msgid "Name"
@@ -93,15 +90,15 @@ msgstr "Ime"
 
 #: models.py:152 models.py:239
 msgid "Cache partition"
-msgstr "Razdelitev predpomnilnika"
+msgstr ""
 
 #: models.py:153
 msgid "Cache partitions"
-msgstr "Predpomnilniške particije"
+msgstr ""
 
 #: models.py:242
 msgid "Date time"
-msgstr "Datum čas"
+msgstr ""
 
 #: models.py:244
 msgid "Filename"
@@ -113,47 +110,41 @@ msgstr "Velikost datoteke"
 
 #: models.py:252
 msgid "Cache partition file"
-msgstr "Datoteka particije v predpomnilniku"
+msgstr ""
 
 #: models.py:253
 msgid "Cache partition files"
-msgstr "Predpomni datoteke particij"
+msgstr ""
 
 #: permissions.py:8
-#, fuzzy
-#| msgid "Purge a file cache"
 msgid "Purge an object cache"
-msgstr "Očistite predpomnilnik datotek"
+msgstr ""
 
 #: permissions.py:11 queues.py:7
 msgid "Purge a file cache"
-msgstr "Očistite predpomnilnik datotek"
+msgstr ""
 
 #: permissions.py:14
 msgid "View a file cache"
-msgstr "Oglejte si predpomnilnik datotek"
+msgstr ""
 
 #: queues.py:11
-#, fuzzy
-#| msgid "Purge a file cache"
 msgid "Purge a file cache partition"
-msgstr "Očistite predpomnilnik datotek"
+msgstr ""
 
 #: views.py:43
-#, fuzzy, python-format
-#| msgid "File caches"
+#, python-format
 msgid "Details cache: %s"
-msgstr "Predpomnilniki datotek"
+msgstr ""
 
 #: views.py:54
 msgid "File caches list"
-msgstr "Seznam predpomnilnikov datotek"
+msgstr ""
 
 #: views.py:70
-#, fuzzy, python-format
-#| msgid "Cache partition files"
+#, python-format
 msgid "Purge cache partitions of \"%s\"?"
-msgstr "Predpomni datoteke particij"
+msgstr ""
 
 #: views.py:84
 msgid "Object cache partitions submitted for purging."
@@ -162,7 +153,7 @@ msgstr ""
 #: views.py:101
 msgid "Submit the selected cache for purging?"
 msgid_plural "Submit the selected caches for purging?"
-msgstr[0] "Želite poslati izbrani predpomnilnik v čiščenje?"
-msgstr[1] "Želite poslati izbrane predpomnilnike na čiščenje?"
-msgstr[2] "Želite poslati izbrane predpomnilnike na čiščenje?"
-msgstr[3] "Želite poslati izbrane predpomnilnike na čiščenje?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""

@@ -1,23 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Giovanni Tricarico <gtricarico92@gmail.com>, 2016
+# Roberto Rosario, 2021
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
+# Giovanni Tricarico <gtricarico92@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2021\n"
+"Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:25 settings.py:12
@@ -53,11 +56,11 @@ msgstr ""
 
 #: links.py:12
 msgid "Delete"
-msgstr ""
+msgstr "Cancella"
 
 #: links.py:16
 msgid "Download"
-msgstr ""
+msgstr "Scarica"
 
 #: management/commands/storage_process.py:13
 msgid "Name of the app to process."
@@ -100,11 +103,11 @@ msgstr "File"
 
 #: models.py:52
 msgid "Label"
-msgstr ""
+msgstr "Etichetta"
 
 #: models.py:56
 msgid "Permission"
-msgstr ""
+msgstr "Autorizzazione "
 
 #: models.py:63
 msgid "Download file"
@@ -127,20 +130,14 @@ msgid "Delete stale uploads"
 msgstr "Cancella upload in sospeso"
 
 #: queues.py:25
-#, fuzzy
-#| msgid "Delete stale uploads"
 msgid "Delete stale download files"
-msgstr "Cancella upload in sospeso"
+msgstr ""
 
 #: settings.py:17
-#, fuzzy
-#| msgid "A storage backend that all workers can use to share files."
 msgid ""
 "A storage backend that all workers can use to generate and hold files for "
 "download."
 msgstr ""
-"Un backend di memorizzazione che tutti i lavoratori possono utilizzare per "
-"condividere i file."
 
 #: settings.py:28
 msgid "A storage backend that all workers can use to share files."
@@ -153,25 +150,19 @@ msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr ""
-"Directory temporanea utilizzata in tutto il sito per memorizzare, miniature, "
-"anteprime e files temporanei"
+"Directory temporanea utilizzata in tutto il sito per memorizzare, miniature,"
+" anteprime e files temporanei"
 
 #: storages.py:15
-#, fuzzy
-#| msgid ""
-#| "Unable to initialize the shared uploaded file storage. Check the settings "
-#| "{} and {} for formatting errors."
 msgid ""
-"Unable to initialize the download file storage. Check the settings {} and {} "
-"for formatting errors."
+"Unable to initialize the download file storage. Check the settings {} and {}"
+" for formatting errors."
 msgstr ""
-"Impossibile inizializzare l'archivio file caricato condiviso. Controlla le "
-"impostazioni {} e {} per errori di formattazione."
 
 #: storages.py:29
 msgid ""
-"Unable to initialize the shared uploaded file storage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""
 "Impossibile inizializzare l'archivio file caricato condiviso. Controlla le "
 "impostazioni {} e {} per errori di formattazione."

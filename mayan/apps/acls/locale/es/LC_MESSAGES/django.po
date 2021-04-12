@@ -1,25 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# jmcainzos <jmcainzos@vodafone.es>, 2015
-# Roberto Rosario, 2015
-# Roberto Rosario, 2015-2020
+# jmcainzos <jmcainzos@vodafone.es>, 2021
+# Roberto Rosario, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-03-28 08:54+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:12+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:24 classes.py:143 links.py:27
@@ -31,12 +30,12 @@ msgid ""
 "Object for which the access is granted. When sorting objects, only the type "
 "is used and not the actual label of the object."
 msgstr ""
+"Objeto para el que se concede el acceso. Al ordenar objetos, solo se usa el "
+"tipo y no la etiqueta real del objeto."
 
 #: apps.py:63
-#, fuzzy
-#| msgid "Object ID"
 msgid "Object"
-msgstr "ID de objeto"
+msgstr "Objeto"
 
 #: events.py:6 permissions.py:5
 msgid "Access control lists"
@@ -47,10 +46,8 @@ msgid "ACL created"
 msgstr "LCA creada"
 
 #: events.py:13
-#, fuzzy
-#| msgid "ACL edited"
 msgid "ACL deleted"
-msgstr "LCA editada"
+msgstr "LCA eliminada"
 
 #: events.py:16
 msgid "ACL edited"
@@ -66,7 +63,7 @@ msgstr "Nueva LCA"
 
 #: links.py:21
 msgid "Delete"
-msgstr "Borrar"
+msgstr "Eliminar"
 
 #: links.py:32 models.py:45 workflow_actions.py:46 workflow_actions.py:161
 msgid "Permissions"
@@ -74,7 +71,7 @@ msgstr "Permisos"
 
 #: links.py:35
 msgid "Global ACLs"
-msgstr ""
+msgstr "LCA globales"
 
 #: managers.py:228
 #, python-format
@@ -88,7 +85,7 @@ msgstr "Acceso insuficiente para: %s"
 
 #: models.py:49
 msgid "Role to which the access is granted for the specified object."
-msgstr ""
+msgstr "Rol al que se concede el acceso para el objeto especificado."
 
 #: models.py:59
 msgid "Access entry"
@@ -112,22 +109,12 @@ msgid "View ACLs"
 msgstr "Ver LCAs"
 
 #: serializers.py:125
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to add to the ACL."
-msgstr ""
-"Llave primaria del nuevo permiso para conceder a la lista de control de "
-"acceso."
+msgstr "Llave principal del permiso para agregar a la LCA."
 
 #: serializers.py:132
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to remove from the ACL."
-msgstr ""
-"Llave primaria del nuevo permiso para conceder a la lista de control de "
-"acceso."
+msgstr "Llave principal del permiso para eliminar de la LCA."
 
 #: views.py:40
 #, python-format
@@ -194,16 +181,12 @@ msgstr ""
 "través del menú de Configuración."
 
 #: views.py:256
-#, fuzzy
-#| msgid "There are no ACLs for this object"
 msgid "There are no ACLs"
-msgstr "No hay LCAs para este objeto"
+msgstr "No hay LCAs"
 
 #: views.py:265
-#, fuzzy
-#| msgid "Access control lists"
 msgid "Global access control lists"
-msgstr "Listas de control de acceso"
+msgstr "Listas de control de acceso global"
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -218,8 +201,10 @@ msgid "Object ID"
 msgstr "ID de objeto"
 
 #: workflow_actions.py:35
-msgid "Numeric identifier of the object for which the access will be modified."
-msgstr "Identificador numérico del objeto para el que se modificará el acceso."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
+msgstr ""
+"Identificador numérico del objeto para el que se modificará el acceso."
 
 #: workflow_actions.py:40 workflow_actions.py:155
 msgid "Roles"
@@ -251,33 +236,3 @@ msgstr "Otorgar acceso a documento"
 #: workflow_actions.py:211
 msgid "Revoke document access"
 msgstr "Revocar acceso documento"
-
-#~ msgid ""
-#~ "API URL pointing to the list of permissions for this access control list."
-#~ msgstr ""
-#~ "URL de la API que apunta a la lista de permisos para esta lista de "
-#~ "control de acceso."
-
-#~ msgid ""
-#~ "API URL pointing to a permission in relation to the access control list "
-#~ "to which it is attached. This URL is different than the canonical "
-#~ "workflow URL."
-#~ msgstr ""
-#~ "URL de la API  que apunta a un permiso en relación con la lista de "
-#~ "control de acceso a la que está conectado. Esta URL es diferente de la "
-#~ "URL canónica de flujo de trabajo."
-
-#~ msgid "No such permission: %s"
-#~ msgstr "No existe el permiso: %s"
-
-#~ msgid ""
-#~ "Comma separated list of permission primary keys to grant to this access "
-#~ "control list."
-#~ msgstr ""
-#~ "Lista separada por comas de las llaves primarias de permisos para "
-#~ "conceder a esta lista de control de acceso."
-
-#~ msgid "Primary keys of the role to which this access control list binds to."
-#~ msgstr ""
-#~ "Las llaves primarias de los roles a los que se vincula esta lista de "
-#~ "control de acceso."

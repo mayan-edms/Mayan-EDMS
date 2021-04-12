@@ -1,23 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Mads L. Nielsen <sirlundgaard@gmail.com>, 2013
+# Roberto Rosario, 2021
+# Mads L. Nielsen <sirlundgaard@gmail.com>, 2021
+# René Rovsing Bach <reroba@outlook.com>, 2021
+# Rasmus Kierudsen <tebrasso@gmail.com>, 2021
+# Allan Møller <it@brandts.dk>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"da/)\n"
-"Language: da\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: Allan Møller <it@brandts.dk>, 2021\n"
+"Language-Team: Danish (https://www.transifex.com/rosarior/teams/13584/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:63 apps.py:191 apps.py:197 apps.py:201 apps.py:206 apps.py:210
@@ -158,13 +162,7 @@ msgid "Edit"
 msgstr "Redigér"
 
 #: methods.py:20
-#, fuzzy
-#| msgid "Remove metadata from a document"
 msgid "Return the metadata of the document."
-msgstr "Fjern metadata fra et dokument"
-
-#: methods.py:22
-msgid "get_metadata()"
 msgstr ""
 
 #: mixins.py:19
@@ -213,7 +211,8 @@ msgstr ""
 
 #: models.py:78
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
+"The parser will reformat the value entered to conform to the expected "
+"format."
 msgstr ""
 
 #: models.py:80
@@ -309,16 +308,12 @@ msgid "Metadata value"
 msgstr "Metadata værdi"
 
 #: search.py:24 search.py:35 search.py:46 search.py:57
-#, fuzzy
-#| msgid "Document type"
 msgid "Document metadata type"
-msgstr "Dokumenttype"
+msgstr ""
 
 #: search.py:28 search.py:39 search.py:50 search.py:61
-#, fuzzy
-#| msgid "Metadata value"
 msgid "Document metadata value"
-msgstr "Metadata værdi"
+msgstr ""
 
 #: serializers.py:56
 msgid "Primary key of the metadata type to be added."
@@ -363,7 +358,8 @@ msgstr ""
 #: views.py:172
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
 msgstr ""
 
 #: views.py:182
@@ -415,8 +411,9 @@ msgstr ""
 
 #: views.py:374
 msgid ""
-"Add metadata types this document's type to be able to add them to individual "
-"documents. Once added to individual document, you can then edit their values."
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
 msgstr ""
 
 #: views.py:379

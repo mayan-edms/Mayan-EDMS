@@ -1,23 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
+# Roberto Rosario, 2021
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-03-31 10:53+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:32 events.py:6 permissions.py:6 settings.py:10
@@ -81,10 +83,8 @@ msgid "Impersonate user"
 msgstr "Представяне на потребител"
 
 #: links.py:39
-#, fuzzy
-#| msgid "Impersonate user"
 msgid "Impersonate"
-msgstr "Представяне на потребител"
+msgstr ""
 
 #: links.py:44 links.py:48
 msgid "Set password"
@@ -99,16 +99,16 @@ msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
 msgstr ""
-"Управлява механизма, използван за удостоверяване на потребителя. Опциите са: "
-"потребителско име, имейл"
+"Управлява механизма, използван за удостоверяване на потребителя. Опциите са:"
+" потребителско име, имейл"
 
 #: settings.py:22
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
-"in. Value is time in seconds."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
 msgstr ""
-"Максимално време, за което потребителят натискащ квадратчето „Запомни ме“ ще "
-"остане включен. Стойността е време в секунди."
+"Максимално време, за което потребителят натискащ квадратчето „Запомни ме“ ще"
+" остане включен. Стойността е време в секунди."
 
 #: settings.py:29
 msgid ""
@@ -128,7 +128,7 @@ msgstr ""
 
 #: templates/authentication/app/viewport.html:14
 msgid "Click here when finished"
-msgstr ""
+msgstr "Щракнете тук, когато приключите"
 
 #: templates/authentication/login.html:10
 msgid "Login"
@@ -196,8 +196,8 @@ msgstr "Заявка за промяна на парола, изпълнена �
 #: views.py:179
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] "Промяна на паролата на потребителя"
-msgstr[1] "Промяна на паролите на потребителите"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:189
 #, python-format
@@ -215,17 +215,6 @@ msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Грешка при промяна на парола на потребител \"%(user)s\": %(error)s"
 
 #: views.py:278
-#, fuzzy, python-format
-#| msgid "Impersonate users"
+#, python-format
 msgid "Impersonate user: %s"
-msgstr "Представяне на потребители"
-
-#~ msgid "User to be impersonated."
-#~ msgstr "Потребител, който трябва да бъде представен."
-
-#~ msgid ""
-#~ "Super user and staff user password reseting is not allowed, use the admin "
-#~ "interface for these cases."
-#~ msgstr ""
-#~ "Промяна на парола на потребители от супер потребител и служител не е "
-#~ "разрешено. Използвайте администраторския модул за тези случаи."
+msgstr ""

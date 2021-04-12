@@ -1,26 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Giovanni Tricarico <gtricarico92@gmail.com>, 2014
-# Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
-# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012
-# Roberto Rosario, 2020-2021
+# Roberto Rosario, 2021
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
+# Giovanni Tricarico <gtricarico92@gmail.com>, 2021
+# Daniele Bortoluzzi <daniele@elkos.it>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2021-01-19 03:52+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>, 2021\n"
+"Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
@@ -71,7 +72,7 @@ msgstr "Commento"
 
 #: forms.py:31
 msgid "Action"
-msgstr ""
+msgstr "Azione"
 
 #: forms.py:33
 msgid ""
@@ -139,10 +140,8 @@ msgid "Document sources"
 msgstr "Sorgente del documento"
 
 #: links.py:137
-#, fuzzy
-#| msgid "Upload new version"
 msgid "Upload new file"
-msgstr "Carica nuova versione"
+msgstr ""
 
 #: links.py:141
 msgid "Check now"
@@ -370,8 +369,8 @@ msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
-"Il tipo metadato \"mittente\" \"%(metadata_type)s\" non è valido per il tipo "
-"documento: %(document_type)s"
+"Il tipo metadato \"mittente\" \"%(metadata_type)s\" non è valido per il tipo"
+" documento: %(document_type)s"
 
 #: models/email_sources.py:216
 msgid "IMAP Mailbox from which to check for messages."
@@ -379,7 +378,7 @@ msgstr "Casella di posta IMAP dove controllare i messaggi."
 
 #: models/email_sources.py:217
 msgid "Mailbox"
-msgstr "Casella"
+msgstr "Casella di posta"
 
 #: models/email_sources.py:221
 msgid ""
@@ -387,8 +386,8 @@ msgid ""
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 msgstr ""
 "Criteri da utilizzare durante la ricerca di messaggi da elaborare. Utilizza "
-"il formato specificato in https://tools.ietf.org/html/rfc2060."
-"html#section-6.4.4"
+"il formato specificato in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
 #: models/email_sources.py:224
 msgid "Search criteria"
@@ -397,13 +396,14 @@ msgstr "Criterio di ricerca"
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 "Comando IMAP STORE da eseguire sui messaggi dopo che sono stati elaborati. "
-"Un comando per riga. Utilizza i comandi specificati in https://tools.ietf."
-"org/html/rfc2060.html#section-6.4.6 o i comandi personalizzati per il tuo "
-"server IMAP."
+"Un comando per riga. Utilizza i comandi specificati in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 o i comandi "
+"personalizzati per il tuo server IMAP."
 
 #: models/email_sources.py:232
 msgid "Store commands"
@@ -461,8 +461,8 @@ msgid ""
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
 msgstr ""
-"Imposta la risoluzione dell'immagine scansionata in DPI (punti per pollice). "
-"Il valore tipico è 200. Se questa opzione non è supportata dallo scanner, "
+"Imposta la risoluzione dell'immagine scansionata in DPI (punti per pollice)."
+" Il valore tipico è 200. Se questa opzione non è supportata dallo scanner, "
 "lasciarla vuota."
 
 #: models/scanner_sources.py:46
@@ -521,7 +521,8 @@ msgstr "Percorso cartella"
 #: models/staging_folder_sources.py:43
 msgid "Width value to be passed to the converter backend."
 msgstr ""
-"valore della larghezza da passare per le operazioni di conversione in backend"
+"valore della larghezza da passare per le operazioni di conversione in "
+"backend"
 
 #: models/staging_folder_sources.py:44
 msgid "Preview width"
@@ -684,36 +685,23 @@ msgid "Server responded with {{statusCode}} code."
 msgstr "Il server ha risposto con il codice {{statusCode}}."
 
 #: views/document_file_views.py:61
-#, fuzzy, python-format
-#| msgid ""
-#| "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+#, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
-"Impossibile caricare nuove versioni per il documento \"%(document)s\". "
-"%(exception)s"
 
 #: views/document_file_views.py:125
-#, fuzzy, python-format
-#| msgid "Error executing document upload task; %(exception)s"
+#, python-format
 msgid "Error executing document file upload task; %(exception)s"
 msgstr ""
-"Errore durante l'esecuzione dell'attività di caricamento del documento; "
-"%(exception)s"
 
 #: views/document_file_views.py:140
-#, fuzzy
-#| msgid "New document queued for upload and will be available shortly."
 msgid "New document file queued for upload and will be available shortly."
-msgstr "Nuovo documento in coda per il caricamento e sarà disponibile a breve."
+msgstr ""
 
 #: views/document_file_views.py:165
-#, fuzzy, python-format
-#| msgid ""
-#| "Upload a new version for document \"%(document)s\" from source: %(source)s"
+#, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
-"Carica una nuova versione per il documento \"%(document)s\" dalla fonte: "
-"%(source)s"
 
 #: views/document_file_views.py:168
 msgid "Submit"
@@ -721,11 +709,11 @@ msgstr "Invia"
 
 #: views/document_views.py:79 wizards.py:50
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
-"Nessuna fonte interattiva dei documenti è stata definita o non ne sono state "
-"attivate."
+"Nessuna fonte interattiva dei documenti è stata definita o non ne sono state"
+" attivate."
 
 #: views/document_views.py:107 views/document_views.py:136
 #: views/document_views.py:146
@@ -735,8 +723,8 @@ msgstr "Proprietà documento"
 #: views/document_views.py:116
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
 "Ciò potrebbe significare che la cartella di gestione temporanea è vuota. "
 "Potrebbe anche significare che l'account utente del sistema operativo "
@@ -764,13 +752,13 @@ msgstr ""
 
 #: views/document_views.py:292
 msgid "New document queued for upload and will be available shortly."
-msgstr "Nuovo documento in coda per il caricamento e sarà disponibile a breve."
+msgstr ""
+"Nuovo documento in coda per il caricamento e sarà disponibile a breve."
 
 #: views/document_views.py:309
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr ""
-"Carica un documento di tipo \"%(document_type)s\" dalla fonte: %(source)s"
+msgstr "Carica un documento di tipo \"%(document_type)s\" dalla fonte: %(source)s"
 
 #: views/source_views.py:50
 msgid ""
@@ -780,8 +768,8 @@ msgid ""
 "successful test will clear the error log."
 msgstr ""
 "Questo eseguirà il codice di controllo della sorgente anche se la sorgente "
-"non è abilitata. Le fonti che eliminano il contenuto dopo il download non lo "
-"faranno durante il test. Controllare il registro degli errori dell'origine "
+"non è abilitata. Le fonti che eliminano il contenuto dopo il download non lo"
+" faranno durante il test. Controllare il registro degli errori dell'origine "
 "per informazioni durante il test. Un test riuscito cancellerà il registro "
 "degli errori."
 
@@ -846,20 +834,3 @@ msgstr "Prossimo passo "
 #: wizards.py:77
 msgid "Document upload wizard"
 msgstr "Procedura guidata carico documenti"
-
-#~ msgid "Error deleting staging file; %s"
-#~ msgstr "Errore cancellando il file di stage; %s"
-
-#~ msgid "Unable get list of staging files: %s"
-#~ msgstr "Impossibile ottenere lista dei file di gestione temporanea: %s"
-
-#~ msgid "Error executing document version upload task; %(exception)s"
-#~ msgstr ""
-#~ "Errore durante l'esecuzione dell'attività di caricamento della versione "
-#~ "del documento; %(exception)s"
-
-#~ msgid ""
-#~ "New document version queued for upload and will be available shortly."
-#~ msgstr ""
-#~ "La nuova versione del documento è in coda per il caricamento e sarà "
-#~ "disponibile a breve."

@@ -1,27 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Marwan Rahhal <Marwanr@sssit.net>, 2020
-# Mohammed ALDOUB <voulnet@gmail.com>, 2013
-# WM Shinkada <shinkadawasim@gmail.com>, 2020
+# Mohammed ALDOUB <voulnet@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# WM Shinkada <shinkadawasim@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-12-23 23:58+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:125 permissions.py:5 settings.py:15
 msgid "Common"
@@ -150,7 +149,7 @@ msgstr "ثانوي"
 
 #: menus.py:18
 msgid "Return"
-msgstr ""
+msgstr "عودة"
 
 #: menus.py:22
 msgid "User"
@@ -172,54 +171,37 @@ msgstr ""
 
 #: settings.py:30
 msgid ""
-"In list mode, show the \"object\" menu options as a dropdown menu instead of "
-"individual buttons."
+"In list mode, show the \"object\" menu options as a dropdown menu instead of"
+" individual buttons."
 msgstr ""
 
 #: settings.py:37
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
 msgstr ""
 "حان الوقت لتأخير المهام الخلفية التي تعتمد على قاعدة بيانات الالتزام بالنشر."
 
 #: settings.py:44
-#, fuzzy
-#| msgid ""
-#| "A list of strings designating all applications that are to be removed "
-#| "from the list normally installed by Mayan EDMS. Each string should be a "
-#| "dotted Python path to: an application configuration class (preferred), or "
-#| "a package containing an application."
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
-"قائمة السلاسل التي تحدد جميع التطبيقات التي سيتم إزالتها من القائمة التي يتم "
-"تثبيتها عادةً بواسطة  يجب أن تكون كل سلسلة عبارة عن مسار Python منقط إلى: فئة "
-"تكوين التطبيق"
 
 #: settings.py:54
-#, fuzzy
-#| msgid ""
-#| "A list of strings designating all applications that are installed beyond "
-#| "those normally installed by Mayan EDMS. Each string should be a dotted "
-#| "Python path to: an application configuration class (preferred), or a "
-#| "package containing an application."
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
-"قائمة السلاسل التي تحدد جميع التطبيقات التي سيتم إزالتها من القائمة التي يتم "
-"تثبيتها عادةً بواسطة يجب أن تكون كل سلسلة عبارة عن مسار Python منقط إلى: فئة "
-"تكوين التطبيق"
 
 #: settings.py:64
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
 msgstr ""
 "اسم العرض المرفق بعلامة العلامة التجارية في القائمة الرئيسية. هذه هي أيضًا "
 "طريقة العرض التي سيتم إعادة توجيه المستخدمين إليها بعد تسجيل الدخول."
@@ -238,11 +220,11 @@ msgstr "مسار URL الأساسي المراد استخدامه لجميع ط�
 
 #: templates/common/app/viewport.html:9
 msgid "Warning"
-msgstr ""
+msgstr "تحذير"
 
 #: templates/common/app/viewport.html:21
 msgid "Click here to fix this."
-msgstr ""
+msgstr "إضغط هنا ، لحل الأخطاء "
 
 #: validators.py:41
 msgid "Enter a valid JSON value."
@@ -256,11 +238,12 @@ msgstr "أدخل قيمة صالحة."
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr "أدخل &quot;اسمًا داخليًا&quot; صالحًا يتكون من أحرف وأرقام وشرطات سفلية."
+msgstr ""
+"أدخل &quot;اسمًا داخليًا&quot; صالحًا يتكون من أحرف وأرقام وشرطات سفلية."
 
 #: views.py:22
 msgid "About"
-msgstr "حول"
+msgstr " حول النظام"
 
 #: views.py:39
 msgid "Dashboard"
@@ -302,27 +285,3 @@ msgstr "هنا يمكنك تكوين جميع جوانب النظام."
 #: views.py:124
 msgid "These modules are used to do system maintenance."
 msgstr "تستخدم هذه الوحدات للقيام بصيانة النظام."
-
-#~ msgid "Locale profile"
-#~ msgstr "الملف الشخصي المحلي"
-
-#~ msgid "Edit locale profile"
-#~ msgstr "تعديل الملف الشخصي المحلي"
-
-#~ msgid "Timezone"
-#~ msgstr "المنطقة الزمنية "
-
-#~ msgid "Language"
-#~ msgstr "اللغة"
-
-#~ msgid "User locale profile"
-#~ msgstr "ملف المستخدم المحلي"
-
-#~ msgid "User locale profiles"
-#~ msgstr "ملفات المستخدم المحلية"
-
-#~ msgid "Current user locale profile details"
-#~ msgstr "تفاصيل الملف الشخصي المحلي للمستخدم الحالي"
-
-#~ msgid "Edit current user locale profile details"
-#~ msgstr "تعديل تفاصيل الملف الشخصي المحلي للمستخدم الحالي"

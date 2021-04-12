@@ -2,23 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Hmayag Antonian <hmayag@freemail.gr>, 2020
+# Hmayag Antonian <hmayag@freemail.gr>, 2021
 # pyrotech <anastasios@tutamail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2017-04-21 16:25+0000\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
-"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
@@ -69,7 +69,7 @@ msgstr "Τροποποίηση"
 
 #: links.py:82
 msgid "All"
-msgstr "Όλα"
+msgstr "Όλες"
 
 #: links.py:86
 msgid "Details"
@@ -170,7 +170,7 @@ msgstr "UUID εγγράφου"
 
 #: search.py:50
 msgid "Document checksum"
-msgstr "Άθροισμα ελέγχου εγγράφου "
+msgstr "Άθροισμα ελέγχου εγγράφου"
 
 #: serializers.py:18
 msgid "List of children cabinets."
@@ -183,7 +183,8 @@ msgstr ""
 "ερμαρίων."
 
 #: serializers.py:28
-msgid "URL of the API endpoint showing the list documents inside this cabinet."
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 "Το URL του API endpoint που εμφανίζει την λίστα εγγράφων εντός αυτού του "
 "ερμαρίου."
@@ -207,9 +208,9 @@ msgid ""
 "Cabinet levels can contain documents or other cabinet sub levels. To add "
 "documents to a cabinet, select the cabinet view of a document view."
 msgstr ""
-"Κάθε επίπεδο ερμαρίων μπορεί να περιέχει έγγραφα ή άλλα υποεπίπεδα ερμαρίων. "
-"Για την προσθήκη εγγράφων σε ένα ερμάριο, επιλέξτε την προβολή ερμαρίου από "
-"την προβολή εγγράφου."
+"Κάθε επίπεδο ερμαρίων μπορεί να περιέχει έγγραφα ή άλλα υποεπίπεδα ερμαρίων."
+" Για την προσθήκη εγγράφων σε ένα ερμάριο, επιλέξτε την προβολή ερμαρίου από"
+" την προβολή εγγράφου."
 
 #: views.py:120
 msgid "This cabinet level is empty"
@@ -238,42 +239,34 @@ msgid "No cabinets available"
 msgstr "Δεν υπάρχουν διαθέσιμα ερμάρια"
 
 #: views.py:180
-#, fuzzy, python-format
-#| msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
+#, python-format
 msgid "Document \"%(object)s\" added to cabinets successfully."
-msgstr "Έγγραφο: %(document)s προστέθηκε στο ερμάριο: %(cabinet)s επιτυχώς."
+msgstr ""
 
 #: views.py:183
-#, fuzzy, python-format
-#| msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
+#, python-format
 msgid "%(count)d document added to cabinets successfully."
-msgstr "Έγγραφο: %(document)s προστέθηκε στο ερμάριο: %(cabinet)s επιτυχώς."
+msgstr ""
 
 #: views.py:186
-#, fuzzy, python-format
-#| msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
+#, python-format
 msgid "%(count)d documents added to cabinets successfully."
-msgstr "Έγγραφο: %(document)s προστέθηκε στο ερμάριο: %(cabinet)s επιτυχώς."
+msgstr ""
 
 #: views.py:188
-#, fuzzy, python-format
-#| msgid "Add document \"%s\" to cabinets"
+#, python-format
 msgid "Add document \"%(object)s\" to cabinets."
-msgstr "Προσθήκη εγγράφου \"%s\" σε ερμάρια"
+msgstr ""
 
 #: views.py:189
-#, fuzzy, python-format
-#| msgid "Add %(count)d document to cabinets"
-#| msgid_plural "Add %(count)d documents to cabinets"
+#, python-format
 msgid "Add %(count)d document to cabinets."
-msgstr "Προσθήκη %(count)d εγγράφου σε ερμάρια"
+msgstr ""
 
 #: views.py:190
-#, fuzzy, python-format
-#| msgid "Add %(count)d document to cabinets"
-#| msgid_plural "Add %(count)d documents to cabinets"
+#, python-format
 msgid "Add %(count)d documents to cabinets."
-msgstr "Προσθήκη %(count)d εγγράφου σε ερμάρια"
+msgstr ""
 
 #: views.py:194
 msgid "Add"
@@ -297,42 +290,34 @@ msgid "Cabinets containing document: %s"
 msgstr "Ερμάρια που περιέχουν έγγραφο: %s"
 
 #: views.py:278
-#, fuzzy, python-format
-#| msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
+#, python-format
 msgid "Document \"%(object)s\" removed from cabinets successfully."
-msgstr "Έγγραφο: %(document)s αφαιρέθηκε από το ερμάριο: %(cabinet)s."
+msgstr ""
 
 #: views.py:281
-#, fuzzy, python-format
-#| msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
+#, python-format
 msgid "%(count)d document removed from cabinets successfully."
-msgstr "Έγγραφο: %(document)s αφαιρέθηκε από το ερμάριο: %(cabinet)s."
+msgstr ""
 
 #: views.py:284
-#, fuzzy, python-format
-#| msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
+#, python-format
 msgid "%(count)d documents removed from cabinets successfully."
-msgstr "Έγγραφο: %(document)s αφαιρέθηκε από το ερμάριο: %(cabinet)s."
+msgstr ""
 
 #: views.py:286
-#, fuzzy, python-format
-#| msgid "Remove document \"%s\" from cabinets"
+#, python-format
 msgid "Remove document \"%(object)s\" from cabinets."
-msgstr "Αφαίρεση εγγράφου \"%s\" από ερμάρια"
+msgstr ""
 
 #: views.py:287
-#, fuzzy, python-format
-#| msgid "Remove %(count)d document from cabinets"
-#| msgid_plural "Remove %(count)d documents from cabinets"
+#, python-format
 msgid "Remove %(count)d document from cabinets."
-msgstr "Αφαίρεση %(count)d εγγράφων από ερμάριο"
+msgstr ""
 
 #: views.py:288
-#, fuzzy, python-format
-#| msgid "Remove %(count)d document from cabinets"
-#| msgid_plural "Remove %(count)d documents from cabinets"
+#, python-format
 msgid "Remove %(count)d documents from cabinets."
-msgstr "Αφαίρεση %(count)d εγγράφων από ερμάριο"
+msgstr ""
 
 #: views.py:292
 msgid "Remove"
@@ -353,39 +338,3 @@ msgstr "Ερμάρια στα οποία το έγγραφο θα προστεθ
 #: workflow_actions.py:67
 msgid "Cabinets from which the document will be removed."
 msgstr "Ερμάρια από τα οποία το έγγραφο θα αφαιρεθεί."
-
-#~ msgid "Number of documents on this cabinet level."
-#~ msgstr "Αριθμός εγγράφων σε αυτό το επίπεδο ερμαρίου."
-
-#~ msgid ""
-#~ "Comma separated list of document primary keys to add to this cabinet."
-#~ msgstr ""
-#~ "Λίστα διαχωρισμένη με κόμμα πρωτευόντων κλειδιών εγγράφων, προς προσθήκη "
-#~ "σε αυτό το ερμάριο."
-
-#~ msgid ""
-#~ "API URL pointing to a document in relation to the cabinet storing it. "
-#~ "This URL is different than the canonical document URL."
-#~ msgstr ""
-#~ "API URL που παραπέμπει σε ένα έγγραφο σχετιζόμενο με το ερμάριο στο οποίο "
-#~ "είναι αποθηκευμένο."
-
-#~ msgid "Add to cabinet request performed on %(count)d document."
-#~ msgstr ""
-#~ "Αίτημα για προσθήκη σε ερμάριο πραγματοποιήθηκε σε %(count)d έγγραφο."
-
-#~ msgid "Add to cabinet request performed on %(count)d documents."
-#~ msgstr ""
-#~ "Αίτημα για προσθήκη σε ερμάριο πραγματοποιήθηκε σε %(count)d έγγραφα."
-
-#~ msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
-#~ msgstr "Έγγραφο: %(document)s υπάρχει ήδη στο ερμάριο: %(cabinet)s."
-
-#~ msgid "Remove from cabinet request performed on %(count)d document."
-#~ msgstr "Αίτημα για αφαίρεση από ερμάριο εκτελέστηκε για %(count)d έγγραφο."
-
-#~ msgid "Remove from cabinet request performed on %(count)d documents."
-#~ msgstr "Αίτημα για αφαίρεση από ερμάριο εκτελέστηκε για %(count)d έγγραφα."
-
-#~ msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
-#~ msgstr "Έγγραφο: %(document)s δεν περιέχεται στο ερμάριο: %(cabinet)s."

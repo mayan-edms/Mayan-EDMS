@@ -2,23 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Roberto Rosario, 2020
-#
+# Roberto Rosario, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario, 2020\n"
-"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/"
-"teams/13584/zh-Hans/)\n"
-"Language: zh-Hans\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:15 settings.py:7
@@ -35,11 +34,11 @@ msgstr "没有"
 
 #: forms.py:284
 msgid "Label"
-msgstr ""
+msgstr "标签"
 
 #: forms.py:288
 msgid "Relationship"
-msgstr ""
+msgstr "关系"
 
 #: generics.py:146
 msgid ""
@@ -74,13 +73,11 @@ msgstr "移除"
 #: generics.py:531
 #, python-format
 msgid "Error updating relationship; %s"
-msgstr ""
+msgstr "更新关系时出错; %s"
 
 #: generics.py:538
-#, fuzzy
-#| msgid "%(object)s updated successfully."
 msgid "Relationships updated successfully"
-msgstr "%(object)s已成功更新。"
+msgstr "关系已成功更新"
 
 #: generics.py:597
 #, python-format
@@ -118,22 +115,19 @@ msgid "%(object)s updated successfully."
 msgstr "%(object)s已成功更新。"
 
 #: generics.py:885
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "\"%(object)s\" deleted successfully."
-msgstr "%(object)s已成功删除。"
+msgstr ""
 
 #: generics.py:886
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "%(count)d object deleted successfully."
-msgstr "%(object)s已成功删除。"
+msgstr ""
 
 #: generics.py:887
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "%(count)d objects deleted successfully."
-msgstr "%(object)s已成功删除。"
+msgstr ""
 
 #: generics.py:888
 #, python-format

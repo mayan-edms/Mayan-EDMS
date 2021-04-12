@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Nurgül Özkan <nurgulozkan@hotmail.com>, 2017
-# serhatcan77 <serhat_can@yahoo.com>, 2017
+# serhatcan77 <serhat_can@yahoo.com>, 2021
+# abc Def <hdogan1974@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-03-06 15:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/tr_TR/)\n"
-"Language: tr_TR\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: abc Def <hdogan1974@gmail.com>, 2021\n"
+"Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: admin.py:22
@@ -27,11 +27,11 @@ msgstr "Yok"
 
 #: admin.py:24 links.py:94 models.py:54
 msgid "Document types"
-msgstr "Doküman türleri"
+msgstr "Belge türleri"
 
 #: apps.py:51 events.py:6 settings.py:8
 msgid "Document indexing"
-msgstr "Belge dizini oluşturma"
+msgstr ""
 
 #: apps.py:147
 msgid "Total levels"
@@ -54,16 +54,12 @@ msgid "Documents"
 msgstr "Belgeler"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index template created"
-msgstr "Dizin şablonu düğümü"
+msgstr ""
 
 #: events.py:13
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index template edited"
-msgstr "Dizin şablonu düğümü"
+msgstr ""
 
 #: forms.py:16
 msgid "Index templates to be queued for rebuilding."
@@ -141,7 +137,8 @@ msgid "Slug"
 msgstr "Sümüklüböcek"
 
 #: models.py:47
-msgid "Causes this index to be visible and updated when document data changes."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
 msgstr ""
 "Belge verileri değiştiğinde bu dizin görünür ve güncellenmesine neden olur."
 
@@ -166,12 +163,13 @@ msgstr "Dizinleme ifadesi"
 #: models.py:226
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr ""
-"Belge verileri değiştiğinde bu düğümün görünür ve güncellenmesine neden olur."
+"Belge verileri değiştiğinde bu düğümün görünür ve güncellenmesine neden "
+"olur."
 
 #: models.py:234
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 msgstr ""
 "Bu düğümün belgeler için bir kap olarak hareket ettirilmesi ve diğer "
 "düğümler için üst öğe olmaması için bu seçeneği işaretleyin."
@@ -201,11 +199,11 @@ msgstr "Belge hata dizini: %(document)s; Ifade: %(expression)s; %(exception)s"
 
 #: models.py:345
 msgid "Index instance"
-msgstr "Dizin örneği"
+msgstr ""
 
 #: models.py:346
 msgid "Index instances"
-msgstr "Dizin örnekleri"
+msgstr ""
 
 #: models.py:386
 msgid "Index template node"
@@ -233,7 +231,7 @@ msgstr ""
 
 #: models.py:521
 msgid "Document index node instance"
-msgstr "Belge dizini düğümü örneği"
+msgstr ""
 
 #: models.py:522
 msgid "Document indexes node instances"
@@ -248,40 +246,28 @@ msgid "Indexing"
 msgstr "Dizinleme"
 
 #: permissions.py:8
-#, fuzzy
-#| msgid "Index instances"
 msgid "View index instances"
-msgstr "Dizin örnekleri"
+msgstr ""
 
 #: permissions.py:11
-#, fuzzy
-#| msgid "Delete the index template node: %s?"
 msgid "Create new index templates"
-msgstr "Dizin şablonu düğümünü silin: %s?"
+msgstr ""
 
 #: permissions.py:14
-#, fuzzy
-#| msgid "Edit the index template node: %s?"
 msgid "Edit index templates"
-msgstr "Dizin şablonu düğümünü düzenle: %s?"
+msgstr ""
 
 #: permissions.py:17
-#, fuzzy
-#| msgid "Delete the index template node: %s?"
 msgid "Delete index templates"
-msgstr "Dizin şablonu düğümünü silin: %s?"
+msgstr ""
 
 #: permissions.py:20
-#, fuzzy
-#| msgid "Index node template"
 msgid "View index templates"
-msgstr "Dizin düğümü şablonu"
+msgstr ""
 
 #: permissions.py:23 views/index_template_views.py:310
-#, fuzzy
-#| msgid "Rebuild indexes"
 msgid "Rebuild index templates"
-msgstr "Dizinleri yeniden oluştur"
+msgstr ""
 
 #: queues.py:12
 msgid "Delete empty index nodes"
@@ -329,8 +315,8 @@ msgstr ""
 
 #: serializers.py:215
 msgid ""
-"URL of the API endpoint showing the list document types associated with this "
-"index template."
+"URL of the API endpoint showing the list document types associated with this"
+" index template."
 msgstr ""
 
 #: serializers.py:222
@@ -352,9 +338,9 @@ msgstr ""
 
 #: settings.py:14
 msgid ""
-"Amount of time in seconds, a failed indexing task will wait before retrying. "
-"Lower values will increase the speed at which documents are indexed but will "
-"cause a higher count of failed/retried tasks in the queue."
+"Amount of time in seconds, a failed indexing task will wait before retrying."
+" Lower values will increase the speed at which documents are indexed but "
+"will cause a higher count of failed/retried tasks in the queue."
 msgstr ""
 
 #: views/index_instance_views.py:38
@@ -370,7 +356,7 @@ msgstr ""
 #: views/index_instance_views.py:80
 #, python-format
 msgid "Navigation: %s"
-msgstr "Navigasyon: %s"
+msgstr ""
 
 #: views/index_instance_views.py:86
 #, python-format
@@ -415,20 +401,18 @@ msgstr ""
 #: views/index_template_views.py:90
 msgid ""
 "Indexes group document automatically into levels. Indexes are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views/index_template_views.py:95
-#, fuzzy
-#| msgid "Indexes node template"
 msgid "There are no index templates."
-msgstr "Dizinler düğüm şablonu"
+msgstr ""
 
 #: views/index_template_views.py:124
 #, python-format
 msgid "Delete the index: %s?"
-msgstr "Dizini silin: %s?"
+msgstr ""
 
 #: views/index_template_views.py:136
 msgid "Available document types"
@@ -436,7 +420,7 @@ msgstr "Kullanılabilir belge türleri"
 
 #: views/index_template_views.py:137
 msgid "Document types linked"
-msgstr "Bağlı doküman türleri"
+msgstr ""
 
 #: views/index_template_views.py:147
 msgid ""
@@ -448,7 +432,7 @@ msgstr ""
 #: views/index_template_views.py:151
 #, python-format
 msgid "Document types linked to index: %s"
-msgstr "Dizine bağlı doküman türleri: %s"
+msgstr ""
 
 #: views/index_template_views.py:167
 #, python-format
@@ -463,29 +447,26 @@ msgstr "Dizin için ağaç şablonu düğümleri: %s"
 #: views/index_template_views.py:213
 #, python-format
 msgid "Create child node of: %s"
-msgstr "Şu alt grubun alt düğümünü oluştur: %s"
+msgstr ""
 
 #: views/index_template_views.py:239
 #, python-format
 msgid "Delete the index template node: %s?"
-msgstr "Dizin şablonu düğümünü silin: %s?"
+msgstr ""
 
 #: views/index_template_views.py:263
 #, python-format
 msgid "Edit the index template node: %s?"
-msgstr "Dizin şablonu düğümünü düzenle: %s?"
+msgstr ""
 
 #: views/index_template_views.py:283
-#, fuzzy, python-format
-#| msgid "Rebuild indexes"
+#, python-format
 msgid "Rebuild index template: %s"
-msgstr "Dizinleri yeniden oluştur"
+msgstr ""
 
 #: views/index_template_views.py:303
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index template queued for rebuild."
-msgstr "Dizin şablonu düğümü"
+msgstr ""
 
 #: views/index_template_views.py:324
 #, python-format
@@ -504,18 +485,3 @@ msgstr[1] ""
 #: views/index_template_views.py:370
 msgid "Index templates for which their instances will be deleted."
 msgstr ""
-
-#~ msgid "Create new document indexes"
-#~ msgstr "Yeni belge dizinleri oluşturma"
-
-#~ msgid "Edit document indexes"
-#~ msgstr "Belge dizinlerini düzenleme"
-
-#~ msgid "Delete document indexes"
-#~ msgstr "Belge dizinlerini sil"
-
-#~ msgid "View document indexes"
-#~ msgstr "Belge dizinlerini görüntüleme"
-
-#~ msgid "Rebuild document indexes"
-#~ msgstr "Belge dizinlerini yeniden oluştur"

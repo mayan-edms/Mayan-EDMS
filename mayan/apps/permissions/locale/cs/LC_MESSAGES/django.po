@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019-2020
+# Jiri Fait <fait@orkasolutions.cz>, 2021
+# Michal Švábík <snadno@lehce.cz>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-29 08:55+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
-"cs/)\n"
-"Language: cs\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:28+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:43 events.py:6 models.py:37 models.py:157 permissions.py:5
 msgid "Permissions"
@@ -59,7 +59,7 @@ msgstr "Odstranit"
 
 #: links.py:32
 msgid "Edit"
-msgstr "Editovat"
+msgstr "Upravit"
 
 #: links.py:41 models.py:40
 msgid "Groups"
@@ -75,7 +75,7 @@ msgstr "Krátký text popisující roli."
 
 #: models.py:33 search.py:14
 msgid "Label"
-msgstr "Označení"
+msgstr "Jmenovka"
 
 #: models.py:47
 msgid "Role"
@@ -201,18 +201,3 @@ msgstr ""
 #: views.py:170
 msgid "There are no roles"
 msgstr "Bez rolí"
-
-#~ msgid ""
-#~ "Comma separated list of groups primary keys to add to, or replace in this "
-#~ "role."
-#~ msgstr ""
-#~ "Čárkami oddělený seznam skupin primárních klíčů, které se mají přidat "
-#~ "nebo nahradit v této roli."
-
-#~ msgid ""
-#~ "Comma separated list of permission primary keys to grant to this role."
-#~ msgstr ""
-#~ "Čárkami oddělený seznam oprávnění primárních klíčů pro udělení této roli."
-
-#~ msgid "No such permission: %s"
-#~ msgstr "Bez povolení: %s"

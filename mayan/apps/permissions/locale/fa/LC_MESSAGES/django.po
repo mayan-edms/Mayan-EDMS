@@ -1,24 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2014,2018
-# Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
+# Roberto Rosario, 2021
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2021
+# Nima Towhidi <nima.towhidi@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:28+0000\n"
+"Last-Translator: Nima Towhidi <nima.towhidi@gmail.com>, 2021\n"
+"Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:43 events.py:6 models.py:37 models.py:157 permissions.py:5
@@ -194,18 +195,3 @@ msgstr ""
 #: views.py:170
 msgid "There are no roles"
 msgstr ""
-
-#~ msgid ""
-#~ "Comma separated list of groups primary keys to add to, or replace in this "
-#~ "role."
-#~ msgstr ""
-#~ "لیست کاملی از کلیدهای گروه اولیه برای اضافه کردن یا جایگزینی در این نقش "
-#~ "جدا شده است."
-
-#~ msgid ""
-#~ "Comma separated list of permission primary keys to grant to this role."
-#~ msgstr ""
-#~ "لیست کلی از کلیدهای مجاز مجوز برای اعطای این نقش به یکدیگر جدا شده است."
-
-#~ msgid "No such permission: %s"
-#~ msgstr "این اجازه ئوجود ندارد: %s"

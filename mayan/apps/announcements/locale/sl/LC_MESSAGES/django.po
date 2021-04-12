@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Jože Detečnik <joze.detecnik@3tav.si>, 2020
+# Roberto Rosario, 2021
+# Jože Detečnik <joze.detecnik@3tav.si>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-12-25 11:55+0000\n"
-"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
-"Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/sl/)\n"
-"Language: sl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:38+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2021\n"
+"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
 #: templates/announcements/announcements.html:8 views.py:119
@@ -48,23 +48,19 @@ msgstr "Izbriši"
 
 #: links.py:31
 msgid "Edit"
-msgstr "Uredi"
+msgstr ""
 
 #: models.py:18
-#, fuzzy
-#| msgid "Short description of this message."
 msgid "Short description of this announcement."
-msgstr "Kratek opis tega sporočila."
+msgstr ""
 
 #: models.py:19
 msgid "Label"
 msgstr "Oznaka"
 
 #: models.py:22
-#, fuzzy
-#| msgid "The actual message to be displayed."
 msgid "The actual test to be displayed."
-msgstr "Dejansko sporočilo, ki se prikaže."
+msgstr ""
 
 #: models.py:23
 msgid "Text"
@@ -72,27 +68,23 @@ msgstr ""
 
 #: models.py:25
 msgid "Enabled"
-msgstr "Omogočeno"
+msgstr ""
 
 #: models.py:28
-#, fuzzy
-#| msgid "Date and time after which this message will be displayed."
 msgid "Date and time after which this announcement will be displayed."
-msgstr "Datum in čas, po katerem bo prikazano to sporočilo."
+msgstr ""
 
 #: models.py:29
 msgid "Start date time"
-msgstr "Začetni datum"
+msgstr ""
 
 #: models.py:33
-#, fuzzy
-#| msgid "Date and time until when this message is to be displayed."
 msgid "Date and time until when this announcement is to be displayed."
-msgstr "Datum in čas, do kdaj bo prikazano to sporočilo."
+msgstr ""
 
 #: models.py:34
 msgid "End date time"
-msgstr "Končni datum"
+msgstr ""
 
 #: models.py:40
 msgid "Announcement"
@@ -115,28 +107,24 @@ msgid "View announcements"
 msgstr ""
 
 #: views.py:41
-#, fuzzy, python-format
-#| msgid "Error deleting message \"%(message)s\": %(error)s"
+#, python-format
 msgid "Error deleting announcement \"%(instance)s\"; %(exception)s"
-msgstr "Napaka pri brisanju sporočila &quot;%(message)s&quot;: %(error)s"
+msgstr ""
 
 #: views.py:50
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "Announcement \"%(object)s\" deleted successfully."
-msgstr "Sporočilo &quot;%s&quot; je bilo uspešno izbrisano."
+msgstr ""
 
 #: views.py:53
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d announcement deleted successfully."
-msgstr "Sporočilo &quot;%s&quot; je bilo uspešno izbrisano."
+msgstr ""
 
 #: views.py:56
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d announcements deleted successfully."
-msgstr "Sporočilo &quot;%s&quot; je bilo uspešno izbrisano."
+msgstr ""
 
 #: views.py:58
 #, python-format
@@ -144,18 +132,14 @@ msgid "Delete announcement: %(object)s."
 msgstr ""
 
 #: views.py:59
-#, fuzzy, python-format
-#| msgid "Delete the selected message?"
-#| msgid_plural "Delete the selected messages?"
+#, python-format
 msgid "Delete the %(count)d selected announcement."
-msgstr "Želite izbrisati izbrano sporočilo?"
+msgstr ""
 
 #: views.py:60
-#, fuzzy, python-format
-#| msgid "Delete the selected message?"
-#| msgid_plural "Delete the selected messages?"
+#, python-format
 msgid "Delete the %(count)d selected announcements."
-msgstr "Želite izbrisati izbrano sporočilo?"
+msgstr ""
 
 #: views.py:92
 #, python-format
@@ -163,67 +147,12 @@ msgid "Edit announcement: %s"
 msgstr ""
 
 #: views.py:114
-#, fuzzy
-#| msgid ""
-#| "Messages are displayed in the login view. You can use messages to convery "
-#| "information about your organzation, announcements or usage guidelines for "
-#| "your users."
 msgid ""
 "Announcements are displayed in the login view. You can use announcements to "
 "convery information about your organzation, announcements or usage "
 "guidelines for your users."
 msgstr ""
-"Sporočila so prikazana v pogledu za prijavo. Sporočila lahko uporabite za "
-"pridobivanje informacij o svoji organizaciji, obvestil ali smernic za "
-"uporabo za svoje uporabnike."
 
 #: views.py:118
-#, fuzzy
-#| msgid "No messages available"
 msgid "No announcements available"
-msgstr "Na voljo ni nobeno sporočilo"
-
-#~ msgid "Message of the day"
-#~ msgstr "Sporočilo dneva"
-
-#~ msgid "Messages"
-#~ msgstr "Sporočila"
-
-#~ msgid "Message created"
-#~ msgstr "Sporočilo ustvarjeno"
-
-#~ msgid "Message edited"
-#~ msgstr "Sporočilo urejeno"
-
-#~ msgid "Create message"
-#~ msgstr "Ustvari sporočilo"
-
-#~ msgid "Message"
-#~ msgstr "Sporočilo"
-
-#~ msgid "Create messages"
-#~ msgstr "Ustvari sporočila"
-
-#~ msgid "Delete messages"
-#~ msgstr "Izbriši sporočila"
-
-#~ msgid "Edit messages"
-#~ msgstr "Urejanje sporočil"
-
-#~ msgid "View messages"
-#~ msgstr "Ogled sporočil"
-
-#~ msgid "Messages of the day"
-#~ msgstr "Sporočila dneva"
-
-#~ msgid "Delete request performed on %(count)d message"
-#~ msgstr "Izbriši zahtevo, izvedeno na sporočilu %(count)d"
-
-#~ msgid "Delete request performed on %(count)d messages"
-#~ msgstr "Izbriši zahtevo, izvedeno za sporočila %(count)d"
-
-#~ msgid "Delete message: %s?"
-#~ msgstr "Želite izbrisati sporočilo: %s?"
-
-#~ msgid "Edit message: %s"
-#~ msgstr "Uredi sporočilo: %s"
+msgstr ""

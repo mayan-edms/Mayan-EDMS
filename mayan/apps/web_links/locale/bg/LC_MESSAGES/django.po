@@ -2,24 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2019
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2020
-#
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2019-12-03 05:24+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2020\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
-"bg/)\n"
-"Language: bg\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:39
@@ -141,7 +140,7 @@ msgstr "Налични типове документи"
 
 #: views.py:129
 msgid "Document types enabled"
-msgstr "Типовете документи са активирани"
+msgstr "Активирани типове документи"
 
 #: views.py:139
 #, python-format
@@ -174,10 +173,3 @@ msgstr "Няма уеб връзки за този документ"
 #, python-format
 msgid "Web links for document: %s"
 msgstr "Уеб връзки за документ: %s"
-
-#~ msgid ""
-#~ "Comma separated list of document type primary keys to which this web link "
-#~ "will be attached."
-#~ msgstr ""
-#~ "Списък разделен със запетаи на първични ключове за типа на документа, към "
-#~ "които ще бъде прикачена тази уеб връзка."

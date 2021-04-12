@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Nurgül Özkan <nurgulozkan@hotmail.com>, 2017
-# serhatcan77 <serhat_can@yahoo.com>, 2017
+# Nurgül Özkan <nurgulozkan@hotmail.com>, 2021
+# serhatcan77 <serhat_can@yahoo.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-09-27 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/tr_TR/)\n"
-"Language: tr_TR\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2021\n"
+"Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
@@ -32,16 +32,16 @@ msgstr "Transformasyon"
 #: backends/python.py:124 backends/python.py:137
 #, python-format
 msgid "Exception determining PDF page count; %s"
-msgstr "PDF sayfa sayısını belirleyen istisna; %s"
+msgstr ""
 
 #: backends/python.py:151
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
-msgstr "Yastık kullanarak sayfa sayımını belirleyen istisna; %s"
+msgstr ""
 
 #: classes.py:155
 msgid "LibreOffice not installed or not found."
-msgstr "LibreOffice kurulu değil veya bulunamadı."
+msgstr ""
 
 #: classes.py:259
 msgid "Not an office file format."
@@ -77,7 +77,7 @@ msgstr ""
 
 #: forms.py:16
 msgid "Preview"
-msgstr ""
+msgstr "Önizleme"
 
 #: forms.py:36
 msgid "Available transformations for this layer."
@@ -180,16 +180,12 @@ msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
 msgstr ""
-"Dönüşümlerin gerçekleştirileceği sıralama. Eğer değiştirilmeden bırakılırsa, "
-"otomatik sipariş değeri verilecektir."
 
 #: models.py:231 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
 msgstr ""
-"Dönüşüm için argümanları bir YAML sözlüğü olarak girin. Yani: {\"derece\": "
-"180}"
 
 #: models.py:233
 msgid "Arguments"
@@ -229,15 +225,15 @@ msgstr "Yeni dönüşüm oluştur"
 
 #: permissions.py:24
 msgid "Delete transformations"
-msgstr "Dönüşümleri sil"
+msgstr ""
 
 #: permissions.py:27
 msgid "Edit transformations"
-msgstr "Dönüşümleri düzenle"
+msgstr ""
 
 #: permissions.py:30
 msgid "View existing transformations"
-msgstr "Varolan dönüşümleri görüntüle"
+msgstr ""
 
 #: queues.py:11
 msgid "Generate a image of an asset."
@@ -274,7 +270,7 @@ msgstr ""
 
 #: settings.py:70
 msgid "Graphics conversion backend to use."
-msgstr "Grafik dönüştürme kullanmak için arka uç."
+msgstr ""
 
 #: settings.py:76
 msgid "Configuration options for the graphics conversion backend."
@@ -288,8 +284,8 @@ msgstr ""
 
 #: storages.py:28
 msgid ""
-"Unable to initialize the converter asset cachestorage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the converter asset cachestorage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""
 
 #: storages.py:34
@@ -326,15 +322,15 @@ msgstr "Fiske"
 
 #: transformations.py:638
 msgid "Gaussian blur"
-msgstr "Gauss bulanıklığı"
+msgstr ""
 
 #: transformations.py:648
 msgid "Line art"
-msgstr "Çizgi resim"
+msgstr ""
 
 #: transformations.py:659
 msgid "Mirror"
-msgstr "Ayna"
+msgstr ""
 
 #: transformations.py:670
 msgid "Resize"
@@ -346,19 +342,19 @@ msgstr "Döndürme"
 
 #: transformations.py:723
 msgid "Rotate 90 degrees"
-msgstr "90 derece döndür"
+msgstr ""
 
 #: transformations.py:734
 msgid "Rotate 180 degrees"
-msgstr "180 derece döndür"
+msgstr ""
 
 #: transformations.py:745
 msgid "Rotate 270 degrees"
-msgstr "270 derece döndür"
+msgstr ""
 
 #: transformations.py:755
 msgid "Unsharp masking"
-msgstr "Keskin olmayan maskeleme"
+msgstr ""
 
 #: transformations.py:771
 msgid "Zoom"
@@ -407,7 +403,8 @@ msgstr ""
 
 #: views.py:139
 msgid ""
-"Assets are files that can be used in conjuction with certain transformations."
+"Assets are files that can be used in conjuction with certain "
+"transformations."
 msgstr ""
 
 #: views.py:142
@@ -429,12 +426,12 @@ msgstr ""
 #: views.py:240
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr "\"%(transformation)s\" dönüşümünü sil: %(content_object)s?"
+msgstr ""
 
 #: views.py:289
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr "\"%(transformation)s\" için dönüşüm değiştir: %(content_object)s"
+msgstr ""
 
 #: views.py:343
 #, python-format
@@ -465,8 +462,8 @@ msgstr "Sayfalar"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas and/"
-"or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
 
 #: workflow_actions.py:32

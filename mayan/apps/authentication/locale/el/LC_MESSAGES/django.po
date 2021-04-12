@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2021
 # pyrotech <anastasios@tutamail.com>, 2021
-# pyrotech <anastasios@tutamail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-01-22 19:37+0000\n"
-"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
-"el/)\n"
-"Language: el\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:32 events.py:6 permissions.py:6 settings.py:10
@@ -63,7 +63,8 @@ msgstr "Μόνιμα"
 
 #: forms.py:80
 msgid "If selected, disables ending impersonation."
-msgstr "Εάν επιλεγεί, απενεργοποιεί την δυνατότητα τερματισμού μίμησης χρήστη."
+msgstr ""
+"Εάν επιλεγεί, απενεργοποιεί την δυνατότητα τερματισμού μίμησης χρήστη."
 
 #: forms.py:91
 msgid "User"
@@ -82,10 +83,8 @@ msgid "Impersonate user"
 msgstr "Μίμηση χρήστη"
 
 #: links.py:39
-#, fuzzy
-#| msgid "Impersonate user"
 msgid "Impersonate"
-msgstr "Μίμηση χρήστη"
+msgstr ""
 
 #: links.py:44 links.py:48
 msgid "Set password"
@@ -105,8 +104,8 @@ msgstr ""
 
 #: settings.py:22
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
-"in. Value is time in seconds."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
 msgstr ""
 "Μέγιστος χρόνος για τον οποίο θα παραμείνει συνδεδεμένος ένα χρήστης με την "
 "επιλογή \"Να με θυμάσαι\". Η τιμή είναι σε δευτερόλεπτα."
@@ -129,7 +128,7 @@ msgstr ""
 
 #: templates/authentication/app/viewport.html:14
 msgid "Click here when finished"
-msgstr ""
+msgstr "Για ολοκλήρηση κάντε κλικ εδώ"
 
 #: templates/authentication/login.html:10
 msgid "Login"
@@ -197,8 +196,8 @@ msgstr "Αίτημα αλλαγής κωδικού πραγματοποιήθη�
 #: views.py:179
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] "Αλλαγή κωδικών χρηστών"
-msgstr[1] "Αλλαγή κωδικών χρηστών"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:189
 #, python-format
@@ -218,18 +217,6 @@ msgstr ""
 "%(error)s"
 
 #: views.py:278
-#, fuzzy, python-format
-#| msgid "Impersonate users"
+#, python-format
 msgid "Impersonate user: %s"
-msgstr "Μίμηση χρηστών"
-
-#~ msgid "User to be impersonated."
-#~ msgstr "Επιλογή χρήστη προς μίμηση."
-
-#~ msgid ""
-#~ "Super user and staff user password reseting is not allowed, use the admin "
-#~ "interface for these cases."
-#~ msgstr ""
-#~ "Η επαναφορά κωδικών για τον υπερχρήστη και τον χρήστη προσωπικού δεν "
-#~ "επιτρέπεται. Κάντε χρήση του περιβάλλοντος διαχείρισης γι' αυτές τις "
-#~ "περιπτώσεις."
+msgstr ""

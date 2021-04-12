@@ -1,29 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Roberto Rosario, 2021
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
+# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2021
+# Olivier W, 2021
+# Yves Dubois <ydubois@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
 # Benoît GROUSSET <benoit@grousset.xyz>, 2021
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2016-2017
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
-# Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
-# Frédéric Sheedy <sheedf@gmail.com>, 2019
-# Olivier W, 2019
-# Yves Dubois <ydubois@gmail.com>, 2018
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-01-04 19:34+0000\n"
-"Last-Translator: Benoît GROUSSET <benoit@grousset.xyz>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:12+0000\n"
+"Last-Translator: Benoît GROUSSET <benoit@grousset.xyz>, 2021\n"
+"Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:24 classes.py:143 links.py:27
@@ -37,10 +37,8 @@ msgid ""
 msgstr ""
 
 #: apps.py:63
-#, fuzzy
-#| msgid "Object ID"
 msgid "Object"
-msgstr "Identifiant de l'objet"
+msgstr "Objet"
 
 #: events.py:6 permissions.py:5
 msgid "Access control lists"
@@ -51,10 +49,8 @@ msgid "ACL created"
 msgstr "Droits créé"
 
 #: events.py:13
-#, fuzzy
-#| msgid "ACL edited"
 msgid "ACL deleted"
-msgstr "Droits modifié"
+msgstr ""
 
 #: events.py:16
 msgid "ACL edited"
@@ -83,8 +79,7 @@ msgstr ""
 #: managers.py:228
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
-msgstr ""
-"L'objet \"%s\" n'est pas un modèle et l'accès ne peut pas être vérifié."
+msgstr "L'objet \"%s\" n'est pas un modèle et l'accès ne peut pas être vérifié."
 
 #: managers.py:248
 #, python-format
@@ -117,22 +112,12 @@ msgid "View ACLs"
 msgstr "Voir les droits"
 
 #: serializers.py:125
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
-"Clé principale de la nouvelle autorisation à accorder à la liste de contrôle "
-"d'accès."
 
 #: serializers.py:132
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
-"Clé principale de la nouvelle autorisation à accorder à la liste de contrôle "
-"d'accès."
 
 #: views.py:40
 #, python-format
@@ -193,22 +178,18 @@ msgid ""
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
 msgstr ""
-"Les autorisations désactivées sont héritées d'un objet parent ou directement "
-"accordées au rôle et ne peuvent pas être supprimées de cette vue. Les "
-"autorisations héritées doivent être supprimées de l'ACL de l'objet parent ou "
-"de leur rôle via le menu Configuration."
+"Les autorisations désactivées sont héritées d'un objet parent ou directement"
+" accordées au rôle et ne peuvent pas être supprimées de cette vue. Les "
+"autorisations héritées doivent être supprimées de l'ACL de l'objet parent ou"
+" de leur rôle via le menu Configuration."
 
 #: views.py:256
-#, fuzzy
-#| msgid "There are no ACLs for this object"
 msgid "There are no ACLs"
-msgstr "Aucun droit pour cet objet"
+msgstr ""
 
 #: views.py:265
-#, fuzzy
-#| msgid "Access control lists"
 msgid "Global access control lists"
-msgstr "Listes de contrôle des droits d'accès"
+msgstr ""
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -223,7 +204,8 @@ msgid "Object ID"
 msgstr "Identifiant de l'objet"
 
 #: workflow_actions.py:35
-msgid "Numeric identifier of the object for which the access will be modified."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
 msgstr ""
 "Identifiant numérique de l'objet pour lequel les droits d'accès vont être "
 "modifiés."
@@ -240,7 +222,8 @@ msgstr "Rôles pour lesquels les droits d'accès vont être modifiés."
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr ""
-"Autorisations à accorder/révoquer au rôle pour l'objet sélectionné ci-dessus."
+"Autorisations à accorder/révoquer au rôle pour l'objet sélectionné ci-"
+"dessus."
 
 #: workflow_actions.py:57
 msgid "Grant object access"
@@ -257,32 +240,3 @@ msgstr "Accorder l'accès au document"
 #: workflow_actions.py:211
 msgid "Revoke document access"
 msgstr "Révoquer l'accès au document"
-
-#~ msgid ""
-#~ "API URL pointing to the list of permissions for this access control list."
-#~ msgstr ""
-#~ "URL de l'API pointant vers la liste des autorisations pour cette liste de "
-#~ "contrôle d'accès."
-
-#~ msgid ""
-#~ "API URL pointing to a permission in relation to the access control list "
-#~ "to which it is attached. This URL is different than the canonical "
-#~ "workflow URL."
-#~ msgstr ""
-#~ "URL de l'API pointant vers une autorisation en relation avec la liste de "
-#~ "contrôle d'accès à laquelle elle est attachée. Cette URL est différente "
-#~ "de l'URL du flux de travail canonique."
-
-#~ msgid "No such permission: %s"
-#~ msgstr "Aucune autorisation de ce genre : %s"
-
-#~ msgid ""
-#~ "Comma separated list of permission primary keys to grant to this access "
-#~ "control list."
-#~ msgstr ""
-#~ "Liste séparée par des virgules des clés primaires d'autorisation à "
-#~ "accorder à cette liste de contrôle d'accès."
-
-#~ msgid "Primary keys of the role to which this access control list binds to."
-#~ msgstr ""
-#~ "Clés primaires du rôle auquel cette liste de contrôle d'accès se rattache."

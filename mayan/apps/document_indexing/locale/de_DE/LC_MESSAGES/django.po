@@ -1,31 +1,30 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Berny <berny@bernhard-marx.de>, 2015-2016
-# Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
-# Marvin Haschker <marvin@haschker.me>, 2019-2020
-# Mathias Behrle <mathiasb@m9s.biz>, 2019-2020
-# Mathias Behrle <mbehrle@m9s.biz>, 2014
-# Robin Schubert <robin.schubert@gmx.de>, 2019
-# Stefan Lodders <sl@suchreflex.de>, 2012
-# tilmannsittig <tilmann.sittig@web.de>, 2012
-# Tobias Paepke <tobias.paepke@paepke.net>, 2014
+# Roberto Rosario, 2021
+# Mathias Behrle <mathiasb@m9s.biz>, 2021
+# Berny <berny@bernhard-marx.de>, 2021
+# Jesaja Everling <jeverling@gmail.com>, 2021
+# Robin Schubert <robin.schubert@gmx.de>, 2021
+# Marvin Haschker <marvin@haschker.me>, 2021
+# Ingo Buchholz <ingo.buchholz@takwa.de>, 2021
+# Björn E <b1pum@web.de>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-03-06 15:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Björn E <b1pum@web.de>, 2021\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:22
@@ -58,19 +57,15 @@ msgstr "Ebenen"
 
 #: apps.py:195 models.py:393
 msgid "Documents"
-msgstr "Index bearbeitet"
+msgstr "Dokumente"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index template created"
-msgstr "Index Knotenpunkt"
+msgstr ""
 
 #: events.py:13
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index template edited"
-msgstr "Index Knotenpunkt"
+msgstr ""
 
 #: forms.py:16
 msgid "Index templates to be queued for rebuilding."
@@ -143,10 +138,11 @@ msgstr "Interner Name um diesen Index zu identifizieren."
 
 #: models.py:42
 msgid "Slug"
-msgstr "Abkürzung"
+msgstr "Webkürzel"
 
 #: models.py:47
-msgid "Causes this index to be visible and updated when document data changes."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
 msgstr ""
 "Bewirkt Sichtbarkeit und Aktualisierung des Index, wenn Dokumente geändert "
 "werden."
@@ -164,9 +160,8 @@ msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr ""
-"Vorlage/Template zur Generierung eingeben. Django's Standard-Vorlagen-"
-"Sprache benutzen (https://docs.djangoproject.com/en/1.11/ref/templates/"
-"builtins/)"
+"Vorlage zur Generierung eingeben. Django's Standard-Vorlagen-Sprache "
+"benutzen (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
 #: models.py:221
 msgid "Indexing expression"
@@ -180,8 +175,8 @@ msgstr ""
 
 #: models.py:234
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 msgstr ""
 "Wählen Sie diese Option, wenn Dokumente in diesem Knoten dargestellt werden "
 "sollen (und dieser Knoten nicht als Eltern-Knoten für weitere Kind-"
@@ -261,40 +256,28 @@ msgid "Indexing"
 msgstr "Indizierung"
 
 #: permissions.py:8
-#, fuzzy
-#| msgid "View document index instances"
 msgid "View index instances"
-msgstr "Instanzen des Dokumentenindexes anzeigen"
+msgstr ""
 
 #: permissions.py:11
-#, fuzzy
-#| msgid "Delete the index template node: %s?"
 msgid "Create new index templates"
-msgstr "Indexvorlagen-Knotenpunkt %s löschen?"
+msgstr ""
 
 #: permissions.py:14
-#, fuzzy
-#| msgid "Index templates"
 msgid "Edit index templates"
-msgstr "Indexvorlagen"
+msgstr ""
 
 #: permissions.py:17
-#, fuzzy
-#| msgid "Delete the index template node: %s?"
 msgid "Delete index templates"
-msgstr "Indexvorlagen-Knotenpunkt %s löschen?"
+msgstr ""
 
 #: permissions.py:20
-#, fuzzy
-#| msgid "Index templates"
 msgid "View index templates"
-msgstr "Indexvorlagen"
+msgstr ""
 
 #: permissions.py:23 views/index_template_views.py:310
-#, fuzzy
-#| msgid "Rebuild indexes"
 msgid "Rebuild index templates"
-msgstr "Indices wiederaufbauen"
+msgstr ""
 
 #: queues.py:12
 msgid "Delete empty index nodes"
@@ -342,8 +325,8 @@ msgstr ""
 
 #: serializers.py:215
 msgid ""
-"URL of the API endpoint showing the list document types associated with this "
-"index template."
+"URL of the API endpoint showing the list document types associated with this"
+" index template."
 msgstr ""
 
 #: serializers.py:222
@@ -365,9 +348,9 @@ msgstr ""
 
 #: settings.py:14
 msgid ""
-"Amount of time in seconds, a failed indexing task will wait before retrying. "
-"Lower values will increase the speed at which documents are indexed but will "
-"cause a higher count of failed/retried tasks in the queue."
+"Amount of time in seconds, a failed indexing task will wait before retrying."
+" Lower values will increase the speed at which documents are indexed but "
+"will cause a higher count of failed/retried tasks in the queue."
 msgstr ""
 
 #: views/index_instance_views.py:38
@@ -433,15 +416,13 @@ msgstr "Indices verknüpft mit Dokumententyp: %s"
 #: views/index_template_views.py:90
 msgid ""
 "Indexes group document automatically into levels. Indexes are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views/index_template_views.py:95
-#, fuzzy
-#| msgid "There are no indexes."
 msgid "There are no index templates."
-msgstr "Keine Indizes vorhanden."
+msgstr ""
 
 #: views/index_template_views.py:124
 #, python-format
@@ -497,25 +478,20 @@ msgid "Edit the index template node: %s?"
 msgstr "Indexvorlagen-Knotenpunkt %s bearbeiten?"
 
 #: views/index_template_views.py:283
-#, fuzzy, python-format
-#| msgid "Rebuild index: %s"
+#, python-format
 msgid "Rebuild index template: %s"
-msgstr "Index %s neu erstellen"
+msgstr ""
 
 #: views/index_template_views.py:303
-#, fuzzy
-#| msgid "Index templates to be queued for rebuilding."
 msgid "Index template queued for rebuild."
-msgstr "In die Warteschlange für den Wiederaufbau eingestellte Indexvorlagen."
+msgstr ""
 
 #: views/index_template_views.py:324
-#, fuzzy, python-format
-#| msgid "%(count)d index queued for rebuild."
-#| msgid_plural "%(count)d indexes queued for rebuild."
+#, python-format
 msgid "%(count)d index template queued for rebuild."
 msgid_plural "%(count)d index templates queued for rebuild."
-msgstr[0] "%(count)d Index für Wiederaufbau in Warteschlange gestellt."
-msgstr[1] "%(count)d Indizes zur Neuerstellung vorgemerkt."
+msgstr[0] ""
+msgstr[1] ""
 
 #: views/index_template_views.py:357
 #, python-format
@@ -527,27 +503,3 @@ msgstr[1] ""
 #: views/index_template_views.py:370
 msgid "Index templates for which their instances will be deleted."
 msgstr "Indexvorlagen, deren Instanzen gelöscht werden."
-
-#~ msgid "Index created"
-#~ msgstr "Index erstellt"
-
-#~ msgid "Index edited"
-#~ msgstr "Index erstellt"
-
-#~ msgid "Create new document indexes"
-#~ msgstr "Neue Dokumentenindices erstellen"
-
-#~ msgid "Edit document indexes"
-#~ msgstr "Dokumentenindices bearbeiten"
-
-#~ msgid "Delete document indexes"
-#~ msgstr "Dokumentenindices löschen"
-
-#~ msgid "View document indexes"
-#~ msgstr "Dokumentenindices anzeigen"
-
-#~ msgid "Rebuild document indexes"
-#~ msgstr "Dokumentenindices neu aufbauen"
-
-#~ msgid "Index queued for rebuild."
-#~ msgstr "Index zur Neuerstellung in die Warteschlange gestellt."

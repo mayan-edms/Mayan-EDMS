@@ -1,28 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
-# Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
-# Frédéric Sheedy <sheedf@gmail.com>, 2019
-# Guillaume Trottier <gui.trottier@gmail.com>, 2020
-# Yves Dubois <ydubois@gmail.com>, 2018
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
+# Yves Dubois <ydubois@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-07-08 02:11+0000\n"
-"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:32 events.py:6 permissions.py:6 settings.py:10
@@ -86,10 +85,8 @@ msgid "Impersonate user"
 msgstr "Prendre temporairement l'identité de l'utilisateur"
 
 #: links.py:39
-#, fuzzy
-#| msgid "Impersonate user"
 msgid "Impersonate"
-msgstr "Prendre temporairement l'identité de l'utilisateur"
+msgstr "Prendre l'identité"
 
 #: links.py:44 links.py:48
 msgid "Set password"
@@ -109,8 +106,8 @@ msgstr ""
 
 #: settings.py:22
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
-"in. Value is time in seconds."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
 msgstr ""
 "Le temps maximum pendant lequel un utilisateur restera connecté lorsqu'il a "
 "coché la case à cocher \"Se souvenir de moi\". La valeur est le temps en "
@@ -131,10 +128,12 @@ msgid ""
 "                Impersonating user \"%(user)s\".\n"
 "            "
 msgstr ""
+"\n"
+"Prendre l'identité de l'utilisateur «%(user)s»."
 
 #: templates/authentication/app/viewport.html:14
 msgid "Click here when finished"
-msgstr ""
+msgstr "Cliquez ici lorsque vous avez terminé"
 
 #: templates/authentication/login.html:10
 msgid "Login"
@@ -215,7 +214,8 @@ msgstr "Modifier le mot de passe pour l'utilisateur: %s"
 #: views.py:210
 #, python-format
 msgid "Successful password reset for user: %s."
-msgstr "Le mot de passe de l'utilisateur : %s a été ré-initialisé avec succès."
+msgstr ""
+"Le mot de passe de l'utilisateur : %s a été ré-initialisé avec succès."
 
 #: views.py:216
 #, python-format
@@ -225,18 +225,6 @@ msgstr ""
 "\"%(user)s\" : %(error)s"
 
 #: views.py:278
-#, fuzzy, python-format
-#| msgid "Impersonate users"
+#, python-format
 msgid "Impersonate user: %s"
-msgstr "Prendre temporairement l'identité des utilisateurs."
-
-#~ msgid "User to be impersonated."
-#~ msgstr "L'utilisateur qui fera l'objet d'une prise d'identité temporaire."
-
-#~ msgid ""
-#~ "Super user and staff user password reseting is not allowed, use the admin "
-#~ "interface for these cases."
-#~ msgstr ""
-#~ "La réinitialisation des mots de passe pour les comptes super utilisateur "
-#~ "et staff n'est pas autorisée ici, veuillez le faire via l'interface "
-#~ "d'administration."
+msgstr "Prendre l'identité de l'utilisateur : %s"

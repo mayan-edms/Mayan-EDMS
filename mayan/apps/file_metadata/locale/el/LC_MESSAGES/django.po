@@ -2,23 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Hmayag Antonian <hmayag@freemail.gr>, 2019
+# Hmayag Antonian <hmayag@freemail.gr>, 2021
 # pyrotech <anastasios@tutamail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2019-04-27 22:54+0000\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
-"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:13
@@ -97,7 +97,7 @@ msgstr ""
 
 #: models.py:22
 msgid "Internal name"
-msgstr "Εσωτερικό όνομα"
+msgstr "Όνομα εσωτερικής αναφοράς"
 
 #: models.py:27 models.py:70
 msgid "Driver"
@@ -124,22 +124,16 @@ msgid "Document types settings"
 msgstr "Ρυθμίσεις τύπων εγγράφου."
 
 #: models.py:74
-#, fuzzy
-#| msgid "Document type"
 msgid "Document file"
-msgstr "Τύπος εγγράφου"
+msgstr ""
 
 #: models.py:80 models.py:95
-#, fuzzy
-#| msgid "Document version"
 msgid "Document file driver entry"
-msgstr "Έκδοση εγγράφου"
+msgstr ""
 
 #: models.py:81
-#, fuzzy
-#| msgid "Document type settings"
 msgid "Document file driver entries"
-msgstr "Ρυθμίσεις τύπου εγγράφου"
+msgstr ""
 
 #: models.py:88
 msgid "Attribute count"
@@ -197,8 +191,8 @@ msgstr "Ορίσματα που θα διαβιβαστούν στους οδη�
 
 #: views.py:44
 msgid ""
-"File metadata are the attributes of the document's file. They can range from "
-"camera information used to take a photo to the author that created a file. "
+"File metadata are the attributes of the document's file. They can range from"
+" camera information used to take a photo to the author that created a file. "
 "File metadata are set when the document's file was first created. File "
 "metadata attributes reside in the file itself. They are not the same as the "
 "document metadata, which are user defined and reside in the database."
@@ -226,7 +220,8 @@ msgstr ""
 
 #: views.py:90
 #, python-format
-msgid "File metadata attributes for: %(document_file)s with driver: %(driver)s"
+msgid ""
+"File metadata attributes for: %(document_file)s with driver: %(driver)s"
 msgstr ""
 
 #: views.py:119

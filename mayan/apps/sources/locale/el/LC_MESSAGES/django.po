@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2021
 # pyrotech <anastasios@tutamail.com>, 2021
-# pyrotech <anastasios@tutamail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2021-03-14 18:12+0000\n"
-"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
-"el/)\n"
-"Language: el\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
@@ -57,8 +57,8 @@ msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
 msgstr ""
-"Βοηθητικό πρόγραμμα που παρέχεται από το πακέτο SANE. Χρησιμοποιήται για τον "
-"έλεγχο του σαρωτή και την λήψη της εικόνας του σαρωμένου εγγράφου."
+"Βοηθητικό πρόγραμμα που παρέχεται από το πακέτο SANE. Χρησιμοποιήται για τον"
+" έλεγχο του σαρωτή και την λήψη της εικόνας του σαρωμένου εγγράφου."
 
 #: forms.py:26
 msgid "An optional comment to explain the upload."
@@ -70,7 +70,7 @@ msgstr "Σχόλιο"
 
 #: forms.py:31
 msgid "Action"
-msgstr ""
+msgstr "Ενέργεια"
 
 #: forms.py:33
 msgid ""
@@ -97,7 +97,7 @@ msgstr "Αρχείο"
 
 #: handlers.py:22
 msgid "Default"
-msgstr "Προκαθορισμένο"
+msgstr "Προεπιλογή"
 
 #: links.py:73
 msgid "New document"
@@ -140,10 +140,8 @@ msgid "Document sources"
 msgstr "Πηγές εγγράφων"
 
 #: links.py:137
-#, fuzzy
-#| msgid "Upload new version"
 msgid "Upload new file"
-msgstr "Ανέβασμα νέας έκδοσης"
+msgstr ""
 
 #: links.py:141
 msgid "Check now"
@@ -175,7 +173,7 @@ msgstr "Μονόχρωμο"
 
 #: literals.py:44
 msgid "Color"
-msgstr "Έγχρωμο"
+msgstr "Χρώμα"
 
 #: literals.py:52 literals.py:57
 msgid "Always"
@@ -278,7 +276,7 @@ msgstr "Πηγές διαστήματος"
 
 #: models/email_sources.py:40
 msgid "Host"
-msgstr "Διεύθυνση διακομιστή"
+msgstr "Διακομιστής"
 
 #: models/email_sources.py:41
 msgid "SSL"
@@ -390,8 +388,8 @@ msgid ""
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 msgstr ""
 "Κριτήρια για χρήση κατά την αναζήτηση μηνυμάτων για επεξεργασία. "
-"Χρησιμοποιήστε τη μορφή που καθορίζεται στο https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.4"
+"Χρησιμοποιήστε τη μορφή που καθορίζεται στο "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
 #: models/email_sources.py:224
 msgid "Search criteria"
@@ -400,13 +398,14 @@ msgstr "Κριτήρια αναζήτησης"
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 "Εντολή IMAP STORE για εκτέλεση σε μηνύματα μετά την επεξεργασία τους. Μία "
-"εντολή ανά γραμμή. Χρησιμοποιήστε τις εντολές που καθορίζονται στο https://"
-"tools.ietf.org/html/rfc2060.html#section-6.4.6 ή τις προσαρμοσμένες εντολές "
-"για τον διακομιστή IMAP."
+"εντολή ανά γραμμή. Χρησιμοποιήστε τις εντολές που καθορίζονται στο "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 ή τις προσαρμοσμένες "
+"εντολές για τον διακομιστή IMAP."
 
 #: models/email_sources.py:232
 msgid "Store commands"
@@ -432,7 +431,7 @@ msgstr "Γραμματοκιβώτιο προορισμού"
 
 #: models/email_sources.py:349
 msgid "Timeout"
-msgstr "Λήξη χρόνου"
+msgstr "Λήξη χρονικού ορίου"
 
 #: models/email_sources.py:355 models/email_sources.py:356
 msgid "POP email"
@@ -488,8 +487,8 @@ msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
 msgstr ""
-"Επιλέξτε τον τρόπο τροφοδοσίας χαρτιών (simplex / duplex.) Αφήστε κενό ανδεν "
-"υποστηρίζεται από την συσκευή σας."
+"Επιλέξτε τον τρόπο τροφοδοσίας χαρτιών (simplex / duplex.) Αφήστε κενό ανδεν"
+" υποστηρίζεται από την συσκευή σας."
 
 #: models/scanner_sources.py:59
 msgid "ADF mode"
@@ -690,34 +689,23 @@ msgid "Server responded with {{statusCode}} code."
 msgstr "Ο διακομιστής απάντησε με κωδικό {{statusCode}}."
 
 #: views/document_file_views.py:61
-#, fuzzy, python-format
-#| msgid ""
-#| "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+#, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
-"Δεν είναι δυνατή η ανάρτηση νέων εκδόσεων για το έγγραφο \"%(document)s\". "
-"%(exception)s"
 
 #: views/document_file_views.py:125
-#, fuzzy, python-format
-#| msgid "Error executing document upload task; %(exception)s"
+#, python-format
 msgid "Error executing document file upload task; %(exception)s"
-msgstr "Σφάλμα κατά την εκτέλεση εργασίας ανάρτησης εγγράφου. %(exception)s"
+msgstr ""
 
 #: views/document_file_views.py:140
-#, fuzzy
-#| msgid "New document queued for upload and will be available shortly."
 msgid "New document file queued for upload and will be available shortly."
 msgstr ""
-"Νέο έγγραφο βρίσκεται σε ουρά για ανάρτηση και θα είναι διαθέσιμο σύντομα."
 
 #: views/document_file_views.py:165
-#, fuzzy, python-format
-#| msgid ""
-#| "Upload a new version for document \"%(document)s\" from source: %(source)s"
+#, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
-"Ανάρτηση νέας έκδοσης για το έγγραφο\"%(document)s\" από την πηγή: %(source)s"
 
 #: views/document_file_views.py:168
 msgid "Submit"
@@ -725,8 +713,8 @@ msgstr "Υποβολή"
 
 #: views/document_views.py:79 wizards.py:50
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 "Δεν έχουν καθοριστεί αλληλεπιδραστικές πηγές εγγράφων ή δεν έχει "
 "ενεργοποιηθεί κάποια, δημιουργήστε μία πριν συνεχίσετε."
@@ -739,8 +727,8 @@ msgstr "Ιδιότητες εγγράφου"
 #: views/document_views.py:116
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
 "Αυτό θα μπορούσε να σημαίνει ότι ο φάκελος ενδιάμεσου σταδίου είναι κενός. "
 "Θα μπορούσε επίσης να σημαίνει ότι ο λογαριασμός χρήστη του λειτουργικού "
@@ -848,20 +836,3 @@ msgstr "Επόμενο βήμα"
 #: wizards.py:77
 msgid "Document upload wizard"
 msgstr "Οδηγός ανάρτησης εγγράφου"
-
-#~ msgid "Error deleting staging file; %s"
-#~ msgstr "Σφάλμα κατά τη διαγραφή του αρχείου σε ενδιάμεσο στάδιο. %s"
-
-#~ msgid "Unable get list of staging files: %s"
-#~ msgstr "Αδυναμία λήψης λίστας αρχείων σε ενδιάμεσο στάδιο: %s"
-
-#~ msgid "Error executing document version upload task; %(exception)s"
-#~ msgstr ""
-#~ "Σφάλμα κατά την εκτέλεση εργασίας ανάρτησης έκδοσης εγγράφου. "
-#~ "%(exception)s"
-
-#~ msgid ""
-#~ "New document version queued for upload and will be available shortly."
-#~ msgstr ""
-#~ "Νέα έκδοση εγγράφου βρίσκεται σε ουρά για ανάρτηση και θα είναι διαθέσιμη "
-#~ "σύντομα."

@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2018
-# Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
+# Roberto Rosario, 2021
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2021\n"
+"Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:63 apps.py:191 apps.py:197 apps.py:201 apps.py:206 apps.py:210
@@ -76,7 +76,7 @@ msgstr "نام"
 
 #: forms.py:21 models.py:189 workflow_actions.py:93
 msgid "Value"
-msgstr "مقدار"
+msgstr "ارزش"
 
 #: forms.py:26
 msgid "Update"
@@ -111,7 +111,7 @@ msgstr "نوع متادیتا"
 
 #: forms.py:151 views.py:407
 msgid "Remove"
-msgstr "حذف"
+msgstr "برداشتن"
 
 #: forms.py:177
 msgid " Available template context variables: "
@@ -119,7 +119,7 @@ msgstr " متغیرهای متن موجود موجود:"
 
 #: forms.py:192
 msgid "None"
-msgstr "هیچکدام."
+msgstr "هیچ یک"
 
 #: forms.py:193
 msgid "Optional"
@@ -144,7 +144,7 @@ msgstr "انواه متادیتا"
 
 #: links.py:62
 msgid "Document types"
-msgstr "انواع سند"
+msgstr "نوع سند"
 
 #: links.py:66
 msgid "Create new"
@@ -159,17 +159,8 @@ msgid "Edit"
 msgstr "ویرایش"
 
 #: methods.py:20
-#, fuzzy
-#| msgid "Remove metadata types from the document"
-#| msgid_plural "Remove metadata types from the documents"
 msgid "Return the metadata of the document."
-msgstr "انواع متا داده را از اسناد حذف کنید"
-
-#: methods.py:22
-#, fuzzy
-#| msgid "Edit metadata"
-msgid "get_metadata()"
-msgstr "ویرایش متادیتا"
+msgstr ""
 
 #: mixins.py:19
 msgid "Selected documents must be of the same type."
@@ -219,7 +210,8 @@ msgstr "تأیید اعتبار"
 
 #: models.py:78
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
+"The parser will reformat the value entered to conform to the expected "
+"format."
 msgstr ""
 "تجزیه کننده مقدار ورودی را برای مطابقت با فرمت مورد انتظار بازنویسی خواهد "
 "کرد."
@@ -317,16 +309,12 @@ msgid "Metadata value"
 msgstr "مقدار متادیتا"
 
 #: search.py:24 search.py:35 search.py:46 search.py:57
-#, fuzzy
-#| msgid "Document metadata"
 msgid "Document metadata type"
-msgstr "متادیتای سند"
+msgstr ""
 
 #: search.py:28 search.py:39 search.py:50 search.py:61
-#, fuzzy
-#| msgid "Document metadata"
 msgid "Document metadata value"
-msgstr "متادیتای سند"
+msgstr ""
 
 #: serializers.py:56
 msgid "Primary key of the metadata type to be added."
@@ -353,8 +341,8 @@ msgstr "افزودن"
 #: views.py:67
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
-msgstr[0] "ًانواع متا داده را به اسناد اضافه کنید"
-msgstr[1] "ًانواع متا داده را به اسناد اضافه کنید"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:78
 #, python-format
@@ -373,7 +361,8 @@ msgstr ""
 #: views.py:172
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
 msgstr "جذف موفق متادیتای ندع : %(metadata_type)s برای سند : %(document)s."
 
 #: views.py:182
@@ -405,8 +394,8 @@ msgstr ""
 #: views.py:240
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
-msgstr[0] "اسناد متاداده را ویرایش کنید"
-msgstr[1] "اسناد متاداده را ویرایش کنید"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:251
 #, python-format
@@ -425,8 +414,9 @@ msgstr "متادیتای سند %s با موفقیت ویرایش شد."
 
 #: views.py:374
 msgid ""
-"Add metadata types this document's type to be able to add them to individual "
-"documents. Once added to individual document, you can then edit their values."
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
 msgstr ""
 
 #: views.py:379
@@ -451,8 +441,8 @@ msgstr "درخواست حذف متادیتا بر روی اسناد %(count)d ا
 #: views.py:409
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
-msgstr[0] "انواع متا داده را از اسناد حذف کنید"
-msgstr[1] "انواع متا داده را از اسناد حذف کنید"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:420
 #, python-format
@@ -503,28 +493,24 @@ msgid "There are no metadata types"
 msgstr ""
 
 #: views.py:600
-#, fuzzy
-#| msgid "Metadata type is not valid for this document type."
 msgid ""
 "Create metadata type relationships to be able to associate them to this "
 "document type."
-msgstr "این نوع از متادیتا برای این نوع سند قابل قبول نیست."
+msgstr ""
 
 #: views.py:604
 msgid "There are no metadata type relationships available"
 msgstr ""
 
 #: views.py:608
-#, fuzzy, python-format
-#| msgid "Metadata types for document type: %s"
+#, python-format
 msgid "Metadata type relationships for document type: %s"
-msgstr "نوع متاداده برای نوع سند: %s"
+msgstr ""
 
 #: views.py:652
-#, fuzzy, python-format
-#| msgid "Document types for metadata type: %s"
+#, python-format
 msgid "Document type relationships for metadata type: %s"
-msgstr "نوع سند برای نوع فراداده: %s"
+msgstr ""
 
 #: wizard_steps.py:13
 msgid "Enter document metadata"
@@ -568,12 +554,3 @@ msgid ""
 "Unable to remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
 msgstr ""
-
-#~ msgid "Relationship"
-#~ msgstr "ارتباط"
-
-#~ msgid "Error updating relationship; %s"
-#~ msgstr "خطا در به روز رسانی رابطه؛ %s"
-
-#~ msgid "Relationships updated successfully"
-#~ msgstr "روابط با موفقیت به روز شد"

@@ -2,25 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Roberto Rosario, 2020
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2020
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2020
-#
+# Roberto Rosario, 2021
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2020\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
-"bg/)\n"
-"Language: bg\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:15 settings.py:7
@@ -37,11 +36,11 @@ msgstr "Няма"
 
 #: forms.py:284
 msgid "Label"
-msgstr ""
+msgstr "Етикет"
 
 #: forms.py:288
 msgid "Relationship"
-msgstr ""
+msgstr "Връзка"
 
 #: generics.py:146
 msgid ""
@@ -49,9 +48,9 @@ msgid ""
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
-"Изберете записи, които ще бъдат премахнати. Задръжте Control, за да изберете "
-"няколко записа. След като избирането приключи, щракнете върху бутона по-долу "
-"или щракнете двукратно върху списъка, за да активирате действието."
+"Изберете записи, които ще бъдат премахнати. Задръжте Control, за да изберете"
+" няколко записа. След като избирането приключи, щракнете върху бутона по-"
+"долу или щракнете двукратно върху списъка, за да активирате действието."
 
 #: generics.py:151
 msgid ""
@@ -82,13 +81,11 @@ msgstr "Премахнете"
 #: generics.py:531
 #, python-format
 msgid "Error updating relationship; %s"
-msgstr ""
+msgstr "Грешка при актуализиране на връзката; %s"
 
 #: generics.py:538
-#, fuzzy
-#| msgid "%(object)s updated successfully."
 msgid "Relationships updated successfully"
-msgstr "%(object)s актуализиран успешно."
+msgstr "Връзките са актуализирани успешно"
 
 #: generics.py:597
 #, python-format
@@ -126,22 +123,19 @@ msgid "%(object)s updated successfully."
 msgstr "%(object)s актуализиран успешно."
 
 #: generics.py:885
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "\"%(object)s\" deleted successfully."
-msgstr "%(object)s изтрит успешно."
+msgstr ""
 
 #: generics.py:886
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "%(count)d object deleted successfully."
-msgstr "%(object)s изтрит успешно."
+msgstr ""
 
 #: generics.py:887
-#, fuzzy, python-format
-#| msgid "%(object)s deleted successfully."
+#, python-format
 msgid "%(count)d objects deleted successfully."
-msgstr "%(object)s изтрит успешно."
+msgstr ""
 
 #: generics.py:888
 #, python-format

@@ -1,24 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2012
+# Roberto Rosario, 2021
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-10-02 19:35+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
@@ -71,8 +72,8 @@ msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
 msgstr ""
-"Помощна програма от пакета popper-utils, използвана за извличане на страници "
-"от PDF файлове в изображения във формат PPM."
+"Помощна програма от пакета popper-utils, използвана за извличане на страници"
+" от PDF файлове в изображения във формат PPM."
 
 #: events.py:8
 msgid "Asset created"
@@ -84,7 +85,7 @@ msgstr "Активът е редактиран"
 
 #: forms.py:16
 msgid "Preview"
-msgstr ""
+msgstr "Предварителен преглед"
 
 #: forms.py:36
 msgid "Available transformations for this layer."
@@ -199,8 +200,8 @@ msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
 msgstr ""
-"Въведете аргументите за преобразуването като YAML речник. т.е.: {&quot;"
-"градуси&quot;: 180}"
+"Въведете аргументите за преобразуването като YAML речник. т.е.: "
+"{&quot;градуси&quot;: 180}"
 
 #: models.py:233
 msgid "Arguments"
@@ -267,18 +268,13 @@ msgid ""
 msgstr ""
 
 #: settings.py:44
-#, fuzzy
-#| msgid "Path to the Storage subclass to use when storing assets."
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
 msgstr ""
-"Път към подкласа Storage, който да се използва при съхранение на активи."
 
 #: settings.py:52
-#, fuzzy
-#| msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
-msgstr "Аргументи за предаване на CONVERTER_ASSET_STORAGE_BACKEND."
+msgstr ""
 
 #: settings.py:58
 msgid "Path to the Storage subclass to use when storing assets."
@@ -306,22 +302,14 @@ msgstr ""
 "настройките {} и {} за грешки при форматирането."
 
 #: storages.py:28
-#, fuzzy
-#| msgid ""
-#| "Unable to initialize the converter asset storage. Check the settings {} "
-#| "and {} for formatting errors."
 msgid ""
-"Unable to initialize the converter asset cachestorage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the converter asset cachestorage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""
-"Не може да се инициализира съхранението на активи на конвертора. Проверете "
-"настройките {} и {} за грешки при форматирането."
 
 #: storages.py:34
-#, fuzzy
-#| msgid "Asset created"
 msgid "Assets cache"
-msgstr "Активът е създаден"
+msgstr ""
 
 #: transformations.py:196
 msgid "Paste an asset"
@@ -404,8 +392,8 @@ msgstr "Изтриване на заявка, извършена за %(count)d�
 #: views.py:62
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] "Да се изтрие ли избраният актив?"
-msgstr[1] "Да се изтрият ли избраните активи?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:72
 #, python-format
@@ -423,10 +411,9 @@ msgid "Error deleting asset \"%(asset)s\": %(error)s"
 msgstr "Грешка при изтриването на актив &quot;%(asset)s&quot;: %(error)s"
 
 #: views.py:103
-#, fuzzy, python-format
-#| msgid "Delete asset: %s?"
+#, python-format
 msgid "Details asset: %s"
-msgstr "Изтриване на актив: %s?"
+msgstr ""
 
 #: views.py:117
 #, python-format
@@ -435,7 +422,8 @@ msgstr "Редактиране на актив: %s"
 
 #: views.py:139
 msgid ""
-"Assets are files that can be used in conjuction with certain transformations."
+"Assets are files that can be used in conjuction with certain "
+"transformations."
 msgstr ""
 "Активите са файлове, които могат да се използват заедно с определени "
 "трансформации."
@@ -455,8 +443,8 @@ msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
 msgstr ""
-"Създайте слой &quot;%(layer)s&quot; трансформация &quot;"
-"%(transformation)s&quot; за: %(object)s"
+"Създайте слой &quot;%(layer)s&quot; трансформация "
+"&quot;%(transformation)s&quot; за: %(object)s"
 
 #: views.py:240
 #, python-format
@@ -500,8 +488,8 @@ msgstr "Страници"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas and/"
-"or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
 "Страници, към които ще бъдат добавени новите трансформации. Разделете със "
 "запетаи и / или използвайте тирета за диапазони. Оставете празно, за да "

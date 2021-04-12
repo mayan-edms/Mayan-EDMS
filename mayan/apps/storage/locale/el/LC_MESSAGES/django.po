@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2021
 # pyrotech <anastasios@tutamail.com>, 2021
-# pyrotech <anastasios@tutamail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2021-01-30 16:23+0000\n"
-"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
-"el/)\n"
-"Language: el\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:25 settings.py:12
@@ -56,11 +56,11 @@ msgstr ""
 
 #: links.py:12
 msgid "Delete"
-msgstr ""
+msgstr "Διαγραφή"
 
 #: links.py:16
 msgid "Download"
-msgstr ""
+msgstr "Λήψη"
 
 #: management/commands/storage_process.py:13
 msgid "Name of the app to process."
@@ -107,11 +107,11 @@ msgstr "Αρχείο"
 
 #: models.py:52
 msgid "Label"
-msgstr ""
+msgstr "Ετικέτα"
 
 #: models.py:56
 msgid "Permission"
-msgstr ""
+msgstr "Δικαιώματα"
 
 #: models.py:63
 msgid "Download file"
@@ -134,20 +134,14 @@ msgid "Delete stale uploads"
 msgstr "Διαγραφή μεταφορτώσεων που δεν ολοκληρώθηκαν"
 
 #: queues.py:25
-#, fuzzy
-#| msgid "Delete stale uploads"
 msgid "Delete stale download files"
-msgstr "Διαγραφή μεταφορτώσεων που δεν ολοκληρώθηκαν"
+msgstr ""
 
 #: settings.py:17
-#, fuzzy
-#| msgid "A storage backend that all workers can use to share files."
 msgid ""
 "A storage backend that all workers can use to generate and hold files for "
 "download."
 msgstr ""
-"Αποθηκευτικός χώρος που όλοι οι εργαζόμενοι μπορούν να χρησιμοποιήσουν για "
-"τον διαμοιρασμό αρχείων."
 
 #: settings.py:28
 msgid "A storage backend that all workers can use to share files."
@@ -164,21 +158,15 @@ msgstr ""
 "αποθηκεύονται μικρογραφίες, προεπισκοπήσεις και προσωρινά αρχεία."
 
 #: storages.py:15
-#, fuzzy
-#| msgid ""
-#| "Unable to initialize the shared uploaded file storage. Check the settings "
-#| "{} and {} for formatting errors."
 msgid ""
-"Unable to initialize the download file storage. Check the settings {} and {} "
-"for formatting errors."
+"Unable to initialize the download file storage. Check the settings {} and {}"
+" for formatting errors."
 msgstr ""
-"Η αρχικοποίηση του αποθηκευτικού χώρου διαμοιρασμένου αναρτημένου εγγράφου "
-"απέτυχε. Ελέγξτε τις ρυθμίσεις {} και {} για σφάλματα μορφοποίησης."
 
 #: storages.py:29
 msgid ""
-"Unable to initialize the shared uploaded file storage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""
 "Η αρχικοποίηση του αποθηκευτικού χώρου διαμοιρασμένου αναρτημένου εγγράφου "
 "απέτυχε. Ελέγξτε τις ρυθμίσεις {} και {} για σφάλματα μορφοποίησης."

@@ -1,29 +1,30 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015,2017-2018
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
-# Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
-# Olivier W, 2019-2020
-# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2012
-# Yves Dubois <ydubois@gmail.com>, 2018
+# Roberto Rosario, 2021
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
+# Olivier W, 2021
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
+# Baptiste GAILLET <baptiste.gaillet@cstb.fr>, 2021
+# Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2021
+# Yves Dubois <ydubois@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-10-11 07:15+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
@@ -42,8 +43,8 @@ msgid ""
 "browser."
 msgstr ""
 "Les sources de documents sont les manières par lesquelles les nouveaux "
-"documents seront intégrés dans Mayan EDMS ; créez au moins un formulaire web "
-"pour pouvoir télécharger des documents depuis le navigateur."
+"documents seront intégrés dans Mayan EDMS ; créez au moins un formulaire web"
+" pour pouvoir télécharger des documents depuis le navigateur."
 
 #: apps.py:91
 msgid "Type"
@@ -75,7 +76,7 @@ msgstr "Commentaire"
 
 #: forms.py:31
 msgid "Action"
-msgstr ""
+msgstr "Action"
 
 #: forms.py:33
 msgid ""
@@ -145,10 +146,8 @@ msgid "Document sources"
 msgstr "Sources de documents"
 
 #: links.py:137
-#, fuzzy
-#| msgid "Upload new version"
 msgid "Upload new file"
-msgstr "Transférer une nouvelle version"
+msgstr ""
 
 #: links.py:141
 msgid "Check now"
@@ -224,7 +223,7 @@ msgstr "Un court texte pour décrire cette source."
 
 #: models/base.py:27
 msgid "Label"
-msgstr "Libellé"
+msgstr "Étiquette"
 
 #: models/base.py:29
 msgid "Enabled"
@@ -283,7 +282,7 @@ msgstr "intervalle pour les sources"
 
 #: models/email_sources.py:40
 msgid "Host"
-msgstr "Hote"
+msgstr "Hôte"
 
 #: models/email_sources.py:41
 msgid "SSL"
@@ -378,8 +377,8 @@ msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
-"Le type de métadonnée de l'expéditeur \"%(metadata_type)s\" n'est pas valide "
-"pour le document de type : %(document_type)s"
+"Le type de métadonnée de l'expéditeur \"%(metadata_type)s\" n'est pas valide"
+" pour le document de type : %(document_type)s"
 
 #: models/email_sources.py:216
 msgid "IMAP Mailbox from which to check for messages."
@@ -404,13 +403,14 @@ msgstr "Critère de recherche"
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 "Commande IMAP STORE à exécuter sur les messages après leur traitement. Une "
-"commande par ligne. Utilisez les commandes spécifiées dans https://tools."
-"ietf.org/html/rfc2060.html#section-6.4.6 ou les commandes personnalisées "
-"pour votre serveur IMAP."
+"commande par ligne. Utilisez les commandes spécifiées dans "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 ou les commandes "
+"personnalisées pour votre serveur IMAP."
 
 #: models/email_sources.py:232
 msgid "Store commands"
@@ -515,8 +515,8 @@ msgid ""
 "Error while executing scanning command \"%(command_line)s\"; "
 "%(error_message)s"
 msgstr ""
-"Erreur lors de l'exécution de la commande de numérisation \"%(command_line)s"
-"\"; %(error_message)s"
+"Erreur lors de l'exécution de la commande de numérisation "
+"\"%(command_line)s\"; %(error_message)s"
 
 #: models/staging_folder_sources.py:39
 msgid "Server side filesystem path."
@@ -690,37 +690,23 @@ msgid "Server responded with {{statusCode}} code."
 msgstr "Le serveur a répondu avec le code {{statusCode}}."
 
 #: views/document_file_views.py:61
-#, fuzzy, python-format
-#| msgid ""
-#| "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+#, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
-"Impossible de téléverser les nouvelles versions du document \"%(document)s"
-"\". %(exception)s"
 
 #: views/document_file_views.py:125
-#, fuzzy, python-format
-#| msgid "Error executing document upload task; %(exception)s"
+#, python-format
 msgid "Error executing document file upload task; %(exception)s"
 msgstr ""
-"Erreur lors de l'exécution de la tâche de téléversement de documents; "
-"%(exception)s"
 
 #: views/document_file_views.py:140
-#, fuzzy
-#| msgid "New document queued for upload and will be available shortly."
 msgid "New document file queued for upload and will be available shortly."
 msgstr ""
-"Nouveau document en attente de téléversement, il sera disponible sous peu."
 
 #: views/document_file_views.py:165
-#, fuzzy, python-format
-#| msgid ""
-#| "Upload a new version for document \"%(document)s\" from source: %(source)s"
+#, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
-"Téléversez une nouvelle version pour le document \"%(document)s\" à partir "
-"de la source: %(source)s"
 
 #: views/document_file_views.py:168
 msgid "Submit"
@@ -728,8 +714,8 @@ msgstr "Soumettre"
 
 #: views/document_views.py:79 wizards.py:50
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 "Aucune source interactive d'import de documents n'a été définie ou activée, "
 "créez-en une avant de continuer."
@@ -742,8 +728,8 @@ msgstr "Propriétés du document"
 #: views/document_views.py:116
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
 
 #: views/document_views.py:123
@@ -847,15 +833,3 @@ msgstr "Prochaine étape"
 #: wizards.py:77
 msgid "Document upload wizard"
 msgstr "Assistant de téléversement de document"
-
-#~ msgid "Error deleting staging file; %s"
-#~ msgstr "Impossible de supprimer le fichier de pré-validation : %s"
-
-#~ msgid "Unable get list of staging files: %s"
-#~ msgstr "Impossible d'obtenir la liste des fichiers en pré-validation :%s"
-
-#~ msgid ""
-#~ "New document version queued for upload and will be available shortly."
-#~ msgstr ""
-#~ "La nouvelle version du document est en attente de téléversement et sera "
-#~ "disponible sous peu."

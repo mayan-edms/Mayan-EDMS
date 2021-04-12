@@ -1,28 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Aline Freitas <aline@alinefreitas.com.br>, 2016
-# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
-# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018
-# Renata Oliveira <renatabels@gmail.com>, 2011
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
-# Rogerio Falcone <rogerio@falconeit.com.br>, 2015
+# Roberto Rosario, 2021
+# Emerson Soares <on.emersonsoares@gmail.com>, 2021
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
+# wolvsky <gustavo@infomania.com.br>, 2021
+# Aline Freitas <aline@alinefreitas.com.br>, 2021
+# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2021
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-09-28 20:30+0000\n"
-"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
@@ -65,7 +66,8 @@ msgstr "transformação"
 
 #: dependencies.py:14
 msgid "Utility from the poppler-utils package used to inspect PDF files."
-msgstr "Utilidade do pacote poppler-utils usada para inspecionar arquivos PDF."
+msgstr ""
+"Utilidade do pacote poppler-utils usada para inspecionar arquivos PDF."
 
 #: dependencies.py:19
 msgid ""
@@ -85,7 +87,7 @@ msgstr "Recurso editado"
 
 #: forms.py:16
 msgid "Preview"
-msgstr ""
+msgstr "Pré-visualizar"
 
 #: forms.py:36
 msgid "Available transformations for this layer."
@@ -268,18 +270,13 @@ msgid ""
 msgstr ""
 
 #: settings.py:44
-#, fuzzy
-#| msgid "Path to the Storage subclass to use when storing assets."
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
 msgstr ""
-"Caminho para a subclasse de armazenamento a ser usado ao armazenar recursos."
 
 #: settings.py:52
-#, fuzzy
-#| msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
-msgstr "Argumentos para passar para CONVERTER_ASSET_STORAGE_BACKEND."
+msgstr ""
 
 #: settings.py:58
 msgid "Path to the Storage subclass to use when storing assets."
@@ -307,22 +304,14 @@ msgstr ""
 "Verifique as configurações {} e {} para erros de formatação."
 
 #: storages.py:28
-#, fuzzy
-#| msgid ""
-#| "Unable to initialize the converter asset storage. Check the settings {} "
-#| "and {} for formatting errors."
 msgid ""
-"Unable to initialize the converter asset cachestorage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the converter asset cachestorage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""
-"Não foi possível inicializar o armazenamento de recursos do conversor. "
-"Verifique as configurações {} e {} para erros de formatação."
 
 #: storages.py:34
-#, fuzzy
-#| msgid "Asset created"
 msgid "Assets cache"
-msgstr "Recurso criado"
+msgstr ""
 
 #: transformations.py:196
 msgid "Paste an asset"
@@ -405,8 +394,8 @@ msgstr "Solicitação de exclusão realizada em  %(count)d recursos"
 #: views.py:62
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] "Excluir o ativo selecionado?"
-msgstr[1] "Excluir os recursos selecionados?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:72
 #, python-format
@@ -424,10 +413,9 @@ msgid "Error deleting asset \"%(asset)s\": %(error)s"
 msgstr "Erro ao excluir o recurso \"%(asset)s\": %(error)s"
 
 #: views.py:103
-#, fuzzy, python-format
-#| msgid "Delete asset: %s?"
+#, python-format
 msgid "Details asset: %s"
-msgstr "Excluir recurso: %s?"
+msgstr ""
 
 #: views.py:117
 #, python-format
@@ -436,7 +424,8 @@ msgstr "Editar recurso: %s"
 
 #: views.py:139
 msgid ""
-"Assets are files that can be used in conjuction with certain transformations."
+"Assets are files that can be used in conjuction with certain "
+"transformations."
 msgstr ""
 "Recursos são arquivos que podem ser usados em conjunto com certas "
 "transformações."
@@ -490,8 +479,7 @@ msgstr "Selecionar"
 #: views.py:417
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
-msgstr ""
-"Selecionar nova transformação de camada \"%(layer)s\"  para: %(object)s"
+msgstr "Selecionar nova transformação de camada \"%(layer)s\"  para: %(object)s"
 
 #: workflow_actions.py:22
 msgid "Pages"
@@ -499,8 +487,8 @@ msgstr "Páginas"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas and/"
-"or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
 "Páginas às quais as novas transformações serão adicionadas. Separe por "
 "vírgulas e / ou use travessões para os intervalos. Deixe em branco para "

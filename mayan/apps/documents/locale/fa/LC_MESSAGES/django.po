@@ -1,27 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2018
+# Roberto Rosario, 2021
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-10-26 13:26+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2021\n"
+"Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:209 apps.py:617 events.py:5 menus.py:8 models/document_models.py:130
-#: permissions.py:5 queues.py:24 settings.py:38 statistics.py:230
+#: apps.py:209 apps.py:617 events.py:5 menus.py:8
+#: models/document_models.py:130 permissions.py:5 queues.py:24 settings.py:38
+#: statistics.py:230
 msgid "Documents"
 msgstr "اسناد"
 
@@ -31,47 +33,35 @@ msgstr ""
 
 #: apps.py:288
 msgid "Create a document type"
-msgstr "نوع سند را ایجاد کنید"
+msgstr ""
 
 #: apps.py:290
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr ""
-"هر سند آپلود شده باید یک نوع سند اختصاص داده شود، این شیوه اصلی Mayan EDMS "
-"اسناد را دسته بندی می کند."
 
 #: apps.py:384
-#, fuzzy
-#| msgid "File mimetype"
 msgid "File comments"
-msgstr "File mimetype"
+msgstr ""
 
 #: apps.py:388
-#, fuzzy
-#| msgid "File encoding"
 msgid "File encodings"
-msgstr "فایل Encoding"
+msgstr ""
 
 #: apps.py:392
-#, fuzzy
-#| msgid "File mimetype"
 msgid "File mime types"
-msgstr "File mimetype"
+msgstr ""
 
 #: apps.py:396
-#, fuzzy
-#| msgid "File mimetype"
 msgid "File timestamps"
-msgstr "File mimetype"
+msgstr ""
 
 #: apps.py:401 links/document_file_page_links.py:79
 #: models/document_file_models.py:119 models/document_file_page_models.py:40
 #: search.py:51
-#, fuzzy
-#| msgid "Document viewed"
 msgid "Document file"
-msgstr "سند مشاهده شده"
+msgstr ""
 
 #: apps.py:405 models/document_file_page_models.py:44
 #: models/document_version_page_models.py:56
@@ -79,10 +69,8 @@ msgid "Page number"
 msgstr "شماره صفحه"
 
 #: apps.py:410
-#, fuzzy
-#| msgid "Change the type of the document: %s"
 msgid "Return the latest file of the document."
-msgstr "نوع سند را تغییر دهید: %s"
+msgstr ""
 
 #: apps.py:411
 msgid "Latest file"
@@ -104,7 +92,7 @@ msgstr "سند"
 
 #: apps.py:546 apps.py:574 apps.py:603 apps.py:637 apps.py:662
 msgid "Thumbnail"
-msgstr "اندازه کوچک"
+msgstr "بند انگشتی"
 
 #: apps.py:552
 msgid "Type"
@@ -138,8 +126,8 @@ msgstr ""
 
 #: classes.py:82
 msgid ""
-"Generates an immutable, random UUID (RFC 4122) for each file and appends the "
-"original filename of the uploaded file."
+"Generates an immutable, random UUID (RFC 4122) for each file and appends the"
+" original filename of the uploaded file."
 msgstr ""
 
 #: dashboard_widgets.py:23
@@ -152,65 +140,53 @@ msgstr "کل اسناد"
 
 #: dashboard_widgets.py:66 views/trashed_document_views.py:144
 msgid "Documents in trash"
-msgstr "اسناد در سطل زباله"
+msgstr ""
 
 #: dashboard_widgets.py:85 links/document_type_links.py:74
 #: links/document_type_links.py:79 permissions.py:80
 #: views/document_type_views.py:79
 msgid "Document types"
-msgstr "انواع سند"
+msgstr "نوع سند"
 
 #: dashboard_widgets.py:104
 msgid "New documents this month"
-msgstr "اسناد جدید در این ماه"
+msgstr ""
 
 #: dashboard_widgets.py:119
 msgid "New pages this month"
-msgstr "صفحات جدید در این ماه"
+msgstr ""
 
 #: events.py:10
 msgid "Document created"
 msgstr "سند ساخته شد."
 
 #: events.py:13
-#, fuzzy
-#| msgid "Document created"
 msgid "Document edited"
-msgstr "سند ساخته شد."
+msgstr "سند ویرایش شد."
 
 #: events.py:16
 msgid "Document viewed"
-msgstr "سند مشاهده شده"
+msgstr ""
 
 #: events.py:22
-#, fuzzy
-#| msgid "Document created"
 msgid "Document file created"
-msgstr "سند ساخته شد."
+msgstr ""
 
 #: events.py:25
-#, fuzzy
-#| msgid "Document viewed"
 msgid "Document file deleted"
-msgstr "سند مشاهده شده"
+msgstr ""
 
 #: events.py:28
-#, fuzzy
-#| msgid "Document downloaded"
 msgid "Document file downloaded"
-msgstr "سند دریافت شده"
+msgstr ""
 
 #: events.py:31
-#, fuzzy
-#| msgid "Document properties edited"
 msgid "Document file edited"
-msgstr "خصوصیات سند ویرایش شد"
+msgstr ""
 
 #: events.py:34
-#, fuzzy
-#| msgid "Document downloaded"
 msgid "Document file uploaded"
-msgstr "سند دریافت شده"
+msgstr ""
 
 #: events.py:40
 msgid "Document type created"
@@ -221,116 +197,84 @@ msgid "Document type edited"
 msgstr ""
 
 #: events.py:46
-#, fuzzy
-#| msgid "Document type changed"
 msgid "Document type quick label created"
-msgstr "نوع سند تغییر کرد"
+msgstr ""
 
 #: events.py:50
-#, fuzzy
-#| msgid "Document type changed"
 msgid "Document type quick label deleted"
-msgstr "نوع سند تغییر کرد"
+msgstr ""
 
 #: events.py:54
-#, fuzzy
-#| msgid "Document properties edited"
 msgid "Document type quick label edited"
-msgstr "خصوصیات سند ویرایش شد"
+msgstr ""
 
 #: events.py:59
 msgid "Document type changed"
 msgstr "نوع سند تغییر کرد"
 
 #: events.py:65
-#, fuzzy
-#| msgid "Document version reverted"
 msgid "Document version created"
-msgstr "نسخه سند باز شده است"
+msgstr ""
 
 #: events.py:68
-#, fuzzy
-#| msgid "Document version reverted"
 msgid "Document version deleted"
-msgstr "نسخه سند باز شده است"
+msgstr ""
 
 #: events.py:71
-#, fuzzy
-#| msgid "Document version reverted"
 msgid "Document version edited"
-msgstr "نسخه سند باز شده است"
+msgstr ""
 
 #: events.py:74
-#, fuzzy
-#| msgid "Document version reverted"
 msgid "Document version exported"
-msgstr "نسخه سند باز شده است"
+msgstr ""
 
 #: events.py:80
-#, fuzzy
-#| msgid "Document version reverted"
 msgid "Document version page created"
-msgstr "نسخه سند باز شده است"
+msgstr ""
 
 #: events.py:84
-#, fuzzy
-#| msgid "Document version reverted"
 msgid "Document version page deleted"
-msgstr "نسخه سند باز شده است"
+msgstr ""
 
 #: events.py:88
-#, fuzzy
-#| msgid "Document version reverted"
 msgid "Document version page edited"
-msgstr "نسخه سند باز شده است"
+msgstr ""
 
 #: events.py:95
 msgid "Document trashed"
 msgstr ""
 
 #: events.py:98
-#, fuzzy
-#| msgid "Trash documents"
 msgid "Trashed document deleted"
-msgstr "اسناد حذف شده"
+msgstr ""
 
 #: events.py:101
-#, fuzzy
-#| msgid "Trash documents"
 msgid "Trashed document restored"
-msgstr "اسناد حذف شده"
+msgstr ""
 
 #: events.py:107
 msgid "Document downloaded"
-msgstr "سند دریافت شده"
+msgstr ""
 
 #: events.py:110
-#, fuzzy
-#| msgid "Document created"
 msgid "Document file created (historic)"
-msgstr "سند ساخته شد."
+msgstr ""
 
 #: events.py:113
-#, fuzzy
-#| msgid "Document version reverted"
-msgid "Document version revert"
-msgstr "نسخه سند باز شده است"
+msgid "Document version reverted"
+msgstr ""
 
 #: events.py:116
-#, fuzzy
-#| msgid "New version uploaded"
 msgid "Document version uploaded"
-msgstr "نسخه جدید آپلود شد"
+msgstr ""
 
 #: forms/document_file_forms.py:38
 msgid "Date added"
 msgstr "تاریخ اضافه شدن"
 
 #: forms/document_file_forms.py:43
-#, fuzzy
-#| msgid "File mimetype"
 msgid "Mimetype"
-msgstr "File mimetype"
+msgstr "Mimetype"
 
 #: forms/document_file_forms.py:47 models/document_file_models.py:107
 msgid "Encoding"
@@ -345,10 +289,8 @@ msgid "Exists in storage"
 msgstr "موجود در مخزن"
 
 #: forms/document_file_forms.py:58
-#, fuzzy
-#| msgid "File path in storage"
 msgid "Path in storage"
-msgstr "آدرس فایل در مخزن"
+msgstr ""
 
 #: forms/document_file_forms.py:61 models/document_file_models.py:114
 msgid "Checksum"
@@ -360,7 +302,7 @@ msgstr "نامگذاری سریع سند "
 
 #: forms/document_forms.py:53
 msgid "Preserve extension"
-msgstr "حفظ فرمت"
+msgstr ""
 
 #: forms/document_forms.py:55
 msgid ""
@@ -369,10 +311,8 @@ msgid ""
 msgstr ""
 
 #: forms/document_forms.py:104
-#, fuzzy
-#| msgid "Date added"
 msgid "Date created"
-msgstr "تاریخ اضافه شدن"
+msgstr ""
 
 #: forms/document_forms.py:110 models/document_models.py:86
 msgid "Language"
@@ -385,18 +325,16 @@ msgid "Document type"
 msgstr "نوع سند"
 
 #: forms/document_version_page_forms.py:27
-#, fuzzy
-#| msgid "Document type"
 msgid "Content type"
-msgstr "نوع سند"
+msgstr ""
 
 #: forms/document_version_page_forms.py:30
 msgid "Object ID"
-msgstr ""
+msgstr "شناسه اشیاء"
 
 #: forms/document_version_page_forms.py:33
 msgid "Source"
-msgstr ""
+msgstr "منبع"
 
 #: forms/document_version_page_forms.py:38
 msgid "Destination page number"
@@ -434,10 +372,8 @@ msgid "Quick download"
 msgstr ""
 
 #: links/document_file_links.py:47 links/document_file_links.py:69
-#, fuzzy
-#| msgid "File"
 msgid "Files"
-msgstr "فایل"
+msgstr ""
 
 #: links/document_file_links.py:51 links/document_version_links.py:69
 msgid "Print"
@@ -450,7 +386,7 @@ msgstr "خصوصیات"
 #: links/document_file_links.py:76 links/document_links.py:38
 #: links/document_version_links.py:65
 msgid "Preview"
-msgstr "پیش دید ویا دیدن"
+msgstr "پیش نمایش"
 
 #: links/document_file_links.py:82 links/document_file_links.py:88
 #: links/document_version_links.py:88 links/document_version_links.py:94
@@ -459,30 +395,32 @@ msgstr "پاک کردن تبدیلات"
 
 #: links/document_file_links.py:95 links/document_version_links.py:101
 msgid "Clone transformations"
-msgstr "تحولات کلون"
+msgstr ""
 
-#: links/document_file_page_links.py:46 links/document_version_page_links.py:68
+#: links/document_file_page_links.py:46
+#: links/document_version_page_links.py:68
 msgid "First page"
 msgstr "اولین صفحه"
 
-#: links/document_file_page_links.py:52 links/document_version_page_links.py:74
+#: links/document_file_page_links.py:52
+#: links/document_version_page_links.py:74
 msgid "Last page"
 msgstr "آخرین صفحه"
 
-#: links/document_file_page_links.py:60 links/document_version_page_links.py:82
+#: links/document_file_page_links.py:60
+#: links/document_version_page_links.py:82
 msgid "Previous page"
 msgstr "صفحه قبلی"
 
-#: links/document_file_page_links.py:66 links/document_version_page_links.py:88
+#: links/document_file_page_links.py:66
+#: links/document_version_page_links.py:88
 msgid "Next page"
 msgstr "صفحه بعدی"
 
 #: links/document_file_page_links.py:86 models/document_file_page_models.py:52
 #: models/document_file_page_models.py:283
-#, fuzzy
-#| msgid "Document pages"
 msgid "Document file pages"
-msgstr "صفحات سند"
+msgstr ""
 
 #: links/document_file_page_links.py:91
 #: links/document_version_page_links.py:114
@@ -516,7 +454,7 @@ msgstr "کوچک نمایی"
 
 #: links/document_file_page_links.py:127 links/document_file_page_links.py:134
 msgid "Recalculate page count"
-msgstr "شمارش صفحه مجددا محاسبه کنید"
+msgstr ""
 
 #: links/document_links.py:17 links/document_links.py:33
 msgid "Change type"
@@ -531,10 +469,8 @@ msgid "Recently accessed"
 msgstr ""
 
 #: links/document_links.py:29 views/recently_created_document_views.py:27
-#, fuzzy
-#| msgid "Document created"
 msgid "Recently created"
-msgstr "سند ساخته شد."
+msgstr ""
 
 #: links/document_links.py:50
 msgid "Edit properties"
@@ -550,11 +486,11 @@ msgstr ""
 
 #: links/document_type_links.py:44
 msgid "Add quick label to document type"
-msgstr "برچسب سریع را به نوع سند اضافه کنید"
+msgstr ""
 
 #: links/document_type_links.py:64 models/document_type_models.py:210
 msgid "Quick labels"
-msgstr "برچسب های سریع"
+msgstr ""
 
 #: links/document_type_links.py:70
 msgid "Filename generation"
@@ -565,30 +501,24 @@ msgid "Make active"
 msgstr ""
 
 #: links/document_version_links.py:34
-#, fuzzy
-#| msgid "Create new document versions"
 msgid "Create document version"
-msgstr "ایجاد نسخه جدید سند"
+msgstr ""
 
 #: links/document_version_links.py:51
 msgid "Export"
-msgstr ""
+msgstr "صادر کردن"
 
 #: links/document_version_links.py:59 links/document_version_links.py:81
 msgid "Versions"
 msgstr "نسخه ها"
 
 #: links/document_version_page_links.py:56
-#, fuzzy
-#| msgid "All pages"
 msgid "Remap pages"
-msgstr "تمام صفحات"
+msgstr ""
 
 #: links/document_version_page_links.py:61
-#, fuzzy
-#| msgid "Last page"
 msgid "Reset pages"
-msgstr "آخرین صفحه"
+msgstr ""
 
 #: links/document_version_page_links.py:102
 #: models/document_version_models.py:65
@@ -599,10 +529,8 @@ msgstr "نسخه سند"
 #: links/document_version_page_links.py:108
 #: models/document_version_page_models.py:73
 #: models/document_version_page_models.py:344
-#, fuzzy
-#| msgid "Document version"
 msgid "Document version pages"
-msgstr "نسخه سند"
+msgstr ""
 
 #: links/favorite_links.py:13 views/favorite_document_views.py:36
 msgid "Favorites"
@@ -618,19 +546,19 @@ msgstr ""
 
 #: links/trashed_document_links.py:24 links/trashed_document_links.py:37
 msgid "Move to trash"
-msgstr "انتقال به سطل زباله"
+msgstr ""
 
 #: links/trashed_document_links.py:27
 msgid "Trash can"
-msgstr "سطل زباله می تواند"
+msgstr ""
 
 #: links/trashed_document_links.py:32 links/trashed_document_links.py:44
 msgid "Restore"
-msgstr "بازگرداندن"
+msgstr ""
 
 #: links/trashed_document_links.py:49 permissions.py:107
 msgid "Empty trash"
-msgstr "سطل زباله خالی"
+msgstr ""
 
 #: literals.py:13
 msgid "Default"
@@ -698,7 +626,7 @@ msgstr ""
 
 #: literals.py:94
 msgid "All pages"
-msgstr "تمام صفحات"
+msgstr ""
 
 #: models/document_file_models.py:79
 msgid "The server date and time when the document file was processed."
@@ -714,22 +642,20 @@ msgstr ""
 
 #: models/document_file_models.py:85 models/document_version_models.py:55
 msgid "Comment"
-msgstr "شرح"
+msgstr "اظهار نظر"
 
 #: models/document_file_models.py:90
 msgid "File"
 msgstr "فایل"
 
 #: models/document_file_models.py:93
-#, fuzzy
-#| msgid "File"
 msgid "Filename"
-msgstr "فایل"
+msgstr "نام فایل"
 
 #: models/document_file_models.py:97
 msgid ""
-"The document file's file mimetype. MIME types are a standard way to describe "
-"the format of a file, in this case the file format of the document. Some "
+"The document file's file mimetype. MIME types are a standard way to describe"
+" the format of a file, in this case the file format of the document. Some "
 "examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
@@ -744,10 +670,8 @@ msgid ""
 msgstr ""
 
 #: models/document_file_models.py:120 storages.py:27
-#, fuzzy
-#| msgid "Document types"
 msgid "Document files"
-msgstr "انواع سند"
+msgstr ""
 
 #: models/document_file_models.py:313 models/document_file_page_models.py:259
 #: models/document_models.py:70 models/document_models.py:290
@@ -759,16 +683,13 @@ msgstr "برچسب"
 
 #: models/document_file_page_models.py:51
 #: models/document_file_page_models.py:282 search.py:78
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file page"
-msgstr "صفحه سند"
+msgstr ""
 
 #: models/document_file_page_models.py:253
-#, fuzzy, python-format
-#| msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
+#, python-format
 msgid "%(document_file)s - page %(page_num)d of %(total_pages)d"
-msgstr "صفحه  شماره%(page_num)d   از%(total_pages)d  از سند %(document)s"
+msgstr ""
 
 #: models/document_models.py:55
 msgid ""
@@ -796,21 +717,17 @@ msgstr "توضیحات"
 
 #: models/document_models.py:79
 msgid ""
-"The server date and time when the document was finally processed and created "
-"in the system."
+"The server date and time when the document was finally processed and created"
+" in the system."
 msgstr ""
 
 #: models/document_models.py:81
-#, fuzzy
-#| msgid "Create documents"
 msgid "Created"
-msgstr "ایجاد اسناد"
+msgstr "ایجاد شده"
 
 #: models/document_models.py:85
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "The primary language in the document."
-msgstr "پایان صفحات سند"
+msgstr ""
 
 #: models/document_models.py:90
 msgid "Whether or not this document is in the trash."
@@ -818,7 +735,7 @@ msgstr ""
 
 #: models/document_models.py:91
 msgid "In trash?"
-msgstr "در سطل زباله؟"
+msgstr ""
 
 #: models/document_models.py:95
 msgid "The server date and time when the document was moved to the trash."
@@ -826,7 +743,7 @@ msgstr ""
 
 #: models/document_models.py:97
 msgid "Date and time trashed"
-msgstr "تاریخ و زمان خراب شد"
+msgstr ""
 
 #: models/document_models.py:101
 msgid ""
@@ -834,17 +751,15 @@ msgid ""
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
 msgstr ""
-"یک مستند سند یک سند با یک ورودی در پایگاه داده است اما هیچ فایل آپلود نشده "
-"است. این می تواند آپلود متوقف شده یا آپلود معلق از طریق API باشد."
 
 #: models/document_models.py:104
 msgid "Is stub?"
-msgstr "آیا خرد است؟"
+msgstr ""
 
 #: models/document_models.py:288 models/document_models.py:293
 #, python-format
 msgid "Document stub, id: %d"
-msgstr "مستند مستند، شناسه: %d"
+msgstr ""
 
 #: models/document_type_models.py:40
 msgid "The name of the document type."
@@ -852,30 +767,31 @@ msgstr ""
 
 #: models/document_type_models.py:45
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
-msgstr "مقدار زمان که پس از آن اسناد این نوع به سطل زباله منتقل می شود."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
+msgstr ""
 
 #: models/document_type_models.py:47
 msgid "Trash time period"
-msgstr "دوره زمان زباله"
+msgstr ""
 
 #: models/document_type_models.py:51
 msgid "Trash time unit"
-msgstr "واحد زمان زباله"
+msgstr ""
 
 #: models/document_type_models.py:55
 msgid ""
 "Amount of time after which documents of this type in the trash will be "
 "deleted."
-msgstr "مقدار زمان پس از آن اسناد این نوع در سطل زباله حذف خواهد شد."
+msgstr ""
 
 #: models/document_type_models.py:57
 msgid "Delete time period"
-msgstr "دوره زمانی را حذف کنید"
+msgstr ""
 
 #: models/document_type_models.py:62
 msgid "Delete time unit"
-msgstr "واحد زمان را حذف کنید"
+msgstr ""
 
 #: models/document_type_models.py:66
 msgid ""
@@ -901,11 +817,11 @@ msgstr "انواع اسناد"
 
 #: models/document_type_models.py:204
 msgid "Enabled"
-msgstr "فعال شده"
+msgstr "فعال شده است"
 
 #: models/document_type_models.py:209
 msgid "Quick label"
-msgstr "برچسب سریع"
+msgstr ""
 
 #: models/document_version_models.py:49
 msgid "The server date and time when the document version was created."
@@ -916,38 +832,30 @@ msgid "An optional short text describing the document version."
 msgstr ""
 
 #: models/document_version_models.py:59
-#, fuzzy
-#| msgid "Recalculate the page count of the document: %s?"
 msgid "Determines the active version of the document."
-msgstr "شمارش صفحه سند را محاسبه کنید: %s؟"
+msgstr ""
 
 #: models/document_version_models.py:60
 msgid "Active"
-msgstr ""
+msgstr "فعال"
 
 #: models/document_version_models.py:66
-#, fuzzy
-#| msgid "Document version"
 msgid "Document versions"
-msgstr "نسخه سند"
+msgstr ""
 
 #: models/document_version_models.py:137
-#, fuzzy
-#| msgid "Document version reverted"
 msgid "Document version export to PDF"
-msgstr "نسخه سند باز شده است"
+msgstr ""
 
 #: models/document_version_models.py:167
-#, fuzzy
-#| msgid "Document created"
-msgid "Document exported."
-msgstr "سند ساخته شد."
+msgid "Document version exported."
+msgstr ""
 
 #: models/document_version_models.py:169
 #, python-format
 msgid ""
-"Document version \"%(document_version)s\" has been exported and is available "
-"for download using the link: %(download_url)s or from the downloads area "
+"Document version \"%(document_version)s\" has been exported and is available"
+" for download using the link: %(download_url)s or from the downloads area "
 "(%(download_list_url)s)."
 msgstr ""
 
@@ -965,21 +873,18 @@ msgstr ""
 
 #: models/document_version_page_models.py:72
 #: models/document_version_page_models.py:343 search.py:141
-#, fuzzy
-#| msgid "Document version"
 msgid "Document version page"
-msgstr "نسخه سند"
+msgstr ""
 
 #: models/document_version_page_models.py:303
-#, fuzzy, python-format
-#| msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
+#, python-format
 msgid "%(document_version)s page %(page_number)d of %(total_pages)d"
-msgstr "صفحه  شماره%(page_num)d   از%(total_pages)d  از سند %(document)s"
+msgstr ""
 
 #: models/duplicated_document_models.py:21
 #: models/duplicated_document_models.py:31
 msgid "Duplicated documents"
-msgstr "اسناد تکراری"
+msgstr ""
 
 #: models/duplicated_document_models.py:24
 msgid "Added"
@@ -987,7 +892,7 @@ msgstr "اضافه شده"
 
 #: models/duplicated_document_models.py:30
 msgid "Duplicated document"
-msgstr "سند تکثیر شده"
+msgstr ""
 
 #: models/favorite_document_models.py:24
 #: models/recently_accessed_document_models.py:23
@@ -995,10 +900,8 @@ msgid "User"
 msgstr "کاربر"
 
 #: models/favorite_document_models.py:31
-#, fuzzy
-#| msgid "Date and time trashed"
 msgid "Date and time added"
-msgstr "تاریخ و زمان خراب شد"
+msgstr ""
 
 #: models/favorite_document_models.py:38
 msgid "Favorite document"
@@ -1041,82 +944,56 @@ msgid "View documents"
 msgstr "بازدید سند"
 
 #: permissions.py:28
-#, fuzzy
-#| msgid "Delete documents"
 msgid "Delete document files"
-msgstr "حذف سند"
+msgstr ""
 
 #: permissions.py:31
-#, fuzzy
-#| msgid "Edit documents"
 msgid "Edit document files"
-msgstr "ویرایش سند"
+msgstr ""
 
 #: permissions.py:34
-#, fuzzy
-#| msgid "Download documents"
 msgid "Download document files"
-msgstr "دانلود اسناد"
+msgstr ""
 
 #: permissions.py:37
-#, fuzzy
-#| msgid "Create new document versions"
 msgid "Create new document files"
-msgstr "ایجاد نسخه جدید سند"
+msgstr ""
 
 #: permissions.py:40
-#, fuzzy
-#| msgid "Print documents"
 msgid "Print document files"
-msgstr "اسناد چاپ"
+msgstr ""
 
 #: permissions.py:43
-#, fuzzy
-#| msgid "Execute document modifying tools"
 msgid "Execute document file modifying tools"
-msgstr "اجرای ابزار ویرایش سند"
+msgstr ""
 
 #: permissions.py:47
-#, fuzzy
-#| msgid "View documents"
 msgid "View document files"
-msgstr "بازدید سند"
+msgstr ""
 
 #: permissions.py:54
-#, fuzzy
-#| msgid "Create new document versions"
 msgid "Create document versions"
-msgstr "ایجاد نسخه جدید سند"
+msgstr ""
 
 #: permissions.py:58
-#, fuzzy
-#| msgid "Create new document versions"
 msgid "Delete document versions"
-msgstr "ایجاد نسخه جدید سند"
+msgstr ""
 
 #: permissions.py:62
-#, fuzzy
-#| msgid "Document version"
 msgid "Edit document versions"
-msgstr "نسخه سند"
+msgstr ""
 
 #: permissions.py:66
-#, fuzzy
-#| msgid "Create new document versions"
 msgid "Export document versions"
-msgstr "ایجاد نسخه جدید سند"
+msgstr ""
 
 #: permissions.py:70
-#, fuzzy
-#| msgid "Print documents"
 msgid "Print document versions"
-msgstr "اسناد چاپ"
+msgstr ""
 
 #: permissions.py:73
-#, fuzzy
-#| msgid "View documents' versions list"
 msgid "View document versions"
-msgstr "لیست نسخه های اسناد را مشاهده کنید"
+msgstr ""
 
 #: permissions.py:83
 msgid "Create document types"
@@ -1136,17 +1013,15 @@ msgstr "بازدید انواع سند"
 
 #: permissions.py:98
 msgid "Restore trashed document"
-msgstr "بازگرداندن سند خراب"
+msgstr ""
 
 #: permissions.py:101
-#, fuzzy
-#| msgid "Restore trashed document"
 msgid "Delete trashed documents"
-msgstr "بازگرداندن سند خراب"
+msgstr ""
 
 #: permissions.py:104
 msgid "Trash documents"
-msgstr "اسناد حذف شده"
+msgstr ""
 
 #: queues.py:14
 msgid "Converter"
@@ -1154,23 +1029,19 @@ msgstr "مبدل"
 
 #: queues.py:17
 msgid "Documents periodic"
-msgstr "مستندات دوره ای"
+msgstr ""
 
 #: queues.py:21
 msgid "Uploads"
-msgstr "آپلود"
+msgstr ""
 
 #: queues.py:29
-#, fuzzy
-#| msgid "Generate document page image"
 msgid "Generate document file page image"
-msgstr "تصویر صفحه سند را تولید کنید"
+msgstr ""
 
 #: queues.py:33
-#, fuzzy
-#| msgid "Generate document page image"
 msgid "Generate document version page image"
-msgstr "تصویر صفحه سند را تولید کنید"
+msgstr ""
 
 #: queues.py:38
 msgid "Empty the trash can"
@@ -1178,86 +1049,67 @@ msgstr ""
 
 #: queues.py:42
 msgid "Delete a document"
-msgstr "یک سند را حذف کنید"
+msgstr ""
 
 #: queues.py:46
-#, fuzzy
-#| msgid "Recalculate the page count of the document: %s?"
 msgid "Reset the page list of a document version"
-msgstr "شمارش صفحه سند را محاسبه کنید: %s؟"
+msgstr ""
 
 #: queues.py:50
-#, fuzzy
-#| msgid "Upload new document version"
 msgid "Export a document version"
-msgstr "نسخه سند جدید را آپلود کنید"
+msgstr ""
 
 #: queues.py:55
 msgid "Check document type trash periods"
-msgstr "نوع سند را حذف کنید"
+msgstr ""
 
 #: queues.py:61
 msgid "Delete document stubs"
-msgstr "حذف مستندات مقاله"
+msgstr ""
 
 #: queues.py:67
 msgid "Check document type delete periods"
-msgstr "بررسی نوع سند را حذف کنید"
+msgstr ""
 
 #: queues.py:76
 msgid "Update document page count"
-msgstr "به روز رسانی تعداد سند صفحه"
+msgstr ""
 
 #: queues.py:80
-#, fuzzy
-#| msgid "Upload new document version"
 msgid "Upload new document file"
-msgstr "نسخه سند جدید را آپلود کنید"
+msgstr ""
 
 #: search.py:31 search.py:62 search.py:89 search.py:129 search.py:153
 msgid "Document type label"
 msgstr ""
 
 #: search.py:65 search.py:92 search.py:132 search.py:159
-#, fuzzy
-#| msgid "Document page"
 msgid "Document label"
-msgstr "صفحه سند"
+msgstr ""
 
 #: search.py:68 search.py:96 search.py:135 search.py:163
-#, fuzzy
-#| msgid "Document version"
 msgid "Document description"
-msgstr "نسخه سند"
+msgstr ""
 
 #: search.py:99
-#, fuzzy
-#| msgid "Document type changed"
 msgid "Document file checksum"
-msgstr "نوع سند تغییر کرد"
+msgstr ""
 
 #: search.py:102
-#, fuzzy
-#| msgid "Document type"
 msgid "Document file MIME type"
-msgstr "نوع سند"
+msgstr ""
 
 #: search.py:156
-#, fuzzy
-#| msgid "Document version"
 msgid "Document version comment"
-msgstr "نسخه سند"
+msgstr ""
 
 #: serializers/document_file_serializers.py:37
 msgid "Binary content for the new file."
 msgstr ""
 
 #: serializers/document_serializers.py:23
-#, fuzzy
-#| msgid "Change the type of the selected document"
-#| msgid_plural "Change the type of the selected documents"
 msgid "Document type ID for the new document."
-msgstr "تغییر نوع سند انتخاب شده"
+msgstr ""
 
 #: serializers/document_version_serializers.py:68
 msgid "Content type ID of the source object for the page."
@@ -1270,8 +1122,8 @@ msgstr ""
 #: settings.py:54
 msgid ""
 "The threshold at which the DOCUMENT_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND "
-"will start deleting the oldest document file page image cache files. Specify "
-"the size in bytes."
+"will start deleting the oldest document file page image cache files. Specify"
+" the size in bytes."
 msgstr ""
 
 #: settings.py:62
@@ -1305,9 +1157,9 @@ msgstr ""
 
 #: settings.py:103
 msgid ""
-"Size of blocks to use when calculating the document file's checksum. A value "
-"of 0 disables the block calculation and the entire file will be loaded into "
-"memory."
+"Size of blocks to use when calculating the document file's checksum. A value"
+" of 0 disables the block calculation and the entire file will be loaded into"
+" memory."
 msgstr ""
 
 #: settings.py:110
@@ -1320,8 +1172,8 @@ msgstr ""
 
 #: settings.py:120
 msgid ""
-"The threshold at which the DOCUMENT_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND "
-"will start deleting the oldest document version page image cache versions. "
+"The threshold at which the DOCUMENT_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND"
+" will start deleting the oldest document version page image cache versions. "
 "Specify the size in bytes."
 msgstr ""
 
@@ -1333,8 +1185,8 @@ msgstr ""
 
 #: settings.py:137
 msgid ""
-"Path to the Storage subclass to use when storing the cached document version "
-"page image versions."
+"Path to the Storage subclass to use when storing the cached document version"
+" page image versions."
 msgstr ""
 
 #: settings.py:145
@@ -1344,8 +1196,8 @@ msgstr ""
 
 #: settings.py:167
 msgid ""
-"Maximum number of recently accessed documents (created, edited, viewed) "
-"documents to remember per user."
+"Maximum number of recently accessed documents (created, edited, viewed) to "
+"remember per user."
 msgstr ""
 
 #: settings.py:174
@@ -1362,14 +1214,10 @@ msgid ""
 msgstr ""
 
 #: settings.py:194
-#, fuzzy
-#| msgid ""
-#| "Amount of time after which documents of this type in the trash will be "
-#| "deleted."
 msgid ""
 "Amount of time in seconds, a failed document file page image task will wait "
 "before retrying."
-msgstr "مقدار زمان پس از آن اسناد این نوع در سطل زباله حذف خواهد شد."
+msgstr ""
 
 #: settings.py:202
 msgid ""
@@ -1403,36 +1251,32 @@ msgstr "اندازه بزرگنمایی/کوچک نمایی یک صفحه از �
 
 #: statistics.py:234
 msgid "New documents per month"
-msgstr "اسناد جدید در هر ماه"
+msgstr ""
 
 #: statistics.py:241
-#, fuzzy
-#| msgid "New documents per month"
 msgid "New document files per month"
-msgstr "اسناد جدید در هر ماه"
+msgstr ""
 
 #: statistics.py:248
 msgid "New document pages per month"
-msgstr "صفحات سند جدید در هر ماه"
+msgstr ""
 
 #: statistics.py:255
 msgid "Total documents at each month"
-msgstr "مجموع اسناد در هر ماه"
+msgstr ""
 
 #: statistics.py:262
-#, fuzzy
-#| msgid "Total documents at each month"
 msgid "Total document files at each month"
-msgstr "مجموع اسناد در هر ماه"
+msgstr ""
 
 #: statistics.py:269
 msgid "Total document pages at each month"
-msgstr "صفحات سند مجموع در هر ماه"
+msgstr ""
 
 #: storages.py:21
 msgid ""
-"Unable to initialize the document file storage. Check the settings {} and {} "
-"for formatting errors."
+"Unable to initialize the document file storage. Check the settings {} and {}"
+" for formatting errors."
 msgstr ""
 
 #: storages.py:35
@@ -1442,10 +1286,8 @@ msgid ""
 msgstr ""
 
 #: storages.py:41
-#, fuzzy
-#| msgid "Document pages"
 msgid "Document file page images"
-msgstr "صفحات سند"
+msgstr ""
 
 #: storages.py:49
 msgid ""
@@ -1454,10 +1296,8 @@ msgid ""
 msgstr ""
 
 #: storages.py:55
-#, fuzzy
-#| msgid "Document version"
 msgid "Document version page images"
-msgstr "نسخه سند"
+msgstr ""
 
 #: templates/documents/document_print.html:13
 msgid "Document page image preview"
@@ -1468,10 +1308,8 @@ msgid "No valid or active version"
 msgstr ""
 
 #: templates/documents/errors/no_version_pages.html:5
-#, fuzzy
-#| msgid "New version uploaded"
 msgid "No version pages"
-msgstr "نسخه جدید آپلود شد"
+msgstr ""
 
 #: templates/documents/forms/widgets/page_carousel.html:16
 #, python-format
@@ -1495,51 +1333,42 @@ msgid "Unknown language \"%s\""
 msgstr ""
 
 #: views/document_file_page_views.py:51
-#, fuzzy, python-format
-#| msgid "%(count)d document queued for page count recalculation"
+#, python-format
 msgid "%(count)d document file queued for page count recalculation."
-msgstr "%(count)d سند در محدوده شمارش تعداد صفحات"
+msgstr ""
 
 #: views/document_file_page_views.py:54
-#, fuzzy, python-format
-#| msgid "%(count)d documents queued for page count recalculation"
+#, python-format
 msgid "%(count)d document files queued for page count recalculation."
-msgstr "%(count)d اسناد در محدوده شمارش شمارش صفحات"
+msgstr ""
 
 #: views/document_file_page_views.py:62
-#, fuzzy
-#| msgid "Recalculate the page count of the selected document?"
-#| msgid_plural "Recalculate the page count of the selected documents?"
 msgid "Recalculate the page count of the selected document file?"
 msgid_plural "Recalculate the page count of the selected document files?"
-msgstr[0] "بازشماری تعداد صفحات اسناد انتخاب شده"
-msgstr[1] "بازشماری تعداد صفحات اسناد انتخاب شده"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views/document_file_page_views.py:73
-#, fuzzy, python-format
-#| msgid "Recalculate the page count of the document: %s?"
+#, python-format
 msgid "Recalculate the page count of the document file: %s?"
-msgstr "شمارش صفحه سند را محاسبه کنید: %s؟"
+msgstr ""
 
 #: views/document_file_page_views.py:100
 msgid ""
-"This could mean that the document file is of a format that is not supported, "
-"that it is corrupted or that the upload process was interrupted. Use the "
+"This could mean that the document file is of a format that is not supported,"
+" that it is corrupted or that the upload process was interrupted. Use the "
 "document file page recalculation action to attempt to introspect the page "
 "count again."
 msgstr ""
 
 #: views/document_file_page_views.py:106
-#, fuzzy
-#| msgid "New document pages per month"
 msgid "No document file pages available"
-msgstr "صفحات سند جدید در هر ماه"
+msgstr ""
 
 #: views/document_file_page_views.py:108
-#, fuzzy, python-format
-#| msgid "Pages for document: %s"
+#, python-format
 msgid "Pages of document file: %s"
-msgstr "صفحات برای سند: %s"
+msgstr ""
 
 #: views/document_file_page_views.py:182
 #: views/document_version_page_views.py:335
@@ -1555,67 +1384,53 @@ msgstr "شما در حال حاضر برروی اولین صفحه این سند
 #: views/document_version_page_views.py:371
 #, python-format
 msgid "Image of: %s"
-msgstr "تصویر: %s"
+msgstr ""
 
 #: views/document_file_views.py:46
-#, fuzzy, python-format
-#| msgid "Error reverting document version; %s"
+#, python-format
 msgid "Error deleting document file \"%(instance)s\"; %(exception)s"
-msgstr "خطا در بازگشت نسخه سند: %s"
+msgstr ""
 
 #: views/document_file_views.py:52
-#, fuzzy, python-format
-#| msgid "Document version reverted successfully"
+#, python-format
 msgid "Document file \"%(object)s\" deleted successfully."
-msgstr "بازگشت موفق نسخه سند."
+msgstr ""
 
 #: views/document_file_views.py:55
-#, fuzzy, python-format
-#| msgid "Duplicated document scan queued successfully."
+#, python-format
 msgid "%(count)d document file deleted successfully."
-msgstr "اسکن کپی اسکن شده با موفقیت انجام شد."
+msgstr ""
 
 #: views/document_file_views.py:58
-#, fuzzy, python-format
-#| msgid "Duplicated document scan queued successfully."
+#, python-format
 msgid "%(count)d document files deleted successfully."
-msgstr "اسکن کپی اسکن شده با موفقیت انجام شد."
+msgstr ""
 
 #: views/document_file_views.py:60
-#, fuzzy, python-format
-#| msgid "Delete the document type: %s?"
+#, python-format
 msgid "Delete document file: %(object)s."
-msgstr "نوع سند را حذف کنید: %s؟"
+msgstr ""
 
 #: views/document_file_views.py:61
-#, fuzzy, python-format
-#| msgid "Recalculate the page count of the selected document?"
-#| msgid_plural "Recalculate the page count of the selected documents?"
+#, python-format
 msgid "Delete the %(count)d selected document file."
-msgstr "بازشماری تعداد صفحات اسناد انتخاب شده"
+msgstr ""
 
 #: views/document_file_views.py:62
-#, fuzzy, python-format
-#| msgid "Recalculate the page count of the selected document?"
-#| msgid_plural "Recalculate the page count of the selected documents?"
+#, python-format
 msgid "Delete the %(count)d selected document files."
-msgstr "بازشماری تعداد صفحات اسناد انتخاب شده"
+msgstr ""
 
 #: views/document_file_views.py:67
-#, fuzzy
-#| msgid ""
-#| "Amount of time after which documents of this type in the trash will be "
-#| "deleted."
 msgid ""
 "All document files pages from this document file and the document version "
 "pages linked to them will be deleted too."
-msgstr "مقدار زمان پس از آن اسناد این نوع در سطل زباله حذف خواهد شد."
+msgstr ""
 
 #: views/document_file_views.py:117
-#, fuzzy, python-format
-#| msgid "Edit document type: %s"
+#, python-format
 msgid "Edit document file: %s"
-msgstr "ویرایش نوع سند : %s"
+msgstr ""
 
 #: views/document_file_views.py:156
 msgid ""
@@ -1628,74 +1443,59 @@ msgid "No files available"
 msgstr ""
 
 #: views/document_file_views.py:163
-#, fuzzy, python-format
-#| msgid "Preview of document: %s"
+#, python-format
 msgid "Files of document: %s"
-msgstr "پیش نمایش سند : %s"
+msgstr ""
 
 #: views/document_file_views.py:192
-#, fuzzy, python-format
-#| msgid "Preview of document: %s"
+#, python-format
 msgid "Preview of document file: %s"
-msgstr "پیش نمایش سند : %s"
+msgstr ""
 
 #: views/document_file_views.py:237
-#, fuzzy, python-format
-#| msgid "Properties for document: %s"
+#, python-format
 msgid "Properties of document file: %s"
-msgstr "خصوصیات سند : %s"
+msgstr ""
 
 #: views/document_file_views.py:246
-#, fuzzy, python-format
-#| msgid "Transformation clear request processed for %(count)d document"
+#, python-format
 msgid "Transformation clear request processed for %(count)d document file."
-msgstr "درخواست واضح تر تبدیل شده برای سند %(count)d پردازش شده است"
+msgstr ""
 
 #: views/document_file_views.py:249
-#, fuzzy, python-format
-#| msgid "Transformation clear request processed for %(count)d documents"
+#, python-format
 msgid "Transformation clear request processed for %(count)d document files."
-msgstr "درخواست واضح تر تبدیل شده برای اسناد %(count)d پردازش شده است"
+msgstr ""
 
 #: views/document_file_views.py:255
-#, fuzzy
-#| msgid "Clear all the page transformations for the selected document?"
-#| msgid_plural "Clear all the page transformations for the selected document?"
 msgid "Clear all the page transformations for the selected document file?"
 msgid_plural ""
 "Clear all the page transformations for the selected document file?"
-msgstr[0] " آیا تبدیلات صفحه برای سند انتخاب شده پاک گردد؟"
-msgstr[1] " آیا تبدیلات صفحه برای سند انتخاب شده پاک گردد؟"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views/document_file_views.py:266
-#, fuzzy, python-format
-#| msgid "Clear all the page transformations for the document: %s?"
+#, python-format
 msgid "Clear all the page transformations for the document file: %s?"
-msgstr "پاک کردن تمام تغییرات صفحه برای سند: %s؟"
+msgstr ""
 
 #: views/document_file_views.py:283
-#, fuzzy, python-format
-#| msgid ""
-#| "Error deleting the page transformations for document: %(document)s; "
-#| "%(error)s."
+#, python-format
 msgid ""
 "Error deleting the page transformations for document_file: "
 "%(document_file)s; %(error)s."
-msgstr "خطا %(error)s در زمان حذف تبدیلات سند %(document)s"
+msgstr ""
 
 #: views/document_file_views.py:319
-#, fuzzy, python-format
-#| msgid ""
-#| "Error deleting the page transformations for document: %(document)s; "
-#| "%(error)s."
+#, python-format
 msgid ""
-"Error cloning the page transformations for document file: %(document_file)s; "
-"%(error)s."
-msgstr "خطا %(error)s در زمان حذف تبدیلات سند %(document)s"
+"Error cloning the page transformations for document file: %(document_file)s;"
+" %(error)s."
+msgstr ""
 
 #: views/document_file_views.py:328 views/document_version_views.py:356
 msgid "Transformations cloned successfully."
-msgstr "تغییرات با موفقیت کلون شدند."
+msgstr ""
 
 #: views/document_file_views.py:342 views/document_version_views.py:370
 #: views/misc_views.py:41
@@ -1703,21 +1503,20 @@ msgid "Submit"
 msgstr "ارسال"
 
 #: views/document_file_views.py:344
-#, fuzzy, python-format
-#| msgid "Clone page transformations for document: %s"
+#, python-format
 msgid "Clone page transformations of document file: %s"
-msgstr "تبدیل صفحه کلون برای سند: %s"
+msgstr ""
 
 #: views/document_type_views.py:53
 #, python-format
 msgid "Documents of type: %s"
-msgstr "اسناد نوع: %s"
+msgstr ""
 
 #: views/document_type_views.py:72
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical "
-"document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical"
+" document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 
@@ -1732,7 +1531,7 @@ msgstr "کلیه اسناد از این نوع حذف خواهند شد."
 #: views/document_type_views.py:114
 #, python-format
 msgid "Delete the document type: %s?"
-msgstr "نوع سند را حذف کنید: %s؟"
+msgstr ""
 
 #: views/document_type_views.py:130
 #, python-format
@@ -1747,20 +1546,18 @@ msgstr ""
 #: views/document_type_views.py:176
 #, python-format
 msgid "Create quick label for document type: %s"
-msgstr "برچسب سریع برای نوع سند را ایجاد کنید: %s"
+msgstr ""
 
 #: views/document_type_views.py:195
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
-msgstr "برچسب سریع: %(label)s را از نوع سند \"%(document_type)s\" حذف کنید؟"
+msgstr ""
 
 #: views/document_type_views.py:223
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
-"برچسب سریع \"%(filename)s\" را از نوع سند \"%(document_type)s\" ویرایش کنید"
 
 #: views/document_type_views.py:261
 msgid ""
@@ -1776,7 +1573,7 @@ msgstr ""
 #: views/document_type_views.py:270
 #, python-format
 msgid "Quick labels for document type: %s"
-msgstr "برچسب های سریع برای نوع سند: %s"
+msgstr ""
 
 #: views/document_type_views.py:291
 #, python-format
@@ -1790,10 +1587,9 @@ msgid ""
 msgstr ""
 
 #: views/document_version_page_views.py:68
-#, fuzzy, python-format
-#| msgid "Delete the document type: %s?"
+#, python-format
 msgid "Delete document version page %s ?"
-msgstr "نوع سند را حذف کنید: %s؟"
+msgstr ""
 
 #: views/document_version_page_views.py:103
 msgid ""
@@ -1802,161 +1598,134 @@ msgid ""
 msgstr ""
 
 #: views/document_version_page_views.py:107
-#, fuzzy
-#| msgid "New document versions per month"
 msgid "No document version pages available"
-msgstr "نسخه های جدید سند در هر ماه"
+msgstr ""
 
 #: views/document_version_page_views.py:109
-#, fuzzy, python-format
-#| msgid "Preview of document version: %s"
+#, python-format
 msgid "Pages of document version: %s"
-msgstr "پیش نمایش نسخه سند: %s"
+msgstr ""
 
 #: views/document_version_page_views.py:149
 msgid "None"
-msgstr "هیچکدام."
+msgstr "هیچ یک"
 
 #: views/document_version_page_views.py:174
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no sources available to remap for this document version."
-msgstr "پایان صفحات سند"
+msgstr ""
 
 #: views/document_version_page_views.py:177
 msgid "No page sources available"
 msgstr ""
 
 #: views/document_version_page_views.py:180
-#, fuzzy, python-format
-#| msgid "Preview of document version: %s"
+#, python-format
 msgid "Remap pages of document version: %s"
-msgstr "پیش نمایش نسخه سند: %s"
+msgstr ""
 
 #: views/document_version_page_views.py:231
-#, fuzzy, python-format
-#| msgid "%(count)d documents queued for page count recalculation"
+#, python-format
 msgid "%(count)d document version queued for page list reset."
-msgstr "%(count)d اسناد در محدوده شمارش شمارش صفحات"
+msgstr ""
 
 #: views/document_version_page_views.py:234
-#, fuzzy, python-format
-#| msgid "%(count)d documents queued for page count recalculation"
+#, python-format
 msgid "%(count)d document versions queued for page list reset."
-msgstr "%(count)d اسناد در محدوده شمارش شمارش صفحات"
+msgstr ""
 
 #: views/document_version_page_views.py:242
 msgid "The page list will match that of the latest document file."
 msgstr ""
 
 #: views/document_version_page_views.py:245
-#, fuzzy
-#| msgid "Recalculate the page count of the selected document?"
-#| msgid_plural "Recalculate the page count of the selected documents?"
 msgid "Reset the page list of the selected document version?"
 msgid_plural "Reset the page list of the selected document versions?"
-msgstr[0] "بازشماری تعداد صفحات اسناد انتخاب شده"
-msgstr[1] "بازشماری تعداد صفحات اسناد انتخاب شده"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views/document_version_page_views.py:256
-#, fuzzy, python-format
-#| msgid "Preview of document version: %s"
+#, python-format
 msgid "Reset the page list of document version: %s?"
-msgstr "پیش نمایش نسخه سند: %s"
+msgstr ""
 
 #: views/document_version_views.py:55
-#, fuzzy, python-format
-#| msgid "Total document versions at each month"
+#, python-format
 msgid "Make the document version \"%s\" the active version?"
-msgstr "نسخه های سند کامل در هر ماه"
+msgstr ""
 
 #: views/document_version_views.py:63
 msgid "Successfully changed the active document version."
 msgstr ""
 
 #: views/document_version_views.py:78
-#, fuzzy, python-format
-#| msgid "Create new document versions"
+#, python-format
 msgid "Create a document version for document: %s"
-msgstr "ایجاد نسخه جدید سند"
+msgstr ""
 
 #: views/document_version_views.py:97
-#, fuzzy, python-format
-#| msgid "Document version reverted successfully"
+#, python-format
 msgid "Document version \"%(object)s\" deleted successfully."
-msgstr "بازگشت موفق نسخه سند."
+msgstr ""
 
 #: views/document_version_views.py:100
-#, fuzzy, python-format
-#| msgid "Document version reverted successfully"
+#, python-format
 msgid "%(count)d document version deleted successfully."
-msgstr "بازگشت موفق نسخه سند."
+msgstr ""
 
 #: views/document_version_views.py:103
-#, fuzzy, python-format
-#| msgid "Document version reverted successfully"
+#, python-format
 msgid "%(count)d document versions deleted successfully."
-msgstr "بازگشت موفق نسخه سند."
+msgstr ""
 
 #: views/document_version_views.py:105
-#, fuzzy, python-format
-#| msgid "Delete document stubs"
+#, python-format
 msgid "Delete document version \"%(object)s\"."
-msgstr "حذف مستندات مقاله"
+msgstr ""
 
 #: views/document_version_views.py:106
-#, fuzzy, python-format
-#| msgid "Download document version"
+#, python-format
 msgid "Delete %(count)d document version."
-msgstr "نسخه سند را دانلود کنید"
+msgstr ""
 
 #: views/document_version_views.py:107
-#, fuzzy, python-format
-#| msgid "Create new document versions"
+#, python-format
 msgid "Delete %(count)d document versions."
-msgstr "ایجاد نسخه جدید سند"
+msgstr ""
 
 #: views/document_version_views.py:131
-#, fuzzy, python-format
-#| msgid "Edit document type: %s"
+#, python-format
 msgid "Edit document version: %s"
-msgstr "ویرایش نوع سند : %s"
+msgstr ""
 
 #: views/document_version_views.py:152
-#, fuzzy, python-format
-#| msgid "Document version reverted successfully"
+#, python-format
 msgid "Document version \"%(object)s\" export successfully queued."
-msgstr "بازگشت موفق نسخه سند."
+msgstr ""
 
 #: views/document_version_views.py:155
-#, fuzzy, python-format
-#| msgid "Document version reverted successfully"
+#, python-format
 msgid "%(count)d document version export successfully queued."
-msgstr "بازگشت موفق نسخه سند."
+msgstr ""
 
 #: views/document_version_views.py:158
-#, fuzzy, python-format
-#| msgid "Document version reverted successfully"
+#, python-format
 msgid "%(count)d document versions exports successfully queued."
-msgstr "بازگشت موفق نسخه سند."
+msgstr ""
 
 #: views/document_version_views.py:160
-#, fuzzy, python-format
-#| msgid "Error reverting document version; %s"
+#, python-format
 msgid "Export document version \"%(object)s\"."
-msgstr "خطا در بازگشت نسخه سند: %s"
+msgstr ""
 
 #: views/document_version_views.py:161
-#, fuzzy, python-format
-#| msgid "Upload new document version"
+#, python-format
 msgid "Export %(count)d document version."
-msgstr "نسخه سند جدید را آپلود کنید"
+msgstr ""
 
 #: views/document_version_views.py:162
-#, fuzzy, python-format
-#| msgid "Create new document versions"
+#, python-format
 msgid "Export %(count)d document versions."
-msgstr "ایجاد نسخه جدید سند"
+msgstr ""
 
 #: views/document_version_views.py:167
 msgid ""
@@ -1971,10 +1740,8 @@ msgid ""
 msgstr ""
 
 #: views/document_version_views.py:209
-#, fuzzy
-#| msgid "New version uploaded"
 msgid "No versions available"
-msgstr "نسخه جدید آپلود شد"
+msgstr ""
 
 #: views/document_version_views.py:212
 #, python-format
@@ -1984,61 +1751,49 @@ msgstr "نسخ سند : %s"
 #: views/document_version_views.py:241
 #, python-format
 msgid "Preview of document version: %s"
-msgstr "پیش نمایش نسخه سند: %s"
+msgstr ""
 
 #: views/document_version_views.py:274
-#, fuzzy, python-format
-#| msgid "Transformation clear request processed for %(count)d documents"
+#, python-format
 msgid "Transformation clear request processed for %(count)d document version."
-msgstr "درخواست واضح تر تبدیل شده برای اسناد %(count)d پردازش شده است"
+msgstr ""
 
 #: views/document_version_views.py:277
-#, fuzzy, python-format
-#| msgid "Transformation clear request processed for %(count)d documents"
-msgid "Transformation clear request processed for %(count)d document versions."
-msgstr "درخواست واضح تر تبدیل شده برای اسناد %(count)d پردازش شده است"
+#, python-format
+msgid ""
+"Transformation clear request processed for %(count)d document versions."
+msgstr ""
 
 #: views/document_version_views.py:283
-#, fuzzy
-#| msgid "Clear all the page transformations for the selected document?"
-#| msgid_plural "Clear all the page transformations for the selected document?"
 msgid "Clear all the page transformations for the selected document version?"
 msgid_plural ""
 "Clear all the page transformations for the selected document version?"
-msgstr[0] " آیا تبدیلات صفحه برای سند انتخاب شده پاک گردد؟"
-msgstr[1] " آیا تبدیلات صفحه برای سند انتخاب شده پاک گردد؟"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views/document_version_views.py:294
-#, fuzzy, python-format
-#| msgid "Clear all the page transformations for the document: %s?"
+#, python-format
 msgid "Clear all the page transformations for the document version: %s?"
-msgstr "پاک کردن تمام تغییرات صفحه برای سند: %s؟"
+msgstr ""
 
 #: views/document_version_views.py:311
-#, fuzzy, python-format
-#| msgid ""
-#| "Error deleting the page transformations for document: %(document)s; "
-#| "%(error)s."
+#, python-format
 msgid ""
 "Error deleting the page transformations for document_version: "
 "%(document_version)s; %(error)s."
-msgstr "خطا %(error)s در زمان حذف تبدیلات سند %(document)s"
+msgstr ""
 
 #: views/document_version_views.py:347
-#, fuzzy, python-format
-#| msgid ""
-#| "Error deleting the page transformations for document: %(document)s; "
-#| "%(error)s."
+#, python-format
 msgid ""
 "Error cloning the page transformations for document version: "
 "%(document_version)s; %(error)s."
-msgstr "خطا %(error)s در زمان حذف تبدیلات سند %(document)s"
+msgstr ""
 
 #: views/document_version_views.py:372
-#, fuzzy, python-format
-#| msgid "Clone page transformations for document: %s"
+#, python-format
 msgid "Clone page transformations of document version: %s"
-msgstr "تبدیل صفحه کلون برای سند: %s"
+msgstr ""
 
 #: views/document_views.py:40
 #, python-format
@@ -2059,32 +1814,32 @@ msgstr ""
 #: views/document_views.py:77
 #, python-format
 msgid "Document type change request performed on %(count)d document"
-msgstr "درخواست تغییر نوع سند بر روی سند %(count)d انجام می شود"
+msgstr ""
 
 #: views/document_views.py:80
 #, python-format
 msgid "Document type change request performed on %(count)d documents"
-msgstr "درخواست تغییر نوع سند بر روی اسناد %(count)d انجام می شود"
+msgstr ""
 
 #: views/document_views.py:87
 msgid "Change"
-msgstr "تغییر دادن"
+msgstr ""
 
 #: views/document_views.py:89
 msgid "Change the type of the selected document"
 msgid_plural "Change the type of the selected documents"
-msgstr[0] "تغییر نوع سند انتخاب شده"
-msgstr[1] "تغییر نوع سند انتخاب شده"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views/document_views.py:100
 #, python-format
 msgid "Change the type of the document: %s"
-msgstr "نوع سند را تغییر دهید: %s"
+msgstr ""
 
 #: views/document_views.py:122
 #, python-format
 msgid "Document type for \"%s\" changed successfully."
-msgstr "نوع سند برای \"%s\" با موفقیت تغییر یافت."
+msgstr ""
 
 #: views/document_views.py:147
 #, python-format
@@ -2097,10 +1852,9 @@ msgid "Edit properties of document: %s"
 msgstr "ویرایش خصوصیات سند : %s"
 
 #: views/document_views.py:196
-#, fuzzy, python-format
-#| msgid "Properties for document: %s"
+#, python-format
 msgid "Properties of document: %s"
-msgstr "خصوصیات سند : %s"
+msgstr ""
 
 #: views/favorite_document_views.py:32
 #, python-format
@@ -2165,25 +1919,21 @@ msgstr "چاپ : %s"
 
 #: views/recently_accessed_document_views.py:23
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by "
-"this user account."
+"This view will list the latest documents viewed or manipulated in any way by"
+" this user account."
 msgstr ""
 
 #: views/recently_accessed_document_views.py:27
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no recently accessed documents"
-msgstr "پایان صفحات سند"
+msgstr ""
 
 #: views/recently_created_document_views.py:21
 msgid "This view will list the latest documents created in the system."
 msgstr ""
 
 #: views/recently_created_document_views.py:25
-#, fuzzy
-#| msgid "There are no more pages in this document"
 msgid "There are no recently created documents"
-msgstr "پایان صفحات سند"
+msgstr ""
 
 #: views/trashed_document_views.py:37
 #, python-format
@@ -2203,7 +1953,7 @@ msgstr[1] ""
 
 #: views/trashed_document_views.py:76
 msgid "Empty trash?"
-msgstr "سطل زباله خالی"
+msgstr ""
 
 #: views/trashed_document_views.py:84
 msgid "The trash emptying task has been queued."
@@ -2253,86 +2003,13 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: workflow_actions.py:13
-#, fuzzy
-#| msgid "New document pages per month"
 msgid "New document type for the workflow document."
-msgstr "صفحات سند جدید در هر ماه"
+msgstr ""
 
 #: workflow_actions.py:18
-#, fuzzy
-#| msgid "Create document type"
 msgid "Change document type"
-msgstr "ایجاد نوع سند"
+msgstr ""
 
 #: workflow_actions.py:37
 msgid "Send document to trash"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Is stub?"
-#~ msgid "Is stub"
-#~ msgstr "آیا خرد است؟"
-
-#~ msgid "Duplicates"
-#~ msgstr "تکراری"
-
-#~ msgid "Compress"
-#~ msgstr "فشرده سازی"
-
-#~ msgid ""
-#~ "Download the document in the original format or in a compressed manner. "
-#~ "This option is selectable only when downloading one document, for "
-#~ "multiple documents, the bundle will always be downloads as a compressed "
-#~ "file."
-#~ msgstr ""
-#~ "سند را در فرمت اصلی یا به صورت فشرده دانلود کنید. این گزینه فقط هنگام "
-#~ "دانلود یک سند انتخاب می شود، برای چندین اسناد، بسته نرم افزاری همیشه به "
-#~ "عنوان یک فایل فشرده در دسترس خواهد بود."
-
-#~ msgid "Compressed filename"
-#~ msgstr "نام فایل فشرده شده"
-
-#~ msgid ""
-#~ "The filename of the compressed file that will contain the documents to be "
-#~ "downloaded, if the previous option is selected."
-#~ msgstr ""
-#~ "اگر انتخاب قبلی انجام شده، نام فایل فشرده شده که شامل کلیه فایلهای که "
-#~ "قراراست که دانلود شوند."
-
-#~ msgid "File size"
-#~ msgstr "اندازه فایل"
-
-#~ msgid ""
-#~ "Takes the file extension and moves it to the end of the filename allowing "
-#~ "operating systems that rely on file extensions to open the downloaded "
-#~ "document version correctly."
-#~ msgstr ""
-#~ "فرمت فایل را می گیرد و آن را به انتهای نام فایل منتقل می کند تا سیستم "
-#~ "عامل هایی را که بر روی پسوندهای فایل تکیه دارند، به درستی باز می کند."
-
-#~ msgid "Download version"
-#~ msgstr "دانلود نسخه"
-
-#~ msgid "Revert"
-#~ msgstr "بازگرداندن"
-
-#~ msgid "Duplicated document scan"
-#~ msgstr "اسکن سند تکراری"
-
-#~ msgid "Revert documents to a previous version"
-#~ msgstr "بازگشت اسناد به نسخه قبلی"
-
-#~ msgid "All later version after this one will be deleted too."
-#~ msgstr "همجنین کلیه نسخه های بعد از این نسخه حذف خواهند گردید."
-
-#~ msgid "Revert to this version?"
-#~ msgstr "بازگشت به این نسخه"
-
-#~ msgid "Download"
-#~ msgstr "دانلود"
-
-#~ msgid "Duplicates for document: %s"
-#~ msgstr "تکراری برای سند: %s"
-
-#~ msgid "Scan for duplicated documents?"
-#~ msgstr "برای اسناد تکراری اسکن کنید؟"

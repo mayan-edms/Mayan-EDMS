@@ -2,23 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Roberto Rosario, 2020
-#
+# Roberto Rosario, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2017-08-25 00:49+0000\n"
-"Last-Translator: Roberto Rosario, 2020\n"
-"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/"
-"teams/13584/zh-Hans/)\n"
-"Language: zh-Hans\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:53 events.py:6 permissions.py:6 settings.py:10
@@ -47,16 +46,12 @@ msgid "Document parsed content deleted"
 msgstr ""
 
 #: events.py:14
-#, fuzzy
-#| msgid "Document version submitted for parsing"
 msgid "Document file submitted for parsing"
-msgstr "提交用于解析的文档版本"
+msgstr ""
 
 #: events.py:17
-#, fuzzy
-#| msgid "Document version parsing finished"
 msgid "Document file parsing finished"
-msgstr "文档版本解析完成"
+msgstr ""
 
 #: forms.py:37
 #, python-format
@@ -92,30 +87,24 @@ msgid "Parse documents per type"
 msgstr "解析每种类型的文档"
 
 #: models.py:18
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file page"
-msgstr "文档页面"
+msgstr ""
 
 #: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr "由文档解析后端提取的实际文本内容。"
 
 #: models.py:30
-#, fuzzy
-#| msgid "Document page content"
 msgid "Document file page content"
-msgstr "文档页面内容"
+msgstr ""
 
 #: models.py:31
-#, fuzzy
-#| msgid "Document pages contents"
 msgid "Document file page contents"
-msgstr "文档页面内容"
+msgstr ""
 
 #: models.py:43
 msgid "Document type"
-msgstr "文件类型"
+msgstr "文档类型"
 
 #: models.py:47
 msgid "Automatically queue newly created documents for parsing."
@@ -130,26 +119,20 @@ msgid "Document types settings"
 msgstr "文档类型设置"
 
 #: models.py:69
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file"
-msgstr "文档页面"
+msgstr ""
 
 #: models.py:72
 msgid "Date time submitted"
 msgstr "提交的日期时间"
 
 #: models.py:78
-#, fuzzy
-#| msgid "Document version parse error"
 msgid "Document file parse error"
-msgstr "文档版本解析错误"
+msgstr ""
 
 #: models.py:79
-#, fuzzy
-#| msgid "Document version parse errors"
 msgid "Document file parse errors"
-msgstr "文档版本解析错误"
+msgstr ""
 
 #: parsers.py:90
 #, python-format
@@ -162,16 +145,12 @@ msgid "Cannot find pdftotext executable at: %s"
 msgstr "找不到pdftotext可执行文件：%s"
 
 #: permissions.py:10
-#, fuzzy
-#| msgid "View the content of a document"
 msgid "View the content of a document file"
-msgstr "查看文档的内容"
+msgstr ""
 
 #: permissions.py:13
-#, fuzzy
-#| msgid "Parse the content of a document"
 msgid "Parse the content of a document file"
-msgstr "解析文档的内容"
+msgstr ""
 
 #: permissions.py:16
 msgid "Change document type parsing settings"
@@ -182,16 +161,12 @@ msgid "Parsing"
 msgstr "解析"
 
 #: queues.py:9
-#, fuzzy
-#| msgid "Document parsing"
 msgid "Document file parsing"
-msgstr "文档解析"
+msgstr ""
 
 #: search.py:16 search.py:23
-#, fuzzy
-#| msgid "Document page content"
 msgid "Document file content"
-msgstr "文档页面内容"
+msgstr ""
 
 #: settings.py:15
 msgid "Set new document types to perform parsing automatically by default."
@@ -199,58 +174,50 @@ msgstr "设置新文档类型以默认自动执行解析。"
 
 #: settings.py:21
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr "poppler的pdftotext程序的文件路径，用于从PDF文件中提取文本。"
 
 #: views.py:39
-#, fuzzy
-#| msgid "View the content of a document"
 msgid "Delete the parsed content of the selected document file?"
 msgid_plural "Delete the parsed content of the selected document files?"
-msgstr[0] "查看文档的内容"
+msgstr[0] ""
 
 #: views.py:85
-#, fuzzy, python-format
-#| msgid "Content for document: %s"
+#, python-format
 msgid "Content for document file: %s"
-msgstr "文件内容：%s"
+msgstr ""
 
 #: views.py:106
-#, fuzzy, python-format
-#| msgid "Content for document page: %s"
+#, python-format
 msgid "Content for document file page: %s"
-msgstr "文档页面的内容：%s"
+msgstr ""
 
 #: views.py:128
-#, fuzzy, python-format
-#| msgid "Parsing errors for document: %s"
+#, python-format
 msgid "Parsing errors for document file: %s"
-msgstr "解析文档错误：%s"
+msgstr ""
 
 #: views.py:141
-#, fuzzy, python-format
-#| msgid "%(count)d document added to the parsing queue"
+#, python-format
 msgid "%(count)d document file added to the parsing queue"
-msgstr "%(count)d文档已添加到解析队列中"
+msgstr ""
 
 #: views.py:144
-#, fuzzy, python-format
-#| msgid "%(count)d documents added to the parsing queue"
+#, python-format
 msgid "%(count)d documents files added to the parsing queue"
-msgstr "%(count)d文档已添加到解析队列中"
+msgstr ""
 
 #: views.py:152
-#, fuzzy, python-format
-#| msgid "%(count)d document added to the parsing queue"
+#, python-format
 msgid "Submit %(count)d document file to the parsing queue?"
 msgid_plural "Submit %(count)d documents files to the parsing queue?"
-msgstr[0] "%(count)d文档已添加到解析队列中"
+msgstr[0] ""
 
 #: views.py:165
-#, fuzzy, python-format
-#| msgid "Submit document \"%s\" to the parsing queue"
+#, python-format
 msgid "Submit document file \"%s\" to the parsing queue"
-msgstr "将文档“%s”提交到解析队列"
+msgstr ""
 
 #: views.py:192
 #, python-format
@@ -265,9 +232,3 @@ msgstr "提交某类型的所有文档进行解析"
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr ""
-
-#~ msgid "Document version"
-#~ msgstr "文件版本"
-
-#~ msgid "Document version parsing"
-#~ msgstr "文档版本解析"

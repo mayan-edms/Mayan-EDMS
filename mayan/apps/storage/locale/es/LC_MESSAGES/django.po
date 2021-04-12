@@ -1,23 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Roberto Rosario, 2015,2019-2020
+# Roberto Rosario, 2021
+# jmcainzos <jmcainzos@vodafone.es>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 08:10+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: jmcainzos <jmcainzos@vodafone.es>, 2021\n"
+"Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:25 settings.py:12
@@ -55,11 +56,11 @@ msgstr ""
 
 #: links.py:12
 msgid "Delete"
-msgstr ""
+msgstr "Eliminar"
 
 #: links.py:16
 msgid "Download"
-msgstr ""
+msgstr "Descargar"
 
 #: management/commands/storage_process.py:13
 msgid "Name of the app to process."
@@ -70,8 +71,8 @@ msgid ""
 "Path of the database (.dbm) file that will be created/read to keep track of "
 "items processed."
 msgstr ""
-"Ruta del archivo de base de datos (.dbm) que se creará / leerá para realizar "
-"un seguimiento de los elementos procesados."
+"Ruta del archivo de base de datos (.dbm) que se creará / leerá para realizar"
+" un seguimiento de los elementos procesados."
 
 #: management/commands/storage_process.py:26
 msgid "Process a specific model."
@@ -106,11 +107,11 @@ msgstr "Archivo"
 
 #: models.py:52
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #: models.py:56
 msgid "Permission"
-msgstr ""
+msgstr "Permiso"
 
 #: models.py:63
 msgid "Download file"
@@ -133,20 +134,14 @@ msgid "Delete stale uploads"
 msgstr "Eliminar subidas expiradas"
 
 #: queues.py:25
-#, fuzzy
-#| msgid "Delete stale uploads"
 msgid "Delete stale download files"
-msgstr "Eliminar subidas expiradas"
+msgstr ""
 
 #: settings.py:17
-#, fuzzy
-#| msgid "A storage backend that all workers can use to share files."
 msgid ""
 "A storage backend that all workers can use to generate and hold files for "
 "download."
 msgstr ""
-"Un backend de almacenamiento que todos los \"workers\" pueden utilizar para "
-"compartir archivos."
 
 #: settings.py:28
 msgid "A storage backend that all workers can use to share files."
@@ -163,21 +158,15 @@ msgstr ""
 "imágenes en miniatura, visualizaciones y archivos temporeros."
 
 #: storages.py:15
-#, fuzzy
-#| msgid ""
-#| "Unable to initialize the shared uploaded file storage. Check the settings "
-#| "{} and {} for formatting errors."
 msgid ""
-"Unable to initialize the download file storage. Check the settings {} and {} "
-"for formatting errors."
+"Unable to initialize the download file storage. Check the settings {} and {}"
+" for formatting errors."
 msgstr ""
-"No se puede inicializar el almacenamiento compartido de archivos cargados. "
-"Verifique las configuraciones {} y {} para errores de formato."
 
 #: storages.py:29
 msgid ""
-"Unable to initialize the shared uploaded file storage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""
 "No se puede inicializar el almacenamiento compartido de archivos cargados. "
 "Verifique las configuraciones {} y {} para errores de formato."

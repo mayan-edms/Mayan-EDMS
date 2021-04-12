@@ -1,27 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Roberto Rosario, 2021
+# Sergey Glita <gsv70@mail.ru>, 2021
+# lilo.panic, 2021
+# Panasoft, 2021
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
-# lilo.panic, 2016
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-03-17 10:53+0000\n"
-"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
 msgid "Converter"
@@ -64,7 +65,8 @@ msgstr "преобразование"
 #: dependencies.py:14
 msgid "Utility from the poppler-utils package used to inspect PDF files."
 msgstr ""
-"Утилита из пакета poppler-utils, используемая для инспектирования файлов PDF."
+"Утилита из пакета poppler-utils, используемая для инспектирования файлов "
+"PDF."
 
 #: dependencies.py:19
 msgid ""
@@ -84,7 +86,7 @@ msgstr "Ресурс изменен"
 
 #: forms.py:16
 msgid "Preview"
-msgstr ""
+msgstr "Предпросмотр"
 
 #: forms.py:36
 msgid "Available transformations for this layer."
@@ -136,15 +138,15 @@ msgstr "Выбрать новое преобразование"
 
 #: models.py:45
 msgid "Label"
-msgstr "Ярлык"
+msgstr "Заголовок"
 
 #: models.py:49
 msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
 msgstr ""
-"Это значение будет использоваться для ссылки на этот ресурс. Может содержать "
-"только латинские буквы, цифры и знак подчеркивания."
+"Это значение будет использоваться для ссылки на этот ресурс. Может содержать"
+" только латинские буквы, цифры и знак подчеркивания."
 
 #: models.py:52
 msgid "Internal name"
@@ -160,7 +162,7 @@ msgstr "Ресурс"
 
 #: models.py:157 models.py:228
 msgid "Name"
-msgstr "Имя"
+msgstr "Название"
 
 #: models.py:160 models.py:226
 msgid "Order"
@@ -176,7 +178,7 @@ msgstr "Сохраненные слои"
 
 #: models.py:181 models.py:235
 msgid "Enabled"
-msgstr "Доступно"
+msgstr "Включено"
 
 #: models.py:192 models.py:220
 msgid "Object layer"
@@ -252,7 +254,7 @@ msgstr "Просмотр существующих преобразований"
 
 #: queues.py:11
 msgid "Generate a image of an asset."
-msgstr ""
+msgstr "Создать изображение ресурса"
 
 #: settings.py:28
 msgid ""
@@ -267,17 +269,13 @@ msgid ""
 msgstr ""
 
 #: settings.py:44
-#, fuzzy
-#| msgid "Path to the Storage subclass to use when storing assets."
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
-msgstr "Путь к подклассу Storage для использования при хранении ресурсов."
+msgstr ""
 
 #: settings.py:52
-#, fuzzy
-#| msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
-msgstr "Аргументы, передаваемые в CONVERTER_ASSET_STORAGE_BACKEND."
+msgstr ""
 
 #: settings.py:58
 msgid "Path to the Storage subclass to use when storing assets."
@@ -304,22 +302,16 @@ msgstr ""
 "настройки {} и {} на наличие ошибок форматирования."
 
 #: storages.py:28
-#, fuzzy
-#| msgid ""
-#| "Unable to initialize the converter asset storage. Check the settings {} "
-#| "and {} for formatting errors."
 msgid ""
-"Unable to initialize the converter asset cachestorage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the converter asset cachestorage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""
-"Невозможно инициализировать хранилище ресурсов конвертера. Проверьте "
+"Невозможно инициализировать хранилище кеша ресурсов конвертера. Проверьте "
 "настройки {} и {} на наличие ошибок форматирования."
 
 #: storages.py:34
-#, fuzzy
-#| msgid "Asset created"
 msgid "Assets cache"
-msgstr "Ресурс создан"
+msgstr "Кеш ресурсов"
 
 #: transformations.py:196
 msgid "Paste an asset"
@@ -423,10 +415,9 @@ msgid "Error deleting asset \"%(asset)s\": %(error)s"
 msgstr "Ошибка при удалении ресурса \"%(asset)s\": %(error)s"
 
 #: views.py:103
-#, fuzzy, python-format
-#| msgid "Delete asset: %s?"
+#, python-format
 msgid "Details asset: %s"
-msgstr "Удалить ресурс: %s?"
+msgstr "Подробности ресурса: %s"
 
 #: views.py:117
 #, python-format
@@ -435,7 +426,8 @@ msgstr "Редактировать ресурс: %s"
 
 #: views.py:139
 msgid ""
-"Assets are files that can be used in conjuction with certain transformations."
+"Assets are files that can be used in conjuction with certain "
+"transformations."
 msgstr ""
 "Ресурсы - это файлы, которые можно использовать в сочетании с определенными "
 "преобразованиями."
@@ -466,7 +458,8 @@ msgstr "Удалить преобразование \"%(transformation)s\" дл�
 #: views.py:289
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr "Изменить преобразование \"%(transformation)s\" для: %(content_object)s"
+msgstr ""
+"Редактировать преобразование \"%(transformation)s\" для: %(content_object)s"
 
 #: views.py:343
 #, python-format
@@ -497,8 +490,8 @@ msgstr "Страницы"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas and/"
-"or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
 "Номера страниц, на которые будет добавлено преобразование. Используйте "
 "запятую для разделения или дефис для указания диапазона. Оставьте поле "

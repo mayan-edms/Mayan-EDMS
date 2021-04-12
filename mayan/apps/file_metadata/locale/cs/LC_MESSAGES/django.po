@@ -2,29 +2,27 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Jiri Fait <fait@orkasolutions.cz>, 2019
-# Michal Švábík <snadno@lehce.cz>, 2019
-#
+# Michal Švábík <snadno@lehce.cz>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2019-04-27 22:54+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2019\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
-"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: admin.py:13
 msgid "Label"
-msgstr "Označení"
+msgstr "Jmenovka"
 
 #: apps.py:48 events.py:6 links.py:17 permissions.py:5 queues.py:7
 #: settings.py:12
@@ -59,16 +57,12 @@ msgid "EXIF Tool"
 msgstr "EXIF Tool"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Document version submitted for file metadata processing"
 msgid "Document file submitted for file metadata processing"
-msgstr "Verze dokumentu odeslaná ke zpracování metadat souboru"
+msgstr ""
 
 #: events.py:14
-#, fuzzy
-#| msgid "Document version file metadata processing finished"
 msgid "Document file file metadata processing finished"
-msgstr "Zpracování metadat souboru verze dokumentu bylo dokončeno"
+msgstr ""
 
 #: links.py:23
 msgid "Attributes"
@@ -95,10 +89,8 @@ msgid "Return the specified document file metadata entry."
 msgstr "Vraťte zadanou položku metadat souboru dokumentu."
 
 #: methods.py:66
-#, fuzzy
-#| msgid "Return the specified document file metadata entry."
 msgid "Return the specified document file file metadata entry."
-msgstr "Vraťte zadanou položku metadat souboru dokumentu."
+msgstr ""
 
 #: models.py:18
 msgid "Driver path"
@@ -122,7 +114,8 @@ msgstr "Typ dokumentu"
 
 #: models.py:52
 msgid "Automatically queue newly created documents for processing."
-msgstr "Automaticky zařazuje nově vytvořené dokumenty do fronty ke zpracování."
+msgstr ""
+"Automaticky zařazuje nově vytvořené dokumenty do fronty ke zpracování."
 
 #: models.py:59
 msgid "Document type settings"
@@ -133,22 +126,16 @@ msgid "Document types settings"
 msgstr "Nastavení typů dokumentů"
 
 #: models.py:74
-#, fuzzy
-#| msgid "Document type"
 msgid "Document file"
-msgstr "Typ dokumentu"
+msgstr ""
 
 #: models.py:80 models.py:95
-#, fuzzy
-#| msgid "Document version driver entry"
 msgid "Document file driver entry"
-msgstr "Záznam ovladače verze dokumentu"
+msgstr ""
 
 #: models.py:81
-#, fuzzy
-#| msgid "Document version driver entries"
 msgid "Document file driver entries"
-msgstr "Položky ovladače verze dokumentu"
+msgstr ""
 
 #: models.py:88
 msgid "Attribute count"
@@ -191,10 +178,8 @@ msgid "View file metadata"
 msgstr "Zobrazit metadata souboru"
 
 #: queues.py:10
-#, fuzzy
-#| msgid "Process document version"
 msgid "Process document file"
-msgstr "Zpracovat verzi dokumentu"
+msgstr ""
 
 #: settings.py:18
 msgid ""
@@ -210,8 +195,8 @@ msgstr "Argumenty k předání ovladačům."
 
 #: views.py:44
 msgid ""
-"File metadata are the attributes of the document's file. They can range from "
-"camera information used to take a photo to the author that created a file. "
+"File metadata are the attributes of the document's file. They can range from"
+" camera information used to take a photo to the author that created a file. "
 "File metadata are set when the document's file was first created. File "
 "metadata attributes reside in the file itself. They are not the same as the "
 "document metadata, which are user defined and reside in the database."
@@ -219,15 +204,13 @@ msgstr ""
 "Metadata souboru jsou atributy souboru dokumentu. Mohou se pohybovat od "
 "informací o fotoaparátu používaných k pořízení fotografie až po autora, "
 "který vytvořil soubor. Metadata souboru se nastavují při prvním vytvoření "
-"souboru dokumentu. Atributy metadat souboru se nacházejí v samotném souboru. "
-"Nejsou stejné jako metadata dokumentu, která jsou definována uživatelem a "
+"souboru dokumentu. Atributy metadat souboru se nacházejí v samotném souboru."
+" Nejsou stejné jako metadata dokumentu, která jsou definována uživatelem a "
 "jsou umístěna v databázi."
 
 #: views.py:52
-#, fuzzy
-#| msgid "File metadata value"
 msgid "No file metadata available."
-msgstr "Hodnota metadat souboru"
+msgstr "K dispozici nejsou žádná metadata souborů."
 
 #: views.py:55
 #, python-format
@@ -246,21 +229,18 @@ msgid "No file metadata available for this driver."
 msgstr ""
 
 #: views.py:90
-#, fuzzy, python-format
-#| msgid "File metadata attribures for: %(document)s, for driver: %(driver)s"
-msgid "File metadata attributes for: %(document_file)s with driver: %(driver)s"
-msgstr "Atributy metadat souboru pro: %(document)s, pro ovladač: %(driver)s"
+#, python-format
+msgid ""
+"File metadata attributes for: %(document_file)s with driver: %(driver)s"
+msgstr ""
 
 #: views.py:119
-#, fuzzy
-#| msgid "Submit the selected document to the file metadata queue?"
-#| msgid_plural "Submit the selected documents to the file metadata queue?"
 msgid "Submit the selected document file to the file metadata queue?"
 msgid_plural "Submit the selected documents files to the file metadata queue?"
-msgstr[0] "Odeslat vybraný dokument do fronty metadat souboru?"
-msgstr[1] "Odeslat vybrané dokumenty do fronty metadat souboru?"
-msgstr[2] "Odeslat vybrané dokumenty do fronty metadat souboru?"
-msgstr[3] "Odeslat vybrané dokumenty do fronty metadat souboru?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views.py:145
 #, python-format
@@ -276,9 +256,3 @@ msgstr ""
 #, python-format
 msgid "%(count)d documents added to the file metadata processing queue."
 msgstr "%(count)d dokumenty přidané do fronty zpracování metadat souboru."
-
-#~ msgid "Return the specified document version file metadata entry."
-#~ msgstr "Vraťte zadanou položku metadat souboru verze dokumentu."
-
-#~ msgid "Document version"
-#~ msgstr "Verze dokumentu"

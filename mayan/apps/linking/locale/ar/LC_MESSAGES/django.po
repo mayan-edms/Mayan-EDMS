@@ -1,26 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Marwan Rahhal <Marwanr@sssit.net>, 2020
-# Mohammed ALDOUB <voulnet@gmail.com>, 2013
+# Roberto Rosario, 2021
+# Mohammed ALDOUB <voulnet@gmail.com>, 2021
+# Yaman Sanobar <yman.snober@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-12-24 01:42+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:26+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:40
 msgid "Linking"
@@ -190,8 +191,8 @@ msgstr "سمة المستند الأجنبي"
 
 #: models.py:178
 msgid ""
-"The expression using document properties to be evaluated against the foreign "
-"document field."
+"The expression using document properties to be evaluated against the foreign"
+" document field."
 msgstr ""
 "التعبير الذي يستخدم خصائص المستند المراد تقييمه مقابل حقل المستند الخارجي."
 
@@ -272,8 +273,7 @@ msgstr "الوثائق الموجودة في الرابط الذكي: %s"
 
 #: views.py:117
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr ""
 "الوثائق الموجودة في الرابط الذكي &quot;%(smart_link)s&quot; المتعلقة بـ "
 "&quot;%(document)s&quot;"
@@ -360,13 +360,3 @@ msgstr "هل تريد حذف شرط الارتباط الذكي: &quot;%s&quot;�
 #: views.py:376
 msgid "Edit smart link condition"
 msgstr "تحرير شرط الرابط الذكي"
-
-#~ msgid ""
-#~ "Comma separated list of document type primary keys to which this smart "
-#~ "link will be attached."
-#~ msgstr ""
-#~ "قائمة مفصولة بفواصل للمفاتيح الأساسية لنوع المستند والتي سيتم إرفاق هذا "
-#~ "الارتباط الذكي بها."
-
-#~ msgid "No such document type: %s"
-#~ msgstr "لا يوجد نوع مستند من هذا القبيل: %s"

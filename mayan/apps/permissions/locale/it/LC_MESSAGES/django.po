@@ -1,26 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Giovanni Tricarico <gtricarico92@gmail.com>, 2016
-# Marco Camplese <marco.camplese.mc@gmail.com>, 2017
-# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012
-# Roberto Rosario, 2020-2021
+# Roberto Rosario, 2021
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
+# Giovanni Tricarico <gtricarico92@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2021-01-04 16:57+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:28+0000\n"
+"Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2021\n"
+"Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:43 events.py:6 models.py:37 models.py:157 permissions.py:5
@@ -57,11 +56,11 @@ msgstr "Crea nuovo ruolo "
 
 #: links.py:28
 msgid "Delete"
-msgstr "Cancella "
+msgstr "Cancella"
 
 #: links.py:32
 msgid "Edit"
-msgstr "Modifica "
+msgstr "Modifica"
 
 #: links.py:41 models.py:40
 msgid "Groups"
@@ -77,7 +76,7 @@ msgstr "Un breve testo che descrive il ruolo."
 
 #: models.py:33 search.py:14
 msgid "Label"
-msgstr "Etichetta "
+msgstr "Etichetta"
 
 #: models.py:47
 msgid "Role"
@@ -205,18 +204,3 @@ msgstr ""
 #: views.py:170
 msgid "There are no roles"
 msgstr "Non ci sono ruoli"
-
-#~ msgid ""
-#~ "Comma separated list of groups primary keys to add to, or replace in this "
-#~ "role."
-#~ msgstr ""
-#~ "Lista separata da virgole di ID gruppi da aggiungere o sostituire in "
-#~ "questo ruolo"
-
-#~ msgid ""
-#~ "Comma separated list of permission primary keys to grant to this role."
-#~ msgstr ""
-#~ "Lista separata da virgole di ID permessi da assegnare a questo ruolo"
-
-#~ msgid "No such permission: %s"
-#~ msgstr "Nessun permesso: %s"

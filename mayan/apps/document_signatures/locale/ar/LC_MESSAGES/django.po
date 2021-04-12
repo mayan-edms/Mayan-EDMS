@@ -1,27 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Marwan Rahhal <Marwanr@sssit.net>, 2020
-# Mohammed ALDOUB <voulnet@gmail.com>, 2013
-# WM Shinkada <shinkadawasim@gmail.com>, 2020
+# Roberto Rosario, 2021
+# Mohammed ALDOUB <voulnet@gmail.com>, 2021
+# Yaman Sanobar <yman.snober@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# WM Shinkada <shinkadawasim@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-12-24 01:42+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:54 events.py:6 permissions.py:6 settings.py:12
 msgid "Document signatures"
@@ -29,7 +30,7 @@ msgstr "توقيعات الوثيقة"
 
 #: apps.py:111
 msgid "Date and time"
-msgstr ""
+msgstr "الوقت والتاريخ"
 
 #: apps.py:115 models.py:52
 msgid "Key ID"
@@ -48,46 +49,34 @@ msgid "Type"
 msgstr "النوع"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Detached signatures"
 msgid "Detached signature created"
-msgstr "التوقيعات المنفصلة"
+msgstr ""
 
 #: events.py:13
-#, fuzzy
-#| msgid "Detached signatures"
 msgid "Detached signature uploaded"
-msgstr "التوقيعات المنفصلة"
+msgstr ""
 
 #: events.py:17
-#, fuzzy
-#| msgid "Signature date"
 msgid "Embedded signature created"
-msgstr "تاريخ التوقيع"
+msgstr ""
 
 #: forms.py:17 forms.py:31 workflow_actions.py:19
 msgid "Key"
 msgstr "مفتاح"
 
 #: forms.py:22 serializers.py:66 workflow_actions.py:30
-#, fuzzy
-#| msgid ""
-#| "The passphrase to unlock the key and allow it to be used to sign the "
-#| "document version."
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document file."
-msgstr "عبارة المرور لفتح المفتاح والسماح باستخدامه لتوقيع إصدار المستند."
+msgstr ""
 
 #: forms.py:24 workflow_actions.py:27
 msgid "Passphrase"
 msgstr "عبارة المرور"
 
 #: forms.py:33
-#, fuzzy
-#| msgid "Private key that will be used to sign this document version."
 msgid "Private key that will be used to sign this document file."
-msgstr "المفتاح الخاص الذي سيتم استخدامه للتوقيع على إصدار المستند هذا."
+msgstr ""
 
 #: forms.py:44
 msgid "Signature is embedded?"
@@ -134,10 +123,8 @@ msgid "Key type"
 msgstr "نوع المفتاح"
 
 #: links.py:40
-#, fuzzy
-#| msgid "Verify key signatures"
 msgid "Refresh all signatures"
-msgstr "تحقق من التوقيعات الرئيسية"
+msgstr ""
 
 #: links.py:46
 msgid "Verify all documents"
@@ -172,16 +159,12 @@ msgid "Upload signature"
 msgstr "تحميل التوقيع "
 
 #: models.py:42
-#, fuzzy
-#| msgid "Document version"
 msgid "Document file"
-msgstr "نسخة الوثيقة"
+msgstr ""
 
 #: models.py:47
-#, fuzzy
-#| msgid "Date signed"
 msgid "Date and time signed"
-msgstr "تاريخ التوقيع"
+msgstr ""
 
 #: models.py:51
 msgid "ID of the key that will be used to sign the document."
@@ -192,16 +175,12 @@ msgid "Public key fingerprint"
 msgstr "مفتاح البصمة العام"
 
 #: models.py:68
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file signature"
-msgstr "توقيعات الوثيقة"
+msgstr ""
 
 #: models.py:69
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file signatures"
-msgstr "توقيعات الوثيقة"
+msgstr ""
 
 #: models.py:88
 msgid "Detached"
@@ -220,32 +199,24 @@ msgid "Signature file"
 msgstr "توقيع الملف"
 
 #: models.py:164
-#, fuzzy
-#| msgid "Document version detached signature"
 msgid "Document file detached signature"
-msgstr "نسخة وثيقة التوقيع منفصل"
+msgstr ""
 
 #: models.py:165
-#, fuzzy
-#| msgid "Document version detached signatures"
 msgid "Document file detached signatures"
-msgstr "نسخة الوثيقة فصل التواقيع"
+msgstr ""
 
 #: models.py:168
 msgid "signature"
 msgstr "التوقيع"
 
 #: models.py:210
-#, fuzzy
-#| msgid "Document version embedded signature"
 msgid "Document file embedded signature"
-msgstr "نسخة الوثيقة التوقيع المضمنة"
+msgstr ""
 
 #: models.py:211
-#, fuzzy
-#| msgid "Document version embedded signatures"
 msgid "Document file embedded signatures"
-msgstr "نسخة الوثيقة التواقيع المضمنة"
+msgstr ""
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
@@ -284,26 +255,20 @@ msgid "Unverify key signatures"
 msgstr "عدم التحقق من التوقيعات الرئيسية"
 
 #: queues.py:21
-#, fuzzy
-#| msgid "Verify document version"
 msgid "Verify document file"
-msgstr "تحقق من إصدار المستند"
+msgstr ""
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
 msgstr "تحقق من فقدان التوقيع المضمّن"
 
 #: queues.py:30
-#, fuzzy
-#| msgid "There are no signatures for this document."
 msgid "Refresh existing signature information"
-msgstr "لا توجد توقيعات لهذه الوثيقة."
+msgstr ""
 
 #: serializers.py:60
-#, fuzzy
-#| msgid "Private key that will be used to sign the document version."
 msgid "Primary key of the tag to add to the document."
-msgstr "المفتاح الخاص الذي سيتم استخدامه للتوقيع على إصدار المستند."
+msgstr ""
 
 #: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."
@@ -334,26 +299,22 @@ msgid "Passphrase is incorrect."
 msgstr "عبارة المرور غير صحيحة."
 
 #: views.py:92 views.py:161
-#, fuzzy
-#| msgid "Document version signed successfully."
 msgid "Document file signed successfully."
-msgstr "نوع المستندات الموقعة بنجاح "
+msgstr ""
 
 #: views.py:102 views.py:178
 msgid "Sign"
 msgstr "توقيع"
 
 #: views.py:104
-#, fuzzy, python-format
-#| msgid "Sign document version \"%s\" with a detached signature"
+#, python-format
 msgid "Sign document file \"%s\" with a detached signature"
-msgstr "إصدار وثيقة التوقيع &quot;%s&quot; بتوقيع منفصل"
+msgstr ""
 
 #: views.py:180
-#, fuzzy, python-format
-#| msgid "Sign document version \"%s\" with a embedded signature"
+#, python-format
 msgid "Sign document file \"%s\" with a embedded signature"
-msgstr "إصدار وثيقة التوقيع &quot;%s&quot; بتوقيع مدمج"
+msgstr ""
 
 #: views.py:196
 #, python-format
@@ -371,42 +332,34 @@ msgid ""
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr ""
-"تساعد التوقيعات في توفير دليل التأليف واكتشاف التلاعب. هم آمنون للغاية ويصعب "
-"تزويرهم. يمكن تضمين التوقيع كجزء من المستند نفسه أو تحميله كملف منفصل."
+"تساعد التوقيعات في توفير دليل التأليف واكتشاف التلاعب. هم آمنون للغاية ويصعب"
+" تزويرهم. يمكن تضمين التوقيع كجزء من المستند نفسه أو تحميله كملف منفصل."
 
 #: views.py:297
-#, fuzzy
-#| msgid "There are no signatures for this document."
 msgid "There are no signatures for this document file."
-msgstr "لا توجد توقيعات لهذه الوثيقة."
+msgstr ""
 
 #: views.py:301
-#, fuzzy, python-format
-#| msgid "Signatures for document version: %s"
+#, python-format
 msgid "Signatures for document file: %s"
-msgstr "التوقيعات الخاصة بإصدار الوثيقة: %s"
+msgstr ""
 
 #: views.py:322
-#, fuzzy, python-format
-#| msgid "Upload detached signature for document version: %s"
+#, python-format
 msgid "Upload detached signature for document file: %s"
-msgstr "تحميل توقيع منفصل لإصدار المستند: %s"
+msgstr ""
 
 #: views.py:340 views.py:359
 msgid "On large databases this operation may take some time to execute."
 msgstr "يرجى الإنتظار ، قد تستغرق عملية الحفظ وقت أطول"
 
 #: views.py:341
-#, fuzzy
-#| msgid "There are no signatures for this document."
 msgid "Refresh all signatures information?"
-msgstr "لا توجد توقيعات لهذه الوثيقة."
+msgstr ""
 
 #: views.py:351
-#, fuzzy
-#| msgid "Signature verification queued successfully."
 msgid "Signature information refresh queued successfully."
-msgstr "تم وضع التحقق من التوقيع في قائمة الانتظار بنجاح."
+msgstr ""
 
 #: views.py:360
 msgid "Verify all document for signatures?"
@@ -417,36 +370,19 @@ msgid "Signature verification queued successfully."
 msgstr "تم وضع التحقق من التوقيع في قائمة الانتظار بنجاح."
 
 #: workflow_actions.py:22
-#, fuzzy
-#| msgid "Private key that will be used to sign the document version."
 msgid "Private key that will be used to sign the document file."
-msgstr "المفتاح الخاص الذي سيتم استخدامه للتوقيع على إصدار المستند."
+msgstr ""
 
 #: workflow_actions.py:37
 msgid "Sign document (detached)"
 msgstr "توقيع الوثيقة (منفصلة)"
 
 #: workflow_actions.py:49
-#, fuzzy
-#| msgid ""
-#| "Document has no version to sign. You might be trying to use this action "
-#| "in an initial state before the created document is yet to be processed."
 msgid ""
 "Document has no file to sign. You might be trying to use this action in an "
 "initial state before the created document is yet to be processed."
 msgstr ""
-"المستند ليس لديه نسخة للتوقيع. ربما تحاول استخدام هذا الإجراء في حالة أولية "
-"قبل أن تتم معالجة المستند الذي تم إنشاؤه."
 
 #: workflow_actions.py:80
 msgid "Sign document (embedded)"
 msgstr "توقيع الوثيقة (مضمن)"
-
-#~ msgid "Date"
-#~ msgstr "التاريخ"
-
-#~ msgid "Document version signature"
-#~ msgstr "توقيع إصدار الوثيقة"
-
-#~ msgid "Document version signatures"
-#~ msgstr "توقيعات نسخة الوثيقة"

@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019
+# Jiri Fait <fait@orkasolutions.cz>, 2021
+# Michal Švábík <snadno@lehce.cz>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
-"cs/)\n"
-"Language: cs\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:38+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
 #: templates/announcements/announcements.html:8 views.py:119
@@ -28,7 +28,7 @@ msgstr ""
 
 #: apps.py:74 apps.py:78
 msgid "None"
-msgstr "žádný"
+msgstr "Žádný"
 
 #: events.py:8
 msgid "Announcement created"
@@ -48,47 +48,39 @@ msgstr "Odstranit"
 
 #: links.py:31
 msgid "Edit"
-msgstr "Editovat"
+msgstr "Upravit"
 
 #: models.py:18
-#, fuzzy
-#| msgid "Short description of this message."
 msgid "Short description of this announcement."
-msgstr "Stručný popis této zprávy."
+msgstr ""
 
 #: models.py:19
 msgid "Label"
-msgstr "Označení"
+msgstr "Jmenovka"
 
 #: models.py:22
-#, fuzzy
-#| msgid "The actual message to be displayed."
 msgid "The actual test to be displayed."
-msgstr "Skutečná zpráva, která se má zobrazit."
+msgstr ""
 
 #: models.py:23
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: models.py:25
 msgid "Enabled"
 msgstr "Povoleno"
 
 #: models.py:28
-#, fuzzy
-#| msgid "Date and time after which this message will be displayed."
 msgid "Date and time after which this announcement will be displayed."
-msgstr "Datum a čas, po kterém se tato zpráva zobrazí."
+msgstr ""
 
 #: models.py:29
 msgid "Start date time"
 msgstr "Počáteční datum"
 
 #: models.py:33
-#, fuzzy
-#| msgid "Date and time until when this message is to be displayed."
 msgid "Date and time until when this announcement is to be displayed."
-msgstr "Datum a čas, do kdy se má tato zpráva zobrazit."
+msgstr ""
 
 #: models.py:34
 msgid "End date time"
@@ -155,52 +147,12 @@ msgid "Edit announcement: %s"
 msgstr ""
 
 #: views.py:114
-#, fuzzy
-#| msgid ""
-#| "Messages are displayed in the login view. You can use messages to convery "
-#| "information about your organzation, announcements or usage guidelines for "
-#| "your users."
 msgid ""
 "Announcements are displayed in the login view. You can use announcements to "
 "convery information about your organzation, announcements or usage "
 "guidelines for your users."
 msgstr ""
-"Zprávy se zobrazují v přihlašovacím zobrazení. Pomocí zpráv můžete zdělit "
-"informace o své organizaci, oznámeních nebo pokynech pro použití pro vaše "
-"uživatele."
 
 #: views.py:118
-#, fuzzy
-#| msgid "No messages available"
 msgid "No announcements available"
-msgstr "Nejsou k dispozici žádné zprávy"
-
-#~ msgid "Message of the day"
-#~ msgstr "Zpráva dne"
-
-#~ msgid "Messages"
-#~ msgstr "Zprávy"
-
-#~ msgid "Create message"
-#~ msgstr "Vytvořit zprávu"
-
-#~ msgid "Message"
-#~ msgstr "Zpráva"
-
-#~ msgid "Create messages"
-#~ msgstr "Vytvořit zprávy"
-
-#~ msgid "Delete messages"
-#~ msgstr "Mazat zprávy"
-
-#~ msgid "Edit messages"
-#~ msgstr "Upravovat zprávy"
-
-#~ msgid "View messages"
-#~ msgstr "Zobrazit zprávy"
-
-#~ msgid "Messages of the day"
-#~ msgstr "Zprávy dne"
-
-#~ msgid "Edit message: %s"
-#~ msgstr "Upravit zprávu: %s"
+msgstr ""

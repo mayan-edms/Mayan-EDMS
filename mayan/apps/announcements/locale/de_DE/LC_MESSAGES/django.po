@@ -1,28 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# 847f3f05406324d125c568a4b098bddb, 2018
-# Berny <berny@bernhard-marx.de>, 2016
-# Mathias Behrle <mathiasb@m9s.biz>, 2018
-# Stefan Rempe, 2018
-# 847f3f05406324d125c568a4b098bddb, 2018
-# Tobias Paepke <tobias.paepke@paepke.net>, 2016
+# Roberto Rosario, 2021
+# Mathias Behrle <mathiasb@m9s.biz>, 2021
+# Tobias Paepke <tobias.paepke@paepke.net>, 2021
+# Berny <berny@bernhard-marx.de>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:38+0000\n"
+"Last-Translator: Berny <berny@bernhard-marx.de>, 2021\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
@@ -55,44 +53,36 @@ msgid "Edit"
 msgstr "Bearbeiten"
 
 #: models.py:18
-#, fuzzy
-#| msgid "Short description of this message."
 msgid "Short description of this announcement."
-msgstr "Kurze Beschreibung dieser Nachricht."
+msgstr ""
 
 #: models.py:19
 msgid "Label"
 msgstr "Bezeichner"
 
 #: models.py:22
-#, fuzzy
-#| msgid "The actual message to be displayed."
 msgid "The actual test to be displayed."
-msgstr "Die anzuzeigende Nachricht."
+msgstr ""
 
 #: models.py:23
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: models.py:25
 msgid "Enabled"
 msgstr "Aktiviert"
 
 #: models.py:28
-#, fuzzy
-#| msgid "Date and time after which this message will be displayed."
 msgid "Date and time after which this announcement will be displayed."
-msgstr "Datum und Uhrzeit ab der die Nachricht angezeigt wird."
+msgstr ""
 
 #: models.py:29
 msgid "Start date time"
 msgstr "Startdatum und Uhrzeit"
 
 #: models.py:33
-#, fuzzy
-#| msgid "Date and time until when this message is to be displayed."
 msgid "Date and time until when this announcement is to be displayed."
-msgstr "Datum und Uhrzeit bis zu der die Nachricht angezeigt wird."
+msgstr ""
 
 #: models.py:34
 msgid "End date time"
@@ -159,52 +149,12 @@ msgid "Edit announcement: %s"
 msgstr ""
 
 #: views.py:114
-#, fuzzy
-#| msgid ""
-#| "Messages are displayed in the login view. You can use messages to convery "
-#| "information about your organzation, announcements or usage guidelines for "
-#| "your users."
 msgid ""
 "Announcements are displayed in the login view. You can use announcements to "
 "convery information about your organzation, announcements or usage "
 "guidelines for your users."
 msgstr ""
-"Nachrichten werden bei der Anmeldung angezeigt. Sie können dies nutzen, um "
-"Informationen zu Ihrem Unternehmen, Ankündigungen oder Nutzungsrichtlinien "
-"anzuzeigen. "
 
 #: views.py:118
-#, fuzzy
-#| msgid "No messages available"
 msgid "No announcements available"
-msgstr "Keine Nachrichten vorhanden"
-
-#~ msgid "Message of the day"
-#~ msgstr "Nachricht des Tages"
-
-#~ msgid "Messages"
-#~ msgstr "Nachrichten"
-
-#~ msgid "Create message"
-#~ msgstr "Nachricht erstellen"
-
-#~ msgid "Message"
-#~ msgstr "Nachricht"
-
-#~ msgid "Create messages"
-#~ msgstr "Nachrichten erstellen"
-
-#~ msgid "Delete messages"
-#~ msgstr "Nachrichten löschen"
-
-#~ msgid "Edit messages"
-#~ msgstr "Nachrichten bearbeiten"
-
-#~ msgid "View messages"
-#~ msgstr "Nachrichten anzeigen"
-
-#~ msgid "Messages of the day"
-#~ msgstr "Nachrichten des Tages"
-
-#~ msgid "Edit message: %s"
-#~ msgstr "Nachricht %s bearbeiten"
+msgstr ""

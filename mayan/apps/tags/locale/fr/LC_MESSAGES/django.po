@@ -1,29 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015,2017
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
-# Frédéric Sheedy <sheedf@gmail.com>, 2019-2021
-# Olivier W, 2019
-# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2012
-# SadE54 <yannsuisini@gmail.com>, 2013
-# Yves Dubois <ydubois@gmail.com>, 2018
+# Roberto Rosario, 2021
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
+# Yves Dubois <ydubois@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2021-01-04 18:03+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:47 apps.py:120 apps.py:124 apps.py:128 apps.py:133 apps.py:137
@@ -83,7 +82,7 @@ msgstr "Tout"
 
 #: methods.py:18
 msgid "Return the tags attached to the document."
-msgstr ""
+msgstr "Renvoie les étiquettes attachées au document."
 
 #: methods.py:20
 msgid "get_tags()"
@@ -95,7 +94,7 @@ msgstr "Un court texte utilisé comme nom pour l'étiquette."
 
 #: models.py:28
 msgid "Label"
-msgstr "Libellé"
+msgstr "Étiquette"
 
 #: models.py:31
 msgid "The RGB color values for the tag."
@@ -146,56 +145,42 @@ msgid "Remove tags from documents"
 msgstr "Retirer des étiquettes des documents"
 
 #: serializers.py:33
-#, fuzzy
-#| msgid "Primary key of the tag to be added."
 msgid "Primary key of the tag to add to the document."
-msgstr "La clé primaire pour l'étiquette sera ajoutée."
+msgstr ""
 
 #: serializers.py:41
-#, fuzzy
-#| msgid "Tags to remove from the document"
 msgid "Primary key of the tag to remove from the document."
-msgstr "Étiquettes à retirer du document"
+msgstr ""
 
 #: views.py:36
-#, fuzzy, python-format
-#| msgid "Tag attached to document"
+#, python-format
 msgid "Tags attached to document \"%(object)s\" successfully."
-msgstr "Étiquette attachée au document"
+msgstr ""
 
 #: views.py:39
-#, fuzzy, python-format
-#| msgid "Tag attach request performed on %(count)d documents"
+#, python-format
 msgid "Tags attached to %(count)d document successfully."
 msgstr ""
-"Demande d'attachement d'une étiquette effectuée sur %(count)d documents"
 
 #: views.py:42
-#, fuzzy, python-format
-#| msgid "Tag attach request performed on %(count)d documents"
+#, python-format
 msgid "Tags attached to %(count)d documents successfully."
 msgstr ""
-"Demande d'attachement d'une étiquette effectuée sur %(count)d documents"
 
 #: views.py:44
-#, fuzzy, python-format
-#| msgid "Attach tags to document: %s"
+#, python-format
 msgid "Attach tags to document: %(object)s"
-msgstr "Attacher des étiquettes au document: %s"
+msgstr ""
 
 #: views.py:45
-#, fuzzy, python-format
-#| msgid "Attach tags to %(count)d document"
-#| msgid_plural "Attach tags to %(count)d documents"
+#, python-format
 msgid "Attach tags to %(count)d document."
-msgstr "Atatcher les étiquettes sur %(count)d document"
+msgstr ""
 
 #: views.py:46
-#, fuzzy, python-format
-#| msgid "Attach tags to %(count)d document"
-#| msgid_plural "Attach tags to %(count)d documents"
+#, python-format
 msgid "Attach tags to %(count)d documents."
-msgstr "Atatcher les étiquettes sur %(count)d document"
+msgstr ""
 
 #: views.py:50
 msgid "Attach"
@@ -210,48 +195,39 @@ msgid "Create tag"
 msgstr "Créer une étiquette"
 
 #: views.py:116
-#, fuzzy, python-format
-#| msgid "Error deleting tag \"%(tag)s\": %(error)s"
+#, python-format
 msgid "Error deleting tag \"%(instance)s\"; %(exception)s"
-msgstr "Erreur lors de la suppression de l'étiquette \"%(tag)s\": %(error)s"
+msgstr ""
 
 #: views.py:121
-#, fuzzy, python-format
-#| msgid "Tag \"%s\" deleted successfully."
+#, python-format
 msgid "Tag \"%(object)s\" deleted successfully."
-msgstr "Étiquette \"%s\" supprimée avec succès"
+msgstr ""
 
 #: views.py:122
-#, fuzzy, python-format
-#| msgid "Tag \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d tag deleted successfully."
-msgstr "Étiquette \"%s\" supprimée avec succès"
+msgstr ""
 
 #: views.py:123
-#, fuzzy, python-format
-#| msgid "Tag \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d tags deleted successfully."
-msgstr "Étiquette \"%s\" supprimée avec succès"
+msgstr ""
 
 #: views.py:124
-#, fuzzy, python-format
-#| msgid "Delete tag: %s?"
+#, python-format
 msgid "Delete tag: %(object)s."
-msgstr "Supprimer l'étiquette: %s?"
+msgstr ""
 
 #: views.py:125
-#, fuzzy, python-format
-#| msgid "Delete the selected tag?"
-#| msgid_plural "Delete the selected tags?"
+#, python-format
 msgid "Delete the %(count)d selected tag."
-msgstr "Supprimer l'étiquette sélectionnée?"
+msgstr ""
 
 #: views.py:126
-#, fuzzy, python-format
-#| msgid "Delete the selected tag?"
-#| msgid_plural "Delete the selected tags?"
+#, python-format
 msgid "Delete the %(count)d selected tags."
-msgstr "Supprimer l'étiquette sélectionnée?"
+msgstr ""
 
 #: views.py:131
 msgid "Will be removed from all documents."
@@ -289,44 +265,34 @@ msgid "Tags for document: %s"
 msgstr "Étiquettes du document : %s"
 
 #: views.py:257
-#, fuzzy, python-format
-#| msgid "Tag removed from document"
+#, python-format
 msgid "Tags removed from document \"%(object)s\" successfully."
-msgstr "Étiquette retirée du document"
+msgstr ""
 
 #: views.py:260
-#, fuzzy, python-format
-#| msgid "Remove tags from %(count)d document"
-#| msgid_plural "Remove tags from %(count)d documents"
+#, python-format
 msgid "Tags removed from %(count)d document successfully."
-msgstr "Supprimer les balises du document %(count)d"
+msgstr ""
 
 #: views.py:263
-#, fuzzy, python-format
-#| msgid "Remove tags from %(count)d document"
-#| msgid_plural "Remove tags from %(count)d documents"
+#, python-format
 msgid "Tags removed from %(count)d documents successfully."
-msgstr "Supprimer les balises du document %(count)d"
+msgstr ""
 
 #: views.py:265
-#, fuzzy, python-format
-#| msgid "Remove tags from document: %s"
+#, python-format
 msgid "Remove tags from document: %(object)s"
-msgstr "Retirer les étiquettes du document: %s"
+msgstr ""
 
 #: views.py:266
-#, fuzzy, python-format
-#| msgid "Remove tags from %(count)d document"
-#| msgid_plural "Remove tags from %(count)d documents"
+#, python-format
 msgid "Remove tags from %(count)d document."
-msgstr "Supprimer les balises du document %(count)d"
+msgstr ""
 
 #: views.py:267
-#, fuzzy, python-format
-#| msgid "Remove tags from %(count)d document"
-#| msgid_plural "Remove tags from %(count)d documents"
+#, python-format
 msgid "Remove tags from %(count)d documents."
-msgstr "Supprimer les balises du document %(count)d"
+msgstr ""
 
 #: views.py:272
 msgid "Remove"
@@ -351,49 +317,3 @@ msgstr "Attacher une étiquette"
 #: workflow_actions.py:63
 msgid "Tags to remove from the document"
 msgstr "Étiquettes à retirer du document"
-
-#~ msgid ""
-#~ "Comma separated list of document primary keys to which this tag will be "
-#~ "attached."
-#~ msgstr ""
-#~ "Liste séparée par des virgules des clés primaires de document auxquelles "
-#~ "cette étiquette sera jointe."
-
-#~ msgid ""
-#~ "API URL pointing to a tag in relation to the document attached to it. "
-#~ "This URL is different than the canonical tag URL."
-#~ msgstr ""
-#~ "URL de l'API pointant vers une étiquette en relation au document qui s'y "
-#~ "rattache. Cette URL est différente de l'URL de l'étiquette canonique."
-
-#~ msgid "Tag attach request performed on %(count)d document"
-#~ msgstr ""
-#~ "Demande d'attachement d'une étiquette effectuée sur %(count)d document"
-
-#~ msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
-#~ msgstr "Le document \"%(document)s\" est déjà étiqueté comme \"%(tag)s\""
-
-#~ msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-#~ msgstr ""
-#~ "L'étiquette \"%(tag)s\" a été attachée avec succès au document "
-#~ "\"%(document)s\"."
-
-#~ msgid "Tag delete request performed on %(count)d tag"
-#~ msgstr "Demande de suppression effectuée sur %(count)d étiquette"
-
-#~ msgid "Tag delete request performed on %(count)d tags"
-#~ msgstr "Demande de suppression effectuée sur %(count)d étiquettes"
-
-#~ msgid "Tag remove request performed on %(count)d document"
-#~ msgstr "Demande de retrait de l'étiquette effectuée sur %(count)d document"
-
-#~ msgid "Tag remove request performed on %(count)d documents"
-#~ msgstr "Demande de retrait de l'étiquette effectuée sur %(count)d documents"
-
-#~ msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
-#~ msgstr "Le document \"%(document)s\" n'a pas été étiquetté comme \"%(tag)s"
-
-#~ msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-#~ msgstr ""
-#~ "L'étiquette \"%(tag)s\" à été retirée avec succès du document "
-#~ "\"%(document)s\"."

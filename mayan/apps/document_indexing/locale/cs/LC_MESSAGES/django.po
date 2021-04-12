@@ -1,29 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019-2020
+# Jiri Fait <fait@orkasolutions.cz>, 2021
+# Michal Švábík <snadno@lehce.cz>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-03-06 15:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
-"cs/)\n"
-"Language: cs\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: admin.py:22
 msgid "None"
-msgstr "žádný"
+msgstr "Žádný"
 
 #: admin.py:24 links.py:94 models.py:54
 msgid "Document types"
@@ -54,16 +54,12 @@ msgid "Documents"
 msgstr "Dokumenty"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index template created"
-msgstr "Uzel šablony rejstříku"
+msgstr ""
 
 #: events.py:13
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index template edited"
-msgstr "Uzel šablony rejstříku"
+msgstr ""
 
 #: forms.py:16
 msgid "Index templates to be queued for rebuilding."
@@ -113,7 +109,7 @@ msgstr "Odstranit"
 
 #: links.py:98 links.py:118
 msgid "Edit"
-msgstr "Editovat"
+msgstr "Upravit"
 
 #: links.py:104
 msgid "Tree template"
@@ -129,7 +125,7 @@ msgstr "Stručný popis tohoto indexu."
 
 #: models.py:37
 msgid "Label"
-msgstr "Označení"
+msgstr "Jmenovka"
 
 #: models.py:41
 msgid "This value will be used by other apps to reference this index."
@@ -140,7 +136,8 @@ msgid "Slug"
 msgstr "Slug"
 
 #: models.py:47
-msgid "Causes this index to be visible and updated when document data changes."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
 msgstr ""
 "Způsobí, že tento rejstřík bude viditelný a aktualizovaný při změně dat "
 "dokumentu"
@@ -158,8 +155,8 @@ msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr ""
-"Zadejte šablonu, kterou chcete vykreslit. Použijte výchozí jazyk pro šablony "
-"Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+"Zadejte šablonu, kterou chcete vykreslit. Použijte výchozí jazyk pro šablony"
+" Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
 #: models.py:221
 msgid "Indexing expression"
@@ -173,8 +170,8 @@ msgstr ""
 
 #: models.py:234
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 msgstr ""
 "Zaškrtněte tuto možnost, chcete-li, aby tento uzel fungoval jako kontejner "
 "pro dokumenty a ne jako nadřazený pro další uzly."
@@ -253,40 +250,28 @@ msgid "Indexing"
 msgstr "Indexování"
 
 #: permissions.py:8
-#, fuzzy
-#| msgid "View document index instances"
 msgid "View index instances"
-msgstr "Zobrazit instance rejstříku dokumentů"
+msgstr ""
 
 #: permissions.py:11
-#, fuzzy
-#| msgid "Delete the index template node: %s?"
 msgid "Create new index templates"
-msgstr "Odstranit uzel šablony rejstříku: %s?"
+msgstr ""
 
 #: permissions.py:14
-#, fuzzy
-#| msgid "Index templates"
 msgid "Edit index templates"
-msgstr "Šablony rejstříků"
+msgstr ""
 
 #: permissions.py:17
-#, fuzzy
-#| msgid "Delete the index template node: %s?"
 msgid "Delete index templates"
-msgstr "Odstranit uzel šablony rejstříku: %s?"
+msgstr ""
 
 #: permissions.py:20
-#, fuzzy
-#| msgid "Index templates"
 msgid "View index templates"
-msgstr "Šablony rejstříků"
+msgstr ""
 
 #: permissions.py:23 views/index_template_views.py:310
-#, fuzzy
-#| msgid "Rebuild indexes"
 msgid "Rebuild index templates"
-msgstr "Znovu setsavit rejstříky"
+msgstr ""
 
 #: queues.py:12
 msgid "Delete empty index nodes"
@@ -334,8 +319,8 @@ msgstr "Nadřazený prvek musí být ze stejné šablony indexu."
 
 #: serializers.py:215
 msgid ""
-"URL of the API endpoint showing the list document types associated with this "
-"index template."
+"URL of the API endpoint showing the list document types associated with this"
+" index template."
 msgstr ""
 
 #: serializers.py:222
@@ -348,25 +333,21 @@ msgid ""
 msgstr ""
 
 #: serializers.py:277
-#, fuzzy
-#| msgid "Parent must be from the same index template."
 msgid "Primary key of the document type to add to the index template."
-msgstr "Nadřazený prvek musí být ze stejné šablony indexu."
+msgstr ""
 
 #: serializers.py:286
-#, fuzzy
-#| msgid "Parent must be from the same index template."
 msgid "Primary key of the document type to remove from the index template."
-msgstr "Nadřazený prvek musí být ze stejné šablony indexu."
+msgstr ""
 
 #: settings.py:14
 msgid ""
-"Amount of time in seconds, a failed indexing task will wait before retrying. "
-"Lower values will increase the speed at which documents are indexed but will "
-"cause a higher count of failed/retried tasks in the queue."
+"Amount of time in seconds, a failed indexing task will wait before retrying."
+" Lower values will increase the speed at which documents are indexed but "
+"will cause a higher count of failed/retried tasks in the queue."
 msgstr ""
-"Doba v sekundách po kterou neúspěšná úloha indexování počká před opakováním. "
-"Nižší hodnoty zvýší rychlost indexování dokumentů, ale způsobí vyšší počet "
+"Doba v sekundách po kterou neúspěšná úloha indexování počká před opakováním."
+" Nižší hodnoty zvýší rychlost indexování dokumentů, ale způsobí vyšší počet "
 "neúspěšných / opakovaných úkolů ve frontě."
 
 #: views/index_instance_views.py:38
@@ -432,15 +413,13 @@ msgstr "Rejstříky spojené s typem dokumentu: %s"
 #: views/index_template_views.py:90
 msgid ""
 "Indexes group document automatically into levels. Indexes are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views/index_template_views.py:95
-#, fuzzy
-#| msgid "There are no indexes."
 msgid "There are no index templates."
-msgstr "Žádné rejstříky."
+msgstr ""
 
 #: views/index_template_views.py:124
 #, python-format
@@ -495,62 +474,32 @@ msgid "Edit the index template node: %s?"
 msgstr "Upravit uzel šablony rejstříku: %s?"
 
 #: views/index_template_views.py:283
-#, fuzzy, python-format
-#| msgid "Rebuild index: %s"
+#, python-format
 msgid "Rebuild index template: %s"
-msgstr "Znovu sestavit index: %s"
+msgstr ""
 
 #: views/index_template_views.py:303
-#, fuzzy
-#| msgid "Index templates to be queued for rebuilding."
 msgid "Index template queued for rebuild."
 msgstr ""
-"Šablony rejstříků, které mají být zařazeny do fronty pro nové sestavení."
 
 #: views/index_template_views.py:324
-#, fuzzy, python-format
-#| msgid "%(count)d index queued for rebuild."
-#| msgid_plural "%(count)d indexes queued for rebuild."
+#, python-format
 msgid "%(count)d index template queued for rebuild."
 msgid_plural "%(count)d index templates queued for rebuild."
-msgstr[0] "Index %(count)d zařazený do fronty pro nové sestavení."
-msgstr[1] "%(count)d indexy zařazené do fronty k novému sestavení."
-msgstr[2] "%(count)d indexy zařazené do fronty k novému sestavení."
-msgstr[3] "%(count)d Rejstříky ve frontě k novému sestavení."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views/index_template_views.py:357
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] "."
-msgstr[1] "%(count)d indexy reset."
-msgstr[2] "%(count)d indexy reset."
-msgstr[3] "%(count)d indexy znovusestaveny."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views/index_template_views.py:370
 msgid "Index templates for which their instances will be deleted."
 msgstr "Šablony indexů, pro které budou jejich instance odstraněny."
-
-#~ msgid "Index created"
-#~ msgstr "Rejstřík vytvořen"
-
-#~ msgid "Index edited"
-#~ msgstr "Rejstřík upraven"
-
-#~ msgid "Create new document indexes"
-#~ msgstr "Vytvoř nové rejstříky dokumentů"
-
-#~ msgid "Edit document indexes"
-#~ msgstr "Uprav rejstřík dokumentů"
-
-#~ msgid "Delete document indexes"
-#~ msgstr "Smaž rejstříky doomentů"
-
-#~ msgid "View document indexes"
-#~ msgstr "Zobrazení rejstříků dokumentů"
-
-#~ msgid "Rebuild document indexes"
-#~ msgstr "Znovu sestavit rejstříky dokumentů"
-
-#~ msgid "Index queued for rebuild."
-#~ msgstr "Index zařazen do fronty pro nové sestavení."

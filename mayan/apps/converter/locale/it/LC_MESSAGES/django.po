@@ -1,25 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
-# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011,2015
-# Roberto Rosario, 2020-2021
+# Roberto Rosario, 2021
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
+# Giovanni Tricarico <gtricarico92@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-01-02 22:28+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2021\n"
+"Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
@@ -83,7 +84,7 @@ msgstr "Risorsa visiva modificata"
 
 #: forms.py:16
 msgid "Preview"
-msgstr ""
+msgstr "Anteprima "
 
 #: forms.py:36
 msgid "Available transformations for this layer."
@@ -266,19 +267,13 @@ msgid ""
 msgstr ""
 
 #: settings.py:44
-#, fuzzy
-#| msgid "Path to the Storage subclass to use when storing assets."
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
 msgstr ""
-"Percorso della sottoclasse di archiviazione da utilizzare durante "
-"l'archiviazione degli risorsa visiva."
 
 #: settings.py:52
-#, fuzzy
-#| msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
-msgstr "Argomenti da passare a CONVERTER_ASSET_STORAGE_BACKEND."
+msgstr ""
 
 #: settings.py:58
 msgid "Path to the Storage subclass to use when storing assets."
@@ -307,22 +302,14 @@ msgstr ""
 "convertitore. Controlla le impostazioni {} e {} per errori di formattazione."
 
 #: storages.py:28
-#, fuzzy
-#| msgid ""
-#| "Unable to initialize the converter asset storage. Check the settings {} "
-#| "and {} for formatting errors."
 msgid ""
-"Unable to initialize the converter asset cachestorage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the converter asset cachestorage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""
-"Impossibile inizializzare l'archiviazione degli risorsa visiva del "
-"convertitore. Controlla le impostazioni {} e {} per errori di formattazione."
 
 #: storages.py:34
-#, fuzzy
-#| msgid "Asset created"
 msgid "Assets cache"
-msgstr "Risorsa visiva creata"
+msgstr ""
 
 #: transformations.py:196
 msgid "Paste an asset"
@@ -405,8 +392,8 @@ msgstr "Richiesta di eliminazione eseguita su %(count)d risorse visivi"
 #: views.py:62
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] "Eliminare la risorsa visiva selezionata?"
-msgstr[1] "Eliminare le risorse visiva selezionate?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:72
 #, python-format
@@ -425,10 +412,9 @@ msgstr ""
 "Errore durante l'eliminazione della risorsa visiva \"%(asset)s\": %(error)s"
 
 #: views.py:103
-#, fuzzy, python-format
-#| msgid "Delete asset: %s?"
+#, python-format
 msgid "Details asset: %s"
-msgstr "Elimina risorsa visiva: %s?"
+msgstr ""
 
 #: views.py:117
 #, python-format
@@ -437,7 +423,8 @@ msgstr "Modifica risorsa visiva: %s"
 
 #: views.py:139
 msgid ""
-"Assets are files that can be used in conjuction with certain transformations."
+"Assets are files that can be used in conjuction with certain "
+"transformations."
 msgstr ""
 "Le risorse visivi sono file che possono essere utilizzati in combinazione "
 "con determinate trasformazioni."
@@ -457,8 +444,8 @@ msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
 msgstr ""
-"Crea la trasformazione \"%(layer)s\" del livello \"%(transformation)s\" per: "
-"%(object)s"
+"Crea la trasformazione \"%(layer)s\" del livello \"%(transformation)s\" per:"
+" %(object)s"
 
 #: views.py:240
 #, python-format
@@ -469,8 +456,7 @@ msgstr ""
 #: views.py:289
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
-"Modifica le trasformazioni \"%(transformation)s\" per: %(content_object)s"
+msgstr "Modifica le trasformazioni \"%(transformation)s\" per: %(content_object)s"
 
 #: views.py:343
 #, python-format
@@ -502,8 +488,8 @@ msgstr "Pagine"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas and/"
-"or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
 "Pagine a cui verranno aggiunte le nuove trasformazioni. Separare da virgole "
 "e / o utilizzare un trattino per gli intervalli. Lascia vuoto per "

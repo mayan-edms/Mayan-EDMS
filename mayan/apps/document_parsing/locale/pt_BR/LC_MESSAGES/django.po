@@ -2,27 +2,26 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Rogerio Falcone <rogerio@falconeit.com.br>, 2017
-# Roberto Rosario, 2017
-# Aline Freitas <aline@alinefreitas.com.br>, 2018
-# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2019
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020
-#
+# Roberto Rosario, 2021
+# Rogerio Falcone <rogerio@falconeit.com.br>, 2021
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
+# Aline Freitas <aline@alinefreitas.com.br>, 2021
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2017-08-25 00:49+0000\n"
-"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
-"teams/13584/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:53 events.py:6 permissions.py:6 settings.py:10
@@ -45,24 +44,20 @@ msgstr "Resultado"
 msgid ""
 "Utility from the poppler-utils package used to text content from PDF files."
 msgstr ""
-"Utilidade do pacote poppler-utils usada para analisar o conteúdo de texto de "
-"arquivos PDF."
+"Utilidade do pacote poppler-utils usada para analisar o conteúdo de texto de"
+" arquivos PDF."
 
 #: events.py:10
 msgid "Document parsed content deleted"
 msgstr "Conteúdo analisado do documento excluído"
 
 #: events.py:14
-#, fuzzy
-#| msgid "Document version submitted for parsing"
 msgid "Document file submitted for parsing"
-msgstr "Versão do documento submetida para análise"
+msgstr ""
 
 #: events.py:17
-#, fuzzy
-#| msgid "Document version parsing finished"
 msgid "Document file parsing finished"
-msgstr "Análise da versão do documento concluída"
+msgstr ""
 
 #: forms.py:37
 #, python-format
@@ -98,10 +93,8 @@ msgid "Parse documents per type"
 msgstr "Analisar documentos por tipo"
 
 #: models.py:18
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file page"
-msgstr "Página do documento"
+msgstr ""
 
 #: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."
@@ -110,16 +103,12 @@ msgstr ""
 "documento."
 
 #: models.py:30
-#, fuzzy
-#| msgid "Document page content"
 msgid "Document file page content"
-msgstr "Conteúdo de página de documento"
+msgstr ""
 
 #: models.py:31
-#, fuzzy
-#| msgid "Document pages contents"
 msgid "Document file page contents"
-msgstr "Conteúdo de páginas de documento"
+msgstr ""
 
 #: models.py:43
 msgid "Document type"
@@ -139,26 +128,20 @@ msgid "Document types settings"
 msgstr "Configurações de tipos de documentos"
 
 #: models.py:69
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file"
-msgstr "Página do documento"
+msgstr ""
 
 #: models.py:72
 msgid "Date time submitted"
-msgstr "Data e hora do envio"
+msgstr "Data e Hora enviados"
 
 #: models.py:78
-#, fuzzy
-#| msgid "Document version parse error"
 msgid "Document file parse error"
-msgstr "Erro de análise da versão do documento"
+msgstr ""
 
 #: models.py:79
-#, fuzzy
-#| msgid "Document version parse errors"
 msgid "Document file parse errors"
-msgstr "Erros de análise da versão do documento"
+msgstr ""
 
 #: parsers.py:90
 #, python-format
@@ -171,16 +154,12 @@ msgid "Cannot find pdftotext executable at: %s"
 msgstr "Executável pdftotext não foi encontrado em: %s"
 
 #: permissions.py:10
-#, fuzzy
-#| msgid "View the content of a document"
 msgid "View the content of a document file"
-msgstr "Ver o conteúdo de um documento"
+msgstr ""
 
 #: permissions.py:13
-#, fuzzy
-#| msgid "Parse the content of a document"
 msgid "Parse the content of a document file"
-msgstr "Analisar o conteúdo de um documento"
+msgstr ""
 
 #: permissions.py:16
 msgid "Change document type parsing settings"
@@ -191,16 +170,12 @@ msgid "Parsing"
 msgstr "Análise"
 
 #: queues.py:9
-#, fuzzy
-#| msgid "Document parsing"
 msgid "Document file parsing"
-msgstr "Análise de documentos"
+msgstr ""
 
 #: search.py:16 search.py:23
-#, fuzzy
-#| msgid "Document page content"
 msgid "Document file content"
-msgstr "Conteúdo de página de documento"
+msgstr ""
 
 #: settings.py:15
 msgid "Set new document types to perform parsing automatically by default."
@@ -210,64 +185,54 @@ msgstr ""
 
 #: settings.py:21
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr ""
 "Caminho para o programa poppler pdftotext usado para extrair texto de "
 "arquivos PDF."
 
 #: views.py:39
-#, fuzzy
-#| msgid "Delete the parsed content of the selected document?"
-#| msgid_plural "Delete the parsed content of the selected documents?"
 msgid "Delete the parsed content of the selected document file?"
 msgid_plural "Delete the parsed content of the selected document files?"
-msgstr[0] "Excluir o conteúdo analisado do documento selecionado?"
-msgstr[1] "Excluir o conteúdo analisado dos documentos selecionados?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:85
-#, fuzzy, python-format
-#| msgid "Content for document: %s"
+#, python-format
 msgid "Content for document file: %s"
-msgstr "Conteúdo do documento: %s"
+msgstr ""
 
 #: views.py:106
-#, fuzzy, python-format
-#| msgid "Content for document page: %s"
+#, python-format
 msgid "Content for document file page: %s"
-msgstr "Conteúdo da página do documento: %s"
+msgstr ""
 
 #: views.py:128
-#, fuzzy, python-format
-#| msgid "Parsing errors for document: %s"
+#, python-format
 msgid "Parsing errors for document file: %s"
-msgstr "Erros de análise do documento: %s"
+msgstr ""
 
 #: views.py:141
-#, fuzzy, python-format
-#| msgid "%(count)d document added to the parsing queue"
+#, python-format
 msgid "%(count)d document file added to the parsing queue"
-msgstr "%(count)d documento adicionado à fila de análise"
+msgstr ""
 
 #: views.py:144
-#, fuzzy, python-format
-#| msgid "%(count)d documents added to the parsing queue"
+#, python-format
 msgid "%(count)d documents files added to the parsing queue"
-msgstr "%(count)d documentos adicionados à fila de análise"
+msgstr ""
 
 #: views.py:152
-#, fuzzy, python-format
-#| msgid "Submit %(count)d document to the parsing queue?"
-#| msgid_plural "Submit %(count)d documents to the parsing queue?"
+#, python-format
 msgid "Submit %(count)d document file to the parsing queue?"
 msgid_plural "Submit %(count)d documents files to the parsing queue?"
-msgstr[0] "Enviar %(count)d documento para a fila de análise?"
-msgstr[1] "Enviar %(count)d documentos para a fila de análise?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:165
-#, fuzzy, python-format
-#| msgid "Submit document \"%s\" to the parsing queue"
+#, python-format
 msgid "Submit document file \"%s\" to the parsing queue"
-msgstr "Enviar documento \"%s\" para a fila de análise"
+msgstr ""
 
 #: views.py:192
 #, python-format
@@ -282,9 +247,3 @@ msgstr "Enviar todos os documento de um tipo para análise"
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr "%(count)d documentos adicinados à fila de análise."
-
-#~ msgid "Document version"
-#~ msgstr "Versão do documento"
-
-#~ msgid "Document version parsing"
-#~ msgstr "Análise de versão de documento"

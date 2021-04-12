@@ -1,23 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
+# Roberto Rosario, 2021
+# 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2021
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-03-28 14:44+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:12+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:24 classes.py:143 links.py:27
@@ -31,10 +34,8 @@ msgid ""
 msgstr ""
 
 #: apps.py:63
-#, fuzzy
-#| msgid "Object ID"
 msgid "Object"
-msgstr "Идентификатор на обекта"
+msgstr "Обект"
 
 #: events.py:6 permissions.py:5
 msgid "Access control lists"
@@ -45,10 +46,8 @@ msgid "ACL created"
 msgstr "Новосъздадени ACL"
 
 #: events.py:13
-#, fuzzy
-#| msgid "ACL edited"
 msgid "ACL deleted"
-msgstr "Редактирани ACL"
+msgstr ""
 
 #: events.py:16
 msgid "ACL edited"
@@ -110,20 +109,12 @@ msgid "View ACLs"
 msgstr "Преглед на контролни списъци за достъп"
 
 #: serializers.py:125
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
-"Основен ключ на новото разрешение за включване в контролния списък на достъп"
 
 #: serializers.py:132
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
-"Основен ключ на новото разрешение за включване в контролния списък на достъп"
 
 #: views.py:40
 #, python-format
@@ -189,16 +180,12 @@ msgstr ""
 "родителския обект или от определената роля чрез меню Настройки."
 
 #: views.py:256
-#, fuzzy
-#| msgid "There are no ACLs for this object"
 msgid "There are no ACLs"
-msgstr "Няма контролни списъци за достъп за този обект"
+msgstr ""
 
 #: views.py:265
-#, fuzzy
-#| msgid "Access control lists"
 msgid "Global access control lists"
-msgstr "Контролни списъци за достъп"
+msgstr ""
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -213,7 +200,8 @@ msgid "Object ID"
 msgstr "Идентификатор на обекта"
 
 #: workflow_actions.py:35
-msgid "Numeric identifier of the object for which the access will be modified."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
 msgstr "Числов показател на обекта, достъпа на който ще бъде променен."
 
 #: workflow_actions.py:40 workflow_actions.py:155
@@ -244,30 +232,3 @@ msgstr "Даване достъп към документа"
 #: workflow_actions.py:211
 msgid "Revoke document access"
 msgstr "Отнемане достъп към документа"
-
-#~ msgid ""
-#~ "API URL pointing to the list of permissions for this access control list."
-#~ msgstr "API URL посочва списък с разрешения за контролни списъци за достъп"
-
-#~ msgid ""
-#~ "API URL pointing to a permission in relation to the access control list "
-#~ "to which it is attached. This URL is different than the canonical "
-#~ "workflow URL."
-#~ msgstr ""
-#~ "API URL посочва разрешение във връзка с контролен списък на достъп, към "
-#~ "който е прикачено. Този URL е различен от основния URL на работния поток."
-
-#~ msgid "No such permission: %s"
-#~ msgstr "Няма такова разрешение: %s"
-
-#~ msgid ""
-#~ "Comma separated list of permission primary keys to grant to this access "
-#~ "control list."
-#~ msgstr ""
-#~ "Разделен със запетаи списък на основни ключове за разрешение в контролен "
-#~ "списък на разрешения"
-
-#~ msgid "Primary keys of the role to which this access control list binds to."
-#~ msgstr ""
-#~ "Основни ключове на ролята, към която е свързан този контролен списък на "
-#~ "достъп"

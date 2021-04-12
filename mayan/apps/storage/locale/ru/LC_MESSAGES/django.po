@@ -1,27 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Roberto Rosario, 2021
+# Sergey Glita <gsv70@mail.ru>, 2021
+# lilo.panic, 2021
+# Panasoft, 2021
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
-# lilo.panic, 2016
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2021-02-28 18:22+0000\n"
-"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:25 settings.py:12
 msgid "Storage"
@@ -29,7 +30,7 @@ msgstr "Хранилище"
 
 #: apps.py:59
 msgid "Source object"
-msgstr ""
+msgstr "Исходный объект"
 
 #: classes.py:86 classes.py:107
 #, python-format
@@ -37,53 +38,59 @@ msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
 "path and arguments."
 msgstr ""
+"Невозможно инициализировать хранилище: %(name)s. Проверьте путь к бэкэнду и "
+"его аргументы."
 
 #: events.py:6 links.py:19 models.py:64 storages.py:22
 msgid "Download files"
-msgstr ""
+msgstr "Файлы для скачивания"
 
 #: events.py:10
 msgid "Download file created"
-msgstr ""
+msgstr "Файл для скачивания создан"
 
 #: events.py:13
 msgid "Download file deleted"
-msgstr ""
+msgstr "Файл для скачивания удален"
 
 #: events.py:16
 msgid "Download file downloaded"
-msgstr ""
+msgstr "Файл для скачивания скачан"
 
 #: links.py:12
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
 #: links.py:16
 msgid "Download"
-msgstr ""
+msgstr "Скачать"
 
 #: management/commands/storage_process.py:13
 msgid "Name of the app to process."
-msgstr ""
+msgstr "Имя обрабатываемого приложения."
 
 #: management/commands/storage_process.py:19
 msgid ""
 "Path of the database (.dbm) file that will be created/read to keep track of "
 "items processed."
 msgstr ""
+"Путь к файлу базы данных (.dbm), который будет создан/прочитан для "
+"отслеживания обработанных элементов."
 
 #: management/commands/storage_process.py:26
 msgid "Process a specific model."
-msgstr ""
+msgstr "Обработать конкретную модель."
 
 #: management/commands/storage_process.py:32
 msgid ""
 "Process the files in reverse to undo the storage pipeline transformations."
 msgstr ""
+"Обработайте файлы в обратном порядке, чтобы отменить преобразования "
+"конвейера хранилища."
 
 #: management/commands/storage_process.py:38
 msgid "Name of the storage to process."
-msgstr ""
+msgstr "Имя обрабатываемого хранилища."
 
 #: model_mixins.py:13 models.py:115
 msgid "Filename"
@@ -95,7 +102,7 @@ msgstr "Дата и время"
 
 #: model_mixins.py:48
 msgid "Unnamed file"
-msgstr ""
+msgstr "Безымянный файл"
 
 #: models.py:42 models.py:112
 msgid "File"
@@ -103,15 +110,15 @@ msgstr "Файл"
 
 #: models.py:52
 msgid "Label"
-msgstr ""
+msgstr "Заголовок"
 
 #: models.py:56
 msgid "Permission"
-msgstr ""
+msgstr "Разрешение"
 
 #: models.py:63
 msgid "Download file"
-msgstr ""
+msgstr "Файл для скачивания"
 
 #: models.py:121
 msgid "Shared uploaded file"
@@ -123,25 +130,23 @@ msgstr "Загруженные файлы совместного пользов�
 
 #: queues.py:13
 msgid "Storage periodic"
-msgstr ""
+msgstr "Хранилище периодически"
 
 #: queues.py:18
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Удалить устаревшие загрузки"
 
 #: queues.py:25
 msgid "Delete stale download files"
-msgstr ""
+msgstr "Удалить устаревшие файлы для скачивания"
 
 #: settings.py:17
-#, fuzzy
-#| msgid "A storage backend that all workers can use to share files."
 msgid ""
 "A storage backend that all workers can use to generate and hold files for "
 "download."
 msgstr ""
 "Бэкэнд хранилища, который могут использовать все процессы (workers) для "
-"хранения файлов."
+"генерации и хранения файлов для скачивания."
 
 #: settings.py:28
 msgid "A storage backend that all workers can use to share files."
@@ -154,18 +159,24 @@ msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr ""
+"Временный каталог, используемый на всем сайте для хранения миниатюр, превью "
+"и временных файлов."
 
 #: storages.py:15
 msgid ""
-"Unable to initialize the download file storage. Check the settings {} and {} "
-"for formatting errors."
+"Unable to initialize the download file storage. Check the settings {} and {}"
+" for formatting errors."
 msgstr ""
+"Невозможно инициализировать общее хранилище файлов для скачивания. Проверьте"
+" настройки {} и {} на наличие ошибок форматирования."
 
 #: storages.py:29
 msgid ""
-"Unable to initialize the shared uploaded file storage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""
+"Невозможно инициализировать общее хранилище загруженных файлов. Проверьте "
+"настройки {} и {} на наличие ошибок форматирования."
 
 #: views.py:55
 msgid ""
@@ -173,11 +184,14 @@ msgid ""
 "export. Download files are retained over a span of time and then removed "
 "automatically."
 msgstr ""
+"Файлы для скачивания создаются в результате внешнего процесса, такого как "
+"экспорт. Файлы для скачивания хранятся в течение определенного периода "
+"времени, а затем удаляются автоматически."
 
 #: views.py:59
 msgid "There are no files to download."
-msgstr ""
+msgstr "Нет файлов для скачивания."
 
 #: views.py:60
 msgid "Downloads"
-msgstr ""
+msgstr "Загрузки"

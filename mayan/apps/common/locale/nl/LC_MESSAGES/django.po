@@ -1,27 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# bwakkie <bwakkie@gmail.com>, 2020
-# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
-# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
-# Johan Braeken, 2017
-# woei <root@ipaddr.nl>, 2014
+# Roberto Rosario, 2021
+# bwakkie <bwakkie@gmail.com>, 2021
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
+"Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:125 permissions.py:5 settings.py:15
@@ -165,7 +163,7 @@ msgstr ""
 
 #: queues.py:7
 msgid "Default"
-msgstr "Standaard"
+msgstr "Standaardwaarde"
 
 #: settings.py:22
 msgid ""
@@ -175,58 +173,38 @@ msgstr ""
 
 #: settings.py:30
 msgid ""
-"In list mode, show the \"object\" menu options as a dropdown menu instead of "
-"individual buttons."
+"In list mode, show the \"object\" menu options as a dropdown menu instead of"
+" individual buttons."
 msgstr ""
 
 #: settings.py:37
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
 msgstr ""
 "Wachttijd voor achtergrondtaken die afhankelijk zijn van het verbreiden van "
 "een database commit."
 
 #: settings.py:44
-#, fuzzy
-#| msgid ""
-#| "A list of strings designating all applications that are to be removed "
-#| "from the list normally installed by Mayan EDMS. Each string should be a "
-#| "dotted Python path to: an application configuration class (preferred), or "
-#| "a package containing an application."
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
-"Een lijst met tekenreeksen die alle toepassingen aanduiden die moeten worden "
-"verwijderd uit de lijst die normaal door Mayan EDMS wordt geïnstalleerd. "
-"Elke string moet een Python-pad zijn naar: een toepassingsconfiguratieklasse "
-"(bij voorkeur) of een pakket met een toepassing."
 
 #: settings.py:54
-#, fuzzy
-#| msgid ""
-#| "A list of strings designating all applications that are installed beyond "
-#| "those normally installed by Mayan EDMS. Each string should be a dotted "
-#| "Python path to: an application configuration class (preferred), or a "
-#| "package containing an application."
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
-"Een lijst met tekenreeksen die alle applicaties aanduiden die zijn "
-"geïnstalleerd buiten de applicaties die normaal door Mayan EDMS zijn "
-"geïnstalleerd. Elke tekenreeks moet een Python-pad zijn naar: een "
-"toepassingsconfiguratieklasse (bij voorkeur) of een pakket met een "
-"toepassing."
 
 #: settings.py:64
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
 msgstr ""
 "Naam van de overzicht gekoppeld aan het logo in het hoofdmenu. Dit is ook "
 "het overzicht waarnaar gebruikers worden doorgestuurd nadat ze zich hebben "
@@ -246,11 +224,11 @@ msgstr "Basis URL-pad voor alle overzichten."
 
 #: templates/common/app/viewport.html:9
 msgid "Warning"
-msgstr ""
+msgstr "Waarschuwing"
 
 #: templates/common/app/viewport.html:21
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Klik hier om dit te herstellen."
 
 #: validators.py:41
 msgid "Enter a valid JSON value."
@@ -313,27 +291,3 @@ msgstr "Hier kunt u alle aspecten van het systeem instellen."
 #: views.py:124
 msgid "These modules are used to do system maintenance."
 msgstr "Deze modules worden gebruikt voor systeemonderhoud."
-
-#~ msgid "Locale profile"
-#~ msgstr "Landsinstellingen"
-
-#~ msgid "Edit locale profile"
-#~ msgstr "Wijzig landsinstellingen"
-
-#~ msgid "Timezone"
-#~ msgstr "Tijdzone"
-
-#~ msgid "Language"
-#~ msgstr "Taal"
-
-#~ msgid "User locale profile"
-#~ msgstr "Gebruikerslandsinstelling"
-
-#~ msgid "User locale profiles"
-#~ msgstr "Gebruikerslandinstellingen"
-
-#~ msgid "Current user locale profile details"
-#~ msgstr "Details landinstellingen huidige gebruiker"
-
-#~ msgid "Edit current user locale profile details"
-#~ msgstr "Details landinstellingen huidige gebruiker bewerken"

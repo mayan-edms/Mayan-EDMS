@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Roberto Rosario, 2021
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:38+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2021\n"
+"Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
@@ -26,7 +28,7 @@ msgstr ""
 
 #: apps.py:74 apps.py:78
 msgid "None"
-msgstr "هیچکدام."
+msgstr "هیچ یک"
 
 #: events.py:8
 msgid "Announcement created"
@@ -62,11 +64,11 @@ msgstr ""
 
 #: models.py:23
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: models.py:25
 msgid "Enabled"
-msgstr "فعال شده"
+msgstr "فعال شده است"
 
 #: models.py:28
 msgid "Date and time after which this announcement will be displayed."
@@ -154,6 +156,3 @@ msgstr ""
 #: views.py:118
 msgid "No announcements available"
 msgstr ""
-
-#~ msgid "Message"
-#~ msgstr "پیام"

@@ -2,24 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2020
-#
+# Michal Švábík <snadno@lehce.cz>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2017-08-25 00:49+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2020\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
-"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:53 events.py:6 permissions.py:6 settings.py:10
 msgid "Document parsing"
@@ -49,16 +48,12 @@ msgid "Document parsed content deleted"
 msgstr "Analyzovaný obsah v dokumentu byl odstraněn"
 
 #: events.py:14
-#, fuzzy
-#| msgid "Document version submitted for parsing"
 msgid "Document file submitted for parsing"
-msgstr "Verze dokumentu byla odeslána k analýze"
+msgstr ""
 
 #: events.py:17
-#, fuzzy
-#| msgid "Document version parsing finished"
 msgid "Document file parsing finished"
-msgstr "Analýza verze dokumentu byla dokončena"
+msgstr ""
 
 #: forms.py:37
 #, python-format
@@ -94,26 +89,20 @@ msgid "Parse documents per type"
 msgstr "Analyzujte dokumenty podle typu"
 
 #: models.py:18
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file page"
-msgstr "Strana dokumentu"
+msgstr ""
 
 #: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr "Skutečný textový obsah extrahovaný backendem analýzy dokumentu."
 
 #: models.py:30
-#, fuzzy
-#| msgid "Document page content"
 msgid "Document file page content"
-msgstr "Obsah stránky dokumentu"
+msgstr ""
 
 #: models.py:31
-#, fuzzy
-#| msgid "Document pages contents"
 msgid "Document file page contents"
-msgstr "Obsah stránek dokumentu"
+msgstr ""
 
 #: models.py:43
 msgid "Document type"
@@ -132,26 +121,20 @@ msgid "Document types settings"
 msgstr "Nastavení typů dokumentů"
 
 #: models.py:69
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file"
-msgstr "Strana dokumentu"
+msgstr ""
 
 #: models.py:72
 msgid "Date time submitted"
-msgstr "Datuma čas odeslání"
+msgstr "Datum a čas odeslání"
 
 #: models.py:78
-#, fuzzy
-#| msgid "Document version parse error"
 msgid "Document file parse error"
-msgstr "Chyba analýzy verze dokumentu"
+msgstr ""
 
 #: models.py:79
-#, fuzzy
-#| msgid "Document version parse errors"
 msgid "Document file parse errors"
-msgstr "Chyby analýzy verze dokumentu"
+msgstr ""
 
 #: parsers.py:90
 #, python-format
@@ -164,16 +147,12 @@ msgid "Cannot find pdftotext executable at: %s"
 msgstr "Nelze najít pdftotext spustitelný na: %s"
 
 #: permissions.py:10
-#, fuzzy
-#| msgid "View the content of a document"
 msgid "View the content of a document file"
-msgstr "Zobrazení obsahu dokumentu"
+msgstr ""
 
 #: permissions.py:13
-#, fuzzy
-#| msgid "Parse the content of a document"
 msgid "Parse the content of a document file"
-msgstr "Analyzujte obsah dokumentu"
+msgstr ""
 
 #: permissions.py:16
 msgid "Change document type parsing settings"
@@ -184,16 +163,12 @@ msgid "Parsing"
 msgstr "Analýza"
 
 #: queues.py:9
-#, fuzzy
-#| msgid "Document parsing"
 msgid "Document file parsing"
-msgstr "Analýza dokumentů"
+msgstr ""
 
 #: search.py:16 search.py:23
-#, fuzzy
-#| msgid "Document page content"
 msgid "Document file content"
-msgstr "Obsah stránky dokumentu"
+msgstr ""
 
 #: settings.py:15
 msgid "Set new document types to perform parsing automatically by default."
@@ -203,68 +178,58 @@ msgstr ""
 
 #: settings.py:21
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr ""
 "Cesta souboru k programu pplftotext poppler, který se používá k extrahování "
 "textu ze souborů PDF."
 
 #: views.py:39
-#, fuzzy
-#| msgid "Delete the parsed content of the selected document?"
-#| msgid_plural "Delete the parsed content of the selected documents?"
 msgid "Delete the parsed content of the selected document file?"
 msgid_plural "Delete the parsed content of the selected document files?"
-msgstr[0] "Odstranit analyzovaný obsah vybraného dokumentu?"
-msgstr[1] "Smazat analyzovaný obsah vybraných dokumentů?"
-msgstr[2] "Smazat analyzovaný obsah vybraných dokumentů?"
-msgstr[3] "Smazat analyzovaný obsah vybraných dokumentů?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views.py:85
-#, fuzzy, python-format
-#| msgid "Content for document: %s"
+#, python-format
 msgid "Content for document file: %s"
-msgstr "Obsah dokumentu: %s"
+msgstr ""
 
 #: views.py:106
-#, fuzzy, python-format
-#| msgid "Content for document page: %s"
+#, python-format
 msgid "Content for document file page: %s"
-msgstr "Obsah stránky dokumentu: %s"
+msgstr ""
 
 #: views.py:128
-#, fuzzy, python-format
-#| msgid "Parsing errors for document: %s"
+#, python-format
 msgid "Parsing errors for document file: %s"
-msgstr "Chyby analýzy dokumentu: %s"
+msgstr ""
 
 #: views.py:141
-#, fuzzy, python-format
-#| msgid "%(count)d document added to the parsing queue"
+#, python-format
 msgid "%(count)d document file added to the parsing queue"
-msgstr "%(count)d dokument přidán do fronty pro analýzu"
+msgstr ""
 
 #: views.py:144
-#, fuzzy, python-format
-#| msgid "%(count)d documents added to the parsing queue"
+#, python-format
 msgid "%(count)d documents files added to the parsing queue"
-msgstr "%(count)d dokumenty přidané do fronty pro analýzu"
+msgstr ""
 
 #: views.py:152
-#, fuzzy, python-format
-#| msgid "Submit %(count)d document to the parsing queue?"
-#| msgid_plural "Submit %(count)d documents to the parsing queue?"
+#, python-format
 msgid "Submit %(count)d document file to the parsing queue?"
 msgid_plural "Submit %(count)d documents files to the parsing queue?"
-msgstr[0] "Odeslat dokument %(count)d do fronty pro analýzu?"
-msgstr[1] "Odeslat dokumenty %(count)d do fronty pro analýzu?"
-msgstr[2] "Odeslat dokumenty %(count)d do fronty pro analýzu?"
-msgstr[3] "Odeslat dokumenty %(count)d do fronty pro analýzu?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views.py:165
-#, fuzzy, python-format
-#| msgid "Submit document \"%s\" to the parsing queue"
+#, python-format
 msgid "Submit document file \"%s\" to the parsing queue"
-msgstr "Zašlete dokument &quot;%s&quot; do fronty pro analýzu"
+msgstr ""
 
 #: views.py:192
 #, python-format
@@ -279,9 +244,3 @@ msgstr "Odešlete všechny dokumenty tohoto typu k analýze"
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr "%(count)d dokumenty přidané do fronty pro analýzu."
-
-#~ msgid "Document version"
-#~ msgstr "Verze dokumentu"
-
-#~ msgid "Document version parsing"
-#~ msgstr "Analýza verze dokumentu"

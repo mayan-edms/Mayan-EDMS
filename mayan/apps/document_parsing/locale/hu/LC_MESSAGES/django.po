@@ -2,24 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Dezső József <dejo60@gmail.com>, 2018
-# molnars <szabolcs.molnar@gmail.com>, 2019
-#
+# Dezső József <dejo60@gmail.com>, 2021
+# molnars <szabolcs.molnar@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2017-08-25 00:49+0000\n"
-"Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2019\n"
-"Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/"
-"hu/)\n"
-"Language: hu\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2021\n"
+"Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:53 events.py:6 permissions.py:6 settings.py:10
@@ -48,16 +47,12 @@ msgid "Document parsed content deleted"
 msgstr ""
 
 #: events.py:14
-#, fuzzy
-#| msgid "Document version submitted for parsing"
 msgid "Document file submitted for parsing"
-msgstr "dokumentum verzió értelmezésre küldve"
+msgstr ""
 
 #: events.py:17
-#, fuzzy
-#| msgid "Document version parsing finished"
 msgid "Document file parsing finished"
-msgstr "dokumentum verzió értelmezve"
+msgstr ""
 
 #: forms.py:37
 #, python-format
@@ -93,26 +88,20 @@ msgid "Parse documents per type"
 msgstr "dokumentum értelmezés típusonként"
 
 #: models.py:18
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file page"
-msgstr "Dokumentum oldal"
+msgstr ""
 
 #: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr ""
 
 #: models.py:30
-#, fuzzy
-#| msgid "Document page content"
 msgid "Document file page content"
-msgstr "Dokumentum oldal tartalom"
+msgstr ""
 
 #: models.py:31
-#, fuzzy
-#| msgid "Document pages contents"
 msgid "Document file page contents"
-msgstr "Dokumentum oldalak tartalma"
+msgstr ""
 
 #: models.py:43
 msgid "Document type"
@@ -131,26 +120,20 @@ msgid "Document types settings"
 msgstr "Dokumentum típusok beállítása"
 
 #: models.py:69
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file"
-msgstr "Dokumentum oldal"
+msgstr ""
 
 #: models.py:72
 msgid "Date time submitted"
 msgstr "Feladás dátum ideje"
 
 #: models.py:78
-#, fuzzy
-#| msgid "Document version parse error"
 msgid "Document file parse error"
-msgstr "dokumentum verzió értelmezési hiba"
+msgstr ""
 
 #: models.py:79
-#, fuzzy
-#| msgid "Document version parse errors"
 msgid "Document file parse errors"
-msgstr "dokumentum verzió értelmezési hibák"
+msgstr ""
 
 #: parsers.py:90
 #, python-format
@@ -163,16 +146,12 @@ msgid "Cannot find pdftotext executable at: %s"
 msgstr "Nem található a pdftotext futtatható a %s-n"
 
 #: permissions.py:10
-#, fuzzy
-#| msgid "View the content of a document"
 msgid "View the content of a document file"
-msgstr "dokumentum tartalmának megtekintése"
+msgstr ""
 
 #: permissions.py:13
-#, fuzzy
-#| msgid "Parse the content of a document"
 msgid "Parse the content of a document file"
-msgstr "dokumentum tartalmának értelmezése"
+msgstr ""
 
 #: permissions.py:16
 msgid "Change document type parsing settings"
@@ -183,16 +162,12 @@ msgid "Parsing"
 msgstr "értelmezés"
 
 #: queues.py:9
-#, fuzzy
-#| msgid "Document parsing"
 msgid "Document file parsing"
-msgstr "dokumentum értelmezés"
+msgstr ""
 
 #: search.py:16 search.py:23
-#, fuzzy
-#| msgid "Document page content"
 msgid "Document file content"
-msgstr "Dokumentum oldal tartalom"
+msgstr ""
 
 #: settings.py:15
 msgid "Set new document types to perform parsing automatically by default."
@@ -200,62 +175,54 @@ msgstr ""
 
 #: settings.py:21
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr ""
 "elérési útvonal a poppler féle pdftotext programhoz ami PDF-ből szöveget "
 "nyer ki"
 
 #: views.py:39
-#, fuzzy
-#| msgid "View the content of a document"
 msgid "Delete the parsed content of the selected document file?"
 msgid_plural "Delete the parsed content of the selected document files?"
-msgstr[0] "dokumentum tartalmának megtekintése"
-msgstr[1] "dokumentum tartalmának megtekintése"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:85
-#, fuzzy, python-format
-#| msgid "Content for document: %s"
+#, python-format
 msgid "Content for document file: %s"
-msgstr "dokumentum: %s tartalma"
+msgstr ""
 
 #: views.py:106
-#, fuzzy, python-format
-#| msgid "Content for document: %s"
+#, python-format
 msgid "Content for document file page: %s"
-msgstr "dokumentum: %s tartalma"
+msgstr ""
 
 #: views.py:128
-#, fuzzy, python-format
-#| msgid "Parsing errors for document: %s"
+#, python-format
 msgid "Parsing errors for document file: %s"
-msgstr "dokumentum értelmezési hibái: %s"
+msgstr ""
 
 #: views.py:141
-#, fuzzy, python-format
-#| msgid "%(count)d document added to the parsing queue"
+#, python-format
 msgid "%(count)d document file added to the parsing queue"
-msgstr "%(count)d dokumentum hozzáadva az értelmezési munkasorhoz"
+msgstr ""
 
 #: views.py:144
-#, fuzzy, python-format
-#| msgid "%(count)d documents added to the parsing queue"
+#, python-format
 msgid "%(count)d documents files added to the parsing queue"
-msgstr "%(count)d dokumentumok hozzáadva az értelmezési munkasorhoz"
+msgstr ""
 
 #: views.py:152
-#, fuzzy, python-format
-#| msgid "%(count)d document added to the parsing queue"
+#, python-format
 msgid "Submit %(count)d document file to the parsing queue?"
 msgid_plural "Submit %(count)d documents files to the parsing queue?"
-msgstr[0] "%(count)d dokumentum hozzáadva az értelmezési munkasorhoz"
-msgstr[1] "%(count)d dokumentum hozzáadva az értelmezési munkasorhoz"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:165
-#, fuzzy, python-format
-#| msgid "Submit document \"%s\" to the parsing queue"
+#, python-format
 msgid "Submit document file \"%s\" to the parsing queue"
-msgstr "\"%s\" dokumentum feladása az értelmezési sorba"
+msgstr ""
 
 #: views.py:192
 #, python-format
@@ -270,9 +237,3 @@ msgstr "minden típusú dokumentum beküldése értelmezésre"
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr ""
-
-#~ msgid "Document version"
-#~ msgstr "Dokumentum verzió"
-
-#~ msgid "Document version parsing"
-#~ msgstr "dokumentum verzió értelmezés"

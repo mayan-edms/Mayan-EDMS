@@ -1,27 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# bwakkie <bwakkie@gmail.com>, 2020
-# e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2020
-# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
-# Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
-# Martin Horseling <martin.horseling@gmail.com>, 2018
+# Roberto Rosario, 2021
+# e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2021
+# bwakkie <bwakkie@gmail.com>, 2021
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-09-06 08:41+0000\n"
-"Last-Translator: bwakkie <bwakkie@gmail.com>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
+"Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:32 events.py:6 permissions.py:6 settings.py:10
@@ -87,10 +86,8 @@ msgid "Impersonate user"
 msgstr "Nabootsen gebruiker"
 
 #: links.py:39
-#, fuzzy
-#| msgid "Impersonate user"
 msgid "Impersonate"
-msgstr "Nabootsen gebruiker"
+msgstr ""
 
 #: links.py:44 links.py:48
 msgid "Set password"
@@ -110,8 +107,8 @@ msgstr ""
 
 #: settings.py:22
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
-"in. Value is time in seconds."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
 msgstr ""
 "De maximale tijd dat een gebruiker \"Onthoud mij\" gebruikt, aangemeld "
 "blijft. Waarde is in seconden."
@@ -120,8 +117,7 @@ msgstr ""
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."
-msgstr ""
-"Verwijder de \"Wachtwoord vergeten\" optie op het aanmeldingsformulier. "
+msgstr "Verwijder de \"Wachtwoord vergeten\" optie op het aanmeldingsformulier. "
 
 #: templates/authentication/app/viewport.html:11
 #, python-format
@@ -133,7 +129,7 @@ msgstr ""
 
 #: templates/authentication/app/viewport.html:14
 msgid "Click here when finished"
-msgstr ""
+msgstr "Klik hier indien voltooid"
 
 #: templates/authentication/login.html:10
 msgid "Login"
@@ -159,7 +155,8 @@ msgstr "Paswoord opnieuw instellen"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr "Paswoord opnieuw ingesteld! Klik op de link hieronder om in te loggen."
+msgstr ""
+"Paswoord opnieuw ingesteld! Klik op de link hieronder om in te loggen."
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
@@ -168,7 +165,7 @@ msgstr "Login pagina"
 #: templates/authentication/password_reset_confirm.html:29
 #: templates/authentication/password_reset_form.html:29 views.py:177
 msgid "Submit"
-msgstr "Verstuur"
+msgstr "Indienen"
 
 #: templates/authentication/password_reset_done.html:15
 msgid "Password reset email sent!"
@@ -199,8 +196,8 @@ msgstr "Wachtwoord wijziging uitgevoerd op %(count)d gebruikers"
 #: views.py:179
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] "Gebruikerswachtwoord wijzigen"
-msgstr[1] "Gebruikerswachtwoorden wijzigen"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:189
 #, python-format
@@ -220,17 +217,6 @@ msgstr ""
 "%(error)s"
 
 #: views.py:278
-#, fuzzy, python-format
-#| msgid "Impersonate users"
+#, python-format
 msgid "Impersonate user: %s"
-msgstr "Nabootsen gebruikers"
-
-#~ msgid "User to be impersonated."
-#~ msgstr "Gebruiker welke moet worden nagebootst."
-
-#~ msgid ""
-#~ "Super user and staff user password reseting is not allowed, use the admin "
-#~ "interface for these cases."
-#~ msgstr ""
-#~ "Super gebruiker en medewerker wachtwoord aanpassen is niet toegestaan, "
-#~ "gebruik de admin gebruiker voor deze zaken."
+msgstr ""

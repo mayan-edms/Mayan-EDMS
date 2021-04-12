@@ -1,24 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2012
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
+# Roberto Rosario, 2021
+# 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2021
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-12-10 20:20+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
@@ -70,7 +72,7 @@ msgstr "Коментар"
 
 #: forms.py:31
 msgid "Action"
-msgstr ""
+msgstr "Действие"
 
 #: forms.py:33
 msgid ""
@@ -138,10 +140,8 @@ msgid "Document sources"
 msgstr "Източници на документи"
 
 #: links.py:137
-#, fuzzy
-#| msgid "Upload new version"
 msgid "Upload new file"
-msgstr "Качете нова версия"
+msgstr ""
 
 #: links.py:141
 msgid "Check now"
@@ -330,8 +330,8 @@ msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
 msgstr ""
-"Изберете тип метаданни за съхраняване стойността „от“ на имейла. Трябва да е "
-"валиден тип метаданни за избрания преди това тип документ."
+"Изберете тип метаданни за съхраняване стойността „от“ на имейла. Трябва да е"
+" валиден тип метаданни за избрания преди това тип документ."
 
 #: models/email_sources.py:70
 msgid "From metadata type"
@@ -359,8 +359,8 @@ msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
-"Типът метаданни за темата &quot;%(metadata_type)s&quot; не е валиден за типа "
-"документ: %(document_type)s"
+"Типът метаданни за темата &quot;%(metadata_type)s&quot; не е валиден за типа"
+" документ: %(document_type)s"
 
 #: models/email_sources.py:201
 #, python-format
@@ -385,8 +385,8 @@ msgid ""
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 msgstr ""
 "Критерии, които се използват при търсене на съобщения за обработка. "
-"Използвайте формата, посочен в https://tools.ietf.org/html/rfc2060."
-"html#section-6.4.4"
+"Използвайте формата, посочен в "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
 #: models/email_sources.py:224
 msgid "Search criteria"
@@ -395,13 +395,14 @@ msgstr "Критерии за търсене"
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 "IMAP STORE команда за изпълнение на съобщения след тяхното обработване. По "
-"една команда на ред. Използвайте командите, посочени в https://tools.ietf."
-"org/html/rfc2060.html#section-6.4.6 или персонализираните команди за вашия "
-"IMAP сървър."
+"една команда на ред. Използвайте командите, посочени в "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 или персонализираните"
+" команди за вашия IMAP сървър."
 
 #: models/email_sources.py:232
 msgid "Store commands"
@@ -418,7 +419,8 @@ msgstr "Премахнете изцяло"
 
 #: models/email_sources.py:242
 msgid "IMAP Mailbox to which processed messages will be copied."
-msgstr "IMAP пощенска кутия, в която ще бъдат копирани обработените съобщения."
+msgstr ""
+"IMAP пощенска кутия, в която ще бъдат копирани обработените съобщения."
 
 #: models/email_sources.py:243
 msgid "Destination mailbox"
@@ -472,7 +474,8 @@ msgid ""
 "supported by your scanner, leave it blank."
 msgstr ""
 "Избира източника на сканиране (например устройство за подаване на "
-"документи). Ако тази опция не се поддържа от вашия скенер, оставете я празна."
+"документи). Ако тази опция не се поддържа от вашия скенер, оставете я "
+"празна."
 
 #: models/scanner_sources.py:52
 msgid "Paper source"
@@ -682,34 +685,23 @@ msgid "Server responded with {{statusCode}} code."
 msgstr "Сървърът отговори с {{statusCode}} код."
 
 #: views/document_file_views.py:61
-#, fuzzy, python-format
-#| msgid ""
-#| "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+#, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
-"Не може да се качат нови версии за документ &quot;%(document)s&quot;. "
-"%(exception)s"
 
 #: views/document_file_views.py:125
-#, fuzzy, python-format
-#| msgid "Error executing document upload task; %(exception)s"
+#, python-format
 msgid "Error executing document file upload task; %(exception)s"
-msgstr "Грешка при изпълнение на задача за качване на документи; %(exception)s"
+msgstr ""
 
 #: views/document_file_views.py:140
-#, fuzzy
-#| msgid "New document queued for upload and will be available shortly."
 msgid "New document file queued for upload and will be available shortly."
-msgstr "Нов документ е на опашка за качване и ще бъде наличен скоро."
+msgstr ""
 
 #: views/document_file_views.py:165
-#, fuzzy, python-format
-#| msgid ""
-#| "Upload a new version for document \"%(document)s\" from source: %(source)s"
+#, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
-"Качете нова версия за документ &quot;%(document)s&quot; от източник: "
-"%(source)s"
 
 #: views/document_file_views.py:168
 msgid "Submit"
@@ -717,8 +709,8 @@ msgstr "Подаване"
 
 #: views/document_views.py:79 wizards.py:50
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 "Не са дефинирани интерактивни източници на документи или никой не е "
 "активиран, създайте такъв преди да продължите."
@@ -731,8 +723,8 @@ msgstr "Свойства на документа"
 #: views/document_views.py:116
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
 "Това може да означава, че папката за поставяне е празна. Това също може да "
 "означава, че потребителският акаунт на операционната система, използвана за "
@@ -753,7 +745,8 @@ msgstr "Сканиране"
 #: views/document_views.py:282
 #, python-format
 msgid "Error executing document upload task; %(exception)s"
-msgstr "Грешка при изпълнение на задача за качване на документи; %(exception)s"
+msgstr ""
+"Грешка при изпълнение на задача за качване на документи; %(exception)s"
 
 #: views/document_views.py:292
 msgid "New document queued for upload and will be available shortly."
@@ -839,19 +832,3 @@ msgstr "Следваща стъпка"
 #: wizards.py:77
 msgid "Document upload wizard"
 msgstr "Съветник за качване на документи"
-
-#~ msgid "Error deleting staging file; %s"
-#~ msgstr "Грешка при изтриването на изходен файл; %s"
-
-#~ msgid "Unable get list of staging files: %s"
-#~ msgstr "Невъзможно е да се получи списък с изходни файлове: %s"
-
-#~ msgid "Error executing document version upload task; %(exception)s"
-#~ msgstr ""
-#~ "Грешка при изпълнение на задача за качване на версия на документа; "
-#~ "%(exception)s"
-
-#~ msgid ""
-#~ "New document version queued for upload and will be available shortly."
-#~ msgstr ""
-#~ "Нова версия на документа е на опашка за качване и ще бъде налична скоро."

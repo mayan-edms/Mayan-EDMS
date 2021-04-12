@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# yulin Gong <540538248@qq.com>, 2019
+# Roberto Rosario, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-02-10 08:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-"
-"edms/language/zh-Hans/)\n"
-"Language: zh-Hans\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:26+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:40
@@ -186,8 +186,8 @@ msgstr "外部文档属性"
 
 #: models.py:178
 msgid ""
-"The expression using document properties to be evaluated against the foreign "
-"document field."
+"The expression using document properties to be evaluated against the foreign"
+" document field."
 msgstr ""
 
 #: models.py:180
@@ -267,8 +267,7 @@ msgstr "智能链接中的文档：%s"
 
 #: views.py:117
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr "与“%(document)s”相关的智能链接“%(smart_link)s”中的文档"
 
 #: views.py:153
@@ -289,9 +288,7 @@ msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
-msgstr ""
-"索引将文档分组为单元，通常具有相似的属性和相同或相似的类型。智能链接允许定义"
-"文档之间的关系，即使它们位于不同的索引中且属于不同类型。"
+msgstr "索引将文档分组为单元，通常具有相似的属性和相同或相似的类型。智能链接允许定义文档之间的关系，即使它们位于不同的索引中且属于不同类型。"
 
 #: views.py:189
 msgid "There are no smart links"
@@ -301,8 +298,7 @@ msgstr "没有智能链接"
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
-msgstr ""
-"智能链接允许定义文档之间的关系，即使它们位于不同的索引中且属于不同类型。"
+msgstr "智能链接允许定义文档之间的关系，即使它们位于不同的索引中且属于不同类型。"
 
 #: views.py:212
 msgid "There are no smart links for this document"
@@ -351,11 +347,3 @@ msgstr "删除智能链接条件：“%s”？"
 #: views.py:376
 msgid "Edit smart link condition"
 msgstr "编辑智能链接条件"
-
-#~ msgid ""
-#~ "Comma separated list of document type primary keys to which this smart "
-#~ "link will be attached."
-#~ msgstr "以逗号分隔的文档类型主键列表，此智能链接将附加到该主键。"
-
-#~ msgid "No such document type: %s"
-#~ msgstr "没有这样的文档类型：%s"

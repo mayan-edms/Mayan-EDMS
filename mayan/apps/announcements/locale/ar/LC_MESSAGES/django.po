@@ -1,25 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Marwan Rahhal <Marwanr@sssit.net>, 2020
+# Roberto Rosario, 2021
+# Mohammed ALDOUB <voulnet@gmail.com>, 2021
+# Yaman Sanobar <yman.snober@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-12-24 01:42+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:38+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
 #: templates/announcements/announcements.html:8 views.py:119
@@ -48,47 +50,39 @@ msgstr "حذف"
 
 #: links.py:31
 msgid "Edit"
-msgstr "تحرير"
+msgstr "تعديل"
 
 #: models.py:18
-#, fuzzy
-#| msgid "Short description of this message."
 msgid "Short description of this announcement."
-msgstr "وصف قصير لهذه الرسالة."
+msgstr ""
 
 #: models.py:19
 msgid "Label"
 msgstr "العنوان"
 
 #: models.py:22
-#, fuzzy
-#| msgid "The actual message to be displayed."
 msgid "The actual test to be displayed."
-msgstr "الرسالة الفعلية المراد عرضها."
+msgstr ""
 
 #: models.py:23
 msgid "Text"
-msgstr ""
+msgstr "النص"
 
 #: models.py:25
 msgid "Enabled"
 msgstr "مفعل"
 
 #: models.py:28
-#, fuzzy
-#| msgid "Date and time after which this message will be displayed."
 msgid "Date and time after which this announcement will be displayed."
-msgstr "التاريخ والوقت اللذان سيتم بعدهما عرض هذه الرسالة."
+msgstr ""
 
 #: models.py:29
 msgid "Start date time"
 msgstr "وقت تاريخ البدء"
 
 #: models.py:33
-#, fuzzy
-#| msgid "Date and time until when this message is to be displayed."
 msgid "Date and time until when this announcement is to be displayed."
-msgstr "التاريخ والوقت حتى يتم عرض هذه الرسالة."
+msgstr ""
 
 #: models.py:34
 msgid "End date time"
@@ -115,28 +109,24 @@ msgid "View announcements"
 msgstr ""
 
 #: views.py:41
-#, fuzzy, python-format
-#| msgid "Error deleting message \"%(message)s\": %(error)s"
+#, python-format
 msgid "Error deleting announcement \"%(instance)s\"; %(exception)s"
-msgstr "حدث خطأ أثناء حذف الرسالة &quot;%(message)s&quot;: %(error)s"
+msgstr ""
 
 #: views.py:50
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "Announcement \"%(object)s\" deleted successfully."
-msgstr "\"%s\" تم حذف الرسائل بنجاح"
+msgstr ""
 
 #: views.py:53
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d announcement deleted successfully."
-msgstr "\"%s\" تم حذف الرسائل بنجاح"
+msgstr ""
 
 #: views.py:56
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d announcements deleted successfully."
-msgstr "\"%s\" تم حذف الرسائل بنجاح"
+msgstr ""
 
 #: views.py:58
 #, python-format
@@ -144,18 +134,14 @@ msgid "Delete announcement: %(object)s."
 msgstr ""
 
 #: views.py:59
-#, fuzzy, python-format
-#| msgid "Delete the selected message?"
-#| msgid_plural "Delete the selected messages?"
+#, python-format
 msgid "Delete the %(count)d selected announcement."
-msgstr "حذف الرسائل المختارة؟"
+msgstr ""
 
 #: views.py:60
-#, fuzzy, python-format
-#| msgid "Delete the selected message?"
-#| msgid_plural "Delete the selected messages?"
+#, python-format
 msgid "Delete the %(count)d selected announcements."
-msgstr "حذف الرسائل المختارة؟"
+msgstr ""
 
 #: views.py:92
 #, python-format
@@ -163,66 +149,12 @@ msgid "Edit announcement: %s"
 msgstr ""
 
 #: views.py:114
-#, fuzzy
-#| msgid ""
-#| "Messages are displayed in the login view. You can use messages to convery "
-#| "information about your organzation, announcements or usage guidelines for "
-#| "your users."
 msgid ""
 "Announcements are displayed in the login view. You can use announcements to "
 "convery information about your organzation, announcements or usage "
 "guidelines for your users."
 msgstr ""
-"يتم عرض الرسائل في عرض تسجيل الدخول. يمكنك استخدام الرسائل لتحويل المعلومات "
-"حول مؤسستك أو الإعلانات أو إرشادات الاستخدام للمستخدمين."
 
 #: views.py:118
-#, fuzzy
-#| msgid "No messages available"
 msgid "No announcements available"
-msgstr "لا توجد رسائل متاحة"
-
-#~ msgid "Message of the day"
-#~ msgstr "رسالة اليوم"
-
-#~ msgid "Messages"
-#~ msgstr "الرسائل"
-
-#~ msgid "Message created"
-#~ msgstr "إنشاء الرسالة"
-
-#~ msgid "Message edited"
-#~ msgstr "تعديل الرسالة"
-
-#~ msgid "Create message"
-#~ msgstr "إنشاء رسالة"
-
-#~ msgid "Message"
-#~ msgstr "رسالة"
-
-#~ msgid "Create messages"
-#~ msgstr "أنشئ رسائل"
-
-#~ msgid "Delete messages"
-#~ msgstr "حذف الرسائل"
-
-#~ msgid "Edit messages"
-#~ msgstr "تحرير الرسائل"
-
-#~ msgid "View messages"
-#~ msgstr "اعرض الرسائل"
-
-#~ msgid "Messages of the day"
-#~ msgstr "رسائل اليوم"
-
-#~ msgid "Delete request performed on %(count)d message"
-#~ msgstr "حذف الطلب على الرسالة %(count)d"
-
-#~ msgid "Delete request performed on %(count)d messages"
-#~ msgstr "حذف الطلب على الرسائل %(count)d"
-
-#~ msgid "Delete message: %s?"
-#~ msgstr "حذف الرسالة: %s؟"
-
-#~ msgid "Edit message: %s"
-#~ msgstr "تحرير الرسالة: %s"
+msgstr ""

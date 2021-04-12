@@ -1,26 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Marwan Rahhal <Marwanr@sssit.net>, 2020
-# Mohammed ALDOUB <voulnet@gmail.com>, 2013
+# Roberto Rosario, 2021
+# Yaman Sanobar <yman.snober@gmail.com>, 2021
+# Ayoub BENSAKHRIA <bensakhria.ayoub@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-12-24 00:42+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:28+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:43 events.py:6 models.py:37 models.py:157 permissions.py:5
 msgid "Permissions"
@@ -80,7 +81,7 @@ msgstr "العنوان"
 
 #: models.py:47
 msgid "Role"
-msgstr "دور"
+msgstr "الدور"
 
 #: models.py:83
 msgid "Permission count"
@@ -198,17 +199,3 @@ msgstr ""
 #: views.py:170
 msgid "There are no roles"
 msgstr "لا توجد أدوار"
-
-#~ msgid ""
-#~ "Comma separated list of groups primary keys to add to, or replace in this "
-#~ "role."
-#~ msgstr ""
-#~ "قائمة مجموعات مفصولة بفواصل المفاتيح الأساسية لإضافتها أو استبدالها في "
-#~ "هذا الدور."
-
-#~ msgid ""
-#~ "Comma separated list of permission primary keys to grant to this role."
-#~ msgstr "قائمة مفصولة بفاصلة للمفاتيح الأساسية للإذن لمنح هذا الدور."
-
-#~ msgid "No such permission: %s"
-#~ msgstr "هذه الصلاحية غير موجودة: %s"

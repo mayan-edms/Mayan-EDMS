@@ -2,30 +2,28 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Roberto Rosario, 2020
-# Jože Detečnik <joze.detecnik@3tav.si>, 2020
-#
+# Roberto Rosario, 2021
+# Jože Detečnik <joze.detecnik@3tav.si>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2020\n"
-"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/"
-"sl/)\n"
-"Language: sl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2021\n"
+"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #: apps.py:24 links.py:38 permissions.py:5
 msgid "Dependencies"
-msgstr "Odvisnosti"
+msgstr ""
 
 #: apps.py:32 apps.py:69 apps.py:78
 msgid "Label"
@@ -33,7 +31,7 @@ msgstr "Oznaka"
 
 #: apps.py:36
 msgid "Internal name"
-msgstr "Interno ime"
+msgstr ""
 
 #: apps.py:41 apps.py:74 apps.py:83
 msgid "Description"
@@ -41,15 +39,15 @@ msgstr "Opis"
 
 #: apps.py:45 classes.py:138
 msgid "Type"
-msgstr "Tip"
+msgstr ""
 
 #: apps.py:49 classes.py:140
 msgid "Other data"
-msgstr "Drugi podatki"
+msgstr ""
 
 #: apps.py:53
 msgid "Declared by"
-msgstr "Razglasil"
+msgstr ""
 
 #: apps.py:57 classes.py:138
 msgid "Version"
@@ -57,11 +55,11 @@ msgstr "Različica"
 
 #: apps.py:61 classes.py:139 classes.py:781
 msgid "Environment"
-msgstr "Okolje"
+msgstr ""
 
 #: apps.py:64 classes.py:140
 msgid "Check"
-msgstr "Preveri"
+msgstr ""
 
 #: classes.py:138
 msgid "Name"
@@ -69,37 +67,37 @@ msgstr "Ime"
 
 #: classes.py:139
 msgid "App"
-msgstr "App"
+msgstr ""
 
 #: classes.py:254
 msgid "Need to specify at least one: app_label or module."
-msgstr "Navesti morate vsaj enega: app_label ali modul."
+msgstr ""
 
 #: classes.py:259
 #, python-format
 msgid "Dependency \"%s\" already registered."
-msgstr "Odvisnost &quot;%s&quot; je že registrirana."
+msgstr ""
 
 #: classes.py:285
 #, python-format
 msgid "Installing package: %s... "
-msgstr "Namestitev paketa: %s ..."
+msgstr ""
 
 #: classes.py:290
 msgid "Already installed."
-msgstr "Že nameščen."
+msgstr ""
 
 #: classes.py:293 classes.py:298 classes.py:302
 msgid "Complete."
-msgstr "Dokončano."
+msgstr ""
 
 #: classes.py:328
 msgid "Installed and correct version"
-msgstr "Nameščena in pravilna različica"
+msgstr ""
 
 #: classes.py:330
 msgid "Missing or incorrect version"
-msgstr "Manjka ali napačna različica"
+msgstr ""
 
 #: classes.py:359
 msgid "None"
@@ -107,67 +105,65 @@ msgstr "Nobenega"
 
 #: classes.py:368
 msgid "Not specified"
-msgstr "Ni določeno"
+msgstr ""
 
 #: classes.py:371
 msgid "Patching files... "
-msgstr "Popravljanje datotek ..."
+msgstr ""
 
 #: classes.py:399
 msgid "Executables that are called directly by the code."
-msgstr "Izvedljive datoteke, ki jih koda pokliče neposredno."
+msgstr ""
 
 #: classes.py:401
 msgid "Binary"
-msgstr "Binarno"
+msgstr ""
 
 #: classes.py:418
 msgid ""
-"JavaScript libraries downloaded the from NPM registry and used for front-end "
-"functionality."
+"JavaScript libraries downloaded the from NPM registry and used for front-end"
+" functionality."
 msgstr ""
-"Knjižnice JavaScript so prenesle iz registra NPM in jih uporabljale za čelno "
-"funkcionalnost."
 
 #: classes.py:421
 msgid "JavaScript"
-msgstr "JavaScript"
+msgstr ""
 
 #: classes.py:451 classes.py:694
 msgid "Downloading... "
-msgstr "Prenos ..."
+msgstr ""
 
 #: classes.py:454
 msgid "Verifying... "
-msgstr "Preverjanje ..."
+msgstr ""
 
 #: classes.py:457 classes.py:697
 msgid "Extracting... "
-msgstr "Izvleček ..."
+msgstr ""
 
 #: classes.py:636
 msgid "Python packages downloaded from PyPI."
-msgstr "Paketi Python, preneseni iz PyPI."
+msgstr ""
 
 #: classes.py:638
 msgid "Python"
-msgstr "Python"
+msgstr ""
 
 #: classes.py:675
 msgid "Fonts downloaded from fonts.googleapis.com."
-msgstr "Pisave, prenesene s fonts.googleapis.com."
+msgstr ""
 
 #: classes.py:677
 msgid "Google font"
-msgstr "Googlova pisava"
+msgstr ""
 
 #: classes.py:763
 msgid "Declared in app"
-msgstr "Prijavljeno v aplikaciji"
+msgstr ""
 
 #: classes.py:764
 msgid "Show dependencies by the app that declared them."
-msgstr "Prikažite odvisnosti aplikacije, ki jih je razglasila."
+msgstr ""
 
 #: classes.py:768
 msgid "Class"
@@ -178,12 +174,10 @@ msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
 msgstr ""
-"Pokažite različne razrede odvisnosti. Razredi so običajno razdeljeni glede "
-"na jezik ali vrste datotek odvisnosti."
 
 #: classes.py:774
 msgid "State"
-msgstr "Država"
+msgstr ""
 
 #: classes.py:775
 msgid ""
@@ -191,65 +185,52 @@ msgid ""
 "dependencies is installed and is of a correct version. False means the "
 "dependencies is missing or an incorrect version is present."
 msgstr ""
-"Pokažite različna stanja odvisnosti. True pomeni, da so odvisnosti nameščene "
-"in imajo pravilno različico. False pomeni, da odvisnosti manjkajo ali je "
-"prisotna nepravilna različica."
 
 #: classes.py:782
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
 msgstr ""
-"Odvisnosti, potrebne za okolje, morda ne bodo potrebne za drugo. Primeri "
-"okolij: proizvodnja, razvoj."
 
 #: environments.py:18
 msgid ""
 "Environment used for building distributable packages of the software. End "
 "users can ignore missing dependencies under this environment."
 msgstr ""
-"Okolje, ki se uporablja za izdelavo distribucijskih paketov programske "
-"opreme. Končni uporabniki lahko v tem okolju prezrejo manjkajoče odvisnosti."
 
 #: environments.py:21
 msgid "Build"
-msgstr "Build"
+msgstr ""
 
 #: environments.py:25
 msgid ""
 "Environment used for developers to make code changes. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
-"Okolje, ki se uporablja za razvijalce za spreminjanje kode. Končni "
-"uporabniki lahko v tem okolju prezrejo manjkajoče odvisnosti."
 
 #: environments.py:27
 msgid "Development"
-msgstr "Razvoj"
+msgstr ""
 
 #: environments.py:31
 msgid ""
 "Environment used for building the documentation. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
-"Okolje, ki se uporablja za izdelavo dokumentacije. Končni uporabniki lahko v "
-"tem okolju prezrejo manjkajoče odvisnosti."
 
 #: environments.py:33
 msgid "Documentation"
-msgstr "Dokumentacija"
+msgstr ""
 
 #: environments.py:37
 msgid ""
 "Normal environment for end users. A missing dependency under this "
 "environment will result in issues and errors during normal use."
 msgstr ""
-"Običajno okolje za končne uporabnike. Manjkajoča odvisnost v tem okolju bo "
-"povzročila težave in napake med normalno uporabo."
 
 #: environments.py:39
 msgid "Production"
-msgstr "Proizvodnja"
+msgstr ""
 
 #: environments.py:43
 msgid ""
@@ -257,16 +238,14 @@ msgid ""
 "code. Dependencies in this environment are not needed for normal production "
 "usage."
 msgstr ""
-"Okolje je uporabljalo zagon preizkusne obleke za preverjanje funkcionalnosti "
-"kode. Odvisnosti v tem okolju niso potrebne za normalno proizvodno uporabo."
 
 #: environments.py:46
 msgid "Testing"
-msgstr "Testiranje"
+msgstr "Preverjanje"
 
 #: links.py:13 views.py:17
 msgid "Check for updates"
-msgstr "Preveri za posodobitve"
+msgstr ""
 
 #: links.py:18
 msgid "Groups"
@@ -274,7 +253,7 @@ msgstr "Skupine"
 
 #: links.py:23
 msgid "Entries"
-msgstr "Vnosi"
+msgstr ""
 
 #: links.py:29
 msgid "Details"
@@ -282,63 +261,59 @@ msgstr "Podrobnosti"
 
 #: links.py:33
 msgid "Dependencies licenses"
-msgstr "Licence odvisnosti"
+msgstr ""
 
 #: management/commands/checkdependencies.py:13
 msgid "Outputs the dependencies as a comma delimited values list."
-msgstr "Prikaže odvisnosti kot seznam vrednosti, ločenih z vejico."
+msgstr ""
 
 #: management/commands/generaterequirements.py:14
 msgid ""
 "Comma separated names of dependencies to exclude from the list generated."
 msgstr ""
-"Imena odvisnosti, ločena z vejico, jih je treba izključiti s ustvarjenega "
-"seznama."
 
 #: management/commands/generaterequirements.py:20
 msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
 msgstr ""
-"Imena odvisnosti, ločena z vejico, prikazana na seznamu, pri čemer so "
-"izključena vsa druga."
 
 #: management/commands/installdependencies.py:13
 msgid "Process a specific app."
-msgstr "Obdelajte določeno aplikacijo."
+msgstr ""
 
 #: management/commands/installdependencies.py:17
 msgid "Force installation even if already installed."
-msgstr "Prisilno namestitev, tudi če je že nameščena."
+msgstr ""
 
 #: permissions.py:8
 msgid "View dependencies"
-msgstr "Oglejte si odvisnosti"
+msgstr ""
 
 #: views.py:31
 #, python-format
 msgid "Entries for dependency group: %s"
-msgstr "Vnosi za skupino odvisnosti: %s"
+msgstr ""
 
 #: views.py:44 views.py:89
 #, python-format
 msgid "Group %s not found."
-msgstr "Skupine %s ni mogoče najti."
+msgstr ""
 
 #: views.py:57
 msgid "Dependency groups"
-msgstr "Skupine odvisnosti"
+msgstr ""
 
 #: views.py:77
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
-msgstr "Skupina odvisnosti in vnos: %(group)s, %(entry)s"
+msgstr ""
 
 #: views.py:101
 #, python-format
 msgid "Entry %s not found."
-msgstr "Vnosa %s ni mogoče najti."
+msgstr ""
 
 #: views.py:119
 msgid "Other packages licenses"
-msgstr "Licence za druge pakete"
+msgstr ""

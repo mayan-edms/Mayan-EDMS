@@ -1,27 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Sergey Glita <gsv70@mail.ru>, 2021
+# lilo.panic, 2021
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
-# lilo.panic, 2016
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-03-17 11:17+0000\n"
-"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:41 events.py:5 links.py:32
 msgid "Checkouts"
@@ -33,7 +32,7 @@ msgstr "Забронированные документы"
 
 #: events.py:8
 msgid "Document automatically checked in"
-msgstr "Документ автоматически освобождён"
+msgstr "Документ освобождён автоматически"
 
 #: events.py:12
 msgid "Document checked in"
@@ -72,10 +71,8 @@ msgid "Check out expiration"
 msgstr "Окончание бронирования"
 
 #: forms.py:51
-#, fuzzy
-#| msgid "New versions allowed?"
 msgid "New files allowed?"
-msgstr "Новые версии разрешены?"
+msgstr "Новые файлы разрешены?"
 
 #: forms.py:52
 msgid "Yes"
@@ -130,16 +127,12 @@ msgid "Check out expiration date and time"
 msgstr "Окончание бронирования через"
 
 #: models.py:45
-#, fuzzy
-#| msgid "Do not allow new version of this document to be uploaded."
 msgid "Do not allow new file of this document to be uploaded."
-msgstr "Заблокировать загрузку новых версий этого документа."
+msgstr "Заблокировать загрузку новых файлов для этого документа."
 
 #: models.py:47
-#, fuzzy
-#| msgid "Block new version upload"
 msgid "Block new file upload"
-msgstr "Заблокировать загрузку новых версий"
+msgstr "Заблокировать загрузку новых файлов"
 
 #: models.py:55 permissions.py:5
 msgid "Document checkout"
@@ -179,7 +172,7 @@ msgstr "Просмотр подробностей бронирования"
 
 #: queues.py:11
 msgid "Checkouts periodic"
-msgstr "Бронирования периодические"
+msgstr "Бронирования периодически"
 
 #: queues.py:15
 msgid "Check expired checkouts"
@@ -192,91 +185,76 @@ msgstr "Первичный ключ бронируемого документа.
 #: views.py:25
 #, python-format
 msgid "Unable to check in document \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Невозможно освободить документ \"%(instance)s\"; %(exception)s"
 
 #: views.py:29
-#, fuzzy, python-format
-#| msgid "Document not checked out."
+#, python-format
 msgid "Document \"%(object)s\" checked in successfully."
-msgstr "Документ не забронирован."
+msgstr "Документ \"%(object)s\" освобожден."
 
 #: views.py:32
 #, python-format
 msgid "%(count)d document checked in successfully."
-msgstr ""
+msgstr "%(count)d документ освобожден."
 
 #: views.py:35
 #, python-format
 msgid "%(count)d documents checked in successfully."
-msgstr ""
+msgstr "%(count)d документов освобождено."
 
 #: views.py:37
-#, fuzzy, python-format
-#| msgid "Check in document: %s"
+#, python-format
 msgid "Check in document \"%(object)s\"."
-msgstr "Освободить документ: %s"
+msgstr "Освободить документ \"%(object)s\"."
 
 #: views.py:38
-#, fuzzy, python-format
-#| msgid "Check in %(count)d document"
-#| msgid_plural "Check in %(count)d documents"
+#, python-format
 msgid "Check in %(count)d document."
-msgstr "Освободить %(count)d документ"
+msgstr "Освободить %(count)d документ."
 
 #: views.py:39
-#, fuzzy, python-format
-#| msgid "Check in %(count)d document"
-#| msgid_plural "Check in %(count)d documents"
+#, python-format
 msgid "Check in %(count)d documents."
-msgstr "Освободить %(count)d документ"
+msgstr "Освободить %(count)d документов."
 
 #: views.py:93
 #, python-format
 msgid "Unable to checkout document \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Невозможно забронировать документ \"%(instance)s\"; %(exception)s"
 
 #: views.py:100
-#, fuzzy, python-format
-#| msgid "Document not checked out."
+#, python-format
 msgid "Document \"%(object)s\" checked out successfully."
-msgstr "Документ не забронирован."
+msgstr "Документ \"%(object)s\" забронирован."
 
 #: views.py:103
-#, fuzzy, python-format
-#| msgid "Amount of time to hold the document checked out in minutes."
+#, python-format
 msgid "%(count)d document checked out successfully."
-msgstr "Период, на который документ будет забронирован."
+msgstr "%(count)d документ забронирован."
 
 #: views.py:106
 #, python-format
 msgid "%(count)d documents checked out successfully."
-msgstr ""
+msgstr "%(count)d документов забронировано."
 
 #: views.py:108
-#, fuzzy, python-format
-#| msgid "Check out document: %s"
+#, python-format
 msgid "Checkout document \"%(object)s\"."
-msgstr "Забронировать документ: %s"
+msgstr "Забронировать документ \"%(object)s\"."
 
 #: views.py:109
-#, fuzzy, python-format
-#| msgid "Checkout %(count)d document"
-#| msgid_plural "Checkout %(count)d documents"
+#, python-format
 msgid "Checkout %(count)d document."
-msgstr "Забронировать %(count)d документ"
+msgstr "Забронировать %(count)d документ."
 
 #: views.py:110
-#, fuzzy, python-format
-#| msgid "Checkout %(count)d document"
-#| msgid_plural "Checkout %(count)d documents"
+#, python-format
 msgid "Checkout %(count)d documents."
-msgstr "Забронировать %(count)d документ"
+msgstr "Забронировать %(count)d документов."
 
 #: views.py:114
-#, fuzzy
-#| msgid "Checkouts"
 msgid "Checkout"
-msgstr "Забронированные документы"
+msgstr "Забронировать"
 
 #: views.py:158
 #, python-format
@@ -298,9 +276,3 @@ msgstr "Нет забронированных документов"
 #: widgets.py:23
 msgid "Amount"
 msgstr "Количество"
-
-#~ msgid "New version block"
-#~ msgstr "Блокировка загрузки новых версий"
-
-#~ msgid "New version blocks"
-#~ msgstr "Блокировки загрузки новых версий"

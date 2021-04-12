@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2018
-# Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
+# Roberto Rosario, 2021
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-10-11 07:15+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2021\n"
+"Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
@@ -67,7 +67,7 @@ msgstr "اظهار نظر"
 
 #: forms.py:31
 msgid "Action"
-msgstr ""
+msgstr "عمل"
 
 #: forms.py:33
 msgid ""
@@ -135,10 +135,8 @@ msgid "Document sources"
 msgstr "منابع سند"
 
 #: links.py:137
-#, fuzzy
-#| msgid "Upload new version"
 msgid "Upload new file"
-msgstr "آپلود نسخه جدید"
+msgstr ""
 
 #: links.py:141
 msgid "Check now"
@@ -271,7 +269,7 @@ msgstr "فاصله سورسها"
 
 #: models/email_sources.py:40
 msgid "Host"
-msgstr "هاست"
+msgstr "میزبان"
 
 #: models/email_sources.py:41
 msgid "SSL"
@@ -382,8 +380,9 @@ msgstr ""
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 
 #: models/email_sources.py:232
@@ -408,7 +407,7 @@ msgstr ""
 
 #: models/email_sources.py:349
 msgid "Timeout"
-msgstr "اتمام وقت"
+msgstr "وقفه"
 
 #: models/email_sources.py:355 models/email_sources.py:356
 msgid "POP email"
@@ -673,8 +672,8 @@ msgstr "ارسال"
 
 #: views/document_views.py:79 wizards.py:50
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 "هیچ منبع محاوره ای سند تعریف و یا فعال نشده، قبل از ادامه دادن یک منبع "
 "بسازید."
@@ -687,8 +686,8 @@ msgstr "خواص سند"
 #: views/document_views.py:116
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
 
 #: views/document_views.py:123
@@ -782,9 +781,3 @@ msgstr "مرحله بعدی"
 #: wizards.py:77
 msgid "Document upload wizard"
 msgstr "جادوگر بارگذاری سند"
-
-#~ msgid "Error deleting staging file; %s"
-#~ msgstr "خطای حذف فایل مرحله ای : %s"
-
-#~ msgid "Unable get list of staging files: %s"
-#~ msgstr "قادر به گرفتن لیست فایلهای مرحله ای نیست. %s"

@@ -1,26 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Ayoub BENSAKHRIA <bensakhria.ayoub@gmail.com>, 2020
-# Marwan Rahhal <Marwanr@sssit.net>, 2020
+# Roberto Rosario, 2021
+# Yaman Sanobar <yman.snober@gmail.com>, 2021
+# Ayoub BENSAKHRIA <bensakhria.ayoub@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-12-23 23:58+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:12+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:24 classes.py:143 links.py:27
 msgid "ACLs"
@@ -33,10 +34,8 @@ msgid ""
 msgstr ""
 
 #: apps.py:63
-#, fuzzy
-#| msgid "Object ID"
 msgid "Object"
-msgstr "معرف الكائن"
+msgstr "عنصر"
 
 #: events.py:6 permissions.py:5
 msgid "Access control lists"
@@ -47,10 +46,8 @@ msgid "ACL created"
 msgstr "إنشاء الصلاحيات"
 
 #: events.py:13
-#, fuzzy
-#| msgid "ACL edited"
 msgid "ACL deleted"
-msgstr "تعديل الصلاحيات"
+msgstr ""
 
 #: events.py:16
 msgid "ACL edited"
@@ -112,20 +109,12 @@ msgid "View ACLs"
 msgstr "إستعراض قوائم الصلاحيات"
 
 #: serializers.py:125
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
-"المفتاح الأساسي للصلاحية الجديدة لإتاحة الولوج إلى قائمة التحكم في الدخول."
 
 #: serializers.py:132
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
-"المفتاح الأساسي للصلاحية الجديدة لإتاحة الولوج إلى قائمة التحكم في الدخول."
 
 #: views.py:40
 #, python-format
@@ -188,16 +177,12 @@ msgstr ""
 "الوصول للكائن الأصلي أو من دورها عبر قائمة الإعداد."
 
 #: views.py:256
-#, fuzzy
-#| msgid "There are no ACLs for this object"
 msgid "There are no ACLs"
-msgstr "لا توجد قوائم تحكم في الوصول لهذا الكائن"
+msgstr ""
 
 #: views.py:265
-#, fuzzy
-#| msgid "Access control lists"
 msgid "Global access control lists"
-msgstr "المستخدمين والصلاحيات"
+msgstr ""
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -212,12 +197,13 @@ msgid "Object ID"
 msgstr "معرف الكائن"
 
 #: workflow_actions.py:35
-msgid "Numeric identifier of the object for which the access will be modified."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
 msgstr "المعرف الرقمي للكائن الذي سيتم تعديل الوصول إليه."
 
 #: workflow_actions.py:40 workflow_actions.py:155
 msgid "Roles"
-msgstr "الأدوار"
+msgstr "أدوار"
 
 #: workflow_actions.py:42 workflow_actions.py:157
 msgid "Roles whose access will be modified."
@@ -243,31 +229,3 @@ msgstr "منح حق الوصول إلى الوثيقة"
 #: workflow_actions.py:211
 msgid "Revoke document access"
 msgstr "إبطال صلاحية الوصول إلى الوثيقة"
-
-#~ msgid ""
-#~ "API URL pointing to the list of permissions for this access control list."
-#~ msgstr ""
-#~ "عنوان URL لواجهة برمجة التطبيقات يشير إلى قائمة الصلاحيات لقائمة التحكم "
-#~ "في الوصول هذه."
-
-#~ msgid ""
-#~ "API URL pointing to a permission in relation to the access control list "
-#~ "to which it is attached. This URL is different than the canonical "
-#~ "workflow URL."
-#~ msgstr ""
-#~ "يشير عنوان URL الخاص بواجهة برمجة التطبيقات إلى صلاحية تتعلق بقائمة "
-#~ "التحكم في الدخول المرفقة به. يختلف عنوان URL هذا عن عنوان URL الأساسي "
-#~ "لسير العمل."
-
-#~ msgid "No such permission: %s"
-#~ msgstr "هذه الصلاحية غير موجودة: %s"
-
-#~ msgid ""
-#~ "Comma separated list of permission primary keys to grant to this access "
-#~ "control list."
-#~ msgstr ""
-#~ "قائمة مفصولة بفواصل من مفاتيح الصلاحيات الأساسية لإتاحة الولوج إلى قائمة "
-#~ "التحكم هذه."
-
-#~ msgid "Primary keys of the role to which this access control list binds to."
-#~ msgstr "المفاتيح الأساسية للدور الذي ترتبط به قائمة التحكم في الدخول هذه."

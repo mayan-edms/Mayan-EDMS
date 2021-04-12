@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2021
 # pyrotech <anastasios@tutamail.com>, 2021
-# pyrotech <anastasios@tutamail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-01-30 17:04+0000\n"
-"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
-"el/)\n"
-"Language: el\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:26+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:40
@@ -190,8 +190,8 @@ msgstr "Ιδιότητα έταιρου εγγράφου"
 
 #: models.py:178
 msgid ""
-"The expression using document properties to be evaluated against the foreign "
-"document field."
+"The expression using document properties to be evaluated against the foreign"
+" document field."
 msgstr ""
 "Η έκφραση που χρησιμοποιεί ιδιότητες εγγράφου προς αξιολόγηση έναντι του "
 "πεδίου του έταιρου εγγράφου."
@@ -273,8 +273,7 @@ msgstr "Έγγραφα στον έξυπνο σύνδεσμο: %s"
 
 #: views.py:117
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr ""
 "Έγγραφα στον έξυπνο σύνδεσμο \"%(smart_link)s\" που σχετίζονται με το "
 "\"%(document)s\""
@@ -285,7 +284,7 @@ msgstr "Διαθέσιμοι τύποι εγγράφων"
 
 #: views.py:154
 msgid "Document types enabled"
-msgstr "Ενεργοποίηση τύπων εγγράφου"
+msgstr "Ενεργοποιημένοι τύποι εγγράφων"
 
 #: views.py:164
 #, python-format
@@ -299,8 +298,8 @@ msgid ""
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
 msgstr ""
-"Τα ευρετήρια ομαδοποιούν έγγραφα σε ενότητες, συνήθως με παρόμοιες ιδιότητες "
-"και παρόμοιων ή ιδίων τύπων. Οι έξυπνοι σύνδεσμοι επιτρέπουν τον καθορισμό "
+"Τα ευρετήρια ομαδοποιούν έγγραφα σε ενότητες, συνήθως με παρόμοιες ιδιότητες"
+" και παρόμοιων ή ιδίων τύπων. Οι έξυπνοι σύνδεσμοι επιτρέπουν τον καθορισμό "
 "σχέσεων μεταξύ εγγράφων ακόμα και αν περιέχονται σε διαφορετικά ευρετήρια ή "
 "είναι διαφορετικών τύπων."
 
@@ -365,13 +364,3 @@ msgstr "Διαγραφή συνθήκης έξυπνου συνδέσμοθυ: \
 #: views.py:376
 msgid "Edit smart link condition"
 msgstr "Τροποποίηση συνθηκών έξυπνου συνδέσμου"
-
-#~ msgid ""
-#~ "Comma separated list of document type primary keys to which this smart "
-#~ "link will be attached."
-#~ msgstr ""
-#~ "Λίστα διαχωρισμένη με κόμμα πρωτευόντων κλειδιών τύπου εγγράφου στα οποία "
-#~ "θα συνδεθεί αυτός ο έξυπνος σύνδεσμος."
-
-#~ msgid "No such document type: %s"
-#~ msgstr "Δεν υπάρχει ο τύπος εγγράφου: %s"

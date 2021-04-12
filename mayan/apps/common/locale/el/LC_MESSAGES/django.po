@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2021
 # pyrotech <anastasios@tutamail.com>, 2021
-# pyrotech <anastasios@tutamail.com>, 2020-2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-01-30 16:11+0000\n"
-"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
-"el/)\n"
-"Language: el\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:125 permissions.py:5 settings.py:15
@@ -174,58 +174,38 @@ msgstr ""
 
 #: settings.py:30
 msgid ""
-"In list mode, show the \"object\" menu options as a dropdown menu instead of "
-"individual buttons."
+"In list mode, show the \"object\" menu options as a dropdown menu instead of"
+" individual buttons."
 msgstr ""
 
 #: settings.py:37
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
 msgstr ""
 "Χρόνος καθυστέρησης των εργασιών παρασκηνίου που για την διάδοση εξαρτώνται "
 "σε μια ενέργεια βάσης δεδομένων."
 
 #: settings.py:44
-#, fuzzy
-#| msgid ""
-#| "A list of strings designating all applications that are to be removed "
-#| "from the list normally installed by Mayan EDMS. Each string should be a "
-#| "dotted Python path to: an application configuration class (preferred), or "
-#| "a package containing an application."
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
-"Λίστα συμβολοσειρών που ορίζουν όλες τις εφαρμογές που πρόκειται να "
-"αφαιρεθούν από την λίστα που συνήθως εγκαθίσταται από το Mayan EDMS. Κάθε "
-"συμβολοσειρά θα πρέπει να είναι μία διαδρομή Python σε: μία κλάση "
-"παραμετροποίησης εφαρμογής (προτεινόμενο), ή ένα πακέτο που περιέχει μία "
-"εφαρμογή."
 
 #: settings.py:54
-#, fuzzy
-#| msgid ""
-#| "A list of strings designating all applications that are installed beyond "
-#| "those normally installed by Mayan EDMS. Each string should be a dotted "
-#| "Python path to: an application configuration class (preferred), or a "
-#| "package containing an application."
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
-"Λίστα συμβολοσειρών που ορίζουν όλες τις εφαρμογές που είναι εγκατεστημένες "
-"πέραν αυτών που συνήθως εγκαθίστανται από το Mayan EDMS. Κάθε συμβολοσειρά "
-"θα πρέπει να είναι μία διαδρομή Python σε: μία κλάση παραμετροποίησης "
-"εφαρμογής (προτεινόμενο), ή ένα πακέτο που περιέχει μία εφαρμογή."
 
 #: settings.py:64
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
 msgstr ""
 "Το όνομα της προβολής συνδεδεμένη με τον τίτλο οργανισμού στο κεντρικό "
 "μενού. Αυτήν είναι η προβολή στην οποία θα ανακατευθύνονται οι χρήστες μετά "
@@ -245,11 +225,11 @@ msgstr "Η βασική διαδρομή URL που θα χρησιμοποιε�
 
 #: templates/common/app/viewport.html:9
 msgid "Warning"
-msgstr ""
+msgstr "Προειδοποίηση"
 
 #: templates/common/app/viewport.html:21
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Κάντε κλικ εδώ για επιδιόρθωση."
 
 #: validators.py:41
 msgid "Enter a valid JSON value."
@@ -294,8 +274,8 @@ msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr ""
-"Η μη εμφάνιση αποτελεσμάτων υποδεικνύει έλλειψη των απαιτούμενων δικαιωμάτων "
-"για την εκτέλεση εργασίας διαχειριστή. "
+"Η μη εμφάνιση αποτελεσμάτων υποδεικνύει έλλειψη των απαιτούμενων δικαιωμάτων"
+" για την εκτέλεση εργασίας διαχειριστή. "
 
 #: views.py:103
 msgid "No setup options available."
@@ -312,27 +292,3 @@ msgstr "Εδώ μπορεί να παραμετροποιηθεί το σύστ�
 #: views.py:124
 msgid "These modules are used to do system maintenance."
 msgstr "Αυτά τα modules χρησιμοποιούνται για την συντήρηση του συστήματος."
-
-#~ msgid "Locale profile"
-#~ msgstr "Προφίλ τοποθεσίας"
-
-#~ msgid "Edit locale profile"
-#~ msgstr "Τοποποίηση του προφίλ τοποθεσίας"
-
-#~ msgid "Timezone"
-#~ msgstr "Ζώνη ώρας"
-
-#~ msgid "Language"
-#~ msgstr "Γλώσσα"
-
-#~ msgid "User locale profile"
-#~ msgstr "Προφίλ τοποθεσίας χρήστη"
-
-#~ msgid "User locale profiles"
-#~ msgstr "Προφίλ τοποθεσίας χρήστη"
-
-#~ msgid "Current user locale profile details"
-#~ msgstr "Λεπτομέρειες προφίλ τοποθεσίας του τρέχοντος χρήστη"
-
-#~ msgid "Edit current user locale profile details"
-#~ msgstr "Τροποποίηση προφίλ τοποθεσίας του τρέχοντος χρήστη"

@@ -1,30 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015,2017-2018
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
-# Frédéric Sheedy <sheedf@gmail.com>, 2019-2021
-# Olivier W, 2019
-# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2012
-# Thierry Schott <DarkDare@users.noreply.github.com>, 2016
-# Yves Dubois <ydubois@gmail.com>, 2018
+# Roberto Rosario, 2021
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
+# Olivier W, 2021
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2021-01-14 19:37+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:28+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:52 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
@@ -65,16 +62,12 @@ msgid "Document OCR content deleted"
 msgstr "Contenu OCR du document supprimé"
 
 #: events.py:12
-#, fuzzy
-#| msgid "Document version submitted for OCR"
 msgid "Document file submitted for OCR"
-msgstr "Version du document soumise pour l'OCR"
+msgstr ""
 
 #: events.py:16
-#, fuzzy
-#| msgid "Document version OCR finished"
 msgid "Document file OCR finished"
-msgstr "OCR de la version du document terminée"
+msgstr ""
 
 #: forms.py:14 forms.py:45
 msgid "Contents"
@@ -116,7 +109,8 @@ msgstr "Type de document"
 #: models.py:24
 msgid "Automatically queue newly created documents for OCR."
 msgstr ""
-"Ajouter automatiquement les nouveaux documents créés à la file d'attente OCR."
+"Ajouter automatiquement les nouveaux documents créés à la file d'attente "
+"OCR."
 
 #: models.py:30
 msgid "Document type settings"
@@ -143,10 +137,8 @@ msgid "Document version OCR errors"
 msgstr "Erreurs OCR sur la version du document"
 
 #: models.py:67
-#, fuzzy
-#| msgid "Document version"
 msgid "Document version page"
-msgstr "Version du document"
+msgstr ""
 
 #: models.py:71
 msgid "The actual text content extracted by the OCR backend."
@@ -157,16 +149,12 @@ msgid "Content"
 msgstr "Contenu"
 
 #: models.py:78
-#, fuzzy
-#| msgid "Document page OCR content"
 msgid "Document version page OCR content"
-msgstr "Contenu OCR de page du document"
+msgstr ""
 
 #: models.py:79
-#, fuzzy
-#| msgid "Document pages OCR contents"
 msgid "Document version pages OCR contents"
-msgstr "Contenus OCR des pages du document"
+msgstr ""
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
@@ -181,22 +169,16 @@ msgid "Change document type OCR settings"
 msgstr "Modifier les paramétrages OCR du type de document"
 
 #: queues.py:10
-#, fuzzy
-#| msgid "Submit documents for OCR"
 msgid "Finish document file OCR"
-msgstr "Ajouter les documents à la liste d'attente OCR"
+msgstr ""
 
 #: queues.py:14
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file page OCR"
-msgstr "Page du document"
+msgstr ""
 
 #: queues.py:18
-#, fuzzy
-#| msgid "Document version OCR"
 msgid "Document file OCR"
-msgstr "OCR de la version du document"
+msgstr ""
 
 #: search.py:11 search.py:23
 msgid "Document version OCR"
@@ -211,13 +193,10 @@ msgid "Full path to the backend to be used to do OCR."
 msgstr "Chemin complet du logiciel OCR utilisé."
 
 #: views.py:39
-#, fuzzy
-#| msgid "Delete the OCR content of the selected document?"
-#| msgid_plural "Delete the OCR content of the selected documents?"
 msgid "Delete the OCR content of the selected document version?"
 msgid_plural "Delete the OCR content of the selected document versions?"
-msgstr[0] "Supprimer le contenu OCR du document sélectionné?"
-msgstr[1] "Supprimer le contenu OCR des documents sélectionnés?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:74
 #, python-format
@@ -230,19 +209,15 @@ msgid "OCR errors for document: %s"
 msgstr "Erreurs OCR pour le document : %s"
 
 #: views.py:118
-#, fuzzy
-#| msgid "Submit the selected document to the OCR queue?"
-#| msgid_plural "Submit the selected documents to the OCR queue?"
 msgid "Submit the selected document version to the OCR queue?"
 msgid_plural "Submit the selected document versions to the OCR queue?"
-msgstr[0] "Soumettre le document sélectionné à la file d'attente du ROC?"
-msgstr[1] "Soumettre les documents sélectionnés à la file d'attente de l'OCR?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:152
-#, fuzzy, python-format
-#| msgid "OCR result for document page: %s"
+#, python-format
 msgid "OCR result for document version page: %s"
-msgstr "Résultat de l'OCR pour la page de document: %s"
+msgstr ""
 
 #: views.py:158
 msgid "Submit all documents of a type for OCR"

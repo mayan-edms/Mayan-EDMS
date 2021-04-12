@@ -1,26 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
-# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
-# Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
-# Martin Horseling <martin.horseling@gmail.com>, 2018
+# Roberto Rosario, 2021
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
+"Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:76 events.py:6 permissions.py:6
@@ -121,10 +119,8 @@ msgid "User details"
 msgstr "Gebruikersprofiel"
 
 #: links.py:24
-#, fuzzy
-#| msgid "Edit details"
 msgid "Edit user details"
-msgstr "Bewerk details"
+msgstr ""
 
 #: links.py:29 views.py:54
 msgid "Create new group"
@@ -132,7 +128,7 @@ msgstr " Maak nieuwe groep aan"
 
 #: links.py:34 links.py:61 links.py:79
 msgid "Delete"
-msgstr "Verwijder"
+msgstr "Verwijderen"
 
 #: links.py:38 links.py:65
 msgid "Edit"
@@ -269,8 +265,8 @@ msgstr "Gebruiker verwijderingsverzoek gedaan voor %(count)d gebruikers"
 #: views.py:185
 msgid "Delete user"
 msgid_plural "Delete users"
-msgstr[0] "Verwijder gebruiker"
-msgstr[1] "Verwijder gebruikers"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:195
 #, python-format

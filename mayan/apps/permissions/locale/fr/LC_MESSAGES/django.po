@@ -1,38 +1,38 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014
-# Frédéric Sheedy <sheedf@gmail.com>, 2019
-# Olivier W, 2019
-# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2012
-# Thierry Schott <DarkDare@users.noreply.github.com>, 2016
-# Yves Dubois <ydubois@gmail.com>, 2018
+# Roberto Rosario, 2021
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
+# Olivier W, 2021
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
+# Yves Dubois <ydubois@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:28+0000\n"
+"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:43 events.py:6 models.py:37 models.py:157 permissions.py:5
 msgid "Permissions"
-msgstr "Droits"
+msgstr "Autorisations"
 
 #: apps.py:98 models.py:75
 msgid "Group count"
-msgstr ""
+msgstr "Nombre de groupes"
 
 #: classes.py:88
 msgid "Insufficient permissions."
@@ -88,7 +88,7 @@ msgstr "Rôle"
 
 #: models.py:83
 msgid "Permission count"
-msgstr ""
+msgstr "Nombre d'autorisations"
 
 #: models.py:148
 msgid "Namespace"
@@ -124,19 +124,19 @@ msgstr "Nom du groupe"
 
 #: serializers.py:31
 msgid "Primary key of the group to add to the role."
-msgstr ""
+msgstr "Clé primaire du groupe à ajouter au rôle."
 
 #: serializers.py:39
 msgid "Primary key of the group to remove from the role."
-msgstr ""
+msgstr "Clé primaire du groupe à supprimer du rôle."
 
 #: serializers.py:47
 msgid "Primary key of the permission to add to the role."
-msgstr ""
+msgstr "Clé primaire de l'autorisation à ajouter au rôle."
 
 #: serializers.py:54
 msgid "Primary key of the permission to remove from the role."
-msgstr ""
+msgstr "Clé primaire de l'autorisation à retirer du rôle."
 
 #: views.py:30
 msgid "Available roles"
@@ -209,19 +209,3 @@ msgstr ""
 #: views.py:170
 msgid "There are no roles"
 msgstr "Il n'y a pas de rôles"
-
-#~ msgid ""
-#~ "Comma separated list of groups primary keys to add to, or replace in this "
-#~ "role."
-#~ msgstr ""
-#~ "La liste séparée par une virgule des groupes de clés primaires à ajouter "
-#~ "ou à remplacer dans ce rôle."
-
-#~ msgid ""
-#~ "Comma separated list of permission primary keys to grant to this role."
-#~ msgstr ""
-#~ "Liste séparée par des virgules des clés primaires d'autorisation pour "
-#~ "autoriser ce rôle."
-
-#~ msgid "No such permission: %s"
-#~ msgstr "Aucune autorisation de ce genre: %s"

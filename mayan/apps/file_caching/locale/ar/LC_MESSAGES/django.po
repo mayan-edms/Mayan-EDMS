@@ -2,26 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Roberto Rosario, 2019
-# Mohammed ALDOUB <voulnet@gmail.com>, 2019
-# Marwan Rahhal <Marwanr@sssit.net>, 2020
-#
+# Roberto Rosario, 2021
+# Mohammed ALDOUB <voulnet@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2020\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
-"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:25 events.py:6 permissions.py:5
 msgid "File caching"
@@ -120,10 +119,8 @@ msgid "Cache partition files"
 msgstr "قسم الملفات المؤقتة"
 
 #: permissions.py:8
-#, fuzzy
-#| msgid "Purge a file cache"
 msgid "Purge an object cache"
-msgstr "إزالة ملفات الذاكرة"
+msgstr ""
 
 #: permissions.py:11 queues.py:7
 msgid "Purge a file cache"
@@ -134,26 +131,22 @@ msgid "View a file cache"
 msgstr "إستعراض ملفات الذاكرة المؤقتة"
 
 #: queues.py:11
-#, fuzzy
-#| msgid "Purge a file cache"
 msgid "Purge a file cache partition"
-msgstr "إزالة ملفات الذاكرة"
+msgstr ""
 
 #: views.py:43
-#, fuzzy, python-format
-#| msgid "File caches"
+#, python-format
 msgid "Details cache: %s"
-msgstr "تخزين مؤقت"
+msgstr ""
 
 #: views.py:54
 msgid "File caches list"
 msgstr "حفظ الملفات المؤقتة"
 
 #: views.py:70
-#, fuzzy, python-format
-#| msgid "Cache partition files"
+#, python-format
 msgid "Purge cache partitions of \"%s\"?"
-msgstr "قسم الملفات المؤقتة"
+msgstr ""
 
 #: views.py:84
 msgid "Object cache partitions submitted for purging."
@@ -162,9 +155,9 @@ msgstr ""
 #: views.py:101
 msgid "Submit the selected cache for purging?"
 msgid_plural "Submit the selected caches for purging?"
-msgstr[0] "إرسال ذاكرات التخزين المؤقت المحددة للتطهير؟"
-msgstr[1] "إرسال ذاكرة التخزين المؤقت المحددة للتصفية؟"
-msgstr[2] "إرسال ذاكرات التخزين المؤقت المحددة للتطهير؟"
-msgstr[3] "إرسال ذاكرات التخزين المؤقت المحددة للتطهير؟"
-msgstr[4] "إرسال ذاكرات التخزين المؤقت المحددة للتطهير؟"
-msgstr[5] "إرسال ذاكرات التخزين المؤقت المحددة للتطهير؟"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""

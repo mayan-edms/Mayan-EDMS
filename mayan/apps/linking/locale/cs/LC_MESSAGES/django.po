@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019-2020
+# Jiri Fait <fait@orkasolutions.cz>, 2021
+# Michal Švábík <snadno@lehce.cz>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-02-06 09:47+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
-"cs/)\n"
-"Language: cs\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:26+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:40
 msgid "Linking"
@@ -27,7 +27,7 @@ msgstr "Propojení"
 
 #: apps.py:94 models.py:29
 msgid "Label"
-msgstr "Označení"
+msgstr "Jmenovka"
 
 #: events.py:6 links.py:24 links.py:75 links.py:80 links.py:85 models.py:48
 #: permissions.py:5 views.py:191
@@ -56,7 +56,7 @@ msgstr "Odstranit"
 
 #: links.py:39 links.py:64
 msgid "Edit"
-msgstr "Editovat"
+msgstr "Upravit"
 
 #: links.py:44
 msgid "Conditions"
@@ -189,8 +189,8 @@ msgstr "Atribut cizího dokumentu"
 
 #: models.py:178
 msgid ""
-"The expression using document properties to be evaluated against the foreign "
-"document field."
+"The expression using document properties to be evaluated against the foreign"
+" document field."
 msgstr ""
 "Výraz používající vlastnosti dokumentu, které má být vyhodnoceny proti poli "
 "cizího dokumentu."
@@ -272,8 +272,7 @@ msgstr "Dokumenty v chytrém odkazu: %s"
 
 #: views.py:117
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr ""
 "Dokumenty v inteligentním odkazu „%(smart_link)s“ ve vztahu k „%(document)s“"
 
@@ -361,13 +360,3 @@ msgstr "Odstranit podmínku chytrého odkazu: \"%s\"?"
 #: views.py:376
 msgid "Edit smart link condition"
 msgstr "Upravit podmínku chytrého odkazu"
-
-#~ msgid ""
-#~ "Comma separated list of document type primary keys to which this smart "
-#~ "link will be attached."
-#~ msgstr ""
-#~ "Seznam primárních klíčů typu dokumentu, na které bude tento chytrý odkaz "
-#~ "připojen, oddělený čárkami."
-
-#~ msgid "No such document type: %s"
-#~ msgstr "Tento typ dokumentu neexistuje: %s"

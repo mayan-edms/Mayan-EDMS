@@ -1,25 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Māris Teivāns <maris.teivans@gmail.com>, 2019
+# Māris Teivāns <maris.teivans@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/lv/)\n"
-"Language: lv\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
+"Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:125 permissions.py:5 settings.py:15
 msgid "Common"
@@ -170,57 +169,38 @@ msgstr ""
 
 #: settings.py:30
 msgid ""
-"In list mode, show the \"object\" menu options as a dropdown menu instead of "
-"individual buttons."
+"In list mode, show the \"object\" menu options as a dropdown menu instead of"
+" individual buttons."
 msgstr ""
 
 #: settings.py:37
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
 msgstr ""
 "Laiks uz kādu aizkavēt fona uzdevumus, kas ir atkarīgs no datu bāzes "
 "apņemšanās uz izplatīšanu."
 
 #: settings.py:44
-#, fuzzy
-#| msgid ""
-#| "A list of strings designating all applications that are to be removed "
-#| "from the list normally installed by Mayan EDMS. Each string should be a "
-#| "dotted Python path to: an application configuration class (preferred), or "
-#| "a package containing an application."
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
-"Saraksts ar virknēm, kas apzīmē visas lietojumprogrammas, kuras jānoņem no "
-"saraksta, kuras parasti uzstāda Mayan EDMS. Katrai virknei vajadzētu būt "
-"punktveida Python ceļam uz: lietojumprogrammas konfigurācijas klasi (vēlams) "
-"vai paketi, kurā ir lietojumprogramma."
 
 #: settings.py:54
-#, fuzzy
-#| msgid ""
-#| "A list of strings designating all applications that are installed beyond "
-#| "those normally installed by Mayan EDMS. Each string should be a dotted "
-#| "Python path to: an application configuration class (preferred), or a "
-#| "package containing an application."
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
-"Saraksts ar virknēm, kas apzīmē visas lietojumprogrammas, kas ir uzstādītas "
-"ārpus tām, ko parasti uzstāda Mayan EDMS. Katrai virknei vajadzētu būt "
-"punktveida Python ceļam uz: lietojumprogrammas konfigurācijas klasi (vēlams) "
-"vai paketi, kurā ir lietojumprogramma."
 
 #: settings.py:64
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
 msgstr ""
 "Zīmola enkuram pievienotā skata nosaukums galvenajā izvēlnē. Tas ir arī "
 "skats, uz kuru pēc pierakstīšanās lietotāji tiks novirzīti."
@@ -239,11 +219,11 @@ msgstr ""
 
 #: templates/common/app/viewport.html:9
 msgid "Warning"
-msgstr ""
+msgstr "Brīdinājums"
 
 #: templates/common/app/viewport.html:21
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Noklikšķiniet šeit, lai to labotu."
 
 #: validators.py:41
 msgid "Enter a valid JSON value."
@@ -258,8 +238,6 @@ msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
 msgstr ""
-"Ievadiet derīgu “iekšējo nosaukumu”, kas sastāv no burtiem, cipariem un "
-"pasvītrojumiem."
 
 #: views.py:22
 msgid "About"
@@ -288,45 +266,19 @@ msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr ""
-"Neviens no rezultātiem šeit nenozīmē, ka nav nepieciešamo atļauju "
-"administratīvā uzdevuma veikšanai."
 
 #: views.py:103
 msgid "No setup options available."
-msgstr "Nav pieejamas iestatīšanas opcijas."
+msgstr ""
 
 #: views.py:107
 msgid "Setup items"
-msgstr "Iestatīšanas vienumi"
+msgstr ""
 
 #: views.py:109
 msgid "Here you can configure all aspects of the system."
-msgstr "Šeit jūs varat konfigurēt visus sistēmas aspektus."
+msgstr ""
 
 #: views.py:124
 msgid "These modules are used to do system maintenance."
-msgstr "Šie moduļi tiek izmantoti sistēmas uzturēšanai."
-
-#~ msgid "Locale profile"
-#~ msgstr "Lokalizācijas profils"
-
-#~ msgid "Edit locale profile"
-#~ msgstr "Rediģēt lokalizācijas profilu"
-
-#~ msgid "Timezone"
-#~ msgstr "Laika zona"
-
-#~ msgid "Language"
-#~ msgstr "Valoda"
-
-#~ msgid "User locale profile"
-#~ msgstr "Lietotāja lokalizācijas profils"
-
-#~ msgid "User locale profiles"
-#~ msgstr "Lietotāja lokalizācijas profili"
-
-#~ msgid "Current user locale profile details"
-#~ msgstr "Pašreizējā lietotāja lokalizācijas profila informācija"
-
-#~ msgid "Edit current user locale profile details"
-#~ msgstr "Rediģējiet pašreizējās lietotāja lokalizācijas profila informāciju"
+msgstr ""

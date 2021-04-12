@@ -1,29 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Nurgül Özkan <nurgulozkan@hotmail.com>, 2017
-# serhatcan77 <serhat_can@yahoo.com>, 2017
+# Nurgül Özkan <nurgulozkan@hotmail.com>, 2021
+# serhatcan77 <serhat_can@yahoo.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-04-14 08:31+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/tr_TR/)\n"
-"Language: tr_TR\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2021\n"
+"Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:33
 msgid "Django GPG"
-msgstr "Django GPG"
+msgstr ""
 
 #: apps.py:56 apps.py:62 forms.py:15
 msgid "Key ID"
@@ -31,7 +31,7 @@ msgstr "Anahtar Kimliği"
 
 #: apps.py:66 forms.py:32 models.py:59
 msgid "Type"
-msgstr "Tip"
+msgstr "Tür"
 
 #: apps.py:70 forms.py:21 models.py:40
 msgid "Creation date"
@@ -51,7 +51,7 @@ msgstr "Uzunluk"
 
 #: apps.py:83 forms.py:17 models.py:56
 msgid "User ID"
-msgstr "Kullanıcı adı"
+msgstr ""
 
 #: dependencies.py:10
 msgid "GNU privacy guard - a PGP implementation."
@@ -62,16 +62,12 @@ msgid "Key management"
 msgstr "Anahtar yönetimi"
 
 #: events.py:8
-#, fuzzy
-#| msgid "Key data"
 msgid "Key created"
-msgstr "Anahtar verisi"
+msgstr ""
 
 #: events.py:12
-#, fuzzy
-#| msgid "Download"
 msgid "Key downloaded"
-msgstr "İndir"
+msgstr ""
 
 #: forms.py:26
 msgid "None"
@@ -79,11 +75,11 @@ msgstr "Yok"
 
 #: forms.py:29 models.py:48
 msgid "Fingerprint"
-msgstr "Parmak izi"
+msgstr ""
 
 #: forms.py:31 models.py:54
 msgid "Algorithm"
-msgstr "Algoritma"
+msgstr ""
 
 #: forms.py:45
 msgid "Term"
@@ -115,7 +111,7 @@ msgstr "İçeri Al"
 
 #: links.py:46
 msgid "Upload key"
-msgstr "Yükleme anahtarı"
+msgstr ""
 
 #: links.py:50 views.py:194
 msgid "Private keys"
@@ -183,15 +179,15 @@ msgstr "Anahtar"
 
 #: models.py:66
 msgid "Keys"
-msgstr "Anahtarlar"
+msgstr ""
 
 #: models.py:78
 msgid "Invalid key data"
-msgstr "Geçersiz anahtar verileri"
+msgstr ""
 
 #: models.py:81
 msgid "Key already exists."
-msgstr "Anahtar zaten var."
+msgstr ""
 
 #: permissions.py:8
 msgid "Delete keys"
@@ -227,7 +223,7 @@ msgstr ""
 
 #: settings.py:25
 msgid "Keyserver used to query for keys."
-msgstr "Anahtar sunucusu anahtarları sorgulamak için kullanılır."
+msgstr ""
 
 #: views.py:39
 #, python-format
@@ -242,7 +238,7 @@ msgstr "%s Anahtarın ayrıntıları: "
 #: views.py:84
 #, python-format
 msgid "Import key ID: %s?"
-msgstr "Anahtar kimliğini içe aktar: %s?"
+msgstr ""
 
 #: views.py:85
 msgid "Import key"
@@ -251,7 +247,7 @@ msgstr "Anahtarı içe aktar"
 #: views.py:94
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
-msgstr "Anahtar içe aktarılamıyor: %(key_id)s; %(error)s"
+msgstr ""
 
 #: views.py:102
 #, python-format
@@ -270,7 +266,7 @@ msgstr ""
 
 #: views.py:125
 msgid "Key query results"
-msgstr "Anahtar sorgu sonuçları"
+msgstr ""
 
 #: views.py:145
 msgid "Search"
@@ -282,12 +278,12 @@ msgstr "Anahtar sorgulama sunucusu"
 
 #: views.py:166
 msgid "Upload new key"
-msgstr "Yeni anahtar yükle"
+msgstr ""
 
 #: views.py:187
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded "
-"by the user. The view to upload private and public keys is the same."
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user. The view to upload private and public keys is the same."
 msgstr ""
 
 #: views.py:192
@@ -296,8 +292,8 @@ msgstr ""
 
 #: views.py:210
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded "
-"by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr ""
 

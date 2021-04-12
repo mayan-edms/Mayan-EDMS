@@ -1,24 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2012
+# Roberto Rosario, 2021
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-12-09 09:11+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:63 apps.py:191 apps.py:197 apps.py:201 apps.py:206 apps.py:210
@@ -111,7 +112,7 @@ msgstr "Тип метаданни"
 
 #: forms.py:151 views.py:407
 msgid "Remove"
-msgstr "Премахване"
+msgstr "Премахнете"
 
 #: forms.py:177
 msgid " Available template context variables: "
@@ -159,17 +160,8 @@ msgid "Edit"
 msgstr "Редактиране"
 
 #: methods.py:20
-#, fuzzy
-#| msgid "Remove metadata types from the document"
-#| msgid_plural "Remove metadata types from the documents"
 msgid "Return the metadata of the document."
-msgstr "Премахнете типовете метаданни от документа"
-
-#: methods.py:22
-#, fuzzy
-#| msgid "Edit metadata"
-msgid "get_metadata()"
-msgstr "Редактиране на метаданни"
+msgstr ""
 
 #: mixins.py:19
 msgid "Selected documents must be of the same type."
@@ -223,7 +215,8 @@ msgstr "Валидатор"
 
 #: models.py:78
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
+"The parser will reformat the value entered to conform to the expected "
+"format."
 msgstr ""
 "Анализаторът ще преформатира въведената стойност, за да съответства на "
 "очаквания формат."
@@ -263,7 +256,7 @@ msgstr "Типът на метаданните не е валиден за то�
 
 #: models.py:271
 msgid "Document type"
-msgstr "Вид на документа"
+msgstr "Тип документ"
 
 #: models.py:284
 msgid "Document type metadata type options"
@@ -322,16 +315,12 @@ msgid "Metadata value"
 msgstr "Стойност на метаданни"
 
 #: search.py:24 search.py:35 search.py:46 search.py:57
-#, fuzzy
-#| msgid "Document metadata"
 msgid "Document metadata type"
-msgstr "Метаданни за документа"
+msgstr ""
 
 #: search.py:28 search.py:39 search.py:50 search.py:61
-#, fuzzy
-#| msgid "Document metadata added"
 msgid "Document metadata value"
-msgstr "Добавени са метаданни за документ"
+msgstr ""
 
 #: serializers.py:56
 msgid "Primary key of the metadata type to be added."
@@ -354,13 +343,13 @@ msgstr "Заявка за добавяне на метаданни, изпълн
 
 #: views.py:65
 msgid "Add"
-msgstr "Добави"
+msgstr "Добавете"
 
 #: views.py:67
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
-msgstr[0] "Добавете типове метаданни към документа"
-msgstr[1] "Добавете типове метаданни към документи"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:78
 #, python-format
@@ -379,7 +368,8 @@ msgstr ""
 #: views.py:172
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
 msgstr ""
 "Тип метаданни: %(metadata_type)s успешно е добавен към документа "
 "%(document)s."
@@ -416,8 +406,8 @@ msgstr "Няма метаданни за редактиране"
 #: views.py:240
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
-msgstr[0] "Редактиране на метаданни на документа"
-msgstr[1] "Редактиране на метаданни на документи"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:251
 #, python-format
@@ -428,7 +418,8 @@ msgstr "Редактиране на метаданни за документ: %s
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
 msgstr ""
-"Грешка при редактиране на метаданни за документ: %(document)s; %(exception)s."
+"Грешка при редактиране на метаданни за документ: %(document)s; "
+"%(exception)s."
 
 #: views.py:349
 #, python-format
@@ -437,8 +428,9 @@ msgstr "Метаданните за документ %s са редактира�
 
 #: views.py:374
 msgid ""
-"Add metadata types this document's type to be able to add them to individual "
-"documents. Once added to individual document, you can then edit their values."
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
 msgstr ""
 "Добавете типове метаданни към типа на този документ, за да можете да ги "
 "добавите към отделни документи. След като са добавени към отделен документ, "
@@ -466,8 +458,8 @@ msgstr "Заявка за премахване на метаданни, изпъ
 #: views.py:409
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
-msgstr[0] "Премахнете типовете метаданни от документа"
-msgstr[1] "Премахнете типовете метаданни от документите"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:420
 #, python-format
@@ -525,32 +517,24 @@ msgid "There are no metadata types"
 msgstr "Няма типове метаданни"
 
 #: views.py:600
-#, fuzzy
-#| msgid ""
-#| "Create metadata types to be able to associate them to this document type."
 msgid ""
 "Create metadata type relationships to be able to associate them to this "
 "document type."
 msgstr ""
-"Създайте типове метаданни, за да можете да ги свържете с този тип документ."
 
 #: views.py:604
-#, fuzzy
-#| msgid "There are no metadata types available"
 msgid "There are no metadata type relationships available"
-msgstr "Няма налични типове метаданни"
+msgstr ""
 
 #: views.py:608
-#, fuzzy, python-format
-#| msgid "Metadata types for document type: %s"
+#, python-format
 msgid "Metadata type relationships for document type: %s"
-msgstr "Типове метаданни за типа документ: %s"
+msgstr ""
 
 #: views.py:652
-#, fuzzy, python-format
-#| msgid "Document types for metadata type: %s"
+#, python-format
 msgid "Document type relationships for metadata type: %s"
-msgstr "Типове документи за тип метаданни: %s"
+msgstr ""
 
 #: wizard_steps.py:13
 msgid "Enter document metadata"
@@ -577,8 +561,8 @@ msgstr "Типове метаданни за редактиране."
 msgid ""
 "Value to assign to the metadata. Can be a literal value or template code."
 msgstr ""
-"Стойност, която да се присвои на метаданните. Може да бъде буквална стойност "
-"или код на шаблон."
+"Стойност, която да се присвои на метаданните. Може да бъде буквална стойност"
+" или код на шаблон."
 
 #: workflow_actions.py:128
 #, python-format
@@ -603,12 +587,3 @@ msgid ""
 msgstr ""
 "Невъзможно е да се премахнат метаданни тип &quot;%(metadata_type)s&quot; от "
 "документ: %(document)s. Изключение: %(exception)s"
-
-#~ msgid "Relationship"
-#~ msgstr "Връзка"
-
-#~ msgid "Error updating relationship; %s"
-#~ msgstr "Грешка при актуализиране на връзката; %s"
-
-#~ msgid "Relationships updated successfully"
-#~ msgstr "Връзките са актуализирани успешно"

@@ -1,34 +1,34 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Jože Detečnik <joze.detecnik@3tav.si>, 2020
+# Roberto Rosario, 2021
+# Jože Detečnik <joze.detecnik@3tav.si>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-12-25 12:11+0000\n"
-"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
-"Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/sl/)\n"
-"Language: sl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2021\n"
+"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
 #: settings.py:14 views/source_views.py:173
 msgid "Sources"
-msgstr "Viri"
+msgstr ""
 
 #: apps.py:76
 msgid "Create a document source"
-msgstr "Ustvarite vir dokumenta"
+msgstr ""
 
 #: apps.py:78
 msgid ""
@@ -36,33 +36,28 @@ msgid ""
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr ""
-"Viri dokumentov so način, na katerega se novi dokumenti pošiljajo v EDM "
-"Mayan, ustvarijo vsaj vir spletnega obrazca, ki omogoča nalaganje dokumentov "
-"iz brskalnika."
 
 #: apps.py:91
 msgid "Type"
-msgstr "Tip"
+msgstr ""
 
 #: apps.py:102
 msgid "Created"
-msgstr "Ustvarjeno"
+msgstr ""
 
 #: apps.py:108
 msgid "Thumbnail"
-msgstr "Sličica"
+msgstr ""
 
 #: dependencies.py:11
 msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
 msgstr ""
-"Pripomoček, ki ga zagotavlja paket SANE. Uporablja se za nadzor optičnega "
-"bralnika in pridobitev slike optično prebranega dokumenta."
 
 #: forms.py:26
 msgid "An optional comment to explain the upload."
-msgstr "Izbirni komentar, ki pojasnjuje prenos."
+msgstr ""
 
 #: forms.py:27
 msgid "Comment"
@@ -79,52 +74,51 @@ msgstr ""
 
 #: forms.py:48 serializers.py:21
 msgid "Expand compressed files"
-msgstr "Razširite stisnjene datoteke"
+msgstr ""
 
 #: forms.py:50 serializers.py:22
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr ""
-"Naložite stisnjene datoteke, ki vsebujejo datoteke, kot posamezne dokumente."
 
 #: forms.py:71 views/source_views.py:185
 msgid "Staging file"
-msgstr "Uprizoritvena datoteka"
+msgstr ""
 
 #: forms.py:75 forms.py:80
 msgid "File"
-msgstr "mapa"
+msgstr ""
 
 #: handlers.py:22
 msgid "Default"
-msgstr "Privzeto"
+msgstr ""
 
 #: links.py:73
 msgid "New document"
-msgstr "Nov dokument"
+msgstr ""
 
 #: links.py:84
 msgid "Add new IMAP email"
-msgstr "Dodajte nov e-poštni naslov IMAP"
+msgstr ""
 
 #: links.py:89
 msgid "Add new POP3 email"
-msgstr "Dodajte novo e-poštno sporočilo POP3"
+msgstr ""
 
 #: links.py:94
 msgid "Add new staging folder"
-msgstr "Dodaj novo uprizoritveno mapo"
+msgstr ""
 
 #: links.py:99
 msgid "Add new watch folder"
-msgstr "Dodaj novo mapo ure"
+msgstr ""
 
 #: links.py:104
 msgid "Add new webform source"
-msgstr "Dodajte nov vir spletnega obrazca"
+msgstr ""
 
 #: links.py:109
 msgid "Add new SANE scanner"
-msgstr "Dodajte nov SANE skener"
+msgstr ""
 
 #: links.py:114 links.py:130
 msgid "Delete"
@@ -132,89 +126,87 @@ msgstr "Izbriši"
 
 #: links.py:118
 msgid "Edit"
-msgstr "Uredi"
+msgstr ""
 
 #: links.py:123
 msgid "Document sources"
-msgstr "Viri dokumentov"
+msgstr ""
 
 #: links.py:137
-#, fuzzy
-#| msgid "Upload new version"
 msgid "Upload new file"
-msgstr "Naložite novo različico"
+msgstr ""
 
 #: links.py:141
 msgid "Check now"
-msgstr "Preveri zdaj"
+msgstr ""
 
 #: literals.py:25
 msgid "Flatbed"
-msgstr "Ploščati"
+msgstr ""
 
 #: literals.py:26
 msgid "Document feeder"
-msgstr "Podajalnik dokumentov"
+msgstr ""
 
 #: literals.py:33
 msgid "Simplex"
-msgstr "Simplex"
+msgstr ""
 
 #: literals.py:34
 msgid "Duplex"
-msgstr "Dupleks"
+msgstr ""
 
 #: literals.py:42
 msgid "Lineart"
-msgstr "Lineart"
+msgstr ""
 
 #: literals.py:43
 msgid "Monochrome"
-msgstr "Enobarvna"
+msgstr ""
 
 #: literals.py:44
 msgid "Color"
-msgstr "Barva"
+msgstr ""
 
 #: literals.py:52 literals.py:57
 msgid "Always"
-msgstr "Nenehno"
+msgstr ""
 
 #: literals.py:53 literals.py:58
 msgid "Never"
-msgstr "Nikoli"
+msgstr ""
 
 #: literals.py:59
 msgid "Ask user"
-msgstr "Vprašajte uporabnika"
+msgstr ""
 
 #: literals.py:70
 msgid "Scanner"
-msgstr "Optični bralnik"
+msgstr ""
 
 #: literals.py:71 models/webform_sources.py:39
 msgid "Web form"
-msgstr "Spletni obrazec"
+msgstr ""
 
 #: literals.py:72 models/staging_folder_sources.py:67
 msgid "Staging folder"
-msgstr "Mapa za uprizoritev"
+msgstr ""
 
 #: literals.py:73 models/watch_folder_sources.py:46
 msgid "Watch folder"
-msgstr "Mapa ure"
+msgstr ""
 
 #: literals.py:74
 msgid "POP3 email"
-msgstr "E-poštni naslov POP3"
+msgstr ""
 
 #: literals.py:75 models/email_sources.py:249 models/email_sources.py:250
 msgid "IMAP email"
-msgstr "IMAP e-poštni naslov"
+msgstr ""
 
 #: models/base.py:26
 msgid "A short text to describe this source."
-msgstr "Kratko besedilo za opis tega vira."
+msgstr ""
 
 #: models/base.py:27
 msgid "Label"
@@ -222,35 +214,35 @@ msgstr "Oznaka"
 
 #: models/base.py:29
 msgid "Enabled"
-msgstr "Omogočeno"
+msgstr ""
 
 #: models/base.py:35
 msgid "Source"
-msgstr "Vir"
+msgstr ""
 
 #: models/base.py:138
 msgid "Interactive source"
-msgstr "Interaktivni vir"
+msgstr ""
 
 #: models/base.py:139
 msgid "Interactive sources"
-msgstr "Interaktivni viri"
+msgstr ""
 
 #: models/base.py:148 models/base.py:149
 msgid "Out of process"
-msgstr "Brez postopka"
+msgstr ""
 
 #: models/base.py:155
 msgid "Interval in seconds between checks for new documents."
-msgstr "Interval v sekundah med preverjanjem novih dokumentov."
+msgstr ""
 
 #: models/base.py:156
 msgid "Interval"
-msgstr "Interval"
+msgstr ""
 
 #: models/base.py:160
 msgid "Assign a document type to documents uploaded from this source."
-msgstr "Določite vrsto dokumenta dokumentom, naloženim iz tega vira."
+msgstr ""
 
 #: models/base.py:162 serializers.py:17
 msgid "Document type"
@@ -258,20 +250,20 @@ msgstr "Vrsta dokumenta"
 
 #: models/base.py:166
 msgid "Whether to expand or not, compressed archives."
-msgstr "Ali razširiti ali ne, stisnjeni arhivi."
+msgstr ""
 
 #: models/base.py:167 models/staging_folder_sources.py:54
 #: models/webform_sources.py:33
 msgid "Uncompress"
-msgstr "Odstranite"
+msgstr ""
 
 #: models/base.py:173
 msgid "Interval source"
-msgstr "Intervalni vir"
+msgstr ""
 
 #: models/base.py:174
 msgid "Interval sources"
-msgstr "Intervalni viri"
+msgstr ""
 
 #: models/email_sources.py:40
 msgid "Host"
@@ -279,15 +271,13 @@ msgstr "Voditelj"
 
 #: models/email_sources.py:41
 msgid "SSL"
-msgstr "SSL"
+msgstr ""
 
 #: models/email_sources.py:43
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr ""
-"Tipične izbire so 110 za POP3, 995 za POP3 prek SSL, 143 za IMAP, 993 za "
-"IMAP prek SSL."
 
 #: models/email_sources.py:44
 msgid "Port"
@@ -295,64 +285,57 @@ msgstr "Pristanišče"
 
 #: models/email_sources.py:46
 msgid "Username"
-msgstr "Uporabniško ime"
+msgstr ""
 
 #: models/email_sources.py:47
 msgid "Password"
-msgstr "Geslo"
+msgstr ""
 
 #: models/email_sources.py:51
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
 msgstr ""
-"Ime priloge, ki bo vsebovala imena vrst metapodatkov in pare vrednosti, ki "
-"bodo dodeljeni ostalim prenesenim prilogam."
 
 #: models/email_sources.py:54
 msgid "Metadata attachment name"
-msgstr "Ime priloge metapodatkov"
+msgstr ""
 
 #: models/email_sources.py:58
 msgid ""
 "Select a metadata type to store the email's subject value. Must be a valid "
 "metadata type for the document type selected previously."
 msgstr ""
-"Izberite vrsto metapodatkov, da shranite predmetno vrednost e-poštnega "
-"sporočila. To mora biti veljavna vrsta metapodatkov za prej izbrano vrsto "
-"dokumenta."
 
 #: models/email_sources.py:62
 msgid "Subject metadata type"
-msgstr "Vrsta metapodatkov predmeta"
+msgstr ""
 
 #: models/email_sources.py:66
 msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
 msgstr ""
-"Izberite vrsto metapodatkov, da shranite vrednost e-poštnega sporočila »od«. "
-"To mora biti veljavna vrsta metapodatkov za prej izbrano vrsto dokumenta."
 
 #: models/email_sources.py:70
 msgid "From metadata type"
-msgstr "Od vrste metapodatkov"
+msgstr ""
 
 #: models/email_sources.py:74
 msgid "Store the body of the email as a text document."
-msgstr "Shranite telo e-poštnega sporočila kot besedilni dokument."
+msgstr ""
 
 #: models/email_sources.py:75
 msgid "Store email body"
-msgstr "Shrani telo e-pošte"
+msgstr ""
 
 #: models/email_sources.py:81
 msgid "Email source"
-msgstr "Vir e-pošte"
+msgstr ""
 
 #: models/email_sources.py:82
 msgid "Email sources"
-msgstr "Viri e-pošte"
+msgstr ""
 
 #: models/email_sources.py:187
 #, python-format
@@ -360,8 +343,6 @@ msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
-"Vrsta metapodatkov predmeta &quot;%(metadata_type)s&quot; ni veljavna za "
-"vrsto dokumenta: %(document_type)s"
 
 #: models/email_sources.py:201
 #, python-format
@@ -369,86 +350,78 @@ msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
-"&quot;Iz&quot; vrste metapodatkov &quot;%(metadata_type)s&quot; ni veljaven "
-"za vrsto dokumenta: %(document_type)s"
 
 #: models/email_sources.py:216
 msgid "IMAP Mailbox from which to check for messages."
-msgstr "Nabiralnik IMAP, iz katerega lahko preverite, ali obstajajo sporočila."
+msgstr ""
 
 #: models/email_sources.py:217
 msgid "Mailbox"
-msgstr "Nabiralnik"
+msgstr ""
 
 #: models/email_sources.py:221
 msgid ""
 "Criteria to use when searching for messages to process. Use the format "
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 msgstr ""
-"Merila za iskanje sporočil za obdelavo. Uporabite obliko, določeno v https://"
-"tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
 #: models/email_sources.py:224
 msgid "Search criteria"
-msgstr "Merila za iskanje"
+msgstr ""
 
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
-"Ukaz IMAP STORE za izvajanje sporočil po njihovi obdelavi. En ukaz na "
-"vrstico. Uporabite ukaze, ki so navedeni v https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6, ali ukaze po meri za strežnik IMAP."
 
 #: models/email_sources.py:232
 msgid "Store commands"
-msgstr "Shrani ukaze"
+msgstr ""
 
 #: models/email_sources.py:236
 msgid "Execute the IMAP expunge command after processing each email message."
-msgstr "Po obdelavi vsakega e-poštnega sporočila izvedite ukaz IMAP expunge."
+msgstr ""
 
 #: models/email_sources.py:238
 msgid "Execute expunge"
-msgstr "Izvedite odstranitev"
+msgstr ""
 
 #: models/email_sources.py:242
 msgid "IMAP Mailbox to which processed messages will be copied."
-msgstr "Nabiralnik IMAP, v katerega bodo kopirana obdelana sporočila."
+msgstr ""
 
 #: models/email_sources.py:243
 msgid "Destination mailbox"
-msgstr "Ciljni nabiralnik"
+msgstr ""
 
 #: models/email_sources.py:349
 msgid "Timeout"
-msgstr "Odmor"
+msgstr ""
 
 #: models/email_sources.py:355 models/email_sources.py:356
 msgid "POP email"
-msgstr "E-poštni naslov POP"
+msgstr ""
 
 #: models/scanner_sources.py:31
 msgid "Device name as returned by the SANE backend."
-msgstr "Ime naprave, kot jo vrne zaledje SANE."
+msgstr ""
 
 #: models/scanner_sources.py:32
 msgid "Device name"
-msgstr "Ime naprave"
+msgstr ""
 
 #: models/scanner_sources.py:37
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
 msgstr ""
-"Izbere način optičnega branja (npr. Lineart, enobarvni ali barvni). Če "
-"optični bralnik ne podpira te možnosti, pustite prazno."
 
 #: models/scanner_sources.py:39
 msgid "Mode"
-msgstr "Način"
+msgstr ""
 
 #: models/scanner_sources.py:43
 msgid ""
@@ -456,45 +429,38 @@ msgid ""
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
 msgstr ""
-"Nastavi ločljivost optično prebrane slike v DPI (pik na palec). Običajna "
-"vrednost je 200. Če optični bralnik ne podpira te možnosti, jo pustite "
-"prazno."
 
 #: models/scanner_sources.py:46
 msgid "Resolution"
-msgstr "Resolucija"
+msgstr ""
 
 #: models/scanner_sources.py:50
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
 msgstr ""
-"Izbere vir optičnega branja (na primer podajalnik dokumentov). Če optični "
-"bralnik ne podpira te možnosti, pustite prazno."
 
 #: models/scanner_sources.py:52
 msgid "Paper source"
-msgstr "Vir papirja"
+msgstr ""
 
 #: models/scanner_sources.py:57
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
 msgstr ""
-"Izbere način podajalnika dokumentov (simplex / duplex). Če optični bralnik "
-"ne podpira te možnosti, pustite prazno."
 
 #: models/scanner_sources.py:59
 msgid "ADF mode"
-msgstr "Način ADF"
+msgstr ""
 
 #: models/scanner_sources.py:65
 msgid "SANE Scanner"
-msgstr "SANE skener"
+msgstr ""
 
 #: models/scanner_sources.py:66
 msgid "SANE Scanners"
-msgstr "SANE optični bralniki"
+msgstr ""
 
 #: models/scanner_sources.py:95
 #, python-format
@@ -502,208 +468,187 @@ msgid ""
 "Error while executing scanning command \"%(command_line)s\"; "
 "%(error_message)s"
 msgstr ""
-"Napaka pri izvajanju ukaza za optično branje &quot;%(command_line)s&quot;; "
-"%(error_message)s"
 
 #: models/staging_folder_sources.py:39
 msgid "Server side filesystem path."
-msgstr "Pot datotečnega sistema na strani strežnika."
+msgstr ""
 
 #: models/staging_folder_sources.py:40 models/watch_folder_sources.py:33
 msgid "Folder path"
-msgstr "Pot mape"
+msgstr ""
 
 #: models/staging_folder_sources.py:43
 msgid "Width value to be passed to the converter backend."
-msgstr "Vrednost širine, ki se posreduje zaledju pretvornika."
+msgstr ""
 
 #: models/staging_folder_sources.py:44
 msgid "Preview width"
-msgstr "Širina predogleda"
+msgstr ""
 
 #: models/staging_folder_sources.py:48
 msgid "Height value to be passed to the converter backend."
-msgstr "Vrednost višine, ki se posreduje v ozadje pretvornika."
+msgstr ""
 
 #: models/staging_folder_sources.py:49
 msgid "Preview height"
-msgstr "Predogled višine"
+msgstr ""
 
 #: models/staging_folder_sources.py:53 models/webform_sources.py:32
 msgid "Whether to expand or not compressed archives."
-msgstr "Ali razširiti stisnjene arhive ali ne."
+msgstr ""
 
 #: models/staging_folder_sources.py:59
 msgid "Delete the file after is has been successfully uploaded."
-msgstr "Izbrišite datoteko, potem ko je bila uspešno naložena."
+msgstr ""
 
 #: models/staging_folder_sources.py:61
 msgid "Delete after upload"
-msgstr "Po nalaganju izbriši"
+msgstr ""
 
 #: models/staging_folder_sources.py:68
 msgid "Staging folders"
-msgstr "Uprizoritvene mape"
+msgstr ""
 
 #: models/watch_folder_sources.py:32
 msgid "Server side filesystem path to scan for files."
-msgstr "Pot datotečnega sistema na strani strežnika za iskanje datotek."
+msgstr ""
 
 #: models/watch_folder_sources.py:37
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
 msgstr ""
-"Če potrdite to polje, se ne bo samo skenirala pot do datotek, temveč tudi "
-"podimeniki."
 
 #: models/watch_folder_sources.py:40
 msgid "Include subdirectories?"
-msgstr "Vključiti podimenike?"
+msgstr ""
 
 #: models/watch_folder_sources.py:47
 msgid "Watch folders"
-msgstr "Glejte mape"
+msgstr ""
 
 #: models/webform_sources.py:40
 msgid "Web forms"
-msgstr "Spletni obrazci"
+msgstr ""
 
 #: permissions.py:5
 msgid "Sources setup"
-msgstr "Nastavitev virov"
+msgstr ""
 
 #: permissions.py:8
 msgid "Create new document sources"
-msgstr "Ustvarite nove vire dokumentov"
+msgstr ""
 
 #: permissions.py:11
 msgid "Delete document sources"
-msgstr "Izbrišite vire dokumentov"
+msgstr ""
 
 #: permissions.py:14
 msgid "Edit document sources"
-msgstr "Urejanje virov dokumentov"
+msgstr ""
 
 #: permissions.py:17
 msgid "View existing document sources"
-msgstr "Oglejte si obstoječe vire dokumentov"
+msgstr ""
 
 #: permissions.py:20
 msgid "Delete staging files"
-msgstr "Izbrišite uprizoritvene datoteke"
+msgstr ""
 
 #: queues.py:10
 msgid "Sources periodic"
-msgstr "Viri periodični"
+msgstr ""
 
 #: queues.py:14
 msgid "Sources fast"
-msgstr "Viri hitro"
+msgstr ""
 
 #: queues.py:19
 msgid "Generate staging file image"
-msgstr "Ustvari sliko uprizoritvene datoteke"
+msgstr ""
 
 #: queues.py:23
 msgid "Check interval source"
-msgstr "Preverite vir intervala"
+msgstr ""
 
 #: queues.py:27
 msgid "Handle upload"
-msgstr "Upravljajte nalaganje"
+msgstr ""
 
 #: queues.py:31
 msgid "Upload document"
-msgstr "Naloži dokument"
+msgstr ""
 
 #: settings.py:21
 msgid "File path to the scanimage program used to control image scanners."
 msgstr ""
-"Pot datoteke do programa za skeniranje slik, ki se uporablja za nadzor "
-"skenerjev slik."
 
 #: settings.py:27
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
 msgstr ""
-"Pot do podrazreda Storage za shranjevanje predpomnjenih slikovnih datotek "
-"staging_file."
 
 #: settings.py:35
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
-msgstr "Argumenti za posredovanje SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
+msgstr ""
 
 #: storages.py:16
 msgid ""
 "Unable to initialize the staging folder file image storage. Check the "
 "settings {} and {} for formatting errors."
 msgstr ""
-"Ni bilo mogoče inicializirati shrambe slike datoteke uprizoritvene mape. "
-"Preverite nastavitve {} in {} za napake pri formatiranju."
 
 #: storages.py:23
 msgid "Staging folder files"
-msgstr "Uprizoritvene datoteke map"
+msgstr ""
 
 #: templates/sources/app/foot.html:40
 msgid "Cancel upload"
-msgstr "Prekliči nalaganje"
+msgstr ""
 
 #: templates/sources/app/foot.html:41
 msgid "Are you sure you want to cancel this upload?"
-msgstr "Ali ste prepričani, da želite preklicati to nalaganje?"
+msgstr ""
 
 #: templates/sources/app/foot.html:42
 msgid "Drop files or click here to upload files"
-msgstr "Spustite datoteke ali kliknite tukaj, če želite naložiti datoteke"
+msgstr ""
 
 #: templates/sources/app/foot.html:43
 msgid "Your browser does not support drag and drop file uploads."
-msgstr "Vaš brskalnik ne podpira nalaganja datotek povleci in spusti."
+msgstr ""
 
 #: templates/sources/app/foot.html:44
 msgid "Please use the fallback form below to upload your files."
-msgstr "Za prenos datotek uporabite spodnji obrazec spodaj."
+msgstr ""
 
 #: templates/sources/app/foot.html:45
 msgid "Clear"
-msgstr "Jasno"
+msgstr ""
 
 #: templates/sources/app/foot.html:46
 msgid "Server responded with {{statusCode}} code."
-msgstr "Strežnik se je odzval s kodo {{statusCode}}."
+msgstr ""
 
 #: views/document_file_views.py:61
-#, fuzzy, python-format
-#| msgid ""
-#| "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+#, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
-"Ni mogoče naložiti novih različic za dokument &quot;%(document)s&quot;. "
-"%(exception)s"
 
 #: views/document_file_views.py:125
-#, fuzzy, python-format
-#| msgid "Error executing document upload task; %(exception)s"
+#, python-format
 msgid "Error executing document file upload task; %(exception)s"
-msgstr "Napaka pri izvajanju naloge za nalaganje dokumentov; %(exception)s"
+msgstr ""
 
 #: views/document_file_views.py:140
-#, fuzzy
-#| msgid "New document queued for upload and will be available shortly."
 msgid "New document file queued for upload and will be available shortly."
-msgstr "Nov dokument je v čakalni vrsti za nalaganje in bo kmalu na voljo."
+msgstr ""
 
 #: views/document_file_views.py:165
-#, fuzzy, python-format
-#| msgid ""
-#| "Upload a new version for document \"%(document)s\" from source: %(source)s"
+#, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
-"Naložite novo različico dokumenta &quot;%(document)s&quot; iz vira: "
-"%(source)s"
 
 #: views/document_file_views.py:168
 msgid "Submit"
@@ -711,53 +656,47 @@ msgstr "Pošlji"
 
 #: views/document_views.py:79 wizards.py:50
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
-"Noben interaktivni vir dokumentov ni bil definiran ali noben ni omogočen, "
-"ustvarite ga, preden nadaljujete."
 
 #: views/document_views.py:107 views/document_views.py:136
 #: views/document_views.py:146
 msgid "Document properties"
-msgstr "Lastnosti dokumenta"
+msgstr ""
 
 #: views/document_views.py:116
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
-"To lahko pomeni, da je uprizoritvena mapa prazna. To lahko pomeni tudi, da "
-"uporabniški račun operacijskega sistema, ki se uporablja za Mayan EDMS, nima "
-"potrebnih dovoljenj za datotečni sistem za mapo."
 
 #: views/document_views.py:123
 msgid "No staging files available"
-msgstr "Na voljo ni nobene odrske datoteke"
+msgstr ""
 
 #: views/document_views.py:126
 msgid "Files in staging path"
-msgstr "Datoteke v uprizoritveni poti"
+msgstr ""
 
 #: views/document_views.py:137
 msgid "Scan"
-msgstr "Optično branje"
+msgstr ""
 
 #: views/document_views.py:282
 #, python-format
 msgid "Error executing document upload task; %(exception)s"
-msgstr "Napaka pri izvajanju naloge za nalaganje dokumentov; %(exception)s"
+msgstr ""
 
 #: views/document_views.py:292
 msgid "New document queued for upload and will be available shortly."
-msgstr "Nov dokument je v čakalni vrsti za nalaganje in bo kmalu na voljo."
+msgstr ""
 
 #: views/document_views.py:309
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
-"Naložite dokument vrste &quot;%(document_type)s&quot; iz vira: %(source)s"
 
 #: views/source_views.py:50
 msgid ""
@@ -766,34 +705,30 @@ msgid ""
 "tested. Check the source's error log for information during testing. A "
 "successful test will clear the error log."
 msgstr ""
-"To bo izvedlo kodo za preverjanje vira, tudi če vir ni omogočen. Viri, ki po "
-"prenosu vsebine izbrišejo, tega med preskusom ne bodo storili. Med "
-"testiranjem preverite informacije o napakah v viru. Uspešen test bo izbrisal "
-"dnevnik napak."
 
 #: views/source_views.py:56
 #, python-format
 msgid "Trigger check for source \"%s\"?"
-msgstr "Sproži preverjanje vira &quot;%s&quot;?"
+msgstr ""
 
 #: views/source_views.py:68
 msgid "Source check queued."
-msgstr "Izvor preverjanja v čakalni vrsti."
+msgstr ""
 
 #: views/source_views.py:82
 #, python-format
 msgid "Create new source of type: %s"
-msgstr "Ustvari nov vir vrste: %s"
+msgstr ""
 
 #: views/source_views.py:105
 #, python-format
 msgid "Delete the source: %s?"
-msgstr "Želite izbrisati vir: %s?"
+msgstr ""
 
 #: views/source_views.py:127
 #, python-format
 msgid "Edit source: %s"
-msgstr "Uredi vir: %s"
+msgstr ""
 
 #: views/source_views.py:167
 msgid ""
@@ -802,50 +737,29 @@ msgid ""
 "email sources, are automatic and run on the background without user "
 "intervention."
 msgstr ""
-"Viri omogočajo nalaganje dokumentov. Nekateri viri, kot je spletni obrazec, "
-"so interaktivni in za delovanje potrebujejo uporabniški vnos. Drugi, kot so "
-"e-poštni viri, so samodejni in delujejo v ozadju brez posredovanja "
-"uporabnika."
 
 #: views/source_views.py:172
 msgid "No sources available"
-msgstr "Na voljo ni nobenega vira"
+msgstr ""
 
 #: views/source_views.py:186
 #, python-format
 msgid "Delete staging file \"%s\"?"
-msgstr "Želite izbrisati uprizoritveno datoteko &quot;%s&quot;?"
+msgstr ""
 
 #: wizard_steps.py:11
 msgid "Select document type"
-msgstr "Izberite vrsto dokumenta"
+msgstr ""
 
 #: wizards.py:70
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
-msgstr "Korak %(step)d od %(total_steps)d: %(step_label)s"
+msgstr ""
 
 #: wizards.py:75
 msgid "Next step"
-msgstr "Naslednji korak"
+msgstr ""
 
 #: wizards.py:77
 msgid "Document upload wizard"
-msgstr "Čarovnik za nalaganje dokumentov"
-
-#~ msgid "Error deleting staging file; %s"
-#~ msgstr "Napaka pri brisanju pripravljalne datoteke; %s"
-
-#~ msgid "Unable get list of staging files: %s"
-#~ msgstr "Ni mogoče dobiti seznama pripravljalnih datotek: %s"
-
-#~ msgid "Error executing document version upload task; %(exception)s"
-#~ msgstr ""
-#~ "Napaka pri izvajanju naloge za nalaganje različice dokumenta; "
-#~ "%(exception)s"
-
-#~ msgid ""
-#~ "New document version queued for upload and will be available shortly."
-#~ msgstr ""
-#~ "Nova različica dokumenta je v čakalni vrsti za nalaganje in bo kmalu na "
-#~ "voljo."
+msgstr ""

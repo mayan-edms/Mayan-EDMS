@@ -1,24 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
-# Roberto Rosario, 2020-2021
+# Roberto Rosario, 2021
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-01-02 22:19+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>, 2021\n"
+"Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:41 events.py:5 links.py:32
@@ -70,10 +71,8 @@ msgid "Check out expiration"
 msgstr "Scadenza della prenotazione"
 
 #: forms.py:51
-#, fuzzy
-#| msgid "New versions allowed?"
 msgid "New files allowed?"
-msgstr "Accetta nuove versioni"
+msgstr ""
 
 #: forms.py:52
 msgid "Yes"
@@ -128,16 +127,12 @@ msgid "Check out expiration date and time"
 msgstr "Data e l'ora di scadenza de prenotazione"
 
 #: models.py:45
-#, fuzzy
-#| msgid "Do not allow new version of this document to be uploaded."
 msgid "Do not allow new file of this document to be uploaded."
-msgstr "Non permettere che la nuova versione di questo documento sia caricata."
+msgstr ""
 
 #: models.py:47
-#, fuzzy
-#| msgid "Block new version upload"
 msgid "Block new file upload"
-msgstr "Blocca la nuova versione in caricamento"
+msgstr ""
 
 #: models.py:55 permissions.py:5
 msgid "Document checkout"
@@ -193,10 +188,9 @@ msgid "Unable to check in document \"%(instance)s\"; %(exception)s"
 msgstr ""
 
 #: views.py:29
-#, fuzzy, python-format
-#| msgid "Document not checked out."
+#, python-format
 msgid "Document \"%(object)s\" checked in successfully."
-msgstr "Documento non prenotato."
+msgstr ""
 
 #: views.py:32
 #, python-format
@@ -209,24 +203,19 @@ msgid "%(count)d documents checked in successfully."
 msgstr ""
 
 #: views.py:37
-#, fuzzy, python-format
-#| msgid "Check in document: %s"
+#, python-format
 msgid "Check in document \"%(object)s\"."
-msgstr "Liberare documento: %s"
+msgstr ""
 
 #: views.py:38
-#, fuzzy, python-format
-#| msgid "Check in %(count)d document"
-#| msgid_plural "Check in %(count)d documents"
+#, python-format
 msgid "Check in %(count)d document."
-msgstr "Liberare %(count)d documento"
+msgstr ""
 
 #: views.py:39
-#, fuzzy, python-format
-#| msgid "Check in %(count)d document"
-#| msgid_plural "Check in %(count)d documents"
+#, python-format
 msgid "Check in %(count)d documents."
-msgstr "Liberare %(count)d documento"
+msgstr ""
 
 #: views.py:93
 #, python-format
@@ -234,16 +223,14 @@ msgid "Unable to checkout document \"%(instance)s\"; %(exception)s"
 msgstr ""
 
 #: views.py:100
-#, fuzzy, python-format
-#| msgid "Document not checked out."
+#, python-format
 msgid "Document \"%(object)s\" checked out successfully."
-msgstr "Documento non prenotato."
+msgstr ""
 
 #: views.py:103
-#, fuzzy, python-format
-#| msgid "Amount of time to hold the document checked out in minutes."
+#, python-format
 msgid "%(count)d document checked out successfully."
-msgstr "Minuti disponibili per fermare il documento in prenotazione"
+msgstr ""
 
 #: views.py:106
 #, python-format
@@ -251,30 +238,23 @@ msgid "%(count)d documents checked out successfully."
 msgstr ""
 
 #: views.py:108
-#, fuzzy, python-format
-#| msgid "Check out document: %s"
+#, python-format
 msgid "Checkout document \"%(object)s\"."
-msgstr "Prenotare documento: %s"
+msgstr ""
 
 #: views.py:109
-#, fuzzy, python-format
-#| msgid "Checkout %(count)d document"
-#| msgid_plural "Checkout %(count)d documents"
+#, python-format
 msgid "Checkout %(count)d document."
-msgstr "Prenotare %(count)d documento"
+msgstr ""
 
 #: views.py:110
-#, fuzzy, python-format
-#| msgid "Checkout %(count)d document"
-#| msgid_plural "Checkout %(count)d documents"
+#, python-format
 msgid "Checkout %(count)d documents."
-msgstr "Prenotare %(count)d documento"
+msgstr ""
 
 #: views.py:114
-#, fuzzy
-#| msgid "Checkouts"
 msgid "Checkout"
-msgstr "Prenotari"
+msgstr ""
 
 #: views.py:158
 #, python-format
@@ -286,8 +266,8 @@ msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
 msgstr ""
-"La prenotazione di un documento blocca determinate operazioni per un periodo "
-"di tempo predeterminato."
+"La prenotazione di un documento blocca determinate operazioni per un periodo"
+" di tempo predeterminato."
 
 #: views.py:181
 msgid "No documents have been checked out"
@@ -296,9 +276,3 @@ msgstr "Nessun documento prenotato"
 #: widgets.py:23
 msgid "Amount"
 msgstr "Quantità"
-
-#~ msgid "New version block"
-#~ msgstr "Nuova versione blocco"
-
-#~ msgid "New version blocks"
-#~ msgstr "Nuove versioni blocco"

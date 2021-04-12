@@ -1,27 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Sergey Glita <gsv70@mail.ru>, 2021
+# lilo.panic, 2021
+# Panasoft, 2021
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
-# lilo.panic, 2016
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-03-22 08:18+0000\n"
-"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:38+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
 #: templates/announcements/announcements.html:8 views.py:119
@@ -30,7 +30,7 @@ msgstr ""
 
 #: apps.py:74 apps.py:78
 msgid "None"
-msgstr "Ни один"
+msgstr "Нет"
 
 #: events.py:8
 msgid "Announcement created"
@@ -53,44 +53,36 @@ msgid "Edit"
 msgstr "Редактировать"
 
 #: models.py:18
-#, fuzzy
-#| msgid "Short description of this message."
 msgid "Short description of this announcement."
-msgstr "Краткое описание объявления."
+msgstr ""
 
 #: models.py:19
 msgid "Label"
 msgstr "Заголовок"
 
 #: models.py:22
-#, fuzzy
-#| msgid "The actual message to be displayed."
 msgid "The actual test to be displayed."
-msgstr "Сообщение, которое будет отображаться."
+msgstr ""
 
 #: models.py:23
 msgid "Text"
-msgstr ""
+msgstr "Текст"
 
 #: models.py:25
 msgid "Enabled"
-msgstr "Доступно"
+msgstr "Включено"
 
 #: models.py:28
-#, fuzzy
-#| msgid "Date and time after which this message will be displayed."
 msgid "Date and time after which this announcement will be displayed."
-msgstr "Дата и время начала отображения объявления."
+msgstr ""
 
 #: models.py:29
 msgid "Start date time"
 msgstr "Дата и время начала"
 
 #: models.py:33
-#, fuzzy
-#| msgid "Date and time until when this message is to be displayed."
 msgid "Date and time until when this announcement is to be displayed."
-msgstr "Дата и время окончания отображения объявления."
+msgstr ""
 
 #: models.py:34
 msgid "End date time"
@@ -117,28 +109,24 @@ msgid "View announcements"
 msgstr ""
 
 #: views.py:41
-#, fuzzy, python-format
-#| msgid "Error deleting message \"%(message)s\": %(error)s"
+#, python-format
 msgid "Error deleting announcement \"%(instance)s\"; %(exception)s"
-msgstr "Ошибка при удалении объявления \"%(message)s\": %(error)s"
+msgstr ""
 
 #: views.py:50
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "Announcement \"%(object)s\" deleted successfully."
-msgstr "Объявление \"%s\" удалено."
+msgstr ""
 
 #: views.py:53
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d announcement deleted successfully."
-msgstr "Объявление \"%s\" удалено."
+msgstr ""
 
 #: views.py:56
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d announcements deleted successfully."
-msgstr "Объявление \"%s\" удалено."
+msgstr ""
 
 #: views.py:58
 #, python-format
@@ -146,18 +134,14 @@ msgid "Delete announcement: %(object)s."
 msgstr ""
 
 #: views.py:59
-#, fuzzy, python-format
-#| msgid "Delete the selected message?"
-#| msgid_plural "Delete the selected messages?"
+#, python-format
 msgid "Delete the %(count)d selected announcement."
-msgstr "Удалить выбранное объявление?"
+msgstr ""
 
 #: views.py:60
-#, fuzzy, python-format
-#| msgid "Delete the selected message?"
-#| msgid_plural "Delete the selected messages?"
+#, python-format
 msgid "Delete the %(count)d selected announcements."
-msgstr "Удалить выбранное объявление?"
+msgstr ""
 
 #: views.py:92
 #, python-format
@@ -165,67 +149,12 @@ msgid "Edit announcement: %s"
 msgstr ""
 
 #: views.py:114
-#, fuzzy
-#| msgid ""
-#| "Messages are displayed in the login view. You can use messages to convery "
-#| "information about your organzation, announcements or usage guidelines for "
-#| "your users."
 msgid ""
 "Announcements are displayed in the login view. You can use announcements to "
 "convery information about your organzation, announcements or usage "
 "guidelines for your users."
 msgstr ""
-"Объявления отображаются на странице входа в систему. Вы можете использовать "
-"объявления для передачи информации о вашей организации, объявлений или "
-"руководств по использованию для ваших пользователей."
 
 #: views.py:118
-#, fuzzy
-#| msgid "No messages available"
 msgid "No announcements available"
-msgstr "Нет доступных объявлений"
-
-#~ msgid "Message of the day"
-#~ msgstr "Объявление"
-
-#~ msgid "Messages"
-#~ msgstr "Объявления"
-
-#~ msgid "Message created"
-#~ msgstr "Объявление создано"
-
-#~ msgid "Message edited"
-#~ msgstr "Сообщение изменено"
-
-#~ msgid "Create message"
-#~ msgstr "Создать объявление"
-
-#~ msgid "Message"
-#~ msgstr "Сообщение"
-
-#~ msgid "Create messages"
-#~ msgstr "Создать объявления"
-
-#~ msgid "Delete messages"
-#~ msgstr "Удалить объявления"
-
-#~ msgid "Edit messages"
-#~ msgstr "Редактировать объявления"
-
-#~ msgid "View messages"
-#~ msgstr "Просмотр объявлений"
-
-#~ msgid "Messages of the day"
-#~ msgstr "Объявления"
-
-#~ msgid "Delete request performed on %(count)d message"
-#~ msgstr "Запрос на удаление выполнен для %(count)d объявления"
-
-#~ msgid "Delete request performed on %(count)d messages"
-#~ msgstr "Запрос на удаление, выполненный для %(count)d объявлений"
-
-#~ msgid "Delete message: %s?"
-#~ msgstr "Удалить объявление: %s?"
-
-#~ msgid "Edit message: %s"
-#~ msgstr "Редактировать объявление: %s"
+msgstr ""

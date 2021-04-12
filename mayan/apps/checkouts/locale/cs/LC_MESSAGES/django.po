@@ -1,25 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019
+# Michal Švábík <snadno@lehce.cz>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-04-28 03:38+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
-"cs/)\n"
-"Language: cs\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:41 events.py:5 links.py:32
 msgid "Checkouts"
@@ -70,10 +69,8 @@ msgid "Check out expiration"
 msgstr ""
 
 #: forms.py:51
-#, fuzzy
-#| msgid "New versions allowed?"
 msgid "New files allowed?"
-msgstr "Povoleny nové verze?"
+msgstr ""
 
 #: forms.py:52
 msgid "Yes"
@@ -204,22 +201,19 @@ msgid "%(count)d documents checked in successfully."
 msgstr ""
 
 #: views.py:37
-#, fuzzy, python-format
-#| msgid "Checked out documents"
+#, python-format
 msgid "Check in document \"%(object)s\"."
-msgstr "Dokomenty ke kontrole"
+msgstr ""
 
 #: views.py:38
-#, fuzzy, python-format
-#| msgid "Checked out documents"
+#, python-format
 msgid "Check in %(count)d document."
-msgstr "Dokomenty ke kontrole"
+msgstr ""
 
 #: views.py:39
-#, fuzzy, python-format
-#| msgid "Checked out documents"
+#, python-format
 msgid "Check in %(count)d documents."
-msgstr "Dokomenty ke kontrole"
+msgstr ""
 
 #: views.py:93
 #, python-format
@@ -242,28 +236,23 @@ msgid "%(count)d documents checked out successfully."
 msgstr ""
 
 #: views.py:108
-#, fuzzy, python-format
-#| msgid "Checked out documents"
+#, python-format
 msgid "Checkout document \"%(object)s\"."
-msgstr "Dokomenty ke kontrole"
+msgstr ""
 
 #: views.py:109
-#, fuzzy, python-format
-#| msgid "Checked out documents"
+#, python-format
 msgid "Checkout %(count)d document."
-msgstr "Dokomenty ke kontrole"
+msgstr ""
 
 #: views.py:110
-#, fuzzy, python-format
-#| msgid "Checked out documents"
+#, python-format
 msgid "Checkout %(count)d documents."
-msgstr "Dokomenty ke kontrole"
+msgstr ""
 
 #: views.py:114
-#, fuzzy
-#| msgid "Checkouts"
 msgid "Checkout"
-msgstr "Kontrola"
+msgstr ""
 
 #: views.py:158
 #, python-format
@@ -283,6 +272,3 @@ msgstr ""
 #: widgets.py:23
 msgid "Amount"
 msgstr "Množství"
-
-#~ msgid "New version block"
-#~ msgstr "Nová verze bloku"

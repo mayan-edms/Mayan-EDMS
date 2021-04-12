@@ -1,26 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Marwan Rahhal <Marwanr@sssit.net>, 2020
-# WM Shinkada <shinkadawasim@gmail.com>, 2020
+# Mohammed ALDOUB <voulnet@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# WM Shinkada <shinkadawasim@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-12-24 00:42+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:41 events.py:5 links.py:32
 msgid "Checkouts"
@@ -71,10 +71,8 @@ msgid "Check out expiration"
 msgstr "تحقق من انتهاء الصلاحية"
 
 #: forms.py:51
-#, fuzzy
-#| msgid "New versions allowed?"
 msgid "New files allowed?"
-msgstr "الإصدارات الجديدة المسموح بها؟"
+msgstr ""
 
 #: forms.py:52
 msgid "Yes"
@@ -129,16 +127,12 @@ msgid "Check out expiration date and time"
 msgstr "التحقق من تاريخ انتهاء الصلاحية للوقت والتاريخ"
 
 #: models.py:45
-#, fuzzy
-#| msgid "Do not allow new version of this document to be uploaded."
 msgid "Do not allow new file of this document to be uploaded."
-msgstr "لا يمكن تحميل نسخة جديدة من الوثيقة"
+msgstr ""
 
 #: models.py:47
-#, fuzzy
-#| msgid "Block new version upload"
 msgid "Block new file upload"
-msgstr "منع تحميل الإصدار الجديد"
+msgstr ""
 
 #: models.py:55 permissions.py:5
 msgid "Document checkout"
@@ -194,10 +188,9 @@ msgid "Unable to check in document \"%(instance)s\"; %(exception)s"
 msgstr ""
 
 #: views.py:29
-#, fuzzy, python-format
-#| msgid "Document not checked out."
+#, python-format
 msgid "Document \"%(object)s\" checked in successfully."
-msgstr "لم يتم إستخراج الوثيقة."
+msgstr ""
 
 #: views.py:32
 #, python-format
@@ -210,24 +203,19 @@ msgid "%(count)d documents checked in successfully."
 msgstr ""
 
 #: views.py:37
-#, fuzzy, python-format
-#| msgid "Check in document: %s"
+#, python-format
 msgid "Check in document \"%(object)s\"."
-msgstr "إدخال الوثيقة: %s"
+msgstr ""
 
 #: views.py:38
-#, fuzzy, python-format
-#| msgid "Check in %(count)d document"
-#| msgid_plural "Check in %(count)d documents"
+#, python-format
 msgid "Check in %(count)d document."
-msgstr "إيداع المستندات %(count)d"
+msgstr ""
 
 #: views.py:39
-#, fuzzy, python-format
-#| msgid "Check in %(count)d document"
-#| msgid_plural "Check in %(count)d documents"
+#, python-format
 msgid "Check in %(count)d documents."
-msgstr "إيداع المستندات %(count)d"
+msgstr ""
 
 #: views.py:93
 #, python-format
@@ -235,16 +223,14 @@ msgid "Unable to checkout document \"%(instance)s\"; %(exception)s"
 msgstr ""
 
 #: views.py:100
-#, fuzzy, python-format
-#| msgid "Document not checked out."
+#, python-format
 msgid "Document \"%(object)s\" checked out successfully."
-msgstr "لم يتم إستخراج الوثيقة."
+msgstr ""
 
 #: views.py:103
-#, fuzzy, python-format
-#| msgid "Amount of time to hold the document checked out in minutes."
+#, python-format
 msgid "%(count)d document checked out successfully."
-msgstr "المدة اللازمة للاحتفاظ بالوثيقة التي تم استخراجها بالدقائق."
+msgstr ""
 
 #: views.py:106
 #, python-format
@@ -252,30 +238,23 @@ msgid "%(count)d documents checked out successfully."
 msgstr ""
 
 #: views.py:108
-#, fuzzy, python-format
-#| msgid "Check out document: %s"
+#, python-format
 msgid "Checkout document \"%(object)s\"."
-msgstr "سحب الوثيقة: %s"
+msgstr ""
 
 #: views.py:109
-#, fuzzy, python-format
-#| msgid "Checkout %(count)d document"
-#| msgid_plural "Checkout %(count)d documents"
+#, python-format
 msgid "Checkout %(count)d document."
-msgstr "سحب المستندات %(count)d"
+msgstr ""
 
 #: views.py:110
-#, fuzzy, python-format
-#| msgid "Checkout %(count)d document"
-#| msgid_plural "Checkout %(count)d documents"
+#, python-format
 msgid "Checkout %(count)d documents."
-msgstr "سحب المستندات %(count)d"
+msgstr ""
 
 #: views.py:114
-#, fuzzy
-#| msgid "Checkouts"
 msgid "Checkout"
-msgstr "المخرجات"
+msgstr ""
 
 #: views.py:158
 #, python-format
@@ -295,9 +274,3 @@ msgstr "لم يتم إستخراج أوثائق"
 #: widgets.py:23
 msgid "Amount"
 msgstr "كمية"
-
-#~ msgid "New version block"
-#~ msgstr "كتلة الإصدار الجديد"
-
-#~ msgid "New version blocks"
-#~ msgstr "كتل الإصدار الجديد"

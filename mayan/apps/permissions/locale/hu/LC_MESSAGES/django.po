@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# molnars <szabolcs.molnar@gmail.com>, 2017
+# molnars <szabolcs.molnar@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/hu/)\n"
-"Language: hu\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:28+0000\n"
+"Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2021\n"
+"Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:43 events.py:6 models.py:37 models.py:157 permissions.py:5
@@ -46,7 +46,7 @@ msgstr ""
 
 #: links.py:17 links.py:37 models.py:48 views.py:171
 msgid "Roles"
-msgstr "Szerepkör"
+msgstr "Szerepkörök"
 
 #: links.py:23 views.py:51
 msgid "Create new role"
@@ -62,7 +62,7 @@ msgstr "Szerkesztés"
 
 #: links.py:41 models.py:40
 msgid "Groups"
-msgstr "Csoport"
+msgstr "Csoportok"
 
 #: links.py:47
 msgid "Role permissions"
@@ -193,19 +193,3 @@ msgstr ""
 #: views.py:170
 msgid "There are no roles"
 msgstr ""
-
-#~ msgid ""
-#~ "Comma separated list of groups primary keys to add to, or replace in this "
-#~ "role."
-#~ msgstr ""
-#~ "Ebben a szerepkörben hozzáadandó vagy kicserélendő csoportok elsődleges "
-#~ "kulcsainak vesszővel elválasztott listája."
-
-#~ msgid ""
-#~ "Comma separated list of permission primary keys to grant to this role."
-#~ msgstr ""
-#~ "Ehhez a szerepkörhöz adandó jogosúltásg elsődleges kulcsának vesszővel "
-#~ "elválasztott listája."
-
-#~ msgid "No such permission: %s"
-#~ msgstr "Nincs ilyen jogosúltság: %s"

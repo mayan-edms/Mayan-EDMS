@@ -1,23 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# yulin Gong <540538248@qq.com>, 2019
+# Roberto Rosario, 2021
+# yan songwei <yansw@vip.163.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-"
-"edms/language/zh-Hans/)\n"
-"Language: zh-Hans\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: yan songwei <yansw@vip.163.com>, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:32 events.py:6 permissions.py:6 settings.py:10
@@ -98,8 +99,8 @@ msgstr "控制用于经过身份验证的用户的机制。选项包括：用户
 
 #: settings.py:22
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
-"in. Value is time in seconds."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
 msgstr ""
 
 #: settings.py:29
@@ -118,7 +119,7 @@ msgstr ""
 
 #: templates/authentication/app/viewport.html:14
 msgid "Click here when finished"
-msgstr ""
+msgstr "完成后请点击这里"
 
 #: templates/authentication/login.html:10
 msgid "Login"
@@ -205,8 +206,3 @@ msgstr "重置用户“%(user)s”的密码时出错：%(error)s"
 #, python-format
 msgid "Impersonate user: %s"
 msgstr ""
-
-#~ msgid ""
-#~ "Super user and staff user password reseting is not allowed, use the admin "
-#~ "interface for these cases."
-#~ msgstr "不允许超级用户和员工用户的密码重置，在这些情况下请使用管理界面。"

@@ -1,26 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Jože Detečnik <joze.detecnik@3tav.si>, 2020
-# kontrabant <kontrabant@gmail.com>, 2017
+# Roberto Rosario, 2021
+# Jože Detečnik <joze.detecnik@3tav.si>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-12-25 10:13+0000\n"
-"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
-"Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/sl/)\n"
-"Language: sl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:12+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2021\n"
+"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #: apps.py:24 classes.py:143 links.py:27
 msgid "ACLs"
@@ -33,10 +32,8 @@ msgid ""
 msgstr ""
 
 #: apps.py:63
-#, fuzzy
-#| msgid "Object ID"
 msgid "Object"
-msgstr "ID objekta"
+msgstr "Predmet"
 
 #: events.py:6 permissions.py:5
 msgid "Access control lists"
@@ -44,17 +41,15 @@ msgstr "Seznami za nadzor dostopa"
 
 #: events.py:10
 msgid "ACL created"
-msgstr "ACL je ustvarjen"
+msgstr ""
 
 #: events.py:13
-#, fuzzy
-#| msgid "ACL edited"
 msgid "ACL deleted"
-msgstr "ACL urejeno"
+msgstr ""
 
 #: events.py:16
 msgid "ACL edited"
-msgstr "ACL urejeno"
+msgstr ""
 
 #: forms.py:13 models.py:51 views.py:67
 msgid "Role"
@@ -79,7 +74,7 @@ msgstr ""
 #: managers.py:228
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
-msgstr "Predmet &quot;%s&quot; ni model in ga ni mogoče preveriti za dostop."
+msgstr ""
 
 #: managers.py:248
 #, python-format
@@ -112,20 +107,12 @@ msgid "View ACLs"
 msgstr "Preglej dostopne pravice"
 
 #: serializers.py:125
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
-"Primarni ključ novega dovoljenja za odobritev na seznamu za nadzor dostopa."
 
 #: serializers.py:132
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
-"Primarni ključ novega dovoljenja za odobritev na seznamu za nadzor dostopa."
 
 #: views.py:40
 #, python-format
@@ -133,8 +120,6 @@ msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
 "ACL entry instead."
 msgstr ""
-"ACL za &quot;%(object)s&quot; z uporabo vloge &quot;%(role)s&quot; že "
-"obstaja. Namesto tega uredite ta vnos ACL."
 
 #: views.py:53
 #, python-format
@@ -148,7 +133,7 @@ msgstr "Brisanje ACL: %s"
 
 #: views.py:139
 msgid "There are no ACLs for this object"
-msgstr "Za ta objekt ni ACL-jev"
+msgstr ""
 
 #: views.py:142 views.py:259
 msgid ""
@@ -156,9 +141,6 @@ msgid ""
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
 msgstr ""
-"ACL je kratica za Access Control List in je natančna metoda za nadzor "
-"uporabniškega dostopa do predmetov v sistemu. ACL omogočajo dodelitev "
-"dovoljenja za vlogo, vendar le za določen predmet ali nabor predmetov."
 
 #: views.py:149
 #, python-format
@@ -176,7 +158,7 @@ msgstr "Razpoložljiva dovoljenja"
 #: views.py:208
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
-msgstr "Vloga &quot;%(role)s&quot; dovoljenja za &quot;%(object)s&quot;."
+msgstr ""
 
 #: views.py:217
 msgid ""
@@ -191,16 +173,12 @@ msgstr ""
 "nastavitvah."
 
 #: views.py:256
-#, fuzzy
-#| msgid "There are no ACLs for this object"
 msgid "There are no ACLs"
-msgstr "Za ta objekt ni ACL-jev"
+msgstr ""
 
 #: views.py:265
-#, fuzzy
-#| msgid "Access control lists"
 msgid "Global access control lists"
-msgstr "Seznami za nadzor dostopa"
+msgstr ""
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -215,7 +193,8 @@ msgid "Object ID"
 msgstr "ID objekta"
 
 #: workflow_actions.py:35
-msgid "Numeric identifier of the object for which the access will be modified."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
 msgstr "Številčni identifikator predmeta, za katerega bo dostop spremenjen."
 
 #: workflow_actions.py:40 workflow_actions.py:155
@@ -233,44 +212,16 @@ msgstr "Dovoljenja za odobritev/preklic v/iz vlog za zgoraj izbrani objekt."
 
 #: workflow_actions.py:57
 msgid "Grant object access"
-msgstr "Odobrite dostop do predmeta"
+msgstr ""
 
 #: workflow_actions.py:140
 msgid "Revoke object access"
-msgstr "Prekliči dostop do predmeta"
+msgstr ""
 
 #: workflow_actions.py:172
 msgid "Grant document access"
-msgstr "Odobrite dostop do dokumentov"
+msgstr ""
 
 #: workflow_actions.py:211
 msgid "Revoke document access"
-msgstr "Prekliči dostop do dokumentov"
-
-#~ msgid ""
-#~ "API URL pointing to the list of permissions for this access control list."
-#~ msgstr ""
-#~ "URL za API, ki kaže na seznam dovoljenj za ta nadzorni seznam dostopa."
-
-#~ msgid ""
-#~ "API URL pointing to a permission in relation to the access control list "
-#~ "to which it is attached. This URL is different than the canonical "
-#~ "workflow URL."
-#~ msgstr ""
-#~ "UR API-ja, ki kaže na dovoljenae v zvezi s seznamom za nadzor dostopa, na "
-#~ "katerega je priključen. Ta URL je drugačen od kanoničnega URL-ja poteka "
-#~ "dela."
-
-#~ msgid "No such permission: %s"
-#~ msgstr "Neobstoječe dovoljenje: %s"
-
-#~ msgid ""
-#~ "Comma separated list of permission primary keys to grant to this access "
-#~ "control list."
-#~ msgstr ""
-#~ "Seznam primarnih ključev dovolilnic, ločenih z vejicami, za dodelitev "
-#~ "tega seznama za nadzor dostopa."
-
-#~ msgid "Primary keys of the role to which this access control list binds to."
-#~ msgstr ""
-#~ "Primarni ključi vloge, na katere se ta kontrolni seznam za dostop poveže."
+msgstr ""

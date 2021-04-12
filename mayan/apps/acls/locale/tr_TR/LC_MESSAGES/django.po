@@ -1,23 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# serhatcan77 <serhat_can@yahoo.com>, 2017
+# Nurgül Özkan <nurgulozkan@hotmail.com>, 2021
+# serhatcan77 <serhat_can@yahoo.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-03-28 07:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/tr_TR/)\n"
-"Language: tr_TR\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:12+0000\n"
+"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2021\n"
+"Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:24 classes.py:143 links.py:27
@@ -36,7 +37,7 @@ msgstr ""
 
 #: events.py:6 permissions.py:5
 msgid "Access control lists"
-msgstr "Erişim Kontrol Listesi"
+msgstr "Erişim Kontrol Listeleri"
 
 #: events.py:10
 msgid "ACL created"
@@ -95,7 +96,7 @@ msgstr "Erişim Girişleri"
 #: models.py:64
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
-msgstr "\"%(role)s\" yetkisi \"%(object)s\" için rol"
+msgstr ""
 
 #: permissions.py:8
 msgid "Edit ACLs"
@@ -106,18 +107,12 @@ msgid "View ACLs"
 msgstr "Erişim Kontrolünü Görüntüle"
 
 #: serializers.py:125
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to add to the ACL."
-msgstr "Erişim kontrol listesine yeni izin verilmesi için birincil anahtar."
+msgstr ""
 
 #: serializers.py:132
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to remove from the ACL."
-msgstr "Erişim kontrol listesine yeni izin verilmesi için birincil anahtar."
+msgstr ""
 
 #: views.py:40
 #, python-format
@@ -129,7 +124,7 @@ msgstr ""
 #: views.py:53
 #, python-format
 msgid "New access control lists for: %s"
-msgstr "Için yeni erişim kontrol listeleri: %s"
+msgstr ""
 
 #: views.py:96
 #, python-format
@@ -178,10 +173,8 @@ msgid "There are no ACLs"
 msgstr ""
 
 #: views.py:265
-#, fuzzy
-#| msgid "Access control lists"
 msgid "Global access control lists"
-msgstr "Erişim Kontrol Listesi"
+msgstr ""
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -196,7 +189,8 @@ msgid "Object ID"
 msgstr ""
 
 #: workflow_actions.py:35
-msgid "Numeric identifier of the object for which the access will be modified."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
 msgstr ""
 
 #: workflow_actions.py:40 workflow_actions.py:155
@@ -227,29 +221,3 @@ msgstr ""
 #: workflow_actions.py:211
 msgid "Revoke document access"
 msgstr ""
-
-#~ msgid ""
-#~ "API URL pointing to the list of permissions for this access control list."
-#~ msgstr "Bu erişim kontrol listesinin izin listesine işaret eden API URL'si."
-
-#~ msgid ""
-#~ "API URL pointing to a permission in relation to the access control list "
-#~ "to which it is attached. This URL is different than the canonical "
-#~ "workflow URL."
-#~ msgstr ""
-#~ "API URL'si, bağlı olduğu erişim kontrol listesiyle ilgili olarak bir izne "
-#~ "işaret ediyor. Bu URL, kurallı iş akışı URL'sinden farklı."
-
-#~ msgid "No such permission: %s"
-#~ msgstr "Böyle bir izin yok: %s"
-
-#~ msgid ""
-#~ "Comma separated list of permission primary keys to grant to this access "
-#~ "control list."
-#~ msgstr ""
-#~ "Bu erişim denetim listesine vermek üzere birincil anahtarların virgülle "
-#~ "ayrılmış listesi."
-
-#~ msgid "Primary keys of the role to which this access control list binds to."
-#~ msgstr ""
-#~ "Bu erişim denetim listesinin bağlandığı role ait birincil anahtarlar."

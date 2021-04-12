@@ -2,26 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Mohammed ALDOUB <voulnet@gmail.com>, 2018
-# WM Shinkada <shinkadawasim@gmail.com>, 2020
-# Marwan Rahhal <Marwanr@sssit.net>, 2020
-#
+# Mohammed ALDOUB <voulnet@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2017-08-25 00:49+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2020\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
-"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:53 events.py:6 permissions.py:6 settings.py:10
 msgid "Document parsing"
@@ -51,16 +49,12 @@ msgid "Document parsed content deleted"
 msgstr "تم حذف محتوى الوثائق الذي تم تحليله"
 
 #: events.py:14
-#, fuzzy
-#| msgid "Document version submitted for parsing"
 msgid "Document file submitted for parsing"
-msgstr "معالجة تحليل الوثيقة"
+msgstr ""
 
 #: events.py:17
-#, fuzzy
-#| msgid "Document version parsing finished"
 msgid "Document file parsing finished"
-msgstr "تم انهاء تحليل الوثيقة"
+msgstr ""
 
 #: forms.py:37
 #, python-format
@@ -96,10 +90,8 @@ msgid "Parse documents per type"
 msgstr "تحليل المستندات لكل نوع"
 
 #: models.py:18
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file page"
-msgstr "صفحة الوثيقة"
+msgstr ""
 
 #: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."
@@ -107,16 +99,12 @@ msgstr ""
 "محتوى النص الفعلي كما تم استخراجه بواسطة الواجهة الخلفية لتحليل المستند."
 
 #: models.py:30
-#, fuzzy
-#| msgid "Document page content"
 msgid "Document file page content"
-msgstr "محتوى صفحة المستند"
+msgstr ""
 
 #: models.py:31
-#, fuzzy
-#| msgid "Document pages contents"
 msgid "Document file page contents"
-msgstr "محتويات صفحات الوثيقة"
+msgstr ""
 
 #: models.py:43
 msgid "Document type"
@@ -128,33 +116,27 @@ msgstr "معالجة الوثائق المنشأة حديثاً"
 
 #: models.py:58
 msgid "Document type settings"
-msgstr "اعدادات انواع الوثائق"
+msgstr "اعدادات نوع الوثيقة"
 
 #: models.py:59
 msgid "Document types settings"
 msgstr "اعدادات انواع الوثائق"
 
 #: models.py:69
-#, fuzzy
-#| msgid "Document page"
 msgid "Document file"
-msgstr "صفحة الوثيقة"
+msgstr ""
 
 #: models.py:72
 msgid "Date time submitted"
-msgstr "تاريخ و وقت التنفيد"
+msgstr "تاريخ و وقت الإرسال"
 
 #: models.py:78
-#, fuzzy
-#| msgid "Document version parse error"
 msgid "Document file parse error"
-msgstr "خطأ في تحليل إصدار المستند"
+msgstr ""
 
 #: models.py:79
-#, fuzzy
-#| msgid "Document version parse errors"
 msgid "Document file parse errors"
-msgstr "أخطاء تحليل إصدار المستند"
+msgstr ""
 
 #: parsers.py:90
 #, python-format
@@ -167,16 +149,12 @@ msgid "Cannot find pdftotext executable at: %s"
 msgstr "لا يمكن العثور على pdftotext القابل للتنفيذ في: %s"
 
 #: permissions.py:10
-#, fuzzy
-#| msgid "View the content of a document"
 msgid "View the content of a document file"
-msgstr "عرض محتوى الوثيقة"
+msgstr ""
 
 #: permissions.py:13
-#, fuzzy
-#| msgid "Parse the content of a document"
 msgid "Parse the content of a document file"
-msgstr "تحليل محتوى الوثيقة"
+msgstr ""
 
 #: permissions.py:16
 msgid "Change document type parsing settings"
@@ -187,16 +165,12 @@ msgid "Parsing"
 msgstr "تفسير"
 
 #: queues.py:9
-#, fuzzy
-#| msgid "Document parsing"
 msgid "Document file parsing"
-msgstr "تحليل الوثيقة "
+msgstr ""
 
 #: search.py:16 search.py:23
-#, fuzzy
-#| msgid "Document page content"
 msgid "Document file content"
-msgstr "محتوى صفحة المستند"
+msgstr ""
 
 #: settings.py:15
 msgid "Set new document types to perform parsing automatically by default."
@@ -204,70 +178,60 @@ msgstr "معالجة الوثائق الجديدة تلقائياً"
 
 #: settings.py:21
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr "سيتخدم مسار محدد لإستيراد الوثيقة "
 
 #: views.py:39
-#, fuzzy
-#| msgid "Delete the parsed content of the selected document?"
-#| msgid_plural "Delete the parsed content of the selected documents?"
 msgid "Delete the parsed content of the selected document file?"
 msgid_plural "Delete the parsed content of the selected document files?"
-msgstr[0] "هل تريد حذف المحتوى المحلل للمستندات المحددة؟"
-msgstr[1] "هل تريد حذف المحتوى المحلل للمستند المحدد؟"
-msgstr[2] "هل تريد حذف المحتوى المحلل للمستندات المحددة؟"
-msgstr[3] "هل تريد حذف المحتوى المحلل للمستندات المحددة؟"
-msgstr[4] "هل تريد حذف المحتوى المحلل للمستندات المحددة؟"
-msgstr[5] "هل تريد حذف المحتوى المحلل للمستندات المحددة؟"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: views.py:85
-#, fuzzy, python-format
-#| msgid "Content for document: %s"
+#, python-format
 msgid "Content for document file: %s"
-msgstr "محتوى الوثيقة: %s"
+msgstr ""
 
 #: views.py:106
-#, fuzzy, python-format
-#| msgid "Content for document page: %s"
+#, python-format
 msgid "Content for document file page: %s"
-msgstr "محتوى صفحة الوثيقة: %s"
+msgstr ""
 
 #: views.py:128
-#, fuzzy, python-format
-#| msgid "Parsing errors for document: %s"
+#, python-format
 msgid "Parsing errors for document file: %s"
-msgstr "أخطاء التحليل للوثيقة: %s"
+msgstr ""
 
 #: views.py:141
-#, fuzzy, python-format
-#| msgid "%(count)d document added to the parsing queue"
+#, python-format
 msgid "%(count)d document file added to the parsing queue"
-msgstr "تمت إضافة وثيقة %(count)d إلى صف التحليل"
+msgstr ""
 
 #: views.py:144
-#, fuzzy, python-format
-#| msgid "%(count)d documents added to the parsing queue"
+#, python-format
 msgid "%(count)d documents files added to the parsing queue"
-msgstr "تمت إضافة وثائق %(count)d إلى قائمة انتظار التحليل"
+msgstr ""
 
 #: views.py:152
-#, fuzzy, python-format
-#| msgid "Submit %(count)d document to the parsing queue?"
-#| msgid_plural "Submit %(count)d documents to the parsing queue?"
+#, python-format
 msgid "Submit %(count)d document file to the parsing queue?"
 msgid_plural "Submit %(count)d documents files to the parsing queue?"
-msgstr[0] "هل تريد إرسال مستندات %(count)d إلى قائمة انتظار التحليل؟"
-msgstr[1] "هل تريد إرسال مستند %(count)d إلى قائمة انتظار التحليل؟"
-msgstr[2] "هل تريد إرسال مستندات %(count)d إلى قائمة انتظار التحليل؟"
-msgstr[3] "هل تريد إرسال مستندات %(count)d إلى قائمة انتظار التحليل؟"
-msgstr[4] "هل تريد إرسال مستندات %(count)d إلى قائمة انتظار التحليل؟"
-msgstr[5] "هل تريد إرسال مستندات %(count)d إلى قائمة انتظار التحليل؟"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: views.py:165
-#, fuzzy, python-format
-#| msgid "Submit document \"%s\" to the parsing queue"
+#, python-format
 msgid "Submit document file \"%s\" to the parsing queue"
-msgstr "قم بإرسال المستند &quot;%s&quot; إلى قائمة انتظار التحليل"
+msgstr ""
 
 #: views.py:192
 #, python-format
@@ -282,9 +246,3 @@ msgstr "قم بإرسال كافة المستندات من نوع ما للتح�
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr "تمت إضافة وثائق %(count)d إلى قائمة انتظار التحليل."
-
-#~ msgid "Document version"
-#~ msgstr "نسخة الوثيقة"
-
-#~ msgid "Document version parsing"
-#~ msgstr "تحليل إصدار المستند"

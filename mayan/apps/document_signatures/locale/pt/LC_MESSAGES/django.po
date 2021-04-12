@@ -1,23 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Vítor Figueiró <vfigueiro@gmail.com>, 2012
+# Roberto Rosario, 2021
+# Vítor Figueiró <vfigueiro@gmail.com>, 2021
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
+# Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-08-18 04:38+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021\n"
+"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:54 events.py:6 permissions.py:6 settings.py:12
@@ -155,10 +158,8 @@ msgid "Upload signature"
 msgstr ""
 
 #: models.py:42
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file"
-msgstr "Assinaturas do documento"
+msgstr ""
 
 #: models.py:47
 msgid "Date and time signed"
@@ -173,16 +174,12 @@ msgid "Public key fingerprint"
 msgstr ""
 
 #: models.py:68
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file signature"
-msgstr "Assinaturas do documento"
+msgstr ""
 
 #: models.py:69
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file signatures"
-msgstr "Assinaturas do documento"
+msgstr ""
 
 #: models.py:88
 msgid "Detached"
@@ -201,32 +198,24 @@ msgid "Signature file"
 msgstr "Ficheiro de assinatura"
 
 #: models.py:164
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file detached signature"
-msgstr "Assinaturas do documento"
+msgstr ""
 
 #: models.py:165
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file detached signatures"
-msgstr "Assinaturas do documento"
+msgstr ""
 
 #: models.py:168
 msgid "signature"
 msgstr ""
 
 #: models.py:210
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file embedded signature"
-msgstr "Assinaturas do documento"
+msgstr ""
 
 #: models.py:211
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file embedded signatures"
-msgstr "Assinaturas do documento"
+msgstr ""
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
@@ -265,10 +254,8 @@ msgid "Unverify key signatures"
 msgstr ""
 
 #: queues.py:21
-#, fuzzy
-#| msgid "Verify document signatures"
 msgid "Verify document file"
-msgstr "Verificar as assinaturas do documento"
+msgstr ""
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
@@ -309,10 +296,8 @@ msgid "Passphrase is incorrect."
 msgstr ""
 
 #: views.py:92 views.py:161
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file signed successfully."
-msgstr "Assinaturas do documento"
+msgstr ""
 
 #: views.py:102 views.py:178
 msgid "Sign"
@@ -350,10 +335,9 @@ msgid "There are no signatures for this document file."
 msgstr ""
 
 #: views.py:301
-#, fuzzy, python-format
-#| msgid "Signature file"
+#, python-format
 msgid "Signatures for document file: %s"
-msgstr "Ficheiro de assinatura"
+msgstr ""
 
 #: views.py:322
 #, python-format
@@ -397,6 +381,3 @@ msgstr ""
 #: workflow_actions.py:80
 msgid "Sign document (embedded)"
 msgstr ""
-
-#~ msgid "Date"
-#~ msgstr "Data"

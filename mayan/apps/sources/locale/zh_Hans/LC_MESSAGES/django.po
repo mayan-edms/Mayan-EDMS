@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# yulin Gong <540538248@qq.com>, 2019
+# Roberto Rosario, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-10-11 07:15+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-"
-"edms/language/zh-Hans/)\n"
-"Language: zh-Hans\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
@@ -34,9 +34,7 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr ""
-"文档源是将新文档提供给Mayan EDMS的方式，至少创建一个网页表单源以便能够从浏览"
-"器上传文档。"
+msgstr "文档源是将新文档提供给Mayan EDMS的方式，至少创建一个网页表单源以便能够从浏览器上传文档。"
 
 #: apps.py:91
 msgid "Type"
@@ -66,7 +64,7 @@ msgstr "评论"
 
 #: forms.py:31
 msgid "Action"
-msgstr ""
+msgstr "操作"
 
 #: forms.py:33
 msgid ""
@@ -134,10 +132,8 @@ msgid "Document sources"
 msgstr "文件源"
 
 #: links.py:137
-#, fuzzy
-#| msgid "Upload new version"
 msgid "Upload new file"
-msgstr "上传新版本"
+msgstr ""
 
 #: links.py:141
 msgid "Check now"
@@ -249,7 +245,7 @@ msgstr "将文档类型分配给从此源上传的文档。"
 
 #: models/base.py:162 serializers.py:17
 msgid "Document type"
-msgstr "文件类型"
+msgstr "文档类型"
 
 #: models/base.py:166
 msgid "Whether to expand or not, compressed archives."
@@ -280,9 +276,7 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"对于POP3，典型的选择是110，对于基于SSL的POP3为995，对于IMAP为143，对于基于SSL"
-"的IMAP为993。"
+msgstr "对于POP3，典型的选择是110，对于基于SSL的POP3为995，对于IMAP为143，对于基于SSL的IMAP为993。"
 
 #: models/email_sources.py:44
 msgid "Port"
@@ -377,8 +371,9 @@ msgstr ""
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 
 #: models/email_sources.py:232
@@ -421,9 +416,7 @@ msgstr "设备名称"
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr ""
-"选择扫描模式（例如，艺术线条，单色或彩色）。如果扫描仪不支持此选项，请将其留"
-"空。"
+msgstr "选择扫描模式（例如，艺术线条，单色或彩色）。如果扫描仪不支持此选项，请将其留空。"
 
 #: models/scanner_sources.py:39
 msgid "Mode"
@@ -434,9 +427,7 @@ msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr ""
-"以DPI（每英寸点数）设置扫描图像的分辨率。典型值为200.如果扫描仪不支持此选项，"
-"请将其留空。"
+msgstr "以DPI（每英寸点数）设置扫描图像的分辨率。典型值为200.如果扫描仪不支持此选项，请将其留空。"
 
 #: models/scanner_sources.py:46
 msgid "Resolution"
@@ -650,17 +641,13 @@ msgid "Error executing document file upload task; %(exception)s"
 msgstr ""
 
 #: views/document_file_views.py:140
-#, fuzzy
-#| msgid "New document queued for upload and will be available shortly."
 msgid "New document file queued for upload and will be available shortly."
-msgstr "新文档排队等待上传，很快将可用。"
+msgstr ""
 
 #: views/document_file_views.py:165
-#, fuzzy, python-format
-#| msgid ""
-#| "Upload a document of type \"%(document_type)s\" from source: %(source)s"
+#, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
-msgstr "从源%(source)s上传类型为“%(document_type)s”的文档"
+msgstr ""
 
 #: views/document_file_views.py:168
 msgid "Submit"
@@ -668,8 +655,8 @@ msgstr "提交"
 
 #: views/document_views.py:79 wizards.py:50
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr "没有定义交互式文档源或没有启用任何交互式文档源，在继续之前创建一个。"
 
 #: views/document_views.py:107 views/document_views.py:136
@@ -680,8 +667,8 @@ msgstr "文档属性"
 #: views/document_views.py:116
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
 
 #: views/document_views.py:123
@@ -749,8 +736,7 @@ msgid ""
 "email sources, are automatic and run on the background without user "
 "intervention."
 msgstr ""
-"来源提供上传文件的方法。某些来源，如网页表单，是交互式的，需要用户输入才能运"
-"行。其他来源，如电子邮件，是自动的，无需用户干预即可在后台运行。"
+"来源提供上传文件的方法。某些来源，如网页表单，是交互式的，需要用户输入才能运行。其他来源，如电子邮件，是自动的，无需用户干预即可在后台运行。"
 
 #: views/source_views.py:172
 msgid "No sources available"
@@ -777,13 +763,3 @@ msgstr "下一步"
 #: wizards.py:77
 msgid "Document upload wizard"
 msgstr "文档上传向导"
-
-#~ msgid "Error deleting staging file; %s"
-#~ msgstr "删除暂存文件时出错; %s"
-
-#~ msgid "Unable get list of staging files: %s"
-#~ msgstr "无法获取暂存文件列表：%s"
-
-#~ msgid ""
-#~ "New document version queued for upload and will be available shortly."
-#~ msgstr "新文档版本排队等待上传，很快将可用。"

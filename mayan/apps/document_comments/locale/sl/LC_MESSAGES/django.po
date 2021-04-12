@@ -1,45 +1,45 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Jože Detečnik <joze.detecnik@3tav.si>, 2020
+# Roberto Rosario, 2021
+# Jože Detečnik <joze.detecnik@3tav.si>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-12-25 10:54+0000\n"
-"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
-"Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/sl/)\n"
-"Language: sl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2021\n"
+"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #: apps.py:31 events.py:6 search.py:18 search.py:25 search.py:32 search.py:39
 msgid "Document comments"
-msgstr "Komentarji dokumenta"
+msgstr ""
 
 #: events.py:10
 msgid "Document comment created"
-msgstr "Komentar dokumenta je ustvarjen"
+msgstr ""
 
 #: events.py:13
 msgid "Document comment deleted"
-msgstr "Komentar dokumenta je izbrisan"
+msgstr ""
 
 #: events.py:16
 msgid "Document comment edited"
-msgstr "Komentar dokumenta urejen"
+msgstr ""
 
 #: links.py:16
 msgid "Add comment"
-msgstr "Dodaj komentar"
+msgstr ""
 
 #: links.py:22
 msgid "Delete"
@@ -47,7 +47,7 @@ msgstr "Izbriši"
 
 #: links.py:27
 msgid "Edit"
-msgstr "Uredi"
+msgstr ""
 
 #: links.py:31 models.py:45 permissions.py:5 search.py:11
 msgid "Comments"
@@ -59,7 +59,7 @@ msgstr "Dokument"
 
 #: models.py:33 models.py:70
 msgid "User"
-msgstr "Uporabnik"
+msgstr ""
 
 #: models.py:35
 msgid "Text"
@@ -67,7 +67,7 @@ msgstr ""
 
 #: models.py:38
 msgid "Date time submitted"
-msgstr "Datum oddaje"
+msgstr ""
 
 #: models.py:44
 msgid "Comment"
@@ -83,7 +83,7 @@ msgstr "Izbriši komentarje"
 
 #: permissions.py:14
 msgid "Edit comments"
-msgstr "Urejanje komentarjev"
+msgstr ""
 
 #: permissions.py:17
 msgid "View comments"
@@ -97,31 +97,29 @@ msgstr "Dodaj komentar dokumentu: %s"
 #: views.py:59
 #, python-format
 msgid "Delete comment: %s?"
-msgstr "Izbrisati komentar: %s?"
+msgstr ""
 
 #: views.py:90
 #, python-format
 msgid "Details for comment: %s?"
-msgstr "Podrobnosti za komentar: %s?"
+msgstr ""
 
 #: views.py:109
 #, python-format
 msgid "Edit comment: %s?"
-msgstr "Uredi komentar: %s?"
+msgstr ""
 
 #: views.py:144
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
 msgstr ""
-"Komentarji dokumentov so besedilni vnosi uporabnikov s časovnim žigom. "
-"Odlični so za sodelovanje."
 
 #: views.py:147
 msgid "There are no comments"
-msgstr "Ni komentarjev"
+msgstr ""
 
 #: views.py:149
 #, python-format
 msgid "Comments for document: %s"
-msgstr "Komentarji za dokument: %s"
+msgstr ""

@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# xisafe <root@xisafe.com>, 2020
-# yulin Gong <540538248@qq.com>, 2019
+# Roberto Rosario, 2021
+# xisafe <root@xisafe.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-09-27 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-"
-"edms/language/zh-Hans/)\n"
-"Language: zh-Hans\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: xisafe <root@xisafe.com>, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:63 apps.py:191 apps.py:197 apps.py:201 apps.py:206 apps.py:210
@@ -159,17 +159,8 @@ msgid "Edit"
 msgstr "编辑"
 
 #: methods.py:20
-#, fuzzy
-#| msgid "Remove metadata types from the document"
-#| msgid_plural "Remove metadata types from the documents"
 msgid "Return the metadata of the document."
-msgstr "从文档中删除元数据类型"
-
-#: methods.py:22
-#, fuzzy
-#| msgid "Edit metadata"
-msgid "get_metadata()"
-msgstr "编辑元数据"
+msgstr ""
 
 #: mixins.py:19
 msgid "Selected documents must be of the same type."
@@ -217,7 +208,8 @@ msgstr "验证器"
 
 #: models.py:78
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
+"The parser will reformat the value entered to conform to the expected "
+"format."
 msgstr "解析器将重新格式化输入的值以符合预期的格式。"
 
 #: models.py:80
@@ -254,7 +246,7 @@ msgstr "元数据类型对此文档类型无效。"
 
 #: models.py:271
 msgid "Document type"
-msgstr "文件类型"
+msgstr "文档类型"
 
 #: models.py:284
 msgid "Document type metadata type options"
@@ -313,16 +305,12 @@ msgid "Metadata value"
 msgstr "元数据值"
 
 #: search.py:24 search.py:35 search.py:46 search.py:57
-#, fuzzy
-#| msgid "Document metadata"
 msgid "Document metadata type"
-msgstr "文档元数据"
+msgstr ""
 
 #: search.py:28 search.py:39 search.py:50 search.py:61
-#, fuzzy
-#| msgid "Document metadata added"
 msgid "Document metadata value"
-msgstr "文档元数据已添加"
+msgstr ""
 
 #: serializers.py:56
 msgid "Primary key of the metadata type to be added."
@@ -349,7 +337,7 @@ msgstr "添加"
 #: views.py:67
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
-msgstr[0] "向文档添加元数据类型"
+msgstr[0] ""
 
 #: views.py:78
 #, python-format
@@ -361,13 +349,13 @@ msgstr "将元数据类型添加到文档：%s"
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
-msgstr ""
-"将元数据类型“%(metadata_type)s”添加到文档时出错：%(document)s; %(exception)s"
+msgstr "将元数据类型“%(metadata_type)s”添加到文档时出错：%(document)s; %(exception)s"
 
 #: views.py:172
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
 msgstr "元数据类型：%(metadata_type)s已成功添加到文档%(document)s。"
 
 #: views.py:182
@@ -399,7 +387,7 @@ msgstr "没有要编辑的元数据"
 #: views.py:240
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
-msgstr[0] "编辑文档元数据"
+msgstr[0] ""
 
 #: views.py:251
 #, python-format
@@ -418,11 +406,10 @@ msgstr "文档%s的元数据已成功编辑。"
 
 #: views.py:374
 msgid ""
-"Add metadata types this document's type to be able to add them to individual "
-"documents. Once added to individual document, you can then edit their values."
-msgstr ""
-"添加元数据类型至此文档的类型，以便能够将它们添加到单个文档中。一旦添加到单个"
-"文档，您就可以编辑它们的值。"
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
+msgstr "添加元数据类型至此文档的类型，以便能够将它们添加到单个文档中。一旦添加到单个文档，您就可以编辑它们的值。"
 
 #: views.py:379
 msgid "This document doesn't have any metadata"
@@ -446,7 +433,7 @@ msgstr "在%(count)d文档上执行的元数据删除请求"
 #: views.py:409
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
-msgstr[0] "从文档中删除元数据类型"
+msgstr[0] ""
 
 #: views.py:420
 #, python-format
@@ -465,8 +452,7 @@ msgstr "从文档:%(document)s中成功删除元数据类型“%(metadata_type)s
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
-msgstr ""
-"从文档中删除元数据类型“%(metadata_type)s”时出错：%(document)s; %(exception)s"
+msgstr "从文档中删除元数据类型“%(metadata_type)s”时出错：%(document)s; %(exception)s"
 
 #: views.py:506
 msgid "Create metadata type"
@@ -490,40 +476,31 @@ msgid ""
 "type will block the upload of documents of that type until a metadata value "
 "is provided."
 msgstr ""
-"元数据类型是可以为其分配值的用户定义属性。创建后，它们必须与文档类型相关联，"
-"可以是每个文档类型的可选项或必需项。设置元数据类型作为文档类型的必需项将阻止"
-"上传该类型的文档，直到提供元数据值。"
+"元数据类型是可以为其分配值的用户定义属性。创建后，它们必须与文档类型相关联，可以是每个文档类型的可选项或必需项。设置元数据类型作为文档类型的必需项将阻止上传该类型的文档，直到提供元数据值。"
 
 #: views.py:577
 msgid "There are no metadata types"
 msgstr "没有元数据类型"
 
 #: views.py:600
-#, fuzzy
-#| msgid ""
-#| "Create metadata types to be able to associate them to this document type."
 msgid ""
 "Create metadata type relationships to be able to associate them to this "
 "document type."
-msgstr "创建元数据类型以便能够将它们与此文档类型相关联。"
+msgstr ""
 
 #: views.py:604
-#, fuzzy
-#| msgid "There are no metadata types available"
 msgid "There are no metadata type relationships available"
-msgstr "没有可用的元数据类型"
+msgstr ""
 
 #: views.py:608
-#, fuzzy, python-format
-#| msgid "Metadata types for document type: %s"
+#, python-format
 msgid "Metadata type relationships for document type: %s"
-msgstr "文档类型%s的元数据类型"
+msgstr ""
 
 #: views.py:652
-#, fuzzy, python-format
-#| msgid "Document types for metadata type: %s"
+#, python-format
 msgid "Document type relationships for metadata type: %s"
-msgstr "元数据类型%s的文档类型"
+msgstr ""
 
 #: wizard_steps.py:13
 msgid "Enter document metadata"
@@ -567,12 +544,3 @@ msgid ""
 "Unable to remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
 msgstr ""
-
-#~ msgid "Relationship"
-#~ msgstr "关系"
-
-#~ msgid "Error updating relationship; %s"
-#~ msgstr "更新关系时出错; %s"
-
-#~ msgid "Relationships updated successfully"
-#~ msgstr "关系已成功更新"

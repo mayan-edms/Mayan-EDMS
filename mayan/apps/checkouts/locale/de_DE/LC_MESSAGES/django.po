@@ -1,28 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Berny <berny@bernhard-marx.de>, 2015-2016
-# Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
-# Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
-# Jesaja Everling <jeverling@gmail.com>, 2017
-# Marvin Haschker <marvin@haschker.me>, 2019-2020
-# Mathias Behrle <mathiasb@m9s.biz>, 2018-2020
+# Mathias Behrle <mathiasb@m9s.biz>, 2021
+# Berny <berny@bernhard-marx.de>, 2021
+# Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2021
+# Marvin Haschker <marvin@haschker.me>, 2021
+# Ingo Buchholz <ingo.buchholz@takwa.de>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-08-17 15:05+0000\n"
-"Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2021\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:41 events.py:5 links.py:32
@@ -74,10 +73,8 @@ msgid "Check out expiration"
 msgstr "Ausbuchungsende"
 
 #: forms.py:51
-#, fuzzy
-#| msgid "New versions allowed?"
 msgid "New files allowed?"
-msgstr "Neue Versionen erlauben"
+msgstr ""
 
 #: forms.py:52
 msgid "Yes"
@@ -132,16 +129,12 @@ msgid "Check out expiration date and time"
 msgstr "Ausbuchungsende"
 
 #: models.py:45
-#, fuzzy
-#| msgid "Do not allow new version of this document to be uploaded."
 msgid "Do not allow new file of this document to be uploaded."
-msgstr "Hochladen neuer Versionen dieses Dokuments nicht erlauben."
+msgstr ""
 
 #: models.py:47
-#, fuzzy
-#| msgid "Block new version upload"
 msgid "Block new file upload"
-msgstr "Hochladen neuer Versionen sperren"
+msgstr ""
 
 #: models.py:55 permissions.py:5
 msgid "Document checkout"
@@ -197,10 +190,9 @@ msgid "Unable to check in document \"%(instance)s\"; %(exception)s"
 msgstr ""
 
 #: views.py:29
-#, fuzzy, python-format
-#| msgid "Document not checked out."
+#, python-format
 msgid "Document \"%(object)s\" checked in successfully."
-msgstr "Dokument nicht ausgebucht."
+msgstr ""
 
 #: views.py:32
 #, python-format
@@ -213,24 +205,19 @@ msgid "%(count)d documents checked in successfully."
 msgstr ""
 
 #: views.py:37
-#, fuzzy, python-format
-#| msgid "Check in document: %s"
+#, python-format
 msgid "Check in document \"%(object)s\"."
-msgstr "Dokument %s einbuchen"
+msgstr ""
 
 #: views.py:38
-#, fuzzy, python-format
-#| msgid "Check in %(count)d document"
-#| msgid_plural "Check in %(count)d documents"
+#, python-format
 msgid "Check in %(count)d document."
-msgstr "%(count)d Dokument einbuchen"
+msgstr ""
 
 #: views.py:39
-#, fuzzy, python-format
-#| msgid "Check in %(count)d document"
-#| msgid_plural "Check in %(count)d documents"
+#, python-format
 msgid "Check in %(count)d documents."
-msgstr "%(count)d Dokument einbuchen"
+msgstr ""
 
 #: views.py:93
 #, python-format
@@ -238,16 +225,14 @@ msgid "Unable to checkout document \"%(instance)s\"; %(exception)s"
 msgstr ""
 
 #: views.py:100
-#, fuzzy, python-format
-#| msgid "Document not checked out."
+#, python-format
 msgid "Document \"%(object)s\" checked out successfully."
-msgstr "Dokument nicht ausgebucht."
+msgstr ""
 
 #: views.py:103
-#, fuzzy, python-format
-#| msgid "Amount of time to hold the document checked out in minutes."
+#, python-format
 msgid "%(count)d document checked out successfully."
-msgstr "Zeitdauer, die das Dokument ausgebucht bleiben soll."
+msgstr ""
 
 #: views.py:106
 #, python-format
@@ -255,30 +240,23 @@ msgid "%(count)d documents checked out successfully."
 msgstr ""
 
 #: views.py:108
-#, fuzzy, python-format
-#| msgid "Check out document: %s"
+#, python-format
 msgid "Checkout document \"%(object)s\"."
-msgstr "Dokument %s ausbuchen"
+msgstr ""
 
 #: views.py:109
-#, fuzzy, python-format
-#| msgid "Checkout %(count)d document"
-#| msgid_plural "Checkout %(count)d documents"
+#, python-format
 msgid "Checkout %(count)d document."
-msgstr "Checkout %(count)d Dokument"
+msgstr ""
 
 #: views.py:110
-#, fuzzy, python-format
-#| msgid "Checkout %(count)d document"
-#| msgid_plural "Checkout %(count)d documents"
+#, python-format
 msgid "Checkout %(count)d documents."
-msgstr "Checkout %(count)d Dokument"
+msgstr ""
 
 #: views.py:114
-#, fuzzy
-#| msgid "Checkouts"
 msgid "Checkout"
-msgstr "Ausbuchungen"
+msgstr ""
 
 #: views.py:158
 #, python-format
@@ -290,8 +268,8 @@ msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
 msgstr ""
-"Durch Ausbuchen eines Dokuments werden bestimmte Vorgänge für eine bestimmte "
-"Zeitspanne gesperrt."
+"Durch Ausbuchen eines Dokuments werden bestimmte Vorgänge für eine bestimmte"
+" Zeitspanne gesperrt."
 
 #: views.py:181
 msgid "No documents have been checked out"
@@ -300,9 +278,3 @@ msgstr "Keine Dokumente ausgebucht"
 #: widgets.py:23
 msgid "Amount"
 msgstr "Anzahl"
-
-#~ msgid "New version block"
-#~ msgstr "Aktualisierungsschutz"
-
-#~ msgid "New version blocks"
-#~ msgstr "Aktualisierungsschutz"

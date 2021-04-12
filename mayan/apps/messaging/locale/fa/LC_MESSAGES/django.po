@@ -2,20 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
+# Roberto Rosario, 2021
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:39+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2021\n"
+"Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:34 events.py:5 permissions.py:5
@@ -24,7 +27,7 @@ msgstr ""
 
 #: apps.py:56
 msgid "None"
-msgstr ""
+msgstr "هیچ یک"
 
 #: apps.py:62
 msgid "Sender"
@@ -40,7 +43,7 @@ msgstr ""
 
 #: forms.py:9 models.py:38
 msgid "Body"
-msgstr ""
+msgstr "بدنه"
 
 #: links.py:28 views.py:33
 msgid "Create message"
@@ -48,7 +51,7 @@ msgstr ""
 
 #: links.py:31 links.py:37
 msgid "Delete"
-msgstr ""
+msgstr "حذف"
 
 #: links.py:45 links.py:49
 msgid "Mark as read"
@@ -60,7 +63,7 @@ msgstr ""
 
 #: models.py:30
 msgid "User"
-msgstr ""
+msgstr "کاربر"
 
 #: models.py:33
 msgid "Short description of this message."
@@ -68,7 +71,7 @@ msgstr ""
 
 #: models.py:34
 msgid "Subject"
-msgstr ""
+msgstr "موضوع"
 
 #: models.py:37
 msgid "The actual content of the message."
@@ -88,11 +91,11 @@ msgstr ""
 
 #: models.py:48
 msgid "Creation date and time"
-msgstr ""
+msgstr "تاریخ و زمان ایجاد"
 
 #: models.py:53
 msgid "Message"
-msgstr ""
+msgstr "پیام"
 
 #: models.py:54 views.py:121
 msgid "Messages"
@@ -100,7 +103,7 @@ msgstr ""
 
 #: models.py:70
 msgid "Label"
-msgstr ""
+msgstr "برچسب"
 
 #: models.py:91
 #, python-format
@@ -121,7 +124,7 @@ msgstr ""
 
 #: views.py:34
 msgid "Send"
-msgstr ""
+msgstr "ارسال"
 
 #: views.py:46
 #, python-format

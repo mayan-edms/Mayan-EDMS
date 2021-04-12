@@ -1,74 +1,70 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Jože Detečnik <joze.detecnik@3tav.si>, 2020
+# Roberto Rosario, 2021
+# Jože Detečnik <joze.detecnik@3tav.si>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-12-25 11:37+0000\n"
-"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
-"Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/sl/)\n"
-"Language: sl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:28+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2021\n"
+"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #: apps.py:52 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
 #: search.py:17 settings.py:11
 msgid "OCR"
-msgstr "OCR"
+msgstr ""
 
 #: apps.py:103
 msgid "The OCR content."
-msgstr "Vsebina OCR."
+msgstr ""
 
 #: apps.py:108
 msgid "A generator returning the document's pages OCR content."
-msgstr "Generator, ki vrne OCR vsebino strani dokumenta."
+msgstr ""
 
 #: apps.py:109
 msgid "OCR content"
-msgstr "Vsebina OCR"
+msgstr ""
 
 #: apps.py:133
 msgid "Date and time"
-msgstr "Datum in čas"
+msgstr ""
 
 #: apps.py:136 models.py:50
 msgid "Result"
-msgstr "Rezultat"
+msgstr ""
 
 #: backends/tesseract.py:89
 msgid "Tesseract OCR not found."
-msgstr "Orodja Tesseract OCR ni mogoče najti."
+msgstr ""
 
 #: dependencies.py:23
 msgid "Free Open Source OCR Engine"
-msgstr "Brezplačen odprtokodni OCR Engine"
+msgstr ""
 
 #: events.py:8
 msgid "Document OCR content deleted"
-msgstr "Vsebina OCR dokumenta je izbrisana"
+msgstr ""
 
 #: events.py:12
-#, fuzzy
-#| msgid "Document version submitted for OCR"
 msgid "Document file submitted for OCR"
-msgstr "Različica dokumenta, predložena za OCR"
+msgstr ""
 
 #: events.py:16
-#, fuzzy
-#| msgid "Document version OCR finished"
 msgid "Document file OCR finished"
-msgstr "Različica dokumenta OCR končana"
+msgstr ""
 
 #: forms.py:14 forms.py:45
 msgid "Contents"
@@ -77,187 +73,168 @@ msgstr "Vsebina"
 #: forms.py:74
 #, python-format
 msgid "Page %(page_number)d"
-msgstr "Stran %(page_number)d"
+msgstr ""
 
 #: links.py:24
 msgid "Setup OCR"
-msgstr "Nastavite OCR"
+msgstr ""
 
 #: links.py:30
 msgid "OCR documents per type"
-msgstr "Dokumenti OCR na vrsto"
+msgstr ""
 
 #: links.py:45 links.py:50
 msgid "Delete OCR content"
-msgstr "Izbrišite vsebino OCR"
+msgstr ""
 
 #: links.py:56 links.py:61
 msgid "Submit for OCR"
-msgstr "Predložite za OCR"
+msgstr ""
 
 #: links.py:67 links.py:88 views.py:221
 msgid "OCR errors"
-msgstr "Napake OCR"
+msgstr ""
 
 #: links.py:72
 msgid "Download OCR text"
-msgstr "Prenesite besedilo OCR"
+msgstr ""
 
 #: models.py:20
 msgid "Document type"
-msgstr "Tip dokumenta"
+msgstr "Vrsta dokumenta"
 
 #: models.py:24
 msgid "Automatically queue newly created documents for OCR."
-msgstr "Novo ustvarjeni dokumenti samodejno postavijo v čakalno vrsto za OCR."
+msgstr ""
 
 #: models.py:30
 msgid "Document type settings"
-msgstr "Nastavitve vrste dokumenta"
+msgstr ""
 
 #: models.py:31
 msgid "Document types settings"
-msgstr "Nastavitve vrst dokumentov"
+msgstr ""
 
 #: models.py:45
 msgid "Document version"
-msgstr "Različica dokumenta"
+msgstr ""
 
 #: models.py:48
 msgid "Date time submitted"
-msgstr "Datum oddaje"
+msgstr ""
 
 #: models.py:54
 msgid "Document version OCR error"
-msgstr "Napaka OCR različice dokumenta"
+msgstr ""
 
 #: models.py:55
 msgid "Document version OCR errors"
-msgstr "Napake OCR različice dokumenta"
+msgstr ""
 
 #: models.py:67
-#, fuzzy
-#| msgid "Document version page OCR"
 msgid "Document version page"
-msgstr "Stran z različico dokumenta OCR"
+msgstr ""
 
 #: models.py:71
 msgid "The actual text content extracted by the OCR backend."
-msgstr "Dejanska vsebina besedila, ki jo izvleče zaledje OCR."
+msgstr ""
 
 #: models.py:72
 msgid "Content"
 msgstr "Vsebina"
 
 #: models.py:78
-#, fuzzy
-#| msgid "Document version page OCR"
 msgid "Document version page OCR content"
-msgstr "Stran z različico dokumenta OCR"
+msgstr ""
 
 #: models.py:79
-#, fuzzy
-#| msgid "Document pages OCR contents"
 msgid "Document version pages OCR contents"
-msgstr "Vsebina OCR strani dokumentov"
+msgstr ""
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
-msgstr "Predložite dokumente za OCR"
+msgstr ""
 
 #: permissions.py:11
 msgid "View the transcribed text from document"
-msgstr "Oglejte si prepisano besedilo iz dokumenta"
+msgstr ""
 
 #: permissions.py:15
 msgid "Change document type OCR settings"
-msgstr "Spremenite nastavitve vrste OCR vrste dokumenta"
+msgstr ""
 
 #: queues.py:10
-#, fuzzy
-#| msgid "Finish document version OCR"
 msgid "Finish document file OCR"
-msgstr "Dokončaj različico dokumenta OCR"
+msgstr ""
 
 #: queues.py:14
-#, fuzzy
-#| msgid "Document version page OCR"
 msgid "Document file page OCR"
-msgstr "Stran z različico dokumenta OCR"
+msgstr ""
 
 #: queues.py:18
-#, fuzzy
-#| msgid "Document version OCR"
 msgid "Document file OCR"
-msgstr "Različica dokumenta OCR"
+msgstr ""
 
 #: search.py:11 search.py:23
 msgid "Document version OCR"
-msgstr "Različica dokumenta OCR"
+msgstr ""
 
 #: settings.py:17
 msgid "Set new document types to perform OCR automatically by default."
-msgstr "Nastavite nove vrste dokumentov, da privzeto samodejno izvedejo OCR."
+msgstr ""
 
 #: settings.py:22
 msgid "Full path to the backend to be used to do OCR."
-msgstr "Celotna pot do zaledja, ki bo uporabljeno za OCR."
+msgstr ""
 
 #: views.py:39
-#, fuzzy
-#| msgid "Delete the OCR content of the selected document?"
-#| msgid_plural "Delete the OCR content of the selected documents?"
 msgid "Delete the OCR content of the selected document version?"
 msgid_plural "Delete the OCR content of the selected document versions?"
-msgstr[0] "Želite izbrisati vsebino OCR izbranega dokumenta?"
-msgstr[1] "Želite izbrisati vsebino OCR izbranih dokumentov?"
-msgstr[2] "Želite izbrisati vsebino OCR izbranih dokumentov?"
-msgstr[3] "Želite izbrisati vsebino OCR izbranih dokumentov?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views.py:74
 #, python-format
 msgid "OCR result for document: %s"
-msgstr "Rezultat OCR za dokument: %s"
+msgstr ""
 
 #: views.py:99
 #, python-format
 msgid "OCR errors for document: %s"
-msgstr "Napake OCR za dokument: %s"
+msgstr ""
 
 #: views.py:118
-#, fuzzy
-#| msgid "Submit the selected document to the OCR queue?"
-#| msgid_plural "Submit the selected documents to the OCR queue?"
 msgid "Submit the selected document version to the OCR queue?"
 msgid_plural "Submit the selected document versions to the OCR queue?"
-msgstr[0] "Želite poslati izbrani dokument v čakalno vrsto OCR?"
-msgstr[1] "Želite poslati izbrane dokumente v čakalno vrsto OCR?"
-msgstr[2] "Želite poslati izbrane dokumente v čakalno vrsto OCR?"
-msgstr[3] "Želite poslati izbrane dokumente v čakalno vrsto OCR?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views.py:152
-#, fuzzy, python-format
-#| msgid "OCR result for document page: %s"
+#, python-format
 msgid "OCR result for document version page: %s"
-msgstr "Rezultat OCR za stran dokumenta: %s"
+msgstr ""
 
 #: views.py:158
 msgid "Submit all documents of a type for OCR"
-msgstr "Predložite vse vrste dokumentov za OCR"
+msgstr ""
 
 #: views.py:175
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
-msgstr "%(count)d dokumenti, dodani v čakalno vrsto OCR."
+msgstr ""
 
 #: views.py:210
 #, python-format
 msgid "Edit OCR settings for document type: %s."
-msgstr "Uredi nastavitve OCR za vrsto dokumenta: %s."
+msgstr ""
 
 #: workflow_actions.py:15
 msgid "Page condition"
-msgstr "Stanje strani"
+msgstr ""
 
 #: workflow_actions.py:19
 msgid ""
@@ -267,26 +244,15 @@ msgid ""
 "logical None, or an empty string ('') are considered to be logical false, "
 "any other value is considered to be the logical true."
 msgstr ""
-"Pogoj, ki bo določal, ali bo vsebina OCR strani dokumenta spremenjena ali "
-"ne. Pogoj se ovrednoti s ponovljeno stranjo dokumenta. Pogoji, ki ne vrnejo "
-"nobene vrednosti, ki vrnejo Python logično None, ali prazen niz (&#39;"
-"&#39;), se štejejo za logično false, katera koli druga vrednost se šteje za "
-"logično true."
 
 #: workflow_actions.py:31
 msgid "Page content"
-msgstr "Vsebina strani"
+msgstr ""
 
 #: workflow_actions.py:35
 msgid "A template that will generate the OCR content to be saved."
-msgstr "Predloga, ki bo ustvarila vsebino OCR, ki jo želite shraniti."
+msgstr ""
 
 #: workflow_actions.py:43
 msgid "Update document page OCR content"
-msgstr "Posodobite vsebino OCR na strani dokumenta"
-
-#~ msgid "Document page"
-#~ msgstr "Stran dokumenta"
-
-#~ msgid "Document page OCR content"
-#~ msgstr "Vsebina OCR strani dokumenta"
+msgstr ""

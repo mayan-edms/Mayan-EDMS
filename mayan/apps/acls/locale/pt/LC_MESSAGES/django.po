@@ -1,24 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Bruno Martins <bruno.martins@bewgpt.com.pt>, 2020
-# Marco Morais <marco@edgoo.io>, 2020
+# Roberto Rosario, 2021
+# Emerson Soares <on.emersonsoares@gmail.com>, 2021
+# Vítor Figueiró <vfigueiro@gmail.com>, 2021
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
+# Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021
+# Marco Morais <marco@edgoo.io>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-08-12 08:47+0000\n"
-"Last-Translator: Marco Morais <marco@edgoo.io>\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:12+0000\n"
+"Last-Translator: Marco Morais <marco@edgoo.io>, 2021\n"
+"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:24 classes.py:143 links.py:27
@@ -32,10 +36,8 @@ msgid ""
 msgstr ""
 
 #: apps.py:63
-#, fuzzy
-#| msgid "Object ID"
 msgid "Object"
-msgstr "ID do Objeto"
+msgstr "Objeto"
 
 #: events.py:6 permissions.py:5
 msgid "Access control lists"
@@ -46,10 +48,8 @@ msgid "ACL created"
 msgstr "ACL criada "
 
 #: events.py:13
-#, fuzzy
-#| msgid "ACL edited"
 msgid "ACL deleted"
-msgstr "ACL editada"
+msgstr ""
 
 #: events.py:16
 msgid "ACL edited"
@@ -111,20 +111,12 @@ msgid "View ACLs"
 msgstr "Ver ACL's"
 
 #: serializers.py:125
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
-"Chave primária da nova permissão a atribuir à lista de controlo de acesso."
 
 #: serializers.py:132
-#, fuzzy
-#| msgid ""
-#| "Primary key of the new permission to grant to the access control list."
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
-"Chave primária da nova permissão a atribuir à lista de controlo de acesso."
 
 #: views.py:40
 #, python-format
@@ -191,16 +183,12 @@ msgstr ""
 "do menu Definições."
 
 #: views.py:256
-#, fuzzy
-#| msgid "There are no ACLs for this object"
 msgid "There are no ACLs"
-msgstr "Não existem ACLs definidas para este objeto."
+msgstr ""
 
 #: views.py:265
-#, fuzzy
-#| msgid "Access control lists"
 msgid "Global access control lists"
-msgstr "Listas de controlo de acesso"
+msgstr ""
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -215,8 +203,10 @@ msgid "Object ID"
 msgstr "ID do Objeto"
 
 #: workflow_actions.py:35
-msgid "Numeric identifier of the object for which the access will be modified."
-msgstr "Identificador numérico do objeto para o qual o acesso será modificado."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
+msgstr ""
+"Identificador numérico do objeto para o qual o acesso será modificado."
 
 #: workflow_actions.py:40 workflow_actions.py:155
 msgid "Roles"
@@ -248,33 +238,3 @@ msgstr "Atribuir acesso ao documento"
 #: workflow_actions.py:211
 msgid "Revoke document access"
 msgstr "Revogar acesso ao documento"
-
-#~ msgid ""
-#~ "API URL pointing to the list of permissions for this access control list."
-#~ msgstr ""
-#~ "URL do API que aponta para a lista de permissões para esta lista de "
-#~ "controlo de acesso."
-
-#~ msgid ""
-#~ "API URL pointing to a permission in relation to the access control list "
-#~ "to which it is attached. This URL is different than the canonical "
-#~ "workflow URL."
-#~ msgstr ""
-#~ "URL do API que aponta para uma permissão em relação à lista de controlo "
-#~ "de acesso à qual se encontra associada. Este URL é diferente do URL "
-#~ "regular do workflow."
-
-#~ msgid "No such permission: %s"
-#~ msgstr "Permissão inexistente: \"%s\""
-
-#~ msgid ""
-#~ "Comma separated list of permission primary keys to grant to this access "
-#~ "control list."
-#~ msgstr ""
-#~ "Lista de chaves primárias de permissões a atribuir a esta lista de "
-#~ "controlo de acesso, separadas por vírgulas."
-
-#~ msgid "Primary keys of the role to which this access control list binds to."
-#~ msgstr ""
-#~ "Chaves primárias da função à qual esta lista de controlo de acesso está "
-#~ "vinculada."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
 "PO-Revision-Date: 2020-01-28 07:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -157,10 +157,6 @@ msgstr ""
 
 #: methods.py:20
 msgid "Return the metadata of the document."
-msgstr ""
-
-#: methods.py:22
-msgid "get_metadata()"
 msgstr ""
 
 #: mixins.py:19

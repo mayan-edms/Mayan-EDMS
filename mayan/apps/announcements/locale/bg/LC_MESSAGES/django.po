@@ -1,23 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
+# Roberto Rosario, 2021
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-10-02 20:05+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-12 03:38+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
@@ -50,44 +52,36 @@ msgid "Edit"
 msgstr "Редактиране"
 
 #: models.py:18
-#, fuzzy
-#| msgid "Short description of this message."
 msgid "Short description of this announcement."
-msgstr "Кратко описание на това съобщение."
+msgstr ""
 
 #: models.py:19
 msgid "Label"
 msgstr "Етикет"
 
 #: models.py:22
-#, fuzzy
-#| msgid "The actual message to be displayed."
 msgid "The actual test to be displayed."
-msgstr "Реалното съобщение, което трябва да се покаже."
+msgstr ""
 
 #: models.py:23
 msgid "Text"
-msgstr ""
+msgstr "Текст"
 
 #: models.py:25
 msgid "Enabled"
 msgstr "Активиран"
 
 #: models.py:28
-#, fuzzy
-#| msgid "Date and time after which this message will be displayed."
 msgid "Date and time after which this announcement will be displayed."
-msgstr "Дата и час, след които това съобщение ще бъде показано."
+msgstr ""
 
 #: models.py:29
 msgid "Start date time"
 msgstr "Начални дата и час"
 
 #: models.py:33
-#, fuzzy
-#| msgid "Date and time until when this message is to be displayed."
 msgid "Date and time until when this announcement is to be displayed."
-msgstr "Дата и час до показване на това съобщение."
+msgstr ""
 
 #: models.py:34
 msgid "End date time"
@@ -114,28 +108,24 @@ msgid "View announcements"
 msgstr ""
 
 #: views.py:41
-#, fuzzy, python-format
-#| msgid "Error deleting message \"%(message)s\": %(error)s"
+#, python-format
 msgid "Error deleting announcement \"%(instance)s\"; %(exception)s"
-msgstr "Грешка при изтриване на съобщение „%(message)s“: %(error)s"
+msgstr ""
 
 #: views.py:50
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "Announcement \"%(object)s\" deleted successfully."
-msgstr "Съобщението &quot;%s&quot; беше изтрито успешно."
+msgstr ""
 
 #: views.py:53
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d announcement deleted successfully."
-msgstr "Съобщението &quot;%s&quot; беше изтрито успешно."
+msgstr ""
 
 #: views.py:56
-#, fuzzy, python-format
-#| msgid "Message \"%s\" deleted successfully."
+#, python-format
 msgid "%(count)d announcements deleted successfully."
-msgstr "Съобщението &quot;%s&quot; беше изтрито успешно."
+msgstr ""
 
 #: views.py:58
 #, python-format
@@ -143,18 +133,14 @@ msgid "Delete announcement: %(object)s."
 msgstr ""
 
 #: views.py:59
-#, fuzzy, python-format
-#| msgid "Delete the selected message?"
-#| msgid_plural "Delete the selected messages?"
+#, python-format
 msgid "Delete the %(count)d selected announcement."
-msgstr "Да се изтрие ли избраното съобщение?"
+msgstr ""
 
 #: views.py:60
-#, fuzzy, python-format
-#| msgid "Delete the selected message?"
-#| msgid_plural "Delete the selected messages?"
+#, python-format
 msgid "Delete the %(count)d selected announcements."
-msgstr "Да се изтрие ли избраното съобщение?"
+msgstr ""
 
 #: views.py:92
 #, python-format
@@ -162,67 +148,12 @@ msgid "Edit announcement: %s"
 msgstr ""
 
 #: views.py:114
-#, fuzzy
-#| msgid ""
-#| "Messages are displayed in the login view. You can use messages to convery "
-#| "information about your organzation, announcements or usage guidelines for "
-#| "your users."
 msgid ""
 "Announcements are displayed in the login view. You can use announcements to "
 "convery information about your organzation, announcements or usage "
 "guidelines for your users."
 msgstr ""
-"Съобщенията се показват в екрана за вход. Можете да използвате съобщения, за "
-"да съхранявате информация за вашата организация, съобщения или указания за "
-"употреба за вашите потребители."
 
 #: views.py:118
-#, fuzzy
-#| msgid "No messages available"
 msgid "No announcements available"
-msgstr "Няма налични съобщения"
-
-#~ msgid "Message of the day"
-#~ msgstr "Съобщение на деня"
-
-#~ msgid "Messages"
-#~ msgstr "Съобщения"
-
-#~ msgid "Message created"
-#~ msgstr "Съобщението е създадено"
-
-#~ msgid "Message edited"
-#~ msgstr "Съобщението е редактирано"
-
-#~ msgid "Create message"
-#~ msgstr "Създаване на съобщение"
-
-#~ msgid "Message"
-#~ msgstr "Съобщение"
-
-#~ msgid "Create messages"
-#~ msgstr "Създаване на съобщения"
-
-#~ msgid "Delete messages"
-#~ msgstr "Изтриване на съобщения"
-
-#~ msgid "Edit messages"
-#~ msgstr "Редактиране на съобщения"
-
-#~ msgid "View messages"
-#~ msgstr "Преглед на съобщения"
-
-#~ msgid "Messages of the day"
-#~ msgstr "Съобщения за деня"
-
-#~ msgid "Delete request performed on %(count)d message"
-#~ msgstr "Изтриване на заявка, изпълнена на%(count)dсъобщение"
-
-#~ msgid "Delete request performed on %(count)d messages"
-#~ msgstr "Изтриване на заявка, изпълнена на %(count)dсъобщения"
-
-#~ msgid "Delete message: %s?"
-#~ msgstr "Изтриване на съобщение: %s?"
-
-#~ msgid "Edit message: %s"
-#~ msgstr "Редактиране на съобщението: %s"
+msgstr ""

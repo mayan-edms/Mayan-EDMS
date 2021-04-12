@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2019-2020
+# Jiri Fait <fait@orkasolutions.cz>, 2021
+# Michal Švábík <snadno@lehce.cz>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-08-18 04:38+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
-"cs/)\n"
-"Language: cs\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:54 events.py:6 permissions.py:6 settings.py:12
 msgid "Document signatures"
@@ -27,7 +27,7 @@ msgstr "Podpisy dokumentů"
 
 #: apps.py:111
 msgid "Date and time"
-msgstr ""
+msgstr "Datum a čas"
 
 #: apps.py:115 models.py:52
 msgid "Key ID"
@@ -35,7 +35,7 @@ msgstr "ID klíče"
 
 #: apps.py:119 forms.py:72
 msgid "None"
-msgstr "žádný"
+msgstr "Žádný"
 
 #: apps.py:120 forms.py:60 models.py:57
 msgid "Signature ID"
@@ -46,47 +46,34 @@ msgid "Type"
 msgstr "Typ"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Detached signatures"
 msgid "Detached signature created"
-msgstr "Oddělené podpisy"
+msgstr ""
 
 #: events.py:13
-#, fuzzy
-#| msgid "Detached signatures"
 msgid "Detached signature uploaded"
-msgstr "Oddělené podpisy"
+msgstr ""
 
 #: events.py:17
-#, fuzzy
-#| msgid "Signature date"
 msgid "Embedded signature created"
-msgstr "Datum podpisu"
+msgstr ""
 
 #: forms.py:17 forms.py:31 workflow_actions.py:19
 msgid "Key"
 msgstr "Klíč"
 
 #: forms.py:22 serializers.py:66 workflow_actions.py:30
-#, fuzzy
-#| msgid ""
-#| "The passphrase to unlock the key and allow it to be used to sign the "
-#| "document version."
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document file."
 msgstr ""
-"Heslo pro odemčení klíče a umožnění jeho použití k podepsání verzí dokumentu."
 
 #: forms.py:24 workflow_actions.py:27
 msgid "Passphrase"
 msgstr "Přístupová fráze"
 
 #: forms.py:33
-#, fuzzy
-#| msgid "Private key that will be used to sign this document version."
 msgid "Private key that will be used to sign this document file."
-msgstr "Soukromý klíč, který bude použit k podepsání této verze dokumentu."
+msgstr ""
 
 #: forms.py:44
 msgid "Signature is embedded?"
@@ -133,10 +120,8 @@ msgid "Key type"
 msgstr "Typ klíče"
 
 #: links.py:40
-#, fuzzy
-#| msgid "Verify key signatures"
 msgid "Refresh all signatures"
-msgstr "Ověřené podpisy klíče"
+msgstr ""
 
 #: links.py:46
 msgid "Verify all documents"
@@ -171,16 +156,12 @@ msgid "Upload signature"
 msgstr "Nahrajte podpis"
 
 #: models.py:42
-#, fuzzy
-#| msgid "Document version"
 msgid "Document file"
-msgstr "Verze dokumentu"
+msgstr ""
 
 #: models.py:47
-#, fuzzy
-#| msgid "Date signed"
 msgid "Date and time signed"
-msgstr "Datum podepsání"
+msgstr ""
 
 #: models.py:51
 msgid "ID of the key that will be used to sign the document."
@@ -191,16 +172,12 @@ msgid "Public key fingerprint"
 msgstr "Otisk veřejného klíče"
 
 #: models.py:68
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file signature"
-msgstr "Podpisy dokumentů"
+msgstr ""
 
 #: models.py:69
-#, fuzzy
-#| msgid "Document signatures"
 msgid "Document file signatures"
-msgstr "Podpisy dokumentů"
+msgstr ""
 
 #: models.py:88
 msgid "Detached"
@@ -219,32 +196,24 @@ msgid "Signature file"
 msgstr "Podpisový soubor"
 
 #: models.py:164
-#, fuzzy
-#| msgid "Document version detached signature"
 msgid "Document file detached signature"
-msgstr "Podpis verze dokumentu byl odpojen."
+msgstr ""
 
 #: models.py:165
-#, fuzzy
-#| msgid "Document version detached signatures"
 msgid "Document file detached signatures"
-msgstr "Oddělené podpisy verze dokumentu"
+msgstr ""
 
 #: models.py:168
 msgid "signature"
 msgstr "podpis"
 
 #: models.py:210
-#, fuzzy
-#| msgid "Document version embedded signature"
 msgid "Document file embedded signature"
-msgstr "Vložený podpis verze dokumentu"
+msgstr ""
 
 #: models.py:211
-#, fuzzy
-#| msgid "Document version embedded signatures"
 msgid "Document file embedded signatures"
-msgstr "Vložené podpisy verze dokumentu"
+msgstr ""
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
@@ -283,26 +252,20 @@ msgid "Unverify key signatures"
 msgstr "Zrušit ověření podpisů klíčů "
 
 #: queues.py:21
-#, fuzzy
-#| msgid "Verify document version"
 msgid "Verify document file"
-msgstr "Ověřte verzi dokumentu"
+msgstr ""
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
 msgstr "Ověřte chybějící vložený podpis"
 
 #: queues.py:30
-#, fuzzy
-#| msgid "There are no signatures for this document."
 msgid "Refresh existing signature information"
-msgstr "Pro tento dokument neexistují žádné podpisy."
+msgstr ""
 
 #: serializers.py:60
-#, fuzzy
-#| msgid "Private key that will be used to sign the document version."
 msgid "Primary key of the tag to add to the document."
-msgstr "Soukromý klíč, který bude použit k podepsání verze dokumentu."
+msgstr ""
 
 #: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."
@@ -318,8 +281,8 @@ msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
 msgstr ""
-"Nelze inicializovat oddělené úložiště podpisů. Zkontrolujte v nastavení {} a "
-"{} chyby formátování."
+"Nelze inicializovat oddělené úložiště podpisů. Zkontrolujte v nastavení {} a"
+" {} chyby formátování."
 
 #: storages.py:20
 msgid "Detached signatures"
@@ -334,26 +297,22 @@ msgid "Passphrase is incorrect."
 msgstr "Heslo je nesprávné."
 
 #: views.py:92 views.py:161
-#, fuzzy
-#| msgid "Document version signed successfully."
 msgid "Document file signed successfully."
-msgstr "Verze dokumentu byla úspěšně podepsána."
+msgstr ""
 
 #: views.py:102 views.py:178
 msgid "Sign"
 msgstr "Podepsat"
 
 #: views.py:104
-#, fuzzy, python-format
-#| msgid "Sign document version \"%s\" with a detached signature"
+#, python-format
 msgid "Sign document file \"%s\" with a detached signature"
-msgstr "Podepište verzi dokumentu „%s“ odpojeným podpisem"
+msgstr ""
 
 #: views.py:180
-#, fuzzy, python-format
-#| msgid "Sign document version \"%s\" with a embedded signature"
+#, python-format
 msgid "Sign document file \"%s\" with a embedded signature"
-msgstr "Podepište verzi dokumentu &quot;%s&quot; vloženým podpisem"
+msgstr ""
 
 #: views.py:196
 #, python-format
@@ -376,38 +335,30 @@ msgstr ""
 "součást samotného dokumentu nebo nahrát jako samostatný soubor."
 
 #: views.py:297
-#, fuzzy
-#| msgid "There are no signatures for this document."
 msgid "There are no signatures for this document file."
-msgstr "Pro tento dokument neexistují žádné podpisy."
+msgstr ""
 
 #: views.py:301
-#, fuzzy, python-format
-#| msgid "Signatures for document version: %s"
+#, python-format
 msgid "Signatures for document file: %s"
-msgstr "Podpisy pro verzi dokumentu: %s"
+msgstr ""
 
 #: views.py:322
-#, fuzzy, python-format
-#| msgid "Upload detached signature for document version: %s"
+#, python-format
 msgid "Upload detached signature for document file: %s"
-msgstr "Nahrajte odpojený podpis pro verzi dokumentu: %s"
+msgstr ""
 
 #: views.py:340 views.py:359
 msgid "On large databases this operation may take some time to execute."
 msgstr "Ve velkých databázích může provedení této operace nějakou dobu trvat."
 
 #: views.py:341
-#, fuzzy
-#| msgid "There are no signatures for this document."
 msgid "Refresh all signatures information?"
-msgstr "Pro tento dokument neexistují žádné podpisy."
+msgstr ""
 
 #: views.py:351
-#, fuzzy
-#| msgid "Signature verification queued successfully."
 msgid "Signature information refresh queued successfully."
-msgstr "Ověření podpisu bylo ve frontě úspěšně."
+msgstr ""
 
 #: views.py:360
 msgid "Verify all document for signatures?"
@@ -418,36 +369,19 @@ msgid "Signature verification queued successfully."
 msgstr "Ověření podpisu bylo ve frontě úspěšně."
 
 #: workflow_actions.py:22
-#, fuzzy
-#| msgid "Private key that will be used to sign the document version."
 msgid "Private key that will be used to sign the document file."
-msgstr "Soukromý klíč, který bude použit k podepsání verze dokumentu."
+msgstr ""
 
 #: workflow_actions.py:37
 msgid "Sign document (detached)"
 msgstr "Podepsat dokument (odpojený)"
 
 #: workflow_actions.py:49
-#, fuzzy
-#| msgid ""
-#| "Document has no version to sign. You might be trying to use this action "
-#| "in an initial state before the created document is yet to be processed."
 msgid ""
 "Document has no file to sign. You might be trying to use this action in an "
 "initial state before the created document is yet to be processed."
 msgstr ""
-"Dokument nemá verzi k podpisu. Možná se pokoušíte použít tuto akci v "
-"počátečním stavu, než bude vytvořený dokument ještě zpracován."
 
 #: workflow_actions.py:80
 msgid "Sign document (embedded)"
 msgstr "Podepsat dokument (vložený)"
-
-#~ msgid "Date"
-#~ msgstr "Datum"
-
-#~ msgid "Document version signature"
-#~ msgstr "Podpis verze dokumentu"
-
-#~ msgid "Document version signatures"
-#~ msgstr "Podpisy verze dokumentu"

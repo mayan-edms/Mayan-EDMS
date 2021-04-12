@@ -1,26 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Harald Ersch, 2019-2020
-# Stefaniu Criste <gupi@hangar.ro>, 2016
+# Roberto Rosario, 2021
+# Badea Gabriel <gcbadea@gmail.com>, 2021
+# Harald Ersch, 2021
+# Stefaniu Criste <gupi@hangar.ro>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-09-29 12:40+0000\n"
-"Last-Translator: Harald Ersch\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:13+0000\n"
+"Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
+"Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:56 events.py:5 permissions.py:5 settings.py:7
 msgid "Appearance"
@@ -208,7 +209,8 @@ msgstr ""
 "Locația este corectă, dar contul dvs. nu are permisiunea necesară pentru "
 "accesarea acesteia."
 
-#: templates/500.html:5 templates/500.html:30 templates/appearance/root.html:58
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:58
 msgid "Server error"
 msgstr "Eroare la server"
 
@@ -233,9 +235,7 @@ msgid "Contact your system administrator."
 msgstr "Contactați administratorul de sistem."
 
 #: templates/500.html:47
-msgid ""
-"Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL"
-"\"."
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
 msgstr ""
 "Verificați jurnalele pentru mesajele cu etichetele „EROARE”, „CRITIC” sau "
 "„FATAL”."
@@ -278,107 +278,75 @@ msgstr "Lansat sub licența:"
 #, python-format
 msgid ""
 "\n"
-"                %(project_title)s is a free and open-source software brought "
-"to you with <i class=\"fa fa-heart text-danger\" style=\"transform: "
-"rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
+"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
 msgstr ""
 "\n"
-"%(project_title)s este un software gratuit și cu sursă deschisă care ți-a "
-"fost prezentat cu <i class=\"fa fa-heart text-danger\" style=\"transform: "
-"rotate(10deg);\"> </i> de Roberto Rosario și colaboratorii."
+"%(project_title)s este un software gratuit și cu sursă deschisă care ți-a fost prezentat cu <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"> </i> de Roberto Rosario și colaboratorii."
 
 #: templates/appearance/about.html:105
 #, python-format
 msgid ""
 "\n"
-"                It takes great effort to make %(project_title)s as feature-"
-"rich as it is.\n"
+"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
 msgstr ""
 "\n"
-"Este nevoie de eforturi mari pentru ca %(project_title)s să fie atât de "
-"bogat în funcții."
+"Este nevoie de eforturi mari pentru ca %(project_title)s să fie atât de bogat în funcții."
 
 #: templates/appearance/about.html:111
 #, python-format
 msgid ""
 "\n"
-"                If you use %(project_title)s please <a class=\"new_window\" "
-"href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
-"xclick&hosted_button_id=3PXN336XFXQNN\">make a donation "
-"%(icon_social_paypal)s</a>\n"
+"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
 "            "
 msgstr ""
 "\n"
-"Dacă utilizați %(project_title)s, vă rugăm să <a class=\"new_window\" href="
-"\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
-"xclick&hosted_button_id=3PXN336XFXQNN\">faceți o donație "
-"%(icon_social_paypal)s</a>"
+"Dacă utilizați %(project_title)s, vă rugăm să <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">faceți o donație %(icon_social_paypal)s</a>"
 
 #: templates/appearance/about.html:117
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a class="
-"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
-"\">Release notes %(icon_documentation)s</a> or the short version <a class="
-"\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/"
-"HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"Lista completă a modificărilor este disponibilă prin notele <a class="
-"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Note "
-"de lansare%(icon_documentation)s </a> sau versiunea scurtă <a class="
-"\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/"
-"HISTORY.rst\"> Istoricul modificărilor %(icon_documentation)s </a>."
+"Lista completă a modificărilor este disponibilă prin notele <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Note de lansare%(icon_documentation)s </a> sau versiunea scurtă <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\"> Istoricul modificărilor %(icon_documentation)s </a>."
 
 #: templates/appearance/about.html:123
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" href="
-"\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
+"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"Pentru întrebări, verificați <a class=\"new_window\" href=\"https://docs."
-"mayan-edms.com\">documentația %(icon_documentation)s</a> ."
+"Pentru întrebări, verificați <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">documentația %(icon_documentation)s</a> ."
 
 #: templates/appearance/about.html:129
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a "
-"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
-"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href="
-"\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
-"%(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"Dacă ați găsit un bug sau aveți o idee de noi caracteristici, vizitați <a "
-"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forumul "
-"%(icon_forum)s</a> sau deschideți un bilet în <a class=\"new_window\" href="
-"\"https://gitlab.com/mayan-edms/mayan-edms\">depozitul de coduri sursă"
-"%(icon_source_code)s</a>."
+"Dacă ați găsit un bug sau aveți o idee de noi caracteristici, vizitați <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forumul %(icon_forum)s</a> sau deschideți un bilet în <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">depozitul de coduri sursă%(icon_source_code)s</a>."
 
 #: templates/appearance/about.html:134
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about "
-"how awesome %(project_title)s is!\n"
+"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
 msgstr ""
 "\n"
-"Împrăștie vestea. Vorbețte cu prietenii și colegii tăi despre cât de minunat "
-"este %(project_title)s!"
+"Împrăștie vestea. Vorbețte cu prietenii și colegii tăi despre cât de minunat este %(project_title)s!"
 
 #: templates/appearance/base.html:71
 msgid "Object"
-msgstr ""
+msgstr "Obiect"
 
 #: templates/appearance/calculate_form_title.html:10
 msgid "Open main menu"
@@ -503,7 +471,8 @@ msgstr "Eroare de comunicare cu server-ul"
 
 #: templates/appearance/root.html:75
 msgid "Check you network connection and try again in a few moments."
-msgstr "Verificați conexiunea la rețea și încercați din nou în câteva momente."
+msgstr ""
+"Verificați conexiunea la rețea și încercați din nou în câteva momente."
 
 #: templatetags/appearance_tags.py:43
 msgid "None"
@@ -531,32 +500,9 @@ msgstr "Editați tema: %s"
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
 msgstr ""
-"Temele permit schimbarea aspectului vizual fără a necesita modificări de cod."
+"Temele permit schimbarea aspectului vizual fără a necesita modificări de "
+"cod."
 
 #: views.py:109
 msgid "There are no themes"
 msgstr "Nu există teme"
-
-#~ msgid "Warning"
-#~ msgstr "Alertă"
-
-#~ msgid "Click here to fix this."
-#~ msgstr "Faceți clic aici pentru a remedia această problemă."
-
-#~ msgid ""
-#~ "Settings updated, restart your installation and refresh your browser for "
-#~ "changes to take effect."
-#~ msgstr ""
-#~ "Setările actualizate, reporniți instalarea și reîmprospătați browserul "
-#~ "pentru ca modificările să intre în vigoare."
-
-#~ msgid ""
-#~ "\n"
-#~ "                                        Impersonating user \"%(user)s\".\n"
-#~ "                                    "
-#~ msgstr ""
-#~ "\n"
-#~ "Identificare drept utilizatorul \"%(user)s\""
-
-#~ msgid "Click here when finished"
-#~ msgstr "Faceți clic aici când ați terminat"

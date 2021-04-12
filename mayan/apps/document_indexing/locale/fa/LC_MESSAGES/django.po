@@ -1,23 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2017
+# Roberto Rosario, 2021
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-03-06 15:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2021\n"
+"Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: admin.py:22
@@ -53,16 +54,12 @@ msgid "Documents"
 msgstr "اسناد"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index template created"
-msgstr "نمایه گره فهرست "
+msgstr ""
 
 #: events.py:13
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index template edited"
-msgstr "نمایه گره فهرست "
+msgstr ""
 
 #: forms.py:16
 msgid "Index templates to be queued for rebuilding."
@@ -138,7 +135,8 @@ msgid "Slug"
 msgstr "لاغر"
 
 #: models.py:47
-msgid "Causes this index to be visible and updated when document data changes."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
 msgstr ""
 "این داده ها را وقتی که اطلاعات سند تغییر می کند قابل مشاهده و به روز می کند."
 
@@ -168,8 +166,8 @@ msgstr ""
 
 #: models.py:234
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 msgstr ""
 "این گزینه را بررسی کنید تا این گره به عنوان یک ظرف برای اسناد عمل کند و نه "
 "به عنوان یک پدر برای گره های بیشتر."
@@ -247,40 +245,28 @@ msgid "Indexing"
 msgstr "نمایه سازی"
 
 #: permissions.py:8
-#, fuzzy
-#| msgid "Index instances"
 msgid "View index instances"
-msgstr "نمونه های فهرست"
+msgstr ""
 
 #: permissions.py:11
-#, fuzzy
-#| msgid "Delete the index template node: %s?"
 msgid "Create new index templates"
-msgstr "گره index index را حذف کنید: %s؟"
+msgstr ""
 
 #: permissions.py:14
-#, fuzzy
-#| msgid "Edit the index template node: %s?"
 msgid "Edit index templates"
-msgstr "گره index index را ویرایش کنید: %s؟"
+msgstr ""
 
 #: permissions.py:17
-#, fuzzy
-#| msgid "Delete the index template node: %s?"
 msgid "Delete index templates"
-msgstr "گره index index را حذف کنید: %s؟"
+msgstr ""
 
 #: permissions.py:20
-#, fuzzy
-#| msgid "Index node template"
 msgid "View index templates"
-msgstr "گره ی Index"
+msgstr ""
 
 #: permissions.py:23 views/index_template_views.py:310
-#, fuzzy
-#| msgid "Rebuild indexes"
 msgid "Rebuild index templates"
-msgstr "بازسازی نمایه ها"
+msgstr ""
 
 #: queues.py:12
 msgid "Delete empty index nodes"
@@ -328,8 +314,8 @@ msgstr ""
 
 #: serializers.py:215
 msgid ""
-"URL of the API endpoint showing the list document types associated with this "
-"index template."
+"URL of the API endpoint showing the list document types associated with this"
+" index template."
 msgstr ""
 
 #: serializers.py:222
@@ -351,9 +337,9 @@ msgstr ""
 
 #: settings.py:14
 msgid ""
-"Amount of time in seconds, a failed indexing task will wait before retrying. "
-"Lower values will increase the speed at which documents are indexed but will "
-"cause a higher count of failed/retried tasks in the queue."
+"Amount of time in seconds, a failed indexing task will wait before retrying."
+" Lower values will increase the speed at which documents are indexed but "
+"will cause a higher count of failed/retried tasks in the queue."
 msgstr ""
 
 #: views/index_instance_views.py:38
@@ -414,15 +400,13 @@ msgstr ""
 #: views/index_template_views.py:90
 msgid ""
 "Indexes group document automatically into levels. Indexes are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views/index_template_views.py:95
-#, fuzzy
-#| msgid "Indexes node template"
 msgid "There are no index templates."
-msgstr "نمایه گره قالب"
+msgstr ""
 
 #: views/index_template_views.py:124
 #, python-format
@@ -475,16 +459,13 @@ msgid "Edit the index template node: %s?"
 msgstr "گره index index را ویرایش کنید: %s؟"
 
 #: views/index_template_views.py:283
-#, fuzzy, python-format
-#| msgid "Rebuild indexes"
+#, python-format
 msgid "Rebuild index template: %s"
-msgstr "بازسازی نمایه ها"
+msgstr ""
 
 #: views/index_template_views.py:303
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index template queued for rebuild."
-msgstr "نمایه گره فهرست "
+msgstr ""
 
 #: views/index_template_views.py:324
 #, python-format
@@ -503,18 +484,3 @@ msgstr[1] ""
 #: views/index_template_views.py:370
 msgid "Index templates for which their instances will be deleted."
 msgstr ""
-
-#~ msgid "Create new document indexes"
-#~ msgstr "ایجاد نمادهای سند جدید"
-
-#~ msgid "Edit document indexes"
-#~ msgstr "ویرایش اسناد"
-
-#~ msgid "Delete document indexes"
-#~ msgstr "حذف نمایه های سند"
-
-#~ msgid "View document indexes"
-#~ msgstr "نمایش اسناد"
-
-#~ msgid "Rebuild document indexes"
-#~ msgstr "بازسازی نمایه های سند"

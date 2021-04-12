@@ -1,25 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Daniele Bortoluzzi <daniele@elkos.it>, 2019
-# Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
-# Roberto Rosario, 2020
+# Roberto Rosario, 2021
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
+# Daniele Bortoluzzi <daniele@elkos.it>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-08-08 09:52+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>, 2021\n"
+"Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:32 events.py:6 permissions.py:6 settings.py:10
@@ -83,10 +84,8 @@ msgid "Impersonate user"
 msgstr "Impersonare l'utente"
 
 #: links.py:39
-#, fuzzy
-#| msgid "Impersonate user"
 msgid "Impersonate"
-msgstr "Impersonare l'utente"
+msgstr ""
 
 #: links.py:44 links.py:48
 msgid "Set password"
@@ -106,11 +105,11 @@ msgstr ""
 
 #: settings.py:22
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
-"in. Value is time in seconds."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
 msgstr ""
-"Tempo massimo di accesso per un utente che fa clic sulla casella \"Ricordami"
-"\". Il valore è il tempo in secondi."
+"Tempo massimo di accesso per un utente che fa clic sulla casella "
+"\"Ricordami\". Il valore è il tempo in secondi."
 
 #: settings.py:29
 msgid ""
@@ -130,7 +129,7 @@ msgstr ""
 
 #: templates/authentication/app/viewport.html:14
 msgid "Click here when finished"
-msgstr ""
+msgstr "Clicca qui quando hai finito"
 
 #: templates/authentication/login.html:10
 msgid "Login"
@@ -197,8 +196,8 @@ msgstr "Effettuato il cambio password richiesto per %(count)d utenti"
 #: views.py:179
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] "Cambia la password dell'utente"
-msgstr[1] "Cambia le password degli utenti"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:189
 #, python-format
@@ -218,17 +217,6 @@ msgstr ""
 "%(error)s"
 
 #: views.py:278
-#, fuzzy, python-format
-#| msgid "Impersonate users"
+#, python-format
 msgid "Impersonate user: %s"
-msgstr "Impersonazione degli utenti"
-
-#~ msgid "User to be impersonated."
-#~ msgstr "Utente per le impersonare di identita"
-
-#~ msgid ""
-#~ "Super user and staff user password reseting is not allowed, use the admin "
-#~ "interface for these cases."
-#~ msgstr ""
-#~ "Al super utente e utente non è consentito di reimpostare la password "
-#~ "personale, utilizzare l'interfaccia di amministrazione per questi casi."
+msgstr ""

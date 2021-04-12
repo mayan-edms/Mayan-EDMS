@@ -1,30 +1,30 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Alex Chigrin <chalex84@mail.ru>, 2020
+# Roberto Rosario, 2021
+# Sergey Glita <gsv70@mail.ru>, 2021
+# lilo.panic, 2021
+# mizhgan <i@mizhgan.ru>, 2021
+# Alex Chigrin <chalex84@mail.ru>, 2021
+# OLeg Si <olegsm35@gmail.com>, 2021
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
-# mizhgan <i@mizhgan.ru>, 2018
-# lilo.panic, 2016
-# OLeg Si <olegsm35@gmail.com>, 2020
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-03-01 08:55+0000\n"
-"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:125 permissions.py:5 settings.py:15
 msgid "Common"
@@ -48,7 +48,8 @@ msgstr "Обратные поля модели"
 
 #: dependencies.py:168
 msgid "Used to allow offline translation of the code text strings."
-msgstr "Используется для разрешения автономного перевода текстовых строк кода."
+msgstr ""
+"Используется для разрешения автономного перевода текстовых строк кода."
 
 #: dependencies.py:177
 msgid "Provides style checking."
@@ -145,15 +146,15 @@ msgstr "Действия"
 
 #: menus.py:15
 msgid "Related"
-msgstr "Связанный"
+msgstr "Связанные"
 
 #: menus.py:16
 msgid "Secondary"
-msgstr "Вторичный"
+msgstr "Вторичные"
 
 #: menus.py:18
 msgid "Return"
-msgstr ""
+msgstr "Назад"
 
 #: menus.py:22
 msgid "User"
@@ -172,60 +173,55 @@ msgid ""
 "In list mode, show the \"list facet\" menu options as a dropdown menu "
 "instead of individual buttons."
 msgstr ""
+"В режиме списка показывать пункты меню боковой грани в виде выпадающего "
+"списка вместо отдельных кнопок."
 
 #: settings.py:30
 msgid ""
-"In list mode, show the \"object\" menu options as a dropdown menu instead of "
-"individual buttons."
+"In list mode, show the \"object\" menu options as a dropdown menu instead of"
+" individual buttons."
 msgstr ""
+"В режиме списка показывать пункты меню объекта в виде выпадающего списка "
+"вместо отдельных кнопок."
 
 #: settings.py:37
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
 msgstr ""
 "Время задержки фоновых задач, зависящих от процесса распространения "
 "записанных в БД данных."
 
 #: settings.py:44
-#, fuzzy
-#| msgid ""
-#| "A list of strings designating all applications that are to be removed "
-#| "from the list normally installed by Mayan EDMS. Each string should be a "
-#| "dotted Python path to: an application configuration class (preferred), or "
-#| "a package containing an application."
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 "Список строк, обозначающих приложения, которые должны быть удалены из "
 "списка, стандартно устанавливаемого Mayan EDMS. Каждая строка должна быть "
 "разделенным точками путем Python к: классу конфигурации приложения "
-"(предпочтительно) или пакету, содержащему приложение."
+"(предпочтительно) или пакету, содержащему приложение. Пример: ['app_1', "
+"'app_2']"
 
 #: settings.py:54
-#, fuzzy
-#| msgid ""
-#| "A list of strings designating all applications that are installed beyond "
-#| "those normally installed by Mayan EDMS. Each string should be a dotted "
-#| "Python path to: an application configuration class (preferred), or a "
-#| "package containing an application."
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 "Список строк, обозначающих приложения, которые установлены помимо тех, "
 "которые обычно устанавливаются Mayan EDMS. Каждая строка должна быть "
 "разделенным точками путем Python к: классу конфигурации приложения "
-"(предпочтительно) или пакету, содержащему приложение."
+"(предпочтительно) или пакету, содержащему приложение. Пример: ['app_1', "
+"'app_2']"
 
 #: settings.py:64
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
 msgstr ""
 "Название представления, прикрепленного к названию сайта в главном меню. Это "
 "также представление, на которое пользователи будут перенаправлены после "
@@ -245,11 +241,11 @@ msgstr "Базовый URL-путь для использования во вс�
 
 #: templates/common/app/viewport.html:9
 msgid "Warning"
-msgstr ""
+msgstr "Предупреждение"
 
 #: templates/common/app/viewport.html:21
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Щелкните здесь, чтобы исправить это."
 
 #: validators.py:41
 msgid "Enter a valid JSON value."
@@ -287,7 +283,7 @@ msgstr "Сделать копию %(object_name)s \"%(object)s\"?"
 
 #: views.py:83
 msgid "Object copied successfully."
-msgstr "Объект успешно скопирован."
+msgstr "Объект скопирован."
 
 #: views.py:100
 msgid ""
@@ -312,27 +308,3 @@ msgstr "Здесь вы можете настроить все аспекты с
 #: views.py:124
 msgid "These modules are used to do system maintenance."
 msgstr "Эти модули используются для обслуживания системы."
-
-#~ msgid "Locale profile"
-#~ msgstr "Профиль локали"
-
-#~ msgid "Edit locale profile"
-#~ msgstr "Редактировать локаль"
-
-#~ msgid "Timezone"
-#~ msgstr "Часовой пояс"
-
-#~ msgid "Language"
-#~ msgstr "Язык"
-
-#~ msgid "User locale profile"
-#~ msgstr "Локаль профиля пользователя"
-
-#~ msgid "User locale profiles"
-#~ msgstr "Локаль профилей пользователей"
-
-#~ msgid "Current user locale profile details"
-#~ msgstr "Настройки локали текущего пользователя"
-
-#~ msgid "Edit current user locale profile details"
-#~ msgstr "Редактировать настройки локали текущего пользователя"

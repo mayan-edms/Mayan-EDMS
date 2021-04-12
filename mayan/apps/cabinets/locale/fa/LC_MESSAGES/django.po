@@ -2,23 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2017
-# Roberto Rosario, 2020
-#
+# Roberto Rosario, 2021
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2017-04-21 16:25+0000\n"
-"Last-Translator: Roberto Rosario, 2020\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2021\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
-"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
@@ -181,7 +181,8 @@ msgid "The name of this cabinet level appended to the names of its ancestors."
 msgstr "نام این سطح کابینه به نام اجداد آن اضافه شده است."
 
 #: serializers.py:28
-msgid "URL of the API endpoint showing the list documents inside this cabinet."
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
 msgstr "URL نقطه پایان API نشان دادن اسناد لیست در داخل این کابینه."
 
 #: templates/cabinets/cabinet_details.html:17
@@ -229,40 +230,34 @@ msgid "No cabinets available"
 msgstr ""
 
 #: views.py:180
-#, fuzzy, python-format
-#| msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
+#, python-format
 msgid "Document \"%(object)s\" added to cabinets successfully."
-msgstr "سند: %(document)s به کابینه اضافه شده: %(cabinet)s با موفقیت."
+msgstr ""
 
 #: views.py:183
-#, fuzzy, python-format
-#| msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
+#, python-format
 msgid "%(count)d document added to cabinets successfully."
-msgstr "سند: %(document)s به کابینه اضافه شده: %(cabinet)s با موفقیت."
+msgstr ""
 
 #: views.py:186
-#, fuzzy, python-format
-#| msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
+#, python-format
 msgid "%(count)d documents added to cabinets successfully."
-msgstr "سند: %(document)s به کابینه اضافه شده: %(cabinet)s با موفقیت."
+msgstr ""
 
 #: views.py:188
-#, fuzzy, python-format
-#| msgid "Add document \"%s\" to cabinets"
+#, python-format
 msgid "Add document \"%(object)s\" to cabinets."
-msgstr "سند %s را به کابینت اضافه کنید"
+msgstr ""
 
 #: views.py:189
-#, fuzzy, python-format
-#| msgid "Add documents to cabinets"
+#, python-format
 msgid "Add %(count)d document to cabinets."
-msgstr "اسناد را به کابینت اضافه کنید"
+msgstr ""
 
 #: views.py:190
-#, fuzzy, python-format
-#| msgid "Add documents to cabinets"
+#, python-format
 msgid "Add %(count)d documents to cabinets."
-msgstr "اسناد را به کابینت اضافه کنید"
+msgstr ""
 
 #: views.py:194
 msgid "Add"
@@ -286,44 +281,38 @@ msgid "Cabinets containing document: %s"
 msgstr "کابینت حاوی اسناد: %s"
 
 #: views.py:278
-#, fuzzy, python-format
-#| msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
+#, python-format
 msgid "Document \"%(object)s\" removed from cabinets successfully."
-msgstr "سند: %(document)s حذف شده از کابینه: %(cabinet)s."
+msgstr ""
 
 #: views.py:281
-#, fuzzy, python-format
-#| msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
+#, python-format
 msgid "%(count)d document removed from cabinets successfully."
-msgstr "سند: %(document)s حذف شده از کابینه: %(cabinet)s."
+msgstr ""
 
 #: views.py:284
-#, fuzzy, python-format
-#| msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
+#, python-format
 msgid "%(count)d documents removed from cabinets successfully."
-msgstr "سند: %(document)s حذف شده از کابینه: %(cabinet)s."
+msgstr ""
 
 #: views.py:286
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
+#, python-format
 msgid "Remove document \"%(object)s\" from cabinets."
-msgstr "اسناد را از کابینت حذف کنید"
+msgstr ""
 
 #: views.py:287
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
+#, python-format
 msgid "Remove %(count)d document from cabinets."
-msgstr "اسناد را از کابینت حذف کنید"
+msgstr ""
 
 #: views.py:288
-#, fuzzy, python-format
-#| msgid "Remove documents from cabinets"
+#, python-format
 msgid "Remove %(count)d documents from cabinets."
-msgstr "اسناد را از کابینت حذف کنید"
+msgstr ""
 
 #: views.py:292
 msgid "Remove"
-msgstr "حذف"
+msgstr "برداشتن"
 
 #: views.py:307
 msgid "Cabinets from which the selected documents will be removed."
@@ -340,25 +329,3 @@ msgstr ""
 #: workflow_actions.py:67
 msgid "Cabinets from which the document will be removed."
 msgstr ""
-
-#~ msgid "Number of documents on this cabinet level."
-#~ msgstr "تعداد اسناد در این سطح کابینه."
-
-#~ msgid ""
-#~ "Comma separated list of document primary keys to add to this cabinet."
-#~ msgstr ""
-#~ "لیست کاملی از کلیدهای اولیه اسناد را برای اضافه کردن به این کابینه جدا "
-#~ "کنید."
-
-#~ msgid ""
-#~ "API URL pointing to a document in relation to the cabinet storing it. "
-#~ "This URL is different than the canonical document URL."
-#~ msgstr ""
-#~ "URL API اشاره به یک سند در رابطه با ذخیره آن کابینت است. این URL متفاوت "
-#~ "از URL سند کانون است."
-
-#~ msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
-#~ msgstr "سند: %(document)s در حال حاضر در کابینه است: %(cabinet)s."
-
-#~ msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
-#~ msgstr "سند: %(document)s در کابینه نیست: %(cabinet)s."

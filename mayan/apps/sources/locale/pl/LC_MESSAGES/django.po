@@ -1,29 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# mic <winterfall24@gmail.com>, 2012-2013
-# Tomasz Szymanowicz <alakdae@gmail.com>, 2020
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016,2020
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016,2018
+# Roberto Rosario, 2021
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:38+0000\n"
-"PO-Revision-Date: 2020-11-10 18:11+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
+"Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
 #: settings.py:14 views/source_views.py:173
@@ -41,8 +38,8 @@ msgid ""
 "browser."
 msgstr ""
 "Źródła dokumentów to sposób, w jaki nowe dokumenty są przekazywane do Mayan "
-"EDMS. Utwórz przynajmniej źródło formularza internetowego, aby móc przesyłać "
-"dokumenty z przeglądarki."
+"EDMS. Utwórz przynajmniej źródło formularza internetowego, aby móc przesyłać"
+" dokumenty z przeglądarki."
 
 #: apps.py:91
 msgid "Type"
@@ -74,7 +71,7 @@ msgstr "Komentarz"
 
 #: forms.py:31
 msgid "Action"
-msgstr ""
+msgstr "Akcja"
 
 #: forms.py:33
 msgid ""
@@ -100,7 +97,7 @@ msgstr "Plik"
 
 #: handlers.py:22
 msgid "Default"
-msgstr "Domyślne"
+msgstr "Domyślny"
 
 #: links.py:73
 msgid "New document"
@@ -143,10 +140,8 @@ msgid "Document sources"
 msgstr "Źródła dokumentu"
 
 #: links.py:137
-#, fuzzy
-#| msgid "Upload new version"
 msgid "Upload new file"
-msgstr "Prześlij nową wersję"
+msgstr ""
 
 #: links.py:141
 msgid "Check now"
@@ -258,7 +253,7 @@ msgstr "Przypisz typ dokumentu do dokumentów przesłanych z tego źródła."
 
 #: models/base.py:162 serializers.py:17
 msgid "Document type"
-msgstr "Typ dokumentów"
+msgstr "Typ dokumentu"
 
 #: models/base.py:166
 msgid "Whether to expand or not, compressed archives."
@@ -334,8 +329,8 @@ msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
 msgstr ""
-"Wybierz typ metadanych, aby zapisać wartość „od” wiadomości e-mail. Musi być "
-"prawidłowym typem metadanych dla wybranego wcześniej typu dokumentu."
+"Wybierz typ metadanych, aby zapisać wartość „od” wiadomości e-mail. Musi być"
+" prawidłowym typem metadanych dla wybranego wcześniej typu dokumentu."
 
 #: models/email_sources.py:70
 msgid "From metadata type"
@@ -398,13 +393,14 @@ msgstr "Kryteria wyszukiwania"
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 "Polecenie IMAP STORE do wykonania na komunikatach po ich przetworzeniu. "
-"Jedno polecenie na wiersz. Użyj poleceń określonych w https://tools.ietf.org/"
-"html/rfc2060.html#section-6.4.6 lub poleceń niestandardowych dla Twojego "
-"serwera IMAP."
+"Jedno polecenie na wiersz. Użyj poleceń określonych w "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 lub poleceń "
+"niestandardowych dla Twojego serwera IMAP."
 
 #: models/email_sources.py:232
 msgid "Store commands"
@@ -684,31 +680,23 @@ msgid "Server responded with {{statusCode}} code."
 msgstr "Serwer odpowiedział kodem {{statusCode}}."
 
 #: views/document_file_views.py:61
-#, fuzzy, python-format
-#| msgid ""
-#| "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+#, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
-"Nie można załadować nowych wersji dokumentu „%(document)s”. %(exception)s"
 
 #: views/document_file_views.py:125
-#, fuzzy, python-format
-#| msgid "Error executing document upload task; %(exception)s"
+#, python-format
 msgid "Error executing document file upload task; %(exception)s"
-msgstr "Błąd podczas wykonywania zadania przesyłania dokumentu; %(exception)s"
+msgstr ""
 
 #: views/document_file_views.py:140
-#, fuzzy
-#| msgid "New document queued for upload and will be available shortly."
 msgid "New document file queued for upload and will be available shortly."
-msgstr "Nowy dokument w kolejce do przesłania i wkrótce będzie dostępny."
+msgstr ""
 
 #: views/document_file_views.py:165
-#, fuzzy, python-format
-#| msgid ""
-#| "Upload a new version for document \"%(document)s\" from source: %(source)s"
+#, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
-msgstr "Prześlij nową wersję dokumentu „%(document)s” ze źródła: %(source)s"
+msgstr ""
 
 #: views/document_file_views.py:168
 msgid "Submit"
@@ -716,8 +704,8 @@ msgstr "Wykonaj"
 
 #: views/document_views.py:79 wizards.py:50
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 "Nie zdefiniowano żadnych interaktywnych źródeł dokumentów lub żadne nie "
 "zostało włączone, utwórz je przed kontynuowaniem."
@@ -730,12 +718,12 @@ msgstr "Właściwości dokumentu"
 #: views/document_views.py:116
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
 "Może to oznaczać, że folder przejściowy jest pusty. Może to również "
-"oznaczać, że konto użytkownika systemu operacyjnego używane w Mayan EDMS nie "
-"ma niezbędnych uprawnień systemu plików dla tego folderu."
+"oznaczać, że konto użytkownika systemu operacyjnego używane w Mayan EDMS nie"
+" ma niezbędnych uprawnień systemu plików dla tego folderu."
 
 #: views/document_views.py:123
 msgid "No staging files available"
@@ -807,8 +795,8 @@ msgid ""
 "intervention."
 msgstr ""
 "Źródła zapewniają środki do przesyłania dokumentów. Niektóre źródła, takie "
-"jak formularz internetowy, są interaktywne i wymagają działania użytkownika. "
-"Inne, takie jak źródła wiadomości e-mail, są automatyczne i działają w tle "
+"jak formularz internetowy, są interaktywne i wymagają działania użytkownika."
+" Inne, takie jak źródła wiadomości e-mail, są automatyczne i działają w tle "
 "bez interwencji użytkownika."
 
 #: views/source_views.py:172
@@ -836,17 +824,3 @@ msgstr "Następny krok"
 #: wizards.py:77
 msgid "Document upload wizard"
 msgstr "Kreator przesyłania dokumentu"
-
-#~ msgid "Error deleting staging file; %s"
-#~ msgstr "Błąd podczas usuwania pliku przejściowego: %s"
-
-#~ msgid "Unable get list of staging files: %s"
-#~ msgstr "Nie można uzyskać listy plików przejściowych: %s"
-
-#~ msgid "Error executing document version upload task; %(exception)s"
-#~ msgstr "Błąd podczas przesyłania wersji dokumentu; %(exception)s"
-
-#~ msgid ""
-#~ "New document version queued for upload and will be available shortly."
-#~ msgstr ""
-#~ "Nowa wersja dokumentu w kolejce do przesłania i wkrótce będzie dostępna."

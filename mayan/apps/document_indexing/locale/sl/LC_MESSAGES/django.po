@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Jože Detečnik <joze.detecnik@3tav.si>, 2020
+# Roberto Rosario, 2021
+# Jože Detečnik <joze.detecnik@3tav.si>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2021-03-06 15:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/sl/)\n"
-"Language: sl\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2021\n"
+"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #: admin.py:22
 msgid "None"
@@ -27,15 +27,15 @@ msgstr "Nobenega"
 
 #: admin.py:24 links.py:94 models.py:54
 msgid "Document types"
-msgstr "Vrste dokumentov"
+msgstr ""
 
 #: apps.py:51 events.py:6 settings.py:8
 msgid "Document indexing"
-msgstr "Kazalo dokumentov"
+msgstr ""
 
 #: apps.py:147
 msgid "Total levels"
-msgstr "Skupne ravni"
+msgstr ""
 
 #: apps.py:154
 msgid "Total documents"
@@ -43,27 +43,23 @@ msgstr "Skupaj dokumentov"
 
 #: apps.py:160 apps.py:174 apps.py:204 apps.py:214
 msgid "Level"
-msgstr "Raven"
+msgstr ""
 
 #: apps.py:183
 msgid "Levels"
-msgstr "Ravni"
+msgstr ""
 
 #: apps.py:195 models.py:393
 msgid "Documents"
 msgstr "Dokumenti"
 
 #: events.py:10
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index template created"
-msgstr "Vozlišče predloge kazala"
+msgstr ""
 
 #: events.py:13
-#, fuzzy
-#| msgid "Index template node"
 msgid "Index template edited"
-msgstr "Vozlišče predloge kazala"
+msgstr ""
 
 #: forms.py:16
 msgid "Index templates to be queued for rebuilding."
@@ -71,20 +67,20 @@ msgstr "Predloge kazal, ki bodo v čakalni vrsti za obnovitev."
 
 #: forms.py:17 links.py:35 views/index_template_views.py:96
 msgid "Index templates"
-msgstr "Indeksne predloge"
+msgstr ""
 
 #: forms.py:32
 msgid "Template"
-msgstr "Predloga"
+msgstr ""
 
 #: handlers.py:18
 msgid "Creation date"
-msgstr "Datum nastanka"
+msgstr ""
 
 #: links.py:29 links.py:43 links.py:74 links.py:78 models.py:62
 #: views/index_instance_views.py:43
 msgid "Indexes"
-msgstr "Kazala"
+msgstr ""
 
 #: links.py:48 queues.py:24
 msgid "Rebuild index"
@@ -92,15 +88,15 @@ msgstr "Obnovi kazalo"
 
 #: links.py:55 links.py:64
 msgid "Deletes and creates from scratch all the document indexes."
-msgstr "Izbriše in ustvari iz nič vse indekse dokumentov."
+msgstr ""
 
 #: links.py:56
 msgid "Rebuild indexes"
-msgstr "Obnovite indekse"
+msgstr ""
 
 #: links.py:65 views/index_template_views.py:345
 msgid "Reset indexes"
-msgstr "Ponastavi indekse"
+msgstr ""
 
 #: links.py:84 views/index_template_views.py:101
 msgid "Create index"
@@ -112,15 +108,15 @@ msgstr "Izbriši"
 
 #: links.py:98 links.py:118
 msgid "Edit"
-msgstr "Uredi"
+msgstr ""
 
 #: links.py:104
 msgid "Tree template"
-msgstr "Predloga drevesa"
+msgstr ""
 
 #: links.py:109
 msgid "New child node"
-msgstr "Novo podrejeno vozlišče"
+msgstr ""
 
 #: models.py:36
 msgid "Short description of this index."
@@ -137,51 +133,46 @@ msgstr ""
 
 #: models.py:42
 msgid "Slug"
-msgstr "Slug"
+msgstr ""
 
 #: models.py:47
-msgid "Causes this index to be visible and updated when document data changes."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
 msgstr ""
 "Zaradi tega je kazalo viden in posodobljen, ko se spremenijo podatki "
 "dokumenta."
 
 #: models.py:50 models.py:229
 msgid "Enabled"
-msgstr "Omogočeno"
+msgstr ""
 
 #: models.py:61 models.py:213
 msgid "Index"
-msgstr "Kazalo"
+msgstr ""
 
 #: models.py:217
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr ""
-"Vnesite predlogo za upodabljanje. Uporabite privzeti jezik za predloge "
-"Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
 #: models.py:221
 msgid "Indexing expression"
-msgstr "Indeksiranje izraza"
+msgstr ""
 
 #: models.py:226
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr ""
-"Zaradi tega vozlišča je vidno in posodobljeno, ko se spremenijo podatki "
-"dokumenta."
 
 #: models.py:234
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 msgstr ""
-"Označite to možnost, če želite, da bo to vozlišče delovalo kot vsebnik za "
-"dokumente in ne kot nadrejeno za nadaljnja vozlišča."
 
 #: models.py:237
 msgid "Link documents"
-msgstr "Povežite dokumente"
+msgstr ""
 
 #: models.py:241
 msgid "Index node template"
@@ -189,11 +180,11 @@ msgstr "Predloga vozlišča kazala"
 
 #: models.py:242
 msgid "Indexes node template"
-msgstr "Predloga vozlišča indeksira"
+msgstr ""
 
 #: models.py:246
 msgid "Root"
-msgstr "Korenina"
+msgstr ""
 
 #: models.py:304
 #, python-format
@@ -201,8 +192,6 @@ msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr ""
-"Napaka pri indeksiranju dokumenta: %(document)s; izraz: %(expression)s; "
-"%(exception)s"
 
 #: models.py:345
 msgid "Index instance"
@@ -218,7 +207,7 @@ msgstr "Vozlišče predloge kazala"
 
 #: models.py:389 search.py:26
 msgid "Value"
-msgstr "Vrednost"
+msgstr ""
 
 #: models.py:399 models.py:528
 msgid "Index instance node"
@@ -226,7 +215,7 @@ msgstr "Vozlišče primerka kazala"
 
 #: models.py:400
 msgid "Indexes instances node"
-msgstr "Indeksira vozlišče primerkov"
+msgstr ""
 
 #: models.py:465
 msgid "The path to the index including all ancestors."
@@ -234,7 +223,7 @@ msgstr "Pot do kazala, ki vključuje vse prednike."
 
 #: models.py:467
 msgid "Full path"
-msgstr "Celotna pot"
+msgstr ""
 
 #: models.py:521
 msgid "Document index node instance"
@@ -242,7 +231,7 @@ msgstr "Primer vozlišča kazala dokumenta"
 
 #: models.py:522
 msgid "Document indexes node instances"
-msgstr "Dokument indeksira primerke vozlišča"
+msgstr ""
 
 #: models.py:529
 msgid "Index instance nodes"
@@ -250,43 +239,31 @@ msgstr "Vozlišča primerka kazala"
 
 #: permissions.py:5 queues.py:8
 msgid "Indexing"
-msgstr "Indeksiranje"
+msgstr ""
 
 #: permissions.py:8
-#, fuzzy
-#| msgid "View document index instances"
 msgid "View index instances"
-msgstr "Oglejte si primerke kazala dokumentov"
+msgstr ""
 
 #: permissions.py:11
-#, fuzzy
-#| msgid "Delete the index template node: %s?"
 msgid "Create new index templates"
-msgstr "Izbriši vozlišče predloge kazala: %s?"
+msgstr ""
 
 #: permissions.py:14
-#, fuzzy
-#| msgid "Index templates"
 msgid "Edit index templates"
-msgstr "Indeksne predloge"
+msgstr ""
 
 #: permissions.py:17
-#, fuzzy
-#| msgid "Delete the index template node: %s?"
 msgid "Delete index templates"
-msgstr "Izbriši vozlišče predloge kazala: %s?"
+msgstr ""
 
 #: permissions.py:20
-#, fuzzy
-#| msgid "Index templates"
 msgid "View index templates"
-msgstr "Indeksne predloge"
+msgstr ""
 
 #: permissions.py:23 views/index_template_views.py:310
-#, fuzzy
-#| msgid "Rebuild indexes"
 msgid "Rebuild index templates"
-msgstr "Obnovite indekse"
+msgstr ""
 
 #: queues.py:12
 msgid "Delete empty index nodes"
@@ -294,11 +271,11 @@ msgstr "Izbriši prazna vozlišča kazala"
 
 #: queues.py:16
 msgid "Remove document"
-msgstr "Odstrani dokument"
+msgstr ""
 
 #: queues.py:20
 msgid "Index document"
-msgstr "Kazalo dokument"
+msgstr ""
 
 #: search.py:30
 msgid "Document type"
@@ -306,27 +283,27 @@ msgstr "Vrsta dokumenta"
 
 #: search.py:33
 msgid "Document MIME type"
-msgstr "Vrsta dokumenta MIME"
+msgstr ""
 
 #: search.py:36
 msgid "Document label"
-msgstr "Oznaka dokumenta"
+msgstr ""
 
 #: search.py:39
 msgid "Document description"
-msgstr "Opis dokumenta"
+msgstr ""
 
 #: search.py:42
 msgid "Document UUID"
-msgstr "UUID dokumenta"
+msgstr ""
 
 #: search.py:46
 msgid "Document checksum"
-msgstr "Kontrolna vsota dokumentov"
+msgstr ""
 
 #: serializers.py:197
 msgid "Parent cannot be empty."
-msgstr "Starš ne sme biti prazen."
+msgstr ""
 
 #: serializers.py:204
 msgid "Parent must be from the same index template."
@@ -334,8 +311,8 @@ msgstr "Starš mora biti iz iste predloge kazala."
 
 #: serializers.py:215
 msgid ""
-"URL of the API endpoint showing the list document types associated with this "
-"index template."
+"URL of the API endpoint showing the list document types associated with this"
+" index template."
 msgstr ""
 
 #: serializers.py:222
@@ -348,35 +325,25 @@ msgid ""
 msgstr ""
 
 #: serializers.py:277
-#, fuzzy
-#| msgid "Parent must be from the same index template."
 msgid "Primary key of the document type to add to the index template."
-msgstr "Starš mora biti iz iste predloge kazala."
+msgstr ""
 
 #: serializers.py:286
-#, fuzzy
-#| msgid "Parent must be from the same index template."
 msgid "Primary key of the document type to remove from the index template."
-msgstr "Starš mora biti iz iste predloge kazala."
+msgstr ""
 
 #: settings.py:14
 msgid ""
-"Amount of time in seconds, a failed indexing task will wait before retrying. "
-"Lower values will increase the speed at which documents are indexed but will "
-"cause a higher count of failed/retried tasks in the queue."
+"Amount of time in seconds, a failed indexing task will wait before retrying."
+" Lower values will increase the speed at which documents are indexed but "
+"will cause a higher count of failed/retried tasks in the queue."
 msgstr ""
-"Količina časa v sekundah, neuspešno opravilo indeksiranja bo počakalo pred "
-"ponovnim poskusom. Nižje vrednosti bodo povečale hitrost indeksiranja "
-"dokumentov, vendar bodo povzročile večje število neuspelih / ponovljenih "
-"opravil v čakalni vrsti."
 
 #: views/index_instance_views.py:38
 msgid ""
 "This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
 msgstr ""
-"To lahko pomeni, da predloge kazala niso bile ustvarjene ali da obstajajo "
-"predloge kazala, vendar niso pravilno definirane."
 
 #: views/index_instance_views.py:42
 msgid "There are no index instances available."
@@ -385,7 +352,7 @@ msgstr "Na voljo ni nobenega primerka kazala."
 #: views/index_instance_views.py:80
 #, python-format
 msgid "Navigation: %s"
-msgstr "Navigacija: %s"
+msgstr ""
 
 #: views/index_instance_views.py:86
 #, python-format
@@ -402,20 +369,20 @@ msgstr ""
 
 #: views/index_instance_views.py:145
 msgid "This document is not in any index"
-msgstr "Ta dokument ni v nobenem indeksu"
+msgstr ""
 
 #: views/index_instance_views.py:149
 #, python-format
 msgid "Indexes nodes containing document: %s"
-msgstr "Indeksira vozlišča, ki vsebujejo dokument: %s"
+msgstr ""
 
 #: views/index_template_views.py:45
 msgid "Available indexes"
-msgstr "Razpoložljivi indeksi"
+msgstr ""
 
 #: views/index_template_views.py:46
 msgid "Indexes linked"
-msgstr "Kazala povezana"
+msgstr ""
 
 #: views/index_template_views.py:70
 msgid ""
@@ -423,30 +390,22 @@ msgid ""
 "updated. Events of the documents of this type will trigger updates in the "
 "linked indexes."
 msgstr ""
-"Dokumenti te vrste bodo prikazani v povezanih indeksih, ko bodo "
-"posodobljeni. Dogodki dokumentov te vrste bodo sprožili posodobitve v "
-"povezanih indeksih."
 
 #: views/index_template_views.py:74
 #, python-format
 msgid "Indexes linked to document type: %s"
-msgstr "Kazala, povezana s tipom dokumenta: %s"
+msgstr ""
 
 #: views/index_template_views.py:90
 msgid ""
 "Indexes group document automatically into levels. Indexes are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
-"Kazalo samodejno razvrsti dokument v ravni. Indeksi so definirani z uporabo "
-"predloge, katere oznake so nadomeščene z neposrednimi lastnostmi dokumentov, "
-"kot so nalepka ali opis, ali razširjenimi lastnostmi, kot so metapodatki."
 
 #: views/index_template_views.py:95
-#, fuzzy
-#| msgid "There are no indexes."
 msgid "There are no index templates."
-msgstr "Kazalnikov ni."
+msgstr ""
 
 #: views/index_template_views.py:124
 #, python-format
@@ -455,11 +414,11 @@ msgstr "Izbriši kazalo: %s?"
 
 #: views/index_template_views.py:136
 msgid "Available document types"
-msgstr "Razpoložljive vrste dokumentov"
+msgstr ""
 
 #: views/index_template_views.py:137
 msgid "Document types linked"
-msgstr "Vrste dokumentov povezane"
+msgstr ""
 
 #: views/index_template_views.py:147
 msgid ""
@@ -467,8 +426,6 @@ msgid ""
 "built. Only the events of the documents of the types select will trigger "
 "updates in the index."
 msgstr ""
-"Ko so sestavljeni, bodo v indeksu prikazani samo dokumenti izbranih vrst. "
-"Samo indeksi izbranih vrst dokumentov bodo sprožili posodobitve v indeksu."
 
 #: views/index_template_views.py:151
 #, python-format
@@ -488,7 +445,7 @@ msgstr "Vozlišča drevesne predloge za kazalo: %s"
 #: views/index_template_views.py:213
 #, python-format
 msgid "Create child node of: %s"
-msgstr "Ustvari podrejeno vozlišče: %s"
+msgstr ""
 
 #: views/index_template_views.py:239
 #, python-format
@@ -501,61 +458,32 @@ msgid "Edit the index template node: %s?"
 msgstr "Uredi vozlišče predloge kazala: %s?"
 
 #: views/index_template_views.py:283
-#, fuzzy, python-format
-#| msgid "Rebuild index: %s"
+#, python-format
 msgid "Rebuild index template: %s"
-msgstr "Indeks obnovitve: %s"
+msgstr ""
 
 #: views/index_template_views.py:303
-#, fuzzy
-#| msgid "Index templates to be queued for rebuilding."
 msgid "Index template queued for rebuild."
-msgstr "Predloge kazal, ki bodo v čakalni vrsti za obnovitev."
+msgstr ""
 
 #: views/index_template_views.py:324
-#, fuzzy, python-format
-#| msgid "%(count)d index queued for rebuild."
-#| msgid_plural "%(count)d indexes queued for rebuild."
+#, python-format
 msgid "%(count)d index template queued for rebuild."
 msgid_plural "%(count)d index templates queued for rebuild."
-msgstr[0] "kazalo %(count)d je v čakalni vrsti za obnovitev."
-msgstr[1] "indeksi %(count)d so v čakalni vrsti za obnovitev."
-msgstr[2] "indeksi %(count)d so v čakalni vrsti za obnovitev."
-msgstr[3] "indeksi %(count)d so v čakalni vrsti za obnovitev."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views/index_template_views.py:357
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] "."
-msgstr[1] "%(count)d ponastavitev kazal."
-msgstr[2] "%(count)d ponastavitev kazal."
-msgstr[3] "%(count)d ponastavitev kazal."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views/index_template_views.py:370
 msgid "Index templates for which their instances will be deleted."
-msgstr "Indeksirajte predloge, za katere bodo njihovi primerki izbrisani."
-
-#~ msgid "Index created"
-#~ msgstr "Kazalo je ustvarjeno"
-
-#~ msgid "Index edited"
-#~ msgstr "Kazalo urejeno"
-
-#~ msgid "Create new document indexes"
-#~ msgstr "Ustvarite nove indekse dokumentov"
-
-#~ msgid "Edit document indexes"
-#~ msgstr "Urejanje kazal dokumentov"
-
-#~ msgid "Delete document indexes"
-#~ msgstr "Izbrišite indekse dokumentov"
-
-#~ msgid "View document indexes"
-#~ msgstr "Ogled kazal dokumentov"
-
-#~ msgid "Rebuild document indexes"
-#~ msgstr "Obnovite indekse dokumentov"
-
-#~ msgid "Index queued for rebuild."
-#~ msgstr "Indeks je v čakalni vrsti za obnovo."
+msgstr ""

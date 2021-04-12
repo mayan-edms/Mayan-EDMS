@@ -2,24 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Roberto Rosario, 2020
-# yan songwei <yansw@vip.163.com>, 2020
-#
+# Roberto Rosario, 2021
+# yan songwei <yansw@vip.163.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2019-12-03 05:23+0000\n"
-"Last-Translator: yan songwei <yansw@vip.163.com>, 2020\n"
-"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/"
-"teams/13584/zh-Hans/)\n"
-"Language: zh-Hans\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: yan songwei <yansw@vip.163.com>, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:25 events.py:6 permissions.py:5
@@ -119,10 +118,8 @@ msgid "Cache partition files"
 msgstr "缓存分区文件"
 
 #: permissions.py:8
-#, fuzzy
-#| msgid "Purge a file cache"
 msgid "Purge an object cache"
-msgstr "清除文件缓存"
+msgstr ""
 
 #: permissions.py:11 queues.py:7
 msgid "Purge a file cache"
@@ -133,26 +130,22 @@ msgid "View a file cache"
 msgstr "查看文件缓存"
 
 #: queues.py:11
-#, fuzzy
-#| msgid "Purge a file cache"
 msgid "Purge a file cache partition"
-msgstr "清除文件缓存"
+msgstr ""
 
 #: views.py:43
-#, fuzzy, python-format
-#| msgid "File caches"
+#, python-format
 msgid "Details cache: %s"
-msgstr "文件缓存"
+msgstr ""
 
 #: views.py:54
 msgid "File caches list"
 msgstr "文件缓存列表"
 
 #: views.py:70
-#, fuzzy, python-format
-#| msgid "Cache partition files"
+#, python-format
 msgid "Purge cache partitions of \"%s\"?"
-msgstr "缓存分区文件"
+msgstr ""
 
 #: views.py:84
 msgid "Object cache partitions submitted for purging."
@@ -161,4 +154,4 @@ msgstr ""
 #: views.py:101
 msgid "Submit the selected cache for purging?"
 msgid_plural "Submit the selected caches for purging?"
-msgstr[0] "清除已选定的缓存？"
+msgstr[0] ""

@@ -1,28 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
-# Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
-# Olivier W, 2019
-# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2012
-# Thierry Schott <DarkDare@users.noreply.github.com>, 2016
-# Yves Dubois <ydubois@gmail.com>, 2018
+# Roberto Rosario, 2021
+# Olivier W, 2021
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
+# Yves Dubois <ydubois@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-02-19 14:16+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:26+0000\n"
+"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:40
@@ -31,7 +31,7 @@ msgstr "Liaison"
 
 #: apps.py:94 models.py:29
 msgid "Label"
-msgstr "Libellé"
+msgstr "Étiquette"
 
 #: events.py:6 links.py:24 links.py:75 links.py:80 links.py:85 models.py:48
 #: permissions.py:5 views.py:191
@@ -72,7 +72,7 @@ msgstr "Céer un nouveau lien intelligent"
 
 #: links.py:59 models.py:40
 msgid "Document types"
-msgstr "Types de document"
+msgstr "Types de documents"
 
 #: links.py:69
 msgid "Documents"
@@ -155,8 +155,8 @@ msgid ""
 "Use this field to show a unique label depending on the document from which "
 "the smart link is being accessed."
 msgstr ""
-"Utilisez ce champ pour afficher une étiquette unique en fonction du document "
-"à partir duquel le lien intelligent est accessible."
+"Utilisez ce champ pour afficher une étiquette unique en fonction du document"
+" à partir duquel le lien intelligent est accessible."
 
 #: models.py:35
 msgid "Dynamic label"
@@ -194,8 +194,8 @@ msgstr "Attribut étranger du document "
 
 #: models.py:178
 msgid ""
-"The expression using document properties to be evaluated against the foreign "
-"document field."
+"The expression using document properties to be evaluated against the foreign"
+" document field."
 msgstr ""
 "Expression utilisant des propriétés de document à évaluer par rapport au "
 "champ de document étranger."
@@ -246,11 +246,11 @@ msgstr "Afficher les liens intelligents existants"
 
 #: serializers.py:52
 msgid "Primary key of the document type to add to the smart link."
-msgstr ""
+msgstr "Clé primaire du type de document à ajouter au lien intelligent."
 
 #: serializers.py:61
 msgid "Primary key of the document type to remove from the smart link."
-msgstr ""
+msgstr "Clé primaire du type de document à supprimer du lien intelligent."
 
 #: views.py:41
 msgid "Available smart links"
@@ -277,8 +277,7 @@ msgstr "Lien inetlligent du document : %s"
 
 #: views.py:117
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr ""
 "Documents du lien intelligent  \"%(smart_link)s\" en relation avec "
 "\"%(document)s\""
@@ -369,13 +368,3 @@ msgstr "Supprimer la condition du lien intelligent : \"%s\" ?"
 #: views.py:376
 msgid "Edit smart link condition"
 msgstr "Modifier la condition sur le lien intelligent"
-
-#~ msgid ""
-#~ "Comma separated list of document type primary keys to which this smart "
-#~ "link will be attached."
-#~ msgstr ""
-#~ "Liste séparée par des virgules des clés primaires de type de document "
-#~ "auxquelles ce lien intelligent sera attaché."
-
-#~ msgid "No such document type: %s"
-#~ msgstr "Aucun type de document de ce type : %s"

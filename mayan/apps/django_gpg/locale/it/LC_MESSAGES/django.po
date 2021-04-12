@@ -1,24 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Marco Camplese <marco.camplese.mc@gmail.com>, 2016
-# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012,2015
+# Roberto Rosario, 2021
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 10:37+0000\n"
-"PO-Revision-Date: 2020-04-14 08:31+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>, 2021\n"
+"Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:33
@@ -27,7 +28,7 @@ msgstr "Django GPG"
 
 #: apps.py:56 apps.py:62 forms.py:15
 msgid "Key ID"
-msgstr "chiave ID"
+msgstr "ID chiave"
 
 #: apps.py:66 forms.py:32 models.py:59
 msgid "Type"
@@ -62,20 +63,16 @@ msgid "Key management"
 msgstr "Gestione delle chiavi"
 
 #: events.py:8
-#, fuzzy
-#| msgid "Key data"
 msgid "Key created"
-msgstr "Dati chiave"
+msgstr ""
 
 #: events.py:12
-#, fuzzy
-#| msgid "Download"
 msgid "Key downloaded"
-msgstr "Scarica"
+msgstr ""
 
 #: forms.py:26
 msgid "None"
-msgstr "Nessuna "
+msgstr "Nessuno"
 
 #: forms.py:29 models.py:48
 msgid "Fingerprint"
@@ -95,7 +92,7 @@ msgstr "Nome, e-mail,key ID , impronte digitali da ricercare"
 
 #: links.py:17
 msgid "Delete"
-msgstr "Cancellare"
+msgstr "Cancella"
 
 #: links.py:22
 msgid "Details"
@@ -160,12 +157,12 @@ msgstr "Errore di firma"
 #: literals.py:72
 msgid "Document is signed but no public key is available for verification."
 msgstr ""
-"Il documento è stato firmato, ma la chiave pubblica non è disponibile per la "
-"verifica"
+"Il documento è stato firmato, ma la chiave pubblica non è disponibile per la"
+" verifica"
 
 #: literals.py:77
 msgid "Document is signed, and signature is good."
-msgstr "Documento firmato e firma è buona."
+msgstr "Documento firmato e la firma è valida."
 
 #: literals.py:80
 msgid "Document is signed with a valid signature."
@@ -288,8 +285,8 @@ msgstr "Carica nuova chiave"
 
 #: views.py:187
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded "
-"by the user. The view to upload private and public keys is the same."
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user. The view to upload private and public keys is the same."
 msgstr ""
 
 #: views.py:192
@@ -298,8 +295,8 @@ msgstr ""
 
 #: views.py:210
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded "
-"by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr ""
 
