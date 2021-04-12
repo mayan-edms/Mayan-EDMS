@@ -8,6 +8,12 @@ source_file = mayan/apps/acls/locale/en/LC_MESSAGES/django.po
 source_lang = en
 type = PO
 
+[mayan-edms.announcements-4-0]
+file_filter = mayan/apps/announcements/locale/<lang>/LC_MESSAGES/django.po
+source_file = mayan/apps/announcements/locale/en/LC_MESSAGES/django.po
+source_lang = en
+type = PO
+
 [mayan-edms.appearance-4-0]
 file_filter = mayan/apps/appearance/locale/<lang>/LC_MESSAGES/django.po
 source_file = mayan/apps/appearance/locale/en/LC_MESSAGES/django.po
@@ -104,6 +110,12 @@ source_file = mayan/apps/documents/locale/en/LC_MESSAGES/django.po
 source_lang = en
 type = PO
 
+[mayan-edms.duplicates-4-0]
+file_filter = mayan/apps/duplicates/locale/<lang>/LC_MESSAGES/django.po
+source_file = mayan/apps/duplicates/locale/en/LC_MESSAGES/django.po
+source_lang = en
+type = PO
+
 [mayan-edms.dynamic_search-4-0]
 file_filter = mayan/apps/dynamic_search/locale/<lang>/LC_MESSAGES/django.po
 source_file = mayan/apps/dynamic_search/locale/en/LC_MESSAGES/django.po
@@ -140,6 +152,12 @@ source_file = mayan/apps/lock_manager/locale/en/LC_MESSAGES/django.po
 source_lang = en
 type = PO
 
+[mayan-edms.locales-4-0]
+file_filter = mayan/apps/locales/locale/<lang>/LC_MESSAGES/django.po
+source_file = mayan/apps/locales/locale/en/LC_MESSAGES/django.po
+source_lang = en
+type = PO
+
 [mayan-edms.logging-4-0]
 file_filter = mayan/apps/logging/locale/<lang>/LC_MESSAGES/django.po
 source_file = mayan/apps/logging/locale/en/LC_MESSAGES/django.po
@@ -155,6 +173,12 @@ type = PO
 [mayan-edms.mayan_statistics-4-0]
 file_filter = mayan/apps/mayan_statistics/locale/<lang>/LC_MESSAGES/django.po
 source_file = mayan/apps/mayan_statistics/locale/en/LC_MESSAGES/django.po
+source_lang = en
+type = PO
+
+[mayan-edms.messaging-4-0]
+file_filter = mayan/apps/messaging/locale/<lang>/LC_MESSAGES/django.po
+source_file = mayan/apps/messaging/locale/en/LC_MESSAGES/django.po
 source_lang = en
 type = PO
 
