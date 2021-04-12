@@ -1,6 +1,6 @@
 [main]
 host = https://www.transifex.com
-lang_map = zh-Hans : zh_Hans
+lang_map = zh-Hans: zh_Hans
 
 [mayan-edms.acls-4-0]
 file_filter = mayan/apps/acls/locale/<lang>/LC_MESSAGES/django.po
