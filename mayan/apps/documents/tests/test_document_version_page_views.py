@@ -92,6 +92,155 @@ class DocumentVersionPageViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
+    def test_document_version_page_list_view_no_permission(self):
+        response = self._request_test_document_version_page_list_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_version_page_list_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_view
+        )
+
+        response = self._request_test_document_version_page_list_view()
+        self.assertContains(
+            response=response, status_code=200,
+            text=str(self.test_document_version)
+        )
+
+    def test_trashed_document_version_page_list_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_version_page_list_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_version_page_rotate_left_view_no_permission(self):
+        response = self._request_test_document_version_page_rotate_left_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_version_page_rotate_left_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_view
+        )
+
+        response = self._request_test_document_version_page_rotate_left_view()
+        self.assertEqual(response.status_code, 302)
+
+    def test_trashed_document_version_page_rotate_left_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_version_page_rotate_left_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_version_page_rotate_right_view_no_permission(self):
+        response = self._request_test_document_version_page_rotate_right_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_version_page_rotate_right_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_version_view
+        )
+
+        response = self._request_test_document_version_page_rotate_right_view()
+        self.assertEqual(response.status_code, 302)
+
+    def test_trashed_document_version_page_rotate_right_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_version_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_version_page_rotate_right_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_version_page_view_no_permission(self):
+        response = self._request_test_document_version_page_view(
+            document_version_page=self.test_document_version.pages.first()
+        )
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_version_page_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_version_view
+        )
+
+        response = self._request_test_document_version_page_view(
+            document_version_page=self.test_document_version.pages.first()
+        )
+        self.assertContains(
+            response=response, status_code=200, text=str(
+                self.test_document_version.pages.first()
+            )
+        )
+
+    def test_trashed_document_version_page_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_version_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_version_page_view(
+            document_version_page=self.test_document_version.pages.first()
+        )
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_version_page_zoom_in_view_no_permission(self):
+        response = self._request_test_document_version_page_zoom_in_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_version_page_zoom_in_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_version_view
+        )
+
+        response = self._request_test_document_version_page_zoom_in_view()
+        self.assertEqual(response.status_code, 302)
+
+    def test_trashed_document_version_page_zoom_in_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_version_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_version_page_zoom_in_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_version_page_zoom_out_view_no_permission(self):
+        response = self._request_test_document_version_page_zoom_out_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_version_page_zoom_out_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_version_view
+        )
+
+        response = self._request_test_document_version_page_zoom_out_view()
+        self.assertEqual(response.status_code, 302)
+
+    def test_trashed_document_version_page_zoom_out_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_version_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_version_page_zoom_out_view()
+        self.assertEqual(response.status_code, 404)
+
 
 class DocumentVersionPageRemapViewTestCase(
     DocumentVersionPageRemapViewTestMixin, GenericDocumentViewTestCase

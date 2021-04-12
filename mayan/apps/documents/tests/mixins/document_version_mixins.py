@@ -242,7 +242,47 @@ class DocumentVersionPageViewTestMixin:
             }
         )
 
+    def _request_test_document_version_page_list_view(self):
+        return self.get(
+            viewname='documents:document_version_page_list', kwargs={
+                'document_version_id': self.test_document_version.pk
+            }
+        )
 
+    def _request_test_document_version_page_rotate_left_view(self):
+        return self.post(
+            viewname='documents:document_version_page_rotate_left', kwargs={
+                'document_version_page_id': self.test_document_version_page.pk
+            }
+        )
+
+    def _request_test_document_version_page_rotate_right_view(self):
+        return self.post(
+            viewname='documents:document_version_page_rotate_right', kwargs={
+                'document_version_page_id': self.test_document_version_page.pk
+            }
+        )
+
+    def _request_test_document_version_page_view(self, document_version_page):
+        return self.get(
+            viewname='documents:document_version_page_view', kwargs={
+                'document_version_page_id': document_version_page.pk,
+            }
+        )
+
+    def _request_test_document_version_page_zoom_in_view(self):
+        return self.post(
+            viewname='documents:document_version_page_zoom_in', kwargs={
+                'document_version_page_id': self.test_document_version_page.pk
+            }
+        )
+
+    def _request_test_document_version_page_zoom_out_view(self):
+        return self.post(
+            viewname='documents:document_version_page_zoom_out', kwargs={
+                'document_version_page_id': self.test_document_version_page.pk
+            }
+        )
 
 
 class DocumentVersionPageRemapViewTestMixin:
