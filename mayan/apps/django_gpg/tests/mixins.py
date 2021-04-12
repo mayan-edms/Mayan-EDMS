@@ -53,6 +53,13 @@ class KeyTestMixin:
 
 
 class KeyViewTestMixin:
+    def _request_test_key_delete_view(self):
+        return self.post(
+            viewname='django_gpg:key_delete', kwargs={
+                'key_id': self.test_key_private.pk
+            }
+        )
+
     def _request_test_key_download_view(self):
         return self.get(
             viewname='django_gpg:key_download', kwargs={
