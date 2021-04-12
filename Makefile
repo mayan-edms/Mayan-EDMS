@@ -13,6 +13,8 @@ ifndef SETTINGS
 override SETTINGS = mayan.settings.testing.development
 endif
 
+TEST_COMMAND = ./manage.py test $(MODULE) --settings=$(SETTINGS) $(SKIPMIGRATIONS) $(DEBUG) $(ARGUMENTS)
+
 .PHONY: clean clean-pyc clean-build test
 
 help:
@@ -38,7 +40,7 @@ clean-pyc: ## Remove Python artifacts.
 # Testing
 
 _test-command:
-	./manage.py test $(MODULE) --settings=$(SETTINGS) $(SKIPMIGRATIONS) $(DEBUG) $(ARGUMENTS)
+	$(TEST_COMMAND)
 
 test: ## MODULE=<python module name> - Run tests for a single app, module or test class.
 test: clean-pyc _test-command
@@ -152,7 +154,7 @@ gitlab-ci-run:
 
 coverage-run: ## Run all tests and measure code execution.
 coverage-run: clean-pyc
-	coverage run $(TEST_COMMAND_LINE)
+	coverage run $(TEST_COMMAND)
 
 coverage-html: ## Create the coverage HTML report. Run execute coverage-run first.
 coverage-html:
@@ -171,26 +173,29 @@ docs-spellcheck: ## Spellcheck the documentation.
 translations-source-clear: ## Clear the msgstr of the source file
 	@sed -i -E  's/msgstr ".+"/msgstr ""/g' `grep -E 'msgstr ".+"' mayan/apps/*/locale/en/*/django.po | cut -d: -f 1` > /dev/null 2>&1  || true
 
-translations-fuzzy-remove: ## Remove fuzzy makers
+translations-source-fuzzy-remove: ## Remove fuzzy makers
 	sed -i  '/#, fuzzy/d' mayan/apps/*/locale/*/LC_MESSAGES/django.po
 
-translations-check: ## Check that all app have a Transifex entry
-	contrib/scripts/transifex_helper.py
+translations-transifex-check: ## Check that all app have a Transifex entry
+	contrib/scripts/translations_helper.py transifex_missing_apps
+
+translations-transifex-generate: ## Check that all app have a Transifex entry
+	contrib/scripts/translations_helper.py transifex_generate_config > ./.tx/config
 
 translations-make: ## Refresh all translation files.
-	contrib/scripts/process_messages.py make
+	contrib/scripts/translations_helper.py make
 
 translations-compile: ## Compile all translation files.
-	contrib/scripts/process_messages.py compile
+	contrib/scripts/translations_helper.py compile
 
-translations-push: ## Upload all translation files to Transifex.
+translations-transifex-push: ## Upload all translation files to Transifex.
 	tx push -s
 
-translations-pull: ## Download all translation files from Transifex.
+translations-transifex-pull: ## Download all translation files from Transifex.
 	tx pull -f
 
 translations-all: ## Execute all translations targets.
-translations-all: translations-source-clear translations-fuzzy-remove translations-check translations-make translations-push translations-pull translations-compile
+translations-all: translations-source-clear translations-source-fuzzy-remove translations-transifex-generate translations-make translations-transifex-push translations-transifex-pull translations-compile
 
 # Releases
 
