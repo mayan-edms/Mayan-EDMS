@@ -51,7 +51,7 @@ setting_document_file_page_image_cache_maximum_size = namespace.add_setting(
     default=DEFAULT_DOCUMENTS_FILE_PAGE_IMAGE_CACHE_MAXIMUM_SIZE,
     global_name='DOCUMENTS_FILE_PAGE_IMAGE_CACHE_MAXIMUM_SIZE',
     help_text=_(
-        'The threshold at which the DOCUMENT_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND will start '
+        'The threshold at which the DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND will start '
         'deleting the oldest document file page image cache files. Specify '
         'the size in bytes.'
     ), post_edit_function=callback_update_document_file_page_image_cache_size
