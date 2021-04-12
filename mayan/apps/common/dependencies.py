@@ -34,7 +34,7 @@ PythonDependency(
         ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    ''', module=__name__, name='django', version_string='==2.2.19'
+    ''', module=__name__, name='django', version_string='==2.2.20'
 )
 PythonDependency(
     copyright_text='''
@@ -120,10 +120,10 @@ PythonDependency(
     copyright_text='''
         Author: Christian Theune
         License: LGPL 2.1
-    ''', module=__name__, name='pycountry', version_string='==19.8.18'
+    ''', module=__name__, name='pycountry', version_string='==20.7.3'
 )
 PythonDependency(
-    module=__name__, name='requests', version_string='==2.23.0'
+    module=__name__, name='requests', version_string='==2.25.1'
 )
 PythonDependency(
     copyright_text='''
@@ -146,7 +146,7 @@ PythonDependency(
         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
         THE SOFTWARE.
-    ''', module=__name__, name='sh', version_string='==1.13.1'
+    ''', module=__name__, name='sh', version_string='==1.14.1'
 )
 
 # Development
@@ -157,11 +157,11 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_development, module=__name__,
-    name='django-debug-toolbar', version_string='==2.2'
+    name='django-debug-toolbar', version_string='==3.2'
 )
 PythonDependency(
     environment=environment_development, module=__name__,
-    name='django-extensions', version_string='==2.2.9'
+    name='django-extensions', version_string='==3.1.2'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
@@ -170,17 +170,17 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_development, module=__name__,
-    name='django-silk', version_string='==4.0.1'
+    name='django-silk', version_string='==4.1.0'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
         'Provides style checking.'
-    ), module=__name__, name='flake8', version_string='==3.8.3'
+    ), module=__name__, name='flake8', version_string='==3.9.0'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
         'Command line environment with autocompletion.'
-    ), module=__name__, name='ipython', version_string='==7.15.0'
+    ), module=__name__, name='ipython', version_string='==7.22.0'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
@@ -193,52 +193,47 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_development,
-    module=__name__, name='transifex-client', version_string='==0.13.10'
+    module=__name__, name='transifex-client', version_string='==0.14.2'
 )
 
 # Build
 
 PythonDependency(
     environment=environment_build, module=__name__, name='twine',
-    version_string='==3.1.1'
+    version_string='==3.4.1'
 )
 PythonDependency(
     environment=environment_build, module=__name__, name='wheel',
-    version_string='==0.34.2'
+    version_string='==0.36.2'
 )
 
 # Documentation
 
 PythonDependency(
     environment=environment_documentation, module=__name__, name='Sphinx',
-    version_string='==3.0.4'
+    version_string='==3.5.4'
 )
 PythonDependency(
     environment=environment_documentation, module=__name__,
-    name='sphinx-autobuild',
-    version_string='==0.7.1'
+    name='sphinx-autobuild', version_string='==2021.3.14'
 )
 PythonDependency(
     environment=environment_documentation, module=__name__,
-    name='sphinx-sitemap',
-    version_string='==2.1.0'
+    name='sphinx-sitemap', version_string='==2.2.0'
 )
 PythonDependency(
     environment=environment_documentation, module=__name__,
-    name='sphinx_rtd_theme',
-    version_string='==0.4.3'
+    name='sphinx_rtd_theme', version_string='==0.5.2'
 )
 PythonDependency(
     environment=environment_documentation, module=__name__,
-    name='sphinxcontrib-blockdiag',
-    version_string='==2.0.0'
+    name='sphinxcontrib-blockdiag', version_string='==2.0.0'
 )
 PythonDependency(
     environment=environment_documentation, module=__name__,
-    name='sphinxcontrib-spelling',
-    version_string='==5.0.0'
+    name='sphinxcontrib-spelling', version_string='==7.1.0'
 )
 PythonDependency(
     environment=environment_documentation, module=__name__, name='tornado',
-    version_string='==6.0.4'
+    version_string='==6.1'
 )

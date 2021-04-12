@@ -295,7 +295,7 @@ def setup(app):
         dictionary=environment_variables
     )
 
-    app.add_stylesheet(filename='css/custom.css')
+    app.add_css_file(filename='css/custom.css')
     app.connect(
         event='source-read', callback=callbacks.get_source_read_callback(
             substitutions=substitutions

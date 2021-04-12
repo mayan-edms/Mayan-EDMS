@@ -301,3 +301,23 @@
 - Add ``has_translations`` flag to MayanAppConfig to indicate if the app
   should have its translation files processed or ignored. Defaults to
   ``True``.
+- Dependency version upgrades:
+
+  - django-rosetta to 0.9.4.
+  - Django to 2.2.20.
+  - pycounty to 20.7.3.
+  - requests to 2.25.1.
+  - sh to 1.14.1.
+  - django-debug-toolbar to 3.2.
+  - django-extensions to 3.1.2.
+  - django-silk to 4.1.0.
+  - flake8 to 3.9.0.
+  - ipython to 7.22.0.
+  - transifex-client to 0.14.2.
+  - twine to 3.4.1.
+  - wheel to 0.36.2.
+  - Sphinx to 3.5.4.
+  - sphinx-autobuild to 2021.3.14.
+  - sphinx-sitemap to 2.2.0.
+  - sphinxcontrib-spelling to 7.1.0.
+  - tornado to 6.1.

@@ -60,7 +60,7 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-django==2.2.19
+django==2.2.20
 Pillow==7.1.2
 PyPDF2==1.26.0
 PyYAML==5.3.1
@@ -94,14 +94,14 @@ gunicorn==20.0.4
 mock==4.0.2
 node-semver==0.8.0
 packaging==20.3
-pycountry==19.8.18
+pycountry==20.7.3
 pycryptodome==3.9.7
 python-dateutil==2.8.1
 python-magic==0.4.15
 python_gnupg==0.4.6
 pytz==2020.1
-requests==2.23.0
-sh==1.13.1
+requests==2.25.1
+sh==1.14.1
 swagger-spec-validator==2.5.0
 whitenoise==5.0.1
 """.split()
