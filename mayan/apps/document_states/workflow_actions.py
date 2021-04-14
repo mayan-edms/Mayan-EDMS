@@ -94,7 +94,7 @@ class DocumentWorkflowLaunchAction(WorkflowAction):
 
         workflows_union = Workflow.objects.filter(
             document_types__in=kwargs['workflow_state'].workflow.document_types.all()
-        ).distinct()
+        ).exclude(pk=kwargs['workflow_state'].workflow.pk).distinct()
 
         result['fields']['workflows']['kwargs']['queryset'] = workflows_union
 

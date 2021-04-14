@@ -11,10 +11,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2021-04-12 03:36+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
+=======
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
+>>>>>>> origin/series/3.5
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1201,11 +1208,11 @@ msgstr "Document-eigenschappen aanpassen"
 msgid "Additional workflows to launch for the document."
 msgstr ""
 
-#: workflow_actions.py:116
+#: workflow_actions.py:120
 msgid "URL"
 msgstr "URL"
 
-#: workflow_actions.py:119
+#: workflow_actions.py:123
 msgid ""
 "Can be an IP address, a domain or a template. Templates receive the workflow"
 " log entry instance as part of their context via the variable \"entry_log\"."
@@ -1218,11 +1225,15 @@ msgstr ""
 "\"workflow_instance\", \"datetime\", \"transition\", \"user\" en "
 "\"comment\"."
 
-#: workflow_actions.py:129
+#: workflow_actions.py:133
 msgid "Timeout"
 msgstr "Timeout"
 
+<<<<<<< HEAD
 #: workflow_actions.py:133
+=======
+#: workflow_actions.py:136
+>>>>>>> origin/series/3.5
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
@@ -1230,17 +1241,26 @@ msgstr ""
 "Tijd in seconden om te wachten op een reactie. Dit kan een statische waarde "
 "of een sjabloon zijn."
 
+<<<<<<< HEAD
 #: workflow_actions.py:139
 msgid "Payload"
 msgstr "Belasting"
 
 #: workflow_actions.py:142
+=======
+#: workflow_actions.py:142
+msgid "Payload"
+msgstr "Belasting"
+
+#: workflow_actions.py:145
+>>>>>>> origin/series/3.5
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
 "return a JSON document. Templates receive the workflow log entry instance as"
 " part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "Een JSON-document dat in de aanvraag moet worden opgenomen. Kan ook een "
 "sjabloon zijn die een JSON-document retourneert. Sjablonen ontvangen de "
@@ -1254,12 +1274,22 @@ msgid "Username"
 msgstr "Gebruikersnaam"
 
 #: workflow_actions.py:155
+=======
+msgstr "Een JSON-document dat in de aanvraag moet worden opgenomen. Kan ook een sjabloon zijn die een JSON-document retourneert. Sjablonen ontvangen de werkstroomloginvoerinstantie als onderdeel van hun context via de variabele \"entry_log\". De \"entry_log\" biedt op zijn beurt de kenmerken \"workflow_instance\", \"datetime\", \"transition\", \"user\" en \"comment\"."
+
+#: workflow_actions.py:155
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: workflow_actions.py:158
+>>>>>>> origin/series/3.5
 msgid ""
 "Username to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "Gebruikersnaam om te gebruiken voor het verzoek met HTTP Basic Auth. Dit kan"
 " een statische waarde of een sjabloon zijn. Sjablonen ontvangen de "
@@ -1273,12 +1303,22 @@ msgid "Password"
 msgstr "Wachtwoord"
 
 #: workflow_actions.py:168
+=======
+msgstr "Gebruikersnaam om te gebruiken voor het verzoek met HTTP Basic Auth. Dit kan een statische waarde of een sjabloon zijn. Sjablonen ontvangen de werkstroomloginvoerinstantie als onderdeel van hun context via de variabele \"entry_log\". De \"entry_log\" biedt op zijn beurt de kenmerken \"workflow_instance\", \"datetime\", \"transition\", \"user\" en \"comment\"."
+
+#: workflow_actions.py:168
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: workflow_actions.py:171
+>>>>>>> origin/series/3.5
 msgid ""
 "Password to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "Wachtwoord om te gebruiken voor het maken van een verzoek met HTTP Basic "
 "Auth. Dit kan een statische waarde of een sjabloon zijn. Sjablonen ontvangen"
@@ -1292,6 +1332,15 @@ msgid "Method"
 msgstr "Methode"
 
 #: workflow_actions.py:181
+=======
+msgstr "Wachtwoord om te gebruiken voor het maken van een verzoek met HTTP Basic Auth. Dit kan een statische waarde of een sjabloon zijn. Sjablonen ontvangen de werkstroomloginvoerinstantie als onderdeel van hun context via de variabele \"entry_log\". De \"entry_log\" biedt op zijn beurt de kenmerken \"workflow_instance\", \"datetime\", \"transition\", \"user\" en \"comment\"."
+
+#: workflow_actions.py:181
+msgid "Method"
+msgstr "Methode"
+
+#: workflow_actions.py:184
+>>>>>>> origin/series/3.5
 msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE. Can be a static value or a template that "
@@ -1299,6 +1348,7 @@ msgid ""
 "as part of their context via the variable \"entry_log\". The \"entry_log\" "
 "in turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "De HTTP-methode die voor het verzoek moet worden gebruikt. Typische keuzes "
 "zijn OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. Dit kan een statische "
@@ -1313,12 +1363,22 @@ msgid "Headers"
 msgstr "Kopteksten"
 
 #: workflow_actions.py:195
+=======
+msgstr "De HTTP-methode die voor het verzoek moet worden gebruikt. Typische keuzes zijn OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. Dit kan een statische waarde zijn of een sjabloon die de methodetekst retourneert. Sjablonen ontvangen de werkstroomloginvoerinstantie als onderdeel van hun context via de variabele \"entry_log\". De \"entry_log\" biedt op zijn beurt de kenmerken \"workflow_instance\", \"datetime\", \"transition\", \"user\" en \"comment\"."
+
+#: workflow_actions.py:195
+msgid "Headers"
+msgstr "Kopteksten"
+
+#: workflow_actions.py:198
+>>>>>>> origin/series/3.5
 msgid ""
 "Headers to send with the HTTP request. Must be in JSON format. Can be a "
 "static value or a template. Templates receive the workflow log entry "
 "instance as part of their context via the variable \"entry_log\". The "
 "\"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
 "\"transition\", \"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "Headers om te verzenden met het HTTP-verzoek. Moet in JSON-indeling zijn. "
 "Dit kan een statische waarde of een sjabloon zijn. Sjablonen ontvangen de "
@@ -1332,6 +1392,15 @@ msgid "Perform an HTTP request"
 msgstr "Een HTTP-verzoek uitvoeren"
 
 #: workflow_actions.py:238
+=======
+msgstr "Headers om te verzenden met het HTTP-verzoek. Moet in JSON-indeling zijn. Dit kan een statische waarde of een sjabloon zijn. Sjablonen ontvangen de werkstroomloginvoerinstantie als onderdeel van hun context via de variabele \"entry_log\";. De \"entry_log\" biedt op zijn beurt de kenmerken \"workflow_instance\", \"datetime\", \"transition\", \"user\" en \"comment\"."
+
+#: workflow_actions.py:212
+msgid "Perform an HTTP request"
+msgstr "Een HTTP-verzoek uitvoeren"
+
+#: workflow_actions.py:241
+>>>>>>> origin/series/3.5
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
 msgstr "%(field_name)s JSON fout: %(exception)s"

@@ -11,10 +11,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2021-04-12 03:36+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+=======
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2021-01-23 17:45+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+>>>>>>> origin/series/3.5
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1209,11 +1216,11 @@ msgstr "Τροποποίηση ιδιοτήτων εγγράφου"
 msgid "Additional workflows to launch for the document."
 msgstr "Πρόσθετες ροές εργασίας για εκκίνηση για το έγγραφο."
 
-#: workflow_actions.py:116
+#: workflow_actions.py:120
 msgid "URL"
 msgstr "Διεύθυνση URL"
 
-#: workflow_actions.py:119
+#: workflow_actions.py:123
 msgid ""
 "Can be an IP address, a domain or a template. Templates receive the workflow"
 " log entry instance as part of their context via the variable \"entry_log\"."
@@ -1226,11 +1233,15 @@ msgstr ""
 "με τη σειρά του παρέχει τα γνωρίσματα \"workflow_instance\", \"datetime\", "
 "\"transition\", \"user\" και \"comment\"."
 
-#: workflow_actions.py:129
+#: workflow_actions.py:133
 msgid "Timeout"
 msgstr "Λήξη χρονικού ορίου"
 
+<<<<<<< HEAD
 #: workflow_actions.py:133
+=======
+#: workflow_actions.py:136
+>>>>>>> origin/series/3.5
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
@@ -1238,17 +1249,26 @@ msgstr ""
 "Χρόνος αναμονής σε δευτερόλεπτα για απόκριση. Μπορεί να είναι μια στατική "
 "τιμή ή ένα πρότυπο."
 
+<<<<<<< HEAD
 #: workflow_actions.py:139
 msgid "Payload"
 msgstr "Φορτίο"
 
 #: workflow_actions.py:142
+=======
+#: workflow_actions.py:142
+msgid "Payload"
+msgstr "Φορτίο"
+
+#: workflow_actions.py:145
+>>>>>>> origin/series/3.5
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
 "return a JSON document. Templates receive the workflow log entry instance as"
 " part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "Ένα έγγραφο JSON για συμπερίληψη στο αίτημα. Μπορεί επίσης να είναι ένα "
 "πρότυπο που επιστρέφει ένα έγγραφο JSON. Τα πρότυπα λαμβάνουν το στιγμιότυπο"
@@ -1262,12 +1282,22 @@ msgid "Username"
 msgstr "Όνομα χρήστη"
 
 #: workflow_actions.py:155
+=======
+msgstr "Ένα έγγραφο JSON για συμπερίληψη στο αίτημα. Μπορεί επίσης να είναι ένα πρότυπο που επιστρέφει ένα έγγραφο JSON. Τα πρότυπα λαμβάνουν το στιγμιότυπο καταγραφής ενέργειας ροής εργασίας ως μέρος του περιβάλλοντος τους μέσω της μεταβλητής \"entry_log\". Το \"entry_log\" με τη σειρά του παρέχει τα γνωρίσματα \"workflow_instance\", \"datetime\", \"transition\", \"user\" και \"comment\"."
+
+#: workflow_actions.py:155
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+#: workflow_actions.py:158
+>>>>>>> origin/series/3.5
 msgid ""
 "Username to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "Το όνομα χρήστη για την υποβολή του αιτήματος με HTTP Basic Auth. Μπορεί να "
 "είναι μια στατική τιμή ή ένα πρότυπο. Τα πρότυπα λαμβάνουν το στιγμιότυπο "
@@ -1281,12 +1311,22 @@ msgid "Password"
 msgstr "Κωδικός πρόσβασης"
 
 #: workflow_actions.py:168
+=======
+msgstr "Το όνομα χρήστη για την υποβολή του αιτήματος με HTTP Basic Auth. Μπορεί να είναι μια στατική τιμή ή ένα πρότυπο. Τα πρότυπα λαμβάνουν το στιγμιότυπο καταγραφής ενέργειας ροής εργασίας ως μέρος του περιβάλλοντός τους μέσω της μεταβλητής \"entry_log\". Το \"entry_log\" με τη σειρά του παρέχει τα \"workflow_instance\", \"datetime\", \"transition\", \"user\" και \"comment\" γνωρίσματα."
+
+#: workflow_actions.py:168
+msgid "Password"
+msgstr "Κωδικός πρόσβασης"
+
+#: workflow_actions.py:171
+>>>>>>> origin/series/3.5
 msgid ""
 "Password to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "Ο κωδικός πρόσβασης για την υποβολή του αιτήματος με HTTP Basic Auth. Μπορεί"
 " να είναι μια στατική τιμή ή ένα πρότυπο. Τα πρότυπα λαμβάνουν το "
@@ -1300,6 +1340,15 @@ msgid "Method"
 msgstr "Μέθοδος"
 
 #: workflow_actions.py:181
+=======
+msgstr "Ο κωδικός πρόσβασης για την υποβολή του αιτήματος με HTTP Basic Auth. Μπορεί να είναι μια στατική τιμή ή ένα πρότυπο. Τα πρότυπα λαμβάνουν το στιγμιότυπο καταγραφής ενέργειας ροής εργασίας ως μέρος του περιβάλλοντός τους μέσω της μεταβλητής \"entry_log\". Το \"entry_log\" με τη σειρά του παρέχει τα \"workflow_instance\", \"datetime\", \"transition\", \"user\" και \"comment\" γνωρίσματα."
+
+#: workflow_actions.py:181
+msgid "Method"
+msgstr "Μέθοδος"
+
+#: workflow_actions.py:184
+>>>>>>> origin/series/3.5
 msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE. Can be a static value or a template that "
@@ -1307,6 +1356,7 @@ msgid ""
 "as part of their context via the variable \"entry_log\". The \"entry_log\" "
 "in turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "Η μέθοδος HTTP που θα χρησιμοποιηθεί για το αίτημα. Οι τυπικές επιλογές "
 "είναι OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. Μπορεί να είναι μια "
@@ -1321,12 +1371,22 @@ msgid "Headers"
 msgstr "Κεφαλίδες"
 
 #: workflow_actions.py:195
+=======
+msgstr "Η μέθοδος HTTP που θα χρησιμοποιηθεί για το αίτημα. Οι τυπικές επιλογές είναι OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. Μπορεί να είναι μια στατική τιμή ή ένα πρότυπο που επιστρέφει το κείμενο της μεθόδου. Τα πρότυπα λαμβάνουν το στιγμιότυπο καταγραφής ενέργειας ροής εργασίας ως μέρος του περιβάλλοντός τους μέσω της μεταβλητής \"entry_log\". Το \"entry_log\" με τη σειρά του παρέχει τα \"workflow_instance\", \"datetime\", \"transition\", \"user\" και \"comment\" γνωρίσματα."
+
+#: workflow_actions.py:195
+msgid "Headers"
+msgstr "Κεφαλίδες"
+
+#: workflow_actions.py:198
+>>>>>>> origin/series/3.5
 msgid ""
 "Headers to send with the HTTP request. Must be in JSON format. Can be a "
 "static value or a template. Templates receive the workflow log entry "
 "instance as part of their context via the variable \"entry_log\". The "
 "\"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
 "\"transition\", \"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "Κεφαλίδες για αποστολή με το αίτημα HTTP. Πρέπει να είναι σε μορφή JSON. "
 "Μπορεί να είναι μια στατική τιμή ή ένα πρότυπο. Τα πρότυπα λαμβάνουν το "
@@ -1340,6 +1400,15 @@ msgid "Perform an HTTP request"
 msgstr "Εκτέλεση HTTP αιτήματος"
 
 #: workflow_actions.py:238
+=======
+msgstr "Κεφαλίδες για αποστολή με το αίτημα HTTP. Πρέπει να είναι σε μορφή JSON. Μπορεί να είναι μια στατική τιμή ή ένα πρότυπο. Τα πρότυπα λαμβάνουν το στιγμιότυπο καταγραφής ενέργειας ροής εργασίας ως μέρος του περιβάλλοντός τους μέσω της μεταβλητής \"entry_log\". Το \"entry_log\" με τη σειρά του παρέχει τα \"workflow_instance\", \"datetime\", \"transition\", \"user\" και \"comment\" γνωρίσματα."
+
+#: workflow_actions.py:212
+msgid "Perform an HTTP request"
+msgstr "Εκτέλεση HTTP αιτήματος"
+
+#: workflow_actions.py:241
+>>>>>>> origin/series/3.5
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
 msgstr "%(field_name)s Σφάλμα JSON: %(exception)s"

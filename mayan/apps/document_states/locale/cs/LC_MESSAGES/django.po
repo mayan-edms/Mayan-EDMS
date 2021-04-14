@@ -11,10 +11,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2021-04-12 03:36+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
+=======
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2020-09-29 09:00+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
+>>>>>>> origin/series/3.5
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1175,11 +1182,11 @@ msgstr "Upravit vlastnosti dokumentu"
 msgid "Additional workflows to launch for the document."
 msgstr ""
 
-#: workflow_actions.py:116
+#: workflow_actions.py:120
 msgid "URL"
 msgstr "URL"
 
-#: workflow_actions.py:119
+#: workflow_actions.py:123
 msgid ""
 "Can be an IP address, a domain or a template. Templates receive the workflow"
 " log entry instance as part of their context via the variable \"entry_log\"."
@@ -1191,11 +1198,15 @@ msgstr ""
 "\"entry_log\".\"Entry_log\" zase poskytuje atributy \"workflow_instance\", "
 "\"datetime\", \"transition\", \"user\" a \"comment\"."
 
-#: workflow_actions.py:129
+#: workflow_actions.py:133
 msgid "Timeout"
 msgstr "Časový limit"
 
+<<<<<<< HEAD
 #: workflow_actions.py:133
+=======
+#: workflow_actions.py:136
+>>>>>>> origin/series/3.5
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
@@ -1203,11 +1214,19 @@ msgstr ""
 "Čas čekání v sekundách na odpověď. Může to být statická hodnota nebo "
 "šablona."
 
+<<<<<<< HEAD
 #: workflow_actions.py:139
 msgid "Payload"
 msgstr "Payload"
 
 #: workflow_actions.py:142
+=======
+#: workflow_actions.py:142
+msgid "Payload"
+msgstr "Payload"
+
+#: workflow_actions.py:145
+>>>>>>> origin/series/3.5
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
 "return a JSON document. Templates receive the workflow log entry instance as"
@@ -1221,17 +1240,26 @@ msgstr ""
 "zase poskytuje atributy \"workflow_instance\", \"datetime\", \"transition\","
 " \"user\" a \"comment\"."
 
+<<<<<<< HEAD
 #: workflow_actions.py:152
 msgid "Username"
 msgstr "Uživatelské jméno"
 
 #: workflow_actions.py:155
+=======
+#: workflow_actions.py:155
+msgid "Username"
+msgstr "Uživatelské jméno"
+
+#: workflow_actions.py:158
+>>>>>>> origin/series/3.5
 msgid ""
 "Username to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "Uživatelské jméno, které se má použít k provedení požadavku pomocí HTTP "
 "Basic Auth. Může to být statická hodnota nebo šablona. Šablony přijímají "
@@ -1245,12 +1273,22 @@ msgid "Password"
 msgstr "Heslo"
 
 #: workflow_actions.py:168
+=======
+msgstr "Uživatelské jméno, které se má použít k provedení požadavku pomocí HTTP Basic Auth. Může to být statická hodnota nebo šablona. Šablony přijímají instanci záznamu workflowvjako součást svého kontextu prostřednictvím proměnné &quot;entry_log&quot;. &quot;Entry_log&quot; zase poskytuje atributy &quot;workflow_instance&quot;, &quot;datetime&quot;, &quot;transition&quot;, &quot;user&quot; a &quot;comment&quot;."
+
+#: workflow_actions.py:168
+msgid "Password"
+msgstr "Heslo"
+
+#: workflow_actions.py:171
+>>>>>>> origin/series/3.5
 msgid ""
 "Password to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "Heslo, které se použije pro provedení požadavku s HTTP Basic Auth. Může to "
 "být statická hodnota nebo šablona. Šablony přijímají instanci záznamu "
@@ -1264,6 +1302,15 @@ msgid "Method"
 msgstr "Metoda"
 
 #: workflow_actions.py:181
+=======
+msgstr "Heslo, které se použije pro provedení požadavku s HTTP Basic Auth. Může to být statická hodnota nebo šablona. Šablony přijímají instanci záznamu workflow jako součást svého kontextu prostřednictvím proměnné &quot;entry_log&quot;. &quot;Entry_log&quot; zase poskytuje atributy &quot;workflow_instance&quot;, &quot;datetime&quot;, &quot;transition&quot;, &quot;user&quot; a &quot;comment&quot;."
+
+#: workflow_actions.py:181
+msgid "Method"
+msgstr "Metoda"
+
+#: workflow_actions.py:184
+>>>>>>> origin/series/3.5
 msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE. Can be a static value or a template that "
@@ -1271,6 +1318,7 @@ msgid ""
 "as part of their context via the variable \"entry_log\". The \"entry_log\" "
 "in turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "Metoda HTTP, která se má použít pro požadavek. Typické volby jsou OPTIONS, "
 "HEAD, POST, GET, PUT, PATCH, DELETE. Může to být statická hodnota nebo "
@@ -1285,12 +1333,22 @@ msgid "Headers"
 msgstr "Záhlaví"
 
 #: workflow_actions.py:195
+=======
+msgstr "Metoda HTTP, která se má použít pro požadavek. Typické volby jsou OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. Může to být statická hodnota nebo šablona, která vrací text metody. Šablony obdrží instanci záznamu workflow jako součást svého kontextu prostřednictvím proměnné &quot;entry_log&quot;. &quot;Entry_log&quot; zase poskytuje atributy &quot;workflow_instance&quot;, &quot;datetime&quot;, &quot;transition&quot;, &quot;user&quot; a &quot;comment&quot;."
+
+#: workflow_actions.py:195
+msgid "Headers"
+msgstr "Záhlaví"
+
+#: workflow_actions.py:198
+>>>>>>> origin/series/3.5
 msgid ""
 "Headers to send with the HTTP request. Must be in JSON format. Can be a "
 "static value or a template. Templates receive the workflow log entry "
 "instance as part of their context via the variable \"entry_log\". The "
 "\"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
 "\"transition\", \"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "Záhlaví k odeslání s požadavkem HTTP. Musí být ve formátu JSON. Může to být "
 "statická hodnota nebo šablona. Šablony přijímají instanci záznamu workflow "
@@ -1304,6 +1362,15 @@ msgid "Perform an HTTP request"
 msgstr "Proveďte požadavek HTTP"
 
 #: workflow_actions.py:238
+=======
+msgstr "Záhlaví k odeslání s požadavkem HTTP. Musí být ve formátu JSON. Může to být statická hodnota nebo šablona. Šablony přijímají instanci záznamu workflow jako součást svého kontextu prostřednictvím proměnné &quot;entry_log&quot;. &quot;Entry_log&quot; zase poskytuje atributy &quot;workflow_instance&quot;, &quot;datetime&quot;, &quot;transition&quot;, &quot;user&quot; a &quot;comment&quot;."
+
+#: workflow_actions.py:212
+msgid "Perform an HTTP request"
+msgstr "Proveďte požadavek HTTP"
+
+#: workflow_actions.py:241
+>>>>>>> origin/series/3.5
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
 msgstr "%(field_name)s Chyba JSON: %(exception)s"
