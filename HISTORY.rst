@@ -3,6 +3,7 @@
 - Fix sub workflow launch state action.
 - Exclude the current workflow from the sub workflow launch state action
   workflow selection form.
+- Update Django from version 2.2.19 to 2.2.20.
 
 3.5.7 (2021-03-28)
 ==================
