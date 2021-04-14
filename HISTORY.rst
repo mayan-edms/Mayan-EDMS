@@ -1,4 +1,4 @@
-3.5.8 (2021-04-XX)
+3.5.8 (2021-04-15)
 ==================
 - Fix sub workflow launch state action.
 - Exclude the current workflow from the sub workflow launch state action

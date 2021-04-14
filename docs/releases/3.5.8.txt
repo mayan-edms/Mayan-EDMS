@@ -1,7 +1,7 @@
 Version 3.5.8
 =============
 
-Released: April, XX
+Released: April, 15
 
 Status: Stable
 
