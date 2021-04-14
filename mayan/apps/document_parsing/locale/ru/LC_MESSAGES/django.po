@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -78,7 +78,7 @@ msgstr "Ошибки анализа"
 
 #: links.py:48
 msgid "Download content"
-msgstr "Скачать содержимое"
+msgstr "Скачать проанализированное содержимое"
 
 #: links.py:53 links.py:60
 msgid "Submit for parsing"
@@ -207,7 +207,7 @@ msgstr "Содержимое страницы: %s"
 #: views.py:126
 #, python-format
 msgid "Parsing errors for document: %s"
-msgstr "Ошибки анализа для документа: %s"
+msgstr "Ошибки анализа документа: %s"
 
 #: views.py:139
 #, python-format
@@ -236,7 +236,7 @@ msgstr "Отправить документ \"%s\" в очередь на ана
 #: views.py:190
 #, python-format
 msgid "Edit parsing settings for document type: %s."
-msgstr "Изменить настройки анализа для типа документа: %s"
+msgstr "Настройки анализа для типа документа: %s"
 
 #: views.py:200
 msgid "Submit all documents of a type for parsing"

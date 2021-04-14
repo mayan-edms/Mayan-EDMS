@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-01 10:13+0000\n"
+"POT-Creation-Date: 2021-04-14 23:02+0000\n"
+"PO-Revision-Date: 2021-04-09 08:05+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -38,11 +38,11 @@ msgstr "Дата создания"
 
 #: apps.py:64
 msgid "No expiration"
-msgstr "Не устаревает"
+msgstr "Бессрочно"
 
 #: apps.py:65 forms.py:25 models.py:38
 msgid "Expiration date"
-msgstr "Дата окончания"
+msgstr "Срок действия"
 
 #: apps.py:68 forms.py:30 models.py:45
 msgid "Length"
@@ -50,11 +50,11 @@ msgstr "Длина"
 
 #: apps.py:73 forms.py:17 models.py:50
 msgid "User ID"
-msgstr "Идентификатор пользователя"
+msgstr "ID пользователя"
 
 #: dependencies.py:10
 msgid "GNU privacy guard - a PGP implementation."
-msgstr "GNU Privacy Guard"
+msgstr "GNU Privacy Guard - свободная реализация PGP."
 
 #: forms.py:26
 msgid "None"
@@ -74,7 +74,7 @@ msgstr "Условие"
 
 #: forms.py:46
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr "Имя, фамилия, адрес электронной почты, ID или отпечаток ключа"
+msgstr "Имя, фамилия, адрес электронной почты, идентификатор или отпечаток ключа."
 
 #: links.py:17
 msgid "Delete"
@@ -158,7 +158,7 @@ msgstr "Документ подписан допустимой подписью.
 
 #: models.py:30
 msgid "ASCII armored version of the key."
-msgstr "Версия ключа в формате ASCII"
+msgstr "Версия ключа в формате ASCII Armor"
 
 #: models.py:31
 msgid "Key data"
@@ -243,13 +243,13 @@ msgstr "Невозможно импортировать ключ %(key_id)s; %(e
 #: views.py:93
 #, python-format
 msgid "Successfully received key: %(key_id)s"
-msgstr "Успешно получен ключ: %(key_id)s"
+msgstr "Ключ получен: %(key_id)s"
 
 #: views.py:110
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr "Используйте имена, фамилии, ID ключей или адреса электронной почты для поиска публичных ключей и их импорта с сервера ключей."
+msgstr "Используйте имена, фамилии, идентификаторы ключей или адреса электронной почты для поиска открытых ключей и их импорта с сервера ключей."
 
 #: views.py:114
 msgid "No results returned"
@@ -275,7 +275,7 @@ msgstr "Загрузить новый ключ"
 msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user. The view to upload private and public keys is the same."
-msgstr "Закрытые ключи используются для подписи документов. Закрытые ключи могут быть загружены только пользователем. Представление для загрузки закрытого и открытого ключей одинаковое."
+msgstr "Закрытые ключи используются для подписи документов. Закрытые ключи могут быть загружены только пользователем. Страница для загрузки закрытого и открытого ключей одна и та же."
 
 #: views.py:178
 msgid "There no private keys"
@@ -286,7 +286,7 @@ msgid ""
 "Public keys are used to verify signed documents. Public keys can be uploaded"
 " by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr "Открытые ключи используются для проверки подписанных документов. Открытые ключи могут быть загружены пользователем или скачаны с серверов ключей. Представление для загрузки закрытого и открытого ключей одинаковое."
+msgstr "Открытые ключи используются для проверки подписанных документов. Открытые ключи могут быть загружены пользователем или импортированы с серверов ключей. Страница для загрузки закрытого и открытого ключей одна и та же."
 
 #: views.py:202
 msgid "There no public keys"

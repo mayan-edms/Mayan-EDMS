@@ -7,13 +7,13 @@
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2011,2013
-# Roberto Rosario, 2015,2017-2020
+# Roberto Rosario, 2015,2017-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-28 13:02+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2021-04-04 04:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,7 @@ msgstr "Indexar una instancia de modelo en el motor de búsqueda."
 
 #: queues.py:21
 msgid "Index all instances of a search model to the search engine."
-msgstr ""
+msgstr "Indexa todas las instancias de un modelo de búsqueda en el motor de búsqueda."
 
 #: settings.py:15
 msgid "Full path to the backend to be used to handle the search."

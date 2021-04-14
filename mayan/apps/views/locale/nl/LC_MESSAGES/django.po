@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:02+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: bwakkie <bwakkie@gmail.com>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -113,37 +113,37 @@ msgstr "Geen %(verbose_name)s gevonden die aan zoekopdracht voldoet"
 #: mixins.py:349
 #, python-format
 msgid "Unable to perform operation on object %(instance)s; %(exception)s."
-msgstr ""
+msgstr "Kan geen bewerking uitvoeren op object %(instance)s; %(exception)s."
 
 #: mixins.py:351
 #, python-format
 msgid "Operation performed on %(object)s."
-msgstr ""
+msgstr "Bewerking uitgevoerd op %(object)s."
 
 #: mixins.py:352
 #, python-format
 msgid "Operation performed on %(count)d object."
-msgstr ""
+msgstr "Bewerking uitgevoerd op %(count)d-object."
 
 #: mixins.py:353
 #, python-format
 msgid "Operation performed on %(count)d objects."
-msgstr ""
+msgstr "Bewerking uitgevoerd op %(count)d-objecten."
 
 #: mixins.py:354
 #, python-format
 msgid "Perform operation on %(object)s."
-msgstr ""
+msgstr "Voer een bewerking uit op %(object)s."
 
 #: mixins.py:355
 #, python-format
 msgid "Perform operation on %(count)d object."
-msgstr ""
+msgstr "Voer een bewerking uit op een %(count)d-object."
 
 #: mixins.py:356
 #, python-format
 msgid "Perform operation on %(count)d objects."
-msgstr ""
+msgstr "Voer een bewerking uit op %(count)d-objecten."
 
 #: mixins.py:438
 msgid "Object"

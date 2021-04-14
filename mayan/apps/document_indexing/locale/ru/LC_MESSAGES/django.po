@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-17 10:56+0000\n"
+"POT-Creation-Date: 2021-04-14 23:02+0000\n"
+"PO-Revision-Date: 2021-04-12 08:51+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -111,7 +111,7 @@ msgstr "Редактировать"
 
 #: links.py:106
 msgid "Tree template"
-msgstr "Шаблон дерева"
+msgstr "Дерево шаблонов"
 
 #: links.py:112
 msgid "New child node"
@@ -123,7 +123,7 @@ msgstr "Краткое описание индекса."
 
 #: models.py:34
 msgid "Label"
-msgstr "Ярлык"
+msgstr "Заголовок"
 
 #: models.py:38
 msgid "This value will be used by other apps to reference this index."
@@ -150,7 +150,7 @@ msgstr "Индекс"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr "Enter a template to render. Use Django's default templating language (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+msgstr ""
 
 #: models.py:222
 msgid "Indexing expression"
@@ -172,11 +172,11 @@ msgstr "Связанные документы"
 
 #: models.py:242
 msgid "Index node template"
-msgstr "Шаблон узла индекса"
+msgstr "Узел шаблона индекса"
 
 #: models.py:243
 msgid "Indexes node template"
-msgstr "Шаблоны узла индекса"
+msgstr "Узлы шаблона индекса"
 
 #: models.py:247
 msgid "Root"
@@ -199,7 +199,7 @@ msgstr "Экземпляры индекса"
 
 #: models.py:387
 msgid "Index template node"
-msgstr "Шаблонный узел индекса"
+msgstr "Узел шаблона индекса"
 
 #: models.py:390 search.py:23
 msgid "Value"
@@ -406,7 +406,7 @@ msgstr "Редактировать узел шаблона индекса: %s?"
 msgid ""
 "This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
-msgstr "Это может означать, что шаблоны индексов не были созданы или есть шаблоны индексов, но они не определены должным образом."
+msgstr "Это может означать, что шаблоны индексов еще не были созданы или что есть шаблоны индексов, не настроенные должным образом."
 
 #: views.py:332
 msgid "There are no index instances available."

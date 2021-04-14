@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -50,7 +50,7 @@ msgstr "Журналы ошибок"
 
 #: models.py:25
 msgid "App label"
-msgstr "Ярлык приложения"
+msgstr "Заголовок приложения"
 
 #: models.py:43 models.py:60
 msgid "Error log partition"
@@ -78,7 +78,7 @@ msgstr "Записи раздела журнала ошибок"
 
 #: permissions.py:8
 msgid "View error log"
-msgstr "Просмотреть журнал ошибок"
+msgstr "Просмотр журнала ошибок"
 
 #: settings.py:14
 msgid "Automatically enable logging to all apps."
@@ -109,15 +109,15 @@ msgstr "Очистить записи журнала ошибок для: %s"
 
 #: views.py:23
 msgid "Object error log cleared successfully"
-msgstr "Журнал ошибок объекта успешно очищен"
+msgstr "Журнал ошибок объекта очищен"
 
 #: views.py:36
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
 msgstr ""
-"В этом представлении отображается журнал ошибок другого объекта. Пустой "
-"список - это хорошо."
+"Здесь отображаются записи журнала ошибок для объекта. Пустой список - это "
+"хорошо."
 
 #: views.py:40
 msgid "There are no error log entries"

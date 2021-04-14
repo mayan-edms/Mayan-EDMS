@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:02+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -90,12 +90,12 @@ msgstr "%(object)s создан."
 #: generics.py:605
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
-msgstr "%(object)s не удалён, ошибка: %(error)s."
+msgstr "%(object)s не удален, ошибка: %(error)s."
 
 #: generics.py:614
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr "%(object)s удалён."
+msgstr "%(object)s удален."
 
 #: generics.py:750
 #, python-format

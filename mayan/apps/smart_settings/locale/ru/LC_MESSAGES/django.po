@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-22 08:20+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2021-04-03 07:55+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgstr "Переопределено"
 
 #: classes.py:338
 msgid "Is this settings being overridden by an environment variable?"
-msgstr "Этот параметр переопределен с помощью переменной окружения?"
+msgstr "Этот параметр переопределен с помощью переменной среды?"
 
 #: forms.py:12
 msgid "Enter the new setting value."
@@ -349,7 +349,7 @@ msgstr "Редактировать параметр: %s"
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
-msgstr "Параметры, унаследованные от переменной окружения, имеют приоритет и не могут быть изменены в этом представлении."
+msgstr "Параметры, унаследованные из переменной среды, имеют приоритет и не могут быть изменены здесь."
 
 #: views.py:58
 #, python-format

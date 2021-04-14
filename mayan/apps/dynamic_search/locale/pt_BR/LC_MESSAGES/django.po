@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-28 13:02+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2021-04-12 11:43+0000\n"
+"Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -76,7 +76,7 @@ msgstr "Indexar uma instância de modelo para o mecanismo de pesquisa."
 
 #: queues.py:21
 msgid "Index all instances of a search model to the search engine."
-msgstr ""
+msgstr "Indexar todas as instâncias de um modelo de pesquisa para o mecanismo de pesquisa."
 
 #: settings.py:15
 msgid "Full path to the backend to be used to handle the search."

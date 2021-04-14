@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-17 10:53+0000\n"
+"POT-Creation-Date: 2021-04-14 23:02+0000\n"
+"PO-Revision-Date: 2021-04-03 09:04+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "Комментарий к документу создан"
 
 #: events.py:13
 msgid "Document comment deleted"
-msgstr "Комментарий к документу удалён"
+msgstr "Комментарий к документу удален"
 
 #: events.py:16
 msgid "Document comment edited"

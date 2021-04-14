@@ -4,14 +4,14 @@
 # 
 # Translators:
 # Translators:
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2021
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2020-10-02 20:16+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2021-04-14 18:24+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "Документи"
 
 #: events.py:8
 msgid "Tag attached to document"
-msgstr "Маркер е прикачен към документа"
+msgstr "Маркерът е прикачен към документа"
 
 #: events.py:11
 msgid "Tag created"
@@ -157,12 +157,12 @@ msgstr "Основен ключ на маркера, който трябва д�
 #: views.py:36
 #, python-format
 msgid "Tag attach request performed on %(count)d document"
-msgstr "Заявка за прикачване на маркер, изпълнена на документ %(count)d"
+msgstr "Заявка за прикачване на маркер, изпълнена на %(count)d документ"
 
 #: views.py:38
 #, python-format
 msgid "Tag attach request performed on %(count)d documents"
-msgstr "Заявка за прикачване на таг, изпълнена на %(count)d документи"
+msgstr "Заявка за прикачване на маркер, изпълнена на %(count)d документи"
 
 #: views.py:45
 msgid "Attach"
@@ -206,7 +206,7 @@ msgstr "Заявка за изтриване на маркер, изпълнен
 #: views.py:146
 #, python-format
 msgid "Tag delete request performed on %(count)d tags"
-msgstr "Заявка за изтриване на маркер, изпълнена на %(count)d маркери"
+msgstr "Заявка за изтриване на маркер, изпълнена на %(count)d маркера"
 
 #: views.py:154
 msgid "Will be removed from all documents."

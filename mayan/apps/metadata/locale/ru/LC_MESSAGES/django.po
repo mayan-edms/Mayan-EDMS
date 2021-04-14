@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-19 07:48+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2021-04-12 08:52+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -127,7 +127,7 @@ msgstr "Необязательный"
 
 #: forms.py:197 models.py:53 search.py:34
 msgid "Label"
-msgstr "Ярлык"
+msgstr "Заголовок"
 
 #: forms.py:201
 msgid "Relationship"
@@ -400,7 +400,7 @@ msgstr "Ошибка при редактировании метаданных д
 #: views.py:344
 #, python-format
 msgid "Metadata for document %s edited successfully."
-msgstr "Метаданные для документа %s отредактированы."
+msgstr "Метаданные для документа %s изменены."
 
 #: views.py:369
 msgid ""

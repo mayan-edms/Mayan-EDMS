@@ -4,8 +4,9 @@
 # 
 # Translators:
 # Translators:
+# Benoît GROUSSET <benoit@grousset.xyz>, 2021
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
-# Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
+# Frédéric Sheedy <sheedf@gmail.com>, 2019-2021
 # 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2012
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
 # Yves Dubois <ydubois@gmail.com>, 2018
@@ -13,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2020-09-27 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-04-14 23:02+0000\n"
+"PO-Revision-Date: 2021-04-13 20:09+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,11 +72,11 @@ msgstr "Utilitaire du paquet popper-utils utilisé pour extraire des pages de fi
 
 #: events.py:8
 msgid "Asset created"
-msgstr ""
+msgstr "Asset créé"
 
 #: events.py:11
 msgid "Asset edited"
-msgstr ""
+msgstr "Élément modifié"
 
 #: forms.py:22
 msgid "Available transformations for this layer."
@@ -101,7 +102,7 @@ msgstr "Transformations enregistrées"
 
 #: links.py:31 views.py:36
 msgid "Create asset"
-msgstr ""
+msgstr "Créer un élément"
 
 #: links.py:35 links.py:41 links.py:65
 msgid "Delete"
@@ -113,7 +114,7 @@ msgstr "Modifier"
 
 #: links.py:55 models.py:53 storages.py:19 views.py:127
 msgid "Assets"
-msgstr ""
+msgstr "Éléments"
 
 #: links.py:77
 msgid "Transformations"
@@ -131,7 +132,7 @@ msgstr "Étiquette"
 msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
-msgstr ""
+msgstr "Cette valeur sera utilisée lors du référencement de cet élément. Ne peut contenir que des lettres, des chiffres et des traits de soulignement."
 
 #: models.py:43
 msgid "Internal name"
@@ -143,7 +144,7 @@ msgstr "Fichier"
 
 #: models.py:52
 msgid "Asset"
-msgstr ""
+msgstr "Élément"
 
 #: models.py:82 models.py:153
 msgid "Name"
@@ -203,19 +204,19 @@ msgstr ""
 
 #: permissions.py:8
 msgid "Create new assets"
-msgstr ""
+msgstr "Créer de nouveaux éléments"
 
 #: permissions.py:11
 msgid "Delete assets"
-msgstr ""
+msgstr "Supprimer les éléments"
 
 #: permissions.py:14
 msgid "Edit assets"
-msgstr ""
+msgstr "Modifier les éléments"
 
 #: permissions.py:17
 msgid "View existing assets"
-msgstr ""
+msgstr "Afficher les éléments existants"
 
 #: permissions.py:21
 msgid "Create new transformations"
@@ -257,11 +258,11 @@ msgstr ""
 
 #: transformations.py:197
 msgid "Paste an asset"
-msgstr ""
+msgstr "Coller un élément"
 
 #: transformations.py:248
 msgid "Paste an asset (percents coordinates)"
-msgstr ""
+msgstr "Coller un élément (coordonnées en pourcentage)"
 
 #: transformations.py:291
 msgid "Paste an asset as watermark"
@@ -326,28 +327,28 @@ msgstr "Agrandir"
 #: views.py:50
 #, python-format
 msgid "Delete request performed on %(count)d asset"
-msgstr ""
+msgstr "Demande de suppression effectuée pour l'élément %(count)d"
 
 #: views.py:52
 #, python-format
 msgid "Delete request performed on %(count)d assets"
-msgstr ""
+msgstr "Demande de suppression effectuée pour %(count)d éléments"
 
 #: views.py:59
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Supprimer l&#39;élément sélectionné?"
+msgstr[1] "Supprimer les éléments sélectionnés?"
 
 #: views.py:69
 #, python-format
 msgid "Delete asset: %s?"
-msgstr ""
+msgstr "Supprimer l'élément: %s?"
 
 #: views.py:80
 #, python-format
 msgid "Asset \"%s\" deleted successfully."
-msgstr ""
+msgstr "L'élément \"%s\" a bien été supprimé."
 
 #: views.py:85
 #, python-format
@@ -357,7 +358,7 @@ msgstr ""
 #: views.py:101
 #, python-format
 msgid "Edit asset: %s"
-msgstr ""
+msgstr "Modifier l'élément: %s"
 
 #: views.py:123
 msgid ""
@@ -367,7 +368,7 @@ msgstr ""
 
 #: views.py:126
 msgid "No assets available"
-msgstr ""
+msgstr "Aucun élément disponible"
 
 #: views.py:151
 #, python-format
@@ -384,7 +385,7 @@ msgstr "Créer le calque \"%(layer)s\" de transformation \"%(transformation)s\" 
 #: views.py:224
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr "Êtes vous certain de vouloir supprimer la transformation \"%(transformation)s\" pour : %(content_object)s ?"
+msgstr "Êtes vous certain de vouloir supprimer la transformation \"%(transformation)s\" pour : %(content_object)s?"
 
 #: views.py:273
 #, python-format
@@ -426,15 +427,15 @@ msgstr ""
 
 #: workflow_actions.py:32
 msgid "Transformation class"
-msgstr ""
+msgstr "Classe de transformation"
 
 #: workflow_actions.py:37
 msgid "Type of transformation to add."
-msgstr ""
+msgstr "Type de transformation à ajouter."
 
 #: workflow_actions.py:42
 msgid "Transformation arguments"
-msgstr ""
+msgstr "Arguments pour la transformation"
 
 #: workflow_actions.py:51
 msgid "Add transformation"

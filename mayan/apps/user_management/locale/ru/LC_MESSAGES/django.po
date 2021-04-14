@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:02+0000\n"
-"PO-Revision-Date: 2021-03-17 10:55+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2021-04-03 09:02+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Управление пользователями"
 
 #: apps.py:100 search.py:10
 msgid "Group"
-msgstr ""
+msgstr "Группа"
 
 #: apps.py:101 apps.py:114 links.py:39 links.py:50 links.py:73 search.py:34
 #: views.py:120
@@ -47,19 +47,19 @@ msgstr "Пользователи"
 
 #: apps.py:112 search.py:31
 msgid "Email"
-msgstr "Email"
+msgstr "Электронная почта"
 
 #: apps.py:113 search.py:28
 msgid "First name"
-msgstr ""
+msgstr "Имя"
 
 #: apps.py:115
 msgid "Is active?"
-msgstr ""
+msgstr "Активен?"
 
 #: apps.py:116 search.py:37
 msgid "Last name"
-msgstr ""
+msgstr "Фамилия"
 
 #: apps.py:117
 msgid "Password"
@@ -83,39 +83,39 @@ msgstr "Все пользователи."
 
 #: dashboard_widgets.py:14
 msgid "Total users"
-msgstr ""
+msgstr "Всего пользователей"
 
 #: dashboard_widgets.py:30
 msgid "Total groups"
-msgstr ""
+msgstr "Всего групп"
 
 #: events.py:10
 msgid "Group created"
-msgstr ""
+msgstr "Группа создана"
 
 #: events.py:13
 msgid "Group edited"
-msgstr ""
+msgstr "Группа изменена"
 
 #: events.py:17
 msgid "User created"
-msgstr ""
+msgstr "Пользователь создан"
 
 #: events.py:20
 msgid "User edited"
-msgstr ""
+msgstr "Пользователь изменен"
 
 #: events.py:23
 msgid "User logged in"
-msgstr ""
+msgstr "Пользователь вошел в систему"
 
 #: events.py:26
 msgid "User logged out"
-msgstr ""
+msgstr "Пользователь вышел из системы"
 
 #: links.py:14
 msgid "User details"
-msgstr "сведения о пользователе"
+msgstr "Сведения о пользователе"
 
 #: links.py:18
 msgid "Edit details"
@@ -139,31 +139,31 @@ msgstr "Создать пользователя"
 
 #: links.py:90
 msgid "User options"
-msgstr ""
+msgstr "Настройки"
 
 #: models.py:20
 msgid "Forbid this user from changing their password."
-msgstr ""
+msgstr "Запретить этому пользователю изменять свой пароль."
 
 #: models.py:26
 msgid "User settings"
-msgstr ""
+msgstr "Пользовательские настройки"
 
 #: models.py:27
 msgid "Users settings"
-msgstr ""
+msgstr "Пользовательские настройки"
 
 #: permissions.py:10
 msgid "Create new groups"
-msgstr "Создание новых групп"
+msgstr "Создать группы"
 
 #: permissions.py:13
 msgid "Delete existing groups"
-msgstr "Удалить существующие группы"
+msgstr "Удалить группы"
 
 #: permissions.py:16
 msgid "Edit existing groups"
-msgstr "Редактирование существующих групп"
+msgstr "Редактировать группы"
 
 #: permissions.py:19
 msgid "View existing groups"
@@ -171,15 +171,15 @@ msgstr "Просмотр существующих групп"
 
 #: permissions.py:22
 msgid "Create new users"
-msgstr "Создание новых пользователей"
+msgstr "Создать пользователей"
 
 #: permissions.py:25
 msgid "Delete existing users"
-msgstr "Удаление существующих пользователей"
+msgstr "Удалить пользователей"
 
 #: permissions.py:28
 msgid "Edit existing users"
-msgstr "Редактирование существующих пользователей"
+msgstr "Редактировать пользователей"
 
 #: permissions.py:31
 msgid "View existing users"
@@ -191,11 +191,11 @@ msgstr "имя пользователя"
 
 #: serializers.py:32
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr ""
+msgstr "Разделенный запятыми список первичных ключей групп, в которые нужно добавить этого пользователя."
 
 #: serializers.py:62
 msgid "List of group primary keys to which to add the user."
-msgstr ""
+msgstr "Список первичных ключей групп, в которые нужно добавить пользователя."
 
 #: utils.py:6
 msgid "Anonymous"
@@ -203,11 +203,11 @@ msgstr "Анонимно"
 
 #: views.py:35
 msgid "Current user details"
-msgstr "Настройки текущего пользователя"
+msgstr "Сведения о пользователе"
 
 #: views.py:43
 msgid "Edit current user details"
-msgstr "Редактировать настройки текущего пользователя"
+msgstr "Редактировать сведения о пользователе"
 
 #: views.py:77
 #, python-format
@@ -224,11 +224,11 @@ msgid ""
 "User groups are organizational units. They should mirror the organizational "
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
-msgstr ""
+msgstr "Группы пользователей - это организационные единицы. Они должны отражать организационные единицы вашей организации. Группы нельзя напрямую использовать для контроля доступа. Используйте роли для разрешений и контроля доступа, и добавляйте группы к ним."
 
 #: views.py:119
 msgid "There are no user groups"
-msgstr ""
+msgstr "Нет групп пользователей"
 
 #: views.py:132
 msgid "Available users"
@@ -236,35 +236,35 @@ msgstr "Доступные пользователи"
 
 #: views.py:133
 msgid "Group users"
-msgstr ""
+msgstr "Члены группы"
 
 #: views.py:141
 #, python-format
 msgid "Users of group: %s"
-msgstr ""
+msgstr "Члены группы: %s"
 
 #: views.py:175
 #, python-format
 msgid "User delete request performed on %(count)d user"
-msgstr ""
+msgstr "Запрос на удаление %(count)d пользователя выполнен"
 
 #: views.py:177
 #, python-format
 msgid "User delete request performed on %(count)d users"
-msgstr ""
+msgstr "Запрос на удаление %(count)d пользователей выполнен"
 
 #: views.py:185
 msgid "Delete user"
 msgid_plural "Delete users"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Удалить пользователя"
+msgstr[1] "Удалить пользователей"
+msgstr[2] "Удалить пользователей"
+msgstr[3] "Удалить пользователей"
 
 #: views.py:195
 #, python-format
 msgid "Delete user: %s"
-msgstr ""
+msgstr "Удалить пользователя: %s"
 
 #: views.py:206
 msgid ""
@@ -285,12 +285,12 @@ msgstr "Ошибка при удалении пользователя \"%(user)s
 #: views.py:238
 #, python-format
 msgid "Details of user: %s"
-msgstr ""
+msgstr "Подробности пользователя: %s"
 
 #: views.py:254
 #, python-format
 msgid "Edit user: %s"
-msgstr "Редактировать пользователя: %s."
+msgstr "Редактировать пользователя: %s"
 
 #: views.py:269
 msgid "Available groups"
@@ -300,24 +300,24 @@ msgstr "Доступные группы"
 #. user.
 #: views.py:272
 msgid "User groups"
-msgstr ""
+msgstr "Член групп"
 
 #: views.py:280
 #, python-format
 msgid "Groups of user: %s"
-msgstr "Группы пользователя: %s"
+msgstr "Член групп: %s"
 
 #: views.py:301
 msgid ""
 "User accounts can be create from this view. After creating a user account "
 "you will prompted to set a password for it. "
-msgstr ""
+msgstr "Учетные записи пользователей могут быть созданы из этого представления. После создания учетной записи пользователя вам будет предложено установить для нее пароль."
 
 #: views.py:304
 msgid "There are no user accounts"
-msgstr ""
+msgstr "Нет учетных записей пользователей"
 
 #: views.py:323
 #, python-format
 msgid "Edit options for user: %s"
-msgstr ""
+msgstr "Настройки пользователя: %s"

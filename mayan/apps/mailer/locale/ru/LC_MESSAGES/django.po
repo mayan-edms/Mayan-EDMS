@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-22 08:11+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2021-04-12 08:52+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: apps.py:40
 msgid "Mailer"
-msgstr "Почта"
+msgstr "Отправка почты"
 
 #: classes.py:80
 msgid "Null backend"
@@ -30,7 +30,7 @@ msgstr "Пустой бэкэнд"
 
 #: events.py:5 permissions.py:5 queues.py:6 settings.py:10
 msgid "Mailing"
-msgstr "Рассылка"
+msgstr "Отправка почты"
 
 #: events.py:8
 msgid "Email sent"
@@ -60,7 +60,7 @@ msgstr "Профиль, используемый для отправки это�
 
 #: forms.py:71 models.py:55 views.py:212 workflow_actions.py:18
 msgid "Mailing profile"
-msgstr "Профиль рассылки"
+msgstr "Профиль отправки"
 
 #: forms.py:77
 msgid "The driver to use when sending emails."
@@ -80,7 +80,7 @@ msgstr "Отправить ссылку"
 
 #: links.py:35
 msgid "Create mailing profile"
-msgstr "Создать профиль рассылки"
+msgstr "Создать профиль отправки"
 
 #: links.py:41
 msgid "Delete"
@@ -92,11 +92,11 @@ msgstr "Редактировать"
 
 #: links.py:52
 msgid "Mailing profiles list"
-msgstr "Список профилей рассылки"
+msgstr "Список профилей отправки"
 
 #: links.py:57 models.py:56
 msgid "Mailing profiles"
-msgstr "Профили рассылки"
+msgstr "Профили отправки"
 
 #: links.py:63 views.py:236
 msgid "Test"
@@ -217,7 +217,7 @@ msgstr "Краткое описание профиля отправки."
 
 #: models.py:33
 msgid "Label"
-msgstr "Ярлык"
+msgstr "Заголовок"
 
 #: models.py:37
 msgid ""
@@ -231,7 +231,7 @@ msgstr "По умолчанию"
 
 #: models.py:41
 msgid "Enabled"
-msgstr "Доступно"
+msgstr "Включено"
 
 #: models.py:44
 msgid "The dotted Python path to the backend class."
@@ -263,23 +263,23 @@ msgstr "Отправить документ по электронной почт
 
 #: permissions.py:14
 msgid "Create a mailing profile"
-msgstr "Создать профиль рассылки"
+msgstr "Создать профили отправки"
 
 #: permissions.py:17
 msgid "Delete a mailing profile"
-msgstr "Удалить профиль рассылки"
+msgstr "Удалить профили отправки"
 
 #: permissions.py:20
 msgid "Edit a mailing profile"
-msgstr "Редактировать профиль рассылки"
+msgstr "Редактировать профили отправки"
 
 #: permissions.py:23
 msgid "View a mailing profile"
-msgstr "Просмотр профиля рассылки"
+msgstr "Просмотр профилей отправки"
 
 #: permissions.py:26
 msgid "Use a mailing profile"
-msgstr "Использовать профиль рассылки"
+msgstr "Использовать профили отправки"
 
 #: queues.py:8
 msgid "Send document"
@@ -332,32 +332,32 @@ msgstr "%(count)d ссылок на документы поставлены в �
 
 #: views.py:109
 msgid "New mailing profile backend selection"
-msgstr "Выберите бэкэнд для нового профиля рассылки"
+msgstr "Выберите бэкэнд для нового профиля отправки"
 
 #: views.py:141
 #, python-format
 msgid "Create a \"%s\" mailing profile"
-msgstr "Создать профиль рассылки \"%s\""
+msgstr "Создать профиль отправки \"%s\""
 
 #: views.py:168
 #, python-format
 msgid "Delete mailing profile: %s"
-msgstr "Удалить профиль рассылки: %s"
+msgstr "Удалить профиль отправки: %s"
 
 #: views.py:180
 #, python-format
 msgid "Edit mailing profile: %s"
-msgstr "Редактировать профиль рассылки: %s"
+msgstr "Редактировать профиль отправки: %s"
 
 #: views.py:207
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
-msgstr "Профили рассылки - это конфигурации электронной почты. Профили рассылки позволяют отправлять документы в виде вложений или ссылок по электронной почте."
+msgstr "Профили отправки - это конфигурации электронной почты. Профили отправки позволяют отправлять документы в виде вложений или ссылок по электронной почте."
 
 #: views.py:211
 msgid "No mailing profiles available"
-msgstr "Нет доступных профилей рассылки"
+msgstr "Нет доступных профилей отправки"
 
 #: views.py:228
 msgid "Test email sent."
@@ -366,7 +366,7 @@ msgstr "Тестовое письмо отправлено."
 #: views.py:237
 #, python-format
 msgid "Test mailing profile: %s"
-msgstr "Проверка профиля рассылки: %s"
+msgstr "Проверка профиля отправки: %s"
 
 #: workflow_actions.py:20
 msgid "Mailing profile to use when sending the email."

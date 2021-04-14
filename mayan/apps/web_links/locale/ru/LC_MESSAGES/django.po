@@ -7,7 +7,6 @@
 # Sergey Glita <gsv70@mail.ru>, 2019
 # lilo.panic, 2019
 # Panasoft, 2019
-# D Muzzle <muzzlerator@gmail.com>, 2019
 # Alex Chigrin <chalex84@mail.ru>, 2020
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
 # 
@@ -15,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:02+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -44,7 +43,7 @@ msgstr "Веб-ссылка изменена"
 
 #: events.py:16
 msgid "Web link navigated"
-msgstr "Веб-ссылка пройдена"
+msgstr "Выполнен переход по веб-ссылке"
 
 #: links.py:26 views.py:189
 msgid "Create new web link"
@@ -72,7 +71,7 @@ msgstr "Краткое описание веб-ссылки."
 
 #: models.py:23
 msgid "Label"
-msgstr "Ярлык"
+msgstr "Заголовок"
 
 #: models.py:27
 msgid "Template that will be used to craft the final URL of the web link."
@@ -86,7 +85,7 @@ msgstr "Шаблон"
 
 #: models.py:31
 msgid "Enabled"
-msgstr "Доступно"
+msgstr "Включено"
 
 #: models.py:39
 msgid "Web link"
@@ -126,12 +125,12 @@ msgstr "Доступные веб-ссылки"
 
 #: views.py:43
 msgid "Web links enabled"
-msgstr "Веб-ссылки включены"
+msgstr "Включенные веб-ссылки"
 
 #: views.py:75
 #, python-format
 msgid "Web links to enable for document type: %s"
-msgstr "Веб-ссылки для включения для типа документа: %s"
+msgstr "Веб-ссылки для типа документа: %s"
 
 #: views.py:113
 msgid "Available document types"
@@ -152,7 +151,7 @@ msgid ""
 "The link URL's can contain document properties values."
 msgstr ""
 "Веб-ссылки позволяют создавать HTTP-ссылки из документов на внешние ресурсы."
-" URL-адреса ссылки могут содержать значения свойств документа."
+" URL-адрес ссылок может содержать значения свойств документа."
 
 #: views.py:146
 msgid "There are no web links"

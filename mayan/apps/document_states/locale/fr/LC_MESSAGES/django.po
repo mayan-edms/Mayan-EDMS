@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-01-14 19:44+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2021-04-12 20:28+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -64,7 +64,7 @@ msgstr ""
 
 #: apps.py:248
 msgid "Return the transition of the workflow instance."
-msgstr ""
+msgstr "Renvoie la transition de l'instance de flux de travail."
 
 #: apps.py:249
 msgid "Get last transition"
@@ -109,7 +109,7 @@ msgstr "Type d'action"
 #: apps.py:383
 msgid ""
 "Triggers are system events that will cause the transition to be applied."
-msgstr ""
+msgstr "Les déclencheurs sont des événements système qui entraîneront l'application de la transition."
 
 #: apps.py:385
 msgid "Triggers"
@@ -432,7 +432,7 @@ msgstr "Type d'action inconnu"
 #: models.py:750
 msgid ""
 "The state action will be executed, depending on the condition return value."
-msgstr ""
+msgstr "L'action d'état sera exécutée, en fonction de la valeur de retour de la condition."
 
 #: models.py:753 models.py:844
 msgid "Has a condition?"
@@ -653,7 +653,7 @@ msgstr "Clé principale de la transition à ajouter."
 #: settings.py:19
 msgid ""
 "File path to the graphviz dot program used to generate workflow previews."
-msgstr ""
+msgstr "Chemin du fichier vers le programme graphviz dot utilisé pour générer des aperçus de flux de travail."
 
 #: settings.py:27
 msgid ""
@@ -1107,13 +1107,13 @@ msgstr "Modifier les propriétés du document"
 
 #: workflow_actions.py:77
 msgid "Additional workflows to launch for the document."
-msgstr ""
+msgstr "Flux de travail supplémentaires à lancer pour le document."
 
-#: workflow_actions.py:116
+#: workflow_actions.py:120
 msgid "URL"
 msgstr "URL"
 
-#: workflow_actions.py:119
+#: workflow_actions.py:123
 msgid ""
 "Can be an IP address, a domain or a template. Templates receive the workflow"
 " log entry instance as part of their context via the variable \"entry_log\"."
@@ -1121,21 +1121,21 @@ msgid ""
 " \"transition\", \"user\", and \"comment\" attributes."
 msgstr "Peut être une adresse IP, un domaine ou un modèle.  Les modèles reçoivent l'instance d'entrée de journal du flux de travail au sein de leur contexte via la variable \"entry_log\".  \"entry_log\" fournit à son tour les attributs \"workflow_instance\", \"datetime\", \"transition\", \"user\" et \"comment\"."
 
-#: workflow_actions.py:129
+#: workflow_actions.py:133
 msgid "Timeout"
 msgstr "Délai d'attente dépassé"
 
-#: workflow_actions.py:132
+#: workflow_actions.py:136
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
 msgstr "Temps en secondes pour attendre une réponse. Peut être une valeur statique ou un modèle."
 
-#: workflow_actions.py:138
+#: workflow_actions.py:142
 msgid "Payload"
 msgstr "Contenu"
 
-#: workflow_actions.py:141
+#: workflow_actions.py:145
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
 "return a JSON document. Templates receive the workflow log entry instance as"
@@ -1144,11 +1144,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr "Un document JSON à inclure dans la requête. Peut également être un modèle qui renvoie un document JSON. Les modèles reçoivent l'instance d'entrée du journal de flux de travail dans leur contexte via la variable \"entry_log\". \"entry_log\" fournit à son tour les attributs \"workflow_instance\", \"datetime\", \"transition\", \"user\" et \"comment\"."
 
-#: workflow_actions.py:151
+#: workflow_actions.py:155
 msgid "Username"
 msgstr "Identifiant"
 
-#: workflow_actions.py:154
+#: workflow_actions.py:158
 msgid ""
 "Username to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
@@ -1157,11 +1157,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr "Nom d'utilisateur à utiliser pour effectuer la demande avec l'authentification HTTP de base. Peut être une valeur statique ou un modèle. Les modèles reçoivent l'instance d'entrée du journal du flux de travail dans le cadre de leur contexte via la variable \"entry_log\". La variable \"entry_log\" fournie à son tour les attributs \"workflow_instance\", \"datetime\", \"transition\", \"user\" et \"comment\"."
 
-#: workflow_actions.py:164
+#: workflow_actions.py:168
 msgid "Password"
 msgstr "Mot de passe"
 
-#: workflow_actions.py:167
+#: workflow_actions.py:171
 msgid ""
 "Password to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
@@ -1170,11 +1170,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr "Mot de passe à utiliser pour effectuer la demande avec l'authentification HTTP de base. Peut être une valeur statique ou un modèle. Les modèles reçoivent l'instance d'entrée du journal du flux de travail dans le cadre de leur contexte via la variable \"entry_log\". La variable \"entry_log\" fournie à son tour les attributs \"workflow_instance\", \"datetime\", \"transition\", \"user\" et \"comment\"."
 
-#: workflow_actions.py:177
+#: workflow_actions.py:181
 msgid "Method"
 msgstr "Méthode"
 
-#: workflow_actions.py:180
+#: workflow_actions.py:184
 msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE. Can be a static value or a template that "
@@ -1184,11 +1184,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr ""
 
-#: workflow_actions.py:191
+#: workflow_actions.py:195
 msgid "Headers"
 msgstr "En-têtes"
 
-#: workflow_actions.py:194
+#: workflow_actions.py:198
 msgid ""
 "Headers to send with the HTTP request. Must be in JSON format. Can be a "
 "static value or a template. Templates receive the workflow log entry "
@@ -1197,11 +1197,11 @@ msgid ""
 "\"transition\", \"user\", and \"comment\" attributes."
 msgstr "En-têtes à envoyer avec la requête HTTP. Doit être au format JSON. Peut être une valeur statique ou un modèle. Les modèles reçoivent l'instance d'entrée du journal du flux de travail dans le cadre de leur contexte via la variable \"entry_log\". La variable \"entry_log\" fournie à son tour les attributs \"workflow_instance\", \"datetime\", \"transition\", \"user\" et \"comment\"."
 
-#: workflow_actions.py:208
+#: workflow_actions.py:212
 msgid "Perform an HTTP request"
 msgstr "Effectuer une requête HTTP"
 
-#: workflow_actions.py:237
+#: workflow_actions.py:241
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
 msgstr "%(field_name)s erreur JSON : %(exception)s"

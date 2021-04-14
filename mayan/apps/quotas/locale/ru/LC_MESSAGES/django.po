@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -36,7 +36,7 @@ msgstr "Ни один"
 
 #: classes.py:157
 msgid "Does not apply"
-msgstr ""
+msgstr "Не применяется"
 
 #: classes.py:161 classes.py:168
 msgid "Null backend"
@@ -56,7 +56,7 @@ msgstr "Бэкэнд"
 
 #: forms.py:16
 msgid "The quota driver for this entry."
-msgstr ""
+msgstr "Драйвер квоты для этой записи."
 
 #: links.py:13
 msgid "Create quota"
@@ -83,6 +83,8 @@ msgid ""
 "Apply to all document types. Enabling this, the quota will ignore the "
 "indiviual document type selection."
 msgstr ""
+"Применить ко всем типам документов. При включении этого параметра квота "
+"будет игнорировать выбор отдельных типов документов."
 
 #: mixins.py:26
 msgid "Document types"
@@ -90,7 +92,7 @@ msgstr "Типы документов"
 
 #: mixins.py:33
 msgid "Document types to which the quota will be applied."
-msgstr ""
+msgstr "Типы документов, к которым будет применяться квота."
 
 #: mixins.py:67
 msgid "all document types"
@@ -119,6 +121,9 @@ msgid ""
 "Enabling this option, the quota will ignore the indiviual user and group "
 "selection."
 msgstr ""
+"Применить квоту ко всем пользователям в системе, за исключением "
+"администраторов и персонала. При включении этого параметра квота будет "
+"игнорировать выбор отдельных пользователей и групп."
 
 #: mixins.py:115
 msgid "Users"
@@ -155,7 +160,7 @@ msgstr "Разрешить быстрое отключение или включ
 
 #: models.py:27
 msgid "Enabled"
-msgstr "Доступно"
+msgstr "Включено"
 
 #: models.py:31
 msgid "Quota"
@@ -163,7 +168,7 @@ msgstr "Квота"
 
 #: models.py:54
 msgid "Driver used for this quota entry."
-msgstr ""
+msgstr "Драйвер квоты для этой записи."
 
 #: models.py:59
 msgid "Arguments"
@@ -171,52 +176,52 @@ msgstr "Аргументы"
 
 #: models.py:63
 msgid "Usage"
-msgstr ""
+msgstr "Использование"
 
 #: permissions.py:8
 msgid "Create a quota"
-msgstr "Создать квоту"
+msgstr "Создать квоты"
 
 #: permissions.py:11
 msgid "Delete a quota"
-msgstr "Удалить квоту"
+msgstr "Удалить квоты"
 
 #: permissions.py:14
 msgid "Edit a quota"
-msgstr "Редактировать квоту"
+msgstr "Редактировать квоты"
 
 #: permissions.py:17
 msgid "View a quota"
-msgstr ""
+msgstr "Просмотр квот"
 
 #: quota_backends.py:68 quota_backends.py:168
 msgid "Document count quota exceeded."
-msgstr ""
+msgstr "Превышена квота на количество документов."
 
 #: quota_backends.py:72
 msgid "Documents limit"
-msgstr ""
+msgstr "Лимит документов"
 
 #: quota_backends.py:75
 msgid "Maximum number of documents."
-msgstr ""
+msgstr "Максимальное количество документов."
 
 #: quota_backends.py:79
 msgid "Document count limit"
-msgstr ""
+msgstr "Ограничение по количеству документов"
 
 #: quota_backends.py:104
 #, python-format
 msgid "document count: %(document_count)s"
-msgstr ""
+msgstr "количество документов: %(document_count)s"
 
 #: quota_backends.py:178 quota_backends.py:183
 msgid "Document size limit"
-msgstr "Ограничение размера документа"
+msgstr "Ограничение по размеру документов"
 
 #: quota_backends.py:180
 msgid "Maximum document size in megabytes (MB)."
-msgstr "Максимальный размер документа в мегабайтах (МБ)."
+msgstr "Максимальный размер документа в мегабайтах (Мбайт)."
 
 #: quota_backends.py:208
 #, python-format
@@ -229,26 +234,26 @@ msgstr "Размер документа превышает квоту."
 
 #: views.py:24
 msgid "New quota backend selection"
-msgstr ""
+msgstr "Выберите бэкэнд для новой квоты"
 
 #: views.py:54
 #, python-format
 msgid "Create a \"%s\" quota"
-msgstr ""
+msgstr "Создать квоту \"%s\""
 
 #: views.py:86
 #, python-format
 msgid "Delete quota: %s"
-msgstr ""
+msgstr "Удалить квоту: %s"
 
 #: views.py:101
 #, python-format
 msgid "Edit quota: %s"
-msgstr ""
+msgstr "Редактировать квоту: %s"
 
 #: views.py:133
 msgid "Quotas restrict usage of system resources. "
-msgstr ""
+msgstr "Квоты ограничивают использование системных ресурсов."
 
 #: views.py:135
 msgid "No quotas available"

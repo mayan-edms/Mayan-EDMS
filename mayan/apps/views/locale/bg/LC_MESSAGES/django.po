@@ -6,15 +6,15 @@
 # Translators:
 # Roberto Rosario, 2020
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2020
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2020
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:02+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2020\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -114,36 +114,37 @@ msgstr "Не е намерен %(verbose_name)s, отговарящ на зая�
 #, python-format
 msgid "Unable to perform operation on object %(instance)s; %(exception)s."
 msgstr ""
+"Не може да се извърши операция върху обект %(instance)s; %(exception)s."
 
 #: mixins.py:351
 #, python-format
 msgid "Operation performed on %(object)s."
-msgstr ""
+msgstr "Операция, извършена на %(object)s."
 
 #: mixins.py:352
 #, python-format
 msgid "Operation performed on %(count)d object."
-msgstr ""
+msgstr "Операция, извършена върху обект %(count)d."
 
 #: mixins.py:353
 #, python-format
 msgid "Operation performed on %(count)d objects."
-msgstr ""
+msgstr "Операция, извършена върху обекти %(count)d."
 
 #: mixins.py:354
 #, python-format
 msgid "Perform operation on %(object)s."
-msgstr ""
+msgstr "Извършете операция на %(object)s."
 
 #: mixins.py:355
 #, python-format
 msgid "Perform operation on %(count)d object."
-msgstr ""
+msgstr "Извършете операция върху обект %(count)d."
 
 #: mixins.py:356
 #, python-format
 msgid "Perform operation on %(count)d objects."
-msgstr ""
+msgstr "Извършете операция върху обекти %(count)d."
 
 #: mixins.py:438
 msgid "Object"
@@ -169,7 +170,7 @@ msgstr "Потвърждаване"
 #: templatetags/views_tags.py:40
 #, python-format
 msgid "Details for: %s"
-msgstr "Подробности за: %s"
+msgstr "Данни за: %s"
 
 #: templatetags/views_tags.py:44
 #, python-format

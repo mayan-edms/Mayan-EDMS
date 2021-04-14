@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-17 13:25+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2021-04-12 08:52+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -77,11 +77,11 @@ msgstr "Все"
 
 #: methods.py:18
 msgid "Return the tags attached to the document."
-msgstr ""
+msgstr "Возвращает метки, прикрепленные к документу."
 
 #: methods.py:20
 msgid "get_tags()"
-msgstr ""
+msgstr "get_tags()"
 
 #: models.py:24
 msgid "A short text used as the tag name."
@@ -89,7 +89,7 @@ msgstr "Краткий текст с именем метки."
 
 #: models.py:25
 msgid "Label"
-msgstr "Ярлык"
+msgstr "Заголовок"
 
 #: models.py:28
 msgid "The RGB color values for the tag."
@@ -105,7 +105,7 @@ msgstr "Метка"
 
 #: models.py:80
 msgid "Preview"
-msgstr "Предварительный просмотр"
+msgstr "Предпросмотр"
 
 #: models.py:109
 msgid "Document tag"
@@ -143,13 +143,13 @@ msgstr "Снять метки с документов"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr ""
+msgstr "Разделенный запятыми список первичных ключей документа, к которым будет прикреплена эта метка."
 
 #: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr ""
+msgstr "URL-адрес API, указывающий на метку по отношению к документу, к которому она прикреплена. Этот URL-адрес отличается от канонического URL-адреса метки."
 
 #: serializers.py:105
 msgid "Primary key of the tag to be added."
@@ -158,12 +158,12 @@ msgstr "Первичный ключ добавляемой метки."
 #: views.py:36
 #, python-format
 msgid "Tag attach request performed on %(count)d document"
-msgstr ""
+msgstr "Запрос на прикрепление метки выполнен для %(count)d документа"
 
 #: views.py:38
 #, python-format
 msgid "Tag attach request performed on %(count)d documents"
-msgstr ""
+msgstr "Запрос на прикрепление метки выполнен для %(count)d документов"
 
 #: views.py:45
 msgid "Attach"
@@ -204,16 +204,16 @@ msgstr "Создать метку"
 #: views.py:144
 #, python-format
 msgid "Tag delete request performed on %(count)d tag"
-msgstr ""
+msgstr "Запрос на удаление %(count)d метки выполнен"
 
 #: views.py:146
 #, python-format
 msgid "Tag delete request performed on %(count)d tags"
-msgstr ""
+msgstr "Запрос на удаление %(count)d меток выполнен"
 
 #: views.py:154
 msgid "Will be removed from all documents."
-msgstr "Будет удалено из всех документов."
+msgstr "Будут удалены из всех документов."
 
 #: views.py:156
 msgid "Delete the selected tag?"
@@ -270,12 +270,12 @@ msgstr "Метки документа: %s"
 #: views.py:295
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
-msgstr ""
+msgstr "Запрос на снятие метки выполнен для %(count)d документа"
 
 #: views.py:297
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
-msgstr ""
+msgstr "Запрос на снятие метки выполнен для %(count)d документов"
 
 #: views.py:305
 msgid "Remove"

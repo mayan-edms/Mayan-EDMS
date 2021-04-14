@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-02-28 18:22+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2021-03-29 11:52+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -29,30 +29,30 @@ msgstr "Хранилище"
 msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
 "path and arguments."
-msgstr ""
+msgstr "Невозможно инициализировать хранилище: %(name)s. Проверьте путь к бэкэнду и его аргументы."
 
 #: management/commands/storage_process.py:13
 msgid "Name of the app to process."
-msgstr ""
+msgstr "Имя обрабатываемого приложения."
 
 #: management/commands/storage_process.py:19
 msgid ""
 "Path of the database (.dbm) file that will be created/read to keep track of "
 "items processed."
-msgstr ""
+msgstr "Путь к файлу базы данных (.dbm), который будет создан/прочитан для отслеживания обработанных элементов."
 
 #: management/commands/storage_process.py:26
 msgid "Process a specific model."
-msgstr ""
+msgstr "Обработать конкретную модель."
 
 #: management/commands/storage_process.py:32
 msgid ""
 "Process the files in reverse to undo the storage pipeline transformations."
-msgstr ""
+msgstr "Обработайте файлы в обратном порядке, чтобы отменить преобразования конвейера хранилища."
 
 #: management/commands/storage_process.py:38
 msgid "Name of the storage to process."
-msgstr ""
+msgstr "Имя обрабатываемого хранилища."
 
 #: models.py:23
 msgid "File"
@@ -76,11 +76,11 @@ msgstr "Загруженные файлы совместного пользов�
 
 #: queues.py:11
 msgid "Storage periodic"
-msgstr ""
+msgstr "Хранилище периодически"
 
 #: queues.py:16
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Удалить устаревшие загрузки"
 
 #: settings.py:15
 msgid "A storage backend that all workers can use to share files."
@@ -90,10 +90,10 @@ msgstr "Бэкэнд хранилища, который могут исполь�
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
+msgstr "Временный каталог, используемый на всем сайте для хранения миниатюр, превью и временных файлов."
 
 #: storages.py:12
 msgid ""
 "Unable to initialize the shared uploaded file storage. Check the settings {}"
 " and {} for formatting errors."
-msgstr ""
+msgstr "Невозможно инициализировать общее хранилище загруженных файлов. Проверьте настройки {} и {} на наличие ошибок форматирования."

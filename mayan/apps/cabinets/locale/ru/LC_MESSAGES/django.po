@@ -5,7 +5,6 @@
 # 
 # Translators:
 # Roberto Rosario, 2017
-# D Muzzle <muzzlerator@gmail.com>, 2017
 # Panasoft, 2017
 # Daler Abdulloev <abdulloevdaler@gmail.com>, 2019
 # Sergey Glita <gsv70@mail.ru>, 2020
@@ -17,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-14 23:02+0000\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -95,7 +94,7 @@ msgstr "Краткое описание кабинета."
 
 #: models.py:32
 msgid "Label"
-msgstr "Ярлык"
+msgstr "Заголовок"
 
 #: models.py:36
 msgid "Documents"
@@ -116,7 +115,7 @@ msgstr "Полный путь"
 
 #: models.py:149 serializers.py:137
 msgid "Parent and Label"
-msgstr "Родитель и ярлык"
+msgstr "Родитель и заголовок"
 
 #: models.py:156 serializers.py:143
 #, python-format
@@ -194,9 +193,7 @@ msgstr "Имя этого кабинета, соединенное с имена
 #: serializers.py:30
 msgid ""
 "URL of the API endpoint showing the list documents inside this cabinet."
-msgstr ""
-"URL-адрес API, показывающий показывающий список документов внутри этого "
-"кабинета."
+msgstr "URL-адрес API, показывающий список документов внутри этого кабинета."
 
 #: serializers.py:66 serializers.py:177
 msgid "Comma separated list of document primary keys to add to this cabinet."

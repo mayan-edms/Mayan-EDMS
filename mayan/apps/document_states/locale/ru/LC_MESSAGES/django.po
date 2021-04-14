@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-19 10:29+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2021-04-12 08:51+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,7 @@ msgstr "Возвращает значение завершения текуще�
 msgid ""
 "Return the last workflow instance log entry. The log entry itself has the "
 "following fields: datetime, transition, user, and comment."
-msgstr "Возвращает последнюю запись журнала экземпляра рабочего процесса. Сама запись журнала имеет следующие поля: дата и время, переход, пользователь и комментарий."
+msgstr "Возвращает последнюю запись журнала экземпляра рабочего процесса. Сама запись журнала имеет следующие поля: \"datetime\", \"transition\", \"user\", \"comment\"."
 
 #: apps.py:234
 msgid "Get last log entry"
@@ -152,7 +152,7 @@ msgstr "Пространство имен"
 #: forms.py:137 models.py:67 models.py:558 models.py:661 models.py:782
 #: models.py:880
 msgid "Label"
-msgstr "Ярлык"
+msgstr "Заголовок"
 
 #: forms.py:141 models.py:663
 msgid "Enabled"
@@ -177,7 +177,7 @@ msgstr "Переход"
 #: handlers.py:71
 #, python-format
 msgid "Event trigger: %s"
-msgstr "События триггера: %s"
+msgstr "Триггер: %s"
 
 #: links.py:24 views/workflow_template_views.py:156
 msgid "Create workflow"
@@ -711,7 +711,7 @@ msgstr "В этом представлении будут отображатьс
 
 #: views/workflow_instance_views.py:70
 msgid "There are no details for this workflow instance"
-msgstr "Нет сведений об этом экземпляре рабочего процесса."
+msgstr "Нет сведений об этом экземпляре рабочего процесса"
 
 #: views/workflow_instance_views.py:73
 #, python-format
@@ -870,7 +870,7 @@ msgstr "Создайте переход и используйте его для 
 
 #: views/workflow_template_transition_views.py:154
 msgid "This workflow doesn't have any transitions"
-msgstr "В этом рабочем процессе нет переходов"
+msgstr "У этого рабочего процесса нет переходов"
 
 #: views/workflow_template_transition_views.py:158
 #, python-format
@@ -884,7 +884,7 @@ msgstr "Ошибка обновления триггерных событий п
 
 #: views/workflow_template_transition_views.py:195
 msgid "Workflow transition trigger events updated successfully"
-msgstr "События триггера перехода рабочего процесса успешно обновлены"
+msgstr "Триггеры перехода рабочего процесса обновлены"
 
 #: views/workflow_template_transition_views.py:209
 msgid ""
@@ -1056,7 +1056,7 @@ msgstr "Это запустит рабочий процесс для уже за
 
 #: views/workflow_template_views.py:313 views/workflow_template_views.py:368
 msgid "Workflow launch queued successfully."
-msgstr "Запуск рабочего процесса поставлен в очередь."
+msgstr "Рабочий процесс поставлен в очередь на запуск."
 
 #: views/workflow_template_views.py:330
 msgid ""
@@ -1110,11 +1110,11 @@ msgstr "Изменить свойства документа"
 msgid "Additional workflows to launch for the document."
 msgstr "Дополнительные рабочие процессы, которые будут запущены для документа."
 
-#: workflow_actions.py:116
+#: workflow_actions.py:120
 msgid "URL"
 msgstr "URL"
 
-#: workflow_actions.py:119
+#: workflow_actions.py:123
 msgid ""
 "Can be an IP address, a domain or a template. Templates receive the workflow"
 " log entry instance as part of their context via the variable \"entry_log\"."
@@ -1122,21 +1122,21 @@ msgid ""
 " \"transition\", \"user\", and \"comment\" attributes."
 msgstr "Может быть IP-адресом, доменом или шаблоном. Шаблоны получают экземпляр записи журнала рабочего процесса как часть своего контекста через переменную \"entry_log\". В свою очередь, \"entry_log\" предоставляет атрибуты \"workflow_instance\", \"datetime\", \"transition\", \"user\", \"comment\"."
 
-#: workflow_actions.py:129
+#: workflow_actions.py:133
 msgid "Timeout"
 msgstr "Тайм-аут"
 
-#: workflow_actions.py:132
+#: workflow_actions.py:136
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
 msgstr "Время ожидания ответа в секундах. Может быть статическим значением или шаблоном."
 
-#: workflow_actions.py:138
+#: workflow_actions.py:142
 msgid "Payload"
 msgstr "Данные"
 
-#: workflow_actions.py:141
+#: workflow_actions.py:145
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
 "return a JSON document. Templates receive the workflow log entry instance as"
@@ -1145,11 +1145,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr "Документ JSON для включения в запрос. Также может быть шаблоном, возвращающим документ JSON. Шаблоны получают экземпляр записи журнала рабочего процесса как часть своего контекста через переменную \"entry_log\". В свою очередь, \"entry_log\" предоставляет атрибуты \"workflow_instance\", \"datetime\", \"transition\", \"user\", \"comment\"."
 
-#: workflow_actions.py:151
+#: workflow_actions.py:155
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: workflow_actions.py:154
+#: workflow_actions.py:158
 msgid ""
 "Username to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
@@ -1158,11 +1158,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr "Имя пользователя, которое будет использоваться для запроса с помощью HTTP Basic Auth. Может быть статическим значением или шаблоном. Шаблоны получают экземпляр записи журнала рабочего процесса как часть своего контекста через переменную \"entry_log\". В свою очередь, \"entry_log\" предоставляет атрибуты \"workflow_instance\", \"datetime\", \"transition\", \"user\", \"comment\"."
 
-#: workflow_actions.py:164
+#: workflow_actions.py:168
 msgid "Password"
 msgstr "Пароль"
 
-#: workflow_actions.py:167
+#: workflow_actions.py:171
 msgid ""
 "Password to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
@@ -1171,11 +1171,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr "Пароль, который будет использоваться для запроса с помощью HTTP Basic Auth. Может быть статическим значением или шаблоном. Шаблоны получают экземпляр записи журнала рабочего процесса как часть своего контекста через переменную \"entry_log\". В свою очередь, \"entry_log\" предоставляет атрибуты \"workflow_instance\", \"datetime\", \"transition\", \"user\", \"comment\"."
 
-#: workflow_actions.py:177
+#: workflow_actions.py:181
 msgid "Method"
 msgstr "Метод"
 
-#: workflow_actions.py:180
+#: workflow_actions.py:184
 msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE. Can be a static value or a template that "
@@ -1185,11 +1185,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr "Метод HTTP, используемый для запроса. Типичные варианты: OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. Может быть статическим значением или шаблоном, возвращающим текст метода. Шаблоны получают экземпляр записи журнала рабочего процесса как часть своего контекста через переменную \"entry_log\". В свою очередь, \"entry_log\" предоставляет атрибуты \"workflow_instance\", \"datetime\", \"transition\", \"user\", \"comment\"."
 
-#: workflow_actions.py:191
+#: workflow_actions.py:195
 msgid "Headers"
 msgstr "Заголовки"
 
-#: workflow_actions.py:194
+#: workflow_actions.py:198
 msgid ""
 "Headers to send with the HTTP request. Must be in JSON format. Can be a "
 "static value or a template. Templates receive the workflow log entry "
@@ -1198,11 +1198,11 @@ msgid ""
 "\"transition\", \"user\", and \"comment\" attributes."
 msgstr "Заголовки для отправки с HTTP-запросом. Должны быть в формате JSON. Может быть статическим значением или шаблоном. Шаблоны получают экземпляр записи журнала рабочего процесса как часть своего контекста через переменную \"entry_log\". В свою очередь, \"entry_log\" предоставляет атрибуты \"workflow_instance\", \"datetime\", \"transition\", \"user\", \"comment\"."
 
-#: workflow_actions.py:208
+#: workflow_actions.py:212
 msgid "Perform an HTTP request"
 msgstr "Выполнить HTTP-запрос"
 
-#: workflow_actions.py:237
+#: workflow_actions.py:241
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
 msgstr "%(field_name)s Ошибка JSON: %(exception)s"

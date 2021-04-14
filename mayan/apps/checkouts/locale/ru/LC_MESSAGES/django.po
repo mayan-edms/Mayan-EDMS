@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-17 11:17+0000\n"
+"POT-Creation-Date: 2021-04-14 23:02+0000\n"
+"PO-Revision-Date: 2021-04-09 12:23+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "Забронированные документы"
 
 #: events.py:8
 msgid "Document automatically checked in"
-msgstr "Документ автоматически освобождён"
+msgstr "Документ освобождён автоматически"
 
 #: events.py:12
 msgid "Document checked in"
@@ -178,7 +178,7 @@ msgstr "Просмотр подробностей бронирования"
 
 #: queues.py:11
 msgid "Checkouts periodic"
-msgstr "Бронирования периодические"
+msgstr "Бронирования периодически"
 
 #: queues.py:15
 msgid "Check expired checkouts"

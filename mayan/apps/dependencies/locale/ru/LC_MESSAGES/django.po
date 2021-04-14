@@ -6,12 +6,10 @@
 # Translators:
 # Roberto Rosario, 2019
 # Sergey Glita <gsv70@mail.ru>, 2019
+# mizhgan <i@mizhgan.ru>, 2019
 # Panasoft, 2019
 # Roman Z <clubtat@mail.ru>, 2019
-# D Muzzle <muzzlerator@gmail.com>, 2019
 # lilo.panic, 2019
-# mizhgan <i@mizhgan.ru>, 2019
-# Alex Chigrin <chalex84@mail.ru>, 2020
 # OLeg Si <olegsm35@gmail.com>, 2020
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
 # 
@@ -19,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-14 23:02+0000\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -35,7 +33,7 @@ msgstr "Зависимости"
 
 #: apps.py:32 apps.py:69 apps.py:78
 msgid "Label"
-msgstr "Ярлык"
+msgstr "Заголовок"
 
 #: apps.py:36
 msgid "Internal name"
@@ -51,11 +49,11 @@ msgstr "Тип"
 
 #: apps.py:49 classes.py:140
 msgid "Other data"
-msgstr ""
+msgstr "Прочие данные"
 
 #: apps.py:53
 msgid "Declared by"
-msgstr ""
+msgstr "Объявлено в"
 
 #: apps.py:57 classes.py:138
 msgid "Version"
@@ -67,7 +65,7 @@ msgstr "Среда"
 
 #: apps.py:64 classes.py:140
 msgid "Check"
-msgstr ""
+msgstr "Проверять"
 
 #: classes.py:138
 msgid "Name"
@@ -75,37 +73,37 @@ msgstr "Название"
 
 #: classes.py:139
 msgid "App"
-msgstr ""
+msgstr "Приложение"
 
 #: classes.py:254
 msgid "Need to specify at least one: app_label or module."
-msgstr ""
+msgstr "Необходимо указать хотя бы одно: app_label или module."
 
 #: classes.py:259
 #, python-format
 msgid "Dependency \"%s\" already registered."
-msgstr ""
+msgstr "Зависимость \"%s\" уже зарегистрирована."
 
 #: classes.py:285
 #, python-format
 msgid "Installing package: %s... "
-msgstr ""
+msgstr "Установка пакета: %s ..."
 
 #: classes.py:290
 msgid "Already installed."
-msgstr ""
+msgstr "Уже установлено."
 
 #: classes.py:293 classes.py:298 classes.py:302
 msgid "Complete."
-msgstr ""
+msgstr "Завершено."
 
 #: classes.py:328
 msgid "Installed and correct version"
-msgstr ""
+msgstr "Установленная и правильная версия"
 
 #: classes.py:330
 msgid "Missing or incorrect version"
-msgstr ""
+msgstr "Версия отсутствует или неверна"
 
 #: classes.py:359
 msgid "None"
@@ -113,65 +111,67 @@ msgstr "Ни один"
 
 #: classes.py:368
 msgid "Not specified"
-msgstr ""
+msgstr "Не указано"
 
 #: classes.py:371
 msgid "Patching files... "
-msgstr ""
+msgstr "Патчинг файлов..."
 
 #: classes.py:399
 msgid "Executables that are called directly by the code."
-msgstr ""
+msgstr "Исполняемые файлы, вызываемые непосредственно из кода."
 
 #: classes.py:401
 msgid "Binary"
-msgstr ""
+msgstr "Binary"
 
 #: classes.py:418
 msgid ""
 "JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
 msgstr ""
+"Библиотеки JavaScript, загруженные из реестра NPM и используемые для "
+"функциональных возможностей интерфейса."
 
 #: classes.py:421
 msgid "JavaScript"
-msgstr ""
+msgstr "JavaScript"
 
 #: classes.py:451 classes.py:694
 msgid "Downloading... "
-msgstr ""
+msgstr "Скачивание..."
 
 #: classes.py:454
 msgid "Verifying... "
-msgstr ""
+msgstr "Проверка..."
 
 #: classes.py:457 classes.py:697
 msgid "Extracting... "
-msgstr ""
+msgstr "Извлечение..."
 
 #: classes.py:636
 msgid "Python packages downloaded from PyPI."
-msgstr ""
+msgstr "Пакеты Python, загруженные из PyPI."
 
 #: classes.py:638
 msgid "Python"
-msgstr ""
+msgstr "Python"
 
 #: classes.py:675
 msgid "Fonts downloaded from fonts.googleapis.com."
-msgstr ""
+msgstr "Шрифты, загруженные с fonts.googleapis.com."
 
 #: classes.py:677
 msgid "Google font"
-msgstr ""
+msgstr "Шрифты Google"
 
 #: classes.py:763
 msgid "Declared in app"
-msgstr ""
+msgstr "Объявлено в приложении"
 
 #: classes.py:764
 msgid "Show dependencies by the app that declared them."
-msgstr ""
+msgstr "Показать зависимости по объявившему их приложению."
 
 #: classes.py:768
 msgid "Class"
@@ -182,10 +182,12 @@ msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
 msgstr ""
+"Показать разные классы зависимостей. Классы обычно делятся по языку или "
+"типам файлов зависимости."
 
 #: classes.py:774
 msgid "State"
-msgstr ""
+msgstr "Состояние"
 
 #: classes.py:775
 msgid ""
@@ -193,52 +195,66 @@ msgid ""
 "dependencies is installed and is of a correct version. False means the "
 "dependencies is missing or an incorrect version is present."
 msgstr ""
+"Показать различные состояния зависимостей. Истина означает, что зависимости "
+"установлены и имеют правильную версию. Ложь означает, что зависимости "
+"отсутствуют или присутствует неправильная версия."
 
 #: classes.py:782
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
 msgstr ""
+"Зависимости, необходимые для одной среды, могут не потребоваться для другой."
+" Примеры сред: Production, Development."
 
 #: environments.py:18
 msgid ""
 "Environment used for building distributable packages of the software. End "
 "users can ignore missing dependencies under this environment."
 msgstr ""
+"Среда, используемая для создания распространяемых пакетов программного "
+"обеспечения. Конечные пользователи могут игнорировать недостающие "
+"зависимости в этой среде."
 
 #: environments.py:21
 msgid "Build"
-msgstr ""
+msgstr "Build"
 
 #: environments.py:25
 msgid ""
 "Environment used for developers to make code changes. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
+"Среда, используемая разработчиками для внесения изменений в код. Конечные "
+"пользователи могут игнорировать недостающие зависимости в этой среде."
 
 #: environments.py:27
 msgid "Development"
-msgstr ""
+msgstr "Development"
 
 #: environments.py:31
 msgid ""
 "Environment used for building the documentation. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
+"Среда, используемая для создания документации. Конечные пользователи могут "
+"игнорировать недостающие зависимости в этой среде."
 
 #: environments.py:33
 msgid "Documentation"
-msgstr "Документация"
+msgstr "Documentation"
 
 #: environments.py:37
 msgid ""
 "Normal environment for end users. A missing dependency under this "
 "environment will result in issues and errors during normal use."
 msgstr ""
+"Нормальная среда для конечных пользователей. Отсутствие зависимости в этой "
+"среде приведет к проблемам и ошибкам при нормальном использовании."
 
 #: environments.py:39
 msgid "Production"
-msgstr ""
+msgstr "Production"
 
 #: environments.py:43
 msgid ""
@@ -246,10 +262,13 @@ msgid ""
 "code. Dependencies in this environment are not needed for normal production "
 "usage."
 msgstr ""
+"Среда, используемая для запуска набора тестов для для проверки "
+"функциональности кода. Зависимости в этой среде не нужны для нормального "
+"производственного использования."
 
 #: environments.py:46
 msgid "Testing"
-msgstr "Тестирование"
+msgstr "Testing"
 
 #: links.py:9 views.py:17
 msgid "Check for updates"
@@ -273,40 +292,44 @@ msgstr "Лицензии зависимостей"
 
 #: management/commands/checkdependencies.py:13
 msgid "Outputs the dependencies as a comma delimited values list."
-msgstr ""
+msgstr "Выводит зависимости в виде списка значений, разделенных запятыми."
 
 #: management/commands/generaterequirements.py:14
 msgid ""
 "Comma separated names of dependencies to exclude from the list generated."
 msgstr ""
+"Разделенные запятыми имена зависимостей, которые нужно исключить из "
+"сгенерированного списка."
 
 #: management/commands/generaterequirements.py:20
 msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
 msgstr ""
+"Разделенные запятыми имена зависимостей для отображения в списке, исключая "
+"все остальные."
 
 #: management/commands/installdependencies.py:13
 msgid "Process a specific app."
-msgstr ""
+msgstr "Обработать конкретное приложение."
 
 #: management/commands/installdependencies.py:17
 msgid "Force installation even if already installed."
-msgstr ""
+msgstr "Принудительная установка, даже если она уже установлена."
 
 #: permissions.py:8
 msgid "View dependencies"
-msgstr ""
+msgstr "Просмотр зависимостей"
 
 #: views.py:31
 #, python-format
 msgid "Entries for dependency group: %s"
-msgstr ""
+msgstr "Записи для группы зависимостей: %s"
 
 #: views.py:44 views.py:89
 #, python-format
 msgid "Group %s not found."
-msgstr ""
+msgstr "Группа %s не найдена."
 
 #: views.py:57
 msgid "Dependency groups"
@@ -315,12 +338,12 @@ msgstr "Зависимости по группам"
 #: views.py:77
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
-msgstr ""
+msgstr "Группа зависимостей и запись: %(group)s, %(entry)s"
 
 #: views.py:101
 #, python-format
 msgid "Entry %s not found."
-msgstr ""
+msgstr "Запись %s не найдена."
 
 #: views.py:119
 msgid "Other packages licenses"

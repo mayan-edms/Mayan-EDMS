@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
 "PO-Revision-Date: 2020-12-25 11:15+0000\n"
 "Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
@@ -1109,11 +1109,11 @@ msgstr "Spreminjanje lastnosti dokumenta"
 msgid "Additional workflows to launch for the document."
 msgstr "Dodatni potek dela za zagon dokumenta."
 
-#: workflow_actions.py:116
+#: workflow_actions.py:120
 msgid "URL"
 msgstr "URL"
 
-#: workflow_actions.py:119
+#: workflow_actions.py:123
 msgid ""
 "Can be an IP address, a domain or a template. Templates receive the workflow"
 " log entry instance as part of their context via the variable \"entry_log\"."
@@ -1121,21 +1121,21 @@ msgid ""
 " \"transition\", \"user\", and \"comment\" attributes."
 msgstr "Lahko je naslov IP, domena ali predloga. Predloge prejmejo primerek vnosa v dnevnik poteka dela kot del njihovega konteksta prek spremenljivke &quot;entry_log&quot;. &quot;Vstopni_dnevnik&quot; po drugi strani vsebuje atribute &quot;potek dela&quot;, &quot;datum-čas&quot;, &quot;prehod&quot;, &quot;uporabnik&quot; in &quot;komentar&quot;."
 
-#: workflow_actions.py:129
+#: workflow_actions.py:133
 msgid "Timeout"
 msgstr "Odmor"
 
-#: workflow_actions.py:132
+#: workflow_actions.py:136
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
 msgstr "Čas v sekundah, da počakate na odgovor. Lahko je statična vrednost ali predloga."
 
-#: workflow_actions.py:138
+#: workflow_actions.py:142
 msgid "Payload"
 msgstr "Nosilnost"
 
-#: workflow_actions.py:141
+#: workflow_actions.py:145
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
 "return a JSON document. Templates receive the workflow log entry instance as"
@@ -1144,11 +1144,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr "Dokument JSON, ki ga je treba vključiti v zahtevo. Lahko je tudi predloga, ki vrne dokument JSON. Predloge prejmejo primerek vnosa v dnevnik poteka dela kot del njihovega konteksta prek spremenljivke &quot;entry_log&quot;. &quot;Vstopni_dnevnik&quot; po drugi strani vsebuje atribute &quot;potek dela&quot;, &quot;datum-čas&quot;, &quot;prehod&quot;, &quot;uporabnik&quot; in &quot;komentar&quot;."
 
-#: workflow_actions.py:151
+#: workflow_actions.py:155
 msgid "Username"
 msgstr "Uporabniško ime"
 
-#: workflow_actions.py:154
+#: workflow_actions.py:158
 msgid ""
 "Username to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
@@ -1157,11 +1157,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr "Uporabniško ime za pošiljanje zahteve s HTTP Basic Auth. Lahko je statična vrednost ali predloga. Predloge prejmejo primerek vnosa v dnevnik poteka dela kot del njihovega konteksta prek spremenljivke &quot;entry_log&quot;. &quot;Vstopni_dnevnik&quot; po drugi strani vsebuje atribute &quot;potek dela&quot;, &quot;datum-čas&quot;, &quot;prehod&quot;, &quot;uporabnik&quot; in &quot;komentar&quot;."
 
-#: workflow_actions.py:164
+#: workflow_actions.py:168
 msgid "Password"
 msgstr "Geslo"
 
-#: workflow_actions.py:167
+#: workflow_actions.py:171
 msgid ""
 "Password to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
@@ -1170,11 +1170,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr "Geslo za pošiljanje zahteve s HTTP Basic Auth. Lahko je statična vrednost ali predloga. Predloge prejmejo primerek vnosa v dnevnik poteka dela kot del njihovega konteksta prek spremenljivke &quot;entry_log&quot;. &quot;Vstopni_dnevnik&quot; po drugi strani vsebuje atribute &quot;potek dela&quot;, &quot;datum-čas&quot;, &quot;prehod&quot;, &quot;uporabnik&quot; in &quot;komentar&quot;."
 
-#: workflow_actions.py:177
+#: workflow_actions.py:181
 msgid "Method"
 msgstr "Metoda"
 
-#: workflow_actions.py:180
+#: workflow_actions.py:184
 msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE. Can be a static value or a template that "
@@ -1184,11 +1184,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr "Metoda HTTP, ki jo je treba uporabiti za zahtevo. Tipične izbire so OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. Lahko je statična vrednost ali predloga, ki vrne besedilo metode. Predloge prejmejo primerek vnosa v dnevnik poteka dela kot del njihovega konteksta prek spremenljivke &quot;entry_log&quot;. &quot;Vstopni_dnevnik&quot; po drugi strani vsebuje atribute &quot;potek dela&quot;, &quot;datum-čas&quot;, &quot;prehod&quot;, &quot;uporabnik&quot; in &quot;komentar&quot;."
 
-#: workflow_actions.py:191
+#: workflow_actions.py:195
 msgid "Headers"
 msgstr "Glave"
 
-#: workflow_actions.py:194
+#: workflow_actions.py:198
 msgid ""
 "Headers to send with the HTTP request. Must be in JSON format. Can be a "
 "static value or a template. Templates receive the workflow log entry "
@@ -1197,11 +1197,11 @@ msgid ""
 "\"transition\", \"user\", and \"comment\" attributes."
 msgstr "Glave za pošiljanje z zahtevo HTTP. Biti mora v obliki JSON. Lahko je statična vrednost ali predloga. Predloge prejmejo primerek vnosa v dnevnik poteka dela kot del njihovega konteksta prek spremenljivke &quot;entry_log&quot;. &quot;Vstopni_dnevnik&quot; po drugi strani vsebuje atribute &quot;potek dela&quot;, &quot;datum-čas&quot;, &quot;prehod&quot;, &quot;uporabnik&quot; in &quot;komentar&quot;."
 
-#: workflow_actions.py:208
+#: workflow_actions.py:212
 msgid "Perform an HTTP request"
 msgstr "Izvedite zahtevo HTTP"
 
-#: workflow_actions.py:237
+#: workflow_actions.py:241
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
 msgstr "%(field_name)s Napaka JSON: %(exception)s"

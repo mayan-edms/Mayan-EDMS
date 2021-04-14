@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-22 08:18+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2021-04-09 12:25+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: apps.py:40 links.py:38 permissions.py:5
 msgid "Message of the day"
-msgstr "Объявление"
+msgstr "Объявления"
 
 #: apps.py:77 apps.py:81
 msgid "None"
@@ -38,7 +38,7 @@ msgstr "Объявление создано"
 
 #: events.py:11
 msgid "Message edited"
-msgstr "Сообщение изменено"
+msgstr "Объявление изменено"
 
 #: links.py:14 views.py:31
 msgid "Create message"
@@ -70,7 +70,7 @@ msgstr "Сообщение"
 
 #: models.py:24
 msgid "Enabled"
-msgstr "Доступно"
+msgstr "Включено"
 
 #: models.py:27
 msgid "Date and time after which this message will be displayed."
@@ -116,7 +116,7 @@ msgstr "Запрос на удаление выполнен для %(count)d о�
 #: views.py:47
 #, python-format
 msgid "Delete request performed on %(count)d messages"
-msgstr "Запрос на удаление, выполненный для %(count)d объявлений"
+msgstr "Запрос на удаление выполнен для %(count)d объявлений"
 
 #: views.py:54
 msgid "Delete the selected message?"

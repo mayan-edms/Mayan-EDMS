@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-22 08:04+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2021-04-12 08:52+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr "Связи"
 
 #: apps.py:96 models.py:25
 msgid "Label"
-msgstr "Ярлык"
+msgstr "Заголовок"
 
 #: events.py:6 links.py:18 links.py:77 links.py:82 links.py:87 models.py:44
 #: permissions.py:5 views.py:203
@@ -148,15 +148,15 @@ msgstr "Краткое описание связи."
 msgid ""
 "Use this field to show a unique label depending on the document from which "
 "the smart link is being accessed."
-msgstr "Используйте это поле для отображения уникального ярлыка в зависимости от документа, из которого осуществляется доступ к связи."
+msgstr "Используйте это поле для отображения уникального заголовка в зависимости от документа, из которого осуществляется доступ к связи."
 
 #: models.py:31
 msgid "Dynamic label"
-msgstr "Динамический ярлык"
+msgstr "Динамический заголовок"
 
 #: models.py:33 models.py:189
 msgid "Enabled"
-msgstr "Доступно"
+msgstr "Включено"
 
 #: models.py:43 models.py:167
 msgid "Smart link"
@@ -165,7 +165,7 @@ msgstr "Связь"
 #: models.py:82
 #, python-format
 msgid "Error generating dynamic label; %s"
-msgstr "Ошибка создания динамического ярлыка; %s"
+msgstr "Ошибка создания динамического заголовка; %s"
 
 #: models.py:97
 msgid "This smart link is not allowed for the selected document's type."
@@ -215,23 +215,23 @@ msgstr "не"
 
 #: models.py:205
 msgid "Full label"
-msgstr "Полный ярлык"
+msgstr "Полный заголовок"
 
 #: permissions.py:8
 msgid "Create new smart links"
-msgstr "Создать отношения"
+msgstr "Создать связи"
 
 #: permissions.py:11
 msgid "Delete smart links"
-msgstr "Удалить отношения"
+msgstr "Удалить связи"
 
 #: permissions.py:14
 msgid "Edit smart links"
-msgstr "Редактировать отношения"
+msgstr "Редактировать связи"
 
 #: permissions.py:17
 msgid "View existing smart links"
-msgstr "Просмотр отношений"
+msgstr "Просмотр существующих связей"
 
 #: serializers.py:115
 msgid ""
@@ -290,7 +290,7 @@ msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
-msgstr "Связи группируют документы с похожими свойствами или типами. Связи позволяют определять отношения между документами, даже если они находятся в разных индексах и имеют разные типы."
+msgstr "Индексы группируют документы с похожими свойствами или типами. Связи позволяют определять отношения между документами, даже если они находятся в разных индексах и имеют разные типы."
 
 #: views.py:201
 msgid "There are no smart links"
@@ -348,4 +348,4 @@ msgstr "Удалить условие связи: %s?"
 
 #: views.py:382
 msgid "Edit smart link condition"
-msgstr "Изменить условие связи"
+msgstr "Редактировать условие связи"

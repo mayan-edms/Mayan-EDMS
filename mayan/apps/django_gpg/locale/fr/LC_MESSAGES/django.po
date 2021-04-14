@@ -5,7 +5,7 @@
 # Translators:
 # Translators:
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
-# Frédéric Sheedy <sheedf@gmail.com>, 2020
+# Frédéric Sheedy <sheedf@gmail.com>, 2020-2021
 # Frédéric Sheedy <sheedf@gmail.com>, 2019
 # 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2012
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2020-07-01 12:51+0000\n"
+"POT-Creation-Date: 2021-04-14 23:02+0000\n"
+"PO-Revision-Date: 2021-04-13 14:31+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -233,7 +233,7 @@ msgstr "Détails de la clé : %s"
 #: views.py:75
 #, python-format
 msgid "Import key ID: %s?"
-msgstr "Importer l'identifiant de clé : %s ?"
+msgstr "Importer l'identifiant de clé : %s?"
 
 #: views.py:76
 msgid "Import key"

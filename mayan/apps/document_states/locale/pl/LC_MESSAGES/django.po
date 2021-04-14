@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
 "PO-Revision-Date: 2020-10-13 19:08+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -1111,11 +1111,11 @@ msgstr "Zmodyfikuj właściwości dokumentu"
 msgid "Additional workflows to launch for the document."
 msgstr "Dodatkowe przepływy pracy przeznaczone do uruchomienia na dokumencie."
 
-#: workflow_actions.py:116
+#: workflow_actions.py:120
 msgid "URL"
 msgstr "URL"
 
-#: workflow_actions.py:119
+#: workflow_actions.py:123
 msgid ""
 "Can be an IP address, a domain or a template. Templates receive the workflow"
 " log entry instance as part of their context via the variable \"entry_log\"."
@@ -1123,21 +1123,21 @@ msgid ""
 " \"transition\", \"user\", and \"comment\" attributes."
 msgstr "Może to być adres IP, domena lub szablon. Szablony otrzymują instancję wpisu dziennika przepływu pracy jako część swojego kontekstu za pośrednictwem zmiennej „entry_log”. Z kolei „entry_log” zapewnia atrybuty „workflow_instance”, „datetime”, „przejście”, „użytkownik” i „komentarz”."
 
-#: workflow_actions.py:129
+#: workflow_actions.py:133
 msgid "Timeout"
 msgstr "Koniec czasu"
 
-#: workflow_actions.py:132
+#: workflow_actions.py:136
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
 msgstr "Czas oczekiwania na odpowiedź w sekundach. Może być wartością statyczną lub szablonem."
 
-#: workflow_actions.py:138
+#: workflow_actions.py:142
 msgid "Payload"
 msgstr "Dane załaczone"
 
-#: workflow_actions.py:141
+#: workflow_actions.py:145
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
 "return a JSON document. Templates receive the workflow log entry instance as"
@@ -1146,11 +1146,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr "Dokument JSON, który należy dołączyć do żądania. Może być również szablonem zwracającym dokument JSON. Szablony otrzymują instancję wpisu dziennika przepływu pracy jako część swojego kontekstu za pośrednictwem zmiennej „entry_log”. Z kolei „entry_log” zapewnia atrybuty „workflow_instance”, „datetime”, „przejście”, „użytkownik” i „komentarz”."
 
-#: workflow_actions.py:151
+#: workflow_actions.py:155
 msgid "Username"
 msgstr "Nazwa użytkownika"
 
-#: workflow_actions.py:154
+#: workflow_actions.py:158
 msgid ""
 "Username to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
@@ -1159,11 +1159,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr "Nazwa użytkownika, której należy użyć w celu wykonania żądania za pomocą uwierzytelniania podstawowego HTTP. Może być wartością statyczną lub szablonem. Szablony otrzymują instancję wpisu dziennika przepływu pracy jako część swojego kontekstu za pośrednictwem zmiennej „entry_log”. Z kolei „entry_log” zapewnia atrybuty „workflow_instance”, „datetime”, „przejście”, „użytkownik” i „komentarz”."
 
-#: workflow_actions.py:164
+#: workflow_actions.py:168
 msgid "Password"
 msgstr "Hasło"
 
-#: workflow_actions.py:167
+#: workflow_actions.py:171
 msgid ""
 "Password to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
@@ -1172,11 +1172,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr "Hasło, które należy użyć do wykonania żądania przy użyciu uwierzytelniania podstawowego HTTP. Może być wartością statyczną lub szablonem. Szablony otrzymują instancję wpisu dziennika przepływu pracy jako część swojego kontekstu za pośrednictwem zmiennej „entry_log”. Z kolei „entry_log” zapewnia atrybuty „workflow_instance”, „datetime”, „przejście”, „użytkownik” i „komentarz”."
 
-#: workflow_actions.py:177
+#: workflow_actions.py:181
 msgid "Method"
 msgstr "Metoda"
 
-#: workflow_actions.py:180
+#: workflow_actions.py:184
 msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE. Can be a static value or a template that "
@@ -1186,11 +1186,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr "Metoda HTTP używana w żądaniu. Typowe opcje to OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. Może być wartością statyczną lub szablonem, który zwraca tekst metody. Szablony otrzymują instancję wpisu dziennika przepływu pracy jako część swojego kontekstu za pośrednictwem zmiennej „entry_log”. Z kolei „entry_log” zapewnia atrybuty „workflow_instance”, „datetime”, „transition”, „user” i „comment”."
 
-#: workflow_actions.py:191
+#: workflow_actions.py:195
 msgid "Headers"
 msgstr "Nagłówki"
 
-#: workflow_actions.py:194
+#: workflow_actions.py:198
 msgid ""
 "Headers to send with the HTTP request. Must be in JSON format. Can be a "
 "static value or a template. Templates receive the workflow log entry "
@@ -1199,11 +1199,11 @@ msgid ""
 "\"transition\", \"user\", and \"comment\" attributes."
 msgstr "Nagłówki do wysłania z żądaniem HTTP. Muszą być w formacie JSON. Mogą być wartością statyczną lub szablonem. Szablony otrzymują instancję wpisu dziennika przepływu pracy jako część swojego kontekstu za pośrednictwem zmiennej „entry_log”. Z kolei „entry_log” zapewnia atrybuty „workflow_instance”, „datetime”, „przejście”, „użytkownik” i „komentarz”."
 
-#: workflow_actions.py:208
+#: workflow_actions.py:212
 msgid "Perform an HTTP request"
 msgstr "Wykonaj żądanie HTTP"
 
-#: workflow_actions.py:237
+#: workflow_actions.py:241
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
 msgstr "Błąd JSON %(field_name)s: %(exception)s"

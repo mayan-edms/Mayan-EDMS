@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
@@ -1107,11 +1107,11 @@ msgstr ""
 msgid "Additional workflows to launch for the document."
 msgstr ""
 
-#: workflow_actions.py:116
+#: workflow_actions.py:120
 msgid "URL"
 msgstr "URL"
 
-#: workflow_actions.py:119
+#: workflow_actions.py:123
 msgid ""
 "Can be an IP address, a domain or a template. Templates receive the workflow"
 " log entry instance as part of their context via the variable \"entry_log\"."
@@ -1119,21 +1119,21 @@ msgid ""
 " \"transition\", \"user\", and \"comment\" attributes."
 msgstr "Može biti IP adresa, domen ili šablon. Šabloni primaju primere prijavljivanja dnevnika rada kao dio njihovog konteksta pomoću varijable \"entri_log\". \"Entri_log\" zauzvrat pruža \"vorkflov_instance\", \"datetime\", \"transition\", \"user\" i \"comment\" atribute."
 
-#: workflow_actions.py:129
+#: workflow_actions.py:133
 msgid "Timeout"
 msgstr "Timeout"
 
-#: workflow_actions.py:132
+#: workflow_actions.py:136
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
 msgstr ""
 
-#: workflow_actions.py:138
+#: workflow_actions.py:142
 msgid "Payload"
 msgstr "Payload"
 
-#: workflow_actions.py:141
+#: workflow_actions.py:145
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
 "return a JSON document. Templates receive the workflow log entry instance as"
@@ -1142,11 +1142,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr "JSON dokument koji treba uključiti u zahtev. Može biti i šablon koji vraća JSON dokument. Šabloni primaju primere prijavljivanja dnevnika rada kao dio njihovog konteksta pomoću varijable \"entri_log\". \"Entri_log\" zauzvrat pruža \"vorkflov_instance\", \"datetime\", \"transition\", \"user\" i \"comment\" atribute."
 
-#: workflow_actions.py:151
+#: workflow_actions.py:155
 msgid "Username"
 msgstr "Korisničko ime"
 
-#: workflow_actions.py:154
+#: workflow_actions.py:158
 msgid ""
 "Username to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
@@ -1155,11 +1155,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr ""
 
-#: workflow_actions.py:164
+#: workflow_actions.py:168
 msgid "Password"
 msgstr "Lozinka"
 
-#: workflow_actions.py:167
+#: workflow_actions.py:171
 msgid ""
 "Password to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
@@ -1168,11 +1168,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr ""
 
-#: workflow_actions.py:177
+#: workflow_actions.py:181
 msgid "Method"
 msgstr ""
 
-#: workflow_actions.py:180
+#: workflow_actions.py:184
 msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE. Can be a static value or a template that "
@@ -1182,11 +1182,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr ""
 
-#: workflow_actions.py:191
+#: workflow_actions.py:195
 msgid "Headers"
 msgstr ""
 
-#: workflow_actions.py:194
+#: workflow_actions.py:198
 msgid ""
 "Headers to send with the HTTP request. Must be in JSON format. Can be a "
 "static value or a template. Templates receive the workflow log entry "
@@ -1195,11 +1195,11 @@ msgid ""
 "\"transition\", \"user\", and \"comment\" attributes."
 msgstr ""
 
-#: workflow_actions.py:208
+#: workflow_actions.py:212
 msgid "Perform an HTTP request"
 msgstr ""
 
-#: workflow_actions.py:237
+#: workflow_actions.py:241
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
 msgstr ""
