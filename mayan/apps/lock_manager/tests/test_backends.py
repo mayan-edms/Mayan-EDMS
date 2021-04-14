@@ -9,7 +9,7 @@ from mayan.apps.testing.tests.base import BaseTestCase
 from ..exceptions import LockError
 from ..settings import setting_default_lock_timeout
 
-from .literals import TEST_LOCK_1, TEST_LOCK_LONG_NAME
+from .literals import TEST_LOCK_1
 
 
 class BaseLockBackendTestMixin:
