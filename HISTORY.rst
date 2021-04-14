@@ -1,3 +1,9 @@
+3.5.8 (2021-04-XX)
+==================
+- Fix sub workflow launch state action.
+- Exclude the current workflow from the sub workflow launch state action
+  workflow selection form.
+
 3.5.7 (2021-03-28)
 ==================
 - Update the sample LDAP settings file to add note about package

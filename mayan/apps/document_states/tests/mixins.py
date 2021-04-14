@@ -59,9 +59,10 @@ class DocumentWorkflowLaunchActionViewTestMixin:
                 'workflow_template_state_id': self.test_workflow_state.pk,
                 'class_path': DOCUMENT_WORKFLOW_LAUNCH_ACTION_CLASS_PATH
             }, data={
+                'enabled': True,
                 'label': TEST_WORKFLOW_STATE_ACTION_LABEL,
                 'when': TEST_WORKFLOW_STATE_ACTION_WHEN,
-                'workflows': self.test_workflow.pk
+                'workflows': self.test_sub_workflow.pk
             }
         )
 
