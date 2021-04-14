@@ -101,7 +101,11 @@ class DocumentWorkflowLaunchAction(WorkflowAction):
         return result
 
     def execute(self, context):
-        for workflow in self.form_data['workflows']:
+        workflows = Workflow.objects.filter(
+            pk__in=self.form_data.get('workflows', ())
+        )
+
+        for workflow in workflows:
             task_launch_workflow_for.apply_async(
                 kwargs={
                     'document_id': context['document'].pk,

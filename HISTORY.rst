@@ -321,3 +321,5 @@
   - sphinx-sitemap to 2.2.0.
   - sphinxcontrib-spelling to 7.1.0.
   - tornado to 6.1.
+
+- Fix sub workflow launch state action.

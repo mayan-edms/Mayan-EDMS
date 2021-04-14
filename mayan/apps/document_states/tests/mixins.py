@@ -140,9 +140,10 @@ class WorkflowTemplateLaunchActionViewTestMixin:
                 'workflow_template_state_id': self.test_workflow_template_state.pk,
                 'class_path': DOCUMENT_WORKFLOW_LAUNCH_ACTION_CLASS_PATH
             }, data={
+                'enabled': True,
                 'label': TEST_WORKFLOW_TEMPLATE_STATE_ACTION_LABEL,
                 'when': TEST_WORKFLOW_TEMPLATE_STATE_ACTION_WHEN,
-                'workflows': self.test_workflow_template.pk
+                'workflows': self.test_workflow_templates[0].pk
             }
         )
 
@@ -627,7 +628,7 @@ class WorkflowTemplateTestMixin:
             TEST_WORKFLOW_TEMPLATE_STATE_LABEL,
             total_test_workflow_template_states
         )
-        initial = total_test_workflow_template_states == 0
+        initial = self.test_workflow_template.states.count() == 0
 
         self.test_workflow_template_state = self.test_workflow_template.states.create(
             completion=TEST_WORKFLOW_TEMPLATE_STATE_COMPLETION, initial=initial,
