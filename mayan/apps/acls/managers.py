@@ -162,7 +162,9 @@ class AccessControlListManager(models.Manager):
                     )
                 )
             except KeyError:
-                pass
+                """
+                Does not have inheritance entries. Proceed to next case.
+                """
             else:
                 relation_result = []
 
@@ -305,7 +307,9 @@ class AccessControlListManager(models.Manager):
                 model=type(obj)
             )
         except KeyError:
-            """Does not have inheritance to other models."""
+            """
+            Does not have inheritance to other models.
+            """
         else:
             for related_field in related_fields:
                 try:

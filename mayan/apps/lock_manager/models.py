@@ -39,8 +39,9 @@ class Lock(models.Model):
                 name=self.name, creation_datetime=self.creation_datetime
             )
         except Lock.DoesNotExist:
-            # Our lock has expired and was reassigned
-            pass
+            """
+            Our lock has expired and was reassigned.
+            """
         else:
             lock.delete()
 

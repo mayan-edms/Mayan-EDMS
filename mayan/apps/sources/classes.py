@@ -95,7 +95,10 @@ class DocumentCreateWizardStep(AppsModuleLoaderMixin):
 
     @classmethod
     def step_post_upload_process(cls, document, querystring=None):
-        pass
+        """
+        Optional method executed when the wizard ends to allow the step to
+        perform its action.
+        """
 
 
 class PseudoFile(File):
