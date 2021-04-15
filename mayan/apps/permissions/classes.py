@@ -10,8 +10,6 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.collections import ClassCollection
 
-from .exceptions import InvalidNamespace
-
 logger = logging.getLogger(name=__name__)
 
 
@@ -27,7 +25,7 @@ class PermissionNamespace:
         try:
             return cls._registry[name]
         except KeyError:
-            raise InvalidNamespace(
+            raise KeyError(
                 'Invalid namespace name. This is probably an obsolete '
                 'permission namespace, execute the management command '
                 '"purgepermissions" and try again.'
