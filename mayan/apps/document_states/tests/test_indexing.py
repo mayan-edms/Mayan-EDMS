@@ -6,7 +6,7 @@ from mayan.apps.document_indexing.models import (
 from .literals import (
     TEST_INDEX_TEMPLATE_LABEL, TEST_INDEX_TEMPLATE_METADATA_EXPRESSION
 )
-from .mixins import WorkflowTemplateTestMixin
+from .mixins.workflow_template_mixins import WorkflowTemplateTestMixin
 
 
 class DocumentStateIndexingTestCase(
