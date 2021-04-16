@@ -216,7 +216,9 @@ class CachePartition(models.Model):
         return self.files.get(filename=filename)
 
     def get_file_lock_name(self, filename):
-        return 'cache_partition-file-{}-{}'.format(self.pk, filename)
+        return 'cache_partition-file-{}-{}'.format(
+            self.cache.pk, self.pk, filename
+        )
 
     def get_full_filename(self, filename):
         return CachePartition.get_combined_filename(
@@ -253,6 +255,12 @@ class CachePartitionFile(models.Model):
         return self.partition.get_file_lock_name(filename=self.filename)
 
     @locked_class_method
+    def close(self):
+        if self._storage_object is not None:
+            self._storage_object.close()
+        self._storage_object = None
+
+    @locked_class_method
     def delete(self, *args, **kwargs):
         self.partition.cache.storage.delete(name=self.full_filename)
         return super().delete(*args, **kwargs)
@@ -282,12 +290,6 @@ class CachePartitionFile(models.Model):
                 exc_info=True
             )
             raise
-
-    @locked_class_method
-    def close(self):
-        if self._storage_object is not None:
-            self._storage_object.close()
-        self._storage_object = None
 
     @locked_class_method
     def update_size(self):
