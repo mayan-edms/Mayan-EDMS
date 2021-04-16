@@ -22,6 +22,8 @@ from .events import (
 )
 
 logger = logging.getLogger(name=__name__)
+#TODO: move to literals
+MAXIMUM_PRUNE_ATTEMPTS = 100
 
 
 class Cache(models.Model):
@@ -95,8 +97,23 @@ class Cache(models.Model):
         Deletes files until the total size of the cache is below the allowed
         maximum size of the cache.
         """
+        attempts = 0
         while self.get_total_size() > self.maximum_size:
-            self.get_files().earliest().delete()
+            cache_partition_file = self.get_files().earliest()
+            try:
+                cache_partition_file.delete()
+            except LockError:
+                logger.error(
+                    'Lock error trying to delete file "%s" for prune. '
+                    'Skipping and attempting next file.',
+                    cache_partition_file
+                )
+                attempts += 1
+
+                if attempts > MAXIMUM_PRUNE_ATTEMPTS:
+                    raise RuntimeError(
+                        'Too many cache prune failed attempts.'
+                    )
 
     def purge(self, _user=None):
         """
@@ -213,10 +230,18 @@ class CachePartition(models.Model):
         return super().delete(*args, **kwargs)
 
     def get_file(self, filename):
-        return self.files.get(filename=filename)
+        try:
+            return self.files.get(filename=filename)
+        except CachePartitionFile.DoesNotExist:
+            #TEMP-DEBUG
+            logger.error(
+                'Cache partition file does not exist: %s - %s',
+                self.name, filename
+            )
+            raise
 
     def get_file_lock_name(self, filename):
-        return 'cache_partition-file-{}-{}'.format(
+        return 'cache_partition-file-{}-{}-{}'.format(
             self.cache.pk, self.pk, filename
         )
 
