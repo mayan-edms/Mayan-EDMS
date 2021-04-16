@@ -1,8 +1,8 @@
 import json
 
-from mayan.apps.document_states.tests.mixins import WorkflowTemplateTestMixin
-from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.document_states.literals import WORKFLOW_ACTION_ON_ENTRY
+from mayan.apps.document_states.tests.mixins.workflow_template_mixins import WorkflowTemplateTestMixin
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from ..models.trashed_document_models import TrashedDocument
 from ..workflow_actions import DocumentTypeChangeAction, TrashDocumentAction
