@@ -105,7 +105,6 @@ class Cache(models.Model):
             try:
                 cache_partition_file.delete()
             except LockError:
-                raise
                 logger.debug(
                     'Lock error trying to delete file "%s" for prune. '
                     'Skipping and attempting next file.',
