@@ -1,5 +1,3 @@
-from actstream.models import Action
-
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..events import event_cache_created, event_cache_purged
@@ -10,31 +8,33 @@ from .mixins import CacheTestMixin
 
 class CacheEventsTestCase(CacheTestMixin, BaseTestCase):
     def test_cache_create_event(self):
-        action_count = Action.objects.count()
+        self._clear_events()
 
         self._create_test_cache()
 
-        self.assertEqual(Action.objects.count(), action_count + 1)
-
-        event = Action.objects.first()
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
 
         cache = Cache.objects.last()
 
-        self.assertEqual(event.verb, event_cache_created.id)
-        self.assertEqual(event.target, cache)
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, cache)
+        self.assertEqual(events[0].target, cache)
+        self.assertEqual(events[0].verb, event_cache_created.id)
 
     def test_cache_purge_event(self):
         self._create_test_cache()
 
-        action_count = Action.objects.count()
+        self._clear_events()
 
         self.test_cache.purge()
 
-        self.assertEqual(Action.objects.count(), action_count + 1)
-
-        event = Action.objects.first()
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
 
         cache = Cache.objects.last()
 
-        self.assertEqual(event.verb, event_cache_purged.id)
-        self.assertEqual(event.target, cache)
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, cache)
+        self.assertEqual(events[0].target, cache)
+        self.assertEqual(events[0].verb, event_cache_purged.id)

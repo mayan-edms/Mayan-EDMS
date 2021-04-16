@@ -15,3 +15,6 @@ event_cache_edited = namespace.add_event_type(
 event_cache_purged = namespace.add_event_type(
     label=_('Cache purged'), name='cache_purged'
 )
+event_cache_partition_purged = namespace.add_event_type(
+    label=_('Cache partition purged'), name='cache_partition_purged'
+)

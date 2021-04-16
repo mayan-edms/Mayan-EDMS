@@ -3,7 +3,7 @@ import logging
 
 from django.core import validators
 from django.core.files.base import ContentFile
-from django.db import models, transaction
+from django.db import models
 from django.db.models import Sum
 from django.template.defaultfilters import filesizeformat
 from django.urls import reverse
@@ -12,14 +12,18 @@ from django.utils.functional import cached_property
 from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
+from mayan.apps.events.decorators import method_event
 from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.decorators import locked_class_method
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.apps.storage.classes import DefinedStorage
 
 from .events import (
-    event_cache_created, event_cache_edited, event_cache_purged
+    event_cache_created, event_cache_edited, event_cache_partition_purged,
+    event_cache_purged
 )
+from .literals import MAXIMUM_PRUNE_ATTEMPTS
 
 logger = logging.getLogger(name=__name__)
 
@@ -95,10 +99,31 @@ class Cache(models.Model):
         Deletes files until the total size of the cache is below the allowed
         maximum size of the cache.
         """
+        attempts = 0
         while self.get_total_size() > self.maximum_size:
-            self.get_files().earliest().delete()
+            cache_partition_file = self.get_files().earliest()
+            try:
+                cache_partition_file.delete()
+            except LockError:
+                raise
+                logger.debug(
+                    'Lock error trying to delete file "%s" for prune. '
+                    'Skipping and attempting next file.',
+                    cache_partition_file
+                )
+                attempts += 1
 
-    def purge(self, _user=None):
+                if attempts > MAXIMUM_PRUNE_ATTEMPTS:
+                    raise RuntimeError(
+                        'Too many cache prune failed attempts.'
+                    )
+
+    @method_event(
+        event=event_cache_purged,
+        event_manager_class=EventManagerMethodAfter,
+        target='self'
+    )
+    def purge(self):
         """
         Deletes the entire cache.
         """
@@ -112,24 +137,22 @@ class Cache(models.Model):
             """
         else:
             for partition in self.partitions.all():
+                partition._event_actor = getattr(self, '_event_actor', None)
                 partition.purge()
 
-            event_cache_purged.commit(actor=_user, target=self)
-
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_cache_created,
+            'target': 'self',
+        },
+        edited={
+            'event': event_cache_edited,
+            'target': 'self',
+        }
+    )
     def save(self, *args, **kwargs):
-        _user = kwargs.pop('_user', None)
-        with transaction.atomic():
-            is_new = not self.pk
-            result = super().save(*args, **kwargs)
-            if is_new:
-                event_cache_created.commit(
-                    actor=_user, target=self
-                )
-            else:
-                event_cache_edited.commit(
-                    actor=_user, target=self
-                )
-
+        result = super().save(*args, **kwargs)
         self.prune()
         return result
 
@@ -216,13 +239,20 @@ class CachePartition(models.Model):
         return self.files.get(filename=filename)
 
     def get_file_lock_name(self, filename):
-        return 'cache_partition-file-{}-{}'.format(self.pk, filename)
+        return 'cache_partition-file-{}-{}-{}'.format(
+            self.cache.pk, self.pk, filename
+        )
 
     def get_full_filename(self, filename):
         return CachePartition.get_combined_filename(
             parent=self.name, filename=filename
         )
 
+    @method_event(
+        event=event_cache_partition_purged,
+        event_manager_class=EventManagerMethodAfter,
+        target='self'
+    )
     def purge(self):
         for parition_file in self.files.all():
             parition_file.delete()
@@ -251,6 +281,12 @@ class CachePartitionFile(models.Model):
 
     def _lock_manager_get_lock_name(self, *args, **kwargs):
         return self.partition.get_file_lock_name(filename=self.filename)
+
+    @locked_class_method
+    def close(self):
+        if self._storage_object is not None:
+            self._storage_object.close()
+        self._storage_object = None
 
     @locked_class_method
     def delete(self, *args, **kwargs):
@@ -282,12 +318,6 @@ class CachePartitionFile(models.Model):
                 exc_info=True
             )
             raise
-
-    @locked_class_method
-    def close(self):
-        if self._storage_object is not None:
-            self._storage_object.close()
-        self._storage_object = None
 
     @locked_class_method
     def update_size(self):

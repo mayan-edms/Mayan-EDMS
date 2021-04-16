@@ -35,25 +35,33 @@ class CacheTestMixin:
         fs_cleanup(filename=self.temporary_directory)
         super().tearDown()
 
-    def _create_test_cache(self):
-        self.test_cache = Cache.objects.create(
-            maximum_size=TEST_CACHE_MAXIMUM_SIZE,
-            defined_storage_name=TEST_STORAGE_NAME_FILE_CACHING_TEST_STORAGE,
-        )
+    def _create_test_cache(self, extra_data=None):
+        data = {
+            'defined_storage_name': TEST_STORAGE_NAME_FILE_CACHING_TEST_STORAGE,
+            'maximum_size': TEST_CACHE_MAXIMUM_SIZE
+        }
+
+        if extra_data:
+            data.update(extra_data)
+
+        self.test_cache = Cache.objects.create(**data)
 
     def _create_test_cache_partition(self):
         self.test_cache_partition = self.test_cache.partitions.create(
             name=TEST_CACHE_PARTITION_NAME
         )
 
-    def _create_test_cache_partition_file(self):
-        with self.test_cache_partition.create_file(filename=TEST_CACHE_PARTITION_FILE_FILENAME) as file_object:
+    def _create_test_cache_partition_file(self, filename=None, file_size=None):
+        file_size = file_size or TEST_CACHE_PARTITION_FILE_SIZE
+        filename = filename or TEST_CACHE_PARTITION_FILE_FILENAME
+
+        with self.test_cache_partition.create_file(filename=filename) as file_object:
             file_object.write(
-                force_bytes(s=' ' * TEST_CACHE_PARTITION_FILE_SIZE)
+                force_bytes(s=' ' * file_size)
             )
 
         self.test_cache_partition_file = self.test_cache_partition.files.get(
-            filename=TEST_CACHE_PARTITION_FILE_FILENAME
+            filename=filename
         )
 
 
