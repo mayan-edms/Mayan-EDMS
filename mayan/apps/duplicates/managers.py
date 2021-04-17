@@ -5,6 +5,8 @@ from django.db import models
 from django.db.models import Q, Value
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.lock_manager.backends.base import LockingBackend
+from mayan.apps.lock_manager.exceptions import LockError
 
 from .classes import DuplicateBackend
 
@@ -12,57 +14,50 @@ logger = logging.getLogger(name=__name__)
 
 
 class StoredDuplicateBackendManager(models.Manager):
-    def scan_all(self):
+    def scan_document(self, document, scan_children=True, _acquire_lock=True):
         """
-        Find duplicates by iterating over all documents and all backends.
+        Find duplicates of document based on each registered backend's logic.
         """
-        Document = apps.get_model(
-            app_label='documents', model_name='Document'
-        )
+        lock_name = 'duplicates__scan_document-{}'.format(document.pk)
+        try:
+            if _acquire_lock:
+                logger.debug('trying to acquire lock: %s', lock_name)
+                lock = LockingBackend.get_instance().acquire_lock(name=lock_name)
+                logger.debug('acquired lock: %s', lock_name)
+            try:
+                if not document.file_latest:
+                    return None
 
-        for document in Document.valid.all():
-            self.scan_document(document=document, scan_children=False)
-
-    def scan_document(self, document, scan_children=True):
-        """
-        Find duplicates by matching latest file checksums
-        """
-        if not document.file_latest:
-            return None
-
-        for backend_path, backend_class in DuplicateBackend.get_all():
-            stored_backend, created = self.get_or_create(
-                backend_path=backend_path
-            )
-            duplicates = stored_backend.get_backend_instance().process(
-                document=document
-            )
-
-            if duplicates.exists():
-                duplicates_entry, created = stored_backend.duplicate_entries.get_or_create(
-                    document=document
-                )
-                """
-                Workaround for Django bug #19544
-                (https://code.djangoproject.com/ticket/19544) with
-                Postgresql. The method .add() causes a race condition.
-                The method .get_or_create() was updated to be atomic
-                (https://github.com/django/django/commit/1b331f6c1e).
-                Change the previous single .add() to a looped
-                .get_or_create to avoid the bug.
-                > duplicates_entry.documents.add(*duplicates)
-                """
-                for duplicate in duplicates:
-                    duplicates_entry.documents.through.objects.get_or_create(
-                        duplicatebackendentry_id=duplicates_entry.pk,
-                        document_id=duplicate.pk
+                for backend_path, backend_class in DuplicateBackend.get_all():
+                    stored_backend, created = self.get_or_create(
+                        backend_path=backend_path
                     )
-            else:
-                stored_backend.duplicate_entries.filter(document=document).delete()
+                    duplicates = stored_backend.get_backend_instance().process(
+                        document=document
+                    )
 
-            if scan_children:
-                for document in duplicates:
-                    self.scan_document(document=document, scan_children=False)
+                    if duplicates.exists():
+                        duplicates_entry, created = stored_backend.duplicate_entries.get_or_create(
+                            document=document
+                        )
+                        duplicates_entry.documents.add(*duplicates)
+                    else:
+                        stored_backend.duplicate_entries.filter(
+                            document=document
+                        ).delete()
+
+                    if scan_children:
+                        for document in duplicates:
+                            self.scan_document(
+                                document=document, scan_children=False,
+                                _acquire_lock=False
+                            )
+            finally:
+                if _acquire_lock:
+                    lock.release()
+        except LockError:
+            logger.debug('unable to obtain lock: %s' % lock_name)
+            raise
 
 
 class DuplicateBackendEntryManager(models.Manager):
