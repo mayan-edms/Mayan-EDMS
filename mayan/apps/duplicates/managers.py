@@ -14,16 +14,15 @@ logger = logging.getLogger(name=__name__)
 
 
 class StoredDuplicateBackendManager(models.Manager):
-    def scan_document(self, document, scan_children=True, _acquire_lock=True):
+    def scan_document(self, document, scan_children=True):
         """
         Find duplicates of document based on each registered backend's logic.
         """
         lock_name = 'duplicates__scan_document-{}'.format(document.pk)
         try:
-            if _acquire_lock:
-                logger.debug('trying to acquire lock: %s', lock_name)
-                lock = LockingBackend.get_instance().acquire_lock(name=lock_name)
-                logger.debug('acquired lock: %s', lock_name)
+            logger.debug('trying to acquire lock: %s', lock_name)
+            lock = LockingBackend.get_instance().acquire_lock(name=lock_name)
+            logger.debug('acquired lock: %s', lock_name)
             try:
                 if not document.file_latest:
                     return None
@@ -49,12 +48,10 @@ class StoredDuplicateBackendManager(models.Manager):
                     if scan_children:
                         for document in duplicates:
                             self.scan_document(
-                                document=document, scan_children=False,
-                                _acquire_lock=False
+                                document=document, scan_children=False
                             )
             finally:
-                if _acquire_lock:
-                    lock.release()
+                lock.release()
         except LockError:
             logger.debug('unable to obtain lock: %s' % lock_name)
             raise
