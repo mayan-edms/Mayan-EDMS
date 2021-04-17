@@ -5,6 +5,8 @@ from django.db import models
 from django.db.models import Q, Value
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.lock_manager.backends.base import LockingBackend
+from mayan.apps.lock_manager.exceptions import LockError
 
 from .classes import DuplicateBackend
 
@@ -12,41 +14,47 @@ logger = logging.getLogger(name=__name__)
 
 
 class StoredDuplicateBackendManager(models.Manager):
-    def scan_all(self):
-        """
-        Find duplicates by iterating over all documents and all backends.
-        """
-        Document = apps.get_model(
-            app_label='documents', model_name='Document'
-        )
-
-        for document in Document.valid.all():
-            self.scan_document(document=document, scan_children=False)
-
     def scan_document(self, document, scan_children=True):
         """
-        Find duplicates by matching latest file checksums
+        Find duplicates of document based on each registered backend's logic.
         """
-        if not document.file_latest:
-            return None
+        lock_name = 'duplicates__scan_document-{}'.format(document.pk)
+        try:
+            logger.debug('trying to acquire lock: %s', lock_name)
+            lock = LockingBackend.get_instance().acquire_lock(name=lock_name)
+            logger.debug('acquired lock: %s', lock_name)
+            try:
+                if not document.file_latest:
+                    return None
 
-        for backend_path, backend_class in DuplicateBackend.get_all():
-            stored_backend, created = self.get_or_create(
-                backend_path=backend_path
-            )
-            duplicates = stored_backend.get_backend_instance().process(document=document)
+                for backend_path, backend_class in DuplicateBackend.get_all():
+                    stored_backend, created = self.get_or_create(
+                        backend_path=backend_path
+                    )
+                    duplicates = stored_backend.get_backend_instance().process(
+                        document=document
+                    )
 
-            if duplicates.exists():
-                duplicates_entry, created = stored_backend.duplicate_entries.get_or_create(
-                    document=document
-                )
-                duplicates_entry.documents.add(*duplicates)
-            else:
-                stored_backend.duplicate_entries.filter(document=document).delete()
+                    if duplicates.exists():
+                        duplicates_entry, created = stored_backend.duplicate_entries.get_or_create(
+                            document=document
+                        )
+                        duplicates_entry.documents.add(*duplicates)
+                    else:
+                        stored_backend.duplicate_entries.filter(
+                            document=document
+                        ).delete()
 
-            if scan_children:
-                for document in duplicates:
-                    self.scan_document(document=document, scan_children=False)
+                    if scan_children:
+                        for document in duplicates:
+                            self.scan_document(
+                                document=document, scan_children=False
+                            )
+            finally:
+                lock.release()
+        except LockError:
+            logger.debug('unable to obtain lock: %s' % lock_name)
+            raise
 
 
 class DuplicateBackendEntryManager(models.Manager):

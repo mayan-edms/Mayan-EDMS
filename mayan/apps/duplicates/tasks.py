@@ -1,6 +1,7 @@
 from django.apps import apps
 
 from mayan.celery import app
+from mayan.apps.lock_manager.exceptions import LockError
 
 
 @app.task(ignore_result=True)
@@ -13,15 +14,20 @@ def task_duplicates_clean_empty_lists():
 
 @app.task(ignore_result=True)
 def task_duplicates_scan_all():
-    StoredDuplicateBackend = apps.get_model(
-        app_label='duplicates', model_name='StoredDuplicateBackend'
+    Document = apps.get_model(
+        app_label='documents', model_name='Document'
     )
 
-    StoredDuplicateBackend.objects.scan_all()
+    for document in Document.valid.all():
+        task_duplicates_scan_for.apply_async(
+            kwargs={
+                'document_id': document.pk, 'scan_children': False
+            }
+        )
 
 
-@app.task(ignore_result=True)
-def task_duplicates_scan_for(document_id):
+@app.task(bind=True, ignore_result=True)
+def task_duplicates_scan_for(self, document_id, scan_children=True):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
     )
@@ -31,4 +37,9 @@ def task_duplicates_scan_for(document_id):
 
     document = Document.objects.get(pk=document_id)
 
-    StoredDuplicateBackend.objects.scan_document(document=document)
+    try:
+        StoredDuplicateBackend.objects.scan_document(
+            document=document, scan_children=scan_children
+        )
+    except LockError as exception:
+        raise self.retry(exc=exception)
