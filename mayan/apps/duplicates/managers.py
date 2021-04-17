@@ -34,13 +34,29 @@ class StoredDuplicateBackendManager(models.Manager):
             stored_backend, created = self.get_or_create(
                 backend_path=backend_path
             )
-            duplicates = stored_backend.get_backend_instance().process(document=document)
+            duplicates = stored_backend.get_backend_instance().process(
+                document=document
+            )
 
             if duplicates.exists():
                 duplicates_entry, created = stored_backend.duplicate_entries.get_or_create(
                     document=document
                 )
-                duplicates_entry.documents.add(*duplicates)
+                """
+                Workaround for Django bug #19544
+                (https://code.djangoproject.com/ticket/19544) with
+                Postgresql. The method .add() causes a race condition.
+                The method .get_or_create() was updated to be atomic
+                (https://github.com/django/django/commit/1b331f6c1e).
+                Change the previous single .add() to a looped
+                .get_or_create to avoid the bug.
+                > duplicates_entry.documents.add(*duplicates)
+                """
+                for duplicate in duplicates:
+                    duplicates_entry.documents.through.objects.get_or_create(
+                        duplicatebackendentry_id=duplicates_entry.pk,
+                        document_id=duplicate.pk
+                    )
             else:
                 stored_backend.duplicate_entries.filter(document=document).delete()
 

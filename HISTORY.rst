@@ -332,3 +332,6 @@
   - Allow cache prune to retry on LockError.
   - Add maximum cache prune failure counter.
   - Remove possible cache file lock name collision.
+
+- Add workaround for Django bug #19544 when adding duplicated documents via
+  the many to many field.
