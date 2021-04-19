@@ -55,6 +55,14 @@ class DuplicateBackend(
             if klass is cls:
                 return path
 
+    @classmethod
+    def verify(cls, document):
+        """
+        Method to check is the document has can be scanned for duplicates.
+        Returns either a true (True or anything) or false value (False, None).
+        """
+        return True
+
     def __init__(self, model_instance_id, **kwargs):
         self.model_instance_id = model_instance_id
         self.kwargs = kwargs

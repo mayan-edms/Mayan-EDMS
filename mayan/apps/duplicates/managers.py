@@ -14,7 +14,7 @@ logger = logging.getLogger(name=__name__)
 
 
 class StoredDuplicateBackendManager(models.Manager):
-    def scan_document(self, document, scan_children=True):
+    def scan_document(self, document):
         """
         Find duplicates of document based on each registered backend's logic.
         """
@@ -24,32 +24,91 @@ class StoredDuplicateBackendManager(models.Manager):
             lock = LockingBackend.get_instance().acquire_lock(name=lock_name)
             logger.debug('acquired lock: %s', lock_name)
             try:
-                if not document.file_latest:
-                    return None
+                DuplicateBackendEntry = apps.get_model(
+                    app_label='duplicates', model_name='DuplicateBackendEntry'
+                )
 
                 for backend_path, backend_class in DuplicateBackend.get_all():
-                    stored_backend, created = self.get_or_create(
-                        backend_path=backend_path
-                    )
-                    duplicates = stored_backend.get_backend_instance().process(
-                        document=document
-                    )
+                    if backend_class.verify(document=document):
 
-                    if duplicates.exists():
-                        duplicates_entry, created = stored_backend.duplicate_entries.get_or_create(
+                        stored_backend, created = self.get_or_create(
+                            backend_path=backend_path
+                        )
+                        duplicates = stored_backend.get_backend_instance().process(
                             document=document
                         )
-                        duplicates_entry.documents.add(*duplicates)
+
+                        if duplicates.exists():
+                            duplicates_entry, created = stored_backend.duplicate_entries.get_or_create(
+                                document=document
+                            )
+                            duplicates_entry.documents.add(*duplicates)
+
+                            # Remove all many to many where the document is
+                            # a target document. This allows using bulk
+                            # create without worrying integrity errors on
+                            # the bulk create.
+                            document.as_duplicate.filter(
+                                document__in=duplicates,
+                                stored_backend=stored_backend
+                            ).delete()
+
+                            # Create empty duplicate entries for the
+                            # duplicates as source that do not have one.
+                            bulk_create_list = [
+                                DuplicateBackendEntry(
+                                    stored_backend=stored_backend,
+                                    document=duplicate,
+                                ) for duplicate in duplicates.filter(
+                                    duplicates__stored_backend=None
+                                )
+                            ]
+                            DuplicateBackendEntry.objects.bulk_create(
+                                bulk_create_list
+                            )
+
+                            # Get all duplicate entries for the duplicates as
+                            # source.
+                            duplicate_entries = stored_backend.duplicate_entries.filter(
+                                document__in=duplicates
+                            )
+
+                            # Create the many to many entries for this
+                            # document as a target.
+                            bulk_create_list = [
+                                document.as_duplicate.through(
+                                    duplicatebackendentry_id=duplicate_entry.pk,
+                                    document_id=document.pk
+                                ) for duplicate_entry in duplicate_entries
+                            ]
+
+                            document.as_duplicate.through.objects.bulk_create(
+                                bulk_create_list
+                            )
+                        else:
+                            # Document has not duplicates for this backend.
+                            # Delete any existing entry for where this
+                            # document is the source for the backend.
+                            stored_backend.duplicate_entries.filter(
+                                document=document
+                            ).delete()
+
+                            # Delete any existing entry for where this
+                            # document is a duplicate for the backend.
+                            document.as_duplicate.filter(
+                                stored_backend=stored_backend
+                            ).delete()
                     else:
+                        # Document cannot be scanned for duplicates for this
+                        # backend. Delete any existing entries for the
+                        # backend where the document is a source or target.
                         stored_backend.duplicate_entries.filter(
-                            document=document
+                            documents=document
                         ).delete()
 
-                    if scan_children:
-                        for document in duplicates:
-                            self.scan_document(
-                                document=document, scan_children=False
-                            )
+                        document.as_duplicate.filter(
+                            stored_backend=stored_backend
+                        ).delete()
             finally:
                 lock.release()
         except LockError:

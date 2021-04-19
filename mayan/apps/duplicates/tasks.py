@@ -21,13 +21,13 @@ def task_duplicates_scan_all():
     for document in Document.valid.all():
         task_duplicates_scan_for.apply_async(
             kwargs={
-                'document_id': document.pk, 'scan_children': False
+                'document_id': document.pk
             }
         )
 
 
 @app.task(bind=True, ignore_result=True)
-def task_duplicates_scan_for(self, document_id, scan_children=True):
+def task_duplicates_scan_for(self, document_id):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
     )
@@ -38,8 +38,6 @@ def task_duplicates_scan_for(self, document_id, scan_children=True):
     document = Document.objects.get(pk=document_id)
 
     try:
-        StoredDuplicateBackend.objects.scan_document(
-            document=document, scan_children=scan_children
-        )
+        StoredDuplicateBackend.objects.scan_document(document=document)
     except LockError as exception:
         raise self.retry(exc=exception)
