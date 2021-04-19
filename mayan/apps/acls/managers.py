@@ -6,7 +6,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
 from django.db import models
-from django.db.models import CharField, Value, Q
+from django.db.models import CharField, Q, Value
 from django.db.models.functions import Concat
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext
