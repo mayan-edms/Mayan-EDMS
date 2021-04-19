@@ -1,25 +1,8 @@
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..events import event_cache_partition_purged, event_cache_purged
-from ..tasks import task_cache_partition_purge, task_cache_purge
 
-from .mixins import CacheTestMixin
-
-
-class FileCachingTaskTestMixin:
-    def _execute_task_cache_partition_purge(self):
-        task_cache_partition_purge.apply_async(
-            kwargs={
-                'cache_partition_id': self.test_cache_partition.pk
-            }
-        ).get()
-
-    def _execute_task_cache_purge(self):
-        task_cache_purge.apply_async(
-            kwargs={
-                'cache_id': self.test_cache.pk
-            }
-        ).get()
+from .mixins import CacheTestMixin, FileCachingTaskTestMixin
 
 
 class FileCachingTaskTestCase(

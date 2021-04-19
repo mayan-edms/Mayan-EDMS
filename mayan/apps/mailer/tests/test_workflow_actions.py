@@ -7,9 +7,8 @@ from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.document_states.literals import WORKFLOW_ACTION_ON_ENTRY
 from mayan.apps.document_states.permissions import permission_workflow_template_edit
 from mayan.apps.document_states.tests.base import ActionTestCase
-from mayan.apps.document_states.tests.mixins import (
-    WorkflowTemplateStateActionViewTestMixin, WorkflowTemplateTestMixin
-)
+from mayan.apps.document_states.tests.mixins.workflow_template_mixins import WorkflowTemplateTestMixin
+from mayan.apps.document_states.tests.mixins.workflow_template_state_mixins import WorkflowTemplateStateActionViewTestMixin
 from mayan.apps.metadata.tests.mixins import MetadataTypeTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 

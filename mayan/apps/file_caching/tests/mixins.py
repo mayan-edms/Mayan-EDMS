@@ -4,6 +4,7 @@ from mayan.apps.storage.classes import DefinedStorage
 from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
 from ..models import Cache
+from ..tasks import task_cache_partition_purge, task_cache_purge
 
 from .literals import (
     TEST_CACHE_MAXIMUM_SIZE, TEST_CACHE_PARTITION_FILE_FILENAME,
@@ -89,3 +90,19 @@ class CacheViewTestMixin:
                 'id_list': self.test_cache.pk
             }
         )
+
+
+class FileCachingTaskTestMixin:
+    def _execute_task_cache_partition_purge(self):
+        task_cache_partition_purge.apply_async(
+            kwargs={
+                'cache_partition_id': self.test_cache_partition.pk
+            }
+        ).get()
+
+    def _execute_task_cache_purge(self):
+        task_cache_purge.apply_async(
+            kwargs={
+                'cache_id': self.test_cache.pk
+            }
+        ).get()
