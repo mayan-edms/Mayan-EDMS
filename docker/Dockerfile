@@ -2,7 +2,7 @@
 
 ####
 # base_image - Bare bones image with the base packages needed to run
-               Mayan EDMS.
+#              Mayan EDMS.
 ####
 
 FROM debian:10.8-slim as base_image
