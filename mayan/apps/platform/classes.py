@@ -205,7 +205,10 @@ class PlatformTemplateWorkerQueues(PlatformTemplate):
 
     def get_context(self):
         worker_name = self.get_variables_context().get('WORKER_NAME')
-        queues = Worker.get(name=worker_name).queues
+        try:
+            queues = Worker.get(name=worker_name).queues
+        except KeyError as exception:
+            raise KeyError('Worker name "{}" not found.'.format(worker_name))
 
         return {
             'queues': queues, 'queue_names': sorted(
