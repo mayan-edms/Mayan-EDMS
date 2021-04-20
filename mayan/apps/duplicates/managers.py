@@ -42,16 +42,17 @@ class StoredDuplicateBackendManager(models.Manager):
                             duplicates_entry, created = stored_backend.duplicate_entries.get_or_create(
                                 document=document
                             )
-                            duplicates_entry.documents.add(*duplicates)
 
-                            # Remove all many to many where the document is
-                            # a target document. This allows using bulk
-                            # create without worrying integrity errors on
-                            # the bulk create.
-                            document.as_duplicate.filter(
-                                document__in=duplicates,
-                                stored_backend=stored_backend
-                            ).delete()
+                            bulk_create_list = [
+                                duplicates_entry.documents.through(
+                                    duplicatebackendentry_id=duplicates_entry.pk,
+                                    document=duplicate
+                                ) for duplicate in duplicates
+                            ]
+
+                            duplicates_entry.documents.through.objects.bulk_create(
+                                bulk_create_list, ignore_conflicts=True
+                            )
 
                             # Create empty duplicate entries for the
                             # duplicates as source that do not have one.
@@ -63,8 +64,9 @@ class StoredDuplicateBackendManager(models.Manager):
                                     duplicates__stored_backend=None
                                 )
                             ]
+
                             DuplicateBackendEntry.objects.bulk_create(
-                                bulk_create_list
+                                bulk_create_list, ignore_conflicts=True
                             )
 
                             # Get all duplicate entries for the duplicates as
@@ -83,10 +85,10 @@ class StoredDuplicateBackendManager(models.Manager):
                             ]
 
                             document.as_duplicate.through.objects.bulk_create(
-                                bulk_create_list
+                                bulk_create_list, ignore_conflicts=True
                             )
                         else:
-                            # Document has not duplicates for this backend.
+                            # Document has no duplicates for this backend.
                             # Delete any existing entry for where this
                             # document is the source for the backend.
                             stored_backend.duplicate_entries.filter(

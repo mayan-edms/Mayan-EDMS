@@ -38,6 +38,8 @@ def task_duplicates_scan_for(self, document_id):
     document = Document.objects.get(pk=document_id)
 
     try:
-        StoredDuplicateBackend.objects.scan_document(document=document)
+        StoredDuplicateBackend.objects.scan_document(
+            document=document
+        )
     except LockError as exception:
         raise self.retry(exc=exception)

@@ -37,6 +37,11 @@ class DuplicatedDocumentModelTestCase(
                 document=self.test_documents[0]
             )
         )
+        self.assertTrue(
+            self.test_documents[0] in DuplicateBackendEntry.objects.get_duplicates_of(
+                document=self.test_documents[1]
+            )
+        )
 
     def test_double_duplicated_entry_for_a_single_document(self):
         self._upload_duplicate_document()
