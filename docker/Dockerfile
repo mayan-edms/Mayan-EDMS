@@ -187,6 +187,6 @@ RUN ${PROJECT_INSTALL_DIR}/bin/mayan-edms.py platformtemplate supervisord_docker
 # Remove temporary files owned by root from the platformtemplate step.
 && rm -f /tmp/* \
 # Keep displaying log messages to stdout
-&& find /var/log -type f | while read f; do echo -ne '' > $f; done; \
+&& find /var/log -type f | while read f; do echo -ne '' > $f; done \
 # Delete Debian package proxy used for the base image.
 && rm -f /etc/apt/apt.conf.d/01proxy
