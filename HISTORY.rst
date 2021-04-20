@@ -336,3 +336,5 @@
 - Add locking to the duplicated document scan code to workaround race
   condition in Django bug #19544 when adding duplicated documents via
   the many to many field ``.add()`` method.
+- Remove the default queue. All tasks must now be explicitly assigned to an
+  app defined queue.
