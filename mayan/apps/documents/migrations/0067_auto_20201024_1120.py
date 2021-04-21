@@ -8,9 +8,9 @@ def operation_document_file_filename_copy(apps, schema_editor):
     query_document_file = '''
         UPDATE {documents_documentfile} SET {filename} = %s WHERE {documents_documentfile}.{id} = %s;
     '''.format(
-            documents_documentfile=schema_editor.connection.ops.quote_name('documents_documentfile'),
-            filename=schema_editor.connection.ops.quote_name('filename'),
-            id=schema_editor.connection.ops.quote_name('id')
+        documents_documentfile=schema_editor.connection.ops.quote_name('documents_documentfile'),
+        filename=schema_editor.connection.ops.quote_name('filename'),
+        id=schema_editor.connection.ops.quote_name('id')
     )
 
     query = '''

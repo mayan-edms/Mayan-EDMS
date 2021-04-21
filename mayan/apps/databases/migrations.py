@@ -12,7 +12,7 @@ class RemoveIndexConditional(migrations.RemoveIndex):
             to_model_state = to_state.models[app_label, self.model_name_lower]
             try:
                 index = to_model_state.get_index_by_name(self.name)
-            except ValueError as exception:
+            except ValueError:
                 """Ignore as this is expected."""
             else:
                 schema_editor.add_index(model, index)
