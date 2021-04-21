@@ -10,7 +10,9 @@ from mayan.apps.common.menus import (
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
-from .events import event_cache_edited, event_cache_purged
+from .events import (
+    event_cache_edited, event_cache_partition_purged, event_cache_purged
+)
 from .links import (
     link_caches_list, link_cache_multiple_purge, link_cache_purge
 )
@@ -28,12 +30,17 @@ class FileCachingConfig(MayanAppConfig):
         super().ready()
 
         Cache = self.get_model(model_name='Cache')
+        CachePartition = self.get_model(model_name='CachePartition')
 
         EventModelRegistry.register(model=Cache)
+        EventModelRegistry.register(model=CachePartition)
 
         ModelEventType.register(
             event_types=(event_cache_edited, event_cache_purged,),
             model=Cache
+        )
+        ModelEventType.register(
+            event_types=(event_cache_partition_purged,), model=CachePartition
         )
 
         ModelPermission.register(

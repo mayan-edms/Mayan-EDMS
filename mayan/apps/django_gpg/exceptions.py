@@ -1,55 +1,41 @@
-__all__ = (
-    'GPGException', 'VerificationError', 'SigningError',
-    'DecryptionError', 'KeyDeleteError', 'KeyGenerationError',
-    'KeyFetchingError', 'KeyDoesNotExist', 'KeyImportError'
-)
-
-
 class GPGException(Exception):
-    pass
-
-
-class VerificationError(GPGException):
-    pass
-
-
-class SigningError(GPGException):
-    pass
+    """
+    Base app exception.
+    """
 
 
 class DecryptionError(GPGException):
-    pass
-
-
-class KeyDeleteError(GPGException):
-    pass
-
-
-class KeyGenerationError(GPGException):
-    pass
+    """
+    Raised when an error occurs while trying to decrypt and encrypted file.
+    """
 
 
 class KeyFetchingError(GPGException):
     """
-    Unable to receive key or key not found
+    Unable to receive key or key not found.
     """
 
 
 class KeyDoesNotExist(GPGException):
-    pass
-
-
-class KeyImportError(GPGException):
-    pass
+    """
+    Raised when attempting to decrypt or verify a file, and then key used to
+    encrypt or sign the file is not found.
+    """
 
 
 class NeedPassphrase(GPGException):
     """
-    Passphrase is needed but none was provided
+    A passphrase is needed but none was provided.
     """
 
 
 class PassphraseError(GPGException):
     """
-    Passphrase provided is incorrect
+    Passphrase provided is incorrect.
+    """
+
+
+class VerificationError(GPGException):
+    """
+    Raised when a file is not signed.
     """

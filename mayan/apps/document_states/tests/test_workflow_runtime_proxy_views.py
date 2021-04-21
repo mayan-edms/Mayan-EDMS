@@ -3,10 +3,10 @@ from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from ..permissions import permission_workflow_template_view
 
-from .mixins import (
-    WorkflowRuntimeProxyStateViewTestMixin,
-    WorkflowRuntimeProxyViewTestMixin, WorkflowTemplateTestMixin
+from .mixins.workflow_runtime_proxy_mixins import (
+    WorkflowRuntimeProxyStateViewTestMixin, WorkflowRuntimeProxyViewTestMixin
 )
+from .mixins.workflow_template_mixins import WorkflowTemplateTestMixin
 
 
 class WorkflowRuntimeProxyViewTestCase(

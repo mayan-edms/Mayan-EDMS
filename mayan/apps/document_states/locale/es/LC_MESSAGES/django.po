@@ -11,10 +11,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2021-04-12 03:36+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
+=======
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2020-09-27 07:04+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+>>>>>>> origin/series/3.5
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1216,11 +1223,11 @@ msgstr "Modificar propiedades del documento"
 msgid "Additional workflows to launch for the document."
 msgstr "Flujos de trabajo adicionales para iniciar para el documento."
 
-#: workflow_actions.py:116
+#: workflow_actions.py:120
 msgid "URL"
 msgstr "URL"
 
-#: workflow_actions.py:119
+#: workflow_actions.py:123
 msgid ""
 "Can be an IP address, a domain or a template. Templates receive the workflow"
 " log entry instance as part of their context via the variable \"entry_log\"."
@@ -1233,11 +1240,15 @@ msgstr ""
 "vez proporciona los atributos \"workflow_instance\", \"datetime\", "
 "\"transition\", \"user\" y \"comment\"."
 
-#: workflow_actions.py:129
+#: workflow_actions.py:133
 msgid "Timeout"
 msgstr "Tiempo de expiración"
 
+<<<<<<< HEAD
 #: workflow_actions.py:133
+=======
+#: workflow_actions.py:136
+>>>>>>> origin/series/3.5
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
@@ -1245,17 +1256,26 @@ msgstr ""
 "Tiempo en segundos para esperar una respuesta. Puede ser un valor estático o"
 " una plantilla."
 
+<<<<<<< HEAD
 #: workflow_actions.py:139
 msgid "Payload"
 msgstr "Datos a enviar"
 
 #: workflow_actions.py:142
+=======
+#: workflow_actions.py:142
+msgid "Payload"
+msgstr "Datos a enviar"
+
+#: workflow_actions.py:145
+>>>>>>> origin/series/3.5
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
 "return a JSON document. Templates receive the workflow log entry instance as"
 " part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "Un documento JSON a incluir en la solicitud. También puede ser una plantilla"
 " que devuelva un documento JSON. Las plantillas reciben la instancia de "
@@ -1269,12 +1289,22 @@ msgid "Username"
 msgstr "Nombre de usuario"
 
 #: workflow_actions.py:155
+=======
+msgstr "Un documento JSON a incluir en la solicitud. También puede ser una plantilla que devuelva un documento JSON. Las plantillas reciben la instancia de entrada del registro de flujo de trabajo como parte de su contexto a través de la variable \"entry_log\". El \"entry_log\" a su vez proporciona los atributos \"workflow_instance\", \"datetime\", \"transition\", \"user\" y \"comment\"."
+
+#: workflow_actions.py:155
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: workflow_actions.py:158
+>>>>>>> origin/series/3.5
 msgid ""
 "Username to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "Nombre de usuario que se utilizará para realizar la solicitud con HTTP Basic"
 " Auth. Puede ser un valor estático o una plantilla. Las plantillas reciben "
@@ -1288,12 +1318,22 @@ msgid "Password"
 msgstr "Contraseña"
 
 #: workflow_actions.py:168
+=======
+msgstr "Nombre de usuario que se utilizará para realizar la solicitud con HTTP Basic Auth. Puede ser un valor estático o una plantilla. Las plantillas reciben la instancia de entrada de registro de flujo de trabajo como parte de su contexto a través de la variable \"entry_log\". El \"entry_log\" a su vez proporciona los atributos \"workflow_instance\", \"datetime\", \"transition\", \"user\" y \"comment\"."
+
+#: workflow_actions.py:168
+msgid "Password"
+msgstr "Contraseña"
+
+#: workflow_actions.py:171
+>>>>>>> origin/series/3.5
 msgid ""
 "Password to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "Contraseña a utilizar para realizar la solicitud con HTTP Basic Auth. Puede "
 "ser un valor estático o una plantilla. Las plantillas reciben la instancia "
@@ -1307,6 +1347,15 @@ msgid "Method"
 msgstr "Método"
 
 #: workflow_actions.py:181
+=======
+msgstr "Contraseña a utilizar para realizar la solicitud con HTTP Basic Auth. Puede ser un valor estático o una plantilla. Las plantillas reciben la instancia de entrada de registro de flujo de trabajo como parte de su contexto a través de la variable \"entry_log\". El \"entry_log\" a su vez proporciona los atributos \"workflow_instance\", \"datetime\", \"transition\", \"user\" y \"comment\"."
+
+#: workflow_actions.py:181
+msgid "Method"
+msgstr "Método"
+
+#: workflow_actions.py:184
+>>>>>>> origin/series/3.5
 msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE. Can be a static value or a template that "
@@ -1314,6 +1363,7 @@ msgid ""
 "as part of their context via the variable \"entry_log\". The \"entry_log\" "
 "in turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "El método HTTP a utilizar para la solicitud. Las opciones típicas son "
 "OPCIONES, HEAD, POST, GET, PUT, PATCH, DELETE. Puede ser un valor estático o"
@@ -1328,12 +1378,22 @@ msgid "Headers"
 msgstr "Encabezados"
 
 #: workflow_actions.py:195
+=======
+msgstr "El método HTTP a utilizar para la solicitud. Las opciones típicas son OPCIONES, HEAD, POST, GET, PUT, PATCH, DELETE. Puede ser un valor estático o una plantilla que devuelve el texto del método. Las plantillas reciben la instancia de entrada de registro de flujo de trabajo como parte de su contexto a través de la variable \"entry_log\". El \"entry_log\" a su vez proporciona los atributos \"workflow_instance\", \"datetime\", \"transition\", \"user\" y \"comment\"."
+
+#: workflow_actions.py:195
+msgid "Headers"
+msgstr "Encabezados"
+
+#: workflow_actions.py:198
+>>>>>>> origin/series/3.5
 msgid ""
 "Headers to send with the HTTP request. Must be in JSON format. Can be a "
 "static value or a template. Templates receive the workflow log entry "
 "instance as part of their context via the variable \"entry_log\". The "
 "\"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
 "\"transition\", \"user\", and \"comment\" attributes."
+<<<<<<< HEAD
 msgstr ""
 "Encabezados para enviar con la solicitud HTTP. Debe estar en formato JSON. "
 "Puede ser un valor estático o una plantilla. Las plantillas reciben la "
@@ -1347,6 +1407,15 @@ msgid "Perform an HTTP request"
 msgstr "Realizar una solicitud HTTP"
 
 #: workflow_actions.py:238
+=======
+msgstr "Encabezados para enviar con la solicitud HTTP. Debe estar en formato JSON. Puede ser un valor estático o una plantilla. Las plantillas reciben la instancia de entrada de registro de flujo de trabajo como parte de su contexto a través de la variable \"entry_log\". El \"entry_log\" a su vez proporciona los atributos \"workflow_instance\", \"datetime\", \"transition\", \"user\" y \"comment\"."
+
+#: workflow_actions.py:212
+msgid "Perform an HTTP request"
+msgstr "Realizar una solicitud HTTP"
+
+#: workflow_actions.py:241
+>>>>>>> origin/series/3.5
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
 msgstr "Error JSON en %(field_name)s: %(exception)s"

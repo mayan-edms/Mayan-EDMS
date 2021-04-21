@@ -1,6 +1,6 @@
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
-from ..events import event_cache_purged
+from ..events import event_cache_partition_purged, event_cache_purged
 from ..permissions import (
     permission_cache_purge, permission_cache_view
 )
@@ -11,8 +11,6 @@ from .mixins import CacheTestMixin, CacheViewTestMixin
 class CacheViewTestCase(
     CacheTestMixin, CacheViewTestMixin, GenericViewTestCase
 ):
-    _test_event_object_name = 'test_cache'
-
     def test_cache_detail_view_no_permission(self):
         self._create_test_cache()
 
@@ -23,8 +21,8 @@ class CacheViewTestCase(
             response=response, text=self.test_cache.label, status_code=404
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_cache_detail_view_with_access(self):
         self._create_test_cache()
@@ -40,8 +38,8 @@ class CacheViewTestCase(
             response=response, text=self.test_cache.label, status_code=200
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_cache_list_view_with_no_permission(self):
         self._create_test_cache()
@@ -53,8 +51,8 @@ class CacheViewTestCase(
             response=response, text=self.test_cache.label, status_code=200
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_cache_list_view_with_access(self):
         self._create_test_cache()
@@ -70,8 +68,8 @@ class CacheViewTestCase(
             response=response, text=self.test_cache.label, status_code=200
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_cache_purge_view_no_permission(self):
         self._create_test_cache()
@@ -87,8 +85,8 @@ class CacheViewTestCase(
 
         self.assertEqual(cache_total_size, self.test_cache.get_total_size())
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_cache_purge_view_with_access(self):
         self._create_test_cache()
@@ -108,11 +106,18 @@ class CacheViewTestCase(
 
         self.assertNotEqual(cache_total_size, self.test_cache.get_total_size())
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.action_object, None)
-        self.assertEqual(event.target, self.test_cache)
-        self.assertEqual(event.verb, event_cache_purged.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 2)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_cache_partition)
+        self.assertEqual(events[0].verb, event_cache_partition_purged.id)
+
+        self.assertEqual(events[1].action_object, None)
+        self.assertEqual(events[1].actor, self._test_case_user)
+        self.assertEqual(events[1].target, self.test_cache)
+        self.assertEqual(events[1].verb, event_cache_purged.id)
 
     def test_cache_multiple_purge_view_no_permission(self):
         self._create_test_cache()
@@ -128,8 +133,8 @@ class CacheViewTestCase(
 
         self.assertEqual(cache_total_size, self.test_cache.get_total_size())
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_cache_multiple_purge_view_with_access(self):
         self._create_test_cache()
@@ -149,8 +154,15 @@ class CacheViewTestCase(
 
         self.assertNotEqual(cache_total_size, self.test_cache.get_total_size())
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.action_object, None)
-        self.assertEqual(event.target, self.test_cache)
-        self.assertEqual(event.verb, event_cache_purged.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 2)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_cache_partition)
+        self.assertEqual(events[0].verb, event_cache_partition_purged.id)
+
+        self.assertEqual(events[1].action_object, None)
+        self.assertEqual(events[1].actor, self._test_case_user)
+        self.assertEqual(events[1].target, self.test_cache)
+        self.assertEqual(events[1].verb, event_cache_purged.id)

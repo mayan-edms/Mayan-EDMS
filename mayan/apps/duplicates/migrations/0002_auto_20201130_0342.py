@@ -12,15 +12,21 @@ def operation_duplicated_document_old_copy(apps, schema_editor):
 
     query = '''
         SELECT DISTINCT
-            "documents_duplicateddocumentold"."document_id",
-            "documents_duplicateddocumentold_documents"."document_id"
-        FROM "documents_duplicateddocumentold"
+            {documents_duplicateddocumentold}.{document_id},
+            {documents_duplicateddocumentold_documents}.{document_id}
+        FROM {documents_duplicateddocumentold}
         LEFT OUTER JOIN
-            "documents_duplicateddocumentold_documents" ON (
-                "documents_duplicateddocumentold"."id" = "documents_duplicateddocumentold_documents"."duplicateddocumentold_id"
+            {documents_duplicateddocumentold_documents} ON (
+                {documents_duplicateddocumentold}.{id} = {documents_duplicateddocumentold_documents}.{duplicateddocumentold_id}
             )
-        ORDER BY "documents_duplicateddocumentold"."document_id" ASC
-    '''
+        ORDER BY {documents_duplicateddocumentold}.{document_id} ASC
+    '''.format(
+        documents_duplicateddocumentold=schema_editor.connection.ops.quote_name('documents_duplicateddocumentold'),
+        documents_duplicateddocumentold_documents=schema_editor.connection.ops.quote_name('documents_duplicateddocumentold_documents'),
+        document_id=schema_editor.connection.ops.quote_name('document_id'),
+        duplicateddocumentold_id=schema_editor.connection.ops.quote_name('duplicateddocumentold_id'),
+        id=schema_editor.connection.ops.quote_name('id')
+    )
     cursor_primary.execute(query)
 
     document_insert_query = '''
@@ -35,11 +41,16 @@ def operation_duplicated_document_old_copy(apps, schema_editor):
         INSERT INTO duplicates_duplicateddocument (
             document_id,datetime_added
         ) VALUES (%s,%s);
-        SELECT "duplicates_duplicateddocument"."id" FROM
-            "duplicates_duplicateddocument"
+        SELECT {duplicates_duplicateddocument}.{id} FROM
+            {duplicates_duplicateddocument}
         WHERE
-            "duplicates_duplicateddocument"."document_id" = %s;
-    '''
+            {duplicates_duplicateddocument}.{document_id} = %s;
+    '''.format(
+        document_id=schema_editor.connection.ops.quote_name('document_id'),
+        duplicates_duplicateddocument=schema_editor.connection.ops.quote_name('duplicates_duplicateddocument'),
+        id=schema_editor.connection.ops.quote_name('id')
+    )
+
     now_text = now()
 
     for row in cursor_primary.fetchall():
@@ -71,13 +82,17 @@ def operation_duplicated_document_old_copy(apps, schema_editor):
         )
 
     query = '''
-        DELETE FROM "documents_duplicateddocumentold_documents";
-    '''
+        DELETE FROM {documents_duplicateddocumentold_documents};
+    '''.format(
+        documents_duplicateddocumentold_documents=schema_editor.connection.ops.quote_name('documents_duplicateddocumentold_documents')
+    )
     cursor_secondary.execute(query)
 
     query = '''
-        DELETE FROM "documents_duplicateddocumentold";
-    '''
+        DELETE FROM {documents_duplicateddocumentold};
+    '''.format(
+        documents_duplicateddocumentold=schema_editor.connection.ops.quote_name('documents_duplicateddocumentold')
+    )
     cursor_secondary.execute(query)
 
 
@@ -90,11 +105,16 @@ def operation_duplicated_document_old_copy_reverse(apps, schema_editor):
     cursor_secondary = schema_editor.connection.cursor()
     query = '''
         SELECT
-            "duplicates_duplicateddocument"."id",
-            "duplicates_duplicateddocument"."datetime_added",
-            "duplicates_duplicateddocument"."document_id"
-        FROM "duplicates_duplicateddocument"
-    '''
+            {duplicates_duplicateddocument}.{id},
+            {duplicates_duplicateddocument}.{datetime_added},
+            {duplicates_duplicateddocument}.{document_id}
+        FROM {duplicates_duplicateddocument}
+    '''.format(
+        datetime_added=schema_editor.connection.ops.quote_name('datetime_added'),
+        document_id=schema_editor.connection.ops.quote_name('document_id'),
+        duplicates_duplicateddocument=schema_editor.connection.ops.quote_name('duplicates_duplicateddocument'),
+        id=schema_editor.connection.ops.quote_name('id')
+    )
     cursor_primary.execute(query)
 
     for row in cursor_primary.fetchall():
@@ -105,12 +125,16 @@ def operation_duplicated_document_old_copy_reverse(apps, schema_editor):
 
         query = '''
             SELECT DISTINCT
-                "duplicates_duplicateddocument_documents"."document_id"
+                {duplicates_duplicateddocument_documents}.{document_id}
             FROM
-                "duplicates_duplicateddocument_documents"
+                {duplicates_duplicateddocument_documents}
             WHERE
-                "duplicates_duplicateddocument_documents"."duplicateddocument_id" = %s
-        '''
+                {duplicates_duplicateddocument_documents}.{duplicateddocument_id} = %s
+        '''.format(
+            document_id=schema_editor.connection.ops.quote_name('document_id'),
+            duplicateddocument_id=schema_editor.connection.ops.quote_name('duplicateddocument_id'),
+            duplicates_duplicateddocument_documents=schema_editor.connection.ops.quote_name('duplicates_duplicateddocument_documents')
+        )
         cursor_secondary.execute(query, (row[0],))
         results = cursor_secondary.fetchall()
 
@@ -133,13 +157,18 @@ def operation_duplicated_document_old_copy_reverse(apps, schema_editor):
             )
 
     query = '''
-        DELETE FROM "duplicates_duplicateddocument_documents";
-    '''
+        DELETE FROM {duplicates_duplicateddocument_documents};
+    '''.format(
+        duplicates_duplicateddocument_documents=schema_editor.connection.ops.quote_name('duplicates_duplicateddocument_documents')
+    )
     cursor_secondary.execute(query)
 
     query = '''
-        DELETE FROM "duplicates_duplicateddocument";
-    '''
+        DELETE FROM {duplicates_duplicateddocument};
+    '''.format(
+        duplicates_duplicateddocument=schema_editor.connection.ops.quote_name('duplicates_duplicateddocument')
+    )
+
     cursor_secondary.execute(query)
 
 

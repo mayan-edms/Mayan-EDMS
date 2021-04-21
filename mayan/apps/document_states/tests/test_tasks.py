@@ -6,7 +6,7 @@ from ..tasks import (
     task_launch_workflow, task_launch_workflow_for
 )
 
-from .mixins import WorkflowTemplateTestMixin
+from .mixins.workflow_template_mixins import WorkflowTemplateTestMixin
 
 
 class WorkflowTaskTestCaseMixin:

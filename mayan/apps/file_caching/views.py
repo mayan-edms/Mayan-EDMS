@@ -74,7 +74,9 @@ class CachePartitionPurgeView(
         for cache_partition in self.external_object.get_cache_partitions():
             task_cache_partition_purge.apply_async(
                 kwargs={
+                    'content_type_id': self.get_content_type().pk,
                     'cache_partition_id': cache_partition.pk,
+                    'object_id': self.external_object.pk,
                     'user_id': self.request.user.pk
                 }
             )

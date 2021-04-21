@@ -7,7 +7,7 @@ from mayan.apps.testing.tests.base import BaseTestCase
 from ..exceptions import LockError
 from ..settings import setting_default_lock_timeout
 
-from .literals import TEST_LOCK_1, TEST_LOCK_LONG_NAME
+from .literals import TEST_LOCK_1
 
 
 class BaseLockBackendTestMixin:
@@ -72,12 +72,6 @@ class BaseLockBackendTestMixin:
 
         # Cleanup
         lock_2.release()
-
-    def test_long_names(self):
-        # This test always passed on SQLite
-        # https://www.sqlite.org/datatype3.html, 3.1.1. Affinity Name Examples
-        # The `name` field will be created as a text field with no size limit.
-        self.locking_backend.acquire_lock(name=TEST_LOCK_LONG_NAME)
 
     def test_purge(self):
         self.locking_backend.acquire_lock(name=TEST_LOCK_1, timeout=30)

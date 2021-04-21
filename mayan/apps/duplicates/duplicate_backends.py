@@ -8,6 +8,10 @@ from .classes import DuplicateBackend
 class DuplicateBackendFileChecksum(DuplicateBackend):
     label = _('Exact document file checksum')
 
+    @classmethod
+    def verify(cls, document):
+        return document.file_latest
+
     def process(self, document):
         Document = apps.get_model(
             app_label='documents', model_name='Document'

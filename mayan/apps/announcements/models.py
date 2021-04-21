@@ -19,7 +19,7 @@ class Announcement(ExtraDataModelMixin, models.Model):
         verbose_name=_('Label')
     )
     text = models.TextField(
-        help_text=_('The actual test to be displayed.'),
+        help_text=_('The actual text to be displayed.'),
         verbose_name=_('Text')
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))

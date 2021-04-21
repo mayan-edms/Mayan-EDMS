@@ -4,6 +4,7 @@ from mayan.apps.storage.classes import DefinedStorage
 from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
 from ..models import Cache
+from ..tasks import task_cache_partition_purge, task_cache_purge
 
 from .literals import (
     TEST_CACHE_MAXIMUM_SIZE, TEST_CACHE_PARTITION_FILE_FILENAME,
@@ -35,25 +36,33 @@ class CacheTestMixin:
         fs_cleanup(filename=self.temporary_directory)
         super().tearDown()
 
-    def _create_test_cache(self):
-        self.test_cache = Cache.objects.create(
-            maximum_size=TEST_CACHE_MAXIMUM_SIZE,
-            defined_storage_name=TEST_STORAGE_NAME_FILE_CACHING_TEST_STORAGE,
-        )
+    def _create_test_cache(self, extra_data=None):
+        data = {
+            'defined_storage_name': TEST_STORAGE_NAME_FILE_CACHING_TEST_STORAGE,
+            'maximum_size': TEST_CACHE_MAXIMUM_SIZE
+        }
+
+        if extra_data:
+            data.update(extra_data)
+
+        self.test_cache = Cache.objects.create(**data)
 
     def _create_test_cache_partition(self):
         self.test_cache_partition = self.test_cache.partitions.create(
             name=TEST_CACHE_PARTITION_NAME
         )
 
-    def _create_test_cache_partition_file(self):
-        with self.test_cache_partition.create_file(filename=TEST_CACHE_PARTITION_FILE_FILENAME) as file_object:
+    def _create_test_cache_partition_file(self, filename=None, file_size=None):
+        file_size = file_size or TEST_CACHE_PARTITION_FILE_SIZE
+        filename = filename or TEST_CACHE_PARTITION_FILE_FILENAME
+
+        with self.test_cache_partition.create_file(filename=filename) as file_object:
             file_object.write(
-                force_bytes(s=' ' * TEST_CACHE_PARTITION_FILE_SIZE)
+                force_bytes(s=' ' * file_size)
             )
 
         self.test_cache_partition_file = self.test_cache_partition.files.get(
-            filename=TEST_CACHE_PARTITION_FILE_FILENAME
+            filename=filename
         )
 
 
@@ -81,3 +90,19 @@ class CacheViewTestMixin:
                 'id_list': self.test_cache.pk
             }
         )
+
+
+class FileCachingTaskTestMixin:
+    def _execute_task_cache_partition_purge(self):
+        task_cache_partition_purge.apply_async(
+            kwargs={
+                'cache_partition_id': self.test_cache_partition.pk
+            }
+        ).get()
+
+    def _execute_task_cache_purge(self):
+        task_cache_purge.apply_async(
+            kwargs={
+                'cache_id': self.test_cache.pk
+            }
+        ).get()

@@ -19,14 +19,21 @@ def operation_document_version_page_create(apps, schema_editor):
 
     query = '''
     SELECT
-        "documents_documentfile"."document_id",
-        "documents_documentfilepage"."document_file_id",
-        "documents_documentfilepage"."id"
-    FROM "documents_documentfilepage"
-    INNER JOIN "documents_documentfile" ON (
-        "documents_documentfilepage"."document_file_id" = "documents_documentfile"."id"
-    ) ORDER BY "documents_documentfilepage"."id" ASC
-    '''
+        {documents_documentfile}.{document_id},
+        {documents_documentfilepage}.{document_file_id},
+        {documents_documentfilepage}.{id}
+    FROM {documents_documentfilepage}
+    INNER JOIN {documents_documentfile} ON (
+        {documents_documentfilepage}.{document_file_id} = {documents_documentfile}.{id}
+    ) ORDER BY {documents_documentfilepage}.{id} ASC
+    '''.format(
+        documents_documentfile=schema_editor.connection.ops.quote_name('documents_documentfile'),
+        document_id=schema_editor.connection.ops.quote_name('document_id'),
+        documents_documentfilepage=schema_editor.connection.ops.quote_name('documents_documentfilepage'),
+        document_file_id=schema_editor.connection.ops.quote_name('document_file_id'),
+        id=schema_editor.connection.ops.quote_name('id')
+    )
+
     cursor_main.execute(query)
 
     class DummyDocumentVersion:

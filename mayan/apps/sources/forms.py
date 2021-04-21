@@ -84,7 +84,9 @@ class WebFormUploadFormHTML5(WebFormUploadForm):
 
 
 class SaneScannerUploadForm(UploadBaseForm):
-    pass
+    """
+    Same as the parent form. This is just to provide a different class.
+    """
 
 
 class SaneScannerSetupForm(forms.ModelForm):

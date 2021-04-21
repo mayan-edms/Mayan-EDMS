@@ -43,7 +43,9 @@ class Source(models.Model):
         return force_text(s=dict(SOURCE_CHOICES).get(cls.source_type))
 
     def clean_up_upload_file(self, upload_file_object):
-        pass
+        """
+        Optional method. Non fatal if not defined.
+        """
 
     def fullname(self):
         return ' '.join([self.class_fullname(), '"%s"' % self.label])
@@ -93,14 +95,16 @@ class Source(models.Model):
         return documents
 
     def get_upload_file_object(self, form_data):
-        pass
+        """
+        Optional method. Non fatal if not defined.
+        """
 
     def upload_document(
         self, file_object, document_type, description=None, label=None,
         language=None, querystring=None, user=None
     ):
         """
-        Upload an individual document
+        Upload an individual document.
         """
         document = None
         try:

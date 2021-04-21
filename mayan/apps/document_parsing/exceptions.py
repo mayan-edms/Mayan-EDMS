@@ -1,6 +1,4 @@
-
 class ParserError(Exception):
     """
-    Base exception for file parsers
+    Base exception for file parsers.
     """
-    pass

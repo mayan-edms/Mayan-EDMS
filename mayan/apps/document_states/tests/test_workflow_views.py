@@ -13,11 +13,11 @@ from ..permissions import (
 )
 
 from .literals import TEST_WORKFLOW_TEMPLATE_LABEL
-from .mixins import (
+from .mixins.workflow_instance_mixins import DocumentWorkflowTemplateViewTestMixin
+from .mixins.workflow_template_mixins import (
     DocumentTypeAddRemoveWorkflowTemplateViewTestMixin,
-    DocumentWorkflowTemplateViewTestMixin, WorkflowTemplateTestMixin,
-    WorkflowTemplateDocumentTypeViewTestMixin, WorkflowTemplateViewTestMixin,
-    WorkflowToolViewTestMixin
+    WorkflowTemplateDocumentTypeViewTestMixin, WorkflowTemplateTestMixin,
+    WorkflowTemplateViewTestMixin, WorkflowToolViewTestMixin
 )
 
 

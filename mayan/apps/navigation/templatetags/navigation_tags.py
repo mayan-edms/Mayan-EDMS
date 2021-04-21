@@ -23,14 +23,17 @@ def navigation_get_source_columns(
             # Is iterable?
             source = source[0]
         except TypeError:
-            # It is not an iterable
-            pass
+            """
+            It is not an iterable.
+            """
         except IndexError:
-            # It a list and it's empty
-            pass
+            """
+            Its a list and it's empty.
+            """
         except KeyError:
-            # It a list and it's empty
-            pass
+            """
+            Its a list and it's empty.
+            """
 
     return SourceColumn.get_for_source(
         source=source, exclude_identifier=exclude_identifier,

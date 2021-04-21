@@ -321,3 +321,20 @@
   - sphinx-sitemap to 2.2.0.
   - sphinxcontrib-spelling to 7.1.0.
   - tornado to 6.1.
+
+- Fix sub workflow launch state action.
+- Convert the workflow instance creation to a background task.
+- File caching app updates
+
+  - Add cache partition purge event.
+  - Use new event decorator.
+  - Use related object as the cache partition purge event action object.
+  - Allow cache prune to retry on LockError.
+  - Add maximum cache prune failure counter.
+  - Remove possible cache file lock name collision.
+
+- Add locking to the duplicated document scan code to workaround race
+  condition in Django bug #19544 when adding duplicated documents via
+  the many to many field ``.add()`` method.
+- Remove the default queue. All tasks must now be explicitly assigned to an
+  app defined queue.

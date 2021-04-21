@@ -5,10 +5,11 @@ from ..permissions import (
     permission_workflow_instance_transition, permission_workflow_template_view
 )
 
-from .mixins import (
-    WorkflowTemplateTestMixin, WorkflowTemplateViewTestMixin, WorkflowInstanceViewTestMixin,
-    WorkflowTransitionFieldTestMixin
+from .mixins.workflow_instance_mixins import WorkflowInstanceViewTestMixin
+from .mixins.workflow_template_mixins import (
+    WorkflowTemplateTestMixin, WorkflowTemplateViewTestMixin
 )
+from .mixins.workflow_template_transition_mixins import WorkflowTransitionFieldTestMixin
 
 
 class WorkflowInstanceTransitionViewTestCase(

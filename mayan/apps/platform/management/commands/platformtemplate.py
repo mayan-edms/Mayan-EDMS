@@ -22,14 +22,29 @@ class Command(management.BaseCommand):
         if options.get('list'):
             self.stdout.write('\nAvailable platform templates.')
             self.stdout.write('----')
+
+            maximum_name_length = max(
+                [
+                    len(template_class.name) for template_class in PlatformTemplate.all()
+                ]
+            )
+
+            space_padding = maximum_name_length + 2
+
             for template_class in PlatformTemplate.all():
                 template = template_class()
                 self.stdout.write(
-                    '* {}\t{}'.format(template.name, template.get_label())
+                    '* {:<{}}{}'.format(
+                        template.name, space_padding, template.get_label()
+                    )
                 )
 
             self.stdout.write('\n')
         else:
+            if not options['name']:
+                self.stderr.write('Missing template name.')
+                exit(1)
+
             try:
                 template = PlatformTemplate.get(name=options['name'])
             except KeyError:

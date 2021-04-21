@@ -8,11 +8,13 @@ from ..permissions import (
 )
 
 from .literals import TEST_WORKFLOW_TEMPLATE_TRANSITION_LABEL
-from .mixins import (
-    WorkflowInstanceViewTestMixin, WorkflowTemplateTestMixin,
+from .mixins.workflow_instance_mixins import WorkflowInstanceViewTestMixin
+from .mixins.workflow_template_mixins import (
+    WorkflowTemplateTestMixin, WorkflowTemplateViewTestMixin
+)
+from .mixins.workflow_template_transition_mixins import (
     WorkflowTransitionEventViewTestMixin, WorkflowTransitionFieldTestMixin,
-    WorkflowTransitionFieldViewTestMixin, WorkflowTransitionViewTestMixin,
-    WorkflowTemplateViewTestMixin
+    WorkflowTransitionFieldViewTestMixin, WorkflowTransitionViewTestMixin
 )
 
 

@@ -6,7 +6,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
 from django.db import models
-from django.db.models import CharField, Value, Q
+from django.db.models import CharField, Q, Value
 from django.db.models.functions import Concat
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext
@@ -162,7 +162,9 @@ class AccessControlListManager(models.Manager):
                     )
                 )
             except KeyError:
-                pass
+                """
+                Does not have inheritance entries. Proceed to next case.
+                """
             else:
                 relation_result = []
 
@@ -305,7 +307,9 @@ class AccessControlListManager(models.Manager):
                 model=type(obj)
             )
         except KeyError:
-            """Does not have inheritance to other models."""
+            """
+            Does not have inheritance to other models.
+            """
         else:
             for related_field in related_fields:
                 try:

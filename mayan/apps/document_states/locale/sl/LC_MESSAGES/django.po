@@ -11,10 +11,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2021-04-12 03:36+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2021\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
+=======
+"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"PO-Revision-Date: 2020-12-25 11:15+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
+"Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
+>>>>>>> origin/series/3.5
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1124,11 +1131,11 @@ msgstr ""
 msgid "Additional workflows to launch for the document."
 msgstr ""
 
-#: workflow_actions.py:116
+#: workflow_actions.py:120
 msgid "URL"
 msgstr ""
 
-#: workflow_actions.py:119
+#: workflow_actions.py:123
 msgid ""
 "Can be an IP address, a domain or a template. Templates receive the workflow"
 " log entry instance as part of their context via the variable \"entry_log\"."
@@ -1136,21 +1143,33 @@ msgid ""
 " \"transition\", \"user\", and \"comment\" attributes."
 msgstr ""
 
-#: workflow_actions.py:129
+#: workflow_actions.py:133
 msgid "Timeout"
 msgstr ""
 
+<<<<<<< HEAD
 #: workflow_actions.py:133
+=======
+#: workflow_actions.py:136
+>>>>>>> origin/series/3.5
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
 msgstr ""
 
+<<<<<<< HEAD
 #: workflow_actions.py:139
+=======
+#: workflow_actions.py:142
+>>>>>>> origin/series/3.5
 msgid "Payload"
 msgstr ""
 
+<<<<<<< HEAD
 #: workflow_actions.py:142
+=======
+#: workflow_actions.py:145
+>>>>>>> origin/series/3.5
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
 "return a JSON document. Templates receive the workflow log entry instance as"
@@ -1159,11 +1178,19 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr ""
 
+<<<<<<< HEAD
 #: workflow_actions.py:152
+=======
+#: workflow_actions.py:155
+>>>>>>> origin/series/3.5
 msgid "Username"
 msgstr ""
 
+<<<<<<< HEAD
 #: workflow_actions.py:155
+=======
+#: workflow_actions.py:158
+>>>>>>> origin/series/3.5
 msgid ""
 "Username to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
@@ -1172,11 +1199,19 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr ""
 
+<<<<<<< HEAD
 #: workflow_actions.py:165
+=======
+#: workflow_actions.py:168
+>>>>>>> origin/series/3.5
 msgid "Password"
 msgstr ""
 
+<<<<<<< HEAD
 #: workflow_actions.py:168
+=======
+#: workflow_actions.py:171
+>>>>>>> origin/series/3.5
 msgid ""
 "Password to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
@@ -1185,11 +1220,19 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr ""
 
+<<<<<<< HEAD
 #: workflow_actions.py:178
+=======
+#: workflow_actions.py:181
+>>>>>>> origin/series/3.5
 msgid "Method"
 msgstr ""
 
+<<<<<<< HEAD
 #: workflow_actions.py:181
+=======
+#: workflow_actions.py:184
+>>>>>>> origin/series/3.5
 msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE. Can be a static value or a template that "
@@ -1199,11 +1242,19 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr ""
 
+<<<<<<< HEAD
 #: workflow_actions.py:192
+=======
+#: workflow_actions.py:195
+>>>>>>> origin/series/3.5
 msgid "Headers"
 msgstr ""
 
+<<<<<<< HEAD
 #: workflow_actions.py:195
+=======
+#: workflow_actions.py:198
+>>>>>>> origin/series/3.5
 msgid ""
 "Headers to send with the HTTP request. Must be in JSON format. Can be a "
 "static value or a template. Templates receive the workflow log entry "
@@ -1212,11 +1263,19 @@ msgid ""
 "\"transition\", \"user\", and \"comment\" attributes."
 msgstr ""
 
+<<<<<<< HEAD
 #: workflow_actions.py:209
+=======
+#: workflow_actions.py:212
+>>>>>>> origin/series/3.5
 msgid "Perform an HTTP request"
 msgstr ""
 
+<<<<<<< HEAD
 #: workflow_actions.py:238
+=======
+#: workflow_actions.py:241
+>>>>>>> origin/series/3.5
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
 msgstr ""

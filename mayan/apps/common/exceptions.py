@@ -2,7 +2,6 @@ class BaseCommonException(Exception):
     """
     Base exception for the common app
     """
-    pass
 
 
 class ResolverError(Exception):

@@ -406,8 +406,9 @@ class Menu:
                             break
 
                 except TypeError:
-                    # When source is a dictionary
-                    pass
+                    """
+                    Normal when source is a dictionary. Non fatal.
+                    """
 
             # Remove duplicated resolved link by using their source link
             # instance as reference. The actual resolved link can't be used

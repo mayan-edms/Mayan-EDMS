@@ -9,28 +9,47 @@ from django.utils.module_loading import import_string
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
+from ..literals import COMMENT_APP_TEMPLATE_CACHE_DISABLE
+
 app_templates_cache = {}
 register = Library()
 
 
 @register.simple_tag(takes_context=True)
 def appearance_app_templates(context, template_name):
+    """
+    Fetch the app templates for the requested `template_name`, render it with
+    the current `request` from the `context`, and cache it for future use
+    unless the template has the no caching comment.
+    """
     result = []
 
     for app in apps.get_app_configs():
         template_id = '{}.{}'.format(app.label, template_name)
         if template_id not in app_templates_cache or settings.DEBUG:
             try:
-                app_templates_cache[template_id] = get_template(
+                app_template = get_template(
                     '{}/app/{}.html'.format(app.label, template_name)
-                ).render(request=context.get('request'))
+                )
+                app_template_output = app_template.render(
+                    request=context.get('request')
+                )
+
+                if COMMENT_APP_TEMPLATE_CACHE_DISABLE not in app_template.template.source:
+                    app_templates_cache[template_id] = app_template_output
             except TemplateDoesNotExist:
-                """Non fatal"""
+                """
+                Non fatal just means that the app did not defined an app
+                template of this name and purpose.
+                """
                 app_templates_cache[template_id] = ''
+                app_template_output = ''
+        else:
+            app_template_output = app_templates_cache[template_id]
 
-        result.append(app_templates_cache[template_id])
+        result.append(app_template_output)
 
-    return mark_safe('\n'.join(result))
+    return mark_safe(' '.join(result))
 
 
 @register.filter

@@ -14,21 +14,31 @@ def code_remap_document_version_pages_ocr_content(apps, schema_editor):
 
     query = '''
         SELECT
-            "ocr_documentpageocrcontent"."content",
-            "documents_documentversionpage"."id"
-        FROM "ocr_documentpageocrcontent"
+            {ocr_documentpageocrcontent}.{content},
+            {documents_documentversionpage}.{id}
+        FROM {ocr_documentpageocrcontent}
         LEFT OUTER JOIN
-            "documents_documentversionpage" ON (
-                "documents_documentversionpage"."object_id" = "ocr_documentpageocrcontent"."document_page_id"
+            {documents_documentversionpage} ON (
+                {documents_documentversionpage}.{object_id} = {ocr_documentpageocrcontent}.{document_page_id}
             )
-    '''
+    '''.format(
+        content=schema_editor.connection.ops.quote_name('content'),
+        document_page_id=schema_editor.connection.ops.quote_name('document_page_id'),
+        documents_documentversionpage=schema_editor.connection.ops.quote_name('documents_documentversionpage'),
+        id=schema_editor.connection.ops.quote_name('id'),
+        object_id=schema_editor.connection.ops.quote_name('object_id'),
+        ocr_documentpageocrcontent=schema_editor.connection.ops.quote_name('ocr_documentpageocrcontent')
+    )
+
     cursor_primary.execute(query)
 
     insert_query = '''
-        INSERT INTO "ocr_documentversionpageocrcontent" (
+        INSERT INTO {ocr_documentversionpageocrcontent} (
             content,document_version_page_id
-        ) VALUES {};
-    '''
+        ) VALUES {{}};
+    '''.format(
+        ocr_documentversionpageocrcontent=schema_editor.connection.ops.quote_name('ocr_documentversionpageocrcontent')
+    )
 
     FETCH_SIZE = 10000
 

@@ -449,6 +449,9 @@ and the context of the workflow instance is also available.
 The state and transition options when using the API are also limited to valid
 ones as it is done when using the user interface.
 
+The workflow instance creation is now a background task. This speeds up
+launching new workflows and the initial processing of new documents.
+
 
 Other
 ^^^^^

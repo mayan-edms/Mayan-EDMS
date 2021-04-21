@@ -1,5 +1,8 @@
 # Use this file to set environment variables for the running containers
 
+# To change how the docker-compose file is interpreted use the .env file
+# instead.
+
 # To use block storage.
 # MAYAN_PIP_INSTALLS="django-storages==1.10 boto3==1.14.58"
 # MAYAN_DOCUMENTS_STORAGE_BACKEND="storages.backends.s3boto3.S3Boto3Storage"

@@ -10,7 +10,7 @@ from ..links import (
 )
 from ..permissions import permission_workflow_template_view
 
-from .mixins import WorkflowTemplateTestMixin
+from .mixins.workflow_template_mixins import WorkflowTemplateTestMixin
 
 
 class WorkflowRuntimeProxyLinkTestCase(

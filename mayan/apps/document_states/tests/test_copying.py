@@ -2,7 +2,8 @@ from mayan.apps.common.tests.mixins import ObjectCopyTestMixin
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 
-from .mixins import WorkflowTemplateStateActionTestMixin, WorkflowTemplateTestMixin
+from .mixins.workflow_template_mixins import WorkflowTemplateTestMixin
+from .mixins.workflow_template_state_mixins import WorkflowTemplateStateActionTestMixin
 
 
 class WorkflowTemplateCopyTestCase(

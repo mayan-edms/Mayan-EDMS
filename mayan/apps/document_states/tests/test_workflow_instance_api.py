@@ -11,9 +11,8 @@ from ..permissions import (
 )
 
 from .literals import TEST_WORKFLOW_INSTANCE_LOG_ENTRY_EXTRA_DATA
-from .mixins import (
-    WorkflowInstanceAPIViewTestMixin, WorkflowTemplateTestMixin
-)
+from .mixins.workflow_instance_mixins import WorkflowInstanceAPIViewTestMixin
+from .mixins.workflow_template_mixins import WorkflowTemplateTestMixin
 
 
 class WorkflowInstaceAPIViewTestCase(

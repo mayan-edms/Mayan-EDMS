@@ -4,6 +4,7 @@ from mayan.apps.converter.permissions import (
 )
 from mayan.apps.converter.tests.mixins import LayerTestMixin
 from mayan.apps.documents.tests.literals import TEST_MULTI_PAGE_TIFF
+from mayan.apps.file_caching.events import event_cache_partition_purged
 from mayan.apps.file_caching.models import CachePartitionFile
 from mayan.apps.file_caching.permissions import permission_cache_partition_purge
 from mayan.apps.file_caching.tests.mixins import CachePartitionViewTestMixin
@@ -695,6 +696,8 @@ class DocumentFileCachePurgeViewTestCase(
 
         self._clear_events()
 
+        cache_partitions = self.test_document_file.get_cache_partitions()
+
         response = self._request_test_object_file_cache_partition_purge_view()
         self.assertEqual(response.status_code, 302)
 
@@ -705,4 +708,14 @@ class DocumentFileCachePurgeViewTestCase(
         )
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 2)
+
+        self.assertEqual(events[0].action_object, self.test_document_file)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, cache_partitions[0])
+        self.assertEqual(events[0].verb, event_cache_partition_purged.id)
+
+        self.assertEqual(events[1].action_object, self.test_document_file)
+        self.assertEqual(events[1].actor, self._test_case_user)
+        self.assertEqual(events[1].target, cache_partitions[1])
+        self.assertEqual(events[1].verb, event_cache_partition_purged.id)
