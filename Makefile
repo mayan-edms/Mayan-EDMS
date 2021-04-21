@@ -61,94 +61,76 @@ test-all-migrations: ARGUMENTS=--no-exclude --tag=migration
 test-all-migrations: SKIPMIGRATIONS=
 test-all-migrations: clean-pyc _test-command
 
-test-launch-postgres:
-	@docker rm -f test-postgres || true
-	@docker volume rm test-postgres || true
-	@docker run -d --name test-postgres -p 5432:5432 -e POSTGRES_HOST_AUTH_METHOD=trust -v test-postgres:/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
-	@echo "* Installing libpq-dev client"
-	@sudo apt-get install -qq libpq-dev
-	@echo "* Installing Python client"
-	@pip install psycopg2==$(PYTHON_PSYCOPG2_VERSION)
-	sleep 2
-	while ! nc -z 127.0.0.1 5432; do sleep 1; done
-
-test-with-postgres: ## MODULE=<python module name> - Run tests for a single app, module or test class against a PostgreSQL database container.
-test-with-postgres: test-launch-postgres
-	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_postgres --skip-migrations
-	@docker rm -f test-postgres || true
-	@docker volume rm test-postgres || true
-
-test-with-postgres-all: ## Run all tests against a PostgreSQL database container.
-test-with-postgres-all: test-launch-postgres
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_postgres --skip-migrations
-	@docker rm -f test-postgres || true
-	@docker volume rm test-postgres || true
-
-test-with-postgres-all-migrations: ## Run all migration tests against a PostgreSQL database container.
-test-with-postgres-all-migrations: test-launch-postgres
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_postgres --no-exclude --tag=migration
-	@docker rm -f test-postgres || true
-	@docker volume rm test-postgres || true
-
-test-launch-mysql:
-	@docker rm -f test-mysql || true
-	@docker volume rm test-mysql || true
-	@docker run -d --name test-mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan -v test-mysql:/var/lib/mysql $(DOCKER_MYSQL_IMAGE_VERSION)
-	@echo "* Installing MySQL client"
-	@sudo apt-get install -qq libmysqlclient-dev mysql-client
-	@echo "* Installing Python client"
-	@pip install mysqlclient==$(PYTHON_MYSQL_VERSION) > /dev/null
-	@echo -n "* Waiting for server"
-	@while ! mysql -h 127.0.0.1 --user=root --execute "SHOW DATABASES;" > /dev/null 2>&1; do echo -n .;sleep 2; done
-	@echo
-	@mysql -h 127.0.0.1 -P 3306 -uroot  -e "set global character_set_server=utf8mb4;"
-
 test-with-mysql: ## MODULE=<python module name> - Run tests for a single app, module or test class against a MySQL database container.
-test-with-mysql: test-launch-mysql
-	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_mysql --skip-migrations
-	@docker rm -f test-mysql || true
-	@docker volume rm test-mysql || true
+test-with-mysql:
+	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
+	./manage.py test $(MODULE) --settings=mayan.settings.testing --skip-migrations
+	@docker rm --force mayan-test-mysql || true
+	@docker volume rm mayan-test-mysql || true
 
 test-with-mysql-all: ## Run all tests against a MySQL database container.
-test-with-mysql-all: test-launch-mysql
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_mysql --skip-migrations
-	@docker rm -f test-mysql || true
-	@docker volume rm test-mysql || true
+test-with-mysql-all:
+	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
+	./manage.py test --mayan-apps --settings=mayan.settings.testing --skip-migrations
+	@docker rm --force mayan-test-mysql || true
+	@docker volume rm mayan-test-mysql || true
 
 test-with-mysql-all-migrations: ## Run all migration tests against a MySQL database container.
-test-with-mysql-all-migrations: test-launch-mysql
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_mysql --no-exclude --tag=migration
-	@docker rm -f test-mysql || true
-	@docker volume rm test-mysql || true
+test-with-mysql-all-migrations:
+	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
+	./manage.py test --mayan-apps --settings=mayan.settings.testing --no-exclude --tag=migration
+	@docker rm --force mayan-test-mysql || true
+	@docker volume rm mayan-test-mysql || true
 
-test-launch-oracle:
-	@docker rm -f test-oracle || true
-	@docker volume rm test-oracle || true
-	docker run -d --name test-oracle -p 49160:22 -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true -v test-oracle:/u01/app/oracle $(DOCKER_ORACLE_IMAGE_VERSION)
-	# https://gist.github.com/kimus/10012910
-	pip install cx_Oracle==$(PYTHON_ORACLE_VERSION)
-	sleep 10
-	while ! nc -z 127.0.0.1 49161; do sleep 1; done
+test-with-oracle: ## MODULE=<python module name> - Run tests for a single app, module or test class against an Oracle database container.
+test-with-oracle:
+	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.oracle','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
+	./manage.py test $(MODULE) --settings=mayan.settings.testing --skip-migrations
+	@docker rm --force mayan-test-oracle || true
+	@docker volume rm mayan-test-oracle || true
 
-test-with-oracle: ## MODULE=<python module name> - Run tests for a single app, module or test class against a Oracle database container.
-test-with-oracle: test-launch-oracle
-	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_oracle --skip-migrations
-	@docker rm -f test-oracle || true
-	@docker volume rm test-oracle || true
+test-with-oracle-all: ## Run all tests against an Oracle database container.
+test-with-oracle-all:
+	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.oracle','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
+	./manage.py test --mayan-apps --settings=mayan.settings.testing --skip-migrations
+	@docker rm --force mayan-test-oracle || true
+	@docker volume rm mayan-test-oracle || true
 
-test-with-oracle-all: ## Run all tests against a Oracle database container.
-test-with-oracle-all: test-launch-oracle
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_oracle --skip-migrations
-	@docker rm -f test-oracle || true
-	@docker volume rm test-oracle || true
+test-with-oracle-all-migrations: ## Run all migration tests against an Oracle database container.
+test-with-oracle-all-migrations:
+	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.oracle','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
+	./manage.py test --mayan-apps --settings=mayan.settings.testing --no-exclude --tag=migration
+	@docker rm --force mayan-test-oracle || true
+	@docker volume rm mayan-test-oracle || true
+
+test-with-postgres: ## MODULE=<python module name> - Run tests for a single app, module or test class against a PostgreSQL database container.
+test-with-postgres:
+	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
+	./manage.py test $(MODULE) --settings=mayan.settings.testing --skip-migrations
+	@docker rm --force mayan-test-postgres || true
+	@docker volume rm mayan-test-postgres || true
+
+test-with-postgres-all: ## Run all tests against a PostgreSQL database container.
+test-with-postgres-all:
+	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
+	./manage.py test --mayan-apps --settings=mayan.settings.testing --skip-migrations
+	@docker rm --force mayan-test-postgres || true
+	@docker volume rm mayan-test-postgres || true
+
+test-with-postgres-all-migrations: ## Run all migration tests against a PostgreSQL database container.
+test-with-postgres-all-migrations:
+	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
+	./manage.py test --mayan-apps --settings=mayan.settings.testing --no-exclude --tag=migration
+	@docker rm --force mayan-test-postgres || true
+	@docker volume rm mayan-test-postgres || true
 
 gitlab-ci-run: ## Execute a GitLab CI job locally
 gitlab-ci-run:
 	if [ -z $(GITLAB_CI_JOB) ]; then echo "Specify the job to execute using GITLAB_CI_JOB."; exit 1; fi; \
-	docker rm -f gitlab-runner || true
-	docker run -d --name gitlab-runner --restart no -v $$PWD:$$PWD -v /var/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner:latest
+	docker rm --force gitlab-runner || true
+	docker run --detach --name gitlab-runner --restart no -v $$PWD:$$PWD -v /var/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner:latest
 	docker exec -it -w $$PWD gitlab-runner gitlab-runner exec docker --docker-privileged --docker-volumes /var/run/docker.sock:/var/run/docker.sock --docker-volumes $$PWD/gitlab-ci-volume:/builds $(GITLAB_CI_JOB)
-	docker rm -f gitlab-runner || true
+	docker rm --force gitlab-runner || true
 
 # Coverage
 
@@ -377,9 +359,11 @@ manage: ## Run a command with the development settings.
 	./manage.py $(filter-out $@,$(MAKECMDGOALS)) --settings=mayan.settings.development
 
 manage-docker-mysql: ## Run the development server using a Docker PostgreSQL container.
-	./manage.py $(filter-out $@,$(MAKECMDGOALS)) --settings=mayan.settings.development.docker.db_mysql
+	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
+	./manage.py $(filter-out $@,$(MAKECMDGOALS)) --settings=mayan.settings.development
 
 manage-docker-postgres: ## Run the development server using a Docker PostgreSQL container.
+	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
 	./manage.py $(filter-out $@,$(MAKECMDGOALS)) --settings=mayan.settings.development.docker.db_postgres
 
 runserver: ## Run the development server.
@@ -393,8 +377,8 @@ shell_plus: ## Run the shell_plus command.
 
 staging-start: ## Launch and initialize production-like services using Docker (Postgres and Redis).
 staging-start: staging-stop
-	docker run -d --name redis -p 6379:6379 $(DOCKER_REDIS_IMAGE_VERSION)
-	docker run -d --name postgres -p 5432:5432 -e POSTGRES_DB=mayan-staging -e POSTGRES_PASSWORD=mayan-staging -e POSTGRES_USER=mayan-staging $(DOCKER_POSTGRES_IMAGE_VERSION)
+	docker run --detach --name redis -p 6379:6379 $(DOCKER_REDIS_IMAGE_VERSION)
+	docker run --detach --name postgres -p 5432:5432 -e POSTGRES_DB=mayan-staging -e POSTGRES_PASSWORD=mayan-staging -e POSTGRES_USER=mayan-staging $(DOCKER_POSTGRES_IMAGE_VERSION)
 	while ! nc -z 127.0.0.1 6379; do sleep 1; done
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
 	sleep 4
@@ -412,20 +396,44 @@ staging-worker: ## Launch a worker instance that uses the production-like servic
 	DJANGO_SETTINGS_MODULE=mayan.settings.staging.docker ./manage.py celery worker -A mayan -B -l INFO -O fair
 
 docker-mysql-on: ## Launch and initialize a MySQL Docker container.
-	docker run -d --name mysql -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -e MYSQL_DATABASE=mayan_edms $(DOCKER_MYSQL_IMAGE_VERSION)
-	while ! nc -z 127.0.0.1 3306; do sleep 1; done
+	@docker rm --force mayan-test-mysql || true
+	@docker volume rm mayan-test-mysql || true
+	@docker run --detach --name mayan-test-mysql -p 3306:3306 -e MYSQL_RANDOM_ROOT_PASSWORD=true -e MYSQL_USER=$(DEFAULT_DATABASE_USER) -e MYSQL_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) -e MYSQL_DATABASE=$(DEFAULT_DATABASE_NAME) -v mayan-test-mysql:/var/lib/mysql $(DOCKER_MYSQL_IMAGE_VERSION) --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+	@while ! mysql -h 127.0.0.1 --user=$(DEFAULT_DATABASE_USER) --password=$(DEFAULT_DATABASE_PASSWORD) --execute "SHOW TABLES;" $(DEFAULT_DATABASE_NAME)> /dev/null 2>&1; do echo -n .;sleep 2; done
 
 docker-mysql-off: ## Stop and delete the MySQL Docker container.
-	docker stop mysql
-	docker rm mysql
+	docker rm --force mayan-test-mysql
+	@docker volume rm mayan-test-mysql || true
+
+docker-mysql-backup:
+	mysqldump --host=127.0.0.1 --no-tablespaces --user=$(DEFAULT_DATABASE_USER) --password=$(DEFAULT_DATABASE_PASSWORD) $(DEFAULT_DATABASE_NAME) > mayan-docker-mysql-backup.sql
+
+docker-mysql-restore:
+	@mysql --host=127.0.0.1 --user=$(DEFAULT_DATABASE_USER) --password=$(DEFAULT_DATABASE_PASSWORD) $(DEFAULT_DATABASE_NAME) < mayan-docker-mysql-backup.sql
+
+docker-oracle-on: ## Launch and initialize an Oracle Docker container.
+docker-oracle-on:
+	@docker rm --force mayan-test-oracle || true
+	@docker volume rm mayan-test-oracle || true
+	docker run --detach --name mayan-test-oracle -p 49160:22 -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true -v mayan-test-oracle:/u01/app/oracle $(DOCKER_ORACLE_IMAGE_VERSION)
+	# https://gist.github.com/kimus/10012910
+	pip install cx_Oracle==$(PYTHON_ORACLE_VERSION)
+	sleep 10
+	while ! nc -z 127.0.0.1 49161; do echo -n .; sleep 2; done
+
+docker-oracle-off:
+	@docker rm --force mayan-test-oracle || true
+	@docker volume rm mayan-test-oracle || true
 
 docker-postgres-on: ## Launch and initialize a PostgreSQL Docker container.
-	docker run -d --name postgres -e=POSTGRES_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) -p 5432:5432 $(DOCKER_POSTGRES_IMAGE_VERSION)
-	while ! nc -z 127.0.0.1 5432; do sleep 1; done
+	@docker rm --force mayan-test-postgresql || true
+	@docker volume rm mayan-test-postgresql || true
+	@docker run --detach --name mayan-test-postgresql -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_USER=$(DEFAULT_DATABASE_USER) -e=POSTGRES_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) -e POSTGRES_DB=$(DEFAULT_DATABASE_NAME) -p 5432:5432 -v mayan-test-postgresql:/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
+	@while ! nc -z 127.0.0.1 5432; do echo -n .; sleep 2; done
 
 docker-postgres-off: ## Stop and delete the PostgreSQL Docker container.
-	docker stop postgres
-	docker rm postgres
+	@docker rm --force mayan-test-postgresql
+	@docker volume rm mayan-test-postgresql || true
 
 # Security
 
@@ -439,7 +447,7 @@ find-gitignores: ## Find stray .gitignore files.
 	if [ $${FIND_GITIGNORES} -gt 1 ] ;then echo "More than one .gitignore found: $$FIND_GITIGNORES"; fi
 
 python-build:
-	docker rm -f mayan-edms-build || true && \
+	docker rm --force mayan-edms-build || true && \
 	docker run --rm --name mayan-edms-build -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source $(DOCKER_PYTHON_IMAGE_VERSION) sh -c "\
 	rm /host_source/dist -R || true && \
 	mkdir /host_source/dist || true && \
