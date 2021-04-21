@@ -22,6 +22,7 @@ class Migration(migrations.Migration):
         ),
         migrations.RunPython(
             code=code_delete_document_version_page_ocr_errors,
+            reverse_code=migrations.RunPython.noop
         ),
         migrations.AlterField(
             model_name='documentversionocrerror',
