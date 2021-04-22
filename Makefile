@@ -420,6 +420,7 @@ staging-start: staging-stop
 	docker run --detach --name $(STAGING_REDIS_CONTAINER_NAME) -p 6379:6379 $(DOCKER_REDIS_IMAGE_VERSION)
 	@while ! psql --command "\l" --dbname=$(DEFAULT_DATABASE_NAME) --host=127.0.0.1 --username=$(DEFAULT_DATABASE_USER) >/dev/null 2>&1; do echo -n .;sleep 2; done
 	while ! nc -z 127.0.0.1 6379; do sleep 1; done
+	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
 	./manage.py initialsetup --settings=mayan.settings.staging.docker
 
 staging-stop: ## Stop and delete the Docker production-like services.
@@ -427,9 +428,11 @@ staging-stop: ## Stop and delete the Docker production-like services.
 	@docker stop $(STAGING_REDIS_CONTAINER_NAME) || true >/dev/null 2>&1
 
 staging-frontend: ## Launch a front end instance that uses the production-like services.
+	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
 	./manage.py runserver --settings=mayan.settings.staging.docker
 
 staging-worker: ## Launch a worker instance that uses the production-like services.
+	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
 	DJANGO_SETTINGS_MODULE=mayan.settings.staging.docker ./manage.py celery worker -A mayan -B -l INFO -O fair
 
 # Security
