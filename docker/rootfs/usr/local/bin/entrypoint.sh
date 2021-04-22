@@ -93,12 +93,6 @@ make_ready() {
     fi
 }
 
-run_all() {
-    echo "mayan: start()"
-    rm -rf /var/run/supervisor.sock
-    exec /usr/bin/supervisord -nc /etc/supervisor/supervisord.conf
-}
-
 os_package_installs() {
     echo "mayan: os_package_installs()"
     if [ "${MAYAN_APT_INSTALLS}" ]; then
@@ -145,7 +139,7 @@ case "$1" in
 
 run_all)
     make_ready
-    run_all
+    run_all.sh
     ;;
 
 run_celery)
