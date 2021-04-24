@@ -351,15 +351,15 @@ manage: ## Run a command with the development settings.
 	./manage.py $(filter-out $@,$(MAKECMDGOALS)) --settings=mayan.settings.development
 
 manage-with-mysql: ## Run the development server using a Docker PostgreSQL container.
-	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
+	@export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
 	./manage.py $(filter-out $@,$(MAKECMDGOALS)) --settings=mayan.settings.development
 
 manage-with-oracle: ## Run the development server using a Docker Oracle container.
-	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.oracle','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
+	@export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.oracle','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
 	./manage.py $(filter-out $@,$(MAKECMDGOALS)) --settings=mayan.settings.development
 
 manage-with-postgresql: ## Run the development server using a Docker PostgreSQL container.
-	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
+	@export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
 	./manage.py $(filter-out $@,$(MAKECMDGOALS)) --settings=mayan.settings.development
 
 runserver: ## Run the development server.
@@ -383,14 +383,14 @@ docker-mysql-stop: ## Stop and delete the MySQL Docker container.
 	@docker volume rm $(TEST_MYSQL_CONTAINER_NAME) >/dev/null 2>&1 || true
 
 docker-mysql-backup:
-	mysqldump --host=127.0.0.1 --no-tablespaces --user=$(DEFAULT_DATABASE_USER) --password=$(DEFAULT_DATABASE_PASSWORD) $(DEFAULT_DATABASE_NAME) > mayan-docker-mysql-backup.sql
+	@mysqldump --host=127.0.0.1 --no-tablespaces --user=$(DEFAULT_DATABASE_USER) --password=$(DEFAULT_DATABASE_PASSWORD) $(DEFAULT_DATABASE_NAME) > mayan-docker-mysql-backup.sql
 
 docker-mysql-restore:
 	@mysql --host=127.0.0.1 --user=$(DEFAULT_DATABASE_USER) --password=$(DEFAULT_DATABASE_PASSWORD) $(DEFAULT_DATABASE_NAME) < mayan-docker-mysql-backup.sql
 
 docker-oracle-start: ## Launch and initialize an Oracle Docker container.
 docker-oracle-start:
-	docker run --detach --name $(TEST_ORACLE_CONTAINER_NAME) -p 49160:22 -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true -v $(TEST_ORACLE_CONTAINER_NAME):/u01/app/oracle $(DOCKER_ORACLE_IMAGE_VERSION)
+	@docker run --detach --name $(TEST_ORACLE_CONTAINER_NAME) -p 49160:22 -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true -v $(TEST_ORACLE_CONTAINER_NAME):/u01/app/oracle $(DOCKER_ORACLE_IMAGE_VERSION)
 	@sleep 10
 	@while ! nc -z 127.0.0.1 49161; do echo -n .; sleep 2; done
 
@@ -416,8 +416,8 @@ docker-postgresql-restore:
 
 staging-start: ## Launch and initialize production-like services using Docker (PostgreSQL and Redis).
 staging-start: staging-stop
-	docker run --detach --name $(STAGING_POSTGRESQL_CONTAINER_NAME) -p 5432:5432 -e POSTGRES_DB=$(DEFAULT_DATABASE_NAME) -e POSTGRES_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) -e POSTGRES_USER=$(DEFAULT_DATABASE_USER) $(DOCKER_POSTGRES_IMAGE_VERSION)
-	docker run --detach --name $(STAGING_REDIS_CONTAINER_NAME) -p 6379:6379 $(DOCKER_REDIS_IMAGE_VERSION)
+	@docker run --detach --name $(STAGING_POSTGRESQL_CONTAINER_NAME) -p 5432:5432 -e POSTGRES_DB=$(DEFAULT_DATABASE_NAME) -e POSTGRES_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) -e POSTGRES_USER=$(DEFAULT_DATABASE_USER) $(DOCKER_POSTGRES_IMAGE_VERSION)
+	@docker run --detach --name $(STAGING_REDIS_CONTAINER_NAME) -p 6379:6379 $(DOCKER_REDIS_IMAGE_VERSION)
 	@while ! psql --command "\l" --dbname=$(DEFAULT_DATABASE_NAME) --host=127.0.0.1 --username=$(DEFAULT_DATABASE_USER) >/dev/null 2>&1; do echo -n .;sleep 2; done
 	while ! nc -z 127.0.0.1 6379; do sleep 1; done
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
