@@ -8,16 +8,16 @@
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2021
 # Yves Dubois <ydubois@gmail.com>, 2021
-# Frédéric Sheedy <sheedf@gmail.com>, 2021
 # Guillaume Trottier <gui.trottier@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,8 +30,8 @@ msgid "Document parsing"
 msgstr "Analyse de document"
 
 #: apps.py:105
-msgid "A generator returning the document's pages parsed content."
-msgstr "Un générateur renvoyant le contenu analysé des pages du document."
+msgid "A generator returning the document file's pages parsed content."
+msgstr ""
 
 #: apps.py:106 links.py:21 links.py:43 models.py:24 search.py:10
 msgid "Content"
@@ -43,10 +43,9 @@ msgstr "Résultat"
 
 #: dependencies.py:9
 msgid ""
-"Utility from the poppler-utils package used to text content from PDF files."
+"Utility from the poppler-utils package used to extract content from PDF "
+"files."
 msgstr ""
-"Utilitaire du paquet poppler-utils, utilisé pour générer du contenu au "
-"format texte provenant de fichiers PDF."
 
 #: events.py:10
 msgid "Document parsed content deleted"
@@ -54,11 +53,11 @@ msgstr "Le contenu du document analysé a été supprimé."
 
 #: events.py:14
 msgid "Document file submitted for parsing"
-msgstr ""
+msgstr "Fichier de document soumis pour analyse"
 
 #: events.py:17
 msgid "Document file parsing finished"
-msgstr ""
+msgstr "Analyse du fichier de document terminée"
 
 #: forms.py:37
 #, python-format
@@ -105,11 +104,11 @@ msgstr ""
 
 #: models.py:30
 msgid "Document file page content"
-msgstr ""
+msgstr "Contenu de la page du fichier de document"
 
 #: models.py:31
 msgid "Document file page contents"
-msgstr ""
+msgstr "Contenus de la page du fichier de document"
 
 #: models.py:43
 msgid "Document type"
@@ -131,7 +130,7 @@ msgstr "Paramétrages de types de documents"
 
 #: models.py:69
 msgid "Document file"
-msgstr ""
+msgstr "Fichier"
 
 #: models.py:72
 msgid "Date time submitted"
@@ -139,11 +138,11 @@ msgstr "Date et heure de soumission"
 
 #: models.py:78
 msgid "Document file parse error"
-msgstr ""
+msgstr "Erreur d'analyse du fichier de document"
 
 #: models.py:79
 msgid "Document file parse errors"
-msgstr ""
+msgstr "Erreurs d'analyse de fichier de document"
 
 #: parsers.py:90
 #, python-format
@@ -157,27 +156,27 @@ msgstr "Impossible de trouver l'exécutable pdftotext dans : %s"
 
 #: permissions.py:10
 msgid "View the content of a document file"
-msgstr ""
+msgstr "Afficher le contenu d'un fichier de document"
 
 #: permissions.py:13
 msgid "Parse the content of a document file"
-msgstr ""
+msgstr "Analyser le contenu d'un fichier de document"
 
 #: permissions.py:16
 msgid "Change document type parsing settings"
 msgstr "Modifier les paramètres d'analyse du type de document"
 
-#: queues.py:6
+#: queues.py:7
 msgid "Parsing"
 msgstr "Analyse"
 
-#: queues.py:9
+#: queues.py:12
 msgid "Document file parsing"
-msgstr ""
+msgstr "Analyse de fichier de document"
 
 #: search.py:16 search.py:23
 msgid "Document file content"
-msgstr ""
+msgstr "Contenu du fichier de document"
 
 #: settings.py:15
 msgid "Set new document types to perform parsing automatically by default."
@@ -196,45 +195,48 @@ msgstr ""
 #: views.py:39
 msgid "Delete the parsed content of the selected document file?"
 msgid_plural "Delete the parsed content of the selected document files?"
-msgstr[0] ""
+msgstr[0] "Supprimer le contenu analysé du fichier de document sélectionné?"
 msgstr[1] ""
+"Supprimer le contenu analysé des fichiers de document sélectionnés?"
 
 #: views.py:85
 #, python-format
 msgid "Content for document file: %s"
-msgstr ""
+msgstr "Contenu du document: %s"
 
 #: views.py:106
 #, python-format
 msgid "Content for document file page: %s"
-msgstr ""
+msgstr "Contenu de la page: %s"
 
 #: views.py:128
 #, python-format
 msgid "Parsing errors for document file: %s"
-msgstr ""
+msgstr "Erreurs d'analyse pour le document: %s"
 
 #: views.py:141
 #, python-format
 msgid "%(count)d document file added to the parsing queue"
-msgstr ""
+msgstr "%(count)d document ajouté à la file d'analyse"
 
 #: views.py:144
 #, python-format
 msgid "%(count)d documents files added to the parsing queue"
-msgstr ""
+msgstr "%(count)d documents ajoutés à la file d'analyse"
 
 #: views.py:152
 #, python-format
 msgid "Submit %(count)d document file to the parsing queue?"
 msgid_plural "Submit %(count)d documents files to the parsing queue?"
 msgstr[0] ""
-msgstr[1] ""
+"Soumettre le fichier de document %(count)d à la file d&#39;attente "
+"d&#39;analyse?"
+msgstr[1] "Ajouter %(count)d documents dans la file d'analyse?"
 
 #: views.py:165
 #, python-format
 msgid "Submit document file \"%s\" to the parsing queue"
-msgstr ""
+msgstr "Soumettez le document \"%s\" à la file d'analyse"
 
 #: views.py:192
 #, python-format

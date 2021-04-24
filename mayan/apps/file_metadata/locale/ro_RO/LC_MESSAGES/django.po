@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Harald Ersch, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -127,7 +127,7 @@ msgstr "Setările pentru tipurile de documente"
 
 #: models.py:74
 msgid "Document file"
-msgstr ""
+msgstr "Fișier document"
 
 #: models.py:80 models.py:95
 msgid "Document file driver entry"

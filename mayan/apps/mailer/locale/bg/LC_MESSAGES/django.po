@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -36,7 +36,7 @@ msgstr "Изпращане"
 
 #: events.py:8
 msgid "Email sent"
-msgstr "Имейлът е изпратен"
+msgstr "Електронното съобщение е изпратено"
 
 #: forms.py:60 forms.py:120
 msgid ""
@@ -64,11 +64,11 @@ msgstr "Профилът на имейла, който ще се използв�
 
 #: forms.py:71 models.py:55 views.py:212 workflow_actions.py:18
 msgid "Mailing profile"
-msgstr "Профил за изпращане на имейл"
+msgstr "Профил за изпращане на електронно съобщение"
 
 #: forms.py:77
 msgid "The driver to use when sending emails."
-msgstr "Драйверът, който се използва при изпращане на имейл."
+msgstr "Драйверът, който се използва при изпращане на електронни съобщения."
 
 #: forms.py:78 models.py:69
 msgid "Backend"
@@ -331,8 +331,8 @@ msgstr "Шаблон за реда \"Относно\" за формуляр на
 #: settings.py:33
 msgid "Template for the document link email form body text. Can include HTML."
 msgstr ""
-"Шаблон за основния текст за формуляра на имейл от връзка в документа Може да"
-" включва HTML."
+"Шаблон за основния текст за формуляра на имейл от връзка в документа. Може "
+"да включва HTML."
 
 #: validators.py:12
 #, python-format
@@ -423,7 +423,7 @@ msgstr ""
 
 #: workflow_actions.py:36
 msgid "CC"
-msgstr ""
+msgstr "Копие за"
 
 #: workflow_actions.py:39 workflow_actions.py:51
 msgid ""
@@ -431,14 +431,17 @@ msgid ""
 "addresses separated by comma or semicolon. A template can be used to "
 "reference properties of the document."
 msgstr ""
+"Адрес, използван в заглавката &quot;Второ копие&quot; при изпращане на "
+"имейла. Може да бъде множество адреси, разделени със запетая или точка и "
+"запетая. Може да се използва шаблон за препращане към свойства на документа."
 
 #: workflow_actions.py:48
 msgid "BCC"
-msgstr ""
+msgstr "Второ копие"
 
 #: workflow_actions.py:60
 msgid "Reply to"
-msgstr ""
+msgstr "Отговор на"
 
 #: workflow_actions.py:63
 msgid ""
@@ -446,6 +449,9 @@ msgid ""
 "multiple addresses separated by comma or semicolon. A template can be used "
 "to reference properties of the document."
 msgstr ""
+"Адрес, използван в заглавката „Отговор на“ при изпращане на имейла. Може да "
+"бъде множество адреси, разделени със запетая или точка и запетая. Може да се"
+" използва шаблон за препращане към свойства на документа."
 
 #: workflow_actions.py:75
 msgid "Subject of the email. Can be a string or a template."
@@ -457,11 +463,11 @@ msgstr "Тяло на имейла за изпращане. Може да бъд
 
 #: workflow_actions.py:90
 msgid "Attachment"
-msgstr ""
+msgstr "Прикачен файл"
 
 #: workflow_actions.py:93
 msgid "Attach the document to the mail."
-msgstr ""
+msgstr "Прикачете документа към пощата."
 
 #: workflow_actions.py:102
 msgid "Send email"

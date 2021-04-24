@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -218,7 +218,7 @@ msgstr "Това ниво на шкафа е празно"
 #: views.py:123
 #, python-format
 msgid "Details of cabinet: %s"
-msgstr "Подробности за шкафа: %s"
+msgstr "Данни за шкафа: %s"
 
 #: views.py:141
 #, python-format
@@ -240,32 +240,32 @@ msgstr "Няма налични шкафове"
 #: views.py:180
 #, python-format
 msgid "Document \"%(object)s\" added to cabinets successfully."
-msgstr ""
+msgstr "Документът &quot;%(object)s&quot; беше добавен към шкафовете успешно."
 
 #: views.py:183
 #, python-format
 msgid "%(count)d document added to cabinets successfully."
-msgstr ""
+msgstr "%(count)d документ е добавен към шкафовете успешно."
 
 #: views.py:186
 #, python-format
 msgid "%(count)d documents added to cabinets successfully."
-msgstr ""
+msgstr "%(count)d документи са добавени към шкафовете успешно."
 
 #: views.py:188
 #, python-format
 msgid "Add document \"%(object)s\" to cabinets."
-msgstr ""
+msgstr "Добавете документ &quot;%(object)s&quot; към шкафовете."
 
 #: views.py:189
 #, python-format
 msgid "Add %(count)d document to cabinets."
-msgstr ""
+msgstr "Добавете %(count)d документ към шкафовете."
 
 #: views.py:190
 #, python-format
 msgid "Add %(count)d documents to cabinets."
-msgstr ""
+msgstr "Добавете %(count)d документи към шкафовете."
 
 #: views.py:194
 msgid "Add"
@@ -291,32 +291,32 @@ msgstr "Шкафове, съдържащи документ: %s"
 #: views.py:278
 #, python-format
 msgid "Document \"%(object)s\" removed from cabinets successfully."
-msgstr ""
+msgstr "Документът &quot;%(object)s&quot; бе премахнат от шкафовете успешно."
 
 #: views.py:281
 #, python-format
 msgid "%(count)d document removed from cabinets successfully."
-msgstr ""
+msgstr "%(count)d документ бе премахнат от шкафовете успешно."
 
 #: views.py:284
 #, python-format
 msgid "%(count)d documents removed from cabinets successfully."
-msgstr ""
+msgstr "%(count)d документи бяха премахнати успешно от шкафовете."
 
 #: views.py:286
 #, python-format
 msgid "Remove document \"%(object)s\" from cabinets."
-msgstr ""
+msgstr "Извадете документ &quot;%(object)s&quot; от шкафовете."
 
 #: views.py:287
 #, python-format
 msgid "Remove %(count)d document from cabinets."
-msgstr ""
+msgstr "Извадете документ %(count)d от шкафовете."
 
 #: views.py:288
 #, python-format
 msgid "Remove %(count)d documents from cabinets."
-msgstr ""
+msgstr "Извадете %(count)d документи от шкафовете."
 
 #: views.py:292
 msgid "Remove"

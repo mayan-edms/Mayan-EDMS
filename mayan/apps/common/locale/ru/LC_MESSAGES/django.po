@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -103,7 +103,7 @@ msgstr "Магазин"
 msgid "Get support"
 msgstr "Получить поддержку"
 
-#: links.py:68 queues.py:9 views.py:122
+#: links.py:68 queues.py:6 views.py:122
 msgid "Tools"
 msgstr "Инструменты"
 
@@ -163,10 +163,6 @@ msgstr "Пользователь"
 #: permissions.py:8
 msgid "Copy object"
 msgstr "Копировать объект"
-
-#: queues.py:7
-msgid "Default"
-msgstr "По умолчанию"
 
 #: settings.py:22
 msgid ""

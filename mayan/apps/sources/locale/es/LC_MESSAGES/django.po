@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -230,49 +230,49 @@ msgstr "Habilitado"
 msgid "Source"
 msgstr "Fuente"
 
-#: models/base.py:138
+#: models/base.py:142
 msgid "Interactive source"
 msgstr "Fuente interactiva"
 
-#: models/base.py:139
+#: models/base.py:143
 msgid "Interactive sources"
 msgstr "Fuentes interactivas"
 
-#: models/base.py:148 models/base.py:149
+#: models/base.py:152 models/base.py:153
 msgid "Out of process"
 msgstr "Fuera de proceso"
 
-#: models/base.py:155
+#: models/base.py:159
 msgid "Interval in seconds between checks for new documents."
 msgstr "Intérvalo en segundos para detectar documentos nuevos"
 
-#: models/base.py:156
+#: models/base.py:160
 msgid "Interval"
 msgstr "Intérvalo"
 
-#: models/base.py:160
+#: models/base.py:164
 msgid "Assign a document type to documents uploaded from this source."
 msgstr ""
 "Asignar un tipo de documento a los documentos subidos desde esta fuente"
 
-#: models/base.py:162 serializers.py:17
+#: models/base.py:166 serializers.py:17
 msgid "Document type"
 msgstr "Tipo de documento"
 
-#: models/base.py:166
+#: models/base.py:170
 msgid "Whether to expand or not, compressed archives."
 msgstr "Expandir o no archivos comprimidos."
 
-#: models/base.py:167 models/staging_folder_sources.py:54
+#: models/base.py:171 models/staging_folder_sources.py:54
 #: models/webform_sources.py:33
 msgid "Uncompress"
 msgstr "Descomprimir"
 
-#: models/base.py:173
+#: models/base.py:177
 msgid "Interval source"
 msgstr "Fuente de intervalo"
 
-#: models/base.py:174
+#: models/base.py:178
 msgid "Interval sources"
 msgstr "Fuentes de intervalo"
 

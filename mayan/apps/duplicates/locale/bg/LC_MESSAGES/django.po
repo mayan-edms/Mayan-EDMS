@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -20,59 +20,59 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:30 apps.py:56 links.py:14
+#: apps.py:30 apps.py:56 links.py:14 queues.py:9
 msgid "Duplicates"
 msgstr "Дубликати"
 
 #: apps.py:62
 msgid "Duplicate backend"
-msgstr ""
+msgstr "Дублиран бекенд"
 
-#: classes.py:83
+#: classes.py:91
 msgid "Null backend"
 msgstr "Нулев бекенд"
 
 #: duplicate_backends.py:9
 msgid "Exact document file checksum"
-msgstr ""
+msgstr "Точна контролна сума на файла с документи"
 
-#: duplicate_backends.py:28
+#: duplicate_backends.py:32
 msgid "Exact document label"
-msgstr ""
+msgstr "Точен етикет на документа"
 
-#: links.py:18 models.py:40 views.py:77
+#: links.py:18 models.py:41 views.py:77
 msgid "Duplicated documents"
 msgstr "Дублирани документи"
 
-#: links.py:24 queues.py:13
+#: links.py:24 queues.py:19
 msgid "Duplicated document scan"
 msgstr "Дублирано сканиране на документи"
 
 #: models.py:23 models.py:33
 msgid "Stored duplicate backend"
-msgstr ""
+msgstr "Съхранен дублиран бекенд"
 
 #: models.py:24
 msgid "Stored duplicate backends"
-msgstr ""
+msgstr "Съхранени дублирани бекенди"
 
 #: models.py:37
 msgid "Document"
 msgstr "Документ"
 
-#: models.py:47
+#: models.py:49
 msgid "Duplicated backend entry"
-msgstr ""
+msgstr "Запис на дублиран бекенд"
 
-#: models.py:48
+#: models.py:50
 msgid "Duplicated backend entries"
-msgstr ""
+msgstr "Записи на дублирани бекенди"
 
-#: queues.py:8
+#: queues.py:14
 msgid "Clean empty duplicate lists"
 msgstr "Изчистване на празни дублиращи се списъци"
 
-#: queues.py:18
+#: queues.py:24
 msgid "Scan document duplicates"
 msgstr "Дублирания на сканове на документи"
 

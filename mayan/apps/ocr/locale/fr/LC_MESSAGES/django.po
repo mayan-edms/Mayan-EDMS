@@ -8,13 +8,14 @@
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
 # Olivier W, 2021
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2021
 # Frédéric Sheedy <sheedf@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -63,17 +64,17 @@ msgstr "Contenu OCR du document supprimé"
 
 #: events.py:12
 msgid "Document file submitted for OCR"
-msgstr ""
+msgstr "Fichier de document soumis pour la reconnaissance de caractères."
 
 #: events.py:16
 msgid "Document file OCR finished"
-msgstr ""
+msgstr "Reconnaissance de caractères terminée pour le document "
 
-#: forms.py:14 forms.py:45
+#: forms.py:14 forms.py:47
 msgid "Contents"
 msgstr "Contenus"
 
-#: forms.py:74
+#: forms.py:78
 #, python-format
 msgid "Page %(page_number)d"
 msgstr "Page %(page_number)d"
@@ -138,7 +139,7 @@ msgstr "Erreurs OCR sur la version du document"
 
 #: models.py:67
 msgid "Document version page"
-msgstr ""
+msgstr "Page de version du document"
 
 #: models.py:71
 msgid "The actual text content extracted by the OCR backend."
@@ -170,7 +171,7 @@ msgstr "Modifier les paramétrages OCR du type de document"
 
 #: queues.py:10
 msgid "Finish document file OCR"
-msgstr ""
+msgstr "Terminer l'analyse OCR pour le document "
 
 #: queues.py:14
 msgid "Document file page OCR"
@@ -195,8 +196,10 @@ msgstr "Chemin complet du logiciel OCR utilisé."
 #: views.py:39
 msgid "Delete the OCR content of the selected document version?"
 msgid_plural "Delete the OCR content of the selected document versions?"
-msgstr[0] ""
+msgstr[0] "Supprimer le contenu OCR de la version de document sélectionnée?"
 msgstr[1] ""
+"Supprimer le contenu de la reconnaissance de caractères pour la version "
+"sélectionnée du document?"
 
 #: views.py:74
 #, python-format
@@ -256,4 +259,4 @@ msgstr ""
 
 #: workflow_actions.py:43
 msgid "Update document page OCR content"
-msgstr ""
+msgstr "Mettre à jour le contenu OCR de la page de document"

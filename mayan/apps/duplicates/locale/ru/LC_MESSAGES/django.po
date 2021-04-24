@@ -5,16 +5,16 @@
 # Translators:
 # Translators:
 # lilo.panic, 2021
-# Ilya Pavlov <spirkaa@gmail.com>, 2021
 # Alex Chigrin <chalex84@mail.ru>, 2021
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
-"Last-Translator: Alex Chigrin <chalex84@mail.ru>, 2021\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,59 +22,59 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:30 apps.py:56 links.py:14
+#: apps.py:30 apps.py:56 links.py:14 queues.py:9
 msgid "Duplicates"
 msgstr "Дубликаты"
 
 #: apps.py:62
 msgid "Duplicate backend"
-msgstr ""
+msgstr "Бэкэнд дубликатов"
 
-#: classes.py:83
+#: classes.py:91
 msgid "Null backend"
 msgstr "Пустой бэкэнд"
 
 #: duplicate_backends.py:9
 msgid "Exact document file checksum"
-msgstr ""
+msgstr "Точная контрольная сумма файла документа"
 
-#: duplicate_backends.py:28
+#: duplicate_backends.py:32
 msgid "Exact document label"
-msgstr ""
+msgstr "Точный заголовок документа"
 
-#: links.py:18 models.py:40 views.py:77
+#: links.py:18 models.py:41 views.py:77
 msgid "Duplicated documents"
 msgstr "Дубликаты документов"
 
-#: links.py:24 queues.py:13
+#: links.py:24 queues.py:19
 msgid "Duplicated document scan"
 msgstr "Поиск дубликатов документов"
 
 #: models.py:23 models.py:33
 msgid "Stored duplicate backend"
-msgstr ""
+msgstr "Сохраненный бэкэнд дубликата"
 
 #: models.py:24
 msgid "Stored duplicate backends"
-msgstr ""
+msgstr "Сохраненные бэкэнды дубликата"
 
 #: models.py:37
 msgid "Document"
 msgstr "Документ"
 
-#: models.py:47
+#: models.py:49
 msgid "Duplicated backend entry"
-msgstr ""
+msgstr "Дубликат"
 
-#: models.py:48
+#: models.py:50
 msgid "Duplicated backend entries"
-msgstr ""
+msgstr "Дубликаты"
 
-#: queues.py:8
+#: queues.py:14
 msgid "Clean empty duplicate lists"
 msgstr "Очистить пустые повторяющиеся списки"
 
-#: queues.py:18
+#: queues.py:24
 msgid "Scan document duplicates"
 msgstr "Поиск дубликатов документов"
 

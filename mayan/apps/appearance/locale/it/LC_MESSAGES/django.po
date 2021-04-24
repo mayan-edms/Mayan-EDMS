@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Andrea Evangelisti <Andrea.Evangelisti@gmail.com>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -473,7 +473,7 @@ msgstr "Errore di comunicazione del Server"
 msgid "Check you network connection and try again in a few moments."
 msgstr "Controlla la connessione di rete e riprova"
 
-#: templatetags/appearance_tags.py:43
+#: templatetags/appearance_tags.py:62
 msgid "None"
 msgstr "Nessuno"
 

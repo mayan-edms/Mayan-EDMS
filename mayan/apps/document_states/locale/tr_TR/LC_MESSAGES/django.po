@@ -13,17 +13,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2021\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
-=======
-"POT-Creation-Date: 2021-04-14 23:03+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
->>>>>>> origin/series/3.5
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,7 +24,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:72 events.py:6 forms.py:42 links.py:46 links.py:87 links.py:240
-#: links.py:264 models/workflow_models.py:64 settings.py:14
+#: links.py:264 models/workflow_models.py:65 settings.py:14
 #: views/workflow_proxy_views.py:64 views/workflow_template_views.py:261
 #: workflow_actions.py:74
 msgid "Workflows"
@@ -160,7 +153,7 @@ msgstr ""
 msgid "Namespace"
 msgstr "Alanadı"
 
-#: forms.py:135 models/workflow_models.py:51
+#: forms.py:135 models/workflow_models.py:52
 #: models/workflow_state_models.py:55 models/workflow_state_models.py:172
 #: models/workflow_transition_models.py:40
 #: models/workflow_transition_models.py:150
@@ -202,7 +195,7 @@ msgstr "İş akışı oluştur"
 msgid "Delete"
 msgstr "Sil"
 
-#: links.py:69 models/workflow_models.py:55
+#: links.py:69 models/workflow_models.py:56
 msgid "Document types"
 msgstr "Belge türleri"
 
@@ -294,7 +287,7 @@ msgstr ""
 msgid "On exit"
 msgstr ""
 
-#: models/workflow_instance_models.py:29 models/workflow_models.py:63
+#: models/workflow_instance_models.py:29 models/workflow_models.py:64
 #: models/workflow_state_models.py:51 models/workflow_transition_models.py:36
 msgid "Workflow"
 msgstr "İş Akışı"
@@ -340,37 +333,37 @@ msgstr "İş akışı örneği günlük girdileri"
 msgid "Not a valid transition choice."
 msgstr ""
 
-#: models/workflow_models.py:39
+#: models/workflow_models.py:40
 msgid "Launch workflow when document is created."
 msgstr ""
 
-#: models/workflow_models.py:40
+#: models/workflow_models.py:41
 msgid "Auto launch"
 msgstr ""
 
-#: models/workflow_models.py:44
+#: models/workflow_models.py:45
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
 msgstr ""
 
-#: models/workflow_models.py:47 models/workflow_transition_models.py:145
+#: models/workflow_models.py:48 models/workflow_transition_models.py:145
 msgid "Internal name"
 msgstr "Dahili adı"
 
-#: models/workflow_models.py:50
+#: models/workflow_models.py:51
 msgid "A short text to describe the workflow."
 msgstr ""
 
-#: models/workflow_models.py:157
+#: models/workflow_models.py:160
 msgid "Initial state"
 msgstr "İlk durum"
 
-#: models/workflow_models.py:298
+#: models/workflow_models.py:301
 msgid "Workflow runtime proxy"
 msgstr "İş akışı çalışma zamanı vekili"
 
-#: models/workflow_models.py:299
+#: models/workflow_models.py:302
 msgid "Workflow runtime proxies"
 msgstr ""
 
@@ -595,32 +588,32 @@ msgstr ""
 msgid "Execute workflow tools"
 msgstr "İş akışı araçlarını çalıştır"
 
-#: queues.py:7
-msgid "Document states"
-msgstr ""
-
-#: queues.py:10
+#: queues.py:8
 msgid "Document states fast"
 msgstr ""
 
-#: queues.py:15
-msgid "Launch all workflows for all documents"
+#: queues.py:12
+msgid "Document states medium"
 msgstr ""
 
-#: queues.py:19
-msgid "Launch a workflow"
+#: queues.py:17
+msgid "Generate workflow previews"
 msgstr ""
 
-#: queues.py:23
+#: queues.py:21
 msgid "Launch a workflow for a document"
 msgstr ""
 
-#: queues.py:27
+#: queues.py:25
 msgid "Launch all workflows for a document"
 msgstr ""
 
-#: queues.py:31
-msgid "Generate workflow previews"
+#: queues.py:30
+msgid "Launch all workflows for all documents"
+msgstr ""
+
+#: queues.py:34
+msgid "Launch a workflow"
 msgstr ""
 
 #: search.py:12 search.py:19 search.py:26 search.py:33 search.py:40
@@ -1151,29 +1144,17 @@ msgstr ""
 msgid "Timeout"
 msgstr "Zaman aşımı"
 
-<<<<<<< HEAD
-#: workflow_actions.py:133
-=======
-#: workflow_actions.py:136
->>>>>>> origin/series/3.5
+#: workflow_actions.py:137
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
 msgstr ""
 
-<<<<<<< HEAD
-#: workflow_actions.py:139
+#: workflow_actions.py:143
 msgid "Payload"
 msgstr ""
 
-#: workflow_actions.py:142
-=======
-#: workflow_actions.py:142
-msgid "Payload"
-msgstr ""
-
-#: workflow_actions.py:145
->>>>>>> origin/series/3.5
+#: workflow_actions.py:146
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
 "return a JSON document. Templates receive the workflow log entry instance as"
@@ -1182,19 +1163,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr ""
 
-<<<<<<< HEAD
-#: workflow_actions.py:152
+#: workflow_actions.py:156
 msgid "Username"
 msgstr "Kullanıcı adı"
 
-#: workflow_actions.py:155
-=======
-#: workflow_actions.py:155
-msgid "Username"
-msgstr "Kullanıcı adı"
-
-#: workflow_actions.py:158
->>>>>>> origin/series/3.5
+#: workflow_actions.py:159
 msgid ""
 "Username to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
@@ -1203,19 +1176,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr ""
 
-<<<<<<< HEAD
-#: workflow_actions.py:165
+#: workflow_actions.py:169
 msgid "Password"
 msgstr "Parola"
 
-#: workflow_actions.py:168
-=======
-#: workflow_actions.py:168
-msgid "Password"
-msgstr "Parola"
-
-#: workflow_actions.py:171
->>>>>>> origin/series/3.5
+#: workflow_actions.py:172
 msgid ""
 "Password to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
@@ -1224,19 +1189,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr ""
 
-<<<<<<< HEAD
-#: workflow_actions.py:178
+#: workflow_actions.py:182
 msgid "Method"
 msgstr ""
 
-#: workflow_actions.py:181
-=======
-#: workflow_actions.py:181
-msgid "Method"
-msgstr ""
-
-#: workflow_actions.py:184
->>>>>>> origin/series/3.5
+#: workflow_actions.py:185
 msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE. Can be a static value or a template that "
@@ -1246,19 +1203,11 @@ msgid ""
 "\"user\", and \"comment\" attributes."
 msgstr ""
 
-<<<<<<< HEAD
-#: workflow_actions.py:192
+#: workflow_actions.py:196
 msgid "Headers"
 msgstr ""
 
-#: workflow_actions.py:195
-=======
-#: workflow_actions.py:195
-msgid "Headers"
-msgstr ""
-
-#: workflow_actions.py:198
->>>>>>> origin/series/3.5
+#: workflow_actions.py:199
 msgid ""
 "Headers to send with the HTTP request. Must be in JSON format. Can be a "
 "static value or a template. Templates receive the workflow log entry "
@@ -1267,19 +1216,11 @@ msgid ""
 "\"transition\", \"user\", and \"comment\" attributes."
 msgstr ""
 
-<<<<<<< HEAD
-#: workflow_actions.py:209
+#: workflow_actions.py:213
 msgid "Perform an HTTP request"
 msgstr ""
 
-#: workflow_actions.py:238
-=======
-#: workflow_actions.py:212
-msgid "Perform an HTTP request"
-msgstr ""
-
-#: workflow_actions.py:241
->>>>>>> origin/series/3.5
+#: workflow_actions.py:242
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
 msgstr ""

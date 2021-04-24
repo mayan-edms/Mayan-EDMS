@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -253,28 +253,34 @@ msgstr "Преглед на съществуващите трансформац�
 
 #: queues.py:11
 msgid "Generate a image of an asset."
-msgstr ""
+msgstr "Генерирайте изображение на актив."
 
 #: settings.py:28
 msgid ""
 "The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest asset cache files. Specify the size in bytes."
 msgstr ""
+"Прагът, при който CONVERTER_ASSET_CACHE_STORAGE_BACKEND ще започне да "
+"изтрива най-старите кеширани файлове на активи. Посочете размера в байтове."
 
 #: settings.py:37
 msgid ""
 "Time in seconds that the browser should cache the supplied asset. The "
 "default of 31559626 seconds correspond to 1 year."
 msgstr ""
+"Време в секунди, през което браузърът трябва да кешира предоставения актив. "
+"По подразбиране 31559626 секунди съответстват на 1 година."
 
 #: settings.py:44
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
 msgstr ""
+"Път към подкласа Storage, който да се използва при съхраняване на кешираните"
+" файлове с активи."
 
 #: settings.py:52
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Аргументи за предаване на CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
 
 #: settings.py:58
 msgid "Path to the Storage subclass to use when storing assets."
@@ -306,10 +312,12 @@ msgid ""
 "Unable to initialize the converter asset cachestorage. Check the settings {}"
 " and {} for formatting errors."
 msgstr ""
+"Не може да се инициализира кеширането на активи на конвертора. Проверете "
+"настройките {} и {} за грешки при форматирането."
 
 #: storages.py:34
 msgid "Assets cache"
-msgstr ""
+msgstr "Кеш на активи"
 
 #: transformations.py:196
 msgid "Paste an asset"
@@ -392,8 +400,8 @@ msgstr "Изтриване на заявка, извършена за %(count)d�
 #: views.py:62
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Да се изтрие ли избраният актив?"
+msgstr[1] "Да се изтрият ли избраните активи?"
 
 #: views.py:72
 #, python-format
@@ -413,7 +421,7 @@ msgstr "Грешка при изтриването на актив &quot;%(asset
 #: views.py:103
 #, python-format
 msgid "Details asset: %s"
-msgstr ""
+msgstr "Подробности за актив: %s"
 
 #: views.py:117
 #, python-format

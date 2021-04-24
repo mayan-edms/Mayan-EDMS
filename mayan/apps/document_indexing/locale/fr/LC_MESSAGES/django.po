@@ -9,13 +9,14 @@
 # Olivier W, 2021
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2021
 # Yves Dubois <ydubois@gmail.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2021
 # Frédéric Sheedy <sheedf@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -59,11 +60,11 @@ msgstr "Documents"
 
 #: events.py:10
 msgid "Index template created"
-msgstr ""
+msgstr "Modèle d'index créé"
 
 #: events.py:13
 msgid "Index template edited"
-msgstr ""
+msgstr "Modèle d'index modifié"
 
 #: forms.py:16
 msgid "Index templates to be queued for rebuilding."
@@ -224,15 +225,15 @@ msgstr "Valeur"
 
 #: models.py:399 models.py:528
 msgid "Index instance node"
-msgstr ""
+msgstr "Nœud d'instance d'index"
 
 #: models.py:400
 msgid "Indexes instances node"
-msgstr ""
+msgstr "Nœud d'instances d'index"
 
 #: models.py:465
 msgid "The path to the index including all ancestors."
-msgstr ""
+msgstr "Le chemin d'accès à l'index, y compris tous les index parents."
 
 #: models.py:467
 msgid "Full path"
@@ -248,7 +249,7 @@ msgstr "Instances de nœuds d'index de document"
 
 #: models.py:529
 msgid "Index instance nodes"
-msgstr ""
+msgstr "Nœuds des instances d'index"
 
 #: permissions.py:5 queues.py:8
 msgid "Indexing"
@@ -260,23 +261,23 @@ msgstr ""
 
 #: permissions.py:11
 msgid "Create new index templates"
-msgstr ""
+msgstr "Créer de nouveaux modèles d'index"
 
 #: permissions.py:14
 msgid "Edit index templates"
-msgstr ""
+msgstr "Modifier les modèles d'index"
 
 #: permissions.py:17
 msgid "Delete index templates"
-msgstr ""
+msgstr "Supprimer les modèles d'index"
 
 #: permissions.py:20
 msgid "View index templates"
-msgstr ""
+msgstr "Afficher les modèles d'index"
 
 #: permissions.py:23 views/index_template_views.py:310
 msgid "Rebuild index templates"
-msgstr ""
+msgstr "Reconstruire les modèles d'index"
 
 #: queues.py:12
 msgid "Delete empty index nodes"
@@ -339,11 +340,11 @@ msgstr ""
 
 #: serializers.py:277
 msgid "Primary key of the document type to add to the index template."
-msgstr ""
+msgstr "Clé primaire du type de document à ajouter au modèle d'index."
 
 #: serializers.py:286
 msgid "Primary key of the document type to remove from the index template."
-msgstr ""
+msgstr "Clé primaire du type de document à supprimer du modèle d'index."
 
 #: settings.py:14
 msgid ""
@@ -357,6 +358,8 @@ msgid ""
 "This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
 msgstr ""
+"Cela peut signifier qu'aucun modèle d'index n'a été créé ou qu'il existe des"
+" modèles d'index mais qu'ils ne sont pas correctement définis."
 
 #: views/index_instance_views.py:42
 msgid "There are no index instances available."
@@ -421,7 +424,7 @@ msgstr ""
 
 #: views/index_template_views.py:95
 msgid "There are no index templates."
-msgstr ""
+msgstr "Il n'y a pas de modèles d'index."
 
 #: views/index_template_views.py:124
 #, python-format
@@ -479,11 +482,11 @@ msgstr "Modifier le nœud du modèle d'index : %s"
 #: views/index_template_views.py:283
 #, python-format
 msgid "Rebuild index template: %s"
-msgstr ""
+msgstr "Reconstruction du modèle d'index: %s"
 
 #: views/index_template_views.py:303
 msgid "Index template queued for rebuild."
-msgstr ""
+msgstr "Modèle d'index mis en file d'attente pour la reconstruction."
 
 #: views/index_template_views.py:324
 #, python-format
@@ -496,8 +499,8 @@ msgstr[1] ""
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(count)d réinitialisation de l&#39;index."
+msgstr[1] "%(count)d index réinitialisés."
 
 #: views/index_template_views.py:370
 msgid "Index templates for which their instances will be deleted."

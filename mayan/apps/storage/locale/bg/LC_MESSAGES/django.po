@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -29,7 +29,7 @@ msgstr "Съхранение"
 
 #: apps.py:59
 msgid "Source object"
-msgstr ""
+msgstr "Изходен обект"
 
 #: classes.py:86 classes.py:107
 #, python-format
@@ -42,19 +42,19 @@ msgstr ""
 
 #: events.py:6 links.py:19 models.py:64 storages.py:22
 msgid "Download files"
-msgstr ""
+msgstr "Изтеглете файлове"
 
 #: events.py:10
 msgid "Download file created"
-msgstr ""
+msgstr "Изтегленият файл е създаден"
 
 #: events.py:13
 msgid "Download file deleted"
-msgstr ""
+msgstr "Изтегленият файл е изтрит"
 
 #: events.py:16
 msgid "Download file downloaded"
-msgstr ""
+msgstr "Файлът за изтегляне е изтеглен"
 
 #: links.py:12
 msgid "Delete"
@@ -89,7 +89,7 @@ msgstr ""
 
 #: management/commands/storage_process.py:38
 msgid "Name of the storage to process."
-msgstr "Име на съхранението, което ще се обработва."
+msgstr "Име на хранилището, което ще се обработва."
 
 #: model_mixins.py:13 models.py:115
 msgid "Filename"
@@ -101,7 +101,7 @@ msgstr "Дата час"
 
 #: model_mixins.py:48
 msgid "Unnamed file"
-msgstr ""
+msgstr "Файл без име"
 
 #: models.py:42 models.py:112
 msgid "File"
@@ -117,7 +117,7 @@ msgstr "Разрешение"
 
 #: models.py:63
 msgid "Download file"
-msgstr ""
+msgstr "Изтегли файл"
 
 #: models.py:121
 msgid "Shared uploaded file"
@@ -137,13 +137,15 @@ msgstr "Изтриване на застояли качвания"
 
 #: queues.py:25
 msgid "Delete stale download files"
-msgstr ""
+msgstr "Изтрийте остарелите файлове за изтегляне"
 
 #: settings.py:17
 msgid ""
 "A storage backend that all workers can use to generate and hold files for "
 "download."
 msgstr ""
+"Бекенд за съхранение, който всички работници могат да използват за "
+"генериране и задържане на файлове за изтегляне."
 
 #: settings.py:28
 msgid "A storage backend that all workers can use to share files."
@@ -164,6 +166,8 @@ msgid ""
 "Unable to initialize the download file storage. Check the settings {} and {}"
 " for formatting errors."
 msgstr ""
+"Не може да се инициализира хранилището на файла за изтегляне. Проверете "
+"настройките {} и {} за грешки при форматирането."
 
 #: storages.py:29
 msgid ""
@@ -179,11 +183,14 @@ msgid ""
 "export. Download files are retained over a span of time and then removed "
 "automatically."
 msgstr ""
+"Файловете за изтегляне се създават в резултат на външен процес като "
+"експортиране. Изтеглените файлове се запазват за определен период от време и"
+" след това се премахват автоматично."
 
 #: views.py:59
 msgid "There are no files to download."
-msgstr ""
+msgstr "Няма файлове за изтегляне."
 
 #: views.py:60
 msgid "Downloads"
-msgstr ""
+msgstr "Изтегляния"

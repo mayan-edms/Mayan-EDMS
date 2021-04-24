@@ -14,17 +14,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
-=======
-"POT-Creation-Date: 2021-04-14 23:03+0000\n"
-"PO-Revision-Date: 2020-10-13 19:08+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
->>>>>>> origin/series/3.5
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,7 +25,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:72 events.py:6 forms.py:42 links.py:46 links.py:87 links.py:240
-#: links.py:264 models/workflow_models.py:64 settings.py:14
+#: links.py:264 models/workflow_models.py:65 settings.py:14
 #: views/workflow_proxy_views.py:64 views/workflow_template_views.py:261
 #: workflow_actions.py:74
 msgid "Workflows"
@@ -166,7 +159,7 @@ msgstr "Akcja"
 msgid "Namespace"
 msgstr "Przestrzeń nazw"
 
-#: forms.py:135 models/workflow_models.py:51
+#: forms.py:135 models/workflow_models.py:52
 #: models/workflow_state_models.py:55 models/workflow_state_models.py:172
 #: models/workflow_transition_models.py:40
 #: models/workflow_transition_models.py:150
@@ -208,7 +201,7 @@ msgstr "Utwórz przepływ pracy"
 msgid "Delete"
 msgstr "Usuń"
 
-#: links.py:69 models/workflow_models.py:55
+#: links.py:69 models/workflow_models.py:56
 msgid "Document types"
 msgstr "Typy dokumentów"
 
@@ -300,7 +293,7 @@ msgstr "Przy wejściu"
 msgid "On exit"
 msgstr "Przy wyjściu"
 
-#: models/workflow_instance_models.py:29 models/workflow_models.py:63
+#: models/workflow_instance_models.py:29 models/workflow_models.py:64
 #: models/workflow_state_models.py:51 models/workflow_transition_models.py:36
 msgid "Workflow"
 msgstr "Obieg dokumentów"
@@ -346,15 +339,15 @@ msgstr "Wpisy do dziennika instancji przepływu pracy"
 msgid "Not a valid transition choice."
 msgstr "Nieprawidłowy wybór przejścia."
 
-#: models/workflow_models.py:39
+#: models/workflow_models.py:40
 msgid "Launch workflow when document is created."
 msgstr "Uruchom przepływ pracy podczas tworzenia dokumentu."
 
-#: models/workflow_models.py:40
+#: models/workflow_models.py:41
 msgid "Auto launch"
 msgstr "Autouruchomienie"
 
-#: models/workflow_models.py:44
+#: models/workflow_models.py:45
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
@@ -362,23 +355,23 @@ msgstr ""
 "Ta wartość będzie używana przez inne aplikacje w odniesieniu do tego "
 "przepływu pracy. Może zawierać tylko litery, cyfry i znaki podkreślenia."
 
-#: models/workflow_models.py:47 models/workflow_transition_models.py:145
+#: models/workflow_models.py:48 models/workflow_transition_models.py:145
 msgid "Internal name"
 msgstr "Nazwa wewnętrzna"
 
-#: models/workflow_models.py:50
+#: models/workflow_models.py:51
 msgid "A short text to describe the workflow."
 msgstr "Krótki tekst opisujący przepływ pracy."
 
-#: models/workflow_models.py:157
+#: models/workflow_models.py:160
 msgid "Initial state"
 msgstr "Stan początkowy"
 
-#: models/workflow_models.py:298
+#: models/workflow_models.py:301
 msgid "Workflow runtime proxy"
 msgstr "Serwer proxy środowiska wykonawczego przepływu pracy"
 
-#: models/workflow_models.py:299
+#: models/workflow_models.py:302
 msgid "Workflow runtime proxies"
 msgstr "Proxy środowiska uruchomieniowego przepływu pracy"
 
@@ -621,33 +614,33 @@ msgstr ""
 msgid "Execute workflow tools"
 msgstr "Uruchom narzędzia przepływu pracy"
 
-#: queues.py:7
-msgid "Document states"
-msgstr "Stany dokumentu"
-
-#: queues.py:10
+#: queues.py:8
 msgid "Document states fast"
 msgstr "Szybkie stany dokumentów"
 
-#: queues.py:15
-msgid "Launch all workflows for all documents"
-msgstr "Uruchom wszystkie przepływy pracy dla wszystkich dokumentów"
+#: queues.py:12
+msgid "Document states medium"
+msgstr ""
 
-#: queues.py:19
-msgid "Launch a workflow"
-msgstr "Uruchom przepływ pracy"
+#: queues.py:17
+msgid "Generate workflow previews"
+msgstr "Generuj podgląd przepływu pracy"
 
-#: queues.py:23
+#: queues.py:21
 msgid "Launch a workflow for a document"
 msgstr "Uruchom przepływ pracy dla dokumentu"
 
-#: queues.py:27
+#: queues.py:25
 msgid "Launch all workflows for a document"
 msgstr "Uruchom wszystkie przepływy pracy dla dokumentu"
 
-#: queues.py:31
-msgid "Generate workflow previews"
-msgstr "Generuj podgląd przepływu pracy"
+#: queues.py:30
+msgid "Launch all workflows for all documents"
+msgstr "Uruchom wszystkie przepływy pracy dla wszystkich dokumentów"
+
+#: queues.py:34
+msgid "Launch a workflow"
+msgstr "Uruchom przepływ pracy"
 
 #: search.py:12 search.py:19 search.py:26 search.py:33 search.py:40
 msgid "Document workflow transition comment"
@@ -1228,11 +1221,7 @@ msgstr ""
 msgid "Timeout"
 msgstr "Koniec czasu"
 
-<<<<<<< HEAD
-#: workflow_actions.py:133
-=======
-#: workflow_actions.py:136
->>>>>>> origin/series/3.5
+#: workflow_actions.py:137
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
@@ -1240,19 +1229,11 @@ msgstr ""
 "Czas oczekiwania na odpowiedź w sekundach. Może być wartością statyczną lub "
 "szablonem."
 
-<<<<<<< HEAD
-#: workflow_actions.py:139
+#: workflow_actions.py:143
 msgid "Payload"
 msgstr "Dane załaczone"
 
-#: workflow_actions.py:142
-=======
-#: workflow_actions.py:142
-msgid "Payload"
-msgstr "Dane załaczone"
-
-#: workflow_actions.py:145
->>>>>>> origin/series/3.5
+#: workflow_actions.py:146
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
 "return a JSON document. Templates receive the workflow log entry instance as"
@@ -1266,26 +1247,17 @@ msgstr ""
 "„entry_log”. Z kolei „entry_log” zapewnia atrybuty „workflow_instance”, "
 "„datetime”, „przejście”, „użytkownik” i „komentarz”."
 
-<<<<<<< HEAD
-#: workflow_actions.py:152
+#: workflow_actions.py:156
 msgid "Username"
 msgstr "Nazwa użytkownika"
 
-#: workflow_actions.py:155
-=======
-#: workflow_actions.py:155
-msgid "Username"
-msgstr "Nazwa użytkownika"
-
-#: workflow_actions.py:158
->>>>>>> origin/series/3.5
+#: workflow_actions.py:159
 msgid ""
 "Username to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-<<<<<<< HEAD
 msgstr ""
 "Nazwa użytkownika, której należy użyć w celu wykonania żądania za pomocą "
 "uwierzytelniania podstawowego HTTP. Może być wartością statyczną lub "
@@ -1294,27 +1266,17 @@ msgstr ""
 "„entry_log” zapewnia atrybuty „workflow_instance”, „datetime”, „przejście”, "
 "„użytkownik” i „komentarz”."
 
-#: workflow_actions.py:165
+#: workflow_actions.py:169
 msgid "Password"
 msgstr "Hasło"
 
-#: workflow_actions.py:168
-=======
-msgstr "Nazwa użytkownika, której należy użyć w celu wykonania żądania za pomocą uwierzytelniania podstawowego HTTP. Może być wartością statyczną lub szablonem. Szablony otrzymują instancję wpisu dziennika przepływu pracy jako część swojego kontekstu za pośrednictwem zmiennej „entry_log”. Z kolei „entry_log” zapewnia atrybuty „workflow_instance”, „datetime”, „przejście”, „użytkownik” i „komentarz”."
-
-#: workflow_actions.py:168
-msgid "Password"
-msgstr "Hasło"
-
-#: workflow_actions.py:171
->>>>>>> origin/series/3.5
+#: workflow_actions.py:172
 msgid ""
 "Password to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-<<<<<<< HEAD
 msgstr ""
 "Hasło, które należy użyć do wykonania żądania przy użyciu uwierzytelniania "
 "podstawowego HTTP. Może być wartością statyczną lub szablonem. Szablony "
@@ -1323,20 +1285,11 @@ msgstr ""
 "zapewnia atrybuty „workflow_instance”, „datetime”, „przejście”, „użytkownik”"
 " i „komentarz”."
 
-#: workflow_actions.py:178
+#: workflow_actions.py:182
 msgid "Method"
 msgstr "Metoda"
 
-#: workflow_actions.py:181
-=======
-msgstr "Hasło, które należy użyć do wykonania żądania przy użyciu uwierzytelniania podstawowego HTTP. Może być wartością statyczną lub szablonem. Szablony otrzymują instancję wpisu dziennika przepływu pracy jako część swojego kontekstu za pośrednictwem zmiennej „entry_log”. Z kolei „entry_log” zapewnia atrybuty „workflow_instance”, „datetime”, „przejście”, „użytkownik” i „komentarz”."
-
-#: workflow_actions.py:181
-msgid "Method"
-msgstr "Metoda"
-
-#: workflow_actions.py:184
->>>>>>> origin/series/3.5
+#: workflow_actions.py:185
 msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE. Can be a static value or a template that "
@@ -1344,7 +1297,6 @@ msgid ""
 "as part of their context via the variable \"entry_log\". The \"entry_log\" "
 "in turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-<<<<<<< HEAD
 msgstr ""
 "Metoda HTTP używana w żądaniu. Typowe opcje to OPTIONS, HEAD, POST, GET, "
 "PUT, PATCH, DELETE. Może być wartością statyczną lub szablonem, który zwraca"
@@ -1353,20 +1305,11 @@ msgstr ""
 "„entry_log” zapewnia atrybuty „workflow_instance”, „datetime”, „transition”,"
 " „user” i „comment”."
 
-#: workflow_actions.py:192
+#: workflow_actions.py:196
 msgid "Headers"
 msgstr "Nagłówki"
 
-#: workflow_actions.py:195
-=======
-msgstr "Metoda HTTP używana w żądaniu. Typowe opcje to OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. Może być wartością statyczną lub szablonem, który zwraca tekst metody. Szablony otrzymują instancję wpisu dziennika przepływu pracy jako część swojego kontekstu za pośrednictwem zmiennej „entry_log”. Z kolei „entry_log” zapewnia atrybuty „workflow_instance”, „datetime”, „transition”, „user” i „comment”."
-
-#: workflow_actions.py:195
-msgid "Headers"
-msgstr "Nagłówki"
-
-#: workflow_actions.py:198
->>>>>>> origin/series/3.5
+#: workflow_actions.py:199
 msgid ""
 "Headers to send with the HTTP request. Must be in JSON format. Can be a "
 "static value or a template. Templates receive the workflow log entry "
@@ -1380,19 +1323,11 @@ msgstr ""
 "zmiennej „entry_log”. Z kolei „entry_log” zapewnia atrybuty "
 "„workflow_instance”, „datetime”, „przejście”, „użytkownik” i „komentarz”."
 
-<<<<<<< HEAD
-#: workflow_actions.py:209
+#: workflow_actions.py:213
 msgid "Perform an HTTP request"
 msgstr "Wykonaj żądanie HTTP"
 
-#: workflow_actions.py:238
-=======
-#: workflow_actions.py:212
-msgid "Perform an HTTP request"
-msgstr "Wykonaj żądanie HTTP"
-
-#: workflow_actions.py:241
->>>>>>> origin/series/3.5
+#: workflow_actions.py:242
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
 msgstr "Błąd JSON %(field_name)s: %(exception)s"

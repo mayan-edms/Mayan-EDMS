@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -26,8 +26,8 @@ msgid "Document parsing"
 msgstr "تحليل الوثيقة "
 
 #: apps.py:105
-msgid "A generator returning the document's pages parsed content."
-msgstr "اعادة تحليل الوثيقة"
+msgid "A generator returning the document file's pages parsed content."
+msgstr ""
 
 #: apps.py:106 links.py:21 links.py:43 models.py:24 search.py:10
 msgid "Content"
@@ -39,10 +39,9 @@ msgstr "النتيجة"
 
 #: dependencies.py:9
 msgid ""
-"Utility from the poppler-utils package used to text content from PDF files."
+"Utility from the poppler-utils package used to extract content from PDF "
+"files."
 msgstr ""
-"الأداة المساعدة من حزمة poppler-utils المستخدمة في كتابة محتوى نصي من ملفات "
-"PDF."
 
 #: events.py:10
 msgid "Document parsed content deleted"
@@ -160,11 +159,11 @@ msgstr ""
 msgid "Change document type parsing settings"
 msgstr "تغيير إعدادات تحليل نوع المستند"
 
-#: queues.py:6
+#: queues.py:7
 msgid "Parsing"
 msgstr "تفسير"
 
-#: queues.py:9
+#: queues.py:12
 msgid "Document file parsing"
 msgstr ""
 

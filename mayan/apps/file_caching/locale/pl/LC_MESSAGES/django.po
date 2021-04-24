@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:25 events.py:6 permissions.py:5
+#: apps.py:27 events.py:6 permissions.py:5
 msgid "File caching"
 msgstr "Buforowanie plików"
 
@@ -39,6 +39,10 @@ msgstr "Zmodyfikowano pamięć podręczną"
 msgid "Cache purged"
 msgstr "Pamięć podręczna została wyczyszczona"
 
+#: events.py:19
+msgid "Cache partition purged"
+msgstr ""
+
 #: links.py:24
 msgid "File caches"
 msgstr "Pamięci podręczne plików"
@@ -47,76 +51,76 @@ msgstr "Pamięci podręczne plików"
 msgid "Purge cache"
 msgstr "Wyczyść pamięć podręczną"
 
-#: models.py:30
+#: models.py:34
 msgid "Internal name of the defined storage for this cache."
 msgstr "Wewnętrzna nazwa zdefiniowanej pamięci dla tej pamięci podręcznej."
 
-#: models.py:31
+#: models.py:35
 msgid "Defined storage name"
 msgstr "Zdefiniowana nazwa magazynu"
 
-#: models.py:34
+#: models.py:38
 msgid "Maximum size of the cache in bytes."
 msgstr "Maksymalny rozmiar pamięci podręcznej w bajtach."
 
-#: models.py:36 models.py:62
+#: models.py:40 models.py:66
 msgid "Maximum size"
 msgstr "Maksymalny rozmiar"
 
-#: models.py:40 models.py:144
+#: models.py:44 models.py:166
 msgid "Cache"
 msgstr "Pamięć podręczna"
 
-#: models.py:41
+#: models.py:45
 msgid "Caches"
 msgstr "Pamięci podręczne"
 
-#: models.py:60
+#: models.py:64
 msgid "Size at which the cache will start deleting old entries."
 msgstr ""
 "Rozmiar, przy którym pamięć podręczna rozpocznie usuwanie starych wpisów."
 
-#: models.py:69
+#: models.py:73
 msgid "Unknown"
 msgstr "Nieznany"
 
-#: models.py:86
+#: models.py:90
 msgid "Current size"
 msgstr "Aktualny rozmiar"
 
-#: models.py:87
+#: models.py:91
 msgid "Current size of the cache."
 msgstr "Aktualny rozmiar pamięci podręcznej."
 
-#: models.py:147
+#: models.py:169
 msgid "Name"
 msgstr "Nazwa"
 
-#: models.py:152 models.py:239
+#: models.py:174 models.py:265
 msgid "Cache partition"
 msgstr "Partycja pamięci podręcznej"
 
-#: models.py:153
+#: models.py:175
 msgid "Cache partitions"
 msgstr "Partycje pamięci podręcznej"
 
-#: models.py:242
+#: models.py:268
 msgid "Date time"
 msgstr "Data i godzina"
 
-#: models.py:244
+#: models.py:270
 msgid "Filename"
 msgstr "Nazwa"
 
-#: models.py:246
+#: models.py:272
 msgid "File size"
 msgstr "Rozmiar pliku"
 
-#: models.py:252
+#: models.py:278
 msgid "Cache partition file"
 msgstr "Plik partycji pamięci podręcznej"
 
-#: models.py:253
+#: models.py:279
 msgid "Cache partition files"
 msgstr "Pliki partycji pamięci podręcznej"
 
@@ -150,11 +154,11 @@ msgstr "Lista pamięci podręcznych plików"
 msgid "Purge cache partitions of \"%s\"?"
 msgstr ""
 
-#: views.py:84
+#: views.py:86
 msgid "Object cache partitions submitted for purging."
 msgstr ""
 
-#: views.py:101
+#: views.py:103
 msgid "Submit the selected cache for purging?"
 msgid_plural "Submit the selected caches for purging?"
 msgstr[0] ""

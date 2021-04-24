@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:26+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -244,10 +244,13 @@ msgstr "Преглед на съществуващите умни връзки"
 #: serializers.py:52
 msgid "Primary key of the document type to add to the smart link."
 msgstr ""
+"Основен ключ от типа документ, който да добавите към интелигентната връзка."
 
 #: serializers.py:61
 msgid "Primary key of the document type to remove from the smart link."
 msgstr ""
+"Основен ключ от типа документ, който да се премахне от интелигентната "
+"връзка."
 
 #: views.py:41
 msgid "Available smart links"

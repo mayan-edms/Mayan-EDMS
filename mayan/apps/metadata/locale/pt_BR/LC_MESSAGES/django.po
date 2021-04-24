@@ -10,14 +10,15 @@
 # Aline Freitas <aline@alinefreitas.com.br>, 2021
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2021
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
+# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -164,7 +165,7 @@ msgstr "Editar"
 
 #: methods.py:20
 msgid "Return the metadata of the document."
-msgstr ""
+msgstr "Retorna os metadados do documento."
 
 #: mixins.py:19
 msgid "Selected documents must be of the same type."
@@ -319,11 +320,11 @@ msgstr "Valor de metadados"
 
 #: search.py:24 search.py:35 search.py:46 search.py:57
 msgid "Document metadata type"
-msgstr ""
+msgstr "Tipo de metadados do documento"
 
 #: search.py:28 search.py:39 search.py:50 search.py:61
 msgid "Document metadata value"
-msgstr ""
+msgstr "Valor de metadados do documento"
 
 #: serializers.py:56
 msgid "Primary key of the metadata type to be added."
@@ -351,8 +352,8 @@ msgstr "Adicionar"
 #: views.py:67
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Adicionar tipos de metadados para os documentos"
+msgstr[1] "Adicionar tipos de metadados para os documentos"
 
 #: views.py:78
 #, python-format
@@ -409,8 +410,8 @@ msgstr "Não há metadados a editar"
 #: views.py:240
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Editar metadados dos documentos"
+msgstr[1] "Editar metadados dos documentos"
 
 #: views.py:251
 #, python-format
@@ -460,8 +461,8 @@ msgstr "Solicitação de remoção de metadados realizada em %(count)d documento
 #: views.py:409
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Remover tipos de metadados dos documentos"
+msgstr[1] "Remover tipos de metadados dos documentos"
 
 #: views.py:420
 #, python-format
@@ -523,20 +524,22 @@ msgid ""
 "Create metadata type relationships to be able to associate them to this "
 "document type."
 msgstr ""
+"Criar tipos de metadados para ser possível associá-los a este tipo de "
+"documento."
 
 #: views.py:604
 msgid "There are no metadata type relationships available"
-msgstr ""
+msgstr "Não há relacionamentos de tipo de metadados disponíveis"
 
 #: views.py:608
 #, python-format
 msgid "Metadata type relationships for document type: %s"
-msgstr ""
+msgstr "Relações de tipo de metadados para o tipo de documento: %s"
 
 #: views.py:652
 #, python-format
 msgid "Document type relationships for metadata type: %s"
-msgstr ""
+msgstr "Relações de tipo de documento para tipo de metadados: %s"
 
 #: wizard_steps.py:13
 msgid "Enter document metadata"

@@ -13,17 +13,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
-=======
-"POT-Creation-Date: 2021-04-14 23:03+0000\n"
-"PO-Revision-Date: 2020-10-02 19:49+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
->>>>>>> origin/series/3.5
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,7 +24,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:72 events.py:6 forms.py:42 links.py:46 links.py:87 links.py:240
-#: links.py:264 models/workflow_models.py:64 settings.py:14
+#: links.py:264 models/workflow_models.py:65 settings.py:14
 #: views/workflow_proxy_views.py:64 views/workflow_template_views.py:261
 #: workflow_actions.py:74
 msgid "Workflows"
@@ -167,7 +160,7 @@ msgstr "Действие"
 msgid "Namespace"
 msgstr "Именно пространство"
 
-#: forms.py:135 models/workflow_models.py:51
+#: forms.py:135 models/workflow_models.py:52
 #: models/workflow_state_models.py:55 models/workflow_state_models.py:172
 #: models/workflow_transition_models.py:40
 #: models/workflow_transition_models.py:150
@@ -209,7 +202,7 @@ msgstr "Създайте работен поток"
 msgid "Delete"
 msgstr "Изтрийте"
 
-#: links.py:69 models/workflow_models.py:55
+#: links.py:69 models/workflow_models.py:56
 msgid "Document types"
 msgstr "Типове документи"
 
@@ -301,7 +294,7 @@ msgstr "При влизане"
 msgid "On exit"
 msgstr "На излизане"
 
-#: models/workflow_instance_models.py:29 models/workflow_models.py:63
+#: models/workflow_instance_models.py:29 models/workflow_models.py:64
 #: models/workflow_state_models.py:51 models/workflow_transition_models.py:36
 msgid "Workflow"
 msgstr "Работен поток"
@@ -347,39 +340,39 @@ msgstr "Записи в дневника на работния поток"
 msgid "Not a valid transition choice."
 msgstr "Не е валиден избор на преход."
 
-#: models/workflow_models.py:39
+#: models/workflow_models.py:40
 msgid "Launch workflow when document is created."
 msgstr "Стартирайте работния поток, когато е създаден документ."
 
-#: models/workflow_models.py:40
+#: models/workflow_models.py:41
 msgid "Auto launch"
 msgstr "Автоматично стартиране"
 
-#: models/workflow_models.py:44
+#: models/workflow_models.py:45
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
 msgstr ""
 "Тази стойност ще бъде използвана от други приложения за препратка към този "
-"работен поток. Може да съдържа само букви, цифри и подчертавания."
+"работен поток. Може да съдържа само букви, цифри и долни черти."
 
-#: models/workflow_models.py:47 models/workflow_transition_models.py:145
+#: models/workflow_models.py:48 models/workflow_transition_models.py:145
 msgid "Internal name"
 msgstr "Вътрешно име"
 
-#: models/workflow_models.py:50
+#: models/workflow_models.py:51
 msgid "A short text to describe the workflow."
 msgstr "Кратък текст за описание на работния поток."
 
-#: models/workflow_models.py:157
+#: models/workflow_models.py:160
 msgid "Initial state"
 msgstr "Начално състояние"
 
-#: models/workflow_models.py:298
+#: models/workflow_models.py:301
 msgid "Workflow runtime proxy"
 msgstr "Прокси за изпълнение на работния поток"
 
-#: models/workflow_models.py:299
+#: models/workflow_models.py:302
 msgid "Workflow runtime proxies"
 msgstr "Прокси сървъри за изпълнение на работния поток"
 
@@ -450,10 +443,10 @@ msgid ""
 "considered to be the logical true."
 msgstr ""
 "Условието, което ще определи дали това действие на състояние се изпълнява "
-"или не. Условието се оценява спрямо инстанцията на работния процес. Условия,"
-" които не връщат никаква стойност, които връщат логическото Python Не, или "
-"празен низ (&#39;&#39;) се считат за логически неверни, всяка друга стойност"
-" се счита за логически вярна."
+"или не. Условието се оценява спрямо етапа на работния поток. Условия, които "
+"не връщат никаква стойност, които връщат логическото Python Не, или празен "
+"низ (&#39;&#39;) се считат за логически неверни, всяка друга стойност се "
+"счита за логически вярна."
 
 #: models/workflow_state_models.py:197 models/workflow_transition_models.py:58
 msgid "Condition"
@@ -512,10 +505,10 @@ msgid ""
 " the logical true."
 msgstr ""
 "Условието, което ще определи дали този преход е активиран или не. Условието "
-"се оценява спрямо инстанцията на работния процес. Условия, които не връщат "
-"никаква стойност, които връщат логическото Python Не, или празен низ "
-"(&#39;&#39;) се считат за логически неверни, всяка друга стойност се счита "
-"за логически вярна."
+"се оценява спрямо етапа на работния поток. Условия, които не връщат никаква "
+"стойност, които връщат логическото Python Не, или празен низ (&#39;&#39;) се"
+" считат за логически неверни, всяка друга стойност се счита за логически "
+"вярна."
 
 #: models/workflow_transition_models.py:66
 msgid "Workflow transition"
@@ -608,72 +601,73 @@ msgstr "Работни потоци за документа"
 
 #: permissions.py:10
 msgid "Create workflow templates"
-msgstr ""
+msgstr "Създайте шаблони за работен поток"
 
 #: permissions.py:13
 msgid "Delete workflow templates"
-msgstr ""
+msgstr "Изтриване на шаблони за работен поток"
 
 #: permissions.py:16
 msgid "Edit workflow templates"
-msgstr ""
+msgstr "Редактиране на шаблони за работен поток"
 
 #: permissions.py:19
 msgid "View workflow templates"
-msgstr ""
+msgstr "Преглед на шаблони за работен поток"
 
 #: permissions.py:25
 msgid "Transition workflow instances"
-msgstr ""
+msgstr "Преходни екземпляри на работния поток"
 
 #: permissions.py:28
 msgid "Execute workflow tools"
 msgstr "Изпълнете инструменти за работния поток"
 
-#: queues.py:7
-msgid "Document states"
-msgstr "Състояния на документа"
-
-#: queues.py:10
+#: queues.py:8
 msgid "Document states fast"
 msgstr "Бързо избиране състояния на документа"
 
-#: queues.py:15
-msgid "Launch all workflows for all documents"
-msgstr "Стартирайте всички работни потоци за всички документи"
+#: queues.py:12
+msgid "Document states medium"
+msgstr ""
 
-#: queues.py:19
-msgid "Launch a workflow"
-msgstr "Стартира работен поток"
-
-#: queues.py:23
-msgid "Launch a workflow for a document"
-msgstr "Стартирайте работен поток за документ"
-
-#: queues.py:27
-msgid "Launch all workflows for a document"
-msgstr "Стартирайте всички работни потоци за документ"
-
-#: queues.py:31
+#: queues.py:17
 msgid "Generate workflow previews"
 msgstr "Генериране на визуализации на работния поток"
 
+#: queues.py:21
+msgid "Launch a workflow for a document"
+msgstr "Стартирайте работен поток за документ"
+
+#: queues.py:25
+msgid "Launch all workflows for a document"
+msgstr "Стартирайте всички работни потоци за документ"
+
+#: queues.py:30
+msgid "Launch all workflows for all documents"
+msgstr "Стартирайте всички работни потоци за всички документи"
+
+#: queues.py:34
+msgid "Launch a workflow"
+msgstr "Стартира работен поток"
+
 #: search.py:12 search.py:19 search.py:26 search.py:33 search.py:40
 msgid "Document workflow transition comment"
-msgstr ""
+msgstr "Коментар за преход на работен поток на документ"
 
 #: serializers.py:65
 msgid "Primary key of the document type to add to the workflow."
-msgstr ""
+msgstr "Първичен ключ от типа документ, който да добавите към работния поток."
 
 #: serializers.py:74
 msgid "Primary key of the document type to remove from the workflow."
 msgstr ""
+"Първичен ключ от типа документ, който да се премахне от работния поток."
 
 #: serializers.py:160
 msgid "Primary key of the destination state to be added."
 msgstr ""
-"Основен ключ на състоянието на предназначение, което трябва да се добави."
+"Основен ключ на състоянието на местоназначение, което трябва да се добави."
 
 #: serializers.py:167
 msgid "Primary key of the origin state to be added."
@@ -717,6 +711,9 @@ msgid ""
 "Time in seconds that the browser should cache the supplied workflow images. "
 "The default of 31559626 seconds correspond to 1 year."
 msgstr ""
+"Време в секунди, през което браузърът трябва да кешира предоставените "
+"изображения на работния поток. По подразбиране 31559626 секунди съответстват"
+" на 1 година."
 
 #: settings.py:43
 msgid ""
@@ -773,12 +770,12 @@ msgstr ""
 
 #: views/workflow_instance_views.py:72
 msgid "There are no details for this workflow instance"
-msgstr "Няма подробности за този етап на работния поток"
+msgstr "Няма данни за този етап на работния поток"
 
 #: views/workflow_instance_views.py:75
 #, python-format
 msgid "Detail of workflow: %(workflow)s"
-msgstr "Подробности за работния поток: %(workflow)s"
+msgstr "Данни за работния поток: %(workflow)s"
 
 #: views/workflow_instance_views.py:113
 #, python-format
@@ -807,6 +804,8 @@ msgstr "Изберете"
 #, python-format
 msgid "Select transition for workflow \"%(workflow)s\" of document \"%(document)s\""
 msgstr ""
+"Изберете преход за работен поток &quot;%(workflow)s&quot; на документ "
+"&quot;%(document)s&quot;"
 
 #: views/workflow_proxy_views.py:32
 msgid ""
@@ -1032,36 +1031,38 @@ msgstr "Работни потоци прикачени към този тип д
 #, python-format
 msgid "Error launching workflows for document \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Грешка при стартиране на работни потоци за документ "
+"&quot;%(instance)s&quot;; %(exception)s"
 
 #: views/workflow_template_views.py:81
 #, python-format
 msgid "Workflows launched successfully for document \"%(object)s\"."
-msgstr ""
+msgstr "Успешно стартирани работни потоци за документ &quot;%(object)s&quot;."
 
 #: views/workflow_template_views.py:82
 #, python-format
 msgid "Workflows launched successfully for %(count)d document."
-msgstr ""
+msgstr "Работните потоци стартираха успешно за документ %(count)d."
 
 #: views/workflow_template_views.py:83
 #, python-format
 msgid "Workflows launched successfully for %(count)d documents."
-msgstr ""
+msgstr "Успешно стартирани работни потоци за документи %(count)d."
 
 #: views/workflow_template_views.py:84
 #, python-format
 msgid "Launch workflow: %(object)s."
-msgstr ""
+msgstr "Стартирайте работния поток: %(object)s."
 
 #: views/workflow_template_views.py:85
 #, python-format
 msgid "Launch workflows for the selected %(count)d document."
-msgstr ""
+msgstr "Стартиране на работни потоци за избрания документ %(count)d."
 
 #: views/workflow_template_views.py:86
 #, python-format
 msgid "Launch workflows for the selected %(count)d documents."
-msgstr ""
+msgstr "Стартиране на работни потоци за избраните %(count)dдокумента."
 
 #: views/workflow_template_views.py:90
 msgid "Launch"
@@ -1084,36 +1085,38 @@ msgstr "Работни потоци, които ще бъдат стартира
 #, python-format
 msgid "Error deleting workflow \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Грешка при изтриването на работния поток &quot;%(instance)s&quot;; "
+"%(exception)s"
 
 #: views/workflow_template_views.py:149
 #, python-format
 msgid "Workflow \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Работен поток &quot;%(object)s&quot; беше изтрит успешно."
 
 #: views/workflow_template_views.py:150
 #, python-format
 msgid "%(count)d workflow deleted successfully."
-msgstr ""
+msgstr "%(count)d работен поток е изтрит успешно."
 
 #: views/workflow_template_views.py:151
 #, python-format
 msgid "%(count)d workflows deleted successfully."
-msgstr ""
+msgstr "%(count)d работни потоци бяха изтрити успешно."
 
 #: views/workflow_template_views.py:152
 #, python-format
 msgid "Delete workflow: %(object)s."
-msgstr ""
+msgstr "Изтрийте работния поток: %(object)s."
 
 #: views/workflow_template_views.py:153
 #, python-format
 msgid "Delete the %(count)d selected workflow."
-msgstr ""
+msgstr "Изтрийте %(count)d избран работен поток."
 
 #: views/workflow_template_views.py:154
 #, python-format
 msgid "Delete the %(count)d selected workflows."
-msgstr ""
+msgstr "Изтрийте%(count)d избрани работни потоци."
 
 #: views/workflow_template_views.py:158
 msgid "All workflow instances will also be deleted."
@@ -1239,11 +1242,7 @@ msgstr ""
 msgid "Timeout"
 msgstr "Изтичане на времето"
 
-<<<<<<< HEAD
-#: workflow_actions.py:133
-=======
-#: workflow_actions.py:136
->>>>>>> origin/series/3.5
+#: workflow_actions.py:137
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
@@ -1251,19 +1250,11 @@ msgstr ""
 "Време в секунди за изчакване на отговор. Може да бъде статична стойност или "
 "шаблон."
 
-<<<<<<< HEAD
-#: workflow_actions.py:139
+#: workflow_actions.py:143
 msgid "Payload"
 msgstr "Полезен товар"
 
-#: workflow_actions.py:142
-=======
-#: workflow_actions.py:142
-msgid "Payload"
-msgstr "Полезен товар"
-
-#: workflow_actions.py:145
->>>>>>> origin/series/3.5
+#: workflow_actions.py:146
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
 "return a JSON document. Templates receive the workflow log entry instance as"
@@ -1277,19 +1268,11 @@ msgstr ""
 " „entry_log“ предоставя характеристиките „workflow_instance“, „datetime“, "
 "„transition“, „user“ и „comment“."
 
-<<<<<<< HEAD
-#: workflow_actions.py:152
+#: workflow_actions.py:156
 msgid "Username"
 msgstr "Име на потребител"
 
-#: workflow_actions.py:155
-=======
-#: workflow_actions.py:155
-msgid "Username"
-msgstr "Име на потребител"
-
-#: workflow_actions.py:158
->>>>>>> origin/series/3.5
+#: workflow_actions.py:159
 msgid ""
 "Username to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
@@ -1303,19 +1286,11 @@ msgstr ""
 " &quot;entry_log&quot;. На свой ред „entry_log“ предоставя атрибутите "
 "„workflow_instance“, „timetime“, „transition“, „user“ и „comment“."
 
-<<<<<<< HEAD
-#: workflow_actions.py:165
+#: workflow_actions.py:169
 msgid "Password"
 msgstr "Парола"
 
-#: workflow_actions.py:168
-=======
-#: workflow_actions.py:168
-msgid "Password"
-msgstr "Парола"
-
-#: workflow_actions.py:171
->>>>>>> origin/series/3.5
+#: workflow_actions.py:172
 msgid ""
 "Password to use for making the request with HTTP Basic Auth. Can be a static"
 " value or a template. Templates receive the workflow log entry instance as "
@@ -1329,19 +1304,11 @@ msgstr ""
 "&quot;entry_log&quot;. На свой ред „entry_log“ предоставя атрибутите "
 "„workflow_instance“, „datetime“, „transition“, „user“ и „comment“."
 
-<<<<<<< HEAD
-#: workflow_actions.py:178
+#: workflow_actions.py:182
 msgid "Method"
 msgstr "Метод"
 
-#: workflow_actions.py:181
-=======
-#: workflow_actions.py:181
-msgid "Method"
-msgstr "Метод"
-
-#: workflow_actions.py:184
->>>>>>> origin/series/3.5
+#: workflow_actions.py:185
 msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE. Can be a static value or a template that "
@@ -1349,7 +1316,6 @@ msgid ""
 "as part of their context via the variable \"entry_log\". The \"entry_log\" "
 "in turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-<<<<<<< HEAD
 msgstr ""
 "Методът HTTP, който да се използва за заявката. Типичен избор са OPTIONS, "
 "HEAD, POST, GET, PUT, PATCH, DELETE. Може да бъде статична стойност или "
@@ -1358,20 +1324,11 @@ msgstr ""
 "&quot;entry_log&quot;. На свой ред „entry_log“ предоставя атрибутите "
 "„workflow_instance“, „datetime“, „transition“, „user“ и „comment“."
 
-#: workflow_actions.py:192
+#: workflow_actions.py:196
 msgid "Headers"
 msgstr "Заглавки"
 
-#: workflow_actions.py:195
-=======
-msgstr "Методът HTTP, който да се използва за заявката. Типичен избор са OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. Може да бъде статична стойност или шаблон, който връща текста на метода. Шаблоните получават записа в дневника на работния поток като част от техния контекст чрез променливата &quot;entry_log&quot;. На свой ред „entry_log“ предоставя атрибутите „workflow_instance“, „datetime“, „transition“, „user“ и „comment“."
-
-#: workflow_actions.py:195
-msgid "Headers"
-msgstr "Заглавки"
-
-#: workflow_actions.py:198
->>>>>>> origin/series/3.5
+#: workflow_actions.py:199
 msgid ""
 "Headers to send with the HTTP request. Must be in JSON format. Can be a "
 "static value or a template. Templates receive the workflow log entry "
@@ -1385,19 +1342,11 @@ msgstr ""
 "&quot;entry_log&quot;. На свой ред „entry_log“ предоставя атрибутите "
 "„workflow_instance“, „datetime“, „transition“, „user“ и „comment“."
 
-<<<<<<< HEAD
-#: workflow_actions.py:209
+#: workflow_actions.py:213
 msgid "Perform an HTTP request"
 msgstr "Извършете HTTP заявка"
 
-#: workflow_actions.py:238
-=======
-#: workflow_actions.py:212
-msgid "Perform an HTTP request"
-msgstr "Извършете HTTP заявка"
-
-#: workflow_actions.py:241
->>>>>>> origin/series/3.5
+#: workflow_actions.py:242
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
 msgstr "%(field_name)s JSON грешка: %(exception)s"

@@ -10,18 +10,18 @@
 # Olivier W, 2021
 # Baptiste GAILLET <baptiste.gaillet@cstb.fr>, 2021
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
-# Yves Dubois <ydubois@gmail.com>, 2021
-# Frédéric Sheedy <sheedf@gmail.com>, 2021
-# Guillaume Trottier <gui.trottier@gmail.com>, 2021
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2021
+# Yves Dubois <ydubois@gmail.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>, 2021\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,16 +65,16 @@ msgstr ""
 
 #: apps.py:396
 msgid "File timestamps"
-msgstr ""
+msgstr "Horodatage des fichiers"
 
 #: apps.py:401 links/document_file_page_links.py:79
-#: models/document_file_models.py:119 models/document_file_page_models.py:40
+#: models/document_file_models.py:120 models/document_file_page_models.py:42
 #: search.py:51
 msgid "Document file"
-msgstr ""
+msgstr "Fichier"
 
-#: apps.py:405 models/document_file_page_models.py:44
-#: models/document_version_page_models.py:56
+#: apps.py:405 models/document_file_page_models.py:46
+#: models/document_version_page_models.py:58
 msgid "Page number"
 msgstr "Numéro de page"
 
@@ -92,9 +92,8 @@ msgstr "Renvoyez l'instance de document."
 
 #: apps.py:415 links/document_file_links.py:63
 #: links/document_file_page_links.py:73 links/document_version_links.py:75
-#: links/document_version_page_links.py:96 models/document_file_models.py:75
+#: links/document_version_page_links.py:96 models/document_file_models.py:76
 #: models/document_models.py:129 models/document_version_models.py:45
-#: models/duplicated_document_models.py:18
 #: models/favorite_document_models.py:28
 #: models/recently_accessed_document_models.py:27 search.py:23
 msgid "Document"
@@ -265,20 +264,20 @@ msgid "Trashed document restored"
 msgstr "Document mis dans la corbeille restauré"
 
 #: events.py:107
-msgid "Document downloaded"
-msgstr "Document téléchargé"
+msgid "Document downloaded (historic)"
+msgstr ""
 
 #: events.py:110
 msgid "Document file created (historic)"
 msgstr ""
 
-#: events.py:113
-msgid "Document version reverted"
-msgstr "Retour à la version précédente du document"
+#: events.py:114
+msgid "Document version reverted (historic)"
+msgstr ""
 
-#: events.py:116
-msgid "Document version uploaded"
-msgstr "Version du document téléversée"
+#: events.py:118
+msgid "Document version uploaded (historic)"
+msgstr ""
 
 #: forms/document_file_forms.py:38
 msgid "Date added"
@@ -288,7 +287,7 @@ msgstr "Date d'ajout"
 msgid "Mimetype"
 msgstr "Type MIME"
 
-#: forms/document_file_forms.py:47 models/document_file_models.py:107
+#: forms/document_file_forms.py:47 models/document_file_models.py:108
 msgid "Encoding"
 msgstr "Encodage"
 
@@ -304,7 +303,7 @@ msgstr "Présent dans le stockage local"
 msgid "Path in storage"
 msgstr "Chemin dans le stockage"
 
-#: forms/document_file_forms.py:61 models/document_file_models.py:114
+#: forms/document_file_forms.py:61 models/document_file_models.py:115
 msgid "Checksum"
 msgstr "Somme de contrôle"
 
@@ -434,8 +433,8 @@ msgstr "Page précédente"
 msgid "Next page"
 msgstr "Page suivante"
 
-#: links/document_file_page_links.py:86 models/document_file_page_models.py:52
-#: models/document_file_page_models.py:283
+#: links/document_file_page_links.py:86 models/document_file_page_models.py:54
+#: models/document_file_page_models.py:317
 msgid "Document file pages"
 msgstr "Page du fichier de document"
 
@@ -539,13 +538,13 @@ msgstr "Réinitialiser les pages"
 
 #: links/document_version_page_links.py:102
 #: models/document_version_models.py:65
-#: models/document_version_page_models.py:50 search.py:117
+#: models/document_version_page_models.py:52 search.py:117
 msgid "Document version"
 msgstr "Version du document"
 
 #: links/document_version_page_links.py:108
-#: models/document_version_page_models.py:73
-#: models/document_version_page_models.py:344
+#: models/document_version_page_models.py:75
+#: models/document_version_page_models.py:402
 msgid "Document version pages"
 msgstr "Pages de la version du document"
 
@@ -584,14 +583,20 @@ msgstr "Défaut"
 #: literals.py:76
 msgid "Replace. Create a new version and use the new file pages."
 msgstr ""
+"Remplace. Créez une nouvelle version et utilisez les nouvelles pages du "
+"fichier."
 
 #: literals.py:77
 msgid "Append. Create a new version and append the new file pages."
 msgstr ""
+"Ajouter. Créez une nouvelle version et ajoutez les nouvelles pages de "
+"fichiers."
 
 #: literals.py:78
 msgid "Keep. Do not create a new version and keep the current version pages."
 msgstr ""
+"Garder. Ne créez pas de nouvelle version et conservez les pages de la "
+"version actuelle."
 
 #: literals.py:86
 msgid "January"
@@ -645,66 +650,66 @@ msgstr "Décembre"
 msgid "All pages"
 msgstr "Toutes les pages"
 
-#: models/document_file_models.py:79
+#: models/document_file_models.py:80
 msgid "The server date and time when the document file was processed."
 msgstr ""
 "La date et l'heure du serveur lorsque le fichier de document a été traité."
 
-#: models/document_file_models.py:80 models/document_version_models.py:50
+#: models/document_file_models.py:81 models/document_version_models.py:50
 msgid "Timestamp"
 msgstr "Horodatage"
 
-#: models/document_file_models.py:84
+#: models/document_file_models.py:85
 msgid "An optional short text describing the document file."
 msgstr "Un court texte facultatif décrivant le fichier de document."
 
-#: models/document_file_models.py:85 models/document_version_models.py:55
+#: models/document_file_models.py:86 models/document_version_models.py:55
 msgid "Comment"
 msgstr "Commentaire"
 
-#: models/document_file_models.py:90
+#: models/document_file_models.py:91
 msgid "File"
 msgstr "Fichier"
 
-#: models/document_file_models.py:93
+#: models/document_file_models.py:94
 msgid "Filename"
 msgstr "Nom de fichier"
 
-#: models/document_file_models.py:97
+#: models/document_file_models.py:98
 msgid ""
 "The document file's file mimetype. MIME types are a standard way to describe"
 " the format of a file, in this case the file format of the document. Some "
 "examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
-#: models/document_file_models.py:101
+#: models/document_file_models.py:102
 msgid "MIME type"
 msgstr "Type MIME"
 
-#: models/document_file_models.py:105
+#: models/document_file_models.py:106
 msgid ""
 "The document file file encoding. binary 7-bit, binary 8-bit, text, base64, "
 "etc."
 msgstr ""
 
-#: models/document_file_models.py:120 storages.py:27
+#: models/document_file_models.py:121 storages.py:27
 msgid "Document files"
 msgstr "Fichiers de document"
 
-#: models/document_file_models.py:313 models/document_file_page_models.py:259
+#: models/document_file_models.py:321 models/document_file_page_models.py:277
 #: models/document_models.py:70 models/document_models.py:290
 #: models/document_models.py:295 models/document_type_models.py:41
 #: models/document_type_models.py:202 models/document_version_models.py:219
-#: models/document_version_page_models.py:309
+#: models/document_version_page_models.py:351
 msgid "Label"
 msgstr "Étiquette"
 
-#: models/document_file_page_models.py:51
-#: models/document_file_page_models.py:282 search.py:78
+#: models/document_file_page_models.py:53
+#: models/document_file_page_models.py:316 search.py:78
 msgid "Document file page"
 msgstr "Page du fichier de document"
 
-#: models/document_file_page_models.py:253
+#: models/document_file_page_models.py:271
 #, python-format
 msgid "%(document_file)s - page %(page_num)d of %(total_pages)d"
 msgstr "%(document_file)s - page %(page_num)d de %(total_pages)d"
@@ -740,6 +745,8 @@ msgid ""
 "The server date and time when the document was finally processed and created"
 " in the system."
 msgstr ""
+"La date et l'heure du serveur lorsque le document a été traité et créé dans "
+"le système."
 
 #: models/document_models.py:81
 msgid "Created"
@@ -747,7 +754,7 @@ msgstr "Créée"
 
 #: models/document_models.py:85
 msgid "The primary language in the document."
-msgstr ""
+msgstr "La langue principale utilisée dans document."
 
 #: models/document_models.py:90
 msgid "Whether or not this document is in the trash."
@@ -827,6 +834,8 @@ msgid ""
 "The class responsible for producing the actual filename used to store the "
 "uploaded documents."
 msgstr ""
+"La classe responsable de la production du nom de fichier utilisé pour "
+"stocker les documents téléversés."
 
 #: models/document_type_models.py:68
 msgid "Filename generator backend"
@@ -834,11 +843,11 @@ msgstr "Utilitaire pour générer les noms de fichier"
 
 #: models/document_type_models.py:72
 msgid "The arguments for the filename generator backend as a YAML dictionary."
-msgstr ""
+msgstr "Les arguments pour le générateur de nom de fichier, en format YAML."
 
 #: models/document_type_models.py:75
 msgid "Filename generator backend arguments"
-msgstr ""
+msgstr "Arguments pour le générateur de nom de fichier"
 
 #: models/document_type_models.py:84
 msgid "Documents types"
@@ -854,7 +863,7 @@ msgstr "Étiquetage rapide"
 
 #: models/document_version_models.py:49
 msgid "The server date and time when the document version was created."
-msgstr ""
+msgstr "La date et l'heure du serveur que la version du document a été créée."
 
 #: models/document_version_models.py:54
 msgid "An optional short text describing the document version."
@@ -870,15 +879,15 @@ msgstr "Actif"
 
 #: models/document_version_models.py:66
 msgid "Document versions"
-msgstr ""
+msgstr "Versions du document"
 
 #: models/document_version_models.py:137
 msgid "Document version export to PDF"
-msgstr ""
+msgstr "Exportation de la version du document au format PDF"
 
 #: models/document_version_models.py:167
 msgid "Document version exported."
-msgstr ""
+msgstr "Version du document exportée."
 
 #: models/document_version_models.py:169
 #, python-format
@@ -888,40 +897,28 @@ msgid ""
 "(%(download_list_url)s)."
 msgstr ""
 
-#: models/document_version_page_models.py:54
+#: models/document_version_page_models.py:56
 msgid "Unique integer number for the page. Pages are ordered by this number."
 msgstr ""
+"Numéro entier et unique pour la page. Les pages sont classées par ce numéro."
 
-#: models/document_version_page_models.py:59
+#: models/document_version_page_models.py:61
 msgid "Content type for the source object of the page."
 msgstr ""
 
-#: models/document_version_page_models.py:63
+#: models/document_version_page_models.py:65
 msgid "ID for the source object of the page."
-msgstr ""
+msgstr "ID de l'objet source de la page."
 
-#: models/document_version_page_models.py:72
-#: models/document_version_page_models.py:343 search.py:141
+#: models/document_version_page_models.py:74
+#: models/document_version_page_models.py:401 search.py:141
 msgid "Document version page"
-msgstr ""
+msgstr "Page de version du document"
 
-#: models/document_version_page_models.py:303
+#: models/document_version_page_models.py:345
 #, python-format
 msgid "%(document_version)s page %(page_number)d of %(total_pages)d"
-msgstr ""
-
-#: models/duplicated_document_models.py:21
-#: models/duplicated_document_models.py:31
-msgid "Duplicated documents"
-msgstr "Documents doublons"
-
-#: models/duplicated_document_models.py:24
-msgid "Added"
-msgstr "Ajouté"
-
-#: models/duplicated_document_models.py:30
-msgid "Duplicated document"
-msgstr "Document en double"
+msgstr "%(document_version)s page %(page_number)d de %(total_pages)d"
 
 #: models/favorite_document_models.py:24
 #: models/recently_accessed_document_models.py:23
@@ -930,7 +927,7 @@ msgstr "Utilisateur"
 
 #: models/favorite_document_models.py:31
 msgid "Date and time added"
-msgstr ""
+msgstr "Date et heure d'ajout"
 
 #: models/favorite_document_models.py:38
 msgid "Favorite document"
@@ -974,47 +971,47 @@ msgstr "Visualiser les documents"
 
 #: permissions.py:28
 msgid "Delete document files"
-msgstr ""
+msgstr "Supprimer les documents"
 
 #: permissions.py:31
 msgid "Edit document files"
-msgstr ""
+msgstr "Modifier les documents"
 
 #: permissions.py:34
 msgid "Download document files"
-msgstr ""
+msgstr "Télécharger les documents"
 
 #: permissions.py:37
 msgid "Create new document files"
-msgstr ""
+msgstr "Créer de nouveaux documents"
 
 #: permissions.py:40
 msgid "Print document files"
-msgstr ""
+msgstr "Imprimer des documents"
 
 #: permissions.py:43
 msgid "Execute document file modifying tools"
-msgstr ""
+msgstr "Appliquer les modifications pour ce fichier"
 
 #: permissions.py:47
 msgid "View document files"
-msgstr ""
+msgstr "Afficher les fichiers"
 
 #: permissions.py:54
 msgid "Create document versions"
-msgstr ""
+msgstr "Créer des versions de document"
 
 #: permissions.py:58
 msgid "Delete document versions"
-msgstr ""
+msgstr "Supprimer les versions du document"
 
 #: permissions.py:62
 msgid "Edit document versions"
-msgstr ""
+msgstr "Modifier les versions du document"
 
 #: permissions.py:66
 msgid "Export document versions"
-msgstr ""
+msgstr "Exporter les versions du document"
 
 #: permissions.py:70
 msgid "Print document versions"
@@ -1022,7 +1019,7 @@ msgstr ""
 
 #: permissions.py:73
 msgid "View document versions"
-msgstr ""
+msgstr "Afficher les versions du document"
 
 #: permissions.py:83
 msgid "Create document types"
@@ -1046,7 +1043,7 @@ msgstr "Restaurer le document mis à la corbeille"
 
 #: permissions.py:101
 msgid "Delete trashed documents"
-msgstr ""
+msgstr "Supprimer les documents mis dans la corbeille"
 
 #: permissions.py:104
 msgid "Trash documents"
@@ -1066,7 +1063,7 @@ msgstr "Transferts"
 
 #: queues.py:29
 msgid "Generate document file page image"
-msgstr ""
+msgstr "Générer une image de la page du document"
 
 #: queues.py:33
 msgid "Generate document version page image"
@@ -1082,11 +1079,11 @@ msgstr "Supprimer un document"
 
 #: queues.py:46
 msgid "Reset the page list of a document version"
-msgstr ""
+msgstr "Réinitialiser la liste de pages d'une version de document"
 
 #: queues.py:50
 msgid "Export a document version"
-msgstr ""
+msgstr "Exporter une version de document"
 
 #: queues.py:55
 msgid "Check document type trash periods"
@@ -1106,11 +1103,11 @@ msgstr "Mettre à jour le compteur de page"
 
 #: queues.py:80
 msgid "Upload new document file"
-msgstr ""
+msgstr "Téléverser un nouveau fichier"
 
 #: search.py:31 search.py:62 search.py:89 search.py:129 search.py:153
 msgid "Document type label"
-msgstr ""
+msgstr "Type de document"
 
 #: search.py:65 search.py:92 search.py:132 search.py:159
 msgid "Document label"
@@ -1122,7 +1119,7 @@ msgstr "Description du document"
 
 #: search.py:99
 msgid "Document file checksum"
-msgstr ""
+msgstr "Somme de contrôle du fichier"
 
 #: search.py:102
 msgid "Document file MIME type"
@@ -1130,11 +1127,11 @@ msgstr ""
 
 #: search.py:156
 msgid "Document version comment"
-msgstr ""
+msgstr "Commentaire sur la version du document"
 
 #: serializers/document_file_serializers.py:37
 msgid "Binary content for the new file."
-msgstr ""
+msgstr "Contenu binaire du nouveau fichier."
 
 #: serializers/document_serializers.py:23
 msgid "Document type ID for the new document."
@@ -1150,7 +1147,7 @@ msgstr ""
 
 #: settings.py:54
 msgid ""
-"The threshold at which the DOCUMENT_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND "
+"The threshold at which the DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND "
 "will start deleting the oldest document file page image cache files. Specify"
 " the size in bytes."
 msgstr ""
@@ -1295,7 +1292,7 @@ msgstr "Nouveaux documents par mois"
 
 #: statistics.py:241
 msgid "New document files per month"
-msgstr ""
+msgstr "Nouveaux documents par mois"
 
 #: statistics.py:248
 msgid "New document pages per month"
@@ -1307,7 +1304,7 @@ msgstr "Nombre total de documents chaque mois"
 
 #: statistics.py:262
 msgid "Total document files at each month"
-msgstr ""
+msgstr "Nombre total de documents chaque mois"
 
 #: statistics.py:269
 msgid "Total document pages at each month"
@@ -1327,7 +1324,7 @@ msgstr ""
 
 #: storages.py:41
 msgid "Document file page images"
-msgstr ""
+msgstr "Images des pages du document"
 
 #: storages.py:49
 msgid ""
@@ -1345,11 +1342,11 @@ msgstr "Aperçu de l'image de la page du document"
 
 #: templates/documents/errors/no_valid_version.html:5
 msgid "No valid or active version"
-msgstr ""
+msgstr "Aucune version valide ou active"
 
 #: templates/documents/errors/no_version_pages.html:5
 msgid "No version pages"
-msgstr ""
+msgstr "Aucune page de version"
 
 #: templates/documents/forms/widgets/page_carousel.html:16
 #, python-format
@@ -1379,6 +1376,8 @@ msgstr "Langue inconnue \"%s\""
 #, python-format
 msgid "%(count)d document file queued for page count recalculation."
 msgstr ""
+"%(count)d document mis en file d'attente pour le recalcul du nombre de "
+"pages."
 
 #: views/document_file_page_views.py:54
 #, python-format
@@ -1388,13 +1387,13 @@ msgstr ""
 #: views/document_file_page_views.py:62
 msgid "Recalculate the page count of the selected document file?"
 msgid_plural "Recalculate the page count of the selected document files?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Recalculer le nombre de pages du fichier de document sélectionné?"
+msgstr[1] "Recalculer le nombre de pages des documents sélectionnés?"
 
 #: views/document_file_page_views.py:73
 #, python-format
 msgid "Recalculate the page count of the document file: %s?"
-msgstr ""
+msgstr "Recalculez le nombre de pages du document: %s?"
 
 #: views/document_file_page_views.py:100
 msgid ""
@@ -1406,12 +1405,12 @@ msgstr ""
 
 #: views/document_file_page_views.py:106
 msgid "No document file pages available"
-msgstr ""
+msgstr "Aucune page de fichier disponible"
 
 #: views/document_file_page_views.py:108
 #, python-format
 msgid "Pages of document file: %s"
-msgstr ""
+msgstr "Pages du document: %s"
 
 #: views/document_file_page_views.py:182
 #: views/document_version_page_views.py:335
@@ -1437,32 +1436,32 @@ msgstr ""
 #: views/document_file_views.py:52
 #, python-format
 msgid "Document file \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Le document \"%(object)s\" a été supprimé avec succès."
 
 #: views/document_file_views.py:55
 #, python-format
 msgid "%(count)d document file deleted successfully."
-msgstr ""
+msgstr " %(count)d document a été supprimé avec succès."
 
 #: views/document_file_views.py:58
 #, python-format
 msgid "%(count)d document files deleted successfully."
-msgstr ""
+msgstr "%(count)d documents ont été supprimés avec succès."
 
 #: views/document_file_views.py:60
 #, python-format
 msgid "Delete document file: %(object)s."
-msgstr ""
+msgstr "Supprimer le document: %(object)s."
 
 #: views/document_file_views.py:61
 #, python-format
 msgid "Delete the %(count)d selected document file."
-msgstr ""
+msgstr "Supprimez %(count)d  document sélectionné."
 
 #: views/document_file_views.py:62
 #, python-format
 msgid "Delete the %(count)d selected document files."
-msgstr ""
+msgstr "Supprimez %(count)d documents sélectionnés ."
 
 #: views/document_file_views.py:67
 msgid ""
@@ -1473,7 +1472,7 @@ msgstr ""
 #: views/document_file_views.py:117
 #, python-format
 msgid "Edit document file: %s"
-msgstr ""
+msgstr "Modifier le document: %s"
 
 #: views/document_file_views.py:156
 msgid ""
@@ -1483,27 +1482,28 @@ msgstr ""
 
 #: views/document_file_views.py:160
 msgid "No files available"
-msgstr ""
+msgstr "Aucun fichier disponible"
 
 #: views/document_file_views.py:163
 #, python-format
 msgid "Files of document: %s"
-msgstr ""
+msgstr "Fichiers: %s"
 
 #: views/document_file_views.py:192
 #, python-format
 msgid "Preview of document file: %s"
-msgstr ""
+msgstr "Aperçu du document: %s"
 
 #: views/document_file_views.py:237
 #, python-format
 msgid "Properties of document file: %s"
-msgstr ""
+msgstr "Propriétés du fichier: %s"
 
 #: views/document_file_views.py:246
 #, python-format
 msgid "Transformation clear request processed for %(count)d document file."
 msgstr ""
+"Demande d'effacement de transformation complétée pour %(count)d document."
 
 #: views/document_file_views.py:249
 #, python-format
@@ -1520,7 +1520,7 @@ msgstr[1] ""
 #: views/document_file_views.py:266
 #, python-format
 msgid "Clear all the page transformations for the document file: %s?"
-msgstr ""
+msgstr "Effacez toutes les transformations de page pour le document: %s?"
 
 #: views/document_file_views.py:283
 #, python-format
@@ -1528,6 +1528,8 @@ msgid ""
 "Error deleting the page transformations for document_file: "
 "%(document_file)s; %(error)s."
 msgstr ""
+"Erreur lors de la suppression des transformations de page pour le document: "
+"%(document_file)s; %(error)s."
 
 #: views/document_file_views.py:319
 #, python-format
@@ -1535,6 +1537,8 @@ msgid ""
 "Error cloning the page transformations for document file: %(document_file)s;"
 " %(error)s."
 msgstr ""
+"Erreur de clonage des transformations de page pour le document: "
+"%(document_file)s; %(error)s."
 
 #: views/document_file_views.py:328 views/document_version_views.py:356
 msgid "Transformations cloned successfully."
@@ -1548,7 +1552,7 @@ msgstr "Soumettre"
 #: views/document_file_views.py:344
 #, python-format
 msgid "Clone page transformations of document file: %s"
-msgstr ""
+msgstr "Copier les transformations du document: %s"
 
 #: views/document_type_views.py:53
 #, python-format
@@ -1635,6 +1639,8 @@ msgstr "Libellés rapides pour le type de document : %s"
 #, python-format
 msgid "Filename generation setup for document type: %s"
 msgstr ""
+"Configuration de la génération de nom de fichier pour le type de document: "
+"%s"
 
 #: views/document_version_page_views.py:63
 msgid ""
@@ -1645,7 +1651,7 @@ msgstr ""
 #: views/document_version_page_views.py:68
 #, python-format
 msgid "Delete document version page %s ?"
-msgstr ""
+msgstr "Supprimer la page de la version du document %s?"
 
 #: views/document_version_page_views.py:103
 msgid ""
@@ -1655,12 +1661,12 @@ msgstr ""
 
 #: views/document_version_page_views.py:107
 msgid "No document version pages available"
-msgstr ""
+msgstr "Aucune page de version disponible pour ce document"
 
 #: views/document_version_page_views.py:109
 #, python-format
 msgid "Pages of document version: %s"
-msgstr ""
+msgstr "Pages de la version du document: %s"
 
 #: views/document_version_page_views.py:149
 msgid "None"
@@ -1683,6 +1689,8 @@ msgstr ""
 #, python-format
 msgid "%(count)d document version queued for page list reset."
 msgstr ""
+"%(count)d version du document mis en file pour la réinitialisation de la "
+"liste de pages."
 
 #: views/document_version_page_views.py:234
 #, python-format
@@ -1691,47 +1699,48 @@ msgstr ""
 
 #: views/document_version_page_views.py:242
 msgid "The page list will match that of the latest document file."
-msgstr ""
+msgstr "La liste des pages correspondra à celle du dernier fichier."
 
 #: views/document_version_page_views.py:245
 msgid "Reset the page list of the selected document version?"
 msgid_plural "Reset the page list of the selected document versions?"
 msgstr[0] ""
-msgstr[1] ""
+"Réinitialiser la liste des pages de la version de document sélectionnée?"
+msgstr[1] "Réinitialiser la liste des pages des versions sélectionnées?"
 
 #: views/document_version_page_views.py:256
 #, python-format
 msgid "Reset the page list of document version: %s?"
-msgstr ""
+msgstr "Réinitialiser la liste des pages de la version du document: %s?"
 
 #: views/document_version_views.py:55
 #, python-format
 msgid "Make the document version \"%s\" the active version?"
-msgstr ""
+msgstr "Faire de la version \"%s\" la version active du document?"
 
 #: views/document_version_views.py:63
 msgid "Successfully changed the active document version."
-msgstr ""
+msgstr "La version active du document a bien été modifiée."
 
 #: views/document_version_views.py:78
 #, python-format
 msgid "Create a document version for document: %s"
-msgstr ""
+msgstr "Créer une version de document pour le document: %s"
 
 #: views/document_version_views.py:97
 #, python-format
 msgid "Document version \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "La version du document \"%(object)s\" a bien été supprimée."
 
 #: views/document_version_views.py:100
 #, python-format
 msgid "%(count)d document version deleted successfully."
-msgstr ""
+msgstr " %(count)d version du document a été supprimée avec succès."
 
 #: views/document_version_views.py:103
 #, python-format
 msgid "%(count)d document versions deleted successfully."
-msgstr ""
+msgstr "%(count)d versions du document ont été supprimées avec succès."
 
 #: views/document_version_views.py:105
 #, python-format
@@ -1741,17 +1750,17 @@ msgstr ""
 #: views/document_version_views.py:106
 #, python-format
 msgid "Delete %(count)d document version."
-msgstr ""
+msgstr "Supprimez %(count)d version du document ."
 
 #: views/document_version_views.py:107
 #, python-format
 msgid "Delete %(count)d document versions."
-msgstr ""
+msgstr "Supprimez %(count)d versions de ce document."
 
 #: views/document_version_views.py:131
 #, python-format
 msgid "Edit document version: %s"
-msgstr ""
+msgstr "Modifier la version du document: %s"
 
 #: views/document_version_views.py:152
 #, python-format
@@ -1767,16 +1776,18 @@ msgstr ""
 #, python-format
 msgid "%(count)d document versions exports successfully queued."
 msgstr ""
+"%(count)d exportations de versions de document ont été correctement mises en"
+" file de traitement."
 
 #: views/document_version_views.py:160
 #, python-format
 msgid "Export document version \"%(object)s\"."
-msgstr ""
+msgstr "Exporter la version du document \"%(object)s\"."
 
 #: views/document_version_views.py:161
 #, python-format
 msgid "Export %(count)d document version."
-msgstr ""
+msgstr "Exporter %(count)d version du document."
 
 #: views/document_version_views.py:162
 #, python-format
@@ -1788,6 +1799,8 @@ msgid ""
 "The process will be performed in the background. The exported file will be "
 "available in the downloads area."
 msgstr ""
+"Le processus sera exécuté en arrière-plan. Le fichier exporté sera "
+"disponible dans la zone de téléchargement."
 
 #: views/document_version_views.py:206
 msgid ""
@@ -1797,7 +1810,7 @@ msgstr ""
 
 #: views/document_version_views.py:209
 msgid "No versions available"
-msgstr ""
+msgstr "Aucune version disponible"
 
 #: views/document_version_views.py:212
 #, python-format
@@ -1825,12 +1838,17 @@ msgid "Clear all the page transformations for the selected document version?"
 msgid_plural ""
 "Clear all the page transformations for the selected document version?"
 msgstr[0] ""
+"Effacer toutes les transformations de page pour la version de document "
+"sélectionnée?"
 msgstr[1] ""
+"Effacer toutes les transformations de page pour la version du document "
+"sélectionné?"
 
 #: views/document_version_views.py:294
 #, python-format
 msgid "Clear all the page transformations for the document version: %s?"
 msgstr ""
+"Effacez toutes les transformations de page pour la version du document: %s?"
 
 #: views/document_version_views.py:311
 #, python-format
@@ -1845,6 +1863,8 @@ msgid ""
 "Error cloning the page transformations for document version: "
 "%(document_version)s; %(error)s."
 msgstr ""
+"Erreur de clonage des transformations de page pour la version du document: "
+"%(document_version)s; %(error)s."
 
 #: views/document_version_views.py:372
 #, python-format
@@ -1916,7 +1936,7 @@ msgstr "Modifier les propriétés du document : %s"
 #: views/document_views.py:196
 #, python-format
 msgid "Properties of document: %s"
-msgstr ""
+msgstr "Propriétés du document: %s"
 
 #: views/favorite_document_views.py:32
 #, python-format
@@ -1948,8 +1968,8 @@ msgstr "Ajouter"
 #: views/favorite_document_views.py:58
 msgid "Add the selected document to favorites?"
 msgid_plural "Add the selected documents to favorites?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ajouter le document sélectionné aux favoris?"
+msgstr[1] "Ajouter les documents sélectionnés aux favoris?"
 
 #: views/favorite_document_views.py:76
 #, python-format
@@ -1973,8 +1993,8 @@ msgstr "Retirer"
 #: views/favorite_document_views.py:92
 msgid "Remove the selected document from favorites?"
 msgid_plural "Remove the selected documents from favorites?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Supprimer le document sélectionné des favoris?"
+msgstr[1] "Supprimer les documents sélectionnés des favoris?"
 
 #: views/misc_views.py:44
 #, python-format
@@ -1991,15 +2011,15 @@ msgstr ""
 
 #: views/recently_accessed_document_views.py:27
 msgid "There are no recently accessed documents"
-msgstr ""
+msgstr "Il n'y a pas de document récemment consulté"
 
 #: views/recently_created_document_views.py:21
 msgid "This view will list the latest documents created in the system."
-msgstr ""
+msgstr "Cette page répertorie les derniers documents créés dans le système."
 
 #: views/recently_created_document_views.py:25
 msgid "There are no recently created documents"
-msgstr ""
+msgstr "Il n'y a pas de document récemment créé"
 
 #: views/trashed_document_views.py:37
 #, python-format
@@ -2014,8 +2034,8 @@ msgstr "%(count)d documents déplacés dans la corbeille."
 #: views/trashed_document_views.py:46
 msgid "Move the selected document to the trash?"
 msgid_plural "Move the selected documents to the trash?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Déplacer le document sélectionné vers la corbeille?"
+msgstr[1] "Déplacer les documents sélectionnés vers la corbeille?"
 
 #: views/trashed_document_views.py:76
 msgid "Empty trash?"
@@ -2023,7 +2043,7 @@ msgstr "Vider la corbeille ?"
 
 #: views/trashed_document_views.py:84
 msgid "The trash emptying task has been queued."
-msgstr ""
+msgstr "La tâche de vider de la corbeille a été mise en file de traitement."
 
 #: views/trashed_document_views.py:94
 #, python-format
@@ -2038,8 +2058,8 @@ msgstr "%(count)d documents dans corbeille soumis pour suppression."
 #: views/trashed_document_views.py:103
 msgid "Delete the selected trashed document?"
 msgid_plural "Delete the selected trashed documents?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Supprimer le document sélectionné dans la corbeille?"
+msgstr[1] "Supprimer les documents sélectionnés dans la corbeille?"
 
 #: views/trashed_document_views.py:137
 msgid ""
@@ -2073,7 +2093,7 @@ msgstr[1] "Restaurer les documents sélectionnés dans la corbeille?"
 
 #: workflow_actions.py:13
 msgid "New document type for the workflow document."
-msgstr ""
+msgstr "Nouveau type de document pour le flux de travail."
 
 #: workflow_actions.py:18
 msgid "Change document type"

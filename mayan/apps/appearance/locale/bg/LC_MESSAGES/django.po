@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -234,7 +234,9 @@ msgstr "Свържете се с вашия системен администр�
 
 #: templates/500.html:47
 msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
-msgstr "Проверете дневниците за съобщения с тагове \"ERROR\", \"CRITICAL\" или \"FATAL\"."
+msgstr ""
+"Проверете дневниците за съобщения с маркери \"ERROR\", \"CRITICAL\" или "
+"\"FATAL\"."
 
 #: templates/500.html:48
 #, python-format
@@ -394,7 +396,7 @@ msgstr "Идентификатор"
 
 #: templates/appearance/generic_list_subtemplate.html:133
 msgid "Facets"
-msgstr ""
+msgstr "Фасети"
 
 #: templates/appearance/home.html:10
 msgid "Dashboard"
@@ -471,18 +473,17 @@ msgstr "Грешка при свързването със сървъра"
 msgid "Check you network connection and try again in a few moments."
 msgstr "Проверете връзката с мрежата и опитайте отново след няколко секунди."
 
-#: templatetags/appearance_tags.py:43
+#: templatetags/appearance_tags.py:62
 msgid "None"
 msgstr "Няма"
 
 #: views.py:29
 msgid "Current user theme settings details"
-msgstr "Подробности за текущите настройки на потребителската тема"
+msgstr "Данни за текущите настройки на потребителската тема"
 
 #: views.py:35
 msgid "Edit current user theme settings details"
-msgstr ""
-"Редактирайте подробности за текущите настройки на потребителската тема"
+msgstr "Редактирайте данните за текущите настройки на потребителската тема"
 
 #: views.py:69
 #, python-format

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -261,21 +261,28 @@ msgid ""
 "The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest asset cache files. Specify the size in bytes."
 msgstr ""
+"Пороговое значение в байтах, при котором "
+"CONVERTER_ASSET_CACHE_STORAGE_BACKEND начнет удаление самых старых файлов "
+"кэша ресурсов."
 
 #: settings.py:37
 msgid ""
 "Time in seconds that the browser should cache the supplied asset. The "
 "default of 31559626 seconds correspond to 1 year."
 msgstr ""
+"Время в секундах, в течение которого браузер должен кэшировать ресурс. "
+"Значение по умолчанию 31559626 секунд соответствует 1 году."
 
 #: settings.py:44
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
 msgstr ""
+"Путь к подклассу Storage для использования при хранении файлов кэша "
+"ресурсов."
 
 #: settings.py:52
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Аргументы, передаваемые в CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
 
 #: settings.py:58
 msgid "Path to the Storage subclass to use when storing assets."

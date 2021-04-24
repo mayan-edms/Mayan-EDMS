@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Harald Ersch, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -46,7 +46,7 @@ msgstr ""
 msgid "Search terms"
 msgstr "Caută termeni"
 
-#: links.py:13 permissions.py:5 queues.py:7 settings.py:11
+#: links.py:13 permissions.py:5 queues.py:8 settings.py:11
 #: templates/dynamic_search/search_box.html:45 views.py:117 views.py:130
 msgid "Search"
 msgstr "Căutare"
@@ -67,17 +67,18 @@ msgstr "Reindexare backend de căutare"
 msgid "Execute search tools"
 msgstr "Executați instrumente de căutare"
 
-#: queues.py:11
+#: queues.py:13
 msgid "Remove a model instance from the search engine."
 msgstr "Eliminați o instanță de model din motorul de căutare."
 
-#: queues.py:16
+#: queues.py:18
 msgid "Index a model instance to the search engine."
 msgstr "Indexați o instanță model la motorul de căutare."
 
-#: queues.py:21
+#: queues.py:23
 msgid "Index all instances of a search model to the search engine."
 msgstr ""
+"Indexați toate instanțele unui model de căutare în motorul de căutare."
 
 #: settings.py:16
 msgid "Full path to the backend to be used to handle the search."

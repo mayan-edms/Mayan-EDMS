@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -65,11 +65,11 @@ msgstr "Управление на ключове"
 
 #: events.py:8
 msgid "Key created"
-msgstr ""
+msgstr "Ключът е създаден"
 
 #: events.py:12
 msgid "Key downloaded"
-msgstr ""
+msgstr "Ключът е изтеглен"
 
 #: forms.py:26
 msgid "None"
@@ -117,7 +117,7 @@ msgstr "Ключ за качване"
 
 #: links.py:50 views.py:194
 msgid "Private keys"
-msgstr "Частни ключове"
+msgstr "Лични ключове"
 
 #: links.py:54 views.py:218
 msgid "Public keys"
@@ -264,8 +264,9 @@ msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
 msgstr ""
-"Използвайте имена, фамилни имена, идентификатори на ключове или имейли, за "
-"да търсите публични ключове, които да импортирате от сървъра на ключове."
+"Използвайте имена, фамилни имена, идентификатори на ключове или електронни "
+"съобщения, за да търсите публични ключове, които да импортирате от сървъра "
+"на ключове."
 
 #: views.py:123
 msgid "No results returned"
@@ -292,13 +293,13 @@ msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user. The view to upload private and public keys is the same."
 msgstr ""
-"Частните ключове се използват за подписване на документи. Частните ключове "
-"могат да бъдат качени само от потребителя. Изгледът за качване на частни и "
+"Личните ключове се използват за подписване на документи. Личните ключове "
+"могат да бъдат качени само от потребителя. Изгледът за качване на лични и "
 "публични ключове е същият."
 
 #: views.py:192
 msgid "There no private keys"
-msgstr "Няма частни ключове"
+msgstr "Няма лични ключове"
 
 #: views.py:210
 msgid ""
@@ -308,8 +309,8 @@ msgid ""
 msgstr ""
 "Публичните ключове се използват за проверка на подписани документи. "
 "Публичните ключове могат да бъдат качени от потребителя или изтеглени от "
-"сървъри на ключове. Изгледът за качване на частни и публични ключове е един "
-"и същ."
+"сървъри на ключове. Изгледът за качване на лични и публични ключове е един и"
+" същ."
 
 #: views.py:216
 msgid "There no public keys"

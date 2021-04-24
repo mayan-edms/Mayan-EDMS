@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -125,32 +125,32 @@ msgstr "%(object)s актуализиран успешно."
 #: generics.py:885
 #, python-format
 msgid "\"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "„%(object)s“ беше изтрит успешно."
 
 #: generics.py:886
 #, python-format
 msgid "%(count)d object deleted successfully."
-msgstr ""
+msgstr "%(count)d обект е изтрит успешно."
 
 #: generics.py:887
 #, python-format
 msgid "%(count)d objects deleted successfully."
-msgstr ""
+msgstr "%(count)d обекта бяха изтрити успешно."
 
 #: generics.py:888
 #, python-format
 msgid "Delete \"%(object)s\"."
-msgstr ""
+msgstr "Изтрийте &quot;%(object)s&quot;."
 
 #: generics.py:889
 #, python-format
 msgid "Delete %(count)d object."
-msgstr ""
+msgstr "Изтрийте %(count)d обект."
 
 #: generics.py:890
 #, python-format
 msgid "Delete %(count)d objects."
-msgstr ""
+msgstr "Изтрийте %(count)d обекта."
 
 #: mixins.py:325
 #, python-format
@@ -161,36 +161,37 @@ msgstr "Не е намерен %(verbose_name)s, отговарящ на зая�
 #, python-format
 msgid "Unable to perform operation on object %(instance)s; %(exception)s."
 msgstr ""
+"Не може да се извърши операция върху обект %(instance)s; %(exception)s."
 
 #: mixins.py:352
 #, python-format
 msgid "Operation performed on %(object)s."
-msgstr ""
+msgstr "Операция, извършена на %(object)s."
 
 #: mixins.py:353
 #, python-format
 msgid "Operation performed on %(count)d object."
-msgstr ""
+msgstr "Операция, извършена върху обект %(count)d."
 
 #: mixins.py:354
 #, python-format
 msgid "Operation performed on %(count)d objects."
-msgstr ""
+msgstr "Операция, извършена върху обекти %(count)d."
 
 #: mixins.py:355
 #, python-format
 msgid "Perform operation on %(object)s."
-msgstr ""
+msgstr "Извършете операция на %(object)s."
 
 #: mixins.py:356
 #, python-format
 msgid "Perform operation on %(count)d object."
-msgstr ""
+msgstr "Извършете операция върху обект %(count)d."
 
 #: mixins.py:357
 #, python-format
 msgid "Perform operation on %(count)d objects."
-msgstr ""
+msgstr "Извършете операция върху обекти %(count)d."
 
 #: mixins.py:439
 msgid "Object"

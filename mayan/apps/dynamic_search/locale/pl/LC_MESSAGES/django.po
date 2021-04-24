@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Search terms"
 msgstr "Słowa do wyszukania"
 
-#: links.py:13 permissions.py:5 queues.py:7 settings.py:11
+#: links.py:13 permissions.py:5 queues.py:8 settings.py:11
 #: templates/dynamic_search/search_box.html:45 views.py:117 views.py:130
 msgid "Search"
 msgstr "Szukaj"
@@ -68,15 +68,15 @@ msgstr "Przeindeksuj silnik wyszukiwania"
 msgid "Execute search tools"
 msgstr "Uruchom narzędzia wyszukiwania"
 
-#: queues.py:11
+#: queues.py:13
 msgid "Remove a model instance from the search engine."
 msgstr "Usuń instancję modelu z silnika wyszukiwania."
 
-#: queues.py:16
+#: queues.py:18
 msgid "Index a model instance to the search engine."
 msgstr "Zindeksuj instancję modelu w silniku wyszukiwania."
 
-#: queues.py:21
+#: queues.py:23
 msgid "Index all instances of a search model to the search engine."
 msgstr ""
 

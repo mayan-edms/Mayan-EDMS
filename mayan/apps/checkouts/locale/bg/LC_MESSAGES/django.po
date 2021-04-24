@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-04-24 07:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -71,7 +71,7 @@ msgstr "Срок на изписване"
 
 #: forms.py:51
 msgid "New files allowed?"
-msgstr ""
+msgstr "Разрешени ли са нови файлове?"
 
 #: forms.py:52
 msgid "Yes"
@@ -127,11 +127,11 @@ msgstr "Срок на изписване - дата и час"
 
 #: models.py:45
 msgid "Do not allow new file of this document to be uploaded."
-msgstr ""
+msgstr "Не позволявайте качването на нов файл от този документ."
 
 #: models.py:47
 msgid "Block new file upload"
-msgstr ""
+msgstr "Блокиране на качването на нов файл"
 
 #: models.py:55 permissions.py:5
 msgid "Document checkout"
@@ -167,7 +167,7 @@ msgstr "Изпиши документи"
 
 #: permissions.py:17
 msgid "Check out details view"
-msgstr "Изглед на подробности за изписване"
+msgstr "Изглед на данни за изписване"
 
 #: queues.py:11
 msgid "Checkouts periodic"
@@ -185,75 +185,76 @@ msgstr "Основен ключ на документа, който трябва
 #, python-format
 msgid "Unable to check in document \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Не може да се провери в документ &quot;%(instance)s&quot;; %(exception)s"
 
 #: views.py:29
 #, python-format
 msgid "Document \"%(object)s\" checked in successfully."
-msgstr ""
+msgstr "Документът &quot;%(object)s&quot; се провери успешно."
 
 #: views.py:32
 #, python-format
 msgid "%(count)d document checked in successfully."
-msgstr ""
+msgstr "%(count)d документ се провери успешно."
 
 #: views.py:35
 #, python-format
 msgid "%(count)d documents checked in successfully."
-msgstr ""
+msgstr "%(count)d документи се провериха успешно."
 
 #: views.py:37
 #, python-format
 msgid "Check in document \"%(object)s\"."
-msgstr ""
+msgstr "Проверете в документ &quot;%(object)s&quot;."
 
 #: views.py:38
 #, python-format
 msgid "Check in %(count)d document."
-msgstr ""
+msgstr "Проверете в%(count)d документ."
 
 #: views.py:39
 #, python-format
 msgid "Check in %(count)d documents."
-msgstr ""
+msgstr "Проверете %(count)d документи."
 
 #: views.py:93
 #, python-format
 msgid "Unable to checkout document \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Не може да се изтегли документ „%(instance)s“; %(exception)s"
 
 #: views.py:100
 #, python-format
 msgid "Document \"%(object)s\" checked out successfully."
-msgstr ""
+msgstr "Документът &quot;%(object)s&quot; бе проверен успешно."
 
 #: views.py:103
 #, python-format
 msgid "%(count)d document checked out successfully."
-msgstr ""
+msgstr "%(count)d документ бе проверен успешно."
 
 #: views.py:106
 #, python-format
 msgid "%(count)d documents checked out successfully."
-msgstr ""
+msgstr "%(count)d документи се провериха успешно."
 
 #: views.py:108
 #, python-format
 msgid "Checkout document \"%(object)s\"."
-msgstr ""
+msgstr "Провери документ &quot;%(object)s&quot;."
 
 #: views.py:109
 #, python-format
 msgid "Checkout %(count)d document."
-msgstr ""
+msgstr "Провери %(count)d документ."
 
 #: views.py:110
 #, python-format
 msgid "Checkout %(count)d documents."
-msgstr ""
+msgstr "Провери %(count)d документа."
 
 #: views.py:114
 msgid "Checkout"
-msgstr ""
+msgstr "Проверка"
 
 #: views.py:158
 #, python-format
