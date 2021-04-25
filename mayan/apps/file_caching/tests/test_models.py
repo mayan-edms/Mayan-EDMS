@@ -2,6 +2,9 @@ import mock
 
 from mayan.apps.testing.tests.base import BaseTestCase
 
+from ..exceptions import FileCachingException
+from ..models import CachePartitionFile
+
 from .literals import TEST_CACHE_PARTITION_FILE_FILENAME
 from .mixins import CacheTestMixin
 
@@ -87,3 +90,72 @@ class CacheModelTestCase(CacheTestMixin, BaseTestCase):
                 )
             )
         )
+
+    def test_cache_partition_file_hits(self):
+        self._create_test_cache()
+        self._create_test_cache_partition()
+        self._create_test_cache_partition_file()
+
+        cache_partition_file_hits = self.test_cache_partition_file.hits
+
+        with self.test_cache_partition_file.open():
+            """Do nothing"""
+
+        self.test_cache_partition_file.refresh_from_db()
+
+        self.assertEqual(
+            self.test_cache_partition_file.hits, cache_partition_file_hits + 1
+        )
+
+    def test_cache_partition_file_lru_eviction(self):
+        self._create_test_cache(
+            extra_data={
+                'maximum_size': 2
+            }
+        )
+
+        self._create_test_cache_partition()
+        self._create_test_cache_partition_file(file_size=1)
+        self._create_test_cache_partition_file(file_size=1)
+
+        with self.test_cache_partition_files[0].open():
+            """Do nothing"""
+
+        self._create_test_cache_partition_file(file_size=1)
+
+        # Older but more hits was kept.
+        self.assertTrue(
+            self.test_cache_partition_files[0] in CachePartitionFile.objects.all()
+        )
+        # Newer but less hits was purged.
+        self.assertTrue(
+            self.test_cache_partition_files[1] not in CachePartitionFile.objects.all()
+        )
+
+    def test_cache_partition_file_size_protection(self):
+        self._create_test_cache(
+            extra_data={
+                'maximum_size': 1
+            }
+        )
+
+        self._create_test_cache_partition()
+
+        with self.assertRaises(expected_exception=FileCachingException):
+            self._create_test_cache_partition_file(file_size=2)
+
+    @mock.patch('mayan.apps.file_caching.models.Cache.prune')
+    def test_prune_on_cache_size_reduction(self, mock_cache_prune_method):
+        self._create_test_cache(
+            extra_data={
+                'maximum_size': 2
+            }
+        )
+
+        self.test_cache.maximum_size = 2
+        self.test_cache.save()
+        self.assertFalse(mock_cache_prune_method.called)
+
+        self.test_cache.maximum_size = 1
+        self.test_cache.save()
+        self.assertTrue(mock_cache_prune_method.called)

@@ -338,3 +338,7 @@
   the many to many field ``.add()`` method.
 - Remove the default queue. All tasks must now be explicitly assigned to an
   app defined queue.
+- Update file cache to use and LRU style eviction logic.
+- Only prune caches during startup if their maximum size changed.
+- Add detection of excessive cache pruning when cache size is too small for
+  the workload.

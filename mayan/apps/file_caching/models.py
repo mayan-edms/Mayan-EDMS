@@ -4,7 +4,7 @@ import logging
 from django.core import validators
 from django.core.files.base import ContentFile
 from django.db import models
-from django.db.models import Sum
+from django.db.models import F, Sum
 from django.template.defaultfilters import filesizeformat
 from django.urls import reverse
 from django.utils.encoding import force_text
@@ -12,6 +12,7 @@ from django.utils.functional import cached_property
 from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.databases.model_mixins import ValueChangeModelMixin
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
 from mayan.apps.events.decorators import method_event
 from mayan.apps.lock_manager.backends.base import LockingBackend
@@ -23,12 +24,16 @@ from .events import (
     event_cache_created, event_cache_edited, event_cache_partition_purged,
     event_cache_purged
 )
-from .settings import setting_maximum_prune_attempts
+from .exceptions import FileCachingException
+from .settings import (
+    setting_maximum_failed_prune_attempts,
+    setting_maximum_normal_prune_attempts
+)
 
 logger = logging.getLogger(name=__name__)
 
 
-class Cache(models.Model):
+class Cache(ValueChangeModelMixin, models.Model):
     defined_storage_name = models.CharField(
         db_index=True, help_text=_(
             'Internal name of the defined storage for this cache.'
@@ -99,9 +104,12 @@ class Cache(models.Model):
         Deletes files until the total size of the cache is below the allowed
         maximum size of the cache.
         """
-        attempts = 0
-        while self.get_total_size() > self.maximum_size:
-            cache_partition_file = self.get_files().earliest()
+        failed_attempts = 0
+        normal_attempts = 0
+
+        while self.get_total_size() >= self.maximum_size:
+            cache_partition_file = self.get_files().order_by('hits').first()
+
             try:
                 cache_partition_file.delete()
             except LockError:
@@ -110,11 +118,21 @@ class Cache(models.Model):
                     'Skipping and attempting next file.',
                     cache_partition_file
                 )
-                attempts += 1
+                failed_attempts += 1
 
-                if attempts > setting_maximum_prune_attempts.value:
-                    raise RuntimeError(
-                        'Too many cache prune attempts failed.'
+                if failed_attempts > setting_maximum_failed_prune_attempts.value:
+                    raise FileCachingException(
+                        'Too many cache prune attempts failed. Processes '
+                        'are holding cache file locks for too long. Adjust '
+                        'system resources to allow processes to finish '
+                        'faster.'
+                    )
+            else:
+                normal_attempts += 1
+
+                if normal_attempts > setting_maximum_normal_prune_attempts.value:
+                    raise FileCachingException(
+                        'Too many cache prunes, increase cache size.'
                     )
 
     @method_event(
@@ -151,8 +169,15 @@ class Cache(models.Model):
         }
     )
     def save(self, *args, **kwargs):
+        old_maximum_size = self._get_field_previous_value(
+            field='maximum_size'
+        )
+
         result = super().save(*args, **kwargs)
-        self.prune()
+
+        if self.maximum_size < old_maximum_size:
+            self.prune()
+
         return result
 
     @cached_property
@@ -205,7 +230,7 @@ class CachePartition(models.Model):
 
                 try:
                     partition_file = self.files.create(filename=filename)
-                    yield partition_file.open(mode='wb', _acquire_lock=False)
+                    yield partition_file._open_for_writing(_acquire_lock=False)
                 except Exception as exception:
                     logger.error(
                         'Unexpected exception while trying to save new '
@@ -223,7 +248,7 @@ class CachePartition(models.Model):
                     raise
                 else:
                     partition_file.close(_acquire_lock=False)
-                    partition_file.update_size(_acquire_lock=False)
+                    partition_file._update_size(_acquire_lock=False)
             finally:
                 lock.release()
         except LockError:
@@ -271,6 +296,11 @@ class CachePartitionFile(models.Model):
     file_size = models.PositiveIntegerField(
         default=0, verbose_name=_('File size')
     )
+    hits = models.PositiveIntegerField(
+        default=0, help_text=_(
+            'Times this cache partition file has been accessed.'
+        ), verbose_name='Hits'
+    )
 
     class Meta:
         get_latest_by = 'datetime'
@@ -280,6 +310,39 @@ class CachePartitionFile(models.Model):
 
     def _lock_manager_get_lock_name(self, *args, **kwargs):
         return self.partition.get_file_lock_name(filename=self.filename)
+
+    @locked_class_method
+    def _open_for_writing(self):
+        """
+        Open the file for writting only. If the file is written to, the
+        .update_size() must be called.
+        """
+        try:
+            self._storage_object = self.partition.cache.storage.open(
+                mode='wb', name=self.full_filename
+            )
+            return self._storage_object
+        except Exception as exception:
+            logger.error(
+                'Unexpected exception opening the cache file; %s', exception,
+                exc_info=True
+            )
+            raise
+
+    @locked_class_method
+    def _update_size(self):
+        """
+        Called after creation and initial write only.
+        """
+        self.file_size = self.partition.cache.storage.size(
+            name=self.full_filename
+        )
+        self.save()
+        if self.file_size > self.partition.cache.maximum_size:
+            raise FileCachingException(
+                'Cache partition file %s is bigger than the maximum cache '
+                'size.'
+            )
 
     @locked_class_method
     def close(self):
@@ -292,10 +355,6 @@ class CachePartitionFile(models.Model):
         self.partition.cache.storage.delete(name=self.full_filename)
         return super().delete(*args, **kwargs)
 
-    @locked_class_method
-    def exists(self):
-        return self.partition.cache.storage.exists(name=self.full_filename)
-
     @cached_property
     def full_filename(self):
         return CachePartition.get_combined_filename(
@@ -303,12 +362,15 @@ class CachePartitionFile(models.Model):
         )
 
     @locked_class_method
-    def open(self, mode='rb'):
-        # Open the file for reading. If the file is written to, the
-        # .update_size() must be called.
+    def open(self):
+        """
+        Open the file for reading only.
+        """
+        CachePartitionFile.objects.filter(pk=self.pk).update(hits=F('hits') + 1)
+
         try:
             self._storage_object = self.partition.cache.storage.open(
-                name=self.full_filename, mode=mode
+                mode='rb', name=self.full_filename
             )
             return self._storage_object
         except Exception as exception:
@@ -317,10 +379,3 @@ class CachePartitionFile(models.Model):
                 exc_info=True
             )
             raise
-
-    @locked_class_method
-    def update_size(self):
-        self.file_size = self.partition.cache.storage.size(
-            name=self.full_filename
-        )
-        self.save()
