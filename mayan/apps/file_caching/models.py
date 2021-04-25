@@ -23,7 +23,7 @@ from .events import (
     event_cache_created, event_cache_edited, event_cache_partition_purged,
     event_cache_purged
 )
-from .literals import MAXIMUM_PRUNE_ATTEMPTS
+from .settings import setting_maximum_prune_attempts
 
 logger = logging.getLogger(name=__name__)
 
@@ -112,9 +112,9 @@ class Cache(models.Model):
                 )
                 attempts += 1
 
-                if attempts > MAXIMUM_PRUNE_ATTEMPTS:
+                if attempts > setting_maximum_prune_attempts.value:
                     raise RuntimeError(
-                        'Too many cache prune failed attempts.'
+                        'Too many cache prune attempts failed.'
                     )
 
     @method_event(
