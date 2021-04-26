@@ -111,7 +111,9 @@ class Cache(ValueChangeModelMixin, models.Model):
         file_index = 0
 
         while self.get_total_size() >= self.maximum_size:
-            cache_partition_file_queryset = self.get_files().order_by('hits')
+            cache_partition_file_queryset = self.get_files().order_by(
+                'hits', 'datetime'
+            )
 
             try:
                 cache_partition_file = cache_partition_file_queryset[file_index]
@@ -310,7 +312,7 @@ class CachePartitionFile(models.Model):
         default=0, verbose_name=_('File size')
     )
     hits = models.PositiveIntegerField(
-        default=0, help_text=_(
+        db_index=True, default=0, help_text=_(
             'Times this cache partition file has been accessed.'
         ), verbose_name='Hits'
     )
