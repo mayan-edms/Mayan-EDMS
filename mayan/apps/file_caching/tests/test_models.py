@@ -159,3 +159,31 @@ class CacheModelTestCase(CacheTestMixin, BaseTestCase):
         self.test_cache.maximum_size = 1
         self.test_cache.save()
         self.assertTrue(mock_cache_prune_method.called)
+
+    def test_incremental_file_index_cache_prune(self):
+        self._create_test_cache(
+            extra_data={
+                'maximum_size': 2
+            }
+        )
+
+        self._create_test_cache_partition()
+        self._create_test_cache_partition_file(file_size=1)
+        self._create_test_cache_partition_file(file_size=1)
+
+        with self.test_cache_partition_files[1].open():
+            """Increase hits of file #1"""
+
+        with self.test_cache_partition_files[0].open():
+            """Lock and increase hits of file #0"""
+            self._create_test_cache_partition_file(file_size=1)
+
+        self.assertTrue(
+            self.test_cache_partition_files[0] in CachePartitionFile.objects.all()
+        )
+        self.assertTrue(
+            self.test_cache_partition_files[1] not in CachePartitionFile.objects.all()
+        )
+        self.assertTrue(
+            self.test_cache_partition_files[2] in CachePartitionFile.objects.all()
+        )

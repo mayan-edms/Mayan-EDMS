@@ -16,7 +16,9 @@ from mayan.apps.databases.model_mixins import ValueChangeModelMixin
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
 from mayan.apps.events.decorators import method_event
 from mayan.apps.lock_manager.backends.base import LockingBackend
-from mayan.apps.lock_manager.decorators import locked_class_method
+from mayan.apps.lock_manager.decorators import (
+    acquire_lock_class_method, release_lock_class_method, locked_class_method
+)
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.apps.storage.classes import DefinedStorage
 
@@ -106,34 +108,45 @@ class Cache(ValueChangeModelMixin, models.Model):
         """
         failed_attempts = 0
         normal_attempts = 0
+        file_index = 0
 
         while self.get_total_size() >= self.maximum_size:
-            cache_partition_file = self.get_files().order_by('hits').first()
+            cache_partition_file_queryset = self.get_files().order_by('hits')
 
             try:
-                cache_partition_file.delete()
-            except LockError:
-                logger.debug(
-                    'Lock error trying to delete file "%s" for prune. '
-                    'Skipping and attempting next file.',
-                    cache_partition_file
-                )
-                failed_attempts += 1
-
-                if failed_attempts > setting_maximum_failed_prune_attempts.value:
-                    raise FileCachingException(
-                        'Too many cache prune attempts failed. Processes '
-                        'are holding cache file locks for too long. Adjust '
-                        'system resources to allow processes to finish '
-                        'faster.'
-                    )
+                cache_partition_file = cache_partition_file_queryset[file_index]
+            except IndexError:
+                # Attempted to get a file beyond what the queryset provided.
+                file_index = 0
             else:
-                normal_attempts += 1
-
-                if normal_attempts > setting_maximum_normal_prune_attempts.value:
-                    raise FileCachingException(
-                        'Too many cache prunes, increase cache size.'
+                try:
+                    cache_partition_file.delete()
+                except CachePartitionFile.DoesNotExist:
+                    # The file selected from deletion was deleted by another
+                    # process before the lock was acquired.
+                    file_index += 1
+                except LockError:
+                    logger.debug(
+                        'Lock error trying to delete file "%s" for prune. '
+                        'Skipping and attempting next file.',
+                        cache_partition_file
                     )
+                    failed_attempts += 1
+                    file_index += 1
+
+                    if failed_attempts > setting_maximum_failed_prune_attempts.value:
+                        raise FileCachingException(
+                            'Too many cache prune attempts failed.'
+                        )
+                else:
+                    file_index = 0
+                    normal_attempts += 1
+
+                    if normal_attempts > setting_maximum_normal_prune_attempts.value:
+                        raise FileCachingException(
+                            'Too many cache prunes trying to create a '
+                            'single new file.'
+                        )
 
     @method_event(
         event=event_cache_purged,
@@ -311,10 +324,10 @@ class CachePartitionFile(models.Model):
     def _lock_manager_get_lock_name(self, *args, **kwargs):
         return self.partition.get_file_lock_name(filename=self.filename)
 
-    @locked_class_method
+    @acquire_lock_class_method
     def _open_for_writing(self):
         """
-        Open the file for writting only. If the file is written to, the
+        Open the file for writing only. If the file is written to, the
         .update_size() must be called.
         """
         try:
@@ -344,7 +357,7 @@ class CachePartitionFile(models.Model):
                 'size.'
             )
 
-    @locked_class_method
+    @release_lock_class_method
     def close(self):
         if self._storage_object is not None:
             self._storage_object.close()
@@ -361,21 +374,34 @@ class CachePartitionFile(models.Model):
             parent=self.partition.name, filename=self.filename
         )
 
-    @locked_class_method
+    @contextmanager
     def open(self):
         """
         Open the file for reading only.
         """
-        CachePartitionFile.objects.filter(pk=self.pk).update(hits=F('hits') + 1)
-
+        lock_name = self._lock_manager_get_lock_name()
         try:
-            self._storage_object = self.partition.cache.storage.open(
-                mode='rb', name=self.full_filename
-            )
-            return self._storage_object
-        except Exception as exception:
-            logger.error(
-                'Unexpected exception opening the cache file; %s', exception,
-                exc_info=True
-            )
+            logger.debug('trying to acquire lock: %s', lock_name)
+            self._lock = LockingBackend.get_instance().acquire_lock(name=lock_name)
+            CachePartitionFile.objects.filter(pk=self.pk).update(hits=F('hits') + 1)
+            logger.debug('acquired lock: %s', lock_name)
+            self._storage_object = None
+            try:
+                self._storage_object = self.partition.cache.storage.open(
+                    mode='rb', name=self.full_filename
+                )
+            except Exception as exception:
+                logger.error(
+                    'Unexpected exception opening the cache file; %s', exception,
+                    exc_info=True
+                )
+                raise
+            else:
+                yield self._storage_object
+                self.close(_acquire_lock=False)
+            finally:
+                self.close(_acquire_lock=False)
+                self._lock.release()
+        except LockError:
+            logger.debug('unable to obtain lock: %s' % lock_name)
             raise
