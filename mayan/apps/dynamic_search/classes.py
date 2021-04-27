@@ -15,6 +15,7 @@ from mayan.apps.common.utils import (
 )
 from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
+from .exceptions import DynamicSearchException
 from .literals import (
     DEFAULT_SCOPE_OPERATOR, DELIMITER, SCOPE_DELIMITER,
     SCOPE_OPERATOR_CHOICES
@@ -139,9 +140,16 @@ class SearchBackend:
             if result == operator['result']:
 
                 for scope_index in operator['scope_sources']:
+                    try:
+                        query_string = scopes[scope_index]['query']
+                    except KeyError:
+                        raise DynamicSearchException(
+                            'Scope `{}` not found.'.format(scope_index)
+                        )
+
                     results = self._search(
                         global_and_search=global_and_search,
-                        search_model=search_model, query_string=scopes[scope_index]['query'],
+                        search_model=search_model, query_string=query_string,
                         user=user
                     )
 
@@ -152,7 +160,9 @@ class SearchBackend:
 
                 return queryset
 
-        raise KeyError('Result `{}` not found.'.format(result))
+        raise DynamicSearchException(
+            'Result scope `{}` not found.'.format(result)
+        )
 
 
 class SearchField:

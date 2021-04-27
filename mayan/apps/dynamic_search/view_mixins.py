@@ -6,6 +6,10 @@ from .literals import SEARCH_MODEL_NAME_KWARG
 
 
 class SearchModelViewMixin:
+    def dispatch(self, *args, **kwargs):
+        self.search_model = self.get_search_model()
+        return super().dispatch(*args, **kwargs)
+
     def get_search_model_name(self):
         return self.kwargs.get(
             SEARCH_MODEL_NAME_KWARG, self.request.GET.get(

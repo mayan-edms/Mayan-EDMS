@@ -1,5 +1,6 @@
 import logging
 
+from django.conf import settings
 from django.contrib import messages
 from django.template import RequestContext
 from django.urls import reverse
@@ -12,6 +13,7 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.literals import LIST_MODE_CHOICE_ITEM
 
 from .classes import SearchBackend, SearchModel
+from .exceptions import DynamicSearchException
 from .forms import SearchForm, AdvancedSearchForm
 from .icons import icon_search_submit
 from .links import link_search_again
@@ -48,8 +50,6 @@ class ResultsView(SearchModelViewMixin, SingleObjectListView):
         return context
 
     def get_source_queryset(self):
-        self.search_model = self.get_search_model()
-
         if self.request.GET:
             # Only do search if there is user input, otherwise just render
             # the template with the extra_context
@@ -59,13 +59,20 @@ class ResultsView(SearchModelViewMixin, SingleObjectListView):
             else:
                 global_and_search = False
 
-            queryset = SearchBackend.get_instance().search(
-                global_and_search=global_and_search,
-                search_model=self.search_model,
-                query_string=self.request.GET, user=self.request.user
-            )
+            try:
+                queryset = SearchBackend.get_instance().search(
+                    global_and_search=global_and_search,
+                    search_model=self.search_model,
+                    query_string=self.request.GET, user=self.request.user
+                )
+            except DynamicSearchException as exception:
+                if settings.DEBUG or settings.TESTING:
+                    raise
 
-            return queryset
+                messages.error(message=exception, request=self.request)
+                return self.search_model.model._meta.default_manager.none()
+            else:
+                return queryset
 
 
 class SearchAgainView(RedirectView):
