@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Link, Separator, Text
+from mayan.apps.navigation.utils import get_cascade_condition
 
 from .icons import (
     icon_current_user_details, icon_current_user_edit, icon_group_create,
@@ -39,8 +40,11 @@ link_group_edit = Link(
     view='user_management:group_edit'
 )
 link_group_list = Link(
-    icon=icon_group_list, permissions=(permission_group_view,),
-    text=_('Groups'), view='user_management:group_list'
+    condition=get_cascade_condition(
+        app_label='auth', model_name='Group',
+        object_permission=permission_group_view,
+    ), icon=icon_group_list, text=_('Groups'),
+    view='user_management:group_list'
 )
 link_group_user_list = Link(
     args='object.id', icon=icon_group_user_list,
@@ -48,8 +52,11 @@ link_group_user_list = Link(
     view='user_management:group_members'
 )
 link_group_setup = Link(
-    icon=icon_group_setup, permissions=(permission_group_view,),
-    text=_('Groups'), view='user_management:group_list'
+    condition=get_cascade_condition(
+        app_label='auth', model_name='Group',
+        object_permission=permission_group_view,
+    ), icon=icon_group_setup, text=_('Groups'),
+    view='user_management:group_list'
 )
 link_user_create = Link(
     icon=icon_user_create, permissions=(permission_user_create,),
@@ -71,8 +78,11 @@ link_user_group_list = Link(
     view='user_management:user_groups'
 )
 link_user_list = Link(
-    icon=icon_user_list, permissions=(permission_user_view,),
-    text=_('Users'), view='user_management:user_list'
+    condition=get_cascade_condition(
+        app_label='auth', model_name='User',
+        object_permission=permission_user_view,
+    ), icon=icon_user_list, text=_('Users'),
+    view='user_management:user_list'
 )
 link_user_multiple_delete = Link(
     icon=icon_user_delete, permissions=(permission_user_delete,),
@@ -85,8 +95,11 @@ link_user_set_options = Link(
     view='user_management:user_options'
 )
 link_user_setup = Link(
-    icon=icon_user_setup, permissions=(permission_user_view,),
-    text=_('Users'), view='user_management:user_list'
+    condition=get_cascade_condition(
+        app_label='auth', model_name='User',
+        object_permission=permission_user_view,
+    ), icon=icon_user_setup, text=_('Users'),
+    view='user_management:user_list'
 )
 separator_user_label = Separator()
 text_user_label = Text(
