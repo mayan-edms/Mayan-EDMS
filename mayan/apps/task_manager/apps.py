@@ -32,11 +32,12 @@ class TaskManagerApp(MayanAppConfig):
                 interval_step=0, interval_max=0, interval_start=0, timeout=0.1
             )
         except Exception as exception:
-            raise RuntimeError(
+            print(
                 'Failed to connect to the Celery broker at {}; {}'.format(
                     connection.as_uri(), exception
                 )
-            ) from exception
+            )
+            raise
         else:
             connection.release()
 
@@ -57,11 +58,12 @@ class TaskManagerApp(MayanAppConfig):
                     key=TEST_CELERY_RESULT_KEY, value=TEST_CELERY_RESULT_VALUE
                 )
             except Exception as exception:
-                raise RuntimeError(
+                print(
                     'Failed to connect to the Celery result backend at {}; {}'.format(
                         backend.as_uri(), exception
                     )
-                ) from exception
+                )
+                raise
             else:
                 backend.delete(key=TEST_CELERY_RESULT_KEY)
                 backend.retry_policy = retry_policy
@@ -69,8 +71,11 @@ class TaskManagerApp(MayanAppConfig):
     def ready(self):
         super().ready()
 
-        self.check_broker_connectivity()
-        self.check_results_backend_connectivity()
+        try:
+            self.check_broker_connectivity()
+            self.check_results_backend_connectivity()
+        except Exception:
+            exit(1)
 
         CeleryQueue.load_modules()
 
