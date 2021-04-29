@@ -17,24 +17,7 @@ from .serializers import (
 )
 
 
-class APITagListView(generics.ListCreateAPIView):
-    """
-    get: Returns a list of all the tags.
-    post: Create a new tag.
-    """
-    mayan_object_permissions = {'GET': (permission_tag_view,)}
-    mayan_view_permissions = {'POST': (permission_tag_create,)}
-    ordering_fields = ('label',)
-    queryset = Tag.objects.all()
-    serializer_class = TagSerializer
-
-    def get_instance_extra_data(self):
-        return {
-            '_event_actor': self.request.user
-        }
-
-
-class APITagView(generics.RetrieveUpdateDestroyAPIView):
+class APITagDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
     delete: Delete the selected tag.
     get: Return the details of the selected tag.
@@ -48,6 +31,23 @@ class APITagView(generics.RetrieveUpdateDestroyAPIView):
         'PATCH': (permission_tag_edit,),
         'PUT': (permission_tag_edit,)
     }
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
+
+
+class APITagListView(generics.ListCreateAPIView):
+    """
+    get: Returns a list of all the tags.
+    post: Create a new tag.
+    """
+    mayan_object_permissions = {'GET': (permission_tag_view,)}
+    mayan_view_permissions = {'POST': (permission_tag_create,)}
+    ordering_fields = ('label',)
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 

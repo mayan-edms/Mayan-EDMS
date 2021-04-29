@@ -336,7 +336,7 @@ class DocumentTagAPIViewTestCase(
     def test_document_attach_tag_api_view_no_permission(self):
         self._clear_events()
 
-        response = self._request_test_document_attach_tag_api_view()
+        response = self._request_test_document_tag_attach_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
@@ -351,7 +351,7 @@ class DocumentTagAPIViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_attach_tag_api_view()
+        response = self._request_test_document_tag_attach_api_view()
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
@@ -366,7 +366,7 @@ class DocumentTagAPIViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_attach_tag_api_view()
+        response = self._request_test_document_tag_attach_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
@@ -384,7 +384,7 @@ class DocumentTagAPIViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_attach_tag_api_view()
+        response = self._request_test_document_tag_attach_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
@@ -409,7 +409,7 @@ class DocumentTagAPIViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_attach_tag_api_view()
+        response = self._request_test_document_tag_attach_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
