@@ -8,7 +8,7 @@ from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..events import (
     event_group_created, event_group_edited, event_user_created,
-    event_user_edited, event_user_logged_in, event_user_logged_out
+    event_user_edited
 )
 from ..permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,

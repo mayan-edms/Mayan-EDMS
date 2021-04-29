@@ -1,7 +1,5 @@
 from django.apps import apps
 
-from .events import event_user_logged_in, event_user_logged_out
-
 
 def handler_initialize_new_user_options(sender, instance, **kwargs):
     UserOptions = apps.get_model(
