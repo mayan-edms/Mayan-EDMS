@@ -21,7 +21,7 @@ from .mixins import (
     DocumentIndexAPIViewTestMixin, IndexInstanceAPIViewTestMixin,
     IndexInstanceNodeAPIViewTestMixin, IndexTemplateTestMixin,
     IndexTemplateActionAPIViewTestMixin, IndexTemplateAPIViewTestMixin,
-    IndexTemplateDocumentTypeAPIAPIViewTestMixin,
+    IndexTemplateDocumentTypeAPIViewTestMixin,
     IndexTemplateNodeAPITestMixin
 )
 
@@ -373,7 +373,7 @@ class IndexTemplateAPIViewTestCase(
 
 
 class IndexTemplateDocumentTypeAPIViewTestCase(
-    IndexTemplateTestMixin, IndexTemplateDocumentTypeAPIAPIViewTestMixin, DocumentTestMixin,
+    IndexTemplateTestMixin, IndexTemplateDocumentTypeAPIViewTestMixin, DocumentTestMixin,
     BaseAPITestCase
 ):
     auto_upload_test_document = False
