@@ -1,6 +1,5 @@
 from django.apps import apps
 from django.contrib.auth import get_user_model
-from django.contrib.auth.signals import user_logged_in, user_logged_out
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
@@ -28,10 +27,8 @@ from .events import (
     event_group_created, event_group_edited, event_user_created,
     event_user_edited
 )
-from .handlers import (
-    handler_initialize_new_user_options, handler_user_logged_in,
-    handler_user_logged_out
-)
+
+from .handlers import handler_initialize_new_user_options
 from .links import (
     link_current_user_details, link_current_user_edit, link_group_create,
     link_group_delete, link_group_edit, link_group_list, link_group_user_list,
@@ -108,6 +105,7 @@ class UserManagementApp(MayanAppConfig):
         User._meta.get_field('last_name').verbose_name = _('Last name')
         User._meta.get_field('password').verbose_name = _('Password')
         User._meta.get_field('username').verbose_name = _('Username')
+        User._meta.get_field('last_login').verbose_name = _('Last login')
 
         User.has_usable_password.short_description = _(
             'Has usable password?'
@@ -204,6 +202,10 @@ class UserManagementApp(MayanAppConfig):
         )
         SourceColumn(
             attribute='email', include_label=True, is_sortable=True,
+            source=User
+        )
+        SourceColumn(
+            attribute='last_login', include_label=True, is_sortable=True,
             source=User
         )
         SourceColumn(
@@ -304,16 +306,5 @@ class UserManagementApp(MayanAppConfig):
         post_save.connect(
             dispatch_uid='user_management_handler_initialize_new_user_options',
             receiver=handler_initialize_new_user_options,
-            sender=User
-        )
-
-        user_logged_in.connect(
-            dispatch_uid='user_management_handler_user_logged_in',
-            receiver=handler_user_logged_in,
-            sender=User
-        )
-        user_logged_out.connect(
-            dispatch_uid='user_management_handler_user_logged_out',
-            receiver=handler_user_logged_out,
             sender=User
         )

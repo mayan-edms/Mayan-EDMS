@@ -12,3 +12,9 @@ event_user_impersonation_ended = namespace.add_event_type(
 event_user_impersonation_started = namespace.add_event_type(
     label=_('User impersonation started'), name='user_impersonation_started'
 )
+event_user_logged_in = namespace.add_event_type(
+    label=_('User logged in'), name='user_logged_in'
+)
+event_user_logged_out = namespace.add_event_type(
+    label=_('User logged out'), name='user_logged_out'
+)
