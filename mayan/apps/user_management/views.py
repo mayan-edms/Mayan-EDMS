@@ -59,8 +59,8 @@ class GroupCreateView(SingleObjectCreateView):
     )
     view_permission = permission_group_create
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
 
 class GroupDeleteView(SingleObjectDeleteView):
@@ -93,8 +93,8 @@ class GroupEditView(SingleObjectEditView):
             'title': _('Edit group: %s') % self.object,
         }
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
 
 class GroupListView(SingleObjectListView):
@@ -133,7 +133,7 @@ class GroupUsersView(AddRemoveView):
     list_added_title = _('Group users')
 
     def get_actions_extra_kwargs(self):
-        return {'_user': self.request.user}
+        return {'_event_actor': self.request.user}
 
     def get_extra_context(self):
         return {
@@ -164,8 +164,8 @@ class UserCreateView(SingleObjectCreateView):
             )
         )
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
 
 class UserDeleteView(MultipleObjectConfirmActionView):
@@ -254,8 +254,8 @@ class UserEditView(SingleObjectEditView):
             'title': _('Edit user: %s') % self.object,
         }
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
 
 class UserGroupsView(AddRemoveView):
@@ -272,7 +272,7 @@ class UserGroupsView(AddRemoveView):
     list_added_title = _('User groups')
 
     def get_actions_extra_kwargs(self):
-        return {'_user': self.request.user}
+        return {'_event_actor': self.request.user}
 
     def get_extra_context(self):
         return {
