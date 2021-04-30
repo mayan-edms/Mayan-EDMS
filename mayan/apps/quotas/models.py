@@ -1,10 +1,14 @@
 import json
 import logging
 
-from django.db import models, transaction
+from django.db import models
 from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
+
+from mayan.apps.databases.model_mixins import ExtraDataModelMixin
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
 
 from .classes import NullBackend
 from .events import event_quota_created, event_quota_edited
@@ -12,7 +16,7 @@ from .events import event_quota_created, event_quota_edited
 logger = logging.getLogger(__name__)
 
 
-class Quota(models.Model):
+class Quota(ExtraDataModelMixin, models.Model):
     backend_path = models.CharField(
         max_length=255,
         help_text=_('The dotted Python path to the backend class.'),
@@ -34,20 +38,19 @@ class Quota(models.Model):
     def __str__(self):
         return force_text(s=self.backend_label())
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_quota_created,
+            'target': 'self',
+        },
+        edited={
+            'event': event_quota_edited,
+            'target': 'self',
+        }
+    )
     def save(self, *args, **kwargs):
-        _user = kwargs.pop('_user', None)
-
-        with transaction.atomic():
-            is_new = not self.pk
-            super().save(*args, **kwargs)
-            if is_new:
-                event_quota_created.commit(
-                    actor=_user, target=self
-                )
-            else:
-                event_quota_edited.commit(
-                    actor=_user, target=self
-                )
+        super().save(*args, **kwargs)
 
     def backend_label(self):
         return self.get_backend_instance().label

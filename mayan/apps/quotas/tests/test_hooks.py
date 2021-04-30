@@ -28,8 +28,11 @@ class QuotaHooksTestCase(
         # as the test case user.
         self._upload_test_document(_user=self._test_case_user)
         self.test_case_silenced_logger_new_level = logging.FATAL + 10
+        self._silence_logger(name='mayan.apps.navigation.classes')
         self._silence_logger(name='mayan.apps.sources.views')
-        self._silence_logger(name='mayan.apps.logging.middleware.error_logging')
+        self._silence_logger(
+            name='mayan.apps.logging.middleware.error_logging'
+        )
 
     def tearDown(self):
         QuotaBackend.connect_signals()
