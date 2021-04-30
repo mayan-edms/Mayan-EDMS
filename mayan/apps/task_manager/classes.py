@@ -7,6 +7,7 @@ from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
+from mayan.apps.common.exceptions import NonUniqueError
 from mayan.celery import app as celery_app
 
 logger = logging.getLogger(name=__name__)
@@ -93,6 +94,12 @@ class CeleryQueue(AppsModuleLoaderMixin):
         self.default_queue = default_queue
         self.transient = transient
         self.task_types = []
+
+        if name in self.__class__._registry:
+            raise NonUniqueError(
+                'A queue named `{}`, already exists.'.format(name)
+            )
+
         self.__class__._registry[name] = self
         worker.queues.append(self)
 
