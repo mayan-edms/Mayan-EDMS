@@ -1,39 +1,10 @@
 from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 
-from ..tasks import (
-    task_launch_all_workflows, task_launch_all_workflow_for,
-    task_launch_workflow, task_launch_workflow_for
+
+from .mixins.workflow_template_mixins import (
+    WorkflowTaskTestCaseMixin, WorkflowTemplateTestMixin
 )
-
-from .mixins.workflow_template_mixins import WorkflowTemplateTestMixin
-
-
-class WorkflowTaskTestCaseMixin:
-    def _execute_task_launch_all_workflows(self):
-        task_launch_all_workflows.apply_async().get()
-
-    def _execute_task_launch_all_workflow_for(self):
-        task_launch_all_workflow_for.apply_async(
-            kwargs={
-                'document_id': self.test_document.pk,
-            }
-        ).get()
-
-    def _execute_task_launch_workflow(self):
-        task_launch_workflow.apply_async(
-            kwargs={
-                'workflow_id': self.test_workflow_template.pk
-            }
-        ).get()
-
-    def _execute_task_launch_workflow_for(self):
-        task_launch_workflow_for.apply_async(
-            kwargs={
-                'document_id': self.test_document.pk,
-                'workflow_id': self.test_workflow_template.pk
-            }
-        ).get()
 
 
 class WorkflowTaskTestCase(
