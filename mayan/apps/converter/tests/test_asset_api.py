@@ -178,7 +178,7 @@ class AssetAPIViewTestCase(
         self.assertNotEqual(self.test_asset.label, asset_label)
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
