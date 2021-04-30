@@ -13,8 +13,6 @@ from .mixins import KeyAPIViewTestMixin, KeyTestMixin
 
 
 class KeyAPITestCase(KeyTestMixin, KeyAPIViewTestMixin, BaseAPITestCase):
-    _test_event_object_name = 'test_key_private'
-
     def test_key_create_api_view_no_permission(self):
         self._clear_events()
 
@@ -23,8 +21,8 @@ class KeyAPITestCase(KeyTestMixin, KeyAPIViewTestMixin, BaseAPITestCase):
 
         self.assertEqual(Key.objects.all().count(), 0)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_key_create_api_view_with_permission(self):
         self.grant_permission(permission=permission_key_upload)
@@ -41,10 +39,13 @@ class KeyAPITestCase(KeyTestMixin, KeyAPIViewTestMixin, BaseAPITestCase):
         self.assertEqual(Key.objects.count(), 1)
         self.assertEqual(key.fingerprint, TEST_KEY_PRIVATE_FINGERPRINT)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.target, self.test_key_private)
-        self.assertEqual(event.verb, event_key_created.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_key_private)
+        self.assertEqual(events[0].verb, event_key_created.id)
 
     def test_key_delete_api_view_no_permission(self):
         self._create_test_key_private()
@@ -56,8 +57,8 @@ class KeyAPITestCase(KeyTestMixin, KeyAPIViewTestMixin, BaseAPITestCase):
 
         self.assertEqual(Key.objects.count(), 1)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_key_delete_api_view_with_access(self):
         self._create_test_key_private()
@@ -72,8 +73,8 @@ class KeyAPITestCase(KeyTestMixin, KeyAPIViewTestMixin, BaseAPITestCase):
 
         self.assertEqual(Key.objects.count(), 0)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_key_detail_api_view_no_permission(self):
         self._create_test_key_private()
@@ -83,8 +84,8 @@ class KeyAPITestCase(KeyTestMixin, KeyAPIViewTestMixin, BaseAPITestCase):
         response = self._request_test_key_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_key_detail_api_view_with_access(self):
         self._create_test_key_private()
@@ -100,5 +101,5 @@ class KeyAPITestCase(KeyTestMixin, KeyAPIViewTestMixin, BaseAPITestCase):
             response.data['fingerprint'], self.test_key_private.fingerprint
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)

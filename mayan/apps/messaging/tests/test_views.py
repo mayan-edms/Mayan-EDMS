@@ -13,8 +13,6 @@ from ..permissions import (
 class MessageViewTestCase(
     MessageTestMixin, MessageViewTestMixin, GenericViewTestCase
 ):
-    _test_event_object_name = 'test_message'
-
     def test_message_create_view_no_permission(self):
         message_count = Message.objects.count()
 
@@ -25,8 +23,8 @@ class MessageViewTestCase(
 
         self.assertEqual(Message.objects.count(), message_count)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_message_create_view_with_permissions(self):
         self.grant_permission(permission=permission_message_create)
@@ -40,9 +38,13 @@ class MessageViewTestCase(
 
         self.assertEqual(Message.objects.count(), message_count + 1)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_message_created.id)
-        self.assertEqual(event.actor, self._test_case_user)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_message)
+        self.assertEqual(events[0].verb, event_message_created.id)
 
     def test_message_delete_view_no_permission(self):
         self._create_test_message()
@@ -56,8 +58,8 @@ class MessageViewTestCase(
 
         self.assertEqual(Message.objects.count(), message_count)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_message_delete_view_with_access(self):
         self._create_test_message()
@@ -75,8 +77,8 @@ class MessageViewTestCase(
 
         self.assertEqual(Message.objects.count(), message_count - 1)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_message_list_view_with_no_permission(self):
         self._create_test_message()
@@ -88,8 +90,8 @@ class MessageViewTestCase(
             response=response, text=self.test_message.subject, status_code=200
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_message_list_view_with_access(self):
         self._create_test_message()
@@ -105,5 +107,5 @@ class MessageViewTestCase(
             response=response, text=self.test_message.subject, status_code=200
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)

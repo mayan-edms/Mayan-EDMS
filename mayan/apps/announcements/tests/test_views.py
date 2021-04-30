@@ -13,8 +13,6 @@ from ..permissions import (
 class AnnouncementViewTestCase(
     AnnouncementTestMixin, AnnouncementViewTestMixin, GenericViewTestCase
 ):
-    _test_event_object_name = 'test_announcement'
-
     def test_announcement_create_view_no_permission(self):
         announcement_count = Announcement.objects.count()
 
@@ -25,8 +23,8 @@ class AnnouncementViewTestCase(
 
         self.assertEqual(Announcement.objects.count(), announcement_count)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_announcement_create_view_with_permissions(self):
         self.grant_permission(permission=permission_announcement_create)
@@ -40,11 +38,13 @@ class AnnouncementViewTestCase(
 
         self.assertEqual(Announcement.objects.count(), announcement_count + 1)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.action_object, None)
-        self.assertEqual(event.target, self.test_announcement)
-        self.assertEqual(event.verb, event_announcement_created.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_announcement)
+        self.assertEqual(events[0].verb, event_announcement_created.id)
 
     def test_announcement_delete_view_no_permission(self):
         self._create_test_announcement()
@@ -58,8 +58,8 @@ class AnnouncementViewTestCase(
 
         self.assertEqual(Announcement.objects.count(), announcement_count)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_announcement_delete_view_with_access(self):
         self._create_test_announcement()
@@ -77,8 +77,8 @@ class AnnouncementViewTestCase(
 
         self.assertEqual(Announcement.objects.count(), announcement_count - 1)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_announcement_edit_view_no_permission(self):
         self._create_test_announcement()
@@ -93,8 +93,8 @@ class AnnouncementViewTestCase(
         self.test_announcement.refresh_from_db()
         self.assertEqual(self.test_announcement.label, announcement_label)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_announcement_edit_view_with_access(self):
         self._create_test_announcement()
@@ -113,11 +113,13 @@ class AnnouncementViewTestCase(
         self.test_announcement.refresh_from_db()
         self.assertNotEqual(self.test_announcement.label, announcement_label)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.action_object, None)
-        self.assertEqual(event.target, self.test_announcement)
-        self.assertEqual(event.verb, event_announcement_edited.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_announcement)
+        self.assertEqual(events[0].verb, event_announcement_edited.id)
 
     def test_announcement_list_view_with_no_permission(self):
         self._create_test_announcement()
@@ -129,8 +131,8 @@ class AnnouncementViewTestCase(
             response=response, text=self.test_announcement.label, status_code=200
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_announcement_list_view_with_access(self):
         self._create_test_announcement()
@@ -146,5 +148,5 @@ class AnnouncementViewTestCase(
             response=response, text=self.test_announcement.label, status_code=200
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)

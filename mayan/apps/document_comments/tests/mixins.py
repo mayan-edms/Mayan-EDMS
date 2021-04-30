@@ -67,11 +67,22 @@ class DocumentCommentTestMixin:
 
 class DocumentCommentViewTestMixin:
     def _request_test_comment_create_view(self):
-        return self.post(
+        pk_list = list(Comment.objects.values_list('pk', flat=True))
+
+        response = self.post(
             viewname='comments:comment_add', kwargs={
                 'document_id': self.test_document.pk
             }, data={'text': TEST_COMMENT_TEXT}
         )
+
+        try:
+            self.test_document_comment = Comment.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except Comment.DoesNotExist:
+            self.test_document_comment = None
+
+        return response
 
     def _request_test_comment_delete_view(self):
         return self.post(

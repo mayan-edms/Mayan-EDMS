@@ -1,4 +1,4 @@
-from actstream.models import Action, any_stream
+from actstream.models import Action
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.permissions.tests.mixins import RoleTestMixin
@@ -32,19 +32,6 @@ class EventTestCaseMixin:
 
     def _get_test_events(self):
         return Action.objects.all().order_by('timestamp')
-
-    def _get_test_object_event(self, object_name=None):
-        return self._get_test_object_events(object_name=object_name).first()
-
-    def _get_test_object_events(self, object_name=None):
-        test_object = getattr(self, object_name or self._test_event_object_name)
-
-        if test_object:
-            queryset = any_stream(obj=test_object)
-        else:
-            queryset = Action.objects.all()
-
-        return queryset.order_by('timestamp')
 
 
 class EventTypeNamespaceAPITestMixin:

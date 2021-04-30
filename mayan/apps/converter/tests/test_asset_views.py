@@ -13,8 +13,6 @@ from ..permissions import (
 class AssetViewTestCase(
     AssetTestMixin, AssetViewTestMixin, GenericViewTestCase
 ):
-    _test_event_object_name = 'test_asset'
-
     def test_asset_create_view_no_permission(self):
         asset_count = Asset.objects.count()
 
@@ -25,8 +23,8 @@ class AssetViewTestCase(
 
         self.assertEqual(Asset.objects.count(), asset_count)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_asset_create_view_with_permissions(self):
         self.grant_permission(permission=permission_asset_create)
@@ -40,11 +38,13 @@ class AssetViewTestCase(
 
         self.assertEqual(Asset.objects.count(), asset_count + 1)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.action_object, None)
-        self.assertEqual(event.target, self.test_asset)
-        self.assertEqual(event.verb, event_asset_created.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_asset)
+        self.assertEqual(events[0].verb, event_asset_created.id)
 
     def test_asset_delete_view_no_permission(self):
         self._create_test_asset()
@@ -58,8 +58,8 @@ class AssetViewTestCase(
 
         self.assertEqual(Asset.objects.count(), asset_count)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_asset_delete_view_with_access(self):
         self._create_test_asset()
@@ -77,8 +77,8 @@ class AssetViewTestCase(
 
         self.assertEqual(Asset.objects.count(), asset_count - 1)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_asset_detail_view_no_permission(self):
         self._create_test_asset()
@@ -90,8 +90,8 @@ class AssetViewTestCase(
             response=response, text=self.test_asset.label, status_code=404
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_asset_detail_view_with_access(self):
         self._create_test_asset()
@@ -107,8 +107,8 @@ class AssetViewTestCase(
             response=response, text=self.test_asset.label, status_code=200
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_asset_edit_view_no_permission(self):
         self._create_test_asset()
@@ -123,8 +123,8 @@ class AssetViewTestCase(
         self.test_asset.refresh_from_db()
         self.assertEqual(self.test_asset.label, asset_label)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_asset_edit_view_with_access(self):
         self._create_test_asset()
@@ -143,11 +143,13 @@ class AssetViewTestCase(
         self.test_asset.refresh_from_db()
         self.assertNotEqual(self.test_asset.label, asset_label)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.action_object, None)
-        self.assertEqual(event.target, self.test_asset)
-        self.assertEqual(event.verb, event_asset_edited.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_asset)
+        self.assertEqual(events[0].verb, event_asset_edited.id)
 
     def test_asset_list_view_with_no_permission(self):
         self._create_test_asset()
@@ -159,8 +161,8 @@ class AssetViewTestCase(
             response=response, text=self.test_asset.label, status_code=200
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_asset_list_view_with_access(self):
         self._create_test_asset()
@@ -174,5 +176,5 @@ class AssetViewTestCase(
             response=response, text=self.test_asset.label, status_code=200
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
