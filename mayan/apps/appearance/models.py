@@ -1,13 +1,17 @@
 from django.conf import settings
-from django.db import models, transaction
+from django.db import models
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.databases.model_mixins import ExtraDataModelMixin
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
+
 from .events import event_theme_created, event_theme_edited
 
 
-class Theme(models.Model):
+class Theme(ExtraDataModelMixin, models.Model):
     label = models.CharField(
         db_index=True, help_text=_('A short text describing the theme.'),
         max_length=128, unique=True, verbose_name=_('Label')
@@ -34,20 +38,19 @@ class Theme(models.Model):
             }
         )
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_theme_created,
+            'target': 'self',
+        },
+        edited={
+            'event': event_theme_edited,
+            'target': 'self',
+        }
+    )
     def save(self, *args, **kwargs):
-        _user = kwargs.pop('_user', None)
-
-        with transaction.atomic():
-            is_new = not self.pk
-            super().save(*args, **kwargs)
-            if is_new:
-                event_theme_created.commit(
-                    actor=_user, target=self
-                )
-            else:
-                event_theme_edited.commit(
-                    actor=_user, target=self
-                )
+        super().save(*args, **kwargs)
 
 
 class UserThemeSetting(models.Model):
