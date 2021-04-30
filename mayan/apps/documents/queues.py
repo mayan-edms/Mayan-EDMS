@@ -2,26 +2,24 @@ from datetime import timedelta
 
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.converter.queues import queue_converter
 from mayan.apps.task_manager.classes import CeleryQueue
-from mayan.apps.task_manager.workers import worker_fast, worker_medium
+from mayan.apps.task_manager.workers import worker_a, worker_c
 
 from .literals import (
     CHECK_DELETE_PERIOD_INTERVAL, CHECK_TRASH_PERIOD_INTERVAL,
     DELETE_STALE_STUBS_INTERVAL
 )
 
-queue_converter = CeleryQueue(
-    name='converter', label=_('Converter'), transient=True, worker=worker_fast
-)
 queue_documents_periodic = CeleryQueue(
     name='documents_periodic', label=_('Documents periodic'), transient=True,
-    worker=worker_medium
+    worker=worker_c
 )
 queue_uploads = CeleryQueue(
-    name='uploads', label=_('Uploads'), worker=worker_medium
+    name='uploads', label=_('Uploads'), worker=worker_c
 )
 queue_documents = CeleryQueue(
-    name='documents', label=_('Documents'), worker=worker_medium
+    name='documents', label=_('Documents'), worker=worker_c
 )
 
 queue_converter.add_task_type(

@@ -8,14 +8,14 @@ environment=
     MAYAN_CELERY_BROKER_URL="{{ CELERY_BROKER_URL }}",
     MAYAN_DATABASES="{{ DATABASES }}"
 
-[program:mayan-gunicorn]
+[program:mayan-edms-gunicorn]
 autorestart = true
 autostart = true
 command = {{ INSTALLATION_PATH }}/bin/gunicorn -w {{ GUNICORN_WORKERS }} mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class {{ GUNICORN_WORKER_CLASS }} --bind 0.0.0.0:8000 --timeout {{ GUNICORN_TIMEOUT }}
 user = mayan
 
 {% for worker in workers %}
-[program:mayan-worker-{{ worker.name }}]
+[program:mayan-edms-worker-{{ worker.name }}]
 autorestart = true
 autostart = true
 command = nice -n {{ worker.nice_level }} {{ INSTALLATION_PATH }}/bin/celery worker -A mayan -Ofair -l ERROR -Q {% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} -n mayan-worker-{{ worker.name }}.%%h --concurrency=1
@@ -27,7 +27,7 @@ stopwaitsecs = 1
 user = mayan
 {% endfor %}
 
-[program:mayan-celery-beat]
+[program:mayan-edms-celery-beat]
 autorestart = true
 autostart = true
 command = nice -n 1 {{ INSTALLATION_PATH }}/bin/celery beat -A mayan --pidfile= -l ERROR

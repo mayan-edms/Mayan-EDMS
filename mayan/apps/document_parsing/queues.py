@@ -1,10 +1,10 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.task_manager.classes import CeleryQueue
-from mayan.apps.task_manager.workers import worker_slow
+from mayan.apps.task_manager.workers import worker_d
 
 queue_parsing = CeleryQueue(
-    name='parsing', label=_('Parsing'), worker=worker_slow
+    name='parsing', label=_('Parsing'), worker=worker_d
 )
 
 queue_parsing.add_task_type(

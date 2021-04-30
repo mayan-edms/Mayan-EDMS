@@ -1,4 +1,4 @@
-[program:mayan-gunicorn]
+[program:mayan-edms-gunicorn]
 autorestart = false
 autostart = true
 command = /bin/bash -c "${MAYAN_GUNICORN_BIN} -w ${MAYAN_GUNICORN_WORKERS} ${MAYAN_GUNICORN_TEMPORARY_DIRECTORY} mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class ${MAYAN_GUNICORN_WORKER_CLASS} --bind 0.0.0.0:8000 --env DJANGO_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE} --timeout ${MAYAN_GUNICORN_TIMEOUT}"
@@ -10,7 +10,7 @@ stdout_logfile_maxbytes = 0
 user = mayan
 
 {% for worker in workers %}
-[program:mayan-worker-{{ worker.name }}]
+[program:mayan-edms-worker-{{ worker.name }}]
 autorestart = false
 autostart = true
 command = nice -n {{ worker.nice_level }} /bin/bash -c "${MAYAN_PYTHON_BIN_DIR}celery worker -A mayan -Ofair -l ERROR -Q {% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} -n mayan-worker-{{ worker.name }}.%%h ${MAYAN_WORKER_{{ worker.name|upper }}_CONCURRENCY}"
@@ -26,7 +26,7 @@ stopwaitsecs = 1
 user = mayan
 {% endfor %}
 
-[program:mayan-celery-beat]
+[program:mayan-edms-celery-beat]
 autorestart = false
 autostart = true
 command = nice -n 1 /bin/bash -c "${MAYAN_PYTHON_BIN_DIR}celery -A mayan beat --pidfile= -l ERROR"

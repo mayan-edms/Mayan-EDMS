@@ -1,11 +1,11 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.task_manager.classes import CeleryQueue
-from mayan.apps.task_manager.workers import worker_slow
+from mayan.apps.task_manager.workers import worker_c
 
 queue_events = CeleryQueue(
     label=_('Events'), name='events', transient=True,
-    worker=worker_slow
+    worker=worker_c
 )
 
 queue_events.add_task_type(

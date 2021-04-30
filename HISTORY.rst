@@ -342,3 +342,8 @@
 - Only prune caches during startup if their maximum size changed.
 - Add detection of excessive cache pruning when cache size is too small for
   the workload.
+- Detect and avoid duplicated queue names.
+- Add a fourth class of worker.
+- Re-balance queues.
+- Rename workers from ``fast``, ``medium``, and ``slow`` to ``A`` (fast),
+  ``B`` (new workers), ``C`` (medium), ``D`` (slow).
