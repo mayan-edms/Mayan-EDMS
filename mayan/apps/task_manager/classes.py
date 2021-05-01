@@ -101,7 +101,7 @@ class CeleryQueue(AppsModuleLoaderMixin):
             )
 
         self.__class__._registry[name] = self
-        worker.queues.append(self)
+        worker._queues.append(self)
 
     def __str__(self):
         return force_text(s=self.label)
@@ -168,8 +168,13 @@ class Worker:
         return cls._registry[name]
 
     def __init__(self, name, concurrency=None, label=None, nice_level=0):
+        self.concurrency = concurrency
         self.name = name
         self.label = label
         self.nice_level = nice_level
-        self.queues = []
+        self._queues = []
         self.__class__._registry[name] = self
+
+    @property
+    def queues(self):
+        return sorted(self._queues, key=lambda queue: queue.name)
