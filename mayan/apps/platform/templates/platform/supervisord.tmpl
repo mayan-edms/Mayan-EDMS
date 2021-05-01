@@ -15,7 +15,7 @@ command = {{ INSTALLATION_PATH }}/bin/gunicorn -w {{ GUNICORN_WORKERS }} mayan.w
 user = mayan
 
 {% for worker in workers %}
-[program:mayan-edms-worker-{{ worker.name }}]
+[program:mayan-edms-{{ worker.name }}]
 autorestart = true
 autostart = true
 command = nice -n {{ worker.nice_level }} {{ INSTALLATION_PATH }}/bin/celery worker -A mayan -Ofair -l ERROR -Q {% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} -n mayan-worker-{{ worker.name }}.%%h --concurrency=1
