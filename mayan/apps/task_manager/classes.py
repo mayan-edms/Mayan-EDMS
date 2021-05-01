@@ -167,7 +167,7 @@ class Worker:
     def get(cls, name):
         return cls._registry[name]
 
-    def __init__(self, name, label=None, nice_level=0):
+    def __init__(self, name, concurrency=None, label=None, nice_level=0):
         self.name = name
         self.label = label
         self.nice_level = nice_level
