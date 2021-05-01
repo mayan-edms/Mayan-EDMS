@@ -278,8 +278,9 @@ def setup(app):
     MAYAN_GUNICORN_BIN = os.path.join(MAYAN_PYTHON_BIN_DIR, 'gunicorn')
     MAYAN_PIP_BIN = os.path.join(MAYAN_PYTHON_BIN_DIR, 'pip')
     MAYAN_BIN = os.path.join(MAYAN_PYTHON_BIN_DIR, 'mayan-edms.py')
-    SUPERVISOR_ETC_PATH = '/etc/supervisor/conf.d/'
-    MAYAN_SUPERVISOR_CONF = os.path.join(SUPERVISOR_ETC_PATH, 'mayan.conf')
+    MAYAN_SUPERVISOR_CONF = os.path.join(
+        SUPERVISOR_CONFIGURATION_DIRECTORY, SUPERVISOR_CONFIGURATION_FILENAME
+    )
 
     environment_variables = utils.load_env_file()
     environment_variables['DOCKER_MAYAN_IMAGE_VERSION'] = mayan.__version__
