@@ -180,7 +180,7 @@ EXPOSE 8000
 CMD ["run_all"]
 
 RUN ${PROJECT_INSTALL_DIR}bin/mayan-edms.py platformtemplate docker_entrypoint > /usr/local/bin/ \
-RUN ${PROJECT_INSTALL_DIR}bin/mayan-edms.py platformtemplate docker_supervisord > ${SUPERVISOR_CONFIGURATION_DIRECTORY}${SUPERVISOR_CONFIGURATION_FILENAME} \
+&& RUN ${PROJECT_INSTALL_DIR}bin/mayan-edms.py platformtemplate docker_supervisord > ${SUPERVISOR_CONFIGURATION_DIRECTORY}${SUPERVISOR_CONFIGURATION_FILENAME} \
 && apt-get clean autoclean \
 && apt-get autoremove --purge -y \
 && rm -rf /var/lib/apt/lists/* \
