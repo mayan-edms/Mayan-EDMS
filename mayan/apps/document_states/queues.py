@@ -2,7 +2,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.queues import queue_tools
 from mayan.apps.task_manager.classes import CeleryQueue
-from mayan.apps.task_manager.workers import worker_a, worker_b
+from mayan.apps.task_manager.workers import worker_a, worker_c
 
 queue_document_states_fast = CeleryQueue(
     label=_('Document states fast'), name='document_states_fast',
@@ -10,7 +10,7 @@ queue_document_states_fast = CeleryQueue(
 )
 queue_document_states_medium = CeleryQueue(
     label=_('Document states medium'), name='document_states_medium',
-    worker=worker_b
+    worker=worker_c
 )
 
 queue_document_states_fast.add_task_type(
