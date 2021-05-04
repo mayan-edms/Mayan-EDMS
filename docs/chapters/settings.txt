@@ -69,22 +69,23 @@ Via Python settings files
 
 Another way to configure Mayan EDMS and the one required when more extensive
 setup is required (such as when using external Python libraries), is via
-Python-style, settings files. A folder named ``user_settings`` is created
-for the purpose of hosting these settings files.
+Python-style, settings files. A folder named ``|USER_SETTINGS_FOLDER|/`` is
+created for the purpose of hosting these settings files.
 
 If you installed Mayan EDMS according to the :doc:`../chapters/deploying`
-instructions provided in this documentation, your ``user_settings`` folder
-should be located in the directory: ``|MAYAN_MEDIA_ROOT|/user_settings/``.
+instructions provided in this documentation, your ``|USER_SETTINGS_FOLDER|/``
+folder should be located in the directory:
+``|MAYAN_MEDIA_ROOT|/|USER_SETTINGS_FOLDER|/``.
 
-If Mayan EDMS was installed using Docker, the ``user_settings`` folder
-will be found inside the Docker volume. If you installed Mayan EDMS
+If Mayan EDMS was installed using Docker, the ``|USER_SETTINGS_FOLDER|/``
+folder will be found inside the Docker volume. If you installed Mayan EDMS
 according to the :doc:`../chapters/docker/index` instructions provided in this
-documentation your ``user_settings`` folder should be located in the directory:
-``/docker-volumes/mayan/user_settings``.
+documentation, your ``|USER_SETTINGS_FOLDER|/`` folder should be located in
+the directory: ``/docker-volumes/mayan/|USER_SETTINGS_FOLDER|/``.
 
 Create a file with any valid name and a ``.py`` extension in the
-``user_settings`` folder. The file must starts with a global import of
-``mayan.settings.production``. In the form:
+``|USER_SETTINGS_FOLDER|/`` folder. The file must starts with a global import
+of ``mayan.settings.production``. In the form:
 
 .. code-block:: python
 
@@ -114,24 +115,24 @@ The way used to tell Mayan EDMS to import this file will vary based on the
 installation method.
 
 For the :doc:`../chapters/deploying` method, the full import path will be
-``mayan.media.user_settings.mysettings`` and can be passed via the
+``mayan.media.|USER_SETTINGS_FOLDER|.mysettings`` and can be passed via the
 ``--settings`` command line argument like this:
 
 .. code-block:: console
 
-    |MAYAN_BIN| runserver --settings=mayan.media.user_settings.mysettings
+    |MAYAN_BIN| runserver --settings=mayan.media.|USER_SETTINGS_FOLDER|.mysettings
 
 or via the ``DJANGO_SETTINGS_MODULE`` environment variable like this:
 
 .. code-block:: console
 
-    export DJANGO_SETTINGS_MODULE=mayan.media.user_settings.mysettings
+    export DJANGO_SETTINGS_MODULE=mayan.media.|USER_SETTINGS_FOLDER|.mysettings
 
 To make the use of the custom Python setting file permanent, update the ``|MAYAN_SUPERVISOR_CONF|``
 file. In the ``[supervisord]`` section, update the ``environment=`` value of
 ``DJANGO_SETTINGS_MODULE`` from  the default ``mayan.settings.production`` to
-``mayan.media.user_settings.mysettings``. Pay attention to the indentation of
-the ``environment=`` entries.
+``mayan.media.|USER_SETTINGS_FOLDER|.mysettings``. Pay attention to the
+indentation and comma use of the ``environment=`` entries.
 
 Force supervisor to read the changes and restart using:
 
@@ -140,21 +141,21 @@ Force supervisor to read the changes and restart using:
     sudo supervisorctl reread
     sudo supervisorctl restart all
 
-For the :doc:`../chapters/docker/index` installation method, the full import path will be
-``user_settings.mysettings`` and can only be passed via the
-``MAYAN_SETTINGS_MODULE`` environment variable like this:
+For the :doc:`../chapters/docker/index` installation method, the full import
+path will be ``|USER_SETTINGS_FOLDER|.mysettings`` and can only be passed
+via the ``MAYAN_SETTINGS_MODULE`` environment variable like this:
 
 .. code-block:: console
 
-    docker run <...> -e MAYAN_SETTINGS_MODULE=user_settings.mysettings
+    docker run <...> -e MAYAN_SETTINGS_MODULE=|USER_SETTINGS_FOLDER|.mysettings
 
 
 .. note::
 
    The settings files must be valid Python modules. Errors in the Python
-   settings files might prevent Mayan EDMS for starting properly. Error other
-   than syntax errors, might not prevent Mayan EDMS from starting up but
-   might not apply correctly or cause operation issues.
+   settings files might prevent Mayan EDMS for starting properly. Errors
+   other than syntax errors, might cause Mayan EDMS to starting up in an
+   incomplete manner making debugging difficult.
 
 
 Setting priority

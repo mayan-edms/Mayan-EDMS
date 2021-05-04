@@ -63,7 +63,7 @@ Docker Compose installation
 
    .. note::
 
-       If the ``.env`` file is does not reside in the same folder where the
+       If the ``.env`` file does not reside in the same folder where the
        ``docker-compose.yml`` is or you choose another filename for it,
        the option ``--env-file <you env file path>`` needs to be added
        to every ``docker-compose`` invocation.

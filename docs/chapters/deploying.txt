@@ -119,6 +119,20 @@ For another setup that offers more performance and scalability refer to the
        sudo -u postgres createdb -O |DEFAULT_DATABASE_USER| |DEFAULT_DATABASE_NAME|
 
 
+#. Configure Redis:
+
+   Configure Redis to discard data when it runs out of memory, not save its
+   database, keep 3 database, and be password protected:
+
+   .. code-block:: console
+
+       echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
+       echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
+       echo "databases 3" | sudo tee -a /etc/redis/redis.conf
+       echo "requirepass |DEFAULT_REDIS_PASSWORD|" | sudo tee -a /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+
 #. Initialize the project:
 
    This step will create all the database structures, download and compress
@@ -145,8 +159,13 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: console
 
-       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}" \
-       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       sudo -u |DEFAULT_OS_USERNAME| \
+       MAYAN_CELERY_BROKER_URL="redis://:|DEFAULT_REDIS_PASSWORD|@127.0.0.1:6379/0" \
+       MAYAN_CELERY_RESULT_BACKEND="redis://:|DEFAULT_REDIS_PASSWORD|@127.0.0.1:6379/1" \
+       MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}" \
+       MAYAN_LOCK_MANAGER_BACKEND="mayan.apps.lock_manager.backends.redis_lock.RedisLock" \
+       MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS="{'redis_url':'redis://:|DEFAULT_REDIS_PASSWORD|@127.0.0.1:6379/2'}" \
+       MAYAN_MEDIA_ROOT="|MAYAN_MEDIA_ROOT|" \
        |MAYAN_BIN| initialsetup
 
 
@@ -162,23 +181,8 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: console
 
-       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}" \
-       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
-       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
 
-
-#. Configure Redis:
-
-   Configure Redis to discard data when it runs out of memory, not save its
-   database, keep 2 database, and be password protected:
-
-   .. code-block:: console
-
-       echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
-       echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
-       echo "databases 2" | sudo tee -a /etc/redis/redis.conf
-       echo "requirepass |DEFAULT_REDIS_PASSWORD|" | sudo tee -a /etc/redis/redis.conf
-       sudo systemctl restart redis
 
 #. Enable and restart the services [1_]:
 
@@ -235,21 +239,24 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
        sudo rabbitmqctl set_permissions -p |DEFAULT_RABBITMQ_VHOST| |DEFAULT_RABBITMQ_USER| ".*" ".*" ".*"
 
 
-#. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
+#. Edit the config file at ``|MAYAN_MEDIA_ROOT|/config.yml``:
 
-   Replace (paying attention to the comma at the end):
+   Replace:
 
    .. code-block:: ini
 
-       MAYAN_CELERY_BROKER_URL="redis://127.0.0.1:6379/0",
+       MAYAN_CELERY_BROKER_URL="redis://..."
 
    with:
 
    .. code-block:: ini
 
-       MAYAN_CELERY_BROKER_URL="amqp://|DEFAULT_RABBITMQ_USER|:|DEFAULT_RABBITMQ_PASSWORD|@localhost:5672/|DEFAULT_RABBITMQ_VHOST|",
+       MAYAN_CELERY_BROKER_URL="amqp://|DEFAULT_RABBITMQ_USER|:|DEFAULT_RABBITMQ_PASSWORD|@127.0.0.1:5672/|DEFAULT_RABBITMQ_VHOST|"
 
-   increase the number of Gunicorn workers to 3 in the line (``-w 2`` section):
+
+#. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
+
+   Increase the number of Gunicorn workers to 3 in the line (``-w 2`` section):
 
    .. code-block:: ini
 
@@ -264,7 +271,6 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 
        sudo supervisorctl reread
        sudo supervisorctl restart all
-
 
 
 [1]: https://bugs.launchpad.net/ubuntu/+source/supervisor/+bug/1594740

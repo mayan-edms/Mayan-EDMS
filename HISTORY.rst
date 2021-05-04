@@ -347,3 +347,7 @@
 - Re-balance queues.
 - Rename workers from ``fast``, ``medium``, and ``slow`` to ``A`` (fast),
   ``B`` (new workers), ``C`` (medium), ``D`` (slow).
+- Add support for passing custom nice level to the workers when using the
+  Docker image ``run_worker`` command. The value is passed via the
+  ``MAYAN_WORKER_NICE_LEVEL`` environment variable. This variable defaults to
+  ``0``.
