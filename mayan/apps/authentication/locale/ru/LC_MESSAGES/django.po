@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:32 events.py:6 permissions.py:6 settings.py:10
+#: apps.py:35 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr "Аутентификация"
 
@@ -35,6 +35,14 @@ msgstr "Имперсонация пользователя завершена"
 #: events.py:13
 msgid "User impersonation started"
 msgstr "Имперсонация пользователя начата"
+
+#: events.py:16
+msgid "User logged in"
+msgstr "Пользователь вошел в систему"
+
+#: events.py:19
+msgid "User logged out"
+msgstr "Пользователь вышел из системы"
 
 #: forms.py:20
 msgid "Email"

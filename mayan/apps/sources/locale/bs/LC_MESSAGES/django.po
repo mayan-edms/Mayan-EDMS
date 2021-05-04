@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:15+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
@@ -584,15 +584,15 @@ msgstr ""
 msgid "Generate staging file image"
 msgstr ""
 
-#: queues.py:23
+#: queues.py:24
 msgid "Check interval source"
 msgstr "Proverite intervalni izvor"
 
-#: queues.py:27
+#: queues.py:29
 msgid "Handle upload"
 msgstr "Handle upload"
 
-#: queues.py:31
+#: queues.py:33
 msgid "Upload document"
 msgstr "Upload dokument"
 

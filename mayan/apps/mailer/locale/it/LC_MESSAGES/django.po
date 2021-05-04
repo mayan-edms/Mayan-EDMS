@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -31,7 +31,7 @@ msgstr "Posta"
 msgid "Null backend"
 msgstr "Backend nullo"
 
-#: events.py:5 permissions.py:5 queues.py:6 settings.py:10
+#: events.py:5 permissions.py:5 queues.py:7 settings.py:10
 msgid "Mailing"
 msgstr "Mailing"
 
@@ -312,7 +312,7 @@ msgstr "Visualizza un profilo di posta"
 msgid "Use a mailing profile"
 msgstr "Usa un profilo di posta"
 
-#: queues.py:8
+#: queues.py:11
 msgid "Send document"
 msgstr "Invia documento"
 

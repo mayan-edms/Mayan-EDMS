@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:15+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -125,11 +125,11 @@ msgstr "Condividi files caricati"
 msgid "Storage periodic"
 msgstr ""
 
-#: queues.py:18
+#: queues.py:19
 msgid "Delete stale uploads"
 msgstr "Cancella upload in sospeso"
 
-#: queues.py:25
+#: queues.py:26
 msgid "Delete stale download files"
 msgstr ""
 

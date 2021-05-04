@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -174,7 +174,7 @@ msgstr "Visualizzazione in dettagli della prenotazione"
 msgid "Checkouts periodic"
 msgstr "Prenotazione periodici"
 
-#: queues.py:15
+#: queues.py:16
 msgid "Check expired checkouts"
 msgstr "Controlla i prenotazione scaduti"
 

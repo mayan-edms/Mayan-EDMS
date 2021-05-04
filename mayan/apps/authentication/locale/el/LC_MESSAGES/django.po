@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:32 events.py:6 permissions.py:6 settings.py:10
+#: apps.py:35 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr "Πιστοποίηση"
 
@@ -32,6 +32,14 @@ msgstr "Η μίμηση χρήστη έληξε"
 #: events.py:13
 msgid "User impersonation started"
 msgstr "Η μίμηση χρήστη ξεκίνησε"
+
+#: events.py:16
+msgid "User logged in"
+msgstr "Χρήστης συνδέθηκε"
+
+#: events.py:19
+msgid "User logged out"
+msgstr "Χρήστης αποσυνδέθηκε"
 
 #: forms.py:20
 msgid "Email"

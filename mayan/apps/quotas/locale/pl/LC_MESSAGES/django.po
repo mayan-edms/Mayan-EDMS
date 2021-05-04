@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:36 events.py:6 links.py:34 models.py:32 permissions.py:5
+#: apps.py:36 events.py:6 links.py:34 models.py:36 permissions.py:5
 #: views.py:136
 msgid "Quotas"
 msgstr "Limit"
@@ -47,7 +47,7 @@ msgstr "Utworzono limit"
 msgid "Quota edited"
 msgstr "Zmieniono limit"
 
-#: forms.py:15 models.py:55
+#: forms.py:15 models.py:58
 msgid "Backend"
 msgstr "Backend"
 
@@ -139,39 +139,39 @@ msgstr "wszyscy użytkownicy"
 msgid "groups: %(groups)s, users: %(users)s"
 msgstr "grupy: %(groups)s, użytkownicy: %(users)s"
 
-#: models.py:18
+#: models.py:22
 msgid "The dotted Python path to the backend class."
 msgstr "Kropkowana ścieżka Pythona do klasy backend."
 
-#: models.py:19
+#: models.py:23
 msgid "Backend path"
 msgstr "Ścieżka backend"
 
-#: models.py:22
+#: models.py:26
 msgid "Backend data"
 msgstr "Dane backend"
 
-#: models.py:26
+#: models.py:30
 msgid "Allow quick disable or enable of the quota."
 msgstr "Zezwól na szybkie wyłączenie lub włączenie limitu."
 
-#: models.py:27
+#: models.py:31
 msgid "Enabled"
 msgstr "Włączone"
 
-#: models.py:31
+#: models.py:35
 msgid "Quota"
 msgstr "Limit"
 
-#: models.py:54
+#: models.py:57
 msgid "Driver used for this quota entry."
 msgstr "Sterownik użyty do tego wpisu limitu."
 
-#: models.py:59
+#: models.py:62
 msgid "Arguments"
 msgstr "Argumenty"
 
-#: models.py:63
+#: models.py:66
 msgid "Usage"
 msgstr "Zużycie"
 

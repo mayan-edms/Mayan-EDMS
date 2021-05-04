@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -28,6 +28,8 @@ msgstr "Разбор на документи"
 #: apps.py:105
 msgid "A generator returning the document file's pages parsed content."
 msgstr ""
+"Генератор, връщащ анализираното съдържание на страниците на файла на "
+"документа."
 
 #: apps.py:106 links.py:21 links.py:43 models.py:24 search.py:10
 msgid "Content"
@@ -42,6 +44,8 @@ msgid ""
 "Utility from the poppler-utils package used to extract content from PDF "
 "files."
 msgstr ""
+"Помощна програма от пакета poppler-utils, използвана за извличане на "
+"съдържание от PDF файлове."
 
 #: events.py:10
 msgid "Document parsed content deleted"

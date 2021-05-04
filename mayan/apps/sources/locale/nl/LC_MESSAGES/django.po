@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:15+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -608,15 +608,15 @@ msgstr "Snelle bronnen"
 msgid "Generate staging file image"
 msgstr "Afbeelding in netwerkmap genereren"
 
-#: queues.py:23
+#: queues.py:24
 msgid "Check interval source"
 msgstr "Controle-interval bron"
 
-#: queues.py:27
+#: queues.py:29
 msgid "Handle upload"
 msgstr "Handle upload"
 
-#: queues.py:31
+#: queues.py:33
 msgid "Upload document"
 msgstr "Document uploaden"
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:32 events.py:6 permissions.py:6 settings.py:10
+#: apps.py:35 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr "Ověřování"
 
@@ -31,6 +31,14 @@ msgstr "Předstírání identity uživatele skončilo"
 #: events.py:13
 msgid "User impersonation started"
 msgstr "Předstírání identity uživatele začalo"
+
+#: events.py:16
+msgid "User logged in"
+msgstr "Uživatel se přihlásil"
+
+#: events.py:19
+msgid "User logged out"
+msgstr "Uživatel se odhlásil"
 
 #: forms.py:20
 msgid "Email"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:15+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -24,43 +24,43 @@ msgstr ""
 msgid "Task manager"
 msgstr "任务管理器"
 
-#: apps.py:78
+#: apps.py:83
 msgid "Label"
 msgstr "标签"
 
-#: apps.py:82
+#: apps.py:87
 msgid "Name"
 msgstr "名称"
 
-#: apps.py:87
+#: apps.py:92
 msgid "Default queue?"
 msgstr "默认队列？"
 
-#: apps.py:92
+#: apps.py:97
 msgid "Is transient?"
 msgstr "是临时的吗？"
 
-#: apps.py:96
+#: apps.py:101
 msgid "Type"
 msgstr "类型"
 
-#: apps.py:101
+#: apps.py:106
 msgid "Start time"
 msgstr "开始时间"
 
-#: apps.py:105
+#: apps.py:110
 msgid "Host"
 msgstr "主机"
 
-#: apps.py:109
+#: apps.py:114
 msgid "Arguments"
 msgstr "参数"
 
-#: apps.py:113
+#: apps.py:118
 msgid "Keyword arguments"
 msgstr "关键字参数"
 
-#: apps.py:117
+#: apps.py:122
 msgid "Worker process ID"
 msgstr "工作进程ID"
 

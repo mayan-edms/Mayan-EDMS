@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:15+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -21,64 +21,68 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:76 events.py:6 permissions.py:6
+#: apps.py:74 events.py:6 permissions.py:6
 msgid "User management"
 msgstr "Gebruikersbeheer"
 
-#: apps.py:94 search.py:10
+#: apps.py:92 search.py:10
 msgid "Group"
 msgstr "Groep"
 
-#: apps.py:95 apps.py:105 links.py:43 links.py:52 links.py:70 search.py:34
+#: apps.py:93 apps.py:103 links.py:46 links.py:58 links.py:77 search.py:34
 #: views.py:120
 msgid "Groups"
 msgstr "Groepen"
 
-#: apps.py:96 search.py:16
+#: apps.py:94 search.py:16
 msgid "Name"
 msgstr "Naam"
 
-#: apps.py:99 models.py:16 search.py:22
+#: apps.py:97 models.py:16 search.py:22
 msgid "User"
 msgstr "Gebruiker"
 
-#: apps.py:100 apps.py:185 links.py:47 links.py:75 links.py:89 views.py:306
+#: apps.py:98 apps.py:187 links.py:51 links.py:84 links.py:101 views.py:306
 msgid "Users"
 msgstr "Gebruikers"
 
-#: apps.py:103 search.py:31
+#: apps.py:101 search.py:31
 msgid "Email"
 msgstr "Email"
 
-#: apps.py:104 search.py:28
+#: apps.py:102 search.py:28
 msgid "First name"
 msgstr "Voornaam"
 
-#: apps.py:106
+#: apps.py:104
 msgid "Is active?"
 msgstr "Is actief?"
 
-#: apps.py:107 search.py:37
+#: apps.py:105 search.py:37
 msgid "Last name"
 msgstr "Achternaam"
 
-#: apps.py:108
+#: apps.py:106
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: apps.py:109
+#: apps.py:107
 msgid "Username"
 msgstr "Gebruikersnaam"
 
-#: apps.py:112
+#: apps.py:108
+msgid "Last login"
+msgstr ""
+
+#: apps.py:111
 msgid "Has usable password?"
 msgstr "Heeft bruikbaar wachtwoord?"
 
-#: apps.py:127
+#: apps.py:129
 msgid "All the groups."
 msgstr "Alle groepen."
 
-#: apps.py:131
+#: apps.py:133
 msgid "All the users."
 msgstr "Alle gebruikers."
 
@@ -106,39 +110,39 @@ msgstr "Gebruiker aangemaakt"
 msgid "User edited"
 msgstr "Gebruiker bewerkt"
 
-#: events.py:23
+#: events.py:25
 msgid "User logged in"
 msgstr "Gebruiker is aangemeld"
 
-#: events.py:26
+#: events.py:28
 msgid "User logged out"
 msgstr "Gebruiker is afgemeld"
 
-#: links.py:20
+#: links.py:21
 msgid "User details"
 msgstr "Gebruikersprofiel"
 
-#: links.py:24
+#: links.py:25
 msgid "Edit user details"
 msgstr ""
 
-#: links.py:29 views.py:54
+#: links.py:30 views.py:54
 msgid "Create new group"
 msgstr " Maak nieuwe groep aan"
 
-#: links.py:34 links.py:61 links.py:79
+#: links.py:35 links.py:68 links.py:89
 msgid "Delete"
 msgstr "Verwijderen"
 
-#: links.py:38 links.py:65
+#: links.py:39 links.py:72
 msgid "Edit"
 msgstr "Bewerken"
 
-#: links.py:56 views.py:152
+#: links.py:63 views.py:152
 msgid "Create new user"
 msgstr "Maak nieuwe gebruiker aan"
 
-#: links.py:84
+#: links.py:94
 msgid "User options"
 msgstr "Gebruikersopties"
 
@@ -190,17 +194,21 @@ msgstr "Bekijk bestaande gebruikers"
 msgid "username"
 msgstr "gebruikersnaam"
 
-#: serializers.py:30
-msgid "Comma separated list of group primary keys to assign this user to."
+#: serializers.py:17
+msgid "URL of the API endpoint showing the list users of this group."
 msgstr ""
-"Kommagescheiden lijst van primaire sleutels van groepen waaraan deze "
-"gebruiker verbonden is."
 
-#: serializers.py:60
-msgid "List of group primary keys to which to add the user."
+#: serializers.py:48
+msgid "Primary key of the user to add to the group."
 msgstr ""
-"Lijst van primaire sleutels van groepen  die aan gebruiker moeten worden "
-"verbonden."
+
+#: serializers.py:57
+msgid "Primary key of the user to remove from the group."
+msgstr ""
+
+#: serializers.py:66
+msgid "URL of the API endpoint showing the list groups this user belongs to."
+msgstr ""
 
 #: utils.py:6
 msgid "Anonymous"

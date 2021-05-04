@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -53,11 +53,11 @@ msgstr "Tesseract OCR не е намерен."
 
 #: dependencies.py:23
 msgid "Free Open Source OCR Engine"
-msgstr "Безплатен автомат OCR с отворен код"
+msgstr "Безплатна OCR машина с отворен код"
 
 #: events.py:8
 msgid "Document OCR content deleted"
-msgstr "Съдържанието на OCR на документа е изтрито"
+msgstr "OCR съдържанието на документа е изтрито"
 
 #: events.py:12
 msgid "Document file submitted for OCR"
@@ -224,7 +224,7 @@ msgstr "Изпратете всички документи от даден ти�
 #: views.py:175
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
-msgstr "%(count)d документи, добавени към OCR опашката."
+msgstr "%(count)d документа, добавени към OCR опашката."
 
 #: views.py:210
 #, python-format

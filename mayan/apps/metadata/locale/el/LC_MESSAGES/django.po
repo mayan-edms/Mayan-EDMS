@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -303,11 +303,11 @@ msgstr "Διαγραφή τύπων μεταδεδομένων"
 msgid "View metadata types"
 msgstr "Προβολή τύπων μεταδεδομένων"
 
-#: queues.py:10
+#: queues.py:11
 msgid "Remove metadata type"
 msgstr "Κατάργηση τύπου μεταδεδομένων"
 
-#: queues.py:14
+#: queues.py:15
 msgid "Add required metadata type"
 msgstr "Προσθήκη απαιτούμενου τύπου μεταδεδομένων"
 

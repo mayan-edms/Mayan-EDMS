@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -107,19 +107,19 @@ msgstr "Excluir"
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:40 links.py:45 models.py:25 views.py:111
+#: links.py:40 links.py:45 models.py:29 views.py:111
 msgid "Themes"
 msgstr "Temas"
 
-#: models.py:12
+#: models.py:16
 msgid "A short text describing the theme."
 msgstr "Um texto curto descrevendo o tema."
 
-#: models.py:13
+#: models.py:17
 msgid "Label"
 msgstr "Rótulo"
 
-#: models.py:17
+#: models.py:21
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
@@ -127,23 +127,23 @@ msgstr ""
 "A folha de estilo CSS para alterar a aparência dos diferentes elementos da "
 "interface do usuário."
 
-#: models.py:19
+#: models.py:23
 msgid "Stylesheet"
 msgstr "Folha de estilo"
 
-#: models.py:24 models.py:60
+#: models.py:28 models.py:63
 msgid "Theme"
 msgstr "Tema"
 
-#: models.py:56
+#: models.py:59
 msgid "User"
 msgstr "Usuário"
 
-#: models.py:64
+#: models.py:67
 msgid "User theme setting"
 msgstr "Configuração do tema do usuário"
 
-#: models.py:65
+#: models.py:68
 msgid "User theme settings"
 msgstr "Configurações de tema do usuário"
 

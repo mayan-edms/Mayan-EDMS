@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:36 events.py:6 links.py:34 models.py:32 permissions.py:5
+#: apps.py:36 events.py:6 links.py:34 models.py:36 permissions.py:5
 #: views.py:136
 msgid "Quotas"
 msgstr "Quota"
@@ -46,7 +46,7 @@ msgstr "Quota aangemaakt"
 msgid "Quota edited"
 msgstr "Quota bewerkt"
 
-#: forms.py:15 models.py:55
+#: forms.py:15 models.py:58
 msgid "Backend"
 msgstr "Backend"
 
@@ -138,39 +138,39 @@ msgstr "alle gebruikers"
 msgid "groups: %(groups)s, users: %(users)s"
 msgstr "groepen: %(groups)s, gebruikers: %(users)s"
 
-#: models.py:18
+#: models.py:22
 msgid "The dotted Python path to the backend class."
 msgstr "Het Python-pad naar de backend class."
 
-#: models.py:19
+#: models.py:23
 msgid "Backend path"
 msgstr "Backend pad"
 
-#: models.py:22
+#: models.py:26
 msgid "Backend data"
 msgstr "Backend gegevens"
 
-#: models.py:26
+#: models.py:30
 msgid "Allow quick disable or enable of the quota."
 msgstr "Snel inschakelen en uitschakelen van quota toestaan."
 
-#: models.py:27
+#: models.py:31
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: models.py:31
+#: models.py:35
 msgid "Quota"
 msgstr "Quota"
 
-#: models.py:54
+#: models.py:57
 msgid "Driver used for this quota entry."
 msgstr "Stuurprogramma gebruikt voor deze quotumvermelding."
 
-#: models.py:59
+#: models.py:62
 msgid "Arguments"
 msgstr "Argumenten"
 
-#: models.py:63
+#: models.py:66
 msgid "Usage"
 msgstr "Gebruik"
 

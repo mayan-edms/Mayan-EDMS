@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:15+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -24,43 +24,43 @@ msgstr ""
 msgid "Task manager"
 msgstr "Správce úloh"
 
-#: apps.py:78
+#: apps.py:83
 msgid "Label"
 msgstr "Jmenovka"
 
-#: apps.py:82
+#: apps.py:87
 msgid "Name"
 msgstr "název"
 
-#: apps.py:87
+#: apps.py:92
 msgid "Default queue?"
 msgstr "Výchozí fronta?"
 
-#: apps.py:92
+#: apps.py:97
 msgid "Is transient?"
 msgstr "Je přechodný?"
 
-#: apps.py:96
+#: apps.py:101
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:101
+#: apps.py:106
 msgid "Start time"
 msgstr "Doba spuštění"
 
-#: apps.py:105
+#: apps.py:110
 msgid "Host"
 msgstr "Hostitel"
 
-#: apps.py:109
+#: apps.py:114
 msgid "Arguments"
 msgstr "Argumenty"
 
-#: apps.py:113
+#: apps.py:118
 msgid "Keyword arguments"
 msgstr "Argumenty klíčových slov"
 
-#: apps.py:117
+#: apps.py:122
 msgid "Worker process ID"
 msgstr "ID pracovního procesu"
 

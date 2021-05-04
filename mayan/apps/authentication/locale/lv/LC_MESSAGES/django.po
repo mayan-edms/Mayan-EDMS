@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:32 events.py:6 permissions.py:6 settings.py:10
+#: apps.py:35 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr "Autentifikācija"
 
@@ -31,6 +31,14 @@ msgstr "Uzdošanās par lietotāju ir beigusies"
 #: events.py:13
 msgid "User impersonation started"
 msgstr "Tika sākta uzdošanās par lietotāju"
+
+#: events.py:16
+msgid "User logged in"
+msgstr ""
+
+#: events.py:19
+msgid "User logged out"
+msgstr ""
 
 #: forms.py:20
 msgid "Email"

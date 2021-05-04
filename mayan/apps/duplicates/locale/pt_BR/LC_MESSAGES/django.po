@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
 "Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -46,7 +46,7 @@ msgstr "Rótulo de documento exato"
 msgid "Duplicated documents"
 msgstr "Documentos duplicados"
 
-#: links.py:24 queues.py:19
+#: links.py:24 queues.py:23
 msgid "Duplicated document scan"
 msgstr "Busca por documentos duplicados"
 
@@ -74,7 +74,7 @@ msgstr "Entradas de back-end duplicadas"
 msgid "Clean empty duplicate lists"
 msgstr "Limpar listas duplicadas vazias"
 
-#: queues.py:24
+#: queues.py:18
 msgid "Scan document duplicates"
 msgstr "Varrer duplicados do documento"
 

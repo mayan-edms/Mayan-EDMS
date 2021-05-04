@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -100,42 +100,42 @@ msgstr "Dzēst"
 msgid "Edit"
 msgstr "Rediģēt"
 
-#: links.py:40 links.py:45 models.py:25 views.py:111
+#: links.py:40 links.py:45 models.py:29 views.py:111
 msgid "Themes"
 msgstr "Tēmas"
 
-#: models.py:12
+#: models.py:16
 msgid "A short text describing the theme."
 msgstr "Īss teksts, kas apraksta tēmu."
 
-#: models.py:13
+#: models.py:17
 msgid "Label"
 msgstr "Etiķete"
 
-#: models.py:17
+#: models.py:21
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
 msgstr ""
 "CSS stila lapa, lai mainītu dažādu lietotāja interfeisa elementu izskatu."
 
-#: models.py:19
+#: models.py:23
 msgid "Stylesheet"
 msgstr "Stila lapa"
 
-#: models.py:24 models.py:60
+#: models.py:28 models.py:63
 msgid "Theme"
 msgstr "Tēma"
 
-#: models.py:56
+#: models.py:59
 msgid "User"
 msgstr "Lietotājs"
 
-#: models.py:64
+#: models.py:67
 msgid "User theme setting"
 msgstr "Lietotāja tēmas iestatījums"
 
-#: models.py:65
+#: models.py:68
 msgid "User theme settings"
 msgstr "Lietotāja tēmas iestatījumi"
 

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2021\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:209 apps.py:617 events.py:5 menus.py:8
-#: models/document_models.py:130 permissions.py:5 queues.py:24 settings.py:38
+#: models/document_models.py:130 permissions.py:5 queues.py:22 settings.py:38
 #: statistics.py:230
 msgid "Documents"
 msgstr "Belgeler"
@@ -146,8 +146,8 @@ msgstr ""
 msgid "Documents in trash"
 msgstr ""
 
-#: dashboard_widgets.py:85 links/document_type_links.py:74
-#: links/document_type_links.py:79 permissions.py:80
+#: dashboard_widgets.py:85 links/document_type_links.py:77
+#: links/document_type_links.py:84 permissions.py:80
 #: views/document_type_views.py:79
 msgid "Document types"
 msgstr "Belge türleri"
@@ -359,15 +359,15 @@ msgid ""
 msgstr ""
 
 #: links/document_file_links.py:26 links/document_file_links.py:31
-#: links/document_type_links.py:27 links/document_type_links.py:51
+#: links/document_type_links.py:28 links/document_type_links.py:52
 #: links/document_version_links.py:41 links/document_version_links.py:55
 #: links/document_version_page_links.py:47 links/trashed_document_links.py:19
 #: links/trashed_document_links.py:41
 msgid "Delete"
 msgstr "Sil"
 
-#: links/document_file_links.py:36 links/document_type_links.py:37
-#: links/document_type_links.py:58 links/document_version_links.py:46
+#: links/document_file_links.py:36 links/document_type_links.py:38
+#: links/document_type_links.py:59 links/document_version_links.py:46
 msgid "Edit"
 msgstr "Düzenle"
 
@@ -480,19 +480,19 @@ msgstr ""
 msgid "Edit properties"
 msgstr "Özellikleri düzenle"
 
-#: links/document_type_links.py:22 views/document_type_views.py:93
+#: links/document_type_links.py:23 views/document_type_views.py:93
 msgid "Create document type"
 msgstr "Belge türü oluştur"
 
-#: links/document_type_links.py:33
+#: links/document_type_links.py:34
 msgid "Deletion policies"
 msgstr ""
 
-#: links/document_type_links.py:44
+#: links/document_type_links.py:45
 msgid "Add quick label to document type"
 msgstr ""
 
-#: links/document_type_links.py:64 models/document_type_models.py:210
+#: links/document_type_links.py:65 models/document_type_models.py:210
 msgid "Quick labels"
 msgstr ""
 
@@ -532,7 +532,7 @@ msgstr "Doküman sürümü"
 
 #: links/document_version_page_links.py:108
 #: models/document_version_page_models.py:75
-#: models/document_version_page_models.py:402
+#: models/document_version_page_models.py:401
 msgid "Document version pages"
 msgstr ""
 
@@ -681,7 +681,7 @@ msgstr ""
 #: models/document_models.py:70 models/document_models.py:290
 #: models/document_models.py:295 models/document_type_models.py:41
 #: models/document_type_models.py:202 models/document_version_models.py:219
-#: models/document_version_page_models.py:351
+#: models/document_version_page_models.py:350
 msgid "Label"
 msgstr "Etiket"
 
@@ -879,11 +879,11 @@ msgid "ID for the source object of the page."
 msgstr ""
 
 #: models/document_version_page_models.py:74
-#: models/document_version_page_models.py:401 search.py:141
+#: models/document_version_page_models.py:400 search.py:141
 msgid "Document version page"
 msgstr ""
 
-#: models/document_version_page_models.py:345
+#: models/document_version_page_models.py:344
 #, python-format
 msgid "%(document_version)s page %(page_number)d of %(total_pages)d"
 msgstr ""
@@ -1017,59 +1017,55 @@ msgstr ""
 msgid "Trash documents"
 msgstr ""
 
-#: queues.py:14
-msgid "Converter"
-msgstr "Dönüştürücü"
-
-#: queues.py:17
+#: queues.py:15
 msgid "Documents periodic"
 msgstr ""
 
-#: queues.py:21
+#: queues.py:19
 msgid "Uploads"
 msgstr ""
 
-#: queues.py:29
+#: queues.py:27
 msgid "Generate document file page image"
 msgstr ""
 
-#: queues.py:33
+#: queues.py:31
 msgid "Generate document version page image"
 msgstr ""
 
-#: queues.py:38
+#: queues.py:36
 msgid "Empty the trash can"
 msgstr ""
 
-#: queues.py:42
+#: queues.py:40
 msgid "Delete a document"
 msgstr ""
 
-#: queues.py:46
+#: queues.py:44
 msgid "Reset the page list of a document version"
 msgstr ""
 
-#: queues.py:50
+#: queues.py:48
 msgid "Export a document version"
 msgstr ""
 
-#: queues.py:55
+#: queues.py:53
 msgid "Check document type trash periods"
 msgstr "Belge türü çöp tenekesi periyotlarını kontrol etme"
 
-#: queues.py:61
+#: queues.py:59
 msgid "Delete document stubs"
 msgstr ""
 
-#: queues.py:67
+#: queues.py:65
 msgid "Check document type delete periods"
 msgstr ""
 
-#: queues.py:76
+#: queues.py:74
 msgid "Update document page count"
 msgstr ""
 
-#: queues.py:80
+#: queues.py:78
 msgid "Upload new document file"
 msgstr ""
 

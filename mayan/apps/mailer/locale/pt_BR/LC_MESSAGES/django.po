@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -32,7 +32,7 @@ msgstr "Envio de emails"
 msgid "Null backend"
 msgstr "Backend nulo"
 
-#: events.py:5 permissions.py:5 queues.py:6 settings.py:10
+#: events.py:5 permissions.py:5 queues.py:7 settings.py:10
 msgid "Mailing"
 msgstr "Envio de e-mails"
 
@@ -309,7 +309,7 @@ msgstr "Ver um perfil de mailing"
 msgid "Use a mailing profile"
 msgstr "Usar um perfil de mainling"
 
-#: queues.py:8
+#: queues.py:11
 msgid "Send document"
 msgstr "Enviar documento"
 

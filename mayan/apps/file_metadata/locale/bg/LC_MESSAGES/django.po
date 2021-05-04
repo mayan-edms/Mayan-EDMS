@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -178,7 +178,7 @@ msgstr "Подайте документа за обработка на мета�
 msgid "View file metadata"
 msgstr "Виж метаданните на файла"
 
-#: queues.py:10
+#: queues.py:11
 msgid "Process document file"
 msgstr "Обработка на файл с документи"
 

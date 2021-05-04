@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27 events.py:6 permissions.py:5
+#: apps.py:27 events.py:6 permissions.py:5 queues.py:8 settings.py:10
 msgid "File caching"
 msgstr "Προσωρινή αποθήκευση αρχείων"
 
@@ -49,79 +49,83 @@ msgstr "Προσωρινή μνήμη αρχείων"
 msgid "Purge cache"
 msgstr "Εκκαθάριση προσωρινής μνήμης"
 
-#: models.py:34
+#: models.py:41
 msgid "Internal name of the defined storage for this cache."
 msgstr ""
 "Εσωτερικό όνομα του καθορισμένου χώρου αποθήκευσης για αυτήν την προσωρινή "
 "μνήμη."
 
-#: models.py:35
+#: models.py:42
 msgid "Defined storage name"
 msgstr "Καθορισμένο όνομα χώρου αποθήκευσης"
 
-#: models.py:38
+#: models.py:45
 msgid "Maximum size of the cache in bytes."
 msgstr "Μέγιστο μέγεθος της προσωρινής μνήμης σε byte."
 
-#: models.py:40 models.py:66
+#: models.py:47 models.py:73
 msgid "Maximum size"
 msgstr "Μέγιστο μέγεθος"
 
-#: models.py:44 models.py:166
+#: models.py:51 models.py:206
 msgid "Cache"
 msgstr "Προσωρινή μνήμη"
 
-#: models.py:45
+#: models.py:52
 msgid "Caches"
 msgstr "Προσωρινές μνήμες"
 
-#: models.py:64
+#: models.py:71
 msgid "Size at which the cache will start deleting old entries."
 msgstr ""
 "Μέγεθος στο οποίο η προσωρινή μνήμη θα αρχίσει να διαγράφει παλιές "
 "καταχωρήσεις."
 
-#: models.py:73
+#: models.py:80
 msgid "Unknown"
 msgstr "Άγνωστο"
 
-#: models.py:90
+#: models.py:97
 msgid "Current size"
 msgstr "Τρέχον μέγεθος"
 
-#: models.py:91
+#: models.py:98
 msgid "Current size of the cache."
 msgstr "Τρέχον μέγεθος της προσωρινής μνήμης."
 
-#: models.py:169
+#: models.py:209
 msgid "Name"
 msgstr "Όνομα"
 
-#: models.py:174 models.py:265
+#: models.py:214 models.py:305
 msgid "Cache partition"
 msgstr "Κατάτμηση προσωρινής μνήμης"
 
-#: models.py:175
+#: models.py:215
 msgid "Cache partitions"
 msgstr "Κατατμήσεις προσωρινής μνήμης"
 
-#: models.py:268
+#: models.py:308
 msgid "Date time"
 msgstr "Ημερομηνία ώρα"
 
-#: models.py:270
+#: models.py:310
 msgid "Filename"
 msgstr "Όνομα αρχείου"
 
-#: models.py:272
+#: models.py:312
 msgid "File size"
 msgstr "Μέγεθος αρχείου"
 
-#: models.py:278
+#: models.py:316
+msgid "Times this cache partition file has been accessed."
+msgstr ""
+
+#: models.py:323
 msgid "Cache partition file"
 msgstr "Αρχείο κατάτμησης προσωρινής μνήμης"
 
-#: models.py:279
+#: models.py:324
 msgid "Cache partition files"
 msgstr "Αρχεία κατάτμησης προσωρινής μνήμης"
 
@@ -129,7 +133,7 @@ msgstr "Αρχεία κατάτμησης προσωρινής μνήμης"
 msgid "Purge an object cache"
 msgstr ""
 
-#: permissions.py:11 queues.py:7
+#: permissions.py:11 queues.py:18
 msgid "Purge a file cache"
 msgstr "Εκκαθάριση προσωρινής μνήμης ενός αρχείου"
 
@@ -137,8 +141,20 @@ msgstr "Εκκαθάριση προσωρινής μνήμης ενός αρχε
 msgid "View a file cache"
 msgstr "Προβολή προσωρινής μνήμης ενός αρχείου"
 
-#: queues.py:11
+#: queues.py:13
 msgid "Purge a file cache partition"
+msgstr ""
+
+#: settings.py:15
+msgid ""
+"Number of times a cache will retry failed attempts to prune files to free up"
+" space for new a file being requested, before giving up."
+msgstr ""
+
+#: settings.py:23
+msgid ""
+"Number of times a cache will attempt to prune files to free up space for new"
+" a file being requested, before giving up."
 msgstr ""
 
 #: views.py:43

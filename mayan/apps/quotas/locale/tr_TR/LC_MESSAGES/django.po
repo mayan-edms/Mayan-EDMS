@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 07:18+0000\n"
+"POT-Creation-Date: 2021-05-04 19:14+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: abc Def <hdogan1974@gmail.com>, 2021\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:36 events.py:6 links.py:34 models.py:32 permissions.py:5
+#: apps.py:36 events.py:6 links.py:34 models.py:36 permissions.py:5
 #: views.py:136
 msgid "Quotas"
 msgstr ""
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Quota edited"
 msgstr ""
 
-#: forms.py:15 models.py:55
+#: forms.py:15 models.py:58
 msgid "Backend"
 msgstr ""
 
@@ -134,39 +134,39 @@ msgstr ""
 msgid "groups: %(groups)s, users: %(users)s"
 msgstr ""
 
-#: models.py:18
+#: models.py:22
 msgid "The dotted Python path to the backend class."
 msgstr ""
 
-#: models.py:19
+#: models.py:23
 msgid "Backend path"
 msgstr ""
 
-#: models.py:22
+#: models.py:26
 msgid "Backend data"
 msgstr ""
 
-#: models.py:26
+#: models.py:30
 msgid "Allow quick disable or enable of the quota."
 msgstr ""
 
-#: models.py:27
+#: models.py:31
 msgid "Enabled"
 msgstr "Etkin"
 
-#: models.py:31
+#: models.py:35
 msgid "Quota"
 msgstr ""
 
-#: models.py:54
+#: models.py:57
 msgid "Driver used for this quota entry."
 msgstr ""
 
-#: models.py:59
+#: models.py:62
 msgid "Arguments"
 msgstr "Argümanlar"
 
-#: models.py:63
+#: models.py:66
 msgid "Usage"
 msgstr ""
 
