@@ -1,24 +1,20 @@
 [supervisord]
 environment=
-    PYTHONPATH="{{ MEDIA_ROOT }}/mayan_settings",
+    PYTHONPATH="{{ MEDIA_ROOT }}/{{ USER_SETTINGS_FOLDER }}",
     DJANGO_SETTINGS_MODULE=mayan.settings.production,
-    MAYAN_MEDIA_ROOT="{{ MEDIA_ROOT }}",
-    MAYAN_ALLOWED_HOSTS="{{ ALLOWED_HOSTS }}",
-    MAYAN_CELERY_RESULT_BACKEND="{{ CELERY_RESULT_BACKEND }}",
-    MAYAN_CELERY_BROKER_URL="{{ CELERY_BROKER_URL }}",
-    MAYAN_DATABASES="{{ DATABASES }}"
+    MAYAN_MEDIA_ROOT="{{ MEDIA_ROOT }}"
 
 [program:mayan-edms-gunicorn]
 autorestart = true
 autostart = true
-command = {{ INSTALLATION_PATH }}/bin/gunicorn -w {{ GUNICORN_WORKERS }} mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class {{ GUNICORN_WORKER_CLASS }} --bind 0.0.0.0:8000 --timeout {{ GUNICORN_TIMEOUT }}
+command = {{ INSTALLATION_PATH }}bin/gunicorn -w {{ GUNICORN_WORKERS }} mayan.wsgi --max-requests {{ GUNICORN_MAX_REQUESTS }} --max-requests-jitter {{ GUNICORN_JITTER }} --worker-class {{ GUNICORN_WORKER_CLASS }} --bind 0.0.0.0:8000 --timeout {{ GUNICORN_TIMEOUT }}
 user = mayan
 
 {% for worker in workers %}
 [program:mayan-edms-{{ worker.name }}]
 autorestart = true
 autostart = true
-command = nice -n {{ worker.nice_level }} {{ INSTALLATION_PATH }}/bin/celery worker -A mayan -Ofair -l ERROR -Q {% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} -n mayan-worker-{{ worker.name }}.%%h --concurrency=1
+command = nice -n {{ worker.nice_level }} {{ INSTALLATION_PATH }}bin/celery worker -A mayan -Ofair -l ERROR -Q {% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} -n mayan-edms-{{ worker.name }}.%%h {% if worker.concurrency %}--concurrency={{ worker.concurrency }}{% endif %}
 killasgroup = true
 numprocs = 1
 priority = 998
@@ -30,7 +26,7 @@ user = mayan
 [program:mayan-edms-celery-beat]
 autorestart = true
 autostart = true
-command = nice -n 1 {{ INSTALLATION_PATH }}/bin/celery beat -A mayan --pidfile= -l ERROR
+command = nice -n 1 {{ INSTALLATION_PATH }}bin/celery beat -A mayan --pidfile= -l ERROR
 killasgroup = true
 numprocs = 1
 priority = 998

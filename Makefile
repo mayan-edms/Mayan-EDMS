@@ -485,5 +485,8 @@ setup-python-postgresql:
 setup-python-redis:
 	@pip install redis==$(PYTHON_REDIS_VERSION)
 
+copy-config-env:
+	@contrib/scripts/copy_config_env.py > mayan/settings/literals.py
+
 
 -include docker/Makefile
