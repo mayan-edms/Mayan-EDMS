@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 19:14+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -1486,7 +1486,7 @@ msgstr ""
 #: views/document_file_views.py:255
 msgid "Clear all the page transformations for the selected document file?"
 msgid_plural ""
-"Clear all the page transformations for the selected document file?"
+"Clear all the page transformations for the selected document files?"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -1498,7 +1498,7 @@ msgstr ""
 #: views/document_file_views.py:283
 #, python-format
 msgid ""
-"Error deleting the page transformations for document_file: "
+"Error deleting the page transformations for document file: "
 "%(document_file)s; %(error)s."
 msgstr ""
 

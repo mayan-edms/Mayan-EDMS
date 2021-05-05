@@ -6,14 +6,15 @@
 # Translators:
 # Roberto Rosario, 2021
 # xisafe <root@xisafe.com>, 2021
+# bo feng <87289884@qq.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 19:15+0000\n"
+"POT-Creation-Date: 2021-05-05 08:57+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: xisafe <root@xisafe.com>, 2021\n"
+"Last-Translator: bo feng <87289884@qq.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgstr ""
 
 #: apps.py:19 permissions.py:5
 msgid "Templating"
-msgstr ""
+msgstr "模板化"
 
 #: fields.py:19
 #, python-format
@@ -32,6 +33,7 @@ msgid ""
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 " "
 msgstr ""
+"使用Django的默认模板语言（https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/）。"
 
 #: fields.py:38
 #, python-format
@@ -45,7 +47,7 @@ msgstr ""
 
 #: forms.py:9
 msgid "Resulting text from the evaluated template."
-msgstr ""
+msgstr "来自评估模板的结果文本。"
 
 #: forms.py:10
 msgid "Result"
@@ -53,7 +55,7 @@ msgstr "结果"
 
 #: forms.py:20
 msgid "The template string to be evaluated."
-msgstr ""
+msgstr "要评估的模板字符串。"
 
 #: forms.py:21
 msgid "Template"
@@ -79,7 +81,7 @@ msgstr "模板错误%(exception)s"
 
 #: widgets.py:63
 msgid "Filters"
-msgstr ""
+msgstr "过滤器"
 
 #: widgets.py:70
 msgid "Tags"
