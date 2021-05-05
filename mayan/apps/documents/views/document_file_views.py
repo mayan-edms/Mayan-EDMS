@@ -253,7 +253,7 @@ class DocumentFileTransformationsClearView(MultipleObjectConfirmActionView):
         result = {
             'title': ungettext(
                 singular='Clear all the page transformations for the selected document file?',
-                plural='Clear all the page transformations for the selected document file?',
+                plural='Clear all the page transformations for the selected document files?',
                 number=self.object_list.count()
             )
         }
@@ -281,7 +281,7 @@ class DocumentFileTransformationsClearView(MultipleObjectConfirmActionView):
             messages.error(
                 message=_(
                     'Error deleting the page transformations for '
-                    'document_file: %(document_file)s; %(error)s.'
+                    'document file: %(document_file)s; %(error)s.'
                 ) % {
                     'document_file': instance, 'error': exception
                 }, request=self.request
