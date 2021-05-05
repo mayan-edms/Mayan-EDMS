@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-12 03:38+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -60,7 +60,7 @@ msgid "Label"
 msgstr "Label"
 
 #: models.py:22
-msgid "The actual test to be displayed."
+msgid "The actual text to be displayed."
 msgstr ""
 
 #: models.py:23

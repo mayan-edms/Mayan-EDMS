@@ -20,7 +20,6 @@ class CommentAPIViewTestCase(
     CommentAPIViewTestMixin, DocumentCommentTestMixin, DocumentTestMixin,
     BaseAPITestCase
 ):
-    _test_event_object_name = 'test_document_comment'
     auto_upload_test_document = False
 
     def setUp(self):
@@ -36,8 +35,8 @@ class CommentAPIViewTestCase(
 
         self.assertEqual(Comment.objects.count(), 0)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_comment_create_api_view_with_access(self):
         self.grant_access(
@@ -53,11 +52,13 @@ class CommentAPIViewTestCase(
         self.assertEqual(Comment.objects.count(), 1)
         self.assertEqual(response.data['id'], comment.pk)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.action_object, self.test_document)
-        self.assertEqual(event.target, self.test_document_comment)
-        self.assertEqual(event.verb, event_document_comment_created.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document_comment)
+        self.assertEqual(events[0].verb, event_document_comment_created.id)
 
     def test_comment_delete_api_view_no_permission(self):
         self._create_test_comment()
@@ -69,8 +70,8 @@ class CommentAPIViewTestCase(
 
         self.assertTrue(self.test_document_comment in Comment.objects.all())
 
-        event = self._get_test_object_event(object_name='test_document')
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_comment_delete_api_view_with_access(self):
         self._create_test_comment()
@@ -85,10 +86,13 @@ class CommentAPIViewTestCase(
 
         self.assertFalse(self.test_document_comment in Comment.objects.all())
 
-        event = self._get_test_object_event(object_name='test_document')
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.target, self.test_document)
-        self.assertEqual(event.verb, event_document_comment_deleted.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].verb, event_document_comment_deleted.id)
 
     def test_comment_detail_api_view_no_permission(self):
         self._create_test_comment()
@@ -98,8 +102,8 @@ class CommentAPIViewTestCase(
         response = self._request_test_comment_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_comment_detail_api_view_with_access(self):
         self._create_test_comment()
@@ -114,8 +118,8 @@ class CommentAPIViewTestCase(
 
         self.assertEqual(response.data['text'], self.test_document_comment.text)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_comment_edit_via_patch_api_view_no_permission(self):
         self._create_test_comment()
@@ -129,8 +133,8 @@ class CommentAPIViewTestCase(
         self.test_document_comment.refresh_from_db()
         self.assertEqual(self.test_document_comment.text, comment_text)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_comment_edit_via_patch_api_view_with_access(self):
         self._create_test_comment()
@@ -147,10 +151,13 @@ class CommentAPIViewTestCase(
         self.test_document_comment.refresh_from_db()
         self.assertNotEqual(self.test_document_comment.text, comment_text)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.target, self.test_document_comment)
-        self.assertEqual(event.verb, event_document_comment_edited.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document_comment)
+        self.assertEqual(events[0].verb, event_document_comment_edited.id)
 
     def test_comment_list_api_view_no_permission(self):
         self._create_test_comment()
@@ -160,8 +167,8 @@ class CommentAPIViewTestCase(
         response = self._request_test_comment_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_comment_list_api_view_with_access(self):
         self._create_test_comment()
@@ -177,5 +184,5 @@ class CommentAPIViewTestCase(
             response.data['results'][0]['text'], self.test_document_comment.text
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)

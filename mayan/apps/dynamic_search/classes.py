@@ -15,6 +15,7 @@ from mayan.apps.common.utils import (
 )
 from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
+from .exceptions import DynamicSearchException
 from .literals import (
     DEFAULT_SCOPE_OPERATOR, DELIMITER, SCOPE_DELIMITER,
     SCOPE_OPERATOR_CHOICES
@@ -69,7 +70,7 @@ class SearchBackend:
 
         operator_marker = '{}operator'.format(SCOPE_DELIMITER)
         result_marker = '{}result'.format(SCOPE_DELIMITER)
-        result = 0
+        result = '0'
 
         unscoped_entry = False
 
@@ -77,9 +78,7 @@ class SearchBackend:
             # Check if the entry is a special operator key.
             if key.startswith(operator_marker):
                 scope_sources = list(
-                    map(
-                        int, key[len(operator_marker) + 1:].split(DELIMITER)
-                    )
+                    key[len(operator_marker) + 1:].split(DELIMITER)
                 )
 
                 operator, result = value.split(DELIMITER)
@@ -88,27 +87,19 @@ class SearchBackend:
                     {
                         'scope_sources': scope_sources,
                         'function': SCOPE_OPERATOR_CHOICES[operator],
-                        'result': int(result)
+                        'result': result
                     }
                 )
             elif key.startswith(result_marker):
                 result = value
             else:
-                # Detect scope markers. Example: _0 or _10.
+                # Detect scope markers. Example: __0 or __10 or __b.
                 if key.startswith(SCOPE_DELIMITER):
                     # Scoped entry found.
                     scope_index, unscoped_key = key[len(SCOPE_DELIMITER):].split(DELIMITER, 1)
-
-                    try:
-                        scope_index = int(scope_index)
-                    except ValueError:
-                        # Found a non numeric key. Default to non scoped key.
-                        scope_index = 0
-                        unscoped_key = key
-                        unscoped_entry = True
                 else:
                     # Non scoped query entries are assigned to scope 0.
-                    scope_index = 0
+                    scope_index = '0'
                     unscoped_key = key
                     unscoped_entry = True
 
@@ -118,9 +109,9 @@ class SearchBackend:
         if unscoped_entry:
             operators.append(
                 {
-                    'scope_sources': [0, 0],
+                    'scope_sources': ['0', '0'],
                     'function': SCOPE_OPERATOR_CHOICES[DEFAULT_SCOPE_OPERATOR],
-                    'result': 0
+                    'result': '0'
                 }
             )
 
@@ -149,9 +140,16 @@ class SearchBackend:
             if result == operator['result']:
 
                 for scope_index in operator['scope_sources']:
+                    try:
+                        query_string = scopes[scope_index]['query']
+                    except KeyError:
+                        raise DynamicSearchException(
+                            'Scope `{}` not found.'.format(scope_index)
+                        )
+
                     results = self._search(
                         global_and_search=global_and_search,
-                        search_model=search_model, query_string=scopes[scope_index]['query'],
+                        search_model=search_model, query_string=query_string,
                         user=user
                     )
 
@@ -162,7 +160,9 @@ class SearchBackend:
 
                 return queryset
 
-        raise KeyError('Result `{}` not found.'.format(result))
+        raise DynamicSearchException(
+            'Result scope `{}` not found.'.format(result)
+        )
 
 
 class SearchField:

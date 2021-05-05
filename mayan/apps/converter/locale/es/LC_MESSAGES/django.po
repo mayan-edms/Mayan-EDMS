@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
 # jmcainzos <jmcainzos@vodafone.es>, 2021
 # Lory977 <helga.carrero@gmail.com>, 2021
+# Roberto Rosario, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Lory977 <helga.carrero@gmail.com>, 2021\n"
+"Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -249,30 +249,38 @@ msgstr "Editar transformaciones"
 msgid "View existing transformations"
 msgstr "Ver transformaciones existentes"
 
-#: queues.py:11
+#: queues.py:12
 msgid "Generate a image of an asset."
-msgstr ""
+msgstr "Genera una imagen de un activo."
 
 #: settings.py:28
 msgid ""
 "The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest asset cache files. Specify the size in bytes."
 msgstr ""
+"El umbral en el que CONVERTER_ASSET_CACHE_STORAGE_BACKEND comenzará a "
+"eliminar los archivos de caché de activos más antiguos. Especifique el "
+"tamaño en bytes."
 
 #: settings.py:37
 msgid ""
 "Time in seconds that the browser should cache the supplied asset. The "
 "default of 31559626 seconds correspond to 1 year."
 msgstr ""
+"Tiempo en segundos que el navegador debe almacenar en caché el activo "
+"proporcionado. El valor predeterminado de 31559626 segundos corresponde a 1 "
+"año."
 
 #: settings.py:44
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
 msgstr ""
+"Ruta a la subclase de almacenamiento que se utilizará al almacenar los "
+"archivos de activos en caché."
 
 #: settings.py:52
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argumentos para pasar al CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
 
 #: settings.py:58
 msgid "Path to the Storage subclass to use when storing assets."
@@ -303,10 +311,13 @@ msgid ""
 "Unable to initialize the converter asset cachestorage. Check the settings {}"
 " and {} for formatting errors."
 msgstr ""
+"No se puede inicializar el almacenamiento en caché del activo del "
+"convertidor. Verifique la configuración {} y {} para ver si hay errores de "
+"formato."
 
 #: storages.py:34
 msgid "Assets cache"
-msgstr ""
+msgstr "Caché de activos"
 
 #: transformations.py:196
 msgid "Paste an asset"
@@ -389,8 +400,8 @@ msgstr "Solicitud de eliminación realizada en %(count)d activos"
 #: views.py:62
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "¿Eliminar el activo seleccionado?"
+msgstr[1] "¿Eliminar los activos seleccionados?"
 
 #: views.py:72
 #, python-format
@@ -410,7 +421,7 @@ msgstr "Error al eliminar el activo \"%(asset)s\": %(error)s"
 #: views.py:103
 #, python-format
 msgid "Details asset: %s"
-msgstr ""
+msgstr "Detalles del activo: %s"
 
 #: views.py:117
 #, python-format

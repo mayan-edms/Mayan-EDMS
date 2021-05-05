@@ -1,18 +1,33 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.contrib.auth.password_validation import validate_password
-from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
-from rest_framework.exceptions import ValidationError
 
-from mayan.apps.acls.models import AccessControlList
+from mayan.apps.rest_api.relations import FilteredPrimaryKeyRelatedField
 
-from .permissions import permission_group_view
+from .permissions import permission_user_edit
+from .querysets import get_user_queryset
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
+    users_url = serializers.HyperlinkedIdentityField(
+        help_text=_(
+            'URL of the API endpoint showing the list users of this '
+            'group.'
+        ), lookup_url_kwarg='group_id',
+        view_name='rest_api:group-user-list'
+    )
+    users_add_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='group_id',
+        view_name='rest_api:group-user-add'
+    )
+    users_remove_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='group_id',
+        view_name='rest_api:group-user-remove'
+    )
+
     class Meta:
         extra_kwargs = {
             'url': {
@@ -20,45 +35,38 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
                 'view_name': 'rest_api:group-detail'
             }
         }
-        fields = ('id', 'name', 'url')
+        fields = (
+            'id', 'name', 'url', 'users_url', 'users_add_url',
+            'users_remove_url'
+        )
         model = Group
 
 
-class UserGroupListSerializer(serializers.Serializer):
-    group_pk_list = serializers.CharField(
+class GroupUserAddSerializer(serializers.Serializer):
+    user = FilteredPrimaryKeyRelatedField(
         help_text=_(
-            'Comma separated list of group primary keys to assign this '
-            'user to.'
-        )
+            'Primary key of the user to add to the group.'
+        ), source_permission=permission_user_edit,
+        source_queryset=get_user_queryset()
     )
 
-    def create(self, validated_data):
-        validated_data['user'].groups.clear()
-        try:
-            pk_list = validated_data['group_pk_list'].split(',')
 
-            for group in Group.objects.filter(pk__in=pk_list):
-                try:
-                    AccessControlList.objects.check_access(
-                        obj=group, permissions=(permission_group_view,),
-                        user=self.context['request'].user
-                    )
-                except PermissionDenied:
-                    """Do nothing."""
-                else:
-                    validated_data['user'].groups.add(group)
-        except Exception as exception:
-            raise ValidationError(exception)
-
-        return {'group_pk_list': validated_data['group_pk_list']}
+class GroupUserRemoveSerializer(serializers.Serializer):
+    user = FilteredPrimaryKeyRelatedField(
+        help_text=_(
+            'Primary key of the user to remove from the group.'
+        ), source_permission=permission_user_edit,
+        source_queryset=get_user_queryset()
+    )
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    groups = GroupSerializer(many=True, read_only=True)
-    groups_pk_list = serializers.CharField(
+    groups_url = serializers.HyperlinkedIdentityField(
         help_text=_(
-            'List of group primary keys to which to add the user.'
-        ), required=False
+            'URL of the API endpoint showing the list groups this '
+            'user belongs to.'
+        ), lookup_url_kwarg='user_id',
+        view_name='rest_api:user-group-list'
     )
     password = serializers.CharField(
         required=False, style={'input_type': 'password'}, write_only=True
@@ -72,45 +80,31 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
             }
         }
         fields = (
-            'first_name', 'date_joined', 'email', 'groups', 'groups_pk_list',
+            'first_name', 'date_joined', 'email', 'groups_url',
             'id', 'is_active', 'last_login', 'last_name', 'password', 'url',
             'username'
         )
         model = get_user_model()
-        read_only_fields = ('groups', 'is_active', 'last_login', 'date_joined')
-        write_only_fields = ('password', 'group_pk_list')
-
-    def _add_groups(self, instance):
-        instance.groups.add(
-            *Group.objects.filter(pk__in=self.groups_pk_list.split(','))
-        )
+        read_only_fields = ('is_active', 'last_login', 'date_joined')
+        write_only_fields = ('password',)
 
     def create(self, validated_data):
-        self.groups_pk_list = validated_data.pop('groups_pk_list', '')
         password = validated_data.pop('password', None)
         instance = super().create(validated_data)
 
         if password:
-            instance.set_password(password)
+            instance._event_ignore = True
+            instance.set_password(raw_password=password)
             instance.save()
-
-        if self.groups_pk_list:
-            self._add_groups(instance=instance)
 
         return instance
 
     def update(self, instance, validated_data):
-        self.groups_pk_list = validated_data.pop('groups_pk_list', '')
-
         if 'password' in validated_data:
             instance.set_password(validated_data['password'])
             validated_data.pop('password')
 
         instance = super().update(instance, validated_data)
-
-        if self.groups_pk_list:
-            instance.groups.clear()
-            self._add_groups(instance=instance)
 
         return instance
 

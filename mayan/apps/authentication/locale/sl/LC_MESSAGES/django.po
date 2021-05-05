@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2021\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: sl\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: apps.py:32 events.py:6 permissions.py:6 settings.py:10
+#: apps.py:35 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr ""
 
@@ -32,6 +32,14 @@ msgstr "Predstavljanje uporabnika se je končalo"
 #: events.py:13
 msgid "User impersonation started"
 msgstr "Predstavljanje uporabnika se je začelo"
+
+#: events.py:16
+msgid "User logged in"
+msgstr ""
+
+#: events.py:19
+msgid "User logged out"
+msgstr ""
 
 #: forms.py:20
 msgid "Email"

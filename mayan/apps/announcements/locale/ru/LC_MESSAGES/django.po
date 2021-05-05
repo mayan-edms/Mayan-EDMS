@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-12 03:38+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
 #: templates/announcements/announcements.html:8 views.py:119
 msgid "Announcements"
-msgstr ""
+msgstr "Объявления"
 
 #: apps.py:74 apps.py:78
 msgid "None"
@@ -34,15 +34,15 @@ msgstr "Нет"
 
 #: events.py:8
 msgid "Announcement created"
-msgstr ""
+msgstr "Объявление создано"
 
 #: events.py:11
 msgid "Announcement edited"
-msgstr ""
+msgstr "Объявление изменено"
 
 #: links.py:17 views.py:30
 msgid "Create announcement"
-msgstr ""
+msgstr "Создать объявление"
 
 #: links.py:20 links.py:26
 msgid "Delete"
@@ -54,15 +54,15 @@ msgstr "Редактировать"
 
 #: models.py:18
 msgid "Short description of this announcement."
-msgstr ""
+msgstr "Краткое описание объявления."
 
 #: models.py:19
 msgid "Label"
 msgstr "Заголовок"
 
 #: models.py:22
-msgid "The actual test to be displayed."
-msgstr ""
+msgid "The actual text to be displayed."
+msgstr "Сообщение, которое будет отображаться."
 
 #: models.py:23
 msgid "Text"
@@ -74,7 +74,7 @@ msgstr "Включено"
 
 #: models.py:28
 msgid "Date and time after which this announcement will be displayed."
-msgstr ""
+msgstr "Дата и время начала отображения объявления."
 
 #: models.py:29
 msgid "Start date time"
@@ -82,7 +82,7 @@ msgstr "Дата и время начала"
 
 #: models.py:33
 msgid "Date and time until when this announcement is to be displayed."
-msgstr ""
+msgstr "Дата и время окончания отображения объявления."
 
 #: models.py:34
 msgid "End date time"
@@ -90,63 +90,63 @@ msgstr "Дата и время окончания"
 
 #: models.py:40
 msgid "Announcement"
-msgstr ""
+msgstr "Объявления"
 
 #: permissions.py:10
 msgid "Create announcements"
-msgstr ""
+msgstr "Создать объявления"
 
 #: permissions.py:13
 msgid "Delete announcements"
-msgstr ""
+msgstr "Удалить объявления"
 
 #: permissions.py:16
 msgid "Edit announcements"
-msgstr ""
+msgstr "Редактировать объявления"
 
 #: permissions.py:19
 msgid "View announcements"
-msgstr ""
+msgstr "Просмотр объявлений"
 
 #: views.py:41
 #, python-format
 msgid "Error deleting announcement \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Ошибка при удалении объявления \"%(instance)s\"; %(exception)s"
 
 #: views.py:50
 #, python-format
 msgid "Announcement \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Объявление \"%(object)s\" удалено."
 
 #: views.py:53
 #, python-format
 msgid "%(count)d announcement deleted successfully."
-msgstr ""
+msgstr "%(count)d объявление удалено."
 
 #: views.py:56
 #, python-format
 msgid "%(count)d announcements deleted successfully."
-msgstr ""
+msgstr "%(count)d объявлений удалено."
 
 #: views.py:58
 #, python-format
 msgid "Delete announcement: %(object)s."
-msgstr ""
+msgstr "Удалить объявление: %(object)s."
 
 #: views.py:59
 #, python-format
 msgid "Delete the %(count)d selected announcement."
-msgstr ""
+msgstr "Удалить %(count)d выбранное объявление."
 
 #: views.py:60
 #, python-format
 msgid "Delete the %(count)d selected announcements."
-msgstr ""
+msgstr "Удалить %(count)d выбранных объявлений."
 
 #: views.py:92
 #, python-format
 msgid "Edit announcement: %s"
-msgstr ""
+msgstr "Редактировать объявление: %s"
 
 #: views.py:114
 msgid ""
@@ -154,7 +154,10 @@ msgid ""
 "convery information about your organzation, announcements or usage "
 "guidelines for your users."
 msgstr ""
+"Объявления отображаются на странице входа в систему. Вы можете использовать "
+"объявления для передачи информации о вашей организации, объявлений или "
+"руководств по использованию для ваших пользователей."
 
 #: views.py:118
 msgid "No announcements available"
-msgstr ""
+msgstr "Нет доступных объявлений"

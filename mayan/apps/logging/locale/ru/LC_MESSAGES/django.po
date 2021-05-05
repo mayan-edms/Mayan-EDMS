@@ -7,16 +7,16 @@
 # Sergey Glita <gsv70@mail.ru>, 2021
 # lilo.panic, 2021
 # mizhgan <i@mizhgan.ru>, 2021
-# Ilya Pavlov <spirkaa@gmail.com>, 2021
 # Alex Chigrin <chalex84@mail.ru>, 2021
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: Alex Chigrin <chalex84@mail.ru>, 2021\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -50,7 +50,7 @@ msgstr "Журналы ошибок"
 
 #: models.py:25
 msgid "App label"
-msgstr "Ярлык приложения"
+msgstr "Заголовок приложения"
 
 #: models.py:43 models.py:60
 msgid "Error log partition"

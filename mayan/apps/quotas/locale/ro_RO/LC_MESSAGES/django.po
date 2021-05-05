@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:57+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:36 events.py:6 links.py:34 models.py:32 permissions.py:5
+#: apps.py:36 events.py:6 links.py:34 models.py:36 permissions.py:5
 #: views.py:136
 msgid "Quotas"
 msgstr "Cote"
@@ -48,7 +48,7 @@ msgstr "Cotă creată"
 msgid "Quota edited"
 msgstr "Cotă editată"
 
-#: forms.py:15 models.py:55
+#: forms.py:15 models.py:58
 msgid "Backend"
 msgstr "Backend"
 
@@ -140,39 +140,39 @@ msgstr "toți utilizatorii"
 msgid "groups: %(groups)s, users: %(users)s"
 msgstr "grupuri: %(groups)s, utilizatori: %(users)s"
 
-#: models.py:18
+#: models.py:22
 msgid "The dotted Python path to the backend class."
 msgstr "Calea Python punctată la clasa backend."
 
-#: models.py:19
+#: models.py:23
 msgid "Backend path"
 msgstr "Calea de backend"
 
-#: models.py:22
+#: models.py:26
 msgid "Backend data"
 msgstr "Date backend"
 
-#: models.py:26
+#: models.py:30
 msgid "Allow quick disable or enable of the quota."
 msgstr "Permite dezactivarea rapidă sau activarea cotei."
 
-#: models.py:27
+#: models.py:31
 msgid "Enabled"
 msgstr "Activat"
 
-#: models.py:31
+#: models.py:35
 msgid "Quota"
 msgstr "Cotă"
 
-#: models.py:54
+#: models.py:57
 msgid "Driver used for this quota entry."
 msgstr "Pilotul utilizat pentru această intrare de cotă."
 
-#: models.py:59
+#: models.py:62
 msgid "Arguments"
 msgstr "Argumente"
 
-#: models.py:63
+#: models.py:66
 msgid "Usage"
 msgstr "utilizare"
 

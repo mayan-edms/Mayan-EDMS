@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:57+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Dzikri Hakim <dzikers@gmail.com>, 2021\n"
 "Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/id/)\n"
@@ -222,48 +222,48 @@ msgstr ""
 msgid "Source"
 msgstr ""
 
-#: models/base.py:138
+#: models/base.py:142
 msgid "Interactive source"
 msgstr ""
 
-#: models/base.py:139
+#: models/base.py:143
 msgid "Interactive sources"
 msgstr ""
 
-#: models/base.py:148 models/base.py:149
+#: models/base.py:152 models/base.py:153
 msgid "Out of process"
 msgstr ""
 
-#: models/base.py:155
+#: models/base.py:159
 msgid "Interval in seconds between checks for new documents."
 msgstr ""
 
-#: models/base.py:156
+#: models/base.py:160
 msgid "Interval"
 msgstr ""
 
-#: models/base.py:160
+#: models/base.py:164
 msgid "Assign a document type to documents uploaded from this source."
 msgstr ""
 
-#: models/base.py:162 serializers.py:17
+#: models/base.py:166 serializers.py:17
 msgid "Document type"
 msgstr "Jenis dokumen"
 
-#: models/base.py:166
+#: models/base.py:170
 msgid "Whether to expand or not, compressed archives."
 msgstr ""
 
-#: models/base.py:167 models/staging_folder_sources.py:54
+#: models/base.py:171 models/staging_folder_sources.py:54
 #: models/webform_sources.py:33
 msgid "Uncompress"
 msgstr ""
 
-#: models/base.py:173
+#: models/base.py:177
 msgid "Interval source"
 msgstr ""
 
-#: models/base.py:174
+#: models/base.py:178
 msgid "Interval sources"
 msgstr ""
 
@@ -569,15 +569,15 @@ msgstr ""
 msgid "Generate staging file image"
 msgstr ""
 
-#: queues.py:23
+#: queues.py:24
 msgid "Check interval source"
 msgstr ""
 
-#: queues.py:27
+#: queues.py:29
 msgid "Handle upload"
 msgstr ""
 
-#: queues.py:31
+#: queues.py:33
 msgid "Upload document"
 msgstr ""
 

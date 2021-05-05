@@ -31,8 +31,6 @@ class DocumentFileViewTestCase(
     DocumentFileTestMixin, DocumentFileViewTestMixin,
     GenericDocumentViewTestCase
 ):
-    _test_event_object_name = 'test_document'
-
     def test_document_file_delete_no_permission(self):
         first_file = self.test_document.file_latest
         self._upload_new_file()
@@ -77,6 +75,7 @@ class DocumentFileViewTestCase(
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
+
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_document)
@@ -149,6 +148,7 @@ class DocumentFileViewTestCase(
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
+
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_document)
@@ -197,6 +197,7 @@ class DocumentFileViewTestCase(
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
+
         self.assertEqual(events[0].action_object, self.test_document)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_document_file)
@@ -278,6 +279,9 @@ class DocumentFileViewTestCase(
 
         response = self._request_test_document_file_print_form_view()
         self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_file_print_form_view_with_access(self):
         self.grant_access(
@@ -392,8 +396,6 @@ class DocumentFileViewTestCase(
 class DocumentFileDownloadViewTestCase(
     DocumentFileViewTestMixin, GenericDocumentViewTestCase
 ):
-    _test_event_object_name = 'test_document_file'
-
     def test_document_file_download_view_no_permission(self):
         self._clear_events()
 
@@ -429,6 +431,7 @@ class DocumentFileDownloadViewTestCase(
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
+
         self.assertEqual(events[0].action_object, self.test_document)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_document_file)

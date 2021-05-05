@@ -6,14 +6,15 @@
 # Translators:
 # Roberto Rosario, 2021
 # xisafe <root@xisafe.com>, 2021
+# bo feng <87289884@qq.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: xisafe <root@xisafe.com>, 2021\n"
+"Last-Translator: bo feng <87289884@qq.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -160,7 +161,7 @@ msgstr "编辑"
 
 #: methods.py:20
 msgid "Return the metadata of the document."
-msgstr ""
+msgstr "返回文档的元数据。"
 
 #: mixins.py:19
 msgid "Selected documents must be of the same type."
@@ -182,7 +183,7 @@ msgstr "标签"
 
 #: models.py:60
 msgid "Enter a template to render."
-msgstr ""
+msgstr "输入要渲染的模板。"
 
 #: models.py:61
 msgid "Default"
@@ -190,7 +191,7 @@ msgstr "默认"
 
 #: models.py:65
 msgid "Enter a template to render. Must result in a comma delimited string."
-msgstr ""
+msgstr "输入要渲染的模板。必须以逗号分隔的字符串。"
 
 #: models.py:67
 msgid "Lookup"
@@ -292,11 +293,11 @@ msgstr "删除元数据类型"
 msgid "View metadata types"
 msgstr "查看元数据类型"
 
-#: queues.py:10
+#: queues.py:11
 msgid "Remove metadata type"
 msgstr "删除元数据类型"
 
-#: queues.py:14
+#: queues.py:15
 msgid "Add required metadata type"
 msgstr "添加所需的元数据类型"
 
@@ -306,11 +307,11 @@ msgstr "元数据值"
 
 #: search.py:24 search.py:35 search.py:46 search.py:57
 msgid "Document metadata type"
-msgstr ""
+msgstr "文档元数据类型"
 
 #: search.py:28 search.py:39 search.py:50 search.py:61
 msgid "Document metadata value"
-msgstr ""
+msgstr "文档元数据值"
 
 #: serializers.py:56
 msgid "Primary key of the metadata type to be added."
@@ -337,7 +338,7 @@ msgstr "添加"
 #: views.py:67
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
-msgstr[0] ""
+msgstr[0] "将元数据类型添加到文档"
 
 #: views.py:78
 #, python-format
@@ -387,7 +388,7 @@ msgstr "没有要编辑的元数据"
 #: views.py:240
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
-msgstr[0] ""
+msgstr[0] "编辑文件元数据"
 
 #: views.py:251
 #, python-format
@@ -433,7 +434,7 @@ msgstr "在%(count)d文档上执行的元数据删除请求"
 #: views.py:409
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
-msgstr[0] ""
+msgstr[0] "从文档中删除元数据类型"
 
 #: views.py:420
 #, python-format
@@ -486,21 +487,21 @@ msgstr "没有元数据类型"
 msgid ""
 "Create metadata type relationships to be able to associate them to this "
 "document type."
-msgstr ""
+msgstr "创建元数据类型关系，以便能够将它们与该文档类型相关联。"
 
 #: views.py:604
 msgid "There are no metadata type relationships available"
-msgstr ""
+msgstr "没有可用的元数据类型关系"
 
 #: views.py:608
 #, python-format
 msgid "Metadata type relationships for document type: %s"
-msgstr ""
+msgstr "%s文档类型的元数据类型关系"
 
 #: views.py:652
 #, python-format
 msgid "Document type relationships for metadata type: %s"
-msgstr ""
+msgstr "%s元数据类型的文档类型关系"
 
 #: wizard_steps.py:13
 msgid "Enter document metadata"
@@ -508,7 +509,7 @@ msgstr "输入文档元数据"
 
 #: workflow_actions.py:25
 msgid "Metadata types to add to the document."
-msgstr ""
+msgstr "要添加到文档中的元数据类型。"
 
 #: workflow_actions.py:49
 #, python-format
@@ -519,12 +520,12 @@ msgstr ""
 
 #: workflow_actions.py:88
 msgid "Metadata types to edit."
-msgstr ""
+msgstr "要编辑的元数据类型。"
 
 #: workflow_actions.py:96
 msgid ""
 "Value to assign to the metadata. Can be a literal value or template code."
-msgstr ""
+msgstr "赋给元数据的值。可以是文字值或模板代码。"
 
 #: workflow_actions.py:128
 #, python-format
@@ -536,7 +537,7 @@ msgstr ""
 
 #: workflow_actions.py:172
 msgid "Metadata types to remove from the document."
-msgstr ""
+msgstr "要从文档中删除的元数据类型。"
 
 #: workflow_actions.py:192
 #, python-format

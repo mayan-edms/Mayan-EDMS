@@ -69,10 +69,10 @@ class QuotaCreateView(SingleObjectDynamicFormCreateView):
         }
 
     def get_instance_extra_data(self):
-        return {'backend_path': self.kwargs['class_path']}
-
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+        return {
+            '_event_actor': self.request.user,
+            'backend_path': self.kwargs['class_path']
+        }
 
 
 class QuotaDeleteView(SingleObjectDeleteView):
@@ -114,8 +114,8 @@ class QuotaEditView(SingleObjectDynamicFormEditView):
             'widgets': backend.get_widgets()
         }
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
 
 class QuotaListView(SingleObjectListView):

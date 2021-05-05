@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -59,11 +59,11 @@ msgstr "Visto"
 
 #: classes.py:79
 msgid "Event list export to CSV"
-msgstr ""
+msgstr "Exportación de la lista de eventos a CSV"
 
 #: classes.py:108
 msgid "Events exported."
-msgstr ""
+msgstr "Eventos exportados."
 
 #: classes.py:110
 #, python-format
@@ -71,6 +71,9 @@ msgid ""
 "The event list has been exported and is available for download using the "
 "link: %(download_url)s or from the downloads area (%(download_list_url)s)."
 msgstr ""
+"La lista de eventos se ha exportado y está disponible para descargar "
+"mediante el enlace: %(download_url)s o desde el área de descargas "
+"(%(download_list_url)s)."
 
 #: classes.py:274
 #, python-format
@@ -79,7 +82,7 @@ msgstr "Tipo de evento desconocido u obsoleto: %s"
 
 #: events.py:8
 msgid "Events exported"
-msgstr ""
+msgstr "Eventos exportados"
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
@@ -103,7 +106,7 @@ msgstr "Mis eventos"
 
 #: links.py:34 links.py:49 links.py:56 views/export_views.py:57
 msgid "Export events"
-msgstr ""
+msgstr "Exportar eventos"
 
 #: links.py:61 models.py:63 views/subscription_views.py:56
 msgid "Event subscriptions"
@@ -171,7 +174,7 @@ msgstr "Suscripciones a eventos de objetos"
 
 #: permissions.py:8
 msgid "Export the events of an object"
-msgstr ""
+msgstr "Exportar los eventos de un objeto"
 
 #: permissions.py:11
 msgid "Access the events of an object"
@@ -179,15 +182,17 @@ msgstr "Acceder a los eventos de un objeto"
 
 #: queues.py:13
 msgid "Export event querysets"
-msgstr ""
+msgstr "Exportar conjuntos de consultas de eventos"
 
 #: views/event_views.py:26
 msgid "Events track actions that have been performed on, to, or with objects."
 msgstr ""
+"Los eventos rastrean las acciones que se han realizado sobre, hacia o con "
+"objetos."
 
 #: views/event_views.py:29
 msgid "There are no events"
-msgstr ""
+msgstr "No hay eventos"
 
 #: views/event_views.py:44
 msgid "There are no events for this object"
@@ -200,7 +205,7 @@ msgstr "Eventos para: %s"
 
 #: views/event_views.py:68
 msgid "There are no events of this type"
-msgstr ""
+msgstr "No hay eventos de este tipo"
 
 #: views/event_views.py:70 views/export_views.py:105
 #, python-format
@@ -212,15 +217,18 @@ msgid ""
 "The process will be performed in the background. The exported events will be"
 " available in the downloads area."
 msgstr ""
+"El proceso se realizará en segundo plano. Los eventos exportados estarán "
+"disponibles en el área de descargas."
 
 #: views/export_views.py:45
 msgid "Event list export task queued successfully."
 msgstr ""
+"La tarea de exportación de la lista de eventos se puso en cola con éxito."
 
 #: views/export_views.py:76
 #, python-format
 msgid "Export events for: %s"
-msgstr ""
+msgstr "Exportar eventos para: %s"
 
 #: views/notification_views.py:25
 msgid "Subscribe to global or object events to receive notifications."
@@ -233,19 +241,19 @@ msgstr "No hay notificaciones"
 
 #: views/notification_views.py:44
 msgid "Mark the selected notification as read?"
-msgstr ""
+msgstr "¿Marcar la notificación seleccionada como leída?"
 
 #: views/notification_views.py:56
 msgid "Notification marked as read."
-msgstr ""
+msgstr "Notificación marcada como leída."
 
 #: views/notification_views.py:67
 msgid "Mark all notification as read?"
-msgstr ""
+msgstr "¿Marcar todas las notificaciones como leídas?"
 
 #: views/notification_views.py:77
 msgid "All notifications marked as read."
-msgstr ""
+msgstr "Todas las notificaciones marcadas como leídas."
 
 #: views/subscription_views.py:40
 #, python-format

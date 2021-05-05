@@ -101,12 +101,11 @@ class DocumentVersionPage(
             resolution = 300.0
 
         cache_filename = self.generate_image()
-        Image.open(
-            self.cache_partition.get_file(filename=cache_filename).open()
-        ).save(
-            append=append, format='PDF', fp=file_object,
-            resolution=resolution
-        )
+        with self.cache_partition.get_file(filename=cache_filename).open() as image_file_object:
+            Image.open(fp=image_file_object).save(
+                append=append, format='PDF', fp=file_object,
+                resolution=resolution
+            )
 
     def generate_image(self, user=None, _acquire_lock=True, **kwargs):
         transformation_list = self.get_combined_transformation_list(

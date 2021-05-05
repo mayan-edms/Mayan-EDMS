@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -99,7 +99,7 @@ msgstr "Magazin online"
 msgid "Get support"
 msgstr "Obțineți sprijin"
 
-#: links.py:68 queues.py:9 views.py:122
+#: links.py:68 queues.py:6 views.py:122
 msgid "Tools"
 msgstr "Unelte"
 
@@ -161,10 +161,6 @@ msgstr "Utilizator"
 #: permissions.py:8
 msgid "Copy object"
 msgstr "Copiați obiectul"
-
-#: queues.py:7
-msgid "Default"
-msgstr "Implicit"
 
 #: settings.py:22
 msgid ""

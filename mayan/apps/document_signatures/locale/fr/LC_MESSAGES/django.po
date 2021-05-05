@@ -12,17 +12,17 @@
 # Baptiste GAILLET <baptiste.gaillet@cstb.fr>, 2021
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2021
 # Yves Dubois <ydubois@gmail.com>, 2021
-# Frédéric Sheedy <sheedf@gmail.com>, 2021
 # Benoît GROUSSET <benoit@grousset.xyz>, 2021
 # Guillaume Trottier <gui.trottier@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -56,15 +56,15 @@ msgstr "Type"
 
 #: events.py:10
 msgid "Detached signature created"
-msgstr ""
+msgstr "Signature détachée créée"
 
 #: events.py:13
 msgid "Detached signature uploaded"
-msgstr ""
+msgstr "Signature détachée téléversée"
 
 #: events.py:17
 msgid "Embedded signature created"
-msgstr ""
+msgstr "Signature intégrée créée"
 
 #: forms.py:17 forms.py:31 workflow_actions.py:19
 msgid "Key"
@@ -75,6 +75,8 @@ msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document file."
 msgstr ""
+"La phrase secrète pour déverrouiller la clé et permettre de l'utiliser pour "
+"signer le document."
 
 #: forms.py:24 workflow_actions.py:27
 msgid "Passphrase"
@@ -82,7 +84,7 @@ msgstr "Phrase secrète"
 
 #: forms.py:33
 msgid "Private key that will be used to sign this document file."
-msgstr ""
+msgstr "Clé privée qui sera utilisée pour signer ce document."
 
 #: forms.py:44
 msgid "Signature is embedded?"
@@ -130,7 +132,7 @@ msgstr "Type de clé"
 
 #: links.py:40
 msgid "Refresh all signatures"
-msgstr ""
+msgstr "Actualiser toutes les signatures"
 
 #: links.py:46
 msgid "Verify all documents"
@@ -166,11 +168,11 @@ msgstr "Transférer une signature"
 
 #: models.py:42
 msgid "Document file"
-msgstr ""
+msgstr "Fichier"
 
 #: models.py:47
 msgid "Date and time signed"
-msgstr ""
+msgstr "Date et heure de la signature"
 
 #: models.py:51
 msgid "ID of the key that will be used to sign the document."
@@ -182,11 +184,11 @@ msgstr "Empreinte de la clef publique"
 
 #: models.py:68
 msgid "Document file signature"
-msgstr ""
+msgstr "Signature pour ce document"
 
 #: models.py:69
 msgid "Document file signatures"
-msgstr ""
+msgstr "Signatures du document"
 
 #: models.py:88
 msgid "Detached"
@@ -206,11 +208,11 @@ msgstr "Fichier de signature"
 
 #: models.py:164
 msgid "Document file detached signature"
-msgstr ""
+msgstr "Signature détachée du document"
 
 #: models.py:165
 msgid "Document file detached signatures"
-msgstr ""
+msgstr "Signature détachée du document"
 
 #: models.py:168
 msgid "signature"
@@ -218,11 +220,11 @@ msgstr "signature"
 
 #: models.py:210
 msgid "Document file embedded signature"
-msgstr ""
+msgstr "Signature intégrée dans le document"
 
 #: models.py:211
 msgid "Document file embedded signatures"
-msgstr ""
+msgstr "Signature intégrée du document"
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
@@ -262,7 +264,7 @@ msgstr "Signature de clé non vérifiée"
 
 #: queues.py:21
 msgid "Verify document file"
-msgstr ""
+msgstr "Vérifier le fichier"
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
@@ -270,11 +272,11 @@ msgstr "Vérifier la signature intégrée manquante"
 
 #: queues.py:30
 msgid "Refresh existing signature information"
-msgstr ""
+msgstr "Actualiser les informations de signature existantes"
 
 #: serializers.py:60
 msgid "Primary key of the tag to add to the document."
-msgstr ""
+msgstr "Clé primaire de l'étiquette à attacher au document."
 
 #: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."
@@ -308,7 +310,7 @@ msgstr "Phrase secrète incorrecte."
 
 #: views.py:92 views.py:161
 msgid "Document file signed successfully."
-msgstr ""
+msgstr "Le document a été signé avec succès."
 
 #: views.py:102 views.py:178
 msgid "Sign"
@@ -317,12 +319,12 @@ msgstr "Signer"
 #: views.py:104
 #, python-format
 msgid "Sign document file \"%s\" with a detached signature"
-msgstr ""
+msgstr "Signer le fichier de document \"%s\" avec une signature détachée"
 
 #: views.py:180
 #, python-format
 msgid "Sign document file \"%s\" with a embedded signature"
-msgstr ""
+msgstr "Signer le fichier de document \"%s\" avec une signature intégrée"
 
 #: views.py:196
 #, python-format
@@ -346,17 +348,17 @@ msgstr ""
 
 #: views.py:297
 msgid "There are no signatures for this document file."
-msgstr ""
+msgstr "Il n'y a pas de signatures pour ce document."
 
 #: views.py:301
 #, python-format
 msgid "Signatures for document file: %s"
-msgstr ""
+msgstr "Signatures pour le document: %s"
 
 #: views.py:322
 #, python-format
 msgid "Upload detached signature for document file: %s"
-msgstr ""
+msgstr "Télécharger la signature détachée pour le document: %s"
 
 #: views.py:340 views.py:359
 msgid "On large databases this operation may take some time to execute."
@@ -366,11 +368,13 @@ msgstr ""
 
 #: views.py:341
 msgid "Refresh all signatures information?"
-msgstr ""
+msgstr "Actualiser toutes les informations de signatures?"
 
 #: views.py:351
 msgid "Signature information refresh queued successfully."
 msgstr ""
+"L'actualisation des informations de signature a bien été mise en file "
+"d'attente."
 
 #: views.py:360
 msgid "Verify all document for signatures?"
@@ -382,7 +386,7 @@ msgstr "Vérification de la signature ajoutée à la file d'attente avec succès
 
 #: workflow_actions.py:22
 msgid "Private key that will be used to sign the document file."
-msgstr ""
+msgstr "Clé privée qui sera utilisée pour signer le document."
 
 #: workflow_actions.py:37
 msgid "Sign document (detached)"
@@ -393,6 +397,9 @@ msgid ""
 "Document has no file to sign. You might be trying to use this action in an "
 "initial state before the created document is yet to be processed."
 msgstr ""
+"Le document n'a aucun fichier à signer. Vous essayez peut-être d'utiliser "
+"cette action dans un état initial alors que le document n'a pas encore été "
+"traité."
 
 #: workflow_actions.py:80
 msgid "Sign document (embedded)"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -62,7 +62,7 @@ msgstr "Outil EXIF"
 
 #: events.py:10
 msgid "Document file submitted for file metadata processing"
-msgstr ""
+msgstr "Document soumis pour le traitement des métadonnées de fichier"
 
 #: events.py:14
 msgid "Document file file metadata processing finished"
@@ -132,7 +132,7 @@ msgstr "Paramétrages de types de documents"
 
 #: models.py:74
 msgid "Document file"
-msgstr ""
+msgstr "Fichier"
 
 #: models.py:80 models.py:95
 msgid "Document file driver entry"
@@ -182,7 +182,7 @@ msgstr "Soumettre un document pour le traitement des métadonnées de fichier"
 msgid "View file metadata"
 msgstr "Voir les métadonnées du fichier"
 
-#: queues.py:10
+#: queues.py:11
 msgid "Process document file"
 msgstr ""
 
@@ -222,10 +222,13 @@ msgid ""
 "the driver does not support any metadata field for the file type of this "
 "document."
 msgstr ""
+"Cela peut signifier que la détection des métadonnées de fichier n'est pas "
+"terminée ou que le pilote ne prend en charge aucun champ de métadonnées pour"
+" le type de document."
 
 #: views.py:86
 msgid "No file metadata available for this driver."
-msgstr ""
+msgstr "Aucune métadonnée de fichier disponible pour ce pilote."
 
 #: views.py:90
 #, python-format

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -57,11 +57,11 @@ msgstr "Документи"
 
 #: events.py:10
 msgid "Index template created"
-msgstr ""
+msgstr "Шаблонът на индекса е създаден"
 
 #: events.py:13
 msgid "Index template edited"
-msgstr ""
+msgstr "Шаблонът на индекса е редактиран"
 
 #: forms.py:16
 msgid "Index templates to be queued for rebuilding."
@@ -257,27 +257,27 @@ msgstr "Индексиране"
 
 #: permissions.py:8
 msgid "View index instances"
-msgstr ""
+msgstr "Преглед на копията на индекса"
 
 #: permissions.py:11
 msgid "Create new index templates"
-msgstr ""
+msgstr "Създайте нови индексни шаблони"
 
 #: permissions.py:14
 msgid "Edit index templates"
-msgstr ""
+msgstr "Редактиране на индексни шаблони"
 
 #: permissions.py:17
 msgid "Delete index templates"
-msgstr ""
+msgstr "Изтриване на индексни шаблони"
 
 #: permissions.py:20
 msgid "View index templates"
-msgstr ""
+msgstr "Преглед на индексни шаблони"
 
 #: permissions.py:23 views/index_template_views.py:310
 msgid "Rebuild index templates"
-msgstr ""
+msgstr "Повторно изграждане на индексни шаблони"
 
 #: queues.py:12
 msgid "Delete empty index nodes"
@@ -328,23 +328,31 @@ msgid ""
 "URL of the API endpoint showing the list document types associated with this"
 " index template."
 msgstr ""
+"URL на крайната точка на API, показващ типовете документи в списъка, "
+"свързани с този шаблон за индекс."
 
 #: serializers.py:222
 msgid "URL of the API endpoint to add document types to this index template."
 msgstr ""
+"URL на крайната точка на API за добавяне на типове документи към този шаблон"
+" за индекс."
 
 #: serializers.py:229
 msgid ""
 "URL of the API endpoint to remove document types from this index template."
 msgstr ""
+"URL на крайната точка на API за премахване на типове документи от този "
+"шаблон на индекс."
 
 #: serializers.py:277
 msgid "Primary key of the document type to add to the index template."
 msgstr ""
+"Първичен ключ от типа документ, който да добавите към шаблона на индекса."
 
 #: serializers.py:286
 msgid "Primary key of the document type to remove from the index template."
 msgstr ""
+"Първичен ключ от типа документ, който да се премахне от шаблона на индекса."
 
 #: settings.py:14
 msgid ""
@@ -362,6 +370,8 @@ msgid ""
 "This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
 msgstr ""
+"Това може да означава, че не са създадени шаблони за индекс или че има "
+"шаблони за индекс, но те не са правилно дефинирани."
 
 #: views/index_instance_views.py:42
 msgid "There are no index instances available."
@@ -423,10 +433,14 @@ msgid ""
 "template whose markers are replaced with direct properties of documents like"
 " label or description, or that of extended properties like metadata."
 msgstr ""
+"Индексира автоматично групиране на документ по нива. Индексите се дефинират "
+"с помощта на шаблон, чиито маркери се заменят с директни свойства на "
+"документи като етикет или описание, или тези на разширени свойства като "
+"метаданни."
 
 #: views/index_template_views.py:95
 msgid "There are no index templates."
-msgstr ""
+msgstr "Няма шаблони за индекс."
 
 #: views/index_template_views.py:124
 #, python-format
@@ -484,25 +498,25 @@ msgstr "Редактиране на възела на шаблон за инде
 #: views/index_template_views.py:283
 #, python-format
 msgid "Rebuild index template: %s"
-msgstr ""
+msgstr "Възстановяване на шаблон за индекс: %s"
 
 #: views/index_template_views.py:303
 msgid "Index template queued for rebuild."
-msgstr ""
+msgstr "Шаблонът на индекса е на опашка за възстановяване."
 
 #: views/index_template_views.py:324
 #, python-format
 msgid "%(count)d index template queued for rebuild."
 msgid_plural "%(count)d index templates queued for rebuild."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(count)d шаблон на индекса на опашка за възстановяване."
+msgstr[1] "%(count)d индексни шаблони, поставени на опашка за възстановяване."
 
 #: views/index_template_views.py:357
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(count)d нулиране на индекса."
+msgstr[1] "%(count)d нулирани индекси."
 
 #: views/index_template_views.py:370
 msgid "Index templates for which their instances will be deleted."

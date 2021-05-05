@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
@@ -28,7 +28,7 @@ msgstr "Mailer"
 msgid "Null backend"
 msgstr ""
 
-#: events.py:5 permissions.py:5 queues.py:6 settings.py:10
+#: events.py:5 permissions.py:5 queues.py:7 settings.py:10
 msgid "Mailing"
 msgstr "Mailing"
 
@@ -306,7 +306,7 @@ msgstr "Pregledajte mailing listu"
 msgid "Use a mailing profile"
 msgstr "Koristite mailing listu"
 
-#: queues.py:8
+#: queues.py:11
 msgid "Send document"
 msgstr "Pošaljite dokument"
 

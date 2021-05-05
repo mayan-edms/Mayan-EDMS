@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:57+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -141,41 +141,41 @@ msgstr "Retirar etiquetas de los documentos"
 
 #: serializers.py:33
 msgid "Primary key of the tag to add to the document."
-msgstr ""
+msgstr "Llave principal de la etiqueta para agregar al documento."
 
 #: serializers.py:41
 msgid "Primary key of the tag to remove from the document."
-msgstr ""
+msgstr "Llave principal de la etiqueta que se eliminará del documento."
 
 #: views.py:36
 #, python-format
 msgid "Tags attached to document \"%(object)s\" successfully."
-msgstr ""
+msgstr "Etiquetas adjuntas al documento \"%(object)s\" correctamente."
 
 #: views.py:39
 #, python-format
 msgid "Tags attached to %(count)d document successfully."
-msgstr ""
+msgstr "Etiquetas adjuntas correctamente a %(count)d documento."
 
 #: views.py:42
 #, python-format
 msgid "Tags attached to %(count)d documents successfully."
-msgstr ""
+msgstr "Etiquetas adjuntas correctamente a %(count)d documentos."
 
 #: views.py:44
 #, python-format
 msgid "Attach tags to document: %(object)s"
-msgstr ""
+msgstr "Adjuntar etiquetas al documento: %(object)s"
 
 #: views.py:45
 #, python-format
 msgid "Attach tags to %(count)d document."
-msgstr ""
+msgstr "Adjuntar etiquetas a %(count)d documento."
 
 #: views.py:46
 #, python-format
 msgid "Attach tags to %(count)d documents."
-msgstr ""
+msgstr "Adjuntar etiquetas a %(count)d documentos."
 
 #: views.py:50
 msgid "Attach"
@@ -192,37 +192,37 @@ msgstr "Crear etiqueta"
 #: views.py:116
 #, python-format
 msgid "Error deleting tag \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Error al eliminar la etiqueta \"%(instance)s\"; %(exception)s"
 
 #: views.py:121
 #, python-format
 msgid "Tag \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "La etiqueta \"%(object)s\" se eliminó correctamente."
 
 #: views.py:122
 #, python-format
 msgid "%(count)d tag deleted successfully."
-msgstr ""
+msgstr " %(count)d etiqueta se eliminada correctamente."
 
 #: views.py:123
 #, python-format
 msgid "%(count)d tags deleted successfully."
-msgstr ""
+msgstr "%(count)d etiquetas eliminadas correctamente."
 
 #: views.py:124
 #, python-format
 msgid "Delete tag: %(object)s."
-msgstr ""
+msgstr "Eliminar etiqueta: %(object)s."
 
 #: views.py:125
 #, python-format
 msgid "Delete the %(count)d selected tag."
-msgstr ""
+msgstr "Eliminar %(count)d etiqueta seleccionada."
 
 #: views.py:126
 #, python-format
 msgid "Delete the %(count)d selected tags."
-msgstr ""
+msgstr "Eliminas las %(count)d etiquetas seleccionadas."
 
 #: views.py:131
 msgid "Will be removed from all documents."

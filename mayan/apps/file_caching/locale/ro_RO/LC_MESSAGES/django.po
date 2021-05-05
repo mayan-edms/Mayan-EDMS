@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:25 events.py:6 permissions.py:5
+#: apps.py:27 events.py:6 permissions.py:5 queues.py:8 settings.py:10
 msgid "File caching"
 msgstr "Memorizare în cache a fișierelor"
 
@@ -39,6 +39,10 @@ msgstr "Cache editat"
 msgid "Cache purged"
 msgstr "Cache golit"
 
+#: events.py:19
+msgid "Cache partition purged"
+msgstr ""
+
 #: links.py:24
 msgid "File caches"
 msgstr "Fișiere în cache"
@@ -47,75 +51,79 @@ msgstr "Fișiere în cache"
 msgid "Purge cache"
 msgstr "Purjare cache"
 
-#: models.py:30
+#: models.py:41
 msgid "Internal name of the defined storage for this cache."
 msgstr "Numele intern al stocării definite pentru acest cache."
 
-#: models.py:31
+#: models.py:42
 msgid "Defined storage name"
 msgstr "Numele de stocare definit"
 
-#: models.py:34
+#: models.py:45
 msgid "Maximum size of the cache in bytes."
 msgstr "Dimensiunea maximă a cache-ului în octeți."
 
-#: models.py:36 models.py:62
+#: models.py:47 models.py:73
 msgid "Maximum size"
 msgstr "Dimensiune maximă"
 
-#: models.py:40 models.py:144
+#: models.py:51 models.py:206
 msgid "Cache"
 msgstr "Cache"
 
-#: models.py:41
+#: models.py:52
 msgid "Caches"
 msgstr "Cache-uri"
 
-#: models.py:60
+#: models.py:71
 msgid "Size at which the cache will start deleting old entries."
 msgstr "Mărimea la care cache-ul va începe să șteargă intrări vechi."
 
-#: models.py:69
+#: models.py:80
 msgid "Unknown"
 msgstr "Necunoscut"
 
-#: models.py:86
+#: models.py:97
 msgid "Current size"
 msgstr "Dimensiunea curentă"
 
-#: models.py:87
+#: models.py:98
 msgid "Current size of the cache."
 msgstr "Dimensiunea actuală a memoriei cache."
 
-#: models.py:147
+#: models.py:209
 msgid "Name"
 msgstr "Nume"
 
-#: models.py:152 models.py:239
+#: models.py:214 models.py:305
 msgid "Cache partition"
 msgstr "Partiția cache"
 
-#: models.py:153
+#: models.py:215
 msgid "Cache partitions"
 msgstr "Partiții cache"
 
-#: models.py:242
+#: models.py:308
 msgid "Date time"
 msgstr "Data și ora"
 
-#: models.py:244
+#: models.py:310
 msgid "Filename"
 msgstr "Nume fişier"
 
-#: models.py:246
+#: models.py:312
 msgid "File size"
 msgstr "Marime fişier"
 
-#: models.py:252
+#: models.py:316
+msgid "Times this cache partition file has been accessed."
+msgstr ""
+
+#: models.py:323
 msgid "Cache partition file"
 msgstr "Fișier partiție cache"
 
-#: models.py:253
+#: models.py:324
 msgid "Cache partition files"
 msgstr "Fișiere de partiție cache"
 
@@ -123,7 +131,7 @@ msgstr "Fișiere de partiție cache"
 msgid "Purge an object cache"
 msgstr ""
 
-#: permissions.py:11 queues.py:7
+#: permissions.py:11 queues.py:18
 msgid "Purge a file cache"
 msgstr "Purjați un cache de fișiere"
 
@@ -131,8 +139,20 @@ msgstr "Purjați un cache de fișiere"
 msgid "View a file cache"
 msgstr "Vizualizați un cache de fișiere"
 
-#: queues.py:11
+#: queues.py:13
 msgid "Purge a file cache partition"
+msgstr ""
+
+#: settings.py:15
+msgid ""
+"Number of times a cache will retry failed attempts to prune files to free up"
+" space for new a file being requested, before giving up."
+msgstr ""
+
+#: settings.py:23
+msgid ""
+"Number of times a cache will attempt to prune files to free up space for new"
+" a file being requested, before giving up."
 msgstr ""
 
 #: views.py:43
@@ -149,11 +169,11 @@ msgstr "Lista de cache de fișiere"
 msgid "Purge cache partitions of \"%s\"?"
 msgstr ""
 
-#: views.py:84
+#: views.py:86
 msgid "Object cache partitions submitted for purging."
 msgstr ""
 
-#: views.py:101
+#: views.py:103
 msgid "Submit the selected cache for purging?"
 msgid_plural "Submit the selected caches for purging?"
 msgstr[0] ""

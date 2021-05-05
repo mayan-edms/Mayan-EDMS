@@ -9,14 +9,15 @@
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2021
 # Yves Dubois <ydubois@gmail.com>, 2021
 # Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
+"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,7 +36,7 @@ msgstr "Date et heure"
 
 #: apps.py:52 apps.py:80
 msgid "Actor"
-msgstr "Acteur"
+msgstr "Utilisateur"
 
 #: apps.py:56 apps.py:85
 msgid "Event"
@@ -63,11 +64,11 @@ msgstr "Vu"
 
 #: classes.py:79
 msgid "Event list export to CSV"
-msgstr ""
+msgstr "Exportation de la liste d'événements au format CSV"
 
 #: classes.py:108
 msgid "Events exported."
-msgstr ""
+msgstr "Événements exportés."
 
 #: classes.py:110
 #, python-format
@@ -75,6 +76,9 @@ msgid ""
 "The event list has been exported and is available for download using the "
 "link: %(download_url)s or from the downloads area (%(download_list_url)s)."
 msgstr ""
+"La liste des événements a été exportée et peut être téléchargée via le lien "
+": %(download_url)s ou depuis la zone de téléchargement "
+"(%(download_list_url)s)."
 
 #: classes.py:274
 #, python-format
@@ -83,7 +87,7 @@ msgstr "Type d'événement inconnu ou obsolète : %s"
 
 #: events.py:8
 msgid "Events exported"
-msgstr ""
+msgstr "Événements exportés"
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
@@ -107,7 +111,7 @@ msgstr "Mes événements"
 
 #: links.py:34 links.py:49 links.py:56 views/export_views.py:57
 msgid "Export events"
-msgstr ""
+msgstr "Exporter les événements"
 
 #: links.py:61 models.py:63 views/subscription_views.py:56
 msgid "Event subscriptions"
@@ -175,7 +179,7 @@ msgstr "Abonnements aux événements de l'objet"
 
 #: permissions.py:8
 msgid "Export the events of an object"
-msgstr ""
+msgstr "Exporter les événements d'un objet"
 
 #: permissions.py:11
 msgid "Access the events of an object"
@@ -183,15 +187,17 @@ msgstr "Accéder aux évènements de cet objet"
 
 #: queues.py:13
 msgid "Export event querysets"
-msgstr ""
+msgstr "Exporter des ensembles de requêtes d'événement"
 
 #: views/event_views.py:26
 msgid "Events track actions that have been performed on, to, or with objects."
 msgstr ""
+"Les événements retracent les actions qui ont été effectuées sur, vers ou "
+"avec des objets."
 
 #: views/event_views.py:29
 msgid "There are no events"
-msgstr ""
+msgstr "Il n'y a pas d'événements"
 
 #: views/event_views.py:44
 msgid "There are no events for this object"
@@ -204,7 +210,7 @@ msgstr "Évènements pour : %s"
 
 #: views/event_views.py:68
 msgid "There are no events of this type"
-msgstr ""
+msgstr "Il n'y a pas d'événements de ce type"
 
 #: views/event_views.py:70 views/export_views.py:105
 #, python-format
@@ -216,15 +222,19 @@ msgid ""
 "The process will be performed in the background. The exported events will be"
 " available in the downloads area."
 msgstr ""
+"Le processus sera exécuté en arrière-plan. Les événements exportés seront "
+"disponibles dans la zone de téléchargement."
 
 #: views/export_views.py:45
 msgid "Event list export task queued successfully."
 msgstr ""
+"La tâche d'exportation de la liste d'événements a été mise dans la file de "
+"traitement avec succès."
 
 #: views/export_views.py:76
 #, python-format
 msgid "Export events for: %s"
-msgstr ""
+msgstr "Exporter les événements pour: %s"
 
 #: views/notification_views.py:25
 msgid "Subscribe to global or object events to receive notifications."
@@ -238,19 +248,19 @@ msgstr "Il n'y a pas de notification"
 
 #: views/notification_views.py:44
 msgid "Mark the selected notification as read?"
-msgstr ""
+msgstr "Marquer la notification sélectionnée comme lue?"
 
 #: views/notification_views.py:56
 msgid "Notification marked as read."
-msgstr ""
+msgstr "Notification marquée comme lue."
 
 #: views/notification_views.py:67
 msgid "Mark all notification as read?"
-msgstr ""
+msgstr "Marquer toutes les notifications comme lues?"
 
 #: views/notification_views.py:77
 msgid "All notifications marked as read."
-msgstr ""
+msgstr "Toutes les notifications marquées comme étant lues."
 
 #: views/subscription_views.py:40
 #, python-format

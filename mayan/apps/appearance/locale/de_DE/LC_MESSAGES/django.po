@@ -15,14 +15,15 @@
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2021
 # Florian Merges, 2021
 # Björn E <b1pum@web.de>, 2021
+# Niklas Maurer <niklas.maurer@web.energy>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
-"Last-Translator: Björn E <b1pum@web.de>, 2021\n"
+"Last-Translator: Niklas Maurer <niklas.maurer@web.energy>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -84,23 +85,23 @@ msgstr "URI.js"
 
 #: events.py:8
 msgid "Theme created"
-msgstr ""
+msgstr "Thema erstellt"
 
 #: events.py:11
 msgid "Theme edited"
-msgstr ""
+msgstr "Thema bearbeitet"
 
 #: links.py:16
 msgid "Theme settings"
-msgstr ""
+msgstr "Thema Einstellungen"
 
 #: links.py:21
 msgid "Edit theme settings"
-msgstr ""
+msgstr "Bearbeite Thema Einstellungen"
 
 #: links.py:27 views.py:47
 msgid "Create new theme"
-msgstr ""
+msgstr "Erstelle neues Thema"
 
 #: links.py:32
 msgid "Delete"
@@ -110,59 +111,61 @@ msgstr "Löschen"
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: links.py:40 links.py:45 models.py:25 views.py:111
+#: links.py:40 links.py:45 models.py:29 views.py:111
 msgid "Themes"
-msgstr ""
+msgstr "Themen"
 
-#: models.py:12
+#: models.py:16
 msgid "A short text describing the theme."
-msgstr ""
+msgstr "Ein kurzer Text um das Thema zu beschreiben"
 
-#: models.py:13
+#: models.py:17
 msgid "Label"
 msgstr "Bezeichner"
 
-#: models.py:17
+#: models.py:21
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
 msgstr ""
+"Das CSS-Stylesheet um die Erscheinung der verschiedenen User Interface "
+"Elemente zu bearbeiten"
 
-#: models.py:19
+#: models.py:23
 msgid "Stylesheet"
-msgstr ""
+msgstr "Stylesheet"
 
-#: models.py:24 models.py:60
+#: models.py:28 models.py:63
 msgid "Theme"
-msgstr ""
+msgstr "Thema"
 
-#: models.py:56
+#: models.py:59
 msgid "User"
 msgstr "Benutzer"
 
-#: models.py:64
+#: models.py:67
 msgid "User theme setting"
-msgstr ""
+msgstr "Thema Usereinstellung"
 
-#: models.py:65
+#: models.py:68
 msgid "User theme settings"
-msgstr ""
+msgstr "User Themaeinstellungen"
 
 #: permissions.py:8
 msgid "Create new themes"
-msgstr ""
+msgstr "Erstelle neue Themen"
 
 #: permissions.py:11
 msgid "Delete themes"
-msgstr ""
+msgstr "Lösche Themen"
 
 #: permissions.py:14
 msgid "Edit themes"
-msgstr ""
+msgstr "Bearbeite Themen"
 
 #: permissions.py:17
 msgid "View existing themes"
-msgstr ""
+msgstr "Betrachte existierende Themen"
 
 #: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
@@ -480,33 +483,35 @@ msgstr "Fehler bei der Verbindung zum Server"
 msgid "Check you network connection and try again in a few moments."
 msgstr "Prüfen Sie Ihre Netzwerkeinstellungen und versuchen Sie es nochmals."
 
-#: templatetags/appearance_tags.py:43
+#: templatetags/appearance_tags.py:62
 msgid "None"
 msgstr "Keine"
 
 #: views.py:29
 msgid "Current user theme settings details"
-msgstr ""
+msgstr "Aktuelle User Themaeinstellungen"
 
 #: views.py:35
 msgid "Edit current user theme settings details"
-msgstr ""
+msgstr "Bearbeite aktuelle User Themeneinstellungsdetails"
 
 #: views.py:69
 #, python-format
 msgid "Delete theme: %s"
-msgstr ""
+msgstr "Lösche Thema %s"
 
 #: views.py:85
 #, python-format
 msgid "Edit theme: %s"
-msgstr ""
+msgstr "Bearbeite Thema %s"
 
 #: views.py:105
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
 msgstr ""
+"Themen erlauben es das Erscheinungsbild zu verändern, ohne Code zu verändern"
+" zu müssen"
 
 #: views.py:109
 msgid "There are no themes"
-msgstr ""
+msgstr "Keine Themen verfügbar"

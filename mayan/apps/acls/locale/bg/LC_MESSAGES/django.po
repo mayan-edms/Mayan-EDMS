@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:12+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -32,6 +32,8 @@ msgid ""
 "Object for which the access is granted. When sorting objects, only the type "
 "is used and not the actual label of the object."
 msgstr ""
+"Обект, за който е предоставен достъп. При сортиране на обекти се използва "
+"само типът, а не действителният етикет на обекта."
 
 #: apps.py:63
 msgid "Object"
@@ -47,7 +49,7 @@ msgstr "Новосъздадени ACL"
 
 #: events.py:13
 msgid "ACL deleted"
-msgstr ""
+msgstr "Изтрити ACL"
 
 #: events.py:16
 msgid "ACL edited"
@@ -71,21 +73,21 @@ msgstr "Разрешения"
 
 #: links.py:35
 msgid "Global ACLs"
-msgstr ""
+msgstr "Глобални ACL"
 
-#: managers.py:228
+#: managers.py:230
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
 msgstr "Обект \"%s\" не е модел и не може да бъде проверен за достъп"
 
-#: managers.py:248
+#: managers.py:250
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr "Недостатъчен достъп за: %s"
 
 #: models.py:49
 msgid "Role to which the access is granted for the specified object."
-msgstr ""
+msgstr "Роля, до която се предоставя достъп за посочения обект."
 
 #: models.py:59
 msgid "Access entry"
@@ -110,11 +112,11 @@ msgstr "Преглед на контролни списъци за достъп"
 
 #: serializers.py:125
 msgid "Primary key of the permission to add to the ACL."
-msgstr ""
+msgstr "Първичен ключ на разрешението за добавяне към ACL."
 
 #: serializers.py:132
 msgid "Primary key of the permission to remove from the ACL."
-msgstr ""
+msgstr "Първичен ключ на разрешението за премахване от ACL."
 
 #: views.py:40
 #, python-format
@@ -181,11 +183,11 @@ msgstr ""
 
 #: views.py:256
 msgid "There are no ACLs"
-msgstr ""
+msgstr "Няма ACL"
 
 #: views.py:265
 msgid "Global access control lists"
-msgstr ""
+msgstr "Глобални списъци за контрол на достъпа"
 
 #: workflow_actions.py:23
 msgid "Object type"

@@ -29,7 +29,8 @@ Simple Docker installation
 
    .. note::
 
-       Do not use the ``latest`` tag, it does not point to the latest version.
+       Do not use the ``latest`` tag. It may not necessarily point to the
+       latest version, might be pointing to the latest image pushed.
 
 
 #. Download the PostgreSQL Docker image:
@@ -81,7 +82,7 @@ Simple Docker installation
        |DOCKER_REDIS_IMAGE_VERSION| \
        redis-server \
        --databases \
-       "2" \
+       "3" \
        --maxmemory-policy \
        allkeys-lru \
        --save \
@@ -102,9 +103,11 @@ Simple Docker installation
        --name mayan-edms \
        --restart=always \
        -p 80:8000 \
-       -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'172.17.0.1'}}" \
-       -e MAYAN_CELERY_BROKER_URL="redis://:mayanredispassword@172.17.0.1:6379/0" \
-       -e MAYAN_CELERY_RESULT_BACKEND="redis://:mayanredispassword@172.17.0.1:6379/1" \
+       -e MAYAN_CELERY_BROKER_URL="redis://:|DEFAULT_REDIS_PASSWORD|@172.17.0.1:6379/0" \
+       -e MAYAN_CELERY_RESULT_BACKEND="redis://:|DEFAULT_REDIS_PASSWORD|@172.17.0.1:6379/1" \
+       -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'172.17.0.1'}}" \
+       -e MAYAN_LOCK_MANAGER_BACKEND="mayan.apps.lock_manager.backends.redis_lock.RedisLock" \
+       -e MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS="{'redis_url':'redis://:|DEFAULT_REDIS_PASSWORD|@172.17.0.1:6379/2'}" \
        -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
        mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
 

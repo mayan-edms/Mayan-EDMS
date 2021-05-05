@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:57+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -25,14 +25,18 @@ msgstr ""
 msgid "Platform"
 msgstr "Plateforme"
 
-#: classes.py:127
-msgid "Template for Supervisord."
-msgstr "Modèle pour Supervisord."
+#: classes.py:130
+msgid "Template for entrypoint.sh file inside a Docker image."
+msgstr ""
 
-#: classes.py:188
+#: classes.py:140
 msgid "Template for Supervisord inside a Docker image."
 msgstr "Modèle pour Supervisord dans une image Docker."
 
-#: classes.py:196
+#: classes.py:148
+msgid "Template for Supervisord."
+msgstr "Modèle pour Supervisord."
+
+#: classes.py:205
 msgid "Template showing the queues of a worker."
 msgstr "Modèle montrant les files d'attente d'un processus de travail."

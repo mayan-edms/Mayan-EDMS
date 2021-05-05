@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:26+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -154,12 +154,12 @@ msgid ""
 "Use this field to show a unique label depending on the document from which "
 "the smart link is being accessed."
 msgstr ""
-"Используйте это поле для отображения уникального ярлыка в зависимости от "
+"Используйте это поле для отображения уникального заголовка в зависимости от "
 "документа, из которого осуществляется доступ к связи."
 
 #: models.py:35
 msgid "Dynamic label"
-msgstr "Динамический ярлык"
+msgstr "Динамический заголовок"
 
 #: models.py:37 models.py:186
 msgid "Enabled"
@@ -172,7 +172,7 @@ msgstr "Связь"
 #: models.py:80
 #, python-format
 msgid "Error generating dynamic label; %s"
-msgstr "Ошибка создания динамического ярлыка; %s"
+msgstr "Ошибка создания динамического заголовка; %s"
 
 #: models.py:95
 msgid "This smart link is not allowed for the selected document's type."
@@ -224,7 +224,7 @@ msgstr "не"
 
 #: models.py:210
 msgid "Full label"
-msgstr "Полный ярлык"
+msgstr "Полный заголовок"
 
 #: permissions.py:8
 msgid "Create new smart links"

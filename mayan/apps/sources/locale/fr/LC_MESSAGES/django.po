@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:57+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -82,6 +82,8 @@ msgstr "Action"
 msgid ""
 "The action to take in regards to the pages of the new file being uploaded."
 msgstr ""
+"L'action à exécutée en ce qui concerne les pages du nouveau fichier en cours"
+" de téléversement."
 
 #: forms.py:48 serializers.py:21
 msgid "Expand compressed files"
@@ -147,7 +149,7 @@ msgstr "Sources de documents"
 
 #: links.py:137
 msgid "Upload new file"
-msgstr ""
+msgstr "Téléverser un nouveau fichier"
 
 #: links.py:141
 msgid "Check now"
@@ -233,50 +235,50 @@ msgstr "Activé"
 msgid "Source"
 msgstr "Source"
 
-#: models/base.py:138
+#: models/base.py:142
 msgid "Interactive source"
 msgstr "Source interactive"
 
-#: models/base.py:139
+#: models/base.py:143
 msgid "Interactive sources"
 msgstr "Sources interactives "
 
-#: models/base.py:148 models/base.py:149
+#: models/base.py:152 models/base.py:153
 msgid "Out of process"
 msgstr "Process externe"
 
-#: models/base.py:155
+#: models/base.py:159
 msgid "Interval in seconds between checks for new documents."
 msgstr "Intervalle en secondes entre recherches de nouveaux documents."
 
-#: models/base.py:156
+#: models/base.py:160
 msgid "Interval"
 msgstr "Intervalle"
 
-#: models/base.py:160
+#: models/base.py:164
 msgid "Assign a document type to documents uploaded from this source."
 msgstr ""
 "Assigner un type de document aux documents transférés à partir de cette "
 "source."
 
-#: models/base.py:162 serializers.py:17
+#: models/base.py:166 serializers.py:17
 msgid "Document type"
 msgstr "Type de document"
 
-#: models/base.py:166
+#: models/base.py:170
 msgid "Whether to expand or not, compressed archives."
 msgstr "Choisir de décompresser ou pas les archives compressées."
 
-#: models/base.py:167 models/staging_folder_sources.py:54
+#: models/base.py:171 models/staging_folder_sources.py:54
 #: models/webform_sources.py:33
 msgid "Uncompress"
 msgstr "Décompresser"
 
-#: models/base.py:173
+#: models/base.py:177
 msgid "Interval source"
 msgstr "intervalle pour la source"
 
-#: models/base.py:174
+#: models/base.py:178
 msgid "Interval sources"
 msgstr "intervalle pour les sources"
 
@@ -619,15 +621,15 @@ msgstr ""
 msgid "Generate staging file image"
 msgstr ""
 
-#: queues.py:23
+#: queues.py:24
 msgid "Check interval source"
 msgstr "Intervalle de vérification de la source"
 
-#: queues.py:27
+#: queues.py:29
 msgid "Handle upload"
 msgstr "Moteur de téléchargement"
 
-#: queues.py:31
+#: queues.py:33
 msgid "Upload document"
 msgstr "Transférer le document"
 
@@ -693,11 +695,15 @@ msgstr "Le serveur a répondu avec le code {{statusCode}}."
 #, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
+"Impossible de téléverser de nouveaux fichiers pour le document "
+"\"%(document)s\". %(exception)s"
 
 #: views/document_file_views.py:125
 #, python-format
 msgid "Error executing document file upload task; %(exception)s"
 msgstr ""
+"Erreur lors de l'exécution de la tâche de téléversement du document; "
+"%(exception)s"
 
 #: views/document_file_views.py:140
 msgid "New document file queued for upload and will be available shortly."
@@ -707,6 +713,8 @@ msgstr ""
 #, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
+"Téléverser un nouveau fichier pour le document \"%(document)s\", à partir de"
+" la source: %(source)s"
 
 #: views/document_file_views.py:168
 msgid "Submit"

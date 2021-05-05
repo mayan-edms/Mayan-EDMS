@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -102,19 +102,19 @@ msgstr "Изтрийте"
 msgid "Edit"
 msgstr "Редактиране"
 
-#: links.py:40 links.py:45 models.py:25 views.py:111
+#: links.py:40 links.py:45 models.py:29 views.py:111
 msgid "Themes"
 msgstr "Теми"
 
-#: models.py:12
+#: models.py:16
 msgid "A short text describing the theme."
 msgstr "Кратък текст, описващ темата."
 
-#: models.py:13
+#: models.py:17
 msgid "Label"
 msgstr "Етикет"
 
-#: models.py:17
+#: models.py:21
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
@@ -122,23 +122,23 @@ msgstr ""
 "CSS таблицата със стилове за промяна на външния вид на различните елементи "
 "на потребителския интерфейс."
 
-#: models.py:19
+#: models.py:23
 msgid "Stylesheet"
 msgstr "Таблица със стилове"
 
-#: models.py:24 models.py:60
+#: models.py:28 models.py:63
 msgid "Theme"
 msgstr "Тема"
 
-#: models.py:56
+#: models.py:59
 msgid "User"
 msgstr "Потребител"
 
-#: models.py:64
+#: models.py:67
 msgid "User theme setting"
 msgstr "Настройка на потребителска тема"
 
-#: models.py:65
+#: models.py:68
 msgid "User theme settings"
 msgstr "Настройки на потребителска тема"
 
@@ -234,7 +234,9 @@ msgstr "Свържете се с вашия системен администр�
 
 #: templates/500.html:47
 msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
-msgstr "Проверете дневниците за съобщения с тагове \"ERROR\", \"CRITICAL\" или \"FATAL\"."
+msgstr ""
+"Проверете дневниците за съобщения с маркери \"ERROR\", \"CRITICAL\" или "
+"\"FATAL\"."
 
 #: templates/500.html:48
 #, python-format
@@ -394,7 +396,7 @@ msgstr "Идентификатор"
 
 #: templates/appearance/generic_list_subtemplate.html:133
 msgid "Facets"
-msgstr ""
+msgstr "Фасети"
 
 #: templates/appearance/home.html:10
 msgid "Dashboard"
@@ -471,18 +473,17 @@ msgstr "Грешка при свързването със сървъра"
 msgid "Check you network connection and try again in a few moments."
 msgstr "Проверете връзката с мрежата и опитайте отново след няколко секунди."
 
-#: templatetags/appearance_tags.py:43
+#: templatetags/appearance_tags.py:62
 msgid "None"
 msgstr "Няма"
 
 #: views.py:29
 msgid "Current user theme settings details"
-msgstr "Подробности за текущите настройки на потребителската тема"
+msgstr "Данни за текущите настройки на потребителската тема"
 
 #: views.py:35
 msgid "Edit current user theme settings details"
-msgstr ""
-"Редактирайте подробности за текущите настройки на потребителската тема"
+msgstr "Редактирайте данните за текущите настройки на потребителската тема"
 
 #: views.py:69
 #, python-format

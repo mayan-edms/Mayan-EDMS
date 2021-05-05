@@ -2,10 +2,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.queues import queue_tools
 from mayan.apps.task_manager.classes import CeleryQueue
-from mayan.apps.task_manager.workers import worker_medium
+from mayan.apps.task_manager.workers import worker_c
 
 queue_signatures = CeleryQueue(
-    label=_('Signatures'), name='signatures', worker=worker_medium
+    label=_('Signatures'), name='signatures', worker=worker_c
 )
 
 queue_signatures.add_task_type(

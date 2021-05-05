@@ -16,8 +16,6 @@ from .mixins import AnnouncementAPIViewTestMixin, AnnouncementTestMixin
 class AnnouncementAPIViewTestCase(
     AnnouncementAPIViewTestMixin, AnnouncementTestMixin, BaseAPITestCase
 ):
-    _test_event_object_name = 'test_announcement'
-
     def test_announcement_create_api_view_no_permission(self):
         self._clear_events()
 
@@ -26,8 +24,8 @@ class AnnouncementAPIViewTestCase(
 
         self.assertEqual(Announcement.objects.count(), 0)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_announcement_create_api_view_with_permission(self):
         self.grant_permission(permission=permission_announcement_create)
@@ -46,11 +44,13 @@ class AnnouncementAPIViewTestCase(
         self.assertEqual(announcement.label, TEST_ANNOUNCEMENT_LABEL)
         self.assertEqual(announcement.text, TEST_ANNOUNCEMENT_TEXT)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.action_object, None)
-        self.assertEqual(event.target, self.test_announcement)
-        self.assertEqual(event.verb, event_announcement_created.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_announcement)
+        self.assertEqual(events[0].verb, event_announcement_created.id)
 
     def test_announcement_delete_api_view_no_permission(self):
         self._create_test_announcement()
@@ -62,8 +62,8 @@ class AnnouncementAPIViewTestCase(
 
         self.assertEqual(Announcement.objects.count(), 1)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_announcement_delete_api_view_with_access(self):
         self._create_test_announcement()
@@ -79,8 +79,8 @@ class AnnouncementAPIViewTestCase(
 
         self.assertEqual(Announcement.objects.count(), 0)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_announcement_detail_api_view_no_permission(self):
         self._create_test_announcement()
@@ -90,8 +90,8 @@ class AnnouncementAPIViewTestCase(
         response = self._request_announcement_detail_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_announcement_detail_api_view_with_access(self):
         self._create_test_announcement()
@@ -107,8 +107,8 @@ class AnnouncementAPIViewTestCase(
 
         self.assertEqual(response.data['label'], self.test_announcement.label)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_announcement_edit_api_view_via_patch_view_no_permission(self):
         self._create_test_announcement()
@@ -127,8 +127,8 @@ class AnnouncementAPIViewTestCase(
         )
         self.assertEqual(self.test_announcement.text, test_announcement_text)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_announcement_edit_api_view_via_patch_view_with_access(self):
         self._create_test_announcement()
@@ -150,11 +150,13 @@ class AnnouncementAPIViewTestCase(
         )
         self.assertNotEqual(self.test_announcement.text, test_announcement_text)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.action_object, None)
-        self.assertEqual(event.target, self.test_announcement)
-        self.assertEqual(event.verb, event_announcement_edited.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_announcement)
+        self.assertEqual(events[0].verb, event_announcement_edited.id)
 
     def test_announcement_edit_api_view_via_put_view_no_permission(self):
         self._create_test_announcement()
@@ -173,8 +175,8 @@ class AnnouncementAPIViewTestCase(
         )
         self.assertEqual(self.test_announcement.text, test_announcement_text)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_announcement_edit_api_view_via_put_view_with_access(self):
         self._create_test_announcement()
@@ -197,8 +199,10 @@ class AnnouncementAPIViewTestCase(
         )
         self.assertNotEqual(self.test_announcement.text, test_announcement_text)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.action_object, None)
-        self.assertEqual(event.target, self.test_announcement)
-        self.assertEqual(event.verb, event_announcement_edited.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_announcement)
+        self.assertEqual(events[0].verb, event_announcement_edited.id)

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -28,9 +28,10 @@ msgid "Document parsing"
 msgstr "Анализ документа"
 
 #: apps.py:105
-msgid "A generator returning the document's pages parsed content."
+msgid "A generator returning the document file's pages parsed content."
 msgstr ""
-"Генератор, возвращающий проанализированное содержимое страниц документа."
+"Генератор, возвращающий проанализированное содержимое страниц файла "
+"документа."
 
 #: apps.py:106 links.py:21 links.py:43 models.py:24 search.py:10
 msgid "Content"
@@ -42,9 +43,10 @@ msgstr "Результат"
 
 #: dependencies.py:9
 msgid ""
-"Utility from the poppler-utils package used to text content from PDF files."
+"Utility from the poppler-utils package used to extract content from PDF "
+"files."
 msgstr ""
-"Утилита из пакета poppler-utils, используемая для извлечения текста из "
+"Утилита из пакета poppler-utils, используемая для извлечения содержимого из "
 "файлов PDF"
 
 #: events.py:10
@@ -164,11 +166,11 @@ msgstr "Отправить файл документа на анализ"
 msgid "Change document type parsing settings"
 msgstr "Изменить настройки анализа для типа документа"
 
-#: queues.py:6
+#: queues.py:7
 msgid "Parsing"
 msgstr "Анализ"
 
-#: queues.py:9
+#: queues.py:12
 msgid "Document file parsing"
 msgstr "Анализ файла документа"
 

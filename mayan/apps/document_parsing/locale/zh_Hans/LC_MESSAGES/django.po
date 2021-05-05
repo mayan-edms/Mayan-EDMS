@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -25,7 +25,7 @@ msgid "Document parsing"
 msgstr "文档解析"
 
 #: apps.py:105
-msgid "A generator returning the document's pages parsed content."
+msgid "A generator returning the document file's pages parsed content."
 msgstr ""
 
 #: apps.py:106 links.py:21 links.py:43 models.py:24 search.py:10
@@ -38,7 +38,8 @@ msgstr "结果"
 
 #: dependencies.py:9
 msgid ""
-"Utility from the poppler-utils package used to text content from PDF files."
+"Utility from the poppler-utils package used to extract content from PDF "
+"files."
 msgstr ""
 
 #: events.py:10
@@ -156,11 +157,11 @@ msgstr ""
 msgid "Change document type parsing settings"
 msgstr "更改文档类型解析设置"
 
-#: queues.py:6
+#: queues.py:7
 msgid "Parsing"
 msgstr "解析"
 
-#: queues.py:9
+#: queues.py:12
 msgid "Document file parsing"
 msgstr ""
 

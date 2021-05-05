@@ -248,7 +248,7 @@ class IndexTemplateAPIViewTestMixin:
         return self.get(viewname='rest_api:indextemplate-list')
 
 
-class IndexTemplateDocumentTypeAPIAPIViewTestMixin:
+class IndexTemplateDocumentTypeAPIViewTestMixin:
     def _request_test_index_template_document_type_list_api_view(self):
         return self.get(
             viewname='rest_api:indextemplate-documenttype-list', kwargs={

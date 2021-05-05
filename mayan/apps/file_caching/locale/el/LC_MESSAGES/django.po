@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:25 events.py:6 permissions.py:5
+#: apps.py:27 events.py:6 permissions.py:5 queues.py:8 settings.py:10
 msgid "File caching"
 msgstr "Προσωρινή αποθήκευση αρχείων"
 
@@ -37,6 +37,10 @@ msgstr "Η προσωρινή μνήμη τροποποιήθηκε"
 msgid "Cache purged"
 msgstr "Εκκαθαρίστηκε η προσωρινή μνήμη"
 
+#: events.py:19
+msgid "Cache partition purged"
+msgstr ""
+
 #: links.py:24
 msgid "File caches"
 msgstr "Προσωρινή μνήμη αρχείων"
@@ -45,79 +49,83 @@ msgstr "Προσωρινή μνήμη αρχείων"
 msgid "Purge cache"
 msgstr "Εκκαθάριση προσωρινής μνήμης"
 
-#: models.py:30
+#: models.py:41
 msgid "Internal name of the defined storage for this cache."
 msgstr ""
 "Εσωτερικό όνομα του καθορισμένου χώρου αποθήκευσης για αυτήν την προσωρινή "
 "μνήμη."
 
-#: models.py:31
+#: models.py:42
 msgid "Defined storage name"
 msgstr "Καθορισμένο όνομα χώρου αποθήκευσης"
 
-#: models.py:34
+#: models.py:45
 msgid "Maximum size of the cache in bytes."
 msgstr "Μέγιστο μέγεθος της προσωρινής μνήμης σε byte."
 
-#: models.py:36 models.py:62
+#: models.py:47 models.py:73
 msgid "Maximum size"
 msgstr "Μέγιστο μέγεθος"
 
-#: models.py:40 models.py:144
+#: models.py:51 models.py:206
 msgid "Cache"
 msgstr "Προσωρινή μνήμη"
 
-#: models.py:41
+#: models.py:52
 msgid "Caches"
 msgstr "Προσωρινές μνήμες"
 
-#: models.py:60
+#: models.py:71
 msgid "Size at which the cache will start deleting old entries."
 msgstr ""
 "Μέγεθος στο οποίο η προσωρινή μνήμη θα αρχίσει να διαγράφει παλιές "
 "καταχωρήσεις."
 
-#: models.py:69
+#: models.py:80
 msgid "Unknown"
 msgstr "Άγνωστο"
 
-#: models.py:86
+#: models.py:97
 msgid "Current size"
 msgstr "Τρέχον μέγεθος"
 
-#: models.py:87
+#: models.py:98
 msgid "Current size of the cache."
 msgstr "Τρέχον μέγεθος της προσωρινής μνήμης."
 
-#: models.py:147
+#: models.py:209
 msgid "Name"
 msgstr "Όνομα"
 
-#: models.py:152 models.py:239
+#: models.py:214 models.py:305
 msgid "Cache partition"
 msgstr "Κατάτμηση προσωρινής μνήμης"
 
-#: models.py:153
+#: models.py:215
 msgid "Cache partitions"
 msgstr "Κατατμήσεις προσωρινής μνήμης"
 
-#: models.py:242
+#: models.py:308
 msgid "Date time"
 msgstr "Ημερομηνία ώρα"
 
-#: models.py:244
+#: models.py:310
 msgid "Filename"
 msgstr "Όνομα αρχείου"
 
-#: models.py:246
+#: models.py:312
 msgid "File size"
 msgstr "Μέγεθος αρχείου"
 
-#: models.py:252
+#: models.py:316
+msgid "Times this cache partition file has been accessed."
+msgstr ""
+
+#: models.py:323
 msgid "Cache partition file"
 msgstr "Αρχείο κατάτμησης προσωρινής μνήμης"
 
-#: models.py:253
+#: models.py:324
 msgid "Cache partition files"
 msgstr "Αρχεία κατάτμησης προσωρινής μνήμης"
 
@@ -125,7 +133,7 @@ msgstr "Αρχεία κατάτμησης προσωρινής μνήμης"
 msgid "Purge an object cache"
 msgstr ""
 
-#: permissions.py:11 queues.py:7
+#: permissions.py:11 queues.py:18
 msgid "Purge a file cache"
 msgstr "Εκκαθάριση προσωρινής μνήμης ενός αρχείου"
 
@@ -133,8 +141,20 @@ msgstr "Εκκαθάριση προσωρινής μνήμης ενός αρχε
 msgid "View a file cache"
 msgstr "Προβολή προσωρινής μνήμης ενός αρχείου"
 
-#: queues.py:11
+#: queues.py:13
 msgid "Purge a file cache partition"
+msgstr ""
+
+#: settings.py:15
+msgid ""
+"Number of times a cache will retry failed attempts to prune files to free up"
+" space for new a file being requested, before giving up."
+msgstr ""
+
+#: settings.py:23
+msgid ""
+"Number of times a cache will attempt to prune files to free up space for new"
+" a file being requested, before giving up."
 msgstr ""
 
 #: views.py:43
@@ -151,11 +171,11 @@ msgstr "Λίστα προσωρινών μνημών αρχείου"
 msgid "Purge cache partitions of \"%s\"?"
 msgstr ""
 
-#: views.py:84
+#: views.py:86
 msgid "Object cache partitions submitted for purging."
 msgstr ""
 
-#: views.py:101
+#: views.py:103
 msgid "Submit the selected cache for purging?"
 msgid_plural "Submit the selected caches for purging?"
 msgstr[0] ""

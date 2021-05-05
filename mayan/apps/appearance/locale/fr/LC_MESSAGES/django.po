@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -107,19 +107,19 @@ msgstr "Supprimer"
 msgid "Edit"
 msgstr "Modifier"
 
-#: links.py:40 links.py:45 models.py:25 views.py:111
+#: links.py:40 links.py:45 models.py:29 views.py:111
 msgid "Themes"
 msgstr "Thèmes"
 
-#: models.py:12
+#: models.py:16
 msgid "A short text describing the theme."
 msgstr "Un court texte décrivant le thème."
 
-#: models.py:13
+#: models.py:17
 msgid "Label"
 msgstr "Étiquette"
 
-#: models.py:17
+#: models.py:21
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
@@ -127,23 +127,23 @@ msgstr ""
 "La feuille de style CSS pour changer l'apparence des différents éléments de "
 "l'interface utilisateur."
 
-#: models.py:19
+#: models.py:23
 msgid "Stylesheet"
 msgstr "Feuille de style"
 
-#: models.py:24 models.py:60
+#: models.py:28 models.py:63
 msgid "Theme"
 msgstr "Thème"
 
-#: models.py:56
+#: models.py:59
 msgid "User"
 msgstr "Utilisateur"
 
-#: models.py:64
+#: models.py:67
 msgid "User theme setting"
 msgstr "Paramètre du thème utilisateur"
 
-#: models.py:65
+#: models.py:68
 msgid "User theme settings"
 msgstr "Paramètres du thème utilisateur"
 
@@ -485,7 +485,7 @@ msgstr "Erreur de communication serveur"
 msgid "Check you network connection and try again in a few moments."
 msgstr "Vérifiez votre connexion réseau et réessayez dans quelques instants."
 
-#: templatetags/appearance_tags.py:43
+#: templatetags/appearance_tags.py:62
 msgid "None"
 msgstr "Aucun"
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:57+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -53,25 +53,25 @@ msgstr "Tesseract OCR не е намерен."
 
 #: dependencies.py:23
 msgid "Free Open Source OCR Engine"
-msgstr "Безплатен автомат OCR с отворен код"
+msgstr "Безплатна OCR машина с отворен код"
 
 #: events.py:8
 msgid "Document OCR content deleted"
-msgstr "Съдържанието на OCR на документа е изтрито"
+msgstr "OCR съдържанието на документа е изтрито"
 
 #: events.py:12
 msgid "Document file submitted for OCR"
-msgstr ""
+msgstr "Предоставен файл на документ за OCR"
 
 #: events.py:16
 msgid "Document file OCR finished"
-msgstr ""
+msgstr "OCR на файла с документи завърши"
 
-#: forms.py:14 forms.py:45
+#: forms.py:14 forms.py:47
 msgid "Contents"
 msgstr "Съдържание"
 
-#: forms.py:74
+#: forms.py:78
 #, python-format
 msgid "Page %(page_number)d"
 msgstr "Страница %(page_number)d"
@@ -134,7 +134,7 @@ msgstr "OCR грешки за версия на документа"
 
 #: models.py:67
 msgid "Document version page"
-msgstr ""
+msgstr "Страница с версия на документа"
 
 #: models.py:71
 msgid "The actual text content extracted by the OCR backend."
@@ -146,11 +146,11 @@ msgstr "Съдържание"
 
 #: models.py:78
 msgid "Document version page OCR content"
-msgstr ""
+msgstr "Съдържание на OCR на страницата с версия на документа"
 
 #: models.py:79
 msgid "Document version pages OCR contents"
-msgstr ""
+msgstr "Страници с OCR съдържание на версията на документа"
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
@@ -166,15 +166,15 @@ msgstr "Промяна на настройките на OCR за типа док
 
 #: queues.py:10
 msgid "Finish document file OCR"
-msgstr ""
+msgstr "Завършете OCR на файла с документа"
 
 #: queues.py:14
 msgid "Document file page OCR"
-msgstr ""
+msgstr "OCR на страница от файла с документа"
 
 #: queues.py:18
 msgid "Document file OCR"
-msgstr ""
+msgstr "OCR на файла с документа"
 
 #: search.py:11 search.py:23
 msgid "Document version OCR"
@@ -193,8 +193,8 @@ msgstr "Пълен път към бекенда, за да се използва
 #: views.py:39
 msgid "Delete the OCR content of the selected document version?"
 msgid_plural "Delete the OCR content of the selected document versions?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Да се изтрие ли OCR съдържанието на избраната версия на документа?"
+msgstr[1] "Да се изтрие ли OCR съдържанието на избраните версии на документа?"
 
 #: views.py:74
 #, python-format
@@ -209,13 +209,13 @@ msgstr "OCR грешки за документ: %s"
 #: views.py:118
 msgid "Submit the selected document version to the OCR queue?"
 msgid_plural "Submit the selected document versions to the OCR queue?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Изпратете избраната версия на документа на OCR опашката?"
+msgstr[1] "Да се изпратят ли избраните версии на документа на OCR опашката?"
 
 #: views.py:152
 #, python-format
 msgid "OCR result for document version page: %s"
-msgstr ""
+msgstr "OCR резултат за страница с версия на документа: %s"
 
 #: views.py:158
 msgid "Submit all documents of a type for OCR"
@@ -224,7 +224,7 @@ msgstr "Изпратете всички документи от даден ти�
 #: views.py:175
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
-msgstr "%(count)d документи, добавени към OCR опашката."
+msgstr "%(count)d документа, добавени към OCR опашката."
 
 #: views.py:210
 #, python-format

@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -29,7 +29,7 @@ msgstr ""
 
 #: apps.py:16 permissions.py:5 settings.py:10
 msgid "Logging"
-msgstr ""
+msgstr "Événements"
 
 #: links.py:13
 msgid "Errors"
@@ -61,7 +61,7 @@ msgstr ""
 
 #: models.py:44
 msgid "Error log partitions"
-msgstr ""
+msgstr "Erreur d'enregistrement d'énévement"
 
 #: models.py:63
 msgid "Date and time"
@@ -94,7 +94,7 @@ msgstr ""
 
 #: settings.py:25
 msgid "Level for the logging system."
-msgstr ""
+msgstr "Niveau pour le système d'événements."
 
 #: settings.py:31
 msgid "Path to the logfile that will track errors during production."

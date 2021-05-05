@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:57+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -71,11 +71,11 @@ msgstr "Файл документа отправлена на распознав
 msgid "Document file OCR finished"
 msgstr "Распознавание файла документа завершено"
 
-#: forms.py:14 forms.py:45
+#: forms.py:14 forms.py:47
 msgid "Contents"
 msgstr "Содержимое"
 
-#: forms.py:74
+#: forms.py:78
 #, python-format
 msgid "Page %(page_number)d"
 msgstr "Страница %(page_number)d"

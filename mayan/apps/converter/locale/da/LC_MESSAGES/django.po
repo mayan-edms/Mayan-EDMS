@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Allan Møller <it@brandts.dk>, 2021\n"
 "Language-Team: Danish (https://www.transifex.com/rosarior/teams/13584/da/)\n"
@@ -237,7 +237,7 @@ msgstr ""
 msgid "View existing transformations"
 msgstr ""
 
-#: queues.py:11
+#: queues.py:12
 msgid "Generate a image of an asset."
 msgstr ""
 

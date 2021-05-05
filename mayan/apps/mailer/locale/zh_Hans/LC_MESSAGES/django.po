@@ -6,14 +6,15 @@
 # Translators:
 # Roberto Rosario, 2021
 # yan songwei <yansw@vip.163.com>, 2021
+# bo feng <87289884@qq.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: yan songwei <yansw@vip.163.com>, 2021\n"
+"Last-Translator: bo feng <87289884@qq.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,13 +30,13 @@ msgstr "邮件程序"
 msgid "Null backend"
 msgstr "空后端"
 
-#: events.py:5 permissions.py:5 queues.py:6 settings.py:10
+#: events.py:5 permissions.py:5 queues.py:7 settings.py:10
 msgid "Mailing"
 msgstr "邮件"
 
 #: events.py:8
 msgid "Email sent"
-msgstr ""
+msgstr "邮件已发送"
 
 #: forms.py:60 forms.py:120
 msgid ""
@@ -65,7 +66,7 @@ msgstr "邮件配置文件"
 
 #: forms.py:77
 msgid "The driver to use when sending emails."
-msgstr ""
+msgstr "发送电子邮件时使用的驱动程序。"
 
 #: forms.py:78 models.py:69
 msgid "Backend"
@@ -139,7 +140,7 @@ msgstr "文档链接：{{document}}"
 
 #: mailers.py:19 mailers.py:108
 msgid "From"
-msgstr ""
+msgstr "发送地址"
 
 #: mailers.py:22 mailers.py:111
 msgid ""
@@ -291,7 +292,7 @@ msgstr "查看邮件配置文件"
 msgid "Use a mailing profile"
 msgstr "使用邮件配置文件"
 
-#: queues.py:8
+#: queues.py:11
 msgid "Send document"
 msgstr "发送文档"
 

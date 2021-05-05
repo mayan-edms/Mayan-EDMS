@@ -18,3 +18,10 @@ class ResolverPipelineError(Exception):
     and nothing new was returned. This means that the requested
     attribute does not exists.
     """
+
+
+class NonUniqueError(BaseCommonException):
+    """
+    Raised when attempting to add duplicate values to a type that expects
+    them to be unique.
+    """

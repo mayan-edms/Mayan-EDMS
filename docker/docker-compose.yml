@@ -141,32 +141,41 @@ services:
         bind:
           propagation: shared
 
-  # Run a separate worker servicing the fast queues
-  worker_fast:
+  # Run a separate class A worker
+  worker_a:
     <<: *mayan-container
     command:
       - run_worker
       - fast
     profiles:
-      - extra_worker_fast
+      - extra_worker_a
 
-  # Run a separate worker servicing the medium queues
-  worker_medium:
+  # Run a separate class B worker
+  worker_b:
     <<: *mayan-container
     command:
       - run_worker
       - medium
     profiles:
-      - extra_worker_medium
+      - extra_worker_b
 
-  # Run a separate worker servicing the slow queues
-  worker_slow:
+  # Run a separate class C worker
+  worker_c:
+    <<: *mayan-container
+    command:
+      - run_worker
+      - medium
+    profiles:
+      - extra_worker_c
+
+  # Run a separate class D worker
+  worker_d:
     <<: *mayan-container
     command:
       - run_worker
       - slow
     profiles:
-      - extra_worker_slow
+      - extra_worker_d
 
   # Optional services
 

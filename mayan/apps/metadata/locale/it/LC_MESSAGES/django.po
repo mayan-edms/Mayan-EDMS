@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -302,11 +302,11 @@ msgstr "Cancella il tipo di metadato"
 msgid "View metadata types"
 msgstr "Visualizza il tipo di metadato"
 
-#: queues.py:10
+#: queues.py:11
 msgid "Remove metadata type"
 msgstr "Rimuovi il tipo di metadati"
 
-#: queues.py:14
+#: queues.py:15
 msgid "Add required metadata type"
 msgstr "Aggiungi il tipo di metadati richiesto"
 

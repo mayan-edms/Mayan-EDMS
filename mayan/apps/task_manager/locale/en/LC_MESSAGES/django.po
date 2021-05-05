@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,43 +20,43 @@ msgstr ""
 msgid "Task manager"
 msgstr ""
 
-#: apps.py:78
+#: apps.py:83
 msgid "Label"
 msgstr ""
 
-#: apps.py:82
+#: apps.py:87
 msgid "Name"
 msgstr ""
 
-#: apps.py:87
+#: apps.py:92
 msgid "Default queue?"
 msgstr ""
 
-#: apps.py:92
+#: apps.py:97
 msgid "Is transient?"
 msgstr ""
 
-#: apps.py:96
+#: apps.py:101
 msgid "Type"
 msgstr ""
 
-#: apps.py:101
+#: apps.py:106
 msgid "Start time"
 msgstr ""
 
-#: apps.py:105
+#: apps.py:110
 msgid "Host"
 msgstr ""
 
-#: apps.py:109
+#: apps.py:114
 msgid "Arguments"
 msgstr ""
 
-#: apps.py:113
+#: apps.py:118
 msgid "Keyword arguments"
 msgstr ""
 
-#: apps.py:117
+#: apps.py:122
 msgid "Worker process ID"
 msgstr ""
 

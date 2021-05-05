@@ -1,5 +1,6 @@
 import os
 
+from django.conf import settings
 from django.template import loader
 from django.template.base import Template
 from django.template.context import Context
@@ -9,11 +10,13 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.serialization import yaml_dump, yaml_load
 from mayan.apps.task_manager.classes import Worker
-from mayan.apps.task_manager.settings import (
-    setting_celery_broker_url, setting_celery_result_backend
+from mayan.settings.literals import (
+    DEFAULT_DIRECTORY_INSTALLATION, DEFAULT_USER_SETTINGS_FOLDER,
+    GUNICORN_JITTER, GUNICORN_MAX_REQUESTS, GUNICORN_TIMEOUT,
+    GUNICORN_WORKER_CLASS, GUNICORN_WORKERS
 )
 
-from .literals import DEFAULT_GUNICORN_WORKER_CLASS
+from .utils import load_env_file
 
 
 class Variable:
@@ -123,73 +126,79 @@ class PlatformTemplate:
             )
 
 
+class PlatformTemplateDockerEntrypoint(PlatformTemplate):
+    label = _('Template for entrypoint.sh file inside a Docker image.')
+    name = 'docker_entrypoint'
+
+    def get_context(self):
+        context = load_env_file()
+        context.update({'workers': Worker.all()})
+        return context
+
+
+class PlatformTemplateDockerSupervisord(PlatformTemplate):
+    label = _('Template for Supervisord inside a Docker image.')
+    name = 'docker_supervisord'
+
+    def get_context(self):
+        return {'workers': Worker.all()}
+
+
 class PlatformTemplateSupervisord(PlatformTemplate):
     label = _('Template for Supervisord.')
     name = 'supervisord'
-    settings = (
-        setting_celery_broker_url, setting_celery_result_backend
-    )
-    variables = (
-        Variable(
-            name='GUNICORN_WORKER_CLASS',
-            default=DEFAULT_GUNICORN_WORKER_CLASS,
-            environment_name='MAYAN_GUNICORN_WORKER_CLASS'
-        ),
-        Variable(
-            name='GUNICORN_WORKERS', default=2,
-            environment_name='MAYAN_GUNICORN_WORKERS'
-        ),
-        Variable(
-            name='GUNICORN_TIMEOUT', default=120,
-            environment_name='MAYAN_GUNICORN_TIMEOUT'
-        ),
-        Variable(
-            name='INSTALLATION_PATH', default='/opt/mayan-edms',
-            environment_name='MAYAN_INSTALLATION_PATH'
-        ),
-        YAMLVariable(
-            name='ALLOWED_HOSTS',
-            default=['*'],
-            environment_name='MAYAN_ALLOWED_HOSTS'
-        ),
-        YAMLVariable(
-            name='CELERY_BROKER_URL',
-            default='redis://:mayanredispassword@127.0.0.1:6379/0',
-            environment_name='MAYAN_CELERY_BROKER_URL'
-        ),
-        YAMLVariable(
-            name='CELERY_RESULT_BACKEND',
-            default='redis://:mayanredispassword@127.0.0.1:6379/1',
-            environment_name='MAYAN_CELERY_RESULT_BACKEND'
-        ),
-        YAMLVariable(
-            name='DATABASES',
-            default={
-                'default': {
-                    'ENGINE': 'django.db.backends.postgresql',
-                    'NAME': 'mayan', 'PASSWORD': 'mayanuserpass',
-                    'USER': 'mayan', 'HOST': '127.0.0.1'
-                }
-            },
-            environment_name='MAYAN_DATABASES'
-        ),
-        YAMLVariable
-        (
-            name='MEDIA_ROOT', default='/opt/mayan-edms/media',
-            environment_name='MAYAN_MEDIA_ROOT'
-        ),
-    )
+
+    def __init__(self):
+        self.variables = (
+            Variable(
+                name='GUNICORN_JITTER',
+                default=GUNICORN_JITTER,
+                environment_name='MAYAN_GUNICORN_JITTER'
+            ),
+            Variable(
+                name='GUNICORN_MAX_REQUESTS',
+                default=GUNICORN_MAX_REQUESTS,
+                environment_name='MAYAN_GUNICORN_MAX_REQUESTS'
+            ),
+            Variable(
+                name='GUNICORN_TIMEOUT',
+                default=GUNICORN_TIMEOUT,
+                environment_name='MAYAN_GUNICORN_TIMEOUT'
+            ),
+            Variable(
+                name='GUNICORN_WORKER_CLASS',
+                default=GUNICORN_WORKER_CLASS,
+                environment_name='MAYAN_GUNICORN_WORKER_CLASS'
+            ),
+            Variable(
+                name='GUNICORN_WORKERS',
+                default=GUNICORN_WORKERS,
+                environment_name='MAYAN_GUNICORN_WORKERS'
+            ),
+            Variable(
+                name='GUNICORN_TIMEOUT',
+                default=GUNICORN_TIMEOUT,
+                environment_name='MAYAN_GUNICORN_TIMEOUT'
+            ),
+            Variable(
+                name='INSTALLATION_PATH', default=DEFAULT_DIRECTORY_INSTALLATION,
+                environment_name='MAYAN_INSTALLATION_PATH'
+            ),
+            Variable(
+                name='USER_SETTINGS_FOLDER',
+                default=DEFAULT_USER_SETTINGS_FOLDER,
+                environment_name='MAYAN_USER_SETTINGS_FOLDER'
+            ),
+            YAMLVariable(
+                name='MEDIA_ROOT', default=settings.MEDIA_ROOT,
+                environment_name='MAYAN_MEDIA_ROOT'
+            ),
+        )
 
     def get_context(self):
-        return {'workers': Worker.all()}
-
-
-class PlatformTemplateSupervisordDocker(PlatformTemplate):
-    label = _('Template for Supervisord inside a Docker image.')
-    name = 'supervisord_docker'
-
-    def get_context(self):
-        return {'workers': Worker.all()}
+        return {
+            'workers': Worker.all()
+        }
 
 
 class PlatformTemplateWorkerQueues(PlatformTemplate):
@@ -217,6 +226,7 @@ class PlatformTemplateWorkerQueues(PlatformTemplate):
         }
 
 
+PlatformTemplate.register(klass=PlatformTemplateDockerEntrypoint)
+PlatformTemplate.register(klass=PlatformTemplateDockerSupervisord)
 PlatformTemplate.register(klass=PlatformTemplateSupervisord)
-PlatformTemplate.register(klass=PlatformTemplateSupervisordDocker)
 PlatformTemplate.register(klass=PlatformTemplateWorkerQueues)

@@ -51,8 +51,8 @@ class ThemeCreateView(SingleObjectCreateView):
     )
     view_permission = permission_theme_create
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
 
 class ThemeDeleteView(SingleObjectDeleteView):
@@ -85,8 +85,8 @@ class ThemeEditView(SingleObjectEditView):
             'title': _('Edit theme: %s') % self.object
         }
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
 
 class ThemeListView(SingleObjectListView):

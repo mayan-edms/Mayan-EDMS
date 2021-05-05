@@ -9,16 +9,16 @@
 # 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2021
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2021
 # Yves Dubois <ydubois@gmail.com>, 2021
-# Frédéric Sheedy <sheedf@gmail.com>, 2021
 # Benoît GROUSSET <benoit@grousset.xyz>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Benoît GROUSSET <benoit@grousset.xyz>, 2021\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -85,7 +85,7 @@ msgstr "Asset créé"
 
 #: events.py:11
 msgid "Asset edited"
-msgstr ""
+msgstr "Élément modifié"
 
 #: forms.py:16
 msgid "Preview"
@@ -115,7 +115,7 @@ msgstr "Transformations enregistrées"
 
 #: links.py:35 views.py:39
 msgid "Create asset"
-msgstr ""
+msgstr "Créer un élément"
 
 #: links.py:38 links.py:44 links.py:64
 msgid "Delete"
@@ -127,7 +127,7 @@ msgstr "Modifier"
 
 #: links.py:56 models.py:62 storages.py:21 views.py:143
 msgid "Assets"
-msgstr ""
+msgstr "Éléments"
 
 #: links.py:77
 msgid "Transformations"
@@ -146,6 +146,8 @@ msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
 msgstr ""
+"Cette valeur sera utilisée lors du référencement de cet élément. Ne peut "
+"contenir que des lettres, des chiffres et des traits de soulignement."
 
 #: models.py:52
 msgid "Internal name"
@@ -157,7 +159,7 @@ msgstr "Fichier"
 
 #: models.py:61
 msgid "Asset"
-msgstr ""
+msgstr "Élément"
 
 #: models.py:157 models.py:228
 msgid "Name"
@@ -217,23 +219,23 @@ msgstr "Transformations de calque"
 
 #: models.py:249
 msgid "Unknown transformation class"
-msgstr ""
+msgstr "Classe de transformation inconnue"
 
 #: permissions.py:8
 msgid "Create new assets"
-msgstr ""
+msgstr "Créer de nouveaux éléments"
 
 #: permissions.py:11
 msgid "Delete assets"
-msgstr ""
+msgstr "Supprimer les éléments"
 
 #: permissions.py:14
 msgid "Edit assets"
-msgstr ""
+msgstr "Modifier les éléments"
 
 #: permissions.py:17
 msgid "View existing assets"
-msgstr ""
+msgstr "Afficher les éléments existants"
 
 #: permissions.py:21
 msgid "Create new transformations"
@@ -251,9 +253,9 @@ msgstr "Modifier des transformations"
 msgid "View existing transformations"
 msgstr "Afficher les transformations existantes"
 
-#: queues.py:11
+#: queues.py:12
 msgid "Generate a image of an asset."
-msgstr ""
+msgstr "Générez une image d'un élément."
 
 #: settings.py:28
 msgid ""
@@ -266,6 +268,9 @@ msgid ""
 "Time in seconds that the browser should cache the supplied asset. The "
 "default of 31559626 seconds correspond to 1 year."
 msgstr ""
+"Durée en secondes pendant laquelle le navigateur doit mettre en cache "
+"l'élément fourni. La valeur par défaut de 31559626 secondes correspond à 1 "
+"an."
 
 #: settings.py:44
 msgid ""
@@ -297,6 +302,8 @@ msgid ""
 "Unable to initialize the converter asset storage. Check the settings {} and "
 "{} for formatting errors."
 msgstr ""
+"Impossible d'initialiser le stockage des ressources du convertisseur. "
+"Vérifiez les paramètres {} et {} pour les erreurs de formatage."
 
 #: storages.py:28
 msgid ""
@@ -306,19 +313,19 @@ msgstr ""
 
 #: storages.py:34
 msgid "Assets cache"
-msgstr ""
+msgstr "Cache des éléments"
 
 #: transformations.py:196
 msgid "Paste an asset"
-msgstr ""
+msgstr "Coller un élément"
 
 #: transformations.py:247
 msgid "Paste an asset (percents coordinates)"
-msgstr ""
+msgstr "Coller un élément (coordonnées en pourcentage)"
 
 #: transformations.py:290
 msgid "Paste an asset as watermark"
-msgstr ""
+msgstr "Coller un élément sous forme de filigrane"
 
 #: transformations.py:350
 msgid "Crop"
@@ -379,43 +386,43 @@ msgstr "Agrandir"
 #: views.py:53
 #, python-format
 msgid "Delete request performed on %(count)d asset"
-msgstr ""
+msgstr "Demande de suppression effectuée pour %(count)d élément"
 
 #: views.py:55
 #, python-format
 msgid "Delete request performed on %(count)d assets"
-msgstr ""
+msgstr "Demande de suppression effectuée pour %(count)d éléments"
 
 #: views.py:62
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Supprimer l&#39;élément sélectionné?"
+msgstr[1] "Supprimer les éléments sélectionnés?"
 
 #: views.py:72
 #, python-format
 msgid "Delete asset: %s?"
-msgstr ""
+msgstr "Supprimer l'élément: %s?"
 
 #: views.py:83
 #, python-format
 msgid "Asset \"%s\" deleted successfully."
-msgstr ""
+msgstr "L'élément \"%s\" a été supprimé avec succès."
 
 #: views.py:88
 #, python-format
 msgid "Error deleting asset \"%(asset)s\": %(error)s"
-msgstr ""
+msgstr "Erreur lors de la suppression de l'élément \"%(asset)s\": %(error)s"
 
 #: views.py:103
 #, python-format
 msgid "Details asset: %s"
-msgstr ""
+msgstr "Détails de l'élément: %s"
 
 #: views.py:117
 #, python-format
 msgid "Edit asset: %s"
-msgstr ""
+msgstr "Modifier l'élément: %s"
 
 #: views.py:139
 msgid ""
@@ -425,7 +432,7 @@ msgstr ""
 
 #: views.py:142
 msgid "No assets available"
-msgstr ""
+msgstr "Aucun élément disponible"
 
 #: views.py:167
 #, python-format
@@ -491,15 +498,15 @@ msgstr ""
 
 #: workflow_actions.py:32
 msgid "Transformation class"
-msgstr ""
+msgstr "Classe de transformation"
 
 #: workflow_actions.py:37
 msgid "Type of transformation to add."
-msgstr ""
+msgstr "Type de transformation à ajouter."
 
 #: workflow_actions.py:42
 msgid "Transformation arguments"
-msgstr ""
+msgstr "Arguments pour la transformation"
 
 #: workflow_actions.py:51
 msgid "Add transformation"

@@ -76,9 +76,9 @@ class FileLock(LockingBackend):
                 file_locks = {}
 
             if name in file_locks:
-                # Someone already got this lock, check to see if it is expired
+                # Someone already got this lock, check to see if it is expired.
                 if file_locks[name]['expiration'] and time.time() > file_locks[name]['expiration']:
-                    # It expires and has expired, we re-acquired it
+                    # It expires and has expired, we re-acquired it.
                     file_locks[name] = self._get_lock_dictionary()
                 else:
                     lock.release()

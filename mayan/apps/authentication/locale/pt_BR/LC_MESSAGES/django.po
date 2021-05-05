@@ -6,18 +6,19 @@
 # Translators:
 # Roberto Rosario, 2021
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2021
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
 # Aline Freitas <aline@alinefreitas.com.br>, 2021
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2021
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
+# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
-"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +26,7 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:32 events.py:6 permissions.py:6 settings.py:10
+#: apps.py:35 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr "Autenticação"
 
@@ -36,6 +37,14 @@ msgstr "Uso de outro usuário começou"
 #: events.py:13
 msgid "User impersonation started"
 msgstr "Uso de outro usuário terminou"
+
+#: events.py:16
+msgid "User logged in"
+msgstr "Usuário logado"
+
+#: events.py:19
+msgid "User logged out"
+msgstr "Usuário saiu"
 
 #: forms.py:20
 msgid "Email"
@@ -87,7 +96,7 @@ msgstr "Usar o usuário"
 
 #: links.py:39
 msgid "Impersonate"
-msgstr ""
+msgstr "Personificar"
 
 #: links.py:44 links.py:48
 msgid "Set password"
@@ -128,6 +137,8 @@ msgid ""
 "                Impersonating user \"%(user)s\".\n"
 "            "
 msgstr ""
+"\n"
+"Utilizando o usuário \"%(user)s\"."
 
 #: templates/authentication/app/viewport.html:14
 msgid "Click here when finished"
@@ -197,8 +208,8 @@ msgstr "Solicitação de alteração de senha realizada em %(count)d usuários"
 #: views.py:179
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Alterar senha de usuário"
+msgstr[1] "Alterar senhas de usuários"
 
 #: views.py:189
 #, python-format
@@ -218,4 +229,4 @@ msgstr "Erro de redefinição de senha para o usuário \"%(user)s\": %(error)s "
 #: views.py:278
 #, python-format
 msgid "Impersonate user: %s"
-msgstr ""
+msgstr "Personificação de usuário: %s"

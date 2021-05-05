@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:57+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: OLeg Si <olegsm35@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:36 events.py:6 links.py:34 models.py:32 permissions.py:5
+#: apps.py:36 events.py:6 links.py:34 models.py:36 permissions.py:5
 #: views.py:136
 msgid "Quotas"
 msgstr "Квоты"
@@ -50,7 +50,7 @@ msgstr "Квота создана"
 msgid "Quota edited"
 msgstr "Квота изменена"
 
-#: forms.py:15 models.py:55
+#: forms.py:15 models.py:58
 msgid "Backend"
 msgstr "Бэкэнд"
 
@@ -142,39 +142,39 @@ msgstr "все пользователи"
 msgid "groups: %(groups)s, users: %(users)s"
 msgstr "группы: %(groups)s, пользователи: %(users)s"
 
-#: models.py:18
+#: models.py:22
 msgid "The dotted Python path to the backend class."
 msgstr "Разделенный точками путь Python к классу бэкэнда."
 
-#: models.py:19
+#: models.py:23
 msgid "Backend path"
 msgstr "Путь к бэкэнду"
 
-#: models.py:22
+#: models.py:26
 msgid "Backend data"
 msgstr "Параметры бэкэнда"
 
-#: models.py:26
+#: models.py:30
 msgid "Allow quick disable or enable of the quota."
 msgstr "Разрешить быстрое отключение или включение квоты."
 
-#: models.py:27
+#: models.py:31
 msgid "Enabled"
 msgstr "Включено"
 
-#: models.py:31
+#: models.py:35
 msgid "Quota"
 msgstr "Квота"
 
-#: models.py:54
+#: models.py:57
 msgid "Driver used for this quota entry."
 msgstr "Драйвер квоты для этой записи."
 
-#: models.py:59
+#: models.py:62
 msgid "Arguments"
 msgstr "Аргументы"
 
-#: models.py:63
+#: models.py:66
 msgid "Usage"
 msgstr "Использование"
 

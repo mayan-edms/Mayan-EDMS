@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:30 apps.py:56 links.py:14
+#: apps.py:30 apps.py:56 links.py:14 queues.py:9
 msgid "Duplicates"
 msgstr "Doublons"
 
@@ -31,23 +31,23 @@ msgstr "Doublons"
 msgid "Duplicate backend"
 msgstr ""
 
-#: classes.py:83
+#: classes.py:91
 msgid "Null backend"
 msgstr "Back-back sans valeur"
 
 #: duplicate_backends.py:9
 msgid "Exact document file checksum"
-msgstr ""
+msgstr "Somme de contrôle du document"
 
-#: duplicate_backends.py:28
+#: duplicate_backends.py:32
 msgid "Exact document label"
 msgstr ""
 
-#: links.py:18 models.py:40 views.py:77
+#: links.py:18 models.py:41 views.py:77
 msgid "Duplicated documents"
 msgstr "Documents doublons"
 
-#: links.py:24 queues.py:13
+#: links.py:24 queues.py:23
 msgid "Duplicated document scan"
 msgstr "Numérisations de documents doublons"
 
@@ -63,15 +63,15 @@ msgstr ""
 msgid "Document"
 msgstr "Document"
 
-#: models.py:47
+#: models.py:49
 msgid "Duplicated backend entry"
 msgstr ""
 
-#: models.py:48
+#: models.py:50
 msgid "Duplicated backend entries"
 msgstr ""
 
-#: queues.py:8
+#: queues.py:14
 msgid "Clean empty duplicate lists"
 msgstr "Nettoyer les listes des doublons vides "
 

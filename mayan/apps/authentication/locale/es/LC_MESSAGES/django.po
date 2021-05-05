@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:32 events.py:6 permissions.py:6 settings.py:10
+#: apps.py:35 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr "Autenticación  "
 
@@ -32,6 +32,14 @@ msgstr "Impersonalización de usuario finalizada"
 #: events.py:13
 msgid "User impersonation started"
 msgstr "Se comenzó la impersonalización de usuario"
+
+#: events.py:16
+msgid "User logged in"
+msgstr "Usuario conectado"
+
+#: events.py:19
+msgid "User logged out"
+msgstr "Usuario desconectado"
 
 #: forms.py:20
 msgid "Email"

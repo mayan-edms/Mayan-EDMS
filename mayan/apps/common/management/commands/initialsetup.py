@@ -6,7 +6,9 @@ from django.core import management
 from django.core.management.utils import get_random_secret_key
 
 import mayan
-from mayan.settings.literals import SECRET_KEY_FILENAME, SYSTEM_DIR
+from mayan.settings.literals import (
+    DEFAULT_USER_SETTINGS_FOLDER, SECRET_KEY_FILENAME, SYSTEM_DIR
+)
 
 from ...signals import signal_post_initial_setup, signal_pre_initial_setup
 
@@ -32,7 +34,9 @@ class Command(management.BaseCommand):
 
     def initialize_system(self, force=False):
         system_path = os.path.join(settings.MEDIA_ROOT, SYSTEM_DIR)
-        settings_path = os.path.join(settings.MEDIA_ROOT, 'mayan_settings')
+        settings_path = os.path.join(
+            settings.MEDIA_ROOT, DEFAULT_USER_SETTINGS_FOLDER
+        )
         secret_key_file_path = os.path.join(system_path, SECRET_KEY_FILENAME)
 
         if not os.path.exists(settings.MEDIA_ROOT) or force:
@@ -46,12 +50,12 @@ class Command(management.BaseCommand):
             # Touch media/__init__.py
             Command.touch(os.path.join(settings.MEDIA_ROOT, '__init__.py'))
 
-            # Create media/settings
+            # Create user settings folder
             try:
                 os.makedirs(settings_path)
             except OSError as exception:
                 if exception.errno == errno.EEXIST and force:
-                    pass
+                    """Folder already exists. Ignore."""
 
             # Touch media/settings/__init__.py
             Command.touch(os.path.join(settings_path, '__init__.py'))
@@ -93,4 +97,5 @@ class Command(management.BaseCommand):
             )
 
         management.call_command(command_name='createautoadmin')
+        management.call_command(command_name='savesettings')
         signal_post_initial_setup.send(sender=self)

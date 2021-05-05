@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:25 events.py:6 permissions.py:5
+#: apps.py:27 events.py:6 permissions.py:5 queues.py:8 settings.py:10
 msgid "File caching"
 msgstr "Кеширане на файлове"
 
@@ -39,6 +39,10 @@ msgstr "Кешът е редактиран"
 msgid "Cache purged"
 msgstr "Кешът се прочисти"
 
+#: events.py:19
+msgid "Cache partition purged"
+msgstr "Делът на кеша е изчистен"
+
 #: links.py:24
 msgid "File caches"
 msgstr "Файлови кешове"
@@ -47,83 +51,87 @@ msgstr "Файлови кешове"
 msgid "Purge cache"
 msgstr "Прочистване на кеша"
 
-#: models.py:30
+#: models.py:41
 msgid "Internal name of the defined storage for this cache."
 msgstr "Вътрешно име на определеното хранилище за този кеш."
 
-#: models.py:31
+#: models.py:42
 msgid "Defined storage name"
 msgstr "Име на определено хранилище"
 
-#: models.py:34
+#: models.py:45
 msgid "Maximum size of the cache in bytes."
 msgstr "Максимален размер на кеша в байтове."
 
-#: models.py:36 models.py:62
+#: models.py:47 models.py:73
 msgid "Maximum size"
 msgstr "Максимален размер"
 
-#: models.py:40 models.py:144
+#: models.py:51 models.py:206
 msgid "Cache"
 msgstr "Кеш"
 
-#: models.py:41
+#: models.py:52
 msgid "Caches"
 msgstr "Кешове"
 
-#: models.py:60
+#: models.py:71
 msgid "Size at which the cache will start deleting old entries."
 msgstr "Размер, при който кешът ще започне да изтрива стари записи."
 
-#: models.py:69
+#: models.py:80
 msgid "Unknown"
 msgstr "Неизвестен"
 
-#: models.py:86
+#: models.py:97
 msgid "Current size"
 msgstr "Текущ размер"
 
-#: models.py:87
+#: models.py:98
 msgid "Current size of the cache."
 msgstr "Текущ размер на кеша."
 
-#: models.py:147
+#: models.py:209
 msgid "Name"
 msgstr "Име"
 
-#: models.py:152 models.py:239
+#: models.py:214 models.py:305
 msgid "Cache partition"
 msgstr "Раздел на кеша"
 
-#: models.py:153
+#: models.py:215
 msgid "Cache partitions"
 msgstr "Раздели на кеша"
 
-#: models.py:242
+#: models.py:308
 msgid "Date time"
 msgstr "Дата час"
 
-#: models.py:244
+#: models.py:310
 msgid "Filename"
 msgstr "Име на файл"
 
-#: models.py:246
+#: models.py:312
 msgid "File size"
 msgstr "Размер на файла"
 
-#: models.py:252
+#: models.py:316
+msgid "Times this cache partition file has been accessed."
+msgstr ""
+
+#: models.py:323
 msgid "Cache partition file"
 msgstr "Файл за раздели на кеша"
 
-#: models.py:253
+#: models.py:324
 msgid "Cache partition files"
-msgstr "Флове с раздели на кешове"
+msgstr "Файлове с раздели на кешове"
 
 #: permissions.py:8
 msgid "Purge an object cache"
-msgstr ""
+msgstr "Изчистете кеша на обекта"
 
-#: permissions.py:11 queues.py:7
+#: permissions.py:11 queues.py:18
 msgid "Purge a file cache"
 msgstr "Прочистете кеш на файлове"
 
@@ -131,14 +139,26 @@ msgstr "Прочистете кеш на файлове"
 msgid "View a file cache"
 msgstr "Преглед на файлов кеш"
 
-#: queues.py:11
+#: queues.py:13
 msgid "Purge a file cache partition"
+msgstr "Изчистете дяла на кеша на файлове"
+
+#: settings.py:15
+msgid ""
+"Number of times a cache will retry failed attempts to prune files to free up"
+" space for new a file being requested, before giving up."
+msgstr ""
+
+#: settings.py:23
+msgid ""
+"Number of times a cache will attempt to prune files to free up space for new"
+" a file being requested, before giving up."
 msgstr ""
 
 #: views.py:43
 #, python-format
 msgid "Details cache: %s"
-msgstr ""
+msgstr "Кеш с данни: %s"
 
 #: views.py:54
 msgid "File caches list"
@@ -147,14 +167,14 @@ msgstr "Списък на файловите кешове"
 #: views.py:70
 #, python-format
 msgid "Purge cache partitions of \"%s\"?"
-msgstr ""
+msgstr "Да се прочистят ли кешовите дялове на &quot;%s&quot;?"
 
-#: views.py:84
+#: views.py:86
 msgid "Object cache partitions submitted for purging."
-msgstr ""
+msgstr "Кешови дялове за обекта са изпратени за прочистване."
 
-#: views.py:101
+#: views.py:103
 msgid "Submit the selected cache for purging?"
 msgid_plural "Submit the selected caches for purging?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Изпратете избрания кеш за прочистване?"
+msgstr[1] "Да изпратите ли избраните кешове за прочистване?"

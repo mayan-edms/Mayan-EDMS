@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:57+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: WM Shinkada <shinkadawasim@gmail.com>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -28,43 +28,43 @@ msgstr ""
 msgid "Task manager"
 msgstr "مدير المهام "
 
-#: apps.py:78
+#: apps.py:83
 msgid "Label"
 msgstr "العنوان"
 
-#: apps.py:82
+#: apps.py:87
 msgid "Name"
 msgstr "اسم"
 
-#: apps.py:87
+#: apps.py:92
 msgid "Default queue?"
 msgstr "قائمة الانتظار"
 
-#: apps.py:92
+#: apps.py:97
 msgid "Is transient?"
 msgstr "هل تم الإضافة؟"
 
-#: apps.py:96
+#: apps.py:101
 msgid "Type"
 msgstr "النوع"
 
-#: apps.py:101
+#: apps.py:106
 msgid "Start time"
 msgstr "وقت البداية"
 
-#: apps.py:105
+#: apps.py:110
 msgid "Host"
 msgstr "مضيف"
 
-#: apps.py:109
+#: apps.py:114
 msgid "Arguments"
 msgstr "المحددات"
 
-#: apps.py:113
+#: apps.py:118
 msgid "Keyword arguments"
 msgstr "المحددات الرئيسية"
 
-#: apps.py:117
+#: apps.py:122
 msgid "Worker process ID"
 msgstr "رقم العمل للعميل"
 

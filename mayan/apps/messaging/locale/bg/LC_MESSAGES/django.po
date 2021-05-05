@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: apps.py:34 events.py:5 permissions.py:5
 msgid "Messaging"
-msgstr ""
+msgstr "Съобщения"
 
 #: apps.py:56
 msgid "None"
@@ -32,7 +32,7 @@ msgstr "Няма"
 
 #: apps.py:62
 msgid "Sender"
-msgstr ""
+msgstr "Подател"
 
 #: events.py:8
 msgid "Message created"
@@ -56,11 +56,11 @@ msgstr "Изтрийте"
 
 #: links.py:45 links.py:49
 msgid "Mark as read"
-msgstr ""
+msgstr "Означете като прочетено"
 
 #: links.py:53
 msgid "Mark all as read"
-msgstr ""
+msgstr "Означете всички като прочетени"
 
 #: models.py:30
 msgid "User"
@@ -76,11 +76,11 @@ msgstr "Относно"
 
 #: models.py:37
 msgid "The actual content of the message."
-msgstr ""
+msgstr "Действителното съдържание на съобщението."
 
 #: models.py:42
 msgid "This field determines if the message has been read or not."
-msgstr ""
+msgstr "Това поле определя дали съобщението е прочетено или не."
 
 #: models.py:43
 msgid "Read"
@@ -88,11 +88,11 @@ msgstr "Прочети"
 
 #: models.py:47
 msgid "Date and time of the message creation."
-msgstr ""
+msgstr "Дата и час на създаване на съобщението."
 
 #: models.py:48
 msgid "Creation date and time"
-msgstr ""
+msgstr "Дата и час на създаване"
 
 #: models.py:53
 msgid "Message"
@@ -131,89 +131,93 @@ msgstr "Изпрати"
 #, python-format
 msgid "Error deleting message \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Грешка при изтриване на съобщение &quot;%(instance)s&quot;; %(exception)s"
 
 #: views.py:50
 #, python-format
 msgid "Message \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Съобщението &quot;%(object)s&quot; беше изтрито успешно."
 
 #: views.py:51
 #, python-format
 msgid "%(count)d message deleted successfully."
-msgstr ""
+msgstr "%(count)d съобщение беше изтрито успешно."
 
 #: views.py:52
 #, python-format
 msgid "%(count)d messages deleted successfully."
-msgstr ""
+msgstr "%(count)d съобщения бяха изтрити успешно."
 
 #: views.py:53
 #, python-format
 msgid "Delete message: %(object)s."
-msgstr ""
+msgstr "Изтриване на съобщение: %(object)s."
 
 #: views.py:54
 #, python-format
 msgid "Delete the %(count)d selected message."
-msgstr ""
+msgstr "Изтрийте %(count)dизбрано съобщение."
 
 #: views.py:55
 #, python-format
 msgid "Delete the %(count)d selected messages."
-msgstr ""
+msgstr "Изтрийте %(count)dизбрани съобщения."
 
 #: views.py:88
 #, python-format
 msgid "Details of message: %s"
-msgstr ""
+msgstr "Подробности за съобщението: %s"
 
 #: views.py:116
 msgid "Here you will find text messages from other users or from the system."
 msgstr ""
+"Тук ще намерите текстови съобщения от други потребители или от системата."
 
 #: views.py:119
 msgid "There are no messages"
-msgstr ""
+msgstr "Няма съобщения"
 
 #: views.py:130
 #, python-format
 msgid "Error marking message \"%(instance)s\" as read; %(exception)s"
 msgstr ""
+"Грешка при маркирането на съобщението „%(instance)s“ като прочетено; "
+"%(exception)s"
 
 #: views.py:136
 #, python-format
 msgid "Message \"%(object)s\" marked as read successfully."
-msgstr ""
+msgstr "Съобщението „%(object)s“ е отбелязано като прочетено успешно."
 
 #: views.py:139
 #, python-format
 msgid "%(count)d message marked as read successfully."
-msgstr ""
+msgstr "%(count)d съобщение, означено като успешно прочетено."
 
 #: views.py:142
 #, python-format
 msgid "%(count)d messages marked as read successfully."
-msgstr ""
+msgstr "%(count)d съобщения, отбелязани като прочетени успешно."
 
 #: views.py:144
 #, python-format
 msgid "Mark the message \"%(object)s\" as read."
-msgstr ""
+msgstr "Маркирайте съобщението &quot;%(object)s&quot; като прочетено."
 
 #: views.py:145
 #, python-format
 msgid "Mark the %(count)d selected message as read."
-msgstr ""
+msgstr "Маркирайте %(count)d избрано съобщение като прочетено."
 
 #: views.py:146
 #, python-format
 msgid "Mark the %(count)d selected messages as read."
-msgstr ""
+msgstr "Маркирайте %(count)d избрани съобщения като прочетени."
 
 #: views.py:172
 msgid "Mark all message as read?"
-msgstr ""
+msgstr "Да се означат ли всички съобщения като прочетени?"
 
 #: views.py:188
 msgid "All messages marked as read."
-msgstr ""
+msgstr "Всички съобщения са означени като прочетени."

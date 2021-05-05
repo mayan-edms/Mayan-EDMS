@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2020-04-02 06:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:30 apps.py:56 links.py:14
+#: apps.py:30 apps.py:56 links.py:14 queues.py:9
 msgid "Duplicates"
 msgstr ""
 
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Duplicate backend"
 msgstr ""
 
-#: classes.py:83
+#: classes.py:91
 msgid "Null backend"
 msgstr ""
 
@@ -34,15 +34,15 @@ msgstr ""
 msgid "Exact document file checksum"
 msgstr ""
 
-#: duplicate_backends.py:28
+#: duplicate_backends.py:32
 msgid "Exact document label"
 msgstr ""
 
-#: links.py:18 models.py:40 views.py:77
+#: links.py:18 models.py:41 views.py:77
 msgid "Duplicated documents"
 msgstr ""
 
-#: links.py:24 queues.py:13
+#: links.py:24 queues.py:23
 msgid "Duplicated document scan"
 msgstr ""
 
@@ -58,15 +58,15 @@ msgstr ""
 msgid "Document"
 msgstr ""
 
-#: models.py:47
+#: models.py:49
 msgid "Duplicated backend entry"
 msgstr ""
 
-#: models.py:48
+#: models.py:50
 msgid "Duplicated backend entries"
 msgstr ""
 
-#: queues.py:8
+#: queues.py:14
 msgid "Clean empty duplicate lists"
 msgstr ""
 

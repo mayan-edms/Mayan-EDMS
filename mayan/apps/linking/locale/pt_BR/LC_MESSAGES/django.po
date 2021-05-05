@@ -8,14 +8,15 @@
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
 # Aline Freitas <aline@alinefreitas.com.br>, 2021
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
+# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:26+0000\n"
-"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -245,10 +246,12 @@ msgstr "Ver os links inteligentes"
 #: serializers.py:52
 msgid "Primary key of the document type to add to the smart link."
 msgstr ""
+"Chave primária do tipo de documento a ser adicionado ao link inteligente."
 
 #: serializers.py:61
 msgid "Primary key of the document type to remove from the smart link."
 msgstr ""
+"Chave primária do tipo de documento a ser removido do link inteligente."
 
 #: views.py:41
 msgid "Available smart links"

@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Link
+from mayan.apps.navigation.utils import get_cascade_condition
 
 from ..icons import (
     icon_document_type_create, icon_document_type_delete,
@@ -24,58 +25,62 @@ link_document_type_create = Link(
 link_document_type_delete = Link(
     args='resolved_object.id', icon=icon_document_type_delete,
     permissions=(permission_document_type_delete,), tags='dangerous',
-    text=_('Delete'), view='documents:document_type_delete',
+    text=_('Delete'), view='documents:document_type_delete'
 )
 link_document_type_policies = Link(
     args='resolved_object.id',
     icon=icon_document_type_policies,
     permissions=(permission_document_type_edit,),
-    text=_('Deletion policies'), view='documents:document_type_policies',
+    text=_('Deletion policies'), view='documents:document_type_policies'
 )
 link_document_type_edit = Link(
     args='resolved_object.id', icon=icon_document_type_edit,
     permissions=(permission_document_type_edit,), text=_('Edit'),
-    view='documents:document_type_edit',
+    view='documents:document_type_edit'
 )
 link_document_type_filename_create = Link(
     args='document_type.id',
     icon=icon_document_type_filename_create,
     permissions=(permission_document_type_edit,),
     text=_('Add quick label to document type'),
-    view='documents:document_type_filename_create',
+    view='documents:document_type_filename_create'
 )
 link_document_type_filename_delete = Link(
     args='resolved_object.id',
     icon=icon_document_type_filename_delete,
     permissions=(permission_document_type_edit,),
     tags='dangerous', text=_('Delete'),
-    view='documents:document_type_filename_delete',
+    view='documents:document_type_filename_delete'
 )
 link_document_type_filename_edit = Link(
     args='resolved_object.id',
     icon=icon_document_type_filename_edit,
     permissions=(permission_document_type_edit,),
-    text=_('Edit'), view='documents:document_type_filename_edit',
+    text=_('Edit'), view='documents:document_type_filename_edit'
 )
 link_document_type_filename_list = Link(
     args='resolved_object.id',
     icon=icon_document_type_filename_list,
     permissions=(permission_document_type_view,),
-    text=_('Quick labels'), view='documents:document_type_filename_list',
+    text=_('Quick labels'), view='documents:document_type_filename_list'
 )
 link_document_type_filename_generator = Link(
-    args='resolved_object.id',
-    icon=icon_document_type_filename_generator,
+    args='resolved_object.id', icon=icon_document_type_filename_generator,
     permissions=(permission_document_type_edit,),
-    text=_('Filename generation'), view='documents:document_type_filename_generator',
+    text=_('Filename generation'),
+    view='documents:document_type_filename_generator'
 )
 link_document_type_list = Link(
-    icon=icon_document_type_list,
-    permissions=(permission_document_type_view,), text=_('Document types'),
+    condition=get_cascade_condition(
+        app_label='documents', model_name='DocumentType',
+        object_permission=permission_document_type_view,
+    ), icon=icon_document_type_list, text=_('Document types'),
     view='documents:document_type_list'
 )
 link_document_type_setup = Link(
-    icon=icon_document_type_setup,
-    permissions=(permission_document_type_view,), text=_('Document types'),
+    condition=get_cascade_condition(
+        app_label='documents', model_name='DocumentType',
+        object_permission=permission_document_type_view,
+    ), icon=icon_document_type_setup, text=_('Document types'),
     view='documents:document_type_list'
 )

@@ -6,14 +6,15 @@
 # Translators:
 # Roberto Rosario, 2021
 # xisafe <root@xisafe.com>, 2021
+# bo feng <87289884@qq.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
-"Last-Translator: xisafe <root@xisafe.com>, 2021\n"
+"Last-Translator: bo feng <87289884@qq.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgstr ""
 
 #: apps.py:34 events.py:5 permissions.py:5
 msgid "Messaging"
-msgstr ""
+msgstr "消息"
 
 #: apps.py:56
 msgid "None"
@@ -31,15 +32,15 @@ msgstr "没有"
 
 #: apps.py:62
 msgid "Sender"
-msgstr ""
+msgstr "发送方"
 
 #: events.py:8
 msgid "Message created"
-msgstr ""
+msgstr "消息已创建"
 
 #: events.py:11
 msgid "Message edited"
-msgstr ""
+msgstr "消息已编辑"
 
 #: forms.py:9 models.py:38
 msgid "Body"
@@ -55,11 +56,11 @@ msgstr "删除"
 
 #: links.py:45 links.py:49
 msgid "Mark as read"
-msgstr ""
+msgstr "标记为读"
 
 #: links.py:53
 msgid "Mark all as read"
-msgstr ""
+msgstr "全部标记为读"
 
 #: models.py:30
 msgid "User"
@@ -75,11 +76,11 @@ msgstr "主题"
 
 #: models.py:37
 msgid "The actual content of the message."
-msgstr ""
+msgstr "消息的实际内容。"
 
 #: models.py:42
 msgid "This field determines if the message has been read or not."
-msgstr ""
+msgstr "此字段确定消息是否已读。"
 
 #: models.py:43
 msgid "Read"
@@ -87,11 +88,11 @@ msgstr "读取"
 
 #: models.py:47
 msgid "Date and time of the message creation."
-msgstr ""
+msgstr "消息创建的日期和时间。"
 
 #: models.py:48
 msgid "Creation date and time"
-msgstr ""
+msgstr "创建日期和时间"
 
 #: models.py:53
 msgid "Message"
@@ -168,11 +169,11 @@ msgstr ""
 
 #: views.py:116
 msgid "Here you will find text messages from other users or from the system."
-msgstr ""
+msgstr "在这里，您将找到来自其他用户或系统的消息。"
 
 #: views.py:119
 msgid "There are no messages"
-msgstr ""
+msgstr "没有任何消息"
 
 #: views.py:130
 #, python-format
@@ -211,8 +212,8 @@ msgstr ""
 
 #: views.py:172
 msgid "Mark all message as read?"
-msgstr ""
+msgstr "将所有消息标记为读？"
 
 #: views.py:188
 msgid "All messages marked as read."
-msgstr ""
+msgstr "所有消息都已标记为读。"

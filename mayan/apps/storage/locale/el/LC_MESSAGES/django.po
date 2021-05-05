@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:57+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -129,11 +129,11 @@ msgstr "Διαμοιραζόμενα μεταφορτωμένα αρχεία"
 msgid "Storage periodic"
 msgstr "Περιοδική αποθήκευση"
 
-#: queues.py:18
+#: queues.py:19
 msgid "Delete stale uploads"
 msgstr "Διαγραφή μεταφορτώσεων που δεν ολοκληρώθηκαν"
 
-#: queues.py:25
+#: queues.py:26
 msgid "Delete stale download files"
 msgstr ""
 

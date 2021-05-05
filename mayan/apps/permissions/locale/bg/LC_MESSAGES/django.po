@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:57+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -31,7 +31,7 @@ msgstr "Разрешения"
 msgid "Group count"
 msgstr "Брой групи"
 
-#: classes.py:88
+#: classes.py:86
 msgid "Insufficient permissions."
 msgstr "Недостатъчни разрешения."
 
@@ -121,19 +121,19 @@ msgstr "Име на групата"
 
 #: serializers.py:31
 msgid "Primary key of the group to add to the role."
-msgstr ""
+msgstr "Основен ключ на групата, който да добавите към ролята."
 
 #: serializers.py:39
 msgid "Primary key of the group to remove from the role."
-msgstr ""
+msgstr "Основен ключ на групата за премахване от ролята."
 
 #: serializers.py:47
 msgid "Primary key of the permission to add to the role."
-msgstr ""
+msgstr "Основен ключ на разрешението за добавяне към ролята."
 
 #: serializers.py:54
 msgid "Primary key of the permission to remove from the role."
-msgstr ""
+msgstr "Основен ключ на разрешението за премахване от ролята."
 
 #: views.py:30
 msgid "Available roles"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps.py:25 events.py:6 permissions.py:5
+#: apps.py:27 events.py:6 permissions.py:5 queues.py:8 settings.py:10
 msgid "File caching"
 msgstr ""
 
@@ -32,6 +32,10 @@ msgstr ""
 msgid "Cache purged"
 msgstr ""
 
+#: events.py:19
+msgid "Cache partition purged"
+msgstr ""
+
 #: links.py:24
 msgid "File caches"
 msgstr ""
@@ -40,75 +44,79 @@ msgstr ""
 msgid "Purge cache"
 msgstr ""
 
-#: models.py:30
+#: models.py:41
 msgid "Internal name of the defined storage for this cache."
 msgstr ""
 
-#: models.py:31
+#: models.py:42
 msgid "Defined storage name"
 msgstr ""
 
-#: models.py:34
+#: models.py:45
 msgid "Maximum size of the cache in bytes."
 msgstr ""
 
-#: models.py:36 models.py:62
+#: models.py:47 models.py:73
 msgid "Maximum size"
 msgstr ""
 
-#: models.py:40 models.py:144
+#: models.py:51 models.py:206
 msgid "Cache"
 msgstr ""
 
-#: models.py:41
+#: models.py:52
 msgid "Caches"
 msgstr ""
 
-#: models.py:60
+#: models.py:71
 msgid "Size at which the cache will start deleting old entries."
 msgstr ""
 
-#: models.py:69
+#: models.py:80
 msgid "Unknown"
 msgstr ""
 
-#: models.py:86
+#: models.py:97
 msgid "Current size"
 msgstr ""
 
-#: models.py:87
+#: models.py:98
 msgid "Current size of the cache."
 msgstr ""
 
-#: models.py:147
+#: models.py:209
 msgid "Name"
 msgstr ""
 
-#: models.py:152 models.py:239
+#: models.py:214 models.py:305
 msgid "Cache partition"
 msgstr ""
 
-#: models.py:153
+#: models.py:215
 msgid "Cache partitions"
 msgstr ""
 
-#: models.py:242
+#: models.py:308
 msgid "Date time"
 msgstr ""
 
-#: models.py:244
+#: models.py:310
 msgid "Filename"
 msgstr ""
 
-#: models.py:246
+#: models.py:312
 msgid "File size"
 msgstr ""
 
-#: models.py:252
+#: models.py:316
+msgid "Times this cache partition file has been accessed."
+msgstr ""
+
+#: models.py:323
 msgid "Cache partition file"
 msgstr ""
 
-#: models.py:253
+#: models.py:324
 msgid "Cache partition files"
 msgstr ""
 
@@ -116,7 +124,7 @@ msgstr ""
 msgid "Purge an object cache"
 msgstr ""
 
-#: permissions.py:11 queues.py:7
+#: permissions.py:11 queues.py:18
 msgid "Purge a file cache"
 msgstr ""
 
@@ -124,8 +132,20 @@ msgstr ""
 msgid "View a file cache"
 msgstr ""
 
-#: queues.py:11
+#: queues.py:13
 msgid "Purge a file cache partition"
+msgstr ""
+
+#: settings.py:15
+msgid ""
+"Number of times a cache will retry failed attempts to prune files to free up "
+"space for new a file being requested, before giving up."
+msgstr ""
+
+#: settings.py:23
+msgid ""
+"Number of times a cache will attempt to prune files to free up space for new "
+"a file being requested, before giving up."
 msgstr ""
 
 #: views.py:43
@@ -142,11 +162,11 @@ msgstr ""
 msgid "Purge cache partitions of \"%s\"?"
 msgstr ""
 
-#: views.py:84
+#: views.py:86
 msgid "Object cache partitions submitted for purging."
 msgstr ""
 
-#: views.py:101
+#: views.py:103
 msgid "Submit the selected cache for purging?"
 msgid_plural "Submit the selected caches for purging?"
 msgstr[0] ""

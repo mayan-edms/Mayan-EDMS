@@ -62,7 +62,7 @@ class DocumentTagViewTestMixin:
 
 
 class TagAPIViewTestMixin:
-    def _request_test_document_attach_tag_api_view(self):
+    def _request_test_document_tag_attach_api_view(self):
         return self.post(
             viewname='rest_api:document-tag-attach', kwargs={
                 'document_id': self.test_document.pk

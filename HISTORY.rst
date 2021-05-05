@@ -338,3 +338,16 @@
   the many to many field ``.add()`` method.
 - Remove the default queue. All tasks must now be explicitly assigned to an
   app defined queue.
+- Update file cache to use and LRU style eviction logic.
+- Only prune caches during startup if their maximum size changed.
+- Add detection of excessive cache pruning when cache size is too small for
+  the workload.
+- Detect and avoid duplicated queue names.
+- Add a fourth class of worker.
+- Re-balance queues.
+- Rename workers from ``fast``, ``medium``, and ``slow`` to ``A`` (fast),
+  ``B`` (new workers), ``C`` (medium), ``D`` (slow).
+- Add support for passing custom nice level to the workers when using the
+  Docker image ``run_worker`` command. The value is passed via the
+  ``MAYAN_WORKER_NICE_LEVEL`` environment variable. This variable defaults to
+  ``0``.

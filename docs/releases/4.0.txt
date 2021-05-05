@@ -5,22 +5,27 @@ Released: April XX, 2021
 
 
 This release is of special importance for the project as it also marks
-the 10 year anniversary of its inception.
+the 10 year anniversary of the first release.
+
+
+.. image:: /_static/mayan_10th_anniversary.png
+   :align: center
+   :alt: 10th year anniversary logo
+
 
 Looking back, is incredible to see how something I started back as a side
 project to help out the government agency I used to work at, has grown in to
-something used by people around the world. It has become a community. It has
-become a serious product in markets historically dominated by very big
-companies. It has become a full time job. It has become a gateway to working
-with a great team of professionals. I has become the channel by which I've
-gotten to meet and interact with incredible people I would have never met
-otherwise.
+something used by people around the world.
+
+It has become a community. It has become a serious product in markets
+historically dominated by very big companies. It has become a full time job.
+It has become a gateway to working with a great team of professionals. I has
+become the channel by which I've gotten to meet and interact with incredible
+people I would have never met otherwise.
 
 There is a saying that goes: "Find something you love to do, and you'll never
 have to work a day in your life.". I have found that something in my life,
-and I have all of you to thank for turning it into my profession.
-
-Thank you.
+and I have all of you to thank.
 
 -- Roberto Rosario
 
@@ -29,11 +34,11 @@ The big ticket item for this version is the new page composition feature.
 Historically, Mayan EDMS has equated an uploaded file to a document version as
 a one to one relationship, with the same relationship applying to the
 document pages. This is due to the origins and main purpose of the
-project, which has to be a static scanned document repository.
+project, which was to be a static scanned document repository.
 
 As the user base and industries in which Mayan EDMS is being used expands,
 this basic philosophy had to be expanded too, but in such a way that it
-did not affected its previous uses.
+did not affected previous uses.
 
 The result is what we call the Document Page Composition API. This new
 feature allows for document pages to be disabled, enabled, appended, removed,
@@ -55,10 +60,17 @@ that includes the pages of the previous file as well as the pages of the
 new file. The file is uploaded and processed, users can also go to the
 document version and change its page mapping and ordering.
 
-As with every upgrade, make a backup of your database and document storage.
-More so as this release is a major one and the first of a series of big
-paradigm changes for the project. Make sure to validate your data after the
-upgrade and report any issues.
+.. important::
+
+   As with every upgrade, make a backup of your database and document storage.
+   More so as this release is a major one and the first of a series of big
+   paradigm changes for the project. Make sure to validate your data after the
+   upgrade and report any issues.
+
+   The default versions of PostgreSQL and MySQL were also updated. These
+   database managers might require dedicated steps to convert your existing
+   database from the current version to the new one. This should
+   be done before upgrading the Mayan EDMS version.
 
 
 Changes
@@ -211,8 +223,12 @@ image from version 10.14 to 10.15, and the Redis image from version 5.0 to
 The default version of PostgreSQL will be incremented in each subsequent
 minor release to catch up to the target version of 12.0.
 
-A database backup is needed when moving from one version of PostgreSQL to
-another (https://www.postgresql.org/docs/10/backup-dump.html).
+A database backup and restore is needed when moving from one version of
+PostgreSQL to another (https://www.postgresql.org/docs/10/backup-dump.html).
+
+Make a backup of your database container before performing the Mayan EDMS
+upgrade. Then upgrade the database container image, and finally restore the
+database into the new container. Only then perform the Mayan EDMS upgrade.
 
 The Docker image tagging layout has been updated to differentiate between
 released versions and series. Series have the 's' prefix and versions have
@@ -341,7 +357,9 @@ a multiple metadata type and metadata value combinations.
 
 The actual query string would be as follows:
 
-/search/results/documents.DocumentSearchResult/?__0_metadata__metadata_type__name=building&__0_metadata__value=100&__operator_0_1=AND_10&__1_metadata__metadata_type__name=zone&__1_metadata__value=2&__result=10
+.. code-block::
+
+  /search/results/documents.DocumentSearchResult/?__0_metadata__metadata_type__name=building&__0_metadata__value=100&__operator_0_1=AND_10&__1_metadata__metadata_type__name=zone&__1_metadata__value=2&__result=10
 
 This means: search for documents with a metadata value of 100 for the
 metadata type of "building" and that also have a value of 2 for the
@@ -644,19 +662,35 @@ Removals
 --------
 
 - Document storage and caching settings.
-- Remove all remaining orientation support. Remove rotation test files.
+- Removed all remaining PDF page orientation detection support. Removed
+  rotation test files.
 
 
-Upgrading process
------------------
+Upgrade process
+---------------
+
+Upgrading from Mayan EDMS 3.5.x
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Stop supervisord::
 
     sudo systemctl stop supervisor
 
 
-Upgrading from Mayan EDMS 3.3.x
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. Make a backup of your supervisord file:
+
+   .. code-block:: bash
+
+       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+
+
+#. Make a backup of your database:
+
+   Use the respective backup command for the database:
+
+     - PostgreSQL: https://www.postgresql.org/docs/current/backup-dump.html
+     - MySQL: https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html
+
 
 #. Upgrade to the latest pip version:
 
@@ -677,36 +711,52 @@ Upgrading from Mayan EDMS 3.3.x
 
    .. code-block:: bash
 
-    sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install mayan-edms==4.0
+    sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install mayan-edms==|MAYAN_VERSION|
 
    the requirements will also be updated automatically.
 
 
-#. Make a backup of your supervisord file:
 
-   .. code-block:: bash
+#. Update the Redis configuration to keep 3 databases:
 
-       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+   Replace:
+
+   .. code-block:: ini
+
+      databases 2
+
+   with:
+
+   .. code-block:: ini
+
+      databases 3
+
+
+#. Edit the config file at ``|MAYAN_MEDIA_ROOT|/config.yml``:
+
+   Replace:
+
+   .. code-block:: ini
+
+       MAYAN_LOCK_MANAGER_BACKEND="redis://..."
+       MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS=...
+
+   with:
+
+   .. code-block:: ini
+
+       MAYAN_LOCK_MANAGER_BACKEND="mayan.apps.lock_manager.backends.redis_lock.RedisLock"
+       MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS="{'redis_url':'redis://:|DEFAULT_REDIS_PASSWORD|@172.17.0.1:6379/2'}"
 
 
 #. Update the supervisord configuration file. Replace the environment
-   variables values show here with your respective settings. This step will refresh
+   variables values shown here with your respective settings. This step will refresh
    the supervisord configuration file with the new queues and the latest
    recommended layout:
 
    .. code-block:: bash
 
-       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=|DEFAULT_DATABASE_NAME| \
-       MAYAN_DATABASE_PASSWORD=|DEFAULT_DATABASE_PASSWORD| MAYAN_DATABASE_USER=|DEFAULT_DATABASE_USER| \
-       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
-       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
-
-   or:
-
-   .. code-block:: bash
-
-       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES=\"{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}\" \
-       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
        |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
 
 
@@ -721,18 +771,8 @@ Upgrading from Mayan EDMS 3.3.x
 
    .. code-block:: bash
 
-       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=|DEFAULT_DATABASE_NAME| \
-       MAYAN_DATABASE_PASSWORD=|DEFAULT_DATABASE_PASSWORD| MAYAN_DATABASE_USER=|DEFAULT_DATABASE_USER| \
-       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
        |MAYAN_BIN| performupgrade
-
-   or:
-
-   .. code-block:: bash
-
-       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}" \
-       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
-      |MAYAN_BIN| performupgrade
 
 
 #. Start supervisord:

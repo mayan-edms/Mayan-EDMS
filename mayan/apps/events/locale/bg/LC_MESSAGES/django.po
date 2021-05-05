@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -61,11 +61,11 @@ msgstr "Видяно"
 
 #: classes.py:79
 msgid "Event list export to CSV"
-msgstr ""
+msgstr "Експорт на списък със събития в CSV"
 
 #: classes.py:108
 msgid "Events exported."
-msgstr ""
+msgstr "Събитията са експортирани."
 
 #: classes.py:110
 #, python-format
@@ -73,6 +73,8 @@ msgid ""
 "The event list has been exported and is available for download using the "
 "link: %(download_url)s or from the downloads area (%(download_list_url)s)."
 msgstr ""
+"Списъкът със събития е експортиран и е достъпен за изтегляне чрез връзката: "
+"%(download_url)s или от областта за изтегляния (%(download_list_url)s)."
 
 #: classes.py:274
 #, python-format
@@ -81,7 +83,7 @@ msgstr "Неизвестен или остарял тип събитие: %s"
 
 #: events.py:8
 msgid "Events exported"
-msgstr ""
+msgstr "Експортирани събития"
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
@@ -105,7 +107,7 @@ msgstr "Моите събития"
 
 #: links.py:34 links.py:49 links.py:56 views/export_views.py:57
 msgid "Export events"
-msgstr ""
+msgstr "Експортирай събития"
 
 #: links.py:61 models.py:63 views/subscription_views.py:56
 msgid "Event subscriptions"
@@ -173,7 +175,7 @@ msgstr "Абонаменти за обектни събития"
 
 #: permissions.py:8
 msgid "Export the events of an object"
-msgstr ""
+msgstr "Експортирайте събитията на обект"
 
 #: permissions.py:11
 msgid "Access the events of an object"
@@ -181,15 +183,15 @@ msgstr "Достъп до събитията на обект"
 
 #: queues.py:13
 msgid "Export event querysets"
-msgstr ""
+msgstr "Експортиране на набори от заявки за събития"
 
 #: views/event_views.py:26
 msgid "Events track actions that have been performed on, to, or with objects."
-msgstr ""
+msgstr "Събитията проследяват действия, извършени върху, към или с обекти."
 
 #: views/event_views.py:29
 msgid "There are no events"
-msgstr ""
+msgstr "Няма събития"
 
 #: views/event_views.py:44
 msgid "There are no events for this object"
@@ -202,7 +204,7 @@ msgstr "Събития за: %s"
 
 #: views/event_views.py:68
 msgid "There are no events of this type"
-msgstr ""
+msgstr "Няма събития от този тип"
 
 #: views/event_views.py:70 views/export_views.py:105
 #, python-format
@@ -214,15 +216,19 @@ msgid ""
 "The process will be performed in the background. The exported events will be"
 " available in the downloads area."
 msgstr ""
+"Процесът ще се извърши във фонов режим. Експортираните събития ще бъдат "
+"налични в областта за изтегляне."
 
 #: views/export_views.py:45
 msgid "Event list export task queued successfully."
 msgstr ""
+"Задачата за експортиране на списък със събития е поставена на опашка "
+"успешно."
 
 #: views/export_views.py:76
 #, python-format
 msgid "Export events for: %s"
-msgstr ""
+msgstr "Експортиране на събития за: %s"
 
 #: views/notification_views.py:25
 msgid "Subscribe to global or object events to receive notifications."
@@ -235,19 +241,19 @@ msgstr "Няма уведомления"
 
 #: views/notification_views.py:44
 msgid "Mark the selected notification as read?"
-msgstr ""
+msgstr "Да се маркира ли избраното известие като прочетено?"
 
 #: views/notification_views.py:56
 msgid "Notification marked as read."
-msgstr ""
+msgstr "Известието е означено като прочетено."
 
 #: views/notification_views.py:67
 msgid "Mark all notification as read?"
-msgstr ""
+msgstr "Да се маркират ли всички известия като прочетени?"
 
 #: views/notification_views.py:77
 msgid "All notifications marked as read."
-msgstr ""
+msgstr "Всички известия са означени като прочетени."
 
 #: views/subscription_views.py:40
 #, python-format

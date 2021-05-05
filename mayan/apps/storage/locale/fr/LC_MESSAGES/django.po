@@ -7,17 +7,17 @@
 # Roberto Rosario, 2021
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2021
-# Guillaume Trottier <gui.trottier@gmail.com>, 2021
 # Yves Dubois <ydubois@gmail.com>, 2021
 # Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:57+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
+"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,7 +31,7 @@ msgstr "Stockage"
 
 #: apps.py:59
 msgid "Source object"
-msgstr ""
+msgstr "Objet source"
 
 #: classes.py:86 classes.py:107
 #, python-format
@@ -39,22 +39,24 @@ msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
 "path and arguments."
 msgstr ""
+"Impossible d'initialiser le stockage : %(name)s. Vérifiez le chemin en "
+"pointillés et les arguments du backend de stockage."
 
 #: events.py:6 links.py:19 models.py:64 storages.py:22
 msgid "Download files"
-msgstr ""
+msgstr "Télécharger les fichiers"
 
 #: events.py:10
 msgid "Download file created"
-msgstr ""
+msgstr "Télécharger le fichier créé"
 
 #: events.py:13
 msgid "Download file deleted"
-msgstr ""
+msgstr "Fichier pour téléchargement supprimé"
 
 #: events.py:16
 msgid "Download file downloaded"
-msgstr ""
+msgstr "Télécharger le fichier téléversé"
 
 #: links.py:12
 msgid "Delete"
@@ -73,15 +75,19 @@ msgid ""
 "Path of the database (.dbm) file that will be created/read to keep track of "
 "items processed."
 msgstr ""
+"Chemin du fichier de base de données (.dbm) qui sera créé / lu pour garder "
+"une trace des éléments traités."
 
 #: management/commands/storage_process.py:26
 msgid "Process a specific model."
-msgstr ""
+msgstr "Traitez un modèle spécifique."
 
 #: management/commands/storage_process.py:32
 msgid ""
 "Process the files in reverse to undo the storage pipeline transformations."
 msgstr ""
+"Traitez les fichiers à l'envers pour annuler les transformations du pipeline"
+" de stockage."
 
 #: management/commands/storage_process.py:38
 msgid "Name of the storage to process."
@@ -97,7 +103,7 @@ msgstr "Date et heure"
 
 #: model_mixins.py:48
 msgid "Unnamed file"
-msgstr ""
+msgstr "Fichier sans nom"
 
 #: models.py:42 models.py:112
 msgid "File"
@@ -113,7 +119,7 @@ msgstr "Autorisation"
 
 #: models.py:63
 msgid "Download file"
-msgstr ""
+msgstr "Télécharger le fichier"
 
 #: models.py:121
 msgid "Shared uploaded file"
@@ -125,21 +131,23 @@ msgstr "Fichiers importés partagés"
 
 #: queues.py:13
 msgid "Storage periodic"
-msgstr ""
+msgstr "Stockage périodique"
 
-#: queues.py:18
+#: queues.py:19
 msgid "Delete stale uploads"
 msgstr "Supprimer les imports périmés"
 
-#: queues.py:25
+#: queues.py:26
 msgid "Delete stale download files"
-msgstr ""
+msgstr "Supprimer les fichiers de téléchargement obsolètes"
 
 #: settings.py:17
 msgid ""
 "A storage backend that all workers can use to generate and hold files for "
 "download."
 msgstr ""
+"Un backend de stockage que tous les agents peuvent utiliser pour générer et "
+"conserver des fichiers à télécharger."
 
 #: settings.py:28
 msgid "A storage backend that all workers can use to share files."
@@ -160,6 +168,8 @@ msgid ""
 "Unable to initialize the download file storage. Check the settings {} and {}"
 " for formatting errors."
 msgstr ""
+"Impossible d'initialiser le stockage des fichiers téléchargés. Vérifiez les "
+"paramètres {} et {} pour les erreurs de formatage."
 
 #: storages.py:29
 msgid ""
@@ -175,11 +185,14 @@ msgid ""
 "export. Download files are retained over a span of time and then removed "
 "automatically."
 msgstr ""
+"Les fichiers de téléchargement sont créés à la suite d'un processus externe "
+"tel qu'une exportation. Les fichiers téléchargés sont conservés pendant un "
+"certain temps, puis supprimés automatiquement."
 
 #: views.py:59
 msgid "There are no files to download."
-msgstr ""
+msgstr "Il n'y a aucun fichier à télécharger."
 
 #: views.py:60
 msgid "Downloads"
-msgstr ""
+msgstr "Téléchargements"

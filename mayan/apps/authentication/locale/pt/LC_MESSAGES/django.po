@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:32 events.py:6 permissions.py:6 settings.py:10
+#: apps.py:35 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr ""
 
@@ -33,6 +33,14 @@ msgstr ""
 
 #: events.py:13
 msgid "User impersonation started"
+msgstr ""
+
+#: events.py:16
+msgid "User logged in"
+msgstr ""
+
+#: events.py:19
+msgid "User logged out"
 msgstr ""
 
 #: forms.py:20

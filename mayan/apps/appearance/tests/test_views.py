@@ -47,8 +47,6 @@ class BasePlainViewTestCase(
 class ThemeViewTestCase(
     ThemeTestMixin, ThemeViewTestMixin, GenericViewTestCase
 ):
-    _test_event_object_name = 'test_theme'
-
     def test_theme_create_view_no_permission(self):
         theme_count = Theme.objects.count()
 
@@ -59,8 +57,8 @@ class ThemeViewTestCase(
 
         self.assertEqual(Theme.objects.count(), theme_count)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_theme_create_view_with_permissions(self):
         self.grant_permission(permission=permission_theme_create)
@@ -74,10 +72,13 @@ class ThemeViewTestCase(
 
         self.assertEqual(Theme.objects.count(), theme_count + 1)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.target, self.test_theme)
-        self.assertEqual(event.verb, event_theme_created.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_theme)
+        self.assertEqual(events[0].verb, event_theme_created.id)
 
     def test_theme_delete_view_no_permission(self):
         self._create_test_theme()
@@ -91,8 +92,8 @@ class ThemeViewTestCase(
 
         self.assertEqual(Theme.objects.count(), theme_count)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_theme_delete_view_with_access(self):
         self._create_test_theme()
@@ -110,8 +111,8 @@ class ThemeViewTestCase(
 
         self.assertEqual(Theme.objects.count(), theme_count - 1)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_theme_edit_view_no_permission(self):
         self._create_test_theme()
@@ -126,8 +127,8 @@ class ThemeViewTestCase(
         self.test_theme.refresh_from_db()
         self.assertEqual(self.test_theme.label, theme_label)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_theme_edit_view_with_access(self):
         self._create_test_theme()
@@ -146,10 +147,13 @@ class ThemeViewTestCase(
         self.test_theme.refresh_from_db()
         self.assertNotEqual(self.test_theme.label, theme_label)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.target, self.test_theme)
-        self.assertEqual(event.verb, event_theme_edited.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_theme)
+        self.assertEqual(events[0].verb, event_theme_edited.id)
 
     def test_theme_list_view_with_no_permission(self):
         self._create_test_theme()
@@ -161,13 +165,15 @@ class ThemeViewTestCase(
             response=response, text=self.test_theme.label, status_code=200
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_theme_list_view_with_access(self):
         self._create_test_theme()
 
-        self.grant_access(obj=self.test_theme, permission=permission_theme_view)
+        self.grant_access(
+            obj=self.test_theme, permission=permission_theme_view
+        )
 
         self._clear_events()
 
@@ -176,5 +182,5 @@ class ThemeViewTestCase(
             response=response, text=self.test_theme.label, status_code=200
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)

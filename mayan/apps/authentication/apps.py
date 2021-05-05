@@ -1,6 +1,7 @@
 import logging
 
 from django.contrib.auth import get_user_model
+from django.contrib.auth.signals import user_logged_in, user_logged_out
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -12,8 +13,10 @@ from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import Separator
 
 from .events import (
-    event_user_impersonation_ended, event_user_impersonation_started
+    event_user_impersonation_ended, event_user_impersonation_started,
+    event_user_logged_in, event_user_logged_out
 )
+from .handlers import handler_user_logged_in, handler_user_logged_out
 from .links import (
     link_logout, link_password_change, link_user_impersonate_form_start,
     link_user_impersonate_start, link_user_multiple_set_password,
@@ -39,7 +42,8 @@ class AuthenticationApp(MayanAppConfig):
         ModelEventType.register(
             model=User, event_types=(
                 event_user_impersonation_ended,
-                event_user_impersonation_started
+                event_user_impersonation_started, event_user_logged_in,
+                event_user_logged_out
             )
         )
 
@@ -68,4 +72,15 @@ class AuthenticationApp(MayanAppConfig):
             links=(
                 Separator(), link_password_change, link_logout
             ), position=99
+        )
+
+        user_logged_in.connect(
+            dispatch_uid='authentication_handler_user_logged_in',
+            receiver=handler_user_logged_in,
+            sender=User
+        )
+        user_logged_out.connect(
+            dispatch_uid='authentication_handler_user_logged_out',
+            receiver=handler_user_logged_out,
+            sender=User
         )

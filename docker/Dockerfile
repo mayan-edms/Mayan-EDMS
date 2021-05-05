@@ -13,7 +13,7 @@ COPY config.env /config.env
 
 ENV LC_ALL=C.UTF-8 \
     PYTHONUNBUFFERED=1 \
-    PROJECT_INSTALL_DIR=/opt/mayan-edms
+    PROJECT_INSTALL_DIR=/opt/mayan-edms/
 
 # Debian package caching.
 ARG APT_PROXY
@@ -134,18 +134,18 @@ RUN set -a \
 && . /config.env \
 && set +a \
 && python3 -m venv "${PROJECT_INSTALL_DIR}" \
-&& . "${PROJECT_INSTALL_DIR}/bin/activate" \
+&& . "${PROJECT_INSTALL_DIR}bin/activate" \
 && pip install --no-cache-dir \
-    pip==$PYTHON_PIP_VERSION \
-    amqp==$PYTHON_AMQP_VERSION \
-    mysqlclient==$PYTHON_MYSQL_VERSION \
-    psycopg2==$PYTHON_PSYCOPG2_VERSION \
-    redis==$PYTHON_REDIS_VERSION \
-    flower==$PYTHON_FLOWER_VERSION \
+    pip==${PYTHON_PIP_VERSION} \
+    amqp==${PYTHON_AMQP_VERSION} \
+    mysqlclient==${PYTHON_MYSQL_VERSION} \
+    psycopg2==${PYTHON_PSYCOPG2_VERSION} \
+    redis==${PYTHON_REDIS_VERSION} \
+    flower==${PYTHON_FLOWER_VERSION} \
 # psutil is needed by ARM builds otherwise gevent and gunicorn fail to start.
-&& UNAME=`uname -m` && if [ "${UNAME#*arm}" != $UNAME ]; then \
+&& UNAME=`uname -m` && if [ "${UNAME#*arm}" != ${UNAME} ]; then \
     pip install --no-cache-dir \
-    psutil==$PYTHON_PSUTIL_VERSION \
+    psutil==${PYTHON_PSUTIL_VERSION} \
 ; fi \
 # Install the Python packages needed to build Mayan EDMS.
 && pip install --no-cache-dir -r /src/requirements/build.txt \
@@ -156,7 +156,7 @@ RUN set -a \
 && pip install --no-cache-dir dist/mayan_edms-*.whl \
 # Install the static content.
 && mayan-edms.py installdependencies \
-&& MAYAN_STATIC_ROOT=${PROJECT_INSTALL_DIR}/static mayan-edms.py preparestatic --link --noinput
+&& MAYAN_STATIC_ROOT=${PROJECT_INSTALL_DIR}static mayan-edms.py preparestatic --link --noinput
 
 COPY --chown=mayan:mayan requirements/testing-base.txt "${PROJECT_INSTALL_DIR}"
 
@@ -166,7 +166,7 @@ COPY --chown=mayan:mayan requirements/testing-base.txt "${PROJECT_INSTALL_DIR}"
 
 FROM base_image
 
-COPY --from=builder_image --chown=mayan:mayan "${PROJECT_INSTALL_DIR}/" "${PROJECT_INSTALL_DIR}/"
+COPY --from=builder_image --chown=mayan:mayan "${PROJECT_INSTALL_DIR}" "${PROJECT_INSTALL_DIR}"
 
 USER root
 
@@ -179,7 +179,13 @@ ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 8000
 CMD ["run_all"]
 
-RUN ${PROJECT_INSTALL_DIR}/bin/mayan-edms.py platformtemplate supervisord_docker > /etc/supervisor/conf.d/mayan.conf \
+RUN set -a \
+&& . /config.env \
+&& set +a \
+&& ${PROJECT_INSTALL_DIR}bin/mayan-edms.py platformtemplate docker_entrypoint > /usr/local/bin/entrypoint.sh \
+&& chown mayan:mayan /usr/local/bin/entrypoint.sh \
+&& chmod +x /usr/local/bin/entrypoint.sh \
+&& ${PROJECT_INSTALL_DIR}bin/mayan-edms.py platformtemplate docker_supervisord > ${SUPERVISOR_CONFIGURATION_DIRECTORY}${SUPERVISOR_CONFIGURATION_FILENAME} \
 && apt-get clean autoclean \
 && apt-get autoremove --purge -y \
 && rm -rf /var/lib/apt/lists/* \

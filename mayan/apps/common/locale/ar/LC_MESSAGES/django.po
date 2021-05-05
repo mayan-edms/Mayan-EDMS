@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 03:36+0000\n"
+"POT-Creation-Date: 2021-05-05 08:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: WM Shinkada <shinkadawasim@gmail.com>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -98,7 +98,7 @@ msgstr "متجر عالمي"
 msgid "Get support"
 msgstr "الدعم الفني"
 
-#: links.py:68 queues.py:9 views.py:122
+#: links.py:68 queues.py:6 views.py:122
 msgid "Tools"
 msgstr "الأدوات"
 
@@ -158,10 +158,6 @@ msgstr "مستخدم"
 #: permissions.py:8
 msgid "Copy object"
 msgstr "نسخ الكائن"
-
-#: queues.py:7
-msgid "Default"
-msgstr "القيمة الإفتراضية"
 
 #: settings.py:22
 msgid ""
