@@ -256,13 +256,14 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 
 #. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
 
-   Increase the number of Gunicorn workers to 3 in the line (``-w 2`` section):
+   Increase the number of Gunicorn workers to 2-4 times the number of CPU cores. Changing the ``-w 3`` argument:
 
    .. code-block:: ini
 
-       command = |MAYAN_GUNICORN_BIN| -w 2 mayan.wsgi --max-requests 1000 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --timeout 120
+       command = |MAYAN_GUNICORN_BIN| -w 3 mayan.wsgi --max-requests 1000 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --timeout 120
 
-   remove the concurrency limit (or increase it) of the fast worker (remove ``--concurrency=1``).
+
+#. Remove (or increase) the concurrency limit of the workers (remove or edit ``--concurrency=1``). Change one worker at a time, restart, and profile with your workload.
 
 
 #. Restart the services:
