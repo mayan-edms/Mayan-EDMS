@@ -181,7 +181,7 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: console
 
-       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_MEDIA_ROOT="|MAYAN_MEDIA_ROOT|" |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
 
 
 #. Enable and restart the services [1_]:
