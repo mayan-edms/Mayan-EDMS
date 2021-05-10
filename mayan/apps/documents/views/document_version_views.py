@@ -309,7 +309,7 @@ class DocumentVersionTransformationsClearView(MultipleObjectConfirmActionView):
             messages.error(
                 message=_(
                     'Error deleting the page transformations for '
-                    'document_version: %(document_version)s; %(error)s.'
+                    'document version: %(document_version)s; %(error)s.'
                 ) % {
                     'document_version': instance, 'error': exception
                 }, request=self.request
