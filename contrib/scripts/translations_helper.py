@@ -148,9 +148,9 @@ class MessageProcessor:
             'compile': 'do_compilemessages',
             'make': 'do_makemessages',
             'transifex_missing_apps': 'do_transifex_check_missing_apps',
-            'transifex_generate_config': 'do_generate_configuration_file',
-            'transifex_pull': 'do_pull_translations',
-            'transifex_push': 'do_push_translations'
+            'transifex_generate_config': 'do_transifex_generate_configuration_file',
+            'transifex_pull': 'do_transifex_pull_translations',
+            'transifex_push': 'do_transifex_push_translations'
         }
 
         self.parser = optparse.OptionParser(
@@ -284,7 +284,7 @@ class MessageProcessor:
         else:
             print('No missing apps')
 
-    def do_generate_configuration_file(self):
+    def do_transifex_generate_configuration_file(self):
         transifex_helper = TransifexHelper(message_processor=self)
 
         transifex_helper.generate_configuration_file()
