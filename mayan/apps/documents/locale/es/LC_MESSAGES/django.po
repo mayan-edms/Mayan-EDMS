@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-05-10 03:09+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -1566,7 +1566,11 @@ msgid "Clear all the page transformations for the selected document file?"
 msgid_plural ""
 "Clear all the page transformations for the selected document files?"
 msgstr[0] ""
+"¿Borrar todas las transformaciones de página para el archivo de documento "
+"seleccionado?"
 msgstr[1] ""
+"¿Borrar todas las transformaciones de página para los archivos de documentos"
+" seleccionados?"
 
 #: views/document_file_views.py:266
 #, python-format
@@ -1581,6 +1585,8 @@ msgid ""
 "Error deleting the page transformations for document file: "
 "%(document_file)s; %(error)s."
 msgstr ""
+"Error al eliminar las transformaciones de página para el archivo de "
+"documento: %(document_file)s; %(error)s."
 
 #: views/document_file_views.py:319
 #, python-format
@@ -1746,11 +1752,15 @@ msgstr "Reasignar páginas de la versión del documento: %s"
 #, python-format
 msgid "%(count)d document version queued for page list reset."
 msgstr ""
+"%(count)d versión del documento en cola para restablecer la lista de "
+"páginas."
 
 #: views/document_version_page_views.py:234
 #, python-format
 msgid "%(count)d document versions queued for page list reset."
 msgstr ""
+"%(count)d versiones de documentos en cola para restablecer la lista de "
+"páginas."
 
 #: views/document_version_page_views.py:242
 msgid "The page list will match that of the latest document file."
@@ -1906,12 +1916,18 @@ msgid "Clear all the page transformations for the selected document version?"
 msgid_plural ""
 "Clear all the page transformations for the selected document version?"
 msgstr[0] ""
+"¿Borrar todas las transformaciones de página para la versión del documento "
+"seleccionada?"
 msgstr[1] ""
+"¿Borrar todas las transformaciones de página para la versión del documento "
+"seleccionada?"
 
 #: views/document_version_views.py:294
 #, python-format
 msgid "Clear all the page transformations for the document version: %s?"
 msgstr ""
+"¿Borrar todas las transformaciones de página para la versión del documento: "
+"%s?"
 
 #: views/document_version_views.py:311
 #, python-format
@@ -1926,11 +1942,13 @@ msgid ""
 "Error cloning the page transformations for document version: "
 "%(document_version)s; %(error)s."
 msgstr ""
+"Error al clonar las transformaciones de página para la versión del "
+"documento: %(document_version)s; %(error)s."
 
 #: views/document_version_views.py:372
 #, python-format
 msgid "Clone page transformations of document version: %s"
-msgstr ""
+msgstr "Clonar transformaciones de página de la versión del documento: %s"
 
 #: views/document_views.py:40
 #, python-format

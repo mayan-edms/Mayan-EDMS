@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-05-10 03:09+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -38,7 +38,7 @@ msgstr "Caché purgada"
 
 #: events.py:19
 msgid "Cache partition purged"
-msgstr ""
+msgstr "Partición de caché purgada"
 
 #: links.py:24
 msgid "File caches"
@@ -114,7 +114,7 @@ msgstr "Tamaño del archivo"
 
 #: models.py:316
 msgid "Times this cache partition file has been accessed."
-msgstr ""
+msgstr "Veces que se ha accedido a este archivo de partición de caché."
 
 #: models.py:323
 msgid "Cache partition file"
@@ -145,12 +145,17 @@ msgid ""
 "Number of times a cache will retry failed attempts to prune files to free up"
 " space for new a file being requested, before giving up."
 msgstr ""
+"Número de veces que un caché reintentará intentos fallidos de remover "
+"archivos para liberar espacio para un nuevo archivo solicitado, antes de "
+"darse por vencido."
 
 #: settings.py:23
 msgid ""
 "Number of times a cache will attempt to prune files to free up space for new"
 " a file being requested, before giving up."
 msgstr ""
+"Número de veces que una caché intentará remover archivos para liberar "
+"espacio para un nuevo archivo que se solicita, antes de darse por vencido."
 
 #: views.py:43
 #, python-format

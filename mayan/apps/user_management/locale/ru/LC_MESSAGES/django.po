@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:57+0000\n"
+"POT-Creation-Date: 2021-05-10 03:09+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -39,7 +39,7 @@ msgstr "Группы"
 
 #: apps.py:94 search.py:16
 msgid "Name"
-msgstr "Название"
+msgstr "Имя"
 
 #: apps.py:97 models.py:16 search.py:22
 msgid "User"
@@ -75,7 +75,7 @@ msgstr "Имя пользователя"
 
 #: apps.py:108
 msgid "Last login"
-msgstr ""
+msgstr "Последний вход"
 
 #: apps.py:111
 msgid "Has usable password?"
@@ -199,19 +199,21 @@ msgstr "имя пользователя"
 
 #: serializers.py:17
 msgid "URL of the API endpoint showing the list users of this group."
-msgstr ""
+msgstr "URL-адрес API, показывающий список пользователей этой группы."
 
 #: serializers.py:48
 msgid "Primary key of the user to add to the group."
-msgstr ""
+msgstr "Первичный ключ пользователя, которого нужно добавить в группу."
 
 #: serializers.py:57
 msgid "Primary key of the user to remove from the group."
-msgstr ""
+msgstr "Первичный ключ пользователя, которого нужно удалить из группы."
 
 #: serializers.py:66
 msgid "URL of the API endpoint showing the list groups this user belongs to."
 msgstr ""
+"URL-адрес API, показывающий список групп, к которым принадлежит этот "
+"пользователь."
 
 #: utils.py:6
 msgid "Anonymous"
@@ -291,8 +293,8 @@ msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
 msgstr ""
-"Удаление суперпользователя и  персонала не допускается, используйте "
-"интерфейс администратора для этих случаев."
+"Удаление пользователей с флагами superuser и stuff запрещено, используйте "
+"интерфейс администратора Django для этих случаев."
 
 #: views.py:214
 #, python-format

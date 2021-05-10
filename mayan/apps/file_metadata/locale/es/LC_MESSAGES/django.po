@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-05-10 03:09+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -59,10 +59,12 @@ msgstr "Herramienta EXIF"
 #: events.py:10
 msgid "Document file submitted for file metadata processing"
 msgstr ""
+"Archivo de documento enviado para procesamiento de metadatos de archivo"
 
 #: events.py:14
 msgid "Document file file metadata processing finished"
 msgstr ""
+"El procesamiento de metadatos del archivo del archivo de documento finalizó"
 
 #: links.py:23
 msgid "Attributes"
@@ -94,6 +96,8 @@ msgstr ""
 #: methods.py:66
 msgid "Return the specified document file file metadata entry."
 msgstr ""
+"Devuelve la entrada de metadatos del archivo de archivo de documento "
+"especificado."
 
 #: models.py:18
 msgid "Driver path"
@@ -135,11 +139,11 @@ msgstr "Archivo de documento"
 
 #: models.py:80 models.py:95
 msgid "Document file driver entry"
-msgstr ""
+msgstr "Entrada de controlador de archivo de documento"
 
 #: models.py:81
 msgid "Document file driver entries"
-msgstr ""
+msgstr "Entradas del controlador de archivos de documentos"
 
 #: models.py:88
 msgid "Attribute count"
@@ -184,7 +188,7 @@ msgstr "Ver metadatos de archivo"
 
 #: queues.py:11
 msgid "Process document file"
-msgstr ""
+msgstr "Procesar archivo de documento"
 
 #: settings.py:18
 msgid ""
@@ -235,19 +239,25 @@ msgstr ""
 
 #: views.py:86
 msgid "No file metadata available for this driver."
-msgstr ""
+msgstr "No hay metadatos de archivo disponibles para este controlador."
 
 #: views.py:90
 #, python-format
 msgid ""
 "File metadata attributes for: %(document_file)s with driver: %(driver)s"
 msgstr ""
+"Atributos de metadatos de archivo para: %(document_file)s con controlador: "
+"%(driver)s"
 
 #: views.py:119
 msgid "Submit the selected document file to the file metadata queue?"
 msgid_plural "Submit the selected documents files to the file metadata queue?"
 msgstr[0] ""
+"¿Enviar el archivo del documento seleccionado a la cola de metadatos del "
+"archivo?"
 msgstr[1] ""
+"¿Enviar los archivos de documentos seleccionados a la cola de metadatos de "
+"archivos?"
 
 #: views.py:145
 #, python-format

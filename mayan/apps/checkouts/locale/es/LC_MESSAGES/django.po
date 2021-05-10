@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-05-10 03:08+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -70,7 +70,7 @@ msgstr "Salida de la reserva"
 
 #: forms.py:51
 msgid "New files allowed?"
-msgstr ""
+msgstr "¿Se permiten nuevos archivos?"
 
 #: forms.py:52
 msgid "Yes"
@@ -126,11 +126,11 @@ msgstr "Fecha y hora de la expiración de la reserva."
 
 #: models.py:45
 msgid "Do not allow new file of this document to be uploaded."
-msgstr ""
+msgstr "No permitir que se carguen un nuevo archivo a este documento."
 
 #: models.py:47
 msgid "Block new file upload"
-msgstr ""
+msgstr "Bloquear la carga de archivos nuevos"
 
 #: models.py:55 permissions.py:5
 msgid "Document checkout"
@@ -218,41 +218,41 @@ msgstr ""
 #: views.py:93
 #, python-format
 msgid "Unable to checkout document \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "No se puede reserver el documento \"%(instance)s\"; %(exception)s"
 
 #: views.py:100
 #, python-format
 msgid "Document \"%(object)s\" checked out successfully."
-msgstr ""
+msgstr "El documento \"%(object)s\" reservado exitosamente."
 
 #: views.py:103
 #, python-format
 msgid "%(count)d document checked out successfully."
-msgstr ""
+msgstr "%(count)d documento reservado correctamente."
 
 #: views.py:106
 #, python-format
 msgid "%(count)d documents checked out successfully."
-msgstr ""
+msgstr "%(count)d documentos reservados correctamente."
 
 #: views.py:108
 #, python-format
 msgid "Checkout document \"%(object)s\"."
-msgstr ""
+msgstr "Reservar el documento \"%(object)s\"."
 
 #: views.py:109
 #, python-format
 msgid "Checkout %(count)d document."
-msgstr ""
+msgstr "Reservar %(count)d documento."
 
 #: views.py:110
 #, python-format
 msgid "Checkout %(count)d documents."
-msgstr ""
+msgstr "Reservar %(count)d documentos."
 
 #: views.py:114
 msgid "Checkout"
-msgstr ""
+msgstr "Reservaciones"
 
 #: views.py:158
 #, python-format

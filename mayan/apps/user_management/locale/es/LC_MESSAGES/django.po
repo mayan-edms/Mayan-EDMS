@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:57+0000\n"
+"POT-Creation-Date: 2021-05-10 03:09+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -72,7 +72,7 @@ msgstr "Nombre de usuario"
 
 #: apps.py:108
 msgid "Last login"
-msgstr ""
+msgstr "Último acceso"
 
 #: apps.py:111
 msgid "Has usable password?"
@@ -196,19 +196,21 @@ msgstr "Nombre de usuario"
 
 #: serializers.py:17
 msgid "URL of the API endpoint showing the list users of this group."
-msgstr ""
+msgstr "URL de la API que muestra la lista de usuarios de este grupo."
 
 #: serializers.py:48
 msgid "Primary key of the user to add to the group."
-msgstr ""
+msgstr "Llave principal del usuario para agregar al grupo."
 
 #: serializers.py:57
 msgid "Primary key of the user to remove from the group."
-msgstr ""
+msgstr "Llave principal del usuario para eliminar del grupo."
 
 #: serializers.py:66
 msgid "URL of the API endpoint showing the list groups this user belongs to."
 msgstr ""
+"URL de la API que muestra la lista de grupos a los que pertenece este "
+"usuario."
 
 #: utils.py:6
 msgid "Anonymous"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-05-10 03:08+0000\n"
 "PO-Revision-Date: 2021-04-12 03:38+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -60,7 +60,7 @@ msgstr "Etiqueta"
 
 #: models.py:22
 msgid "The actual text to be displayed."
-msgstr ""
+msgstr "El texto que se mostrará."
 
 #: models.py:23
 msgid "Text"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:57+0000\n"
+"POT-Creation-Date: 2021-05-10 03:09+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -262,32 +262,32 @@ msgstr "Etiquetas del documento: %s"
 #: views.py:257
 #, python-format
 msgid "Tags removed from document \"%(object)s\" successfully."
-msgstr ""
+msgstr "Etiquetas eliminadas con éxito del documento \"%(object)s\"."
 
 #: views.py:260
 #, python-format
 msgid "Tags removed from %(count)d document successfully."
-msgstr ""
+msgstr "Las etiquetas se eliminaron correctamente de %(count)d documento."
 
 #: views.py:263
 #, python-format
 msgid "Tags removed from %(count)d documents successfully."
-msgstr ""
+msgstr "Las etiquetas se eliminaron correctamente de %(count)d documentos."
 
 #: views.py:265
 #, python-format
 msgid "Remove tags from document: %(object)s"
-msgstr ""
+msgstr "Eliminar etiquetas del documento: %(object)s"
 
 #: views.py:266
 #, python-format
 msgid "Remove tags from %(count)d document."
-msgstr ""
+msgstr "Remover las etiquetas de %(count)d documento."
 
 #: views.py:267
 #, python-format
 msgid "Remove tags from %(count)d documents."
-msgstr ""
+msgstr "Remover las etiquetas de %(count)d documentos."
 
 #: views.py:272
 msgid "Remove"

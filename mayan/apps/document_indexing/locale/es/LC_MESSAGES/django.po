@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-05-10 03:09+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -54,11 +54,11 @@ msgstr "Documentos"
 
 #: events.py:10
 msgid "Index template created"
-msgstr ""
+msgstr "Plantilla de índice creada"
 
 #: events.py:13
 msgid "Index template edited"
-msgstr ""
+msgstr "Plantilla de índice editada"
 
 #: forms.py:16
 msgid "Index templates to be queued for rebuilding."
@@ -252,27 +252,27 @@ msgstr "Indexación"
 
 #: permissions.py:8
 msgid "View index instances"
-msgstr ""
+msgstr "Ver instancias de índice"
 
 #: permissions.py:11
 msgid "Create new index templates"
-msgstr ""
+msgstr "Crear nuevas plantillas de índice"
 
 #: permissions.py:14
 msgid "Edit index templates"
-msgstr ""
+msgstr "Editar plantillas de índice"
 
 #: permissions.py:17
 msgid "Delete index templates"
-msgstr ""
+msgstr "Eliminar plantillas de índice"
 
 #: permissions.py:20
 msgid "View index templates"
-msgstr ""
+msgstr "Ver plantillas de índice"
 
 #: permissions.py:23 views/index_template_views.py:310
 msgid "Rebuild index templates"
-msgstr ""
+msgstr "Reconstruir plantillas de índice"
 
 #: queues.py:12
 msgid "Delete empty index nodes"
@@ -323,23 +323,30 @@ msgid ""
 "URL of the API endpoint showing the list document types associated with this"
 " index template."
 msgstr ""
+"URL de la API que muestra la lista de tipos de documentos asociados con esta"
+" plantilla de índice."
 
 #: serializers.py:222
 msgid "URL of the API endpoint to add document types to this index template."
 msgstr ""
+"URL de la API para agregar tipos de documentos a esta plantilla de índice."
 
 #: serializers.py:229
 msgid ""
 "URL of the API endpoint to remove document types from this index template."
 msgstr ""
+"URL de la API para eliminar tipos de documentos de esta plantilla de índice."
 
 #: serializers.py:277
 msgid "Primary key of the document type to add to the index template."
 msgstr ""
+"Llave principal del tipo de documento para agregar a la plantilla de índice."
 
 #: serializers.py:286
 msgid "Primary key of the document type to remove from the index template."
 msgstr ""
+"Llave principal del tipo de documento que se eliminará de la plantilla de "
+"índice."
 
 #: settings.py:14
 msgid ""
@@ -427,7 +434,7 @@ msgstr ""
 
 #: views/index_template_views.py:95
 msgid "There are no index templates."
-msgstr ""
+msgstr "No hay plantillas de índice."
 
 #: views/index_template_views.py:124
 #, python-format
@@ -485,25 +492,25 @@ msgstr "¿Editar el nodo de plantilla de indice: %s?"
 #: views/index_template_views.py:283
 #, python-format
 msgid "Rebuild index template: %s"
-msgstr ""
+msgstr "Reconstruir plantilla de índice: %s"
 
 #: views/index_template_views.py:303
 msgid "Index template queued for rebuild."
-msgstr ""
+msgstr "Plantilla de índice en cola para reconstrucción."
 
 #: views/index_template_views.py:324
 #, python-format
 msgid "%(count)d index template queued for rebuild."
 msgid_plural "%(count)d index templates queued for rebuild."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(count)d plantilla de índice en cola para reconstrucción."
+msgstr[1] "%(count)d plantillas de índice en cola para reconstrucción."
 
 #: views/index_template_views.py:357
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(count)d índice reiniciado."
+msgstr[1] "%(count)d índices reiniciados."
 
 #: views/index_template_views.py:370
 msgid "Index templates for which their instances will be deleted."

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-05-10 03:09+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -27,6 +27,8 @@ msgstr "Extracción de contenido de documentos"
 #: apps.py:105
 msgid "A generator returning the document file's pages parsed content."
 msgstr ""
+"Un generador que devuelve el contenido extraido de las páginas del archivo "
+"del documento."
 
 #: apps.py:106 links.py:21 links.py:43 models.py:24 search.py:10
 msgid "Content"
@@ -41,6 +43,8 @@ msgid ""
 "Utility from the poppler-utils package used to extract content from PDF "
 "files."
 msgstr ""
+"Utilidad del paquete poppler-utils que se utiliza para extraer contenido de "
+"archivos PDF."
 
 #: events.py:10
 msgid "Document parsed content deleted"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-05-10 03:09+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -432,7 +432,7 @@ msgstr ""
 
 #: workflow_actions.py:36
 msgid "CC"
-msgstr ""
+msgstr "CC"
 
 #: workflow_actions.py:39 workflow_actions.py:51
 msgid ""
@@ -440,14 +440,18 @@ msgid ""
 "addresses separated by comma or semicolon. A template can be used to "
 "reference properties of the document."
 msgstr ""
+"Dirección utilizada en el encabezado \"Bcc\" al enviar el correo "
+"electrónico. Pueden ser varias direcciones separadas por coma o punto y "
+"coma. Se puede utilizar una plantilla para hacer referencia a las "
+"propiedades del documento."
 
 #: workflow_actions.py:48
 msgid "BCC"
-msgstr ""
+msgstr "BCC"
 
 #: workflow_actions.py:60
 msgid "Reply to"
-msgstr ""
+msgstr "Responder a"
 
 #: workflow_actions.py:63
 msgid ""
@@ -455,6 +459,10 @@ msgid ""
 "multiple addresses separated by comma or semicolon. A template can be used "
 "to reference properties of the document."
 msgstr ""
+"Dirección utilizada en el encabezado \"Responder a\" al enviar el correo "
+"electrónico. Pueden ser varias direcciones separadas por coma o punto y "
+"coma. Se puede utilizar una plantilla para hacer referencia a las "
+"propiedades del documento."
 
 #: workflow_actions.py:75
 msgid "Subject of the email. Can be a string or a template."
@@ -467,11 +475,11 @@ msgstr ""
 
 #: workflow_actions.py:90
 msgid "Attachment"
-msgstr ""
+msgstr "Anejo"
 
 #: workflow_actions.py:93
 msgid "Attach the document to the mail."
-msgstr ""
+msgstr "Anejar el documento al correo."
 
 #: workflow_actions.py:102
 msgid "Send email"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-05-10 03:08+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -27,11 +27,11 @@ msgstr "Autenticación  "
 
 #: events.py:10
 msgid "User impersonation ended"
-msgstr "Impersonalización de usuario finalizada"
+msgstr "Personificación de usuario finalizada"
 
 #: events.py:13
 msgid "User impersonation started"
-msgstr "Se comenzó la impersonalización de usuario"
+msgstr "Se comenzó la personificación de usuario"
 
 #: events.py:16
 msgid "User logged in"
@@ -71,7 +71,7 @@ msgstr "Permanente"
 
 #: forms.py:80
 msgid "If selected, disables ending impersonation."
-msgstr "Si se selecciona, deshabilita terminar la impersonalización."
+msgstr "Si se selecciona, deshabilita terminar la personificación."
 
 #: forms.py:91
 msgid "User"
@@ -87,11 +87,11 @@ msgstr "Cambiar contraseña"
 
 #: links.py:34 views.py:250
 msgid "Impersonate user"
-msgstr "Impersonalizar usuario"
+msgstr "Personificar usuario"
 
 #: links.py:39
 msgid "Impersonate"
-msgstr ""
+msgstr "Personificar"
 
 #: links.py:44 links.py:48
 msgid "Set password"
@@ -99,7 +99,7 @@ msgstr "Asignar contraseña"
 
 #: permissions.py:10
 msgid "Impersonate users"
-msgstr "Impersonalizar usuarios"
+msgstr "Personificar usuarios"
 
 #: settings.py:15
 msgid ""
@@ -132,6 +132,8 @@ msgid ""
 "                Impersonating user \"%(user)s\".\n"
 "            "
 msgstr ""
+"\n"
+"                Personificando el usuario \"%(user)s\"."
 
 #: templates/authentication/app/viewport.html:14
 msgid "Click here when finished"
@@ -224,4 +226,4 @@ msgstr "Error restaurando la contraseña para el usuario \"%(user)s\": %(error)s
 #: views.py:278
 #, python-format
 msgid "Impersonate user: %s"
-msgstr ""
+msgstr "Personificar el usuario: %s"
