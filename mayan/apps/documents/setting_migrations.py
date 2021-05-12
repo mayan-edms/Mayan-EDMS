@@ -26,16 +26,22 @@ class DocumentsSettingMigration(SettingNamespaceMigration):
 
     def documents_file_page_image_cache_storage_backend_0003(self, value):
         # Get the setting by its new global name
-        setting = Setting.get(global_name='DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND')
+        setting = Setting.get(
+            global_name='DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND'
+        )
         # Load the value from the setting's old global name
         setting.cache_value(global_name='DOCUMENTS_CACHE_STORAGE_BACKEND')
         return setting.value
 
     def documents_file_page_image_cache_storage_backend_arguments_0003(self, value):
         # Get the setting by its new global name
-        setting = Setting.get(global_name='DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS')
+        setting = Setting.get(
+            global_name='DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS'
+        )
         # Load the value from the setting's old global name
-        setting.cache_value(global_name='DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS')
+        setting.cache_value(
+            global_name='DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS'
+        )
         return setting.value
 
     def documents_file_storage_backend_0003(self, value):
@@ -47,14 +53,20 @@ class DocumentsSettingMigration(SettingNamespaceMigration):
 
     def documents_file_storage_backend_arguments_0003(self, value):
         # Get the setting by its new global name
-        setting = Setting.get(global_name='DOCUMENTS_FILE_STORAGE_BACKEND_ARGUMENTS')
+        setting = Setting.get(
+            global_name='DOCUMENTS_FILE_STORAGE_BACKEND_ARGUMENTS'
+        )
         # Load the value from the setting's old global name
-        setting.cache_value(global_name='DOCUMENTS_STORAGE_BACKEND_ARGUMENTS')
+        setting.cache_value(
+            global_name='DOCUMENTS_STORAGE_BACKEND_ARGUMENTS'
+        )
         return setting.value
 
     def documents_recently_accessed_count_0002(self, value):
         # Get the setting by its new global name
-        setting = Setting.get(global_name='DOCUMENTS_RECENTLY_ACCESSED_COUNT')
+        setting = Setting.get(
+            global_name='DOCUMENTS_RECENTLY_ACCESSED_COUNT'
+        )
         # Load the value from the setting's old global name
         setting.cache_value(global_name='DOCUMENTS_RECENT_ACCESS_COUNT')
         return setting.value
@@ -68,14 +80,20 @@ class DocumentsSettingMigration(SettingNamespaceMigration):
 
     def documents_version_page_image_cache_storage_backend_0003(self, value):
         # Get the setting by its new global name
-        setting = Setting.get(global_name='DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND')
+        setting = Setting.get(
+            global_name='DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND'
+        )
         # Load the value from the setting's old global name
         setting.cache_value(global_name='DOCUMENTS_CACHE_STORAGE_BACKEND')
         return setting.value
 
     def documents_version_page_image_cache_storage_backend_arguments_0003(self, value):
         # Get the setting by its new global name
-        setting = Setting.get(global_name='DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS')
+        setting = Setting.get(
+            global_name='DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS'
+        )
         # Load the value from the setting's old global name
-        setting.cache_value(global_name='DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS')
+        setting.cache_value(
+            global_name='DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS'
+        )
         return setting.value
