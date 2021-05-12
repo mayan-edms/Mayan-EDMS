@@ -1,8 +1,8 @@
 ===============================
-MERC 08: Unify Roles and Groups
+MERC 8: Unify Roles and Groups
 ===============================
 
-:MERC: 08
+:MERC: 8
 :Author: Michael Price
 :Status: Accepted
 :Type: Feature
