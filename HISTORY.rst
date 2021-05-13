@@ -351,3 +351,7 @@
   Docker image ``run_worker`` command. The value is passed via the
   ``MAYAN_WORKER_NICE_LEVEL`` environment variable. This variable defaults to
   ``0``.
+- Avoid adding a transformation to a layer for which it was
+  not registered. 
+- Add LayerError exception.
+

@@ -66,7 +66,7 @@ class BaseTransformation(metaclass=BaseTransformationType):
     def get_transformation_choices(cls, group_by_layer=False, layer=None):
         if layer:
             transformation_list = [
-                (transformation.name, transformation) for transformation in cls._layer_transformations[layer]
+                (transformation.name, transformation) for transformation in cls._layer_transformations.get(layer, ())
             ]
         else:
             transformation_list = cls._registry.items()
@@ -102,8 +102,8 @@ class BaseTransformation(metaclass=BaseTransformationType):
     @classmethod
     def register(cls, layer, transformation):
         cls._registry[transformation.name] = transformation
-        cls._layer_transformations.setdefault(layer, [])
-        cls._layer_transformations[layer].append(transformation)
+        cls._layer_transformations.setdefault(layer, set())
+        cls._layer_transformations[layer].add(transformation)
 
     def __init__(self, **kwargs):
         self.kwargs = {}

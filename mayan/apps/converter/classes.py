@@ -27,7 +27,9 @@ from mayan.apps.storage.utils import (
     NamedTemporaryFile, fs_cleanup, mkdtemp
 )
 
-from .exceptions import InvalidOfficeFormat, OfficeConversionError
+from .exceptions import (
+    InvalidOfficeFormat, LayerError, OfficeConversionError
+)
 from .literals import (
     CONVERTER_OFFICE_FILE_MIMETYPES, DEFAULT_LIBREOFFICE_PATH,
     DEFAULT_PAGE_NUMBER, DEFAULT_PILLOW_FORMAT
@@ -333,13 +335,12 @@ class Layer:
 
         self.__class__._registry[name] = self
 
-    def get_permission(self, action):
-        return self.permissions.get(action, None)
-
     def __str__(self):
         return force_text(s=self.label)
 
-    def add_transformation_to(self, obj, transformation_class, arguments=None):
+    def add_transformation_to(
+        self, obj, transformation_class, arguments=None, order=None
+    ):
         ContentType = apps.get_model(
             app_label='contenttypes', model_name='ContentType'
         )
@@ -347,9 +348,18 @@ class Layer:
         object_layer, created = self.stored_layer.object_layers.get_or_create(
             content_type=content_type, object_id=obj.pk
         )
-        object_layer.transformations.create(
-            name=transformation_class.name, arguments=arguments
-        )
+
+        if self in transformation_class._layer_transformations:
+            return object_layer.transformations.create(
+                arguments=arguments, order=order,
+                name=transformation_class.name
+            )
+        else:
+            raise LayerError(
+                'Transformation `{}` not registered for layer `{}`.'.format(
+                    transformation_class, self
+                )
+            )
 
     def copy_transformations(self, source, targets, delete_existing=False):
         """
@@ -399,6 +409,9 @@ class Layer:
         )
 
         return stored_layer
+
+    def get_permission(self, action):
+        return self.permissions.get(action, None)
 
     def get_transformations_for(self, obj, as_classes=False):
         """

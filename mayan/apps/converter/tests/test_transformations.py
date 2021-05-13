@@ -12,14 +12,11 @@ from .literals import (
     TEST_TRANSFORMATION_COMBINED_CACHE_HASH,
     TEST_TRANSFORMATION_RESIZE_CACHE_HASH,
     TEST_TRANSFORMATION_RESIZE_CACHE_HASH_2,
-    TEST_TRANSFORMATION_RESIZE_HEIGHT,
-    TEST_TRANSFORMATION_RESIZE_HEIGHT_2,
-    TEST_TRANSFORMATION_RESIZE_WIDTH,
-    TEST_TRANSFORMATION_RESIZE_WIDTH_2,
+    TEST_TRANSFORMATION_RESIZE_HEIGHT, TEST_TRANSFORMATION_RESIZE_HEIGHT_2,
+    TEST_TRANSFORMATION_RESIZE_WIDTH, TEST_TRANSFORMATION_RESIZE_WIDTH_2,
     TEST_TRANSFORMATION_ROTATE_CACHE_HASH,
-    TEST_TRANSFORMATION_ROTATE_DEGRESS,
-    TEST_TRANSFORMATION_ZOOM_CACHE_HASH,
-    TEST_TRANSFORMATION_ZOOM_PERCENT,
+    TEST_TRANSFORMATION_ROTATE_DEGRESS, TEST_TRANSFORMATION_ZOOM_CACHE_HASH,
+    TEST_TRANSFORMATION_ZOOM_PERCENT
 )
 from .mixins import LayerTestMixin
 
@@ -112,7 +109,13 @@ class TransformationBaseTestCase(TestCase):
 
 
 class TransformationTestCase(LayerTestMixin, GenericDocumentTestCase):
+    auto_create_test_transformation_class = False
+
     def test_crop_transformation_optional_arguments(self):
+        BaseTransformation.register(
+            layer=self.test_layer, transformation=TransformationCrop
+        )
+
         self._silence_logger(name='mayan.apps.converter.managers')
 
         document_page = self.test_document.pages.first()
@@ -125,6 +128,10 @@ class TransformationTestCase(LayerTestMixin, GenericDocumentTestCase):
         self.assertTrue(document_page.generate_image())
 
     def test_crop_transformation_invalid_arguments(self):
+        BaseTransformation.register(
+            layer=self.test_layer, transformation=TransformationCrop
+        )
+
         self._silence_logger(name='mayan.apps.converter.managers')
 
         document_page = self.test_document.pages.first()
@@ -136,6 +143,10 @@ class TransformationTestCase(LayerTestMixin, GenericDocumentTestCase):
         self.assertTrue(document_page.generate_image())
 
     def test_crop_transformation_non_valid_range_arguments(self):
+        BaseTransformation.register(
+            layer=self.test_layer, transformation=TransformationCrop
+        )
+
         self._silence_logger(name='mayan.apps.converter.managers')
 
         document_page = self.test_document.pages.first()
@@ -148,6 +159,10 @@ class TransformationTestCase(LayerTestMixin, GenericDocumentTestCase):
         self.assertTrue(document_page.generate_image())
 
     def test_crop_transformation_overlapping_ranges_arguments(self):
+        BaseTransformation.register(
+            layer=self.test_layer, transformation=TransformationCrop
+        )
+
         self._silence_logger(name='mayan.apps.converter.managers')
 
         document_page = self.test_document.pages.first()
@@ -165,6 +180,10 @@ class TransformationTestCase(LayerTestMixin, GenericDocumentTestCase):
         self.assertTrue(document_page.generate_image())
 
     def test_lineart_transformations(self):
+        BaseTransformation.register(
+            layer=self.test_layer, transformation=TransformationLineArt
+        )
+
         document_page = self.test_document.pages.first()
 
         self.test_layer.add_transformation_to(
@@ -175,6 +194,10 @@ class TransformationTestCase(LayerTestMixin, GenericDocumentTestCase):
         self.assertTrue(document_page.generate_image())
 
     def test_rotate_transformations(self):
+        BaseTransformation.register(
+            layer=self.test_layer, transformation=TransformationRotate90
+        )
+
         document_page = self.test_document.pages.first()
 
         self.test_layer.add_transformation_to(

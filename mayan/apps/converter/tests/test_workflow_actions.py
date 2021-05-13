@@ -7,7 +7,10 @@ from mayan.apps.testing.tests.base import GenericViewTestCase
 from ..models import LayerTransformation
 from ..workflow_actions import TransformationAddAction
 
-from .literals import TEST_TRANSFORMATION_ARGUMENT, TEST_TRANSFORMATION_NAME
+from .literals import (
+    TEST_TRANSFORMATION_ROTATE_ARGUMENT,
+    TEST_TRANSFORMATION_ROTATE_NAME
+)
 
 
 class TransformationActionTestCase(ActionTestCase):
@@ -15,8 +18,8 @@ class TransformationActionTestCase(ActionTestCase):
         action = TransformationAddAction(
             form_data={
                 'pages': '',
-                'transformation_class': TEST_TRANSFORMATION_NAME,
-                'transformation_arguments': TEST_TRANSFORMATION_ARGUMENT
+                'transformation_class': TEST_TRANSFORMATION_ROTATE_NAME,
+                'transformation_arguments': TEST_TRANSFORMATION_ROTATE_ARGUMENT
             }
         )
 
@@ -35,8 +38,8 @@ class TransformationActionTestCase(ActionTestCase):
         action = TransformationAddAction(
             form_data={
                 'pages': '1',
-                'transformation_class': TEST_TRANSFORMATION_NAME,
-                'transformation_arguments': TEST_TRANSFORMATION_ARGUMENT
+                'transformation_class': TEST_TRANSFORMATION_ROTATE_NAME,
+                'transformation_arguments': TEST_TRANSFORMATION_ROTATE_ARGUMENT
             }
         )
 
@@ -66,8 +69,8 @@ class TransformationActionViewTestCase(
             class_path='mayan.apps.converter.workflow_actions.TransformationAddAction',
             extra_data={
                 'pages': '',
-                'transformation_class': TEST_TRANSFORMATION_NAME,
-                'transformation_arguments': TEST_TRANSFORMATION_ARGUMENT
+                'transformation_class': TEST_TRANSFORMATION_ROTATE_NAME,
+                'transformation_arguments': TEST_TRANSFORMATION_ROTATE_ARGUMENT
             }
         )
         self.assertEqual(response.status_code, 302)
@@ -83,8 +86,8 @@ class TransformationActionViewTestCase(
             class_path='mayan.apps.converter.workflow_actions.TransformationAddAction',
             extra_data={
                 'pages': '1',
-                'transformation_class': TEST_TRANSFORMATION_NAME,
-                'transformation_arguments': TEST_TRANSFORMATION_ARGUMENT
+                'transformation_class': TEST_TRANSFORMATION_ROTATE_NAME,
+                'transformation_arguments': TEST_TRANSFORMATION_ROTATE_ARGUMENT
             }
         )
         self.assertEqual(response.status_code, 302)

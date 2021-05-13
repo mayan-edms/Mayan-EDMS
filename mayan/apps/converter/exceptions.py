@@ -51,3 +51,10 @@ class PageCountError(ConvertError):
     Raised when an error is encountered while determining the page count of a
     file.
     """
+
+
+class LayerError(ConvertError):
+    """
+    Raise by the layer class when attempting to create a transformation in
+    a layer for which it was not registered.
+    """
