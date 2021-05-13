@@ -146,7 +146,7 @@ services:
     <<: *mayan-container
     command:
       - run_worker
-      - fast
+      - worker_a
     profiles:
       - extra_worker_a
 
@@ -155,7 +155,7 @@ services:
     <<: *mayan-container
     command:
       - run_worker
-      - medium
+      - worker_b
     profiles:
       - extra_worker_b
 
@@ -164,7 +164,7 @@ services:
     <<: *mayan-container
     command:
       - run_worker
-      - medium
+      - worker_c
     profiles:
       - extra_worker_c
 
@@ -173,7 +173,7 @@ services:
     <<: *mayan-container
     command:
       - run_worker
-      - slow
+      - worker_d
     profiles:
       - extra_worker_d
 
@@ -198,7 +198,7 @@ services:
 
   # Enable to use RabbitMQ
   # rabbitmq:
-  #   image: rabbitmq:3.8-alpine
+  #   image: rabbitmq:${MAYAN_DOCKER_RABBITMQ_TAG:-3.8-alpine}
   #   environment:
   #     RABBITMQ_DEFAULT_USER: ${MAYAN_RABBITMQ_USER:-mayan}
   #     RABBITMQ_DEFAULT_PASS: ${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}
