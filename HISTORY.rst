@@ -354,4 +354,4 @@
 - Avoid adding a transformation to a layer for which it was
   not registered. 
 - Add LayerError exception.
-
+- Fix redaction ACL support.
