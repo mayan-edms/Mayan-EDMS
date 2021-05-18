@@ -321,6 +321,26 @@ ready. This is a first stage app and we plan to expand the use of this app
 in subsequent versions.
 
 
+Organizations
+^^^^^^^^^^^^^
+
+A new small app was added to handle details that are specific to an
+organizations installation of Mayan EDMS. The app is called ``organizations``
+and hold two settings. The setting ``ORGANIZATIONS_INSTALLATION_URL``
+allows setting the URL of the installation. This URL is used when composing
+the document link URL when sending document links via email. It is also used
+to create the download link for exported document versions.
+
+If this setting is not specified, Mayan EDMS will try to obtain the URL
+scheme, host, and port from the HTTP request itself. When running Mayan EDMS
+behind proxy servers or load balancers this might not return accurate results
+and will require an explicit value for the setting.
+
+The setting ``ORGANIZATIONS_URL_BASE_PATH`` replaces the previous setting
+named ``COMMON_URL_BASE_PATH`` used when hosting Mayan EDMS in a path other
+than the root path ('/') of the web server.
+
+
 OCR
 ^^^
 

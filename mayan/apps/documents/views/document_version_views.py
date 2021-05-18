@@ -10,6 +10,7 @@ from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.permissions import (
     permission_transformation_delete, permission_transformation_edit
 )
+from mayan.apps.organizations.utils import get_organization_installation_url
 from mayan.apps.views.generics import (
     ConfirmView, FormView, MultipleObjectConfirmActionView,
     MultipleObjectDeleteView, SingleObjectCreateView, SingleObjectDetailView,
@@ -178,6 +179,9 @@ class DocumentVersionExportView(MultipleObjectConfirmActionView):
         task_document_version_export.apply_async(
             kwargs={
                 'document_version_id': instance.pk,
+                'organization_installation_url': get_organization_installation_url(
+                    request=self.request
+                ),
                 'user_id': self.request.user.pk
             }
         )

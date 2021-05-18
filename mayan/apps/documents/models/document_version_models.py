@@ -11,9 +11,8 @@ from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.classes import ModelQueryFields
-from mayan.apps.databases.model_mixins import ExtraDataModelMixin
-from mayan.apps.common.settings import setting_project_url
 from mayan.apps.converter.exceptions import AppImageError
+from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
 from mayan.apps.events.decorators import method_event
 from mayan.apps.messaging.models import Message
@@ -131,7 +130,7 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
             for page in self.pages[1:]:
                 page.export(append=True, file_object=file_object)
 
-    def export_to_download_file(self, user=None):
+    def export_to_download_file(self, organization_installation_url='', user=None):
         download_file = DownloadFile(
             content_object=self, filename='{}.pdf'.format(self),
             label=_('Document version export to PDF'),
@@ -149,12 +148,13 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
         )
 
         if user:
-            download_list_url = furl(setting_project_url.value).join(
+            download_list_url = furl(organization_installation_url).join(
                 reverse(
                     viewname='storage:download_file_list'
                 )
             ).tostr()
-            download_url = furl(setting_project_url.value).join(
+
+            download_url = furl(organization_installation_url).join(
                 reverse(
                     viewname='storage:download_file_download',
                     kwargs={'download_file_id': download_file.pk}
@@ -173,7 +173,7 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
                 ) % {
                     'download_list_url': download_list_url,
                     'download_url': download_url,
-                    'document_version': self
+                    'document_version': self,
                 }
             )
 

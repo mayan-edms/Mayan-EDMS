@@ -94,6 +94,7 @@ INSTALLED_APPS = (
     'mayan.apps.messaging',
     'mayan.apps.mimetype',
     'mayan.apps.navigation',
+    'mayan.apps.organizations',
     'mayan.apps.permissions',
     'mayan.apps.platform',
     'mayan.apps.quotas',

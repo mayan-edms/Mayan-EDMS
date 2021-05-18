@@ -7,8 +7,7 @@ from .literals import (
     DEFAULT_COMMON_COLLAPSE_LIST_MENU_OBJECT,
     DEFAULT_COMMON_DB_SYNC_TASK_DELAY, DEFAULT_COMMON_DISABLED_APPS,
     DEFAULT_COMMON_EXTRA_APPS, DEFAULT_COMMON_HOME_VIEW,
-    DEFAULT_COMMON_PROJECT_TITLE, DEFAULT_COMMON_PROJECT_URL,
-    DEFAULT_COMMON_URL_BASE_PATH
+    DEFAULT_COMMON_PROJECT_TITLE, DEFAULT_COMMON_PROJECT_URL
 )
 
 namespace = SettingNamespace(
@@ -77,8 +76,4 @@ setting_project_url = namespace.add_setting(
     help_text=_(
         'URL of the installation or homepage of the project.'
     )
-)
-setting_url_base_path = namespace.add_setting(
-    default=DEFAULT_COMMON_URL_BASE_PATH, global_name='COMMON_URL_BASE_PATH',
-    help_text=_('Base URL path to use for all views.')
 )

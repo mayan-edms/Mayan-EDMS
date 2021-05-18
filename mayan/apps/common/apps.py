@@ -10,6 +10,7 @@ from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.organizations.settings import setting_organization_installation_url
 from mayan.apps.templating.classes import AJAXTemplate
 
 from .handlers import handler_pre_initial_setup, handler_pre_upgrade
@@ -20,7 +21,6 @@ from .links import (
 
 from .literals import MESSAGE_SQLITE_WARNING
 from .menus import menu_about, menu_topbar, menu_user
-from .settings import setting_url_base_path
 
 from .signals import signal_pre_initial_setup, signal_pre_upgrade
 from .utils import check_for_sqlite
@@ -37,7 +37,7 @@ class MayanAppConfig(apps.AppConfig):
         logger.debug('Initializing app: %s', self.name)
         from mayan.urls import urlpatterns as mayan_urlpatterns
 
-        installation_base_url = setting_url_base_path.value
+        installation_base_url = setting_organization_installation_url.value
         if installation_base_url:
             installation_base_url = '{}/'.format(installation_base_url)
         else:

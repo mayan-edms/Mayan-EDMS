@@ -197,7 +197,9 @@ def task_document_version_page_list_reset(document_version_id):
 
 
 @app.task(ignore_result=True)
-def task_document_version_export(document_version_id, user_id=None):
+def task_document_version_export(
+    document_version_id, organization_installation_url=None, user_id=None
+):
     DocumentVersion = apps.get_model(
         app_label='documents', model_name='DocumentVersion'
     )
@@ -212,7 +214,9 @@ def task_document_version_export(document_version_id, user_id=None):
         pk=document_version_id
     )
 
-    document_version.export_to_download_file(user=user)
+    document_version.export_to_download_file(
+        organization_installation_url=organization_installation_url, user=user
+    )
 
 
 # Document version page

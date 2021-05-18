@@ -268,7 +268,7 @@ class UserImpersonateStartView(ExternalObjectViewMixin, FormView):
             query[USER_IMPERSONATE_VARIABLE_PERMANENT] = ''
 
         url = URL(
-            viewname=setting_home_view.value, query=query
+            query=query, viewname=setting_home_view.value
         )
         return HttpResponseRedirect(redirect_to=url.to_string())
 

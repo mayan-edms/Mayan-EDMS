@@ -10,7 +10,6 @@ from django.utils.html import strip_tags
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.settings import setting_project_url
 from mayan.apps.templating.classes import Template
 
 from .classes import NullBackend
@@ -184,13 +183,13 @@ class UserMailer(models.Model):
 
     def send_document(
         self, document, to, as_attachment=False, body='', cc=None, bcc=None,
-        reply_to=None, subject='', _user=None
+        organization_installation_url='', reply_to=None, subject='', _user=None
     ):
         """
         Send a document using this user mailing profile.
         """
         context_dictionary = {
-            'link': furl(setting_project_url.value).join(
+            'link': furl(organization_installation_url).join(
                 document.get_absolute_url()
             ).tostr(),
             'document': document

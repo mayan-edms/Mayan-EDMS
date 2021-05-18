@@ -5,7 +5,7 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.schemas.generators import EndpointEnumerator
 
 import mayan
-from mayan.apps.common.settings import setting_url_base_path
+from mayan.apps.organizations.settings import setting_organization_installation_url
 
 from .classes import Endpoint
 from .generics import RetrieveAPIView, ListAPIView
@@ -58,7 +58,7 @@ class APIVersionRoot(ListAPIView):
         """
         endpoint_enumerator = EndpointEnumerator()
 
-        if setting_url_base_path.value:
+        if setting_organization_installation_url.value:
             url_index = 4
         else:
             url_index = 3

@@ -6,6 +6,7 @@ from django.utils.translation import ungettext, ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
+from mayan.apps.organizations.utils import get_organization_installation_url
 from mayan.apps.views.generics import (
     FormView, MultipleObjectFormActionView, SingleObjectDeleteView,
     SingleObjectDynamicFormCreateView, SingleObjectDynamicFormEditView,
@@ -84,10 +85,13 @@ class MailDocumentView(MultipleObjectFormActionView):
                 'as_attachment': self.as_attachment,
                 'body': form.cleaned_data['body'],
                 'document_id': instance.pk,
+                'organization_installation_url': get_organization_installation_url(
+                    request=self.request
+                ),
                 'recipient': form.cleaned_data['email'],
                 'sender': self.request.user.email,
                 'subject': form.cleaned_data['subject'],
-                'user_mailer_id': form.cleaned_data['user_mailer'].pk,
+                'user_mailer_id': form.cleaned_data['user_mailer'].pk
             }
         )
 
