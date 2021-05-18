@@ -4,12 +4,22 @@ from ..http import URL
 
 
 class URLTestCase(BaseTestCase):
+    def test_query_list_to_string(self):
+        url = URL(query={'a': [1, 2]})
+
+        self.assertEqual(url.to_string(), '?a=1&a=2')
+
+    def test_query_string_to_string(self):
+        url = URL(url='http://example.com?a=1', query={'a': 'string'})
+
+        self.assertEqual(url.to_string(), 'http://example.com?a=string')
+
     def test_query_to_string(self):
         url = URL(query={'a': 1})
 
         self.assertEqual(url.to_string(), '?a=1')
 
-    def test_query_list_to_string(self):
+    def test_query_list_append_to_string(self):
         url = URL(query={'a': '1'})
         url.args.appendlist(key='a', value='2')
 
@@ -52,11 +62,30 @@ class URLTestCase(BaseTestCase):
         self.assertEqual(url.args.getlist('b'), ['1'])
 
     def test_path_and_querystring_to_string(self):
-        url = URL(path='http://example.com', query_string='a=1')
+        url = URL(url='http://example.com', query_string='a=1')
 
         self.assertEqual(url.to_string(), 'http://example.com?a=1')
 
     def test_path_and_query_to_string(self):
-        url = URL(path='http://example.com', query={'a': 1})
+        url = URL(url='http://example.com', query={'a': 1})
 
         self.assertEqual(url.to_string(), 'http://example.com?a=1')
+
+    def test_scheme_set(self):
+        url = URL(scheme='http', netloc='127.0.0.1')
+
+        self.assertEqual(url.to_string(), 'http://127.0.0.1')
+
+    def test_scheme_replace(self):
+        url = URL(scheme='http', url='https://127.0.0.1')
+
+        self.assertEqual(url.to_string(), 'http://127.0.0.1')
+
+    def test_path_viewname_exclusion(self):
+        with self.assertRaises(expected_exception=RuntimeError):
+            URL(path='/view', viewname='app:viewname')
+
+    def test_path_replace(self):
+        url = URL(url='http://127.0.0.1:8000/view_a', path='view_b')
+
+        self.assertEqual(url.to_string(), 'http://127.0.0.1:8000/view_b')
