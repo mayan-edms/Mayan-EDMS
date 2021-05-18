@@ -14,7 +14,7 @@ found in the :menuselection:`Tools --> API Documentation (Swagger)` menu for
 the Swagger version and in the
 :menuselection:`Tools --> API Documentation (ReDoc)` menu for the ReDoc version.
 
-The are a few ways to structure REST APIs. In the case of Mayan EDMS, API
+There are a few ways to structure REST APIs. In the case of Mayan EDMS, API
 endpoints are structured by resource type. Examples:
 
 * /cabinets - To view or create new cabinets
@@ -24,8 +24,17 @@ endpoints are structured by resource type. Examples:
 * /cabinets/<id>/documents/<id> - To view, add, or remove one document from an
   existing cabinet.
 
+The API is versioned with a top level entry. Since Mayan uses semantic
+versioning and API changes only occur on major versions, the API version will
+match the major version of the release. For every release of the series 4.x
+the API version will be "v4".
+
 The API supports the HTTP verbs: **GET**, **POST**, **PUT**, **PATCH**,
 and **DELETE**.
+
+The API also supports result sorting. Like the user interface, only
+indexed database fields support. The **OPTION** verb can be used to determine
+with fields are sortable.
 
 
 Example use
@@ -43,7 +52,7 @@ Get a list of document types:
 
     import requests
 
-    requests.get('http://127.0.0.1:8000/api/document_types/', auth=('username', 'password')).json()
+    requests.get('http://127.0.0.1:8000/api/v4/document_types/', auth=('username', 'password')).json()
 
     {u'count': 1,
      u'next': None,
@@ -51,20 +60,20 @@ Get a list of document types:
      u'results': [{u'delete_time_period': 30,
      u'delete_time_unit': u'days',
      u'documents_count': 12,
-     u'documents_url': u'http://127.0.0.1:8000/api/document_types/1/documents/',
+     u'documents_url': u'http://127.0.0.1:8000/api/v4/document_types/1/documents/',
      u'filenames': [],
      u'id': 1,
      u'label': u'Default',
      u'trash_time_period': None,
      u'trash_time_unit': None,
-     u'url': u'http://127.0.0.1:8000/api/document_types/1/'}]}
+     u'url': u'http://127.0.0.1:8000/api/v4/document_types/1/'}]}
 
 Upload a new document:
 
 .. code-block:: python
 
     with open(file='test_document.pdf', mode='rb') as file_object:
-        requests.post('http://127.0.0.1:8000/api/documents/', auth=('username', 'password'), files={'file': file_object}, data={'document_type': 1}).json()
+        requests.post('http://127.0.0.1:8000/api/v4/documents/', auth=('username', 'password'), files={'file': file_object}, data={'document_type': 1}).json()
 
     {u'description': u'',
     u'document_type': 1,
@@ -72,11 +81,11 @@ Upload a new document:
     u'label': u'test_document.pdf',
     u'language': u'eng'}
 
-Use API tokens to avoid sending the username and password on every request. Obtain a token by making a POST request to ``/api/auth/token/obtain/?format=json``:
+Use API tokens to avoid sending the username and password on every request. Obtain a token by making a POST request to ``/api/v4/auth/token/obtain/?format=json``:
 
 .. code-block:: python
 
-    requests.post('http://127.0.0.1:8000/api/auth/token/obtain/?format=json', data={'username': 'username', 'password': 'password'}).json()
+    requests.post('http://127.0.0.1:8000/api/v4/auth/token/obtain/?format=json', data={'username': 'username', 'password': 'password'}).json()
 
     {u'token': u'4ccbc35b5eb327aa82dc3b7c9747b578900f02bb'}
 
@@ -86,7 +95,7 @@ Add the API token to the request header:
 
     headers = {'Authorization': 'Token 4ccbc35b5eb327aa82dc3b7c9747b578900f02bb'}
 
-    requests.get('http://127.0.0.1:8000/api/document_types/', headers=headers).json()
+    requests.get('http://127.0.0.1:8000/api/v4/document_types/', headers=headers).json()
 
     {u'description': u'',
     u'document_type': 1,
@@ -105,7 +114,7 @@ Use sessions to avoid having to add the headers on each request:
 
     session.headers.update(headers)
 
-    session.get('http://127.0.0.1:8000/api/document_types/')
+    session.get('http://127.0.0.1:8000/api/v4/document_types/')
 
     {u'description': u'',
     u'document_type': 1,

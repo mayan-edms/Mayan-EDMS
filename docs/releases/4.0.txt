@@ -95,8 +95,8 @@ match the major version of the release. For this release and for
 every release of the series 4.x the API version will be "v4".
 
 Support was added for API result sorting. Like the user interface, only
-indexed database fields support. The "OPTION" verb can be used to determine
-with fields are sortable.
+indexed database fields support. The **OPTION** verb can be used to determine
+which fields are sortable.
 
 
 Converter
@@ -163,7 +163,7 @@ storage for image previews.
 The three storages are:
 
   - ``DOCUMENTS_FILE_STORAGE_BACKENS`` - Stores the uploaded document files.
-  - ``DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND - Stores the preview
+  - ``DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND`` - Stores the preview
     images of the uploaded document files.
   - ``DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND`` - Stores the
     preview images of the document version pages.
@@ -715,6 +715,16 @@ Upgrading from Mayan EDMS 3.5.x
 
    the requirements will also be updated automatically.
 
+
+#. Create the ``|DEFAULT_USER_SETTINGS_FOLDER|`` folder inside the ``media``
+   folder and convert it into a Python module. This folder is used for
+   custom setting modules. Adjust the path of the ``media`` folder for your
+   installation:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| mkdir --parents |MAYAN_MEDIA_ROOT|
+    sudo -u |DEFAULT_OS_USERNAME| touch |MAYAN_MEDIA_ROOT|__init__.py
 
 
 #. Update the Redis configuration to keep 3 databases:
