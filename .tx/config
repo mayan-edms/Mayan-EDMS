@@ -212,6 +212,12 @@ source_file = mayan/apps/ocr/locale/en/LC_MESSAGES/django.po
 source_lang = en
 type = PO
 
+[mayan-edms.organizations-4-0]
+file_filter = mayan/apps/organizations/locale/<lang>/LC_MESSAGES/django.po
+source_file = mayan/apps/organizations/locale/en/LC_MESSAGES/django.po
+source_lang = en
+type = PO
+
 [mayan-edms.permissions-4-0]
 file_filter = mayan/apps/permissions/locale/<lang>/LC_MESSAGES/django.po
 source_file = mayan/apps/permissions/locale/en/LC_MESSAGES/django.po
