@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-18 10:00+0000\n"
+"POT-Creation-Date: 2021-05-19 03:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: trendspotter, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -65,7 +65,7 @@ msgstr ""
 #: models/document_file_models.py:120 models/document_file_page_models.py:42
 #: search.py:51
 msgid "Document file"
-msgstr ""
+msgstr "Soubor dokumentu"
 
 #: apps.py:405 models/document_file_page_models.py:46
 #: models/document_version_page_models.py:58
@@ -221,7 +221,7 @@ msgstr ""
 
 #: events.py:68
 msgid "Document version deleted"
-msgstr ""
+msgstr "Verze dokumentu smazána"
 
 #: events.py:71
 msgid "Document version edited"
@@ -514,7 +514,7 @@ msgstr ""
 
 #: links/document_version_links.py:51
 msgid "Export"
-msgstr ""
+msgstr "Export"
 
 #: links/document_version_links.py:59 links/document_version_links.py:81
 msgid "Versions"
@@ -877,6 +877,7 @@ msgstr ""
 #: models/document_version_page_models.py:56
 msgid "Unique integer number for the page. Pages are ordered by this number."
 msgstr ""
+"Jedinečné celé číslo pro stránku. Stránky jsou seřazeny podle tohoto čísla."
 
 #: models/document_version_page_models.py:61
 msgid "Content type for the source object of the page."
@@ -1075,7 +1076,7 @@ msgstr "Aktualizujte počet stránek dokumentu"
 
 #: queues.py:78
 msgid "Upload new document file"
-msgstr ""
+msgstr "Nahrát nový soubor dokumentu"
 
 #: search.py:31 search.py:62 search.py:89 search.py:129 search.py:153
 msgid "Document type label"
@@ -1286,6 +1287,8 @@ msgid ""
 "Unable to initialize the document file storage. Check the settings {} and {}"
 " for formatting errors."
 msgstr ""
+"Nelze inicializovat úložiště souborů dokumentů. Zkontrolujte nastavení {} a "
+"{}, zda nedošlo k chybám ve formátování."
 
 #: storages.py:35
 msgid ""
@@ -1768,6 +1771,8 @@ msgid ""
 "Versions are views that can display document file pages as they are, remap "
 "or merge them into different layouts."
 msgstr ""
+"Verze jsou pohledy, které mohou zobrazovat stránky souboru dokumentu tak, "
+"jak jsou, přemapovávat je nebo je slučovat do různých rozvržení."
 
 #: views/document_version_views.py:213
 msgid "No versions available"
@@ -1891,7 +1896,7 @@ msgstr "Upravit vlastnosti dokumentu: %s"
 #: views/document_views.py:196
 #, python-format
 msgid "Properties of document: %s"
-msgstr ""
+msgstr "Vlastnosti dokumentu: %s"
 
 #: views/favorite_document_views.py:32
 #, python-format
@@ -2058,7 +2063,7 @@ msgstr[3] ""
 
 #: workflow_actions.py:13
 msgid "New document type for the workflow document."
-msgstr ""
+msgstr "Nový typ dokumentu pro dokument pracovního postupu."
 
 #: workflow_actions.py:18
 msgid "Change document type"

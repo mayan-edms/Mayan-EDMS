@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
@@ -10,21 +10,21 @@
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2021
 # Baptiste GAILLET <baptiste.gaillet@cstb.fr>, 2021
 # Yves Dubois <ydubois@gmail.com>, 2021
-# Frédéric Sheedy <sheedf@gmail.com>, 2021
 # Guillaume Trottier <gui.trottier@gmail.com>, 2021
-#
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-18 10:00+0000\n"
+"POT-Creation-Date: 2021-05-19 03:02+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:74 events.py:6 permissions.py:6
@@ -78,7 +78,7 @@ msgstr "Identifiant"
 
 #: apps.py:108
 msgid "Last login"
-msgstr ""
+msgstr "Dernière connexion"
 
 #: apps.py:111
 msgid "Has usable password?"
@@ -206,11 +206,11 @@ msgstr ""
 
 #: serializers.py:48
 msgid "Primary key of the user to add to the group."
-msgstr ""
+msgstr "Clé primaire de l'utilisateur à ajouter au groupe."
 
 #: serializers.py:57
 msgid "Primary key of the user to remove from the group."
-msgstr ""
+msgstr "Clé primaire de l'utilisateur à retirer du groupe."
 
 #: serializers.py:66
 msgid "URL of the API endpoint showing the list groups this user belongs to."
@@ -245,9 +245,9 @@ msgid ""
 "roles for permissions and access control, add groups to them."
 msgstr ""
 "Les groupes d'utilisateurs sont des unités d'organisation. Ils doivent "
-"refléter les unités organisationnelles de votre organisation. Les groupes ne "
-"peuvent pas être utilisés pour le contrôle d'accès. Utilisez les rôles pour "
-"les autorisations et le contrôle d'accès, ajoutez-leur des groupes."
+"refléter les unités organisationnelles de votre organisation. Les groupes ne"
+" peuvent pas être utilisés pour le contrôle d'accès. Utilisez les rôles pour"
+" les autorisations et le contrôle d'accès, ajoutez-leur des groupes."
 
 #: views.py:119
 msgid "There are no user groups"
@@ -305,8 +305,7 @@ msgstr "Utilisateur \"%s\" supprimé avec succès."
 #: views.py:220
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
-msgstr ""
-"Erreur lors de la suppression de l'utilisateur \"%(user)s\" : %(error)s"
+msgstr "Erreur lors de la suppression de l'utilisateur \"%(user)s\" : %(error)s"
 
 #: views.py:238
 #, python-format

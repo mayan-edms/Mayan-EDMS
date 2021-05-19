@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-18 10:00+0000\n"
+"POT-Creation-Date: 2021-05-19 03:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Harald Ersch, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -244,7 +244,7 @@ msgstr "Pagina versiunii documentului a fost ștearsă"
 
 #: events.py:88
 msgid "Document version page edited"
-msgstr ""
+msgstr "Pagină versiune document editată"
 
 #: events.py:95
 msgid "Document trashed"
@@ -252,27 +252,27 @@ msgstr "Document trimis la coș"
 
 #: events.py:98
 msgid "Trashed document deleted"
-msgstr ""
+msgstr "Documentul din coșul de gunoi a fost șters"
 
 #: events.py:101
 msgid "Trashed document restored"
-msgstr ""
+msgstr "Documentul din coșul de gunoi a fost restaurat"
 
 #: events.py:107
 msgid "Document downloaded (historic)"
-msgstr ""
+msgstr "Document descărcat (istoric)"
 
 #: events.py:110
 msgid "Document file created (historic)"
-msgstr ""
+msgstr "Fișier document creat (istoric)"
 
 #: events.py:114
 msgid "Document version reverted (historic)"
-msgstr ""
+msgstr "Versiunea documentului restaurată (istoric)"
 
 #: events.py:118
 msgid "Document version uploaded (historic)"
-msgstr ""
+msgstr "Versiunea documentului încărcată (istoric)"
 
 #: forms/document_file_forms.py:38
 msgid "Date added"
@@ -280,7 +280,7 @@ msgstr "Dată adaugată"
 
 #: forms/document_file_forms.py:43
 msgid "Mimetype"
-msgstr ""
+msgstr "Tip MIME"
 
 #: forms/document_file_forms.py:47 models/document_file_models.py:108
 msgid "Encoding"
@@ -288,7 +288,7 @@ msgstr "Encodare"
 
 #: forms/document_file_forms.py:51
 msgid "Size"
-msgstr ""
+msgstr "mărime"
 
 #: forms/document_file_forms.py:56
 msgid "Exists in storage"
@@ -296,7 +296,7 @@ msgstr "Există în arhivă"
 
 #: forms/document_file_forms.py:58
 msgid "Path in storage"
-msgstr ""
+msgstr "Calea în depozit"
 
 #: forms/document_file_forms.py:61 models/document_file_models.py:115
 msgid "Checksum"
@@ -321,7 +321,7 @@ msgstr ""
 
 #: forms/document_forms.py:104
 msgid "Date created"
-msgstr ""
+msgstr "Data creării"
 
 #: forms/document_forms.py:110 models/document_models.py:86
 msgid "Language"
@@ -335,7 +335,7 @@ msgstr "Tipul documentului"
 
 #: forms/document_version_page_forms.py:27
 msgid "Content type"
-msgstr ""
+msgstr "Tipul de conținut"
 
 #: forms/document_version_page_forms.py:30
 msgid "Object ID"
@@ -347,11 +347,11 @@ msgstr "Sursă"
 
 #: forms/document_version_page_forms.py:38
 msgid "Destination page number"
-msgstr ""
+msgstr "Numărul paginii de destinație"
 
 #: forms/document_version_page_forms.py:82
 msgid "Target page number can't be repeated."
-msgstr ""
+msgstr "Numărul paginii țintă nu poate fi repetat."
 
 #: forms/misc_forms.py:12 literals.py:94
 msgid "Page range"
@@ -384,7 +384,7 @@ msgstr "Descărcați rapid"
 
 #: links/document_file_links.py:47 links/document_file_links.py:69
 msgid "Files"
-msgstr ""
+msgstr "Fișiere"
 
 #: links/document_file_links.py:51 links/document_version_links.py:69
 msgid "Print"
@@ -431,7 +431,7 @@ msgstr "Pagina următoare"
 #: links/document_file_page_links.py:86 models/document_file_page_models.py:54
 #: models/document_file_page_models.py:317
 msgid "Document file pages"
-msgstr ""
+msgstr "Pagini de fișiere de documente"
 
 #: links/document_file_page_links.py:91
 #: links/document_version_page_links.py:114

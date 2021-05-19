@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
@@ -11,21 +11,20 @@
 # John Kawas <john@clinicalclouds.com>, 2021
 # Marwan Rahhal <Marwanr@sssit.net>, 2021
 # WM Shinkada <shinkadawasim@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-18 10:00+0000\n"
+"POT-Creation-Date: 2021-05-19 03:02+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: WM Shinkada <shinkadawasim@gmail.com>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
-"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
 #: settings.py:14 views/source_views.py:173
@@ -395,12 +394,13 @@ msgstr "معايير البحث"
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 "أمر IMAP STORE لتنفيذه على الرسائل بعد معالجتها. أمر واحد لكل سطر. استخدم "
-"الأوامر المحددة في https://tools.ietf.org/html/rfc2060.html#section-6.4.6 أو "
-"الأوامر المخصصة لخادم IMAP."
+"الأوامر المحددة في https://tools.ietf.org/html/rfc2060.html#section-6.4.6 أو"
+" الأوامر المخصصة لخادم IMAP."
 
 #: models/email_sources.py:232
 msgid "Store commands"
@@ -456,8 +456,8 @@ msgid ""
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
 msgstr ""
-"يضبط دقة الصورة الممسوحة ضوئيًا في DPI (نقاط في البوصة). القيمة النموذجية هي "
-"200. إذا كان هذا الخيار لا يدعمه الماسح الضوئي الخاص بك ، فاتركه فارغًا."
+"يضبط دقة الصورة الممسوحة ضوئيًا في DPI (نقاط في البوصة). القيمة النموذجية هي"
+" 200. إذا كان هذا الخيار لا يدعمه الماسح الضوئي الخاص بك ، فاتركه فارغًا."
 
 #: models/scanner_sources.py:46
 msgid "Resolution"
@@ -696,11 +696,11 @@ msgstr "اعتماد"
 
 #: views/document_views.py:79 wizards.py:50
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
-"لم يتم تحديد أية مصادر تفاعلية للمستندات أو لم يتم تمكين أي منها ، قم بإنشاء "
-"واحدة قبل المتابعة."
+"لم يتم تحديد أية مصادر تفاعلية للمستندات أو لم يتم تمكين أي منها ، قم بإنشاء"
+" واحدة قبل المتابعة."
 
 #: views/document_views.py:107 views/document_views.py:136
 #: views/document_views.py:146
@@ -710,8 +710,8 @@ msgstr "خصائص المستند"
 #: views/document_views.py:116
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr "المجلد فارغ ! أو لا تمتلك الاذونات الكافية"
 
 #: views/document_views.py:123
@@ -733,7 +733,8 @@ msgstr "خطأ في تحميل الوثيقة؛ %(exception)s"
 
 #: views/document_views.py:292
 msgid "New document queued for upload and will be available shortly."
-msgstr "إصدار جديد في قائمة الانتظار من الوثيقة قيد التحميل وسيكون متاحًا قريبًا"
+msgstr ""
+"إصدار جديد في قائمة الانتظار من الوثيقة قيد التحميل وسيكون متاحًا قريبًا"
 
 #: views/document_views.py:309
 #, python-format
@@ -784,8 +785,8 @@ msgid ""
 "email sources, are automatic and run on the background without user "
 "intervention."
 msgstr ""
-"توفر المصادر وسيلة لتحميل المستندات. بعض المصادر ، مثل نموذج الويب ، تفاعلية "
-"وتتطلب إدخال المستخدم للعمل. البعض الآخر مثل مصادر البريد الإلكتروني ، يتم "
+"توفر المصادر وسيلة لتحميل المستندات. بعض المصادر ، مثل نموذج الويب ، تفاعلية"
+" وتتطلب إدخال المستخدم للعمل. البعض الآخر مثل مصادر البريد الإلكتروني ، يتم "
 "تشغيله تلقائيًا في الخلفية دون تدخل المستخدم."
 
 #: views/source_views.py:172

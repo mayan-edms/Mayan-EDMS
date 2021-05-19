@@ -2,27 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roberto Rosario, 2021
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
 # Aline Freitas <aline@alinefreitas.com.br>, 2021
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-18 10:00+0000\n"
+"POT-Creation-Date: 2021-05-19 03:02+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, "
-"2021\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
-"teams/13584/pt_BR/)\n"
-"Language: pt_BR\n"
+"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:36 events.py:6 links.py:34 models.py:36 permissions.py:5
@@ -121,9 +119,9 @@ msgid ""
 "Enabling this option, the quota will ignore the indiviual user and group "
 "selection."
 msgstr ""
-"Aplicar a quota a todos os usuários do sistema, excluindo admins e staff. Ao "
-"habilitar esta opção, a quota irá ignorar as seleções de usuário individual "
-"e grupo."
+"Aplicar a quota a todos os usuários do sistema, excluindo admins e staff. Ao"
+" habilitar esta opção, a quota irá ignorar as seleções de usuário individual"
+" e grupo."
 
 #: mixins.py:115
 msgid "Users"

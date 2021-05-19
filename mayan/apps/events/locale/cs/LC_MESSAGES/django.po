@@ -5,14 +5,15 @@
 # Translators:
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2021
+# trendspotter, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-18 10:00+0000\n"
+"POT-Creation-Date: 2021-05-19 03:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Last-Translator: trendspotter, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -59,11 +60,11 @@ msgstr "Zhlédnuto"
 
 #: classes.py:79
 msgid "Event list export to CSV"
-msgstr ""
+msgstr "Export seznamu událostí do CSV"
 
 #: classes.py:108
 msgid "Events exported."
-msgstr ""
+msgstr "Události byly exportovány."
 
 #: classes.py:110
 #, python-format
@@ -79,7 +80,7 @@ msgstr "Neznámý nebo zastaralý typ události: %s"
 
 #: events.py:8
 msgid "Events exported"
-msgstr ""
+msgstr "Události byly exportovány"
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
@@ -103,7 +104,7 @@ msgstr "Moje činnosti"
 
 #: links.py:34 links.py:49 links.py:56 views/export_views.py:57
 msgid "Export events"
-msgstr ""
+msgstr "Exportovat události"
 
 #: links.py:61 models.py:63 views/subscription_views.py:56
 msgid "Event subscriptions"
@@ -171,7 +172,7 @@ msgstr "Předplatné událostí objektu"
 
 #: permissions.py:8
 msgid "Export the events of an object"
-msgstr ""
+msgstr "Exportovat události objektu"
 
 #: permissions.py:11
 msgid "Access the events of an object"
@@ -187,7 +188,7 @@ msgstr ""
 
 #: views/event_views.py:29
 msgid "There are no events"
-msgstr ""
+msgstr "Nejsou žádné události"
 
 #: views/event_views.py:44
 msgid "There are no events for this object"
@@ -200,7 +201,7 @@ msgstr "Činnosti pro: %s"
 
 #: views/event_views.py:68
 msgid "There are no events of this type"
-msgstr ""
+msgstr "Neexistují žádné události tohoto typu"
 
 #: views/event_views.py:70 views/export_views.py:105
 #, python-format
@@ -212,10 +213,12 @@ msgid ""
 "The process will be performed in the background. The exported events will be"
 " available in the downloads area."
 msgstr ""
+"Proces bude probíhat na pozadí. Exportované události budou k dispozici v "
+"oblasti stahování."
 
 #: views/export_views.py:45
 msgid "Event list export task queued successfully."
-msgstr ""
+msgstr "Úloha exportu seznamu událostí byla úspěšně zařazena do fronty."
 
 #: views/export_views.py:76
 #, python-format
@@ -234,19 +237,19 @@ msgstr "Bez oznámení"
 
 #: views/notification_views.py:44
 msgid "Mark the selected notification as read?"
-msgstr ""
+msgstr "Označit vybrané oznámení jako přečtené?"
 
 #: views/notification_views.py:56
 msgid "Notification marked as read."
-msgstr ""
+msgstr "Oznámení označeno jako přečtené."
 
 #: views/notification_views.py:67
 msgid "Mark all notification as read?"
-msgstr ""
+msgstr "Označit všechna oznámení jako přečtená?"
 
 #: views/notification_views.py:77
 msgid "All notifications marked as read."
-msgstr ""
+msgstr "Všechna oznámení označená jako přečtená."
 
 #: views/subscription_views.py:40
 #, python-format

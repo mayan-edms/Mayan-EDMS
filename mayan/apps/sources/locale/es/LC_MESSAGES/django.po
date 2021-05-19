@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2021
 # Lory977 <helga.carrero@gmail.com>, 2021
 # Roberto Rosario, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-18 10:00+0000\n"
+"POT-Creation-Date: 2021-05-19 03:02+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
-"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
@@ -345,7 +345,8 @@ msgstr "Tipo de metadato de remitente"
 
 #: models/email_sources.py:74
 msgid "Store the body of the email as a text document."
-msgstr "Almacenar el cuerpo del correo electrónico como un documento de texto."
+msgstr ""
+"Almacenar el cuerpo del correo electrónico como un documento de texto."
 
 #: models/email_sources.py:75
 msgid "Store email body"
@@ -365,8 +366,8 @@ msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
-"El tipo de metadatos de tema \"%(metadata_type)s\" no es válido para el tipo "
-"de documento: %(document_type)s"
+"El tipo de metadatos de tema \"%(metadata_type)s\" no es válido para el tipo"
+" de documento: %(document_type)s"
 
 #: models/email_sources.py:201
 #, python-format
@@ -400,13 +401,14 @@ msgstr "Criterio de búsqueda"
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 "Comando IMAP STORE para ejecutar en mensajes después de que se procesan. Un "
-"comando por línea. Use los comandos especificados en https://tools.ietf.org/"
-"html/rfc2060.html#section-6.4.6 o los comandos personalizados para su "
-"servidor IMAP."
+"comando por línea. Use los comandos especificados en "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 o los comandos "
+"personalizados para su servidor IMAP."
 
 #: models/email_sources.py:232
 msgid "Store commands"
@@ -451,8 +453,8 @@ msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
 msgstr ""
-"Selecciona el modo de escáner (por ejemplo, lineart, monochrome o color). Si "
-"esta opción no es compatible con el escáner, déjela en blanco."
+"Selecciona el modo de escáner (por ejemplo, lineart, monochrome o color). Si"
+" esta opción no es compatible con el escáner, déjela en blanco."
 
 #: models/scanner_sources.py:39
 msgid "Mode"
@@ -720,8 +722,8 @@ msgstr "Enviar"
 
 #: views/document_views.py:79 wizards.py:50
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 "No se han definido fuentes de documentos interactivos o no hay ninguna "
 "habilitada, cree una antes de continuar."
@@ -734,11 +736,11 @@ msgstr "Propiedades de documento"
 #: views/document_views.py:116
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
-"Esto podría significar que la carpeta provisional está vacía. También podría "
-"significar que la cuenta de usuario del sistema operativo que se utiliza "
+"Esto podría significar que la carpeta provisional está vacía. También podría"
+" significar que la cuenta de usuario del sistema operativo que se utiliza "
 "para Mayan EDMS no tiene los permisos necesarios del sistema de archivos "
 "para la carpeta."
 
@@ -814,8 +816,8 @@ msgid ""
 "email sources, are automatic and run on the background without user "
 "intervention."
 msgstr ""
-"Las fuentes proporcionan los medios para cargar documentos. Algunas fuentes, "
-"como el formulario web, son interactivas y requieren la intervención del "
+"Las fuentes proporcionan los medios para cargar documentos. Algunas fuentes,"
+" como el formulario web, son interactivas y requieren la intervención del "
 "usuario para operar. Otros, como las fuentes de correo electrónico, son "
 "automáticos y se ejecutan en segundo plano sin la intervención del usuario."
 
