@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
 # jmcainzos <jmcainzos@vodafone.es>, 2021
+# Roberto Rosario, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 03:01+0000\n"
+"POT-Creation-Date: 2021-05-19 03:26+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
-"Last-Translator: jmcainzos <jmcainzos@vodafone.es>, 2021\n"
+"Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -242,32 +242,32 @@ msgstr "No hay gabinetes disponibles"
 #: views.py:180
 #, python-format
 msgid "Document \"%(object)s\" added to cabinets successfully."
-msgstr ""
+msgstr "El documento \"%(object)s\" se agregó correctamente a los gabinetes."
 
 #: views.py:183
 #, python-format
 msgid "%(count)d document added to cabinets successfully."
-msgstr ""
+msgstr "%(count)d documento se agregó correctamente a los gabinetes."
 
 #: views.py:186
 #, python-format
 msgid "%(count)d documents added to cabinets successfully."
-msgstr ""
+msgstr "%(count)d documentos se agregaron correctamente a los gabinetes."
 
 #: views.py:188
 #, python-format
 msgid "Add document \"%(object)s\" to cabinets."
-msgstr ""
+msgstr "Agregar el documento \"%(object)s\" a gabinetes."
 
 #: views.py:189
 #, python-format
 msgid "Add %(count)d document to cabinets."
-msgstr ""
+msgstr "Agregar %(count)d documento a gabinetes."
 
 #: views.py:190
 #, python-format
 msgid "Add %(count)d documents to cabinets."
-msgstr ""
+msgstr "Agregar %(count)d documentos a gabinetes."
 
 #: views.py:194
 msgid "Add"
@@ -293,32 +293,32 @@ msgstr "Gabinetes que contienen el documento: %s"
 #: views.py:278
 #, python-format
 msgid "Document \"%(object)s\" removed from cabinets successfully."
-msgstr ""
+msgstr "El documento \"%(object)s\" se eliminó correctamente de los gabinetes."
 
 #: views.py:281
 #, python-format
 msgid "%(count)d document removed from cabinets successfully."
-msgstr ""
+msgstr "%(count)d documento eliminado de los gabinetes con éxito."
 
 #: views.py:284
 #, python-format
 msgid "%(count)d documents removed from cabinets successfully."
-msgstr ""
+msgstr "%(count)d documentos eliminados de los gabinetes con éxito."
 
 #: views.py:286
 #, python-format
 msgid "Remove document \"%(object)s\" from cabinets."
-msgstr ""
+msgstr "Remover el documento \"%(object)s\" de los gabinetes."
 
 #: views.py:287
 #, python-format
 msgid "Remove %(count)d document from cabinets."
-msgstr ""
+msgstr "Remover %(count)d documento de los gabinetes."
 
 #: views.py:288
 #, python-format
 msgid "Remove %(count)d documents from cabinets."
-msgstr ""
+msgstr "Remover %(count)d documentos de los gabinetes."
 
 #: views.py:292
 msgid "Remove"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 03:01+0000\n"
+"POT-Creation-Date: 2021-05-19 03:26+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -183,37 +183,37 @@ msgstr "Llave primaria del documento que se va a reservar."
 #: views.py:25
 #, python-format
 msgid "Unable to check in document \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "No se puede reservar el documento \"%(instance)s\"; %(exception)s"
 
 #: views.py:29
 #, python-format
 msgid "Document \"%(object)s\" checked in successfully."
-msgstr ""
+msgstr "El documento \"%(object)s\" se devolvió correctamente."
 
 #: views.py:32
 #, python-format
 msgid "%(count)d document checked in successfully."
-msgstr ""
+msgstr "%(count)d documento devuelto correctamente."
 
 #: views.py:35
 #, python-format
 msgid "%(count)d documents checked in successfully."
-msgstr ""
+msgstr "%(count)d documentos devueltos correctamente."
 
 #: views.py:37
 #, python-format
 msgid "Check in document \"%(object)s\"."
-msgstr ""
+msgstr "Devolver el documento \"%(object)s\"."
 
 #: views.py:38
 #, python-format
 msgid "Check in %(count)d document."
-msgstr ""
+msgstr "Devolver %(count)d documento."
 
 #: views.py:39
 #, python-format
 msgid "Check in %(count)d documents."
-msgstr ""
+msgstr "Devolver %(count)d documentos."
 
 #: views.py:93
 #, python-format
