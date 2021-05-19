@@ -97,7 +97,7 @@ Features
     systems when a document hits a specific state for complete business
     automation.
 
-- Non destructive page remapping and disabling.
+- :doc:`Non destructive page remapping and disabling <../releases/4.0>`.
 
   - Change the order of the pages of the files uploaded to a document or
     disable them to remove them from view. Pages from multiple document files
@@ -116,7 +116,7 @@ Features
   - Users and other apps can subscribe to events to perform actions or
     provide notifications.
 
-- Non destructive image transformations.
+- :doc:`Non destructive image transformations <../chapters/transformations>`.
 
   - Multi layer image support. Each layer can support different permission
     layout to restrict image manipulation to different roles.
