@@ -12,7 +12,7 @@ BinaryDependency(
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='coverage',
-    version_string='==5.1'
+    version_string='==5.5'
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='coveralls',
@@ -33,7 +33,7 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='tox',
-    version_string='==3.14.6'
+    version_string='==3.23.1'
 )
 PythonDependency(
     environment=environment_testing, module=__name__, name='psutil',
