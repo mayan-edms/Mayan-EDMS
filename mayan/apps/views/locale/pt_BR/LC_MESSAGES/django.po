@@ -2,25 +2,26 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2021
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2021
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
 # Aline Freitas <aline@alinefreitas.com.br>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 03:09+0000\n"
+"POT-Creation-Date: 2021-05-18 10:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Aline Freitas <aline@alinefreitas.com.br>, 2021\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
+"teams/13584/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:15 settings.py:7
@@ -50,8 +51,8 @@ msgid ""
 "to activate the action."
 msgstr ""
 "Selecione as entradas a serem removidas. Segure CTRL para selecionar "
-"múltiplas entradas. Uma vez completa a seleção, clique no botão abaixo ou dê"
-" um duplo clique na lista para ativar a ação."
+"múltiplas entradas. Uma vez completa a seleção, clique no botão abaixo ou dê "
+"um duplo clique na lista para ativar a ação."
 
 #: generics.py:151
 msgid ""
@@ -60,8 +61,8 @@ msgid ""
 "to activate the action."
 msgstr ""
 "Selecione as entradas a serem adicionadas. Segure CTRL para selecionar "
-"múltiplas entradas. Uma vez completa a seleção, clique no botão abaixo ou dê"
-" um duplo clique na lista para ativar a ação."
+"múltiplas entradas. Uma vez completa a seleção, clique no botão abaixo ou dê "
+"um duplo clique na lista para ativar a ação."
 
 #: generics.py:289
 msgid "Add all"

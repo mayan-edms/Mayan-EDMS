@@ -1,26 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
 # 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2021
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2021
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 03:09+0000\n"
+"POT-Creation-Date: 2021-05-18 10:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
+"bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
@@ -332,8 +333,8 @@ msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
 msgstr ""
-"Изберете тип метаданни за съхраняване стойността „от“ на имейла. Трябва да е"
-" валиден тип метаданни за избрания преди това тип документ."
+"Изберете тип метаданни за съхраняване стойността „от“ на имейла. Трябва да е "
+"валиден тип метаданни за избрания преди това тип документ."
 
 #: models/email_sources.py:70
 msgid "From metadata type"
@@ -361,8 +362,8 @@ msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
-"Типът метаданни за темата &quot;%(metadata_type)s&quot; не е валиден за типа"
-" документ: %(document_type)s"
+"Типът метаданни за темата &quot;%(metadata_type)s&quot; не е валиден за типа "
+"документ: %(document_type)s"
 
 #: models/email_sources.py:201
 #, python-format
@@ -387,8 +388,8 @@ msgid ""
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 msgstr ""
 "Критерии, които се използват при търсене на съобщения за обработка. "
-"Използвайте формата, посочен в "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
+"Използвайте формата, посочен в https://tools.ietf.org/html/rfc2060."
+"html#section-6.4.4"
 
 #: models/email_sources.py:224
 msgid "Search criteria"
@@ -397,14 +398,13 @@ msgstr "Критерии за търсене"
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
-"commands for your IMAP server."
+"command per line. Use the commands specified in https://tools.ietf.org/html/"
+"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
 msgstr ""
 "IMAP STORE команда за изпълнение на съобщения след тяхното обработване. По "
-"една команда на ред. Използвайте командите, посочени в "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 или персонализираните"
-" команди за вашия IMAP сървър."
+"една команда на ред. Използвайте командите, посочени в https://tools.ietf."
+"org/html/rfc2060.html#section-6.4.6 или персонализираните команди за вашия "
+"IMAP сървър."
 
 #: models/email_sources.py:232
 msgid "Store commands"
@@ -421,8 +421,7 @@ msgstr "Премахнете изцяло"
 
 #: models/email_sources.py:242
 msgid "IMAP Mailbox to which processed messages will be copied."
-msgstr ""
-"IMAP пощенска кутия, в която ще бъдат копирани обработените съобщения."
+msgstr "IMAP пощенска кутия, в която ще бъдат копирани обработените съобщения."
 
 #: models/email_sources.py:243
 msgid "Destination mailbox"
@@ -476,8 +475,7 @@ msgid ""
 "supported by your scanner, leave it blank."
 msgstr ""
 "Избира източника на сканиране (например устройство за подаване на "
-"документи). Ако тази опция не се поддържа от вашия скенер, оставете я "
-"празна."
+"документи). Ако тази опция не се поддържа от вашия скенер, оставете я празна."
 
 #: models/scanner_sources.py:52
 msgid "Paper source"
@@ -717,8 +715,8 @@ msgstr "Подаване"
 
 #: views/document_views.py:79 wizards.py:50
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr ""
 "Не са дефинирани интерактивни източници на документи или никой не е "
 "активиран, създайте такъв преди да продължите."
@@ -731,8 +729,8 @@ msgstr "Свойства на документа"
 #: views/document_views.py:116
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the"
-" necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the "
+"necessary file system permissions for the folder."
 msgstr ""
 "Това може да означава, че папката за поставяне е празна. Това също може да "
 "означава, че потребителският акаунт на операционната система, използвана за "
@@ -753,8 +751,7 @@ msgstr "Сканиране"
 #: views/document_views.py:282
 #, python-format
 msgid "Error executing document upload task; %(exception)s"
-msgstr ""
-"Грешка при изпълнение на задача за качване на документи; %(exception)s"
+msgstr "Грешка при изпълнение на задача за качване на документи; %(exception)s"
 
 #: views/document_views.py:292
 msgid "New document queued for upload and will be available shortly."

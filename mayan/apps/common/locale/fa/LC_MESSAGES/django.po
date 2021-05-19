@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 03:09+0000\n"
+"POT-Creation-Date: 2021-05-18 10:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2021\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:125 permissions.py:5 settings.py:15
+#: apps.py:125 permissions.py:5 settings.py:14
 msgid "Common"
 msgstr "مشترک"
 
@@ -101,26 +101,26 @@ msgstr ""
 msgid "Tools"
 msgstr "ابزار"
 
-#: literals.py:20
+#: literals.py:19
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr ""
 
-#: literals.py:23
+#: literals.py:22
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr ""
 
-#: literals.py:32
+#: literals.py:31
 msgid "Days"
 msgstr "روزها"
 
-#: literals.py:33
+#: literals.py:32
 msgid "Hours"
 msgstr "ساعات"
 
-#: literals.py:34
+#: literals.py:33
 msgid "Minutes"
 msgstr "دقایق"
 
@@ -156,19 +156,19 @@ msgstr "کاربر"
 msgid "Copy object"
 msgstr ""
 
-#: settings.py:22
+#: settings.py:21
 msgid ""
 "In list mode, show the \"list facet\" menu options as a dropdown menu "
 "instead of individual buttons."
 msgstr ""
 
-#: settings.py:30
+#: settings.py:29
 msgid ""
 "In list mode, show the \"object\" menu options as a dropdown menu instead of"
 " individual buttons."
 msgstr ""
 
-#: settings.py:37
+#: settings.py:36
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
@@ -176,7 +176,7 @@ msgstr ""
 "زمان برای به تاخیر انداختن وظایف پس زمینه که به پایگاه داده متعهد به انتشار "
 "است."
 
-#: settings.py:44
+#: settings.py:43
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -184,7 +184,7 @@ msgid ""
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:54
+#: settings.py:53
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -192,22 +192,18 @@ msgid ""
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:64
+#: settings.py:63
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
 msgstr ""
 
-#: settings.py:72
+#: settings.py:71
 msgid "Name to be displayed in the main menu."
 msgstr ""
 
-#: settings.py:78
+#: settings.py:77
 msgid "URL of the installation or homepage of the project."
-msgstr ""
-
-#: settings.py:83
-msgid "Base URL path to use for all views."
 msgstr ""
 
 #: templates/common/app/viewport.html:9

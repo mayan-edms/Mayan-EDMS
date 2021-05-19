@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 03:09+0000\n"
+"POT-Creation-Date: 2021-05-18 10:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:125 permissions.py:5 settings.py:15
+#: apps.py:125 permissions.py:5 settings.py:14
 msgid "Common"
 msgstr "Comune"
 
@@ -103,14 +103,14 @@ msgstr "Obțineți sprijin"
 msgid "Tools"
 msgstr "Unelte"
 
-#: literals.py:20
+#: literals.py:19
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr ""
 "Această caracteristică a fost depreciată și va fi eliminată într-o versiune "
 "viitoare."
 
-#: literals.py:23
+#: literals.py:22
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
@@ -118,15 +118,15 @@ msgstr ""
 "Backendul bazei de date este setat să utilizeze SQLite. SQLite ar trebui "
 "folosit numai pentru dezvoltare și testare, nu pentru producție."
 
-#: literals.py:32
+#: literals.py:31
 msgid "Days"
 msgstr "Zile"
 
-#: literals.py:33
+#: literals.py:32
 msgid "Hours"
 msgstr "Ore"
 
-#: literals.py:34
+#: literals.py:33
 msgid "Minutes"
 msgstr "Minute"
 
@@ -162,19 +162,19 @@ msgstr "Utilizator"
 msgid "Copy object"
 msgstr "Copiați obiectul"
 
-#: settings.py:22
+#: settings.py:21
 msgid ""
 "In list mode, show the \"list facet\" menu options as a dropdown menu "
 "instead of individual buttons."
 msgstr ""
 
-#: settings.py:30
+#: settings.py:29
 msgid ""
 "In list mode, show the \"object\" menu options as a dropdown menu instead of"
 " individual buttons."
 msgstr ""
 
-#: settings.py:37
+#: settings.py:36
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
@@ -182,7 +182,7 @@ msgstr ""
 "Timpul de întârziere pentru sarcini de fundal care depind de propagarea "
 "schimbărilor în  baza de date."
 
-#: settings.py:44
+#: settings.py:43
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -190,7 +190,7 @@ msgid ""
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:54
+#: settings.py:53
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -198,7 +198,7 @@ msgid ""
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:64
+#: settings.py:63
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
@@ -206,17 +206,13 @@ msgstr ""
 "Numele afișării atașate ancorei de marcă din meniul principal. Aceasta este "
 "și perspectiva la care utilizatorii vor fi redirecționați după conectare."
 
-#: settings.py:72
+#: settings.py:71
 msgid "Name to be displayed in the main menu."
 msgstr "Numele care urmează să fie afișat în meniul principal."
 
-#: settings.py:78
+#: settings.py:77
 msgid "URL of the installation or homepage of the project."
 msgstr "Adresa URL a instalării sau a paginii de pornire a proiectului."
-
-#: settings.py:83
-msgid "Base URL path to use for all views."
-msgstr "Calea URL de bază pentru a fi utilizată pentru toate vizualizările."
 
 #: templates/common/app/viewport.html:9
 msgid "Warning"

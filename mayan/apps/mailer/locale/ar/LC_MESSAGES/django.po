@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 03:09+0000\n"
+"POT-Creation-Date: 2021-05-18 10:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -62,7 +62,7 @@ msgid "The email profile that will be used to send this email."
 msgstr ""
 "ملف تعريف البريد الإلكتروني الذي سيتم استخدامه لإرسال هذا البريد الإلكتروني."
 
-#: forms.py:71 models.py:55 views.py:212 workflow_actions.py:18
+#: forms.py:71 models.py:54 views.py:216 workflow_actions.py:18
 msgid "Mailing profile"
 msgstr "قالب البريد الإلكتروني"
 
@@ -70,7 +70,7 @@ msgstr "قالب البريد الإلكتروني"
 msgid "The driver to use when sending emails."
 msgstr "برنامج التشغيل الذي يجب استخدامه عند إرسال رسائل البريد الإلكتروني."
 
-#: forms.py:78 models.py:69
+#: forms.py:78 models.py:68
 msgid "Backend"
 msgstr "في الخفاء"
 
@@ -98,11 +98,11 @@ msgstr "تعديل"
 msgid "Mailing profiles list"
 msgstr "قائمة قوالب البريد الإلكتروني"
 
-#: links.py:58 models.py:56
+#: links.py:58 models.py:55
 msgid "Mailing profiles"
 msgstr "قوالب البريد الإلكتروني"
 
-#: links.py:63 views.py:236
+#: links.py:63 views.py:240
 msgid "Test"
 msgstr "اختبار"
 
@@ -232,15 +232,15 @@ msgstr "مسار الملف"
 msgid "Django file based backend"
 msgstr "ملف Django القائم على الخلفية"
 
-#: models.py:32
+#: models.py:31
 msgid "A short text describing the mailing profile."
 msgstr "وصف قالب البريد الإلكتروني"
 
-#: models.py:33
+#: models.py:32
 msgid "Label"
 msgstr "العنوان"
 
-#: models.py:37
+#: models.py:36
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
@@ -248,31 +248,31 @@ msgstr ""
 "سيتم تحديد ملف التعريف هذا مسبقًا في نموذج إرسال االوثائق  بالبريد "
 "الإلكتروني."
 
-#: models.py:39
+#: models.py:38
 msgid "Default"
 msgstr "القيمة الإفتراضية"
 
-#: models.py:41
+#: models.py:40
 msgid "Enabled"
 msgstr "مفعل"
 
-#: models.py:44
+#: models.py:43
 msgid "The dotted Python path to the backend class."
 msgstr "مسار النظام"
 
-#: models.py:45
+#: models.py:44
 msgid "Backend path"
 msgstr "الرابط الخاص بالمبرمجين"
 
-#: models.py:48
+#: models.py:47
 msgid "Backend data"
 msgstr "بيانات الخاصة بالمبرمجين"
 
-#: models.py:70
+#: models.py:69
 msgid "The backend class for this entry."
 msgstr "فئة الواجهة الخلفية لهذا الإدخال."
 
-#: models.py:232
+#: models.py:231
 msgid "Test email from Mayan EDMS"
 msgstr "اختبار البريد الإلكتروني من Mayan EDMS"
 
@@ -330,51 +330,51 @@ msgstr "القالب النصي للبريد الإلكتروني لرابط ا�
 msgid "%(email)s is not a valid email address."
 msgstr "%(email)s ليس عنوان بريد إلكتروني صالحًا."
 
-#: views.py:39
+#: views.py:40
 #, python-format
 msgid "%(count)d document queued for email delivery"
 msgstr "تم وضع مستند %(count)d في قائمة الانتظار لتسليم البريد الإلكتروني"
 
-#: views.py:41
+#: views.py:42
 #, python-format
 msgid "%(count)d documents queued for email delivery"
 msgstr "تم وضع مستندات %(count)d في قائمة الانتظار لتسليم البريد الإلكتروني"
 
-#: views.py:52
+#: views.py:53
 msgid "Send"
 msgstr "إرسال"
 
-#: views.py:98
+#: views.py:102
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr ""
 "تم وضع ارتباط الوثيقة %(count)d في قائمة الانتظار لتسليم البريد الإلكتروني"
 
-#: views.py:100
+#: views.py:104
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr "%(count)d تم وضع رابط الوثائق في قائمة انتظار تسليم البريد الإلكتروني"
 
-#: views.py:109
+#: views.py:113
 msgid "New mailing profile backend selection"
 msgstr "تحديد الخلفية الجديدة للقالب"
 
-#: views.py:141
+#: views.py:145
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "إنشاء قالب البريد الإلكتروني &quot;%s&quot;"
 
-#: views.py:168
+#: views.py:172
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "حذف قالب البريد الإلكتروني: %s"
 
-#: views.py:180
+#: views.py:184
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "تعديل قالب البريد الإلكتروني: %s"
 
-#: views.py:207
+#: views.py:211
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
@@ -382,15 +382,15 @@ msgstr ""
 "تسمح قوالب البريد الإلكتروني بإرسال الوثائق كمرفقات أو كروابط عبر البريد "
 "الإلكتروني."
 
-#: views.py:211
+#: views.py:215
 msgid "No mailing profiles available"
 msgstr "لا توجد قوالب بريد الإلكتروني متاح"
 
-#: views.py:228
+#: views.py:232
 msgid "Test email sent."
 msgstr "إرسال بريد الكتروني تجريبي"
 
-#: views.py:237
+#: views.py:241
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "اختبار قالب البريد الإلكتروني: %s"

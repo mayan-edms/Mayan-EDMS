@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Hmayag Antonian <hmayag@freemail.gr>, 2021
 # pyrotech <anastasios@tutamail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 03:09+0000\n"
+"POT-Creation-Date: 2021-05-18 10:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
@@ -225,8 +225,7 @@ msgstr ""
 
 #: views.py:158
 msgid "Submit all documents of a type for OCR"
-msgstr ""
-"Υποβολή όλων των εγγράφων ενός τύπου προς οπτική αναγνώριση χαρακτήρων"
+msgstr "Υποβολή όλων των εγγράφων ενός τύπου προς οπτική αναγνώριση χαρακτήρων"
 
 #: views.py:175
 #, python-format
@@ -263,8 +262,7 @@ msgstr "Περιεχόμενο σελίδας"
 
 #: workflow_actions.py:35
 msgid "A template that will generate the OCR content to be saved."
-msgstr ""
-"Ένα πρότυπο που θα δημιουργήσει το περιεχόμενο OCR που θα αποθηκευτεί."
+msgstr "Ένα πρότυπο που θα δημιουργήσει το περιεχόμενο OCR που θα αποθηκευτεί."
 
 #: workflow_actions.py:43
 msgid "Update document page OCR content"

@@ -1,24 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 03:09+0000\n"
+"POT-Creation-Date: 2021-05-18 10:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
+"Language: bs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:21 permissions.py:6
 msgid "Smart settings"
@@ -80,14 +81,14 @@ msgstr ""
 #: settings.py:30
 msgid ""
 "A list of strings representing the host/domain names that this site can "
-"serve. This is a security measure to prevent HTTP Host header attacks, which"
-" are possible even under many seemingly-safe web server configurations. "
+"serve. This is a security measure to prevent HTTP Host header attacks, which "
+"are possible even under many seemingly-safe web server configurations. "
 "Values in this list can be fully qualified names (e.g. 'www.example.com'), "
-"in which case they will be matched against the request's Host header exactly"
-" (case-insensitive, not including port). A value beginning with a period can"
-" be used as a subdomain wildcard: '.example.com' will match example.com, "
-"www.example.com, and any other subdomain of example.com. A value of '*' will"
-" match anything; in this case you are responsible to provide your own "
+"in which case they will be matched against the request's Host header exactly "
+"(case-insensitive, not including port). A value beginning with a period can "
+"be used as a subdomain wildcard: '.example.com' will match example.com, www."
+"example.com, and any other subdomain of example.com. A value of '*' will "
+"match anything; in this case you are responsible to provide your own "
 "validation of the Host header (perhaps in a middleware; if so this "
 "middleware must be listed first in MIDDLEWARE)."
 msgstr ""
@@ -95,11 +96,10 @@ msgstr ""
 #: settings.py:47
 msgid ""
 "When set to True, if the request URL does not match any of the patterns in "
-"the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the"
-" same URL with a slash appended. Note that the redirect may cause any data "
+"the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the "
+"same URL with a slash appended. Note that the redirect may cause any data "
 "submitted in a POST request to be lost. The APPEND_SLASH setting is only "
-"used if CommonMiddleware is installed (see Middleware). See also "
-"PREPEND_WWW."
+"used if CommonMiddleware is installed (see Middleware). See also PREPEND_WWW."
 msgstr ""
 
 #: settings.py:59
@@ -110,8 +110,8 @@ msgstr ""
 
 #: settings.py:66
 msgid ""
-"A list of authentication backend classes (as strings) to use when attempting"
-" to authenticate a user."
+"A list of authentication backend classes (as strings) to use when attempting "
+"to authenticate a user."
 msgstr ""
 
 #: settings.py:72
@@ -129,10 +129,10 @@ msgid ""
 "body may be before a SuspiciousOperation (RequestDataTooBig) is raised. The "
 "check is done when accessing request.body or request.POST and is calculated "
 "against the total request size excluding any file upload data. You can set "
-"this to None to disable the check. Applications that are expected to receive"
-" unusually large form posts should tune this setting. The amount of request "
-"data is correlated to the amount of memory needed to process the request and"
-" populate the GET and POST dictionaries. Large requests could be used as a "
+"this to None to disable the check. Applications that are expected to receive "
+"unusually large form posts should tune this setting. The amount of request "
+"data is correlated to the amount of memory needed to process the request and "
+"populate the GET and POST dictionaries. Large requests could be used as a "
 "denial-of-service attack vector if left unchecked. Since web servers don't "
 "typically perform deep request inspection, it's not possible to perform a "
 "similar check at that level. See also FILE_UPLOAD_MAX_MEMORY_SIZE."
@@ -199,8 +199,8 @@ msgstr ""
 
 #: settings.py:170
 msgid ""
-"Default: False. Whether to use a TLS (secure) connection when talking to the"
-" SMTP server. This is used for explicit TLS connections, generally on port "
+"Default: False. Whether to use a TLS (secure) connection when talking to the "
+"SMTP server. This is used for explicit TLS connections, generally on port "
 "587. If you are experiencing hanging connections, see the implicit TLS "
 "setting EMAIL_USE_SSL."
 msgstr ""
@@ -214,8 +214,8 @@ msgstr ""
 
 #: settings.py:187
 msgid ""
-"Default: '/accounts/login/' The URL where requests are redirected for login,"
-" especially when using the login_required() decorator. This setting also "
+"Default: '/accounts/login/' The URL where requests are redirected for login, "
+"especially when using the login_required() decorator. This setting also "
 "accepts named URL patterns which can be used to reduce configuration "
 "duplication since you don't have to define the URL in two places (settings "
 "and URLconf)."
@@ -233,8 +233,8 @@ msgstr ""
 #: settings.py:209
 msgid ""
 "Default: None. The URL where requests are redirected after a user logs out "
-"using LogoutView (if the view doesn't get a next_page argument). If None, no"
-" redirect will be performed and the logout view will be rendered. This "
+"using LogoutView (if the view doesn't get a next_page argument). If None, no "
+"redirect will be performed and the logout view will be rendered. This "
 "setting also accepts named URL patterns which can be used to reduce "
 "configuration duplication since you don't have to define the URL in two "
 "places (settings and URLconf)."
@@ -271,15 +271,15 @@ msgstr ""
 
 #: settings.py:254
 msgid ""
-"Default: 'sessionid'. The name of the cookie to use for sessions.This can be"
-" whatever you want (as long as it's different from the other cookie names in"
-" your application)."
+"Default: 'sessionid'. The name of the cookie to use for sessions.This can be "
+"whatever you want (as long as it's different from the other cookie names in "
+"your application)."
 msgstr ""
 
 #: settings.py:262
 msgid ""
-"Default: 'django.contrib.sessions.backends.db'. Controls where Django stores"
-" session data."
+"Default: 'django.contrib.sessions.backends.db'. Controls where Django stores "
+"session data."
 msgstr ""
 
 #: settings.py:269
@@ -302,8 +302,8 @@ msgstr ""
 msgid ""
 "The file storage engine to use when collecting static files with the "
 "collectstatic management command. A ready-to-use instance of the storage "
-"backend defined in this setting can be found at "
-"django.contrib.staticfiles.storage.staticfiles_storage."
+"backend defined in this setting can be found at django.contrib.staticfiles."
+"storage.staticfiles_storage."
 msgstr ""
 
 #: settings.py:296

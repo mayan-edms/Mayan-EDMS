@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 03:09+0000\n"
+"POT-Creation-Date: 2021-05-18 10:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -61,7 +61,7 @@ msgstr "Corp"
 msgid "The email profile that will be used to send this email."
 msgstr "Profilul de e-mail care va fi folosit pentru a trimite acest e-mail."
 
-#: forms.py:71 models.py:55 views.py:212 workflow_actions.py:18
+#: forms.py:71 models.py:54 views.py:216 workflow_actions.py:18
 msgid "Mailing profile"
 msgstr "Profilul de corespondență"
 
@@ -69,7 +69,7 @@ msgstr "Profilul de corespondență"
 msgid "The driver to use when sending emails."
 msgstr "Pilotul software ce trebuie folosit atunci când trimiteți e-mailuri."
 
-#: forms.py:78 models.py:69
+#: forms.py:78 models.py:68
 msgid "Backend"
 msgstr "Backend"
 
@@ -97,11 +97,11 @@ msgstr "Editați"
 msgid "Mailing profiles list"
 msgstr "Listă de profiluri de corespondență"
 
-#: links.py:58 models.py:56
+#: links.py:58 models.py:55
 msgid "Mailing profiles"
 msgstr "Profiluri de corespondență"
 
-#: links.py:63 views.py:236
+#: links.py:63 views.py:240
 msgid "Test"
 msgstr "Test"
 
@@ -238,15 +238,15 @@ msgstr "Calea fișierului"
 msgid "Django file based backend"
 msgstr "Backend Django pe bază de fișiere"
 
-#: models.py:32
+#: models.py:31
 msgid "A short text describing the mailing profile."
 msgstr "Un text scurt care descrie profilul de e-mail."
 
-#: models.py:33
+#: models.py:32
 msgid "Label"
 msgstr "Conținut etichetă"
 
-#: models.py:37
+#: models.py:36
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
@@ -254,31 +254,31 @@ msgstr ""
 "Dacă este implicit, acest profil de poștă electronică va fi pre-selectat pe "
 "formularul de trimitere a documentelor."
 
-#: models.py:39
+#: models.py:38
 msgid "Default"
 msgstr "Implicit"
 
-#: models.py:41
+#: models.py:40
 msgid "Enabled"
 msgstr "Activat"
 
-#: models.py:44
+#: models.py:43
 msgid "The dotted Python path to the backend class."
 msgstr "Calea Python punctată la clasa backend."
 
-#: models.py:45
+#: models.py:44
 msgid "Backend path"
 msgstr "Calea de backend"
 
-#: models.py:48
+#: models.py:47
 msgid "Backend data"
 msgstr "Date backend"
 
-#: models.py:70
+#: models.py:69
 msgid "The backend class for this entry."
 msgstr "Clasa backend pentru această intrare."
 
-#: models.py:232
+#: models.py:231
 msgid "Test email from Mayan EDMS"
 msgstr "E-mail de încercare de la Mayan EDMS"
 
@@ -337,57 +337,57 @@ msgstr ""
 msgid "%(email)s is not a valid email address."
 msgstr "%(email)s nu este o adresă de e-mail validă."
 
-#: views.py:39
+#: views.py:40
 #, python-format
 msgid "%(count)d document queued for email delivery"
 msgstr ""
 "%(count)d document a fost pus în coada de așteptare pentru livrarea prin "
 "e-mail"
 
-#: views.py:41
+#: views.py:42
 #, python-format
 msgid "%(count)d documents queued for email delivery"
 msgstr ""
 "%(count)d documente au fost puse în coada de așteptare pentru livrarea prin "
 "e-mail"
 
-#: views.py:52
+#: views.py:53
 msgid "Send"
 msgstr "Trimite"
 
-#: views.py:98
+#: views.py:102
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr ""
 "%(count)d link de document a fost pus în coadă pentru livrarea prin e-mail"
 
-#: views.py:100
+#: views.py:104
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr ""
 "%(count)d linkuri de documente au fost puse în coadă pentru livrarea prin "
 "e-mail"
 
-#: views.py:109
+#: views.py:113
 msgid "New mailing profile backend selection"
 msgstr "Selecție nouă de profil backend de poștă electronică"
 
-#: views.py:141
+#: views.py:145
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "Creați un profil de poștă electronică \"%s\""
 
-#: views.py:168
+#: views.py:172
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Ștergeți profilul de poștă electronică: %s"
 
-#: views.py:180
+#: views.py:184
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Editați profilul de poștă electronică: %s"
 
-#: views.py:207
+#: views.py:211
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
@@ -395,15 +395,15 @@ msgstr ""
 "Profilurile de corespondență sunt configurații de e-mail. Ele permit "
 "trimiterea documentelor ca atașamente sau ca legături prin e-mail."
 
-#: views.py:211
+#: views.py:215
 msgid "No mailing profiles available"
 msgstr "Nu sunt disponibile profiluri de poștă electronică"
 
-#: views.py:228
+#: views.py:232
 msgid "Test email sent."
 msgstr "E-mail de testare trimis."
 
-#: views.py:237
+#: views.py:241
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Testare profil de poștă electronică: %s"

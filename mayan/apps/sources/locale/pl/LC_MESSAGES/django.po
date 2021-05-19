@@ -1,26 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
 # Tomasz Szymanowicz <alakdae@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 03:09+0000\n"
+"POT-Creation-Date: 2021-05-18 10:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
 #: settings.py:14 views/source_views.py:173
@@ -38,8 +40,8 @@ msgid ""
 "browser."
 msgstr ""
 "Źródła dokumentów to sposób, w jaki nowe dokumenty są przekazywane do Mayan "
-"EDMS. Utwórz przynajmniej źródło formularza internetowego, aby móc przesyłać"
-" dokumenty z przeglądarki."
+"EDMS. Utwórz przynajmniej źródło formularza internetowego, aby móc przesyłać "
+"dokumenty z przeglądarki."
 
 #: apps.py:91
 msgid "Type"
@@ -329,8 +331,8 @@ msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
 msgstr ""
-"Wybierz typ metadanych, aby zapisać wartość „od” wiadomości e-mail. Musi być"
-" prawidłowym typem metadanych dla wybranego wcześniej typu dokumentu."
+"Wybierz typ metadanych, aby zapisać wartość „od” wiadomości e-mail. Musi być "
+"prawidłowym typem metadanych dla wybranego wcześniej typu dokumentu."
 
 #: models/email_sources.py:70
 msgid "From metadata type"
@@ -393,14 +395,13 @@ msgstr "Kryteria wyszukiwania"
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
-"commands for your IMAP server."
+"command per line. Use the commands specified in https://tools.ietf.org/html/"
+"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
 msgstr ""
 "Polecenie IMAP STORE do wykonania na komunikatach po ich przetworzeniu. "
-"Jedno polecenie na wiersz. Użyj poleceń określonych w "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 lub poleceń "
-"niestandardowych dla Twojego serwera IMAP."
+"Jedno polecenie na wiersz. Użyj poleceń określonych w https://tools.ietf.org/"
+"html/rfc2060.html#section-6.4.6 lub poleceń niestandardowych dla Twojego "
+"serwera IMAP."
 
 #: models/email_sources.py:232
 msgid "Store commands"
@@ -704,8 +705,8 @@ msgstr "Wykonaj"
 
 #: views/document_views.py:79 wizards.py:50
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr ""
 "Nie zdefiniowano żadnych interaktywnych źródeł dokumentów lub żadne nie "
 "zostało włączone, utwórz je przed kontynuowaniem."
@@ -718,12 +719,12 @@ msgstr "Właściwości dokumentu"
 #: views/document_views.py:116
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the"
-" necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the "
+"necessary file system permissions for the folder."
 msgstr ""
 "Może to oznaczać, że folder przejściowy jest pusty. Może to również "
-"oznaczać, że konto użytkownika systemu operacyjnego używane w Mayan EDMS nie"
-" ma niezbędnych uprawnień systemu plików dla tego folderu."
+"oznaczać, że konto użytkownika systemu operacyjnego używane w Mayan EDMS nie "
+"ma niezbędnych uprawnień systemu plików dla tego folderu."
 
 #: views/document_views.py:123
 msgid "No staging files available"
@@ -795,8 +796,8 @@ msgid ""
 "intervention."
 msgstr ""
 "Źródła zapewniają środki do przesyłania dokumentów. Niektóre źródła, takie "
-"jak formularz internetowy, są interaktywne i wymagają działania użytkownika."
-" Inne, takie jak źródła wiadomości e-mail, są automatyczne i działają w tle "
+"jak formularz internetowy, są interaktywne i wymagają działania użytkownika. "
+"Inne, takie jak źródła wiadomości e-mail, są automatyczne i działają w tle "
 "bez interwencji użytkownika."
 
 #: views/source_views.py:172

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 03:09+0000\n"
+"POT-Creation-Date: 2021-05-18 10:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -40,15 +40,15 @@ msgid "Exception determining page count using Pillow; %s"
 msgstr ""
 "Εξαίρεση που καθορίζει τον αριθμό των σελίδων χρησιμοποιώντας το Pillow. %s"
 
-#: classes.py:155
+#: classes.py:157
 msgid "LibreOffice not installed or not found."
 msgstr "Το LibreOffice δεν είναι εγκατεστημένο ή δεν βρέθηκε."
 
-#: classes.py:259
+#: classes.py:261
 msgid "Not an office file format."
 msgstr "Δεν είναι μορφή αρχείου office."
 
-#: classes.py:385
+#: classes.py:395
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
@@ -56,7 +56,7 @@ msgstr ""
 "Οι μετασχηματισμοί επιτρέπουν την αλλαγή της οπτικής εμφάνισης των εγγράφων "
 "χωρίς να πραγματοποιούνται μόνιμες αλλαγές στο ίδια τα αρχεία εγγράφων."
 
-#: classes.py:433
+#: classes.py:446
 msgid "transformation"
 msgstr "μετασχηματισμός"
 
@@ -432,12 +432,12 @@ msgstr ""
 msgid "No assets available"
 msgstr "Δεν υπάρχουν διαθέσιμα στοιχεία"
 
-#: views.py:167
+#: views.py:168
 #, python-format
 msgid "Error creating transformation: %s."
 msgstr "Σφάλμα κατά τη δημιουργία μετασχηματισμού: %s."
 
-#: views.py:184
+#: views.py:185
 #, python-format
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
@@ -446,36 +446,36 @@ msgstr ""
 "Δημιουργία επιπέδου \"%(layer)s\" μετασχηματισμού \"%(transformation)s\" "
 "για: %(object)s"
 
-#: views.py:240
+#: views.py:241
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr "Διαγραφή μετασχηματισμού \"%(transformation)s\" για: %(content_object)s;"
 
-#: views.py:289
+#: views.py:290
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr ""
 "Τροποποίηση μετασχηματισμού \"%(transformation)s\" για: %(content_object)s"
 
-#: views.py:343
+#: views.py:344
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
 msgstr "Δεν υπάρχουν καταχωρήσεις για το επίπεδο \"%(layer_name)s\""
 
-#: views.py:346
+#: views.py:347
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
 msgstr "Μετασχηματισμοί επιπέδου\"%(layer)s\" για: %(object)s"
 
-#: views.py:391
+#: views.py:392
 msgid "Transformation created successfully."
 msgstr "Ο μετασχηματισμός δημιουργήθηκε με επιτυχία."
 
-#: views.py:415
+#: views.py:416
 msgid "Select"
 msgstr "Επιλογή"
 
-#: views.py:417
+#: views.py:418
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
 msgstr "Επιλογή νέου μετασχηματισμού επιπέδου \"%(layer)s\" για: %(object)s"

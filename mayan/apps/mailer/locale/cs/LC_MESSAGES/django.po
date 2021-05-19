@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 03:09+0000\n"
+"POT-Creation-Date: 2021-05-18 10:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -61,7 +61,7 @@ msgstr "Tělo"
 msgid "The email profile that will be used to send this email."
 msgstr "E-mailový profil, který bude použit k odeslání tohoto e-mailu."
 
-#: forms.py:71 models.py:55 views.py:212 workflow_actions.py:18
+#: forms.py:71 models.py:54 views.py:216 workflow_actions.py:18
 msgid "Mailing profile"
 msgstr "Poštovní profil"
 
@@ -69,7 +69,7 @@ msgstr "Poštovní profil"
 msgid "The driver to use when sending emails."
 msgstr "Ovladač, který se použije pro odesílání e-mailů."
 
-#: forms.py:78 models.py:69
+#: forms.py:78 models.py:68
 msgid "Backend"
 msgstr "Backend"
 
@@ -97,11 +97,11 @@ msgstr "Upravit"
 msgid "Mailing profiles list"
 msgstr "Seznam poštovních profilů"
 
-#: links.py:58 models.py:56
+#: links.py:58 models.py:55
 msgid "Mailing profiles"
 msgstr "Poštovní profily"
 
-#: links.py:63 views.py:236
+#: links.py:63 views.py:240
 msgid "Test"
 msgstr "Test"
 
@@ -235,15 +235,15 @@ msgstr "Cesta k souboru"
 msgid "Django file based backend"
 msgstr "Backend založený na souborech Django"
 
-#: models.py:32
+#: models.py:31
 msgid "A short text describing the mailing profile."
 msgstr "Krátký text popisující poštovní profil."
 
-#: models.py:33
+#: models.py:32
 msgid "Label"
 msgstr "Jmenovka"
 
-#: models.py:37
+#: models.py:36
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
@@ -251,31 +251,31 @@ msgstr ""
 "Pokud je výchozí, bude tento poštovní profil předem vybrán ve formuláři pro "
 "zasílání dokumentů."
 
-#: models.py:39
+#: models.py:38
 msgid "Default"
 msgstr "Výchozí"
 
-#: models.py:41
+#: models.py:40
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: models.py:44
+#: models.py:43
 msgid "The dotted Python path to the backend class."
 msgstr "Tečkovaná cesta Pythonu ke třídě backendu."
 
-#: models.py:45
+#: models.py:44
 msgid "Backend path"
 msgstr "Backend cesta"
 
-#: models.py:48
+#: models.py:47
 msgid "Backend data"
 msgstr "Backend data"
 
-#: models.py:70
+#: models.py:69
 msgid "The backend class for this entry."
 msgstr "Třída backendu pro tuto položku."
 
-#: models.py:232
+#: models.py:231
 msgid "Test email from Mayan EDMS"
 msgstr "Vyzkoušejte e-mail od Mayan EDMS"
 
@@ -335,51 +335,51 @@ msgstr ""
 msgid "%(email)s is not a valid email address."
 msgstr "%(email)s není platná e-mailová adresa."
 
-#: views.py:39
+#: views.py:40
 #, python-format
 msgid "%(count)d document queued for email delivery"
 msgstr "dokument %(count)d zařazený do fronty pro doručení e-mailem"
 
-#: views.py:41
+#: views.py:42
 #, python-format
 msgid "%(count)d documents queued for email delivery"
 msgstr "%(count)d dokumenty zařazené do fronty pro doručení e-mailem"
 
-#: views.py:52
+#: views.py:53
 msgid "Send"
 msgstr "Poslat"
 
-#: views.py:98
+#: views.py:102
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr "Odkaz na dokument %(count)d zařazený do fronty pro doručování e-mailů"
 
-#: views.py:100
+#: views.py:104
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr ""
 "Odkazy na dokument %(count)d zařazené do fronty pro doručování e-mailů"
 
-#: views.py:109
+#: views.py:113
 msgid "New mailing profile backend selection"
 msgstr "Výběr backend nového poštovního profilu"
 
-#: views.py:141
+#: views.py:145
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "Vytvořit poštovní profil „%s“"
 
-#: views.py:168
+#: views.py:172
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Smazat poštovní profil: %s"
 
-#: views.py:180
+#: views.py:184
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Upravit poštovní profil: %s"
 
-#: views.py:207
+#: views.py:211
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
@@ -387,15 +387,15 @@ msgstr ""
 "Poštovní profily jsou e-mailové konfigurace. Poštovní profily umožňují "
 "odesílání dokumentů jako přílohy nebo jako odkazy prostřednictvím e-mailu."
 
-#: views.py:211
+#: views.py:215
 msgid "No mailing profiles available"
 msgstr "K dispozici nejsou žádné poštovní profily"
 
-#: views.py:228
+#: views.py:232
 msgid "Test email sent."
 msgstr "Testovací e-mail byl odeslán."
 
-#: views.py:237
+#: views.py:241
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Vyzkoušejte poštovní profil: %s"

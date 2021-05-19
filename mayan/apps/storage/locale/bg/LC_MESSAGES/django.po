@@ -1,26 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
 # 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2021
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2021
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 03:09+0000\n"
+"POT-Creation-Date: 2021-05-18 10:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
+"bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:25 settings.py:12
@@ -150,8 +151,8 @@ msgstr ""
 #: settings.py:28
 msgid "A storage backend that all workers can use to share files."
 msgstr ""
-"Бекенд за съхранение, който всички работници могат да използват за споделяне"
-" на файлове."
+"Бекенд за съхранение, който всички работници могат да използват за споделяне "
+"на файлове."
 
 #: settings.py:38
 msgid ""
@@ -163,16 +164,16 @@ msgstr ""
 
 #: storages.py:15
 msgid ""
-"Unable to initialize the download file storage. Check the settings {} and {}"
-" for formatting errors."
+"Unable to initialize the download file storage. Check the settings {} and {} "
+"for formatting errors."
 msgstr ""
 "Не може да се инициализира хранилището на файла за изтегляне. Проверете "
 "настройките {} и {} за грешки при форматирането."
 
 #: storages.py:29
 msgid ""
-"Unable to initialize the shared uploaded file storage. Check the settings {}"
-" and {} for formatting errors."
+"Unable to initialize the shared uploaded file storage. Check the settings {} "
+"and {} for formatting errors."
 msgstr ""
 "Не може да се инициализира съхраняването на качени файлове. Проверете "
 "настройките {} и {} за форматиране на грешки."
@@ -184,8 +185,8 @@ msgid ""
 "automatically."
 msgstr ""
 "Файловете за изтегляне се създават в резултат на външен процес като "
-"експортиране. Изтеглените файлове се запазват за определен период от време и"
-" след това се премахват автоматично."
+"експортиране. Изтеглените файлове се запазват за определен период от време и "
+"след това се премахват автоматично."
 
 #: views.py:59
 msgid "There are no files to download."

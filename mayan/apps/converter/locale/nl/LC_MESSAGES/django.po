@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-10 03:09+0000\n"
+"POT-Creation-Date: 2021-05-18 10:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -39,15 +39,15 @@ msgstr "Exceptie bij het bepalen van aan aantal bladzijden van de PDF: %s"
 msgid "Exception determining page count using Pillow; %s"
 msgstr "Uitzondering bij paginatelling met Pillow; %s"
 
-#: classes.py:155
+#: classes.py:157
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice niet geïnstalleerd of niet gevonden."
 
-#: classes.py:259
+#: classes.py:261
 msgid "Not an office file format."
 msgstr "Geen office bestandsformaat."
 
-#: classes.py:385
+#: classes.py:395
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
@@ -55,7 +55,7 @@ msgstr ""
 "Transformaties staan het wijzigen van de visuele presentatie van documenten "
 "toe, zonder permanente wijzigingen te maken in het document zelf."
 
-#: classes.py:433
+#: classes.py:446
 msgid "transformation"
 msgstr "transformatie"
 
@@ -421,12 +421,12 @@ msgstr ""
 msgid "No assets available"
 msgstr ""
 
-#: views.py:167
+#: views.py:168
 #, python-format
 msgid "Error creating transformation: %s."
 msgstr "Fout bij het aanmaken van transformatie: %s."
 
-#: views.py:184
+#: views.py:185
 #, python-format
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
@@ -435,36 +435,36 @@ msgstr ""
 "Aanmaken laag \"%(layer)s\" transformatie \"%(transformation)s\" voor: "
 "%(object)s"
 
-#: views.py:240
+#: views.py:241
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr ""
 "Transformatie verwijderen \"%(transformation)s\" voor: %(content_object)s?"
 
-#: views.py:289
+#: views.py:290
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr "Wijzig transformatie \"%(transformation)s\" voor: %(content_object)s"
 
-#: views.py:343
+#: views.py:344
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
 msgstr "Er is geen invoer voor laag \"%(layer_name)s\""
 
-#: views.py:346
+#: views.py:347
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
 msgstr "Laag \"%(layer)s\" transformaties voor: %(object)s"
 
-#: views.py:391
+#: views.py:392
 msgid "Transformation created successfully."
 msgstr "Transformatie met succes aangemaakt."
 
-#: views.py:415
+#: views.py:416
 msgid "Select"
 msgstr "Selecteren"
 
-#: views.py:417
+#: views.py:418
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
 msgstr "Kies nieuwe laag \"%(layer)s\" transformatie voor: %(object)s"
