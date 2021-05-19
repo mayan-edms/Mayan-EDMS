@@ -304,7 +304,7 @@
 - Dependency version upgrades:
 
   - coverage from 5.1 to 5.5.
-  - Django to 2.2.20.
+  - Django to 2.2.23.
   - django-debug-toolbar to 3.2.
   - django-extensions to 3.1.2.
   - django-rosetta to 0.9.4.
