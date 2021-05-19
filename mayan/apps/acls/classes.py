@@ -154,7 +154,7 @@ class ModelPermission:
         cls._field_query_functions[model] = function
 
     @classmethod
-    def register_inheritance(cls, model, related):
+    def register_inheritance(cls, model, related, fk_field_cast=None):
         model_reverse = get_related_field(
             model=model, related_field_name=related
         ).related_model
@@ -162,7 +162,9 @@ class ModelPermission:
         cls._inheritances_reverse[model_reverse].append(model)
 
         cls._inheritances.setdefault(model, [])
-        cls._inheritances[model].append(related)
+        cls._inheritances[model].append(
+            {'field_name': related, 'fk_field_cast': fk_field_cast}
+        )
 
     @classmethod
     def register_manager(cls, model, manager_name):

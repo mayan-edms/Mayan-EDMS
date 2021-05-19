@@ -1,4 +1,5 @@
 from django.apps import apps
+from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -32,14 +33,17 @@ class EventsApp(MayanAppConfig):
         Notification = self.get_model(model_name='Notification')
         StoredEventType = self.get_model(model_name='StoredEventType')
 
+        # Typecast the related field because actstream uses CharFields for
+        # the object_id the action_object, actor, and target fields.
         ModelPermission.register_inheritance(
-            model=Action, related='action_object',
+            fk_field_cast=models.CharField, model=Action,
+            related='action_object'
         )
         ModelPermission.register_inheritance(
-            model=Action, related='actor',
+            fk_field_cast=models.CharField, model=Action, related='actor'
         )
         ModelPermission.register_inheritance(
-            model=Action, related='target',
+            fk_field_cast=models.CharField, model=Action, related='target'
         )
 
         # Add labels to Action model, they are not marked translatable in the
