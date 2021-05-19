@@ -33,15 +33,15 @@ class UnkownConvertError(ConvertError):
 
 class OfficeConversionError(ConvertError):
     """
-    Used to encapsulate errors while executing Libre Office or when Libre
-    Office is now available.
+    Used to encapsulate errors while executing LibreOffice or when
+    LibreOffice is now available.
     """
 
 
 class InvalidOfficeFormat(ConvertError):
     """
     Raised by the file type introspection code to signal that the file is not
-    a office format file and that Libre Office will not be used to process
+    a office format file and that LibreOffice will not be used to process
     it.
     """
 

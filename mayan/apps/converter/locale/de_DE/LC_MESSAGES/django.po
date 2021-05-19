@@ -47,7 +47,7 @@ msgstr "Fehler bei der Ermittlung der Seitenanzahl; %s"
 
 #: classes.py:157
 msgid "LibreOffice not installed or not found."
-msgstr "Libre Office ist nicht installiert oder wurde nicht gefunden."
+msgstr "LibreOffice ist nicht installiert oder wurde nicht gefunden."
 
 #: classes.py:261
 msgid "Not an office file format."

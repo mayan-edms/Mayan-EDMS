@@ -193,7 +193,7 @@ class ConverterBase:
             except Exception as exception:
                 temporary_file_object.close()
                 logger.error(
-                    'Exception launching Libre Office; %s', exception,
+                    'Exception launching LibreOffice; %s', exception,
                     exc_info=True
                 )
                 raise
