@@ -1,7 +1,7 @@
 Version 4.0
 ===========
 
-Released: April XX, 2021
+Released: May 19, 2021
 
 
 This release is of special importance for the project as it also marks
@@ -286,6 +286,29 @@ File caching
 In addition to the existing tool to purge caches, it is now possible to purge
 specific document files or document version caches. This can be achieve with
 the new action link and requires the cache purge permission for the object.
+
+Event tracking was added when purging a cache partition.
+
+Many stability, scaling, and performance updates were added to the file
+caching system.
+
+Cache collisions were solved for many scenarios. This allows controlled
+access to the cached content even under heavy load situation where many
+processes might be trying to read or modify cached content.
+
+Failed cache pruning attempts are now automatically retried if the cause was
+lock contention.
+
+Added detection of excessive cache pruning when cache size is
+too small for the workload.
+
+The cache eviction logic was improve to use a LFU (Least frequently used) and
+LRU (Least recently used) combination algorithm. This ensures that only the
+least usable content is evicted from the cache during pruning.
+
+The caches are not only pruned during startup if their maximum size has
+changed. This reduces the startup or restart time in installations that
+are under heavy use.
 
 
 File metadata
@@ -657,27 +680,51 @@ Other
   ``True``.
 - Dependency version upgrades:
 
-  - django-rosetta to 0.9.4.
-  - Django to 2.2.20.
-  - pycounty to 20.7.3.
-  - requests to 2.25.1.
-  - sh to 1.14.1.
+  - coverage from 5.1 to 5.5.
+  - Django to 2.2.23.
   - django-debug-toolbar to 3.2.
   - django-extensions to 3.1.2.
+  - django-rosetta to 0.9.4.
   - django-silk to 4.1.0.
   - flake8 to 3.9.0.
   - ipython to 7.22.0.
-  - transifex-client to 0.14.2.
-  - twine to 3.4.1.
-  - wheel to 0.36.2.
+  - pycounty to 20.7.3.
+  - requests to 2.25.1.
   - Sphinx to 3.5.4.
+  - sh to 1.14.1.
   - sphinx-autobuild to 2021.3.14.
   - sphinx-sitemap to 2.2.0.
   - sphinxcontrib-spelling to 7.1.0.
   - tornado to 6.1.
+  - tox from 3.14.6 to 3.23.1.
+  - transifex-client to 0.14.2.
+  - twine to 3.4.1.
+  - wheel to 0.36.2.
 
-- Rename the ``mayan_settings`` directory, which used to allow custom setting
-  modules, to the more intuitive ``user_settings``.
+- Fix sub workflow launch state action.
+- Convert the workflow instance creation to a background task.
+- Add locking to the duplicated document scan code to workaround race
+  condition in Django bug #19544 when adding duplicated documents via
+  the many to many field ``.add()`` method.
+- Remove the default queue. All tasks must now be explicitly assigned to an
+  app defined queue.
+- Detect and avoid duplicated queue names.
+- Added a fourth class of worker.
+- Re-balanced queues.
+- Renamed workers from ``fast``, ``medium``, and ``slow`` to ``A`` (fast),
+  ``B`` (new workers), ``C`` (medium), ``D`` (slow).
+- Add support for passing custom nice level to the workers when using the
+  Docker image ``run_worker`` command. The value is passed via the
+  ``MAYAN_WORKER_NICE_LEVEL`` environment variable. This variable defaults to
+  ``0``.
+- Detect and avoid adding a transformation to a layer for which it was
+  not registered.
+- Added LayerError exception.
+- Fixed redaction ACL support.
+- Added support for typecasting the values used to filter the ACL object
+  inherited fields.
+- Renamed the ``mayan_settings`` directory, which is used to allow custom
+  setting modules, to the more intuitive ``user_settings``.
 
 
 Removals

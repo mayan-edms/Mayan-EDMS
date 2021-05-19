@@ -1,4 +1,4 @@
-4.0 (2021-04-XX)
+4.0 (2021-05-19)
 ================
 - Add document version page list reset.
 - Add document version page delete.
@@ -357,3 +357,7 @@
   not registered.
 - Add LayerError exception.
 - Fix redaction ACL support.
+- Add support for typecasting the values used to filter the ACL object
+  inherited fields.
+- Rename the ``mayan_settings`` directory, which is used to allow custom
+  setting modules, to the more intuitive ``user_settings``.
