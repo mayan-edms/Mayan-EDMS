@@ -335,6 +335,11 @@ INSTALLED_APPS = [
     APP for APP in INSTALLED_APPS if APP not in (COMMON_DISABLED_APPS or ())  # NOQA: F821
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'mayan.apps.token_authentication.auth.token_backend.TokenBackend',
+    'django.contrib.auth.backends.ModelBackend'
+]
+
 if not DATABASES:
     if DATABASE_ENGINE:  # NOQA: F821
         DATABASES = {
