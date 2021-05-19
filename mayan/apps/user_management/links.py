@@ -55,6 +55,7 @@ link_group_setup = Link(
     condition=get_cascade_condition(
         app_label='auth', model_name='Group',
         object_permission=permission_group_view,
+        view_permission=permission_group_create,
     ), icon=icon_group_setup, text=_('Groups'),
     view='user_management:group_list'
 )
@@ -81,6 +82,7 @@ link_user_list = Link(
     condition=get_cascade_condition(
         app_label='auth', model_name='User',
         object_permission=permission_user_view,
+        view_permission=permission_user_create,       
     ), icon=icon_user_list, text=_('Users'),
     view='user_management:user_list'
 )
