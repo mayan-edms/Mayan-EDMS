@@ -67,6 +67,8 @@ document version and change its page mapping and ordering.
    paradigm changes for the project. Make sure to validate your data after the
    upgrade and report any issues.
 
+.. important::
+
    The default versions of PostgreSQL and MySQL were also updated. These
    database managers might require dedicated steps to convert your existing
    database from the current version to the new one. This should

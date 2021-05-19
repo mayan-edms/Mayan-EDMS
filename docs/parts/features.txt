@@ -36,8 +36,8 @@ Features
 
   - Multi disciplinary team with decades of enterprise system engineering
     and enterprise software development experience.
-  - Complex design changes are documented via
-    :doc:`formal processes <../mercs>.`
+  - Complex design changes are documented via a formal processes called
+    :ref:`mercs`.
 
 - :doc:`Advanced access control system <../chapters/permissions>`.
 
@@ -53,7 +53,7 @@ Features
 
 - Office document format support.
 
-  - Mayan EDMS can detect the presence of Libre Office and use it to support
+  - Mayan EDMS can detect the presence of LibreOffice and use it to support
     word processing files, spreadsheets and presentations.
 
 - Full text searching.
@@ -182,4 +182,4 @@ Features
 .. _Django:  https://www.djangoproject.com/
 .. _Transifex: https://www.transifex.com/projects/p/mayan-edms/
 .. _`ISO 23081`: https://www.iso.org/standard/73172.html
-`Docker image`_
+.. _`Docker image`: https://hub.docker.com/r/mayanedms/mayanedms
