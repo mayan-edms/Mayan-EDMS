@@ -71,47 +71,47 @@ test-all-migrations: clean-pyc _test-command
 test-with-mysql: ## MODULE=<python module name> - Run tests for a single app, module or test class against a MySQL database container.
 test-with-mysql:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test $(MODULE) --settings=mayan.settings.testing --skip-migrations
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.development --skip-migrations
 
 test-all-with-mysql: ## Run all tests against a MySQL database container.
 test-all-with-mysql:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing --skip-migrations
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --skip-migrations
 
 test-all-migrations-with-mysql: ## Run all migration tests against a MySQL database container.
 test-all-migrations-with-mysql:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing --no-exclude --tag=migration
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration
 
 test-with-oracle: ## MODULE=<python module name> - Run tests for a single app, module or test class against an Oracle database container.
 test-with-oracle:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.oracle','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test $(MODULE) --settings=mayan.settings.testing --skip-migrations
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.development --skip-migrations
 
 test-all-with-oracle: ## Run all tests against an Oracle database container.
 test-all-with-oracle:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.oracle','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing --skip-migrations
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --skip-migrations
 
 test-all-migrations-with-oracle: ## Run all migration tests against an Oracle database container.
 test-all-migrations-with-oracle:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.oracle','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing --no-exclude --tag=migration
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration
 
 test-with-postgresql: ## MODULE=<python module name> - Run tests for a single app, module or test class against a PostgreSQL database container.
 test-with-postgresql:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test $(MODULE) --settings=mayan.settings.testing --skip-migrations
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.development --skip-migrations
 
 test-all-with-postgresql: ## Run all tests against a PostgreSQL database container.
 test-all-with-postgresql:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing --skip-migrations
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --skip-migrations
 
 test-all-migrations-with-postgresql: ## Run all migration tests against a PostgreSQL database container.
 test-all-migrations-with-postgresql:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing --no-exclude --tag=migration
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration
 
 gitlab-ci-run: ## Execute a GitLab CI job locally
 gitlab-ci-run:
