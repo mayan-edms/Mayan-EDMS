@@ -7,26 +7,42 @@ volumes:
         driver: local
 
 services:
-
-  db:
-    environment:
-      POSTGRES_DB: mayan
-      POSTGRES_PASSWORD: mayandbpass
-      POSTGRES_USER: mayan
-    image: postgres:10.14-alpine
-    volumes:
-      - db:/var/lib/postgresql/data
-
   app:
     environment:
       MAYAN_CELERY_BROKER_URL: redis://redis:6379/1
       MAYAN_CELERY_RESULT_BACKEND: redis://redis:6379/0
       MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayandbpass','USER':'mayan','HOST':'db'}}"
+      MAYAN_DOCKER_WAIT: "postgresql:5432 redis:6379"
+      MAYAN_LOCK_MANAGER_BACKEND: mayan.apps.lock_manager.backends.redis_lock.RedisLock
+      MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS: "{'redis_url':'redis://:redis:6379/2'}"
     image: mayanedms/mayanedms:s4.0
     ports:
       - 80:8000
     volumes:
       - app:/var/lib/mayan
+
+  db:
+    command:
+      - "postgres"
+      - "-c"
+      - "checkpoint_completion_target=0.6"
+      - "-c"
+      - "default_statistics_target=200"
+      - "-c"
+      - "maintenance_work_mem=128MB"
+      - "-c"
+      - "max_connections=200"
+      - "-c"
+      - "shared_buffers=256MB"
+      - "-c"
+      - "work_mem=8MB"
+    environment:
+      POSTGRES_DB: mayan
+      POSTGRES_PASSWORD: mayandbpass
+      POSTGRES_USER: mayan
+    image: postgres:10.15-alpine
+    volumes:
+      - db:/var/lib/postgresql/data
 
   redis:
     command:
@@ -34,9 +50,15 @@ services:
       - --appendonly
       - "no"
       - --databases
-      - "2"
+      - "3"
+      - --maxmemory
+      - "100mb"
+      - --maxclients
+      - "500"
       - --maxmemory-policy
-      - allkeys-lru
+      - "allkeys-lru"
       - --save
       - ""
-    image: redis:5.0-alpine
+      - --tcp-backlog
+      - "256"
+    image: redis:6.0-alpine
