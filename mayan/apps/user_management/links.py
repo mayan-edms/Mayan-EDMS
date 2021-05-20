@@ -82,7 +82,7 @@ link_user_list = Link(
     condition=get_cascade_condition(
         app_label='auth', model_name='User',
         object_permission=permission_user_view,
-        view_permission=permission_user_create,       
+        view_permission=permission_user_create,
     ), icon=icon_user_list, text=_('Users'),
     view='user_management:user_list'
 )
@@ -100,6 +100,7 @@ link_user_setup = Link(
     condition=get_cascade_condition(
         app_label='auth', model_name='User',
         object_permission=permission_user_view,
+        view_permission=permission_user_create,
     ), icon=icon_user_setup, text=_('Users'),
     view='user_management:user_list'
 )

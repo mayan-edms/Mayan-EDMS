@@ -1,3 +1,8 @@
+4.0.1 (2021-XX-XX)
+==================
+- Fix group and user setup link conditional disable not working as
+  expected.
+
 4.0 (2021-05-19)
 ================
 - Add document version page list reset.
