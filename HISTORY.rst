@@ -4,6 +4,9 @@
   expected.
 - Fix Docker environment variables documentation chapter regarding
   worker concurrency.
+- Add troubleshooting section regarding document file access after upgrade
+  to version 4.0.
+
 
 4.0 (2021-05-19)
 ================

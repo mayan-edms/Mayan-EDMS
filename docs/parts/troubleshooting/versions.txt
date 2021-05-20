@@ -1,0 +1,35 @@
+========
+Versions
+========
+
+
+.. _troubleshooting-version-4.0:
+
+After upgrade to version 4.0
+============================
+
+Error: ``...CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+------------------------------------------------------------------------------------------------
+
+The document storage layout changed in version 4.0. The following settings
+were changed as a result:
+
+- ``DOCUMENTS_CACHE_STORAGE_BACKEND`` became ``DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND``
+- ``DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS`` became ``DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS``
+- ``DOCUMENTS_STORAGE_BACKEND`` became ``DOCUMENTS_FILE_STORAGE_BACKEND``
+- ``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS`` became ``DOCUMENTS_FILE_STORAGE_BACKEND_ARGUMENTS``
+
+During the upgrade, the values of these settings will be migrated. Due to the
+many ways Mayan EDMS can be deployed and configured, this automatic migration
+might not succeed in all cases. The result is that after the upgrade, Mayan
+EDMS will be looking for the document files and cached document file images
+in the wrong place.
+
+To solve this, migrate the setting values by hand or rename the folder
+``document_storage`` to ``document_file_storage``. Then perform a restart.
+
+
+Error: ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+------------------------------------------------------------------------------------------------------------
+
+Same solution as with error: ``...CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
