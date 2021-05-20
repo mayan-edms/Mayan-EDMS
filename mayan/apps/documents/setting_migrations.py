@@ -6,6 +6,7 @@ from .literals import (
     DEFAULT_DOCUMENTS_STORAGE_BACKEND_ARGUMENTS
 )
 
+
 class DocumentsSettingMigration(SettingNamespaceMigration):
     """
     0001 to 0002: Backend arguments are no longer quoted but YAML valid
