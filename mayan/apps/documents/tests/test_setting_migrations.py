@@ -3,6 +3,10 @@ from django.test import override_settings
 from mayan.apps.smart_settings.tests.mixins import SmartSettingTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 
+from ..literals import (
+    DEFAULT_DOCUMENTS_STORAGE_BACKEND,
+    DEFAULT_DOCUMENTS_STORAGE_BACKEND_ARGUMENTS
+)
 from ..settings import (
     setting_document_file_page_image_cache_storage_backend,
     setting_document_file_page_image_cache_storage_backend_arguments,
@@ -60,6 +64,17 @@ class DocumentSettingMigrationTestCase(SmartSettingTestMixin, BaseTestCase):
             TEST_DOCUMENTS_STORAGE_BACKEND
         )
 
+    def test_setting_document_file_storage_backend_0003_no_value(self):
+        test_value = None
+        self.test_setting = setting_document_file_storage_backend
+        self.test_config_value = test_value
+        self._create_test_config_file()
+
+        self.assertEqual(
+            setting_document_file_storage_backend.value,
+            DEFAULT_DOCUMENTS_STORAGE_BACKEND
+        )
+
     @override_settings(DOCUMENTS_STORAGE_BACKEND_ARGUMENTS=TEST_DOCUMENTS_STORAGE_BACKEND_ARGUMENTS)
     def test_setting_document_file_storage_backend_arguments_0003(self):
         test_value = None
@@ -70,6 +85,17 @@ class DocumentSettingMigrationTestCase(SmartSettingTestMixin, BaseTestCase):
         self.assertEqual(
             setting_document_file_storage_backend_arguments.value,
             TEST_DOCUMENTS_STORAGE_BACKEND_ARGUMENTS
+        )
+
+    def test_setting_document_file_storage_backend_arguments_0003_no_value(self):
+        test_value = None
+        self.test_setting = setting_document_file_storage_backend_arguments
+        self.test_config_value = test_value
+        self._create_test_config_file()
+
+        self.assertEqual(
+            setting_document_file_storage_backend_arguments.value,
+            DEFAULT_DOCUMENTS_STORAGE_BACKEND_ARGUMENTS
         )
 
     @override_settings(DOCUMENTS_CACHE_STORAGE_BACKEND=TEST_DOCUMENTS_CACHE_STORAGE_BACKEND)

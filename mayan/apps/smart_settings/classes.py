@@ -294,7 +294,7 @@ class Setting:
     def __str__(self):
         return force_text(s=self.global_name)
 
-    def cache_value(self, global_name=None):
+    def cache_value(self, global_name=None, default_override=None):
         global_name = global_name or self.global_name
 
         environment_value = os.environ.get('MAYAN_{}'.format(global_name))
@@ -321,7 +321,10 @@ class Setting:
                     )
                 except AttributeError:
                     # Finally set to the default value
-                    self.raw_value = self.default
+                    if default_override:
+                        self.raw_value = default_override
+                    else:
+                        self.raw_value = self.default
             else:
                 # Found in the config file, try to migrate the value
                 self.migrate()

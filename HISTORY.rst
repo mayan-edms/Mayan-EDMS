@@ -6,7 +6,8 @@
   worker concurrency.
 - Add troubleshooting section regarding document file access after upgrade
   to version 4.0.
-
+- Allow migration of the settings ``DOCUMENTS_STORAGE_BACKEND`` and
+  ``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS`` for more situations.
 
 4.0 (2021-05-19)
 ================

@@ -1,6 +1,10 @@
 from mayan.apps.smart_settings.classes import SettingNamespaceMigration, Setting
 from mayan.apps.smart_settings.utils import smart_yaml_load
 
+from .literals import (
+    DEFAULT_DOCUMENTS_STORAGE_BACKEND,
+    DEFAULT_DOCUMENTS_STORAGE_BACKEND_ARGUMENTS
+)
 
 class DocumentsSettingMigration(SettingNamespaceMigration):
     """
@@ -48,7 +52,10 @@ class DocumentsSettingMigration(SettingNamespaceMigration):
         # Get the setting by its new global name
         setting = Setting.get(global_name='DOCUMENTS_FILE_STORAGE_BACKEND')
         # Load the value from the setting's old global name
-        setting.cache_value(global_name='DOCUMENTS_STORAGE_BACKEND')
+        setting.cache_value(
+            global_name='DOCUMENTS_STORAGE_BACKEND',
+            default_override=DEFAULT_DOCUMENTS_STORAGE_BACKEND
+        )
         return setting.value
 
     def documents_file_storage_backend_arguments_0003(self, value):
@@ -58,7 +65,8 @@ class DocumentsSettingMigration(SettingNamespaceMigration):
         )
         # Load the value from the setting's old global name
         setting.cache_value(
-            global_name='DOCUMENTS_STORAGE_BACKEND_ARGUMENTS'
+            global_name='DOCUMENTS_STORAGE_BACKEND_ARGUMENTS',
+            default_override=DEFAULT_DOCUMENTS_STORAGE_BACKEND_ARGUMENTS
         )
         return setting.value
 

@@ -16,6 +16,13 @@ Documentation
   to version 4.0.
 
 
+Documents
+^^^^^^^^^
+
+- Allow migration of the settings ``DOCUMENTS_STORAGE_BACKEND`` and
+  ``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS`` for more situations.
+
+
 User management
 ^^^^^^^^^^^^^^^
 
@@ -181,7 +188,6 @@ Backward incompatible changes
 Issues closed
 -------------
 
-- :gitlab-issue:`941` Include time of document signature
-- :forum-topic:`5085` Rest API: Detailed list of signatures
+- :gitlab-issue:`978` Upgrade 3.5 to 4 missing files
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
