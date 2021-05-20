@@ -1,4 +1,4 @@
-4.0.1 (2021-XX-XX)
+4.0.1 (2021-05-20)
 ==================
 - Fix group and user setup link conditional disable not working as
   expected.
@@ -8,6 +8,7 @@
   to version 4.0.
 - Allow migration of the settings ``DOCUMENTS_STORAGE_BACKEND`` and
   ``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS`` for more situations.
+
 
 4.0 (2021-05-19)
 ================

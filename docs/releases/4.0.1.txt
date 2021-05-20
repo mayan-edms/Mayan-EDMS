@@ -1,7 +1,7 @@
 Version 4.0.1
 =============
 
-Released: XX XX, 2021
+Released: May 20, 2021
 
 Changes
 -------
@@ -10,24 +10,28 @@ Changes
 Documentation
 ^^^^^^^^^^^^^
 
-- Fix Docker environment variables documentation chapter regarding
-  worker concurrency.
-- Add troubleshooting section regarding document file access after upgrade
-  to version 4.0.
+The Docker documentation chapter was updated to fix the worker concurrency
+environment variables names.
+
+A troubleshooting section regarding document file access after upgrade to
+version 4.0 on situations where the settings system is not able to migrate
+the value of the ``DOCUMENTS_STORAGE_BACKEND`` and
+``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS`` settings. A link to this chapter is
+included at the end of the release notes.
 
 
 Documents
 ^^^^^^^^^
 
-- Allow migration of the settings ``DOCUMENTS_STORAGE_BACKEND`` and
-  ``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS`` for more situations.
+The documents app migrations for the settings ``DOCUMENTS_STORAGE_BACKEND``
+and ``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS`` to work in more situations.
 
 
 User management
 ^^^^^^^^^^^^^^^
 
-- Fix group and user setup link conditional disable not working as
-  expected.
+The group and user setup link conditional disable was fixed to work as
+expected.
 
 
 Removals
