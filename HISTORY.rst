@@ -2,6 +2,8 @@
 ==================
 - Fix group and user setup link conditional disable not working as
   expected.
+- Fix Docker environment variables documentation chapter regarding
+  worker concurrency.
 
 4.0 (2021-05-19)
 ================
