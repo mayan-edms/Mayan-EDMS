@@ -735,6 +735,7 @@ Removals
   rotation test files.
 - Appending extensions when downloading document files. The filename of
   the downloaded file is now taken as-is from the document file.
+- Bulk downlods.
 
 
 Upgrade process
