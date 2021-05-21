@@ -351,7 +351,7 @@ Organizations
 
 A new small app was added to handle details that are specific to an
 organizations installation of Mayan EDMS. The app is called ``organizations``
-and hold two settings. The setting ``ORGANIZATIONS_INSTALLATION_URL``
+and holds two settings. The setting ``ORGANIZATIONS_INSTALLATION_URL``
 allows setting the URL of the installation. This URL is used when composing
 the document link URL when sending document links via email. It is also used
 to create the download link for exported document versions.
