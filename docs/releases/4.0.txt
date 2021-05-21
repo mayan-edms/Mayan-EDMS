@@ -733,6 +733,8 @@ Removals
 - Document storage and caching settings.
 - Removed all remaining PDF page orientation detection support. Removed
   rotation test files.
+- Appending extensions when downloading document files. The filename of
+  the downloaded file is now taken as-is from the document file.
 
 
 Upgrade process
