@@ -13,6 +13,8 @@
   thanks to Ilya Pavlov (@spirkaa) for the report.
 - Disable links to mark messages as read or unread based on the state of
   the message.
+- Correct user_settings folder creation step. Closes GitLab issue #984. Thanks
+  to Matthias Löblich (@startmat) for the report.
 
 4.0.1 (2021-05-20)
 ==================
