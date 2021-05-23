@@ -80,6 +80,12 @@ class MessageDetailView(SingleObjectDetailView):
     object_permission = permission_message_view
     pk_url_kwarg = 'message_id'
 
+    def dispatch(self, request, *args, **kwargs):
+        result = super().dispatch(request=request, *args, **kwargs)
+        self.object._event_actor = self.request.user
+        self.object.mark_read()
+        return result
+
     def get_extra_context(self):
         return {
             'form_hide_help_text': True,
@@ -89,13 +95,8 @@ class MessageDetailView(SingleObjectDetailView):
         }
 
     def get_initial(self):
-        body, error_message = self.object.get_rendered_body()
-
-        if error_message:
-            messages.error(request=self.request, message=error_message)
-
         return {
-            'body': body
+            'body': self.object.get_rendered_body()
         }
 
     def get_source_queryset(self):
@@ -188,3 +189,42 @@ class MessageMarkReadAllView(ConfirmView):
             message=_('All messages marked as read.'),
             request=self.request
         )
+
+
+class MessageMarkUnReadView(MultipleObjectConfirmActionView):
+    error_message = _(
+        'Error marking message "%(instance)s" as unread; %(exception)s'
+    )
+    object_permission = permission_message_view
+    pk_url_kwarg = 'message_id'
+    post_action_redirect = reverse_lazy(viewname='messaging:message_list')
+    success_message_single = _(
+        'Message "%(object)s" marked as unread successfully.'
+    )
+    success_message_singular = _(
+        '%(count)d message marked as unread successfully.'
+    )
+    success_message_plural = _(
+        '%(count)d messages marked as unread successfully.'
+    )
+    title_single = _('Mark the message "%(object)s" as unread.')
+    title_singular = _('Mark the %(count)d selected message as unread.')
+    title_plural = _('Mark the %(count)d selected messages as unread.')
+
+    def get_extra_context(self):
+        context = {}
+
+        if self.object_list.count() == 1:
+            context.update(
+                {
+                    'object': self.object_list.first()
+                }
+            )
+
+        return context
+
+    def get_source_queryset(self):
+        return self.request.user.messages.all()
+
+    def object_action(self, instance, form=None):
+        instance.mark_unread()

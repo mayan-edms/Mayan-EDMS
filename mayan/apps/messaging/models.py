@@ -2,7 +2,6 @@ from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
-from django.template import TemplateSyntaxError
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
@@ -70,33 +69,21 @@ class Message(models.Model):
     get_label.short_description = _('Label')
 
     def get_rendered_body(self):
-        if settings.DEBUG:
-            exception_list = (TemplateSyntaxError,)
-        else:
-            exception_list = (Exception, TemplateSyntaxError,)
-
         cleaner = Cleaner(
             filters=[LinkifyFilter]
         )
-        error_message = None
-        result = None
 
-        try:
-            template = Template(
-                template_string=cleaner.clean(text=self.body)
-            )
-            result = template.render(context={'message': self})
-        except exception_list as exception:
-            error_message = _(
-                'Template error; %(exception)s'
-            ) % {
-                'exception': exception
-            }
-
-        return result, error_message
+        template = Template(
+            template_string=cleaner.clean(text=self.body)
+        )
+        return template.render(context={'message': self})
 
     def mark_read(self):
         self.read = True
+        self.save()
+
+    def mark_unread(self):
+        self.read = False
         self.save()
 
     @method_event(

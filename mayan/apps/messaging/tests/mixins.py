@@ -39,5 +39,12 @@ class MessageViewTestMixin:
             }
         )
 
+    def _request_test_message_detail_view(self):
+        return self.get(
+            viewname='messaging:message_detail', kwargs={
+                'message_id': self.test_message.pk
+            }
+        )
+
     def _request_test_message_list_view(self):
         return self.get(viewname='messaging:message_list')

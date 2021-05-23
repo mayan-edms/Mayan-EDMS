@@ -17,8 +17,9 @@ from .events import event_message_edited
 from .links import (
     link_message_all_mark_read, link_message_create,
     link_message_single_delete, link_message_list,
-    link_message_multiple_mark_read, link_message_multiple_delete,
-    link_message_single_mark_read
+    link_message_multiple_delete, link_message_multiple_mark_read,
+    link_message_multiple_mark_unread, link_message_single_mark_read,
+    link_message_single_mark_unread
 )
 from .permissions import permission_message_delete, permission_message_view
 
@@ -72,12 +73,14 @@ class MessagingApp(MayanAppConfig):
 
         menu_multi_item.bind_links(
             links=(
-                link_message_multiple_delete, link_message_multiple_mark_read
+                link_message_multiple_delete, link_message_multiple_mark_read,
+                link_message_multiple_mark_unread
             ), sources=(Message,)
         )
         menu_object.bind_links(
             links=(
-                link_message_single_delete, link_message_single_mark_read
+                link_message_single_delete, link_message_single_mark_read,
+                link_message_single_mark_unread
             ), sources=(Message,)
         )
 
