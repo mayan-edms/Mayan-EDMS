@@ -40,7 +40,7 @@ class DocumentFilePropertiesForm(DetailForm):
                 'widget': forms.widgets.DateTimeInput
             },
             {
-                'label': _('Mimetype'),
+                'label': _('MIME type'),
                 'field': 'mimetype',
             },
             {

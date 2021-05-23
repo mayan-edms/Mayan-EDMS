@@ -726,7 +726,7 @@ class SingleObjectDetailView(
             else:
                 messages.error(
                     message=_(
-                        'Error retrieving %(object)s, error: %(error)s'
+                        'Error retrieving %(object)s; %(error)s'
                     ) % {
                         'object': self.get_object_name(
                             context={'object': self.object}
