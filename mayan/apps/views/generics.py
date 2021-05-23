@@ -693,7 +693,8 @@ class SingleObjectDeleteView(
 
 
 class SingleObjectDetailView(
-    ViewPermissionCheckViewMixin, RestrictedQuerysetViewMixin, FormExtraKwargsViewMixin,
+    ObjectNameViewMixin, ViewPermissionCheckViewMixin,
+    RestrictedQuerysetViewMixin, FormExtraKwargsViewMixin,
     ExtraContextViewMixin, ModelFormMixin, DetailView
 ):
     template_name = 'appearance/generic_form.html'
@@ -715,6 +716,24 @@ class SingleObjectDetailView(
         context = super().get_context_data(**kwargs)
         context.update({'read_only': True, 'form': self.get_form()})
         return context
+
+    def get_form(self):
+        try:
+            return super().get_form()
+        except Exception as exception:
+            if settings.DEBUG or settings.TESTING:
+                raise
+            else:
+                messages.error(
+                    message=_(
+                        'Error retrieving %(object)s, error: %(error)s'
+                    ) % {
+                        'object': self.get_object_name(
+                            context={'object': self.object}
+                        ),
+                        'error': exception
+                    }, request=self.request
+                )
 
     def get_queryset(self):
         try:
