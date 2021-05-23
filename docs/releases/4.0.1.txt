@@ -106,7 +106,7 @@ Upgrading from Mayan EDMS 3.5.x
 
    .. code-block:: ini
 
-      databases 2
+      databases ...
 
    with:
 
@@ -121,15 +121,15 @@ Upgrading from Mayan EDMS 3.5.x
 
    .. code-block:: ini
 
-       MAYAN_LOCK_MANAGER_BACKEND="redis://..."
-       MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS=...
+       LOCK_MANAGER_BACKEND="..."
+       LOCK_MANAGER_BACKEND_ARGUMENTS="..."
 
    with:
 
    .. code-block:: ini
 
-       MAYAN_LOCK_MANAGER_BACKEND="mayan.apps.lock_manager.backends.redis_lock.RedisLock"
-       MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS="{'redis_url':'redis://:|DEFAULT_REDIS_PASSWORD|@172.17.0.1:6379/2'}"
+       LOCK_MANAGER_BACKEND="mayan.apps.lock_manager.backends.redis_lock.RedisLock"
+       LOCK_MANAGER_BACKEND_ARGUMENTS="{'redis_url':'redis://:|DEFAULT_REDIS_PASSWORD|@172.17.0.1:6379/2'}"
 
 
 #. Update the supervisord configuration file. Replace the environment
