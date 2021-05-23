@@ -1,3 +1,19 @@
+4.0.2 (2021-XX-XX)
+==================
+- Clarify Redis and Lock manager upgrade steps
+- Action dropdown template updates.
+
+  - Move dropdown template partial to the navigation app.
+  - Remove unused {{ link_extra_classes }}.
+  - Remove obsolete dropdown HTML markup.
+
+- Fix action menu disabled links appearance.
+- Add links to set messages as unread.
+- Automatically set messages as read upon accessing them. GitLab issue #981,
+  thanks to Ilya Pavlov (@spirkaa) for the report.
+- Disable links to mark messages as read or unread based on the state of
+  the message.
+
 4.0.1 (2021-05-20)
 ==================
 - Fix group and user setup link conditional disable not working as
@@ -8,7 +24,6 @@
   to version 4.0.
 - Allow migration of the settings ``DOCUMENTS_STORAGE_BACKEND`` and
   ``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS`` for more situations.
-
 
 4.0 (2021-05-19)
 ================
