@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 03:26+0000\n"
+"POT-Creation-Date: 2021-05-23 07:48+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2021\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
@@ -410,7 +410,6 @@ msgid "Bulk actions"
 msgstr ""
 
 #: templates/appearance/list_toolbar.html:67
-#: templates/appearance/partials/actions_dropdown.html:12
 msgid "Toggle Dropdown"
 msgstr ""
 
@@ -421,10 +420,6 @@ msgstr ""
 #: templates/appearance/no_results.html:18
 msgid "No results"
 msgstr "Sonuç yok"
-
-#: templates/appearance/partials/actions_dropdown.html:9
-msgid "Actions"
-msgstr "Eylemler"
 
 #: templates/appearance/root.html:63
 msgid "Close"

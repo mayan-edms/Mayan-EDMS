@@ -5,14 +5,13 @@
 # 
 # Translators:
 # Roberto Rosario, 2021
-# xisafe <root@xisafe.com>, 2021
 # bo feng <87289884@qq.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 03:26+0000\n"
+"POT-Creation-Date: 2021-05-23 07:49+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
 "Last-Translator: bo feng <87289884@qq.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -22,15 +21,15 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:34 events.py:5 permissions.py:5
+#: apps.py:35 events.py:5 permissions.py:5
 msgid "Messaging"
 msgstr "消息"
 
-#: apps.py:56
+#: apps.py:57
 msgid "None"
 msgstr "没有"
 
-#: apps.py:62
+#: apps.py:63
 msgid "Sender"
 msgstr "发送方"
 
@@ -42,74 +41,73 @@ msgstr "消息已创建"
 msgid "Message edited"
 msgstr "消息已编辑"
 
-#: forms.py:9 models.py:38
+#: forms.py:9 models.py:37
 msgid "Body"
 msgstr "正文"
 
-#: links.py:28 views.py:33
+#: links.py:37 views.py:33
 msgid "Create message"
 msgstr "创建消息"
 
-#: links.py:31 links.py:37
+#: links.py:40 links.py:46
 msgid "Delete"
 msgstr "删除"
 
-#: links.py:45 links.py:49
+#: links.py:54 links.py:65
 msgid "Mark as read"
 msgstr "标记为读"
 
-#: links.py:53
+#: links.py:60 links.py:69
+msgid "Mark as unread"
+msgstr ""
+
+#: links.py:73
 msgid "Mark all as read"
 msgstr "全部标记为读"
 
-#: models.py:30
+#: models.py:29
 msgid "User"
 msgstr "用户"
 
-#: models.py:33
+#: models.py:32
 msgid "Short description of this message."
 msgstr "此消息的简短描述。"
 
-#: models.py:34
+#: models.py:33
 msgid "Subject"
 msgstr "主题"
 
-#: models.py:37
+#: models.py:36
 msgid "The actual content of the message."
 msgstr "消息的实际内容。"
 
-#: models.py:42
+#: models.py:41
 msgid "This field determines if the message has been read or not."
 msgstr "此字段确定消息是否已读。"
 
-#: models.py:43
+#: models.py:42
 msgid "Read"
 msgstr "读取"
 
-#: models.py:47
+#: models.py:46
 msgid "Date and time of the message creation."
 msgstr "消息创建的日期和时间。"
 
-#: models.py:48
+#: models.py:47
 msgid "Creation date and time"
 msgstr "创建日期和时间"
 
-#: models.py:53
+#: models.py:52
 msgid "Message"
 msgstr "消息"
 
-#: models.py:54 views.py:121
+#: models.py:53 views.py:122
 msgid "Messages"
 msgstr "消息"
 
-#: models.py:70
+#: models.py:69
 msgid "Label"
 msgstr "标签"
-
-#: models.py:91
-#, python-format
-msgid "Template error; %(exception)s"
-msgstr "模板错误%(exception)s"
 
 #: permissions.py:8
 msgid "Create messages"
@@ -162,58 +160,93 @@ msgstr ""
 msgid "Delete the %(count)d selected messages."
 msgstr ""
 
-#: views.py:88
+#: views.py:94
 #, python-format
 msgid "Details of message: %s"
 msgstr ""
 
-#: views.py:116
+#: views.py:117
 msgid "Here you will find text messages from other users or from the system."
 msgstr "在这里，您将找到来自其他用户或系统的消息。"
 
-#: views.py:119
+#: views.py:120
 msgid "There are no messages"
 msgstr "没有任何消息"
 
-#: views.py:130
+#: views.py:131
 #, python-format
 msgid "Error marking message \"%(instance)s\" as read; %(exception)s"
 msgstr ""
 
-#: views.py:136
+#: views.py:137
 #, python-format
 msgid "Message \"%(object)s\" marked as read successfully."
 msgstr ""
 
-#: views.py:139
+#: views.py:140
 #, python-format
 msgid "%(count)d message marked as read successfully."
 msgstr ""
 
-#: views.py:142
+#: views.py:143
 #, python-format
 msgid "%(count)d messages marked as read successfully."
 msgstr ""
 
-#: views.py:144
+#: views.py:145
 #, python-format
 msgid "Mark the message \"%(object)s\" as read."
 msgstr ""
 
-#: views.py:145
+#: views.py:146
 #, python-format
 msgid "Mark the %(count)d selected message as read."
 msgstr ""
 
-#: views.py:146
+#: views.py:147
 #, python-format
 msgid "Mark the %(count)d selected messages as read."
 msgstr ""
 
-#: views.py:172
+#: views.py:173
 msgid "Mark all message as read?"
 msgstr "将所有消息标记为读？"
 
-#: views.py:188
+#: views.py:189
 msgid "All messages marked as read."
 msgstr "所有消息都已标记为读。"
+
+#: views.py:196
+#, python-format
+msgid "Error marking message \"%(instance)s\" as unread; %(exception)s"
+msgstr ""
+
+#: views.py:202
+#, python-format
+msgid "Message \"%(object)s\" marked as unread successfully."
+msgstr ""
+
+#: views.py:205
+#, python-format
+msgid "%(count)d message marked as unread successfully."
+msgstr ""
+
+#: views.py:208
+#, python-format
+msgid "%(count)d messages marked as unread successfully."
+msgstr ""
+
+#: views.py:210
+#, python-format
+msgid "Mark the message \"%(object)s\" as unread."
+msgstr ""
+
+#: views.py:211
+#, python-format
+msgid "Mark the %(count)d selected message as unread."
+msgstr ""
+
+#: views.py:212
+#, python-format
+msgid "Mark the %(count)d selected messages as unread."
+msgstr ""

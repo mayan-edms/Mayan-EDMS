@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 03:26+0000\n"
+"POT-Creation-Date: 2021-05-23 07:49+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -354,7 +354,7 @@ msgstr "Номер целевой страницы"
 msgid "Target page number can't be repeated."
 msgstr "Номер целевой страницы не может повторяться."
 
-#: forms/misc_forms.py:12 literals.py:94
+#: forms/misc_forms.py:12 literals.py:101
 msgid "Page range"
 msgstr "Диапазон страниц"
 
@@ -576,71 +576,71 @@ msgstr "Очистить корзину"
 msgid "Default"
 msgstr "По умолчанию"
 
-#: literals.py:76
+#: literals.py:83
 msgid "Replace. Create a new version and use the new file pages."
 msgstr ""
 "Заменить. Создать новую версию и использовать только страницы нового файла."
 
-#: literals.py:77
+#: literals.py:84
 msgid "Append. Create a new version and append the new file pages."
 msgstr ""
 "Присоединить. Создать новую версию и присоединить страницы нового файла к "
 "существующим."
 
-#: literals.py:78
+#: literals.py:85
 msgid "Keep. Do not create a new version and keep the current version pages."
 msgstr ""
 "Сохранить. Не создавать новую версию и сохранить страницы текущей версии."
 
-#: literals.py:86
+#: literals.py:93
 msgid "January"
 msgstr "Январь"
 
-#: literals.py:86
+#: literals.py:93
 msgid "February"
 msgstr "Февраль"
 
-#: literals.py:86
+#: literals.py:93
 msgid "March"
 msgstr "Март"
 
-#: literals.py:86
+#: literals.py:93
 msgid "April"
 msgstr "Апрель"
 
-#: literals.py:86
+#: literals.py:93
 msgid "May"
 msgstr "Май"
 
-#: literals.py:87
+#: literals.py:94
 msgid "June"
 msgstr "Июнь"
 
-#: literals.py:87
+#: literals.py:94
 msgid "July"
 msgstr "Июль"
 
-#: literals.py:87
+#: literals.py:94
 msgid "August"
 msgstr "Август"
 
-#: literals.py:87
+#: literals.py:94
 msgid "September"
 msgstr "Сентябрь"
 
-#: literals.py:87
+#: literals.py:94
 msgid "October"
 msgstr "Октябрь"
 
-#: literals.py:88
+#: literals.py:95
 msgid "November"
 msgstr "Ноябрь"
 
-#: literals.py:88
+#: literals.py:95
 msgid "December"
 msgstr "Декабрь"
 
-#: literals.py:94
+#: literals.py:101
 msgid "All pages"
 msgstr "Все страницы"
 

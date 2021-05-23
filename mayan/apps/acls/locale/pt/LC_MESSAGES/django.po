@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 03:26+0000\n"
+"POT-Creation-Date: 2021-05-23 07:48+0000\n"
 "PO-Revision-Date: 2021-04-11 06:12+0000\n"
 "Last-Translator: Marco Morais <marco@edgoo.io>, 2021\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
@@ -75,12 +75,12 @@ msgstr "Permissões"
 msgid "Global ACLs"
 msgstr ""
 
-#: managers.py:230
+#: managers.py:243
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
 msgstr "O objecto \"%s\" não é um modelo e não é possível verificar o acesso"
 
-#: managers.py:250
+#: managers.py:263
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr "Acesso insuficiente para: \"%s\""

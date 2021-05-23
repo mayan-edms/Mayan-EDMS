@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 03:26+0000\n"
+"POT-Creation-Date: 2021-05-23 07:49+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2021\n"
 "Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
@@ -21,40 +21,40 @@ msgstr ""
 "Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27 events.py:5 links.py:38 links.py:43 links.py:53 permissions.py:5
+#: apps.py:28 events.py:5 links.py:38 links.py:43 links.py:53 permissions.py:5
 #: queues.py:7 views/event_views.py:30
 msgid "Events"
 msgstr "Események"
 
-#: apps.py:49 apps.py:77
+#: apps.py:53 apps.py:81
 msgid "Date and time"
 msgstr "Dátum és idő"
 
-#: apps.py:52 apps.py:80
+#: apps.py:56 apps.py:84
 msgid "Actor"
 msgstr "Szereplő"
 
-#: apps.py:56 apps.py:85
+#: apps.py:60 apps.py:89
 msgid "Event"
 msgstr ""
 
-#: apps.py:60 apps.py:90
+#: apps.py:64 apps.py:94
 msgid "Target"
 msgstr ""
 
-#: apps.py:64 apps.py:94
+#: apps.py:68 apps.py:98
 msgid "Action object"
 msgstr ""
 
-#: apps.py:69 forms.py:10 forms.py:67
+#: apps.py:73 forms.py:10 forms.py:67
 msgid "Namespace"
 msgstr "Névtér"
 
-#: apps.py:72 forms.py:14 forms.py:71
+#: apps.py:76 forms.py:14 forms.py:71
 msgid "Label"
 msgstr "Cimke"
 
-#: apps.py:99
+#: apps.py:103
 msgid "Seen"
 msgstr ""
 

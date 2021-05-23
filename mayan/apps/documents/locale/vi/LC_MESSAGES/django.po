@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 03:26+0000\n"
+"POT-Creation-Date: 2021-05-23 07:49+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/rosarior/teams/13584/vi/)\n"
@@ -346,7 +346,7 @@ msgstr ""
 msgid "Target page number can't be repeated."
 msgstr ""
 
-#: forms/misc_forms.py:12 literals.py:94
+#: forms/misc_forms.py:12 literals.py:101
 msgid "Page range"
 msgstr "Khoảng trang"
 
@@ -568,67 +568,67 @@ msgstr "Xóa toàn bộ thùng rác"
 msgid "Default"
 msgstr "Mặc định"
 
-#: literals.py:76
+#: literals.py:83
 msgid "Replace. Create a new version and use the new file pages."
 msgstr ""
 
-#: literals.py:77
+#: literals.py:84
 msgid "Append. Create a new version and append the new file pages."
 msgstr ""
 
-#: literals.py:78
+#: literals.py:85
 msgid "Keep. Do not create a new version and keep the current version pages."
 msgstr ""
 
-#: literals.py:86
+#: literals.py:93
 msgid "January"
 msgstr "Tháng Một"
 
-#: literals.py:86
+#: literals.py:93
 msgid "February"
 msgstr "Tháng Hai"
 
-#: literals.py:86
+#: literals.py:93
 msgid "March"
 msgstr "Tháng Ba"
 
-#: literals.py:86
+#: literals.py:93
 msgid "April"
 msgstr "Tháng Tư"
 
-#: literals.py:86
+#: literals.py:93
 msgid "May"
 msgstr "Tháng Năm"
 
-#: literals.py:87
+#: literals.py:94
 msgid "June"
 msgstr "Tháng Sáu"
 
-#: literals.py:87
+#: literals.py:94
 msgid "July"
 msgstr "Tháng Bảy"
 
-#: literals.py:87
+#: literals.py:94
 msgid "August"
 msgstr "Tháng Tám"
 
-#: literals.py:87
+#: literals.py:94
 msgid "September"
 msgstr "Tháng Chín"
 
-#: literals.py:87
+#: literals.py:94
 msgid "October"
 msgstr "Tháng Mười"
 
-#: literals.py:88
+#: literals.py:95
 msgid "November"
 msgstr "Tháng Mười Một"
 
-#: literals.py:88
+#: literals.py:95
 msgid "December"
 msgstr "Tháng Mười Hai"
 
-#: literals.py:94
+#: literals.py:101
 msgid "All pages"
 msgstr "Tất cả các trang"
 

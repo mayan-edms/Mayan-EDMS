@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 03:26+0000\n"
+"POT-Creation-Date: 2021-05-23 07:49+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: bwakkie <bwakkie@gmail.com>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -112,42 +112,47 @@ msgstr "%(object)s niet verwijderd, foutmelding: %(error)s."
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s met succes verwijderd."
 
-#: generics.py:814
+#: generics.py:729
+#, python-format
+msgid "Error retrieving %(object)s, error: %(error)s"
+msgstr ""
+
+#: generics.py:833
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s niet bijgewerkt, foutmelding: %(error)s."
 
-#: generics.py:823
+#: generics.py:842
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s werden met succes bijgewerkt."
 
-#: generics.py:885
+#: generics.py:904
 #, python-format
 msgid "\"%(object)s\" deleted successfully."
 msgstr "‘%(object)s’ is succesvol verwijderd."
 
-#: generics.py:886
+#: generics.py:905
 #, python-format
 msgid "%(count)d object deleted successfully."
 msgstr "%(count)d object succesvol verwijderd."
 
-#: generics.py:887
+#: generics.py:906
 #, python-format
 msgid "%(count)d objects deleted successfully."
 msgstr "%(count)d objecten succesvol verwijderd."
 
-#: generics.py:888
+#: generics.py:907
 #, python-format
 msgid "Delete \"%(object)s\"."
 msgstr "Verwijder &quot;%(object)s&quot;."
 
-#: generics.py:889
+#: generics.py:908
 #, python-format
 msgid "Delete %(count)d object."
 msgstr "Verwijder %(count)d-object."
 
-#: generics.py:890
+#: generics.py:909
 #, python-format
 msgid "Delete %(count)d objects."
 msgstr "Verwijder %(count)d-objecten."

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 03:26+0000\n"
+"POT-Creation-Date: 2021-05-23 07:49+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -28,6 +28,10 @@ msgstr "Navigace"
 msgid "Unnamed function"
 msgstr ""
 
-#: templates/navigation/generic_navigation.html:6
+#: templates/navigation/actions_dropdown.html:9
 msgid "Actions"
 msgstr "Akce"
+
+#: templates/navigation/actions_dropdown.html:12
+msgid "Toggle Dropdown"
+msgstr "Přepnout rozevírací seznam"

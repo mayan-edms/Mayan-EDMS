@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 03:26+0000\n"
+"POT-Creation-Date: 2021-05-23 07:49+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -28,7 +28,7 @@ msgstr "Локали"
 
 #: links.py:13
 msgid "Locale profile"
-msgstr "Профиль локали"
+msgstr "Локаль профиля"
 
 #: links.py:18
 msgid "Edit locale profile"

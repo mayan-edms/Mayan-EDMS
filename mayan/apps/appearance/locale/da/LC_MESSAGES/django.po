@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 03:26+0000\n"
+"POT-Creation-Date: 2021-05-23 07:48+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Allan Møller <it@brandts.dk>, 2021\n"
 "Language-Team: Danish (https://www.transifex.com/rosarior/teams/13584/da/)\n"
@@ -411,7 +411,6 @@ msgid "Bulk actions"
 msgstr ""
 
 #: templates/appearance/list_toolbar.html:67
-#: templates/appearance/partials/actions_dropdown.html:12
 msgid "Toggle Dropdown"
 msgstr ""
 
@@ -422,10 +421,6 @@ msgstr ""
 #: templates/appearance/no_results.html:18
 msgid "No results"
 msgstr ""
-
-#: templates/appearance/partials/actions_dropdown.html:9
-msgid "Actions"
-msgstr "Handlinger"
 
 #: templates/appearance/root.html:63
 msgid "Close"

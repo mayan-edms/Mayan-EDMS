@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 03:26+0000\n"
+"POT-Creation-Date: 2021-05-23 07:49+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -348,7 +348,7 @@ msgstr ""
 msgid "Target page number can't be repeated."
 msgstr ""
 
-#: forms/misc_forms.py:12 literals.py:94
+#: forms/misc_forms.py:12 literals.py:101
 msgid "Page range"
 msgstr "Εύρος σελίδων"
 
@@ -570,67 +570,67 @@ msgstr "Άδεισμα απορριμάτων"
 msgid "Default"
 msgstr "Προεπιλογή"
 
-#: literals.py:76
+#: literals.py:83
 msgid "Replace. Create a new version and use the new file pages."
 msgstr ""
 
-#: literals.py:77
+#: literals.py:84
 msgid "Append. Create a new version and append the new file pages."
 msgstr ""
 
-#: literals.py:78
+#: literals.py:85
 msgid "Keep. Do not create a new version and keep the current version pages."
 msgstr ""
 
-#: literals.py:86
+#: literals.py:93
 msgid "January"
 msgstr "Ιανουάριος"
 
-#: literals.py:86
+#: literals.py:93
 msgid "February"
 msgstr "Φεβρουάριος"
 
-#: literals.py:86
+#: literals.py:93
 msgid "March"
 msgstr "Μάρτιος"
 
-#: literals.py:86
+#: literals.py:93
 msgid "April"
 msgstr "Απρίλιος"
 
-#: literals.py:86
+#: literals.py:93
 msgid "May"
 msgstr "Μάιος"
 
-#: literals.py:87
+#: literals.py:94
 msgid "June"
 msgstr "Ιούνιος"
 
-#: literals.py:87
+#: literals.py:94
 msgid "July"
 msgstr "Ιούλιος"
 
-#: literals.py:87
+#: literals.py:94
 msgid "August"
 msgstr "Αύγουστος"
 
-#: literals.py:87
+#: literals.py:94
 msgid "September"
 msgstr "Σεπτέμβριος"
 
-#: literals.py:87
+#: literals.py:94
 msgid "October"
 msgstr "Οκτώβριος"
 
-#: literals.py:88
+#: literals.py:95
 msgid "November"
 msgstr "Νοέμβριος"
 
-#: literals.py:88
+#: literals.py:95
 msgid "December"
 msgstr "Δεκέμβριος"
 
-#: literals.py:94
+#: literals.py:101
 msgid "All pages"
 msgstr "Όλες οι σελίδες"
 

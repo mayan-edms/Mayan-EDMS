@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 03:26+0000\n"
+"POT-Creation-Date: 2021-05-23 07:49+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -35,7 +35,7 @@ msgstr "Gestion des utilisateurs"
 msgid "Group"
 msgstr "Groupe"
 
-#: apps.py:93 apps.py:103 links.py:46 links.py:58 links.py:77 search.py:34
+#: apps.py:93 apps.py:103 links.py:46 links.py:59 links.py:78 search.py:34
 #: views.py:120
 msgid "Groups"
 msgstr "Groupes"
@@ -48,7 +48,7 @@ msgstr "Nom"
 msgid "User"
 msgstr "Utilisateur"
 
-#: apps.py:98 apps.py:187 links.py:51 links.py:84 links.py:101 views.py:306
+#: apps.py:98 apps.py:187 links.py:51 links.py:86 links.py:104 views.py:306
 msgid "Users"
 msgstr "Utilisateurs"
 
@@ -136,19 +136,19 @@ msgstr "Modifier les détails de l'utilisateur"
 msgid "Create new group"
 msgstr "Créer un nouveau groupe"
 
-#: links.py:35 links.py:68 links.py:89
+#: links.py:35 links.py:69 links.py:91
 msgid "Delete"
 msgstr "Supprimer"
 
-#: links.py:39 links.py:72
+#: links.py:39 links.py:73
 msgid "Edit"
 msgstr "Modifier"
 
-#: links.py:63 views.py:152
+#: links.py:64 views.py:152
 msgid "Create new user"
 msgstr "Créer un nouvel utilisateur"
 
-#: links.py:94
+#: links.py:96
 msgid "User options"
 msgstr "Options pour l'utilisateur"
 

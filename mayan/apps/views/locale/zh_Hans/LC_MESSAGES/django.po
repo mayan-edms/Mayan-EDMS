@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 03:26+0000\n"
+"POT-Creation-Date: 2021-05-23 07:49+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: bo feng <87289884@qq.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -105,42 +105,47 @@ msgstr "%(object)s未删除，错误：%(error)s。"
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s已成功删除。"
 
-#: generics.py:814
+#: generics.py:729
+#, python-format
+msgid "Error retrieving %(object)s, error: %(error)s"
+msgstr ""
+
+#: generics.py:833
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s未更新，错误：%(error)s。"
 
-#: generics.py:823
+#: generics.py:842
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s已成功更新。"
 
-#: generics.py:885
+#: generics.py:904
 #, python-format
 msgid "\"%(object)s\" deleted successfully."
 msgstr "“ %(object)s”已成功删除。"
 
-#: generics.py:886
+#: generics.py:905
 #, python-format
 msgid "%(count)d object deleted successfully."
 msgstr "%(count)d对象已成功删除。"
 
-#: generics.py:887
+#: generics.py:906
 #, python-format
 msgid "%(count)d objects deleted successfully."
 msgstr "%(count)d对象已成功删除。"
 
-#: generics.py:888
+#: generics.py:907
 #, python-format
 msgid "Delete \"%(object)s\"."
 msgstr "删除“ %(object)s”。"
 
-#: generics.py:889
+#: generics.py:908
 #, python-format
 msgid "Delete %(count)d object."
 msgstr "删除%(count)d对象。"
 
-#: generics.py:890
+#: generics.py:909
 #, python-format
 msgid "Delete %(count)d objects."
 msgstr "删除%(count)d对象。"

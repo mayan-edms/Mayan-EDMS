@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 03:26+0000\n"
+"POT-Creation-Date: 2021-05-23 07:49+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -350,7 +350,7 @@ msgstr ""
 msgid "Target page number can't be repeated."
 msgstr ""
 
-#: forms/misc_forms.py:12 literals.py:94
+#: forms/misc_forms.py:12 literals.py:101
 msgid "Page range"
 msgstr "Intervallo pagina"
 
@@ -572,67 +572,67 @@ msgstr "Svuota cestino"
 msgid "Default"
 msgstr "Default"
 
-#: literals.py:76
+#: literals.py:83
 msgid "Replace. Create a new version and use the new file pages."
 msgstr ""
 
-#: literals.py:77
+#: literals.py:84
 msgid "Append. Create a new version and append the new file pages."
 msgstr ""
 
-#: literals.py:78
+#: literals.py:85
 msgid "Keep. Do not create a new version and keep the current version pages."
 msgstr ""
 
-#: literals.py:86
+#: literals.py:93
 msgid "January"
 msgstr "Gennaio"
 
-#: literals.py:86
+#: literals.py:93
 msgid "February"
 msgstr "Febbraio"
 
-#: literals.py:86
+#: literals.py:93
 msgid "March"
 msgstr "Marzo"
 
-#: literals.py:86
+#: literals.py:93
 msgid "April"
 msgstr "Aprile"
 
-#: literals.py:86
+#: literals.py:93
 msgid "May"
 msgstr "Maggio"
 
-#: literals.py:87
+#: literals.py:94
 msgid "June"
 msgstr "Giugno"
 
-#: literals.py:87
+#: literals.py:94
 msgid "July"
 msgstr "Luglio"
 
-#: literals.py:87
+#: literals.py:94
 msgid "August"
 msgstr "Agosto"
 
-#: literals.py:87
+#: literals.py:94
 msgid "September"
 msgstr "Settembre"
 
-#: literals.py:87
+#: literals.py:94
 msgid "October"
 msgstr "Ottobre"
 
-#: literals.py:88
+#: literals.py:95
 msgid "November"
 msgstr "Novembre"
 
-#: literals.py:88
+#: literals.py:95
 msgid "December"
 msgstr "Dicembre"
 
-#: literals.py:94
+#: literals.py:101
 msgid "All pages"
 msgstr "Tutte le pagine"
 

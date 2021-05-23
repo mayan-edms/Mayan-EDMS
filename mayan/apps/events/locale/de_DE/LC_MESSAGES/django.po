@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 03:26+0000\n"
+"POT-Creation-Date: 2021-05-23 07:49+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -23,40 +23,40 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27 events.py:5 links.py:38 links.py:43 links.py:53 permissions.py:5
+#: apps.py:28 events.py:5 links.py:38 links.py:43 links.py:53 permissions.py:5
 #: queues.py:7 views/event_views.py:30
 msgid "Events"
 msgstr "Ereignisse"
 
-#: apps.py:49 apps.py:77
+#: apps.py:53 apps.py:81
 msgid "Date and time"
 msgstr "Datum und Uhrzeit"
 
-#: apps.py:52 apps.py:80
+#: apps.py:56 apps.py:84
 msgid "Actor"
 msgstr "Akteur"
 
-#: apps.py:56 apps.py:85
+#: apps.py:60 apps.py:89
 msgid "Event"
 msgstr "Ereignis"
 
-#: apps.py:60 apps.py:90
+#: apps.py:64 apps.py:94
 msgid "Target"
 msgstr "Ziel"
 
-#: apps.py:64 apps.py:94
+#: apps.py:68 apps.py:98
 msgid "Action object"
 msgstr "Aktionsobjekt"
 
-#: apps.py:69 forms.py:10 forms.py:67
+#: apps.py:73 forms.py:10 forms.py:67
 msgid "Namespace"
 msgstr "Namensraum"
 
-#: apps.py:72 forms.py:14 forms.py:71
+#: apps.py:76 forms.py:14 forms.py:71
 msgid "Label"
 msgstr "Bezeichner"
 
-#: apps.py:99
+#: apps.py:103
 msgid "Seen"
 msgstr "Gesehen"
 
