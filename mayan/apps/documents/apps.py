@@ -389,7 +389,7 @@ class DocumentsApp(MayanAppConfig):
             name='files__encoding'
         )
         ModelFieldRelated(
-            model=Document, label=_('File mime types'),
+            model=Document, label=_('File MIME types'),
             name='files__mimetype'
         )
         ModelFieldRelated(
