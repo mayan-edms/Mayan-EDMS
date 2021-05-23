@@ -100,7 +100,7 @@ Upgrading from Mayan EDMS 3.5.x
     sudo -u |DEFAULT_OS_USERNAME| touch |MAYAN_MEDIA_ROOT|__init__.py
 
 
-#. Update the Redis configuration to keep 3 databases:
+#. Update the Redis configuration to serve at least 3 databases:
 
    Replace:
 
