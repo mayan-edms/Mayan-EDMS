@@ -21,7 +21,7 @@ if 'revertsettings' in sys.argv:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(MEDIA_ROOT, 'db.sqlite3'),  # NOQA: F821
+            'NAME': os.path.join(MEDIA_ROOT, 'db.sqlite3')  # NOQA: F821
         }
     }
 else:
@@ -130,7 +130,7 @@ INSTALLED_APPS = (
     'mayan.apps.tags',
     'mayan.apps.web_links',
     # Placed after rest_api to allow template overriding
-    'drf_yasg',
+    'drf_yasg'
 )
 
 MIDDLEWARE = (
@@ -148,7 +148,7 @@ MIDDLEWARE = (
     'django.middleware.locale.LocaleMiddleware',
     'mayan.apps.locales.middleware.timezone.TimezoneMiddleware',
     'stronghold.middleware.LoginRequiredMiddleware',
-    'mayan.apps.common.middleware.ajax_redirect.AjaxRedirect',
+    'mayan.apps.common.middleware.ajax_redirect.AjaxRedirect'
 )
 
 ROOT_URLCONF = 'mayan.urls'
@@ -163,14 +163,14 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                'django.contrib.messages.context_processors.messages'
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
                 'django.template.loaders.app_directories.Loader'
             ]
-        },
-    },
+        }
+    }
 ]
 
 WSGI_APPLICATION = 'mayan.wsgi.application'
@@ -180,17 +180,17 @@ WSGI_APPLICATION = 'mayan.wsgi.application'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'
+    }
 ]
 
 # Internationalization
@@ -238,7 +238,7 @@ LANGUAGES = (
     ('sl', _('Slovenian')),
     ('tr', _('Turkish')),
     ('vi', _('Vietnamese')),
-    ('zh-hans', _('Chinese (Simplified)')),
+    ('zh-hans', _('Chinese (Simplified)'))
 )
 
 SITE_ID = 1
@@ -249,7 +249,7 @@ STATIC_ROOT = os.environ.get(
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'mayan.apps.views.finders.MayanAppDirectoriesFinder',
+    'mayan.apps.views.finders.MayanAppDirectoriesFinder'
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -262,7 +262,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.BasicAuthentication'
     ),
     'DEFAULT_PAGINATION_CLASS': 'mayan.apps.rest_api.pagination.MayanPageNumberPagination'
 }
@@ -271,7 +271,7 @@ REST_FRAMEWORK = {
 
 PAGINATION_SETTINGS = {
     'PAGE_RANGE_DISPLAYED': 5,
-    'MARGIN_PAGES_DISPLAYED': 2,
+    'MARGIN_PAGES_DISPLAYED': 2
 }
 
 # ----------- Celery ----------
@@ -352,6 +352,6 @@ if not DATABASES:
         DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': os.path.join(MEDIA_ROOT, 'db.sqlite3'),  # NOQA: F821
+                'NAME': os.path.join(MEDIA_ROOT, 'db.sqlite3')  # NOQA: F821
             }
         }

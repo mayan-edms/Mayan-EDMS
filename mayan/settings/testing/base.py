@@ -15,13 +15,9 @@ INSTALLED_APPS = [
 LOGGING_LOG_FILE_PATH = '/tmp/mayan-errors.log'
 LOGGING_LEVEL = 'WARNING'
 
-# Remove whitenoise from middlewares. Causes out of memory errors during test
-# suit
-MIDDLEWARE = [
-    cls for cls in MIDDLEWARE if cls != 'whitenoise.middleware.WhiteNoiseMiddleware'  # NOQA: F405
-]
-
 # Remove middlewares not used for tests
+# Remove whitenoise from middlewares. Causes out of memory errors during test
+# suit.
 MIDDLEWARE = [
     cls for cls in MIDDLEWARE if cls not in [
         'common.middleware.error_logging.ErrorLoggingMiddleware',
@@ -32,6 +28,7 @@ MIDDLEWARE = [
         'django.middleware.locale.LocaleMiddleware',
         'common.middleware.timezone.TimezoneMiddleware',
         'common.middleware.ajax_redirect.AjaxRedirect',
+        'whitenoise.middleware.WhiteNoiseMiddleware'
     ]
 ]
 
