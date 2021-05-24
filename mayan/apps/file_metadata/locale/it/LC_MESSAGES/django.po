@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2021
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2021
+# Roberto Rosario, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-23 07:49+0000\n"
+"POT-Creation-Date: 2021-05-24 04:48+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2021\n"
+"Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -128,7 +128,7 @@ msgstr "Impostazioni tipi documento"
 
 #: models.py:74
 msgid "Document file"
-msgstr ""
+msgstr "File di documento"
 
 #: models.py:80 models.py:95
 msgid "Document file driver entry"

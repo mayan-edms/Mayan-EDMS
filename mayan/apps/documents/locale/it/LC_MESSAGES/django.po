@@ -5,18 +5,18 @@
 # Translators:
 # Translators:
 # Daniele Bortoluzzi <daniele@elkos.it>, 2021
-# Roberto Rosario, 2021
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2021
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2021
+# Roberto Rosario, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-23 07:49+0000\n"
+"POT-Creation-Date: 2021-05-24 04:48+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2021\n"
+"Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,14 +48,14 @@ msgstr ""
 
 #: apps.py:384
 msgid "File comments"
-msgstr ""
+msgstr "Commenti sui file"
 
 #: apps.py:388
 msgid "File encodings"
-msgstr ""
+msgstr "Codifiche dei file"
 
 #: apps.py:392
-msgid "File mime types"
+msgid "File MIME types"
 msgstr ""
 
 #: apps.py:396
@@ -66,7 +66,7 @@ msgstr ""
 #: models/document_file_models.py:120 models/document_file_page_models.py:42
 #: search.py:51
 msgid "Document file"
-msgstr ""
+msgstr "File di documento"
 
 #: apps.py:405 models/document_file_page_models.py:46
 #: models/document_version_page_models.py:58
@@ -75,11 +75,11 @@ msgstr "Numero di pagina"
 
 #: apps.py:410
 msgid "Return the latest file of the document."
-msgstr ""
+msgstr "Restituisce l'ultimo file del documento."
 
 #: apps.py:411
 msgid "Latest file"
-msgstr ""
+msgstr "File più recente"
 
 #: apps.py:414
 msgid "Return the document instance."
@@ -122,17 +122,19 @@ msgstr "UUID"
 
 #: classes.py:71
 msgid "Generates an immutable, random UUID (RFC 4122) for each file."
-msgstr ""
+msgstr "Genera un UUID casuale e immutabile (RFC 4122) per ogni file."
 
 #: classes.py:80
 msgid "UUID plus original"
-msgstr ""
+msgstr "UUID e originale"
 
 #: classes.py:82
 msgid ""
 "Generates an immutable, random UUID (RFC 4122) for each file and appends the"
 " original filename of the uploaded file."
 msgstr ""
+"Genera un UUID casuale e immutabile (RFC 4122) per ogni file e aggiunge il "
+"nome del file originale del file caricato."
 
 #: dashboard_widgets.py:23
 msgid "Total pages"
@@ -174,23 +176,23 @@ msgstr "Documenti visualizzati"
 
 #: events.py:22
 msgid "Document file created"
-msgstr ""
+msgstr "File di documento creato"
 
 #: events.py:25
 msgid "Document file deleted"
-msgstr ""
+msgstr "File di documento eliminato"
 
 #: events.py:28
 msgid "Document file downloaded"
-msgstr ""
+msgstr "File del documento scaricato"
 
 #: events.py:31
 msgid "Document file edited"
-msgstr ""
+msgstr "File di documento modificato"
 
 #: events.py:34
 msgid "Document file uploaded"
-msgstr ""
+msgstr "File di documento caricato"
 
 #: events.py:40
 msgid "Document type created"
@@ -202,15 +204,15 @@ msgstr "Tipo di documento modificato"
 
 #: events.py:46
 msgid "Document type quick label created"
-msgstr ""
+msgstr "Etichetta rapida del tipo di documento creata"
 
 #: events.py:50
 msgid "Document type quick label deleted"
-msgstr ""
+msgstr "Etichetta rapida del tipo di documento eliminata"
 
 #: events.py:54
 msgid "Document type quick label edited"
-msgstr ""
+msgstr "Etichetta rapida del tipo di documento modificata"
 
 #: events.py:59
 msgid "Document type changed"
@@ -218,31 +220,31 @@ msgstr "Cambiamenti al tipo di documento"
 
 #: events.py:65
 msgid "Document version created"
-msgstr ""
+msgstr "Versione del documento creata"
 
 #: events.py:68
 msgid "Document version deleted"
-msgstr ""
+msgstr "Versione del documento eliminata"
 
 #: events.py:71
 msgid "Document version edited"
-msgstr ""
+msgstr "Versione del documento modificata"
 
 #: events.py:74
 msgid "Document version exported"
-msgstr ""
+msgstr "Versione documento esportata"
 
 #: events.py:80
 msgid "Document version page created"
-msgstr ""
+msgstr "Pagina della versione del documento creata"
 
 #: events.py:84
 msgid "Document version page deleted"
-msgstr ""
+msgstr "Pagina della versione del documento eliminata"
 
 #: events.py:88
 msgid "Document version page edited"
-msgstr ""
+msgstr "Pagina della versione del documento modificata"
 
 #: events.py:95
 msgid "Document trashed"
@@ -250,35 +252,35 @@ msgstr "Documento inviato al cestino"
 
 #: events.py:98
 msgid "Trashed document deleted"
-msgstr ""
+msgstr "Documento spostato nel cestino eliminato"
 
 #: events.py:101
 msgid "Trashed document restored"
-msgstr ""
+msgstr "Documento spostato ripristinato"
 
 #: events.py:107
 msgid "Document downloaded (historic)"
-msgstr ""
+msgstr "Documento scaricato (storico)"
 
 #: events.py:110
 msgid "Document file created (historic)"
-msgstr ""
+msgstr "File documento creato (storico)"
 
 #: events.py:114
 msgid "Document version reverted (historic)"
-msgstr ""
+msgstr "Versione del documento ripristinata (storica)"
 
 #: events.py:118
 msgid "Document version uploaded (historic)"
-msgstr ""
+msgstr "Versione documento caricata (storica)"
 
 #: forms/document_file_forms.py:38
 msgid "Date added"
 msgstr "Data inserimento"
 
-#: forms/document_file_forms.py:43
-msgid "Mimetype"
-msgstr ""
+#: forms/document_file_forms.py:43 models/document_file_models.py:102
+msgid "MIME type"
+msgstr "Tipo MIME"
 
 #: forms/document_file_forms.py:47 models/document_file_models.py:108
 msgid "Encoding"
@@ -286,7 +288,7 @@ msgstr "Codifica"
 
 #: forms/document_file_forms.py:51
 msgid "Size"
-msgstr ""
+msgstr "Dimensione"
 
 #: forms/document_file_forms.py:56
 msgid "Exists in storage"
@@ -318,7 +320,7 @@ msgstr ""
 
 #: forms/document_forms.py:104
 msgid "Date created"
-msgstr ""
+msgstr "Data di creazione"
 
 #: forms/document_forms.py:110 models/document_models.py:86
 msgid "Language"
@@ -332,7 +334,7 @@ msgstr "Tipo documento "
 
 #: forms/document_version_page_forms.py:27
 msgid "Content type"
-msgstr ""
+msgstr "Tipo di contenuto"
 
 #: forms/document_version_page_forms.py:30
 msgid "Object ID"
@@ -344,11 +346,11 @@ msgstr "Sorgente"
 
 #: forms/document_version_page_forms.py:38
 msgid "Destination page number"
-msgstr ""
+msgstr "Numero della pagina di destinazione"
 
 #: forms/document_version_page_forms.py:82
 msgid "Target page number can't be repeated."
-msgstr ""
+msgstr "Il numero di pagina di destinazione non può essere ripetuto."
 
 #: forms/misc_forms.py:12 literals.py:101
 msgid "Page range"
@@ -381,7 +383,7 @@ msgstr "Download rapido"
 
 #: links/document_file_links.py:47 links/document_file_links.py:69
 msgid "Files"
-msgstr ""
+msgstr "File"
 
 #: links/document_file_links.py:51 links/document_version_links.py:69
 msgid "Print"
@@ -428,7 +430,7 @@ msgstr "Pagina successiva"
 #: links/document_file_page_links.py:86 models/document_file_page_models.py:54
 #: models/document_file_page_models.py:317
 msgid "Document file pages"
-msgstr ""
+msgstr "Pagine dei file dei documenti"
 
 #: links/document_file_page_links.py:91
 #: links/document_version_page_links.py:114
@@ -478,7 +480,7 @@ msgstr "Consultati di recente"
 
 #: links/document_links.py:29 views/recently_created_document_views.py:27
 msgid "Recently created"
-msgstr ""
+msgstr "Creato di recente"
 
 #: links/document_links.py:50
 msgid "Edit properties"
@@ -506,15 +508,15 @@ msgstr "Generazione del nome del file"
 
 #: links/document_version_links.py:29
 msgid "Make active"
-msgstr ""
+msgstr "Rendere attivo"
 
 #: links/document_version_links.py:34
 msgid "Create document version"
-msgstr ""
+msgstr "Creare versione documento"
 
 #: links/document_version_links.py:51
 msgid "Export"
-msgstr ""
+msgstr "Esportare"
 
 #: links/document_version_links.py:59 links/document_version_links.py:81
 msgid "Versions"
@@ -522,11 +524,11 @@ msgstr "Versioni"
 
 #: links/document_version_page_links.py:56
 msgid "Remap pages"
-msgstr ""
+msgstr "Rimappa le pagine"
 
 #: links/document_version_page_links.py:61
 msgid "Reset pages"
-msgstr ""
+msgstr "Reimposta pagine"
 
 #: links/document_version_page_links.py:102
 #: models/document_version_models.py:64
@@ -538,7 +540,7 @@ msgstr "Versione documento"
 #: models/document_version_page_models.py:75
 #: models/document_version_page_models.py:401
 msgid "Document version pages"
-msgstr ""
+msgstr "Pagine della versione del documento"
 
 #: links/favorite_links.py:13 views/favorite_document_views.py:36
 msgid "Favorites"
@@ -574,15 +576,18 @@ msgstr "Default"
 
 #: literals.py:83
 msgid "Replace. Create a new version and use the new file pages."
-msgstr ""
+msgstr "Sostituire. Crea una nuova versione e usa le nuove pagine di file."
 
 #: literals.py:84
 msgid "Append. Create a new version and append the new file pages."
 msgstr ""
+"Aggiungere. Crea una nuova versione e aggiungi le nuove pagine del file."
 
 #: literals.py:85
 msgid "Keep. Do not create a new version and keep the current version pages."
 msgstr ""
+"Mantenere. Non creare una nuova versione e mantenere le pagine della "
+"versione corrente."
 
 #: literals.py:93
 msgid "January"
@@ -639,6 +644,7 @@ msgstr "Tutte le pagine"
 #: models/document_file_models.py:80
 msgid "The server date and time when the document file was processed."
 msgstr ""
+"La data e l'ora del server in cui il file del documento è stato elaborato."
 
 #: models/document_file_models.py:81 models/document_version_models.py:49
 msgid "Timestamp"
@@ -646,7 +652,7 @@ msgstr "Timestamp"
 
 #: models/document_file_models.py:85
 msgid "An optional short text describing the document file."
-msgstr ""
+msgstr "Un breve testo facoltativo che descrive il file del documento."
 
 #: models/document_file_models.py:86 models/document_version_models.py:54
 msgid "Comment"
@@ -666,20 +672,21 @@ msgid ""
 " the format of a file, in this case the file format of the document. Some "
 "examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
-
-#: models/document_file_models.py:102
-msgid "MIME type"
-msgstr "Tipo MIME"
+"Il tipo MIME del file del documento. I tipi MIME sono un modo standard per "
+"descrivere il formato di un file, in questo caso il formato del file del "
+"documento. Alcuni esempi: \"text/plain\" o \"image/jpeg\"."
 
 #: models/document_file_models.py:106
 msgid ""
 "The document file file encoding. binary 7-bit, binary 8-bit, text, base64, "
 "etc."
 msgstr ""
+"La codifica del file del file di documento. binario a 7 bit, binario a 8 "
+"bit, testo, base64, ecc."
 
 #: models/document_file_models.py:121 storages.py:27
 msgid "Document files"
-msgstr ""
+msgstr "File di documento"
 
 #: models/document_file_models.py:321 models/document_file_page_models.py:277
 #: models/document_models.py:70 models/document_models.py:290
@@ -692,12 +699,12 @@ msgstr "Etichetta"
 #: models/document_file_page_models.py:53
 #: models/document_file_page_models.py:316 search.py:78
 msgid "Document file page"
-msgstr ""
+msgstr "Pagina del file del documento"
 
 #: models/document_file_page_models.py:271
 #, python-format
 msgid "%(document_file)s - page %(page_num)d of %(total_pages)d"
-msgstr ""
+msgstr "%(document_file)s - pagina %(page_num)d di %(total_pages)d"
 
 #: models/document_models.py:55
 msgid ""
@@ -716,6 +723,8 @@ msgid ""
 "A short text identifying the document. By default, will be set to the "
 "filename of the first file uploaded to the document."
 msgstr ""
+"Un breve testo che identifica il documento. Per impostazione predefinita, "
+"verrà impostato sul nome del primo file caricato nel documento."
 
 #: models/document_models.py:74
 msgid "An optional short text describing a document."
@@ -730,6 +739,8 @@ msgid ""
 "The server date and time when the document was finally processed and created"
 " in the system."
 msgstr ""
+"La data e l'ora del server in cui il documento è stato infine elaborato e "
+"creato nel sistema."
 
 #: models/document_models.py:81
 msgid "Created"
@@ -737,7 +748,7 @@ msgstr "Creato"
 
 #: models/document_models.py:85
 msgid "The primary language in the document."
-msgstr ""
+msgstr "La lingua principale nel documento."
 
 #: models/document_models.py:90
 msgid "Whether or not this document is in the trash."
@@ -847,6 +858,7 @@ msgstr "Etichetta rapida"
 #: models/document_version_models.py:48
 msgid "The server date and time when the document version was created."
 msgstr ""
+"La data e l'ora del server in cui è stata creata la versione del documento."
 
 #: models/document_version_models.py:53
 msgid "An optional short text describing the document version."
@@ -854,7 +866,7 @@ msgstr "Breve testo opzionale per descrivere la versione del documento."
 
 #: models/document_version_models.py:58
 msgid "Determines the active version of the document."
-msgstr ""
+msgstr "Determina la versione attiva del documento."
 
 #: models/document_version_models.py:59
 msgid "Active"
@@ -862,15 +874,15 @@ msgstr "Attivo"
 
 #: models/document_version_models.py:65
 msgid "Document versions"
-msgstr ""
+msgstr "Versioni del documento"
 
 #: models/document_version_models.py:136
 msgid "Document version export to PDF"
-msgstr ""
+msgstr "Esportazione della versione del documento in PDF"
 
 #: models/document_version_models.py:167
 msgid "Document version exported."
-msgstr ""
+msgstr "Versione documento esportata."
 
 #: models/document_version_models.py:169
 #, python-format
@@ -879,28 +891,33 @@ msgid ""
 " for download using the link: %(download_url)s or from the downloads area "
 "(%(download_list_url)s)."
 msgstr ""
+"La versione del documento \"%(document_version)s\" è stata esportata ed è "
+"disponibile per il download tramite il collegamento: %(download_url)s o "
+"dall'area download (%(download_list_url)s)."
 
 #: models/document_version_page_models.py:56
 msgid "Unique integer number for the page. Pages are ordered by this number."
 msgstr ""
+"Numero intero univoco per la pagina. Le pagine sono ordinate in base a "
+"questo numero."
 
 #: models/document_version_page_models.py:61
 msgid "Content type for the source object of the page."
-msgstr ""
+msgstr "Tipo di contenuto per l'oggetto di origine della pagina."
 
 #: models/document_version_page_models.py:65
 msgid "ID for the source object of the page."
-msgstr ""
+msgstr "ID per l'oggetto di origine della pagina."
 
 #: models/document_version_page_models.py:74
 #: models/document_version_page_models.py:400 search.py:141
 msgid "Document version page"
-msgstr ""
+msgstr "Pagina della versione del documento"
 
 #: models/document_version_page_models.py:344
 #, python-format
 msgid "%(document_version)s page %(page_number)d of %(total_pages)d"
-msgstr ""
+msgstr "%(document_version)s pagina %(page_number)d di %(total_pages)d"
 
 #: models/favorite_document_models.py:24
 #: models/recently_accessed_document_models.py:23
@@ -909,7 +926,7 @@ msgstr "Utente"
 
 #: models/favorite_document_models.py:31
 msgid "Date and time added"
-msgstr ""
+msgstr "Data e ora aggiunte"
 
 #: models/favorite_document_models.py:38
 msgid "Favorite document"
@@ -953,19 +970,19 @@ msgstr "Visualizza documenti"
 
 #: permissions.py:28
 msgid "Delete document files"
-msgstr ""
+msgstr "Elimina i file di documento"
 
 #: permissions.py:31
 msgid "Edit document files"
-msgstr ""
+msgstr "Modifica i file dei documenti"
 
 #: permissions.py:34
 msgid "Download document files"
-msgstr ""
+msgstr "Scarica i file del documento"
 
 #: permissions.py:37
 msgid "Create new document files"
-msgstr ""
+msgstr "Crea nuovi file di documenti"
 
 #: permissions.py:40
 msgid "Print document files"
@@ -973,27 +990,27 @@ msgstr ""
 
 #: permissions.py:43
 msgid "Execute document file modifying tools"
-msgstr ""
+msgstr "Eseguire gli strumenti di modifica del file di documento"
 
 #: permissions.py:47
 msgid "View document files"
-msgstr ""
+msgstr "Visualizza i file di documenti"
 
 #: permissions.py:54
 msgid "Create document versions"
-msgstr ""
+msgstr "Crea versioni del documento"
 
 #: permissions.py:58
 msgid "Delete document versions"
-msgstr ""
+msgstr "Elimina le versioni del documento"
 
 #: permissions.py:62
 msgid "Edit document versions"
-msgstr ""
+msgstr "Modifica le versioni del documento"
 
 #: permissions.py:66
 msgid "Export document versions"
-msgstr ""
+msgstr "Esporta le versioni del documento"
 
 #: permissions.py:70
 msgid "Print document versions"
@@ -1001,7 +1018,7 @@ msgstr ""
 
 #: permissions.py:73
 msgid "View document versions"
-msgstr ""
+msgstr "Visualizza le versioni del documento"
 
 #: permissions.py:83
 msgid "Create document types"
@@ -1025,7 +1042,7 @@ msgstr "Ripristina il documento cancellato"
 
 #: permissions.py:101
 msgid "Delete trashed documents"
-msgstr ""
+msgstr "Elimina i documenti spostati nel cestino"
 
 #: permissions.py:104
 msgid "Trash documents"
@@ -1041,11 +1058,11 @@ msgstr "Caricamenti"
 
 #: queues.py:27
 msgid "Generate document file page image"
-msgstr ""
+msgstr "Genera l'immagine della pagina del file del documento"
 
 #: queues.py:31
 msgid "Generate document version page image"
-msgstr ""
+msgstr "Genera l'immagine della pagina della versione del documento"
 
 #: queues.py:36
 msgid "Empty the trash can"
@@ -1057,11 +1074,11 @@ msgstr "Cancella documento"
 
 #: queues.py:44
 msgid "Reset the page list of a document version"
-msgstr ""
+msgstr "Reimposta l'elenco delle pagine di una versione del documento"
 
 #: queues.py:48
 msgid "Export a document version"
-msgstr ""
+msgstr "Esporta una versione del documento"
 
 #: queues.py:53
 msgid "Check document type trash periods"
@@ -1081,7 +1098,7 @@ msgstr "Aggiorna il conteggio delle pagine del documento"
 
 #: queues.py:78
 msgid "Upload new document file"
-msgstr ""
+msgstr "Carica un nuovo file di documento"
 
 #: search.py:31 search.py:62 search.py:89 search.py:129 search.py:153
 msgid "Document type label"
@@ -1101,11 +1118,11 @@ msgstr ""
 
 #: search.py:102
 msgid "Document file MIME type"
-msgstr ""
+msgstr "Tipo MIME di file di documento"
 
 #: search.py:156
 msgid "Document version comment"
-msgstr ""
+msgstr "Commento sulla versione del documento"
 
 #: serializers/document_file_serializers.py:37
 msgid "Binary content for the new file."

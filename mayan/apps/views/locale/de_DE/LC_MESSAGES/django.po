@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-23 07:49+0000\n"
+"POT-Creation-Date: 2021-05-24 04:48+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Marvin Haschker <marvin@haschker.me>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -120,7 +120,7 @@ msgstr "%(object)s erfolgreich gelöscht."
 
 #: generics.py:729
 #, python-format
-msgid "Error retrieving %(object)s, error: %(error)s"
+msgid "Error retrieving %(object)s; %(error)s"
 msgstr ""
 
 #: generics.py:833

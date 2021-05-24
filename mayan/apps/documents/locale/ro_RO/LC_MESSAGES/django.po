@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-23 07:49+0000\n"
+"POT-Creation-Date: 2021-05-24 04:48+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Harald Ersch, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -54,8 +54,8 @@ msgid "File encodings"
 msgstr "Codificări de fișiere"
 
 #: apps.py:392
-msgid "File mime types"
-msgstr "Tipuri MIME de fișiere "
+msgid "File MIME types"
+msgstr ""
 
 #: apps.py:396
 msgid "File timestamps"
@@ -278,8 +278,8 @@ msgstr "Versiunea documentului încărcată (istoric)"
 msgid "Date added"
 msgstr "Dată adaugată"
 
-#: forms/document_file_forms.py:43
-msgid "Mimetype"
+#: forms/document_file_forms.py:43 models/document_file_models.py:102
+msgid "MIME type"
 msgstr "Tip MIME"
 
 #: forms/document_file_forms.py:47 models/document_file_models.py:108
@@ -672,10 +672,6 @@ msgstr ""
 "Fișierul documentului mimetype. Tipurile MIME sunt o modalitate standard de "
 "a descrie formatul unui fișier, în acest caz formatul de fișier al "
 "documentului. Câteva exemple: „text / simplu” sau „imagine / jpeg”."
-
-#: models/document_file_models.py:102
-msgid "MIME type"
-msgstr "Tip MIME"
 
 #: models/document_file_models.py:106
 msgid ""

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-23 07:49+0000\n"
+"POT-Creation-Date: 2021-05-24 04:48+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
@@ -50,7 +50,7 @@ msgid "File encodings"
 msgstr ""
 
 #: apps.py:392
-msgid "File mime types"
+msgid "File MIME types"
 msgstr ""
 
 #: apps.py:396
@@ -271,9 +271,9 @@ msgstr ""
 msgid "Date added"
 msgstr "Dodano datum"
 
-#: forms/document_file_forms.py:43
-msgid "Mimetype"
-msgstr ""
+#: forms/document_file_forms.py:43 models/document_file_models.py:102
+msgid "MIME type"
+msgstr "MIME tip"
 
 #: forms/document_file_forms.py:47 models/document_file_models.py:108
 msgid "Encoding"
@@ -657,10 +657,6 @@ msgid ""
 " the format of a file, in this case the file format of the document. Some "
 "examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
-
-#: models/document_file_models.py:102
-msgid "MIME type"
-msgstr "MIME tip"
 
 #: models/document_file_models.py:106
 msgid ""
