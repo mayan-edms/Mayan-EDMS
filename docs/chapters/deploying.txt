@@ -245,13 +245,13 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 
    .. code-block:: ini
 
-       MAYAN_CELERY_BROKER_URL="redis://..."
+       CELERY_BROKER_URL="..."
 
    with:
 
    .. code-block:: ini
 
-       MAYAN_CELERY_BROKER_URL="amqp://|DEFAULT_RABBITMQ_USER|:|DEFAULT_RABBITMQ_PASSWORD|@127.0.0.1:5672/|DEFAULT_RABBITMQ_VHOST|"
+       CELERY_BROKER_URL="amqp://|DEFAULT_RABBITMQ_USER|:|DEFAULT_RABBITMQ_PASSWORD|@127.0.0.1:5672/|DEFAULT_RABBITMQ_VHOST|"
 
 
 #. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
