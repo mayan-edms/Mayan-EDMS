@@ -6,7 +6,7 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 
-from mayan.apps.views.mixins import ExternalObjectViewMixin
+from mayan.apps.views.mixins import ExternalObjectBaseMixin
 
 
 class ActionAPIViewMixin:
@@ -93,10 +93,15 @@ class ContentTypeAPIViewMixin:
         )
 
 
-class ExternalObjectAPIViewMixin(ExternalObjectViewMixin):
+class ExternalObjectAPIViewMixin(ExternalObjectBaseMixin):
     """
     Override get_external_object to use REST API get_object_or_404.
     """
+    def initial(self, *args, **kwargs):
+        result = super().initial(*args, **kwargs)
+        self.external_object = self.get_external_object()
+        return result
+
     def get_serializer_extra_context(self):
         """
         Add the external object to the serializer context. Useful for the

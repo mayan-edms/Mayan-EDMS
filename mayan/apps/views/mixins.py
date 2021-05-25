@@ -97,7 +97,7 @@ class DynamicFormViewMixin:
         return data
 
 
-class ExternalObjectViewMixin:
+class ExternalObjectBaseMixin:
     """
     Mixin to allow views to load an object with minimal code but with all
     the filtering and configurability possible. This object is often use as
@@ -108,10 +108,6 @@ class ExternalObjectViewMixin:
     external_object_pk_url_kwarg = 'pk'
     external_object_pk_url_kwargs = None  # Usage: {'pk': 'pk'}
     external_object_queryset = None
-
-    def dispatch(self, *args, **kwargs):
-        self.external_object = self.get_external_object()
-        return super().dispatch(*args, **kwargs)
 
     def get_pk_url_kwargs(self):
         pk_url_kwargs = {}
@@ -168,6 +164,12 @@ class ExternalObjectViewMixin:
             )
 
         return queryset
+
+
+class ExternalObjectViewMixin(ExternalObjectBaseMixin):
+    def dispatch(self, *args, **kwargs):
+        self.external_object = self.get_external_object()
+        return super().dispatch(*args, **kwargs)
 
 
 class ExternalContentTypeObjectViewMixin(

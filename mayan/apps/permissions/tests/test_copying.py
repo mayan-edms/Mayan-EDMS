@@ -2,12 +2,11 @@ from mayan.apps.common.tests.mixins import ObjectCopyTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 from mayan.apps.user_management.tests.mixins import GroupTestMixin
 
-from .mixins import PermissionTestMixin, RoleTestMixin
+from .mixins import RoleTestMixin
 
 
 class RoleCopyTestCase(
-    GroupTestMixin, ObjectCopyTestMixin, PermissionTestMixin, RoleTestMixin,
-    BaseTestCase
+    GroupTestMixin, ObjectCopyTestMixin, RoleTestMixin, BaseTestCase
 ):
     def setUp(self):
         super().setUp()

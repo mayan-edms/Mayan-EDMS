@@ -1,5 +1,4 @@
 from mayan.apps.testing.tests.base import BaseTestCase
-from mayan.apps.testing.tests.mixins import TestModelTestCaseMixin
 
 from ..classes import (
     EventManagerMethodAfter, EventModelRegistry, EventType, ModelEventType
@@ -9,7 +8,7 @@ from ..decorators import method_event
 from .mixins import EventTypeTestMixin
 
 
-class EventManagerTestCase(EventTypeTestMixin, TestModelTestCaseMixin, BaseTestCase):
+class EventManagerTestCase(EventTypeTestMixin, BaseTestCase):
     def setUp(self):
         super().setUp()
         self._create_test_event_type()

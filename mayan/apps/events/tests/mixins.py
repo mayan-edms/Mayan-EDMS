@@ -2,7 +2,6 @@ from actstream.models import Action
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.permissions.tests.mixins import RoleTestMixin
-from mayan.apps.testing.tests.mixins import TestModelTestCaseMixin
 from mayan.apps.user_management.tests.mixins import GroupTestMixin
 
 from ..classes import (
@@ -112,7 +111,7 @@ class EventsExportViewTestMixin:
 
 
 class NotificationTestMixin(
-    EventTypeTestMixin, GroupTestMixin, RoleTestMixin, TestModelTestCaseMixin
+    EventTypeTestMixin, GroupTestMixin, RoleTestMixin
 ):
     def _create_local_test_object(self):
         super()._create_test_object()

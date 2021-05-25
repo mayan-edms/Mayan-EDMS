@@ -15,7 +15,7 @@ from ..permissions import (
 )
 
 from .mixins import (
-    PermissionAPIViewTestMixin, PermissionTestMixin, RoleAPIViewTestMixin,
+    PermissionAPIViewTestMixin, RoleAPIViewTestMixin,
     RoleGroupAPIViewTestMixin, RolePermissionAPIViewTestMixin, RoleTestMixin
 )
 
@@ -36,8 +36,7 @@ class PermissionAPIViewTestCase(PermissionAPIViewTestMixin, BaseAPITestCase):
 
 
 class RoleAPIViewTestCase(
-    GroupTestMixin, PermissionTestMixin, RoleAPIViewTestMixin, RoleTestMixin,
-    BaseAPITestCase
+    GroupTestMixin, RoleAPIViewTestMixin, RoleTestMixin, BaseAPITestCase
 ):
     def test_role_create_api_view_no_permission(self):
         role_count = Role.objects.count()
@@ -442,8 +441,7 @@ class RoleGroupAPIViewTestCase(
 
 
 class RolePermissionAPIViewTestCase(
-    PermissionTestMixin, RoleTestMixin, RolePermissionAPIViewTestMixin,
-    BaseAPITestCase
+    RoleTestMixin, RolePermissionAPIViewTestMixin, BaseAPITestCase
 ):
     auto_create_role_test_object = True
 

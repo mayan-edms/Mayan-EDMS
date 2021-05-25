@@ -7,7 +7,6 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.permissions import Permission, PermissionNamespace
 from mayan.apps.testing.literals import TEST_VIEW_NAME
 from mayan.apps.testing.tests.base import GenericViewTestCase
-from mayan.apps.testing.tests.mixins import TestModelTestCaseMixin
 
 from ..classes import Link, Menu, SourceColumn
 
@@ -205,7 +204,7 @@ class MenuClassTestCase(GenericViewTestCase):
         self.assertEqual(self.menu.resolve(context=context), [])
 
 
-class SourceColumnClassTestCase(TestModelTestCaseMixin, GenericViewTestCase):
+class SourceColumnClassTestCase(GenericViewTestCase):
     def setUp(self):
         super().setUp()
 

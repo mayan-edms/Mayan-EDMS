@@ -12,7 +12,8 @@ from .mixins import (
     ContentTypeCheckTestCaseMixin, DelayTestCaseMixin, DownloadTestCaseMixin,
     ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
     RandomPrimaryKeyModelMonkeyPatchMixin, SilenceLoggerTestCaseMixin,
-    TempfileCheckTestCasekMixin, TestViewTestCaseMixin
+    TempfileCheckTestCasekMixin, TestModelTestCaseMixin,
+    TestViewTestCaseMixin
 )
 
 
@@ -22,11 +23,13 @@ class BaseTestCaseMixin(
     EventTestCaseMixin, RandomPrimaryKeyModelMonkeyPatchMixin,
     ACLTestCaseMixin, ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
     PermissionTestCaseMixin, SmartSettingsTestCaseMixin,
-    TempfileCheckTestCasekMixin, UserTestMixin,
+    TempfileCheckTestCasekMixin, UserTestMixin, TestModelTestCaseMixin
 ):
     """
     This is the most basic test case mixin class any test in the project
     should use.
+    TestModelTestCaseMixin must go before TestViewTestCaseMixin to allow
+    the test object to be available when the test view is prepared.
     """
 
 

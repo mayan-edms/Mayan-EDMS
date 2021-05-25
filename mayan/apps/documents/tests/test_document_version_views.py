@@ -6,7 +6,6 @@ from mayan.apps.messaging.events import event_message_created
 from mayan.apps.messaging.models import Message
 from mayan.apps.storage.events import event_download_file_created
 from mayan.apps.storage.models import DownloadFile
-from mayan.apps.testing.tests.mixins import ContentTypeTestCaseMixin
 
 from ..events import (
     event_document_version_edited, event_document_version_exported,
@@ -411,8 +410,7 @@ class DocumentVersionExportViewTestCase(
 
 
 class DocumentVersionCachePurgeViewTestCase(
-    CachePartitionViewTestMixin, ContentTypeTestCaseMixin,
-    GenericDocumentViewTestCase
+    CachePartitionViewTestMixin, GenericDocumentViewTestCase
 ):
     def test_document_version_cache_purge_no_permission(self):
         self.test_object = self.test_document_version

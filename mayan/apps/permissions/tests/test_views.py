@@ -10,9 +10,8 @@ from ..permissions import (
 )
 
 from .mixins import (
-    GroupRoleAddRemoveViewTestMixin, PermissionTestMixin,
-    RoleGroupAddRemoveViewTestMixin, RolePermissionAddRemoveViewTestMixin,
-    RoleTestMixin, RoleViewTestMixin
+    GroupRoleAddRemoveViewTestMixin, RoleGroupAddRemoveViewTestMixin,
+    RolePermissionAddRemoveViewTestMixin, RoleTestMixin, RoleViewTestMixin
 )
 
 
@@ -413,8 +412,7 @@ class RoleGroupAddRemoveViewTestCase(
 
 
 class RolePermissionAddRemoveViewTestCase(
-    PermissionTestMixin, RolePermissionAddRemoveViewTestMixin, RoleTestMixin,
-    GenericViewTestCase
+    RolePermissionAddRemoveViewTestMixin, RoleTestMixin, GenericViewTestCase
 ):
     def setUp(self):
         super().setUp()

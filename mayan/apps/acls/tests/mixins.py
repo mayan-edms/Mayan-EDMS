@@ -1,7 +1,6 @@
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models import Q
 
-from mayan.apps.testing.tests.mixins import TestModelTestCaseMixin
 from mayan.apps.permissions.tests.mixins import (
     RoleTestCaseMixin, RoleTestMixin
 )
@@ -123,7 +122,7 @@ class ACLTestCaseMixin(RoleTestCaseMixin, UserTestCaseMixin):
         )
 
 
-class ACLTestMixin(RoleTestMixin, TestModelTestCaseMixin):
+class ACLTestMixin(RoleTestMixin):
     auto_create_test_role = True
     auto_create_acl_test_object = False
 
@@ -144,7 +143,9 @@ class ACLTestMixin(RoleTestMixin, TestModelTestCaseMixin):
         self, model_name=None, create_test_permission=True,
         register_model_permissions=True
     ):
-        self._create_test_object(create_test_permission=create_test_permission)
+        self._create_test_object(
+            create_test_permission=create_test_permission
+        )
 
         if register_model_permissions:
             ModelPermission.register(
