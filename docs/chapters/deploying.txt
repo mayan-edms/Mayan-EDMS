@@ -211,7 +211,8 @@ Advanced deployment
 This variation uses RabbitMQ as the message broker. RabbitMQ consumes more
 memory but scales to thousands of messages per second. RabbitMQ messages are also
 persistent by default, this means that pending tasks are not lost in the case
-of a restart or power failure. The Gunicorn workers are increased to 3.
+of a restart or power failure. The Gunicorn workers are increased as well as
+the concurrency of the task workers.
 
 
 #. Install RabbitMQ:
@@ -255,16 +256,14 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
        CELERY_BROKER_URL="amqp://|DEFAULT_RABBITMQ_USER|:|DEFAULT_RABBITMQ_PASSWORD|@127.0.0.1:5672/|DEFAULT_RABBITMQ_VHOST|"
 
 
-#. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
-
-   Increase the number of Gunicorn workers to 2-4 times the number of CPU cores. Changing the ``-w 3`` argument:
+#. Increase the number of Gunicorn workers. Use 2 to 4 times the number of CPU cores. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|`` and change only the ``-w`` argument. Example for 3 workers:
 
    .. code-block:: ini
 
-       command = |MAYAN_GUNICORN_BIN| -w 3 mayan.wsgi --max-requests 1000 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --timeout 120
+       command = |MAYAN_GUNICORN_BIN| ... -w 3 ...
 
 
-#. Remove (or increase) the concurrency limit of the workers (remove or edit ``--concurrency=1``). Change one worker at a time, restart, and profile with your workload.
+#. Remove (or increase) the concurrency limit of the workers. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|`` and edit or remove the argument ``--concurrency=1``. Change one worker at a time, restart, and profile with your workload.
 
 
 #. Restart the services:
