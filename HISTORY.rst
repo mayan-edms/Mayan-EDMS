@@ -1,20 +1,27 @@
 4.0.2 (2021-XX-XX)
 ==================
-- Clarify Redis and Lock manager upgrade steps
-- Action dropdown template updates.
+- Messaging app updates:
+
+    - Add links to set messages as unread.
+    - Automatically set messages as read upon accessing them. GitLab issue
+      #981, thanks to Ilya Pavlov (@spirkaa) for the report.
+    - Disable links to mark messages as read or unread based on the state of
+      the message.
+
+- Clarify Redis and Lock manager upgrade steps.
+- Action dropdown template updates:
 
   - Move dropdown template partial to the navigation app.
   - Remove unused {{ link_extra_classes }}.
   - Remove obsolete dropdown HTML markup.
 
-- Fix action menu disabled links appearance.
-- Add links to set messages as unread.
-- Automatically set messages as read upon accessing them. GitLab issue #981,
-  thanks to Ilya Pavlov (@spirkaa) for the report.
-- Disable links to mark messages as read or unread based on the state of
-  the message.
-- Correct user_settings folder creation step. Closes GitLab issue #984. Thanks
-  to Matthias Löblich (@startmat) for the report.
+- Fix action menu disabled link appearance.
+- Correct user_settings folder creation step. Closes GitLab issue #984.
+  Thanks to Matthias Löblich (@startmat) for the report.
+- Ensure the API authentication has completed before doing initial filtering.
+  Fixes API views returning 404 errors when using token authentication.
+- Minor source string fixes.
+- Update Django REST framework from version 3.11.0 to 3.11.2.
 
 4.0.1 (2021-05-20)
 ==================
