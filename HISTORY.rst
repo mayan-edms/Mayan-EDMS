@@ -1,4 +1,4 @@
-4.0.2 (2021-XX-XX)
+4.0.2 (2021-05-25)
 ==================
 - Messaging app updates:
 
@@ -22,6 +22,10 @@
   Fixes API views returning 404 errors when using token authentication.
 - Minor source string fixes.
 - Update Django REST framework from version 3.11.0 to 3.11.2.
+- Update PIP from version 21.0.1 to 21.1.1.
+- Update django-mptt from version 0.11.0 to 0.12.0.
+- Add ordering to cabinets. Closes GitLab issue #986. Thanks to Hanno Zulla
+  (@hzulla) for the report.
 
 4.0.1 (2021-05-20)
 ==================
