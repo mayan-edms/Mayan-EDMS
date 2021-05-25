@@ -62,7 +62,7 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: console
 
-       sudo mkdir /opt
+       sudo mkdir --parent /opt
 
 
 #. Create the Python virtual environment:
