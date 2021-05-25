@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-24 04:48+0000\n"
+"POT-Creation-Date: 2021-05-25 06:04+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Allan Møller <it@brandts.dk>, 2021\n"
 "Language-Team: Danish (https://www.transifex.com/rosarior/teams/13584/da/)\n"
@@ -150,47 +150,47 @@ msgstr ""
 msgid "Delete %(count)d objects."
 msgstr ""
 
-#: mixins.py:325
+#: mixins.py:327
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr ""
 
-#: mixins.py:350
+#: mixins.py:352
 #, python-format
 msgid "Unable to perform operation on object %(instance)s; %(exception)s."
 msgstr ""
 
-#: mixins.py:352
+#: mixins.py:354
 #, python-format
 msgid "Operation performed on %(object)s."
 msgstr ""
 
-#: mixins.py:353
+#: mixins.py:355
 #, python-format
 msgid "Operation performed on %(count)d object."
 msgstr ""
 
-#: mixins.py:354
+#: mixins.py:356
 #, python-format
 msgid "Operation performed on %(count)d objects."
 msgstr ""
 
-#: mixins.py:355
+#: mixins.py:357
 #, python-format
 msgid "Perform operation on %(object)s."
 msgstr ""
 
-#: mixins.py:356
+#: mixins.py:358
 #, python-format
 msgid "Perform operation on %(count)d object."
 msgstr ""
 
-#: mixins.py:357
+#: mixins.py:359
 #, python-format
 msgid "Perform operation on %(count)d objects."
 msgstr ""
 
-#: mixins.py:439
+#: mixins.py:441
 msgid "Object"
 msgstr "Objekt"
 
