@@ -74,13 +74,13 @@ django-cors-headers==3.2.1
 django-formtools==2.2
 django-mathfilters==1.0.0
 django-model-utils==4.0.0
-django-mptt==0.11.0
+django-mptt==0.12.0
 django-pure-pagination==0.3.0
 django-qsstats-magic==1.1.0
 django-solo==1.1.3
 django-stronghold==0.4.0
 django-widget-tweaks==1.4.8
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 djangorestframework-recursive==0.1.2
 drf-yasg==1.17.1
 extract-msg==0.23.3
