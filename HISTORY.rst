@@ -2,6 +2,9 @@
 ==================
 - Fix duplicated document manager scan method. Closes GitLab issue
   #974. Thanks to Nguyen Dinh Tu (@tund3010) for the report.
+- Fix user model theme related field error after deleting a theme already
+  assigned to a user. Closes GitLab issue #972. Thanks to Niklas Maurer
+  (@nmaurer) for the report.
 
 3.5.8 (2021-04-15)
 ==================
