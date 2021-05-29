@@ -32,6 +32,12 @@ Minimum
    a performance penalty if these are used. For best results, use hardware
    that includes optimizations for virtualization.
 
+.. note::
+
+   Docker is not a virtualization technology and its implementations may
+   vary depending on the host operating system. For best results use Docker
+   on a well supporte GNU/Linux distribution.
+
 
 Recommended
 -----------
