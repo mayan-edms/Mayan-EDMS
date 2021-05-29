@@ -1,4 +1,4 @@
-3.5.9 (2021-05-XX)
+3.5.9 (2021-05-29)
 ==================
 - Fix duplicated document manager scan method. Closes GitLab issue
   #974. Thanks to Nguyen Dinh Tu (@tund3010) for the report.
