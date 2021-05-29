@@ -60,6 +60,13 @@ class DocumentAPIViewTestMixin:
         )
 
 
+class DocumentLinkTestMixin:
+    def _resolve_test_document_link(self, test_link):
+        self.add_test_view(test_object=self.test_document)
+        context = self.get_test_view()
+        return test_link.resolve(context=context)
+
+
 class DocumentPageAPIViewTestMixin:
     def _request_document_page_image(self):
         page = self.test_document.pages.first()

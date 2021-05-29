@@ -39,7 +39,7 @@ link_document_page_content = Link(
 link_document_parsing_errors_list = Link(
     args='resolved_object.id',
     icon_class_path='mayan.apps.document_parsing.icons.icon_document_parsing_errors_list',
-    permissions=(permission_content_view,), text=_('Parsing errors'),
+    permissions=(permission_parse_document,), text=_('Parsing errors'),
     view='document_parsing:document_parsing_error_list'
 )
 link_document_content_download = Link(
