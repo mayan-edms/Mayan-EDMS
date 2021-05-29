@@ -13,6 +13,7 @@
   - python-magic from version 0.4.15 to 0.4.22.
 
 - Speed up some OCR view tests.
+- Add explicit Docker logout repository during the CD/CI jobs.
 
 3.5.8 (2021-04-15)
 ==================
