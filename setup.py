@@ -60,7 +60,7 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-django==2.2.20
+django==2.2.23
 Pillow==7.1.2
 PyPDF2==1.26.0
 PyYAML==5.3.1
@@ -77,10 +77,10 @@ django-model-utils==4.0.0
 django-mptt==0.11.0
 django-pure-pagination==0.3.0
 django-qsstats-magic==1.1.0
-django-solo==1.1.3
+django-solo==1.1.5
 django-stronghold==0.4.0
 django-widget-tweaks==1.4.8
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 djangorestframework-recursive==0.1.2
 drf-yasg==1.17.1
 extract-msg==0.23.3
@@ -97,7 +97,7 @@ packaging==20.3
 pycountry==19.8.18
 pycryptodome==3.9.7
 python-dateutil==2.8.1
-python-magic==0.4.15
+python-magic==0.4.22
 python_gnupg==0.4.6
 pytz==2020.1
 requests==2.23.0
