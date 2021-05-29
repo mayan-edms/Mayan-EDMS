@@ -1,3 +1,11 @@
+class DocumentOCRTestMixin:
+    def _create_test_document_ocr_content(self):
+        DocumentPageOCRContent.objects.create(
+            document_page=self.test_document.pages.first(),
+            content=TEST_DOCUMENT_CONTENT
+        )
+
+
 class DocumentOCRViewTestMixin:
     def _request_document_content_view(self):
         return self.get(

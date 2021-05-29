@@ -12,6 +12,8 @@
   - djangorestframework from version 3.11.0 to 3.11.2.
   - python-magic from version 0.4.15 to 0.4.22.
 
+- Speed up some OCR view tests.
+
 3.5.8 (2021-04-15)
 ==================
 - Fix sub workflow launch state action.

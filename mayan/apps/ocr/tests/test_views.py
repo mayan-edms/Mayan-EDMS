@@ -8,24 +8,29 @@ from ..permissions import (
 from ..utils import get_instance_ocr_content
 
 from .literals import TEST_DOCUMENT_CONTENT
-from .mixins import DocumentOCRViewTestMixin, DocumentTypeOCRViewTestMixin
+from .mixins import (
+    DocumentOCRTestMixin, DocumentOCRViewTestMixin,
+    DocumentTypeOCRViewTestMixin
+)
 
 
 class DocumentOCRViewsTestCase(
-    DocumentOCRViewTestMixin, GenericDocumentViewTestCase
+    DocumentOCRTestMixin, DocumentOCRViewTestMixin,
+    GenericDocumentViewTestCase
 ):
     # PyOCR's leak descriptor in get_available_languages and image_to_string
     # Disable descriptor leak test until fixed in upstream
     _skip_file_descriptor_test = True
 
     def test_document_content_view_no_permission(self):
-        self.test_document.submit_for_ocr()
+        self._create_test_document_ocr_content()
 
         response = self._request_document_content_view()
         self.assertEqual(response.status_code, 404)
 
     def test_document_content_view_with_access(self):
-        self.test_document.submit_for_ocr()
+        self._create_test_document_ocr_content()
+
         self.grant_access(
             obj=self.test_document, permission=permission_ocr_content_view
         )
@@ -36,7 +41,8 @@ class DocumentOCRViewsTestCase(
         )
 
     def test_trashed_document_content_view_with_access(self):
-        self.test_document.submit_for_ocr()
+        self._create_test_document_ocr_content()
+
         self.grant_access(
             obj=self.test_document, permission=permission_ocr_content_view
         )
@@ -47,7 +53,7 @@ class DocumentOCRViewsTestCase(
         self.assertEqual(response.status_code, 404)
 
     def test_document_content_delete_view_no_permission(self):
-        self.test_document.submit_for_ocr()
+        self._create_test_document_ocr_content()
 
         response = self._request_document_content_delete_view()
         self.assertEqual(response.status_code, 404)
@@ -59,7 +65,8 @@ class DocumentOCRViewsTestCase(
         )
 
     def test_document_content_delete_view_with_access(self):
-        self.test_document.submit_for_ocr()
+        self._create_test_document_ocr_content()
+
         self.grant_access(
             obj=self.test_document, permission=permission_ocr_document
         )
@@ -74,7 +81,8 @@ class DocumentOCRViewsTestCase(
         )
 
     def test_trashed_document_content_delete_view_with_access(self):
-        self.test_document.submit_for_ocr()
+        self._create_test_document_ocr_content()
+
         self.grant_access(
             obj=self.test_document, permission=permission_ocr_document
         )
@@ -91,13 +99,14 @@ class DocumentOCRViewsTestCase(
         )
 
     def test_document_page_content_view_no_permission(self):
-        self.test_document.submit_for_ocr()
+        self._create_test_document_ocr_content()
 
         response = self._request_document_page_content_view()
         self.assertEqual(response.status_code, 404)
 
     def test_document_page_content_view_with_access(self):
-        self.test_document.submit_for_ocr()
+        self._create_test_document_ocr_content()
+
         self.grant_access(
             obj=self.test_document, permission=permission_ocr_content_view
         )
@@ -108,7 +117,8 @@ class DocumentOCRViewsTestCase(
         )
 
     def test_trashed_document_page_content_view_with_access(self):
-        self.test_document.submit_for_ocr()
+        self._create_test_document_ocr_content()
+
         self.grant_access(
             obj=self.test_document, permission=permission_ocr_content_view
         )
@@ -195,13 +205,14 @@ class DocumentOCRViewsTestCase(
         )
 
     def test_document_ocr_download_view_no_permission(self):
-        self.test_document.submit_for_ocr()
+        self._create_test_document_ocr_content()
 
         response = self._request_document_ocr_download_view()
         self.assertEqual(response.status_code, 404)
 
     def test_document_ocr_download_view_with_access(self):
-        self.test_document.submit_for_ocr()
+        self._create_test_document_ocr_content()
+
         self.expected_content_types = ('text/html; charset=utf-8',)
 
         self.grant_access(
@@ -218,7 +229,7 @@ class DocumentOCRViewsTestCase(
         )
 
     def test_trashed_document_ocr_download_view_with_access(self):
-        self.test_document.submit_for_ocr()
+        self._create_test_document_ocr_content()
 
         self.grant_access(
             obj=self.test_document, permission=permission_ocr_content_view
