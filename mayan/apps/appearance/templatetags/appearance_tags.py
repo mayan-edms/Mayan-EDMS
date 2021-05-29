@@ -2,6 +2,7 @@ import bleach
 
 from django.apps import apps
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.template import Library
 from django.template.exceptions import TemplateDoesNotExist
 from django.template.loader import get_template
@@ -74,14 +75,20 @@ def appearance_get_icon(icon_path):
 
 @register.simple_tag
 def appearance_get_user_theme_stylesheet(user):
-    if user and user.is_authenticated:
-        theme = user.theme_settings.theme
+    User = get_user_model()
 
-        if theme:
-            return bleach.clean(
-                text=user.theme_settings.theme.stylesheet,
-                tags=('style',)
-            )
+    if user and user.is_authenticated:
+        try:
+            theme = user.theme_settings.theme
+        except User.theme_settings.RelatedObjectDoesNotExist:
+            # User had a setting assigned which was later deleted.
+            return ''
+        else:
+            if theme:
+                return bleach.clean(
+                    text=user.theme_settings.theme.stylesheet,
+                    tags=('style',)
+                )
 
     return ''
 
