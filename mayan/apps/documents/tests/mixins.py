@@ -552,6 +552,11 @@ class DocumentTypeViewTestMixin:
         return self.get(viewname='documents:document_type_list')
 
 
+class DuplicatedDocumentToolViewTestMixin:
+    def _request_duplicated_document_scan_view(self):
+        return self.post(viewname='documents:duplicated_document_scan')
+
+
 class DuplicatedDocumentsViewsTestMixin:
     def _request_document_duplicates_list_view(self):
         return self.get(

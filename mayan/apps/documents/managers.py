@@ -175,7 +175,7 @@ class DuplicatedDocumentManager(models.Manager):
             app_label='documents', model_name='Document'
         )
 
-        for document in Document.object.all():
+        for document in Document.objects.all():
             self.scan_for(document=document, scan_children=False)
 
     def scan_for(self, document, scan_children=True):

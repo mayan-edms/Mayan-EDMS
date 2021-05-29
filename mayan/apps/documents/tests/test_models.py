@@ -302,6 +302,19 @@ class DuplicatedDocumentsTestCase(GenericDocumentTestCase):
             )
         )
 
+    def test_duplicate_manager_method_scan(self):
+        self._upload_test_document()
+
+        DuplicatedDocument.objects.all().delete()
+
+        DuplicatedDocument.objects.scan()
+
+        self.assertTrue(
+            self.test_documents[1] in DuplicatedDocument.objects.get_duplicates_of(
+                document=self.test_documents[0]
+            )
+        )
+
 
 class TrashedDocumentTestCase(GenericDocumentTestCase):
     def test_trashed_document_api_image_url(self):

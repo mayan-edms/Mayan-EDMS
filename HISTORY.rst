@@ -1,3 +1,8 @@
+3.5.9 (2021-05-XX)
+==================
+- Fix duplicated document manager scan method. Closes GitLab issue
+  #974. Thanks to Nguyen Dinh Tu (@tund3010) for the report.
+
 3.5.8 (2021-04-15)
 ==================
 - Fix sub workflow launch state action.

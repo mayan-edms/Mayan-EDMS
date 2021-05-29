@@ -1,7 +1,10 @@
-from ..permissions import permission_document_view
+from ..models.duplicated_document_models import DuplicatedDocument
+from ..permissions import permission_document_tools, permission_document_view
 
 from .base import GenericDocumentViewTestCase
-from .mixins import DuplicatedDocumentsViewsTestMixin
+from .mixins import (
+    DuplicatedDocumentToolViewTestMixin, DuplicatedDocumentsViewsTestMixin
+)
 
 
 class DocumentsDuplicatesViewsTestCase(
@@ -202,4 +205,24 @@ class DuplicatedDocumentsViewsTestCase(
         self.assertNotContains(
             response=response, status_code=200,
             text=self.test_documents[1].label
+        )
+
+
+class DuplicatedDocumentToolsViewsTestCase(
+    DuplicatedDocumentToolViewTestMixin, DuplicatedDocumentsViewsTestMixin,
+    GenericDocumentViewTestCase
+):
+    def test_duplicated_document_scan_no_permission(self):
+        self._upload_duplicate_document()
+        DuplicatedDocument.objects.all().delete()
+
+        self.grant_permission(permission=permission_document_tools)
+
+        response = self._request_duplicated_document_scan_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(
+            self.test_documents[1] in DuplicatedDocument.objects.get_duplicates_of(
+                document=self.test_documents[0]
+            )
         )
