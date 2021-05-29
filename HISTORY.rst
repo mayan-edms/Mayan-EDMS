@@ -5,7 +5,12 @@
 - Fix user model theme related field error after deleting a theme already
   assigned to a user. Closes GitLab issue #972. Thanks to Niklas Maurer
   (@nmaurer) for the report.
-- Update Django from version 2.2.20 to 2.2.23.
+- Update dependency versions:
+
+  - Django from version 2.2.20 to 2.2.23.
+  - django-solo from version 1.1.3 to 1.1.5.
+  - djangorestframework from version 3.11.0 to 3.11.2.
+  - python-magic from version 0.4.15 to 0.4.22.
 
 3.5.8 (2021-04-15)
 ==================
