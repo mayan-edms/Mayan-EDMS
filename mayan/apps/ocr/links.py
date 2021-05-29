@@ -27,7 +27,7 @@ link_document_ocr_content = Link(
 link_document_ocr_content_delete = Link(
     args='resolved_object.id',
     icon_class_path='mayan.apps.ocr.icons.icon_document_ocr_content_delete',
-    permissions=(permission_ocr_content_view,), text=_('Delete OCR content'),
+    permissions=(permission_ocr_document,), text=_('Delete OCR content'),
     view='ocr:document_ocr_content_delete',
 )
 link_document_ocr_content_delete_multiple = Link(

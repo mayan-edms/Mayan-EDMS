@@ -1,3 +1,15 @@
+from ..models import DocumentPageOCRContent
+
+from .literals import TEST_DOCUMENT_CONTENT
+
+
+class DocumentOCRLinkTestMixin:
+    def _resolve_test_document_link(self, test_link):
+        self.add_test_view(test_object=self.test_document)
+        context = self.get_test_view()
+        return test_link.resolve(context=context)
+
+
 class DocumentOCRTestMixin:
     def _create_test_document_ocr_content(self):
         DocumentPageOCRContent.objects.create(

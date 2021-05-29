@@ -14,6 +14,9 @@
 
 - Speed up some OCR view tests.
 - Add explicit Docker logout repository during the CD/CI jobs.
+- Fix permission required for the OCR content delete link to match the
+  permission required for the OCR content delete view. GitLab issue #954.
+  Thanks to Ilya Pavlov (@spirkaa) for the report.
 
 3.5.8 (2021-04-15)
 ==================
