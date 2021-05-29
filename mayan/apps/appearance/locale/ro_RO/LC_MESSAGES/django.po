@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 23:02+0000\n"
+"POT-Creation-Date: 2021-05-29 07:26+0000\n"
 "PO-Revision-Date: 2020-09-29 12:40+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -456,7 +456,7 @@ msgstr "Eroare de comunicare cu server-ul"
 msgid "Check you network connection and try again in a few moments."
 msgstr "Verificați conexiunea la rețea și încercați din nou în câteva momente."
 
-#: templatetags/appearance_tags.py:44
+#: templatetags/appearance_tags.py:45
 msgid "None"
 msgstr "Nici unul"
 

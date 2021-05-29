@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 23:02+0000\n"
-"PO-Revision-Date: 2021-04-03 09:05+0000\n"
+"POT-Creation-Date: 2021-05-29 07:26+0000\n"
+"PO-Revision-Date: 2021-05-21 08:25+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgstr "Купить книгу"
 
 #: links.py:39
 msgid "Locale profile"
-msgstr "Профиль локали"
+msgstr "Локаль профиля"
 
 #: links.py:44
 msgid "Edit locale profile"

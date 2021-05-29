@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 23:03+0000\n"
-"PO-Revision-Date: 2021-04-13 14:31+0000\n"
+"POT-Creation-Date: 2021-05-29 07:27+0000\n"
+"PO-Revision-Date: 2021-04-20 11:59+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -121,7 +121,7 @@ msgstr "UUID"
 
 #: classes.py:61
 msgid "Generate an immutable, random UUID (RFC 4122) for each file."
-msgstr ""
+msgstr "Générez un UUID aléatoire (RFC 4122) pour chaque fichier."
 
 #: dashboard_widgets.py:23
 msgid "Total pages"
@@ -610,7 +610,7 @@ msgstr "Unité de temps avant suppression"
 msgid ""
 "The class responsible for producing the actual filename used to store the "
 "uploaded documents."
-msgstr ""
+msgstr "La classe responsable de la production du nom de fichier utilisé pour stocker les documents téléversés."
 
 #: models/document_type_models.py:58
 msgid "Filename generator backend"
@@ -618,11 +618,11 @@ msgstr "Utilitaire pour générer les noms de fichier"
 
 #: models/document_type_models.py:62
 msgid "The arguments for the filename generator backend as a YAML dictionary."
-msgstr ""
+msgstr "Les arguments pour le générateur de nom de fichier, en format YAML."
 
 #: models/document_type_models.py:65
 msgid "Filename generator backend arguments"
-msgstr ""
+msgstr "Arguments du générateur de nom de fichier"
 
 #: models/document_type_models.py:74
 msgid "Documents types"
@@ -824,7 +824,7 @@ msgstr "Numériser des doublons de documents"
 
 #: search.py:35 search.py:54
 msgid "Document type label"
-msgstr ""
+msgstr "Type de document"
 
 #: settings.py:35
 msgid ""
@@ -905,7 +905,7 @@ msgstr "Délai après lequel une entrée de document corrompue sera considérée
 msgid ""
 "Amount of time in seconds, a failed document page image task will wait "
 "before retrying."
-msgstr ""
+msgstr "Durée en secondes pendant laquelle une tâche d'image de page de document ayant échoué attendra avant de réessayer."
 
 #: settings.py:164
 msgid "Height in pixels of the document thumbnail image."
@@ -1003,7 +1003,7 @@ msgstr "Nombre total de pages de documents chaque mois"
 msgid ""
 "Unable to initialize the document image storage. Check the settings {} and "
 "{} for formatting errors."
-msgstr ""
+msgstr "Impossible d'initialiser le stockage des images du document. Vérifiez les paramètres {} et {} pour des erreurs de formatage."
 
 #: storages.py:23
 msgid "Document images"
@@ -1013,7 +1013,7 @@ msgstr "Images du document"
 msgid ""
 "Unable to initialize the document version storage. Check the settings {} and"
 " {} for formatting errors."
-msgstr ""
+msgstr "Impossible d'initialiser le stockage de la version du document. Vérifiez les paramètres {} et {} pour des erreurs de formatage."
 
 #: storages.py:37
 msgid "Document version files"
@@ -1157,7 +1157,7 @@ msgstr "Libellés rapides pour le type de document : %s"
 #: views/document_type_views.py:280
 #, python-format
 msgid "Filename generation setup for document type: %s"
-msgstr ""
+msgstr "Configuration de la génération de nom de fichier pour le type de document: %s"
 
 #: views/document_version_views.py:44
 msgid "Download document version"

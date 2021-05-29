@@ -20,9 +20,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 23:02+0000\n"
-"PO-Revision-Date: 2021-04-11 17:04+0000\n"
-"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>\n"
+"POT-Creation-Date: 2021-05-29 07:26+0000\n"
+"PO-Revision-Date: 2021-05-21 16:27+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,7 +80,7 @@ msgstr "Paramètres régionaux du profil"
 
 #: links.py:44
 msgid "Edit locale profile"
-msgstr "Éditer les paramètres régionaux du profil"
+msgstr "Modifier les paramètres régionaux du profil"
 
 #: links.py:49
 msgid "Documentation"
@@ -96,7 +96,7 @@ msgstr "Licence"
 
 #: links.py:61
 msgid "Copy"
-msgstr "Copie"
+msgstr "Copier"
 
 #: links.py:64
 msgid "Setup"
@@ -253,7 +253,7 @@ msgstr "Détails des paramètres régionaux de l'utilisateur actuel"
 
 #: views.py:48
 msgid "Edit current user locale profile details"
-msgstr "Éditer le détail des paramètres régionaux de l'utilisateur actuel"
+msgstr "Modifier les paramètres régionaux de l'utilisateur actuel"
 
 #: views.py:97
 msgid "Dashboard"

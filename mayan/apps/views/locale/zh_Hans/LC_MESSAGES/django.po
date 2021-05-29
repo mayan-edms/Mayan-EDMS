@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Roberto Rosario, 2020
+# bo feng <87289884@qq.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"POT-Creation-Date: 2021-05-29 07:27+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario, 2020\n"
+"Last-Translator: bo feng <87289884@qq.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +23,7 @@ msgstr ""
 
 #: apps.py:15 settings.py:7
 msgid "Views"
-msgstr ""
+msgstr "视图"
 
 #: forms.py:24
 msgid "Selection"
@@ -37,18 +38,18 @@ msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "选择要删除的条目。按住Control键可以选择多个条目。选择完成后，单击下面的按钮或双击列表以激活操作。"
 
 #: generics.py:155
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "选择要添加的条目。按住Control键可以选择多个条目。选择完成后，单击下面的按钮或双击列表以激活操作。"
 
 #: generics.py:288
 msgid "Add all"
-msgstr ""
+msgstr "全部添加"
 
 #: generics.py:297
 msgid "Add"
@@ -56,7 +57,7 @@ msgstr "添加"
 
 #: generics.py:307
 msgid "Remove all"
-msgstr ""
+msgstr "全部移除"
 
 #: generics.py:316
 msgid "Remove"
@@ -65,7 +66,7 @@ msgstr "移除"
 #: generics.py:532
 #, python-format
 msgid "Duplicate data error: %(error)s"
-msgstr ""
+msgstr "复制数据错误：%(error)s"
 
 #: generics.py:553
 #, python-format
@@ -100,42 +101,42 @@ msgstr "%(object)s已成功更新。"
 #: mixins.py:324
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
-msgstr ""
+msgstr "找不到与查询匹配的%(verbose_name)s"
 
 #: mixins.py:349
 #, python-format
 msgid "Unable to perform operation on object %(instance)s; %(exception)s."
-msgstr ""
+msgstr "无法对对象执行操作%(instance)s； %(exception)s。"
 
 #: mixins.py:351
 #, python-format
 msgid "Operation performed on %(object)s."
-msgstr ""
+msgstr "在%(object)s上执行的操作。"
 
 #: mixins.py:352
 #, python-format
 msgid "Operation performed on %(count)d object."
-msgstr ""
+msgstr "对%(count)d对象执行的操作。"
 
 #: mixins.py:353
 #, python-format
 msgid "Operation performed on %(count)d objects."
-msgstr ""
+msgstr "对%(count)d对象执行的操作。"
 
 #: mixins.py:354
 #, python-format
 msgid "Perform operation on %(object)s."
-msgstr ""
+msgstr "在%(object)s上执行操作。"
 
 #: mixins.py:355
 #, python-format
 msgid "Perform operation on %(count)d object."
-msgstr ""
+msgstr "对%(count)d对象执行操作。"
 
 #: mixins.py:356
 #, python-format
 msgid "Perform operation on %(count)d objects."
-msgstr ""
+msgstr "对%(count)d对象执行操作。"
 
 #: mixins.py:438
 msgid "Object"
@@ -143,7 +144,7 @@ msgstr "对象"
 
 #: settings.py:12
 msgid "The number objects that will be displayed per page."
-msgstr ""
+msgstr "每页显示的对象数。"
 
 #: templatetags/views_tags.py:28
 msgid "Confirm delete"
@@ -152,7 +153,7 @@ msgstr "确认删除"
 #: templatetags/views_tags.py:33
 #, python-format
 msgid "Edit %s"
-msgstr ""
+msgstr "编辑%s"
 
 #: templatetags/views_tags.py:36
 msgid "Confirm"
@@ -161,12 +162,12 @@ msgstr "确认"
 #: templatetags/views_tags.py:40
 #, python-format
 msgid "Details for: %s"
-msgstr ""
+msgstr "%s的详细信息"
 
 #: templatetags/views_tags.py:44
 #, python-format
 msgid "Edit: %s"
-msgstr ""
+msgstr "编辑：%s"
 
 #: templatetags/views_tags.py:48
 msgid "Create"

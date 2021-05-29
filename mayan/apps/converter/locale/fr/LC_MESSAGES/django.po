@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 23:02+0000\n"
-"PO-Revision-Date: 2021-04-13 20:09+0000\n"
+"POT-Creation-Date: 2021-05-29 07:26+0000\n"
+"PO-Revision-Date: 2021-04-16 14:58+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -200,7 +200,7 @@ msgstr "Transformations de calque"
 
 #: models.py:174
 msgid "Unknown transformation class"
-msgstr ""
+msgstr "Classe de transformation inconnue"
 
 #: permissions.py:8
 msgid "Create new assets"
@@ -254,7 +254,7 @@ msgstr ""
 msgid ""
 "Unable to initialize the converter asset storage. Check the settings {} and "
 "{} for formatting errors."
-msgstr ""
+msgstr "Impossible d'initialiser le stockage des ressources du convertisseur. Vérifiez les paramètres {} et {} pour les erreurs de formatage."
 
 #: transformations.py:197
 msgid "Paste an asset"
@@ -266,7 +266,7 @@ msgstr "Coller un élément (coordonnées en pourcentage)"
 
 #: transformations.py:291
 msgid "Paste an asset as watermark"
-msgstr ""
+msgstr "Coller un élément sous forme de filigrane"
 
 #: transformations.py:351
 msgid "Crop"
@@ -353,7 +353,7 @@ msgstr "L'élément \"%s\" a bien été supprimé."
 #: views.py:85
 #, python-format
 msgid "Error deleting asset \"%(asset)s\": %(error)s"
-msgstr ""
+msgstr "Erreur lors de la suppression de l'élément \"%(asset)s\": %(error)s"
 
 #: views.py:101
 #, python-format

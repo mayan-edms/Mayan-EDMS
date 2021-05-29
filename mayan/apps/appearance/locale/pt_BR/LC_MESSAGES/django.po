@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 23:02+0000\n"
+"POT-Creation-Date: 2021-05-29 07:26+0000\n"
 "PO-Revision-Date: 2020-10-01 22:15+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -460,7 +460,7 @@ msgstr "Erro na comunicação com o servidor"
 msgid "Check you network connection and try again in a few moments."
 msgstr "Verifique sua conexão de rede e tente novamente em alguns instantes. "
 
-#: templatetags/appearance_tags.py:44
+#: templatetags/appearance_tags.py:45
 msgid "None"
 msgstr "Nenhum"
 

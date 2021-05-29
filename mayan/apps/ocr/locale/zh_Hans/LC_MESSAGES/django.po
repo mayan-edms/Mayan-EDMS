@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 23:03+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-05-29 07:27+0000\n"
+"PO-Revision-Date: 2021-05-05 00:51+0000\n"
+"Last-Translator: bo feng <87289884@qq.com>\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr "光学字符识别"
 
 #: apps.py:103
 msgid "The OCR content."
-msgstr ""
+msgstr "文字识别内容。"
 
 #: apps.py:108
 msgid "A generator returning the document's pages OCR content."
@@ -34,7 +34,7 @@ msgstr ""
 
 #: apps.py:109
 msgid "OCR content"
-msgstr ""
+msgstr "文字识别内容。"
 
 #: apps.py:133
 msgid "Date and time"
@@ -46,15 +46,15 @@ msgstr "结果"
 
 #: backends/tesseract.py:89
 msgid "Tesseract OCR not found."
-msgstr ""
+msgstr "找不到Tesseract OCR。"
 
 #: dependencies.py:23
 msgid "Free Open Source OCR Engine"
-msgstr ""
+msgstr "免费开源OCR引擎"
 
 #: events.py:8
 msgid "Document OCR content deleted"
-msgstr ""
+msgstr "文件OCR内容已删除"
 
 #: events.py:12
 msgid "Document version submitted for OCR"
@@ -75,7 +75,7 @@ msgstr "第%(page_number)d页"
 
 #: links.py:30 links.py:35
 msgid "Delete OCR content"
-msgstr ""
+msgstr "删除OCR内容"
 
 #: links.py:41 links.py:46
 msgid "Submit for OCR"

@@ -9,15 +9,15 @@
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2019
 # Baptiste GAILLET <baptiste.gaillet@cstb.fr>, 2019
 # Yves Dubois <ydubois@gmail.com>, 2019
-# Frédéric Sheedy <sheedf@gmail.com>, 2020
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 23:03+0000\n"
+"POT-Creation-Date: 2021-05-29 07:27+0000\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2020\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,7 +68,7 @@ msgstr ""
 
 #: events.py:14
 msgid "Document version file metadata processing finished"
-msgstr ""
+msgstr "Traitement des métadonnées de la version du document terminé"
 
 #: links.py:23
 msgid "Attributes"
@@ -80,7 +80,7 @@ msgstr "Soumettre pour les métadonnées de fichier"
 
 #: links.py:40
 msgid "Setup file metadata"
-msgstr "Métadonnées du fichier d'installation"
+msgstr "Métadonnées du fichier"
 
 #: links.py:45
 msgid "File metadata processing per type"
@@ -211,7 +211,7 @@ msgstr ""
 
 #: views.py:52
 msgid "No file metadata available"
-msgstr ""
+msgstr "Aucune métadonnée de fichier disponible"
 
 #: views.py:55
 #, python-format
@@ -224,10 +224,13 @@ msgid ""
 "the driver does not support any metadata field for the file type of this "
 "document."
 msgstr ""
+"Cela peut signifier que la détection des métadonnées de fichier n'est pas "
+"terminée ou que le pilote ne prend en charge aucun champ de métadonnées pour"
+" le type de document."
 
 #: views.py:86
 msgid "No file metadata available for this driver"
-msgstr ""
+msgstr "Aucune métadonnée de fichier disponible pour ce pilote"
 
 #: views.py:90
 #, python-format

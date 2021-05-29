@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 23:03+0000\n"
-"PO-Revision-Date: 2021-03-28 13:02+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-05-29 07:27+0000\n"
+"PO-Revision-Date: 2021-05-18 12:16+0000\n"
+"Last-Translator: trendspotter\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -60,7 +60,7 @@ msgstr ""
 
 #: permissions.py:8
 msgid "Execute search tools"
-msgstr ""
+msgstr "Spustit vyhledávací nástroje"
 
 #: queues.py:11
 msgid "Remove a model instance from the search engine."
@@ -68,11 +68,11 @@ msgstr ""
 
 #: queues.py:16
 msgid "Index a model instance to the search engine."
-msgstr ""
+msgstr "Indexování modelové instance do vyhledávače."
 
 #: queues.py:21
 msgid "Index all instances of a search model to the search engine."
-msgstr ""
+msgstr "Indexovat všechny instance vyhledávacího modelu do vyhledávače."
 
 #: settings.py:15
 msgid "Full path to the backend to be used to handle the search."
@@ -85,7 +85,7 @@ msgstr "Deaktivuje tlačítko jednoduchého vyhledávání a ponechá pouze tla�
 
 #: settings.py:31
 msgid "Maximum number search results to fetch and display."
-msgstr ""
+msgstr "Maximální počet výsledků vyhledávání k načtení a zobrazení."
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
@@ -108,7 +108,7 @@ msgstr "Výsledky hledání pro klíčové slovo: %s"
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
-msgstr ""
+msgstr "Tento nástroj je vyžadován pouze pro některé back-endy vyhledávání. Výsledky vyhledávání budou ovlivněny během opětovné indexace backendu."
 
 #: views.py:92
 msgid "This tool erases and populates the search backend's internal index."

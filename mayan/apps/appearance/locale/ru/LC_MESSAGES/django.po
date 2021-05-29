@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 23:02+0000\n"
+"POT-Creation-Date: 2021-05-29 07:26+0000\n"
 "PO-Revision-Date: 2021-04-12 08:50+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
@@ -458,7 +458,7 @@ msgstr "Ошибка связи с сервером"
 msgid "Check you network connection and try again in a few moments."
 msgstr "Проверьте ваше подключение к сети и повторите попытку позже."
 
-#: templatetags/appearance_tags.py:44
+#: templatetags/appearance_tags.py:45
 msgid "None"
 msgstr "Ни один"
 
