@@ -9,7 +9,7 @@ from ..events import (
 from ..models import DocumentVersionPageOCRContent
 
 
-class OCREventsTestCase(GenericDocumentTestCase):
+class DocumentVersionOCREventsTestCase(GenericDocumentTestCase):
     def test_document_content_deleted_event(self):
         Action.objects.all().delete()
         DocumentVersionPageOCRContent.objects.delete_content_for(

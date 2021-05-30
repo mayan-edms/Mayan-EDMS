@@ -10,7 +10,7 @@ from .literals import (
 )
 
 
-class OCRIndexingTestCase(DocumentTestMixin, BaseTransactionTestCase):
+class DocumentVersionOCRIndexingTestCase(DocumentTestMixin, BaseTransactionTestCase):
     auto_upload_test_document = False
 
     def test_ocr_indexing(self):

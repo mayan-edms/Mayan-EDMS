@@ -9,13 +9,80 @@ from ..utils import get_instance_ocr_content
 
 from .literals import TEST_DOCUMENT_VERSION_OCR_CONTENT
 from .mixins import (
-    DocumentOCRTestMixin, DocumentOCRViewTestMixin,
+    DocumentVersionOCRTestMixin, DocumentVersionOCRViewTestMixin,
     DocumentTypeOCRViewTestMixin
 )
 
 
-class DocumentOCRViewsTestCase(
-    DocumentOCRTestMixin, DocumentOCRViewTestMixin,
+class DocumentTypeOCRViewsTestCase(
+    DocumentTypeOCRViewTestMixin, GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def test_document_type_ocr_settings_view_no_permission(self):
+        response = self._request_test_document_type_ocr_settings_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_type_ocr_settings_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_ocr_setup
+        )
+
+        response = self._request_test_document_type_ocr_settings_view()
+        self.assertEqual(response.status_code, 200)
+
+    def test_document_type_ocr_submit_view_no_permission(self):
+        self._upload_test_document()
+
+        response = self._request_document_type_ocr_submit_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertFalse(
+            TEST_DOCUMENT_VERSION_OCR_CONTENT in ''.join(
+                self.test_document_version.ocr_content()
+            )
+        )
+
+    def test_document_type_ocr_submit_view_with_access(self):
+        self._upload_test_document()
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_version_ocr
+        )
+
+        response = self._request_document_type_ocr_submit_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(
+            TEST_DOCUMENT_VERSION_OCR_CONTENT in ''.join(
+                self.test_document_version.ocr_content()
+            )
+        )
+
+    def test_trashed_document_type_ocr_submit_view_with_access(self):
+        self._upload_test_document()
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_version_ocr
+        )
+
+        self.test_document.delete()
+
+        response = self._request_document_type_ocr_submit_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertFalse(
+            TEST_DOCUMENT_VERSION_OCR_CONTENT in ''.join(
+                self.test_document_version.ocr_content()
+            )
+        )
+
+
+class DocumentVersionOCRViewsTestCase(
+    DocumentVersionOCRTestMixin, DocumentVersionOCRViewTestMixin,
     GenericDocumentViewTestCase
 ):
     # PyOCR's leak descriptor in get_available_languages and image_to_string
@@ -268,70 +335,3 @@ class DocumentOCRViewsTestCase(
 
         response = self._request_test_document_version_ocr_error_list_view()
         self.assertEqual(response.status_code, 404)
-
-
-class DocumentTypeOCRViewsTestCase(
-    DocumentTypeOCRViewTestMixin, GenericDocumentViewTestCase
-):
-    auto_upload_test_document = False
-
-    def test_document_type_ocr_settings_view_no_permission(self):
-        response = self._request_test_document_type_ocr_settings_view()
-        self.assertEqual(response.status_code, 404)
-
-    def test_document_type_ocr_settings_view_with_access(self):
-        self.grant_access(
-            obj=self.test_document_type,
-            permission=permission_document_type_ocr_setup
-        )
-
-        response = self._request_test_document_type_ocr_settings_view()
-        self.assertEqual(response.status_code, 200)
-
-    def test_document_type_ocr_submit_view_no_permission(self):
-        self._upload_test_document()
-
-        response = self._request_document_type_ocr_submit_view()
-        self.assertEqual(response.status_code, 200)
-
-        self.assertFalse(
-            TEST_DOCUMENT_VERSION_OCR_CONTENT in ''.join(
-                self.test_document_version.ocr_content()
-            )
-        )
-
-    def test_document_type_ocr_submit_view_with_access(self):
-        self._upload_test_document()
-
-        self.grant_access(
-            obj=self.test_document_type,
-            permission=permission_document_version_ocr
-        )
-
-        response = self._request_document_type_ocr_submit_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertTrue(
-            TEST_DOCUMENT_VERSION_OCR_CONTENT in ''.join(
-                self.test_document_version.ocr_content()
-            )
-        )
-
-    def test_trashed_document_type_ocr_submit_view_with_access(self):
-        self._upload_test_document()
-
-        self.grant_access(
-            obj=self.test_document_type,
-            permission=permission_document_version_ocr
-        )
-
-        self.test_document.delete()
-
-        response = self._request_document_type_ocr_submit_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertFalse(
-            TEST_DOCUMENT_VERSION_OCR_CONTENT in ''.join(
-                self.test_document_version.ocr_content()
-            )
-        )

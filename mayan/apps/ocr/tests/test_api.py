@@ -10,7 +10,7 @@ from ..permissions import (
 
 from .literals import TEST_DOCUMENT_VERSION_OCR_CONTENT
 from .mixins import (
-    DocumentTypeOCRSettingsAPIViewTestMixin, OCRAPIViewTestMixin
+    DocumentTypeOCRSettingsAPIViewTestMixin, DocumentVersionOCRAPIViewTestMixin
 )
 
 
@@ -63,8 +63,8 @@ class DocumentTypeOCRSettingsAPIViewTestCase(
         self.assertEqual(response.data, {'auto_ocr': True})
 
 
-class OCRAPIViewTestCase(
-    DocumentTestMixin, OCRAPIViewTestMixin, BaseAPITestCase
+class DocumentVersionOCRAPIViewTestCase(
+    DocumentTestMixin, DocumentVersionOCRAPIViewTestMixin, BaseAPITestCase
 ):
     def test_submit_document_api_view_no_permission(self):
         response = self._request_test_document_ocr_submit_api_view()
