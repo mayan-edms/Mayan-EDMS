@@ -7,6 +7,11 @@
     (@nmaurer) for the report.
   - Add duplicate document tool tests.
 
+- Update dependency versions:
+
+  - django-solo from version 1.1.3 to 1.1.5.
+  - python-magic from version 0.4.15 to 0.4.22
+
 4.0.2 (2021-05-25)
 ==================
 - Messaging app updates:
