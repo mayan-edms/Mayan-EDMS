@@ -6,6 +6,7 @@
     assigned to a user. Closes GitLab issue #972. Thanks to Niklas Maurer
     (@nmaurer) for the report.
   - Add duplicate document tool tests.
+  - Speed up some OCR view tests.
 
 - Update dependency versions:
 

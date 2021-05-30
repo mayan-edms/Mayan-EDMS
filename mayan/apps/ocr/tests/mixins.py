@@ -1,3 +1,16 @@
+from ..models import DocumentVersionPageOCRContent
+
+from .literals import TEST_DOCUMENT_VERSION_OCR_CONTENT
+
+
+class DocumentOCRTestMixin:
+    def _create_test_document_version_ocr_content(self):
+        DocumentVersionPageOCRContent.objects.create(
+            document_version_page=self.test_document_version.pages.first(),
+            content=TEST_DOCUMENT_VERSION_OCR_CONTENT
+        )
+
+
 class DocumentOCRViewTestMixin:
     def _request_test_document_version_ocr_content_view(self):
         return self.get(
