@@ -8,6 +8,9 @@
   - Add duplicate document tool tests.
   - Speed up some OCR view tests.
   - Add explicit Docker logout repository in CD/CI jobs.
+  - Fix permission required for the document content error list link to match
+    the permission required for the document parsed content error list view.
+    GitLab issue #954. Thanks to Ilya Pavlov (@spirkaa) for the report.
 
 - Update dependency versions:
 

@@ -68,6 +68,13 @@ class DocumentFileAPIViewTestMixin:
         return response
 
 
+class DocumentFileLinkTestMixin:
+    def _resolve_test_document_file_link(self, test_link):
+        self.add_test_view(test_object=self.test_document_file)
+        context = self.get_test_view()
+        return test_link.resolve(context=context)
+
+
 class DocumentFileTestMixin:
     def _upload_new_file(self):
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:

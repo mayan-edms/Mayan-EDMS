@@ -46,7 +46,7 @@ link_document_file_page_content = Link(
 link_document_file_parsing_errors_list = Link(
     args='resolved_object.id',
     icon=icon_document_file_parsing_errors_list,
-    permissions=(permission_document_file_content_view,), text=_('Parsing errors'),
+    permissions=(permission_document_file_parse,), text=_('Parsing errors'),
     view='document_parsing:document_file_parsing_error_list'
 )
 link_document_file_multiple_submit = Link(
