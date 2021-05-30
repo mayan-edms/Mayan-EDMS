@@ -7,6 +7,7 @@
     (@nmaurer) for the report.
   - Add duplicate document tool tests.
   - Speed up some OCR view tests.
+  - Add explicit Docker logout repository in CD/CI jobs.
 
 - Update dependency versions:
 
