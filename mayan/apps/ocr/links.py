@@ -41,7 +41,7 @@ link_document_version_ocr_content_view = Link(
 link_document_version_ocr_content_delete = Link(
     args='resolved_object.id',
     icon=icon_document_version_ocr_content_delete,
-    permissions=(permission_document_version_ocr_content_view,),
+    permissions=(permission_document_version_ocr,),
     text=_('Delete OCR content'),
     view='ocr:document_version_ocr_content_delete'
 )

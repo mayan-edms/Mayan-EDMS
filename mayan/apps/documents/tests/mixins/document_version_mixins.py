@@ -83,6 +83,13 @@ class DocumentVersionAPIViewTestMixin:
         )
 
 
+class DocumentVersionLinkTestMixin:
+    def _resolve_test_document_version_link(self, test_link):
+        self.add_test_view(test_object=self.test_document_version)
+        context = self.get_test_view()
+        return test_link.resolve(context=context)
+
+
 class DocumentVersionPageAPIViewTestMixin:
     def _request_test_document_version_page_create_api_view(self):
         pk_list = list(DocumentVersionPage.objects.values_list('pk', flat=True))
