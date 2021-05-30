@@ -216,6 +216,19 @@ class DuplicatedDocumentToolsViewsTestCase(
         self._upload_duplicate_document()
         DuplicatedDocument.objects.all().delete()
 
+        response = self._request_duplicated_document_scan_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertFalse(
+            self.test_documents[1] in DuplicatedDocument.objects.get_duplicates_of(
+                document=self.test_documents[0]
+            )
+        )
+
+    def test_duplicated_document_scan_with_permission(self):
+        self._upload_duplicate_document()
+        DuplicatedDocument.objects.all().delete()
+
         self.grant_permission(permission=permission_document_tools)
 
         response = self._request_duplicated_document_scan_view()
