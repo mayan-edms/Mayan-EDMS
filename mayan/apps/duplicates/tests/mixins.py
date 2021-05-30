@@ -30,6 +30,11 @@ class DuplicatedDocumentTestMixin:
         self._upload_test_document(label='duplicated document label')
 
 
+class DuplicatedDocumentToolViewTestMixin:
+    def _request_duplicated_document_scan_view(self):
+        return self.post(viewname='duplicates:duplicated_document_scan')
+
+
 class DuplicatedDocumentViewTestMixin:
     def _request_test_document_duplicates_list_view(self):
         return self.get(
