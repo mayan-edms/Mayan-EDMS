@@ -1,6 +1,6 @@
 4.0.3 (2021-XX-XX)
 ==================
-- Merge update from version 3.5.9
+- Merge updates from version 3.5.9
 
   - Fix user model theme related field error after deleting a theme already
     assigned to a user. Closes GitLab issue #972. Thanks to Niklas Maurer
