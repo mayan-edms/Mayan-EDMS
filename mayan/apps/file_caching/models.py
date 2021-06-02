@@ -226,7 +226,7 @@ class CachePartition(models.Model):
         lock_name = self.get_file_lock_name(filename=filename)
         try:
             logger.debug('trying to acquire lock: %s', lock_name)
-            lock = LockingBackend.get_instance().acquire_lock(name=lock_name)
+            lock = LockingBackend.get_backend().acquire_lock(name=lock_name)
             logger.debug('acquired lock: %s', lock_name)
             try:
                 self.cache.prune()
@@ -384,7 +384,7 @@ class CachePartitionFile(models.Model):
         lock_name = self._lock_manager_get_lock_name()
         try:
             logger.debug('trying to acquire lock: %s', lock_name)
-            self._lock = LockingBackend.get_instance().acquire_lock(name=lock_name)
+            self._lock = LockingBackend.get_backend().acquire_lock(name=lock_name)
             CachePartitionFile.objects.filter(pk=self.pk).update(hits=F('hits') + 1)
             logger.debug('acquired lock: %s', lock_name)
             self._storage_object = None

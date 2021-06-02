@@ -122,7 +122,7 @@ class DocumentVersionPage(
 
         content_object_lock_name = self.content_object.get_lock_name(user=user)
         try:
-            content_object_lock = LockingBackend.get_instance().acquire_lock(
+            content_object_lock = LockingBackend.get_backend().acquire_lock(
                 name=content_object_lock_name,
                 timeout=DOCUMENT_IMAGE_TASK_TIMEOUT * 2
             )
@@ -134,7 +134,7 @@ class DocumentVersionPage(
             )
             try:
                 if _acquire_lock:
-                    lock = LockingBackend.get_instance().acquire_lock(
+                    lock = LockingBackend.get_backend().acquire_lock(
                         name=lock_name, timeout=DOCUMENT_IMAGE_TASK_TIMEOUT
                     )
             except Exception:

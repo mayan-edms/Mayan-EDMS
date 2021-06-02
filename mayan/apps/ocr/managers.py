@@ -41,7 +41,7 @@ class DocumentVersionPageOCRContentManager(models.Manager):
         lock_name = document_version_page.get_lock_name(user=user)
 
         try:
-            document_version_page_lock = LockingBackend.get_instance().acquire_lock(
+            document_version_page_lock = LockingBackend.get_backend().acquire_lock(
                 name=lock_name, timeout=DOCUMENT_IMAGE_TASK_TIMEOUT * 2
 
             )

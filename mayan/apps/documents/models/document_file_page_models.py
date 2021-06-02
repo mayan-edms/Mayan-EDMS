@@ -87,7 +87,7 @@ class DocumentFilePage(PagedModelMixin, models.Model):
                 lock_name = self.get_lock_name(
                     _combined_cache_filename=combined_cache_filename
                 )
-                lock = LockingBackend.get_instance().acquire_lock(
+                lock = LockingBackend.get_backend().acquire_lock(
                     name=lock_name, timeout=DOCUMENT_IMAGE_TASK_TIMEOUT
                 )
         except Exception:

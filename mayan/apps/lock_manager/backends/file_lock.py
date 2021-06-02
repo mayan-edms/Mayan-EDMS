@@ -19,22 +19,22 @@ from .base import LockingBackend
 lock = threading.Lock()
 logger = logging.getLogger(name=__name__)
 
-lock_file = os.path.join(
-    setting_temporary_directory.value, hashlib.sha256(
-        force_bytes(s=settings.SECRET_KEY)
-    ).hexdigest()
-)
-open(file=lock_file, mode='a').close()
-logger.debug('lock_file: %s', lock_file)
-
 
 class FileLock(LockingBackend):
-    lock_file = lock_file
-
     @classmethod
     def _acquire_lock(cls, name, timeout):
         instance = FileLock(name=name, timeout=timeout)
         return instance
+
+    @classmethod
+    def _initialize(cls):
+        cls.lock_file = os.path.join(
+            setting_temporary_directory.value, hashlib.sha256(
+                force_bytes(s=settings.SECRET_KEY)
+            ).hexdigest()
+        )
+        open(file=cls.lock_file, mode='a').close()
+        logger.debug('lock_file: %s', cls.lock_file)
 
     @classmethod
     def _purge_locks(cls):
@@ -59,7 +59,7 @@ class FileLock(LockingBackend):
 
         return result
 
-    def __init__(self, name, timeout):
+    def _init(self, name, timeout):
         self.name = name
         self.timeout = timeout
         self.uuid = force_text(s=uuid.uuid4())

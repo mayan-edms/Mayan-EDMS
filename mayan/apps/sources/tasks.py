@@ -30,7 +30,7 @@ def task_check_interval_source(source_id, test=False):
     lock_id = 'task_check_interval_source-%d' % source_id
     try:
         logger.debug('trying to acquire lock: %s', lock_id)
-        lock = LockingBackend.get_instance().acquire_lock(
+        lock = LockingBackend.get_backend().acquire_lock(
             name=lock_id, timeout=DEFAULT_SOURCE_LOCK_EXPIRE
         )
     except LockError:

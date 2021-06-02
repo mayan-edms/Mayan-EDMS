@@ -258,7 +258,7 @@ class IndexTemplateNode(MPTTModel):
         # the database.
         try:
             if acquire_lock:
-                lock = LockingBackend.get_instance().acquire_lock(
+                lock = LockingBackend.get_backend().acquire_lock(
                     name=self.get_lock_string()
                 )
         except LockError:
@@ -408,7 +408,7 @@ class IndexInstanceNode(MPTTModel):
         """
         # Prevent another process to delete this node.
         try:
-            lock = LockingBackend.get_instance().acquire_lock(
+            lock = LockingBackend.get_backend().acquire_lock(
                 name=self.index_template_node.get_lock_string()
             )
         except LockError:
@@ -496,7 +496,7 @@ class IndexInstanceNode(MPTTModel):
         # Prevent another process to work on this node. We use the node's
         # parent template node for the lock
         try:
-            lock = LockingBackend.get_instance().acquire_lock(
+            lock = LockingBackend.get_backend().acquire_lock(
                 name=self.index_template_node.get_lock_string()
             )
         except LockError:

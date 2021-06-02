@@ -26,7 +26,7 @@ def task_process_document_file(document_file_id):
         logger.debug('trying to acquire lock: %s', lock_id)
         # Acquire lock to avoid processing the same document file more
         # than once concurrently
-        lock = LockingBackend.get_instance().acquire_lock(name=lock_id, timeout=LOCK_EXPIRE)
+        lock = LockingBackend.get_backend().acquire_lock(name=lock_id, timeout=LOCK_EXPIRE)
         logger.debug('acquired lock: %s', lock_id)
     except LockError:
         logger.debug('unable to obtain lock: %s' % lock_id)

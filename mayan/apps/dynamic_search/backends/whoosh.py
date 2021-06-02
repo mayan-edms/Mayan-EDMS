@@ -86,7 +86,7 @@ class WhooshSearchBackend(SearchBackend):
 
     def deindex_instance(self, instance):
         try:
-            lock = LockingBackend.get_instance().acquire_lock(
+            lock = LockingBackend.get_backend().acquire_lock(
                 name='dynamic_search_whoosh_deindex_instance'
             )
         except LockError:
@@ -156,7 +156,7 @@ class WhooshSearchBackend(SearchBackend):
 
     def index_instance(self, instance, exclude_set=None):
         try:
-            lock = LockingBackend.get_instance().acquire_lock(
+            lock = LockingBackend.get_backend().acquire_lock(
                 name='dynamic_search_whoosh_index_instance'
             )
         except LockError:
