@@ -18,9 +18,7 @@ TEST_COMMAND = ./manage.py test $(MODULE) --settings=$(SETTINGS) $(SKIPMIGRATION
 TEST_MYSQL_CONTAINER_NAME = mayan-test-mysql
 TEST_ORACLE_CONTAINER_NAME = mayan-test-oracle
 TEST_POSTGRESQL_CONTAINER_NAME = mayan-test-postgresql
-
-STAGING_POSTGRESQL_CONTAINER_NAME = mayan-staging-postgresql
-STAGING_REDIS_CONTAINER_NAME = mayan-staging-postgresql
+TEST_REDIS_CONTAINER_NAME = mayan-staging-redis
 
 .PHONY: clean clean-pyc clean-build test
 
@@ -365,15 +363,15 @@ manage-with-postgresql: ## Run the development server using a Docker PostgreSQL 
 runserver: ## Run the development server.
 	./manage.py runserver --settings=mayan.settings.development $(ADDRPORT)
 
-runserver_plus: ## Run the Django extension's development server.
+runserver-plus: ## Run the Django extension's development server.
 	./manage.py runserver_plus --settings=mayan.settings.development $(ADDRPORT)
 
-shell_plus: ## Run the shell_plus command.
+shell-plus: ## Run the shell_plus command.
 	./manage.py shell_plus --settings=mayan.settings.development
 
 # Test database containers
 
-docker-mysql-start: ## Launch and initialize a MySQL Docker container.
+docker-mysql-start: ## Start a MySQL Docker container.
 	@docker run --detach --name $(TEST_MYSQL_CONTAINER_NAME) -p 3306:3306 -e MYSQL_ROOT_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) -e MYSQL_USER=$(DEFAULT_DATABASE_USER) -e MYSQL_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) -e MYSQL_DATABASE=$(DEFAULT_DATABASE_NAME) -v $(TEST_MYSQL_CONTAINER_NAME):/var/lib/mysql $(DOCKER_MYSQL_IMAGE_VERSION) --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 	@while ! mysql -h 127.0.0.1 --user=$(DEFAULT_DATABASE_USER) --password=$(DEFAULT_DATABASE_PASSWORD) --execute "SHOW TABLES;" $(DEFAULT_DATABASE_NAME) >/dev/null 2>&1; do echo -n .;sleep 2; done
 	@mysql -h 127.0.0.1 --user=root --password=$(DEFAULT_DATABASE_PASSWORD) --execute "GRANT ALL PRIVILEGES ON *.* TO '$(DEFAULT_DATABASE_USER)'@'%';FLUSH PRIVILEGES;" >/dev/null
@@ -388,7 +386,7 @@ docker-mysql-backup:
 docker-mysql-restore:
 	@mysql --host=127.0.0.1 --user=$(DEFAULT_DATABASE_USER) --password=$(DEFAULT_DATABASE_PASSWORD) $(DEFAULT_DATABASE_NAME) < mayan-docker-mysql-backup.sql
 
-docker-oracle-start: ## Launch and initialize an Oracle Docker container.
+docker-oracle-start: ## Start an Oracle Docker container.
 docker-oracle-start:
 	@docker run --detach --name $(TEST_ORACLE_CONTAINER_NAME) -p 49160:22 -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true -v $(TEST_ORACLE_CONTAINER_NAME):/u01/app/oracle $(DOCKER_ORACLE_IMAGE_VERSION)
 	@sleep 10
@@ -398,7 +396,7 @@ docker-oracle-stop:
 	@docker rm --force $(TEST_ORACLE_CONTAINER_NAME) >/dev/null 2>&1
 	@docker volume rm $(TEST_ORACLE_CONTAINER_NAME) >/dev/null 2>&1 || true
 
-docker-postgresql-start: ## Launch and initialize a PostgreSQL Docker container.
+docker-postgresql-start: ## Start a PostgreSQL Docker container.
 	@docker run --detach --name $(TEST_POSTGRESQL_CONTAINER_NAME) -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_USER=$(DEFAULT_DATABASE_USER) -e=POSTGRES_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) -e POSTGRES_DB=$(DEFAULT_DATABASE_NAME) -p 5432:5432 -v $(TEST_POSTGRESQL_CONTAINER_NAME):/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
 	@while ! psql --command "\l" --dbname=$(DEFAULT_DATABASE_NAME) --host=127.0.0.1 --username=$(DEFAULT_DATABASE_USER) >/dev/null 2>&1; do echo -n .;sleep 2; done
 
@@ -412,20 +410,24 @@ docker-postgresql-backup:
 docker-postgresql-restore:
 	@cat mayan-docker-postgresql-backup.sql | psql --dbname=$(DEFAULT_DATABASE_NAME) --host=127.0.0.1 --username=$(DEFAULT_DATABASE_USER) > /dev/null
 
+docker-redis-start: ## Start a Redis Docker container.
+docker-redis-start:
+	@docker run --detach --name $(TEST_REDIS_CONTAINER_NAME) -p 6379:6379 $(DOCKER_REDIS_IMAGE_VERSION)
+	@while ! nc -z 127.0.0.1 6379; do echo -n .; sleep 1; done
+
+docker-redis-stop: ## Stop and delete the Redis Docker container.
+docker-redis-stop:
+	@docker rm --force $(TEST_REDIS_CONTAINER_NAME) >/dev/null 2>&1
+
 # Staging
 
 staging-start: ## Launch and initialize production-like services using Docker (PostgreSQL and Redis).
-staging-start: staging-stop
-	@docker run --detach --name $(STAGING_POSTGRESQL_CONTAINER_NAME) -p 5432:5432 -e POSTGRES_DB=$(DEFAULT_DATABASE_NAME) -e POSTGRES_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) -e POSTGRES_USER=$(DEFAULT_DATABASE_USER) $(DOCKER_POSTGRES_IMAGE_VERSION)
-	@docker run --detach --name $(STAGING_REDIS_CONTAINER_NAME) -p 6379:6379 $(DOCKER_REDIS_IMAGE_VERSION)
-	@while ! psql --command "\l" --dbname=$(DEFAULT_DATABASE_NAME) --host=127.0.0.1 --username=$(DEFAULT_DATABASE_USER) >/dev/null 2>&1; do echo -n .;sleep 2; done
-	while ! nc -z 127.0.0.1 6379; do sleep 1; done
+staging-start: staging-stop docker-postgres-start docker-redis-start
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
 	./manage.py initialsetup --settings=mayan.settings.staging.docker
 
 staging-stop: ## Stop and delete the Docker production-like services.
-	@docker stop $(TEST_POSTGRESQL_CONTAINER_NAME) || true >/dev/null 2>&1
-	@docker stop $(STAGING_REDIS_CONTAINER_NAME) || true >/dev/null 2>&1
+staging-stop: docker-postgresql-stop docker-redis-stop
 
 staging-frontend: ## Launch a front end instance that uses the production-like services.
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
