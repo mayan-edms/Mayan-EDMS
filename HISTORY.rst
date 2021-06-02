@@ -20,6 +20,20 @@
   - django-solo from version 1.1.3 to 1.1.5.
   - python-magic from version 0.4.15 to 0.4.22
 
+- Makefile updates
+
+  - Unify Docker test with staging targets.
+  - Replace underscore in target names with hyphen for uniformity.
+  - Add Redis Docker test targets.
+
+- Lock manager updates
+
+  - Rename get_instance() method to get_backend(). This method
+    returns a class and not an instance.
+  - Add management command tests.
+  - Add optional _initialization method for backends.
+  - Update the RedisLock backend to use a connection pool.
+
 4.0.2 (2021-05-25)
 ==================
 - Messaging app updates:
