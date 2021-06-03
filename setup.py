@@ -77,7 +77,7 @@ django-model-utils==4.0.0
 django-mptt==0.12.0
 django-pure-pagination==0.3.0
 django-qsstats-magic==1.1.0
-django-solo==1.1.3
+django-solo==1.1.5
 django-stronghold==0.4.0
 django-widget-tweaks==1.4.8
 djangorestframework==3.11.2
@@ -97,7 +97,7 @@ packaging==20.3
 pycountry==20.7.3
 pycryptodome==3.9.7
 python-dateutil==2.8.1
-python-magic==0.4.15
+python-magic==0.4.22
 python_gnupg==0.4.6
 pytz==2020.1
 requests==2.25.1
