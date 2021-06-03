@@ -37,6 +37,7 @@
 - Update Docker entrypoint template to support default worker
   concurrency values. Now correctly passes the default concurrency
   value of the D class worker.
+- Updated REST API examples for version 4 of the API.
 
 4.0.2 (2021-05-25)
 ==================

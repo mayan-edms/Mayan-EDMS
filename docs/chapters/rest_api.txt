@@ -34,13 +34,13 @@ and **DELETE**.
 
 The API also supports result sorting. Like the user interface, only
 indexed database fields support. The **OPTION** verb can be used to determine
-with fields are sortable.
+which fields are sortable.
 
 
 Example use
 ===========
 
-Install Python Requests (http://docs.python-requests.org/en/master/):
+Install the Python Requests library (http://docs.python-requests.org/en/master/):
 
 .. code-block:: console
 
@@ -52,42 +52,86 @@ Get a list of document types:
 
     import requests
 
-    requests.get('http://127.0.0.1:8000/api/v4/document_types/', auth=('username', 'password')).json()
+    requests.get(url='http://127.0.0.1:8000/api/v4/document_types/', auth=('username', 'password')).json()
 
-    {u'count': 1,
-     u'next': None,
-     u'previous': None,
-     u'results': [{u'delete_time_period': 30,
-     u'delete_time_unit': u'days',
-     u'documents_count': 12,
-     u'documents_url': u'http://127.0.0.1:8000/api/v4/document_types/1/documents/',
-     u'filenames': [],
-     u'id': 1,
-     u'label': u'Default',
-     u'trash_time_period': None,
-     u'trash_time_unit': None,
-     u'url': u'http://127.0.0.1:8000/api/v4/document_types/1/'}]}
+    {'count': 1,
+     'next': None,
+     'previous': None,
+     'results': [{'delete_time_period': 30,
+     'delete_time_unit': 'days',
+     'filename_generator_backend': 'uuid',
+     'filename_generator_backend_arguments': '',
+     'id': 1,
+     'label': 'Default',
+     'quick_label_list_url': 'http://127.0.0.1:8000/api/v4/document_types/1/quick_labels/',
+     'trash_time_period': None,
+     'trash_time_unit': None,
+     'url': 'http://127.0.0.1:8000/api/v4/document_types/1/'}]}
 
-Upload a new document:
+
+Create a new document:
+
+.. code-block:: python
+
+    requests.post(url='http://127.0.0.1:8000/api/v4/documents/', auth=('username', 'password'), data={'document_type_id': 1, 'label': 'test document'}).json()
+
+    {'datetime_created': '2021-06-03T08:57:19.733359Z',
+     'description': '',
+     'document_change_type_url': 'http://127.0.0.1:8000/api/v4/documents/1/type/change/',
+     'document_type': {'delete_time_period': 30,
+      'delete_time_unit': 'days',
+      'filename_generator_backend': 'uuid',
+      'filename_generator_backend_arguments': '',
+      'id': 1,
+      'label': 'Default',
+      'quick_label_list_url': 'http://127.0.0.1:8000/api/v4/document_types/1/quick_labels/',
+      'trash_time_period': None,
+      'trash_time_unit': None,
+      'url': 'http://127.0.0.1:8000/api/v4/document_types/1/'},
+     'file_list_url': 'http://127.0.0.1:8000/api/v4/documents/1/files/',
+     'id': 1,
+     'label': 'test document',
+     'language': 'eng',
+     'file_latest': None,
+     'url': 'http://127.0.0.1:8000/api/v4/documents/1/',
+     'uuid': '5f350d5a-cae1-4236-beba-dab187f112e3',
+     'version_active': None,
+     'version_list_url': 'http://127.0.0.1:8000/api/v4/documents/1/versions/'}
+
+
+After creating a document, you need to upload a file to it. Use ``action`` code
+``1`` to also have a new document version created and its pages pointing to
+the pages of the new file uploaded:
 
 .. code-block:: python
 
     with open(file='test_document.pdf', mode='rb') as file_object:
-        requests.post('http://127.0.0.1:8000/api/v4/documents/', auth=('username', 'password'), files={'file': file_object}, data={'document_type_id': 1}).json()
+        response = requests.post(url='http://127.0.0.1:8000/api/v4/documents/1/files/', auth=('username', 'password'), files={'file_new': file_object}, data={'action': 1})
 
-    {u'description': u'',
-    u'document_type': 1,
-    u'id': 19,
-    u'label': u'test_document.pdf',
-    u'language': u'eng'}
+    response.status_code
+    202
+
+The API will return status code 202 meaning it has accepted the request and
+will perform the processing in the background.
+
 
 Use API tokens to avoid sending the username and password on every request. Obtain a token by making a POST request to ``/api/v4/auth/token/obtain/?format=json``:
 
 .. code-block:: python
 
-    requests.post('http://127.0.0.1:8000/api/v4/auth/token/obtain/?format=json', data={'username': 'username', 'password': 'password'}).json()
+    requests.post(url='http://127.0.0.1:8000/api/v4/auth/token/obtain/?format=json', data={'username': 'username', 'password': 'password'}).json()
 
-    {u'token': u'4ccbc35b5eb327aa82dc3b7c9747b578900f02bb'}
+    {'token': '4ccbc35b5eb327aa82dc3b7c9747b578900f02bb'}
+
+
+The API token may also be obtained using management commands:
+
+.. code-block:: console
+
+    ./manage.py drf_create_token admin
+
+    Generated token 4ccbc35b5eb327aa82dc3b7c9747b578900f02bb for user admin
+
 
 Add the API token to the request header:
 
@@ -95,13 +139,21 @@ Add the API token to the request header:
 
     headers = {'Authorization': 'Token 4ccbc35b5eb327aa82dc3b7c9747b578900f02bb'}
 
-    requests.get('http://127.0.0.1:8000/api/v4/document_types/', headers=headers).json()
+    requests.get(url='http://127.0.0.1:8000/api/v4/document_types/', headers=headers).json()
 
-    {u'description': u'',
-    u'document_type': 1,
-    u'id': 19,
-    u'label': u'test_document.pdf',
-    u'language': u'eng'}
+    {'count': 1,
+     'next': None,
+     'previous': None,
+     'results': [{'delete_time_period': 30,
+     'delete_time_unit': 'days',
+     'filename_generator_backend': 'uuid',
+     'filename_generator_backend_arguments': '',
+     'id': 1,
+     'label': 'Default',
+     'quick_label_list_url': 'http://127.0.0.1:8000/api/v4/document_types/1/quick_labels/',
+     'trash_time_period': None,
+     'trash_time_unit': None,
+     'url': 'http://127.0.0.1:8000/api/v4/document_types/1/'}]}
 
 
 Use sessions to avoid having to add the headers on each request:
@@ -114,10 +166,18 @@ Use sessions to avoid having to add the headers on each request:
 
     session.headers.update(headers)
 
-    session.get('http://127.0.0.1:8000/api/v4/document_types/')
+    session.get(url='http://127.0.0.1:8000/api/v4/document_types/')
 
-    {u'description': u'',
-    u'document_type': 1,
-    u'id': 19,
-    u'label': u'test_document.pdf',
-    u'language': u'eng'}
+    {'count': 1,
+     'next': None,
+     'previous': None,
+     'results': [{'delete_time_period': 30,
+     'delete_time_unit': 'days',
+     'filename_generator_backend': 'uuid',
+     'filename_generator_backend_arguments': '',
+     'id': 1,
+     'label': 'Default',
+     'quick_label_list_url': 'http://127.0.0.1:8000/api/v4/document_types/1/quick_labels/',
+     'trash_time_period': None,
+     'trash_time_unit': None,
+     'url': 'http://127.0.0.1:8000/api/v4/document_types/1/'}]}
