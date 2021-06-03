@@ -9,14 +9,15 @@
 # Tobias Paepke <tobias.paepke@paepke.net>, 2021
 # Felix <felix.com@gmx.com>, 2021
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2021
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-25 06:03+0000\n"
+"POT-Creation-Date: 2021-06-03 06:54+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2021\n"
+"Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +27,7 @@ msgstr ""
 
 #: apps.py:16 permissions.py:5 settings.py:10
 msgid "Logging"
-msgstr ""
+msgstr "Protokollierung"
 
 #: links.py:13
 msgid "Errors"
@@ -34,7 +35,7 @@ msgstr "Fehler"
 
 #: links.py:19
 msgid "Clear errors"
-msgstr ""
+msgstr "Fehler löschen"
 
 #: models.py:10 models.py:38
 msgid "Internal name"
@@ -42,15 +43,15 @@ msgstr "Interner Name"
 
 #: models.py:15 models.py:35
 msgid "Error log"
-msgstr ""
+msgstr "Fehlerprotokoll"
 
 #: models.py:16
 msgid "Error logs"
-msgstr ""
+msgstr "Fehlerprotokolle"
 
 #: models.py:25
 msgid "App label"
-msgstr ""
+msgstr "App-Label"
 
 #: models.py:43 models.py:60
 msgid "Error log partition"

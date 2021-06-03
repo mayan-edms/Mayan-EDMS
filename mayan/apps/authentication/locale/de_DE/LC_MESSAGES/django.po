@@ -10,14 +10,15 @@
 # 847f3f05406324d125c568a4b098bddb, 2021
 # Marvin Haschker <marvin@haschker.me>, 2021
 # Mathias Behrle <mathiasb@m9s.biz>, 2021
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-25 06:03+0000\n"
+"POT-Creation-Date: 2021-06-03 06:54+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2021\n"
+"Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -97,7 +98,7 @@ msgstr "Benutzeridentität annehmen"
 
 #: links.py:39
 msgid "Impersonate"
-msgstr ""
+msgstr "Identität annehmen"
 
 #: links.py:44 links.py:48
 msgid "Set password"
@@ -136,6 +137,8 @@ msgid ""
 "                Impersonating user \"%(user)s\".\n"
 "            "
 msgstr ""
+"\n"
+"Identität des Benutzers \"%(user)s\" angenommen."
 
 #: templates/authentication/app/viewport.html:14
 msgid "Click here when finished"
@@ -207,8 +210,8 @@ msgstr "Passwortwechsel für %(count)d Benutzer durchgeführt"
 #: views.py:179
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ändern Sie das Benutzerpasswort"
+msgstr[1] "Benutzerpasswörter ändern"
 
 #: views.py:189
 #, python-format
@@ -230,4 +233,4 @@ msgstr ""
 #: views.py:278
 #, python-format
 msgid "Impersonate user: %s"
-msgstr ""
+msgstr "Benutzeridentität annehmen: %s"

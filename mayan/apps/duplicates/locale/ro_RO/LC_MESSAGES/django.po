@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-25 06:03+0000\n"
+"POT-Creation-Date: 2021-06-03 06:54+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
 "Last-Translator: Harald Ersch, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -40,7 +40,7 @@ msgstr ""
 msgid "Exact document label"
 msgstr ""
 
-#: links.py:18 models.py:41 views.py:77
+#: links.py:18 models.py:41 views.py:73
 msgid "Duplicated documents"
 msgstr "Documente duplicate"
 
@@ -76,22 +76,22 @@ msgstr "Curățați listele de duplicate goale"
 msgid "Scan document duplicates"
 msgstr "Scanați după documente duplicate"
 
-#: views.py:36
+#: views.py:32
 msgid "Only exact copies of this document will be shown in the this list."
 msgstr ""
 "Numai exemplarele exacte ale acestui document vor fi afișate în această "
 "listă."
 
-#: views.py:40
+#: views.py:36
 msgid "There are no duplicates for this document"
 msgstr "Nu există duplicate pentru acest document"
 
-#: views.py:44
+#: views.py:40
 #, python-format
 msgid "Duplicates for document: %s"
 msgstr "Duplicate pentru document: %s"
 
-#: views.py:68
+#: views.py:64
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
 "the last byte. Files that have the same text or OCR but are not identical or"
@@ -102,14 +102,14 @@ msgstr ""
 "identice sau au fost salvate utilizând un alt format de fișier nu vor apărea"
 " ca duplicate."
 
-#: views.py:75
+#: views.py:71
 msgid "There are no duplicated documents"
 msgstr "Nu există documente duplicate"
 
-#: views.py:85
+#: views.py:81
 msgid "Scan for duplicated documents?"
 msgstr "Căutați documente duplicate?"
 
-#: views.py:92
+#: views.py:88
 msgid "Duplicated document scan queued successfully."
 msgstr "Căutarea documentelor duplicat a fost trimisă în coada de așteptare."

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-25 06:03+0000\n"
+"POT-Creation-Date: 2021-06-03 06:54+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -63,7 +63,7 @@ msgstr "Marquer comme lu"
 
 #: links.py:60 links.py:69
 msgid "Mark as unread"
-msgstr ""
+msgstr "Marquer comme non lu"
 
 #: links.py:73
 msgid "Mark all as read"
@@ -226,26 +226,27 @@ msgstr "Tous les messages ont été marqués comme lus."
 #, python-format
 msgid "Error marking message \"%(instance)s\" as unread; %(exception)s"
 msgstr ""
+"Erreur pour marquer le message \"%(instance)s\" comme non lu; %(exception)s"
 
 #: views.py:202
 #, python-format
 msgid "Message \"%(object)s\" marked as unread successfully."
-msgstr ""
+msgstr "Message \"%(object)s\" marqué comme non lu avec succès."
 
 #: views.py:205
 #, python-format
 msgid "%(count)d message marked as unread successfully."
-msgstr ""
+msgstr " %(count)d message marqué comme non lu avec succès."
 
 #: views.py:208
 #, python-format
 msgid "%(count)d messages marked as unread successfully."
-msgstr ""
+msgstr "%(count)d messages marqués comme non lus avec succès."
 
 #: views.py:210
 #, python-format
 msgid "Mark the message \"%(object)s\" as unread."
-msgstr ""
+msgstr "Marquez le message \"%(object)s\" comme non lu."
 
 #: views.py:211
 #, python-format
@@ -255,4 +256,4 @@ msgstr ""
 #: views.py:212
 #, python-format
 msgid "Mark the %(count)d selected messages as unread."
-msgstr ""
+msgstr "Marquez les %(count)d messages sélectionnés comme non lus."

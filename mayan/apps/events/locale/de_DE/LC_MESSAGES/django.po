@@ -8,14 +8,15 @@
 # Mathias Behrle <mathiasb@m9s.biz>, 2021
 # Felix <felix.com@gmx.com>, 2021
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2021
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-25 06:03+0000\n"
+"POT-Creation-Date: 2021-06-03 06:54+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2021\n"
+"Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,11 +63,11 @@ msgstr "Gesehen"
 
 #: classes.py:79
 msgid "Event list export to CSV"
-msgstr ""
+msgstr "Ereignisliste nach CSV exportieren"
 
 #: classes.py:108
 msgid "Events exported."
-msgstr ""
+msgstr "Ereignisse exportiert."
 
 #: classes.py:110
 #, python-format
@@ -82,7 +83,7 @@ msgstr "Unbekannter oder unerlaubter Ereignistyp: %s"
 
 #: events.py:8
 msgid "Events exported"
-msgstr ""
+msgstr "Ereignisse exportiert"
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
@@ -106,7 +107,7 @@ msgstr "Meine Ereignisse"
 
 #: links.py:34 links.py:49 links.py:56 views/export_views.py:57
 msgid "Export events"
-msgstr ""
+msgstr "Ereignisse exportieren"
 
 #: links.py:61 models.py:63 views/subscription_views.py:56
 msgid "Event subscriptions"
@@ -190,7 +191,7 @@ msgstr ""
 
 #: views/event_views.py:29
 msgid "There are no events"
-msgstr ""
+msgstr "Keine Ereignisse vorhanden"
 
 #: views/event_views.py:44
 msgid "There are no events for this object"
@@ -203,7 +204,7 @@ msgstr "Ereignisse für %s"
 
 #: views/event_views.py:68
 msgid "There are no events of this type"
-msgstr ""
+msgstr "Keine Ereignisse diesen Typs vorhanden"
 
 #: views/event_views.py:70 views/export_views.py:105
 #, python-format
@@ -215,10 +216,12 @@ msgid ""
 "The process will be performed in the background. The exported events will be"
 " available in the downloads area."
 msgstr ""
+"Dieser Prozess wird im Hintergrund ausgeführt. Die exportierten Ereignisse "
+"werden im Downloadbereich verfügbar sein."
 
 #: views/export_views.py:45
 msgid "Event list export task queued successfully."
-msgstr ""
+msgstr "Export der Ereignisliste erfolgreich eingereiht."
 
 #: views/export_views.py:76
 #, python-format
@@ -237,19 +240,19 @@ msgstr "Keine Benachrichtigungen vorhanden"
 
 #: views/notification_views.py:44
 msgid "Mark the selected notification as read?"
-msgstr ""
+msgstr "Ausgewählte Benachrichtigung als gelesen markieren?"
 
 #: views/notification_views.py:56
 msgid "Notification marked as read."
-msgstr ""
+msgstr "Benachrichtigung als gelesen markiert."
 
 #: views/notification_views.py:67
 msgid "Mark all notification as read?"
-msgstr ""
+msgstr "Alle Nachrichten als gelesen markieren?"
 
 #: views/notification_views.py:77
 msgid "All notifications marked as read."
-msgstr ""
+msgstr "Alle Benachrichtigungen als gelesen markiert."
 
 #: views/subscription_views.py:40
 #, python-format

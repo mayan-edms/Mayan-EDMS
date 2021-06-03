@@ -12,14 +12,15 @@
 # Jesaja Everling <jeverling@gmail.com>, 2021
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2021
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2021
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-25 06:03+0000\n"
+"POT-Creation-Date: 2021-06-03 06:54+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2021\n"
+"Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -84,7 +85,7 @@ msgstr ""
 
 #: events.py:11
 msgid "Asset edited"
-msgstr ""
+msgstr "Bestand bearbeiten"
 
 #: forms.py:16
 msgid "Preview"
@@ -106,7 +107,7 @@ msgstr ""
 
 #: layers.py:13
 msgid "Decorations"
-msgstr ""
+msgstr "Dekorationen"
 
 #: layers.py:24
 msgid "Saved transformations"
@@ -495,7 +496,7 @@ msgstr ""
 
 #: workflow_actions.py:42
 msgid "Transformation arguments"
-msgstr ""
+msgstr "Argumente für Transformation"
 
 #: workflow_actions.py:51
 msgid "Add transformation"

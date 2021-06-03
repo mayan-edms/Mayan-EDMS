@@ -14,14 +14,15 @@
 # Mathias Behrle <mathiasb@m9s.biz>, 2021
 # Berny <berny@bernhard-marx.de>, 2021
 # Felix <felix.com@gmx.com>, 2021
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-25 06:03+0000\n"
+"POT-Creation-Date: 2021-06-03 06:54+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Felix <felix.com@gmx.com>, 2021\n"
+"Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,7 +38,7 @@ msgstr "Dokumente"
 
 #: apps.py:269
 msgid "Decorations"
-msgstr ""
+msgstr "Dekorationen"
 
 #: apps.py:288
 msgid "Create a document type"
@@ -71,7 +72,7 @@ msgstr ""
 #: models/document_file_models.py:120 models/document_file_page_models.py:42
 #: search.py:51
 msgid "Document file"
-msgstr ""
+msgstr "Dokumentendatei"
 
 #: apps.py:405 models/document_file_page_models.py:46
 #: models/document_version_page_models.py:58
@@ -115,7 +116,7 @@ msgstr "Seiten"
 
 #: classes.py:57
 msgid "Original"
-msgstr ""
+msgstr "Original"
 
 #: classes.py:59
 msgid "Keeps the original filename of the uploaded file."
@@ -484,7 +485,7 @@ msgstr "Kürzlich abgerufen"
 
 #: links/document_links.py:29 views/recently_created_document_views.py:27
 msgid "Recently created"
-msgstr ""
+msgstr "Kürzlich erstellt"
 
 #: links/document_links.py:50
 msgid "Edit properties"
@@ -508,7 +509,7 @@ msgstr "Schnellbezeichner"
 
 #: links/document_type_links.py:70
 msgid "Filename generation"
-msgstr ""
+msgstr "Dateinamengenerierung"
 
 #: links/document_version_links.py:29
 msgid "Make active"
@@ -1955,7 +1956,7 @@ msgstr ""
 
 #: views/recently_accessed_document_views.py:27
 msgid "There are no recently accessed documents"
-msgstr ""
+msgstr "Keine kürzlich abgerufene Dokumente vorhanden"
 
 #: views/recently_created_document_views.py:21
 msgid "This view will list the latest documents created in the system."
@@ -1963,7 +1964,7 @@ msgstr ""
 
 #: views/recently_created_document_views.py:25
 msgid "There are no recently created documents"
-msgstr ""
+msgstr "Keine kürzlich erstellten Dokumente vorhanden"
 
 #: views/trashed_document_views.py:37
 #, python-format

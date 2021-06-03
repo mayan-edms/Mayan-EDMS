@@ -9,14 +9,15 @@
 # Tobias Paepke <tobias.paepke@paepke.net>, 2021
 # Berny <berny@bernhard-marx.de>, 2021
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2021
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-25 06:03+0000\n"
+"POT-Creation-Date: 2021-06-03 06:54+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2021\n"
+"Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,7 +63,7 @@ msgstr "EXIF Tool"
 
 #: events.py:10
 msgid "Document file submitted for file metadata processing"
-msgstr ""
+msgstr "Dokumentendatei für die Verarbeitung der Dateimetadaten eingestellt"
 
 #: events.py:14
 msgid "Document file file metadata processing finished"
@@ -130,7 +131,7 @@ msgstr "Einstellungen für Dokumententypen"
 
 #: models.py:74
 msgid "Document file"
-msgstr ""
+msgstr "Dokumentendatei"
 
 #: models.py:80 models.py:95
 msgid "Document file driver entry"
@@ -182,7 +183,7 @@ msgstr "Dateimetadaten ansehen"
 
 #: queues.py:11
 msgid "Process document file"
-msgstr ""
+msgstr "Dokumentendatei verarbeiten"
 
 #: settings.py:18
 msgid ""

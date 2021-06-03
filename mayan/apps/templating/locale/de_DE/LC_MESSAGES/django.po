@@ -8,14 +8,15 @@
 # Mathias Behrle <mathiasb@m9s.biz>, 2021
 # Berny <berny@bernhard-marx.de>, 2021
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2021
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-25 06:04+0000\n"
+"POT-Creation-Date: 2021-06-03 06:55+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2021\n"
+"Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,6 +35,8 @@ msgid ""
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 " "
 msgstr ""
+"Verwenden Sie die Standardvorlagensprache von Django "
+"(https://docs.djangoproject.com/de/%(django_version)s/ref/templates/builtins/)."
 
 #: fields.py:38
 #, python-format
@@ -82,7 +85,7 @@ msgstr "Fehler in der Vorlage; %(exception)s "
 
 #: widgets.py:63
 msgid "Filters"
-msgstr ""
+msgstr "Filter"
 
 #: widgets.py:70
 msgid "Tags"
@@ -90,8 +93,8 @@ msgstr "Tags"
 
 #: widgets.py:76
 msgid "<Filters and tags>"
-msgstr ""
+msgstr "<Filters and tags>"
 
 #: widgets.py:114
 msgid "<Model attributes>"
-msgstr ""
+msgstr "<Model attributes>"
