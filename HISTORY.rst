@@ -34,6 +34,10 @@
   - Add optional _initialization method for backends.
   - Update the RedisLock backend to use a connection pool.
 
+- Update Docker entrypoint template to support default worker
+  concurrency values. Now correctly passes the default concurrency
+  value of the D class worker.
+
 4.0.2 (2021-05-25)
 ==================
 - Messaging app updates:

@@ -10,6 +10,8 @@ from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.exceptions import NonUniqueError
 from mayan.celery import app as celery_app
 
+from .literals import WORKER_DEFAULT_CONCURRENCY
+
 logger = logging.getLogger(name=__name__)
 
 
@@ -168,7 +170,7 @@ class Worker:
         return cls._registry[name]
 
     def __init__(self, name, concurrency=None, label=None, nice_level=0):
-        self.concurrency = concurrency
+        self.concurrency = concurrency or WORKER_DEFAULT_CONCURRENCY
         self.name = name
         self.label = label
         self.nice_level = nice_level
