@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-03 06:54+0000\n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -634,19 +634,19 @@ msgstr "Состояния документа средне"
 msgid "Generate workflow previews"
 msgstr "Создание предпросмотра рабочих процессов"
 
-#: queues.py:21
+#: queues.py:22
 msgid "Launch a workflow for a document"
 msgstr "Запустить рабочий процесс для документа"
 
-#: queues.py:25
+#: queues.py:26
 msgid "Launch all workflows for a document"
 msgstr "Запустить все рабочие процессы для документа"
 
-#: queues.py:30
+#: queues.py:31
 msgid "Launch all workflows for all documents"
 msgstr "Запустить все рабочие процессы для всех документов"
 
-#: queues.py:34
+#: queues.py:35
 msgid "Launch a workflow"
 msgstr "Запустить рабочий процесс"
 

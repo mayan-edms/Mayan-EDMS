@@ -1,3 +1,12 @@
+4.0.4 (2021-06-05)
+==================
+- Merge updates from version 3.5.10
+
+  - Remove event decorator database transaction
+    Solves workflows not being launched on document creation. Closes
+    GitLab issue #976 and issue #990, thanks to users Megamorf (@megamorf),
+    A F (@adzzzz) for the reports and debug information.
+
 4.0.3 (2021-06-03)
 ==================
 - Merge updates from version 3.5.9

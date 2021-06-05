@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-03 06:54+0000\n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -636,19 +636,19 @@ msgstr ""
 msgid "Generate workflow previews"
 msgstr "Generați previzualizări ale fluxului de lucru"
 
-#: queues.py:21
+#: queues.py:22
 msgid "Launch a workflow for a document"
 msgstr "Lansați un flux de lucru pentru un document"
 
-#: queues.py:25
+#: queues.py:26
 msgid "Launch all workflows for a document"
 msgstr "Lansați toate fluxurile de lucru pentru un document"
 
-#: queues.py:30
+#: queues.py:31
 msgid "Launch all workflows for all documents"
 msgstr "Lansați toate fluxurile de lucru pentru toate documentele"
 
-#: queues.py:34
+#: queues.py:35
 msgid "Launch a workflow"
 msgstr "Lansați un flux de lucru"
 

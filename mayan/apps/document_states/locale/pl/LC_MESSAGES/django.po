@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-03 06:54+0000\n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -626,19 +626,19 @@ msgstr ""
 msgid "Generate workflow previews"
 msgstr "Generuj podgląd przepływu pracy"
 
-#: queues.py:21
+#: queues.py:22
 msgid "Launch a workflow for a document"
 msgstr "Uruchom przepływ pracy dla dokumentu"
 
-#: queues.py:25
+#: queues.py:26
 msgid "Launch all workflows for a document"
 msgstr "Uruchom wszystkie przepływy pracy dla dokumentu"
 
-#: queues.py:30
+#: queues.py:31
 msgid "Launch all workflows for all documents"
 msgstr "Uruchom wszystkie przepływy pracy dla wszystkich dokumentów"
 
-#: queues.py:34
+#: queues.py:35
 msgid "Launch a workflow"
 msgstr "Uruchom przepływ pracy"
 

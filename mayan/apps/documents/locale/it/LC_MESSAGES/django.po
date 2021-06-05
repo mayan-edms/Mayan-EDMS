@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-03 06:54+0000\n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -56,11 +56,11 @@ msgstr "Codifiche dei file"
 
 #: apps.py:392
 msgid "File MIME types"
-msgstr ""
+msgstr "Tipi MIME di file"
 
 #: apps.py:396
 msgid "File timestamps"
-msgstr ""
+msgstr "Timestamp dei file"
 
 #: apps.py:401 links/document_file_page_links.py:79
 #: models/document_file_models.py:120 models/document_file_page_models.py:42
@@ -296,7 +296,7 @@ msgstr "Esiste nello storage"
 
 #: forms/document_file_forms.py:58
 msgid "Path in storage"
-msgstr ""
+msgstr "Percorso in storage"
 
 #: forms/document_file_forms.py:61 models/document_file_models.py:115
 msgid "Checksum"
@@ -986,7 +986,7 @@ msgstr "Crea nuovi file di documenti"
 
 #: permissions.py:40
 msgid "Print document files"
-msgstr ""
+msgstr "Stampa file documento"
 
 #: permissions.py:43
 msgid "Execute document file modifying tools"
@@ -1014,7 +1014,7 @@ msgstr "Esporta le versioni del documento"
 
 #: permissions.py:70
 msgid "Print document versions"
-msgstr ""
+msgstr "Stampa versioni di documento"
 
 #: permissions.py:73
 msgid "View document versions"
@@ -1114,7 +1114,7 @@ msgstr "Descrizione del documento"
 
 #: search.py:99
 msgid "Document file checksum"
-msgstr ""
+msgstr "Checksum dei file dei documento"
 
 #: search.py:102
 msgid "Document file MIME type"
@@ -1126,19 +1126,19 @@ msgstr "Commento sulla versione del documento"
 
 #: serializers/document_file_serializers.py:37
 msgid "Binary content for the new file."
-msgstr ""
+msgstr "Contenuto binario per il nuovo file."
 
 #: serializers/document_serializers.py:23
 msgid "Document type ID for the new document."
-msgstr ""
+msgstr "ID del tipo di documento per il nuovo documento."
 
 #: serializers/document_version_serializers.py:68
 msgid "Content type ID of the source object for the page."
-msgstr ""
+msgstr "ID del tipo di contenuto dell'oggetto di origine per la pagina."
 
 #: serializers/favorite_document_serializers.py:17
 msgid "Document ID for the new favorite document."
-msgstr ""
+msgstr "ID del documento per il nuovo documento preferito."
 
 #: settings.py:54
 msgid ""
@@ -1146,12 +1146,18 @@ msgid ""
 "will start deleting the oldest document file page image cache files. Specify"
 " the size in bytes."
 msgstr ""
+"La soglia alla quale DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND "
+"inizierà a eliminare i file di cache dell'immagine della pagina del file di "
+"documento più vecchi. Specificare la dimensione in byte."
 
 #: settings.py:62
 msgid ""
 "Time in seconds that the browser should cache the supplied document file "
 "page images. The default of 31559626 seconds correspond to 1 year."
 msgstr ""
+"Tempo in secondi in cui il browser deve memorizzare nella cache le immagini "
+"della pagina del file di documento fornito. Il valore predefinito di "
+"31559626 secondi corrisponde a 1 anno."
 
 #: settings.py:70
 msgid "Path to the Storage subclass to use when storing document files."
@@ -1161,18 +1167,21 @@ msgstr ""
 
 #: settings.py:77
 msgid "Arguments to pass to the DOCUMENT_FILE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argomenti da passare al DOCUMENT_FILE_STORAGE_BACKEND."
 
 #: settings.py:83
 msgid ""
 "Path to the Storage subclass to use when storing the cached document file "
 "page image files."
 msgstr ""
+"Percorso per la classe Storage da utilizzare quando si archiviano i file di "
+"immagine della pagina del file di documento nella cache."
 
 #: settings.py:91
 msgid ""
 "Arguments to pass to the DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND."
 msgstr ""
+"Argomenti da passare a DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND."
 
 #: settings.py:97
 msgid "Maximum number of favorite documents to remember per user."
@@ -1202,29 +1211,41 @@ msgid ""
 " will start deleting the oldest document version page image cache versions. "
 "Specify the size in bytes."
 msgstr ""
+"La soglia alla quale DOCUMENT_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND "
+"inizierà a eliminare le versioni più vecchie della cache dell'immagine della"
+" pagina della versione del documento. Specificare la dimensione in byte."
 
 #: settings.py:128
 msgid ""
 "Time in seconds that the browser should cache the supplied document version "
 "page images. The default of 31559626 seconds correspond to 1 year."
 msgstr ""
+"Tempo in secondi in cui il browser deve memorizzare nella cache le immagini "
+"della pagina della versione del documento fornite. Il valore predefinito di "
+"31559626 secondi corrisponde a 1 anno."
 
 #: settings.py:137
 msgid ""
 "Path to the Storage subclass to use when storing the cached document version"
 " page image versions."
 msgstr ""
+"Percorso per la classe Storage da utilizzare quando si archiviano le "
+"versioni dell'immagine della pagina della versione del documento memorizzato"
+" nella cache."
 
 #: settings.py:145
 msgid ""
 "Arguments to pass to the DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND."
 msgstr ""
+"Argomenti da passare a DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND."
 
 #: settings.py:167
 msgid ""
 "Maximum number of recently accessed documents (created, edited, viewed) to "
 "remember per user."
 msgstr ""
+"Numero massimo di documenti aperti di recente (creati, modificati, "
+"visualizzati) da ricordare per utente."
 
 #: settings.py:174
 msgid "Maximum number of recently created documents to show."
@@ -1246,12 +1267,16 @@ msgid ""
 "Amount of time in seconds, a failed document file page image task will wait "
 "before retrying."
 msgstr ""
+"Tempo in secondi per cui un'attività di immagine della pagina del file di "
+"documento non riuscita attenderà prima di riprovare."
 
 #: settings.py:202
 msgid ""
 "Amount of time in seconds, a failed document version page image task will "
 "wait before retrying."
 msgstr ""
+"Tempo in secondi di attesa prima di riprovare a un'attività di immagine "
+"della pagina della versione del documento non riuscita."
 
 #: settings.py:209
 msgid "Height in pixels of the document thumbnail image."
@@ -1285,7 +1310,7 @@ msgstr "Nuovi documenti per mese"
 
 #: statistics.py:241
 msgid "New document files per month"
-msgstr ""
+msgstr "Nuovi file di documenti al mese"
 
 #: statistics.py:248
 msgid "New document pages per month"
@@ -1297,7 +1322,7 @@ msgstr "Totale documenti per ogni mese"
 
 #: statistics.py:262
 msgid "Total document files at each month"
-msgstr ""
+msgstr "File di documenti totali ogni mese"
 
 #: statistics.py:269
 msgid "Total document pages at each month"
@@ -1308,26 +1333,32 @@ msgid ""
 "Unable to initialize the document file storage. Check the settings {} and {}"
 " for formatting errors."
 msgstr ""
+"Impossibile inizializzare l'archiviazione del file del documento. "
+"Controllare le impostazioni {} e {} per errori di formattazione."
 
 #: storages.py:35
 msgid ""
 "Unable to initialize the document file image storage. Check the settings {} "
 "and {} for formatting errors."
 msgstr ""
+"Impossibile inizializzare l'archiviazione dell'immagine del file di "
+"documento. Controllare le impostazioni {} e {} per errori di formattazione."
 
 #: storages.py:41
 msgid "Document file page images"
-msgstr ""
+msgstr "Immagini della pagina del file di documento"
 
 #: storages.py:49
 msgid ""
 "Unable to initialize the document version image storage. Check the settings "
 "{} and {} for formatting errors."
 msgstr ""
+"Impossibile inizializzare l'archiviazione dell'immagine della versione del "
+"documento. Controllare le impostazioni {} e {} per errori di formattazione."
 
 #: storages.py:55
 msgid "Document version page images"
-msgstr ""
+msgstr "Immagini della pagina della versione del documento"
 
 #: templates/documents/document_print.html:13
 msgid "Document page image preview"
@@ -1335,11 +1366,11 @@ msgstr "Anteprima dell'immagine della pagina del documento"
 
 #: templates/documents/errors/no_valid_version.html:5
 msgid "No valid or active version"
-msgstr ""
+msgstr "Nessuna versione valida o attiva"
 
 #: templates/documents/errors/no_version_pages.html:5
 msgid "No version pages"
-msgstr ""
+msgstr "Nessuna pagina di versione"
 
 #: templates/documents/forms/widgets/page_carousel.html:16
 #, python-format
@@ -1369,22 +1400,28 @@ msgstr "Lingua sconosciuta \"%s\""
 #, python-format
 msgid "%(count)d document file queued for page count recalculation."
 msgstr ""
+"%(count)d file di documento in coda per il ricalcolo del conteggio delle "
+"pagine."
 
 #: views/document_file_page_views.py:54
 #, python-format
 msgid "%(count)d document files queued for page count recalculation."
 msgstr ""
+"%(count)d file di documento in coda per il ricalcolo del conteggio delle "
+"pagine."
 
 #: views/document_file_page_views.py:62
 msgid "Recalculate the page count of the selected document file?"
 msgid_plural "Recalculate the page count of the selected document files?"
 msgstr[0] ""
+"Ricalcolare il conteggio delle pagine del file di documento selezionato?"
 msgstr[1] ""
+"Ricalcolare il conteggio delle pagine dei file di documento selezionati?"
 
 #: views/document_file_page_views.py:73
 #, python-format
 msgid "Recalculate the page count of the document file: %s?"
-msgstr ""
+msgstr "Ricalcola il conteggio delle pagine del file del documento: %s?"
 
 #: views/document_file_page_views.py:100
 msgid ""
@@ -1393,15 +1430,19 @@ msgid ""
 "document file page recalculation action to attempt to introspect the page "
 "count again."
 msgstr ""
+"Ciò potrebbe significare che il file del documento è di un formato non "
+"supportato, che è danneggiato o che il processo di caricamento è stato "
+"interrotto. Utilizzare l'azione di ricalcolo della pagina del file del "
+"documento per tentare di analizzare nuovamente il conteggio delle pagine."
 
 #: views/document_file_page_views.py:106
 msgid "No document file pages available"
-msgstr ""
+msgstr "Nessuna pagina di file di documento disponibile"
 
 #: views/document_file_page_views.py:108
 #, python-format
 msgid "Pages of document file: %s"
-msgstr ""
+msgstr "Pagine del file del documento: %s"
 
 #: views/document_file_page_views.py:182
 #: views/document_version_page_views.py:335
@@ -1423,72 +1464,80 @@ msgstr "Immagine di: %s"
 #, python-format
 msgid "Error deleting document file \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Errore durante l'eliminazione del file documento \"%(instance)s\"; "
+"%(exception)s"
 
 #: views/document_file_views.py:52
 #, python-format
 msgid "Document file \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Il file del documento \"%(object)s\" è stato eliminato con successo."
 
 #: views/document_file_views.py:55
 #, python-format
 msgid "%(count)d document file deleted successfully."
-msgstr ""
+msgstr "%(count)d file di documento eliminato con successo."
 
 #: views/document_file_views.py:58
 #, python-format
 msgid "%(count)d document files deleted successfully."
-msgstr ""
+msgstr "%(count)d file di documento eliminati con successo."
 
 #: views/document_file_views.py:60
 #, python-format
 msgid "Delete document file: %(object)s."
-msgstr ""
+msgstr "Elimina file documento: %(object)s."
 
 #: views/document_file_views.py:61
 #, python-format
 msgid "Delete the %(count)d selected document file."
-msgstr ""
+msgstr "Elimina il %(count)d file di documento selezionato."
 
 #: views/document_file_views.py:62
 #, python-format
 msgid "Delete the %(count)d selected document files."
-msgstr ""
+msgstr "Elimina i %(count)d file di documento selezionati."
 
 #: views/document_file_views.py:67
 msgid ""
 "All document files pages from this document file and the document version "
 "pages linked to them will be deleted too."
 msgstr ""
+"Verranno eliminate anche tutte le pagine dei file di documento da questo "
+"file di documento e le pagine della versione del documento ad esse "
+"collegate."
 
 #: views/document_file_views.py:117
 #, python-format
 msgid "Edit document file: %s"
-msgstr ""
+msgstr "Modifica file documento: %s"
 
 #: views/document_file_views.py:156
 msgid ""
 "File are the actual files that were uploaded for each document. Their "
 "contents needs to be mapped to a version before it can be used."
 msgstr ""
+"I file sono i file effettivi che sono stati caricati per ogni documento. Il "
+"loro contenuto deve essere mappato a una versione prima di poter essere "
+"utilizzato."
 
 #: views/document_file_views.py:160
 msgid "No files available"
-msgstr ""
+msgstr "Nessun file disponibile"
 
 #: views/document_file_views.py:163
 #, python-format
 msgid "Files of document: %s"
-msgstr ""
+msgstr "File del documento: %s"
 
 #: views/document_file_views.py:192
 #, python-format
 msgid "Preview of document file: %s"
-msgstr ""
+msgstr "Anteprima del file del documento: %s"
 
 #: views/document_file_views.py:237
 #, python-format
 msgid "Properties of document file: %s"
-msgstr ""
+msgstr "Proprietà del file del documento: %s"
 
 #: views/document_file_views.py:246
 #, python-format
@@ -1505,12 +1554,17 @@ msgid "Clear all the page transformations for the selected document file?"
 msgid_plural ""
 "Clear all the page transformations for the selected document files?"
 msgstr[0] ""
+"Cancellare tutte le trasformazioni di pagina per il file di documento "
+"selezionato?"
 msgstr[1] ""
+"Cancellare tutte le trasformazioni di pagina per i file di documento "
+"selezionati?"
 
 #: views/document_file_views.py:266
 #, python-format
 msgid "Clear all the page transformations for the document file: %s?"
 msgstr ""
+"Cancella tutte le trasformazioni di pagina per il file del documento: %s?"
 
 #: views/document_file_views.py:283
 #, python-format
@@ -1518,6 +1572,8 @@ msgid ""
 "Error deleting the page transformations for document file: "
 "%(document_file)s; %(error)s."
 msgstr ""
+"Errore durante l'eliminazione delle trasformazioni di pagina per il file "
+"documento: %(document_file)s; %(error)s."
 
 #: views/document_file_views.py:319
 #, python-format
@@ -1525,6 +1581,8 @@ msgid ""
 "Error cloning the page transformations for document file: %(document_file)s;"
 " %(error)s."
 msgstr ""
+"Errore durante la clonazione delle trasformazioni di pagina per il file "
+"documento: %(document_file)s; %(error)s."
 
 #: views/document_file_views.py:328 views/document_version_views.py:360
 msgid "Transformations cloned successfully."
@@ -1538,7 +1596,7 @@ msgstr "Invia"
 #: views/document_file_views.py:344
 #, python-format
 msgid "Clone page transformations of document file: %s"
-msgstr ""
+msgstr "Clona le trasformazioni della pagina del file del documento: %s"
 
 #: views/document_type_views.py:53
 #, python-format
@@ -1630,26 +1688,32 @@ msgid ""
 "The page number of this page will be skipped. If you want to achieve "
 "sequential page numbering, use the page remap action instead."
 msgstr ""
+"Il numero di pagina di questa pagina verrà saltato. Se vuoi ottenere una "
+"numerazione sequenziale delle pagine, usa invece l'azione di rimappatura "
+"della pagina."
 
 #: views/document_version_page_views.py:68
 #, python-format
 msgid "Delete document version page %s ?"
-msgstr ""
+msgstr "Elimina la pagina della versione del documento %s ?"
 
 #: views/document_version_page_views.py:103
 msgid ""
 "Document version pages are links to actual content pages. Create them using "
 "the page remap actions or the page reset action."
 msgstr ""
+"Le pagine della versione del documento sono collegamenti a pagine di "
+"contenuto effettivo. Creali utilizzando le azioni di rimappatura della "
+"pagina o l'azione di reimpostazione della pagina."
 
 #: views/document_version_page_views.py:107
 msgid "No document version pages available"
-msgstr ""
+msgstr "Nessuna pagina della versione del documento disponibile"
 
 #: views/document_version_page_views.py:109
 #, python-format
 msgid "Pages of document version: %s"
-msgstr ""
+msgstr "Pagine della versione del documento: %s"
 
 #: views/document_version_page_views.py:149
 msgid "None"
@@ -1658,15 +1722,16 @@ msgstr "Nessuno"
 #: views/document_version_page_views.py:174
 msgid "There are no sources available to remap for this document version."
 msgstr ""
+"Non sono disponibili fonti da rimappare per questa versione del documento."
 
 #: views/document_version_page_views.py:177
 msgid "No page sources available"
-msgstr ""
+msgstr "Nessuna fonte di pagina disponibile"
 
 #: views/document_version_page_views.py:180
 #, python-format
 msgid "Remap pages of document version: %s"
-msgstr ""
+msgstr "Rimappa le pagine della versione del documento: %s"
 
 #: views/document_version_page_views.py:231
 #, python-format
@@ -1681,12 +1746,16 @@ msgstr ""
 #: views/document_version_page_views.py:242
 msgid "The page list will match that of the latest document file."
 msgstr ""
+"L'elenco delle pagine corrisponderà a quello dell'ultimo file di documento."
 
 #: views/document_version_page_views.py:245
 msgid "Reset the page list of the selected document version?"
 msgid_plural "Reset the page list of the selected document versions?"
 msgstr[0] ""
+"Reimpostare l&#39;elenco delle pagine della versione del documento "
+"selezionata?"
 msgstr[1] ""
+"Reimpostare l'elenco delle pagine delle versioni del documento selezionate?"
 
 #: views/document_version_page_views.py:256
 #, python-format

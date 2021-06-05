@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-03 06:54+0000\n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -642,19 +642,19 @@ msgstr ""
 msgid "Generate workflow previews"
 msgstr "Workflow-Vorschauen erzeugen"
 
-#: queues.py:21
+#: queues.py:22
 msgid "Launch a workflow for a document"
 msgstr "Workflow für ein Dokument starten"
 
-#: queues.py:25
+#: queues.py:26
 msgid "Launch all workflows for a document"
 msgstr ""
 
-#: queues.py:30
+#: queues.py:31
 msgid "Launch all workflows for all documents"
 msgstr ""
 
-#: queues.py:34
+#: queues.py:35
 msgid "Launch a workflow"
 msgstr "Einen Workflow starten"
 
