@@ -1,7 +1,5 @@
 import functools
 
-from django.db import transaction
-
 from .literals import (
     EVENT_MANAGER_ORDER_AFTER, EVENT_MANAGER_ORDER_BEFORE
 )
