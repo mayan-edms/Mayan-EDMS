@@ -1,10 +1,10 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.task_manager.classes import CeleryQueue
-from mayan.apps.task_manager.workers import worker_c
+from mayan.apps.task_manager.workers import worker_d
 
 queue_file_metadata = CeleryQueue(
-    label=_('File metadata'), name='file_metadata', worker=worker_c
+    label=_('File metadata'), name='file_metadata', worker=worker_d
 )
 
 queue_file_metadata.add_task_type(
