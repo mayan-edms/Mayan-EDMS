@@ -18,18 +18,17 @@ def method_event(event_manager_class, **event_manager_kwargs):
             # Gather everything set before the wrapped function.
             event_manager.pop_event_attributes()
 
-            with transaction.atomic():
-                if event_manager.order == EVENT_MANAGER_ORDER_BEFORE:
-                    event_manager.commit()
+            if event_manager.order == EVENT_MANAGER_ORDER_BEFORE:
+                event_manager.commit()
 
-                result = func(self, *args, **kwargs)
+            result = func(self, *args, **kwargs)
 
-                # Call `pop_event_attributes` again to gather anything else
-                # set inside the wrappedd function itself.
-                event_manager.pop_event_attributes()
+            # Call `pop_event_attributes` again to gather anything else
+            # set inside the wrappedd function itself.
+            event_manager.pop_event_attributes()
 
-                if event_manager.order == EVENT_MANAGER_ORDER_AFTER:
-                    event_manager.commit()
+            if event_manager.order == EVENT_MANAGER_ORDER_AFTER:
+                event_manager.commit()
 
             return result
         return wrapper
