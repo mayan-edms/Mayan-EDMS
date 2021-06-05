@@ -35,7 +35,15 @@ class WorkflowInstanceModelTestCase(
 
         self.test_workflow_instance.get_absolute_url()
 
-    def test_workflow_no_auto_launche(self):
+    def test_workflow_auto_launch(self):
+        self.test_workflow_template.auto_launch = True
+        self.test_workflow_template.save()
+
+        self._create_test_document_stub()
+
+        self.assertEqual(self.test_document.workflows.count(), 1)
+
+    def test_workflow_no_auto_launch(self):
         self.test_workflow_template.auto_launch = False
         self.test_workflow_template.save()
 
