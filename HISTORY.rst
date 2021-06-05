@@ -1,3 +1,10 @@
+3.5.10 (2021-06-05)
+===================
+- Remove database transaction form the event decorator.  Solves workflows
+  not being launched on document creation. Closes GitLab issue #976 and
+  issue #990, thanks to users Megamorf (@megamorf), A F (@adzzzz) for the
+  reports and debug information.
+
 3.5.9 (2021-05-29)
 ==================
 - Fix duplicated document manager scan method. Closes GitLab issue
