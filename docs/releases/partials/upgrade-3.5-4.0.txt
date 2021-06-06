@@ -1,0 +1,125 @@
+Upgrading from Mayan EDMS 3.5.x
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Stop supervisord::
+
+    sudo systemctl stop supervisor
+
+
+#. Make a backup of your supervisord file:
+
+   .. code-block:: bash
+
+       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+
+
+#. Make a backup of your database:
+
+   Use the respective backup command for the database:
+
+     - PostgreSQL: https://www.postgresql.org/docs/current/backup-dump.html
+     - MySQL: https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html
+
+
+#. Upgrade to the latest pip version:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install -U pip
+
+
+#. Remove deprecated requirements:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+
+
+#. Update the Mayan EDMS Python package:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install mayan-edms==|MAYAN_VERSION|
+
+   the requirements will also be updated automatically.
+
+
+#. Create the ``|DEFAULT_USER_SETTINGS_FOLDER|`` folder inside the ``media``
+   folder and convert it into a Python module. This folder is used for
+   custom setting modules. Adjust the path of the ``media`` folder for your
+   installation:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| mkdir --parents |MAYAN_MEDIA_ROOT||DEFAULT_USER_SETTINGS_FOLDER|
+    sudo -u |DEFAULT_OS_USERNAME| touch |MAYAN_MEDIA_ROOT||DEFAULT_USER_SETTINGS_FOLDER|/__init__.py
+
+
+#. Update the Redis configuration to serve at least 3 databases:
+
+   Replace:
+
+   .. code-block:: ini
+
+      databases ...
+
+   with:
+
+   .. code-block:: ini
+
+      databases 3
+
+
+#. Edit the config file at ``|MAYAN_MEDIA_ROOT|config.yml``:
+
+   Replace:
+
+   .. code-block:: ini
+
+       LOCK_MANAGER_BACKEND: ...
+       LOCK_MANAGER_BACKEND_ARGUMENTS: ...
+
+   with:
+
+   .. code-block:: ini
+
+       LOCK_MANAGER_BACKEND: mayan.apps.lock_manager.backends.redis_lock.RedisLock
+       LOCK_MANAGER_BACKEND_ARGUMENTS: {'redis_url':'redis://:|DEFAULT_REDIS_PASSWORD|@<IP address of Redis server>:6379/2'}
+
+
+#. Update the supervisord configuration file. Replace the environment
+   variables values shown here with your respective settings. This step will refresh
+   the supervisord configuration file with the new queues and the latest
+   recommended layout:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+
+#. Edit the supervisord configuration file and update any setting specific to your installation:
+
+   .. code-block:: bash
+
+       sudo vi |MAYAN_SUPERVISOR_CONF|
+
+
+#. Migrate existing database schema and static media files with:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| performupgrade
+
+
+#. Start supervisord:
+
+   .. code-block:: bash
+
+       sudo systemctl start supervisor
+
+#. Clear the browser cache to avoid loading old web assets.
+
+The upgrade procedure is now complete.

@@ -239,3 +239,12 @@ versions of the documentation contain the release notes for any later releases.
 
    0.5.1
    0.5
+
+
+******************
+Upgrade procedures
+******************
+.. toctree::
+   :maxdepth: 1
+
+   partials/upgrade-3.5-4.0

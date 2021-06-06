@@ -1,3 +1,7 @@
+4.0.5 (2021-XX-XX)
+==================
+- Turn the release notes upgrade instructions into a partial template.
+
 4.0.4 (2021-06-05)
 ==================
 - Merge updates from version 3.5.10
