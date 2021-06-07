@@ -6,7 +6,9 @@
 set -e
 echo "mayan: starting entrypoint.sh"
 INSTALL_FLAG=/var/lib/mayan/system/SECRET_KEY
-CONCURRENCY_ARGUMENT=--concurrency=
+CELERY_CONCURRENCY_ARGUMENT=--concurrency=
+CELERY_MAX_MEMORY_PER_CHILD=--max-memory-per-child=
+CELERY_TASKS_MEMORY_PER_CHILD=--max-tasks-per-child=
 
 DEFAULT_USER_UID=1000
 DEFAULT_USER_GID=1000
@@ -40,9 +42,28 @@ MAYAN_{{ worker.name|upper }}_CONCURRENCY=${MAYAN_{{ worker.name|upper }}_CONCUR
 if [ "$MAYAN_{{ worker.name|upper }}_CONCURRENCY" -eq 0 ]; then
     MAYAN_{{ worker.name|upper }}_CONCURRENCY=
 else
-    MAYAN_{{ worker.name|upper }}_CONCURRENCY="${CONCURRENCY_ARGUMENT}${MAYAN_{{ worker.name|upper }}_CONCURRENCY}"
+    MAYAN_{{ worker.name|upper }}_CONCURRENCY="${CELERY_CONCURRENCY_ARGUMENT}${MAYAN_{{ worker.name|upper }}_CONCURRENCY}"
 fi
 export MAYAN_{{ worker.name|upper }}_CONCURRENCY
+
+MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD=${MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD:-{{ worker.maximum_memory_per_child }}}
+
+if [ "$MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD" -eq 0 ]; then
+    MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD=
+else
+    MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD="${CELERY_MAX_MEMORY_PER_CHILD}${MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD}"
+fi
+export MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD
+
+MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD=${MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD:-{{ worker.maximum_tasks_per_child }}}
+
+if [ "$MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD" -eq 0 ]; then
+    MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD=
+else
+    MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD="${CELERY_MAX_TASKS_PER_CHILD}${MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD}"
+fi
+export MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD
+
 {% endfor %}
 
 if mount | grep '/dev/shm' > /dev/null; then
