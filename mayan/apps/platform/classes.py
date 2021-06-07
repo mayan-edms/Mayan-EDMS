@@ -12,8 +12,8 @@ from mayan.apps.common.serialization import yaml_dump, yaml_load
 from mayan.apps.task_manager.classes import Worker
 from mayan.settings.literals import (
     DEFAULT_DIRECTORY_INSTALLATION, DEFAULT_USER_SETTINGS_FOLDER,
-    GUNICORN_JITTER, GUNICORN_MAX_REQUESTS, GUNICORN_TIMEOUT,
-    GUNICORN_WORKER_CLASS, GUNICORN_WORKERS
+    GUNICORN_JITTER, GUNICORN_LIMIT_REQUEST_LINE, GUNICORN_MAX_REQUESTS,
+    GUNICORN_TIMEOUT, GUNICORN_WORKER_CLASS, GUNICORN_WORKERS
 )
 
 from .utils import load_env_file
@@ -154,6 +154,11 @@ class PlatformTemplateSupervisord(PlatformTemplate):
                 name='GUNICORN_JITTER',
                 default=GUNICORN_JITTER,
                 environment_name='MAYAN_GUNICORN_JITTER'
+            ),
+            Variable(
+                name='GUNICORN_LIMIT_REQUEST_LINE',
+                default=GUNICORN_LIMIT_REQUEST_LINE,
+                environment_name='MAYAN_GUNICORN_GUNICORN_LIMIT_REQUEST_LINE'
             ),
             Variable(
                 name='GUNICORN_MAX_REQUESTS',
