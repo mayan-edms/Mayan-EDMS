@@ -1,6 +1,16 @@
 4.0.5 (2021-XX-XX)
 ==================
 - Turn the release notes upgrade instructions into a partial template.
+- Add support for Celery's max memory and tasks. Support
+  ``--max-memory-per-child`` and ``--max-tasks-per-child`` using
+  the environment variables ``MAYAN_WORKER_X_MAX_MEMORY_PER_CHILD``
+  and ``MAYAN_WORKER_X_MAX_TASKS_PER_CHILD``.
+- Add commented Docker compose database port entry.
+- Support Gunicorn's ``--limit-request-line`` via the
+  ``MAYAN_GUNICORN_LIMIT_REQUEST_LINE`` environment variable.
+- Improve the Docker image environment variables chapter. Include missing
+  variables and automate displaying the default values of several.
+  Organize variables by topic.
 
 4.0.4 (2021-06-05)
 ==================
