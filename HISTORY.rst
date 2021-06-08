@@ -1,4 +1,4 @@
-4.0.5 (2021-XX-XX)
+4.0.5 (2021-06-08)
 ==================
 - Turn the release notes upgrade instructions into a partial template.
 - Add support for Celery's max memory and tasks. Support

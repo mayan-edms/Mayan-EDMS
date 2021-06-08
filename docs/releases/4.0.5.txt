@@ -1,0 +1,120 @@
+Version 4.0.5
+=============
+
+Released: June 8, 2021
+
+Changes
+-------
+
+
+Docker
+^^^^^^
+
+Support was added for changing Celery's maximum memory and maximum tasks per
+worker. These setting help kill and re-spawn workers in a predictable
+manner which helps reclaim lost memory due to memory leaks of the programs
+executed by the background tasks. The environment variables
+``MAYAN_WORKER_X_MAX_MEMORY_PER_CHILD`` and
+``MAYAN_WORKER_X_MAX_TASKS_PER_CHILD`` were added where ``_X_`` corresponds
+to the respective worker.
+
+Support was added for modifying Gunicorn's ``--limit-request-line`` setting
+via the ``MAYAN_GUNICORN_LIMIT_REQUEST_LINE`` environment variable.
+
+The Docker image environment variables chapter was improved. Some missing
+environment variables were added. The default values were automated by taking
+the values from the code. The environment variables were organized by topic.
+
+A commented Docker compose port entry for the database was added.
+Uncommenting this entry opens up the database port to the outside and allows
+easier backups and management of the database.
+
+
+Documentation
+^^^^^^^^^^^^^
+
+The upgrade instructions of the release notes was converted into a partial
+template that is now inserted into every release note instance. This helps
+avoid errors and differences in the upgrade procedure of the releases of the
+same series.
+
+
+Documents
+^^^^^^^^^
+
+Several improvements were made to the document file and document version
+page image generation.
+
+The document version page base image cache invalidation on source image
+transformation updates was improved. This fixes an edge case were changes
+to the document file page were not being registered in the document version
+page.
+
+The transformation list generation of the document files and document versions
+was optimized by replacing several loops with list extensions. The speed
+increase is minimal per unit but since this segment of code is called we often
+the effect is measurable.
+
+The source content transformations are not longer used when calculating the
+document version transformation list hash. This fixes an edge case where
+the effect of some transformations was duplicated.
+
+The way the document version page image API URL hash is generated was
+improved to increase its uniqueness. This ensures browsers do not use a
+cached document version page image when the transformations of the source
+object of the version are updated.
+
+
+Metadata
+^^^^^^^^
+
+An error that was triggered by leaving empty a required metadata field
+during the upload wizard was fixed
+
+
+Workflows
+^^^^^^^^^
+
+The trashed documents are now excluded from the workflow runtime proxy
+document count column.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`996` [4.0-4.04] Watchfolder Documents are upside down
+- :gitlab-issue:`997` KeyError exception when required metadata is missing
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
