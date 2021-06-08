@@ -111,7 +111,6 @@ class DocumentVersionPage(
         transformation_list = self.get_combined_transformation_list(
             user=user, **kwargs
         )
-
         combined_cache_filename = self.get_combined_cache_filename(
             _transformation_list=transformation_list
         )
@@ -187,8 +186,16 @@ class DocumentVersionPage(
         if not self.content_object:
             return '#'
 
-        transformations_hash = BaseTransformation.combine(
+        # Source object transformations first.
+        transformation_list = LayerTransformation.objects.get_for_object(
+            obj=self.content_object, as_classes=True,
+        )
+
+        transformation_list.extend(
             self.get_combined_transformation_list(*args, **kwargs)
+        )
+        transformations_hash = BaseTransformation.combine(
+            transformations=transformation_list
         )
 
         kwargs.pop('transformations', None)
@@ -225,11 +232,11 @@ class DocumentVersionPage(
         document page transformation as well as tranformations created
         from the arguments as transient interactive transformation.
         """
-        # Convert arguments into transformations
+        # Convert arguments into transformations.
         transformations = kwargs.get('transformations', [])
 
         # Set sensible defaults if the argument is not specified or if the
-        # argument is None
+        # argument is None.
         width = kwargs.get('width', setting_display_width.value) or setting_display_width.value
         height = kwargs.get('height', setting_display_height.value) or setting_display_height.value
         rotation = kwargs.get('rotation', DEFAULT_ROTATION) or DEFAULT_ROTATION
@@ -241,28 +248,21 @@ class DocumentVersionPage(
         if zoom_level > setting_zoom_max_level.value:
             zoom_level = setting_zoom_max_level.value
 
-        # Generate transformation hash
+        # Generate transformation hash.
         transformation_list = []
 
         maximum_layer_order = kwargs.get('maximum_layer_order', None)
 
-        # Content object transformations first
-        for content_object_stored_transformation in LayerTransformation.objects.get_for_object(
-            obj=self.content_object, maximum_layer_order=maximum_layer_order,
-            as_classes=True, user=user
-        ):
-            transformation_list.append(content_object_stored_transformation)
+        # Stored transformations first.
+        transformation_list.extend(
+            LayerTransformation.objects.get_for_object(
+                obj=self, maximum_layer_order=maximum_layer_order,
+                as_classes=True, user=user
+            )
+        )
 
-        # Stored transformations first
-        for stored_transformation in LayerTransformation.objects.get_for_object(
-            obj=self, maximum_layer_order=maximum_layer_order, as_classes=True,
-            user=user
-        ):
-            transformation_list.append(stored_transformation)
-
-        # Interactive transformations second
-        for transformation in transformations:
-            transformation_list.append(transformation)
+        # Interactive transformations second.
+        transformation_list.extend(transformations)
 
         if rotation:
             transformation_list.append(
@@ -280,7 +280,7 @@ class DocumentVersionPage(
         return transformation_list
 
     def get_image(self, transformations=None):
-        cache_filename = 'base_image'
+        cache_filename = '{}-base_image'.format(self.content_object.get_combined_cache_filename())
         logger.debug('Page cache filename: %s', cache_filename)
 
         try:
@@ -304,17 +304,18 @@ class DocumentVersionPage(
 
                     page_image = converter.get_page()
 
-                    # Since open "wb+" doesn't create versions, create it explicitly
+                    # Since open "wb+" doesn't create versions, create it
+                    # explicitly.
                     with self.cache_partition.create_file(filename=cache_filename) as file_object:
                         file_object.write(page_image.getvalue())
 
-                    # Apply runtime transformations
-                    for transformation in transformations:
+                    # Apply runtime transformations.
+                    for transformation in transformations or ():
                         converter.transform(transformation=transformation)
 
                     return converter.get_page()
             except Exception as exception:
-                # Cleanup in case of error
+                # Cleanup in case of error.
                 logger.error(
                     'Error creating document version page cache file '
                     'named "%s"; %s', cache_filename, exception,
@@ -333,8 +334,8 @@ class DocumentVersionPage(
 
                 # This code is also repeated below to allow using a context
                 # manager with cache_version.open and close it automatically.
-                # Apply runtime transformations
-                for transformation in transformations:
+                # Apply runtime transformations.
+                for transformation in transformations or ():
                     converter.transform(transformation=transformation)
 
                 return converter.get_page()

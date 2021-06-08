@@ -15,6 +15,20 @@
 - Fix metadata form ``KeyError`` exception when required metadata is missing.
   Closes GitLab issue #997. Thanks to Raimar Sandner (@PiQuer) for the report
   and debug information.
+- Document file and version page image updates:
+
+  - Improve document version page base image cache invalidation on source
+    image transformation updates.
+  - Optimize transformation list generation by replacing several loops with
+    list extensions.
+  - Avoid using the source content transformations when calculating the
+    document version transformation list hash. This cause duplicated document
+    version page transformation in some cases. Closes GitLab issue #996.
+    Thanks to Reinhard Ernst (@reinhardernst) for the report and debug
+    information.
+  - Improve document version page image API URL hash uniqueness generation.
+    Ensure browsers do not use a cached document version page image when
+    the transformations of the source object of the version are updated.
 
 4.0.4 (2021-06-05)
 ==================

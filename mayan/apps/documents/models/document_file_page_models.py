@@ -187,16 +187,16 @@ class DocumentFilePage(PagedModelMixin, models.Model):
 
         maximum_layer_order = kwargs.get('maximum_layer_order', None)
 
-        # Stored transformations first
-        for stored_transformation in LayerTransformation.objects.get_for_object(
-            obj=self, maximum_layer_order=maximum_layer_order, as_classes=True,
-            user=user
-        ):
-            transformation_list.append(stored_transformation)
+        # Stored transformations first.
+        transformation_list.extend(
+            LayerTransformation.objects.get_for_object(
+                obj=self, maximum_layer_order=maximum_layer_order,
+                as_classes=True, user=user
+            )
+        )
 
-        # Interactive transformations second
-        for transformation in transformations:
-            transformation_list.append(transformation)
+        # Interactive transformations second.
+        transformation_list.extend(transformations)
 
         if rotation:
             transformation_list.append(
@@ -236,7 +236,7 @@ class DocumentFilePage(PagedModelMixin, models.Model):
                         file_object.write(page_image.getvalue())
 
                     # Apply runtime transformations
-                    for transformation in transformations:
+                    for transformation in transformations or ():
                         converter.transform(transformation=transformation)
 
                     return converter.get_page()
@@ -261,7 +261,7 @@ class DocumentFilePage(PagedModelMixin, models.Model):
                 # This code is also repeated below to allow using a context
                 # manager with cache_file.open and close it automatically.
                 # Apply runtime transformations
-                for transformation in transformations:
+                for transformation in transformations or ():
                     converter.transform(transformation=transformation)
 
                 return converter.get_page()
