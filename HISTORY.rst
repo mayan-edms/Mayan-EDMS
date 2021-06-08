@@ -11,6 +11,7 @@
 - Improve the Docker image environment variables chapter. Include missing
   variables and automate displaying the default values of several.
   Organize variables by topic.
+- Exclude trashed documents from the workflow runtime proxy document count.
 
 4.0.4 (2021-06-05)
 ==================
