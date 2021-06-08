@@ -12,6 +12,9 @@
   variables and automate displaying the default values of several.
   Organize variables by topic.
 - Exclude trashed documents from the workflow runtime proxy document count.
+- Fix metadata form ``KeyError`` exception when required metadata is missing.
+  Closes GitLab issue #997. Thanks to Raimar Sandner (@PiQuer) for the report
+  and debug information.
 
 4.0.4 (2021-06-05)
 ==================

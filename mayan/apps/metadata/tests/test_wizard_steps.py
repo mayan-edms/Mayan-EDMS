@@ -16,7 +16,9 @@ from .literals import (
 from .mixins import MetadataTypeTestMixin
 
 
-class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewTestCase):
+class DocumentUploadMetadataTestCase(
+    MetadataTypeTestMixin, GenericDocumentViewTestCase
+):
     auto_upload_test_document = False
 
     def setUp(self):
