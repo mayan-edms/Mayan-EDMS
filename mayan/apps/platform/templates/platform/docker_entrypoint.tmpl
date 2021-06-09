@@ -37,6 +37,7 @@ export MAYAN_GUNICORN_TIMEOUT=${MAYAN_GUNICORN_TIMEOUT:-{{GUNICORN_TIMEOUT}}}
 export MAYAN_PIP_BIN=${MAYAN_PYTHON_BIN_DIR}pip
 export MAYAN_STATIC_ROOT=${MAYAN_INSTALL_DIR}/static
 
+# Setup worker environment variables.
 {% for worker in workers %}
 MAYAN_{{ worker.name|upper }}_CONCURRENCY=${MAYAN_{{ worker.name|upper }}_CONCURRENCY:-{{ worker.concurrency }}}
 
@@ -64,7 +65,6 @@ else
     MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD="${CELERY_MAX_TASKS_PER_CHILD}${MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD}"
 fi
 export MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD
-
 {% endfor %}
 
 if mount | grep '/dev/shm' > /dev/null; then
@@ -73,7 +73,7 @@ else
     MAYAN_GUNICORN_TEMPORARY_DIRECTORY=
 fi
 
-# Allow importing of user setting modules
+# Allow importing of user setting modules.
 export PYTHONPATH=$PYTHONPATH:$MAYAN_MEDIA_ROOT
 
 apt_get_install() {
@@ -95,7 +95,7 @@ initialsetup() {
 
 make_ready() {
     # Check if this is a new install, otherwise try to upgrade the existing
-    # installation on subsequent starts
+    # installation on subsequent starts.
     if [ ! -f $INSTALL_FLAG ]; then
         initialsetup
     else
@@ -138,7 +138,7 @@ update_uid_gid() {
     fi
 }
 
-# Start execution here
+# Start execution here.
 wait.sh ${MAYAN_DOCKER_WAIT}
 update_uid_gid
 os_package_installs || true

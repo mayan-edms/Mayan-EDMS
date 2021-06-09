@@ -8,7 +8,6 @@ stderr_logfile_maxbytes = 0
 stdout_logfile = /dev/fd/1
 stdout_logfile_maxbytes = 0
 user = mayan
-
 {% for worker in workers %}
 [program:mayan-edms-{{ worker.name }}]
 autorestart = false
@@ -25,7 +24,6 @@ stdout_logfile_maxbytes = 0
 stopwaitsecs = 1
 user = mayan
 {% endfor %}
-
 [program:mayan-edms-celery-beat]
 autorestart = false
 autostart = true

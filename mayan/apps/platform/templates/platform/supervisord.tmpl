@@ -10,7 +10,6 @@ autorestart = true
 autostart = true
 command = {{ INSTALLATION_PATH }}bin/gunicorn --workers {{ GUNICORN_WORKERS }} mayan.wsgi --max-requests {{ GUNICORN_MAX_REQUESTS }} --max-requests-jitter {{ GUNICORN_JITTER }} --worker-class {{ GUNICORN_WORKER_CLASS }} --bind 0.0.0.0:8000 --timeout {{ GUNICORN_TIMEOUT }} --limit-request-line {{ GUNICORN_LIMIT_REQUEST_LINE }}
 user = mayan
-
 {% for worker in workers %}
 [program:mayan-edms-{{ worker.name }}]
 autorestart = true
@@ -23,7 +22,6 @@ startsecs = 10
 stopwaitsecs = 1
 user = mayan
 {% endfor %}
-
 [program:mayan-edms-celery-beat]
 autorestart = true
 autostart = true
