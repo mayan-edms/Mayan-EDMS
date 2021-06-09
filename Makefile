@@ -311,7 +311,7 @@ gitlab-release-python-major:
 	git push
 	git push --tags
 	git push origin :releases/python_major || true
-	git push origin HEAD:releases/python
+	git push origin HEAD:releases/python_major
 
 gitlab-release-all-major: ## Trigger the Python package, Docker image, and documentation build and publication using GitLab CI
 gitlab-release-all-major:
