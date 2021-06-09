@@ -23,9 +23,6 @@ sys.path.insert(1, os.path.abspath('.'))
 from contrib.scripts.version import Version
 
 import mayan
-from mayan.apps.task_manager.workers import (
-    worker_a, worker_b, worker_c, worker_d
-)
 
 import callbacks
 import patches
@@ -305,22 +302,6 @@ def setup(app):
     environment_variables['MAYAN_PIP_BIN'] = MAYAN_PIP_BIN
     environment_variables['MAYAN_SUPERVISOR_CONF'] = MAYAN_SUPERVISOR_CONF
     environment_variables['MAYAN_VERSION'] = mayan.__version__
-
-    for worker_name in ['worker_a', 'worker_b', 'worker_c', 'worker_d']:
-        worker = globals()[worker_name]
-
-        environment_variables[
-            'MAYAN_{}_CONCURRENCY'.format(worker_name.upper())
-        ] = str(getattr(worker, 'concurrency'))
-
-        environment_variables[
-            'MAYAN_{}_MAX_MEMORY_PER_CHILD'.format(worker_name.upper())
-        ] = str(getattr(worker, 'maximum_memory_per_child'))
-
-        environment_variables[
-            'MAYAN_{}_MAX_TASKS_PER_CHILD'.format(worker_name.upper())
-        ] = str(getattr(worker, 'maximum_tasks_per_child'))
-
 
     substitutions = utils.generate_substitutions(
         dictionary=environment_variables
