@@ -14,7 +14,7 @@ user = mayan
 [program:mayan-edms-{{ worker.name }}]
 autorestart = true
 autostart = true
-command = nice -n {{ worker.nice_level }} {{ INSTALLATION_PATH }}bin/celery worker -A mayan -Ofair -l ERROR -Q {% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} -n mayan-edms-{{ worker.name }}.%%h {% if worker.concurrency %}--concurrency={{ worker.concurrency }} {% endif %}{% if worker.maximum_memory_per_child %}--max_memory_per_child={{ worker.maximum_memory_per_child }} {% endif %}{% if worker.maximum_tasks_per_child %}--max_tasks_per_child={{ worker.maximum_tasks_per_child }}{% endif %}
+command = nice -n {{ worker.nice_level }} {{ INSTALLATION_PATH }}bin/celery worker -A mayan -Ofair -l ERROR -Q {% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} -n mayan-edms-{{ worker.name }}.%%h {% if worker.concurrency %}--concurrency={{ worker.concurrency }} {% endif %}{% if worker.maximum_memory_per_child %}--max-memory-per-child={{ worker.maximum_memory_per_child }} {% endif %}{% if worker.maximum_tasks_per_child %}--max-tasks-per-child={{ worker.maximum_tasks_per_child }}{% endif %}
 killasgroup = true
 numprocs = 1
 priority = 998
