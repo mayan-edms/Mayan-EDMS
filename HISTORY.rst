@@ -1,3 +1,12 @@
+4.0.6 (2021-06-10)
+==================
+- Fix celery argument names in supervisord template. Set correct attribute
+  names max-tasks-per-child and max-memory-per-child when starting celery
+  workers. Closes #998. Thanks to joh-ku (@joh-ku) for the report and patch.
+- Use different environment when composing the child limits arguments.
+  Update CELERY_MAX_MEMORY_PER_CHILD and CELERY_TASKS_MEMORY_PER_CHILD
+  to use a separate argument variable, like CELERY_CONCURRENCY.
+
 4.0.5 (2021-06-08)
 ==================
 - Turn the release notes upgrade instructions into a partial template.
