@@ -1,0 +1,52 @@
+Version 4.0.7
+=============
+
+Released: June 11, 2021
+
+Changes
+-------
+
+Platform templates
+^^^^^^^^^^^^^^^^^^
+
+Rename Docker entrypoint variable ``CELERY_TASKS_MEMORY_PER_CHILD_ARGUMENT``
+to the correct ``CELERY_MAX_TASKS_PER_CHILD_ARGUMENT``.
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`999` [4.05] MAYAN_WORKER_X_MAX_TASKS_PER_CHILD Error
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
