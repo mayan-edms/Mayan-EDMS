@@ -1,3 +1,8 @@
+4.0.7 (2021-06-11)
+==================
+- Fix typo in the CELERY_MAX_TASKS_PER_CHILD_ARGUMENT environment
+  variable.
+
 4.0.6 (2021-06-10)
 ==================
 - Fix celery argument names in supervisord template. Set correct attribute
