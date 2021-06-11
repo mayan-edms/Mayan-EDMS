@@ -49,8 +49,6 @@ class TransifexHelper:
         return False
 
     def find_missing_apps(self):
-        sections = self.load_transifex_config().sections()
-
         missing_list = set()
         for app_name in self.message_processor.app_list:
             app_has_translations = getattr(
