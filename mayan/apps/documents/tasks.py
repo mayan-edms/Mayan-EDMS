@@ -91,7 +91,7 @@ def task_document_file_page_image_generate(
     ignore_result=True
 )
 def task_document_file_upload(
-    self, document_id, shared_uploaded_file_id, user_id, action=None,
+    self, document_id, shared_uploaded_file_id, user_id=None, action=None,
     comment=None, filename=None
 ):
     Document = apps.get_model(
