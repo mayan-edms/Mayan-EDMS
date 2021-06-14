@@ -2,10 +2,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.queues import queue_tools
 from mayan.apps.task_manager.classes import CeleryQueue
-from mayan.apps.task_manager.workers import worker_c
+from mayan.apps.task_manager.workers import worker_b
 
 queue_indexing = CeleryQueue(
-    label=_('Indexing'), name='indexing', worker=worker_c
+    label=_('Indexing'), name='indexing', worker=worker_b
 )
 
 queue_indexing.add_task_type(

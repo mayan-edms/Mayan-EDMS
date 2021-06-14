@@ -16,10 +16,10 @@ queue_documents_periodic = CeleryQueue(
     worker=worker_c
 )
 queue_uploads = CeleryQueue(
-    name='uploads', label=_('Uploads'), worker=worker_b
+    name='uploads', label=_('Uploads'), worker=worker_c
 )
 queue_documents = CeleryQueue(
-    name='documents', label=_('Documents'), worker=worker_c
+    name='documents', label=_('Documents'), worker=worker_b
 )
 
 queue_converter.add_task_type(
