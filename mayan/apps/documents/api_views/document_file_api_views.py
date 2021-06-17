@@ -186,9 +186,11 @@ class APIDocumentFilePageImageView(
         if maximum_layer_order:
             maximum_layer_order = int(maximum_layer_order)
 
+        obj = self.get_object()
+
         task = task_document_file_page_image_generate.apply_async(
             kwargs={
-                'document_file_page_id': self.get_object().pk,
+                'document_file_page_id': obj.pk,
                 'height': height,
                 'maximum_layer_order': maximum_layer_order,
                 'rotation': rotation,
@@ -206,7 +208,7 @@ class APIDocumentFilePageImageView(
             kwargs['disable_sync_subtasks'] = False
 
         cache_filename = task.get(**kwargs)
-        cache_file = self.get_object().cache_partition.get_file(filename=cache_filename)
+        cache_file = obj.cache_partition.get_file(filename=cache_filename)
         with cache_file.open() as file_object:
             response = HttpResponse(content=file_object.read(), content_type='image')
             if '_hash' in request.GET:
