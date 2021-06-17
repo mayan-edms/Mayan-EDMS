@@ -656,7 +656,7 @@ class TestViewTestCaseMixin:
             context = Context(
                 dict_={'object': test_object, 'resolved_object': test_object}
             )
-            return HttpResponse(template.render(context=context))
+            return HttpResponse(content=template.render(context=context))
 
         if self.test_view_is_public:
             return public(function=test_view)
