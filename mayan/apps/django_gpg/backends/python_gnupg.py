@@ -1,9 +1,8 @@
-import os
-import shutil
+import logging
 
 import gnupg
 
-from mayan.apps.storage.utils import mkdtemp
+from mayan.apps.storage.utils import TemporaryDirectory
 
 from ..classes import GPGBackend
 from ..literals import DEFAULT_GPG_PATH
@@ -12,6 +11,7 @@ from ..settings import setting_gpg_backend_arguments
 gpg_path = setting_gpg_backend_arguments.value.get(
     'gpg_path', DEFAULT_GPG_PATH
 )
+logger = logging.getLogger(name=__name__)
 
 
 class PythonGNUPGBackend(GPGBackend):
@@ -75,18 +75,12 @@ class PythonGNUPGBackend(GPGBackend):
         )
 
     def gpg_command(self, function, **kwargs):
-        temporary_directory = mkdtemp()
-        os.chmod(temporary_directory, 0x1C0)
-
-        gpg = gnupg.GPG(
-            gnupghome=temporary_directory, gpgbinary=self.kwargs['gpg_path']
-        )
-
-        result = function(gpg=gpg, **kwargs)
-
-        shutil.rmtree(path=temporary_directory)
-
-        return result
+        with TemporaryDirectory() as temporary_directory:
+            gpg = gnupg.GPG(
+                gnupghome=temporary_directory,
+                gpgbinary=self.kwargs['gpg_path']
+            )
+            return function(gpg=gpg, **kwargs)
 
     def import_key(self, key_data):
         return self.gpg_command(
