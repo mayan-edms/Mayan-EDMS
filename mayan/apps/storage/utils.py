@@ -82,6 +82,11 @@ class PassthroughStorageProcessor:
             self.database.close
 
 
+def TemporaryDirectory(*args, **kwargs):
+    kwargs.update({'dir': setting_temporary_directory.value})
+    return tempfile.TemporaryDirectory(*args, **kwargs)
+
+
 def TemporaryFile(*args, **kwargs):
     kwargs.update({'dir': setting_temporary_directory.value})
     return tempfile.TemporaryFile(*args, **kwargs)
