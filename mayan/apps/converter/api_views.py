@@ -96,7 +96,7 @@ class APIAssetImageView(generics.RetrieveAPIView):
             filename=cache_filename
         )
         with cache_file.open() as file_object:
-            response = HttpResponse(file_object.read(), content_type='image')
+            response = HttpResponse(content=file_object.read(), content_type='image')
             if '_hash' in request.GET:
                 patch_cache_control(
                     response=response,
@@ -124,5 +124,5 @@ class APIAppImageErrorImageView(generics.RetrieveAPIView):
 
     def retrieve(self, request, *args, **kwargs):
         with self.get_object().open() as file_object:
-            response = HttpResponse(file_object.read(), content_type='image')
+            response = HttpResponse(content=file_object.read(), content_type='image')
             return response
