@@ -229,7 +229,7 @@ class EmbeddedSignature(SignatureBaseModel):
                     'embedded signature verification error; %s', exception
                 )
             else:
-                self.date_time = verify_result.date_time
+                self.date_time = getattr(verify_result, 'date_time', None)
                 self.key_id = verify_result.key_id
                 self.signature_id = verify_result.signature_id
                 self.public_key_fingerprint = verify_result.pubkey_fingerprint
