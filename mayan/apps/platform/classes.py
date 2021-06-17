@@ -141,7 +141,14 @@ class PlatformTemplateDockerSupervisord(PlatformTemplate):
     name = 'docker_supervisord'
 
     def get_context(self):
-        return {'workers': Worker.all()}
+        return {
+            'autorestart': 'false',
+            'stderr_logfile': '/dev/fd/2',
+            'stderr_logfile_maxbytes': '0',
+            'stdout_logfile': '/dev/fd/1',
+            'stdout_logfile_maxbytes': '0',
+            'workers': Worker.all()
+        }
 
 
 class PlatformTemplateSupervisord(PlatformTemplate):
@@ -202,7 +209,8 @@ class PlatformTemplateSupervisord(PlatformTemplate):
 
     def get_context(self):
         return {
-            'workers': Worker.all()
+            'autorestart': 'true',
+            'workers': Worker.all(),
         }
 
 

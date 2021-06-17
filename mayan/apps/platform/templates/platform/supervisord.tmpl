@@ -1,34 +1,25 @@
+{% load templating_tags %}
 [supervisord]
 environment=
-    PYTHONPATH="{{ MEDIA_ROOT }}{{ USER_SETTINGS_FOLDER }}",
+    PYTHONPATH="{{ MEDIA_ROOT }}/{{ USER_SETTINGS_FOLDER }}",
     DJANGO_SETTINGS_MODULE=mayan.settings.production,
     MAYAN_ALLOWED_HOSTS='["*"]',
-    MAYAN_MEDIA_ROOT="{{ MEDIA_ROOT }}"
-
-[program:mayan-edms-gunicorn]
-autorestart = true
-autostart = true
-command = {{ INSTALLATION_PATH }}bin/gunicorn --workers {{ GUNICORN_WORKERS }} mayan.wsgi --max-requests {{ GUNICORN_MAX_REQUESTS }} --max-requests-jitter {{ GUNICORN_JITTER }} --worker-class {{ GUNICORN_WORKER_CLASS }} --bind 0.0.0.0:8000 --timeout {{ GUNICORN_TIMEOUT }} --limit-request-line {{ GUNICORN_LIMIT_REQUEST_LINE }}
-user = mayan
-{% for worker in workers %}
-[program:mayan-edms-{{ worker.name }}]
-autorestart = true
-autostart = true
-command = nice -n {{ worker.nice_level }} {{ INSTALLATION_PATH }}bin/celery worker -A mayan -Ofair -l ERROR -Q {% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} --hostname=mayan-edms-{{ worker.name }}.%%h {% if worker.concurrency %}--concurrency={{ worker.concurrency }} {% endif %}{% if worker.maximum_memory_per_child %}--max-memory-per-child={{ worker.maximum_memory_per_child }} {% endif %}{% if worker.maximum_tasks_per_child %}--max-tasks-per-child={{ worker.maximum_tasks_per_child }}{% endif %}
-killasgroup = true
-numprocs = 1
-priority = 998
-startsecs = 10
-stopwaitsecs = 1
-user = mayan
-{% endfor %}
-[program:mayan-edms-celery-beat]
-autorestart = true
-autostart = true
-command = nice -n 1 {{ INSTALLATION_PATH }}bin/celery beat -A mayan --pidfile= -l ERROR
-killasgroup = true
-numprocs = 1
-priority = 998
-startsecs = 10
-stopwaitsecs = 1
-user = mayan
+    MAYAN_MEDIA_ROOT="{{ MEDIA_ROOT }}",
+    MAYAN_PYTHON_BIN_DIR={{ INSTALLATION_PATH }}bin/,
+    MAYAN_GUNICORN_BIN={{ INSTALLATION_PATH }}bin/gunicorn,
+    MAYAN_GUNICORN_WORKERS={{ GUNICORN_WORKERS }},
+    MAYAN_GUNICORN_MAX_REQUESTS={{ GUNICORN_MAX_REQUESTS }},
+    MAYAN_GUNICORN_JITTER={{ GUNICORN_JITTER }},
+    MAYAN_GUNICORN_WORKER_CLASS={{ GUNICORN_WORKER_CLASS }},
+    MAYAN_GUNICORN_TIMEOUT={{ GUNICORN_TIMEOUT }},
+    MAYAN_GUNICORN_LIMIT_REQUEST_LINE={{ GUNICORN_LIMIT_REQUEST_LINE }},
+    MAYAN_SETTINGS_MODULE=mayan.settings.production,
+    {% spaceless_plus %}
+    {% for worker in workers %}
+    MAYAN_{{ worker.name|upper }}_CONCURRENCY="{% if worker.concurrency %}--concurrency={{ worker.concurrency }}{% endif %}",
+    MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD="{% if worker.maximum_memory_per_child %}--max-memory-per-child={{ worker.maximum_memory_per_child }}{% endif %}",
+    MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD="{% if worker.maximum_tasks_per_child %}--max-tasks-per-child={{ worker.maximum_tasks_per_child }}{% endif %}",
+    {% endfor %}
+    _LAST_LINE=""
+    {% endspaceless_plus %}
+{% include "platform/partials/partial_supervisord.tmpl" %}

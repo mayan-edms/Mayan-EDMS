@@ -1,6 +1,6 @@
 import re
 
-from django.template import Library, TemplateSyntaxError
+from django.template import Library, Node, TemplateSyntaxError
 
 register = Library()
 
@@ -110,3 +110,28 @@ def split(obj, separator):
     string.
     """
     return obj.split(separator)
+
+
+class SpacelessPlusNode(Node):
+    def __init__(self, nodelist):
+        self.nodelist = nodelist
+
+    def render(self, context):
+        from django.utils.html import strip_spaces_between_tags
+        content = self.nodelist.render(context).strip()
+        result = []
+        for line in content.split('\n'):
+            if line.strip() != '':
+                result.append(line)
+
+        return strip_spaces_between_tags(value='\n'.join(result))
+
+
+@register.tag
+def spaceless_plus(parser, token):
+    """
+    Removes empty lines between the tag nodes.
+    """
+    nodelist = parser.parse(('endspaceless_plus',))
+    parser.delete_first_token()
+    return SpacelessPlusNode(nodelist)
