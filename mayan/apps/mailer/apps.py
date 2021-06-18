@@ -17,13 +17,13 @@ from mayan.apps.views.html_widgets import TwoStateWidget
 from .classes import MailerBackend
 from .events import event_email_sent
 from .links import (
-    link_send_document_link, link_send_document, link_send_multiple_document,
-    link_send_multiple_document_link, link_user_mailer_create,
-    link_user_mailer_delete, link_user_mailer_edit, link_user_mailer_list,
-    link_user_mailer_setup, link_user_mailer_test
+    link_send_document_link, link_send_document_attachment,
+    link_send_multiple_document_attachment, link_send_multiple_document_link,
+    link_user_mailer_create, link_user_mailer_delete, link_user_mailer_edit,
+    link_user_mailer_list, link_user_mailer_setup, link_user_mailer_test
 )
 from .permissions import (
-    permission_mailing_link, permission_mailing_send_document,
+    permission_mailing_send_document_link, permission_mailing_send_document_attachment,
     permission_user_mailer_delete, permission_user_mailer_edit,
     permission_user_mailer_use, permission_user_mailer_view,
 )
@@ -84,7 +84,7 @@ class MailerApp(MayanAppConfig):
 
         ModelPermission.register(
             model=Document, permissions=(
-                permission_mailing_link, permission_mailing_send_document
+                permission_mailing_send_document_link, permission_mailing_send_document_attachment
             )
         )
 
@@ -102,13 +102,14 @@ class MailerApp(MayanAppConfig):
 
         menu_multi_item.bind_links(
             links=(
-                link_send_multiple_document, link_send_multiple_document_link
+                link_send_multiple_document_attachment,
+                link_send_multiple_document_link
             ), sources=(Document,)
         )
 
         menu_object.bind_links(
             links=(
-                link_send_document_link, link_send_document
+                link_send_document_link, link_send_document_attachment
             ), sources=(Document,)
         )
 

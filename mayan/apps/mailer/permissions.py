@@ -4,10 +4,10 @@ from mayan.apps.permissions import PermissionNamespace
 
 namespace = PermissionNamespace(label=_('Mailing'), name='mailing')
 
-permission_mailing_link = namespace.add_permission(
+permission_mailing_send_document_link = namespace.add_permission(
     label=_('Send document link via email'), name='mail_link'
 )
-permission_mailing_send_document = namespace.add_permission(
+permission_mailing_send_document_attachment = namespace.add_permission(
     label=_('Send document via email'), name='mail_document'
 )
 permission_user_mailer_create = namespace.add_permission(

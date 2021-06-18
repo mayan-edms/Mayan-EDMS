@@ -23,7 +23,7 @@ from .icons import icon_mail_document_submit, icon_user_mailer_setup
 from .links import link_user_mailer_create
 from .models import UserMailer
 from .permissions import (
-    permission_mailing_link, permission_mailing_send_document,
+    permission_mailing_send_document_link, permission_mailing_send_document_attachment,
     permission_user_mailer_create, permission_user_mailer_delete,
     permission_user_mailer_edit, permission_user_mailer_use,
     permission_user_mailer_view
@@ -34,7 +34,7 @@ from .tasks import task_send_document
 class MailDocumentView(MultipleObjectFormActionView):
     as_attachment = True
     form_class = DocumentMailForm
-    object_permission = permission_mailing_send_document
+    object_permission = permission_mailing_send_document_attachment
     pk_url_kwarg = 'document_id'
     source_queryset = Document.valid
     success_message = _('%(count)d document queued for email delivery')
@@ -98,7 +98,7 @@ class MailDocumentView(MultipleObjectFormActionView):
 
 class MailDocumentLinkView(MailDocumentView):
     as_attachment = False
-    object_permission = permission_mailing_link
+    object_permission = permission_mailing_send_document_link
     success_message = _('%(count)d document link queued for email delivery')
     success_message_plural = _(
         '%(count)d document links queued for email delivery'

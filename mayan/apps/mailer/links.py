@@ -8,25 +8,25 @@ from .icons import (
     icon_user_mailer_setup, icon_user_mailer_test
 )
 from .permissions import (
-    permission_mailing_link, permission_mailing_send_document,
+    permission_mailing_send_document_link, permission_mailing_send_document_attachment,
     permission_user_mailer_create, permission_user_mailer_delete,
     permission_user_mailer_edit, permission_user_mailer_use,
     permission_user_mailer_view
 )
 
-link_send_document = Link(
+link_send_document_attachment = Link(
     args='resolved_object.pk', icon=icon_document_send,
-    permissions=(permission_mailing_send_document,),
-    text=_('Email document'), view='mailer:send_document'
+    permissions=(permission_mailing_send_document_attachment,),
+    text=_('Email document'), view='mailer:send_document_attachment'
 )
 link_send_document_link = Link(
     args='resolved_object.pk', icon=icon_document_send_link,
-    permissions=(permission_mailing_link,),
+    permissions=(permission_mailing_send_document_link,),
     text=_('Email link'), view='mailer:send_document_link'
 )
-link_send_multiple_document = Link(
+link_send_multiple_document_attachment = Link(
     icon=icon_document_send, text=_('Email document'),
-    view='mailer:send_multiple_document'
+    view='mailer:send_multiple_document_attachment'
 )
 link_send_multiple_document_link = Link(
     icon=icon_document_send_link, text=_('Email link'),

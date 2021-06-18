@@ -5,7 +5,7 @@ from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..models import UserMailer
 from ..permissions import (
-    permission_mailing_link, permission_mailing_send_document,
+    permission_mailing_send_document_link, permission_mailing_send_document_attachment,
     permission_user_mailer_create, permission_user_mailer_delete,
     permission_user_mailer_use, permission_user_mailer_view
 )
@@ -193,7 +193,7 @@ class MailDocumentViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_mailing_link
+            obj=self.test_document, permission=permission_mailing_send_document_link
         )
         self.grant_access(
             obj=self.test_user_mailer, permission=permission_user_mailer_use
@@ -212,7 +212,7 @@ class MailDocumentViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_mailing_link
+            obj=self.test_document, permission=permission_mailing_send_document_link
         )
         self.grant_access(
             obj=self.test_user_mailer, permission=permission_user_mailer_use
@@ -241,7 +241,7 @@ class MailDocumentViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_mailing_send_document
+            obj=self.test_document, permission=permission_mailing_send_document_attachment
         )
         self.grant_access(
             obj=self.test_user_mailer, permission=permission_user_mailer_use
@@ -260,7 +260,7 @@ class MailDocumentViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_mailing_send_document
+            obj=self.test_document, permission=permission_mailing_send_document_attachment
         )
         self.grant_access(
             obj=self.test_user_mailer, permission=permission_user_mailer_use
@@ -279,7 +279,7 @@ class MailDocumentViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_mailing_link
+            obj=self.test_document, permission=permission_mailing_send_document_link
         )
         self.grant_access(
             obj=self.test_user_mailer, permission=permission_user_mailer_use
@@ -302,7 +302,7 @@ class MailDocumentViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_mailing_link
+            obj=self.test_document, permission=permission_mailing_send_document_link
         )
         self.grant_access(
             obj=self.test_user_mailer, permission=permission_user_mailer_use
@@ -325,7 +325,7 @@ class MailDocumentViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_mailing_link
+            obj=self.test_document, permission=permission_mailing_send_document_link
         )
         self.grant_access(
             obj=self.test_user_mailer, permission=permission_user_mailer_use
@@ -348,7 +348,7 @@ class MailDocumentViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_mailing_send_document
+            obj=self.test_document, permission=permission_mailing_send_document_attachment
         )
         self.grant_access(
             obj=self.test_user_mailer, permission=permission_user_mailer_use
@@ -371,7 +371,7 @@ class MailDocumentViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_mailing_send_document
+            obj=self.test_document, permission=permission_mailing_send_document_attachment
         )
         self.grant_access(
             obj=self.test_user_mailer, permission=permission_user_mailer_use
@@ -394,7 +394,7 @@ class MailDocumentViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_mailing_send_document
+            obj=self.test_document, permission=permission_mailing_send_document_attachment
         )
         self.grant_access(
             obj=self.test_user_mailer, permission=permission_user_mailer_use
