@@ -30,13 +30,6 @@ setting_collapse_list_menu_object = namespace.add_setting(
         'instead of individual buttons.'
     )
 )
-settings_db_sync_task_delay = namespace.add_setting(
-    default=DEFAULT_COMMON_DB_SYNC_TASK_DELAY,
-    global_name='COMMON_DB_SYNC_TASK_DELAY', help_text=_(
-        'Time to delay background tasks that depend on a database commit to '
-        'propagate.'
-    )
-)
 setting_disabled_apps = namespace.add_setting(
     default=DEFAULT_COMMON_DISABLED_APPS,
     global_name='COMMON_DISABLED_APPS', help_text=_(

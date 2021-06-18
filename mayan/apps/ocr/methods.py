@@ -1,8 +1,3 @@
-from datetime import timedelta
-
-from django.utils.timezone import now
-
-from mayan.apps.common.settings import settings_db_sync_task_delay
 from mayan.apps.documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 
 from .events import event_ocr_document_version_submit
@@ -35,7 +30,6 @@ def method_document_version_ocr_submit(self, _user=None):
     # rendering finishes.
 
     task_document_version_ocr_process.apply_async(
-        eta=now() + timedelta(seconds=settings_db_sync_task_delay.value),
         kwargs={
             'document_version_id': self.pk, 'user_id': user_id
         }, timeout=(
