@@ -53,8 +53,8 @@ Features
 
 - Office document format support.
 
-  - Mayan EDMS can detect the presence of LibreOffice and use it to support
-    word processing files, spreadsheets and presentations.
+  - Mayan EDMS can detect the presence of LibreOffice and use it to generate
+    previews for word processing files, spreadsheets, and presentations.
 
 - Full text searching.
 

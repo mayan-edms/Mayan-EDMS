@@ -17,11 +17,11 @@ urlpatterns = [
         view=MailDocumentLinkView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_id>\d+)/send/document/$',
-        name='send_document', view=MailDocumentView.as_view()
+        regex=r'^documents/(?P<document_id>\d+)/send/attachment/$',
+        name='send_document_attachment', view=MailDocumentView.as_view()
     ),
     url(
-        regex=r'^documents/multiple/send/document/$',
+        regex=r'^documents/multiple/send/attachment/$',
         name='send_multiple_document', view=MailDocumentView.as_view()
     ),
     url(

@@ -85,6 +85,7 @@ DOCUMENT_FILE_ACTION_PAGE_CHOICES = (
     (DOCUMENT_FILE_ACTION_PAGES_KEEP, _('Keep. Do not create a new version and keep the current version pages.')),
 )
 DOCUMENT_IMAGE_TASK_TIMEOUT = 120
+DOCUMENT_VERSION_EXPORT_MIMETYPE = 'application/pdf'
 
 IMAGE_ERROR_NO_ACTIVE_VERSION = 'document_no_active_version'
 IMAGE_ERROR_NO_VERSION_PAGES = 'document_no_version_pages'

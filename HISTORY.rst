@@ -1,3 +1,31 @@
+4.0.8 (2021-XX-XX)
+==================
+- Update PIP to version 21.1.2.
+- Use longer version of the Celery worker option.
+- Make optional the `user_id` argument of
+  `task_document_file_page_image_generate`.
+- Another round of worker queue assignments tuning.
+- Simplify the GPG temporary home preparation. A temporary directory context
+  manager is now used that also guarantees that the temporary folder will be
+  removed even on failures.
+- Don't assume all signatures provide a ``date_time`` field.
+- Optimize file and version page image API. Load the page object only once
+  per request.
+- Unify the supervisord templates. The direct deployment and the Docker image
+  now use the same supervisord template.
+- Email the active document version. Instead of emailing the latest updated
+  document file, the document emailing with attachment will now export the
+  active version and email that as an attachments. This mimics more closely
+  the existing behavior of this feature before the document version were
+  separated into versions and files.
+- Update Django version 2.2.23 to 2.2.24.
+- Improve Docker Compose installation and upgrade instructions.
+- Fix the document type button not appearing. Update the cascade condition
+  of the document type setup link to display when there are not document
+  types created.
+- Don't cache the missing items template to allow it to be removed when
+  the missing items are fixed.
+
 4.0.7 (2021-06-11)
 ==================
 - Fix typo in the CELERY_MAX_TASKS_PER_CHILD_ARGUMENT environment

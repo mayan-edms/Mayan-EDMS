@@ -5,11 +5,13 @@ from furl import furl
 
 from django.conf import settings
 from django.core import mail
-from django.db import models, transaction
+from django.db import models
 from django.utils.html import strip_tags
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.documents.literals import DOCUMENT_VERSION_EXPORT_MIMETYPE
+from mayan.apps.storage.utils import TemporaryFile
 from mayan.apps.templating.classes import Template
 
 from .classes import NullBackend
@@ -156,7 +158,7 @@ class UserMailer(models.Model):
                 reply_to=reply_to_list
             )
 
-            for attachment in attachments or []:
+            for attachment in attachments or ():
                 email_message.attach(
                     filename=attachment['filename'],
                     content=attachment['content'],
@@ -165,25 +167,25 @@ class UserMailer(models.Model):
 
             email_message.attach_alternative(body, 'text/html')
 
-        with transaction.atomic():
-            try:
-                email_message.send()
-            except Exception as exception:
-                self.error_log.create(
-                    text='{}; {}'.format(
-                        exception.__class__.__name__, exception
-                    )
+        try:
+            email_message.send()
+        except Exception as exception:
+            self.error_log.create(
+                text='{}; {}'.format(
+                    exception.__class__.__name__, exception
                 )
-            else:
-                self.error_log.all().delete()
-                event_email_sent.commit(
-                    actor=_user, action_object=_event_action_object,
-                    target=self
-                )
+            )
+        else:
+            self.error_log.all().delete()
+            event_email_sent.commit(
+                actor=_user, action_object=_event_action_object,
+                target=self
+            )
 
     def send_document(
         self, document, to, as_attachment=False, body='', cc=None, bcc=None,
-        organization_installation_url='', reply_to=None, subject='', _user=None
+        organization_installation_url='', reply_to=None, subject='',
+        _user=None
     ):
         """
         Send a document using this user mailing profile.
@@ -207,12 +209,15 @@ class UserMailer(models.Model):
 
         attachments = []
         if as_attachment:
-            with document.file_latest.open() as file_object:
+            with TemporaryFile() as file_object:
+                document.version_active.export(file_object=file_object)
+                file_object.seek(0)
+
                 attachments.append(
                     {
                         'content': file_object.read(),
                         'filename': document.label,
-                        'mimetype': document.file_latest.mimetype
+                        'mimetype': DOCUMENT_VERSION_EXPORT_MIMETYPE
                     }
                 )
 

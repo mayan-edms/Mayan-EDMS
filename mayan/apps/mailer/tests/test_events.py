@@ -6,7 +6,7 @@ from mayan.apps.documents.tests.base import DocumentTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..permissions import (
-    permission_mailing_send_document, permission_user_mailer_use
+    permission_mailing_send_document_attachment, permission_user_mailer_use
 )
 
 from ..events import event_email_sent
@@ -50,7 +50,7 @@ class MailerEventsTestCase(
         )
         self.grant_access(
             obj=self.test_document,
-            permission=permission_mailing_send_document
+            permission=permission_mailing_send_document_attachment
         )
         Action.objects.all().delete()
 
