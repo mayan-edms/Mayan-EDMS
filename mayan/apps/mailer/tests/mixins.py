@@ -38,7 +38,7 @@ class MailerViewTestMixin:
 
     def _request_test_document_send_view(self):
         return self.post(
-            viewname='mailer:send_document', kwargs={
+            viewname='mailer:send_document_attachment', kwargs={
                 'document_id': self.test_document.pk
             }, data={
                 'email': getattr(
