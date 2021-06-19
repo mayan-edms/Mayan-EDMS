@@ -81,6 +81,7 @@ link_document_type_setup = Link(
     condition=get_cascade_condition(
         app_label='documents', model_name='DocumentType',
         object_permission=permission_document_type_view,
+        view_permission=permission_document_type_create,
     ), icon=icon_document_type_setup, text=_('Document types'),
     view='documents:document_type_list'
 )
