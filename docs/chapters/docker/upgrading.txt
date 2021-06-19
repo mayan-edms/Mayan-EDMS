@@ -90,6 +90,60 @@ Docker Compose installation
    specifies a project name of ``mayan``.
 
 
+Upgrade between minor versions
+------------------------------
+
+#. Stop and delete the container stack:
+
+   .. code-block:: console
+
+     docker-compose --file docker-compose.yml --project-name mayan down
+
+
+#. Rename the Docker Compose file and keep it for future reference:
+
+   .. code-block:: console
+
+     mv docker-compose.yml docker-compose.yml.bck
+
+
+#. Download the new Docker Compose files:
+
+   .. code-block:: console
+
+     curl https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/docker/docker-compose.yml -O
+     curl https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/docker/env_file -O
+     curl https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/docker/.env -O
+
+
+#. Edit and the adjust the new Docker Compose file, copying over all relevant
+   values like username, password, etc.
+
+
+#. Launch the rest of container stack:
+
+   .. code-block:: console
+
+     docker-compose --file docker-compose.yml --project-name mayan up --detach
+
+   .. note::
+
+     The app container will perform all the necessary migrations to the
+     existing data.
+
+
+Upgrade between major versions
+------------------------------
+
+.. note::
+
+  The additional steps in this process are required to move the database
+  content from one version of PostgreSQL to a new version of PostgreSQL.
+  If the upgrade is between major versions of Mayan EDMS but the major
+  version of the database manager remains the same, this process is not
+  necessary and the simpler upgrade process can be used.
+
+
 #. Dump the existing database into an SQL file.
 
    .. code-block:: console
@@ -144,8 +198,10 @@ Docker Compose installation
 
    .. important::
 
-     Only delete the database volume after dumping the data into SQL and
-     backing up the volume. Do not delete the app volume. This is where the
+     Only delete the database volume after dumping the data into SQL, backing
+     up the volume binary content,
+
+     and verifying . Do not delete the app volume. This is where the
      actual document files are stored.
 
 
@@ -153,10 +209,10 @@ Docker Compose installation
 
    .. code-block:: console
 
-     cp docker-compose.yml docker-compose.yml.bck
+     mv docker-compose.yml docker-compose.yml.bck
 
 
-#. Download the new Docker Compose file:
+#. Download the new Docker Compose files:
 
    .. code-block:: console
 
