@@ -19,10 +19,9 @@ def task_process_document_file(document_file_id, user_id=None):
     DocumentFile = apps.get_model(
         app_label='documents', model_name='DocumentFile'
     )
+    User = get_user_model()
 
     document_file = DocumentFile.objects.get(pk=document_file_id)
-
-    User = get_user_model()
 
     if user_id:
         user = User.objects.get(pk=user_id)
