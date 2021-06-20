@@ -203,7 +203,7 @@ class DocumentFile(
 
             self.checksum = force_text(s=hash_object.hexdigest())
             if save:
-                self.save()
+                self.save(update_fields=('checksum',))
 
             return self.checksum
 
@@ -224,7 +224,7 @@ class DocumentFile(
         if self.document.files.count() == 0:
             self.document.is_stub = False
             self.document._event_ignore = True
-            self.document.save()
+            self.document.save(update_fields=('is_stub',))
 
         return result
 
@@ -336,7 +336,7 @@ class DocumentFile(
                 self.encoding = ''
             finally:
                 if save:
-                    self.save()
+                    self.save(update_fields=('encoding', 'mimetype',))
 
     def natural_key(self):
         return (self.checksum, self.document.natural_key())
@@ -454,7 +454,7 @@ class DocumentFile(
                         self.document.label = force_text(s=self.file)
 
                     self.document._event_ignore = True
-                    self.document.save()
+                    self.document.save(update_fields=('is_stub',))
                 else:
                     event_document_file_edited.commit(
                         actor=user, target=self, action_object=self.document
