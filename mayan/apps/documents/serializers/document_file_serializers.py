@@ -76,7 +76,10 @@ class DocumentFileSerializer(
             'size', 'timestamp', 'url'
         )
         model = DocumentFile
-        read_only_fields = ('document', 'file', 'size')
+        read_only_fields = (
+            'document', 'document_url', 'file', 'id', 'page_list_url',
+            'size', 'url'
+        )
 
     def get_size(self, instance):
         return instance.size
@@ -136,3 +139,4 @@ class DocumentFilePageSerializer(serializers.HyperlinkedModelSerializer):
             'document_file_url', 'id', 'image_url', 'page_number', 'url'
         )
         model = DocumentFilePage
+        read_only_fields = ('document_file_url', 'id', 'image_url', 'url')
