@@ -25,4 +25,4 @@ class TrashedDocument(Document):
         self.in_trash = False
         # Skip the edite event at .save().
         self._event_ignore = True
-        self.save()
+        self.save(update_fields=('in_trash',))

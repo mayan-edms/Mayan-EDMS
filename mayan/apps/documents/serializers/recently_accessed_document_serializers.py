@@ -14,3 +14,4 @@ class RecentlyAccessedDocumentSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('document', 'id', 'datetime_accessed', 'user')
         model = RecentlyAccessedDocument
+        read_only_fields = ('document', 'id', 'datetime_accessed', 'user')
