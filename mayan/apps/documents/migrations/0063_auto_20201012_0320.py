@@ -20,6 +20,7 @@ def operation_document_version_page_create(apps, schema_editor):
     query = '''
     SELECT
         {documents_documentfile}.{document_id},
+        {documents_documentfile}.{timestamp},
         {documents_documentfilepage}.{document_file_id},
         {documents_documentfilepage}.{id}
     FROM {documents_documentfilepage}
@@ -27,11 +28,20 @@ def operation_document_version_page_create(apps, schema_editor):
         {documents_documentfilepage}.{document_file_id} = {documents_documentfile}.{id}
     ) ORDER BY {documents_documentfilepage}.{id} ASC
     '''.format(
-        documents_documentfile=schema_editor.connection.ops.quote_name('documents_documentfile'),
-        document_id=schema_editor.connection.ops.quote_name('document_id'),
-        documents_documentfilepage=schema_editor.connection.ops.quote_name('documents_documentfilepage'),
-        document_file_id=schema_editor.connection.ops.quote_name('document_file_id'),
-        id=schema_editor.connection.ops.quote_name('id')
+        documents_documentfile=schema_editor.connection.ops.quote_name(
+            name='documents_documentfile'
+        ),
+        document_id=schema_editor.connection.ops.quote_name(
+            name='document_id'
+        ),
+        timestamp=schema_editor.connection.ops.quote_name(name='timestamp'),
+        documents_documentfilepage=schema_editor.connection.ops.quote_name(
+            name='documents_documentfilepage'
+        ),
+        document_file_id=schema_editor.connection.ops.quote_name(
+            name='document_file_id'
+        ),
+        id=schema_editor.connection.ops.quote_name(name='id')
     )
 
     cursor_main.execute(query)
@@ -61,7 +71,7 @@ def operation_document_version_page_create(apps, schema_editor):
             break
 
         for row in rows:
-            document_id, document_file_id, document_file_page_id = row
+            document_id, timestamp, document_file_id, document_file_page_id = row
 
             if document_id_last != document_id:
                 document_version.active = True
@@ -69,7 +79,11 @@ def operation_document_version_page_create(apps, schema_editor):
                 document_id_last = document_id
 
             if document_file_id_last != document_file_id:
-                document_version = DocumentVersion.objects.create(document_id=document_id)
+                document_version = DocumentVersion.objects.create(
+                    document_id=document_id
+                )
+                document_version.timestamp = timestamp
+                document_version.save(update_fields=('timestamp',))
                 document_version_id = document_version.pk
                 document_file_id_last = document_file_id
                 if document_version_page_values:
