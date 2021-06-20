@@ -27,7 +27,7 @@ class DocumentFilePageContentManager(models.Manager):
                 target=document_file
             )
 
-    def process_document_file(self, document_file):
+    def process_document_file(self, document_file, user=None):
         logger.info(
             'Starting parsing for document file: %s', document_file
         )
@@ -46,7 +46,7 @@ class DocumentFilePageContentManager(models.Manager):
             )
 
             event_parsing_document_file_finish.commit(
-                action_object=document_file.document,
+                action_object=document_file.document, actor=user,
                 target=document_file
             )
         except Exception as exception:

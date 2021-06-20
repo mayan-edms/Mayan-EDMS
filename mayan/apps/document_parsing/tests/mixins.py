@@ -1,3 +1,8 @@
+from ..models import DocumentFilePageContent
+
+from .literals import TEST_DOCUMENT_CONTENT
+
+
 class DocumentFileContentToolsViewsTestMixin:
     def _request_document_parsing_error_list_view(self):
         return self.get(viewname='document_parsing:error_list')
@@ -7,6 +12,18 @@ class DocumentFileContentToolsViewsTestMixin:
             viewname='document_parsing:document_type_submit', data={
                 'document_type': self.test_document_type.pk
             }
+        )
+
+
+class DocumentFileContentTestMixin:
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_file_parsed_content()
+
+    def _create_test_document_file_parsed_content(self):
+        DocumentFilePageContent.objects.create(
+            document_file_page=self.test_document_file_page,
+            content=TEST_DOCUMENT_CONTENT
         )
 
 
