@@ -4,28 +4,33 @@ from .events import event_file_metadata_document_file_submit
 from .tasks import task_process_document_file
 
 
-def method_document_submit(self):
+def method_document_submit(self, _user=None):
     latest_file = self.file_latest
-    # Don't error out if document has no file
+    # Don't error out if document has no file.
     if latest_file:
-        latest_file.submit_for_file_metadata_processing()
+        latest_file.submit_for_file_metadata_processing(_user=_user)
 
 
-def method_document_file_submit(self):
+def method_document_file_submit(self, _user=None):
     event_file_metadata_document_file_submit.commit(
-        action_object=self.document, target=self
+        action_object=self.document, actor=_user, target=self
     )
+
+    if _user:
+        user_id = _user.pk
+    else:
+        user_id = None
 
     task_process_document_file.apply_async(
         kwargs={
-            'document_file_id': self.pk,
+            'document_file_id': self.pk, 'user_id': user_id,
         }
     )
 
 
 def method_get_document_file_metadata(self, dotted_name):
     latest_file = self.file_latest
-    # Don't error out if document has no file
+    # Don't error out if document has no file.
     if latest_file:
         return latest_file.get_file_metadata(
             dotted_name=dotted_name
