@@ -22,7 +22,8 @@ urlpatterns = [
     ),
     url(
         regex=r'^documents/multiple/send/attachment/$',
-        name='send_multiple_document', view=MailDocumentView.as_view()
+        name='send_multiple_document_attachment',
+        view=MailDocumentView.as_view()
     ),
     url(
         regex=r'^user_mailers/backend/selection/$',
