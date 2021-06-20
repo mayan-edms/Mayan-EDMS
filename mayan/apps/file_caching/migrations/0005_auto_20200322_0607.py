@@ -65,7 +65,7 @@ def operation_purge_and_delete_caches(apps, schema_editor):
             )
             cache_storages[cache.pk] = DummyStorage()
 
-    cursor_primary.execute(query=query)
+    cursor_primary.execute(query)
     for partition_name, filename, cache_id in cursor_primary.fetchall():
         cache_storages[
             cache_id
@@ -83,7 +83,7 @@ def operation_purge_and_delete_caches(apps, schema_editor):
 
     for table_name in table_names:
         cursor_secondary.execute(
-            sql='DELETE FROM {};'.format(
+            'DELETE FROM {};'.format(
                 schema_editor.connection.ops.quote_name(
                     name=table_name
                 )

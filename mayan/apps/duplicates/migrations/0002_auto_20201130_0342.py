@@ -21,11 +21,19 @@ def operation_duplicated_document_old_copy(apps, schema_editor):
             )
         ORDER BY {documents_duplicateddocumentold}.{document_id} ASC
     '''.format(
-        documents_duplicateddocumentold=schema_editor.connection.ops.quote_name('documents_duplicateddocumentold'),
-        documents_duplicateddocumentold_documents=schema_editor.connection.ops.quote_name('documents_duplicateddocumentold_documents'),
-        document_id=schema_editor.connection.ops.quote_name('document_id'),
-        duplicateddocumentold_id=schema_editor.connection.ops.quote_name('duplicateddocumentold_id'),
-        id=schema_editor.connection.ops.quote_name('id')
+        documents_duplicateddocumentold=schema_editor.connection.ops.quote_name(
+            name='documents_duplicateddocumentold'
+        ),
+        documents_duplicateddocumentold_documents=schema_editor.connection.ops.quote_name(
+            name='documents_duplicateddocumentold_documents'
+        ),
+        document_id=schema_editor.connection.ops.quote_name(
+            name='document_id'
+        ),
+        duplicateddocumentold_id=schema_editor.connection.ops.quote_name(
+            name='duplicateddocumentold_id'
+        ),
+        id=schema_editor.connection.ops.quote_name(name='id')
     )
     cursor_primary.execute(query)
 
@@ -46,9 +54,13 @@ def operation_duplicated_document_old_copy(apps, schema_editor):
         WHERE
             {duplicates_duplicateddocument}.{document_id} = %s;
     '''.format(
-        document_id=schema_editor.connection.ops.quote_name('document_id'),
-        duplicates_duplicateddocument=schema_editor.connection.ops.quote_name('duplicates_duplicateddocument'),
-        id=schema_editor.connection.ops.quote_name('id')
+        document_id=schema_editor.connection.ops.quote_name(
+            name='document_id'
+        ),
+        duplicates_duplicateddocument=schema_editor.connection.ops.quote_name(
+            name='duplicates_duplicateddocument'
+        ),
+        id=schema_editor.connection.ops.quote_name(name='id')
     )
 
     now_text = now()
@@ -84,14 +96,18 @@ def operation_duplicated_document_old_copy(apps, schema_editor):
     query = '''
         DELETE FROM {documents_duplicateddocumentold_documents};
     '''.format(
-        documents_duplicateddocumentold_documents=schema_editor.connection.ops.quote_name('documents_duplicateddocumentold_documents')
+        documents_duplicateddocumentold_documents=schema_editor.connection.ops.quote_name(
+            name='documents_duplicateddocumentold_documents'
+        )
     )
     cursor_secondary.execute(query)
 
     query = '''
         DELETE FROM {documents_duplicateddocumentold};
     '''.format(
-        documents_duplicateddocumentold=schema_editor.connection.ops.quote_name('documents_duplicateddocumentold')
+        documents_duplicateddocumentold=schema_editor.connection.ops.quote_name(
+            name='documents_duplicateddocumentold'
+        )
     )
     cursor_secondary.execute(query)
 
@@ -110,10 +126,16 @@ def operation_duplicated_document_old_copy_reverse(apps, schema_editor):
             {duplicates_duplicateddocument}.{document_id}
         FROM {duplicates_duplicateddocument}
     '''.format(
-        datetime_added=schema_editor.connection.ops.quote_name('datetime_added'),
-        document_id=schema_editor.connection.ops.quote_name('document_id'),
-        duplicates_duplicateddocument=schema_editor.connection.ops.quote_name('duplicates_duplicateddocument'),
-        id=schema_editor.connection.ops.quote_name('id')
+        datetime_added=schema_editor.connection.ops.quote_name(
+            name='datetime_added'
+        ),
+        document_id=schema_editor.connection.ops.quote_name(
+            name='document_id'
+        ),
+        duplicates_duplicateddocument=schema_editor.connection.ops.quote_name(
+            name='duplicates_duplicateddocument'
+        ),
+        id=schema_editor.connection.ops.quote_name(name='id')
     )
     cursor_primary.execute(query)
 
@@ -131,9 +153,15 @@ def operation_duplicated_document_old_copy_reverse(apps, schema_editor):
             WHERE
                 {duplicates_duplicateddocument_documents}.{duplicateddocument_id} = %s
         '''.format(
-            document_id=schema_editor.connection.ops.quote_name('document_id'),
-            duplicateddocument_id=schema_editor.connection.ops.quote_name('duplicateddocument_id'),
-            duplicates_duplicateddocument_documents=schema_editor.connection.ops.quote_name('duplicates_duplicateddocument_documents')
+            document_id=schema_editor.connection.ops.quote_name(
+                name='document_id'
+            ),
+            duplicateddocument_id=schema_editor.connection.ops.quote_name(
+                name='duplicateddocument_id'
+            ),
+            duplicates_duplicateddocument_documents=schema_editor.connection.ops.quote_name(
+                name='duplicates_duplicateddocument_documents'
+            )
         )
         cursor_secondary.execute(query, (row[0],))
         results = cursor_secondary.fetchall()
@@ -159,14 +187,18 @@ def operation_duplicated_document_old_copy_reverse(apps, schema_editor):
     query = '''
         DELETE FROM {duplicates_duplicateddocument_documents};
     '''.format(
-        duplicates_duplicateddocument_documents=schema_editor.connection.ops.quote_name('duplicates_duplicateddocument_documents')
+        duplicates_duplicateddocument_documents=schema_editor.connection.ops.quote_name(
+            name='duplicates_duplicateddocument_documents'
+        )
     )
     cursor_secondary.execute(query)
 
     query = '''
         DELETE FROM {duplicates_duplicateddocument};
     '''.format(
-        duplicates_duplicateddocument=schema_editor.connection.ops.quote_name('duplicates_duplicateddocument')
+        duplicates_duplicateddocument=schema_editor.connection.ops.quote_name(
+            name='duplicates_duplicateddocument'
+        )
     )
 
     cursor_secondary.execute(query)

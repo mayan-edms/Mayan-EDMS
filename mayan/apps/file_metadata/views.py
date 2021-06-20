@@ -128,10 +128,12 @@ class DocumentFileSubmitView(MultipleObjectConfirmActionView):
         return result
 
     def object_action(self, form, instance):
-        instance.submit_for_file_metadata_processing()
+        instance.submit_for_file_metadata_processing(_user=self.request.user)
 
 
-class DocumentTypeSettingsEditView(ExternalObjectViewMixin, SingleObjectEditView):
+class DocumentTypeSettingsEditView(
+    ExternalObjectViewMixin, SingleObjectEditView
+):
     external_object_class = DocumentType
     external_object_permission = permission_document_type_file_metadata_setup
     external_object_pk_url_kwarg = 'document_type_id'
@@ -172,7 +174,9 @@ class DocumentTypeSubmitView(FormView):
         count = 0
         for document_type in form.cleaned_data['document_type']:
             for document in document_type.documents.filter(pk__in=document_queryset.values('pk')):
-                document.submit_for_file_metadata_processing()
+                document.submit_for_file_metadata_processing(
+                    _user=self.request.user
+                )
                 count += 1
 
         messages.success(

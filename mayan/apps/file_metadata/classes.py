@@ -26,7 +26,7 @@ class FileMetadataDriver:
     _registry = {}
 
     @classmethod
-    def process_document_file(cls, document_file):
+    def process_document_file(cls, document_file, user=None):
         # Get list of drivers for the document's MIME type
         driver_classes = cls._registry.get(document_file.mimetype, ())
         # Add wilcard drivers, drivers meant to be executed for all MIME types.
@@ -46,7 +46,7 @@ class FileMetadataDriver:
                 )
 
                 event_file_metadata_document_file_finish.commit(
-                    action_object=document_file.document,
+                    action_object=document_file.document, actor=user,
                     target=document_file
                 )
 

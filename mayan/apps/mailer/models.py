@@ -169,6 +169,7 @@ class UserMailer(models.Model):
 
         try:
             email_message.send()
+
         except Exception as exception:
             self.error_log.create(
                 text='{}; {}'.format(
@@ -177,6 +178,7 @@ class UserMailer(models.Model):
             )
         else:
             self.error_log.all().delete()
+
             event_email_sent.commit(
                 actor=_user, action_object=_event_action_object,
                 target=self
@@ -210,6 +212,7 @@ class UserMailer(models.Model):
         attachments = []
         if as_attachment:
             with TemporaryFile() as file_object:
+                logger.debug('exporting document to send via email')
                 document.version_active.export(file_object=file_object)
                 file_object.seek(0)
 

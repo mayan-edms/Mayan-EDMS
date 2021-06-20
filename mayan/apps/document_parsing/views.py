@@ -170,7 +170,7 @@ class DocumentFileSubmitView(MultipleObjectConfirmActionView):
         return result
 
     def object_action(self, instance, form=None):
-        instance.submit_for_parsing()
+        instance.submit_for_parsing(_user=self.request.user)
 
 
 class DocumentTypeSettingsEditView(ExternalObjectViewMixin, SingleObjectEditView):
@@ -215,7 +215,7 @@ class DocumentTypeSubmitView(FormView):
         count = 0
         for document_type in form.cleaned_data['document_type']:
             for document in document_type.documents.all():
-                document.submit_for_parsing()
+                document.submit_for_parsing(_user=self.request.user)
                 count += 1
 
         messages.success(

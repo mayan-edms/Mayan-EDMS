@@ -85,7 +85,7 @@ class DocumentFile(
             'An optional short text describing the document file.'
         ), verbose_name=_('Comment')
     )
-    # File related fields
+    # File related fields.
     file = models.FileField(
         storage=DefinedStorageLazy(name=STORAGE_NAME_DOCUMENT_FILES),
         upload_to=upload_to, verbose_name=_('File')
@@ -181,7 +181,7 @@ class DocumentFile(
     def checksum_update(self, save=True):
         """
         Open a document file's file and update the checksum field using
-        the user provided checksum function
+        the user provided checksum function.
         """
         block_size = setting_hash_block_size.value
         if block_size == 0:
@@ -323,7 +323,7 @@ class DocumentFile(
     def mimetype_update(self, save=True):
         """
         Read a document verions's file and determine the mimetype by calling
-        the get_mimetype wrapper
+        the get_mimetype wrapper.
         """
         if self.exists():
             try:
@@ -349,7 +349,7 @@ class DocumentFile(
     def open(self, raw=False):
         """
         Return a file descriptor to a document file's file irrespective of
-        the storage backend
+        the storage backend.
         """
         if raw:
             return self.file.storage.open(name=self.file.name)
@@ -434,7 +434,7 @@ class DocumentFile(
                 )
 
                 if new_document_file:
-                    # Only do this for new documents
+                    # Only do this for new documents.
                     event_document_file_created.commit(
                         actor=user, target=self, action_object=self.document
                     )
@@ -479,7 +479,7 @@ class DocumentFile(
     def save_to_file(self, file_object):
         """
         Save a copy of the document from the document storage backend
-        to the local filesystem
+        to the local filesystem.
         """
         with self.open() as input_file_object:
             shutil.copyfileobj(fsrc=input_file_object, fdst=file_object)
@@ -493,7 +493,7 @@ class DocumentFile(
 
     @property
     def uuid(self):
-        # Make cache UUID a mix of document UUID, file ID
+        # Make cache UUID a mix of document UUID, file ID.
         return '{}-{}'.format(self.document.uuid, self.pk)
 
 
