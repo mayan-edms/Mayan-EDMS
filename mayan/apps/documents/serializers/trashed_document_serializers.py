@@ -24,3 +24,8 @@ class TrashedDocumentSerializer(DocumentSerializer):
             )
         )
         model = TrashedDocument
+        read_only_fields = sorted(
+            DocumentSerializer.Meta.read_only_fields + (
+                'restore_url', 'trashed_date_time'
+            )
+        )
