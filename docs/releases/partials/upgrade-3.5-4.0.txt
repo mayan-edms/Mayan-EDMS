@@ -1,6 +1,10 @@
 Upgrading from Mayan EDMS 3.5.x
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Direct deployment
+"""""""""""""""""
+
+
 #. Stop supervisord::
 
     sudo systemctl stop supervisor
@@ -123,3 +127,10 @@ Upgrading from Mayan EDMS 3.5.x
 #. Clear the browser cache to avoid loading old web assets.
 
 The upgrade procedure is now complete.
+
+
+Docker Compose
+""""""""""""""
+
+Check the :doc:`Docker upgrading<../chapters/docker/upgrading>` chapter for
+the complete upgrade process.
