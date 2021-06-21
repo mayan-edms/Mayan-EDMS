@@ -305,7 +305,7 @@ class MultipleObjectViewMixin(SingleObjectMixin):
             self.view_mode_single = True
 
         if pk_list is not None:
-            queryset = queryset.filter(pk__in=self.get_pk_list())
+            queryset = queryset.filter(pk__in=pk_list)
             self.view_mode_multiple = True
 
         # If none of those are defined, it's an error.
