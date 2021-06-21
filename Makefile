@@ -131,7 +131,7 @@ coverage-html:
 
 # Documentation
 
-docs-html: ## Run the html documentation target.
+docs-html: ## Run the html documentation target. Use optional FILENAMES to specific which files to build.
 	cd docs;make html
 
 docs-serve: ## Run the livehtml documentation generator.
