@@ -1,10 +1,121 @@
 Version 4.0.8
 =============
 
-Released: June XX, 2021
+Released: June 21, 2021
 
 Changes
 -------
+
+
+Background tasks
+^^^^^^^^^^^^^^^^
+
+The queue distribution was tuned again to continue improving throughput and
+efficiency of the workers. Message consumption rate was increased for the
+``indexing``, ``search``, ``uploads``, ``duplicates``, ``file metadata`` and
+``metadata`` queues.
+
+The readability Celery worker options was improved by using the long version
+of the options.
+
+
+Document parsing
+^^^^^^^^^^^^^^^^
+
+The document parsing submit actions were updated to keep track of the user and
+apply it to the events when committed.
+
+
+Documents
+^^^^^^^^^
+
+The document file and version page image API were optimized by reusing the
+page object per request.
+
+The date and time of document version timestamps are now carried over
+during the upgrade from version 3.5.x to 4.0.x.
+
+Fixed the situation where the document type button was appearing. The cascade
+condition of the document type setup link was updated to correctly display
+when there are not document types created.
+
+
+Digital signatures
+^^^^^^^^^^^^^^^^^^
+
+The preparation of the GPG temporary home was improved. A temporary directory
+context manager is now used which also guarantees that the temporary folder
+will be removed even on failures.
+
+The document signature logic was updated to not assume that all signatures
+provide a ``date_time`` field.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+PIP was updated to version 21.1.2 and Django was updated from version 2.2.23
+to 2.2.24.
+
+
+Documentation
+^^^^^^^^^^^^^
+
+The Docker Compose installation and upgrade instructions we improved.
+PostgreSQL migration instructions were also added.
+
+
+Emailing
+^^^^^^^^
+
+The document email attachment was updated to send the active version instead
+of the last file uploaded. The email action will now export the active
+version and email that as an attachments. This mimics more closely the
+existing behavior of this feature before the document version were separated
+into versions and files.
+
+
+File metadata
+^^^^^^^^^^^^^
+
+The file metadata submit actions were updated to keep track of the user and
+apply it to the events committed.
+
+
+Metadata
+^^^^^^^^
+
+Fixed an issue with the document metadata add and edit actions which
+prevented the user value to be ignored at the event commit.
+
+
+Platform
+^^^^^^^^
+
+The direct deployment and Docker supervisord templates were unified. The
+direct deployment and the Docker image now use the same supervisord
+template.
+
+
+Testing
+^^^^^^^
+
+Event testing was improved for several apps. Events testing is now performed
+in an unified manner using the provided ``._clear_events()`` and
+``.get_test_events()``. This supercedes the imporing the ``Action`` model
+directly.
+
+
+Other
+^^^^^
+
+- Make optional the `user_id` argument of
+  `task_document_file_page_image_generate`.
+- Don't cache the missing items template to allow it to be removed when
+  the missing items are fixed.
+- Apply small optimization to ``MultipleObjectViewMixin``
+  ``.get_object_list()`` method. The method now reuses the existing
+  ``pk_list`` variable.
 
 
 Removals
