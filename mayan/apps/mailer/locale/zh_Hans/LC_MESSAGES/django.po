@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"POT-Creation-Date: 2021-06-21 22:21+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: bo feng <87289884@qq.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -60,7 +60,7 @@ msgstr "正文"
 msgid "The email profile that will be used to send this email."
 msgstr "将用于发送此电子邮件的电子邮件配置文件。"
 
-#: forms.py:71 models.py:54 views.py:216 workflow_actions.py:18
+#: forms.py:71 models.py:56 views.py:216 workflow_actions.py:18
 msgid "Mailing profile"
 msgstr "邮件配置文件"
 
@@ -68,7 +68,7 @@ msgstr "邮件配置文件"
 msgid "The driver to use when sending emails."
 msgstr "发送电子邮件时使用的驱动程序。"
 
-#: forms.py:78 models.py:68
+#: forms.py:78 models.py:70
 msgid "Backend"
 msgstr "后端"
 
@@ -96,7 +96,7 @@ msgstr "编辑"
 msgid "Mailing profiles list"
 msgstr "邮件配置文件列表"
 
-#: links.py:58 models.py:55
+#: links.py:58 models.py:57
 msgid "Mailing profiles"
 msgstr "邮件配置文件"
 
@@ -222,45 +222,45 @@ msgstr "文件路径"
 msgid "Django file based backend"
 msgstr "基于Django文件的后端"
 
-#: models.py:31
+#: models.py:33
 msgid "A short text describing the mailing profile."
 msgstr ""
 
-#: models.py:32
+#: models.py:34
 msgid "Label"
 msgstr "标签"
 
-#: models.py:36
+#: models.py:38
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
 msgstr "如果是默认值，则会在文档邮件表单上预先选择此邮件配置文件。"
 
-#: models.py:38
+#: models.py:40
 msgid "Default"
 msgstr "默认"
 
-#: models.py:40
+#: models.py:42
 msgid "Enabled"
 msgstr "启用"
 
-#: models.py:43
+#: models.py:45
 msgid "The dotted Python path to the backend class."
 msgstr ""
 
-#: models.py:44
+#: models.py:46
 msgid "Backend path"
 msgstr "后端路径"
 
-#: models.py:47
+#: models.py:49
 msgid "Backend data"
 msgstr "后端数据"
 
-#: models.py:69
+#: models.py:71
 msgid "The backend class for this entry."
 msgstr ""
 
-#: models.py:231
+#: models.py:239
 msgid "Test email from Mayan EDMS"
 msgstr "测试来自Mayan EDMS的电子邮件"
 

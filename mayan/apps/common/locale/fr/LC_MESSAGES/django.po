@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"POT-Creation-Date: 2021-06-21 22:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -242,7 +242,7 @@ msgstr "URL de l'installation ou de la page d'accueil du projet."
 msgid "Warning"
 msgstr "Avertissement"
 
-#: templates/common/app/viewport.html:21
+#: templates/common/app/viewport.html:23
 msgid "Click here to fix this."
 msgstr "Cliquez ici pour résoudre ce problème."
 

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"POT-Creation-Date: 2021-06-21 22:21+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -82,15 +82,15 @@ msgstr "Настройки метаданных файла"
 msgid "File metadata processing per type"
 msgstr "Обработать метаданные файла указанного типа"
 
-#: methods.py:36
+#: methods.py:41
 msgid "get_file_metadata(< file metadata dotted path >)"
 msgstr "get_file_metadata(< file metadata dotted path >)"
 
-#: methods.py:39
+#: methods.py:44
 msgid "Return the specified document file metadata entry."
 msgstr "Возвращает указанную запись метаданных файла документа."
 
-#: methods.py:66
+#: methods.py:71
 msgid "Return the specified document file file metadata entry."
 msgstr "Возвращает указанную запись метаданных файла файла документа."
 
@@ -248,17 +248,17 @@ msgstr[1] "Отправить выбранные файлы документа �
 msgstr[2] "Отправить выбранные файлы документа на обработку метаданных файла?"
 msgstr[3] "Отправить выбранные файлы документа на обработку метаданных файла?"
 
-#: views.py:145
+#: views.py:147
 #, python-format
 msgid "Edit file metadata settings for document type: %s"
 msgstr "Настройки метаданных файла для типа документа: %s"
 
-#: views.py:156
+#: views.py:158
 msgid "Submit all documents of a type for file metadata processing."
 msgstr ""
 "Отправить все документы указанного типа на обработку метаданных файла."
 
-#: views.py:180
+#: views.py:184
 #, python-format
 msgid "%(count)d documents added to the file metadata processing queue."
 msgstr ""

@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"POT-Creation-Date: 2021-06-21 22:21+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -54,19 +54,19 @@ msgstr ""
 
 #: apps.py:384
 msgid "File comments"
-msgstr ""
+msgstr "Dateikommentare"
 
 #: apps.py:388
 msgid "File encodings"
-msgstr ""
+msgstr "Dateikodierungen"
 
 #: apps.py:392
 msgid "File MIME types"
-msgstr ""
+msgstr "Datei-MIME-Typen"
 
 #: apps.py:396
 msgid "File timestamps"
-msgstr ""
+msgstr "Dateizeitstempel"
 
 #: apps.py:401 links/document_file_page_links.py:79
 #: models/document_file_models.py:120 models/document_file_page_models.py:42
@@ -81,15 +81,15 @@ msgstr "Seitennummer"
 
 #: apps.py:410
 msgid "Return the latest file of the document."
-msgstr ""
+msgstr "Die neueste Datei des Dokuments zurückgeben."
 
 #: apps.py:411
 msgid "Latest file"
-msgstr ""
+msgstr "Neueste Datei"
 
 #: apps.py:414
 msgid "Return the document instance."
-msgstr ""
+msgstr "Dokumentinstanz zurückgeben."
 
 #: apps.py:415 links/document_file_links.py:63
 #: links/document_file_page_links.py:73 links/document_version_links.py:75
@@ -120,7 +120,7 @@ msgstr "Original"
 
 #: classes.py:59
 msgid "Keeps the original filename of the uploaded file."
-msgstr ""
+msgstr "Behält den ursprünglichen Dateinamen der hochgeladenen Datei bei."
 
 #: classes.py:69 forms/document_forms.py:108 models/document_models.py:57
 msgid "UUID"
@@ -129,16 +129,19 @@ msgstr "UUID"
 #: classes.py:71
 msgid "Generates an immutable, random UUID (RFC 4122) for each file."
 msgstr ""
+"Generiert eine unveränderliche, zufällige UUID (RFC 4122) für jede Datei."
 
 #: classes.py:80
 msgid "UUID plus original"
-msgstr ""
+msgstr "UUID plus ursprünglicher Name"
 
 #: classes.py:82
 msgid ""
 "Generates an immutable, random UUID (RFC 4122) for each file and appends the"
 " original filename of the uploaded file."
 msgstr ""
+"Generiert eine unveränderliche, zufällige UUID (RFC 4122) für jede Datei und"
+" hängt den ursprünglichen Dateinamen der hochgeladenen Datei an."
 
 #: dashboard_widgets.py:23
 msgid "Total pages"
@@ -153,7 +156,7 @@ msgid "Documents in trash"
 msgstr "Dokumente im Papierkorb"
 
 #: dashboard_widgets.py:85 links/document_type_links.py:77
-#: links/document_type_links.py:84 permissions.py:80
+#: links/document_type_links.py:85 permissions.py:80
 #: views/document_type_views.py:79
 msgid "Document types"
 msgstr "Dokumententypen"
@@ -292,7 +295,7 @@ msgstr "Kodierung"
 
 #: forms/document_file_forms.py:51
 msgid "Size"
-msgstr ""
+msgstr "Größe"
 
 #: forms/document_file_forms.py:56
 msgid "Exists in storage"
@@ -300,7 +303,7 @@ msgstr "Im Dateispeicher"
 
 #: forms/document_file_forms.py:58
 msgid "Path in storage"
-msgstr ""
+msgstr "Speicherpfad"
 
 #: forms/document_file_forms.py:61 models/document_file_models.py:115
 msgid "Checksum"
@@ -325,7 +328,7 @@ msgstr ""
 
 #: forms/document_forms.py:104
 msgid "Date created"
-msgstr ""
+msgstr "Erstellungszeitpunkt"
 
 #: forms/document_forms.py:110 models/document_models.py:86
 msgid "Language"
@@ -357,7 +360,7 @@ msgstr ""
 msgid "Target page number can't be repeated."
 msgstr ""
 
-#: forms/misc_forms.py:12 literals.py:101
+#: forms/misc_forms.py:12 literals.py:102
 msgid "Page range"
 msgstr "Seitenbereich"
 
@@ -388,7 +391,7 @@ msgstr "Schnelldownload"
 
 #: links/document_file_links.py:47 links/document_file_links.py:69
 msgid "Files"
-msgstr ""
+msgstr "Dateien"
 
 #: links/document_file_links.py:51 links/document_version_links.py:69
 msgid "Print"
@@ -521,7 +524,7 @@ msgstr ""
 
 #: links/document_version_links.py:51
 msgid "Export"
-msgstr ""
+msgstr "Export"
 
 #: links/document_version_links.py:59 links/document_version_links.py:81
 msgid "Versions"
@@ -543,7 +546,7 @@ msgstr "Dokumentenversion"
 
 #: links/document_version_page_links.py:108
 #: models/document_version_page_models.py:75
-#: models/document_version_page_models.py:401
+#: models/document_version_page_models.py:402
 msgid "Document version pages"
 msgstr ""
 
@@ -591,55 +594,55 @@ msgstr ""
 msgid "Keep. Do not create a new version and keep the current version pages."
 msgstr ""
 
-#: literals.py:93
+#: literals.py:94
 msgid "January"
 msgstr "Januar"
 
-#: literals.py:93
+#: literals.py:94
 msgid "February"
 msgstr "Februar"
 
-#: literals.py:93
+#: literals.py:94
 msgid "March"
 msgstr "März"
 
-#: literals.py:93
+#: literals.py:94
 msgid "April"
 msgstr "April"
 
-#: literals.py:93
+#: literals.py:94
 msgid "May"
 msgstr "Mai"
 
-#: literals.py:94
+#: literals.py:95
 msgid "June"
 msgstr "Juni"
 
-#: literals.py:94
+#: literals.py:95
 msgid "July"
 msgstr "Juli"
 
-#: literals.py:94
+#: literals.py:95
 msgid "August"
 msgstr "August"
 
-#: literals.py:94
+#: literals.py:95
 msgid "September"
 msgstr "September"
 
-#: literals.py:94
+#: literals.py:95
 msgid "October"
 msgstr "Oktober"
 
-#: literals.py:95
+#: literals.py:96
 msgid "November"
 msgstr "November"
 
-#: literals.py:95
+#: literals.py:96
 msgid "December"
 msgstr "Dezember"
 
-#: literals.py:101
+#: literals.py:102
 msgid "All pages"
 msgstr "Alle Seiten"
 
@@ -688,7 +691,7 @@ msgstr ""
 #: models/document_models.py:70 models/document_models.py:290
 #: models/document_models.py:295 models/document_type_models.py:41
 #: models/document_type_models.py:202 models/document_version_models.py:219
-#: models/document_version_page_models.py:350
+#: models/document_version_page_models.py:351
 msgid "Label"
 msgstr "Bezeichner"
 
@@ -862,7 +865,7 @@ msgstr "Aktiv"
 
 #: models/document_version_models.py:65
 msgid "Document versions"
-msgstr ""
+msgstr "Dokumentversionen"
 
 #: models/document_version_models.py:136
 msgid "Document version export to PDF"
@@ -893,11 +896,11 @@ msgid "ID for the source object of the page."
 msgstr ""
 
 #: models/document_version_page_models.py:74
-#: models/document_version_page_models.py:400 search.py:141
+#: models/document_version_page_models.py:401 search.py:141
 msgid "Document version page"
 msgstr ""
 
-#: models/document_version_page_models.py:344
+#: models/document_version_page_models.py:345
 #, python-format
 msgid "%(document_version)s page %(page_number)d of %(total_pages)d"
 msgstr ""
@@ -953,11 +956,11 @@ msgstr "Dokumente anzeigen"
 
 #: permissions.py:28
 msgid "Delete document files"
-msgstr ""
+msgstr "Dokumentendateien löschen"
 
 #: permissions.py:31
 msgid "Edit document files"
-msgstr ""
+msgstr "Dokumentendateien bearbeiten"
 
 #: permissions.py:34
 msgid "Download document files"
@@ -969,7 +972,7 @@ msgstr ""
 
 #: permissions.py:40
 msgid "Print document files"
-msgstr ""
+msgstr "Dokumentendateien drucken"
 
 #: permissions.py:43
 msgid "Execute document file modifying tools"

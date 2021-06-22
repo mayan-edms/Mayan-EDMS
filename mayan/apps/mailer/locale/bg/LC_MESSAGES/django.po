@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"POT-Creation-Date: 2021-06-21 22:21+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -62,7 +62,7 @@ msgstr "Съдържание"
 msgid "The email profile that will be used to send this email."
 msgstr "Профилът на имейла, който ще се използва за изпращане на този имейл."
 
-#: forms.py:71 models.py:54 views.py:216 workflow_actions.py:18
+#: forms.py:71 models.py:56 views.py:216 workflow_actions.py:18
 msgid "Mailing profile"
 msgstr "Профил за изпращане на електронно съобщение"
 
@@ -70,7 +70,7 @@ msgstr "Профил за изпращане на електронно съоб�
 msgid "The driver to use when sending emails."
 msgstr "Драйверът, който се използва при изпращане на електронни съобщения."
 
-#: forms.py:78 models.py:68
+#: forms.py:78 models.py:70
 msgid "Backend"
 msgstr "Бекенд"
 
@@ -98,7 +98,7 @@ msgstr "Редактиране"
 msgid "Mailing profiles list"
 msgstr "Списък с пощенски профили"
 
-#: links.py:58 models.py:55
+#: links.py:58 models.py:57
 msgid "Mailing profiles"
 msgstr "Пощенски профили"
 
@@ -238,15 +238,15 @@ msgstr "Файлов път"
 msgid "Django file based backend"
 msgstr "Файл базиран на Джанго бекенд"
 
-#: models.py:31
+#: models.py:33
 msgid "A short text describing the mailing profile."
 msgstr "Кратък текст, описващ потребителския профил за изпращане."
 
-#: models.py:32
+#: models.py:34
 msgid "Label"
 msgstr "Етикет"
 
-#: models.py:36
+#: models.py:38
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
@@ -254,31 +254,31 @@ msgstr ""
 "Ако е по подразбиране, този пощенски профил ще бъде предварително избран във"
 " формата за изпращане на документи."
 
-#: models.py:38
+#: models.py:40
 msgid "Default"
 msgstr "По подразбиране"
 
-#: models.py:40
+#: models.py:42
 msgid "Enabled"
 msgstr "Активиран"
 
-#: models.py:43
+#: models.py:45
 msgid "The dotted Python path to the backend class."
 msgstr "Пунктиран Python път към бекенд клас."
 
-#: models.py:44
+#: models.py:46
 msgid "Backend path"
 msgstr "Път към бекенда"
 
-#: models.py:47
+#: models.py:49
 msgid "Backend data"
 msgstr "Данни за бекенда"
 
-#: models.py:69
+#: models.py:71
 msgid "The backend class for this entry."
 msgstr "Бекенд клас за този запис."
 
-#: models.py:231
+#: models.py:239
 msgid "Test email from Mayan EDMS"
 msgstr "Тестов имейл от Mayan EDMS"
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"POT-Creation-Date: 2021-06-21 22:21+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -62,7 +62,7 @@ msgid "The email profile that will be used to send this email."
 msgstr ""
 "ملف تعريف البريد الإلكتروني الذي سيتم استخدامه لإرسال هذا البريد الإلكتروني."
 
-#: forms.py:71 models.py:54 views.py:216 workflow_actions.py:18
+#: forms.py:71 models.py:56 views.py:216 workflow_actions.py:18
 msgid "Mailing profile"
 msgstr "قالب البريد الإلكتروني"
 
@@ -70,7 +70,7 @@ msgstr "قالب البريد الإلكتروني"
 msgid "The driver to use when sending emails."
 msgstr "برنامج التشغيل الذي يجب استخدامه عند إرسال رسائل البريد الإلكتروني."
 
-#: forms.py:78 models.py:68
+#: forms.py:78 models.py:70
 msgid "Backend"
 msgstr "في الخفاء"
 
@@ -98,7 +98,7 @@ msgstr "تعديل"
 msgid "Mailing profiles list"
 msgstr "قائمة قوالب البريد الإلكتروني"
 
-#: links.py:58 models.py:55
+#: links.py:58 models.py:57
 msgid "Mailing profiles"
 msgstr "قوالب البريد الإلكتروني"
 
@@ -232,15 +232,15 @@ msgstr "مسار الملف"
 msgid "Django file based backend"
 msgstr "ملف Django القائم على الخلفية"
 
-#: models.py:31
+#: models.py:33
 msgid "A short text describing the mailing profile."
 msgstr "وصف قالب البريد الإلكتروني"
 
-#: models.py:32
+#: models.py:34
 msgid "Label"
 msgstr "العنوان"
 
-#: models.py:36
+#: models.py:38
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
@@ -248,31 +248,31 @@ msgstr ""
 "سيتم تحديد ملف التعريف هذا مسبقًا في نموذج إرسال االوثائق  بالبريد "
 "الإلكتروني."
 
-#: models.py:38
+#: models.py:40
 msgid "Default"
 msgstr "القيمة الإفتراضية"
 
-#: models.py:40
+#: models.py:42
 msgid "Enabled"
 msgstr "مفعل"
 
-#: models.py:43
+#: models.py:45
 msgid "The dotted Python path to the backend class."
 msgstr "مسار النظام"
 
-#: models.py:44
+#: models.py:46
 msgid "Backend path"
 msgstr "الرابط الخاص بالمبرمجين"
 
-#: models.py:47
+#: models.py:49
 msgid "Backend data"
 msgstr "بيانات الخاصة بالمبرمجين"
 
-#: models.py:69
+#: models.py:71
 msgid "The backend class for this entry."
 msgstr "فئة الواجهة الخلفية لهذا الإدخال."
 
-#: models.py:231
+#: models.py:239
 msgid "Test email from Mayan EDMS"
 msgstr "اختبار البريد الإلكتروني من Mayan EDMS"
 

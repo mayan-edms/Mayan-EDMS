@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"POT-Creation-Date: 2021-06-21 22:21+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -63,7 +63,7 @@ msgstr "Corpo"
 msgid "The email profile that will be used to send this email."
 msgstr "Il profilo e-mail che verrà utilizzato per inviare questa e-mail."
 
-#: forms.py:71 models.py:54 views.py:216 workflow_actions.py:18
+#: forms.py:71 models.py:56 views.py:216 workflow_actions.py:18
 msgid "Mailing profile"
 msgstr "Profilo mailing"
 
@@ -71,7 +71,7 @@ msgstr "Profilo mailing"
 msgid "The driver to use when sending emails."
 msgstr "Il driver da utilizzare durante l'invio di e-mail."
 
-#: forms.py:78 models.py:68
+#: forms.py:78 models.py:70
 msgid "Backend"
 msgstr "backend"
 
@@ -99,7 +99,7 @@ msgstr "Modifica"
 msgid "Mailing profiles list"
 msgstr "Elenco dei profili di posta"
 
-#: links.py:58 models.py:55
+#: links.py:58 models.py:57
 msgid "Mailing profiles"
 msgstr "Profili di posta"
 
@@ -240,15 +240,15 @@ msgstr "Percorso del file"
 msgid "Django file based backend"
 msgstr "Backend basato su file Django"
 
-#: models.py:31
+#: models.py:33
 msgid "A short text describing the mailing profile."
 msgstr "Un breve testo che descrive il profilo di posta."
 
-#: models.py:32
+#: models.py:34
 msgid "Label"
 msgstr "Etichetta"
 
-#: models.py:36
+#: models.py:38
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
@@ -256,31 +256,31 @@ msgstr ""
 "Se predefinito, questo profilo di posta sarà preselezionato nel modulo di "
 "spedizione del documento."
 
-#: models.py:38
+#: models.py:40
 msgid "Default"
 msgstr "Default"
 
-#: models.py:40
+#: models.py:42
 msgid "Enabled"
 msgstr "Abilitato"
 
-#: models.py:43
+#: models.py:45
 msgid "The dotted Python path to the backend class."
 msgstr "Il percorso punteggiato di Python alla classe back-end."
 
-#: models.py:44
+#: models.py:46
 msgid "Backend path"
 msgstr "Percorso di backend"
 
-#: models.py:47
+#: models.py:49
 msgid "Backend data"
 msgstr "Dati di backend"
 
-#: models.py:69
+#: models.py:71
 msgid "The backend class for this entry."
 msgstr "La classe di backend per questa voce."
 
-#: models.py:231
+#: models.py:239
 msgid "Test email from Mayan EDMS"
 msgstr "Email di prova da Maya EDMS"
 
