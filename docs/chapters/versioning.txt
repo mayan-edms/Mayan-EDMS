@@ -44,5 +44,5 @@ There is no limit to the number of versions a document can have.
         document -> versions;
    }
 
-By default, the last version will be showed when working with the document
+By default, the last version will be shown when working with the document
 but any of the versions can be inspected and viewed.
