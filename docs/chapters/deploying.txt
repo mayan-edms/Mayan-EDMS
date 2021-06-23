@@ -255,6 +255,11 @@ the concurrency of the task workers.
 
        CELERY_BROKER_URL="amqp://|DEFAULT_RABBITMQ_USER|:|DEFAULT_RABBITMQ_PASSWORD|@127.0.0.1:5672/|DEFAULT_RABBITMQ_VHOST|"
 
+   .. note::
+
+       Only replace the ``CELERY_BROKER_URL`` setting to use RabbitMQ,
+       the ``CELERY_RESULT_BACKEND`` setting should remain unchanged.
+
 
 #. Increase the number of Gunicorn workers. Use 2 to 4 times the number of CPU cores. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|`` and change only the ``-w`` argument. Example for 3 workers:
 
