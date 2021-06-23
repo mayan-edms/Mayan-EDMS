@@ -37,6 +37,7 @@
   ``pk_list`` variable.
 - Fixed an issue with the document metadata add and edit actions which
   prevented the user value to be ignored at the event commit.
+- Update Docker base image from Debian:10.8-slim to Debian:10.10-slim.
 
 4.0.7 (2021-06-11)
 ==================
