@@ -5,7 +5,7 @@
 #              Mayan EDMS.
 ####
 
-FROM debian:10.9-slim as base_image
+FROM {{ DOCKER_LINUX_IMAGE_VERSION }} as base_image
 
 LABEL maintainer="Roberto Rosario roberto.rosario@mayan-edms.com"
 

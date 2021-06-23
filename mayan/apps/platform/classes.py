@@ -139,24 +139,9 @@ class PlatformTemplateDockerEntrypoint(PlatformTemplate):
         return context
 
 
-class PlatformTemplateDockerSupervisord(PlatformTemplate):
-    label = _('Template for Supervisord inside a Docker image.')
-    name = 'docker_supervisord'
-
-    def get_context(self):
-        return {
-            'autorestart': 'false',
-            'stderr_logfile': '/dev/fd/2',
-            'stderr_logfile_maxbytes': '0',
-            'stdout_logfile': '/dev/fd/1',
-            'stdout_logfile_maxbytes': '0',
-            'workers': Worker.all()
-        }
-
-
-class PlatformTemplateGitLabCI(PlatformTemplate):
-    label = _('Template that generates a GitLab CI config file.')
-    name = 'gitlab-ci'
+class PlatformTemplateDockerfile(PlatformTemplate):
+    label = _('Template that generates a Dockerfile file.')
+    name = 'dockerfile'
 
     def __init__(self):
         self.variables = (
@@ -194,6 +179,35 @@ class PlatformTemplateGitLabCI(PlatformTemplate):
                 name='DOCKER_POSTGRES_IMAGE_VERSION',
                 default=DOCKER_POSTGRES_IMAGE_VERSION,
                 environment_name='MAYAN_DOCKER_POSTGRES_IMAGE_VERSION'
+            ),
+        )
+
+
+class PlatformTemplateDockerSupervisord(PlatformTemplate):
+    label = _('Template for Supervisord inside a Docker image.')
+    name = 'docker_supervisord'
+
+    def get_context(self):
+        return {
+            'autorestart': 'false',
+            'stderr_logfile': '/dev/fd/2',
+            'stderr_logfile_maxbytes': '0',
+            'stdout_logfile': '/dev/fd/1',
+            'stdout_logfile_maxbytes': '0',
+            'workers': Worker.all()
+        }
+
+
+class PlatformTemplateGitLabCI(PlatformTemplate):
+    label = _('Template that generates a GitLab CI config file.')
+    name = 'gitlab-ci'
+
+    def __init__(self):
+        self.variables = (
+            Variable(
+                name='DOCKER_LINUX_IMAGE_VERSION',
+                default=DOCKER_LINUX_IMAGE_VERSION,
+                environment_name='MAYAN_DOCKER_LINUX_IMAGE_VERSION'
             ),
         )
 
@@ -287,6 +301,7 @@ class PlatformTemplateWorkerQueues(PlatformTemplate):
 
 
 PlatformTemplate.register(klass=PlatformTemplateDockerEntrypoint)
+PlatformTemplate.register(klass=PlatformTemplateDockerfile)
 PlatformTemplate.register(klass=PlatformTemplateDockerSupervisord)
 PlatformTemplate.register(klass=PlatformTemplateGitLabCI)
 PlatformTemplate.register(klass=PlatformTemplateSupervisord)
