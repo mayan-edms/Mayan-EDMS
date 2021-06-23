@@ -146,6 +146,35 @@ class PlatformTemplateDockerfile(PlatformTemplate):
     def __init__(self):
         self.variables = (
             Variable(
+                name='DOCKER_LINUX_IMAGE_VERSION',
+                default=DOCKER_LINUX_IMAGE_VERSION,
+                environment_name='MAYAN_DOCKER_LINUX_IMAGE_VERSION'
+            ),
+        )
+
+
+class PlatformTemplateDockerSupervisord(PlatformTemplate):
+    label = _('Template for Supervisord inside a Docker image.')
+    name = 'docker_supervisord'
+
+    def get_context(self):
+        return {
+            'autorestart': 'false',
+            'stderr_logfile': '/dev/fd/2',
+            'stderr_logfile_maxbytes': '0',
+            'stdout_logfile': '/dev/fd/1',
+            'stdout_logfile_maxbytes': '0',
+            'workers': Worker.all()
+        }
+
+
+class PlatformTemplateGitLabCI(PlatformTemplate):
+    label = _('Template that generates a GitLab CI config file.')
+    name = 'gitlab-ci'
+
+    def __init__(self):
+        self.variables = (
+            Variable(
                 name='DEFAULT_DATABASE_NAME',
                 default=DEFAULT_DATABASE_NAME,
                 environment_name='MAYAN_DEFAULT_DATABASE_NAME'
@@ -182,34 +211,6 @@ class PlatformTemplateDockerfile(PlatformTemplate):
             ),
         )
 
-
-class PlatformTemplateDockerSupervisord(PlatformTemplate):
-    label = _('Template for Supervisord inside a Docker image.')
-    name = 'docker_supervisord'
-
-    def get_context(self):
-        return {
-            'autorestart': 'false',
-            'stderr_logfile': '/dev/fd/2',
-            'stderr_logfile_maxbytes': '0',
-            'stdout_logfile': '/dev/fd/1',
-            'stdout_logfile_maxbytes': '0',
-            'workers': Worker.all()
-        }
-
-
-class PlatformTemplateGitLabCI(PlatformTemplate):
-    label = _('Template that generates a GitLab CI config file.')
-    name = 'gitlab-ci'
-
-    def __init__(self):
-        self.variables = (
-            Variable(
-                name='DOCKER_LINUX_IMAGE_VERSION',
-                default=DOCKER_LINUX_IMAGE_VERSION,
-                environment_name='MAYAN_DOCKER_LINUX_IMAGE_VERSION'
-            ),
-        )
 
 
 class PlatformTemplateSupervisord(PlatformTemplate):
