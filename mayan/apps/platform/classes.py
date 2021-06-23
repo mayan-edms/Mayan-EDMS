@@ -11,7 +11,10 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.serialization import yaml_dump, yaml_load
 from mayan.apps.task_manager.classes import Worker
 from mayan.settings.literals import (
+    DEFAULT_DATABASE_NAME, DEFAULT_DATABASE_PASSWORD, DEFAULT_DATABASE_USER,
     DEFAULT_DIRECTORY_INSTALLATION, DEFAULT_USER_SETTINGS_FOLDER,
+    DOCKER_DIND_IMAGE_VERSION, DOCKER_LINUX_IMAGE_VERSION,
+    DOCKER_MYSQL_IMAGE_VERSION, DOCKER_POSTGRES_IMAGE_VERSION,
     GUNICORN_JITTER, GUNICORN_LIMIT_REQUEST_LINE, GUNICORN_MAX_REQUESTS,
     GUNICORN_TIMEOUT, GUNICORN_WORKER_CLASS, GUNICORN_WORKERS
 )
@@ -151,6 +154,50 @@ class PlatformTemplateDockerSupervisord(PlatformTemplate):
         }
 
 
+class PlatformTemplateGitLabCI(PlatformTemplate):
+    label = _('Template that generates a GitLab CI config file.')
+    name = 'gitlab-ci'
+
+    def __init__(self):
+        self.variables = (
+            Variable(
+                name='DEFAULT_DATABASE_NAME',
+                default=DEFAULT_DATABASE_NAME,
+                environment_name='MAYAN_DEFAULT_DATABASE_NAME'
+            ),
+            Variable(
+                name='DEFAULT_DATABASE_PASSWORD',
+                default=DEFAULT_DATABASE_PASSWORD,
+                environment_name='MAYAN_DEFAULT_DATABASE_PASSWORD'
+            ),
+            Variable(
+                name='DEFAULT_DATABASE_USER',
+                default=DEFAULT_DATABASE_USER,
+                environment_name='MAYAN_DEFAULT_DATABASE_USER'
+            ),
+            Variable(
+                name='DOCKER_DIND_IMAGE_VERSION',
+                default=DOCKER_DIND_IMAGE_VERSION,
+                environment_name='MAYAN_DOCKER_DIND_IMAGE_VERSION'
+            ),
+            Variable(
+                name='DOCKER_LINUX_IMAGE_VERSION',
+                default=DOCKER_LINUX_IMAGE_VERSION,
+                environment_name='MAYAN_DOCKER_LINUX_IMAGE_VERSION'
+            ),
+            Variable(
+                name='DOCKER_MYSQL_IMAGE_VERSION',
+                default=DOCKER_MYSQL_IMAGE_VERSION,
+                environment_name='MAYAN_DOCKER_MYSQL_IMAGE_VERSION'
+            ),
+            Variable(
+                name='DOCKER_POSTGRES_IMAGE_VERSION',
+                default=DOCKER_POSTGRES_IMAGE_VERSION,
+                environment_name='MAYAN_DOCKER_POSTGRES_IMAGE_VERSION'
+            ),
+        )
+
+
 class PlatformTemplateSupervisord(PlatformTemplate):
     label = _('Template for Supervisord.')
     name = 'supervisord'
@@ -241,5 +288,6 @@ class PlatformTemplateWorkerQueues(PlatformTemplate):
 
 PlatformTemplate.register(klass=PlatformTemplateDockerEntrypoint)
 PlatformTemplate.register(klass=PlatformTemplateDockerSupervisord)
+PlatformTemplate.register(klass=PlatformTemplateGitLabCI)
 PlatformTemplate.register(klass=PlatformTemplateSupervisord)
 PlatformTemplate.register(klass=PlatformTemplateWorkerQueues)
