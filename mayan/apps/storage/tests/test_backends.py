@@ -77,9 +77,10 @@ class ZipCompressedPassthroughStorageTestCase(BaseTestCase):
         path_file = Path(self.temporary_directory) / test_file_name
 
         with path_file.open(mode='rb') as file_object:
-            self.assertEqual(
-                get_mimetype(file_object=file_object),
-                ('application/zip', 'binary')
+            self.assertTrue(
+                get_mimetype(
+                    file_object=file_object, mime=False, mimetype_only=True
+                )[0].startswith('Zip archive data, made by v2.0')
             )
 
         with path_file.open(mode='rb') as file_object:
