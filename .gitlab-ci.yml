@@ -135,7 +135,7 @@ job_documentation_build:
     - apt-get install -qq enchant make python3-venv python3-dev
     - python3 -m venv venv
     - . venv/bin/activate
-  image:debian:10.9-slim
+  image: debian:10.9-slim
   only:
     - releases/all_major
     - releases/documentation
