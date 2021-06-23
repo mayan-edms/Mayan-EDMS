@@ -1,4 +1,4 @@
-4.0.8 (2021-06-21)
+4.0.8 (2021-06-23)
 ==================
 - Update PIP to version 21.1.2.
 - Use longer version of the Celery worker option.
@@ -37,7 +37,9 @@
   ``pk_list`` variable.
 - Fixed an issue with the document metadata add and edit actions which
   prevented the user value to be ignored at the event commit.
+- Convert the GitLab CI and Dockerfile into platform templates.
 - Update Docker base image from Debian:10.8-slim to Debian:10.10-slim.
+- Add config entry ``DEFAULT_USER_SETTINGS_MODULE``.
 
 4.0.7 (2021-06-11)
 ==================

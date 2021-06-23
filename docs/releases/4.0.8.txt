@@ -1,7 +1,7 @@
 Version 4.0.8
 =============
 
-Released: June 21, 2021
+Released: June 23, 2021
 
 Changes
 -------
@@ -17,6 +17,19 @@ efficiency of the workers. Message consumption rate was increased for the
 
 The readability Celery worker options was improved by using the long version
 of the options.
+
+
+Docker
+^^^^^^
+
+The Docker base image was updated from Debian:10.8-slim to Debian:10.10-slim.
+
+The example RabbitMQ container entry in the Docker Compose file was updated
+to include the entries necessary to enable the image with the management
+plugin.
+
+A new chapter was added explaining document files. The document version
+chapter was updated to include the changes since version 4.0.
 
 
 Document parsing
@@ -95,6 +108,10 @@ Platform
 The direct deployment and Docker supervisord templates were unified. The
 direct deployment and the Docker image now use the same supervisord
 template.
+
+The GitLab CI configuration files and the Dockerfile were converted into
+templates. This allows these to use the same settings and Docker image
+tags as the rest of the project without requiring manual updates.
 
 
 Testing
