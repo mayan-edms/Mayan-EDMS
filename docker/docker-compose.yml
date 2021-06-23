@@ -208,6 +208,8 @@ services:
   #     RABBITMQ_DEFAULT_VHOST: ${MAYAN_RABBITMQ_VHOST:-mayan}
   #   networks:
   #     - bridge
+  #   ports:
+  #     - "15672:15672"
   #   restart: unless-stopped
   #   volumes:
   #      - ${MAYAN_RABBITMQ_VOLUME:-rabbitmq}:/var/lib/rabbitmq
