@@ -13,7 +13,7 @@ user = mayan
 {% endspaceless_plus %}
 {% for worker in workers %}
 {% spaceless_plus %}
-[program:mayan-edms-{{ worker.name }}
+[program:mayan-edms-{{ worker.name }}]
 autorestart = {{ autorestart }}
 autostart = true
 command = nice -n {{ worker.nice_level }} /bin/bash -c "${MAYAN_PYTHON_BIN_DIR}celery worker -A mayan -Ofair -l ERROR -Q {% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} --hostname=mayan-edms-{{ worker.name }}.%%h ${MAYAN_{{ worker.name|upper }}_CONCURRENCY} ${MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD} ${MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD}"
