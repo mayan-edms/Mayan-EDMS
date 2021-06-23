@@ -212,7 +212,6 @@ class PlatformTemplateGitLabCI(PlatformTemplate):
         )
 
 
-
 class PlatformTemplateSupervisord(PlatformTemplate):
     label = _('Template for Supervisord.')
     name = 'supervisord'
