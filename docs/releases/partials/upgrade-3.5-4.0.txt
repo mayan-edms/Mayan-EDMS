@@ -57,7 +57,7 @@ Direct deployment
    .. code-block:: bash
 
     sudo -u |DEFAULT_OS_USERNAME| mkdir --parents |MAYAN_MEDIA_ROOT||DEFAULT_USER_SETTINGS_FOLDER|
-    sudo -u |DEFAULT_OS_USERNAME| touch |MAYAN_MEDIA_ROOT||DEFAULT_USER_SETTINGS_FOLDER|/__init__.py
+    sudo -u |DEFAULT_OS_USERNAME| touch |MAYAN_MEDIA_ROOT||DEFAULT_USER_SETTINGS_FOLDER|__init__.py
 
 
 #. Update the Redis configuration to serve at least 3 databases:
@@ -132,5 +132,5 @@ The upgrade procedure is now complete.
 Docker Compose
 """"""""""""""
 
-Check the :doc:`Docker upgrading<../chapters/docker/upgrading>` chapter for
+Check the :doc:`Docker upgrading</chapters/docker/upgrading>` chapter for
 the complete upgrade process.

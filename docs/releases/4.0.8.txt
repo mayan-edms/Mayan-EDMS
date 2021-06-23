@@ -154,5 +154,7 @@ Issues closed
 -------------
 
 - :gitlab-issue:`1001` Possibly worng path in supervisor config
+- :gitlab-issue:`1006` CELERY_RESULT_BACKEND setting in RabbitMQ unclear in Documentation
+- :gitlab-issue:`1007` Typo in Advanced Deployment section
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
