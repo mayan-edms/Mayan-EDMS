@@ -241,7 +241,7 @@ the concurrency of the task workers.
        sudo rabbitmqctl set_permissions -p |DEFAULT_RABBITMQ_VHOST| |DEFAULT_RABBITMQ_USER| ".*" ".*" ".*"
 
 
-#. Edit the config file at ``|MAYAN_MEDIA_ROOT|/config.yml``:
+#. Edit the config file at ``|MAYAN_MEDIA_ROOT|config.yml``:
 
    Replace:
 
