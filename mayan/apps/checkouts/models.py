@@ -10,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.models import Document
 
-from .events import event_document_check_out
+from .events import event_document_checked_out
 from .exceptions import DocumentAlreadyCheckedOut
 from .managers import (
     DocumentCheckoutBusinessLogicManager, DocumentCheckoutManager
@@ -83,7 +83,7 @@ class DocumentCheckout(models.Model):
         with transaction.atomic():
             result = super().save(*args, **kwargs)
             if is_new:
-                event_document_check_out.commit(
+                event_document_checked_out.commit(
                     actor=self.user, target=self.document
                 )
 

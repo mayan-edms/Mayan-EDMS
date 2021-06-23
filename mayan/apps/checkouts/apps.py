@@ -13,8 +13,8 @@ from mayan.apps.navigation.classes import SourceColumn
 
 from .dashboard_widgets import DashboardWidgetTotalCheckouts
 from .events import (
-    event_document_auto_check_in, event_document_check_in,
-    event_document_check_out, event_document_forceful_check_in
+    event_document_auto_checked_in, event_document_checked_in,
+    event_document_checked_out, event_document_forcefully_checked_in
 )
 from .hooks import hook_is_new_file_allowed
 from .links import (
@@ -69,8 +69,8 @@ class CheckoutsApp(MayanAppConfig):
 
         ModelEventType.register(
             model=Document, event_types=(
-                event_document_auto_check_in, event_document_check_in,
-                event_document_check_out, event_document_forceful_check_in
+                event_document_auto_checked_in, event_document_checked_in,
+                event_document_checked_out, event_document_forcefully_checked_in
             )
         )
 
