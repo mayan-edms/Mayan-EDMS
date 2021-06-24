@@ -133,6 +133,8 @@ Other
 - Apply small optimization to ``MultipleObjectViewMixin``
   ``.get_object_list()`` method. The method now reuses the existing
   ``pk_list`` variable.
+- Add serializer explicit read only fields.
+- Optimize documents app saves with `update_fields`.
 
 
 Removals
