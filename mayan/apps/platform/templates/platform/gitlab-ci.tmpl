@@ -131,8 +131,8 @@ job_documentation_build:
     paths:
     - docs
   before_script:
-    - apt-get -qq update
-    - apt-get install -qq enchant make python3-venv python3-dev
+    - apt-get update
+    - apt-get install --yes enchant make python3-venv python3-dev
     - python3 -m venv venv
     - . venv/bin/activate
   image: {{ DOCKER_LINUX_IMAGE_VERSION }}
@@ -151,7 +151,7 @@ job_documentation_push:
     - chmod 700 ~/.ssh
     - echo "$DOCUMENTATION_SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
-    - 'which ssh-agent || ( apt-get update --yes && apt-get install -qq openssh-client rsync --yes )'
+    - 'which ssh-agent || ( apt-get update --yes && apt-get install --yes openssh-client rsync )'
     - eval $(ssh-agent -s)
     - echo "$DOCUMENTATION_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
   image: {{ DOCKER_LINUX_IMAGE_VERSION }}
@@ -172,8 +172,8 @@ job_python_build:
     - dist
   before_script:
     - set -a && . ./config.env && set +a
-    - apt-get -qq update
-    - apt-get install -qq make python3-venv python3-dev
+    - apt-get update
+    - apt-get install --yes make python3-venv python3-dev
     - python3 -m venv venv
     - . venv/bin/activate
     - pip install pip==$PYTHON_PIP_VERSION
@@ -192,8 +192,8 @@ job_python_build:
 job_python_push_pypi:
   before_script:
     - set -a && . ./config.env && set +a
-    - apt-get -qq update
-    - apt-get install -qq make python3-venv python3-dev
+    - apt-get update
+    - apt-get install --yes make python3-venv python3-dev
     - python3 -m venv venv
     - . venv/bin/activate
     - pip install pip==$PYTHON_PIP_VERSION
@@ -217,8 +217,8 @@ job_python_push_pypi:
     - set -a && . ./config.env && set +a
     - echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
     - echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
-    - apt-get -qq update
-    - apt-get install -qq curl exiftool gcc ghostscript gnupg1 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python3-venv python3-dev tesseract-ocr
+    - apt-get update
+    - apt-get install --yes curl exiftool gcc ghostscript gnupg1 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python3-venv python3-dev tesseract-ocr
     - python3 -m venv venv
     - . venv/bin/activate
     - pip install pip==$PYTHON_PIP_VERSION
@@ -244,11 +244,11 @@ job_python_push_pypi:
 job_mysql_upgrade_test:
   <<: *job_base_upgrade_test
   script:
-    - apt-get install -qq default-libmysqlclient-dev default-mysql-client libssl-dev
+    - apt-get install --yes default-libmysqlclient-dev default-mysql-client libssl-dev
     - . venv/bin/activate
     - pip install mysqlclient==$PYTHON_MYSQL_VERSION
-    - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
-    - export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'{{ DEFAULT_DATABASE_NAME }}','PASSWORD':'{{ DEFAULT_DATABASE_PASSWORD }}','USER':'{{ DEFAULT_DATABASE_USER }}','HOST':'$MYSQL_PORT_3306_TCP_ADDR'}}"
+    - mysql --host="$MYSQL_PORT_3306_TCP_ADDR" --port="$MYSQL_PORT_3306_TCP_PORT" --user=root --password="$MYSQL_ENV_MYSQL_ROOT_PASSWORD" --execute="set global character_set_server=utf8mb4;" --ssl=TRUE
+    - export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'{{ DEFAULT_DATABASE_NAME }}','PASSWORD':'{{ DEFAULT_DATABASE_PASSWORD }}','USER':'{{ DEFAULT_DATABASE_USER }}','HOST':'$MYSQL_PORT_3306_TCP_ADDR','OPTIONS':{'ssl':True}}}"
     - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
     - pip install dist/mayan_edms-*.whl
     - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
@@ -265,7 +265,7 @@ job_mysql_upgrade_test:
 job_postgres_upgrade_test:
   <<: *job_base_upgrade_test
   script:
-    - apt-get install -qq libpq-dev
+    - apt-get install --yes libpq-dev
     - . venv/bin/activate
     - pip install psycopg2==$PYTHON_PSYCOPG2_VERSION
     - export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'{{ DEFAULT_DATABASE_NAME }}','PASSWORD':'{{ DEFAULT_DATABASE_PASSWORD }}','USER':'{{ DEFAULT_DATABASE_USER }}','HOST':'postgres'}}"
@@ -296,9 +296,9 @@ job_sqlite_upgrade_test:
     - set -a && . ./config.env && set +a
     - echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
     - echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
-    - apt-get -qq update
-    - apt-get install --yes --no-install-recommends --target-release buster-backports -qq libreoffice-calc-nogui libreoffice-draw-nogui libreoffice-impress-nogui libreoffice-math-nogui libreoffice-writer-nogui
-    - apt-get install --yes --no-install-recommends -qq curl exiftool gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python3-venv python3-dev sane-utils tesseract-ocr tesseract-ocr-deu
+    - apt-get update
+    - apt-get install --yes --no-install-recommends --target-release buster-backports libreoffice-calc-nogui libreoffice-draw-nogui libreoffice-impress-nogui libreoffice-math-nogui libreoffice-writer-nogui
+    - apt-get install --yes --no-install-recommends curl exiftool gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python3-venv python3-dev sane-utils tesseract-ocr tesseract-ocr-deu
     - python3 -m venv venv
     - . venv/bin/activate
     - pip install pip==$PYTHON_PIP_VERSION
@@ -321,11 +321,12 @@ job_sqlite_upgrade_test:
 job_postgres_test:
   <<: *job_base_test
   script:
-    - apt-get install -qq libpq-dev
+    - apt-get install --yes libpq-dev
     - . venv/bin/activate
     - pip install psycopg2==$PYTHON_PSYCOPG2_VERSION
-    - make test-all SETTINGS=mayan.settings.testing.gitlab-ci.db_postgres
-    - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci.db_postgres
+    - export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'{{ DEFAULT_DATABASE_NAME }}','PASSWORD':'{{ DEFAULT_DATABASE_PASSWORD }}','USER':'{{ DEFAULT_DATABASE_USER }}','HOST':'postgres'}}"
+    - make test-all SETTINGS=mayan.settings.testing.gitlab-ci
+    - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci
   services:
     - {{ DOCKER_POSTGRES_IMAGE_VERSION }}
   tags:
