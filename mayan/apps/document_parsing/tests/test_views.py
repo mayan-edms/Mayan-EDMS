@@ -5,7 +5,7 @@ from mayan.apps.documents.tests.literals import TEST_HYBRID_DOCUMENT
 
 from ..events import (
     event_parsing_document_file_content_deleted,
-    event_parsing_document_file_finish, event_parsing_document_file_submit
+    event_parsing_document_file_finished, event_parsing_document_file_submitted
 )
 from ..models import DocumentFilePageContent
 from ..permissions import (
@@ -255,14 +255,14 @@ class DocumentFileContentParsingViewsTestCase(
         self.assertEqual(events[0].action_object, self.test_document)
         self.assertEqual(events[0].target, self.test_document_file)
         self.assertEqual(
-            events[0].verb, event_parsing_document_file_submit.id
+            events[0].verb, event_parsing_document_file_submitted.id
         )
 
         self.assertEqual(events[1].actor, self._test_case_user)
         self.assertEqual(events[1].action_object, self.test_document)
         self.assertEqual(events[1].target, self.test_document_file)
         self.assertEqual(
-            events[1].verb, event_parsing_document_file_finish.id
+            events[1].verb, event_parsing_document_file_finished.id
         )
 
     def test_trashed_document_file_parsing_submit_view_with_access(self):
@@ -359,14 +359,14 @@ class DocumentTypeParsingViewsTestCase(
         self.assertEqual(events[0].action_object, self.test_document)
         self.assertEqual(events[0].target, self.test_document_file)
         self.assertEqual(
-            events[0].verb, event_parsing_document_file_submit.id
+            events[0].verb, event_parsing_document_file_submitted.id
         )
 
         self.assertEqual(events[1].actor, self._test_case_user)
         self.assertEqual(events[1].action_object, self.test_document)
         self.assertEqual(events[1].target, self.test_document_file)
         self.assertEqual(
-            events[1].verb, event_parsing_document_file_finish.id
+            events[1].verb, event_parsing_document_file_finished.id
         )
 
 

@@ -16,8 +16,8 @@ from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
     event_parsing_document_file_content_deleted,
-    event_parsing_document_file_submit,
-    event_parsing_document_file_finish
+    event_parsing_document_file_submitted,
+    event_parsing_document_file_finished
 )
 from .handlers import (
     handler_index_document, handler_initialize_new_parsing_settings,
@@ -91,8 +91,8 @@ class DocumentParsingApp(MayanAppConfig):
         ModelEventType.register(
             model=DocumentFile, event_types=(
                 event_parsing_document_file_content_deleted,
-                event_parsing_document_file_submit,
-                event_parsing_document_file_finish
+                event_parsing_document_file_submitted,
+                event_parsing_document_file_finished
             )
         )
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"POT-Creation-Date: 2021-06-21 22:21+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: trendspotter, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -81,15 +81,15 @@ msgstr "Nastavení souborových metadat"
 msgid "File metadata processing per type"
 msgstr "Zpracování metadat souborů podle typu"
 
-#: methods.py:36
+#: methods.py:41
 msgid "get_file_metadata(< file metadata dotted path >)"
 msgstr "get_file_metadata (<soubor metadata tečkovaná cesta>)"
 
-#: methods.py:39
+#: methods.py:44
 msgid "Return the specified document file metadata entry."
 msgstr "Vraťte zadanou položku metadat souboru dokumentu."
 
-#: methods.py:66
+#: methods.py:71
 msgid "Return the specified document file file metadata entry."
 msgstr "Vrátí zadaný záznam metadat souboru souboru souboru."
 
@@ -245,17 +245,17 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: views.py:145
+#: views.py:147
 #, python-format
 msgid "Edit file metadata settings for document type: %s"
 msgstr "Upravit nastavení metadat souboru pro typ dokumentu: %s"
 
-#: views.py:156
+#: views.py:158
 msgid "Submit all documents of a type for file metadata processing."
 msgstr ""
 "Odešlete všechny dokumenty určitého typu ke zpracování metadat souboru."
 
-#: views.py:180
+#: views.py:184
 #, python-format
 msgid "%(count)d documents added to the file metadata processing queue."
 msgstr "%(count)d dokumenty přidané do fronty zpracování metadat souboru."

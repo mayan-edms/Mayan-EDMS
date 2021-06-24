@@ -69,22 +69,22 @@ Via Python settings files
 
 Another way to configure Mayan EDMS and the one required when more extensive
 setup is required (such as when using external Python libraries), is via
-Python-style, settings files. A folder named ``|USER_SETTINGS_FOLDER|/`` is
+Python-style, settings files. A folder named ``|DEFAULT_USER_SETTINGS_FOLDER|`` is
 created for the purpose of hosting these settings files.
 
 If you installed Mayan EDMS according to the :doc:`../chapters/deploying`
-instructions provided in this documentation, your ``|USER_SETTINGS_FOLDER|/``
+instructions provided in this documentation, your ``|DEFAULT_USER_SETTINGS_FOLDER|``
 folder should be located in the directory:
-``|MAYAN_MEDIA_ROOT|/|USER_SETTINGS_FOLDER|/``.
+``|MAYAN_MEDIA_ROOT||DEFAULT_USER_SETTINGS_FOLDER|``.
 
-If Mayan EDMS was installed using Docker, the ``|USER_SETTINGS_FOLDER|/``
+If Mayan EDMS was installed using Docker, the ``|DEFAULT_USER_SETTINGS_FOLDER|``
 folder will be found inside the Docker volume. If you installed Mayan EDMS
 according to the :doc:`../chapters/docker/index` instructions provided in this
-documentation, your ``|USER_SETTINGS_FOLDER|/`` folder should be located in
-the directory: ``/docker-volumes/mayan/|USER_SETTINGS_FOLDER|/``.
+documentation, your ``|DEFAULT_USER_SETTINGS_FOLDER|`` folder should be located in
+the directory: ``/docker-volumes/mayan/|DEFAULT_USER_SETTINGS_FOLDER|``.
 
 Create a file with any valid name and a ``.py`` extension in the
-``|USER_SETTINGS_FOLDER|/`` folder. The file must starts with a global import
+``|DEFAULT_USER_SETTINGS_FOLDER|`` folder. The file must starts with a global import
 of ``mayan.settings.production``. In the form:
 
 .. code-block:: python
@@ -115,23 +115,23 @@ The way used to tell Mayan EDMS to import this file will vary based on the
 installation method.
 
 For the :doc:`../chapters/deploying` method, the full import path will be
-``mayan.media.|USER_SETTINGS_FOLDER|.mysettings`` and can be passed via the
+``mayan.media.|DEFAULT_USER_SETTINGS_MODULE|.mysettings`` and can be passed via the
 ``--settings`` command line argument like this:
 
 .. code-block:: console
 
-    |MAYAN_BIN| runserver --settings=mayan.media.|USER_SETTINGS_FOLDER|.mysettings
+    |MAYAN_BIN| runserver --settings=mayan.media.|DEFAULT_USER_SETTINGS_MODULE|.mysettings
 
 or via the ``DJANGO_SETTINGS_MODULE`` environment variable like this:
 
 .. code-block:: console
 
-    export DJANGO_SETTINGS_MODULE=mayan.media.|USER_SETTINGS_FOLDER|.mysettings
+    export DJANGO_SETTINGS_MODULE=mayan.media.|DEFAULT_USER_SETTINGS_MODULE|.mysettings
 
 To make the use of the custom Python setting file permanent, update the ``|MAYAN_SUPERVISOR_CONF|``
 file. In the ``[supervisord]`` section, update the ``environment=`` value of
 ``DJANGO_SETTINGS_MODULE`` from  the default ``mayan.settings.production`` to
-``mayan.media.|USER_SETTINGS_FOLDER|.mysettings``. Pay attention to the
+``mayan.media.|DEFAULT_USER_SETTINGS_MODULE|.mysettings``. Pay attention to the
 indentation and comma use of the ``environment=`` entries.
 
 Force supervisor to read the changes and restart using:
@@ -142,12 +142,12 @@ Force supervisor to read the changes and restart using:
     sudo supervisorctl restart all
 
 For the :doc:`../chapters/docker/index` installation method, the full import
-path will be ``|USER_SETTINGS_FOLDER|.mysettings`` and can only be passed
+path will be ``|DEFAULT_USER_SETTINGS_MODULE|.mysettings`` and can only be passed
 via the ``MAYAN_SETTINGS_MODULE`` environment variable like this:
 
 .. code-block:: console
 
-    docker run <...> -e MAYAN_SETTINGS_MODULE=|USER_SETTINGS_FOLDER|.mysettings
+    docker run <...> -e MAYAN_SETTINGS_MODULE=|DEFAULT_USER_SETTINGS_MODULE|.mysettings
 
 
 .. note::

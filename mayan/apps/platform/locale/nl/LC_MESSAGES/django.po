@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"POT-Creation-Date: 2021-06-21 22:21+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -33,10 +33,10 @@ msgstr ""
 msgid "Template for Supervisord inside a Docker image."
 msgstr "Sjabloon voor Supervisord binnen een Docker-image."
 
-#: classes.py:148
+#: classes.py:155
 msgid "Template for Supervisord."
 msgstr "Sjabloon voor Supervisord."
 
-#: classes.py:205
+#: classes.py:218
 msgid "Template showing the queues of a worker."
 msgstr "Sjabloon dat de wachtrij van een gebruiker toont."

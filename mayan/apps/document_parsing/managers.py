@@ -8,7 +8,7 @@ from django.db import models, transaction
 
 from .events import (
     event_parsing_document_file_content_deleted,
-    event_parsing_document_file_finish
+    event_parsing_document_file_finished
 )
 from .parsers import Parser
 from .signals import signal_post_document_file_parsing
@@ -45,7 +45,7 @@ class DocumentFilePageContentManager(models.Manager):
                 instance=document_file
             )
 
-            event_parsing_document_file_finish.commit(
+            event_parsing_document_file_finished.commit(
                 action_object=document_file.document, actor=user,
                 target=document_file
             )

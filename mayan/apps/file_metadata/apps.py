@@ -15,8 +15,8 @@ from mayan.apps.navigation.classes import SourceColumn
 from .classes import FileMetadataHelper
 from .drivers import *  # NOQA
 from .events import (
-    event_file_metadata_document_file_finish,
-    event_file_metadata_document_file_submit
+    event_file_metadata_document_file_finished,
+    event_file_metadata_document_file_submitted
 )
 from .handlers import (
     handler_index_document_file,
@@ -89,8 +89,8 @@ class FileMetadataApp(MayanAppConfig):
 
         ModelEventType.register(
             model=Document, event_types=(
-                event_file_metadata_document_file_finish,
-                event_file_metadata_document_file_submit
+                event_file_metadata_document_file_finished,
+                event_file_metadata_document_file_submitted
             )
         )
 

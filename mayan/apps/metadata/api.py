@@ -79,7 +79,7 @@ def save_metadata(metadata_dict, document, create=False, _user=None):
 
     if document_metadata:
         document_metadata.value = metadata_dict['value']
-        document_metadata._event_actior = _user
+        document_metadata._event_actor = _user
         document_metadata.save()
 
 

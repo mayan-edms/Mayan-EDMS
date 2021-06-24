@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"POT-Creation-Date: 2021-06-21 22:21+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -62,7 +62,7 @@ msgstr "Treść"
 msgid "The email profile that will be used to send this email."
 msgstr "Profil e-mail, który zostanie użyty do wysłania tego e-maila."
 
-#: forms.py:71 models.py:54 views.py:216 workflow_actions.py:18
+#: forms.py:71 models.py:56 views.py:216 workflow_actions.py:18
 msgid "Mailing profile"
 msgstr "Profil pocztowy"
 
@@ -70,7 +70,7 @@ msgstr "Profil pocztowy"
 msgid "The driver to use when sending emails."
 msgstr "Sterownik używany podczas wysyłania wiadomości e-mail."
 
-#: forms.py:78 models.py:68
+#: forms.py:78 models.py:70
 msgid "Backend"
 msgstr "Backend"
 
@@ -98,7 +98,7 @@ msgstr "Edytuj"
 msgid "Mailing profiles list"
 msgstr "Lista profili mailingowych"
 
-#: links.py:58 models.py:55
+#: links.py:58 models.py:57
 msgid "Mailing profiles"
 msgstr "Profile mailingowe"
 
@@ -235,15 +235,15 @@ msgstr "Ścieżka pliku"
 msgid "Django file based backend"
 msgstr "Backend oparty na pliku Django"
 
-#: models.py:31
+#: models.py:33
 msgid "A short text describing the mailing profile."
 msgstr "Krótki tekst opisujący profil pocztowy."
 
-#: models.py:32
+#: models.py:34
 msgid "Label"
 msgstr "Etykieta"
 
-#: models.py:36
+#: models.py:38
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
@@ -251,31 +251,31 @@ msgstr ""
 "Domyślnie ten profil pocztowy zostanie wstępnie wybrany w formularzu "
 "wysyłkowym dokumentu."
 
-#: models.py:38
+#: models.py:40
 msgid "Default"
 msgstr "Domyślny"
 
-#: models.py:40
+#: models.py:42
 msgid "Enabled"
 msgstr "Włączone"
 
-#: models.py:43
+#: models.py:45
 msgid "The dotted Python path to the backend class."
 msgstr "Kropkowana ścieżka Pythona do klasy backend."
 
-#: models.py:44
+#: models.py:46
 msgid "Backend path"
 msgstr "Ścieżka backend"
 
-#: models.py:47
+#: models.py:49
 msgid "Backend data"
 msgstr "Dane backend"
 
-#: models.py:69
+#: models.py:71
 msgid "The backend class for this entry."
 msgstr "Klasa backend dla tego wpisu."
 
-#: models.py:231
+#: models.py:239
 msgid "Test email from Mayan EDMS"
 msgstr "Test wiadomości e-mail z Mayan EDMS"
 

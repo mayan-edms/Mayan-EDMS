@@ -1,6 +1,6 @@
 from mayan.apps.documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 
-from .events import event_ocr_document_version_submit
+from .events import event_ocr_document_version_submitted
 from .literals import TASK_DOCUMENT_VERSION_PAGE_OCR_TIMEOUT
 from .tasks import task_document_version_ocr_process
 
@@ -13,7 +13,7 @@ def method_document_ocr_submit(self, _user=None):
 
 
 def method_document_version_ocr_submit(self, _user=None):
-    event_ocr_document_version_submit.commit(
+    event_ocr_document_version_submitted.commit(
         action_object=self.document, actor=_user, target=self
     )
 

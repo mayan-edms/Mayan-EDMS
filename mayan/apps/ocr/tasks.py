@@ -9,7 +9,7 @@ from django.db import OperationalError
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.celery import app
 
-from .events import event_ocr_document_version_finish
+from .events import event_ocr_document_version_finished
 from .signals import signal_post_document_version_ocr
 
 logger = logging.getLogger(name=__name__)
@@ -111,7 +111,7 @@ def task_document_version_ocr_finished(
         user = None
 
     try:
-        event_ocr_document_version_finish.commit(
+        event_ocr_document_version_finished.commit(
             action_object=document_version.document, actor=user,
             target=document_version
         )

@@ -199,10 +199,9 @@ Upgrade between major versions
    .. important::
 
      Only delete the database volume after dumping the data into SQL, backing
-     up the volume binary content,
-
-     and verifying . Do not delete the app volume. This is where the
-     actual document files are stored.
+     up the volume binary content, and verifying that both files were created
+     successfully. Do not delete the app volume. This is where the actual
+     document files are stored.
 
 
 #. Rename the Docker Compose file and keep it for future reference:

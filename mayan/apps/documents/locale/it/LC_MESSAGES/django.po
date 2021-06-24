@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"POT-Creation-Date: 2021-06-21 22:21+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -149,7 +149,7 @@ msgid "Documents in trash"
 msgstr "Documenti nel cestino"
 
 #: dashboard_widgets.py:85 links/document_type_links.py:77
-#: links/document_type_links.py:84 permissions.py:80
+#: links/document_type_links.py:85 permissions.py:80
 #: views/document_type_views.py:79
 msgid "Document types"
 msgstr "Tipi documento"
@@ -352,7 +352,7 @@ msgstr "Numero della pagina di destinazione"
 msgid "Target page number can't be repeated."
 msgstr "Il numero di pagina di destinazione non può essere ripetuto."
 
-#: forms/misc_forms.py:12 literals.py:101
+#: forms/misc_forms.py:12 literals.py:102
 msgid "Page range"
 msgstr "Intervallo pagina"
 
@@ -538,7 +538,7 @@ msgstr "Versione documento"
 
 #: links/document_version_page_links.py:108
 #: models/document_version_page_models.py:75
-#: models/document_version_page_models.py:401
+#: models/document_version_page_models.py:402
 msgid "Document version pages"
 msgstr "Pagine della versione del documento"
 
@@ -589,55 +589,55 @@ msgstr ""
 "Mantenere. Non creare una nuova versione e mantenere le pagine della "
 "versione corrente."
 
-#: literals.py:93
+#: literals.py:94
 msgid "January"
 msgstr "Gennaio"
 
-#: literals.py:93
+#: literals.py:94
 msgid "February"
 msgstr "Febbraio"
 
-#: literals.py:93
+#: literals.py:94
 msgid "March"
 msgstr "Marzo"
 
-#: literals.py:93
+#: literals.py:94
 msgid "April"
 msgstr "Aprile"
 
-#: literals.py:93
+#: literals.py:94
 msgid "May"
 msgstr "Maggio"
 
-#: literals.py:94
+#: literals.py:95
 msgid "June"
 msgstr "Giugno"
 
-#: literals.py:94
+#: literals.py:95
 msgid "July"
 msgstr "Luglio"
 
-#: literals.py:94
+#: literals.py:95
 msgid "August"
 msgstr "Agosto"
 
-#: literals.py:94
+#: literals.py:95
 msgid "September"
 msgstr "Settembre"
 
-#: literals.py:94
+#: literals.py:95
 msgid "October"
 msgstr "Ottobre"
 
-#: literals.py:95
+#: literals.py:96
 msgid "November"
 msgstr "Novembre"
 
-#: literals.py:95
+#: literals.py:96
 msgid "December"
 msgstr "Dicembre"
 
-#: literals.py:101
+#: literals.py:102
 msgid "All pages"
 msgstr "Tutte le pagine"
 
@@ -692,7 +692,7 @@ msgstr "File di documento"
 #: models/document_models.py:70 models/document_models.py:290
 #: models/document_models.py:295 models/document_type_models.py:41
 #: models/document_type_models.py:202 models/document_version_models.py:219
-#: models/document_version_page_models.py:350
+#: models/document_version_page_models.py:351
 msgid "Label"
 msgstr "Etichetta"
 
@@ -910,11 +910,11 @@ msgid "ID for the source object of the page."
 msgstr "ID per l'oggetto di origine della pagina."
 
 #: models/document_version_page_models.py:74
-#: models/document_version_page_models.py:400 search.py:141
+#: models/document_version_page_models.py:401 search.py:141
 msgid "Document version page"
 msgstr "Pagina della versione del documento"
 
-#: models/document_version_page_models.py:344
+#: models/document_version_page_models.py:345
 #, python-format
 msgid "%(document_version)s page %(page_number)d of %(total_pages)d"
 msgstr "%(document_version)s pagina %(page_number)d di %(total_pages)d"

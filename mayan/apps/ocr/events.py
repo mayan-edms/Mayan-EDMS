@@ -8,11 +8,11 @@ event_ocr_document_version_content_deleted = namespace.add_event_type(
     label=_('Document OCR content deleted'),
     name='document_content_deleted'
 )
-event_ocr_document_version_submit = namespace.add_event_type(
+event_ocr_document_version_submitted = namespace.add_event_type(
     label=_('Document file submitted for OCR'),
     name='document_version_submit'
 )
-event_ocr_document_version_finish = namespace.add_event_type(
+event_ocr_document_version_finished = namespace.add_event_type(
     label=_('Document file OCR finished'),
     name='document_version_finish'
 )

@@ -13,10 +13,11 @@ DOCKER_HOST_REGISTRY_PORT ?= $(DOCKER_HOST_REGISTRY_PORT)
 DOCKER_IMAGE_MAYAN_NAME ?= $(DOCKER_IMAGE_MAYAN_NAME)
 
 docker-build: ## Build a new image locally.
+docker-build: docker-dockerfile-update
 	docker build -t $(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION) -f docker/Dockerfile .
 
 docker-build-with-proxy: ## Build a new image locally using an APT proxy as APT_PROXY.
-docker-build-with-proxy: devpi-start
+docker-build-with-proxy: docker-dockerfile-update devpi-start
 	docker build -t $(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION) -f docker/Dockerfile --build-arg APT_PROXY=$(APT_PROXY) --build-arg PIP_INDEX_URL=$(PIP_INDEX_URL) --build-arg PIP_TRUSTED_HOST=$(PIP_TRUSTED_HOST) --build-arg HTTP_PROXY=$(HTTP_PROXY) --build-arg HTTPS_PROXY=$(HTTPS_PROXY) .
 	$(MAKE) devpi-stop
 

@@ -383,11 +383,22 @@ class MetadataTypeViewTestMixin:
         )
 
     def _request_test_metadata_type_create_view(self):
-        return self.post(
+        pk_list = list(MetadataType.objects.values('pk'))
+
+        response = self.post(
             viewname='metadata:metadata_type_create', data={
                 'name': 'test_metadata_type', 'label': 'test metadata type'
             }
         )
+
+        try:
+            self.test_metadata_type = MetadataType.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except MetadataType.DoesNotExist:
+            self.test_metadata_type = None
+
+        return response
 
     def _request_test_metadata_type_delete_view(self):
         return self.post(

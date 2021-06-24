@@ -8,8 +8,8 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
 
 from .events import (
-    event_document_auto_check_in, event_document_check_in,
-    event_document_forceful_check_in
+    event_document_auto_checked_in, event_document_checked_in,
+    event_document_forcefully_checked_in
 )
 from .exceptions import DocumentNotCheckedOut
 from .literals import STATE_CHECKED_OUT, STATE_CHECKED_IN
@@ -47,19 +47,19 @@ class DocumentCheckoutBusinessLogicManager(models.Manager):
         with transaction.atomic():
             if user:
                 for checkout in user_document_checkouts:
-                    event_document_check_in.commit(
+                    event_document_checked_in.commit(
                         actor=user, target=checkout.document
                     )
                     checkout.delete()
 
                 for checkout in others_document_checkouts:
-                    event_document_forceful_check_in.commit(
+                    event_document_forcefully_checked_in.commit(
                         actor=user, target=checkout.document
                     )
                     checkout.delete()
             else:
                 for checkout in self.filter(document__in=queryset):
-                    event_document_auto_check_in.commit(
+                    event_document_auto_checked_in.commit(
                         target=checkout.document
                     )
                     checkout.delete()

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"POT-Creation-Date: 2021-06-21 22:21+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -62,7 +62,7 @@ msgstr "Inhoud"
 msgid "The email profile that will be used to send this email."
 msgstr "Het mailprofiel dat wordt gebruikt om deze e-mail te versturen."
 
-#: forms.py:71 models.py:54 views.py:216 workflow_actions.py:18
+#: forms.py:71 models.py:56 views.py:216 workflow_actions.py:18
 msgid "Mailing profile"
 msgstr "Mailprofiel"
 
@@ -71,7 +71,7 @@ msgid "The driver to use when sending emails."
 msgstr ""
 "Het stuurprogramma dat moet worden gebruikt bij het verzenden van e-mails."
 
-#: forms.py:78 models.py:68
+#: forms.py:78 models.py:70
 msgid "Backend"
 msgstr "Backend"
 
@@ -99,7 +99,7 @@ msgstr "Bewerken"
 msgid "Mailing profiles list"
 msgstr "Lijst met mailprofielen"
 
-#: links.py:58 models.py:55
+#: links.py:58 models.py:57
 msgid "Mailing profiles"
 msgstr "Mailprofielen"
 
@@ -240,15 +240,15 @@ msgstr "Bestandspad"
 msgid "Django file based backend"
 msgstr "Django bestandsgebaseerde backend"
 
-#: models.py:31
+#: models.py:33
 msgid "A short text describing the mailing profile."
 msgstr "Een korte tekst die het mailprofiel beschrijft."
 
-#: models.py:32
+#: models.py:34
 msgid "Label"
 msgstr "Label"
 
-#: models.py:36
+#: models.py:38
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
@@ -256,31 +256,31 @@ msgstr ""
 "Indien standaard ingesteld wordt dit mailprofiel voorgeselecteerd op het "
 "\"Document mailen\" formulier."
 
-#: models.py:38
+#: models.py:40
 msgid "Default"
 msgstr "Standaardwaarde"
 
-#: models.py:40
+#: models.py:42
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: models.py:43
+#: models.py:45
 msgid "The dotted Python path to the backend class."
 msgstr "Het Python-pad naar de backend class."
 
-#: models.py:44
+#: models.py:46
 msgid "Backend path"
 msgstr "Backend pad"
 
-#: models.py:47
+#: models.py:49
 msgid "Backend data"
 msgstr "Backend gegevens"
 
-#: models.py:69
+#: models.py:71
 msgid "The backend class for this entry."
 msgstr "De backend class voor deze invoer."
 
-#: models.py:231
+#: models.py:239
 msgid "Test email from Mayan EDMS"
 msgstr "Test e-mail van Mayan EDMS"
 

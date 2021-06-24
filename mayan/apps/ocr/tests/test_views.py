@@ -2,7 +2,7 @@ from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from ..events import (
     event_ocr_document_version_content_deleted,
-    event_ocr_document_version_submit, event_ocr_document_version_finish
+    event_ocr_document_version_submitted, event_ocr_document_version_finished
 )
 from ..models import DocumentVersionPageOCRContent
 from ..permissions import (
@@ -89,14 +89,14 @@ class DocumentTypeOCRViewsTestCase(
         self.assertEqual(events[0].action_object, self.test_document)
         self.assertEqual(events[0].target, self.test_document_version)
         self.assertEqual(
-            events[0].verb, event_ocr_document_version_submit.id
+            events[0].verb, event_ocr_document_version_submitted.id
         )
 
         self.assertEqual(events[1].actor, self._test_case_user)
         self.assertEqual(events[1].action_object, self.test_document)
         self.assertEqual(events[1].target, self.test_document_version)
         self.assertEqual(
-            events[1].verb, event_ocr_document_version_finish.id
+            events[1].verb, event_ocr_document_version_finished.id
         )
 
     def test_trashed_document_type_ocr_submit_view_with_access(self):
@@ -328,14 +328,14 @@ class DocumentVersionOCRViewsTestCase(
         self.assertEqual(events[0].action_object, self.test_document)
         self.assertEqual(events[0].target, self.test_document_version)
         self.assertEqual(
-            events[0].verb, event_ocr_document_version_submit.id
+            events[0].verb, event_ocr_document_version_submitted.id
         )
 
         self.assertEqual(events[1].actor, self._test_case_user)
         self.assertEqual(events[1].action_object, self.test_document)
         self.assertEqual(events[1].target, self.test_document_version)
         self.assertEqual(
-            events[1].verb, event_ocr_document_version_finish.id
+            events[1].verb, event_ocr_document_version_finished.id
         )
 
     def test_trashed_document_submit_view_with_access(self):
@@ -395,14 +395,14 @@ class DocumentVersionOCRViewsTestCase(
         self.assertEqual(events[0].action_object, self.test_document)
         self.assertEqual(events[0].target, self.test_document_version)
         self.assertEqual(
-            events[0].verb, event_ocr_document_version_submit.id
+            events[0].verb, event_ocr_document_version_submitted.id
         )
 
         self.assertEqual(events[1].actor, self._test_case_user)
         self.assertEqual(events[1].action_object, self.test_document)
         self.assertEqual(events[1].target, self.test_document_version)
         self.assertEqual(
-            events[1].verb, event_ocr_document_version_finish.id
+            events[1].verb, event_ocr_document_version_finished.id
         )
 
     def test_trashed_document_multiple_document_submit_view_with_access(self):

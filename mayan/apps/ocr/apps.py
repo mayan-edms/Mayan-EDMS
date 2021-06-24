@@ -15,8 +15,8 @@ from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
-    event_ocr_document_version_content_deleted, event_ocr_document_version_finish,
-    event_ocr_document_version_submit
+    event_ocr_document_version_content_deleted, event_ocr_document_version_finished,
+    event_ocr_document_version_submitted
 )
 from .handlers import (
     handler_index_document_version, handler_initialize_new_ocr_settings,
@@ -90,8 +90,8 @@ class OCRApp(MayanAppConfig):
         ModelEventType.register(
             model=Document, event_types=(
                 event_ocr_document_version_content_deleted,
-                event_ocr_document_version_finish,
-                event_ocr_document_version_submit
+                event_ocr_document_version_finished,
+                event_ocr_document_version_submitted
             )
         )
 

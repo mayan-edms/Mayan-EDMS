@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"POT-Creation-Date: 2021-06-21 22:21+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -58,7 +58,7 @@ msgstr ""
 msgid "The email profile that will be used to send this email."
 msgstr ""
 
-#: forms.py:71 models.py:54 views.py:216 workflow_actions.py:18
+#: forms.py:71 models.py:56 views.py:216 workflow_actions.py:18
 msgid "Mailing profile"
 msgstr ""
 
@@ -66,7 +66,7 @@ msgstr ""
 msgid "The driver to use when sending emails."
 msgstr ""
 
-#: forms.py:78 models.py:68
+#: forms.py:78 models.py:70
 msgid "Backend"
 msgstr ""
 
@@ -94,7 +94,7 @@ msgstr "Rediģēt"
 msgid "Mailing profiles list"
 msgstr ""
 
-#: links.py:58 models.py:55
+#: links.py:58 models.py:57
 msgid "Mailing profiles"
 msgstr ""
 
@@ -217,45 +217,45 @@ msgstr ""
 msgid "Django file based backend"
 msgstr ""
 
-#: models.py:31
+#: models.py:33
 msgid "A short text describing the mailing profile."
 msgstr ""
 
-#: models.py:32
+#: models.py:34
 msgid "Label"
 msgstr "Etiķete"
 
-#: models.py:36
+#: models.py:38
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
 msgstr ""
 
-#: models.py:38
+#: models.py:40
 msgid "Default"
 msgstr "Noklusējums"
 
-#: models.py:40
+#: models.py:42
 msgid "Enabled"
 msgstr "Iespējots"
 
-#: models.py:43
+#: models.py:45
 msgid "The dotted Python path to the backend class."
 msgstr ""
 
-#: models.py:44
+#: models.py:46
 msgid "Backend path"
 msgstr ""
 
-#: models.py:47
+#: models.py:49
 msgid "Backend data"
 msgstr ""
 
-#: models.py:69
+#: models.py:71
 msgid "The backend class for this entry."
 msgstr ""
 
-#: models.py:231
+#: models.py:239
 msgid "Test email from Mayan EDMS"
 msgstr ""
 

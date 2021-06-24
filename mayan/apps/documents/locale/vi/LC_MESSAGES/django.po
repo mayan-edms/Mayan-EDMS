@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"POT-Creation-Date: 2021-06-21 22:21+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/rosarior/teams/13584/vi/)\n"
@@ -143,7 +143,7 @@ msgid "Documents in trash"
 msgstr "Tài liệu trong thùng rác"
 
 #: dashboard_widgets.py:85 links/document_type_links.py:77
-#: links/document_type_links.py:84 permissions.py:80
+#: links/document_type_links.py:85 permissions.py:80
 #: views/document_type_views.py:79
 msgid "Document types"
 msgstr "Các kiểu tài liệu"
@@ -346,7 +346,7 @@ msgstr ""
 msgid "Target page number can't be repeated."
 msgstr ""
 
-#: forms/misc_forms.py:12 literals.py:101
+#: forms/misc_forms.py:12 literals.py:102
 msgid "Page range"
 msgstr "Khoảng trang"
 
@@ -532,7 +532,7 @@ msgstr "Phiên bản của tài liệu"
 
 #: links/document_version_page_links.py:108
 #: models/document_version_page_models.py:75
-#: models/document_version_page_models.py:401
+#: models/document_version_page_models.py:402
 msgid "Document version pages"
 msgstr ""
 
@@ -580,55 +580,55 @@ msgstr ""
 msgid "Keep. Do not create a new version and keep the current version pages."
 msgstr ""
 
-#: literals.py:93
+#: literals.py:94
 msgid "January"
 msgstr "Tháng Một"
 
-#: literals.py:93
+#: literals.py:94
 msgid "February"
 msgstr "Tháng Hai"
 
-#: literals.py:93
+#: literals.py:94
 msgid "March"
 msgstr "Tháng Ba"
 
-#: literals.py:93
+#: literals.py:94
 msgid "April"
 msgstr "Tháng Tư"
 
-#: literals.py:93
+#: literals.py:94
 msgid "May"
 msgstr "Tháng Năm"
 
-#: literals.py:94
+#: literals.py:95
 msgid "June"
 msgstr "Tháng Sáu"
 
-#: literals.py:94
+#: literals.py:95
 msgid "July"
 msgstr "Tháng Bảy"
 
-#: literals.py:94
+#: literals.py:95
 msgid "August"
 msgstr "Tháng Tám"
 
-#: literals.py:94
+#: literals.py:95
 msgid "September"
 msgstr "Tháng Chín"
 
-#: literals.py:94
+#: literals.py:95
 msgid "October"
 msgstr "Tháng Mười"
 
-#: literals.py:95
+#: literals.py:96
 msgid "November"
 msgstr "Tháng Mười Một"
 
-#: literals.py:95
+#: literals.py:96
 msgid "December"
 msgstr "Tháng Mười Hai"
 
-#: literals.py:101
+#: literals.py:102
 msgid "All pages"
 msgstr "Tất cả các trang"
 
@@ -677,7 +677,7 @@ msgstr ""
 #: models/document_models.py:70 models/document_models.py:290
 #: models/document_models.py:295 models/document_type_models.py:41
 #: models/document_type_models.py:202 models/document_version_models.py:219
-#: models/document_version_page_models.py:350
+#: models/document_version_page_models.py:351
 msgid "Label"
 msgstr "Nhãn"
 
@@ -878,11 +878,11 @@ msgid "ID for the source object of the page."
 msgstr ""
 
 #: models/document_version_page_models.py:74
-#: models/document_version_page_models.py:400 search.py:141
+#: models/document_version_page_models.py:401 search.py:141
 msgid "Document version page"
 msgstr ""
 
-#: models/document_version_page_models.py:344
+#: models/document_version_page_models.py:345
 #, python-format
 msgid "%(document_version)s page %(page_number)d of %(total_pages)d"
 msgstr ""
