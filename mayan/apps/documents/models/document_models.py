@@ -149,7 +149,7 @@ class Document(
             self.trashed_date_time = now()
             with transaction.atomic():
                 self._event_ignore = True
-                self.save()
+                self.save(update_fields=('in_trash', 'trashed_date_time'))
 
             event_document_trashed.commit(actor=user, target=self)
         else:
@@ -170,7 +170,7 @@ class Document(
             self.document_type = document_type
             with transaction.atomic():
                 self._event_ignore = True
-                self.save()
+                self.save(update_fields=('document_type',))
                 signal_post_document_type_change.send(
                     sender=self.__class__, instance=self
                 )

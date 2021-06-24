@@ -180,9 +180,9 @@ class RecentlyAccessedDocumentManager(models.Manager):
                 user=user, document=document
             )
             if not created:
-                # document already in the recent list, just save to force
-                # accessed date and time update
-                new_recent.save()
+                # Document already in the recent list, just save to force
+                # accessed date and time update.
+                new_recent.save(update_fields=('datetime_accessed',))
 
             recent_to_delete = self.filter(user=user).values_list(
                 'pk', flat=True

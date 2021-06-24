@@ -91,7 +91,7 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
             self.active = True
 
             if save:
-                return self.save()
+                return self.save(update_fields=('active',))
 
     @cached_property
     def cache(self):
