@@ -40,6 +40,8 @@
 - Convert the GitLab CI and Dockerfile into platform templates.
 - Update Docker base image from Debian:10.8-slim to Debian:10.10-slim.
 - Add config entry ``DEFAULT_USER_SETTINGS_MODULE``.
+- Add serializer explicit read only fields.
+- Optimize documents app saves with `update_fields`.
 
 4.0.7 (2021-06-11)
 ==================

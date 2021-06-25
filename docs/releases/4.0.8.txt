@@ -48,17 +48,17 @@ page object per request.
 The date and time of document version timestamps are now carried over
 during the upgrade from version 3.5.x to 4.0.x.
 
-Fixed the situation where the document type button was appearing. The cascade
-condition of the document type setup link was updated to correctly display
-when there are not document types created.
+Fixed the situation where the document type button was not appearing. The
+cascade condition of the document type setup link was updated to correctly
+display when there are not document types created.
 
 
 Digital signatures
 ^^^^^^^^^^^^^^^^^^
 
-The preparation of the GPG temporary home was improved. A temporary directory
-context manager is now used which also guarantees that the temporary folder
-will be removed even on failures.
+The preparation of the GPG temporary home folder was improved. A temporary
+directory context manager is now used which also guarantees that the
+temporary folder will be removed even on failures.
 
 The document signature logic was updated to not assume that all signatures
 provide a ``date_time`` field.
@@ -99,7 +99,7 @@ Metadata
 ^^^^^^^^
 
 Fixed an issue with the document metadata add and edit actions which
-prevented the user value to be ignored at the event commit.
+caused the user value to be ignored at the event commit.
 
 
 Platform
@@ -133,6 +133,8 @@ Other
 - Apply small optimization to ``MultipleObjectViewMixin``
   ``.get_object_list()`` method. The method now reuses the existing
   ``pk_list`` variable.
+- Add serializer explicit read only fields.
+- Optimize documents app saves with `update_fields`.
 
 
 Removals

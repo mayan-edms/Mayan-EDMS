@@ -23,6 +23,6 @@ class TrashedDocument(Document):
     )
     def restore(self):
         self.in_trash = False
-        # Skip the edite event at .save().
+        # Skip the edit event at .save().
         self._event_ignore = True
         self.save(update_fields=('in_trash',))

@@ -454,7 +454,7 @@ class DocumentFile(
                         self.document.label = force_text(s=self.file)
 
                     self.document._event_ignore = True
-                    self.document.save(update_fields=('is_stub',))
+                    self.document.save(update_fields=('is_stub', 'label',))
                 else:
                     event_document_file_edited.commit(
                         actor=user, target=self, action_object=self.document
