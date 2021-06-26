@@ -115,7 +115,8 @@ def task_document_file_upload(
     except OperationalError as exception:
         logger.warning(
             'Operational error during attempt to retrieve shared data for '
-            'new document file for:%s; %s. Retrying.', document, exception
+            'new document file for document ID: %s; %s. Retrying.', document_id,
+            exception
         )
         raise self.retry(exc=exception)
 
