@@ -95,10 +95,11 @@ class SearchBackend:
                     result_scope = value
                 else:
                     # Check scope match all.
-                    # __match_all
+                    # __SCOPE_match_all
                     if key.endswith(SCOPE_MATCH_ALL):
-                        scope_match_all = value.upper() == 'TRUE'
+                        scope_id, key = key.split(DELIMITER, 1)
                         scopes.setdefault(scope_id, {})
+                        scope_match_all = value.upper() == 'TRUE'
                         scopes[scope_id]['match_all'] = scope_match_all
                     else:
                         # Must be a scoped query.
