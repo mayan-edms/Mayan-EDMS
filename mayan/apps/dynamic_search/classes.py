@@ -17,8 +17,8 @@ from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
 from .exceptions import DynamicSearchException
 from .literals import (
-    DEFAULT_SCOPE_OPERATOR, DELIMITER, SCOPE_DELIMITER,
-    SCOPE_OPERATOR_CHOICES
+    DEFAULT_SCOPE_ID, DELIMITER, SCOPE_MATCH_ALL, SCOPE_MARKER,
+    SCOPE_OPERATOR_CHOICES, SCOPE_OPERATOR_MARKER, SCOPE_RESULT_MAKER
 )
 from .settings import (
     setting_backend, setting_backend_arguments,
@@ -58,71 +58,69 @@ class SearchBackend:
             app_label='acls', model_name='AccessControlList'
         )
 
-        # Clean up the query_string
+        # Clean up the query_string.
         # The original query_string is immutable, create a new
-        # mutable copy
+        # mutable copy.
         query_string = query_string.copy()
         query_string.pop('_match_all', None)
 
         # Turn scoped query dictionary into a series of unscoped queries.
+        operators = {}
+        result_scope = DEFAULT_SCOPE_ID
+        scope_match_all = False
         scopes = {}
-        operators = []
-
-        operator_marker = '{}operator'.format(SCOPE_DELIMITER)
-        result_marker = '{}result'.format(SCOPE_DELIMITER)
-        result = '0'
-
-        unscoped_entry = False
 
         for key, value in query_string.items():
-            # Check if the entry is a special operator key.
-            if key.startswith(operator_marker):
-                scope_sources = list(
-                    key[len(operator_marker) + 1:].split(DELIMITER)
-                )
+            scope_id = DEFAULT_SCOPE_ID
 
-                operator, result = value.split(DELIMITER)
+            # Check if the entry has a scope marker.
+            if key.startswith(SCOPE_MARKER):
+                # Remove the scope marker.
+                key = key[len(SCOPE_MARKER):]
 
-                operators.append(
-                    {
-                        'scope_sources': scope_sources,
-                        'function': SCOPE_OPERATOR_CHOICES[operator],
-                        'result': result
+                if key.startswith(SCOPE_OPERATOR_MARKER):
+                    # Check for operator.
+                    # __operator_SCOPE_SCOPE=OPERATOR_SCOPE
+                    key = key[len(SCOPE_OPERATOR_MARKER):]
+                    operator_scopes = key[len(DELIMITER):].split(DELIMITER)
+                    operator_text, result = value.split(DELIMITER)
+
+                    operators[result] = {
+                        'scopes': operator_scopes,
+                        'function': SCOPE_OPERATOR_CHOICES[operator_text],
                     }
-                )
-            elif key.startswith(result_marker):
-                result = value
-            else:
-                # Detect scope markers. Example: __0 or __10 or __b.
-                if key.startswith(SCOPE_DELIMITER):
-                    # Scoped entry found.
-                    scope_index, unscoped_key = key[len(SCOPE_DELIMITER):].split(DELIMITER, 1)
+                elif key.startswith(SCOPE_RESULT_MAKER):
+                    # Check for result.
+                    # __result=SCOPE
+                    result_scope = value
                 else:
-                    # Non scoped query entries are assigned to scope 0.
-                    scope_index = '0'
-                    unscoped_key = key
-                    unscoped_entry = True
+                    # Check scope match all.
+                    # __match_all
+                    if key.endswith(SCOPE_MATCH_ALL):
+                        scope_match_all = value.upper() == 'TRUE'
+                        scopes.setdefault(scope_id, {})
+                        scopes[scope_id]['match_all'] = scope_match_all
+                    else:
+                        # Must be a scoped query.
+                        # __SCOPE_QUERY=VALUE
+                        scope_id, key = key.split(DELIMITER, 1)
+                        scopes.setdefault(scope_id, {})
+                        scopes[scope_id].setdefault('match_all', False)
+                        scopes[scope_id].setdefault('query', {})
 
-                scopes.setdefault(scope_index, {'query': {}})
-                scopes[scope_index]['query'][unscoped_key] = value
-
-        if unscoped_entry:
-            operators.append(
-                {
-                    'scope_sources': ['0', '0'],
-                    'function': SCOPE_OPERATOR_CHOICES[DEFAULT_SCOPE_OPERATOR],
-                    'result': '0'
-                }
-            )
+                        scopes[scope_id]['query'][key] = value
+            else:
+                scopes.setdefault(scope_id, {})
+                scopes[scope_id].setdefault('match_all', scope_match_all)
+                scopes[scope_id].setdefault('query', {})
+                scopes[scope_id]['query'][key] = value
 
         # Recursive call to the backend's search using queries as unscoped
         # and then merge then using the corresponding operator.
-        queryset = search_model.model._meta.default_manager.none()
-
         queryset = self.solve_scope(
-            global_and_search=global_and_search, operators=operators,
-            result=result, search_model=search_model, scopes=scopes,
-            user=user
+            operators=operators,
+            result_scope=result_scope, search_model=search_model,
+            scopes=scopes, user=user
         )
 
         if search_model.permission:
@@ -133,36 +131,40 @@ class SearchBackend:
 
         return queryset
 
-    def solve_scope(self, global_and_search, search_model, user, result, scopes, operators):
-        queryset = search_model.model._meta.default_manager.none()
-
-        for operator in operators:
-            if result == operator['result']:
-
-                for scope_index in operator['scope_sources']:
-                    try:
-                        query_string = scopes[scope_index]['query']
-                    except KeyError:
-                        raise DynamicSearchException(
-                            'Scope `{}` not found.'.format(scope_index)
-                        )
-
-                    results = self._search(
-                        global_and_search=global_and_search,
-                        search_model=search_model, query_string=query_string,
-                        user=user
+    def solve_scope(
+        self, search_model, user, result_scope, scopes, operators
+    ):
+        try:
+            # Try scopes.
+            scope = scopes[result_scope]
+        except KeyError:
+            try:
+                # Try operators.
+                operator = operators[result_scope]
+            except KeyError:
+                raise DynamicSearchException(
+                    'Scope `{}` not found.'.format(result_scope)
+                )
+            else:
+                result = search_model.model._meta.default_manager.none()
+                for scope in operator['scopes']:
+                    queryset = self.solve_scope(
+                        operators=operators, result_scope=scope,
+                        search_model=search_model, scopes=scopes, user=user
                     )
 
-                    if not queryset:
-                        queryset = results
+                    if not result:
+                        result = queryset
                     else:
-                        queryset = operator['function'](queryset, results)
+                        result = operator['function'](result, queryset)
 
-                return queryset
-
-        raise DynamicSearchException(
-            'Result scope `{}` not found.'.format(result)
-        )
+                return result
+        else:
+            return self._search(
+                global_and_search=scope['match_all'],
+                search_model=search_model, query_string=scope['query'],
+                user=user
+            )
 
 
 class SearchField:

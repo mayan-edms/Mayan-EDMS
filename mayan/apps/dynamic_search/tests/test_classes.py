@@ -90,3 +90,34 @@ class ScopedSearchTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
+
+    def test_single_scope(self):
+        query = {
+            '__ab_tags__label': self.test_tags[0].label,
+            '__operator_ab_bc': 'OR_cc',
+            '__result': 'ab',
+            '__bc_tags__label': self.test_tags[1].label
+        }
+        queryset = self.search_backend.search(
+            search_model=document_search, query_string=query,
+            user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.test_documents[0] in queryset)
+
+    def test_scoped_and_non_scoped(self):
+        query = {
+            '__0_match_all': 'TRUE',
+            '__0_tags__label': self.test_tags[0].label,
+            '__0_tags__color': 'FFFFFF',
+            '__operator_0_bc': 'AND_cc',
+            '__bc_tags__label': self.test_tags[1].label,
+            '__bc_tags__color': '000000',
+            '__result': 'cc'
+        }
+        queryset = self.search_backend.search(
+            search_model=document_search, query_string=query,
+            user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.test_documents[0] in queryset)

@@ -1,3 +1,9 @@
+4.0.9 (2021-XX-XX)
+==================
+- Improve scope search. Supporting more than two source scopes per operator.
+  Support ``match_all`` logic per scope. Support returning a single scope 
+  without using the operator output.
+
 4.0.8 (2021-06-23)
 ==================
 - Update PIP to version 21.1.2.
