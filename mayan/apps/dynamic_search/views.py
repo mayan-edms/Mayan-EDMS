@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic.base import RedirectView
 
 from mayan.apps.views.generics import (
-    ConfirmView, SimpleView, SingleObjectListView
+    ConfirmView, FormView, SingleObjectListView
 )
 from mayan.apps.views.literals import LIST_MODE_CHOICE_ITEM
 
@@ -50,36 +50,38 @@ class ResultsView(SearchModelViewMixin, SingleObjectListView):
         return context
 
     def get_source_queryset(self):
-        if self.request.GET:
-            # Only do search if there is user input, otherwise just render
-            # the template with the extra_context
+        query_dict = self.request.GET.copy()
+        query_dict.update(self.request.POST)
 
-            if self.request.GET.get('_match_all', 'off') == 'on':
-                global_and_search = True
-            else:
-                global_and_search = False
+        if query_dict.get('_match_all', 'off') == 'on':
+            global_and_search = True
+        else:
+            global_and_search = False
 
-            try:
-                queryset = SearchBackend.get_instance().search(
-                    global_and_search=global_and_search,
-                    search_model=self.search_model,
-                    query_string=self.request.GET, user=self.request.user
-                )
-            except DynamicSearchException as exception:
-                if settings.DEBUG or settings.TESTING:
-                    raise
+        try:
+            queryset = SearchBackend.get_instance().search(
+                global_and_search=global_and_search,
+                search_model=self.search_model,
+                query=query_dict, user=self.request.user
+            )
+        except DynamicSearchException as exception:
+            if settings.DEBUG or settings.TESTING:
+                raise
 
-                messages.error(message=exception, request=self.request)
-                return self.search_model.model._meta.default_manager.none()
-            else:
-                return queryset
+            messages.error(message=exception, request=self.request)
+            return self.search_model.model._meta.default_manager.none()
+        else:
+            return queryset
 
 
 class SearchAgainView(RedirectView):
     query_string = True
 
     def get_redirect_url(self, *args, **kwargs):
-        if ('q' in self.request.GET) and self.request.GET['q'].strip():
+        query_dict = self.request.GET.copy()
+        query_dict.update(self.request.POST)
+
+        if ('q' in query_dict) and query_dict['q'].strip():
             self.pattern_name = 'search:search'
         else:
             self.pattern_name = 'search:search_advanced'
@@ -119,7 +121,7 @@ class SearchBackendReindexView(ConfirmView):
         )
 
 
-class SearchView(SearchModelViewMixin, SimpleView):
+class SearchView(SearchModelViewMixin, FormView):
     template_name = 'appearance/generic_form.html'
     title = _('Search')
 
@@ -140,8 +142,11 @@ class SearchView(SearchModelViewMixin, SimpleView):
         }
 
     def get_form(self):
-        if ('q' in self.request.GET) and self.request.GET['q'].strip():
-            query_string = self.request.GET['q']
+        query_dict = self.request.GET.copy()
+        query_dict.update(self.request.POST)
+
+        if ('q' in query_dict) and query_dict['q'].strip():
+            query_string = query_dict['q']
             return SearchForm(initial={'q': query_string})
         else:
             return SearchForm()

@@ -1,8 +1,12 @@
 4.0.9 (2021-XX-XX)
 ==================
-- Improve scope search. Supporting more than two source scopes per operator.
-  Support ``match_all`` logic per scope. Support returning a single scope 
-  without using the operator output.
+- Improve scope search.
+
+  - Support more than two source scopes per operator.
+  - Support ``match_all`` logic per scope.
+  - Support returning a single scope without using the operator output.
+  - Disable search limits when multiple scopes are specified.
+  - Add separate query decoding method.
 
 4.0.8 (2021-06-23)
 ==================

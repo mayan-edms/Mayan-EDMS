@@ -52,17 +52,37 @@ class SearchBackend:
         raise NotImplementedError
 
     def search(
-        self, search_model, query_string, user, global_and_search=False
+        self, search_model, query, user, global_and_search=False
     ):
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
 
-        # Clean up the query_string.
-        # The original query_string is immutable, create a new
+        result = self.decode_query(
+            query=query, global_and_search=global_and_search
+        )
+
+        # Recursive call to the backend's search using queries as unscoped
+        # and then merge then using the corresponding operator.
+        queryset = self.solve_scope(
+            operators=result['operators'],
+            result_scope=result['result_scope'], search_model=search_model,
+            scopes=result['scopes'], user=user
+        )
+
+        if search_model.permission:
+            queryset = AccessControlList.objects.restrict_queryset(
+                permission=search_model.permission, queryset=queryset,
+                user=user
+            )
+
+        return SearchBackend.limit_queryset(queryset=queryset)
+
+    def decode_query(self, query, global_and_search=False):
+        # Clean up the query.
+        # The original query is immutable, create a new
         # mutable copy.
-        query_string = query_string.copy()
-        query_string.pop('_match_all', None)
+        query.pop('_match_all', None)
 
         # Turn scoped query dictionary into a series of unscoped queries.
         operators = {}
@@ -70,7 +90,7 @@ class SearchBackend:
         scope_match_all = False
         scopes = {}
 
-        for key, value in query_string.items():
+        for key, value in query.items():
             scope_id = DEFAULT_SCOPE_ID
 
             # Check if the entry has a scope marker.
@@ -116,25 +136,19 @@ class SearchBackend:
                 scopes[scope_id].setdefault('query', {})
                 scopes[scope_id]['query'][key] = value
 
-        # Recursive call to the backend's search using queries as unscoped
-        # and then merge then using the corresponding operator.
-        queryset = self.solve_scope(
-            operators=operators,
-            result_scope=result_scope, search_model=search_model,
-            scopes=scopes, user=user
-        )
-
-        if search_model.permission:
-            queryset = AccessControlList.objects.restrict_queryset(
-                permission=search_model.permission, queryset=queryset,
-                user=user
-            )
-
-        return queryset
+        return {
+            'operators': operators, 'result_scope': result_scope,
+            'scopes': scopes
+        }
 
     def solve_scope(
         self, search_model, user, result_scope, scopes, operators
     ):
+        if len(scopes) > 1:
+            ignore_limit = True
+        else:
+            ignore_limit = False
+
         try:
             # Try scopes.
             scope = scopes[result_scope]
@@ -163,14 +177,15 @@ class SearchBackend:
         else:
             return self._search(
                 global_and_search=scope['match_all'],
-                search_model=search_model, query_string=scope['query'],
-                user=user
+                ignore_limit=ignore_limit, search_model=search_model,
+                query_string=scope['query'], user=user
             )
 
 
 class SearchField:
     """
-    Search for terms in fields that directly belong to the parent SearchModel
+    Search for terms in fields that directly belong to the parent
+    SearchModel.
     """
     def __init__(
         self, search_model, field, label=None, transformation_function=None
@@ -218,7 +233,7 @@ class SearchModel(AppsModuleLoaderMixin):
 
     @staticmethod
     def initialize():
-        # Hide a circular import
+        # Hide a circular import.
         from .handlers import (
             handler_factory_deindex_instance, handler_index_instance
         )
@@ -333,7 +348,7 @@ class SearchModel(AppsModuleLoaderMixin):
 
     def add_model_field(self, *args, **kwargs):
         """
-        Add a search field that directly belongs to the parent SearchModel
+        Add a search field that directly belongs to the parent SearchModel.
         """
         search_field = SearchField(self, *args, **kwargs)
         self.search_fields.append(search_field)
@@ -349,7 +364,7 @@ class SearchModel(AppsModuleLoaderMixin):
 
     def get_fields_simple_list(self):
         """
-        Returns a list of the fields for the SearchModel
+        Returns a list of the fields for the SearchModel.
         """
         result = []
         for search_field in self.search_fields:
@@ -422,9 +437,9 @@ class SearchModel(AppsModuleLoaderMixin):
                     else:
                         value = ''.join(value)
                 except TypeError:
-                    """Value is not a list"""
+                    """Value is not a list."""
             except ResolverPipelineError:
-                """Not fatal"""
+                """Not fatal."""
             else:
                 result[field] = field_map[field].get(
                     'transformation', SearchModel.function_return_same

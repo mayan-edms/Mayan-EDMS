@@ -30,7 +30,10 @@ class WhooshSearchBackend(SearchBackend):
         )
         self.index_path.mkdir(exist_ok=True)
 
-    def _search(self, query_string, search_model, user, global_and_search=False):
+    def _search(
+        self, query_string, search_model, user, global_and_search=False,
+        ignore_limit=False
+    ):
         index = self.get_index(search_model=search_model)
 
         id_list = []
@@ -61,20 +64,22 @@ class WhooshSearchBackend(SearchBackend):
             parser.remove_plugin_class(cls=qparser.WildcardPlugin)
             parser.add_plugin(pin=qparser.PrefixPlugin())
             query = parser.parse(text=search_string)
-            results = searcher.search(
-                q=query, limit=setting_results_limit.value
-            )
+
+            if ignore_limit:
+                limit = None
+            else:
+                limit = setting_results_limit.value
+
+            results = searcher.search(q=query, limit=limit)
 
             logger.debug('results: %s', results)
 
             for result in results:
                 id_list.append(result['id'])
 
-        queryset = search_model.get_queryset().filter(
+        return search_model.get_queryset().filter(
             id__in=id_list
         ).distinct()
-
-        return SearchBackend.limit_queryset(queryset=queryset)
 
     def clear_search_model_index(self, search_model):
         index = self.get_index(search_model=search_model)
