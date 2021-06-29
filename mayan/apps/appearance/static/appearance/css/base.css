@@ -595,6 +595,10 @@ a i {
     padding-bottom: 0px;
 }
 
+#accordion-sidebar .collapsed .accordion-indicator {
+   transform: rotate(90deg);
+}
+
 #accordion-sidebar ul.list-unstyled {
     margin-bottom: 0px;
 }

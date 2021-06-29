@@ -10,6 +10,7 @@
 
 - Increase the padding of the main menu panel anchors. Closes GitLab issue
   #1004. Thanks to Bw (@bwakkie) for the report.
+- Rotate the main menu accordion indicator when opened or closed.
 
 4.0.8 (2021-06-23)
 ==================
