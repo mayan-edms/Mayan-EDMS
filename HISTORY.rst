@@ -8,6 +8,9 @@
   - Disable search limits when multiple scopes are specified.
   - Add separate query decoding method.
 
+- Increase the padding of the main menu panel anchors. Closes GitLab issue
+  #1004. Thanks to Bw (@bwakkie) for the report.
+
 4.0.8 (2021-06-23)
 ==================
 - Update PIP to version 21.1.2.
