@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-06-29 19:59+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: bo feng <87289884@qq.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -184,87 +184,83 @@ msgstr ""
 msgid "Document file edited"
 msgstr ""
 
-#: events.py:34
-msgid "Document file uploaded"
-msgstr ""
-
-#: events.py:40
+#: events.py:37
 msgid "Document type created"
 msgstr "文档类型已创建"
 
-#: events.py:43
+#: events.py:40
 msgid "Document type edited"
 msgstr "文档类型已编辑"
 
-#: events.py:46
+#: events.py:43
 msgid "Document type quick label created"
 msgstr ""
 
-#: events.py:50
+#: events.py:47
 msgid "Document type quick label deleted"
 msgstr ""
 
-#: events.py:54
+#: events.py:51
 msgid "Document type quick label edited"
 msgstr ""
 
-#: events.py:59
+#: events.py:56
 msgid "Document type changed"
 msgstr "文档类型已更改"
 
-#: events.py:65
+#: events.py:62
 msgid "Document version created"
 msgstr ""
 
-#: events.py:68
+#: events.py:65
 msgid "Document version deleted"
 msgstr ""
 
-#: events.py:71
+#: events.py:68
 msgid "Document version edited"
 msgstr ""
 
-#: events.py:74
+#: events.py:71
 msgid "Document version exported"
 msgstr ""
 
-#: events.py:80
+#: events.py:77
 msgid "Document version page created"
 msgstr ""
 
-#: events.py:84
+#: events.py:81
 msgid "Document version page deleted"
 msgstr ""
 
-#: events.py:88
+#: events.py:85
 msgid "Document version page edited"
 msgstr ""
 
-#: events.py:95
+#: events.py:92
 msgid "Document trashed"
 msgstr ""
 
-#: events.py:98
+#: events.py:95
 msgid "Trashed document deleted"
 msgstr ""
 
-#: events.py:101
+#: events.py:98
 msgid "Trashed document restored"
 msgstr ""
 
-#: events.py:107
+#: events.py:104
 msgid "Document downloaded (historic)"
 msgstr ""
 
-#: events.py:110
+#: events.py:107
 msgid "Document file created (historic)"
 msgstr ""
 
-#: events.py:114
+#: events.py:111
 msgid "Document version reverted (historic)"
 msgstr ""
 
-#: events.py:118
+#: events.py:115
 msgid "Document version uploaded (historic)"
 msgstr ""
 
@@ -460,7 +456,7 @@ msgstr "重新计算页数"
 msgid "Change type"
 msgstr "改变类型"
 
-#: links/document_links.py:22 views/document_views.py:63
+#: links/document_links.py:22 views/document_views.py:68
 msgid "All documents"
 msgstr "所有文档"
 
@@ -1090,11 +1086,11 @@ msgstr ""
 msgid "Document type ID for the new document."
 msgstr ""
 
-#: serializers/document_version_serializers.py:68
+#: serializers/document_version_serializers.py:71
 msgid "Content type ID of the source object for the page."
 msgstr ""
 
-#: serializers/favorite_document_serializers.py:17
+#: serializers/favorite_document_serializers.py:18
 msgid "Document ID for the new favorite document."
 msgstr ""
 
@@ -1770,62 +1766,62 @@ msgstr ""
 msgid "Clone page transformations of document version: %s"
 msgstr ""
 
-#: views/document_views.py:40
+#: views/document_views.py:41
 #, python-format
 msgid "Error retrieving document list: %(exception)s."
 msgstr "检索文档列表时出错：%(exception)s。"
 
-#: views/document_views.py:58
+#: views/document_views.py:63
 msgid ""
 "This could mean that no documents have been uploaded or that your user "
 "account has not been granted the view permission for any document or "
 "document type."
 msgstr "这可能意味着没有上传任何文档，或者您的用户帐户未被授予任何文档或文档类型的查看权限。"
 
-#: views/document_views.py:62
+#: views/document_views.py:67
 msgid "No documents available"
 msgstr "没有可用的文件"
 
-#: views/document_views.py:77
+#: views/document_views.py:82
 #, python-format
 msgid "Document type change request performed on %(count)d document"
 msgstr "在%(count)d文档上执行文档类型更改请求"
 
-#: views/document_views.py:80
+#: views/document_views.py:85
 #, python-format
 msgid "Document type change request performed on %(count)d documents"
 msgstr "在%(count)d文档上执行文档类型更改请求"
 
-#: views/document_views.py:87
+#: views/document_views.py:92
 msgid "Change"
 msgstr "更改"
 
-#: views/document_views.py:89
+#: views/document_views.py:94
 msgid "Change the type of the selected document"
 msgid_plural "Change the type of the selected documents"
 msgstr[0] ""
 
-#: views/document_views.py:100
+#: views/document_views.py:105
 #, python-format
 msgid "Change the type of the document: %s"
 msgstr "更改文档类型：%s"
 
-#: views/document_views.py:122
+#: views/document_views.py:127
 #, python-format
 msgid "Document type for \"%s\" changed successfully."
 msgstr "“%s”的文档类型已成功更改。"
 
-#: views/document_views.py:147
+#: views/document_views.py:152
 #, python-format
 msgid "Preview of document: %s"
 msgstr "文件预览：%s"
 
-#: views/document_views.py:165
+#: views/document_views.py:170
 #, python-format
 msgid "Edit properties of document: %s"
 msgstr "编辑文档属性：%s"
 
-#: views/document_views.py:196
+#: views/document_views.py:201
 #, python-format
 msgid "Properties of document: %s"
 msgstr ""

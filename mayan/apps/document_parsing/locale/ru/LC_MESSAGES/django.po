@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-06-29 19:59+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -144,12 +144,12 @@ msgstr "Ошибка анализа файла документа"
 msgid "Document file parse errors"
 msgstr "Ошибки анализа файла документа"
 
-#: parsers.py:90
+#: parsers.py:93
 #, python-format
 msgid "Exception parsing page; %s"
 msgstr "Ошибка при анализе страницы; %s"
 
-#: parsers.py:116
+#: parsers.py:119
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
 msgstr "Не удаётся найти исполняемый файл pdftotext: %s"

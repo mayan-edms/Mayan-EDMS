@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-06-29 19:59+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Harald Ersch, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -190,87 +190,83 @@ msgstr "Fișier document descărcat"
 msgid "Document file edited"
 msgstr "Fișier document editat"
 
-#: events.py:34
-msgid "Document file uploaded"
-msgstr "Fișier document încărcat"
-
-#: events.py:40
+#: events.py:37
 msgid "Document type created"
 msgstr "Tipul de document a fost creat"
 
-#: events.py:43
+#: events.py:40
 msgid "Document type edited"
 msgstr "Tipul de document a fost editat"
 
-#: events.py:46
+#: events.py:43
 msgid "Document type quick label created"
 msgstr "Etichetă rapidă tip document creat"
 
-#: events.py:50
+#: events.py:47
 msgid "Document type quick label deleted"
 msgstr "Etichetă rapidă de tip document ștearsă"
 
-#: events.py:54
+#: events.py:51
 msgid "Document type quick label edited"
 msgstr "Etichetă rapidă de tip document editată"
 
-#: events.py:59
+#: events.py:56
 msgid "Document type changed"
 msgstr "Tipul de document a fost modificat"
 
-#: events.py:65
+#: events.py:62
 msgid "Document version created"
 msgstr "Versiunea documentului a fost creată"
 
-#: events.py:68
+#: events.py:65
 msgid "Document version deleted"
 msgstr "Versiunea documentului a fost ștearsă"
 
-#: events.py:71
+#: events.py:68
 msgid "Document version edited"
 msgstr "Versiunea documentului a fost editată"
 
-#: events.py:74
+#: events.py:71
 msgid "Document version exported"
 msgstr "Versiunea documentului a fost exportată"
 
-#: events.py:80
+#: events.py:77
 msgid "Document version page created"
 msgstr "Pagină versiune document creată"
 
-#: events.py:84
+#: events.py:81
 msgid "Document version page deleted"
 msgstr "Pagina versiunii documentului a fost ștearsă"
 
-#: events.py:88
+#: events.py:85
 msgid "Document version page edited"
 msgstr "Pagină versiune document editată"
 
-#: events.py:95
+#: events.py:92
 msgid "Document trashed"
 msgstr "Document trimis la coș"
 
-#: events.py:98
+#: events.py:95
 msgid "Trashed document deleted"
 msgstr "Documentul din coșul de gunoi a fost șters"
 
-#: events.py:101
+#: events.py:98
 msgid "Trashed document restored"
 msgstr "Documentul din coșul de gunoi a fost restaurat"
 
-#: events.py:107
+#: events.py:104
 msgid "Document downloaded (historic)"
 msgstr "Document descărcat (istoric)"
 
-#: events.py:110
+#: events.py:107
 msgid "Document file created (historic)"
 msgstr "Fișier document creat (istoric)"
 
-#: events.py:114
+#: events.py:111
 msgid "Document version reverted (historic)"
 msgstr "Versiunea documentului restaurată (istoric)"
 
-#: events.py:118
+#: events.py:115
 msgid "Document version uploaded (historic)"
 msgstr "Versiunea documentului încărcată (istoric)"
 
@@ -471,7 +467,7 @@ msgstr "Renumărarea paginilor"
 msgid "Change type"
 msgstr "Modificați tipul"
 
-#: links/document_links.py:22 views/document_views.py:63
+#: links/document_links.py:22 views/document_views.py:68
 msgid "All documents"
 msgstr "Toate documentele"
 
@@ -1122,11 +1118,11 @@ msgstr ""
 msgid "Document type ID for the new document."
 msgstr ""
 
-#: serializers/document_version_serializers.py:68
+#: serializers/document_version_serializers.py:71
 msgid "Content type ID of the source object for the page."
 msgstr ""
 
-#: serializers/favorite_document_serializers.py:17
+#: serializers/favorite_document_serializers.py:18
 msgid "Document ID for the new favorite document."
 msgstr ""
 
@@ -1839,12 +1835,12 @@ msgstr ""
 msgid "Clone page transformations of document version: %s"
 msgstr ""
 
-#: views/document_views.py:40
+#: views/document_views.py:41
 #, python-format
 msgid "Error retrieving document list: %(exception)s."
 msgstr "Eroare la preluarea listei de documente: %(exception)s."
 
-#: views/document_views.py:58
+#: views/document_views.py:63
 msgid ""
 "This could mean that no documents have been uploaded or that your user "
 "account has not been granted the view permission for any document or "
@@ -1854,56 +1850,56 @@ msgstr ""
 "s-a acordat permisiunea de vizualizare pentru niciun document sau tip de "
 "document."
 
-#: views/document_views.py:62
+#: views/document_views.py:67
 msgid "No documents available"
 msgstr "Nu există documente disponibile"
 
-#: views/document_views.py:77
+#: views/document_views.py:82
 #, python-format
 msgid "Document type change request performed on %(count)d document"
 msgstr ""
 "Solicitarea de modificare a tipului de document efectuată pe %(count)d "
 "documente"
 
-#: views/document_views.py:80
+#: views/document_views.py:85
 #, python-format
 msgid "Document type change request performed on %(count)d documents"
 msgstr ""
 "Solicitarea de modificare a tipului de document efectuată pe %(count)d "
 "documente"
 
-#: views/document_views.py:87
+#: views/document_views.py:92
 msgid "Change"
 msgstr "Modificare"
 
-#: views/document_views.py:89
+#: views/document_views.py:94
 msgid "Change the type of the selected document"
 msgid_plural "Change the type of the selected documents"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: views/document_views.py:100
+#: views/document_views.py:105
 #, python-format
 msgid "Change the type of the document: %s"
 msgstr "Modificați tipul documentului: %s"
 
-#: views/document_views.py:122
+#: views/document_views.py:127
 #, python-format
 msgid "Document type for \"%s\" changed successfully."
 msgstr "Tipul de document pentru \"%s\" a fost modificat cu succes."
 
-#: views/document_views.py:147
+#: views/document_views.py:152
 #, python-format
 msgid "Preview of document: %s"
 msgstr "Previzualizarea documentului: %s"
 
-#: views/document_views.py:165
+#: views/document_views.py:170
 #, python-format
 msgid "Edit properties of document: %s"
 msgstr "Editați proprietățile documentului: %s"
 
-#: views/document_views.py:196
+#: views/document_views.py:201
 #, python-format
 msgid "Properties of document: %s"
 msgstr ""
