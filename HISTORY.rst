@@ -13,6 +13,10 @@
 - Rotate the main menu accordion indicator when opened or closed.
 - Optimize jQuery usage of the $(this) object. Remove some unused jQuery
   code from the document card update methods.
+- Add more uses of ``update_fields`` to ``.save()`` methods.
+- Simplify logic using the document parser content update using
+  ``update_or_create``.
+- Raise document list errors on debug or testing.
 
 4.0.8 (2021-06-23)
 ==================
