@@ -11,6 +11,8 @@
 - Increase the padding of the main menu panel anchors. Closes GitLab issue
   #1004. Thanks to Bw (@bwakkie) for the report.
 - Rotate the main menu accordion indicator when opened or closed.
+- Optimize jQuery usage of the $(this) object. Remove some unused jQuery
+  code from the document card update methods.
 
 4.0.8 (2021-06-23)
 ==================
