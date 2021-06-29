@@ -75,7 +75,7 @@ def operation_document_version_page_create(apps, schema_editor):
 
             if document_id_last != document_id:
                 document_version.active = True
-                document_version.save()
+                document_version.save(update_fields=('active',))
                 document_id_last = document_id
 
             if document_file_id_last != document_file_id:

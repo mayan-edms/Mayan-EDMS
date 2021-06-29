@@ -80,11 +80,11 @@ class Message(models.Model):
 
     def mark_read(self):
         self.read = True
-        self.save()
+        self.save(update_field=('read',))
 
     def mark_unread(self):
         self.read = False
-        self.save()
+        self.save(update_field=('read',))
 
     @method_event(
         event_manager_class=EventManagerSave,

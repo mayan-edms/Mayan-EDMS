@@ -67,7 +67,7 @@ class Quota(ExtraDataModelMixin, models.Model):
 
     def dumps(self, data):
         self.backend_data = json.dumps(obj=data)
-        self.save()
+        self.save(update_fields=('backend_data',))
 
     def get_backend_class(self):
         """
