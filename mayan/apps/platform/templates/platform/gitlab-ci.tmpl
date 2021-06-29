@@ -17,6 +17,8 @@ job_docker_build:
     - releases/all_minor
     - releases/docker_major
     - releases/docker_minor
+    - tests/all
+    - tests/docker
   script:
     - docker build --pull -t "mayanedms" -f docker/Dockerfile .
     - DOCKER_VERSION=`cat docker/rootfs/version`
@@ -139,6 +141,8 @@ job_documentation_build:
   only:
     - releases/all_major
     - releases/documentation
+    - tests/all
+    - tests/documentation
   script:
     - pip install --requirement requirements/documentation.txt
     - cd docs
@@ -239,6 +243,8 @@ job_python_push_pypi:
     - releases/python_major
     - releases/python_minor
     - releases/staging
+    - tests/all
+    - tests/python
   stage: stage_test
 
 job_mysql_upgrade_test:
@@ -316,6 +322,8 @@ job_sqlite_upgrade_test:
     - releases/python_major
     - releases/python_minor
     - releases/staging
+    - tests/all
+    - tests/python
   stage: stage_test
 
 job_postgres_test:
