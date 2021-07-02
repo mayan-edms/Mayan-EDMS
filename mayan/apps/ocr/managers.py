@@ -1,7 +1,7 @@
 import logging
 
 from django.apps import apps
-from django.db import models, transaction
+from django.db import models
 
 from mayan.apps.documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from mayan.apps.lock_manager.backends.base import LockingBackend
@@ -14,16 +14,12 @@ logger = logging.getLogger(name=__name__)
 
 class DocumentVersionPageOCRContentManager(models.Manager):
     def delete_content_for(self, document_version, user=None):
-        with transaction.atomic():
-            for document_version_page in document_version.pages.all():
-                self.filter(
-                    document_version_page=document_version_page
-                ).delete()
+        self.filter(document_version_page__document_version=document_version).delete()
 
-            event_ocr_document_version_content_deleted.commit(
-                actor=user, action_object=document_version.document,
-                target=document_version
-            )
+        event_ocr_document_version_content_deleted.commit(
+            actor=user, action_object=document_version.document,
+            target=document_version
+        )
 
     def process_document_version_page(
         self, document_version_page, user=None

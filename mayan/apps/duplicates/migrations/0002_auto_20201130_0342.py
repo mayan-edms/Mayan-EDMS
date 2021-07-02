@@ -45,10 +45,12 @@ def operation_duplicated_document_old_copy(apps, schema_editor):
 
     last_document_id = None
     document_list = []
-    duplicated_document_query = '''
+    duplicated_document_insert_query = '''
         INSERT INTO duplicates_duplicateddocument (
             document_id,datetime_added
         ) VALUES (%s,%s);
+    '''
+    duplicated_document_select_query = '''
         SELECT {duplicates_duplicateddocument}.{id} FROM
             {duplicates_duplicateddocument}
         WHERE
@@ -68,7 +70,10 @@ def operation_duplicated_document_old_copy(apps, schema_editor):
     for row in cursor_primary.fetchall():
         if last_document_id != row[0]:
             cursor_tertiary.execute(
-                duplicated_document_query, (row[0], now_text, row[0])
+                duplicated_document_insert_query, (row[0], now_text)
+            )
+            cursor_tertiary.execute(
+                duplicated_document_select_query, (row[0],)
             )
             new_instance_pk = cursor_tertiary.fetchone()[0]
 
