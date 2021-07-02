@@ -3,6 +3,8 @@
 - Simplify code block to delete OCR content of a document version.
 - Make document version timestamp time zone aware before copying them over
   during migration.
+- Split duplicates migration query into two separate queries to increase
+  compatibility with database managers.
 
 4.0.9 (2021-06-29)
 ==================
