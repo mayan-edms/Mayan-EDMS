@@ -5,6 +5,7 @@
   during migration.
 - Split duplicates migration query into two separate queries to increase
   compatibility with database managers.
+- Add support to the GitLab CI for local apt proxies.
 
 4.0.9 (2021-06-29)
 ==================
