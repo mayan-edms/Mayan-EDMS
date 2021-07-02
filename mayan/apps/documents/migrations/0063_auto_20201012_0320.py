@@ -1,3 +1,6 @@
+import pytz
+
+from django.conf import settings
 from django.db import migrations, reset_queries
 
 
@@ -64,6 +67,8 @@ def operation_document_version_page_create(apps, schema_editor):
 
     FETCH_SIZE = 100000
 
+    time_zone = pytz.timezone(zone=settings.TIME_ZONE)
+
     while True:
         rows = cursor_main.fetchmany(FETCH_SIZE)
 
@@ -72,10 +77,11 @@ def operation_document_version_page_create(apps, schema_editor):
 
         for row in rows:
             document_id, timestamp, document_file_id, document_file_page_id = row
+            timestamp = time_zone.localize(dt=timestamp)
 
             if document_id_last != document_id:
                 document_version.active = True
-                document_version.save(update_fields=('active',))
+                document_version.save()
                 document_id_last = document_id
 
             if document_file_id_last != document_file_id:
@@ -83,7 +89,7 @@ def operation_document_version_page_create(apps, schema_editor):
                     document_id=document_id
                 )
                 document_version.timestamp = timestamp
-                document_version.save(update_fields=('timestamp',))
+                document_version.save()
                 document_version_id = document_version.pk
                 document_file_id_last = document_file_id
                 if document_version_page_values:

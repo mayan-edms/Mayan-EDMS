@@ -1,6 +1,8 @@
 4.0.10 (2021-XX-XX)
 ===================
 - Simplify code block to delete OCR content of a document version.
+- Make document version timestamp time zone aware before copying them over
+  during migration.
 
 4.0.9 (2021-06-29)
 ==================
