@@ -20,12 +20,12 @@ job_docker_build:
     - tests/all
     - tests/docker
   script:
-    - docker build --build-arg APT_PROXY=$APT_PROXY --pull -t "mayanedms" -f docker/Dockerfile .
+    - docker build --build-arg APT_PROXY=$APT_PROXY --file docker/Dockerfile --pull --tag "mayanedms" .
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - docker tag "mayanedms" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - SERVICE_POSTGRES_IP=$(cat /etc/hosts | awk '{if ($2 == "postgres") print $1;}')
     - docker run --rm --add-host="postgres:$SERVICE_POSTGRES_IP" -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql_psycopg2','NAME':'{{ DEFAULT_DATABASE_NAME }}','USER':'{{ DEFAULT_DATABASE_USER }}','PASSWORD':'{{ DEFAULT_DATABASE_PASSWORD }}','HOST':'postgres'}}" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" run_tests
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout $CI_REGISTRY
   services:
@@ -42,7 +42,7 @@ job_docker_build:
 job_docker_push_major:
   before_script:
     - apk add --no-cache python3
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   image: {{ DOCKER_DIND_IMAGE_VERSION }}
   only:
     - releases/all_major
@@ -59,7 +59,7 @@ job_docker_push_major:
     - MINOR_VERSION=$($PYTHON_BIN $VERSION_SCRIPT_BIN $DOCKER_VERSION minor);
     - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
     - docker logout $CI_REGISTRY
-    - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
+    - docker login --username "$DOCKER_HUB_USERNAME" --password "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
     - docker push registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
     - docker push registry-1.docker.io/mayanedms/mayanedms:latest
     - docker push registry-1.docker.io/mayanedms/mayanedms:s"$MAJOR_VERSION"
@@ -71,7 +71,7 @@ job_docker_push_major:
 job_docker_push_minor:
   before_script:
     - apk add --no-cache python3
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   image: {{ DOCKER_DIND_IMAGE_VERSION }}
   only:
     - releases/all_minor
@@ -86,7 +86,7 @@ job_docker_push_minor:
     - MINOR_VERSION=$($PYTHON_BIN $VERSION_SCRIPT_BIN $DOCKER_VERSION minor);
     - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
     - docker logout $CI_REGISTRY
-    - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
+    - docker login --username "$DOCKER_HUB_USERNAME" --password "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
     - docker push registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
     - docker push registry-1.docker.io/mayanedms/mayanedms:latest
     - docker push registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
@@ -96,13 +96,13 @@ job_docker_push_minor:
 
 job_docker_nightly:
   before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   image: {{ DOCKER_DIND_IMAGE_VERSION }}
   only:
     - releases/nightly
     - releases/staging
   script:
-    - docker build --build-arg APT_PROXY=$APT_PROXY --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" -f docker/Dockerfile .
+    - docker build --build-arg APT_PROXY=$APT_PROXY --file docker/Dockerfile --pull --tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
     - docker logout $CI_REGISTRY
   services:
@@ -111,14 +111,14 @@ job_docker_nightly:
 
 job_docker_testing:
   before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   image: {{ DOCKER_DIND_IMAGE_VERSION }}
   only:
     - releases/testing
   script:
     - PYTHON_BIN=/usr/bin/python3
     - DOCKER_VERSION=`cat docker/rootfs/version`
-    - docker build --build-arg APT_PROXY=$APT_PROXY --pull -t "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" -f docker/Dockerfile .
+    - docker build --build-arg APT_PROXY=$APT_PROXY --file docker/Dockerfile --pull --tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" .
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout $CI_REGISTRY
   services:
@@ -152,7 +152,7 @@ job_documentation_build:
 
 job_documentation_push:
   before_script:
-    - mkdir -p ~/.ssh
+    - mkdir --parents ~/.ssh
     - chmod 700 ~/.ssh
     - echo "$DOCUMENTATION_SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
@@ -360,7 +360,7 @@ job_sqlite_test:
 
 job_demo_deploy:
   before_script:
-    - mkdir -p ~/.ssh
+    - mkdir --parents ~/.ssh
     - echo "${DEMO_SSH_KNOWN_HOST}" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - echo "${DEMO_PRIVATE_KEY}" > ~/.ssh/id_rsa
@@ -375,7 +375,7 @@ job_demo_deploy:
 
 job_staging_deploy:
   before_script:
-    - mkdir -p ~/.ssh
+    - mkdir --parents ~/.ssh
     - echo "${STAGING_SSH_KNOWN_HOST}" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - echo "${STAGING_PRIVATE_KEY}" > ~/.ssh/id_rsa
