@@ -1,3 +1,7 @@
+4.0.10 (2021-XX-XX)
+===================
+- Simplify code block to delete OCR content of a document version.
+
 4.0.9 (2021-06-29)
 ==================
 - Improve scope search.
