@@ -2,6 +2,7 @@
 ===================
 - Update date time copy code from migration document:0063 to work with
   database that store time zone information and those that don't.
+- Switch deployment instructions to use `venv` instead of `virtualenv`.
 
 4.0.10 (2021-07-02)
 ===================
