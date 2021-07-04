@@ -1,3 +1,8 @@
+4.0.11 (2021-XX-XX)
+===================
+- Update date time copy code from migration document:0063 to work with
+  database that store time zone information and those that don't.
+
 4.0.10 (2021-07-02)
 ===================
 - Simplify code block to delete OCR content of a document version.

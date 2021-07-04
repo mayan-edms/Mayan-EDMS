@@ -77,7 +77,7 @@ def operation_document_version_page_create(apps, schema_editor):
 
         for row in rows:
             document_id, timestamp, document_file_id, document_file_page_id = row
-            timestamp = time_zone.localize(dt=timestamp)
+            timestamp = timestamp.astimezone(tz=time_zone)
 
             if document_id_last != document_id:
                 document_version.active = True
