@@ -1,3 +1,7 @@
+3.5.11 (2021-XX-XX)
+===================
+- Update Django from version 2.2.23 to 2.2.24.
+
 3.5.10 (2021-06-05)
 ===================
 - Remove database transaction form the event decorator.  Solves workflows
