@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 check_port() {
   !</dev/tcp/${ENTRY[0]}/${ENTRY[1]}

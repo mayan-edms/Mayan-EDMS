@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 export DEBIAN_FRONTEND=noninteractive
 TEST_ARGUMENT=${@:-"--mayan-apps --no-exclude"}

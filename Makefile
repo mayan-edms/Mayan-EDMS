@@ -203,7 +203,7 @@ python-wheel: clean python-sdist
 	ls -l dist
 
 python-release-test-via-docker-ubuntu: ## Package (sdist and wheel) and upload to the PyPI test server using an Ubuntu Docker builder.
-	docker run --rm --name mayan_release --volume $(HOME):/host_home:ro --volume `pwd`:/host_source --workdir /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/bash -c "\
+	docker run --rm --name mayan_release --volume $(HOME):/host_home:ro --volume `pwd`:/host_source --workdir /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/sh -c "\
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
 	locale-gen en_US.UTF-8 && \
 	update-locale LANG=en_US.UTF-8 && \
@@ -216,7 +216,7 @@ python-release-test-via-docker-ubuntu: ## Package (sdist and wheel) and upload t
 	make test-release"
 
 python-release-via-docker-ubuntu: ## Package (sdist and wheel) and upload to PyPI using an Ubuntu Docker builder.
-	docker run --rm --name mayan_release --volume $(HOME):/host_home:ro --volume `pwd`:/host_source --workdir /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/bash -c "\
+	docker run --rm --name mayan_release --volume $(HOME):/host_home:ro --volume `pwd`:/host_source --workdir /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/sh -c "\
 	apt-get update && \
 	apt-get install --yes locales && \
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
@@ -230,7 +230,7 @@ python-release-via-docker-ubuntu: ## Package (sdist and wheel) and upload to PyP
 	make release"
 
 test-sdist-via-docker-ubuntu: ## Make an sdist package and test it using an Ubuntu Docker container.
-	docker run --rm --name mayan_sdist_test --volume $(HOME):/host_home:ro --volume `pwd`:/host_source --workdir /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/bash -c "\
+	docker run --rm --name mayan_sdist_test --volume $(HOME):/host_home:ro --volume `pwd`:/host_source --workdir /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/sh -c "\
 	cp --recursive /host_source/* . && \
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
 	locale-gen en_US.UTF-8 && \
@@ -244,7 +244,7 @@ test-sdist-via-docker-ubuntu: ## Make an sdist package and test it using an Ubun
 	"
 
 test-wheel-via-docker-ubuntu: ## Make a wheel package and test it using an Ubuntu Docker container.
-	docker run --rm --name mayan_wheel_test --volume $(HOME):/host_home:ro --volume `pwd`:/host_source --workdir /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/bash -c "\
+	docker run --rm --name mayan_wheel_test --volume $(HOME):/host_home:ro --volume `pwd`:/host_source --workdir /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/sh -c "\
 	cp --recursive /host_source/* . && \
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
 	locale-gen en_US.UTF-8 && \
