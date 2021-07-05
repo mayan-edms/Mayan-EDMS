@@ -2,8 +2,11 @@
 ===================
 - Update date time copy code from migration document:0063 to work with
   database that store time zone information and those that don't.
-- Switch deployment instructions to use `venv` instead of `virtualenv`.
+- Switch deployment instructions to use ``venv`` instead of ``virtualenv``.
 - Add support for using local PIP cache to build Docker images.
+- Improve ``user_settings_folder`` variable creation. Works with
+  ``MEDIA_ROOT`` paths with and without a trailing slash.
+
 
 4.0.10 (2021-07-02)
 ===================

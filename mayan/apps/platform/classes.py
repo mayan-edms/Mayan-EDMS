@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 from django.conf import settings
 from django.template import loader
@@ -270,9 +271,14 @@ class PlatformTemplateSupervisord(PlatformTemplate):
         )
 
     def get_context(self):
+        *_, user_settings_folder, media_root = self.variables
+
         return {
             'autorestart': 'true',
             'shell_path': '/bin/sh',
+            'user_settings_folder': Path(
+                media_root.get_value()
+            ) / user_settings_folder.get_value(),
             'workers': Worker.all(),
         }
 
