@@ -20,7 +20,7 @@ job_docker_build:
     - tests/all
     - tests/docker
   script:
-    - docker build --build-arg APT_PROXY=$APT_PROXY --file docker/Dockerfile --pull --tag "mayanedms" .
+    - docker build --build-arg APT_PROXY=$APT_PROXY --build-arg PIP_INDEX_URL=$PIP_INDEX_URL --build-arg PIP_TRUSTED_HOST=$PIP_TRUSTED_HOST --file docker/Dockerfile --pull --tag "mayanedms" .
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - docker tag "mayanedms" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - SERVICE_POSTGRES_IP=$(cat /etc/hosts | awk '{if ($2 == "postgres") print $1;}')
@@ -102,7 +102,7 @@ job_docker_nightly:
     - releases/nightly
     - releases/staging
   script:
-    - docker build --build-arg APT_PROXY=$APT_PROXY --file docker/Dockerfile --pull --tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
+    - docker build --build-arg APT_PROXY=$APT_PROXY --build-arg PIP_INDEX_URL=$PIP_INDEX_URL --build-arg PIP_TRUSTED_HOST=$PIP_TRUSTED_HOST --file docker/Dockerfile --pull --tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
     - docker logout $CI_REGISTRY
   services:
@@ -118,7 +118,7 @@ job_docker_testing:
   script:
     - PYTHON_BIN=/usr/bin/python3
     - DOCKER_VERSION=`cat docker/rootfs/version`
-    - docker build --build-arg APT_PROXY=$APT_PROXY --file docker/Dockerfile --pull --tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" .
+    - docker build --build-arg APT_PROXY=$APT_PROXY --build-arg PIP_INDEX_URL=$PIP_INDEX_URL --build-arg PIP_TRUSTED_HOST=$PIP_TRUSTED_HOST --file docker/Dockerfile --pull --tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" .
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout $CI_REGISTRY
   services:
