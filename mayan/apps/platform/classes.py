@@ -160,6 +160,7 @@ class PlatformTemplateDockerSupervisord(PlatformTemplate):
     def get_context(self):
         return {
             'autorestart': 'false',
+            'shell_path': '/bin/bash',
             'stderr_logfile': '/dev/fd/2',
             'stderr_logfile_maxbytes': '0',
             'stdout_logfile': '/dev/fd/1',
@@ -271,6 +272,7 @@ class PlatformTemplateSupervisord(PlatformTemplate):
     def get_context(self):
         return {
             'autorestart': 'true',
+            'shell_path': '/bin/sh',
             'workers': Worker.all(),
         }
 
