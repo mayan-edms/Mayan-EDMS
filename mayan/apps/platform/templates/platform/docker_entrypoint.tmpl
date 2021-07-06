@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Use bash and not sh to support argument slicing "${@:2}"
-# sh defaults to dash instead of bash.
-
 set -e
 echo "mayan: starting entrypoint.sh"
 INSTALL_FLAG=/var/lib/mayan/system/SECRET_KEY
@@ -153,11 +150,13 @@ run_all)
     ;;
 
 run_celery)
-    /usr/local/bin/run_celery.sh "${@:2}"
+    shift
+    /usr/local/bin/run_celery.sh "${@}"
     ;;
 
 run_command)
-    su mayan -c "${MAYAN_BIN} ${@:2}"
+    shift
+    su mayan -c "${MAYAN_BIN} ${@}"
     ;;
 
 run_frontend)
@@ -174,11 +173,13 @@ run_performupgrade)
 
 run_tests)
     make_ready
-    /usr/local/bin/run_tests.sh "${@:2}"
+    shift
+    /usr/local/bin/run_tests.sh "${@}"
     ;;
 
 run_worker)
-    /usr/local/bin/run_worker.sh "${@:2}"
+    shift
+    /usr/local/bin/run_worker.sh "${@}"
     ;;
 
 *)
