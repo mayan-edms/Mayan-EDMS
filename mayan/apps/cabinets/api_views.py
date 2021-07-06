@@ -39,7 +39,7 @@ class APICabinetListView(generics.ListCreateAPIView):
     """
     mayan_object_permissions = {'GET': (permission_cabinet_view,)}
     mayan_view_permissions = {'POST': (permission_cabinet_create,)}
-    ordering_fields = ('label',)
+    ordering_fields = ('id', 'label')
     queryset = Cabinet.objects.all()
     serializer_class = CabinetSerializer
 

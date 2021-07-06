@@ -4,6 +4,9 @@
   database that store time zone information and those that don't.
 - Switch deployment instructions to use ``venv`` instead of ``virtualenv``.
 - Add support for using local PIP cache to build Docker images.
+- Add a Vagrant setup for testing. Integrates project
+  https://gitlab.com/mayan-edms/mayan-edms-vagrant. Closes GitLab issue
+  #937. Thanks to Max Kornyev (@mkornyev) for the report.
 - Improve ``user_settings_folder`` variable creation. Works with
   ``MEDIA_ROOT`` paths with and without a trailing slash.
 - The GitLab CI upgrade tests now update a test document to populate the
@@ -17,6 +20,8 @@
 - Upgrade ``supervisord`` from Debian buster version 3.3.5-1 to Debian
   bullseye version 4.2.2-2. This version uses Python3 and was the last
   dependency that required installing Python2 in the Docker image.
+- Add the ``id`` field as sortable field in all the API that have ordering
+  enabled.
 
 4.0.10 (2021-07-02)
 ===================

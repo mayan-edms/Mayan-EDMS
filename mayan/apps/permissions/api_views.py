@@ -33,7 +33,7 @@ class APIRoleListView(generics.ListCreateAPIView):
     """
     mayan_object_permissions = {'GET': (permission_role_view,)}
     mayan_view_permissions = {'POST': (permission_role_create,)}
-    ordering_fields = ('label',)
+    ordering_fields = ('id', 'label')
     queryset = Role.objects.all()
     serializer_class = RoleSerializer
 
