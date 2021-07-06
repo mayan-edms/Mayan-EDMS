@@ -6,7 +6,17 @@
 - Add support for using local PIP cache to build Docker images.
 - Improve ``user_settings_folder`` variable creation. Works with
   ``MEDIA_ROOT`` paths with and without a trailing slash.
-
+- The GitLab CI upgrade tests now update a test document to populate the
+  older version install and trigger more migration code paths.
+- Update all shell usage from ``bash`` to ``sh``. ``sh`` symlinks to ``dash``
+  in the Docker image. This also expands the usability of the supervisor
+  file for direct deployments in more operating systems. Closes GitLab
+  issue #1013. Thanks to joh-ku (@joh-ku) for the report.
+- Replace the ``wait.sh`` file with a Python alternative that can wait on
+  network ports or PostgreSQL directly as a client.
+- Upgrade ``supervisord`` from Debian buster version 3.3.5-1 to Debian
+  bullseye version 4.2.2-2. This version uses Python3 and was the last
+  dependency that required installing Python2 in the Docker image.
 
 4.0.10 (2021-07-02)
 ===================
