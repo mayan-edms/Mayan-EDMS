@@ -1,4 +1,4 @@
-4.0.11 (2021-XX-XX)
+4.0.11 (2021-07-06)
 ===================
 - Update date time copy code from migration document:0063 to work with
   database that store time zone information and those that don't.
