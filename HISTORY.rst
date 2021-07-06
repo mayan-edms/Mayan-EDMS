@@ -1,10 +1,31 @@
-4.0.10 (2021-XX-XX)
+4.0.11 (2021-XX-XX)
+===================
+- Update date time copy code from migration document:0063 to work with
+  database that store time zone information and those that don't.
+- Switch deployment instructions to use ``venv`` instead of ``virtualenv``.
+- Add support for using local PIP cache to build Docker images.
+- Improve ``user_settings_folder`` variable creation. Works with
+  ``MEDIA_ROOT`` paths with and without a trailing slash.
+- The GitLab CI upgrade tests now update a test document to populate the
+  older version install and trigger more migration code paths.
+- Update all shell usage from ``bash`` to ``sh``. ``sh`` symlinks to ``dash``
+  in the Docker image. This also expands the usability of the supervisor
+  file for direct deployments in more operating systems. Closes GitLab
+  issue #1013. Thanks to joh-ku (@joh-ku) for the report.
+- Replace the ``wait.sh`` file with a Python alternative that can wait on
+  network ports or PostgreSQL directly as a client.
+- Upgrade ``supervisord`` from Debian buster version 3.3.5-1 to Debian
+  bullseye version 4.2.2-2. This version uses Python3 and was the last
+  dependency that required installing Python2 in the Docker image.
+
+4.0.10 (2021-07-02)
 ===================
 - Simplify code block to delete OCR content of a document version.
 - Make document version timestamp time zone aware before copying them over
   during migration.
 - Split duplicates migration query into two separate queries to increase
   compatibility with database managers.
+- Add support to the GitLab CI for local apt proxies.
 
 4.0.9 (2021-06-29)
 ==================

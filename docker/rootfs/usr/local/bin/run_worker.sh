@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 export MAYAN_WORKER_NAME=${MAYAN_WORKER_NAME:-$1}
 export MAYAN_WORKER_NICE_LEVEL=${MAYAN_WORKER_NICE_LEVEL:-0}

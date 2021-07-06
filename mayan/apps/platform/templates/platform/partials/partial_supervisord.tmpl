@@ -3,7 +3,7 @@
 [program:mayan-edms-gunicorn]
 autorestart = {{ autorestart }}
 autostart = true
-command = /bin/bash -c "${MAYAN_GUNICORN_BIN} --workers ${MAYAN_GUNICORN_WORKERS} ${MAYAN_GUNICORN_TEMPORARY_DIRECTORY} mayan.wsgi --max-requests ${MAYAN_GUNICORN_MAX_REQUESTS} --max-requests-jitter ${MAYAN_GUNICORN_JITTER} --worker-class ${MAYAN_GUNICORN_WORKER_CLASS} --bind 0.0.0.0:8000 --env DJANGO_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE} --timeout ${MAYAN_GUNICORN_TIMEOUT} --limit-request-line ${MAYAN_GUNICORN_LIMIT_REQUEST_LINE}"
+command = {{ shell_path }} -c "${MAYAN_GUNICORN_BIN} --workers ${MAYAN_GUNICORN_WORKERS} ${MAYAN_GUNICORN_TEMPORARY_DIRECTORY} mayan.wsgi --max-requests ${MAYAN_GUNICORN_MAX_REQUESTS} --max-requests-jitter ${MAYAN_GUNICORN_JITTER} --worker-class ${MAYAN_GUNICORN_WORKER_CLASS} --bind 0.0.0.0:8000 --env DJANGO_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE} --timeout ${MAYAN_GUNICORN_TIMEOUT} --limit-request-line ${MAYAN_GUNICORN_LIMIT_REQUEST_LINE}"
 redirect_stderr = true
 {% if stderr_logfile %}stderr_logfile = {{ stderr_logfile }}{% endif %}
 {% if stderr_logfile_maxbytes %}stderr_logfile_maxbytes = {{ stderr_logfile_maxbytes }}{% endif %}
@@ -16,7 +16,7 @@ user = mayan
 [program:mayan-edms-{{ worker.name }}]
 autorestart = {{ autorestart }}
 autostart = true
-command = nice -n {{ worker.nice_level }} /bin/bash -c "${MAYAN_PYTHON_BIN_DIR}celery worker -A mayan -Ofair -l ERROR -Q {% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} --hostname=mayan-edms-{{ worker.name }}.%%h ${MAYAN_{{ worker.name|upper }}_CONCURRENCY} ${MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD} ${MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD}"
+command = nice -n {{ worker.nice_level }} {{ shell_path }} -c "${MAYAN_PYTHON_BIN_DIR}celery worker -A mayan -Ofair -l ERROR -Q {% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} --hostname=mayan-edms-{{ worker.name }}.%%h ${MAYAN_{{ worker.name|upper }}_CONCURRENCY} ${MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD} ${MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD}"
 killasgroup = true
 numprocs = 1
 priority = 998
@@ -33,7 +33,7 @@ user = mayan
 [program:mayan-edms-celery-beat]
 autorestart = {{ autorestart }}
 autostart = true
-command = nice -n 1 /bin/bash -c "${MAYAN_PYTHON_BIN_DIR}celery -A mayan beat --pidfile= -l ERROR"
+command = nice -n 1 {{ shell_path }} -c "${MAYAN_PYTHON_BIN_DIR}celery -A mayan beat --pidfile= -l ERROR"
 killasgroup = true
 numprocs = 1
 priority = 998
