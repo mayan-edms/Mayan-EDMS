@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-29 19:59+0000\n"
+"POT-Creation-Date: 2021-07-06 04:40+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -26,26 +26,26 @@ msgstr ""
 msgid "Platform"
 msgstr "Platforma"
 
-#: classes.py:133
+#: classes.py:134
 msgid "Template for entrypoint.sh file inside a Docker image."
 msgstr ""
 
-#: classes.py:143
+#: classes.py:144
 msgid "Template that generates a Dockerfile file."
 msgstr ""
 
-#: classes.py:157
+#: classes.py:158
 msgid "Template for Supervisord inside a Docker image."
 msgstr "Szablon dla zarządzającego wewnątrz obrazu Docker'a"
 
-#: classes.py:172
+#: classes.py:174
 msgid "Template that generates a GitLab CI config file."
 msgstr ""
 
-#: classes.py:216
+#: classes.py:218
 msgid "Template for Supervisord."
 msgstr "Szablon dla zarządzającego"
 
-#: classes.py:279
+#: classes.py:287
 msgid "Template showing the queues of a worker."
 msgstr "Szablon przedstawiający kolejki pracownika."
