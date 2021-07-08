@@ -17,13 +17,15 @@ job_docker_build:
     - releases/all_minor
     - releases/docker_major
     - releases/docker_minor
+    - tests/all
+    - tests/docker
   script:
-    - docker build --pull -t "mayanedms" -f docker/Dockerfile .
+    - docker build --build-arg APT_PROXY=$APT_PROXY --build-arg PIP_INDEX_URL=$PIP_INDEX_URL --build-arg PIP_TRUSTED_HOST=$PIP_TRUSTED_HOST --file docker/Dockerfile --pull --tag "mayanedms" .
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - docker tag "mayanedms" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - SERVICE_POSTGRES_IP=$(cat /etc/hosts | awk '{if ($2 == "postgres") print $1;}')
     - docker run --rm --add-host="postgres:$SERVICE_POSTGRES_IP" -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql_psycopg2','NAME':'{{ DEFAULT_DATABASE_NAME }}','USER':'{{ DEFAULT_DATABASE_USER }}','PASSWORD':'{{ DEFAULT_DATABASE_PASSWORD }}','HOST':'postgres'}}" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" run_tests
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout $CI_REGISTRY
   services:
@@ -40,7 +42,7 @@ job_docker_build:
 job_docker_push_major:
   before_script:
     - apk add --no-cache python3
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   image: {{ DOCKER_DIND_IMAGE_VERSION }}
   only:
     - releases/all_major
@@ -57,7 +59,7 @@ job_docker_push_major:
     - MINOR_VERSION=$($PYTHON_BIN $VERSION_SCRIPT_BIN $DOCKER_VERSION minor);
     - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
     - docker logout $CI_REGISTRY
-    - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
+    - docker login --username "$DOCKER_HUB_USERNAME" --password "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
     - docker push registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
     - docker push registry-1.docker.io/mayanedms/mayanedms:latest
     - docker push registry-1.docker.io/mayanedms/mayanedms:s"$MAJOR_VERSION"
@@ -69,7 +71,7 @@ job_docker_push_major:
 job_docker_push_minor:
   before_script:
     - apk add --no-cache python3
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   image: {{ DOCKER_DIND_IMAGE_VERSION }}
   only:
     - releases/all_minor
@@ -84,7 +86,7 @@ job_docker_push_minor:
     - MINOR_VERSION=$($PYTHON_BIN $VERSION_SCRIPT_BIN $DOCKER_VERSION minor);
     - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
     - docker logout $CI_REGISTRY
-    - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
+    - docker login --username "$DOCKER_HUB_USERNAME" --password "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
     - docker push registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
     - docker push registry-1.docker.io/mayanedms/mayanedms:latest
     - docker push registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
@@ -94,13 +96,13 @@ job_docker_push_minor:
 
 job_docker_nightly:
   before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   image: {{ DOCKER_DIND_IMAGE_VERSION }}
   only:
     - releases/nightly
     - releases/staging
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" -f docker/Dockerfile .
+    - docker build --build-arg APT_PROXY=$APT_PROXY --build-arg PIP_INDEX_URL=$PIP_INDEX_URL --build-arg PIP_TRUSTED_HOST=$PIP_TRUSTED_HOST --file docker/Dockerfile --pull --tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
     - docker logout $CI_REGISTRY
   services:
@@ -109,14 +111,14 @@ job_docker_nightly:
 
 job_docker_testing:
   before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   image: {{ DOCKER_DIND_IMAGE_VERSION }}
   only:
     - releases/testing
   script:
     - PYTHON_BIN=/usr/bin/python3
     - DOCKER_VERSION=`cat docker/rootfs/version`
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" -f docker/Dockerfile .
+    - docker build --build-arg APT_PROXY=$APT_PROXY --build-arg PIP_INDEX_URL=$PIP_INDEX_URL --build-arg PIP_TRUSTED_HOST=$PIP_TRUSTED_HOST --file docker/Dockerfile --pull --tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" .
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout $CI_REGISTRY
   services:
@@ -132,6 +134,7 @@ job_documentation_build:
     - docs
   before_script:
     - apt-get update
+    - if [ "${APT_PROXY}" ]; then echo "Acquire::http { Proxy \"http://${APT_PROXY}\"; };" > /etc/apt/apt.conf.d/01proxy; fi
     - apt-get install --yes enchant make python3-venv python3-dev
     - python3 -m venv venv
     - . venv/bin/activate
@@ -139,6 +142,8 @@ job_documentation_build:
   only:
     - releases/all_major
     - releases/documentation
+    - tests/all
+    - tests/documentation
   script:
     - pip install --requirement requirements/documentation.txt
     - cd docs
@@ -147,7 +152,7 @@ job_documentation_build:
 
 job_documentation_push:
   before_script:
-    - mkdir -p ~/.ssh
+    - mkdir --parents ~/.ssh
     - chmod 700 ~/.ssh
     - echo "$DOCUMENTATION_SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
@@ -173,6 +178,7 @@ job_python_build:
   before_script:
     - set -a && . ./config.env && set +a
     - apt-get update
+    - if [ "${APT_PROXY}" ]; then echo "Acquire::http { Proxy \"http://${APT_PROXY}\"; };" > /etc/apt/apt.conf.d/01proxy; fi
     - apt-get install --yes make python3-venv python3-dev
     - python3 -m venv venv
     - . venv/bin/activate
@@ -193,6 +199,7 @@ job_python_push_pypi:
   before_script:
     - set -a && . ./config.env && set +a
     - apt-get update
+    - if [ "${APT_PROXY}" ]; then echo "Acquire::http { Proxy \"http://${APT_PROXY}\"; };" > /etc/apt/apt.conf.d/01proxy; fi
     - apt-get install --yes make python3-venv python3-dev
     - python3 -m venv venv
     - . venv/bin/activate
@@ -215,6 +222,7 @@ job_python_push_pypi:
 .job_base_upgrade_test: &job_base_upgrade_test
   before_script:
     - set -a && . ./config.env && set +a
+    - if [ "${APT_PROXY}" ]; then echo "Acquire::http { Proxy \"http://${APT_PROXY}\"; };" > /etc/apt/apt.conf.d/01proxy; fi
     - echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
     - echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
     - apt-get update
@@ -239,6 +247,8 @@ job_python_push_pypi:
     - releases/python_major
     - releases/python_minor
     - releases/staging
+    - tests/all
+    - tests/python
   stage: stage_test
 
 job_mysql_upgrade_test:
@@ -250,6 +260,7 @@ job_mysql_upgrade_test:
     - mysql --host="$MYSQL_PORT_3306_TCP_ADDR" --port="$MYSQL_PORT_3306_TCP_PORT" --user=root --password="$MYSQL_ENV_MYSQL_ROOT_PASSWORD" --execute="set global character_set_server=utf8mb4;" --ssl=TRUE
     - export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'{{ DEFAULT_DATABASE_NAME }}','PASSWORD':'{{ DEFAULT_DATABASE_PASSWORD }}','USER':'{{ DEFAULT_DATABASE_USER }}','HOST':'$MYSQL_PORT_3306_TCP_ADDR','OPTIONS':{'ssl':True}}}"
     - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
+    - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell
     - pip install dist/mayan_edms-*.whl
     - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
   services:
@@ -270,6 +281,7 @@ job_postgres_upgrade_test:
     - pip install psycopg2==$PYTHON_PSYCOPG2_VERSION
     - export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'{{ DEFAULT_DATABASE_NAME }}','PASSWORD':'{{ DEFAULT_DATABASE_PASSWORD }}','USER':'{{ DEFAULT_DATABASE_USER }}','HOST':'postgres'}}"
     - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
+    - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell
     - pip install dist/mayan_edms-*.whl
     - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
   services:
@@ -286,6 +298,7 @@ job_sqlite_upgrade_test:
   script:
     - . venv/bin/activate
     - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
+    - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell
     - pip install dist/mayan_edms-*.whl
     - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
 
@@ -294,6 +307,7 @@ job_sqlite_upgrade_test:
 .job_base_test: &job_base_test
   before_script:
     - set -a && . ./config.env && set +a
+    - if [ "${APT_PROXY}" ]; then echo "Acquire::http { Proxy \"http://${APT_PROXY}\"; };" > /etc/apt/apt.conf.d/01proxy; fi
     - echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
     - echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
     - apt-get update
@@ -316,6 +330,8 @@ job_sqlite_upgrade_test:
     - releases/python_major
     - releases/python_minor
     - releases/staging
+    - tests/all
+    - tests/python
   stage: stage_test
 
 job_postgres_test:
@@ -347,7 +363,7 @@ job_sqlite_test:
 
 job_demo_deploy:
   before_script:
-    - mkdir -p ~/.ssh
+    - mkdir --parents ~/.ssh
     - echo "${DEMO_SSH_KNOWN_HOST}" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - echo "${DEMO_PRIVATE_KEY}" > ~/.ssh/id_rsa
@@ -362,7 +378,7 @@ job_demo_deploy:
 
 job_staging_deploy:
   before_script:
-    - mkdir -p ~/.ssh
+    - mkdir --parents ~/.ssh
     - echo "${STAGING_SSH_KNOWN_HOST}" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - echo "${STAGING_PRIVATE_KEY}" > ~/.ssh/id_rsa

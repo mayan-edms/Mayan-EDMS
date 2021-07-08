@@ -40,7 +40,7 @@ class AdvancedSearchViewTestCase(
         # Make sure all documents are returned by the search
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'label': test_document_label},
+            query={'label': test_document_label},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), self.test_document_count)
@@ -140,7 +140,7 @@ class SearchToolsViewTestCase(
 
         queryset = self.search_backend.search(
             search_model=self.document_search_model,
-            query_string={'q': self.test_document.label},
+            query={'q': self.test_document.label},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
@@ -159,7 +159,7 @@ class SearchToolsViewTestCase(
 
         queryset = self.search_backend.search(
             search_model=self.document_search_model,
-            query_string={'q': self.test_document.label},
+            query={'q': self.test_document.label},
             user=self._test_case_user
         )
         self.assertNotEqual(queryset.count(), 0)

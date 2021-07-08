@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-07-06 04:40+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/id/)\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "Dynamic search"
 msgstr ""
 
-#: classes.py:265
+#: classes.py:283
 msgid "No search model matching the query"
 msgstr ""
 
@@ -34,16 +34,16 @@ msgid ""
 "unchecked results that match at least one field will be returned."
 msgstr ""
 
-#: forms.py:31 templates/dynamic_search/search_box.html:41
+#: forms.py:30 templates/dynamic_search/search_box.html:41
 msgid "Search terms"
 msgstr ""
 
 #: links.py:13 permissions.py:5 queues.py:8 settings.py:11
-#: templates/dynamic_search/search_box.html:45 views.py:124 views.py:137
+#: templates/dynamic_search/search_box.html:45 views.py:126 views.py:139
 msgid "Search"
 msgstr ""
 
-#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:151
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:156
 msgid "Advanced search"
 msgstr ""
 
@@ -51,7 +51,7 @@ msgstr ""
 msgid "Search again"
 msgstr ""
 
-#: links.py:25 views.py:97
+#: links.py:25 views.py:99
 msgid "Reindex search backend"
 msgstr ""
 
@@ -105,21 +105,21 @@ msgstr ""
 msgid "Search results for: %s"
 msgstr ""
 
-#: views.py:93
+#: views.py:95
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
 msgstr ""
 
-#: views.py:99
+#: views.py:101
 msgid "This tool erases and populates the search backend's internal index."
 msgstr ""
 
-#: views.py:117
+#: views.py:119
 msgid "Search backend reindexing queued."
 msgstr ""
 
-#: views.py:139
+#: views.py:141
 #, python-format
 msgid "Search for: %s"
 msgstr ""

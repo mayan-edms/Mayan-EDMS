@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-07-06 04:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -132,12 +132,12 @@ msgstr ""
 msgid "Document file parse errors"
 msgstr ""
 
-#: parsers.py:90
+#: parsers.py:93
 #, python-format
 msgid "Exception parsing page; %s"
 msgstr ""
 
-#: parsers.py:116
+#: parsers.py:119
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
 msgstr ""

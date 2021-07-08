@@ -14,12 +14,16 @@ up to and including the latest version.
 Below are release notes through Mayan EDMS |version| and its minor releases. Newer
 versions of the documentation contain the release notes for any later releases.
 
+
 **********
 4.0 series
 **********
 .. toctree::
    :maxdepth: 1
 
+   4.0.11
+   4.0.10
+   4.0.9
    4.0.8
    4.0.7
    4.0.6

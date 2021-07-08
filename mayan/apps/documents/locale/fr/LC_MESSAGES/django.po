@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-07-06 04:40+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -61,7 +61,7 @@ msgstr "Encodages du fichier"
 
 #: apps.py:392
 msgid "File MIME types"
-msgstr ""
+msgstr "Types de médias (MIME)"
 
 #: apps.py:396
 msgid "File timestamps"
@@ -195,87 +195,83 @@ msgstr "Fichier de document téléchargé"
 msgid "Document file edited"
 msgstr "Fichier de document modifié"
 
-#: events.py:34
-msgid "Document file uploaded"
-msgstr "Fichier de document téléversé"
-
-#: events.py:40
+#: events.py:37
 msgid "Document type created"
 msgstr "Type de document créé"
 
-#: events.py:43
+#: events.py:40
 msgid "Document type edited"
 msgstr "Type de document modifié"
 
-#: events.py:46
+#: events.py:43
 msgid "Document type quick label created"
 msgstr "Dénomination rapide du type de document créée"
 
-#: events.py:50
+#: events.py:47
 msgid "Document type quick label deleted"
 msgstr "Dénomination rapide du type de document supprimée"
 
-#: events.py:54
+#: events.py:51
 msgid "Document type quick label edited"
 msgstr "Dénomination rapide du type de document modifiée"
 
-#: events.py:59
+#: events.py:56
 msgid "Document type changed"
 msgstr "Type de document modifié"
 
-#: events.py:65
+#: events.py:62
 msgid "Document version created"
 msgstr "Version du document créée"
 
-#: events.py:68
+#: events.py:65
 msgid "Document version deleted"
 msgstr "Version du document supprimée"
 
-#: events.py:71
+#: events.py:68
 msgid "Document version edited"
 msgstr "Version du document modifiée"
 
-#: events.py:74
+#: events.py:71
 msgid "Document version exported"
 msgstr "Version du document exportée"
 
-#: events.py:80
+#: events.py:77
 msgid "Document version page created"
 msgstr "Page de la version du document créée"
 
-#: events.py:84
+#: events.py:81
 msgid "Document version page deleted"
 msgstr "Page de la version du document supprimée"
 
-#: events.py:88
+#: events.py:85
 msgid "Document version page edited"
 msgstr "Page de la version du document modifiée"
 
-#: events.py:95
+#: events.py:92
 msgid "Document trashed"
 msgstr "Document mis à la corbeille"
 
-#: events.py:98
+#: events.py:95
 msgid "Trashed document deleted"
 msgstr "Document mis dans la corbeille supprimé"
 
-#: events.py:101
+#: events.py:98
 msgid "Trashed document restored"
 msgstr "Document mis dans la corbeille restauré"
 
-#: events.py:107
+#: events.py:104
 msgid "Document downloaded (historic)"
 msgstr ""
 
-#: events.py:110
+#: events.py:107
 msgid "Document file created (historic)"
 msgstr ""
 
-#: events.py:114
+#: events.py:111
 msgid "Document version reverted (historic)"
 msgstr ""
 
-#: events.py:118
+#: events.py:115
 msgid "Document version uploaded (historic)"
 msgstr ""
 
@@ -476,7 +472,7 @@ msgstr "Recompter le nombre de pages"
 msgid "Change type"
 msgstr "Modifier le type"
 
-#: links/document_links.py:22 views/document_views.py:63
+#: links/document_links.py:22 views/document_views.py:68
 msgid "All documents"
 msgstr "Tous les documents"
 
@@ -1129,11 +1125,11 @@ msgstr "Contenu binaire du nouveau fichier."
 msgid "Document type ID for the new document."
 msgstr ""
 
-#: serializers/document_version_serializers.py:68
+#: serializers/document_version_serializers.py:71
 msgid "Content type ID of the source object for the page."
 msgstr ""
 
-#: serializers/favorite_document_serializers.py:17
+#: serializers/favorite_document_serializers.py:18
 msgid "Document ID for the new favorite document."
 msgstr ""
 
@@ -1868,12 +1864,12 @@ msgstr ""
 msgid "Clone page transformations of document version: %s"
 msgstr ""
 
-#: views/document_views.py:40
+#: views/document_views.py:41
 #, python-format
 msgid "Error retrieving document list: %(exception)s."
 msgstr "Erreur lors du chargement de la liste de documents: %(exception)s."
 
-#: views/document_views.py:58
+#: views/document_views.py:63
 msgid ""
 "This could mean that no documents have been uploaded or that your user "
 "account has not been granted the view permission for any document or "
@@ -1883,54 +1879,54 @@ msgstr ""
 "d'utilisateur ne dispose pas d'autorisation d'affichage pour aucun document "
 "ou type de document."
 
-#: views/document_views.py:62
+#: views/document_views.py:67
 msgid "No documents available"
 msgstr "Aucun document disponible"
 
-#: views/document_views.py:77
+#: views/document_views.py:82
 #, python-format
 msgid "Document type change request performed on %(count)d document"
 msgstr ""
 "Demande de modification du type de document effectuée sur %(count)d document"
 
-#: views/document_views.py:80
+#: views/document_views.py:85
 #, python-format
 msgid "Document type change request performed on %(count)d documents"
 msgstr ""
 "Demande de modification du type de document effectuée sur %(count)d "
 "documents"
 
-#: views/document_views.py:87
+#: views/document_views.py:92
 msgid "Change"
 msgstr "Modifier"
 
-#: views/document_views.py:89
+#: views/document_views.py:94
 msgid "Change the type of the selected document"
 msgid_plural "Change the type of the selected documents"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views/document_views.py:100
+#: views/document_views.py:105
 #, python-format
 msgid "Change the type of the document: %s"
 msgstr "Modifier le type de document : %s"
 
-#: views/document_views.py:122
+#: views/document_views.py:127
 #, python-format
 msgid "Document type for \"%s\" changed successfully."
 msgstr "Type de document de \"%s\" modifié avec succès."
 
-#: views/document_views.py:147
+#: views/document_views.py:152
 #, python-format
 msgid "Preview of document: %s"
 msgstr "Aperçu du document : %s"
 
-#: views/document_views.py:165
+#: views/document_views.py:170
 #, python-format
 msgid "Edit properties of document: %s"
 msgstr "Modifier les propriétés du document : %s"
 
-#: views/document_views.py:196
+#: views/document_views.py:201
 #, python-format
 msgid "Properties of document: %s"
 msgstr "Propriétés du document: %s"

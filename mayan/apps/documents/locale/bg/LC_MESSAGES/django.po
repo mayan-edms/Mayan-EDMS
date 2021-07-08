@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-07-06 04:40+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -189,87 +189,83 @@ msgstr "Файлът на документа е изтеглен"
 msgid "Document file edited"
 msgstr "Файлът на документа е редактиран"
 
-#: events.py:34
-msgid "Document file uploaded"
-msgstr "Качен е файл на документ"
-
-#: events.py:40
+#: events.py:37
 msgid "Document type created"
 msgstr "Тип на документа е създаден"
 
-#: events.py:43
+#: events.py:40
 msgid "Document type edited"
 msgstr "Тип на документа е редактиран"
 
-#: events.py:46
+#: events.py:43
 msgid "Document type quick label created"
 msgstr "Създаден е бърз етикет за тип документ"
 
-#: events.py:50
+#: events.py:47
 msgid "Document type quick label deleted"
 msgstr "Изтрит е бърз етикет за тип документ"
 
-#: events.py:54
+#: events.py:51
 msgid "Document type quick label edited"
 msgstr "Редактиран е бърз етикет за тип документ"
 
-#: events.py:59
+#: events.py:56
 msgid "Document type changed"
 msgstr "Типът документ е променен"
 
-#: events.py:65
+#: events.py:62
 msgid "Document version created"
 msgstr "Версията на документа е създадена"
 
-#: events.py:68
+#: events.py:65
 msgid "Document version deleted"
 msgstr "Версията на документа е изтрита"
 
-#: events.py:71
+#: events.py:68
 msgid "Document version edited"
 msgstr "Версията на документа е редактирана"
 
-#: events.py:74
+#: events.py:71
 msgid "Document version exported"
 msgstr "Версията на документа е експортирана"
 
-#: events.py:80
+#: events.py:77
 msgid "Document version page created"
 msgstr "Страницата с версията на документа е създадена"
 
-#: events.py:84
+#: events.py:81
 msgid "Document version page deleted"
 msgstr "Страницата с версия на документа е изтрита"
 
-#: events.py:88
+#: events.py:85
 msgid "Document version page edited"
 msgstr "Страницата с версията на документа е редактирана"
 
-#: events.py:95
+#: events.py:92
 msgid "Document trashed"
 msgstr "Изхвърлени документи"
 
-#: events.py:98
+#: events.py:95
 msgid "Trashed document deleted"
 msgstr "Изтрит документ от кошчето"
 
-#: events.py:101
+#: events.py:98
 msgid "Trashed document restored"
 msgstr "Възстановен документ от кошчето"
 
-#: events.py:107
+#: events.py:104
 msgid "Document downloaded (historic)"
 msgstr "Документът е изтеглен (исторически)"
 
-#: events.py:110
+#: events.py:107
 msgid "Document file created (historic)"
 msgstr "Създаден файл с документи (исторически)"
 
-#: events.py:114
+#: events.py:111
 msgid "Document version reverted (historic)"
 msgstr "Версията на документа е върната (историческа)"
 
-#: events.py:118
+#: events.py:115
 msgid "Document version uploaded (historic)"
 msgstr "Версията на документа е качена (исторически)"
 
@@ -470,7 +466,7 @@ msgstr "Преизчисляване броя на страниците"
 msgid "Change type"
 msgstr "Промяна на типа"
 
-#: links/document_links.py:22 views/document_views.py:63
+#: links/document_links.py:22 views/document_views.py:68
 msgid "All documents"
 msgstr "Всички документи"
 
@@ -1122,12 +1118,12 @@ msgstr "Двоично съдържание за новия файл."
 msgid "Document type ID for the new document."
 msgstr "Идентификатор на типа на документа за новия документ."
 
-#: serializers/document_version_serializers.py:68
+#: serializers/document_version_serializers.py:71
 msgid "Content type ID of the source object for the page."
 msgstr ""
 "Идентификатор за типа на съдържанието на изходния обект за страницата."
 
-#: serializers/favorite_document_serializers.py:17
+#: serializers/favorite_document_serializers.py:18
 msgid "Document ID for the new favorite document."
 msgstr "Идентификатор на документа за новия предпочитан документ."
 
@@ -1919,12 +1915,12 @@ msgstr ""
 msgid "Clone page transformations of document version: %s"
 msgstr "Клониране на трансформации на страница на версия на документа: %s"
 
-#: views/document_views.py:40
+#: views/document_views.py:41
 #, python-format
 msgid "Error retrieving document list: %(exception)s."
 msgstr "Грешка при извличането на списъка с документи: %(exception)s."
 
-#: views/document_views.py:58
+#: views/document_views.py:63
 msgid ""
 "This could mean that no documents have been uploaded or that your user "
 "account has not been granted the view permission for any document or "
@@ -1934,51 +1930,51 @@ msgstr ""
 "акаунт не е получил разрешение за преглед за всеки документ или тип "
 "документ."
 
-#: views/document_views.py:62
+#: views/document_views.py:67
 msgid "No documents available"
 msgstr "Няма налични документи"
 
-#: views/document_views.py:77
+#: views/document_views.py:82
 #, python-format
 msgid "Document type change request performed on %(count)d document"
 msgstr "Заявка за промяна на типа документ, извършена на %(count)d документ "
 
-#: views/document_views.py:80
+#: views/document_views.py:85
 #, python-format
 msgid "Document type change request performed on %(count)d documents"
 msgstr "Заявка за промяна на типа документ, извършена за %(count)d документи"
 
-#: views/document_views.py:87
+#: views/document_views.py:92
 msgid "Change"
 msgstr "Промяна"
 
-#: views/document_views.py:89
+#: views/document_views.py:94
 msgid "Change the type of the selected document"
 msgid_plural "Change the type of the selected documents"
 msgstr[0] "Променете типа на избрания документ"
 msgstr[1] "Променете типа на избраните документи"
 
-#: views/document_views.py:100
+#: views/document_views.py:105
 #, python-format
 msgid "Change the type of the document: %s"
 msgstr "Променете типа на документа: %s"
 
-#: views/document_views.py:122
+#: views/document_views.py:127
 #, python-format
 msgid "Document type for \"%s\" changed successfully."
 msgstr "Типът на документа за &quot;%s&quot; е променен успешно."
 
-#: views/document_views.py:147
+#: views/document_views.py:152
 #, python-format
 msgid "Preview of document: %s"
 msgstr "Визуализация на документа: %s"
 
-#: views/document_views.py:165
+#: views/document_views.py:170
 #, python-format
 msgid "Edit properties of document: %s"
 msgstr "Редактиране на свойствата на документ: %s"
 
-#: views/document_views.py:196
+#: views/document_views.py:201
 #, python-format
 msgid "Properties of document: %s"
 msgstr "Свойства на документа: %s"

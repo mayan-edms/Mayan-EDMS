@@ -352,7 +352,7 @@ class CachePartitionFile(models.Model):
         self.file_size = self.partition.cache.storage.size(
             name=self.full_filename
         )
-        self.save()
+        self.save(update_fields=('file_size',))
         if self.file_size > self.partition.cache.maximum_size:
             raise FileCachingException(
                 'Cache partition file %s is bigger than the maximum cache '

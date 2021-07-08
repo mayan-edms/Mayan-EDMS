@@ -39,7 +39,7 @@ class APIDocumentFileListView(
     get: Return a list of the selected document's files.
     post: Create a new document file.
     """
-    ordering_fields = ('comment', 'encoding', 'mime_type',)
+    ordering_fields = ('comment', 'encoding', 'id', 'mime_type')
     serializer_class = DocumentFileSerializer
 
     def create(self, request, *args, **kwargs):

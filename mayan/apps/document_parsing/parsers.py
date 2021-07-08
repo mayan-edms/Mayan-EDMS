@@ -79,13 +79,16 @@ class Parser:
         file_object = document_file_page.document_file.get_intermediate_file()
 
         try:
-            document_file_page_content, created = DocumentFilePageContent.objects.get_or_create(
-                document_file_page=document_file_page
-            )
-            document_file_page_content.content = self.execute(
+            parsed_content = self.execute(
                 file_object=file_object, page_number=document_file_page.page_number
             )
-            document_file_page_content.save()
+
+            DocumentFilePageContent.objects.update_or_create(
+                document_file_page=document_file_page, defaults={
+                    'content': parsed_content
+                }
+            )
+
         except Exception as exception:
             error_message = _('Exception parsing page; %s') % exception
             logger.error(error_message, exc_info=True)

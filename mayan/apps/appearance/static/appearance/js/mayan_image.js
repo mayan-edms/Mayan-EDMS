@@ -43,19 +43,19 @@ class MayanImage {
         });
 
         $('.lazy-load').one('load', function() {
-            $(this).hide();
-            $(this).show();
-            $(this).siblings('.spinner-container').remove();
-            $(this).removeClass('lazy-load pull-left');
+            var $this = $(this);
+
+            $this.siblings('.spinner-container').remove();
+            $this.removeClass('lazy-load pull-left');
             clearTimeout(MayanImage.timer);
             MayanImage.timer = setTimeout(MayanImage.timerFunction, 250);
         });
 
         $('.lazy-load-carousel').one('load', function() {
-            $(this).hide();
-            $(this).show();
-            $(this).siblings('.spinner-container').remove();
-            $(this).removeClass('lazy-load-carousel pull-left');
+            var $this = $(this);
+
+            $this.siblings('.spinner-container').remove();
+            $this.removeClass('lazy-load-carousel pull-left');
         });
     }
 

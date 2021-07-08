@@ -24,7 +24,7 @@ class AutoAdminHandlerTestCase(BaseTestCase):
         user = AutoAdminSingleton.objects.get().account
 
         user.set_password(TEST_ADMIN_USER_PASSWORD)
-        user.save(update_fields=['password'])
+        user.save(update_fields=('password',))
 
         self.assertEqual(AutoAdminSingleton.objects.get().account, None)
 

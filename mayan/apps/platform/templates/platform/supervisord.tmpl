@@ -1,7 +1,7 @@
 {% load templating_tags %}
 [supervisord]
 environment=
-    PYTHONPATH="{{ MEDIA_ROOT }}/{{ USER_SETTINGS_FOLDER }}",
+    PYTHONPATH="{{ user_settings_folder }}",
     DJANGO_SETTINGS_MODULE=mayan.settings.production,
     MAYAN_ALLOWED_HOSTS='["*"]',
     MAYAN_MEDIA_ROOT="{{ MEDIA_ROOT }}",

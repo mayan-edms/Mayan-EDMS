@@ -8,7 +8,7 @@ from .icons import (
 )
 from .permissions import permission_statistics_view
 
-# Translators: 'Queue' here is the verb, to queue a statistic to update
+# Translators: 'Queue' here is the verb, to queue a statistic to update.
 link_execute = Link(
     args='resolved_object.slug', icon=icon_execute,
     permissions=(permission_statistics_view,), text=_('Queue'),

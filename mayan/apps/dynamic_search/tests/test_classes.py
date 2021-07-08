@@ -7,6 +7,105 @@ from mayan.apps.testing.tests.base import BaseTestCase
 from ..classes import SearchBackend
 
 
+class QueryStringDecodeTestCase(BaseTestCase):
+    def setUp(self):
+        super().setUp()
+        self.search_backend = SearchBackend.get_instance()
+
+    def test_decode_default_scope(self):
+        query = {
+            'test_field': 'test_value'
+        }
+
+        self.assertEqual(
+            self.search_backend.decode_query(query=query), {
+                'operators': {}, 'result_scope': '0',
+                'scopes': {
+                    '0': {
+                        'match_all': False, 'query': {
+                            'test_field': 'test_value'
+                        }
+                    }
+                }
+            }
+        )
+
+    def test_decode_default_scope_with_explicit_scope(self):
+        query = {
+            'test_field': 'test_value',
+            '__1_test_field': 'test_value',
+        }
+
+        self.assertEqual(
+            self.search_backend.decode_query(query=query), {
+                'operators': {}, 'result_scope': '0',
+                'scopes': {
+                    '0': {
+                        'match_all': False, 'query': {
+                            'test_field': 'test_value'
+                        }
+                    },
+                    '1': {
+                        'match_all': False, 'query': {
+                            'test_field': 'test_value'
+                        }
+                    }
+                }
+            }
+        )
+
+    def test_decode_scope_0_match_all(self):
+        query = {
+            '__0_test_field': 'test_value',
+            '__0_match_all': 'true',
+            '__1_test_field': 'test_value',
+        }
+
+        self.assertEqual(
+            self.search_backend.decode_query(query=query), {
+                'operators': {}, 'result_scope': '0',
+                'scopes': {
+                    '0': {
+                        'match_all': True, 'query': {
+                            'test_field': 'test_value'
+                        }
+                    },
+                    '1': {
+                        'match_all': False, 'query': {
+                            'test_field': 'test_value'
+                        }
+                    }
+                }
+            }
+        )
+
+    def test_decode_scope_1_match_all(self):
+        query = {
+            '__0_test_field': 'test_value',
+            '__0_match_all': 'false',
+            '__1_test_field': 'test_value',
+            '__1_match_all': 'true',
+        }
+
+        self.assertEqual(
+            self.search_backend.decode_query(query=query), {
+                'operators': {}, 'result_scope': '0',
+                'scopes': {
+                    '0': {
+                        'match_all': False, 'query': {
+                            'test_field': 'test_value'
+                        }
+                    },
+                    '1': {
+                        'match_all': True, 'query': {
+                            'test_field': 'test_value'
+                        }
+                    }
+                }
+            }
+        )
+
+
 class ScopedSearchTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
     auto_upload_test_document = False
 
@@ -33,7 +132,7 @@ class ScopedSearchTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
             '__1_tags__label': self.test_tags[1].label
         }
         queryset = self.search_backend.search(
-            search_model=document_search, query_string=query,
+            search_model=document_search, query=query,
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
@@ -47,7 +146,7 @@ class ScopedSearchTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
             '__1_tags__label': self.test_tags[1].label
         }
         queryset = self.search_backend.search(
-            search_model=document_search, query_string=query,
+            search_model=document_search, query=query,
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
@@ -60,7 +159,7 @@ class ScopedSearchTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
             '__1_tags__label': self.test_tags[1].label
         }
         queryset = self.search_backend.search(
-            search_model=document_search, query_string=query,
+            search_model=document_search, query=query,
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
@@ -73,7 +172,7 @@ class ScopedSearchTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
             '__b_tags__label': self.test_tags[1].label
         }
         queryset = self.search_backend.search(
-            search_model=document_search, query_string=query,
+            search_model=document_search, query=query,
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
@@ -86,7 +185,38 @@ class ScopedSearchTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
             '__bc_tags__label': self.test_tags[1].label
         }
         queryset = self.search_backend.search(
-            search_model=document_search, query_string=query,
+            search_model=document_search, query=query,
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
+
+    def test_single_scope(self):
+        query = {
+            '__ab_tags__label': self.test_tags[0].label,
+            '__operator_ab_bc': 'OR_cc',
+            '__result': 'ab',
+            '__bc_tags__label': self.test_tags[1].label
+        }
+        queryset = self.search_backend.search(
+            search_model=document_search, query=query,
+            user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.test_documents[0] in queryset)
+
+    def test_scoped_and_non_scoped(self):
+        query = {
+            '__0_match_all': 'TRUE',
+            '__0_tags__label': self.test_tags[0].label,
+            '__0_tags__color': 'FFFFFF',
+            '__operator_0_bc': 'AND_cc',
+            '__bc_tags__label': self.test_tags[1].label,
+            '__bc_tags__color': '000000',
+            '__result': 'cc'
+        }
+        queryset = self.search_backend.search(
+            search_model=document_search, query=query,
+            user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.test_documents[0] in queryset)

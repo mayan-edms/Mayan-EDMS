@@ -13,17 +13,18 @@ logger = logging.getLogger(name=__name__)
 
 
 class DjangoSearchBackend(SearchBackend):
-    def _search(self, query_string, search_model, user, global_and_search=False):
+    def _search(
+        self, query_string, search_model, user, global_and_search=False,
+        ignore_limit=False
+    ):
         search_query = self.get_search_query(
             search_model=search_model, query_string=query_string,
             global_and_search=global_and_search
         )
 
-        queryset = search_model.get_queryset().filter(
+        return search_model.get_queryset().filter(
             search_query.query
         ).distinct()
-
-        return SearchBackend.limit_queryset(queryset=queryset)
 
     def deindex_instance(self, instance):
         """This backend doesn't remove instances."""
@@ -34,7 +35,9 @@ class DjangoSearchBackend(SearchBackend):
         database directly.
         """
 
-    def get_search_query(self, search_model, query_string, global_and_search=False):
+    def get_search_query(
+        self, search_model, query_string, global_and_search=False
+    ):
         return SearchQuery(
             query_string=query_string, search_model=search_model,
             global_and_search=global_and_search

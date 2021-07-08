@@ -141,7 +141,7 @@ class APIWorkflowTemplateListView(generics.ListCreateAPIView):
     """
     mayan_object_permissions = {'GET': (permission_workflow_template_view,)}
     mayan_view_permissions = {'POST': (permission_workflow_template_create,)}
-    ordering_fields = ('internal_name', 'label')
+    ordering_fields = ('id', 'internal_name', 'label')
     queryset = Workflow.objects.all()
     serializer_class = WorkflowTemplateSerializer
 
@@ -182,7 +182,7 @@ class APIWorkflowTemplateStateListView(generics.ListCreateAPIView):
     get: Returns a list of all the workflow template states.
     post: Create a new workflow template state.
     """
-    ordering_fields = ('completion', 'initial', 'label')
+    ordering_fields = ('completion', 'id', 'initial', 'label')
     serializer_class = WorkflowTemplateStateSerializer
 
     def get_instance_extra_data(self):
@@ -255,7 +255,7 @@ class APIWorkflowTemplateTransitionListView(
         'GET': (permission_workflow_template_view,),
         'POST': (permission_workflow_template_edit,),
     }
-    ordering_fields = ('destination_state', 'label', 'origin_state')
+    ordering_fields = ('destination_state', 'id', 'label', 'origin_state')
     serializer_class = WorkflowTemplateTransitionSerializer
 
     def get_instance_extra_data(self):
@@ -310,7 +310,7 @@ class APIWorkflowTemplateTransitionFieldListView(generics.ListCreateAPIView):
     get: Returns a list of all the workflow template transition fields.
     post: Create a new workflow template transition field.
     """
-    ordering_fields = ('label', 'name', 'required', 'widget_kwargs')
+    ordering_fields = ('id', 'label', 'name', 'required', 'widget_kwargs')
     serializer_class = WorkflowTransitionFieldSerializer
 
     def get_instance_extra_data(self):
@@ -473,7 +473,7 @@ class APIWorkflowInstanceLogEntryListView(
         'GET': (permission_workflow_template_view,),
     }
     ordering_fields = (
-        'comment', 'transition', 'transition__destination_state',
+        'comment', 'id', 'transition', 'transition__destination_state',
         'transition__origin_state'
     )
     serializer_class = WorkflowInstanceLogEntrySerializer

@@ -1,5 +1,6 @@
 import logging
 
+from django.conf import settings
 from django.contrib import messages
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, ungettext
@@ -42,6 +43,10 @@ class DocumentListView(SingleObjectListView):
                     'exception': exception
                 }, request=self.request
             )
+
+            if settings.DEBUG or settings.TESTING:
+                raise
+
             self.object_list = Document.valid.none()
             return super().get_context_data(**kwargs)
 
