@@ -1,30 +1,37 @@
 import logging
 
 from django.apps import apps
+from django.contrib.auth import get_user_model
 
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.celery import app
 
-from .literals import TASK_ASSET_IMAGE_GENERATE_RETRY_DELAY
-
 logger = logging.getLogger(name=__name__)
 
 
-@app.task(
-    bind=True, default_retry_delay=TASK_ASSET_IMAGE_GENERATE_RETRY_DELAY
-)
-def task_asset_image_generate(self, asset_id):
-    Asset = apps.get_model(
-        app_label='converter', model_name='Asset'
+@app.task(bind=True, retry_backoff=True)
+def task_content_object_image_generate(
+    self, content_type_id, object_id, user_id=None, **kwargs
+):
+    ContentType = apps.get_model(
+        app_label='contenttypes', model_name='ContentType'
     )
+    User = get_user_model()
 
-    asset = Asset.objects.get(pk=asset_id)
+    content_type = ContentType.objects.get(pk=content_type_id)
+
+    if user_id:
+        user = User.objects.get(pk=user_id)
+    else:
+        user = None
+
+    obj = content_type.get_object_for_this_type(pk=object_id)
 
     try:
-        return asset.generate_image()
+        return obj.generate_image(user=user, **kwargs)
     except LockError as exception:
         logger.warning(
-            'LockError during attempt to generate asset "%s" image. '
-            'Retrying.', asset.internal_name
+            'LockError during attempt to generate image for %s. Retrying.',
+            obj
         )
         raise self.retry(exc=exception)

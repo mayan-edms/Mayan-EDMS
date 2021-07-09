@@ -106,7 +106,8 @@ class Workflow(ExtraDataModelMixin, models.Model):
                 document__document_type_id=document_type.pk
             ).delete()
 
-    def generate_image(self):
+    def generate_image(self, user=None):
+        # `user` argument added for compatibility.
         cache_filename = '{}'.format(self.get_hash())
 
         try:

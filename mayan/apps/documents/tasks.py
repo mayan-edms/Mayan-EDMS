@@ -4,15 +4,10 @@ from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.db import OperationalError
 
-from mayan.apps.lock_manager.exceptions import LockError
 from mayan.celery import app
 
 from .literals import (
     UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY
-)
-from .settings import (
-    setting_task_document_file_page_image_generate_retry_delay,
-    setting_task_document_version_page_image_generate_retry_delay
 )
 
 logger = logging.getLogger(name=__name__)
@@ -50,38 +45,6 @@ def task_document_file_page_count_update(self, document_file_id):
             'Operational error during attempt to update page count for '
             'document file: %s; %s. Retrying.', document_file,
             exception
-        )
-        raise self.retry(exc=exception)
-
-
-@app.task(
-    bind=True,
-    default_retry_delay=setting_task_document_file_page_image_generate_retry_delay.value
-)
-def task_document_file_page_image_generate(
-    self, document_file_page_id, user_id=None, **kwargs
-):
-    DocumentFilePage = apps.get_model(
-        app_label='documents', model_name='DocumentFilePage'
-    )
-    User = get_user_model()
-
-    if user_id:
-        user = User.objects.get(pk=user_id)
-    else:
-        user = None
-
-    document_file_page = DocumentFilePage.objects.get(pk=document_file_page_id)
-    try:
-        return document_file_page.generate_image(user=user, **kwargs)
-    except LockError as exception:
-        logger.warning(
-            'LockError during attempt to generate document page image for '
-            'document id: %d, document file id: %d, document file '
-            'page id: %d. Retrying.',
-            document_file_page.document_file.document_id,
-            document_file_page.document_file_id,
-            document_file_page.pk,
         )
         raise self.retry(exc=exception)
 
@@ -218,42 +181,6 @@ def task_document_version_export(
     document_version.export_to_download_file(
         organization_installation_url=organization_installation_url, user=user
     )
-
-
-# Document version page
-
-@app.task(
-    bind=True,
-    default_retry_delay=setting_task_document_version_page_image_generate_retry_delay.value
-)
-def task_document_version_page_image_generate(
-    self, document_version_page_id, user_id=None, **kwargs
-):
-    DocumentVersionPage = apps.get_model(
-        app_label='documents', model_name='DocumentVersionPage'
-    )
-    User = get_user_model()
-
-    if user_id:
-        user = User.objects.get(pk=user_id)
-    else:
-        user = None
-
-    document_version_page = DocumentVersionPage.objects.get(
-        pk=document_version_page_id
-    )
-    try:
-        return document_version_page.generate_image(user=user, **kwargs)
-    except LockError as exception:
-        logger.warning(
-            'LockError during attempt to generate document page image for '
-            'document id: %d, document version id: %d, document version '
-            'page id: %d. Retrying.',
-            document_version_page.document_version.document_id,
-            document_version_page.document_version_id,
-            document_version_page.pk,
-        )
-        raise self.retry(exc=exception)
 
 
 # Trash can

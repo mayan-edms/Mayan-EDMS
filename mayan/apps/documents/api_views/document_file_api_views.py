@@ -1,12 +1,14 @@
 import logging
 
 from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponse
 from django.views.decorators.cache import cache_control, patch_cache_control
 
 from rest_framework import status
 from rest_framework.response import Response
 
+from mayan.apps.converter.tasks import task_content_object_image_generate
 from mayan.apps.rest_api import generics
 from mayan.apps.storage.models import SharedUploadedFile
 from mayan.apps.views.generics import DownloadViewMixin
@@ -21,9 +23,7 @@ from ..serializers.document_file_serializers import (
     DocumentFileSerializer, DocumentFilePageSerializer
 )
 from ..settings import setting_document_file_page_image_cache_time
-from ..tasks import (
-    task_document_file_page_image_generate, task_document_file_upload
-)
+from ..tasks import task_document_file_upload
 
 from .mixins import (
     ParentObjectDocumentAPIViewMixin, ParentObjectDocumentFileAPIViewMixin
@@ -188,9 +188,12 @@ class APIDocumentFilePageImageView(
 
         obj = self.get_object()
 
-        task = task_document_file_page_image_generate.apply_async(
+        content_type = ContentType.objects.get_for_model(model=obj)
+
+        task = task_content_object_image_generate.apply_async(
             kwargs={
-                'document_file_page_id': obj.pk,
+                'content_type_id': content_type.pk,
+                'object_id': obj.pk,
                 'height': height,
                 'maximum_layer_order': maximum_layer_order,
                 'rotation': rotation,

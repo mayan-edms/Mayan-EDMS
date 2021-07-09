@@ -23,9 +23,7 @@ from .literals import (
     DEFAULT_DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS,
     DEFAULT_DOCUMENTS_ZOOM_MAX_LEVEL, DEFAULT_DOCUMENTS_ZOOM_MIN_LEVEL,
     DEFAULT_DOCUMENTS_ZOOM_PERCENT_STEP, DEFAULT_LANGUAGE,
-    DEFAULT_LANGUAGE_CODES, DEFAULT_STUB_EXPIRATION_INTERVAL,
-    DEFAULT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY,
-    DEFAULT_TASK_GENERATE_DOCUMENT_VERSION_PAGE_IMAGE_RETRY_DELAY
+    DEFAULT_LANGUAGE_CODES, DEFAULT_STUB_EXPIRATION_INTERVAL
 )
 from .setting_callbacks import (
     callback_update_document_file_page_image_cache_size,
@@ -185,22 +183,6 @@ setting_stub_expiration_interval = namespace.add_setting(
     global_name='DOCUMENTS_STUB_EXPIRATION_INTERVAL', help_text=_(
         'Time after which a document stub will be considered invalid and '
         'deleted.'
-    )
-)
-setting_task_document_file_page_image_generate_retry_delay = namespace.add_setting(
-    default=DEFAULT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY,
-    global_name='DOCUMENT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY',
-    help_text=_(
-        'Amount of time in seconds, a failed document file page image task '
-        'will wait before retrying.'
-    )
-)
-setting_task_document_version_page_image_generate_retry_delay = namespace.add_setting(
-    default=DEFAULT_TASK_GENERATE_DOCUMENT_VERSION_PAGE_IMAGE_RETRY_DELAY,
-    global_name='DOCUMENT_TASK_GENERATE_DOCUMENT_VERSION_PAGE_IMAGE_RETRY_DELAY',
-    help_text=_(
-        'Amount of time in seconds, a failed document version page image '
-        'task will wait before retrying.'
     )
 )
 setting_thumbnail_height = namespace.add_setting(

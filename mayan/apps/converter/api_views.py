@@ -1,6 +1,7 @@
 import logging
 
 from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponse
 from django.views.decorators.cache import cache_control, patch_cache_control
 
@@ -15,7 +16,7 @@ from .permissions import (
 )
 from .serializers import AssetSerializer
 from .settings import setting_asset_cache_time
-from .tasks import task_asset_image_generate
+from .tasks import task_content_object_image_generate
 
 logger = logging.getLogger(name=__name__)
 
@@ -78,9 +79,14 @@ class APIAssetImageView(generics.RetrieveAPIView):
 
     @cache_control(private=True)
     def retrieve(self, request, *args, **kwargs):
-        task = task_asset_image_generate.apply_async(
+        obj = self.get_object()
+
+        content_type = ContentType.objects.get_for_model(model=obj)
+
+        task = task_content_object_image_generate.apply_async(
             kwargs={
-                'asset_id': self.get_object().pk,
+                'content_type_id': content_type.pk,
+                'object_id': obj.pk,
             }
         )
 
@@ -92,7 +98,7 @@ class APIAssetImageView(generics.RetrieveAPIView):
             kwargs['disable_sync_subtasks'] = False
 
         cache_filename = task.get(**kwargs)
-        cache_file = self.get_object().cache_partition.get_file(
+        cache_file = obj.cache_partition.get_file(
             filename=cache_filename
         )
         with cache_file.open() as file_object:
