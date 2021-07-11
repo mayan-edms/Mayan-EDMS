@@ -134,8 +134,8 @@ class ExternalContentTypeObjectAPIViewMixin(
     external_object_pk_url_kwarg = 'object_id'
 
     def get_external_object_queryset(self):
-        content_type = self.get_content_type()
-        self.external_object_class = content_type.model_class()
+        self.content_type = self.get_content_type()
+        self.external_object_class = self.content_type.model_class()
         return super().get_external_object_queryset()
 
 

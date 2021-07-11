@@ -307,7 +307,7 @@ class Document(
         try:
             return self.version_active.pages
         except AttributeError:
-            # Document has no version yet
+            # Document has no version yet.
             DocumentVersionPage = apps.get_model(
                 app_label='documents', model_name='DocumentVersionPage'
             )

@@ -6,12 +6,15 @@ from django.contrib.auth import get_user_model
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.celery import app
 
+from .transformations import BaseTransformation
+
 logger = logging.getLogger(name=__name__)
 
 
 @app.task(bind=True, retry_backoff=True)
 def task_content_object_image_generate(
-    self, content_type_id, object_id, user_id=None, **kwargs
+    self, content_type_id, object_id, maximum_layer_order=None,
+    transformation_dictionary_list=None, user_id=None
 ):
     ContentType = apps.get_model(
         app_label='contenttypes', model_name='ContentType'
@@ -27,8 +30,20 @@ def task_content_object_image_generate(
 
     obj = content_type.get_object_for_this_type(pk=object_id)
 
+    transformation_instance_list = []
+
+    for entry in transformation_dictionary_list:
+        if entry.get('name'):
+            transformation_instance_list.append(
+                BaseTransformation.get(name=entry['name'])(**entry['arguments'])
+            )
+
     try:
-        return obj.generate_image(user=user, **kwargs)
+        return obj.generate_image(
+            maximum_layer_order=maximum_layer_order,
+            transformation_instance_list=transformation_instance_list,
+            user=user
+        )
     except LockError as exception:
         logger.warning(
             'LockError during attempt to generate image for %s. Retrying.',
