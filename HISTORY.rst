@@ -1,3 +1,7 @@
+4.0.12 (2021-07-XX)
+===================
+- Fix main menu active entry handling.
+
 4.0.11 (2021-07-06)
 ===================
 - Update date time copy code from migration document:0063 to work with

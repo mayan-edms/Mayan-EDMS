@@ -71,13 +71,8 @@ class MayanApp {
 
     static setupNavBarState () {
         $('body').on('click', '#accordion-sidebar a', function (event) {
-            var $this = $(this);
-
-            $('#accordion-sidebar a').each(function (index, value) {
-                $this.parents('li').removeClass('active');
-            });
-
-            $this.parents('li').addClass('active');
+            $('#accordion-sidebar li').removeClass('active');
+            $(this).parents('li').addClass('active');
         });
     }
 
