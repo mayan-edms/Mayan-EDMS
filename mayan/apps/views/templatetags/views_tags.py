@@ -67,14 +67,14 @@ def views_get_list_mode_querystring(context):
         # Simple request extraction failed. Might not be a view context.
         # Try alternate method.
         try:
-            request = Variable('request').resolve(context)
+            request = Variable(var='request').resolve(context=context)
         except VariableDoesNotExist:
             # There is no request variable, most probable a 500 in a test
             # view. Don't return any resolved request.
             logger.warning('No request variable, aborting request resolution')
             return ''
 
-    # We do this to get an mutable copy we can modify
+    # We do this to get an mutable copy we can modify.
     querystring = request.GET.copy()
 
     list_as_items = context.get('list_as_items', False)
