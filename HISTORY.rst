@@ -2,11 +2,15 @@
 ===================
 - Fix main menu active entry handling.
 - Fix ID number in ``document_url`` attribute of the ``DocumentFile``
-  and ``DocumentVersion`` serializers.
+  and ``DocumentVersion`` serializers. Thanks to forum user @qra for the
+  report. Topic 5794.
 - Add API endpoint to display the list of valid transition options for a
-  workflow instance. Thanks to forum user @qra for the report.
+  workflow instance. Thanks to forum user @qra for the report. Topic 5795.
 - Add the workflow template content to the workflow instance API schema.
-  Thanks to forum user @qra for the request.
+  Thanks to forum user @qra for the request. Topic 5795.
+- Clarify purpose of project settings.
+- Minor API serializer cleanups.
+- Add explicit cabinet serializer read only fields.
 
 4.0.11 (2021-07-06)
 ===================

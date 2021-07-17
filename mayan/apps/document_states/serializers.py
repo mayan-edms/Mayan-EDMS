@@ -163,14 +163,16 @@ class WorkflowTemplateTransitionSerializer(
     destination_state_id = FilteredPrimaryKeyRelatedField(
         help_text=_(
             'Primary key of the destination state to be added.'
-        ), source_queryset_method='get_workflow_template_state_queryset'
+        ), source_queryset_method='get_workflow_template_state_queryset',
+        write_only=True
     )
     field_list_url = serializers.SerializerMethodField()
     origin_state = WorkflowTemplateStateSerializer(read_only=True)
     origin_state_id = FilteredPrimaryKeyRelatedField(
         help_text=_(
             'Primary key of the origin state to be added.'
-        ), source_queryset_method='get_workflow_template_state_queryset'
+        ), source_queryset_method='get_workflow_template_state_queryset',
+        write_only=True
     )
     url = serializers.SerializerMethodField()
     workflow_template_url = serializers.SerializerMethodField()
@@ -255,7 +257,8 @@ class WorkflowInstanceLogEntrySerializer(serializers.ModelSerializer):
     transition_id = FilteredPrimaryKeyRelatedField(
         help_text=_(
             'Primary key of the transition to be added.'
-        ), source_queryset_method='get_workflow_instance_transition_queryset'
+        ), source_queryset_method='get_workflow_instance_transition_queryset',
+        write_only=True
     )
     url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
