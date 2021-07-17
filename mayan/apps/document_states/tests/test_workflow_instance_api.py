@@ -11,11 +11,14 @@ from ..permissions import (
 )
 
 from .literals import TEST_WORKFLOW_INSTANCE_LOG_ENTRY_EXTRA_DATA
-from .mixins.workflow_instance_mixins import WorkflowInstanceAPIViewTestMixin
+from .mixins.workflow_instance_mixins import (
+    WorkflowInstanceAPIViewTestMixin,
+    WorkflowInstanceLogEntryTransitrionListAPIViewTestMixin
+)
 from .mixins.workflow_template_mixins import WorkflowTemplateTestMixin
 
 
-class WorkflowInstaceAPIViewTestCase(
+class WorkflowInstanceAPIViewTestCase(
     DocumentTestMixin, WorkflowInstanceAPIViewTestMixin,
     WorkflowTemplateTestMixin, BaseAPITestCase
 ):
@@ -447,6 +450,182 @@ class WorkflowInstaceAPIViewTestCase(
         self._clear_events()
 
         response = self._request_test_workflow_instance_log_entry_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+
+class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
+    DocumentTestMixin, WorkflowInstanceAPIViewTestMixin,
+    WorkflowInstanceLogEntryTransitrionListAPIViewTestMixin,
+    WorkflowTemplateTestMixin, BaseAPITestCase
+):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_workflow_template(add_test_document_type=True)
+        self._create_test_workflow_template_state()
+        self._create_test_workflow_template_state()
+        self._create_test_workflow_template_transition()
+        self._create_test_document_stub()
+        self.test_workflow_instance = self.test_document.workflows.first()
+
+    def test_workflow_instance_log_entry_transition_list_api_view_no_permission(self):
+        self._clear_events()
+
+        response = self._request_test_workflow_instance_log_entry_transition_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_workflow_instance_log_entry_transition_list_api_view_with_document_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_workflow_template_view
+        )
+
+        self._clear_events()
+
+        response = self._request_test_workflow_instance_log_entry_transition_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 0)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_workflow_instance_log_entry_transition_list_api_view_with_template_view_access(self):
+        self.grant_access(
+            obj=self.test_workflow_template,
+            permission=permission_workflow_template_view
+        )
+
+        self._clear_events()
+
+        response = self._request_test_workflow_instance_log_entry_transition_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_workflow_instance_log_entry_transition_list_api_view_with_document_and_template_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_workflow_template_view
+        )
+        self.grant_access(
+            obj=self.test_workflow_template,
+            permission=permission_workflow_template_view
+        )
+
+        self._clear_events()
+
+        response = self._request_test_workflow_instance_log_entry_transition_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 0)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_workflow_instance_log_entry_transition_list_api_view_with_transition_access(self):
+        self.grant_access(
+            obj=self.test_workflow_template,
+            permission=permission_workflow_instance_transition
+        )
+
+        self._clear_events()
+
+        response = self._request_test_workflow_instance_log_entry_transition_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_workflow_instance_log_entry_transition_list_api_view_with_document_and_transition_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_workflow_template_view
+        )
+        self.grant_access(
+            obj=self.test_workflow_template,
+            permission=permission_workflow_instance_transition
+        )
+
+        self._clear_events()
+
+        response = self._request_test_workflow_instance_log_entry_transition_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 0)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_workflow_instance_log_entry_transition_list_api_view_with_teamplate_and_transition_access(self):
+        self.grant_access(
+            obj=self.test_workflow_template,
+            permission=permission_workflow_template_view
+        )
+        self.grant_access(
+            obj=self.test_workflow_template,
+            permission=permission_workflow_instance_transition
+        )
+
+        self._clear_events()
+
+        response = self._request_test_workflow_instance_log_entry_transition_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_workflow_instance_log_entry_transition_list_api_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_workflow_template_view
+        )
+        self.grant_access(
+            obj=self.test_workflow_template,
+            permission=permission_workflow_template_view
+        )
+        self.grant_access(
+            obj=self.test_workflow_template,
+            permission=permission_workflow_instance_transition
+        )
+
+        self._clear_events()
+
+        response = self._request_test_workflow_instance_log_entry_transition_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 1)
+        self.assertEqual(
+            response.data['results'][0]['id'],
+            self.test_workflow_template_transition.pk
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_trashed_document_workflow_instance_log_entry_transition_list_api_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_workflow_template_view
+        )
+        self.grant_access(
+            obj=self.test_workflow_template,
+            permission=permission_workflow_template_view
+        )
+        self.grant_access(
+            obj=self.test_workflow_template,
+            permission=permission_workflow_instance_transition
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_workflow_instance_log_entry_transition_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         events = self._get_test_events()

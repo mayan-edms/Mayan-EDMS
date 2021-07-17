@@ -388,7 +388,6 @@ class APIWorkflowTemplateTransitionFieldDetailView(generics.RetrieveUpdateDestro
 
 # Document workflow views
 
-
 class APIWorkflowInstanceListView(
     ExternalObjectAPIViewMixin, generics.ListAPIView
 ):
@@ -491,6 +490,48 @@ class APIWorkflowInstanceLogEntryListView(
 
     def get_queryset(self):
         return self.get_workflow_instance().log_entries.all()
+
+    def get_workflow_instance(self):
+        workflow = get_object_or_404(
+            klass=self.external_object.workflows,
+            pk=self.kwargs['workflow_instance_id']
+        )
+
+        return workflow
+
+
+class APIWorkflowInstanceLogEntryTransitionListView(
+    ExternalObjectAPIViewMixin, generics.ListAPIView
+):
+    """
+    get: Returns a list of all the possible transition choices for the workflow instance.
+    """
+    external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid
+    mayan_external_object_permissions = {
+        'GET': (permission_workflow_template_view,),
+    }
+    mayan_object_permissions = {
+        'GET': (permission_workflow_template_view,),
+    }
+    ordering_fields = ('destination_state', 'id', 'origin_state')
+    serializer_class = WorkflowTemplateTransitionSerializer
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'workflow_instance': self.get_workflow_instance(),
+                }
+            )
+
+        return context
+
+    def get_queryset(self):
+        return self.get_workflow_instance().get_transition_choices(
+            _user=self.request.user
+        )
 
     def get_workflow_instance(self):
         workflow = get_object_or_404(

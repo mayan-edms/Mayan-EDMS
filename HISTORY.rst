@@ -1,8 +1,12 @@
 4.0.12 (2021-07-XX)
 ===================
 - Fix main menu active entry handling.
-- Fix ID number in `document_url` attribute of the `DocumentFile`
-  and `DocumentVersion` serializers.
+- Fix ID number in ``document_url`` attribute of the ``DocumentFile``
+  and ``DocumentVersion`` serializers.
+- Add API endpoint to display the list of valid transition options for a
+  workflow instance. Thanks to forum user @qra for the report.
+- Add the workflow template content to the workflow instance API schema.
+  Thanks to forum user @qra for the request.
 
 4.0.11 (2021-07-06)
 ===================
