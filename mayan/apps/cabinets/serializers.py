@@ -17,12 +17,6 @@ class CabinetSerializer(serializers.ModelSerializer):
     children = RecursiveField(
         help_text=_('List of children cabinets.'), many=True, read_only=True
     )
-    full_path = serializers.SerializerMethodField(
-        help_text=_(
-            'The name of this cabinet level appended to the names of its '
-            'ancestors.'
-        )
-    )
     documents_url = serializers.HyperlinkedIdentityField(
         help_text=_(
             'URL of the API endpoint showing the list documents inside this '
@@ -30,7 +24,13 @@ class CabinetSerializer(serializers.ModelSerializer):
         ), lookup_url_kwarg='cabinet_id',
         view_name='rest_api:cabinet-document-list'
     )
-    parent_url = serializers.SerializerMethodField()
+    full_path = serializers.SerializerMethodField(
+        help_text=_(
+            'The name of this cabinet level appended to the names of its '
+            'ancestors.'
+        ), read_only=True
+    )
+    parent_url = serializers.SerializerMethodField(read_only=True)
 
     # This is here because parent is optional in the model but the serializer
     # sets it as required.
@@ -50,6 +50,10 @@ class CabinetSerializer(serializers.ModelSerializer):
             'parent', 'parent_url', 'url'
         )
         model = Cabinet
+        readonly_fields = (
+            'children', 'documents_url', 'full_path', 'id',
+            'parent_url', 'url'
+        )
 
     def get_full_path(self, obj):
         return obj.get_full_path()

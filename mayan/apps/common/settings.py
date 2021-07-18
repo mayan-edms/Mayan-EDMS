@@ -60,13 +60,9 @@ setting_home_view = namespace.add_setting(
 )
 setting_project_title = namespace.add_setting(
     default=DEFAULT_COMMON_PROJECT_TITLE, global_name='COMMON_PROJECT_TITLE',
-    help_text=_(
-        'Name to be displayed in the main menu.'
-    )
+    help_text=_('Sets the project\'s name.')
 )
 setting_project_url = namespace.add_setting(
     default=DEFAULT_COMMON_PROJECT_URL, global_name='COMMON_PROJECT_URL',
-    help_text=_(
-        'URL of the installation or homepage of the project.'
-    )
+    help_text=_('URL of the project\s homepage.')
 )

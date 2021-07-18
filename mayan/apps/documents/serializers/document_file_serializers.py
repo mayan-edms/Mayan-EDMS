@@ -17,6 +17,7 @@ class DocumentFileSerializer(
         choices=DOCUMENT_FILE_ACTION_PAGE_CHOICES
     )
     document_url = serializers.HyperlinkedIdentityField(
+        lookup_field='document_id',
         lookup_url_kwarg='document_id',
         view_name='rest_api:document-detail'
     )
