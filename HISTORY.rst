@@ -13,6 +13,7 @@
 - Add explicit cabinet serializer read only fields.
 - Fix multi scope search result initialization. Closes GitLab issue #1018.
   Thanks to Ryan Showalter (@ryanshow) for the report.
+- Detect and report when a search scope does not specify a query.
 
 4.0.11 (2021-07-06)
 ===================

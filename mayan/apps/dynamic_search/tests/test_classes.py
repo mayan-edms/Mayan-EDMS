@@ -6,6 +6,7 @@ from mayan.apps.tags.tests.mixins import TagTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..classes import SearchBackend
+from ..exceptions import DynamicSearchException
 
 
 class QueryStringDecodeTestCase(BaseTestCase):
@@ -124,6 +125,19 @@ class ScopedSearchTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
+
+    def test_missing_scope_query(self):
+        query = {
+            '__a_match_all': 'true',
+            '__operator_a_b': 'OR_c',
+            '__b_label': self.test_documents[0].label,
+            '__result': 'c'
+        }
+        with self.assertRaises(expected_exception=DynamicSearchException):
+            queryset = self.search_backend.search(
+                search_model=document_search, query=query,
+                user=self._test_case_user
+            )
 
     def test_AND_scope(self):
         query = {

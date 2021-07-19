@@ -175,12 +175,18 @@ class SearchBackend:
 
                 return result
         else:
-            return self._search(
-                global_and_search=scope['match_all'],
-                ignore_limit=ignore_limit, search_model=search_model,
-                query_string=scope['query'], user=user
-            )
-
+            try:
+                query_string=scope['query']
+            except KeyError:
+                raise DynamicSearchException(
+                    'Scope `{}` does not specify a query.'.format(result_scope)
+                )
+            else:
+                return self._search(
+                    global_and_search=scope['match_all'],
+                    ignore_limit=ignore_limit, search_model=search_model,
+                    query_string=query_string, user=user
+                )
 
 
 class SearchField:
