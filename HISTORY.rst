@@ -1,4 +1,4 @@
-4.0.12 (2021-07-XX)
+4.0.12 (2021-07-19)
 ===================
 - Fix main menu active entry handling.
 - Fix ID number in ``document_url`` attribute of the ``DocumentFile``
