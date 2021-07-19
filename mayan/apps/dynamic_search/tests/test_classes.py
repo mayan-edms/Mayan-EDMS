@@ -134,7 +134,7 @@ class ScopedSearchTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
             '__result': 'c'
         }
         with self.assertRaises(expected_exception=DynamicSearchException):
-            queryset = self.search_backend.search(
+            self.search_backend.search(
                 search_model=document_search, query=query,
                 user=self._test_case_user
             )

@@ -176,7 +176,7 @@ class SearchBackend:
                 return result
         else:
             try:
-                query_string=scope['query']
+                query_string = scope['query']
             except KeyError:
                 raise DynamicSearchException(
                     'Scope `{}` does not specify a query.'.format(result_scope)
