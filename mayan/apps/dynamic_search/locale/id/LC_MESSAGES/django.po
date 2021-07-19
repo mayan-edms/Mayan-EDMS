@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-06 04:40+0000\n"
+"POT-Creation-Date: 2021-07-19 05:33+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/id/)\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "Dynamic search"
 msgstr ""
 
-#: classes.py:283
+#: classes.py:290
 msgid "No search model matching the query"
 msgstr ""
 

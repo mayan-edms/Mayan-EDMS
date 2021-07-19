@@ -50,7 +50,7 @@ class CabinetSerializer(serializers.ModelSerializer):
             'parent', 'parent_url', 'url'
         )
         model = Cabinet
-        readonly_fields = (
+        read_only_fields = (
             'children', 'documents_url', 'full_path', 'id',
             'parent_url', 'url'
         )

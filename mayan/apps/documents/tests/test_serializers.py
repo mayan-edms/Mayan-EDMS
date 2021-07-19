@@ -1,12 +1,9 @@
-from rest_framework import status
-
 from django.http import HttpRequest
 
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.serializers.document_serializers import (
     DocumentFileSerializer, DocumentVersionSerializer
 )
-
 
 
 class SerializerTestMixin:
@@ -51,4 +48,3 @@ class DocumentVersionSerializerTestCase(
         self.assertTrue(
             str(self.test_document.pk) in serializer.data['document_url']
         )
-

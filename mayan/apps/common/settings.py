@@ -64,5 +64,5 @@ setting_project_title = namespace.add_setting(
 )
 setting_project_url = namespace.add_setting(
     default=DEFAULT_COMMON_PROJECT_URL, global_name='COMMON_PROJECT_URL',
-    help_text=_('URL of the project\s homepage.')
+    help_text=_('URL of the project\'s homepage.')
 )
