@@ -22,7 +22,7 @@ Search
 Multi scope search result initialization was fixed. Results from an initial
 scope are now handled properly.
 
-Search scope does not specify a query are now detected and reported
+Search scopes that do not specify a query are now detected and reported
 accordingly.
 
 
