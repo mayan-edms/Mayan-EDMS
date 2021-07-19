@@ -161,14 +161,14 @@ class SearchBackend:
                     'Scope `{}` not found.'.format(result_scope)
                 )
             else:
-                result = search_model.model._meta.default_manager.none()
+                result = None
                 for scope in operator['scopes']:
                     queryset = self.solve_scope(
                         operators=operators, result_scope=scope,
                         search_model=search_model, scopes=scopes, user=user
                     )
 
-                    if not result:
+                    if result is None:
                         result = queryset
                     else:
                         result = operator['function'](result, queryset)
@@ -180,6 +180,7 @@ class SearchBackend:
                 ignore_limit=ignore_limit, search_model=search_model,
                 query_string=scope['query'], user=user
             )
+
 
 
 class SearchField:

@@ -1,5 +1,6 @@
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
+from mayan.apps.documents.tests.literals import DEFAULT_DOCUMENT_STUB_LABEL
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.tags.tests.mixins import TagTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
@@ -220,3 +221,60 @@ class ScopedSearchTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
         )
         self.assertEqual(queryset.count(), 1)
         self.assertTrue(self.test_documents[0] in queryset)
+
+
+class ScopeOperatorSearchTestCase(DocumentTestMixin, BaseTestCase):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self.search_backend = SearchBackend.get_instance()
+
+        self._create_test_document_stub()
+        self._create_test_document_stub()
+
+        self.grant_access(
+            obj=self.test_documents[0], permission=permission_document_view
+        )
+        self.grant_access(
+            obj=self.test_documents[1], permission=permission_document_view
+        )
+
+    def test_and_operator_both_scopes_with_data(self):
+        query = {
+            '__0_label': DEFAULT_DOCUMENT_STUB_LABEL,
+            '__operator_0_1': 'AND_2',
+            '__1_label': DEFAULT_DOCUMENT_STUB_LABEL,
+            '__result': '2'
+        }
+        queryset = self.search_backend.search(
+            search_model=document_search, query=query,
+            user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 2)
+
+    def test_and_operator_scope_1_with_data(self):
+        query = {
+            '__0_label': DEFAULT_DOCUMENT_STUB_LABEL,
+            '__operator_0_1': 'AND_2',
+            '__1_label': 'invalid',
+            '__result': '2'
+        }
+        queryset = self.search_backend.search(
+            search_model=document_search, query=query,
+            user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 0)
+
+    def test_and_operator_scope_2_with_data(self):
+        query = {
+            '__0_label': 'invalid',
+            '__operator_0_1': 'AND_2',
+            '__1_label': DEFAULT_DOCUMENT_STUB_LABEL,
+            '__result': '2'
+        }
+        queryset = self.search_backend.search(
+            search_model=document_search, query=query,
+            user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 0)

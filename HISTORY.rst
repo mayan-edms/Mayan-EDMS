@@ -11,6 +11,8 @@
 - Clarify purpose of project settings.
 - Minor API serializer cleanups.
 - Add explicit cabinet serializer read only fields.
+- Fix multi scope search result initialization. Closes GitLab issue #1018.
+  Thanks to Ryan Showalter (@ryanshow) for the report.
 
 4.0.11 (2021-07-06)
 ===================
