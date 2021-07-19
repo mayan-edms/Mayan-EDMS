@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-06 04:40+0000\n"
+"POT-Creation-Date: 2021-07-19 05:32+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: yan songwei <yansw@vip.163.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -196,13 +196,13 @@ msgid ""
 " the view to which users will be redirected after log in."
 msgstr ""
 
-#: settings.py:71
-msgid "Name to be displayed in the main menu."
-msgstr "要在主菜单中显示的名称。"
+#: settings.py:70
+msgid "Sets the project's name."
+msgstr ""
 
-#: settings.py:77
-msgid "URL of the installation or homepage of the project."
-msgstr "项目的安装或主页的URL。"
+#: settings.py:74
+msgid "URL of the project's homepage."
+msgstr ""
 
 #: templates/common/app/viewport.html:9
 msgid "Warning"

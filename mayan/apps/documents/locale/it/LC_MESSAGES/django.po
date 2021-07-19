@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-06 04:40+0000\n"
+"POT-Creation-Date: 2021-07-19 05:33+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -1120,7 +1120,7 @@ msgstr "Tipo MIME di file di documento"
 msgid "Document version comment"
 msgstr "Commento sulla versione del documento"
 
-#: serializers/document_file_serializers.py:37
+#: serializers/document_file_serializers.py:38
 msgid "Binary content for the new file."
 msgstr "Contenuto binario per il nuovo file."
 
@@ -1128,7 +1128,7 @@ msgstr "Contenuto binario per il nuovo file."
 msgid "Document type ID for the new document."
 msgstr "ID del tipo di documento per il nuovo documento."
 
-#: serializers/document_version_serializers.py:71
+#: serializers/document_version_serializers.py:72
 msgid "Content type ID of the source object for the page."
 msgstr "ID del tipo di contenuto dell'oggetto di origine per la pagina."
 
