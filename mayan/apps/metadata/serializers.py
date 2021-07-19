@@ -112,7 +112,7 @@ class DocumentMetadataSerializer(
         help_text=_(
             'Primary key of the metadata type to be added to the document.'
         ), source_model=MetadataType,
-        source_permission=permission_document_metadata_add
+        source_permission=permission_document_metadata_add, write_only=True
     )
     document = DocumentSerializer(read_only=True)
     metadata_type = MetadataTypeSerializer(read_only=True)

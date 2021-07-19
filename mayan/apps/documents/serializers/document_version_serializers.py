@@ -11,6 +11,7 @@ from ..models.document_version_page_models import DocumentVersionPage
 
 class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
     document_url = serializers.HyperlinkedIdentityField(
+        lookup_field='document_id',
         lookup_url_kwarg='document_id',
         view_name='rest_api:document-detail'
     )

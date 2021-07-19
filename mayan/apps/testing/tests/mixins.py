@@ -400,15 +400,15 @@ class SilenceLoggerTestCaseMixin:
 
 
 class TempfileCheckTestCasekMixin:
-    # Ignore the jvmstat instrumentation and GitLab's CI .config files
-    # Ignore LibreOffice fontconfig cache dir
+    # Ignore the jvmstat instrumentation and GitLab's CI .config files.
+    # Ignore LibreOffice fontconfig cache dir.
     ignore_globs = ('hsperfdata_*', '.config', '.cache')
 
     def _get_temporary_entries(self):
         ignored_result = []
 
         # Expand globs by joining the temporary directory and then flattening
-        # the list of lists into a single list
+        # the list of lists into a single list.
         for item in self.ignore_globs:
             ignored_result.extend(
                 glob.glob(
@@ -416,7 +416,7 @@ class TempfileCheckTestCasekMixin:
                 )
             )
 
-        # Remove the path and leave only the expanded filename
+        # Remove the path and leave only the expanded filename.
         ignored_result = map(lambda x: os.path.split(x)[-1], ignored_result)
 
         return set(
@@ -491,7 +491,7 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
         )
 
         self.options = options
-        # Obtain the app_config and app_label from the test's module path
+        # Obtain the app_config and app_label from the test's module path.
         self.app_config = apps.get_containing_app_config(
             object_name=self.__class__.__module__
         )
@@ -636,7 +636,7 @@ class TestViewTestCaseMixin:
 
     def _get_context_from_test_response(self, response):
         if isinstance(response.context, ContextList):
-            # template widget rendering causes test client response to be
+            # Template widget rendering causes test client response to be
             # ContextList rather than RequestContext. Typecast to dictionary
             # before updating.
             result = dict(response.context).copy()

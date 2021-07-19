@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-06 04:40+0000\n"
+"POT-Creation-Date: 2021-07-19 05:33+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -1110,7 +1110,7 @@ msgstr "MIME тип на файл с документ"
 msgid "Document version comment"
 msgstr "Коментар към версията на документа"
 
-#: serializers/document_file_serializers.py:37
+#: serializers/document_file_serializers.py:38
 msgid "Binary content for the new file."
 msgstr "Двоично съдържание за новия файл."
 
@@ -1118,7 +1118,7 @@ msgstr "Двоично съдържание за новия файл."
 msgid "Document type ID for the new document."
 msgstr "Идентификатор на типа на документа за новия документ."
 
-#: serializers/document_version_serializers.py:71
+#: serializers/document_version_serializers.py:72
 msgid "Content type ID of the source object for the page."
 msgstr ""
 "Идентификатор за типа на съдържанието на изходния обект за страницата."

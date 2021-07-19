@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-06 04:40+0000\n"
+"POT-Creation-Date: 2021-07-19 05:32+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -182,15 +182,15 @@ msgid "List of children cabinets."
 msgstr "Liste des classeurs enfants."
 
 #: serializers.py:22
-msgid "The name of this cabinet level appended to the names of its ancestors."
-msgstr "Le nom de ce niveau de classeur a été ajouté au nom de ses ancêtres."
-
-#: serializers.py:28
 msgid ""
 "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 "URL du point de terminaison de l'API listant les documents contenus dans ce "
 "classeur."
+
+#: serializers.py:29
+msgid "The name of this cabinet level appended to the names of its ancestors."
+msgstr "Le nom de ce niveau de classeur a été ajouté au nom de ses ancêtres."
 
 #: templates/cabinets/cabinet_details.html:17
 msgid "Navigation:"

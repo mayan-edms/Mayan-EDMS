@@ -95,20 +95,21 @@ class Link:
             try:
                 request = context.request
             except AttributeError:
-                request = Variable('request').resolve(context=context)
+                request = Variable(var='request').resolve(context=context)
 
         current_path = request.META['PATH_INFO']
-        current_view_name = resolve(current_path).view_name
+        current_view_name = resolve(path=current_path).view_name
 
-        # ACL is tested agains the resolved_object or just {{ object }} if not
+        # ACL is tested agains the resolved_object or just {{ object }}
+        # if not.
         if not resolved_object:
             try:
-                resolved_object = Variable('object').resolve(context=context)
+                resolved_object = Variable(var='object').resolve(context=context)
             except VariableDoesNotExist:
                 """No object variable in the context"""
 
         # If this link has a required permission check that the user has it
-        # too
+        # too.
         if self.permissions:
             if resolved_object:
                 try:
@@ -128,7 +129,7 @@ class Link:
 
         # Check to see if link has conditional display function and only
         # display it if the result of the conditional display function is
-        # True
+        # True.
         if self.condition:
             if not self.condition(context=context):
                 return None
@@ -138,7 +139,7 @@ class Link:
         )
 
         if self.view:
-            view_name = Variable('"{}"'.format(self.view))
+            view_name = Variable(var='"{}"'.format(self.view))
             if isinstance(self.args, list) or isinstance(self.args, tuple):
                 args = [Variable(var=arg) for arg in self.args]
             else:
@@ -153,12 +154,12 @@ class Link:
             try:
                 kwargs = self.kwargs(context)
             except TypeError:
-                # Is not a callable
+                # Is not a callable.
                 kwargs = self.kwargs
 
-            kwargs = {key: Variable(value) for key, value in kwargs.items()}
+            kwargs = {key: Variable(var=value) for key, value in kwargs.items()}
 
-            # Use Django's exact {% url %} code to resolve the link
+            # Use Django's exact {% url %} code to resolve the link.
             node = URLNode(
                 view_name=view_name, args=args, kwargs=kwargs, asvar=None
             )
@@ -178,15 +179,16 @@ class Link:
         elif self.url:
             resolved_link.url = self.url
 
-        # This is for links that should be displayed but that are not clickable
+        # This is for links that should be displayed but that are not
+        # clickable.
         if self.conditional_disable:
             resolved_link.disabled = self.conditional_disable(context=context)
         else:
             resolved_link.disabled = False
 
-        # Lets a new link keep the same URL query string of the current URL
+        # Lets a new link keep the same URL query string of the current URL.
         if self.keep_query:
-            # Sometimes we are required to remove a key from the URL QS
+            # Sometimes we are required to remove a key from the URL QS.
             parsed_url = furl(
                 force_str(
                     request.get_full_path() or request.META.get(
@@ -201,7 +203,7 @@ class Link:
                 except KeyError:
                     pass
 
-            # Use the link's URL but with the previous URL querystring
+            # Use the link's URL but with the previous URL querystring.
             new_url = furl(url=resolved_link.url)
             new_url.args = parsed_url.querystr
             resolved_link.url = new_url.url
@@ -267,7 +269,7 @@ class Menu:
 
     def bind_links(self, links, sources=None, position=None):
         """
-        Associate a link to a model, a view inside this menu
+        Associate a link to a model, a view inside this menu.
         """
         try:
             for source in sources:
@@ -296,7 +298,7 @@ class Menu:
             for navigation_object in navigation_object_list:
                 try:
                     resolved_navigation_object_list.append(
-                        Variable(navigation_object).resolve(context)
+                        Variable(var=navigation_object).resolve(context=context)
                     )
                 except VariableDoesNotExist:
                     pass
@@ -347,7 +349,7 @@ class Menu:
                 # Simple request extraction failed. Might not be a view context.
                 # Try alternate method.
                 try:
-                    request = Variable('request').resolve(context)
+                    request = Variable(var='request').resolve(context=context)
                 except VariableDoesNotExist:
                     # There is no request variable, most probable a 500 in a test
                     # view. Don't return any resolved links then.
@@ -390,7 +392,7 @@ class Menu:
                                 if resolved_link:
                                     if resolved_link.link not in self.unbound_links.get(bound_source, ()):
                                         resolved_links.append(resolved_link)
-                            # No need for further content object match testing
+                            # No need for further content object match testing.
                             break
                         elif hasattr(resolved_navigation_object, 'get_deferred_fields') and resolved_navigation_object.get_deferred_fields() and isinstance(resolved_navigation_object, bound_source):
                             # Second try for objects using .defer() or .only()
@@ -402,7 +404,7 @@ class Menu:
                                 if resolved_link:
                                     if resolved_link.link not in self.unbound_links.get(bound_source, ()):
                                         resolved_links.append(resolved_link)
-                            # No need for further content object match testing
+                            # No need for further content object match testing.
                             break
 
                 except TypeError:
@@ -430,7 +432,7 @@ class Menu:
                 )
 
         resolved_links = []
-        # View links
+        # View links.
         for link in self.bound_links.get(current_view_name, []):
             resolved_link = link.resolve(context=context)
             if resolved_link:
@@ -447,14 +449,14 @@ class Menu:
 
         resolved_links = []
 
-        # Main menu links
+        # Main menu links.
         for link in self.bound_links.get(None, []):
             if isinstance(link, Menu):
                 condition = link.check_condition(context=context)
                 if condition and link not in self.unbound_links.get(None, ()):
                     resolved_links.append(link)
             else:
-                # "Always show" links
+                # "Always show" links.
                 resolved_link = link.resolve(context=context)
                 if resolved_link:
                     if resolved_link.link not in self.unbound_links.get(None, ()):
@@ -492,7 +494,7 @@ class Menu:
     def unbind_links(self, links, sources=None):
         """
         Allow unbinding links from sources, used to allow 3rd party apps to
-        change the link binding of core apps
+        change the link binding of core apps.
         """
         try:
             for source in sources:
@@ -500,7 +502,7 @@ class Menu:
                     links=links, source=source, map_variable='unbound_links'
                 )
         except TypeError:
-            # Unsourced links display always
+            # Unsourced links display always.
             self._map_links_to_source(
                 links=links, source=sources, map_variable='unbound_links'
             )
@@ -561,7 +563,7 @@ class ResolvedLink:
 
 class Separator(Link):
     """
-    Menu separator. Renders to an <hr> tag
+    Menu separator. Renders to an <hr> tag.
     """
     def __init__(self, *args, **kwargs):
         self.icon = None
@@ -817,7 +819,7 @@ class SourceColumn:
             return self.attribute
 
     def get_sort_field_querystring(self, context):
-        # We do this to get an mutable copy we can modify
+        # We do this to get an mutable copy we can modify.
         querystring = context.request.GET.copy()
 
         previous_sort_fields = self.get_previous_sort_fields(context=context)
@@ -872,7 +874,7 @@ class SourceColumn:
 
 class Text(Link):
     """
-    Menu text. Renders to a plain <li> tag
+    Menu text. Renders to a plain <li> tag.
     """
     def __init__(self, *args, **kwargs):
         self.html_extra_classes = kwargs.get('html_extra_classes', '')
