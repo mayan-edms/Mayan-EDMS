@@ -20,6 +20,12 @@ class CheckoutsAPITestCase(
     DocumentCheckoutsAPIViewTestMixin, DocumentCheckoutTestMixin,
     DocumentTestMixin, BaseAPITestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_document_check_out_create_api_view_no_permission(self):
         response = self._request_test_document_check_out_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
