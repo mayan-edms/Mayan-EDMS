@@ -71,6 +71,16 @@ class URLTestCase(BaseTestCase):
 
         self.assertEqual(url.to_string(), 'http://example.com?a=1')
 
+    def test_port_set(self):
+        url = URL(scheme='http', netloc='127.0.0.1', port='9999')
+
+        self.assertEqual(url.to_string(), 'http://127.0.0.1:9999')
+
+    def test_port_replace(self):
+        url = URL(port='9999', url='https://127.0.0.1:8888')
+
+        self.assertEqual(url.to_string(), 'https://127.0.0.1:9999')
+
     def test_scheme_set(self):
         url = URL(scheme='http', netloc='127.0.0.1')
 

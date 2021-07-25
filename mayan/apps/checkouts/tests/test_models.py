@@ -13,6 +13,12 @@ from .mixins import DocumentCheckoutTestMixin
 class DocumentCheckoutTestCase(
     DocumentCheckoutTestMixin, GenericDocumentTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_document_check_out(self):
         self._check_out_test_document()
 
