@@ -1,7 +1,7 @@
 from django.urls import resolve
 from django.urls.exceptions import Resolver404
 
-from mayan.apps.organizations.settings import setting_organization_installation_url
+from mayan.apps.organizations.settings import setting_organization_url_base_path
 
 from .literals import API_VERSION
 
@@ -14,7 +14,7 @@ class Endpoint:
         if viewname:
             self.viewname = viewname
         else:
-            installation_base_url = setting_organization_installation_url.value
+            installation_base_url = setting_organization_url_base_path.value
             if installation_base_url:
                 installation_base_url = '/{}'.format(installation_base_url)
             else:
