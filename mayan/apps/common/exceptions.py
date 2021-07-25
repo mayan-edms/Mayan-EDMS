@@ -1,6 +1,6 @@
 class BaseCommonException(Exception):
     """
-    Base exception for the common app
+    Base exception for the common app.
     """
 
 
