@@ -1,3 +1,9 @@
+4.1 (2021-XX-XX)
+================
+- Add support for editing the document version page OCR content.
+  Closes GitLab issue #592. Thanks for Martin (@efelon) for the
+  request.
+
 4.0.12 (2021-07-19)
 ===================
 - Fix main menu active entry handling.

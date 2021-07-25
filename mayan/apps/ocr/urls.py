@@ -2,13 +2,13 @@ from django.conf.urls import url
 
 from .api_views import (
     APIDocumentTypeOCRSettingsView, APIDocumentOCRSubmitView,
-    APIDocumentVersionOCRContentView, APIDocumentVersionPageOCRContentView
+    APIDocumentVersionOCRSubmitView, APIDocumentVersionPageOCRContentDetailView
 )
 from .views import (
     DocumentVersionOCRContentDeleteView, DocumentVersionOCRContentView,
     DocumentVersionOCRDownloadView,
-    DocumentVersionOCRErrorsListView, DocumentVersionPageOCRContentView,
-    DocumentVersionOCRSubmitView,
+    DocumentVersionOCRErrorsListView, DocumentVersionPageOCRContentEditView,
+    DocumentVersionPageOCRContentDetailView, DocumentVersionOCRSubmitView,
     DocumentTypeSettingsEditView, DocumentTypeSubmitView, EntryListView
 )
 
@@ -61,9 +61,14 @@ urlpatterns_document_versions = [
         view=DocumentVersionOCRSubmitView.as_view()
     ),
     url(
+        regex=r'^documents/versions/pages/(?P<document_version_page_id>\d+)/content/edit/$',
+        name='document_version_page_ocr_content_edit_view',
+        view=DocumentVersionPageOCRContentEditView.as_view()
+    ),
+    url(
         regex=r'^documents/versions/pages/(?P<document_version_page_id>\d+)/content/$',
-        name='document_version_page_ocr_content_view',
-        view=DocumentVersionPageOCRContentView.as_view()
+        name='document_version_page_ocr_content_detail_view',
+        view=DocumentVersionPageOCRContentDetailView.as_view()
     ),
     url(regex=r'^logs/$', name='entry_list', view=EntryListView.as_view())
 ]
@@ -86,11 +91,11 @@ api_urls = [
     url(
         regex=r'^documents/(?P<document_id>\d+)/versions/(?P<document_version_id>\d+)/ocr/submit/$',
         name='document-version-ocr-submit-view',
-        view=APIDocumentVersionOCRContentView.as_view()
+        view=APIDocumentVersionOCRSubmitView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/versions/(?P<document_version_id>\d+)/pages/(?P<document_version_page_id>\d+)/ocr/$',
-        name='document-version-page-ocr-content-view',
-        view=APIDocumentVersionPageOCRContentView.as_view()
+        name='document-version-page-ocr-content-detail-view',
+        view=APIDocumentVersionPageOCRContentDetailView.as_view()
     ),
 ]
