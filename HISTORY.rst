@@ -1,3 +1,19 @@
+4.0.13 (2021-XX-XX)
+===================
+- Checkout test updates. 
+  
+  - Silence debug output of tests.
+  - Speed up tests using document stubs.
+
+- Improve organization URL and host settings. Closes GitLab issues
+  #966 and #1002. Thanks to None Given (@nastodon) and
+  Bw (@bwakkie) for the reports.
+    
+  - Patch Django's HttpRequest object to override scheme
+    and host.
+  - Fix organization setting used to set the REST API URL
+    base path.
+
 4.0.12 (2021-07-19)
 ===================
 - Fix main menu active entry handling.
