@@ -171,7 +171,8 @@ class TrashedDocumentAPIViewTestCase(
         self._upload_test_document()
         self.test_document.delete()
         self.grant_access(
-            obj=self.test_document, permission=permission_document_version_view
+            obj=self.test_document,
+            permission=permission_document_version_view
         )
 
         self._clear_events()

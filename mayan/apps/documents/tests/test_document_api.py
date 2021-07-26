@@ -60,6 +60,7 @@ class DocumentAPIViewTestCase(
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
+
         self.assertEqual(events[0].action_object, self.test_document_type)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_document)
@@ -112,6 +113,41 @@ class DocumentAPIViewTestCase(
         # Only the change event, should not have an event for the first
         # .save() method call.
         self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_document_type_2)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].verb, event_document_type_changed.id)
+
+    def test_trashed_document_change_type_api_view_with_access(self):
+        self._upload_test_document()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_properties_edit
+        )
+        self.test_document_type_2 = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_2_LABEL
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_change_type_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_document.refresh_from_db()
+        self.assertEqual(
+            self.test_document.document_type,
+            self.test_document_type_2
+        )
+
+        events = self._get_test_events()
+        # Only the change event, should not have an event for the first
+        # .save() method call.
+        self.assertEqual(events.count(), 1)
+
         self.assertEqual(events[0].action_object, self.test_document_type_2)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_document)
@@ -135,6 +171,28 @@ class DocumentAPIViewTestCase(
             obj=self.test_document,
             permission=permission_document_view
         )
+
+        self._clear_events()
+
+        response = self._request_test_document_detail_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(
+            response.data['id'], self.test_document.pk
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_trashed_document_detail_api_view_with_access(self):
+        self._upload_test_document()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_view
+        )
+
+        self.test_document.delete()
 
         self._clear_events()
 
@@ -188,6 +246,37 @@ class DocumentAPIViewTestCase(
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].verb, event_document_edited.id)
+
+    def test_trashed_document_edit_via_patch_api_view_with_access(self):
+        self._upload_test_document()
+
+        document_description = self.test_document.description
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_properties_edit
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_edit_via_patch_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_document.refresh_from_db()
+        self.assertNotEqual(
+            self.test_document.description, document_description
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_document)
@@ -233,6 +322,37 @@ class DocumentAPIViewTestCase(
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].verb, event_document_edited.id)
+
+    def test_trashed_document_edit_via_put_api_view_with_access(self):
+        self._upload_test_document()
+
+        document_description = self.test_document.description
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_properties_edit
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_edit_via_put_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_document.refresh_from_db()
+        self.assertNotEqual(
+            self.test_document.description, document_description
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_document)
@@ -257,6 +377,27 @@ class DocumentAPIViewTestCase(
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
+
+        self._clear_events()
+
+        response = self._request_test_document_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(
+            response.data['results'][0]['id'], self.test_document.pk
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_trashed_document_list_api_view_with_access(self):
+        self._upload_test_document()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        self.test_document.delete()
 
         self._clear_events()
 
