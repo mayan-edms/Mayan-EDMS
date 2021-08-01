@@ -43,7 +43,7 @@ class MayanImage {
         });
 
         $('.lazy-load').one('load', function() {
-            var $this = $(this);
+            const $this = $(this);
 
             $this.siblings('.spinner-container').remove();
             $this.removeClass('lazy-load pull-left');
@@ -52,7 +52,7 @@ class MayanImage {
         });
 
         $('.lazy-load-carousel').one('load', function() {
-            var $this = $(this);
+            const $this = $(this);
 
             $this.siblings('.spinner-container').remove();
             $this.removeClass('lazy-load-carousel pull-left');
@@ -64,9 +64,9 @@ class MayanImage {
     }
 
     load () {
-        var self = this;
-        var container = this.element.parent().parent().parent();
-        var dataURL = this.element.attr('data-url');
+        const self = this;
+        const container = this.element.parent().parent().parent();
+        const dataURL = this.element.attr('data-url');
 
         if (dataURL === '') {
             container.html(MayanImage.options.templateInvalidImage);

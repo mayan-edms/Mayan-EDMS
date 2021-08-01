@@ -24,9 +24,9 @@
     <script type="text/javascript" src="{% static 'statistics/node_modules/chart.js/dist/Chart.min.js' %}"></script>
     <script>
         jQuery(document).ready(function() {
-            var data = {{ chart_data|safe }};
-            var ctx = document.getElementById('canvas-chart');
-            var chart = new Chart(ctx, {
+            const data = {{ chart_data|safe }};
+            const ctx = document.getElementById('canvas-chart');
+            const chart = new Chart(ctx, {
                 type: 'line',
                 data: data,
                 options: {
