@@ -64,3 +64,20 @@ class ParentObjectDocumentVersionAPIViewMixin(ParentObjectDocumentAPIViewMixin):
         return get_object_or_404(
             queryset=queryset, pk=self.kwargs['document_version_id']
         )
+
+
+class ParentObjectDocumentVersionPageAPIViewMixin(
+    ParentObjectDocumentVersionAPIViewMixin
+):
+    def get_document_version_page(self, permission=None):
+        queryset = self.get_document_version().pages.all()
+
+        if permission:
+            queryset = AccessControlList.objects.restrict_queryset(
+                permission=permission, queryset=queryset,
+                user=self.request.user
+            )
+
+        return get_object_or_404(
+            queryset=queryset, pk=self.kwargs['document_version_page_id']
+        )
