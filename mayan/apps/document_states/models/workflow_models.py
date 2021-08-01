@@ -19,7 +19,9 @@ from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event
 from mayan.apps.file_caching.models import CachePartitionFile
-from ..events import event_workflow_template_created, event_workflow_template_edited
+from ..events import (
+    event_workflow_template_created, event_workflow_template_edited
+)
 from ..literals import (
     STORAGE_NAME_WORKFLOW_CACHE, SYMBOL_MATH_CONDITIONAL,
     WORKFLOW_ACTION_ON_ENTRY

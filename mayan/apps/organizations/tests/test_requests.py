@@ -1,9 +1,6 @@
 from django.test import override_settings
-from django.urls import reverse
 
-from rest_framework.reverse import reverse as drf_reverse
-
-from mayan.apps.testing.tests.base import BaseTestCase, GenericViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 from mayan.apps.views.http import URL
 
 
