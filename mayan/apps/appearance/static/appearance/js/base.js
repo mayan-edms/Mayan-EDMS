@@ -2,9 +2,9 @@
 
 // Make it globally available. Used by event.links
 
-var MayanAppClass = MayanApp;
+const MayanAppClass = MayanApp;
 
-var partialNavigation = new PartialNavigation({
+const partialNavigation = new PartialNavigation({
     initialURL: initialURL,
     disabledAnchorClasses: [
         'btn-multi-item-action', 'disabled', 'pagination-disabled'
