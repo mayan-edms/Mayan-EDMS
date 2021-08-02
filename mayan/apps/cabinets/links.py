@@ -3,7 +3,6 @@ import copy
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.links import link_acl_list
-from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.navigation.classes import Link
 from mayan.apps.navigation.utils import get_cascade_condition
 
