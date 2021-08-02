@@ -2,7 +2,8 @@ from django.conf.urls import url
 
 from .api_views import (
     APIDocumentTypeOCRSettingsView, APIDocumentOCRSubmitView,
-    APIDocumentVersionOCRSubmitView, APIDocumentVersionPageOCRContentDetailView
+    APIDocumentVersionOCRSubmitView,
+    APIDocumentVersionPageOCRContentDetailView
 )
 from .views import (
     DocumentVersionOCRContentDeleteView, DocumentVersionOCRContentView,

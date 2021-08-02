@@ -13,7 +13,6 @@ def patch_HttpRequest():
             else:
                 return self._original_current_scheme_host
 
-
     _original_current_scheme_host = HttpRequest._current_scheme_host
 
     HttpRequest._current_scheme_host = MockClass._patched_current_scheme_host

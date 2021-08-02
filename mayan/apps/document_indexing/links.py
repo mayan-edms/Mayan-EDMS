@@ -26,6 +26,7 @@ def is_not_root_node(context):
 
 link_document_index_instance_list = Link(
     args='resolved_object.pk', icon=icon_document_index_instance_list,
+    permissions=(permission_index_instance_view,),
     text=_('Indexes'), view='indexing:document_index_list'
 )
 

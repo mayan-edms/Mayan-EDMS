@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-19 05:33+0000\n"
+"POT-Creation-Date: 2021-08-02 17:49+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
@@ -59,7 +59,7 @@ msgstr ""
 
 #: apps.py:401 links/document_file_page_links.py:79
 #: models/document_file_models.py:120 models/document_file_page_models.py:42
-#: search.py:51
+#: search.py:52
 msgid "Document file"
 msgstr ""
 
@@ -517,7 +517,7 @@ msgstr ""
 
 #: links/document_version_page_links.py:102
 #: models/document_version_models.py:64
-#: models/document_version_page_models.py:52 search.py:117
+#: models/document_version_page_models.py:52 search.py:118
 msgid "Document version"
 msgstr ""
 
@@ -673,7 +673,7 @@ msgid "Label"
 msgstr "Oznaka"
 
 #: models/document_file_page_models.py:53
-#: models/document_file_page_models.py:316 search.py:78
+#: models/document_file_page_models.py:316 search.py:79
 msgid "Document file page"
 msgstr ""
 
@@ -863,7 +863,7 @@ msgid "ID for the source object of the page."
 msgstr ""
 
 #: models/document_version_page_models.py:74
-#: models/document_version_page_models.py:401 search.py:141
+#: models/document_version_page_models.py:401 search.py:142
 msgid "Document version page"
 msgstr ""
 
@@ -1053,27 +1053,27 @@ msgstr ""
 msgid "Upload new document file"
 msgstr ""
 
-#: search.py:31 search.py:62 search.py:89 search.py:129 search.py:153
+#: search.py:31 search.py:63 search.py:90 search.py:130 search.py:154
 msgid "Document type label"
 msgstr ""
 
-#: search.py:65 search.py:92 search.py:132 search.py:159
+#: search.py:66 search.py:93 search.py:133 search.py:160
 msgid "Document label"
 msgstr ""
 
-#: search.py:68 search.py:96 search.py:135 search.py:163
+#: search.py:69 search.py:97 search.py:136 search.py:164
 msgid "Document description"
 msgstr ""
 
-#: search.py:99
+#: search.py:100
 msgid "Document file checksum"
 msgstr ""
 
-#: search.py:102
+#: search.py:103
 msgid "Document file MIME type"
 msgstr ""
 
-#: search.py:156
+#: search.py:157
 msgid "Document version comment"
 msgstr ""
 

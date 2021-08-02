@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-19 05:33+0000\n"
+"POT-Creation-Date: 2021-08-02 17:49+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -70,7 +70,7 @@ msgstr "Dateizeitstempel"
 
 #: apps.py:401 links/document_file_page_links.py:79
 #: models/document_file_models.py:120 models/document_file_page_models.py:42
-#: search.py:51
+#: search.py:52
 msgid "Document file"
 msgstr "Dokumentendatei"
 
@@ -183,19 +183,19 @@ msgstr "Dokument angezeigt"
 
 #: events.py:22
 msgid "Document file created"
-msgstr ""
+msgstr "Dokumentendatei erstellt"
 
 #: events.py:25
 msgid "Document file deleted"
-msgstr ""
+msgstr "Dokumentendatei gelöscht"
 
 #: events.py:28
 msgid "Document file downloaded"
-msgstr ""
+msgstr "Dokumentendatei heruntergeladen"
 
 #: events.py:31
 msgid "Document file edited"
-msgstr ""
+msgstr "Dokumentendatei bearbeitet"
 
 #: events.py:37
 msgid "Document type created"
@@ -223,31 +223,31 @@ msgstr "Dokumententyp geändert"
 
 #: events.py:62
 msgid "Document version created"
-msgstr ""
+msgstr "Dokumentenversion erstellt"
 
 #: events.py:65
 msgid "Document version deleted"
-msgstr ""
+msgstr "Dokumentenversion gelöscht"
 
 #: events.py:68
 msgid "Document version edited"
-msgstr ""
+msgstr "Dokumentenversion bearbeitet"
 
 #: events.py:71
 msgid "Document version exported"
-msgstr ""
+msgstr "Dokumentenversion exportiert"
 
 #: events.py:77
 msgid "Document version page created"
-msgstr ""
+msgstr "Seite der Dokumentenversion erstellt"
 
 #: events.py:81
 msgid "Document version page deleted"
-msgstr ""
+msgstr "Seite der Dokumentenversion gelöscht"
 
 #: events.py:85
 msgid "Document version page edited"
-msgstr ""
+msgstr "Seite der Dokumentenversion bearbeitet"
 
 #: events.py:92
 msgid "Document trashed"
@@ -255,11 +255,11 @@ msgstr "Dokument gelöscht"
 
 #: events.py:95
 msgid "Trashed document deleted"
-msgstr ""
+msgstr "Dokument aus dem Papierkorb gelöscht."
 
 #: events.py:98
 msgid "Trashed document restored"
-msgstr ""
+msgstr "Dokument aus dem Papierkorb wiederhergestellt."
 
 #: events.py:104
 msgid "Document downloaded (historic)"
@@ -338,7 +338,7 @@ msgstr "Dokumententyp"
 
 #: forms/document_version_page_forms.py:27
 msgid "Content type"
-msgstr ""
+msgstr "Inhaltstyp"
 
 #: forms/document_version_page_forms.py:30
 msgid "Object ID"
@@ -350,7 +350,7 @@ msgstr "Quelle"
 
 #: forms/document_version_page_forms.py:38
 msgid "Destination page number"
-msgstr ""
+msgstr "Ziel-Seitennummer"
 
 #: forms/document_version_page_forms.py:82
 msgid "Target page number can't be repeated."
@@ -434,7 +434,7 @@ msgstr "Nächste Seite"
 #: links/document_file_page_links.py:86 models/document_file_page_models.py:54
 #: models/document_file_page_models.py:317
 msgid "Document file pages"
-msgstr ""
+msgstr "Seiten der Dokumentendatei"
 
 #: links/document_file_page_links.py:91
 #: links/document_version_page_links.py:114
@@ -512,11 +512,11 @@ msgstr "Dateinamengenerierung"
 
 #: links/document_version_links.py:29
 msgid "Make active"
-msgstr ""
+msgstr "Aktiv setzen"
 
 #: links/document_version_links.py:34
 msgid "Create document version"
-msgstr ""
+msgstr "Dokumentenversion erstellen"
 
 #: links/document_version_links.py:51
 msgid "Export"
@@ -528,15 +528,15 @@ msgstr "Versionen"
 
 #: links/document_version_page_links.py:56
 msgid "Remap pages"
-msgstr ""
+msgstr "Seiten neu zuordnen"
 
 #: links/document_version_page_links.py:61
 msgid "Reset pages"
-msgstr ""
+msgstr "Seiten zurücksetzen"
 
 #: links/document_version_page_links.py:102
 #: models/document_version_models.py:64
-#: models/document_version_page_models.py:52 search.py:117
+#: models/document_version_page_models.py:52 search.py:118
 msgid "Document version"
 msgstr "Dokumentenversion"
 
@@ -544,7 +544,7 @@ msgstr "Dokumentenversion"
 #: models/document_version_page_models.py:75
 #: models/document_version_page_models.py:402
 msgid "Document version pages"
-msgstr ""
+msgstr "Seiten der Dokumentenversion"
 
 #: links/favorite_links.py:13 views/favorite_document_views.py:36
 msgid "Favorites"
@@ -652,7 +652,7 @@ msgstr "Zeitstempel"
 
 #: models/document_file_models.py:85
 msgid "An optional short text describing the document file."
-msgstr ""
+msgstr "Optionaler Kurztext zur Beschreibung der Dokumentendatei."
 
 #: models/document_file_models.py:86 models/document_version_models.py:54
 msgid "Comment"
@@ -678,10 +678,12 @@ msgid ""
 "The document file file encoding. binary 7-bit, binary 8-bit, text, base64, "
 "etc."
 msgstr ""
+"Die Kodierung der Datei der Dokumentenversion. Binär 7-bit, binär 8-bit, "
+"Text, base64, etc."
 
 #: models/document_file_models.py:121 storages.py:27
 msgid "Document files"
-msgstr ""
+msgstr "Dokumentendateien"
 
 #: models/document_file_models.py:321 models/document_file_page_models.py:277
 #: models/document_models.py:70 models/document_models.py:290
@@ -692,9 +694,9 @@ msgid "Label"
 msgstr "Bezeichner"
 
 #: models/document_file_page_models.py:53
-#: models/document_file_page_models.py:316 search.py:78
+#: models/document_file_page_models.py:316 search.py:79
 msgid "Document file page"
-msgstr ""
+msgstr "Seite der Dokumentendatei"
 
 #: models/document_file_page_models.py:271
 #, python-format
@@ -739,7 +741,7 @@ msgstr "Erstellt"
 
 #: models/document_models.py:85
 msgid "The primary language in the document."
-msgstr ""
+msgstr "Die Hauptsprache des Dokuments."
 
 #: models/document_models.py:90
 msgid "Whether or not this document is in the trash."
@@ -821,7 +823,7 @@ msgstr ""
 
 #: models/document_type_models.py:68
 msgid "Filename generator backend"
-msgstr ""
+msgstr "Backend für die Dateinamengenerierung"
 
 #: models/document_type_models.py:72
 msgid "The arguments for the filename generator backend as a YAML dictionary."
@@ -829,7 +831,7 @@ msgstr ""
 
 #: models/document_type_models.py:75
 msgid "Filename generator backend arguments"
-msgstr ""
+msgstr "Argumente für das Backend für die Dateinamengenerierung"
 
 #: models/document_type_models.py:84
 msgid "Documents types"
@@ -846,6 +848,8 @@ msgstr "Schnellbezeichner"
 #: models/document_version_models.py:48
 msgid "The server date and time when the document version was created."
 msgstr ""
+"Datum und Uhrzeit des Servers, zu denen die Dokumentenversion erstellt "
+"wurde."
 
 #: models/document_version_models.py:53
 msgid "An optional short text describing the document version."
@@ -853,7 +857,7 @@ msgstr "Ein optionaler kurzer Text, der die Dokumentenversion beschreibt."
 
 #: models/document_version_models.py:58
 msgid "Determines the active version of the document."
-msgstr ""
+msgstr "Bestimmt die aktive Version des Dokuments."
 
 #: models/document_version_models.py:59
 msgid "Active"
@@ -865,11 +869,11 @@ msgstr "Dokumentversionen"
 
 #: models/document_version_models.py:136
 msgid "Document version export to PDF"
-msgstr ""
+msgstr "Export der Dokumentenversion zu PDF"
 
 #: models/document_version_models.py:167
 msgid "Document version exported."
-msgstr ""
+msgstr "Dokumentenversion exportiert."
 
 #: models/document_version_models.py:169
 #, python-format
@@ -892,9 +896,9 @@ msgid "ID for the source object of the page."
 msgstr ""
 
 #: models/document_version_page_models.py:74
-#: models/document_version_page_models.py:401 search.py:141
+#: models/document_version_page_models.py:401 search.py:142
 msgid "Document version page"
-msgstr ""
+msgstr "Seite der Dokumentenversion"
 
 #: models/document_version_page_models.py:345
 #, python-format
@@ -964,7 +968,7 @@ msgstr ""
 
 #: permissions.py:37
 msgid "Create new document files"
-msgstr ""
+msgstr "Neue Dokumentendateien erstellen"
 
 #: permissions.py:40
 msgid "Print document files"
@@ -976,31 +980,31 @@ msgstr ""
 
 #: permissions.py:47
 msgid "View document files"
-msgstr ""
+msgstr "Dokumentendateien anzeigen"
 
 #: permissions.py:54
 msgid "Create document versions"
-msgstr ""
+msgstr "Dokumentenversionen erstellen"
 
 #: permissions.py:58
 msgid "Delete document versions"
-msgstr ""
+msgstr "Dokumentenversionen löschen"
 
 #: permissions.py:62
 msgid "Edit document versions"
-msgstr ""
+msgstr "Dokumentenversionen bearbeiten"
 
 #: permissions.py:66
 msgid "Export document versions"
-msgstr ""
+msgstr "Dokumentenversionen exportieren"
 
 #: permissions.py:70
 msgid "Print document versions"
-msgstr ""
+msgstr "Dokumentenversionen drucken"
 
 #: permissions.py:73
 msgid "View document versions"
-msgstr ""
+msgstr "Dokumentenversionen anzeigen"
 
 #: permissions.py:83
 msgid "Create document types"
@@ -1024,7 +1028,7 @@ msgstr "Dokument aus Papierkorb wiederherstellen"
 
 #: permissions.py:101
 msgid "Delete trashed documents"
-msgstr ""
+msgstr "Dokumente aus Papierkorb löschen"
 
 #: permissions.py:104
 msgid "Trash documents"
@@ -1048,7 +1052,7 @@ msgstr ""
 
 #: queues.py:36
 msgid "Empty the trash can"
-msgstr ""
+msgstr "Papierkorb leeren"
 
 #: queues.py:40
 msgid "Delete a document"
@@ -1060,7 +1064,7 @@ msgstr ""
 
 #: queues.py:48
 msgid "Export a document version"
-msgstr ""
+msgstr "Eine Dokumentenversion exportieren"
 
 #: queues.py:53
 msgid "Check document type trash periods"
@@ -1082,27 +1086,27 @@ msgstr "Dokumentenseitenzahl aktualisieren"
 msgid "Upload new document file"
 msgstr ""
 
-#: search.py:31 search.py:62 search.py:89 search.py:129 search.py:153
+#: search.py:31 search.py:63 search.py:90 search.py:130 search.py:154
 msgid "Document type label"
 msgstr ""
 
-#: search.py:65 search.py:92 search.py:132 search.py:159
+#: search.py:66 search.py:93 search.py:133 search.py:160
 msgid "Document label"
 msgstr "Dokumentenbezeichner"
 
-#: search.py:68 search.py:96 search.py:135 search.py:163
+#: search.py:69 search.py:97 search.py:136 search.py:164
 msgid "Document description"
 msgstr "Dokumentenbeschreibung"
 
-#: search.py:99
+#: search.py:100
 msgid "Document file checksum"
-msgstr ""
+msgstr "Prüfsumme der Dokumentendatei"
 
-#: search.py:102
+#: search.py:103
 msgid "Document file MIME type"
-msgstr ""
+msgstr "MIME-Typ der Dokumentendatei"
 
-#: search.py:156
+#: search.py:157
 msgid "Document version comment"
 msgstr ""
 
@@ -1988,6 +1992,8 @@ msgstr "Papierkorb leeren?"
 #: views/trashed_document_views.py:84
 msgid "The trash emptying task has been queued."
 msgstr ""
+"Die Aufgabe zum Leeren des Papierkorbs wurde in die Warteschlange "
+"eingereiht."
 
 #: views/trashed_document_views.py:94
 #, python-format
@@ -2037,7 +2043,7 @@ msgstr[1] ""
 
 #: workflow_actions.py:13
 msgid "New document type for the workflow document."
-msgstr ""
+msgstr "Neuer Dokumenttyp für das Workflow-Dokument."
 
 #: workflow_actions.py:18
 msgid "Change document type"

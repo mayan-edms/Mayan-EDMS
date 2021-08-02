@@ -3,7 +3,6 @@ import copy
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.links import link_acl_list
-from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.navigation.classes import Link
 from mayan.apps.navigation.utils import get_cascade_condition
 
@@ -28,7 +27,7 @@ def condition_cabinet_is_root(context):
 
 link_document_cabinet_list = Link(
     args='resolved_object.pk', icon=icon_cabinet_list,
-    permissions=(permission_document_view,), text=_('Cabinets'),
+    permissions=(permission_cabinet_view,), text=_('Cabinets'),
     view='cabinets:document_cabinet_list'
 )
 link_document_cabinet_remove = Link(

@@ -5,7 +5,7 @@ from mayan.apps.events.classes import EventTypeNamespace
 namespace = EventTypeNamespace(label=_('OCR'), name='ocr')
 
 event_ocr_document_version_content_deleted = namespace.add_event_type(
-    label=_('Document OCR content deleted'),
+    label=_('Document version OCR content deleted'),
     name='document_content_deleted'
 )
 event_ocr_document_version_page_content_edited = namespace.add_event_type(

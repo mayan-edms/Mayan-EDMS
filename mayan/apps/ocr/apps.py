@@ -139,8 +139,9 @@ class OCRApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='document_version__document', is_attribute_absolute_url=True,
-            is_identifier=True, is_sortable=True, source=DocumentVersionOCRError
+            attribute='document_version__document',
+            is_attribute_absolute_url=True, is_identifier=True,
+            is_sortable=True, source=DocumentVersionOCRError
         )
         SourceColumn(
             attribute='datetime_submitted', is_sortable=True,
@@ -181,7 +182,8 @@ class OCRApp(MayanAppConfig):
             links=(
                 link_document_version_ocr_content_delete,
                 link_document_version_ocr_errors_list,
-                link_document_version_ocr_download, link_document_version_ocr_submit
+                link_document_version_ocr_download,
+                link_document_version_ocr_submit
             ),
             sources=(
                 'ocr:document_version_ocr_content_view_delete',
