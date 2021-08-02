@@ -5,7 +5,7 @@ from mayan.apps.navigation.classes import Link
 from .icons import (
     icon_entry_list, icon_document_type_ocr_settings,
     icon_document_type_submit, icon_document_version_multiple_ocr_submit,
-    icon_document_version_page_ocr_content_view,
+    icon_document_version_page_ocr_content_detail_view,
     icon_document_version_ocr_content_delete,
     icon_document_version_ocr_content_view,
     icon_document_version_ocr_download,
@@ -74,11 +74,11 @@ link_document_version_ocr_download = Link(
 
 # Document version page
 
-link_document_version_page_ocr_content_view = Link(
+link_document_version_page_ocr_content_detail_view = Link(
     args='resolved_object.id',
-    icon=icon_document_version_page_ocr_content_view,
+    icon=icon_document_version_page_ocr_content_detail_view,
     permissions=(permission_document_version_ocr_content_view,),
-    text=_('OCR'), view='ocr:document_version_page_ocr_content_view'
+    text=_('OCR'), view='ocr:document_version_page_ocr_content_detail_view'
 )
 
 # Other

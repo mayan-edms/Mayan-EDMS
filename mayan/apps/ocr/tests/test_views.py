@@ -14,7 +14,7 @@ from ..utils import get_instance_ocr_content
 from .literals import TEST_DOCUMENT_VERSION_OCR_CONTENT
 from .mixins import (
     DocumentVersionOCRTestMixin, DocumentVersionOCRViewTestMixin,
-    DocumentTypeOCRViewTestMixin
+    DocumentVersionPageOCRViewTestMixin, DocumentTypeOCRViewTestMixin
 )
 
 
@@ -244,54 +244,6 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_page_content_view_no_permission(self):
-        self._create_test_document_version_ocr_content()
-
-        self._clear_events()
-
-        response = self._request_test_document_version_page_ocr_content_view()
-        self.assertEqual(response.status_code, 404)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_document_page_content_view_with_access(self):
-        self._create_test_document_version_ocr_content()
-
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_version_ocr_content_view
-        )
-
-        self._clear_events()
-
-        response = self._request_test_document_version_page_ocr_content_view()
-        self.assertContains(
-            response=response, text=TEST_DOCUMENT_VERSION_OCR_CONTENT,
-            status_code=200
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_trashed_document_page_content_view_with_access(self):
-        self._create_test_document_version_ocr_content()
-
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_version_ocr_content_view
-        )
-
-        self.test_document.delete()
-
-        self._clear_events()
-
-        response = self._request_test_document_version_page_ocr_content_view()
-        self.assertEqual(response.status_code, 404)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
     def test_document_submit_view_no_permission(self):
         self._clear_events()
 
@@ -511,6 +463,59 @@ class DocumentVersionOCRViewsTestCase(
         self._clear_events()
 
         response = self._request_test_document_version_ocr_error_list_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+
+class DocumentVersionPageOCRViewsTestCase(
+    DocumentVersionOCRTestMixin, DocumentVersionPageOCRViewTestMixin,
+    GenericDocumentViewTestCase
+):
+    def test_document_page_content_view_no_permission(self):
+        self._create_test_document_version_ocr_content()
+
+        self._clear_events()
+
+        response = self._request_test_document_version_page_ocr_content_detail_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_page_content_view_with_access(self):
+        self._create_test_document_version_ocr_content()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_ocr_content_view
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_version_page_ocr_content_detail_view()
+        self.assertContains(
+            response=response, text=TEST_DOCUMENT_VERSION_OCR_CONTENT,
+            status_code=200
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_trashed_document_page_content_view_with_access(self):
+        self._create_test_document_version_ocr_content()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_ocr_content_view
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_version_page_ocr_content_detail_view()
         self.assertEqual(response.status_code, 404)
 
         events = self._get_test_events()

@@ -56,9 +56,11 @@ class DocumentVersionOCRAPIViewTestMixin:
             }
         )
 
-    def _request_test_document_version_page_ocr_content_api_view(self):
+
+class DocumentVersionPageOCRAPIViewTestMixin:
+    def _request_test_document_version_page_ocr_content_detail_api_view(self):
         return self.get(
-            viewname='rest_api:document-version-page-ocr-content-view', kwargs={
+            viewname='rest_api:document-version-page-ocr-content-detail-view', kwargs={
                 'document_id': self.test_document.pk,
                 'document_version_id': self.test_document.version_active.pk,
                 'document_version_page_id': self.test_document.version_active.pages.first().pk,
@@ -96,13 +98,6 @@ class DocumentVersionOCRViewTestMixin:
             }
         )
 
-    def _request_test_document_version_page_ocr_content_view(self):
-        return self.get(
-            viewname='ocr:document_version_page_ocr_content_view', kwargs={
-                'document_version_page_id': self.test_document_version.pages.first().pk
-            }
-        )
-
     def _request_test_document_version_ocr_submit_view(self):
         return self.post(
             viewname='ocr:document_version_ocr_submit', kwargs={
@@ -121,5 +116,14 @@ class DocumentVersionOCRViewTestMixin:
         return self.get(
             viewname='ocr:document_version_ocr_download', kwargs={
                 'document_version_id': self.test_document_version.pk
+            }
+        )
+
+
+class DocumentVersionPageOCRViewTestMixin:
+    def _request_test_document_version_page_ocr_content_detail_view(self):
+        return self.get(
+            viewname='ocr:document_version_page_ocr_content_detail_view', kwargs={
+                'document_version_page_id': self.test_document_version.pages.first().pk
             }
         )
