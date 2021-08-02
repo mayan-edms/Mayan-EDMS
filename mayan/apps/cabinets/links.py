@@ -28,7 +28,7 @@ def condition_cabinet_is_root(context):
 
 link_document_cabinet_list = Link(
     args='resolved_object.pk', icon=icon_cabinet_list,
-    permissions=(permission_document_view,), text=_('Cabinets'),
+    permissions=(permission_cabinet_view,), text=_('Cabinets'),
     view='cabinets:document_cabinet_list'
 )
 link_document_cabinet_remove = Link(

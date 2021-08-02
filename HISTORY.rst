@@ -15,6 +15,8 @@
     base path.
 - Track user for event when submitting a document version for OCR.
 - Fix OCR version event texts.
+- Update the document index list and document cabinet list links to require
+  the same permission scheme as the views they reference.
 
 4.0.12 (2021-07-19)
 ===================
