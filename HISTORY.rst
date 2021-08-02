@@ -17,6 +17,7 @@
 - Fix OCR version event texts.
 - Update the document index list and document cabinet list links to require
   the same permission scheme as the views they reference.
+- Add the document creation date time as a search field.
 
 4.0.12 (2021-07-19)
 ===================
