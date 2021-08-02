@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-19 05:32+0000\n"
+"POT-Creation-Date: 2021-08-02 17:49+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2021\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:125 permissions.py:5 settings.py:14
+#: apps.py:129 permissions.py:5 settings.py:14
 msgid "Common"
 msgstr "مشترک"
 

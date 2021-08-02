@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-19 05:33+0000\n"
+"POT-Creation-Date: 2021-08-02 17:49+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -257,7 +257,7 @@ msgstr "Übergänge"
 
 #: links.py:193 links.py:199 workflow_actions.py:83
 msgid "Launch workflows"
-msgstr ""
+msgstr "Workflows starten"
 
 #: links.py:205
 msgid "Create field"
@@ -351,7 +351,7 @@ msgstr "Kein gültiger Übergang."
 
 #: models/workflow_models.py:40
 msgid "Launch workflow when document is created."
-msgstr ""
+msgstr "Workflow starten, wenn das Dokument erstellt wird."
 
 #: models/workflow_models.py:41
 msgid "Auto launch"
@@ -648,11 +648,11 @@ msgstr "Workflow für ein Dokument starten"
 
 #: queues.py:26
 msgid "Launch all workflows for a document"
-msgstr ""
+msgstr "Alle Workflows für ein Dokument starten"
 
 #: queues.py:31
 msgid "Launch all workflows for all documents"
-msgstr ""
+msgstr "Alle Workflows für alle Dokumente starten"
 
 #: queues.py:35
 msgid "Launch a workflow"
@@ -754,7 +754,7 @@ msgstr ""
 
 #: views/workflow_instance_views.py:39
 msgid "There are no workflows for this document"
-msgstr ""
+msgstr "Keine Workflows für dieses Dokument vorhanden"
 
 #: views/workflow_instance_views.py:43
 #, python-format
@@ -1050,7 +1050,7 @@ msgstr ""
 #: views/workflow_template_views.py:85
 #, python-format
 msgid "Launch workflows for the selected %(count)d document."
-msgstr ""
+msgstr "Workflows für das ausgewählte %(count)d Dokument starten."
 
 #: views/workflow_template_views.py:86
 #, python-format
@@ -1069,7 +1069,7 @@ msgstr ""
 
 #: views/workflow_template_views.py:104
 msgid "Workflows to be launched."
-msgstr ""
+msgstr "Zu startende Workflows."
 
 #: views/workflow_template_views.py:142
 #, python-format
@@ -1108,7 +1108,7 @@ msgstr ""
 
 #: views/workflow_template_views.py:158
 msgid "All workflow instances will also be deleted."
-msgstr ""
+msgstr "Alle Workflow-Instanzen werden ebenfalls gelöscht."
 
 #: views/workflow_template_views.py:177
 #, python-format

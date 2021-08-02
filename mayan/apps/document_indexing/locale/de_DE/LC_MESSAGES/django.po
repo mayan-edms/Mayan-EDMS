@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-19 05:33+0000\n"
+"POT-Creation-Date: 2021-08-02 17:49+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -32,7 +32,7 @@ msgstr ""
 msgid "None"
 msgstr "Keine"
 
-#: admin.py:24 links.py:94 models.py:54
+#: admin.py:24 links.py:95 models.py:54
 msgid "Document types"
 msgstr "Dokumententypen"
 
@@ -72,7 +72,7 @@ msgstr ""
 msgid "Index templates to be queued for rebuilding."
 msgstr "In die Warteschlange für den Wiederaufbau eingestellte Indexvorlagen."
 
-#: forms.py:17 links.py:35 views/index_template_views.py:96
+#: forms.py:17 links.py:36 views/index_template_views.py:96
 msgid "Index templates"
 msgstr "Indexvorlagen"
 
@@ -84,44 +84,44 @@ msgstr "Vorlage"
 msgid "Creation date"
 msgstr "Erstellungsdatum"
 
-#: links.py:29 links.py:43 links.py:74 links.py:78 models.py:62
+#: links.py:30 links.py:44 links.py:75 links.py:79 models.py:62
 #: views/index_instance_views.py:43
 msgid "Indexes"
 msgstr "Indices"
 
-#: links.py:48 queues.py:24
+#: links.py:49 queues.py:24
 msgid "Rebuild index"
 msgstr "Index neu erstellen"
 
-#: links.py:55 links.py:64
+#: links.py:56 links.py:65
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Löscht und erstellt alle Dokumentenindices neu."
 
-#: links.py:56
+#: links.py:57
 msgid "Rebuild indexes"
 msgstr "Indices wiederaufbauen"
 
-#: links.py:65 views/index_template_views.py:345
+#: links.py:66 views/index_template_views.py:345
 msgid "Reset indexes"
 msgstr "Indizes zurücksetzen"
 
-#: links.py:84 views/index_template_views.py:101
+#: links.py:85 views/index_template_views.py:101
 msgid "Create index"
 msgstr "Index erstellen"
 
-#: links.py:89 links.py:114
+#: links.py:90 links.py:115
 msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:98 links.py:118
+#: links.py:99 links.py:119
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: links.py:104
+#: links.py:105
 msgid "Tree template"
 msgstr "Baumvorlage"
 
-#: links.py:109
+#: links.py:110
 msgid "New child node"
 msgstr "Neuer Unterknoten"
 
@@ -278,7 +278,7 @@ msgstr ""
 
 #: permissions.py:23 views/index_template_views.py:310
 msgid "Rebuild index templates"
-msgstr ""
+msgstr "Indexvorlagen wiederaufbauen"
 
 #: queues.py:12
 msgid "Delete empty index nodes"
@@ -491,18 +491,19 @@ msgstr "Indexvorlagen-Knotenpunkt %s bearbeiten?"
 #: views/index_template_views.py:283
 #, python-format
 msgid "Rebuild index template: %s"
-msgstr ""
+msgstr "Indexvorlage neu erstellen: %s"
 
 #: views/index_template_views.py:303
 msgid "Index template queued for rebuild."
-msgstr ""
+msgstr "Indexvorlage zur Neuerstellung in die Warteschlange eingereiht."
 
 #: views/index_template_views.py:324
 #, python-format
 msgid "%(count)d index template queued for rebuild."
 msgid_plural "%(count)d index templates queued for rebuild."
-msgstr[0] ""
+msgstr[0] "%(count)d Indexvorlage für Neuerstellung in Warteschlange."
 msgstr[1] ""
+"%(count)d Indexvorlagen zur Neuerstellung in die Warteschlange eingereiht."
 
 #: views/index_template_views.py:357
 #, python-format
