@@ -1,3 +1,8 @@
+4.0.14 (2021-08-XX)
+===================
+- Fix a regression in the document version page image cache maximum size
+  setting callback.
+
 4.0.13 (2021-08-02)
 ===================
 - Checkout test updates.
