@@ -18,6 +18,7 @@
     and host.
   - Fix organization setting used to set the REST API URL
     base path.
+
 - Track user for event when submitting a document version for OCR.
 - Fix OCR version event texts.
 - Update the document index list and document cabinet list links to require
