@@ -12,7 +12,7 @@ from .literals import (
 )
 
 
-class RedactionViewsTestCase(
+class RedactionViewTestCase(
     TransformationTestMixin, TransformationViewsTestMixin,
     GenericDocumentViewTestCase
 ):

@@ -2,6 +2,9 @@
 ===================
 - Fix a regression in the document version page image cache maximum size
   setting callback.
+- Fix converter layer priority exclusion for layers with a priority of 0.
+  This fixes the preview layer priority when editing the redactions of pages
+  that also contain transformations in other layers.
 
 4.0.13 (2021-08-02)
 ===================
