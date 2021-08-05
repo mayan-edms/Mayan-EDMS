@@ -4,6 +4,30 @@
   Closes GitLab issue #592. Thanks for Martin (@efelon) for the
   request.
 
+4.0.15 (2021-08-XX)
+===================
+- Improve the document version export API endpoint.
+
+  - Enable tracking the user and persisting the value for the events.
+  - Change the view class form a custom mixin to be a subclass of
+    `generics.ObjectActionAPIView` one.
+  - Improve test to check for message creation after export.
+  - Avoid returning an error when using the `GET` method for the view.
+
+- Improve the `generics.ObjectActionAPIView` class.
+
+  - Merge with `ActionAPIViewMixin`.
+  - Add `action_response_status` for predetermined status codes.
+  - Add message when the `.object_action` method is missing.
+
+4.0.14 (2021-08-05)
+===================
+- Fix a regression in the document version page image cache maximum size
+  setting callback.
+- Fix converter layer priority exclusion for layers with a priority of 0.
+  This fixes the preview layer priority when editing the redactions of pages
+  that also contain transformations in other layers.
+
 4.0.13 (2021-08-02)
 ===================
 - Checkout test updates.
@@ -19,6 +43,7 @@
     and host.
   - Fix organization setting used to set the REST API URL
     base path.
+
 - Track user for event when submitting a document version for OCR.
 - Fix OCR version event texts.
 - Update the document index list and document cabinet list links to require
