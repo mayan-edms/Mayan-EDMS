@@ -67,7 +67,15 @@ class DocumentVersionAPIViewTestMixin:
             }
         )
 
-    def _request_test_document_version_export_api_view(self):
+    def _request_test_document_version_export_api_view_via_get(self):
+        return self.get(
+            viewname='rest_api:documentversion-export', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document.version_active.pk,
+            }
+        )
+
+    def _request_test_document_version_export_api_view_via_post(self):
         return self.post(
             viewname='rest_api:documentversion-export', kwargs={
                 'document_id': self.test_document.pk,
