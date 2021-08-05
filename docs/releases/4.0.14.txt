@@ -19,7 +19,7 @@ redactions of pages that also contain transformations in other layers.
 Documents
 ^^^^^^^^^
 
-Fixed a regression that made it impossible to chang the document version page
+Fixed a regression that made it impossible to change the document version page
 image cache maximum size setting. The regression was found in the setting
 change callback.
 
