@@ -1,4 +1,4 @@
-4.0.14 (2021-08-XX)
+4.0.14 (2021-08-05)
 ===================
 - Fix a regression in the document version page image cache maximum size
   setting callback.
