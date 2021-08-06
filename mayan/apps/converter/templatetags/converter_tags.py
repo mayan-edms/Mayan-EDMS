@@ -8,11 +8,12 @@ register = Library()
 
 
 @register.simple_tag
-def converter_get_object_image_data(obj, transformation_instance_list):
+def converter_get_object_image_data(obj, maximum_layer_order=None, transformation_instance_list=None):
     try:
         return {
             'url': obj.get_api_image_url(
-                transformation_instance_list=transformation_instance_list
+                maximum_layer_order=maximum_layer_order,
+                transformation_instance_list=transformation_instance_list or ()
             )
         }
     except AppImageError as exception:
