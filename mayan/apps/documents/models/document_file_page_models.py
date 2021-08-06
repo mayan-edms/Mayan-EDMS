@@ -66,13 +66,13 @@ class DocumentFilePage(PagedModelMixin, models.Model):
         self, user=None, _acquire_lock=True,
         transformation_instance_list=None, maximum_layer_order=None
     ):
-        transformation_list = self.get_combined_transformation_list(
-            user=user,
+        combined_transformation_list = self.get_combined_transformation_list(
+            maximum_layer_order=maximum_layer_order,
             transformation_instance_list=transformation_instance_list,
-            maximum_layer_order=maximum_layer_order
+            user=user
         )
         combined_cache_filename = self.get_combined_cache_filename(
-            _transformation_instance_list=transformation_instance_list
+            _combined_transformation_list=combined_transformation_list
         )
 
         logger.debug(
@@ -103,7 +103,7 @@ class DocumentFilePage(PagedModelMixin, models.Model):
                         'transformations cache file "%s" not found', combined_cache_filename
                     )
                     image = self.get_image(
-                        transformation_instance_list=transformation_list
+                        transformation_instance_list=combined_transformation_list
                     )
                     with self.cache_partition.create_file(filename=combined_cache_filename) as file_object:
                         file_object.write(image.getvalue())
@@ -124,7 +124,10 @@ class DocumentFilePage(PagedModelMixin, models.Model):
             }
         )
 
-    def get_api_image_url(self, transformation_instance_list=None):
+    def get_api_image_url(
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None
+    ):
         """
         Create an unique URL combining:
         - the page's image URL
@@ -133,9 +136,13 @@ class DocumentFilePage(PagedModelMixin, models.Model):
         The purpose of this unique URL is to allow client side caching
         if document page images.
         """
+        transformation_instance_list = transformation_instance_list or ()
+
         transformations_hash = BaseTransformation.combine(
-            self.get_combined_transformation_list(
-                transformation_instance_list=transformation_instance_list
+            transformations=self.get_combined_transformation_list(
+                maximum_layer_order=maximum_layer_order,
+                transformation_instance_list=transformation_instance_list,
+                user=user
             )
         )
 
@@ -153,23 +160,27 @@ class DocumentFilePage(PagedModelMixin, models.Model):
         )[1:]
         final_url.args['_hash'] = transformations_hash
 
+        if maximum_layer_order is not None:
+            final_url.args['maximum_layer_order'] = maximum_layer_order
+
         return final_url.tostr()
 
     def get_combined_cache_filename(
-        self, _transformation_instance_list=None,
-        transformation_instance_list=None, user=None,
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None, _combined_transformation_list=None
     ):
-        transformation_instance_list = _transformation_instance_list or self.get_combined_transformation_list(
+        combined_transformation_list = _combined_transformation_list or self.get_combined_transformation_list(
+            maximum_layer_order=maximum_layer_order,
             transformation_instance_list=transformation_instance_list,
             user=user
         )
         return BaseTransformation.combine(
-            transformations=transformation_instance_list
+            transformations=combined_transformation_list
         )
 
     def get_combined_transformation_list(
-        self, user=None, transformation_instance_list=None,
-        maximum_layer_order=None
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None
     ):
         """
         Return a list of transformation containing the server side
@@ -181,8 +192,8 @@ class DocumentFilePage(PagedModelMixin, models.Model):
         # Stored transformations first.
         result.extend(
             LayerTransformation.objects.get_for_object(
-                obj=self, maximum_layer_order=maximum_layer_order,
-                as_classes=True, user=user
+                as_classes=True, maximum_layer_order=maximum_layer_order,
+                obj=self, user=user
             )
         )
 
@@ -255,19 +266,16 @@ class DocumentFilePage(PagedModelMixin, models.Model):
     get_label.short_description = _('Label')
 
     def get_lock_name(
-        self, _combined_cache_filename=None,
+        self, _combined_cache_filename=None, maximum_layer_order=None,
         transformation_instance_list=None, user=None
     ):
         if _combined_cache_filename:
             combined_cache_filename = _combined_cache_filename
         else:
-            transformation_list = self.get_combined_transformation_list(
+            combined_cache_filename = self.get_combined_cache_filename(
+                maximum_layer_order=maximum_layer_order,
                 transformation_instance_list=transformation_instance_list,
                 user=user
-            )
-
-            combined_cache_filename = self.get_combined_cache_filename(
-                _transformation_instance_list=transformation_list
             )
 
         return 'document_file_page_generate_image_{}_{}'.format(

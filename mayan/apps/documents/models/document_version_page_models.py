@@ -100,16 +100,16 @@ class DocumentVersionPage(
             )
 
     def generate_image(
-        self, user=None, _acquire_lock=True,
-        transformation_instance_list=None, maximum_layer_order=None
+        self, _acquire_lock=True, maximum_layer_order=None,
+        transformation_instance_list=None, user=None
     ):
-        transformation_list = self.get_combined_transformation_list(
-            user=user,
+        combined_transformation_list = self.get_combined_transformation_list(
+            maximum_layer_order=maximum_layer_order,
             transformation_instance_list=transformation_instance_list,
-            maximum_layer_order=maximum_layer_order
+            user=user
         )
         combined_cache_filename = self.get_combined_cache_filename(
-            _transformation_instance_list=transformation_instance_list
+            _combined_transformation_list=combined_transformation_list
         )
 
         logger.debug(
@@ -151,7 +151,7 @@ class DocumentVersionPage(
                             'generating new image', combined_cache_filename
                         )
                         image = self.get_image(
-                            transformation_instance_list=transformation_list
+                            transformation_instance_list=combined_transformation_list
                         )
                         with self.cache_partition.create_file(filename=combined_cache_filename) as file_object:
                             file_object.write(image.getvalue())
@@ -175,7 +175,10 @@ class DocumentVersionPage(
             }
         )
 
-    def get_api_image_url(self, transformation_instance_list=None):
+    def get_api_image_url(
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None
+    ):
         """
         Create an unique URL combining:
         - the page's image URL
@@ -187,14 +190,19 @@ class DocumentVersionPage(
         if not self.content_object:
             return '#'
 
+        transformation_instance_list = transformation_instance_list or ()
+
         # Source object transformations first.
         transformation_list = LayerTransformation.objects.get_for_object(
-            obj=self.content_object, as_classes=True,
+            as_classes=True, maximum_layer_order=maximum_layer_order,
+            obj=self.content_object, user=user
         )
 
         transformation_list.extend(
             self.get_combined_transformation_list(
-                transformation_instance_list=transformation_instance_list
+                maximum_layer_order=maximum_layer_order,
+                transformation_instance_list=transformation_instance_list,
+                user=user
             )
         )
         transformations_hash = BaseTransformation.combine(
@@ -215,13 +223,17 @@ class DocumentVersionPage(
         )[1:]
         final_url.args['_hash'] = transformations_hash
 
+        if maximum_layer_order is not None:
+            final_url.args['maximum_layer_order'] = maximum_layer_order
+
         return final_url.tostr()
 
     def get_combined_cache_filename(
-        self, _transformation_instance_list=None,
-        transformation_instance_list=None, user=None
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None, _combined_transformation_list=None
     ):
-        transformation_list = _transformation_instance_list or self.get_combined_transformation_list(
+        combined_transformation_list = _combined_transformation_list or self.get_combined_transformation_list(
+            maximum_layer_order=maximum_layer_order,
             transformation_instance_list=transformation_instance_list,
             user=user
         )
@@ -231,12 +243,14 @@ class DocumentVersionPage(
         )
         return '{}-{}'.format(
             content_object_cache_filename,
-            BaseTransformation.combine(transformations=transformation_list)
+            BaseTransformation.combine(
+                transformations=combined_transformation_list
+            )
         )
 
     def get_combined_transformation_list(
-        self, user=None, maximum_layer_order=None,
-        transformation_instance_list=None
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None
     ):
         """
         Return a list of transformation containing the server side
@@ -248,8 +262,8 @@ class DocumentVersionPage(
         # Stored transformations first.
         result.extend(
             LayerTransformation.objects.get_for_object(
-                obj=self, maximum_layer_order=maximum_layer_order,
-                as_classes=True, user=user
+                as_classes=True, maximum_layer_order=maximum_layer_order,
+                obj=self, user=user
             )
         )
 
@@ -330,20 +344,16 @@ class DocumentVersionPage(
     get_label.short_description = _('Label')
 
     def get_lock_name(
-        self, _combined_cache_filename=None,
+        self, _combined_cache_filename=None, maximum_layer_order=None,
         transformation_instance_list=None, user=None
     ):
         if _combined_cache_filename:
             combined_cache_filename = _combined_cache_filename
         else:
-            transformation_list = self.get_combined_transformation_list(
+            combined_cache_filename = self.get_combined_cache_filename(
+                maximum_layer_order=maximum_layer_order,
                 transformation_instance_list=transformation_instance_list,
                 user=user
-            )
-
-            combined_cache_filename = self.get_combined_cache_filename(
-                _transformation_instance_list=transformation_list,
-                user=None
             )
 
         return 'document_version_page_generate_image_{}_{}'.format(

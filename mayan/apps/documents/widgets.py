@@ -66,25 +66,6 @@ class DocumentVersionPagesCarouselWidget(CarouselWidget):
 class PageImageWidget(forms.widgets.Widget):
     template_name = 'documents/forms/widgets/page_image_interactive.html'
 
-    # ~ def __init__(self, attrs=None):
-        # ~ transformation_instance_list = (
-            # ~ TransformationResize(
-                # ~ width=setting_display_width.value,
-                # ~ height=setting_display_height.value
-            # ~ )
-        # ~ )
-
-        # ~ default_attrs = {
-            # ~ #'rotation': 0,
-            # ~ #'zoom': 100,
-            # ~ #'width': setting_display_width.value,
-            # ~ #'height': setting_display_height.value,
-            # ~ 'transformation_instance_list': transformation_instance_list
-        # ~ }
-        # ~ if attrs:
-            # ~ default_attrs.update(attrs)
-        # ~ super().__init__(default_attrs)
-
     def format_value(self, value):
         if value == '' or value is None:
             return None

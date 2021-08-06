@@ -5,7 +5,7 @@
 
 {% if instance %}
 
-    {% converter_get_object_image_data obj=instance transformation_instance_list=transformation_instance_list as object_image_data %}
+    {% converter_get_object_image_data obj=instance transformation_instance_list=transformation_instance_list user=user as object_image_data %}
 
     {% if 'app_image_error_image' in object_image_data %}
         {% if object_image_data.app_image_error_image.template_name %}
