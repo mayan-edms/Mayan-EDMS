@@ -166,13 +166,15 @@ class DocumentFilePageAPIViewTestMixin:
             }
         )
 
-    def _request_test_document_file_page_image_api_view(self):
+    def _request_test_document_file_page_image_api_view(
+        self, maximum_layer_order=None
+    ):
         return self.get(
             viewname='rest_api:documentfilepage-image', kwargs={
                 'document_id': self.test_document.pk,
                 'document_file_id': self.test_document_file.pk,
                 'document_file_page_id': self.test_document_file_page.pk
-            }
+            }, query={'maximum_layer_order': maximum_layer_order}
         )
 
     def _request_test_document_file_page_list_api_view(self):
