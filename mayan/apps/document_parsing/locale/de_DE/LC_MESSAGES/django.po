@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-19 05:33+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -93,7 +93,7 @@ msgstr "Dokumente nach Typ parsen"
 
 #: models.py:18
 msgid "Document file page"
-msgstr ""
+msgstr "Seite der Dokumentendatei"
 
 #: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."

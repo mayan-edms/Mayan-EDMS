@@ -16,7 +16,7 @@
          * current location's path as the new hash
          */
         document.write('<script type="text/undefined">')
-        var currentPath = window.location.pathname + window.location.search;
+        const currentPath = window.location.pathname + window.location.search;
         window.location = '/#' + currentPath;
     }
 </script>
@@ -96,7 +96,7 @@
 {% endif %}
 
 <script>
-    var DjangoMessages = [
+    let DjangoMessages = [
         {% for message in messages %}
             {
                 tags: '{{ message.tags }}',

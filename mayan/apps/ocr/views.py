@@ -8,18 +8,21 @@ from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.documents.models.document_version_models import DocumentVersion
 from mayan.apps.documents.models.document_version_page_models import DocumentVersionPage
-
 from mayan.apps.views.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectDetailView,
     SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
-from .forms import DocumentVersionPageOCRContentForm, DocumentVersionOCRContentForm
+from .forms import (
+    DocumentVersionPageOCRContentDetailForm,
+    DocumentVersionPageOCRContentEditForm, DocumentVersionOCRContentForm
+)
 from .models import DocumentVersionPageOCRContent, DocumentVersionOCRError
 from .permissions import (
-    permission_document_version_ocr_content_view, permission_document_version_ocr,
-    permission_document_type_ocr_setup
+    permission_document_version_ocr_content_edit,
+    permission_document_version_ocr_content_view,
+    permission_document_version_ocr, permission_document_type_ocr_setup
 )
 from .utils import get_instance_ocr_content
 
@@ -130,8 +133,8 @@ class DocumentVersionOCRSubmitView(MultipleObjectConfirmActionView):
         instance.submit_for_ocr(_user=self.request.user)
 
 
-class DocumentVersionPageOCRContentView(SingleObjectDetailView):
-    form_class = DocumentVersionPageOCRContentForm
+class DocumentVersionPageOCRContentDetailView(SingleObjectDetailView):
+    form_class = DocumentVersionPageOCRContentDetailForm
     object_permission = permission_document_version_ocr_content_view
     pk_url_kwarg = 'document_version_page_id'
     source_queryset = DocumentVersionPage.valid
@@ -149,8 +152,50 @@ class DocumentVersionPageOCRContentView(SingleObjectDetailView):
         return {
             'hide_labels': True,
             'object': self.object,
-            'title': _('OCR result for document version page: %s') % self.object,
+            'title': _(
+                'OCR result for document version page: %s'
+            ) % self.object
         }
+
+
+class DocumentVersionPageOCRContentEditView(
+    ExternalObjectViewMixin, SingleObjectEditView
+):
+    external_object_queryset = DocumentVersionPage.valid
+    external_object_permission = permission_document_version_ocr_content_edit
+    external_object_pk_url_kwarg = 'document_version_page_id'
+    form_class = DocumentVersionPageOCRContentEditForm
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super().dispatch(
+            request, *args, **kwargs
+        )
+        self.external_object.document_version.document.add_as_recent_document_for_user(
+            user=request.user
+        )
+        return result
+
+    def get_extra_context(self):
+        return {
+            'hide_labels': True,
+            'object': self.external_object,
+            'title': _(
+                'Edit OCR for document version page: %s'
+            ) % self.external_object
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
+
+    def get_object(self):
+        try:
+            return self.external_object.ocr_content
+        except DocumentVersionPageOCRContent.DoesNotExist:
+            return DocumentVersionPageOCRContent(
+                document_version_page=self.external_object
+            )
 
 
 class DocumentTypeSubmitView(FormView):

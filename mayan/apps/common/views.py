@@ -29,7 +29,7 @@ class FaviconRedirectView(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         """
         Hide the static tag import to avoid errors with static file
-        processors
+        processors.
         """
         return static(path='appearance/images/favicon.ico')
 

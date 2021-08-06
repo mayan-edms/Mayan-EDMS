@@ -3,6 +3,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 
+from django.core.exceptions import ImproperlyConfigured
+
 from .api_view_mixins import (
     InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin,
     SchemaInspectionAPIViewMixin
@@ -60,6 +62,7 @@ class ListCreateAPIView(
 
 
 class ObjectActionAPIView(GenericAPIView):
+    action_response_status = None
     serializer_class = BlankSerializer
 
     def get_success_headers(self, data):
@@ -69,7 +72,11 @@ class ObjectActionAPIView(GenericAPIView):
             return {}
 
     def object_action(self, serializer):
-        raise NotImplementedError
+        raise ImproperlyConfigured(
+            '%(cls)s class needs to specify the `.perform_action()` method.' % {
+                'cls': self.__class__.__name__
+            }
+        )
 
     def post(self, request, *args, **kwargs):
         return self.view_action(request, *args, **kwargs)
@@ -87,13 +94,16 @@ class ObjectActionAPIView(GenericAPIView):
         result = self.object_action(request=request, serializer=serializer)
 
         if result:
-            # If object action returned serializer.data
+            # If object action returned serializer.data.
             headers = self.get_success_headers(data=result)
             return Response(
-                data=result, status=status.HTTP_200_OK, headers=headers
+                headers=headers, data=result,
+                status=self.action_response_status or status.HTTP_200_OK
             )
         else:
-            return Response(status=status.HTTP_200_OK)
+            return Response(
+                status=self.action_response_status or status.HTTP_200_OK
+            )
 
 
 class RetrieveAPIView(

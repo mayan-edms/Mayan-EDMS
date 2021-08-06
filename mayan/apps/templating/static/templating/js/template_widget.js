@@ -2,11 +2,11 @@
 
 jQuery(document).ready(function() {
     $('[data-autocopy="true"]').change(function(event) {
-        var $this = $(this);
-        var $idTemplate = $this.siblings('[data-template-fields="template"]');
-        var templateCursorPosition = $idTemplate.prop('selectionStart');
-        var templateValue = $idTemplate.val();
-        var fieldText = eval('`' + $this.data('field-template') + '`');
+        const $this = $(this);
+        const $idTemplate = $this.siblings('[data-template-fields="template"]');
+        const templateCursorPosition = $idTemplate.prop('selectionStart');
+        let templateValue = $idTemplate.val();
+        const fieldText = eval('`' + $this.data('field-template') + '`');
 
         templateValue = templateValue.slice(
             0, templateCursorPosition

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-19 05:33+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -21,28 +21,28 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:52 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
+#: apps.py:55 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
 #: search.py:17 settings.py:11
 msgid "OCR"
 msgstr "نص الوثيقة"
 
-#: apps.py:103
+#: apps.py:106
 msgid "The OCR content."
 msgstr "محتوى التعرف الضوئي على الحروف."
 
-#: apps.py:108
+#: apps.py:111
 msgid "A generator returning the document's pages OCR content."
 msgstr "منشئ يعيد محتوى صفحات نص الوثيقة"
 
-#: apps.py:109
+#: apps.py:112
 msgid "OCR content"
 msgstr "محتوى التعرف الضوئي على الحروف"
 
-#: apps.py:133
+#: apps.py:138
 msgid "Date and time"
 msgstr "الوقت والتاريخ"
 
-#: apps.py:136 models.py:50
+#: apps.py:141 models.py:50
 msgid "Result"
 msgstr "النتيجة"
 
@@ -55,16 +55,16 @@ msgid "Free Open Source OCR Engine"
 msgstr "النص التلقائي "
 
 #: events.py:8
-msgid "Document OCR content deleted"
-msgstr "حذف محتوى نص الوثيقة"
+msgid "Document version OCR content deleted"
+msgstr ""
 
 #: events.py:12
-msgid "Document file submitted for OCR"
-msgstr ""
+msgid "Document version submitted for OCR"
+msgstr "إرسال نص الوثيقة "
 
 #: events.py:16
-msgid "Document file OCR finished"
-msgstr ""
+msgid "Document version OCR finished"
+msgstr "الإصدار النهائي لنص الوثيقة"
 
 #: forms.py:14 forms.py:47
 msgid "Contents"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-19 05:33+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -30,7 +30,7 @@ msgstr "Шаблон для entrypoint.sh внутри образа Docker."
 
 #: classes.py:144
 msgid "Template that generates a Dockerfile file."
-msgstr ""
+msgstr "Шаблон, генерирующий Dockerfile."
 
 #: classes.py:158
 msgid "Template for Supervisord inside a Docker image."
@@ -38,7 +38,7 @@ msgstr "Шаблон для Supervisord внутри образа Docker."
 
 #: classes.py:174
 msgid "Template that generates a GitLab CI config file."
-msgstr ""
+msgstr "Шаблон, генерирующий конфиг GitLab CI."
 
 #: classes.py:218
 msgid "Template for Supervisord."

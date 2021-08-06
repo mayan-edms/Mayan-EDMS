@@ -11,6 +11,7 @@ from ..settings import (
     setting_document_file_page_image_cache_storage_backend_arguments,
     setting_document_file_page_image_cache_maximum_size,
     setting_document_file_storage_backend_arguments,
+    setting_document_version_page_image_cache_maximum_size,
     setting_document_version_page_image_cache_storage_backend_arguments,
     setting_language_codes
 )
@@ -40,7 +41,7 @@ class DocumentSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
         )
 
 
-class DocumentStorageSettingsTestCase(
+class DocumentFileStorageSettingsTestCase(
     SmartSettingTestMixin, StorageSettingTestMixin, BaseTestCase
 ):
     def test_setting_document_file_storage_backend_arguments_invalid_value(self):
@@ -75,6 +76,10 @@ class DocumentStorageSettingsTestCase(
             'document file image storage' in str(assertion.exception)
         )
 
+
+class DocumentVersionStorageSettingsTestCase(
+    SmartSettingTestMixin, StorageSettingTestMixin, BaseTestCase
+):
     def test_setting_document_version_page_image_cache_storage_backend_arguments_invalid_value(self):
         assertion = self._test_storage_setting_with_invalid_value(
             setting=setting_document_version_page_image_cache_storage_backend_arguments,
@@ -85,4 +90,14 @@ class DocumentStorageSettingsTestCase(
         self.assertTrue('Unable to initialize' in str(assertion.exception))
         self.assertTrue(
             'document version image storage' in str(assertion.exception)
+        )
+
+    def test_setting_document_version_page_image_cache_maximum_size_callback(self):
+        old_value = setting_document_version_page_image_cache_maximum_size.value
+        new_value = old_value + 1
+        setting_document_version_page_image_cache_maximum_size.value = '{}'.format(new_value)
+
+        self.assertEqual(
+            setting_document_version_page_image_cache_maximum_size.value,
+            new_value
         )

@@ -9,30 +9,6 @@ from rest_framework.settings import api_settings
 from mayan.apps.views.mixins import ExternalObjectBaseMixin
 
 
-class ActionAPIViewMixin:
-    action_response_status = None
-
-    def get_success_headers(self, data):
-        try:
-            return {'Location': str(data[api_settings.URL_FIELD_NAME])}
-        except (TypeError, KeyError):
-            return {}
-
-    def perform_view_action(self):
-        raise ImproperlyConfigured(
-            'Need to specify the `.perform_action()` method.'
-        )
-
-    def post(self, request, *args, **kwargs):
-        return self.view_action(request=request, *args, **kwargs)
-
-    def view_action(self, request, *args, **kwargs):
-        self.perform_view_action()
-        return Response(
-            status=self.action_response_status or status.HTTP_200_OK
-        )
-
-
 class AsymmetricSerializerAPIViewMixin:
     _write_methods = ('PATCH', 'POST', 'PUT')
     read_serializer_class = None
