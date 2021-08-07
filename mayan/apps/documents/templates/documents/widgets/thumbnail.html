@@ -35,7 +35,7 @@
                         {% appearance_get_icon 'mayan.apps.documents.icons.icon_document_image_loading' %}
                     </span>
                     <img
-                        alt="{% trans 'Document image' %}"
+                        alt="{{ image_alt }}"
                         class="thin_border {{ image_classes }}"
                         data-url="{{ object_image_data.url }}"
                         src="#"
