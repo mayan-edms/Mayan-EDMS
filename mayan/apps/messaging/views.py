@@ -162,6 +162,7 @@ class MessageMarkReadView(MultipleObjectConfirmActionView):
         return self.request.user.messages.all()
 
     def object_action(self, instance, form=None):
+        instance._event_actor = self.request.user
         instance.mark_read()
 
 
@@ -179,10 +180,11 @@ class MessageMarkReadAllView(ConfirmView):
     def view_action(self, form=None):
         queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_message_view, queryset=self.get_queryset(),
-            user=self.request.user()
+            user=self.request.user
         )
 
         for message in queryset.all():
+            message._event_actor = self.request.user
             message.mark_read()
 
         messages.success(
@@ -227,4 +229,5 @@ class MessageMarkUnReadView(MultipleObjectConfirmActionView):
         return self.request.user.messages.all()
 
     def object_action(self, instance, form=None):
+        instance._event_actor = self.request.user
         instance.mark_unread()
