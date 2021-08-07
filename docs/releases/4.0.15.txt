@@ -1,0 +1,86 @@
+Version 4.0.15
+==============
+
+Released: August 7, 2021
+
+Status: Stable
+
+Changes
+-------
+
+Documents
+^^^^^^^^^
+
+The API endpoint to export a document version was improved to properly
+display that a POST request is expected. Issuing a GET request no longer
+causes an unexpected response error.
+
+The user requesting the export is now tracked and saved with the event.
+
+
+Messaging
+^^^^^^^^^
+
+The view to mark all messages as read was fixed.
+
+The user requesting to mark all messages as read is now tracked and saved
+with the event.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+A regression introduced in version 4.0.12 was fixed. This regression was
+cause by the modernization of the JavaScript code. The regression affected
+the pop up action messages.
+
+
+Other
+^^^^^
+
+- Improve the `generics.ObjectActionAPIView` class.
+
+  - Merge with `ActionAPIViewMixin`.
+  - Add `action_response_status` for predetermined status codes.
+  - Add message when the `.object_action` method is missing.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- None
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
+
