@@ -127,11 +127,11 @@
                 messagePosition: '{% smart_setting "APPEARANCE_MESSAGE_POSITION" %}'
             });
 
-            const afterBaseLoad = function () {
+            const afterBaseLoad = function (djangoMessages) {
                 MayanImage.intialize({
                     templateInvalidImage: '{% spaceless %}{% include "documents/invalid_document.html" %}{% endspaceless %}'
                 });
-                app.doToastrMessages();
+                app.doToastrMessages(djangoMessages);
                 app.resizeFullHeight();
                 app.setupSelect2();
                 app.setupScrollView();

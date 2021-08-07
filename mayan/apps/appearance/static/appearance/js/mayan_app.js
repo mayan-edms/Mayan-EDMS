@@ -115,7 +115,7 @@ class MayanApp {
         });
     }
 
-    doToastrMessages () {
+    doToastrMessages (djangoMessages) {
         toastr.options = {
             'closeButton': true,
             'debug': false,
@@ -170,7 +170,7 @@ class MayanApp {
             </style>\
         ');
 
-        $.each(DjangoMessages, function (index, value) {
+        $.each(djangoMessages, function (index, value) {
             let options = {};
 
             if (value.tags === 'error') {
