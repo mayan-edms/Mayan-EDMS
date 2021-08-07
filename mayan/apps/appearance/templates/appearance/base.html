@@ -95,25 +95,26 @@
     </div>
 {% endif %}
 
-<script>
-    let DjangoMessages = [
-        {% for message in messages %}
-            {
-                tags: '{{ message.tags }}',
-                message: '{{ message.message }}'
-            },
-        {% endfor %}
-    ];
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip();
-    })
-</script>
 {% block javascript %}{% endblock %}
 
 <script>
     document.title = '{% filter escapejs %}{% spaceless %}{% block title %}{% endblock %} :: {% block project_name %}{% smart_setting "COMMON_PROJECT_TITLE" %}{% endblock %}{% endspaceless %}{% endfilter %}';
     // Strip HTML entities from the title
     document.title = document.title.replace(/&(?:[a-z\d]+|#\d+|#x[a-f\d]+);/ig, '');
-    afterBaseLoad();
+
+    jQuery(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+
+        let djangoMessages = [
+            {% for message in messages %}
+                {
+                    tags: '{{ message.tags }}',
+                    message: '{{ message.message }}'
+                },
+            {% endfor %}
+        ];
+
+        afterBaseLoad(djangoMessages);
+    });
 </script>
 {% endspaceless %}
