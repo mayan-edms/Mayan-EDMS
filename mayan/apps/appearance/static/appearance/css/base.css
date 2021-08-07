@@ -11,10 +11,6 @@
         url('../fonts/IM_Fell_English_SC.ttf') format('truetype');
 }
 
-body {
-    padding-top: 60px;
-}
-
 .navbar-brand {
     font-family: "IM Fell English SC", serif;
 }
@@ -33,7 +29,7 @@ body {
 }
 
 #carousel-container {
-    overflow-x: scroll; height: 500px;
+    overflow-y: scroll;
 }
 
 #carousel-container img {
@@ -342,6 +338,8 @@ a i {
 }
 
 #viewport {
+    height: 100%;
+    padding-top: 60px;
     width: 100%;
 }
 
