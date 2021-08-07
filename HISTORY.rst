@@ -4,7 +4,7 @@
   Closes GitLab issue #592. Thanks for Martin (@efelon) for the
   request.
 
-4.0.15 (2021-08-XX)
+4.0.15 (2021-08-07)
 ===================
 - Improve the document version export API endpoint.
 
@@ -19,6 +19,10 @@
   - Merge with `ActionAPIViewMixin`.
   - Add `action_response_status` for predetermined status codes.
   - Add message when the `.object_action` method is missing.
+
+- Fix the view to mark all messages as read.
+- Track the user when marking messages as read or unread.
+- Fix action messages.
 
 4.0.14 (2021-08-05)
 ===================
