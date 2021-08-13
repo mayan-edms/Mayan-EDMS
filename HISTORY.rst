@@ -3,6 +3,41 @@
 - Add support for editing the document version page OCR content.
   Closes GitLab issue #592. Thanks for Martin (@efelon) for the
   request.
+- Refactor sources app.
+
+  - Add object permission support to source views.
+  - Remove locking support from staging folder uploads.
+  - Update staging preview to use new preview generation
+    code.
+  - Use streaming response to serve staging folder images.
+  - Convert the sources from models into backend classes.
+    The sources are now decoupled from the app. Each source
+    backend can defined its own callbacks and use an unified
+    background task.
+  - Perform code reduction. Remove PseudoFile and SourceUploaded
+    classes. Each source backend is now responsible for providing
+    a list of shared uploaded files.
+  - Multiform improvements:
+
+    - Support multi form extra kwargs.
+    - Move the dynamic part of the multi form method to the end
+      of the name.
+    - Add a white horizontal ruler to separate the form
+      instances.
+
+- Consolidate the image generation task
+
+  - Remove document file, version, converter asset, and workflow template
+    preview image generation.
+  - Remove converter literal `TASK_ASSET_IMAGE_GENERATE_RETRY_DELAY`.
+  - Remove workflow literals `TASK_GENERATE_WORKFLOW_IMAGE_RETRY_DELAY`.
+  - Remove `document_states_fast` queue.
+  - Remove documents literals
+    `DEFAULT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY` and
+    `DEFAULT_TASK_GENERATE_DOCUMENT_VERSION_PAGE_IMAGE_RETRY_DELAY`.
+  - Remove settings
+    `DOCUMENT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY` and
+    `DOCUMENT_TASK_GENERATE_DOCUMENT_VERSION_PAGE_IMAGE_RETRY_DELAY`.
 
 4.0.15 (2021-08-07)
 ===================
