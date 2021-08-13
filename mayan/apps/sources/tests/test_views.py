@@ -1,53 +1,410 @@
+from django.core.exceptions import ValidationError
 from django.test import override_settings
 
+from mayan.apps.documents.events import (
+    event_document_created, event_document_file_created,
+    event_document_file_edited, event_document_version_created,
+    event_document_version_page_created
+)
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_file_new
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
-from mayan.apps.documents.tests.literals import (
-    TEST_COMPRESSED_DOCUMENT_PATH, TEST_DOCUMENT_DESCRIPTION,
-    TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
-)
+from mayan.apps.documents.tests.literals import TEST_COMPRESSED_DOCUMENT_PATH
+from mayan.apps.metadata.models import MetadataType
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
-from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
-from ..models import WebFormSource
+from ..events import event_source_created, event_source_edited
+from ..models import Source
 from ..permissions import (
-    permission_sources_setup_create, permission_sources_setup_delete,
-    permission_sources_setup_edit, permission_sources_setup_view,
-    permission_staging_file_delete
+    permission_sources_create, permission_sources_delete,
+    permission_sources_edit, permission_sources_view
 )
+from ..source_backends.literals import SOURCE_UNCOMPRESS_CHOICE_ALWAYS
 
-from .literals import TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N
+from .literals import TEST_SOURCE_LABEL
 from .mixins import (
-    DocumentFileUploadViewTestMixin, DocumentUploadIssueTestMixin,
-    DocumentUploadWizardViewTestMixin, StagingFolderTestMixin,
-    StagingFolderViewTestMixin, SourceTestMixin, SourceViewTestMixin,
-    WatchFolderTestMixin
+    DocumentFileUploadViewTestMixin, DocumentUploadWizardViewTestMixin,
+    EmailSourceBackendViewTestMixin, SourceTestMixin, SourceViewTestMixin,
+    WebFormSourceTestMixin
 )
 
 
-class DocumentUploadWizardViewTestCase(
-    SourceTestMixin, DocumentUploadWizardViewTestMixin,
+class EmailSourceViewTestCase(
+    EmailSourceBackendViewTestMixin, GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def test_email_source_create_view(self):
+        self.grant_permission(permission=permission_sources_create)
+
+        source_count = Source.objects.count()
+
+        self._clear_events()
+
+        response = self._request_test_email_source_create_view()
+
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(Source.objects.count(), source_count + 1)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_source)
+        self.assertEqual(events[0].verb, event_source_created.id)
+
+    def test_metadata_type_validation_invalid_from(self):
+        self._silence_logger(name='mayan.apps.logging.middleware')
+        self._silence_logger(name='mayan.apps.navigation.classes')
+
+        test_metadata_type = MetadataType.objects.create(
+            name='test_metadata_type'
+        )
+
+        self.grant_permission(permission=permission_sources_create)
+
+        source_count = Source.objects.count()
+
+        self._clear_events()
+
+        with self.assertRaises(expected_exception=ValidationError):
+            response = self._request_test_email_source_create_view(
+                extra_data={
+                    'from_metadata_type_id': test_metadata_type.pk,
+                }
+            )
+            self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(Source.objects.count(), source_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_metadata_type_validation_valid_from(self):
+        test_metadata_type = MetadataType.objects.create(
+            name='test_metadata_type'
+        )
+
+        self.test_document_type.metadata.create(
+            metadata_type=test_metadata_type
+        )
+
+        self.grant_permission(permission=permission_sources_create)
+
+        source_count = Source.objects.count()
+
+        self._clear_events()
+
+        response = self._request_test_email_source_create_view(
+            extra_data={
+                'from_metadata_type_id': test_metadata_type.pk,
+            }
+        )
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(Source.objects.count(), source_count + 1)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_source)
+        self.assertEqual(events[0].verb, event_source_created.id)
+
+    def test_metadata_type_validation_invalid_subject(self):
+        self._silence_logger(name='mayan.apps.logging.middleware')
+        self._silence_logger(name='mayan.apps.navigation.classes')
+
+        test_metadata_type = MetadataType.objects.create(
+            name='test_metadata_type'
+        )
+
+        self.grant_permission(permission=permission_sources_create)
+
+        source_count = Source.objects.count()
+
+        self._clear_events()
+
+        with self.assertRaises(expected_exception=ValidationError):
+            response = self._request_test_email_source_create_view(
+                extra_data={
+                    'subject_metadata_type_id': test_metadata_type.pk
+                }
+            )
+            self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(Source.objects.count(), source_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_metadata_type_validation_valid_subject(self):
+        test_metadata_type = MetadataType.objects.create(
+            name='test_metadata_type'
+        )
+
+        self.test_document_type.metadata.create(
+            metadata_type=test_metadata_type
+        )
+
+        self.grant_permission(permission=permission_sources_create)
+
+        source_count = Source.objects.count()
+
+        self._clear_events()
+
+        response = self._request_test_email_source_create_view(
+            extra_data={
+                'subject_metadata_type_id': test_metadata_type.pk
+            }
+        )
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(Source.objects.count(), source_count + 1)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_source)
+        self.assertEqual(events[0].verb, event_source_created.id)
+
+
+class SourceViewTestCase(
+    SourceTestMixin, SourceViewTestMixin, GenericViewTestCase
+):
+    auto_create_test_source = False
+
+    def test_source_create_view_no_permission(self):
+        source_count = Source.objects.count()
+
+        self._clear_events()
+
+        response = self._request_test_source_create_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(Source.objects.count(), source_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_source_create_view_with_permission(self):
+        self.grant_permission(permission=permission_sources_create)
+
+        source_count = Source.objects.count()
+
+        self._clear_events()
+
+        response = self._request_test_source_create_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(self.test_source.label, TEST_SOURCE_LABEL)
+        self.assertEqual(Source.objects.count(), source_count + 1)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_source)
+        self.assertEqual(events[0].verb, event_source_created.id)
+
+    def test_source_delete_view_no_permission(self):
+        self._create_test_source()
+
+        source_count = Source.objects.count()
+
+        self._clear_events()
+
+        response = self._request_test_source_delete_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(Source.objects.count(), source_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_source_delete_view_with_access(self):
+        self._create_test_source()
+
+        self.grant_access(
+            obj=self.test_source, permission=permission_sources_delete
+        )
+
+        source_count = Source.objects.count()
+
+        self._clear_events()
+
+        response = self._request_test_source_delete_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(Source.objects.count(), source_count - 1)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_source_edit_view_no_permission(self):
+        self._create_test_source()
+        test_instance_values = self._model_instance_to_dictionary(
+            instance=self.test_source
+        )
+
+        self._clear_events()
+
+        response = self._request_test_source_edit_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_source.refresh_from_db()
+        self.assertEqual(
+            self._model_instance_to_dictionary(
+                instance=self.test_source
+            ), test_instance_values
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_source_edit_view_with_access(self):
+        self._create_test_source()
+        test_instance_values = self._model_instance_to_dictionary(
+            instance=self.test_source
+        )
+        self.grant_access(
+            obj=self.test_source, permission=permission_sources_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_source_edit_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_source.refresh_from_db()
+        self.assertNotEqual(
+            self._model_instance_to_dictionary(
+                instance=self.test_source
+            ), test_instance_values
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_source)
+        self.assertEqual(events[0].verb, event_source_edited.id)
+
+    def test_source_list_view_no_permission(self):
+        self._create_test_source()
+
+        self._clear_events()
+
+        response = self._request_test_source_list_view()
+        self.assertEqual(response.status_code, 200)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_source_list_view_with_access(self):
+        self._create_test_source()
+
+        self.grant_access(
+            obj=self.test_source, permission=permission_sources_view
+        )
+
+        self._clear_events()
+
+        response = self._request_test_source_list_view()
+        self.assertContains(
+            response=response, text=self.test_source.label, status_code=200
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_source_test_get_view_no_permission(self):
+        self._create_test_source()
+
+        self._clear_events()
+
+        response = self._request_test_source_test_get_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_source_test_get_view_with_access(self):
+        self._create_test_source()
+
+        self.grant_access(
+            obj=self.test_source, permission=permission_sources_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_source_test_get_view()
+        self.assertEqual(response.status_code, 200)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+
+class WebFormDocumentUploadWizardViewTestCase(
+    WebFormSourceTestMixin, DocumentUploadWizardViewTestMixin,
     GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
 
+    @override_settings(DOCUMENTS_LANGUAGE='fra')
+    def test_default_document_language_setting(self):
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_create
+        )
+        self.grant_access(
+            obj=self.test_source, permission=permission_document_create
+        )
+
+        self._clear_events()
+
+        response = self._request_upload_interactive_view()
+        self.assertContains(
+            response=response,
+            text='<option value="fra" selected>French</option>',
+            status_code=200
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_upload_compressed_file(self):
-        self.test_source.uncompress = SOURCE_UNCOMPRESS_CHOICE_Y
+        backend_data = self.test_source.get_backend_data()
+        backend_data['uncompress'] = SOURCE_UNCOMPRESS_CHOICE_ALWAYS
+        self.test_source.set_backend_data(obj=backend_data)
         self.test_source.save()
 
         self.grant_access(
             obj=self.test_document_type, permission=permission_document_create
         )
+        self.grant_access(
+            obj=self.test_source, permission=permission_document_create
+        )
+
+        test_document_count = Document.objects.count()
+
+        self._clear_events()
 
         response = self._request_upload_wizard_view(
             document_path=TEST_COMPRESSED_DOCUMENT_PATH
         )
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(Document.objects.count(), 2)
+        self.assertEqual(Document.objects.count(), test_document_count + 2)
         self.assertTrue(
             'first document.pdf' in Document.objects.values_list(
                 'label', flat=True
@@ -59,137 +416,315 @@ class DocumentUploadWizardViewTestCase(
             )
         )
 
-    def test_upload_wizard_without_permission(self):
-        response = self._request_upload_wizard_view()
-        self.assertEqual(response.status_code, 403)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 11)
 
-        self.assertEqual(Document.objects.count(), 0)
-
-    def test_upload_wizard_with_permission(self):
-        self.grant_permission(permission=permission_document_create)
-
-        response = self._request_upload_wizard_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertEqual(Document.objects.count(), 1)
-        self.assertEqual(
-            Document.objects.first().file_latest.checksum,
-            TEST_SMALL_DOCUMENT_CHECKSUM
+        test_documents = (Document.objects.first(), Document.objects.last())
+        test_document_files = (
+            test_documents[0].file_latest, test_documents[1].file_latest
+        )
+        test_document_versions = (
+            test_documents[0].version_active, test_documents[1].version_active
+        )
+        test_document_version_pages = (
+            test_document_versions[0].pages.first(),
+            test_document_versions[1].pages.first(),
+            test_document_versions[1].pages.last()
         )
 
-    def test_upload_wizard_with_document_type_access(self):
-        """
-        Test uploading of documents by granting the document create
-        permission for the document type to the user
-        """
-        # Create an access control entry giving the role the document
-        # create permission for the selected document type.
+        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, test_documents[0])
+        self.assertEqual(events[0].verb, event_document_created.id)
+
+        self.assertEqual(events[1].action_object, test_documents[0])
+        self.assertEqual(events[1].actor, self._test_case_user)
+        self.assertEqual(events[1].target, test_document_files[0])
+        self.assertEqual(events[1].verb, event_document_file_created.id)
+
+        self.assertEqual(events[2].action_object, test_documents[0])
+        self.assertEqual(events[2].actor, self._test_case_user)
+        self.assertEqual(events[2].target, test_document_files[0])
+        self.assertEqual(events[2].verb, event_document_file_edited.id)
+
+        self.assertEqual(events[3].action_object, test_documents[0])
+        self.assertEqual(events[3].actor, self._test_case_user)
+        self.assertEqual(events[3].target, test_document_versions[0])
+        self.assertEqual(events[3].verb, event_document_version_created.id)
+
+        self.assertEqual(events[4].action_object, test_document_versions[0])
+        self.assertEqual(events[4].actor, self._test_case_user)
+        self.assertEqual(events[4].target, test_document_version_pages[0])
+        self.assertEqual(
+            events[4].verb, event_document_version_page_created.id
+        )
+
+        self.assertEqual(events[5].action_object, self.test_document_type)
+        self.assertEqual(events[5].actor, self._test_case_user)
+        self.assertEqual(events[5].target, test_documents[1])
+        self.assertEqual(events[5].verb, event_document_created.id)
+
+        self.assertEqual(events[6].action_object, test_documents[1])
+        self.assertEqual(events[6].actor, self._test_case_user)
+        self.assertEqual(events[6].target, test_document_files[1])
+        self.assertEqual(events[6].verb, event_document_file_created.id)
+
+        self.assertEqual(events[7].action_object, test_documents[1])
+        self.assertEqual(events[7].actor, self._test_case_user)
+        self.assertEqual(events[7].target, test_document_files[1])
+        self.assertEqual(events[7].verb, event_document_file_edited.id)
+
+        self.assertEqual(events[8].action_object, test_documents[1])
+        self.assertEqual(events[8].actor, self._test_case_user)
+        self.assertEqual(events[8].target, test_document_versions[1])
+        self.assertEqual(events[8].verb, event_document_version_created.id)
+
+        self.assertEqual(events[9].action_object, test_document_versions[1])
+        self.assertEqual(events[9].actor, self._test_case_user)
+        self.assertEqual(events[9].target, test_document_version_pages[1])
+        self.assertEqual(
+            events[9].verb, event_document_version_page_created.id
+        )
+
+        self.assertEqual(events[10].action_object, test_document_versions[1])
+        self.assertEqual(events[10].actor, self._test_case_user)
+        self.assertEqual(events[10].target, test_document_version_pages[2])
+        self.assertEqual(
+            events[10].verb, event_document_version_page_created.id
+        )
+
+    def test_upload_interactive_view_no_permission(self):
+        test_document_count = Document.objects.count()
+
+        self._clear_events()
+
+        response = self._request_upload_interactive_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(Document.objects.count(), test_document_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_upload_interactive_view_with_document_type_access(self):
         self.grant_access(
             obj=self.test_document_type, permission=permission_document_create
         )
 
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            response = self.post(
-                viewname='sources:document_upload_interactive', kwargs={
-                    'source_id': self.test_source.pk
-                }, data={
-                    'source-file': file_object,
-                    'document_type_id': self.test_document_type.pk,
-                }
-            )
-        self.assertEqual(response.status_code, 302)
+        test_document_count = Document.objects.count()
 
-        self.assertEqual(Document.objects.count(), 1)
+        self._clear_events()
 
-    def test_upload_interactive_view_no_permission(self):
         response = self._request_upload_interactive_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
-    def test_upload_interactive_view_with_access(self):
+        self.assertEqual(Document.objects.count(), test_document_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_upload_interactive_view_with_source_access(self):
         self.grant_access(
-            permission=permission_document_create, obj=self.test_document_type
+            obj=self.test_source, permission=permission_document_create
         )
+
+        test_document_count = Document.objects.count()
+
+        self._clear_events()
+
+        response = self._request_upload_interactive_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(Document.objects.count(), test_document_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_upload_interactive_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document_type, permission=permission_document_create
+        )
+        self.grant_access(
+            obj=self.test_source, permission=permission_document_create
+        )
+
+        test_document_count = Document.objects.count()
+
+        self._clear_events()
+
         response = self._request_upload_interactive_view()
         self.assertContains(
             response=response, text=self.test_source.label, status_code=200
         )
 
-    @override_settings(DOCUMENTS_LANGUAGE='fra')
-    def test_default_document_language_setting(self):
+        self.assertEqual(Document.objects.count(), test_document_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_upload_wizard_no_permission(self):
+        test_document_count = Document.objects.count()
+
+        self._clear_events()
+
+        response = self._request_upload_wizard_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(Document.objects.count(), test_document_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_upload_wizard_with_document_type_access(self):
         self.grant_access(
-            permission=permission_document_create, obj=self.test_document_type
-        )
-        response = self._request_upload_interactive_view()
-        self.assertContains(
-            response=response,
-            text='<option value="fra" selected>French</option>',
-            status_code=200
+            obj=self.test_document_type, permission=permission_document_create
         )
 
+        test_document_count = Document.objects.count()
 
-class DocumentUploadIssueTestCase(
-    DocumentUploadIssueTestMixin, GenericDocumentViewTestCase
-):
-    auto_upload_test_document = False
-    auto_login_superuser = True
-    auto_login_user = False
-    create_test_case_superuser = True
-    create_test_case_user = False
+        self._clear_events()
 
-    def test_issue_25(self):
-        # Create new webform source
-        self._request_test_source_create_view()
-        self.assertEqual(WebFormSource.objects.count(), 1)
+        response = self._request_upload_wizard_view()
+        self.assertEqual(response.status_code, 404)
 
-        # Upload the test document
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.post(
-                viewname='sources:document_upload_interactive', data={
-                    'document-language': 'eng',
-                    'source-file': file_object,
-                    'document_type_id': self.test_document_type.pk
-                }
-            )
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.objects.count(), test_document_count)
 
-        self.test_document = Document.objects.first()
-        # Test for issue 25 during creation
-        # ** description fields was removed from upload from **
-        self.assertEqual(self.test_document.description, '')
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
-        # Reset description
-        self.test_document.description = TEST_DOCUMENT_DESCRIPTION
-        self.test_document.save()
-        self.assertEqual(self.test_document.description, TEST_DOCUMENT_DESCRIPTION)
+    def test_upload_wizard_with_source_access(self):
+        self.grant_access(
+            obj=self.test_source, permission=permission_document_create
+        )
 
-        # Test for issue 25 during editing
-        self._request_test_source_edit_view()
-        # Fetch document again and test description
-        self.test_document = Document.objects.first()
-        self.assertEqual(self.test_document.description, TEST_DOCUMENT_DESCRIPTION)
+        test_document_count = Document.objects.count()
+
+        self._clear_events()
+
+        response = self._request_upload_wizard_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(Document.objects.count(), test_document_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_upload_wizard_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document_type, permission=permission_document_create
+        )
+        self.grant_access(
+            obj=self.test_source, permission=permission_document_create
+        )
+
+        test_document_count = Document.objects.count()
+
+        self._clear_events()
+
+        response = self._request_upload_wizard_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(Document.objects.count(), test_document_count + 1)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 5)
+
+        test_document = Document.objects.first()
+        test_document_file = test_document.file_latest
+        test_document_version = test_document.version_active
+        test_document_version_page = test_document_version.pages.first()
+
+        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, test_document)
+        self.assertEqual(events[0].verb, event_document_created.id)
+
+        self.assertEqual(events[1].action_object, test_document)
+        self.assertEqual(events[1].actor, self._test_case_user)
+        self.assertEqual(events[1].target, test_document_file)
+        self.assertEqual(events[1].verb, event_document_file_created.id)
+
+        self.assertEqual(events[2].action_object, test_document)
+        self.assertEqual(events[2].actor, self._test_case_user)
+        self.assertEqual(events[2].target, test_document_file)
+        self.assertEqual(events[2].verb, event_document_file_edited.id)
+
+        self.assertEqual(events[3].action_object, test_document)
+        self.assertEqual(events[3].actor, self._test_case_user)
+        self.assertEqual(events[3].target, test_document_version)
+        self.assertEqual(events[3].verb, event_document_version_created.id)
+
+        self.assertEqual(events[4].action_object, test_document_version)
+        self.assertEqual(events[4].actor, self._test_case_user)
+        self.assertEqual(events[4].target, test_document_version_page)
+        self.assertEqual(
+            events[4].verb, event_document_version_page_created.id
+        )
 
 
-class DocumentFileUploadViewTestCase(
-    DocumentFileUploadViewTestMixin, SourceTestMixin,
+class WebFormNewDocumentauto_create_test_sourceFileWizardViewTestCase (
+    DocumentFileUploadViewTestMixin, WebFormSourceTestMixin,
     GenericDocumentViewTestCase
 ):
     def test_document_file_upload_view_no_permission(self):
         file_count = self.test_document.files.count()
 
+        self._clear_events()
+
         response = self._request_document_file_upload_view()
 
-        self.assertEqual(response.status_code, 403)
-        self.test_document.refresh_from_db()
-        self.assertEqual(
-            self.test_document.files.count(), file_count
-        )
+        self.assertEqual(response.status_code, 404)
 
-    def test_document_file_upload_view_with_access(self):
+        self.test_document.refresh_from_db()
+        self.assertEqual(self.test_document.files.count(), file_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_file_upload_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_file_new
+            obj=self.test_document, permission=permission_document_file_new
         )
         file_count = self.test_document.files.count()
+
+        self._clear_events()
+
+        response = self._request_document_file_upload_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document.refresh_from_db()
+        self.assertEqual(self.test_document.files.count(), file_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_file_upload_view_with_source_access(self):
+        self.grant_access(
+            obj=self.test_source, permission=permission_document_file_new
+        )
+        file_count = self.test_document.files.count()
+
+        self._clear_events()
+
+        response = self._request_document_file_upload_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document.refresh_from_db()
+        self.assertEqual(self.test_document.files.count(), file_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_file_upload_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_file_new
+        )
+        self.grant_access(
+            obj=self.test_source, permission=permission_document_file_new
+        )
+        file_count = self.test_document.files.count()
+
+        self._clear_events()
 
         response = self._request_document_file_upload_view()
         self.assertEqual(response.status_code, 302)
@@ -197,40 +732,144 @@ class DocumentFileUploadViewTestCase(
         self.test_document.refresh_from_db()
         self.assertEqual(
             self.test_document.files.count(), file_count + 1
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 4)
+
+        test_document = Document.objects.first()
+        test_document_file = test_document.file_latest
+        test_document_version = test_document.version_active
+        test_document_version_page = test_document_version.pages.first()
+
+        self.assertEqual(events[0].action_object, test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, test_document_file)
+        self.assertEqual(events[0].verb, event_document_file_created.id)
+
+        self.assertEqual(events[1].action_object, test_document)
+        self.assertEqual(events[1].actor, self._test_case_user)
+        self.assertEqual(events[1].target, test_document_file)
+        self.assertEqual(events[1].verb, event_document_file_edited.id)
+
+        self.assertEqual(events[2].action_object, test_document)
+        self.assertEqual(events[2].actor, self._test_case_user)
+        self.assertEqual(events[2].target, test_document_version)
+        self.assertEqual(events[2].verb, event_document_version_created.id)
+
+        self.assertEqual(events[3].action_object, test_document_version)
+        self.assertEqual(events[3].actor, self._test_case_user)
+        self.assertEqual(events[3].target, test_document_version_page)
+        self.assertEqual(
+            events[3].verb, event_document_version_page_created.id
         )
 
     def test_document_file_upload_no_source_view_no_permission(self):
         file_count = self.test_document.files.count()
 
+        self._clear_events()
+
         response = self._request_document_file_upload_no_source_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
         self.test_document.refresh_from_db()
-        self.assertEqual(
-            self.test_document.files.count(), file_count
-        )
+        self.assertEqual(self.test_document.files.count(), file_count)
 
-    def test_document_file_upload_no_source_view_with_access(self):
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_file_upload_no_source_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_file_new
+            obj=self.test_document, permission=permission_document_file_new
         )
         file_count = self.test_document.files.count()
 
-        response = self._request_document_file_upload_no_source_view()
+        self._clear_events()
 
+        response = self._request_document_file_upload_no_source_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document.refresh_from_db()
+        self.assertEqual(self.test_document.files.count(), file_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_file_upload_no_source_view_with_source_access(self):
+        self.grant_access(
+            obj=self.test_source, permission=permission_document_file_new
+        )
+        file_count = self.test_document.files.count()
+
+        self._clear_events()
+
+        response = self._request_document_file_upload_no_source_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document.refresh_from_db()
+        self.assertEqual(self.test_document.files.count(), file_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_file_upload_no_source_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_file_new
+        )
+        self.grant_access(
+            obj=self.test_source, permission=permission_document_file_new
+        )
+        file_count = self.test_document.files.count()
+
+        self._clear_events()
+
+        response = self._request_document_file_upload_no_source_view()
         self.assertEqual(response.status_code, 302)
+
         self.test_document.refresh_from_db()
+        self.assertEqual(self.test_document.files.count(), file_count + 1)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 4)
+
+        test_document = Document.objects.first()
+        test_document_file = test_document.file_latest
+        test_document_version = test_document.version_active
+        test_document_version_page = test_document_version.pages.first()
+
+        self.assertEqual(events[0].action_object, test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, test_document_file)
+        self.assertEqual(events[0].verb, event_document_file_created.id)
+
+        self.assertEqual(events[1].action_object, test_document)
+        self.assertEqual(events[1].actor, self._test_case_user)
+        self.assertEqual(events[1].target, test_document_file)
+        self.assertEqual(events[1].verb, event_document_file_edited.id)
+
+        self.assertEqual(events[2].action_object, test_document)
+        self.assertEqual(events[2].actor, self._test_case_user)
+        self.assertEqual(events[2].target, test_document_version)
+        self.assertEqual(events[2].verb, event_document_version_created.id)
+
+        self.assertEqual(events[3].action_object, test_document_version)
+        self.assertEqual(events[3].actor, self._test_case_user)
+        self.assertEqual(events[3].target, test_document_version_page)
         self.assertEqual(
-            self.test_document.files.count(), file_count + 1
+            events[3].verb, event_document_version_page_created.id
         )
 
-    def test_document_file_upload_view_preserve_filename_with_access(self):
+    def test_document_file_upload_view_preserve_filename(self):
         self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_file_new
+            obj=self.test_document, permission=permission_document_file_new
         )
+        self.grant_access(
+            obj=self.test_source, permission=permission_document_file_new
+        )
+
         file_count = self.test_document.files.count()
+
+        self._clear_events()
 
         response = self._request_document_file_upload_view()
         self.assertEqual(response.status_code, 302)
@@ -244,173 +883,32 @@ class DocumentFileUploadViewTestCase(
             self.test_document_filename
         )
 
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 4)
 
-class SourcesViewTestCase(
-    SourceTestMixin, SourceViewTestMixin, GenericViewTestCase
-):
-    auto_create_test_source = False
+        test_document = Document.objects.first()
+        test_document_file = test_document.file_latest
+        test_document_version = test_document.version_active
+        test_document_version_page = test_document_version.pages.first()
 
-    def test_source_check_get_view_no_permission(self):
-        self._create_test_source()
+        self.assertEqual(events[0].action_object, test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, test_document_file)
+        self.assertEqual(events[0].verb, event_document_file_created.id)
 
-        response = self._request_setup_source_check_get_view()
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(events[1].action_object, test_document)
+        self.assertEqual(events[1].actor, self._test_case_user)
+        self.assertEqual(events[1].target, test_document_file)
+        self.assertEqual(events[1].verb, event_document_file_edited.id)
 
-    def test_source_check_get_view_with_permission(self):
-        self._create_test_source()
+        self.assertEqual(events[2].action_object, test_document)
+        self.assertEqual(events[2].actor, self._test_case_user)
+        self.assertEqual(events[2].target, test_document_version)
+        self.assertEqual(events[2].verb, event_document_version_created.id)
 
-        self.grant_permission(permission=permission_sources_setup_create)
-
-        response = self._request_setup_source_check_get_view()
-        self.assertEqual(response.status_code, 200)
-
-    def test_source_create_view_no_permission(self):
-        response = self._request_setup_source_create_view()
-        self.assertEqual(response.status_code, 403)
-
-        self.assertEqual(WebFormSource.objects.count(), 0)
-
-    def test_source_create_view_with_permission(self):
-        self.grant_permission(permission=permission_sources_setup_create)
-
-        response = self._request_setup_source_create_view()
-        self.assertEqual(response.status_code, 302)
-
-        webform_source = WebFormSource.objects.first()
-        self.assertEqual(webform_source.label, TEST_SOURCE_LABEL)
-        self.assertEqual(webform_source.uncompress, TEST_SOURCE_UNCOMPRESS_N)
-
-    def test_source_delete_view_no_permission(self):
-        self._create_test_source()
-
-        response = self._request_setup_source_delete_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertEqual(WebFormSource.objects.count(), 1)
-
-    def test_source_delete_view_with_permission(self):
-        self._create_test_source()
-
-        self.grant_permission(permission=permission_sources_setup_delete)
-
-        response = self._request_setup_source_delete_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertEqual(WebFormSource.objects.count(), 0)
-
-    def test_source_edit_view_no_permission(self):
-        self._create_test_source()
-        test_instance_values = self._model_instance_to_dictionary(
-            instance=self.test_source
-        )
-
-        response = self._request_setup_source_edit_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.test_source.refresh_from_db()
+        self.assertEqual(events[3].action_object, test_document_version)
+        self.assertEqual(events[3].actor, self._test_case_user)
+        self.assertEqual(events[3].target, test_document_version_page)
         self.assertEqual(
-            self._model_instance_to_dictionary(
-                instance=self.test_source
-            ), test_instance_values
+            events[3].verb, event_document_version_page_created.id
         )
-
-    def test_source_edit_view_with_permission(self):
-        self._create_test_source()
-        test_instance_values = self._model_instance_to_dictionary(
-            instance=self.test_source
-        )
-        self.grant_permission(permission=permission_sources_setup_edit)
-
-        response = self._request_setup_source_edit_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.test_source.refresh_from_db()
-        self.assertNotEqual(
-            self._model_instance_to_dictionary(
-                instance=self.test_source
-            ), test_instance_values
-        )
-
-    def test_source_list_view_no_permission(self):
-        self._create_test_source()
-
-        response = self._request_setup_source_list_view()
-        self.assertEqual(response.status_code, 200)
-
-    def test_source_list_view_with_permission(self):
-        self._create_test_source()
-
-        self.grant_permission(permission=permission_sources_setup_view)
-
-        response = self._request_setup_source_list_view()
-        self.assertContains(
-            response=response, text=self.test_source.label, status_code=200
-        )
-
-
-class StagingFolderViewTestCase(
-    StagingFolderTestMixin, StagingFolderViewTestMixin, GenericViewTestCase
-):
-    def setUp(self):
-        super().setUp()
-        self._create_test_staging_folder()
-        self._copy_test_document()
-
-    def test_staging_file_delete_no_permission(self):
-        staging_file_count = len(list(self.test_staging_folder.get_files()))
-        staging_file = list(self.test_staging_folder.get_files())[0]
-
-        response = self._request_test_staging_file_delete_view(
-            staging_folder=self.test_staging_folder, staging_file=staging_file
-        )
-        self.assertEqual(response.status_code, 404)
-
-        self.assertEqual(
-            staging_file_count,
-            len(list(self.test_staging_folder.get_files()))
-        )
-
-    def test_staging_file_delete_with_permission(self):
-        self.grant_permission(permission=permission_staging_file_delete)
-
-        staging_file_count = len(list(self.test_staging_folder.get_files()))
-        staging_file = list(self.test_staging_folder.get_files())[0]
-
-        response = self._request_test_staging_file_delete_view(
-            staging_folder=self.test_staging_folder, staging_file=staging_file
-        )
-        self.assertEqual(response.status_code, 302)
-
-        self.assertNotEqual(
-            staging_file_count,
-            len(list(self.test_staging_folder.get_files()))
-        )
-
-
-class WatchFolderErrorLoggingViewTestCase(
-    WatchFolderTestMixin, SourceViewTestMixin, GenericDocumentViewTestCase
-):
-    auto_upload_test_document = False
-
-    def test_error_logging(self):
-        self._create_test_watchfolder()
-        self.test_source = self.test_watch_folder
-        self.test_watch_folder.folder_path = 'invalid_path'
-        self.test_watch_folder.save()
-
-        self.grant_permission(permission=permission_sources_setup_create)
-
-        self._silence_logger(name='mayan.apps.sources.tasks')
-
-        response = self._request_setup_source_check_post_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertEqual(self.test_watch_folder.error_log.count(), 1)
-
-        self.test_watch_folder.folder_path = self.temporary_directory
-        self.test_watch_folder.save()
-
-        response = self._request_setup_source_check_post_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertEqual(self.test_watch_folder.error_log.count(), 0)

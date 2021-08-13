@@ -420,7 +420,7 @@ class DocumentFile(
             DocumentFile.execute_pre_create_hooks(
                 kwargs={
                     'document': self.document,
-                    'shared_uploaded_file': None,
+                    'file_object': self.file.open(mode='rb'),
                     'user': user
                 }
             )

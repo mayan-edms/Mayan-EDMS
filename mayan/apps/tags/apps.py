@@ -4,7 +4,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
-from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.acls.permissions import (
+    permission_acl_edit, permission_acl_view
+)
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import (
     ModelCopy, ModelFieldRelated, ModelQueryFields
@@ -25,8 +27,8 @@ from .html_widgets import DocumentTagWidget
 from .links import (
     link_document_tag_list, link_document_multiple_tag_multiple_attach,
     link_document_multiple_tag_multiple_remove,
-    link_document_tag_multiple_remove, link_document_tag_multiple_attach, link_tag_create,
-    link_tag_delete, link_tag_edit, link_tag_list,
+    link_document_tag_multiple_remove, link_document_tag_multiple_attach,
+    link_tag_create, link_tag_delete, link_tag_edit, link_tag_list,
     link_tag_multiple_delete, link_tag_document_list
 )
 from .menus import menu_tags

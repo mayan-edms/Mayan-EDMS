@@ -377,6 +377,7 @@
 - Rename ``DeletedDocument`` to ``TrashedDocument``, same with the
   corresponding trashed fields and manager methods.
 - Add document file download event.
+- Update Dropzone from version 5.4.0 to 5.7.2.
 - Rename all instances of ``icon_class`` to ``icon`` as only icon instances
   are used now in every app.
 - Add icons to the mark notification as seen and mark all notification as

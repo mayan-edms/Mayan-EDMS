@@ -7,7 +7,7 @@ from mayan.apps.documents.permissions import (
 from mayan.apps.documents.tests.base import DocumentTestMixin
 from mayan.apps.sources.tests.mixins import (
     DocumentFileUploadViewTestMixin, DocumentUploadWizardViewTestMixin,
-    SourceTestMixin
+    WebFormSourceTestMixin
 )
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
@@ -18,7 +18,7 @@ from ..quota_backends import DocumentCountQuota, DocumentSizeQuota
 
 class QuotaHooksTestCase(
     DocumentFileUploadViewTestMixin, DocumentTestMixin,
-    DocumentUploadWizardViewTestMixin, SourceTestMixin, GenericViewTestCase
+    DocumentUploadWizardViewTestMixin, WebFormSourceTestMixin, GenericViewTestCase
 ):
     auto_upload_test_document = False
 

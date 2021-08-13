@@ -3,6 +3,32 @@ from .transformations import BaseTransformation
 
 
 class IndexedDictionary:
+    @classmethod
+    def from_dictionary_list(
+        cls, dictionary_list, klass=BaseTransformation,
+        marker=TRANSFORMATION_MARKER, separator=TRANSFORMATION_SEPARATOR
+    ):
+        result = {}
+
+        for index, dictionary in enumerate(dictionary_list):
+            for key, value in dictionary.items():
+                if key == 'name':
+                    result_key = '{}{}{}{}'.format(
+                        marker, str(index), separator, key
+                    )
+                    result[result_key] = value
+                elif key == 'arguments':
+                    for argument_key, argument_value in value.items():
+                        result_key = '{}{}{}{}{}{}'.format(
+                            marker, str(index), separator, 'argument', '__', argument_key
+                        )
+
+                        result[result_key] = argument_value
+
+        return cls(
+            dictionary=result, klass=klass, marker=marker, separator=separator
+        )
+
     def __init__(
         self, dictionary, klass=BaseTransformation,
         marker=TRANSFORMATION_MARKER, separator=TRANSFORMATION_SEPARATOR

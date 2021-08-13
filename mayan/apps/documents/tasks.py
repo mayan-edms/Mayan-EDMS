@@ -3,6 +3,7 @@ import logging
 from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.db import OperationalError
+from django.utils.module_loading import import_string
 
 from mayan.celery import app
 
@@ -11,19 +12,6 @@ from .literals import (
 )
 
 logger = logging.getLogger(name=__name__)
-
-
-# Document
-
-@app.task(ignore_result=True)
-def task_document_stubs_delete():
-    Document = apps.get_model(
-        app_label='documents', model_name='Document'
-    )
-
-    logger.info(msg='Executing')
-    Document.objects.delete_stubs()
-    logger.info(msg='Finished')
 
 
 # Document file
@@ -55,7 +43,7 @@ def task_document_file_page_count_update(self, document_file_id):
 )
 def task_document_file_upload(
     self, document_id, shared_uploaded_file_id, user_id=None, action=None,
-    comment=None, filename=None
+    comment=None, expand=False, filename=None
 ):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
@@ -67,7 +55,7 @@ def task_document_file_upload(
 
     try:
         document = Document.objects.get(pk=document_id)
-        shared_file = SharedUploadedFile.objects.get(
+        shared_uploaded_file = SharedUploadedFile.objects.get(
             pk=shared_uploaded_file_id
         )
         if user_id:
@@ -83,11 +71,13 @@ def task_document_file_upload(
         )
         raise self.retry(exc=exception)
 
-    with shared_file.open() as file_object:
+    with shared_uploaded_file.open() as file_object:
         try:
             document.file_new(
-                action=action, comment=comment, file_object=file_object,
-                filename=filename or shared_file.filename, _user=user
+                action=action, comment=comment, expand=expand,
+                file_object=file_object,
+                filename=filename or shared_uploaded_file.filename,
+                _user=user
             )
         except Warning as warning:
             # New document file are blocked
@@ -95,7 +85,7 @@ def task_document_file_upload(
                 'Warning during attempt to create new document file for '
                 'document: %s; %s', document, warning
             )
-            shared_file.delete()
+            shared_uploaded_file.delete()
         except OperationalError as exception:
             logger.warning(
                 'Operational error during attempt to create new document '
@@ -110,20 +100,89 @@ def task_document_file_upload(
                 exc_info=True
             )
             try:
-                shared_file.delete()
+                shared_uploaded_file.delete()
             except OperationalError as exception:
                 logger.warning(
                     'Operational error during attempt to delete shared '
-                    'file: %s; %s.', shared_file, exception
+                    'file: %s; %s.', shared_uploaded_file, exception
                 )
         else:
             try:
-                shared_file.delete()
+                shared_uploaded_file.delete()
             except OperationalError as exception:
                 logger.warning(
                     'Operational error during attempt to delete shared '
-                    'file: %s; %s.', shared_file, exception
+                    'file: %s; %s.', shared_uploaded_file, exception
                 )
+
+
+# Document
+
+@app.task(ignore_result=True)
+def task_document_stubs_delete():
+    Document = apps.get_model(
+        app_label='documents', model_name='Document'
+    )
+
+    logger.info(msg='Executing')
+    Document.objects.delete_stubs()
+    logger.info(msg='Finished')
+
+
+@app.task(ignore_results=True)
+def task_document_upload(
+    document_type_id, shared_uploaded_file_id, callback_dotted_path=None,
+    callback_function=None, callback_kwargs=None, description=None,
+    label=None, language=None, user_id=None
+):
+    DocumentType = apps.get_model(
+        app_label='documents', model_name='DocumentType'
+    )
+    SharedUploadedFile = apps.get_model(
+        app_label='storage', model_name='SharedUploadedFile'
+    )
+
+    document_type = DocumentType.objects.get(pk=document_type_id)
+    shared_uploaded_file = SharedUploadedFile.objects.get(
+        pk=shared_uploaded_file_id
+    )
+
+    if user_id:
+        user = get_user_model().objects.get(pk=user_id)
+    else:
+        user = None
+
+    document = None
+    try:
+        with shared_uploaded_file.open() as file_object:
+            document, document_file = document_type.new_document(
+                file_object=file_object,
+                label=label or shared_uploaded_file.filename,
+                description=description, language=language,
+                _user=user
+            )
+    except Exception as exception:
+        logger.critical(
+            'Unexpected exception while trying to create new document '
+            '"%s"; %s',
+            label or file_object.name, exception
+        )
+        if document:
+            document.delete(to_trash=False)
+        raise
+    else:
+        shared_uploaded_file.delete()
+
+        if user:
+            document.add_as_recent_document_for_user(user=user)
+
+    if callback_dotted_path:
+        callback = import_string(dotted_path=callback_dotted_path)
+        callback_kwargs = callback_kwargs or {}
+        function = getattr(callback, callback_function)
+        function(
+            document_file=document_file, **callback_kwargs
+        )
 
 
 # Document type

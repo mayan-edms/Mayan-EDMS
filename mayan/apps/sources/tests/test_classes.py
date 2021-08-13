@@ -5,7 +5,7 @@ from mayan.apps.documents.tests.literals import TEST_NON_ASCII_DOCUMENT_PATH
 from mayan.apps.storage.utils import mkdtemp
 from mayan.apps.testing.tests.base import BaseTestCase
 
-from ..classes import StagingFile
+from ..source_backends.staging_folder_backends import StagingFile
 
 from .mocks import MockStagingFolder
 
@@ -19,7 +19,7 @@ class StagingFileTestCase(BaseTestCase):
         )
         self.test_filename = os.path.basename(TEST_NON_ASCII_DOCUMENT_PATH)
         self.test_staging_folder = MockStagingFolder()
-        self.test_staging_folder.folder_path = self.temporary_directory
+        self.test_staging_folder.kwargs['folder_path'] = self.temporary_directory
         self.test_staging_files = []
 
     def tearDown(self):
@@ -27,7 +27,7 @@ class StagingFileTestCase(BaseTestCase):
             try:
                 test_staging_file.delete()
             except FileNotFoundError:
-                """Ignore file not found errors"""
+                """Ignore file not found errors."""
 
         shutil.rmtree(path=self.temporary_directory)
         super().tearDown()

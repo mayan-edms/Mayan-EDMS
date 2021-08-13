@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.celery import app
 
-from .transformations import BaseTransformation
+from .utils import IndexedDictionary
 
 logger = logging.getLogger(name=__name__)
 
@@ -30,13 +30,11 @@ def task_content_object_image_generate(
 
     obj = content_type.get_object_for_this_type(pk=object_id)
 
-    transformation_instance_list = []
+    transformation_indexed_dictionary = IndexedDictionary.from_dictionary_list(
+        dictionary_list=transformation_dictionary_list
+    )
 
-    for entry in transformation_dictionary_list:
-        if entry.get('name'):
-            transformation_instance_list.append(
-                BaseTransformation.get(name=entry['name'])(**entry['arguments'])
-            )
+    transformation_instance_list = transformation_indexed_dictionary.as_instance_list()
 
     try:
         return obj.generate_image(

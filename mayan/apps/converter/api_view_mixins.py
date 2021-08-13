@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
-from django.http import HttpResponse
+from django.core.files.base import File
+from django.http import FileResponse, HttpResponse, StreamingHttpResponse
 from django.views.decorators.cache import patch_cache_control
 
 from .settings import (
@@ -55,14 +56,24 @@ class APIImageViewMixin:
         cache_filename = task.get(**kwargs)
 
         cache_file = self.obj.cache_partition.get_file(filename=cache_filename)
-        with cache_file.open() as file_object:
-            response = HttpResponse(content=file_object.read(), content_type='image')
-            if '_hash' in request.GET:
-                patch_cache_control(
-                    response=response,
-                    max_age=setting_image_cache_time.value
-                )
-            return response
+
+        def file_generator():
+            with cache_file.open() as file_object:
+                while True:
+                    chunk = file_object.read(File.DEFAULT_CHUNK_SIZE)
+                    if not chunk:
+                        break
+                    else:
+                        yield chunk
+
+        response = FileResponse(file_generator(), content_type='image')
+
+        if '_hash' in request.GET:
+            patch_cache_control(
+                response=response,
+                max_age=setting_image_cache_time.value
+            )
+        return response
 
     def set_object(self):
         self.obj = self.get_object()

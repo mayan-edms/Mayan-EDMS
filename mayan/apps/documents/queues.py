@@ -67,3 +67,7 @@ queue_uploads.add_task_type(
     dotted_path='mayan.apps.documents.tasks.task_document_file_upload',
     label=_('Upload new document file')
 )
+queue_uploads.add_task_type(
+    dotted_path='mayan.apps.documents.tasks.task_document_upload',
+    label=_('Upload new document')
+)
