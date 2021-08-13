@@ -3,6 +3,27 @@
 - Add support for editing the document version page OCR content.
   Closes GitLab issue #592. Thanks for Martin (@efelon) for the
   request.
+- Refactor sources app.
+
+  - Add object permission support to source views.
+  - Remove locking support from staging folder uploads.
+  - Update staging preview to use new preview generation
+    code.
+  - Use streaming respose to serve staging folder images.
+  - Convert the sources from models into backend classes.
+    The sources are now decoupled from the app. Each source
+    backend can defined its own callbacks and use an unified
+    background task.
+  - Perform code reduction. Remove PseudoFile and SourceUploaded
+    classes. Each source backend is now responsible for providing
+    a list of shared uploaded files.
+  - Multiform improvements:
+
+    - Support multi form extra kwargs.
+    - Move the dynamic part of the multi form method to the end
+      of the name.
+    - Add a white horizontal ruler to separate the form
+      instances.
 
 4.0.15 (2021-08-07)
 ===================
