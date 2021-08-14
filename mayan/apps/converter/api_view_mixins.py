@@ -32,7 +32,9 @@ class APIImageViewMixin:
             dictionary=query_dict
         ).as_dictionary_list()
 
-        maximum_layer_order = request.GET.get('maximum_layer_order')
+        # An empty string is not a valid value for maximum_layer_order.
+        # Fallback to None in case of a empty string.
+        maximum_layer_order = request.GET.get('maximum_layer_order') or None
         if maximum_layer_order:
             maximum_layer_order = int(maximum_layer_order)
 

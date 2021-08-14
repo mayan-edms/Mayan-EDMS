@@ -8,7 +8,7 @@ from ..models.document_type_models import DocumentType
 
 class ParentObjectDocumentAPIViewMixin:
     def get_document(self, permission=None):
-        queryset = Document.objects.all()
+        queryset = Document.valid.all()
 
         if permission:
             queryset = AccessControlList.objects.restrict_queryset(

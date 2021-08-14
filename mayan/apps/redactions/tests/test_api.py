@@ -17,7 +17,6 @@ from ..transformations import TransformationRedactionPercent
 from ..permissions import permission_redaction_exclude
 
 from .literals import TEST_REDACTION_DOCUMENT_PATH
-#from .mixins import LayerMaximumOrderAPIViewTestMixin
 
 
 class LayerMaximumOrderAPIViewTestCase(
@@ -42,7 +41,7 @@ class LayerMaximumOrderAPIViewTestCase(
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        image_buffer = BytesIO(response.content)
+        image_buffer = BytesIO(b''.join(response.streaming_content))
         image = Image.open(fp=image_buffer)
 
         self.assertEqual(image.getpixel(xy=(0, 0)), (254, 0, 0))
@@ -69,7 +68,7 @@ class LayerMaximumOrderAPIViewTestCase(
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        image_buffer = BytesIO(response.content)
+        image_buffer = BytesIO(b''.join(response.streaming_content))
         image = Image.open(fp=image_buffer)
 
         self.assertEqual(image.getpixel(xy=(0, 0)), (0, 0, 0))
@@ -99,7 +98,7 @@ class LayerMaximumOrderAPIViewTestCase(
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        image_buffer = BytesIO(response.content)
+        image_buffer = BytesIO(b''.join(response.streaming_content))
         image = Image.open(fp=image_buffer)
 
         self.assertEqual(image.getpixel(xy=(0, 0)), (254, 0, 0))

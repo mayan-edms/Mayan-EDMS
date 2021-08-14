@@ -44,13 +44,15 @@ class DocumentTypeOCRViewTestMixin:
         )
 
 
-class DocumentVersionOCRAPIViewTestMixin:
+class DocumentOCRAPIViewTestMixin:
     def _request_test_document_ocr_submit_api_view(self):
         return self.post(
             viewname='rest_api:document-ocr-submit-view',
             kwargs={'document_id': self.test_document.pk}
         )
 
+
+class DocumentVersionOCRAPIViewTestMixin:
     def _request_test_document_version_ocr_submit_api_view(self):
         return self.post(
             viewname='rest_api:document-version-ocr-submit-view', kwargs={
@@ -61,7 +63,7 @@ class DocumentVersionOCRAPIViewTestMixin:
 
 
 class DocumentVersionPageOCRAPIViewTestMixin:
-    def _request_test_document_version_page_ocr_content_detail_api_view(self):
+    def _request_test_document_version_page_ocr_content_detail_api_view_via_get(self):
         return self.get(
             viewname='rest_api:document-version-page-ocr-content-detail-view', kwargs={
                 'document_id': self.test_document.pk,

@@ -220,11 +220,12 @@ class DocumentFilePage(PagedModelMixin, models.Model):
 
                     page_image = converter.get_page()
 
-                    # Since open "wb+" doesn't create files, create it explicitly
+                    # Since open "wb+" doesn't create files, create it
+                    # explicitly.
                     with self.cache_partition.create_file(filename=cache_filename) as file_object:
                         file_object.write(page_image.getvalue())
 
-                    # Apply runtime transformations
+                    # Apply runtime transformations.
                     for transformation in transformation_instance_list or ():
                         converter.transform(transformation=transformation)
 
@@ -294,7 +295,7 @@ class DocumentFilePage(PagedModelMixin, models.Model):
     def uuid(self):
         """
         Make cache UUID a mix of file ID and page ID to avoid using stale
-        images
+        images.
         """
         return '{}-{}'.format(self.document_file.uuid, self.pk)
 
