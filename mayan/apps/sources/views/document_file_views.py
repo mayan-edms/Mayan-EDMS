@@ -25,7 +25,7 @@ class DocumentFileUploadInteractiveView(
     ExternalObjectViewMixin, UploadBaseView
 ):
     document_form = NewDocumentFileForm
-    external_object_class = Document
+    external_object_queryset = Document.valid
     external_object_permission = permission_document_file_new
     external_object_pk_url_kwarg = 'document_id'
     object_permission = permission_document_file_new

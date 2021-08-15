@@ -662,7 +662,7 @@ class WebFormDocumentUploadWizardViewTestCase(
         )
 
 
-class WebFormNewDocumentauto_create_test_sourceFileWizardViewTestCase (
+class WebFormDocumentFileUploadViewTestCase (
     DocumentFileUploadViewTestMixin, WebFormSourceTestMixin,
     GenericDocumentViewTestCase
 ):
@@ -764,6 +764,30 @@ class WebFormNewDocumentauto_create_test_sourceFileWizardViewTestCase (
             events[3].verb, event_document_version_page_created.id
         )
 
+    def test_trashed_document_file_upload_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_file_new
+        )
+        self.grant_access(
+            obj=self.test_source, permission=permission_document_file_new
+        )
+        file_count = self.test_document.files.count()
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_document_file_upload_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document.refresh_from_db()
+        self.assertEqual(
+            self.test_document.files.count(), file_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_document_file_upload_no_source_view_no_permission(self):
         file_count = self.test_document.files.count()
 
@@ -858,6 +882,28 @@ class WebFormNewDocumentauto_create_test_sourceFileWizardViewTestCase (
         self.assertEqual(
             events[3].verb, event_document_version_page_created.id
         )
+
+    def test_trashed_document_file_upload_no_source_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_file_new
+        )
+        self.grant_access(
+            obj=self.test_source, permission=permission_document_file_new
+        )
+        file_count = self.test_document.files.count()
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_document_file_upload_no_source_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document.refresh_from_db()
+        self.assertEqual(self.test_document.files.count(), file_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_file_upload_view_preserve_filename(self):
         self.grant_access(
