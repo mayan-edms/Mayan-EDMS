@@ -254,10 +254,17 @@ class DocumentFile(
             }
         )
 
-    def get_api_image_url(self, *args, **kwargs):
+    def get_api_image_url(
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None
+    ):
         first_page = self.pages.first()
         if first_page:
-            return first_page.get_api_image_url(*args, **kwargs)
+            return first_page.get_api_image_url(
+                maximum_layer_order=maximum_layer_order,
+                transformation_instance_list=transformation_instance_list,
+                user=user
+            )
 
     def get_cache_partitions(self):
         result = [self.cache_partition]
@@ -413,7 +420,7 @@ class DocumentFile(
             DocumentFile.execute_pre_create_hooks(
                 kwargs={
                     'document': self.document,
-                    'shared_uploaded_file': None,
+                    'file_object': self.file.open(mode='rb'),
                     'user': user
                 }
             )

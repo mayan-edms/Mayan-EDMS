@@ -1,53 +1,189 @@
 import logging
 
 from django.contrib import messages
+from django.http import Http404, HttpResponseRedirect
 from django.template import RequestContext
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.documents.permissions import permission_document_create
 from mayan.apps.views.generics import (
-    ConfirmView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectEditView, SingleObjectListView
+    ConfirmView, FormView, MultipleObjectConfirmActionView,
+    SingleObjectDeleteView, SingleObjectDynamicFormCreateView,
+    SingleObjectDynamicFormEditView, SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
-from ..icons import icon_setup_sources
-from ..links import (
-    link_setup_source_create_imap_email, link_setup_source_create_pop3_email,
-    link_setup_source_create_staging_folder,
-    link_setup_source_create_watch_folder, link_setup_source_create_webform,
-    link_setup_source_create_sane_scanner
-)
-from ..models import Source, StagingFolderSource
+from ..classes import SourceBackend
+from ..forms import SourceBackendSelectionForm, SourceBackendDynamicForm
+from ..icons import icon_source_list
+from ..links import link_source_backend_selection
+from ..models import Source
 from ..permissions import (
-    permission_sources_setup_create, permission_sources_setup_delete,
-    permission_sources_setup_edit, permission_sources_setup_view,
-    permission_staging_file_delete
+    permission_sources_create, permission_sources_delete,
+    permission_sources_edit, permission_sources_view,
 )
-from ..tasks import task_check_interval_source
-from ..utils import get_class, get_form_class
+from ..tasks import task_source_process_document
 
 __all__ = (
-    'SourceCheckView', 'SourceCreateView', 'SourceDeleteView',
-    'SourceEditView', 'SourceListView', 'StagingFileDeleteView'
+    'SourceBackendSelectionView', 'SourceTestView', 'SourceCreateView',
+    'SourceDeleteView', 'SourceEditView', 'SourceListView',
 )
 logger = logging.getLogger(name=__name__)
 
 
-class SourceCheckView(ExternalObjectViewMixin, ConfirmView):
+class SourceBackendSelectionView(FormView):
+    extra_context = {
+        'title': _('New source backend selection'),
+    }
+    form_class = SourceBackendSelectionForm
+    view_permission = permission_sources_create
+
+    def form_valid(self, form):
+        backend = form.cleaned_data['backend']
+        return HttpResponseRedirect(
+            redirect_to=reverse(
+                viewname='sources:source_create', kwargs={
+                    'backend_path': backend
+                }
+            )
+        )
+
+
+class SourceActionView(MultipleObjectConfirmActionView):
+    model = Source
+    object_permission = permission_document_create
+    pk_url_kwarg = 'source_id'
+    # ~ success_message_single = _('"%(object)s" deleted successfully.')
+    # ~ success_message_singular = _('%(count)d object deleted successfully.')
+    # ~ success_message_plural = _('%(count)d objects deleted successfully.')
+    # ~ title_single = _('Delete "%(object)s".')
+    # ~ title_singular = _('Delete %(count)d object.')
+    # ~ title_plural = _('Delete %(count)d objects.')
+
+    def get_all_kwargs(self):
+        kwargs = self.kwargs.copy()
+        kwargs.update(self.request.GET)
+        kwargs.update(self.request.POST)
+        kwargs['view'] = self
+        return kwargs
+
+    def get_extra_context(self):
+        return self.object.get_backend_instance().get_action_context(
+            name=self.kwargs['action_name'], **self.get_all_kwargs()
+        )
+
+    def view_action(self):
+        return self.object.get_backend_instance().execute_action(
+            name=self.kwargs['action_name'], **self.get_all_kwargs()
+        )
+
+
+class SourceCreateView(SingleObjectDynamicFormCreateView):
+    form_class = SourceBackendDynamicForm
+    post_action_redirect = reverse_lazy(viewname='sources:source_list')
+    view_permission = permission_sources_create
+
+    def get_backend(self):
+        try:
+            return SourceBackend.get(name=self.kwargs['backend_path'])
+        except KeyError:
+            raise Http404(
+                '{} class not found'.format(self.kwargs['backend_path'])
+            )
+
+    def get_extra_context(self):
+        return {
+            'title': _(
+                'Create a "%s" source'
+            ) % self.get_backend().label,
+        }
+
+    def get_form_schema(self):
+        return self.get_backend().get_setup_form_schema()
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
+            'backend_path': self.kwargs['backend_path']
+        }
+
+
+class SourceDeleteView(SingleObjectDeleteView):
+    model = Source
+    object_permission = permission_sources_delete
+    pk_url_kwarg = 'source_id'
+    post_action_redirect = reverse_lazy(
+        viewname='sources:source_list'
+    )
+
+    def get_extra_context(self):
+        return {
+            'object': self.object,
+            'title': _('Delete the source: %s?') % self.object,
+        }
+
+
+class SourceEditView(SingleObjectDynamicFormEditView):
+    form_class = SourceBackendDynamicForm
+    model = Source
+    object_permission = permission_sources_edit
+    pk_url_kwarg = 'source_id'
+    post_action_redirect = reverse_lazy(
+        viewname='sources:source_list'
+    )
+
+    def get_extra_context(self):
+        return {
+            'title': _('Edit source: %s') % self.object,
+        }
+
+    def get_form_schema(self):
+        return self.object.get_backend().get_setup_form_schema()
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
+
+
+class SourceListView(SingleObjectListView):
+    model = Source
+    object_permission = permission_sources_view
+
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'hide_object': True,
+            'no_results_icon': icon_source_list,
+            'no_results_main_link': link_source_backend_selection.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Sources provide the means to upload documents. '
+                'Some sources are interactive and require user input to '
+                'operate. Others are automatic and run in the background '
+                'without user intervention.'
+            ),
+            'no_results_title': _('No sources available'),
+            'title': _('Sources'),
+        }
+
+
+class SourceTestView(ExternalObjectViewMixin, ConfirmView):
     """
-    Trigger the task_check_interval_source task for a given source to
+    Trigger the task_source_process_document task for a given source to
     test/debug their configuration irrespective of the schedule task setup.
     """
-    external_object_permission = permission_sources_setup_create
+    external_object_permission = permission_sources_edit
     external_object_pk_url_kwarg = 'source_id'
-    external_object_queryset = Source.objects.select_subclasses()
+    external_object_class = Source
 
     def get_extra_context(self):
         return {
             'object': self.external_object,
             'subtitle': _(
-                'This will execute the source check code even if the source '
+                'This will execute the source code even if the source '
                 'is not enabled. Sources that delete content after '
                 'downloading will not do so while being tested. Check the '
                 'source\'s error log for information during testing. A '
@@ -58,135 +194,12 @@ class SourceCheckView(ExternalObjectViewMixin, ConfirmView):
         }
 
     def view_action(self):
-        task_check_interval_source.apply_async(
+        task_source_process_document.apply_async(
             kwargs={
-                'source_id': self.external_object.pk, 'test': True
+                'source_id': self.external_object.pk, 'dry_run': True
             }
         )
 
         messages.success(
-            message=_('Source check queued.'), request=self.request
-        )
-
-
-class SourceCreateView(SingleObjectCreateView):
-    post_action_redirect = reverse_lazy(
-        viewname='sources:setup_source_list'
-    )
-    view_permission = permission_sources_setup_create
-
-    def get_extra_context(self):
-        return {
-            'object': self.kwargs['source_type_name'],
-            'title': _(
-                'Create new source of type: %s'
-            ) % get_class(
-                source_type_name=self.kwargs['source_type_name']
-            ).class_fullname(),
-        }
-
-    def get_form_class(self):
-        return get_form_class(
-            source_type_name=self.kwargs['source_type_name']
-        )
-
-
-class SourceDeleteView(ExternalObjectViewMixin, SingleObjectDeleteView):
-    external_object_permission = permission_sources_setup_delete
-    external_object_pk_url_kwarg = 'source_id'
-    external_object_queryset = Source.objects.select_subclasses()
-    post_action_redirect = reverse_lazy(
-        viewname='sources:setup_source_list'
-    )
-
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Delete the source: %s?') % self.get_object(),
-        }
-
-    def get_form_class(self):
-        return get_form_class(source_type_name=self.get_object().source_type)
-
-    def get_object(self):
-        return self.external_object
-
-
-class SourceEditView(ExternalObjectViewMixin, SingleObjectEditView):
-    external_object_permission = permission_sources_setup_edit
-    external_object_pk_url_kwarg = 'source_id'
-    external_object_queryset = Source.objects.select_subclasses()
-    post_action_redirect = reverse_lazy(
-        viewname='sources:setup_source_list'
-    )
-    view_permission = permission_sources_setup_edit
-
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Edit source: %s') % self.get_object(),
-        }
-
-    def get_form_class(self):
-        return get_form_class(source_type_name=self.get_object().source_type)
-
-    def get_object(self):
-        return self.external_object
-
-
-class SourceListView(SingleObjectListView):
-    object_permission = permission_sources_setup_view
-    source_queryset = Source.objects.select_subclasses()
-
-    def get_extra_context(self):
-        return {
-            'hide_link': True,
-            'hide_object': True,
-            'no_results_icon': icon_setup_sources,
-            'no_results_secondary_links': [
-                link_setup_source_create_webform.resolve(
-                    context=RequestContext(request=self.request)
-                ),
-                link_setup_source_create_imap_email.resolve(
-                    context=RequestContext(request=self.request)
-                ),
-                link_setup_source_create_pop3_email.resolve(
-                    context=RequestContext(request=self.request)
-                ),
-                link_setup_source_create_sane_scanner.resolve(
-                    context=RequestContext(request=self.request)
-                ),
-                link_setup_source_create_staging_folder.resolve(
-                    context=RequestContext(request=self.request)
-                ),
-                link_setup_source_create_watch_folder.resolve(
-                    context=RequestContext(request=self.request)
-                ),
-            ],
-            'no_results_text': _(
-                'Sources provide the means to upload documents. '
-                'Some sources like the webform, are interactive and require '
-                'user input to operate. Others like the email sources, are '
-                'automatic and run on the background without user intervention.'
-            ),
-            'no_results_title': _('No sources available'),
-            'title': _('Sources'),
-        }
-
-
-class StagingFileDeleteView(ExternalObjectViewMixin, SingleObjectDeleteView):
-    external_object_class = StagingFolderSource
-    external_object_permission = permission_staging_file_delete
-    external_object_pk_url_kwarg = 'staging_folder_id'
-
-    def get_extra_context(self):
-        return {
-            'object': self.object,
-            'object_name': _('Staging file'),
-            'title': _('Delete staging file "%s"?') % self.object,
-        }
-
-    def get_object(self):
-        return self.external_object.get_file(
-            encoded_filename=self.kwargs['encoded_filename']
+            message=_('Source test queued.'), request=self.request
         )

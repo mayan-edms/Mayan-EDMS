@@ -30,6 +30,7 @@ document_search.add_proxy_model(app_label='documents', model_name='Document')
 document_search.add_model_field(
     field='document_type__label', label=_('Document type label')
 )
+document_search.add_model_field(field='datetime_created')
 document_search.add_model_field(field='label')
 document_search.add_model_field(field='description')
 document_search.add_model_field(

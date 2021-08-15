@@ -45,7 +45,7 @@ class APIDocumentOCRSubmitView(generics.GenericAPIView):
     mayan_object_permissions = {
         'POST': (permission_document_version_ocr,)
     }
-    queryset = Document.objects.all()
+    queryset = Document.valid.all()
 
     def get_serializer(self, *args, **kwargs):
         return None

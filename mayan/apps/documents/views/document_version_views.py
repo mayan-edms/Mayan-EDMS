@@ -10,6 +10,7 @@ from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.permissions import (
     permission_transformation_delete, permission_transformation_edit
 )
+from mayan.apps.converter.transformations import TransformationResize
 from mayan.apps.organizations.utils import get_organization_installation_url
 from mayan.apps.views.generics import (
     ConfirmView, FormView, MultipleObjectConfirmActionView,
@@ -32,6 +33,7 @@ from ..permissions import (
     permission_document_version_edit, permission_document_version_export,
     permission_document_version_print, permission_document_version_view
 )
+from ..settings import setting_preview_height, setting_preview_width
 from ..tasks import task_document_version_export
 
 from .misc_views import PrintFormView, DocumentPrintView
@@ -243,6 +245,18 @@ class DocumentVersionPreviewView(SingleObjectDetailView):
             'hide_labels': True,
             'object': self.object,
             'title': _('Preview of document version: %s') % self.object,
+        }
+
+    def get_form_extra_kwargs(self):
+        transformation_instance_list = (
+            TransformationResize(
+                height=setting_preview_height.value,
+                width=setting_preview_width.value
+            ),
+        )
+
+        return {
+            'transformation_instance_list': transformation_instance_list
         }
 
 

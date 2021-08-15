@@ -3,6 +3,91 @@
 - Add support for editing the document version page OCR content.
   Closes GitLab issue #592. Thanks for Martin (@efelon) for the
   request.
+- Refactor sources app.
+
+  - Add object permission support to source views.
+  - Remove locking support from staging folder uploads.
+  - Update staging preview to use new preview generation
+    code.
+  - Use streaming response to serve staging folder images.
+  - Convert the sources from models into backend classes.
+    The sources are now decoupled from the app. Each source
+    backend can defined its own callbacks and use an unified
+    background task.
+  - Perform code reduction. Remove PseudoFile and SourceUploaded
+    classes. Each source backend is now responsible for providing
+    a list of shared uploaded files.
+  - Multiform improvements:
+
+    - Support multi form extra kwargs.
+    - Move the dynamic part of the multi form method to the end
+      of the name.
+    - Add a white horizontal ruler to separate the form
+      instances.
+
+- Consolidate the image generation task
+
+  - Remove document file, version, converter asset, and workflow template
+    preview image generation.
+  - Remove converter literal `TASK_ASSET_IMAGE_GENERATE_RETRY_DELAY`.
+  - Remove workflow literals `TASK_GENERATE_WORKFLOW_IMAGE_RETRY_DELAY`.
+  - Remove `document_states_fast` queue.
+  - Remove documents literals
+    `DEFAULT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY` and
+    `DEFAULT_TASK_GENERATE_DOCUMENT_VERSION_PAGE_IMAGE_RETRY_DELAY`.
+  - Remove settings
+    `DOCUMENT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY` and
+    `DOCUMENT_TASK_GENERATE_DOCUMENT_VERSION_PAGE_IMAGE_RETRY_DELAY`.
+
+4.0.15 (2021-08-07)
+===================
+- Improve the document version export API endpoint.
+
+  - Enable tracking the user and persisting the value for the events.
+  - Change the view class form a custom mixin to be a subclass of
+    `generics.ObjectActionAPIView` one.
+  - Improve test to check for message creation after export.
+  - Avoid returning an error when using the `GET` method for the view.
+
+- Improve the `generics.ObjectActionAPIView` class.
+
+  - Merge with `ActionAPIViewMixin`.
+  - Add `action_response_status` for predetermined status codes.
+  - Add message when the `.object_action` method is missing.
+
+- Fix the view to mark all messages as read.
+- Track the user when marking messages as read or unread.
+- Fix action messages.
+
+4.0.14 (2021-08-05)
+===================
+- Fix a regression in the document version page image cache maximum size
+  setting callback.
+- Fix converter layer priority exclusion for layers with a priority of 0.
+  This fixes the preview layer priority when editing the redactions of pages
+  that also contain transformations in other layers.
+
+4.0.13 (2021-08-02)
+===================
+- Checkout test updates.
+
+  - Silence debug output of tests.
+  - Speed up tests using document stubs.
+
+- Improve organization URL and host settings. Closes GitLab issues
+  #966 and #1002. Thanks to None Given (@nastodon) and
+  Bw (@bwakkie) for the reports.
+
+  - Patch Django's HttpRequest object to override scheme
+    and host.
+  - Fix organization setting used to set the REST API URL
+    base path.
+
+- Track user for event when submitting a document version for OCR.
+- Fix OCR version event texts.
+- Update the document index list and document cabinet list links to require
+  the same permission scheme as the views they reference.
+- Add the document creation date time as a search field.
 
 4.0.12 (2021-07-19)
 ===================
@@ -327,6 +412,7 @@
 - Rename ``DeletedDocument`` to ``TrashedDocument``, same with the
   corresponding trashed fields and manager methods.
 - Add document file download event.
+- Update Dropzone from version 5.4.0 to 5.7.2.
 - Rename all instances of ``icon_class`` to ``icon`` as only icon instances
   are used now in every app.
 - Add icons to the mark notification as seen and mark all notification as

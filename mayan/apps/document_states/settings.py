@@ -6,8 +6,7 @@ from mayan.apps.smart_settings.classes import SettingNamespace
 from .literals import (
     DEFAULT_GRAPHVIZ_DOT_PATH, DEFAULT_WORKFLOWS_IMAGE_CACHE_MAXIMUM_SIZE,
     DEFAULT_WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND,
-    DEFAULT_WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS,
-    DEFAULT_WORKFLOWS_IMAGE_CACHE_TIME
+    DEFAULT_WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS
 )
 from .setting_callbacks import callback_update_workflow_image_cache_size
 
@@ -29,14 +28,7 @@ setting_workflow_image_cache_maximum_size = namespace.add_setting(
         'Specify the size in bytes.'
     ), post_edit_function=callback_update_workflow_image_cache_size
 )
-setting_workflow_image_cache_time = namespace.add_setting(
-    default=DEFAULT_WORKFLOWS_IMAGE_CACHE_TIME,
-    global_name='WORKFLOWS_IMAGE_CACHE_TIME',
-    help_text=_(
-        'Time in seconds that the browser should cache the supplied workflow '
-        'images. The default of 31559626 seconds correspond to 1 year.'
-    )
-)
+
 setting_workflow_image_cache_storage_backend = namespace.add_setting(
     default=DEFAULT_WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND,
     global_name='WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND', help_text=_(

@@ -66,7 +66,9 @@ class ParentObjectDocumentVersionAPIViewMixin(ParentObjectDocumentAPIViewMixin):
         )
 
 
-class ParentObjectDocumentVersionPageAPIViewMixin(ParentObjectDocumentVersionAPIViewMixin):
+class ParentObjectDocumentVersionPageAPIViewMixin(
+    ParentObjectDocumentVersionAPIViewMixin
+):
     def get_document_version_page(self, permission=None):
         queryset = self.get_document_version().pages.all()
 

@@ -29,8 +29,8 @@ class DocumentCreateWizard(SessionWizardView):
         return super().as_view(*args, **kwargs)
 
     def dispatch(self, request, *args, **kwargs):
-        InteractiveSource = apps.get_model(
-            app_label='sources', model_name='InteractiveSource'
+        Source = apps.get_model(
+            app_label='sources', model_name='Source'
         )
 
         form_list = DocumentCreateWizardStep.get_choices(attribute_name='form_class')
@@ -44,16 +44,15 @@ class DocumentCreateWizard(SessionWizardView):
         self.form_list = result['form_list']
         self.condition_dict = result['condition_dict']
 
-        if not InteractiveSource.objects.filter(enabled=True).exists():
+        if not Source.objects.interactive().filter(enabled=True).exists():
             messages.error(
                 message=_(
                     'No interactive document sources have been defined or '
                     'none have been enabled, create one before proceeding.'
-                ),
-                request=request
+                ), request=request
             )
             return HttpResponseRedirect(
-                redirect_to=reverse(viewname='sources:setup_source_list')
+                redirect_to=reverse(viewname='sources:source_list')
             )
 
         return super().dispatch(request, *args, **kwargs)

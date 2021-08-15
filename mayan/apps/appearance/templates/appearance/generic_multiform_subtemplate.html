@@ -51,6 +51,9 @@
             {% else %}
                 {% include 'appearance/generic_form_instance.html' %}
             {% endif %}
+            {% if not forloop.last %}
+                <hr style="border: 1px solid #ffffff;">
+            {% endif %}
         {% endfor %}
         {% if not read_only %}
 

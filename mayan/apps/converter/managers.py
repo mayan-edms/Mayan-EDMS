@@ -35,16 +35,16 @@ class LayerTransformationManager(models.Manager):
             object_layer__object_id=obj.pk, object_layer__enabled=True
         )
 
-        access_layers = StoredLayer.objects.all()
-        exclude_layers = StoredLayer.objects.none()
-
-        if maximum_layer_order:
+        if maximum_layer_order is not None:
             access_layers = StoredLayer.objects.filter(
                 order__lte=maximum_layer_order
             )
             exclude_layers = StoredLayer.objects.filter(
                 order__gt=maximum_layer_order
             )
+        else:
+            access_layers = StoredLayer.objects.all()
+            exclude_layers = StoredLayer.objects.none()
 
         for stored_layer in access_layers:
             try:
@@ -55,7 +55,7 @@ class LayerTransformationManager(models.Manager):
                 """
             else:
                 access_permission = layer_class.permissions.get(
-                    'access_permission', None
+                    'access', None
                 )
                 if access_permission:
                     try:
@@ -67,7 +67,7 @@ class LayerTransformationManager(models.Manager):
 
         for stored_layer in exclude_layers:
             exclude_permission = stored_layer.get_layer().permissions.get(
-                'exclude_permission', None
+                'exclude', None
             )
             if exclude_permission:
                 try:
@@ -75,9 +75,8 @@ class LayerTransformationManager(models.Manager):
                         obj=obj, permissions=(exclude_permission,), user=user
                     )
                 except PermissionDenied:
-                    pass
-                else:
                     exclude_layers = exclude_layers.exclude(pk=stored_layer.pk)
+                    access_layers |= StoredLayer.objects.filter(pk=stored_layer.pk)
 
         if only_stored_layer:
             transformations = transformations.filter(

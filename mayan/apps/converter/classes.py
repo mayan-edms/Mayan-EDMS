@@ -351,7 +351,7 @@ class Layer:
 
         if self in transformation_class._layer_transformations:
             return object_layer.transformations.create(
-                arguments=arguments, order=order,
+                arguments=arguments or '', order=order,
                 name=transformation_class.name
             )
         else:

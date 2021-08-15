@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 from django.views.decorators.cache import cache_control, patch_cache_control
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.converter.api_view_mixins import APIImageViewMixin
 from mayan.apps.converter.tasks import task_content_object_image_generate
 from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.models.document_type_models import DocumentType
@@ -13,7 +14,6 @@ from mayan.apps.documents.serializers.document_type_serializers import DocumentT
 from mayan.apps.rest_api.api_view_mixins import ExternalObjectAPIViewMixin
 from mayan.apps.rest_api import generics
 
-from .literals import WORKFLOW_IMAGE_TASK_TIMEOUT
 from .models import Workflow
 from .permissions import (
     permission_workflow_instance_transition,
@@ -27,8 +27,6 @@ from .serializers import (
     WorkflowTemplateStateSerializer, WorkflowTemplateTransitionSerializer,
     WorkflowTransitionFieldSerializer
 )
-
-from .settings import setting_workflow_image_cache_time
 
 
 class APIWorkflowTemplateDocumentTypeListView(
@@ -92,7 +90,9 @@ class APIWorkflowTemplateDocumentTypeRemoveView(generics.ObjectActionAPIView):
         )
 
 
-class APIWorkflowTemplateImageView(generics.RetrieveAPIView):
+class APIWorkflowTemplateImageView(
+    APIImageViewMixin, generics.RetrieveAPIView
+):
     """
     get: Returns an image representation of the selected workflow template.
     """
@@ -101,43 +101,6 @@ class APIWorkflowTemplateImageView(generics.RetrieveAPIView):
         'GET': (permission_workflow_template_view,),
     }
     queryset = Workflow.objects.all()
-
-    def get_serializer(self, *args, **kwargs):
-        return None
-
-    def get_serializer_class(self):
-        return None
-
-    @cache_control(private=True)
-    def retrieve(self, request, *args, **kwargs):
-        obj = self.get_object()
-
-        content_type = ContentType.objects.get_for_model(model=obj)
-
-        task = task_content_object_image_generate.apply_async(
-            kwargs={
-                'content_type_id': content_type.pk,
-                'object_id': obj.pk
-            }
-        )
-
-        kwargs = {'timeout': WORKFLOW_IMAGE_TASK_TIMEOUT}
-        if settings.DEBUG:
-            # In debug mode, task are run synchronously, causing this method
-            # to be called inside another task. Disable the check of nested
-            # tasks when using debug mode.
-            kwargs['disable_sync_subtasks'] = False
-
-        cache_filename = task.get(**kwargs)
-        cache_file = obj.cache_partition.get_file(filename=cache_filename)
-        with cache_file.open() as file_object:
-            response = HttpResponse(content=file_object.read(), content_type='image')
-            if '_hash' in request.GET:
-                patch_cache_control(
-                    response,
-                    max_age=setting_workflow_image_cache_time.value
-                )
-            return response
 
 
 class APIWorkflowTemplateListView(generics.ListCreateAPIView):

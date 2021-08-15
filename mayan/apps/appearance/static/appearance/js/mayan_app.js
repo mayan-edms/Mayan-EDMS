@@ -2,8 +2,6 @@
 
 class MayanApp {
     constructor (options) {
-        var self = this;
-
         this.options = options || {
             ajaxMenusOptions: []
         }
@@ -18,7 +16,7 @@ class MayanApp {
     // Class methods and variables
 
     static countChecked() {
-        var checkCount = $('.check-all-slave:checked').length;
+        const checkCount = $('.check-all-slave:checked').length;
 
         if (checkCount) {
             $('#multi-item-title').hide();
@@ -31,15 +29,15 @@ class MayanApp {
 
     static setupDropdownDirectionChange () {
         $('body').on('shown.bs.dropdown', '.dropdown', function () {
-            var $this = $(this);
-            var $elementMenu = $this.children('.dropdown-menu');
-            var $elementMenuButton = $this.children('.dropdown-toggle');
-            var elemenMenuOffset = $elementMenu.offset();
-            var sizeDownwards = elemenMenuOffset.top + $elementMenu.height() + 5;
-            var sizeUpwards = elemenMenuOffset.top - $elementMenu.height() - $elementMenuButton.height();
+            const $this = $(this);
+            const $elementMenu = $this.children('.dropdown-menu');
+            const $elementMenuButton = $this.children('.dropdown-toggle');
+            const elemenMenuOffset = $elementMenu.offset();
+            const sizeDownwards = elemenMenuOffset.top + $elementMenu.height() + 5;
+            const sizeUpwards = elemenMenuOffset.top - $elementMenu.height() - $elementMenuButton.height();
 
-            var spaceDownwards = $(window).scrollTop() + $(window).height() - sizeDownwards;
-            var spaceUpwards = sizeUpwards - $(window).scrollTop();
+            const spaceDownwards = $(window).scrollTop() + $(window).height() - sizeDownwards;
+            const spaceUpwards = sizeUpwards - $(window).scrollTop();
 
             if ((spaceUpwards >= 0 || spaceUpwards > spaceDownwards) && spaceDownwards < 0) {
               $this.addClass('dropup');
@@ -57,7 +55,7 @@ class MayanApp {
         });
 
         $('body').on('click', '.btn-multi-item-action', function (event) {
-            var id_list = [];
+            let id_list = [];
             $('.check-all-slave:checked').each(function (index, value) {
                 //Split the name (ie:"pk_200") and extract only the ID
                 id_list.push(value.name.split('_')[1]);
@@ -77,11 +75,11 @@ class MayanApp {
     }
 
     static updateNavbarState () {
-        var uri = new URI(window.location.hash);
-        var uriFragment = uri.fragment();
+        const uri = new URI(window.location.hash);
+        const uriFragment = uri.fragment();
         $('#accordion-sidebar a').each(function (index, value) {
             if (value.pathname === uriFragment) {
-                var $this = $(this);
+                const $this = $(this);
 
                 $this.closest('.collapse').addClass('in').parent().find('.collapsed').removeClass('collapsed').attr('aria-expanded', 'true');
                 $this.parents('li').addClass('active');
@@ -103,7 +101,7 @@ class MayanApp {
                 setTimeout(app.doRefreshAJAXMenu, options.interval, options);
             },
             success: function(data) {
-                var menuHash = options.app.ajaxMenuHashes[data.name];
+                const menuHash = options.app.ajaxMenuHashes[data.name];
 
                 if ((menuHash === undefined) || (menuHash !== data.hex_hash)) {
                     $(options.menuSelector).html(data.html);
@@ -117,7 +115,7 @@ class MayanApp {
         });
     }
 
-    doToastrMessages () {
+    doToastrMessages (djangoMessages) {
         toastr.options = {
             'closeButton': true,
             'debug': false,
@@ -172,8 +170,8 @@ class MayanApp {
             </style>\
         ');
 
-        $.each(DjangoMessages, function (index, value) {
-            var options = {};
+        $.each(djangoMessages, function (index, value) {
+            let options = {};
 
             if (value.tags === 'error') {
                 // Error messages persist
@@ -189,7 +187,7 @@ class MayanApp {
     }
 
     initialize () {
-        var self = this;
+        const self = this;
 
         this.setupAJAXSpinner();
         MayanApp.setupDropdownDirectionChange();
@@ -209,7 +207,7 @@ class MayanApp {
     }
 
     setupAJAXSpinner () {
-        var self = this;
+        const self = this;
 
         $(document).ajaxStart(function() {
             self.ajaxExecuting = true;
@@ -244,7 +242,7 @@ class MayanApp {
     }
 
     setupFullHeightResizing () {
-        var self = this;
+        const self = this;
 
         this.resizeFullHeight();
 
@@ -254,13 +252,13 @@ class MayanApp {
     }
 
     setupItemsSelector () {
-        var app = this;
+        const app = this;
         app.lastChecked = null;
 
         $('body').on('click', '.check-all', function (event) {
-            var $this = $(this);
-            var checked = $(event.target).prop('checked');
-            var $checkBoxes = $('.check-all-slave');
+            const $this = $(this);
+            let checked = $(event.target).prop('checked');
+            const $checkBoxes = $('.check-all-slave');
 
             if (checked === undefined) {
                 checked = $this.data('checked');
@@ -279,15 +277,15 @@ class MayanApp {
         });
 
         $('body').on('click', '.check-all-slave', function(e) {
-            if(!app.lastChecked) {
+            if (!app.lastChecked) {
                 app.lastChecked = this;
                 return;
             }
-            if(e.shiftKey) {
-                var $checkBoxes = $('.check-all-slave');
+            if (e.shiftKey) {
+                const $checkBoxes = $('.check-all-slave');
 
-                var start = $checkBoxes.index(this);
-                var end = $checkBoxes.index(app.lastChecked);
+                const start = $checkBoxes.index(this);
+                const end = $checkBoxes.index(app.lastChecked);
 
                 $checkBoxes.slice(
                     Math.min(start,end), Math.max(start,end) + 1
@@ -298,12 +296,12 @@ class MayanApp {
     }
 
     setupListToolbar () {
-        var $listToolbar = $('#list-toolbar');
+        const $listToolbar = $('#list-toolbar');
 
         if ($listToolbar.length !== 0) {
-            var $listToolbarClearfix = $listToolbar.closest('.clearfix');
-            var $listToolbarSpacer = $('#list-toolbar-spacer');
-            var navBarOuterHeight = $('.navbar-fixed-top').outerHeight();
+            const $listToolbarClearfix = $listToolbar.closest('.clearfix');
+            const $listToolbarSpacer = $('#list-toolbar-spacer');
+            const navBarOuterHeight = $('.navbar-fixed-top').outerHeight();
 
             $listToolbarSpacer.height($listToolbarClearfix.height()).hide();
 
@@ -373,17 +371,17 @@ class MayanApp {
     setupNewWindowAnchor () {
         $('body').on('click', 'a.new_window', function (event) {
             event.preventDefault();
-            var newWindow = window.open($(this).attr('href'), '_blank');
+            const newWindow = window.open($(this).attr('href'), '_blank');
             newWindow.focus();
         });
     }
 
     setupPanelSelection () {
-        var app = this;
+        const app = this;
 
         // Setup panel highlighting on check
         $('body').on('change', '.check-all-slave', function (event) {
-            var checked = $(event.target).prop('checked');
+            const checked = $(event.target).prop('checked');
             if (checked) {
                 $(this).closest('.panel-item').addClass('panel-highlighted');
             } else {
@@ -392,17 +390,17 @@ class MayanApp {
         });
 
         $('body').on('click', '.panel-item', function (event) {
-            var targetSelection = window.getSelection().toString();
+            const targetSelection = window.getSelection().toString();
             if (!targetSelection) {
-                var $this = $(this);
-                var targetSrc = $(event.target).prop('src');
-                var targetHref = $(event.target).prop('href');
-                var targetIsButton = event.target.tagName === 'BUTTON';
-                var lastChecked = null;
+                const $this = $(this);
+                const targetSrc = $(event.target).prop('src');
+                const targetHref = $(event.target).prop('href');
+                const targetIsButton = event.target.tagName === 'BUTTON';
+                let lastChecked = null;
 
                 if ((targetSrc === undefined) && (targetHref === undefined) && (targetIsButton === false)) {
-                    var $checkbox = $this.find('.check-all-slave');
-                    var checked = $checkbox.prop('checked');
+                    const $checkbox = $this.find('.check-all-slave');
+                    const checked = $checkbox.prop('checked');
 
                     if (checked) {
                         $checkbox.prop('checked', '');
@@ -417,10 +415,10 @@ class MayanApp {
                     }
 
                     if (event.shiftKey) {
-                        var $checkBoxes = $('.check-all-slave');
+                        const $checkBoxes = $('.check-all-slave');
 
-                        var start = $checkBoxes.index($checkbox);
-                        var end = $checkBoxes.index(app.lastChecked);
+                        const start = $checkBoxes.index($checkbox);
+                        const end = $checkBoxes.index(app.lastChecked);
 
                         $checkBoxes.slice(
                             Math.min(start, end), Math.max(start, end) + 1

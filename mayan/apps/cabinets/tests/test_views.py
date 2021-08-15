@@ -62,7 +62,7 @@ class CabinetViewTestCase(
         self._clear_events()
 
         response = self._request_test_cabinet_create_view()
-        # HTTP 200 with error message
+        # HTTP 200 with error message.
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(Cabinet.objects.count(), cabinet_count)

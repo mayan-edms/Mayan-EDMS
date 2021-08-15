@@ -7,7 +7,6 @@ from .literals import (
     DEFAULT_DOCUMENTS_FAVORITE_COUNT,
     DEFAULT_DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND,
     DEFAULT_DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS,
-    DEFAULT_DOCUMENTS_FILE_PAGE_IMAGE_CACHE_TIME,
     DEFAULT_DOCUMENTS_FILE_PAGE_IMAGE_CACHE_MAXIMUM_SIZE,
     DEFAULT_DOCUMENTS_FILE_STORAGE_BACKEND,
     DEFAULT_DOCUMENTS_FILE_STORAGE_BACKEND_ARGUMENTS,
@@ -18,7 +17,6 @@ from .literals import (
     DEFAULT_DOCUMENTS_RECENTLY_CREATED_COUNT, DEFAULT_DOCUMENTS_ROTATION_STEP,
     DEFAULT_DOCUMENTS_THUMBNAIL_HEIGHT, DEFAULT_DOCUMENTS_THUMBNAIL_WIDTH,
     DEFAULT_DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_MAXIMUM_SIZE,
-    DEFAULT_DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_TIME,
     DEFAULT_DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND,
     DEFAULT_DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS,
     DEFAULT_DOCUMENTS_ZOOM_MAX_LEVEL, DEFAULT_DOCUMENTS_ZOOM_MIN_LEVEL,
@@ -30,7 +28,6 @@ from .setting_callbacks import (
     callback_update_document_version_page_image_cache_size
 )
 from .setting_migrations import DocumentsSettingMigration
-
 
 namespace = SettingNamespace(
     label=_('Documents'), migration_class=DocumentsSettingMigration,
@@ -53,14 +50,6 @@ setting_document_file_page_image_cache_maximum_size = namespace.add_setting(
         'deleting the oldest document file page image cache files. Specify '
         'the size in bytes.'
     ), post_edit_function=callback_update_document_file_page_image_cache_size
-)
-setting_document_file_page_image_cache_time = namespace.add_setting(
-    default=DEFAULT_DOCUMENTS_FILE_PAGE_IMAGE_CACHE_TIME,
-    global_name='DOCUMENTS_FILE_PAGE_IMAGE_CACHE_TIME', help_text=_(
-        'Time in seconds that the browser should cache the supplied document '
-        'file page images. The default of 31559626 seconds correspond to '
-        '1 year.'
-    )
 )
 setting_document_file_storage_backend = namespace.add_setting(
     default=DEFAULT_DOCUMENTS_FILE_STORAGE_BACKEND,
@@ -119,14 +108,6 @@ setting_document_version_page_image_cache_maximum_size = namespace.add_setting(
         'deleting the oldest document version page image cache versions. Specify '
         'the size in bytes.'
     ), post_edit_function=callback_update_document_version_page_image_cache_size
-)
-setting_document_version_page_image_cache_time = namespace.add_setting(
-    default=DEFAULT_DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_TIME,
-    global_name='DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_TIME', help_text=_(
-        'Time in seconds that the browser should cache the supplied document '
-        'version page images. The default of 31559626 seconds correspond '
-        'to 1 year.'
-    )
 )
 setting_document_version_page_image_cache_storage_backend = namespace.add_setting(
     default=DEFAULT_DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND,

@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-19 05:33+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -217,7 +217,7 @@ msgstr "Ebenentransformationen"
 
 #: models.py:249
 msgid "Unknown transformation class"
-msgstr ""
+msgstr "Unbekannte Klasse von Transformation"
 
 #: permissions.py:8
 msgid "Create new assets"
@@ -488,11 +488,11 @@ msgstr ""
 
 #: workflow_actions.py:32
 msgid "Transformation class"
-msgstr ""
+msgstr "Klasse von Transformation"
 
 #: workflow_actions.py:37
 msgid "Type of transformation to add."
-msgstr ""
+msgstr "Typ der hinzuzufügenden Transformation."
 
 #: workflow_actions.py:42
 msgid "Transformation arguments"

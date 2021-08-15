@@ -15,21 +15,12 @@ queue_sources_fast = CeleryQueue(
     worker=worker_a
 )
 
-queue_sources_fast.add_task_type(
-    label=_('Generate staging file image'),
-    dotted_path='mayan.apps.sources.tasks.task_generate_staging_file_image'
-)
-
 queue_sources_periodic.add_task_type(
     label=_('Check interval source'),
-    dotted_path='mayan.apps.sources.tasks.task_check_interval_source'
+    dotted_path='mayan.apps.sources.tasks.task_source_process_document'
 )
 
 queue_sources.add_task_type(
     label=_('Handle upload'),
-    dotted_path='mayan.apps.sources.tasks.task_source_handle_upload'
-)
-queue_sources.add_task_type(
-    label=_('Upload document'),
-    dotted_path='mayan.apps.sources.tasks.task_upload_document'
+    dotted_path='mayan.apps.sources.tasks.task_process_document_upload'
 )

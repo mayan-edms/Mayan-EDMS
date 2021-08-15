@@ -118,7 +118,7 @@ class ActionExporter:
 
 
 class EventManager:
-    EVENT_ATTRIBUTES = ('ignore', 'keep_attributes',)
+    EVENT_ATTRIBUTES = ('ignore', 'keep_attributes', 'type')
     EVENT_ARGUMENTS = ('actor', 'action_object', 'target')
 
     def __init__(self, instance, **kwargs):
@@ -160,6 +160,10 @@ class EventManager:
 
         keep_attributes = self.instance_event_attributes['keep_attributes'] or ()
 
+        # Allow passing a runtime defined event.
+        if self.instance_event_attributes['type']:
+            self.kwargs['event'] = self.instance_event_attributes['type']
+
         for attribute in self.EVENT_ARGUMENTS:
             # If the attribute is not set or is set but is None.
             if not self.instance_event_attributes.get(attribute, None):
@@ -172,7 +176,7 @@ class EventManager:
                 self.instance_event_attributes[attribute] = value
 
     def prepare(self):
-        """Optional method to gather information before the actual commit"""
+        """Optional method to gather information before the actual commit."""
 
 
 class EventManagerMethodAfter(EventManager):

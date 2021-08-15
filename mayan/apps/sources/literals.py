@@ -1,78 +1,17 @@
 import os
 
 from django.conf import settings
-from django.utils.translation import ugettext_lazy as _
 
-DEFAULT_IMAP_MAILBOX = 'INBOX'
-DEFAULT_IMAP_SEARCH_CRITERIA = 'NOT DELETED'
-DEFAULT_IMAP_STORE_COMMANDS = '+FLAGS (\\Deleted)'
-DEFAULT_INTERVAL = 600
-DEFAULT_METADATA_ATTACHMENT_NAME = 'metadata.yaml'
-DEFAULT_POP3_TIMEOUT = 60
-DEFAULT_SOURCE_LOCK_EXPIRE = 600
-DEFAULT_SOURCE_TASK_RETRY_DELAY = 10
-
-DEFAULT_SOURCES_SCANIMAGE_PATH = '/usr/bin/scanimage'
-DEFAULT_SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND = 'django.core.files.storage.FileSystemStorage'
-DEFAULT_SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND_ARGUMENTS = {
-    'location': os.path.join(settings.MEDIA_ROOT, 'staging_file_cache')
+DEFAULT_SOURCES_BACKEND_ARGUMENTS = {
+    'mayan.apps.sources.source_backends.SourceBackendSaneScanner': {
+        'scanimage_path': '/usr/bin/scanimage'
+    }
+}
+DEFAULT_SOURCES_CACHE_STORAGE_BACKEND = 'django.core.files.storage.FileSystemStorage'
+DEFAULT_SOURCES_CACHE_STORAGE_BACKEND_ARGUMENTS = {
+    'location': os.path.join(settings.MEDIA_ROOT, 'source_cache')
 }
 
-SCANNER_SOURCE_FLATBED = 'flatbed'
-SCANNER_SOURCE_ADF = 'Automatic Document Feeder'
+DEFAULT_SOURCES_LOCK_EXPIRE = 600
 
-SCANNER_SOURCE_CHOICES = (
-    (SCANNER_SOURCE_FLATBED, _('Flatbed')),
-    (SCANNER_SOURCE_ADF, _('Document feeder')),
-)
-
-SCANNER_ADF_MODE_SIMPLEX = 'simplex'
-SCANNER_ADF_MODE_DUPLEX = 'duplex'
-
-SCANNER_ADF_MODE_CHOICES = (
-    (SCANNER_ADF_MODE_SIMPLEX, _('Simplex')),
-    (SCANNER_ADF_MODE_DUPLEX, _('Duplex')),
-)
-
-SCANNER_MODE_LINEART = 'lineart'
-SCANNER_MODE_MONOCHROME = 'monochrome'
-SCANNER_MODE_COLOR = 'color'
-
-SCANNER_MODE_CHOICES = (
-    (SCANNER_MODE_LINEART, _('Lineart')),
-    (SCANNER_MODE_MONOCHROME, _('Monochrome')),
-    (SCANNER_MODE_COLOR, _('Color'))
-)
-
-SOURCE_UNCOMPRESS_CHOICE_Y = 'y'
-SOURCE_UNCOMPRESS_CHOICE_N = 'n'
-SOURCE_UNCOMPRESS_CHOICE_ASK = 'a'
-
-SOURCE_UNCOMPRESS_CHOICES = (
-    (SOURCE_UNCOMPRESS_CHOICE_Y, _('Always')),
-    (SOURCE_UNCOMPRESS_CHOICE_N, _('Never')),
-)
-
-SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES = (
-    (SOURCE_UNCOMPRESS_CHOICE_Y, _('Always')),
-    (SOURCE_UNCOMPRESS_CHOICE_N, _('Never')),
-    (SOURCE_UNCOMPRESS_CHOICE_ASK, _('Ask user'))
-)
-
-SOURCE_CHOICE_WEB_FORM = 'webform'
-SOURCE_CHOICE_STAGING = 'staging'
-SOURCE_CHOICE_WATCH = 'watch'
-SOURCE_CHOICE_EMAIL_POP3 = 'pop3'
-SOURCE_CHOICE_EMAIL_IMAP = 'imap'
-SOURCE_CHOICE_SANE_SCANNER = 'sane'
-
-SOURCE_CHOICES = (
-    (SOURCE_CHOICE_SANE_SCANNER, _('Scanner')),
-    (SOURCE_CHOICE_WEB_FORM, _('Web form')),
-    (SOURCE_CHOICE_STAGING, _('Staging folder')),
-    (SOURCE_CHOICE_WATCH, _('Watch folder')),
-    (SOURCE_CHOICE_EMAIL_POP3, _('POP3 email')),
-    (SOURCE_CHOICE_EMAIL_IMAP, _('IMAP email')),
-)
-STAGING_FILE_IMAGE_TASK_TIMEOUT = 120
-STORAGE_NAME_SOURCE_STAGING_FOLDER_FILE = 'sources__staging_file_image_cache'
+STORAGE_NAME_SOURCE_CACHE_FOLDER = 'sources__source_cache'

@@ -37,14 +37,14 @@
 </script>
 
 <script>
-    var messageCancelUpload = "{% trans 'Cancel upload' %}";
-    var messageCancelUploadConfirmation = "{% trans 'Are you sure you want to cancel this upload?' %}";
-    var messageDefaultMessage = "{% trans 'Drop files or click here to upload files' %}";
-    var messageFallbackMessage = "{% trans 'Your browser does not support drag and drop file uploads.' %}";
-    var messageFallbackText = "{% trans 'Please use the fallback form below to upload your files.' %}";
-    var messageRemoveFile = "{% trans 'Clear' %}";
-    var messageResponseError = "{% trans 'Server responded with {{statusCode}} code.' %}";
-    var previewTemplate = document.querySelector('#previewTemplate').innerHTML;
+    const messageCancelUpload = "{% trans 'Cancel upload' %}";
+    const messageCancelUploadConfirmation = "{% trans 'Are you sure you want to cancel this upload?' %}";
+    const messageDefaultMessage = "{% trans 'Drop files or click here to upload files' %}";
+    const messageFallbackMessage = "{% trans 'Your browser does not support drag and drop file uploads.' %}";
+    const messageFallbackText = "{% trans 'Please use the fallback form below to upload your files.' %}";
+    const messageRemoveFile = "{% trans 'Clear' %}";
+    const messageResponseError = "{% trans 'Server responded with {{statusCode}} code.' %}";
+    const previewTemplate = document.querySelector('#previewTemplate').innerHTML;
 
     Dropzone.autoDiscover = false;
 
