@@ -177,7 +177,7 @@ class DocumentVersionPage(
 
     def get_api_image_url(
         self, maximum_layer_order=None, transformation_instance_list=None,
-        user=None
+        user=None, viewname=None, view_kwargs=None
     ):
         """
         Create an unique URL combining:
@@ -209,13 +209,16 @@ class DocumentVersionPage(
             transformations=transformation_list
         )
 
+        view_kwargs = view_kwargs or {
+            'document_id': self.document_version.document_id,
+            'document_version_id': self.document_version_id,
+            'document_version_page_id': self.pk
+        }
+
         final_url = furl()
         final_url.path = reverse(
-            viewname='rest_api:documentversionpage-image', kwargs={
-                'document_id': self.document_version.document_id,
-                'document_version_id': self.document_version_id,
-                'document_version_page_id': self.pk
-            }
+            viewname=viewname or 'rest_api:documentversionpage-image',
+            kwargs=view_kwargs
         )
         # Remove leading '?' character.
         final_url.query = BaseTransformation.list_as_query_string(

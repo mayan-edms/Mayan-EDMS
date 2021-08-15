@@ -470,6 +470,11 @@ class DocumentVersionExportAPIViewTestCase(
         self.assertEqual(events[1].target, self.test_document_version)
         self.assertEqual(events[1].verb, event_document_version_exported.id)
 
+        self.assertEqual(events[2].action_object, None)
+        self.assertEqual(events[2].actor, test_message)
+        self.assertEqual(events[2].target, test_message)
+        self.assertEqual(events[2].verb, event_message_created.id))
+
     def test_trashed_document_version_export_api_view_with_access(self):
         self.grant_access(
             obj=self.test_document,
@@ -481,14 +486,12 @@ class DocumentVersionExportAPIViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_version_export_api_view()
+        response = self._request_test_document_version_export_api_view_via_post()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(
             DownloadFile.objects.count(), download_file_count
         )
-
-        test_download_file = DownloadFile.objects.first()
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
