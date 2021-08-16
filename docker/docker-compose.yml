@@ -115,8 +115,7 @@ services:
   frontend:
     <<: *mayan-container
     command:
-      - run_worker
-      - fast
+      - run_frontend
     ports:
       - "81:8000"
     profiles:
