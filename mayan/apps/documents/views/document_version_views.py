@@ -107,6 +107,18 @@ class DocumentVersionDeleteView(MultipleObjectDeleteView):
     title_singular = _('Delete %(count)d document version.')
     title_plural = _('Delete %(count)d document versions.')
 
+    def get_extra_context(self, **kwargs):
+        context = {}
+
+        if self.object_list.count() > 1:
+            context.update(
+                {
+                    'object': self.object_list.first().document,
+                }
+            )
+
+        return context
+
     def get_instance_extra_data(self):
         return {
             '_event_actor': self.request.user,

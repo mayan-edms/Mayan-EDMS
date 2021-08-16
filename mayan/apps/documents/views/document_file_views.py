@@ -69,10 +69,10 @@ class DocumentFileDeleteView(MultipleObjectDeleteView):
             )
         }
 
-        if self.object_list.count() == 1:
+        if self.object_list.count() > 1:
             context.update(
                 {
-                    'object': self.object_list.first()
+                    'object': self.object_list.first().document
                 }
             )
 
