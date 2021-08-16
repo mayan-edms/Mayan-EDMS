@@ -2,7 +2,7 @@ from django.conf.urls import url
 
 from .api_views import (
     APIAppImageErrorImageView, APIAssetListView, APIAssetDetailView,
-    APIAssetImageView
+    APIAssetImageView, APIContentObjectImageView
 )
 from .views import (
     AssetCreateView, AssetDeleteView, AssetDetailView, AssetEditView,
@@ -80,6 +80,10 @@ api_urls_assets = [
     url(
         regex=r'^assets/(?P<asset_id>\d+)/image/$',
         name='asset-image', view=APIAssetImageView.as_view()
+    ),
+    url(
+        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/image/$',
+        name='object-image', view=APIContentObjectImageView.as_view()
     ),
 ]
 

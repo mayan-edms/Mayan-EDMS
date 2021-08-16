@@ -19,7 +19,9 @@ from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event
 from mayan.apps.file_caching.models import CachePartitionFile
-from ..events import event_workflow_template_created, event_workflow_template_edited
+from ..events import (
+    event_workflow_template_created, event_workflow_template_edited
+)
 from ..literals import (
     STORAGE_NAME_WORKFLOW_CACHE, SYMBOL_MATH_CONDITIONAL,
     WORKFLOW_ACTION_ON_ENTRY
@@ -106,7 +108,11 @@ class Workflow(ExtraDataModelMixin, models.Model):
                 document__document_type_id=document_type.pk
             ).delete()
 
-    def generate_image(self):
+    def generate_image(
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None
+    ):
+        # `user` argument added for compatibility.
         cache_filename = '{}'.format(self.get_hash())
 
         try:

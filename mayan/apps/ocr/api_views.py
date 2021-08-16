@@ -1,19 +1,22 @@
-from django.shortcuts import get_object_or_404
-
 from rest_framework import status
+from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
+from mayan.apps.documents.api_views.mixins import ParentObjectDocumentVersionPageAPIViewMixin
 from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.models.document_version_models import DocumentVersion
 from mayan.apps.rest_api import generics
 
 from .models import DocumentVersionPageOCRContent, DocumentTypeOCRSettings
 from .permissions import (
-    permission_document_type_ocr_setup, permission_document_version_ocr_content_view,
-    permission_document_version_ocr,
+    permission_document_type_ocr_setup,
+    permission_document_version_ocr_content_edit,
+    permission_document_version_ocr_content_view,
+    permission_document_version_ocr
 )
 from .serializers import (
-    DocumentVersionPageOCRContentSerializer, DocumentTypeOCRSettingsSerializer
+    DocumentVersionPageOCRContentSerializer,
+    DocumentTypeOCRSettingsSerializer
 )
 
 
@@ -42,7 +45,7 @@ class APIDocumentOCRSubmitView(generics.GenericAPIView):
     mayan_object_permissions = {
         'POST': (permission_document_version_ocr,)
     }
-    queryset = Document.objects.all()
+    queryset = Document.valid.all()
 
     def get_serializer(self, *args, **kwargs):
         return None
@@ -55,38 +58,38 @@ class APIDocumentOCRSubmitView(generics.GenericAPIView):
         return Response(status=status.HTTP_202_ACCEPTED)
 
 
-class APIDocumentVersionPageOCRContentView(generics.RetrieveAPIView):
+class APIDocumentVersionPageOCRContentDetailView(
+    ParentObjectDocumentVersionPageAPIViewMixin,
+    generics.RetrieveUpdateAPIView
+):
     """
     get: Returns the OCR content of the selected document page.
+    patch: Edit the OCR content of the selected document page.
+    put: Edit the OCR content of the selected document page.
     """
-    lookup_url_kwarg = 'document_version_page_id'
     mayan_object_permissions = {
         'GET': (permission_document_version_ocr_content_view,),
+        'PATCH': (permission_document_version_ocr_content_edit,),
+        'PUT': (permission_document_version_ocr_content_edit,)
     }
     serializer_class = DocumentVersionPageOCRContentSerializer
 
-    def get_document(self):
-        return get_object_or_404(klass=Document, pk=self.kwargs['document_id'])
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
 
-    def get_document_version(self):
-        return get_object_or_404(
-            klass=self.get_document().versions.all(),
-            pk=self.kwargs['document_version_id']
+    def get_object(self):
+        document_version_page = self.get_document_version_page(
+            permission=self.mayan_object_permissions[self.request.method][0]
         )
 
-    def get_queryset(self):
-        return self.get_document_version().pages.all()
-
-    def retrieve(self, request, *args, **kwargs):
-        instance = self.get_object()
-
         try:
-            ocr_content = instance.ocr_content
+            return document_version_page.ocr_content
         except DocumentVersionPageOCRContent.DoesNotExist:
-            ocr_content = DocumentVersionPageOCRContent.objects.none()
-
-        serializer = self.get_serializer(ocr_content)
-        return Response(serializer.data)
+            return DocumentVersionPageOCRContent(
+                document_version_page=document_version_page
+            )
 
 
 class APIDocumentVersionOCRSubmitView(generics.GenericAPIView):
@@ -100,7 +103,9 @@ class APIDocumentVersionOCRSubmitView(generics.GenericAPIView):
     queryset = DocumentVersion.objects.all()
 
     def get_document(self):
-        return get_object_or_404(klass=Document, pk=self.kwargs['document_id'])
+        return get_object_or_404(
+            queryset=Document.valid.all(), pk=self.kwargs['document_id']
+        )
 
     def get_queryset(self):
         return self.get_document().versions.all()

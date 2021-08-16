@@ -10,6 +10,9 @@ icon_document_version_ocr_content_delete = Icon(
 icon_document_version_page_ocr_content_detail_view = Icon(
     driver_name='fontawesome', symbol='font'
 )
+icon_document_version_page_ocr_content_edit_view = Icon(
+    driver_name='fontawesome', symbol='font'
+)
 icon_document_version_ocr_download = Icon(
     driver_name='fontawesome-dual', primary_symbol='font',
     secondary_symbol='arrow-down'

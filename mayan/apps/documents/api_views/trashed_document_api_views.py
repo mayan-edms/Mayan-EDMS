@@ -1,11 +1,12 @@
 import logging
 
+from mayan.apps.converter.api_view_mixins import APIImageViewMixin
 from mayan.apps.rest_api import generics
 
 from ..models.trashed_document_models import TrashedDocument
 from ..permissions import (
-    permission_document_view, permission_trashed_document_delete,
-    permission_trashed_document_restore
+    permission_document_version_view, permission_document_view,
+    permission_trashed_document_delete, permission_trashed_document_restore
 )
 from ..serializers.trashed_document_serializers import TrashedDocumentSerializer
 
@@ -59,3 +60,33 @@ class APITrashedDocumentRestoreView(generics.ObjectActionAPIView):
 
     def object_action(self, request, serializer):
         self.object.restore()
+
+
+class APITrashedDocumentImageView(
+    APIImageViewMixin, generics.RetrieveAPIView
+):
+    """
+    get: Returns an image representation of the selected trashed document.
+    """
+    lookup_url_kwarg = 'document_id'
+    mayan_object_permissions = {
+        'GET': (permission_document_version_view,),
+    }
+
+    def get_queryset(self):
+        return TrashedDocument.objects.all()
+
+    def get_object(self):
+        from rest_framework.generics import get_object_or_404
+
+        obj = super().get_object()
+
+        # Return a 404 if the document doesn't have any pages.
+        first_page = obj.pages.first()
+
+        if first_page:
+            first_page_id = first_page.pk
+        else:
+            first_page_id = None
+
+        return get_object_or_404(queryset=obj.pages, pk=first_page_id)

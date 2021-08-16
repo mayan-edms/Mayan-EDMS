@@ -16,6 +16,7 @@ from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
     event_ocr_document_version_content_deleted,
+    event_ocr_document_version_page_content_edited,
     event_ocr_document_version_finished, event_ocr_document_version_submitted
 )
 from .handlers import (
@@ -24,6 +25,7 @@ from .handlers import (
 )
 from .links import (
     link_document_version_page_ocr_content_detail_view,
+    link_document_version_page_ocr_content_edit_view,
     link_document_version_ocr_content_view,
     link_document_version_ocr_content_delete,
     link_document_version_multiple_ocr_content_delete,
@@ -38,6 +40,7 @@ from .methods import (
 )
 from .permissions import (
     permission_document_type_ocr_setup, permission_document_version_ocr,
+    permission_document_version_ocr_content_edit,
     permission_document_version_ocr_content_view
 )
 from .signals import signal_post_document_version_ocr
@@ -93,8 +96,14 @@ class OCRApp(MayanAppConfig):
         ModelEventType.register(
             model=Document, event_types=(
                 event_ocr_document_version_content_deleted,
+                event_ocr_document_version_page_content_edited,
                 event_ocr_document_version_finished,
                 event_ocr_document_version_submitted
+            )
+        )
+        ModelEventType.register(
+            model=DocumentVersionPage, event_types=(
+                event_ocr_document_version_page_content_edited,
             )
         )
 
@@ -116,6 +125,7 @@ class OCRApp(MayanAppConfig):
         ModelPermission.register(
             model=Document, permissions=(
                 permission_document_version_ocr,
+                permission_document_version_ocr_content_edit,
                 permission_document_version_ocr_content_view
             )
         )
@@ -147,8 +157,9 @@ class OCRApp(MayanAppConfig):
             sources=(DocumentVersion,)
         )
         menu_list_facet.bind_links(
-            links=(link_document_version_page_ocr_content_detail_view,),
-            sources=(DocumentVersionPage,)
+            links=(
+                link_document_version_page_ocr_content_detail_view,
+            ), sources=(DocumentVersionPage,)
         )
         menu_list_facet.bind_links(
             links=(link_document_type_ocr_settings,), sources=(DocumentType,)
@@ -158,6 +169,14 @@ class OCRApp(MayanAppConfig):
                 link_document_version_multiple_ocr_content_delete,
                 link_document_version_multiple_ocr_submit,
             ), sources=(DocumentVersion,)
+        )
+        menu_secondary.bind_links(
+            links=(
+                link_document_version_page_ocr_content_edit_view,
+            ), sources=(
+                'ocr:document_version_page_ocr_content_detail_view',
+                'ocr:document_version_page_ocr_content_edit_view'
+            )
         )
         menu_secondary.bind_links(
             links=(

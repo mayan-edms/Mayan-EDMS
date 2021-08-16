@@ -6,14 +6,16 @@ from .icons import (
     icon_entry_list, icon_document_type_ocr_settings,
     icon_document_type_submit, icon_document_version_multiple_ocr_submit,
     icon_document_version_page_ocr_content_detail_view,
+    icon_document_version_page_ocr_content_edit_view,
     icon_document_version_ocr_content_delete,
     icon_document_version_ocr_content_view,
     icon_document_version_ocr_download,
     icon_document_version_ocr_errors_list, icon_document_version_ocr_submit
 )
 from .permissions import (
-    permission_document_version_ocr_content_view, permission_document_version_ocr,
-    permission_document_type_ocr_setup
+    permission_document_version_ocr_content_edit,
+    permission_document_version_ocr_content_view,
+    permission_document_version_ocr, permission_document_type_ocr_setup
 )
 
 # Document type
@@ -30,7 +32,7 @@ link_document_type_submit = Link(
     text=_('OCR documents per type'), view='ocr:document_type_submit'
 )
 
-# Document version page
+# Document version
 
 link_document_version_ocr_content_view = Link(
     args='resolved_object.id',
@@ -79,6 +81,12 @@ link_document_version_page_ocr_content_detail_view = Link(
     icon=icon_document_version_page_ocr_content_detail_view,
     permissions=(permission_document_version_ocr_content_view,),
     text=_('OCR'), view='ocr:document_version_page_ocr_content_detail_view'
+)
+link_document_version_page_ocr_content_edit_view = Link(
+    args='resolved_object.id',
+    icon=icon_document_version_page_ocr_content_edit_view,
+    permissions=(permission_document_version_ocr_content_edit,),
+    text=_('Edit OCR'), view='ocr:document_version_page_ocr_content_edit_view'
 )
 
 # Other

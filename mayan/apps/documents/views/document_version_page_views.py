@@ -12,6 +12,9 @@ from django.views.generic import RedirectView
 from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.settings import setting_home_view
 from mayan.apps.converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
+from mayan.apps.converter.transformations import (
+    TransformationResize, TransformationRotate, TransformationZoom
+)
 from mayan.apps.views.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectDeleteView,
     SingleObjectListView, SimpleView
@@ -35,7 +38,8 @@ from ..permissions import (
     permission_document_version_edit, permission_document_version_view
 )
 from ..settings import (
-    setting_rotation_step, setting_zoom_percent_step, setting_zoom_max_level,
+    setting_display_height, setting_display_width, setting_rotation_step,
+    setting_zoom_percent_step, setting_zoom_max_level,
     setting_zoom_min_level
 )
 from ..tasks import task_document_version_page_list_reset
@@ -294,7 +298,7 @@ class DocumentVersionPageNavigationBase(ExternalObjectViewMixin, RedirectView):
 
         if set(new_kwargs) == set(resolver_match.kwargs):
             # It is the same type of object, reuse the URL to stay in the
-            # same kind of view but pointing to a new object
+            # same kind of view but pointing to a new object.
             url = reverse(
                 viewname=resolver_match.view_name, kwargs=new_kwargs
             )
@@ -364,8 +368,22 @@ class DocumentVersionPageView(ExternalObjectViewMixin, SimpleView):
         zoom = int(self.request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
         rotation = int(self.request.GET.get('rotation', DEFAULT_ROTATION))
 
+        transformation_instance_list = (
+            TransformationResize(
+                height=setting_display_height.value,
+                width=setting_display_width.value
+            ),
+            TransformationRotate(
+                degrees=rotation,
+            ),
+            TransformationZoom(
+                percent=zoom,
+            )
+        )
+
         document_version_page_form = DocumentVersionPageForm(
-            instance=self.external_object, rotation=rotation, zoom=zoom
+            instance=self.external_object,
+            transformation_instance_list=transformation_instance_list
         )
 
         base_title = _('Image of: %s') % self.external_object
@@ -383,6 +401,7 @@ class DocumentVersionPageView(ExternalObjectViewMixin, SimpleView):
             'title': ' '.join((base_title, zoom_text)),
             'read_only': True,
             'zoom': zoom,
+            'transformation_instance_list': transformation_instance_list
         }
 
 

@@ -1,6 +1,9 @@
 from ..models import DocumentVersionPageOCRContent
 
-from .literals import TEST_DOCUMENT_VERSION_OCR_CONTENT
+from .literals import (
+    TEST_DOCUMENT_VERSION_OCR_CONTENT,
+    TEST_DOCUMENT_VERSION_PAGE_OCR_CONTENT_UPDATED
+)
 
 
 class DocumentTypeOCRSettingsAPIViewTestMixin:
@@ -41,13 +44,15 @@ class DocumentTypeOCRViewTestMixin:
         )
 
 
-class DocumentVersionOCRAPIViewTestMixin:
+class DocumentOCRAPIViewTestMixin:
     def _request_test_document_ocr_submit_api_view(self):
         return self.post(
             viewname='rest_api:document-ocr-submit-view',
             kwargs={'document_id': self.test_document.pk}
         )
 
+
+class DocumentVersionOCRAPIViewTestMixin:
     def _request_test_document_version_ocr_submit_api_view(self):
         return self.post(
             viewname='rest_api:document-version-ocr-submit-view', kwargs={
@@ -58,12 +63,34 @@ class DocumentVersionOCRAPIViewTestMixin:
 
 
 class DocumentVersionPageOCRAPIViewTestMixin:
-    def _request_test_document_version_page_ocr_content_detail_api_view(self):
+    def _request_test_document_version_page_ocr_content_detail_api_view_via_get(self):
         return self.get(
             viewname='rest_api:document-version-page-ocr-content-detail-view', kwargs={
                 'document_id': self.test_document.pk,
                 'document_version_id': self.test_document.version_active.pk,
                 'document_version_page_id': self.test_document.version_active.pages.first().pk,
+            }
+        )
+
+    def _request_test_document_version_page_ocr_content_edit_api_view_via_patch(self):
+        return self.patch(
+            viewname='rest_api:document-version-page-ocr-content-detail-view', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document.version_active.pk,
+                'document_version_page_id': self.test_document.version_active.pages.first().pk,
+            }, data={
+                'content': TEST_DOCUMENT_VERSION_PAGE_OCR_CONTENT_UPDATED
+            }
+        )
+
+    def _request_test_document_version_page_ocr_content_edit_api_view_via_put(self):
+        return self.put(
+            viewname='rest_api:document-version-page-ocr-content-detail-view', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document.version_active.pk,
+                'document_version_page_id': self.test_document.version_active.pages.first().pk,
+            }, data={
+                'content': TEST_DOCUMENT_VERSION_PAGE_OCR_CONTENT_UPDATED
             }
         )
 
@@ -125,5 +152,14 @@ class DocumentVersionPageOCRViewTestMixin:
         return self.get(
             viewname='ocr:document_version_page_ocr_content_detail_view', kwargs={
                 'document_version_page_id': self.test_document_version.pages.first().pk
+            }
+        )
+
+    def _request_test_document_version_page_ocr_content_edit_view(self):
+        return self.post(
+            viewname='ocr:document_version_page_ocr_content_edit_view', kwargs={
+                'document_version_page_id': self.test_document_version.pages.first().pk
+            }, data={
+                'content': TEST_DOCUMENT_VERSION_PAGE_OCR_CONTENT_UPDATED
             }
         )

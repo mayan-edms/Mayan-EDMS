@@ -2,15 +2,21 @@ import logging
 
 from django.conf import settings
 from django.core.exceptions import ValidationError
-from django.db import models, transaction
+from django.db import models
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.documents.models import Document
+from mayan.apps.events.classes import EventManagerMethodAfter
+from mayan.apps.events.decorators import method_event
 
-from .events import event_document_checked_out
+from .events import (
+    event_document_auto_checked_in, event_document_checked_in,
+    event_document_checked_out, event_document_forcefully_checked_in
+)
 from .exceptions import DocumentAlreadyCheckedOut
 from .managers import (
     DocumentCheckoutBusinessLogicManager, DocumentCheckoutManager
@@ -19,7 +25,7 @@ from .managers import (
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentCheckout(models.Model):
+class DocumentCheckout(ExtraDataModelMixin, models.Model):
     """
     Model to store the state and information of a document checkout.
     """
@@ -64,6 +70,21 @@ class DocumentCheckout(models.Model):
                 _('Check out expiration date and time must be in the future.')
             )
 
+    @method_event(event_manager_class=EventManagerMethodAfter)
+    def delete(self, user=None):
+        self._event_target = self.document
+        self._event_actor = user or getattr(self, '_event_actor', None)
+
+        if self._event_actor:
+            if self._event_actor == self.user:
+                self._event_type = event_document_checked_in
+            else:
+                self._event_type = event_document_forcefully_checked_in
+        else:
+            self._event_type = event_document_auto_checked_in
+
+        return super().delete()
+
     def get_absolute_url(self):
         return reverse(
             viewname='checkouts:check_out_info', kwargs={
@@ -80,19 +101,18 @@ class DocumentCheckout(models.Model):
         if not is_new or self.document.is_checked_out():
             raise DocumentAlreadyCheckedOut
 
-        with transaction.atomic():
-            result = super().save(*args, **kwargs)
-            if is_new:
-                event_document_checked_out.commit(
-                    actor=self.user, target=self.document
-                )
+        result = super().save(*args, **kwargs)
+        if is_new:
+            event_document_checked_out.commit(
+                actor=self.user, target=self.document
+            )
 
-                logger.info(
-                    'Document "%s" checked out by user "%s"',
-                    self.document, self.user
-                )
+            logger.info(
+                'Document "%s" checked out by user "%s"',
+                self.document, self.user
+            )
 
-            return result
+        return result
 
 
 class CheckedOutDocument(Document):

@@ -2,7 +2,6 @@ from datetime import timedelta
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.converter.queues import queue_converter
 from mayan.apps.task_manager.classes import CeleryQueue
 from mayan.apps.task_manager.workers import worker_b, worker_c
 
@@ -20,15 +19,6 @@ queue_uploads = CeleryQueue(
 )
 queue_documents = CeleryQueue(
     name='documents', label=_('Documents'), worker=worker_b
-)
-
-queue_converter.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_document_file_page_image_generate',
-    label=_('Generate document file page image')
-)
-queue_converter.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_document_version_page_image_generate',
-    label=_('Generate document version page image')
 )
 
 queue_documents.add_task_type(
@@ -76,4 +66,8 @@ queue_uploads.add_task_type(
 queue_uploads.add_task_type(
     dotted_path='mayan.apps.documents.tasks.task_document_file_upload',
     label=_('Upload new document file')
+)
+queue_uploads.add_task_type(
+    dotted_path='mayan.apps.documents.tasks.task_document_upload',
+    label=_('Upload new document')
 )

@@ -12,7 +12,8 @@ from .layers import layer_redactions
 from .transformations import *  # NOQA
 from .permissions import (
     permission_redaction_create, permission_redaction_delete,
-    permission_redaction_edit, permission_redaction_view
+    permission_redaction_edit, permission_redaction_exclude,
+    permission_redaction_view
 )
 
 logger = logging.getLogger(name=__name__)
@@ -53,6 +54,7 @@ class RedactionsApp(MayanAppConfig):
                 permission_redaction_create,
                 permission_redaction_delete,
                 permission_redaction_edit,
+                permission_redaction_exclude,
                 permission_redaction_view
             )
         )
@@ -61,6 +63,7 @@ class RedactionsApp(MayanAppConfig):
                 permission_redaction_create,
                 permission_redaction_delete,
                 permission_redaction_edit,
+                permission_redaction_exclude,
                 permission_redaction_view
             )
         )

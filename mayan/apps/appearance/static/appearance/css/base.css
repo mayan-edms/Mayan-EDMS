@@ -11,10 +11,6 @@
         url('../fonts/IM_Fell_English_SC.ttf') format('truetype');
 }
 
-body {
-    padding-top: 60px;
-}
-
 .navbar-brand {
     font-family: "IM Fell English SC", serif;
 }
@@ -33,11 +29,12 @@ body {
 }
 
 #carousel-container {
-    overflow-x: scroll; height: 500px;
+    overflow-y: scroll;
 }
 
 #carousel-container img {
     max-width: 100%;
+    min-width: 100%;
 }
 
 .carousel-item {
@@ -236,11 +233,6 @@ a i {
     margin-top: 3px;
 }
 
-.staging-file-thumbnail-container {
-    width: 150px;
-    margin: auto;
-}
-
 .thin_border-thumbnail {
   display: block;
   max-width: 100%;
@@ -341,6 +333,8 @@ a i {
 }
 
 #viewport {
+    height: 100%;
+    padding-top: 60px;
     width: 100%;
 }
 

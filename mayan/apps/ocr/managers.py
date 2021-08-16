@@ -3,7 +3,7 @@ import logging
 from django.apps import apps
 from django.db import models
 
-from mayan.apps.documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT
+from mayan.apps.converter.settings import setting_image_generation_timeout
 from mayan.apps.lock_manager.backends.base import LockingBackend
 
 from .classes import OCRBackendBase
@@ -38,8 +38,8 @@ class DocumentVersionPageOCRContentManager(models.Manager):
 
         try:
             document_version_page_lock = LockingBackend.get_backend().acquire_lock(
-                name=lock_name, timeout=DOCUMENT_IMAGE_TASK_TIMEOUT * 2
-
+                name=lock_name,
+                timeout=setting_image_generation_timeout.value * 2
             )
         except Exception:
             raise

@@ -51,7 +51,7 @@ class Link:
         conditional_active=None, conditional_disable=None, description=None,
         html_data=None, html_extra_classes=None, icon=None,
         keep_query=False, kwargs=None, name=None, permissions=None,
-        remove_from_query=None, tags=None, url=None
+        query=None, remove_from_query=None, tags=None, url=None
     ):
         self.args = args or []
         self.badge_text = badge_text
@@ -66,6 +66,7 @@ class Link:
         self.kwargs = kwargs or {}
         self.name = name
         self.permissions = permissions or []
+        self.query = query or {}
         self.remove_from_query = remove_from_query or []
         self.tags = tags
         self.text = text
@@ -206,6 +207,22 @@ class Link:
             # Use the link's URL but with the previous URL querystring.
             new_url = furl(url=resolved_link.url)
             new_url.args = parsed_url.querystr
+            resolved_link.url = new_url.url
+
+        if self.query:
+            new_url = furl(url=resolved_link.url)
+            for key, value in self.query.items():
+                try:
+                    value = Variable(var=value).resolve(context=context)
+                except VariableDoesNotExist:
+                    """
+                    Not fatal. Variable resolution here is perform as if
+                    resolving a template variable. Non existing results
+                    are not updated.
+                    """
+                else:
+                    new_url.args[key] = value
+
             resolved_link.url = new_url.url
 
         resolved_link.context = context
@@ -367,8 +384,8 @@ class Menu:
         for resolved_navigation_object in resolved_navigation_object_list:
             resolved_links = []
 
-            # Check to see if object is a proxy model. If it is, add its parent model
-            # menu links too.
+            # Check to see if object is a proxy model. If it is, add its
+            # parent model menu links too.
             if hasattr(resolved_navigation_object, '_meta'):
                 if resolved_navigation_object._meta.model in self.proxy_inclusions:
                     parent_model = resolved_navigation_object._meta.proxy_for_model
@@ -392,10 +409,12 @@ class Menu:
                                 if resolved_link:
                                     if resolved_link.link not in self.unbound_links.get(bound_source, ()):
                                         resolved_links.append(resolved_link)
-                            # No need for further content object match testing.
+                            # No need for further content object match
+                            # testing.
                             break
                         elif hasattr(resolved_navigation_object, 'get_deferred_fields') and resolved_navigation_object.get_deferred_fields() and isinstance(resolved_navigation_object, bound_source):
-                            # Second try for objects using .defer() or .only()
+                            # Second try for objects using .defer() or
+                            # .only().
                             for link in links:
                                 resolved_link = link.resolve(
                                     context=context,
@@ -404,7 +423,8 @@ class Menu:
                                 if resolved_link:
                                     if resolved_link.link not in self.unbound_links.get(bound_source, ()):
                                         resolved_links.append(resolved_link)
-                            # No need for further content object match testing.
+                            # No need for further content object match
+                            # testing.
                             break
 
                 except TypeError:
@@ -415,8 +435,8 @@ class Menu:
             # Remove duplicated resolved link by using their source link
             # instance as reference. The actual resolved link can't be used
             # since a single source link can produce multiple resolved links.
-            # Since dictionaries keys can't have duplicates, we use that as a
-            # native deduplicator.
+            # Since dictionaries keys can't have duplicates, we use that as
+            # a native deduplicator.
             resolved_links_dict = {}
             for resolved_link in resolved_links:
                 resolved_links_dict[resolved_link.link] = resolved_link
@@ -703,7 +723,7 @@ class SourceColumn:
         self.empty_value = empty_value
         self.exclude = set()
         self.func = func
-        self.html_extra_classes = html_extra_classes
+        self.html_extra_classes = html_extra_classes or ''
         self.is_attribute_absolute_url = is_attribute_absolute_url
         self.is_object_absolute_url = is_object_absolute_url
         self.is_identifier = is_identifier

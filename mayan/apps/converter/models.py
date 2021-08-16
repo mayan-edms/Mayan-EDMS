@@ -83,7 +83,8 @@ class Asset(ExtraDataModelMixin, models.Model):
         self.file.storage.delete(name=self.file.name)
         return super().delete(*args, **kwargs)
 
-    def generate_image(self):
+    def generate_image(self, user=None):
+        # The `user` parameter is not used, but added to retain compatibility.
         cache_filename = '{}'.format(self.get_hash())
 
         if self.cache_partition.get_file(filename=cache_filename):

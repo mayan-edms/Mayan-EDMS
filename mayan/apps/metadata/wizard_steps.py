@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.metadata.api import (
-    decode_metadata_from_querystring, save_metadata_list
+    decode_metadata_from_query_string, save_metadata_list
 )
 from mayan.apps.metadata.forms import DocumentMetadataFormSet
 from mayan.apps.sources.classes import DocumentCreateWizardStep
@@ -56,8 +56,8 @@ class DocumentCreateWizardStepMetadata(DocumentCreateWizardStep):
         return result
 
     @classmethod
-    def step_post_upload_process(cls, document, querystring=None):
-        metadata_dict_list = decode_metadata_from_querystring(querystring=querystring)
+    def step_post_upload_process(cls, document, query_string=None):
+        metadata_dict_list = decode_metadata_from_query_string(query_string=query_string)
         if metadata_dict_list:
             save_metadata_list(
                 metadata_list=metadata_dict_list, document=document,

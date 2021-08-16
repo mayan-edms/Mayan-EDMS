@@ -49,3 +49,23 @@ class RecentlyCreatedDocumentAPIViewTestCase(
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
+
+    def test_trashed_document_recently_created_document_api_list_view_with_access(self):
+        recently_created_document_count = RecentlyCreatedDocument.objects.count()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_recently_created_document_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(
+            response.data['count'], recently_created_document_count - 1
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)

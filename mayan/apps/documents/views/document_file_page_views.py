@@ -11,6 +11,9 @@ from django.views.generic import RedirectView
 from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.settings import setting_home_view
 from mayan.apps.converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
+from mayan.apps.converter.transformations import (
+    TransformationResize, TransformationRotate, TransformationZoom
+)
 from mayan.apps.views.generics import (
     MultipleObjectConfirmActionView, SimpleView, SingleObjectListView
 )
@@ -26,7 +29,8 @@ from ..permissions import (
     permission_document_file_tools, permission_document_file_view
 )
 from ..settings import (
-    setting_rotation_step, setting_zoom_percent_step, setting_zoom_max_level,
+    setting_display_height, setting_display_width, setting_rotation_step,
+    setting_zoom_percent_step, setting_zoom_max_level,
     setting_zoom_min_level
 )
 from ..tasks import task_document_file_page_count_update
@@ -211,8 +215,22 @@ class DocumentFilePageView(ExternalObjectViewMixin, SimpleView):
         zoom = int(self.request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
         rotation = int(self.request.GET.get('rotation', DEFAULT_ROTATION))
 
+        transformation_instance_list = (
+            TransformationResize(
+                height=setting_display_height.value,
+                width=setting_display_width.value
+            ),
+            TransformationRotate(
+                degrees=rotation,
+            ),
+            TransformationZoom(
+                percent=zoom,
+            )
+        )
+
         document_file_page_form = DocumentFilePageForm(
-            instance=self.external_object, rotation=rotation, zoom=zoom
+            instance=self.external_object,
+            transformation_instance_list=transformation_instance_list
         )
 
         base_title = _('Image of: %s') % self.external_object
@@ -263,7 +281,7 @@ class DocumentFilePageInteractiveTransformation(
         )
 
         self.transformation_function(query_dict=query_dict)
-        # Refresh query_dict to args reference
+        # Refresh query_dict to args reference.
         url.args = query_dict
 
         return url.tostr()

@@ -53,6 +53,31 @@ class FavoriteDocumentAPIViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
+    def test_trashed_document_favorite_document_create_api_view_with_access(self):
+        favorite_document_count = FavoriteDocument.objects.count()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_view
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_favorite_document_create_api_view()
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        self.assertEqual(
+            FavoriteDocument.objects.count(), favorite_document_count + 1
+        )
+        self.assertEqual(
+            self.test_favorite_document.document.pk, self.test_document.pk
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_favorite_document_delete_api_view_no_permission(self):
         self._test_document_favorite_add()
 
@@ -79,6 +104,30 @@ class FavoriteDocumentAPIViewTestCase(
             obj=self.test_document,
             permission=permission_document_view
         )
+
+        self._clear_events()
+
+        response = self._request_test_favorite_document_delete_api_view()
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+        self.assertEqual(
+            FavoriteDocument.objects.count(), favorite_document_count - 1
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_trashed_document_favorite_document_delete_api_view_with_access(self):
+        self._test_document_favorite_add()
+
+        favorite_document_count = FavoriteDocument.objects.count()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_view
+        )
+
+        self.test_document.delete()
 
         self._clear_events()
 
@@ -123,6 +172,28 @@ class FavoriteDocumentAPIViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
+    def test_trashed_document_favorite_document_detail_api_view_with_access(self):
+        self._test_document_favorite_add()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_view
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_favorite_document_detail_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(
+            response.data['document']['label'],
+            self.test_document.label
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_favorite_document_list_api_view_no_permission(self):
         self._test_document_favorite_add()
 
@@ -146,6 +217,31 @@ class FavoriteDocumentAPIViewTestCase(
             obj=self.test_document,
             permission=permission_document_view
         )
+
+        self._clear_events()
+
+        response = self._request_test_favorite_document_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], favorite_document_count)
+        self.assertEqual(
+            response.data['results'][0]['document']['label'],
+            self.test_document.label
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_trashed_document_favorite_document_list_api_view_with_access(self):
+        self._test_document_favorite_add()
+
+        favorite_document_count = FavoriteDocument.objects.count()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_view
+        )
+
+        self.test_document.delete()
 
         self._clear_events()
 

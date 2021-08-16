@@ -46,10 +46,13 @@ def hook_factory_document_file_check_quota(klass):
             )
         # Fake DocumentFile to be able to reuse the
         # .process() method for pre check.
-        shared_uploaded_file = kwargs['kwargs']['shared_uploaded_file']
-        if shared_uploaded_file:
+        #shared_uploaded_file = kwargs['kwargs']['shared_uploaded_file']
+        file_object = kwargs['kwargs']['file_object']
+
+        if file_object:
             fake_document_instance = types.SimpleNamespace(
-                file=kwargs['kwargs']['shared_uploaded_file'].file,
+                #file=kwargs['kwargs']['shared_uploaded_file'].file,
+                file=file_object.file,
                 document=document,
                 pk=None
             )

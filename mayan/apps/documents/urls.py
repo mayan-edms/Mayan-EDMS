@@ -28,8 +28,8 @@ from .api_views.recently_created_document_api_views import (
     APIRecentlyCreatedDocumentListView
 )
 from .api_views.trashed_document_api_views import (
-    APITrashedDocumentListView, APITrashedDocumentRestoreView,
-    APITrashedDocumentDetailView
+    APITrashedDocumentDetailView, APITrashedDocumentListView,
+    APITrashedDocumentRestoreView, APITrashedDocumentImageView
 )
 from .views.document_file_views import (
     DocumentFileDeleteView, DocumentFileDownloadView, DocumentFileEditView,
@@ -657,6 +657,11 @@ api_urls_trashed_documents = [
         name='trasheddocument-restore',
         view=APITrashedDocumentRestoreView.as_view()
     ),
+    url(
+        regex=r'^trashed_documents/(?P<document_id>[0-9]+)/image/$',
+        name='trasheddocument-image',
+        view=APITrashedDocumentImageView.as_view()
+    )
 ]
 
 api_urls = []
