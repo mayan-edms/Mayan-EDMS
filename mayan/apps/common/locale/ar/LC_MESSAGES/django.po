@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:20+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: WM Shinkada <shinkadawasim@gmail.com>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:125 permissions.py:5 settings.py:14
+#: apps.py:129 permissions.py:5 settings.py:14
 msgid "Common"
 msgstr "المشتركة"
 
@@ -202,13 +202,13 @@ msgstr ""
 "اسم العرض المرفق بعلامة العلامة التجارية في القائمة الرئيسية. هذه هي أيضًا "
 "طريقة العرض التي سيتم إعادة توجيه المستخدمين إليها بعد تسجيل الدخول."
 
-#: settings.py:71
-msgid "Name to be displayed in the main menu."
-msgstr "الاسم الذي سيتم عرضه في القائمة الرئيسية."
+#: settings.py:70
+msgid "Sets the project's name."
+msgstr ""
 
-#: settings.py:77
-msgid "URL of the installation or homepage of the project."
-msgstr "عنوان URL الخاص بالتثبيت أو الصفحة الرئيسية للمشروع."
+#: settings.py:74
+msgid "URL of the project's homepage."
+msgstr ""
 
 #: templates/common/app/viewport.html:9
 msgid "Warning"

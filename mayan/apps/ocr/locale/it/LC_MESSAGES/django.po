@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -23,29 +23,29 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:52 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
+#: apps.py:55 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
 #: search.py:17 settings.py:11
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:103
+#: apps.py:106
 msgid "The OCR content."
 msgstr "Il contenuto OCR."
 
-#: apps.py:108
+#: apps.py:111
 msgid "A generator returning the document's pages OCR content."
 msgstr ""
 "Un generatore che restituisce il contenuto OCR delle pagine del documento."
 
-#: apps.py:109
+#: apps.py:112
 msgid "OCR content"
 msgstr "Contenuto OCR"
 
-#: apps.py:133
+#: apps.py:138
 msgid "Date and time"
 msgstr "Data e ora"
 
-#: apps.py:136 models.py:50
+#: apps.py:141 models.py:50
 msgid "Result"
 msgstr "Risultato"
 
@@ -58,16 +58,16 @@ msgid "Free Open Source OCR Engine"
 msgstr "Motore OCR open source gratuito"
 
 #: events.py:8
-msgid "Document OCR content deleted"
-msgstr "Contenuto OCR del documento eliminato"
+msgid "Document version OCR content deleted"
+msgstr ""
 
 #: events.py:12
-msgid "Document file submitted for OCR"
-msgstr ""
+msgid "Document version submitted for OCR"
+msgstr "Versione del documento inviata per OCR"
 
 #: events.py:16
-msgid "Document file OCR finished"
-msgstr ""
+msgid "Document version OCR finished"
+msgstr "OCR versione documento terminato"
 
 #: forms.py:14 forms.py:47
 msgid "Contents"

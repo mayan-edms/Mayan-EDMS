@@ -36,7 +36,7 @@ Docker Compose installation
 
 #. Download the Mayan EDMS Docker Compose files:
 
-   The files are located at: https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/docker/
+   The files are located at: https://gitlab.com/mayan-edms/mayan-edms/-/tree/master/docker/
 
    .. code-block:: console
 

@@ -30,7 +30,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'q': 'first'}, user=self._test_case_user
+            query={'q': 'first'}, user=self._test_case_user
         )
 
         self.assertEqual(queryset.count(), 1)
@@ -45,7 +45,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'label': self.test_document.label},
+            query={'label': self.test_document.label},
             user=self._test_case_user
         )
 
@@ -55,7 +55,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
         # Test versions__mimetype
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={
+            query={
                 'versions__mimetype': self.test_document.file_latest.mimetype
             }, user=self._test_case_user
         )
@@ -71,7 +71,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'q': 'OR first'}, user=self._test_case_user
+            query={'q': 'OR first'}, user=self._test_case_user
         )
 
         self.assertEqual(queryset.count(), 1)
@@ -87,7 +87,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
         )
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'q': 'first OR second'}, user=self._test_case_user
+            query={'q': 'first OR second'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
         self.assertTrue(self.test_documents[0] in queryset)
@@ -106,7 +106,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'label': 'first OR second'},
+            query={'label': 'first OR second'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
@@ -122,14 +122,14 @@ class DjangoSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'q': 'non_valid second'},
+            query={'q': 'non_valid second'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'q': 'second non_valid'},
+            query={'q': 'second non_valid'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
@@ -143,35 +143,35 @@ class DjangoSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'q': '-non_valid second'},
+            query={'q': '-non_valid second'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'label': '-second'},
+            query={'label': '-second'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'label': '-second -Mayan'},
+            query={'label': '-second -Mayan'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'label': '-second OR -Mayan'},
+            query={'label': '-second OR -Mayan'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'label': '-non_valid -second'},
+            query={'label': '-non_valid -second'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
@@ -185,14 +185,14 @@ class DjangoSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'label': '-second-document'},
+            query={'label': '-second-document'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'label': '-"second-document"'},
+            query={'label': '-"second-document"'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
@@ -206,7 +206,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'uuid': force_text(s=self.test_document.uuid)},
+            query={'uuid': force_text(s=self.test_document.uuid)},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
@@ -242,7 +242,7 @@ class WhooshSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'q': 'first*'}, user=self._test_case_user
+            query={'q': 'first*'}, user=self._test_case_user
         )
 
         self.assertEqual(queryset.count(), 1)
@@ -256,7 +256,7 @@ class WhooshSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={
+            query={
                 'files__mimetype': self.test_document.file_latest.mimetype
             }, user=self._test_case_user
         )
@@ -272,7 +272,7 @@ class WhooshSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'q': 'OR first*'}, user=self._test_case_user
+            query={'q': 'OR first*'}, user=self._test_case_user
         )
 
         self.assertEqual(queryset.count(), 1)
@@ -288,7 +288,7 @@ class WhooshSearchBackendDocumentSearchTestCase(
         )
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'q': 'first* OR second*'}, user=self._test_case_user
+            query={'q': 'first* OR second*'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
         self.assertTrue(self.test_documents[0] in queryset)
@@ -307,7 +307,7 @@ class WhooshSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'label': 'first* OR second*'},
+            query={'label': 'first* OR second*'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
@@ -323,14 +323,14 @@ class WhooshSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'q': 'non_valid AND second*'},
+            query={'q': 'non_valid AND second*'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'q': 'second* AND non_valid'},
+            query={'q': 'second* AND non_valid'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
@@ -344,7 +344,7 @@ class WhooshSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'uuid': force_text(s=self.test_document.uuid)},
+            query={'uuid': force_text(s=self.test_document.uuid)},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)

@@ -1,0 +1,102 @@
+Version 4.0.13
+==============
+
+Released: August 2, 2021
+
+Status: Stable
+
+Changes
+-------
+
+
+Cabinets
+^^^^^^^^
+
+The document cabinet list link was updated to require the same permission
+scheme as the view it references.
+
+
+Documents
+^^^^^^^^^
+
+The document creation date time was enabled as a search field. The format of
+the date and time search field follows the scheme
+``year-month-day hour:minute:seconds``.
+
+
+Indexing
+^^^^^^^^
+
+The document index instance list link was updated to require the same
+permission scheme as the view it references.
+
+
+OCR
+^^^
+
+The OCR submit GUI and API views now track correctly the user initiating the
+action when committing the event.
+
+The text of the OCR events was fixed.
+
+
+Organizations
+^^^^^^^^^^^^^
+
+The organization URL and host settings were improved. Django's ``HttpRequest``
+is now patched to make it easier to override the scheme and host of the
+installation.
+
+The organization setting used to set the REST API URL base path was fixed.
+API endpoints that generate an URL now take into account the setting.
+
+
+Other
+^^^^^
+
+- Checkout test updates.
+
+  - Silence debug output of tests.
+  - Speed up tests using document stubs.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`966` Feature Request: Configurable sceme part of returned URIs (at least for the API)
+- :gitlab-issue:`1002` Make mayan-edms work in a subdirectory
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
+

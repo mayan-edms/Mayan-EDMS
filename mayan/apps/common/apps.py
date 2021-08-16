@@ -10,7 +10,7 @@ from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.organizations.settings import setting_organization_installation_url
+from mayan.apps.organizations.settings import setting_organization_url_base_path
 from mayan.apps.templating.classes import AJAXTemplate
 
 from .handlers import handler_pre_initial_setup, handler_pre_upgrade
@@ -33,11 +33,11 @@ class MayanAppConfig(apps.AppConfig):
     app_namespace = None
     app_url = None
 
-    def ready(self):
-        logger.debug('Initializing app: %s', self.name)
+    def configure_urls(self):
+        # Hidden import.
         from mayan.urls import urlpatterns as mayan_urlpatterns
 
-        installation_base_url = setting_organization_installation_url.value
+        installation_base_url = setting_organization_url_base_path.value
         if installation_base_url:
             installation_base_url = '{}/'.format(installation_base_url)
         else:
@@ -111,6 +111,10 @@ class MayanAppConfig(apps.AppConfig):
                     )
                 ),
             )
+
+    def ready(self):
+        logger.debug('Initializing app: %s', self.name)
+        self.configure_urls()
 
 
 class CommonApp(MayanAppConfig):

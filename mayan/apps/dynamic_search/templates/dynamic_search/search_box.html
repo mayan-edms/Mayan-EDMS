@@ -61,8 +61,8 @@
 
 <script>
     jQuery(document).ready(function() {
-        var $selectSearchModel = $('#selectSearchModel');
-        var $btnSearchAdvanced = $('#btnSearchAdvanced');
+        const $selectSearchModel = $('#selectSearchModel');
+        const $btnSearchAdvanced = $('#btnSearchAdvanced');
         $btnSearchAdvanced.attr('href', "{% url 'search:search_advanced' %}?{% search_get_search_model_name_query_variable %}=" + $selectSearchModel.val());
         $selectSearchModel.change(function () {
             $btnSearchAdvanced.attr('href', "{% url 'search:search_advanced' %}?{% search_get_search_model_name_query_variable %}=" + $(this).val());

@@ -11,8 +11,9 @@ from ...models import Document, DocumentType
 from ...search import document_file_page_search, document_search
 
 from ..literals import (
-    TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_DOCUMENT_TYPE_LABEL,
-    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH
+    DEFAULT_DOCUMENT_STUB_LABEL, TEST_DOCUMENT_DESCRIPTION_EDITED,
+    TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_FILENAME,
+    TEST_SMALL_DOCUMENT_PATH
 )
 
 
@@ -95,14 +96,14 @@ class DocumentSearchTestMixin:
     def _perform_document_file_page_search(self):
         return self.search_backend.search(
             search_model=document_file_page_search,
-            query_string={'q': self.test_document.label},
+            query={'q': self.test_document.label},
             user=self._test_case_user
         )
 
     def _perform_document_search(self):
         return self.search_backend.search(
             search_model=document_search,
-            query_string={'q': self.test_document.label},
+            query={'q': self.test_document.label},
             user=self._test_case_user
         )
 
@@ -137,7 +138,9 @@ class DocumentTestMixin:
     def _create_test_document_stub(self, document_type=None, label=None):
         self.test_document_stub = Document.objects.create(
             document_type=document_type or self.test_document_type,
-            label=label or 'document_stub'
+            label=label or '{}_{}'.format(
+                DEFAULT_DOCUMENT_STUB_LABEL, len(self.test_documents)
+            )
         )
         self.test_document = self.test_document_stub
         self.test_documents.append(self.test_document)

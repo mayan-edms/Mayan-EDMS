@@ -595,18 +595,18 @@ a i {
     padding-bottom: 0px;
 }
 
-#accordion-sidebar ul.list-unstyled {
-    margin-bottom: 0px;
+#accordion-sidebar .collapsed .accordion-indicator {
+   transform: rotate(90deg);
 }
 
-#accordion-sidebar .panel-body li {
-    padding: 9px;
+#accordion-sidebar ul.list-unstyled {
+    margin-bottom: 0px;
 }
 
 #accordion-sidebar .panel-body a {
     color: white;
     text-decoration: none;
-    padding: 0px;
+    padding: 9px;
 }
 
 .navbar-fixed-top {

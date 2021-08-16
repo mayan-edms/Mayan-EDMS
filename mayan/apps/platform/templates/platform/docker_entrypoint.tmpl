@@ -1,7 +1,4 @@
-#!/bin/bash
-
-# Use bash and not sh to support argument slicing "${@:2}"
-# sh defaults to dash instead of bash.
+#!/bin/sh
 
 set -e
 echo "mayan: starting entrypoint.sh"
@@ -139,7 +136,7 @@ update_uid_gid() {
 }
 
 # Start execution here.
-wait.sh ${MAYAN_DOCKER_WAIT}
+${MAYAN_PYTHON_BIN_DIR}python3 /usr/local/bin/wait.py ${MAYAN_DOCKER_WAIT}
 update_uid_gid
 os_package_installs || true
 pip_installs || true
@@ -149,19 +146,21 @@ case "$1" in
 
 run_all)
     make_ready
-    run_all.sh
+    /usr/local/bin/run_all.sh
     ;;
 
 run_celery)
-    run_celery.sh "${@:2}"
+    shift
+    /usr/local/bin/run_celery.sh "${@}"
     ;;
 
 run_command)
-    su mayan -c "${MAYAN_BIN} ${@:2}"
+    shift
+    su mayan -c "${MAYAN_BIN} ${@}"
     ;;
 
 run_frontend)
-    run_frontend.sh
+    /usr/local/bin/run_frontend.sh
     ;;
 
 run_initialsetup)
@@ -174,11 +173,13 @@ run_performupgrade)
 
 run_tests)
     make_ready
-    run_tests.sh "${@:2}"
+    shift
+    /usr/local/bin/run_tests.sh "${@}"
     ;;
 
 run_worker)
-    run_worker.sh "${@:2}"
+    shift
+    /usr/local/bin/run_worker.sh "${@}"
     ;;
 
 *)

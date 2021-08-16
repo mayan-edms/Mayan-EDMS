@@ -1,3 +1,124 @@
+4.0.15 (2021-08-07)
+===================
+- Improve the document version export API endpoint.
+
+  - Enable tracking the user and persisting the value for the events.
+  - Change the view class form a custom mixin to be a subclass of
+    `generics.ObjectActionAPIView` one.
+  - Improve test to check for message creation after export.
+  - Avoid returning an error when using the `GET` method for the view.
+
+- Improve the `generics.ObjectActionAPIView` class.
+
+  - Merge with `ActionAPIViewMixin`.
+  - Add `action_response_status` for predetermined status codes.
+  - Add message when the `.object_action` method is missing.
+
+- Fix the view to mark all messages as read.
+- Track the user when marking messages as read or unread.
+- Fix action messages.    
+
+4.0.14 (2021-08-05)
+===================
+- Fix a regression in the document version page image cache maximum size
+  setting callback.
+- Fix converter layer priority exclusion for layers with a priority of 0.
+  This fixes the preview layer priority when editing the redactions of pages
+  that also contain transformations in other layers.
+
+4.0.13 (2021-08-02)
+===================
+- Checkout test updates.
+
+  - Silence debug output of tests.
+  - Speed up tests using document stubs.
+
+- Improve organization URL and host settings. Closes GitLab issues
+  #966 and #1002. Thanks to None Given (@nastodon) and
+  Bw (@bwakkie) for the reports.
+
+  - Patch Django's HttpRequest object to override scheme
+    and host.
+  - Fix organization setting used to set the REST API URL
+    base path.
+
+- Track user for event when submitting a document version for OCR.
+- Fix OCR version event texts.
+- Update the document index list and document cabinet list links to require
+  the same permission scheme as the views they reference.
+- Add the document creation date time as a search field.
+
+4.0.12 (2021-07-19)
+===================
+- Fix main menu active entry handling.
+- Fix ID number in ``document_url`` attribute of the ``DocumentFile``
+  and ``DocumentVersion`` serializers. Thanks to forum user @qra for the
+  report. Topic 5794.
+- Add API endpoint to display the list of valid transition options for a
+  workflow instance. Thanks to forum user @qra for the report. Topic 5795.
+- Add the workflow template content to the workflow instance API schema.
+  Thanks to forum user @qra for the request. Topic 5795.
+- Clarify purpose of project settings.
+- Minor API serializer cleanups.
+- Add explicit cabinet serializer read only fields.
+- Fix multi scope search result initialization. Closes GitLab issue #1018.
+  Thanks to Ryan Showalter (@ryanshow) for the report.
+- Detect and report when a search scope does not specify a query.
+
+4.0.11 (2021-07-06)
+===================
+- Update date time copy code from migration document:0063 to work with
+  database that store time zone information and those that don't.
+- Switch deployment instructions to use ``venv`` instead of ``virtualenv``.
+- Add support for using local PIP cache to build Docker images.
+- Add a Vagrant setup for testing. Integrates project
+  https://gitlab.com/mayan-edms/mayan-edms-vagrant. Closes GitLab issue
+  #937. Thanks to Max Kornyev (@mkornyev) for the report.
+- Improve ``user_settings_folder`` variable creation. Works with
+  ``MEDIA_ROOT`` paths with and without a trailing slash.
+- The GitLab CI upgrade tests now update a test document to populate the
+  older version install and trigger more migration code paths.
+- Update all shell usage from ``bash`` to ``sh``. ``sh`` symlinks to ``dash``
+  in the Docker image. This also expands the usability of the supervisor
+  file for direct deployments in more operating systems. Closes GitLab
+  issue #1013. Thanks to joh-ku (@joh-ku) for the report.
+- Replace the ``wait.sh`` file with a Python alternative that can wait on
+  network ports or PostgreSQL directly as a client.
+- Upgrade ``supervisord`` from Debian buster version 3.3.5-1 to Debian
+  bullseye version 4.2.2-2. This version uses Python3 and was the last
+  dependency that required installing Python2 in the Docker image.
+- Add the ``id`` field as sortable field in all the API that have ordering
+  enabled.
+
+4.0.10 (2021-07-02)
+===================
+- Simplify code block to delete OCR content of a document version.
+- Make document version timestamp time zone aware before copying them over
+  during migration.
+- Split duplicates migration query into two separate queries to increase
+  compatibility with database managers.
+- Add support to the GitLab CI for local apt proxies.
+
+4.0.9 (2021-06-29)
+==================
+- Improve scope search.
+
+  - Support more than two source scopes per operator.
+  - Support ``match_all`` logic per scope.
+  - Support returning a single scope without using the operator output.
+  - Disable search limits when multiple scopes are specified.
+  - Add separate query decoding method.
+
+- Increase the padding of the main menu panel anchors. Closes GitLab issue
+  #1004. Thanks to Bw (@bwakkie) for the report.
+- Rotate the main menu accordion indicator when opened or closed.
+- Optimize jQuery usage of the $(this) object. Remove some unused jQuery
+  code from the document card update methods.
+- Add more uses of ``update_fields`` to ``.save()`` methods.
+- Simplify logic using the document parser content update using
+  ``update_or_create``.
+- Raise document list errors on debug or testing.
+
 4.0.8 (2021-06-23)
 ==================
 - Update PIP to version 21.1.2.

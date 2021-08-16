@@ -51,7 +51,7 @@ class APIDocumentOCRSubmitView(generics.GenericAPIView):
         return None
 
     def post(self, request, *args, **kwargs):
-        self.get_object().submit_for_ocr()
+        self.get_object().submit_for_ocr(_user=self.request.user)
         return Response(status=status.HTTP_202_ACCEPTED)
 
 
@@ -89,7 +89,7 @@ class APIDocumentVersionPageOCRContentView(generics.RetrieveAPIView):
         return Response(serializer.data)
 
 
-class APIDocumentVersionOCRContentView(generics.GenericAPIView):
+class APIDocumentVersionOCRSubmitView(generics.GenericAPIView):
     """
     post: Submit a document version for OCR.
     """
@@ -112,5 +112,5 @@ class APIDocumentVersionOCRContentView(generics.GenericAPIView):
         return None
 
     def post(self, request, *args, **kwargs):
-        self.get_object().submit_for_ocr()
+        self.get_object().submit_for_ocr(_user=self.request.user)
         return Response(status=status.HTTP_202_ACCEPTED)

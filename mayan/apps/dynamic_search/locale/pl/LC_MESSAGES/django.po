@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Dynamic search"
 msgstr "Dynamiczne wyszukiwanie"
 
-#: classes.py:265
+#: classes.py:290
 msgid "No search model matching the query"
 msgstr "Brak modelu wyszukiwania pasującego do zapytania"
 
@@ -43,16 +43,16 @@ msgstr ""
 "dopasowania wszystkich pól. Niezaznaczone oznacza, że zostaną zwrócone "
 "wyniki jeśli wartość z przynajmniej jednego pola zostanie dopasowane."
 
-#: forms.py:31 templates/dynamic_search/search_box.html:41
+#: forms.py:30 templates/dynamic_search/search_box.html:41
 msgid "Search terms"
 msgstr "Słowa do wyszukania"
 
 #: links.py:13 permissions.py:5 queues.py:8 settings.py:11
-#: templates/dynamic_search/search_box.html:45 views.py:124 views.py:137
+#: templates/dynamic_search/search_box.html:45 views.py:126 views.py:139
 msgid "Search"
 msgstr "Szukaj"
 
-#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:151
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:156
 msgid "Advanced search"
 msgstr "Zaawansowane wyszukiwanie"
 
@@ -60,7 +60,7 @@ msgstr "Zaawansowane wyszukiwanie"
 msgid "Search again"
 msgstr "Wyszukać ponownie"
 
-#: links.py:25 views.py:97
+#: links.py:25 views.py:99
 msgid "Reindex search backend"
 msgstr "Przeindeksuj silnik wyszukiwania"
 
@@ -117,7 +117,7 @@ msgstr "Brak wyników wyszukiwania"
 msgid "Search results for: %s"
 msgstr "Wyniki wyszukiwania dla: %s"
 
-#: views.py:93
+#: views.py:95
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
@@ -126,15 +126,15 @@ msgstr ""
 "wyszukiwania. Wyniki wyszukiwania ulegną zmianie podczas ponownego "
 "indeksowania silnika."
 
-#: views.py:99
+#: views.py:101
 msgid "This tool erases and populates the search backend's internal index."
 msgstr "To narzędzie usuwa i zapełnia wewnętrzny indeks silnika wyszukiwania."
 
-#: views.py:117
+#: views.py:119
 msgid "Search backend reindexing queued."
 msgstr "Ponowne indeksowanie silnika wyszukiwania oczekuje w kolejce."
 
-#: views.py:139
+#: views.py:141
 #, python-format
 msgid "Search for: %s"
 msgstr "Wyszukiwanie: %s"

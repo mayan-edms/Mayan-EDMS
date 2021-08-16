@@ -21,6 +21,12 @@ class DocumentCheckoutViewTestCase(
     DocumentCheckoutTestMixin, DocumentCheckoutViewTestMixin,
     GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_document_check_in_get_view_no_permission(self):
         self._check_out_test_document()
 
@@ -465,7 +471,15 @@ class DocumentCheckoutOptionsViewTestCase(
     DocumentCheckoutTestMixin, DocumentCheckoutViewTestMixin,
     GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_document_check_out_block_new_file_view(self):
+        self._silence_logger(name='mayan.apps.sources.links')
+
         self._create_test_user()
         self._check_out_test_document(user=self.test_user)
         file_count = DocumentFile.objects.count()

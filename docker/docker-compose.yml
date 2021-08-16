@@ -67,7 +67,7 @@ services:
     image: postgres:${MAYAN_DOCKER_POSTGRES_TAG:-10.15-alpine}
     networks:
       - bridge
-    # Disable to allow external access to the database.    
+    # Disable to allow external access to the database.
     # ports:
     #  - "5432:5432"
     restart: unless-stopped
@@ -115,8 +115,7 @@ services:
   frontend:
     <<: *mayan-container
     command:
-      - run_worker
-      - fast
+      - run_frontend
     ports:
       - "81:8000"
     profiles:
@@ -130,7 +129,7 @@ services:
     devices:
       - "/dev/fuse:/dev/fuse"
     entrypoint:
-      - /bin/bash
+      - /bin/sh
       - -c
       - 'mkdir --parents /mnt/index && chown mayan:mayan /mnt/index && /usr/local/bin/entrypoint.sh run_command "mountindex --allow-other creation_date /mnt/index"'  # Replace "creation_date" with the index of your choice.
     profiles:

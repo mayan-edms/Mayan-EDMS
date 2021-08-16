@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 from django.conf import settings
 from django.template import loader
@@ -160,6 +161,7 @@ class PlatformTemplateDockerSupervisord(PlatformTemplate):
     def get_context(self):
         return {
             'autorestart': 'false',
+            'shell_path': '/bin/sh',
             'stderr_logfile': '/dev/fd/2',
             'stderr_logfile_maxbytes': '0',
             'stdout_logfile': '/dev/fd/1',
@@ -269,8 +271,14 @@ class PlatformTemplateSupervisord(PlatformTemplate):
         )
 
     def get_context(self):
+        *_, user_settings_folder, media_root = self.variables
+
         return {
             'autorestart': 'true',
+            'shell_path': '/bin/sh',
+            'user_settings_folder': Path(
+                media_root.get_value()
+            ) / user_settings_folder.get_value(),
             'workers': Worker.all(),
         }
 

@@ -37,7 +37,7 @@ def hook_factory_document_check_quota(klass):
 
 def hook_factory_document_file_check_quota(klass):
     def hook_check_quota(**kwargs):
-        # Pass the real parent document or create a fake one
+        # Pass the real parent document or create a fake one.
         if 'document' in kwargs['kwargs']:
             document = kwargs['kwargs']['document']
         else:
@@ -128,7 +128,7 @@ class DocumentCountQuota(
             )
 
         if user:
-            # Admins are always excluded
+            # Admins are always excluded.
             if user.is_superuser or user.is_staff:
                 return 0
 
@@ -138,7 +138,7 @@ class DocumentCountQuota(
                 )
 
                 if not users.filter(pk=user.pk).exists():
-                    # User is not in the restricted list of users and groups
+                    # User is not in the restricted list of users and groups.
                     return 0
                 else:
                     content_type = ContentType.objects.get_for_model(
@@ -163,7 +163,7 @@ class DocumentCountQuota(
         return Document.objects.filter(**document_filter_kwargs).count()
 
     def process(self, **kwargs):
-        # Only for new documents
+        # Only for new documents.
         if not kwargs['instance'].pk:
             if self._get_user_document_count(user=kwargs.get('user')) >= self._allowed():
                 raise QuotaExceeded(

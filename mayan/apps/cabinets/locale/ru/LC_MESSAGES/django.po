@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:20+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
-#: events.py:5 forms.py:14 links.py:31 menus.py:14 models.py:50 models.py:174
+#: events.py:5 forms.py:14 links.py:30 menus.py:14 models.py:50 models.py:174
 #: permissions.py:5 search.py:56 views.py:155 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "Кабинеты"
@@ -48,35 +48,35 @@ msgstr "Документ добавлен в кабинет"
 msgid "Document removed from cabinet"
 msgstr "Документ удален из кабинета"
 
-#: links.py:37 links.py:49 workflow_actions.py:72
+#: links.py:36 links.py:48 workflow_actions.py:72
 msgid "Remove from cabinets"
 msgstr "Удалить из кабинетов"
 
-#: links.py:41 links.py:45 workflow_actions.py:29
+#: links.py:40 links.py:44 workflow_actions.py:29
 msgid "Add to cabinets"
 msgstr "Добавить в кабинеты"
 
-#: links.py:60
+#: links.py:59
 msgid "Add new level"
 msgstr "Добавить новый уровень"
 
-#: links.py:65 views.py:40
+#: links.py:64 views.py:40
 msgid "Create cabinet"
 msgstr "Создать кабинет"
 
-#: links.py:70
+#: links.py:69
 msgid "Delete"
 msgstr "Удалить"
 
-#: links.py:74
+#: links.py:73
 msgid "Edit"
 msgstr "Редактировать"
 
-#: links.py:82
+#: links.py:81
 msgid "All"
 msgstr "Все"
 
-#: links.py:86
+#: links.py:85
 msgid "Details"
 msgstr "Подробности"
 
@@ -182,13 +182,13 @@ msgid "List of children cabinets."
 msgstr "Список дочерних кабинетов."
 
 #: serializers.py:22
-msgid "The name of this cabinet level appended to the names of its ancestors."
-msgstr "Имя этого кабинета, соединенное с именами его предков."
-
-#: serializers.py:28
 msgid ""
 "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr "URL-адрес API, показывающий список документов внутри этого кабинета."
+
+#: serializers.py:29
+msgid "The name of this cabinet level appended to the names of its ancestors."
+msgstr "Имя этого кабинета, соединенное с именами его предков."
 
 #: templates/cabinets/cabinet_details.html:17
 msgid "Navigation:"

@@ -35,16 +35,16 @@ class LayerTransformationManager(models.Manager):
             object_layer__object_id=obj.pk, object_layer__enabled=True
         )
 
-        access_layers = StoredLayer.objects.all()
-        exclude_layers = StoredLayer.objects.none()
-
-        if maximum_layer_order:
+        if maximum_layer_order is not None:
             access_layers = StoredLayer.objects.filter(
                 order__lte=maximum_layer_order
             )
             exclude_layers = StoredLayer.objects.filter(
                 order__gt=maximum_layer_order
             )
+        else:
+            access_layers = StoredLayer.objects.all()
+            exclude_layers = StoredLayer.objects.none()
 
         for stored_layer in access_layers:
             try:

@@ -43,19 +43,19 @@ class MayanImage {
         });
 
         $('.lazy-load').one('load', function() {
-            $(this).hide();
-            $(this).show();
-            $(this).siblings('.spinner-container').remove();
-            $(this).removeClass('lazy-load pull-left');
+            const $this = $(this);
+
+            $this.siblings('.spinner-container').remove();
+            $this.removeClass('lazy-load pull-left');
             clearTimeout(MayanImage.timer);
             MayanImage.timer = setTimeout(MayanImage.timerFunction, 250);
         });
 
         $('.lazy-load-carousel').one('load', function() {
-            $(this).hide();
-            $(this).show();
-            $(this).siblings('.spinner-container').remove();
-            $(this).removeClass('lazy-load-carousel pull-left');
+            const $this = $(this);
+
+            $this.siblings('.spinner-container').remove();
+            $this.removeClass('lazy-load-carousel pull-left');
         });
     }
 
@@ -64,9 +64,9 @@ class MayanImage {
     }
 
     load () {
-        var self = this;
-        var container = this.element.parent().parent().parent();
-        var dataURL = this.element.attr('data-url');
+        const self = this;
+        const container = this.element.parent().parent().parent();
+        const dataURL = this.element.attr('data-url');
 
         if (dataURL === '') {
             container.html(MayanImage.options.templateInvalidImage);

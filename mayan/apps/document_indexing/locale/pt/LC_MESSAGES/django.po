@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "None"
 msgstr "Nenhum"
 
-#: admin.py:24 links.py:94 models.py:54
+#: admin.py:24 links.py:95 models.py:54
 msgid "Document types"
 msgstr ""
 
@@ -66,7 +66,7 @@ msgstr ""
 msgid "Index templates to be queued for rebuilding."
 msgstr ""
 
-#: forms.py:17 links.py:35 views/index_template_views.py:96
+#: forms.py:17 links.py:36 views/index_template_views.py:96
 msgid "Index templates"
 msgstr ""
 
@@ -78,44 +78,44 @@ msgstr ""
 msgid "Creation date"
 msgstr ""
 
-#: links.py:29 links.py:43 links.py:74 links.py:78 models.py:62
+#: links.py:30 links.py:44 links.py:75 links.py:79 models.py:62
 #: views/index_instance_views.py:43
 msgid "Indexes"
 msgstr "Índices"
 
-#: links.py:48 queues.py:24
+#: links.py:49 queues.py:24
 msgid "Rebuild index"
 msgstr ""
 
-#: links.py:55 links.py:64
+#: links.py:56 links.py:65
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Exclui e cria a partir do zero todos os índices de documentos."
 
-#: links.py:56
+#: links.py:57
 msgid "Rebuild indexes"
 msgstr ""
 
-#: links.py:65 views/index_template_views.py:345
+#: links.py:66 views/index_template_views.py:345
 msgid "Reset indexes"
 msgstr ""
 
-#: links.py:84 views/index_template_views.py:101
+#: links.py:85 views/index_template_views.py:101
 msgid "Create index"
 msgstr ""
 
-#: links.py:89 links.py:114
+#: links.py:90 links.py:115
 msgid "Delete"
 msgstr "Eliminar"
 
-#: links.py:98 links.py:118
+#: links.py:99 links.py:119
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:104
+#: links.py:105
 msgid "Tree template"
 msgstr ""
 
-#: links.py:109
+#: links.py:110
 msgid "New child node"
 msgstr ""
 

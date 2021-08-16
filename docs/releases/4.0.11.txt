@@ -1,0 +1,112 @@
+Version 4.0.11
+==============
+
+Released: July 07, 2021
+
+Status: Stable
+
+Changes
+-------
+
+
+API
+^^^
+
+The ``id`` field was added as a sortable field to all the API endpoints that
+have ordering enabled.
+
+
+Docker
+^^^^^^
+
+The ``wait.sh`` file was replaced with a Python alternative that can wait on
+network ports or PostgreSQL directly as a client.
+
+``supervisord`` was upgraded from Debian buster version 3.3.5-1 to Debian
+bullseye version 4.2.2-2. This version uses Python3 and was the last
+dependency that required installing Python2 in the Docker image.
+
+
+Documentation
+^^^^^^^^^^^^^
+
+Switch deployment instructions to use ``venv`` instead of ``virtualenv``.
+The direct deployment and the Docker image now use the same Python
+virtual environment alternative.
+
+
+Documents
+^^^^^^^^^
+
+Updated the date time copy code from migration document:0063 to work with
+databases that store time zone information and those that don't.
+
+
+GitLab CI
+^^^^^^^^^
+
+Added support for using local or external PIP caches to build Docker images.
+
+The GitLab CI upgrade tests now update a test document to populate the older
+version install and trigger more migration code paths.
+
+
+Platform
+^^^^^^^^
+
+Updated all shell usage from ``bash`` to ``sh``. ``sh`` symlinks to ``dash``
+in the Docker image. This also expands the usability of the supervisor
+file for direct deployments in more operating systems.
+
+Improved the way the ``user_settings_folder`` variable was created. It now
+works correctly with ``MEDIA_ROOT`` paths that contain a trailing slash and
+those that don't.
+
+
+Other
+^^^^^
+
+- Added a Vagrant setup for testing. Integrates project
+  https://gitlab.com/mayan-edms/mayan-edms-vagrant.
+
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`937` Direct deployment docs don't provide an automated setup script
+- :gitlab-issue:`1013` Supervisor template: variable name substitution fails on direct demployment
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

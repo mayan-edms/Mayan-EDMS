@@ -33,11 +33,11 @@
         $.getScript( "{% static 'cabinets/node_modules/jstree/dist/jstree.min.js' %}" )
             .done(function(script, textStatus) {
                 $(function () {
-                    var jstreeElement = $('#jstree');
+                    const jstreeElement = $('#jstree');
 
                     jstreeElement
-                    .on('select_node.jstree', function (e, data) {
-                        if(data.selected.length) {
+                    .on('select_node.jstree', function (event, data) {
+                        if (data.selected.length) {
                             partialNavigation.setLocation(data.instance.get_node(data.selected[0]).data.href);
                         }
                     })

@@ -3,6 +3,9 @@ Version 4.0.8
 
 Released: June 23, 2021
 
+Status: Stable
+
+
 Changes
 -------
 

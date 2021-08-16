@@ -141,7 +141,7 @@ class APIWorkflowTemplateListView(generics.ListCreateAPIView):
     """
     mayan_object_permissions = {'GET': (permission_workflow_template_view,)}
     mayan_view_permissions = {'POST': (permission_workflow_template_create,)}
-    ordering_fields = ('internal_name', 'label')
+    ordering_fields = ('id', 'internal_name', 'label')
     queryset = Workflow.objects.all()
     serializer_class = WorkflowTemplateSerializer
 
@@ -182,7 +182,7 @@ class APIWorkflowTemplateStateListView(generics.ListCreateAPIView):
     get: Returns a list of all the workflow template states.
     post: Create a new workflow template state.
     """
-    ordering_fields = ('completion', 'initial', 'label')
+    ordering_fields = ('completion', 'id', 'initial', 'label')
     serializer_class = WorkflowTemplateStateSerializer
 
     def get_instance_extra_data(self):
@@ -255,7 +255,7 @@ class APIWorkflowTemplateTransitionListView(
         'GET': (permission_workflow_template_view,),
         'POST': (permission_workflow_template_edit,),
     }
-    ordering_fields = ('destination_state', 'label', 'origin_state')
+    ordering_fields = ('destination_state', 'id', 'label', 'origin_state')
     serializer_class = WorkflowTemplateTransitionSerializer
 
     def get_instance_extra_data(self):
@@ -310,7 +310,7 @@ class APIWorkflowTemplateTransitionFieldListView(generics.ListCreateAPIView):
     get: Returns a list of all the workflow template transition fields.
     post: Create a new workflow template transition field.
     """
-    ordering_fields = ('label', 'name', 'required', 'widget_kwargs')
+    ordering_fields = ('id', 'label', 'name', 'required', 'widget_kwargs')
     serializer_class = WorkflowTransitionFieldSerializer
 
     def get_instance_extra_data(self):
@@ -387,7 +387,6 @@ class APIWorkflowTemplateTransitionFieldDetailView(generics.RetrieveUpdateDestro
 
 
 # Document workflow views
-
 
 class APIWorkflowInstanceListView(
     ExternalObjectAPIViewMixin, generics.ListAPIView
@@ -473,7 +472,7 @@ class APIWorkflowInstanceLogEntryListView(
         'GET': (permission_workflow_template_view,),
     }
     ordering_fields = (
-        'comment', 'transition', 'transition__destination_state',
+        'comment', 'id', 'transition', 'transition__destination_state',
         'transition__origin_state'
     )
     serializer_class = WorkflowInstanceLogEntrySerializer
@@ -491,6 +490,48 @@ class APIWorkflowInstanceLogEntryListView(
 
     def get_queryset(self):
         return self.get_workflow_instance().log_entries.all()
+
+    def get_workflow_instance(self):
+        workflow = get_object_or_404(
+            klass=self.external_object.workflows,
+            pk=self.kwargs['workflow_instance_id']
+        )
+
+        return workflow
+
+
+class APIWorkflowInstanceLogEntryTransitionListView(
+    ExternalObjectAPIViewMixin, generics.ListAPIView
+):
+    """
+    get: Returns a list of all the possible transition choices for the workflow instance.
+    """
+    external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid
+    mayan_external_object_permissions = {
+        'GET': (permission_workflow_template_view,),
+    }
+    mayan_object_permissions = {
+        'GET': (permission_workflow_template_view,),
+    }
+    ordering_fields = ('destination_state', 'id', 'origin_state')
+    serializer_class = WorkflowTemplateTransitionSerializer
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'workflow_instance': self.get_workflow_instance(),
+                }
+            )
+
+        return context
+
+    def get_queryset(self):
+        return self.get_workflow_instance().get_transition_choices(
+            _user=self.request.user
+        )
 
     def get_workflow_instance(self):
         workflow = get_object_or_404(

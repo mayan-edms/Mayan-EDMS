@@ -13,6 +13,12 @@ from .mixins import DocumentCheckoutTestMixin
 class CheckoutLinksTestCase(
     DocumentCheckoutTestMixin, GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def _resolve_document_check_out_link(self):
         self.add_test_view(test_object=self.test_document)
         context = self.get_test_view()
@@ -52,6 +58,12 @@ class CheckoutLinksTestCase(
 class DocumentFileListViewTestCase(
     DocumentCheckoutTestMixin, GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def _get_document_new_file_link(self):
         self.grant_access(
             obj=self.test_document,
@@ -67,6 +79,8 @@ class DocumentFileListViewTestCase(
         self.assertNotEqual(resolved_link, None)
 
     def test_document_file_new_blocked_different_user(self):
+        self._silence_logger(name='mayan.apps.sources.links')
+
         self._create_test_user()
         self._check_out_test_document(user=self.test_user)
 

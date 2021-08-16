@@ -6,14 +6,15 @@
 # Translators:
 # Lory977 <helga.carrero@gmail.com>, 2021
 # Roberto Rosario, 2021
+# JAIRO DAVILA <jdavilaco@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"Last-Translator: JAIRO DAVILA <jdavilaco@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -276,7 +277,7 @@ msgstr "Iniciar todos los flujos de trabajo"
 
 #: literals.py:18
 msgid "Character"
-msgstr "Caracter"
+msgstr "Carácter"
 
 #: literals.py:19
 msgid "Number (Integer)"
@@ -666,23 +667,23 @@ msgid "Primary key of the document type to remove from the workflow."
 msgstr ""
 "Llave principal del tipo de documento que se eliminará del flujo de trabajo."
 
-#: serializers.py:160
+#: serializers.py:165
 msgid "Primary key of the destination state to be added."
 msgstr "Llave primaria del estado de destino a ser agregado."
 
-#: serializers.py:167
+#: serializers.py:173
 msgid "Primary key of the origin state to be added."
 msgstr "Llave primaria del estado inicial a ser agregado."
 
-#: serializers.py:251
+#: serializers.py:259
 msgid "Primary key of the transition to be added."
 msgstr "Llave primaria de la transición a añadir."
 
-#: serializers.py:327
+#: serializers.py:339
 msgid "A link to the entire history of this workflow."
 msgstr "Un enlace a la historia completa de este flujo de trabajo."
 
-#: serializers.py:332
+#: serializers.py:348
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."

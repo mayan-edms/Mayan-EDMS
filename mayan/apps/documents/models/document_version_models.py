@@ -70,7 +70,7 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
     @staticmethod
     def annotate_content_object_list(content_object_list, start_page_number=None):
         def content_object_to_dictionary(entry):
-            # Argument order based on the return value of enumerate
+            # Argument order based on the return value of enumerate.
             return {
                 'content_object': entry[1],
                 'page_number': entry[0]
@@ -321,7 +321,7 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
 
     @property
     def uuid(self):
-        # Make cache UUID a mix of document UUID, file ID
+        # Make cache UUID a mix of document UUID, file ID.
         return '{}-{}'.format(self.document.uuid, self.pk)
 
 

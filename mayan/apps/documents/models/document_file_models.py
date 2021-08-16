@@ -336,7 +336,7 @@ class DocumentFile(
                 self.encoding = ''
             finally:
                 if save:
-                    self.save(update_fields=('encoding', 'mimetype',))
+                    self.save(update_fields=('encoding', 'mimetype'))
 
     def natural_key(self):
         return (self.checksum, self.document.natural_key())
@@ -454,7 +454,7 @@ class DocumentFile(
                         self.document.label = force_text(s=self.file)
 
                     self.document._event_ignore = True
-                    self.document.save(update_fields=('is_stub', 'label',))
+                    self.document.save(update_fields=('is_stub', 'label'))
                 else:
                     event_document_file_edited.commit(
                         actor=user, target=self, action_object=self.document

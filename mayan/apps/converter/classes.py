@@ -107,7 +107,7 @@ class ConverterBase:
 
         if output_format.upper() == 'JPEG':
             # JPEG doesn't support transparency channel, convert the image to
-            # RGB. Removes modes: P and RGBA
+            # RGB. Removes modes: P and RGBA.
             new_mode = 'RGB'
 
         self.image.convert(new_mode).save(image_buffer, format=output_format)
@@ -128,13 +128,13 @@ class ConverterBase:
         If the file is a paged image get the page if not convert it to a
         paged image format and return the specified page as an image.
         """
-        # Starting with #0
+        # Starting with #0.
         self.file_object.seek(0)
 
         try:
             self.image = Image.open(fp=self.file_object)
         except IOError:
-            # Cannot identify image file
+            # Cannot identify image file.
             self.image = self.convert(page_number=page_number)
         except PIL.Image.DecompressionBombError as exception:
             logger.error(
@@ -150,7 +150,7 @@ class ConverterBase:
 
     def soffice(self):
         """
-        Executes LibreOffice as a sub process
+        Executes LibreOffice as a sub process.
         """
         if not self.command_libreoffice:
             raise OfficeConversionError(
@@ -204,7 +204,7 @@ class ConverterBase:
             # provided but with the .pdf extension.
 
             # Get the converted output file path out of the temporary file
-            # name plus the temporary directory
+            # name plus the temporary directory.
 
             filename, extension = os.path.splitext(
                 os.path.basename(temporary_file_object.name)
@@ -227,7 +227,7 @@ class ConverterBase:
         temporary_converted_file_object = NamedTemporaryFile()
 
         # Copy the LibreOffice output file to a new named temporary file
-        # and delete the converted file
+        # and delete the converted file.
         with open(file=converted_file_path, mode='rb') as converted_file_object:
             shutil.copyfileobj(
                 fsrc=converted_file_object, fdst=temporary_converted_file_object
@@ -351,7 +351,7 @@ class Layer:
 
         if self in transformation_class._layer_transformations:
             return object_layer.transformations.create(
-                arguments=arguments, order=order,
+                arguments=arguments or '', order=order,
                 name=transformation_class.name
             )
         else:
@@ -363,7 +363,7 @@ class Layer:
 
     def copy_transformations(self, source, targets, delete_existing=False):
         """
-        Copy transformation from source to all targets
+        Copy transformation from source to all targets.
         """
         ContentType = apps.get_model(
             app_label='contenttypes', model_name='ContentType'
@@ -416,7 +416,7 @@ class Layer:
     def get_transformations_for(self, obj, as_classes=False):
         """
         as_classes == True returns the transformation classes from .classes
-        ready to be feed to the converter class
+        ready to be feed to the converter class.
         """
         LayerTransformation = apps.get_model(
             app_label='converter', model_name='LayerTransformation'

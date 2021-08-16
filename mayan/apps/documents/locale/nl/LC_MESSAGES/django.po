@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -61,7 +61,7 @@ msgstr ""
 
 #: apps.py:401 links/document_file_page_links.py:79
 #: models/document_file_models.py:120 models/document_file_page_models.py:42
-#: search.py:51
+#: search.py:52
 msgid "Document file"
 msgstr ""
 
@@ -185,87 +185,83 @@ msgstr ""
 msgid "Document file edited"
 msgstr ""
 
-#: events.py:34
-msgid "Document file uploaded"
-msgstr ""
-
-#: events.py:40
+#: events.py:37
 msgid "Document type created"
 msgstr "Documenttype aangemaakt"
 
-#: events.py:43
+#: events.py:40
 msgid "Document type edited"
 msgstr "Documenttype bewerkt"
 
-#: events.py:46
+#: events.py:43
 msgid "Document type quick label created"
 msgstr ""
 
-#: events.py:50
+#: events.py:47
 msgid "Document type quick label deleted"
 msgstr ""
 
-#: events.py:54
+#: events.py:51
 msgid "Document type quick label edited"
 msgstr ""
 
-#: events.py:59
+#: events.py:56
 msgid "Document type changed"
 msgstr "Documenttype veranderd"
 
-#: events.py:65
+#: events.py:62
 msgid "Document version created"
 msgstr ""
 
-#: events.py:68
+#: events.py:65
 msgid "Document version deleted"
 msgstr ""
 
-#: events.py:71
+#: events.py:68
 msgid "Document version edited"
 msgstr ""
 
-#: events.py:74
+#: events.py:71
 msgid "Document version exported"
 msgstr ""
 
-#: events.py:80
+#: events.py:77
 msgid "Document version page created"
 msgstr ""
 
-#: events.py:84
+#: events.py:81
 msgid "Document version page deleted"
 msgstr ""
 
-#: events.py:88
+#: events.py:85
 msgid "Document version page edited"
 msgstr ""
 
-#: events.py:95
+#: events.py:92
 msgid "Document trashed"
 msgstr "Document naar prullenbak"
 
-#: events.py:98
+#: events.py:95
 msgid "Trashed document deleted"
 msgstr ""
 
-#: events.py:101
+#: events.py:98
 msgid "Trashed document restored"
 msgstr ""
 
-#: events.py:107
+#: events.py:104
 msgid "Document downloaded (historic)"
 msgstr ""
 
-#: events.py:110
+#: events.py:107
 msgid "Document file created (historic)"
 msgstr ""
 
-#: events.py:114
+#: events.py:111
 msgid "Document version reverted (historic)"
 msgstr ""
 
-#: events.py:118
+#: events.py:115
 msgid "Document version uploaded (historic)"
 msgstr ""
 
@@ -466,7 +462,7 @@ msgstr "Aantal pagina's herberekenen"
 msgid "Change type"
 msgstr "Type wijzigen"
 
-#: links/document_links.py:22 views/document_views.py:63
+#: links/document_links.py:22 views/document_views.py:68
 msgid "All documents"
 msgstr "Alle documenten"
 
@@ -528,7 +524,7 @@ msgstr ""
 
 #: links/document_version_page_links.py:102
 #: models/document_version_models.py:64
-#: models/document_version_page_models.py:52 search.py:117
+#: models/document_version_page_models.py:52 search.py:118
 msgid "Document version"
 msgstr "Documentversie"
 
@@ -684,7 +680,7 @@ msgid "Label"
 msgstr "Label"
 
 #: models/document_file_page_models.py:53
-#: models/document_file_page_models.py:316 search.py:78
+#: models/document_file_page_models.py:316 search.py:79
 msgid "Document file page"
 msgstr ""
 
@@ -885,7 +881,7 @@ msgid "ID for the source object of the page."
 msgstr ""
 
 #: models/document_version_page_models.py:74
-#: models/document_version_page_models.py:401 search.py:141
+#: models/document_version_page_models.py:401 search.py:142
 msgid "Document version page"
 msgstr ""
 
@@ -1075,31 +1071,31 @@ msgstr "Document paginatelling bijwerken"
 msgid "Upload new document file"
 msgstr ""
 
-#: search.py:31 search.py:62 search.py:89 search.py:129 search.py:153
+#: search.py:31 search.py:63 search.py:90 search.py:130 search.py:154
 msgid "Document type label"
 msgstr ""
 
-#: search.py:65 search.py:92 search.py:132 search.py:159
+#: search.py:66 search.py:93 search.py:133 search.py:160
 msgid "Document label"
 msgstr "Documentlabel"
 
-#: search.py:68 search.py:96 search.py:135 search.py:163
+#: search.py:69 search.py:97 search.py:136 search.py:164
 msgid "Document description"
 msgstr "Documentbeschrijving"
 
-#: search.py:99
+#: search.py:100
 msgid "Document file checksum"
 msgstr ""
 
-#: search.py:102
+#: search.py:103
 msgid "Document file MIME type"
 msgstr ""
 
-#: search.py:156
+#: search.py:157
 msgid "Document version comment"
 msgstr ""
 
-#: serializers/document_file_serializers.py:37
+#: serializers/document_file_serializers.py:38
 msgid "Binary content for the new file."
 msgstr ""
 
@@ -1107,11 +1103,11 @@ msgstr ""
 msgid "Document type ID for the new document."
 msgstr ""
 
-#: serializers/document_version_serializers.py:68
+#: serializers/document_version_serializers.py:72
 msgid "Content type ID of the source object for the page."
 msgstr ""
 
-#: serializers/favorite_document_serializers.py:17
+#: serializers/favorite_document_serializers.py:18
 msgid "Document ID for the new favorite document."
 msgstr ""
 
@@ -1806,12 +1802,12 @@ msgstr ""
 msgid "Clone page transformations of document version: %s"
 msgstr ""
 
-#: views/document_views.py:40
+#: views/document_views.py:41
 #, python-format
 msgid "Error retrieving document list: %(exception)s."
 msgstr "Fout bij ophalen documentlijst: %(exception)s."
 
-#: views/document_views.py:58
+#: views/document_views.py:63
 msgid ""
 "This could mean that no documents have been uploaded or that your user "
 "account has not been granted the view permission for any document or "
@@ -1821,51 +1817,51 @@ msgstr ""
 "gebruikersaccount niet over rechten beschikt om de documenten of "
 "documenttypes te bekijken."
 
-#: views/document_views.py:62
+#: views/document_views.py:67
 msgid "No documents available"
 msgstr "Geen documenten beschikbaar"
 
-#: views/document_views.py:77
+#: views/document_views.py:82
 #, python-format
 msgid "Document type change request performed on %(count)d document"
 msgstr "Documenttype wijziging uitgevoerd op %(count)d document"
 
-#: views/document_views.py:80
+#: views/document_views.py:85
 #, python-format
 msgid "Document type change request performed on %(count)d documents"
 msgstr "Documenttype wijziging uitgevoerd op %(count)d documenten"
 
-#: views/document_views.py:87
+#: views/document_views.py:92
 msgid "Change"
 msgstr "Wijzigen"
 
-#: views/document_views.py:89
+#: views/document_views.py:94
 msgid "Change the type of the selected document"
 msgid_plural "Change the type of the selected documents"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views/document_views.py:100
+#: views/document_views.py:105
 #, python-format
 msgid "Change the type of the document: %s"
 msgstr "Wijzig het type van het document: %s"
 
-#: views/document_views.py:122
+#: views/document_views.py:127
 #, python-format
 msgid "Document type for \"%s\" changed successfully."
 msgstr "Documenttype voor \"%s\" met succes gewijzigd."
 
-#: views/document_views.py:147
+#: views/document_views.py:152
 #, python-format
 msgid "Preview of document: %s"
 msgstr "Voorbeeldweergave van document: %s"
 
-#: views/document_views.py:165
+#: views/document_views.py:170
 #, python-format
 msgid "Edit properties of document: %s"
 msgstr "Eigenschappen bewerken van document: %s"
 
-#: views/document_views.py:196
+#: views/document_views.py:201
 #, python-format
 msgid "Properties of document: %s"
 msgstr ""

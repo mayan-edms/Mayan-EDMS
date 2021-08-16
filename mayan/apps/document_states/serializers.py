@@ -98,12 +98,15 @@ class WorkflowTemplateStateSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         fields = (
-            'completion', 'id', 'initial', 'label', 'url', 'workflow_template_url',
+            'completion', 'id', 'initial', 'label', 'url',
+            'workflow_template_url',
         )
         model = WorkflowState
 
 
-class WorkflowTransitionFieldSerializer(serializers.HyperlinkedModelSerializer):
+class WorkflowTransitionFieldSerializer(
+    serializers.HyperlinkedModelSerializer
+):
     url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
@@ -153,19 +156,23 @@ class WorkflowTransitionFieldSerializer(serializers.HyperlinkedModelSerializer):
         model = WorkflowTransitionField
 
 
-class WorkflowTemplateTransitionSerializer(serializers.HyperlinkedModelSerializer):
+class WorkflowTemplateTransitionSerializer(
+    serializers.HyperlinkedModelSerializer
+):
     destination_state = WorkflowTemplateStateSerializer(read_only=True)
     destination_state_id = FilteredPrimaryKeyRelatedField(
         help_text=_(
             'Primary key of the destination state to be added.'
-        ), source_queryset_method='get_workflow_template_state_queryset'
+        ), source_queryset_method='get_workflow_template_state_queryset',
+        write_only=True
     )
     field_list_url = serializers.SerializerMethodField()
     origin_state = WorkflowTemplateStateSerializer(read_only=True)
     origin_state_id = FilteredPrimaryKeyRelatedField(
         help_text=_(
             'Primary key of the origin state to be added.'
-        ), source_queryset_method='get_workflow_template_state_queryset'
+        ), source_queryset_method='get_workflow_template_state_queryset',
+        write_only=True
     )
     url = serializers.SerializerMethodField()
     workflow_template_url = serializers.SerializerMethodField()
@@ -198,7 +205,8 @@ class WorkflowTemplateTransitionSerializer(serializers.HyperlinkedModelSerialize
 
     def get_field_list_url(self, instance):
         return reverse(
-            viewname='rest_api:workflow-template-transition-field-list', kwargs={
+            viewname='rest_api:workflow-template-transition-field-list',
+            kwargs={
                 'workflow_template_id': instance.workflow_id,
                 'workflow_template_transition_id': instance.pk,
             }, request=self.context['request'], format=self.context['format']
@@ -249,7 +257,8 @@ class WorkflowInstanceLogEntrySerializer(serializers.ModelSerializer):
     transition_id = FilteredPrimaryKeyRelatedField(
         help_text=_(
             'Primary key of the transition to be added.'
-        ), source_queryset_method='get_workflow_instance_transition_queryset'
+        ), source_queryset_method='get_workflow_instance_transition_queryset',
+        write_only=True
     )
     url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
@@ -315,6 +324,9 @@ class WorkflowInstanceLogEntrySerializer(serializers.ModelSerializer):
 
 
 class WorkflowInstanceSerializer(serializers.ModelSerializer):
+    workflow_template = WorkflowTemplateSerializer(
+        read_only=True, source='workflow'
+    )
     context = serializers.SerializerMethodField()
     current_state = WorkflowTemplateStateSerializer(
         read_only=True, source='get_current_state'
@@ -326,6 +338,10 @@ class WorkflowInstanceSerializer(serializers.ModelSerializer):
     log_entries_url = serializers.SerializerMethodField(
         help_text=_('A link to the entire history of this workflow.')
     )
+    log_entry_transitions_url = serializers.SerializerMethodField(
+        read_only=True
+    )
+    # TODO: Remove in version 5.0.
     workflow_template_url = serializers.SerializerMethodField()
     url = serializers.SerializerMethodField(
         help_text=_(
@@ -338,10 +354,12 @@ class WorkflowInstanceSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
             'context', 'current_state', 'document_url', 'id',
-            'last_log_entry', 'log_entries_url', 'url',
+            'last_log_entry', 'log_entries_url',
+            'log_entry_transitions_url', 'url', 'workflow_template',
             'workflow_template_url'
         )
         model = WorkflowInstance
+        read_only_field = fields
 
     def get_document_url(self, instance):
         return reverse(
@@ -356,6 +374,15 @@ class WorkflowInstanceSerializer(serializers.ModelSerializer):
     def get_log_entries_url(self, instance):
         return reverse(
             viewname='rest_api:workflow-instance-log-entry-list', kwargs={
+                'document_id': instance.document.pk,
+                'workflow_instance_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
+        )
+
+    def get_log_entry_transitions_url(self, instance):
+        return reverse(
+            viewname='rest_api:workflow-instance-log-entry-transition-list',
+            kwargs={
                 'document_id': instance.document.pk,
                 'workflow_instance_id': instance.pk
             }, request=self.context['request'], format=self.context['format']

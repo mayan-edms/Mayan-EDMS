@@ -32,11 +32,13 @@ def get_cascade_condition(
             # Simple request extraction failed. Might not be a view context.
             # Try alternate method.
             try:
-                request = Variable('request').resolve(context)
+                request = Variable(var='request').resolve(context=context)
             except VariableDoesNotExist:
                 # There is no request variable, most probable a 500 in a test
                 # view. Don't return any resolved links then.
-                logger.warning('No request variable, aborting cascade resolution')
+                logger.warning(
+                    'No request variable, aborting cascade resolution'
+                )
                 return ()
 
         if view_permission:
@@ -77,7 +79,7 @@ def get_content_type_kwargs_factory(
         )
 
         content_type = ContentType.objects.get_for_model(
-            context[variable_name]
+            model=context[variable_name]
         )
         return {
             result_map['app_label']: '"{}"'.format(content_type.app_label),
@@ -91,9 +93,9 @@ def get_content_type_kwargs_factory(
 def get_current_view_name(request):
     current_path = request.META['PATH_INFO']
 
-    # Get sources: view name, view objects
+    # Get sources: view name, view objects.
     try:
-        current_view_name = resolve(current_path).view_name
+        current_view_name = resolve(path=current_path).view_name
     except Resolver404:
         # Can't figure out which view corresponds to this URL.
         # Most likely it is an invalid URL.

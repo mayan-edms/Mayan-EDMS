@@ -2,7 +2,7 @@ from django.conf.urls import url
 
 from .api_views import (
     APIDocumentTypeOCRSettingsView, APIDocumentOCRSubmitView,
-    APIDocumentVersionOCRContentView, APIDocumentVersionPageOCRContentView
+    APIDocumentVersionOCRSubmitView, APIDocumentVersionPageOCRContentView
 )
 from .views import (
     DocumentVersionOCRContentDeleteView, DocumentVersionOCRContentView,
@@ -62,7 +62,7 @@ urlpatterns_document_versions = [
     ),
     url(
         regex=r'^documents/versions/pages/(?P<document_version_page_id>\d+)/content/$',
-        name='document_version_page_ocr_content_view',
+        name='document_version_page_ocr_content_detail_view',
         view=DocumentVersionPageOCRContentView.as_view()
     ),
     url(regex=r'^logs/$', name='entry_list', view=EntryListView.as_view())
@@ -86,11 +86,11 @@ api_urls = [
     url(
         regex=r'^documents/(?P<document_id>\d+)/versions/(?P<document_version_id>\d+)/ocr/submit/$',
         name='document-version-ocr-submit-view',
-        view=APIDocumentVersionOCRContentView.as_view()
+        view=APIDocumentVersionOCRSubmitView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/versions/(?P<document_version_id>\d+)/pages/(?P<document_version_page_id>\d+)/ocr/$',
-        name='document-version-page-ocr-content-view',
+        name='document-version-page-ocr-content-detail-view',
         view=APIDocumentVersionPageOCRContentView.as_view()
     ),
 ]

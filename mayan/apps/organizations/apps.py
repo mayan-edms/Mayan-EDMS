@@ -4,6 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
 
+from .patches import patch_HttpRequest
+
 logger = logging.getLogger(name=__name__)
 
 
@@ -15,3 +17,5 @@ class OrganizationsApp(MayanAppConfig):
 
     def ready(self):
         super().ready()
+
+        patch_HttpRequest()

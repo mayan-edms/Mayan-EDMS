@@ -12,6 +12,8 @@ from ..literals import (
     DEFAULT_DOCUMENTS_RECENTLY_CREATED_COUNT, DOCUMENT_FILE_ACTION_PAGES_NEW
 )
 
+DEFAULT_DOCUMENT_STUB_LABEL = 'document_stub'
+
 # Filenames
 TEST_COMPRESSED_DOCUMENTS_FILENAME = 'compressed_documents.zip'
 TEST_DEU_DOCUMENT_FILENAME = 'deu_website.png'

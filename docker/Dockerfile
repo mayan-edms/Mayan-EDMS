@@ -5,7 +5,7 @@
 #              Mayan EDMS.
 ####
 
-FROM debian:10.9-slim as base_image
+FROM debian:10.10-slim as base_image
 
 LABEL maintainer="Roberto Rosario roberto.rosario@mayan-edms.com"
 
@@ -24,6 +24,9 @@ RUN set -x \
 # Install base OS packages to run Mayan EDMS.
 && echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list \
 && echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list \
+&& echo "deb http://deb.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list \
+&& echo "deb-src http://deb.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list \
+&& echo "Package: *\nPin: release n=bullseye\nPin-Priority: 50\n" > /etc/apt/preferences \
 && DEBIAN_FRONTEND=noninteractive \
 apt-get update \
 && apt-get install --no-install-recommends --target-release buster-backports --yes \
@@ -53,8 +56,9 @@ apt-get update \
     python3-distutils \
     sane-utils \
     sudo \
-    supervisor \
     tesseract-ocr \
+&& apt-get install --no-install-recommends --target-release bullseye --yes \
+    supervisor \
 # Remove make and build dependencies.
 && apt-get remove --purge --yes \
     make \

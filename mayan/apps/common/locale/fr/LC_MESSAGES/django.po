@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:20+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:125 permissions.py:5 settings.py:14
+#: apps.py:129 permissions.py:5 settings.py:14
 msgid "Common"
 msgstr "Commun"
 
@@ -230,13 +230,13 @@ msgstr ""
 "également la page vers laquelle les utilisateurs seront redirigés après la "
 "connexion."
 
-#: settings.py:71
-msgid "Name to be displayed in the main menu."
-msgstr "Nom qui sera affiché dans le menu principal."
+#: settings.py:70
+msgid "Sets the project's name."
+msgstr ""
 
-#: settings.py:77
-msgid "URL of the installation or homepage of the project."
-msgstr "URL de l'installation ou de la page d'accueil du projet."
+#: settings.py:74
+msgid "URL of the project's homepage."
+msgstr ""
 
 #: templates/common/app/viewport.html:9
 msgid "Warning"
