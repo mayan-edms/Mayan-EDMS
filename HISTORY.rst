@@ -39,6 +39,27 @@
     `DOCUMENT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY` and
     `DOCUMENT_TASK_GENERATE_DOCUMENT_VERSION_PAGE_IMAGE_RETRY_DELAY`.
 
+- Search updates
+
+  - Remove `TASK_RETRY_DELAY` and use `retry_backoff`.
+  - Add the tag color as a search field
+  - Improve and simplify query cleaning up by doing so after the
+    scopes are decoded.
+  - Fix Whoosh reindexing after m2m fields perform a remove.
+  - Fix Whoosh search for related m2m fields with multiple
+    values.
+  - Improve tests for edge cases.
+  - Fix document version API tests module.
+  - Variables renamed for clarity and to specify their purpose.
+  - Process the 'q' parameter at the class and not in the
+    backend.
+  - Ignore invalid query fields.
+  - Index for search on m2m signal.
+  - Return empty results on an empty query.
+  - Produce an empty scope 0 on an empty query.
+  - Improve tests.
+  - Add UUID field for all document child objects.
+
 4.0.15 (2021-08-07)
 ===================
 - Improve the document version export API endpoint.
