@@ -14,7 +14,7 @@ from ..settings import setting_backend_arguments
 from .mixins import SearchToolsViewTestMixin, SearchViewTestMixin
 
 
-class AdvancedSearchViewTestCase(
+class AdvancedSearchViewTestCaseMixin(
     DocumentTestMixin, SearchViewTestMixin, GenericViewTestCase
 ):
     auto_upload_test_document = False
@@ -86,8 +86,22 @@ class AdvancedSearchViewTestCase(
             )
 
 
-class SearchViewTestCase(
-    DocumentTestMixin, SearchViewTestMixin, GenericViewTestCase
+@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend')
+class DjangoAdvancedSearchViewTestCase(
+    AdvancedSearchViewTestCaseMixin, GenericViewTestCase
+):
+    """Test against Django backend."""
+
+
+@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend')
+class WhooshAdvancedSearchViewTestCase(
+    AdvancedSearchViewTestCaseMixin, GenericViewTestCase
+):
+    """Test against Whoosh backend."""
+
+
+class SearchViewTestCaseMixin(
+    DocumentTestMixin, SearchViewTestMixin,
 ):
     def test_result_view_with_search_mode_in_data(self):
         self.grant_access(
@@ -103,6 +117,20 @@ class SearchViewTestCase(
         self.assertContains(
             response=response, status_code=200, text=self.test_document.label
         )
+
+
+@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend')
+class DjangoSearchViewTestCase(
+    SearchViewTestCaseMixin, GenericViewTestCase
+):
+    """Test against Django backend."""
+
+
+@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend')
+class WhooshSearchViewTestCase(
+    SearchViewTestCaseMixin, GenericViewTestCase
+):
+    """Test against Whoosh backend."""
 
 
 @override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend')

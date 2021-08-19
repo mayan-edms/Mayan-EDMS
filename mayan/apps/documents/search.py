@@ -68,6 +68,10 @@ document_file_search.add_model_field(
 document_file_search.add_model_field(
     field='document__description', label=_('Document description')
 )
+document_file_search.add_model_field(
+    field='document__uuid', label=_('Document UUID'),
+    transformation_function=transformation_format_uuid
+)
 document_file_search.add_model_field(field='checksum')
 document_file_search.add_model_field(field='comment')
 document_file_search.add_model_field(field='filename')
@@ -98,6 +102,10 @@ document_file_page_search.add_model_field(
 )
 document_file_page_search.add_model_field(
     field='document_file__checksum', label=_('Document file checksum')
+)
+document_file_page_search.add_model_field(
+    field='document_file__document__uuid', label=_('Document UUID'),
+    transformation_function=transformation_format_uuid
 )
 document_file_page_search.add_model_field(
     field='document_file__mimetype', label=_('Document file MIME type')
@@ -135,6 +143,10 @@ document_version_search.add_model_field(
 document_version_search.add_model_field(
     field='document__description', label=_('Document description')
 )
+document_version_search.add_model_field(
+    field='document__uuid', label=_('Document UUID'),
+    transformation_function=transformation_format_uuid
+)
 
 # Document version page
 
@@ -162,4 +174,8 @@ document_version_page_search.add_model_field(
 document_version_page_search.add_model_field(
     field='document_version__document__description',
     label=_('Document description')
+)
+document_version_page_search.add_model_field(
+    field='document_version__document__uuid', label=_('Document UUID'),
+    transformation_function=transformation_format_uuid
 )

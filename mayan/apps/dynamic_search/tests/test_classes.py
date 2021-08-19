@@ -219,14 +219,14 @@ class ScopedSearchTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
         self.assertEqual(queryset.count(), 1)
         self.assertTrue(self.test_documents[0] in queryset)
 
-    def test_scoped_and_non_scoped(self):
+    def test_match_all_scope_and_non_match_all_scope(self):
         query = {
             '__0_match_all': 'TRUE',
             '__0_tags__label': self.test_tags[0].label,
-            '__0_tags__color': 'FFFFFF',
+            '__0_tags__color': self.test_tags[0].color,
             '__operator_0_bc': 'AND_cc',
             '__bc_tags__label': self.test_tags[1].label,
-            '__bc_tags__color': '000000',
+            '__bc_tags__color': 'INVALID COLOR',
             '__result': 'cc'
         }
         queryset = self.search_backend.search(

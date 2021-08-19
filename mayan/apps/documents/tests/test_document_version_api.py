@@ -473,7 +473,7 @@ class DocumentVersionExportAPIViewTestCase(
         self.assertEqual(events[2].action_object, None)
         self.assertEqual(events[2].actor, test_message)
         self.assertEqual(events[2].target, test_message)
-        self.assertEqual(events[2].verb, event_message_created.id))
+        self.assertEqual(events[2].verb, event_message_created.id)
 
     def test_trashed_document_version_export_api_view_with_access(self):
         self.grant_access(
