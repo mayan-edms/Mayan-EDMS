@@ -170,6 +170,7 @@ class DocumentType(ExtraDataModelMixin, models.Model):
                     'file for document %s; %s',
                     label or file_object.name, exception
                 )
+                document.delete(to_trash=False)
                 raise
             else:
                 return document, document_file

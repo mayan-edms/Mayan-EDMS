@@ -11,6 +11,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 from mayan.apps.common.serialization import yaml_load
+from mayan.apps.documents.models.document_file_models import DocumentFile
 from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.documents.tasks import task_document_file_upload
 from mayan.apps.metadata.models import MetadataType
@@ -77,6 +78,16 @@ class SourceBaseMixin:
             user_id = None
 
         for self.shared_uploaded_file in self.get_shared_uploaded_files() or ():
+            # Call the hooks here too as in the model for early detection and
+            # exception raise when using the views.
+            DocumentFile.execute_pre_create_hooks(
+                kwargs={
+                    'document': document,
+                    'file_object': self.shared_uploaded_file,
+                    'user': user
+                }
+            )
+
             kwargs = {
                 'action': self.get_document_file_action(),
                 'comment': self.get_document_file_comment(),
