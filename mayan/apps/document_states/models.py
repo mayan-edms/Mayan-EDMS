@@ -970,7 +970,7 @@ class WorkflowRuntimeProxy(Workflow):
         """
         return AccessControlList.objects.restrict_queryset(
             permission=permission_document_view,
-            queryset=Document.objects.filter(workflows__workflow=self),
+            queryset=Document.valid.filter(workflows__workflow=self),
             user=user
         ).count()
 
@@ -987,6 +987,7 @@ class WorkflowStateRuntimeProxy(WorkflowState):
         The count is filtered by access.
         """
         return AccessControlList.objects.restrict_queryset(
-            permission=permission_document_view, queryset=self.get_documents(),
+            permission=permission_document_view,
+            queryset=self.get_documents(),
             user=user
         ).count()
