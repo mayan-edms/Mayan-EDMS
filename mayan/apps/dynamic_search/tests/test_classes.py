@@ -8,12 +8,10 @@ from mayan.apps.testing.tests.base import BaseTestCase
 from ..classes import SearchBackend
 from ..exceptions import DynamicSearchException
 
+from .mixins import SearchTestMixin
 
-class QueryStringDecodeTestCase(BaseTestCase):
-    def setUp(self):
-        super().setUp()
-        self.search_backend = SearchBackend.get_instance()
 
+class QueryStringDecodeTestCase(SearchTestMixin, BaseTestCase):
     def test_decode_default_scope(self):
         query = {
             'test_field': 'test_value'
@@ -108,12 +106,13 @@ class QueryStringDecodeTestCase(BaseTestCase):
         )
 
 
-class ScopedSearchTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
+class ScopedSearchTestCase(
+    DocumentTestMixin, TagTestMixin, SearchTestMixin, BaseTestCase
+):
     auto_upload_test_document = False
 
     def setUp(self):
         super().setUp()
-        self.search_backend = SearchBackend.get_instance()
 
         self._create_test_document_stub()
         self._create_test_tag()
@@ -237,12 +236,13 @@ class ScopedSearchTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
         self.assertTrue(self.test_documents[0] in queryset)
 
 
-class ScopeOperatorSearchTestCase(DocumentTestMixin, BaseTestCase):
+class ScopeOperatorSearchTestCase(
+    DocumentTestMixin, SearchTestMixin, BaseTestCase
+):
     auto_upload_test_document = False
 
     def setUp(self):
         super().setUp()
-        self.search_backend = SearchBackend.get_instance()
 
         self._create_test_document_stub()
         self._create_test_document_stub()

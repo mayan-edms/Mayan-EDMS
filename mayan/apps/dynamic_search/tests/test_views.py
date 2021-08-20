@@ -11,7 +11,9 @@ from ..classes import SearchBackend, SearchModel
 from ..permissions import permission_search_tools
 from ..settings import setting_backend_arguments
 
-from .mixins import SearchToolsViewTestMixin, SearchViewTestMixin
+from .mixins import (
+    SearchTestMixin, SearchToolsViewTestMixin, SearchViewTestMixin
+)
 
 
 class AdvancedSearchViewTestCaseMixin(
@@ -135,25 +137,15 @@ class WhooshSearchViewTestCase(
 
 @override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend')
 class SearchToolsViewTestCase(
-    DocumentTestMixin, SearchToolsViewTestMixin, GenericViewTestCase
+    DocumentTestMixin, SearchToolsViewTestMixin, SearchTestMixin,
+    GenericViewTestCase
 ):
     def setUp(self):
-        self.old_value = setting_backend_arguments.value
         super().setUp()
+
         self.document_search_model = SearchModel.get_for_model(
             instance=DocumentSearchResult
         )
-        setting_backend_arguments.set(
-            value={'index_path': mkdtemp()}
-        )
-        self.search_backend = SearchBackend.get_instance()
-
-    def tearDown(self):
-        fs_cleanup(
-            filename=setting_backend_arguments.value['index_path']
-        )
-        setting_backend_arguments.set(value=self.old_value)
-        super().tearDown()
 
     def test_search_backend_reindex_view_no_permission(self):
         self.search_backend.clear_search_model_index(

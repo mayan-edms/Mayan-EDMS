@@ -1,4 +1,8 @@
 from mayan.apps.documents.search import document_search
+from mayan.apps.storage.utils import fs_cleanup, mkdtemp
+
+from ..classes import SearchBackend
+from ..settings import setting_backend_arguments
 
 
 class SearchAPIViewTestMixin:
@@ -18,6 +22,23 @@ class SearchAPIViewTestMixin:
                 'search_model_name': document_search.get_full_name()
             }, query=query
         )
+
+
+class SearchTestMixin:
+    def setUp(self):
+        self.old_value = setting_backend_arguments.value
+        super().setUp()
+        setting_backend_arguments.set(
+            value={'index_path': mkdtemp()}
+        )
+        self.search_backend = SearchBackend.get_instance()
+
+    def tearDown(self):
+        fs_cleanup(
+            filename=setting_backend_arguments.value['index_path']
+        )
+        setting_backend_arguments.set(value=self.old_value)
+        super().tearDown()
 
 
 class SearchToolsViewTestMixin:

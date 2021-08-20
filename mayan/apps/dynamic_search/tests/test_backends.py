@@ -11,6 +11,8 @@ from mayan.apps.testing.tests.base import BaseTestCase
 from ..classes import SearchBackend
 from ..settings import setting_backend_arguments
 
+from .mixins import SearchTestMixin
+
 
 class CommonBackendFunctionalityTestCaseMixin(TagTestMixin):
     def test_advanced_search_related(self):
@@ -135,13 +137,10 @@ class CommonBackendFunctionalityTestCaseMixin(TagTestMixin):
 
 @override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend')
 class DjangoSearchBackendDocumentSearchTestCase(
-    CommonBackendFunctionalityTestCaseMixin, DocumentTestMixin, BaseTestCase
+    CommonBackendFunctionalityTestCaseMixin, DocumentTestMixin,
+    SearchTestMixin, BaseTestCase
 ):
     auto_upload_test_document = False
-
-    def setUp(self):
-        super().setUp()
-        self.search_backend = SearchBackend.get_instance()
 
     def test_meta_only(self):
         self._upload_test_document(label='first_doc')
@@ -281,24 +280,9 @@ class DjangoSearchBackendDocumentSearchTestCase(
 @override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend')
 class WhooshSearchBackendDocumentSearchTestCase(
     CommonBackendFunctionalityTestCaseMixin, DocumentTestMixin,
-    BaseTestCase
+    SearchTestMixin, BaseTestCase
 ):
     auto_upload_test_document = False
-
-    def setUp(self):
-        self.old_value = setting_backend_arguments.value
-        super().setUp()
-        setting_backend_arguments.set(
-            value={'index_path': mkdtemp()}
-        )
-        self.search_backend = SearchBackend.get_instance()
-
-    def tearDown(self):
-        fs_cleanup(
-            filename=setting_backend_arguments.value['index_path']
-        )
-        setting_backend_arguments.set(value=self.old_value)
-        super().tearDown()
 
     def test_simple_search(self):
         self._upload_test_document(label='first_doc')
