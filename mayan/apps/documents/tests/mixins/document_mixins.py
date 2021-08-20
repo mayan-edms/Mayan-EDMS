@@ -5,6 +5,7 @@ from django.db.models import Q
 from django.utils.module_loading import import_string
 
 from mayan.apps.converter.classes import Layer
+from mayan.apps.dynamic_search.tests.mixins import SearchTestMixin
 
 from ...literals import DOCUMENT_FILE_ACTION_PAGES_NEW, PAGE_RANGE_ALL
 from ...models import Document, DocumentType
@@ -88,22 +89,24 @@ class DocumentAPIViewTestMixin:
         return response
 
 
-class DocumentSearchTestMixin:
-    search_backend = import_string(
-        dotted_path='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend'
-    )()
+class DocumentSearchTestMixin(SearchTestMixin):
+    # ~ search_backend = import_string(
+        # ~ dotted_path='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend'
+    # ~ )()
 
-    def _perform_document_file_page_search(self):
+    def _perform_document_file_page_search(self, query=None):
+        query = query or {'q': self.test_document.label}
+
         return self.search_backend.search(
-            search_model=document_file_page_search,
-            query={'q': self.test_document.label},
+            search_model=document_file_page_search, query=query,
             user=self._test_case_user
         )
 
-    def _perform_document_search(self):
+    def _perform_document_search(self, query=None):
+        query = query or {'q': self.test_document.label}
+
         return self.search_backend.search(
-            search_model=document_search,
-            query={'q': self.test_document.label},
+            search_model=document_search, query=query,
             user=self._test_case_user
         )
 
