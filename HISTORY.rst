@@ -1,4 +1,4 @@
-3.5.11 (2021-XX-XX)
+3.5.11 (2021-08-19)
 ===================
 - Update Django from version 2.2.23 to 2.2.24.
 - Backport fixes from versions 4.0 and 4.1-a.
