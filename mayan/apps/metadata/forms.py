@@ -100,7 +100,7 @@ class DocumentMetadataForm(forms.Form):
             )
 
             # Enforce required only if the metadata has no previous value.
-            if required and not self.cleaned_data['value'] and not self.cleaned_data.get('update'):
+            if required and not self.cleaned_data.get('value') and not self.cleaned_data.get('update'):
                 raise ValidationError(
                     _(
                         '"%s" is required for this document type.'

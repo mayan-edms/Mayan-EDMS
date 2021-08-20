@@ -297,6 +297,7 @@ class MetadataTypeTestMixin:
     def setUp(self):
         super(MetadataTypeTestMixin, self).setUp()
         self.test_metadata_types = []
+        self._test_document_type_metadata_type_relationships = []
 
     def _get_test_metadata_type_queryset(self):
         return MetadataType.objects.filter(
@@ -305,7 +306,9 @@ class MetadataTypeTestMixin:
             ]
         )
 
-    def _create_test_metadata_type(self):
+    def _create_test_metadata_type(
+        self, add_test_document_type=False, required=False
+    ):
         total_test_metadata_types = len(self.test_metadata_types)
         name = '{}_{}'.format(
             TEST_METADATA_TYPE_NAME, total_test_metadata_types
@@ -318,6 +321,13 @@ class MetadataTypeTestMixin:
             name=name, label=label
         )
         self.test_metadata_types.append(self.test_metadata_type)
+
+        if add_test_document_type:
+            self._test_document_type_metadata_type_relationships.append(
+                self.test_document_type.metadata.create(
+                    metadata_type=self.test_metadata_type, required=required
+                )
+            )
 
 
 class MetadataTypeViewTestMixin:
