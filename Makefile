@@ -347,6 +347,26 @@ gitlab-release-all-minor:
 	git push origin :releases/all_minor || true
 	git push origin HEAD:releases/all_minor
 
+# Dev server - backported from version 4.0
+
+manage-with-mysql: ## Run the development server using a Docker PostgreSQL container.
+	@export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
+	./manage.py $(filter-out $@,$(MAKECMDGOALS)) --settings=mayan.settings.development
+
+manage-with-oracle: ## Run the development server using a Docker Oracle container.
+	@export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.oracle','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
+	./manage.py $(filter-out $@,$(MAKECMDGOALS)) --settings=mayan.settings.development
+
+manage-with-postgresql: ## Run the development server using a Docker PostgreSQL container.
+	@export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
+	./manage.py $(filter-out $@,$(MAKECMDGOALS)) --settings=mayan.settings.development
+
+runserver-plus: ## Run the Django extension's development server.
+	./manage.py runserver_plus --settings=mayan.settings.development $(ADDRPORT)
+
+shell-plus: ## Run the shell_plus command.
+	./manage.py shell_plus --settings=mayan.settings.development
+
 # Dev server
 
 manage: ## Run a command with the development settings.
@@ -440,6 +460,55 @@ staging-worker: ## Launch a worker instance that uses the production-like servic
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
 	DJANGO_SETTINGS_MODULE=mayan.settings.staging.docker ./manage.py celery worker -A mayan -B -l INFO -O fair
 
+# Test database containers - backported from version 4.0.
+
+docker-mysql-start: ## Start a MySQL Docker container.
+	@docker run --detach --name $(TEST_MYSQL_CONTAINER_NAME) --publish 3306:3306 --env MYSQL_ALLOW_EMPTY_PASSWORD="yes" --env MYSQL_USER=$(DEFAULT_DATABASE_USER) --env MYSQL_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) --env MYSQL_DATABASE=$(DEFAULT_DATABASE_NAME) --volume $(TEST_MYSQL_CONTAINER_NAME):/var/lib/mysql $(DOCKER_MYSQL_IMAGE_VERSION) --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+	@while ! mysql -h 127.0.0.1 --user=$(DEFAULT_DATABASE_USER) --password=$(DEFAULT_DATABASE_PASSWORD) --execute "SHOW TABLES;" $(DEFAULT_DATABASE_NAME) >/dev/null 2>&1; do echo -n .;sleep 2; done
+
+docker-mysql-stop: ## Stop and delete the MySQL Docker container.
+	@docker rm --force $(TEST_MYSQL_CONTAINER_NAME) >/dev/null 2>&1
+	@docker volume rm $(TEST_MYSQL_CONTAINER_NAME) >/dev/null 2>&1 || true
+
+docker-mysql-backup:
+	@mysqldump --host=127.0.0.1 --no-tablespaces --user=$(DEFAULT_DATABASE_USER) --password=$(DEFAULT_DATABASE_PASSWORD) $(DEFAULT_DATABASE_NAME) > mayan-docker-mysql-backup.sql
+
+docker-mysql-restore:
+	@mysql --host=127.0.0.1 --user=$(DEFAULT_DATABASE_USER) --password=$(DEFAULT_DATABASE_PASSWORD) $(DEFAULT_DATABASE_NAME) < mayan-docker-mysql-backup.sql
+
+docker-oracle-start: ## Start an Oracle Docker container.
+docker-oracle-start:
+	@docker run --detach --name $(TEST_ORACLE_CONTAINER_NAME) --publish 49160:22 --publish 49161:1521 --env ORACLE_ALLOW_REMOTE=true --volume $(TEST_ORACLE_CONTAINER_NAME):/u01/app/oracle $(DOCKER_ORACLE_IMAGE_VERSION)
+	@sleep 10
+	@while ! nc -z 127.0.0.1 49161; do echo -n .; sleep 2; done
+
+docker-oracle-stop:
+	@docker rm --force $(TEST_ORACLE_CONTAINER_NAME) >/dev/null 2>&1
+	@docker volume rm $(TEST_ORACLE_CONTAINER_NAME) >/dev/null 2>&1 || true
+
+docker-postgresql-start: ## Start a PostgreSQL Docker container.
+	@docker run --detach --name $(TEST_POSTGRESQL_CONTAINER_NAME) --env POSTGRES_HOST_AUTH_METHOD=trust --env POSTGRES_USER=$(DEFAULT_DATABASE_USER) --env POSTGRES_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) --env POSTGRES_DB=$(DEFAULT_DATABASE_NAME) --publish 5432:5432 --volume $(TEST_POSTGRESQL_CONTAINER_NAME):/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
+	@while ! psql --command "\l" --dbname=$(DEFAULT_DATABASE_NAME) --host=127.0.0.1 --username=$(DEFAULT_DATABASE_USER) >/dev/null 2>&1; do echo -n .;sleep 2; done
+
+docker-postgresql-stop: ## Stop and delete the PostgreSQL Docker container.
+	@docker rm --force $(TEST_POSTGRESQL_CONTAINER_NAME) >/dev/null 2>&1
+	@docker volume rm $(TEST_POSTGRESQL_CONTAINER_NAME) >/dev/null 2>&1 || true
+
+docker-postgresql-backup:
+	@PGPASSWORD="$(DEFAULT_DATABASE_PASSWORD)" pg_dump --dbname=$(DEFAULT_DATABASE_NAME) --host=127.0.0.1 --username=$(DEFAULT_DATABASE_USER) > mayan-docker-postgresql-backup.sql
+
+docker-postgresql-restore:
+	@cat mayan-docker-postgresql-backup.sql | psql --dbname=$(DEFAULT_DATABASE_NAME) --host=127.0.0.1 --username=$(DEFAULT_DATABASE_USER) > /dev/null
+
+docker-redis-start: ## Start a Redis Docker container.
+docker-redis-start:
+	@docker run --detach --name $(TEST_REDIS_CONTAINER_NAME) --publish 6379:6379 $(DOCKER_REDIS_IMAGE_VERSION)
+	@while ! nc -z 127.0.0.1 6379; do echo -n .; sleep 1; done
+
+docker-redis-stop: ## Stop and delete the Redis Docker container.
+docker-redis-stop:
+	@docker rm --force $(TEST_REDIS_CONTAINER_NAME) >/dev/null 2>&1
+
 # Security
 
 safety-check: ## Run a package safety check.
@@ -497,5 +566,19 @@ setup-python-redis:
 copy-config-env:
 	@contrib/scripts/copy_config_env.py > mayan/settings/literals.py
 
+
+# Backported from version 4.0.
+
+setup-python-mysql:
+	@pip install mysqlclient==$(PYTHON_MYSQL_VERSION)
+
+setup-python-oracle:
+	@pip install cx_Oracle==$(PYTHON_ORACLE_VERSION)
+
+setup-python-postgresql:
+	@pip install psycopg2==$(PYTHON_PSYCOPG2_VERSION)
+
+setup-python-redis:
+	@pip install redis==$(PYTHON_REDIS_VERSION)
 
 -include docker/Makefile
