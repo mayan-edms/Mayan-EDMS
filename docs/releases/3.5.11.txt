@@ -1,21 +1,46 @@
-Version 3.5.10
+Version 3.5.11
 ==============
 
-Released: June 5, 2021
+Released: August 19, 2021
 
 Status: Maintenance
+
+
+This version containes backported fixes from version 4.0 and 4.1-a.
 
 
 Changes
 -------
 
-Events
-^^^^^^
+Dependencies
+^^^^^^^^^^^^
 
-Remove the database transaction handling in the event decorator. This caused
-a race condition which made some background tasks like, workflows launches,
-to attempt to access a document that was not yet available because it was
-in the middle of an unfinished event transaction.
+Django was updated from version 2.2.23 to 2.2.24 and PIP to 21.2.4.
+
+The Debian base Docker image used to build the Mayan EDMS Docker image and
+to run the GitLab CD/CI was updated to version 10.10.
+
+
+Metadata
+^^^^^^^^
+
+An issue with the metadata form was fixed. This issue cause a ``KeyError``
+exception when required metadata is missing.
+
+
+Workflows
+^^^^^^^^^
+
+Trashed documents are now excluded from the workflow runtime proxy document
+count.
+
+
+Other
+^^^^^
+
+- Avoid passing ``None`` to the template. The ``html_extra_classes``
+  property is passed directly  to the template which renders the
+  value ``None`` as a string.
 
 
 Removals
@@ -132,7 +157,7 @@ Upgrading from Mayan EDMS 3.4.x or 3.3.x
 
    .. code-block:: bash
 
-    sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install mayan-edms==3.5.10
+    sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install mayan-edms==3.5.11
 
    the requirements will also be updated automatically.
 
@@ -203,7 +228,6 @@ The upgrade procedure is now complete.
 Issues closed
 -------------
 
-- :gitlab-issue:`976` Workflow trigger not firing on upload via Document upload wizard
-- :gitlab-issue:`990` [4.0.2] Fresh Installation - Auto adding documents to Workflows not working.
+- :gitlab-issue:`997` KeyError exception when required metadata is missing
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

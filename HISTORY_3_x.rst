@@ -1,3 +1,17 @@
+3.5.11 (2021-08-19)
+===================
+- Update Django from version 2.2.23 to 2.2.24.
+- Backport fixes from versions 4.0 and 4.1-a.
+- Avoid passing ``None`` to the template. The ``html_extra_classes``
+  property is passed directly  to the template which renders the
+  value ``None`` as a string.
+- Add support for using local PIP and APT caches to build Docker images.
+- Update to Debian 10.10 for the Docker image and for the GitLab CD/CI.
+- Fix metadata form ``KeyError`` exception when required metadata is missing.
+  Closes GitLab issue #997. Thanks to Raimar Sandner (@PiQuer) for the report
+  and debug information.
+- Exclude trashed documents from the workflow runtime proxy document count.
+
 3.5.10 (2021-06-05)
 ===================
 - Remove database transaction form the event decorator.  Solves workflows
