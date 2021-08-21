@@ -23,7 +23,7 @@ from .permissions import (
 from .querysets import get_user_queryset
 
 
-class CurrentUserDetailsView(SingleObjectDetailView):
+class CurrentUserDetailView(SingleObjectDetailView):
     fields = (
         'username', 'first_name', 'last_name', 'email', 'last_login',
         'date_joined', 'groups'
@@ -75,6 +75,19 @@ class GroupDeleteView(SingleObjectDeleteView):
         return {
             'object': self.object,
             'title': _('Delete the group: %s?') % self.object,
+        }
+
+
+class GroupDetailView(SingleObjectDetailView):
+    fields = ('name',)
+    model = Group
+    object_permission = permission_group_view
+    pk_url_kwarg = 'group_id'
+
+    def get_extra_context(self, **kwargs):
+        return {
+            'object': self.object,
+            'title': _('Details of group: %s') % self.object
         }
 
 
@@ -223,7 +236,7 @@ class UserDeleteView(MultipleObjectConfirmActionView):
             )
 
 
-class UserDetailsView(SingleObjectDetailView):
+class UserDetailView(SingleObjectDetailView):
     fields = (
         'username', 'first_name', 'last_name', 'email', 'last_login',
         'date_joined', 'groups',

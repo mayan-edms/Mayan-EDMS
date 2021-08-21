@@ -39,8 +39,9 @@ from .links import (
 )
 from .methods import (
     get_method_group_init, get_method_group_save, get_method_user_init,
-    get_method_user_save, method_user_get_absolute_url,
-    method_group_get_users, method_group_users_add, method_group_users_remove,
+    get_method_user_save, method_group_get_absolute_url,
+    method_group_get_users, method_group_users_add,
+    method_group_users_remove, method_user_get_absolute_url,
     method_user_get_groups, method_user_groups_add, method_user_groups_remove
 )
 
@@ -85,13 +86,27 @@ class UserManagementApp(MayanAppConfig):
             serializer_class='mayan.apps.user_management.serializers.UserSerializer'
         )
 
-        EventModelRegistry.register(model=Group)
-        EventModelRegistry.register(model=User)
-
         Group._meta.ordering = ('name',)
         Group._meta.verbose_name = _('Group')
         Group._meta.verbose_name_plural = _('Groups')
         Group._meta.get_field('name').verbose_name = _('Name')
+
+        Group.add_to_class(
+            name='__init__', value=get_method_group_init()
+        )
+        Group.add_to_class(
+            name='get_absolute_url', value=method_group_get_absolute_url
+        )
+        Group.add_to_class(
+            name='get_users', value=method_group_get_users
+        )
+        Group.add_to_class(
+            name='users_add', value=method_group_users_add
+        )
+        Group.add_to_class(
+            name='users_remove', value=method_group_users_remove
+        )
+        Group.add_to_class(name='save', value=get_method_group_save())
 
         User._meta.ordering = ('pk',)
         User._meta.verbose_name = _('User')
@@ -107,23 +122,29 @@ class UserManagementApp(MayanAppConfig):
         User._meta.get_field('username').verbose_name = _('Username')
         User._meta.get_field('last_login').verbose_name = _('Last login')
 
+        User.add_to_class(
+            name='__init__', value=get_method_user_init()
+        )
+        User.add_to_class(
+            name='get_absolute_url', value=method_user_get_absolute_url
+        )
+        User.add_to_class(
+            name='get_groups', value=method_user_get_groups
+        )
+        User.add_to_class(
+            name='groups_add', value=method_user_groups_add
+        )
+        User.add_to_class(
+            name='groups_remove', value=method_user_groups_remove
+        )
+        User.add_to_class(name='save', value=get_method_user_save())
+
         User.has_usable_password.short_description = _(
             'Has usable password?'
         )
 
-        Group.add_to_class(
-            name='__init__', value=get_method_group_init()
-        )
-        Group.add_to_class(
-            name='get_users', value=method_group_get_users
-        )
-        Group.add_to_class(
-            name='users_add', value=method_group_users_add
-        )
-        Group.add_to_class(
-            name='users_remove', value=method_group_users_remove
-        )
-        Group.add_to_class(name='save', value=get_method_group_save())
+        EventModelRegistry.register(model=Group)
+        EventModelRegistry.register(model=User)
 
         MetadataLookup(
             description=_('All the groups.'), name='groups',
@@ -216,23 +237,6 @@ class UserManagementApp(MayanAppConfig):
             attribute='has_usable_password', include_label=True, source=User,
             widget=TwoStateWidget
         )
-
-        User.add_to_class(
-            name='__init__', value=get_method_user_init()
-        )
-        User.add_to_class(
-            name='get_absolute_url', value=method_user_get_absolute_url
-        )
-        User.add_to_class(
-            name='get_groups', value=method_user_get_groups
-        )
-        User.add_to_class(
-            name='groups_add', value=method_user_groups_add
-        )
-        User.add_to_class(
-            name='groups_remove', value=method_user_groups_remove
-        )
-        User.add_to_class(name='save', value=get_method_user_save())
 
         dashboard_main.add_widget(
             widget=DashboardWidgetUserTotal, order=99
