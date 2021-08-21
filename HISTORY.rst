@@ -60,6 +60,18 @@
   - Improve tests.
   - Add UUID field for all document child objects.
 
+- Add detail view for groups.
+- Show total permission when running the `purgepermissions` command.
+- Add detail for file partitions.
+- Add placeholder absolute links for announcements, workflow templates, quotas.
+- Add detail view for stored permissions.
+- Rename role setup views.
+- Load user management first to allow patching
+- Register ACL events when enabling ACLs. Objects that are registered to
+  support ACLs will also be registered for ACL events to allow subscribing to
+  ACL changes of the object.
+- Allow bind either the events links, the subscription link, both or none.
+
 4.0.15 (2021-08-07)
 ===================
 - Improve the document version export API endpoint.
