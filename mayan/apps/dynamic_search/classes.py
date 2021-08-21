@@ -327,9 +327,12 @@ class SearchModel(AppsModuleLoaderMixin):
         try:
             result = cls._registry[name]
         except KeyError:
-            raise KeyError(_('No search model matching the query.'))
-        if not hasattr(result, 'serializer'):
-            result.serializer = import_string(dotted_path=result.serializer_path)
+            raise KeyError(_('Unknown search model `%s`.') % name)
+        else:
+            if not hasattr(result, 'serializer'):
+                result.serializer = import_string(
+                    dotted_path=result.serializer_path
+                )
 
         return result
 
