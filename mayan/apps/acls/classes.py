@@ -6,10 +6,12 @@ from django.core.exceptions import ImproperlyConfigured
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.menus import menu_list_facet
 from mayan.apps.common.utils import get_related_field
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 
 from .events import event_acl_created, event_acl_deleted, event_acl_edited
+from .links import link_acl_list
 
 logger = logging.getLogger(name=__name__)
 
@@ -116,7 +118,7 @@ class ModelPermission:
         return cls._manager_names[model]
 
     @classmethod
-    def register(cls, model, permissions):
+    def register(cls, model, permissions, bind_link=True):
         """
         Match a model class to a set of permissions. And connect the model
         to the ACLs via a GenericRelation field.
@@ -139,6 +141,11 @@ class ModelPermission:
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
+
+        if bind_link:
+            menu_list_facet.bind_links(
+                links=(link_acl_list,), sources=(model,)
+            )
 
         model.add_to_class(
             name='acls', value=GenericRelation(

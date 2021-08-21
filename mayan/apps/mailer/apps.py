@@ -2,7 +2,6 @@ from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
@@ -94,10 +93,6 @@ class MailerApp(MayanAppConfig):
                 permission_user_mailer_delete, permission_user_mailer_edit,
                 permission_user_mailer_view, permission_user_mailer_use
             )
-        )
-
-        menu_list_facet.bind_links(
-            links=(link_acl_list,), sources=(UserMailer,)
         )
 
         menu_multi_item.bind_links(

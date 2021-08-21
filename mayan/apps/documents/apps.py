@@ -3,7 +3,6 @@ from django.db.models.signals import post_migrate
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import (
@@ -708,9 +707,6 @@ class DocumentsApp(MayanAppConfig):
         # Document
 
         menu_facet.bind_links(
-            links=(link_acl_list,), sources=(Document,)
-        )
-        menu_facet.bind_links(
             links=(link_document_preview,), sources=(Document,), position=0
         )
         menu_facet.bind_links(
@@ -752,7 +748,7 @@ class DocumentsApp(MayanAppConfig):
         menu_list_facet.bind_links(
             links=(
                 link_document_file_page_list, link_document_file_properties,
-                link_document_file_preview, link_acl_list
+                link_document_file_preview
             ), sources=(DocumentFile,)
         )
         menu_multi_item.bind_links(
@@ -820,7 +816,7 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_type_filename_list,
                 link_document_type_policies,
-                link_document_type_filename_generator, link_acl_list
+                link_document_type_filename_generator
             ), sources=(DocumentType,)
         )
 
@@ -861,7 +857,7 @@ class DocumentsApp(MayanAppConfig):
         menu_list_facet.bind_links(
             links=(
                 link_document_version_page_list,
-                link_document_version_preview, link_acl_list
+                link_document_version_preview
             ),
             sources=(DocumentVersion,)
         )

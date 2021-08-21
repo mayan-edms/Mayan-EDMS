@@ -2,7 +2,6 @@ from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
@@ -129,8 +128,7 @@ class LinkingApp(MayanAppConfig):
         )
         menu_list_facet.bind_links(
             links=(
-                link_acl_list, link_smart_link_document_types,
-                link_smart_link_condition_list
+                link_smart_link_document_types, link_smart_link_condition_list
             ), sources=(SmartLink,)
         )
         menu_list_facet.bind_links(

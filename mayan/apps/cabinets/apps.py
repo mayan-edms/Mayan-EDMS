@@ -90,7 +90,7 @@ class CabinetsApp(MayanAppConfig):
 
         ModelCopy(
             model=Cabinet, condition=cabinet_model_copy_condition,
-            bind_link=True, register_permission=True
+            bind_link=True, bind_acl_link=False, register_permission=True
         ).add_fields(
             field_names=('label', 'documents'), unique_conditional={
                 'label': cabinet_unique_conditional
@@ -118,7 +118,7 @@ class CabinetsApp(MayanAppConfig):
                 permission_cabinet_delete, permission_cabinet_edit,
                 permission_cabinet_view, permission_cabinet_add_document,
                 permission_cabinet_remove_document
-            )
+            ), bind_link=False
         )
 
         model_query_fields_document = ModelQueryFields(model=Document)

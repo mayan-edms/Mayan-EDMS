@@ -5,7 +5,6 @@ from django.db.models.signals import post_delete, post_save
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import (
@@ -248,7 +247,7 @@ class MetadataApp(MayanAppConfig):
         )
         menu_list_facet.bind_links(
             links=(
-                link_acl_list, link_metadata_type_document_type_relationship
+                link_metadata_type_document_type_relationship,
             ), sources=(MetadataType,)
         )
         menu_object.bind_links(

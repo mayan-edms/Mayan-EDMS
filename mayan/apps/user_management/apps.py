@@ -4,8 +4,9 @@ from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
-from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.acls.permissions import (
+    permission_acl_edit, permission_acl_view
+)
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
@@ -247,12 +248,12 @@ class UserManagementApp(MayanAppConfig):
 
         menu_list_facet.bind_links(
             links=(
-                link_acl_list, link_group_user_list
+                link_group_user_list,
             ), sources=(Group,)
         )
         menu_list_facet.bind_links(
             links=(
-                link_acl_list, link_user_group_list, link_user_set_options
+                link_user_group_list, link_user_set_options
             ), sources=(User,)
         )
         menu_multi_item.bind_links(

@@ -3,7 +3,6 @@ from django.db.models.signals import post_migrate
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import (
     permission_acl_edit, permission_acl_view
 )
@@ -104,7 +103,7 @@ class PermissionsApp(MayanAppConfig):
 
         menu_list_facet.bind_links(
             links=(
-                link_acl_list, link_role_groups, link_role_permissions
+                link_role_groups, link_role_permissions
             ), sources=(Role,)
         )
         menu_list_facet.bind_links(

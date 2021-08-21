@@ -3,7 +3,6 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import (
     permission_acl_edit, permission_acl_view
 )
@@ -86,10 +85,6 @@ class ConverterApp(MayanAppConfig):
         SourceColumn(
             attribute='arguments', include_label=True,
             source=LayerTransformation
-        )
-
-        menu_list_facet.bind_links(
-            links=(link_acl_list,), sources=(Asset,)
         )
 
         menu_multi_item.bind_links(

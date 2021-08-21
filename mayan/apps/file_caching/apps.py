@@ -1,7 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
@@ -60,10 +59,6 @@ class FileCachingConfig(MayanAppConfig):
         SourceColumn(
             attribute='get_total_size_display', include_label=True,
             source=Cache
-        )
-
-        menu_list_facet.bind_links(
-            links=(link_acl_list,), sources=(Cache,)
         )
 
         menu_object.bind_links(

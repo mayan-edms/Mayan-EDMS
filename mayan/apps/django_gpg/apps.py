@@ -1,7 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
@@ -87,7 +86,7 @@ class DjangoGPGApp(MayanAppConfig):
         menu_object.bind_links(links=(link_key_receive,), sources=(KeyStub,))
 
         menu_object.bind_links(
-            links=(link_acl_list, link_key_delete, link_key_download,),
+            links=(link_key_delete, link_key_download),
             sources=(Key,)
         )
         menu_related.bind_links(
