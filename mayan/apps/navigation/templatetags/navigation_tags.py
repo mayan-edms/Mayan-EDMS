@@ -5,6 +5,24 @@ from ..classes import Menu, SourceColumn
 register = Library()
 
 
+def _navigation_resolve_menu(context, name, source=None, sort_results=None):
+    result = []
+
+    menu = Menu.get(name)
+    link_groups = menu.resolve(
+        context=context, source=source, sort_results=sort_results
+    )
+
+    if link_groups:
+        result.append(
+            {
+                'link_groups': link_groups, 'menu': menu
+            }
+        )
+
+    return result
+
+
 @register.simple_tag(takes_context=True)
 def navigation_get_sort_field_querystring(context, column):
     return column.get_sort_field_querystring(context=context)
@@ -43,17 +61,9 @@ def navigation_get_source_columns(
 
 @register.simple_tag(takes_context=True)
 def navigation_resolve_menu(context, name, source=None, sort_results=None):
-    result = []
-
-    menu = Menu.get(name)
-    link_groups = menu.resolve(
-        context=context, source=source, sort_results=sort_results
+    return _navigation_resolve_menu(
+        context=context, name=name, source=source, sort_results=sort_results
     )
-
-    if link_groups:
-        result.append({'link_groups': link_groups, 'menu': menu})
-
-    return result
 
 
 @register.simple_tag(takes_context=True)
@@ -61,11 +71,11 @@ def navigation_resolve_menus(context, names, source=None, sort_results=None):
     result = []
 
     for name in names.split(','):
-        menu = Menu.get(name=name)
-        link_groups = menu.resolve(context=context, sort_results=sort_results)
-
-        if link_groups:
-            result.append({'link_groups': link_groups, 'menu': menu})
+        result.extend(
+            _navigation_resolve_menu(
+                context=context, name=name, source=source, sort_results=sort_results
+            )
+        )
 
     return result
 
