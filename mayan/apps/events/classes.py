@@ -20,7 +20,7 @@ from .literals import (
     DEFAULT_EVENT_LIST_EXPORT_FILENAME, EVENT_MANAGER_ORDER_AFTER
 )
 from .links import (
-    link_events_for_object, link_object_event_types_user_subcriptions_list
+    link_events_for_object, link_object_event_types_user_subscriptions_list
 )
 from .permissions import permission_events_export, permission_events_view
 
@@ -227,7 +227,7 @@ class EventModelRegistry:
         if bind_subscription_link:
             menu.bind_links(
                 links=(
-                    link_object_event_types_user_subcriptions_list,
+                    link_object_event_types_user_subscriptions_list,
                 ), sources=(model,)
             )
 

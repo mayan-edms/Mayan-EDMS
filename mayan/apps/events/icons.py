@@ -23,7 +23,7 @@ icon_notification_mark_read = Icon(
 icon_notification_mark_read_all = Icon(
     driver_name='fontawesome', symbol='eye'
 )
-icon_object_event_types_user_subcriptions_list = Icon(
+icon_object_event_types_user_subscriptions_list = Icon(
     driver_name='fontawesome', symbol='rss'
 )
 icon_user_notifications_list = Icon(

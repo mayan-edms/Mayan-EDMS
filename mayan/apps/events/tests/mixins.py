@@ -167,4 +167,4 @@ class ObjectEventAPITestMixin:
 
 class UserEventViewsTestMixin:
     def _request_test_user_event_type_subscription_list_view(self):
-        return self.get(viewname='events:event_types_user_subcriptions_list')
+        return self.get(viewname='events:event_types_user_subscriptions_list')

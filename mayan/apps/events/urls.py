@@ -64,12 +64,12 @@ urlpatterns_notification = [
 urlpatterns_subscriptions = [
     url(
         regex=r'^user/event_types/subscriptions/$',
-        name='event_types_user_subcriptions_list',
+        name='event_types_user_subscriptions_list',
         view=EventTypeSubscriptionListView.as_view()
     ),
     url(
         regex=r'^user/object/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/subscriptions/$',
-        name='object_event_types_user_subcriptions_list',
+        name='object_event_types_user_subscriptions_list',
         view=ObjectEventTypeSubscriptionListView.as_view()
     ),
 ]

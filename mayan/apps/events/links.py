@@ -10,7 +10,7 @@ from .icons import (
     icon_events_for_object_export, icon_events_list,
     icon_events_list_export, icon_notification_mark_read,
     icon_notification_mark_read_all,
-    icon_object_event_types_user_subcriptions_list,
+    icon_object_event_types_user_subscriptions_list,
     icon_user_notifications_list
 )
 from .permissions import permission_events_view
@@ -59,7 +59,7 @@ link_events_list_export = Link(
 link_event_types_subscriptions_list = Link(
     icon=icon_event_types_subscriptions_list,
     text=_('Event subscriptions'),
-    view='events:event_types_user_subcriptions_list'
+    view='events:event_types_user_subscriptions_list'
 )
 link_notification_mark_read = Link(
     args='object.pk', icon=icon_notification_mark_read,
@@ -69,11 +69,11 @@ link_notification_mark_read_all = Link(
     icon=icon_notification_mark_read_all, text=_('Mark all as seen'),
     view='events:notification_mark_read_all'
 )
-link_object_event_types_user_subcriptions_list = Link(
-    icon=icon_object_event_types_user_subcriptions_list,
+link_object_event_types_user_subscriptions_list = Link(
+    icon=icon_object_event_types_user_subscriptions_list,
     kwargs=get_content_type_kwargs_factory(variable_name='resolved_object'),
     permissions=(permission_events_view,), text=_('Subscriptions'),
-    view='events:object_event_types_user_subcriptions_list',
+    view='events:object_event_types_user_subscriptions_list',
 )
 link_user_notifications_list = Link(
     badge_text=get_unread_notification_count,
