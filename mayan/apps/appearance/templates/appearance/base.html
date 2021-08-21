@@ -62,21 +62,16 @@
                 <div id="sidebar">
                     <div class="list-group">
                         {% for menu_link_result in facet_menus_link_results %}
-                            {% if facet_menus_link_results|length > 1 %}
+                            {% for link_group in menu_link_result.link_groups %}
                                 {% if menu_link_result.menu.name not in 'facet,list facet'|split:"," %}
                                     <li class="dropdown-header">{{ menu_link_result.menu.label }}</li>
                                 {% else %}
-                                    {% ifchanged menu_link_result.link_groups.0.object %}
-                                        {% common_get_object_verbose_name obj=menu_link_result.link_groups.0.object as link_group_object_verbose_name %}
+                                    {% ifchanged link_group.object %}
+                                        {% common_get_object_verbose_name obj=link_group.object as link_group_object_verbose_name %}
                                         <li class="dropdown-header">{% if link_group_object_verbose_name %}{{ link_group_object_verbose_name }}{% else %}{% trans 'Object' %}{% endif %}</li>
                                     {% endifchanged %}
                                 {% endif %}
-                            {% else %}
-                                {% if menu_link_result.menu.name not in 'facet,list facet'|split:"," %}
-                                    <li class="dropdown-header">{{ menu_link_result.menu.label }}</li>
-                                {% endif %}
-                            {% endif %}
-                            {% for link_group in menu_link_result.link_groups %}
+
                                 {% with link_group.links as object_navigation_links %}
                                 {% with 'true' as hide_active_anchor %}
                                 {% with 'active' as link_class_active %}
