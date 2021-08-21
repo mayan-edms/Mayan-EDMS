@@ -69,6 +69,9 @@ class Workflow(ExtraDataModelMixin, models.Model):
     def __str__(self):
         return self.label
 
+    def get_absolute_url(self):
+        return reverse(viewname='document_states:workflow_template_list')
+
     @cached_property
     def cache(self):
         Cache = apps.get_model(app_label='file_caching', model_name='Cache')
