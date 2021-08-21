@@ -71,6 +71,9 @@
   support ACLs will also be registered for ACL events to allow subscribing to
   ACL changes of the object.
 - Allow bind either the events links, the subscription link, both or none.
+- Improve workflow app navigation.
+- Improve sidebar navigation.
+- Improve clarity of the action dropdown sections.
 
 4.0.15 (2021-08-07)
 ===================
