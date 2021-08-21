@@ -7,9 +7,10 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.user_management.permissions import permission_group_edit
 from mayan.apps.views.generics import (
     AddRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectEditView, SingleObjectListView
+    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
 
+from .forms import StoredPermissionDetailForm
 from .icons import icon_role_list
 from .links import link_role_create
 from .models import Role, StoredPermission
@@ -71,7 +72,32 @@ class RoleEditView(SingleObjectEditView):
         return {'_event_actor': self.request.user}
 
 
-class SetupRoleMembersView(AddRemoveView):
+class RoleListView(SingleObjectListView):
+    model = Role
+    object_permission = permission_role_view
+
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'hide_object': True,
+            'no_results_icon': icon_role_list,
+            'no_results_main_link': link_role_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Roles are authorization units. They contain '
+                'user groups which inherit the role permissions for the '
+                'entire system. Roles can also part of access '
+                'controls lists. Access controls list are permissions '
+                'granted to a role for specific objects which its group '
+                'members inherit.'
+            ),
+            'no_results_title': _('There are no roles'),
+            'title': _('Roles'),
+        }
+
+
+class RoleMembersView(AddRemoveView):
     main_object_method_add_name = 'groups_add'
     main_object_method_remove_name = 'groups_remove'
     main_object_model = Role
@@ -97,7 +123,7 @@ class SetupRoleMembersView(AddRemoveView):
         }
 
 
-class SetupRolePermissionsView(AddRemoveView):
+class RolePermissionsView(AddRemoveView):
     grouped = True
     main_object_method_add_name = 'permissions_add'
     main_object_method_remove_name = 'permissions_remove'
@@ -112,13 +138,13 @@ class SetupRolePermissionsView(AddRemoveView):
     def generate_choices(self, queryset):
         namespaces_dictionary = {}
 
-        # Sort permissions by their translatable label
+        # Sort permissions by their translatable label.
         object_list = sorted(
             queryset,
             key=lambda permission: permission.volatile_permission.label
         )
 
-        # Group permissions by namespace
+        # Group permissions by namespace.
         for permission in object_list:
             namespaces_dictionary.setdefault(
                 permission.volatile_permission.namespace.label,
@@ -130,7 +156,7 @@ class SetupRolePermissionsView(AddRemoveView):
                 (permission.pk, force_text(s=permission))
             )
 
-        # Sort permissions by their translatable namespace label
+        # Sort permissions by their translatable namespace label.
         return sorted(namespaces_dictionary.items())
 
     def get_actions_extra_kwargs(self):
@@ -147,26 +173,20 @@ class SetupRolePermissionsView(AddRemoveView):
         }
 
 
-class RoleListView(SingleObjectListView):
-    model = Role
-    object_permission = permission_role_view
+class StoredPermissionDetailView(SingleObjectDetailView):
+    form_class = StoredPermissionDetailForm
+    form_extra_kwargs = {
+        'extra_fields': [
+            {
+                'field': 'volatile_permission'
+            },
+        ]
+    }
+    model = StoredPermission
+    pk_url_kwarg = 'stored_permission_id'
 
-    def get_extra_context(self):
+    def get_extra_context(self, **kwargs):
         return {
-            'hide_link': True,
-            'hide_object': True,
-            'no_results_icon': icon_role_list,
-            'no_results_main_link': link_role_create.resolve(
-                context=RequestContext(request=self.request)
-            ),
-            'no_results_text': _(
-                'Roles are authorization units. They contain '
-                'user groups which inherit the role permissions for the '
-                'entire system. Roles can also part of access '
-                'controls lists. Access controls list are permissions '
-                'granted to a role for specific objects which its group '
-                'members inherit.'
-            ),
-            'no_results_title': _('There are no roles'),
-            'title': _('Roles'),
+            'object': self.object,
+            'title': _('Details of permission: %s') % self.object
         }
