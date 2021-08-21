@@ -1,9 +1,6 @@
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentSearchTestMixin
-from mayan.apps.documents.permissions import (
-    permission_document_file_view, permission_document_view
-)
-from mayan.apps.dynamic_search.tests.mixins import SearchTestMixin
+from mayan.apps.documents.permissions import permission_document_view
 
 from .mixins import DocumentVersionOCRTestMixin
 
@@ -18,7 +15,7 @@ class DocumentVersionOCRSearchTestCase(
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
-        print("@", self.test_document_version_page.ocr_content.content)
+
         queryset = self._perform_document_search(
             query={
                 'versions__version_pages__ocr_content__content': self.test_document_version_page.ocr_content.content

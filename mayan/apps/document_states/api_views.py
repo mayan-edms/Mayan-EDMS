@@ -1,12 +1,7 @@
-from django.conf import settings
-from django.contrib.contenttypes.models import ContentType
-from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
-from django.views.decorators.cache import cache_control, patch_cache_control
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.converter.api_view_mixins import APIImageViewMixin
-from mayan.apps.converter.tasks import task_content_object_image_generate
 from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.documents.permissions import permission_document_type_view

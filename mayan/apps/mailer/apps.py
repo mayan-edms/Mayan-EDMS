@@ -6,7 +6,7 @@ from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_setup,
+    menu_multi_item, menu_object, menu_secondary, menu_setup
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.logging.classes import ErrorLog

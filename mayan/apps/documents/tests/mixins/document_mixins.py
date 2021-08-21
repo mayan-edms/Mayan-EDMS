@@ -2,7 +2,6 @@ import os
 
 from django.conf import settings
 from django.db.models import Q
-from django.utils.module_loading import import_string
 
 from mayan.apps.converter.classes import Layer
 from mayan.apps.dynamic_search.tests.mixins import SearchTestMixin
@@ -90,10 +89,6 @@ class DocumentAPIViewTestMixin:
 
 
 class DocumentSearchTestMixin(SearchTestMixin):
-    # ~ search_backend = import_string(
-        # ~ dotted_path='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend'
-    # ~ )()
-
     def _perform_document_file_page_search(self, query=None):
         query = query or {'q': self.test_document.label}
 

@@ -5,11 +5,9 @@ from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
-from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
 from ..classes import SearchBackend, SearchModel
 from ..permissions import permission_search_tools
-from ..settings import setting_backend_arguments
 
 from .mixins import (
     SearchTestMixin, SearchToolsViewTestMixin, SearchViewTestMixin

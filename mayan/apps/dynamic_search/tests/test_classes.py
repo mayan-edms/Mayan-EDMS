@@ -5,7 +5,6 @@ from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.tags.tests.mixins import TagTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 
-from ..classes import SearchBackend
 from ..exceptions import DynamicSearchException
 
 from .mixins import SearchTestMixin
