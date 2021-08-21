@@ -64,7 +64,7 @@ class WorkflowInstance(models.Model):
                     transition=transition, user=user
                 )
         except AttributeError:
-            # No initial state has been set for this workflow
+            # No initial state has been set for this workflow.
             if settings.DEBUG:
                 raise
 
@@ -141,7 +141,7 @@ class WorkflowInstance(models.Model):
                     queryset=queryset, user=_user
                 )
 
-            # Remove the transitions with a false return value
+            # Remove the transitions with a false return value.
             for entry in queryset:
                 if not entry.evaluate_condition(workflow_instance=self):
                     queryset = queryset.exclude(id=entry.pk)

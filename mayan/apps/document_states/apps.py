@@ -3,7 +3,6 @@ from django.db.models.signals import post_migrate, post_save
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import (
     ModelCopy, ModelField, ModelProperty, ModelReverseField
@@ -105,9 +104,15 @@ class DocumentStatesApp(MayanAppConfig):
         error_log.register_model(model=WorkflowStateAction)
 
         EventModelRegistry.register(model=Workflow)
-        EventModelRegistry.register(model=WorkflowState)
-        EventModelRegistry.register(model=WorkflowStateAction)
-        EventModelRegistry.register(model=WorkflowTransition)
+        EventModelRegistry.register(
+            model=WorkflowState, bind_subscription_link=False
+        )
+        EventModelRegistry.register(
+            model=WorkflowStateAction, bind_subscription_link=False
+        )
+        EventModelRegistry.register(
+            model=WorkflowTransition, bind_subscription_link=False
+        )
         EventModelRegistry.register(model=WorkflowTransitionField)
 
         WorkflowAction.load_modules()
@@ -442,7 +447,7 @@ class DocumentStatesApp(MayanAppConfig):
 
         menu_list_facet.bind_links(
             links=(
-                link_acl_list, link_workflow_template_document_types,
+                link_workflow_template_document_types,
                 link_workflow_template_state_list,
                 link_workflow_template_transition_list,
                 link_workflow_template_preview
@@ -451,7 +456,7 @@ class DocumentStatesApp(MayanAppConfig):
 
         menu_list_facet.unbind_links(
             links=(
-                link_acl_list, link_workflow_template_document_types,
+                link_workflow_template_document_types,
                 link_workflow_template_state_list,
                 link_workflow_template_transition_list,
                 link_workflow_template_preview
@@ -485,15 +490,12 @@ class DocumentStatesApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_workflow_template_state_edit,
-                link_workflow_template_state_action_list,
                 link_workflow_template_state_delete
             ), sources=(WorkflowState,)
         )
         menu_object.bind_links(
             links=(
                 link_workflow_template_transition_edit,
-                link_workflow_template_transition_events,
-                link_workflow_template_transition_field_list, link_acl_list,
                 link_workflow_template_transition_delete
             ), sources=(WorkflowTransition,)
         )
@@ -509,6 +511,12 @@ class DocumentStatesApp(MayanAppConfig):
                 link_workflow_instance_transition
             ), sources=(WorkflowInstance,)
         )
+        menu_object.bind_links(
+            links=(
+                link_workflow_template_state_action_edit,
+                link_workflow_template_state_action_delete,
+            ), sources=(WorkflowStateAction,)
+        )
 
         menu_list_facet.bind_links(
             links=(
@@ -518,15 +526,21 @@ class DocumentStatesApp(MayanAppConfig):
         )
         menu_list_facet.bind_links(
             links=(
+                link_workflow_template_state_action_list,
+            ), sources=(WorkflowState,)
+        )
+        menu_list_facet.bind_links(
+            links=(
                 link_workflow_runtime_proxy_state_document_list,
             ), sources=(WorkflowStateRuntimeProxy,)
         )
-        menu_object.bind_links(
+        menu_list_facet.bind_links(
             links=(
-                link_workflow_template_state_action_edit,
-                link_workflow_template_state_action_delete,
-            ), sources=(WorkflowStateAction,)
+                link_workflow_template_transition_events,
+                link_workflow_template_transition_field_list,
+            ), sources=(WorkflowTransition,)
         )
+
         menu_related.bind_links(
             links=(link_workflow_template_list,),
             sources=(
