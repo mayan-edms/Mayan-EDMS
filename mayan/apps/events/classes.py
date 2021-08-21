@@ -64,7 +64,7 @@ class ActionExporter:
             writer.writerow(row)
 
     def export_to_download_file(self, user=None):
-        # Avoid circular import
+        # Avoid circular import.
         from .events import event_events_exported
 
         DownloadFile = apps.get_model(
@@ -209,17 +209,25 @@ class EventManagerSave(EventManager):
 
 class EventModelRegistry:
     @staticmethod
-    def register(model, bind_links=True, menu=None):
+    def register(
+        model, bind_events_link=True, bind_subscription_link=True, menu=None
+    ):
         from actstream import registry
         registry.register(model)
 
-        if bind_links:
-            menu = menu or menu_list_facet
+        menu = menu or menu_list_facet
 
+        if bind_events_link:
             menu.bind_links(
                 links=(
                     link_events_for_object,
-                    link_object_event_types_user_subcriptions_list
+                ), sources=(model,)
+            )
+
+        if bind_subscription_link:
+            menu.bind_links(
+                links=(
+                    link_object_event_types_user_subcriptions_list,
                 ), sources=(model,)
             )
 
