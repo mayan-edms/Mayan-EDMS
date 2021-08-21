@@ -79,6 +79,9 @@ INSTALLED_APPS = (
     # other app tries to use them.
     'mayan.apps.task_manager',
     'mayan.apps.acls',
+    # User management app must go before authentication to ensure the Group
+    # and User models are properly setup using runtime methods.
+    'mayan.apps.user_management',
     'mayan.apps.authentication',
     'mayan.apps.autoadmin',
     'mayan.apps.common',
@@ -103,7 +106,6 @@ INSTALLED_APPS = (
     'mayan.apps.storage',
     'mayan.apps.templating',
     'mayan.apps.testing',
-    'mayan.apps.user_management',
     'mayan.apps.views',
     # Project apps
     'mayan.apps.announcements',
