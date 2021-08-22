@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.core.files.base import File
-from django.http import FileResponse, HttpResponse, StreamingHttpResponse
+from django.http import StreamingHttpResponse
 from django.views.decorators.cache import patch_cache_control
 
 from .settings import (
@@ -68,7 +68,9 @@ class APIImageViewMixin:
                     else:
                         yield chunk
 
-        response = FileResponse(file_generator(), content_type='image')
+        response = StreamingHttpResponse(
+            streaming_content=file_generator(), content_type='image'
+        )
 
         if '_hash' in request.GET:
             patch_cache_control(
