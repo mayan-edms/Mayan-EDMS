@@ -22,7 +22,7 @@ urlpatterns = [
         view=CachePurgeView.as_view()
     ),
     url(
-        regex=r'^caches/(?P<cache_partition_id>\d+)',
+        regex=r'^caches/(?P<cache_partition_id>\d+)/$',
         name='cache_partition_detail',
         view=CachePartitionDetailView.as_view()
     ),
