@@ -111,16 +111,16 @@ class IndexTemplate(ExtraDataModelMixin, models.Model):
         logger.debug('Index; Indexing document: %s', document)
 
         if Document.valid.filter(pk=document.pk).exists():
-            # Only index valid documents
+            # Only index valid documents.
             self.initialize_instance_root()
 
             with transaction.atomic():
                 # Remove the document from all instance nodes from
-                # this index
+                # this index.
                 for index_instance_node in IndexInstanceNode.objects.filter(index_template_node__index=self, documents=document):
                     index_instance_node.remove_document(document=document)
 
-                # Delete all empty nodes. Starting from the bottom up
+                # Delete all empty nodes. Starting from the bottom up.
                 for index_instance_node in self.instance_root.get_leafnodes():
                     index_instance_node.delete_empty()
 
@@ -148,13 +148,12 @@ class IndexTemplate(ExtraDataModelMixin, models.Model):
         try:
             self.instance_root.delete()
         except IndexInstanceNode.DoesNotExist:
-            # Empty index, ignore this exception
-            pass
+            """Empty index, ignore this exception."""
 
-        # Create the new root index instance node
+        # Create the new root index instance node.
         self.template_root.index_instance_nodes.create()
 
-        # Re-index each document with a type associated with this index
+        # Re-index each document with a type associated with this index.
         for document in Document.objects.filter(document_type__in=self.document_types.all()):
             # Evaluate each index template node for each document
             # associated with this index.
@@ -164,10 +163,9 @@ class IndexTemplate(ExtraDataModelMixin, models.Model):
         try:
             self.instance_root.delete()
         except IndexInstanceNode.DoesNotExist:
-            # Empty index, ignore this exception
-            pass
+            """Empty index, ignore this exception."""
 
-        # Create the new root index instance node
+        # Create the new root index instance node.
         self.template_root.index_instance_nodes.create()
 
     @method_event(
@@ -185,7 +183,7 @@ class IndexTemplate(ExtraDataModelMixin, models.Model):
         is_new = not self.pk
         super().save(*args, **kwargs)
         if is_new:
-            # Automatically create the root index template node
+            # Automatically create the root index template node.
             IndexTemplateNode.objects.get_or_create(parent=None, index=self)
 
         self.initialize_instance_root()
@@ -206,7 +204,7 @@ class IndexTemplateNode(MPTTModel):
     """
     parent = TreeForeignKey(
         blank=True, null=True, on_delete=models.CASCADE,
-        related_name='children', to='self',
+        related_name='children', to='self'
     )
     index = models.ForeignKey(
         on_delete=models.CASCADE, related_name='node_templates',
@@ -270,7 +268,7 @@ class IndexTemplateNode(MPTTModel):
                 )
 
                 if not index_instance_node_parent:
-                    # I'm the root
+                    # This is a root node. Cannot contain documents.
                     with transaction.atomic():
                         index_instance_root_node = self.get_instance_root_node()
 
@@ -396,6 +394,7 @@ class IndexInstanceNode(MPTTModel):
     objects = IndexInstanceNodeManager()
 
     class Meta:
+        unique_together = ('parent', 'value')
         verbose_name = _('Index instance node')
         verbose_name_plural = _('Indexes instances node')
 
@@ -406,7 +405,7 @@ class IndexInstanceNode(MPTTModel):
         """
         Method to delete all empty node instances in a recursive manner.
         """
-        # Prevent another process to delete this node.
+        # Prevent another process from deleting this node.
         try:
             lock = LockingBackend.get_backend().acquire_lock(
                 name=self.index_template_node.get_lock_string()
@@ -417,11 +416,11 @@ class IndexInstanceNode(MPTTModel):
             try:
                 if self.get_documents().count() == 0 and self.get_children().count() == 0:
                     if not self.is_root_node():
-                        # I'm not a root node, I can be deleted
+                        # I'm not a root node, I can be deleted.
                         self.delete()
 
                         if self.parent.is_root_node():
-                            # My parent is not a root node, it can be deleted
+                            # My parent is not a root node, it can be deleted.
                             self.parent.delete_empty()
             finally:
                 lock.release()
@@ -491,10 +490,10 @@ class IndexInstanceNode(MPTTModel):
         The argument `acquire_lock` controls whether or not this method
         acquires or lock. The case for this is to acquire when called directly
         or not to acquire when called as part of a larger index process
-        that already has a lock
+        that already has a lock.
         """
         # Prevent another process to work on this node. We use the node's
-        # parent template node for the lock
+        # parent template node for the lock.
         try:
             lock = LockingBackend.get_backend().acquire_lock(
                 name=self.index_template_node.get_lock_string()

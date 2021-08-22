@@ -1,10 +1,12 @@
+from django.db.utils import IntegrityError
+
 from mayan.apps.documents.tests.base import DocumentTestMixin
 from mayan.apps.documents.tests.literals import (
     TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_DESCRIPTION_EDITED,
     TEST_DOCUMENT_LABEL_EDITED
 )
 from mayan.apps.metadata.models import MetadataType, DocumentTypeMetadataType
-from mayan.apps.testing.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase, BaseTransactionTestCase
 
 from ..models import IndexInstanceNode, IndexTemplate, IndexTemplateNode
 
@@ -217,6 +219,9 @@ class IndexTestCase(IndexTemplateTestMixin, DocumentTestMixin, BaseTestCase):
             ), ['']
         )
 
+    def test_method_get_absolute_url(self):
+        self.assertTrue(self.test_index_template.get_absolute_url())
+
     def test_multi_level_template_with_no_result_parent(self):
         """
         On a two level template if the first level doesn't return a result
@@ -272,5 +277,31 @@ class IndexTestCase(IndexTemplateTestMixin, DocumentTestMixin, BaseTestCase):
             instance_node.documents.all(), [repr(self.test_document)]
         )
 
-    def test_method_get_absolute_url(self):
-        self.assertTrue(self.test_index_template.get_absolute_url())
+
+class IndexIntegrityTestCase(
+    IndexTemplateTestMixin, DocumentTestMixin, BaseTransactionTestCase
+):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+        self._create_test_index_template(add_test_document_type=True)
+
+    def test_unique_value_per_level(self):
+        self.test_index_template.node_templates.create(
+            parent=self.test_index_template.template_root,
+            expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
+            link_documents=True
+        )
+
+        self.test_index_template.rebuild()
+
+        index_instance_node = IndexInstanceNode.objects.last()
+
+        with self.assertRaises(expected_exception=IntegrityError):
+            IndexInstanceNode.objects.create(
+                parent=index_instance_node.parent,
+                index_template_node=index_instance_node.index_template_node,
+                value=index_instance_node.value,
+            )

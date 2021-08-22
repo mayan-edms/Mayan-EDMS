@@ -74,6 +74,8 @@
 - Improve workflow app navigation.
 - Improve sidebar navigation.
 - Improve clarity of the action dropdown sections.
+- Make the index instance node value field an unique field among its own tree
+  level. This prevents tree corruption under heavy load.
 
 4.0.15 (2021-08-07)
 ===================
