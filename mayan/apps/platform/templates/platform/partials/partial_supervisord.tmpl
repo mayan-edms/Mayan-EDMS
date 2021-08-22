@@ -16,7 +16,7 @@ user = mayan
 [program:mayan-edms-{{ worker.name }}]
 autorestart = {{ autorestart }}
 autostart = true
-command = nice -n {{ worker.nice_level }} {{ shell_path }} -c "${MAYAN_PYTHON_BIN_DIR}celery worker -A mayan ${MAYAN_{{ worker.name|upper }}_CONCURRENCY} --hostname=mayan-edms-{{ worker.name }}.%%h --loglevel=ERROR -Ofair --queues={% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} ${MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD} ${MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD} --without-gossip --without-heartbeat --without-mingle"
+command = nice -n {{ worker.nice_level }} {{ shell_path }} -c "${MAYAN_PYTHON_BIN_DIR}celery -A mayan worker ${MAYAN_{{ worker.name|upper }}_CONCURRENCY} --hostname=mayan-edms-{{ worker.name }}.%%h --loglevel=ERROR -Ofair --queues={% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} ${MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD} ${MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD} --without-gossip --without-heartbeat --without-mingle"
 killasgroup = true
 numprocs = 1
 priority = 998
