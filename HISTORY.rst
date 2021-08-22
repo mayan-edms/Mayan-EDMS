@@ -76,6 +76,62 @@
 - Improve clarity of the action dropdown sections.
 - Make the index instance node value field an unique field among its own tree
   level. This prevents tree corruption under heavy load.
+- Update dependencies:
+
+  - Docker Compose from 1.29.1 to 1.29.2
+  - PostgreSQL Docker image from 10.15-alpine to 10.18-alpine
+  - RabbitMQ Docker image from 3.8-alpine to 3.9-alpine
+  - Redis Docker images from 6.0-alpine to 6.2-alpine
+  - psycopg2 from 2.8.6 to 2.9.1
+  - psutil from 5.7.2 to 5.8.0
+  - jQuery from 3.5.1 to 3.6.0
+  - jquery-form from 4.2.2 to 4.3.0
+  - jquery-lazyload from 1.9.3 to 1.9.7
+  - urijs from 1.19.1 to 1.19.7
+  - bleach from 3.1.5 to 4.0.0
+  - jstree from 3.3.3 to 3.3.11
+  - PyYAML from 5.3.1 to 5.4.1
+  - django-model-utils from 4.0.0 to 4.1.1
+  - requests from 2.25.1 to 2.26.0
+  - sh from 1.14.1 to 1.14.2
+  - devpi-server from 5.5.1 to 6.2.0
+  - django-debug-toolbar from 3.1.2 to 3.1.4
+  - django-extensions from 3.1.2 to 3.1.4
+  - django-rosetta from 0.9.4 to 0.9.7
+  - flake8 from 3.9.0 to 3.9.2
+  - ipython from 7.22.0 to 7.26.0
+  - safety from 1.9.0 to 1.10.3
+  - transifex-client from 0.14.2 to 0.14.3
+  - twine from 3.4.1 to 3.4.2
+  - wheel from 0.36.2 to 0.37.0
+  - Pillow from 7.1.2 to 8.3.1
+  - packaging from 20.3 to 21.0
+  - python_gnupg from 0.4.6 to 0.4.7
+  - graphviz from 0.14 to 0.17
+  - django-activity-stream from 0.8.0 to 0.10.0
+  - pytz from 2020.1 to 2021.1
+  - python-dateutil from 2.8.1 to 2.8.2
+  - python-magic from 0.4.22 to 0.4.24
+  - gevent from 20.4.0 to 21.8.0
+  - gunicorn from 20.0.4 to 20.1.0
+  - whitenoise from 5.0.1 to 5.3.0
+  - cropperjs from 1.4.1 to 1.5.2
+  - jquery-cropper from 1.0.0 to 1.0.1
+  - django-cors-headers from 3.2.1 to 3.8.0
+  - djangorestframework from 3.11.2 to 3.12.2
+  - drf-yasg from 1.17.1 to 1.20.0
+  - swagger-spec-validator from 2.5.0 to 2.7.3
+  - dropzone from 5.7.2 to 5.9.2
+  - extract-msg from 0.23.3 to 0.28.7
+  - pycryptodome from 3.9.7 to 3.10.1
+  - celery from 4.4.7 to 5.1.2
+  - django-celery-beat from 2.0.0 to 2.2.1
+  - coveralls from 2.0.0 to 3.2.0
+  - django-test-migrations from 0.2.0 to 0.3.0
+  - mock from 4.0.2 to 4.0.3
+  - tox from 3.23.1 to 3.24.3
+  - psutil from 5.7.0 to 5.80
+  - furl from 2.1.0 to 2.1.2
 
 4.0.15 (2021-08-07)
 ===================

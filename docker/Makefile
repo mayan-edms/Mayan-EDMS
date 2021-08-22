@@ -192,7 +192,7 @@ devpi-init:
 	devpi-server --init || true
 
 devpi-start: devpi-init
-	devpi-server --start --host=0.0.0.0 || true
+	devpi-server --host=0.0.0.0 >/dev/null &
 
 devpi-stop:
-	devpi-server --stop || true
+	killall devpi-server || true

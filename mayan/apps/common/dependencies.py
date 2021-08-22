@@ -57,7 +57,7 @@ PythonDependency(
         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
         SOFTWARE.
-    ''', module=__name__, name='PyYAML', version_string='==5.3.1'
+    ''', module=__name__, name='PyYAML', version_string='==5.4.1'
 )
 PythonDependency(
     copyright_text='''
@@ -89,7 +89,7 @@ PythonDependency(
         THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
         OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    ''', module=__name__, name='django-model-utils', version_string='==4.0.0'
+    ''', module=__name__, name='django-model-utils', version_string='==4.1.1'
 )
 PythonDependency(
     copyright_text='''
@@ -123,7 +123,7 @@ PythonDependency(
     ''', module=__name__, name='pycountry', version_string='==20.7.3'
 )
 PythonDependency(
-    module=__name__, name='requests', version_string='==2.25.1'
+    module=__name__, name='requests', version_string='==2.26.0'
 )
 PythonDependency(
     copyright_text='''
@@ -146,27 +146,27 @@ PythonDependency(
         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
         THE SOFTWARE.
-    ''', module=__name__, name='sh', version_string='==1.14.1'
+    ''', module=__name__, name='sh', version_string='==1.14.2'
 )
 
 # Development
 
 PythonDependency(
     module=__name__, environment=environment_development, name='devpi-server',
-    version_string='==5.5.1'
+    version_string='==6.2.0'
 )
 PythonDependency(
     environment=environment_development, module=__name__,
-    name='django-debug-toolbar', version_string='==3.2'
+    name='django-debug-toolbar', version_string='==3.2.2'
 )
 PythonDependency(
     environment=environment_development, module=__name__,
-    name='django-extensions', version_string='==3.1.2'
+    name='django-extensions', version_string='==3.1.4'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
         'Used to allow offline translation of the code text strings.'
-    ), module=__name__, name='django-rosetta', version_string='==0.9.4'
+    ), module=__name__, name='django-rosetta', version_string='==0.9.7'
 )
 PythonDependency(
     environment=environment_development, module=__name__,
@@ -175,12 +175,12 @@ PythonDependency(
 PythonDependency(
     environment=environment_development, help_text=_(
         'Provides style checking.'
-    ), module=__name__, name='flake8', version_string='==3.9.0'
+    ), module=__name__, name='flake8', version_string='==3.9.2'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
         'Command line environment with autocompletion.'
-    ), module=__name__, name='ipython', version_string='==7.22.0'
+    ), module=__name__, name='ipython', version_string='==7.26.0'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
@@ -189,22 +189,22 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_development,
-    module=__name__, name='safety', version_string='==1.9.0'
+    module=__name__, name='safety', version_string='==1.10.3'
 )
 PythonDependency(
     environment=environment_development,
-    module=__name__, name='transifex-client', version_string='==0.14.2'
+    module=__name__, name='transifex-client', version_string='==0.14.3'
 )
 
 # Build
 
 PythonDependency(
     environment=environment_build, module=__name__, name='twine',
-    version_string='==3.4.1'
+    version_string='==3.4.2'
 )
 PythonDependency(
     environment=environment_build, module=__name__, name='wheel',
-    version_string='==0.36.2'
+    version_string='==0.37.0'
 )
 
 # Documentation
