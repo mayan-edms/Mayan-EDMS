@@ -161,31 +161,6 @@ class IndexFilesystemTestCase(
             [TEST_NODE_EXPRESSION_MULTILINE_2_EXPECTED]
         )
 
-    def test_duplicated_indexes(self):
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
-            expression=TEST_NODE_EXPRESSION, link_documents=True
-        )
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
-            expression=TEST_NODE_EXPRESSION, link_documents=True
-        )
-
-        self._upload_test_document()
-        index_filesystem = IndexFilesystem(index_slug=self.test_index_template.slug)
-
-        self.assertTrue(
-            'level_1({})'.format(self.test_index_template.instance_root.get_children().first().pk) in
-            list(index_filesystem.readdir('/', ''))
-        )
-
-        self.assertTrue(
-            'level_1({})'.format(self.test_index_template.instance_root.get_children().last().pk) in
-            list(index_filesystem.readdir('/', ''))
-        )
-
-        self.assertEqual(len(list(index_filesystem.readdir('/', ''))), 4)
-
     def test_stub_documents(self):
         self.test_index_template.node_templates.create(
             parent=self.test_index_template.template_root,
