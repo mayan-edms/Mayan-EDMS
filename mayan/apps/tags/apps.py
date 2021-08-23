@@ -27,8 +27,8 @@ from .links import (
     link_document_tag_list, link_document_multiple_tag_multiple_attach,
     link_document_multiple_tag_multiple_remove,
     link_document_tag_multiple_remove, link_document_tag_multiple_attach,
-    link_tag_create, link_tag_delete, link_tag_edit, link_tag_list,
-    link_tag_multiple_delete, link_tag_document_list
+    link_tag_create, link_tag_delete_single, link_tag_delete_multiple,
+    link_tag_edit, link_tag_list, link_tag_document_list
 )
 from .menus import menu_tags
 from .methods import method_document_get_tags
@@ -112,10 +112,7 @@ class TagsApp(MayanAppConfig):
         model_query_fields_tag = ModelQueryFields.get(model=Tag)
         model_query_fields_tag.add_prefetch_related_field(field_name='documents')
 
-        SourceColumn(
-            attribute='label', is_identifier=True, is_sortable=True,
-            source=DocumentTag
-        )
+        # Document
 
         SourceColumn(
             label=_('Tags'), source=Document, widget=DocumentTagWidget
@@ -139,6 +136,13 @@ class TagsApp(MayanAppConfig):
             source=DocumentVersionPageSearchResult, widget=DocumentTagWidget
         )
 
+        # Tag
+
+        SourceColumn(
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=DocumentTag
+        )
+
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
             source=Tag
@@ -153,9 +157,21 @@ class TagsApp(MayanAppConfig):
         )
         source_column_tag_document_count.add_exclude(source=DocumentTag)
 
+        # Document
+
         menu_facet.bind_links(
             links=(link_document_tag_list,), sources=(Document,)
         )
+
+        menu_multi_item.bind_links(
+            links=(
+                link_document_multiple_tag_multiple_attach,
+                link_document_multiple_tag_multiple_remove
+            ),
+            sources=(Document,)
+        )
+
+        # Tag
 
         menu_list_facet.bind_links(
             links=(
@@ -172,21 +188,16 @@ class TagsApp(MayanAppConfig):
         menu_main.bind_links(links=(menu_tags,), position=98)
 
         menu_multi_item.bind_links(
-            links=(
-                link_document_multiple_tag_multiple_attach,
-                link_document_multiple_tag_multiple_remove
-            ),
-            sources=(Document,)
+            links=(link_tag_delete_multiple,), sources=(Tag,)
         )
-        menu_multi_item.bind_links(
-            links=(link_tag_multiple_delete,), sources=(Tag,)
-        )
+
         menu_object.bind_links(
             links=(
-                link_tag_edit, link_tag_delete
+                link_tag_edit, link_tag_delete_single
             ),
             sources=(Tag,)
         )
+
         menu_secondary.bind_links(
             links=(link_document_tag_multiple_attach, link_document_tag_multiple_remove),
             sources=(

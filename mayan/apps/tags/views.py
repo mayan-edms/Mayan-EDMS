@@ -10,13 +10,13 @@ from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.views.document_views import DocumentListView
 from mayan.apps.views.generics import (
-    MultipleObjectFormActionView, MultipleObjectConfirmActionView,
+    MultipleObjectFormActionView, MultipleObjectDeleteView,
     SingleObjectCreateView, SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import TagMultipleSelectionForm
-from .icons import icon_menu_tags, icon_document_tag_remove_submit
+from .icons import icon_menu_tags, icon_document_tag_remove_button_submit
 from .links import link_document_tag_multiple_attach, link_tag_create
 from .models import DocumentTag, Tag
 from .permissions import (
@@ -112,7 +112,7 @@ class TagCreateView(SingleObjectCreateView):
         }
 
 
-class TagDeleteActionView(MultipleObjectConfirmActionView):
+class TagDeleteView(MultipleObjectDeleteView):
     error_message = _('Error deleting tag "%(instance)s"; %(exception)s')
     model = Tag
     object_permission = permission_tag_delete
@@ -126,22 +126,12 @@ class TagDeleteActionView(MultipleObjectConfirmActionView):
     title_plural = _('Delete the %(count)d selected tags.')
 
     def get_extra_context(self):
+        context = super().get_extra_context()
         context = {
-            'delete_view': True,
             'message': _('Will be removed from all documents.'),
         }
 
-        if self.object_list.count() == 1:
-            context.update(
-                {
-                    'object': self.object_list.first(),
-                }
-            )
-
         return context
-
-    def object_action(self, instance, form=None):
-        instance.delete()
 
 
 class TagEditView(SingleObjectEditView):
@@ -268,7 +258,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
 
     def get_extra_context(self):
         context = {
-            'submit_icon': icon_document_tag_remove_submit,
+            'submit_icon': icon_document_tag_remove_button_submit,
             'submit_label': _('Remove'),
         }
 
