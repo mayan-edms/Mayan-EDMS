@@ -27,12 +27,17 @@ from .literals import (
     TEST_EMAIL_NO_CONTENT_TYPE, TEST_EMAIL_NO_CONTENT_TYPE_STRING,
     TEST_EMAIL_ZERO_LENGTH_ATTACHMENT, TEST_WATCHFOLDER_SUBFOLDER
 )
-from .mixins import (
-    EmailSourceBackendTestMixin, IMAPEmailSourceTestMixin,
+from .mixins.base_mixins import (
     InteractiveSourceBackendTestMixin, PeriodicSourceBackendTestMixin,
-    POP3EmailSourceTestMixin, StagingFolderTestMixin,
-    WatchFolderTestMixin, WebFormSourceTestMixin
 )
+from .mixins.email_source_mixins import (
+    EmailSourceBackendTestMixin, IMAPEmailSourceTestMixin,
+    POP3EmailSourceTestMixin
+)
+from .mixins.staging_folder_source_mixins import StagingFolderTestMixin
+from .mixins.watch_folder_source_mixins import WatchFolderTestMixin
+from .mixins.webform_source_mixins import WebFormSourceTestMixin
+
 from .mocks import MockIMAPServer, MockPOP3Mailbox
 
 
