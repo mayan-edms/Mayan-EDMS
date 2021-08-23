@@ -400,10 +400,17 @@ class MetadataTypeViewTestMixin:
 
         return response
 
-    def _request_test_metadata_type_delete_view(self):
+    def _request_test_metadata_type_delete_single_view(self):
         return self.post(
-            viewname='metadata:metadata_type_delete', kwargs={
+            viewname='metadata:metadata_type_delete_single', kwargs={
                 'metadata_type_id': self.test_metadata_type.pk
+            }
+        )
+
+    def _request_test_metadata_type_delete_multiple_view(self):
+        return self.post(
+            viewname='metadata:metadata_type_delete_multiple', data={
+                'id_list': self.test_metadata_type.pk
             }
         )
 

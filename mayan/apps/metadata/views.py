@@ -15,8 +15,9 @@ from mayan.apps.documents.permissions import (
     permission_document_type_edit
 )
 from mayan.apps.views.generics import (
-    MultipleObjectFormActionView, RelationshipView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
+    MultipleObjectDeleteView, MultipleObjectFormActionView,
+    RelationshipView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 from mayan.apps.views.utils import convert_to_id_list
@@ -517,20 +518,28 @@ class MetadataTypeCreateView(SingleObjectCreateView):
         }
 
 
-class MetadataTypeDeleteView(SingleObjectDeleteView):
+class MetadataTypeDeleteView(MultipleObjectDeleteView):
+    error_message = _(
+        'Error deleting metadata type "%(instance)s"; %(exception)s'
+    )
     model = MetadataType
     object_permission = permission_metadata_type_delete
     pk_url_kwarg = 'metadata_type_id'
     post_action_redirect = reverse_lazy(
         viewname='metadata:metadata_type_list'
     )
-
-    def get_extra_context(self):
-        return {
-            'delete_view': True,
-            'object': self.object,
-            'title': _('Delete the metadata type: %s?') % self.object,
-        }
+    success_message_single = _(
+        'Metadata type "%(object)s" deleted successfully.'
+    )
+    success_message_singular = _(
+        '%(count)d metadata type deleted successfully.'
+    )
+    success_message_plural = _(
+        '%(count)d metadata types deleted successfully.'
+    )
+    title_single = _('Delete metadata type: %(object)s.')
+    title_singular = _('Delete the %(count)d selected metadata type.')
+    title_plural = _('Delete the %(count)d selected metadata types.')
 
 
 class MetadataTypeEditView(SingleObjectEditView):

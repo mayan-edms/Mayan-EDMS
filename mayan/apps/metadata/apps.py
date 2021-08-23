@@ -38,8 +38,9 @@ from .links import (
     link_metadata_multiple_edit, link_metadata_multiple_remove,
     link_metadata_remove, link_metadata_view,
     link_document_type_metadata_type_relationship, link_metadata_type_create,
-    link_metadata_type_delete, link_metadata_type_document_type_relationship,
-    link_metadata_type_edit, link_metadata_type_list,
+    link_metadata_type_delete_multiple, link_metadata_type_delete_single,
+    link_metadata_type_document_type_relationship, link_metadata_type_edit,
+    link_metadata_type_list
 )
 from .methods import method_document_get_metadata
 from .permissions import (
@@ -186,6 +187,8 @@ class MetadataApp(MayanAppConfig):
             field_name='metadata'
         )
 
+        # Columns
+
         SourceColumn(
             source=Document, label=_('Metadata'),
             widget=DocumentMetadataWidget
@@ -233,11 +236,10 @@ class MetadataApp(MayanAppConfig):
             source=MetadataType
         )
 
-        menu_facet.bind_links(links=(link_metadata_view,), sources=(Document,))
-        menu_list_facet.bind_links(
-            links=(link_document_type_metadata_type_relationship,), sources=(
-                DocumentType,
-            )
+        # Document metadata
+
+        menu_facet.bind_links(
+            links=(link_metadata_view,), sources=(Document,)
         )
         menu_multi_item.bind_links(
             links=(
@@ -245,16 +247,24 @@ class MetadataApp(MayanAppConfig):
                 link_metadata_multiple_remove
             ), sources=(Document,)
         )
+
+        menu_secondary.bind_links(
+            links=(
+                link_metadata_add, link_metadata_edit, link_metadata_remove
+            ), sources=(
+                'metadata:metadata_add', 'metadata:metadata_edit',
+                'metadata:metadata_remove', 'metadata:metadata_view'
+            )
+        )
+
+        # Document type
+
         menu_list_facet.bind_links(
-            links=(
-                link_metadata_type_document_type_relationship,
-            ), sources=(MetadataType,)
+            links=(link_document_type_metadata_type_relationship,), sources=(
+                DocumentType,
+            )
         )
-        menu_object.bind_links(
-            links=(
-                link_metadata_type_delete, link_metadata_type_edit
-            ), sources=(MetadataType,)
-        )
+
         menu_related.bind_links(
             links=(link_metadata_type_list,),
             sources=(
@@ -262,6 +272,27 @@ class MetadataApp(MayanAppConfig):
                 'documents:document_type_create'
             )
         )
+
+        # Metadata type
+
+        menu_list_facet.bind_links(
+            links=(
+                link_metadata_type_document_type_relationship,
+            ), sources=(MetadataType,)
+        )
+
+        menu_multi_item.bind_links(
+            links=(
+                link_metadata_type_delete_multiple,
+            ), sources=(MetadataType,)
+        )
+
+        menu_object.bind_links(
+            links=(
+                link_metadata_type_delete_single, link_metadata_type_edit
+            ), sources=(MetadataType,)
+        )
+
         menu_related.bind_links(
             links=(
                 link_document_type_list,
@@ -270,6 +301,7 @@ class MetadataApp(MayanAppConfig):
                 'metadata:metadata_type_create'
             )
         )
+
         menu_secondary.bind_links(
             links=(
                 link_metadata_type_list,
@@ -279,15 +311,10 @@ class MetadataApp(MayanAppConfig):
                 'metadata:metadata_type_create'
             )
         )
+
         menu_setup.bind_links(links=(link_metadata_type_list,))
-        menu_secondary.bind_links(
-            links=(
-                link_metadata_add, link_metadata_edit, link_metadata_remove
-            ), sources=(
-                'metadata:metadata_add', 'metadata:metadata_edit',
-                'metadata:metadata_remove', 'metadata:metadata_view'
-            )
-        )
+
+        # Signals
 
         post_delete.connect(
             dispatch_uid='metadata_handler_post_document_type_metadata_type_delete',

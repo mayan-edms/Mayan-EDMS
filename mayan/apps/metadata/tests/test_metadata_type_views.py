@@ -281,13 +281,13 @@ class MetadataTypeViewTestCase(
         self.assertEqual(events[0].target, self.test_metadata_type)
         self.assertEqual(events[0].verb, event_metadata_type_created.id)
 
-    def test_metadata_type_delete_view_no_permission(self):
+    def test_metadata_type_delete_single_view_no_permission(self):
         self._create_test_metadata_type()
         metadata_type_count = MetadataType.objects.count()
 
         self._clear_events()
 
-        response = self._request_test_metadata_type_delete_view()
+        response = self._request_test_metadata_type_delete_single_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
@@ -297,7 +297,7 @@ class MetadataTypeViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_metadata_type_delete_view_with_access(self):
+    def test_metadata_type_delete_single_view_with_access(self):
         self._create_test_metadata_type()
 
         self.grant_access(
@@ -308,7 +308,44 @@ class MetadataTypeViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_metadata_type_delete_view()
+        response = self._request_test_metadata_type_delete_single_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            MetadataType.objects.count(), metadata_type_count - 1
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_metadata_type_delete_multiple_view_no_permission(self):
+        self._create_test_metadata_type()
+
+        metadata_type_count = MetadataType.objects.count()
+
+        self._clear_events()
+
+        response = self._request_test_metadata_type_delete_multiple_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(MetadataType.objects.count(), metadata_type_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_metadata_type_multiple_delete_view_with_access(self):
+        self._create_test_metadata_type()
+
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_delete
+        )
+
+        metadata_type_count = MetadataType.objects.count()
+
+        self._clear_events()
+
+        response = self._request_test_metadata_type_delete_multiple_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
