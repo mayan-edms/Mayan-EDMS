@@ -7,6 +7,12 @@ from .mixins.recently_created_document_mixins import RecentlyCreatedDocumentView
 class RecentlyCreatedDocumentViewTestCase(
     RecentlyCreatedDocumentViewTestMixin, GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_recently_created_document_list_view_no_permission(self):
         response = self._request_test_recently_created_document_list_view()
         self.assertNotContains(

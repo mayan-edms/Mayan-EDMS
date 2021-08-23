@@ -7,6 +7,12 @@ from .mixins.recently_accessed_document_mixins import RecentlyAccessedDocumentVi
 class RecentlyAccessedDocumentViewTestCase(
     RecentlyAccessedDocumentViewTestMixin, GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_recently_accessed_document_list_view_no_permission(self):
         self.test_document.add_as_recent_document_for_user(
             user=self._test_case_user

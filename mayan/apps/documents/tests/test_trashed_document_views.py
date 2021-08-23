@@ -13,6 +13,12 @@ from .mixins.trashed_document_mixins import TrashedDocumentViewTestMixin
 class DocumentTrashViewTestCase(
     TrashedDocumentViewTestMixin, GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_document_trash_get_view_no_permission(self):
         document_count = Document.valid.count()
         trashed_document_count = TrashedDocument.objects.count()
@@ -109,6 +115,12 @@ class DocumentTrashViewTestCase(
 class TrashedDocumentViewTestCase(
     TrashedDocumentViewTestMixin, GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_trashed_document_delete_get_view_no_permission(self):
         self.test_document.delete()
 
@@ -263,6 +275,12 @@ class TrashedDocumentViewTestCase(
 class TrashCanViewTestCase(
     TrashedDocumentViewTestMixin, GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_trash_can_empty_view_no_permission(self):
         self.test_document.delete()
 

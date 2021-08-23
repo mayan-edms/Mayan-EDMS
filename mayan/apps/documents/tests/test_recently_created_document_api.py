@@ -15,6 +15,12 @@ class RecentlyCreatedDocumentAPIViewTestCase(
     DocumentTestMixin, RecentlyCreatedDocumentAPIViewTestMixin,
     BaseAPITestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_recently_created_document_api_list_view_no_permission(self):
         recently_created_document_count = RecentlyCreatedDocument.objects.count()
 

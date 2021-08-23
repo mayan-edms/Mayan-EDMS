@@ -22,7 +22,7 @@ class DocumentAPIViewTestMixin:
         return self.post(
             viewname='rest_api:document-change-type', kwargs={
                 'document_id': self.test_document.pk
-            }, data={'document_type_id': self.test_document_type_2.pk}
+            }, data={'document_type_id': self.test_document_types[1].pk}
         )
 
     def _request_test_document_create_api_view(self):
@@ -253,18 +253,18 @@ class DocumentViewTestMixin:
             }
         )
 
-    def _request_test_document_type_change_post_view(self, document_type):
+    def _request_test_document_type_change_post_view(self):
         return self.post(
             viewname='documents:document_type_change', kwargs={
                 'document_id': self.test_document.pk
-            }, data={'document_type': document_type.pk}
+            }, data={'document_type': self.test_document_types[1].pk}
         )
 
-    def _request_test_document_multiple_type_change(self, document_type):
+    def _request_test_document_multiple_type_change(self):
         return self.post(
             viewname='documents:document_multiple_type_change',
             data={
                 'id_list': self.test_document.pk,
-                'document_type': document_type.pk
+                'document_type': self.test_document_types[1].pk
             }
         )

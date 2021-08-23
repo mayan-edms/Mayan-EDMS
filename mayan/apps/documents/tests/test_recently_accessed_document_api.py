@@ -15,6 +15,12 @@ class RecentlyAccessedDocumentAPIViewTestCase(
     DocumentTestMixin, RecentlyAccessedDocumentAPIViewTestMixin,
     BaseAPITestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_recently_accessed_document_api_list_view_no_activity(self):
         recently_accessed_document_count = RecentlyAccessedDocument.objects.count()
 

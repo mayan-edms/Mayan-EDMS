@@ -13,15 +13,15 @@ class TrashedDocumentTestCase(
     auto_upload_test_document = False
 
     def test_favorite_documents_deletion_ordering(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
         self._test_document_favorite_add()
 
         first_favorite_document = self.test_favorite_document.document
 
-        self._upload_test_document()
+        self._create_test_document_stub()
         self._test_document_favorite_add()
 
-        self._upload_test_document()
+        self._create_test_document_stub()
         self._test_document_favorite_add()
 
         self.assertFalse(
