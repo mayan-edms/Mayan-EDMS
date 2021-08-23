@@ -136,6 +136,12 @@
 - Launch workflows when the type of the document is changed. Closes GitLab
   issue #863 "Start workflows when changing document type", thanks to
   Dennis Ploeger (@dploeger) for the request.
+- Add support for deleting multiple metadata types in a single action.
+- Tags app updates:
+
+  - Use MultipleObjectDeleteView class.
+  - Replace edit icon.
+  - Code style updates.
 
 4.0.15 (2021-08-07)
 ===================
