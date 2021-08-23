@@ -6,7 +6,7 @@ from .mixins.staging_folder_source_mixins import (
 )
 
 
-class StatingFolderViewTestCase(
+class StagingFolderViewTestCase(
     StagingFolderTestMixin, StagingFolderViewTestMixin,
     GenericDocumentViewTestCase
 ):

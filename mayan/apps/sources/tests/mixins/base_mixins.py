@@ -63,29 +63,6 @@ class DocumentUploadWizardViewTestMixin:
             )
 
 
-class SourceTestMixin:
-    _create_source_method = '_create_test_source'
-    auto_create_test_source = True
-
-    def setUp(self):
-        super().setUp()
-        self._test_sources = []
-
-        if self.auto_create_test_source:
-            getattr(self, self._create_source_method)()
-
-    def _create_test_source(self, backend_path=None, backend_data=None):
-        total_test_sources = len(self._test_sources)
-        label = '{}_{}'.format(TEST_SOURCE_LABEL, total_test_sources)
-
-        self.test_source = Source.objects.create(
-            backend_path=backend_path or TEST_SOURCE_BACKEND_PATH,
-            backend_data=json.dumps(obj=backend_data or {}),
-            label=label
-        )
-        self._test_sources.append(self.test_source)
-
-
 class InteractiveSourceBackendTestMixin:
     class MockSourceForm:
         def __init__(self, **kwargs):
@@ -105,23 +82,6 @@ class InteractiveSourceBackendTestMixin:
 
     def get_test_request(self):
         return MockRequest(user=self._test_case_user)
-
-
-class PeriodicSourceBackendTestMixin(SourceTestMixin):
-    _create_source_method = '_create_test_periodic_source_backend'
-
-    def _create_test_periodic_source_backend(self, extra_data=None):
-        backend_data = {
-            'interval': DEFAULT_PERIOD_INTERVAL
-        }
-
-        if extra_data:
-            backend_data.update(extra_data)
-
-        self._create_test_source(
-            backend_path=TEST_SOURCE_BACKEND_PERIODIC_PATH,
-            backend_data=backend_data
-        )
 
 
 class SourceAPIViewTestMixin:
@@ -177,6 +137,46 @@ class SourceAPIViewTestMixin:
 
     def _request_test_source_list_api_view(self):
         return self.get(viewname='rest_api:source-list')
+
+
+class SourceTestMixin:
+    _create_source_method = '_create_test_source'
+    auto_create_test_source = True
+
+    def setUp(self):
+        super().setUp()
+        self._test_sources = []
+
+        if self.auto_create_test_source:
+            getattr(self, self._create_source_method)()
+
+    def _create_test_source(self, backend_path=None, backend_data=None):
+        total_test_sources = len(self._test_sources)
+        label = '{}_{}'.format(TEST_SOURCE_LABEL, total_test_sources)
+
+        self.test_source = Source.objects.create(
+            backend_path=backend_path or TEST_SOURCE_BACKEND_PATH,
+            backend_data=json.dumps(obj=backend_data or {}),
+            label=label
+        )
+        self._test_sources.append(self.test_source)
+
+
+class PeriodicSourceBackendTestMixin(SourceTestMixin):
+    _create_source_method = '_create_test_periodic_source_backend'
+
+    def _create_test_periodic_source_backend(self, extra_data=None):
+        backend_data = {
+            'interval': DEFAULT_PERIOD_INTERVAL
+        }
+
+        if extra_data:
+            backend_data.update(extra_data)
+
+        self._create_test_source(
+            backend_path=TEST_SOURCE_BACKEND_PERIODIC_PATH,
+            backend_data=backend_data
+        )
 
 
 class SourceViewTestMixin:

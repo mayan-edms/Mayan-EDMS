@@ -63,7 +63,9 @@ class EmailSourceBackendTestCase(
         )
 
     def test_decode_email_no_content_type(self):
-        self._create_test_email_source_backend(extra_data={'store_body': True})
+        self._create_test_email_source_backend(
+            extra_data={'store_body': True}
+        )
         source_backend_instance = self.test_source.get_backend_instance()
 
         source_backend_instance.content = TEST_EMAIL_NO_CONTENT_TYPE
@@ -92,10 +94,10 @@ class EmailSourceBackendTestCase(
 
         source_backend_instance.content = TEST_EMAIL_INLINE_IMAGE
 
-        source_backend_instance.process_documents()
-
         # Silence expected errors in other apps.
         self._silence_logger(name='mayan.apps.converter.backends')
+
+        source_backend_instance.process_documents()
 
         self.assertTrue(Document.objects.count(), 2)
         self.assertQuerysetEqual(
@@ -110,11 +112,11 @@ class EmailSourceBackendTestCase(
         )
         source_backend_instance = self.test_source.get_backend_instance()
 
-        source_backend_instance.content = TEST_EMAIL_ATTACHMENT_AND_INLINE
-        source_backend_instance.process_documents()
-
         # Silence expected errors in other apps.
         self._silence_logger(name='mayan.apps.converter.backends')
+
+        source_backend_instance.content = TEST_EMAIL_ATTACHMENT_AND_INLINE
+        source_backend_instance.process_documents()
 
         self.assertTrue(Document.objects.count(), 2)
         self.assertQuerysetEqual(
@@ -158,14 +160,14 @@ class EmailSourceBackendTestCase(
         self._create_test_email_source_backend()
         source_backend_instance = self.test_source.get_backend_instance()
 
-        source_backend_instance.content = TEST_EMAIL_ATTACHMENT_AND_INLINE
-        source_backend_instance.process_documents()
-
         # Silence expected errors in other apps.
         self._silence_logger(name='mayan.apps.converter.backends')
 
+        source_backend_instance.content = TEST_EMAIL_ATTACHMENT_AND_INLINE
+        source_backend_instance.process_documents()
+
         # Only two attachments, no body document.
-        self.assertEqual(1, Document.objects.count())
+        self.assertEqual(Document.objects.count(), 1)
 
     def test_document_upload_with_body(self):
         self._create_test_email_source_backend(
@@ -173,14 +175,14 @@ class EmailSourceBackendTestCase(
         )
         source_backend_instance = self.test_source.get_backend_instance()
 
+        # Silence expected errors in other apps.
+        self._silence_logger(name='mayan.apps.converter.backends')
+
         source_backend_instance.content = TEST_EMAIL_ATTACHMENT_AND_INLINE
         source_backend_instance.process_documents()
 
-        # Silence expected errors in other apps
-        self._silence_logger(name='mayan.apps.converter.backends')
-
         # Only two attachments and a body document
-        self.assertEqual(2, Document.objects.count())
+        self.assertEqual(Document.objects.count(), 2)
 
     def test_metadata_yaml_attachment(self):
         TEST_METADATA_VALUE_1 = 'test value 1'

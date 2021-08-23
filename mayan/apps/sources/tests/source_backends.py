@@ -3,6 +3,11 @@ from ..source_backends.mixins import (
     SourceBaseMixin, SourceBackendEmailMixin, SourceBackendPeriodicMixin
 )
 
+__all__ = (
+    'SourceBackendSimple', 'SourceBackendTestPeriodic',
+    'SourceBackendTestEmail'
+)
+
 
 class SourceBackendSimple(SourceBaseMixin, SourceBackend):
     label = 'Test source backend'
