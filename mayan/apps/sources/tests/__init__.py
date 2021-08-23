@@ -1,1 +1,3 @@
-from .source_backends import *
+from .source_backends import (
+    SourceBackendSimple, SourceBackendTestPeriodic, SourceBackendTestEmail
+)  # NOQA

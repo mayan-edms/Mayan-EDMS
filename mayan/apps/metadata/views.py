@@ -16,8 +16,8 @@ from mayan.apps.documents.permissions import (
 )
 from mayan.apps.views.generics import (
     MultipleObjectDeleteView, MultipleObjectFormActionView,
-    RelationshipView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectEditView, SingleObjectListView
+    RelationshipView, SingleObjectCreateView, SingleObjectEditView,
+    SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 from mayan.apps.views.utils import convert_to_id_list
