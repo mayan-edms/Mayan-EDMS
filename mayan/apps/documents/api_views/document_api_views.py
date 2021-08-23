@@ -76,27 +76,22 @@ class APIDocumentListView(generics.ListCreateAPIView):
         }
 
 
-class APIDocumentChangeTypeView(generics.GenericAPIView):
+class APIDocumentChangeTypeView(generics.ObjectActionAPIView):
     """
     post: Change the type of the selected document.
     """
     lookup_url_kwarg = 'document_id'
     mayan_object_permissions = {
-        'POST': (permission_document_properties_edit,),
+        'POST': (permission_document_properties_edit,)
     }
-    queryset = Document.objects.all()
     serializer_class = DocumentChangeTypeSerializer
+    queryset = Document.valid
 
-    def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        document_type = DocumentType.objects.get(
-            pk=request.data['document_type_id']
+    def object_action(self, request, serializer):
+        document_type_id = serializer.validated_data['document_type_id']
+        self.object.document_type_change(
+            document_type=document_type_id, _user=self.request.user
         )
-        self.get_object().document_type_change(
-            document_type=document_type, _user=self.request.user
-        )
-        return Response(status=status.HTTP_200_OK)
 
 
 class APIDocumentUploadView(generics.CreateAPIView):

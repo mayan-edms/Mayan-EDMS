@@ -58,14 +58,10 @@ class DocumentSerializer(
         )
 
 
-class DocumentChangeTypeSerializer(serializers.ModelSerializer):
+class DocumentChangeTypeSerializer(serializers.Serializer):
     document_type_id = serializers.PrimaryKeyRelatedField(
         queryset=DocumentType.objects.all(), write_only=True
     )
-
-    class Meta:
-        fields = ('document_type_id',)
-        model = Document
 
 
 class DocumentUploadSerializer(DocumentSerializer):
