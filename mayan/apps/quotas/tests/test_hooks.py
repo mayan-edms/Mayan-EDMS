@@ -5,10 +5,10 @@ from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_file_new
 )
 from mayan.apps.documents.tests.base import DocumentTestMixin
-from mayan.apps.sources.tests.mixins import (
-    DocumentFileUploadViewTestMixin, DocumentUploadWizardViewTestMixin,
-    WebFormSourceTestMixin
+from mayan.apps.sources.tests.mixins.base_mixins import (
+    DocumentFileUploadViewTestMixin, DocumentUploadWizardViewTestMixin
 )
+from mayan.apps.sources.tests.mixins.webform_source.mixins import WebFormSourceTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..classes import QuotaBackend
