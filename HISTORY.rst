@@ -144,6 +144,7 @@
   - Code style updates.
 
 - Move theme stylesheet sanitization to the save method.
+- Remove final uses of .six library.
 
 4.0.15 (2021-08-07)
 ===================
