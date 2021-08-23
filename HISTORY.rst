@@ -133,6 +133,10 @@
   - psutil from 5.7.0 to 5.80
   - furl from 2.1.0 to 2.1.2
 
+- Launch workflows when the type of the document is changed. Closes GitLab
+  issue #863 "Start workflows when changing document type", thanks to
+  Dennis Ploeger (@dploeger) for the request.
+
 4.0.15 (2021-08-07)
 ===================
 - Improve the document version export API endpoint.

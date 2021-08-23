@@ -170,18 +170,21 @@ class Document(
 
         if has_changed or force:
             self.document_type = document_type
+
             with transaction.atomic():
                 self._event_ignore = True
                 self.save(update_fields=('document_type',))
-                signal_post_document_type_change.send(
-                    sender=self.__class__, instance=self
-                )
 
-                event_document_type_changed.commit(
-                    action_object=document_type, actor=_user, target=self
-                )
                 if _user:
                     self.add_as_recent_document_for_user(user=_user)
+
+            signal_post_document_type_change.send(
+                sender=self.__class__, instance=self
+            )
+
+            event_document_type_changed.commit(
+                action_object=document_type, actor=_user, target=self
+            )
 
     @property
     def file_latest(self):

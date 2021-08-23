@@ -12,6 +12,7 @@ from mayan.apps.common.menus import (
     menu_related, menu_secondary, menu_setup, menu_tools
 )
 from mayan.apps.documents.links.document_type_links import link_document_type_list
+from mayan.apps.documents.signals import signal_post_document_type_change
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.logging.classes import ErrorLog
 from mayan.apps.logging.permissions import permission_error_log_view
@@ -22,7 +23,8 @@ from .classes import DocumentStateHelper, WorkflowAction
 from .events import event_workflow_template_edited
 from .handlers import (
     handler_create_workflow_image_cache, handler_index_document,
-    handler_launch_workflow, handler_trigger_transition
+    handler_launch_workflow_on_create, handler_launch_workflow_on_type_change,
+    handler_trigger_transition
 )
 from .html_widgets import WorkflowLogExtraDataWidget, widget_transition_events
 from .links import (
@@ -598,8 +600,13 @@ class DocumentStatesApp(MayanAppConfig):
         menu_tools.bind_links(links=(link_tool_launch_workflows,))
 
         post_save.connect(
-            dispatch_uid='workflows_handler_launch_workflow',
-            receiver=handler_launch_workflow,
+            dispatch_uid='workflows_handler_launch_workflow_on_create',
+            receiver=handler_launch_workflow_on_create,
+            sender=Document
+        )
+        signal_post_document_type_change.connect(
+            dispatch_uid='workflows_handler_launch_workflow_on_type_change',
+            receiver=handler_launch_workflow_on_type_change,
             sender=Document
         )
 

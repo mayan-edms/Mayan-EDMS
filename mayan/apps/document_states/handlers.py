@@ -26,11 +26,17 @@ def handler_index_document(sender, **kwargs):
     )
 
 
-def handler_launch_workflow(sender, instance, created, **kwargs):
+def handler_launch_workflow_on_create(sender, instance, created, **kwargs):
     if created:
         task_launch_all_workflow_for.apply_async(
             kwargs={'document_id': instance.pk}
         )
+
+
+def handler_launch_workflow_on_type_change(sender, instance, **kwargs):
+    task_launch_all_workflow_for.apply_async(
+        kwargs={'document_id': instance.pk}
+    )
 
 
 def handler_trigger_transition(sender, **kwargs):
@@ -62,7 +68,7 @@ def handler_trigger_transition(sender, **kwargs):
         workflow_instances = WorkflowInstance.objects.none()
 
     for workflow_instance in workflow_instances:
-        # Select the first transition that is valid for this workflow state
+        # Select the first transition that is valid for this workflow state.
         valid_transitions = list(
             set(trigger_transitions) & set(workflow_instance.get_transition_choices())
         )
