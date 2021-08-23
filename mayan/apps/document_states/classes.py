@@ -2,7 +2,6 @@ import logging
 
 from django.apps import apps
 from django.db.utils import OperationalError, ProgrammingError
-from django.utils import six
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
@@ -41,14 +40,11 @@ class WorkflowActionMetaclass(type):
         return new_class
 
 
-class WorkflowActionBase(AppsModuleLoaderMixin):
-    fields = ()
-
-
 class WorkflowAction(
-    six.with_metaclass(WorkflowActionMetaclass, WorkflowActionBase)
+    AppsModuleLoaderMixin, metaclass=WorkflowActionMetaclass
 ):
     _loader_module_name = 'workflow_actions'
+    fields = ()
     previous_dotted_paths = ()
 
     @classmethod

@@ -1,14 +1,11 @@
 import logging
 
-from django.utils import six
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 
-logger = logging.getLogger(name=__name__)
-
-
 __all__ = ('MailerBackend',)
+logger = logging.getLogger(name=__name__)
 
 
 class MailerBackendMetaclass(type):
@@ -41,7 +38,6 @@ class MailerBackendBase(AppsModuleLoaderMixin):
         'initial': ''  # Field initial value
         'default': ''  # Default value.
     }
-
     """
     class_path = ''  # Dot path to the actual class that will handle the mail
     fields = {}
@@ -52,9 +48,7 @@ class MailerBackendBase(AppsModuleLoaderMixin):
         return getattr(cls, 'class_fields', backend_field_list)
 
 
-class MailerBackend(
-    six.with_metaclass(MailerBackendMetaclass, MailerBackendBase)
-):
+class MailerBackend(MailerBackendBase, metaclass=MailerBackendMetaclass):
     _loader_module_name = 'mailers'
 
     @classmethod

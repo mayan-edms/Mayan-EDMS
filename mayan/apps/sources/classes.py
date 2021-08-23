@@ -2,7 +2,6 @@ import collections
 import logging
 
 from django.apps import apps
-from django.utils import six
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
@@ -121,7 +120,7 @@ class SourceBackendMetaclass(type):
         return new_class
 
 
-class SourceBackendBase(AppsModuleLoaderMixin):
+class SourceBackend(AppsModuleLoaderMixin, metaclass=SourceBackendMetaclass):
     """
     Base class for the source backends.
 
@@ -133,11 +132,6 @@ class SourceBackendBase(AppsModuleLoaderMixin):
         'default': ''  # Default value.
     }
     """
-
-
-class SourceBackend(
-    six.with_metaclass(SourceBackendMetaclass, SourceBackendBase)
-):
     _loader_module_name = 'source_backends'
 
     @classmethod
