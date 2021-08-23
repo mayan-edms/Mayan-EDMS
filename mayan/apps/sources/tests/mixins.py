@@ -347,6 +347,27 @@ class SourceViewTestMixin:
         )
 
 
+class EmailSourceBackendViewTestMixin(SourceViewTestMixin):
+    def _request_test_email_source_create_view(self, extra_data=None):
+        data = {
+            'document_type_id': self.test_document_type.pk,
+            'host': '127.0.0.1',
+            'interval': DEFAULT_PERIOD_INTERVAL,
+            'metadata_attachment_name': DEFAULT_EMAIL_METADATA_ATTACHMENT_NAME,
+            'port': '0',
+            'ssl': True,
+            'store_body': False,
+            'username': 'username'
+        }
+
+        if extra_data:
+            data.update(extra_data)
+
+        return self._request_test_source_create_view(
+            backend_path=TEST_SOURCE_BACKEND_EMAIL_PATH, extra_data=data
+        )
+
+
 class StagingFolderActionAPIViewTestMixin:
     def _request_test_staging_folder_file_delete_action_api_view(self):
         return self.post(
@@ -393,6 +414,10 @@ class StagingFolderActionAPIViewTestMixin:
 class StagingFolderTestMixin(SourceTestMixin):
     _create_source_method = '_create_test_staging_folder'
 
+    def setUp(self):
+        super().setUp()
+        self.test_staging_folder_files = []
+
     def tearDown(self):
         fs_cleanup(filename=self.test_source.get_backend_data()['folder_path'])
         super().tearDown()
@@ -421,26 +446,28 @@ class StagingFolderTestMixin(SourceTestMixin):
         self.test_staging_folder_file = list(
             self.test_source.get_backend_instance().get_files()
         )[0]
+        self.test_staging_folder_files.append(self.test_staging_folder_file)
 
 
-class EmailSourceBackendViewTestMixin(SourceViewTestMixin):
-    def _request_test_email_source_create_view(self, extra_data=None):
-        data = {
-            'document_type_id': self.test_document_type.pk,
-            'host': '127.0.0.1',
-            'interval': DEFAULT_PERIOD_INTERVAL,
-            'metadata_attachment_name': DEFAULT_EMAIL_METADATA_ATTACHMENT_NAME,
-            'port': '0',
-            'ssl': True,
-            'store_body': False,
-            'username': 'username'
-        }
+class StagingFolderViewTestMixin:
+    def _request_staging_folder_action_file_delete_view_via_get(self):
+        return self.get(
+            viewname='sources:source_action', kwargs={
+                'source_id': self.test_source.pk,
+                'action_name': 'file_delete'
+            }, query={
+                'encoded_filename': self.test_staging_folder_file.encoded_filename
+            }
+        )
 
-        if extra_data:
-            data.update(extra_data)
-
-        return self._request_test_source_create_view(
-            backend_path=TEST_SOURCE_BACKEND_EMAIL_PATH, extra_data=data
+    def _request_staging_folder_action_file_delete_view_via_post(self):
+        return self.post(
+            viewname='sources:source_action', kwargs={
+                'source_id': self.test_source.pk,
+                'action_name': 'file_delete'
+            }, query={
+                'encoded_filename': self.test_staging_folder_file.encoded_filename
+            }
         )
 
 

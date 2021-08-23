@@ -54,12 +54,6 @@ class SourceActionView(MultipleObjectConfirmActionView):
     model = Source
     object_permission = permission_document_create
     pk_url_kwarg = 'source_id'
-    # ~ success_message_single = _('"%(object)s" deleted successfully.')
-    # ~ success_message_singular = _('%(count)d object deleted successfully.')
-    # ~ success_message_plural = _('%(count)d objects deleted successfully.')
-    # ~ title_single = _('Delete "%(object)s".')
-    # ~ title_singular = _('Delete %(count)d object.')
-    # ~ title_plural = _('Delete %(count)d objects.')
 
     def get_all_kwargs(self):
         kwargs = self.kwargs.copy()
@@ -75,7 +69,8 @@ class SourceActionView(MultipleObjectConfirmActionView):
 
     def view_action(self):
         return self.object.get_backend_instance().execute_action(
-            name=self.kwargs['action_name'], **self.get_all_kwargs()
+            name=self.kwargs['action_name'], request=self.request,
+            **self.get_all_kwargs()
         )
 
 
