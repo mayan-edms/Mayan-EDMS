@@ -205,7 +205,7 @@ class AssetTransformationMixin:
             }
 
 
-class TransformationAssetPaste(AsseTransformationMixin, BaseTransformation):
+class TransformationAssetPaste(AssetTransformationMixin, BaseTransformation):
     arguments = ('left', 'top')
     label = _('Paste an asset')
     name = 'paste_asset'
@@ -295,7 +295,7 @@ class TransformationAssetPastePercent(TransformationAssetPaste):
 
 
 class TransformationAssetWatermark(
-    AsseTransformationMixin, BaseTransformation
+    AssetTransformationMixin, BaseTransformation
 ):
     arguments = (
         'left', 'top', 'right', 'bottom', 'horizontal_increment',
