@@ -3,7 +3,6 @@ import json
 from mayan.apps.documents.events import event_document_edited
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.events.classes import EventType
-from mayan.apps.testing.tests.base import BaseTestCase
 
 from .literals import (
     TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_DOTTED_PATH,
@@ -12,86 +11,11 @@ from .literals import (
 )
 from .mixins.workflow_template_mixins import WorkflowTemplateTestMixin
 from .mixins.workflow_template_state_mixins import WorkflowTemplateStateActionTestMixin
-from .mixins.workflow_template_transition_mixins import WorkflowTransitionFieldTestMixin
 
 
-class WorkflowInstanceModelTestCase(
-    WorkflowTemplateTestMixin, GenericDocumentTestCase
-):
-    auto_upload_test_document = False
-
-    def setUp(self):
-        super().setUp()
-        self._create_test_workflow_template()
-        self._create_test_workflow_template_state()
-        self._create_test_workflow_template_state()
-        self._create_test_workflow_template_transition()
-        self.test_workflow_template.document_types.add(self.test_document_type)
-
-    def test_workflow_method_get_absolute_url(self):
-        self._create_test_document_stub()
-
-        self.test_workflow_instance = self.test_document.workflows.first()
-
-        self.test_workflow_instance.get_absolute_url()
-
-    def test_workflow_auto_launch(self):
-        self.test_workflow_template.auto_launch = True
-        self.test_workflow_template.save()
-
-        self._create_test_document_stub()
-
-        self.assertEqual(self.test_document.workflows.count(), 1)
-
-    def test_workflow_no_auto_launch(self):
-        self.test_workflow_template.auto_launch = False
-        self.test_workflow_template.save()
-
-        self._create_test_document_stub()
-
-        self.assertEqual(self.test_document.workflows.count(), 0)
-
-    def test_workflow_template_transition_no_condition(self):
-        self._create_test_document_stub()
-
-        self.test_workflow_instance = self.test_document.workflows.first()
-        self.assertEqual(
-            self.test_workflow_instance.get_transition_choices().count(), 1
-        )
-
-    def test_workflow_template_transition_false_condition(self):
-        self._create_test_document_stub()
-
-        self.test_workflow_instance = self.test_document.workflows.first()
-
-        self.test_workflow_template_transition.condition = '{{ invalid_variable }}'
-        self.test_workflow_template_transition.save()
-
-        self.assertEqual(
-            self.test_workflow_instance.get_transition_choices().count(), 0
-        )
-
-    def test_workflow_template_transition_true_condition(self):
-        self._create_test_document_stub()
-
-        self.test_workflow_instance = self.test_document.workflows.first()
-
-        self.test_workflow_template_transition.condition = '{{ workflow_instance }}'
-        self.test_workflow_template_transition.save()
-
-        self.assertEqual(
-            self.test_workflow_instance.get_transition_choices().count(), 1
-        )
-
-
-class WorkflowModelTestCase(WorkflowTemplateTestMixin, BaseTestCase):
-    def test_workflow_template_preview(self):
-        self._create_test_workflow_template()
-        self.assertTrue(self.test_workflow_template.get_api_image_url())
-
-
-class WorkflowStateActionModelTestCase(
-    WorkflowTemplateStateActionTestMixin, WorkflowTemplateTestMixin, GenericDocumentTestCase
+class WorkflowTemplateStateActionModelTestCase(
+    WorkflowTemplateStateActionTestMixin, WorkflowTemplateTestMixin,
+    GenericDocumentTestCase
 ):
     def setUp(self):
         super().setUp()
@@ -229,35 +153,3 @@ class WorkflowStateActionModelTestCase(
             self.test_document.description,
             TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_DESCRIPTION
         )
-
-
-class WorkflowTransitionFieldModelTestCase(
-    WorkflowTemplateTestMixin,
-    WorkflowTransitionFieldTestMixin,
-    GenericDocumentTestCase
-):
-    auto_upload_test_document = False
-
-    def setUp(self):
-        super().setUp()
-        self._create_test_workflow_template(add_test_document_type=True)
-        self._create_test_workflow_template_state()
-        self._create_test_workflow_template_state()
-        self._create_test_workflow_template_transition()
-        self._create_test_workflow_template_transition_field()
-        self._create_test_document_stub()
-
-    def test_deleted_field_context_references(self):
-        """
-        Transition a workflow with a transition field, and the delete the
-        transition field. The retrieving the context should work even with an
-        obsolete field reference.
-        """
-        self._transition_test_workflow_instance(
-            extra_data={
-                self.test_workflow_template_transition_field.name: 'test'
-            }
-        )
-        self.test_document.workflows.first().log_entries.first().get_extra_data()
-        self.test_workflow_template_transition_field.delete()
-        self.test_document.workflows.first().log_entries.first().get_extra_data()
