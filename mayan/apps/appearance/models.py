@@ -1,3 +1,5 @@
+import bleach
+
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
@@ -50,6 +52,9 @@ class Theme(ExtraDataModelMixin, models.Model):
         }
     )
     def save(self, *args, **kwargs):
+        self.stylesheet = bleach.clean(
+            text=self.stylesheet, tags=('style',)
+        )
         super().save(*args, **kwargs)
 
 

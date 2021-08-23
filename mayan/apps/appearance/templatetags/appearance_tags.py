@@ -1,5 +1,3 @@
-import bleach
-
 from django.apps import apps
 from django.conf import settings
 from django.contrib.auth import get_user_model
@@ -85,10 +83,7 @@ def appearance_get_user_theme_stylesheet(user):
             return ''
         else:
             if theme:
-                return bleach.clean(
-                    text=user.theme_settings.theme.stylesheet,
-                    tags=('style',)
-                )
+                return user.theme_settings.theme.stylesheet
 
     return ''
 

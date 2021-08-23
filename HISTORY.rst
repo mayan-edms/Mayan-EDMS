@@ -143,6 +143,8 @@
   - Replace edit icon.
   - Code style updates.
 
+- Move theme stylesheet sanitization to the save method.
+
 4.0.15 (2021-08-07)
 ===================
 - Improve the document version export API endpoint.
