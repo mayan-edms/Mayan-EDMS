@@ -49,6 +49,7 @@ apt-get update \
     libmagic1 \
     libmariadb3 \
     libpq5 \
+    procps \
     poppler-utils \
     python3-distutils \
     sane-utils \
@@ -124,6 +125,7 @@ apt-get install -y --no-install-recommends \
     python3-dev \
     python3-venv \
     zlib1g-dev \
+    procps \
 && mkdir -p "${PROJECT_INSTALL_DIR}" \
 && chown -R mayan:mayan "${PROJECT_INSTALL_DIR}" \
 && chown -R mayan:mayan /src
@@ -156,7 +158,7 @@ RUN set -a \
 && pip install --no-cache-dir dist/mayan_edms-*.whl \
 # Install the static content.
 && mayan-edms.py installdependencies \
-&& MAYAN_STATIC_ROOT=${PROJECT_INSTALL_DIR}static mayan-edms.py preparestatic --link --noinput
+&& MAYAN_STATIC_ROOT=${PROJECT_INSTALL_DIR}static mayan-edms.py preparestatic --noinput
 
 COPY --chown=mayan:mayan requirements/testing-base.txt "${PROJECT_INSTALL_DIR}"
 

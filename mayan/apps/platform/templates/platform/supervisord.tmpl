@@ -1,14 +1,15 @@
 [supervisord]
 environment=
     PYTHONPATH="{{ MEDIA_ROOT }}{{ USER_SETTINGS_FOLDER }}",
-    DJANGO_SETTINGS_MODULE=mayan.settings.production,
+    DJANGO_SETTINGS_MODULE=mayan.settings.development,
     MAYAN_ALLOWED_HOSTS='["*"]',
     MAYAN_MEDIA_ROOT="{{ MEDIA_ROOT }}"
+    PYTHONDONTWRITEBYTECODE=1
 
 [program:mayan-edms-gunicorn]
 autorestart = true
 autostart = true
-command = {{ INSTALLATION_PATH }}bin/gunicorn --workers {{ GUNICORN_WORKERS }} mayan.wsgi --max-requests {{ GUNICORN_MAX_REQUESTS }} --max-requests-jitter {{ GUNICORN_JITTER }} --worker-class {{ GUNICORN_WORKER_CLASS }} --bind 0.0.0.0:8000 --timeout {{ GUNICORN_TIMEOUT }} --limit-request-line {{ GUNICORN_LIMIT_REQUEST_LINE }}
+command = {{ INSTALLATION_PATH }}bin/gunicorn --workers {{ GUNICORN_WORKERS }} mayan.wsgi --max-requests {{ GUNICORN_MAX_REQUESTS }} --max-requests-jitter {{ GUNICORN_JITTER }} --worker-class {{ GUNICORN_WORKER_CLASS }} --bind 0.0.0.0:8000 --timeout {{ GUNICORN_TIMEOUT }} --limit-request-line {{ GUNICORN_LIMIT_REQUEST_LINE }} --reload
 user = mayan
 {% for worker in workers %}
 [program:mayan-edms-{{ worker.name }}]
