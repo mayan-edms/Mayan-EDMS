@@ -145,6 +145,7 @@
 
 - Move theme stylesheet sanitization to the save method.
 - Remove final uses of .six library.
+- Add support for clearing the event list.
 
 4.0.15 (2021-08-07)
 ===================

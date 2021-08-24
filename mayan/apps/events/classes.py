@@ -22,7 +22,9 @@ from .literals import (
 from .links import (
     link_events_for_object, link_object_event_types_user_subscriptions_list
 )
-from .permissions import permission_events_export, permission_events_view
+from .permissions import (
+    permission_events_clear, permission_events_export, permission_events_view
+)
 
 logger = logging.getLogger(name=__name__)
 
@@ -208,28 +210,53 @@ class EventManagerSave(EventManager):
 
 
 class EventModelRegistry:
-    @staticmethod
+    _registry = set()
+
+    @classmethod
     def register(
-        model, bind_events_link=True, bind_subscription_link=True, menu=None
+        cls, model, bind_events_link=True, bind_subscription_link=True,
+        menu=None, register_permissions=True
     ):
+        # Hidden imports.
         from actstream import registry
-        registry.register(model)
+        from mayan.apps.acls.classes import ModelPermission
+        from .events import event_events_cleared, event_events_exported
 
-        menu = menu or menu_list_facet
+        if model not in cls._registry:
+            # These need to happen only once.
+            registry.register(model)
 
-        if bind_events_link:
-            menu.bind_links(
-                links=(
-                    link_events_for_object,
-                ), sources=(model,)
+            menu = menu or menu_list_facet
+
+            if bind_events_link:
+                menu.bind_links(
+                    links=(
+                        link_events_for_object,
+                    ), sources=(model,)
+                )
+
+            if bind_subscription_link:
+                menu.bind_links(
+                    links=(
+                        link_object_event_types_user_subscriptions_list,
+                    ), sources=(model,)
+                )
+
+            if register_permissions:
+                ModelPermission.register(
+                    model=model, permissions=(
+                        permission_events_clear, permission_events_export,
+                        permission_events_view
+                    )
+                )
+
+            ModelEventType.register(
+                event_types=(
+                    event_events_cleared, event_events_exported
+                ), model=model
             )
 
-        if bind_subscription_link:
-            menu.bind_links(
-                links=(
-                    link_object_event_types_user_subscriptions_list,
-                ), sources=(model,)
-            )
+            cls._registry.add(model)
 
 
 class EventTypeNamespace:

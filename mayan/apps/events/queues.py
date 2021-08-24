@@ -9,6 +9,10 @@ queue_events = CeleryQueue(
 )
 
 queue_events.add_task_type(
+    dotted_path='mayan.apps.events.tasks.task_event_queryset_clear',
+    label=_('Clear event querysets'), name='task_event_queryset_clear',
+)
+queue_events.add_task_type(
     dotted_path='mayan.apps.events.tasks.task_event_queryset_export',
     label=_('Export event querysets'), name='task_event_queryset_export',
 )

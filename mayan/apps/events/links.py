@@ -5,9 +5,10 @@ from mayan.apps.navigation.classes import Link
 from mayan.apps.navigation.utils import get_content_type_kwargs_factory
 
 from .icons import (
-    icon_current_user_events, icon_current_user_events_export,
-    icon_event_types_subscriptions_list, icon_events_for_object,
-    icon_events_for_object_export, icon_events_list,
+    icon_current_user_events, icon_current_user_events_clear,
+    icon_current_user_events_export, icon_event_types_subscriptions_list,
+    icon_events_for_object, icon_events_for_object_clear,
+    icon_events_for_object_export, icon_events_list, icon_events_list_clear,
     icon_events_list_export, icon_notification_mark_read,
     icon_notification_mark_read_all,
     icon_object_event_types_user_subscriptions_list,
@@ -30,6 +31,10 @@ link_current_user_events = Link(
     icon=icon_current_user_events, text=_('My events'),
     view='events:current_user_events'
 )
+link_current_user_events_clear = Link(
+    icon=icon_current_user_events_clear, text=_('Clear events'),
+    view='events:current_user_events_clear'
+)
 link_current_user_events_export = Link(
     icon=icon_current_user_events_export, text=_('Export events'),
     view='events:current_user_events_export'
@@ -43,6 +48,12 @@ link_events_for_object = Link(
     permissions=(permission_events_view,), text=_('Events'),
     view='events:events_for_object'
 )
+link_events_for_object_clear = Link(
+    icon=icon_events_for_object_clear,
+    kwargs=get_content_type_kwargs_factory(variable_name='resolved_object'),
+    permissions=(permission_events_view,), text=_('Clear events'),
+    view='events:events_for_object_clear'
+)
 link_events_for_object_export = Link(
     icon=icon_events_for_object_export,
     kwargs=get_content_type_kwargs_factory(variable_name='resolved_object'),
@@ -51,6 +62,10 @@ link_events_for_object_export = Link(
 )
 link_events_list = Link(
     icon=icon_events_list, text=_('Events'), view='events:events_list'
+)
+link_events_list_clear = Link(
+    icon=icon_events_list_clear, text=_('Clear events'),
+    view='events:events_list_clear'
 )
 link_events_list_export = Link(
     icon=icon_events_list_export, text=_('Export events'),

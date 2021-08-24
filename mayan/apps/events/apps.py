@@ -12,10 +12,12 @@ from mayan.apps.views.html_widgets import ObjectLinkWidget, TwoStateWidget
 
 from .html_widgets import widget_event_actor_link, widget_event_type_link
 from .links import (
-    link_current_user_events, link_current_user_events_export,
-    link_event_types_subscriptions_list, link_events_for_object_export,
-    link_events_list, link_events_list_export, link_notification_mark_read,
-    link_notification_mark_read_all, link_user_notifications_list
+    link_current_user_events, link_current_user_events_clear,
+    link_current_user_events_export, link_event_types_subscriptions_list,
+    link_events_for_object_clear, link_events_for_object_export,
+    link_events_list, link_events_list_clear, link_events_list_export,
+    link_notification_mark_read, link_notification_mark_read_all,
+    link_user_notifications_list
 )
 
 
@@ -103,20 +105,32 @@ class EventsApp(MayanAppConfig):
             label=_('Seen'), source=Notification, widget=TwoStateWidget
         )
 
-        menu_topbar.bind_links(
-            links=(link_user_notifications_list,), position=99
-        )
-        menu_object.bind_links(
-            links=(link_notification_mark_read,), sources=(Notification,)
-        )
+        # Clear
+
         menu_secondary.bind_links(
-            links=(link_notification_mark_read_all,),
+            links=(link_current_user_events_clear,),
             sources=(
-                'events:notification_mark_read',
-                'events:notification_mark_read_all',
-                'events:user_notifications_list'
+                'events:current_user_events',
+                'events:current_user_events_clear',
             )
         )
+        menu_secondary.bind_links(
+            links=(link_events_list_clear,),
+            sources=(
+                'events:events_list',
+                'events:events_list_clear',
+            )
+        )
+        menu_secondary.bind_links(
+            links=(link_events_for_object_clear,),
+            sources=(
+                'events:events_for_object',
+                'events:events_for_object_clear'
+            )
+        )
+
+        # Export
+
         menu_secondary.bind_links(
             links=(link_current_user_events_export,),
             sources=(
@@ -139,9 +153,32 @@ class EventsApp(MayanAppConfig):
             )
         )
 
-        menu_tools.bind_links(links=(link_events_list,))
+        # Notification
+
+        menu_object.bind_links(
+            links=(link_notification_mark_read,), sources=(Notification,)
+        )
+
+        menu_secondary.bind_links(
+            links=(link_notification_mark_read_all,),
+            sources=(
+                'events:notification_mark_read',
+                'events:notification_mark_read_all',
+                'events:user_notifications_list'
+            )
+        )
+
+        # Subscription
+
         menu_user.bind_links(
             links=(
                 link_event_types_subscriptions_list, link_current_user_events
             ), position=50
         )
+
+        # Other
+
+        menu_topbar.bind_links(
+            links=(link_user_notifications_list,), position=99
+        )
+        menu_tools.bind_links(links=(link_events_list,))
