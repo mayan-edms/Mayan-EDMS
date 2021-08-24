@@ -9,7 +9,6 @@ from mayan.apps.common.menus import (
     menu_multi_item, menu_object, menu_secondary, menu_topbar
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 
@@ -48,8 +47,7 @@ class MessagingApp(MayanAppConfig):
         ModelPermission.register(
             model=Message, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_events_view, permission_message_delete,
-                permission_message_view
+                permission_message_delete, permission_message_view
             )
         )
 

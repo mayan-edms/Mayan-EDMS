@@ -214,8 +214,8 @@ class EventModelRegistry:
 
     @classmethod
     def register(
-        cls, model, bind_events_link=True, bind_subscription_link=True,
-        menu=None, register_permissions=True
+        cls, model, bind_acl_link=True, bind_events_link=True,
+        bind_subscription_link=True, menu=None, register_permissions=True
     ):
         # Hidden imports.
         from actstream import registry
@@ -247,7 +247,7 @@ class EventModelRegistry:
                     model=model, permissions=(
                         permission_events_clear, permission_events_export,
                         permission_events_view
-                    )
+                    ), bind_link=bind_acl_link
                 )
 
             ModelEventType.register(

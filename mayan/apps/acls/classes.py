@@ -8,7 +8,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.menus import menu_list_facet
 from mayan.apps.common.utils import get_related_field
-from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 
 from .events import event_acl_created, event_acl_deleted, event_acl_edited
 from .links import link_acl_list
@@ -123,8 +122,16 @@ class ModelPermission:
         Match a model class to a set of permissions. And connect the model
         to the ACLs via a GenericRelation field.
         """
+        # Hidden imports
         from django.contrib.contenttypes.fields import GenericRelation
         from mayan.apps.common.classes import ModelCopy
+        from mayan.apps.events.classes import EventModelRegistry, ModelEventType
+
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
+        initalize_model = model not in cls._model_permissions and model != AccessControlList
 
         cls._model_permissions.setdefault(model, [])
         try:
@@ -138,31 +145,30 @@ class ModelPermission:
                 )
             ) from exception
 
-        AccessControlList = apps.get_model(
-            app_label='acls', model_name='AccessControlList'
-        )
+        if initalize_model:
+            # These need to happen only once.
+            if bind_link:
+                menu_list_facet.bind_links(
+                    links=(link_acl_list,), sources=(model,)
+                )
 
-        if bind_link:
-            menu_list_facet.bind_links(
-                links=(link_acl_list,), sources=(model,)
+            model.add_to_class(
+                name='acls', value=GenericRelation(
+                    to=AccessControlList, verbose_name=_('ACLs')
+                )
             )
 
-        model.add_to_class(
-            name='acls', value=GenericRelation(
-                to=AccessControlList, verbose_name=_('ACLs')
+            ModelCopy.add_fields_lazy(model=model, field_names=('acls',))
+
+            # Allow the model to be used as the action_object for the ACL
+            # events.
+            EventModelRegistry.register(model=model)
+
+            ModelEventType.register(
+                event_types=(
+                    event_acl_created, event_acl_deleted, event_acl_edited,
+                ), model=model
             )
-        )
-
-        ModelCopy.add_fields_lazy(model=model, field_names=('acls',))
-
-        # Allow the model to be used as the action_object for the ACL events.
-        EventModelRegistry.register(model=model)
-
-        ModelEventType.register(
-            event_types=(
-                event_acl_created, event_acl_deleted, event_acl_edited,
-            ), model=model
-        )
 
     @classmethod
     def register_field_query_function(cls, model, function):

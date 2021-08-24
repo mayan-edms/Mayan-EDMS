@@ -15,7 +15,6 @@ from mayan.apps.common.menus import (
     menu_secondary
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
@@ -100,17 +99,21 @@ class TagsApp(MayanAppConfig):
         ModelPermission.register(
             model=Tag, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_events_view, permission_tag_attach,
-                permission_tag_delete, permission_tag_edit,
-                permission_tag_remove, permission_tag_view,
+                permission_tag_attach, permission_tag_delete,
+                permission_tag_edit, permission_tag_remove,
+                permission_tag_view
             )
         )
 
         model_query_fields_document = ModelQueryFields.get(model=Document)
-        model_query_fields_document.add_prefetch_related_field(field_name='tags')
+        model_query_fields_document.add_prefetch_related_field(
+            field_name='tags'
+        )
 
         model_query_fields_tag = ModelQueryFields.get(model=Tag)
-        model_query_fields_tag.add_prefetch_related_field(field_name='documents')
+        model_query_fields_tag.add_prefetch_related_field(
+            field_name='documents'
+        )
 
         # Document
 

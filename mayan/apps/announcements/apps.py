@@ -10,7 +10,6 @@ from mayan.apps.common.menus import (
     menu_multi_item, menu_object, menu_secondary, menu_setup
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 
@@ -57,8 +56,8 @@ class AnnouncementsApp(MayanAppConfig):
         ModelPermission.register(
             model=Announcement, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_events_view, permission_announcement_delete,
-                permission_announcement_edit, permission_announcement_view
+                permission_announcement_delete, permission_announcement_edit,
+                permission_announcement_view
             )
         )
         SourceColumn(

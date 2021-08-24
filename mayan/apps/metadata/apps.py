@@ -17,7 +17,6 @@ from mayan.apps.common.menus import (
 from mayan.apps.documents.links.document_type_links import link_document_type_list
 from mayan.apps.documents.signals import signal_post_document_type_change
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 
@@ -173,7 +172,7 @@ class MetadataApp(MayanAppConfig):
                 permission_document_metadata_add,
                 permission_document_metadata_edit,
                 permission_document_metadata_remove,
-                permission_document_metadata_view, permission_events_view,
+                permission_document_metadata_view,
                 permission_metadata_type_delete,
                 permission_metadata_type_edit, permission_metadata_type_view
             )

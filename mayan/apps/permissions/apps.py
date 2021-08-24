@@ -15,7 +15,6 @@ from mayan.apps.common.menus import (
 from mayan.apps.common.signals import signal_perform_upgrade
 from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.user_management.links import link_group_list
 
@@ -74,8 +73,8 @@ class PermissionsApp(MayanAppConfig):
         ModelPermission.register(
             model=Role, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_events_view, permission_role_delete,
-                permission_role_edit, permission_role_view
+                permission_role_delete, permission_role_edit,
+                permission_role_view
             )
         )
 

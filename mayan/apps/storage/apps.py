@@ -5,7 +5,6 @@ from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_object, menu_tools
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import DefinedStorage
@@ -39,8 +38,7 @@ class StorageApp(MayanAppConfig):
 
         ModelPermission.register(
             model=DownloadFile, permissions=(
-                permission_acl_edit, permission_acl_view,
-                permission_events_view
+                permission_acl_edit, permission_acl_view
             )
         )
 

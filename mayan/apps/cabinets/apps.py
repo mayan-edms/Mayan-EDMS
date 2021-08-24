@@ -10,7 +10,6 @@ from mayan.apps.common.menus import (
     menu_secondary
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
@@ -77,7 +76,7 @@ class CabinetsApp(MayanAppConfig):
             name='get_cabinets', value=method_document_get_cabinets
         )
 
-        EventModelRegistry.register(model=Cabinet)
+        EventModelRegistry.register(model=Cabinet, bind_acl_link=False)
 
         def cabinet_model_copy_condition(instance):
             return instance.is_root_node()
@@ -107,8 +106,7 @@ class CabinetsApp(MayanAppConfig):
         ModelPermission.register(
             model=Document, permissions=(
                 permission_cabinet_add_document,
-                permission_cabinet_remove_document, permission_cabinet_view,
-                permission_events_view
+                permission_cabinet_remove_document, permission_cabinet_view
             )
         )
 

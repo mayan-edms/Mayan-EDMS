@@ -24,7 +24,6 @@ from mayan.apps.converter.permissions import (
 )
 from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.file_caching.links import link_cache_partition_purge
 from mayan.apps.file_caching.permissions import permission_cache_partition_purge
 from mayan.apps.navigation.classes import SourceColumn
@@ -421,9 +420,9 @@ class DocumentsApp(MayanAppConfig):
                 permission_document_properties_edit,
                 permission_document_tools,
                 permission_document_trash, permission_document_view,
-                permission_document_version_create, permission_events_view,
+                permission_document_version_create,
                 permission_trashed_document_delete,
-                permission_trashed_document_restore,
+                permission_trashed_document_restore
             )
         )
         ModelPermission.register(
@@ -436,7 +435,7 @@ class DocumentsApp(MayanAppConfig):
                 permission_document_file_print,
                 permission_document_file_tools,
                 permission_document_file_view,
-                permission_events_view, permission_transformation_create,
+                permission_transformation_create,
                 permission_transformation_delete,
                 permission_transformation_edit,
                 permission_transformation_view
@@ -444,10 +443,9 @@ class DocumentsApp(MayanAppConfig):
         )
         ModelPermission.register(
             model=DocumentType, permissions=(
-                permission_document_create, permission_document_type_delete,
-                permission_document_type_edit, permission_document_type_view,
                 permission_acl_edit, permission_acl_view,
-                permission_events_view,
+                permission_document_create, permission_document_type_delete,
+                permission_document_type_edit, permission_document_type_view
             )
         )
         ModelPermission.register(
@@ -459,7 +457,7 @@ class DocumentsApp(MayanAppConfig):
                 permission_document_version_export,
                 permission_document_version_print,
                 permission_document_version_view,
-                permission_events_view, permission_transformation_create,
+                permission_transformation_create,
                 permission_transformation_delete,
                 permission_transformation_edit,
                 permission_transformation_view

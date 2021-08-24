@@ -11,7 +11,6 @@ from mayan.apps.common.menus import (
     menu_multi_item, menu_object, menu_secondary, menu_setup
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import event_asset_edited
@@ -54,7 +53,7 @@ class ConverterApp(MayanAppConfig):
             model=Asset, permissions=(
                 permission_acl_edit, permission_acl_view,
                 permission_asset_delete, permission_asset_edit,
-                permission_asset_view, permission_events_view
+                permission_asset_view
             )
         )
 

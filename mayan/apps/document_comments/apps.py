@@ -5,7 +5,6 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_facet, menu_object, menu_secondary
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
@@ -53,9 +52,6 @@ class DocumentCommentsApp(MayanAppConfig):
             )
         )
 
-        ModelPermission.register(
-            model=Comment, permissions=(permission_events_view,)
-        )
         ModelPermission.register_inheritance(
             model=Comment, related='document',
         )

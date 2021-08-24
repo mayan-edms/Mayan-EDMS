@@ -7,7 +7,6 @@ from mayan.apps.common.menus import (
     menu_object, menu_related, menu_secondary, menu_setup
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import KeyStub
@@ -45,9 +44,8 @@ class DjangoGPGApp(MayanAppConfig):
         ModelPermission.register(
             model=Key, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_events_view, permission_key_delete,
-                permission_key_download, permission_key_sign,
-                permission_key_view
+                permission_key_delete, permission_key_download,
+                permission_key_sign, permission_key_view
             )
         )
 
