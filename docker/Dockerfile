@@ -35,6 +35,7 @@ apt-get update \
 && apt-get install -y --no-install-recommends \
     ca-certificates \
     exiftool \
+    expect \
     fonts-arphic-uming \
     fonts-arphic-ukai \
     fonts-unfonts-core \
