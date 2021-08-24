@@ -5,14 +5,15 @@
 # Translators:
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2021
+# trendspotter <jirka.p@volny.cz>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-08-24 02:59+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -90,7 +91,7 @@ msgstr "Zosobnit uživatele"
 
 #: links.py:39
 msgid "Impersonate"
-msgstr ""
+msgstr "Předstírat"
 
 #: links.py:44 links.py:48
 msgid "Set password"
@@ -131,6 +132,8 @@ msgid ""
 "                Impersonating user \"%(user)s\".\n"
 "            "
 msgstr ""
+"\n"
+"Předstírání identity uživatele \"%(user)s\"."
 
 #: templates/authentication/app/viewport.html:14
 msgid "Click here when finished"
@@ -223,4 +226,4 @@ msgstr "Chyba při resetování hesla pro uživatele „%(user)s“: %(error)s"
 #: views.py:278
 #, python-format
 msgid "Impersonate user: %s"
-msgstr ""
+msgstr "Předstírat identitu uživatele: %s"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-08-24 02:59+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Harald Ersch, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -1517,11 +1517,11 @@ msgid ""
 " %(error)s."
 msgstr ""
 
-#: views/document_file_views.py:328 views/document_version_views.py:360
+#: views/document_file_views.py:328 views/document_version_views.py:372
 msgid "Transformations cloned successfully."
 msgstr "Transformările clonate cu succes."
 
-#: views/document_file_views.py:342 views/document_version_views.py:374
+#: views/document_file_views.py:342 views/document_version_views.py:386
 #: views/misc_views.py:41
 msgid "Submit"
 msgstr "Trimiteţi"
@@ -1731,79 +1731,79 @@ msgstr ""
 msgid "Delete %(count)d document versions."
 msgstr ""
 
-#: views/document_version_views.py:132
+#: views/document_version_views.py:144
 #, python-format
 msgid "Edit document version: %s"
 msgstr ""
 
-#: views/document_version_views.py:153
+#: views/document_version_views.py:165
 #, python-format
 msgid "Document version \"%(object)s\" export successfully queued."
 msgstr ""
 
-#: views/document_version_views.py:156
+#: views/document_version_views.py:168
 #, python-format
 msgid "%(count)d document version export successfully queued."
 msgstr ""
 
-#: views/document_version_views.py:159
+#: views/document_version_views.py:171
 #, python-format
 msgid "%(count)d document versions exports successfully queued."
 msgstr ""
 
-#: views/document_version_views.py:161
+#: views/document_version_views.py:173
 #, python-format
 msgid "Export document version \"%(object)s\"."
 msgstr ""
 
-#: views/document_version_views.py:162
+#: views/document_version_views.py:174
 #, python-format
 msgid "Export %(count)d document version."
 msgstr ""
 
-#: views/document_version_views.py:163
+#: views/document_version_views.py:175
 #, python-format
 msgid "Export %(count)d document versions."
 msgstr ""
 
-#: views/document_version_views.py:168
+#: views/document_version_views.py:180
 msgid ""
 "The process will be performed in the background. The exported file will be "
 "available in the downloads area."
 msgstr ""
 
-#: views/document_version_views.py:210
+#: views/document_version_views.py:222
 msgid ""
 "Versions are views that can display document file pages as they are, remap "
 "or merge them into different layouts."
 msgstr ""
 
-#: views/document_version_views.py:213
+#: views/document_version_views.py:225
 msgid "No versions available"
 msgstr ""
 
-#: views/document_version_views.py:216
+#: views/document_version_views.py:228
 #, python-format
 msgid "Versions of document: %s"
 msgstr "Versiuni de document: %s"
 
-#: views/document_version_views.py:245
+#: views/document_version_views.py:257
 #, python-format
 msgid "Preview of document version: %s"
 msgstr "Previzualizarea versiunii de document: %s"
 
-#: views/document_version_views.py:278
+#: views/document_version_views.py:290
 #, python-format
 msgid "Transformation clear request processed for %(count)d document version."
 msgstr ""
 
-#: views/document_version_views.py:281
+#: views/document_version_views.py:293
 #, python-format
 msgid ""
 "Transformation clear request processed for %(count)d document versions."
 msgstr ""
 
-#: views/document_version_views.py:287
+#: views/document_version_views.py:299
 msgid "Clear all the page transformations for the selected document version?"
 msgid_plural ""
 "Clear all the page transformations for the selected document version?"
@@ -1811,26 +1811,26 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: views/document_version_views.py:298
+#: views/document_version_views.py:310
 #, python-format
 msgid "Clear all the page transformations for the document version: %s?"
 msgstr ""
 
-#: views/document_version_views.py:315
+#: views/document_version_views.py:327
 #, python-format
 msgid ""
 "Error deleting the page transformations for document version: "
 "%(document_version)s; %(error)s."
 msgstr ""
 
-#: views/document_version_views.py:351
+#: views/document_version_views.py:363
 #, python-format
 msgid ""
 "Error cloning the page transformations for document version: "
 "%(document_version)s; %(error)s."
 msgstr ""
 
-#: views/document_version_views.py:376
+#: views/document_version_views.py:388
 #, python-format
 msgid "Clone page transformations of document version: %s"
 msgstr ""

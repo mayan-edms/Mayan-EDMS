@@ -6,14 +6,15 @@
 # Translators:
 # Jiri Fait <fait@orkasolutions.cz>, 2021
 # Michal Švábík <snadno@lehce.cz>, 2021
+# trendspotter <jirka.p@volny.cz>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-08-24 02:59+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -436,6 +437,11 @@ msgid ""
 "string ('') are considered to be logical false, any other value is "
 "considered to be the logical true."
 msgstr ""
+"Podmínka, která určí, zda se tato akce stavu provede nebo ne. Podmínka je "
+"vyhodnocena oproti instanci pracovního postupu. Podmínky, které nevracejí "
+"žádnou hodnotu, které vracejí logický jazyk Python None nebo prázdný řetězec"
+" (''), jsou považovány za logické nepravdy, jakákoli jiná hodnota je "
+"považována za logickou pravdu."
 
 #: models/workflow_state_models.py:197 models/workflow_transition_models.py:58
 msgid "Condition"
@@ -491,6 +497,11 @@ msgid ""
 "('') are considered to be logical false, any other value is considered to be"
 " the logical true."
 msgstr ""
+"Podmínka, která určí, zda je tento přechod povolen, nebo ne. Podmínka se "
+"vyhodnocuje vůči instanci pracovního postupu. Podmínky, které nevracejí "
+"žádnou hodnotu, vracejí logickou hodnotu Python None nebo prázdný řetězec "
+"(''), jsou považovány za logickou false, jakákoli jiná hodnota je považována"
+" za logickou true."
 
 #: models/workflow_transition_models.py:66
 msgid "Workflow transition"
@@ -581,7 +592,7 @@ msgstr "Workflow dokumentů"
 
 #: permissions.py:10
 msgid "Create workflow templates"
-msgstr ""
+msgstr "Vytvořit šablony pracovního postupu"
 
 #: permissions.py:13
 msgid "Delete workflow templates"
@@ -593,7 +604,7 @@ msgstr ""
 
 #: permissions.py:19
 msgid "View workflow templates"
-msgstr ""
+msgstr "Zobrazit šablony pracovního postupu"
 
 #: permissions.py:25
 msgid "Transition workflow instances"
@@ -633,7 +644,7 @@ msgstr "Spusťte workflow"
 
 #: search.py:12 search.py:19 search.py:26 search.py:33 search.py:40
 msgid "Document workflow transition comment"
-msgstr ""
+msgstr "Komentář přechodu pracovního postupu dokumentu"
 
 #: serializers.py:65
 msgid "Primary key of the document type to add to the workflow."
@@ -642,6 +653,7 @@ msgstr ""
 #: serializers.py:74
 msgid "Primary key of the document type to remove from the workflow."
 msgstr ""
+"Primární klíč typu dokumentu, který chcete odebrat z pracovního postupu."
 
 #: serializers.py:165
 msgid "Primary key of the destination state to be added."
@@ -671,6 +683,8 @@ msgstr ""
 msgid ""
 "File path to the graphviz dot program used to generate workflow previews."
 msgstr ""
+"Cesta k souboru do programu graphviz dot používaného ke generování náhledů "
+"pracovních toků."
 
 #: settings.py:27
 msgid ""
@@ -685,6 +699,8 @@ msgid ""
 "Time in seconds that the browser should cache the supplied workflow images. "
 "The default of 31559626 seconds correspond to 1 year."
 msgstr ""
+"Čas v sekundách, kdy by měl prohlížeč ukládat do mezipaměti dodané obrázky "
+"pracovního postupu. Výchozí hodnota 31559626 sekund odpovídá 1 roku."
 
 #: settings.py:43
 msgid ""
@@ -725,7 +741,7 @@ msgstr ""
 
 #: views/workflow_instance_views.py:39
 msgid "There are no workflows for this document"
-msgstr ""
+msgstr "Pro tento dokument neexistují žádné pracovní toky"
 
 #: views/workflow_instance_views.py:43
 #, python-format
@@ -1013,7 +1029,7 @@ msgstr ""
 #: views/workflow_template_views.py:84
 #, python-format
 msgid "Launch workflow: %(object)s."
-msgstr ""
+msgstr "Spustit pracovní postup: %(object)s."
 
 #: views/workflow_template_views.py:85
 #, python-format
@@ -1027,13 +1043,16 @@ msgstr ""
 
 #: views/workflow_template_views.py:90
 msgid "Launch"
-msgstr ""
+msgstr "Spustit"
 
 #: views/workflow_template_views.py:92
 msgid ""
 "Workflows already launched or workflows not applicable to some documents "
 "when multiple documents are selected, will be silently ignored."
 msgstr ""
+"Pracovní postupy, které již byly spuštěny, nebo pracovní postupy, které se "
+"nevztahují na některé dokumenty při výběru více dokumentů, budou tiše "
+"ignorovány."
 
 #: views/workflow_template_views.py:104
 msgid "Workflows to be launched."
@@ -1076,7 +1095,7 @@ msgstr ""
 
 #: views/workflow_template_views.py:158
 msgid "All workflow instances will also be deleted."
-msgstr ""
+msgstr "Budou také odstraněny všechny instance pracovního postupu."
 
 #: views/workflow_template_views.py:177
 #, python-format
@@ -1173,7 +1192,7 @@ msgstr "Upravit vlastnosti dokumentu"
 
 #: workflow_actions.py:77
 msgid "Additional workflows to launch for the document."
-msgstr ""
+msgstr "Další pracovní postupy pro spuštění dokumentu."
 
 #: workflow_actions.py:120
 msgid "URL"
