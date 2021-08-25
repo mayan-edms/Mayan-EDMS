@@ -32,7 +32,11 @@ urlpatterns_groups = [
         view=GroupCreateView.as_view()
     ),
     url(
-        regex=r'^groups/(?P<group_id>\d+)/delete/$', name='group_delete',
+        regex=r'^groups/(?P<group_id>\d+)/delete/$',
+        name='group_delete_single', view=GroupDeleteView.as_view()
+    ),
+    url(
+        regex=r'^groups/multiple/delete/$', name='group_delete_multiple',
         view=GroupDeleteView.as_view()
     ),
     url(
@@ -56,11 +60,11 @@ urlpatterns_users = [
         view=UserCreateView.as_view()
     ),
     url(
-        regex=r'^users/(?P<user_id>\d+)/delete/$', name='user_delete',
+        regex=r'^users/(?P<user_id>\d+)/delete/$', name='user_delete_single',
         view=UserDeleteView.as_view()
     ),
     url(
-        regex=r'^users/multiple/delete/$', name='user_multiple_delete',
+        regex=r'^users/multiple/delete/$', name='user_delete_multiple',
         view=UserDeleteView.as_view()
     ),
     url(

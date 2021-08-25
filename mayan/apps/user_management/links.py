@@ -5,9 +5,10 @@ from mayan.apps.navigation.utils import get_cascade_condition
 
 from .icons import (
     icon_current_user_details, icon_current_user_edit, icon_group_create,
-    icon_group_delete, icon_group_edit, icon_group_list, icon_group_setup,
-    icon_group_user_list, icon_user_create, icon_user_edit,
-    icon_user_group_list, icon_user_list, icon_user_delete,
+    icon_group_delete_single, icon_group_delete_multiple, icon_group_edit,
+    icon_group_list, icon_group_setup, icon_group_user_list,
+    icon_user_create, icon_user_edit, icon_user_group_list, icon_user_list,
+    icon_user_delete_single, icon_user_delete_multiple,
     icon_user_set_options, icon_user_setup
 )
 from .permissions import (
@@ -17,6 +18,7 @@ from .permissions import (
 )
 from .utils import get_user_label_text
 
+# Current user
 link_current_user_details = Link(
     icon=icon_current_user_details, text=_('User details'),
     view='user_management:current_user_details'
@@ -25,14 +27,21 @@ link_current_user_edit = Link(
     icon=icon_current_user_edit, text=_('Edit user details'),
     view='user_management:current_user_edit'
 )
+
+# Group
+
 link_group_create = Link(
     icon=icon_group_create, permissions=(permission_group_create,),
     text=_('Create new group'), view='user_management:group_create'
 )
-link_group_delete = Link(
-    args='object.id', icon=icon_group_delete,
+link_group_delete_single = Link(
+    args='object.id', icon=icon_group_delete_single,
     permissions=(permission_group_delete,), tags='dangerous',
-    text=_('Delete'), view='user_management:group_delete'
+    text=_('Delete'), view='user_management:group_delete_single'
+)
+link_group_delete_multiple = Link(
+    icon=icon_group_delete_multiple, tags='dangerous', text=_('Delete'),
+    view='user_management:group_delete_multiple'
 )
 link_group_edit = Link(
     args='object.id', icon=icon_group_edit,
@@ -59,14 +68,21 @@ link_group_setup = Link(
     ), icon=icon_group_setup, text=_('Groups'),
     view='user_management:group_list'
 )
+
+# User
+
 link_user_create = Link(
     icon=icon_user_create, permissions=(permission_user_create,),
     text=_('Create new user'), view='user_management:user_create'
 )
-link_user_delete = Link(
-    args='object.id', icon=icon_user_delete,
+link_user_delete_single = Link(
+    args='object.id', icon=icon_user_delete_single,
     permissions=(permission_user_delete,), tags='dangerous',
-    text=_('Delete'), view='user_management:user_delete'
+    text=_('Delete'), view='user_management:user_delete_single'
+)
+link_user_delete_multiple = Link(
+    icon=icon_user_delete_multiple, tags='dangerous', text=_('Delete'),
+    view='user_management:user_delete_multiple'
 )
 link_user_edit = Link(
     args='object.id', icon=icon_user_edit,
@@ -85,11 +101,6 @@ link_user_list = Link(
         view_permission=permission_user_create,
     ), icon=icon_user_list, text=_('Users'),
     view='user_management:user_list'
-)
-link_user_multiple_delete = Link(
-    icon=icon_user_delete, permissions=(permission_user_delete,),
-    tags='dangerous', text=_('Delete'),
-    view='user_management:user_multiple_delete'
 )
 link_user_set_options = Link(
     args='object.id', icon=icon_user_set_options,

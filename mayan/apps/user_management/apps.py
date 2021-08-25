@@ -31,9 +31,10 @@ from .events import (
 from .handlers import handler_initialize_new_user_options
 from .links import (
     link_current_user_details, link_current_user_edit, link_group_create,
-    link_group_delete, link_group_edit, link_group_list, link_group_user_list,
-    link_group_setup, link_user_create, link_user_delete, link_user_edit,
-    link_user_group_list, link_user_list, link_user_multiple_delete,
+    link_group_delete_single, link_group_delete_multiple, link_group_edit,
+    link_group_list, link_group_user_list, link_group_setup,
+    link_user_create, link_user_delete_single, link_user_edit,
+    link_user_group_list, link_user_list, link_user_delete_multiple,
     link_user_set_options, link_user_setup, separator_user_label,
     text_user_label
 )
@@ -245,56 +246,73 @@ class UserManagementApp(MayanAppConfig):
             widget=DashboardWidgetGroupTotal, order=99
         )
 
+        # Group
+
         menu_list_facet.bind_links(
             links=(
                 link_group_user_list,
             ), sources=(Group,)
         )
-        menu_list_facet.bind_links(
-            links=(
-                link_user_group_list, link_user_set_options
-            ), sources=(User,)
-        )
+
         menu_multi_item.bind_links(
-            links=(link_user_multiple_delete,),
-            sources=('user_management:user_list',)
+            links=(link_group_delete_multiple,),
+            sources=('user_management:group_list',)
         )
+
         menu_object.bind_links(
             links=(link_group_edit,),
             sources=(Group,)
         )
         menu_object.bind_links(
-            links=(link_group_delete,), position=99,
+            links=(link_group_delete_single,), position=99,
             sources=(Group,)
         )
-        menu_object.bind_links(
-            links=(link_user_delete, link_user_edit,), sources=(User,)
-        )
+
         menu_related.bind_links(
             links=(link_user_list,), sources=(
-                'user_management:group_multiple_delete',
+                'user_management:group_delete_multiple',
                 'user_management:group_list', 'user_management:group_create',
                 Group
             )
         )
+
+        menu_secondary.bind_links(
+            links=(link_group_list, link_group_create), sources=(
+                'user_management:group_delete_multiple',
+                'user_management:group_list', 'user_management:group_create',
+                Group
+            )
+        )
+
+        # User
+
+        menu_list_facet.bind_links(
+            links=(
+                link_user_group_list, link_user_set_options
+            ), sources=(User,)
+        )
+
+        menu_multi_item.bind_links(
+            links=(link_user_delete_multiple,),
+            sources=('user_management:user_list',)
+        )
+
+        menu_object.bind_links(
+            links=(link_user_delete_single, link_user_edit,), sources=(User,)
+        )
+
         menu_related.bind_links(
             links=(link_group_setup,), sources=(
                 User, 'authentication:user_multiple_set_password',
-                'user_management:user_multiple_delete',
+                'user_management:user_delete_multiple',
                 'user_management:user_list', 'user_management:user_create'
             )
         )
-        menu_secondary.bind_links(
-            links=(link_group_list, link_group_create), sources=(
-                'user_management:group_multiple_delete',
-                'user_management:group_list', 'user_management:group_create',
-                Group
-            )
-        )
+
         menu_secondary.bind_links(
             links=(link_user_list, link_user_create), sources=(
                 User, 'authentication:user_multiple_set_password',
-                'user_management:user_multiple_delete',
+                'user_management:user_delete_multiple',
                 'user_management:user_list', 'user_management:user_create'
             )
         )
