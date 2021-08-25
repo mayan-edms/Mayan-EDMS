@@ -200,6 +200,20 @@ class DocumentVersionViewTestMixin:
             }
         )
 
+    def _request_test_document_version_delete_single_view(self):
+        return self.post(
+            viewname='documents:document_version_delete_single', kwargs={
+                'document_version_id': self.test_document_version.pk
+            }
+        )
+
+    def _request_test_document_version_delete_multiple_view(self):
+        return self.post(
+            viewname='documents:document_version_delete_multiple', data={
+                'id_list': self.test_document_version.pk
+            }
+        )
+
     def _request_test_document_version_edit_view(self):
         return self.post(
             viewname='documents:document_version_edit', kwargs={

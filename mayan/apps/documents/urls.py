@@ -284,7 +284,7 @@ urlpatterns_document_version = [
     ),
     url(
         regex=r'^documents/versions/(?P<document_version_id>\d+)/delete/$',
-        name='document_version_delete',
+        name='document_version_delete_single',
         view=DocumentVersionDeleteView.as_view()
     ),
     url(
@@ -299,7 +299,7 @@ urlpatterns_document_version = [
     ),
     url(
         regex=r'^documents/versions/multiple/delete/$',
-        name='document_version_multiple_delete',
+        name='document_version_delete_multiple',
         view=DocumentVersionDeleteView.as_view()
     ),
     url(

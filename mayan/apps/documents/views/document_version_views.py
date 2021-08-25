@@ -34,7 +34,9 @@ from ..permissions import (
     permission_document_version_print, permission_document_version_view
 )
 from ..settings import setting_preview_height, setting_preview_width
-from ..tasks import task_document_version_export
+from ..tasks import (
+    task_document_version_delete, task_document_version_export
+)
 
 from .misc_views import PrintFormView, DocumentPrintView
 from .mixins import RecentDocumentViewMixin
@@ -97,20 +99,24 @@ class DocumentVersionDeleteView(MultipleObjectDeleteView):
     pk_url_kwarg = 'document_version_id'
     source_queryset = DocumentVersion.valid
     success_message_single = _(
-        'Document version "%(object)s" deleted successfully.'
+        'Document version "%(object)s" deletion queued successfully.'
     )
     success_message_singular = _(
-        '%(count)d document version deleted successfully.'
+        '%(count)d document version deletion queued successfully.'
     )
     success_message_plural = _(
-        '%(count)d document versions deleted successfully.'
+        '%(count)d document version deletions queued successfully.'
     )
     title_single = _('Delete document version "%(object)s".')
     title_singular = _('Delete %(count)d document version.')
     title_plural = _('Delete %(count)d document versions.')
 
     def get_extra_context(self, **kwargs):
-        context = {}
+        context = {
+            'message': _(
+                'The process will be performed in the background. '
+            )
+        }
 
         if self.object_list.count() > 1:
             context.update(
@@ -121,16 +127,19 @@ class DocumentVersionDeleteView(MultipleObjectDeleteView):
 
         return context
 
-    def get_instance_extra_data(self):
-        return {
-            '_event_actor': self.request.user,
-        }
-
     def get_post_action_redirect(self):
         # Use [0] instead of first(). First returns None and it is not usable.
         return reverse(
             viewname='documents:document_version_list', kwargs={
                 'document_id': self.object_list[0].document_id
+            }
+        )
+
+    def object_action(self, instance, form=None):
+        task_document_version_delete.apply_async(
+            kwargs={
+                'document_version_id': instance.pk,
+                'user_id': self.request.user.pk
             }
         )
 

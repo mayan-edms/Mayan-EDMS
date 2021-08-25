@@ -116,9 +116,10 @@ from .links.document_type_links import (
 )
 from .links.document_version_links import (
     link_document_version_active, link_document_version_create,
-    link_document_version_delete, link_document_version_edit,
+    link_document_version_delete_single,
+    link_document_version_delete_multiple, link_document_version_edit,
     link_document_version_export, link_document_version_list,
-    link_document_version_multiple_delete, link_document_version_return_list,
+    link_document_version_return_list,
     link_document_version_return_to_document, link_document_version_preview,
     link_document_version_print_form,
     link_document_version_transformations_clear,
@@ -861,7 +862,7 @@ class DocumentsApp(MayanAppConfig):
         )
         menu_multi_item.bind_links(
             links=(
-                link_document_version_multiple_delete,
+                link_document_version_delete_multiple,
                 link_document_version_multiple_transformations_clear,
             ), sources=(DocumentVersion,)
         )
@@ -869,7 +870,7 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_version_active,
                 link_cache_partition_purge,
-                link_document_version_delete, link_document_version_edit,
+                link_document_version_delete_single, link_document_version_edit,
                 link_document_version_export,
                 link_document_version_page_list_remap,
                 link_document_version_page_list_reset,
