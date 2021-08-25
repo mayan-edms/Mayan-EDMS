@@ -71,6 +71,9 @@ def operation_document_version_page_create(apps, schema_editor):
         documents_documentversionpage=schema_editor.connection.ops.quote_name(
             name='documents_documentversionpage'
         ),
+        object_id=schema_editor.connection.ops.quote_name(
+            name='object_id'
+        ),
         page_number=schema_editor.connection.ops.quote_name(
             name='page_number'
         )
