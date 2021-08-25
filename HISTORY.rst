@@ -146,6 +146,26 @@
 - Move theme stylesheet sanitization to the save method.
 - Remove final uses of .six library.
 - Add support for clearing the event list.
+- Events app updates:
+
+  - Load all events at startup. Does not rely anymore of importing an event
+    for it to become recognized.
+  - Allow loading events by their name. Avoid doing direct imports when
+    there circular dependencies.
+  - Move the events app to the top of the installed apps to allow it to
+    preload all events.
+  - Only show the event clear and export links for object whose events
+    that can be cleared and exported.
+
+- ACLs apps updates:
+
+  - The ACL edited event is now triggered only once when all permissions are
+    changed.
+  - The action object of the ACL edited event is now the content object and
+    not the permission.
+
+- Enable event subscriptions for workflow states, workflow state actions,
+  and workflow transitions.
 
 4.0.15 (2021-08-07)
 ===================
