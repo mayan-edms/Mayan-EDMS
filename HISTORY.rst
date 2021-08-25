@@ -1,3 +1,11 @@
+4.0.16 (2021-XX-XX)
+===================
+- Minor fixes merged from version 3.5.11.
+- Remove duplicated makefile targets.
+- Add keyword arguments to PIL methods.
+- Quote parameters of remaining migration query.
+- Track user when setting a version active
+
 4.0.15 (2021-08-07)
 ===================
 - Improve the document version export API endpoint.
@@ -16,7 +24,7 @@
 
 - Fix the view to mark all messages as read.
 - Track the user when marking messages as read or unread.
-- Fix action messages.    
+- Fix action messages.
 
 4.0.14 (2021-08-05)
 ===================
