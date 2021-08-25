@@ -17,6 +17,11 @@ from .mixins import MailerTestMixin
 
 
 class MailingModelTestCase(MailerTestMixin, BaseTestCase):
+    def test_method_get_absolute_url(self):
+        self._create_test_user_mailer()
+
+        self.assertTrue(self.test_user_mailer.get_absolute_url())
+
     def test_send_simple(self):
         self._create_test_user_mailer()
 
