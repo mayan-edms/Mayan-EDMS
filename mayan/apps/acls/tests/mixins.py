@@ -150,7 +150,7 @@ class ACLTestMixin(RoleTestMixin):
         if register_model_permissions:
             ModelPermission.register(
                 model=self.TestModel, permissions=(
-                    permission_acl_edit, permission_acl_view,
+                    permission_acl_edit, permission_acl_view
                 )
             )
 

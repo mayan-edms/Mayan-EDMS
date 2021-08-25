@@ -88,29 +88,26 @@ class AccessControlList(ExtraDataModelMixin, models.Model):
     def permissions_add(self, queryset, _event_actor=None):
         for obj in queryset:
             self.permissions.add(obj)
-            event_acl_edited.commit(
-                action_object=obj, actor=_event_actor or self._event_actor,
-                target=self
-            )
+
+        event_acl_edited.commit(
+            action_object=self.content_object,
+            actor=_event_actor or self._event_actor, target=self
+        )
 
     def permissions_remove(self, queryset, _event_actor=None):
         for obj in queryset:
             self.permissions.remove(obj)
-            event_acl_edited.commit(
-                action_object=obj, actor=_event_actor or self._event_actor,
-                target=self
-            )
+
+        event_acl_edited.commit(
+            action_object=self.content_object,
+            actor=_event_actor or self._event_actor, target=self
+        )
 
     @method_event(
         event_manager_class=EventManagerSave,
         created={
             'action_object': 'content_object',
             'event': event_acl_created,
-            'target': 'self',
-        },
-        edited={
-            'action_object': 'content_object',
-            'event': event_acl_edited,
             'target': 'self',
         }
     )
