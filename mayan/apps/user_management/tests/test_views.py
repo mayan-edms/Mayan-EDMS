@@ -125,7 +125,6 @@ class GroupViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-
     def test_group_edit_view_no_permission(self):
         self._create_test_group()
 
