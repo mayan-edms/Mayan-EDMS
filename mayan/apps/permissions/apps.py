@@ -51,10 +51,12 @@ class PermissionsApp(MayanAppConfig):
         Group.add_to_class(name='roles_remove', value=method_group_roles_remove)
 
         EventModelRegistry.register(model=Role)
-        EventModelRegistry.register(model=StoredPermission, bind_subscription_link=False)
+        EventModelRegistry.register(
+            model=StoredPermission, bind_subscription_link=False
+        )
 
         ModelCopy(
-            model=Role, bind_link=True, register_permission=True
+            bind_link=True, model=Role, register_permission=True
         ).add_fields(
             field_names=(
                 'label', 'permissions', 'groups',

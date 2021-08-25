@@ -76,7 +76,7 @@ class CabinetsApp(MayanAppConfig):
             name='get_cabinets', value=method_document_get_cabinets
         )
 
-        EventModelRegistry.register(model=Cabinet, bind_acl_link=False)
+        EventModelRegistry.register(model=Cabinet, acl_bind_link=False)
 
         def cabinet_model_copy_condition(instance):
             return instance.is_root_node()
@@ -89,7 +89,7 @@ class CabinetsApp(MayanAppConfig):
 
         ModelCopy(
             model=Cabinet, condition=cabinet_model_copy_condition,
-            bind_link=True, bind_acl_link=False, register_permission=True
+            bind_link=True, acl_bind_link=False, register_permission=True
         ).add_fields(
             field_names=('label', 'documents'), unique_conditional={
                 'label': cabinet_unique_conditional

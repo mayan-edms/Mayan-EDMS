@@ -12,12 +12,15 @@ from django.utils.translation import ugettext_lazy as _
 
 from actstream import action
 
+from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.menus import menu_list_facet
 from mayan.apps.common.settings import setting_project_url
 from mayan.apps.common.utils import return_attrib
 
 from .literals import (
-    DEFAULT_EVENT_LIST_EXPORT_FILENAME, EVENT_MANAGER_ORDER_AFTER
+    DEFAULT_EVENT_LIST_EXPORT_FILENAME, EVENT_MANAGER_ORDER_AFTER,
+    EVENT_TYPE_NAMESPACE_NAME, EVENT_EVENTS_CLEARED_NAME,
+    EVENT_EVENTS_EXPORTED_NAME
 )
 from .links import (
     link_events_for_object, link_object_event_types_user_subscriptions_list
@@ -214,15 +217,25 @@ class EventModelRegistry:
 
     @classmethod
     def register(
-        cls, model, bind_acl_link=True, bind_events_link=True,
+        cls, model, acl_bind_link=True, bind_events_link=True,
         bind_subscription_link=True, menu=None, register_permissions=True
     ):
         # Hidden imports.
         from actstream import registry
         from mayan.apps.acls.classes import ModelPermission
-        from .events import event_events_cleared, event_events_exported
+
+        event_type_namespace = EventTypeNamespace.get(
+            name=EVENT_TYPE_NAMESPACE_NAME
+        )
+        event_events_cleared = event_type_namespace.get_event(
+            name=EVENT_EVENTS_CLEARED_NAME
+        )
+        event_events_exported = event_type_namespace.get_event(
+            name=EVENT_EVENTS_EXPORTED_NAME
+        )
 
         if model not in cls._registry:
+            cls._registry.add(model)
             # These need to happen only once.
             registry.register(model)
 
@@ -242,25 +255,31 @@ class EventModelRegistry:
                     ), sources=(model,)
                 )
 
-            if register_permissions:
+            AccessControlList = apps.get_model(
+                app_label='acls', model_name='AccessControlList'
+            )
+            StoredPermission = apps.get_model(
+                app_label='permissions', model_name='StoredPermission'
+            )
+
+            if register_permissions and not issubclass(model, (AccessControlList, StoredPermission)):
                 ModelPermission.register(
                     model=model, permissions=(
                         permission_events_clear, permission_events_export,
                         permission_events_view
-                    ), bind_link=bind_acl_link
+                    ), bind_link=acl_bind_link
                 )
 
-            ModelEventType.register(
-                event_types=(
-                    event_events_cleared, event_events_exported
-                ), model=model
-            )
-
-            cls._registry.add(model)
+                ModelEventType.register(
+                    event_types=(
+                        event_events_cleared, event_events_exported
+                    ), model=model
+                )
 
 
-class EventTypeNamespace:
+class EventTypeNamespace(AppsModuleLoaderMixin):
     _registry = {}
+    _loader_module_name = 'events'
 
     @classmethod
     def all(cls):
@@ -286,6 +305,9 @@ class EventTypeNamespace:
         event_type = EventType(namespace=self, name=name, label=label)
         self.event_types.append(event_type)
         return event_type
+
+    def get_event(self, name):
+        return EventType.get(name='{}.{}'.format(self.name, name))
 
     def get_event_types(self):
         return EventType.sort(event_type_list=self.event_types)

@@ -130,45 +130,52 @@ class ModelPermission:
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
+        StoredPermission = apps.get_model(
+            app_label='permissions', model_name='StoredPermission'
+        )
 
-        initalize_model = model not in cls._model_permissions and model != AccessControlList
+        initalize_model_for_events = model not in cls._model_permissions
+        is_excluded_subclass = issubclass(model, (AccessControlList, StoredPermission))
 
-        cls._model_permissions.setdefault(model, [])
-        try:
-            for permission in permissions:
-                cls._model_permissions[model].append(permission)
-        except TypeError as exception:
-            raise ImproperlyConfigured(
-                'Make sure the permissions argument to .the register() '
-                'method is an iterable. Current value: "{}"'.format(
-                    permissions
-                )
-            ) from exception
+        cls._model_permissions.setdefault(model, set())
 
-        if initalize_model:
+        if not is_excluded_subclass:
+            try:
+                cls._model_permissions[model].update(permissions)
+            except TypeError as exception:
+                raise ImproperlyConfigured(
+                    'Make sure the permissions argument to the .register() '
+                    'method is an iterable. Current value: "{}"'.format(
+                        permissions
+                    )
+                ) from exception
+
+        if initalize_model_for_events:
             # These need to happen only once.
-            if bind_link:
-                menu_list_facet.bind_links(
-                    links=(link_acl_list,), sources=(model,)
-                )
-
-            model.add_to_class(
-                name='acls', value=GenericRelation(
-                    to=AccessControlList, verbose_name=_('ACLs')
-                )
-            )
-
-            ModelCopy.add_fields_lazy(model=model, field_names=('acls',))
 
             # Allow the model to be used as the action_object for the ACL
             # events.
             EventModelRegistry.register(model=model)
 
-            ModelEventType.register(
-                event_types=(
-                    event_acl_created, event_acl_deleted, event_acl_edited,
-                ), model=model
-            )
+            if not is_excluded_subclass:
+                ModelEventType.register(
+                    event_types=(
+                        event_acl_created, event_acl_deleted, event_acl_edited
+                    ), model=model
+                )
+
+                if bind_link:
+                    menu_list_facet.bind_links(
+                        links=(link_acl_list,), sources=(model,)
+                    )
+
+                model.add_to_class(
+                    name='acls', value=GenericRelation(
+                        to=AccessControlList, verbose_name=_('ACLs')
+                    )
+                )
+
+                ModelCopy.add_fields_lazy(model=model, field_names=('acls',))
 
     @classmethod
     def register_field_query_function(cls, model, function):

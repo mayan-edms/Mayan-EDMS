@@ -11,5 +11,5 @@ permission_events_export = namespace.add_permission(
     label=_('Export the events of an object'), name='events_export'
 )
 permission_events_view = namespace.add_permission(
-    label=_('Access the events of an object'), name='events_view'
+    label=_('View the events of an object'), name='events_view'
 )

@@ -10,6 +10,7 @@ from mayan.apps.common.menus import (
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import ObjectLinkWidget, TwoStateWidget
 
+from .classes import EventTypeNamespace
 from .html_widgets import widget_event_actor_link, widget_event_type_link
 from .links import (
     link_current_user_events, link_current_user_events_clear,
@@ -31,6 +32,9 @@ class EventsApp(MayanAppConfig):
 
     def ready(self):
         super().ready()
+
+        EventTypeNamespace.load_modules()
+
         Action = apps.get_model(app_label='actstream', model_name='Action')
         Notification = self.get_model(model_name='Notification')
         StoredEventType = self.get_model(model_name='StoredEventType')

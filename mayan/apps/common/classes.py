@@ -33,7 +33,7 @@ class ModelCopy:
         return cls._registry[model]
 
     def __init__(
-        self, model, condition=None, bind_link=False, bind_acl_link=True,
+        self, model, acl_bind_link=True, condition=None, bind_link=False,
         excludes=None, register_permission=False, extra_kwargs=None
     ):
         self.condition = condition
@@ -62,7 +62,7 @@ class ModelCopy:
         if register_permission:
             ModelPermission.register(
                 model=model, permissions=(permission_object_copy,),
-                bind_link=bind_acl_link
+                bind_link=acl_bind_link
             )
 
         for entry in self.__class__._lazy.get(model, ()):

@@ -44,7 +44,9 @@ else:
 # Application definition
 
 INSTALLED_APPS = (
-    # Placed at the top so it can override any template
+    # Placed at the top so it can preload all events defined by apps.
+    'mayan.apps.events',
+    # Placed at the top so it can override any template.
     'mayan.apps.appearance',
     # Django
     'django.contrib.admin',
@@ -54,10 +56,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.forms',
-    # Allow using WhiteNoise in development
+    # Allow using WhiteNoise in development.
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    # 3rd party
+    # 3rd party.
     'actstream',
     'colorful',
     'corsheaders',
@@ -90,7 +92,6 @@ INSTALLED_APPS = (
     'mayan.apps.dependencies',
     'mayan.apps.django_gpg',
     'mayan.apps.dynamic_search',
-    'mayan.apps.events',
     'mayan.apps.file_caching',
     'mayan.apps.locales',
     'mayan.apps.lock_manager',
@@ -107,10 +108,10 @@ INSTALLED_APPS = (
     'mayan.apps.templating',
     'mayan.apps.testing',
     'mayan.apps.views',
-    # Project apps
+    # Project apps.
     'mayan.apps.announcements',
     'mayan.apps.motd',
-    # Document apps
+    # Document apps.
     'mayan.apps.cabinets',
     'mayan.apps.checkouts',
     'mayan.apps.document_comments',
@@ -131,7 +132,7 @@ INSTALLED_APPS = (
     'mayan.apps.sources',
     'mayan.apps.tags',
     'mayan.apps.web_links',
-    # Placed after rest_api to allow template overriding
+    # Placed after rest_api to allow template overriding.
     'drf_yasg'
 )
 

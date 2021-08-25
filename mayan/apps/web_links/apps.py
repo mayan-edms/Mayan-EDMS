@@ -50,7 +50,9 @@ class WebLinksApp(MayanAppConfig):
         ResolvedWebLink = self.get_model(model_name='ResolvedWebLink')
         WebLink = self.get_model(model_name='WebLink')
 
-        EventModelRegistry.register(model=ResolvedWebLink)
+        EventModelRegistry.register(
+            model=ResolvedWebLink, acl_bind_link=False
+        )
         EventModelRegistry.register(model=WebLink)
 
         ModelCopy(

@@ -14,7 +14,25 @@ from .icons import (
     icon_object_event_types_user_subscriptions_list,
     icon_user_notifications_list
 )
-from .permissions import permission_events_view
+from .permissions import (
+    permission_events_clear, permission_events_export, permission_events_view
+)
+
+
+def condition_can_be_cleared(context):
+    # Hidden import.
+    from mayan.apps.acls.classes import ModelPermission
+    return permission_events_clear.stored_permission in ModelPermission.get_for_instance(
+        instance=context['resolved_object']
+    )
+
+
+def condition_can_be_exported(context):
+    # Hidden import.
+    from mayan.apps.acls.classes import ModelPermission
+    return permission_events_export.stored_permission in ModelPermission.get_for_instance(
+        instance=context['resolved_object']
+    )
 
 
 def get_unread_notification_count(context):
@@ -49,12 +67,14 @@ link_events_for_object = Link(
     view='events:events_for_object'
 )
 link_events_for_object_clear = Link(
+    condition=condition_can_be_cleared,
     icon=icon_events_for_object_clear,
     kwargs=get_content_type_kwargs_factory(variable_name='resolved_object'),
     permissions=(permission_events_view,), text=_('Clear events'),
     view='events:events_for_object_clear'
 )
 link_events_for_object_export = Link(
+    condition=condition_can_be_exported,
     icon=icon_events_for_object_export,
     kwargs=get_content_type_kwargs_factory(variable_name='resolved_object'),
     permissions=(permission_events_view,), text=_('Export events'),
