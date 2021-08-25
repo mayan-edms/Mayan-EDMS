@@ -58,6 +58,7 @@ class DocumentVersionActiveView(ExternalObjectViewMixin, ConfirmView):
         }
 
     def view_action(self, form=None):
+        self.external_object._event_actor = self.request.user
         self.external_object.active_set()
         messages.success(
             message=_(
