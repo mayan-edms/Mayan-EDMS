@@ -1,7 +1,6 @@
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from .mixins import MessageTestMixin
-from ..models import Message
 
 
 class MessageModelTestCase(MessageTestMixin, BaseTestCase):

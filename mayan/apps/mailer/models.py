@@ -6,6 +6,7 @@ from furl import furl
 from django.conf import settings
 from django.core import mail
 from django.db import models
+from django.urls import reverse
 from django.utils.html import strip_tags
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
@@ -76,6 +77,9 @@ class UserMailer(models.Model):
         """
         self.backend_data = json.dumps(obj=data)
         self.save()
+
+    def get_absolute_url(self):
+        return reverse(viewname='mailer:user_mailer_list')
 
     def get_class_data(self):
         """
