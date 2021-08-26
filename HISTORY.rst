@@ -201,6 +201,11 @@
   - Use `MultipleObjectDeleteView` for the file content delete view.
   - Improve text string of the `DocumentFileContentDeleteView` view.
 
+- Document signatures app updates:
+
+  - Exclude trashed documents from the API.
+  - Add event checking to tests.
+  - Track user when uploading signature files.
 
 4.0.15 (2021-08-07)
 ===================
