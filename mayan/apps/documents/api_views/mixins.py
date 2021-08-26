@@ -36,6 +36,23 @@ class ParentObjectDocumentFileAPIViewMixin(ParentObjectDocumentAPIViewMixin):
         )
 
 
+class ParentObjectDocumentFilePageAPIViewMixin(
+    ParentObjectDocumentFileAPIViewMixin
+):
+    def get_document_file_page(self, permission=None):
+        queryset = self.get_document_file().pages.all()
+
+        if permission:
+            queryset = AccessControlList.objects.restrict_queryset(
+                permission=permission, queryset=queryset,
+                user=self.request.user
+            )
+
+        return get_object_or_404(
+            queryset=queryset, pk=self.kwargs['document_file_page_id']
+        )
+
+
 class ParentObjectDocumentTypeAPIViewMixin:
     def get_document_type(self, permission=None):
         queryset = DocumentType.objects.all()
