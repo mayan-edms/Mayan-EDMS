@@ -28,7 +28,7 @@ class APIDocumentSignatureViewMixin:
     def get_document_queryset(self):
         return AccessControlList.objects.restrict_queryset(
             permission=self._document_view_permissions[self.request.method],
-            queryset=Document.objects.all(),
+            queryset=Document.valid.all(),
             user=self.request.user
         )
 

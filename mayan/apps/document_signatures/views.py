@@ -324,7 +324,10 @@ class DocumentFileSignatureUploadView(
         }
 
     def get_instance_extra_data(self):
-        return {'document_file': self.external_object}
+        return {
+            '_event_actor': self.request.user,
+            'document_file': self.external_object
+        }
 
     def get_post_action_redirect(self):
         return reverse(

@@ -78,6 +78,32 @@ class DetachedSignatureDocumentAPIViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
+    def test_trashed_document_signature_detached_delete_api_view_with_access(self):
+        self._upload_test_document()
+        self._upload_test_detached_signature()
+
+        signatures = self.test_document.file_latest.signatures.count()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_signature_delete
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_signature_detached_delete_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.assertEqual(
+            self.test_document.file_latest.signatures.count(),
+            signatures
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_document_signature_detached_detail_api_view_no_permission(self):
         self._upload_test_document()
         self._upload_test_detached_signature()
@@ -111,6 +137,25 @@ class DetachedSignatureDocumentAPIViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
+    def test_trashed_document_signature_detached_detail_api_view_with_access(self):
+        self._upload_test_document()
+        self._upload_test_detached_signature()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_signature_view
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_signature_detached_detail_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_document_signature_detached_list_api_view_no_permission(self):
         self._upload_test_document()
         self._upload_test_detached_signature()
@@ -139,6 +184,25 @@ class DetachedSignatureDocumentAPIViewTestCase(
         self.assertEqual(
             response.data['results'][0]['key_id'], TEST_KEY_PUBLIC_ID
         )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_trashed_document_signature_detached_list_api_view_with_access(self):
+        self._upload_test_document()
+        self._upload_test_detached_signature()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_signature_view
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_signature_detached_list_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -246,6 +310,36 @@ class DetachedSignatureDocumentAPIViewTestCase(
         self.assertEqual(events[0].target, self.test_document_file)
         self.assertEqual(events[0].verb, event_detached_signature_created.id)
 
+    def test_trashed_document_signature_detached_sign_api_view_with_full_access(self):
+        self._upload_test_document()
+        self._create_test_key_private()
+
+        signatures = self.test_document.file_latest.signatures.count()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_sign_detached
+        )
+        self.grant_access(
+            obj=self.test_key_private,
+            permission=permission_key_sign
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_signature_detached_sign_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.assertEqual(
+            self.test_document.file_latest.signatures.count(),
+            signatures
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_document_signature_detached_upload_api_view_no_permission(self):
         self._upload_test_document()
         self._create_test_key_private()
@@ -297,6 +391,32 @@ class DetachedSignatureDocumentAPIViewTestCase(
         self.assertEqual(events[0].target, self.test_document_file)
         self.assertEqual(events[0].verb, event_detached_signature_uploaded.id)
 
+    def test_trashed_document_signature_detached_upload_api_view_with_access(self):
+        self._upload_test_document()
+        self._create_test_key_private()
+
+        signatures = self.test_document.file_latest.signatures.count()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_signature_upload
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_signature_detached_upload_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.assertEqual(
+            self.test_document.file_latest.signatures.count(),
+            signatures
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
 
 class EmbeddedSignatureDocumentAPIViewTestCase(
     DocumentTestMixin, EmbeddedSignatureAPIViewTestMixin,
@@ -337,6 +457,25 @@ class EmbeddedSignatureDocumentAPIViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
+    def test_trashed_document_signature_embedded_detail_api_view_with_access(self):
+        self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
+        self._upload_test_document()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_signature_view
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_signature_embedded_detail_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_document_signature_embedded_list_api_view_no_permission(self):
         self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
         self._upload_test_document()
@@ -365,6 +504,25 @@ class EmbeddedSignatureDocumentAPIViewTestCase(
         self.assertEqual(
             response.data['results'][0]['key_id'], TEST_KEY_PUBLIC_ID
         )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_trashed_document_signature_embedded_list_api_view_with_access(self):
+        self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
+        self._upload_test_document()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_signature_view
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_signature_embedded_list_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -496,3 +654,33 @@ class EmbeddedSignatureDocumentAPIViewTestCase(
         self.assertEqual(events[4].actor, self._test_case_user)
         self.assertEqual(events[4].target, self.test_document_file)
         self.assertEqual(events[4].verb, event_embedded_signature_created.id)
+
+    def test_trashed_document_signature_embedded_sign_api_view_with_full_access(self):
+        self._upload_test_document()
+        self._create_test_key_private()
+
+        signatures = self.test_document.file_latest.signatures.count()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_sign_embedded
+        )
+        self.grant_access(
+            obj=self.test_key_private,
+            permission=permission_key_sign
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_signature_embedded_sign_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.assertEqual(
+            self.test_document.file_latest.signatures.count(),
+            signatures
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
