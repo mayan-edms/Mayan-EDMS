@@ -41,14 +41,14 @@ class APIDocumentMetadataListView(
     ordering_fields = ('id', 'metadata_type', 'value')
     serializer_class = DocumentMetadataSerializer
 
-    def get_queryset(self):
-        return self.external_object.metadata.all()
-
     def get_instance_extra_data(self):
         return {
             '_event_actor': self.request.user,
             'document': self.external_object
         }
+
+    def get_queryset(self):
+        return self.external_object.metadata.all()
 
     def perform_create(self, serializer):
         if 'metadata_type_id' in serializer.validated_data:
