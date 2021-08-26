@@ -192,6 +192,15 @@
   - Modernize `APIObjectEventListView` to use latest interfaces
     and mixins.
 
+- Document parsing app updates:
+
+  - Update API to latest internal interfaces.
+  - Add testing for multiple document file content delete views.
+  - Speed up tests.
+  - Add event checking to tests.
+  - Use `MultipleObjectDeleteView` for the file content delete view.
+  - Improve text string of the `DocumentFileContentDeleteView` view.
+
 
 4.0.15 (2021-08-07)
 ===================

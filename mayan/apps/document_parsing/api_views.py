@@ -1,8 +1,4 @@
-from django.shortcuts import get_object_or_404
-
-from rest_framework.response import Response
-
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.api_views.mixins import ParentObjectDocumentFilePageAPIViewMixin
 from mayan.apps.rest_api import generics
 
 from .models import DocumentFilePageContent, DocumentTypeSettings
@@ -14,38 +10,28 @@ from .serializers import (
 )
 
 
-class APIDocumentFilePageContentView(generics.RetrieveAPIView):
+class APIDocumentFilePageContentView(
+    ParentObjectDocumentFilePageAPIViewMixin, generics.RetrieveAPIView
+):
     """
-    Returns the content of the selected document page.
+    get: Returns the content of the selected document page.
     """
-    lookup_url_kwarg = 'document_file_page_id'
     mayan_object_permissions = {
         'GET': (permission_document_file_content_view,),
     }
     serializer_class = DocumentFilePageContentSerializer
 
-    def get_document(self):
-        return get_object_or_404(klass=Document, pk=self.kwargs['document_id'])
-
-    def get_document_file(self):
-        return get_object_or_404(
-            klass=self.get_document().files.all(),
-            pk=self.kwargs['document_file_id']
+    def get_object(self):
+        document_file_page = self.get_document_file_page(
+            permission=self.mayan_object_permissions[self.request.method][0]
         )
 
-    def get_queryset(self):
-        return self.get_document_file().pages.all()
-
-    def retrieve(self, request, *args, **kwargs):
-        instance = self.get_object()
-
         try:
-            content = instance.content
-        except DocumentFilePageContent.DoesNotExist:
-            content = DocumentFilePageContent.objects.none()
-
-        serializer = self.get_serializer(content)
-        return Response(serializer.data)
+            return document_file_page.ocr_content
+        except DocumentFilePageOCRContent.DoesNotExist:
+            return DocumentFilePageOCRContent(
+                document_file_page=document_file_page
+            )
 
 
 class APIDocumentTypeParsingSettingsView(generics.RetrieveUpdateAPIView):

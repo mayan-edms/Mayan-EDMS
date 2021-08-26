@@ -28,11 +28,19 @@ class DocumentFileContentTestMixin:
 
 
 class DocumentFileContentViewTestMixin:
-    def _request_test_document_file_content_delete_view(self):
+    def _request_test_document_file_content_delete_single_view(self):
         return self.post(
-            viewname='document_parsing:document_file_content_delete',
+            viewname='document_parsing:document_file_content_delete_single',
             kwargs={
                 'document_file_id': self.test_document_file.pk
+            }
+        )
+
+    def _request_test_document_file_content_delete_multiple_view(self):
+        return self.post(
+            viewname='document_parsing:document_file_content_delete_multiple',
+            data={
+                'id_list': self.test_document_file.pk
             }
         )
 
@@ -82,10 +90,9 @@ class DocumentFileContentViewTestMixin:
         )
 
 
-class DocumentParsingAPITestMixin:
+class DocumentFilePageContentAPITestMixin:
     def _request_document_file_page_content_api_view(self):
         return self.get(
-
             viewname='rest_api:document-file-page-content-view', kwargs={
                 'document_id': self.test_document.pk,
                 'document_file_id': self.test_document_file.pk,

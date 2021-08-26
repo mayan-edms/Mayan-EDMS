@@ -10,8 +10,9 @@ from mayan.apps.documents.models.document_file_models import DocumentFile
 from mayan.apps.documents.models.document_file_page_models import DocumentFilePage
 from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.views.generics import (
-    FormView, MultipleObjectConfirmActionView, SingleObjectDetailView,
-    SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
+    FormView, MultipleObjectConfirmActionView, MultipleObjectDeleteView,
+    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView,
+    SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
@@ -24,28 +25,29 @@ from .permissions import (
 from .utils import get_document_file_content
 
 
-class DocumentFileContentDeleteView(MultipleObjectConfirmActionView):
+class DocumentFileContentDeleteView(MultipleObjectDeleteView):
+    error_message = _(
+        'Error deleting document version content "%(instance)s"; %(exception)s'
+    )
     object_permission = permission_document_file_parse
     pk_url_kwarg = 'document_file_id'
     source_queryset = DocumentFile.valid
-    success_message = 'Deleted parsed content of %(count)d document file.'
-    success_message_plural = 'Deleted parsed content of %(count)d document files.'
-
-    def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
-            'title': ungettext(
-                singular='Delete the parsed content of the selected document file?',
-                plural='Delete the parsed content of the selected document files?',
-                number=queryset.count()
-            )
-        }
-
-        if queryset.count() == 1:
-            result['object'] = queryset.first()
-
-        return result
+    success_message_single = _(
+        'Content of "%(object)s" deleted successfully.'
+    )
+    success_message_singular = _(
+        'Content of %(count)d document version deleted successfully.'
+    )
+    success_message_plural = _(
+        'Content of %(count)d document versions deleted successfully.'
+    )
+    title_single = _('Delete the content of: %(object)s.')
+    title_singular = _(
+        'Delete the content of the %(count)d selected document version.'
+    )
+    title_plural = _(
+        'Delete the content of the %(count)d selected document versions.'
+    )
 
     def object_action(self, form, instance):
         DocumentFilePageContent.objects.delete_content_for(
