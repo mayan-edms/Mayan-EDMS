@@ -143,7 +143,7 @@ api_urls = [
         view=APINotificationListView.as_view()
     ),
     url(
-        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/events/$',
+        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/events/$',
         name='object-event-list', view=APIObjectEventListView.as_view()
     ),
 ]
