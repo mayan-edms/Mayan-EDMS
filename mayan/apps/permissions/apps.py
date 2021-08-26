@@ -10,7 +10,8 @@ from mayan.apps.acls.permissions import (
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_list_facet, menu_object, menu_related, menu_secondary, menu_setup
+    menu_list_facet, menu_multi_item, menu_object, menu_related,
+    menu_secondary, menu_setup
 )
 from mayan.apps.common.signals import signal_perform_upgrade
 from mayan.apps.dashboards.dashboards import dashboard_main
@@ -23,8 +24,9 @@ from .dashboard_widgets import DashboardWidgetRoleTotal
 from .events import event_role_created, event_role_edited
 from .handlers import handler_permission_initialize, handler_purge_permissions
 from .links import (
-    link_group_roles, link_role_create, link_role_delete, link_role_edit,
-    link_role_groups, link_role_list, link_role_permissions
+    link_group_roles, link_role_create, link_role_delete_single,
+    link_role_delete_multiple, link_role_edit, link_role_groups,
+    link_role_list, link_role_permissions
 )
 from .methods import method_group_roles_add, method_group_roles_remove
 from .permissions import (
@@ -102,19 +104,14 @@ class PermissionsApp(MayanAppConfig):
             widget=DashboardWidgetRoleTotal, order=99
         )
 
-        menu_list_facet.bind_links(
-            links=(
-                link_role_groups, link_role_permissions
-            ), sources=(Role,)
-        )
+        menu_setup.bind_links(links=(link_role_list,))
+
+        # Group
+
         menu_list_facet.bind_links(
             links=(link_group_roles,), sources=(Group,)
         )
-        menu_object.bind_links(
-            links=(
-                link_role_delete, link_role_edit
-            ), sources=(Role,)
-        )
+
         menu_related.bind_links(
             links=(link_role_list,), sources=(
                 'user_management:group_multiple_delete',
@@ -122,15 +119,41 @@ class PermissionsApp(MayanAppConfig):
                 Group
             )
         )
+
+        # Role
+
+        menu_list_facet.bind_links(
+            links=(
+                link_role_groups, link_role_permissions
+            ), sources=(Role,)
+        )
+
+        menu_multi_item.bind_links(
+            links=(link_role_delete_multiple,),
+            sources=('permissions:role_list',)
+        )
+
+        menu_object.bind_links(
+            links=(
+                link_role_delete_single, link_role_edit
+            ), sources=(Role,)
+        )
+
         menu_related.bind_links(
-            links=(link_group_list,),
-            sources=(Role, 'permissions:role_create', 'permissions:role_list')
+            links=(link_group_list,), sources=(
+                'permissions:role_create',
+                'permissions:role_delete_multiple',
+                'permissions:role_list', Role
+            )
         )
+
         menu_secondary.bind_links(
-            links=(link_role_list, link_role_create),
-            sources=(Role, 'permissions:role_create', 'permissions:role_list')
+            links=(link_role_list, link_role_create), sources=(
+                'user_management:role_create',
+                'user_management:role_delete_multiple',
+                'user_management:role_list', Role
+            )
         )
-        menu_setup.bind_links(links=(link_role_list,))
 
         # Initialize the permissions post migrate of this app for new
         # installations

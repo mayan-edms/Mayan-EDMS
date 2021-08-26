@@ -6,8 +6,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.user_management.permissions import permission_group_edit
 from mayan.apps.views.generics import (
-    AddRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
+    AddRemoveView, MultipleObjectDeleteView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectDetailView, SingleObjectEditView,
+    SingleObjectListView
 )
 
 from .forms import StoredPermissionDetailForm
@@ -55,11 +56,18 @@ class RoleCreateView(SingleObjectCreateView):
         return {'_event_actor': self.request.user}
 
 
-class RoleDeleteView(SingleObjectDeleteView):
+class RoleDeleteView(MultipleObjectDeleteView):
+    error_message = _('Error deleting role "%(instance)s"; %(exception)s')
     model = Role
     object_permission = permission_role_delete
     pk_url_kwarg = 'role_id'
     post_action_redirect = reverse_lazy(viewname='permissions:role_list')
+    success_message_single = _('Role "%(object)s" deleted successfully.')
+    success_message_singular = _('%(count)d role deleted successfully.')
+    success_message_plural = _('%(count)d roles deleted successfully.')
+    title_single = _('Delete role: %(object)s.')
+    title_singular = _('Delete the %(count)d selected role.')
+    title_plural = _('Delete the %(count)d selected roles.')
 
 
 class RoleEditView(SingleObjectEditView):

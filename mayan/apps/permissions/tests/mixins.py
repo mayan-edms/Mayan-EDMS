@@ -86,7 +86,7 @@ class RoleAPIViewTestMixin:
 
         return response
 
-    def _request_test_role_delete_api_view(self):
+    def _request_test_role_delete_single_api_view(self):
         return self.delete(
             viewname='rest_api:role-detail', kwargs={
                 'role_id': self.test_role.pk
@@ -283,10 +283,17 @@ class RoleViewTestMixin:
 
         return response
 
-    def _request_test_role_delete_view(self):
+    def _request_test_role_delete_single_view(self):
         return self.post(
-            viewname='permissions:role_delete', kwargs={
+            viewname='permissions:role_delete_single', kwargs={
                 'role_id': self.test_role.pk
+            }
+        )
+
+    def _request_test_role_delete_multiple_view(self):
+        return self.post(
+            viewname='permissions:role_delete_multiple', data={
+                'id_list': self.test_role.pk
             }
         )
 

@@ -24,7 +24,7 @@ urlpatterns = [
         view=RoleCreateView.as_view()
     ),
     url(
-        regex=r'^roles/(?P<role_id>\d+)/delete/$', name='role_delete',
+        regex=r'^roles/(?P<role_id>\d+)/delete/$', name='role_delete_single',
         view=RoleDeleteView.as_view()
     ),
     url(
@@ -38,6 +38,10 @@ urlpatterns = [
     url(
         regex=r'^roles/(?P<role_id>\d+)/permissions/$',
         name='role_permissions', view=RolePermissionsView.as_view()
+    ),
+    url(
+        regex=r'^roles/multiple/delete/$', name='role_delete_multiple',
+        view=RoleDeleteView.as_view()
     ),
     url(
         regex=r'^stored_permissions/(?P<stored_permission_id>\d+)/$',

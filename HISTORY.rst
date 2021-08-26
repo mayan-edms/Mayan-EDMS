@@ -166,6 +166,7 @@
 
 - Enable event subscriptions for workflow states, workflow state actions,
   and workflow transitions.
+- Support deleting multiple roles in a single action.
 
 4.0.15 (2021-08-07)
 ===================
