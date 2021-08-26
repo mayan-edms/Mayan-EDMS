@@ -111,10 +111,19 @@ class DocumentVersionOCRViewTestMixin:
             }
         )
 
-    def _request_test_document_version_ocr_content_delete_view(self):
+    def _request_test_document_version_ocr_content_delete_single_view(self):
         return self.post(
-            viewname='ocr:document_version_ocr_content_delete', kwargs={
+            viewname='ocr:document_version_ocr_content_delete_single',
+            kwargs={
                 'document_version_id': self.test_document_version.pk
+            }
+        )
+
+    def _request_test_document_version_ocr_content_delete_multiple_view(self):
+        return self.post(
+            viewname='ocr:document_version_ocr_content_delete_multiple',
+            data={
+                'id_list': self.test_document_version.pk
             }
         )
 
@@ -125,16 +134,16 @@ class DocumentVersionOCRViewTestMixin:
             }
         )
 
-    def _request_test_document_version_ocr_submit_view(self):
+    def _request_test_document_version_ocr_submit_single_view(self):
         return self.post(
-            viewname='ocr:document_version_ocr_submit', kwargs={
+            viewname='ocr:document_version_ocr_submit_single', kwargs={
                 'document_version_id': self.test_document_version.pk
             }
         )
 
-    def _request_test_document_version_multiple_ocr_submit_view(self):
+    def _request_test_document_version_ocr_submit_multiple_view(self):
         return self.post(
-            viewname='ocr:document_version_multiple_ocr_submit', data={
+            viewname='ocr:document_version_ocr_submit_multiple', data={
                 'id_list': self.test_document_version.pk,
             }
         )

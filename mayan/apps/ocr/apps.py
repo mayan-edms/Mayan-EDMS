@@ -27,11 +27,12 @@ from .links import (
     link_document_version_page_ocr_content_detail_view,
     link_document_version_page_ocr_content_edit_view,
     link_document_version_ocr_content_view,
-    link_document_version_ocr_content_delete,
-    link_document_version_multiple_ocr_content_delete,
+    link_document_version_ocr_content_delete_single,
+    link_document_version_ocr_content_delete_multiple,
     link_document_version_ocr_download,
-    link_document_version_ocr_errors_list, link_document_version_ocr_submit,
-    link_document_version_multiple_ocr_submit,
+    link_document_version_ocr_errors_list,
+    link_document_version_ocr_submit_single,
+    link_document_version_ocr_submit_multiple,
     link_document_type_ocr_settings,
     link_document_type_submit, link_entry_list
 )
@@ -152,24 +153,58 @@ class OCRApp(MayanAppConfig):
             attribute='result'
         )
 
+        # Document type
+
+        menu_list_facet.bind_links(
+            links=(link_document_type_ocr_settings,), sources=(DocumentType,)
+        )
+
+        # Document version
+
         menu_list_facet.bind_links(
             links=(link_document_version_ocr_content_view,),
             sources=(DocumentVersion,)
         )
+
+        menu_multi_item.bind_links(
+            links=(
+                link_document_version_ocr_content_delete_multiple,
+                link_document_version_ocr_submit_multiple
+            ), sources=(DocumentVersion,)
+        )
+
+        menu_secondary.bind_links(
+            links=(
+                link_document_version_ocr_content_delete_single,
+                link_document_version_ocr_download,
+                link_document_version_ocr_errors_list,
+                link_document_version_ocr_submit_single
+            ),
+            sources=(
+                'ocr:document_version_ocr_content_view_delete',
+                'ocr:document_version_ocr_content_view',
+                'ocr:document_version_ocr_download',
+                'ocr:document_version_ocr_error_list',
+                'ocr:document_version_ocr_submit_single'
+            )
+        )
+
+        menu_secondary.bind_links(
+            links=(link_entry_list,),
+            sources=(
+                'ocr:entry_list', 'ocr:entry_delete_multiple',
+                'ocr:entry_re_queue_multiple', DocumentVersionOCRError
+            )
+        )
+
+        # Document version page
+
         menu_list_facet.bind_links(
             links=(
                 link_document_version_page_ocr_content_detail_view,
             ), sources=(DocumentVersionPage,)
         )
-        menu_list_facet.bind_links(
-            links=(link_document_type_ocr_settings,), sources=(DocumentType,)
-        )
-        menu_multi_item.bind_links(
-            links=(
-                link_document_version_multiple_ocr_content_delete,
-                link_document_version_multiple_ocr_submit,
-            ), sources=(DocumentVersion,)
-        )
+
         menu_secondary.bind_links(
             links=(
                 link_document_version_page_ocr_content_edit_view,
@@ -178,28 +213,7 @@ class OCRApp(MayanAppConfig):
                 'ocr:document_version_page_ocr_content_edit_view'
             )
         )
-        menu_secondary.bind_links(
-            links=(
-                link_document_version_ocr_content_delete,
-                link_document_version_ocr_errors_list,
-                link_document_version_ocr_download,
-                link_document_version_ocr_submit
-            ),
-            sources=(
-                'ocr:document_version_ocr_content_view_delete',
-                'ocr:document_version_ocr_content_view',
-                'ocr:document_version_ocr_download',
-                'ocr:document_version_ocr_error_list',
-                'ocr:document_version_ocr_submit',
-            )
-        )
-        menu_secondary.bind_links(
-            links=(link_entry_list,),
-            sources=(
-                'ocr:entry_list', 'ocr:entry_delete_multiple',
-                'ocr:entry_re_queue_multiple', DocumentVersionOCRError
-            )
-        )
+
         menu_tools.bind_links(
             links=(
                 link_document_type_submit, link_entry_list

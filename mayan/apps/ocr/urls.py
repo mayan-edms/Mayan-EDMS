@@ -33,12 +33,12 @@ urlpatterns_document_versions = [
     ),
     url(
         regex=r'^documents/versions/(?P<document_version_id>\d+)/content/delete/$',
-        name='document_version_ocr_content_delete',
+        name='document_version_ocr_content_delete_single',
         view=DocumentVersionOCRContentDeleteView.as_view()
     ),
     url(
         regex=r'^documents/versions/multiple/content/delete/$',
-        name='document_version_multiple_ocr_content_delete',
+        name='document_version_ocr_content_delete_multiple',
         view=DocumentVersionOCRContentDeleteView.as_view()
     ),
     url(
@@ -53,12 +53,12 @@ urlpatterns_document_versions = [
     ),
     url(
         regex=r'^documents/versions/(?P<document_version_id>\d+)/submit/$',
-        name='document_version_ocr_submit',
+        name='document_version_ocr_submit_single',
         view=DocumentVersionOCRSubmitView.as_view()
     ),
     url(
         regex=r'^documents/versions/multiple/submit/$',
-        name='document_version_multiple_ocr_submit',
+        name='document_version_ocr_submit_multiple',
         view=DocumentVersionOCRSubmitView.as_view()
     ),
     url(

@@ -9,8 +9,9 @@ from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.documents.models.document_version_models import DocumentVersion
 from mayan.apps.documents.models.document_version_page_models import DocumentVersionPage
 from mayan.apps.views.generics import (
-    FormView, MultipleObjectConfirmActionView, SingleObjectDetailView,
-    SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
+    FormView, MultipleObjectConfirmActionView, MultipleObjectDeleteView,
+    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView,
+    SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
@@ -27,28 +28,19 @@ from .permissions import (
 from .utils import get_instance_ocr_content
 
 
-class DocumentVersionOCRContentDeleteView(MultipleObjectConfirmActionView):
+class DocumentVersionOCRContentDeleteView(MultipleObjectDeleteView):
+    error_message = _(
+        'Error deleting document version OCR "%(instance)s"; %(exception)s'
+    )
     object_permission = permission_document_version_ocr
     pk_url_kwarg = 'document_version_id'
     source_queryset = DocumentVersion.valid
-    success_message = 'Deleted OCR content of %(count)d document version.'
-    success_message_plural = 'Deleted OCR content of %(count)d document versions.'
-
-    def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
-            'title': ungettext(
-                singular='Delete the OCR content of the selected document version?',
-                plural='Delete the OCR content of the selected document versions?',
-                number=queryset.count()
-            )
-        }
-
-        if queryset.count() == 1:
-            result['object'] = queryset.first()
-
-        return result
+    success_message_single = _('OCR content of "%(object)s" deleted successfully.')
+    success_message_singular = _('OCR content of %(count)d document version deleted successfully.')
+    success_message_plural = _('OCR content of %(count)d document versions deleted successfully.')
+    title_single = _('Delete the OCR content of: %(object)s.')
+    title_singular = _('Delete the OCR content of the %(count)d selected document version.')
+    title_plural = _('Delete the OCR content of the %(count)d selected document versions.')
 
     def object_action(self, form, instance):
         DocumentVersionPageOCRContent.objects.delete_content_for(
