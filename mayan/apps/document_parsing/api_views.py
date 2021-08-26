@@ -27,9 +27,11 @@ class APIDocumentFilePageContentView(
         )
 
         try:
-            return document_file_page.ocr_content
-        except DocumentFilePageOCRContent.DoesNotExist:
-            return DocumentFilePageOCRContent(
+            return DocumentFilePageContent.objects.get(
+                document_file_page=document_file_page
+            )
+        except DocumentFilePageContent.DoesNotExist:
+            return DocumentFilePageContent(
                 document_file_page=document_file_page
             )
 
