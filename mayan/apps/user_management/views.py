@@ -6,8 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.views.generics import (
     AddRemoveView, MultipleObjectDeleteView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectDetailView, SingleObjectEditView,
-    SingleObjectListView
+    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
@@ -64,8 +63,8 @@ class GroupCreateView(SingleObjectCreateView):
 
 class GroupDeleteView(MultipleObjectDeleteView):
     error_message = _('Error deleting group "%(instance)s"; %(exception)s')
-    object_permission = permission_group_delete
     model = Group
+    object_permission = permission_group_delete
     pk_url_kwarg = 'group_id'
     post_action_redirect = reverse_lazy(
         viewname='user_management:group_list'
@@ -89,7 +88,6 @@ class GroupDetailView(SingleObjectDetailView):
             'object': self.object,
             'title': _('Details of group: %s') % self.object
         }
-
 
 
 class GroupEditView(SingleObjectEditView):
