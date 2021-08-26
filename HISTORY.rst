@@ -167,6 +167,31 @@
 - Enable event subscriptions for workflow states, workflow state actions,
   and workflow transitions.
 - Support deleting multiple roles in a single action.
+- OCR app updates:
+
+  - Use ``MultipleObjectDeleteView`` for the delete view.
+  - Rename single and multiple delete view names.
+  - Improve tests.
+
+- Document comments app API updates:
+
+  - Modernize code to use latest internal interfaces.
+  - Exclude trashed documents.
+  - Reduce serializers.
+  - Return error 404 on insufficient access.
+
+- Document indexing API updates:
+
+  - Exclude trashed documents.
+  - Split tests.
+  - Add event checking to remaining tests.
+
+- Events app API updates:
+
+  - Return error 404 on insufficient permissions.
+  - Modernize `APIObjectEventListView` to use latest interfaces
+    and mixins.
+
 
 4.0.15 (2021-08-07)
 ===================
