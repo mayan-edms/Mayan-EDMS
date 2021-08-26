@@ -126,7 +126,9 @@ class APIIndexInstanceNodeDocumentListView(
         )
 
     def get_queryset(self):
-        return self.get_node().documents.all()
+        return Document.valid.filter(
+            pk__in=self.get_node().documents.values('pk')
+        )
 
 
 class APIIndexTemplateListView(generics.ListCreateAPIView):
