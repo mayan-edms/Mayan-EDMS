@@ -207,6 +207,24 @@
   - Add event checking to tests.
   - Track user when uploading signature files.
 
+- Workflows app updates:
+
+  - Split API views.
+  - Add trashed document test.
+  - Code style updates.
+
+- Smart link app refactor:
+
+  - Exclude trashed documents from API.
+  - Improve existing tests.
+  - Add additional tests.
+  - Rebuild the resolved smart link API and serializer.
+  - Add a new permission to view resolved smart links. This permission needs
+    to be granted for the smart link and for the document/document type.
+  - Update API to return error 404 on insufficient access.
+  - Remove unused test mixins.
+  - Split view and API test modules.
+
 4.0.15 (2021-08-07)
 ===================
 - Improve the document version export API endpoint.

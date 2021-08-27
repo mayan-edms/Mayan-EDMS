@@ -1,15 +1,16 @@
 from django.conf.urls import url
 
 from .api_views import (
-    APIResolvedSmartLinkView, APIResolvedSmartLinkDocumentListView,
-    APIResolvedSmartLinkListView, APISmartLinkListView, APISmartLinkDetailView,
+    APIDocumentResolvedSmartLinkDetailView,
+    APIDocumentResolvedSmartLinkDocumentListView,
+    APIDocumentResolvedSmartLinkListView, APISmartLinkListView, APISmartLinkDetailView,
     APISmartLinkConditionListView, APISmartLinkConditionView,
     APISmartLinkDocumentTypeAddView, APISmartLinkDocumentTypeListView,
     APISmartLinkDocumentTypeRemoveView
 )
 from .views import (
-    DocumentSmartLinkListView, DocumentTypeSmartLinkAddRemoveView,
-    ResolvedSmartLinkView, SmartLinkConditionListView,
+    DocumentResolvedSmartLinkListView, DocumentTypeSmartLinkAddRemoveView,
+    DocumentResolvedSmartLinkDocumentListView, SmartLinkConditionListView,
     SmartLinkConditionCreateView, SmartLinkConditionEditView,
     SmartLinkConditionDeleteView, SmartLinkCreateView, SmartLinkDeleteView,
     SmartLinkDocumentTypeAddRemoveView, SmartLinkEditView, SmartLinkListView
@@ -19,11 +20,11 @@ urlpatterns = [
     url(
         regex=r'^documents/(?P<document_id>\d+)/smart_links/$',
         name='smart_link_instances_for_document',
-        view=DocumentSmartLinkListView.as_view()
+        view=DocumentResolvedSmartLinkListView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/smart_links/(?P<smart_link_id>\d+)/$',
-        name='smart_link_instance_view', view=ResolvedSmartLinkView.as_view()
+        name='smart_link_instance_view', view=DocumentResolvedSmartLinkDocumentListView.as_view()
     ),
     url(
         regex=r'^document_types/(?P<document_type_id>\d+)/smart_links/$',
@@ -110,16 +111,16 @@ api_urls = [
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/resolved_smart_links/$',
         name='resolvedsmartlink-list',
-        view=APIResolvedSmartLinkListView.as_view()
+        view=APIDocumentResolvedSmartLinkListView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_id>[0-9]+)/resolved_smart_links/(?P<smart_link_id>[0-9]+)/$',
+        regex=r'^documents/(?P<document_id>[0-9]+)/resolved_smart_links/(?P<resolved_smart_link_id>[0-9]+)/$',
         name='resolvedsmartlink-detail',
-        view=APIResolvedSmartLinkView.as_view()
+        view=APIDocumentResolvedSmartLinkDetailView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_id>[0-9]+)/resolved_smart_links/(?P<smart_link_id>[0-9]+)/documents/$',
+        regex=r'^documents/(?P<document_id>[0-9]+)/resolved_smart_links/(?P<resolved_smart_link_id>[0-9]+)/documents/$',
         name='resolvedsmartlinkdocument-list',
-        view=APIResolvedSmartLinkDocumentListView.as_view()
+        view=APIDocumentResolvedSmartLinkDocumentListView.as_view()
     )
 ]

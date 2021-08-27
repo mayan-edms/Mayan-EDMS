@@ -84,7 +84,7 @@ class SmartLink(ExtraDataModelMixin, models.Model):
         else:
             return None
 
-    def get_linked_document_for(self, document):
+    def get_linked_documents_for(self, document):
         """
         Execute the corresponding smart links conditions for the document
         provided and return the resulting document queryset.
@@ -116,13 +116,15 @@ class SmartLink(ExtraDataModelMixin, models.Model):
                 smart_link_query |= condition_query
 
         if smart_link_query:
-            return Document.objects.filter(smart_link_query)
+            queryset = Document.objects.filter(smart_link_query)
         else:
-            return Document.objects.none()
+            queryset = Document.objects.none()
+
+        return Document.valid.filter(pk__in=queryset.values('pk'))
 
     def resolve_for(self, document):
         return ResolvedSmartLink(
-            smart_link=self, queryset=self.get_linked_document_for(
+            smart_link=self, queryset=self.get_linked_documents_for(
                 document=document
             )
         )

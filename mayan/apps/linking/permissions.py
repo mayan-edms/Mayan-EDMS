@@ -4,6 +4,9 @@ from mayan.apps.permissions import PermissionNamespace
 
 namespace = PermissionNamespace(label=_('Smart links'), name='linking')
 
+permission_resolved_smart_link_view = namespace.add_permission(
+    label=_('View resolved smart links'), name='resolved_smart_link_view'
+)
 permission_smart_link_create = namespace.add_permission(
     label=_('Create new smart links'), name='smart_link_create'
 )

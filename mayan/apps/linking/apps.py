@@ -25,8 +25,8 @@ from .links import (
     link_smart_link_setup
 )
 from .permissions import (
-    permission_smart_link_delete, permission_smart_link_edit,
-    permission_smart_link_view
+    permission_resolved_smart_link_view, permission_smart_link_delete,
+    permission_smart_link_edit, permission_smart_link_view
 )
 
 
@@ -59,17 +59,17 @@ class LinkingApp(MayanAppConfig):
             model=SmartLinkCondition
         ).add_fields(
             field_names=(
-                'smart_link', 'inclusion', 'foreign_document_data', 'operator', 'expression',
-                'negated', 'enabled',
+                'enabled', 'expression', 'foreign_document_data',
+                'inclusion', 'negated', 'operator', 'smart_link'
             )
         )
         ModelCopy(
             model=SmartLink, bind_link=True, register_permission=True
         ).add_fields(
             field_names=(
-                'label', 'dynamic_label', 'enabled', 'document_types',
-                'conditions'
-            ),
+                'conditions', 'dynamic_label', 'document_types', 'enabled',
+                'label'
+            )
         )
 
         ModelEventType.register(
@@ -77,8 +77,14 @@ class LinkingApp(MayanAppConfig):
         )
 
         ModelPermission.register(
+            model=Document, permissions=(
+                permission_resolved_smart_link_view,
+            )
+        )
+        ModelPermission.register(
             model=SmartLink, permissions=(
                 permission_acl_edit, permission_acl_view,
+                permission_resolved_smart_link_view,
                 permission_smart_link_delete, permission_smart_link_edit,
                 permission_smart_link_view
             )
@@ -122,29 +128,29 @@ class LinkingApp(MayanAppConfig):
             source=SmartLinkCondition, widget=TwoStateWidget
         )
 
+        # Document
+
         menu_facet.bind_links(
             links=(link_smart_link_instances_for_document,),
             sources=(Document,)
         )
-        menu_list_facet.bind_links(
-            links=(
-                link_smart_link_document_types, link_smart_link_condition_list
-            ), sources=(SmartLink,)
-        )
+
+        # Document type
+
         menu_list_facet.bind_links(
             links=(link_document_type_smart_links,), sources=(DocumentType,)
         )
-        menu_object.bind_links(
-            links=(
-                link_smart_link_condition_edit,
-                link_smart_link_condition_delete
-            ), sources=(SmartLinkCondition,)
+
+        menu_related.bind_links(
+            links=(link_smart_link_list,),
+            sources=(
+                DocumentType, 'documents:document_type_list',
+                'documents:document_type_create'
+            )
         )
-        menu_object.bind_links(
-            links=(
-                link_smart_link_delete, link_smart_link_edit
-            ), sources=(SmartLink,)
-        )
+
+        # Resolved smart link
+
         menu_object.bind_links(
             links=(link_smart_link_instance_view,),
             sources=(ResolvedSmartLink,)
@@ -153,13 +159,21 @@ class LinkingApp(MayanAppConfig):
             links=(link_smart_link_delete, link_smart_link_edit,),
             sources=(ResolvedSmartLink,)
         )
-        menu_related.bind_links(
-            links=(link_smart_link_list,),
-            sources=(
-                DocumentType, 'documents:document_type_list',
-                'documents:document_type_create'
-            )
+
+        # Smart link
+
+        menu_list_facet.bind_links(
+            links=(
+                link_smart_link_document_types, link_smart_link_condition_list
+            ), sources=(SmartLink,)
         )
+
+        menu_object.bind_links(
+            links=(
+                link_smart_link_delete, link_smart_link_edit
+            ), sources=(SmartLink,)
+        )
+
         menu_related.bind_links(
             links=(link_document_type_list,),
             sources=(
@@ -167,6 +181,7 @@ class LinkingApp(MayanAppConfig):
                 'linking:smart_link_create'
             )
         )
+
         menu_secondary.bind_links(
             links=(link_smart_link_list, link_smart_link_create),
             sources=(
@@ -174,6 +189,16 @@ class LinkingApp(MayanAppConfig):
                 'linking:smart_link_create'
             )
         )
+
+        # Smart link condition
+
+        menu_object.bind_links(
+            links=(
+                link_smart_link_condition_edit,
+                link_smart_link_condition_delete
+            ), sources=(SmartLinkCondition,)
+        )
+
         menu_secondary.bind_links(
             links=(link_smart_link_condition_create,),
             sources=(
@@ -183,4 +208,7 @@ class LinkingApp(MayanAppConfig):
                 'linking:smart_link_condition_delete'
             )
         )
+
+        # Setup
+
         menu_setup.bind_links(links=(link_smart_link_setup,))

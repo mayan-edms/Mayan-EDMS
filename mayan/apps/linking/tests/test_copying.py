@@ -8,6 +8,8 @@ from .mixins import SmartLinkTestMixin
 class SmartLinkCopyTestCase(
     SmartLinkTestMixin, DocumentTestMixin, ObjectCopyTestMixin, BaseTestCase
 ):
+    auto_upload_test_document = False
+
     def setUp(self):
         super().setUp()
         self._create_test_smart_link()
