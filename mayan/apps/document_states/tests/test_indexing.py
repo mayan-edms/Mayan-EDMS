@@ -22,15 +22,15 @@ class DocumentStateIndexingTestCase(
         self._create_test_workflow_template_transition()
 
     def _create_test_index_template(self):
-        # Create empty index
+        # Create empty index.
         index_template = IndexTemplate.objects.create(
             label=TEST_INDEX_TEMPLATE_LABEL
         )
 
-        # Add our document type to the new index
+        # Add our document type to the new index.
         index_template.document_types.add(self.test_document_type)
 
-        # Create simple index template
+        # Create simple index template.
         root = index_template.template_root
         index_template.node_templates.create(
             parent=root, expression=TEST_INDEX_TEMPLATE_METADATA_EXPRESSION,

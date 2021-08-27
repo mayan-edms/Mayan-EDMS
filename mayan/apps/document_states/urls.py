@@ -1,10 +1,12 @@
 from django.conf.urls import url
 
-from .api_views import (
+from .api_views.workflow_instance_api_views import (
     APIWorkflowInstanceListView, APIWorkflowInstanceDetailView,
     APIWorkflowInstanceLogEntryDetailView,
     APIWorkflowInstanceLogEntryListView,
     APIWorkflowInstanceLogEntryTransitionListView,
+)
+from .api_views.workflow_template_api_views import (
     APIWorkflowTemplateDetailView, APIWorkflowTemplateDocumentTypeAddView,
     APIWorkflowTemplateDocumentTypeListView,
     APIWorkflowTemplateDocumentTypeRemoveView, APIWorkflowTemplateImageView,

@@ -266,6 +266,31 @@ class WorkflowInstanceAPIViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
+    def test_trashed_document_workflow_instance_log_entries_create_api_view_with_document_and_transition_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_workflow_instance_transition
+        )
+        self.grant_access(
+            obj=self.test_workflow_template_transition,
+            permission=permission_workflow_instance_transition
+        )
+        workflow_instance = self.test_document.workflows.first()
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_workflow_instance_log_entry_create_api_view(
+            workflow_instance=workflow_instance
+        )
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.assertEqual(workflow_instance.log_entries.count(), 0)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_workflow_instance_log_entries_create_api_view_with_workflow_access(self):
         self.grant_access(
             obj=self.test_workflow_template,
@@ -308,6 +333,31 @@ class WorkflowInstanceAPIViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
+    def test_trashed_document_workflow_instance_log_entries_create_api_view_with_document_and_workflow_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_workflow_instance_transition
+        )
+        self.grant_access(
+            obj=self.test_workflow_template,
+            permission=permission_workflow_instance_transition
+        )
+        workflow_instance = self.test_document.workflows.first()
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_workflow_instance_log_entry_create_api_view(
+            workflow_instance=workflow_instance
+        )
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.assertEqual(workflow_instance.log_entries.count(), 0)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_workflow_instance_log_entries_create_api_view_with_extra_data_document_and_workflow_access(self):
         self.grant_access(
             obj=self.test_document,
@@ -335,31 +385,6 @@ class WorkflowInstanceAPIViewTestCase(
             workflow_instance.get_context()['workflow_instance_context'],
             json.loads(s=TEST_WORKFLOW_INSTANCE_LOG_ENTRY_EXTRA_DATA)
         )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_trashed_document_workflow_instance_log_entries_create_api_view_with_document_and_workflow_access(self):
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_workflow_instance_transition
-        )
-        self.grant_access(
-            obj=self.test_workflow_template,
-            permission=permission_workflow_instance_transition
-        )
-        workflow_instance = self.test_document.workflows.first()
-
-        self.test_document.delete()
-
-        self._clear_events()
-
-        response = self._request_test_workflow_instance_log_entry_create_api_view(
-            workflow_instance=workflow_instance
-        )
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-
-        self.assertEqual(workflow_instance.log_entries.count(), 0)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)

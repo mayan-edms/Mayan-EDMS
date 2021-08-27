@@ -8,7 +8,8 @@ from .mixins.workflow_template_mixins import (
 
 
 class WorkflowTaskTestCase(
-    WorkflowTaskTestCaseMixin, WorkflowTemplateTestMixin, GenericDocumentTestCase
+    WorkflowTaskTestCaseMixin, WorkflowTemplateTestMixin,
+    GenericDocumentTestCase
 ):
     auto_upload_test_document = False
 

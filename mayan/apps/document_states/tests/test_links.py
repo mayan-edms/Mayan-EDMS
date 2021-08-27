@@ -42,7 +42,8 @@ class WorkflowRuntimeProxyLinkTestCase(
         self._create_test_workflow_template(add_test_document_type=True)
 
         self.grant_access(
-            obj=self.test_workflow_template, permission=permission_workflow_template_view
+            obj=self.test_workflow_template,
+            permission=permission_workflow_template_view
         )
 
         self._resolve_test_link(test_object=self.test_workflow_runtime_proxy)
@@ -71,7 +72,8 @@ class WorkflowRuntimeProxyLinkTestCase(
         self._create_test_workflow_template(add_test_document_type=True)
 
         self.grant_access(
-            obj=self.test_workflow_template, permission=permission_workflow_template_view
+            obj=self.test_workflow_template,
+            permission=permission_workflow_template_view
         )
 
         self._resolve_test_link()
@@ -90,7 +92,9 @@ class WorkflowRuntimeProxyLinkTestCase(
         self._create_test_workflow_template(add_test_document_type=True)
         self._create_test_workflow_template_state()
 
-        self._resolve_test_link(test_object=self.test_workflow_template_state_runtime_proxy)
+        self._resolve_test_link(
+            test_object=self.test_workflow_template_state_runtime_proxy
+        )
 
         self.assertEqual(self.resolved_test_link, None)
 
@@ -101,10 +105,13 @@ class WorkflowRuntimeProxyLinkTestCase(
         self._create_test_workflow_template_state()
 
         self.grant_access(
-            obj=self.test_workflow_template, permission=permission_workflow_template_view
+            obj=self.test_workflow_template,
+            permission=permission_workflow_template_view
         )
 
-        self._resolve_test_link(test_object=self.test_workflow_template_state_runtime_proxy)
+        self._resolve_test_link(
+            test_object=self.test_workflow_template_state_runtime_proxy
+        )
 
         self.assertNotEqual(self.resolved_test_link, None)
         self.assertEqual(
@@ -130,7 +137,8 @@ class WorkflowRuntimeProxyLinkTestCase(
         self._create_test_workflow_template(add_test_document_type=True)
 
         self.grant_access(
-            obj=self.test_workflow_template, permission=permission_workflow_template_view
+            obj=self.test_workflow_template,
+            permission=permission_workflow_template_view
         )
 
         self._resolve_test_link(test_object=self.test_workflow_runtime_proxy)
