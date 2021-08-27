@@ -126,10 +126,15 @@ class DocumentSignaturesApp(MayanAppConfig):
             source=SignatureBaseModel
         )
 
+        # Document file
+
         menu_list_facet.bind_links(
             links=(link_document_file_signature_list,),
             sources=(DocumentFile,)
         )
+
+        # Signatures
+
         menu_object.bind_links(
             links=(
                 link_document_file_signature_details,
@@ -137,13 +142,25 @@ class DocumentSignaturesApp(MayanAppConfig):
                 link_document_file_signature_delete,
             ), sources=(SignatureBaseModel,)
         )
+
         menu_secondary.bind_links(
             links=(
                 link_document_file_signature_detached_create,
                 link_document_file_signature_embedded_create,
                 link_document_file_signature_upload
-            ), sources=(DocumentFile,)
+            ), sources=(
+                'signatures:document_file_signature_list',
+                'signatures:document_file_signature_detached_create',
+                'signatures:document_file_signature_upload',
+                'signatures:document_file_signature_embedded_create',
+                'signatures:document_file_signature_delete',
+                'signatures:document_file_signature_details',
+                'signatures:document_file_signature_download',
+            )
         )
+
+        # Tools
+
         menu_tools.bind_links(
             links=(
                 link_document_file_all_signature_refresh,
