@@ -24,12 +24,15 @@ from .handlers import (
     handler_process_document_file
 )
 from .links import (
-    link_document_file_driver_list, link_document_file_metadata_list,
-    link_document_file_submit, link_document_file_multiple_submit,
-    link_document_type_file_metadata_settings, link_document_type_submit
+    link_document_file_metadata_driver_list,
+    link_document_file_metadata_list,
+    link_document_file_metadata_submit_single,
+    link_document_file_metadata_submit_multiple,
+    link_document_type_file_metadata_settings,
+    link_document_type_submit
 )
 from .methods import (
-    method_document_submit, method_document_file_submit,
+    method_document_submit, method_document_file_submit_single,
     method_get_document_file_metadata,
     method_get_document_file_file_metadata
 )
@@ -68,7 +71,8 @@ class FileMetadataApp(MayanAppConfig):
         )
 
         Document.add_to_class(
-            name='file_metadata_value_of', value=FileMetadataHelper.constructor
+            name='file_metadata_value_of',
+            value=FileMetadataHelper.constructor
         )
         Document.add_to_class(
             name='get_file_metadata',
@@ -84,7 +88,7 @@ class FileMetadataApp(MayanAppConfig):
         )
         DocumentFile.add_to_class(
             name='submit_for_file_metadata_processing',
-            value=method_document_file_submit
+            value=method_document_file_submit_single
         )
 
         ModelEventType.register(
@@ -96,16 +100,17 @@ class FileMetadataApp(MayanAppConfig):
 
         ModelFieldRelated(
             label=_('File metadata key'), model=Document,
-            name='files__file_metadata_drivers__entries__key',
+            name='files__file_metadata_drivers__entries__key'
         )
         ModelFieldRelated(
             label=_('File metadata value'), model=Document,
-            name='files__file_metadata_drivers__entries__value',
+            name='files__file_metadata_drivers__entries__value'
         )
 
         ModelPermission.register(
             model=Document, permissions=(
-                permission_file_metadata_submit, permission_file_metadata_view,
+                permission_file_metadata_submit,
+                permission_file_metadata_view
             )
         )
         ModelPermission.register(
@@ -116,10 +121,10 @@ class FileMetadataApp(MayanAppConfig):
             )
         )
         ModelPermission.register_inheritance(
-            model=DocumentTypeSettings, related='document_type',
+            model=DocumentTypeSettings, related='document_type'
         )
         ModelPermission.register_inheritance(
-            model=DocumentFileDriverEntry, related='document_file',
+            model=DocumentFileDriverEntry, related='document_file'
         )
 
         ModelProperty(
@@ -149,29 +154,41 @@ class FileMetadataApp(MayanAppConfig):
             source=DocumentFileDriverEntry
         )
 
+        menu_tools.bind_links(
+            links=(link_document_type_submit,)
+        )
+
+        # Document file
+
         menu_list_facet.bind_links(
-            links=(link_document_file_driver_list,), sources=(DocumentFile,)
-        )
-        menu_list_facet.bind_links(
-            links=(link_document_type_file_metadata_settings,),
-            sources=(DocumentType,)
-        )
-        menu_object.bind_links(
-            links=(link_document_file_metadata_list,),
-            sources=(DocumentFileDriverEntry,)
-        )
-        menu_multi_item.bind_links(
-            links=(link_document_file_multiple_submit,),
+            links=(link_document_file_metadata_driver_list,),
             sources=(DocumentFile,)
         )
+
+        menu_multi_item.bind_links(
+            links=(link_document_file_metadata_submit_multiple,),
+            sources=(DocumentFile,)
+        )
+
         menu_secondary.bind_links(
-            links=(link_document_file_submit,), sources=(
+            links=(link_document_file_metadata_submit_single,), sources=(
                 'file_metadata:document_file_driver_list',
                 'file_metadata:document_file_driver_file_metadata_list'
             )
         )
-        menu_tools.bind_links(
-            links=(link_document_type_submit,),
+
+        # Document file driver
+
+        menu_object.bind_links(
+            links=(link_document_file_metadata_list,),
+            sources=(DocumentFileDriverEntry,)
+        )
+
+        # Document type
+
+        menu_list_facet.bind_links(
+            links=(link_document_type_file_metadata_settings,),
+            sources=(DocumentType,)
         )
 
         post_save.connect(

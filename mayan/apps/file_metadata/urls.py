@@ -14,11 +14,11 @@ urlpatterns = [
     ),
     url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/submit/$',
-        name='document_file_submit', view=DocumentFileSubmitView.as_view()
+        name='document_file_submit_single', view=DocumentFileSubmitView.as_view()
     ),
     url(
         regex=r'^documents/files/multiple/submit/$',
-        name='document_file_multiple_submit',
+        name='document_file_submit_multiple',
         view=DocumentFileSubmitView.as_view()
     ),
     url(

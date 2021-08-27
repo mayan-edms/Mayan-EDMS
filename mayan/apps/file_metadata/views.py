@@ -16,7 +16,7 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .icons import icon_file_metadata
-from .links import link_document_file_submit
+from .links import link_document_file_metadata_submit_single
 from .models import DocumentFileDriverEntry
 from .permissions import (
     permission_document_type_file_metadata_setup,
@@ -33,7 +33,7 @@ class DocumentFileDriverListView(ExternalObjectViewMixin, SingleObjectListView):
         return {
             'hide_object': True,
             'no_results_icon': icon_file_metadata,
-            'no_results_main_link': link_document_file_submit.resolve(
+            'no_results_main_link': link_document_file_metadata_submit_single.resolve(
                 context=RequestContext(
                     dict_={
                         'resolved_object': self.external_object
@@ -70,7 +70,7 @@ class DocumentFileDriverEntryFileMetadataListView(
         return {
             'hide_object': True,
             'no_results_icon': icon_file_metadata,
-            'no_results_main_link': link_document_file_submit.resolve(
+            'no_results_main_link': link_document_file_metadata_submit_single.resolve(
                 context=RequestContext(
                     dict_={
                         'resolved_object': self.external_object.document_file

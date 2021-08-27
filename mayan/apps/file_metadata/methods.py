@@ -11,7 +11,7 @@ def method_document_submit(self, _user=None):
         latest_file.submit_for_file_metadata_processing(_user=_user)
 
 
-def method_document_file_submit(self, _user=None):
+def method_document_file_submit_single(self, _user=None):
     event_file_metadata_document_file_submitted.commit(
         action_object=self.document, actor=_user, target=self
     )
