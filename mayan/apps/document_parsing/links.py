@@ -52,12 +52,12 @@ link_document_file_parsing_errors_list = Link(
     permissions=(permission_document_file_parse,), text=_('Parsing errors'),
     view='document_parsing:document_file_parsing_error_list'
 )
-link_document_file_submit_multiple = Link(
+link_document_file_metadata_submit_multiple = Link(
     icon=icon_document_file_submit,
     text=_('Submit for parsing'),
     view='document_parsing:document_file_multiple_submit'
 )
-link_document_file_submit_single = Link(
+link_document_file_metadata_submit_single = Link(
     args='resolved_object.id',
     icon=icon_document_file_submit,
     permissions=(permission_document_file_parse,),
