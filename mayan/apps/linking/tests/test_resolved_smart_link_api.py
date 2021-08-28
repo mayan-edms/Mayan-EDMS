@@ -74,7 +74,7 @@ class ResolvedSmartLinkAPIViewTestCase(
         response = self._request_resolved_smart_link_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            response.data['label'], self.test_documents[0].uuid
+            response.data['label'], str(self.test_documents[0].uuid)
         )
 
         events = self._get_test_events()
@@ -157,7 +157,7 @@ class ResolvedSmartLinkAPIViewTestCase(
         self.assertEqual(response.data['count'], 1)
         self.assertEqual(
             response.data['results'][0]['label'],
-            self.test_documents[0].uuid
+            str(self.test_documents[0].uuid)
         )
 
         events = self._get_test_events()
