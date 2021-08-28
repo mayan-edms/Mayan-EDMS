@@ -22,7 +22,7 @@ class RecentlyCreatedDocumentAPIViewTestCase(
         self._create_test_document_stub()
 
     def test_recently_created_document_api_list_view_no_permission(self):
-        recently_created_document_count = RecentlyCreatedDocument.objects.count()
+        recently_created_document_count = RecentlyCreatedDocument.valid.count()
 
         self._clear_events()
 
@@ -36,7 +36,7 @@ class RecentlyCreatedDocumentAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_recently_created_document_api_list_view_with_access(self):
-        recently_created_document_count = RecentlyCreatedDocument.objects.count()
+        recently_created_document_count = RecentlyCreatedDocument.valid.count()
 
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
@@ -57,7 +57,7 @@ class RecentlyCreatedDocumentAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_recently_created_document_api_list_view_with_access(self):
-        recently_created_document_count = RecentlyCreatedDocument.objects.count()
+        recently_created_document_count = RecentlyCreatedDocument.valid.count()
 
         self.grant_access(
             obj=self.test_document, permission=permission_document_view

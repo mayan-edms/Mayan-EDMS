@@ -1,5 +1,8 @@
 import logging
 
+from rest_framework import status
+from rest_framework.response import Response
+
 from mayan.apps.converter.api_view_mixins import APIImageViewMixin
 from mayan.apps.rest_api import generics
 
@@ -9,6 +12,7 @@ from ..permissions import (
     permission_trashed_document_delete, permission_trashed_document_restore
 )
 from ..serializers.trashed_document_serializers import TrashedDocumentSerializer
+from ..tasks import task_trashed_document_delete
 
 logger = logging.getLogger(name=__name__)
 
@@ -27,15 +31,22 @@ class APITrashedDocumentDetailView(generics.RetrieveDestroyAPIView):
     queryset = TrashedDocument.objects.all()
     serializer_class = TrashedDocumentSerializer
 
-    def get_instance_extra_data(self):
-        return {
-            '_event_actor': self.request.user
-        }
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+
+        task_trashed_document_delete.apply_async(
+            kwargs={
+                'trashed_document_id': instance.pk,
+                'user_id': self.request.user.pk
+            }
+        )
+
+        return Response(status=status.HTTP_202_ACCEPTED)
 
 
 class APITrashedDocumentListView(generics.ListAPIView):
     """
-    Returns a list of all the trashed documents.
+    get: Returns a list of all the trashed documents.
     """
     mayan_object_permissions = {'GET': (permission_document_view,)}
     ordering_fields = ('id', 'label')

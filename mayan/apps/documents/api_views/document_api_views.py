@@ -34,7 +34,7 @@ class APIDocumentDetailView(generics.RetrieveUpdateDestroyAPIView):
         'PATCH': (permission_document_properties_edit,),
         'DELETE': (permission_document_trash,)
     }
-    queryset = Document.objects.all()
+    queryset = Document.valid
     serializer_class = DocumentSerializer
 
     def get_instance_extra_data(self):
@@ -52,7 +52,7 @@ class APIDocumentListView(generics.ListCreateAPIView):
         'GET': (permission_document_view,),
     }
     ordering_fields = ('datetime_created', 'document_type', 'id', 'label')
-    queryset = Document.objects.all()
+    queryset = Document.valid
     serializer_class = DocumentSerializer
 
     def perform_create(self, serializer):

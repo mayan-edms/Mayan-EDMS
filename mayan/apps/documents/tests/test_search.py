@@ -34,3 +34,10 @@ class DocumentSearchTestCase(
         )
         queryset = self._perform_document_search()
         self.assertTrue(self.test_document in queryset)
+
+    def test_trashed_document_search_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+        queryset = self._perform_document_search()
+        self.assertTrue(self.test_document not in queryset)

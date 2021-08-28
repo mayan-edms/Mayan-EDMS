@@ -21,7 +21,7 @@ logger = logging.getLogger(name=__name__)
 
 class FavoriteDocumentListView(DocumentListView):
     def get_document_queryset(self):
-        return FavoriteDocument.objects.get_for_user(user=self.request.user)
+        return FavoriteDocument.valid.get_for_user(user=self.request.user)
 
     def get_extra_context(self):
         context = super().get_extra_context()
@@ -67,7 +67,7 @@ class FavoriteAddView(MultipleObjectConfirmActionView):
         return context
 
     def object_action(self, form, instance):
-        FavoriteDocument.objects.add_for_user(
+        FavoriteDocument.valid.add_for_user(
             document=instance, user=self.request.user
         )
 
@@ -102,7 +102,7 @@ class FavoriteRemoveView(MultipleObjectConfirmActionView):
 
     def object_action(self, form, instance):
         try:
-            FavoriteDocument.objects.remove_for_user(
+            FavoriteDocument.valid.remove_for_user(
                 document=instance, user=self.request.user
             )
         except FavoriteDocument.DoesNotExist:

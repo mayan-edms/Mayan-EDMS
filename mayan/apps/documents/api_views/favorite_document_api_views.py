@@ -24,7 +24,7 @@ class APIFavoriteDocumentDetailView(generics.RetrieveDestroyAPIView):
     serializer_class = FavoriteDocumentSerializer
 
     def get_queryset(self):
-        return FavoriteDocument.objects.filter(user=self.request.user)
+        return FavoriteDocument.valid.filter(user=self.request.user)
 
 
 class APIFavoriteDocumentListView(generics.ListCreateAPIView):
@@ -43,10 +43,10 @@ class APIFavoriteDocumentListView(generics.ListCreateAPIView):
         }
 
     def get_queryset(self):
-        return FavoriteDocument.objects.filter(user=self.request.user)
+        return FavoriteDocument.valid.filter(user=self.request.user)
 
     def perform_create(self, serializer):
-        queryset = Document.objects.all()
+        queryset = Document.valid.all()
 
         queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_document_view, queryset=queryset,

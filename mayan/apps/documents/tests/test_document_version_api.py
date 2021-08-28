@@ -419,6 +419,31 @@ class DocumentVersionExportAPIViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
+    def test_trashed_document_version_export_api_view_via_get_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_export
+        )
+        download_file_count = DownloadFile.objects.count()
+        message_count = Message.objects.count()
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_version_export_api_view_via_get()
+        self.assertEqual(
+            response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED
+        )
+
+        self.assertEqual(
+            DownloadFile.objects.count(), download_file_count
+        )
+        self.assertEqual(Message.objects.count(), message_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_document_version_export_api_view_via_post_no_permission(self):
         download_file_count = DownloadFile.objects.count()
         message_count = Message.objects.count()

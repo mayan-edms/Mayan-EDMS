@@ -28,8 +28,8 @@ from ..literals import (
     IMAGE_ERROR_NO_ACTIVE_VERSION
 )
 from ..managers import (
-    DocumentManager, RecentlyCreatedDocumentManager, TrashCanManager,
-    ValidDocumentManager
+    DocumentManager, TrashCanManager, ValidDocumentManager,
+    ValidRecentlyCreatedDocumentManager
 )
 from ..signals import signal_post_document_type_change
 
@@ -138,7 +138,7 @@ class Document(
         RecentlyAccessedDocument = apps.get_model(
             app_label='documents', model_name='RecentlyAccessedDocument'
         )
-        return RecentlyAccessedDocument.objects.add_document_for_user(
+        return RecentlyAccessedDocument.valid.add_document_for_user(
             document=self, user=user
         )
 
@@ -385,7 +385,7 @@ class DocumentSearchResult(Document):
 
 class RecentlyCreatedDocument(Document):
     objects = models.Manager()
-    recently_created = RecentlyCreatedDocumentManager()
+    valid = ValidRecentlyCreatedDocumentManager()
 
     class Meta:
         proxy = True

@@ -78,7 +78,11 @@ class EmptyTrashCanView(ConfirmView):
     view_permission = permission_trash_empty
 
     def view_action(self):
-        task_trash_can_empty.apply_async()
+        task_trash_can_empty.apply_async(
+            kwargs={
+                'user_id': self.request.user.pk
+            }
+        )
 
         messages.success(
             message=_('The trash emptying task has been queued.'),
@@ -113,7 +117,10 @@ class TrashedDocumentDeleteView(MultipleObjectConfirmActionView):
 
     def object_action(self, form, instance):
         task_trashed_document_delete.apply_async(
-            kwargs={'trashed_document_id': instance.pk}
+            kwargs={
+                'trashed_document_id': instance.pk,
+                'user_id': self.request.user.pk
+            }
         )
 
 
@@ -173,4 +180,5 @@ class TrashedDocumentRestoreView(MultipleObjectConfirmActionView):
         return context
 
     def object_action(self, form, instance):
+        instance._event_actor = self.request.user
         instance.restore()

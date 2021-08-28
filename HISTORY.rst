@@ -225,6 +225,22 @@
   - Remove unused test mixins.
   - Split view and API test modules.
 
+- Documents app updates:
+
+  - Exclude trashed documents from all API views.
+  - New `valid` model managers for recently accessed, recently created, and
+    favorite documents. These managers exclude trashed documents at the model
+    level. The 'objects' manager for these model returns the unfiltered
+    queryset.
+  - Trashed document delete API now returns a 202 code instead of 204. The
+    delete method now runs in the background in the same was as the trashed
+    document delete view works in the UI. The return code was updated to
+    reflect this internal change.
+  - Track the user for the trashed document delete, restore and for the
+    trash can empty methods.
+  - Add event checking for some remaining tests.
+  - Add additional tests.
+
 4.0.15 (2021-08-07)
 ===================
 - Improve the document version export API endpoint.

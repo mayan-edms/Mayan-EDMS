@@ -5,7 +5,9 @@ from django.db import models
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from ..managers import RecentlyAccessedDocumentManager
+from ..managers import (
+    RecentlyAccessedDocumentManager, ValidRecentlyAccessedDocumentManager
+)
 
 from .document_models import Document
 
@@ -31,6 +33,7 @@ class RecentlyAccessedDocument(models.Model):
     )
 
     objects = RecentlyAccessedDocumentManager()
+    valid = ValidRecentlyAccessedDocumentManager()
 
     class Meta:
         ordering = ('-datetime_accessed',)
