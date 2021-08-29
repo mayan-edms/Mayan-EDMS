@@ -1,6 +1,6 @@
 from django.db.models import Q
 
-from ..models import DocumentTypeMetadataType, MetadataType
+from ..models import DocumentMetadata, DocumentTypeMetadataType, MetadataType
 
 from .literals import (
     TEST_METADATA_TYPE_LABEL, TEST_METADATA_TYPE_LABEL_EDITED,
@@ -11,16 +11,27 @@ from .literals import (
 
 class DocumentMetadataAPIViewTestMixin:
     def _request_document_metadata_create_api_view(self, extra_data=None):
+        pk_list = list(DocumentMetadata.objects.values_list('pk', flat=True))
+
         data = {
             'metadata_type_id': self.test_metadata_type.pk,
             'value': TEST_METADATA_VALUE
         }
         data.update(extra_data or {})
 
-        return self.post(
+        response = self.post(
             viewname='rest_api:documentmetadata-list',
             kwargs={'document_id': self.test_document.pk}, data=data
         )
+
+        try:
+            self.test_document_metadata = DocumentMetadata.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except DocumentMetadata.DoesNotExist:
+            self.test_document_metadata = None
+
+        return response
 
     def _request_document_metadata_delete_api_view(self):
         return self.delete(
@@ -70,7 +81,7 @@ class DocumentMetadataAPIViewTestMixin:
 class DocumentMetadataMixin:
     def _create_test_document_metadata(self):
         self.test_document_metadata = self.test_document.metadata.create(
-            metadata_type=self.test_metadata_type, value=''
+            metadata_type=self.test_metadata_type, value=TEST_METADATA_VALUE
         )
 
 
