@@ -241,5 +241,5 @@ class WhooshSearchBackend(SearchBackend):
             index.schema, indexname=search_model.get_full_name()
         )
 
-        for instance in search_model.model._meta.default_manager.all():
+        for instance in search_model.model._meta.managers_map[search_model.manager_name].all():
             self.index_instance(instance=instance)

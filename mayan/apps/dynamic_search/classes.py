@@ -348,7 +348,8 @@ class SearchModel(AppsModuleLoaderMixin):
 
     def __init__(
         self, app_label, model_name, serializer_path, default=False,
-        label=None, list_mode=None, permission=None, queryset=None
+        label=None, list_mode=None, manager_name=None, permission=None,
+        queryset=None
     ):
         self.default = default
         self._label = label
@@ -360,6 +361,8 @@ class SearchModel(AppsModuleLoaderMixin):
         self.queryset = queryset
         self.search_fields = []
         self.serializer_path = serializer_path
+
+        self.manager_name = manager_name or self.model._meta.default_manager.name
 
         if default:
             for search_class in self.__class__._registry.values():
@@ -431,7 +434,7 @@ class SearchModel(AppsModuleLoaderMixin):
         if self.queryset:
             return self.queryset()
         else:
-            return self.model.objects.all()
+            return self.model._meta.managers_map[self.manager_name].all()
 
     def get_search_field(self, full_name):
         try:
