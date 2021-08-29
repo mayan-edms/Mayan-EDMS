@@ -86,7 +86,7 @@ class RoleAPIViewTestMixin:
 
         return response
 
-    def _request_test_role_delete_single_api_view(self):
+    def _request_test_role_delete_api_view(self):
         return self.delete(
             viewname='rest_api:role-detail', kwargs={
                 'role_id': self.test_role.pk
