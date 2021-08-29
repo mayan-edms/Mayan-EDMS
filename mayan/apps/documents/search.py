@@ -21,8 +21,8 @@ def transformation_format_uuid(term_string):
 
 document_search = SearchModel(
     app_label='documents', default=True, label=_('Document'),
-    list_mode=LIST_MODE_CHOICE_ITEM, model_name='DocumentSearchResult',
-    permission=permission_document_view,
+    list_mode=LIST_MODE_CHOICE_ITEM, manager_name='valid',
+    model_name='DocumentSearchResult', permission=permission_document_view,
     serializer_path='mayan.apps.documents.serializers.document_serializers.DocumentSerializer'
 )
 document_search.add_proxy_model(app_label='documents', model_name='Document')
@@ -50,7 +50,8 @@ document_search.add_model_field(
 
 document_file_search = SearchModel(
     app_label='documents', label=_('Document file'),
-    list_mode=LIST_MODE_CHOICE_ITEM, model_name='DocumentFileSearchResult',
+    list_mode=LIST_MODE_CHOICE_ITEM, manager_name='valid',
+    model_name='DocumentFileSearchResult',
     permission=permission_document_file_view,
     serializer_path='mayan.apps.documents.serializers.document_file_serializers.DocumentFileSerializer'
 )
@@ -81,7 +82,8 @@ document_file_search.add_model_field(field='mimetype')
 
 document_file_page_search = SearchModel(
     app_label='documents', label=_('Document file page'),
-    list_mode=LIST_MODE_CHOICE_ITEM, model_name='DocumentFilePageSearchResult',
+    list_mode=LIST_MODE_CHOICE_ITEM, manager_name='valid',
+    model_name='DocumentFilePageSearchResult',
     permission=permission_document_file_view,
     serializer_path='mayan.apps.documents.serializers.document_file_serializers.DocumentFilePageSerializer'
 )
@@ -124,7 +126,8 @@ document_type_search.add_model_field(field='label')
 
 document_version_search = SearchModel(
     app_label='documents', label=_('Document version'),
-    list_mode=LIST_MODE_CHOICE_ITEM, model_name='DocumentVersionSearchResult',
+    list_mode=LIST_MODE_CHOICE_ITEM, manager_name='valid',
+    model_name='DocumentVersionSearchResult',
     permission=permission_document_version_view,
     serializer_path='mayan.apps.documents.serializers.document_version_serializers.DocumentVersionSerializer'
 )
@@ -152,7 +155,7 @@ document_version_search.add_model_field(
 
 document_version_page_search = SearchModel(
     app_label='documents', label=_('Document version page'),
-    list_mode=LIST_MODE_CHOICE_ITEM,
+    list_mode=LIST_MODE_CHOICE_ITEM, manager_name='valid',
     model_name='DocumentVersionPageSearchResult',
     permission=permission_document_version_view,
     serializer_path='mayan.apps.documents.serializers.document_version_serializers.DocumentVersionPageSerializer'

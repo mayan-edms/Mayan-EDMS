@@ -8,7 +8,7 @@ from mayan.apps.dynamic_search.tests.mixins import SearchTestMixin
 
 from ...literals import DOCUMENT_FILE_ACTION_PAGES_NEW, PAGE_RANGE_ALL
 from ...models import Document, DocumentType
-from ...search import document_file_page_search, document_search
+from ...search import document_search
 
 from ..literals import (
     DEFAULT_DOCUMENT_STUB_LABEL, TEST_DOCUMENT_DESCRIPTION_EDITED,
@@ -89,14 +89,6 @@ class DocumentAPIViewTestMixin:
 
 
 class DocumentSearchTestMixin(SearchTestMixin):
-    def _perform_document_file_page_search(self, query=None):
-        query = query or {'q': self.test_document.label}
-
-        return self.search_backend.search(
-            search_model=document_file_page_search, query=query,
-            user=self._test_case_user
-        )
-
     def _perform_document_search(self, query=None):
         query = query or {'q': self.test_document.label}
 
