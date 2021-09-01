@@ -13,14 +13,15 @@
         <meta content="width=device-width, initial-scale=1, maximum-scale=5" name="viewport">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
-        <title>
+	<meta name="description" content="Mayan EDMS is an open source and free to use Database Management System"/>
+	<title>
             {% block base_title %}
                 {% block title %}{% endblock %} :: {% block project_name %}    {% smart_setting 'COMMON_PROJECT_TITLE' as setting_project_title %}{% endblock %}
             {% endblock base_title %}
         </title>
 
         <link href="{% static 'appearance/node_modules/@fortawesome/fontawesome-free/css/all.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
-        <link href="{% static 'appearance/node_modules/bootswatch/flatly/bootstrap.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+        <link href="{% static 'appearance/node_modules/bootswatch/darkly/bootstrap.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
         <link href="{% static 'appearance/css/base.css' %}" media="screen" rel="stylesheet" type="text/css" />
         {% block stylesheets %}{% endblock %}
 

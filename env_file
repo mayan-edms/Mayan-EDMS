@@ -1,0 +1,30 @@
+# Use this file to set environment variables for the running containers
+
+# To change how the docker-compose file is interpreted use the .env file
+# instead.
+
+# Default project name. Change this using the docker-compose `-p, --project-name NAME` option.
+COMPOSE_PROJECT_NAME=mayan
+
+# To use block storage.
+# MAYAN_PIP_INSTALLS="django-storages==1.10 boto3==1.14.58"
+# MAYAN_DOCUMENTS_STORAGE_BACKEND="storages.backends.s3boto3.S3Boto3Storage"
+# MAYAN_DOCUMENTS_STORAGE_BACKEND_ARGUMENTS="{'access_key':'<access key>','secret_key':'<secret key>','bucket_name':'mayan','endpoint_url':'http://<URL:port>','verify':'False'}"  # 'verify':'False' for local servers with self signed SSL certificate
+
+# To add Debian package, like LDAP.
+# MAYAN_APT_INSTALLS="<Debian package names>"
+
+# To add operating system packages, like additional OCR language,
+# packages, put then in the variable below.
+# MAYAN_APT_INSTALLS="tesseract-ocr-deu tesseract-ocr-nld"
+
+# To use LDAP authentication.
+# Create a folder named `user_settings` in the `media` folder.
+# Copy the file `contrib/settings/ldap_connection_settings.py` from the online
+# repository and place in the new `user_settings` folder.
+# Edit the `user_settings/ldap_connection_settings' file to work with your
+# LDAP server.
+# Example: https://django-auth-ldap.readthedocs.io/en/latest/example.html
+# Enable the following environment variables and restart the stack.
+# MAYAN_PIP_INSTALLS="python-ldap django_auth_ldap"
+# MAYAN_APT_INSTALLS="gcc libldap2-dev/buster-backports libsasl2-dev python3-dev"
