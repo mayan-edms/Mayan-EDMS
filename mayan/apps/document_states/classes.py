@@ -44,7 +44,7 @@ class WorkflowAction(
     AppsModuleLoaderMixin, metaclass=WorkflowActionMetaclass
 ):
     _loader_module_name = 'workflow_actions'
-    fields = ()
+    fields = {}
     previous_dotted_paths = ()
 
     @classmethod
@@ -72,20 +72,22 @@ class WorkflowAction(
             app.name: app for app in apps.get_app_configs()
         }
 
-        # Match each workflow action to an app
+        # Match each workflow action to an app.
         apps_workflow_action_map = {}
 
         for klass in WorkflowAction.get_all():
             for app_name, app in apps_name_map.items():
                 if klass.__module__.startswith(app_name):
                     apps_workflow_action_map.setdefault(app, [])
-                    apps_workflow_action_map[app].append((klass.id(), klass.label))
+                    apps_workflow_action_map[app].append(
+                        (klass.id(), klass.label)
+                    )
 
         result = [
             (app.verbose_name, workflow_actions) for app, workflow_actions in apps_workflow_action_map.items()
         ]
 
-        # Sort by app, then by workflow action
+        # Sort by app, then by workflow action.
         return sorted(result, key=lambda x: (x[0], x[1]))
 
     @classmethod
