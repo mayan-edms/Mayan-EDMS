@@ -6,6 +6,7 @@ import random
 import time
 
 from furl import furl
+import psutil
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.webdriver import WebDriver
 
@@ -31,10 +32,6 @@ from mayan.apps.views.compat import FileResponse
 from ..literals import (
     TEST_SERVER_HOST, TEST_SERVER_SCHEME, TEST_VIEW_NAME, TEST_VIEW_URL
 )
-
-
-if getattr(settings, 'COMMON_TEST_FILE_HANDLES', False):
-    import psutil
 
 
 class ClientMethodsTestCaseMixin:
@@ -218,6 +215,8 @@ class ModelTestCaseMixin:
 
 
 class OpenFileCheckTestCaseMixin:
+    _skip_file_descriptor_test = True
+
     def _get_descriptor_count(self):
         process = psutil.Process()
         return process.num_fds()
@@ -228,19 +227,23 @@ class OpenFileCheckTestCaseMixin:
 
     def setUp(self):
         super().setUp()
-        if getattr(settings, 'COMMON_TEST_FILE_HANDLES', False):
-            self._open_files = self._get_open_files()
+
+        self._open_files = self._get_open_files()
+        self._descriptor_count = self._get_descriptor_count()
 
     def tearDown(self):
-        if getattr(settings, 'COMMON_TEST_FILE_HANDLES', False) and not getattr(self, '_skip_file_descriptor_test', False):
+        if not self._skip_file_descriptor_test:
             for new_open_file in self._get_open_files():
-                self.assertFalse(
-                    new_open_file not in self._open_files,
-                    msg='File descriptor leak. The number of file descriptors '
+                if new_open_file not in self._open_files:
+                    raise ValueError(
+                        'File left open: {}'.format(new_open_file)
+                    )
+
+            if self._get_descriptor_count() > self._descriptor_count:
+                raise ValueError(
+                    'File descriptor leak. The number of file descriptors '
                     'at the start and at the end of the test are not the same.'
                 )
-
-            self._skip_file_descriptor_test = False
 
         super().tearDown()
 
@@ -268,7 +271,7 @@ class RandomPrimaryKeyModelMonkeyPatchMixin:
             attempts = attempts + 1
 
             if attempts > RandomPrimaryKeyModelMonkeyPatchMixin.random_primary_key_maximum_attempts:
-                raise Exception(
+                raise ValueError(
                     'Maximum number of retries for an unique random primary '
                     'key reached.'
                 )
@@ -425,7 +428,7 @@ class TempfileCheckTestCasekMixin:
 
     def setUp(self):
         super().setUp()
-        if getattr(settings, 'COMMON_TEST_TEMP_FILES', False):
+        if getattr(settings, 'FTEST_TEMP_FILES', False):
             self._temporary_items = self._get_temporary_entries()
 
     def tearDown(self):
