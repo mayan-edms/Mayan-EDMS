@@ -1,3 +1,4 @@
+import json
 import os
 
 from django import forms
@@ -5,6 +6,9 @@ from django.conf import settings
 from django.contrib.admin.utils import label_for_field
 from django.core.exceptions import FieldDoesNotExist, ImproperlyConfigured
 from django.db import models
+from django.db.models import Model
+from django.db.models.query import QuerySet
+from django.forms.models import ModelFormMetaclass
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
@@ -17,7 +21,7 @@ from .widgets import DisableableSelectWidget, PlainWidget, TextAreaDiv
 class ChoiceForm(forms.Form):
     """
     Form to be used in side by side templates used to add or remove
-    items from a many to many field
+    items from a many to many field.
     """
     def __init__(self, *args, **kwargs):
         choices = kwargs.pop('choices', [])
@@ -69,7 +73,7 @@ class FormOptions:
 
 
 class DetailFormOption(FormOptions):
-    # Dictionary list of option names and default values
+    # Dictionary list of option names and default values.
     option_definitions = {'extra_fields': []}
 
 
@@ -90,7 +94,7 @@ class DetailForm(forms.ModelForm):
 
             label = extra_field.get('label', None)
 
-            # If label is not specified try to get it from the object itself
+            # If label is not specified try to get it from the object itself.
             if not label:
                 attribute_name, obj = introspect_attribute(
                     attribute_name=field, obj=obj
@@ -109,7 +113,8 @@ class DetailForm(forms.ModelForm):
                         )
 
             help_text = extra_field.get('help_text', None)
-            # If help_text is not specified try to get it from the object itself
+            # If help_text is not specified try to get it from the object
+            # itself.
             if not help_text:
                 if obj:
                     try:
@@ -179,11 +184,63 @@ class DynamicFormMixin:
 
 
 class DynamicForm(DynamicFormMixin, forms.Form):
-    """Normal dynamic form"""
+    """Normal dynamic form."""
 
 
 class DynamicModelForm(DynamicFormMixin, forms.ModelForm):
-    """Dynamic model form"""
+    """Dynamic model form."""
+
+
+class DynamicFormMetaclass(ModelFormMetaclass):
+    def __new__(mcs, name, bases, attrs):
+        new_class = super(DynamicFormMetaclass, mcs).__new__(
+            mcs=mcs, name=name, bases=bases, attrs=attrs
+        )
+
+        if new_class._meta.fields:
+            new_class._meta.fields += ('backend_data',)
+            widgets = getattr(new_class._meta, 'widgets', {}) or {}
+            widgets['backend_data'] = forms.widgets.HiddenInput
+            new_class._meta.widgets = widgets
+
+        return new_class
+
+
+class BackendDynamicForm(DynamicModelForm, metaclass=DynamicFormMetaclass):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        backend_data = self.instance.get_backend_data()
+
+        if backend_data:
+            for field_name in self.instance.get_backend().get_fields():
+                self.fields[field_name].initial = backend_data.get(
+                    field_name, None
+                )
+
+    def clean(self):
+        data = super().clean()
+
+        # Consolidate the dynamic fields into a single JSON field called
+        # 'backend_data'.
+        backend_data = {}
+
+        for field_name, field_data in self.schema['fields'].items():
+            backend_data[field_name] = data.pop(
+                field_name, field_data.get('default', None)
+            )
+            if isinstance(backend_data[field_name], QuerySet):
+                # Flatten the queryset to a list of ids.
+                backend_data[field_name] = list(
+                    backend_data[field_name].values_list('id', flat=True)
+                )
+            elif isinstance(backend_data[field_name], Model):
+                # Store only the ID of a model instance.
+                backend_data[field_name] = backend_data[field_name].pk
+
+        data['backend_data'] = json.dumps(obj=backend_data)
+
+        return data
 
 
 class FileDisplayForm(forms.Form):
@@ -193,7 +250,10 @@ class FileDisplayForm(forms.Form):
     text = forms.CharField(
         label='',
         widget=TextAreaDiv(
-            attrs={'class': 'full-height scrollable', 'data-height-difference': 270}
+            attrs={
+                'class': 'full-height scrollable',
+                'data-height-difference': 270
+            }
         )
     )
 
@@ -208,7 +268,7 @@ class FileDisplayForm(forms.Form):
 
 
 class FilteredSelectionFormOptions(FormOptions):
-    # Dictionary list of option names and default values
+    # Dictionary list of option names and default values.
     option_definitions = {
         'allow_multiple': False,
         'field_name': None,
@@ -299,7 +359,8 @@ class RelationshipForm(forms.Form):
 
     def get_new_relationship_instance(self):
         related_manager = getattr(
-            self.initial.get('object'), self.initial['relationship_related_field']
+            self.initial.get('object'),
+            self.initial['relationship_related_field']
         )
         main_field_name = related_manager.field.name
 
@@ -312,7 +373,8 @@ class RelationshipForm(forms.Form):
 
     def get_relationship_queryset(self):
         return getattr(
-            self.initial.get('object'), self.initial['relationship_related_field']
+            self.initial.get('object'),
+            self.initial['relationship_related_field']
         ).filter(
             **{
                 self.initial['relationship_related_query_field']: self.initial.get('sub_object')

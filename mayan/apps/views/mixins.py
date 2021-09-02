@@ -93,7 +93,9 @@ class DynamicFormViewMixin:
 
     def get_form_kwargs(self):
         data = super().get_form_kwargs()
-        data.update({'schema': self.get_form_schema()})
+        data.update(
+            {'schema': self.get_form_schema()}
+        )
         return data
 
 
