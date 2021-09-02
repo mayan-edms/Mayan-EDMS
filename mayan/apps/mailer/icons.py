@@ -1,21 +1,45 @@
 from mayan.apps.appearance.classes import Icon
 
-icon_document_send = Icon(
+# Document
+
+icon_document_send_link_single = Icon(
     driver_name='fontawesome', symbol='envelope'
 )
-icon_document_send_link = Icon(
-    driver_name='fontawesome', symbol='envelope'
-)
-icon_document_multiple_send = Icon(
-    driver_name='fontawesome', symbol='envelope'
-)
-icon_document_multiple_send_link = Icon(
+icon_document_send_link_multiple = Icon(
     driver_name='fontawesome', symbol='envelope'
 )
 
-icon_mail_document_submit = Icon(
+# Document file
+
+icon_document_file_attachment_send_single = Icon(
     driver_name='fontawesome', symbol='envelope'
 )
+icon_document_file_attachment_send_multiple = Icon(
+    driver_name='fontawesome', symbol='envelope'
+)
+icon_document_file_send_link_single = Icon(
+    driver_name='fontawesome', symbol='envelope'
+)
+icon_document_file_send_link_multiple = Icon(
+    driver_name='fontawesome', symbol='envelope'
+)
+
+# Document version
+
+icon_document_version_send_attachment_single = Icon(
+    driver_name='fontawesome', symbol='envelope'
+)
+icon_document_version_send_link_single = Icon(
+    driver_name='fontawesome', symbol='envelope'
+)
+icon_document_version_send_attachment_multiple = Icon(
+    driver_name='fontawesome', symbol='envelope'
+)
+icon_document_version_send_link_multiple = Icon(
+    driver_name='fontawesome', symbol='envelope'
+)
+
+# Mailing profile
 
 icon_user_mailer_create = Icon(
     driver_name='fontawesome-dual', primary_symbol='envelope',

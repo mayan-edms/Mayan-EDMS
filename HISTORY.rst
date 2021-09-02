@@ -241,6 +241,27 @@
   - Add event checking for some remaining tests.
   - Add additional tests.
 
+- Add ``BackendDynamicForm``, a dynamic form for interacting with backends.
+- Add a reusable backend class named ``mayan.apps.databases.classes.BaseBackend``.
+
+- Refactor mailer app:
+
+  - Allow sending document files and document versions as attachments.
+  - Update the ``UserMailer`` model to work with the ``BackendModelMixin``
+    mixin. This allows removing all backend managing code from the model.
+  - Generate the dynamic form schema in the base backend class. Removes
+    dynamic form schema from the views.
+  - Use ``BackendDynamicForm`` and remove dynamic form code from the forms
+    module.
+  - Generalize document file and document version to support any type of
+    object.
+  - Update workflow action to send links to documents or attach the active
+    versions.
+  - Use the reusable ``BaseBackend`` class and remove explicit backend
+    scaffolding.
+
+- Improve test open file and descriptor leak detection.
+
 4.0.15 (2021-08-07)
 ===================
 - Improve the document version export API endpoint.

@@ -5,6 +5,7 @@ from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..events import event_email_sent
+from ..literals import MODEL_SEND_FUNCTION_DOTTED_PATH
 
 from .literals import (
     TEST_EMAIL_BODY_HTML, TEST_EMAIL_ADDRESS, TEST_EMAIL_FROM_ADDRESS,
@@ -133,7 +134,9 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
 
         self._clear_events()
 
-        self.test_user_mailer.send(to=TEST_EMAIL_ADDRESS, cc=TEST_EMAIL_ADDRESS)
+        self.test_user_mailer.send(
+            cc=TEST_EMAIL_ADDRESS, to=TEST_EMAIL_ADDRESS
+        )
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -153,7 +156,9 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
 
         self._clear_events()
 
-        self.test_user_mailer.send(to=TEST_EMAIL_ADDRESS, bcc=TEST_EMAIL_ADDRESS)
+        self.test_user_mailer.send(
+            bcc=TEST_EMAIL_ADDRESS, to=TEST_EMAIL_ADDRESS
+        )
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -174,7 +179,7 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
         self._clear_events()
 
         self.test_user_mailer.send(
-            to=TEST_EMAIL_ADDRESS, reply_to=TEST_EMAIL_ADDRESS
+            reply_to=TEST_EMAIL_ADDRESS, to=TEST_EMAIL_ADDRESS
         )
 
         self.assertEqual(len(mail.outbox), 1)
@@ -192,24 +197,116 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
 
 
 class DocumentMailingTestCase(MailerTestMixin, GenericDocumentTestCase):
-    def test_send_attachment(self):
+    def test_send_link(self):
         self._create_test_user_mailer()
 
         self._clear_events()
 
-        self.test_user_mailer.send_document(
-            to=TEST_EMAIL_ADDRESS, document=self.test_document,
-            as_attachment=True
+        self.test_user_mailer.send_object(
+            obj=self.test_document, to=TEST_EMAIL_ADDRESS
         )
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
 
-        self.assertEqual(
-            mail.outbox[0].attachments[0][0], self.test_document.label
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_document)
+        self.assertEqual(events[0].actor, self.test_user_mailer)
+        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].verb, event_email_sent.id)
+
+
+class DocumentFileMailingTestCase(MailerTestMixin, GenericDocumentTestCase):
+    def test_send_document_file_attachment(self):
+        self._create_test_user_mailer()
+
+        self._clear_events()
+
+        kwargs = {
+            'as_attachment': True, 'obj': self.test_document_file,
+            'to': TEST_EMAIL_ADDRESS
+        }
+        kwargs.update(
+            MODEL_SEND_FUNCTION_DOTTED_PATH.get(
+                self.test_document_file._meta.model, {}
+            )
         )
 
+        self.test_user_mailer.send_object(**kwargs)
+
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
+        self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
+        self.assertEqual(
+            mail.outbox[0].attachments[0][0],
+            self.test_document_file.filename
+        )
+        self.assertEqual(
+            mail.outbox[0].attachments[0][2],
+            self.test_document_file.mimetype
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_document_file)
+        self.assertEqual(events[0].actor, self.test_user_mailer)
+        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].verb, event_email_sent.id)
+
+    def test_send_document_file_link(self):
+        self._create_test_user_mailer()
+
+        self._clear_events()
+
+        self.test_user_mailer.send_object(
+            obj=self.test_document_file, to=TEST_EMAIL_ADDRESS
+        )
+
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
+        self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
+        self.assertEqual(len(mail.outbox[0].attachments), 0)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_document_file)
+        self.assertEqual(events[0].actor, self.test_user_mailer)
+        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].verb, event_email_sent.id)
+
+
+class DocumentVersionMailingTestCase(
+    MailerTestMixin, GenericDocumentTestCase
+):
+    def test_send_document_version_attachment(self):
+        self._create_test_user_mailer()
+
+        self._clear_events()
+
+        kwargs = {
+            'as_attachment': True, 'obj': self.test_document_version,
+            'to': TEST_EMAIL_ADDRESS
+        }
+        kwargs.update(
+            MODEL_SEND_FUNCTION_DOTTED_PATH.get(
+                self.test_document_version._meta.model, {}
+            )
+        )
+
+        self.test_user_mailer.send_object(**kwargs)
+
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
+        self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
+        self.assertEqual(
+            mail.outbox[0].attachments[0][0],
+            str(self.test_document_version)
+        )
         self.assertEqual(
             mail.outbox[0].attachments[0][2],
             DOCUMENT_VERSION_EXPORT_MIMETYPE
@@ -218,7 +315,30 @@ class DocumentMailingTestCase(MailerTestMixin, GenericDocumentTestCase):
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document)
+        self.assertEqual(events[0].action_object, self.test_document_version)
+        self.assertEqual(events[0].actor, self.test_user_mailer)
+        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].verb, event_email_sent.id)
+
+    def test_send_document_version_link(self):
+        self._create_test_user_mailer()
+
+        self._clear_events()
+
+        self.test_user_mailer.send_object(
+            obj=self.test_document_version,
+            to=TEST_EMAIL_ADDRESS
+        )
+
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
+        self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
+        self.assertEqual(len(mail.outbox[0].attachments), 0)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_document_version)
         self.assertEqual(events[0].actor, self.test_user_mailer)
         self.assertEqual(events[0].target, self.test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
