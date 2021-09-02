@@ -7,8 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.user_management.permissions import permission_group_edit
 from mayan.apps.views.generics import (
     AddRemoveView, MultipleObjectDeleteView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectDetailView, SingleObjectEditView,
-    SingleObjectListView
+    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
 
 from .forms import StoredPermissionDetailForm
