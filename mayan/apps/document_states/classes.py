@@ -113,17 +113,31 @@ class WorkflowAction(
     def execute(self, context):
         raise NotImplementedError
 
+    def get_fields(self):
+        return getattr(self, 'fields', {})
+
+    def get_field_order(self):
+        return getattr(self, 'field_order', ())
+
+    def get_media(self):
+        return getattr(self, 'media', {})
+
     def get_form_schema(self, workflow_state, request=None):
         result = {
-            'fields': self.fields or {},
-            'media': getattr(self, 'media', {}),
-            'widgets': getattr(self, 'widgets', {}),
+            'fields': self.get_fields(),
+            'media': self.get_media(),
+            'widgets': self.get_widgets(),
         }
 
-        if hasattr(self, 'field_order'):
-            result['field_order'] = self.field_order
+        field_order = self.get_field_order()
+
+        if field_order:
+            result['field_order'] = field_order
 
         return result
+
+    def get_widgets(self):
+        return getattr(self, 'widgets', {})
 
     def render_field(self, field_name, context):
         try:

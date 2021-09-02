@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.converter.api_view_mixins import APIImageViewMixin
-from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.documents.permissions import permission_document_type_view
 from mayan.apps.documents.serializers.document_type_serializers import DocumentTypeSerializer
@@ -11,12 +10,10 @@ from mayan.apps.rest_api import generics
 
 from ..models.workflow_models import Workflow
 from ..permissions import (
-    permission_workflow_instance_transition,
     permission_workflow_template_create, permission_workflow_template_delete,
     permission_workflow_template_edit, permission_workflow_template_view
 )
 from ..serializers import (
-    WorkflowInstanceSerializer, WorkflowInstanceLogEntrySerializer,
     WorkflowTemplateDocumentTypeAddSerializer,
     WorkflowTemplateDocumentTypeRemoveSerializer, WorkflowTemplateSerializer,
     WorkflowTemplateStateSerializer, WorkflowTemplateTransitionSerializer,
