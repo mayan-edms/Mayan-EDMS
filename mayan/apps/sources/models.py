@@ -1,4 +1,5 @@
 import logging
+from pathlib import Path
 
 from django.contrib.auth import get_user_model
 from django.core.files import File
@@ -109,7 +110,8 @@ class Source(BackendModelMixin, ExtraDataModelMixin, models.Model):
                             description=description,
                             expand=False,
                             file_object=compressed_file_member_file_object,
-                            label=force_text(s=compressed_file_member),
+                            # Use the filename only and not the whole path.
+                            label=Path(compressed_file_member).name,
                             language=language,
                             user=user
                         )
