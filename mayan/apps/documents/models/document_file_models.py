@@ -216,7 +216,9 @@ class DocumentFile(
         for page in self.pages.all():
             page.delete()
 
-        self.file.storage.delete(name=self.file.name)
+        name = self.file.name
+        self.file.close()
+        self.file.storage.delete(name=name)
         self.cache_partition.delete()
 
         result = super().delete(*args, **kwargs)
@@ -245,7 +247,10 @@ class DocumentFile(
         be in the document storage. This is a diagnostic flag to help users
         detect if the storage has desynchronized (ie: Amazon's S3).
         """
-        return self.file.storage.exists(self.file.name)
+        name = self.file.name
+        self.file.close()
+
+        return self.file.storage.exists(name=name)
 
     def get_absolute_url(self):
         return reverse(
@@ -358,10 +363,12 @@ class DocumentFile(
         Return a file descriptor to a document file's file irrespective of
         the storage backend.
         """
+        name = self.file.name
+        self.file.close()
         if raw:
-            return self.file.storage.open(name=self.file.name)
+            return self.file.storage.open(name=name)
         else:
-            file_object = self.file.storage.open(name=self.file.name)
+            file_object = self.file.storage.open(name=name)
 
             result = DocumentFile._execute_hooks(
                 hook_list=DocumentFile._pre_open_hooks,
@@ -494,7 +501,9 @@ class DocumentFile(
     @property
     def size(self):
         if self.exists():
-            return self.file.storage.size(self.file.name)
+            name = self.file.name
+            self.file.close()
+            return self.file.storage.size(name=name)
         else:
             return None
 

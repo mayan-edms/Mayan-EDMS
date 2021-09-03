@@ -20,8 +20,11 @@ class DatabaseFileModelMixin(models.Model):
         abstract = True
 
     def delete(self, *args, **kwargs):
-        if self.file.name:
-            self.file.storage.delete(name=self.file.name)
+        name = self.file.name
+        self.file.close()
+
+        if name:
+            self.file.storage.delete(name=name)
         return super().delete(*args, **kwargs)
 
     def open(self, **kwargs):
@@ -47,6 +50,7 @@ class DatabaseFileModelMixin(models.Model):
             ...     instance.file = File(f)
         """
         self.file.close()
+        self.file.file.close()
 
         default_kwargs.update(**kwargs)
 

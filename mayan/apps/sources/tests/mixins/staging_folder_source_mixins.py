@@ -61,16 +61,22 @@ class StagingFolderTestMixin(SourceTestMixin):
     _create_source_method = '_create_test_staging_folder'
 
     def setUp(self):
+        self._temporary_folders = []
         super().setUp()
         self.test_staging_folder_files = []
 
     def tearDown(self):
         fs_cleanup(filename=self.test_source.get_backend_data()['folder_path'])
+        for temporary_folders in self._temporary_folders:
+            fs_cleanup(filename=temporary_folders)
+
         super().tearDown()
 
     def _create_test_staging_folder(self, extra_data=None):
+        temporary_folder = mkdtemp()
+        self._temporary_folders.append(temporary_folder)
         backend_data = {
-            'folder_path': mkdtemp(),
+            'folder_path': temporary_folder,
             'preview_width': TEST_STAGING_PREVIEW_WIDTH,
             'preview_height': TEST_STAGING_PREVIEW_HEIGHT,
             'uncompress': SOURCE_UNCOMPRESS_CHOICE_NEVER

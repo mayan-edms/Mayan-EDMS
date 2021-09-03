@@ -388,7 +388,7 @@ class SourceBackendEmailMixin:
                     else:
                         shared_uploaded_files.append(
                             SharedUploadedFile.objects.create(
-                                file=File(file=file_object), filename=label
+                                file=file_object, filename=label
                             )
                         )
             else:
@@ -403,7 +403,7 @@ class SourceBackendEmailMixin:
                     with ContentFile(content=force_bytes(message.body), name=label) as file_object:
                         shared_uploaded_files.append(
                             SharedUploadedFile.objects.create(
-                                file=File(file=file_object), filename=label
+                                file=file_object, filename=label
                             )
                         )
 
