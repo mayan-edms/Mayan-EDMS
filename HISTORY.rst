@@ -261,6 +261,8 @@
     scaffolding.
 
 - Improve test open file and descriptor leak detection.
+- Close storage model file after inspection as Django creates a new
+  file descriptor on inspection.
 
 4.0.15 (2021-08-07)
 ===================
