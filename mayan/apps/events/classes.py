@@ -69,8 +69,12 @@ class ActionExporter:
             writer.writerow(row)
 
     def export_to_download_file(self, user=None):
-        # Avoid circular import.
-        from .events import event_events_exported
+        event_type_namespace = EventTypeNamespace.get(
+            name=EVENT_TYPE_NAMESPACE_NAME
+        )
+        event_events_exported = event_type_namespace.get_event(
+            name=EVENT_EVENTS_EXPORTED_NAME
+        )
 
         DownloadFile = apps.get_model(
             app_label='storage', model_name='DownloadFile'
