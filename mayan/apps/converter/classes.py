@@ -24,7 +24,7 @@ from mayan.apps.storage.compressed_files import MsgArchive
 from mayan.apps.storage.literals import MSG_MIME_TYPES
 from mayan.apps.storage.settings import setting_temporary_directory
 from mayan.apps.storage.utils import (
-    NamedTemporaryFile, fs_cleanup, mkdtemp
+    NamedTemporaryFile, TemporaryDirectory, fs_cleanup
 )
 
 from .exceptions import (
@@ -168,37 +168,35 @@ class ConverterBase:
             self.file_object.seek(0)
             temporary_file_object.seek(0)
 
-            libreoffice_home_directory = mkdtemp()
-            args = (
-                temporary_file_object.name, '--outdir', setting_temporary_directory.value,
-                '-env:UserInstallation=file://{}'.format(
-                    os.path.join(
-                        libreoffice_home_directory, 'LibreOffice_Conversion'
+            with TemporaryDirectory() as libreoffice_home_directory:
+                args = (
+                    temporary_file_object.name, '--outdir', setting_temporary_directory.value,
+                    '-env:UserInstallation=file://{}'.format(
+                        os.path.join(
+                            libreoffice_home_directory, 'LibreOffice_Conversion'
+                        )
+                    ),
+                )
+
+                kwargs = {'_env': {'HOME': libreoffice_home_directory}}
+
+                if self.mime_type == 'text/plain':
+                    kwargs.update(
+                        {'infilter': 'Text (encoded):UTF8,LF,,,'}
                     )
-                ),
-            )
 
-            kwargs = {'_env': {'HOME': libreoffice_home_directory}}
-
-            if self.mime_type == 'text/plain':
-                kwargs.update(
-                    {'infilter': 'Text (encoded):UTF8,LF,,,'}
-                )
-
-            try:
-                self.command_libreoffice(*args, **kwargs)
-            except sh.ErrorReturnCode as exception:
-                temporary_file_object.close()
-                raise OfficeConversionError(exception)
-            except Exception as exception:
-                temporary_file_object.close()
-                logger.error(
-                    'Exception launching LibreOffice; %s', exception,
-                    exc_info=True
-                )
-                raise
-            finally:
-                fs_cleanup(filename=libreoffice_home_directory)
+                try:
+                    self.command_libreoffice(*args, **kwargs)
+                except sh.ErrorReturnCode as exception:
+                    temporary_file_object.close()
+                    raise OfficeConversionError(exception)
+                except Exception as exception:
+                    temporary_file_object.close()
+                    logger.error(
+                        'Exception launching LibreOffice; %s', exception,
+                        exc_info=True
+                    )
+                    raise
 
             # LibreOffice return a PDF file with the same name as the input
             # provided but with the .pdf extension.
@@ -223,7 +221,6 @@ class ConverterBase:
         # Don't use context manager with the NamedTemporaryFile on purpose
         # so that it is deleted when the caller closes the file and not
         # before.
-
         temporary_converted_file_object = NamedTemporaryFile()
 
         # Copy the LibreOffice output file to a new named temporary file

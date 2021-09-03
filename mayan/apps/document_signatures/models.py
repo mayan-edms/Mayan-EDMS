@@ -168,8 +168,10 @@ class DetachedSignature(ExtraDataModelMixin, SignatureBaseModel):
         return '{}-{}'.format(self.document_file, _('signature'))
 
     def delete(self, *args, **kwargs):
-        if self.signature_file.name:
-            self.signature_file.storage.delete(name=self.signature_file.name)
+        signature_file_name = self.signature_file.name
+        if signature_file_name:
+            self.signature_file.close()
+            self.signature_file.storage.delete(name=signature_file_name)
         super().delete(*args, **kwargs)
 
     @method_event(
@@ -184,7 +186,8 @@ class DetachedSignature(ExtraDataModelMixin, SignatureBaseModel):
         with self.document_file.open() as file_object:
             try:
                 verify_result = Key.objects.verify_file(
-                    file_object=file_object, signature_file=self.signature_file
+                    file_object=file_object,
+                    signature_file=self.signature_file
                 )
             except VerificationError as exception:
                 # Not signed

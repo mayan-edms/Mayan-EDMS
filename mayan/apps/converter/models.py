@@ -81,7 +81,9 @@ class Asset(ExtraDataModelMixin, models.Model):
 
     def delete(self, *args, **kwargs):
         self.cache_partition.delete()
-        self.file.storage.delete(name=self.file.name)
+        name = self.file.name
+        self.file.close()
+        self.file.storage.delete(name=name)
         return super().delete(*args, **kwargs)
 
     def generate_image(self):
@@ -140,7 +142,9 @@ class Asset(ExtraDataModelMixin, models.Model):
         return image
 
     def open(self):
-        return self.file.storage.open(name=self.file.name)
+        name = self.file.name
+        self.file.close()
+        return self.file.storage.open(name=name)
 
     @method_event(
         event_manager_class=EventManagerSave,

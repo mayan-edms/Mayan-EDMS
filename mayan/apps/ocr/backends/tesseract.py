@@ -27,15 +27,14 @@ class Tesseract(OCRBackendBase):
 
     def execute(self, *args, **kwargs):
         """
-        Execute the command line binary of tesseract
+        Execute the command line binary of tesseract.
         """
         super().execute(*args, **kwargs)
 
         if self.command_tesseract:
             image = self.converter.get_page()
 
-            try:
-                temporary_image_file = TemporaryFile()
+            with TemporaryFile() as temporary_image_file:
                 shutil.copyfileobj(fsrc=image, fdst=temporary_image_file)
                 temporary_image_file.seek(0)
 
@@ -75,8 +74,6 @@ class Tesseract(OCRBackendBase):
                     raise OCRError(error_message)
                 else:
                     return result
-            finally:
-                temporary_image_file.close()
 
     def initialize(self):
         self.languages = ()
@@ -89,13 +86,13 @@ class Tesseract(OCRBackendBase):
                 _('Tesseract OCR not found.')
             )
         else:
-            # Get version
+            # Get version.
             result = self.command_tesseract(v=True)
             logger.debug('Tesseract version: %s', result.stdout)
 
-            # Get languages
+            # Get languages.
             result = self.command_tesseract(list_langs=True)
-            # Sample output format
+            # Sample output format.
             # List of available languages (3):
             # deu
             # eng
@@ -103,7 +100,7 @@ class Tesseract(OCRBackendBase):
             # <- empty line
 
             # Extaction: strip last line, split by newline, discard the first
-            # line
+            # line.
             self.languages = force_text(s=result.stdout).strip().split('\n')[1:]
 
             logger.debug('Available languages: %s', ', '.join(self.languages))

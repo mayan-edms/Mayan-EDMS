@@ -18,7 +18,7 @@ logger = logging.getLogger(name=__name__)
 
 class KeyManager(models.Manager):
     def _preload_keys(self, all_keys=False, key_fingerprint=None, key_id=None):
-        # Preload keys
+        # Preload keys.
         if all_keys:
             logger.debug(msg='preloading all keys')
             keys = self.values()
@@ -98,23 +98,25 @@ class KeyManager(models.Manager):
         )
 
         if signature_file:
-            # Save the original data and invert the argument order
-            # Signature first, file second
-            temporary_file_object = NamedTemporaryFile()
-            temporary_filename = temporary_file_object.name
-            shutil.copyfileobj(fsrc=file_object, fdst=temporary_file_object)
-            temporary_file_object.seek(0)
+            # Save the original data and invert the argument order:
+            # signature first, file second.
+            with NamedTemporaryFile() as temporary_file_object:
+                shutil.copyfileobj(
+                    fsrc=file_object, fdst=temporary_file_object
+                )
+                temporary_file_object.seek(0)
 
-            signature_file_buffer = io.BytesIO()
-            signature_file_buffer.write(signature_file.read())
-            signature_file_buffer.seek(0)
-            signature_file.seek(0)
-            verify_result = GPGBackend.get_instance().verify_file(
-                file_object=signature_file_buffer,
-                data_filename=temporary_filename, keys=keys
-            )
-            signature_file_buffer.close()
-            temporary_file_object.close()
+                with NamedTemporaryFile() as temporary_signature_file_object:
+                    shutil.copyfileobj(
+                        fsrc=signature_file,
+                        fdst=temporary_signature_file_object
+                    )
+                    temporary_signature_file_object.seek(0)
+                    signature_file.seek(0)
+                    verify_result = GPGBackend.get_instance().verify_file(
+                        file_object=temporary_signature_file_object,
+                        data_filename=temporary_file_object.name, keys=keys
+                    )
         else:
             verify_result = GPGBackend.get_instance().verify_file(
                 file_object=file_object, keys=keys
@@ -123,11 +125,11 @@ class KeyManager(models.Manager):
         logger.debug('verify_result.status: %s', verify_result.status)
 
         if verify_result:
-            # Signed and key present
+            # Signed and key present.
             logger.debug(msg='signed and key present')
             return SignatureVerification(verify_result.__dict__)
         elif verify_result.status == 'no public key' and not (key_fingerprint or all_keys or key_id):
-            # Signed but key not present, retry with key fetch
+            # Signed but key not present, retry with key fetch.
             logger.debug(msg='no public key')
             file_object.seek(0)
             return self.verify_file(
@@ -135,7 +137,7 @@ class KeyManager(models.Manager):
                 key_id=verify_result.key_id
             )
         elif verify_result.key_id:
-            # Signed, retried and key still not found
+            # Signed, retried and key still not found.
             logger.debug(msg='signed, retried and key still not found')
             return SignatureVerification(verify_result.__dict__)
         else:

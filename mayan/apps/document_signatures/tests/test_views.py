@@ -704,7 +704,7 @@ class SignatureToolsViewTestCase(
         )
 
     def test_trashed_document_signature_refresh_view_with_permission(self):
-        # Silence converter logging
+        # Silence converter logging.
         self._silence_logger(name='mayan.apps.converter.backends')
 
         self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
