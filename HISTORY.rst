@@ -263,6 +263,12 @@
 - Improve test open file and descriptor leak detection.
 - Close storage model file after inspection as Django creates a new
   file descriptor on inspection.
+- Ensure the name and not the path is used. Compressed files can include
+  path references, these are now scrubbed and only the filename of the file
+  in the compressed archive is used.
+- File handling was improved. Context managers are now used for temporary
+  files and directories. This ensure file descriptors are closed and freed up
+  in all scenarios.
 
 4.0.15 (2021-08-07)
 ===================
