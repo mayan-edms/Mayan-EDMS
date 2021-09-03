@@ -33,8 +33,8 @@ link_send_document_link_single = Link(
     text=_('Email document link'), view='mailer:send_document_link_single'
 )
 link_send_document_link_multiple = Link(
-    args='resolved_object.pk', icon=icon_document_send_link_multiple,
-    text=_('Email document link'), view='mailer:send_document_link_multiple'
+    icon=icon_document_send_link_multiple, text=_('Email document link'),
+    view='mailer:send_document_link_multiple'
 )
 
 # Document file
