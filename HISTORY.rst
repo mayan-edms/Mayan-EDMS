@@ -272,6 +272,15 @@
 - Add detached signature deleted event.
 - Document signature app general improvements. Renamed links, icons and
   view for clarity. Split tests modules.
+- Metadata API updates:
+
+  - Unify document type metadata type serializers.
+  - Update the permission layout to match the one of the views.
+    The edit or view permission is now required for the document
+    type as well as the metadata type.
+
+- Add ``CONVERTER_IMAGE_GENERATION_MAX_RETRIES`` to control how many times
+  the image regeration task will retry lock errors.
 
 4.0.15 (2021-08-07)
 ===================
