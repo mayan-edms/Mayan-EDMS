@@ -121,6 +121,54 @@ class DocumentVersionPageListView(ExternalObjectViewMixin, SingleObjectListView)
         return queryset.filter(pk__in=self.external_object.pages.all())
 
 
+class DocumentVersionPageListAppendView(MultipleObjectConfirmActionView):
+    object_permission = permission_document_version_edit
+    pk_url_kwarg = 'document_version_id'
+    source_queryset = DocumentVersion.valid
+    success_message = _(
+        '%(count)d document version queued for page list append.'
+    )
+    success_message_plural = _(
+        '%(count)d document versions queued for page list append.'
+    )
+
+    def get_extra_context(self):
+        queryset = self.object_list
+
+        result = {
+            'message': _(
+                'The current pages will be deleted and then all the '
+                'document file pages will be appended as pages of this '
+                'document version.'
+            ),
+            'title': ungettext(
+                singular='Append all the document file pages to the selected document version?',
+                plural='Append all the document file pages to the selected document versions?',
+                number=queryset.count()
+            )
+        }
+
+        if queryset.count() == 1:
+            result.update(
+                {
+                    'object': queryset.first(),
+                    'title': _(
+                        'Append all the document file pages to document version: %s?'
+                    ) % queryset.first()
+                }
+            )
+
+        return result
+
+    def object_action(self, form, instance):
+        task_document_version_page_list_append.apply_async(
+            kwargs={
+                'document_version_id': instance.pk,
+                'user_id': self.request.user.pk
+            }
+        )
+
+
 class DocumentVersionPageListRemapView(ExternalObjectViewMixin, FormView):
     external_object_permission = permission_document_version_edit
     external_object_pk_url_kwarg = 'document_version_id'
@@ -148,7 +196,8 @@ class DocumentVersionPageListRemapView(ExternalObjectViewMixin, FormView):
                 )
 
         self.external_object.pages_remap(
-            annotated_content_object_list=annotated_content_object_list
+            annotated_content_object_list=annotated_content_object_list,
+            _user=self.request.user
         )
         return super().form_valid(form=form)
 
@@ -230,51 +279,6 @@ class DocumentVersionPageListRemapView(ExternalObjectViewMixin, FormView):
         )
 
 
-class DocumentVersionPageListAppendView(MultipleObjectConfirmActionView):
-    object_permission = permission_document_version_edit
-    pk_url_kwarg = 'document_version_id'
-    source_queryset = DocumentVersion.valid
-    success_message = _(
-        '%(count)d document version queued for page list append.'
-    )
-    success_message_plural = _(
-        '%(count)d document versions queued for page list append.'
-    )
-
-    def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
-            'message': _(
-                'The current pages will be deleted and then all the '
-                'document file pages will be appended as pages of this '
-                'document version.'
-            ),
-            'title': ungettext(
-                singular='Append all the document file pages to the selected document version?',
-                plural='Append all the document file pages to the selected document versions?',
-                number=queryset.count()
-            )
-        }
-
-        if queryset.count() == 1:
-            result.update(
-                {
-                    'object': queryset.first(),
-                    'title': _(
-                        'Append all the document file pages to document version: %s?'
-                    ) % queryset.first()
-                }
-            )
-
-        return result
-
-    def object_action(self, form, instance):
-        task_document_version_page_list_append.apply_async(
-            kwargs={'document_version_id': instance.pk}
-        )
-
-
 class DocumentVersionPageListResetView(MultipleObjectConfirmActionView):
     object_permission = permission_document_version_edit
     pk_url_kwarg = 'document_version_id'
@@ -314,7 +318,10 @@ class DocumentVersionPageListResetView(MultipleObjectConfirmActionView):
 
     def object_action(self, form, instance):
         task_document_version_page_list_reset.apply_async(
-            kwargs={'document_version_id': instance.pk}
+            kwargs={
+                'document_version_id': instance.pk,
+                'user_id': self.request.user.pk
+            }
         )
 
 

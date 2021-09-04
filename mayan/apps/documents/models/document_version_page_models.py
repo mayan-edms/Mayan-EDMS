@@ -82,7 +82,7 @@ class DocumentVersionPage(
     @method_event(
         event_manager_class=EventManagerMethodAfter,
         event=event_document_version_page_deleted,
-        target='document_version',
+        target='document_version'
     )
     def delete(self, *args, **kwargs):
         self.cache_partition.delete()
@@ -372,12 +372,12 @@ class DocumentVersionPage(
         created={
             'event': event_document_version_page_created,
             'action_object': 'document_version',
-            'target': 'self',
+            'target': 'self'
         },
         edited={
             'event': event_document_version_page_edited,
             'action_object': 'document_version',
-            'target': 'self',
+            'target': 'self'
         }
     )
     def save(self, *args, **kwargs):

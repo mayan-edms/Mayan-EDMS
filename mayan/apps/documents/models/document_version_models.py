@@ -288,6 +288,7 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
         )
 
         for page in self.pages.all():
+            page._event_actor = _user
             page.delete()
 
         if not annotated_content_object_list:
@@ -306,7 +307,7 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
             sender=DocumentVersion, instance=self
         )
 
-    def pages_reset(self, document_file=None):
+    def pages_reset(self, document_file=None, _user=None):
         """
         Remove all page mappings and recreate them to be a 1 to 1 match
         to the latest document file or the document file supplied.
@@ -322,7 +323,8 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
             content_object_list=content_object_list
         )
         return self.pages_remap(
-            annotated_content_object_list=annotated_content_object_list
+            annotated_content_object_list=annotated_content_object_list,
+            _user=_user
         )
 
     @method_event(
@@ -330,12 +332,12 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
         created={
             'event': event_document_version_created,
             'action_object': 'document',
-            'target': 'self',
+            'target': 'self'
         },
         edited={
             'event': event_document_version_edited,
             'action_object': 'document',
-            'target': 'self',
+            'target': 'self'
         }
     )
     def save(self, *args, **kwargs):
