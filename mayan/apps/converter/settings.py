@@ -11,6 +11,7 @@ from .literals import (
     DEFAULT_CONVERTER_GRAPHICS_BACKEND,
     DEFAULT_CONVERTER_GRAPHICS_BACKEND_ARGUMENTS,
     DEFAULT_CONVERTER_IMAGE_CACHE_TIME,
+    DEFAULT_CONVERTER_IMAGE_GENERATION_MAX_RETRIES,
     DEFAULT_CONVERTER_IMAGE_GENERATION_TIMEOUT
 )
 from .setting_callbacks import callback_update_asset_cache_size
@@ -74,6 +75,14 @@ setting_image_cache_time = namespace.add_setting(
     global_name='CONVERTER_IMAGE_CACHE_TIME',
     help_text=_(
         'Time in seconds that the browser should cache the supplied image. '
+    )
+)
+setting_image_generation_timeout = namespace.add_setting(
+    default=DEFAULT_CONVERTER_IMAGE_GENERATION_MAX_RETRIES,
+    global_name='CONVERTER_IMAGE_GENERATION_MAX_RETRIES',
+    help_text=_(
+        'Maximum number of retries before giving up. A value of None means '
+        'the task will retry forever.'
     )
 )
 setting_image_generation_timeout = namespace.add_setting(
