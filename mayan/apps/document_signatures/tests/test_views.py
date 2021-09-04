@@ -11,8 +11,8 @@ from mayan.apps.documents.tests.literals import (
 )
 
 from ..events import (
-    event_detached_signature_created, event_detached_signature_uploaded,
-    event_embedded_signature_created
+    event_detached_signature_created, event_detached_signature_deleted,
+    event_detached_signature_uploaded, event_embedded_signature_created
 )
 from ..models import DetachedSignature, EmbeddedSignature
 from ..permissions import (
@@ -31,12 +31,12 @@ from .literals import (
 )
 from .mixins import (
     DetachedSignatureViewTestMixin, EmbeddedSignatureViewTestMixin,
-    SignatureTestMixin, SignatureToolsViewTestMixin, SignatureViewTestMixin
+    DetachedSignatureTestMixin, SignatureToolsViewTestMixin, SignatureViewTestMixin
 )
 
 
 class SignaturesViewTestCase(
-    KeyTestMixin, SignatureTestMixin, SignatureViewTestMixin,
+    KeyTestMixin, DetachedSignatureTestMixin, SignatureViewTestMixin,
     GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
@@ -89,7 +89,12 @@ class SignaturesViewTestCase(
         )
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self.test_document_file)
+        self.assertEqual(events[0].target, self.test_document_file)
+        self.assertEqual(events[0].verb, event_detached_signature_deleted.id)
 
     def test_trashed_document_signature_delete_view_with_access(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
@@ -242,7 +247,7 @@ class SignaturesViewTestCase(
 
 
 class DetachedSignaturesViewTestCase(
-    KeyTestMixin, SignatureTestMixin, DetachedSignatureViewTestMixin,
+    KeyTestMixin, DetachedSignatureTestMixin, DetachedSignatureViewTestMixin,
     GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
@@ -690,7 +695,7 @@ class EmbeddedSignaturesViewTestCase(
 
 
 class SignatureToolsViewTestCase(
-    KeyTestMixin, SignatureTestMixin, SignatureToolsViewTestMixin,
+    KeyTestMixin, DetachedSignatureTestMixin, SignatureToolsViewTestMixin,
     GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False

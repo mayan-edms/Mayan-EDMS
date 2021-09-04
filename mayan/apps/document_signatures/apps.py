@@ -13,8 +13,8 @@ from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
-    event_detached_signature_created, event_detached_signature_uploaded,
-    event_embedded_signature_created
+    event_detached_signature_created, event_detached_signature_deleted,
+    event_detached_signature_uploaded, event_embedded_signature_created
 )
 from .handlers import (
     handler_unverify_key_signatures, handler_verify_key_signatures
@@ -85,6 +85,7 @@ class DocumentSignaturesApp(MayanAppConfig):
         ModelEventType.register(
             model=DocumentFile, event_types=(
                 event_detached_signature_created,
+                event_detached_signature_deleted,
                 event_detached_signature_uploaded,
                 event_embedded_signature_created
             )

@@ -269,6 +269,7 @@
 - File handling was improved. Context managers are now used for temporary
   files and directories. This ensure file descriptors are closed and freed up
   in all scenarios.
+- Add detached signature deleted event.
 
 4.0.15 (2021-08-07)
 ===================

@@ -134,7 +134,7 @@ class EmbeddedSignatureViewTestMixin:
         )
 
 
-class SignatureTestMixin:
+class DetachedSignatureTestMixin:
     def _upload_test_detached_signature(self):
         with open(file=TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             self.test_signature = DetachedSignature.objects.create(

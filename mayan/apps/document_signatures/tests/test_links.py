@@ -12,11 +12,11 @@ from ..permissions import (
     permission_document_file_signature_view
 )
 from .literals import TEST_SIGNED_DOCUMENT_PATH
-from .mixins import SignatureTestMixin
+from .mixins import DetachedSignatureTestMixin
 
 
 class DocumentSignatureLinksTestCase(
-    SignatureTestMixin, GenericDocumentViewTestCase
+    DetachedSignatureTestMixin, GenericDocumentViewTestCase
 ):
     def test_document_file_signature_detail_link_no_permission(self):
         self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
