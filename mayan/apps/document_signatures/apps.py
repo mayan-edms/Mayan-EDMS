@@ -25,13 +25,13 @@ from .hooks import (
 from .links import (
     link_document_file_all_signature_refresh,
     link_document_file_all_signature_verify,
-    link_document_file_signature_delete,
+    link_document_file_signature_detached_delete,
     link_document_file_signature_detached_create,
     link_document_file_signature_embedded_create,
     link_document_file_signature_details,
-    link_document_file_signature_download,
+    link_document_file_signature_detached_download,
     link_document_file_signature_list,
-    link_document_file_signature_upload,
+    link_document_file_signature_detached_upload,
 )
 from .permissions import (
     permission_document_file_sign_detached,
@@ -139,8 +139,8 @@ class DocumentSignaturesApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_document_file_signature_details,
-                link_document_file_signature_download,
-                link_document_file_signature_delete,
+                link_document_file_signature_detached_download,
+                link_document_file_signature_detached_delete,
             ), sources=(SignatureBaseModel,)
         )
 
@@ -148,15 +148,15 @@ class DocumentSignaturesApp(MayanAppConfig):
             links=(
                 link_document_file_signature_detached_create,
                 link_document_file_signature_embedded_create,
-                link_document_file_signature_upload
+                link_document_file_signature_detached_upload
             ), sources=(
                 'signatures:document_file_signature_list',
                 'signatures:document_file_signature_detached_create',
                 'signatures:document_file_signature_upload',
                 'signatures:document_file_signature_embedded_create',
-                'signatures:document_file_signature_delete',
+                'signatures:document_file_signature_detached_delete',
                 'signatures:document_file_signature_details',
-                'signatures:document_file_signature_download',
+                'signatures:document_file_signature_detached_download',
             )
         )
 
