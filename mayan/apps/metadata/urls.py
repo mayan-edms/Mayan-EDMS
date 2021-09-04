@@ -5,9 +5,11 @@ from .api_views import (
     APIDocumentTypeMetadataTypeListView, APIDocumentTypeMetadataTypeView,
     APIMetadataTypeListView, APIMetadataTypeView
 )
-from .views import (
+from .views.document_views import (
     DocumentMetadataAddView, DocumentMetadataEditView,
-    DocumentMetadataListView, DocumentMetadataRemoveView,
+    DocumentMetadataListView, DocumentMetadataRemoveView
+)
+from .views.metadata_type_views import (
     MetadataTypeCreateView, MetadataTypeDeleteView, MetadataTypeEditView,
     MetadataTypeListView, DocumentTypeMetadataTypeRelationshipView,
     MetadataTypesDocumentTypeRelationshipView
