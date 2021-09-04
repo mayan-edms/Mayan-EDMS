@@ -85,7 +85,7 @@ class ExternalObjectAPIViewMixin(ExternalObjectBaseMixin):
         """
         result = {}
         if self.kwargs:
-            result['external_object'] = self.get_external_object()
+            result['external_object'] = self.external_object
 
         return result
 
