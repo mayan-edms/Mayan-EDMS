@@ -276,6 +276,13 @@ class DocumentTypeMetadataTypeAPIViewTestMixin:
         )
 
 
+class DocumentTypeMetadataTypeTestMixin:
+    def _create_test_document_type_metadata_type(self):
+        self.test_document_type_metadata_type = self.test_document_type.metadata.create(
+            metadata_type=self.test_metadata_type, required=False
+        )
+
+
 class MetadataTypeAPIViewTestMixin:
     def _request_test_metadata_type_create_api_view(self):
         pk_list = list(MetadataType.objects.values('pk'))

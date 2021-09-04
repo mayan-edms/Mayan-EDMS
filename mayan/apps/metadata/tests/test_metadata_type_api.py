@@ -17,7 +17,8 @@ from ..permissions import (
 )
 
 from .mixins import (
-    DocumentTypeMetadataTypeAPIViewTestMixin, MetadataTypeAPIViewTestMixin,
+    DocumentTypeMetadataTypeAPIViewTestMixin,
+    DocumentTypeMetadataTypeTestMixin, MetadataTypeAPIViewTestMixin,
     MetadataTypeTestMixin
 )
 
@@ -251,7 +252,7 @@ class MetadataTypeAPITestCase(
 
 class DocumentTypeMetadataTypeAPITestCase(
     DocumentTestMixin, DocumentTypeMetadataTypeAPIViewTestMixin,
-    MetadataTypeTestMixin, BaseAPITestCase
+    DocumentTypeMetadataTypeTestMixin, MetadataTypeTestMixin, BaseAPITestCase
 ):
     auto_upload_test_document = False
 
@@ -259,26 +260,57 @@ class DocumentTypeMetadataTypeAPITestCase(
         super().setUp()
         self._create_test_metadata_type()
 
-    def _create_test_document_type_metadata_type(self):
-        self.test_document_type_metadata_type = self.test_document_type.metadata.create(
-            metadata_type=self.test_metadata_type, required=False
-        )
-
     def test_document_type_metadata_type_create_api_view_no_permission(self):
         self._clear_events()
 
         response = self._request_document_type_metadata_type_create_api_view()
 
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertEqual(self.test_document_type.metadata.count(), 0)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_type_metadata_type_create_api_view_with_access(self):
+    def test_document_type_metadata_type_create_api_view_with_document_type_access(self):
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_document_type_metadata_type_create_api_view()
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+        self.assertEqual(self.test_document_type.metadata.count(), 0)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_metadata_type_create_api_view_with_metadata_type_access(self):
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_document_type_metadata_type_create_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.assertEqual(self.test_document_type.metadata.count(), 0)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_metadata_type_create_api_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
         )
 
         self._clear_events()
@@ -299,9 +331,16 @@ class DocumentTypeMetadataTypeAPITestCase(
             events[0].verb, event_metadata_type_relationship_updated.id
         )
 
-    def test_document_type_metadata_type_create_dupicate_api_view(self):
+    def test_document_type_metadata_type_create_duplicate_api_view(self):
         self._create_test_document_type_metadata_type()
-        self.grant_permission(permission=permission_document_type_edit)
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
+        )
 
         self._clear_events()
 
@@ -319,18 +358,59 @@ class DocumentTypeMetadataTypeAPITestCase(
         self._clear_events()
 
         response = self._request_document_type_metadata_type_delete_api_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(self.test_document_type.metadata.count(), 1)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_type_metadata_type_delete_api_view_with_access(self):
+    def test_document_type_metadata_type_delete_api_view_with_document_type_access(self):
         self._create_test_document_type_metadata_type()
+
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_document_type_metadata_type_delete_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.assertEqual(self.test_document_type.metadata.count(), 1)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_metadata_type_delete_api_view_with_metadata_type_access(self):
+        self._create_test_document_type_metadata_type()
+
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_document_type_metadata_type_delete_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.assertEqual(self.test_document_type.metadata.count(), 1)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_metadata_type_delete_api_view_with_full_access(self):
+        self._create_test_document_type_metadata_type()
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
         )
 
         self._clear_events()
@@ -356,16 +436,54 @@ class DocumentTypeMetadataTypeAPITestCase(
         self._clear_events()
 
         response = self._request_document_type_metadata_type_list_api_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_type_metadata_type_list_api_view_with_access(self):
+    def test_document_type_metadata_type_list_api_view_document_type_access(self):
         self._create_test_document_type_metadata_type()
+
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_view
+        )
+
+        self._clear_events()
+
+        response = self._request_document_type_metadata_type_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 0)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_metadata_type_list_api_view_metadata_type_access(self):
+        self._create_test_document_type_metadata_type()
+
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_view
+        )
+
+        self._clear_events()
+
+        response = self._request_document_type_metadata_type_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_metadata_type_list_api_view_with_full_access(self):
+        self._create_test_document_type_metadata_type()
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_view
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_view
         )
 
         self._clear_events()
@@ -386,7 +504,7 @@ class DocumentTypeMetadataTypeAPITestCase(
         self._clear_events()
 
         response = self._request_document_type_metadata_type_edit_api_view_via_patch()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         document_type_metadata_type = DocumentTypeMetadataType.objects.first()
         self.assertFalse(document_type_metadata_type.required, True)
@@ -394,11 +512,54 @@ class DocumentTypeMetadataTypeAPITestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_type_metadata_type_patch_api_view_with_access(self):
+    def test_document_type_metadata_type_patch_api_view_with_document_type_access(self):
         self._create_test_document_type_metadata_type()
+
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_document_type_metadata_type_edit_api_view_via_patch()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        document_type_metadata_type = DocumentTypeMetadataType.objects.first()
+        self.assertFalse(document_type_metadata_type.required, True)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_metadata_type_patch_api_view_with_metadata_type_access(self):
+        self._create_test_document_type_metadata_type()
+
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_document_type_metadata_type_edit_api_view_via_patch()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        document_type_metadata_type = DocumentTypeMetadataType.objects.first()
+        self.assertFalse(document_type_metadata_type.required, True)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_metadata_type_patch_api_view_with_full_access(self):
+        self._create_test_document_type_metadata_type()
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
         )
 
         self._clear_events()
@@ -425,7 +586,7 @@ class DocumentTypeMetadataTypeAPITestCase(
         self._clear_events()
 
         response = self._request_document_type_metadata_type_edit_api_view_via_put()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         document_type_metadata_type = DocumentTypeMetadataType.objects.first()
         self.assertFalse(document_type_metadata_type.required, True)
@@ -433,11 +594,54 @@ class DocumentTypeMetadataTypeAPITestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_type_metadata_type_put_api_view_with_access(self):
+    def test_document_type_metadata_type_put_api_view_with_document_type_access(self):
         self._create_test_document_type_metadata_type()
+
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_document_type_metadata_type_edit_api_view_via_put()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        document_type_metadata_type = DocumentTypeMetadataType.objects.first()
+        self.assertFalse(document_type_metadata_type.required, True)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_metadata_type_put_api_view_with_metadata_type_access(self):
+        self._create_test_document_type_metadata_type()
+
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_document_type_metadata_type_edit_api_view_via_put()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        document_type_metadata_type = DocumentTypeMetadataType.objects.first()
+        self.assertFalse(document_type_metadata_type.required, True)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_metadata_type_put_api_view_with_full_access(self):
+        self._create_test_document_type_metadata_type()
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
         )
 
         self._clear_events()
