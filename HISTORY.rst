@@ -281,6 +281,8 @@
 
 - Add ``CONVERTER_IMAGE_GENERATION_MAX_RETRIES`` to control how many times
   the image regeration task will retry lock errors.
+- Add support for appending all document file pages as a single document
+  version.
 
 4.0.15 (2021-08-07)
 ===================

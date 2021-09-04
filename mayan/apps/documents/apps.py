@@ -128,6 +128,7 @@ from .links.document_version_links import (
 )
 from .links.document_version_page_links import (
     link_document_version_page_delete, link_document_version_page_list,
+    link_document_version_page_list_append,
     link_document_version_page_list_remap,
     link_document_version_page_list_reset,
     link_document_version_page_navigation_first,
@@ -872,6 +873,7 @@ class DocumentsApp(MayanAppConfig):
                 link_cache_partition_purge,
                 link_document_version_delete_single, link_document_version_edit,
                 link_document_version_export,
+                link_document_version_page_list_append,
                 link_document_version_page_list_remap,
                 link_document_version_page_list_reset,
                 link_document_version_print_form,

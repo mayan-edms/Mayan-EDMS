@@ -262,6 +262,26 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
         queryset = ModelQueryFields.get(model=DocumentVersionPage).get_queryset()
         return queryset.filter(pk__in=self.version_pages.all())
 
+    def pages_append_all(self, _user=None):
+        """
+        Append the pages of all document files.
+        """
+        DocumentFilePage = apps.get_model(
+            app_label='documents', model_name='DocumentFilePage'
+        )
+
+        document_file_pages = DocumentFilePage.objects.filter(
+            document_file__document=self.document
+        ).order_by('document_file__timestamp', 'document_file__page_number')
+
+        annotated_content_object_list = DocumentVersion.annotate_content_object_list(
+            content_object_list=list(document_file_pages)
+        )
+        return self.pages_remap(
+            annotated_content_object_list=annotated_content_object_list,
+            _user=_user
+        )
+
     def pages_remap(self, annotated_content_object_list=None, _user=None):
         DocumentVersionPage = apps.get_model(
             app_label='documents', model_name='DocumentVersionPage'

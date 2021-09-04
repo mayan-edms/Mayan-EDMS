@@ -208,6 +208,18 @@ def task_document_type_document_trash_periods_check():
 # Document version
 
 @app.task(ignore_result=True)
+def task_document_version_page_list_append(document_version_id):
+    DocumentVersion = apps.get_model(
+        app_label='documents', model_name='DocumentVersion'
+    )
+
+    document_version = DocumentVersion.objects.get(
+        pk=document_version_id
+    )
+    document_version.pages_append_all()
+
+
+@app.task(ignore_result=True)
 def task_document_version_page_list_reset(document_version_id):
     DocumentVersion = apps.get_model(
         app_label='documents', model_name='DocumentVersion'

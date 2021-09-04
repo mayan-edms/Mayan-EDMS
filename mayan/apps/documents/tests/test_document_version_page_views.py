@@ -15,6 +15,7 @@ from ..permissions import (
 
 from .base import GenericDocumentViewTestCase
 from .mixins.document_version_mixins import (
+    DocumentVersionPageAppendViewTestMixin,
     DocumentVersionPageRemapViewTestMixin,
     DocumentVersionPageResetViewTestMixin, DocumentVersionPageViewTestMixin,
     DocumentVersionTransformationTestMixin,
@@ -344,6 +345,60 @@ class DocumentVersionPageRemapViewTestCase(
         self.assertEqual(
             self.test_document_version.pages.first().content_object,
             self.test_document_file_pages[1]
+        )
+
+
+class DocumentVersionPageAppendViewTestCase(
+    DocumentVersionPageAppendViewTestMixin, GenericDocumentViewTestCase
+):
+    def setUp(self):
+        super().setUp()
+        self._upload_test_document_file(
+            action=DOCUMENT_FILE_ACTION_PAGES_KEEP
+        )
+        self.test_document_file_pages = []
+        self.source_content_types = []
+        self.source_object_ids = []
+
+        for test_document_file in self.test_document.files.all():
+            for test_document_file_page in test_document_file.pages.all():
+                self.test_document_file_pages.append(test_document_file_page)
+                self.source_content_types.append(
+                    ContentType.objects.get_for_model(
+                        model=test_document_file_page
+                    )
+                )
+                self.source_object_ids.append(test_document_file_page.pk)
+
+    def test_document_version_append_view_no_permission(self):
+        document_version_page_count = self.test_document_version.pages.count()
+
+        response = self._request_test_document_version_page_list_append_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document_version.refresh_from_db()
+
+        self.assertEqual(
+            self.test_document_version.pages.count(),
+            document_version_page_count
+        )
+
+    def test_document_version_append_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_version,
+            permission=permission_document_version_edit
+        )
+
+        document_version_page_count = self.test_document_version.pages.count()
+
+        response = self._request_test_document_version_page_list_append_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_document_version.refresh_from_db()
+
+        self.assertEqual(
+            self.test_document_version.pages.count(),
+            document_version_page_count + 1
         )
 
 

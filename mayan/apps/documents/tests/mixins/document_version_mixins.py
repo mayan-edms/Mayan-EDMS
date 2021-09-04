@@ -326,6 +326,15 @@ class DocumentVersionPageViewTestMixin:
         )
 
 
+class DocumentVersionPageAppendViewTestMixin:
+    def _request_test_document_version_page_list_append_view(self):
+        return self.post(
+            viewname='documents:document_version_page_list_append', kwargs={
+                'document_version_id': self.test_document_version.pk
+            }
+        )
+
+
 class DocumentVersionPageRemapViewTestMixin:
     def _request_test_document_version_page_list_remap_view(self, data):
         return self.post(

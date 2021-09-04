@@ -56,12 +56,13 @@ from .views.document_type_views import (
 )
 from .views.document_version_page_views import (
     DocumentVersionPageDeleteView, DocumentVersionPageListView,
-    DocumentVersionPageListRemapView, DocumentVersionPageListResetView,
-    DocumentVersionPageNavigationFirst, DocumentVersionPageNavigationLast,
-    DocumentVersionPageNavigationNext, DocumentVersionPageNavigationPrevious,
-    DocumentVersionPageRotateLeftView, DocumentVersionPageRotateRightView,
-    DocumentVersionPageView, DocumentVersionPageViewResetView,
-    DocumentVersionPageZoomInView, DocumentVersionPageZoomOutView
+    DocumentVersionPageListAppendView, DocumentVersionPageListRemapView,
+    DocumentVersionPageListResetView, DocumentVersionPageNavigationFirst,
+    DocumentVersionPageNavigationLast, DocumentVersionPageNavigationNext,
+    DocumentVersionPageNavigationPrevious, DocumentVersionPageRotateLeftView,
+    DocumentVersionPageRotateRightView, DocumentVersionPageView,
+    DocumentVersionPageViewResetView, DocumentVersionPageZoomInView,
+    DocumentVersionPageZoomOutView
 )
 from .views.document_version_views import (
     DocumentVersionActiveView, DocumentVersionCreateView,
@@ -344,6 +345,11 @@ urlpatterns_document_version_pages = [
         regex=r'^documents/versions/pages/(?P<document_version_page_id>\d+)/delete/$',
         name='document_version_page_delete',
         view=DocumentVersionPageDeleteView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/pages/append/$',
+        name='document_version_page_list_append',
+        view=DocumentVersionPageListAppendView.as_view()
     ),
     url(
         regex=r'^documents/versions/(?P<document_version_id>\d+)/pages/remap/$',

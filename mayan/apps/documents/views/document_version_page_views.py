@@ -42,7 +42,10 @@ from ..settings import (
     setting_zoom_percent_step, setting_zoom_max_level,
     setting_zoom_min_level
 )
-from ..tasks import task_document_version_page_list_reset
+from ..tasks import (
+    task_document_version_page_list_append,
+    task_document_version_page_list_reset
+)
 
 __all__ = (
     'DocumentVersionPageListView',
@@ -224,6 +227,51 @@ class DocumentVersionPageListRemapView(ExternalObjectViewMixin, FormView):
             viewname='documents:document_version_page_list', kwargs={
                 'document_version_id': self.external_object.pk
             }
+        )
+
+
+class DocumentVersionPageListAppendView(MultipleObjectConfirmActionView):
+    object_permission = permission_document_version_edit
+    pk_url_kwarg = 'document_version_id'
+    source_queryset = DocumentVersion.valid
+    success_message = _(
+        '%(count)d document version queued for page list append.'
+    )
+    success_message_plural = _(
+        '%(count)d document versions queued for page list append.'
+    )
+
+    def get_extra_context(self):
+        queryset = self.object_list
+
+        result = {
+            'message': _(
+                'The current pages will be deleted and then all the '
+                'document file pages will be appended as pages of this '
+                'document version.'
+            ),
+            'title': ungettext(
+                singular='Append all the document file pages to the selected document version?',
+                plural='Append all the document file pages to the selected document versions?',
+                number=queryset.count()
+            )
+        }
+
+        if queryset.count() == 1:
+            result.update(
+                {
+                    'object': queryset.first(),
+                    'title': _(
+                        'Append all the document file pages to document version: %s?'
+                    ) % queryset.first()
+                }
+            )
+
+        return result
+
+    def object_action(self, form, instance):
+        task_document_version_page_list_append.apply_async(
+            kwargs={'document_version_id': instance.pk}
         )
 
 
