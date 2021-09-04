@@ -396,10 +396,11 @@ class DocumentFile(
 
             self.pages.all().delete()
 
-            for page_number in range(detected_pages):
-                DocumentFilePage.objects.create(
-                    document_file=self, page_number=page_number + 1
-                )
+            with transaction.atomic():
+                for page_number in range(detected_pages):
+                    DocumentFilePage.objects.create(
+                        document_file=self, page_number=page_number + 1
+                    )
 
             if save:
                 self.save()
@@ -433,25 +434,26 @@ class DocumentFile(
             )
 
         try:
-            with transaction.atomic():
-                self.execute_pre_save_hooks()
+            self.execute_pre_save_hooks()
 
-                signal_mayan_pre_save.send(
-                    instance=self, sender=DocumentFile, user=user
+            signal_mayan_pre_save.send(
+                instance=self, sender=DocumentFile, user=user
+            )
+
+            super().save(*args, **kwargs)
+
+            DocumentFile._execute_hooks(
+                hook_list=DocumentFile._post_save_hooks,
+                instance=self
+            )
+
+            if new_document_file:
+                # Only do this for new documents.
+                event_document_file_created.commit(
+                    actor=user, target=self, action_object=self.document
                 )
 
-                super().save(*args, **kwargs)
-
-                DocumentFile._execute_hooks(
-                    hook_list=DocumentFile._post_save_hooks,
-                    instance=self
-                )
-
-                if new_document_file:
-                    # Only do this for new documents.
-                    event_document_file_created.commit(
-                        actor=user, target=self, action_object=self.document
-                    )
+                with transaction.atomic():
                     self.checksum_update(save=False)
                     self.mimetype_update(save=False)
                     self._event_actor = user
@@ -469,10 +471,6 @@ class DocumentFile(
 
                     self.document._event_ignore = True
                     self.document.save(update_fields=('is_stub', 'label'))
-                else:
-                    event_document_file_edited.commit(
-                        actor=user, target=self, action_object=self.document
-                    )
         except Exception as exception:
             logger.error(
                 'Error creating new document file for document "%s"; %s',
@@ -489,6 +487,10 @@ class DocumentFile(
                     signal_post_document_created.send(
                         instance=self.document, sender=Document
                     )
+            else:
+                event_document_file_edited.commit(
+                    actor=user, target=self, action_object=self.document
+                )
 
     def save_to_file(self, file_object):
         """
