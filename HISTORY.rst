@@ -270,6 +270,8 @@
   files and directories. This ensure file descriptors are closed and freed up
   in all scenarios.
 - Add detached signature deleted event.
+- Document signature app general improvements. Renamed links, icons and
+  view for clarity. Split tests modules.
 
 4.0.15 (2021-08-07)
 ===================
