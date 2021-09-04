@@ -83,7 +83,10 @@ class DocumentFilePageCountUpdateView(MultipleObjectConfirmActionView):
 
     def object_action(self, form, instance):
         task_document_file_page_count_update.apply_async(
-            kwargs={'document_file_id': instance.pk}
+            kwargs={
+                'document_file_id': instance.pk,
+                'user_id': self.request.user.pk
+            }
         )
 
 

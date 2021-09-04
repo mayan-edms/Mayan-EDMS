@@ -380,7 +380,7 @@ class DocumentFile(
             else:
                 return file_object
 
-    def page_count_update(self, save=True):
+    def page_count_update(self, save=True, user=None):
         try:
             with self.open() as file_object:
                 converter = ConverterBase.get_converter_class()(
@@ -396,13 +396,13 @@ class DocumentFile(
 
             self.pages.all().delete()
 
-            with transaction.atomic():
-                for page_number in range(detected_pages):
-                    DocumentFilePage.objects.create(
-                        document_file=self, page_number=page_number + 1
-                    )
+            for page_number in range(detected_pages):
+                DocumentFilePage.objects.create(
+                    document_file=self, page_number=page_number + 1
+                )
 
             if save:
+                self._event_actor = user
                 self.save()
 
             return detected_pages

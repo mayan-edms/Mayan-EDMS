@@ -20,14 +20,22 @@ logger = logging.getLogger(name=__name__)
     bind=True, default_retry_delay=UPDATE_PAGE_COUNT_RETRY_DELAY,
     ignore_result=True
 )
-def task_document_file_page_count_update(self, document_file_id):
+def task_document_file_page_count_update(
+    self, document_file_id, user_id=None
+):
     DocumentFile = apps.get_model(
         app_label='documents', model_name='DocumentFile'
     )
+    User = get_user_model()
+
+    if user_id:
+        user = User.objects.get(pk=user_id)
+    else:
+        user = None
 
     document_file = DocumentFile.objects.get(pk=document_file_id)
     try:
-        document_file.page_count_update()
+        document_file.page_count_update(user=user)
     except OperationalError as exception:
         logger.warning(
             'Operational error during attempt to update page count for '
