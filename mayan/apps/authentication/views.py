@@ -174,7 +174,6 @@ class UserSetPasswordView(MultipleObjectFormActionView):
         queryset = self.object_list
 
         result = {
-            'submit_label': _('Submit'),
             'title': ungettext(
                 singular='Change user password',
                 plural='Change users passwords',

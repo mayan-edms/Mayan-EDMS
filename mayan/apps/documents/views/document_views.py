@@ -89,7 +89,6 @@ class DocumentTypeChangeView(MultipleObjectFormActionView):
         queryset = self.object_list
 
         result = {
-            'submit_label': _('Change'),
             'title': ungettext(
                 singular='Change the type of the selected document',
                 plural='Change the type of the selected documents',

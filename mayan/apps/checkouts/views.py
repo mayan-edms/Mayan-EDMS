@@ -39,9 +39,7 @@ class DocumentCheckInView(MultipleObjectConfirmActionView):
     title_plural = _('Check in %(count)d documents.')
 
     def get_extra_context(self):
-        context = {
-            'submit_label': _('Check in'),
-        }
+        context = {}
 
         if self.object_list.count() == 1:
             context.update(
@@ -110,9 +108,7 @@ class DocumentCheckOutView(MultipleObjectFormActionView):
     title_plural = _('Checkout %(count)d documents.')
 
     def get_extra_context(self):
-        context = {
-            'submit_label': _('Checkout'),
-        }
+        context = {}
 
         if self.object_list.count() == 1:
             context.update(

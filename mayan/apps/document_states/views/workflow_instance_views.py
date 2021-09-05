@@ -41,7 +41,7 @@ class WorkflowInstanceListView(ExternalObjectViewMixin, SingleObjectListView):
             'object': self.external_object,
             'title': _(
                 'Workflows for document: %s'
-            ) % self.external_object,
+            ) % self.external_object
         }
 
     def get_source_queryset(self):
@@ -75,7 +75,7 @@ class WorkflowInstanceDetailView(ExternalObjectViewMixin, SingleObjectListView):
             'title': _('Detail of workflow: %(workflow)s') % {
                 'workflow': self.external_object
             },
-            'workflow_instance': self.external_object,
+            'workflow_instance': self.external_object
         }
 
     def get_external_object_queryset(self):
@@ -106,7 +106,7 @@ class WorkflowInstanceTransitionExecuteView(ExternalObjectViewMixin, FormView):
         self.external_object.do_transition(
             comment=comment, extra_data=form_data,
             transition=self.get_workflow_template_transition(),
-            user=self.request.user,
+            user=self.request.user
         )
         messages.success(
             message=_(
@@ -119,14 +119,13 @@ class WorkflowInstanceTransitionExecuteView(ExternalObjectViewMixin, FormView):
         return {
             'navigation_object_list': ('object', 'workflow_instance'),
             'object': self.external_object.document,
-            'submit_label': _('Submit'),
             'title': _(
                 'Execute transition "%(transition)s" for workflow: %(workflow)s'
             ) % {
                 'transition': self.get_workflow_template_transition(),
                 'workflow': self.external_object,
             },
-            'workflow_instance': self.external_object,
+            'workflow_instance': self.external_object
         }
 
     def get_form_extra_kwargs(self):
@@ -159,7 +158,7 @@ class WorkflowInstanceTransitionExecuteView(ExternalObjectViewMixin, FormView):
                 'class': FIELD_TYPE_MAPPING[field.field_type],
                 'help_text': field.help_text,
                 'label': field.label,
-                'required': field.required,
+                'required': field.required
             }
             if field.widget:
                 schema['widgets'][field.name] = {

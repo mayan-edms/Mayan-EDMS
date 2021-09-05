@@ -237,7 +237,7 @@ class DocumentVersionListView(
             'no_results_title': _('No versions available'),
             'object': self.external_object,
             'table_cell_container_classes': 'td-container-thumbnail',
-            'title': _('Versions of document: %s') % self.external_object,
+            'title': _('Versions of document: %s') % self.external_object
         }
 
     def get_source_queryset(self):
@@ -407,10 +407,9 @@ class DocumentVersionTransformationsCloneView(ExternalObjectViewMixin, FormView)
     def get_extra_context(self):
         context = {
             'object': self.external_object,
-            'submit_label': _('Submit'),
             'title': _(
                 'Clone page transformations of document version: %s'
-            ) % self.external_object,
+            ) % self.external_object
         }
 
         return context

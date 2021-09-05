@@ -19,11 +19,7 @@ from .forms import (
     DocumentFileSignatureCreateForm,
     DocumentFileSignatureDetailForm
 )
-from .icons import (
-    icon_document_file_signature_detached_create,
-    icon_document_file_signature_embedded_create,
-    icon_document_file_signature_list
-)
+from .icons import icon_document_file_signature_list
 from .links import (
     link_document_file_signature_detached_create,
     link_document_file_signature_embedded_create,
@@ -98,8 +94,6 @@ class DocumentFileDetachedSignatureCreateView(ExternalObjectViewMixin, FormView)
     def get_extra_context(self):
         return {
             'object': self.external_object,
-            'submit_icon': icon_document_file_signature_detached_create,
-            'submit_label': _('Sign'),
             'title': _(
                 'Sign document file "%s" with a detached signature'
             ) % self.external_object,
@@ -174,8 +168,6 @@ class DocumentFileEmbeddedSignatureCreateView(ExternalObjectViewMixin, FormView)
     def get_extra_context(self):
         return {
             'object': self.external_object,
-            'submit_icon': icon_document_file_signature_embedded_create,
-            'submit_label': _('Sign'),
             'title': _(
                 'Sign document file "%s" with a embedded signature'
             ) % self.external_object,

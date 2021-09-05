@@ -39,7 +39,6 @@ class PrintFormView(ExternalObjectViewMixin, FormView):
                 }
             ),
             'object': self.external_object,
-            'submit_label': _('Submit'),
             'submit_method': 'GET',
             'submit_target': '_blank',
             'title': _('Print: %s') % self.external_object,

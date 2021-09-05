@@ -21,9 +21,6 @@ icon_document_tag_multiple_remove = Icon(
     driver_name='fontawesome-dual', primary_symbol='tag',
     secondary_symbol='minus'
 )
-icon_document_tag_remove_button_submit = Icon(
-    driver_name='fontawesome', symbol='minus'
-)
 icon_document_tag_list = Icon(driver_name='fontawesome', symbol='tags')
 
 # Tags
@@ -35,5 +32,5 @@ icon_tag_create = Icon(
 icon_tag_delete_single = Icon(driver_name='fontawesome', symbol='times')
 icon_tag_delete_multiple = Icon(driver_name='fontawesome', symbol='times')
 icon_tag_document_list = icon_document_list
-icon_tag_edit = Icon(driver_name='fontawesome', symbol='pen-alt')
+icon_tag_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')
 icon_tag_list = Icon(driver_name='fontawesome', symbol='tag')

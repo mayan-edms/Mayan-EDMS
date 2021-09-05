@@ -1,6 +1,6 @@
 from django.utils.encoding import force_text
 
-from ..events import event_document_file_created, event_document_file_edited
+from ..events import event_document_file_edited
 from ..permissions import (
     permission_document_file_tools, permission_document_file_view
 )

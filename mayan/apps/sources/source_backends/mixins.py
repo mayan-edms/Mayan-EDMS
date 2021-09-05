@@ -5,7 +5,6 @@ import logging
 from django import forms
 from django.apps import apps
 from django.core.exceptions import ValidationError
-from django.core.files import File
 from django.core.files.base import ContentFile
 from django.utils.encoding import force_bytes, force_text
 from django.utils.translation import ugettext, ugettext_lazy as _

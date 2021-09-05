@@ -12,7 +12,7 @@ from mayan.apps.views.generics import (
 )
 
 from .forms import MessageDetailForm
-from .icons import icon_form_button_send, icon_message_list
+from .icons import icon_message_list
 from .links import link_message_create
 from .models import Message
 from .permissions import (
@@ -30,9 +30,7 @@ class MessageCreateView(SingleObjectCreateView):
 
     def get_extra_context(self):
         return {
-            'title': _('Create message'),
-            'submit_label': _('Send'),
-            'submit_icon': icon_form_button_send,
+            'title': _('Create message')
         }
 
     def get_instance_extra_data(self):

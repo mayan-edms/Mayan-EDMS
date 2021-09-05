@@ -87,12 +87,11 @@ class DocumentWorkflowTemplatesLaunchView(MultipleObjectFormActionView):
 
     def get_extra_context(self):
         return {
-            'submit_label': _('Launch'),
             'subtitle': _(
                 'Workflows already launched or workflows not applicable to '
                 'some documents when multiple documents are selected, '
                 'will be silently ignored.'
-            ),
+            )
         }
 
     def get_form_extra_kwargs(self):

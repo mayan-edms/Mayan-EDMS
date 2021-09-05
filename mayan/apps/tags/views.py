@@ -16,7 +16,7 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import TagMultipleSelectionForm
-from .icons import icon_menu_tags, icon_document_tag_remove_button_submit
+from .icons import icon_menu_tags
 from .links import link_document_tag_multiple_attach, link_tag_create
 from .models import DocumentTag, Tag
 from .permissions import (
@@ -46,9 +46,7 @@ class TagAttachActionView(MultipleObjectFormActionView):
     title_plural = _('Attach tags to %(count)d documents.')
 
     def get_extra_context(self):
-        context = {
-            'submit_label': _('Attach'),
-        }
+        context = {}
 
         if self.object_list.count() == 1:
             context.update(
@@ -257,10 +255,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
     title_plural = _('Remove tags from %(count)d documents.')
 
     def get_extra_context(self):
-        context = {
-            'submit_icon': icon_document_tag_remove_button_submit,
-            'submit_label': _('Remove'),
-        }
+        context = {}
 
         if self.object_list.count() == 1:
             context.update(

@@ -4,7 +4,6 @@ from pathlib import Path
 from django.contrib.auth import get_user_model
 from django.core.files import File
 from django.db import models, transaction
-from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.converter.layers import layer_saved_transformations

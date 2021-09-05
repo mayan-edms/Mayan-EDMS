@@ -353,10 +353,9 @@ class DocumentFileTransformationsCloneView(ExternalObjectViewMixin, FormView):
     def get_extra_context(self):
         context = {
             'object': self.external_object,
-            'submit_label': _('Submit'),
             'title': _(
                 'Clone page transformations of document file: %s'
-            ) % self.external_object,
+            ) % self.external_object
         }
 
         return context

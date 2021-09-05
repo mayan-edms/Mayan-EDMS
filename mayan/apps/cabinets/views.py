@@ -188,9 +188,7 @@ class DocumentCabinetAddView(MultipleObjectFormActionView):
     title_plural = _('Add %(count)d documents to cabinets.')
 
     def get_extra_context(self):
-        context = {
-            'submit_label': _('Add'),
-        }
+        context = {}
 
         if self.object_list.count() == 1:
             context.update(
@@ -286,9 +284,7 @@ class DocumentCabinetRemoveView(MultipleObjectFormActionView):
     title_plural = _('Remove %(count)d documents from cabinets.')
 
     def get_extra_context(self):
-        context = {
-            'submit_label': _('Remove'),
-        }
+        context = {}
 
         if self.object_list.count() == 1:
             context.update(
