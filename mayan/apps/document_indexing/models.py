@@ -212,9 +212,8 @@ class IndexTemplateNode(MPTTModel):
     )
     expression = models.TextField(
         help_text=_(
-            'Enter a template to render. '
-            'Use Django\'s default templating language '
-            '(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)'
+            'Enter a template to render. Use Django\'s default templating '
+            'language.'
         ),
         verbose_name=_('Indexing expression')
     )
