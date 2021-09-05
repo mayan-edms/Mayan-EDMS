@@ -16,11 +16,11 @@ from .permissions import (
 
 
 link_document_multiple_tag_multiple_attach = Link(
-    icon=icon_document_tag_multiple_attach, text=_('Attach tags'),
+    icon=icon_document_tag_multiple_attach, text=_('Tags: attach'),
     view='tags:multiple_documents_tag_attach'
 )
 link_document_multiple_tag_multiple_remove = Link(
-    icon=icon_document_tag_multiple_remove, text=_('Remove tag'),
+    icon=icon_document_tag_multiple_remove, text=_('Tags: remove'),
     view='tags:multiple_documents_selection_tag_remove'
 )
 link_document_tag_list = Link(
@@ -30,12 +30,12 @@ link_document_tag_list = Link(
 )
 link_document_tag_multiple_remove = Link(
     args='object.id', icon=icon_document_tag_multiple_remove,
-    permissions=(permission_tag_remove,), text=_('Remove tags'),
+    permissions=(permission_tag_remove,), text=_('Tags: remove'),
     view='tags:single_document_multiple_tag_remove'
 )
 link_document_tag_multiple_attach = Link(
     args='object.pk', icon=icon_document_tag_multiple_attach,
-    permissions=(permission_tag_attach,), text=_('Attach tags'),
+    permissions=(permission_tag_attach,), text=_('Tags: attach'),
     view='tags:tag_attach'
 )
 

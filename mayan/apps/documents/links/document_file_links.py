@@ -28,17 +28,17 @@ link_document_file_delete = Link(
 link_document_file_delete_multiple = Link(
     icon=icon_document_file_delete,
     permissions=(permission_document_file_delete,), tags='dangerous',
-    text=_('Delete'), view='documents:document_file_delete_multiple',
+    text=_('Document file: Delete'), view='documents:document_file_delete_multiple',
 )
 link_document_file_edit = Link(
     args='object.pk', icon=icon_document_file_edit,
     permissions=(permission_document_file_edit,),
-    text=_('Edit'), view='documents:document_file_edit',
+    text=_('Document file: Edit'), view='documents:document_file_edit',
 )
 link_document_file_download_quick = Link(
     args='resolved_object.id', icon=icon_document_file_download_quick,
     permissions=(permission_document_file_download,),
-    text=_('Quick download'), view='documents:document_file_download'
+    text=_('Document file: Quick download'), view='documents:document_file_download'
 )
 link_document_file_list = Link(
     args='resolved_object.pk',
@@ -48,7 +48,8 @@ link_document_file_list = Link(
 )
 link_document_file_print_form = Link(
     args='resolved_object.id', icon=icon_document_file_print,
-    permissions=(permission_document_file_print,), text=_('Print'),
+    permissions=(permission_document_file_print,),
+    text=_('Document file: Print'),
     view='documents:document_file_print_form'
 )
 link_document_file_properties = Link(
@@ -79,19 +80,19 @@ link_document_file_transformations_clear = Link(
     args='resolved_object.id',
     icon=icon_document_file_transformations_clear,
     permissions=(permission_transformation_delete,),
-    text=_('Clear transformations'),
+    text=_('Transformations: clear'),
     view='documents:document_file_transformations_clear'
 )
 link_document_file_multiple_transformations_clear = Link(
     icon=icon_document_file_transformations_clear,
     permissions=(permission_transformation_delete,),
-    text=_('Clear transformations'),
+    text=_('Transformations: clear'),
     view='documents:document_file_multiple_transformations_clear'
 )
 link_document_file_transformations_clone = Link(
     args='resolved_object.id',
     icon=icon_document_file_transformations_clone,
     permissions=(permission_transformation_edit,),
-    text=_('Clone transformations'),
+    text=_('Transformations: clone '),
     view='documents:document_file_transformations_clone'
 )

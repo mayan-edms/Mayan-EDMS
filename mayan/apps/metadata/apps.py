@@ -33,8 +33,8 @@ from .handlers import (
 )
 from .html_widgets import DocumentMetadataWidget
 from .links import (
-    link_metadata_add, link_metadata_edit, link_metadata_multiple_add,
-    link_metadata_multiple_edit, link_metadata_multiple_remove,
+    link_metadata_add, link_metadata_edit, link_metadata_add_multiple,
+    link_metadata_edit_multiple, link_metadata_remove_multiple,
     link_metadata_remove, link_metadata_view,
     link_document_type_metadata_type_relationship, link_metadata_type_create,
     link_metadata_type_delete_multiple, link_metadata_type_delete_single,
@@ -242,8 +242,8 @@ class MetadataApp(MayanAppConfig):
         )
         menu_multi_item.bind_links(
             links=(
-                link_metadata_multiple_add, link_metadata_multiple_edit,
-                link_metadata_multiple_remove
+                link_metadata_add_multiple, link_metadata_edit_multiple,
+                link_metadata_remove_multiple
             ), sources=(Document,)
         )
 

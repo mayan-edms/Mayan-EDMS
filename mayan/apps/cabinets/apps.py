@@ -20,10 +20,10 @@ from .html_widgets import DocumentCabinetWidget
 from .links import (
     link_cabinet_list, link_document_cabinet_list,
     link_document_cabinet_remove, link_document_cabinet_add,
-    link_document_multiple_cabinet_add, link_cabinet_child_add,
+    link_document_cabinet_add_multiple, link_cabinet_child_add,
     link_cabinet_create, link_cabinet_delete, link_cabinet_edit,
     link_cabinet_view, link_custom_acl_list,
-    link_multiple_document_cabinet_remove
+    link_document_cabinet_remove_multiple
 )
 from .menus import menu_cabinets
 from .methods import method_document_get_cabinets
@@ -189,8 +189,8 @@ class CabinetsApp(MayanAppConfig):
 
         menu_multi_item.bind_links(
             links=(
-                link_document_multiple_cabinet_add,
-                link_multiple_document_cabinet_remove
+                link_document_cabinet_add_multiple,
+                link_document_cabinet_remove_multiple
             ), sources=(Document,)
         )
         menu_object.bind_links(

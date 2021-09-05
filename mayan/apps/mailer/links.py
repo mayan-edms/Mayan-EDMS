@@ -30,10 +30,10 @@ from .permissions import (
 link_send_document_link_single = Link(
     args='resolved_object.pk', icon=icon_document_send_link_single,
     permissions=(permission_send_document_link,),
-    text=_('Email document link'), view='mailer:send_document_link_single'
+    text=_('Email: as link'), view='mailer:send_document_link_single'
 )
 link_send_document_link_multiple = Link(
-    icon=icon_document_send_link_multiple, text=_('Email document link'),
+    icon=icon_document_send_link_multiple, text=_('Email: as link'),
     view='mailer:send_document_link_multiple'
 )
 
@@ -43,23 +43,23 @@ link_send_document_file_attachment_single = Link(
     args='resolved_object.pk',
     icon=icon_document_file_attachment_send_single,
     permissions=(permission_send_document_file_attachment,),
-    text=_('Email document file'),
+    text=_('Email: as attachment'),
     view='mailer:send_document_file_attachment_single'
 )
 link_send_document_file_attachment_multiple = Link(
     icon=icon_document_file_attachment_send_multiple,
-    text=_('Email document file'),
+    text=_('Email: as attachment'),
     view='mailer:send_document_file_attachment_multiple'
 )
 link_send_document_file_link_single = Link(
     args='resolved_object.pk', icon=icon_document_file_send_link_single,
     permissions=(permission_send_document_file_link,),
-    text=_('Email document file link'),
+    text=_('Email: as link'),
     view='mailer:send_document_file_link_single'
 )
 link_send_document_file_link_multiple = Link(
     icon=icon_document_file_send_link_multiple,
-    text=_('Email document file link'),
+    text=_('Email: as link'),
     view='mailer:send_document_file_link_multiple'
 )
 
@@ -69,23 +69,23 @@ link_send_document_version_attachment_single = Link(
     args='resolved_object.pk',
     icon=icon_document_version_send_attachment_single,
     permissions=(permission_send_document_version_attachment,),
-    text=_('Email document version'),
+    text=_('Email: as attachment'),
     view='mailer:send_document_version_attachment_single'
 )
 link_send_document_version_attachment_multiple = Link(
     icon=icon_document_version_send_attachment_multiple,
-    text=_('Email document version'),
+    text=_('Email: as attachment'),
     view='mailer:send_document_version_attachment_multiple'
 )
 link_send_document_version_link_single = Link(
     args='resolved_object.pk', icon=icon_document_version_send_link_single,
     permissions=(permission_send_document_version_link,),
-    text=_('Email document version link'),
+    text=_('Email: as link'),
     view='mailer:send_document_version_link_single'
 )
 link_send_document_version_link_multiple = Link(
     icon=icon_document_version_send_link_multiple,
-    text=_('Email link version'),
+    text=_('Email: as link'),
     view='mailer:send_document_version_link_multiple'
 )
 

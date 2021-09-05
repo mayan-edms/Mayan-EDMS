@@ -22,30 +22,30 @@ from .permissions import (
 
 link_metadata_add = Link(
     args='object.pk', icon=icon_document_metadata_add,
-    permissions=(permission_document_metadata_add,), text=_('Add metadata'),
+    permissions=(permission_document_metadata_add,), text=_('Metadata: add'),
     view='metadata:metadata_add',
+)
+link_metadata_add_multiple = Link(
+    icon=icon_document_metadata_add, text=_('Metadata: add'),
+    view='metadata:metadata_multiple_add'
 )
 link_metadata_edit = Link(
     args='object.pk', icon=icon_document_metadata_edit,
     permissions=(permission_document_metadata_edit,),
-    text=_('Edit metadata'), view='metadata:metadata_edit'
+    text=_('Metadata: edit'), view='metadata:metadata_edit'
 )
-link_metadata_multiple_add = Link(
-    icon=icon_document_metadata_add, text=_('Add metadata'),
-    view='metadata:metadata_multiple_add'
-)
-link_metadata_multiple_edit = Link(
-    icon=icon_document_metadata_edit, text=_('Edit metadata'),
+link_metadata_edit_multiple = Link(
+    icon=icon_document_metadata_edit, text=_('Metadata: edit'),
     view='metadata:metadata_multiple_edit'
-)
-link_metadata_multiple_remove = Link(
-    icon=icon_document_metadata_remove, text=_('Remove metadata'),
-    view='metadata:metadata_multiple_remove'
 )
 link_metadata_remove = Link(
     args='object.pk', icon=icon_document_metadata_remove,
     permissions=(permission_document_metadata_remove,),
-    text=_('Remove metadata'), view='metadata:metadata_remove',
+    text=_('Metadata: remove'), view='metadata:metadata_remove',
+)
+link_metadata_remove_multiple = Link(
+    icon=icon_document_metadata_remove, text=_('Metadata: remove'),
+    view='metadata:metadata_multiple_remove'
 )
 link_metadata_view = Link(
     args='resolved_object.pk', icon=icon_document_metadata_view,
@@ -59,7 +59,8 @@ link_document_type_metadata_type_relationship = Link(
     args='resolved_object.pk',
     icon=icon_document_type_metadata_type_list,
     permissions=(permission_document_type_edit,),
-    text=_('Metadata types'), view='metadata:document_type_metadata_type_relationship',
+    text=_('Metadata types'),
+    view='metadata:document_type_metadata_type_relationship',
 )
 
 # Metadata type
@@ -68,7 +69,8 @@ link_metadata_type_document_type_relationship = Link(
     args='resolved_object.pk',
     icon=icon_metadata_type_document_type_list,
     permissions=(permission_document_type_edit,),
-    text=_('Document types'), view='metadata:metadata_type_document_type_relationship',
+    text=_('Document types'),
+    view='metadata:metadata_type_document_type_relationship',
 )
 link_metadata_type_create = Link(
     icon=icon_metadata_type_create,

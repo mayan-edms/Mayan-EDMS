@@ -145,8 +145,8 @@ from .links.document_version_page_links import (
 )
 from .links.favorite_links import (
     link_document_favorites_add, link_document_favorites_remove,
-    link_document_list_favorites, link_document_multiple_favorites_add,
-    link_document_multiple_favorites_remove
+    link_document_list_favorites, link_document_favorites_add_multiple,
+    link_document_favorites_remove_multiple
 )
 from .links.trashed_document_links import (
     link_document_delete, link_document_list_deleted,
@@ -728,8 +728,8 @@ class DocumentsApp(MayanAppConfig):
 
         menu_multi_item.bind_links(
             links=(
-                link_document_multiple_favorites_add,
-                link_document_multiple_favorites_remove,
+                link_document_favorites_add_multiple,
+                link_document_favorites_remove_multiple,
                 link_document_multiple_trash,
                 link_document_multiple_type_change
             ), sources=(Document,)

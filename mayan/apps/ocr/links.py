@@ -39,14 +39,14 @@ link_document_type_submit = Link(
 
 link_document_version_ocr_content_delete_multiple = Link(
     icon=icon_document_version_ocr_content_delete_multiple,
-    text=_('Delete OCR content'),
+    text=_('OCR: delete content'),
     view='ocr:document_version_ocr_content_delete_multiple'
 )
 link_document_version_ocr_content_delete_single = Link(
     args='resolved_object.id',
     icon=icon_document_version_ocr_content_delete_single,
     permissions=(permission_document_version_ocr,),
-    text=_('Delete OCR content'),
+    text=_('OCR: delete content'),
     view='ocr:document_version_ocr_content_delete_single'
 )
 link_document_version_ocr_content_view = Link(
@@ -58,22 +58,22 @@ link_document_version_ocr_content_view = Link(
 link_document_version_ocr_download = Link(
     args='resolved_object.id', icon=icon_document_version_ocr_download,
     permissions=(permission_document_version_ocr_content_view,),
-    text=_('Download OCR text'), view='ocr:document_version_ocr_download'
+    text=_('OCR: download text'), view='ocr:document_version_ocr_download'
 )
 link_document_version_ocr_errors_list = Link(
     args='resolved_object.id',
     icon=icon_document_version_ocr_errors_list,
     permissions=(permission_document_version_ocr_content_view,),
-    text=_('OCR errors'), view='ocr:document_version_ocr_error_list'
+    text=_('OCR: errors'), view='ocr:document_version_ocr_error_list'
 )
 link_document_version_ocr_submit_multiple = Link(
     icon=icon_document_version_ocr_submit_multiple,
-    text=_('Submit for OCR'), view='ocr:document_version_ocr_submit_multiple'
+    text=_('OCR: submit'), view='ocr:document_version_ocr_submit_multiple'
 )
 link_document_version_ocr_submit_single = Link(
     args='resolved_object.id',
     icon=icon_document_version_ocr_submit_single,
-    permissions=(permission_document_version_ocr,), text=_('Submit for OCR'),
+    permissions=(permission_document_version_ocr,), text=_('OCR: submit'),
     view='ocr:document_version_ocr_submit_single'
 )
 
@@ -89,7 +89,8 @@ link_document_version_page_ocr_content_edit_view = Link(
     args='resolved_object.id',
     icon=icon_document_version_page_ocr_content_edit_view,
     permissions=(permission_document_version_ocr_content_edit,),
-    text=_('Edit OCR'), view='ocr:document_version_page_ocr_content_edit_view'
+    text=_('OCR: edit content'),
+    view='ocr:document_version_page_ocr_content_edit_view'
 )
 
 # Other

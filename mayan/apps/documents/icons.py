@@ -61,11 +61,13 @@ icon_favorite_document_add = Icon(
     driver_name='fontawesome-dual', primary_symbol='star',
     secondary_symbol='plus'
 )
+icon_favorite_document_add_multiple = icon_favorite_document_add
 icon_favorite_document_list = Icon(driver_name='fontawesome', symbol='star')
 icon_favorite_document_remove = Icon(
     driver_name='fontawesome-dual', primary_symbol='star',
     secondary_symbol='minus'
 )
+icon_favorite_document_remove_multiple = icon_favorite_document_remove
 
 # Document files
 

@@ -25,6 +25,15 @@ def condition_cabinet_is_root(context):
 
 # Document links
 
+link_document_cabinet_add = Link(
+    args='object.pk', icon=icon_document_cabinet_add,
+    permissions=(permission_cabinet_add_document,), text=_('Cabinets: add'),
+    view='cabinets:document_cabinet_add'
+)
+link_document_cabinet_add_multiple = Link(
+    icon=icon_document_multiple_cabinet_add, text=_('Cabinets: add'),
+    view='cabinets:document_multiple_cabinet_add'
+)
 link_document_cabinet_list = Link(
     args='resolved_object.pk', icon=icon_cabinet_list,
     permissions=(permission_cabinet_view,), text=_('Cabinets'),
@@ -33,19 +42,10 @@ link_document_cabinet_list = Link(
 link_document_cabinet_remove = Link(
     args='resolved_object.pk', icon=icon_document_cabinet_remove,
     permissions=(permission_cabinet_remove_document,),
-    text=_('Remove from cabinets'), view='cabinets:document_cabinet_remove'
+    text=_('Cabinets: remove'), view='cabinets:document_cabinet_remove'
 )
-link_document_cabinet_add = Link(
-    args='object.pk', icon=icon_document_cabinet_add,
-    permissions=(permission_cabinet_add_document,), text=_('Add to cabinets'),
-    view='cabinets:document_cabinet_add'
-)
-link_document_multiple_cabinet_add = Link(
-    icon=icon_document_multiple_cabinet_add, text=_('Add to cabinets'),
-    view='cabinets:document_multiple_cabinet_add'
-)
-link_multiple_document_cabinet_remove = Link(
-    icon=icon_document_cabinet_remove, text=_('Remove from cabinets'),
+link_document_cabinet_remove_multiple = Link(
+    icon=icon_document_cabinet_remove, text=_('Cabinets: remove'),
     view='cabinets:multiple_document_cabinet_remove'
 )
 

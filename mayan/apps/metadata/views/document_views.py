@@ -26,7 +26,7 @@ from ..icons import (
     icon_document_metadata_add, icon_document_metadata_edit,
     icon_document_metadata_remove, icon_metadata
 )
-from ..links import link_metadata_add, link_metadata_multiple_add
+from ..links import link_metadata_add, link_metadata_add_multiple
 from ..mixins import DocumentMetadataSameTypeViewMixin
 from ..models import DocumentMetadata, MetadataType
 from ..permissions import (
@@ -208,7 +208,7 @@ class DocumentMetadataEditView(
                 )
             )
         else:
-            no_results_main_link = link_metadata_multiple_add.resolve(
+            no_results_main_link = link_metadata_add_multiple.resolve(
                 context=RequestContext(request=self.request)
             )
             no_results_main_link.url = '{}?id_list={}'.format(

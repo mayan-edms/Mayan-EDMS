@@ -85,19 +85,19 @@ link_document_version_transformations_clear = Link(
     args='resolved_object.id',
     icon=icon_document_version_transformations_clear,
     permissions=(permission_transformation_delete,),
-    text=_('Clear transformations'),
+    text=_('Transformations: clear'),
     view='documents:document_version_transformations_clear'
 )
 link_document_version_multiple_transformations_clear = Link(
     icon=icon_document_version_transformations_clear,
     permissions=(permission_transformation_delete,),
-    text=_('Clear transformations'),
+    text=_('Transformations: clear'),
     view='documents:document_version_multiple_transformations_clear'
 )
 link_document_version_transformations_clone = Link(
     args='resolved_object.id',
     icon=icon_document_version_transformations_clone,
     permissions=(permission_transformation_edit,),
-    text=_('Clone transformations'),
+    text=_('Transformations: clone'),
     view='documents:document_version_transformations_clone'
 )

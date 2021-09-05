@@ -20,48 +20,51 @@ from .permissions import (
 
 link_document_file_content = Link(
     args='resolved_object.id', icon=icon_document_file_content,
-    permissions=(permission_document_file_content_view,), text=_('Content'),
+    permissions=(permission_document_file_content_view,),
+    text=_('Parsed content'),
     view='document_parsing:document_file_content_view'
 )
 link_document_file_content_delete_single = Link(
     args='resolved_object.id', icon=icon_document_file_content_delete_single,
     permissions=(permission_document_file_parse,),
-    text=_('Delete parsed content'),
+    text=_('Parsed content: delete'),
     view='document_parsing:document_file_content_delete_single',
 )
 link_document_file_content_delete_multiple = Link(
     icon=icon_document_file_content_delete_multiple,
-    text=_('Delete parsed content'),
+    text=_('Parsed content: delete'),
     view='document_parsing:document_file_content_delete_multiple',
 )
 link_document_file_content_download = Link(
     args='resolved_object.id', icon=icon_document_file_content_download,
     permissions=(permission_document_file_content_view,),
-    text=_('Download content'),
+    text=_('Parsed content: download'),
     view='document_parsing:document_file_content_download'
 )
 link_document_file_page_content = Link(
     args='resolved_object.id',
     icon=icon_document_file_page_content,
-    permissions=(permission_document_file_content_view,), text=_('Content'),
+    permissions=(permission_document_file_content_view,),
+    text=_('Parsed content'),
     view='document_parsing:document_file_page_content_view'
 )
 link_document_file_parsing_errors_list = Link(
     args='resolved_object.id',
     icon=icon_document_file_parsing_errors_list,
-    permissions=(permission_document_file_parse,), text=_('Parsing errors'),
+    permissions=(permission_document_file_parse,),
+    text=_('Parsed content: errors'),
     view='document_parsing:document_file_parsing_error_list'
 )
 link_document_file_metadata_submit_multiple = Link(
     icon=icon_document_file_submit,
-    text=_('Submit for parsing'),
+    text=_('Parsed content: submit'),
     view='document_parsing:document_file_multiple_submit'
 )
 link_document_file_metadata_submit_single = Link(
     args='resolved_object.id',
     icon=icon_document_file_submit,
     permissions=(permission_document_file_parse,),
-    text=_('Submit for parsing'),
+    text=_('Parsed content: submit'),
     view='document_parsing:document_file_submit'
 )
 
