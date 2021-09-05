@@ -296,7 +296,6 @@ class AddRemoveView(
                                 }
                             ],
                             'form': self.forms['form_available'],
-                            'form_css_classes': 'form-hotkey-double-click',
                             'hide_labels': True,
                             'submit_icon': icon_assign_remove_add,
                             'submit_label': _('Add'),
@@ -315,7 +314,6 @@ class AddRemoveView(
                                 }
                             ],
                             'form': self.forms['form_added'],
-                            'form_css_classes': 'form-hotkey-double-click',
                             'hide_labels': True,
                             'submit_icon': icon_assign_remove_remove,
                             'submit_label': _('Remove'),

@@ -227,17 +227,15 @@ class MayanApp {
     }
 
     setupFormHotkeys () {
-        $('body').on('keypress', '.form-hotkey-enter', function (e) {
-            if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+        $('body').on('keypress', '.form-hotkey-enter', function (event) {
+            if ((event.which && event.which == 13) || (event.keyCode && event.keyCode == 13)) {
                 $(this).find('.btn-hotkey-default').click();
-                return false;
-            } else {
-                return true;
+                event.preventDefault();
             }
         });
-        $('body').on('dblclick', '.form-hotkey-double-click', function (e) {
-            $(this).find('.btn-hotkey-default').click();
-            return false;
+        $('body').on('dblclick', '.input-hotkey-double-click', function (event) {
+            $(this).parents('form').find('.btn-hotkey-default').click();
+            event.preventDefault();
         });
     }
 

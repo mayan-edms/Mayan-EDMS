@@ -35,7 +35,8 @@ class ChoiceForm(forms.Form):
         self.fields['selection'].widget.disabled_choices = disabled_choices
         self.fields['selection'].widget.attrs.update(
             {
-                'class': 'full-height', 'data-height-difference': '450'
+                'class': 'full-height input-hotkey-double-click',
+                'data-height-difference': '450'
             }
         )
 
