@@ -7,6 +7,7 @@ from rest_framework import status
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from mayan.apps.converter.layers import layer_saved_transformations
+from mayan.apps.converter.tests.literals import TEST_TRANSFORMATION_DOCUMENT_PATH
 from mayan.apps.converter.transformations import TransformationRotate270
 from mayan.apps.documents.tests.mixins.document_file_mixins import DocumentFilePageAPIViewTestMixin
 from mayan.apps.documents.permissions import permission_document_file_view
@@ -16,13 +17,11 @@ from ..layers import layer_redactions
 from ..transformations import TransformationRedactionPercent
 from ..permissions import permission_redaction_exclude
 
-from .literals import TEST_REDACTION_DOCUMENT_PATH
-
 
 class LayerMaximumOrderAPIViewTestCase(
     DocumentFilePageAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
 ):
-    test_document_path = TEST_REDACTION_DOCUMENT_PATH
+    test_document_path = TEST_TRANSFORMATION_DOCUMENT_PATH
 
     def test_redaction_maximum_layer_order_exclude_transformation(self):
         self.grant_access(
