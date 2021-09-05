@@ -11,6 +11,7 @@ from .utils import PyPIClient
 
 class CheckVersionView(SimpleView):
     template_name = 'appearance/generic_template.html'
+    view_permission = permission_dependencies_view
 
     def get_extra_context(self):
         return {
