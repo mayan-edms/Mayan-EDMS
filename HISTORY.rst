@@ -290,6 +290,16 @@
 - Add conditions to the favorite document links.
 - Update mailing icons.
 - Remove submit button label and submit button icons.
+- The ``performupgrade`` command won't try to hide critical errors and
+  instead raise any exception to obtain the maximum amount of debug
+  information.
+- Add support to filter the add/remove choice form.
+- Dependencies app updates:
+
+  - Move the link to check for the latest version to the tools
+    menu.
+  - Checking for updates now required the view dependencies
+    permission.
 
 4.0.15 (2021-08-07)
 ===================
