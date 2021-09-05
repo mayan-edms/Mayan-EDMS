@@ -117,12 +117,10 @@ class PartialNavigation {
         }
 
         if ($this.hasAnyClass(this.disabledAnchorClasses)) {
-            event.preventDefault();
             return false;
         }
 
         if ($this.parents().hasAnyClass(this.disabledAnchorClasses)) {
-            event.preventDefault();
             return false;
         }
 
