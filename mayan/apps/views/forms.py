@@ -23,6 +23,19 @@ class ChoiceForm(forms.Form):
     Form to be used in side by side templates used to add or remove
     items from a many to many field.
     """
+    search = forms.CharField(
+        label=_('Search'), required=False, widget=forms.widgets.TextInput(
+            attrs={
+                'autocomplete': 'off',
+                'class': 'views-select-search',
+                'placeholder': 'Filter list'
+            }
+        )
+    )
+    selection = forms.MultipleChoiceField(
+        required=False, widget=DisableableSelectWidget()
+    )
+
     def __init__(self, *args, **kwargs):
         choices = kwargs.pop('choices', [])
         label = kwargs.pop('label', _('Selection'))
@@ -36,13 +49,9 @@ class ChoiceForm(forms.Form):
         self.fields['selection'].widget.attrs.update(
             {
                 'class': 'full-height input-hotkey-double-click',
-                'data-height-difference': '450'
+                'data-height-difference': '495'
             }
         )
-
-    selection = forms.MultipleChoiceField(
-        required=False, widget=DisableableSelectWidget()
-    )
 
 
 class FormOptions:
