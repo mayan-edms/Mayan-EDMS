@@ -283,6 +283,13 @@
   the image regeration task will retry lock errors.
 - Add support for appending all document file pages as a single document
   version.
+- Moved signals, hooks and events outside of the document file creation
+  transaction.
+- Capture the user for the document version page reset and remap action
+  events.
+- Add conditions to the favorite document links.
+- Update mailing icons.
+- Remove submit button label and submit button icons.
 
 4.0.15 (2021-08-07)
 ===================
