@@ -17,11 +17,12 @@ class Command(management.BaseCommand):
         try:
             signal_pre_upgrade.send(sender=self)
         except Exception as exception:
-            raise CommandError(
+            self.stderr.write(
                 'Error during signal_pre_upgrade signal: %s, %s' % (
                     exception, type(exception)
                 )
             )
+            raise
 
         if not options.get('no_dependencies', False):
             management.call_command(
@@ -34,17 +35,19 @@ class Command(management.BaseCommand):
         try:
             signal_perform_upgrade.send(sender=self)
         except Exception as exception:
-            raise CommandError(
+            self.stderr.write(
                 'Error during signal_perform_upgrade signal; %s, %s' % (
                     exception, type(exception)
                 )
             )
+            raise
 
         try:
             signal_post_upgrade.send(sender=self)
         except Exception as exception:
-            raise CommandError(
+            self.stderr.write(
                 'Error during signal_post_upgrade signal; %s, %s' % (
                     exception, type(exception)
                 )
             )
+            raise
