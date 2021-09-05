@@ -3,40 +3,40 @@ from mayan.apps.appearance.classes import Icon
 # Document
 
 icon_document_send_link_single = Icon(
-    driver_name='fontawesome', symbol='envelope'
+    driver_name='fontawesome', symbol='external-link-alt'
 )
 icon_document_send_link_multiple = Icon(
-    driver_name='fontawesome', symbol='envelope'
+    driver_name='fontawesome', symbol='external-link-alt'
 )
 
 # Document file
 
 icon_document_file_attachment_send_single = Icon(
-    driver_name='fontawesome', symbol='envelope'
+    driver_name='fontawesome', symbol='paperclip'
 )
 icon_document_file_attachment_send_multiple = Icon(
-    driver_name='fontawesome', symbol='envelope'
+    driver_name='fontawesome', symbol='external-link-alt'
 )
 icon_document_file_send_link_single = Icon(
-    driver_name='fontawesome', symbol='envelope'
+    driver_name='fontawesome', symbol='paperclip'
 )
 icon_document_file_send_link_multiple = Icon(
-    driver_name='fontawesome', symbol='envelope'
+    driver_name='fontawesome', symbol='external-link-alt'
 )
 
 # Document version
 
 icon_document_version_send_attachment_single = Icon(
-    driver_name='fontawesome', symbol='envelope'
+    driver_name='fontawesome', symbol='paperclip'
 )
 icon_document_version_send_link_single = Icon(
-    driver_name='fontawesome', symbol='envelope'
+    driver_name='fontawesome', symbol='external-link-alt'
 )
 icon_document_version_send_attachment_multiple = Icon(
-    driver_name='fontawesome', symbol='envelope'
+    driver_name='fontawesome', symbol='paperclip'
 )
 icon_document_version_send_link_multiple = Icon(
-    driver_name='fontawesome', symbol='envelope'
+    driver_name='fontawesome', symbol='external-link-alt'
 )
 
 # Mailing profile
