@@ -164,8 +164,8 @@ job_documentation_push:
     - releases/all_major
     - releases/documentation
   script:
-    - ssh mayandocs@docs.mayan-edms.com "rm -Rf /home/rosarior/webapps/mayan_docs/*"
-    - rsync -avzP --progress -e ssh docs/_build/html/* mayandocs@docs.mayan-edms.com:/home/rosarior/webapps/mayan_docs
+    - ssh $DOCUMENTATION_SSH_USERNAME@$DOCUMENTATION_HOSTNAME "rm -Rf $DOCUMENTATION_SERVER_PATH/*"
+    - rsync -avzP --progress -e ssh docs/_build/html/* $DOCUMENTATION_SSH_USERNAME@$DOCUMENTATION_HOSTNAME:$DOCUMENTATION_SERVER_PATH
   stage: stage_push_documentation
 
 # Python
