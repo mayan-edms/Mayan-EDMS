@@ -641,6 +641,17 @@ class SourceColumn(TemplateObjectMixin):
         if hasattr(source, '_meta'):
             source_classes.add(source._meta.model)
         else:
+            # Support list of objects.
+            try:
+                # Is iterable?
+                source = source[0]
+            except TypeError:
+                """
+                It is not an iterable.
+                """
+
+            # If an iterable `source` is now the first element if not
+            # `source` is the original object. Store it in both cases.
             source_classes.add(source)
 
         try:
