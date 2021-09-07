@@ -30,7 +30,7 @@ def navigation_get_sort_field_querystring(context, column):
 
 @register.simple_tag
 def navigation_get_source_columns(
-    source, exclude_identifier=False, only_identifier=False
+    source, exclude_identifier=False, names=None, only_identifier=False
 ):
     try:
         # Is it a query set?
@@ -52,10 +52,9 @@ def navigation_get_source_columns(
             """
             Its a list and it's empty.
             """
-
     return SourceColumn.get_for_source(
         source=source, exclude_identifier=exclude_identifier,
-        only_identifier=only_identifier
+        names=names, only_identifier=only_identifier
     )
 
 

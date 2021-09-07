@@ -31,7 +31,30 @@ from .utils import get_current_view_name
 logger = logging.getLogger(name=__name__)
 
 
-class Link:
+class TemplateObjectMixin:
+    def get_request(self, context, request=None):
+        if not request:
+            # Try to get the request object the faster way and fallback to
+            # the slower method.
+            try:
+                request = context.request
+            except AttributeError:
+                # Simple request extraction failed. Might not be a view
+                # context. Try alternate method.
+                try:
+                    request = Variable(var='request').resolve(context=context)
+                except VariableDoesNotExist:
+                    # There is no request variable, most probable a 500 in
+                    # a test view. Don't return any resolved links then.
+                    logger.warning(
+                        'No request variable, aborting `{}` resolution'.format(self.__class__.__name__)
+                    )
+                    raise
+
+        return request
+
+
+class Link(TemplateObjectMixin):
     _registry = {}
 
     @staticmethod
@@ -90,13 +113,7 @@ class Link:
         if not context:
             context = RequestContext(request=request)
 
-        if not request:
-            # Try to get the request object the faster way and fallback to the
-            # slower method.
-            try:
-                request = context.request
-            except AttributeError:
-                request = Variable(var='request').resolve(context=context)
+        request = self.get_request(context=context, request=request)
 
         current_path = request.META['PATH_INFO']
         current_view_name = resolve(path=current_path).view_name
@@ -229,7 +246,7 @@ class Link:
         return resolved_link
 
 
-class Menu:
+class Menu(TemplateObjectMixin):
     _registry = {}
 
     @classmethod
@@ -347,8 +364,8 @@ class Menu:
     def resolve(self, context=None, request=None, source=None, sort_results=False):
         if not context and not request:
             raise ImproperlyConfigured(
-                'Must provide a context or a request in order to resolve the '
-                'menu.'
+                'Must provide a context or a request in order to resolve '
+                'the menu.'
             )
 
         if not context:
@@ -359,19 +376,7 @@ class Menu:
 
         result = []
 
-        if not request:
-            try:
-                request = context.request
-            except AttributeError:
-                # Simple request extraction failed. Might not be a view context.
-                # Try alternate method.
-                try:
-                    request = Variable(var='request').resolve(context=context)
-                except VariableDoesNotExist:
-                    # There is no request variable, most probable a 500 in a test
-                    # view. Don't return any resolved links then.
-                    logger.warning('No request variable, aborting menu resolution')
-                    return ()
+        request = self.get_request(context=context, request=request)
 
         current_view_name = get_current_view_name(request=request)
         if not current_view_name:
@@ -596,7 +601,7 @@ class Separator(Link):
         return result
 
 
-class SourceColumn:
+class SourceColumn(TemplateObjectMixin):
     _registry = {}
 
     @staticmethod
@@ -625,7 +630,8 @@ class SourceColumn:
 
     @classmethod
     def get_for_source(
-        cls, source, exclude_identifier=False, only_identifier=False
+        cls, source, exclude_identifier=False, names=None,
+        only_identifier=False
     ):
         # Process columns as a set to avoid duplicate resolved column
         # detection code.
@@ -706,6 +712,9 @@ class SourceColumn:
         # needed.
         columns = SourceColumn.sort(columns=filtered_columns)
 
+        if names is not None:
+            return [column for column in columns if column.name in names]
+
         return columns
 
     def __init__(
@@ -713,9 +722,13 @@ class SourceColumn:
         help_text=None, html_extra_classes=None, include_label=False,
         is_attribute_absolute_url=False, is_object_absolute_url=False,
         is_identifier=False, is_sortable=False, kwargs=None, label=None,
-        order=None, sort_field=None, widget=None,
+        name=None, order=None, sort_field=None, widget=None,
         widget_condition=None
     ):
+        """
+        name: optional unique identifier for this source column for the
+        specified source.
+        """
         self._label = label
         self._help_text = help_text
         self.source = source
@@ -724,12 +737,13 @@ class SourceColumn:
         self.exclude = set()
         self.func = func
         self.html_extra_classes = html_extra_classes or ''
+        self.include_label = include_label
         self.is_attribute_absolute_url = is_attribute_absolute_url
         self.is_object_absolute_url = is_object_absolute_url
         self.is_identifier = is_identifier
         self.is_sortable = is_sortable
         self.kwargs = kwargs or {}
-        self.include_label = include_label
+        self.name = name
         self.order = order or 0
         self.sort_field = sort_field
         self.widget = widget
@@ -839,8 +853,10 @@ class SourceColumn:
             return self.attribute
 
     def get_sort_field_querystring(self, context):
+        request = self.get_request(context=context)
+
         # We do this to get an mutable copy we can modify.
-        querystring = context.request.GET.copy()
+        querystring = request.GET.copy()
 
         previous_sort_fields = self.get_previous_sort_fields(context=context)
 
@@ -878,10 +894,18 @@ class SourceColumn:
         self.absolute_url = self.get_absolute_url(obj=context['object'])
         if self.widget:
             if self.check_widget_condition(context=context):
-                widget_instance = self.widget(
-                    column=self, request=context['request']
-                )
-                return widget_instance.render(value=result)
+
+                try:
+                    request = self.get_request(context=context)
+                except VariableDoesNotExist:
+                    """
+                    Don't attempt to render and return the value if any.
+                    """
+                else:
+                    widget_instance = self.widget(
+                        column=self, request=request
+                    )
+                    return widget_instance.render(value=result)
 
         if not result:
             if self.empty_value:
