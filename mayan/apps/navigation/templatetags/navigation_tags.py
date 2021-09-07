@@ -32,26 +32,6 @@ def navigation_get_sort_field_querystring(context, column):
 def navigation_get_source_columns(
     source, exclude_identifier=False, names=None, only_identifier=False
 ):
-    try:
-        # Is it a query set?
-        source = source.model
-    except AttributeError:
-        # Is not a query set
-        try:
-            # Is iterable?
-            source = source[0]
-        except TypeError:
-            """
-            It is not an iterable.
-            """
-        except IndexError:
-            """
-            Its a list and it's empty.
-            """
-        except KeyError:
-            """
-            Its a list and it's empty.
-            """
     return SourceColumn.get_for_source(
         source=source, exclude_identifier=exclude_identifier,
         names=names, only_identifier=only_identifier
