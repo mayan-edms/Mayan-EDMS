@@ -15,8 +15,8 @@
 {% if missing_items %}
     <div class="alert alert-warning">
         {% for item in missing_items %}
-            <p><strong>{{ item.label }}</strong> </p>
-            <p>
+            <p style="color:black;"><strong>{{ item.label }}</strong> </p>
+            <p style="color:black;">
                 {{ item.description }}
                 {% if item.view %}<a class="btn btn-primary btn-xs" href="{% url item.view %}">{% trans 'Click here to fix this.' %}</a>{% endif %}
             </p>
