@@ -14,13 +14,13 @@ class DashboardWidgetUserTotal(DashboardWidgetNumeric):
     label = _('Total users')
     link = reverse_lazy(viewname='user_management:user_list')
 
-    def render(self, request):
+    def get_count(self):
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
-        self.count = AccessControlList.objects.restrict_queryset(
-            permission=permission_user_view, user=request.user,
-            queryset=get_user_model().objects.all()
+        return AccessControlList.objects.restrict_queryset(
+            permission=permission_user_view,
+            queryset=get_user_model().objects.all(), user=self.request.user
         ).count()
         return super().render(request)
 
@@ -30,15 +30,14 @@ class DashboardWidgetGroupTotal(DashboardWidgetNumeric):
     label = _('Total groups')
     link = reverse_lazy(viewname='user_management:group_list')
 
-    def render(self, request):
+    def get_count(self):
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
         Group = apps.get_model(
             app_label='auth', model_name='Group'
         )
-        self.count = AccessControlList.objects.restrict_queryset(
-            permission=permission_group_view, user=request.user,
-            queryset=Group.objects.all()
+        return AccessControlList.objects.restrict_queryset(
+            permission=permission_group_view, queryset=Group.objects.all(),
+            user=self.request.user
         ).count()
-        return super().render(request)

@@ -106,15 +106,6 @@ a i {
     padding-right: 3px;
 }
 
-.dashboard-widget {
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-    border: 1px solid black;
-}
-
-.dashboard-widget-icon {
-    font-size: 200%;
-}
-
 /* Notifications */
 #toast-container > div {
   opacity: 1;

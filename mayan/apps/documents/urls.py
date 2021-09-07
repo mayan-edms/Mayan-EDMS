@@ -462,7 +462,7 @@ urlpatterns_favorite_documents = [
     ),
     url(
         regex=r'^documents/multiple/add_to_favorites/$',
-        name='document_multiple_favorite_add', view=FavoriteAddView.as_view()
+        name='document_favorite_add_multiple', view=FavoriteAddView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/remove_from_favorites/$',
@@ -470,7 +470,7 @@ urlpatterns_favorite_documents = [
     ),
     url(
         regex=r'^documents/multiple/remove_from_favorites/$',
-        name='document_multiple_favorite_remove',
+        name='document_favorite_remove_multiple',
         view=FavoriteRemoveView.as_view()
     ),
 ]

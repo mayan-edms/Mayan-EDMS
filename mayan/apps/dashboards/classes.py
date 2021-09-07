@@ -69,13 +69,21 @@ class BaseDashboardWidget:
     def register(cls, klass):
         cls._registry[klass.name] = klass
 
+    def get_base_context(self):
+        raise NotImplementedError
+
     def get_context(self):
-        return self.context
+        return {}
 
     def render(self, request):
+        self.request = request
+        context = self.get_base_context()
+        context.update(self.get_context())
+        context.update({'request': request})
+
         if self.template_name:
             return loader.render_to_string(
-                template_name=self.template_name, context=self.get_context(),
+                template_name=self.template_name, context=context,
             )
 
 
@@ -87,10 +95,30 @@ class DashboardWidgetNumeric(BaseDashboardWidget):
     link_icon = icon_dashboard_link_icon
     template_name = 'dashboards/numeric_widget.html'
 
-    def get_context(self):
+    def get_base_context(self):
         return {
-            'count': intcomma(value=self.count),
+            'count': intcomma(value=self.get_count()),
             'count_raw': self.count,
+            'icon': self.icon,
+            'label': self.label,
+            'link': self.link,
+            'link_icon': self.link_icon
+        }
+
+
+class DashboardWidgetList(BaseDashboardWidget):
+    columns = None
+    icon = None
+    label = None
+    link = None
+    link_icon = icon_dashboard_link_icon
+    object_list_length = 10
+    template_name = 'dashboards/widget_list.html'
+
+    def get_base_context(self):
+        return {
+            'columns': self.columns or (),
+            'object_list': self.get_object_list()[:self.object_list_length],
             'icon': self.icon,
             'label': self.label,
             'link': self.link,

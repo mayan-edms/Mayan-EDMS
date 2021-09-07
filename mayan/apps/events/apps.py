@@ -8,9 +8,11 @@ from mayan.apps.common.menus import (
     menu_object, menu_secondary, menu_tools, menu_topbar, menu_user
 )
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.user_management.dashboards import dashboard_user
 from mayan.apps.views.html_widgets import ObjectLinkWidget, TwoStateWidget
 
 from .classes import EventTypeNamespace
+from .dashboard_widgets import DashboardWidgetUserEvents
 from .html_widgets import widget_event_actor_link, widget_event_type_link
 from .links import (
     link_current_user_events, link_current_user_events_clear,
@@ -56,7 +58,8 @@ class EventsApp(MayanAppConfig):
         # upstream package.
         SourceColumn(
             attribute='timestamp', is_identifier=True,
-            is_sortable=True, label=_('Date and time'), source=Action
+            is_sortable=True, label=_('Date and time'), name='timestamp',
+            source=Action
         )
         SourceColumn(
             func=widget_event_actor_link, label=_('Actor'),
@@ -64,11 +67,11 @@ class EventsApp(MayanAppConfig):
         )
         SourceColumn(
             func=widget_event_type_link, label=_('Event'),
-            include_label=True, source=Action
+            include_label=True, name='event_type', source=Action
         )
         SourceColumn(
             attribute='target', label=_('Target'), include_label=True,
-            source=Action, widget=ObjectLinkWidget
+            name='target', source=Action, widget=ObjectLinkWidget
         )
         SourceColumn(
             attribute='action_object', label=_('Action object'),
@@ -107,6 +110,12 @@ class EventsApp(MayanAppConfig):
         SourceColumn(
             attribute='read', include_label=True, is_sortable=True,
             label=_('Seen'), source=Notification, widget=TwoStateWidget
+        )
+
+        # Dashboards
+
+        dashboard_user.add_widget(
+            widget=DashboardWidgetUserEvents, order=4
         )
 
         # Clear

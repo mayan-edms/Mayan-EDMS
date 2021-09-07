@@ -17,7 +17,7 @@ def condition_not_is_in_favorites(context):
     return not context['resolved_object'].favorites.exists()
 
 
-link_document_list_favorites = Link(
+link_document_favorites_list = Link(
     icon=icon_favorite_document_list, text=_('Favorites'),
     view='documents:document_favorite_list'
 )
@@ -33,11 +33,11 @@ link_document_favorites_remove = Link(
     permissions=(permission_document_view,), text=_('Remove from favorites'),
     view='documents:document_favorite_remove'
 )
-link_document_multiple_favorites_add = Link(
+link_document_favorites_add_multiple = Link(
     text=_('Add to favorites'), icon=icon_favorite_document_add,
-    view='documents:document_multiple_favorite_add'
+    view='documents:document_favorite_add_multiple'
 )
-link_document_multiple_favorites_remove = Link(
+link_document_favorites_remove_multiple = Link(
     text=_('Remove from favorites'), icon=icon_favorite_document_remove,
-    view='documents:document_multiple_favorite_remove'
+    view='documents:document_favorite_remove_multiple'
 )

@@ -29,6 +29,7 @@ from mayan.apps.file_caching.permissions import permission_cache_partition_purge
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.templating.classes import AJAXTemplate
+from mayan.apps.user_management.dashboards import dashboard_user
 from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .dashboard_widgets import (
@@ -36,6 +37,9 @@ from .dashboard_widgets import (
     DashboardWidgetDocumentsNewThisMonth,
     DashboardWidgetDocumentsPagesNewThisMonth, DashboardWidgetDocumentsTotal,
     DashboardWidgetDocumentsTypesTotal,
+    DashboardWidgetUserRecentlyAccessedDocuments,
+    DashboardWidgetUserRecentlyCreatedDocuments,
+    DashboardWidgetUserFavoriteDocuments
 )
 
 # Documents
@@ -145,8 +149,8 @@ from .links.document_version_page_links import (
 )
 from .links.favorite_links import (
     link_document_favorites_add, link_document_favorites_remove,
-    link_document_list_favorites, link_document_multiple_favorites_add,
-    link_document_multiple_favorites_remove
+    link_document_favorites_list, link_document_favorites_add_multiple,
+    link_document_favorites_remove_multiple
 )
 from .links.trashed_document_links import (
     link_document_delete, link_document_list_deleted,
@@ -537,8 +541,8 @@ class DocumentsApp(MayanAppConfig):
 
         SourceColumn(
             attribute='get_label', is_object_absolute_url=True,
-            is_identifier=True, is_sortable=True, sort_field='label',
-            source=Document
+            is_identifier=True, is_sortable=True, name='label',
+            sort_field='label', source=Document
         )
         SourceColumn(
             html_extra_classes='text-center document-thumbnail-list',
@@ -548,7 +552,7 @@ class DocumentsApp(MayanAppConfig):
 
         SourceColumn(
             attribute='document_type', include_label=True, is_sortable=True,
-            label=_('Type'), order=-9, source=Document
+            label=_('Type'), name='document_type', order=-9, source=Document
         )
         SourceColumn(
             func=lambda context: context['object'].pages.count(),
@@ -673,6 +677,8 @@ class DocumentsApp(MayanAppConfig):
             source=TrashedDocument
         )
 
+        # Dashboards
+
         dashboard_main.add_widget(
             widget=DashboardWidgetDocumentsTotal, order=0
         )
@@ -692,10 +698,20 @@ class DocumentsApp(MayanAppConfig):
             widget=DashboardWidgetDocumentsPagesNewThisMonth, order=5
         )
 
+        dashboard_user.add_widget(
+            widget=DashboardWidgetUserRecentlyAccessedDocuments, order=1
+        )
+        dashboard_user.add_widget(
+            widget=DashboardWidgetUserRecentlyCreatedDocuments, order=2
+        )
+        dashboard_user.add_widget(
+            widget=DashboardWidgetUserFavoriteDocuments, order=3
+        )
+
         menu_documents.bind_links(
             links=(
                 link_document_recently_accessed_list,
-                link_document_recently_created_list, link_document_list_favorites,
+                link_document_recently_created_list, link_document_favorites_list,
                 link_document_list, link_document_list_deleted
             )
         )
@@ -728,8 +744,8 @@ class DocumentsApp(MayanAppConfig):
 
         menu_multi_item.bind_links(
             links=(
-                link_document_multiple_favorites_add,
-                link_document_multiple_favorites_remove,
+                link_document_favorites_add_multiple,
+                link_document_favorites_remove_multiple,
                 link_document_multiple_trash,
                 link_document_multiple_type_change
             ), sources=(Document,)
