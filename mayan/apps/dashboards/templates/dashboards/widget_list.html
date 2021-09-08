@@ -23,24 +23,21 @@
             <div class="row">
                 <div class="col-xs-12">
                     {% navigation_get_source_columns source=object_list names=columns as source_columns %}
-                    <div class="table-responsive">
-                        <table class="table table-condensed table-hover table-striped">
-                            <tbody>
-                                {% for object in object_list %}
-                                    <tr>
-                                        {% for column in source_columns %}
-                                            <td>
-                                                {% navigation_source_column_resolve column=column as column_value %}
-                                                {{ column_value }}
-                                                {# Use explicit 'as column_value ' to force date rendering #}
-                                            </td>
-                                        {% endfor %}
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-
+                    <table class="table table-condensed table-hover table-striped">
+                        <tbody>
+                            {% for object in object_list %}
+                                <tr>
+                                    {% for column in source_columns %}
+                                        <td>
+                                            {% navigation_source_column_resolve column=column as column_value %}
+                                            {{ column_value }}
+                                            {# Use explicit 'as column_value ' to force date rendering #}
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
