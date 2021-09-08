@@ -301,6 +301,22 @@
   - Checking for updates now required the view dependencies
     permission.
 
+- Unify request resolution for navigation classes.
+- Support retrieving a list of ``SourceColumn`` by name.
+- Dashboard app updates:
+
+  - Extend dashboard widget interfaces.
+  - Add list dashboard widget.
+  - Move dashboard CSS from the appearance app to the dashboards app.
+  - Add dashboard list and detail views.
+  - Add setting to select the default dashboard.
+  - Add template tag to display the default dashboard in the home
+    view.
+
+- Refactor ``SourceColumn.get_for_source``.
+- Add ``RecentlyAccessedDocumentProxy`` to allow adding a column with the
+  creation date time.
+
 4.0.15 (2021-08-07)
 ===================
 - Improve the document version export API endpoint.
