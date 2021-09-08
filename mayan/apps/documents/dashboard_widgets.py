@@ -133,7 +133,7 @@ class DashboardWidgetDocumentsPagesNewThisMonth(DashboardWidgetNumeric):
 
 
 class DashboardWidgetUserRecentlyAccessedDocuments(DashboardWidgetList):
-    columns = ('document_type', 'label',)
+    columns = ('datetime_accessed', 'label',)
     icon = icon_document_recently_accessed_list
     label = link_document_recently_accessed_list.text
     link = reverse_lazy(
@@ -151,7 +151,7 @@ class DashboardWidgetUserRecentlyAccessedDocuments(DashboardWidgetList):
 
 
 class DashboardWidgetUserRecentlyCreatedDocuments(DashboardWidgetList):
-    columns = ('document_type', 'label',)
+    columns = ('datetime_created', 'label',)
     icon = link_document_recently_created_list.icon
     label = link_document_recently_created_list.text
     link = reverse_lazy(
@@ -166,7 +166,7 @@ class DashboardWidgetUserRecentlyCreatedDocuments(DashboardWidgetList):
             app_label='documents', model_name='RecentlyCreatedDocument'
         )
 
-        queryset = RecentlyCreatedDocument.valid.get_queryset()
+        queryset = RecentlyCreatedDocument.valid.all()
 
         return AccessControlList.objects.restrict_queryset(
             permission=permission_document_type_view, user=self.request.user,
