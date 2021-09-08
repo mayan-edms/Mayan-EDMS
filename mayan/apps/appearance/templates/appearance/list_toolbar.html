@@ -36,9 +36,9 @@
                         {% if page %}
 
                             {% ifequal page page_obj.number %}
-                                <a class="active btn btn-default btn-sm pagination-disabled" href="#">{{ page }}</a>
+                                <a class="active btn btn-default btn-sm pagination-disabled biggerpls" href="#">{{ page }}</a>
                             {% else %}
-                                <a class="btn btn-default btn-sm" href="?{{ page.querystring }}">{{ page }}</a>
+                                <a class="btn btn-default btn-sm biggerpls" href="?{{ page.querystring }}">{{ page }}</a>
                             {% endifequal %}
                         {% else %}
                             <a class="btn btn-default btn-sm disabled" href="#">...</a>
@@ -46,7 +46,7 @@
 
                     {% endfor %}
                     {% if page_obj.has_next %}
-                        <a class="btn btn-default btn-sm" href="?{{ page_obj.next_page_number.querystring }}">&rsaquo;&rsaquo;</a>
+                        <a class="btn btn-default btn-sm biggerpls" href="?{{ page_obj.next_page_number.querystring }}">&rsaquo;&rsaquo;</a>
                     {% else %}
                         <a class="btn btn-default btn-sm disabled" href="#">&rsaquo;&rsaquo;</a>
                     {% endif %}
