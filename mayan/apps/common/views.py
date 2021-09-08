@@ -36,7 +36,7 @@ class FaviconRedirectView(RedirectView):
 
 class HomeView(SimpleView):
     extra_context = {
-        'title': _('Dashboard'),
+        'title': _('Home'),
     }
     template_name = 'appearance/home.html'
 
