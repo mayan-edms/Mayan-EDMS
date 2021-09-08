@@ -22,7 +22,7 @@ from mayan.apps.converter.permissions import (
     permission_transformation_delete, permission_transformation_edit,
     permission_transformation_view,
 )
-from mayan.apps.dashboards.dashboards import dashboard_main
+from mayan.apps.dashboards.dashboards import dashboard_administrator
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.file_caching.links import link_cache_partition_purge
 from mayan.apps.file_caching.permissions import permission_cache_partition_purge
@@ -695,22 +695,22 @@ class DocumentsApp(MayanAppConfig):
 
         # Dashboards
 
-        dashboard_main.add_widget(
+        dashboard_administrator.add_widget(
             widget=DashboardWidgetDocumentsTotal, order=0
         )
-        dashboard_main.add_widget(
+        dashboard_administrator.add_widget(
             widget=DashboardWidgetDocumentFilePagesTotal, order=1
         )
-        dashboard_main.add_widget(
+        dashboard_administrator.add_widget(
             widget=DashboardWidgetDocumentsInTrash, order=2
         )
-        dashboard_main.add_widget(
+        dashboard_administrator.add_widget(
             widget=DashboardWidgetDocumentsTypesTotal, order=3
         )
-        dashboard_main.add_widget(
+        dashboard_administrator.add_widget(
             widget=DashboardWidgetDocumentsNewThisMonth, order=4
         )
-        dashboard_main.add_widget(
+        dashboard_administrator.add_widget(
             widget=DashboardWidgetDocumentsPagesNewThisMonth, order=5
         )
 

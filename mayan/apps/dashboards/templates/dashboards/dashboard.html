@@ -1,5 +1,14 @@
-<div class="row">
-    {% for widget in widgets %}
-        {{ widget }}
-    {% endfor %}
+{% if not dashboard_skip_label %}
+    <h4>
+        {{ dashboard.label }}
+    </h4>
+    <hr>
+{% endif %}
+
+<div class="well">
+    <div class="row">
+        {% for widget in widgets %}
+            {{ widget }}
+        {% endfor %}
+    </div>
 </div>

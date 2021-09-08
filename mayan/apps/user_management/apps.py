@@ -13,7 +13,7 @@ from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_object, menu_related,
     menu_secondary, menu_setup, menu_user
 )
-from mayan.apps.dashboards.dashboards import dashboard_main
+from mayan.apps.dashboards.dashboards import dashboard_administrator
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.metadata.classes import MetadataLookup
 from mayan.apps.navigation.classes import SourceColumn
@@ -239,10 +239,10 @@ class UserManagementApp(MayanAppConfig):
             widget=TwoStateWidget
         )
 
-        dashboard_main.add_widget(
+        dashboard_administrator.add_widget(
             widget=DashboardWidgetUserTotal, order=99
         )
-        dashboard_main.add_widget(
+        dashboard_administrator.add_widget(
             widget=DashboardWidgetGroupTotal, order=99
         )
 

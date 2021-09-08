@@ -11,6 +11,10 @@ class Dashboard:
     def get(cls, name):
         return cls._registry[name]
 
+    @classmethod
+    def get_all(cls):
+        return sorted(cls._registry.values(), key=lambda x: x.label)
+
     def __init__(self, name, label):
         self.name = name
         self.label = label
@@ -47,7 +51,7 @@ class Dashboard:
 
         return loader.render_to_string(
             template_name='dashboards/dashboard.html', context={
-                'widgets': rendered_widgets
+                'dashboard': self, 'widgets': rendered_widgets
             }
         )
 

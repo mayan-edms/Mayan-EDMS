@@ -14,7 +14,7 @@ from mayan.apps.common.menus import (
     menu_secondary, menu_setup
 )
 from mayan.apps.common.signals import signal_perform_upgrade
-from mayan.apps.dashboards.dashboards import dashboard_main
+from mayan.apps.dashboards.dashboards import dashboard_administrator
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.user_management.links import link_group_list
@@ -100,7 +100,7 @@ class PermissionsApp(MayanAppConfig):
             ), include_label=True, label=_('Group count'), source=Role
         )
 
-        dashboard_main.add_widget(
+        dashboard_administrator.add_widget(
             widget=DashboardWidgetRoleTotal, order=99
         )
 

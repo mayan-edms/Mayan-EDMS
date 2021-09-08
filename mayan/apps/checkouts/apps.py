@@ -7,7 +7,7 @@ from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.menus import (
     menu_facet, menu_main, menu_multi_item, menu_secondary
 )
-from mayan.apps.dashboards.dashboards import dashboard_main
+from mayan.apps.dashboards.dashboards import dashboard_administrator
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
@@ -102,7 +102,7 @@ class CheckoutsApp(MayanAppConfig):
             source=CheckedOutDocument
         )
 
-        dashboard_main.add_widget(
+        dashboard_administrator.add_widget(
             widget=DashboardWidgetTotalCheckouts, order=-1
         )
 
