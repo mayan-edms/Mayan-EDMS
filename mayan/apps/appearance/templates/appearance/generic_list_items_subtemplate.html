@@ -14,9 +14,8 @@
             {% include 'appearance/list_header.html' %}
 
             {% navigation_resolve_menu name='multi item' sort_results=True source=object_list.0 as links_multi_menus_results %}
-            {% navigation_resolve_menus names='list facet,object' source=object_list.0 as facet_menus_link_results %}
 
-            {% navigation_get_source_columns source=object_list only_identifier=True as source_column_identifier %}
+            {% navigation_get_source_columns source=object_list only_identifier=True as source_columns_identifier %}
             {% navigation_get_source_columns source=object_list exclude_identifier=True as source_columns_non_identifier %}
 
             <div class="well center-block">
@@ -40,7 +39,7 @@
                                                             {{ object }}
                                                         {% endif %}
                                                     {% else %}
-                                                        {% navigation_source_column_resolve column=source_column_identifier as column_value %}
+                                                        {% navigation_source_column_resolve column=source_columns_identifier.0 as column_value %}
                                                         {{ column_value }}
                                                     {% endif %}
                                                 </span>
@@ -61,6 +60,7 @@
 
                                     {% if not hide_links %}
                                         <hr/>
+                                        {% navigation_resolve_menus names='list facet,object' source=object as facet_menus_link_results %}
                                         {% if facet_menus_link_results %}
                                             {% with facet_menus_link_results as action_menus_link_results %}
                                                 <div class="dropdown text-center">

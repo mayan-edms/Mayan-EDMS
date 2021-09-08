@@ -376,7 +376,12 @@ class Menu(TemplateObjectMixin):
 
         result = []
 
-        request = self.get_request(context=context, request=request)
+        try:
+            request = self.get_request(context=context, request=request)
+        except VariableDoesNotExist:
+            # Cannot resolve any menus without a request object.
+            # Return an empty list.
+            return ()
 
         current_view_name = get_current_view_name(request=request)
         if not current_view_name:
@@ -626,7 +631,54 @@ class SourceColumn(TemplateObjectMixin):
 
     @staticmethod
     def sort(columns):
-        return sorted(columns, key=lambda x: x.order)
+        columns.sort(key=lambda x: x.order)
+        return columns
+
+    @classmethod
+    def get_column_matches(cls, source):
+        columns = []
+
+        try:
+            # Try it as a queryset.
+            model = source.model
+        except AttributeError:
+            try:
+                # Try it as a list.
+                item = source[0]
+            except TypeError:
+                # Neither a queryset nor a list.
+                try:
+                    # Try as a model instance or model.
+                    model = source._meta.model
+                except AttributeError:
+                    # Not a model instance.
+
+                    # Try as subclass instance, check the class hierarchy.
+                    for super_class in source.__class__.__mro__[:-1]:
+                        columns.extend(cls._registry.get(super_class, ()))
+
+                    return columns
+                else:
+                    # Get model columns.
+                    columns.extend(
+                        cls._registry.get(model, ())
+                    )
+
+                    # Get proxy columns.
+                    # Remove the columns explicitly excluded.
+                    # Execute after the root model columns to allow a proxy
+                    # to override an existing column.
+                    for proxy_column in cls._registry.get(model._meta.proxy_for_model, ()):
+                        if model not in proxy_column.exclude:
+                            columns.append(proxy_column)
+
+                    return columns
+            else:
+                # It was is a list.
+                return cls.get_column_matches(source=item)
+        else:
+            # It was is a queryset.
+            return cls.get_column_matches(source=model)
 
     @classmethod
     def get_for_source(
@@ -635,66 +687,7 @@ class SourceColumn(TemplateObjectMixin):
     ):
         # Process columns as a set to avoid duplicate resolved column
         # detection code.
-        columns = []
-        source_classes = set()
-
-        if hasattr(source, '_meta'):
-            source_classes.add(source._meta.model)
-        else:
-            # Support list of objects.
-            try:
-                # Is iterable?
-                source = source[0]
-            except TypeError:
-                """
-                It is not an iterable.
-                """
-
-            # If an iterable `source` is now the first element if not
-            # `source` is the original object. Store it in both cases.
-            source_classes.add(source)
-
-        try:
-            primary_model_columns = cls._registry[source]
-        except KeyError:
-            """Primary model has no columns."""
-            try:
-                # Might be an instance, try its class.
-                # Works for model instances and custom class instances.
-                primary_model_instance_columns = cls._registry[source.__class__]
-            except KeyError:
-                # Might be a subclass, try its super classes.
-                for super_class in source.__class__.__mro__[1:-1]:
-                    columns.extend(cls._registry.get(super_class, ()))
-            else:
-                columns.extend(primary_model_instance_columns)
-
-        else:
-            columns.extend(primary_model_columns)
-
-        try:
-            # Might be an related class instance, try its parent class.
-            parent_class_columns = cls._registry[source.source_ptr.__class__]
-        except (KeyError, AttributeError):
-            """The parent class has no columns."""
-        else:
-            columns.extend(parent_class_columns)
-
-        try:
-            # Try it as a queryset.
-            queryset_model_columns = cls._registry[source.model]
-        except (AttributeError, KeyError):
-            """Is not a queryset model or queryset model has no columns."""
-            try:
-                # Special case for queryset items produced from
-                # .defer() or .only() optimizations.
-                queryset_model_columns = cls._registry[list(source._meta.parents.items())[0][0]]
-            except (AttributeError, KeyError, IndexError):
-                """Queryset model has no columns."""
-            else:
-                columns.extend(queryset_model_columns)
-        else:
-            columns.extend(queryset_model_columns)
+        columns = cls.get_column_matches(source=source)
 
         if exclude_identifier:
             columns = [column for column in columns if not column.is_identifier]
@@ -703,28 +696,19 @@ class SourceColumn(TemplateObjectMixin):
             if only_identifier:
                 for column in columns:
                     if column.is_identifier:
-                        return column
+                        return (column,)
 
                 # There is no column with the identifier marker.
-                return None
-
-        # Move filtering outside of the queryset area to work for all kind of
-        # objects and to avoid filtering when only_identifier is used.
-        filtered_columns = set()
-        for column_index, column in enumerate(iterable=columns, start=100):
-            # Make sure the column has not been excluded for proxies.
-            # Examples: Workflow runtime proxy and index instances in 3.2.x
-            if not source_classes.intersection(column.exclude):
-                column.order = column.order or column_index
-                filtered_columns.add(column)
-
-        # Sort columns by their `order` attribute and return as a list.
-        # Keep sorting as the very last operation to sort only was is really
-        # needed.
-        columns = SourceColumn.sort(columns=filtered_columns)
+                return ()
 
         if names is not None:
-            return [column for column in columns if column.name in names]
+            indexed_columns = {
+                column.name: column for column in columns
+            }
+
+            return [indexed_columns[name] for name in names]
+
+        columns = SourceColumn.sort(columns=columns)
 
         return columns
 
