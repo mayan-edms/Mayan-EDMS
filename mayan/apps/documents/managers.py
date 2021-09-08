@@ -277,16 +277,16 @@ class ValidRecentlyAccessedDocumentManager(models.Manager):
         return new_recent
 
     def get_for_user(self, user):
-        Document = apps.get_model(
-            app_label='documents', model_name='Document'
+        RecentlyAccessedDocumentProxy = apps.get_model(
+            app_label='documents', model_name='RecentlyAccessedDocumentProxy'
         )
 
         if user.is_authenticated:
-            return Document.valid.filter(
+            return RecentlyAccessedDocumentProxy.valid.filter(
                 recent__user=user
             ).order_by('-recent__datetime_accessed')
         else:
-            return Document.objects.none()
+            return RecentlyAccessedDocumentProxy.objects.none()
 
     def get_queryset(self):
         return super().get_queryset().filter(
@@ -304,7 +304,7 @@ class ValidRecentlyCreatedDocumentManager(models.Manager):
             model=Document
         ).get_queryset(manager_name='valid')
 
-        return queryset.filter(
+        return super().get_queryset().filter(
             pk__in=queryset.order_by('-datetime_created')[
                 :setting_recently_created_document_count.value
             ].values('pk')

@@ -248,6 +248,9 @@ class DocumentsApp(MayanAppConfig):
         RecentlyAccessedDocument = self.get_model(
             model_name='RecentlyAccessedDocument'
         )
+        RecentlyAccessedDocumentProxy = self.get_model(
+            model_name='RecentlyAccessedDocumentProxy'
+        )
         RecentlyCreatedDocument = self.get_model(
             model_name='RecentlyCreatedDocument'
         )
@@ -559,11 +562,24 @@ class DocumentsApp(MayanAppConfig):
             label=_('Pages'), include_label=True, order=-8, source=Document
         )
 
+        # RecentlyAccessedDocument
+
+        SourceColumn(
+            func=lambda context: context['object'].recent.first().datetime_accessed,
+            include_label=True,
+            is_sortable=True,
+            label=_('Access date and time'),
+            name='datetime_accessed',
+            sort_field='recent__datetime_accessed',
+            source=RecentlyAccessedDocumentProxy
+        )
+
         # RecentlyCreatedDocument
 
         SourceColumn(
             attribute='datetime_created', include_label=True,
-            is_sortable=True, source=RecentlyCreatedDocument
+            is_sortable=True, name='datetime_created',
+            source=RecentlyCreatedDocument
         )
 
         # DocumentFile

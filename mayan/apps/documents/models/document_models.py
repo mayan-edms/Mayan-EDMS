@@ -78,8 +78,7 @@ class Document(
     )
     datetime_created = models.DateTimeField(
         auto_now_add=True, db_index=True, help_text=_(
-            'The server date and time when the document was finally '
-            'processed and created in the system.'
+            'The date and time of the document creation.'
         ), verbose_name=_('Created')
     )
     language = models.CharField(

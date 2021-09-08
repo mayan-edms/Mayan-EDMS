@@ -46,3 +46,11 @@ class RecentlyAccessedDocument(models.Model):
     def natural_key(self):
         return (self.datetime_accessed, self.document.natural_key(), self.user.natural_key())
     natural_key.dependencies = ['documents.Document', settings.AUTH_USER_MODEL]
+
+
+class RecentlyAccessedDocumentProxy(Document):
+    class Meta:
+        proxy = True
+        verbose_name = _('Recently accessed document')
+        verbose_name_plural = _('Recently accessed documents')
+
