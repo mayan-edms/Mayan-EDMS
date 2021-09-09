@@ -10,11 +10,11 @@ from ..permissions import permission_document_view
 
 
 def condition_is_in_favorites(context, resolved_object):
-    return context['resolved_object'].favorites.exists()
+    return resolved_object.favorites.exists()
 
 
 def condition_not_is_in_favorites(context, resolved_object):
-    return not context['resolved_object'].favorites.exists()
+    return not resolved_object.favorites.exists()
 
 
 link_document_favorites_list = Link(

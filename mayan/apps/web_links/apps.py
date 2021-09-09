@@ -107,6 +107,7 @@ class WebLinksApp(MayanAppConfig):
             sources=(Document,)
         )
         menu_list_facet.bind_links(
+            exclude=(ResolvedWebLink,),
             links=(
                 link_web_link_document_types,
             ), sources=(WebLink,)
@@ -115,6 +116,7 @@ class WebLinksApp(MayanAppConfig):
             links=(link_document_type_web_links,), sources=(DocumentType,)
         )
         menu_object.bind_links(
+            exclude=(ResolvedWebLink,),
             links=(
                 link_web_link_delete, link_web_link_edit
             ), sources=(WebLink,)
@@ -122,11 +124,6 @@ class WebLinksApp(MayanAppConfig):
         menu_object.bind_links(
             links=(link_web_link_instance_view,),
             sources=(ResolvedWebLink,)
-        )
-        menu_object.unbind_links(
-            links=(
-                link_web_link_delete, link_web_link_edit
-            ), sources=(ResolvedWebLink,)
         )
         menu_related.bind_links(
             links=(link_web_link_list,),

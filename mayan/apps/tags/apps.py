@@ -191,10 +191,12 @@ class TagsApp(MayanAppConfig):
         menu_main.bind_links(links=(menu_tags,), position=60)
 
         menu_multi_item.bind_links(
+            exclude=(DocumentTag,),
             links=(link_tag_delete_multiple,), sources=(Tag,)
         )
 
         menu_object.bind_links(
+            exclude=(DocumentTag,),
             links=(
                 link_tag_edit, link_tag_delete_single
             ),

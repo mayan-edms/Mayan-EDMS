@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Link
-from mayan.apps.navigation.utils import get_cascade_condition
+from mayan.apps.navigation.utils import factory_condition_queryset_access
 
 from .icons import (
     icon_document_file_content, icon_document_file_content_delete_single,
@@ -75,7 +75,7 @@ link_document_type_parsing_settings = Link(
     view='document_parsing:document_type_parsing_settings'
 )
 link_document_type_submit = Link(
-    condition=get_cascade_condition(
+    condition=factory_condition_queryset_access(
         app_label='documents', model_name='DocumentType',
         object_permission=permission_document_type_parsing_setup
     ),

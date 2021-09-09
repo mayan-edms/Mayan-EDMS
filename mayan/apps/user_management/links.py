@@ -1,8 +1,7 @@
-from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Link, Separator, Text
-from mayan.apps.navigation.utils import get_cascade_condition
+from mayan.apps.navigation.utils import factory_condition_queryset_access
 
 from .icons import (
     icon_current_user_details, icon_current_user_edit, icon_group_create,
@@ -21,33 +20,14 @@ from .utils import get_user_label_text
 
 
 def condition_user_is_not_admin(context, resolved_object):
-    if not resolved_object:
-        return True
-    else:
-        return not resolved_object.is_superuser and not resolved_object.is_staff
-
-
-def condition_cascade_group_access_and_user_is_not_admin(context, resolved_object):
-    return get_cascade_condition(
-        app_label='auth', model_name='Group',
-        object_permission=permission_group_view,
-        view_permission=permission_group_create
-    ) and condition_user_is_not_admin(
-        context=context, resolved_object=resolved_object
-    )
-
-
-def condition_cascade_user_access_and_user_is_not_admin(context, resolved_object):
-    return get_cascade_condition(
-        app_label='auth', model_name='User',
-        object_permission=permission_user_view,
-        view_permission=permission_user_create,
-    ) and condition_user_is_not_admin(
-        context=context, resolved_object=resolved_object
-    )
+    if hasattr(resolved_object, 'is_staff'):
+        user = resolved_object
+        return not user.is_superuser and not user.is_staff
+    return True
 
 
 # Current user
+
 link_current_user_details = Link(
     icon=icon_current_user_details, text=_('User details'),
     view='user_management:current_user_details'
@@ -78,7 +58,7 @@ link_group_edit = Link(
     view='user_management:group_edit'
 )
 link_group_list = Link(
-    condition=get_cascade_condition(
+    condition=factory_condition_queryset_access(
         app_label='auth', model_name='Group',
         object_permission=permission_group_view,
     ), icon=icon_group_list, text=_('Groups'),
@@ -90,13 +70,16 @@ link_group_user_list = Link(
     view='user_management:group_members'
 )
 link_group_setup = Link(
-    condition=condition_cascade_group_access_and_user_is_not_admin,
-    icon=icon_group_setup, text=_('Groups'),
+    condition=factory_condition_queryset_access(
+        app_label='auth', model_name='Group',
+        callback=condition_user_is_not_admin,
+        object_permission=permission_group_view,
+        view_permission=permission_group_create
+    ), icon=icon_group_setup, text=_('Groups'),
     view='user_management:group_list'
 )
 
 # User
-
 
 link_user_create = Link(
     condition=condition_user_is_not_admin, icon=icon_user_create,
@@ -125,8 +108,12 @@ link_user_group_list = Link(
 )
 link_user_list = Link(
     icon=icon_user_list, text=_('Users'),
-    condition=condition_cascade_user_access_and_user_is_not_admin,
-    view='user_management:user_list'
+    condition=factory_condition_queryset_access(
+        app_label='auth', model_name='User',
+        callback=condition_user_is_not_admin,
+        object_permission=permission_user_view,
+        view_permission=permission_user_create
+    ), view='user_management:user_list'
 )
 link_user_set_options = Link(
     args='object.id', condition=condition_user_is_not_admin,
@@ -134,7 +121,7 @@ link_user_set_options = Link(
     text=_('User options'), view='user_management:user_options'
 )
 link_user_setup = Link(
-    condition=get_cascade_condition(
+    condition=factory_condition_queryset_access(
         app_label='auth', model_name='User',
         object_permission=permission_user_view,
         view_permission=permission_user_create,

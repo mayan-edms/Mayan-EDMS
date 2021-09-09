@@ -222,7 +222,8 @@ class EventModelRegistry:
     @classmethod
     def register(
         cls, model, acl_bind_link=True, bind_events_link=True,
-        bind_subscription_link=True, menu=None, register_permissions=True
+        bind_subscription_link=True, exclude=None, menu=None,
+        register_permissions=True
     ):
         # Hidden imports.
         from actstream import registry
@@ -247,6 +248,7 @@ class EventModelRegistry:
 
             if bind_events_link:
                 menu.bind_links(
+                    exclude=exclude,
                     links=(
                         link_events_for_object,
                     ), sources=(model,)
@@ -254,6 +256,7 @@ class EventModelRegistry:
 
             if bind_subscription_link:
                 menu.bind_links(
+                    exclude=exclude,
                     links=(
                         link_object_event_types_user_subscriptions_list,
                     ), sources=(model,)
@@ -268,6 +271,7 @@ class EventModelRegistry:
 
             if register_permissions and not issubclass(model, (AccessControlList, StoredPermission)):
                 ModelPermission.register(
+                    exclude=exclude,
                     model=model, permissions=(
                         permission_events_clear, permission_events_export,
                         permission_events_view

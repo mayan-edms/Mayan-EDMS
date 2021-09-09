@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Link
-from mayan.apps.navigation.utils import get_cascade_condition
+from mayan.apps.navigation.utils import factory_condition_queryset_access
 
 from .classes import LayerLink
 from .icons import (
@@ -49,7 +49,7 @@ link_asset_edit = Link(
     view='converter:asset_edit'
 )
 link_asset_list = Link(
-    condition=get_cascade_condition(
+    condition=factory_condition_queryset_access(
         app_label='converter', model_name='Asset',
         object_permission=permission_asset_view,
         view_permission=permission_asset_create,

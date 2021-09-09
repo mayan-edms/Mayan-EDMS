@@ -155,20 +155,18 @@ class LinkingApp(MayanAppConfig):
             links=(link_smart_link_instance_view,),
             sources=(ResolvedSmartLink,)
         )
-        menu_object.unbind_links(
-            links=(link_smart_link_delete, link_smart_link_edit,),
-            sources=(ResolvedSmartLink,)
-        )
 
         # Smart link
 
         menu_list_facet.bind_links(
+            exclude=(ResolvedSmartLink,),
             links=(
                 link_smart_link_document_types, link_smart_link_condition_list
             ), sources=(SmartLink,)
         )
 
         menu_object.bind_links(
+            exclude=(ResolvedSmartLink,),
             links=(
                 link_smart_link_delete, link_smart_link_edit
             ), sources=(SmartLink,)

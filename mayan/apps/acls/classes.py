@@ -117,7 +117,7 @@ class ModelPermission:
         return cls._manager_names[model]
 
     @classmethod
-    def register(cls, model, permissions, bind_link=True):
+    def register(cls, model, permissions, bind_link=True, exclude=None):
         """
         Match a model class to a set of permissions. And connect the model
         to the ACLs via a GenericRelation field.
@@ -166,7 +166,8 @@ class ModelPermission:
 
                 if bind_link:
                     menu_list_facet.bind_links(
-                        links=(link_acl_list,), sources=(model,)
+                        exclude=exclude, links=(link_acl_list,),
+                        sources=(model,)
                     )
 
                 model.add_to_class(

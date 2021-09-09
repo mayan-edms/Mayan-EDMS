@@ -24,7 +24,7 @@ from .permissions import (
 )
 
 
-def is_detached_signature(context):
+def condition_is_detached_signature(context, resolved_object):
     SignatureBaseModel = apps.get_model(
         app_label='document_signatures', model_name='SignatureBaseModel'
     )
@@ -59,7 +59,7 @@ link_document_file_signature_detached_create = Link(
     view='signatures:document_file_signature_detached_create'
 )
 link_document_file_signature_detached_delete = Link(
-    args='resolved_object.pk', condition=is_detached_signature,
+    args='resolved_object.pk', condition=condition_is_detached_signature,
     icon=icon_document_file_signature_detached_delete,
     permissions=(permission_document_file_signature_delete,),
     tags='dangerous', text=_('Delete'),
@@ -68,7 +68,7 @@ link_document_file_signature_detached_delete = Link(
 link_document_file_signature_detached_download = Link(
     args='resolved_object.pk',
     icon=icon_document_file_signature_detached_download,
-    condition=is_detached_signature,
+    condition=condition_is_detached_signature,
     permissions=(permission_document_file_signature_download,),
     text=_('Download'), view='signatures:document_file_signature_detached_download'
 )

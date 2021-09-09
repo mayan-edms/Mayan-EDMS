@@ -105,8 +105,12 @@ class DocumentStatesApp(MayanAppConfig):
         error_log = ErrorLog(app_config=self)
         error_log.register_model(model=WorkflowStateAction)
 
-        EventModelRegistry.register(model=Workflow)
-        EventModelRegistry.register(model=WorkflowState)
+        EventModelRegistry.register(
+            exclude=(WorkflowRuntimeProxy,), model=Workflow,
+        )
+        EventModelRegistry.register(
+            exclude=(WorkflowStateRuntimeProxy,), model=WorkflowState
+        )
         EventModelRegistry.register(model=WorkflowStateAction)
         EventModelRegistry.register(model=WorkflowTransition)
         EventModelRegistry.register(model=WorkflowTransitionField)
@@ -442,21 +446,13 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         menu_list_facet.bind_links(
+            exclude=(WorkflowRuntimeProxy,),
             links=(
                 link_workflow_template_document_types,
                 link_workflow_template_state_list,
                 link_workflow_template_transition_list,
                 link_workflow_template_preview
             ), sources=(Workflow,)
-        )
-
-        menu_list_facet.unbind_links(
-            links=(
-                link_workflow_template_document_types,
-                link_workflow_template_state_list,
-                link_workflow_template_transition_list,
-                link_workflow_template_preview
-            ), sources=(WorkflowRuntimeProxy,)
         )
 
         menu_list_facet.bind_links(
@@ -477,6 +473,7 @@ class DocumentStatesApp(MayanAppConfig):
             sources=(Workflow,)
         )
         menu_object.bind_links(
+            exclude=(WorkflowRuntimeProxy,),
             links=(
                 link_workflow_template_single_delete,
                 link_workflow_template_edit,
@@ -484,6 +481,7 @@ class DocumentStatesApp(MayanAppConfig):
             ), sources=(Workflow,)
         )
         menu_object.bind_links(
+            exclude=(WorkflowStateRuntimeProxy,),
             links=(
                 link_workflow_template_state_edit,
                 link_workflow_template_state_delete
@@ -521,6 +519,7 @@ class DocumentStatesApp(MayanAppConfig):
             ), sources=(WorkflowRuntimeProxy,)
         )
         menu_list_facet.bind_links(
+            exclude=(WorkflowStateRuntimeProxy,),
             links=(
                 link_workflow_template_state_action_list,
             ), sources=(WorkflowState,)
@@ -545,6 +544,7 @@ class DocumentStatesApp(MayanAppConfig):
             )
         )
         menu_related.bind_links(
+            exclude=(WorkflowRuntimeProxy,),
             links=(link_document_type_list,),
             sources=(
                 Workflow, 'document_states:workflow_template_create',
@@ -552,6 +552,7 @@ class DocumentStatesApp(MayanAppConfig):
             )
         )
         menu_secondary.bind_links(
+            exclude=(WorkflowRuntimeProxy,),
             links=(link_workflow_template_list, link_workflow_template_create),
             sources=(
                 Workflow, 'document_states:workflow_template_create',

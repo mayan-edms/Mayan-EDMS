@@ -111,15 +111,15 @@ class Link(TemplateObjectMixin):
             self.__class__._registry[name] = self
 
     def resolve(self, context=None, request=None, resolved_object=None):
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
         if not context and not request:
             raise ImproperlyConfigured(
                 'Must provide a context or a request in order to resolve the '
                 'link.'
             )
-
-        AccessControlList = apps.get_model(
-            app_label='acls', model_name='AccessControlList'
-        )
 
         if not context:
             context = RequestContext(request=request)
@@ -286,6 +286,7 @@ class Menu(TemplateObjectMixin):
 
         self.bound_links = {}
         self.condition = condition
+        self.excluded_links = {}
         self.icon = icon
         self.label = label
         self.link_positions = {}
@@ -298,7 +299,7 @@ class Menu(TemplateObjectMixin):
     def __repr__(self):
         return '<Menu: {}>'.format(self.name)
 
-    def _map_links_to_source(self, links, source, map_variable='bound_links', position=None):
+    def _map_links_to_source(self, links, source, map_variable, position=None):
         source_links = getattr(self, map_variable).setdefault(source, [])
 
         position = position or len(source_links)
@@ -313,19 +314,26 @@ class Menu(TemplateObjectMixin):
     def add_unsorted_source(self, source):
         self.non_sorted_sources.append(source)
 
-    def bind_links(self, links, sources=None, position=None):
+    def bind_links(self, links, exclude=None, sources=None, position=None):
         """
         Associate a link to a model, a view inside this menu.
         """
         try:
             for source in sources:
                 self._map_links_to_source(
-                    links=links, position=position, source=source
+                    links=links, map_variable='bound_links',
+                    position=position, source=source
+                )
+            for source in exclude:
+                self._map_links_to_source(
+                    links=links, map_variable='excluded_links',
+                    position=position, source=source
                 )
         except TypeError:
             # Unsourced links display always.
             self._map_links_to_source(
-                links=links, position=position, source=sources
+                links=links, map_variable='bound_links',
+                position=position, source=sources
             )
 
     def get_resolved_navigation_object_list(self, context, source):
@@ -364,7 +372,7 @@ class Menu(TemplateObjectMixin):
         else:
             return self.link_positions.get(item, 0) or 0
 
-    def get_links_for(self, context, resolved_navigation_object):
+    def get_links_for(self, resolved_navigation_object):
         matched_links = set()
 
         try:
@@ -379,6 +387,8 @@ class Menu(TemplateObjectMixin):
                             self.bound_links[resolved_navigation_object]
                         ) - set(
                             self.unbound_links.get(resolved_navigation_object, ())
+                        ) - set(
+                            self.excluded_links.get(resolved_navigation_object, ())
                         )
                     )
                 except KeyError:
@@ -396,6 +406,8 @@ class Menu(TemplateObjectMixin):
                                 self.bound_links[resolved_navigation_object]
                             ) - set(
                                 self.unbound_links.get(resolved_navigation_object, ())
+                            ) - set(
+                                self.excluded_links.get(resolved_navigation_object, ())
                             )
                         )
                     except KeyError:
@@ -411,6 +423,8 @@ class Menu(TemplateObjectMixin):
                                         self.bound_links.get(super_class, ())
                                     ) - set(
                                         self.unbound_links.get(super_class, ())
+                                    ) - set(
+                                        self.excluded_links.get(resolved_navigation_object, ())
                                     )
                                 )
                         else:
@@ -420,6 +434,8 @@ class Menu(TemplateObjectMixin):
                                     self.bound_links.get(model, ())
                                 ) - set(
                                     self.unbound_links.get(model, ())
+                                ) - set(
+                                    self.excluded_links.get(model, ())
                                 )
                             )
 
@@ -432,17 +448,19 @@ class Menu(TemplateObjectMixin):
                                     self.bound_links.get(model._meta.proxy_for_model, ())
                                 ) - set(
                                     self.unbound_links.get(model._meta.proxy_for_model, ())
+                                ) - set(
+                                    self.excluded_links.get(model, ())
                                 )
                             )
                 else:
                     # It was is a list.
                     return self.get_links_for(
-                        context=context, resolved_navigation_object=item
+                        resolved_navigation_object=item
                     )
         else:
             # It was is a queryset.
             return self.get_links_for(
-                context=context, resolved_navigation_object=model
+                resolved_navigation_object=model
             )
 
         return matched_links
@@ -478,79 +496,47 @@ class Menu(TemplateObjectMixin):
         )
 
         for resolved_navigation_object in resolved_navigation_object_list:
-            object_resolved_links = []
             matched_links = self.get_links_for(
-                context=context, resolved_navigation_object=resolved_navigation_object
+                resolved_navigation_object=resolved_navigation_object
             )
 
-            for link in matched_links:
-                resolved_link = link.resolve(
+            result.extend(
+                self.resolve_matched_links(
                     context=context,
-                    resolved_object=resolved_navigation_object
+                    matched_links=matched_links,
+                    resolved_navigation_object=resolved_navigation_object
                 )
-                if resolved_link:
-                    object_resolved_links.append(
-                        resolved_link
-                    )
+            )
 
-            if object_resolved_links:
-                result.append(
-                    {
-                        'object': resolved_navigation_object,
-                        'links': object_resolved_links
-                    }
-                )
-
-        object_resolved_links = []
-
+        # Resolve view links.
         resolved_navigation_object = current_view_name
         matched_links = self.get_links_for(
-            context=context, resolved_navigation_object=resolved_navigation_object
+            resolved_navigation_object=resolved_navigation_object
         )
 
-        for link in matched_links:
-            resolved_link = link.resolve(
+        result.extend(
+            self.resolve_matched_links(
                 context=context,
+                matched_links=matched_links,
+                resolved_navigation_object=resolved_navigation_object
             )
-            if resolved_link:
-                object_resolved_links.append(
-                    resolved_link
-                )
+        )
 
-        if object_resolved_links:
-            result.append(
-                {
-                    'object': resolved_navigation_object,
-                    'links': object_resolved_links
-                }
-            )
-
-        object_resolved_links = []
-
+        # Resolve "always one" menu links.
         resolved_navigation_object = None
         matched_links = self.get_links_for(
-            context=context, resolved_navigation_object=resolved_navigation_object
+            resolved_navigation_object=resolved_navigation_object
         )
 
-        for link in matched_links:
-            if isinstance(link, Menu):
-                condition = link.check_condition(context=context)
-                if condition:
-                    object_resolved_links.append(link)
-            else:
-                # "Always show" links.
-                resolved_link = link.resolve(context=context)
-                if resolved_link:
-                    object_resolved_links.append(resolved_link)
-
-        if object_resolved_links:
-            result.append(
-                {
-                    'object': None,
-                    'links': object_resolved_links
-                }
+        result.extend(
+            self.resolve_matched_links(
+                context=context,
+                matched_links=matched_links,
+                resolved_navigation_object=resolved_navigation_object
             )
+        )
 
+        # Sort links.
         if result:
             unsorted_source = False
             for resolved_navigation_object in resolved_navigation_object_list:
@@ -569,6 +555,32 @@ class Menu(TemplateObjectMixin):
                     link_group['links'] = sorted(
                         link_group['links'], key=self.get_result_position
                     )
+
+        return result
+
+    def resolve_matched_links(self, context, matched_links, resolved_navigation_object):
+        result = []
+
+        object_resolved_links = []
+
+        for link in matched_links:
+            if isinstance(link, Menu):
+                condition = link.check_condition(context=context)
+                if condition:
+                    object_resolved_links.append(link)
+            else:
+                # "Always show" links.
+                resolved_link = link.resolve(context=context)
+                if resolved_link:
+                    object_resolved_links.append(resolved_link)
+
+        if object_resolved_links:
+            result.append(
+                {
+                    'object': resolved_navigation_object,
+                    'links': object_resolved_links
+                }
+            )
 
         return result
 
@@ -720,7 +732,7 @@ class SourceColumn(TemplateObjectMixin):
                     # Execute after the root model columns to allow a proxy
                     # to override an existing column.
                     for proxy_column in cls._registry.get(model._meta.proxy_for_model, ()):
-                        if model not in proxy_column.exclude:
+                        if model not in proxy_column.excludes:
                             columns.append(proxy_column)
 
                     return columns
@@ -779,7 +791,7 @@ class SourceColumn(TemplateObjectMixin):
         self.source = source
         self.attribute = attribute
         self.empty_value = empty_value
-        self.exclude = set()
+        self.excludes = set()
         self.func = func
         self.html_extra_classes = html_extra_classes or ''
         self.include_label = include_label
@@ -861,7 +873,7 @@ class SourceColumn(TemplateObjectMixin):
         self.label = self._label
 
     def add_exclude(self, source):
-        self.exclude.add(source)
+        self.excludes.add(source)
 
     def get_absolute_url(self, obj):
         if self.is_object_absolute_url:

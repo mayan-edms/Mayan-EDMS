@@ -8,7 +8,6 @@ from .icons import icon_impersonate_start, icon_logout, icon_password_change
 from .permissions import permission_users_impersonate
 
 
-
 def _condition_user_has_usable_password_and_can_change_password(user):
     if user.is_authenticated:
         return user.has_usable_password and not user.user_options.block_password_change

@@ -15,6 +15,9 @@ class GroupLinkTestCase(
         resolved_link = self._resolve_group_setup_link()
         self.assertEqual(resolved_link, None)
 
+        resolved_link = self._resolve_group_setup_link()
+        self.assertEqual(resolved_link, None)
+
     def test_group_setup_link_with_create_permission(self):
         self.grant_permission(permission=permission_group_create)
         resolved_link = self._resolve_group_setup_link()

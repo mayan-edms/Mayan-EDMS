@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Link
-from mayan.apps.navigation.utils import get_cascade_condition
+from mayan.apps.navigation.utils import factory_condition_queryset_access
 
 from .icons import (
     icon_document_tag_multiple_attach, icon_document_tag_multiple_remove,
@@ -58,7 +58,7 @@ link_tag_edit = Link(
     view='tags:tag_edit'
 )
 link_tag_list = Link(
-    condition=get_cascade_condition(
+    condition=factory_condition_queryset_access(
         app_label='tags', model_name='Tag',
         object_permission=permission_tag_view,
     ), icon=icon_tag_list,

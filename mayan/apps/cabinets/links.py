@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.navigation.classes import Link
-from mayan.apps.navigation.utils import get_cascade_condition
+from mayan.apps.navigation.utils import factory_condition_queryset_access
 
 from .icons import (
     icon_document_cabinet_add, icon_document_cabinet_remove,
@@ -74,7 +74,7 @@ link_cabinet_edit = Link(
     view='cabinets:cabinet_edit'
 )
 link_cabinet_list = Link(
-    condition=get_cascade_condition(
+    condition=factory_condition_queryset_access(
         app_label='cabinets', model_name='Cabinet',
         object_permission=permission_cabinet_view,
     ), icon=icon_cabinet_list,
