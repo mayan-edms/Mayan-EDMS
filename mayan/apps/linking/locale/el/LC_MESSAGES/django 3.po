@@ -1,0 +1,366 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2021
+# pyrotech <anastasios@tutamail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:26+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:40
+msgid "Linking"
+msgstr "Σύνδεση"
+
+#: apps.py:94 models.py:29
+msgid "Label"
+msgstr "Ετικέτα"
+
+#: events.py:6 links.py:24 links.py:75 links.py:80 links.py:85 models.py:48
+#: permissions.py:5 views.py:191
+msgid "Smart links"
+msgstr "Έξυπνοι σύνδεσμοι"
+
+#: events.py:10
+msgid "Smart link created"
+msgstr "Δημιουργήθηκε έξυπνος σύνδεσμος"
+
+#: events.py:13
+msgid "Smart link edited"
+msgstr "Τροποποιήθηκε ο έξυπνος σύνδεσμος"
+
+#: forms.py:45
+msgid "Foreign document field"
+msgstr "Πεδίο έταιρου εγγράφου"
+
+#: links.py:29
+msgid "Create condition"
+msgstr "Δημιουργία προϋπόθεσης"
+
+#: links.py:35 links.py:55
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: links.py:39 links.py:64
+msgid "Edit"
+msgstr "Τροποποίηση"
+
+#: links.py:44
+msgid "Conditions"
+msgstr "Προϋποθέσεις"
+
+#: links.py:50 views.py:227
+msgid "Create new smart link"
+msgstr "Δημιουργία νέου έξυπνου σύνδεσμου"
+
+#: links.py:59 models.py:40
+msgid "Document types"
+msgstr "Τύποι εγγράφων"
+
+#: links.py:69
+msgid "Documents"
+msgstr "Έγγραφα"
+
+#: literals.py:7
+msgid "and"
+msgstr "και"
+
+#: literals.py:8
+msgid "or"
+msgstr "ή"
+
+#: literals.py:12
+msgid "is equal to"
+msgstr "Ισούται με"
+
+#: literals.py:13
+msgid "is equal to (case insensitive)"
+msgstr "Ισούται με (με διάκριση κεφαίων/πεζών)"
+
+#: literals.py:14
+msgid "contains"
+msgstr "περιέχει"
+
+#: literals.py:15
+msgid "contains (case insensitive)"
+msgstr "περιέχει (με δάκριση κεφαλαίων / πεζών)"
+
+#: literals.py:16
+msgid "is in"
+msgstr "περιέχεται σε"
+
+#: literals.py:17
+msgid "is greater than"
+msgstr "είναι μεγαλύτερο από"
+
+#: literals.py:18
+msgid "is greater than or equal to"
+msgstr "είναι μεγαλύτερο από ή ίσο με"
+
+#: literals.py:19
+msgid "is less than"
+msgstr "είναι μικρότερο από"
+
+#: literals.py:20
+msgid "is less than or equal to"
+msgstr "είναι μικρότερο από ή ίσο με"
+
+#: literals.py:21
+msgid "starts with"
+msgstr "αρχίζει με"
+
+#: literals.py:22
+msgid "starts with (case insensitive)"
+msgstr "αρχίζει με (με διάκριση κεφαλαίων / πεζών)"
+
+#: literals.py:23
+msgid "ends with"
+msgstr "τελειώνει σε"
+
+#: literals.py:24
+msgid "ends with (case insensitive)"
+msgstr "τελειώνει σε (με διάκριση κεφαλαίων / πεζών)"
+
+#: literals.py:25
+msgid "is in regular expression"
+msgstr "περιέχεται στο regular expression"
+
+#: literals.py:26
+msgid "is in regular expression (case insensitive)"
+msgstr "περιέχεται στο regular expression (χωρίς διάκριση κεφαλαίων / πεζών)"
+
+#: models.py:28
+msgid "A short text describing the smart link."
+msgstr "Ένα σύντομο κείμενο που περιγράφει τον έξυπνο σύνδεσμο."
+
+#: models.py:33
+msgid ""
+"Use this field to show a unique label depending on the document from which "
+"the smart link is being accessed."
+msgstr ""
+"Χρησιμοποιήστε αυτό το πεδίο για να εμφανίσετε μια μοναδική ετικέτα ανάλογα "
+"με το έγγραφο από το οποίο γίνεται πρόσβαση στον έξυπνο σύνδεσμο."
+
+#: models.py:35
+msgid "Dynamic label"
+msgstr "Δυναμική ετικέτα"
+
+#: models.py:37 models.py:186
+msgid "Enabled"
+msgstr "Ενεργοποιημένο"
+
+#: models.py:47 models.py:164
+msgid "Smart link"
+msgstr "Έξυπνος συνδεσμός"
+
+#: models.py:80
+#, python-format
+msgid "Error generating dynamic label; %s"
+msgstr "Σφάλμα κατά την δημιουργία δυναμικής ετικέτας: %s"
+
+#: models.py:95
+msgid "This smart link is not allowed for the selected document's type."
+msgstr ""
+"Αυτός ο έξυπνος συνδεσμός δεν επιτρέπεται για τον επιλεγμένο τύπο εγγράφου."
+
+#: models.py:168
+msgid "The inclusion is ignored for the first item."
+msgstr "Η συμπερίληψη αγνοείται για το πρώτο στοιχείο."
+
+#: models.py:172
+msgid "This represents the metadata of all other documents."
+msgstr "Αυτό αντιπροσωπεύει τα μεταδεδομένα όλων των άλλων εγγράφων."
+
+#: models.py:173
+msgid "Foreign document attribute"
+msgstr "Ιδιότητα έταιρου εγγράφου"
+
+#: models.py:178
+msgid ""
+"The expression using document properties to be evaluated against the foreign"
+" document field."
+msgstr ""
+"Η έκφραση που χρησιμοποιεί ιδιότητες εγγράφου προς αξιολόγηση έναντι του "
+"πεδίου του έταιρου εγγράφου."
+
+#: models.py:180
+msgid "Expression"
+msgstr "Έκφραση"
+
+#: models.py:183
+msgid "Inverts the logic of the operator."
+msgstr "Αντιστρέφει την κατάσταση του λογικού τελεστή."
+
+#: models.py:184
+msgid "Negated"
+msgstr "Αντιστροφή"
+
+#: models.py:189
+msgid "Link condition"
+msgstr "Συνθήκη συνδέσμου"
+
+#: models.py:190
+msgid "Link conditions"
+msgstr "Συνθήκες συνδέσμου"
+
+#: models.py:206
+msgid "not"
+msgstr "δεν"
+
+#: models.py:210
+msgid "Full label"
+msgstr "Πλήρης ετικέτα"
+
+#: permissions.py:8
+msgid "Create new smart links"
+msgstr "Δημιουργία νέων έξυπνων συνδεσμών"
+
+#: permissions.py:11
+msgid "Delete smart links"
+msgstr "Διαγραφή έξυπνων συνδεσμών"
+
+#: permissions.py:14
+msgid "Edit smart links"
+msgstr "Τροποποίηση έξυπνων συνδεσμών"
+
+#: permissions.py:17
+msgid "View existing smart links"
+msgstr "Προβολή υπαρχόντων έξυπνων συνδέσμων"
+
+#: serializers.py:52
+msgid "Primary key of the document type to add to the smart link."
+msgstr ""
+
+#: serializers.py:61
+msgid "Primary key of the document type to remove from the smart link."
+msgstr ""
+
+#: views.py:41
+msgid "Available smart links"
+msgstr "Διαθέσιμοι έξυπνοι σύνδεσμοι"
+
+#: views.py:42
+msgid "Smart links enabled"
+msgstr "Οι έξυπνοι σύνδεσμοι ενεργοποιήθηκαν"
+
+#: views.py:68
+#, python-format
+msgid "Smart links to enable for document type: %s"
+msgstr "Έξυπνοι σύνδεσμοι προς ενεργοποίηση για τύπο εγγράφου: %s"
+
+#: views.py:103
+#, python-format
+msgid "Smart link query error: %s"
+msgstr "Σφάλμα αναζήτησης έξυπνου δεσμού: %s"
+
+#: views.py:114
+#, python-format
+msgid "Documents in smart link: %s"
+msgstr "Έγγραφα στον έξυπνο σύνδεσμο: %s"
+
+#: views.py:117
+#, python-format
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr ""
+"Έγγραφα στον έξυπνο σύνδεσμο \"%(smart_link)s\" που σχετίζονται με το "
+"\"%(document)s\""
+
+#: views.py:153
+msgid "Available document types"
+msgstr "Διαθέσιμοι τύποι εγγράφων"
+
+#: views.py:154
+msgid "Document types enabled"
+msgstr "Ενεργοποιημένοι τύποι εγγράφων"
+
+#: views.py:164
+#, python-format
+msgid "Document type for which to enable smart link: %s"
+msgstr ""
+"Τύποι εγγράφων για τους οποίους θα ενεργοποιηθούν οι έξυπνοι σύνδεσμοι: %s"
+
+#: views.py:182
+msgid ""
+"Indexes group documents into units, usually with similar properties and of "
+"equal or similar types. Smart links allow defining relationships between "
+"documents even if they are in different indexes and are of different types."
+msgstr ""
+"Τα ευρετήρια ομαδοποιούν έγγραφα σε ενότητες, συνήθως με παρόμοιες ιδιότητες"
+" και παρόμοιων ή ιδίων τύπων. Οι έξυπνοι σύνδεσμοι επιτρέπουν τον καθορισμό "
+"σχέσεων μεταξύ εγγράφων ακόμα και αν περιέχονται σε διαφορετικά ευρετήρια ή "
+"είναι διαφορετικών τύπων."
+
+#: views.py:189
+msgid "There are no smart links"
+msgstr "Δεν υπάρχουν έξυπνοι σύνδεσμοι"
+
+#: views.py:207
+msgid ""
+"Smart links allow defining relationships between documents even if they are "
+"in different indexes and are of different types."
+msgstr ""
+"Οι έξυπνοι σύνδεσμοι επιτρέπουν τον καθορισμό σχέσεων μεταξύ εγγράφων ακόμη "
+"και αν περιέχονται σε διαφορετικά ευρετήρια ή είναι διαφορετικών τύπων."
+
+#: views.py:212
+msgid "There are no smart links for this document"
+msgstr "Δεν υπάρχουν έξυπνοι σύνδεσμοι για αυτό το έγγραφο"
+
+#: views.py:215
+#, python-format
+msgid "Smart links for document: %s"
+msgstr "Έξυπνοι σύνδεσμοι για το έγγραφο: %s"
+
+#: views.py:249
+#, python-format
+msgid "Delete smart link: %s"
+msgstr "Διαγραφή έξυπνου συνδέσμου: %s"
+
+#: views.py:265
+#, python-format
+msgid "Edit smart link: %s"
+msgstr "Τροποποίηση έξυπνου συνδέσμου: %s"
+
+#: views.py:290
+msgid ""
+"Conditions are small logic units that when combined define how the smart "
+"link will behave."
+msgstr ""
+"Οι συνθήκες είναι μικρές λογικές μονάδες που όταν συνδυάζονται καθορίζουν "
+"τον τρόπο συμπεριφοράς του έξυπνου συνδέσμου."
+
+#: views.py:294
+msgid "There are no conditions for this smart link"
+msgstr "Δεν υπάρχουν ορισμένες συνθήκες για αυτόν τον έξυπνο σύνδεσμο"
+
+#: views.py:298
+#, python-format
+msgid "Conditions for smart link: %s"
+msgstr "Συνθήκες του έξυπνου συνδέσμου: %s"
+
+#: views.py:317
+#, python-format
+msgid "Add new conditions to smart link: \"%s\""
+msgstr "Προσθήκη νέας συνθήκης στον έξυπνο σύνδεσμο: \"%s\""
+
+#: views.py:350
+#, python-format
+msgid "Delete smart link condition: \"%s\"?"
+msgstr "Διαγραφή συνθήκης έξυπνου συνδέσμοθυ: \"%s\";"
+
+#: views.py:376
+msgid "Edit smart link condition"
+msgstr "Τροποποίηση συνθηκών έξυπνου συνδέσμου"

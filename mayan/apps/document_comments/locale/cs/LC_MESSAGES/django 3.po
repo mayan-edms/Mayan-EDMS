@@ -1,0 +1,127 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Jiri Fait <fait@orkasolutions.cz>, 2021
+# Michal Švábík <snadno@lehce.cz>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: apps.py:31 events.py:6 search.py:18 search.py:25 search.py:32 search.py:39
+msgid "Document comments"
+msgstr "Komentáře k dokumentu"
+
+#: events.py:10
+msgid "Document comment created"
+msgstr "Komentář dokumentu byl vytvořen"
+
+#: events.py:13
+msgid "Document comment deleted"
+msgstr "Komentář dokumentu byl smazán"
+
+#: events.py:16
+msgid "Document comment edited"
+msgstr "Komentář dokumentu byl upraven"
+
+#: links.py:16
+msgid "Add comment"
+msgstr "Přidat komentář"
+
+#: links.py:22
+msgid "Delete"
+msgstr "Odstranit"
+
+#: links.py:27
+msgid "Edit"
+msgstr "Upravit"
+
+#: links.py:31 models.py:45 permissions.py:5 search.py:11
+msgid "Comments"
+msgstr "Komentáře"
+
+#: models.py:29
+msgid "Document"
+msgstr "Dokument"
+
+#: models.py:33 models.py:70
+msgid "User"
+msgstr "Uživatel"
+
+#: models.py:35
+msgid "Text"
+msgstr "Text"
+
+#: models.py:38
+msgid "Date time submitted"
+msgstr "Datum a čas odeslání"
+
+#: models.py:44
+msgid "Comment"
+msgstr "Komentář"
+
+#: permissions.py:8
+msgid "Create new comments"
+msgstr "Vytvořit nové komentáře"
+
+#: permissions.py:11
+msgid "Delete comments"
+msgstr "Smazat komentáře"
+
+#: permissions.py:14
+msgid "Edit comments"
+msgstr "Upravit komentáře"
+
+#: permissions.py:17
+msgid "View comments"
+msgstr "Zobrazit komentáře"
+
+#: views.py:31
+#, python-format
+msgid "Add comment to document: %s"
+msgstr "Přidat komentář k dokumentu: %s"
+
+#: views.py:59
+#, python-format
+msgid "Delete comment: %s?"
+msgstr "Smazat komentář: %s?"
+
+#: views.py:90
+#, python-format
+msgid "Details for comment: %s?"
+msgstr "Podrobnosti pro komentář: %s?"
+
+#: views.py:109
+#, python-format
+msgid "Edit comment: %s?"
+msgstr "Upravit komentář: %s?"
+
+#: views.py:144
+msgid ""
+"Document comments are timestamped text entries from users. They are great "
+"for collaboration."
+msgstr ""
+"Komentáře k dokumentu jsou časově označené textové záznamy od uživatelů. "
+"Jsou skvělé pro spolupráci."
+
+#: views.py:147
+msgid "There are no comments"
+msgstr "Nejsou žádné komentáře"
+
+#: views.py:149
+#, python-format
+msgid "Comments for document: %s"
+msgstr "Komentáře k dokumentu: %s"

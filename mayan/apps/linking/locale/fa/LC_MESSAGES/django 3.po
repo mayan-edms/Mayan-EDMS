@@ -1,0 +1,350 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:26+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2021\n"
+"Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:40
+msgid "Linking"
+msgstr ""
+
+#: apps.py:94 models.py:29
+msgid "Label"
+msgstr "برچسب"
+
+#: events.py:6 links.py:24 links.py:75 links.py:80 links.py:85 models.py:48
+#: permissions.py:5 views.py:191
+msgid "Smart links"
+msgstr "پیوند هوشمند"
+
+#: events.py:10
+msgid "Smart link created"
+msgstr ""
+
+#: events.py:13
+msgid "Smart link edited"
+msgstr ""
+
+#: forms.py:45
+msgid "Foreign document field"
+msgstr ""
+
+#: links.py:29
+msgid "Create condition"
+msgstr "ایجاد شرط"
+
+#: links.py:35 links.py:55
+msgid "Delete"
+msgstr "حذف"
+
+#: links.py:39 links.py:64
+msgid "Edit"
+msgstr "ویرایش"
+
+#: links.py:44
+msgid "Conditions"
+msgstr "شرایط"
+
+#: links.py:50 views.py:227
+msgid "Create new smart link"
+msgstr "ایجاد پیوند هوشمند جدید"
+
+#: links.py:59 models.py:40
+msgid "Document types"
+msgstr "نوع سند"
+
+#: links.py:69
+msgid "Documents"
+msgstr "اسناد"
+
+#: literals.py:7
+msgid "and"
+msgstr "و"
+
+#: literals.py:8
+msgid "or"
+msgstr "یا"
+
+#: literals.py:12
+msgid "is equal to"
+msgstr "برابراست با"
+
+#: literals.py:13
+msgid "is equal to (case insensitive)"
+msgstr "برابراست با (case insensitive)"
+
+#: literals.py:14
+msgid "contains"
+msgstr "شامل"
+
+#: literals.py:15
+msgid "contains (case insensitive)"
+msgstr "شامل (case insensitive)"
+
+#: literals.py:16
+msgid "is in"
+msgstr "در آن "
+
+#: literals.py:17
+msgid "is greater than"
+msgstr "بزرگتر از"
+
+#: literals.py:18
+msgid "is greater than or equal to"
+msgstr "بزرگتر مساوی با"
+
+#: literals.py:19
+msgid "is less than"
+msgstr "کوچکتر از"
+
+#: literals.py:20
+msgid "is less than or equal to"
+msgstr "کوچکتر مساوی با"
+
+#: literals.py:21
+msgid "starts with"
+msgstr "شروع میشود با"
+
+#: literals.py:22
+msgid "starts with (case insensitive)"
+msgstr "شروع میشود با (case insensitive)"
+
+#: literals.py:23
+msgid "ends with"
+msgstr "خاتمه با"
+
+#: literals.py:24
+msgid "ends with (case insensitive)"
+msgstr "خاتمه با (case insensitive)"
+
+#: literals.py:25
+msgid "is in regular expression"
+msgstr "موجود در عبارات منظم"
+
+#: literals.py:26
+msgid "is in regular expression (case insensitive)"
+msgstr "موجود در عبارات منظم  (case insensitive)"
+
+#: models.py:28
+msgid "A short text describing the smart link."
+msgstr ""
+
+#: models.py:33
+msgid ""
+"Use this field to show a unique label depending on the document from which "
+"the smart link is being accessed."
+msgstr ""
+
+#: models.py:35
+msgid "Dynamic label"
+msgstr ""
+
+#: models.py:37 models.py:186
+msgid "Enabled"
+msgstr "فعال شده است"
+
+#: models.py:47 models.py:164
+msgid "Smart link"
+msgstr "پیوند هوشمند"
+
+#: models.py:80
+#, python-format
+msgid "Error generating dynamic label; %s"
+msgstr ""
+
+#: models.py:95
+msgid "This smart link is not allowed for the selected document's type."
+msgstr "این لینک هوشمند برای نوع سند منتخب مجاز نیست"
+
+#: models.py:168
+msgid "The inclusion is ignored for the first item."
+msgstr "ورود اولین آیتم در نطر گرفته نشد."
+
+#: models.py:172
+msgid "This represents the metadata of all other documents."
+msgstr "این مورد نشانگر متا داده تمامی اسناد می باشد."
+
+#: models.py:173
+msgid "Foreign document attribute"
+msgstr "مختصات سند خارجی"
+
+#: models.py:178
+msgid ""
+"The expression using document properties to be evaluated against the foreign"
+" document field."
+msgstr ""
+
+#: models.py:180
+msgid "Expression"
+msgstr "عبارت"
+
+#: models.py:183
+msgid "Inverts the logic of the operator."
+msgstr "منطق عملگر را برعکس میکند."
+
+#: models.py:184
+msgid "Negated"
+msgstr "منفی شده"
+
+#: models.py:189
+msgid "Link condition"
+msgstr "شرط پیوند"
+
+#: models.py:190
+msgid "Link conditions"
+msgstr "شرایط پیوند"
+
+#: models.py:206
+msgid "not"
+msgstr "نه "
+
+#: models.py:210
+msgid "Full label"
+msgstr ""
+
+#: permissions.py:8
+msgid "Create new smart links"
+msgstr "ایجاد پیوند هوشمند جدید"
+
+#: permissions.py:11
+msgid "Delete smart links"
+msgstr "حذف پیوند هوشمند "
+
+#: permissions.py:14
+msgid "Edit smart links"
+msgstr "ویرایش پیوند هوشمند "
+
+#: permissions.py:17
+msgid "View existing smart links"
+msgstr "دیدن پیوندهای هوشمند موجود"
+
+#: serializers.py:52
+msgid "Primary key of the document type to add to the smart link."
+msgstr ""
+
+#: serializers.py:61
+msgid "Primary key of the document type to remove from the smart link."
+msgstr ""
+
+#: views.py:41
+msgid "Available smart links"
+msgstr ""
+
+#: views.py:42
+msgid "Smart links enabled"
+msgstr ""
+
+#: views.py:68
+#, python-format
+msgid "Smart links to enable for document type: %s"
+msgstr ""
+
+#: views.py:103
+#, python-format
+msgid "Smart link query error: %s"
+msgstr "خطای پرسش query از پیوند هوشمند : %s"
+
+#: views.py:114
+#, python-format
+msgid "Documents in smart link: %s"
+msgstr "اسناد در لینک هوشمند: %s"
+
+#: views.py:117
+#, python-format
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr ""
+
+#: views.py:153
+msgid "Available document types"
+msgstr "نوع سند موجود"
+
+#: views.py:154
+msgid "Document types enabled"
+msgstr ""
+
+#: views.py:164
+#, python-format
+msgid "Document type for which to enable smart link: %s"
+msgstr "نوع سند برای فعالسازی لینک هوشمند: %s"
+
+#: views.py:182
+msgid ""
+"Indexes group documents into units, usually with similar properties and of "
+"equal or similar types. Smart links allow defining relationships between "
+"documents even if they are in different indexes and are of different types."
+msgstr ""
+
+#: views.py:189
+msgid "There are no smart links"
+msgstr ""
+
+#: views.py:207
+msgid ""
+"Smart links allow defining relationships between documents even if they are "
+"in different indexes and are of different types."
+msgstr ""
+
+#: views.py:212
+msgid "There are no smart links for this document"
+msgstr ""
+
+#: views.py:215
+#, python-format
+msgid "Smart links for document: %s"
+msgstr "ارتباطات هوشمند برای سند :%s"
+
+#: views.py:249
+#, python-format
+msgid "Delete smart link: %s"
+msgstr ""
+
+#: views.py:265
+#, python-format
+msgid "Edit smart link: %s"
+msgstr "ویرایش پیوند هوشمند %s"
+
+#: views.py:290
+msgid ""
+"Conditions are small logic units that when combined define how the smart "
+"link will behave."
+msgstr ""
+
+#: views.py:294
+msgid "There are no conditions for this smart link"
+msgstr ""
+
+#: views.py:298
+#, python-format
+msgid "Conditions for smart link: %s"
+msgstr "شرایط پیوند هوشمند : %s"
+
+#: views.py:317
+#, python-format
+msgid "Add new conditions to smart link: \"%s\""
+msgstr "اضافه کردن شرط جدید به پیوند هوشمند \"%s\""
+
+#: views.py:350
+#, python-format
+msgid "Delete smart link condition: \"%s\"?"
+msgstr ""
+
+#: views.py:376
+msgid "Edit smart link condition"
+msgstr "ویرایش شرط پیوند هوشمند \"%s\""

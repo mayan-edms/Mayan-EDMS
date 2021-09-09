@@ -1,0 +1,183 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# mic <winterfall24@gmail.com>, 2021
+# Roberto Rosario, 2021
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
+"Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: apps.py:27 events.py:6 permissions.py:5 queues.py:8 settings.py:10
+msgid "File caching"
+msgstr "Buforowanie plików"
+
+#: events.py:10
+msgid "Cache created"
+msgstr "Utworzono pamięć podręczną"
+
+#: events.py:13
+msgid "Cache edited"
+msgstr "Zmodyfikowano pamięć podręczną"
+
+#: events.py:16
+msgid "Cache purged"
+msgstr "Pamięć podręczna została wyczyszczona"
+
+#: events.py:19
+msgid "Cache partition purged"
+msgstr ""
+
+#: links.py:24
+msgid "File caches"
+msgstr "Pamięci podręczne plików"
+
+#: links.py:29 links.py:35 links.py:39
+msgid "Purge cache"
+msgstr "Wyczyść pamięć podręczną"
+
+#: models.py:41
+msgid "Internal name of the defined storage for this cache."
+msgstr "Wewnętrzna nazwa zdefiniowanej pamięci dla tej pamięci podręcznej."
+
+#: models.py:42
+msgid "Defined storage name"
+msgstr "Zdefiniowana nazwa magazynu"
+
+#: models.py:45
+msgid "Maximum size of the cache in bytes."
+msgstr "Maksymalny rozmiar pamięci podręcznej w bajtach."
+
+#: models.py:47 models.py:73
+msgid "Maximum size"
+msgstr "Maksymalny rozmiar"
+
+#: models.py:51 models.py:206
+msgid "Cache"
+msgstr "Pamięć podręczna"
+
+#: models.py:52
+msgid "Caches"
+msgstr "Pamięci podręczne"
+
+#: models.py:71
+msgid "Size at which the cache will start deleting old entries."
+msgstr ""
+"Rozmiar, przy którym pamięć podręczna rozpocznie usuwanie starych wpisów."
+
+#: models.py:80
+msgid "Unknown"
+msgstr "Nieznany"
+
+#: models.py:97
+msgid "Current size"
+msgstr "Aktualny rozmiar"
+
+#: models.py:98
+msgid "Current size of the cache."
+msgstr "Aktualny rozmiar pamięci podręcznej."
+
+#: models.py:209
+msgid "Name"
+msgstr "Nazwa"
+
+#: models.py:214 models.py:305
+msgid "Cache partition"
+msgstr "Partycja pamięci podręcznej"
+
+#: models.py:215
+msgid "Cache partitions"
+msgstr "Partycje pamięci podręcznej"
+
+#: models.py:308
+msgid "Date time"
+msgstr "Data i godzina"
+
+#: models.py:310
+msgid "Filename"
+msgstr "Nazwa"
+
+#: models.py:312
+msgid "File size"
+msgstr "Rozmiar pliku"
+
+#: models.py:316
+msgid "Times this cache partition file has been accessed."
+msgstr ""
+
+#: models.py:323
+msgid "Cache partition file"
+msgstr "Plik partycji pamięci podręcznej"
+
+#: models.py:324
+msgid "Cache partition files"
+msgstr "Pliki partycji pamięci podręcznej"
+
+#: permissions.py:8
+msgid "Purge an object cache"
+msgstr ""
+
+#: permissions.py:11 queues.py:18
+msgid "Purge a file cache"
+msgstr "Wyczyść pamięć podręczną plików"
+
+#: permissions.py:14
+msgid "View a file cache"
+msgstr "Wyświetl pamięć podręczną plików"
+
+#: queues.py:13
+msgid "Purge a file cache partition"
+msgstr ""
+
+#: settings.py:15
+msgid ""
+"Number of times a cache will retry failed attempts to prune files to free up"
+" space for new a file being requested, before giving up."
+msgstr ""
+
+#: settings.py:23
+msgid ""
+"Number of times a cache will attempt to prune files to free up space for new"
+" a file being requested, before giving up."
+msgstr ""
+
+#: views.py:43
+#, python-format
+msgid "Details cache: %s"
+msgstr ""
+
+#: views.py:54
+msgid "File caches list"
+msgstr "Lista pamięci podręcznych plików"
+
+#: views.py:70
+#, python-format
+msgid "Purge cache partitions of \"%s\"?"
+msgstr ""
+
+#: views.py:86
+msgid "Object cache partitions submitted for purging."
+msgstr ""
+
+#: views.py:103
+msgid "Submit the selected cache for purging?"
+msgid_plural "Submit the selected caches for purging?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""

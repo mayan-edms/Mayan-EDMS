@@ -1,0 +1,65 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Mathias Behrle <mathiasb@m9s.biz>, 2021
+# Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2021
+# Ingo Buchholz <ingo.buchholz@takwa.de>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2021\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:18 settings.py:10
+msgid "Lock manager"
+msgstr "Sperrverwaltung"
+
+#: models.py:14
+msgid "Creation datetime"
+msgstr "Erstellungsdatum"
+
+#: models.py:18
+msgid "Timeout"
+msgstr "Timeout"
+
+#: models.py:21
+msgid "Name"
+msgstr "Name"
+
+#: models.py:27
+msgid "Lock"
+msgstr "Sperre"
+
+#: models.py:28
+msgid "Locks"
+msgstr "Sperren"
+
+#: settings.py:15
+msgid "Path to the class to use when to request and release resource locks."
+msgstr ""
+"Der Pfad zu der zu nutzenden Klasse für die Aktivierung und Aufhebung der "
+"Ressourcensperre."
+
+#: settings.py:22
+msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
+msgstr "Argumente, die an LOCK_MANAGER_BACKEND übergeben werden sollen."
+
+#: settings.py:28
+msgid ""
+"Default amount of time in seconds after which a resource lock will be "
+"automatically released."
+msgstr ""
+"Standardzeit in Sekunden nach der eine Ressourcensperre wieder automatisch "
+"freigegeben wird.  "

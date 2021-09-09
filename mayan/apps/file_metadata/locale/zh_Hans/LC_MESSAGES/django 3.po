@@ -1,0 +1,245 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# yan songwei <yansw@vip.163.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: yan songwei <yansw@vip.163.com>, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: admin.py:13
+msgid "Label"
+msgstr "标签"
+
+#: apps.py:48 events.py:6 links.py:17 permissions.py:5 queues.py:7
+#: settings.py:12
+msgid "File metadata"
+msgstr "文件元数据"
+
+#: apps.py:98 search.py:11 search.py:22 search.py:33
+msgid "File metadata key"
+msgstr "文件元数据密钥"
+
+#: apps.py:102 search.py:15 search.py:26 search.py:37
+msgid "File metadata value"
+msgstr "文件元数据值"
+
+#: apps.py:129
+msgid "Return the value of a specific file metadata."
+msgstr "返回特定文件元数据的值。"
+
+#: apps.py:130
+msgid "File metadata value of"
+msgstr "文件元数据值来自"
+
+#: dependencies.py:12
+msgid ""
+"Library and program to read and write meta information in multimedia files."
+msgstr "用于在多媒体文件中读取和写入元信息的库和程序。"
+
+#: drivers/exiftool.py:19
+msgid "EXIF Tool"
+msgstr "EXIF工具"
+
+#: events.py:10
+msgid "Document file submitted for file metadata processing"
+msgstr ""
+
+#: events.py:14
+msgid "Document file file metadata processing finished"
+msgstr ""
+
+#: links.py:23
+msgid "Attributes"
+msgstr "属性"
+
+#: links.py:30 links.py:35
+msgid "Submit for file metadata"
+msgstr "提交文件元数据"
+
+#: links.py:42
+msgid "Setup file metadata"
+msgstr "设置文件元数据"
+
+#: links.py:47
+msgid "File metadata processing per type"
+msgstr "每种类型的文件元数据处理"
+
+#: methods.py:36
+msgid "get_file_metadata(< file metadata dotted path >)"
+msgstr "get_file_metadata（<文件元数据点缀路径>）"
+
+#: methods.py:39
+msgid "Return the specified document file metadata entry."
+msgstr "返回指定的文档文件元数据条目。"
+
+#: methods.py:66
+msgid "Return the specified document file file metadata entry."
+msgstr ""
+
+#: models.py:18
+msgid "Driver path"
+msgstr "驱动程序路径"
+
+#: models.py:22
+msgid "Internal name"
+msgstr "内部名称"
+
+#: models.py:27 models.py:70
+msgid "Driver"
+msgstr "驱动程序"
+
+#: models.py:28
+msgid "Drivers"
+msgstr "驱动程序"
+
+#: models.py:48
+msgid "Document type"
+msgstr "文档类型"
+
+#: models.py:52
+msgid "Automatically queue newly created documents for processing."
+msgstr "自动将新创建的文档排入队列以进行处理。"
+
+#: models.py:59
+msgid "Document type settings"
+msgstr "文档类型设置"
+
+#: models.py:60
+msgid "Document types settings"
+msgstr "文档类型设置"
+
+#: models.py:74
+msgid "Document file"
+msgstr ""
+
+#: models.py:80 models.py:95
+msgid "Document file driver entry"
+msgstr ""
+
+#: models.py:81
+msgid "Document file driver entries"
+msgstr ""
+
+#: models.py:88
+msgid "Attribute count"
+msgstr "属性计数"
+
+#: models.py:99
+msgid "Name of the file metadata entry."
+msgstr "文件元数据条目的名称。"
+
+#: models.py:100
+msgid "Key"
+msgstr "密钥"
+
+#: models.py:103
+msgid "Value of the file metadata entry."
+msgstr "文件元数据条目的值。"
+
+#: models.py:104
+msgid "Value"
+msgstr "值"
+
+#: models.py:109
+msgid "File metadata entry"
+msgstr "文件元数据输入"
+
+#: models.py:110
+msgid "File metadata entries"
+msgstr "文件元数据条目"
+
+#: permissions.py:8
+msgid "Change document type file metadata settings"
+msgstr "更改文档类型文件元数据设置"
+
+#: permissions.py:13
+msgid "Submit document for file metadata processing"
+msgstr "提交文档以处理文件元数据"
+
+#: permissions.py:17
+msgid "View file metadata"
+msgstr "查看文件元数据"
+
+#: queues.py:11
+msgid "Process document file"
+msgstr ""
+
+#: settings.py:18
+msgid ""
+"Set new document types to perform file metadata processing automatically by "
+"default."
+msgstr "设置新的文档类型用于默认情况下自动执行文件元数据处理。"
+
+#: settings.py:25
+msgid "Arguments to pass to the drivers."
+msgstr "传递给驱动程序的参数。"
+
+#: views.py:44
+msgid ""
+"File metadata are the attributes of the document's file. They can range from"
+" camera information used to take a photo to the author that created a file. "
+"File metadata are set when the document's file was first created. File "
+"metadata attributes reside in the file itself. They are not the same as the "
+"document metadata, which are user defined and reside in the database."
+msgstr ""
+"文件元数据是文档文件的属性。它们的范围从用于拍摄照片的相机信息到创建文件的作者。首次创建文档文件时设置文件元数据。文件元数据属性驻留在文件本身中。它们与用户定义并驻留在数据库中的文档元数据不同。"
+
+#: views.py:52
+msgid "No file metadata available."
+msgstr "没有可用的文件元数据。"
+
+#: views.py:55
+#, python-format
+msgid "File metadata drivers for: %s"
+msgstr "文件元数据驱动程序：%s"
+
+#: views.py:81
+msgid ""
+"This could mean that the file metadata detection has not completed or that "
+"the driver does not support any metadata field for the file type of this "
+"document."
+msgstr ""
+
+#: views.py:86
+msgid "No file metadata available for this driver."
+msgstr ""
+
+#: views.py:90
+#, python-format
+msgid ""
+"File metadata attributes for: %(document_file)s with driver: %(driver)s"
+msgstr ""
+
+#: views.py:119
+msgid "Submit the selected document file to the file metadata queue?"
+msgid_plural "Submit the selected documents files to the file metadata queue?"
+msgstr[0] ""
+
+#: views.py:145
+#, python-format
+msgid "Edit file metadata settings for document type: %s"
+msgstr ""
+
+#: views.py:156
+msgid "Submit all documents of a type for file metadata processing."
+msgstr "提交所有类型的文件以进行文件元数据处理。"
+
+#: views.py:180
+#, python-format
+msgid "%(count)d documents added to the file metadata processing queue."
+msgstr ""

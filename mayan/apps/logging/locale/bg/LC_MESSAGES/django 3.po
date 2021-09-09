@@ -1,0 +1,124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:16 permissions.py:5 settings.py:10
+msgid "Logging"
+msgstr "Регистрация"
+
+#: links.py:13
+msgid "Errors"
+msgstr "Грешки"
+
+#: links.py:19
+msgid "Clear errors"
+msgstr "Изчистване на грешки"
+
+#: models.py:10 models.py:38
+msgid "Internal name"
+msgstr "Вътрешно име"
+
+#: models.py:15 models.py:35
+msgid "Error log"
+msgstr "Дневник на грешките"
+
+#: models.py:16
+msgid "Error logs"
+msgstr "Дневници за грешки"
+
+#: models.py:25
+msgid "App label"
+msgstr "Етикет на приложението"
+
+#: models.py:43 models.py:60
+msgid "Error log partition"
+msgstr "Дял на дневника за грешки"
+
+#: models.py:44
+msgid "Error log partitions"
+msgstr "Дялове в дневника за грешки"
+
+#: models.py:63
+msgid "Date and time"
+msgstr "Дата и час"
+
+#: models.py:65
+msgid "Text"
+msgstr "Текст"
+
+#: models.py:70
+msgid "Error log partition entry"
+msgstr "Запис на дял в дневника за грешки"
+
+#: models.py:71
+msgid "Error log partition entries"
+msgstr "Записи в дял на дневника за грешки"
+
+#: permissions.py:8
+msgid "View error log"
+msgstr "Преглед на дневника за грешки"
+
+#: settings.py:14
+msgid "Automatically enable logging to all apps."
+msgstr "Автоматично активиране на регистрацията във всички приложения."
+
+#: settings.py:19
+msgid ""
+"List of handlers to which logging messages will be sent. Options are: {}"
+msgstr ""
+"Списък на манипулаторите, на които ще бъдат изпратени съобщения за "
+"регистриране. Опциите са: {}"
+
+#: settings.py:25
+msgid "Level for the logging system."
+msgstr "Ниво за регистрационната система."
+
+#: settings.py:31
+msgid "Path to the logfile that will track errors during production."
+msgstr ""
+"Път към файла на дневника, който ще проследява грешките по време на "
+"производството."
+
+#: views.py:20
+#, python-format
+msgid "Clear error log entries for: %s"
+msgstr "Изчистване на записите в дневника за грешки за: %s"
+
+#: views.py:27
+msgid "Object error log cleared successfully"
+msgstr "Дневникът за грешки в обекта е изчистен успешно"
+
+#: views.py:42
+msgid ""
+"This view displays the error log of different object. An empty list is a "
+"good thing."
+msgstr ""
+"Този изглед показва дневника на грешките на различен обект. Празен списък е "
+"нещо добро."
+
+#: views.py:46
+msgid "There are no error log entries"
+msgstr "Няма записи в дневника за грешки"
+
+#: views.py:49
+#, python-format
+msgid "Error log entries for: %s"
+msgstr "Записи в дневника за грешки за: %s"

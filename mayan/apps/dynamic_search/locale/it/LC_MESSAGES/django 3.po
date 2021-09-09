@@ -1,0 +1,139 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>, 2021\n"
+"Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:19
+msgid "Dynamic search"
+msgstr "Ricerca dinamica"
+
+#: classes.py:265
+msgid "No search model matching the query"
+msgstr "Nessun modello di ricerca corrisponde alla query"
+
+#: forms.py:9
+msgid "Match all"
+msgstr "Corrisponde a tutti"
+
+#: forms.py:10
+msgid ""
+"When checked, only results that match all fields will be returned. When "
+"unchecked results that match at least one field will be returned."
+msgstr ""
+"Se selezionato, verranno restituiti solo i risultati che corrispondono a "
+"tutti i campi. Quando i risultati non selezionati che corrispondono ad "
+"almeno un campo verranno restituiti."
+
+#: forms.py:31 templates/dynamic_search/search_box.html:41
+msgid "Search terms"
+msgstr "Cerca termini "
+
+#: links.py:13 permissions.py:5 queues.py:8 settings.py:11
+#: templates/dynamic_search/search_box.html:45 views.py:124 views.py:137
+msgid "Search"
+msgstr "Cerca"
+
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:151
+msgid "Advanced search"
+msgstr "Ricerca avanzata"
+
+#: links.py:21
+msgid "Search again"
+msgstr "Cerca ancora"
+
+#: links.py:25 views.py:97
+msgid "Reindex search backend"
+msgstr "Reindicizza il backend di ricerca"
+
+#: permissions.py:8
+msgid "Execute search tools"
+msgstr "Esegui strumenti di ricerca"
+
+#: queues.py:13
+msgid "Remove a model instance from the search engine."
+msgstr "Rimuovi un'istanza del modello dal motore di ricerca."
+
+#: queues.py:18
+msgid "Index a model instance to the search engine."
+msgstr "Indicizza un'istanza del modello nel motore di ricerca."
+
+#: queues.py:24
+msgid "Index all instances of a search model to the search engine."
+msgstr ""
+
+#: settings.py:16
+msgid "Full path to the backend to be used to handle the search."
+msgstr ""
+"Percorso completo per il backend da utilizzare per gestire la ricerca."
+
+#: settings.py:26
+msgid ""
+"Disables the single term bar search leaving only the advanced search button."
+msgstr ""
+"Disabilita la ricerca della barra a termine singolo lasciando solo il "
+"pulsante di ricerca avanzata."
+
+#: settings.py:33
+msgid "Sets the default state of the \"Match all\" checkbox."
+msgstr ""
+
+#: settings.py:37
+msgid "Maximum number search results to fetch and display."
+msgstr "Numero massimo di risultati di ricerca da recuperare e visualizzare."
+
+#: templates/dynamic_search/search_box.html:47
+msgid "Advanced"
+msgstr "Avanzato"
+
+#: views.py:40
+msgid "Try again using different terms. "
+msgstr "Riprova usando termini diversi."
+
+#: views.py:42
+msgid "No search results"
+msgstr "Nessun risultato trovato"
+
+#: views.py:44
+#, python-format
+msgid "Search results for: %s"
+msgstr "Risultati ricerca per: %s"
+
+#: views.py:93
+msgid ""
+"This tool is required only for some search backends. Search results will be "
+"affected while the backend is being reindexed."
+msgstr ""
+"Questo strumento è richiesto solo per alcuni backend di ricerca. I risultati"
+" della ricerca saranno influenzati durante la reindicizzazione del backend."
+
+#: views.py:99
+msgid "This tool erases and populates the search backend's internal index."
+msgstr ""
+"Questo strumento cancella e popola l'indice interno del backend di ricerca."
+
+#: views.py:117
+msgid "Search backend reindexing queued."
+msgstr "Reindicizzazione del backend di ricerca in coda."
+
+#: views.py:139
+#, python-format
+msgid "Search for: %s"
+msgstr "Cerca: %s"

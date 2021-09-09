@@ -1,0 +1,317 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2021
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:33
+msgid "Django GPG"
+msgstr "Джанго GPG"
+
+#: apps.py:56 apps.py:62 forms.py:15
+msgid "Key ID"
+msgstr "Ключ №"
+
+#: apps.py:66 forms.py:32 models.py:59
+msgid "Type"
+msgstr "Тип"
+
+#: apps.py:70 forms.py:21 models.py:40
+msgid "Creation date"
+msgstr "Дата на създаване"
+
+#: apps.py:74
+msgid "No expiration"
+msgstr "Няма срок"
+
+#: apps.py:75 forms.py:25 models.py:44
+msgid "Expiration date"
+msgstr "Срок"
+
+#: apps.py:78 forms.py:30 models.py:51
+msgid "Length"
+msgstr "Дължина"
+
+#: apps.py:83 forms.py:17 models.py:56
+msgid "User ID"
+msgstr "Потребител №"
+
+#: dependencies.py:10
+msgid "GNU privacy guard - a PGP implementation."
+msgstr "GNU защита на поверителността - PGP изпълнение."
+
+#: events.py:5 links.py:42 permissions.py:5
+msgid "Key management"
+msgstr "Управление на ключове"
+
+#: events.py:8
+msgid "Key created"
+msgstr "Ключът е създаден"
+
+#: events.py:12
+msgid "Key downloaded"
+msgstr "Ключът е изтеглен"
+
+#: forms.py:26
+msgid "None"
+msgstr "Няма"
+
+#: forms.py:29 models.py:48
+msgid "Fingerprint"
+msgstr "Пръстов отпечатък"
+
+#: forms.py:31 models.py:54
+msgid "Algorithm"
+msgstr "Алгоритъм"
+
+#: forms.py:45
+msgid "Term"
+msgstr "Условие"
+
+#: forms.py:46
+msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr "Име, е-мейл, ключ № или ключов отпечатък, за преглед."
+
+#: links.py:17
+msgid "Delete"
+msgstr "Изтрийте"
+
+#: links.py:22
+msgid "Details"
+msgstr "Детайли"
+
+#: links.py:27
+msgid "Download"
+msgstr "Сваляне"
+
+#: links.py:32 permissions.py:26
+msgid "Query keyservers"
+msgstr "Ключови сървъри за търсене"
+
+#: links.py:37
+msgid "Import"
+msgstr "Внос"
+
+#: links.py:46
+msgid "Upload key"
+msgstr "Ключ за качване"
+
+#: links.py:50 views.py:194
+msgid "Private keys"
+msgstr "Лични ключове"
+
+#: links.py:54 views.py:218
+msgid "Public keys"
+msgstr "Публични ключове"
+
+#: literals.py:23 literals.py:31
+msgid "Public"
+msgstr "Публични"
+
+#: literals.py:24 literals.py:32
+msgid "Secret"
+msgstr "Тайни"
+
+#: literals.py:40 literals.py:45
+msgid "RSA"
+msgstr "RSA"
+
+#: literals.py:41
+msgid "DSA"
+msgstr "DSA"
+
+#: literals.py:46
+msgid "Elgamal"
+msgstr "ElGamal (асиметричен алгоритъм за криптиране)"
+
+#: literals.py:62
+msgid "Bad signature."
+msgstr "Лош подпис."
+
+#: literals.py:65
+msgid "Document not signed or invalid signature."
+msgstr "Документът не е подписан или подписа е невалиден."
+
+#: literals.py:68
+msgid "Signature error."
+msgstr "Грешка в подписа."
+
+#: literals.py:72
+msgid "Document is signed but no public key is available for verification."
+msgstr ""
+"Документът е подписан, но не е наличен публичен ключ за удостоверение."
+
+#: literals.py:77
+msgid "Document is signed, and signature is good."
+msgstr "Документът е подписан и подписа е валиден."
+
+#: literals.py:80
+msgid "Document is signed with a valid signature."
+msgstr "Документът е подписан с валиден подпис."
+
+#: models.py:36
+msgid "ASCII armored version of the key."
+msgstr "ASCII бронирана версия на ключа."
+
+#: models.py:37
+msgid "Key data"
+msgstr "Данни за ключа"
+
+#: models.py:65
+msgid "Key"
+msgstr "Ключ"
+
+#: models.py:66
+msgid "Keys"
+msgstr "Ключове"
+
+#: models.py:78
+msgid "Invalid key data"
+msgstr "Невалидни данни за ключ"
+
+#: models.py:81
+msgid "Key already exists."
+msgstr "Ключът вече съществува."
+
+#: permissions.py:8
+msgid "Delete keys"
+msgstr "Изтриване на ключове"
+
+#: permissions.py:11
+msgid "Download keys"
+msgstr "Изтегляне на ключове"
+
+#: permissions.py:14
+msgid "Import keys from keyservers"
+msgstr "Внос ключове от сървъри за ключове"
+
+#: permissions.py:17
+msgid "Use keys to sign content"
+msgstr "Използвайте ключове за подписване на съдържание"
+
+#: permissions.py:20
+msgid "Upload keys"
+msgstr "Ключове за качване"
+
+#: permissions.py:23
+msgid "View keys"
+msgstr "Виж ключове"
+
+#: settings.py:10
+msgid "Signatures"
+msgstr "Подписи"
+
+#: settings.py:16
+msgid "Full path to the backend to be used to handle keys and signatures."
+msgstr ""
+"Пълен път към бекенда, който да се използва за обработка на ключове и "
+"подписи."
+
+#: settings.py:25
+msgid "Keyserver used to query for keys."
+msgstr "Сървър, използван за търсене на ключове."
+
+#: views.py:39
+#, python-format
+msgid "Delete key: %s"
+msgstr "Изтрийте ключ: %s"
+
+#: views.py:56
+#, python-format
+msgid "Details for key: %s"
+msgstr "Данни за ключ: %s"
+
+#: views.py:84
+#, python-format
+msgid "Import key ID: %s?"
+msgstr "Въведете № на ключа: %s?"
+
+#: views.py:85
+msgid "Import key"
+msgstr "Внасяне на ключ"
+
+#: views.py:94
+#, python-format
+msgid "Unable to import key: %(key_id)s; %(error)s"
+msgstr "Ключът не може да се внесе: %(key_id)s; %(error)s"
+
+#: views.py:102
+#, python-format
+msgid "Successfully received key: %(key_id)s"
+msgstr "Успешно получен ключ: %(key_id)s"
+
+#: views.py:119
+msgid ""
+"Use names, last names, key ids or emails to search public keys to import "
+"from the keyserver."
+msgstr ""
+"Използвайте имена, фамилни имена, идентификатори на ключове или електронни "
+"съобщения, за да търсите публични ключове, които да импортирате от сървъра "
+"на ключове."
+
+#: views.py:123
+msgid "No results returned"
+msgstr "Няма върнати резултати"
+
+#: views.py:125
+msgid "Key query results"
+msgstr "Резултати от заявка за ключ"
+
+#: views.py:145
+msgid "Search"
+msgstr "Търсене"
+
+#: views.py:147
+msgid "Query key server"
+msgstr "Запитване към сървър за ключове"
+
+#: views.py:166
+msgid "Upload new key"
+msgstr "Качване на нов ключ"
+
+#: views.py:187
+msgid ""
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user. The view to upload private and public keys is the same."
+msgstr ""
+"Личните ключове се използват за подписване на документи. Личните ключове "
+"могат да бъдат качени само от потребителя. Изгледът за качване на лични и "
+"публични ключове е същият."
+
+#: views.py:192
+msgid "There no private keys"
+msgstr "Няма лични ключове"
+
+#: views.py:210
+msgid ""
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
+"public keys is the same."
+msgstr ""
+"Публичните ключове се използват за проверка на подписани документи. "
+"Публичните ключове могат да бъдат качени от потребителя или изтеглени от "
+"сървъри на ключове. Изгледът за качване на лични и публични ключове е един и"
+" същ."
+
+#: views.py:216
+msgid "There no public keys"
+msgstr "Няма публични ключове"

@@ -1,0 +1,278 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:41 events.py:5 links.py:32
+msgid "Checkouts"
+msgstr "Изписване"
+
+#: dashboard_widgets.py:14 views.py:182
+msgid "Checked out documents"
+msgstr "Изписани документи"
+
+#: events.py:8
+msgid "Document automatically checked in"
+msgstr "Автоматично регистрирани документи"
+
+#: events.py:12
+msgid "Document checked in"
+msgstr "Докъментът е регистриран"
+
+#: events.py:15
+msgid "Document checked out"
+msgstr "Документът е изписан"
+
+#: events.py:18
+msgid "Document forcefully checked in"
+msgstr "Документът е принудително регистриран"
+
+#: exceptions.py:15
+msgid "Document not checked out."
+msgstr "Документът не е проверен."
+
+#: exceptions.py:23
+msgid "Document already checked out."
+msgstr "Документът вече е изписан."
+
+#: forms.py:26
+msgid "Document status"
+msgstr "Състояние на документа"
+
+#: forms.py:37 models.py:40 models.py:106
+msgid "User"
+msgstr "Потребител"
+
+#: forms.py:41
+msgid "Check out time"
+msgstr "Време на изписване"
+
+#: forms.py:46
+msgid "Check out expiration"
+msgstr "Срок на изписване"
+
+#: forms.py:51
+msgid "New files allowed?"
+msgstr "Разрешени ли са нови файлове?"
+
+#: forms.py:52
+msgid "Yes"
+msgstr "Да"
+
+#: forms.py:52
+msgid "No"
+msgstr "Не"
+
+#: links.py:39
+msgid "Check out document"
+msgstr "Изписване на документ"
+
+#: links.py:43
+msgid "Check out"
+msgstr "Изписване"
+
+#: links.py:50
+msgid "Check in document"
+msgstr "Регистриране на документ"
+
+#: links.py:54 views.py:43
+msgid "Check in"
+msgstr "Регистриране"
+
+#: links.py:60
+msgid "Check in/out"
+msgstr "Регистриране / изписване"
+
+#: literals.py:10
+msgid "Checked out"
+msgstr "Изписан"
+
+#: literals.py:11
+msgid "Checked in/available"
+msgstr "Регистрирани / налични"
+
+#: models.py:27
+msgid "Document"
+msgstr "Документ"
+
+#: models.py:30
+msgid "Check out date and time"
+msgstr "Дата и час на изписване"
+
+#: models.py:34
+msgid "Amount of time to hold the document checked out in minutes."
+msgstr "Време за задържане на изписания документ в минути."
+
+#: models.py:36
+msgid "Check out expiration date and time"
+msgstr "Срок на изписване - дата и час"
+
+#: models.py:45
+msgid "Do not allow new file of this document to be uploaded."
+msgstr "Не позволявайте качването на нов файл от този документ."
+
+#: models.py:47
+msgid "Block new file upload"
+msgstr "Блокиране на качването на нов файл"
+
+#: models.py:55 permissions.py:5
+msgid "Document checkout"
+msgstr "Изписване на документ"
+
+#: models.py:56
+msgid "Document checkouts"
+msgstr "Изписвания на документи"
+
+#: models.py:64
+msgid "Check out expiration date and time must be in the future."
+msgstr "Датата и часът за срока на изписване трябва да бъдат в бъдещето."
+
+#: models.py:111
+msgid "Checkout time and date"
+msgstr "Час и дата на изписване"
+
+#: models.py:116
+msgid "Checkout expiration"
+msgstr "Срок на изписване"
+
+#: permissions.py:8
+msgid "Check in documents"
+msgstr "Регистриране на документи"
+
+#: permissions.py:11
+msgid "Forcefully check in documents"
+msgstr "Принудително регистриране на документи"
+
+#: permissions.py:14
+msgid "Check out documents"
+msgstr "Изпиши документи"
+
+#: permissions.py:17
+msgid "Check out details view"
+msgstr "Изглед на данни за изписване"
+
+#: queues.py:11
+msgid "Checkouts periodic"
+msgstr "Периодика на изписванията"
+
+#: queues.py:16
+msgid "Check expired checkouts"
+msgstr "Провери изписванията с изтекъл срок"
+
+#: serializers.py:30
+msgid "Primary key of the document to be checked out."
+msgstr "Основен ключ на документа, който трябва да бъде изписан."
+
+#: views.py:25
+#, python-format
+msgid "Unable to check in document \"%(instance)s\"; %(exception)s"
+msgstr ""
+"Не може да се провери в документ &quot;%(instance)s&quot;; %(exception)s"
+
+#: views.py:29
+#, python-format
+msgid "Document \"%(object)s\" checked in successfully."
+msgstr "Документът &quot;%(object)s&quot; се провери успешно."
+
+#: views.py:32
+#, python-format
+msgid "%(count)d document checked in successfully."
+msgstr "%(count)d документ се провери успешно."
+
+#: views.py:35
+#, python-format
+msgid "%(count)d documents checked in successfully."
+msgstr "%(count)d документи се провериха успешно."
+
+#: views.py:37
+#, python-format
+msgid "Check in document \"%(object)s\"."
+msgstr "Проверете в документ &quot;%(object)s&quot;."
+
+#: views.py:38
+#, python-format
+msgid "Check in %(count)d document."
+msgstr "Проверете в%(count)d документ."
+
+#: views.py:39
+#, python-format
+msgid "Check in %(count)d documents."
+msgstr "Проверете %(count)d документи."
+
+#: views.py:93
+#, python-format
+msgid "Unable to checkout document \"%(instance)s\"; %(exception)s"
+msgstr "Не може да се изтегли документ „%(instance)s“; %(exception)s"
+
+#: views.py:100
+#, python-format
+msgid "Document \"%(object)s\" checked out successfully."
+msgstr "Документът &quot;%(object)s&quot; бе проверен успешно."
+
+#: views.py:103
+#, python-format
+msgid "%(count)d document checked out successfully."
+msgstr "%(count)d документ бе проверен успешно."
+
+#: views.py:106
+#, python-format
+msgid "%(count)d documents checked out successfully."
+msgstr "%(count)d документи се провериха успешно."
+
+#: views.py:108
+#, python-format
+msgid "Checkout document \"%(object)s\"."
+msgstr "Провери документ &quot;%(object)s&quot;."
+
+#: views.py:109
+#, python-format
+msgid "Checkout %(count)d document."
+msgstr "Провери %(count)d документ."
+
+#: views.py:110
+#, python-format
+msgid "Checkout %(count)d documents."
+msgstr "Провери %(count)d документа."
+
+#: views.py:114
+msgid "Checkout"
+msgstr "Проверка"
+
+#: views.py:158
+#, python-format
+msgid "Check out details for document: %s"
+msgstr "Данни за изписването на документ: %s"
+
+#: views.py:178
+msgid ""
+"Checking out a document, blocks certain operations for a predetermined "
+"amount of time."
+msgstr ""
+"Изписването на документ блокира някои операции за предварително определен "
+"период от време."
+
+#: views.py:181
+msgid "No documents have been checked out"
+msgstr "Не са изписани документи"
+
+#: widgets.py:23
+msgid "Amount"
+msgstr "Брой"

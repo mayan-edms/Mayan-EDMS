@@ -1,0 +1,118 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
+# Daniele Bortoluzzi <daniele@elkos.it>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-12 03:39+0000\n"
+"Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>, 2021\n"
+"Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:30 apps.py:56 links.py:14 queues.py:9
+msgid "Duplicates"
+msgstr "Duplicati"
+
+#: apps.py:62
+msgid "Duplicate backend"
+msgstr ""
+
+#: classes.py:91
+msgid "Null backend"
+msgstr "Backend nullo"
+
+#: duplicate_backends.py:9
+msgid "Exact document file checksum"
+msgstr ""
+
+#: duplicate_backends.py:32
+msgid "Exact document label"
+msgstr ""
+
+#: links.py:18 models.py:41 views.py:73
+msgid "Duplicated documents"
+msgstr "Documenti duplicati"
+
+#: links.py:24 queues.py:23
+msgid "Duplicated document scan"
+msgstr "Documento scansionato duplicato"
+
+#: models.py:23 models.py:33
+msgid "Stored duplicate backend"
+msgstr ""
+
+#: models.py:24
+msgid "Stored duplicate backends"
+msgstr ""
+
+#: models.py:37
+msgid "Document"
+msgstr "Documento"
+
+#: models.py:49
+msgid "Duplicated backend entry"
+msgstr ""
+
+#: models.py:50
+msgid "Duplicated backend entries"
+msgstr ""
+
+#: queues.py:14
+msgid "Clean empty duplicate lists"
+msgstr "Pulisci le liste dei duplicati vuote"
+
+#: queues.py:18
+msgid "Scan document duplicates"
+msgstr "Cerca duplicati del documento"
+
+#: views.py:32
+msgid "Only exact copies of this document will be shown in the this list."
+msgstr ""
+"In questo elenco verranno visualizzate solo copie esatte di questo "
+"documento."
+
+#: views.py:36
+msgid "There are no duplicates for this document"
+msgstr "Non ci sono duplicati per questo documento"
+
+#: views.py:40
+#, python-format
+msgid "Duplicates for document: %s"
+msgstr "Duplicati per il documento: %s"
+
+#: views.py:64
+msgid ""
+"Duplicates are documents that are composed of the exact same file, down to "
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
+msgstr ""
+"I duplicati sono documenti composti dallo stesso file esatto, fino "
+"all'ultimo byte. I file che hanno lo stesso testo o OCR ma non sono identici"
+" o sono stati salvati utilizzando un formato di file diverso non verranno "
+"visualizzati come duplicati."
+
+#: views.py:71
+msgid "There are no duplicated documents"
+msgstr "Non ci sono documenti duplicati."
+
+#: views.py:81
+msgid "Scan for duplicated documents?"
+msgstr "Scansione per documenti duplicati?"
+
+#: views.py:88
+msgid "Duplicated document scan queued successfully."
+msgstr "Scansione duplicata del documento messa in coda correttamente."

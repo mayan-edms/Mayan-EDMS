@@ -1,0 +1,126 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:27 links.py:34 permissions.py:5 queues.py:7
+msgid "Statistics"
+msgstr "Статистика"
+
+#. Translators: Schedule here is a noun, the 'schedule' at
+#. which the statistic will be updated
+#: apps.py:36
+msgid "Schedule"
+msgstr "План"
+
+#: apps.py:42
+msgid "Last update"
+msgstr "Последна актуализация"
+
+#: classes.py:146
+msgid "Never"
+msgstr "Никога"
+
+#: links.py:14
+msgid "Queue"
+msgstr "Опашка"
+
+#: links.py:19
+msgid "View"
+msgstr "Изглед"
+
+#: links.py:24
+msgid "Namespace details"
+msgstr "Подробности за именното пространство"
+
+#: links.py:29
+msgid "Namespace list"
+msgstr "Списък на именните пространства"
+
+#. Translators: 'Slug' refers to the URL valid ID of the statistic
+#. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
+#: models.py:10
+msgid "Slug"
+msgstr "Калъп"
+
+#: models.py:12
+msgid "Date time"
+msgstr "Дата час"
+
+#: models.py:14
+msgid "Data"
+msgstr "Данни"
+
+#: models.py:17
+msgid "Statistics result"
+msgstr "Резултат от статистиката"
+
+#: models.py:18
+msgid "Statistics results"
+msgstr "Резултати от статистиката"
+
+#: permissions.py:8
+msgid "View statistics"
+msgstr "Преглед на статистиката"
+
+#: queues.py:12
+msgid "Execute statistic"
+msgstr "Изпълнете статистиката"
+
+#: templates/statistics/renderers/chartjs/line.html:14
+msgid "No data available."
+msgstr "Няма данни."
+
+#: templates/statistics/renderers/chartjs/line.html:16
+#, python-format
+msgid "Last update: %(datetime)s"
+msgstr "Последна актуализация: %(datetime)s"
+
+#: views.py:17
+msgid "Statistics namespaces"
+msgstr "Именни пространства за статистика"
+
+#: views.py:33
+#, python-format
+msgid "Namespace details for: %s"
+msgstr "Подробности за именното пространство за: %s"
+
+#: views.py:55
+#, python-format
+msgid "Results for: %s"
+msgstr "Резултати за: %s"
+
+#: views.py:62 views.py:88
+#, python-format
+msgid "Statistic \"%s\" not found."
+msgstr "Статистиката &quot;%s&quot; не е намерена."
+
+#: views.py:80
+#, python-format
+msgid "Queue statistic \"%s\" to be updated?"
+msgstr ""
+"Поставете на опашка статистиката &quot;%s&quot; за да бъде актуализирана?"
+
+#: views.py:94
+#, python-format
+msgid "Statistic \"%s\" queued successfully for update."
+msgstr ""
+"Статистиката &quot;%s&quot; е поставена на опашка успешно за актуализация."

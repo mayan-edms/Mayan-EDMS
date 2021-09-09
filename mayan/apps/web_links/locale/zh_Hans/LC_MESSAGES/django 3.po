@@ -1,0 +1,171 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# xisafe <root@xisafe.com>, 2021
+# bo feng <87289884@qq.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: bo feng <87289884@qq.com>, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:39
+msgid "Links"
+msgstr "链接"
+
+#: events.py:6 links.py:19 links.py:24 links.py:54 links.py:59 models.py:42
+#: permissions.py:5 views.py:182
+msgid "Web links"
+msgstr "网页链接"
+
+#: events.py:10
+msgid "Web link created"
+msgstr "网络链接已创建"
+
+#: events.py:13
+msgid "Web link edited"
+msgstr "网络链接已编辑"
+
+#: events.py:16
+msgid "Web link navigated"
+msgstr "网页链接已导航"
+
+#: links.py:29 views.py:94
+msgid "Create new web link"
+msgstr "建立新的网页连结"
+
+#: links.py:35
+msgid "Delete"
+msgstr "删除"
+
+#: links.py:39 models.py:36
+msgid "Document types"
+msgstr "文件类型"
+
+#: links.py:44
+msgid "Edit"
+msgstr "编辑"
+
+#: links.py:51
+msgid "Navigate"
+msgstr "导航"
+
+#: models.py:24
+msgid "A short text describing the web link."
+msgstr "描述Web链接的简短文本。"
+
+#: models.py:25
+msgid "Label"
+msgstr "标签"
+
+#: models.py:29
+msgid "Template that will be used to craft the final URL of the web link."
+msgstr "用于制作Web链接最终URL的模板。"
+
+#: models.py:31
+msgid "Template"
+msgstr "模板"
+
+#: models.py:33
+msgid "Enabled"
+msgstr "启用"
+
+#: models.py:41
+msgid "Web link"
+msgstr "网页链接"
+
+#: permissions.py:8
+msgid "Create new web links"
+msgstr "建立新的网页连结"
+
+#: permissions.py:11
+msgid "Delete web links"
+msgstr "删除网页链接"
+
+#: permissions.py:14
+msgid "Edit web links"
+msgstr "编辑网页链接"
+
+#: permissions.py:17
+msgid "View existing web links"
+msgstr "查看现有的Web链接"
+
+#: permissions.py:20
+msgid "View web link instances"
+msgstr "查看网页链接实例"
+
+#: serializers.py:16
+msgid "Primary key of the document type to add to the web link."
+msgstr "要添加到Web链接的文档类型主键。"
+
+#: serializers.py:25
+msgid "Primary key of the document type to remove from the web link."
+msgstr "要从Web链接中删除的文档类型主键。"
+
+#: views.py:38
+msgid "Available web links"
+msgstr "可用的网页链接"
+
+#: views.py:39
+msgid "Web links enabled"
+msgstr "网页链接已启用"
+
+#: views.py:63
+#, python-format
+msgid "Web links to enable for document type: %s"
+msgstr "将要启用文档类型的Web链接：%s"
+
+#: views.py:116
+#, python-format
+msgid "Delete web link: %s"
+msgstr "删除网页链接：%s"
+
+#: views.py:128
+msgid "Available document types"
+msgstr "可用的文档类型"
+
+#: views.py:129
+msgid "Document types enabled"
+msgstr "文档类型已启用"
+
+#: views.py:139
+#, python-format
+msgid "Document type for which to enable web link: %s"
+msgstr "要为其启用Web链接的文档类型：%s"
+
+#: views.py:156
+#, python-format
+msgid "Edit web link: %s"
+msgstr "编辑网页链接：%s"
+
+#: views.py:175 views.py:205
+msgid ""
+"Web links allow generating HTTP links from documents to external resources. "
+"The link URL's can contain document properties values."
+msgstr "网页链接允许生成包括文档及外部资源的HTTP链接。链接URL可以包含文档属性值。"
+
+#: views.py:180
+msgid "There are no web links"
+msgstr "没有网页链接"
+
+#: views.py:210
+msgid "There are no web links for this document"
+msgstr "该文档没有网页链接"
+
+#: views.py:213
+#, python-format
+msgid "Web links for document: %s"
+msgstr "文档的网页链接：%s"

@@ -1,0 +1,592 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Sergey Glita <gsv70@mail.ru>, 2021
+# lilo.panic, 2021
+# Panasoft, 2021
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: apps.py:63 apps.py:191 apps.py:197 apps.py:201 apps.py:206 apps.py:210
+#: events.py:5 links.py:49 permissions.py:5 queues.py:7 settings.py:9
+msgid "Metadata"
+msgstr "Метаданные"
+
+#: apps.py:125
+msgid "Return the value of a specific document metadata."
+msgstr "Возвращает значение определенных метаданных документа."
+
+#: apps.py:126
+msgid "Metadata value of"
+msgstr "Значение метаданных"
+
+#: apps.py:131
+msgid "Metadata type name"
+msgstr "Название типа метаданных"
+
+#: apps.py:135
+msgid "Metadata type value"
+msgstr "Значение типа метаданных"
+
+#: events.py:8
+msgid "Document metadata added"
+msgstr "Метаданные документа добавлены"
+
+#: events.py:11
+msgid "Document metadata edited"
+msgstr "Метаданные документа изменены"
+
+#: events.py:14
+msgid "Document metadata removed"
+msgstr "Метаданные документа удалены"
+
+#: events.py:17
+msgid "Metadata type created"
+msgstr "Тип метаданных создан"
+
+#: events.py:20
+msgid "Metadata type edited"
+msgstr "Тип метаданных изменен"
+
+#: events.py:23
+msgid "Metadata type relationship updated"
+msgstr "Отношение типа метаданных обновлено"
+
+#: forms.py:15
+msgid "ID"
+msgstr "ID"
+
+#: forms.py:17 models.py:52
+msgid "Name"
+msgstr "Название"
+
+#: forms.py:21 models.py:189 workflow_actions.py:93
+msgid "Value"
+msgstr "Значение"
+
+#: forms.py:26
+msgid "Update"
+msgstr "Обновить"
+
+#: forms.py:47 forms.py:194 models.py:277
+msgid "Required"
+msgstr "Требуемый"
+
+#: forms.py:76
+#, python-format
+msgid "Lookup value error: %s"
+msgstr "Ошибка значения поиска: %s"
+
+#: forms.py:89
+#, python-format
+msgid "Default value error: %s"
+msgstr "Ошибка значения по умолчанию: %s"
+
+#: forms.py:107 models.py:151
+#, python-format
+msgid "\"%s\" is required for this document type."
+msgstr "\"%s\" требуется для этого типа документа."
+
+#: forms.py:125
+msgid "Metadata types to be added to the selected documents."
+msgstr "Типы метаданных, которые будут добавлены к выбранным документам."
+
+#: forms.py:126 models.py:87 models.py:275 search.py:14 workflow_actions.py:86
+msgid "Metadata type"
+msgstr "Тип метаданных"
+
+#: forms.py:151 views.py:407
+msgid "Remove"
+msgstr "Удалить"
+
+#: forms.py:177
+msgid " Available template context variables: "
+msgstr "Доступные переменные контекста шаблона:"
+
+#: forms.py:192
+msgid "None"
+msgstr "Нет"
+
+#: forms.py:193
+msgid "Optional"
+msgstr "Необязательный"
+
+#: links.py:22 links.py:31 workflow_actions.py:30
+msgid "Add metadata"
+msgstr "Добавить метаданные"
+
+#: links.py:28 links.py:35 workflow_actions.py:104
+msgid "Edit metadata"
+msgstr "Редактировать метаданные"
+
+#: links.py:39 links.py:45 workflow_actions.py:177
+msgid "Remove metadata"
+msgstr "Удалить метаданные"
+
+#: links.py:56 links.py:82 models.py:88 views.py:578 workflow_actions.py:23
+#: workflow_actions.py:170
+msgid "Metadata types"
+msgstr "Типы метаданных"
+
+#: links.py:62
+msgid "Document types"
+msgstr "Типы документов"
+
+#: links.py:66
+msgid "Create new"
+msgstr "Создать тип метаданных"
+
+#: links.py:72
+msgid "Delete"
+msgstr "Удалить"
+
+#: links.py:77 views.py:238
+msgid "Edit"
+msgstr "Редактировать"
+
+#: methods.py:20
+msgid "Return the metadata of the document."
+msgstr "Возвращает метаданные документа."
+
+#: mixins.py:19
+msgid "Selected documents must be of the same type."
+msgstr "Выбранные документы должны быть одного типа."
+
+#: models.py:49
+msgid ""
+"Name used by other apps to reference this metadata type. Do not use python "
+"reserved words, or spaces."
+msgstr ""
+"Это значение будет использоваться другими приложениями для ссылки на этот "
+"тип метаданных. Не используйте зарезервированные слова Python или пробелы."
+
+#: models.py:55
+msgid "Short description of this metadata type."
+msgstr "Краткое описание типа метаданных."
+
+#: models.py:56
+msgid "Label"
+msgstr "Заголовок"
+
+#: models.py:60
+msgid "Enter a template to render."
+msgstr "Введите шаблон для рендеринга."
+
+#: models.py:61
+msgid "Default"
+msgstr "По умолчанию"
+
+#: models.py:65
+msgid "Enter a template to render. Must result in a comma delimited string."
+msgstr ""
+"Введите шаблон для рендеринга. Результатом должна быть строка, разделенная "
+"запятыми."
+
+#: models.py:67
+msgid "Lookup"
+msgstr "Подстановка"
+
+#: models.py:72
+msgid ""
+"The validator will reject data entry if the value entered does not conform "
+"to the expected format."
+msgstr ""
+"Валидатор отклонит ввод данных, если введенное значение не соответствует "
+"ожидаемому формату."
+
+#: models.py:74
+msgid "Validator"
+msgstr "Валидатор"
+
+#: models.py:78
+msgid ""
+"The parser will reformat the value entered to conform to the expected "
+"format."
+msgstr ""
+"Парсер переформатирует введенное значение, чтобы оно соответствовало "
+"ожидаемому формату."
+
+#: models.py:80
+msgid "Parser"
+msgstr "Парсер"
+
+#: models.py:159
+msgid "Value is not one of the provided options."
+msgstr "Значение не является одним из предоставленных вариантов."
+
+#: models.py:180
+msgid "Document"
+msgstr "Документ"
+
+#: models.py:183
+msgid "Type"
+msgstr "Тип"
+
+#: models.py:187
+msgid "The actual value stored in the metadata type field for the document."
+msgstr ""
+"Фактическое значение, хранящееся в поле типа метаданных для документа."
+
+#: models.py:195 models.py:196
+msgid "Document metadata"
+msgstr "Метаданные документа"
+
+#: models.py:223
+msgid "Metadata type is required for this document type."
+msgstr "Для этого типа документа требуется тип метаданных."
+
+#: models.py:258
+msgid "Metadata type is not valid for this document type."
+msgstr "Тип метаданных недопустим для этого типа документа."
+
+#: models.py:271
+msgid "Document type"
+msgstr "Тип документа"
+
+#: models.py:284
+msgid "Document type metadata type options"
+msgstr "Параметры типа метаданных типа документа"
+
+#: models.py:285
+msgid "Document type metadata types options"
+msgstr "Параметры типов метаданных типа документа"
+
+#: permissions.py:8
+msgid "Add metadata to a document"
+msgstr "Добавить метаданные документа"
+
+#: permissions.py:11
+msgid "Edit a document's metadata"
+msgstr "Редактировать метаданные документа"
+
+#: permissions.py:14
+msgid "Remove metadata from a document"
+msgstr "Удалить метаданные документа"
+
+#: permissions.py:18
+msgid "View metadata from a document"
+msgstr "Просмотр метаданных документа"
+
+#: permissions.py:22
+msgid "Metadata setup"
+msgstr "Настройки метаданных "
+
+#: permissions.py:26
+msgid "Edit metadata types"
+msgstr "Редактировать типы метаданных"
+
+#: permissions.py:29
+msgid "Create new metadata types"
+msgstr "Создать типы метаданных"
+
+#: permissions.py:32
+msgid "Delete metadata types"
+msgstr "Удалить типы метаданных"
+
+#: permissions.py:35
+msgid "View metadata types"
+msgstr "Просмотр типов метаданных"
+
+#: queues.py:11
+msgid "Remove metadata type"
+msgstr "Удалить тип метаданных"
+
+#: queues.py:15
+msgid "Add required metadata type"
+msgstr "Добавить требуемый тип метаданных"
+
+#: search.py:17
+msgid "Metadata value"
+msgstr "Значение метаданных"
+
+#: search.py:24 search.py:35 search.py:46 search.py:57
+msgid "Document metadata type"
+msgstr "Тип метаданных документа"
+
+#: search.py:28 search.py:39 search.py:50 search.py:61
+msgid "Document metadata value"
+msgstr "Значение метаданных документа"
+
+#: serializers.py:56
+msgid "Primary key of the metadata type to be added."
+msgstr "Первичный ключ добавляемого типа метаданных."
+
+#: serializers.py:113
+msgid "Primary key of the metadata type to be added to the document."
+msgstr "Первичный ключ типа метаданных, который нужно добавить в документ."
+
+#: views.py:55
+#, python-format
+msgid "Metadata add request performed on %(count)d document"
+msgstr "Запрос на добавление метаданных выполнен для %(count)d документа "
+
+#: views.py:57
+#, python-format
+msgid "Metadata add request performed on %(count)d documents"
+msgstr "Запрос на добавление метаданных выполнен для %(count)d документов"
+
+#: views.py:65
+msgid "Add"
+msgstr "Добавить"
+
+#: views.py:67
+msgid "Add metadata types to document"
+msgid_plural "Add metadata types to documents"
+msgstr[0] "Добавить типы метаданных к документу"
+msgstr[1] "Добавить типы метаданных к документам"
+msgstr[2] "Добавить типы метаданных к документам"
+msgstr[3] "Добавить типы метаданных к документам"
+
+#: views.py:78
+#, python-format
+msgid "Add metadata types to document: %s"
+msgstr "Добавить типы метаданных к документу: %s"
+
+#: views.py:157
+#, python-format
+msgid ""
+"Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
+"%(exception)s"
+msgstr ""
+"Ошибка добавления типа метаданных %(metadata_type)s к документу: "
+"%(document)s; %(exception)s"
+
+#: views.py:172
+#, python-format
+msgid ""
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
+msgstr "Тип метаданных %(metadata_type)s добавлен к документу %(document)s."
+
+#: views.py:182
+#, python-format
+msgid ""
+"Metadata type: %(metadata_type)s already present in document %(document)s."
+msgstr "Тип метаданных %(metadata_type)s уже есть в документе %(document)s."
+
+#: views.py:199
+#, python-format
+msgid "Metadata edit request performed on %(count)d document"
+msgstr "Запрос на редактирование метаданных выполнен для %(count)d документа"
+
+#: views.py:202
+#, python-format
+msgid "Metadata edit request performed on %(count)d documents"
+msgstr "Запрос на редактирование метаданных выполнен для %(count)d документов"
+
+#: views.py:233
+msgid ""
+"Add metadata types available for this document's type and assign them "
+"corresponding values."
+msgstr ""
+"Добавьте типы метаданных, доступные для этого типа документа, и присвойте им"
+" соответствующие значения."
+
+#: views.py:236
+msgid "There is no metadata to edit"
+msgstr "Нет метаданных для редактирования"
+
+#: views.py:240
+msgid "Edit document metadata"
+msgid_plural "Edit documents metadata"
+msgstr[0] "Редактировать метаданные документа"
+msgstr[1] "Редактировать метаданные документов"
+msgstr[2] "Редактировать метаданные документов"
+msgstr[3] "Редактировать метаданные документов"
+
+#: views.py:251
+#, python-format
+msgid "Edit metadata for document: %s"
+msgstr "Редактировать метаданные документа:%s"
+
+#: views.py:336
+#, python-format
+msgid "Error editing metadata for document: %(document)s; %(exception)s."
+msgstr ""
+"Ошибка при редактировании метаданных документа: %(document)s; %(exception)s."
+
+#: views.py:349
+#, python-format
+msgid "Metadata for document %s edited successfully."
+msgstr "Метаданные для документа %s изменены."
+
+#: views.py:374
+msgid ""
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
+msgstr ""
+"Добавьте типы метаданных к типу этого документа, чтобы иметь возможность "
+"добавлять их в отдельные документы. После добавления в отдельный документ вы"
+" можете редактировать их значения."
+
+#: views.py:379
+msgid "This document doesn't have any metadata"
+msgstr "Документ не имеет метаданных"
+
+#: views.py:380
+#, python-format
+msgid "Metadata for document: %s"
+msgstr "Метаданные документа: %s"
+
+#: views.py:395
+#, python-format
+msgid "Metadata remove request performed on %(count)d document"
+msgstr "Запрос на удаление метаданных выполнен для %(count)d документа"
+
+#: views.py:398
+#, python-format
+msgid "Metadata remove request performed on %(count)d documents"
+msgstr "Запрос на удаление метаданных выполнен для %(count)d документов"
+
+#: views.py:409
+msgid "Remove metadata types from the document"
+msgid_plural "Remove metadata types from the documents"
+msgstr[0] "Удалить типы метаданных из документа"
+msgstr[1] "Удалить типы метаданных из документов"
+msgstr[2] "Удалить типы метаданных из документов"
+msgstr[3] "Удалить типы метаданных из документов"
+
+#: views.py:420
+#, python-format
+msgid "Remove metadata types from the document: %s"
+msgstr "Удалить типы метаданных из документа: %s"
+
+#: views.py:486
+#, python-format
+msgid ""
+"Successfully remove metadata type \"%(metadata_type)s\" from document: "
+"%(document)s."
+msgstr "Тип метаданных \"%(metadata_type)s\" удален из документа: %(document)s."
+
+#: views.py:495
+#, python-format
+msgid ""
+"Error removing metadata type \"%(metadata_type)s\" from document: "
+"%(document)s; %(exception)s"
+msgstr ""
+"Ошибка удаления типа метаданных \"%(metadata_type)s\" из документа: "
+"%(document)s; %(exception)s"
+
+#: views.py:506
+msgid "Create metadata type"
+msgstr "Создать тип метаданных"
+
+#: views.py:532
+#, python-format
+msgid "Delete the metadata type: %s?"
+msgstr "Удалить тип метаданных: %s?"
+
+#: views.py:548
+#, python-format
+msgid "Edit metadata type: %s"
+msgstr "Редактировать тип метаданных: %s"
+
+#: views.py:570
+msgid ""
+"Metadata types are users defined properties that can be assigned values. "
+"Once created they must be associated to document types, either as optional "
+"or required, for each. Setting a metadata type as required for a document "
+"type will block the upload of documents of that type until a metadata value "
+"is provided."
+msgstr ""
+"Типы метаданных - это определенные пользователем свойства, которым можно "
+"присвоить значения. После создания они должны быть связаны с типами "
+"документов как требуемые или необязательные. Установка типа метаданных как "
+"требуемого для типа документа заблокирует загрузку документов этого типа до "
+"тех пор, пока не будет предоставлено значение метаданных."
+
+#: views.py:577
+msgid "There are no metadata types"
+msgstr "Нет типов метаданных"
+
+#: views.py:600
+msgid ""
+"Create metadata type relationships to be able to associate them to this "
+"document type."
+msgstr ""
+"Создайте отношения типа метаданных, чтобы иметь возможность связать их с "
+"этим типом документа."
+
+#: views.py:604
+msgid "There are no metadata type relationships available"
+msgstr "Нет доступных отношений типов метаданных"
+
+#: views.py:608
+#, python-format
+msgid "Metadata type relationships for document type: %s"
+msgstr "Отношения типа метаданных для типа документа: %s"
+
+#: views.py:652
+#, python-format
+msgid "Document type relationships for metadata type: %s"
+msgstr "Отношения типа документа для типа метаданных: %s"
+
+#: wizard_steps.py:13
+msgid "Enter document metadata"
+msgstr "Введите метаданные документа"
+
+#: workflow_actions.py:25
+msgid "Metadata types to add to the document."
+msgstr "Типы метаданных, которые нужно добавить к документу."
+
+#: workflow_actions.py:49
+#, python-format
+msgid ""
+"Unable to add metadata type \"%(metadata_type)s\" from document: "
+"%(document)s. Exception: %(exception)s"
+msgstr ""
+"Невозможно добавить тип метаданных \"%(metadata_type)s\" к документу: "
+"%(document)s. Исключение: %(exception)s"
+
+#: workflow_actions.py:88
+msgid "Metadata types to edit."
+msgstr "Тип метаданных для редактирования."
+
+#: workflow_actions.py:96
+msgid ""
+"Value to assign to the metadata. Can be a literal value or template code."
+msgstr ""
+"Значение, присваиваемое типу метаданных. Может быть буквальным значением или"
+" кодом шаблона."
+
+#: workflow_actions.py:128
+#, python-format
+msgid ""
+"Unable to edit metadata type \"%(metadata_type)s\" from document: "
+"%(document)s. Document does not have the metadata type to be edit. "
+"Exception: %(exception)s"
+msgstr ""
+"Невозможно изменить тип метаданных \"%(metadata_type)s\" документа: "
+"%(document)s. В документе нет типа метаданных для редактирования. "
+"Исключение: %(exception)s"
+
+#: workflow_actions.py:172
+msgid "Metadata types to remove from the document."
+msgstr "Типы метаданных, которые нужно удалить из документа."
+
+#: workflow_actions.py:192
+#, python-format
+msgid ""
+"Unable to remove metadata type \"%(metadata_type)s\" from document: "
+"%(document)s. Exception: %(exception)s"
+msgstr ""
+"Невозможно удалить тип метаданных \"%(metadata_type)s\" из документа: "
+"%(document)s. Исключение: %(exception)s"

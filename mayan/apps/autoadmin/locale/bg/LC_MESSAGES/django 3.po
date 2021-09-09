@@ -1,0 +1,109 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:13 settings.py:7
+msgid "Auto administrator"
+msgstr "Автоматичен администратор"
+
+#: auth/allauth.py:51
+msgid ""
+"Welcome Admin! You have been given superuser privileges. Use them with "
+"caution."
+msgstr ""
+"Добре дошли Админ! Получили сте привилегии за свръхпотребител. Използвайте "
+"ги с повишено внимание."
+
+#: models.py:13
+msgid "Account"
+msgstr "Акаунт"
+
+#: models.py:16
+msgid "Password"
+msgstr "Парола"
+
+#: models.py:19
+msgid "Password hash"
+msgstr "Хеш на парола"
+
+#: models.py:25
+msgid "Autoadmin properties"
+msgstr "Свойства за автоматично администриране"
+
+#: settings.py:11
+msgid "Sets the email of the automatically created super user account."
+msgstr ""
+"Задава електронната поща на автоматично създадения свръхпотребителски "
+"акаунт."
+
+#: settings.py:16
+msgid ""
+"The password of the automatically created super user account. If it is equal"
+" to None, the password is randomly generated."
+msgstr ""
+"Паролата на автоматично създадения свръхпотребителски акаунт. Ако е равна на"
+" None, паролата се генерира на случаен принцип."
+
+#: settings.py:22
+msgid "The username of the automatically created super user account."
+msgstr ""
+"Потребителското име на автоматично създадения свръхпотребителски акаунт."
+
+#: templates/autoadmin/credentials.html:11
+msgid "Automatic credentials"
+msgstr "Автоматични идентификационни данни"
+
+#: templates/autoadmin/credentials.html:16
+#, python-format
+msgid ""
+"You have just finished installing <strong>%(project_title)s</strong>, "
+"congratulations!"
+msgstr ""
+"Току-що завършихте с инсталирането на <strong>%(project_title)s</strong> , "
+"поздравления!"
+
+#: templates/autoadmin/credentials.html:17
+msgid "Login using the following credentials:"
+msgstr "Влезте, като използвате следните идентификационни данни:"
+
+#: templates/autoadmin/credentials.html:19
+#, python-format
+msgid "Username: <strong>%(account)s</strong>"
+msgstr "Потребителско име: <strong>%(account)s</strong>"
+
+#: templates/autoadmin/credentials.html:20
+#, python-format
+msgid "Email: <strong>%(email)s</strong>"
+msgstr "Електронна поща: <strong>%(email)s</strong>"
+
+#: templates/autoadmin/credentials.html:21
+#, python-format
+msgid "Password: <strong>%(password)s</strong>"
+msgstr "Парола: <strong>%(password)s</strong>"
+
+#: templates/autoadmin/credentials.html:23
+msgid ""
+"Be sure to change the password to increase security and to disable this "
+"message."
+msgstr ""
+"Моля променете паролата, за да повишите нивото на сигурност и да "
+"деактивирате това съобщение."

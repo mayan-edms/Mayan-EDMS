@@ -1,0 +1,256 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
+"Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:36 events.py:6 links.py:34 models.py:36 permissions.py:5
+#: views.py:136
+msgid "Quotas"
+msgstr "Quota"
+
+#: classes.py:65
+msgid "none"
+msgstr "geen"
+
+#: classes.py:157
+msgid "Does not apply"
+msgstr "Niet van toepassing"
+
+#: classes.py:161 classes.py:165
+msgid "Null backend"
+msgstr "Null backend"
+
+#: events.py:10
+msgid "Quota created"
+msgstr "Quota aangemaakt"
+
+#: events.py:13
+msgid "Quota edited"
+msgstr "Quota bewerkt"
+
+#: forms.py:15 models.py:58
+msgid "Backend"
+msgstr "Backend"
+
+#: forms.py:16
+msgid "The quota driver for this entry."
+msgstr "Het quota stuurprogramma voor deze vermelding."
+
+#: links.py:16
+msgid "Create quota"
+msgstr "Quota aanmaken"
+
+#: links.py:21
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: links.py:25
+msgid "Edit"
+msgstr "Bewerken"
+
+#: links.py:30
+msgid "Quotas list"
+msgstr "Quotalijst"
+
+#: mixins.py:17
+msgid "All document types"
+msgstr "Alle documenttypes"
+
+#: mixins.py:20
+msgid ""
+"Apply to all document types. Enabling this, the quota will ignore the "
+"indiviual document type selection."
+msgstr ""
+"Toepassen op alle documenttypes. Door dit in te schakelen zulle de quota de "
+"individuele documenttype selectie negeren."
+
+#: mixins.py:26
+msgid "Document types"
+msgstr "Documenttypes"
+
+#: mixins.py:33
+msgid "Document types to which the quota will be applied."
+msgstr "Documenttypes waarop de quota worden toegepast."
+
+#: mixins.py:67
+msgid "all document types"
+msgstr "alle documenttypes"
+
+#: mixins.py:70
+#, python-format
+msgid "document types: %(document_types)s"
+msgstr "documenttypes: %(document_types)s"
+
+#: mixins.py:94
+msgid "Groups"
+msgstr "Groepen"
+
+#: mixins.py:101
+msgid "Groups to which the quota will be applied."
+msgstr "Groepen waarop de quota worden toegepast."
+
+#: mixins.py:105
+msgid "All users"
+msgstr "Alle gebruikers"
+
+#: mixins.py:108
+msgid ""
+"Apply the quota to all users in the system, excluding admins and staff. "
+"Enabling this option, the quota will ignore the indiviual user and group "
+"selection."
+msgstr ""
+"De quota toepassen op alle gebruikers in het systeem, uitgezonderd admins en"
+" leiding. Door dit in te schakelen zulle de quota de individuele gebruikers-"
+" en groepsselectie negeren."
+
+#: mixins.py:115
+msgid "Users"
+msgstr "Gebruikers"
+
+#: mixins.py:122
+msgid "Users to which the quota will be applied."
+msgstr "Gebruikers waarop de quota worden toegepast"
+
+#: mixins.py:160
+msgid "all users"
+msgstr "alle gebruikers"
+
+#: mixins.py:162
+#, python-format
+msgid "groups: %(groups)s, users: %(users)s"
+msgstr "groepen: %(groups)s, gebruikers: %(users)s"
+
+#: models.py:22
+msgid "The dotted Python path to the backend class."
+msgstr "Het Python-pad naar de backend class."
+
+#: models.py:23
+msgid "Backend path"
+msgstr "Backend pad"
+
+#: models.py:26
+msgid "Backend data"
+msgstr "Backend gegevens"
+
+#: models.py:30
+msgid "Allow quick disable or enable of the quota."
+msgstr "Snel inschakelen en uitschakelen van quota toestaan."
+
+#: models.py:31
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+#: models.py:35
+msgid "Quota"
+msgstr "Quota"
+
+#: models.py:57
+msgid "Driver used for this quota entry."
+msgstr "Stuurprogramma gebruikt voor deze quotumvermelding."
+
+#: models.py:62
+msgid "Arguments"
+msgstr "Argumenten"
+
+#: models.py:66
+msgid "Usage"
+msgstr "Gebruik"
+
+#: permissions.py:8
+msgid "Create a quota"
+msgstr "Een quotum aanmaken"
+
+#: permissions.py:11
+msgid "Delete a quota"
+msgstr "Een quotum verwijderen"
+
+#: permissions.py:14
+msgid "Edit a quota"
+msgstr "Een quotum bewerken"
+
+#: permissions.py:17
+msgid "View a quota"
+msgstr "Een quotum bekijken"
+
+#: quota_backends.py:70 quota_backends.py:170
+msgid "Document count quota exceeded."
+msgstr "Quotum aantal documenten overschreden."
+
+#: quota_backends.py:74
+msgid "Documents limit"
+msgstr "Documentbeperking"
+
+#: quota_backends.py:77
+msgid "Maximum number of documents."
+msgstr "Maximaal aantal documenten."
+
+#: quota_backends.py:81
+msgid "Document count limit"
+msgstr "Beperking aantal documenten "
+
+#: quota_backends.py:106
+#, python-format
+msgid "document count: %(document_count)s"
+msgstr "aantal documenten: %(document_count)s"
+
+#: quota_backends.py:180 quota_backends.py:185
+msgid "Document size limit"
+msgstr "Beperking omvang documenten"
+
+#: quota_backends.py:182
+msgid "Maximum document size in megabytes (MB)."
+msgstr "Maximum documentgrootte in megabytes (MB)."
+
+#: quota_backends.py:210
+#, python-format
+msgid "document size: %(formatted_file_size)s"
+msgstr "documentgrootte: %(formatted_file_size)s"
+
+#: quota_backends.py:230
+msgid "Document size quota exceeded."
+msgstr "Quotum omvang documenten overschreden."
+
+#: views.py:24
+msgid "New quota backend selection"
+msgstr "Nieuw quota backend selectie"
+
+#: views.py:54
+#, python-format
+msgid "Create a \"%s\" quota"
+msgstr "Een \"%s\" quotum aanmaken"
+
+#: views.py:86
+#, python-format
+msgid "Delete quota: %s"
+msgstr "Verwijder quotum: %s"
+
+#: views.py:101
+#, python-format
+msgid "Edit quota: %s"
+msgstr "Bewerk quotum: %s"
+
+#: views.py:133
+msgid "Quotas restrict usage of system resources. "
+msgstr "Quota beperken het gebruik van systeembronnen."
+
+#: views.py:135
+msgid "No quotas available"
+msgstr "Geen quota beschikbaar"

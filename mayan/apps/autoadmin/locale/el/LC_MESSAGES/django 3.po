@@ -1,0 +1,106 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2021
+# pyrotech <anastasios@tutamail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:13 settings.py:7
+msgid "Auto administrator"
+msgstr "Αυτόματος διαχειριστής"
+
+#: auth/allauth.py:51
+msgid ""
+"Welcome Admin! You have been given superuser privileges. Use them with "
+"caution."
+msgstr ""
+"Καλώς ήλθες Διαχειριστή! Σου έχουν δοθεί δικαιώματα υπερχρήστη. "
+"Χρησιμοποίησέ τα με προσοχή."
+
+#: models.py:13
+msgid "Account"
+msgstr "Λογαριασμός"
+
+#: models.py:16
+msgid "Password"
+msgstr "Κωδικός πρόσβασης"
+
+#: models.py:19
+msgid "Password hash"
+msgstr "Τιμή κατατεμαχισμού (hash) κωδικού πρόσβασης"
+
+#: models.py:25
+msgid "Autoadmin properties"
+msgstr "Ιδιότητες αυτόματου διαχειριστή"
+
+#: settings.py:11
+msgid "Sets the email of the automatically created super user account."
+msgstr "Ορίζει το email του αυτομάτως δημιουργηθέντα υπερχρήστη."
+
+#: settings.py:16
+msgid ""
+"The password of the automatically created super user account. If it is equal"
+" to None, the password is randomly generated."
+msgstr ""
+"Ο κωδικός του αυτομάτως δημιουργηθέντα υπερχρήστη. Εάν είναι κενός, ο "
+"κωδικός δημιουργείται τυχαία."
+
+#: settings.py:22
+msgid "The username of the automatically created super user account."
+msgstr "Το όνομα χρήστη του αυτομάτως δημιουργηθέντα υπερχρήστη."
+
+#: templates/autoadmin/credentials.html:11
+msgid "Automatic credentials"
+msgstr "Αυτόματα διαπιστευτήρια"
+
+#: templates/autoadmin/credentials.html:16
+#, python-format
+msgid ""
+"You have just finished installing <strong>%(project_title)s</strong>, "
+"congratulations!"
+msgstr ""
+"Μόλις ολοκληρώσατε την εγκατάσταση του <strong>%(project_title)s</strong>, "
+"συγχαρητήρια!"
+
+#: templates/autoadmin/credentials.html:17
+msgid "Login using the following credentials:"
+msgstr "Συνδεθείτε χρησιμοποιώντας τα παρακάτω διαπιστευτήρια:"
+
+#: templates/autoadmin/credentials.html:19
+#, python-format
+msgid "Username: <strong>%(account)s</strong>"
+msgstr "Όνομα χρήστη: <strong>%(account)s</strong>"
+
+#: templates/autoadmin/credentials.html:20
+#, python-format
+msgid "Email: <strong>%(email)s</strong>"
+msgstr "Email: <strong>%(email)s</strong>"
+
+#: templates/autoadmin/credentials.html:21
+#, python-format
+msgid "Password: <strong>%(password)s</strong>"
+msgstr "Κωδικός πρόσβασης: <strong>%(password)s</strong>"
+
+#: templates/autoadmin/credentials.html:23
+msgid ""
+"Be sure to change the password to increase security and to disable this "
+"message."
+msgstr ""
+"Αλλάξτε τον κωδικό πρόσβασης για να αυξήσετε την ασφάλεια και να "
+"απενεργοποιήσετε αυτό το μήνυμα."

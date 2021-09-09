@@ -1,0 +1,341 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# Sergey Glita <gsv70@mail.ru>, 2021
+# Panasoft, 2021
+# Daler Abdulloev <abdulloevdaler@gmail.com>, 2021
+# Alex Chigrin <chalex84@mail.ru>, 2021
+# OLeg Si <olegsm35@gmail.com>, 2021
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
+#: events.py:5 forms.py:14 links.py:31 menus.py:14 models.py:50 models.py:174
+#: permissions.py:5 search.py:56 views.py:155 workflow_actions.py:20
+msgid "Cabinets"
+msgstr "Кабинеты"
+
+#: events.py:9
+msgid "Cabinet created"
+msgstr "Кабинет создан"
+
+#: events.py:12
+msgid "Cabinet edited"
+msgstr "Кабинет изменен"
+
+#: events.py:15
+msgid "Document added to cabinet"
+msgstr "Документ добавлен в кабинет"
+
+#: events.py:18
+msgid "Document removed from cabinet"
+msgstr "Документ удален из кабинета"
+
+#: links.py:37 links.py:49 workflow_actions.py:72
+msgid "Remove from cabinets"
+msgstr "Удалить из кабинетов"
+
+#: links.py:41 links.py:45 workflow_actions.py:29
+msgid "Add to cabinets"
+msgstr "Добавить в кабинеты"
+
+#: links.py:60
+msgid "Add new level"
+msgstr "Добавить новый уровень"
+
+#: links.py:65 views.py:40
+msgid "Create cabinet"
+msgstr "Создать кабинет"
+
+#: links.py:70
+msgid "Delete"
+msgstr "Удалить"
+
+#: links.py:74
+msgid "Edit"
+msgstr "Редактировать"
+
+#: links.py:82
+msgid "All"
+msgstr "Все"
+
+#: links.py:86
+msgid "Details"
+msgstr "Подробности"
+
+#: methods.py:20
+msgid "Return a list of cabinets containing the document."
+msgstr "Возвращает список всех кабинетов, содержащих документ."
+
+#: methods.py:22
+msgid "get_cabinets()"
+msgstr "get_cabinets()"
+
+#: models.py:34
+msgid "A short text used to identify the cabinet."
+msgstr "Краткое описание кабинета."
+
+#: models.py:35
+msgid "Label"
+msgstr "Заголовок"
+
+#: models.py:39
+msgid "Documents"
+msgstr "Документы"
+
+#: models.py:49 models.py:148 models.py:173 workflow_actions.py:64
+msgid "Cabinet"
+msgstr "Кабинет"
+
+#: models.py:115
+msgid "The path to the cabinet including all ancestors."
+msgstr "Путь к кабинету включая всех предков."
+
+#: models.py:117
+msgid "Full path"
+msgstr "Полный путь"
+
+#: models.py:149
+msgid "Parent and Label"
+msgstr "Родитель и заголовок"
+
+#: models.py:156
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr "\"%(model_name)s\" с ярлыком \"%(field_labels)s\" уже существует."
+
+#: models.py:185
+msgid "Document cabinet"
+msgstr "Кабинет документа"
+
+#: models.py:186 search.py:63 search.py:70 search.py:77 search.py:84
+msgid "Document cabinets"
+msgstr "Кабинет документов"
+
+#: permissions.py:10
+msgid "Add documents to cabinets"
+msgstr "Добавить документы в кабинеты"
+
+#: permissions.py:13
+msgid "Create cabinets"
+msgstr "Создать кабинеты"
+
+#: permissions.py:16
+msgid "Delete cabinets"
+msgstr "Удалить кабинеты"
+
+#: permissions.py:19
+msgid "Edit cabinets"
+msgstr "Редактировать кабинеты"
+
+#: permissions.py:22
+msgid "Remove documents from cabinets"
+msgstr "Удалить документы из кабинетов"
+
+#: permissions.py:25
+msgid "View cabinets"
+msgstr "Просмотр кабинетов"
+
+#: search.py:33
+msgid "Document type"
+msgstr "Тип документа"
+
+#: search.py:36
+msgid "Document MIME type"
+msgstr "MIME тип документа"
+
+#: search.py:39
+msgid "Document label"
+msgstr "Заголовок документа"
+
+#: search.py:42
+msgid "Document description"
+msgstr "Описание документа"
+
+#: search.py:45
+msgid "Document UUID"
+msgstr "UUID документа"
+
+#: search.py:50
+msgid "Document checksum"
+msgstr "Контрольная сумма документа"
+
+#: serializers.py:18
+msgid "List of children cabinets."
+msgstr "Список дочерних кабинетов."
+
+#: serializers.py:22
+msgid "The name of this cabinet level appended to the names of its ancestors."
+msgstr "Имя этого кабинета, соединенное с именами его предков."
+
+#: serializers.py:28
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
+msgstr "URL-адрес API, показывающий список документов внутри этого кабинета."
+
+#: templates/cabinets/cabinet_details.html:17
+msgid "Navigation:"
+msgstr "Навигация:"
+
+#: views.py:56
+#, python-format
+msgid "Add new level to: %s"
+msgstr "Добавить новый уровень в: %s"
+
+#: views.py:80
+#, python-format
+msgid "Delete the cabinet: %s?"
+msgstr "Удалить кабинет: %s?"
+
+#: views.py:116
+msgid ""
+"Cabinet levels can contain documents or other cabinet sub levels. To add "
+"documents to a cabinet, select the cabinet view of a document view."
+msgstr ""
+"Уровни кабинета могут содержать документы или подуровни кабинета. Чтобы "
+"добавить документы в кабинет, выберите \"Кабинеты\" в режиме просмотра "
+"документа."
+
+#: views.py:120
+msgid "This cabinet level is empty"
+msgstr "Этот уровень кабинета пуст"
+
+#: views.py:123
+#, python-format
+msgid "Details of cabinet: %s"
+msgstr "Подробности кабинета: %s"
+
+#: views.py:141
+#, python-format
+msgid "Edit cabinet: %s"
+msgstr "Редактировать кабинет: %s"
+
+#: views.py:161
+msgid ""
+"Cabinets are a multi-level method to organize documents. Each cabinet can "
+"contain documents as well as other sub level cabinets."
+msgstr ""
+"Кабинеты - это многоуровневый метод организации документов. Каждый кабинет "
+"может содержать документы, а также другие подуровни кабинета."
+
+#: views.py:165
+msgid "No cabinets available"
+msgstr "Нет доступных кабинетов"
+
+#: views.py:178
+#, python-format
+msgid "Document \"%(object)s\" added to cabinets successfully."
+msgstr "Документ \"%(object)s\" добавлен в кабинеты."
+
+#: views.py:181
+#, python-format
+msgid "%(count)d document added to cabinets successfully."
+msgstr "%(count)d документ добавлен в кабинеты."
+
+#: views.py:184
+#, python-format
+msgid "%(count)d documents added to cabinets successfully."
+msgstr "%(count)d документов добавлено в кабинеты."
+
+#: views.py:186
+#, python-format
+msgid "Add document \"%(object)s\" to cabinets."
+msgstr "Добавить документ \"%(object)s\" в кабинеты"
+
+#: views.py:187
+#, python-format
+msgid "Add %(count)d document to cabinets."
+msgstr "Добавить %(count)d документ в кабинеты."
+
+#: views.py:188
+#, python-format
+msgid "Add %(count)d documents to cabinets."
+msgstr "Добавить %(count)d документов в кабинеты."
+
+#: views.py:192
+msgid "Add"
+msgstr "Добавить"
+
+#: views.py:207
+msgid "Cabinets to which the selected documents will be added."
+msgstr "Кабинеты, в которые будут добавлены выбранные документы."
+
+#: views.py:253
+msgid "Documents can be added to many cabinets."
+msgstr "Документы можно добавить в несколько кабинетов."
+
+#: views.py:256
+msgid "This document is not in any cabinet"
+msgstr "Этого документа нет ни в одном кабинете"
+
+#: views.py:260
+#, python-format
+msgid "Cabinets containing document: %s"
+msgstr "Кабинеты, содержащие документ: %s"
+
+#: views.py:276
+#, python-format
+msgid "Document \"%(object)s\" removed from cabinets successfully."
+msgstr "Документ \"%(object)s\" удален из кабинетов."
+
+#: views.py:279
+#, python-format
+msgid "%(count)d document removed from cabinets successfully."
+msgstr "%(count)d документ удален из кабинетов."
+
+#: views.py:282
+#, python-format
+msgid "%(count)d documents removed from cabinets successfully."
+msgstr "%(count)d документов удалено из кабинетов."
+
+#: views.py:284
+#, python-format
+msgid "Remove document \"%(object)s\" from cabinets."
+msgstr "Удалить документ \"%(object)s\" из кабинетов."
+
+#: views.py:285
+#, python-format
+msgid "Remove %(count)d document from cabinets."
+msgstr "Удалить %(count)d документ из кабинетов."
+
+#: views.py:286
+#, python-format
+msgid "Remove %(count)d documents from cabinets."
+msgstr "Удалить %(count)d документов из кабинетов."
+
+#: views.py:290
+msgid "Remove"
+msgstr "Удалить"
+
+#: views.py:305
+msgid "Cabinets from which the selected documents will be removed."
+msgstr "Кабинеты, из которых будут удалены выбранные документы."
+
+#: wizard_steps.py:15
+msgid "Select cabinets"
+msgstr "Выберите кабинеты"
+
+#: wizard_steps.py:29 workflow_actions.py:23
+msgid "Cabinets to which the document will be added."
+msgstr "Кабинеты, в которые будет добавлен документ."
+
+#: workflow_actions.py:67
+msgid "Cabinets from which the document will be removed."
+msgstr "Кабинеты, из которых документ будет удален."

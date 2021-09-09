@@ -1,0 +1,350 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Sergey Glita <gsv70@mail.ru>, 2021
+# lilo.panic, 2021
+# Panasoft, 2021
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: apps.py:74 events.py:6 permissions.py:6
+msgid "User management"
+msgstr "Управление пользователями"
+
+#: apps.py:92 search.py:10
+msgid "Group"
+msgstr "Группа"
+
+#: apps.py:93 apps.py:103 links.py:46 links.py:59 links.py:78 search.py:34
+#: views.py:120
+msgid "Groups"
+msgstr "Группы"
+
+#: apps.py:94 search.py:16
+msgid "Name"
+msgstr "Имя"
+
+#: apps.py:97 models.py:16 search.py:22
+msgid "User"
+msgstr "Пользователь"
+
+#: apps.py:98 apps.py:187 links.py:51 links.py:86 links.py:104 views.py:306
+msgid "Users"
+msgstr "Пользователи"
+
+#: apps.py:101 search.py:31
+msgid "Email"
+msgstr "Электронная почта"
+
+#: apps.py:102 search.py:28
+msgid "First name"
+msgstr "Имя"
+
+#: apps.py:104
+msgid "Is active?"
+msgstr "Активен?"
+
+#: apps.py:105 search.py:37
+msgid "Last name"
+msgstr "Фамилия"
+
+#: apps.py:106
+msgid "Password"
+msgstr "Пароль"
+
+#: apps.py:107
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: apps.py:108
+msgid "Last login"
+msgstr "Последний вход"
+
+#: apps.py:111
+msgid "Has usable password?"
+msgstr "Есть действующий пароль?"
+
+#: apps.py:129
+msgid "All the groups."
+msgstr "Все группы"
+
+#: apps.py:133
+msgid "All the users."
+msgstr "Все пользователи."
+
+#: dashboard_widgets.py:14
+msgid "Total users"
+msgstr "Всего пользователей"
+
+#: dashboard_widgets.py:30
+msgid "Total groups"
+msgstr "Всего групп"
+
+#: events.py:10
+msgid "Group created"
+msgstr "Группа создана"
+
+#: events.py:13
+msgid "Group edited"
+msgstr "Группа изменена"
+
+#: events.py:17
+msgid "User created"
+msgstr "Пользователь создан"
+
+#: events.py:20
+msgid "User edited"
+msgstr "Пользователь изменен"
+
+#: events.py:25
+msgid "User logged in"
+msgstr "Пользователь вошел в систему"
+
+#: events.py:28
+msgid "User logged out"
+msgstr "Пользователь вышел из системы"
+
+#: links.py:21
+msgid "User details"
+msgstr "Сведения о пользователе"
+
+#: links.py:25
+msgid "Edit user details"
+msgstr "Редактировать сведения"
+
+#: links.py:30 views.py:54
+msgid "Create new group"
+msgstr "Создать группу"
+
+#: links.py:35 links.py:69 links.py:91
+msgid "Delete"
+msgstr "Удалить"
+
+#: links.py:39 links.py:73
+msgid "Edit"
+msgstr "Редактировать"
+
+#: links.py:64 views.py:152
+msgid "Create new user"
+msgstr "Создать пользователя"
+
+#: links.py:96
+msgid "User options"
+msgstr "Настройки"
+
+#: models.py:20
+msgid "Forbid this user from changing their password."
+msgstr "Запретить этому пользователю изменять свой пароль."
+
+#: models.py:26
+msgid "User settings"
+msgstr "Пользовательские настройки"
+
+#: models.py:27
+msgid "Users settings"
+msgstr "Пользовательские настройки"
+
+#: permissions.py:10
+msgid "Create new groups"
+msgstr "Создать группы"
+
+#: permissions.py:13
+msgid "Delete existing groups"
+msgstr "Удалить группы"
+
+#: permissions.py:16
+msgid "Edit existing groups"
+msgstr "Редактировать группы"
+
+#: permissions.py:19
+msgid "View existing groups"
+msgstr "Просмотр существующих групп"
+
+#: permissions.py:22
+msgid "Create new users"
+msgstr "Создать пользователей"
+
+#: permissions.py:25
+msgid "Delete existing users"
+msgstr "Удалить пользователей"
+
+#: permissions.py:28
+msgid "Edit existing users"
+msgstr "Редактировать пользователей"
+
+#: permissions.py:31
+msgid "View existing users"
+msgstr "Просмотр существующих пользователей"
+
+#: search.py:40
+msgid "username"
+msgstr "имя пользователя"
+
+#: serializers.py:17
+msgid "URL of the API endpoint showing the list users of this group."
+msgstr "URL-адрес API, показывающий список пользователей этой группы."
+
+#: serializers.py:48
+msgid "Primary key of the user to add to the group."
+msgstr "Первичный ключ пользователя, которого нужно добавить в группу."
+
+#: serializers.py:57
+msgid "Primary key of the user to remove from the group."
+msgstr "Первичный ключ пользователя, которого нужно удалить из группы."
+
+#: serializers.py:66
+msgid "URL of the API endpoint showing the list groups this user belongs to."
+msgstr ""
+"URL-адрес API, показывающий список групп, к которым принадлежит этот "
+"пользователь."
+
+#: utils.py:6
+msgid "Anonymous"
+msgstr "Анонимно"
+
+#: views.py:35
+msgid "Current user details"
+msgstr "Сведения о пользователе"
+
+#: views.py:43
+msgid "Edit current user details"
+msgstr "Редактировать сведения о пользователе"
+
+#: views.py:77
+#, python-format
+msgid "Delete the group: %s?"
+msgstr "Удалить группу: %s?"
+
+#: views.py:93
+#, python-format
+msgid "Edit group: %s"
+msgstr "Редактировать группу: %s"
+
+#: views.py:113
+msgid ""
+"User groups are organizational units. They should mirror the organizational "
+"units of your organization. Groups can't be used for access control. Use "
+"roles for permissions and access control, add groups to them."
+msgstr ""
+"Группы пользователей - это организационные единицы. Они должны отражать "
+"организационные единицы вашей организации. Группы нельзя напрямую "
+"использовать для контроля доступа. Используйте роли для разрешений и "
+"контроля доступа, и добавляйте группы к ним."
+
+#: views.py:119
+msgid "There are no user groups"
+msgstr "Нет групп пользователей"
+
+#: views.py:132
+msgid "Available users"
+msgstr "Доступные пользователи"
+
+#: views.py:133
+msgid "Group users"
+msgstr "Члены группы"
+
+#: views.py:141
+#, python-format
+msgid "Users of group: %s"
+msgstr "Члены группы: %s"
+
+#: views.py:175
+#, python-format
+msgid "User delete request performed on %(count)d user"
+msgstr "Запрос на удаление %(count)d пользователя выполнен"
+
+#: views.py:177
+#, python-format
+msgid "User delete request performed on %(count)d users"
+msgstr "Запрос на удаление %(count)d пользователей выполнен"
+
+#: views.py:185
+msgid "Delete user"
+msgid_plural "Delete users"
+msgstr[0] "Удалить пользователя"
+msgstr[1] "Удалить пользователей"
+msgstr[2] "Удалить пользователей"
+msgstr[3] "Удалить пользователей"
+
+#: views.py:195
+#, python-format
+msgid "Delete user: %s"
+msgstr "Удалить пользователя: %s"
+
+#: views.py:206
+msgid ""
+"Super user and staff user deleting is not allowed, use the admin interface "
+"for these cases."
+msgstr ""
+"Удаление пользователей с флагами superuser и stuff запрещено, используйте "
+"интерфейс администратора Django для этих случаев."
+
+#: views.py:214
+#, python-format
+msgid "User \"%s\" deleted successfully."
+msgstr "Пользователь \"%s\" удален."
+
+#: views.py:220
+#, python-format
+msgid "Error deleting user \"%(user)s\": %(error)s"
+msgstr "Ошибка при удалении пользователя \"%(user)s\": %(error)s"
+
+#: views.py:238
+#, python-format
+msgid "Details of user: %s"
+msgstr "Подробности пользователя: %s"
+
+#: views.py:254
+#, python-format
+msgid "Edit user: %s"
+msgstr "Редактировать пользователя: %s"
+
+#: views.py:269
+msgid "Available groups"
+msgstr "Доступные группы"
+
+#. Translators: "User groups" here refer to the group list of a specific
+#. user.
+#: views.py:272
+msgid "User groups"
+msgstr "Член групп"
+
+#: views.py:280
+#, python-format
+msgid "Groups of user: %s"
+msgstr "Член групп: %s"
+
+#: views.py:302
+msgid ""
+"User accounts can be create from this view. After creating a user account "
+"you will prompted to set a password for it. "
+msgstr ""
+"Учетные записи пользователей могут быть созданы из этого представления. "
+"После создания учетной записи пользователя вам будет предложено установить "
+"для нее пароль."
+
+#: views.py:305
+msgid "There are no user accounts"
+msgstr "Нет учетных записей пользователей"
+
+#: views.py:319
+#, python-format
+msgid "Edit options for user: %s"
+msgstr "Настройки пользователя: %s"

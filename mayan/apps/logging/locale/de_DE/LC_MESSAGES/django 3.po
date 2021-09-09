@@ -1,0 +1,127 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# Mathias Behrle <mathiasb@m9s.biz>, 2021
+# Tobias Paepke <tobias.paepke@paepke.net>, 2021
+# Felix <felix.com@gmx.com>, 2021
+# Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2021
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:16 permissions.py:5 settings.py:10
+msgid "Logging"
+msgstr "Protokollierung"
+
+#: links.py:13
+msgid "Errors"
+msgstr "Fehler"
+
+#: links.py:19
+msgid "Clear errors"
+msgstr "Fehler löschen"
+
+#: models.py:10 models.py:38
+msgid "Internal name"
+msgstr "Interner Name"
+
+#: models.py:15 models.py:35
+msgid "Error log"
+msgstr "Fehlerprotokoll"
+
+#: models.py:16
+msgid "Error logs"
+msgstr "Fehlerprotokolle"
+
+#: models.py:25
+msgid "App label"
+msgstr "App-Label"
+
+#: models.py:43 models.py:60
+msgid "Error log partition"
+msgstr ""
+
+#: models.py:44
+msgid "Error log partitions"
+msgstr ""
+
+#: models.py:63
+msgid "Date and time"
+msgstr "Datum und Uhrzeit"
+
+#: models.py:65
+msgid "Text"
+msgstr "Text"
+
+#: models.py:70
+msgid "Error log partition entry"
+msgstr ""
+
+#: models.py:71
+msgid "Error log partition entries"
+msgstr ""
+
+#: permissions.py:8
+msgid "View error log"
+msgstr "Fehlerprotokoll anzeigen"
+
+#: settings.py:14
+msgid "Automatically enable logging to all apps."
+msgstr "Protokollierung für alle Apps automatisch einschalten."
+
+#: settings.py:19
+msgid ""
+"List of handlers to which logging messages will be sent. Options are: {}"
+msgstr ""
+
+#: settings.py:25
+msgid "Level for the logging system."
+msgstr ""
+
+#: settings.py:31
+msgid "Path to the logfile that will track errors during production."
+msgstr ""
+"Der Pfad zur Protokolldatei, in der Fehler im Produktivbetrieb aufgezeichnet"
+" werden."
+
+#: views.py:20
+#, python-format
+msgid "Clear error log entries for: %s"
+msgstr "Alle Fehlerlogeinträge für: %s löschen"
+
+#: views.py:27
+msgid "Object error log cleared successfully"
+msgstr "Objektfehlerlog erfolgreich gelöscht"
+
+#: views.py:42
+msgid ""
+"This view displays the error log of different object. An empty list is a "
+"good thing."
+msgstr ""
+"Diese Ansicht zeigt das Fehlerprotokoll verschiedener Objekte an. Eine leere"
+" Liste ist eine gute Sache."
+
+#: views.py:46
+msgid "There are no error log entries"
+msgstr "Keine Fehlerprotkolleinträge vorhanden"
+
+#: views.py:49
+#, python-format
+msgid "Error log entries for: %s"
+msgstr "Fehlerlogeinträge für: %s"

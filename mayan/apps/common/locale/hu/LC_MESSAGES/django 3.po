@@ -1,0 +1,271 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Dezső József <dejo60@gmail.com>, 2021
+# molnars <szabolcs.molnar@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2021\n"
+"Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:125 permissions.py:5 settings.py:14
+msgid "Common"
+msgstr "Általános"
+
+#: classes.py:408
+msgid "Model properties"
+msgstr ""
+
+#: classes.py:413
+msgid "Model fields"
+msgstr ""
+
+#: classes.py:456
+msgid "Model related fields"
+msgstr ""
+
+#: classes.py:461
+msgid "Model reverse fields"
+msgstr ""
+
+#: dependencies.py:168
+msgid "Used to allow offline translation of the code text strings."
+msgstr ""
+
+#: dependencies.py:177
+msgid "Provides style checking."
+msgstr ""
+
+#: dependencies.py:182
+msgid "Command line environment with autocompletion."
+msgstr ""
+
+#: dependencies.py:187
+msgid "Checks proper formatting of the README file."
+msgstr ""
+
+#: links.py:30
+msgid "About this"
+msgstr ""
+
+#: links.py:33
+msgid "Get the book"
+msgstr ""
+
+#: links.py:38
+msgid "Documentation"
+msgstr ""
+
+#: links.py:41
+msgid "Forum"
+msgstr ""
+
+#: links.py:45 views.py:48
+msgid "License"
+msgstr ""
+
+#: links.py:50
+msgid "Copy"
+msgstr ""
+
+#: links.py:53
+msgid "Setup"
+msgstr "beállítás"
+
+#: links.py:56
+msgid "Source code"
+msgstr ""
+
+#: links.py:60
+msgid "Online store"
+msgstr ""
+
+#: links.py:64
+msgid "Get support"
+msgstr ""
+
+#: links.py:68 queues.py:6 views.py:122
+msgid "Tools"
+msgstr "Eszköz"
+
+#: literals.py:19
+msgid ""
+"This feature has been deprecated and will be removed in a future version."
+msgstr ""
+
+#: literals.py:22
+msgid ""
+"Your database backend is set to use SQLite. SQLite should only be used for "
+"development and testing, not for production."
+msgstr ""
+
+#: literals.py:31
+msgid "Days"
+msgstr "Napok"
+
+#: literals.py:32
+msgid "Hours"
+msgstr "Órák"
+
+#: literals.py:33
+msgid "Minutes"
+msgstr "Percek"
+
+#: menus.py:8
+msgid "System"
+msgstr ""
+
+#: menus.py:10 menus.py:11
+msgid "Facet"
+msgstr ""
+
+#: menus.py:14
+msgid "Actions"
+msgstr "Műveletek"
+
+#: menus.py:15
+msgid "Related"
+msgstr ""
+
+#: menus.py:16
+msgid "Secondary"
+msgstr ""
+
+#: menus.py:18
+msgid "Return"
+msgstr "Vissza"
+
+#: menus.py:22
+msgid "User"
+msgstr "Felhasználó"
+
+#: permissions.py:8
+msgid "Copy object"
+msgstr ""
+
+#: settings.py:21
+msgid ""
+"In list mode, show the \"list facet\" menu options as a dropdown menu "
+"instead of individual buttons."
+msgstr ""
+
+#: settings.py:29
+msgid ""
+"In list mode, show the \"object\" menu options as a dropdown menu instead of"
+" individual buttons."
+msgstr ""
+
+#: settings.py:36
+msgid ""
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr ""
+
+#: settings.py:43
+msgid ""
+"A list of strings designating all applications that are to be removed from "
+"the list normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
+msgstr ""
+
+#: settings.py:53
+msgid ""
+"A list of strings designating all applications that are installed beyond "
+"those normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
+msgstr ""
+
+#: settings.py:63
+msgid ""
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
+msgstr ""
+
+#: settings.py:71
+msgid "Name to be displayed in the main menu."
+msgstr ""
+
+#: settings.py:77
+msgid "URL of the installation or homepage of the project."
+msgstr ""
+
+#: templates/common/app/viewport.html:9
+msgid "Warning"
+msgstr ""
+
+#: templates/common/app/viewport.html:21
+msgid "Click here to fix this."
+msgstr ""
+
+#: validators.py:41
+msgid "Enter a valid JSON value."
+msgstr ""
+
+#: validators.py:65
+msgid "Enter a valid YAML value."
+msgstr ""
+
+#: validators.py:81
+msgid ""
+"Enter a valid 'internal name' consisting of letters, numbers, and "
+"underscores."
+msgstr ""
+
+#: views.py:22
+msgid "About"
+msgstr ""
+
+#: views.py:39
+msgid "Dashboard"
+msgstr ""
+
+#: views.py:62
+#, python-format
+msgid "Fields to be copied: %s"
+msgstr ""
+
+#: views.py:72
+#, python-format
+msgid "Make a copy of %(object_name)s \"%(object)s\"?"
+msgstr ""
+
+#: views.py:83
+msgid "Object copied successfully."
+msgstr ""
+
+#: views.py:100
+msgid ""
+"No results here means that don't have the required permissions to perform "
+"administrative task."
+msgstr ""
+
+#: views.py:103
+msgid "No setup options available."
+msgstr ""
+
+#: views.py:107
+msgid "Setup items"
+msgstr "Beállítás elemei"
+
+#: views.py:109
+msgid "Here you can configure all aspects of the system."
+msgstr ""
+
+#: views.py:124
+msgid "These modules are used to do system maintenance."
+msgstr ""

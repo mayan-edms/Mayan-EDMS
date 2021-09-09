@@ -1,0 +1,331 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# yan songwei <yansw@vip.163.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: yan songwei <yansw@vip.163.com>, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
+#: events.py:5 forms.py:14 links.py:31 menus.py:14 models.py:50 models.py:174
+#: permissions.py:5 search.py:56 views.py:155 workflow_actions.py:20
+msgid "Cabinets"
+msgstr "文档柜"
+
+#: events.py:9
+msgid "Cabinet created"
+msgstr "文档柜创建"
+
+#: events.py:12
+msgid "Cabinet edited"
+msgstr "文档柜编辑"
+
+#: events.py:15
+msgid "Document added to cabinet"
+msgstr "文件已添加到文档柜"
+
+#: events.py:18
+msgid "Document removed from cabinet"
+msgstr "文档从文档柜中移除"
+
+#: links.py:37 links.py:49 workflow_actions.py:72
+msgid "Remove from cabinets"
+msgstr "从文档柜中删除"
+
+#: links.py:41 links.py:45 workflow_actions.py:29
+msgid "Add to cabinets"
+msgstr "添加到文档柜"
+
+#: links.py:60
+msgid "Add new level"
+msgstr "添加新级别"
+
+#: links.py:65 views.py:40
+msgid "Create cabinet"
+msgstr "创建文档柜"
+
+#: links.py:70
+msgid "Delete"
+msgstr "删除"
+
+#: links.py:74
+msgid "Edit"
+msgstr "编辑"
+
+#: links.py:82
+msgid "All"
+msgstr "所有"
+
+#: links.py:86
+msgid "Details"
+msgstr "细节"
+
+#: methods.py:20
+msgid "Return a list of cabinets containing the document."
+msgstr "返回包含文档的文档柜列表。"
+
+#: methods.py:22
+msgid "get_cabinets()"
+msgstr "get_cabinets()"
+
+#: models.py:34
+msgid "A short text used to identify the cabinet."
+msgstr "用于标识文档柜的简短文本。"
+
+#: models.py:35
+msgid "Label"
+msgstr "标签"
+
+#: models.py:39
+msgid "Documents"
+msgstr "文档"
+
+#: models.py:49 models.py:148 models.py:173 workflow_actions.py:64
+msgid "Cabinet"
+msgstr "文档柜"
+
+#: models.py:115
+msgid "The path to the cabinet including all ancestors."
+msgstr ""
+
+#: models.py:117
+msgid "Full path"
+msgstr "完整路径"
+
+#: models.py:149
+msgid "Parent and Label"
+msgstr "父级与标签"
+
+#: models.py:156
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr "%(model_name)s与此%(field_labels)s已存在。"
+
+#: models.py:185
+msgid "Document cabinet"
+msgstr "文档柜"
+
+#: models.py:186 search.py:63 search.py:70 search.py:77 search.py:84
+msgid "Document cabinets"
+msgstr "文档柜"
+
+#: permissions.py:10
+msgid "Add documents to cabinets"
+msgstr "将文档添加至文档柜"
+
+#: permissions.py:13
+msgid "Create cabinets"
+msgstr "创建文档柜"
+
+#: permissions.py:16
+msgid "Delete cabinets"
+msgstr "删除文档柜"
+
+#: permissions.py:19
+msgid "Edit cabinets"
+msgstr "编辑文档柜"
+
+#: permissions.py:22
+msgid "Remove documents from cabinets"
+msgstr "将文档从文档柜中删除"
+
+#: permissions.py:25
+msgid "View cabinets"
+msgstr "查看文档柜"
+
+#: search.py:33
+msgid "Document type"
+msgstr "文档类型"
+
+#: search.py:36
+msgid "Document MIME type"
+msgstr "MIME类型文件"
+
+#: search.py:39
+msgid "Document label"
+msgstr "文件标签"
+
+#: search.py:42
+msgid "Document description"
+msgstr "文件说明"
+
+#: search.py:45
+msgid "Document UUID"
+msgstr "文件UUID"
+
+#: search.py:50
+msgid "Document checksum"
+msgstr "文件校验和"
+
+#: serializers.py:18
+msgid "List of children cabinets."
+msgstr "子文档柜列表。"
+
+#: serializers.py:22
+msgid "The name of this cabinet level appended to the names of its ancestors."
+msgstr "此文档柜级别的名称附加到其祖级的名称。"
+
+#: serializers.py:28
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
+msgstr "API端点的URL，显示此文档柜内的列表文档。"
+
+#: templates/cabinets/cabinet_details.html:17
+msgid "Navigation:"
+msgstr "导航："
+
+#: views.py:56
+#, python-format
+msgid "Add new level to: %s"
+msgstr "添加新级别：%s"
+
+#: views.py:80
+#, python-format
+msgid "Delete the cabinet: %s?"
+msgstr "删除文档柜：%s？"
+
+#: views.py:116
+msgid ""
+"Cabinet levels can contain documents or other cabinet sub levels. To add "
+"documents to a cabinet, select the cabinet view of a document view."
+msgstr "文档柜级别可以包含文档或其他文档柜子级别。要将文档添加到文档柜，请选择文档视图的文档视图。"
+
+#: views.py:120
+msgid "This cabinet level is empty"
+msgstr "此级文档柜为空"
+
+#: views.py:123
+#, python-format
+msgid "Details of cabinet: %s"
+msgstr "文档柜详情：%s"
+
+#: views.py:141
+#, python-format
+msgid "Edit cabinet: %s"
+msgstr "编辑文档柜：%s"
+
+#: views.py:161
+msgid ""
+"Cabinets are a multi-level method to organize documents. Each cabinet can "
+"contain documents as well as other sub level cabinets."
+msgstr "文档柜是组织文档的多级方法。每个文档柜都可以包含文档以及其他子级文档柜。"
+
+#: views.py:165
+msgid "No cabinets available"
+msgstr "没有可用的文档柜"
+
+#: views.py:178
+#, python-format
+msgid "Document \"%(object)s\" added to cabinets successfully."
+msgstr ""
+
+#: views.py:181
+#, python-format
+msgid "%(count)d document added to cabinets successfully."
+msgstr ""
+
+#: views.py:184
+#, python-format
+msgid "%(count)d documents added to cabinets successfully."
+msgstr ""
+
+#: views.py:186
+#, python-format
+msgid "Add document \"%(object)s\" to cabinets."
+msgstr ""
+
+#: views.py:187
+#, python-format
+msgid "Add %(count)d document to cabinets."
+msgstr ""
+
+#: views.py:188
+#, python-format
+msgid "Add %(count)d documents to cabinets."
+msgstr ""
+
+#: views.py:192
+msgid "Add"
+msgstr "添加"
+
+#: views.py:207
+msgid "Cabinets to which the selected documents will be added."
+msgstr "将添加所选文档的文档柜。"
+
+#: views.py:253
+msgid "Documents can be added to many cabinets."
+msgstr "文档可添加至许多文档柜。"
+
+#: views.py:256
+msgid "This document is not in any cabinet"
+msgstr "本文档不在任何文档柜中"
+
+#: views.py:260
+#, python-format
+msgid "Cabinets containing document: %s"
+msgstr "文档柜包含文档：%s"
+
+#: views.py:276
+#, python-format
+msgid "Document \"%(object)s\" removed from cabinets successfully."
+msgstr ""
+
+#: views.py:279
+#, python-format
+msgid "%(count)d document removed from cabinets successfully."
+msgstr ""
+
+#: views.py:282
+#, python-format
+msgid "%(count)d documents removed from cabinets successfully."
+msgstr ""
+
+#: views.py:284
+#, python-format
+msgid "Remove document \"%(object)s\" from cabinets."
+msgstr ""
+
+#: views.py:285
+#, python-format
+msgid "Remove %(count)d document from cabinets."
+msgstr ""
+
+#: views.py:286
+#, python-format
+msgid "Remove %(count)d documents from cabinets."
+msgstr ""
+
+#: views.py:290
+msgid "Remove"
+msgstr "移除"
+
+#: views.py:305
+msgid "Cabinets from which the selected documents will be removed."
+msgstr "将从中删除所选文档的文档柜。"
+
+#: wizard_steps.py:15
+msgid "Select cabinets"
+msgstr "选择文件柜"
+
+#: wizard_steps.py:29 workflow_actions.py:23
+msgid "Cabinets to which the document will be added."
+msgstr "文件将添加到的文件柜。"
+
+#: workflow_actions.py:67
+msgid "Cabinets from which the document will be removed."
+msgstr "文档将会从文件柜中移除"

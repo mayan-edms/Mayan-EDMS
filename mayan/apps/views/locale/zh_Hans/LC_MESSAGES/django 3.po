@@ -1,0 +1,226 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# bo feng <87289884@qq.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: bo feng <87289884@qq.com>, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:15 settings.py:7
+msgid "Views"
+msgstr "视图"
+
+#: forms.py:24
+msgid "Selection"
+msgstr "选择"
+
+#: forms.py:100
+msgid "None"
+msgstr "没有"
+
+#: forms.py:284
+msgid "Label"
+msgstr "标签"
+
+#: forms.py:288
+msgid "Relationship"
+msgstr "关系"
+
+#: generics.py:146
+msgid ""
+"Select entries to be removed. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr "选择要删除的条目。按住Control键可以选择多个条目。选择完成后，单击下面的按钮或双击列表以激活操作。"
+
+#: generics.py:151
+msgid ""
+"Select entries to be added. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr "选择要添加的条目。按住Control键可以选择多个条目。选择完成后，单击下面的按钮或双击列表以激活操作。"
+
+#: generics.py:289
+msgid "Add all"
+msgstr "全部添加"
+
+#: generics.py:298
+msgid "Add"
+msgstr "添加"
+
+#: generics.py:308
+msgid "Remove all"
+msgstr "全部移除"
+
+#: generics.py:317
+msgid "Remove"
+msgstr "移除"
+
+#: generics.py:531
+#, python-format
+msgid "Error updating relationship; %s"
+msgstr "更新关系时出错; %s"
+
+#: generics.py:538
+msgid "Relationships updated successfully"
+msgstr "关系已成功更新"
+
+#: generics.py:597
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr "复制数据错误：%(error)s"
+
+#: generics.py:616
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr "%(object)s未创建，错误：%(error)s"
+
+#: generics.py:627
+#, python-format
+msgid "%(object)s created successfully."
+msgstr "%(object)s创建成功。"
+
+#: generics.py:666
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr "%(object)s未删除，错误：%(error)s。"
+
+#: generics.py:675
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr "%(object)s已成功删除。"
+
+#: generics.py:729
+#, python-format
+msgid "Error retrieving %(object)s; %(error)s"
+msgstr ""
+
+#: generics.py:833
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr "%(object)s未更新，错误：%(error)s。"
+
+#: generics.py:842
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr "%(object)s已成功更新。"
+
+#: generics.py:904
+#, python-format
+msgid "\"%(object)s\" deleted successfully."
+msgstr "“ %(object)s”已成功删除。"
+
+#: generics.py:905
+#, python-format
+msgid "%(count)d object deleted successfully."
+msgstr "%(count)d对象已成功删除。"
+
+#: generics.py:906
+#, python-format
+msgid "%(count)d objects deleted successfully."
+msgstr "%(count)d对象已成功删除。"
+
+#: generics.py:907
+#, python-format
+msgid "Delete \"%(object)s\"."
+msgstr "删除“ %(object)s”。"
+
+#: generics.py:908
+#, python-format
+msgid "Delete %(count)d object."
+msgstr "删除%(count)d对象。"
+
+#: generics.py:909
+#, python-format
+msgid "Delete %(count)d objects."
+msgstr "删除%(count)d对象。"
+
+#: mixins.py:327
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr "找不到与查询匹配的%(verbose_name)s"
+
+#: mixins.py:352
+#, python-format
+msgid "Unable to perform operation on object %(instance)s; %(exception)s."
+msgstr "无法对对象执行操作%(instance)s； %(exception)s。"
+
+#: mixins.py:354
+#, python-format
+msgid "Operation performed on %(object)s."
+msgstr "在%(object)s上执行的操作。"
+
+#: mixins.py:355
+#, python-format
+msgid "Operation performed on %(count)d object."
+msgstr "对%(count)d对象执行的操作。"
+
+#: mixins.py:356
+#, python-format
+msgid "Operation performed on %(count)d objects."
+msgstr "对%(count)d对象执行的操作。"
+
+#: mixins.py:357
+#, python-format
+msgid "Perform operation on %(object)s."
+msgstr "在%(object)s上执行操作。"
+
+#: mixins.py:358
+#, python-format
+msgid "Perform operation on %(count)d object."
+msgstr "对%(count)d对象执行操作。"
+
+#: mixins.py:359
+#, python-format
+msgid "Perform operation on %(count)d objects."
+msgstr "对%(count)d对象执行操作。"
+
+#: mixins.py:441
+msgid "Object"
+msgstr "对象"
+
+#: settings.py:12
+msgid "The number objects that will be displayed per page."
+msgstr "每页显示的对象数。"
+
+#: templatetags/views_tags.py:28
+msgid "Confirm delete"
+msgstr "确认删除"
+
+#: templatetags/views_tags.py:33
+#, python-format
+msgid "Edit %s"
+msgstr "编辑%s"
+
+#: templatetags/views_tags.py:36
+msgid "Confirm"
+msgstr "确认"
+
+#: templatetags/views_tags.py:40
+#, python-format
+msgid "Details for: %s"
+msgstr "%s的详细信息"
+
+#: templatetags/views_tags.py:44
+#, python-format
+msgid "Edit: %s"
+msgstr "编辑：%s"
+
+#: templatetags/views_tags.py:48
+msgid "Create"
+msgstr "创建"

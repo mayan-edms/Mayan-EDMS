@@ -1,0 +1,109 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# Rogerio Falcone <rogerio@falconeit.com.br>, 2021
+# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
+# Aline Freitas <aline@alinefreitas.com.br>, 2021
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:13 settings.py:7
+msgid "Auto administrator"
+msgstr "Administrador do Sistema"
+
+#: auth/allauth.py:51
+msgid ""
+"Welcome Admin! You have been given superuser privileges. Use them with "
+"caution."
+msgstr ""
+"Bem-vindo Admin! Você recebeu privilégios de super-usuário. Use-os com "
+"cuidado."
+
+#: models.py:13
+msgid "Account"
+msgstr "Conta"
+
+#: models.py:16
+msgid "Password"
+msgstr "Senha"
+
+#: models.py:19
+msgid "Password hash"
+msgstr "Hash da senha"
+
+#: models.py:25
+msgid "Autoadmin properties"
+msgstr "Propriedades do Administador do Sistema"
+
+#: settings.py:11
+msgid "Sets the email of the automatically created super user account."
+msgstr "Define o e-mail da conta de super usuário criada automaticamente."
+
+#: settings.py:16
+msgid ""
+"The password of the automatically created super user account. If it is equal"
+" to None, the password is randomly generated."
+msgstr ""
+"A senha da conta de super-usuário criada automaticamente. Se for igual a "
+"None, a senha será gerada aleatoriamente."
+
+#: settings.py:22
+msgid "The username of the automatically created super user account."
+msgstr "O nome de usuário da conta de super-usuário criada automaticamente."
+
+#: templates/autoadmin/credentials.html:11
+msgid "Automatic credentials"
+msgstr "Credenciais automáticas"
+
+#: templates/autoadmin/credentials.html:16
+#, python-format
+msgid ""
+"You have just finished installing <strong>%(project_title)s</strong>, "
+"congratulations!"
+msgstr ""
+"Você acabou de instalar o <strong>%(project_title)s</strong>, parabéns!"
+
+#: templates/autoadmin/credentials.html:17
+msgid "Login using the following credentials:"
+msgstr "Entre usando as seguintes credenciais:"
+
+#: templates/autoadmin/credentials.html:19
+#, python-format
+msgid "Username: <strong>%(account)s</strong>"
+msgstr "Nome de usuário: <strong>%(account)s</strong>"
+
+#: templates/autoadmin/credentials.html:20
+#, python-format
+msgid "Email: <strong>%(email)s</strong>"
+msgstr "E-mail: <strong>%(email)s</strong>"
+
+#: templates/autoadmin/credentials.html:21
+#, python-format
+msgid "Password: <strong>%(password)s</strong>"
+msgstr "Senha: <strong>%(password)s</strong>"
+
+#: templates/autoadmin/credentials.html:23
+msgid ""
+"Be sure to change the password to increase security and to disable this "
+"message."
+msgstr ""
+"Certifique-se de alterar a senha para aumentar a segurança e para desativar "
+"esta mensagem."

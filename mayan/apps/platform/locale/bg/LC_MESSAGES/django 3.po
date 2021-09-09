@@ -1,0 +1,42 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:28+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:12
+msgid "Platform"
+msgstr "Платформа"
+
+#: classes.py:130
+msgid "Template for entrypoint.sh file inside a Docker image."
+msgstr "Шаблон за файл entrypoint.sh в изображение на Docker."
+
+#: classes.py:140
+msgid "Template for Supervisord inside a Docker image."
+msgstr "Шаблон за Supervisord в Docker образ"
+
+#: classes.py:148
+msgid "Template for Supervisord."
+msgstr "Шаблон за Supervisord"
+
+#: classes.py:205
+msgid "Template showing the queues of a worker."
+msgstr "Шаблон, показващ опашките на работна програма."

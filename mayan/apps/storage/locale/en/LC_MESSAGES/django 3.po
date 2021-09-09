@@ -1,0 +1,172 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2020-03-28 07:24+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
+"language/en/)\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:25 settings.py:12
+msgid "Storage"
+msgstr ""
+
+#: apps.py:59
+msgid "Source object"
+msgstr ""
+
+#: classes.py:86 classes.py:107
+#, python-format
+msgid ""
+"Unable to initialize storage: %(name)s. Check the storage backend dotted "
+"path and arguments."
+msgstr ""
+
+#: events.py:6 links.py:19 models.py:64 storages.py:22
+msgid "Download files"
+msgstr ""
+
+#: events.py:10
+msgid "Download file created"
+msgstr ""
+
+#: events.py:13
+msgid "Download file deleted"
+msgstr ""
+
+#: events.py:16
+msgid "Download file downloaded"
+msgstr ""
+
+#: links.py:12
+msgid "Delete"
+msgstr ""
+
+#: links.py:16
+msgid "Download"
+msgstr ""
+
+#: management/commands/storage_process.py:13
+msgid "Name of the app to process."
+msgstr ""
+
+#: management/commands/storage_process.py:19
+msgid ""
+"Path of the database (.dbm) file that will be created/read to keep track of "
+"items processed."
+msgstr ""
+
+#: management/commands/storage_process.py:26
+msgid "Process a specific model."
+msgstr ""
+
+#: management/commands/storage_process.py:32
+msgid ""
+"Process the files in reverse to undo the storage pipeline transformations."
+msgstr ""
+
+#: management/commands/storage_process.py:38
+msgid "Name of the storage to process."
+msgstr ""
+
+#: model_mixins.py:13 models.py:115
+msgid "Filename"
+msgstr ""
+
+#: model_mixins.py:16
+msgid "Date time"
+msgstr ""
+
+#: model_mixins.py:48
+msgid "Unnamed file"
+msgstr ""
+
+#: models.py:42 models.py:112
+msgid "File"
+msgstr ""
+
+#: models.py:52
+msgid "Label"
+msgstr ""
+
+#: models.py:56
+msgid "Permission"
+msgstr ""
+
+#: models.py:63
+msgid "Download file"
+msgstr ""
+
+#: models.py:121
+msgid "Shared uploaded file"
+msgstr ""
+
+#: models.py:122 storages.py:36
+msgid "Shared uploaded files"
+msgstr ""
+
+#: queues.py:13
+msgid "Storage periodic"
+msgstr ""
+
+#: queues.py:19
+msgid "Delete stale uploads"
+msgstr ""
+
+#: queues.py:26
+msgid "Delete stale download files"
+msgstr ""
+
+#: settings.py:17
+msgid ""
+"A storage backend that all workers can use to generate and hold files for "
+"download."
+msgstr ""
+
+#: settings.py:28
+msgid "A storage backend that all workers can use to share files."
+msgstr ""
+
+#: settings.py:38
+msgid ""
+"Temporary directory used site wide to store thumbnails, previews and "
+"temporary files."
+msgstr ""
+
+#: storages.py:15
+msgid ""
+"Unable to initialize the download file storage. Check the settings {} and {} "
+"for formatting errors."
+msgstr ""
+
+#: storages.py:29
+msgid ""
+"Unable to initialize the shared uploaded file storage. Check the settings {} "
+"and {} for formatting errors."
+msgstr ""
+
+#: views.py:55
+msgid ""
+"Download files are created as a results of a an external process like an "
+"export. Download files are retained over a span of time and then removed "
+"automatically."
+msgstr ""
+
+#: views.py:59
+msgid "There are no files to download."
+msgstr ""
+
+#: views.py:60
+msgid "Downloads"
+msgstr ""

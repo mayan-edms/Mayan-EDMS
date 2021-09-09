@@ -1,0 +1,177 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Mohammed ALDOUB <voulnet@gmail.com>, 2021
+# Yaman Sanobar <yman.snober@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: apps.py:25 settings.py:12
+msgid "Storage"
+msgstr "المساحة التخزينية"
+
+#: apps.py:59
+msgid "Source object"
+msgstr ""
+
+#: classes.py:86 classes.py:107
+#, python-format
+msgid ""
+"Unable to initialize storage: %(name)s. Check the storage backend dotted "
+"path and arguments."
+msgstr "غير قادر على تهيئة التخزين: %(name)s. يرجى مراجعة مدير النظام."
+
+#: events.py:6 links.py:19 models.py:64 storages.py:22
+msgid "Download files"
+msgstr ""
+
+#: events.py:10
+msgid "Download file created"
+msgstr ""
+
+#: events.py:13
+msgid "Download file deleted"
+msgstr ""
+
+#: events.py:16
+msgid "Download file downloaded"
+msgstr ""
+
+#: links.py:12
+msgid "Delete"
+msgstr "حذف"
+
+#: links.py:16
+msgid "Download"
+msgstr "تحميل"
+
+#: management/commands/storage_process.py:13
+msgid "Name of the app to process."
+msgstr "معالجة اسم التطبيق"
+
+#: management/commands/storage_process.py:19
+msgid ""
+"Path of the database (.dbm) file that will be created/read to keep track of "
+"items processed."
+msgstr "مسار ملف قاعدة البيانات (.dbm) "
+
+#: management/commands/storage_process.py:26
+msgid "Process a specific model."
+msgstr "معالجة نموذج محدد"
+
+#: management/commands/storage_process.py:32
+msgid ""
+"Process the files in reverse to undo the storage pipeline transformations."
+msgstr "يجب اعادة التخزين"
+
+#: management/commands/storage_process.py:38
+msgid "Name of the storage to process."
+msgstr "معالجة المساحة التخزينية"
+
+#: model_mixins.py:13 models.py:115
+msgid "Filename"
+msgstr "اسم الملف"
+
+#: model_mixins.py:16
+msgid "Date time"
+msgstr "التاريخ والوقت"
+
+#: model_mixins.py:48
+msgid "Unnamed file"
+msgstr ""
+
+#: models.py:42 models.py:112
+msgid "File"
+msgstr "ملف"
+
+#: models.py:52
+msgid "Label"
+msgstr "العنوان"
+
+#: models.py:56
+msgid "Permission"
+msgstr "الإذن"
+
+#: models.py:63
+msgid "Download file"
+msgstr ""
+
+#: models.py:121
+msgid "Shared uploaded file"
+msgstr "ملف مشترك"
+
+#: models.py:122 storages.py:36
+msgid "Shared uploaded files"
+msgstr "ملف محمل مشترك"
+
+#: queues.py:13
+msgid "Storage periodic"
+msgstr "التخزين الدوري"
+
+#: queues.py:19
+msgid "Delete stale uploads"
+msgstr "حذف التحميلات "
+
+#: queues.py:26
+msgid "Delete stale download files"
+msgstr ""
+
+#: settings.py:17
+msgid ""
+"A storage backend that all workers can use to generate and hold files for "
+"download."
+msgstr ""
+
+#: settings.py:28
+msgid "A storage backend that all workers can use to share files."
+msgstr "مساحة تخزينية مشتركة"
+
+#: settings.py:38
+msgid ""
+"Temporary directory used site wide to store thumbnails, previews and "
+"temporary files."
+msgstr "مساحة تخزينية مؤقتة"
+
+#: storages.py:15
+msgid ""
+"Unable to initialize the download file storage. Check the settings {} and {}"
+" for formatting errors."
+msgstr ""
+
+#: storages.py:29
+msgid ""
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
+msgstr "تعذر تهيئة التخزين ، للتحقق من إعدادات {} و {} لأخطاء ."
+
+#: views.py:55
+msgid ""
+"Download files are created as a results of a an external process like an "
+"export. Download files are retained over a span of time and then removed "
+"automatically."
+msgstr ""
+
+#: views.py:59
+msgid "There are no files to download."
+msgstr ""
+
+#: views.py:60
+msgid "Downloads"
+msgstr ""

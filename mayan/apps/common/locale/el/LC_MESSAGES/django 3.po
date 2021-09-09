@@ -1,0 +1,286 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2021
+# pyrotech <anastasios@tutamail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:125 permissions.py:5 settings.py:14
+msgid "Common"
+msgstr "Common"
+
+#: classes.py:408
+msgid "Model properties"
+msgstr "Ιδιότητες μοντέλου"
+
+#: classes.py:413
+msgid "Model fields"
+msgstr "Πεδία μοντέλου"
+
+#: classes.py:456
+msgid "Model related fields"
+msgstr "Πεδία σχετιζόμενα με το μοντέλο"
+
+#: classes.py:461
+msgid "Model reverse fields"
+msgstr "Πεδία αντιστροφής μοντέλου"
+
+#: dependencies.py:168
+msgid "Used to allow offline translation of the code text strings."
+msgstr ""
+"Χρησιμοποιείται για την εκτός σύνδεσης μετάφραση συμβολοσειρών κειμένου του "
+"κώδικα."
+
+#: dependencies.py:177
+msgid "Provides style checking."
+msgstr "Παρέχει έλεγχο του στυλ."
+
+#: dependencies.py:182
+msgid "Command line environment with autocompletion."
+msgstr "Γραμμή εντολών με αυτόματη συμπλήρωση."
+
+#: dependencies.py:187
+msgid "Checks proper formatting of the README file."
+msgstr "Ελέγχει την ορθή μορφοποίηση του αρχείου README."
+
+#: links.py:30
+msgid "About this"
+msgstr "Σχετικά με"
+
+#: links.py:33
+msgid "Get the book"
+msgstr "Απόκτησε το βιβλίο"
+
+#: links.py:38
+msgid "Documentation"
+msgstr "Τεκμηρίωση"
+
+#: links.py:41
+msgid "Forum"
+msgstr "Φόρουμ"
+
+#: links.py:45 views.py:48
+msgid "License"
+msgstr "Άδεια χρήσης"
+
+#: links.py:50
+msgid "Copy"
+msgstr "Αντιγραφή"
+
+#: links.py:53
+msgid "Setup"
+msgstr "Ρυθμίσεις"
+
+#: links.py:56
+msgid "Source code"
+msgstr "Πηγαίος κώδικας"
+
+#: links.py:60
+msgid "Online store"
+msgstr "Ηλεκτρονικό κατάστημα"
+
+#: links.py:64
+msgid "Get support"
+msgstr "Βοήθεια"
+
+#: links.py:68 queues.py:6 views.py:122
+msgid "Tools"
+msgstr "Εργαλεία"
+
+#: literals.py:19
+msgid ""
+"This feature has been deprecated and will be removed in a future version."
+msgstr ""
+"Αυτό το χαρακτηριστικό είναι ξεπερασμένο και θα αφαιρεθεί σε επόμενη έκδοση."
+
+#: literals.py:22
+msgid ""
+"Your database backend is set to use SQLite. SQLite should only be used for "
+"development and testing, not for production."
+msgstr ""
+"Το υποκείμενο σύστημα βάσης δεδομένων έχει ρυθμιστεί να χρησιμοποιεί την "
+"SQLite. Η SQLite θα πρέπει να χρησιμοποιείται μόνο για ανάπτυξη και δοκιμή, "
+"όχι για παραγωγή."
+
+#: literals.py:31
+msgid "Days"
+msgstr "Ημέρες"
+
+#: literals.py:32
+msgid "Hours"
+msgstr "Ώρες"
+
+#: literals.py:33
+msgid "Minutes"
+msgstr "Λεπτά"
+
+#: menus.py:8
+msgid "System"
+msgstr "Σύστημα"
+
+#: menus.py:10 menus.py:11
+msgid "Facet"
+msgstr "Πτυχή"
+
+#: menus.py:14
+msgid "Actions"
+msgstr "Ενέργειες"
+
+#: menus.py:15
+msgid "Related"
+msgstr "Συσχετισμένο"
+
+#: menus.py:16
+msgid "Secondary"
+msgstr "Δευτερεύον"
+
+#: menus.py:18
+msgid "Return"
+msgstr ""
+
+#: menus.py:22
+msgid "User"
+msgstr "Χρήστης"
+
+#: permissions.py:8
+msgid "Copy object"
+msgstr "Αντιγραφή αντικειμένου"
+
+#: settings.py:21
+msgid ""
+"In list mode, show the \"list facet\" menu options as a dropdown menu "
+"instead of individual buttons."
+msgstr ""
+
+#: settings.py:29
+msgid ""
+"In list mode, show the \"object\" menu options as a dropdown menu instead of"
+" individual buttons."
+msgstr ""
+
+#: settings.py:36
+msgid ""
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr ""
+"Χρόνος καθυστέρησης των εργασιών παρασκηνίου που για την διάδοση εξαρτώνται "
+"σε μια ενέργεια βάσης δεδομένων."
+
+#: settings.py:43
+msgid ""
+"A list of strings designating all applications that are to be removed from "
+"the list normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
+msgstr ""
+
+#: settings.py:53
+msgid ""
+"A list of strings designating all applications that are installed beyond "
+"those normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
+msgstr ""
+
+#: settings.py:63
+msgid ""
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
+msgstr ""
+"Το όνομα της προβολής συνδεδεμένη με τον τίτλο οργανισμού στο κεντρικό "
+"μενού. Αυτήν είναι η προβολή στην οποία θα ανακατευθύνονται οι χρήστες μετά "
+"την σύνδεση."
+
+#: settings.py:71
+msgid "Name to be displayed in the main menu."
+msgstr "Το όνομα που θα εμφανίζεται στο κεντρικού μενού."
+
+#: settings.py:77
+msgid "URL of the installation or homepage of the project."
+msgstr "Το URL της εγκατάστασης ή της κεντρικής σελίδας του προτζεκτ."
+
+#: templates/common/app/viewport.html:9
+msgid "Warning"
+msgstr "Προειδοποίηση"
+
+#: templates/common/app/viewport.html:21
+msgid "Click here to fix this."
+msgstr "Κάντε κλικ εδώ για επιδιόρθωση."
+
+#: validators.py:41
+msgid "Enter a valid JSON value."
+msgstr "Εισάγετε μία έγκυρη τιμή JSON."
+
+#: validators.py:65
+msgid "Enter a valid YAML value."
+msgstr "Εισάγετε μια έγκυρη τιμή YAML."
+
+#: validators.py:81
+msgid ""
+"Enter a valid 'internal name' consisting of letters, numbers, and "
+"underscores."
+msgstr ""
+"Εισάγετε ένα έγκυρο 'εσωτερικό όνομα' που να αποτελείται από γράμματα, "
+"αριθμούς και κάτω παύλες."
+
+#: views.py:22
+msgid "About"
+msgstr "Σχετικά"
+
+#: views.py:39
+msgid "Dashboard"
+msgstr "Πίνακας ελέγχου"
+
+#: views.py:62
+#, python-format
+msgid "Fields to be copied: %s"
+msgstr "Πεδία προς αντιγραφή: %s"
+
+#: views.py:72
+#, python-format
+msgid "Make a copy of %(object_name)s \"%(object)s\"?"
+msgstr "Δημιουργία αντιγράφου αντικειμένων %(object_name)s \"%(object)s\";"
+
+#: views.py:83
+msgid "Object copied successfully."
+msgstr "Το αντικείμενο αντιγράφηκε επιτυχώς."
+
+#: views.py:100
+msgid ""
+"No results here means that don't have the required permissions to perform "
+"administrative task."
+msgstr ""
+"Η μη εμφάνιση αποτελεσμάτων υποδεικνύει έλλειψη των απαιτούμενων δικαιωμάτων"
+" για την εκτέλεση εργασίας διαχειριστή. "
+
+#: views.py:103
+msgid "No setup options available."
+msgstr "Δεν υπάρχουν διαθέσιμες επιλογές ρυθμίσεων."
+
+#: views.py:107
+msgid "Setup items"
+msgstr "Στοιχεία ρύθμισης"
+
+#: views.py:109
+msgid "Here you can configure all aspects of the system."
+msgstr "Εδώ μπορεί να παραμετροποιηθεί το σύστημα."
+
+#: views.py:124
+msgid "These modules are used to do system maintenance."
+msgstr "Αυτά τα modules χρησιμοποιούνται για την συντήρηση του συστήματος."

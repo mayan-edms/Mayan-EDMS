@@ -1,0 +1,348 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# Mathias Behrle <mathiasb@m9s.biz>, 2021
+# Berny <berny@bernhard-marx.de>, 2021
+# Jesaja Everling <jeverling@gmail.com>, 2021
+# Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2021
+# Marvin Haschker <marvin@haschker.me>, 2021
+# Björn E <b1pum@web.de>, 2021
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
+#: events.py:5 forms.py:14 links.py:31 menus.py:14 models.py:50 models.py:174
+#: permissions.py:5 search.py:56 views.py:155 workflow_actions.py:20
+msgid "Cabinets"
+msgstr "Aktenschränke"
+
+#: events.py:9
+msgid "Cabinet created"
+msgstr "Aktenschrank angelegt"
+
+#: events.py:12
+msgid "Cabinet edited"
+msgstr "Aktenschrank bearbeitet"
+
+#: events.py:15
+msgid "Document added to cabinet"
+msgstr "Dokument zum Aktenschrank hinzugefügt"
+
+#: events.py:18
+msgid "Document removed from cabinet"
+msgstr "Dokument aus Aktenschrank entfernt"
+
+#: links.py:37 links.py:49 workflow_actions.py:72
+msgid "Remove from cabinets"
+msgstr "Dokument aus Aktenschrank entfernt"
+
+#: links.py:41 links.py:45 workflow_actions.py:29
+msgid "Add to cabinets"
+msgstr "Zu Aktenschrank hinzufügen"
+
+#: links.py:60
+msgid "Add new level"
+msgstr "Neue Ebene hinzufügen"
+
+#: links.py:65 views.py:40
+msgid "Create cabinet"
+msgstr "Aktenschrank anlegen"
+
+#: links.py:70
+msgid "Delete"
+msgstr "Löschen"
+
+#: links.py:74
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: links.py:82
+msgid "All"
+msgstr "Alle"
+
+#: links.py:86
+msgid "Details"
+msgstr "Details"
+
+#: methods.py:20
+msgid "Return a list of cabinets containing the document."
+msgstr "Zeigt eine Liste von Aktenschränken, die das Dokument enthalten."
+
+#: methods.py:22
+msgid "get_cabinets()"
+msgstr "get_cabinets()"
+
+#: models.py:34
+msgid "A short text used to identify the cabinet."
+msgstr "Ein kurzer Text, der zur Identifizierung des Aktenschrankes dient."
+
+#: models.py:35
+msgid "Label"
+msgstr "Bezeichner"
+
+#: models.py:39
+msgid "Documents"
+msgstr "Dokumente"
+
+#: models.py:49 models.py:148 models.py:173 workflow_actions.py:64
+msgid "Cabinet"
+msgstr "Aktenschrank"
+
+#: models.py:115
+msgid "The path to the cabinet including all ancestors."
+msgstr ""
+"Der Pfad zum Aktenschrank, einschließlich aller übergeordneten Elemente."
+
+#: models.py:117
+msgid "Full path"
+msgstr "Vollständiger Pfad"
+
+#: models.py:149
+msgid "Parent and Label"
+msgstr "Überebene und Bezeichnung"
+
+#: models.py:156
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr "%(model_name)s mit diesem %(field_labels)s existiert bereits."
+
+#: models.py:185
+msgid "Document cabinet"
+msgstr "Dokument zu Aktenschrank hinzugefügt"
+
+#: models.py:186 search.py:63 search.py:70 search.py:77 search.py:84
+msgid "Document cabinets"
+msgstr "Dokumenten-Aktenschränke"
+
+#: permissions.py:10
+msgid "Add documents to cabinets"
+msgstr "%(count)d Dokumente zu Aktenschränken hinzufügen"
+
+#: permissions.py:13
+msgid "Create cabinets"
+msgstr "Aktenschränke anlegen"
+
+#: permissions.py:16
+msgid "Delete cabinets"
+msgstr "Aktenschränke auswählen"
+
+#: permissions.py:19
+msgid "Edit cabinets"
+msgstr "Aktenschränke bearbeiten"
+
+#: permissions.py:22
+msgid "Remove documents from cabinets"
+msgstr "%(count)d Dokumente aus Aktenschränken entfernen"
+
+#: permissions.py:25
+msgid "View cabinets"
+msgstr "Aktenschränke ansehen"
+
+#: search.py:33
+msgid "Document type"
+msgstr "Dokumententyp"
+
+#: search.py:36
+msgid "Document MIME type"
+msgstr "Dokumententyp"
+
+#: search.py:39
+msgid "Document label"
+msgstr "Dokumentenbezeichner"
+
+#: search.py:42
+msgid "Document description"
+msgstr "Dokumentenbeschreibung"
+
+#: search.py:45
+msgid "Document UUID"
+msgstr "Dokumenten-UUID"
+
+#: search.py:50
+msgid "Document checksum"
+msgstr "Dokumentenprüfsumme"
+
+#: serializers.py:18
+msgid "List of children cabinets."
+msgstr "Liste der Unter-Aktenschränke."
+
+#: serializers.py:22
+msgid "The name of this cabinet level appended to the names of its ancestors."
+msgstr ""
+"Der Name dieser Aktenschrankebene angehängt an die Namen der übergeordneten "
+"Elemente."
+
+#: serializers.py:28
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
+msgstr ""
+"Die URL dieses API-Endpunkts zeigt eine Liste der Dokumente in diesem "
+"Aktenschrank."
+
+#: templates/cabinets/cabinet_details.html:17
+msgid "Navigation:"
+msgstr "Navigation:"
+
+#: views.py:56
+#, python-format
+msgid "Add new level to: %s"
+msgstr "Neue Ebene hinzufügen zu: %s"
+
+#: views.py:80
+#, python-format
+msgid "Delete the cabinet: %s?"
+msgstr "Aktenschrank %s löschen?"
+
+#: views.py:116
+msgid ""
+"Cabinet levels can contain documents or other cabinet sub levels. To add "
+"documents to a cabinet, select the cabinet view of a document view."
+msgstr ""
+"Aktenschrankebenen können Dokumente oder weitere Unterebenen enthalten. Um "
+"Dokumente einem Aktenschrank hinzuzufügen, wählen Sie die "
+"Aktenschrankansicht."
+
+#: views.py:120
+msgid "This cabinet level is empty"
+msgstr "Diese Aktenschrankebene ist leer"
+
+#: views.py:123
+#, python-format
+msgid "Details of cabinet: %s"
+msgstr "Details für Aktenschrank %s"
+
+#: views.py:141
+#, python-format
+msgid "Edit cabinet: %s"
+msgstr "Aktenschrank %s bearbeiten"
+
+#: views.py:161
+msgid ""
+"Cabinets are a multi-level method to organize documents. Each cabinet can "
+"contain documents as well as other sub level cabinets."
+msgstr ""
+"Aktenschränke bieten die Möglichkeit Dokumente auf mehreren Ebenen zu "
+"verwalten. Ein Aktenschrank kann neben Dokumenten weitere Unterebenen "
+"enthalten."
+
+#: views.py:165
+msgid "No cabinets available"
+msgstr "Keine Aktenschränke verfügbar"
+
+#: views.py:178
+#, python-format
+msgid "Document \"%(object)s\" added to cabinets successfully."
+msgstr "Dokument \"%(object)s\" erfolgreich zu Aktenschränken hinzugefügt."
+
+#: views.py:181
+#, python-format
+msgid "%(count)d document added to cabinets successfully."
+msgstr ""
+
+#: views.py:184
+#, python-format
+msgid "%(count)d documents added to cabinets successfully."
+msgstr "%(count)d Dokumente erfolgreich zu Aktenschränken hinzugefügt."
+
+#: views.py:186
+#, python-format
+msgid "Add document \"%(object)s\" to cabinets."
+msgstr "Dokument \"%(object)s\" zu Aktenschrank hinzufügen."
+
+#: views.py:187
+#, python-format
+msgid "Add %(count)d document to cabinets."
+msgstr ""
+
+#: views.py:188
+#, python-format
+msgid "Add %(count)d documents to cabinets."
+msgstr "%(count)d Dokumente zu Aktenschränken hinzufügen."
+
+#: views.py:192
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: views.py:207
+msgid "Cabinets to which the selected documents will be added."
+msgstr "Aktenschränke zu denen die ausgewählten Dokumente hinzugefügt werden."
+
+#: views.py:253
+msgid "Documents can be added to many cabinets."
+msgstr "Dokumente können zu mehreren Aktenschränken hinzugefügt werden."
+
+#: views.py:256
+msgid "This document is not in any cabinet"
+msgstr "Dieses Dokument gehört zu keinem Aktenschrank"
+
+#: views.py:260
+#, python-format
+msgid "Cabinets containing document: %s"
+msgstr "Aktenschränke mit Dokument %s"
+
+#: views.py:276
+#, python-format
+msgid "Document \"%(object)s\" removed from cabinets successfully."
+msgstr "Dokument \"%(object)s\" erfolgreich aus Aktenschränken entfernt."
+
+#: views.py:279
+#, python-format
+msgid "%(count)d document removed from cabinets successfully."
+msgstr ""
+
+#: views.py:282
+#, python-format
+msgid "%(count)d documents removed from cabinets successfully."
+msgstr "%(count)d Dokumente erfolgreich aus Aktenschränken entfernt."
+
+#: views.py:284
+#, python-format
+msgid "Remove document \"%(object)s\" from cabinets."
+msgstr "Dokument \"%(object)s\" aus Aktenschränken entfernen."
+
+#: views.py:285
+#, python-format
+msgid "Remove %(count)d document from cabinets."
+msgstr ""
+
+#: views.py:286
+#, python-format
+msgid "Remove %(count)d documents from cabinets."
+msgstr "%(count)d Dokumente aus Aktenschränken entfernen."
+
+#: views.py:290
+msgid "Remove"
+msgstr "Entfernen"
+
+#: views.py:305
+msgid "Cabinets from which the selected documents will be removed."
+msgstr "Aktenschränke aus denen die ausgewählten Dokumente entfernt werden."
+
+#: wizard_steps.py:15
+msgid "Select cabinets"
+msgstr "Aktenschränke auswählen"
+
+#: wizard_steps.py:29 workflow_actions.py:23
+msgid "Cabinets to which the document will be added."
+msgstr "Aktenschränke zu denen die ausgewählten Dokumente hinzugefügt werden."
+
+#: workflow_actions.py:67
+msgid "Cabinets from which the document will be removed."
+msgstr "Aktenschränke aus denen die ausgewählten Dokumente entfernt werden."

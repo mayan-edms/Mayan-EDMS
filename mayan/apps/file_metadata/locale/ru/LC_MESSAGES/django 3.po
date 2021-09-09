@@ -1,0 +1,265 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# Sergey Glita <gsv70@mail.ru>, 2021
+# lilo.panic, 2021
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: admin.py:13
+msgid "Label"
+msgstr "Заголовок"
+
+#: apps.py:48 events.py:6 links.py:17 permissions.py:5 queues.py:7
+#: settings.py:12
+msgid "File metadata"
+msgstr "Метаданные файла"
+
+#: apps.py:98 search.py:11 search.py:22 search.py:33
+msgid "File metadata key"
+msgstr "Ключ метаданных файла"
+
+#: apps.py:102 search.py:15 search.py:26 search.py:37
+msgid "File metadata value"
+msgstr "Значение метаданных файла"
+
+#: apps.py:129
+msgid "Return the value of a specific file metadata."
+msgstr "Возвращает значение метаданных конкретного файла."
+
+#: apps.py:130
+msgid "File metadata value of"
+msgstr "Значение метаданных файла"
+
+#: dependencies.py:12
+msgid ""
+"Library and program to read and write meta information in multimedia files."
+msgstr ""
+"Библиотека и программа для чтения и записи метаданных мультимедийных файлов."
+
+#: drivers/exiftool.py:19
+msgid "EXIF Tool"
+msgstr "EXIF Tool"
+
+#: events.py:10
+msgid "Document file submitted for file metadata processing"
+msgstr "Файл документа отправлен на обработку метаданных файла"
+
+#: events.py:14
+msgid "Document file file metadata processing finished"
+msgstr "Обработка метаданных файла документа завершена"
+
+#: links.py:23
+msgid "Attributes"
+msgstr "Атрибуты"
+
+#: links.py:30 links.py:35
+msgid "Submit for file metadata"
+msgstr "Обработать метаданные файла"
+
+#: links.py:42
+msgid "Setup file metadata"
+msgstr "Настройки метаданных файла"
+
+#: links.py:47
+msgid "File metadata processing per type"
+msgstr "Обработать метаданные файла указанного типа"
+
+#: methods.py:36
+msgid "get_file_metadata(< file metadata dotted path >)"
+msgstr "get_file_metadata(< file metadata dotted path >)"
+
+#: methods.py:39
+msgid "Return the specified document file metadata entry."
+msgstr "Возвращает указанную запись метаданных файла документа."
+
+#: methods.py:66
+msgid "Return the specified document file file metadata entry."
+msgstr "Возвращает указанную запись метаданных файла файла документа."
+
+#: models.py:18
+msgid "Driver path"
+msgstr "Путь к драйверу"
+
+#: models.py:22
+msgid "Internal name"
+msgstr "Внутреннее имя"
+
+#: models.py:27 models.py:70
+msgid "Driver"
+msgstr "Драйвер"
+
+#: models.py:28
+msgid "Drivers"
+msgstr "Драйверы"
+
+#: models.py:48
+msgid "Document type"
+msgstr "Тип документа"
+
+#: models.py:52
+msgid "Automatically queue newly created documents for processing."
+msgstr ""
+"Автоматически ставить вновь созданные документы в очередь для обработки "
+"метаданных файла."
+
+#: models.py:59
+msgid "Document type settings"
+msgstr "Настройки типа документа"
+
+#: models.py:60
+msgid "Document types settings"
+msgstr "Настройки типов документа"
+
+#: models.py:74
+msgid "Document file"
+msgstr "Файл документа"
+
+#: models.py:80 models.py:95
+msgid "Document file driver entry"
+msgstr "Запись драйвера файла документа"
+
+#: models.py:81
+msgid "Document file driver entries"
+msgstr "Записи драйвера файла документа"
+
+#: models.py:88
+msgid "Attribute count"
+msgstr "Количество атрибутов"
+
+#: models.py:99
+msgid "Name of the file metadata entry."
+msgstr "Имя записи метаданных файла."
+
+#: models.py:100
+msgid "Key"
+msgstr "Ключ"
+
+#: models.py:103
+msgid "Value of the file metadata entry."
+msgstr "Значение записи метаданных файла."
+
+#: models.py:104
+msgid "Value"
+msgstr "Значение"
+
+#: models.py:109
+msgid "File metadata entry"
+msgstr "Запись метаданных файла"
+
+#: models.py:110
+msgid "File metadata entries"
+msgstr "Записи метаданных файла"
+
+#: permissions.py:8
+msgid "Change document type file metadata settings"
+msgstr "Изменить настройки метаданных файла для типа документа"
+
+#: permissions.py:13
+msgid "Submit document for file metadata processing"
+msgstr "Отправить документы на обработку метаданных файла"
+
+#: permissions.py:17
+msgid "View file metadata"
+msgstr "Просмотр метаданных файла"
+
+#: queues.py:11
+msgid "Process document file"
+msgstr "Обработка файла документа"
+
+#: settings.py:18
+msgid ""
+"Set new document types to perform file metadata processing automatically by "
+"default."
+msgstr ""
+"Включить по умолчанию автоматический запуск обработки метаданных файла для "
+"вновь создаваемых типов документов."
+
+#: settings.py:25
+msgid "Arguments to pass to the drivers."
+msgstr "Аргументы, передаваемые в драйверы."
+
+#: views.py:44
+msgid ""
+"File metadata are the attributes of the document's file. They can range from"
+" camera information used to take a photo to the author that created a file. "
+"File metadata are set when the document's file was first created. File "
+"metadata attributes reside in the file itself. They are not the same as the "
+"document metadata, which are user defined and reside in the database."
+msgstr ""
+"Метаданные файла - это атрибуты файла документа. Они могут варьироваться от "
+"информации о камере, использованной для фотографирования, до автора, "
+"создавшего файл. Метаданные файла устанавливаются при первом создании файла "
+"документа. Атрибуты метаданных файла находятся в самом файле. Они не "
+"совпадают с метаданными документа, которые определяются пользователем и "
+"хранятся в базе данных."
+
+#: views.py:52
+msgid "No file metadata available."
+msgstr "Метаданные файла недоступны."
+
+#: views.py:55
+#, python-format
+msgid "File metadata drivers for: %s"
+msgstr "Драйверы метаданных файлов для: %s"
+
+#: views.py:81
+msgid ""
+"This could mean that the file metadata detection has not completed or that "
+"the driver does not support any metadata field for the file type of this "
+"document."
+msgstr ""
+"Это может означать, что обнаружение метаданных файла не завершено или что "
+"драйвер не поддерживает какие-либо поля метаданных для типа файла этого "
+"документа."
+
+#: views.py:86
+msgid "No file metadata available for this driver."
+msgstr "Для этого драйвера нет доступных метаданных файла."
+
+#: views.py:90
+#, python-format
+msgid ""
+"File metadata attributes for: %(document_file)s with driver: %(driver)s"
+msgstr "Атрибуты метаданных файла для: %(document_file)s, драйвер: %(driver)s"
+
+#: views.py:119
+msgid "Submit the selected document file to the file metadata queue?"
+msgid_plural "Submit the selected documents files to the file metadata queue?"
+msgstr[0] "Отправить выбранный файл документа на обработку метаданных файла?"
+msgstr[1] "Отправить выбранные файлы документа на обработку метаданных файла?"
+msgstr[2] "Отправить выбранные файлы документа на обработку метаданных файла?"
+msgstr[3] "Отправить выбранные файлы документа на обработку метаданных файла?"
+
+#: views.py:145
+#, python-format
+msgid "Edit file metadata settings for document type: %s"
+msgstr "Настройки метаданных файла для типа документа: %s"
+
+#: views.py:156
+msgid "Submit all documents of a type for file metadata processing."
+msgstr ""
+"Отправить все документы указанного типа на обработку метаданных файла."
+
+#: views.py:180
+#, python-format
+msgid "%(count)d documents added to the file metadata processing queue."
+msgstr ""
+"%(count)d документов добавлено в очередь на обработку метаданных файла."

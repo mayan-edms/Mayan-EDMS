@@ -1,0 +1,24 @@
+{% load i18n %}
+
+<div class="full-height scrollable" data-height-difference=230 id="carousel-container">
+    {% for page in widget.value.pages.all %}
+        <div class="carousel-item">
+            <a href="{% url widget.attrs.target_view page.pk %}">
+                {% with 'lazy-load-carousel' as image_classes %}
+                {% with page as instance %}
+                {% with widget.attrs.height as display_height %}
+                    {% include 'documents/forms/widgets/page_image.html' %}
+                {% endwith %}
+                {% endwith %}
+                {% endwith %}
+            </a>
+            <div class="carousel-item-page-number">
+                {% blocktrans with page.page_number as page_number and widget.value.pages.count as total_pages %}
+                    Page {{ page_number }} of {{ total_pages }}
+                {% endblocktrans %}
+            </div>
+    </div>
+    {% empty %}
+        <p>{% trans 'No pages to display' %}</p>
+    {% endfor %}
+</div>

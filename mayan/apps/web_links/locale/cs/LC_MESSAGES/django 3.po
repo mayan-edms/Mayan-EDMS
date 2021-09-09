@@ -1,0 +1,173 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Jiri Fait <fait@orkasolutions.cz>, 2021
+# Michal Švábík <snadno@lehce.cz>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: apps.py:39
+msgid "Links"
+msgstr "Odkazy"
+
+#: events.py:6 links.py:19 links.py:24 links.py:54 links.py:59 models.py:42
+#: permissions.py:5 views.py:182
+msgid "Web links"
+msgstr "webové odkazy"
+
+#: events.py:10
+msgid "Web link created"
+msgstr "Webový odkaz byl vytvořen"
+
+#: events.py:13
+msgid "Web link edited"
+msgstr "Webový odkaz byl upraven"
+
+#: events.py:16
+msgid "Web link navigated"
+msgstr "Navigace webovým odkazem"
+
+#: links.py:29 views.py:94
+msgid "Create new web link"
+msgstr "Vytvořit nový webový odkaz"
+
+#: links.py:35
+msgid "Delete"
+msgstr "Odstranit"
+
+#: links.py:39 models.py:36
+msgid "Document types"
+msgstr "Typy dokumentů"
+
+#: links.py:44
+msgid "Edit"
+msgstr "Upravit"
+
+#: links.py:51
+msgid "Navigate"
+msgstr "Navigovat"
+
+#: models.py:24
+msgid "A short text describing the web link."
+msgstr "Krátký text popisující webový odkaz."
+
+#: models.py:25
+msgid "Label"
+msgstr "Jmenovka"
+
+#: models.py:29
+msgid "Template that will be used to craft the final URL of the web link."
+msgstr ""
+"Šablona, která bude použita k vytvoření cílové adresy URL webového odkazu."
+
+#: models.py:31
+msgid "Template"
+msgstr "Šablona"
+
+#: models.py:33
+msgid "Enabled"
+msgstr "Povoleno"
+
+#: models.py:41
+msgid "Web link"
+msgstr "webový odkaz"
+
+#: permissions.py:8
+msgid "Create new web links"
+msgstr "Vytvořte nové webové odkazy"
+
+#: permissions.py:11
+msgid "Delete web links"
+msgstr "Smazat webové odkazy"
+
+#: permissions.py:14
+msgid "Edit web links"
+msgstr "Upravit webové odkazy"
+
+#: permissions.py:17
+msgid "View existing web links"
+msgstr "Zobrazit existující webové odkazy"
+
+#: permissions.py:20
+msgid "View web link instances"
+msgstr "Zobrazit instance webového odkazu"
+
+#: serializers.py:16
+msgid "Primary key of the document type to add to the web link."
+msgstr ""
+
+#: serializers.py:25
+msgid "Primary key of the document type to remove from the web link."
+msgstr ""
+
+#: views.py:38
+msgid "Available web links"
+msgstr "Dostupné webové odkazy"
+
+#: views.py:39
+msgid "Web links enabled"
+msgstr "Webové odkazy povoleny"
+
+#: views.py:63
+#, python-format
+msgid "Web links to enable for document type: %s"
+msgstr "Povolit webové odkazy pro typ dokumentu: %s"
+
+#: views.py:116
+#, python-format
+msgid "Delete web link: %s"
+msgstr "Smazat webový odkaz: %s"
+
+#: views.py:128
+msgid "Available document types"
+msgstr "Dostupné typy dokumentů"
+
+#: views.py:129
+msgid "Document types enabled"
+msgstr "Typy dokumentů povoleny"
+
+#: views.py:139
+#, python-format
+msgid "Document type for which to enable web link: %s"
+msgstr "Typ dokumentu, pro který chcete povolit webový odkaz: %s"
+
+#: views.py:156
+#, python-format
+msgid "Edit web link: %s"
+msgstr "Upravit webový odkaz: %s"
+
+#: views.py:175 views.py:205
+msgid ""
+"Web links allow generating HTTP links from documents to external resources. "
+"The link URL's can contain document properties values."
+msgstr ""
+"Webové odkazy umožňují generovat HTTP odkazy z dokumentů na externí zdroje. "
+"URL odkazu mohou obsahovat hodnoty vlastností dokumentu."
+
+#: views.py:180
+msgid "There are no web links"
+msgstr "Žádné webové odkazy"
+
+#: views.py:210
+msgid "There are no web links for this document"
+msgstr "Na tento dokument nejsou žádné odkazy"
+
+#: views.py:213
+#, python-format
+msgid "Web links for document: %s"
+msgstr "Webové odkazy na dokument: %s"

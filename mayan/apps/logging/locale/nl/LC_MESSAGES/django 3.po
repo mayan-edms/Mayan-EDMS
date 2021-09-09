@@ -1,0 +1,124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# bwakkie <bwakkie@gmail.com>, 2021
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
+"Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:16 permissions.py:5 settings.py:10
+msgid "Logging"
+msgstr "logboek registreren"
+
+#: links.py:13
+msgid "Errors"
+msgstr "Fouten"
+
+#: links.py:19
+msgid "Clear errors"
+msgstr "Fouten verwijderen"
+
+#: models.py:10 models.py:38
+msgid "Internal name"
+msgstr "Interne naam"
+
+#: models.py:15 models.py:35
+msgid "Error log"
+msgstr "Fouten logboek"
+
+#: models.py:16
+msgid "Error logs"
+msgstr "Fouten logboeken"
+
+#: models.py:25
+msgid "App label"
+msgstr "Applicatie etiket"
+
+#: models.py:43 models.py:60
+msgid "Error log partition"
+msgstr "Fouten logboek partitie"
+
+#: models.py:44
+msgid "Error log partitions"
+msgstr "Fouten logboek partities"
+
+#: models.py:63
+msgid "Date and time"
+msgstr "Datum en tijd"
+
+#: models.py:65
+msgid "Text"
+msgstr "Tekst"
+
+#: models.py:70
+msgid "Error log partition entry"
+msgstr "Fouten logboek partitie toevoeging"
+
+#: models.py:71
+msgid "Error log partition entries"
+msgstr "Fouten logboek partitie toevoegingen"
+
+#: permissions.py:8
+msgid "View error log"
+msgstr "Foutenlog bekijken"
+
+#: settings.py:14
+msgid "Automatically enable logging to all apps."
+msgstr "Loggen naar alle apps automatisch inschakelen."
+
+#: settings.py:19
+msgid ""
+"List of handlers to which logging messages will be sent. Options are: {}"
+msgstr ""
+"Lijst van 'handlers' waar logboek berichten naar toe worden gezonden. Opties"
+" zijn: {}"
+
+#: settings.py:25
+msgid "Level for the logging system."
+msgstr "Foutniveau van het logboek systeem."
+
+#: settings.py:31
+msgid "Path to the logfile that will track errors during production."
+msgstr "Pad naar het logbestand dat de fouten tijdens productie volgt."
+
+#: views.py:20
+#, python-format
+msgid "Clear error log entries for: %s"
+msgstr "Foutenlog invoer wissen voor: %s"
+
+#: views.py:27
+msgid "Object error log cleared successfully"
+msgstr "Object foutenlog met succes gewist"
+
+#: views.py:42
+msgid ""
+"This view displays the error log of different object. An empty list is a "
+"good thing."
+msgstr ""
+"Dit overzicht geeft de foutenlog van verschillende objecten weer. Een lege "
+"lijst is een goed teken."
+
+#: views.py:46
+msgid "There are no error log entries"
+msgstr "Er is geen foutenlog invoer."
+
+#: views.py:49
+#, python-format
+msgid "Error log entries for: %s"
+msgstr "Foutenlog invoer voor: %s"

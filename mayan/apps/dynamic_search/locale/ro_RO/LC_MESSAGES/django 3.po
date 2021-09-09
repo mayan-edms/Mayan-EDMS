@@ -1,0 +1,142 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Harald Ersch, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Harald Ersch, 2021\n"
+"Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+
+#: apps.py:19
+msgid "Dynamic search"
+msgstr "Căutarea dinamică"
+
+#: classes.py:265
+msgid "No search model matching the query"
+msgstr "Niciun model de căutare nu corespunde interogării"
+
+#: forms.py:9
+msgid "Match all"
+msgstr "Se potrivește cu toate"
+
+#: forms.py:10
+msgid ""
+"When checked, only results that match all fields will be returned. When "
+"unchecked results that match at least one field will be returned."
+msgstr ""
+"Atunci când este bifată, vor fi returnate numai rezultatele care corespund "
+"tuturor câmpurilor. Atunci când rezultatele neconfirmate care corespund cel "
+"puțin un câmp vor fi returnate."
+
+#: forms.py:31 templates/dynamic_search/search_box.html:41
+msgid "Search terms"
+msgstr "Caută termeni"
+
+#: links.py:13 permissions.py:5 queues.py:8 settings.py:11
+#: templates/dynamic_search/search_box.html:45 views.py:124 views.py:137
+msgid "Search"
+msgstr "Căutare"
+
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:151
+msgid "Advanced search"
+msgstr "Cautare avansată"
+
+#: links.py:21
+msgid "Search again"
+msgstr "Caută din nou"
+
+#: links.py:25 views.py:97
+msgid "Reindex search backend"
+msgstr "Reindexare backend de căutare"
+
+#: permissions.py:8
+msgid "Execute search tools"
+msgstr "Executați instrumente de căutare"
+
+#: queues.py:13
+msgid "Remove a model instance from the search engine."
+msgstr "Eliminați o instanță de model din motorul de căutare."
+
+#: queues.py:18
+msgid "Index a model instance to the search engine."
+msgstr "Indexați o instanță model la motorul de căutare."
+
+#: queues.py:24
+msgid "Index all instances of a search model to the search engine."
+msgstr ""
+"Indexați toate instanțele unui model de căutare în motorul de căutare."
+
+#: settings.py:16
+msgid "Full path to the backend to be used to handle the search."
+msgstr ""
+"Calea completă către backend pentru a fi utilizată pentru a gestiona "
+"căutarea."
+
+#: settings.py:26
+msgid ""
+"Disables the single term bar search leaving only the advanced search button."
+msgstr ""
+"Dezactivează căutarea în bară cu un singur termen lăsând doar butonul de "
+"căutare avansată."
+
+#: settings.py:33
+msgid "Sets the default state of the \"Match all\" checkbox."
+msgstr ""
+
+#: settings.py:37
+msgid "Maximum number search results to fetch and display."
+msgstr "Numărul maxim de rezultate de căutare de preluat și afișat."
+
+#: templates/dynamic_search/search_box.html:47
+msgid "Advanced"
+msgstr "Avansate"
+
+#: views.py:40
+msgid "Try again using different terms. "
+msgstr "Încercați din nou folosind termeni diferiți."
+
+#: views.py:42
+msgid "No search results"
+msgstr "Nu există rezultate"
+
+#: views.py:44
+#, python-format
+msgid "Search results for: %s"
+msgstr "Rezultatele căutării pentru: %s"
+
+#: views.py:93
+msgid ""
+"This tool is required only for some search backends. Search results will be "
+"affected while the backend is being reindexed."
+msgstr ""
+"Acest instrument este necesar numai pentru unele backend-uri de căutare. "
+"Rezultatele căutării vor fi afectate în timp ce backend-ul este reindexat."
+
+#: views.py:99
+msgid "This tool erases and populates the search backend's internal index."
+msgstr ""
+"Acest instrument șterge și completează indexul intern al backend-ului de "
+"căutare."
+
+#: views.py:117
+msgid "Search backend reindexing queued."
+msgstr "Reindexarea backend-ului de căutare a fost pusă la coadă."
+
+#: views.py:139
+#, python-format
+msgid "Search for: %s"
+msgstr "Caută după: %s"

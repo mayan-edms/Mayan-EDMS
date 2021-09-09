@@ -1,0 +1,226 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Mads L. Nielsen <sirlundgaard@gmail.com>, 2021
+# Allan Møller <it@brandts.dk>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Allan Møller <it@brandts.dk>, 2021\n"
+"Language-Team: Danish (https://www.transifex.com/rosarior/teams/13584/da/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:15 settings.py:7
+msgid "Views"
+msgstr ""
+
+#: forms.py:24
+msgid "Selection"
+msgstr ""
+
+#: forms.py:100
+msgid "None"
+msgstr "Ingen"
+
+#: forms.py:284
+msgid "Label"
+msgstr "Etiket"
+
+#: forms.py:288
+msgid "Relationship"
+msgstr ""
+
+#: generics.py:146
+msgid ""
+"Select entries to be removed. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:151
+msgid ""
+"Select entries to be added. Hold Control to select multiple entries. Once "
+"the selection is complete, click the button below or double click the list "
+"to activate the action."
+msgstr ""
+
+#: generics.py:289
+msgid "Add all"
+msgstr ""
+
+#: generics.py:298
+msgid "Add"
+msgstr ""
+
+#: generics.py:308
+msgid "Remove all"
+msgstr ""
+
+#: generics.py:317
+msgid "Remove"
+msgstr ""
+
+#: generics.py:531
+#, python-format
+msgid "Error updating relationship; %s"
+msgstr ""
+
+#: generics.py:538
+msgid "Relationships updated successfully"
+msgstr ""
+
+#: generics.py:597
+#, python-format
+msgid "Duplicate data error: %(error)s"
+msgstr ""
+
+#: generics.py:616
+#, python-format
+msgid "%(object)s not created, error: %(error)s"
+msgstr ""
+
+#: generics.py:627
+#, python-format
+msgid "%(object)s created successfully."
+msgstr ""
+
+#: generics.py:666
+#, python-format
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr ""
+
+#: generics.py:675
+#, python-format
+msgid "%(object)s deleted successfully."
+msgstr ""
+
+#: generics.py:729
+#, python-format
+msgid "Error retrieving %(object)s; %(error)s"
+msgstr ""
+
+#: generics.py:833
+#, python-format
+msgid "%(object)s not updated, error: %(error)s."
+msgstr ""
+
+#: generics.py:842
+#, python-format
+msgid "%(object)s updated successfully."
+msgstr ""
+
+#: generics.py:904
+#, python-format
+msgid "\"%(object)s\" deleted successfully."
+msgstr ""
+
+#: generics.py:905
+#, python-format
+msgid "%(count)d object deleted successfully."
+msgstr ""
+
+#: generics.py:906
+#, python-format
+msgid "%(count)d objects deleted successfully."
+msgstr ""
+
+#: generics.py:907
+#, python-format
+msgid "Delete \"%(object)s\"."
+msgstr ""
+
+#: generics.py:908
+#, python-format
+msgid "Delete %(count)d object."
+msgstr ""
+
+#: generics.py:909
+#, python-format
+msgid "Delete %(count)d objects."
+msgstr ""
+
+#: mixins.py:327
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: mixins.py:352
+#, python-format
+msgid "Unable to perform operation on object %(instance)s; %(exception)s."
+msgstr ""
+
+#: mixins.py:354
+#, python-format
+msgid "Operation performed on %(object)s."
+msgstr ""
+
+#: mixins.py:355
+#, python-format
+msgid "Operation performed on %(count)d object."
+msgstr ""
+
+#: mixins.py:356
+#, python-format
+msgid "Operation performed on %(count)d objects."
+msgstr ""
+
+#: mixins.py:357
+#, python-format
+msgid "Perform operation on %(object)s."
+msgstr ""
+
+#: mixins.py:358
+#, python-format
+msgid "Perform operation on %(count)d object."
+msgstr ""
+
+#: mixins.py:359
+#, python-format
+msgid "Perform operation on %(count)d objects."
+msgstr ""
+
+#: mixins.py:441
+msgid "Object"
+msgstr "Objekt"
+
+#: settings.py:12
+msgid "The number objects that will be displayed per page."
+msgstr ""
+
+#: templatetags/views_tags.py:28
+msgid "Confirm delete"
+msgstr ""
+
+#: templatetags/views_tags.py:33
+#, python-format
+msgid "Edit %s"
+msgstr ""
+
+#: templatetags/views_tags.py:36
+msgid "Confirm"
+msgstr ""
+
+#: templatetags/views_tags.py:40
+#, python-format
+msgid "Details for: %s"
+msgstr ""
+
+#: templatetags/views_tags.py:44
+#, python-format
+msgid "Edit: %s"
+msgstr ""
+
+#: templatetags/views_tags.py:48
+msgid "Create"
+msgstr ""

@@ -1,0 +1,295 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:125 permissions.py:5 settings.py:14
+msgid "Common"
+msgstr "Общи"
+
+#: classes.py:408
+msgid "Model properties"
+msgstr "Свойства на модела"
+
+#: classes.py:413
+msgid "Model fields"
+msgstr "Полета на модела"
+
+#: classes.py:456
+msgid "Model related fields"
+msgstr "Свързани с модела полета"
+
+#: classes.py:461
+msgid "Model reverse fields"
+msgstr "Обратни полета на модела"
+
+#: dependencies.py:168
+msgid "Used to allow offline translation of the code text strings."
+msgstr "Използва се за разрешаване на офлайн превод на текстови низове в код."
+
+#: dependencies.py:177
+msgid "Provides style checking."
+msgstr "Осигурява проверка на стила."
+
+#: dependencies.py:182
+msgid "Command line environment with autocompletion."
+msgstr "Команден ред с автоматично довършване."
+
+#: dependencies.py:187
+msgid "Checks proper formatting of the README file."
+msgstr "Проверява правилното форматиране на файла README."
+
+#: links.py:30
+msgid "About this"
+msgstr "Относно това"
+
+#: links.py:33
+msgid "Get the book"
+msgstr "Вземете книгата"
+
+#: links.py:38
+msgid "Documentation"
+msgstr "Документация"
+
+#: links.py:41
+msgid "Forum"
+msgstr "Форум"
+
+#: links.py:45 views.py:48
+msgid "License"
+msgstr "Лиценз"
+
+#: links.py:50
+msgid "Copy"
+msgstr "Копие"
+
+#: links.py:53
+msgid "Setup"
+msgstr "Настройка"
+
+#: links.py:56
+msgid "Source code"
+msgstr "Изходен код"
+
+#: links.py:60
+msgid "Online store"
+msgstr "Онлайн магазин"
+
+#: links.py:64
+msgid "Get support"
+msgstr "Поддръжка"
+
+#: links.py:68 queues.py:6 views.py:122
+msgid "Tools"
+msgstr "Инструменти"
+
+#: literals.py:19
+msgid ""
+"This feature has been deprecated and will be removed in a future version."
+msgstr "Тази функция е оттеглена и ще бъде премахната в бъдеща версия."
+
+#: literals.py:22
+msgid ""
+"Your database backend is set to use SQLite. SQLite should only be used for "
+"development and testing, not for production."
+msgstr ""
+"Вашата база данни е настроена да използва SQLite. SQLite трябва да се "
+"използва само за разработка и тестване, а не за производство."
+
+#: literals.py:31
+msgid "Days"
+msgstr "Дни"
+
+#: literals.py:32
+msgid "Hours"
+msgstr "Часове"
+
+#: literals.py:33
+msgid "Minutes"
+msgstr "Минути"
+
+#: menus.py:8
+msgid "System"
+msgstr "Система"
+
+#: menus.py:10 menus.py:11
+msgid "Facet"
+msgstr "Аспект"
+
+#: menus.py:14
+msgid "Actions"
+msgstr "Действия"
+
+#: menus.py:15
+msgid "Related"
+msgstr "Свързани"
+
+#: menus.py:16
+msgid "Secondary"
+msgstr "Допълнително"
+
+#: menus.py:18
+msgid "Return"
+msgstr "Връщане"
+
+#: menus.py:22
+msgid "User"
+msgstr "Потребител"
+
+#: permissions.py:8
+msgid "Copy object"
+msgstr "Копиране на обект"
+
+#: settings.py:21
+msgid ""
+"In list mode, show the \"list facet\" menu options as a dropdown menu "
+"instead of individual buttons."
+msgstr ""
+"В режим на списък покажете опциите на менюто &quot;фасет списък&quot; като "
+"падащо меню вместо отделни бутони."
+
+#: settings.py:29
+msgid ""
+"In list mode, show the \"object\" menu options as a dropdown menu instead of"
+" individual buttons."
+msgstr ""
+"В режим на списък покажете опциите на менюто &quot;обект&quot; като падащо "
+"меню вместо отделни бутони."
+
+#: settings.py:36
+msgid ""
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr ""
+"Време за забавяне на фоновите задачи, които зависят от запис в базата данни,"
+" за да се изпълнят."
+
+#: settings.py:43
+msgid ""
+"A list of strings designating all applications that are to be removed from "
+"the list normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
+msgstr ""
+"Списък с низове, обозначаващи всички приложения, които трябва да бъдат "
+"премахнати от списъка, който обикновено се инсталира от Mayan EDMS. Всеки "
+"низ трябва да бъде точкуван Python път към: конфигурационен клас на "
+"приложение (за предпочитане) или пакет, съдържащ приложение. Пример: "
+"[&#39;app_1&#39;, &#39;app_2&#39;]"
+
+#: settings.py:53
+msgid ""
+"A list of strings designating all applications that are installed beyond "
+"those normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
+msgstr ""
+"Списък с низове, обозначаващи всички приложения, които са инсталирани извън "
+"тези, които обикновено са инсталирани от Mayan EDMS. Всеки низ трябва да "
+"бъде точкуван Python път към: конфигурационен клас на приложение (за "
+"предпочитане) или пакет, съдържащ приложение. Пример: [&#39;app_1&#39;, "
+"&#39;app_2&#39;]"
+
+#: settings.py:63
+msgid ""
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
+msgstr ""
+"Име на изгледа, прикрепен към котвата на марката в главното меню. Това е и "
+"изгледът, към който потребителите ще бъдат пренасочени след влизане."
+
+#: settings.py:71
+msgid "Name to be displayed in the main menu."
+msgstr "Име, което се показва в главното меню."
+
+#: settings.py:77
+msgid "URL of the installation or homepage of the project."
+msgstr "URL адрес на инсталацията или началната страница на проекта."
+
+#: templates/common/app/viewport.html:9
+msgid "Warning"
+msgstr "Предупреждение"
+
+#: templates/common/app/viewport.html:21
+msgid "Click here to fix this."
+msgstr "Кликнете тук, за да поправите това."
+
+#: validators.py:41
+msgid "Enter a valid JSON value."
+msgstr "Въведете валидна JSON стойност."
+
+#: validators.py:65
+msgid "Enter a valid YAML value."
+msgstr "Въведете валидна YAML стойност."
+
+#: validators.py:81
+msgid ""
+"Enter a valid 'internal name' consisting of letters, numbers, and "
+"underscores."
+msgstr ""
+"Въведете валидно „вътрешно име“, състоящо се от букви, цифри и долни черти."
+
+#: views.py:22
+msgid "About"
+msgstr "Относно"
+
+#: views.py:39
+msgid "Dashboard"
+msgstr "Контролно табло"
+
+#: views.py:62
+#, python-format
+msgid "Fields to be copied: %s"
+msgstr "Полета за копиране: %s"
+
+#: views.py:72
+#, python-format
+msgid "Make a copy of %(object_name)s \"%(object)s\"?"
+msgstr "Да направя ли копие на %(object_name)s &quot;%(object)s&quot;?"
+
+#: views.py:83
+msgid "Object copied successfully."
+msgstr "Обектът е копиран успешно."
+
+#: views.py:100
+msgid ""
+"No results here means that don't have the required permissions to perform "
+"administrative task."
+msgstr ""
+"Липса на резултати тук означава, че нямате необходимите разрешения за "
+"изпълнение на административна задача."
+
+#: views.py:103
+msgid "No setup options available."
+msgstr "Няма опции за настройка."
+
+#: views.py:107
+msgid "Setup items"
+msgstr "Елементи за настройка"
+
+#: views.py:109
+msgid "Here you can configure all aspects of the system."
+msgstr "Тук можете да конфигурирате всички аспекти на системата."
+
+#: views.py:124
+msgid "These modules are used to do system maintenance."
+msgstr "Тези модули се използват за поддръжка на системата."

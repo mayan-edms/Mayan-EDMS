@@ -1,0 +1,47 @@
+<style>
+    <!--
+    Nullify the 5px padding to the right
+    -->
+    .appearance-list-column-sort-icon {
+        margin-right: -5px;
+    }
+
+    <!--
+    Make column text behave the same way as column links.
+    -->
+    .appearance-list-column-label {
+        padding: 0px;
+    }
+
+    .appearance-list-columns-help-text {
+        margin-left: 3px;
+    }
+
+    .fashadow svg {
+        color:rgba(0, 0, 0, 0.3);
+        stroke: rgba(255, 255, 255, 0.3);
+        stroke-width: 20;
+        transform: translate(3px, 5px) !important;
+    }
+
+    <!--
+    Fix dropdowns inside responsive tables. On small viewports, the dropdown
+    menu float is set to none in order to show centered with the dropdown
+    button and the position is set to static to force the table to expand.
+    -->
+    @media (max-width: 767px) {
+        .table-responsive .dropdown-menu {
+            position: static !important;
+            float: none;
+        }
+    }
+    @media (min-width: 768px) {
+        .table-responsive {
+            overflow: inherit;
+        }
+
+        .table-responsive .dropdown-menu {
+            float: left;
+        }
+    }
+</style>

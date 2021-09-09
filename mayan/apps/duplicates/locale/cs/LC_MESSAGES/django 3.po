@@ -1,0 +1,113 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Michal Švábík <snadno@lehce.cz>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-12 03:39+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: apps.py:30 apps.py:56 links.py:14 queues.py:9
+msgid "Duplicates"
+msgstr "Duplikáty"
+
+#: apps.py:62
+msgid "Duplicate backend"
+msgstr ""
+
+#: classes.py:91
+msgid "Null backend"
+msgstr "Null backend"
+
+#: duplicate_backends.py:9
+msgid "Exact document file checksum"
+msgstr ""
+
+#: duplicate_backends.py:32
+msgid "Exact document label"
+msgstr ""
+
+#: links.py:18 models.py:41 views.py:73
+msgid "Duplicated documents"
+msgstr "Duplicitní dokumenty"
+
+#: links.py:24 queues.py:23
+msgid "Duplicated document scan"
+msgstr "Skenování duplicitních dokumentů"
+
+#: models.py:23 models.py:33
+msgid "Stored duplicate backend"
+msgstr ""
+
+#: models.py:24
+msgid "Stored duplicate backends"
+msgstr ""
+
+#: models.py:37
+msgid "Document"
+msgstr "Dokument"
+
+#: models.py:49
+msgid "Duplicated backend entry"
+msgstr ""
+
+#: models.py:50
+msgid "Duplicated backend entries"
+msgstr ""
+
+#: queues.py:14
+msgid "Clean empty duplicate lists"
+msgstr "Vyčistěte prázdné duplicitní seznamy"
+
+#: queues.py:18
+msgid "Scan document duplicates"
+msgstr "Sken dplicitních dokumentů"
+
+#: views.py:32
+msgid "Only exact copies of this document will be shown in the this list."
+msgstr "V tomto seznamu se zobrazí pouze přesné kopie tohoto dokumentu."
+
+#: views.py:36
+msgid "There are no duplicates for this document"
+msgstr "Pro tento dokument nejsou duplikáty"
+
+#: views.py:40
+#, python-format
+msgid "Duplicates for document: %s"
+msgstr "Duplikáty dokumentu: %s"
+
+#: views.py:64
+msgid ""
+"Duplicates are documents that are composed of the exact same file, down to "
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
+msgstr ""
+"Duplikáty jsou dokumenty, které se skládají ze stejného souboru, až po "
+"poslední bajt. Soubory, které mají stejný text nebo OCR, ale nejsou totožné "
+"nebo byly uloženy pomocí jiného formátu souboru, se nebudou zobrazovat jako "
+"duplikáty."
+
+#: views.py:71
+msgid "There are no duplicated documents"
+msgstr "Nejsou žádné duplicitní dokumenty"
+
+#: views.py:81
+msgid "Scan for duplicated documents?"
+msgstr "Hledáte duplicitní dokumenty?"
+
+#: views.py:88
+msgid "Duplicated document scan queued successfully."
+msgstr "Skenování duplicitních dokumentů bylo úspěšně zařazeno do fronty."

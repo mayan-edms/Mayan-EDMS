@@ -1,0 +1,96 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:19 permissions.py:5
+msgid "Templating"
+msgstr "Sistema de plantillas"
+
+#: fields.py:19
+#, python-format
+msgid ""
+"Use Django's default templating language "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" "
+msgstr ""
+"Utilice el lenguaje de plantillas predeterminado de Django "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+
+#: fields.py:38
+#, python-format
+msgid ""
+"Use Django's default templating language "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" The {{ %(variable)s }} variable is available to the template."
+msgstr ""
+"Utilice el lenguaje de plantillas predeterminado de Django "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" La variable {{%(variable)s}} está disponible para la plantilla."
+
+#: forms.py:9
+msgid "Resulting text from the evaluated template."
+msgstr "Texto resultante de la plantilla evaluada."
+
+#: forms.py:10
+msgid "Result"
+msgstr "Resultado"
+
+#: forms.py:20
+msgid "The template string to be evaluated."
+msgstr "El texto de plantilla a evaluar."
+
+#: forms.py:21
+msgid "Template"
+msgstr "Plantilla"
+
+#: links.py:11
+msgid "Sandbox"
+msgstr "Sandbox"
+
+#: permissions.py:8
+msgid "Use the template sandbox"
+msgstr "Usa el sandbox de plantilla"
+
+#: views.py:38
+#, python-format
+msgid "Template sandbox for: %s"
+msgstr "Sandbox de plantillas para: %s"
+
+#: views.py:59
+#, python-format
+msgid "Template error; %(exception)s"
+msgstr "Error de plantilla; %(exception)s"
+
+#: widgets.py:63
+msgid "Filters"
+msgstr "Filtros"
+
+#: widgets.py:70
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: widgets.py:76
+msgid "<Filters and tags>"
+msgstr "<Filters and tags>"
+
+#: widgets.py:114
+msgid "<Model attributes>"
+msgstr "<Model attributes>"

@@ -1,0 +1,140 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Mathias Behrle <mathiasb@m9s.biz>, 2021
+# Berny <berny@bernhard-marx.de>, 2021
+# Jesaja Everling <jeverling@gmail.com>, 2021
+# 847f3f05406324d125c568a4b098bddb, 2021
+# Marvin Haschker <marvin@haschker.me>, 2021
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:19
+msgid "Dynamic search"
+msgstr "Dynamische Suche"
+
+#: classes.py:265
+msgid "No search model matching the query"
+msgstr "Kein passendes Suchmodell zur Abfrage gefunden"
+
+#: forms.py:9
+msgid "Match all"
+msgstr "Alle Felder"
+
+#: forms.py:10
+msgid ""
+"When checked, only results that match all fields will be returned. When "
+"unchecked results that match at least one field will be returned."
+msgstr ""
+"Wenn aktiviert, werden nur Ergebnisse angezeigt bei denen alle Felder "
+"zutreffen. Ohne diese Option werden Ergebnisse mit mindestens einem Feld "
+"angezeigt."
+
+#: forms.py:31 templates/dynamic_search/search_box.html:41
+msgid "Search terms"
+msgstr "Suchbegriffe"
+
+#: links.py:13 permissions.py:5 queues.py:8 settings.py:11
+#: templates/dynamic_search/search_box.html:45 views.py:124 views.py:137
+msgid "Search"
+msgstr "Suche"
+
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:151
+msgid "Advanced search"
+msgstr "Erweiterte Suche"
+
+#: links.py:21
+msgid "Search again"
+msgstr "Suche wiederholen"
+
+#: links.py:25 views.py:97
+msgid "Reindex search backend"
+msgstr ""
+
+#: permissions.py:8
+msgid "Execute search tools"
+msgstr "Suchwerkzeuge ausführen"
+
+#: queues.py:13
+msgid "Remove a model instance from the search engine."
+msgstr ""
+
+#: queues.py:18
+msgid "Index a model instance to the search engine."
+msgstr ""
+
+#: queues.py:24
+msgid "Index all instances of a search model to the search engine."
+msgstr ""
+
+#: settings.py:16
+msgid "Full path to the backend to be used to handle the search."
+msgstr "Vollständiger Pfad zum Backend, der für die Suche verantwortlich ist."
+
+#: settings.py:26
+msgid ""
+"Disables the single term bar search leaving only the advanced search button."
+msgstr ""
+"Deaktiviert die Suche in der Einzelbegriffsleiste, nur die Schaltfläche für "
+"die erweiterte Suche wird angezeigt."
+
+#: settings.py:33
+msgid "Sets the default state of the \"Match all\" checkbox."
+msgstr ""
+
+#: settings.py:37
+msgid "Maximum number search results to fetch and display."
+msgstr ""
+
+#: templates/dynamic_search/search_box.html:47
+msgid "Advanced"
+msgstr "Erweitert"
+
+#: views.py:40
+msgid "Try again using different terms. "
+msgstr "Bitte erneut mit anderen Suchbegriffen versuchen."
+
+#: views.py:42
+msgid "No search results"
+msgstr "Keine Suchergebnisse"
+
+#: views.py:44
+#, python-format
+msgid "Search results for: %s"
+msgstr "Suchergebnisse für: %s"
+
+#: views.py:93
+msgid ""
+"This tool is required only for some search backends. Search results will be "
+"affected while the backend is being reindexed."
+msgstr ""
+
+#: views.py:99
+msgid "This tool erases and populates the search backend's internal index."
+msgstr ""
+
+#: views.py:117
+msgid "Search backend reindexing queued."
+msgstr ""
+
+#: views.py:139
+#, python-format
+msgid "Search for: %s"
+msgstr "Suche nach: %s"

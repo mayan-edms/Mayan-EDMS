@@ -1,0 +1,344 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Caner Başaran <basaran.caner@gmail.com>, 2021
+# emreunal <bywant@gmail.com>, 2021
+# Nurgül Özkan <nurgulozkan@hotmail.com>, 2021
+# serhatcan77 <serhat_can@yahoo.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2021\n"
+"Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:74 events.py:6 permissions.py:6
+msgid "User management"
+msgstr "Kullanıcı yönetimi"
+
+#: apps.py:92 search.py:10
+msgid "Group"
+msgstr "Grup"
+
+#: apps.py:93 apps.py:103 links.py:46 links.py:59 links.py:78 search.py:34
+#: views.py:120
+msgid "Groups"
+msgstr "Gruplar"
+
+#: apps.py:94 search.py:16
+msgid "Name"
+msgstr "İsim"
+
+#: apps.py:97 models.py:16 search.py:22
+msgid "User"
+msgstr "Kullanıcı"
+
+#: apps.py:98 apps.py:187 links.py:51 links.py:86 links.py:104 views.py:306
+msgid "Users"
+msgstr "Kullanıcılar"
+
+#: apps.py:101 search.py:31
+msgid "Email"
+msgstr "E-posta"
+
+#: apps.py:102 search.py:28
+msgid "First name"
+msgstr "Ad"
+
+#: apps.py:104
+msgid "Is active?"
+msgstr "Aktif mi?"
+
+#: apps.py:105 search.py:37
+msgid "Last name"
+msgstr "Soyad"
+
+#: apps.py:106
+msgid "Password"
+msgstr "Parola"
+
+#: apps.py:107
+msgid "Username"
+msgstr "Kullanıcı adı"
+
+#: apps.py:108
+msgid "Last login"
+msgstr ""
+
+#: apps.py:111
+msgid "Has usable password?"
+msgstr "Kullanılabilir şifre var mı?"
+
+#: apps.py:129
+msgid "All the groups."
+msgstr ""
+
+#: apps.py:133
+msgid "All the users."
+msgstr ""
+
+#: dashboard_widgets.py:14
+msgid "Total users"
+msgstr "Toplam kullanıcılar"
+
+#: dashboard_widgets.py:30
+msgid "Total groups"
+msgstr "Toplam gruplar"
+
+#: events.py:10
+msgid "Group created"
+msgstr "Grup oluşturuldu"
+
+#: events.py:13
+msgid "Group edited"
+msgstr "Grup düzenlendi"
+
+#: events.py:17
+msgid "User created"
+msgstr "Kullanıcı oluşturuldu"
+
+#: events.py:20
+msgid "User edited"
+msgstr "Kullanıcı düzenlendi"
+
+#: events.py:25
+msgid "User logged in"
+msgstr "Giriş yapmış kullanıcı"
+
+#: events.py:28
+msgid "User logged out"
+msgstr "Çıkış yapmış kullanıcı"
+
+#: links.py:21
+msgid "User details"
+msgstr "Kullanıcı detayları"
+
+#: links.py:25
+msgid "Edit user details"
+msgstr ""
+
+#: links.py:30 views.py:54
+msgid "Create new group"
+msgstr "Yeni grup oluştur"
+
+#: links.py:35 links.py:69 links.py:91
+msgid "Delete"
+msgstr "Sil"
+
+#: links.py:39 links.py:73
+msgid "Edit"
+msgstr "Düzenle"
+
+#: links.py:64 views.py:152
+msgid "Create new user"
+msgstr "Yeni kullanıcı oluştur"
+
+#: links.py:96
+msgid "User options"
+msgstr "Kullanıcı özellikleri"
+
+#: models.py:20
+msgid "Forbid this user from changing their password."
+msgstr "Bu kullanıcın şifreyi değiştirmesini yasakla"
+
+#: models.py:26
+msgid "User settings"
+msgstr "Kullanıcı ayarları"
+
+#: models.py:27
+msgid "Users settings"
+msgstr "Kullanıcıların ayarları"
+
+#: permissions.py:10
+msgid "Create new groups"
+msgstr "Yeni gruplar oluştur"
+
+#: permissions.py:13
+msgid "Delete existing groups"
+msgstr "Mevcut grupları sil"
+
+#: permissions.py:16
+msgid "Edit existing groups"
+msgstr "Varolan grupları düzenle"
+
+#: permissions.py:19
+msgid "View existing groups"
+msgstr "Mevcut grupları görüntüle"
+
+#: permissions.py:22
+msgid "Create new users"
+msgstr "Yeni kullanıcılar oluştur"
+
+#: permissions.py:25
+msgid "Delete existing users"
+msgstr "Mevcut kullanıcıları sil"
+
+#: permissions.py:28
+msgid "Edit existing users"
+msgstr "Var olan kullanıcıları düzenle"
+
+#: permissions.py:31
+msgid "View existing users"
+msgstr "Mevcut kullanıcıları görüntüle"
+
+#: search.py:40
+msgid "username"
+msgstr ""
+
+#: serializers.py:17
+msgid "URL of the API endpoint showing the list users of this group."
+msgstr ""
+
+#: serializers.py:48
+msgid "Primary key of the user to add to the group."
+msgstr ""
+
+#: serializers.py:57
+msgid "Primary key of the user to remove from the group."
+msgstr ""
+
+#: serializers.py:66
+msgid "URL of the API endpoint showing the list groups this user belongs to."
+msgstr ""
+
+#: utils.py:6
+msgid "Anonymous"
+msgstr "Anonim"
+
+#: views.py:35
+msgid "Current user details"
+msgstr "Geçerli kullanıcı ayrıntıları"
+
+#: views.py:43
+msgid "Edit current user details"
+msgstr "Geçerli kullanıcı ayrıntılarını düzenle"
+
+#: views.py:77
+#, python-format
+msgid "Delete the group: %s?"
+msgstr ""
+
+#: views.py:93
+#, python-format
+msgid "Edit group: %s"
+msgstr "Grubu düzenle: %s"
+
+#: views.py:113
+msgid ""
+"User groups are organizational units. They should mirror the organizational "
+"units of your organization. Groups can't be used for access control. Use "
+"roles for permissions and access control, add groups to them."
+msgstr ""
+"Kullanıcı grupları organizasyonel birimlerdir ve organizasyonunuzun "
+"birimlerini yansıtmalıdır. Gruplar erişim kontrolü için kullanılamazlar. "
+"Erişim kontrolü ve izin yönetimi için Rolleri kullanarak grupları bu rollere"
+" ekleyiniz."
+
+#: views.py:119
+msgid "There are no user groups"
+msgstr "Herhangi bir kullanıcı grubu bulunmamaktadır"
+
+#: views.py:132
+msgid "Available users"
+msgstr ""
+
+#: views.py:133
+msgid "Group users"
+msgstr "Grup kullanıcıları"
+
+#: views.py:141
+#, python-format
+msgid "Users of group: %s"
+msgstr "Grupun kullanıcıları: %s"
+
+#: views.py:175
+#, python-format
+msgid "User delete request performed on %(count)d user"
+msgstr ""
+
+#: views.py:177
+#, python-format
+msgid "User delete request performed on %(count)d users"
+msgstr "%(count)d adet kullanıcıda gerçekleştirilen kullanıcı silme isteği"
+
+#: views.py:185
+msgid "Delete user"
+msgid_plural "Delete users"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:195
+#, python-format
+msgid "Delete user: %s"
+msgstr ""
+
+#: views.py:206
+msgid ""
+"Super user and staff user deleting is not allowed, use the admin interface "
+"for these cases."
+msgstr ""
+"Süper kullanıcı ve çalışanların silinmesine izin verilmiyor, bu durumlarda "
+"admin arayüzünü kullanın."
+
+#: views.py:214
+#, python-format
+msgid "User \"%s\" deleted successfully."
+msgstr "\"%s\" kullanıcısı başarıyla silindi."
+
+#: views.py:220
+#, python-format
+msgid "Error deleting user \"%(user)s\": %(error)s"
+msgstr "\"%(user)s\" kullanıcısı silinirken hata oluştu: %(error)s"
+
+#: views.py:238
+#, python-format
+msgid "Details of user: %s"
+msgstr "Kullanıcı ayrıntıları: %s"
+
+#: views.py:254
+#, python-format
+msgid "Edit user: %s"
+msgstr "Kullanıcıyı düzenle: %s"
+
+#: views.py:269
+msgid "Available groups"
+msgstr "Kullanılabilir gruplar"
+
+#. Translators: "User groups" here refer to the group list of a specific
+#. user.
+#: views.py:272
+msgid "User groups"
+msgstr "Kullanıcı grupları"
+
+#: views.py:280
+#, python-format
+msgid "Groups of user: %s"
+msgstr "Kullanıcının grupları: %s"
+
+#: views.py:302
+msgid ""
+"User accounts can be create from this view. After creating a user account "
+"you will prompted to set a password for it. "
+msgstr ""
+"Buradan kullanıcı hesapları oluşturabilirsiniz. Bir kullanıcı hesabı "
+"oluşturduktan sonra bu kullanıcı için bir şifre oluşturmanız istenecektir."
+
+#: views.py:305
+msgid "There are no user accounts"
+msgstr "Herhangi bir kullanıcı hesabı bulunmamaktadır"
+
+#: views.py:319
+#, python-format
+msgid "Edit options for user: %s"
+msgstr "%s kullanıcısı için düzenleme seçenekleri"

@@ -1,0 +1,42 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-05-18 10:02+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:14 settings.py:10
+msgid "Organizations"
+msgstr "Organizaciones"
+
+#: settings.py:16
+msgid ""
+"Fully qualified URL including scheme and port number if using a custom one. "
+"Example: https://www.example.com:8080"
+msgstr ""
+"URL totalmente calificada que incluye el esquema y el número de puerto si "
+"usa uno personalizado. Ejemplo: https://www.example.com:8080"
+
+#: settings.py:24
+msgid ""
+"Base URL path to use for all views. Used when hosting using a path that is "
+"not the root path of the web server."
+msgstr ""
+"Ruta base de URL que se utilizará para todas las vistas. Se utiliza cuando "
+"se aloja el programa utilizando una ruta que no es la ruta raíz del servidor"
+" web."

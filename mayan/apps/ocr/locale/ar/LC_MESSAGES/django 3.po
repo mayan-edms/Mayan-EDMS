@@ -1,0 +1,267 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Mohammed ALDOUB <voulnet@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:28+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: apps.py:52 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
+#: search.py:17 settings.py:11
+msgid "OCR"
+msgstr "نص الوثيقة"
+
+#: apps.py:103
+msgid "The OCR content."
+msgstr "محتوى التعرف الضوئي على الحروف."
+
+#: apps.py:108
+msgid "A generator returning the document's pages OCR content."
+msgstr "منشئ يعيد محتوى صفحات نص الوثيقة"
+
+#: apps.py:109
+msgid "OCR content"
+msgstr "محتوى التعرف الضوئي على الحروف"
+
+#: apps.py:133
+msgid "Date and time"
+msgstr "الوقت والتاريخ"
+
+#: apps.py:136 models.py:50
+msgid "Result"
+msgstr "النتيجة"
+
+#: backends/tesseract.py:89
+msgid "Tesseract OCR not found."
+msgstr "لم يتم العثور على المطلوب"
+
+#: dependencies.py:23
+msgid "Free Open Source OCR Engine"
+msgstr "النص التلقائي "
+
+#: events.py:8
+msgid "Document OCR content deleted"
+msgstr "حذف محتوى نص الوثيقة"
+
+#: events.py:12
+msgid "Document file submitted for OCR"
+msgstr ""
+
+#: events.py:16
+msgid "Document file OCR finished"
+msgstr ""
+
+#: forms.py:14 forms.py:47
+msgid "Contents"
+msgstr "المحتويات"
+
+#: forms.py:78
+#, python-format
+msgid "Page %(page_number)d"
+msgstr "الصفحة %(page_number)d"
+
+#: links.py:24
+msgid "Setup OCR"
+msgstr "إعدادات نص الوثيقة"
+
+#: links.py:30
+msgid "OCR documents per type"
+msgstr "نص الوثيقة لكل نوع "
+
+#: links.py:45 links.py:50
+msgid "Delete OCR content"
+msgstr "حذف محتوى النص"
+
+#: links.py:56 links.py:61
+msgid "Submit for OCR"
+msgstr "اعتماد نص الوثيقة"
+
+#: links.py:67 links.py:88 views.py:221
+msgid "OCR errors"
+msgstr "أخطاء نص الوثيقة"
+
+#: links.py:72
+msgid "Download OCR text"
+msgstr "تحميل النص"
+
+#: models.py:20
+msgid "Document type"
+msgstr "نوع الوثيقة"
+
+#: models.py:24
+msgid "Automatically queue newly created documents for OCR."
+msgstr "التحويل التلقائي للوثيقة الى نص "
+
+#: models.py:30
+msgid "Document type settings"
+msgstr "اعدادات نوع الوثيقة"
+
+#: models.py:31
+msgid "Document types settings"
+msgstr "اعدادات انواع الوثائق"
+
+#: models.py:45
+msgid "Document version"
+msgstr "نسخة الوثيقة"
+
+#: models.py:48
+msgid "Date time submitted"
+msgstr "تاريخ و وقت الإرسال"
+
+#: models.py:54
+msgid "Document version OCR error"
+msgstr "خطأ إصدار نص الوثيقة"
+
+#: models.py:55
+msgid "Document version OCR errors"
+msgstr "أخطاء إصدار نص الوثائق"
+
+#: models.py:67
+msgid "Document version page"
+msgstr ""
+
+#: models.py:71
+msgid "The actual text content extracted by the OCR backend."
+msgstr "محتوى النص الفعلي المستخرج"
+
+#: models.py:72
+msgid "Content"
+msgstr "المحتوى"
+
+#: models.py:78
+msgid "Document version page OCR content"
+msgstr ""
+
+#: models.py:79
+msgid "Document version pages OCR contents"
+msgstr ""
+
+#: permissions.py:8
+msgid "Submit documents for OCR"
+msgstr "ارسال نص الوثيقة"
+
+#: permissions.py:11
+msgid "View the transcribed text from document"
+msgstr "عرض النص المكتوب من المستند"
+
+#: permissions.py:15
+msgid "Change document type OCR settings"
+msgstr "تغيير إعدادات نوع نص الوثيقة"
+
+#: queues.py:10
+msgid "Finish document file OCR"
+msgstr ""
+
+#: queues.py:14
+msgid "Document file page OCR"
+msgstr ""
+
+#: queues.py:18
+msgid "Document file OCR"
+msgstr ""
+
+#: search.py:11 search.py:23
+msgid "Document version OCR"
+msgstr "نسخة نص الوثيقة"
+
+#: settings.py:17
+msgid "Set new document types to perform OCR automatically by default."
+msgstr "التحويل التلقائي الى النص بعد إنشاء وثائق جديدة"
+
+#: settings.py:22
+msgid "Full path to the backend to be used to do OCR."
+msgstr ""
+"المسار الكامل للواجهة الخلفية لاستخدامه للقيام بالتعرف الضوئي على الحروف."
+
+#: views.py:39
+msgid "Delete the OCR content of the selected document version?"
+msgid_plural "Delete the OCR content of the selected document versions?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: views.py:74
+#, python-format
+msgid "OCR result for document: %s"
+msgstr "تحويل الوثيقة الى نص : %s"
+
+#: views.py:99
+#, python-format
+msgid "OCR errors for document: %s"
+msgstr "أخطاء نص الوثيقة: %s"
+
+#: views.py:118
+msgid "Submit the selected document version to the OCR queue?"
+msgid_plural "Submit the selected document versions to the OCR queue?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: views.py:152
+#, python-format
+msgid "OCR result for document version page: %s"
+msgstr ""
+
+#: views.py:158
+msgid "Submit all documents of a type for OCR"
+msgstr "إرسال جميع المستندات من نوع نص"
+
+#: views.py:175
+#, python-format
+msgid "%(count)d documents added to the OCR queue."
+msgstr "تمت إضافة وثائق%(count)d إلى قائمة انتظار التعرف الضوئي على الحروف."
+
+#: views.py:210
+#, python-format
+msgid "Edit OCR settings for document type: %s."
+msgstr "تحرير إعدادات النص لنوع الوثيقة: %s."
+
+#: workflow_actions.py:15
+msgid "Page condition"
+msgstr "حالة الصفحة"
+
+#: workflow_actions.py:19
+msgid ""
+"The condition that will determine if a document page's OCR content will be "
+"modified or not. The condition is evaluated against the iterated document "
+"page. Conditions that do not return any value, that return the Python "
+"logical None, or an empty string ('') are considered to be logical false, "
+"any other value is considered to be the logical true."
+msgstr ""
+"الشرط الذي سيحدد ما إذا كان سيتم تعديل محتوى OCR لصفحة المستند أم لا. يتم "
+"تقييم الشرط مقابل صفحة المستند المتكرر. تعتبر الشروط التي لا تُرجع أي قيمة ،"
+" أو التي تُرجع قيمة Python المنطقية ، أو سلسلة فارغة (&#39;&#39;) خطأ "
+"منطقيًا ، وتعتبر أي قيمة أخرى هي الحقيقة المنطقية."
+
+#: workflow_actions.py:31
+msgid "Page content"
+msgstr "محتوى الصفحة"
+
+#: workflow_actions.py:35
+msgid "A template that will generate the OCR content to be saved."
+msgstr "قالب يقوم بإنشاء محتوى نص ليتم حفظه."
+
+#: workflow_actions.py:43
+msgid "Update document page OCR content"
+msgstr "تحديث محتوى صفحة نص الوثيقة "

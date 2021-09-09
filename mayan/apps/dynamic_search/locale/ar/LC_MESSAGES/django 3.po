@@ -1,0 +1,134 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: apps.py:19
+msgid "Dynamic search"
+msgstr "البحث الديناميكي"
+
+#: classes.py:265
+msgid "No search model matching the query"
+msgstr "لا يوجد نموذج بحث يطابق الاستعلام"
+
+#: forms.py:9
+msgid "Match all"
+msgstr "تطابق الكل"
+
+#: forms.py:10
+msgid ""
+"When checked, only results that match all fields will be returned. When "
+"unchecked results that match at least one field will be returned."
+msgstr ""
+"عند التحديد ، سيتم إرجاع النتائج التي تطابق جميع الحقول فقط. عندما يتم إرجاع"
+" النتائج غير المحددة التي تتطابق مع حقل واحد على الأقل."
+
+#: forms.py:31 templates/dynamic_search/search_box.html:41
+msgid "Search terms"
+msgstr "مصطلحات البحث"
+
+#: links.py:13 permissions.py:5 queues.py:8 settings.py:11
+#: templates/dynamic_search/search_box.html:45 views.py:124 views.py:137
+msgid "Search"
+msgstr "البحث"
+
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:151
+msgid "Advanced search"
+msgstr "البحث المتقدم"
+
+#: links.py:21
+msgid "Search again"
+msgstr "ابحث ثانيا"
+
+#: links.py:25 views.py:97
+msgid "Reindex search backend"
+msgstr "طريقة بحث"
+
+#: permissions.py:8
+msgid "Execute search tools"
+msgstr "تفعيل أدوات البحث"
+
+#: queues.py:13
+msgid "Remove a model instance from the search engine."
+msgstr "الغاء فهرس طريقة البحث"
+
+#: queues.py:18
+msgid "Index a model instance to the search engine."
+msgstr "فهرسة لطرق البحث"
+
+#: queues.py:24
+msgid "Index all instances of a search model to the search engine."
+msgstr ""
+
+#: settings.py:16
+msgid "Full path to the backend to be used to handle the search."
+msgstr "المسار الكامل للواجهة الخفية لاستخدامه في معالجة البحث."
+
+#: settings.py:26
+msgid ""
+"Disables the single term bar search leaving only the advanced search button."
+msgstr "لتعطيل بحث شريط المصطلح الفردي مع ترك زر البحث المتقدم فقط."
+
+#: settings.py:33
+msgid "Sets the default state of the \"Match all\" checkbox."
+msgstr ""
+
+#: settings.py:37
+msgid "Maximum number search results to fetch and display."
+msgstr "عرض أقصى عدد من نتائج البحث "
+
+#: templates/dynamic_search/search_box.html:47
+msgid "Advanced"
+msgstr "المتقدمة"
+
+#: views.py:40
+msgid "Try again using different terms. "
+msgstr "حاول مرة أخرى باستخدام مصطلحات مختلفة."
+
+#: views.py:42
+msgid "No search results"
+msgstr "لا نتائج للبحث"
+
+#: views.py:44
+#, python-format
+msgid "Search results for: %s"
+msgstr "نتائج البحث عن: %s"
+
+#: views.py:93
+msgid ""
+"This tool is required only for some search backends. Search results will be "
+"affected while the backend is being reindexed."
+msgstr ""
+"هذه الأداة مطلوبة فقط لبعض الخلفيات الخلفية للبحث. ستتأثر نتائج البحث أثناء "
+"إعادة فهرسة الواجهة الخلفية."
+
+#: views.py:99
+msgid "This tool erases and populates the search backend's internal index."
+msgstr "حذف الفهرس الداخلي لطريقة البحث"
+
+#: views.py:117
+msgid "Search backend reindexing queued."
+msgstr "قائمة انتظار إعادة فهرسة طريقةالبحث"
+
+#: views.py:139
+#, python-format
+msgid "Search for: %s"
+msgstr "ابحث عن: %s"

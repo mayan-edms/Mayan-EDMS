@@ -1,0 +1,258 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# Badea Gabriel <gcbadea@gmail.com>, 2021
+# Harald Ersch, 2021
+# Stefaniu Criste <gupi@hangar.ro>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
+"Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+
+#: apps.py:36 events.py:6 links.py:34 models.py:36 permissions.py:5
+#: views.py:136
+msgid "Quotas"
+msgstr "Cote"
+
+#: classes.py:65
+msgid "none"
+msgstr "nici unul"
+
+#: classes.py:157
+msgid "Does not apply"
+msgstr "Nu se aplică"
+
+#: classes.py:161 classes.py:165
+msgid "Null backend"
+msgstr "Backend vid"
+
+#: events.py:10
+msgid "Quota created"
+msgstr "Cotă creată"
+
+#: events.py:13
+msgid "Quota edited"
+msgstr "Cotă editată"
+
+#: forms.py:15 models.py:58
+msgid "Backend"
+msgstr "Backend"
+
+#: forms.py:16
+msgid "The quota driver for this entry."
+msgstr "Pilotul cotelor pentru această intrare."
+
+#: links.py:16
+msgid "Create quota"
+msgstr "Creați cota"
+
+#: links.py:21
+msgid "Delete"
+msgstr "Șterge"
+
+#: links.py:25
+msgid "Edit"
+msgstr "Editați"
+
+#: links.py:30
+msgid "Quotas list"
+msgstr "Lista cotelor"
+
+#: mixins.py:17
+msgid "All document types"
+msgstr "Toate tipurile de documente"
+
+#: mixins.py:20
+msgid ""
+"Apply to all document types. Enabling this, the quota will ignore the "
+"indiviual document type selection."
+msgstr ""
+"Aplicați la toate tipurile de documente. Activând acest lucru, cota va "
+"ignora selectarea tipului de document individual."
+
+#: mixins.py:26
+msgid "Document types"
+msgstr "Tipuri de documente"
+
+#: mixins.py:33
+msgid "Document types to which the quota will be applied."
+msgstr "Tipuri de documente cărora li se va aplica cota."
+
+#: mixins.py:67
+msgid "all document types"
+msgstr "toate tipurile de documente"
+
+#: mixins.py:70
+#, python-format
+msgid "document types: %(document_types)s"
+msgstr "tipuri de documente: %(document_types)s"
+
+#: mixins.py:94
+msgid "Groups"
+msgstr "Grupuri"
+
+#: mixins.py:101
+msgid "Groups to which the quota will be applied."
+msgstr "Grupuri cărora li se va aplica cota."
+
+#: mixins.py:105
+msgid "All users"
+msgstr "Toți utilizatorii"
+
+#: mixins.py:108
+msgid ""
+"Apply the quota to all users in the system, excluding admins and staff. "
+"Enabling this option, the quota will ignore the indiviual user and group "
+"selection."
+msgstr ""
+"Aplicați cota tuturor utilizatorilor din sistem, exclusiv administratorii și"
+" personalul. Activând această opțiune, cota va ignora selectarea "
+"utilizatorului și a grupului."
+
+#: mixins.py:115
+msgid "Users"
+msgstr "Utilizatorii"
+
+#: mixins.py:122
+msgid "Users to which the quota will be applied."
+msgstr "Utilizatori cărora li se va aplica cota."
+
+#: mixins.py:160
+msgid "all users"
+msgstr "toți utilizatorii"
+
+#: mixins.py:162
+#, python-format
+msgid "groups: %(groups)s, users: %(users)s"
+msgstr "grupuri: %(groups)s, utilizatori: %(users)s"
+
+#: models.py:22
+msgid "The dotted Python path to the backend class."
+msgstr "Calea Python punctată la clasa backend."
+
+#: models.py:23
+msgid "Backend path"
+msgstr "Calea de backend"
+
+#: models.py:26
+msgid "Backend data"
+msgstr "Date backend"
+
+#: models.py:30
+msgid "Allow quick disable or enable of the quota."
+msgstr "Permite dezactivarea rapidă sau activarea cotei."
+
+#: models.py:31
+msgid "Enabled"
+msgstr "Activat"
+
+#: models.py:35
+msgid "Quota"
+msgstr "Cotă"
+
+#: models.py:57
+msgid "Driver used for this quota entry."
+msgstr "Pilotul utilizat pentru această intrare de cotă."
+
+#: models.py:62
+msgid "Arguments"
+msgstr "Argumente"
+
+#: models.py:66
+msgid "Usage"
+msgstr "utilizare"
+
+#: permissions.py:8
+msgid "Create a quota"
+msgstr "Creați o cotă"
+
+#: permissions.py:11
+msgid "Delete a quota"
+msgstr "Ștergeți o cotă"
+
+#: permissions.py:14
+msgid "Edit a quota"
+msgstr "Editați o cotă"
+
+#: permissions.py:17
+msgid "View a quota"
+msgstr "Vizualizați o cotă"
+
+#: quota_backends.py:70 quota_backends.py:170
+msgid "Document count quota exceeded."
+msgstr "Cota numărului de documente a fost depășită."
+
+#: quota_backends.py:74
+msgid "Documents limit"
+msgstr "Limita documentelor"
+
+#: quota_backends.py:77
+msgid "Maximum number of documents."
+msgstr "Numărul maxim de documente."
+
+#: quota_backends.py:81
+msgid "Document count limit"
+msgstr "Limita numărului de documente"
+
+#: quota_backends.py:106
+#, python-format
+msgid "document count: %(document_count)s"
+msgstr "număr de documente: %(document_count)s"
+
+#: quota_backends.py:180 quota_backends.py:185
+msgid "Document size limit"
+msgstr "Dimensiunea documentului limită"
+
+#: quota_backends.py:182
+msgid "Maximum document size in megabytes (MB)."
+msgstr "Dimensiunea maximă a documentului în megabyte (MB)."
+
+#: quota_backends.py:210
+#, python-format
+msgid "document size: %(formatted_file_size)s"
+msgstr "dimensiunea documentului: %(formatted_file_size)s"
+
+#: quota_backends.py:230
+msgid "Document size quota exceeded."
+msgstr "Cota dimensiunii documentului a fost depășită."
+
+#: views.py:24
+msgid "New quota backend selection"
+msgstr "Noua selecție de backend de cote"
+
+#: views.py:54
+#, python-format
+msgid "Create a \"%s\" quota"
+msgstr "Creați o cotă \"%s\""
+
+#: views.py:86
+#, python-format
+msgid "Delete quota: %s"
+msgstr "Ștergeți cota: %s"
+
+#: views.py:101
+#, python-format
+msgid "Edit quota: %s"
+msgstr "Modifica cota: %s"
+
+#: views.py:133
+msgid "Quotas restrict usage of system resources. "
+msgstr "Cotele restricționează utilizarea resurselor de sistem."
+
+#: views.py:135
+msgid "No quotas available"
+msgstr "Nu există cote disponibile"

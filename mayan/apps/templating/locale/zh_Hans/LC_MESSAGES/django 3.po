@@ -1,0 +1,96 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# xisafe <root@xisafe.com>, 2021
+# bo feng <87289884@qq.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: bo feng <87289884@qq.com>, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:19 permissions.py:5
+msgid "Templating"
+msgstr "模板化"
+
+#: fields.py:19
+#, python-format
+msgid ""
+"Use Django's default templating language "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" "
+msgstr ""
+"使用Django的默认模板语言（https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/）。"
+
+#: fields.py:38
+#, python-format
+msgid ""
+"Use Django's default templating language "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" The {{ %(variable)s }} variable is available to the template."
+msgstr ""
+"使用Django的默认模板语言（https://docs.djangoproject.com/en/1%(django_version)s/ref/templates/builtins/）。{{%(variable)s"
+" }}这个变量可用于模板。"
+
+#: forms.py:9
+msgid "Resulting text from the evaluated template."
+msgstr "来自评估模板的结果文本。"
+
+#: forms.py:10
+msgid "Result"
+msgstr "结果"
+
+#: forms.py:20
+msgid "The template string to be evaluated."
+msgstr "要评估的模板字符串。"
+
+#: forms.py:21
+msgid "Template"
+msgstr "模板"
+
+#: links.py:11
+msgid "Sandbox"
+msgstr "沙箱"
+
+#: permissions.py:8
+msgid "Use the template sandbox"
+msgstr "使用沙箱模板"
+
+#: views.py:38
+#, python-format
+msgid "Template sandbox for: %s"
+msgstr "沙箱模板%s"
+
+#: views.py:59
+#, python-format
+msgid "Template error; %(exception)s"
+msgstr "模板错误%(exception)s"
+
+#: widgets.py:63
+msgid "Filters"
+msgstr "过滤器"
+
+#: widgets.py:70
+msgid "Tags"
+msgstr "标签"
+
+#: widgets.py:76
+msgid "<Filters and tags>"
+msgstr ""
+
+#: widgets.py:114
+msgid "<Model attributes>"
+msgstr ""

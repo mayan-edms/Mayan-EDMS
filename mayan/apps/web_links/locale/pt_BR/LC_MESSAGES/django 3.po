@@ -1,0 +1,175 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
+# Aline Freitas <aline@alinefreitas.com.br>, 2021
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
+# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:39
+msgid "Links"
+msgstr "Links"
+
+#: events.py:6 links.py:19 links.py:24 links.py:54 links.py:59 models.py:42
+#: permissions.py:5 views.py:182
+msgid "Web links"
+msgstr "Web links"
+
+#: events.py:10
+msgid "Web link created"
+msgstr "Web link criado"
+
+#: events.py:13
+msgid "Web link edited"
+msgstr "Web link editado"
+
+#: events.py:16
+msgid "Web link navigated"
+msgstr "Web link navegado"
+
+#: links.py:29 views.py:94
+msgid "Create new web link"
+msgstr "Criar novo web link"
+
+#: links.py:35
+msgid "Delete"
+msgstr "Excluir"
+
+#: links.py:39 models.py:36
+msgid "Document types"
+msgstr "Tipos de documentos"
+
+#: links.py:44
+msgid "Edit"
+msgstr "Editar"
+
+#: links.py:51
+msgid "Navigate"
+msgstr "Navegar"
+
+#: models.py:24
+msgid "A short text describing the web link."
+msgstr "Um texto curto descrevendo o web link."
+
+#: models.py:25
+msgid "Label"
+msgstr "Rótulo"
+
+#: models.py:29
+msgid "Template that will be used to craft the final URL of the web link."
+msgstr "Template que será usado para criar a URL final do web link."
+
+#: models.py:31
+msgid "Template"
+msgstr "Template"
+
+#: models.py:33
+msgid "Enabled"
+msgstr "Habilitado"
+
+#: models.py:41
+msgid "Web link"
+msgstr "Web link"
+
+#: permissions.py:8
+msgid "Create new web links"
+msgstr "Criar novos web links"
+
+#: permissions.py:11
+msgid "Delete web links"
+msgstr "Excluir web links"
+
+#: permissions.py:14
+msgid "Edit web links"
+msgstr "Editar web links"
+
+#: permissions.py:17
+msgid "View existing web links"
+msgstr "Ver web links existentes"
+
+#: permissions.py:20
+msgid "View web link instances"
+msgstr "Ver instâncias de web link"
+
+#: serializers.py:16
+msgid "Primary key of the document type to add to the web link."
+msgstr "Chave primária do tipo de documento a ser adicionado ao link da web."
+
+#: serializers.py:25
+msgid "Primary key of the document type to remove from the web link."
+msgstr "Chave primária do tipo de documento a ser removido do link da web."
+
+#: views.py:38
+msgid "Available web links"
+msgstr "Web links disponíveis"
+
+#: views.py:39
+msgid "Web links enabled"
+msgstr "Web links habilitados"
+
+#: views.py:63
+#, python-format
+msgid "Web links to enable for document type: %s"
+msgstr "Web links a habilitar para o tipo de documento: %s"
+
+#: views.py:116
+#, python-format
+msgid "Delete web link: %s"
+msgstr "Excluir web link: %s"
+
+#: views.py:128
+msgid "Available document types"
+msgstr "Tipos de documentos disponíveis"
+
+#: views.py:129
+msgid "Document types enabled"
+msgstr "Tipos de documentos habilitados"
+
+#: views.py:139
+#, python-format
+msgid "Document type for which to enable web link: %s"
+msgstr "Tipo de documento para o qual habilitar o link web: %s"
+
+#: views.py:156
+#, python-format
+msgid "Edit web link: %s"
+msgstr "Editar web link: %s"
+
+#: views.py:175 views.py:205
+msgid ""
+"Web links allow generating HTTP links from documents to external resources. "
+"The link URL's can contain document properties values."
+msgstr ""
+"Web links permitem a geração de links HTTP de documentos para fontes "
+"externas. A URL do link pode conter propriedades dos documentos."
+
+#: views.py:180
+msgid "There are no web links"
+msgstr "Não há web links"
+
+#: views.py:210
+msgid "There are no web links for this document"
+msgstr "Não há web links para este documento"
+
+#: views.py:213
+#, python-format
+msgid "Web links for document: %s"
+msgstr "Web links para o documento: %s"

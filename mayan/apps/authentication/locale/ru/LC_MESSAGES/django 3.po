@@ -1,0 +1,230 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Sergey Glita <gsv70@mail.ru>, 2021
+# lilo.panic, 2021
+# mizhgan <i@mizhgan.ru>, 2021
+# Alex Chigrin <chalex84@mail.ru>, 2021
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: apps.py:35 events.py:6 permissions.py:6 settings.py:10
+msgid "Authentication"
+msgstr "Аутентификация"
+
+#: events.py:10
+msgid "User impersonation ended"
+msgstr "Имперсонация пользователя завершена"
+
+#: events.py:13
+msgid "User impersonation started"
+msgstr "Имперсонация пользователя начата"
+
+#: events.py:16
+msgid "User logged in"
+msgstr "Пользователь вошел в систему"
+
+#: events.py:19
+msgid "User logged out"
+msgstr "Пользователь вышел из системы"
+
+#: forms.py:20
+msgid "Email"
+msgstr "Электронная почта"
+
+#: forms.py:23
+msgid "Password"
+msgstr "Пароль"
+
+#: forms.py:25 forms.py:105
+msgid "Remember me"
+msgstr "Запомнить меня"
+
+#: forms.py:28
+msgid ""
+"Please enter a correct email and password. Note that the password field is "
+"case-sensitive."
+msgstr ""
+"Пожалуйста, введите правильный адрес электронной почты и пароль с учетом "
+"регистра."
+
+#: forms.py:30
+msgid "This account is inactive."
+msgstr "Эта учетная запись неактивна."
+
+#: forms.py:79
+msgid "Permanent"
+msgstr "Постоянный"
+
+#: forms.py:80
+msgid "If selected, disables ending impersonation."
+msgstr "Если отмечено, возможность завершить имперсонацию будет отключена."
+
+#: forms.py:91
+msgid "User"
+msgstr "Пользователь"
+
+#: links.py:24
+msgid "Logout"
+msgstr "Выход"
+
+#: links.py:29
+msgid "Change password"
+msgstr "Изменить пароль"
+
+#: links.py:34 views.py:250
+msgid "Impersonate user"
+msgstr "Имперсонировать пользователя"
+
+#: links.py:39
+msgid "Impersonate"
+msgstr "Имперсонировать"
+
+#: links.py:44 links.py:48
+msgid "Set password"
+msgstr "Установка пароля"
+
+#: permissions.py:10
+msgid "Impersonate users"
+msgstr "Имперсонировать пользователей"
+
+#: settings.py:15
+msgid ""
+"Controls the mechanism used to authenticated user. Options are: username, "
+"email"
+msgstr ""
+"Управление механизмом, используемым для аутентификации пользователя. "
+"Возможные варианты: username, email"
+
+#: settings.py:22
+msgid ""
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
+msgstr ""
+"Максимальное время в секундах, в течение которого пользователь, установивший"
+" флажок \"Запомнить меня\", будет оставаться в системе."
+
+#: settings.py:29
+msgid ""
+"Remove the \"Forgot your password?\" link on the login form used to trigger "
+"the password reset."
+msgstr "Удалить ссылку \"Забыли пароль?\" из формы входа"
+
+#: templates/authentication/app/viewport.html:11
+#, python-format
+msgid ""
+"\n"
+"                Impersonating user \"%(user)s\".\n"
+"            "
+msgstr ""
+"\n"
+"Имперсонируется пользователь \"%(user)s\""
+
+#: templates/authentication/app/viewport.html:14
+msgid "Click here when finished"
+msgstr "Нажмите здесь, когда закончите"
+
+#: templates/authentication/login.html:10
+msgid "Login"
+msgstr "Вход"
+
+#: templates/authentication/login.html:21
+#: templates/authentication/login.html:30
+msgid "Sign in"
+msgstr "Вход"
+
+#: templates/authentication/login.html:37
+msgid "Forgot your password?"
+msgstr "Забыли пароль?"
+
+#: templates/authentication/password_reset_complete.html:8
+#: templates/authentication/password_reset_confirm.html:8
+#: templates/authentication/password_reset_confirm.html:20
+#: templates/authentication/password_reset_done.html:8
+#: templates/authentication/password_reset_form.html:8
+#: templates/authentication/password_reset_form.html:20
+msgid "Password reset"
+msgstr "Сброс пароля"
+
+#: templates/authentication/password_reset_complete.html:15
+msgid "Password reset complete! Click the link below to login."
+msgstr "Пароль сброшен! Нажмите на ссылку, чтобы войти."
+
+#: templates/authentication/password_reset_complete.html:17
+msgid "Login page"
+msgstr "Вход"
+
+#: templates/authentication/password_reset_confirm.html:29
+#: templates/authentication/password_reset_form.html:29 views.py:177
+msgid "Submit"
+msgstr "Отправить"
+
+#: templates/authentication/password_reset_done.html:15
+msgid "Password reset email sent!"
+msgstr "Письмо для сброса пароля отправлено!"
+
+#: views.py:86
+msgid "Your password has been successfully changed."
+msgstr "Ваш пароль был изменен."
+
+#: views.py:93
+msgid "Current user password change"
+msgstr "Изменить пароль пользователя"
+
+#: views.py:101
+msgid "Changing the password is not allowed for this account."
+msgstr "Изменение пароля этой учетной записи запрещено."
+
+#: views.py:168
+#, python-format
+msgid "Password change request performed on %(count)d user"
+msgstr "Запрос на изменение пароля выполнен для %(count)d пользователя"
+
+#: views.py:170
+#, python-format
+msgid "Password change request performed on %(count)d users"
+msgstr "Запрос на изменение пароля выполнен для %(count)d пользователей"
+
+#: views.py:179
+msgid "Change user password"
+msgid_plural "Change users passwords"
+msgstr[0] "Изменить пароль пользователя"
+msgstr[1] "Изменить пароли пользователей"
+msgstr[2] "Изменить пароли пользователей"
+msgstr[3] "Изменить пароли пользователей"
+
+#: views.py:189
+#, python-format
+msgid "Change password for user: %s"
+msgstr "Изменить пароль пользователя: %s"
+
+#: views.py:210
+#, python-format
+msgid "Successful password reset for user: %s."
+msgstr "Успешный сброс пароля пользователя: %s."
+
+#: views.py:216
+#, python-format
+msgid "Error reseting password for user \"%(user)s\": %(error)s"
+msgstr "Ошибка сброса пароля пользователя \"%(user)s\": %(error)s"
+
+#: views.py:278
+#, python-format
+msgid "Impersonate user: %s"
+msgstr "Имперсонировать пользователя: %s"

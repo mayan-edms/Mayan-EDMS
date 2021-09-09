@@ -1,0 +1,1345 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2021
+# pyrotech <anastasios@tutamail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:72 events.py:6 forms.py:42 links.py:46 links.py:87 links.py:240
+#: links.py:264 models/workflow_models.py:65 settings.py:14
+#: views/workflow_proxy_views.py:64 views/workflow_template_views.py:261
+#: workflow_actions.py:74
+msgid "Workflows"
+msgstr "Ροές εργασίας"
+
+#: apps.py:171 apps.py:178
+msgid "Current state of a workflow"
+msgstr "Τρέχουσα κατάσταση μιας ροής εργασίας"
+
+#: apps.py:172
+msgid "Return the current state of the selected workflow."
+msgstr "Επιστροφή τρέχουσας κατάστασης της επιλεγμένης ροής εργασίας."
+
+#: apps.py:179
+msgid ""
+"Return the completion value of the current state of the selected workflow."
+msgstr ""
+"Επιστροφή της τιμής ολοκλήρωσης της τρέχουσας κατάστασης της επιλεγμένης "
+"ροής εργασίας."
+
+#: apps.py:234
+msgid ""
+"Return the last workflow instance log entry. The log entry itself has the "
+"following fields: datetime, transition, user, and comment."
+msgstr ""
+"Επιστροφή της τελευταίας καταχώρησης καταγραφής συμβάντων ροής εργασιας. Η "
+"καταχώρηση της καταγραφής συμβάντων έχει τα ακόλουθα πεδία: ώρα, μετάβαση, "
+"χρήστης και σχόλιο."
+
+#: apps.py:237
+msgid "Get last log entry"
+msgstr "Λήψη τελευταίας καταχώρησης καταγραφής συμβάντων"
+
+#: apps.py:243
+msgid ""
+"Return the current context dictionary which includes runtime data from the "
+"workflow transition fields."
+msgstr ""
+"Επιστροφή  λεξικού του τρέχοντος περιβάλλοντος που περιλαμβάνει δεδομένα "
+"χρόνου εκτέλεσης από τα πεδία μετάβασης ροής εργασίας."
+
+#: apps.py:245
+msgid "Get the context"
+msgstr "Λήψη περιβάλλοντος"
+
+#: apps.py:251
+msgid "Return the transition of the workflow instance."
+msgstr "Επιστροφή της μετάβασης του στιγμιοτύπου ροής εργασίας."
+
+#: apps.py:252
+msgid "Get last transition"
+msgstr "Λήψη τελευταίας μετάβασης"
+
+#: apps.py:266 apps.py:278 apps.py:287 apps.py:293
+msgid "None"
+msgstr "Κανένα"
+
+#: apps.py:274
+msgid "Current state"
+msgstr "Τρέχουσα κατσταση"
+
+#: apps.py:279 apps.py:303 models/workflow_instance_models.py:186
+msgid "User"
+msgstr "Χρήστης"
+
+#: apps.py:283
+msgid "Last transition"
+msgstr "Τελευταία μετάβαση"
+
+#: apps.py:288 apps.py:299
+msgid "Date and time"
+msgstr "Ημερομηνία και ώρα"
+
+#: apps.py:294 models/workflow_state_models.py:68
+msgid "Completion"
+msgstr "Ολοκλήρωση"
+
+#: apps.py:324
+msgid "Additional details"
+msgstr "Επιπλέον λεπτομέρειες"
+
+#: apps.py:351
+msgid "When?"
+msgstr "Πότε;"
+
+#: apps.py:355
+msgid "Action type"
+msgstr "Τύπος ενέργειας"
+
+#: apps.py:386
+msgid ""
+"Triggers are system events that will cause the transition to be applied."
+msgstr ""
+"Οι εκκινητές είναι συμβάντα συστήματος που προκαλούν την εφαρμογή της  της "
+"μετάβασης."
+
+#: apps.py:388
+msgid "Triggers"
+msgstr "Εκκινητές"
+
+#: apps.py:402 models/workflow_transition_models.py:139
+msgid "Type"
+msgstr "Τύπος"
+
+#: apps.py:410
+msgid "Widget"
+msgstr "Γραφικό στοιχείο"
+
+#: apps.py:421 apps.py:427
+msgid "Documents"
+msgstr "Έγγραφα"
+
+#: classes.py:141
+#, python-format
+msgid "%(field_name)s template error: %(exception)s"
+msgstr "%(field_name)s σφάλμα προτύπου: %(exception)s"
+
+#: events.py:10
+msgid "Workflow created"
+msgstr "Ροή εργασίας δημιουργήθηκε"
+
+#: events.py:13
+msgid "Workflow edited"
+msgstr "Ροή εργασίας τροποποιήθηκε"
+
+#: forms.py:23
+msgid "The action type for this action entry."
+msgstr "Ο τύπος ενέργειας για αυτήν την καταχώριση ενέργειας."
+
+#: forms.py:24
+msgid "Action"
+msgstr "Ενέργεια"
+
+#: forms.py:131
+msgid "Namespace"
+msgstr "Χώρος ονομάτων"
+
+#: forms.py:135 models/workflow_models.py:52
+#: models/workflow_state_models.py:55 models/workflow_state_models.py:172
+#: models/workflow_transition_models.py:40
+#: models/workflow_transition_models.py:150
+msgid "Label"
+msgstr "Ετικέτα"
+
+#: forms.py:139 models/workflow_state_models.py:174
+msgid "Enabled"
+msgstr "Ενεργοποιημένο"
+
+#: forms.py:141
+msgid "No"
+msgstr "Όχι"
+
+#: forms.py:142
+msgid "Yes"
+msgstr "Ναι"
+
+#: forms.py:190
+msgid "Select a transition to execute in the next step."
+msgstr "Επιλέξτε μία μετάβαση προς εκτέλεση στο επόμενο βήμα."
+
+#: forms.py:191 links.py:246 models/workflow_instance_models.py:182
+#: models/workflow_transition_models.py:136
+#: models/workflow_transition_models.py:220
+msgid "Transition"
+msgstr "Μετάβαση"
+
+#: handlers.py:71
+#, python-format
+msgid "Event trigger: %s"
+msgstr "Εκκίνηση συμβάντος: %s"
+
+#: links.py:52 views/workflow_template_views.py:127
+msgid "Create workflow"
+msgstr "Δημιουργία ροής εργασίας"
+
+#: links.py:56 links.py:63 links.py:103 links.py:138 links.py:166 links.py:212
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: links.py:69 models/workflow_models.py:56
+msgid "Document types"
+msgstr "Τύποι εγγράφων"
+
+#: links.py:76 links.py:110 links.py:145 links.py:173 links.py:219
+msgid "Edit"
+msgstr "Τροποποίηση"
+
+#: links.py:82
+msgid "Launch workflow"
+msgstr "Εκκίνησης ροής εργασίας"
+
+#: links.py:94
+msgid "Preview"
+msgstr "Προεπισκόπηση"
+
+#: links.py:116
+msgid "Actions"
+msgstr "Ενέργειες"
+
+#: links.py:122
+msgid "Create action"
+msgstr "Δημιουργία ενέργειας"
+
+#: links.py:131
+msgid "Create state"
+msgstr "Δημιουργία κατάστασης"
+
+#: links.py:150 links.py:277
+msgid "States"
+msgstr "Καταστάσεις"
+
+#: links.py:159
+msgid "Create transition"
+msgstr "Δημιουργία μετάβασης"
+
+#: links.py:179
+msgid "Transition triggers"
+msgstr "Εκκινητές μεταβάσης"
+
+#: links.py:185
+msgid "Transitions"
+msgstr "Μεταβάσεις"
+
+#: links.py:193 links.py:199 workflow_actions.py:83
+msgid "Launch workflows"
+msgstr "Εκκίνηση ροών εργασίας"
+
+#: links.py:205
+msgid "Create field"
+msgstr "Δημιουργία πεδίου"
+
+#: links.py:225 models/workflow_transition_models.py:94
+msgid "Fields"
+msgstr "Πεδία"
+
+#: links.py:235
+msgid "Detail"
+msgstr "Λεπτομέρεια"
+
+#: links.py:256
+msgid "Workflow documents"
+msgstr "Έγγραφα ροής εργασίας"
+
+#: links.py:270
+msgid "State documents"
+msgstr "Έγγραφα κατάστασης"
+
+#: links.py:285
+msgid "Launch all workflows"
+msgstr "Εκκίνηση όλων των ροών εργασίας"
+
+#: literals.py:18
+msgid "Character"
+msgstr "Χαρακτήρας"
+
+#: literals.py:19
+msgid "Number (Integer)"
+msgstr "Αριθμός (Ακέραιος)"
+
+#: literals.py:34
+msgid "Text area"
+msgstr "Πεδίο κειμένου"
+
+#: literals.py:43
+msgid "On entry"
+msgstr "Κατά την είσοδο "
+
+#: literals.py:44
+msgid "On exit"
+msgstr "Κατά την έξοδο"
+
+#: models/workflow_instance_models.py:29 models/workflow_models.py:64
+#: models/workflow_state_models.py:51 models/workflow_transition_models.py:36
+msgid "Workflow"
+msgstr "Ροή εργασίας"
+
+#: models/workflow_instance_models.py:33
+msgid "Document"
+msgstr "Έγγραφο"
+
+#: models/workflow_instance_models.py:36
+msgid "Context"
+msgstr "Πλαίσιο"
+
+#: models/workflow_instance_models.py:45
+#: models/workflow_instance_models.py:175
+msgid "Workflow instance"
+msgstr "Περιστατικό ροής εργασίας"
+
+#: models/workflow_instance_models.py:46
+msgid "Workflow instances"
+msgstr "Περιστατικά ροής εργασίας"
+
+#: models/workflow_instance_models.py:178
+msgid "Datetime"
+msgstr "Ημερομηνία και ώρα"
+
+#: models/workflow_instance_models.py:188 views/workflow_instance_views.py:136
+msgid "Comment"
+msgstr "Σχόλιο"
+
+#: models/workflow_instance_models.py:189
+msgid "Extra data"
+msgstr "Επιπλέον δεδομένα"
+
+#: models/workflow_instance_models.py:193
+msgid "Workflow instance log entry"
+msgstr "Καταχώριση  καταγραφής  συμβάντων στιγμιοτύπου ροής εργασίας"
+
+#: models/workflow_instance_models.py:194
+msgid "Workflow instance log entries"
+msgstr "Καταχώριση καταγραφών συμβάντων ροής εργασίας"
+
+#: models/workflow_instance_models.py:201
+msgid "Not a valid transition choice."
+msgstr "Άκυρη επιλογή μετάβασης."
+
+#: models/workflow_models.py:40
+msgid "Launch workflow when document is created."
+msgstr "Εκκίνηση ροής εργασίας με την δημιουργία του εγγράφου"
+
+#: models/workflow_models.py:41
+msgid "Auto launch"
+msgstr "Αυτόματη εκκίνηση"
+
+#: models/workflow_models.py:45
+msgid ""
+"This value will be used by other apps to reference this workflow. Can only "
+"contain letters, numbers, and underscores."
+msgstr ""
+"Αυτή η τιμή θα χρησιμοποιείτε από τις άλλες εφαρμογές για αναφορά σε αυτή "
+"την ροή εργασίας. Χρησιμοποιήστε μόνο γράμματα, αριθμούς και την κάτω παύλα."
+
+#: models/workflow_models.py:48 models/workflow_transition_models.py:145
+msgid "Internal name"
+msgstr "Όνομα εσωτερικής αναφοράς"
+
+#: models/workflow_models.py:51
+msgid "A short text to describe the workflow."
+msgstr "Σύντομο κείμενο για την περιγραφή της ροής εργασίας."
+
+#: models/workflow_models.py:160
+msgid "Initial state"
+msgstr "Αρχική κατάσταση"
+
+#: models/workflow_models.py:301
+msgid "Workflow runtime proxy"
+msgstr "Διακομιστής μεσολάβησης ροής εργασίας."
+
+#: models/workflow_models.py:302
+msgid "Workflow runtime proxies"
+msgstr "Διακομιστές μεσολάβησης ροής εργασίας"
+
+#: models/workflow_state_models.py:54
+msgid "A short text to describe the workflow state."
+msgstr "Σύντομο κείμενο για την περιγραφή της κατάστασης ροής εργασίας."
+
+#: models/workflow_state_models.py:60
+msgid ""
+"The state at which the workflow will start in. Only one state can be the "
+"initial state."
+msgstr ""
+"Η κατάσταση στην οποία η ροή εργασίας θα εκκινήσει. Μόνο μία κατάσταση "
+"μπορεί να είναι η αρχική."
+
+#: models/workflow_state_models.py:62
+msgid "Initial"
+msgstr "Αρχική"
+
+#: models/workflow_state_models.py:66
+msgid ""
+"The percent of completion that this state represents in relation to the "
+"workflow. Use numbers without the percent sign."
+msgstr ""
+"Το ποσοστό ολοκλήρωσης που αντιπροσωπεύει αυτή η κατάσταση σε σχέση με τη "
+"ροή εργασίας. Χρησιμοποιήστε αριθμούς χωρίς το σύμβολο ποσοστού."
+
+#: models/workflow_state_models.py:74 models/workflow_state_models.py:168
+msgid "Workflow state"
+msgstr "Κατάσταση ροής εργασίας"
+
+#: models/workflow_state_models.py:75
+msgid "Workflow states"
+msgstr "Καταστάσεις ροής εργασίας"
+
+#: models/workflow_state_models.py:171
+msgid "A short text describing the action."
+msgstr "Ένα σύντομο κείμενο που περιγράφει την ενέργεια."
+
+#: models/workflow_state_models.py:178
+msgid "At which moment of the state this action will execute."
+msgstr "Η στιγμή της κατάστασης κατά την οποία η ενέργεια θα εκτελεστεί."
+
+#: models/workflow_state_models.py:179
+msgid "When"
+msgstr "Πότε"
+
+#: models/workflow_state_models.py:183
+msgid "The dotted Python path to the workflow action class to execute."
+msgstr ""
+"Η διάστικτη διαδρομή Python προς την κλάση της ενέργειας της ροής εργασίας "
+"για εκτέλεση."
+
+#: models/workflow_state_models.py:184
+msgid "Entry action path"
+msgstr "Διαδρομή ενέργειας εισόδου"
+
+#: models/workflow_state_models.py:187
+msgid "Entry action data"
+msgstr "Δεδομένα ενέργειας εισόδου"
+
+#: models/workflow_state_models.py:191
+msgid ""
+"The condition that will determine if this state action is executed or not. "
+"The condition is evaluated against the workflow instance. Conditions that do"
+" not return any value, that return the Python logical None, or an empty "
+"string ('') are considered to be logical false, any other value is "
+"considered to be the logical true."
+msgstr ""
+"Η συνθήκη που θα καθορίσει εάν θα εκτελεστεί η ενέργεια κατάστασης ή όχι. Η "
+"συνθήκη αξιολογείται έναντι του στιγμιοτύπου ροής εργασίας. Συνθήκες που δεν"
+" επιστρέφουν καμία τιμή, που επιστρέφουν τη λογική τιμή None της Python ή "
+"μια κενή συμβολοσειρά (\"\") θεωρούνται λογικώς ψευδείς, οποιαδήποτε άλλη "
+"τιμή θεωρείται λογικώς αληθής."
+
+#: models/workflow_state_models.py:197 models/workflow_transition_models.py:58
+msgid "Condition"
+msgstr "Συνθήκη"
+
+#: models/workflow_state_models.py:203
+msgid "Workflow state action"
+msgstr "Ενέργεια κατάστασης ροής εργασίας"
+
+#: models/workflow_state_models.py:204
+msgid "Workflow state actions"
+msgstr "Ενέργειες κατάστασης ροής εργασίας"
+
+#: models/workflow_state_models.py:261
+msgid "Unknown action type"
+msgstr "Άγνωστος τύπος ενέργειας"
+
+#: models/workflow_state_models.py:266
+msgid ""
+"The state action will be executed, depending on the condition return value."
+msgstr ""
+"Η ενέργεια κατάστασης θα εκτελεστεί, ανάλογα με την τιμή επιστροφής "
+"συνθήκης."
+
+#: models/workflow_state_models.py:269
+#: models/workflow_transition_models.py:114
+msgid "Has a condition?"
+msgstr "Υπάρχει συνθήκη;"
+
+#: models/workflow_state_models.py:294
+msgid "Workflow state runtime proxy"
+msgstr "Διακομισής μεσολάβησης κατάστασης ροής εργασίας."
+
+#: models/workflow_state_models.py:295
+msgid "Workflow state runtime proxies"
+msgstr "Διακομιστές μεσολάβησης κατάστασης ροής εργασίας"
+
+#: models/workflow_transition_models.py:39
+msgid "A short text to describe the transition."
+msgstr "Ένα σύντομο κείμενο για την περιγραφή της μετάβασης."
+
+#: models/workflow_transition_models.py:44
+msgid "Origin state"
+msgstr "Κατάσταση προέλευσης"
+
+#: models/workflow_transition_models.py:48
+msgid "Destination state"
+msgstr "Κατάσταση προορισμού"
+
+#: models/workflow_transition_models.py:52
+msgid ""
+"The condition that will determine if this transition is enabled or not. The "
+"condition is evaluated against the workflow instance. Conditions that do not"
+" return any value, that return the Python logical None, or an empty string "
+"('') are considered to be logical false, any other value is considered to be"
+" the logical true."
+msgstr ""
+"Η συνθήκη που θα καθορίσει εάν αυτή η μετάβαση είναι ενεργοποιημένη ή όχι. Η"
+" συνθήκη αξιολογείται έναντι του στιγμιοτύπου ροής εργασίας. Συνθήκες που "
+"δεν επιστρέφουν καμία τιμή, που επιστρέφουν τη λογική τιμή None της Python ή"
+" μια κενή συμβολοσειρά (\"\") θεωρούνται λογικώς ψευδείς, οποιαδήποτε άλλη "
+"τιμή θεωρείται λογικώς αληθής."
+
+#: models/workflow_transition_models.py:66
+msgid "Workflow transition"
+msgstr "Μετάβαση ροής εργασίας"
+
+#: models/workflow_transition_models.py:67
+msgid "Workflow transitions"
+msgstr "Μεταβάσεις ροής εργασίας"
+
+#: models/workflow_transition_models.py:111
+msgid ""
+"The transition will be available, depending on the condition return value."
+msgstr ""
+"Η μετάβαση θα είναι διαθέσιμη, ανάλογα με την τιμή επιστροφής συνθήκης."
+
+#: models/workflow_transition_models.py:143
+msgid ""
+"The name that will be used to identify this field in other parts of the "
+"workflow system."
+msgstr ""
+"Το όνομα που θα χρησιμοποιηθεί για την αναγνώριση αυτού του πεδίου σε άλλα "
+"μέρη του συστήματος ροής εργασίας."
+
+#: models/workflow_transition_models.py:149
+msgid "The field name that will be shown on the user interface."
+msgstr "Το όνομα πεδίου που θα εμφανίζεται στη διεπαφή χρήστη."
+
+#: models/workflow_transition_models.py:153
+msgid ""
+"An optional message that will help users better understand the purpose of "
+"the field and data to provide."
+msgstr ""
+"Προαιρετικό μήνυμα που θα βοηθήσει τους χρήστες να κατανοήσουν καλύτερα τον "
+"σκοπό του πεδίου και τί δεδομένα να παρέχουν."
+
+#: models/workflow_transition_models.py:155
+msgid "Help text"
+msgstr "Κείμενο βοήθειας"
+
+#: models/workflow_transition_models.py:159
+msgid "Whether this fields needs to be filled out or not to proceed."
+msgstr "Εάν απαιτείται η συμπλήρωση αυτών των πεδίων για συνέχεια ή όχι. "
+
+#: models/workflow_transition_models.py:160
+msgid "Required"
+msgstr "Απαιτείται"
+
+#: models/workflow_transition_models.py:164
+msgid "An optional class to change the default presentation of the field."
+msgstr ""
+"Μια προαιρετική κλάση για την αλλαγή της προεπιλεγμένης παρουσίασης του "
+"πεδίου."
+
+#: models/workflow_transition_models.py:165
+msgid "Widget class"
+msgstr "Γραφικό στοιχείο κλάσης"
+
+#: models/workflow_transition_models.py:169
+msgid "A group of keyword arguments to customize the widget. Use YAML format."
+msgstr ""
+"Μια ομάδα ορισμάτων λέξεων-κλειδιών για την παραμετροποίηση του του γραφικού"
+" στοιχείου. Χρησιμοποιήστε τη μορφή YAML."
+
+#: models/workflow_transition_models.py:172
+msgid "Widget keyword arguments"
+msgstr "Ορίσματα λέξεων-κλειδιών γραφικού στοιχείου"
+
+#: models/workflow_transition_models.py:177
+msgid "Workflow transition field"
+msgstr "Πεδίο μετάβασης ροής εργασίας"
+
+#: models/workflow_transition_models.py:178
+msgid "Workflow transition fields"
+msgstr "Πεδία μετάβασης ροής εργασίας"
+
+#: models/workflow_transition_models.py:224
+msgid "Event type"
+msgstr "Τύπος συμβάντος"
+
+#: models/workflow_transition_models.py:228
+msgid "Workflow transition trigger event"
+msgstr "Εκκινητής συμβάντος ροής εργασίας"
+
+#: models/workflow_transition_models.py:229
+msgid "Workflow transitions trigger events"
+msgstr "Οι μεταβάσεις ροών εργασίας εκκινούν συμβάντα"
+
+#: permissions.py:6
+msgid "Document workflows"
+msgstr "Ροές εργασίας εγγράφου"
+
+#: permissions.py:10
+msgid "Create workflow templates"
+msgstr ""
+
+#: permissions.py:13
+msgid "Delete workflow templates"
+msgstr ""
+
+#: permissions.py:16
+msgid "Edit workflow templates"
+msgstr ""
+
+#: permissions.py:19
+msgid "View workflow templates"
+msgstr ""
+
+#: permissions.py:25
+msgid "Transition workflow instances"
+msgstr ""
+
+#: permissions.py:28
+msgid "Execute workflow tools"
+msgstr "Εργαλεία εκτέλεσης ροών εργασίας"
+
+#: queues.py:8
+msgid "Document states fast"
+msgstr "Καταστάσεις εγγράφων ταχέως"
+
+#: queues.py:12
+msgid "Document states medium"
+msgstr ""
+
+#: queues.py:17
+msgid "Generate workflow previews"
+msgstr "Δημιουργία προεπισκόπησης ροών εργασίας"
+
+#: queues.py:22
+msgid "Launch a workflow for a document"
+msgstr "Εκκίνηση ροής εργασίας για έγγραφο"
+
+#: queues.py:26
+msgid "Launch all workflows for a document"
+msgstr "Εκκίνηση όλων των ροών εργασίας για έγγραφο"
+
+#: queues.py:31
+msgid "Launch all workflows for all documents"
+msgstr "Εκκίνηση όλων των ροών εργασίας για όλα τα έγγραφα"
+
+#: queues.py:35
+msgid "Launch a workflow"
+msgstr "Εκκίνηση ροής εργασίας"
+
+#: search.py:12 search.py:19 search.py:26 search.py:33 search.py:40
+msgid "Document workflow transition comment"
+msgstr ""
+
+#: serializers.py:65
+msgid "Primary key of the document type to add to the workflow."
+msgstr ""
+
+#: serializers.py:74
+msgid "Primary key of the document type to remove from the workflow."
+msgstr ""
+
+#: serializers.py:160
+msgid "Primary key of the destination state to be added."
+msgstr "Πρωτεύον κλειδί της κατάστασης προορισμού προς προσθήκη."
+
+#: serializers.py:167
+msgid "Primary key of the origin state to be added."
+msgstr "Πρωτεύον κλειδί της κατάστασης προέλευσης προς προσθήκη."
+
+#: serializers.py:251
+msgid "Primary key of the transition to be added."
+msgstr "Πρωτεύον κλειδί της μετάβασης που θα  προστεθεί."
+
+#: serializers.py:327
+msgid "A link to the entire history of this workflow."
+msgstr "Σύνδεσμος στο πλήρες ιστορικό αυτής της ροής εργασίας."
+
+#: serializers.py:332
+msgid ""
+"API URL pointing to a workflow in relation to the document to which it is "
+"attached. This URL is different than the canonical workflow URL."
+msgstr ""
+"URL API που δείχνει μια ροή εργασίας σε σχέση με το έγγραφο στο οποίο "
+"επισυνάπτεται. Αυτό το URL είναι διαφορετικό από το κανονικό URL ροής "
+"εργασίας."
+
+#: settings.py:19
+msgid ""
+"File path to the graphviz dot program used to generate workflow previews."
+msgstr ""
+"Διαδρομή αρχείου στο πρόγραμμα σημείων graphviz που χρησιμοποιείται για τη "
+"δημιουργία προεπισκοπήσεων ροής εργασίας."
+
+#: settings.py:27
+msgid ""
+"The threshold at which the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND will start "
+"deleting the oldest workflow image cache files. Specify the size in bytes."
+msgstr ""
+"Το όριο στο οποίο το WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND θα αρχίσει να "
+"διαγράφει τα παλαιότερα προσωρινώς αποθηκευμένα αρχεία εικόνων ροής "
+"εργασίας. Καθορίστε το μέγεθος σε byte."
+
+#: settings.py:36
+msgid ""
+"Time in seconds that the browser should cache the supplied workflow images. "
+"The default of 31559626 seconds correspond to 1 year."
+msgstr ""
+
+#: settings.py:43
+msgid ""
+"Path to the Storage subclass to use when storing the cached workflow image "
+"files."
+msgstr ""
+"Διαδρομή προς την υποκατηγορία Storage για χρήση κατά την αποθήκευση των "
+"αρχείων εικόνων της προσωρινής αποθήκευσης της ροής εργασίας."
+
+#: settings.py:51
+msgid "Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
+msgstr "Ορίσματα για διαβίβαση στο WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
+
+#: storages.py:14
+msgid ""
+"Unable to initialize the workflow preview storage. Check the settings {} and"
+" {} for formatting errors."
+msgstr ""
+"Δεν είναι δυνατή η προετοιμασία του χώρου αποθήκευσης προεπισκόπησης της "
+"ροής εργασίας. Ελέγξτε τις ρυθμίσεις {} και {} για σφάλματα μορφοποίησης."
+
+#: storages.py:21
+msgid "Workflow preview images"
+msgstr "Εικόνες προεπισκόπησης ροής εργασίας"
+
+#: templates/document_states/forms/widgets/workflow_image.html:2
+msgid "Workflow preview"
+msgstr "Προεπισκόπηση ροής εργασίας"
+
+#: views/workflow_instance_views.py:35
+msgid ""
+"Assign workflows to the document type of this document to have this document"
+" execute those workflows. "
+msgstr ""
+"Αντιστοιχίστε ροές εργασίας στον τύπο εγγράφου αυτού του εγγράφου, ώστε να "
+"εκτελεστούν σε αυτό οι συγκεκριμένες ροές εργασίας."
+
+#: views/workflow_instance_views.py:39
+msgid "There are no workflows for this document"
+msgstr "Δεν υπάρχουν ροές εργασίας για αυτό το έγγραφο"
+
+#: views/workflow_instance_views.py:43
+#, python-format
+msgid "Workflows for document: %s"
+msgstr "Ροές εργασίας για έγγραφο: %s"
+
+#: views/workflow_instance_views.py:68
+msgid ""
+"This view will show the state changes as a workflow instance is "
+"transitioned."
+msgstr ""
+"Σε αυτήν την προβολή θα εμφανιστούν οι αλλαγές κατάστασης καθώς "
+"πραγματοποιείται μία μετάβαση στο στιγμιότυπο ροής εργασίας."
+
+#: views/workflow_instance_views.py:72
+msgid "There are no details for this workflow instance"
+msgstr "Δεν υπάρχουν λεπτομέρειες για αυτό το στιγμιότυπο ροής εργασίας"
+
+#: views/workflow_instance_views.py:75
+#, python-format
+msgid "Detail of workflow: %(workflow)s"
+msgstr "Λεπτομέρεια ροής εργασίας: %(workflow)s"
+
+#: views/workflow_instance_views.py:113
+#, python-format
+msgid "Document \"%s\" transitioned successfully"
+msgstr "Επιτυχής μετάβαση του εγγράφου \"%s\""
+
+#: views/workflow_instance_views.py:122
+msgid "Submit"
+msgstr "Υποβολή"
+
+#: views/workflow_instance_views.py:124
+#, python-format
+msgid "Execute transition \"%(transition)s\" for workflow: %(workflow)s"
+msgstr "Εκτέλεση μετάβασης \"%(transition)s\" για ροή εργασίας: %(workflow)s"
+
+#: views/workflow_instance_views.py:139
+msgid "Optional comment to attach to the transition."
+msgstr "Προαιρετικό σχόλιο για επισύναψη στη μετάβαση."
+
+#: views/workflow_instance_views.py:217
+msgid "Select"
+msgstr "Επιλογή"
+
+#: views/workflow_instance_views.py:219
+#, python-format
+msgid "Select transition for workflow \"%(workflow)s\" of document \"%(document)s\""
+msgstr ""
+
+#: views/workflow_proxy_views.py:32
+msgid ""
+"Associate a workflow with some document types and documents of those types "
+"will be listed in this view."
+msgstr ""
+"Συσχετίστε μια ροή εργασίας με ορισμένους τύπους εγγράφων και έγγραφα αυτών "
+"των τύπων θα εμφανίζονται σε αυτήν την προβολή."
+
+#: views/workflow_proxy_views.py:36
+msgid "There are no documents executing this workflow"
+msgstr "Δεν υπάρχουν έγγραφα που εκτελούν αυτήν τη ροή εργασίας"
+
+#: views/workflow_proxy_views.py:40
+#, python-format
+msgid "Documents with the workflow: %s"
+msgstr "Έγγραφα στην ροή εργασίας: %s"
+
+#: views/workflow_proxy_views.py:59
+msgid ""
+"Create some workflows and associated them with a document type. Active "
+"workflows will be shown here and the documents for which they are executing."
+msgstr ""
+"Δημιουργήστε ροές εργασίας και συσχετίστε τες με έναν τύπο εγγράφου. Ενεργές"
+" ροές εργασίας θα εμφανίζονται εδώ και τα έγγραφα για τα οποία εκτελούνται."
+
+#: views/workflow_proxy_views.py:63
+msgid "There are no workflows"
+msgstr "Δεν υπάρχουν ροές εργασίας"
+
+#: views/workflow_proxy_views.py:85
+msgid "There are no documents in this workflow state"
+msgstr "Δεν υπάρχουν έγγραφα σε αυτήν την κατάσταση ροής εργασίας"
+
+#: views/workflow_proxy_views.py:88
+#, python-format
+msgid "Documents in the workflow \"%s\", state \"%s\""
+msgstr "Έγραφα στην ροή εργασίας \"%s\", κατάσταση \"%s\""
+
+#: views/workflow_proxy_views.py:117
+#: views/workflow_template_state_views.py:330
+msgid "Create states and link them using transitions."
+msgstr "Δημιουργήστε καταστάσεις και συνδέστε τες χρησιμοποιώντας μεταβάσεις."
+
+#: views/workflow_proxy_views.py:120
+msgid "This workflow doesn't have any state"
+msgstr "Αυτή η ροή εργασίας δεν έχει καμία κατάσταση"
+
+#: views/workflow_proxy_views.py:123
+#: views/workflow_template_state_views.py:336
+#, python-format
+msgid "States of workflow: %s"
+msgstr "Κατάστασεις της ροής εργασίας: %s"
+
+#: views/workflow_template_state_views.py:48
+#, python-format
+msgid "Create a \"%s\" workflow action"
+msgstr "Δημιουργία μιας ενέργειας για την ροή εργασίας \"%s\""
+
+#: views/workflow_template_state_views.py:91
+#, python-format
+msgid "Delete workflow state action: %s"
+msgstr "Διαγραφή ενέργειας κατάστασης ροής εργασίας: %s"
+
+#: views/workflow_template_state_views.py:122
+#, python-format
+msgid "Edit workflow state action: %s"
+msgstr "Τροποποίηση ενέργειας κατάστασης ροής εργασίας: %s"
+
+#: views/workflow_template_state_views.py:172
+msgid ""
+"Workflow state actions are macros that get executed when documents enters or"
+" leaves the state in which they reside."
+msgstr ""
+"Οι ενέργειες κατάστασης ροών εργασίας είναι μακροεντολές που εκτελούνται "
+"όταν έγγραφα εισέρχονται στην ή εξέρχονται από την τρέχουσα κατάσταση."
+
+#: views/workflow_template_state_views.py:176
+msgid "There are no actions for this workflow state"
+msgstr "Δεν υπάρχουν ενέργειες για αυτήν την κατάσταση ροής εργασίας"
+
+#: views/workflow_template_state_views.py:180
+#, python-format
+msgid "Actions for workflow state: %s"
+msgstr "Ενέργειες για την κατάσταση ροής εργασίας: %s"
+
+#: views/workflow_template_state_views.py:203
+msgid "New workflow state action selection"
+msgstr "Επιλογή νέας ενέργειας κατάστασης ροής εργασίας"
+
+#: views/workflow_template_state_views.py:232
+#, python-format
+msgid "Create states for workflow: %s"
+msgstr "Δημιουργία καταστάσεων για την ροή εργασίας: %s"
+
+#: views/workflow_template_state_views.py:265
+#, python-format
+msgid "Delete workflow state: %s?"
+msgstr "Διαγραφή κατάστασης ροής εργασίας: %s;"
+
+#: views/workflow_template_state_views.py:295
+#, python-format
+msgid "Edit workflow state: %s"
+msgstr "Επεξεργασία κατάστασης ροής εργασίας: %s"
+
+#: views/workflow_template_state_views.py:333
+msgid "This workflow doesn't have any states"
+msgstr "Αυτή η ροή εργασίας δεν έχει καταστάσεις"
+
+#: views/workflow_template_transition_views.py:38
+#, python-format
+msgid "Create transitions for workflow: %s"
+msgstr "Δημιουργία μεταβάσεων για την ροή εργασίας: %s"
+
+#: views/workflow_template_transition_views.py:78
+#, python-format
+msgid "Delete workflow transition: %s?"
+msgstr "Διαγραφή μετάβασης ροής εργασίας: %s;"
+
+#: views/workflow_template_transition_views.py:106
+#, python-format
+msgid "Edit workflow transition: %s"
+msgstr "Επεξεργασία μετάβασης ροής εργασίας: %s"
+
+#: views/workflow_template_transition_views.py:146
+msgid ""
+"Create a transition and use it to move a workflow from  one state to "
+"another."
+msgstr ""
+"Δημιουργήστε μια μετάβαση και χρησιμοποιήστε την για την μετάβαση μιας ροή "
+"εργασίας από τη μία κατάσταση στην άλλη."
+
+#: views/workflow_template_transition_views.py:150
+msgid "This workflow doesn't have any transitions"
+msgstr "Αυτή η ροή εργασίας δεν έχει καμία μετάβαση"
+
+#: views/workflow_template_transition_views.py:154
+#, python-format
+msgid "Transitions of workflow: %s"
+msgstr "Μεταβάσεις της ροής εργασίας: %s"
+
+#: views/workflow_template_transition_views.py:182
+#, python-format
+msgid "Error updating workflow transition trigger events; %s"
+msgstr "Σφάλμα κατά την ενημέρωση των εκκινητών συμβάντων ροής εργασίας: %s"
+
+#: views/workflow_template_transition_views.py:189
+msgid "Workflow transition trigger events updated successfully"
+msgstr "Επιτυχής ενημέρωση εκκινητών συμβάντων ροής εργασίας."
+
+#: views/workflow_template_transition_views.py:201
+msgid ""
+"Triggers are events that cause this transition to execute automatically."
+msgstr ""
+"Οι εκκινητές είναι συμβάντα που προκαλούν την αυτόματη εκτέλεση αυτής της "
+"μετάβασης."
+
+#: views/workflow_template_transition_views.py:205
+#, python-format
+msgid "Workflow transition trigger events for: %s"
+msgstr "Οι μεταβάσεις ροών εργασίας εκκινούν συμβάντα για: %s"
+
+#: views/workflow_template_transition_views.py:255
+#, python-format
+msgid "Create a field for workflow transition: %s"
+msgstr "Δημιουργήστε ένα πεδίο για την μετάβαση ροής εργασίας: %s"
+
+#: views/workflow_template_transition_views.py:289
+#, python-format
+msgid "Delete workflow transition field: %s"
+msgstr "Διαγραφή πεδίου μετάβασης ροής εργασίας: %s"
+
+#: views/workflow_template_transition_views.py:323
+#, python-format
+msgid "Edit workflow transition field: %s"
+msgstr "Επεξεργασία πεδίου μετάβασης ροής εργασίας: %s"
+
+#: views/workflow_template_transition_views.py:362
+msgid ""
+"Workflow transition fields allow adding data to the workflow's context. This"
+" additional context data can then be used by other elements of the workflow "
+"system like the workflow state actions."
+msgstr ""
+"Τα πεδία μετάβασης της ροής εργασίας επιτρέπουν την προσθήκη δεδομένων στο "
+"περιβάλλον της ροής εργασίας. Αυτά τα πρόσθετα δεδομένα περιβάλλοντος "
+"μπορούν στη συνέχεια να χρησιμοποιηθούν από άλλα στοιχεία του συστήματος "
+"ροής εργασίας, όπως οι ενέργειες κατάστασης ροής εργασίας."
+
+#: views/workflow_template_transition_views.py:368
+msgid "There are no fields for this workflow transition"
+msgstr "Δεν υπάρχουν πεδία για αυτήν τη μετάβαση ροής εργασίας"
+
+#: views/workflow_template_transition_views.py:372
+#, python-format
+msgid "Fields for workflow transition: %s"
+msgstr "Πεδία για την μετάβαση ροής εργασίας: %s"
+
+#: views/workflow_template_views.py:39
+msgid "Available workflows"
+msgstr "Διαθέσιμες ροές εργασίας"
+
+#: views/workflow_template_views.py:40
+msgid "Workflows assigned this document type"
+msgstr "Ροές εργασίας εκχωρημένες σε αυτό τον τύπο αρχείου"
+
+#: views/workflow_template_views.py:64
+msgid ""
+"Removing a workflow from a document type will also remove all running "
+"instances of that workflow."
+msgstr ""
+"Η κατάργηση μιας ροής εργασίας από έναν τύπο εγγράφου θα καταργήσει επίσης "
+"όλα τα τρέχοντα στιγμιότυπα αυτής της ροής εργασίας."
+
+#: views/workflow_template_views.py:68
+#, python-format
+msgid "Workflows assigned the document type: %s"
+msgstr "Ροές εργασίας εκχωρημένες  στον τύπο αρχείου: %s"
+
+#: views/workflow_template_views.py:75
+#, python-format
+msgid "Error launching workflows for document \"%(instance)s\"; %(exception)s"
+msgstr ""
+
+#: views/workflow_template_views.py:81
+#, python-format
+msgid "Workflows launched successfully for document \"%(object)s\"."
+msgstr ""
+
+#: views/workflow_template_views.py:82
+#, python-format
+msgid "Workflows launched successfully for %(count)d document."
+msgstr ""
+
+#: views/workflow_template_views.py:83
+#, python-format
+msgid "Workflows launched successfully for %(count)d documents."
+msgstr ""
+
+#: views/workflow_template_views.py:84
+#, python-format
+msgid "Launch workflow: %(object)s."
+msgstr ""
+
+#: views/workflow_template_views.py:85
+#, python-format
+msgid "Launch workflows for the selected %(count)d document."
+msgstr ""
+
+#: views/workflow_template_views.py:86
+#, python-format
+msgid "Launch workflows for the selected %(count)d documents."
+msgstr ""
+
+#: views/workflow_template_views.py:90
+msgid "Launch"
+msgstr "Εκκίνηση"
+
+#: views/workflow_template_views.py:92
+msgid ""
+"Workflows already launched or workflows not applicable to some documents "
+"when multiple documents are selected, will be silently ignored."
+msgstr ""
+"Θα αγνοούνται σιωπηλά οι ροές εργασίας που έχουν ήδη εκκινήσει ή οι ροές "
+"εργασίας που δεν ισχύουν για ορισμένα έγγραφα όταν έχουν επιλεγεί πολλαπλά "
+"έγγραφα."
+
+#: views/workflow_template_views.py:104
+msgid "Workflows to be launched."
+msgstr "Ροές εργασίας που θα εκκινήσουν."
+
+#: views/workflow_template_views.py:142
+#, python-format
+msgid "Error deleting workflow \"%(instance)s\"; %(exception)s"
+msgstr ""
+
+#: views/workflow_template_views.py:149
+#, python-format
+msgid "Workflow \"%(object)s\" deleted successfully."
+msgstr ""
+
+#: views/workflow_template_views.py:150
+#, python-format
+msgid "%(count)d workflow deleted successfully."
+msgstr ""
+
+#: views/workflow_template_views.py:151
+#, python-format
+msgid "%(count)d workflows deleted successfully."
+msgstr ""
+
+#: views/workflow_template_views.py:152
+#, python-format
+msgid "Delete workflow: %(object)s."
+msgstr ""
+
+#: views/workflow_template_views.py:153
+#, python-format
+msgid "Delete the %(count)d selected workflow."
+msgstr ""
+
+#: views/workflow_template_views.py:154
+#, python-format
+msgid "Delete the %(count)d selected workflows."
+msgstr ""
+
+#: views/workflow_template_views.py:158
+msgid "All workflow instances will also be deleted."
+msgstr "Θα διαγραφούν επίσης και όλα τα στιγμιότυπα ροών εργασίας."
+
+#: views/workflow_template_views.py:177
+#, python-format
+msgid "Edit workflow: %s"
+msgstr "Τροποποίηση ροής εργασίας: %s"
+
+#: views/workflow_template_views.py:195
+msgid "Available document types"
+msgstr "Διαθέσιμοι τύποι εγγράφων"
+
+#: views/workflow_template_views.py:196
+msgid "Document types assigned this workflow"
+msgstr "Τύποι εγγράφων εκχωρημένοι σε αυτή την ροή εργασίας "
+
+#: views/workflow_template_views.py:206
+msgid ""
+"Removing a document type from a workflow will also remove all running "
+"instances of that workflow for documents of the document type just removed."
+msgstr ""
+"Η κατάργηση ενός τύπου εγγράφου από μια ροή εργασίας θα καταργήσει επίσης "
+"όλα τα τρέχοντα στιγμιότυπα αυτής της ροής εργασίας για έγγραφα του τύπου "
+"εγγράφου που μόλις καταργήθηκαν."
+
+#: views/workflow_template_views.py:211
+#, python-format
+msgid "Document types assigned the workflow: %s"
+msgstr "Τύποι εγγράφου εκχωρημένοι στη ροή εργασίας: %s"
+
+#: views/workflow_template_views.py:223
+msgid "Launch workflow?"
+msgstr "Εκκίνηση ροής εργασίας;"
+
+#: views/workflow_template_views.py:225
+msgid ""
+"This will launch the workflow for documents that have already been uploaded."
+msgstr "Αυτό θα εκκινήσει τη ροή εργασίας για έγγραφα που έχουν ήδη φορτωθεί."
+
+#: views/workflow_template_views.py:237 views/workflow_template_views.py:292
+msgid "Workflow launch queued successfully."
+msgstr "Εκκίνηση ροών εργασίας προστέθηκε στην ουρά αναμονής με επιτυχία. "
+
+#: views/workflow_template_views.py:254
+msgid ""
+"Workflows store a series of states and keep track of the current state of a "
+"document. Transitions are used to change the current state to a new one."
+msgstr ""
+"Οι ροές εργασίας αποθηκεύουν μια σειρά καταστάσεων και παρακολουθούν την "
+"τρέχουσα κατάσταση ενός εγγράφου. Οι μεταβάσεις χρησιμοποιούνται για να "
+"αλλάξουν την τρέχουσα κατάσταση σε νέα."
+
+#: views/workflow_template_views.py:259
+msgid "No workflows have been defined"
+msgstr "Δεν έχουν καθοριστεί ροές εργασίας"
+
+#: views/workflow_template_views.py:275
+#, python-format
+msgid "Preview of: %s"
+msgstr "Προεπισκόπηση του: %s"
+
+#: views/workflow_template_views.py:281
+msgid "Launch all workflows?"
+msgstr "Εκκίνηση όλων των ροών εργασίας;"
+
+#: views/workflow_template_views.py:283
+msgid ""
+"This will launch all workflows created after documents have already been "
+"uploaded."
+msgstr ""
+"Αυτό θα εκκινήσει όλες τις ροές εργασίας που έχουν δημιουργηθεί μετά την "
+"φόρτωση εγγράφων."
+
+#: workflow_actions.py:20
+msgid "Document label"
+msgstr "Ετικέτα εγγράφου"
+
+#: workflow_actions.py:23
+msgid ""
+"The new label to be assigned to the document. Can be a string or a template."
+msgstr ""
+"Η νέα ετικέτα που θα εκχωρηθεί στο έγγραφο. Μπορεί να είναι μια συμβολοσειρά"
+" ή ένα πρότυπο."
+
+#: workflow_actions.py:28
+msgid "Document description"
+msgstr "Περιγραφή εγγράφου"
+
+#: workflow_actions.py:31
+msgid ""
+"The new description to be assigned to the document. Can be a string or a "
+"template."
+msgstr ""
+"Η νέα περιγραφή που θα εκχωρηθεί στο έγγραφο. Μπορεί να είναι μια "
+"συμβολοσειρά ή ένα πρότυπο."
+
+#: workflow_actions.py:38
+msgid "Modify document properties"
+msgstr "Τροποποίηση ιδιοτήτων εγγράφου"
+
+#: workflow_actions.py:77
+msgid "Additional workflows to launch for the document."
+msgstr "Πρόσθετες ροές εργασίας για εκκίνηση για το έγγραφο."
+
+#: workflow_actions.py:120
+msgid "URL"
+msgstr "Διεύθυνση URL"
+
+#: workflow_actions.py:123
+msgid ""
+"Can be an IP address, a domain or a template. Templates receive the workflow"
+" log entry instance as part of their context via the variable \"entry_log\"."
+" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
+" \"transition\", \"user\", and \"comment\" attributes."
+msgstr ""
+"Μπορεί να είναι μια διεύθυνση IP, ένας τομέας ή ένα πρότυπο. Τα πρότυπα "
+"λαμβάνουν την καταγραφή συμβάντος του στιγμιοτύπου ροής εργασίας ως μέρος "
+"του περιβάλλοντος τους μέσω της μεταβλητής \"entry_log\". Το \"entry_log\" "
+"με τη σειρά του παρέχει τα γνωρίσματα \"workflow_instance\", \"datetime\", "
+"\"transition\", \"user\" και \"comment\"."
+
+#: workflow_actions.py:133
+msgid "Timeout"
+msgstr "Λήξη χρονικού ορίου"
+
+#: workflow_actions.py:137
+msgid ""
+"Time in seconds to wait for a response. Can be a static value or a template."
+" "
+msgstr ""
+"Χρόνος αναμονής σε δευτερόλεπτα για απόκριση. Μπορεί να είναι μια στατική "
+"τιμή ή ένα πρότυπο."
+
+#: workflow_actions.py:143
+msgid "Payload"
+msgstr "Φορτίο"
+
+#: workflow_actions.py:146
+msgid ""
+"A JSON document to include in the request. Can also be a template that "
+"return a JSON document. Templates receive the workflow log entry instance as"
+" part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
+msgstr ""
+"Ένα έγγραφο JSON για συμπερίληψη στο αίτημα. Μπορεί επίσης να είναι ένα "
+"πρότυπο που επιστρέφει ένα έγγραφο JSON. Τα πρότυπα λαμβάνουν το στιγμιότυπο"
+" καταγραφής ενέργειας ροής εργασίας ως μέρος του περιβάλλοντος τους μέσω της"
+" μεταβλητής \"entry_log\". Το \"entry_log\" με τη σειρά του παρέχει τα "
+"γνωρίσματα \"workflow_instance\", \"datetime\", \"transition\", \"user\" και"
+" \"comment\"."
+
+#: workflow_actions.py:156
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+#: workflow_actions.py:159
+msgid ""
+"Username to use for making the request with HTTP Basic Auth. Can be a static"
+" value or a template. Templates receive the workflow log entry instance as "
+"part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
+msgstr ""
+"Το όνομα χρήστη για την υποβολή του αιτήματος με HTTP Basic Auth. Μπορεί να "
+"είναι μια στατική τιμή ή ένα πρότυπο. Τα πρότυπα λαμβάνουν το στιγμιότυπο "
+"καταγραφής ενέργειας ροής εργασίας ως μέρος του περιβάλλοντός τους μέσω της "
+"μεταβλητής \"entry_log\". Το \"entry_log\" με τη σειρά του παρέχει τα "
+"\"workflow_instance\", \"datetime\", \"transition\", \"user\" και "
+"\"comment\" γνωρίσματα."
+
+#: workflow_actions.py:169
+msgid "Password"
+msgstr "Κωδικός πρόσβασης"
+
+#: workflow_actions.py:172
+msgid ""
+"Password to use for making the request with HTTP Basic Auth. Can be a static"
+" value or a template. Templates receive the workflow log entry instance as "
+"part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
+msgstr ""
+"Ο κωδικός πρόσβασης για την υποβολή του αιτήματος με HTTP Basic Auth. Μπορεί"
+" να είναι μια στατική τιμή ή ένα πρότυπο. Τα πρότυπα λαμβάνουν το "
+"στιγμιότυπο καταγραφής ενέργειας ροής εργασίας ως μέρος του περιβάλλοντός "
+"τους μέσω της μεταβλητής \"entry_log\". Το \"entry_log\" με τη σειρά του "
+"παρέχει τα \"workflow_instance\", \"datetime\", \"transition\", \"user\" και"
+" \"comment\" γνωρίσματα."
+
+#: workflow_actions.py:182
+msgid "Method"
+msgstr "Μέθοδος"
+
+#: workflow_actions.py:185
+msgid ""
+"The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
+"POST, GET, PUT, PATCH, DELETE. Can be a static value or a template that "
+"returns the method text. Templates receive the workflow log entry instance "
+"as part of their context via the variable \"entry_log\". The \"entry_log\" "
+"in turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
+msgstr ""
+"Η μέθοδος HTTP που θα χρησιμοποιηθεί για το αίτημα. Οι τυπικές επιλογές "
+"είναι OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. Μπορεί να είναι μια "
+"στατική τιμή ή ένα πρότυπο που επιστρέφει το κείμενο της μεθόδου. Τα πρότυπα"
+" λαμβάνουν το στιγμιότυπο καταγραφής ενέργειας ροής εργασίας ως μέρος του "
+"περιβάλλοντός τους μέσω της μεταβλητής \"entry_log\". Το \"entry_log\" με τη"
+" σειρά του παρέχει τα \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\" και \"comment\" γνωρίσματα."
+
+#: workflow_actions.py:196
+msgid "Headers"
+msgstr "Κεφαλίδες"
+
+#: workflow_actions.py:199
+msgid ""
+"Headers to send with the HTTP request. Must be in JSON format. Can be a "
+"static value or a template. Templates receive the workflow log entry "
+"instance as part of their context via the variable \"entry_log\". The "
+"\"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
+"\"transition\", \"user\", and \"comment\" attributes."
+msgstr ""
+"Κεφαλίδες για αποστολή με το αίτημα HTTP. Πρέπει να είναι σε μορφή JSON. "
+"Μπορεί να είναι μια στατική τιμή ή ένα πρότυπο. Τα πρότυπα λαμβάνουν το "
+"στιγμιότυπο καταγραφής ενέργειας ροής εργασίας ως μέρος του περιβάλλοντός "
+"τους μέσω της μεταβλητής \"entry_log\". Το \"entry_log\" με τη σειρά του "
+"παρέχει τα \"workflow_instance\", \"datetime\", \"transition\", \"user\" και"
+" \"comment\" γνωρίσματα."
+
+#: workflow_actions.py:213
+msgid "Perform an HTTP request"
+msgstr "Εκτέλεση HTTP αιτήματος"
+
+#: workflow_actions.py:242
+#, python-format
+msgid "%(field_name)s JSON error: %(exception)s"
+msgstr "%(field_name)s Σφάλμα JSON: %(exception)s"

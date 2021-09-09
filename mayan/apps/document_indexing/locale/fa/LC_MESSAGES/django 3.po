@@ -1,0 +1,486 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2021\n"
+"Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: admin.py:22
+msgid "None"
+msgstr "هیچ یک"
+
+#: admin.py:24 links.py:94 models.py:54
+msgid "Document types"
+msgstr "نوع سند"
+
+#: apps.py:51 events.py:6 settings.py:8
+msgid "Document indexing"
+msgstr "نمایه سازی سند"
+
+#: apps.py:147
+msgid "Total levels"
+msgstr "سطوح کل"
+
+#: apps.py:154
+msgid "Total documents"
+msgstr "کل اسناد"
+
+#: apps.py:160 apps.py:174 apps.py:204 apps.py:214
+msgid "Level"
+msgstr "سطح"
+
+#: apps.py:183
+msgid "Levels"
+msgstr "سطوح"
+
+#: apps.py:195 models.py:393
+msgid "Documents"
+msgstr "اسناد"
+
+#: events.py:10
+msgid "Index template created"
+msgstr ""
+
+#: events.py:13
+msgid "Index template edited"
+msgstr ""
+
+#: forms.py:16
+msgid "Index templates to be queued for rebuilding."
+msgstr ""
+
+#: forms.py:17 links.py:35 views/index_template_views.py:96
+msgid "Index templates"
+msgstr ""
+
+#: forms.py:32
+msgid "Template"
+msgstr ""
+
+#: handlers.py:18
+msgid "Creation date"
+msgstr "تاریخ ایجاد"
+
+#: links.py:29 links.py:43 links.py:74 links.py:78 models.py:62
+#: views/index_instance_views.py:43
+msgid "Indexes"
+msgstr "نمایه ها"
+
+#: links.py:48 queues.py:24
+msgid "Rebuild index"
+msgstr "بازسازی نمایه"
+
+#: links.py:55 links.py:64
+msgid "Deletes and creates from scratch all the document indexes."
+msgstr "تمامی نمایه های سند را از ابتدا پاک می کند."
+
+#: links.py:56
+msgid "Rebuild indexes"
+msgstr "بازسازی نمایه ها"
+
+#: links.py:65 views/index_template_views.py:345
+msgid "Reset indexes"
+msgstr ""
+
+#: links.py:84 views/index_template_views.py:101
+msgid "Create index"
+msgstr "ایجاد نمایه"
+
+#: links.py:89 links.py:114
+msgid "Delete"
+msgstr "حذف"
+
+#: links.py:98 links.py:118
+msgid "Edit"
+msgstr "ویرایش"
+
+#: links.py:104
+msgid "Tree template"
+msgstr "الگو درخت"
+
+#: links.py:109
+msgid "New child node"
+msgstr "گره  فرزند جدید"
+
+#: models.py:36
+msgid "Short description of this index."
+msgstr ""
+
+#: models.py:37
+msgid "Label"
+msgstr "برچسب"
+
+#: models.py:41
+msgid "This value will be used by other apps to reference this index."
+msgstr "برای ارزیابی این نمایه، این مقدار توسط سایر برنامه ها استفاده می شود."
+
+#: models.py:42
+msgid "Slug"
+msgstr "لاغر"
+
+#: models.py:47
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr ""
+"این داده ها را وقتی که اطلاعات سند تغییر می کند قابل مشاهده و به روز می کند."
+
+#: models.py:50 models.py:229
+msgid "Enabled"
+msgstr "فعال شده است"
+
+#: models.py:61 models.py:213
+msgid "Index"
+msgstr "فهرست مطالب"
+
+#: models.py:217
+msgid ""
+"Enter a template to render. Use Django's default templating language "
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+msgstr ""
+
+#: models.py:221
+msgid "Indexing expression"
+msgstr "عبارت نمایه سازی"
+
+#: models.py:226
+msgid "Causes this node to be visible and updated when document data changes."
+msgstr ""
+"علت این گره را هنگامی که اطلاعات سند تغییر می کند قابل مشاهده و به روز می "
+"شود."
+
+#: models.py:234
+msgid ""
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr ""
+"این گزینه را بررسی کنید تا این گره به عنوان یک ظرف برای اسناد عمل کند و نه "
+"به عنوان یک پدر برای گره های بیشتر."
+
+#: models.py:237
+msgid "Link documents"
+msgstr "پیوند اسناد"
+
+#: models.py:241
+msgid "Index node template"
+msgstr "گره ی Index"
+
+#: models.py:242
+msgid "Indexes node template"
+msgstr "نمایه گره قالب"
+
+#: models.py:246
+msgid "Root"
+msgstr "ریشه"
+
+#: models.py:304
+#, python-format
+msgid ""
+"Error indexing document: %(document)s; expression: %(expression)s; "
+"%(exception)s"
+msgstr ""
+"خطای نمایه سازی سند: %(document)s؛ عبارت: %(expression)s؛ %(exception)s"
+
+#: models.py:345
+msgid "Index instance"
+msgstr "مثال index"
+
+#: models.py:346
+msgid "Index instances"
+msgstr "نمونه های فهرست"
+
+#: models.py:386
+msgid "Index template node"
+msgstr "نمایه گره فهرست "
+
+#: models.py:389 search.py:26
+msgid "Value"
+msgstr "ارزش"
+
+#: models.py:399 models.py:528
+msgid "Index instance node"
+msgstr ""
+
+#: models.py:400
+msgid "Indexes instances node"
+msgstr ""
+
+#: models.py:465
+msgid "The path to the index including all ancestors."
+msgstr ""
+
+#: models.py:467
+msgid "Full path"
+msgstr ""
+
+#: models.py:521
+msgid "Document index node instance"
+msgstr "مثال گره سند فهرست"
+
+#: models.py:522
+msgid "Document indexes node instances"
+msgstr "مستندات نمونه گره ها را نشان می دهد"
+
+#: models.py:529
+msgid "Index instance nodes"
+msgstr ""
+
+#: permissions.py:5 queues.py:8
+msgid "Indexing"
+msgstr "نمایه سازی"
+
+#: permissions.py:8
+msgid "View index instances"
+msgstr ""
+
+#: permissions.py:11
+msgid "Create new index templates"
+msgstr ""
+
+#: permissions.py:14
+msgid "Edit index templates"
+msgstr ""
+
+#: permissions.py:17
+msgid "Delete index templates"
+msgstr ""
+
+#: permissions.py:20
+msgid "View index templates"
+msgstr ""
+
+#: permissions.py:23 views/index_template_views.py:310
+msgid "Rebuild index templates"
+msgstr ""
+
+#: queues.py:12
+msgid "Delete empty index nodes"
+msgstr "گرههای فهرست خالی را حذف کنید"
+
+#: queues.py:16
+msgid "Remove document"
+msgstr "سند را حذف کنید"
+
+#: queues.py:20
+msgid "Index document"
+msgstr "سند فهرست"
+
+#: search.py:30
+msgid "Document type"
+msgstr "نوع سند"
+
+#: search.py:33
+msgid "Document MIME type"
+msgstr ""
+
+#: search.py:36
+msgid "Document label"
+msgstr ""
+
+#: search.py:39
+msgid "Document description"
+msgstr ""
+
+#: search.py:42
+msgid "Document UUID"
+msgstr ""
+
+#: search.py:46
+msgid "Document checksum"
+msgstr ""
+
+#: serializers.py:197
+msgid "Parent cannot be empty."
+msgstr ""
+
+#: serializers.py:204
+msgid "Parent must be from the same index template."
+msgstr ""
+
+#: serializers.py:215
+msgid ""
+"URL of the API endpoint showing the list document types associated with this"
+" index template."
+msgstr ""
+
+#: serializers.py:222
+msgid "URL of the API endpoint to add document types to this index template."
+msgstr ""
+
+#: serializers.py:229
+msgid ""
+"URL of the API endpoint to remove document types from this index template."
+msgstr ""
+
+#: serializers.py:277
+msgid "Primary key of the document type to add to the index template."
+msgstr ""
+
+#: serializers.py:286
+msgid "Primary key of the document type to remove from the index template."
+msgstr ""
+
+#: settings.py:14
+msgid ""
+"Amount of time in seconds, a failed indexing task will wait before retrying."
+" Lower values will increase the speed at which documents are indexed but "
+"will cause a higher count of failed/retried tasks in the queue."
+msgstr ""
+
+#: views/index_instance_views.py:38
+msgid ""
+"This could mean that no index templates have been created or that there are "
+"index templates but they are no properly defined."
+msgstr ""
+
+#: views/index_instance_views.py:42
+msgid "There are no index instances available."
+msgstr ""
+
+#: views/index_instance_views.py:80
+#, python-format
+msgid "Navigation: %s"
+msgstr "ناوبری: %s"
+
+#: views/index_instance_views.py:86
+#, python-format
+msgid "Contents for index: %s"
+msgstr "فهرست مطالب: %s"
+
+#: views/index_instance_views.py:140
+msgid ""
+"Assign the document type of this document to an index to have it appear in "
+"instances of those indexes organization units. "
+msgstr ""
+
+#: views/index_instance_views.py:145
+msgid "This document is not in any index"
+msgstr ""
+
+#: views/index_instance_views.py:149
+#, python-format
+msgid "Indexes nodes containing document: %s"
+msgstr "گره های نمایه حاوی سند: %s"
+
+#: views/index_template_views.py:45
+msgid "Available indexes"
+msgstr ""
+
+#: views/index_template_views.py:46
+msgid "Indexes linked"
+msgstr ""
+
+#: views/index_template_views.py:70
+msgid ""
+"Documents of this type will appear in the indexes linked when these are "
+"updated. Events of the documents of this type will trigger updates in the "
+"linked indexes."
+msgstr ""
+
+#: views/index_template_views.py:74
+#, python-format
+msgid "Indexes linked to document type: %s"
+msgstr ""
+
+#: views/index_template_views.py:90
+msgid ""
+"Indexes group document automatically into levels. Indexes are defined using "
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
+msgstr ""
+
+#: views/index_template_views.py:95
+msgid "There are no index templates."
+msgstr ""
+
+#: views/index_template_views.py:124
+#, python-format
+msgid "Delete the index: %s?"
+msgstr "حذف نمایه: %s؟"
+
+#: views/index_template_views.py:136
+msgid "Available document types"
+msgstr "نوع سند موجود"
+
+#: views/index_template_views.py:137
+msgid "Document types linked"
+msgstr "انواع اسناد مرتبط"
+
+#: views/index_template_views.py:147
+msgid ""
+"Only the documents of the types selected will be shown in the index when "
+"built. Only the events of the documents of the types select will trigger "
+"updates in the index."
+msgstr ""
+
+#: views/index_template_views.py:151
+#, python-format
+msgid "Document types linked to index: %s"
+msgstr "انواع اسنادی مرتبط با نمایه: %s"
+
+#: views/index_template_views.py:167
+#, python-format
+msgid "Edit index: %s"
+msgstr "ویرایش نمایه: %s"
+
+#: views/index_template_views.py:187
+#, python-format
+msgid "Tree template nodes for index: %s"
+msgstr "گره الگو درخت برای نمایه: %s"
+
+#: views/index_template_views.py:213
+#, python-format
+msgid "Create child node of: %s"
+msgstr "ایجاد گره فرزنداز: %s"
+
+#: views/index_template_views.py:239
+#, python-format
+msgid "Delete the index template node: %s?"
+msgstr "گره index index را حذف کنید: %s؟"
+
+#: views/index_template_views.py:263
+#, python-format
+msgid "Edit the index template node: %s?"
+msgstr "گره index index را ویرایش کنید: %s؟"
+
+#: views/index_template_views.py:283
+#, python-format
+msgid "Rebuild index template: %s"
+msgstr ""
+
+#: views/index_template_views.py:303
+msgid "Index template queued for rebuild."
+msgstr ""
+
+#: views/index_template_views.py:324
+#, python-format
+msgid "%(count)d index template queued for rebuild."
+msgid_plural "%(count)d index templates queued for rebuild."
+msgstr[0] ""
+msgstr[1] ""
+
+#: views/index_template_views.py:357
+#, python-format
+msgid "%(count)d index reset."
+msgid_plural "%(count)d indexes reset."
+msgstr[0] ""
+msgstr[1] ""
+
+#: views/index_template_views.py:370
+msgid "Index templates for which their instances will be deleted."
+msgstr ""

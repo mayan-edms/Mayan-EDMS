@@ -1,0 +1,287 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
+# Giovanni Tricarico <gtricarico92@gmail.com>, 2021
+# Daniele Bortoluzzi <daniele@elkos.it>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>, 2021\n"
+"Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:125 permissions.py:5 settings.py:14
+msgid "Common"
+msgstr "Comune"
+
+#: classes.py:408
+msgid "Model properties"
+msgstr "Proprietà del modello"
+
+#: classes.py:413
+msgid "Model fields"
+msgstr "Campi del modello"
+
+#: classes.py:456
+msgid "Model related fields"
+msgstr "Campi relativi al modello"
+
+#: classes.py:461
+msgid "Model reverse fields"
+msgstr "Modello campi inversi"
+
+#: dependencies.py:168
+msgid "Used to allow offline translation of the code text strings."
+msgstr ""
+"Usato per consentire la traduzione offline delle stringhe di testo nel "
+"codice."
+
+#: dependencies.py:177
+msgid "Provides style checking."
+msgstr "Fornisce controllo dello stile."
+
+#: dependencies.py:182
+msgid "Command line environment with autocompletion."
+msgstr "Ambiente a riga di comando con autocompletamento."
+
+#: dependencies.py:187
+msgid "Checks proper formatting of the README file."
+msgstr "Controlla la corretta formattazione del file README."
+
+#: links.py:30
+msgid "About this"
+msgstr "A questo proposito"
+
+#: links.py:33
+msgid "Get the book"
+msgstr "Prendi il libro"
+
+#: links.py:38
+msgid "Documentation"
+msgstr "Documentazione"
+
+#: links.py:41
+msgid "Forum"
+msgstr "Forum"
+
+#: links.py:45 views.py:48
+msgid "License"
+msgstr "Licenza"
+
+#: links.py:50
+msgid "Copy"
+msgstr "Copia"
+
+#: links.py:53
+msgid "Setup"
+msgstr "Configurazione"
+
+#: links.py:56
+msgid "Source code"
+msgstr "Codice sorgente"
+
+#: links.py:60
+msgid "Online store"
+msgstr "Negozio online"
+
+#: links.py:64
+msgid "Get support"
+msgstr "Ottieni supporto"
+
+#: links.py:68 queues.py:6 views.py:122
+msgid "Tools"
+msgstr "Strumenti"
+
+#: literals.py:19
+msgid ""
+"This feature has been deprecated and will be removed in a future version."
+msgstr "Questa funzionalità è obsoleta e verrà rimossa nelle versioni future."
+
+#: literals.py:22
+msgid ""
+"Your database backend is set to use SQLite. SQLite should only be used for "
+"development and testing, not for production."
+msgstr ""
+"Il tuo database attuale è impostato a SQLite, che dovrebbe essere usato solo"
+" per sviluppo e test, non in produzione."
+
+#: literals.py:31
+msgid "Days"
+msgstr "Giorni"
+
+#: literals.py:32
+msgid "Hours"
+msgstr "Orario"
+
+#: literals.py:33
+msgid "Minutes"
+msgstr "Minuti"
+
+#: menus.py:8
+msgid "System"
+msgstr "Sistema"
+
+#: menus.py:10 menus.py:11
+msgid "Facet"
+msgstr "Sfaccettatura"
+
+#: menus.py:14
+msgid "Actions"
+msgstr "Azioni "
+
+#: menus.py:15
+msgid "Related"
+msgstr "Relazionato"
+
+#: menus.py:16
+msgid "Secondary"
+msgstr "Secondario"
+
+#: menus.py:18
+msgid "Return"
+msgstr "Ritorno"
+
+#: menus.py:22
+msgid "User"
+msgstr "Utente"
+
+#: permissions.py:8
+msgid "Copy object"
+msgstr "Copia oggetto"
+
+#: settings.py:21
+msgid ""
+"In list mode, show the \"list facet\" menu options as a dropdown menu "
+"instead of individual buttons."
+msgstr ""
+
+#: settings.py:29
+msgid ""
+"In list mode, show the \"object\" menu options as a dropdown menu instead of"
+" individual buttons."
+msgstr ""
+
+#: settings.py:36
+msgid ""
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr ""
+"Il ritardo per i task in background dipende dalla propagazione del commit su"
+" database."
+
+#: settings.py:43
+msgid ""
+"A list of strings designating all applications that are to be removed from "
+"the list normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
+msgstr ""
+
+#: settings.py:53
+msgid ""
+"A list of strings designating all applications that are installed beyond "
+"those normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
+msgstr ""
+
+#: settings.py:63
+msgid ""
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
+msgstr ""
+"Nome della vista collegata all'ancora brand nel menù principale. Questa è "
+"anche la vista alla quale gli utenti verranno reindirizzati dopo il login."
+
+#: settings.py:71
+msgid "Name to be displayed in the main menu."
+msgstr "Nome da visualizzare nel menù principale."
+
+#: settings.py:77
+msgid "URL of the installation or homepage of the project."
+msgstr "URL dell'installazione o pagina home del progetto."
+
+#: templates/common/app/viewport.html:9
+msgid "Warning"
+msgstr "Attenzione"
+
+#: templates/common/app/viewport.html:21
+msgid "Click here to fix this."
+msgstr "Clicca qui per risolvere questo problema."
+
+#: validators.py:41
+msgid "Enter a valid JSON value."
+msgstr "Immettere un valore JSON valido."
+
+#: validators.py:65
+msgid "Enter a valid YAML value."
+msgstr "Inserisci un valore YAML valido."
+
+#: validators.py:81
+msgid ""
+"Enter a valid 'internal name' consisting of letters, numbers, and "
+"underscores."
+msgstr ""
+"Inserisci un 'internal name' valido composto da lettere, numeri e "
+"underscore."
+
+#: views.py:22
+msgid "About"
+msgstr "Informazioni"
+
+#: views.py:39
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: views.py:62
+#, python-format
+msgid "Fields to be copied: %s"
+msgstr "Campi da copiare: %s"
+
+#: views.py:72
+#, python-format
+msgid "Make a copy of %(object_name)s \"%(object)s\"?"
+msgstr "Creare una copia di %(object_name)s \"%(object)s\"?"
+
+#: views.py:83
+msgid "Object copied successfully."
+msgstr "Oggetto copiato con successo."
+
+#: views.py:100
+msgid ""
+"No results here means that don't have the required permissions to perform "
+"administrative task."
+msgstr ""
+"Nessun risultato qui significa che non dispongono delle autorizzazioni "
+"necessarie per eseguire l'attività amministrativa."
+
+#: views.py:103
+msgid "No setup options available."
+msgstr "Nessuna opzione di configurazione disponibile."
+
+#: views.py:107
+msgid "Setup items"
+msgstr "Parametri di configurazione"
+
+#: views.py:109
+msgid "Here you can configure all aspects of the system."
+msgstr "Qui puoi configurare tutti gli aspetti del sistema."
+
+#: views.py:124
+msgid "These modules are used to do system maintenance."
+msgstr ""
+"Questi moduli vengono utilizzati per eseguire la manutenzione del sistema."

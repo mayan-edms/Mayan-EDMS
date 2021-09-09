@@ -1,0 +1,100 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# lilo.panic, 2021
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
+# Alex Chigrin <chalex84@mail.ru>, 2021
+# OLeg Si <olegsm35@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: OLeg Si <olegsm35@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: apps.py:19 permissions.py:5
+msgid "Templating"
+msgstr "Шаблоны"
+
+#: fields.py:19
+#, python-format
+msgid ""
+"Use Django's default templating language "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" "
+msgstr ""
+"Используйте стандартный язык шаблонов Django "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+
+#: fields.py:38
+#, python-format
+msgid ""
+"Use Django's default templating language "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" The {{ %(variable)s }} variable is available to the template."
+msgstr ""
+"Используйте стандартный язык шаблонов Django "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" В этом шаблоне доступна переменная {{ %(variable)s }}."
+
+#: forms.py:9
+msgid "Resulting text from the evaluated template."
+msgstr "Результирующий текст из оцениваемого шаблона."
+
+#: forms.py:10
+msgid "Result"
+msgstr "Результат"
+
+#: forms.py:20
+msgid "The template string to be evaluated."
+msgstr "Строка шаблона для оценки."
+
+#: forms.py:21
+msgid "Template"
+msgstr "Шаблон"
+
+#: links.py:11
+msgid "Sandbox"
+msgstr "Песочница"
+
+#: permissions.py:8
+msgid "Use the template sandbox"
+msgstr "Использовать песочницу шаблонов"
+
+#: views.py:38
+#, python-format
+msgid "Template sandbox for: %s"
+msgstr "Песочница шаблонов для: %s"
+
+#: views.py:59
+#, python-format
+msgid "Template error; %(exception)s"
+msgstr "Ошибка в шаблоне; %(exception)s"
+
+#: widgets.py:63
+msgid "Filters"
+msgstr "Фильтры"
+
+#: widgets.py:70
+msgid "Tags"
+msgstr "Метки"
+
+#: widgets.py:76
+msgid "<Filters and tags>"
+msgstr "<Фильтры и метки>"
+
+#: widgets.py:114
+msgid "<Model attributes>"
+msgstr "<Атрибуты модели>"

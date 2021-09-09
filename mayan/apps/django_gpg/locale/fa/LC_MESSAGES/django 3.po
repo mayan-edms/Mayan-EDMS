@@ -1,0 +1,303 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2021
+# Nima Towhidi <nima.towhidi@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Nima Towhidi <nima.towhidi@gmail.com>, 2021\n"
+"Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:33
+msgid "Django GPG"
+msgstr "Django GPG"
+
+#: apps.py:56 apps.py:62 forms.py:15
+msgid "Key ID"
+msgstr "شناسه کلیدی"
+
+#: apps.py:66 forms.py:32 models.py:59
+msgid "Type"
+msgstr "نوع"
+
+#: apps.py:70 forms.py:21 models.py:40
+msgid "Creation date"
+msgstr "تاریخ ایجاد"
+
+#: apps.py:74
+msgid "No expiration"
+msgstr "بدون انقضا"
+
+#: apps.py:75 forms.py:25 models.py:44
+msgid "Expiration date"
+msgstr "تاریخ انقضا"
+
+#: apps.py:78 forms.py:30 models.py:51
+msgid "Length"
+msgstr "طول"
+
+#: apps.py:83 forms.py:17 models.py:56
+msgid "User ID"
+msgstr "شناسه کاربری"
+
+#: dependencies.py:10
+msgid "GNU privacy guard - a PGP implementation."
+msgstr ""
+
+#: events.py:5 links.py:42 permissions.py:5
+msgid "Key management"
+msgstr "مدیریت کلید"
+
+#: events.py:8
+msgid "Key created"
+msgstr ""
+
+#: events.py:12
+msgid "Key downloaded"
+msgstr ""
+
+#: forms.py:26
+msgid "None"
+msgstr "هیچ یک"
+
+#: forms.py:29 models.py:48
+msgid "Fingerprint"
+msgstr "اثر انگشت"
+
+#: forms.py:31 models.py:54
+msgid "Algorithm"
+msgstr "الگوریتم"
+
+#: forms.py:45
+msgid "Term"
+msgstr "ترم Term"
+
+#: forms.py:46
+msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr "نام، ایمیل، شناسه کلید ویا اثرانگشت کلید برای چستچو."
+
+#: links.py:17
+msgid "Delete"
+msgstr "حذف"
+
+#: links.py:22
+msgid "Details"
+msgstr "جزئیات"
+
+#: links.py:27
+msgid "Download"
+msgstr "دانلود"
+
+#: links.py:32 permissions.py:26
+msgid "Query keyservers"
+msgstr "پرسش و یا query از سرورهای کلید"
+
+#: links.py:37
+msgid "Import"
+msgstr "وارد کردن"
+
+#: links.py:46
+msgid "Upload key"
+msgstr "کلید آپلود"
+
+#: links.py:50 views.py:194
+msgid "Private keys"
+msgstr "کلید شخصی"
+
+#: links.py:54 views.py:218
+msgid "Public keys"
+msgstr "کلید عمومی"
+
+#: literals.py:23 literals.py:31
+msgid "Public"
+msgstr "عمومی"
+
+#: literals.py:24 literals.py:32
+msgid "Secret"
+msgstr "سری و یا رمز"
+
+#: literals.py:40 literals.py:45
+msgid "RSA"
+msgstr "RSA"
+
+#: literals.py:41
+msgid "DSA"
+msgstr "DSA"
+
+#: literals.py:46
+msgid "Elgamal"
+msgstr "الگمال Elgmal"
+
+#: literals.py:62
+msgid "Bad signature."
+msgstr "امضای اشتباه"
+
+#: literals.py:65
+msgid "Document not signed or invalid signature."
+msgstr "سند امضا نشده و یا امضا قابل قبول نییست"
+
+#: literals.py:68
+msgid "Signature error."
+msgstr "خطا در امضا"
+
+#: literals.py:72
+msgid "Document is signed but no public key is available for verification."
+msgstr "سند امضا شده است ولیکن کلید عمومی جهت بررسی صحت امضا وجود ندارد."
+
+#: literals.py:77
+msgid "Document is signed, and signature is good."
+msgstr "سند امضا شده است و امضا مورد تایید میباشد."
+
+#: literals.py:80
+msgid "Document is signed with a valid signature."
+msgstr "سند با امضای مورد تایید امضا شده است."
+
+#: models.py:36
+msgid "ASCII armored version of the key."
+msgstr "ASCII نسخه زره پوش کلیدی."
+
+#: models.py:37
+msgid "Key data"
+msgstr "داده های کلیدی"
+
+#: models.py:65
+msgid "Key"
+msgstr "کلید"
+
+#: models.py:66
+msgid "Keys"
+msgstr "کلیدها"
+
+#: models.py:78
+msgid "Invalid key data"
+msgstr "داده های کلید نامعتبر"
+
+#: models.py:81
+msgid "Key already exists."
+msgstr "این کلید از قبل وجود دارد."
+
+#: permissions.py:8
+msgid "Delete keys"
+msgstr "پاک و یا حذف کلیدها"
+
+#: permissions.py:11
+msgid "Download keys"
+msgstr "دانلود کلیدها"
+
+#: permissions.py:14
+msgid "Import keys from keyservers"
+msgstr "وارد کردن کلیده از سرور کلیدها"
+
+#: permissions.py:17
+msgid "Use keys to sign content"
+msgstr "برای امضای محتویات از کلید استفاده کنید"
+
+#: permissions.py:20
+msgid "Upload keys"
+msgstr "آپلود کلیدها"
+
+#: permissions.py:23
+msgid "View keys"
+msgstr "دیدن کلیدها"
+
+#: settings.py:10
+msgid "Signatures"
+msgstr "امضا"
+
+#: settings.py:16
+msgid "Full path to the backend to be used to handle keys and signatures."
+msgstr ""
+
+#: settings.py:25
+msgid "Keyserver used to query for keys."
+msgstr "Keyserver برای پرس و جو برای کلید استفاده می شود."
+
+#: views.py:39
+#, python-format
+msgid "Delete key: %s"
+msgstr "کلید حذف: %s"
+
+#: views.py:56
+#, python-format
+msgid "Details for key: %s"
+msgstr "جزئیات برای کلید: %s"
+
+#: views.py:84
+#, python-format
+msgid "Import key ID: %s?"
+msgstr "وارد کردن شناسه کلیدی: %s"
+
+#: views.py:85
+msgid "Import key"
+msgstr "وارد کردن کلید"
+
+#: views.py:94
+#, python-format
+msgid "Unable to import key: %(key_id)s; %(error)s"
+msgstr "قادر به وارد کردن کلید نیست: %(key_id)s؛ %(error)s"
+
+#: views.py:102
+#, python-format
+msgid "Successfully received key: %(key_id)s"
+msgstr "کلید موفقیت آمیز دریافت کرد: %(key_id)s"
+
+#: views.py:119
+msgid ""
+"Use names, last names, key ids or emails to search public keys to import "
+"from the keyserver."
+msgstr ""
+
+#: views.py:123
+msgid "No results returned"
+msgstr ""
+
+#: views.py:125
+msgid "Key query results"
+msgstr "نتایج پرس و جو کلید"
+
+#: views.py:145
+msgid "Search"
+msgstr "جستجو"
+
+#: views.py:147
+msgid "Query key server"
+msgstr "پرسش از سرور کلید"
+
+#: views.py:166
+msgid "Upload new key"
+msgstr "بارگذاری کلید جدید"
+
+#: views.py:187
+msgid ""
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user. The view to upload private and public keys is the same."
+msgstr ""
+
+#: views.py:192
+msgid "There no private keys"
+msgstr ""
+
+#: views.py:210
+msgid ""
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
+"public keys is the same."
+msgstr ""
+
+#: views.py:216
+msgid "There no public keys"
+msgstr ""

@@ -1,0 +1,14 @@
+<div class="full-height scrollable mayan-page-wrapper-interactive" data-height-difference=230>
+    {% with 'lazy-load' as image_classes %}
+    {% with widget.attrs.rotation as image_rotation %}
+    {% with widget.attrs.zoom as image_zoom %}
+    {% with widget.value as instance %}
+    {% with 'true' as display_full_height %}
+        {% include 'documents/forms/widgets/page_image.html' %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+</div>
+

@@ -1,0 +1,240 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# Emerson Soares <on.emersonsoares@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Emerson Soares <on.emersonsoares@gmail.com>, 2021\n"
+"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:53 events.py:6 permissions.py:6 settings.py:10
+msgid "Document parsing"
+msgstr ""
+
+#: apps.py:105
+msgid "A generator returning the document file's pages parsed content."
+msgstr ""
+
+#: apps.py:106 links.py:21 links.py:43 models.py:24 search.py:10
+msgid "Content"
+msgstr "Conteúdo"
+
+#: apps.py:135 models.py:74
+msgid "Result"
+msgstr ""
+
+#: dependencies.py:9
+msgid ""
+"Utility from the poppler-utils package used to extract content from PDF "
+"files."
+msgstr ""
+
+#: events.py:10
+msgid "Document parsed content deleted"
+msgstr ""
+
+#: events.py:14
+msgid "Document file submitted for parsing"
+msgstr ""
+
+#: events.py:17
+msgid "Document file parsing finished"
+msgstr ""
+
+#: forms.py:37
+#, python-format
+msgid "Page %(page_number)d"
+msgstr ""
+
+#: forms.py:45 forms.py:57
+msgid "Contents"
+msgstr "Conteúdos"
+
+#: links.py:27 links.py:31
+msgid "Delete parsed content"
+msgstr ""
+
+#: links.py:37
+msgid "Download content"
+msgstr ""
+
+#: links.py:49 links.py:82 views.py:235
+msgid "Parsing errors"
+msgstr ""
+
+#: links.py:54 links.py:61
+msgid "Submit for parsing"
+msgstr ""
+
+#: links.py:68
+msgid "Setup parsing"
+msgstr ""
+
+#: links.py:77
+msgid "Parse documents per type"
+msgstr ""
+
+#: models.py:18
+msgid "Document file page"
+msgstr ""
+
+#: models.py:22
+msgid "The actual text content as extracted by the document parsing backend."
+msgstr ""
+
+#: models.py:30
+msgid "Document file page content"
+msgstr ""
+
+#: models.py:31
+msgid "Document file page contents"
+msgstr ""
+
+#: models.py:43
+msgid "Document type"
+msgstr "Tipo de documento"
+
+#: models.py:47
+msgid "Automatically queue newly created documents for parsing."
+msgstr ""
+
+#: models.py:58
+msgid "Document type settings"
+msgstr ""
+
+#: models.py:59
+msgid "Document types settings"
+msgstr ""
+
+#: models.py:69
+msgid "Document file"
+msgstr ""
+
+#: models.py:72
+msgid "Date time submitted"
+msgstr ""
+
+#: models.py:78
+msgid "Document file parse error"
+msgstr ""
+
+#: models.py:79
+msgid "Document file parse errors"
+msgstr ""
+
+#: parsers.py:90
+#, python-format
+msgid "Exception parsing page; %s"
+msgstr ""
+
+#: parsers.py:116
+#, python-format
+msgid "Cannot find pdftotext executable at: %s"
+msgstr ""
+
+#: permissions.py:10
+msgid "View the content of a document file"
+msgstr ""
+
+#: permissions.py:13
+msgid "Parse the content of a document file"
+msgstr ""
+
+#: permissions.py:16
+msgid "Change document type parsing settings"
+msgstr ""
+
+#: queues.py:7
+msgid "Parsing"
+msgstr ""
+
+#: queues.py:12
+msgid "Document file parsing"
+msgstr ""
+
+#: search.py:16 search.py:23
+msgid "Document file content"
+msgstr ""
+
+#: settings.py:15
+msgid "Set new document types to perform parsing automatically by default."
+msgstr ""
+
+#: settings.py:21
+msgid ""
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr ""
+"Caminho para o programa pdftotext de poppler, usado para extrair texto de "
+"ficheiros PDF."
+
+#: views.py:39
+msgid "Delete the parsed content of the selected document file?"
+msgid_plural "Delete the parsed content of the selected document files?"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:85
+#, python-format
+msgid "Content for document file: %s"
+msgstr ""
+
+#: views.py:106
+#, python-format
+msgid "Content for document file page: %s"
+msgstr ""
+
+#: views.py:128
+#, python-format
+msgid "Parsing errors for document file: %s"
+msgstr ""
+
+#: views.py:141
+#, python-format
+msgid "%(count)d document file added to the parsing queue"
+msgstr ""
+
+#: views.py:144
+#, python-format
+msgid "%(count)d documents files added to the parsing queue"
+msgstr ""
+
+#: views.py:152
+#, python-format
+msgid "Submit %(count)d document file to the parsing queue?"
+msgid_plural "Submit %(count)d documents files to the parsing queue?"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:165
+#, python-format
+msgid "Submit document file \"%s\" to the parsing queue"
+msgstr ""
+
+#: views.py:192
+#, python-format
+msgid "Edit parsing settings for document type: %s."
+msgstr ""
+
+#: views.py:202
+msgid "Submit all documents of a type for parsing"
+msgstr ""
+
+#: views.py:223
+#, python-format
+msgid "%(count)d documents added to the parsing queue."
+msgstr ""

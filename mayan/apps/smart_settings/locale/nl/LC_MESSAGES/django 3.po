@@ -1,0 +1,534 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
+"Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:21 permissions.py:6
+msgid "Smart settings"
+msgstr "Slimme instellingen"
+
+#: apps.py:30
+msgid "Setting count"
+msgstr "Aantal instellingen"
+
+#: apps.py:35
+msgid "Name"
+msgstr "Naam"
+
+#: apps.py:39
+msgid "Value"
+msgstr "Waarde"
+
+#: classes.py:341
+msgid "Overridden"
+msgstr "Overschreven"
+
+#: classes.py:343
+msgid "Is this settings being overridden by an environment variable?"
+msgstr "Wordt deze instelling overschreven door een omgevingsvariabele?"
+
+#: forms.py:12
+msgid "Enter the new setting value."
+msgstr "De nieuwe instellingswaarde invoeren."
+
+#: forms.py:28
+#, python-format
+msgid "\"%s\" not a valid entry."
+msgstr "\"%s\" is geen geldige invoer."
+
+#: links.py:12 links.py:16
+msgid "Settings"
+msgstr "Instellingen"
+
+#: links.py:22
+msgid "Namespaces"
+msgstr "Namespaces"
+
+#: links.py:26
+msgid "Edit"
+msgstr "Bewerken"
+
+#: permissions.py:10
+msgid "Edit settings"
+msgstr "Instellingen bewerken"
+
+#: permissions.py:13
+msgid "View settings"
+msgstr "Instellingen bekijken"
+
+#: settings.py:26
+msgid "Django"
+msgstr "Django"
+
+#: settings.py:30
+msgid ""
+"A list of strings representing the host/domain names that this site can "
+"serve. This is a security measure to prevent HTTP Host header attacks, which"
+" are possible even under many seemingly-safe web server configurations. "
+"Values in this list can be fully qualified names (e.g. 'www.example.com'), "
+"in which case they will be matched against the request's Host header exactly"
+" (case-insensitive, not including port). A value beginning with a period can"
+" be used as a subdomain wildcard: '.example.com' will match example.com, "
+"www.example.com, and any other subdomain of example.com. A value of '*' will"
+" match anything; in this case you are responsible to provide your own "
+"validation of the Host header (perhaps in a middleware; if so this "
+"middleware must be listed first in MIDDLEWARE)."
+msgstr ""
+"Een lijst met strings die de host- / domeinnamen vertegenwoordigen die deze "
+"site kan bedienen. Dit is een beveiligingsmaatregel om HTTP Host-"
+"headeraanvallen te voorkomen, die zelfs mogelijk zijn onder veel schijnbaar "
+"veilige webserverconfiguraties. Waarden in deze lijst kunnen volledig "
+"gekwalificeerde namen zijn (bijv. 'www.example.com'), in welk geval ze exact"
+" worden vergeleken met de Host-header van het verzoek (niet "
+"hoofdlettergevoelig, exclusief poort). Een waarde die met een punt begint, "
+"kan worden gebruikt als jokerteken voor een subdomein: '.example.com' komt "
+"overeen met example.com, www.example.com en elk ander subdomein van "
+"example.com. Een waarde van '*' komt overal overeen; in dit geval bent u "
+"verantwoordelijk voor uw eigen validatie van de Host-header (misschien in "
+"een middleware; zo ja, dan moet deze middleware als eerste worden vermeld in"
+" MIDDLEWARE)."
+
+#: settings.py:47
+msgid ""
+"When set to True, if the request URL does not match any of the patterns in "
+"the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the"
+" same URL with a slash appended. Note that the redirect may cause any data "
+"submitted in a POST request to be lost. The APPEND_SLASH setting is only "
+"used if CommonMiddleware is installed (see Middleware). See also "
+"PREPEND_WWW."
+msgstr ""
+"Indien ingesteld op True, als de verzoek-URL niet overeenkomt met een van de"
+" patronen in de URLconf en niet eindigt in een slash, wordt een HTTP-"
+"omleiding uitgegeven naar dezelfde URL met een slash toegevoegd. Merk op dat"
+" de omleiding ervoor kan zorgen dat alle gegevens die in een POST-verzoek "
+"zijn ingediend, verloren gaan. De APPEND_SLASH-instelling wordt alleen "
+"gebruikt als CommonMiddleware is geïnstalleerd (zie Middleware). Zie ook "
+"PREPEND_WWW."
+
+#: settings.py:59
+msgid ""
+"The list of validators that are used to check the strength of user's "
+"passwords."
+msgstr ""
+"De lijst met validators die worden gebruikt om de sterkte van "
+"gebruikerswachtwoorden te controleren."
+
+#: settings.py:66
+msgid ""
+"A list of authentication backend classes (as strings) to use when attempting"
+" to authenticate a user."
+msgstr ""
+"Een lijst met back-endklassen voor verificatie (als tekenreeksen) die moeten"
+" worden gebruikt bij een poging om een gebruiker te verifiëren."
+
+#: settings.py:72
+msgid ""
+"A dictionary containing the settings for all databases to be used with "
+"Django. It is a nested dictionary whose contents map a database alias to a "
+"dictionary containing the options for an individual database. The DATABASES "
+"setting must configure a default database; any number of additional "
+"databases may also be specified."
+msgstr ""
+"Een dictionary met de instellingen voor alle databases die met Django moeten"
+" worden gebruikt. Het is een geneste dictionary waarvan de inhoud een "
+"databasealias toewijst aan een dictionary dat de opties voor een individuele"
+" database bevat. De DATABASES-instelling moet een standaarddatabase "
+"configureren; er kan ook een willekeurig aantal aanvullende databases worden"
+" gespecificeerd."
+
+#: settings.py:83
+msgid ""
+"Default: 2621440 (i.e. 2.5 MB). The maximum size in bytes that a request "
+"body may be before a SuspiciousOperation (RequestDataTooBig) is raised. The "
+"check is done when accessing request.body or request.POST and is calculated "
+"against the total request size excluding any file upload data. You can set "
+"this to None to disable the check. Applications that are expected to receive"
+" unusually large form posts should tune this setting. The amount of request "
+"data is correlated to the amount of memory needed to process the request and"
+" populate the GET and POST dictionaries. Large requests could be used as a "
+"denial-of-service attack vector if left unchecked. Since web servers don't "
+"typically perform deep request inspection, it's not possible to perform a "
+"similar check at that level. See also FILE_UPLOAD_MAX_MEMORY_SIZE."
+msgstr ""
+"Standaard: 2621440 (d.w.z. 2,5 MB). De maximale grootte in bytes die een "
+"aanvraagtekst mag hebben voordat een SuspiciousOperation (RequestDataTooBig)"
+" wordt verhoogd. De controle wordt uitgevoerd bij het openen van "
+"request.body of request.POST en wordt berekend op basis van de totale "
+"aanvraaggrootte, exclusief bestandsuploadgegevens. U kunt dit instellen op "
+"Geen om de controle uit te schakelen. Toepassingen die naar verwachting "
+"ongebruikelijk grote formulierberichten zullen ontvangen, moeten deze "
+"instelling afstemmen. De hoeveelheid verzoekgegevens is gecorreleerd aan de "
+"hoeveelheid geheugen die nodig is om het verzoek te verwerken en de GET- en "
+"POST-woordenboeken te vullen. Grote verzoeken kunnen worden gebruikt als een"
+" denial-of-service-aanvalsvector als deze niet is aangevinkt. Aangezien "
+"webservers doorgaans geen diepgaande verzoekinspectie uitvoeren, is het niet"
+" mogelijk om een vergelijkbare controle op dat niveau uit te voeren. Zie ook"
+" FILE_UPLOAD_MAX_MEMORY_SIZE."
+
+#: settings.py:102
+msgid ""
+"Default: 'webmaster@localhost' Default email address to use for various "
+"automated correspondence from the site manager(s). This doesn't include "
+"error messages sent to ADMINS and MANAGERS; for that, see SERVER_EMAIL."
+msgstr ""
+"Standaard: 'webmaster@localhost' Standaard e-mailadres om te gebruiken voor "
+"verschillende geautomatiseerde correspondentie van de sitemanager(s). Dit "
+"omvat geen foutmeldingen die naar ADMINS en MANAGERS zijn gestuurd; zie "
+"daarvoor SERVER_EMAIL."
+
+#: settings.py:111
+msgid ""
+"Default: [] (Empty list). List of compiled regular expression objects "
+"representing User-Agent strings that are not allowed to visit any page, "
+"systemwide. Use this for bad robots/crawlers. This is only used if "
+"CommonMiddleware is installed (see Middleware)."
+msgstr ""
+"Standaard: [] (lege lijst). Lijst met gecompileerde reguliere-"
+"expressieobjecten die User-Agent-tekenreeksen vertegenwoordigen die geen "
+"systeempagina mogen bezoeken. Gebruik dit voor bad robots/crawlers. Dit "
+"wordt alleen gebruikt als CommonMiddleware is geïnstalleerd (zie "
+"Middleware)."
+
+#: settings.py:120
+msgid ""
+"Default: 'django.core.mail.backends.smtp.EmailBackend'. The backend to use "
+"for sending emails."
+msgstr ""
+"Standaard: 'django.core.mail.backends.smtp.EmailBackend'. De backend om te "
+"gebruiken voor het versturen van e-mails."
+
+#: settings.py:126
+msgid "Default: 'localhost'. The host to use for sending email."
+msgstr ""
+"Standaard: 'localhost'. De host om te gebruiken voor versturen e-mail."
+
+#: settings.py:132
+msgid ""
+"Default: '' (Empty string). Password to use for the SMTP server defined in "
+"EMAIL_HOST. This setting is used in conjunction with EMAIL_HOST_USER when "
+"authenticating to the SMTP server. If either of these settings is empty, "
+"Django won't attempt authentication."
+msgstr ""
+"Standaard: '' (lege tekenreeks). Wachtwoord om te gebruiken voor de SMTP-"
+"server gedefinieerd in EMAIL_HOST. Deze instelling wordt gebruikt in "
+"combinatie met EMAIL_HOST_USER bij authenticatie bij de SMTP-server. Als een"
+" van deze instellingen leeg is, zal Django geen authenticatie proberen."
+
+#: settings.py:142
+msgid ""
+"Default: '' (Empty string). Username to use for the SMTP server defined in "
+"EMAIL_HOST. If empty, Django won't attempt authentication."
+msgstr ""
+"Standaard: '' (lege tekenreeks). Gebruikersnaam om te gebruiken voor de "
+"SMTP-server gedefinieerd in EMAIL_HOST. Indien leeg, zal Django geen "
+"authenticatie proberen."
+
+#: settings.py:149
+msgid "Default: 25. Port to use for the SMTP server defined in EMAIL_HOST."
+msgstr ""
+"Standaard: 25. Poort om te gebruiken voor de SMTP server zoals vastgelegd in"
+" EMAIL_HOST."
+
+#: settings.py:154
+msgid ""
+"Default: None. Specifies a timeout in seconds for blocking operations like "
+"the connection attempt."
+msgstr ""
+"Standaard: None. Specificeert een time-out in seconden voor het blokkeren "
+"van bewerkingen zoals de verbindingspoging."
+
+#: settings.py:160
+msgid ""
+"Default: False. Whether to use an implicit TLS (secure) connection when "
+"talking to the SMTP server. In most email documentation this type of TLS "
+"connection is referred to as SSL. It is generally used on port 465. If you "
+"are experiencing problems, see the explicit TLS setting EMAIL_USE_TLS. Note "
+"that EMAIL_USE_TLS/EMAIL_USE_SSL are mutually exclusive, so only set one of "
+"those settings to True."
+msgstr ""
+"Standaard: False. Of u een impliciete TLS (beveiligde) verbinding wilt "
+"gebruiken wanneer u met de SMTP-server praat. In de meeste "
+"e-maildocumentatie wordt dit type TLS-verbinding SSL genoemd. Het wordt over"
+" het algemeen gebruikt op poort 465. Als u problemen ondervindt, zie dan de "
+"expliciete TLS-instelling EMAIL_USE_TLS. Merk op dat "
+"EMAIL_USE_TLS/EMAIL_USE_SSL elkaar wederzijds uitsluiten, dus stel slechts "
+"een van die instellingen in op True."
+
+#: settings.py:170
+msgid ""
+"Default: False. Whether to use a TLS (secure) connection when talking to the"
+" SMTP server. This is used for explicit TLS connections, generally on port "
+"587. If you are experiencing hanging connections, see the implicit TLS "
+"setting EMAIL_USE_SSL."
+msgstr ""
+"Standaard: False. Of u een TLS (beveiligde) verbinding wilt gebruiken "
+"wanneer u met de SMTP-server communiceert. Dit wordt gebruikt voor "
+"expliciete TLS-verbindingen, meestal op poort 587. Als u hangende "
+"verbindingen ervaart, zie dan de impliciete TLS-instelling EMAIL_USE_SSL."
+
+#: settings.py:179
+msgid ""
+"Default: 2621440 (i.e. 2.5 MB). The maximum size (in bytes) that an upload "
+"will be before it gets streamed to the file system. See Managing files for "
+"details. See also DATA_UPLOAD_MAX_MEMORY_SIZE."
+msgstr ""
+"Standaard: 2621440 (d.w.z. 2,5 MB). De maximale grootte (in bytes) die een "
+"upload zal zijn voordat deze naar het bestandssysteem wordt gestreamd. Zie "
+"Bestanden beheren voor details. Zie ook DATA_UPLOAD_MAX_MEMORY_SIZE."
+
+#: settings.py:187
+msgid ""
+"Default: '/accounts/login/' The URL where requests are redirected for login,"
+" especially when using the login_required() decorator. This setting also "
+"accepts named URL patterns which can be used to reduce configuration "
+"duplication since you don't have to define the URL in two places (settings "
+"and URLconf)."
+msgstr ""
+"Standaard: '/accounts/login/' De URL waar verzoeken worden omgeleid voor "
+"inloggen, vooral wanneer de login_required() -decorator wordt gebruikt. Deze"
+" instelling accepteert ook benoemde URL-patronen die kunnen worden gebruikt "
+"om configuratieduplicatie te verminderen, omdat u de URL niet op twee "
+"plaatsen hoeft te definiëren (instellingen en URLconf)."
+
+#: settings.py:198
+msgid ""
+"Default: '/accounts/profile/' The URL where requests are redirected after "
+"login when the contrib.auth.login view gets no next parameter. This is used "
+"by the login_required() decorator, for example. This setting also accepts "
+"named URL patterns which can be used to reduce configuration duplication "
+"since you don't have to define the URL in two places (settings and URLconf)."
+msgstr ""
+"Standaard: '/accounts/profiel/' De URL waar verzoeken worden omgeleid na "
+"inloggen wanneer de contrib.auth.login-weergave geen volgende parameter "
+"krijgt. Dit wordt bijvoorbeeld gebruikt door de login_required() decorator. "
+"Deze instelling accepteert ook benoemde URL-patronen die kunnen worden "
+"gebruikt om configuratieduplicatie te verminderen, omdat u de URL niet op "
+"twee plaatsen hoeft te definiëren (instellingen en URLconf)."
+
+#: settings.py:209
+msgid ""
+"Default: None. The URL where requests are redirected after a user logs out "
+"using LogoutView (if the view doesn't get a next_page argument). If None, no"
+" redirect will be performed and the logout view will be rendered. This "
+"setting also accepts named URL patterns which can be used to reduce "
+"configuration duplication since you don't have to define the URL in two "
+"places (settings and URLconf)."
+msgstr ""
+"Standaard: Geen. De URL waar verzoeken worden omgeleid nadat een gebruiker "
+"uitlogt met LogoutView (als het overzicht geen argument next_page krijgt). "
+"Indien Geen, wordt er geen omleiding uitgevoerd en wordt de uitlogweergave "
+"weergegeven. Deze instelling accepteert ook benoemde URL-patronen die kunnen"
+" worden gebruikt om configuratieduplicatie te verminderen, omdat u de URL "
+"niet op twee plaatsen hoeft te definiëren (instellingen en URLconf)."
+
+#: settings.py:220
+msgid ""
+"A list of IP addresses, as strings, that: Allow the debug() context "
+"processor to add some variables to the template context. Can use the "
+"admindocs bookmarklets even if not logged in as a staff user. Are marked as "
+"\"internal\" (as opposed to \"EXTERNAL\") in AdminEmailHandler emails."
+msgstr ""
+"Een lijst met IP-adressen, als strings, die: Sta de debug() contextprocessor"
+" toe om enkele variabelen toe te voegen aan de sjablooncontext. Kan de "
+"admindocs-bookmarklets gebruiken, zelfs als ze niet zijn aangemeld als "
+"personeelsgebruiker. Worden gemarkeerd als \"internal\" (in tegenstelling "
+"tot \"EXTERNAL\") in e-mails van AdminEmailHandler."
+
+#: settings.py:229
+msgid ""
+"A list of all available languages. The list is a list of two-tuples in the "
+"format (language code, language name) for example, ('ja', 'Japanese'). This "
+"specifies which languages are available for language selection. Generally, "
+"the default value should suffice. Only set this setting if you want to "
+"restrict language selection to a subset of the Django-provided languages. "
+msgstr ""
+"Een lijst met alle beschikbare talen. De lijst is een lijst met twee tuples "
+"in het formaat (taalcode, taalnaam) bijvoorbeeld ('ja', 'Japans'). Dit "
+"specificeert welke talen beschikbaar zijn voor taalselectie. Over het "
+"algemeen zou de standaardwaarde moeten volstaan. Stel deze instelling alleen"
+" in als u de taalselectie wilt beperken tot een subset van de door Django "
+"geleverde talen."
+
+#: settings.py:240
+msgid ""
+"A string representing the language code for this installation. This should "
+"be in standard language ID format. For example, U.S. English is \"en-us\". "
+"It serves two purposes: If the locale middleware isn't in use, it decides "
+"which translation is served to all users. If the locale middleware is "
+"active, it provides a fallback language in case the user's preferred "
+"language can't be determined or is not supported by the website. It also "
+"provides the fallback translation when a translation for a given literal "
+"doesn't exist for the user's preferred language."
+msgstr ""
+"Een tekenreeks die de taalcode voor deze installatie vertegenwoordigt. Dit "
+"moet in de standaardtaal-ID-indeling zijn. Amerikaans Engels is bijvoorbeeld"
+" \"en-us\". Het dient twee doelen: als de locale middleware niet in gebruik "
+"is, bepaalt het welke vertaling aan alle gebruikers wordt aangeboden. Als de"
+" locale middleware actief is, biedt het een reservetaal voor het geval de "
+"voorkeurstaal van de gebruiker niet kan worden bepaald of niet wordt "
+"ondersteund door de website. Het biedt ook de reservevertaling wanneer er "
+"geen vertaling voor een bepaalde letterlijke tekst bestaat voor de "
+"voorkeurstaal van de gebruiker."
+
+#: settings.py:254
+msgid ""
+"Default: 'sessionid'. The name of the cookie to use for sessions.This can be"
+" whatever you want (as long as it's different from the other cookie names in"
+" your application)."
+msgstr ""
+"Standaard: 'sessionid'. De naam van de cookie die voor sessies moet worden "
+"gebruikt. Dit kan zijn wat u maar wilt (zolang deze maar verschilt van de "
+"andere cookienamen in uw toepassing)."
+
+#: settings.py:262
+msgid ""
+"Default: 'django.contrib.sessions.backends.db'. Controls where Django stores"
+" session data."
+msgstr ""
+"Standaard: 'django.contrib.sessions.backends.db'. Bepaalt waar Django "
+"sessiegegevens opslaat."
+
+#: settings.py:269
+msgid ""
+"A tuple representing a HTTP header/value combination that signifies a "
+"request is secure. This controls the behavior of the request object’s "
+"is_secure() method. Warning: Modifying this setting can compromise your "
+"site’s security. Ensure you fully understand your setup before changing it."
+msgstr ""
+"Een tuple die een HTTP-header/waarde-combinatie vertegenwoordigt die een "
+"verzoek aangeeft, is veilig. Dit bepaalt het gedrag van de methode "
+"is_secure() van het verzoekobject. Waarschuwing: het wijzigen van deze "
+"instelling kan de beveiliging van uw site in gevaar brengen. Zorg ervoor dat"
+" u uw configuratie volledig begrijpt voordat u deze wijzigt."
+
+#: settings.py:278
+msgid ""
+"URL to use when referring to static files located in STATIC_ROOT. Example: "
+"\"/static/\" or \"http://static.example.com/\" If not None, this will be "
+"used as the base path for asset definitions (the Media class) and the "
+"staticfiles app. It must end in a slash if set to a non-empty value."
+msgstr ""
+"URL die moet worden gebruikt bij het verwijzen naar statische bestanden in "
+"STATIC_ROOT. Voorbeeld: \"/static/\" of \"http://static.example.com/\" Als "
+"dit None is, wordt dit gebruikt als het basispad voor activadefinities (de "
+"mediaklasse) en de staticfiles-app. Het moet eindigen op een slash als het "
+"is ingesteld op een niet-lege waarde."
+
+#: settings.py:288
+msgid ""
+"The file storage engine to use when collecting static files with the "
+"collectstatic management command. A ready-to-use instance of the storage "
+"backend defined in this setting can be found at "
+"django.contrib.staticfiles.storage.staticfiles_storage."
+msgstr ""
+"De bestandsopslag-engine om te gebruiken bij het verzamelen van statische "
+"bestanden met de opdracht collectstatic management. Een kant-en-klare "
+"instantie van de storage-backend die in deze instelling is gedefinieerd, is "
+"te vinden op django.contrib.staticfiles.storage.staticfiles_storage."
+
+#: settings.py:296
+msgid ""
+"A string representing the time zone for this installation. Note that this "
+"isn't necessarily the time zone of the server. For example, one server may "
+"serve multiple Django-powered sites, each with a separate time zone setting."
+msgstr ""
+"Een tekenreeks die de tijdzone voor deze installatie vertegenwoordigt. Merk "
+"op dat dit niet noodzakelijk de tijdzone van de server is. Eén server kan "
+"bijvoorbeeld meerdere door Django aangedreven sites bedienen, elk met een "
+"afzonderlijke tijdzone-instelling."
+
+#: settings.py:305
+msgid ""
+"A boolean that specifies whether to use the X-Forwarded-Host header in "
+"preference to the Host header. This should only be enabled if a proxy which "
+"sets this header is in use."
+msgstr ""
+"Een boolean die aangeeft of de X-Forwarded-Host-header moet worden gebruikt "
+"in plaats van de Host-header. Dit mag alleen worden ingeschakeld als er een "
+"proxy wordt gebruikt die deze koptekst instelt."
+
+#: settings.py:313
+msgid ""
+"A boolean that specifies whether to use the X-Forwarded-Port header in "
+"preference to the SERVER_PORT META variable. This should only be enabled if "
+"a proxy which sets this header is in use. USE_X_FORWARDED_HOST takes "
+"priority over this setting."
+msgstr ""
+"Een booleaanse waarde die aangeeft of de X-Forwarded-Port-header moet worden"
+" gebruikt in plaats van de SERVER_PORT META-variabele. Dit mag alleen worden"
+" ingeschakeld als er een proxy wordt gebruikt die deze koptekst instelt. "
+"USE_X_FORWARDED_HOST heeft voorrang op deze instelling."
+
+#: settings.py:322
+msgid ""
+"The full Python path of the WSGI application object that Django's built-in "
+"servers (e.g. runserver) will use. The django-admin startproject management "
+"command will create a simple wsgi.py file with an application callable in "
+"it, and point this setting to that application."
+msgstr ""
+"Het volledige Python-pad van het WSGI-toepassingsobject dat Django's "
+"ingebouwde servers (bijv. Runserver) zullen gebruiken. De opdracht django-"
+"admin startproject management maakt een eenvoudig wsgi.py-bestand met een "
+"programma dat kan worden aangeroepen en wijst deze instelling naar die "
+"applicatie."
+
+#: templates/smart_settings/app/viewport.html:9
+msgid "Warning"
+msgstr "Waarschuwing"
+
+#: templates/smart_settings/app/viewport.html:9
+msgid ""
+"Settings updated, restart your installation and refresh your browser for "
+"changes to take effect."
+msgstr ""
+"Instellingen bijgewerkt. Herstart uw installatie en ververs de browser om te"
+" activeren."
+
+#: views.py:21
+msgid "Setting updated successfully."
+msgstr "Instelling met succes bijgewerkt. "
+
+#: views.py:30
+#, python-format
+msgid "Edit setting: %s"
+msgstr "Bewerk instelling: %s"
+
+#: views.py:55
+msgid ""
+"Settings inherited from an environment variable take precedence and cannot "
+"be changed in this view. "
+msgstr ""
+"Overgenomen instellingen van een omgevingsvariabele krijgen voorrang en "
+"kunnen niet gewijzigd worden in dit overzicht."
+
+#: views.py:58
+#, python-format
+msgid "Settings in namespace: %s"
+msgstr "Instellingen in namespace: %s"
+
+#: views.py:66
+#, python-format
+msgid "Namespace: %s, not found"
+msgstr "Namespace: %s, niet gevonden"
+
+#: views.py:76
+msgid "Setting namespaces"
+msgstr "Instelling namespaces"

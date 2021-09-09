@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Michal Švábík <snadno@lehce.cz>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: apps.py:18 settings.py:10
+msgid "Lock manager"
+msgstr "Správce zámku"
+
+#: models.py:14
+msgid "Creation datetime"
+msgstr "Vytvoření datetime"
+
+#: models.py:18
+msgid "Timeout"
+msgstr "Časový limit"
+
+#: models.py:21
+msgid "Name"
+msgstr "název"
+
+#: models.py:27
+msgid "Lock"
+msgstr "Zámek"
+
+#: models.py:28
+msgid "Locks"
+msgstr "Zámky"
+
+#: settings.py:15
+msgid "Path to the class to use when to request and release resource locks."
+msgstr ""
+"Cesta ke třídě, která se použije, když uzamknete, nebo uvolníte prostředky."
+
+#: settings.py:22
+msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
+msgstr "Argumenty k předání LOCK_MANAGER_BACKEND."
+
+#: settings.py:28
+msgid ""
+"Default amount of time in seconds after which a resource lock will be "
+"automatically released."
+msgstr ""
+"Výchozí doba v sekundách, po které bude automaticky uvolněn zámek "
+"prostředků."

@@ -1,0 +1,507 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# mic <winterfall24@gmail.com>, 2021
+# Roberto Rosario, 2021
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021\n"
+"Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
+msgid "Converter"
+msgstr "Konwerter"
+
+#: apps.py:83 forms.py:37
+msgid "Transformation"
+msgstr "Przekształcenie"
+
+#: backends/python.py:124 backends/python.py:137
+#, python-format
+msgid "Exception determining PDF page count; %s"
+msgstr "Wyjątek określający liczbę stron PDF: %s"
+
+#: backends/python.py:151
+#, python-format
+msgid "Exception determining page count using Pillow; %s"
+msgstr "Wyjątek określający liczbę stron przy użyciu Pillow; %s"
+
+#: classes.py:157
+msgid "LibreOffice not installed or not found."
+msgstr "LibreOffice nie zainstalowano lub nie został zainstalowany."
+
+#: classes.py:261
+msgid "Not an office file format."
+msgstr "Format niezgodny z formatem plików LibreOffice."
+
+#: classes.py:395
+msgid ""
+"Transformations allow changing the visual appearance of documents without "
+"making permanent changes to the document file themselves."
+msgstr ""
+"Przekształcenia umożliwiają zmianę wyglądu dokumentów bez dokonywania "
+"trwałych zmian w samym pliku dokumentu."
+
+#: classes.py:446
+msgid "transformation"
+msgstr "transformacja"
+
+#: dependencies.py:14
+msgid "Utility from the poppler-utils package used to inspect PDF files."
+msgstr "Narzędzie z pakietu poppler-utils służące do sprawdzania plików PDF."
+
+#: dependencies.py:19
+msgid ""
+"Utility from the popper-utils package used to extract pages from PDF files "
+"into PPM format images."
+msgstr ""
+"Narzędzie z pakietu popper-utils używane do wyodrębniania stron z plików PDF"
+" do obrazów w formacie PPM."
+
+#: events.py:8
+msgid "Asset created"
+msgstr "Utworzono zasób"
+
+#: events.py:11
+msgid "Asset edited"
+msgstr "Zmodyfikowano zasób"
+
+#: forms.py:16
+msgid "Preview"
+msgstr "Podgląd"
+
+#: forms.py:36
+msgid "Available transformations for this layer."
+msgstr "Dostępne przekształcenia dla tej warstwy."
+
+#: forms.py:73 workflow_actions.py:74
+#, python-format
+msgid "\"%s\" not a valid entry."
+msgstr "„%s” nie jest prawidłowym wpisem."
+
+#: layers.py:11
+msgid ""
+"Decorations are visual elements that add contextual information to images."
+msgstr ""
+"Dekoracje są wizualnymi elementami, który dostarczają kontekstową informację"
+" do obrazów."
+
+#: layers.py:13
+msgid "Decorations"
+msgstr "Dekoracje"
+
+#: layers.py:24
+msgid "Saved transformations"
+msgstr "Zapisane przekształcenia."
+
+#: links.py:35 views.py:39
+msgid "Create asset"
+msgstr "Utwórz zasób"
+
+#: links.py:38 links.py:44 links.py:64
+msgid "Delete"
+msgstr "Usuń"
+
+#: links.py:48 links.py:72
+msgid "Edit"
+msgstr "Edytuj"
+
+#: links.py:56 models.py:62 storages.py:21 views.py:143
+msgid "Assets"
+msgstr "Zasoby"
+
+#: links.py:77
+msgid "Transformations"
+msgstr "Przekształcenia"
+
+#: links.py:82
+msgid "Select new transformation"
+msgstr "Wybierz nowe przekształcenie."
+
+#: models.py:45
+msgid "Label"
+msgstr "Etykieta"
+
+#: models.py:49
+msgid ""
+"This value will be used when referencing this asset. Can only contain "
+"letters, numbers, and underscores."
+msgstr ""
+"Wartość ta zostanie użyta podczas odwołania do tego zasobu. Może zawierać "
+"tylko litery, cyfry i podkreślenia."
+
+#: models.py:52
+msgid "Internal name"
+msgstr "Nazwa wewnętrzna"
+
+#: models.py:56
+msgid "File"
+msgstr "Plik"
+
+#: models.py:61
+msgid "Asset"
+msgstr "Zasób"
+
+#: models.py:157 models.py:228
+msgid "Name"
+msgstr "Nazwa"
+
+#: models.py:160 models.py:226
+msgid "Order"
+msgstr "Kolejność"
+
+#: models.py:165 models.py:184
+msgid "Stored layer"
+msgstr "Zachowana warstwa"
+
+#: models.py:166
+msgid "Stored layers"
+msgstr "Zachowane warstwy"
+
+#: models.py:181 models.py:235
+msgid "Enabled"
+msgstr "Włączone"
+
+#: models.py:192 models.py:220
+msgid "Object layer"
+msgstr "Warstwa obiektu"
+
+#: models.py:193
+msgid "Object layers"
+msgstr "Warstwy obiektu"
+
+#: models.py:224
+msgid ""
+"Order in which the transformations will be executed. If left unchanged, an "
+"automatic order value will be assigned."
+msgstr ""
+"Kolejność wykonywania przekształceń. Jeśli nie zostanie zmieniona, przyjmie "
+"wartość automatyczną."
+
+#: models.py:231 workflow_actions.py:45
+msgid ""
+"Enter the arguments for the transformation as a YAML dictionary. ie: "
+"{\"degrees\": 180}"
+msgstr ""
+"Wprowadź argumenty dla przekształcenia w postaci słownika YAML np.: "
+"{\"degrees\": 180}"
+
+#: models.py:233
+msgid "Arguments"
+msgstr "Argumenty"
+
+#: models.py:242
+msgid "Layer transformation"
+msgstr "Przekształcenie warstwy"
+
+#: models.py:243
+msgid "Layer transformations"
+msgstr "Przekształcenia warstwy"
+
+#: models.py:249
+msgid "Unknown transformation class"
+msgstr "Nieznana klasa przekształcenia"
+
+#: permissions.py:8
+msgid "Create new assets"
+msgstr "Utwórz nowe zasoby"
+
+#: permissions.py:11
+msgid "Delete assets"
+msgstr "Usuń zasoby"
+
+#: permissions.py:14
+msgid "Edit assets"
+msgstr "Modyfikuj zasoby"
+
+#: permissions.py:17
+msgid "View existing assets"
+msgstr "Przeglądaj zasoby"
+
+#: permissions.py:21
+msgid "Create new transformations"
+msgstr "Utwórz nowe przekształcenia"
+
+#: permissions.py:24
+msgid "Delete transformations"
+msgstr "Usuń przekształcenia"
+
+#: permissions.py:27
+msgid "Edit transformations"
+msgstr "Edytuj przekształcenia"
+
+#: permissions.py:30
+msgid "View existing transformations"
+msgstr "Przeglądaj utworzone przekształcenia"
+
+#: queues.py:12
+msgid "Generate a image of an asset."
+msgstr ""
+
+#: settings.py:28
+msgid ""
+"The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
+"deleting the oldest asset cache files. Specify the size in bytes."
+msgstr ""
+
+#: settings.py:37
+msgid ""
+"Time in seconds that the browser should cache the supplied asset. The "
+"default of 31559626 seconds correspond to 1 year."
+msgstr ""
+
+#: settings.py:44
+msgid ""
+"Path to the Storage subclass to use when storing the cached asset files."
+msgstr ""
+
+#: settings.py:52
+msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
+msgstr ""
+
+#: settings.py:58
+msgid "Path to the Storage subclass to use when storing assets."
+msgstr "Ścieżka do Storage class używana podczas zapisywania zasobów."
+
+#: settings.py:64
+msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
+msgstr "Argumenty dla CONVERTER_ASSET_STORAGE_BACKEND."
+
+#: settings.py:70
+msgid "Graphics conversion backend to use."
+msgstr "Backend używany do konwersji grafiki."
+
+#: settings.py:76
+msgid "Configuration options for the graphics conversion backend."
+msgstr "Opcje konfiguracji dla silnika konwersji grafiki."
+
+#: storages.py:15
+msgid ""
+"Unable to initialize the converter asset storage. Check the settings {} and "
+"{} for formatting errors."
+msgstr ""
+"Brak możliwości inicjalizacji magazynu zasobów konwertera. Sprawdź "
+"ustawienia {} i {} z powodu błędów formatowania."
+
+#: storages.py:28
+msgid ""
+"Unable to initialize the converter asset cachestorage. Check the settings {}"
+" and {} for formatting errors."
+msgstr ""
+
+#: storages.py:34
+msgid "Assets cache"
+msgstr ""
+
+#: transformations.py:196
+msgid "Paste an asset"
+msgstr "Wklej zasób"
+
+#: transformations.py:247
+msgid "Paste an asset (percents coordinates)"
+msgstr "Wklej zasób (współrzędne procentowe)"
+
+#: transformations.py:290
+msgid "Paste an asset as watermark"
+msgstr "Wklej zasób jako znak wodny"
+
+#: transformations.py:350
+msgid "Crop"
+msgstr "Przycięcie"
+
+#: transformations.py:428
+msgid "Draw rectangle"
+msgstr "Narysuj prostokąt"
+
+#: transformations.py:530
+msgid "Draw rectangle (percents coordinates)"
+msgstr "Narysuj prostokąt (współrzędne procentowe)"
+
+#: transformations.py:627
+msgid "Flip"
+msgstr "Odbicie"
+
+#: transformations.py:638
+msgid "Gaussian blur"
+msgstr "Rozmycie Gaussa"
+
+#: transformations.py:648
+msgid "Line art"
+msgstr "Rysunek kreskowy"
+
+#: transformations.py:659
+msgid "Mirror"
+msgstr "Odbicie lustrzane"
+
+#: transformations.py:670
+msgid "Resize"
+msgstr "Zmiana rozmiaru"
+
+#: transformations.py:697
+msgid "Rotate"
+msgstr "Obrócenie"
+
+#: transformations.py:723
+msgid "Rotate 90 degrees"
+msgstr "Obrócenie o 90 stopni"
+
+#: transformations.py:734
+msgid "Rotate 180 degrees"
+msgstr "Obrócenie o 180 stopni"
+
+#: transformations.py:745
+msgid "Rotate 270 degrees"
+msgstr "Obrócenie o 270 stopni"
+
+#: transformations.py:755
+msgid "Unsharp masking"
+msgstr "Maska wyostrzająca"
+
+#: transformations.py:771
+msgid "Zoom"
+msgstr "Powiększenie"
+
+#: views.py:53
+#, python-format
+msgid "Delete request performed on %(count)d asset"
+msgstr "Usuń żądanie wykonane na zasobie %(count)d"
+
+#: views.py:55
+#, python-format
+msgid "Delete request performed on %(count)d assets"
+msgstr "Usuń żądanie wykonane na zasobach %(count)d"
+
+#: views.py:62
+msgid "Delete the selected asset?"
+msgid_plural "Delete the selected assets?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: views.py:72
+#, python-format
+msgid "Delete asset: %s?"
+msgstr "Usunąć zasób: %s?"
+
+#: views.py:83
+#, python-format
+msgid "Asset \"%s\" deleted successfully."
+msgstr "Zasób \"%s\" usunięto pomyślnie."
+
+#: views.py:88
+#, python-format
+msgid "Error deleting asset \"%(asset)s\": %(error)s"
+msgstr "Błąd podczas usuwania zasobu \"%(asset)s\": %(error)s"
+
+#: views.py:103
+#, python-format
+msgid "Details asset: %s"
+msgstr ""
+
+#: views.py:117
+#, python-format
+msgid "Edit asset: %s"
+msgstr "Modyfikuj zasób: %s"
+
+#: views.py:139
+msgid ""
+"Assets are files that can be used in conjuction with certain "
+"transformations."
+msgstr ""
+"Zasoby to pliki, które mogą być wykorzystane w połączeniu z właściwymi "
+"przekształceniami."
+
+#: views.py:142
+msgid "No assets available"
+msgstr "Brak zasobów"
+
+#: views.py:168
+#, python-format
+msgid "Error creating transformation: %s."
+msgstr "Błąd podczas przekształcania: %s."
+
+#: views.py:185
+#, python-format
+msgid ""
+"Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
+"%(object)s"
+msgstr ""
+"Utwórz warstwę %(layer)s przekształcenia „%(transformation)s” dla: "
+"%(object)s"
+
+#: views.py:241
+#, python-format
+msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
+msgstr "Usunąć przekształcenie \"%(transformation)s\" dla %(content_object)s?"
+
+#: views.py:290
+#, python-format
+msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
+msgstr "Edycja przekształcenia \"%(transformation)s\" dla %(content_object)s"
+
+#: views.py:344
+#, python-format
+msgid "There are no entries for layer \"%(layer_name)s\""
+msgstr "Brak wpisów dla warstwy „%(layer_name)s”"
+
+#: views.py:347
+#, python-format
+msgid "Layer \"%(layer)s\" transformations for: %(object)s"
+msgstr "Przekształcenia warstwy „%(layer)s” dla: %(object)s"
+
+#: views.py:392
+msgid "Transformation created successfully."
+msgstr "Pomyślnie utworzono przekształcenie."
+
+#: views.py:416
+msgid "Select"
+msgstr "Wybierz"
+
+#: views.py:418
+#, python-format
+msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
+msgstr "Wybierz nową warstwę „%(layer)s” przekształcenia dla: %(object)s"
+
+#: workflow_actions.py:22
+msgid "Pages"
+msgstr "Strony"
+
+#: workflow_actions.py:25
+msgid ""
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
+msgstr ""
+"Strony, do których zostaną dodane nowe przekształcenia. Oddziel przecinkami i / lub użyj myślników dla zakresów. Pozostaw puste, aby zaznaczyć wszystkie strony. \n"
+" \n"
+" "
+
+#: workflow_actions.py:32
+msgid "Transformation class"
+msgstr "Klasa przekształcenia"
+
+#: workflow_actions.py:37
+msgid "Type of transformation to add."
+msgstr "Typ przekształcenia przeznaczony do dodania."
+
+#: workflow_actions.py:42
+msgid "Transformation arguments"
+msgstr "Argumenty przekształcenia"
+
+#: workflow_actions.py:51
+msgid "Add transformation"
+msgstr "Dodaj przekształcenie"

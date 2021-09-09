@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# jmcainzos <jmcainzos@vodafone.es>, 2021
+# Roberto Rosario, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-12 03:39+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:27
+msgid "Locales"
+msgstr "Locales"
+
+#: links.py:13
+msgid "Locale profile"
+msgstr "Perfil de localización"
+
+#: links.py:18
+msgid "Edit locale profile"
+msgstr "Editar perfil de localización"
+
+#: models.py:18
+msgid "User"
+msgstr "Usuario"
+
+#: models.py:22
+msgid "Timezone"
+msgstr "Zona horaria"
+
+#: models.py:25
+msgid "Language"
+msgstr "Idioma"
+
+#: models.py:31
+msgid "User locale profile"
+msgstr "Perfil de localización de usuario"
+
+#: models.py:32
+msgid "User locale profiles"
+msgstr "Perfiles de localización de usuario"
+
+#: views.py:24
+msgid "Current user locale profile details"
+msgstr "Detalles del perfil de localización del usuario actual"
+
+#: views.py:30
+msgid "Edit current user locale profile details"
+msgstr "Editar los detalles del perfil del usuario local"

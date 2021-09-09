@@ -1,0 +1,48 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021\n"
+"Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: apps.py:23 links.py:17 settings.py:8
+msgid "REST API"
+msgstr "REST API"
+
+#: fields.py:30
+#, python-format
+msgid "Unable to find serializer class for: %s"
+msgstr "Nie można znaleźć klasy serializera dla : %s"
+
+#: links.py:21
+msgid "API Documentation (Swagger)"
+msgstr "Dokumentacja API (Swagger)"
+
+#: links.py:27
+msgid "API Documentation (ReDoc)"
+msgstr "Dokumentacja API (ReDoc)"
+
+#: schemas.py:11
+#, python-format
+msgid "%s API"
+msgstr "API %s"
+
+#: settings.py:14
+msgid "Disable the REST API links in the tools menu."
+msgstr "Wyłącz łącza interfejsu API REST w menu narzędzi."

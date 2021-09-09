@@ -1,0 +1,258 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2021
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:36 events.py:6 links.py:34 models.py:36 permissions.py:5
+#: views.py:136
+msgid "Quotas"
+msgstr "Квоти"
+
+#: classes.py:65
+msgid "none"
+msgstr "няма"
+
+#: classes.py:157
+msgid "Does not apply"
+msgstr "Не се прилага"
+
+#: classes.py:161 classes.py:165
+msgid "Null backend"
+msgstr "Нулев бекенд"
+
+#: events.py:10
+msgid "Quota created"
+msgstr "Квотата е създадена"
+
+#: events.py:13
+msgid "Quota edited"
+msgstr "Квотата е редактирана"
+
+#: forms.py:15 models.py:58
+msgid "Backend"
+msgstr "Бекенд"
+
+#: forms.py:16
+msgid "The quota driver for this entry."
+msgstr "Драйвер за квотите за този запис."
+
+#: links.py:16
+msgid "Create quota"
+msgstr "Създайте квота"
+
+#: links.py:21
+msgid "Delete"
+msgstr "Изтрийте"
+
+#: links.py:25
+msgid "Edit"
+msgstr "Редактиране"
+
+#: links.py:30
+msgid "Quotas list"
+msgstr "Списък с квоти"
+
+#: mixins.py:17
+msgid "All document types"
+msgstr "Всички видове документи"
+
+#: mixins.py:20
+msgid ""
+"Apply to all document types. Enabling this, the quota will ignore the "
+"indiviual document type selection."
+msgstr ""
+"Прилага се за всички типове документи. Ако активирате това, квотата ще "
+"игнорира индивидуалния избор на тип документ."
+
+#: mixins.py:26
+msgid "Document types"
+msgstr "Типове документи"
+
+#: mixins.py:33
+msgid "Document types to which the quota will be applied."
+msgstr "Видове документи, към които ще се прилага квотата."
+
+#: mixins.py:67
+msgid "all document types"
+msgstr "всички видове документи"
+
+#: mixins.py:70
+#, python-format
+msgid "document types: %(document_types)s"
+msgstr "типове документи: %(document_types)s"
+
+#: mixins.py:94
+msgid "Groups"
+msgstr "Групи"
+
+#: mixins.py:101
+msgid "Groups to which the quota will be applied."
+msgstr "Групи, към които ще се прилага квотата."
+
+#: mixins.py:105
+msgid "All users"
+msgstr "Всички потребители"
+
+#: mixins.py:108
+msgid ""
+"Apply the quota to all users in the system, excluding admins and staff. "
+"Enabling this option, the quota will ignore the indiviual user and group "
+"selection."
+msgstr ""
+"Приложете квотата за всички потребители в системата, без администраторите и "
+"персонала. Ако активирате тази опция, квотата ще игнорира индивидуалния "
+"избор на потребители и групи."
+
+#: mixins.py:115
+msgid "Users"
+msgstr "Потребители"
+
+#: mixins.py:122
+msgid "Users to which the quota will be applied."
+msgstr "Потребители, към които ще се прилага квотата."
+
+#: mixins.py:160
+msgid "all users"
+msgstr "всички потребители"
+
+#: mixins.py:162
+#, python-format
+msgid "groups: %(groups)s, users: %(users)s"
+msgstr "групи: %(groups)s, потребители: %(users)s"
+
+#: models.py:22
+msgid "The dotted Python path to the backend class."
+msgstr "Пунктиран Python път към бекенд клас."
+
+#: models.py:23
+msgid "Backend path"
+msgstr "Път към бекенда"
+
+#: models.py:26
+msgid "Backend data"
+msgstr "Данни за бекенда"
+
+#: models.py:30
+msgid "Allow quick disable or enable of the quota."
+msgstr "Разрешаване на бързото изключване или активиране на квотата."
+
+#: models.py:31
+msgid "Enabled"
+msgstr "Активиран"
+
+#: models.py:35
+msgid "Quota"
+msgstr "Квота"
+
+#: models.py:57
+msgid "Driver used for this quota entry."
+msgstr "Драйвер, използван за това въвеждане на квота."
+
+#: models.py:62
+msgid "Arguments"
+msgstr "Аргументи"
+
+#: models.py:66
+msgid "Usage"
+msgstr "Употреба"
+
+#: permissions.py:8
+msgid "Create a quota"
+msgstr "Създайте квота"
+
+#: permissions.py:11
+msgid "Delete a quota"
+msgstr "Изтрийте квота"
+
+#: permissions.py:14
+msgid "Edit a quota"
+msgstr "Редактиране на квота"
+
+#: permissions.py:17
+msgid "View a quota"
+msgstr "Вижте квота"
+
+#: quota_backends.py:70 quota_backends.py:170
+msgid "Document count quota exceeded."
+msgstr "Превишена квота за брой документи."
+
+#: quota_backends.py:74
+msgid "Documents limit"
+msgstr "Ограничение на документи"
+
+#: quota_backends.py:77
+msgid "Maximum number of documents."
+msgstr "Максимален брой документи."
+
+#: quota_backends.py:81
+msgid "Document count limit"
+msgstr "Ограничение на броя на документите"
+
+#: quota_backends.py:106
+#, python-format
+msgid "document count: %(document_count)s"
+msgstr "брой на документите: %(document_count)s"
+
+#: quota_backends.py:180 quota_backends.py:185
+msgid "Document size limit"
+msgstr "Ограничение на размера на документа"
+
+#: quota_backends.py:182
+msgid "Maximum document size in megabytes (MB)."
+msgstr "Максимален размер на документа в мегабайти (MB)."
+
+#: quota_backends.py:210
+#, python-format
+msgid "document size: %(formatted_file_size)s"
+msgstr "размер на документа: %(formatted_file_size)s"
+
+#: quota_backends.py:230
+msgid "Document size quota exceeded."
+msgstr "Квотата за размер на документа е надвишена."
+
+#: views.py:24
+msgid "New quota backend selection"
+msgstr "Избор на бекенд за нова квота"
+
+#: views.py:54
+#, python-format
+msgid "Create a \"%s\" quota"
+msgstr "Създайте &quot;%s&quot; квота"
+
+#: views.py:86
+#, python-format
+msgid "Delete quota: %s"
+msgstr "Изтрийте квотата: %s"
+
+#: views.py:101
+#, python-format
+msgid "Edit quota: %s"
+msgstr "Редактиране на квота: %s"
+
+#: views.py:133
+msgid "Quotas restrict usage of system resources. "
+msgstr "Квотите ограничават използването на системните ресурси."
+
+#: views.py:135
+msgid "No quotas available"
+msgstr "Няма налични квоти"

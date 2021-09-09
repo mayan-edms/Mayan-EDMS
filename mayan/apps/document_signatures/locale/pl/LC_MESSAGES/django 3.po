@@ -1,0 +1,389 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
+"Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: apps.py:54 events.py:6 permissions.py:6 settings.py:12
+msgid "Document signatures"
+msgstr "Document signatures"
+
+#: apps.py:111
+msgid "Date and time"
+msgstr "Data i godzina"
+
+#: apps.py:115 models.py:52
+msgid "Key ID"
+msgstr "ID klucza"
+
+#: apps.py:119 forms.py:72
+msgid "None"
+msgstr "Brak"
+
+#: apps.py:120 forms.py:60 models.py:57
+msgid "Signature ID"
+msgstr "ID podpisu"
+
+#: apps.py:125
+msgid "Type"
+msgstr "Typ"
+
+#: events.py:10
+msgid "Detached signature created"
+msgstr ""
+
+#: events.py:13
+msgid "Detached signature uploaded"
+msgstr ""
+
+#: events.py:17
+msgid "Embedded signature created"
+msgstr ""
+
+#: forms.py:17 forms.py:31 workflow_actions.py:19
+msgid "Key"
+msgstr "Klucz"
+
+#: forms.py:22 serializers.py:66 workflow_actions.py:30
+msgid ""
+"The passphrase to unlock the key and allow it to be used to sign the "
+"document file."
+msgstr ""
+
+#: forms.py:24 workflow_actions.py:27
+msgid "Passphrase"
+msgstr "Hasło"
+
+#: forms.py:33
+msgid "Private key that will be used to sign this document file."
+msgstr ""
+
+#: forms.py:44
+msgid "Signature is embedded?"
+msgstr "Podpis jest osadzony?"
+
+#: forms.py:46
+msgid "Signature date"
+msgstr "Data podpisania"
+
+#: forms.py:49
+msgid "Signature key ID"
+msgstr "ID klucza podpisu"
+
+#: forms.py:51
+msgid "Signature key present?"
+msgstr "Obecny klucz podpisu?"
+
+#: forms.py:62
+msgid "Key fingerprint"
+msgstr "Odcisk klucza"
+
+#: forms.py:66
+msgid "Key creation date"
+msgstr "Data utworzenia klucza"
+
+#: forms.py:71
+msgid "Key expiration date"
+msgstr "Data ważności klucza"
+
+#: forms.py:76
+msgid "Key length"
+msgstr "Długość klucza"
+
+#: forms.py:80
+msgid "Key algorithm"
+msgstr "Algorytm klucza"
+
+#: forms.py:84
+msgid "Key user ID"
+msgstr "ID użytkownika klucza"
+
+#: forms.py:88
+msgid "Key type"
+msgstr "Typ klucza"
+
+#: links.py:40
+msgid "Refresh all signatures"
+msgstr ""
+
+#: links.py:46
+msgid "Verify all documents"
+msgstr "Zweryfikuj wszystkie dokumenty"
+
+#: links.py:53
+msgid "Delete"
+msgstr "Usuń"
+
+#: links.py:60
+msgid "Sign detached"
+msgstr "Podpis odłączony"
+
+#: links.py:67
+msgid "Details"
+msgstr "Szczegóły"
+
+#: links.py:74
+msgid "Download"
+msgstr "Pobierz"
+
+#: links.py:80
+msgid "Sign embedded"
+msgstr "Podpis osadzone"
+
+#: links.py:86 queues.py:8
+msgid "Signatures"
+msgstr "Podpisy"
+
+#: links.py:92
+msgid "Upload signature"
+msgstr "Prześlij podpis"
+
+#: models.py:42
+msgid "Document file"
+msgstr ""
+
+#: models.py:47
+msgid "Date and time signed"
+msgstr ""
+
+#: models.py:51
+msgid "ID of the key that will be used to sign the document."
+msgstr "ID klucza, który będzie używany do podpisania dokumentu."
+
+#: models.py:61
+msgid "Public key fingerprint"
+msgstr "Odcisk klucza publicznego"
+
+#: models.py:68
+msgid "Document file signature"
+msgstr ""
+
+#: models.py:69
+msgid "Document file signatures"
+msgstr ""
+
+#: models.py:88
+msgid "Detached"
+msgstr "Usunięty"
+
+#: models.py:90
+msgid "Embedded"
+msgstr "Osadzony"
+
+#: models.py:155
+msgid "Signature file previously generated."
+msgstr "Wcześniej wygenerowany plik podpisu."
+
+#: models.py:158
+msgid "Signature file"
+msgstr "Signature file"
+
+#: models.py:164
+msgid "Document file detached signature"
+msgstr ""
+
+#: models.py:165
+msgid "Document file detached signatures"
+msgstr ""
+
+#: models.py:168
+msgid "signature"
+msgstr "podpis"
+
+#: models.py:210
+msgid "Document file embedded signature"
+msgstr ""
+
+#: models.py:211
+msgid "Document file embedded signatures"
+msgstr ""
+
+#: permissions.py:10
+msgid "Sign documents with detached signatures"
+msgstr "Podpisuj dokumenty odłączonymi podpisami"
+
+#: permissions.py:14
+msgid "Sign documents with embedded signatures"
+msgstr "Podpisuj dokumenty za pomocą osadzonych podpisów"
+
+#: permissions.py:18
+msgid "Delete detached signatures"
+msgstr "Usuń odłączone podpisy"
+
+#: permissions.py:22
+msgid "Download detached document signatures"
+msgstr "Pobierz odłączone podpisy dokumentów"
+
+#: permissions.py:26
+msgid "Upload detached document signatures"
+msgstr "Prześlij odłączone podpisy dokumentów"
+
+#: permissions.py:30
+msgid "Verify document signatures"
+msgstr "Verify document signatures"
+
+#: permissions.py:34
+msgid "View details of document signatures"
+msgstr "Zobacz szczegóły podpisów dokumentów"
+
+#: queues.py:13
+msgid "Verify key signatures"
+msgstr "Sprawdź podpisy kluczy"
+
+#: queues.py:17
+msgid "Unverify key signatures"
+msgstr "Nie weryfikuj kluczy podpisów"
+
+#: queues.py:21
+msgid "Verify document file"
+msgstr ""
+
+#: queues.py:26
+msgid "Verify missing embedded signature"
+msgstr "Sprawdź brak podpisu osadzonego"
+
+#: queues.py:30
+msgid "Refresh existing signature information"
+msgstr ""
+
+#: serializers.py:60
+msgid "Primary key of the tag to add to the document."
+msgstr ""
+
+#: settings.py:20
+msgid "Path to the Storage subclass to use when storing detached signatures."
+msgstr ""
+"Ścieżka do podklasy Storage używana podczas przechowywania odłączonych "
+"podpisów."
+
+#: settings.py:27
+msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
+msgstr "Argumenty dla SIGNATURE_STORAGE_BACKEND."
+
+#: storages.py:13
+msgid ""
+"Unable to initialize the detached signatures storage. Check the settings {} "
+"and {} for formatting errors."
+msgstr ""
+"Nie można zainicjować magazynu odłączonych podpisów. Sprawdź ustawienia {} i"
+" {} pod kątem błędów formatowania."
+
+#: storages.py:20
+msgid "Detached signatures"
+msgstr "Odłączone podpisy"
+
+#: views.py:66 views.py:135
+msgid "Passphrase is needed to unlock this key."
+msgstr "Aby odblokować ten klucz, potrzebne jest hasło."
+
+#: views.py:79 views.py:148
+msgid "Passphrase is incorrect."
+msgstr "Hasło jest niepoprawne."
+
+#: views.py:92 views.py:161
+msgid "Document file signed successfully."
+msgstr ""
+
+#: views.py:102 views.py:178
+msgid "Sign"
+msgstr "Podpisz"
+
+#: views.py:104
+#, python-format
+msgid "Sign document file \"%s\" with a detached signature"
+msgstr ""
+
+#: views.py:180
+#, python-format
+msgid "Sign document file \"%s\" with a embedded signature"
+msgstr ""
+
+#: views.py:196
+#, python-format
+msgid "Delete detached signature: %s"
+msgstr "Usuń odłączony podpis: %s"
+
+#: views.py:226
+#, python-format
+msgid "Details for signature: %s"
+msgstr "Szczegóły podpisu: %s"
+
+#: views.py:268
+msgid ""
+"Signatures help provide authorship evidence and tamper detection. They are "
+"very secure and hard to forge. A signature can be embedded as part of the "
+"document itself or uploaded as a separate file."
+msgstr ""
+"Podpisy pomagają zapewnić dowody autorstwa i wykrywanie sabotażu. Są bardzo "
+"bezpieczne i trudne do zafałszowania. Podpis może zostać osadzony jako część"
+" samego dokumentu lub przesłany jako osobny plik."
+
+#: views.py:297
+msgid "There are no signatures for this document file."
+msgstr ""
+
+#: views.py:301
+#, python-format
+msgid "Signatures for document file: %s"
+msgstr ""
+
+#: views.py:322
+#, python-format
+msgid "Upload detached signature for document file: %s"
+msgstr ""
+
+#: views.py:340 views.py:359
+msgid "On large databases this operation may take some time to execute."
+msgstr "Na dużych bazach danych operacja może chwilę potrwać."
+
+#: views.py:341
+msgid "Refresh all signatures information?"
+msgstr ""
+
+#: views.py:351
+msgid "Signature information refresh queued successfully."
+msgstr ""
+
+#: views.py:360
+msgid "Verify all document for signatures?"
+msgstr "Zweryfikować cały dokument pod kątem podpisów?"
+
+#: views.py:370
+msgid "Signature verification queued successfully."
+msgstr "Weryfikacja podpisu w kolejce powiodła się."
+
+#: workflow_actions.py:22
+msgid "Private key that will be used to sign the document file."
+msgstr ""
+
+#: workflow_actions.py:37
+msgid "Sign document (detached)"
+msgstr "Podpisz dokument (odłączony)"
+
+#: workflow_actions.py:49
+msgid ""
+"Document has no file to sign. You might be trying to use this action in an "
+"initial state before the created document is yet to be processed."
+msgstr ""
+
+#: workflow_actions.py:80
+msgid "Sign document (embedded)"
+msgstr "Podpisz dokument (osadzony)"

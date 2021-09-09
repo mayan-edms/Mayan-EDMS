@@ -1,0 +1,125 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
+# Yves Dubois <ydubois@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:24 links.py:10 permissions.py:5
+msgid "Task manager"
+msgstr "Gestionnaire de tâche"
+
+#: apps.py:83
+msgid "Label"
+msgstr "Étiquette"
+
+#: apps.py:87
+msgid "Name"
+msgstr "Nom"
+
+#: apps.py:92
+msgid "Default queue?"
+msgstr "File d'attente par défaut ?"
+
+#: apps.py:97
+msgid "Is transient?"
+msgstr "Est-il transitoire?"
+
+#: apps.py:101
+msgid "Type"
+msgstr "Type"
+
+#: apps.py:106
+msgid "Start time"
+msgstr "Heure de début"
+
+#: apps.py:110
+msgid "Host"
+msgstr "Hôte"
+
+#: apps.py:114
+msgid "Arguments"
+msgstr "Arguments"
+
+#: apps.py:118
+msgid "Keyword arguments"
+msgstr "Arguments relatifs aux mots-clés"
+
+#: apps.py:122
+msgid "Worker process ID"
+msgstr "ID du processus de travail"
+
+#: permissions.py:8
+msgid "View tasks"
+msgstr "Afficher les tâches"
+
+#: settings.py:10
+msgid "Celery"
+msgstr "Celery"
+
+#: settings.py:15
+msgid "Default: \"AMQPLAIN\". Set custom amqp login method."
+msgstr ""
+"Par défaut : «AMQPLAIN». Définissez la méthode de connexion amqp "
+"personnalisée."
+
+#: settings.py:21
+msgid ""
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
+" transport://userid:password@hostname:port/virtual_host Only the scheme part"
+" (transport://) is required, the rest is optional, and defaults to the "
+"specific transports default values."
+msgstr ""
+"Par défaut : « amqp:// ». URL du fournisseur par défaut. Il doit s'agir "
+"d'une URL sous la forme : « "
+"transport://userid:password@hostname:port/virtual_host ». Seule la partie de"
+" la forme (transport://) est requise, le reste est facultatif et "
+"correspondent par défaut aux valeurs prédéfinies des transports déterminés."
+
+#: settings.py:30
+msgid ""
+"Default: \"Disabled\". Toggles SSL usage on broker connection and SSL "
+"settings. The valid values for this option vary by transport."
+msgstr ""
+"Par défaut : «Désactivé». Active ou désactive l'utilisation du SSL sur la "
+"connexion de l'intermédiaire et les paramètres SSL. Les valeurs valides pour"
+" cette option varient selon le transport."
+
+#: settings.py:38
+msgid ""
+"Default: No result backend enabled by default. The backend used to store "
+"task results (tombstones). Refer to "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
+msgstr ""
+"Par défaut : aucun backend de résultat n'est activée par défaut. Le backend "
+"utilisé pour stocker les résultats des tâches (tombstones). Reportez-vous à "
+"'http://docs.celleryproject.org/en/v4.1.0/userguide/configuration.html"
+"#result-backend'"
+
+#: tests/literals.py:3
+msgid "Test queue"
+msgstr "File d'attente de test"
+
+#: views.py:12
+msgid "Background task queues"
+msgstr "Files d'attente des tâches en arrière-plan"

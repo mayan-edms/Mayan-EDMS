@@ -1,0 +1,127 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2021
+# pyrotech <anastasios@tutamail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:31 events.py:6 search.py:18 search.py:25 search.py:32 search.py:39
+msgid "Document comments"
+msgstr "Σχόλια εγγράφου"
+
+#: events.py:10
+msgid "Document comment created"
+msgstr "Σχόλιο εγγράφου δημιουργήθηκε"
+
+#: events.py:13
+msgid "Document comment deleted"
+msgstr "Σχόλιο εγγράφου διαγράφηκε"
+
+#: events.py:16
+msgid "Document comment edited"
+msgstr "Σχόλιο εγγράφου τροποποιήθηκε"
+
+#: links.py:16
+msgid "Add comment"
+msgstr "Προσθήκη σχολίου"
+
+#: links.py:22
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: links.py:27
+msgid "Edit"
+msgstr "Τροποποίηση"
+
+#: links.py:31 models.py:45 permissions.py:5 search.py:11
+msgid "Comments"
+msgstr "Σχόλια"
+
+#: models.py:29
+msgid "Document"
+msgstr "Έγγραφο"
+
+#: models.py:33 models.py:70
+msgid "User"
+msgstr "Χρήστης"
+
+#: models.py:35
+msgid "Text"
+msgstr "Κείμενο"
+
+#: models.py:38
+msgid "Date time submitted"
+msgstr "Ημερομηνία και ώρα υποβολής"
+
+#: models.py:44
+msgid "Comment"
+msgstr "Σχόλιο"
+
+#: permissions.py:8
+msgid "Create new comments"
+msgstr "Δημιουργία νέων σχολίων"
+
+#: permissions.py:11
+msgid "Delete comments"
+msgstr "Διαγραφή σχολίων"
+
+#: permissions.py:14
+msgid "Edit comments"
+msgstr "Τροποποίησης σχολίων"
+
+#: permissions.py:17
+msgid "View comments"
+msgstr "Προβολή σχολίων"
+
+#: views.py:31
+#, python-format
+msgid "Add comment to document: %s"
+msgstr "Προσθήκη σχολίου στο έγγραφο: %s"
+
+#: views.py:59
+#, python-format
+msgid "Delete comment: %s?"
+msgstr "Διαγραφή σχολίου: %s"
+
+#: views.py:90
+#, python-format
+msgid "Details for comment: %s?"
+msgstr "Λεπτομέρειες για σχόλιο: %s;"
+
+#: views.py:109
+#, python-format
+msgid "Edit comment: %s?"
+msgstr "Τροποίηση σχολίου: %s;"
+
+#: views.py:144
+msgid ""
+"Document comments are timestamped text entries from users. They are great "
+"for collaboration."
+msgstr ""
+"Τα σχόλια εγγράφων είναι καταχωρίσεις κειμένου χρηστών με χρονοσφραγίδα. "
+"Είναι εξαιρετικές για συνεργασία."
+
+#: views.py:147
+msgid "There are no comments"
+msgstr "Δεν υπάρχουν σχόλια"
+
+#: views.py:149
+#, python-format
+msgid "Comments for document: %s"
+msgstr "Σχόλια για το έγγραφο: %s"

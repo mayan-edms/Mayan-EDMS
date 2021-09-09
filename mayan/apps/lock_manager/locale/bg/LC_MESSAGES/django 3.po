@@ -1,0 +1,64 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:18 settings.py:10
+msgid "Lock manager"
+msgstr "Управление на заключването"
+
+#: models.py:14
+msgid "Creation datetime"
+msgstr "Дата и час на създаване"
+
+#: models.py:18
+msgid "Timeout"
+msgstr "Изтичане на времето"
+
+#: models.py:21
+msgid "Name"
+msgstr "Име"
+
+#: models.py:27
+msgid "Lock"
+msgstr "Заключване"
+
+#: models.py:28
+msgid "Locks"
+msgstr "Заключвания"
+
+#: settings.py:15
+msgid "Path to the class to use when to request and release resource locks."
+msgstr ""
+"Път към класа, който да се използва, при заявка и освобождаване заключването"
+" на ресурси."
+
+#: settings.py:22
+msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
+msgstr "Аргументи за предаване към LOCK_MANAGER_BACKEND."
+
+#: settings.py:28
+msgid ""
+"Default amount of time in seconds after which a resource lock will be "
+"automatically released."
+msgstr ""
+"Период по подразбиране в секунди, след което заключването на ресурсите ще "
+"бъде автоматично освободено."

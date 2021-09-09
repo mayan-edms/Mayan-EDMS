@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# bwakkie <bwakkie@gmail.com>, 2021
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
+"Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:19 permissions.py:5
+msgid "Templating"
+msgstr "Sjablonering"
+
+#: fields.py:19
+#, python-format
+msgid ""
+"Use Django's default templating language "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" "
+msgstr ""
+"Gebruik Django's standaard templating taal  "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" "
+
+#: fields.py:38
+#, python-format
+msgid ""
+"Use Django's default templating language "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" The {{ %(variable)s }} variable is available to the template."
+msgstr ""
+"Django's standaard sjabloneringstaal gebruiken "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" The {{ %(variable)s }} variabele is beschikbaar voor het sjabloon."
+
+#: forms.py:9
+msgid "Resulting text from the evaluated template."
+msgstr "Resultaattekst uit het beoordeelde sjabloon."
+
+#: forms.py:10
+msgid "Result"
+msgstr "Resultaat"
+
+#: forms.py:20
+msgid "The template string to be evaluated."
+msgstr "De sjabloon tekenreeks om te beoordelen."
+
+#: forms.py:21
+msgid "Template"
+msgstr "Sjabloon"
+
+#: links.py:11
+msgid "Sandbox"
+msgstr "Sandbox"
+
+#: permissions.py:8
+msgid "Use the template sandbox"
+msgstr "De sjabloon sandbox gebruiken"
+
+#: views.py:38
+#, python-format
+msgid "Template sandbox for: %s"
+msgstr "Sjabloon sandbox voor: %s"
+
+#: views.py:59
+#, python-format
+msgid "Template error; %(exception)s"
+msgstr "Sjabloonfout; %(exception)s"
+
+#: widgets.py:63
+msgid "Filters"
+msgstr "Filters"
+
+#: widgets.py:70
+msgid "Tags"
+msgstr "Labels"
+
+#: widgets.py:76
+msgid "<Filters and tags>"
+msgstr "<filters and=\"en\" tags=\"labels\">"
+
+#: widgets.py:114
+msgid "<Model attributes>"
+msgstr "<model attributes=\"Modelattributen\">"

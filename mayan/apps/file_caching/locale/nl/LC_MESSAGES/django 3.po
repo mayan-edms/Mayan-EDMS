@@ -1,0 +1,179 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# bwakkie <bwakkie@gmail.com>, 2021
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
+"Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:27 events.py:6 permissions.py:5 queues.py:8 settings.py:10
+msgid "File caching"
+msgstr "Bestandscaching"
+
+#: events.py:10
+msgid "Cache created"
+msgstr "Cache aangemaakt"
+
+#: events.py:13
+msgid "Cache edited"
+msgstr "Cache bewerkt"
+
+#: events.py:16
+msgid "Cache purged"
+msgstr "Cache geleegd"
+
+#: events.py:19
+msgid "Cache partition purged"
+msgstr ""
+
+#: links.py:24
+msgid "File caches"
+msgstr "Bestandscaches"
+
+#: links.py:29 links.py:35 links.py:39
+msgid "Purge cache"
+msgstr "Cache legen"
+
+#: models.py:41
+msgid "Internal name of the defined storage for this cache."
+msgstr "Interne naam van de vastgestelde opslag voor deze cache."
+
+#: models.py:42
+msgid "Defined storage name"
+msgstr "Vastgestelde naam opslag"
+
+#: models.py:45
+msgid "Maximum size of the cache in bytes."
+msgstr "Maximale omvang van de cache in bytes."
+
+#: models.py:47 models.py:73
+msgid "Maximum size"
+msgstr "Maximale omvang"
+
+#: models.py:51 models.py:206
+msgid "Cache"
+msgstr "Cache"
+
+#: models.py:52
+msgid "Caches"
+msgstr "Caches"
+
+#: models.py:71
+msgid "Size at which the cache will start deleting old entries."
+msgstr "Omvang waarbij de cache begint met verwijderen van oude bestanddelen."
+
+#: models.py:80
+msgid "Unknown"
+msgstr "Onbekend"
+
+#: models.py:97
+msgid "Current size"
+msgstr "Huidige omvang"
+
+#: models.py:98
+msgid "Current size of the cache."
+msgstr "Huidige omvang van de cache."
+
+#: models.py:209
+msgid "Name"
+msgstr "Naam"
+
+#: models.py:214 models.py:305
+msgid "Cache partition"
+msgstr "Partitie cachen"
+
+#: models.py:215
+msgid "Cache partitions"
+msgstr "Partities cachen"
+
+#: models.py:308
+msgid "Date time"
+msgstr "Datum en tijd"
+
+#: models.py:310
+msgid "Filename"
+msgstr "Bestandsnaam"
+
+#: models.py:312
+msgid "File size"
+msgstr "Bestandsgrootte"
+
+#: models.py:316
+msgid "Times this cache partition file has been accessed."
+msgstr ""
+
+#: models.py:323
+msgid "Cache partition file"
+msgstr "Partitiebestand cachen"
+
+#: models.py:324
+msgid "Cache partition files"
+msgstr "Partitiebestanden cachen"
+
+#: permissions.py:8
+msgid "Purge an object cache"
+msgstr ""
+
+#: permissions.py:11 queues.py:18
+msgid "Purge a file cache"
+msgstr "Een bestandscache legen"
+
+#: permissions.py:14
+msgid "View a file cache"
+msgstr "Een bestandscache bekijken"
+
+#: queues.py:13
+msgid "Purge a file cache partition"
+msgstr ""
+
+#: settings.py:15
+msgid ""
+"Number of times a cache will retry failed attempts to prune files to free up"
+" space for new a file being requested, before giving up."
+msgstr ""
+
+#: settings.py:23
+msgid ""
+"Number of times a cache will attempt to prune files to free up space for new"
+" a file being requested, before giving up."
+msgstr ""
+
+#: views.py:43
+#, python-format
+msgid "Details cache: %s"
+msgstr ""
+
+#: views.py:54
+msgid "File caches list"
+msgstr "Bestandscache lijst"
+
+#: views.py:70
+#, python-format
+msgid "Purge cache partitions of \"%s\"?"
+msgstr ""
+
+#: views.py:86
+msgid "Object cache partitions submitted for purging."
+msgstr ""
+
+#: views.py:103
+msgid "Submit the selected cache for purging?"
+msgid_plural "Submit the selected caches for purging?"
+msgstr[0] ""
+msgstr[1] ""

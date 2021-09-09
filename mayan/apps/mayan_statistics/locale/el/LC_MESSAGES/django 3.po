@@ -1,0 +1,124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2021
+# pyrotech <anastasios@tutamail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:27 links.py:34 permissions.py:5 queues.py:7
+msgid "Statistics"
+msgstr "Στατιστικά"
+
+#. Translators: Schedule here is a noun, the 'schedule' at
+#. which the statistic will be updated
+#: apps.py:36
+msgid "Schedule"
+msgstr "Προγραμματισμός"
+
+#: apps.py:42
+msgid "Last update"
+msgstr "Τελευταία ενημέρωση"
+
+#: classes.py:146
+msgid "Never"
+msgstr "Ποτέ"
+
+#: links.py:14
+msgid "Queue"
+msgstr "Ουρά αναμονής"
+
+#: links.py:19
+msgid "View"
+msgstr "Προβολή"
+
+#: links.py:24
+msgid "Namespace details"
+msgstr "Λεπτομέρειες χώρου ονομάτων"
+
+#: links.py:29
+msgid "Namespace list"
+msgstr "Λίστα χώρου ονομάτων"
+
+#. Translators: 'Slug' refers to the URL valid ID of the statistic
+#. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
+#: models.py:10
+msgid "Slug"
+msgstr "Slug"
+
+#: models.py:12
+msgid "Date time"
+msgstr "Ημερομηνία ώρα"
+
+#: models.py:14
+msgid "Data"
+msgstr "Δεδομένα"
+
+#: models.py:17
+msgid "Statistics result"
+msgstr "Στατιστικό αποτέλεσμα"
+
+#: models.py:18
+msgid "Statistics results"
+msgstr "Στατιστικά αποτελέσματα"
+
+#: permissions.py:8
+msgid "View statistics"
+msgstr "Εμφάνιση στατιστικών"
+
+#: queues.py:12
+msgid "Execute statistic"
+msgstr "Εκτέλεση στατιστικών"
+
+#: templates/statistics/renderers/chartjs/line.html:14
+msgid "No data available."
+msgstr "Δεν υπάρχουν διαθέσιμα δεδομένα"
+
+#: templates/statistics/renderers/chartjs/line.html:16
+#, python-format
+msgid "Last update: %(datetime)s"
+msgstr "Τελευταία ενημέρωση: %(datetime)s"
+
+#: views.py:17
+msgid "Statistics namespaces"
+msgstr "Χώροι ονομάτων στατιστικής"
+
+#: views.py:33
+#, python-format
+msgid "Namespace details for: %s"
+msgstr "Λεπτομέρειες χώρου ονομάτων για: %s"
+
+#: views.py:55
+#, python-format
+msgid "Results for: %s"
+msgstr "Αποτελέσματα για: %s"
+
+#: views.py:62 views.py:88
+#, python-format
+msgid "Statistic \"%s\" not found."
+msgstr "Σττιστικό \"%s\" δεν βρέθηκε."
+
+#: views.py:80
+#, python-format
+msgid "Queue statistic \"%s\" to be updated?"
+msgstr "Υποβολή στατιστικού \"%s\" στην ουρά αναμονής προς ενημέρωση;"
+
+#: views.py:94
+#, python-format
+msgid "Statistic \"%s\" queued successfully for update."
+msgstr "Στατιστικό \"%s\" προστέθηκε επιτυχώς στην ουρά αναμονής προς ενημέρωση."

@@ -1,0 +1,341 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# jmcainzos <jmcainzos@vodafone.es>, 2021
+# Roberto Rosario, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
+#: events.py:5 forms.py:14 links.py:31 menus.py:14 models.py:50 models.py:174
+#: permissions.py:5 search.py:56 views.py:155 workflow_actions.py:20
+msgid "Cabinets"
+msgstr "Gabinetes"
+
+#: events.py:9
+msgid "Cabinet created"
+msgstr "Gabinete creado"
+
+#: events.py:12
+msgid "Cabinet edited"
+msgstr "Gabinete editado"
+
+#: events.py:15
+msgid "Document added to cabinet"
+msgstr "Documento agregado al gabinete"
+
+#: events.py:18
+msgid "Document removed from cabinet"
+msgstr "Documento retirado del gabinete"
+
+#: links.py:37 links.py:49 workflow_actions.py:72
+msgid "Remove from cabinets"
+msgstr "Retirar de los gabinetes"
+
+#: links.py:41 links.py:45 workflow_actions.py:29
+msgid "Add to cabinets"
+msgstr "Agregar a gabinetes"
+
+#: links.py:60
+msgid "Add new level"
+msgstr "Agregar un nuevo nivel"
+
+#: links.py:65 views.py:40
+msgid "Create cabinet"
+msgstr "Crear gabinete"
+
+#: links.py:70
+msgid "Delete"
+msgstr "Eliminar"
+
+#: links.py:74
+msgid "Edit"
+msgstr "Editar"
+
+#: links.py:82
+msgid "All"
+msgstr "Todos"
+
+#: links.py:86
+msgid "Details"
+msgstr "Detalles"
+
+#: methods.py:20
+msgid "Return a list of cabinets containing the document."
+msgstr "Devuelve una lista de gabinetes que contienen el documento."
+
+#: methods.py:22
+msgid "get_cabinets()"
+msgstr "get_cabinets()"
+
+#: models.py:34
+msgid "A short text used to identify the cabinet."
+msgstr "Un breve texto utilizado para identificar el gabinete."
+
+#: models.py:35
+msgid "Label"
+msgstr "Etiqueta"
+
+#: models.py:39
+msgid "Documents"
+msgstr "Documentos"
+
+#: models.py:49 models.py:148 models.py:173 workflow_actions.py:64
+msgid "Cabinet"
+msgstr "Gabinete"
+
+#: models.py:115
+msgid "The path to the cabinet including all ancestors."
+msgstr "La ruta de gabinete, incluyendo todos los que lo contienen."
+
+#: models.py:117
+msgid "Full path"
+msgstr "Ruta completa"
+
+#: models.py:149
+msgid "Parent and Label"
+msgstr "Padre y etiqueta"
+
+#: models.py:156
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr "%(model_name)s con este %(field_labels)s ya existe."
+
+#: models.py:185
+msgid "Document cabinet"
+msgstr "Gabinete del documento"
+
+#: models.py:186 search.py:63 search.py:70 search.py:77 search.py:84
+msgid "Document cabinets"
+msgstr "Gabinetes de documentos"
+
+#: permissions.py:10
+msgid "Add documents to cabinets"
+msgstr "Agregar documentos a gabinetes"
+
+#: permissions.py:13
+msgid "Create cabinets"
+msgstr "Crear gabinetes"
+
+#: permissions.py:16
+msgid "Delete cabinets"
+msgstr "Borrar gabinetes"
+
+#: permissions.py:19
+msgid "Edit cabinets"
+msgstr "Editar gabinetes"
+
+#: permissions.py:22
+msgid "Remove documents from cabinets"
+msgstr "Quitar documentos de los gabinetes"
+
+#: permissions.py:25
+msgid "View cabinets"
+msgstr "Ver gabinetes"
+
+#: search.py:33
+msgid "Document type"
+msgstr "Tipo de documento"
+
+#: search.py:36
+msgid "Document MIME type"
+msgstr "Tipo MIME del documento"
+
+#: search.py:39
+msgid "Document label"
+msgstr "Etiqueta de documento"
+
+#: search.py:42
+msgid "Document description"
+msgstr "Descripción del documento"
+
+#: search.py:45
+msgid "Document UUID"
+msgstr "UUID del documento"
+
+#: search.py:50
+msgid "Document checksum"
+msgstr "Suma de comprobación del documento"
+
+#: serializers.py:18
+msgid "List of children cabinets."
+msgstr "Lista de los gabinetes contenidos."
+
+#: serializers.py:22
+msgid "The name of this cabinet level appended to the names of its ancestors."
+msgstr ""
+"El nombre de este nivel de gabinete añadido al de los gabinetes que lo "
+"contienen. "
+
+#: serializers.py:28
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
+msgstr ""
+"URL de la API del servicio que muestra los documentos contenidos en este "
+"gabinete."
+
+#: templates/cabinets/cabinet_details.html:17
+msgid "Navigation:"
+msgstr "Navegación:"
+
+#: views.py:56
+#, python-format
+msgid "Add new level to: %s"
+msgstr "Agregar un nuevo nivel a: %s"
+
+#: views.py:80
+#, python-format
+msgid "Delete the cabinet: %s?"
+msgstr "¿Borrar gabinete: %s?"
+
+#: views.py:116
+msgid ""
+"Cabinet levels can contain documents or other cabinet sub levels. To add "
+"documents to a cabinet, select the cabinet view of a document view."
+msgstr ""
+"Los niveles del gabinete pueden contener documentos u otros subniveles del "
+"gabinete. Para agregar documentos a un gabinete, seleccione la vista de "
+"gabinete de una vista de documento."
+
+#: views.py:120
+msgid "This cabinet level is empty"
+msgstr "Este nivel de gabinete está vacío"
+
+#: views.py:123
+#, python-format
+msgid "Details of cabinet: %s"
+msgstr "Detalles del gabinete: %s"
+
+#: views.py:141
+#, python-format
+msgid "Edit cabinet: %s"
+msgstr "Editar gabinete: %s"
+
+#: views.py:161
+msgid ""
+"Cabinets are a multi-level method to organize documents. Each cabinet can "
+"contain documents as well as other sub level cabinets."
+msgstr ""
+"Los gabinetes son un método de varios niveles para organizar documentos. "
+"Cada gabinete puede contener documentos, así como otros gabinetes de nivel "
+"inferior."
+
+#: views.py:165
+msgid "No cabinets available"
+msgstr "No hay gabinetes disponibles"
+
+#: views.py:178
+#, python-format
+msgid "Document \"%(object)s\" added to cabinets successfully."
+msgstr "El documento \"%(object)s\" se agregó correctamente a los gabinetes."
+
+#: views.py:181
+#, python-format
+msgid "%(count)d document added to cabinets successfully."
+msgstr "%(count)d documento se agregó correctamente a los gabinetes."
+
+#: views.py:184
+#, python-format
+msgid "%(count)d documents added to cabinets successfully."
+msgstr "%(count)d documentos se agregaron correctamente a los gabinetes."
+
+#: views.py:186
+#, python-format
+msgid "Add document \"%(object)s\" to cabinets."
+msgstr "Agregar el documento \"%(object)s\" a gabinetes."
+
+#: views.py:187
+#, python-format
+msgid "Add %(count)d document to cabinets."
+msgstr "Agregar %(count)d documento a gabinetes."
+
+#: views.py:188
+#, python-format
+msgid "Add %(count)d documents to cabinets."
+msgstr "Agregar %(count)d documentos a gabinetes."
+
+#: views.py:192
+msgid "Add"
+msgstr "Agregar"
+
+#: views.py:207
+msgid "Cabinets to which the selected documents will be added."
+msgstr "Gabinetes a los cuales el documento seleccionado va a ser agregado."
+
+#: views.py:253
+msgid "Documents can be added to many cabinets."
+msgstr "Los documentos se pueden agregar a muchos gabinetes."
+
+#: views.py:256
+msgid "This document is not in any cabinet"
+msgstr "Este documento no está en ningún gabinete"
+
+#: views.py:260
+#, python-format
+msgid "Cabinets containing document: %s"
+msgstr "Gabinetes que contienen el documento: %s"
+
+#: views.py:276
+#, python-format
+msgid "Document \"%(object)s\" removed from cabinets successfully."
+msgstr "El documento \"%(object)s\" se eliminó correctamente de los gabinetes."
+
+#: views.py:279
+#, python-format
+msgid "%(count)d document removed from cabinets successfully."
+msgstr "%(count)d documento eliminado de los gabinetes con éxito."
+
+#: views.py:282
+#, python-format
+msgid "%(count)d documents removed from cabinets successfully."
+msgstr "%(count)d documentos eliminados de los gabinetes con éxito."
+
+#: views.py:284
+#, python-format
+msgid "Remove document \"%(object)s\" from cabinets."
+msgstr "Remover el documento \"%(object)s\" de los gabinetes."
+
+#: views.py:285
+#, python-format
+msgid "Remove %(count)d document from cabinets."
+msgstr "Remover %(count)d documento de los gabinetes."
+
+#: views.py:286
+#, python-format
+msgid "Remove %(count)d documents from cabinets."
+msgstr "Remover %(count)d documentos de los gabinetes."
+
+#: views.py:290
+msgid "Remove"
+msgstr "Remover"
+
+#: views.py:305
+msgid "Cabinets from which the selected documents will be removed."
+msgstr "Gabinetes de los que se eliminarán los documentos seleccionados."
+
+#: wizard_steps.py:15
+msgid "Select cabinets"
+msgstr "Seleccionar gabinetes"
+
+#: wizard_steps.py:29 workflow_actions.py:23
+msgid "Cabinets to which the document will be added."
+msgstr "Gabinetes a los que se agregará el documento."
+
+#: workflow_actions.py:67
+msgid "Cabinets from which the document will be removed."
+msgstr "Gabinetes de los que se eliminará el documento."

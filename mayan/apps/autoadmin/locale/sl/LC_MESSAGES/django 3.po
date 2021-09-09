@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2021\n"
+"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+
+#: apps.py:13 settings.py:7
+msgid "Auto administrator"
+msgstr ""
+
+#: auth/allauth.py:51
+msgid ""
+"Welcome Admin! You have been given superuser privileges. Use them with "
+"caution."
+msgstr ""
+
+#: models.py:13
+msgid "Account"
+msgstr "Uporabniški račun"
+
+#: models.py:16
+msgid "Password"
+msgstr ""
+
+#: models.py:19
+msgid "Password hash"
+msgstr "Geslo koda"
+
+#: models.py:25
+msgid "Autoadmin properties"
+msgstr ""
+
+#: settings.py:11
+msgid "Sets the email of the automatically created super user account."
+msgstr ""
+
+#: settings.py:16
+msgid ""
+"The password of the automatically created super user account. If it is equal"
+" to None, the password is randomly generated."
+msgstr ""
+
+#: settings.py:22
+msgid "The username of the automatically created super user account."
+msgstr ""
+
+#: templates/autoadmin/credentials.html:11
+msgid "Automatic credentials"
+msgstr ""
+
+#: templates/autoadmin/credentials.html:16
+#, python-format
+msgid ""
+"You have just finished installing <strong>%(project_title)s</strong>, "
+"congratulations!"
+msgstr ""
+"Pravkar ste končali z namestitvijo <strong>%(project_title)s</strong>, "
+"čestitamo!"
+
+#: templates/autoadmin/credentials.html:17
+msgid "Login using the following credentials:"
+msgstr "Prijavite se z naslednjimi poverilnicami:"
+
+#: templates/autoadmin/credentials.html:19
+#, python-format
+msgid "Username: <strong>%(account)s</strong>"
+msgstr "Uporabniško ime: <strong>%(account)s</strong>"
+
+#: templates/autoadmin/credentials.html:20
+#, python-format
+msgid "Email: <strong>%(email)s</strong>"
+msgstr "Elektronska pošta: <strong>%(email)s</strong>"
+
+#: templates/autoadmin/credentials.html:21
+#, python-format
+msgid "Password: <strong>%(password)s</strong>"
+msgstr "Geslo: <strong>%(password)s</strong>"
+
+#: templates/autoadmin/credentials.html:23
+msgid ""
+"Be sure to change the password to increase security and to disable this "
+"message."
+msgstr ""

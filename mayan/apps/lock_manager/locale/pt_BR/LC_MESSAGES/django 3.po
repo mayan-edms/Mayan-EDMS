@@ -1,0 +1,65 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
+# Aline Freitas <aline@alinefreitas.com.br>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: Aline Freitas <aline@alinefreitas.com.br>, 2021\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:18 settings.py:10
+msgid "Lock manager"
+msgstr "Gerenciador de bloqueios"
+
+#: models.py:14
+msgid "Creation datetime"
+msgstr "Data e hora de criação"
+
+#: models.py:18
+msgid "Timeout"
+msgstr "Timeout"
+
+#: models.py:21
+msgid "Name"
+msgstr "Nome"
+
+#: models.py:27
+msgid "Lock"
+msgstr "Bloqueio"
+
+#: models.py:28
+msgid "Locks"
+msgstr "Bloqueios"
+
+#: settings.py:15
+msgid "Path to the class to use when to request and release resource locks."
+msgstr ""
+"Caminho para a classe a ser usada quando da requisição e da liberação de "
+"bloqueios de recurso."
+
+#: settings.py:22
+msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
+msgstr "Argumento para passar para LOCK_MANAGER_BACKEND."
+
+#: settings.py:28
+msgid ""
+"Default amount of time in seconds after which a resource lock will be "
+"automatically released."
+msgstr ""
+"Tempo padrão em segundos depois do qual um bloqueio de recurso será "
+"automaticamente liberada."

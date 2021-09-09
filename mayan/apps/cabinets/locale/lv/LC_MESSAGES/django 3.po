@@ -1,0 +1,334 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Māris Teivāns <maris.teivans@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
+"Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+
+#: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
+#: events.py:5 forms.py:14 links.py:31 menus.py:14 models.py:50 models.py:174
+#: permissions.py:5 search.py:56 views.py:155 workflow_actions.py:20
+msgid "Cabinets"
+msgstr "Kabineti"
+
+#: events.py:9
+msgid "Cabinet created"
+msgstr "Izveidots kabinets"
+
+#: events.py:12
+msgid "Cabinet edited"
+msgstr "Rediģēts kabinets"
+
+#: events.py:15
+msgid "Document added to cabinet"
+msgstr "Dokuments pievienots kabinetam"
+
+#: events.py:18
+msgid "Document removed from cabinet"
+msgstr "Dokuments izņemts no kabineta"
+
+#: links.py:37 links.py:49 workflow_actions.py:72
+msgid "Remove from cabinets"
+msgstr "Noņemiet no kabinetiem"
+
+#: links.py:41 links.py:45 workflow_actions.py:29
+msgid "Add to cabinets"
+msgstr "Pievienot kabinetiem"
+
+#: links.py:60
+msgid "Add new level"
+msgstr "Pievienot jaunu līmeni"
+
+#: links.py:65 views.py:40
+msgid "Create cabinet"
+msgstr "Izveidot kabinetu"
+
+#: links.py:70
+msgid "Delete"
+msgstr "Dzēst"
+
+#: links.py:74
+msgid "Edit"
+msgstr "Rediģēt"
+
+#: links.py:82
+msgid "All"
+msgstr "Visi"
+
+#: links.py:86
+msgid "Details"
+msgstr "Detaļas"
+
+#: methods.py:20
+msgid "Return a list of cabinets containing the document."
+msgstr "Atgrieziet kabientu sarakstu, kas satur šo dokumentu"
+
+#: methods.py:22
+msgid "get_cabinets()"
+msgstr "get_cabinets ()"
+
+#: models.py:34
+msgid "A short text used to identify the cabinet."
+msgstr "Īss teksts, ko izmanto kabineta identificēšanai."
+
+#: models.py:35
+msgid "Label"
+msgstr "Etiķete"
+
+#: models.py:39
+msgid "Documents"
+msgstr "Dokumenti"
+
+#: models.py:49 models.py:148 models.py:173 workflow_actions.py:64
+msgid "Cabinet"
+msgstr "Kabinets"
+
+#: models.py:115
+msgid "The path to the cabinet including all ancestors."
+msgstr "Ceļš uz kabinetu, ieskaitot visus senčus."
+
+#: models.py:117
+msgid "Full path"
+msgstr "Pilns ceļš"
+
+#: models.py:149
+msgid "Parent and Label"
+msgstr "Mātes elements un etiķete"
+
+#: models.py:156
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr "%(model_name)s ar šo %(field_labels)s jau eksistē."
+
+#: models.py:185
+msgid "Document cabinet"
+msgstr "Dokumentu kabinets"
+
+#: models.py:186 search.py:63 search.py:70 search.py:77 search.py:84
+msgid "Document cabinets"
+msgstr "Dokumentu kabineti"
+
+#: permissions.py:10
+msgid "Add documents to cabinets"
+msgstr "Pievienot dokumentus kabinetiem"
+
+#: permissions.py:13
+msgid "Create cabinets"
+msgstr "Izveidot kabinetus"
+
+#: permissions.py:16
+msgid "Delete cabinets"
+msgstr "Dzēst kabinetus"
+
+#: permissions.py:19
+msgid "Edit cabinets"
+msgstr "Rediģēt kabinetus"
+
+#: permissions.py:22
+msgid "Remove documents from cabinets"
+msgstr "Noņemt dokumentus no kabinetiem"
+
+#: permissions.py:25
+msgid "View cabinets"
+msgstr "Skatīt kabinetus"
+
+#: search.py:33
+msgid "Document type"
+msgstr "Dokumenta veids"
+
+#: search.py:36
+msgid "Document MIME type"
+msgstr "Dokumenta MIME tips"
+
+#: search.py:39
+msgid "Document label"
+msgstr "Dokumenta etiķete"
+
+#: search.py:42
+msgid "Document description"
+msgstr "Dokumenta apraksts"
+
+#: search.py:45
+msgid "Document UUID"
+msgstr "Dokumenta UUID"
+
+#: search.py:50
+msgid "Document checksum"
+msgstr "Dokumenta kontrolsumma"
+
+#: serializers.py:18
+msgid "List of children cabinets."
+msgstr "Bērnu kabinetu saraksts."
+
+#: serializers.py:22
+msgid "The name of this cabinet level appended to the names of its ancestors."
+msgstr "Šī kabineta līmeņa nosaukums pievienots to senču vārdiem."
+
+#: serializers.py:28
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
+msgstr "API gala punkta URL, kurā redzami saraksta dokumenti šajā kabinetā."
+
+#: templates/cabinets/cabinet_details.html:17
+msgid "Navigation:"
+msgstr "Navigācija:"
+
+#: views.py:56
+#, python-format
+msgid "Add new level to: %s"
+msgstr "Pievienot jaunu līmeni: %s"
+
+#: views.py:80
+#, python-format
+msgid "Delete the cabinet: %s?"
+msgstr "Dzēst kabinetu: %s?"
+
+#: views.py:116
+msgid ""
+"Cabinet levels can contain documents or other cabinet sub levels. To add "
+"documents to a cabinet, select the cabinet view of a document view."
+msgstr ""
+"Kabineta līmeņos var būt dokumenti vai citi kabineta apakšlīmeņi. Lai "
+"kabinetam pievienotu dokumentus, atlasiet dokumenta skatu kabineta skatam."
+
+#: views.py:120
+msgid "This cabinet level is empty"
+msgstr "Šis kabineta līmenis ir tukšs"
+
+#: views.py:123
+#, python-format
+msgid "Details of cabinet: %s"
+msgstr "Sīkāka informācija par kabinetu: %s"
+
+#: views.py:141
+#, python-format
+msgid "Edit cabinet: %s"
+msgstr "Rediģēt kabinetu: %s"
+
+#: views.py:161
+msgid ""
+"Cabinets are a multi-level method to organize documents. Each cabinet can "
+"contain documents as well as other sub level cabinets."
+msgstr ""
+"Kabineti ir daudzlīmeņu metode dokumentu organizēšanai. Katrs kabinets var "
+"saturēt dokumentus, kā arī citus apakšlīmeņu kabinetus."
+
+#: views.py:165
+msgid "No cabinets available"
+msgstr "Neviens kabinets nav pieejams"
+
+#: views.py:178
+#, python-format
+msgid "Document \"%(object)s\" added to cabinets successfully."
+msgstr ""
+
+#: views.py:181
+#, python-format
+msgid "%(count)d document added to cabinets successfully."
+msgstr ""
+
+#: views.py:184
+#, python-format
+msgid "%(count)d documents added to cabinets successfully."
+msgstr ""
+
+#: views.py:186
+#, python-format
+msgid "Add document \"%(object)s\" to cabinets."
+msgstr ""
+
+#: views.py:187
+#, python-format
+msgid "Add %(count)d document to cabinets."
+msgstr ""
+
+#: views.py:188
+#, python-format
+msgid "Add %(count)d documents to cabinets."
+msgstr ""
+
+#: views.py:192
+msgid "Add"
+msgstr "Pievienot"
+
+#: views.py:207
+msgid "Cabinets to which the selected documents will be added."
+msgstr "Kabienti, kuriem iezīmētie dokumenti tiks pievienoti."
+
+#: views.py:253
+msgid "Documents can be added to many cabinets."
+msgstr "Dokumentus var pievienot daudziem kabinetiem."
+
+#: views.py:256
+msgid "This document is not in any cabinet"
+msgstr "Šis dokuments nav nevienā kabinetā"
+
+#: views.py:260
+#, python-format
+msgid "Cabinets containing document: %s"
+msgstr "Kabineti, kas satur dokumentu: %s"
+
+#: views.py:276
+#, python-format
+msgid "Document \"%(object)s\" removed from cabinets successfully."
+msgstr ""
+
+#: views.py:279
+#, python-format
+msgid "%(count)d document removed from cabinets successfully."
+msgstr ""
+
+#: views.py:282
+#, python-format
+msgid "%(count)d documents removed from cabinets successfully."
+msgstr ""
+
+#: views.py:284
+#, python-format
+msgid "Remove document \"%(object)s\" from cabinets."
+msgstr ""
+
+#: views.py:285
+#, python-format
+msgid "Remove %(count)d document from cabinets."
+msgstr ""
+
+#: views.py:286
+#, python-format
+msgid "Remove %(count)d documents from cabinets."
+msgstr ""
+
+#: views.py:290
+msgid "Remove"
+msgstr "Noņemt"
+
+#: views.py:305
+msgid "Cabinets from which the selected documents will be removed."
+msgstr "Kabineti, no kuriem tiks izņemti atlasītie dokumenti."
+
+#: wizard_steps.py:15
+msgid "Select cabinets"
+msgstr ""
+
+#: wizard_steps.py:29 workflow_actions.py:23
+msgid "Cabinets to which the document will be added."
+msgstr ""
+
+#: workflow_actions.py:67
+msgid "Cabinets from which the document will be removed."
+msgstr ""

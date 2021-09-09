@@ -1,0 +1,312 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Jiri Fait <fait@orkasolutions.cz>, 2021
+# Michal Švábík <snadno@lehce.cz>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: apps.py:33
+msgid "Django GPG"
+msgstr "Django GPG"
+
+#: apps.py:56 apps.py:62 forms.py:15
+msgid "Key ID"
+msgstr "ID klíče"
+
+#: apps.py:66 forms.py:32 models.py:59
+msgid "Type"
+msgstr "Typ"
+
+#: apps.py:70 forms.py:21 models.py:40
+msgid "Creation date"
+msgstr "Datum vytvoření"
+
+#: apps.py:74
+msgid "No expiration"
+msgstr "Bez vypršení platnosti"
+
+#: apps.py:75 forms.py:25 models.py:44
+msgid "Expiration date"
+msgstr "Datum vypršení platnosti"
+
+#: apps.py:78 forms.py:30 models.py:51
+msgid "Length"
+msgstr "Délka"
+
+#: apps.py:83 forms.py:17 models.py:56
+msgid "User ID"
+msgstr "uživatelské ID"
+
+#: dependencies.py:10
+msgid "GNU privacy guard - a PGP implementation."
+msgstr "Ochrana soukromí GNU - implementace PGP."
+
+#: events.py:5 links.py:42 permissions.py:5
+msgid "Key management"
+msgstr "Správa klíčů"
+
+#: events.py:8
+msgid "Key created"
+msgstr ""
+
+#: events.py:12
+msgid "Key downloaded"
+msgstr ""
+
+#: forms.py:26
+msgid "None"
+msgstr "Žádný"
+
+#: forms.py:29 models.py:48
+msgid "Fingerprint"
+msgstr "Otisk"
+
+#: forms.py:31 models.py:54
+msgid "Algorithm"
+msgstr "Algoritmus"
+
+#: forms.py:45
+msgid "Term"
+msgstr "Termín"
+
+#: forms.py:46
+msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr "Hledejte jméno, e-mail, ID klíče nebo otisk prstu."
+
+#: links.py:17
+msgid "Delete"
+msgstr "Odstranit"
+
+#: links.py:22
+msgid "Details"
+msgstr "Detail"
+
+#: links.py:27
+msgid "Download"
+msgstr "Stažení"
+
+#: links.py:32 permissions.py:26
+msgid "Query keyservers"
+msgstr "Dotazové servery klíčů"
+
+#: links.py:37
+msgid "Import"
+msgstr "Import"
+
+#: links.py:46
+msgid "Upload key"
+msgstr "Klíč pro nahrávání"
+
+#: links.py:50 views.py:194
+msgid "Private keys"
+msgstr "Soukromé klíče"
+
+#: links.py:54 views.py:218
+msgid "Public keys"
+msgstr "Veřejné klíče"
+
+#: literals.py:23 literals.py:31
+msgid "Public"
+msgstr "Veřejný"
+
+#: literals.py:24 literals.py:32
+msgid "Secret"
+msgstr "Tajemství"
+
+#: literals.py:40 literals.py:45
+msgid "RSA"
+msgstr "RSA"
+
+#: literals.py:41
+msgid "DSA"
+msgstr "DSA"
+
+#: literals.py:46
+msgid "Elgamal"
+msgstr "Elgamal"
+
+#: literals.py:62
+msgid "Bad signature."
+msgstr "Špatný podpis."
+
+#: literals.py:65
+msgid "Document not signed or invalid signature."
+msgstr "Dokument není podepsán nebo neplatný podpis."
+
+#: literals.py:68
+msgid "Signature error."
+msgstr "Chyba podpisu."
+
+#: literals.py:72
+msgid "Document is signed but no public key is available for verification."
+msgstr ""
+"Dokument je podepsán, ale k ověření není k dispozici žádný veřejný klíč."
+
+#: literals.py:77
+msgid "Document is signed, and signature is good."
+msgstr "Dokument je podepsán a podpis je vpořádku."
+
+#: literals.py:80
+msgid "Document is signed with a valid signature."
+msgstr "Dokument je podepsán platným podpisem."
+
+#: models.py:36
+msgid "ASCII armored version of the key."
+msgstr "ASCII obrněná verze klíče."
+
+#: models.py:37
+msgid "Key data"
+msgstr "Data klíče"
+
+#: models.py:65
+msgid "Key"
+msgstr "Klíč"
+
+#: models.py:66
+msgid "Keys"
+msgstr "Klíče"
+
+#: models.py:78
+msgid "Invalid key data"
+msgstr "Neplatná datadata klíče"
+
+#: models.py:81
+msgid "Key already exists."
+msgstr "Klíč již existuje."
+
+#: permissions.py:8
+msgid "Delete keys"
+msgstr "Smazat klíče"
+
+#: permissions.py:11
+msgid "Download keys"
+msgstr "Stáhněte si klíče"
+
+#: permissions.py:14
+msgid "Import keys from keyservers"
+msgstr "Importujte klíče ze správců klíčů"
+
+#: permissions.py:17
+msgid "Use keys to sign content"
+msgstr "Použijte klíče k podepsání obsahu "
+
+#: permissions.py:20
+msgid "Upload keys"
+msgstr "Nahrajte klíče"
+
+#: permissions.py:23
+msgid "View keys"
+msgstr "Zobrazit klíče"
+
+#: settings.py:10
+msgid "Signatures"
+msgstr "Podpisy"
+
+#: settings.py:16
+msgid "Full path to the backend to be used to handle keys and signatures."
+msgstr ""
+"Úplná cesta k backendu, který se používá ke zpracování klíčů a podpisů."
+
+#: settings.py:25
+msgid "Keyserver used to query for keys."
+msgstr "Keyserver slouží k dotazování na klíče."
+
+#: views.py:39
+#, python-format
+msgid "Delete key: %s"
+msgstr "Smazat klíč: %s"
+
+#: views.py:56
+#, python-format
+msgid "Details for key: %s"
+msgstr "Podrobnosti pro klíč: %s"
+
+#: views.py:84
+#, python-format
+msgid "Import key ID: %s?"
+msgstr "Import klíče ID: %s?"
+
+#: views.py:85
+msgid "Import key"
+msgstr "Importovat klíč"
+
+#: views.py:94
+#, python-format
+msgid "Unable to import key: %(key_id)s; %(error)s"
+msgstr "Nelze importovat klíč: %(key_id)s; %(error)s"
+
+#: views.py:102
+#, python-format
+msgid "Successfully received key: %(key_id)s"
+msgstr "Klíč byl úspěšně přijat: %(key_id)s"
+
+#: views.py:119
+msgid ""
+"Use names, last names, key ids or emails to search public keys to import "
+"from the keyserver."
+msgstr ""
+"Pomocí jmen, příjmení, identifikátorů klíčů nebo e-mailů můžete hledat "
+"veřejné klíče, které chcete importovat ze serveru klíčů."
+
+#: views.py:123
+msgid "No results returned"
+msgstr "Nebyly nalezeny žádné výsledky"
+
+#: views.py:125
+msgid "Key query results"
+msgstr "Výsledky dotazu na klíč "
+
+#: views.py:145
+msgid "Search"
+msgstr "Vyhledávání"
+
+#: views.py:147
+msgid "Query key server"
+msgstr "Fronta dotazu na Server klíčů"
+
+#: views.py:166
+msgid "Upload new key"
+msgstr "Nahrajte nový klíč"
+
+#: views.py:187
+msgid ""
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user. The view to upload private and public keys is the same."
+msgstr ""
+"Soukromé klíče se používají k podepsaným dokumentům. Soukromé klíče může "
+"vkládat pouze uživatel. Pohled na nahrávání soukromých a veřejných klíčů je "
+"stejný."
+
+#: views.py:192
+msgid "There no private keys"
+msgstr "Neexistují žádné soukromé klíče"
+
+#: views.py:210
+msgid ""
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
+"public keys is the same."
+msgstr ""
+"Veřejné klíče se používají k ověření podepsaných dokumentů. Veřejné klíče "
+"může uživatel nahrát nebo stáhnout ze serverů klíčů. Pohled na nahrávání "
+"soukromých a veřejných klíčů je stejný."
+
+#: views.py:216
+msgid "There no public keys"
+msgstr "Neexistují žádné veřejné klíče"

@@ -1,0 +1,395 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:54 events.py:6 permissions.py:6 settings.py:12
+msgid "Document signatures"
+msgstr "Firmas de documentos"
+
+#: apps.py:111
+msgid "Date and time"
+msgstr "Fecha y hora"
+
+#: apps.py:115 models.py:52
+msgid "Key ID"
+msgstr "Identificador de llave"
+
+#: apps.py:119 forms.py:72
+msgid "None"
+msgstr "Ninguno"
+
+#: apps.py:120 forms.py:60 models.py:57
+msgid "Signature ID"
+msgstr "ID de firma"
+
+#: apps.py:125
+msgid "Type"
+msgstr "Tipo"
+
+#: events.py:10
+msgid "Detached signature created"
+msgstr "Firma separada creada"
+
+#: events.py:13
+msgid "Detached signature uploaded"
+msgstr "Se cargó la firma separada"
+
+#: events.py:17
+msgid "Embedded signature created"
+msgstr "Firma integrada creada"
+
+#: forms.py:17 forms.py:31 workflow_actions.py:19
+msgid "Key"
+msgstr "Llave"
+
+#: forms.py:22 serializers.py:66 workflow_actions.py:30
+msgid ""
+"The passphrase to unlock the key and allow it to be used to sign the "
+"document file."
+msgstr ""
+"La frase de contraseña para desbloquear la llave y permitir que se use para "
+"firmar el archivo del documento."
+
+#: forms.py:24 workflow_actions.py:27
+msgid "Passphrase"
+msgstr "Contraseña"
+
+#: forms.py:33
+msgid "Private key that will be used to sign this document file."
+msgstr "Llave privada que se utilizará para firmar este archivo de documento."
+
+#: forms.py:44
+msgid "Signature is embedded?"
+msgstr "¿Firma integrada?"
+
+#: forms.py:46
+msgid "Signature date"
+msgstr "Fecha de la firma"
+
+#: forms.py:49
+msgid "Signature key ID"
+msgstr "ID de llave de firma"
+
+#: forms.py:51
+msgid "Signature key present?"
+msgstr "¿Llave de la firma esta presente?"
+
+#: forms.py:62
+msgid "Key fingerprint"
+msgstr "Huella de la llave"
+
+#: forms.py:66
+msgid "Key creation date"
+msgstr "Fecha de creación de la llave"
+
+#: forms.py:71
+msgid "Key expiration date"
+msgstr "Fecha de expiración de la llave"
+
+#: forms.py:76
+msgid "Key length"
+msgstr "Tamaño de la llave"
+
+#: forms.py:80
+msgid "Key algorithm"
+msgstr "Algoritmo de la llave"
+
+#: forms.py:84
+msgid "Key user ID"
+msgstr "ID de usuario de la llave"
+
+#: forms.py:88
+msgid "Key type"
+msgstr "Tipo de llave"
+
+#: links.py:40
+msgid "Refresh all signatures"
+msgstr "Actualizar todas las firmas"
+
+#: links.py:46
+msgid "Verify all documents"
+msgstr "Verificar todos los documents"
+
+#: links.py:53
+msgid "Delete"
+msgstr "Eliminar"
+
+#: links.py:60
+msgid "Sign detached"
+msgstr "Firma aparte"
+
+#: links.py:67
+msgid "Details"
+msgstr "Detalles"
+
+#: links.py:74
+msgid "Download"
+msgstr "Descargar"
+
+#: links.py:80
+msgid "Sign embedded"
+msgstr "Firma integrada"
+
+#: links.py:86 queues.py:8
+msgid "Signatures"
+msgstr "Firmas"
+
+#: links.py:92
+msgid "Upload signature"
+msgstr "Subir firma"
+
+#: models.py:42
+msgid "Document file"
+msgstr "Archivo de documento"
+
+#: models.py:47
+msgid "Date and time signed"
+msgstr "Fecha y hora firmada"
+
+#: models.py:51
+msgid "ID of the key that will be used to sign the document."
+msgstr "Identificación de la llave que se utilizará para firmar el documento."
+
+#: models.py:61
+msgid "Public key fingerprint"
+msgstr "Huella de llave publica"
+
+#: models.py:68
+msgid "Document file signature"
+msgstr "Firma del archivo del documento"
+
+#: models.py:69
+msgid "Document file signatures"
+msgstr "Firmas de archivos de documentos"
+
+#: models.py:88
+msgid "Detached"
+msgstr "Aparte"
+
+#: models.py:90
+msgid "Embedded"
+msgstr "Integrado"
+
+#: models.py:155
+msgid "Signature file previously generated."
+msgstr "Archivo de firma generado previamente."
+
+#: models.py:158
+msgid "Signature file"
+msgstr "Archivo de firma"
+
+#: models.py:164
+msgid "Document file detached signature"
+msgstr "Firma separada del archivo del documento"
+
+#: models.py:165
+msgid "Document file detached signatures"
+msgstr "Firmas separadas de archivos de documentos"
+
+#: models.py:168
+msgid "signature"
+msgstr "firma"
+
+#: models.py:210
+msgid "Document file embedded signature"
+msgstr "Firma integrada del archivo de documento"
+
+#: models.py:211
+msgid "Document file embedded signatures"
+msgstr "Firmas integradas de archivos de documentos"
+
+#: permissions.py:10
+msgid "Sign documents with detached signatures"
+msgstr "Firmar documentos con firma aparte"
+
+#: permissions.py:14
+msgid "Sign documents with embedded signatures"
+msgstr "Firmar documentos con firma integrada"
+
+#: permissions.py:18
+msgid "Delete detached signatures"
+msgstr "Borrar firmas aparte"
+
+#: permissions.py:22
+msgid "Download detached document signatures"
+msgstr "Descargar firma aparte de documentos"
+
+#: permissions.py:26
+msgid "Upload detached document signatures"
+msgstr "Subir firmas aparte de documentos"
+
+#: permissions.py:30
+msgid "Verify document signatures"
+msgstr "Verificar firmas de documentos"
+
+#: permissions.py:34
+msgid "View details of document signatures"
+msgstr "Ver detalles de firma de documentos"
+
+#: queues.py:13
+msgid "Verify key signatures"
+msgstr "Verificar las firmas con llave"
+
+#: queues.py:17
+msgid "Unverify key signatures"
+msgstr "Anular la verificación de las firmas con llave"
+
+#: queues.py:21
+msgid "Verify document file"
+msgstr "Verificar archivo de documento"
+
+#: queues.py:26
+msgid "Verify missing embedded signature"
+msgstr "Verificar la firma integrada que falta"
+
+#: queues.py:30
+msgid "Refresh existing signature information"
+msgstr "Actualizar la información de la firma existente"
+
+#: serializers.py:60
+msgid "Primary key of the tag to add to the document."
+msgstr "Llave principal de la etiqueta para agregar al documento."
+
+#: settings.py:20
+msgid "Path to the Storage subclass to use when storing detached signatures."
+msgstr ""
+"Ruta a la subclase Storage para usar cuando se almacenan firmas separadas."
+
+#: settings.py:27
+msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
+msgstr "Argumentos para pasar al SIGNATURE_STORAGE_BACKEND."
+
+#: storages.py:13
+msgid ""
+"Unable to initialize the detached signatures storage. Check the settings {} "
+"and {} for formatting errors."
+msgstr ""
+"No se puede inicializar el almacenamiento de firmas separadas. Verifique las"
+" configuraciones {} y {} para errores de formato."
+
+#: storages.py:20
+msgid "Detached signatures"
+msgstr "Firmas separadas"
+
+#: views.py:66 views.py:135
+msgid "Passphrase is needed to unlock this key."
+msgstr "Se necesita contraseña para acceder a esta llave."
+
+#: views.py:79 views.py:148
+msgid "Passphrase is incorrect."
+msgstr "Contraseña incorrecta."
+
+#: views.py:92 views.py:161
+msgid "Document file signed successfully."
+msgstr "Archivo de documento firmado correctamente."
+
+#: views.py:102 views.py:178
+msgid "Sign"
+msgstr "Firmar"
+
+#: views.py:104
+#, python-format
+msgid "Sign document file \"%s\" with a detached signature"
+msgstr "Firmar el archivo de documento \"%s\" con una firma separada"
+
+#: views.py:180
+#, python-format
+msgid "Sign document file \"%s\" with a embedded signature"
+msgstr "Firmar el archivo de documento \"%s\" con una firma integrada"
+
+#: views.py:196
+#, python-format
+msgid "Delete detached signature: %s"
+msgstr "Borrar firma aparte: %s"
+
+#: views.py:226
+#, python-format
+msgid "Details for signature: %s"
+msgstr "Detalles para la firma: %s"
+
+#: views.py:268
+msgid ""
+"Signatures help provide authorship evidence and tamper detection. They are "
+"very secure and hard to forge. A signature can be embedded as part of the "
+"document itself or uploaded as a separate file."
+msgstr ""
+"Las firmas ayudan a proporcionar evidencia de autoría y detección de "
+"manipulación. Son muy seguras y difíciles de falsificar. Una firma puede "
+"integrarse como parte del documento en sí o cargarse como un archivo "
+"separado."
+
+#: views.py:297
+msgid "There are no signatures for this document file."
+msgstr "No hay firmas para este archivo de documento."
+
+#: views.py:301
+#, python-format
+msgid "Signatures for document file: %s"
+msgstr "Firmas para archivo de documento: %s"
+
+#: views.py:322
+#, python-format
+msgid "Upload detached signature for document file: %s"
+msgstr "Cargar una firma separada para el archivo del documento: %s"
+
+#: views.py:340 views.py:359
+msgid "On large databases this operation may take some time to execute."
+msgstr ""
+"En bases de datos de gran tamaño esta operación puede tardar algún tiempo en"
+" ejecutarse."
+
+#: views.py:341
+msgid "Refresh all signatures information?"
+msgstr "¿Actualizar toda la información de las firmas?"
+
+#: views.py:351
+msgid "Signature information refresh queued successfully."
+msgstr ""
+"Actualización de la información de la firma enviada a la cola con éxito."
+
+#: views.py:360
+msgid "Verify all document for signatures?"
+msgstr "¿Verificar todos los documentos para firmas?"
+
+#: views.py:370
+msgid "Signature verification queued successfully."
+msgstr "Verificación de firmas colocada en la cola."
+
+#: workflow_actions.py:22
+msgid "Private key that will be used to sign the document file."
+msgstr "Llave privada que se utilizará para firmar el archivo del documento."
+
+#: workflow_actions.py:37
+msgid "Sign document (detached)"
+msgstr "Firmar documento (separado)"
+
+#: workflow_actions.py:49
+msgid ""
+"Document has no file to sign. You might be trying to use this action in an "
+"initial state before the created document is yet to be processed."
+msgstr ""
+"El documento no tiene archivo para firmar. Es posible que esté intentando "
+"utilizar esta acción en un estado inicial antes de que el documento creado "
+"aún no se haya procesado."
+
+#: workflow_actions.py:80
+msgid "Sign document (embedded)"
+msgstr "Firmar documento (integrado)"

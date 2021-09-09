@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# WM Shinkada <shinkadawasim@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: apps.py:18 settings.py:10
+msgid "Lock manager"
+msgstr "القفل الخاص بالمدير"
+
+#: models.py:14
+msgid "Creation datetime"
+msgstr "تاريخ الإنشاء "
+
+#: models.py:18
+msgid "Timeout"
+msgstr "انتهاء الوقت"
+
+#: models.py:21
+msgid "Name"
+msgstr "اسم"
+
+#: models.py:27
+msgid "Lock"
+msgstr "قفل"
+
+#: models.py:28
+msgid "Locks"
+msgstr "أقفال"
+
+#: settings.py:15
+msgid "Path to the class to use when to request and release resource locks."
+msgstr "مسار الى الفئه للاستعمال وقت الطلب و إنهاء إقفال المصدر"
+
+#: settings.py:22
+msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
+msgstr "حجج لتمريرها إلى LOCK_MANAGER_BACKEND."
+
+#: settings.py:28
+msgid ""
+"Default amount of time in seconds after which a resource lock will be "
+"automatically released."
+msgstr ""
+"مقدار الوقت الافتراضي بالثواني والذي سيتم بعده تحرير قفل المورد تلقائيًا."

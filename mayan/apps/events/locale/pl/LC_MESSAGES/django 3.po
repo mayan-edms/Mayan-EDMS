@@ -1,0 +1,273 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
+# Przemysław Bodio <przemyslawbodio.dev@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Przemysław Bodio <przemyslawbodio.dev@gmail.com>, 2021\n"
+"Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: apps.py:28 events.py:5 links.py:38 links.py:43 links.py:53 permissions.py:5
+#: queues.py:7 views/event_views.py:30
+msgid "Events"
+msgstr "Zdarzenia"
+
+#: apps.py:53 apps.py:81
+msgid "Date and time"
+msgstr "Data i godzina"
+
+#: apps.py:56 apps.py:84
+msgid "Actor"
+msgstr "Czynnik"
+
+#: apps.py:60 apps.py:89
+msgid "Event"
+msgstr "Zdarzenie"
+
+#: apps.py:64 apps.py:94
+msgid "Target"
+msgstr "Cel"
+
+#: apps.py:68 apps.py:98
+msgid "Action object"
+msgstr "Obiekt akcji"
+
+#: apps.py:73 forms.py:10 forms.py:67
+msgid "Namespace"
+msgstr "Przestrzeń nazw"
+
+#: apps.py:76 forms.py:14 forms.py:71
+msgid "Label"
+msgstr "Etykieta"
+
+#: apps.py:103
+msgid "Seen"
+msgstr "Widziane"
+
+#: classes.py:79
+msgid "Event list export to CSV"
+msgstr ""
+
+#: classes.py:108
+msgid "Events exported."
+msgstr ""
+
+#: classes.py:110
+#, python-format
+msgid ""
+"The event list has been exported and is available for download using the "
+"link: %(download_url)s or from the downloads area (%(download_list_url)s)."
+msgstr ""
+
+#: classes.py:274
+#, python-format
+msgid "Unknown or obsolete event type: %s"
+msgstr "Nieznany lub nieaktualny typ zdarzenia: %s"
+
+#: events.py:8
+msgid "Events exported"
+msgstr ""
+
+#: forms.py:18 forms.py:75
+msgid "Subscription"
+msgstr "Subskrypcja"
+
+#: forms.py:20 forms.py:77
+msgid "No"
+msgstr "Nie"
+
+#: forms.py:21 forms.py:78
+msgid "Subscribed"
+msgstr "Subskrybowany"
+
+#: html_widgets.py:22
+msgid "System"
+msgstr "System"
+
+#: links.py:30
+msgid "My events"
+msgstr "Moje zdarzenia"
+
+#: links.py:34 links.py:49 links.py:56 views/export_views.py:57
+msgid "Export events"
+msgstr ""
+
+#: links.py:61 models.py:63 views/subscription_views.py:56
+msgid "Event subscriptions"
+msgstr "Subskrypcje zdarzeń"
+
+#: links.py:66
+msgid "Mark as seen"
+msgstr "Oznacz jako widziane"
+
+#: links.py:69
+msgid "Mark all as seen"
+msgstr "Oznacz wszystkie jako widziane"
+
+#: links.py:75
+msgid "Subscriptions"
+msgstr "Subskrypcje"
+
+#: models.py:22
+msgid "Name"
+msgstr "Nazwa"
+
+#: models.py:26
+msgid "Stored event type"
+msgstr "Przechowywany typ zdarzenia"
+
+#: models.py:27
+msgid "Stored event types"
+msgstr "Przechowywane typy zdarzeń"
+
+#: models.py:52 models.py:78 models.py:109
+msgid "User"
+msgstr "Użytkownik"
+
+#: models.py:56 models.py:113
+msgid "Event type"
+msgstr "Typ zdarzenia"
+
+#: models.py:62
+msgid "Event subscription"
+msgstr "Subskrypcja zdarzeń"
+
+#: models.py:82
+msgid "Action"
+msgstr "Akcja"
+
+#: models.py:84
+msgid "Read"
+msgstr "Przeczytane"
+
+#: models.py:90
+msgid "Notification"
+msgstr "Powiadomienie"
+
+#: models.py:91 views/notification_views.py:30
+msgid "Notifications"
+msgstr "Powiadomienia"
+
+#: models.py:119
+msgid "Object event subscription"
+msgstr "Subskrypcja zdarzeń obiektowych"
+
+#: models.py:120
+msgid "Object event subscriptions"
+msgstr "Subskrypcje zdarzeń obiektowych"
+
+#: permissions.py:8
+msgid "Export the events of an object"
+msgstr ""
+
+#: permissions.py:11
+msgid "Access the events of an object"
+msgstr "Dostęp do zdarzeń obiektu"
+
+#: queues.py:13
+msgid "Export event querysets"
+msgstr ""
+
+#: views/event_views.py:26
+msgid "Events track actions that have been performed on, to, or with objects."
+msgstr ""
+
+#: views/event_views.py:29
+msgid "There are no events"
+msgstr ""
+
+#: views/event_views.py:44
+msgid "There are no events for this object"
+msgstr "Brak zdarzeń dla tego obiektu"
+
+#: views/event_views.py:46
+#, python-format
+msgid "Events for: %s"
+msgstr "Zdarzenia dla: %s"
+
+#: views/event_views.py:68
+msgid "There are no events of this type"
+msgstr ""
+
+#: views/event_views.py:70 views/export_views.py:105
+#, python-format
+msgid "Events of type: %s"
+msgstr "Zdarzenia typu: %s"
+
+#: views/export_views.py:26
+msgid ""
+"The process will be performed in the background. The exported events will be"
+" available in the downloads area."
+msgstr ""
+
+#: views/export_views.py:45
+msgid "Event list export task queued successfully."
+msgstr ""
+
+#: views/export_views.py:76
+#, python-format
+msgid "Export events for: %s"
+msgstr ""
+
+#: views/notification_views.py:25
+msgid "Subscribe to global or object events to receive notifications."
+msgstr ""
+"Subskrybuj globalne lub obiektowe zdarzenia, aby otrzymywać powiadomienia."
+
+#: views/notification_views.py:28
+msgid "There are no notifications"
+msgstr "Brak powiadomień"
+
+#: views/notification_views.py:44
+msgid "Mark the selected notification as read?"
+msgstr ""
+
+#: views/notification_views.py:56
+msgid "Notification marked as read."
+msgstr ""
+
+#: views/notification_views.py:67
+msgid "Mark all notification as read?"
+msgstr ""
+
+#: views/notification_views.py:77
+msgid "All notifications marked as read."
+msgstr ""
+
+#: views/subscription_views.py:40
+#, python-format
+msgid "Error updating event subscription; %s"
+msgstr "Błąd podczas aktualizacji subskrypcji zdarzenia; %s"
+
+#: views/subscription_views.py:45
+msgid "Event subscriptions updated successfully"
+msgstr "Subskrypcje zdarzeń zostały zaktualizowane pomyślnie"
+
+#: views/subscription_views.py:114
+#, python-format
+msgid "Error updating object event subscription; %s"
+msgstr "Błąd podczas aktualizowania subskrypcji zdarzenia obiektowego; %s"
+
+#: views/subscription_views.py:120
+msgid "Object event subscriptions updated successfully"
+msgstr "Subskrypcje zdarzeń obiektowych zostały pomyślnie zaktualizowane"
+
+#: views/subscription_views.py:131
+#, python-format
+msgid "Event subscriptions for: %s"
+msgstr "Subskrypcje zdarzeń dla: %s"

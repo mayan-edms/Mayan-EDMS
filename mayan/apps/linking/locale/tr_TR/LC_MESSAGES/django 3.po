@@ -1,0 +1,351 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Nurgül Özkan <nurgulozkan@hotmail.com>, 2021
+# serhatcan77 <serhat_can@yahoo.com>, 2021
+# abc Def <hdogan1974@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:26+0000\n"
+"Last-Translator: abc Def <hdogan1974@gmail.com>, 2021\n"
+"Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:40
+msgid "Linking"
+msgstr "Bağlama"
+
+#: apps.py:94 models.py:29
+msgid "Label"
+msgstr "Etiket"
+
+#: events.py:6 links.py:24 links.py:75 links.py:80 links.py:85 models.py:48
+#: permissions.py:5 views.py:191
+msgid "Smart links"
+msgstr "Akıllı bağlantılar"
+
+#: events.py:10
+msgid "Smart link created"
+msgstr ""
+
+#: events.py:13
+msgid "Smart link edited"
+msgstr ""
+
+#: forms.py:45
+msgid "Foreign document field"
+msgstr ""
+
+#: links.py:29
+msgid "Create condition"
+msgstr "Oluşturma durumu"
+
+#: links.py:35 links.py:55
+msgid "Delete"
+msgstr "Sil"
+
+#: links.py:39 links.py:64
+msgid "Edit"
+msgstr "Düzenle"
+
+#: links.py:44
+msgid "Conditions"
+msgstr "Koşullar"
+
+#: links.py:50 views.py:227
+msgid "Create new smart link"
+msgstr "Yeni akıllı bağlantı oluştur"
+
+#: links.py:59 models.py:40
+msgid "Document types"
+msgstr "Belge türleri"
+
+#: links.py:69
+msgid "Documents"
+msgstr "Belgeler"
+
+#: literals.py:7
+msgid "and"
+msgstr "ve"
+
+#: literals.py:8
+msgid "or"
+msgstr "veya"
+
+#: literals.py:12
+msgid "is equal to"
+msgstr "eşittir"
+
+#: literals.py:13
+msgid "is equal to (case insensitive)"
+msgstr "Eşittir (büyük / küçük harf duyarsız)"
+
+#: literals.py:14
+msgid "contains"
+msgstr "içeren"
+
+#: literals.py:15
+msgid "contains (case insensitive)"
+msgstr "Içerir (büyük / küçük harf duyarsız)"
+
+#: literals.py:16
+msgid "is in"
+msgstr "içinde"
+
+#: literals.py:17
+msgid "is greater than"
+msgstr "büyüktür"
+
+#: literals.py:18
+msgid "is greater than or equal to"
+msgstr "büyük veya eşit"
+
+#: literals.py:19
+msgid "is less than"
+msgstr "küçüktür"
+
+#: literals.py:20
+msgid "is less than or equal to"
+msgstr "Küçük veya eşittir"
+
+#: literals.py:21
+msgid "starts with"
+msgstr "ile başlar"
+
+#: literals.py:22
+msgid "starts with (case insensitive)"
+msgstr "Ile başlar (büyük / küçük harfe duyarsız)"
+
+#: literals.py:23
+msgid "ends with"
+msgstr "Ile biter"
+
+#: literals.py:24
+msgid "ends with (case insensitive)"
+msgstr "Ile biter (büyük / küçük harfe duyarsız)"
+
+#: literals.py:25
+msgid "is in regular expression"
+msgstr "Düzenli ifade içinde"
+
+#: literals.py:26
+msgid "is in regular expression (case insensitive)"
+msgstr "Düzenli ifadede (harf büyüklüğüne duyarsız)"
+
+#: models.py:28
+msgid "A short text describing the smart link."
+msgstr ""
+
+#: models.py:33
+msgid ""
+"Use this field to show a unique label depending on the document from which "
+"the smart link is being accessed."
+msgstr ""
+
+#: models.py:35
+msgid "Dynamic label"
+msgstr ""
+
+#: models.py:37 models.py:186
+msgid "Enabled"
+msgstr "Etkin"
+
+#: models.py:47 models.py:164
+msgid "Smart link"
+msgstr "Akıllı bağlantı"
+
+#: models.py:80
+#, python-format
+msgid "Error generating dynamic label; %s"
+msgstr ""
+
+#: models.py:95
+msgid "This smart link is not allowed for the selected document's type."
+msgstr "Seçilen dokümanın türü için bu akıllı bağlantıya izin verilmez."
+
+#: models.py:168
+msgid "The inclusion is ignored for the first item."
+msgstr "İlk öğe için dahil edilmez."
+
+#: models.py:172
+msgid "This represents the metadata of all other documents."
+msgstr "Bu, tüm diğer belgelerin meta verilerini temsil eder."
+
+#: models.py:173
+msgid "Foreign document attribute"
+msgstr "Yabancı belge özniteliği"
+
+#: models.py:178
+msgid ""
+"The expression using document properties to be evaluated against the foreign"
+" document field."
+msgstr ""
+
+#: models.py:180
+msgid "Expression"
+msgstr "İfade"
+
+#: models.py:183
+msgid "Inverts the logic of the operator."
+msgstr "Operatör mantığını ters çevirir."
+
+#: models.py:184
+msgid "Negated"
+msgstr "Negatiflenmiş"
+
+#: models.py:189
+msgid "Link condition"
+msgstr "Bağlantı durumu"
+
+#: models.py:190
+msgid "Link conditions"
+msgstr "Bağlantı koşulları"
+
+#: models.py:206
+msgid "not"
+msgstr "değil"
+
+#: models.py:210
+msgid "Full label"
+msgstr ""
+
+#: permissions.py:8
+msgid "Create new smart links"
+msgstr "Yeni akıllı bağlantılar oluştur"
+
+#: permissions.py:11
+msgid "Delete smart links"
+msgstr "Akıllı bağlantıları sil"
+
+#: permissions.py:14
+msgid "Edit smart links"
+msgstr "Akıllı bağlantıları güncelle"
+
+#: permissions.py:17
+msgid "View existing smart links"
+msgstr "Mevcut akıllı bağlantıları görüntüle"
+
+#: serializers.py:52
+msgid "Primary key of the document type to add to the smart link."
+msgstr ""
+
+#: serializers.py:61
+msgid "Primary key of the document type to remove from the smart link."
+msgstr ""
+
+#: views.py:41
+msgid "Available smart links"
+msgstr ""
+
+#: views.py:42
+msgid "Smart links enabled"
+msgstr ""
+
+#: views.py:68
+#, python-format
+msgid "Smart links to enable for document type: %s"
+msgstr ""
+
+#: views.py:103
+#, python-format
+msgid "Smart link query error: %s"
+msgstr "Akıllı bağlantı sorgu hatası: %s"
+
+#: views.py:114
+#, python-format
+msgid "Documents in smart link: %s"
+msgstr "Akıllı dokümanlar: %s"
+
+#: views.py:117
+#, python-format
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr ""
+
+#: views.py:153
+msgid "Available document types"
+msgstr "Kullanılabilir belge türleri"
+
+#: views.py:154
+msgid "Document types enabled"
+msgstr "Belge türleri etkinleştirildi"
+
+#: views.py:164
+#, python-format
+msgid "Document type for which to enable smart link: %s"
+msgstr "Akıllı bağlantıyı etkinleştirmek için kullanılan doküman türü: %s"
+
+#: views.py:182
+msgid ""
+"Indexes group documents into units, usually with similar properties and of "
+"equal or similar types. Smart links allow defining relationships between "
+"documents even if they are in different indexes and are of different types."
+msgstr ""
+
+#: views.py:189
+msgid "There are no smart links"
+msgstr ""
+
+#: views.py:207
+msgid ""
+"Smart links allow defining relationships between documents even if they are "
+"in different indexes and are of different types."
+msgstr ""
+
+#: views.py:212
+msgid "There are no smart links for this document"
+msgstr ""
+
+#: views.py:215
+#, python-format
+msgid "Smart links for document: %s"
+msgstr "Belge için akıllı bağlantılar: %s"
+
+#: views.py:249
+#, python-format
+msgid "Delete smart link: %s"
+msgstr ""
+
+#: views.py:265
+#, python-format
+msgid "Edit smart link: %s"
+msgstr "Akıllı bağlantıyı düzenleme: %s"
+
+#: views.py:290
+msgid ""
+"Conditions are small logic units that when combined define how the smart "
+"link will behave."
+msgstr ""
+
+#: views.py:294
+msgid "There are no conditions for this smart link"
+msgstr ""
+
+#: views.py:298
+#, python-format
+msgid "Conditions for smart link: %s"
+msgstr "Akıllı bağlantı için koşullar: %s"
+
+#: views.py:317
+#, python-format
+msgid "Add new conditions to smart link: \"%s\""
+msgstr "Akıllı bağlantıya yeni şartlar ekleyin: \"%s\""
+
+#: views.py:350
+#, python-format
+msgid "Delete smart link condition: \"%s\"?"
+msgstr ""
+
+#: views.py:376
+msgid "Edit smart link condition"
+msgstr "Akıllı bağlantı durumunu düzenle"

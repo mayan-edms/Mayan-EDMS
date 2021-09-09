@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-12 03:39+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:27
+msgid "Locales"
+msgstr "Места"
+
+#: links.py:13
+msgid "Locale profile"
+msgstr "Локален профил"
+
+#: links.py:18
+msgid "Edit locale profile"
+msgstr "Редактиране на локален профил"
+
+#: models.py:18
+msgid "User"
+msgstr "Потребител"
+
+#: models.py:22
+msgid "Timezone"
+msgstr "Часова зона"
+
+#: models.py:25
+msgid "Language"
+msgstr "Език"
+
+#: models.py:31
+msgid "User locale profile"
+msgstr "Профил на местоположението на потребителя"
+
+#: models.py:32
+msgid "User locale profiles"
+msgstr "Профили на местоположението на потребителя"
+
+#: views.py:24
+msgid "Current user locale profile details"
+msgstr "Данни от текущия локален потребителски профил "
+
+#: views.py:30
+msgid "Edit current user locale profile details"
+msgstr "Редактиране на данни за текущия локален потребителски профил"

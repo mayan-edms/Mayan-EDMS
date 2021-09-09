@@ -1,0 +1,497 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Mohammed ALDOUB <voulnet@gmail.com>, 2021
+# Yaman Sanobar <yman.snober@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# WM Shinkada <shinkadawasim@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
+msgid "Converter"
+msgstr "التغيرات"
+
+#: apps.py:83 forms.py:37
+msgid "Transformation"
+msgstr "التعديل الى "
+
+#: backends/python.py:124 backends/python.py:137
+#, python-format
+msgid "Exception determining PDF page count; %s"
+msgstr "استثناء تحديد عدد صفحات : %s"
+
+#: backends/python.py:151
+#, python-format
+msgid "Exception determining page count using Pillow; %s"
+msgstr "استثناء تحديد عدد الصفحات  ؛ %s"
+
+#: classes.py:157
+msgid "LibreOffice not installed or not found."
+msgstr "لم يتم التثبيت للعنصر"
+
+#: classes.py:261
+msgid "Not an office file format."
+msgstr "لا يطابق التنسيق المحدد"
+
+#: classes.py:395
+msgid ""
+"Transformations allow changing the visual appearance of documents without "
+"making permanent changes to the document file themselves."
+msgstr "تغير الوثيقة الخارجية للعرض"
+
+#: classes.py:446
+msgid "transformation"
+msgstr "التغيرات"
+
+#: dependencies.py:14
+msgid "Utility from the poppler-utils package used to inspect PDF files."
+msgstr "ادوات مساعدة اضافية"
+
+#: dependencies.py:19
+msgid ""
+"Utility from the popper-utils package used to extract pages from PDF files "
+"into PPM format images."
+msgstr "استخراج الصفحات"
+
+#: events.py:8
+msgid "Asset created"
+msgstr "تم الانشاء"
+
+#: events.py:11
+msgid "Asset edited"
+msgstr "تم التعديل"
+
+#: forms.py:16
+msgid "Preview"
+msgstr "استعراض "
+
+#: forms.py:36
+msgid "Available transformations for this layer."
+msgstr "التغيرات المتاحة للفئة "
+
+#: forms.py:73 workflow_actions.py:74
+#, python-format
+msgid "\"%s\" not a valid entry."
+msgstr "&quot;%s&quot; ليس إدخالاً صالحًا."
+
+#: layers.py:11
+msgid ""
+"Decorations are visual elements that add contextual information to images."
+msgstr "يتم إضافة مجموعة من الضبوطات لعكسها على الوثيقة "
+
+#: layers.py:13
+msgid "Decorations"
+msgstr "الضبط"
+
+#: layers.py:24
+msgid "Saved transformations"
+msgstr "حفظ"
+
+#: links.py:35 views.py:39
+msgid "Create asset"
+msgstr "أنشاء"
+
+#: links.py:38 links.py:44 links.py:64
+msgid "Delete"
+msgstr "حذف"
+
+#: links.py:48 links.py:72
+msgid "Edit"
+msgstr "تعديل"
+
+#: links.py:56 models.py:62 storages.py:21 views.py:143
+msgid "Assets"
+msgstr "الأصول"
+
+#: links.py:77
+msgid "Transformations"
+msgstr "المسار التعديلي"
+
+#: links.py:82
+msgid "Select new transformation"
+msgstr "تحديد جديد"
+
+#: models.py:45
+msgid "Label"
+msgstr "العنوان"
+
+#: models.py:49
+msgid ""
+"This value will be used when referencing this asset. Can only contain "
+"letters, numbers, and underscores."
+msgstr "لا تستخدم سوى الاحرف والارقام"
+
+#: models.py:52
+msgid "Internal name"
+msgstr "الإسم الداخلي"
+
+#: models.py:56
+msgid "File"
+msgstr "ملف"
+
+#: models.py:61
+msgid "Asset"
+msgstr "الأصل"
+
+#: models.py:157 models.py:228
+msgid "Name"
+msgstr "اسم"
+
+#: models.py:160 models.py:226
+msgid "Order"
+msgstr "طلب"
+
+#: models.py:165 models.py:184
+msgid "Stored layer"
+msgstr "مكان التخزين"
+
+#: models.py:166
+msgid "Stored layers"
+msgstr "أماكن التخزين"
+
+#: models.py:181 models.py:235
+msgid "Enabled"
+msgstr "مفعل"
+
+#: models.py:192 models.py:220
+msgid "Object layer"
+msgstr "مكان العنصر"
+
+#: models.py:193
+msgid "Object layers"
+msgstr "اماكن العناصر"
+
+#: models.py:224
+msgid ""
+"Order in which the transformations will be executed. If left unchanged, an "
+"automatic order value will be assigned."
+msgstr ""
+"يجب أن تقوم بتحديد المتغيرات المطلوبة وفي حال لم يتم الإضافة سيقوم النظام "
+"بتحديد الخيارات الافتراضية"
+
+#: models.py:231 workflow_actions.py:45
+msgid ""
+"Enter the arguments for the transformation as a YAML dictionary. ie: "
+"{\"degrees\": 180}"
+msgstr " يجب إضافة محددات التغير المطلوبة مثال : {\"الدرجة \": 180}'"
+
+#: models.py:233
+msgid "Arguments"
+msgstr "المحددات"
+
+#: models.py:242
+msgid "Layer transformation"
+msgstr "مكان التحويل"
+
+#: models.py:243
+msgid "Layer transformations"
+msgstr "أماكن التحويل"
+
+#: models.py:249
+msgid "Unknown transformation class"
+msgstr "فئة التحول غير معروف"
+
+#: permissions.py:8
+msgid "Create new assets"
+msgstr "أنشاء جديد"
+
+#: permissions.py:11
+msgid "Delete assets"
+msgstr "حذف"
+
+#: permissions.py:14
+msgid "Edit assets"
+msgstr "تعديل"
+
+#: permissions.py:17
+msgid "View existing assets"
+msgstr "إستعراض"
+
+#: permissions.py:21
+msgid "Create new transformations"
+msgstr "إنشاء تحويلات جديدة"
+
+#: permissions.py:24
+msgid "Delete transformations"
+msgstr "حدف التحويلات"
+
+#: permissions.py:27
+msgid "Edit transformations"
+msgstr "تعديل التحويلات"
+
+#: permissions.py:30
+msgid "View existing transformations"
+msgstr "عرض التحويلات الموجودة/ المتاحة "
+
+#: queues.py:12
+msgid "Generate a image of an asset."
+msgstr ""
+
+#: settings.py:28
+msgid ""
+"The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
+"deleting the oldest asset cache files. Specify the size in bytes."
+msgstr ""
+
+#: settings.py:37
+msgid ""
+"Time in seconds that the browser should cache the supplied asset. The "
+"default of 31559626 seconds correspond to 1 year."
+msgstr ""
+
+#: settings.py:44
+msgid ""
+"Path to the Storage subclass to use when storing the cached asset files."
+msgstr ""
+
+#: settings.py:52
+msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
+msgstr ""
+
+#: settings.py:58
+msgid "Path to the Storage subclass to use when storing assets."
+msgstr "المسار إلى فئة التخزين الفرعية لاستخدامها عند التخزين ."
+
+#: settings.py:64
+msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
+msgstr "تم "
+
+#: settings.py:70
+msgid "Graphics conversion backend to use."
+msgstr "تمكين الرسم البياني"
+
+#: settings.py:76
+msgid "Configuration options for the graphics conversion backend."
+msgstr "اعدادت التكوين للرسم البياني"
+
+#: storages.py:15
+msgid ""
+"Unable to initialize the converter asset storage. Check the settings {} and "
+"{} for formatting errors."
+msgstr "تعذر تهيئة تخزين التغيرات. تحقق من إعدادات {} و {} لأخطاء ."
+
+#: storages.py:28
+msgid ""
+"Unable to initialize the converter asset cachestorage. Check the settings {}"
+" and {} for formatting errors."
+msgstr ""
+
+#: storages.py:34
+msgid "Assets cache"
+msgstr ""
+
+#: transformations.py:196
+msgid "Paste an asset"
+msgstr "لصق"
+
+#: transformations.py:247
+msgid "Paste an asset (percents coordinates)"
+msgstr "إضافة العنوان على الأصل()"
+
+#: transformations.py:290
+msgid "Paste an asset as watermark"
+msgstr "التعديب مع إضافة العلامة المائية"
+
+#: transformations.py:350
+msgid "Crop"
+msgstr "تحديد"
+
+#: transformations.py:428
+msgid "Draw rectangle"
+msgstr "أشكال"
+
+#: transformations.py:530
+msgid "Draw rectangle (percents coordinates)"
+msgstr "أِشكال ( النسبة المئوية)"
+
+#: transformations.py:627
+msgid "Flip"
+msgstr "عرض"
+
+#: transformations.py:638
+msgid "Gaussian blur"
+msgstr "الضبابي"
+
+#: transformations.py:648
+msgid "Line art"
+msgstr "الخط"
+
+#: transformations.py:659
+msgid "Mirror"
+msgstr "نسخة مطابقة"
+
+#: transformations.py:670
+msgid "Resize"
+msgstr "تغيير حجم"
+
+#: transformations.py:697
+msgid "Rotate"
+msgstr "تدوير"
+
+#: transformations.py:723
+msgid "Rotate 90 degrees"
+msgstr "استدارة 90 درجة"
+
+#: transformations.py:734
+msgid "Rotate 180 degrees"
+msgstr "استدارة 180 درجة"
+
+#: transformations.py:745
+msgid "Rotate 270 degrees"
+msgstr "استدارة 270 درجة"
+
+#: transformations.py:755
+msgid "Unsharp masking"
+msgstr "اخفاء"
+
+#: transformations.py:771
+msgid "Zoom"
+msgstr "التكبير"
+
+#: views.py:53
+#, python-format
+msgid "Delete request performed on %(count)d asset"
+msgstr "طلب الحذف %(count)d"
+
+#: views.py:55
+#, python-format
+msgid "Delete request performed on %(count)d assets"
+msgstr "حذف الطلب  %(count)d"
+
+#: views.py:62
+msgid "Delete the selected asset?"
+msgid_plural "Delete the selected assets?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: views.py:72
+#, python-format
+msgid "Delete asset: %s?"
+msgstr "حذف الأصل: %s؟"
+
+#: views.py:83
+#, python-format
+msgid "Asset \"%s\" deleted successfully."
+msgstr "تم حذف الأصل &quot;%s&quot; بنجاح."
+
+#: views.py:88
+#, python-format
+msgid "Error deleting asset \"%(asset)s\": %(error)s"
+msgstr "خطأ في حذف الأصل &quot;%(asset)s&quot;: %(error)s"
+
+#: views.py:103
+#, python-format
+msgid "Details asset: %s"
+msgstr ""
+
+#: views.py:117
+#, python-format
+msgid "Edit asset: %s"
+msgstr "تعديل الأصل: %s"
+
+#: views.py:139
+msgid ""
+"Assets are files that can be used in conjuction with certain "
+"transformations."
+msgstr "الأصول هي ملفات يمكن استخدامها ."
+
+#: views.py:142
+msgid "No assets available"
+msgstr "لا توجد أصول متاحة"
+
+#: views.py:168
+#, python-format
+msgid "Error creating transformation: %s."
+msgstr "خطأ في إنشاء التحويل: %s."
+
+#: views.py:185
+#, python-format
+msgid ""
+"Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
+"%(object)s"
+msgstr ""
+"تكوين طبقة &quot;تحويل %(layer)s&quot; %(transformation)s &quot;لـ: "
+"%(object)s"
+
+#: views.py:241
+#, python-format
+msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
+msgstr ""
+"هل تريد حذف التحويل &quot;%(transformation)s&quot; من أجل: "
+"%(content_object)s؟"
+
+#: views.py:290
+#, python-format
+msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
+msgstr ""
+"تعديل التحويل &quot;%(transformation)s&quot; من أجل: %(content_object)s"
+
+#: views.py:344
+#, python-format
+msgid "There are no entries for layer \"%(layer_name)s\""
+msgstr "لا توجد أي اضافات على الوثيقة &quot;%(layer_name)s&quot;"
+
+#: views.py:347
+#, python-format
+msgid "Layer \"%(layer)s\" transformations for: %(object)s"
+msgstr "تحويلات طبقة &quot;%(layer)s&quot; لـ: %(object)s"
+
+#: views.py:392
+msgid "Transformation created successfully."
+msgstr "تم إنشاء التحول بنجاح."
+
+#: views.py:416
+msgid "Select"
+msgstr "إختيار"
+
+#: views.py:418
+#, python-format
+msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
+msgstr "حدد تحويل طبقة جديدة &quot;%(layer)s&quot; لـ: %(object)s"
+
+#: workflow_actions.py:22
+msgid "Pages"
+msgstr "صفحات"
+
+#: workflow_actions.py:25
+msgid ""
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
+msgstr "الصفحات التي ستضاف إليها التحولات الجديدة."
+
+#: workflow_actions.py:32
+msgid "Transformation class"
+msgstr "فئة التحول"
+
+#: workflow_actions.py:37
+msgid "Type of transformation to add."
+msgstr "نوع التحويل المراد إضافته."
+
+#: workflow_actions.py:42
+msgid "Transformation arguments"
+msgstr "محددات التعديل"
+
+#: workflow_actions.py:51
+msgid "Add transformation"
+msgstr "أضف التحول"

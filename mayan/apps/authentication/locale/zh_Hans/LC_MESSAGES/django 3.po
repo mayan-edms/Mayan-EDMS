@@ -1,0 +1,217 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# yan songwei <yansw@vip.163.com>, 2021
+# bo feng <87289884@qq.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: bo feng <87289884@qq.com>, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:35 events.py:6 permissions.py:6 settings.py:10
+msgid "Authentication"
+msgstr "认证"
+
+#: events.py:10
+msgid "User impersonation ended"
+msgstr ""
+
+#: events.py:13
+msgid "User impersonation started"
+msgstr ""
+
+#: events.py:16
+msgid "User logged in"
+msgstr "用户已登录"
+
+#: events.py:19
+msgid "User logged out"
+msgstr "用户已退出"
+
+#: forms.py:20
+msgid "Email"
+msgstr "电子邮件"
+
+#: forms.py:23
+msgid "Password"
+msgstr "密码"
+
+#: forms.py:25 forms.py:105
+msgid "Remember me"
+msgstr "记住账号"
+
+#: forms.py:28
+msgid ""
+"Please enter a correct email and password. Note that the password field is "
+"case-sensitive."
+msgstr "请输入正确的电子邮件和密码。请注意，密码字段区分大小写。"
+
+#: forms.py:30
+msgid "This account is inactive."
+msgstr "此账号未激活。"
+
+#: forms.py:79
+msgid "Permanent"
+msgstr ""
+
+#: forms.py:80
+msgid "If selected, disables ending impersonation."
+msgstr ""
+
+#: forms.py:91
+msgid "User"
+msgstr "用户"
+
+#: links.py:24
+msgid "Logout"
+msgstr "登出"
+
+#: links.py:29
+msgid "Change password"
+msgstr "更改密码"
+
+#: links.py:34 views.py:250
+msgid "Impersonate user"
+msgstr ""
+
+#: links.py:39
+msgid "Impersonate"
+msgstr ""
+
+#: links.py:44 links.py:48
+msgid "Set password"
+msgstr "设置密码"
+
+#: permissions.py:10
+msgid "Impersonate users"
+msgstr ""
+
+#: settings.py:15
+msgid ""
+"Controls the mechanism used to authenticated user. Options are: username, "
+"email"
+msgstr "控制用于经过身份验证的用户的机制。选项包括：用户名，电子邮件"
+
+#: settings.py:22
+msgid ""
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
+msgstr ""
+
+#: settings.py:29
+msgid ""
+"Remove the \"Forgot your password?\" link on the login form used to trigger "
+"the password reset."
+msgstr ""
+
+#: templates/authentication/app/viewport.html:11
+#, python-format
+msgid ""
+"\n"
+"                Impersonating user \"%(user)s\".\n"
+"            "
+msgstr ""
+
+#: templates/authentication/app/viewport.html:14
+msgid "Click here when finished"
+msgstr "完成后请点击这里"
+
+#: templates/authentication/login.html:10
+msgid "Login"
+msgstr "登录"
+
+#: templates/authentication/login.html:21
+#: templates/authentication/login.html:30
+msgid "Sign in"
+msgstr "登入"
+
+#: templates/authentication/login.html:37
+msgid "Forgot your password?"
+msgstr "忘记密码了吗？"
+
+#: templates/authentication/password_reset_complete.html:8
+#: templates/authentication/password_reset_confirm.html:8
+#: templates/authentication/password_reset_confirm.html:20
+#: templates/authentication/password_reset_done.html:8
+#: templates/authentication/password_reset_form.html:8
+#: templates/authentication/password_reset_form.html:20
+msgid "Password reset"
+msgstr "重置密码"
+
+#: templates/authentication/password_reset_complete.html:15
+msgid "Password reset complete! Click the link below to login."
+msgstr "密码重置完成！点击下面的链接登录。"
+
+#: templates/authentication/password_reset_complete.html:17
+msgid "Login page"
+msgstr "登录页面"
+
+#: templates/authentication/password_reset_confirm.html:29
+#: templates/authentication/password_reset_form.html:29 views.py:177
+msgid "Submit"
+msgstr "提交"
+
+#: templates/authentication/password_reset_done.html:15
+msgid "Password reset email sent!"
+msgstr "密码重置邮件已发送！"
+
+#: views.py:86
+msgid "Your password has been successfully changed."
+msgstr "你的密码已成功更改。"
+
+#: views.py:93
+msgid "Current user password change"
+msgstr "当前用户密码更改"
+
+#: views.py:101
+msgid "Changing the password is not allowed for this account."
+msgstr "此帐户不允许更改密码。"
+
+#: views.py:168
+#, python-format
+msgid "Password change request performed on %(count)d user"
+msgstr "在%(count)d用户上执行的密码更改请求"
+
+#: views.py:170
+#, python-format
+msgid "Password change request performed on %(count)d users"
+msgstr "在%(count)d用户上执行的密码更改请求"
+
+#: views.py:179
+msgid "Change user password"
+msgid_plural "Change users passwords"
+msgstr[0] ""
+
+#: views.py:189
+#, python-format
+msgid "Change password for user: %s"
+msgstr "更改用户密码：%s"
+
+#: views.py:210
+#, python-format
+msgid "Successful password reset for user: %s."
+msgstr "用户成功重置密码：%s。"
+
+#: views.py:216
+#, python-format
+msgid "Error reseting password for user \"%(user)s\": %(error)s"
+msgstr "重置用户“%(user)s”的密码时出错：%(error)s"
+
+#: views.py:278
+#, python-format
+msgid "Impersonate user: %s"
+msgstr ""

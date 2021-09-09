@@ -1,0 +1,122 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:24 links.py:10 permissions.py:5
+msgid "Task manager"
+msgstr "Управление на задачите"
+
+#: apps.py:83
+msgid "Label"
+msgstr "Етикет"
+
+#: apps.py:87
+msgid "Name"
+msgstr "Име"
+
+#: apps.py:92
+msgid "Default queue?"
+msgstr "Опашка по подразбиране?"
+
+#: apps.py:97
+msgid "Is transient?"
+msgstr "Преходен ли е?"
+
+#: apps.py:101
+msgid "Type"
+msgstr "Тип"
+
+#: apps.py:106
+msgid "Start time"
+msgstr "Начален час"
+
+#: apps.py:110
+msgid "Host"
+msgstr "Хост"
+
+#: apps.py:114
+msgid "Arguments"
+msgstr "Аргументи"
+
+#: apps.py:118
+msgid "Keyword arguments"
+msgstr "Аргументи на ключови думи"
+
+#: apps.py:122
+msgid "Worker process ID"
+msgstr "Идентификационен номер на работния процес"
+
+#: permissions.py:8
+msgid "View tasks"
+msgstr "Преглед на задачите"
+
+#: settings.py:10
+msgid "Celery"
+msgstr "Celery"
+
+#: settings.py:15
+msgid "Default: \"AMQPLAIN\". Set custom amqp login method."
+msgstr ""
+"По подразбиране: &quot;AMQPLAIN&quot;. Задайте потребителски метод за вход в"
+" amqp."
+
+#: settings.py:21
+msgid ""
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
+" transport://userid:password@hostname:port/virtual_host Only the scheme part"
+" (transport://) is required, the rest is optional, and defaults to the "
+"specific transports default values."
+msgstr ""
+"По подразбиране: &quot;amqp: //&quot;. URL адрес на брокера по подразбиране "
+"Това трябва да бъде URL под формата на: "
+"transport://userid:password@hostname:port/virtual_host Изисква се само "
+"частта от схемата (transport://), останалото е по избор и по подразбиране "
+"към конкретните стойности на транспортиране по подразбиране."
+
+#: settings.py:30
+msgid ""
+"Default: \"Disabled\". Toggles SSL usage on broker connection and SSL "
+"settings. The valid values for this option vary by transport."
+msgstr ""
+"По подразбиране: &quot;Неактивно&quot;. Превключва използването на SSL при "
+"връзка с брокера и настройките на SSL. Валидните стойности за тази опция "
+"варират в зависимост от транспорта."
+
+#: settings.py:38
+msgid ""
+"Default: No result backend enabled by default. The backend used to store "
+"task results (tombstones). Refer to "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
+msgstr ""
+"По подразбиране: По подразбиране не е активиран бекенд. Бекендът, използван "
+"за съхраняване на резултати от задачи (надгробни камъни). Вижте "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
+
+#: tests/literals.py:3
+msgid "Test queue"
+msgstr "Опашка за тестове"
+
+#: views.py:12
+msgid "Background task queues"
+msgstr "Опашка на фонови задачи"

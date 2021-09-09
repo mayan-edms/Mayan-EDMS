@@ -1,0 +1,140 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
+"Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: apps.py:19
+msgid "Dynamic search"
+msgstr "Dynamiczne wyszukiwanie"
+
+#: classes.py:265
+msgid "No search model matching the query"
+msgstr "Brak modelu wyszukiwania pasującego do zapytania"
+
+#: forms.py:9
+msgid "Match all"
+msgstr "Dopasuj wszystko"
+
+#: forms.py:10
+msgid ""
+"When checked, only results that match all fields will be returned. When "
+"unchecked results that match at least one field will be returned."
+msgstr ""
+"Zaznaczone oznacza, że zostaną zwrócone wyniki jedynie w przypadku "
+"dopasowania wszystkich pól. Niezaznaczone oznacza, że zostaną zwrócone "
+"wyniki jeśli wartość z przynajmniej jednego pola zostanie dopasowane."
+
+#: forms.py:31 templates/dynamic_search/search_box.html:41
+msgid "Search terms"
+msgstr "Słowa do wyszukania"
+
+#: links.py:13 permissions.py:5 queues.py:8 settings.py:11
+#: templates/dynamic_search/search_box.html:45 views.py:124 views.py:137
+msgid "Search"
+msgstr "Szukaj"
+
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:151
+msgid "Advanced search"
+msgstr "Zaawansowane wyszukiwanie"
+
+#: links.py:21
+msgid "Search again"
+msgstr "Wyszukać ponownie"
+
+#: links.py:25 views.py:97
+msgid "Reindex search backend"
+msgstr "Przeindeksuj silnik wyszukiwania"
+
+#: permissions.py:8
+msgid "Execute search tools"
+msgstr "Uruchom narzędzia wyszukiwania"
+
+#: queues.py:13
+msgid "Remove a model instance from the search engine."
+msgstr "Usuń instancję modelu z silnika wyszukiwania."
+
+#: queues.py:18
+msgid "Index a model instance to the search engine."
+msgstr "Zindeksuj instancję modelu w silniku wyszukiwania."
+
+#: queues.py:24
+msgid "Index all instances of a search model to the search engine."
+msgstr ""
+
+#: settings.py:16
+msgid "Full path to the backend to be used to handle the search."
+msgstr "Pełna ścieżka do backendu do obsługi wyszukiwania."
+
+#: settings.py:26
+msgid ""
+"Disables the single term bar search leaving only the advanced search button."
+msgstr ""
+"Wyłącza wyszukiwanie paska pojedynczego hasła, pozostawiając tylko przycisk "
+"wyszukiwania zaawansowanego."
+
+#: settings.py:33
+msgid "Sets the default state of the \"Match all\" checkbox."
+msgstr ""
+
+#: settings.py:37
+msgid "Maximum number search results to fetch and display."
+msgstr ""
+"Maksymalna liczba wyników wyszukiwania możliwa do pobrania i wyświetlenia."
+
+#: templates/dynamic_search/search_box.html:47
+msgid "Advanced"
+msgstr "Zaawansowane"
+
+#: views.py:40
+msgid "Try again using different terms. "
+msgstr "Spróbuj ponownie, używając innych terminów."
+
+#: views.py:42
+msgid "No search results"
+msgstr "Brak wyników wyszukiwania"
+
+#: views.py:44
+#, python-format
+msgid "Search results for: %s"
+msgstr "Wyniki wyszukiwania dla: %s"
+
+#: views.py:93
+msgid ""
+"This tool is required only for some search backends. Search results will be "
+"affected while the backend is being reindexed."
+msgstr ""
+"To narzędzie jest wymagane tylko w przypadku niektórych silników "
+"wyszukiwania. Wyniki wyszukiwania ulegną zmianie podczas ponownego "
+"indeksowania silnika."
+
+#: views.py:99
+msgid "This tool erases and populates the search backend's internal index."
+msgstr "To narzędzie usuwa i zapełnia wewnętrzny indeks silnika wyszukiwania."
+
+#: views.py:117
+msgid "Search backend reindexing queued."
+msgstr "Ponowne indeksowanie silnika wyszukiwania oczekuje w kolejce."
+
+#: views.py:139
+#, python-format
+msgid "Search for: %s"
+msgstr "Wyszukiwanie: %s"

@@ -1,0 +1,251 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# Mohammed ALDOUB <voulnet@gmail.com>, 2021
+# Yaman Sanobar <yman.snober@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: admin.py:13
+msgid "Label"
+msgstr "العنوان"
+
+#: apps.py:48 events.py:6 links.py:17 permissions.py:5 queues.py:7
+#: settings.py:12
+msgid "File metadata"
+msgstr "بيانات الملف"
+
+#: apps.py:98 search.py:11 search.py:22 search.py:33
+msgid "File metadata key"
+msgstr "وصف بيانات الملف"
+
+#: apps.py:102 search.py:15 search.py:26 search.py:37
+msgid "File metadata value"
+msgstr "قيم بيانات الملف"
+
+#: apps.py:129
+msgid "Return the value of a specific file metadata."
+msgstr "اعادة قيم بيانات الملف"
+
+#: apps.py:130
+msgid "File metadata value of"
+msgstr "قيم وصف بيانات الملف"
+
+#: dependencies.py:12
+msgid ""
+"Library and program to read and write meta information in multimedia files."
+msgstr "مكتبة الملفات الوصفية "
+
+#: drivers/exiftool.py:19
+msgid "EXIF Tool"
+msgstr "أداة"
+
+#: events.py:10
+msgid "Document file submitted for file metadata processing"
+msgstr ""
+
+#: events.py:14
+msgid "Document file file metadata processing finished"
+msgstr ""
+
+#: links.py:23
+msgid "Attributes"
+msgstr "متغيرات"
+
+#: links.py:30 links.py:35
+msgid "Submit for file metadata"
+msgstr "اعتماد البيانات الوصفية"
+
+#: links.py:42
+msgid "Setup file metadata"
+msgstr "إعدادت ملف البيانات الوصفية"
+
+#: links.py:47
+msgid "File metadata processing per type"
+msgstr "معالج البيانات الوصفية حسب النوع"
+
+#: methods.py:36
+msgid "get_file_metadata(< file metadata dotted path >)"
+msgstr "get_file_metadata(< مكان وجود الملفات الوصفية >)"
+
+#: methods.py:39
+msgid "Return the specified document file metadata entry."
+msgstr "التراجع عن إدخال البيانات للملف المحدد"
+
+#: methods.py:66
+msgid "Return the specified document file file metadata entry."
+msgstr ""
+
+#: models.py:18
+msgid "Driver path"
+msgstr "تحديد المسار"
+
+#: models.py:22
+msgid "Internal name"
+msgstr "الإسم الداخلي"
+
+#: models.py:27 models.py:70
+msgid "Driver"
+msgstr "المسار"
+
+#: models.py:28
+msgid "Drivers"
+msgstr "المسارات"
+
+#: models.py:48
+msgid "Document type"
+msgstr "نوع الوثيقة"
+
+#: models.py:52
+msgid "Automatically queue newly created documents for processing."
+msgstr "الوثائق المضافة حديثاً قيد المعالجة"
+
+#: models.py:59
+msgid "Document type settings"
+msgstr "اعدادات نوع الوثيقة"
+
+#: models.py:60
+msgid "Document types settings"
+msgstr "اعدادات انواع الوثائق"
+
+#: models.py:74
+msgid "Document file"
+msgstr ""
+
+#: models.py:80 models.py:95
+msgid "Document file driver entry"
+msgstr ""
+
+#: models.py:81
+msgid "Document file driver entries"
+msgstr ""
+
+#: models.py:88
+msgid "Attribute count"
+msgstr "عدد الصفات"
+
+#: models.py:99
+msgid "Name of the file metadata entry."
+msgstr "اسم البيانات الوصفية"
+
+#: models.py:100
+msgid "Key"
+msgstr "مفتاح"
+
+#: models.py:103
+msgid "Value of the file metadata entry."
+msgstr "قيمة إدخال البيانات الوصفية"
+
+#: models.py:104
+msgid "Value"
+msgstr "قيمة"
+
+#: models.py:109
+msgid "File metadata entry"
+msgstr "أدخال البيانات الوصفية للملف"
+
+#: models.py:110
+msgid "File metadata entries"
+msgstr "إدخال البيانات الوصفية للملفات"
+
+#: permissions.py:8
+msgid "Change document type file metadata settings"
+msgstr "تغير الاعدادات الوصفية للملف"
+
+#: permissions.py:13
+msgid "Submit document for file metadata processing"
+msgstr "تم تعديل الاعدادات الوصفية للوثيقة"
+
+#: permissions.py:17
+msgid "View file metadata"
+msgstr "إستعراض البيانات الوصفية للملف"
+
+#: queues.py:11
+msgid "Process document file"
+msgstr ""
+
+#: settings.py:18
+msgid ""
+"Set new document types to perform file metadata processing automatically by "
+"default."
+msgstr "تحديد انواع الوثائق للمعالجة "
+
+#: settings.py:25
+msgid "Arguments to pass to the drivers."
+msgstr "تم إدراج المحددات"
+
+#: views.py:44
+msgid ""
+"File metadata are the attributes of the document's file. They can range from"
+" camera information used to take a photo to the author that created a file. "
+"File metadata are set when the document's file was first created. File "
+"metadata attributes reside in the file itself. They are not the same as the "
+"document metadata, which are user defined and reside in the database."
+msgstr "يتم تحديد البيانات الوصفية للوثائق وإجراء التعديلات اللازمة عليها  "
+
+#: views.py:52
+msgid "No file metadata available."
+msgstr ""
+
+#: views.py:55
+#, python-format
+msgid "File metadata drivers for: %s"
+msgstr "تحديد البيانات التعريفية: %s"
+
+#: views.py:81
+msgid ""
+"This could mean that the file metadata detection has not completed or that "
+"the driver does not support any metadata field for the file type of this "
+"document."
+msgstr "لم يتم إكمال البيانات الوصفية للوثيقة"
+
+#: views.py:86
+msgid "No file metadata available for this driver."
+msgstr ""
+
+#: views.py:90
+#, python-format
+msgid ""
+"File metadata attributes for: %(document_file)s with driver: %(driver)s"
+msgstr ""
+
+#: views.py:119
+msgid "Submit the selected document file to the file metadata queue?"
+msgid_plural "Submit the selected documents files to the file metadata queue?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: views.py:145
+#, python-format
+msgid "Edit file metadata settings for document type: %s"
+msgstr "تعديل البيانات الاساسية للملف : %s"
+
+#: views.py:156
+msgid "Submit all documents of a type for file metadata processing."
+msgstr "تم ارسال جميع الوثائق للمعالجة"
+
+#: views.py:180
+#, python-format
+msgid "%(count)d documents added to the file metadata processing queue."
+msgstr "%(count)d تم إضافة الملف للمعالجة"

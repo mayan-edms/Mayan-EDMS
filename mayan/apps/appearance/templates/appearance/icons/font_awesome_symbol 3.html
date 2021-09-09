@@ -1,0 +1,8 @@
+{% if enable_shadow %}
+    <span class="fa-layers fa-fw" >
+        <i class="fa fa-{{ symbol }} fashadow"></i>
+        <i class="fa fa-{{ symbol }}"></i>
+    </span>
+{% else %}
+    <i class="fa fa-{{ symbol }}" style="padding-right: 5px; width: auto;"></i>
+{% endif %}

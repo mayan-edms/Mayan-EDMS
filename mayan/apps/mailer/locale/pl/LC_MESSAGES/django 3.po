@@ -1,0 +1,464 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
+"Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: apps.py:37
+msgid "Mailer"
+msgstr "Mailer"
+
+#: classes.py:80
+msgid "Null backend"
+msgstr "Zerowy backend"
+
+#: events.py:5 permissions.py:5 queues.py:7 settings.py:10
+msgid "Mailing"
+msgstr "Wysyłanie"
+
+#: events.py:8
+msgid "Email sent"
+msgstr "E-mail został wysłany"
+
+#: forms.py:60 forms.py:120
+msgid ""
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
+msgstr ""
+"Adres e-mail odbiorcy. Możesz podać wiele adresów oddzielonych przecinkiem "
+"lub średnikiem."
+
+#: forms.py:62 forms.py:122
+msgid "Email address"
+msgstr "Adres e-mail"
+
+#: forms.py:64 workflow_actions.py:72
+msgid "Subject"
+msgstr "Temat"
+
+#: forms.py:66 workflow_actions.py:81
+msgid "Body"
+msgstr "Treść"
+
+#: forms.py:70
+msgid "The email profile that will be used to send this email."
+msgstr "Profil e-mail, który zostanie użyty do wysłania tego e-maila."
+
+#: forms.py:71 models.py:54 views.py:216 workflow_actions.py:18
+msgid "Mailing profile"
+msgstr "Profil pocztowy"
+
+#: forms.py:77
+msgid "The driver to use when sending emails."
+msgstr "Sterownik używany podczas wysyłania wiadomości e-mail."
+
+#: forms.py:78 models.py:68
+msgid "Backend"
+msgstr "Backend"
+
+#: links.py:20 links.py:28
+msgid "Email document"
+msgstr "Dokument e-mail"
+
+#: links.py:25 links.py:32
+msgid "Email link"
+msgstr "Link e-mail"
+
+#: links.py:38
+msgid "Create mailing profile"
+msgstr "Utwórz profil pocztowy"
+
+#: links.py:44
+msgid "Delete"
+msgstr "Usuń"
+
+#: links.py:48
+msgid "Edit"
+msgstr "Edytuj"
+
+#: links.py:54
+msgid "Mailing profiles list"
+msgstr "Lista profili mailingowych"
+
+#: links.py:58 models.py:55
+msgid "Mailing profiles"
+msgstr "Profile mailingowe"
+
+#: links.py:63 views.py:240
+msgid "Test"
+msgstr "Test"
+
+#: literals.py:5
+#, python-format
+msgid ""
+"Attached to this email is the document: {{ document }}\n"
+"\n"
+" --------\n"
+" This email has been sent from %(project_title)s (%(project_website)s)"
+msgstr ""
+"Do tego e-maila dołączono dokument: {{document}} -------- Ten e-mail został "
+"wysłany z %(project_title)s (%(project_website)s)"
+
+#: literals.py:9
+msgid "Document: {{ document }}"
+msgstr "Dokument: {{ document }}"
+
+#: literals.py:11
+#, python-format
+msgid ""
+"To access this document click on the following link: {{ link }}\n"
+"\n"
+"--------\n"
+" This email has been sent from %(project_title)s (%(project_website)s)"
+msgstr ""
+"Aby uzyskać dostęp do tego dokumentu, kliknij następujący link: {{link}} "
+"-------- Ten e-mail został wysłany z %(project_title)s (%(project_website)s)"
+
+#: literals.py:15
+msgid "Link for document: {{ document }}"
+msgstr "Link dla dokumentu: {{ document }}"
+
+#: mailers.py:19 mailers.py:108
+msgid "From"
+msgstr "Od"
+
+#: mailers.py:22 mailers.py:111
+msgid ""
+"The sender's address. Some system will refuse to send messages if this value"
+" is not set."
+msgstr ""
+"Adres nadawcy. Niektóre systemy odmówią wysłania wiadomości, jeśli ta "
+"wartość nie zostanie ustawiona."
+
+#: mailers.py:28
+msgid "Host"
+msgstr "Host"
+
+#: mailers.py:30
+msgid "The host to use for sending email."
+msgstr "Host wykorzystywany do wysyłania wiadomości e-mail."
+
+#: mailers.py:35
+msgid "Port"
+msgstr "Port"
+
+#: mailers.py:37
+msgid "Port to use for the SMTP server."
+msgstr "Port serwera SMTP."
+
+#: mailers.py:40
+msgid "Use TLS"
+msgstr "Użyj TLS"
+
+#: mailers.py:43
+msgid ""
+"Whether to use a TLS (secure) connection when talking to the SMTP server. "
+"This is used for explicit TLS connections, generally on port 587."
+msgstr ""
+"Określa, czy używać połączenia TLS (bezpiecznego) podczas połaczenia z "
+"serwerem SMTP. Służy to do wymuszonych połączeń TLS, zazwyczaj na porcie "
+"587."
+
+#: mailers.py:48
+msgid "Use SSL"
+msgstr "Użyj SSL"
+
+#: mailers.py:51
+msgid ""
+"Whether to use an implicit TLS (secure) connection when talking to the SMTP "
+"server. In most email documentation this type of TLS connection is referred "
+"to as SSL. It is generally used on port 465. If you are experiencing "
+"problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
+msgstr ""
+"Określa, czy używać domniemanego połączenia TLS (bezpiecznego) podczas "
+"połączenia z serwerem SMTP. W większości dokumentów e-mail ten typ "
+"połączenia TLS jest określany jako SSL. Zwykle jest używany na porcie 465. "
+"Jeśli masz problemy, zobacz wymuszone ustawienie TLS „Użyj TLS”. Pamiętaj, "
+"że „Użyj TLS” i „Użyj SSL” wykluczają się wzajemnie, więc ustaw tylko jedno "
+"z tych ustawień na Prawda."
+
+#: mailers.py:60
+msgid "Username"
+msgstr "Nazwa użytkownika"
+
+#: mailers.py:63
+msgid ""
+"Username to use for the SMTP server. If empty, authentication won't "
+"attempted."
+msgstr ""
+"Nazwa użytkownika dla serwera SMTP. Jeśli nie podano, próba uwierzytelnienia"
+" nie zostanie podjęta."
+
+#: mailers.py:69
+msgid "Password"
+msgstr "Hasło"
+
+#: mailers.py:72
+msgid ""
+"Password to use for the SMTP server. This setting is used in conjunction "
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
+msgstr ""
+"Hasło dla serwera SMTP. W połączeniu z nazwą użytkownika używane jest "
+"podczas uwierzytelnienia do serwera SMTP. Jeśli nie podano hasła lub nazwy "
+"użytkownika, próba uwierzytelnienia nie zostanie podjęta."
+
+#: mailers.py:81
+msgid "Django SMTP backend"
+msgstr "Silnik Django dla SMTP"
+
+#: mailers.py:103
+msgid "File path"
+msgstr "Ścieżka pliku"
+
+#: mailers.py:118
+msgid "Django file based backend"
+msgstr "Backend oparty na pliku Django"
+
+#: models.py:31
+msgid "A short text describing the mailing profile."
+msgstr "Krótki tekst opisujący profil pocztowy."
+
+#: models.py:32
+msgid "Label"
+msgstr "Etykieta"
+
+#: models.py:36
+msgid ""
+"If default, this mailing profile will be pre-selected on the document "
+"mailing form."
+msgstr ""
+"Domyślnie ten profil pocztowy zostanie wstępnie wybrany w formularzu "
+"wysyłkowym dokumentu."
+
+#: models.py:38
+msgid "Default"
+msgstr "Domyślny"
+
+#: models.py:40
+msgid "Enabled"
+msgstr "Włączone"
+
+#: models.py:43
+msgid "The dotted Python path to the backend class."
+msgstr "Kropkowana ścieżka Pythona do klasy backend."
+
+#: models.py:44
+msgid "Backend path"
+msgstr "Ścieżka backend"
+
+#: models.py:47
+msgid "Backend data"
+msgstr "Dane backend"
+
+#: models.py:69
+msgid "The backend class for this entry."
+msgstr "Klasa backend dla tego wpisu."
+
+#: models.py:231
+msgid "Test email from Mayan EDMS"
+msgstr "Test wiadomości e-mail z Mayan EDMS"
+
+#: permissions.py:8
+msgid "Send document link via email"
+msgstr "Wyślij link dokumentu za pomocą e-mail"
+
+#: permissions.py:11
+msgid "Send document via email"
+msgstr "Wyślij dokument za pomocą e-mail"
+
+#: permissions.py:14
+msgid "Create a mailing profile"
+msgstr "Utwórz profil pocztowy"
+
+#: permissions.py:17
+msgid "Delete a mailing profile"
+msgstr "Usuń profil pocztowy"
+
+#: permissions.py:20
+msgid "Edit a mailing profile"
+msgstr "Edytuj profil pocztowy"
+
+#: permissions.py:23
+msgid "View a mailing profile"
+msgstr "Wyświetl profil pocztowy"
+
+#: permissions.py:26
+msgid "Use a mailing profile"
+msgstr "Użyj profilu pocztowego"
+
+#: queues.py:11
+msgid "Send document"
+msgstr "Wyślij dokument"
+
+#: settings.py:15
+msgid "Template for the document email form subject line."
+msgstr "Szablon tematu wiadomości email"
+
+#: settings.py:21
+msgid "Template for the document email form body text. Can include HTML."
+msgstr "Szablon tekstu e-maila formularza dokumentu. Może zawierać HTML."
+
+#: settings.py:27
+msgid "Template for the document link email form subject line."
+msgstr "Szablon tematu wiadomości - link"
+
+#: settings.py:33
+msgid "Template for the document link email form body text. Can include HTML."
+msgstr ""
+"Szablon tekstu wiadomości e-mail z linkiem do dokumentu. Może zawierać HTML."
+
+#: validators.py:12
+#, python-format
+msgid "%(email)s is not a valid email address."
+msgstr "%(email)s nie jest prawidłowym adresem e-mail."
+
+#: views.py:40
+#, python-format
+msgid "%(count)d document queued for email delivery"
+msgstr "Dokument %(count)d w kolejce do dostarczenia wiadomości e-mail"
+
+#: views.py:42
+#, python-format
+msgid "%(count)d documents queued for email delivery"
+msgstr "Dokumenty %(count)d w kolejce do dostarczenia wiadomości e-mail"
+
+#: views.py:53
+msgid "Send"
+msgstr "Wyślij"
+
+#: views.py:102
+#, python-format
+msgid "%(count)d document link queued for email delivery"
+msgstr "%(count)d łącze dokumentu w kolejce do dostarczenia wiadomości e-mail"
+
+#: views.py:104
+#, python-format
+msgid "%(count)d document links queued for email delivery"
+msgstr ""
+"%(count)d łącza dokumentów w kolejce do dostarczenia wiadomości e-mail"
+
+#: views.py:113
+msgid "New mailing profile backend selection"
+msgstr "Nowy wybór backaend profilu mailingowego"
+
+#: views.py:145
+#, python-format
+msgid "Create a \"%s\" mailing profile"
+msgstr "Utwórz profil pocztowy „%s”"
+
+#: views.py:172
+#, python-format
+msgid "Delete mailing profile: %s"
+msgstr "Usuń profil pocztowy: %s"
+
+#: views.py:184
+#, python-format
+msgid "Edit mailing profile: %s"
+msgstr "Edytuj profil pocztowy: %s"
+
+#: views.py:211
+msgid ""
+"Mailing profiles are email configurations. Mailing profiles allow sending "
+"documents as attachments or as links via email."
+msgstr ""
+"Profile mailowe to konfiguracje e-mail. Profile mailingowe umożliwiają "
+"wysyłanie dokumentów w postaci załączników lub linków za pośrednictwem "
+"poczty elektronicznej."
+
+#: views.py:215
+msgid "No mailing profiles available"
+msgstr "Brak dostępnych profili mailingowych"
+
+#: views.py:232
+msgid "Test email sent."
+msgstr "Wysłano testowy e-mail."
+
+#: views.py:241
+#, python-format
+msgid "Test mailing profile: %s"
+msgstr "Testowy profil pocztowy: %s"
+
+#: workflow_actions.py:20
+msgid "Mailing profile to use when sending the email."
+msgstr "Profil pocztowy używany podczas wysyłania wiadomości e-mail."
+
+#: workflow_actions.py:25
+msgid "Recipient"
+msgstr "Odbiorca"
+
+#: workflow_actions.py:28
+msgid ""
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon. A template can be used to reference properties of the "
+"document."
+msgstr ""
+"Adres e-mail odbiorcy. Może być wieloma adresami oddzielonymi przecinkiem "
+"lub średnikiem. Szablon może służyć do odwoływania się do właściwości "
+"dokumentu."
+
+#: workflow_actions.py:36
+msgid "CC"
+msgstr ""
+
+#: workflow_actions.py:39 workflow_actions.py:51
+msgid ""
+"Address used in the \"Bcc\" header when sending the email. Can be multiple "
+"addresses separated by comma or semicolon. A template can be used to "
+"reference properties of the document."
+msgstr ""
+
+#: workflow_actions.py:48
+msgid "BCC"
+msgstr ""
+
+#: workflow_actions.py:60
+msgid "Reply to"
+msgstr ""
+
+#: workflow_actions.py:63
+msgid ""
+"Address used in the \"Reply-To\" header when sending the email. Can be "
+"multiple addresses separated by comma or semicolon. A template can be used "
+"to reference properties of the document."
+msgstr ""
+
+#: workflow_actions.py:75
+msgid "Subject of the email. Can be a string or a template."
+msgstr "Temat wiadomości e-mail. Może być ciągiem lub szablonem."
+
+#: workflow_actions.py:84
+msgid "Body of the email to send. Can be a string or a template."
+msgstr "Treść wiadomości e-mail do wysłania. Może być ciągiem lub szablonem."
+
+#: workflow_actions.py:90
+msgid "Attachment"
+msgstr ""
+
+#: workflow_actions.py:93
+msgid "Attach the document to the mail."
+msgstr ""
+
+#: workflow_actions.py:102
+msgid "Send email"
+msgstr "Wyślij email"

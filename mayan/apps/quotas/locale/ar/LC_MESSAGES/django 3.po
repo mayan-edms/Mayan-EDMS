@@ -1,0 +1,254 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Yaman Sanobar <yman.snober@gmail.com>, 2021
+# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
+"Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: apps.py:36 events.py:6 links.py:34 models.py:36 permissions.py:5
+#: views.py:136
+msgid "Quotas"
+msgstr "المحددات"
+
+#: classes.py:65
+msgid "none"
+msgstr "لاشيء"
+
+#: classes.py:157
+msgid "Does not apply"
+msgstr "لم يتم التطبيق"
+
+#: classes.py:161 classes.py:165
+msgid "Null backend"
+msgstr "خلفية فارغة"
+
+#: events.py:10
+msgid "Quota created"
+msgstr "إنشاء محدد"
+
+#: events.py:13
+msgid "Quota edited"
+msgstr "تعديل محدد"
+
+#: forms.py:15 models.py:58
+msgid "Backend"
+msgstr "في الخفاء"
+
+#: forms.py:16
+msgid "The quota driver for this entry."
+msgstr "نسبة الإدخال المحددة "
+
+#: links.py:16
+msgid "Create quota"
+msgstr "إنشاء المحدد"
+
+#: links.py:21
+msgid "Delete"
+msgstr "حذف"
+
+#: links.py:25
+msgid "Edit"
+msgstr "تعديل"
+
+#: links.py:30
+msgid "Quotas list"
+msgstr "قائمة المحددات"
+
+#: mixins.py:17
+msgid "All document types"
+msgstr "جميع أنواع الوثائق"
+
+#: mixins.py:20
+msgid ""
+"Apply to all document types. Enabling this, the quota will ignore the "
+"indiviual document type selection."
+msgstr ""
+"تمكين تطبق على جميع أنواع الوثائق ، سيتم تجاهل النسب وتحديد نوع الوثائق "
+
+#: mixins.py:26
+msgid "Document types"
+msgstr "أنواع الوثائق"
+
+#: mixins.py:33
+msgid "Document types to which the quota will be applied."
+msgstr "أنواع الوثائق التي سيتم تطبيق النسب عليها"
+
+#: mixins.py:67
+msgid "all document types"
+msgstr "جميع أنواع الوثائق"
+
+#: mixins.py:70
+#, python-format
+msgid "document types: %(document_types)s"
+msgstr "أنواع الوثائق : %(document_types)s"
+
+#: mixins.py:94
+msgid "Groups"
+msgstr "المجموعات"
+
+#: mixins.py:101
+msgid "Groups to which the quota will be applied."
+msgstr "المجموعات التي سيتم تطبيق المحددات عليها"
+
+#: mixins.py:105
+msgid "All users"
+msgstr "جميع المستخدمين"
+
+#: mixins.py:108
+msgid ""
+"Apply the quota to all users in the system, excluding admins and staff. "
+"Enabling this option, the quota will ignore the indiviual user and group "
+"selection."
+msgstr ""
+"تطبيق المحددات على جميع المستخدمين في النظام ، باستثناء المسؤولين والموظفين "
+"، عند تفعيل هذا الخيار ، سيتم تجاهل اسم المستخدم و المجموعة"
+
+#: mixins.py:115
+msgid "Users"
+msgstr "المستخدمين"
+
+#: mixins.py:122
+msgid "Users to which the quota will be applied."
+msgstr "المستخدمون الذين سيتم تطبيق النسب عليهم"
+
+#: mixins.py:160
+msgid "all users"
+msgstr "جميع المستخدمين"
+
+#: mixins.py:162
+#, python-format
+msgid "groups: %(groups)s, users: %(users)s"
+msgstr "المجموعات: %(groups)s, المستخدمين: %(users)s"
+
+#: models.py:22
+msgid "The dotted Python path to the backend class."
+msgstr "مسار النظام"
+
+#: models.py:23
+msgid "Backend path"
+msgstr "الرابط الخاص بالمبرمجين"
+
+#: models.py:26
+msgid "Backend data"
+msgstr "بيانات الخاصة بالمبرمجين"
+
+#: models.py:30
+msgid "Allow quick disable or enable of the quota."
+msgstr "السماح بالتعطيل المختصر أو تحديد المحدد"
+
+#: models.py:31
+msgid "Enabled"
+msgstr "مفعل"
+
+#: models.py:35
+msgid "Quota"
+msgstr "المحدد"
+
+#: models.py:57
+msgid "Driver used for this quota entry."
+msgstr "المستخدم  المخصص لإدخال النسب"
+
+#: models.py:62
+msgid "Arguments"
+msgstr "المحددات"
+
+#: models.py:66
+msgid "Usage"
+msgstr "الإستخدام"
+
+#: permissions.py:8
+msgid "Create a quota"
+msgstr "تحديد النسبة"
+
+#: permissions.py:11
+msgid "Delete a quota"
+msgstr "حذف المحدد"
+
+#: permissions.py:14
+msgid "Edit a quota"
+msgstr "تعديل المحدد"
+
+#: permissions.py:17
+msgid "View a quota"
+msgstr "عرض المحدد"
+
+#: quota_backends.py:70 quota_backends.py:170
+msgid "Document count quota exceeded."
+msgstr "تجاوزت عدد المحددات المستخدمة"
+
+#: quota_backends.py:74
+msgid "Documents limit"
+msgstr "تحديد الوثائق"
+
+#: quota_backends.py:77
+msgid "Maximum number of documents."
+msgstr "العدد المسموح من الوثائق"
+
+#: quota_backends.py:81
+msgid "Document count limit"
+msgstr "تحديد عدد الوثائق"
+
+#: quota_backends.py:106
+#, python-format
+msgid "document count: %(document_count)s"
+msgstr "عدد الوثائق : %(document_count)s"
+
+#: quota_backends.py:180 quota_backends.py:185
+msgid "Document size limit"
+msgstr "تحديد حجم الوثائق"
+
+#: quota_backends.py:182
+msgid "Maximum document size in megabytes (MB)."
+msgstr "الحجم المسموح للوثائق بال  (MB)."
+
+#: quota_backends.py:210
+#, python-format
+msgid "document size: %(formatted_file_size)s"
+msgstr "حجم الوثائق : %(formatted_file_size)s"
+
+#: quota_backends.py:230
+msgid "Document size quota exceeded."
+msgstr "تجاوزت الحجم المسموح للوثائق"
+
+#: views.py:24
+msgid "New quota backend selection"
+msgstr "تحديد محدد جديدة"
+
+#: views.py:54
+#, python-format
+msgid "Create a \"%s\" quota"
+msgstr "تحديد  \"%s\" المحدد"
+
+#: views.py:86
+#, python-format
+msgid "Delete quota: %s"
+msgstr "حذف المحدد: %s"
+
+#: views.py:101
+#, python-format
+msgid "Edit quota: %s"
+msgstr "تعديل المحدد: %s"
+
+#: views.py:133
+msgid "Quotas restrict usage of system resources. "
+msgstr "مراجعة مدير النظام ، المحددات في النظام"
+
+#: views.py:135
+msgid "No quotas available"
+msgstr "لا يوجد محددات متاحة ، مراجعة مدير النظام"

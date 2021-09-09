@@ -1,0 +1,344 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
+# Olivier W, 2021
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2021
+# Yves Dubois <ydubois@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
+#: events.py:5 forms.py:14 links.py:31 menus.py:14 models.py:50 models.py:174
+#: permissions.py:5 search.py:56 views.py:155 workflow_actions.py:20
+msgid "Cabinets"
+msgstr "Classeurs"
+
+#: events.py:9
+msgid "Cabinet created"
+msgstr "Classeur créé"
+
+#: events.py:12
+msgid "Cabinet edited"
+msgstr "Classeur modifié"
+
+#: events.py:15
+msgid "Document added to cabinet"
+msgstr "Document ajouté au classeur"
+
+#: events.py:18
+msgid "Document removed from cabinet"
+msgstr "Document retiré du classeur"
+
+#: links.py:37 links.py:49 workflow_actions.py:72
+msgid "Remove from cabinets"
+msgstr "Retirer des classeurs"
+
+#: links.py:41 links.py:45 workflow_actions.py:29
+msgid "Add to cabinets"
+msgstr "Ajouter aux classeurs"
+
+#: links.py:60
+msgid "Add new level"
+msgstr "Ajouter un nouveau niveau"
+
+#: links.py:65 views.py:40
+msgid "Create cabinet"
+msgstr "Nouveau classeur"
+
+#: links.py:70
+msgid "Delete"
+msgstr "Supprimer"
+
+#: links.py:74
+msgid "Edit"
+msgstr "Modifier"
+
+#: links.py:82
+msgid "All"
+msgstr "Tout"
+
+#: links.py:86
+msgid "Details"
+msgstr "Détails"
+
+#: methods.py:20
+msgid "Return a list of cabinets containing the document."
+msgstr "Renvoie une liste des classeurs contenant le document."
+
+#: methods.py:22
+msgid "get_cabinets()"
+msgstr "get_cabinets()"
+
+#: models.py:34
+msgid "A short text used to identify the cabinet."
+msgstr "Un court texte utilisé pour identifier ce classeur"
+
+#: models.py:35
+msgid "Label"
+msgstr "Étiquette"
+
+#: models.py:39
+msgid "Documents"
+msgstr "Documents"
+
+#: models.py:49 models.py:148 models.py:173 workflow_actions.py:64
+msgid "Cabinet"
+msgstr "Classeur"
+
+#: models.py:115
+msgid "The path to the cabinet including all ancestors."
+msgstr " Le chemin vers le cabinet, y compris tous les cabinets parents."
+
+#: models.py:117
+msgid "Full path"
+msgstr "Chemin complet"
+
+#: models.py:149
+msgid "Parent and Label"
+msgstr "Parent et Libellé"
+
+#: models.py:156
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr "%(model_name)s avec ce %(field_labels)s existe déjà"
+
+#: models.py:185
+msgid "Document cabinet"
+msgstr "Classeur de document"
+
+#: models.py:186 search.py:63 search.py:70 search.py:77 search.py:84
+msgid "Document cabinets"
+msgstr "Classeurs de document"
+
+#: permissions.py:10
+msgid "Add documents to cabinets"
+msgstr "Ajouter des documents au classeur"
+
+#: permissions.py:13
+msgid "Create cabinets"
+msgstr "Créer des classeurs"
+
+#: permissions.py:16
+msgid "Delete cabinets"
+msgstr "Supprimer des classeurs"
+
+#: permissions.py:19
+msgid "Edit cabinets"
+msgstr "Modifier des classeurs"
+
+#: permissions.py:22
+msgid "Remove documents from cabinets"
+msgstr "Supprimer des documents des classeurs"
+
+#: permissions.py:25
+msgid "View cabinets"
+msgstr "Visualiser les classeurs"
+
+#: search.py:33
+msgid "Document type"
+msgstr "Type de document"
+
+#: search.py:36
+msgid "Document MIME type"
+msgstr "Type de document MIME"
+
+#: search.py:39
+msgid "Document label"
+msgstr "Étiquette du document"
+
+#: search.py:42
+msgid "Document description"
+msgstr "Description du document"
+
+#: search.py:45
+msgid "Document UUID"
+msgstr "UUID du document"
+
+#: search.py:50
+msgid "Document checksum"
+msgstr "Somme de contrôle du document"
+
+#: serializers.py:18
+msgid "List of children cabinets."
+msgstr "Liste des classeurs enfants."
+
+#: serializers.py:22
+msgid "The name of this cabinet level appended to the names of its ancestors."
+msgstr "Le nom de ce niveau de classeur a été ajouté au nom de ses ancêtres."
+
+#: serializers.py:28
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
+msgstr ""
+"URL du point de terminaison de l'API listant les documents contenus dans ce "
+"classeur."
+
+#: templates/cabinets/cabinet_details.html:17
+msgid "Navigation:"
+msgstr "Navigation:"
+
+#: views.py:56
+#, python-format
+msgid "Add new level to: %s"
+msgstr "Ajouter un nouveau niveau à : %s"
+
+#: views.py:80
+#, python-format
+msgid "Delete the cabinet: %s?"
+msgstr "Supprimer le classeur : %s?"
+
+#: views.py:116
+msgid ""
+"Cabinet levels can contain documents or other cabinet sub levels. To add "
+"documents to a cabinet, select the cabinet view of a document view."
+msgstr ""
+"Les classeurs peuvent contenir des documents ou d'autres sous-niveaux de "
+"classeur. Pour ajouter des documents à un classeur, sélectionnez la vue "
+"classeur d'un document."
+
+#: views.py:120
+msgid "This cabinet level is empty"
+msgstr "Ce classeur est vide"
+
+#: views.py:123
+#, python-format
+msgid "Details of cabinet: %s"
+msgstr "Détails du classeur : %s"
+
+#: views.py:141
+#, python-format
+msgid "Edit cabinet: %s"
+msgstr "Modifier le classeur : %s"
+
+#: views.py:161
+msgid ""
+"Cabinets are a multi-level method to organize documents. Each cabinet can "
+"contain documents as well as other sub level cabinets."
+msgstr ""
+"L'utilisation des classeurs est une méthode multi-niveaux pour organiser vos"
+" documents. Chaque classeur peut contenir autant des documents que d'autres "
+"sous-niveaux de classeurs."
+
+#: views.py:165
+msgid "No cabinets available"
+msgstr "Aucun classeur disponible"
+
+#: views.py:178
+#, python-format
+msgid "Document \"%(object)s\" added to cabinets successfully."
+msgstr "Le document \"%(object)s\" a été ajouté aux classeurs avec succès."
+
+#: views.py:181
+#, python-format
+msgid "%(count)d document added to cabinets successfully."
+msgstr "%(count)d document a été ajouté aux classeurs avec succès."
+
+#: views.py:184
+#, python-format
+msgid "%(count)d documents added to cabinets successfully."
+msgstr "%(count)d documents ont été ajoutés aux classeurs avec succès."
+
+#: views.py:186
+#, python-format
+msgid "Add document \"%(object)s\" to cabinets."
+msgstr "Ajouter le document \"%(object)s\" aux classeurs."
+
+#: views.py:187
+#, python-format
+msgid "Add %(count)d document to cabinets."
+msgstr "Ajouter le document %(count)d aux classeurs."
+
+#: views.py:188
+#, python-format
+msgid "Add %(count)d documents to cabinets."
+msgstr "Ajouter %(count)d documents aux classeurs."
+
+#: views.py:192
+msgid "Add"
+msgstr "Ajouter"
+
+#: views.py:207
+msgid "Cabinets to which the selected documents will be added."
+msgstr "Classeurs auxquels les documents sélectionnés seront ajoutés."
+
+#: views.py:253
+msgid "Documents can be added to many cabinets."
+msgstr "Les documents peuvent être ajoutés dans plusieurs classeurs."
+
+#: views.py:256
+msgid "This document is not in any cabinet"
+msgstr "Ce document n'est dans aucun classeur."
+
+#: views.py:260
+#, python-format
+msgid "Cabinets containing document: %s"
+msgstr "Classeurs contenant le document : %s"
+
+#: views.py:276
+#, python-format
+msgid "Document \"%(object)s\" removed from cabinets successfully."
+msgstr "Le document \"%(object)s\" a été supprimé des classeurs avec succès."
+
+#: views.py:279
+#, python-format
+msgid "%(count)d document removed from cabinets successfully."
+msgstr "%(count)d document a été retiré des classeurs avec succès."
+
+#: views.py:282
+#, python-format
+msgid "%(count)d documents removed from cabinets successfully."
+msgstr "%(count)d documents retirés des classeurs avec succès."
+
+#: views.py:284
+#, python-format
+msgid "Remove document \"%(object)s\" from cabinets."
+msgstr "Retirez le document \"%(object)s\" des classeurs."
+
+#: views.py:285
+#, python-format
+msgid "Remove %(count)d document from cabinets."
+msgstr "Retirez %(count)d document des classeurs."
+
+#: views.py:286
+#, python-format
+msgid "Remove %(count)d documents from cabinets."
+msgstr "Retirez %(count)d documents des classeurs."
+
+#: views.py:290
+msgid "Remove"
+msgstr "Retirer"
+
+#: views.py:305
+msgid "Cabinets from which the selected documents will be removed."
+msgstr "Classeurs desquels les documents sélectionnés seront retirés."
+
+#: wizard_steps.py:15
+msgid "Select cabinets"
+msgstr "Sélectionnez les classeurs"
+
+#: wizard_steps.py:29 workflow_actions.py:23
+msgid "Cabinets to which the document will be added."
+msgstr "Classeurs auxquelles le document sera ajouté."
+
+#: workflow_actions.py:67
+msgid "Cabinets from which the document will be removed."
+msgstr "Classeurs dont le document sera retiré."

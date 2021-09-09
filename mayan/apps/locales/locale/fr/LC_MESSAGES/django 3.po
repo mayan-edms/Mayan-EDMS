@@ -1,0 +1,64 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
+# Yves Dubois <ydubois@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-12 03:39+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:27
+msgid "Locales"
+msgstr "Langues"
+
+#: links.py:13
+msgid "Locale profile"
+msgstr "Paramètres régionaux du profil"
+
+#: links.py:18
+msgid "Edit locale profile"
+msgstr "Modifier les paramètres régionaux du profil"
+
+#: models.py:18
+msgid "User"
+msgstr "Utilisateur"
+
+#: models.py:22
+msgid "Timezone"
+msgstr "Fuseau horaire"
+
+#: models.py:25
+msgid "Language"
+msgstr "Langue"
+
+#: models.py:31
+msgid "User locale profile"
+msgstr "Paramètres régionaux du profil utilisateur"
+
+#: models.py:32
+msgid "User locale profiles"
+msgstr "Paramètres régionaux des profils utilisateurs"
+
+#: views.py:24
+msgid "Current user locale profile details"
+msgstr "Détails des paramètres régionaux de l'utilisateur actuel"
+
+#: views.py:30
+msgid "Edit current user locale profile details"
+msgstr "Modifier les paramètres régionaux de l'utilisateur actuel"

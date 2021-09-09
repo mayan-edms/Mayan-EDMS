@@ -1,0 +1,98 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# yan songwei <yansw@vip.163.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: yan songwei <yansw@vip.163.com>, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:13 settings.py:7
+msgid "Auto administrator"
+msgstr "自动管理员"
+
+#: auth/allauth.py:51
+msgid ""
+"Welcome Admin! You have been given superuser privileges. Use them with "
+"caution."
+msgstr "欢迎管理员！您已获得超级用户权限。谨慎使用此账户。"
+
+#: models.py:13
+msgid "Account"
+msgstr "帐户"
+
+#: models.py:16
+msgid "Password"
+msgstr "密码"
+
+#: models.py:19
+msgid "Password hash"
+msgstr "密码哈希值"
+
+#: models.py:25
+msgid "Autoadmin properties"
+msgstr "自动管理属性"
+
+#: settings.py:11
+msgid "Sets the email of the automatically created super user account."
+msgstr "设置自动创建的超级用户帐户的电子邮件。"
+
+#: settings.py:16
+msgid ""
+"The password of the automatically created super user account. If it is equal"
+" to None, the password is randomly generated."
+msgstr "自动创建的超级用户帐户的密码。如果是“空”，则随机生成密码。"
+
+#: settings.py:22
+msgid "The username of the automatically created super user account."
+msgstr "自动创建的超级用户帐户的用户名。"
+
+#: templates/autoadmin/credentials.html:11
+msgid "Automatic credentials"
+msgstr "自动凭证"
+
+#: templates/autoadmin/credentials.html:16
+#, python-format
+msgid ""
+"You have just finished installing <strong>%(project_title)s</strong>, "
+"congratulations!"
+msgstr "您刚刚安装了<strong> %(project_title)s </strong>，恭喜！"
+
+#: templates/autoadmin/credentials.html:17
+msgid "Login using the following credentials:"
+msgstr "使用以下凭据登录："
+
+#: templates/autoadmin/credentials.html:19
+#, python-format
+msgid "Username: <strong>%(account)s</strong>"
+msgstr "用户名：<strong> %(account)s </strong>"
+
+#: templates/autoadmin/credentials.html:20
+#, python-format
+msgid "Email: <strong>%(email)s</strong>"
+msgstr "电子邮件：<strong> %(email)s </strong>"
+
+#: templates/autoadmin/credentials.html:21
+#, python-format
+msgid "Password: <strong>%(password)s</strong>"
+msgstr "密码：<strong> %(password)s </strong>"
+
+#: templates/autoadmin/credentials.html:23
+msgid ""
+"Be sure to change the password to increase security and to disable this "
+"message."
+msgstr "请务必更改密码以提高安全性并禁用此消息。"

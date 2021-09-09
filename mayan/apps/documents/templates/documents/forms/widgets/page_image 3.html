@@ -1,0 +1,22 @@
+{% load i18n %}
+
+{% load appearance_tags %}
+{% load converter_tags %}
+
+{% converter_get_object_image_data obj=instance width=image_width height=image_height zoom=image_zoom rotation=image_rotation as object_image_data %}
+
+<span class="instance-image-widget {{ container_class }}">
+    <span class="spinner-container text-primary"
+        style="height: {% if display_full_height %}100%{% else %}{{ display_height|default:150 }}px{% endif %}; display: block;"
+    >
+        {% appearance_get_icon 'mayan.apps.documents.icons.icon_document_image_loading'  %}
+    </span>
+    <img
+        alt="{% trans 'Document image' %}"
+        class="thin_border {{ image_classes }}"
+        data-url="{{ object_image_data.url }}"
+        src="#"
+        style="{% if image_max_height %}max-height: {{ image_max_height }}; {% endif %}"
+     />
+</span>
+

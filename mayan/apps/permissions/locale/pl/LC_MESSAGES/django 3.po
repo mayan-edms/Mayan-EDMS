@@ -1,0 +1,208 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2021
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
+# Przemysław Bodio <przemyslawbodio.dev@gmail.com>, 2021
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:28+0000\n"
+"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
+"Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: apps.py:43 events.py:6 models.py:37 models.py:157 permissions.py:5
+msgid "Permissions"
+msgstr "Uprawnienia"
+
+#: apps.py:98 models.py:75
+msgid "Group count"
+msgstr "Liczba grup"
+
+#: classes.py:86
+msgid "Insufficient permissions."
+msgstr "Niewystarczające uprawnienia."
+
+#: dashboard_widgets.py:13
+msgid "Total roles"
+msgstr "Razem role"
+
+#: events.py:10
+msgid "Role created"
+msgstr "Utworzono rolę"
+
+#: events.py:13
+msgid "Role edited"
+msgstr "Edytowano rolę"
+
+#: links.py:17 links.py:37 models.py:48 views.py:171
+msgid "Roles"
+msgstr "Role"
+
+#: links.py:23 views.py:51
+msgid "Create new role"
+msgstr "Utwórz nową rolę"
+
+#: links.py:28
+msgid "Delete"
+msgstr "Usuń"
+
+#: links.py:32
+msgid "Edit"
+msgstr "Edytuj"
+
+#: links.py:41 models.py:40
+msgid "Groups"
+msgstr "Grupy"
+
+#: links.py:47
+msgid "Role permissions"
+msgstr "Uprawnienia roli"
+
+#: models.py:32
+msgid "A short text describing the role."
+msgstr "Krótki tekst opisujący rolę."
+
+#: models.py:33 search.py:14
+msgid "Label"
+msgstr "Etykieta"
+
+#: models.py:47
+msgid "Role"
+msgstr "Rola"
+
+#: models.py:83
+msgid "Permission count"
+msgstr "Liczba uprawnień"
+
+#: models.py:148
+msgid "Namespace"
+msgstr "Przestrzeń nazw"
+
+#: models.py:149
+msgid "Name"
+msgstr "Nazwa"
+
+#: models.py:156
+msgid "Permission"
+msgstr "Uprawnienia"
+
+#: permissions.py:8
+msgid "Create roles"
+msgstr "Utwórz role"
+
+#: permissions.py:11
+msgid "Delete roles"
+msgstr "Usuń role"
+
+#: permissions.py:14
+msgid "Edit roles"
+msgstr "Edytuj role"
+
+#: permissions.py:17
+msgid "View roles"
+msgstr "Podgląd ról"
+
+#: search.py:18
+msgid "Group name"
+msgstr "Nazwa grupy"
+
+#: serializers.py:31
+msgid "Primary key of the group to add to the role."
+msgstr ""
+
+#: serializers.py:39
+msgid "Primary key of the group to remove from the role."
+msgstr ""
+
+#: serializers.py:47
+msgid "Primary key of the permission to add to the role."
+msgstr ""
+
+#: serializers.py:54
+msgid "Primary key of the permission to remove from the role."
+msgstr ""
+
+#: views.py:30
+msgid "Available roles"
+msgstr "Dostępne role"
+
+#: views.py:31
+msgid "Group roles"
+msgstr "Role grupowe"
+
+#: views.py:40
+#, python-format
+msgid "Roles of group: %s"
+msgstr "Role grupy: %s"
+
+#: views.py:82
+msgid "Available groups"
+msgstr "Dostępne grupy"
+
+#: views.py:83
+msgid "Role groups"
+msgstr "Grupy roli"
+
+#: views.py:92
+#, python-format
+msgid "Groups of role: %s"
+msgstr "Grupy dla roli: %s"
+
+#: views.py:94
+msgid ""
+"Add groups to be part of a role. They will inherit the role's permissions "
+"and access controls."
+msgstr ""
+"Dodaj grupy, aby dołączyć do roli. Odziedziczą uprawnienia roli i kontrolę "
+"dostępu."
+
+#: views.py:107
+msgid "Available permissions"
+msgstr "Dostępne uprawnienia"
+
+#: views.py:108
+msgid "Granted permissions"
+msgstr "Przyznane uprawnienia"
+
+#: views.py:143
+msgid ""
+"Permissions granted here will apply to the entire system and all objects."
+msgstr ""
+"Przyznane tutaj uprawnienia będą miały zastosowanie do całego systemu i "
+"wszystkich obiektów."
+
+#: views.py:146
+#, python-format
+msgid "Permissions for role: %s"
+msgstr "Uprawnienia dla roli: %s"
+
+#: views.py:163
+msgid ""
+"Roles are authorization units. They contain user groups which inherit the "
+"role permissions for the entire system. Roles can also part of access "
+"controls lists. Access controls list are permissions granted to a role for "
+"specific objects which its group members inherit."
+msgstr ""
+"Role są jednostkami autoryzacyjnymi. Zawierają grupy użytkowników, które "
+"dziedziczą uprawnienia do roli dla całego systemu. Role mogą również "
+"wchodzić w skład list kontroli dostępu. Lista kontroli dostępu to "
+"uprawnienia nadawane roli dla określonych obiektów, które dziedziczą "
+"członkowie jej grupy."
+
+#: views.py:170
+msgid "There are no roles"
+msgstr "Nie ma ról"

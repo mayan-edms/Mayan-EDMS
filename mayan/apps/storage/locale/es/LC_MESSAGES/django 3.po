@@ -1,0 +1,194 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# jmcainzos <jmcainzos@vodafone.es>, 2021
+# Roberto Rosario, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:25 settings.py:12
+msgid "Storage"
+msgstr "Almacenamiento"
+
+#: apps.py:59
+msgid "Source object"
+msgstr "Objeto fuente"
+
+#: classes.py:86 classes.py:107
+#, python-format
+msgid ""
+"Unable to initialize storage: %(name)s. Check the storage backend dotted "
+"path and arguments."
+msgstr ""
+"No se puede inicializar el almacenamiento: %(name)s. Verifique la ruta de "
+"puntos y argumentos del controlador de almacenamiento."
+
+#: events.py:6 links.py:19 models.py:64 storages.py:22
+msgid "Download files"
+msgstr "Descargar archivos"
+
+#: events.py:10
+msgid "Download file created"
+msgstr "Archivo para descargar creado"
+
+#: events.py:13
+msgid "Download file deleted"
+msgstr "Archivo para descargar eliminado"
+
+#: events.py:16
+msgid "Download file downloaded"
+msgstr "Archivo para descargar descargado"
+
+#: links.py:12
+msgid "Delete"
+msgstr "Eliminar"
+
+#: links.py:16
+msgid "Download"
+msgstr "Descargar"
+
+#: management/commands/storage_process.py:13
+msgid "Name of the app to process."
+msgstr "Nombre de la aplicación a procesar."
+
+#: management/commands/storage_process.py:19
+msgid ""
+"Path of the database (.dbm) file that will be created/read to keep track of "
+"items processed."
+msgstr ""
+"Ruta del archivo de base de datos (.dbm) que se creará / leerá para realizar"
+" un seguimiento de los elementos procesados."
+
+#: management/commands/storage_process.py:26
+msgid "Process a specific model."
+msgstr "Procesar un modelo específico."
+
+#: management/commands/storage_process.py:32
+msgid ""
+"Process the files in reverse to undo the storage pipeline transformations."
+msgstr ""
+"Procese los archivos a la inversa para deshacer las transformaciones de la "
+"configuración de almacenamiento."
+
+#: management/commands/storage_process.py:38
+msgid "Name of the storage to process."
+msgstr "Nombre del almacenamiento a procesar."
+
+#: model_mixins.py:13 models.py:115
+msgid "Filename"
+msgstr "Nombre del archivo"
+
+#: model_mixins.py:16
+msgid "Date time"
+msgstr "Fecha y hora"
+
+#: model_mixins.py:48
+msgid "Unnamed file"
+msgstr "Archivo sin nombre"
+
+#: models.py:42 models.py:112
+msgid "File"
+msgstr "Archivo"
+
+#: models.py:52
+msgid "Label"
+msgstr "Etiqueta"
+
+#: models.py:56
+msgid "Permission"
+msgstr "Permiso"
+
+#: models.py:63
+msgid "Download file"
+msgstr "Archivo para descargar"
+
+#: models.py:121
+msgid "Shared uploaded file"
+msgstr "Archivo cargado compartido"
+
+#: models.py:122 storages.py:36
+msgid "Shared uploaded files"
+msgstr "Archivos cargados compartidos"
+
+#: queues.py:13
+msgid "Storage periodic"
+msgstr "Almacenamiento periódico"
+
+#: queues.py:19
+msgid "Delete stale uploads"
+msgstr "Eliminar archivos cargados expirados"
+
+#: queues.py:26
+msgid "Delete stale download files"
+msgstr "Eliminar archivos de descarga obsoletos"
+
+#: settings.py:17
+msgid ""
+"A storage backend that all workers can use to generate and hold files for "
+"download."
+msgstr ""
+"Un controlador de almacenamiento que todos los trabajadores pueden usar para"
+" generar y almacenar archivos para descargar."
+
+#: settings.py:28
+msgid "A storage backend that all workers can use to share files."
+msgstr ""
+"Un controlador de almacenamiento que todos los trabajadores pueden utilizar "
+"para compartir archivos."
+
+#: settings.py:38
+msgid ""
+"Temporary directory used site wide to store thumbnails, previews and "
+"temporary files."
+msgstr ""
+"Directorio temporero utilizado en todo la instalación para almacenar "
+"imágenes en miniatura, visualizaciones y archivos temporeros."
+
+#: storages.py:15
+msgid ""
+"Unable to initialize the download file storage. Check the settings {} and {}"
+" for formatting errors."
+msgstr ""
+"No se puede inicializar el almacenamiento de archivos de descarga. Verifique"
+" la configuración {} y {} para ver si hay errores de formato."
+
+#: storages.py:29
+msgid ""
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
+msgstr ""
+"No se puede inicializar el almacenamiento de archivos cargados compartidos. "
+"Verifique las configuraciones {} y {} para errores de formato."
+
+#: views.py:55
+msgid ""
+"Download files are created as a results of a an external process like an "
+"export. Download files are retained over a span of time and then removed "
+"automatically."
+msgstr ""
+"Los archivos de descarga se crean como resultado de un proceso externo como "
+"una exportación. Los archivos de descarga se conservan durante un período de"
+" tiempo y luego se eliminan automáticamente."
+
+#: views.py:59
+msgid "There are no files to download."
+msgstr "No hay archivos para descargar."
+
+#: views.py:60
+msgid "Downloads"
+msgstr "Descargas"

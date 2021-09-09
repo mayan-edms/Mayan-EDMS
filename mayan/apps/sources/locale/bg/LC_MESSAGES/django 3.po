@@ -1,0 +1,842 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2021
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
+#: settings.py:14 views/source_views.py:173
+msgid "Sources"
+msgstr "Източници"
+
+#: apps.py:76
+msgid "Create a document source"
+msgstr "Създайте източник на документи"
+
+#: apps.py:78
+msgid ""
+"Document sources are the way in which new documents are feed to Mayan EDMS, "
+"create at least a web form source to be able to upload documents from a "
+"browser."
+msgstr ""
+"Източниците на документи са начинът, по който новите документи се подават "
+"към Mayan EDMS, създайте поне източник на уеб формуляр, за да можете да "
+"качвате документи от браузър."
+
+#: apps.py:91
+msgid "Type"
+msgstr "Тип"
+
+#: apps.py:102
+msgid "Created"
+msgstr "Създаден"
+
+#: apps.py:108
+msgid "Thumbnail"
+msgstr "Умалено изображение"
+
+#: dependencies.py:11
+msgid ""
+"Utility provided by the SANE package. Used to control the scanner and "
+"obtained the scanned document image."
+msgstr ""
+"Помощна програма, предоставена от пакета SANE. Използва се за управление на "
+"скенера и получаване на изображението на сканирания документ."
+
+#: forms.py:26
+msgid "An optional comment to explain the upload."
+msgstr "Незадължителен коментар за обяснение на каченото."
+
+#: forms.py:27
+msgid "Comment"
+msgstr "Коментар"
+
+#: forms.py:31
+msgid "Action"
+msgstr "Действие"
+
+#: forms.py:33
+msgid ""
+"The action to take in regards to the pages of the new file being uploaded."
+msgstr ""
+"Действието, което трябва да се предприеме по отношение на страниците на "
+"новия файл, който се качва."
+
+#: forms.py:48 serializers.py:21
+msgid "Expand compressed files"
+msgstr "Разархивиране на компресирани файлове"
+
+#: forms.py:50 serializers.py:22
+msgid "Upload a compressed file's contained files as individual documents."
+msgstr "Качване съдържанието на  компресиран файл като отделни документи."
+
+#: forms.py:71 views/source_views.py:185
+msgid "Staging file"
+msgstr "Изходен файл"
+
+#: forms.py:75 forms.py:80
+msgid "File"
+msgstr "Файл"
+
+#: handlers.py:22
+msgid "Default"
+msgstr "По подразбиране"
+
+#: links.py:73
+msgid "New document"
+msgstr "Нов документ"
+
+#: links.py:84
+msgid "Add new IMAP email"
+msgstr "Добавете нов  IMAP имейл"
+
+#: links.py:89
+msgid "Add new POP3 email"
+msgstr "Добавете нов POP3 имейл"
+
+#: links.py:94
+msgid "Add new staging folder"
+msgstr "Добавете нова изходна папка"
+
+#: links.py:99
+msgid "Add new watch folder"
+msgstr "Добавете нова наблюдавана папка"
+
+#: links.py:104
+msgid "Add new webform source"
+msgstr "Добавете нов източник на уеб формуляр"
+
+#: links.py:109
+msgid "Add new SANE scanner"
+msgstr "Добавете нов SANE скенер"
+
+#: links.py:114 links.py:130
+msgid "Delete"
+msgstr "Изтрийте"
+
+#: links.py:118
+msgid "Edit"
+msgstr "Редактиране"
+
+#: links.py:123
+msgid "Document sources"
+msgstr "Източници на документи"
+
+#: links.py:137
+msgid "Upload new file"
+msgstr "Качете нов файл"
+
+#: links.py:141
+msgid "Check now"
+msgstr "Провери сега"
+
+#: literals.py:25
+msgid "Flatbed"
+msgstr "Плосък скенер"
+
+#: literals.py:26
+msgid "Document feeder"
+msgstr "Подавач на документи"
+
+#: literals.py:33
+msgid "Simplex"
+msgstr "Симплекс"
+
+#: literals.py:34
+msgid "Duplex"
+msgstr "Дуплекс"
+
+#: literals.py:42
+msgid "Lineart"
+msgstr "Графика"
+
+#: literals.py:43
+msgid "Monochrome"
+msgstr "Монохромно"
+
+#: literals.py:44
+msgid "Color"
+msgstr "Цвят"
+
+#: literals.py:52 literals.py:57
+msgid "Always"
+msgstr "Винаги"
+
+#: literals.py:53 literals.py:58
+msgid "Never"
+msgstr "Никога"
+
+#: literals.py:59
+msgid "Ask user"
+msgstr "Питане на потребителя"
+
+#: literals.py:70
+msgid "Scanner"
+msgstr "Скенер"
+
+#: literals.py:71 models/webform_sources.py:39
+msgid "Web form"
+msgstr "Уеб формуляр"
+
+#: literals.py:72 models/staging_folder_sources.py:67
+msgid "Staging folder"
+msgstr "Изходна папка"
+
+#: literals.py:73 models/watch_folder_sources.py:46
+msgid "Watch folder"
+msgstr "Наблюдавана папка"
+
+#: literals.py:74
+msgid "POP3 email"
+msgstr "POP3 имейл"
+
+#: literals.py:75 models/email_sources.py:249 models/email_sources.py:250
+msgid "IMAP email"
+msgstr "IMAP имейл"
+
+#: models/base.py:26
+msgid "A short text to describe this source."
+msgstr "Кратък текст за описание на този източник."
+
+#: models/base.py:27
+msgid "Label"
+msgstr "Етикет"
+
+#: models/base.py:29
+msgid "Enabled"
+msgstr "Активиран"
+
+#: models/base.py:35
+msgid "Source"
+msgstr "Източник"
+
+#: models/base.py:142
+msgid "Interactive source"
+msgstr "Интерактивен източник"
+
+#: models/base.py:143
+msgid "Interactive sources"
+msgstr "Интерактивни източници"
+
+#: models/base.py:152 models/base.py:153
+msgid "Out of process"
+msgstr "Извън процес"
+
+#: models/base.py:159
+msgid "Interval in seconds between checks for new documents."
+msgstr "Интервал в секунди между проверки за нови документи."
+
+#: models/base.py:160
+msgid "Interval"
+msgstr "Интервал"
+
+#: models/base.py:164
+msgid "Assign a document type to documents uploaded from this source."
+msgstr "Задайте тип документ за документи, качени от този източник."
+
+#: models/base.py:166 serializers.py:17
+msgid "Document type"
+msgstr "Тип документ"
+
+#: models/base.py:170
+msgid "Whether to expand or not, compressed archives."
+msgstr "Дали да се разархивират или не, компресирани архиви."
+
+#: models/base.py:171 models/staging_folder_sources.py:54
+#: models/webform_sources.py:33
+msgid "Uncompress"
+msgstr "Разкомпресиране"
+
+#: models/base.py:177
+msgid "Interval source"
+msgstr "Интервален източник"
+
+#: models/base.py:178
+msgid "Interval sources"
+msgstr "Интервални източници"
+
+#: models/email_sources.py:40
+msgid "Host"
+msgstr "Хост"
+
+#: models/email_sources.py:41
+msgid "SSL"
+msgstr "SSL"
+
+#: models/email_sources.py:43
+msgid ""
+"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
+"for IMAP over SSL."
+msgstr ""
+"Типичните възможности за избор са 110 за POP3, 995 за POP3 над SSL, 143 за "
+"IMAP, 993 за IMAP над SSL."
+
+#: models/email_sources.py:44
+msgid "Port"
+msgstr "Порт"
+
+#: models/email_sources.py:46
+msgid "Username"
+msgstr "Име на потребител"
+
+#: models/email_sources.py:47
+msgid "Password"
+msgstr "Парола"
+
+#: models/email_sources.py:51
+msgid ""
+"Name of the attachment that will contains the metadata type names and value "
+"pairs to be assigned to the rest of the downloaded attachments."
+msgstr ""
+"Име на прикачения файл, който ще съдържа имена на метаданни и двойки "
+"стойности, които ще бъдат присвоени на останалите изтеглени прикачени "
+"файлове."
+
+#: models/email_sources.py:54
+msgid "Metadata attachment name"
+msgstr "Име за прикачени метаданни"
+
+#: models/email_sources.py:58
+msgid ""
+"Select a metadata type to store the email's subject value. Must be a valid "
+"metadata type for the document type selected previously."
+msgstr ""
+"Изберете типа метаданни за запазване стойността на темата на имейла. Трябва "
+"да е валиден тип метаданни за избрания преди това тип документ."
+
+#: models/email_sources.py:62
+msgid "Subject metadata type"
+msgstr "Тип метаданните за темата"
+
+#: models/email_sources.py:66
+msgid ""
+"Select a metadata type to store the email's \"from\" value. Must be a valid "
+"metadata type for the document type selected previously."
+msgstr ""
+"Изберете тип метаданни за съхраняване стойността „от“ на имейла. Трябва да е"
+" валиден тип метаданни за избрания преди това тип документ."
+
+#: models/email_sources.py:70
+msgid "From metadata type"
+msgstr "От тип метаданни"
+
+#: models/email_sources.py:74
+msgid "Store the body of the email as a text document."
+msgstr "Съхраняване основния текст на имейла като текстов документ."
+
+#: models/email_sources.py:75
+msgid "Store email body"
+msgstr "Съхраняване основния текст на имейла"
+
+#: models/email_sources.py:81
+msgid "Email source"
+msgstr "Източник на имейл"
+
+#: models/email_sources.py:82
+msgid "Email sources"
+msgstr "Източници на имейл"
+
+#: models/email_sources.py:187
+#, python-format
+msgid ""
+"Subject metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr ""
+"Типът метаданни за темата &quot;%(metadata_type)s&quot; не е валиден за типа"
+" документ: %(document_type)s"
+
+#: models/email_sources.py:201
+#, python-format
+msgid ""
+"\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr ""
+"„От„ тип метаданни “%(metadata_type)s“ не е валиден за типа документ: "
+"%(document_type)s"
+
+#: models/email_sources.py:216
+msgid "IMAP Mailbox from which to check for messages."
+msgstr "IMAP пощенска кутия, от която да проверявате за съобщения."
+
+#: models/email_sources.py:217
+msgid "Mailbox"
+msgstr "Пощенска кутия"
+
+#: models/email_sources.py:221
+msgid ""
+"Criteria to use when searching for messages to process. Use the format "
+"specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
+msgstr ""
+"Критерии, които се използват при търсене на съобщения за обработка. "
+"Използвайте формата, посочен в "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
+
+#: models/email_sources.py:224
+msgid "Search criteria"
+msgstr "Критерии за търсене"
+
+#: models/email_sources.py:228
+msgid ""
+"IMAP STORE command to execute on messages after they are processed. One "
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
+msgstr ""
+"IMAP STORE команда за изпълнение на съобщения след тяхното обработване. По "
+"една команда на ред. Използвайте командите, посочени в "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 или персонализираните"
+" команди за вашия IMAP сървър."
+
+#: models/email_sources.py:232
+msgid "Store commands"
+msgstr "Съхраняване на команди"
+
+#: models/email_sources.py:236
+msgid "Execute the IMAP expunge command after processing each email message."
+msgstr ""
+"Изпълнете командата IMAP expunge след обработка на всяко имейл съобщение."
+
+#: models/email_sources.py:238
+msgid "Execute expunge"
+msgstr "Премахнете изцяло"
+
+#: models/email_sources.py:242
+msgid "IMAP Mailbox to which processed messages will be copied."
+msgstr ""
+"IMAP пощенска кутия, в която ще бъдат копирани обработените съобщения."
+
+#: models/email_sources.py:243
+msgid "Destination mailbox"
+msgstr "Пощенска кутия на получателя"
+
+#: models/email_sources.py:349
+msgid "Timeout"
+msgstr "Изтичане на времето"
+
+#: models/email_sources.py:355 models/email_sources.py:356
+msgid "POP email"
+msgstr "POP имейл"
+
+#: models/scanner_sources.py:31
+msgid "Device name as returned by the SANE backend."
+msgstr "Име на устройството, както е върнато от сървъра SANE."
+
+#: models/scanner_sources.py:32
+msgid "Device name"
+msgstr "Име на устройството"
+
+#: models/scanner_sources.py:37
+msgid ""
+"Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
+"is not supported by your scanner, leave it blank."
+msgstr ""
+"Избира режима на сканиране (например, графика, монохромен или цвят). Ако "
+"тази опция не се поддържа от вашия скенер, оставете я празна."
+
+#: models/scanner_sources.py:39
+msgid "Mode"
+msgstr "Режим"
+
+#: models/scanner_sources.py:43
+msgid ""
+"Sets the resolution of the scanned image in DPI (dots per inch). Typical "
+"value is 200. If this option is not supported by your scanner, leave it "
+"blank."
+msgstr ""
+"Задава разделителната способност на сканираното изображение в DPI (точки на "
+"инч). Типичната стойност е 200. Ако тази опция не се поддържа от вашия "
+"скенер, оставете я празна."
+
+#: models/scanner_sources.py:46
+msgid "Resolution"
+msgstr "Разделителна способност"
+
+#: models/scanner_sources.py:50
+msgid ""
+"Selects the scan source (such as a document-feeder). If this option is not "
+"supported by your scanner, leave it blank."
+msgstr ""
+"Избира източника на сканиране (например устройство за подаване на "
+"документи). Ако тази опция не се поддържа от вашия скенер, оставете я "
+"празна."
+
+#: models/scanner_sources.py:52
+msgid "Paper source"
+msgstr "Източник на хартия"
+
+#: models/scanner_sources.py:57
+msgid ""
+"Selects the document feeder mode (simplex/duplex). If this option is not "
+"supported by your scanner, leave it blank."
+msgstr ""
+"Избира режим на подаване на документи (симплекс / дуплекс). Ако тази опция "
+"не се поддържа от вашия скенер, оставете я празна."
+
+#: models/scanner_sources.py:59
+msgid "ADF mode"
+msgstr "ADF режим"
+
+#: models/scanner_sources.py:65
+msgid "SANE Scanner"
+msgstr "SANE скенер"
+
+#: models/scanner_sources.py:66
+msgid "SANE Scanners"
+msgstr "SANE скенери"
+
+#: models/scanner_sources.py:95
+#, python-format
+msgid ""
+"Error while executing scanning command \"%(command_line)s\"; "
+"%(error_message)s"
+msgstr ""
+"Грешка при изпълнение на команда за сканиране &quot;%(command_line)s&quot;; "
+"%(error_message)s"
+
+#: models/staging_folder_sources.py:39
+msgid "Server side filesystem path."
+msgstr "Пътят на файловата система към сървъра."
+
+#: models/staging_folder_sources.py:40 models/watch_folder_sources.py:33
+msgid "Folder path"
+msgstr "Пътека към папката"
+
+#: models/staging_folder_sources.py:43
+msgid "Width value to be passed to the converter backend."
+msgstr ""
+"Стойност на ширината, която трябва да бъде предадена на конверторния бекенд."
+
+#: models/staging_folder_sources.py:44
+msgid "Preview width"
+msgstr "Визуализиране на ширината"
+
+#: models/staging_folder_sources.py:48
+msgid "Height value to be passed to the converter backend."
+msgstr ""
+"Стойност на височината, която трябва да бъде предадена на конверторния "
+"бекенд."
+
+#: models/staging_folder_sources.py:49
+msgid "Preview height"
+msgstr "Визуализиране на височината"
+
+#: models/staging_folder_sources.py:53 models/webform_sources.py:32
+msgid "Whether to expand or not compressed archives."
+msgstr "Дали да разархивират или не компресирате архиви."
+
+#: models/staging_folder_sources.py:59
+msgid "Delete the file after is has been successfully uploaded."
+msgstr "Изтрийте файла, след като е качен успешно."
+
+#: models/staging_folder_sources.py:61
+msgid "Delete after upload"
+msgstr "Изтриване след качване"
+
+#: models/staging_folder_sources.py:68
+msgid "Staging folders"
+msgstr "Изходни папки"
+
+#: models/watch_folder_sources.py:32
+msgid "Server side filesystem path to scan for files."
+msgstr "Пътят на файловата система към сървъра за сканиране на файлове."
+
+#: models/watch_folder_sources.py:37
+msgid ""
+"If checked, not only will the folder path be scanned for files but also its "
+"subdirectories."
+msgstr ""
+"Ако е отметнато, ще бъде сканиран не само пътят на папката за файлове, но и "
+"нейните поддиректории."
+
+#: models/watch_folder_sources.py:40
+msgid "Include subdirectories?"
+msgstr "Да се включат ли поддиректории?"
+
+#: models/watch_folder_sources.py:47
+msgid "Watch folders"
+msgstr "Наблюдавани папки"
+
+#: models/webform_sources.py:40
+msgid "Web forms"
+msgstr "Уеб формуляри"
+
+#: permissions.py:5
+msgid "Sources setup"
+msgstr "Настройка на източници"
+
+#: permissions.py:8
+msgid "Create new document sources"
+msgstr "Създаване на източници на документи"
+
+#: permissions.py:11
+msgid "Delete document sources"
+msgstr "Изтриване на източници на документи"
+
+#: permissions.py:14
+msgid "Edit document sources"
+msgstr "Редактиране на източници на документи"
+
+#: permissions.py:17
+msgid "View existing document sources"
+msgstr "Преглед на съществуващи източници на документи"
+
+#: permissions.py:20
+msgid "Delete staging files"
+msgstr "Изтриване на изходните файлове"
+
+#: queues.py:10
+msgid "Sources periodic"
+msgstr "Периодични източници"
+
+#: queues.py:14
+msgid "Sources fast"
+msgstr "Бързи източници"
+
+#: queues.py:19
+msgid "Generate staging file image"
+msgstr "Генериране на изображение на изходния файл"
+
+#: queues.py:24
+msgid "Check interval source"
+msgstr "Проверете интервалния източник"
+
+#: queues.py:29
+msgid "Handle upload"
+msgstr "Обработете качването"
+
+#: queues.py:33
+msgid "Upload document"
+msgstr "Качване на документ"
+
+#: settings.py:21
+msgid "File path to the scanimage program used to control image scanners."
+msgstr ""
+"Пътека към файла на програмата за сканиране, използвана за управление на "
+"скенери за изображения."
+
+#: settings.py:27
+msgid ""
+"Path to the Storage subclass to use when storing the cached staging_file "
+"image files."
+msgstr ""
+"Път към подкласа за съхранение, който да се използва при съхранение на "
+"кешираните файлове с изображения staging_file."
+
+#: settings.py:35
+msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
+msgstr "Аргументи за подаване към SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
+
+#: storages.py:16
+msgid ""
+"Unable to initialize the staging folder file image storage. Check the "
+"settings {} and {} for formatting errors."
+msgstr ""
+"Невъзможно е да се инициализира съхранението на изображение на файл в "
+"папката. Проверете настройките {} и {} за грешки във форматирането."
+
+#: storages.py:23
+msgid "Staging folder files"
+msgstr "Активиране на файлове в папките"
+
+#: templates/sources/app/foot.html:40
+msgid "Cancel upload"
+msgstr "Прекратете качването"
+
+#: templates/sources/app/foot.html:41
+msgid "Are you sure you want to cancel this upload?"
+msgstr "Наистина ли искате да прекратите това качване?"
+
+#: templates/sources/app/foot.html:42
+msgid "Drop files or click here to upload files"
+msgstr "Пуснете файлове или щракнете тук, за да качите файлове"
+
+#: templates/sources/app/foot.html:43
+msgid "Your browser does not support drag and drop file uploads."
+msgstr "Вашият браузър не поддържа качване на файлове с плъзгане и пускане."
+
+#: templates/sources/app/foot.html:44
+msgid "Please use the fallback form below to upload your files."
+msgstr ""
+"Моля, използвайте резервния формуляр по-долу, за да качите вашите файлове."
+
+#: templates/sources/app/foot.html:45
+msgid "Clear"
+msgstr "Изчистване"
+
+#: templates/sources/app/foot.html:46
+msgid "Server responded with {{statusCode}} code."
+msgstr "Сървърът отговори с {{statusCode}} код."
+
+#: views/document_file_views.py:61
+#, python-format
+msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
+msgstr ""
+"Не мога да кача нови файлове за документ &quot;%(document)s&quot;. "
+"%(exception)s"
+
+#: views/document_file_views.py:125
+#, python-format
+msgid "Error executing document file upload task; %(exception)s"
+msgstr ""
+"Грешка при изпълнение на задачата за качване на файл с документи; "
+"%(exception)s"
+
+#: views/document_file_views.py:140
+msgid "New document file queued for upload and will be available shortly."
+msgstr ""
+"Новият файл с документи е на опашка за качване и скоро ще бъде достъпен."
+
+#: views/document_file_views.py:165
+#, python-format
+msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
+msgstr ""
+"Качете нов файл за документ &quot;%(document)s&quot; от източник: %(source)s"
+
+#: views/document_file_views.py:168
+msgid "Submit"
+msgstr "Подаване"
+
+#: views/document_views.py:79 wizards.py:50
+msgid ""
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr ""
+"Не са дефинирани интерактивни източници на документи или никой не е "
+"активиран, създайте такъв преди да продължите."
+
+#: views/document_views.py:107 views/document_views.py:136
+#: views/document_views.py:146
+msgid "Document properties"
+msgstr "Свойства на документа"
+
+#: views/document_views.py:116
+msgid ""
+"This could mean that the staging folder is empty. It could also mean that "
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
+msgstr ""
+"Това може да означава, че папката за поставяне е празна. Това също може да "
+"означава, че потребителският акаунт на операционната система, използвана за "
+"Mayan EDMS няма необходимите разрешения във файлова система за папката."
+
+#: views/document_views.py:123
+msgid "No staging files available"
+msgstr "Няма налични изходни файлове"
+
+#: views/document_views.py:126
+msgid "Files in staging path"
+msgstr "Файлове в изходната пътека"
+
+#: views/document_views.py:137
+msgid "Scan"
+msgstr "Сканиране"
+
+#: views/document_views.py:282
+#, python-format
+msgid "Error executing document upload task; %(exception)s"
+msgstr ""
+"Грешка при изпълнение на задача за качване на документи; %(exception)s"
+
+#: views/document_views.py:292
+msgid "New document queued for upload and will be available shortly."
+msgstr "Нов документ е на опашка за качване и ще бъде наличен скоро."
+
+#: views/document_views.py:309
+#, python-format
+msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
+msgstr ""
+"Качете документ от тип &quot;%(document_type)s&quot; от източник: %(source)s"
+
+#: views/source_views.py:50
+msgid ""
+"This will execute the source check code even if the source is not enabled. "
+"Sources that delete content after downloading will not do so while being "
+"tested. Check the source's error log for information during testing. A "
+"successful test will clear the error log."
+msgstr ""
+"Това ще изпълни контролния код за източник, дори ако източникът не е "
+"активиран. Източниците, които изтриват съдържание след изтеглянето, няма да "
+"го правят, докато се тестват. Проверете дневника за грешки на източника за "
+"информация по време на тестване. Успешен тест ще изчисти дневника на "
+"грешките."
+
+#: views/source_views.py:56
+#, python-format
+msgid "Trigger check for source \"%s\"?"
+msgstr "Започнете проверка за източник &quot;%s&quot;?"
+
+#: views/source_views.py:68
+msgid "Source check queued."
+msgstr "Проверката на източника е поставена на опашка."
+
+#: views/source_views.py:82
+#, python-format
+msgid "Create new source of type: %s"
+msgstr "Създайте нов източник от тип: %s"
+
+#: views/source_views.py:105
+#, python-format
+msgid "Delete the source: %s?"
+msgstr "Да се изтрие източникът: %s?"
+
+#: views/source_views.py:127
+#, python-format
+msgid "Edit source: %s"
+msgstr "Редактиране на източник: %s"
+
+#: views/source_views.py:167
+msgid ""
+"Sources provide the means to upload documents. Some sources like the "
+"webform, are interactive and require user input to operate. Others like the "
+"email sources, are automatic and run on the background without user "
+"intervention."
+msgstr ""
+"Източниците осигуряват средства за качване на документи. Някои източници "
+"като уеб формуляра са интерактивни и изискват потребителско въвеждане за да "
+"работят. Други като източниците на имейл са автоматични и се изпълняват на "
+"заден план без намеса на потребителя."
+
+#: views/source_views.py:172
+msgid "No sources available"
+msgstr "Няма налични източници"
+
+#: views/source_views.py:186
+#, python-format
+msgid "Delete staging file \"%s\"?"
+msgstr "Да се изтрие ли изходния файл &quot;%s&quot;?"
+
+#: wizard_steps.py:11
+msgid "Select document type"
+msgstr "Изберете типа документ"
+
+#: wizards.py:70
+#, python-format
+msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
+msgstr "Стъпка %(step)d от %(total_steps)d: %(step_label)s"
+
+#: wizards.py:75
+msgid "Next step"
+msgstr "Следваща стъпка"
+
+#: wizards.py:77
+msgid "Document upload wizard"
+msgstr "Съветник за качване на документи"

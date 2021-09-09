@@ -1,0 +1,1346 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Alex Chigrin <chalex84@mail.ru>, 2021
+# Sergey Glita <gsv70@mail.ru>, 2021
+# lilo.panic, 2021
+# Panasoft, 2021
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: apps.py:72 events.py:6 forms.py:42 links.py:46 links.py:87 links.py:240
+#: links.py:264 models/workflow_models.py:65 settings.py:14
+#: views/workflow_proxy_views.py:64 views/workflow_template_views.py:261
+#: workflow_actions.py:74
+msgid "Workflows"
+msgstr "Рабочие процессы"
+
+#: apps.py:171 apps.py:178
+msgid "Current state of a workflow"
+msgstr "Текущее состояние рабочего процесса"
+
+#: apps.py:172
+msgid "Return the current state of the selected workflow."
+msgstr "Возвращает текущее состояние выбранного рабочего процесса."
+
+#: apps.py:179
+msgid ""
+"Return the completion value of the current state of the selected workflow."
+msgstr ""
+"Возвращает значение завершения текущего состояния выбранного рабочего "
+"процесса."
+
+#: apps.py:234
+msgid ""
+"Return the last workflow instance log entry. The log entry itself has the "
+"following fields: datetime, transition, user, and comment."
+msgstr ""
+"Возвращает последнюю запись журнала экземпляра рабочего процесса. Сама "
+"запись журнала имеет следующие поля: \"datetime\", \"transition\", \"user\","
+" \"comment\"."
+
+#: apps.py:237
+msgid "Get last log entry"
+msgstr "Получить последнюю запись журнала"
+
+#: apps.py:243
+msgid ""
+"Return the current context dictionary which includes runtime data from the "
+"workflow transition fields."
+msgstr ""
+"Возвращает словарь контекста, который включает runtime данные из полей "
+"перехода рабочего процесса."
+
+#: apps.py:245
+msgid "Get the context"
+msgstr "Получить контекст"
+
+#: apps.py:251
+msgid "Return the transition of the workflow instance."
+msgstr "Возвращает переход экземпляра рабочего процесса."
+
+#: apps.py:252
+msgid "Get last transition"
+msgstr "Получить последний переход"
+
+#: apps.py:266 apps.py:278 apps.py:287 apps.py:293
+msgid "None"
+msgstr "Нет"
+
+#: apps.py:274
+msgid "Current state"
+msgstr "Текущее состояние"
+
+#: apps.py:279 apps.py:303 models/workflow_instance_models.py:186
+msgid "User"
+msgstr "Пользователь"
+
+#: apps.py:283
+msgid "Last transition"
+msgstr "Последний переход"
+
+#: apps.py:288 apps.py:299
+msgid "Date and time"
+msgstr "Дата и время"
+
+#: apps.py:294 models/workflow_state_models.py:68
+msgid "Completion"
+msgstr "Завершение"
+
+#: apps.py:324
+msgid "Additional details"
+msgstr "Дополнительная информация"
+
+#: apps.py:351
+msgid "When?"
+msgstr "Когда?"
+
+#: apps.py:355
+msgid "Action type"
+msgstr "Тип действия"
+
+#: apps.py:386
+msgid ""
+"Triggers are system events that will cause the transition to be applied."
+msgstr ""
+"Триггеры - это события, которые вызывают автоматическое выполнение этого "
+"перехода."
+
+#: apps.py:388
+msgid "Triggers"
+msgstr "Триггеры"
+
+#: apps.py:402 models/workflow_transition_models.py:139
+msgid "Type"
+msgstr "Тип"
+
+#: apps.py:410
+msgid "Widget"
+msgstr "Виджет"
+
+#: apps.py:421 apps.py:427
+msgid "Documents"
+msgstr "Документы"
+
+#: classes.py:141
+#, python-format
+msgid "%(field_name)s template error: %(exception)s"
+msgstr "%(field_name)s ошибка в шаблоне: %(exception)s"
+
+#: events.py:10
+msgid "Workflow created"
+msgstr "Рабочий процесс создан"
+
+#: events.py:13
+msgid "Workflow edited"
+msgstr "Рабочий процесс изменен"
+
+#: forms.py:23
+msgid "The action type for this action entry."
+msgstr "Тип действия для этой записи действия."
+
+#: forms.py:24
+msgid "Action"
+msgstr "Действие"
+
+#: forms.py:131
+msgid "Namespace"
+msgstr "Пространство имен"
+
+#: forms.py:135 models/workflow_models.py:52
+#: models/workflow_state_models.py:55 models/workflow_state_models.py:172
+#: models/workflow_transition_models.py:40
+#: models/workflow_transition_models.py:150
+msgid "Label"
+msgstr "Заголовок"
+
+#: forms.py:139 models/workflow_state_models.py:174
+msgid "Enabled"
+msgstr "Включено"
+
+#: forms.py:141
+msgid "No"
+msgstr "Нет"
+
+#: forms.py:142
+msgid "Yes"
+msgstr "Да"
+
+#: forms.py:190
+msgid "Select a transition to execute in the next step."
+msgstr "Выберите переход для выполнения на следующем шаге."
+
+#: forms.py:191 links.py:246 models/workflow_instance_models.py:182
+#: models/workflow_transition_models.py:136
+#: models/workflow_transition_models.py:220
+msgid "Transition"
+msgstr "Переход"
+
+#: handlers.py:71
+#, python-format
+msgid "Event trigger: %s"
+msgstr "Триггер: %s"
+
+#: links.py:52 views/workflow_template_views.py:127
+msgid "Create workflow"
+msgstr "Создать рабочий процесс"
+
+#: links.py:56 links.py:63 links.py:103 links.py:138 links.py:166 links.py:212
+msgid "Delete"
+msgstr "Удалить"
+
+#: links.py:69 models/workflow_models.py:56
+msgid "Document types"
+msgstr "Типы документов"
+
+#: links.py:76 links.py:110 links.py:145 links.py:173 links.py:219
+msgid "Edit"
+msgstr "Редактировать"
+
+#: links.py:82
+msgid "Launch workflow"
+msgstr "Запустить рабочий процесс"
+
+#: links.py:94
+msgid "Preview"
+msgstr "Предпросмотр"
+
+#: links.py:116
+msgid "Actions"
+msgstr "Действия"
+
+#: links.py:122
+msgid "Create action"
+msgstr "Создать действие"
+
+#: links.py:131
+msgid "Create state"
+msgstr "Создать состояние"
+
+#: links.py:150 links.py:277
+msgid "States"
+msgstr "Состояния"
+
+#: links.py:159
+msgid "Create transition"
+msgstr "Создать переход"
+
+#: links.py:179
+msgid "Transition triggers"
+msgstr "Триггеры перехода"
+
+#: links.py:185
+msgid "Transitions"
+msgstr "Переходы"
+
+#: links.py:193 links.py:199 workflow_actions.py:83
+msgid "Launch workflows"
+msgstr "Запустить рабочие процессы"
+
+#: links.py:205
+msgid "Create field"
+msgstr "Создать поле"
+
+#: links.py:225 models/workflow_transition_models.py:94
+msgid "Fields"
+msgstr "Поля"
+
+#: links.py:235
+msgid "Detail"
+msgstr "Подробности"
+
+#: links.py:256
+msgid "Workflow documents"
+msgstr "Документы в процессе"
+
+#: links.py:270
+msgid "State documents"
+msgstr "Документы в состоянии"
+
+#: links.py:285
+msgid "Launch all workflows"
+msgstr "Запустить все рабочие процессы"
+
+#: literals.py:18
+msgid "Character"
+msgstr "Символ"
+
+#: literals.py:19
+msgid "Number (Integer)"
+msgstr "Число (целое)"
+
+#: literals.py:34
+msgid "Text area"
+msgstr "Текстовая область"
+
+#: literals.py:43
+msgid "On entry"
+msgstr "На входе"
+
+#: literals.py:44
+msgid "On exit"
+msgstr "На выходе"
+
+#: models/workflow_instance_models.py:29 models/workflow_models.py:64
+#: models/workflow_state_models.py:51 models/workflow_transition_models.py:36
+msgid "Workflow"
+msgstr "Рабочий процесс"
+
+#: models/workflow_instance_models.py:33
+msgid "Document"
+msgstr "Документ"
+
+#: models/workflow_instance_models.py:36
+msgid "Context"
+msgstr "Контекст"
+
+#: models/workflow_instance_models.py:45
+#: models/workflow_instance_models.py:175
+msgid "Workflow instance"
+msgstr "Экземпляр рабочего процесса"
+
+#: models/workflow_instance_models.py:46
+msgid "Workflow instances"
+msgstr "Экземпляры рабочего процесса"
+
+#: models/workflow_instance_models.py:178
+msgid "Datetime"
+msgstr "Дата и время"
+
+#: models/workflow_instance_models.py:188 views/workflow_instance_views.py:136
+msgid "Comment"
+msgstr "Комментарий"
+
+#: models/workflow_instance_models.py:189
+msgid "Extra data"
+msgstr "Дополнительные данные"
+
+#: models/workflow_instance_models.py:193
+msgid "Workflow instance log entry"
+msgstr "Запись журнала экземпляра рабочего процесса"
+
+#: models/workflow_instance_models.py:194
+msgid "Workflow instance log entries"
+msgstr "Записи журнала экземпляра рабочего процесса"
+
+#: models/workflow_instance_models.py:201
+msgid "Not a valid transition choice."
+msgstr "Неверный выбор перехода."
+
+#: models/workflow_models.py:40
+msgid "Launch workflow when document is created."
+msgstr "Запустить рабочий процесс при создании документа."
+
+#: models/workflow_models.py:41
+msgid "Auto launch"
+msgstr "Автоматический запуск"
+
+#: models/workflow_models.py:45
+msgid ""
+"This value will be used by other apps to reference this workflow. Can only "
+"contain letters, numbers, and underscores."
+msgstr ""
+"Это значение будет использоваться другими приложениями для ссылки на этот "
+"рабочий процесс. Может содержать только латинские буквы, цифры и знак "
+"подчеркивания."
+
+#: models/workflow_models.py:48 models/workflow_transition_models.py:145
+msgid "Internal name"
+msgstr "Внутреннее имя"
+
+#: models/workflow_models.py:51
+msgid "A short text to describe the workflow."
+msgstr "Краткое описание рабочего процесса."
+
+#: models/workflow_models.py:160
+msgid "Initial state"
+msgstr "Исходное состояние"
+
+#: models/workflow_models.py:301
+msgid "Workflow runtime proxy"
+msgstr "Прокси рабочего процесса"
+
+#: models/workflow_models.py:302
+msgid "Workflow runtime proxies"
+msgstr "Прокси рабочего процесса"
+
+#: models/workflow_state_models.py:54
+msgid "A short text to describe the workflow state."
+msgstr "Краткое описание состояния рабочего процесса."
+
+#: models/workflow_state_models.py:60
+msgid ""
+"The state at which the workflow will start in. Only one state can be the "
+"initial state."
+msgstr ""
+"Состояние, в котором начнется рабочий процесс. Только одно состояние может "
+"быть исходным."
+
+#: models/workflow_state_models.py:62
+msgid "Initial"
+msgstr "Исходное"
+
+#: models/workflow_state_models.py:66
+msgid ""
+"The percent of completion that this state represents in relation to the "
+"workflow. Use numbers without the percent sign."
+msgstr ""
+"Процент завершения, который представляет это состояние по отношению к "
+"рабочему процессу. Используйте числа без знака процента."
+
+#: models/workflow_state_models.py:74 models/workflow_state_models.py:168
+msgid "Workflow state"
+msgstr "Состояние рабочего процесса"
+
+#: models/workflow_state_models.py:75
+msgid "Workflow states"
+msgstr "Состояния рабочего процесса"
+
+#: models/workflow_state_models.py:171
+msgid "A short text describing the action."
+msgstr "Краткое описание действия."
+
+#: models/workflow_state_models.py:178
+msgid "At which moment of the state this action will execute."
+msgstr "В какой момент состояния будет выполнено это действие."
+
+#: models/workflow_state_models.py:179
+msgid "When"
+msgstr "Когда"
+
+#: models/workflow_state_models.py:183
+msgid "The dotted Python path to the workflow action class to execute."
+msgstr "Разделенный точками путь Python к классу действия рабочего процесса."
+
+#: models/workflow_state_models.py:184
+msgid "Entry action path"
+msgstr "Путь действия"
+
+#: models/workflow_state_models.py:187
+msgid "Entry action data"
+msgstr "Данные действия"
+
+#: models/workflow_state_models.py:191
+msgid ""
+"The condition that will determine if this state action is executed or not. "
+"The condition is evaluated against the workflow instance. Conditions that do"
+" not return any value, that return the Python logical None, or an empty "
+"string ('') are considered to be logical false, any other value is "
+"considered to be the logical true."
+msgstr ""
+"Условие, которое определяет, будет ли выполнено это действие состояния или "
+"нет. Условие оценивается по экземпляру рабочего процесса. Условия, которые "
+"не возвращают никакого значения, которые возвращают логическое значение "
+"Python None или пустую строку (''), считаются логическим ЛОЖЬ, любое другое "
+"значение считается логическим ИСТИНА."
+
+#: models/workflow_state_models.py:197 models/workflow_transition_models.py:58
+msgid "Condition"
+msgstr "Условие"
+
+#: models/workflow_state_models.py:203
+msgid "Workflow state action"
+msgstr "Действие состояния рабочего процесса"
+
+#: models/workflow_state_models.py:204
+msgid "Workflow state actions"
+msgstr "Действия состояния рабочего процесса"
+
+#: models/workflow_state_models.py:261
+msgid "Unknown action type"
+msgstr "Неизвестный тип действия"
+
+#: models/workflow_state_models.py:266
+msgid ""
+"The state action will be executed, depending on the condition return value."
+msgstr ""
+"Действие состояния будет выполнено в зависимости от возвращаемого значения "
+"условия."
+
+#: models/workflow_state_models.py:269
+#: models/workflow_transition_models.py:114
+msgid "Has a condition?"
+msgstr "Есть условие?"
+
+#: models/workflow_state_models.py:294
+msgid "Workflow state runtime proxy"
+msgstr "Прокси состояния рабочего процесса"
+
+#: models/workflow_state_models.py:295
+msgid "Workflow state runtime proxies"
+msgstr "Прокси состояния рабочего процесса"
+
+#: models/workflow_transition_models.py:39
+msgid "A short text to describe the transition."
+msgstr "Краткое описание перехода."
+
+#: models/workflow_transition_models.py:44
+msgid "Origin state"
+msgstr "Исходное состояние"
+
+#: models/workflow_transition_models.py:48
+msgid "Destination state"
+msgstr "Целевое состояние"
+
+#: models/workflow_transition_models.py:52
+msgid ""
+"The condition that will determine if this transition is enabled or not. The "
+"condition is evaluated against the workflow instance. Conditions that do not"
+" return any value, that return the Python logical None, or an empty string "
+"('') are considered to be logical false, any other value is considered to be"
+" the logical true."
+msgstr ""
+"Условие, которое определяет, включен этот переход или нет. Условие "
+"оценивается по экземпляру рабочего процесса. Условия, которые не возвращают "
+"никакого значения, которые возвращают логическое значение Python None или "
+"пустую строку (''), считаются логическим ЛОЖЬ, любое другое значение "
+"считается логическим ИСТИНА."
+
+#: models/workflow_transition_models.py:66
+msgid "Workflow transition"
+msgstr "Переход рабочего процесса"
+
+#: models/workflow_transition_models.py:67
+msgid "Workflow transitions"
+msgstr "Переходы рабочего процесса"
+
+#: models/workflow_transition_models.py:111
+msgid ""
+"The transition will be available, depending on the condition return value."
+msgstr ""
+"Переход будет доступен в зависимости от возвращаемого значения условия."
+
+#: models/workflow_transition_models.py:143
+msgid ""
+"The name that will be used to identify this field in other parts of the "
+"workflow system."
+msgstr ""
+"Имя, которое будет использоваться для идентификации этого поля в других "
+"частях системы рабочего процесса."
+
+#: models/workflow_transition_models.py:149
+msgid "The field name that will be shown on the user interface."
+msgstr "Имя поля, которое будет отображаться в пользовательском интерфейсе."
+
+#: models/workflow_transition_models.py:153
+msgid ""
+"An optional message that will help users better understand the purpose of "
+"the field and data to provide."
+msgstr ""
+"Необязательное сообщение, которое поможет пользователям лучше понять "
+"назначение поля и предоставляемых данных."
+
+#: models/workflow_transition_models.py:155
+msgid "Help text"
+msgstr "Подсказка"
+
+#: models/workflow_transition_models.py:159
+msgid "Whether this fields needs to be filled out or not to proceed."
+msgstr "Нужно ли заполнять эти поля или нет, чтобы продолжить."
+
+#: models/workflow_transition_models.py:160
+msgid "Required"
+msgstr "Требуемый"
+
+#: models/workflow_transition_models.py:164
+msgid "An optional class to change the default presentation of the field."
+msgstr "Необязательный класс для изменения представления поля по умолчанию."
+
+#: models/workflow_transition_models.py:165
+msgid "Widget class"
+msgstr "Класс виджета"
+
+#: models/workflow_transition_models.py:169
+msgid "A group of keyword arguments to customize the widget. Use YAML format."
+msgstr "Группа аргументов для настройки виджета. Используйте формат YAML."
+
+#: models/workflow_transition_models.py:172
+msgid "Widget keyword arguments"
+msgstr "Аргументы виджета"
+
+#: models/workflow_transition_models.py:177
+msgid "Workflow transition field"
+msgstr "Поле перехода рабочего процесса"
+
+#: models/workflow_transition_models.py:178
+msgid "Workflow transition fields"
+msgstr "Поля перехода рабочего процесса"
+
+#: models/workflow_transition_models.py:224
+msgid "Event type"
+msgstr "Тип события"
+
+#: models/workflow_transition_models.py:228
+msgid "Workflow transition trigger event"
+msgstr "Событие триггера перехода рабочего процесса"
+
+#: models/workflow_transition_models.py:229
+msgid "Workflow transitions trigger events"
+msgstr "События триггера перехода рабочего процесса"
+
+#: permissions.py:6
+msgid "Document workflows"
+msgstr "Рабочие процессы"
+
+#: permissions.py:10
+msgid "Create workflow templates"
+msgstr "Создать шаблоны рабочего процесса"
+
+#: permissions.py:13
+msgid "Delete workflow templates"
+msgstr "Удалить шаблоны рабочего процесса"
+
+#: permissions.py:16
+msgid "Edit workflow templates"
+msgstr "Редактировать шаблоны рабочего процесса"
+
+#: permissions.py:19
+msgid "View workflow templates"
+msgstr "Просмотр шаблонов рабочего процесса"
+
+#: permissions.py:25
+msgid "Transition workflow instances"
+msgstr "Запускать переходы рабочих процессов"
+
+#: permissions.py:28
+msgid "Execute workflow tools"
+msgstr "Запускать инструменты рабочих процессов"
+
+#: queues.py:8
+msgid "Document states fast"
+msgstr "Состояния документа быстро"
+
+#: queues.py:12
+msgid "Document states medium"
+msgstr "Состояния документа средне"
+
+#: queues.py:17
+msgid "Generate workflow previews"
+msgstr "Создание предпросмотра рабочих процессов"
+
+#: queues.py:22
+msgid "Launch a workflow for a document"
+msgstr "Запустить рабочий процесс для документа"
+
+#: queues.py:26
+msgid "Launch all workflows for a document"
+msgstr "Запустить все рабочие процессы для документа"
+
+#: queues.py:31
+msgid "Launch all workflows for all documents"
+msgstr "Запустить все рабочие процессы для всех документов"
+
+#: queues.py:35
+msgid "Launch a workflow"
+msgstr "Запустить рабочий процесс"
+
+#: search.py:12 search.py:19 search.py:26 search.py:33 search.py:40
+msgid "Document workflow transition comment"
+msgstr "Комментарий к переходу рабочего процесса"
+
+#: serializers.py:65
+msgid "Primary key of the document type to add to the workflow."
+msgstr ""
+"Первичный ключ типа документа, который нужно добавить в рабочий процесс."
+
+#: serializers.py:74
+msgid "Primary key of the document type to remove from the workflow."
+msgstr ""
+"Первичный ключ типа документа, который нужно удалить из рабочего процесса."
+
+#: serializers.py:160
+msgid "Primary key of the destination state to be added."
+msgstr "Первичный ключ добавляемого целевого состояния."
+
+#: serializers.py:167
+msgid "Primary key of the origin state to be added."
+msgstr "Первичный ключ добавляемого исходного состояния."
+
+#: serializers.py:251
+msgid "Primary key of the transition to be added."
+msgstr "Первичный ключ добавляемого перехода."
+
+#: serializers.py:327
+msgid "A link to the entire history of this workflow."
+msgstr "Ссылка на всю историю этого рабочего процесса."
+
+#: serializers.py:332
+msgid ""
+"API URL pointing to a workflow in relation to the document to which it is "
+"attached. This URL is different than the canonical workflow URL."
+msgstr ""
+"URL-адрес API, указывающий на рабочий процесс по отношению к документу, к "
+"которому он прикреплен. Этот URL-адрес отличается от канонического URL-"
+"адреса рабочего процесса."
+
+#: settings.py:19
+msgid ""
+"File path to the graphviz dot program used to generate workflow previews."
+msgstr ""
+"Путь к файлу программы graphviz dot, используемой для создания предпросмотра"
+" рабочего процесса."
+
+#: settings.py:27
+msgid ""
+"The threshold at which the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND will start "
+"deleting the oldest workflow image cache files. Specify the size in bytes."
+msgstr ""
+"Пороговое значение в байтах, при котором "
+"WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND начнет удаление самых старых файлов "
+"кэша изображений рабочего процесса."
+
+#: settings.py:36
+msgid ""
+"Time in seconds that the browser should cache the supplied workflow images. "
+"The default of 31559626 seconds correspond to 1 year."
+msgstr ""
+"Время в секундах, в течение которого браузер должен кэшировать изображения "
+"рабочего процесса. Значение по умолчанию 31559626 секунд соответствует 1 "
+"году."
+
+#: settings.py:43
+msgid ""
+"Path to the Storage subclass to use when storing the cached workflow image "
+"files."
+msgstr ""
+"Путь к подклассу Storage для использования при хранении кэша файлов "
+"изображений рабочего процесса."
+
+#: settings.py:51
+msgid "Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
+msgstr "Аргументы, передаваемые в WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
+
+#: storages.py:14
+msgid ""
+"Unable to initialize the workflow preview storage. Check the settings {} and"
+" {} for formatting errors."
+msgstr ""
+"Невозможно инициализировать хранилище предпросмотра рабочего процесса. "
+"Проверьте настройки {} и {} на наличие ошибок форматирования."
+
+#: storages.py:21
+msgid "Workflow preview images"
+msgstr "Изображения предпросмотра рабочего процесса"
+
+#: templates/document_states/forms/widgets/workflow_image.html:2
+msgid "Workflow preview"
+msgstr "Предпросмотр рабочего процесса"
+
+#: views/workflow_instance_views.py:35
+msgid ""
+"Assign workflows to the document type of this document to have this document"
+" execute those workflows. "
+msgstr ""
+"Назначьте рабочие процессы типу этого документа, чтобы этот документ "
+"выполнял эти рабочие процессы."
+
+#: views/workflow_instance_views.py:39
+msgid "There are no workflows for this document"
+msgstr "Для документа нет рабочих процессов"
+
+#: views/workflow_instance_views.py:43
+#, python-format
+msgid "Workflows for document: %s"
+msgstr "Рабочие процессы документа: %s"
+
+#: views/workflow_instance_views.py:68
+msgid ""
+"This view will show the state changes as a workflow instance is "
+"transitioned."
+msgstr ""
+"В этом представлении будут отображаться изменения состояния при переходе "
+"экземпляра рабочего процесса."
+
+#: views/workflow_instance_views.py:72
+msgid "There are no details for this workflow instance"
+msgstr "Нет сведений об этом экземпляре рабочего процесса"
+
+#: views/workflow_instance_views.py:75
+#, python-format
+msgid "Detail of workflow: %(workflow)s"
+msgstr "Подробности рабочего процесса: %(workflow)s"
+
+#: views/workflow_instance_views.py:113
+#, python-format
+msgid "Document \"%s\" transitioned successfully"
+msgstr "Переход состояния документа \"%s\" выполнен"
+
+#: views/workflow_instance_views.py:122
+msgid "Submit"
+msgstr "Отправить"
+
+#: views/workflow_instance_views.py:124
+#, python-format
+msgid "Execute transition \"%(transition)s\" for workflow: %(workflow)s"
+msgstr "Выполнить переход \"%(transition)s\" рабочего процесса: %(workflow)s"
+
+#: views/workflow_instance_views.py:139
+msgid "Optional comment to attach to the transition."
+msgstr "Необязательный комментарий к переходу."
+
+#: views/workflow_instance_views.py:217
+msgid "Select"
+msgstr "Выбрать"
+
+#: views/workflow_instance_views.py:219
+#, python-format
+msgid "Select transition for workflow \"%(workflow)s\" of document \"%(document)s\""
+msgstr "Выбрать переход рабочего процесса \"%(workflow)s\" документа \"%(document)s\""
+
+#: views/workflow_proxy_views.py:32
+msgid ""
+"Associate a workflow with some document types and documents of those types "
+"will be listed in this view."
+msgstr ""
+"Свяжите рабочий процесс с какими-либо типами документов, и документы этих "
+"типов будут перечислены в этом представлении."
+
+#: views/workflow_proxy_views.py:36
+msgid "There are no documents executing this workflow"
+msgstr "Нет документов, выполняющих этот рабочий процесс"
+
+#: views/workflow_proxy_views.py:40
+#, python-format
+msgid "Documents with the workflow: %s"
+msgstr "Документы в процессе: %s"
+
+#: views/workflow_proxy_views.py:59
+msgid ""
+"Create some workflows and associated them with a document type. Active "
+"workflows will be shown here and the documents for which they are executing."
+msgstr ""
+"Создайте несколько рабочих процессов и свяжите их с типом документа. Здесь "
+"будут показаны активные рабочие процессы и документы, для которых они "
+"выполняются."
+
+#: views/workflow_proxy_views.py:63
+msgid "There are no workflows"
+msgstr "Нет рабочих процессов"
+
+#: views/workflow_proxy_views.py:85
+msgid "There are no documents in this workflow state"
+msgstr "В этом состоянии рабочего процесса нет документов"
+
+#: views/workflow_proxy_views.py:88
+#, python-format
+msgid "Documents in the workflow \"%s\", state \"%s\""
+msgstr "Документы в процессе \"%s\" в состоянии \"%s\""
+
+#: views/workflow_proxy_views.py:117
+#: views/workflow_template_state_views.py:330
+msgid "Create states and link them using transitions."
+msgstr "Создайте состояния и свяжите их с помощью переходов."
+
+#: views/workflow_proxy_views.py:120
+msgid "This workflow doesn't have any state"
+msgstr "У этого рабочего процесса нет состояний"
+
+#: views/workflow_proxy_views.py:123
+#: views/workflow_template_state_views.py:336
+#, python-format
+msgid "States of workflow: %s"
+msgstr "Состояния рабочего процесса: %s"
+
+#: views/workflow_template_state_views.py:48
+#, python-format
+msgid "Create a \"%s\" workflow action"
+msgstr "Создать действие: %s"
+
+#: views/workflow_template_state_views.py:91
+#, python-format
+msgid "Delete workflow state action: %s"
+msgstr "Удалить действие состояния рабочего процесса: %s"
+
+#: views/workflow_template_state_views.py:122
+#, python-format
+msgid "Edit workflow state action: %s"
+msgstr "Редактировать действие: %s"
+
+#: views/workflow_template_state_views.py:172
+msgid ""
+"Workflow state actions are macros that get executed when documents enters or"
+" leaves the state in which they reside."
+msgstr ""
+"Действия состояния рабочего процесса - это макросы, которые выполняются, "
+"когда документы входят в состояние или покидают его."
+
+#: views/workflow_template_state_views.py:176
+msgid "There are no actions for this workflow state"
+msgstr "Нет действий для этого состояния рабочего процесса"
+
+#: views/workflow_template_state_views.py:180
+#, python-format
+msgid "Actions for workflow state: %s"
+msgstr "Действия для состояния: %s"
+
+#: views/workflow_template_state_views.py:203
+msgid "New workflow state action selection"
+msgstr "Выбор действия нового состояния рабочего процесса"
+
+#: views/workflow_template_state_views.py:232
+#, python-format
+msgid "Create states for workflow: %s"
+msgstr "Создать состояние рабочего процесса: %s"
+
+#: views/workflow_template_state_views.py:265
+#, python-format
+msgid "Delete workflow state: %s?"
+msgstr "Удалить состояние рабочего процесса: %s?"
+
+#: views/workflow_template_state_views.py:295
+#, python-format
+msgid "Edit workflow state: %s"
+msgstr "Редактировать состояние: %s"
+
+#: views/workflow_template_state_views.py:333
+msgid "This workflow doesn't have any states"
+msgstr "У этого рабочего процесса нет состояний"
+
+#: views/workflow_template_transition_views.py:38
+#, python-format
+msgid "Create transitions for workflow: %s"
+msgstr "Создать переход для рабочего процесса: %s"
+
+#: views/workflow_template_transition_views.py:78
+#, python-format
+msgid "Delete workflow transition: %s?"
+msgstr "Удалить переход рабочего процесса: %s?"
+
+#: views/workflow_template_transition_views.py:106
+#, python-format
+msgid "Edit workflow transition: %s"
+msgstr "Редактировать переход: %s"
+
+#: views/workflow_template_transition_views.py:146
+msgid ""
+"Create a transition and use it to move a workflow from  one state to "
+"another."
+msgstr ""
+"Создайте переход и используйте его для перемещения рабочего процесса из "
+"одного состояния в другое."
+
+#: views/workflow_template_transition_views.py:150
+msgid "This workflow doesn't have any transitions"
+msgstr "У этого рабочего процесса нет переходов"
+
+#: views/workflow_template_transition_views.py:154
+#, python-format
+msgid "Transitions of workflow: %s"
+msgstr "Переходы рабочего процесса: %s"
+
+#: views/workflow_template_transition_views.py:182
+#, python-format
+msgid "Error updating workflow transition trigger events; %s"
+msgstr "Ошибка обновления триггерных событий перехода рабочего процесса; %s"
+
+#: views/workflow_template_transition_views.py:189
+msgid "Workflow transition trigger events updated successfully"
+msgstr "Триггеры перехода рабочего процесса обновлены"
+
+#: views/workflow_template_transition_views.py:201
+msgid ""
+"Triggers are events that cause this transition to execute automatically."
+msgstr ""
+"Триггеры - это события, которые вызывают автоматическое выполнение этого "
+"перехода."
+
+#: views/workflow_template_transition_views.py:205
+#, python-format
+msgid "Workflow transition trigger events for: %s"
+msgstr "Триггеры перехода рабочего процесса: %s"
+
+#: views/workflow_template_transition_views.py:255
+#, python-format
+msgid "Create a field for workflow transition: %s"
+msgstr "Создать поле для перехода рабочего процесса: %s"
+
+#: views/workflow_template_transition_views.py:289
+#, python-format
+msgid "Delete workflow transition field: %s"
+msgstr "Удалить поле перехода рабочего процесса: %s"
+
+#: views/workflow_template_transition_views.py:323
+#, python-format
+msgid "Edit workflow transition field: %s"
+msgstr "Редактировать поле перехода: %s"
+
+#: views/workflow_template_transition_views.py:362
+msgid ""
+"Workflow transition fields allow adding data to the workflow's context. This"
+" additional context data can then be used by other elements of the workflow "
+"system like the workflow state actions."
+msgstr ""
+"Поля перехода рабочего процесса позволяют добавлять данные в контекст "
+"рабочего процесса. Эти дополнительные данные могут затем использоваться "
+"другими элементами системы рабочего процесса, такими как действия состояния "
+"рабочего процесса."
+
+#: views/workflow_template_transition_views.py:368
+msgid "There are no fields for this workflow transition"
+msgstr "Нет полей для этого перехода рабочего процесса"
+
+#: views/workflow_template_transition_views.py:372
+#, python-format
+msgid "Fields for workflow transition: %s"
+msgstr "Поля для перехода рабочего процесса: %s"
+
+#: views/workflow_template_views.py:39
+msgid "Available workflows"
+msgstr "Доступные рабочие процессы"
+
+#: views/workflow_template_views.py:40
+msgid "Workflows assigned this document type"
+msgstr "Назначенные рабочие процессы"
+
+#: views/workflow_template_views.py:64
+msgid ""
+"Removing a workflow from a document type will also remove all running "
+"instances of that workflow."
+msgstr ""
+"Удаление рабочего процесса из типа документа также приведет к удалению всех "
+"запущенных экземпляров этого рабочего процесса."
+
+#: views/workflow_template_views.py:68
+#, python-format
+msgid "Workflows assigned the document type: %s"
+msgstr "Рабочие процессы, назначенные типу документа: %s"
+
+#: views/workflow_template_views.py:75
+#, python-format
+msgid "Error launching workflows for document \"%(instance)s\"; %(exception)s"
+msgstr ""
+"Ошибка при запуске рабочих процессов для документа \"%(instance)s\"; "
+"%(exception)s"
+
+#: views/workflow_template_views.py:81
+#, python-format
+msgid "Workflows launched successfully for document \"%(object)s\"."
+msgstr "Рабочие процессы запущены для документа \"%(object)s\"."
+
+#: views/workflow_template_views.py:82
+#, python-format
+msgid "Workflows launched successfully for %(count)d document."
+msgstr "Рабочие процессы запущены для %(count)d документа."
+
+#: views/workflow_template_views.py:83
+#, python-format
+msgid "Workflows launched successfully for %(count)d documents."
+msgstr "Рабочие процессы запущены для %(count)d документов."
+
+#: views/workflow_template_views.py:84
+#, python-format
+msgid "Launch workflow: %(object)s."
+msgstr "Запустить рабочий процесс: %(object)s."
+
+#: views/workflow_template_views.py:85
+#, python-format
+msgid "Launch workflows for the selected %(count)d document."
+msgstr "Запустить рабочие процессы для %(count)d выбранного документа."
+
+#: views/workflow_template_views.py:86
+#, python-format
+msgid "Launch workflows for the selected %(count)d documents."
+msgstr "Запустить рабочие процессы для %(count)d выбранных документов."
+
+#: views/workflow_template_views.py:90
+msgid "Launch"
+msgstr "Запустить"
+
+#: views/workflow_template_views.py:92
+msgid ""
+"Workflows already launched or workflows not applicable to some documents "
+"when multiple documents are selected, will be silently ignored."
+msgstr ""
+"Уже запущенные рабочие процессы или рабочие процессы, неприменимые к "
+"некоторым документам, когда выбрано несколько документов, будут "
+"автоматически пропущены."
+
+#: views/workflow_template_views.py:104
+msgid "Workflows to be launched."
+msgstr "Рабочие процессы, которые должны быть запущены."
+
+#: views/workflow_template_views.py:142
+#, python-format
+msgid "Error deleting workflow \"%(instance)s\"; %(exception)s"
+msgstr "Ошибка при удалении рабочего процесса \"%(instance)s\": %(exception)s"
+
+#: views/workflow_template_views.py:149
+#, python-format
+msgid "Workflow \"%(object)s\" deleted successfully."
+msgstr "Рабочий процесс \"%(object)s\"  удален."
+
+#: views/workflow_template_views.py:150
+#, python-format
+msgid "%(count)d workflow deleted successfully."
+msgstr "%(count)d рабочий процесс удален."
+
+#: views/workflow_template_views.py:151
+#, python-format
+msgid "%(count)d workflows deleted successfully."
+msgstr "%(count)d рабочих процессов удалено."
+
+#: views/workflow_template_views.py:152
+#, python-format
+msgid "Delete workflow: %(object)s."
+msgstr "Удалить рабочий процесс: %(object)s."
+
+#: views/workflow_template_views.py:153
+#, python-format
+msgid "Delete the %(count)d selected workflow."
+msgstr "Удалить %(count)d выбранный рабочий процесс."
+
+#: views/workflow_template_views.py:154
+#, python-format
+msgid "Delete the %(count)d selected workflows."
+msgstr "Удалить %(count)d выбранных рабочих процессов."
+
+#: views/workflow_template_views.py:158
+msgid "All workflow instances will also be deleted."
+msgstr "Все экземпляры рабочего процесса также будут удалены."
+
+#: views/workflow_template_views.py:177
+#, python-format
+msgid "Edit workflow: %s"
+msgstr "Редактировать рабочий процесс: %s"
+
+#: views/workflow_template_views.py:195
+msgid "Available document types"
+msgstr "Доступные типы документов"
+
+#: views/workflow_template_views.py:196
+msgid "Document types assigned this workflow"
+msgstr "Типы документов, которым назначен этот рабочий процесс"
+
+#: views/workflow_template_views.py:206
+msgid ""
+"Removing a document type from a workflow will also remove all running "
+"instances of that workflow for documents of the document type just removed."
+msgstr ""
+"Удаление типа документа из рабочего процесса также приведет к удалению всех "
+"запущенных экземпляров этого рабочего процесса для документов только что "
+"удаленного типа документа."
+
+#: views/workflow_template_views.py:211
+#, python-format
+msgid "Document types assigned the workflow: %s"
+msgstr "Типы документов, которым назначен рабочий процесс: %s"
+
+#: views/workflow_template_views.py:223
+msgid "Launch workflow?"
+msgstr "Запустить рабочий процесс?"
+
+#: views/workflow_template_views.py:225
+msgid ""
+"This will launch the workflow for documents that have already been uploaded."
+msgstr "Это запустит рабочий процесс для уже загруженных документов."
+
+#: views/workflow_template_views.py:237 views/workflow_template_views.py:292
+msgid "Workflow launch queued successfully."
+msgstr "Рабочий процесс поставлен в очередь на запуск."
+
+#: views/workflow_template_views.py:254
+msgid ""
+"Workflows store a series of states and keep track of the current state of a "
+"document. Transitions are used to change the current state to a new one."
+msgstr ""
+"Рабочие процессы хранят серию состояний и отслеживают текущее состояние "
+"документа. Переходы используются для изменения текущего состояния на новое."
+
+#: views/workflow_template_views.py:259
+msgid "No workflows have been defined"
+msgstr "Рабочие процессы не определены"
+
+#: views/workflow_template_views.py:275
+#, python-format
+msgid "Preview of: %s"
+msgstr "Предпросмотр рабочего процесса: %s"
+
+#: views/workflow_template_views.py:281
+msgid "Launch all workflows?"
+msgstr "Запустить все рабочие процессы?"
+
+#: views/workflow_template_views.py:283
+msgid ""
+"This will launch all workflows created after documents have already been "
+"uploaded."
+msgstr ""
+"Это запустит все рабочие процессы, созданные после того, как документы уже "
+"были загружены."
+
+#: workflow_actions.py:20
+msgid "Document label"
+msgstr "Заголовок документа"
+
+#: workflow_actions.py:23
+msgid ""
+"The new label to be assigned to the document. Can be a string or a template."
+msgstr ""
+"Новый заголовок, который будет присвоен документу. Может быть строкой или "
+"шаблоном."
+
+#: workflow_actions.py:28
+msgid "Document description"
+msgstr "Описание документа"
+
+#: workflow_actions.py:31
+msgid ""
+"The new description to be assigned to the document. Can be a string or a "
+"template."
+msgstr ""
+"Новое описание, которое будет присвоено документу. Может быть строкой или "
+"шаблоном."
+
+#: workflow_actions.py:38
+msgid "Modify document properties"
+msgstr "Изменить свойства документа"
+
+#: workflow_actions.py:77
+msgid "Additional workflows to launch for the document."
+msgstr ""
+"Дополнительные рабочие процессы, которые будут запущены для документа."
+
+#: workflow_actions.py:120
+msgid "URL"
+msgstr "URL"
+
+#: workflow_actions.py:123
+msgid ""
+"Can be an IP address, a domain or a template. Templates receive the workflow"
+" log entry instance as part of their context via the variable \"entry_log\"."
+" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
+" \"transition\", \"user\", and \"comment\" attributes."
+msgstr ""
+"Может быть IP-адресом, доменом или шаблоном. Шаблоны получают экземпляр "
+"записи журнала рабочего процесса как часть своего контекста через переменную"
+" \"entry_log\". В свою очередь, \"entry_log\" предоставляет атрибуты "
+"\"workflow_instance\", \"datetime\", \"transition\", \"user\", \"comment\"."
+
+#: workflow_actions.py:133
+msgid "Timeout"
+msgstr "Тайм-аут"
+
+#: workflow_actions.py:137
+msgid ""
+"Time in seconds to wait for a response. Can be a static value or a template."
+" "
+msgstr ""
+"Время ожидания ответа в секундах. Может быть статическим значением или "
+"шаблоном."
+
+#: workflow_actions.py:143
+msgid "Payload"
+msgstr "Данные"
+
+#: workflow_actions.py:146
+msgid ""
+"A JSON document to include in the request. Can also be a template that "
+"return a JSON document. Templates receive the workflow log entry instance as"
+" part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
+msgstr ""
+"Документ JSON для включения в запрос. Также может быть шаблоном, "
+"возвращающим документ JSON. Шаблоны получают экземпляр записи журнала "
+"рабочего процесса как часть своего контекста через переменную \"entry_log\"."
+" В свою очередь, \"entry_log\" предоставляет атрибуты \"workflow_instance\","
+" \"datetime\", \"transition\", \"user\", \"comment\"."
+
+#: workflow_actions.py:156
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: workflow_actions.py:159
+msgid ""
+"Username to use for making the request with HTTP Basic Auth. Can be a static"
+" value or a template. Templates receive the workflow log entry instance as "
+"part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
+msgstr ""
+"Имя пользователя, которое будет использоваться для запроса с помощью HTTP "
+"Basic Auth. Может быть статическим значением или шаблоном. Шаблоны получают "
+"экземпляр записи журнала рабочего процесса как часть своего контекста через "
+"переменную \"entry_log\". В свою очередь, \"entry_log\" предоставляет "
+"атрибуты \"workflow_instance\", \"datetime\", \"transition\", \"user\", "
+"\"comment\"."
+
+#: workflow_actions.py:169
+msgid "Password"
+msgstr "Пароль"
+
+#: workflow_actions.py:172
+msgid ""
+"Password to use for making the request with HTTP Basic Auth. Can be a static"
+" value or a template. Templates receive the workflow log entry instance as "
+"part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
+msgstr ""
+"Пароль, который будет использоваться для запроса с помощью HTTP Basic Auth. "
+"Может быть статическим значением или шаблоном. Шаблоны получают экземпляр "
+"записи журнала рабочего процесса как часть своего контекста через переменную"
+" \"entry_log\". В свою очередь, \"entry_log\" предоставляет атрибуты "
+"\"workflow_instance\", \"datetime\", \"transition\", \"user\", \"comment\"."
+
+#: workflow_actions.py:182
+msgid "Method"
+msgstr "Метод"
+
+#: workflow_actions.py:185
+msgid ""
+"The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
+"POST, GET, PUT, PATCH, DELETE. Can be a static value or a template that "
+"returns the method text. Templates receive the workflow log entry instance "
+"as part of their context via the variable \"entry_log\". The \"entry_log\" "
+"in turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
+msgstr ""
+"Метод HTTP, используемый для запроса. Типичные варианты: OPTIONS, HEAD, "
+"POST, GET, PUT, PATCH, DELETE. Может быть статическим значением или "
+"шаблоном, возвращающим текст метода. Шаблоны получают экземпляр записи "
+"журнала рабочего процесса как часть своего контекста через переменную "
+"\"entry_log\". В свою очередь, \"entry_log\" предоставляет атрибуты "
+"\"workflow_instance\", \"datetime\", \"transition\", \"user\", \"comment\"."
+
+#: workflow_actions.py:196
+msgid "Headers"
+msgstr "Заголовки"
+
+#: workflow_actions.py:199
+msgid ""
+"Headers to send with the HTTP request. Must be in JSON format. Can be a "
+"static value or a template. Templates receive the workflow log entry "
+"instance as part of their context via the variable \"entry_log\". The "
+"\"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
+"\"transition\", \"user\", and \"comment\" attributes."
+msgstr ""
+"Заголовки для отправки с HTTP-запросом. Должны быть в формате JSON. Может "
+"быть статическим значением или шаблоном. Шаблоны получают экземпляр записи "
+"журнала рабочего процесса как часть своего контекста через переменную "
+"\"entry_log\". В свою очередь, \"entry_log\" предоставляет атрибуты "
+"\"workflow_instance\", \"datetime\", \"transition\", \"user\", \"comment\"."
+
+#: workflow_actions.py:213
+msgid "Perform an HTTP request"
+msgstr "Выполнить HTTP-запрос"
+
+#: workflow_actions.py:242
+#, python-format
+msgid "%(field_name)s JSON error: %(exception)s"
+msgstr "%(field_name)s Ошибка JSON: %(exception)s"

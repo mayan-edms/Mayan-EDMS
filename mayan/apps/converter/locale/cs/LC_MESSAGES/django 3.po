@@ -1,0 +1,498 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Jiri Fait <fait@orkasolutions.cz>, 2021
+# Michal Švábík <snadno@lehce.cz>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
+msgid "Converter"
+msgstr "Konvertor"
+
+#: apps.py:83 forms.py:37
+msgid "Transformation"
+msgstr "Transformace"
+
+#: backends/python.py:124 backends/python.py:137
+#, python-format
+msgid "Exception determining PDF page count; %s"
+msgstr "Výjimka určující počet stránek PDF; %s"
+
+#: backends/python.py:151
+#, python-format
+msgid "Exception determining page count using Pillow; %s"
+msgstr "Výjimka určující počet stránek pomocí Pillow; %s"
+
+#: classes.py:157
+msgid "LibreOffice not installed or not found."
+msgstr "LibreOffice není nainstalován nebo nebyl nalezen."
+
+#: classes.py:261
+msgid "Not an office file format."
+msgstr "Nemá formát kancelářského souboru."
+
+#: classes.py:395
+msgid ""
+"Transformations allow changing the visual appearance of documents without "
+"making permanent changes to the document file themselves."
+msgstr ""
+"Transformace umožňují změnu vizuálního vzhledu dokumentů bez provedení "
+"trvalých změn v samotném souboru dokumentu."
+
+#: classes.py:446
+msgid "transformation"
+msgstr "Transformace"
+
+#: dependencies.py:14
+msgid "Utility from the poppler-utils package used to inspect PDF files."
+msgstr ""
+"Obslužný program z balíčku poppler-utils používaný k prohlížení souborů PDF."
+
+#: dependencies.py:19
+msgid ""
+"Utility from the popper-utils package used to extract pages from PDF files "
+"into PPM format images."
+msgstr ""
+"Obslužný program z balíčku popper-utils používaný k extrahování stránek ze "
+"souborů PDF do obrázků ve formátu PPM."
+
+#: events.py:8
+msgid "Asset created"
+msgstr ""
+
+#: events.py:11
+msgid "Asset edited"
+msgstr ""
+
+#: forms.py:16
+msgid "Preview"
+msgstr "Náhled"
+
+#: forms.py:36
+msgid "Available transformations for this layer."
+msgstr "Dostupné transformace pro tuto vrstvu."
+
+#: forms.py:73 workflow_actions.py:74
+#, python-format
+msgid "\"%s\" not a valid entry."
+msgstr "\"%s\" není platná položka."
+
+#: layers.py:11
+msgid ""
+"Decorations are visual elements that add contextual information to images."
+msgstr ""
+
+#: layers.py:13
+msgid "Decorations"
+msgstr "Dekorace"
+
+#: layers.py:24
+msgid "Saved transformations"
+msgstr "Uložené transformace"
+
+#: links.py:35 views.py:39
+msgid "Create asset"
+msgstr ""
+
+#: links.py:38 links.py:44 links.py:64
+msgid "Delete"
+msgstr "Odstranit"
+
+#: links.py:48 links.py:72
+msgid "Edit"
+msgstr "Upravit"
+
+#: links.py:56 models.py:62 storages.py:21 views.py:143
+msgid "Assets"
+msgstr ""
+
+#: links.py:77
+msgid "Transformations"
+msgstr "Transformace"
+
+#: links.py:82
+msgid "Select new transformation"
+msgstr "Vyberte novou transformaci"
+
+#: models.py:45
+msgid "Label"
+msgstr "Jmenovka"
+
+#: models.py:49
+msgid ""
+"This value will be used when referencing this asset. Can only contain "
+"letters, numbers, and underscores."
+msgstr ""
+
+#: models.py:52
+msgid "Internal name"
+msgstr "Vnitřní název"
+
+#: models.py:56
+msgid "File"
+msgstr "Soubor"
+
+#: models.py:61
+msgid "Asset"
+msgstr ""
+
+#: models.py:157 models.py:228
+msgid "Name"
+msgstr "název"
+
+#: models.py:160 models.py:226
+msgid "Order"
+msgstr "Třídění"
+
+#: models.py:165 models.py:184
+msgid "Stored layer"
+msgstr "Uložená vrstva"
+
+#: models.py:166
+msgid "Stored layers"
+msgstr "Uložené vrstvy"
+
+#: models.py:181 models.py:235
+msgid "Enabled"
+msgstr "Povoleno"
+
+#: models.py:192 models.py:220
+msgid "Object layer"
+msgstr "Vrstva objektu"
+
+#: models.py:193
+msgid "Object layers"
+msgstr "Vrstvy objektů"
+
+#: models.py:224
+msgid ""
+"Order in which the transformations will be executed. If left unchanged, an "
+"automatic order value will be assigned."
+msgstr ""
+"Pořadí, ve kterém budou provedeny transformace. Pokud zůstane nezměněna, "
+"bude přiřazena hodnota automatického třídění."
+
+#: models.py:231 workflow_actions.py:45
+msgid ""
+"Enter the arguments for the transformation as a YAML dictionary. ie: "
+"{\"degrees\": 180}"
+msgstr ""
+"Zadejte argumenty pro transformaci jako slovník YAML. tj .: "
+"{&quot;stupně&quot;: 180}"
+
+#: models.py:233
+msgid "Arguments"
+msgstr "Argumenty"
+
+#: models.py:242
+msgid "Layer transformation"
+msgstr "Transformace vrstvy"
+
+#: models.py:243
+msgid "Layer transformations"
+msgstr "Transformace vrstev"
+
+#: models.py:249
+msgid "Unknown transformation class"
+msgstr ""
+
+#: permissions.py:8
+msgid "Create new assets"
+msgstr ""
+
+#: permissions.py:11
+msgid "Delete assets"
+msgstr ""
+
+#: permissions.py:14
+msgid "Edit assets"
+msgstr ""
+
+#: permissions.py:17
+msgid "View existing assets"
+msgstr ""
+
+#: permissions.py:21
+msgid "Create new transformations"
+msgstr "Vytvořit nové transformace"
+
+#: permissions.py:24
+msgid "Delete transformations"
+msgstr "Odstranit transformace"
+
+#: permissions.py:27
+msgid "Edit transformations"
+msgstr "Upravit transformace"
+
+#: permissions.py:30
+msgid "View existing transformations"
+msgstr "Zobrazit existující transformace"
+
+#: queues.py:12
+msgid "Generate a image of an asset."
+msgstr ""
+
+#: settings.py:28
+msgid ""
+"The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
+"deleting the oldest asset cache files. Specify the size in bytes."
+msgstr ""
+
+#: settings.py:37
+msgid ""
+"Time in seconds that the browser should cache the supplied asset. The "
+"default of 31559626 seconds correspond to 1 year."
+msgstr ""
+
+#: settings.py:44
+msgid ""
+"Path to the Storage subclass to use when storing the cached asset files."
+msgstr ""
+
+#: settings.py:52
+msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
+msgstr ""
+
+#: settings.py:58
+msgid "Path to the Storage subclass to use when storing assets."
+msgstr ""
+
+#: settings.py:64
+msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
+msgstr ""
+
+#: settings.py:70
+msgid "Graphics conversion backend to use."
+msgstr "Grafické převody backend-u k použití."
+
+#: settings.py:76
+msgid "Configuration options for the graphics conversion backend."
+msgstr "Možnosti konfigurace pro backend grafické konverze."
+
+#: storages.py:15
+msgid ""
+"Unable to initialize the converter asset storage. Check the settings {} and "
+"{} for formatting errors."
+msgstr ""
+
+#: storages.py:28
+msgid ""
+"Unable to initialize the converter asset cachestorage. Check the settings {}"
+" and {} for formatting errors."
+msgstr ""
+
+#: storages.py:34
+msgid "Assets cache"
+msgstr ""
+
+#: transformations.py:196
+msgid "Paste an asset"
+msgstr ""
+
+#: transformations.py:247
+msgid "Paste an asset (percents coordinates)"
+msgstr ""
+
+#: transformations.py:290
+msgid "Paste an asset as watermark"
+msgstr ""
+
+#: transformations.py:350
+msgid "Crop"
+msgstr "Oříznutí"
+
+#: transformations.py:428
+msgid "Draw rectangle"
+msgstr "Nakreslit obdélník"
+
+#: transformations.py:530
+msgid "Draw rectangle (percents coordinates)"
+msgstr "Nakreslit obdélník (procentuální souřadnice)"
+
+#: transformations.py:627
+msgid "Flip"
+msgstr "Překlopit"
+
+#: transformations.py:638
+msgid "Gaussian blur"
+msgstr "Gaussovské rozostření"
+
+#: transformations.py:648
+msgid "Line art"
+msgstr "Kresba tužkou"
+
+#: transformations.py:659
+msgid "Mirror"
+msgstr "Zrcadlo"
+
+#: transformations.py:670
+msgid "Resize"
+msgstr "Změnit velikost"
+
+#: transformations.py:697
+msgid "Rotate"
+msgstr "Otočit"
+
+#: transformations.py:723
+msgid "Rotate 90 degrees"
+msgstr "Otočit o 90 stupňů"
+
+#: transformations.py:734
+msgid "Rotate 180 degrees"
+msgstr "Otočit o 180 stupňů"
+
+#: transformations.py:745
+msgid "Rotate 270 degrees"
+msgstr "Otočit o 270 stupňů"
+
+#: transformations.py:755
+msgid "Unsharp masking"
+msgstr "Neostré maskování "
+
+#: transformations.py:771
+msgid "Zoom"
+msgstr "Zoom"
+
+#: views.py:53
+#, python-format
+msgid "Delete request performed on %(count)d asset"
+msgstr ""
+
+#: views.py:55
+#, python-format
+msgid "Delete request performed on %(count)d assets"
+msgstr ""
+
+#: views.py:62
+msgid "Delete the selected asset?"
+msgid_plural "Delete the selected assets?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: views.py:72
+#, python-format
+msgid "Delete asset: %s?"
+msgstr ""
+
+#: views.py:83
+#, python-format
+msgid "Asset \"%s\" deleted successfully."
+msgstr ""
+
+#: views.py:88
+#, python-format
+msgid "Error deleting asset \"%(asset)s\": %(error)s"
+msgstr ""
+
+#: views.py:103
+#, python-format
+msgid "Details asset: %s"
+msgstr ""
+
+#: views.py:117
+#, python-format
+msgid "Edit asset: %s"
+msgstr ""
+
+#: views.py:139
+msgid ""
+"Assets are files that can be used in conjuction with certain "
+"transformations."
+msgstr ""
+
+#: views.py:142
+msgid "No assets available"
+msgstr ""
+
+#: views.py:168
+#, python-format
+msgid "Error creating transformation: %s."
+msgstr "Chyba při vytváření transformace: %s."
+
+#: views.py:185
+#, python-format
+msgid ""
+"Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
+"%(object)s"
+msgstr ""
+"Vytvořte vrstvu &quot;%(layer)s&quot; transformace "
+"&quot;%(transformation)s&quot; pro: %(object)s"
+
+#: views.py:241
+#, python-format
+msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
+msgstr ""
+"Smazat transformaci &quot;%(transformation)s&quot; pro: %(content_object)s?"
+
+#: views.py:290
+#, python-format
+msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
+msgstr ""
+"Upravit transformaci &quot;%(transformation)s&quot; pro: %(content_object)s"
+
+#: views.py:344
+#, python-format
+msgid "There are no entries for layer \"%(layer_name)s\""
+msgstr "Pro vrstvu „%(layer_name)s“ neexistují žádné záznamy"
+
+#: views.py:347
+#, python-format
+msgid "Layer \"%(layer)s\" transformations for: %(object)s"
+msgstr "Transformace vrstvy „%(layer)s“ pro: %(object)s"
+
+#: views.py:392
+msgid "Transformation created successfully."
+msgstr "Transformace byla úspěšně vytvořena."
+
+#: views.py:416
+msgid "Select"
+msgstr "Vybrat"
+
+#: views.py:418
+#, python-format
+msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
+msgstr "Vyberte novou vrstvu %(layer)s transformace pro: %(object)s"
+
+#: workflow_actions.py:22
+msgid "Pages"
+msgstr "Strany"
+
+#: workflow_actions.py:25
+msgid ""
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
+msgstr ""
+
+#: workflow_actions.py:32
+msgid "Transformation class"
+msgstr ""
+
+#: workflow_actions.py:37
+msgid "Type of transformation to add."
+msgstr ""
+
+#: workflow_actions.py:42
+msgid "Transformation arguments"
+msgstr ""
+
+#: workflow_actions.py:51
+msgid "Add transformation"
+msgstr ""

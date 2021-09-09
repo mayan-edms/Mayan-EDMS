@@ -1,0 +1,131 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Mathias Behrle <mathiasb@m9s.biz>, 2021
+# Tobias Paepke <tobias.paepke@paepke.net>, 2021
+# Berny <berny@bernhard-marx.de>, 2021
+# 847f3f05406324d125c568a4b098bddb, 2021
+# Robin Schubert <robin.schubert@gmx.de>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Robin Schubert <robin.schubert@gmx.de>, 2021\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:31 events.py:6 search.py:18 search.py:25 search.py:32 search.py:39
+msgid "Document comments"
+msgstr "Kommentare"
+
+#: events.py:10
+msgid "Document comment created"
+msgstr "Kommentar erstellt"
+
+#: events.py:13
+msgid "Document comment deleted"
+msgstr "Kommentar gelöscht"
+
+#: events.py:16
+msgid "Document comment edited"
+msgstr "Kommentar bearbeitet"
+
+#: links.py:16
+msgid "Add comment"
+msgstr "Kommentar hinzufügen"
+
+#: links.py:22
+msgid "Delete"
+msgstr "Löschen"
+
+#: links.py:27
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: links.py:31 models.py:45 permissions.py:5 search.py:11
+msgid "Comments"
+msgstr "Kommentare"
+
+#: models.py:29
+msgid "Document"
+msgstr "Dokument"
+
+#: models.py:33 models.py:70
+msgid "User"
+msgstr "Benutzer"
+
+#: models.py:35
+msgid "Text"
+msgstr "Text"
+
+#: models.py:38
+msgid "Date time submitted"
+msgstr "Erstellunsgdatum und -zeit"
+
+#: models.py:44
+msgid "Comment"
+msgstr "Kommentar"
+
+#: permissions.py:8
+msgid "Create new comments"
+msgstr "Kommentare erstellen"
+
+#: permissions.py:11
+msgid "Delete comments"
+msgstr "Kommentare löschen"
+
+#: permissions.py:14
+msgid "Edit comments"
+msgstr "Kommentare bearbeiten"
+
+#: permissions.py:17
+msgid "View comments"
+msgstr "Kommentare ansehen"
+
+#: views.py:31
+#, python-format
+msgid "Add comment to document: %s"
+msgstr "Kommentar zu Dokument %s hinzufügen"
+
+#: views.py:59
+#, python-format
+msgid "Delete comment: %s?"
+msgstr "Kommentar %s löschen?"
+
+#: views.py:90
+#, python-format
+msgid "Details for comment: %s?"
+msgstr "Details für Kommentar: %s"
+
+#: views.py:109
+#, python-format
+msgid "Edit comment: %s?"
+msgstr "Kommentar bearbeiten: %s?"
+
+#: views.py:144
+msgid ""
+"Document comments are timestamped text entries from users. They are great "
+"for collaboration."
+msgstr ""
+"Kommentare bei Dokumenten sind zeitgestempelte Texteinträge von Benutzers. "
+"Sie eignen sich hervorragend für die Zusammenarbeit. "
+
+#: views.py:147
+msgid "There are no comments"
+msgstr "Keine Kommentare vorhanden"
+
+#: views.py:149
+#, python-format
+msgid "Comments for document: %s"
+msgstr "Kommentare für Dokument %s"

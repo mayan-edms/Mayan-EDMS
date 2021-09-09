@@ -1,0 +1,521 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Sergey Glita <gsv70@mail.ru>, 2021
+# lilo.panic, 2021
+# Panasoft, 2021
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
+# Alex Chigrin <chalex84@mail.ru>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Alex Chigrin <chalex84@mail.ru>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: admin.py:22
+msgid "None"
+msgstr "Нет"
+
+#: admin.py:24 links.py:94 models.py:54
+msgid "Document types"
+msgstr "Типы документов"
+
+#: apps.py:51 events.py:6 settings.py:8
+msgid "Document indexing"
+msgstr "Индексирование документов"
+
+#: apps.py:147
+msgid "Total levels"
+msgstr "Всего уровней"
+
+#: apps.py:154
+msgid "Total documents"
+msgstr "Всего документов"
+
+#: apps.py:160 apps.py:174 apps.py:204 apps.py:214
+msgid "Level"
+msgstr "Уровень"
+
+#: apps.py:183
+msgid "Levels"
+msgstr "Уровни"
+
+#: apps.py:195 models.py:393
+msgid "Documents"
+msgstr "Документы"
+
+#: events.py:10
+msgid "Index template created"
+msgstr "Шаблон индекса создан"
+
+#: events.py:13
+msgid "Index template edited"
+msgstr "Шаблон индекса изменен"
+
+#: forms.py:16
+msgid "Index templates to be queued for rebuilding."
+msgstr "Шаблоны индексы, которые будут перестроены."
+
+#: forms.py:17 links.py:35 views/index_template_views.py:96
+msgid "Index templates"
+msgstr "Шаблоны индекса"
+
+#: forms.py:32
+msgid "Template"
+msgstr "Шаблон"
+
+#: handlers.py:18
+msgid "Creation date"
+msgstr "Дата создания"
+
+#: links.py:29 links.py:43 links.py:74 links.py:78 models.py:62
+#: views/index_instance_views.py:43
+msgid "Indexes"
+msgstr "Индексы"
+
+#: links.py:48 queues.py:24
+msgid "Rebuild index"
+msgstr "Перестроить индекс"
+
+#: links.py:55 links.py:64
+msgid "Deletes and creates from scratch all the document indexes."
+msgstr "Удаляет и создает заново все индексы документов."
+
+#: links.py:56
+msgid "Rebuild indexes"
+msgstr "Перестроить индексы"
+
+#: links.py:65 views/index_template_views.py:345
+msgid "Reset indexes"
+msgstr "Сбросить индексы"
+
+#: links.py:84 views/index_template_views.py:101
+msgid "Create index"
+msgstr "Создать индекс"
+
+#: links.py:89 links.py:114
+msgid "Delete"
+msgstr "Удалить"
+
+#: links.py:98 links.py:118
+msgid "Edit"
+msgstr "Редактировать"
+
+#: links.py:104
+msgid "Tree template"
+msgstr "Дерево шаблонов"
+
+#: links.py:109
+msgid "New child node"
+msgstr "Новый дочерний узел"
+
+#: models.py:36
+msgid "Short description of this index."
+msgstr "Краткое описание индекса."
+
+#: models.py:37
+msgid "Label"
+msgstr "Заголовок"
+
+#: models.py:41
+msgid "This value will be used by other apps to reference this index."
+msgstr ""
+"Это значение будет использоваться другими приложениями для ссылки на этот "
+"индекс. Может содержать только латинские буквы, цифры и знак подчеркивания."
+
+#: models.py:42
+msgid "Slug"
+msgstr "Идентификатор"
+
+#: models.py:47
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Делает индекс доступным для просмотра и обновляющимся при изменении данных "
+"документа."
+
+#: models.py:50 models.py:229
+msgid "Enabled"
+msgstr "Включено"
+
+#: models.py:61 models.py:213
+msgid "Index"
+msgstr "Индекс"
+
+#: models.py:217
+msgid ""
+"Enter a template to render. Use Django's default templating language "
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+msgstr ""
+"Введите шаблон для рендеринга. Используйте язык шаблонов по умолчанию для "
+"Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+
+#: models.py:221
+msgid "Indexing expression"
+msgstr "Выражение индекса"
+
+#: models.py:226
+msgid "Causes this node to be visible and updated when document data changes."
+msgstr ""
+"Делает узел доступным для просмотра и обновляющимся при изменении данных "
+"документа."
+
+#: models.py:234
+msgid ""
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr ""
+"Этот узел будет контейнером для документов и не будет иметь дочерних узлов."
+
+#: models.py:237
+msgid "Link documents"
+msgstr "Связанные документы"
+
+#: models.py:241
+msgid "Index node template"
+msgstr "Узел шаблона индекса"
+
+#: models.py:242
+msgid "Indexes node template"
+msgstr "Узлы шаблона индекса"
+
+#: models.py:246
+msgid "Root"
+msgstr "Корень"
+
+#: models.py:304
+#, python-format
+msgid ""
+"Error indexing document: %(document)s; expression: %(expression)s; "
+"%(exception)s"
+msgstr ""
+"Ошибка индексации документа: %(document)s; выражение: %(expression)s; "
+"%(exception)s"
+
+#: models.py:345
+msgid "Index instance"
+msgstr "Экземпляр индекса"
+
+#: models.py:346
+msgid "Index instances"
+msgstr "Экземпляры индекса"
+
+#: models.py:386
+msgid "Index template node"
+msgstr "Узел шаблона индекса"
+
+#: models.py:389 search.py:26
+msgid "Value"
+msgstr "Значение"
+
+#: models.py:399 models.py:528
+msgid "Index instance node"
+msgstr "Экземпляр узла индекса"
+
+#: models.py:400
+msgid "Indexes instances node"
+msgstr "Экземпляры узла индекса"
+
+#: models.py:465
+msgid "The path to the index including all ancestors."
+msgstr "Путь к индексу включая всех предков."
+
+#: models.py:467
+msgid "Full path"
+msgstr "Полный путь"
+
+#: models.py:521
+msgid "Document index node instance"
+msgstr "Экземпляр узла индекса документа"
+
+#: models.py:522
+msgid "Document indexes node instances"
+msgstr "Экземпляры узла индекса документа"
+
+#: models.py:529
+msgid "Index instance nodes"
+msgstr "Узлы экземпляра индекса"
+
+#: permissions.py:5 queues.py:8
+msgid "Indexing"
+msgstr "Индексация"
+
+#: permissions.py:8
+msgid "View index instances"
+msgstr "Просмотр экземпляров индекса"
+
+#: permissions.py:11
+msgid "Create new index templates"
+msgstr "Создать новые шаблоны индексов"
+
+#: permissions.py:14
+msgid "Edit index templates"
+msgstr "Редактировать шаблоны индексов"
+
+#: permissions.py:17
+msgid "Delete index templates"
+msgstr "Удалить шаблоны индексов"
+
+#: permissions.py:20
+msgid "View index templates"
+msgstr "Просмотр шаблонов индексов"
+
+#: permissions.py:23 views/index_template_views.py:310
+msgid "Rebuild index templates"
+msgstr "Перестроить шаблоны индексов"
+
+#: queues.py:12
+msgid "Delete empty index nodes"
+msgstr "Удалить пустые узлы индекса"
+
+#: queues.py:16
+msgid "Remove document"
+msgstr "Удалить документ"
+
+#: queues.py:20
+msgid "Index document"
+msgstr "Индексировать документ"
+
+#: search.py:30
+msgid "Document type"
+msgstr "Тип документа"
+
+#: search.py:33
+msgid "Document MIME type"
+msgstr "MIME тип документа"
+
+#: search.py:36
+msgid "Document label"
+msgstr "Заголовок документа"
+
+#: search.py:39
+msgid "Document description"
+msgstr "Описание документа"
+
+#: search.py:42
+msgid "Document UUID"
+msgstr "UUID документа"
+
+#: search.py:46
+msgid "Document checksum"
+msgstr "Контрольная сумма документа"
+
+#: serializers.py:197
+msgid "Parent cannot be empty."
+msgstr "Родительский узел не может быть пустым."
+
+#: serializers.py:204
+msgid "Parent must be from the same index template."
+msgstr "Родительский узел должен быть из того же шаблона индекса."
+
+#: serializers.py:215
+msgid ""
+"URL of the API endpoint showing the list document types associated with this"
+" index template."
+msgstr ""
+"URL-адрес API, показывающий список типов документов, связанных с этим "
+"шаблоном индекса."
+
+#: serializers.py:222
+msgid "URL of the API endpoint to add document types to this index template."
+msgstr "URL-адрес API для добавления типов документов в этот шаблон индекса."
+
+#: serializers.py:229
+msgid ""
+"URL of the API endpoint to remove document types from this index template."
+msgstr "URL-адрес API для удаления типов документов из этого шаблона индекса."
+
+#: serializers.py:277
+msgid "Primary key of the document type to add to the index template."
+msgstr ""
+"Первичный ключ типа документа, который нужно добавить в шаблон индекса."
+
+#: serializers.py:286
+msgid "Primary key of the document type to remove from the index template."
+msgstr ""
+"Первичный ключ типа документа, который нужно удалить из шаблона индекса."
+
+#: settings.py:14
+msgid ""
+"Amount of time in seconds, a failed indexing task will wait before retrying."
+" Lower values will increase the speed at which documents are indexed but "
+"will cause a higher count of failed/retried tasks in the queue."
+msgstr ""
+"Время в секундах, в течение которого неудачная задача индексирования будет "
+"ждать перед повторной попыткой. Более низкие значения увеличивают скорость "
+"индексации документов, но вызывают большее количество неудачных / повторных "
+"задач в очереди."
+
+#: views/index_instance_views.py:38
+msgid ""
+"This could mean that no index templates have been created or that there are "
+"index templates but they are no properly defined."
+msgstr ""
+"Это может означать, что шаблоны индексов еще не были созданы или что есть "
+"шаблоны индексов, не настроенные должным образом."
+
+#: views/index_instance_views.py:42
+msgid "There are no index instances available."
+msgstr "Нет доступных экземпляров индекса."
+
+#: views/index_instance_views.py:80
+#, python-format
+msgid "Navigation: %s"
+msgstr "Навигация: %s"
+
+#: views/index_instance_views.py:86
+#, python-format
+msgid "Contents for index: %s"
+msgstr "Содержимое индекса: %s"
+
+#: views/index_instance_views.py:140
+msgid ""
+"Assign the document type of this document to an index to have it appear in "
+"instances of those indexes organization units. "
+msgstr ""
+"Назначьте тип этого документа индексам, чтобы он отображался в экземплярах "
+"этих индексов."
+
+#: views/index_instance_views.py:145
+msgid "This document is not in any index"
+msgstr "Этого документа нет ни в одном индексе"
+
+#: views/index_instance_views.py:149
+#, python-format
+msgid "Indexes nodes containing document: %s"
+msgstr "Индексы, содержащие документ: %s"
+
+#: views/index_template_views.py:45
+msgid "Available indexes"
+msgstr "Доступные индексы"
+
+#: views/index_template_views.py:46
+msgid "Indexes linked"
+msgstr "Связанные индексы"
+
+#: views/index_template_views.py:70
+msgid ""
+"Documents of this type will appear in the indexes linked when these are "
+"updated. Events of the documents of this type will trigger updates in the "
+"linked indexes."
+msgstr ""
+"Документы этого типа появятся в связанных индексах после их обновления. "
+"События документов этого типа будут запускать обновления в связанных "
+"индексах."
+
+#: views/index_template_views.py:74
+#, python-format
+msgid "Indexes linked to document type: %s"
+msgstr "Индексы, связанные с типом документа: %s"
+
+#: views/index_template_views.py:90
+msgid ""
+"Indexes group document automatically into levels. Indexes are defined using "
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
+msgstr ""
+"Индексы автоматически группируют документы по уровням. Индексы определяются "
+"с использованием шаблонов, маркеры которых заменяются прямыми свойствами "
+"документов, такими как заголовок или описание, или расширенными свойствами, "
+"такими как метаданные."
+
+#: views/index_template_views.py:95
+msgid "There are no index templates."
+msgstr "Нет шаблонов индексов."
+
+#: views/index_template_views.py:124
+#, python-format
+msgid "Delete the index: %s?"
+msgstr "Удалить индекс: %s?"
+
+#: views/index_template_views.py:136
+msgid "Available document types"
+msgstr "Доступные типы документов"
+
+#: views/index_template_views.py:137
+msgid "Document types linked"
+msgstr "Связанные типы документов"
+
+#: views/index_template_views.py:147
+msgid ""
+"Only the documents of the types selected will be shown in the index when "
+"built. Only the events of the documents of the types select will trigger "
+"updates in the index."
+msgstr ""
+"Только документы выбранных типов будут учитываться при построении индекса. "
+"Только события документов выбранных типов будут запускать обновление "
+"индекса."
+
+#: views/index_template_views.py:151
+#, python-format
+msgid "Document types linked to index: %s"
+msgstr "Типы документов, связанные с индексом: %s"
+
+#: views/index_template_views.py:167
+#, python-format
+msgid "Edit index: %s"
+msgstr "Редактировать индекс: %s"
+
+#: views/index_template_views.py:187
+#, python-format
+msgid "Tree template nodes for index: %s"
+msgstr "Дерево узлов шаблонов индекса: %s"
+
+#: views/index_template_views.py:213
+#, python-format
+msgid "Create child node of: %s"
+msgstr "Создать дочерний узел в: %s"
+
+#: views/index_template_views.py:239
+#, python-format
+msgid "Delete the index template node: %s?"
+msgstr "Удалить узел шаблона индекса: %s?"
+
+#: views/index_template_views.py:263
+#, python-format
+msgid "Edit the index template node: %s?"
+msgstr "Редактировать узел шаблона индекса: %s?"
+
+#: views/index_template_views.py:283
+#, python-format
+msgid "Rebuild index template: %s"
+msgstr "Перестроить шаблон индекса: %s"
+
+#: views/index_template_views.py:303
+msgid "Index template queued for rebuild."
+msgstr "Шаблон индекса поставлен в очередь для перестроения."
+
+#: views/index_template_views.py:324
+#, python-format
+msgid "%(count)d index template queued for rebuild."
+msgid_plural "%(count)d index templates queued for rebuild."
+msgstr[0] "%(count)d шаблон индекса поставлен в очередь для перестроения."
+msgstr[1] "%(count)d шаблона индексов поставлено в очередь для перестроения."
+msgstr[2] "%(count)d шаблонов индексов поставлено в очередь для перестроения."
+msgstr[3] "%(count)d шаблонов индексов поставлено в очередь для перестроения."
+
+#: views/index_template_views.py:357
+#, python-format
+msgid "%(count)d index reset."
+msgid_plural "%(count)d indexes reset."
+msgstr[0] "%(count)d индекс сброшен."
+msgstr[1] "%(count)d индекса сброшено."
+msgstr[2] "%(count)d индексов сброшено."
+msgstr[3] "%(count)d индексов сброшено."
+
+#: views/index_template_views.py:370
+msgid "Index templates for which their instances will be deleted."
+msgstr "Шаблоны индекса, экземпляры которых будут удалены."

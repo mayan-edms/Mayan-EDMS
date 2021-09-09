@@ -1,0 +1,345 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# Badea Gabriel <gcbadea@gmail.com>, 2021
+# Harald Ersch, 2021
+# Stefaniu Criste <gupi@hangar.ro>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
+"Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+
+#: apps.py:24 links.py:38 permissions.py:5
+msgid "Dependencies"
+msgstr "Dependenţe"
+
+#: apps.py:32 apps.py:69 apps.py:78
+msgid "Label"
+msgstr "Conținut etichetă"
+
+#: apps.py:36
+msgid "Internal name"
+msgstr "Nume intern"
+
+#: apps.py:41 apps.py:74 apps.py:83
+msgid "Description"
+msgstr "Descriere"
+
+#: apps.py:45 classes.py:138
+msgid "Type"
+msgstr "Tip"
+
+#: apps.py:49 classes.py:140
+msgid "Other data"
+msgstr "Alte date"
+
+#: apps.py:53
+msgid "Declared by"
+msgstr "Declarată de"
+
+#: apps.py:57 classes.py:138
+msgid "Version"
+msgstr "Versiune"
+
+#: apps.py:61 classes.py:139 classes.py:781
+msgid "Environment"
+msgstr "Mediu inconjurator"
+
+#: apps.py:64 classes.py:140
+msgid "Check"
+msgstr "Verificare"
+
+#: classes.py:138
+msgid "Name"
+msgstr "Nume"
+
+#: classes.py:139
+msgid "App"
+msgstr "App"
+
+#: classes.py:254
+msgid "Need to specify at least one: app_label or module."
+msgstr "Trebuie să specificați cel puțin una: app_label sau modul."
+
+#: classes.py:259
+#, python-format
+msgid "Dependency \"%s\" already registered."
+msgstr "Dependența \"%s\" deja înregistrată."
+
+#: classes.py:285
+#, python-format
+msgid "Installing package: %s... "
+msgstr "Instalarea pachetului: %s ..."
+
+#: classes.py:290
+msgid "Already installed."
+msgstr "Deja instalat."
+
+#: classes.py:293 classes.py:298 classes.py:302
+msgid "Complete."
+msgstr "Complet."
+
+#: classes.py:328
+msgid "Installed and correct version"
+msgstr "Versiunea instalată și corectă"
+
+#: classes.py:330
+msgid "Missing or incorrect version"
+msgstr "Versiune lipsă sau incorectă"
+
+#: classes.py:359
+msgid "None"
+msgstr "Nici unul"
+
+#: classes.py:368
+msgid "Not specified"
+msgstr "Nespecificat"
+
+#: classes.py:371
+msgid "Patching files... "
+msgstr "Patching fișiere ..."
+
+#: classes.py:399
+msgid "Executables that are called directly by the code."
+msgstr "Executabile care sunt apelate direct de cod."
+
+#: classes.py:401
+msgid "Binary"
+msgstr "Binar"
+
+#: classes.py:418
+msgid ""
+"JavaScript libraries downloaded the from NPM registry and used for front-end"
+" functionality."
+msgstr ""
+"Bibliotecile JavaScript descărcate din registrul NPM și folosite la "
+"funcționalitatea front-end."
+
+#: classes.py:421
+msgid "JavaScript"
+msgstr "JavaScript"
+
+#: classes.py:451 classes.py:694
+msgid "Downloading... "
+msgstr "Descărcare..."
+
+#: classes.py:454
+msgid "Verifying... "
+msgstr "Se verifică ..."
+
+#: classes.py:457 classes.py:697
+msgid "Extracting... "
+msgstr "Se extrage ..."
+
+#: classes.py:636
+msgid "Python packages downloaded from PyPI."
+msgstr "Pachetele Python descărcate de la PyPI."
+
+#: classes.py:638
+msgid "Python"
+msgstr "Python"
+
+#: classes.py:675
+msgid "Fonts downloaded from fonts.googleapis.com."
+msgstr "Fonturi descărcate de la fonts.googleapis.com."
+
+#: classes.py:677
+msgid "Google font"
+msgstr "Font Google"
+
+#: classes.py:763
+msgid "Declared in app"
+msgstr "Declarate în aplicație"
+
+#: classes.py:764
+msgid "Show dependencies by the app that declared them."
+msgstr "Afișați dependențele după aplicația care le-a declarat."
+
+#: classes.py:768
+msgid "Class"
+msgstr "Clasă"
+
+#: classes.py:769
+msgid ""
+"Show the different classes of dependencies. Classes are usually divided by "
+"language or the file types of the dependency."
+msgstr ""
+"Arătați diferitele clase de dependențe. Clasele sunt de obicei împărțite în "
+"funcție de limbă sau de tipurile de fișiere ale dependenței."
+
+#: classes.py:774
+msgid "State"
+msgstr "Stare"
+
+#: classes.py:775
+msgid ""
+"Show the different states of the dependencies. True means that the "
+"dependencies is installed and is of a correct version. False means the "
+"dependencies is missing or an incorrect version is present."
+msgstr ""
+"Afișați diferitele stări ale dependențelor. True înseamnă că dependențele "
+"sunt instalate și că au o versiune corectă. Fals înseamnă că lipsesc "
+"dependențele sau există o versiune incorectă."
+
+#: classes.py:782
+msgid ""
+"Dependencies required for an environment might not be required for another. "
+"Example environments: Production, Development."
+msgstr ""
+"Este posibil ca dependențele necesare pentru un mediu să nu fie necesare "
+"pentru altul. Exemplu de medii: producție, dezvoltare."
+
+#: environments.py:18
+msgid ""
+"Environment used for building distributable packages of the software. End "
+"users can ignore missing dependencies under this environment."
+msgstr ""
+"Mediul utilizat pentru a construi pachete distribuite ale software-ului. "
+"Utilizatorii finali pot ignora dependențele care lipsesc în acest mediu."
+
+#: environments.py:21
+msgid "Build"
+msgstr "Build"
+
+#: environments.py:25
+msgid ""
+"Environment used for developers to make code changes. End users can ignore "
+"missing dependencies under this environment."
+msgstr ""
+"Mediul fost folosit de dezvoltatori pentru a face schimbări de cod. "
+"Utilizatorii finali pot ignora dependențele care lipsesc în acest mediu."
+
+#: environments.py:27
+msgid "Development"
+msgstr "Dezvoltare"
+
+#: environments.py:31
+msgid ""
+"Environment used for building the documentation. End users can ignore "
+"missing dependencies under this environment."
+msgstr ""
+"Mediu folosit pentru construirea documentației. Utilizatorii finali pot "
+"ignora dependențele lipsă din acest mediu."
+
+#: environments.py:33
+msgid "Documentation"
+msgstr "Documentație"
+
+#: environments.py:37
+msgid ""
+"Normal environment for end users. A missing dependency under this "
+"environment will result in issues and errors during normal use."
+msgstr ""
+"Mediu normal pentru utilizatorii finali. O dependență lipsă în acest mediu "
+"va duce la probleme și erori în timpul utilizării normale."
+
+#: environments.py:39
+msgid "Production"
+msgstr "Producție"
+
+#: environments.py:43
+msgid ""
+"Environment used running the test suit to verify the functionality of the "
+"code. Dependencies in this environment are not needed for normal production "
+"usage."
+msgstr ""
+"Mediul în care  rulează setul de testare pentru a verifica funcționalitatea "
+"codului. Dependențele în acest mediu nu sunt necesare pentru utilizarea "
+"normală în  producție."
+
+#: environments.py:46
+msgid "Testing"
+msgstr "Testare"
+
+#: links.py:13 views.py:17
+msgid "Check for updates"
+msgstr "Verifică pentru actualizări"
+
+#: links.py:18
+msgid "Groups"
+msgstr "Grupuri"
+
+#: links.py:23
+msgid "Entries"
+msgstr "Intrări"
+
+#: links.py:29
+msgid "Details"
+msgstr "Detalii"
+
+#: links.py:33
+msgid "Dependencies licenses"
+msgstr "Licențe de dependență"
+
+#: management/commands/checkdependencies.py:13
+msgid "Outputs the dependencies as a comma delimited values list."
+msgstr "Exportă dependențele ca listă de valori delimitate prin virgulă."
+
+#: management/commands/generaterequirements.py:14
+msgid ""
+"Comma separated names of dependencies to exclude from the list generated."
+msgstr ""
+"Numele de dependențe separate prin vigulă ce vor fi excluse din lista "
+"generată."
+
+#: management/commands/generaterequirements.py:20
+msgid ""
+"Comma separated names of dependencies to show in the list while excluding "
+"every other one."
+msgstr ""
+"Numerele de dependențe separate prin virgule ce vor fi afișate în listă, "
+"excluzând totodată pe celelalte."
+
+#: management/commands/installdependencies.py:13
+msgid "Process a specific app."
+msgstr "Procesați o aplicație specifică."
+
+#: management/commands/installdependencies.py:17
+msgid "Force installation even if already installed."
+msgstr "Forțați instalarea chiar dacă este instalat deja."
+
+#: permissions.py:8
+msgid "View dependencies"
+msgstr "Vizualizați dependențele"
+
+#: views.py:31
+#, python-format
+msgid "Entries for dependency group: %s"
+msgstr "Intrările pentru grupul de dependență: %s"
+
+#: views.py:44 views.py:89
+#, python-format
+msgid "Group %s not found."
+msgstr "Grupul %s nu a fost găsit."
+
+#: views.py:57
+msgid "Dependency groups"
+msgstr "Grupuri de dependență"
+
+#: views.py:77
+#, python-format
+msgid "Dependency group and entry: %(group)s, %(entry)s"
+msgstr "Grupul de dependență și intrările  aferente: %(group)s, %(entry)s"
+
+#: views.py:101
+#, python-format
+msgid "Entry %s not found."
+msgstr "Intrarea %s nu a fost găsită."
+
+#: views.py:119
+msgid "Other packages licenses"
+msgstr "Licențe pentru alte pachete"

@@ -1,0 +1,61 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:29+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:33 apps.py:71 layers.py:15 permissions.py:5
+msgid "Redactions"
+msgstr "Supressões"
+
+#: dependencies.py:6
+msgid "JavaScript image cropper"
+msgstr "Recortador de imagens JavaScript"
+
+#: layers.py:13
+msgid ""
+"Redactions allow removing access to confidential and sensitive information "
+"without having to modify the document."
+msgstr ""
+"As supressões permitem remover o acesso a informações confidenciais e "
+"sensíveis sem a necessidade de modificar o documento."
+
+#: permissions.py:8
+msgid "Create new redactions"
+msgstr "Criar novas supressões"
+
+#: permissions.py:11
+msgid "Delete redactions"
+msgstr "Excluir supressões"
+
+#: permissions.py:14
+msgid "Edit redactions"
+msgstr "Editar supressões"
+
+#: permissions.py:17
+msgid "Exclude redactions"
+msgstr "Excluir supressões"
+
+#: permissions.py:20
+msgid "View existing redactions"
+msgstr "Ver supressões existentes"
+
+#: transformations.py:12
+msgid "Redaction"
+msgstr "Supressão"

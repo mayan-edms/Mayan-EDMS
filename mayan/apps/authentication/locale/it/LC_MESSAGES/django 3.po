@@ -1,0 +1,230 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
+# Daniele Bortoluzzi <daniele@elkos.it>, 2021
+# Roberto Rosario, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:35 events.py:6 permissions.py:6 settings.py:10
+msgid "Authentication"
+msgstr "Autenticazione"
+
+#: events.py:10
+msgid "User impersonation ended"
+msgstr "Terminato impersonazione d'identita dell'utente"
+
+#: events.py:13
+msgid "User impersonation started"
+msgstr "Inizio impersonazione d'identita dell'utente"
+
+#: events.py:16
+msgid "User logged in"
+msgstr "L'utente ha effettuato l'accesso"
+
+#: events.py:19
+msgid "User logged out"
+msgstr "Utente disconnesso"
+
+#: forms.py:20
+msgid "Email"
+msgstr "Email"
+
+#: forms.py:23
+msgid "Password"
+msgstr "Password"
+
+#: forms.py:25 forms.py:105
+msgid "Remember me"
+msgstr "Ricordami"
+
+#: forms.py:28
+msgid ""
+"Please enter a correct email and password. Note that the password field is "
+"case-sensitive."
+msgstr ""
+"Inserisci email e password corretti. Si noti che il campo password è case-"
+"sensitive."
+
+#: forms.py:30
+msgid "This account is inactive."
+msgstr "Questo account è disattivato"
+
+#: forms.py:79
+msgid "Permanent"
+msgstr "Permanente"
+
+#: forms.py:80
+msgid "If selected, disables ending impersonation."
+msgstr "Se selezionato, disabilita la fine della impersonazione."
+
+#: forms.py:91
+msgid "User"
+msgstr "Utente"
+
+#: links.py:24
+msgid "Logout"
+msgstr "Logout"
+
+#: links.py:29
+msgid "Change password"
+msgstr "Cambiare la password"
+
+#: links.py:34 views.py:250
+msgid "Impersonate user"
+msgstr "Impersonare l'utente"
+
+#: links.py:39
+msgid "Impersonate"
+msgstr ""
+
+#: links.py:44 links.py:48
+msgid "Set password"
+msgstr "Imposta password"
+
+#: permissions.py:10
+msgid "Impersonate users"
+msgstr "Impersonazione degli utenti"
+
+#: settings.py:15
+msgid ""
+"Controls the mechanism used to authenticated user. Options are: username, "
+"email"
+msgstr ""
+"Controlla il meccanismo utilizzato per autenticare l'utente. Le opzioni "
+"sono: username, email"
+
+#: settings.py:22
+msgid ""
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
+msgstr ""
+"Tempo massimo di accesso per un utente che fa clic sulla casella "
+"\"Ricordami\". Il valore è il tempo in secondi."
+
+#: settings.py:29
+msgid ""
+"Remove the \"Forgot your password?\" link on the login form used to trigger "
+"the password reset."
+msgstr ""
+"Rimuovi il messaggio \"Hai dimenticato la password?\" link sul modulo di "
+"accesso utilizzato per attivare la reimpostazione della password."
+
+#: templates/authentication/app/viewport.html:11
+#, python-format
+msgid ""
+"\n"
+"                Impersonating user \"%(user)s\".\n"
+"            "
+msgstr ""
+
+#: templates/authentication/app/viewport.html:14
+msgid "Click here when finished"
+msgstr "Clicca qui quando hai finito"
+
+#: templates/authentication/login.html:10
+msgid "Login"
+msgstr "Login"
+
+#: templates/authentication/login.html:21
+#: templates/authentication/login.html:30
+msgid "Sign in"
+msgstr "Accedi"
+
+#: templates/authentication/login.html:37
+msgid "Forgot your password?"
+msgstr "Dimenticato la password?"
+
+#: templates/authentication/password_reset_complete.html:8
+#: templates/authentication/password_reset_confirm.html:8
+#: templates/authentication/password_reset_confirm.html:20
+#: templates/authentication/password_reset_done.html:8
+#: templates/authentication/password_reset_form.html:8
+#: templates/authentication/password_reset_form.html:20
+msgid "Password reset"
+msgstr "Reimposta la password"
+
+#: templates/authentication/password_reset_complete.html:15
+msgid "Password reset complete! Click the link below to login."
+msgstr ""
+"Reimpostazione della password completata! Clicca sul link sotto per accedere"
+
+#: templates/authentication/password_reset_complete.html:17
+msgid "Login page"
+msgstr "Pagina di login"
+
+#: templates/authentication/password_reset_confirm.html:29
+#: templates/authentication/password_reset_form.html:29 views.py:177
+msgid "Submit"
+msgstr "Invia"
+
+#: templates/authentication/password_reset_done.html:15
+msgid "Password reset email sent!"
+msgstr "Email per la reimpostazione della password inviata!"
+
+#: views.py:86
+msgid "Your password has been successfully changed."
+msgstr "La tua password è stata cambiata con successo"
+
+#: views.py:93
+msgid "Current user password change"
+msgstr "Modifica della password dell'utente corrente"
+
+#: views.py:101
+msgid "Changing the password is not allowed for this account."
+msgstr "Il cambio password non è consentito per questo account."
+
+#: views.py:168
+#, python-format
+msgid "Password change request performed on %(count)d user"
+msgstr "Effettuato il cambio password richiesto per %(count)d utente"
+
+#: views.py:170
+#, python-format
+msgid "Password change request performed on %(count)d users"
+msgstr "Effettuato il cambio password richiesto per %(count)d utenti"
+
+#: views.py:179
+msgid "Change user password"
+msgid_plural "Change users passwords"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:189
+#, python-format
+msgid "Change password for user: %s"
+msgstr "Cambia la password dell'utente: %s"
+
+#: views.py:210
+#, python-format
+msgid "Successful password reset for user: %s."
+msgstr "Effettuato reset della password per l'utente: %s."
+
+#: views.py:216
+#, python-format
+msgid "Error reseting password for user \"%(user)s\": %(error)s"
+msgstr ""
+"Errore per il reimpostamento della password per l'utente \"%(user)s\": "
+"%(error)s"
+
+#: views.py:278
+#, python-format
+msgid "Impersonate user: %s"
+msgstr ""

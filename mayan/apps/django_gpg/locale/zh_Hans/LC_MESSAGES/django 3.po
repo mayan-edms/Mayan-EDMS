@@ -1,0 +1,302 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# xisafe <root@xisafe.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: xisafe <root@xisafe.com>, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:33
+msgid "Django GPG"
+msgstr "Django GPG"
+
+#: apps.py:56 apps.py:62 forms.py:15
+msgid "Key ID"
+msgstr "密钥ID"
+
+#: apps.py:66 forms.py:32 models.py:59
+msgid "Type"
+msgstr "类型"
+
+#: apps.py:70 forms.py:21 models.py:40
+msgid "Creation date"
+msgstr "创立日期"
+
+#: apps.py:74
+msgid "No expiration"
+msgstr "没有过期"
+
+#: apps.py:75 forms.py:25 models.py:44
+msgid "Expiration date"
+msgstr "过期日期"
+
+#: apps.py:78 forms.py:30 models.py:51
+msgid "Length"
+msgstr "长度"
+
+#: apps.py:83 forms.py:17 models.py:56
+msgid "User ID"
+msgstr "用户ID"
+
+#: dependencies.py:10
+msgid "GNU privacy guard - a PGP implementation."
+msgstr ""
+
+#: events.py:5 links.py:42 permissions.py:5
+msgid "Key management"
+msgstr "密钥管理"
+
+#: events.py:8
+msgid "Key created"
+msgstr ""
+
+#: events.py:12
+msgid "Key downloaded"
+msgstr ""
+
+#: forms.py:26
+msgid "None"
+msgstr "没有"
+
+#: forms.py:29 models.py:48
+msgid "Fingerprint"
+msgstr "指纹"
+
+#: forms.py:31 models.py:54
+msgid "Algorithm"
+msgstr "算法"
+
+#: forms.py:45
+msgid "Term"
+msgstr "术语"
+
+#: forms.py:46
+msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr "要查找的姓名，电子邮件，密钥ID或密钥指纹。"
+
+#: links.py:17
+msgid "Delete"
+msgstr "删除"
+
+#: links.py:22
+msgid "Details"
+msgstr "细节"
+
+#: links.py:27
+msgid "Download"
+msgstr "下载"
+
+#: links.py:32 permissions.py:26
+msgid "Query keyservers"
+msgstr "查询密钥服务器"
+
+#: links.py:37
+msgid "Import"
+msgstr "导入"
+
+#: links.py:46
+msgid "Upload key"
+msgstr "上传密钥"
+
+#: links.py:50 views.py:194
+msgid "Private keys"
+msgstr "私钥"
+
+#: links.py:54 views.py:218
+msgid "Public keys"
+msgstr "公钥"
+
+#: literals.py:23 literals.py:31
+msgid "Public"
+msgstr "公共的"
+
+#: literals.py:24 literals.py:32
+msgid "Secret"
+msgstr "私人的"
+
+#: literals.py:40 literals.py:45
+msgid "RSA"
+msgstr "RSA"
+
+#: literals.py:41
+msgid "DSA"
+msgstr "DSA"
+
+#: literals.py:46
+msgid "Elgamal"
+msgstr "Elgamal"
+
+#: literals.py:62
+msgid "Bad signature."
+msgstr "坏的签名。"
+
+#: literals.py:65
+msgid "Document not signed or invalid signature."
+msgstr "文档未签名或无效的签名。"
+
+#: literals.py:68
+msgid "Signature error."
+msgstr "签名错误。"
+
+#: literals.py:72
+msgid "Document is signed but no public key is available for verification."
+msgstr "文档已签名，但没有公钥可用于验证。"
+
+#: literals.py:77
+msgid "Document is signed, and signature is good."
+msgstr "文档已签名，签名正常。"
+
+#: literals.py:80
+msgid "Document is signed with a valid signature."
+msgstr "文档已使用有效签名进行签名。"
+
+#: models.py:36
+msgid "ASCII armored version of the key."
+msgstr "ASCII防护版的密钥。"
+
+#: models.py:37
+msgid "Key data"
+msgstr "密钥数据"
+
+#: models.py:65
+msgid "Key"
+msgstr "密钥"
+
+#: models.py:66
+msgid "Keys"
+msgstr "密钥"
+
+#: models.py:78
+msgid "Invalid key data"
+msgstr "密钥数据无效"
+
+#: models.py:81
+msgid "Key already exists."
+msgstr "密钥已经存在。"
+
+#: permissions.py:8
+msgid "Delete keys"
+msgstr "删除密钥"
+
+#: permissions.py:11
+msgid "Download keys"
+msgstr "下载密钥"
+
+#: permissions.py:14
+msgid "Import keys from keyservers"
+msgstr "从密钥服务器导入密钥"
+
+#: permissions.py:17
+msgid "Use keys to sign content"
+msgstr "使用密钥来签署内容"
+
+#: permissions.py:20
+msgid "Upload keys"
+msgstr "上传密钥"
+
+#: permissions.py:23
+msgid "View keys"
+msgstr "查看密钥"
+
+#: settings.py:10
+msgid "Signatures"
+msgstr "签名"
+
+#: settings.py:16
+msgid "Full path to the backend to be used to handle keys and signatures."
+msgstr "后端的完整路径，用于处理密钥和签名。"
+
+#: settings.py:25
+msgid "Keyserver used to query for keys."
+msgstr "用于查询密钥的密钥服务器。"
+
+#: views.py:39
+#, python-format
+msgid "Delete key: %s"
+msgstr "删除密钥：%s"
+
+#: views.py:56
+#, python-format
+msgid "Details for key: %s"
+msgstr "密钥详情：%s"
+
+#: views.py:84
+#, python-format
+msgid "Import key ID: %s?"
+msgstr "导入密钥ID：%s？"
+
+#: views.py:85
+msgid "Import key"
+msgstr "导入密钥"
+
+#: views.py:94
+#, python-format
+msgid "Unable to import key: %(key_id)s; %(error)s"
+msgstr "无法导入密钥：%(key_id)s; %(error)s"
+
+#: views.py:102
+#, python-format
+msgid "Successfully received key: %(key_id)s"
+msgstr "成功接收密钥：%(key_id)s"
+
+#: views.py:119
+msgid ""
+"Use names, last names, key ids or emails to search public keys to import "
+"from the keyserver."
+msgstr "使用名字，姓氏，密钥ID或电子邮件来搜索要从密钥服务器导入的公钥。"
+
+#: views.py:123
+msgid "No results returned"
+msgstr "没有结果返回"
+
+#: views.py:125
+msgid "Key query results"
+msgstr "密钥查询结果"
+
+#: views.py:145
+msgid "Search"
+msgstr "搜索"
+
+#: views.py:147
+msgid "Query key server"
+msgstr "查询密钥服务器"
+
+#: views.py:166
+msgid "Upload new key"
+msgstr "上传新密钥"
+
+#: views.py:187
+msgid ""
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user. The view to upload private and public keys is the same."
+msgstr "私钥用于签名文档。私钥只能由用户上传。上传私钥和公钥的同一个视图"
+
+#: views.py:192
+msgid "There no private keys"
+msgstr "没有私钥"
+
+#: views.py:210
+msgid ""
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
+"public keys is the same."
+msgstr "公钥用于验证签名文档。公钥可以由用户上传或从密钥服务器下载。上传私钥和公钥的视图是相同的。"
+
+#: views.py:216
+msgid "There no public keys"
+msgstr "没有公钥"

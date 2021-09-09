@@ -1,0 +1,259 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Sergey Glita <gsv70@mail.ru>, 2021
+# lilo.panic, 2021
+# Panasoft, 2021
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-12 03:39+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: apps.py:35 events.py:5 permissions.py:5
+msgid "Messaging"
+msgstr "Сообщения"
+
+#: apps.py:57
+msgid "None"
+msgstr "Нет"
+
+#: apps.py:63
+msgid "Sender"
+msgstr "Отправитель"
+
+#: events.py:8
+msgid "Message created"
+msgstr "Сообщение создано"
+
+#: events.py:11
+msgid "Message edited"
+msgstr "Сообщение изменено"
+
+#: forms.py:9 models.py:37
+msgid "Body"
+msgstr "Содержимое"
+
+#: links.py:37 views.py:33
+msgid "Create message"
+msgstr "Создать объявление"
+
+#: links.py:40 links.py:46
+msgid "Delete"
+msgstr "Удалить"
+
+#: links.py:54 links.py:65
+msgid "Mark as read"
+msgstr "Отметить как прочитанное"
+
+#: links.py:60 links.py:69
+msgid "Mark as unread"
+msgstr "Отметить как непрочитанное"
+
+#: links.py:73
+msgid "Mark all as read"
+msgstr "Отметить все как прочитанные"
+
+#: models.py:29
+msgid "User"
+msgstr "Пользователь"
+
+#: models.py:32
+msgid "Short description of this message."
+msgstr "Краткое описание сообщения."
+
+#: models.py:33
+msgid "Subject"
+msgstr "Тема"
+
+#: models.py:36
+msgid "The actual content of the message."
+msgstr "Фактическое содержимое сообщения."
+
+#: models.py:41
+msgid "This field determines if the message has been read or not."
+msgstr "Это поле определяет, прочитано сообщение или нет."
+
+#: models.py:42
+msgid "Read"
+msgstr "Прочитано"
+
+#: models.py:46
+msgid "Date and time of the message creation."
+msgstr "Дата и время создания сообщения."
+
+#: models.py:47
+msgid "Creation date and time"
+msgstr "Дата и время создания"
+
+#: models.py:52
+msgid "Message"
+msgstr "Сообщение"
+
+#: models.py:53 views.py:122
+msgid "Messages"
+msgstr "Сообщения"
+
+#: models.py:69
+msgid "Label"
+msgstr "Заголовок"
+
+#: permissions.py:8
+msgid "Create messages"
+msgstr "Создать сообщения"
+
+#: permissions.py:11
+msgid "Delete messages"
+msgstr "Удалить сообщения"
+
+#: permissions.py:14
+msgid "View messages"
+msgstr "Просмотр сообщений"
+
+#: views.py:34
+msgid "Send"
+msgstr "Отправить"
+
+#: views.py:46
+#, python-format
+msgid "Error deleting message \"%(instance)s\"; %(exception)s"
+msgstr "Ошибка при удалении сообщения \"%(instance)s\"; %(exception)s"
+
+#: views.py:50
+#, python-format
+msgid "Message \"%(object)s\" deleted successfully."
+msgstr "Сообщение \"%(object)s\" удалено."
+
+#: views.py:51
+#, python-format
+msgid "%(count)d message deleted successfully."
+msgstr "%(count)d сообщение удалено."
+
+#: views.py:52
+#, python-format
+msgid "%(count)d messages deleted successfully."
+msgstr "%(count)d сообщений удалено."
+
+#: views.py:53
+#, python-format
+msgid "Delete message: %(object)s."
+msgstr "Удалить сообщение: %(object)s."
+
+#: views.py:54
+#, python-format
+msgid "Delete the %(count)d selected message."
+msgstr "Удалить %(count)d выбранное сообщение."
+
+#: views.py:55
+#, python-format
+msgid "Delete the %(count)d selected messages."
+msgstr "Удалить %(count)d выбранных сообщений."
+
+#: views.py:94
+#, python-format
+msgid "Details of message: %s"
+msgstr "Подробности сообщения: %s"
+
+#: views.py:117
+msgid "Here you will find text messages from other users or from the system."
+msgstr ""
+"Здесь вы найдете текстовые сообщения от других пользователей или системы."
+
+#: views.py:120
+msgid "There are no messages"
+msgstr "Нет сообщений"
+
+#: views.py:131
+#, python-format
+msgid "Error marking message \"%(instance)s\" as read; %(exception)s"
+msgstr ""
+"Ошибка при отметке сообщения \"%(instance)s\" как прочитанного; "
+"%(exception)s"
+
+#: views.py:137
+#, python-format
+msgid "Message \"%(object)s\" marked as read successfully."
+msgstr "Сообщение \"%(object)s\" отмечено как прочитанное."
+
+#: views.py:140
+#, python-format
+msgid "%(count)d message marked as read successfully."
+msgstr "%(count)d сообщение отмечено как прочитанное."
+
+#: views.py:143
+#, python-format
+msgid "%(count)d messages marked as read successfully."
+msgstr "%(count)d сообщений отмечено как прочитанные."
+
+#: views.py:145
+#, python-format
+msgid "Mark the message \"%(object)s\" as read."
+msgstr "Отметить сообщение \"%(object)s\" как прочитанное."
+
+#: views.py:146
+#, python-format
+msgid "Mark the %(count)d selected message as read."
+msgstr "Отметить %(count)d выбранное сообщение как прочитанное."
+
+#: views.py:147
+#, python-format
+msgid "Mark the %(count)d selected messages as read."
+msgstr "Отметить %(count)d выбранных сообщений как прочитанные."
+
+#: views.py:173
+msgid "Mark all message as read?"
+msgstr "Отметить все сообщения как прочитанные?"
+
+#: views.py:189
+msgid "All messages marked as read."
+msgstr "Все сообщения отмечены как прочитанные."
+
+#: views.py:196
+#, python-format
+msgid "Error marking message \"%(instance)s\" as unread; %(exception)s"
+msgstr ""
+"Ошибка при отметке сообщения \"%(instance)s\" как непрочитанного; "
+"%(exception)s"
+
+#: views.py:202
+#, python-format
+msgid "Message \"%(object)s\" marked as unread successfully."
+msgstr "Сообщение \"%(object)s\" отмечено как непрочитанное."
+
+#: views.py:205
+#, python-format
+msgid "%(count)d message marked as unread successfully."
+msgstr "%(count)d сообщение отмечено как непрочитанное."
+
+#: views.py:208
+#, python-format
+msgid "%(count)d messages marked as unread successfully."
+msgstr "%(count)d сообщений отмечено как непрочитанные."
+
+#: views.py:210
+#, python-format
+msgid "Mark the message \"%(object)s\" as unread."
+msgstr "Отметить сообщение \"%(object)s\" как непрочитанное."
+
+#: views.py:211
+#, python-format
+msgid "Mark the %(count)d selected message as unread."
+msgstr "Отметить %(count)d выбранное сообщение как непрочитанное."
+
+#: views.py:212
+#, python-format
+msgid "Mark the %(count)d selected messages as unread."
+msgstr "Отметить %(count)d выбранных сообщений как непрочитанные."

@@ -1,0 +1,342 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
+# Giovanni Tricarico <gtricarico92@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2021\n"
+"Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
+#: events.py:5 forms.py:14 links.py:31 menus.py:14 models.py:50 models.py:174
+#: permissions.py:5 search.py:56 views.py:155 workflow_actions.py:20
+msgid "Cabinets"
+msgstr "Schedario"
+
+#: events.py:9
+msgid "Cabinet created"
+msgstr "Schedario creato"
+
+#: events.py:12
+msgid "Cabinet edited"
+msgstr "Schedario modificato"
+
+#: events.py:15
+msgid "Document added to cabinet"
+msgstr "Documento aggiunto al schedario"
+
+#: events.py:18
+msgid "Document removed from cabinet"
+msgstr "Documento rimosso dal schedario"
+
+#: links.py:37 links.py:49 workflow_actions.py:72
+msgid "Remove from cabinets"
+msgstr "Rimuovi da schedari"
+
+#: links.py:41 links.py:45 workflow_actions.py:29
+msgid "Add to cabinets"
+msgstr "Aggiungi a schedari"
+
+#: links.py:60
+msgid "Add new level"
+msgstr "Aggiungi nuovo livello"
+
+#: links.py:65 views.py:40
+msgid "Create cabinet"
+msgstr "Crea schedario"
+
+#: links.py:70
+msgid "Delete"
+msgstr "Cancella"
+
+#: links.py:74
+msgid "Edit"
+msgstr "Modifica"
+
+#: links.py:82
+msgid "All"
+msgstr "Tutti"
+
+#: links.py:86
+msgid "Details"
+msgstr "Dettagli"
+
+#: methods.py:20
+msgid "Return a list of cabinets containing the document."
+msgstr "Restituisce un elenco di schedari contenenti il documento."
+
+#: methods.py:22
+msgid "get_cabinets()"
+msgstr "get_cabinets()"
+
+#: models.py:34
+msgid "A short text used to identify the cabinet."
+msgstr "Un breve testo utilizzato per identificare il schedario."
+
+#: models.py:35
+msgid "Label"
+msgstr "Etichetta"
+
+#: models.py:39
+msgid "Documents"
+msgstr "Documenti"
+
+#: models.py:49 models.py:148 models.py:173 workflow_actions.py:64
+msgid "Cabinet"
+msgstr "Schedario"
+
+#: models.py:115
+msgid "The path to the cabinet including all ancestors."
+msgstr "Il percorso per il schedario inclusi tutti gli antenati."
+
+#: models.py:117
+msgid "Full path"
+msgstr "Percorso completo"
+
+#: models.py:149
+msgid "Parent and Label"
+msgstr "Genitore ed etichetta"
+
+#: models.py:156
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr "%(model_name)s con questo %(field_labels)s esiste già."
+
+#: models.py:185
+msgid "Document cabinet"
+msgstr "Schedario di documenti"
+
+#: models.py:186 search.py:63 search.py:70 search.py:77 search.py:84
+msgid "Document cabinets"
+msgstr "Schedari di documenti"
+
+#: permissions.py:10
+msgid "Add documents to cabinets"
+msgstr "Aggiungi documenti agli schedari"
+
+#: permissions.py:13
+msgid "Create cabinets"
+msgstr "Crea schedari"
+
+#: permissions.py:16
+msgid "Delete cabinets"
+msgstr "Elimina schedari"
+
+#: permissions.py:19
+msgid "Edit cabinets"
+msgstr "Modifica schedari"
+
+#: permissions.py:22
+msgid "Remove documents from cabinets"
+msgstr "Rimuovere i documenti dagli schedari"
+
+#: permissions.py:25
+msgid "View cabinets"
+msgstr "Visualizza schedari"
+
+#: search.py:33
+msgid "Document type"
+msgstr "Tipo documento "
+
+#: search.py:36
+msgid "Document MIME type"
+msgstr "Tipo MIME del documento"
+
+#: search.py:39
+msgid "Document label"
+msgstr "Etichetta del documento"
+
+#: search.py:42
+msgid "Document description"
+msgstr "Descrizione del documento"
+
+#: search.py:45
+msgid "Document UUID"
+msgstr "UUID del documento"
+
+#: search.py:50
+msgid "Document checksum"
+msgstr "Checksum del documento"
+
+#: serializers.py:18
+msgid "List of children cabinets."
+msgstr "Elenco degli livelli di schedario"
+
+#: serializers.py:22
+msgid "The name of this cabinet level appended to the names of its ancestors."
+msgstr ""
+"Il nome di questo livello di schedario è stato aggiunto ai nomi dei suoi "
+"antenati."
+
+#: serializers.py:28
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
+msgstr ""
+"URL dell'endpoint API che mostra i documenti dell'elenco all'interno di "
+"questo schedario."
+
+#: templates/cabinets/cabinet_details.html:17
+msgid "Navigation:"
+msgstr "Navigazione:"
+
+#: views.py:56
+#, python-format
+msgid "Add new level to: %s"
+msgstr "Aggiungi un nuovo livello a: %s"
+
+#: views.py:80
+#, python-format
+msgid "Delete the cabinet: %s?"
+msgstr "Eliminare il schedario: %s?"
+
+#: views.py:116
+msgid ""
+"Cabinet levels can contain documents or other cabinet sub levels. To add "
+"documents to a cabinet, select the cabinet view of a document view."
+msgstr ""
+"I livelli del schedario possono contenere documenti o altri sottolivelli del"
+" schedario. Per aggiungere documenti a un schedario, selezionare la vista "
+"cabinet di una vista documento."
+
+#: views.py:120
+msgid "This cabinet level is empty"
+msgstr "Questo livello dell schedario è vuoto"
+
+#: views.py:123
+#, python-format
+msgid "Details of cabinet: %s"
+msgstr "Dettagli del schedario: %s"
+
+#: views.py:141
+#, python-format
+msgid "Edit cabinet: %s"
+msgstr "Modifica schedario: %s"
+
+#: views.py:161
+msgid ""
+"Cabinets are a multi-level method to organize documents. Each cabinet can "
+"contain documents as well as other sub level cabinets."
+msgstr ""
+"Gli schedari sono un metodo multi-livello per organizzare i documenti. Ogni "
+"schedario può contenere documenti e altri schedario di livello inferiore."
+
+#: views.py:165
+msgid "No cabinets available"
+msgstr "Nessun schedario disponibile"
+
+#: views.py:178
+#, python-format
+msgid "Document \"%(object)s\" added to cabinets successfully."
+msgstr ""
+
+#: views.py:181
+#, python-format
+msgid "%(count)d document added to cabinets successfully."
+msgstr ""
+
+#: views.py:184
+#, python-format
+msgid "%(count)d documents added to cabinets successfully."
+msgstr ""
+
+#: views.py:186
+#, python-format
+msgid "Add document \"%(object)s\" to cabinets."
+msgstr ""
+
+#: views.py:187
+#, python-format
+msgid "Add %(count)d document to cabinets."
+msgstr ""
+
+#: views.py:188
+#, python-format
+msgid "Add %(count)d documents to cabinets."
+msgstr ""
+
+#: views.py:192
+msgid "Add"
+msgstr "Aggiungi"
+
+#: views.py:207
+msgid "Cabinets to which the selected documents will be added."
+msgstr "Schedari a cui verranno aggiunti i documenti selezionati."
+
+#: views.py:253
+msgid "Documents can be added to many cabinets."
+msgstr "I documenti possono essere aggiunti a molti schedari."
+
+#: views.py:256
+msgid "This document is not in any cabinet"
+msgstr "Questo documento non è in nessun schedario"
+
+#: views.py:260
+#, python-format
+msgid "Cabinets containing document: %s"
+msgstr "Schedari contenenti documento: %s"
+
+#: views.py:276
+#, python-format
+msgid "Document \"%(object)s\" removed from cabinets successfully."
+msgstr ""
+
+#: views.py:279
+#, python-format
+msgid "%(count)d document removed from cabinets successfully."
+msgstr ""
+
+#: views.py:282
+#, python-format
+msgid "%(count)d documents removed from cabinets successfully."
+msgstr ""
+
+#: views.py:284
+#, python-format
+msgid "Remove document \"%(object)s\" from cabinets."
+msgstr ""
+
+#: views.py:285
+#, python-format
+msgid "Remove %(count)d document from cabinets."
+msgstr ""
+
+#: views.py:286
+#, python-format
+msgid "Remove %(count)d documents from cabinets."
+msgstr ""
+
+#: views.py:290
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: views.py:305
+msgid "Cabinets from which the selected documents will be removed."
+msgstr "Schedari da cui verranno rimossi i documenti selezionati."
+
+#: wizard_steps.py:15
+msgid "Select cabinets"
+msgstr "Seleziona schedari"
+
+#: wizard_steps.py:29 workflow_actions.py:23
+msgid "Cabinets to which the document will be added."
+msgstr "Schedari a cui verrà aggiunto il documento."
+
+#: workflow_actions.py:67
+msgid "Cabinets from which the document will be removed."
+msgstr "Schedari da cui verrà rimosso il documento."

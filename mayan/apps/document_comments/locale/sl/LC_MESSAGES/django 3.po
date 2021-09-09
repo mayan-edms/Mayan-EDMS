@@ -1,0 +1,125 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Jože Detečnik <joze.detecnik@3tav.si>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2021\n"
+"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+
+#: apps.py:31 events.py:6 search.py:18 search.py:25 search.py:32 search.py:39
+msgid "Document comments"
+msgstr ""
+
+#: events.py:10
+msgid "Document comment created"
+msgstr ""
+
+#: events.py:13
+msgid "Document comment deleted"
+msgstr ""
+
+#: events.py:16
+msgid "Document comment edited"
+msgstr ""
+
+#: links.py:16
+msgid "Add comment"
+msgstr ""
+
+#: links.py:22
+msgid "Delete"
+msgstr "Izbriši"
+
+#: links.py:27
+msgid "Edit"
+msgstr ""
+
+#: links.py:31 models.py:45 permissions.py:5 search.py:11
+msgid "Comments"
+msgstr "Komentarji"
+
+#: models.py:29
+msgid "Document"
+msgstr "Dokument"
+
+#: models.py:33 models.py:70
+msgid "User"
+msgstr ""
+
+#: models.py:35
+msgid "Text"
+msgstr ""
+
+#: models.py:38
+msgid "Date time submitted"
+msgstr ""
+
+#: models.py:44
+msgid "Comment"
+msgstr "Komentiraj"
+
+#: permissions.py:8
+msgid "Create new comments"
+msgstr "Ustvari nove komentarje"
+
+#: permissions.py:11
+msgid "Delete comments"
+msgstr "Izbriši komentarje"
+
+#: permissions.py:14
+msgid "Edit comments"
+msgstr ""
+
+#: permissions.py:17
+msgid "View comments"
+msgstr "Oglejte si komentarje"
+
+#: views.py:31
+#, python-format
+msgid "Add comment to document: %s"
+msgstr "Dodaj komentar dokumentu: %s"
+
+#: views.py:59
+#, python-format
+msgid "Delete comment: %s?"
+msgstr ""
+
+#: views.py:90
+#, python-format
+msgid "Details for comment: %s?"
+msgstr ""
+
+#: views.py:109
+#, python-format
+msgid "Edit comment: %s?"
+msgstr ""
+
+#: views.py:144
+msgid ""
+"Document comments are timestamped text entries from users. They are great "
+"for collaboration."
+msgstr ""
+
+#: views.py:147
+msgid "There are no comments"
+msgstr ""
+
+#: views.py:149
+#, python-format
+msgid "Comments for document: %s"
+msgstr ""

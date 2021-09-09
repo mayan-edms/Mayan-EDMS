@@ -1,0 +1,177 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# yan songwei <yansw@vip.163.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: yan songwei <yansw@vip.163.com>, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:27 events.py:6 permissions.py:5 queues.py:8 settings.py:10
+msgid "File caching"
+msgstr "文件缓存中"
+
+#: events.py:10
+msgid "Cache created"
+msgstr "缓存已创建"
+
+#: events.py:13
+msgid "Cache edited"
+msgstr "缓存已编辑"
+
+#: events.py:16
+msgid "Cache purged"
+msgstr "清除缓存"
+
+#: events.py:19
+msgid "Cache partition purged"
+msgstr ""
+
+#: links.py:24
+msgid "File caches"
+msgstr "文件缓存"
+
+#: links.py:29 links.py:35 links.py:39
+msgid "Purge cache"
+msgstr "清除缓存"
+
+#: models.py:41
+msgid "Internal name of the defined storage for this cache."
+msgstr "为此缓存定义存储的内部名称。"
+
+#: models.py:42
+msgid "Defined storage name"
+msgstr "定义存储名称"
+
+#: models.py:45
+msgid "Maximum size of the cache in bytes."
+msgstr "缓存的最大字节尺寸。"
+
+#: models.py:47 models.py:73
+msgid "Maximum size"
+msgstr "最大尺寸"
+
+#: models.py:51 models.py:206
+msgid "Cache"
+msgstr "缓存"
+
+#: models.py:52
+msgid "Caches"
+msgstr "缓存"
+
+#: models.py:71
+msgid "Size at which the cache will start deleting old entries."
+msgstr "缓存将开始删除旧条目的大小。"
+
+#: models.py:80
+msgid "Unknown"
+msgstr ""
+
+#: models.py:97
+msgid "Current size"
+msgstr "当前大小"
+
+#: models.py:98
+msgid "Current size of the cache."
+msgstr "当前缓存的大小。"
+
+#: models.py:209
+msgid "Name"
+msgstr "名称"
+
+#: models.py:214 models.py:305
+msgid "Cache partition"
+msgstr "缓存分区"
+
+#: models.py:215
+msgid "Cache partitions"
+msgstr "缓存分区"
+
+#: models.py:308
+msgid "Date time"
+msgstr "日期时间"
+
+#: models.py:310
+msgid "Filename"
+msgstr "文件名"
+
+#: models.py:312
+msgid "File size"
+msgstr "文件大小"
+
+#: models.py:316
+msgid "Times this cache partition file has been accessed."
+msgstr ""
+
+#: models.py:323
+msgid "Cache partition file"
+msgstr "缓存分区文件"
+
+#: models.py:324
+msgid "Cache partition files"
+msgstr "缓存分区文件"
+
+#: permissions.py:8
+msgid "Purge an object cache"
+msgstr ""
+
+#: permissions.py:11 queues.py:18
+msgid "Purge a file cache"
+msgstr "清除文件缓存"
+
+#: permissions.py:14
+msgid "View a file cache"
+msgstr "查看文件缓存"
+
+#: queues.py:13
+msgid "Purge a file cache partition"
+msgstr ""
+
+#: settings.py:15
+msgid ""
+"Number of times a cache will retry failed attempts to prune files to free up"
+" space for new a file being requested, before giving up."
+msgstr ""
+
+#: settings.py:23
+msgid ""
+"Number of times a cache will attempt to prune files to free up space for new"
+" a file being requested, before giving up."
+msgstr ""
+
+#: views.py:43
+#, python-format
+msgid "Details cache: %s"
+msgstr ""
+
+#: views.py:54
+msgid "File caches list"
+msgstr "文件缓存列表"
+
+#: views.py:70
+#, python-format
+msgid "Purge cache partitions of \"%s\"?"
+msgstr ""
+
+#: views.py:86
+msgid "Object cache partitions submitted for purging."
+msgstr ""
+
+#: views.py:103
+msgid "Submit the selected cache for purging?"
+msgid_plural "Submit the selected caches for purging?"
+msgstr[0] ""

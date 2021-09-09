@@ -1,0 +1,175 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
+# Yves Dubois <ydubois@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:39
+msgid "Links"
+msgstr "Liens"
+
+#: events.py:6 links.py:19 links.py:24 links.py:54 links.py:59 models.py:42
+#: permissions.py:5 views.py:182
+msgid "Web links"
+msgstr "Liens web"
+
+#: events.py:10
+msgid "Web link created"
+msgstr "Lien web créé"
+
+#: events.py:13
+msgid "Web link edited"
+msgstr "Lien web modifié"
+
+#: events.py:16
+msgid "Web link navigated"
+msgstr "Lien web consulté"
+
+#: links.py:29 views.py:94
+msgid "Create new web link"
+msgstr "Créer un nouveau lien web"
+
+#: links.py:35
+msgid "Delete"
+msgstr "Supprimer"
+
+#: links.py:39 models.py:36
+msgid "Document types"
+msgstr "Types de documents"
+
+#: links.py:44
+msgid "Edit"
+msgstr "Modifier"
+
+#: links.py:51
+msgid "Navigate"
+msgstr "Consulter"
+
+#: models.py:24
+msgid "A short text describing the web link."
+msgstr "Un court texte décrivant le lien Web."
+
+#: models.py:25
+msgid "Label"
+msgstr "Étiquette"
+
+#: models.py:29
+msgid "Template that will be used to craft the final URL of the web link."
+msgstr "Modèle qui sera utilisé pour créer l'URL finale du lien Web."
+
+#: models.py:31
+msgid "Template"
+msgstr "Modèle"
+
+#: models.py:33
+msgid "Enabled"
+msgstr "Activé"
+
+#: models.py:41
+msgid "Web link"
+msgstr "Lien web"
+
+#: permissions.py:8
+msgid "Create new web links"
+msgstr "Créer de nouveaux liens web"
+
+#: permissions.py:11
+msgid "Delete web links"
+msgstr "Supprimer les liens web"
+
+#: permissions.py:14
+msgid "Edit web links"
+msgstr "Modifier les liens web"
+
+#: permissions.py:17
+msgid "View existing web links"
+msgstr "Afficher les liens web existants"
+
+#: permissions.py:20
+msgid "View web link instances"
+msgstr "Afficher les instances de lien Web"
+
+#: serializers.py:16
+msgid "Primary key of the document type to add to the web link."
+msgstr "Clé primaire du type de document à ajouter au lien Web."
+
+#: serializers.py:25
+msgid "Primary key of the document type to remove from the web link."
+msgstr "Clé primaire du type de document à supprimer du lien Web."
+
+#: views.py:38
+msgid "Available web links"
+msgstr "Liens web disponibles"
+
+#: views.py:39
+msgid "Web links enabled"
+msgstr "Liens web activés"
+
+#: views.py:63
+#, python-format
+msgid "Web links to enable for document type: %s"
+msgstr "Liens web à activer pour le type de document: %s"
+
+#: views.py:116
+#, python-format
+msgid "Delete web link: %s"
+msgstr "Supprimer le lien web: %s"
+
+#: views.py:128
+msgid "Available document types"
+msgstr "Types de document disponibles"
+
+#: views.py:129
+msgid "Document types enabled"
+msgstr "Types de documents actifs"
+
+#: views.py:139
+#, python-format
+msgid "Document type for which to enable web link: %s"
+msgstr "Type de document pour lequel vous activez le lien Web: %s"
+
+#: views.py:156
+#, python-format
+msgid "Edit web link: %s"
+msgstr "Modifier le lien web: %s"
+
+#: views.py:175 views.py:205
+msgid ""
+"Web links allow generating HTTP links from documents to external resources. "
+"The link URL's can contain document properties values."
+msgstr ""
+"Les liens web permettent de générer des liens HTTP à partir de documents "
+"vers des ressources externes. L'URL du lien peut contenir des valeurs de "
+"propriétés de document."
+
+#: views.py:180
+msgid "There are no web links"
+msgstr "Il n'y a pas de liens web"
+
+#: views.py:210
+msgid "There are no web links for this document"
+msgstr "Il n'y a pas de liens web pour ce document"
+
+#: views.py:213
+#, python-format
+msgid "Web links for document: %s"
+msgstr "Liens web pour document: %s"

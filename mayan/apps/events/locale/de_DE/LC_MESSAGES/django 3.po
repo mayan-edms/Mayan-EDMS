@@ -1,0 +1,278 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Mathias Behrle <mathiasb@m9s.biz>, 2021
+# Felix <felix.com@gmx.com>, 2021
+# Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2021
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:28 events.py:5 links.py:38 links.py:43 links.py:53 permissions.py:5
+#: queues.py:7 views/event_views.py:30
+msgid "Events"
+msgstr "Ereignisse"
+
+#: apps.py:53 apps.py:81
+msgid "Date and time"
+msgstr "Datum und Uhrzeit"
+
+#: apps.py:56 apps.py:84
+msgid "Actor"
+msgstr "Akteur"
+
+#: apps.py:60 apps.py:89
+msgid "Event"
+msgstr "Ereignis"
+
+#: apps.py:64 apps.py:94
+msgid "Target"
+msgstr "Ziel"
+
+#: apps.py:68 apps.py:98
+msgid "Action object"
+msgstr "Aktionsobjekt"
+
+#: apps.py:73 forms.py:10 forms.py:67
+msgid "Namespace"
+msgstr "Namensraum"
+
+#: apps.py:76 forms.py:14 forms.py:71
+msgid "Label"
+msgstr "Bezeichner"
+
+#: apps.py:103
+msgid "Seen"
+msgstr "Gesehen"
+
+#: classes.py:79
+msgid "Event list export to CSV"
+msgstr "Ereignisliste nach CSV exportieren"
+
+#: classes.py:108
+msgid "Events exported."
+msgstr "Ereignisse exportiert."
+
+#: classes.py:110
+#, python-format
+msgid ""
+"The event list has been exported and is available for download using the "
+"link: %(download_url)s or from the downloads area (%(download_list_url)s)."
+msgstr ""
+
+#: classes.py:274
+#, python-format
+msgid "Unknown or obsolete event type: %s"
+msgstr "Unbekannter oder unerlaubter Ereignistyp: %s"
+
+#: events.py:8
+msgid "Events exported"
+msgstr "Ereignisse exportiert"
+
+#: forms.py:18 forms.py:75
+msgid "Subscription"
+msgstr "Subskription"
+
+#: forms.py:20 forms.py:77
+msgid "No"
+msgstr "Nein"
+
+#: forms.py:21 forms.py:78
+msgid "Subscribed"
+msgstr "Subskribiert"
+
+#: html_widgets.py:22
+msgid "System"
+msgstr "System"
+
+#: links.py:30
+msgid "My events"
+msgstr "Meine Ereignisse"
+
+#: links.py:34 links.py:49 links.py:56 views/export_views.py:57
+msgid "Export events"
+msgstr "Ereignisse exportieren"
+
+#: links.py:61 models.py:63 views/subscription_views.py:56
+msgid "Event subscriptions"
+msgstr "Ereignissubskriptionen"
+
+#: links.py:66
+msgid "Mark as seen"
+msgstr "Als gesehen markieren"
+
+#: links.py:69
+msgid "Mark all as seen"
+msgstr "Alle als gesehen markieren"
+
+#: links.py:75
+msgid "Subscriptions"
+msgstr "Subskriptionen"
+
+#: models.py:22
+msgid "Name"
+msgstr "Name"
+
+#: models.py:26
+msgid "Stored event type"
+msgstr "Gespeicherter Ereignistyp"
+
+#: models.py:27
+msgid "Stored event types"
+msgstr "Gespeicherte Ereignistypen"
+
+#: models.py:52 models.py:78 models.py:109
+msgid "User"
+msgstr "Benutzer"
+
+#: models.py:56 models.py:113
+msgid "Event type"
+msgstr "Ereignistyp"
+
+#: models.py:62
+msgid "Event subscription"
+msgstr "Ereignissubskription"
+
+#: models.py:82
+msgid "Action"
+msgstr "Aktion"
+
+#: models.py:84
+msgid "Read"
+msgstr "Gelesen"
+
+#: models.py:90
+msgid "Notification"
+msgstr "Benachrichtigung"
+
+#: models.py:91 views/notification_views.py:30
+msgid "Notifications"
+msgstr "Benachrichtigungen"
+
+#: models.py:119
+msgid "Object event subscription"
+msgstr "Objektereignissubskription"
+
+#: models.py:120
+msgid "Object event subscriptions"
+msgstr "Objektereignissubskriptionen"
+
+#: permissions.py:8
+msgid "Export the events of an object"
+msgstr ""
+
+#: permissions.py:11
+msgid "Access the events of an object"
+msgstr "Auf Ereignisse eines Objekts zugreifen"
+
+#: queues.py:13
+msgid "Export event querysets"
+msgstr ""
+
+#: views/event_views.py:26
+msgid "Events track actions that have been performed on, to, or with objects."
+msgstr ""
+
+#: views/event_views.py:29
+msgid "There are no events"
+msgstr "Keine Ereignisse vorhanden"
+
+#: views/event_views.py:44
+msgid "There are no events for this object"
+msgstr "Keine Ereignisse für dieses Objekt vorhanden"
+
+#: views/event_views.py:46
+#, python-format
+msgid "Events for: %s"
+msgstr "Ereignisse für %s"
+
+#: views/event_views.py:68
+msgid "There are no events of this type"
+msgstr "Keine Ereignisse diesen Typs vorhanden"
+
+#: views/event_views.py:70 views/export_views.py:105
+#, python-format
+msgid "Events of type: %s"
+msgstr "Ereignisse des Typs %s"
+
+#: views/export_views.py:26
+msgid ""
+"The process will be performed in the background. The exported events will be"
+" available in the downloads area."
+msgstr ""
+"Dieser Prozess wird im Hintergrund ausgeführt. Die exportierten Ereignisse "
+"werden im Downloadbereich verfügbar sein."
+
+#: views/export_views.py:45
+msgid "Event list export task queued successfully."
+msgstr "Export der Ereignisliste erfolgreich eingereiht."
+
+#: views/export_views.py:76
+#, python-format
+msgid "Export events for: %s"
+msgstr ""
+
+#: views/notification_views.py:25
+msgid "Subscribe to global or object events to receive notifications."
+msgstr ""
+"Subskription für globale oder Objektereignisse um Benachrichtigungen zu "
+"erhalten."
+
+#: views/notification_views.py:28
+msgid "There are no notifications"
+msgstr "Keine Benachrichtigungen vorhanden"
+
+#: views/notification_views.py:44
+msgid "Mark the selected notification as read?"
+msgstr "Ausgewählte Benachrichtigung als gelesen markieren?"
+
+#: views/notification_views.py:56
+msgid "Notification marked as read."
+msgstr "Benachrichtigung als gelesen markiert."
+
+#: views/notification_views.py:67
+msgid "Mark all notification as read?"
+msgstr "Alle Nachrichten als gelesen markieren?"
+
+#: views/notification_views.py:77
+msgid "All notifications marked as read."
+msgstr "Alle Benachrichtigungen als gelesen markiert."
+
+#: views/subscription_views.py:40
+#, python-format
+msgid "Error updating event subscription; %s"
+msgstr "Fehler bei der Aktualisierung der Ereignissubskription; %s"
+
+#: views/subscription_views.py:45
+msgid "Event subscriptions updated successfully"
+msgstr "Ereignissubskriptionen erfolgreich aktualisiert"
+
+#: views/subscription_views.py:114
+#, python-format
+msgid "Error updating object event subscription; %s"
+msgstr "Fehler bei der Aktualisierung der Objektereignissubskription; %s"
+
+#: views/subscription_views.py:120
+msgid "Object event subscriptions updated successfully"
+msgstr "Objektereignissubskriptionen erfolgreich aktualisiert"
+
+#: views/subscription_views.py:131
+#, python-format
+msgid "Event subscriptions for: %s"
+msgstr "Ereignissubskriptionen für %s"

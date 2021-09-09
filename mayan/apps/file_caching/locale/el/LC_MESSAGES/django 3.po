@@ -1,0 +1,182 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2021
+# pyrotech <anastasios@tutamail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:27 events.py:6 permissions.py:5 queues.py:8 settings.py:10
+msgid "File caching"
+msgstr "Προσωρινή αποθήκευση αρχείων"
+
+#: events.py:10
+msgid "Cache created"
+msgstr "Δημιουργήθηκε προσωρινή μνήμη"
+
+#: events.py:13
+msgid "Cache edited"
+msgstr "Η προσωρινή μνήμη τροποποιήθηκε"
+
+#: events.py:16
+msgid "Cache purged"
+msgstr "Εκκαθαρίστηκε η προσωρινή μνήμη"
+
+#: events.py:19
+msgid "Cache partition purged"
+msgstr ""
+
+#: links.py:24
+msgid "File caches"
+msgstr "Προσωρινή μνήμη αρχείων"
+
+#: links.py:29 links.py:35 links.py:39
+msgid "Purge cache"
+msgstr "Εκκαθάριση προσωρινής μνήμης"
+
+#: models.py:41
+msgid "Internal name of the defined storage for this cache."
+msgstr ""
+"Εσωτερικό όνομα του καθορισμένου χώρου αποθήκευσης για αυτήν την προσωρινή "
+"μνήμη."
+
+#: models.py:42
+msgid "Defined storage name"
+msgstr "Καθορισμένο όνομα χώρου αποθήκευσης"
+
+#: models.py:45
+msgid "Maximum size of the cache in bytes."
+msgstr "Μέγιστο μέγεθος της προσωρινής μνήμης σε byte."
+
+#: models.py:47 models.py:73
+msgid "Maximum size"
+msgstr "Μέγιστο μέγεθος"
+
+#: models.py:51 models.py:206
+msgid "Cache"
+msgstr "Προσωρινή μνήμη"
+
+#: models.py:52
+msgid "Caches"
+msgstr "Προσωρινές μνήμες"
+
+#: models.py:71
+msgid "Size at which the cache will start deleting old entries."
+msgstr ""
+"Μέγεθος στο οποίο η προσωρινή μνήμη θα αρχίσει να διαγράφει παλιές "
+"καταχωρήσεις."
+
+#: models.py:80
+msgid "Unknown"
+msgstr "Άγνωστο"
+
+#: models.py:97
+msgid "Current size"
+msgstr "Τρέχον μέγεθος"
+
+#: models.py:98
+msgid "Current size of the cache."
+msgstr "Τρέχον μέγεθος της προσωρινής μνήμης."
+
+#: models.py:209
+msgid "Name"
+msgstr "Όνομα"
+
+#: models.py:214 models.py:305
+msgid "Cache partition"
+msgstr "Κατάτμηση προσωρινής μνήμης"
+
+#: models.py:215
+msgid "Cache partitions"
+msgstr "Κατατμήσεις προσωρινής μνήμης"
+
+#: models.py:308
+msgid "Date time"
+msgstr "Ημερομηνία ώρα"
+
+#: models.py:310
+msgid "Filename"
+msgstr "Όνομα αρχείου"
+
+#: models.py:312
+msgid "File size"
+msgstr "Μέγεθος αρχείου"
+
+#: models.py:316
+msgid "Times this cache partition file has been accessed."
+msgstr ""
+
+#: models.py:323
+msgid "Cache partition file"
+msgstr "Αρχείο κατάτμησης προσωρινής μνήμης"
+
+#: models.py:324
+msgid "Cache partition files"
+msgstr "Αρχεία κατάτμησης προσωρινής μνήμης"
+
+#: permissions.py:8
+msgid "Purge an object cache"
+msgstr ""
+
+#: permissions.py:11 queues.py:18
+msgid "Purge a file cache"
+msgstr "Εκκαθάριση προσωρινής μνήμης ενός αρχείου"
+
+#: permissions.py:14
+msgid "View a file cache"
+msgstr "Προβολή προσωρινής μνήμης ενός αρχείου"
+
+#: queues.py:13
+msgid "Purge a file cache partition"
+msgstr ""
+
+#: settings.py:15
+msgid ""
+"Number of times a cache will retry failed attempts to prune files to free up"
+" space for new a file being requested, before giving up."
+msgstr ""
+
+#: settings.py:23
+msgid ""
+"Number of times a cache will attempt to prune files to free up space for new"
+" a file being requested, before giving up."
+msgstr ""
+
+#: views.py:43
+#, python-format
+msgid "Details cache: %s"
+msgstr ""
+
+#: views.py:54
+msgid "File caches list"
+msgstr "Λίστα προσωρινών μνημών αρχείου"
+
+#: views.py:70
+#, python-format
+msgid "Purge cache partitions of \"%s\"?"
+msgstr ""
+
+#: views.py:86
+msgid "Object cache partitions submitted for purging."
+msgstr ""
+
+#: views.py:103
+msgid "Submit the selected cache for purging?"
+msgid_plural "Submit the selected caches for purging?"
+msgstr[0] ""
+msgstr[1] ""

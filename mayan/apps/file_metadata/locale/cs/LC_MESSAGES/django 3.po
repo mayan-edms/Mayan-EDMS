@@ -1,0 +1,261 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Michal Švábík <snadno@lehce.cz>, 2021
+# trendspotter, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: trendspotter, 2021\n"
+"Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: admin.py:13
+msgid "Label"
+msgstr "Jmenovka"
+
+#: apps.py:48 events.py:6 links.py:17 permissions.py:5 queues.py:7
+#: settings.py:12
+msgid "File metadata"
+msgstr "Souborová metadata"
+
+#: apps.py:98 search.py:11 search.py:22 search.py:33
+msgid "File metadata key"
+msgstr "Klíč metadat souboru"
+
+#: apps.py:102 search.py:15 search.py:26 search.py:37
+msgid "File metadata value"
+msgstr "Hodnota metadat souboru"
+
+#: apps.py:129
+msgid "Return the value of a specific file metadata."
+msgstr "Vraťte hodnotu konkrétních metadat souboru."
+
+#: apps.py:130
+msgid "File metadata value of"
+msgstr "Hodnota metadat souboru"
+
+#: dependencies.py:12
+msgid ""
+"Library and program to read and write meta information in multimedia files."
+msgstr ""
+"Knihovna a program pro čtení a zápis meta informací do multimediálních "
+"souborů."
+
+#: drivers/exiftool.py:19
+msgid "EXIF Tool"
+msgstr "EXIF Tool"
+
+#: events.py:10
+msgid "Document file submitted for file metadata processing"
+msgstr "Soubor dokumentu odeslaný ke zpracování metadat souboru"
+
+#: events.py:14
+msgid "Document file file metadata processing finished"
+msgstr "Zpracování metadat souboru dokumentu dokončeno"
+
+#: links.py:23
+msgid "Attributes"
+msgstr "Atributy"
+
+#: links.py:30 links.py:35
+msgid "Submit for file metadata"
+msgstr "Odeslat do souboru metadata"
+
+#: links.py:42
+msgid "Setup file metadata"
+msgstr "Nastavení souborových metadat"
+
+#: links.py:47
+msgid "File metadata processing per type"
+msgstr "Zpracování metadat souborů podle typu"
+
+#: methods.py:36
+msgid "get_file_metadata(< file metadata dotted path >)"
+msgstr "get_file_metadata (<soubor metadata tečkovaná cesta>)"
+
+#: methods.py:39
+msgid "Return the specified document file metadata entry."
+msgstr "Vraťte zadanou položku metadat souboru dokumentu."
+
+#: methods.py:66
+msgid "Return the specified document file file metadata entry."
+msgstr "Vrátí zadaný záznam metadat souboru souboru souboru."
+
+#: models.py:18
+msgid "Driver path"
+msgstr "Cesta ovladače"
+
+#: models.py:22
+msgid "Internal name"
+msgstr "Vnitřní název"
+
+#: models.py:27 models.py:70
+msgid "Driver"
+msgstr "Ovladač"
+
+#: models.py:28
+msgid "Drivers"
+msgstr "Ovladače"
+
+#: models.py:48
+msgid "Document type"
+msgstr "Typ dokumentu"
+
+#: models.py:52
+msgid "Automatically queue newly created documents for processing."
+msgstr ""
+"Automaticky zařazuje nově vytvořené dokumenty do fronty ke zpracování."
+
+#: models.py:59
+msgid "Document type settings"
+msgstr "Nastavení typu dokumentu"
+
+#: models.py:60
+msgid "Document types settings"
+msgstr "Nastavení typů dokumentů"
+
+#: models.py:74
+msgid "Document file"
+msgstr "Soubor dokumentu"
+
+#: models.py:80 models.py:95
+msgid "Document file driver entry"
+msgstr ""
+
+#: models.py:81
+msgid "Document file driver entries"
+msgstr ""
+
+#: models.py:88
+msgid "Attribute count"
+msgstr "Počet atributů"
+
+#: models.py:99
+msgid "Name of the file metadata entry."
+msgstr "Název položky metadat souboru."
+
+#: models.py:100
+msgid "Key"
+msgstr "Klíč"
+
+#: models.py:103
+msgid "Value of the file metadata entry."
+msgstr "Hodnota položky metadat souboru."
+
+#: models.py:104
+msgid "Value"
+msgstr "Hodnota"
+
+#: models.py:109
+msgid "File metadata entry"
+msgstr "Položka metadat souboru "
+
+#: models.py:110
+msgid "File metadata entries"
+msgstr "Položky metadat souboru "
+
+#: permissions.py:8
+msgid "Change document type file metadata settings"
+msgstr "Změňte nastavení metadat souboru typu dokumentu"
+
+#: permissions.py:13
+msgid "Submit document for file metadata processing"
+msgstr "Odeslat dokument ke zpracování metadat souboru"
+
+#: permissions.py:17
+msgid "View file metadata"
+msgstr "Zobrazit metadata souboru"
+
+#: queues.py:11
+msgid "Process document file"
+msgstr ""
+
+#: settings.py:18
+msgid ""
+"Set new document types to perform file metadata processing automatically by "
+"default."
+msgstr ""
+"Nastavit nové typy dokumentů pro automatické zpracování metadat souborů ve "
+"výchozím nastavení."
+
+#: settings.py:25
+msgid "Arguments to pass to the drivers."
+msgstr "Argumenty k předání ovladačům."
+
+#: views.py:44
+msgid ""
+"File metadata are the attributes of the document's file. They can range from"
+" camera information used to take a photo to the author that created a file. "
+"File metadata are set when the document's file was first created. File "
+"metadata attributes reside in the file itself. They are not the same as the "
+"document metadata, which are user defined and reside in the database."
+msgstr ""
+"Metadata souboru jsou atributy souboru dokumentu. Mohou se pohybovat od "
+"informací o fotoaparátu používaných k pořízení fotografie až po autora, "
+"který vytvořil soubor. Metadata souboru se nastavují při prvním vytvoření "
+"souboru dokumentu. Atributy metadat souboru se nacházejí v samotném souboru."
+" Nejsou stejné jako metadata dokumentu, která jsou definována uživatelem a "
+"jsou umístěna v databázi."
+
+#: views.py:52
+msgid "No file metadata available."
+msgstr "K dispozici nejsou žádná metadata souborů."
+
+#: views.py:55
+#, python-format
+msgid "File metadata drivers for: %s"
+msgstr "Ovladač souborových metadat pro: %s"
+
+#: views.py:81
+msgid ""
+"This could mean that the file metadata detection has not completed or that "
+"the driver does not support any metadata field for the file type of this "
+"document."
+msgstr ""
+"To by mohlo znamenat, že detekce metadat souboru nebyla dokončena, nebo že "
+"ovladač nepodporuje žádné pole metadat pro typ souboru tohoto dokumentu."
+
+#: views.py:86
+msgid "No file metadata available for this driver."
+msgstr ""
+
+#: views.py:90
+#, python-format
+msgid ""
+"File metadata attributes for: %(document_file)s with driver: %(driver)s"
+msgstr ""
+
+#: views.py:119
+msgid "Submit the selected document file to the file metadata queue?"
+msgid_plural "Submit the selected documents files to the file metadata queue?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: views.py:145
+#, python-format
+msgid "Edit file metadata settings for document type: %s"
+msgstr "Upravit nastavení metadat souboru pro typ dokumentu: %s"
+
+#: views.py:156
+msgid "Submit all documents of a type for file metadata processing."
+msgstr ""
+"Odešlete všechny dokumenty určitého typu ke zpracování metadat souboru."
+
+#: views.py:180
+#, python-format
+msgid "%(count)d documents added to the file metadata processing queue."
+msgstr "%(count)d dokumenty přidané do fronty zpracování metadat souboru."

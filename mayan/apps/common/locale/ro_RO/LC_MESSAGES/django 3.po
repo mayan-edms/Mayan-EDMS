@@ -1,0 +1,285 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Badea Gabriel <gcbadea@gmail.com>, 2021
+# Harald Ersch, 2021
+# Stefaniu Criste <gupi@hangar.ro>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
+"Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+
+#: apps.py:125 permissions.py:5 settings.py:14
+msgid "Common"
+msgstr "Comune"
+
+#: classes.py:408
+msgid "Model properties"
+msgstr "Proprietățile modelului"
+
+#: classes.py:413
+msgid "Model fields"
+msgstr "Câmpurile modelului"
+
+#: classes.py:456
+msgid "Model related fields"
+msgstr "Câmpuri legate de model"
+
+#: classes.py:461
+msgid "Model reverse fields"
+msgstr "Model câmpuri invers"
+
+#: dependencies.py:168
+msgid "Used to allow offline translation of the code text strings."
+msgstr "Folosit pentru a permite traducerea offline a șirurilor de text cod."
+
+#: dependencies.py:177
+msgid "Provides style checking."
+msgstr "Oferă verificarea stilului."
+
+#: dependencies.py:182
+msgid "Command line environment with autocompletion."
+msgstr "Mediul liniei de comandă cu autocompletare."
+
+#: dependencies.py:187
+msgid "Checks proper formatting of the README file."
+msgstr "Verifică formatarea corectă a fișierului README."
+
+#: links.py:30
+msgid "About this"
+msgstr "Despre asta"
+
+#: links.py:33
+msgid "Get the book"
+msgstr "Obțineți cartea"
+
+#: links.py:38
+msgid "Documentation"
+msgstr "Documentație"
+
+#: links.py:41
+msgid "Forum"
+msgstr "Forum"
+
+#: links.py:45 views.py:48
+msgid "License"
+msgstr "Licenţă"
+
+#: links.py:50
+msgid "Copy"
+msgstr "Copiere"
+
+#: links.py:53
+msgid "Setup"
+msgstr "Configurare"
+
+#: links.py:56
+msgid "Source code"
+msgstr "Cod sursă"
+
+#: links.py:60
+msgid "Online store"
+msgstr "Magazin online"
+
+#: links.py:64
+msgid "Get support"
+msgstr "Obțineți sprijin"
+
+#: links.py:68 queues.py:6 views.py:122
+msgid "Tools"
+msgstr "Unelte"
+
+#: literals.py:19
+msgid ""
+"This feature has been deprecated and will be removed in a future version."
+msgstr ""
+"Această caracteristică a fost depreciată și va fi eliminată într-o versiune "
+"viitoare."
+
+#: literals.py:22
+msgid ""
+"Your database backend is set to use SQLite. SQLite should only be used for "
+"development and testing, not for production."
+msgstr ""
+"Backendul bazei de date este setat să utilizeze SQLite. SQLite ar trebui "
+"folosit numai pentru dezvoltare și testare, nu pentru producție."
+
+#: literals.py:31
+msgid "Days"
+msgstr "Zile"
+
+#: literals.py:32
+msgid "Hours"
+msgstr "Ore"
+
+#: literals.py:33
+msgid "Minutes"
+msgstr "Minute"
+
+#: menus.py:8
+msgid "System"
+msgstr "Sistem"
+
+#: menus.py:10 menus.py:11
+msgid "Facet"
+msgstr "Faţetă"
+
+#: menus.py:14
+msgid "Actions"
+msgstr "Acţiuni"
+
+#: menus.py:15
+msgid "Related"
+msgstr "Înrudite"
+
+#: menus.py:16
+msgid "Secondary"
+msgstr "Secundar"
+
+#: menus.py:18
+msgid "Return"
+msgstr "Reveniţi"
+
+#: menus.py:22
+msgid "User"
+msgstr "Utilizator"
+
+#: permissions.py:8
+msgid "Copy object"
+msgstr "Copiați obiectul"
+
+#: settings.py:21
+msgid ""
+"In list mode, show the \"list facet\" menu options as a dropdown menu "
+"instead of individual buttons."
+msgstr ""
+
+#: settings.py:29
+msgid ""
+"In list mode, show the \"object\" menu options as a dropdown menu instead of"
+" individual buttons."
+msgstr ""
+
+#: settings.py:36
+msgid ""
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr ""
+"Timpul de întârziere pentru sarcini de fundal care depind de propagarea "
+"schimbărilor în  baza de date."
+
+#: settings.py:43
+msgid ""
+"A list of strings designating all applications that are to be removed from "
+"the list normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
+msgstr ""
+
+#: settings.py:53
+msgid ""
+"A list of strings designating all applications that are installed beyond "
+"those normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
+msgstr ""
+
+#: settings.py:63
+msgid ""
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
+msgstr ""
+"Numele afișării atașate ancorei de marcă din meniul principal. Aceasta este "
+"și perspectiva la care utilizatorii vor fi redirecționați după conectare."
+
+#: settings.py:71
+msgid "Name to be displayed in the main menu."
+msgstr "Numele care urmează să fie afișat în meniul principal."
+
+#: settings.py:77
+msgid "URL of the installation or homepage of the project."
+msgstr "Adresa URL a instalării sau a paginii de pornire a proiectului."
+
+#: templates/common/app/viewport.html:9
+msgid "Warning"
+msgstr "Alertă"
+
+#: templates/common/app/viewport.html:21
+msgid "Click here to fix this."
+msgstr "Faceți clic aici pentru a remedia această problemă."
+
+#: validators.py:41
+msgid "Enter a valid JSON value."
+msgstr "Introduceți o valoare JSON validă."
+
+#: validators.py:65
+msgid "Enter a valid YAML value."
+msgstr "Introduceți o valoare validă YAML."
+
+#: validators.py:81
+msgid ""
+"Enter a valid 'internal name' consisting of letters, numbers, and "
+"underscores."
+msgstr ""
+"Introduceți un \"nume intern\" valabil format din litere, numere și "
+"subliniere."
+
+#: views.py:22
+msgid "About"
+msgstr "Despre"
+
+#: views.py:39
+msgid "Dashboard"
+msgstr "Panou principal"
+
+#: views.py:62
+#, python-format
+msgid "Fields to be copied: %s"
+msgstr "Câmpuri de copiat: %s"
+
+#: views.py:72
+#, python-format
+msgid "Make a copy of %(object_name)s \"%(object)s\"?"
+msgstr "Faceți o copie a %(object_name)s \"%(object)s\"?"
+
+#: views.py:83
+msgid "Object copied successfully."
+msgstr "Obiectul a fost copiat cu succes."
+
+#: views.py:100
+msgid ""
+"No results here means that don't have the required permissions to perform "
+"administrative task."
+msgstr ""
+"Niciun rezultat aici înseamnă că nu aveți permisiunile necesare pentru a "
+"efectua o sarcină administrativă."
+
+#: views.py:103
+msgid "No setup options available."
+msgstr "Nu sunt disponibile opțiuni de configurare."
+
+#: views.py:107
+msgid "Setup items"
+msgstr "Configurați elemente"
+
+#: views.py:109
+msgid "Here you can configure all aspects of the system."
+msgstr "Aici puteți configura toate aspectele sistemului."
+
+#: views.py:124
+msgid "These modules are used to do system maintenance."
+msgstr "Aceste module sunt folosite pentru întreținerea sistemului."

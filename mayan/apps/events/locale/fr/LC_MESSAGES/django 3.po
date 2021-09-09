@@ -1,0 +1,286 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
+# Yves Dubois <ydubois@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:28 events.py:5 links.py:38 links.py:43 links.py:53 permissions.py:5
+#: queues.py:7 views/event_views.py:30
+msgid "Events"
+msgstr "Événements"
+
+#: apps.py:53 apps.py:81
+msgid "Date and time"
+msgstr "Date et heure"
+
+#: apps.py:56 apps.py:84
+msgid "Actor"
+msgstr "Utilisateur"
+
+#: apps.py:60 apps.py:89
+msgid "Event"
+msgstr "Événement"
+
+#: apps.py:64 apps.py:94
+msgid "Target"
+msgstr "Cible"
+
+#: apps.py:68 apps.py:98
+msgid "Action object"
+msgstr "Objet de l'action"
+
+#: apps.py:73 forms.py:10 forms.py:67
+msgid "Namespace"
+msgstr "Espace de nommage"
+
+#: apps.py:76 forms.py:14 forms.py:71
+msgid "Label"
+msgstr "Étiquette"
+
+#: apps.py:103
+msgid "Seen"
+msgstr "Vu"
+
+#: classes.py:79
+msgid "Event list export to CSV"
+msgstr "Exportation de la liste d'événements au format CSV"
+
+#: classes.py:108
+msgid "Events exported."
+msgstr "Événements exportés."
+
+#: classes.py:110
+#, python-format
+msgid ""
+"The event list has been exported and is available for download using the "
+"link: %(download_url)s or from the downloads area (%(download_list_url)s)."
+msgstr ""
+"La liste des événements a été exportée et peut être téléchargée via le lien "
+": %(download_url)s ou depuis la zone de téléchargement "
+"(%(download_list_url)s)."
+
+#: classes.py:274
+#, python-format
+msgid "Unknown or obsolete event type: %s"
+msgstr "Type d'événement inconnu ou obsolète : %s"
+
+#: events.py:8
+msgid "Events exported"
+msgstr "Événements exportés"
+
+#: forms.py:18 forms.py:75
+msgid "Subscription"
+msgstr "Abonnements"
+
+#: forms.py:20 forms.py:77
+msgid "No"
+msgstr "Non"
+
+#: forms.py:21 forms.py:78
+msgid "Subscribed"
+msgstr "Abonné"
+
+#: html_widgets.py:22
+msgid "System"
+msgstr "Système"
+
+#: links.py:30
+msgid "My events"
+msgstr "Mes événements"
+
+#: links.py:34 links.py:49 links.py:56 views/export_views.py:57
+msgid "Export events"
+msgstr "Exporter les événements"
+
+#: links.py:61 models.py:63 views/subscription_views.py:56
+msgid "Event subscriptions"
+msgstr "Abonnements aux événements"
+
+#: links.py:66
+msgid "Mark as seen"
+msgstr "Marquer comme vu"
+
+#: links.py:69
+msgid "Mark all as seen"
+msgstr "Tout marquer comme vu"
+
+#: links.py:75
+msgid "Subscriptions"
+msgstr "Abonnements"
+
+#: models.py:22
+msgid "Name"
+msgstr "Nom"
+
+#: models.py:26
+msgid "Stored event type"
+msgstr "Type d'événement enregistré"
+
+#: models.py:27
+msgid "Stored event types"
+msgstr "Types d'événements enregistrés"
+
+#: models.py:52 models.py:78 models.py:109
+msgid "User"
+msgstr "Utilisateur"
+
+#: models.py:56 models.py:113
+msgid "Event type"
+msgstr "Type d'évènement"
+
+#: models.py:62
+msgid "Event subscription"
+msgstr "Abonnement aux événements"
+
+#: models.py:82
+msgid "Action"
+msgstr "Action"
+
+#: models.py:84
+msgid "Read"
+msgstr "Lire"
+
+#: models.py:90
+msgid "Notification"
+msgstr "Notification"
+
+#: models.py:91 views/notification_views.py:30
+msgid "Notifications"
+msgstr "Notifications"
+
+#: models.py:119
+msgid "Object event subscription"
+msgstr "Abonnement aux événements de l'objet"
+
+#: models.py:120
+msgid "Object event subscriptions"
+msgstr "Abonnements aux événements de l'objet"
+
+#: permissions.py:8
+msgid "Export the events of an object"
+msgstr "Exporter les événements d'un objet"
+
+#: permissions.py:11
+msgid "Access the events of an object"
+msgstr "Accéder aux évènements de cet objet"
+
+#: queues.py:13
+msgid "Export event querysets"
+msgstr "Exporter des ensembles de requêtes d'événement"
+
+#: views/event_views.py:26
+msgid "Events track actions that have been performed on, to, or with objects."
+msgstr ""
+"Les événements retracent les actions qui ont été effectuées sur, vers ou "
+"avec des objets."
+
+#: views/event_views.py:29
+msgid "There are no events"
+msgstr "Il n'y a pas d'événements"
+
+#: views/event_views.py:44
+msgid "There are no events for this object"
+msgstr "Il n'y a pas d'événement pour cet objet"
+
+#: views/event_views.py:46
+#, python-format
+msgid "Events for: %s"
+msgstr "Évènements pour : %s"
+
+#: views/event_views.py:68
+msgid "There are no events of this type"
+msgstr "Il n'y a pas d'événements de ce type"
+
+#: views/event_views.py:70 views/export_views.py:105
+#, python-format
+msgid "Events of type: %s"
+msgstr "Événements de type : %s"
+
+#: views/export_views.py:26
+msgid ""
+"The process will be performed in the background. The exported events will be"
+" available in the downloads area."
+msgstr ""
+"Le processus sera exécuté en arrière-plan. Les événements exportés seront "
+"disponibles dans la zone de téléchargement."
+
+#: views/export_views.py:45
+msgid "Event list export task queued successfully."
+msgstr ""
+"La tâche d'exportation de la liste d'événements a été mise dans la file de "
+"traitement avec succès."
+
+#: views/export_views.py:76
+#, python-format
+msgid "Export events for: %s"
+msgstr "Exporter les événements pour: %s"
+
+#: views/notification_views.py:25
+msgid "Subscribe to global or object events to receive notifications."
+msgstr ""
+"Abonnez-vous à des événements globaux ou à des objets pour recevoir des "
+"notifications."
+
+#: views/notification_views.py:28
+msgid "There are no notifications"
+msgstr "Il n'y a pas de notification"
+
+#: views/notification_views.py:44
+msgid "Mark the selected notification as read?"
+msgstr "Marquer la notification sélectionnée comme lue?"
+
+#: views/notification_views.py:56
+msgid "Notification marked as read."
+msgstr "Notification marquée comme lue."
+
+#: views/notification_views.py:67
+msgid "Mark all notification as read?"
+msgstr "Marquer toutes les notifications comme lues?"
+
+#: views/notification_views.py:77
+msgid "All notifications marked as read."
+msgstr "Toutes les notifications marquées comme étant lues."
+
+#: views/subscription_views.py:40
+#, python-format
+msgid "Error updating event subscription; %s"
+msgstr "Erreur de mise à jour de l'abonnement aux événements ; %s"
+
+#: views/subscription_views.py:45
+msgid "Event subscriptions updated successfully"
+msgstr "Abonnements aux événements mises à jour avec succès"
+
+#: views/subscription_views.py:114
+#, python-format
+msgid "Error updating object event subscription; %s"
+msgstr "Erreur de mise à jour de souscription aux événements de l'objet ; %s"
+
+#: views/subscription_views.py:120
+msgid "Object event subscriptions updated successfully"
+msgstr "Abonnements aux événements de l'objet mises à jour avec succès"
+
+#: views/subscription_views.py:131
+#, python-format
+msgid "Event subscriptions for: %s"
+msgstr "Abonnements aux événements pour : %s"

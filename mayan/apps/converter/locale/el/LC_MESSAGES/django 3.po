@@ -1,0 +1,510 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2021
+# pyrotech <anastasios@tutamail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
+msgid "Converter"
+msgstr "Μετατροπέας"
+
+#: apps.py:83 forms.py:37
+msgid "Transformation"
+msgstr "Μετασχηματισμός"
+
+#: backends/python.py:124 backends/python.py:137
+#, python-format
+msgid "Exception determining PDF page count; %s"
+msgstr "Εξαίρεση που καθορίζει τον αριθμό σελίδων PDF. %s"
+
+#: backends/python.py:151
+#, python-format
+msgid "Exception determining page count using Pillow; %s"
+msgstr ""
+"Εξαίρεση που καθορίζει τον αριθμό των σελίδων χρησιμοποιώντας το Pillow. %s"
+
+#: classes.py:157
+msgid "LibreOffice not installed or not found."
+msgstr "Το LibreOffice δεν είναι εγκατεστημένο ή δεν βρέθηκε."
+
+#: classes.py:261
+msgid "Not an office file format."
+msgstr "Δεν είναι μορφή αρχείου office."
+
+#: classes.py:395
+msgid ""
+"Transformations allow changing the visual appearance of documents without "
+"making permanent changes to the document file themselves."
+msgstr ""
+"Οι μετασχηματισμοί επιτρέπουν την αλλαγή της οπτικής εμφάνισης των εγγράφων "
+"χωρίς να πραγματοποιούνται μόνιμες αλλαγές στο ίδια τα αρχεία εγγράφων."
+
+#: classes.py:446
+msgid "transformation"
+msgstr "μετασχηματισμός"
+
+#: dependencies.py:14
+msgid "Utility from the poppler-utils package used to inspect PDF files."
+msgstr ""
+"Βοηθητικό πρόγραμμα από το πακέτο poppler-utils που χρησιμοποιείται για τον "
+"έλεγχο αρχείων PDF."
+
+#: dependencies.py:19
+msgid ""
+"Utility from the popper-utils package used to extract pages from PDF files "
+"into PPM format images."
+msgstr ""
+"Βοηθητικό πρόγραμμα από το πακέτο popper-utils που χρησιμοποιείται για "
+"εξαγωγή σελίδων από αρχεία PDF σε εικόνες μορφής PPM"
+
+#: events.py:8
+msgid "Asset created"
+msgstr "Το στοιχείο δημιουργήθηκε"
+
+#: events.py:11
+msgid "Asset edited"
+msgstr "Το στοιχείο τροποποιήθηκε"
+
+#: forms.py:16
+msgid "Preview"
+msgstr "Προεπισκόπηση"
+
+#: forms.py:36
+msgid "Available transformations for this layer."
+msgstr "Διαθέσιμοι μετασχηματισμοί για αυτό το επίπεδο."
+
+#: forms.py:73 workflow_actions.py:74
+#, python-format
+msgid "\"%s\" not a valid entry."
+msgstr "%s μη έγκυρη καταχώριση."
+
+#: layers.py:11
+msgid ""
+"Decorations are visual elements that add contextual information to images."
+msgstr ""
+"Οι διακοσμήσεις είναι οπτικά στοιχεία που προσθέτουν συναφείς πληροφορίες "
+"στις εικόνες."
+
+#: layers.py:13
+msgid "Decorations"
+msgstr "Διακοσμήσεις"
+
+#: layers.py:24
+msgid "Saved transformations"
+msgstr "Αποθηκευμένοι μετασχηματισμοί"
+
+#: links.py:35 views.py:39
+msgid "Create asset"
+msgstr "Δημιουργία στοιχείου"
+
+#: links.py:38 links.py:44 links.py:64
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: links.py:48 links.py:72
+msgid "Edit"
+msgstr "Τροποποίηση"
+
+#: links.py:56 models.py:62 storages.py:21 views.py:143
+msgid "Assets"
+msgstr "Στοιχεία"
+
+#: links.py:77
+msgid "Transformations"
+msgstr "Μετασχηματισμοί"
+
+#: links.py:82
+msgid "Select new transformation"
+msgstr "Επιλογή νέου μετασχηματισμού"
+
+#: models.py:45
+msgid "Label"
+msgstr "Ετικέτα"
+
+#: models.py:49
+msgid ""
+"This value will be used when referencing this asset. Can only contain "
+"letters, numbers, and underscores."
+msgstr ""
+"Αυτή η τιμή θα χρησιμοποιηθεί για την αναφορά σε αυτό το στοιχείο. Μπορεί να"
+" περιέχει μόνο γράμματα, αριθμούς και κάτω παύλες."
+
+#: models.py:52
+msgid "Internal name"
+msgstr "Όνομα εσωτερικής αναφοράς"
+
+#: models.py:56
+msgid "File"
+msgstr "Αρχείο"
+
+#: models.py:61
+msgid "Asset"
+msgstr "Στοιχείο"
+
+#: models.py:157 models.py:228
+msgid "Name"
+msgstr "Όνομα"
+
+#: models.py:160 models.py:226
+msgid "Order"
+msgstr "Σειρά προτεραιότητας"
+
+#: models.py:165 models.py:184
+msgid "Stored layer"
+msgstr "Αποθηκευμένο επίπεδο"
+
+#: models.py:166
+msgid "Stored layers"
+msgstr "Αποθηκευμένα επίπεδα"
+
+#: models.py:181 models.py:235
+msgid "Enabled"
+msgstr "Ενεργοποιημένο"
+
+#: models.py:192 models.py:220
+msgid "Object layer"
+msgstr "Επίπεδο αντικειμένου"
+
+#: models.py:193
+msgid "Object layers"
+msgstr "Επίπεδα αντικειμένων"
+
+#: models.py:224
+msgid ""
+"Order in which the transformations will be executed. If left unchanged, an "
+"automatic order value will be assigned."
+msgstr ""
+"Σειρά με την οποία θα εκτελεστούν οι μετασχηματισμοί. Εάν παραμείνει "
+"αμετάβλητη, θα εκχωρηθεί αυτόματα σειρά προτεραιότητας."
+
+#: models.py:231 workflow_actions.py:45
+msgid ""
+"Enter the arguments for the transformation as a YAML dictionary. ie: "
+"{\"degrees\": 180}"
+msgstr ""
+"Εισάγετε τα ορίσματα για τον μετασχηματισμό ως λεξικό YAML. δηλαδή: "
+"{\"degrees\": 180}"
+
+#: models.py:233
+msgid "Arguments"
+msgstr "Ορίσματα"
+
+#: models.py:242
+msgid "Layer transformation"
+msgstr "Μετασχηματισμός επιπέδου"
+
+#: models.py:243
+msgid "Layer transformations"
+msgstr "Μετασχηματισμοί επιπέδου"
+
+#: models.py:249
+msgid "Unknown transformation class"
+msgstr "Άγνωστη κλάση μετασχηματισμού"
+
+#: permissions.py:8
+msgid "Create new assets"
+msgstr "Δημιουργία νέων στοιχείων"
+
+#: permissions.py:11
+msgid "Delete assets"
+msgstr "Διαγραφή στοιχείων"
+
+#: permissions.py:14
+msgid "Edit assets"
+msgstr "Επεξεργασία στοιχείων"
+
+#: permissions.py:17
+msgid "View existing assets"
+msgstr "Προβολή υπαρχόντων στοιχείων"
+
+#: permissions.py:21
+msgid "Create new transformations"
+msgstr "Δημιουργία νέων μετασχηματισμών"
+
+#: permissions.py:24
+msgid "Delete transformations"
+msgstr "Διαγραφή μετασχηματισμών"
+
+#: permissions.py:27
+msgid "Edit transformations"
+msgstr "Τροποποίηση μετασχηματισμών"
+
+#: permissions.py:30
+msgid "View existing transformations"
+msgstr "Προβολή υπαρχόντων μετασχηματισμών"
+
+#: queues.py:12
+msgid "Generate a image of an asset."
+msgstr ""
+
+#: settings.py:28
+msgid ""
+"The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
+"deleting the oldest asset cache files. Specify the size in bytes."
+msgstr ""
+
+#: settings.py:37
+msgid ""
+"Time in seconds that the browser should cache the supplied asset. The "
+"default of 31559626 seconds correspond to 1 year."
+msgstr ""
+
+#: settings.py:44
+msgid ""
+"Path to the Storage subclass to use when storing the cached asset files."
+msgstr ""
+
+#: settings.py:52
+msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
+msgstr ""
+
+#: settings.py:58
+msgid "Path to the Storage subclass to use when storing assets."
+msgstr ""
+"Διαδρομή προς την υποτάξη Storage για χρήση κατά την αποθήκευση στοιχείων."
+
+#: settings.py:64
+msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
+msgstr "Ορίσματα για διαβίβαση στο CONVERTER_ASSET_STORAGE_BACKEND."
+
+#: settings.py:70
+msgid "Graphics conversion backend to use."
+msgstr "Επιλογή υποκείμενου συστήματος μετατροπής γραφικών."
+
+#: settings.py:76
+msgid "Configuration options for the graphics conversion backend."
+msgstr ""
+"Επιλογές παραμετροποίησης για το υποκείμενο σύστημα μετατροπής γραφικών."
+
+#: storages.py:15
+msgid ""
+"Unable to initialize the converter asset storage. Check the settings {} and "
+"{} for formatting errors."
+msgstr ""
+"Δεν είναι δυνατή η προετοιμασία του χώρου αποθήκευσης στοιχείων μετατροπέα. "
+"Ελέγξτε τις ρυθμίσεις {} και {} για σφάλματα μορφοποίησης."
+
+#: storages.py:28
+msgid ""
+"Unable to initialize the converter asset cachestorage. Check the settings {}"
+" and {} for formatting errors."
+msgstr ""
+
+#: storages.py:34
+msgid "Assets cache"
+msgstr ""
+
+#: transformations.py:196
+msgid "Paste an asset"
+msgstr "Επικόλληση ενός στοιχείου"
+
+#: transformations.py:247
+msgid "Paste an asset (percents coordinates)"
+msgstr "Επικόλληση ενός στοιχείου (ποσοστά συντεταγμένων)"
+
+#: transformations.py:290
+msgid "Paste an asset as watermark"
+msgstr "Επικόλληση ενός στοιχείου ως υδατογράφημα"
+
+#: transformations.py:350
+msgid "Crop"
+msgstr "Περικοπή"
+
+#: transformations.py:428
+msgid "Draw rectangle"
+msgstr "Σχεδίαση ορθογωνίου"
+
+#: transformations.py:530
+msgid "Draw rectangle (percents coordinates)"
+msgstr "Σχεδίαση ορθογωνίου (ποσοστά συντεταγμένων)"
+
+#: transformations.py:627
+msgid "Flip"
+msgstr "Αναστροφή"
+
+#: transformations.py:638
+msgid "Gaussian blur"
+msgstr "Γκαουσιανό θάμπωμα"
+
+#: transformations.py:648
+msgid "Line art"
+msgstr "Γραμμικό σχέδιο"
+
+#: transformations.py:659
+msgid "Mirror"
+msgstr "Αντικατοπτρισμός"
+
+#: transformations.py:670
+msgid "Resize"
+msgstr "Αλλαγή μεγέθους"
+
+#: transformations.py:697
+msgid "Rotate"
+msgstr "Περιστροφή"
+
+#: transformations.py:723
+msgid "Rotate 90 degrees"
+msgstr "Περιστροφή κατά 90 μοιρες"
+
+#: transformations.py:734
+msgid "Rotate 180 degrees"
+msgstr "Περιστροφή κατά 180 μοίρες"
+
+#: transformations.py:745
+msgid "Rotate 270 degrees"
+msgstr "Περιστροφή κατά 270 μοίρες"
+
+#: transformations.py:755
+msgid "Unsharp masking"
+msgstr "Άμβλυνση επικάλυψης"
+
+#: transformations.py:771
+msgid "Zoom"
+msgstr "Εστίασμός"
+
+#: views.py:53
+#, python-format
+msgid "Delete request performed on %(count)d asset"
+msgstr "Διαγραφή αιτήματος που πραγματοποιήθηκε σε %(count)d στοιχείο "
+
+#: views.py:55
+#, python-format
+msgid "Delete request performed on %(count)d assets"
+msgstr "Διαγραφή αιτήματος που πραγματοποιήθηκε σε %(count)d στοιχεία "
+
+#: views.py:62
+msgid "Delete the selected asset?"
+msgid_plural "Delete the selected assets?"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:72
+#, python-format
+msgid "Delete asset: %s?"
+msgstr "Διαγραφή στοιχείου: %s;"
+
+#: views.py:83
+#, python-format
+msgid "Asset \"%s\" deleted successfully."
+msgstr "Το στοιχείο \"%s\" διαγράφηκε με επιτυχία."
+
+#: views.py:88
+#, python-format
+msgid "Error deleting asset \"%(asset)s\": %(error)s"
+msgstr "Σφάλμα κατά τη διαγραφή του στοιχείου \"%(asset)s\": %(error)s"
+
+#: views.py:103
+#, python-format
+msgid "Details asset: %s"
+msgstr ""
+
+#: views.py:117
+#, python-format
+msgid "Edit asset: %s"
+msgstr "Επεξεργασία στοιχείου: %s"
+
+#: views.py:139
+msgid ""
+"Assets are files that can be used in conjuction with certain "
+"transformations."
+msgstr ""
+"Τα στοιχεία είναι αρχεία που μπορούν να χρησιμοποιηθούν σε συνδυασμό με "
+"συγκεκριμένους μετασχηματισμούς."
+
+#: views.py:142
+msgid "No assets available"
+msgstr "Δεν υπάρχουν διαθέσιμα στοιχεία"
+
+#: views.py:168
+#, python-format
+msgid "Error creating transformation: %s."
+msgstr "Σφάλμα κατά τη δημιουργία μετασχηματισμού: %s."
+
+#: views.py:185
+#, python-format
+msgid ""
+"Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
+"%(object)s"
+msgstr ""
+"Δημιουργία επιπέδου \"%(layer)s\" μετασχηματισμού \"%(transformation)s\" "
+"για: %(object)s"
+
+#: views.py:241
+#, python-format
+msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
+msgstr "Διαγραφή μετασχηματισμού \"%(transformation)s\" για: %(content_object)s;"
+
+#: views.py:290
+#, python-format
+msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
+msgstr ""
+"Τροποποίηση μετασχηματισμού \"%(transformation)s\" για: %(content_object)s"
+
+#: views.py:344
+#, python-format
+msgid "There are no entries for layer \"%(layer_name)s\""
+msgstr "Δεν υπάρχουν καταχωρήσεις για το επίπεδο \"%(layer_name)s\""
+
+#: views.py:347
+#, python-format
+msgid "Layer \"%(layer)s\" transformations for: %(object)s"
+msgstr "Μετασχηματισμοί επιπέδου\"%(layer)s\" για: %(object)s"
+
+#: views.py:392
+msgid "Transformation created successfully."
+msgstr "Ο μετασχηματισμός δημιουργήθηκε με επιτυχία."
+
+#: views.py:416
+msgid "Select"
+msgstr "Επιλογή"
+
+#: views.py:418
+#, python-format
+msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
+msgstr "Επιλογή νέου μετασχηματισμού επιπέδου \"%(layer)s\" για: %(object)s"
+
+#: workflow_actions.py:22
+msgid "Pages"
+msgstr "Σελίδες"
+
+#: workflow_actions.py:25
+msgid ""
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
+msgstr ""
+"Σελίδες στις οποίες θα προστεθούν οι νέοι μετασχηματισμοί. Διαχωρίστε με "
+"κόμμα και / ή χρησιμοποιήστε παύλες για εύρος σελίδων. Αφήστε κενό για να "
+"επιλέξετε όλες τις σελίδες."
+
+#: workflow_actions.py:32
+msgid "Transformation class"
+msgstr "Κλάση μετασχηματισμού"
+
+#: workflow_actions.py:37
+msgid "Type of transformation to add."
+msgstr "Τύπος μετασχηματισμού για προσθήκη."
+
+#: workflow_actions.py:42
+msgid "Transformation arguments"
+msgstr "Ορίσματα μετασχηματισμού"
+
+#: workflow_actions.py:51
+msgid "Add transformation"
+msgstr "Προσθήκη μετασχηματισμού"

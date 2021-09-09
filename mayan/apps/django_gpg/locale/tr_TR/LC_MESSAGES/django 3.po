@@ -1,0 +1,302 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Nurgül Özkan <nurgulozkan@hotmail.com>, 2021
+# serhatcan77 <serhat_can@yahoo.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2021\n"
+"Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:33
+msgid "Django GPG"
+msgstr ""
+
+#: apps.py:56 apps.py:62 forms.py:15
+msgid "Key ID"
+msgstr "Anahtar Kimliği"
+
+#: apps.py:66 forms.py:32 models.py:59
+msgid "Type"
+msgstr "Tür"
+
+#: apps.py:70 forms.py:21 models.py:40
+msgid "Creation date"
+msgstr "Oluşturulma tarihi"
+
+#: apps.py:74
+msgid "No expiration"
+msgstr "Süresiz"
+
+#: apps.py:75 forms.py:25 models.py:44
+msgid "Expiration date"
+msgstr "Son kullanma tarihi"
+
+#: apps.py:78 forms.py:30 models.py:51
+msgid "Length"
+msgstr "Uzunluk"
+
+#: apps.py:83 forms.py:17 models.py:56
+msgid "User ID"
+msgstr ""
+
+#: dependencies.py:10
+msgid "GNU privacy guard - a PGP implementation."
+msgstr ""
+
+#: events.py:5 links.py:42 permissions.py:5
+msgid "Key management"
+msgstr "Anahtar yönetimi"
+
+#: events.py:8
+msgid "Key created"
+msgstr ""
+
+#: events.py:12
+msgid "Key downloaded"
+msgstr ""
+
+#: forms.py:26
+msgid "None"
+msgstr "Yok"
+
+#: forms.py:29 models.py:48
+msgid "Fingerprint"
+msgstr ""
+
+#: forms.py:31 models.py:54
+msgid "Algorithm"
+msgstr ""
+
+#: forms.py:45
+msgid "Term"
+msgstr "Terim"
+
+#: forms.py:46
+msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr "İsim, e-posta, anahtar kimliği veya anahtar parmak izi arayın."
+
+#: links.py:17
+msgid "Delete"
+msgstr "Sil"
+
+#: links.py:22
+msgid "Details"
+msgstr "Ayrıntılar"
+
+#: links.py:27
+msgid "Download"
+msgstr "İndir"
+
+#: links.py:32 permissions.py:26
+msgid "Query keyservers"
+msgstr "Sorgu anahtar sunucuları"
+
+#: links.py:37
+msgid "Import"
+msgstr "İçeri Al"
+
+#: links.py:46
+msgid "Upload key"
+msgstr ""
+
+#: links.py:50 views.py:194
+msgid "Private keys"
+msgstr "Özel anahtarlar"
+
+#: links.py:54 views.py:218
+msgid "Public keys"
+msgstr "Genel anahtarlar"
+
+#: literals.py:23 literals.py:31
+msgid "Public"
+msgstr "Herkese açık"
+
+#: literals.py:24 literals.py:32
+msgid "Secret"
+msgstr "Gizli"
+
+#: literals.py:40 literals.py:45
+msgid "RSA"
+msgstr "RSA"
+
+#: literals.py:41
+msgid "DSA"
+msgstr "DSA"
+
+#: literals.py:46
+msgid "Elgamal"
+msgstr "Elgamal"
+
+#: literals.py:62
+msgid "Bad signature."
+msgstr "Kötü imza."
+
+#: literals.py:65
+msgid "Document not signed or invalid signature."
+msgstr "Belge imzalanmamış veya geçersiz imza."
+
+#: literals.py:68
+msgid "Signature error."
+msgstr "İmza hatası."
+
+#: literals.py:72
+msgid "Document is signed but no public key is available for verification."
+msgstr "Belge imzalanmış ancak doğrulama için genel anahtar bulunmamaktadır."
+
+#: literals.py:77
+msgid "Document is signed, and signature is good."
+msgstr "Belge imzalanmış ve imza iyi."
+
+#: literals.py:80
+msgid "Document is signed with a valid signature."
+msgstr "Belge geçerli bir imza ile imzalanmıştır."
+
+#: models.py:36
+msgid "ASCII armored version of the key."
+msgstr "Anahtarın ASCII şifreli versiyonu."
+
+#: models.py:37
+msgid "Key data"
+msgstr "Anahtar verisi"
+
+#: models.py:65
+msgid "Key"
+msgstr "Anahtar"
+
+#: models.py:66
+msgid "Keys"
+msgstr ""
+
+#: models.py:78
+msgid "Invalid key data"
+msgstr ""
+
+#: models.py:81
+msgid "Key already exists."
+msgstr ""
+
+#: permissions.py:8
+msgid "Delete keys"
+msgstr "Tuşları sil"
+
+#: permissions.py:11
+msgid "Download keys"
+msgstr "Tuşları indir"
+
+#: permissions.py:14
+msgid "Import keys from keyservers"
+msgstr "Anahtarları sunuculardan içe aktarma"
+
+#: permissions.py:17
+msgid "Use keys to sign content"
+msgstr "İçeriği imzalamak için anahtarları kullanın"
+
+#: permissions.py:20
+msgid "Upload keys"
+msgstr "Anahtarları yükle"
+
+#: permissions.py:23
+msgid "View keys"
+msgstr "Anahtarları görüntüle"
+
+#: settings.py:10
+msgid "Signatures"
+msgstr "İmzalar"
+
+#: settings.py:16
+msgid "Full path to the backend to be used to handle keys and signatures."
+msgstr ""
+
+#: settings.py:25
+msgid "Keyserver used to query for keys."
+msgstr ""
+
+#: views.py:39
+#, python-format
+msgid "Delete key: %s"
+msgstr "%s anahtarını sil"
+
+#: views.py:56
+#, python-format
+msgid "Details for key: %s"
+msgstr "%s Anahtarın ayrıntıları: "
+
+#: views.py:84
+#, python-format
+msgid "Import key ID: %s?"
+msgstr ""
+
+#: views.py:85
+msgid "Import key"
+msgstr "Anahtarı içe aktar"
+
+#: views.py:94
+#, python-format
+msgid "Unable to import key: %(key_id)s; %(error)s"
+msgstr ""
+
+#: views.py:102
+#, python-format
+msgid "Successfully received key: %(key_id)s"
+msgstr "Anahtar başarıyla alındı: %(key_id)s"
+
+#: views.py:119
+msgid ""
+"Use names, last names, key ids or emails to search public keys to import "
+"from the keyserver."
+msgstr ""
+
+#: views.py:123
+msgid "No results returned"
+msgstr ""
+
+#: views.py:125
+msgid "Key query results"
+msgstr ""
+
+#: views.py:145
+msgid "Search"
+msgstr "Arama"
+
+#: views.py:147
+msgid "Query key server"
+msgstr "Anahtar sorgulama sunucusu"
+
+#: views.py:166
+msgid "Upload new key"
+msgstr ""
+
+#: views.py:187
+msgid ""
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user. The view to upload private and public keys is the same."
+msgstr ""
+
+#: views.py:192
+msgid "There no private keys"
+msgstr ""
+
+#: views.py:210
+msgid ""
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
+"public keys is the same."
+msgstr ""
+
+#: views.py:216
+msgid "There no public keys"
+msgstr ""

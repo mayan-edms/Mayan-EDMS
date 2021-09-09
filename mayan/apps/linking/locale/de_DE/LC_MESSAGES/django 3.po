@@ -1,0 +1,364 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Mathias Behrle <mathiasb@m9s.biz>, 2021
+# Ingo Buchholz <ingo.buchholz@takwa.de>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:26+0000\n"
+"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2021\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:40
+msgid "Linking"
+msgstr "Verknüpfungen"
+
+#: apps.py:94 models.py:29
+msgid "Label"
+msgstr "Bezeichner"
+
+#: events.py:6 links.py:24 links.py:75 links.py:80 links.py:85 models.py:48
+#: permissions.py:5 views.py:191
+msgid "Smart links"
+msgstr "Smart Links"
+
+#: events.py:10
+msgid "Smart link created"
+msgstr "Smart Link erstellt"
+
+#: events.py:13
+msgid "Smart link edited"
+msgstr "Smart Link bearbeitet"
+
+#: forms.py:45
+msgid "Foreign document field"
+msgstr "Feld des anderen Dokuments"
+
+#: links.py:29
+msgid "Create condition"
+msgstr "Erstellungsbedingung"
+
+#: links.py:35 links.py:55
+msgid "Delete"
+msgstr "Löschen"
+
+#: links.py:39 links.py:64
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: links.py:44
+msgid "Conditions"
+msgstr "Bedingungen"
+
+#: links.py:50 views.py:227
+msgid "Create new smart link"
+msgstr "Smart Link erstellen"
+
+#: links.py:59 models.py:40
+msgid "Document types"
+msgstr "Dokumententypen"
+
+#: links.py:69
+msgid "Documents"
+msgstr "Dokumente"
+
+#: literals.py:7
+msgid "and"
+msgstr "und"
+
+#: literals.py:8
+msgid "or"
+msgstr "oder"
+
+#: literals.py:12
+msgid "is equal to"
+msgstr "ist gleich zu"
+
+#: literals.py:13
+msgid "is equal to (case insensitive)"
+msgstr "ist gleich zu (ohne Groß/Kleinschreibung)"
+
+#: literals.py:14
+msgid "contains"
+msgstr "enthält"
+
+#: literals.py:15
+msgid "contains (case insensitive)"
+msgstr "enthält (ohne Groß/Kleinschreibung)"
+
+#: literals.py:16
+msgid "is in"
+msgstr "ist in"
+
+#: literals.py:17
+msgid "is greater than"
+msgstr "ist größer als"
+
+#: literals.py:18
+msgid "is greater than or equal to"
+msgstr "ist größer oder gleich zu"
+
+#: literals.py:19
+msgid "is less than"
+msgstr "ist kleiner als"
+
+#: literals.py:20
+msgid "is less than or equal to"
+msgstr "ist kleiner oder gleich zu"
+
+#: literals.py:21
+msgid "starts with"
+msgstr "beginnt mit"
+
+#: literals.py:22
+msgid "starts with (case insensitive)"
+msgstr "beginnt mit (ohne Groß/Kleinschreibung)"
+
+#: literals.py:23
+msgid "ends with"
+msgstr "endet mit"
+
+#: literals.py:24
+msgid "ends with (case insensitive)"
+msgstr "endet mit (ohne Groß/Kleinschreibung)"
+
+#: literals.py:25
+msgid "is in regular expression"
+msgstr "ist in regulärem Ausdruck"
+
+#: literals.py:26
+msgid "is in regular expression (case insensitive)"
+msgstr "ist in regulärem Ausdruck (ohne Groß/Kleinschreibung)"
+
+#: models.py:28
+msgid "A short text describing the smart link."
+msgstr "Ein kurzer Text, der den Smart Link beschreibt."
+
+#: models.py:33
+msgid ""
+"Use this field to show a unique label depending on the document from which "
+"the smart link is being accessed."
+msgstr ""
+"Verwenden Sie dieses Feld um abhängig vom Dokument, von dem aus auf den "
+"Smart Link zugegriffen wird, eine eindeutige Bezeichnung anzuzeigen."
+
+#: models.py:35
+msgid "Dynamic label"
+msgstr "Dynamische Bezeichnung"
+
+#: models.py:37 models.py:186
+msgid "Enabled"
+msgstr "Aktiviert"
+
+#: models.py:47 models.py:164
+msgid "Smart link"
+msgstr "Smart Link"
+
+#: models.py:80
+#, python-format
+msgid "Error generating dynamic label; %s"
+msgstr "Fehler bei der Generierung des dynamischen Titels: %s"
+
+#: models.py:95
+msgid "This smart link is not allowed for the selected document's type."
+msgstr "Dieser Smart Link ist nicht erlaubt für diesen Dokumententyp."
+
+#: models.py:168
+msgid "The inclusion is ignored for the first item."
+msgstr "Die Einbeziehung wird für das erste Element ignoriert."
+
+#: models.py:172
+msgid "This represents the metadata of all other documents."
+msgstr "Repräsentiert die Metadaten aller anderen Dokumente."
+
+#: models.py:173
+msgid "Foreign document attribute"
+msgstr "Fremddokumentattribut"
+
+#: models.py:178
+msgid ""
+"The expression using document properties to be evaluated against the foreign"
+" document field."
+msgstr ""
+"Der Ausdruck, der Dokumenteigenschaften verwendet, die für das "
+"Fremddokumentfeld ausgewertet werden sollen."
+
+#: models.py:180
+msgid "Expression"
+msgstr "Ausdruck"
+
+#: models.py:183
+msgid "Inverts the logic of the operator."
+msgstr "Kehrt die Logik der Operation um."
+
+#: models.py:184
+msgid "Negated"
+msgstr "Verneint"
+
+#: models.py:189
+msgid "Link condition"
+msgstr "Bedingung"
+
+#: models.py:190
+msgid "Link conditions"
+msgstr "Bedingungen"
+
+#: models.py:206
+msgid "not"
+msgstr "Nicht"
+
+#: models.py:210
+msgid "Full label"
+msgstr "Voller Bezeichner"
+
+#: permissions.py:8
+msgid "Create new smart links"
+msgstr "Smart Links erstellen"
+
+#: permissions.py:11
+msgid "Delete smart links"
+msgstr "Smart Links löschen"
+
+#: permissions.py:14
+msgid "Edit smart links"
+msgstr "Smart Links bearbeiten"
+
+#: permissions.py:17
+msgid "View existing smart links"
+msgstr "Existierende Smart Links anzeigen"
+
+#: serializers.py:52
+msgid "Primary key of the document type to add to the smart link."
+msgstr ""
+
+#: serializers.py:61
+msgid "Primary key of the document type to remove from the smart link."
+msgstr ""
+
+#: views.py:41
+msgid "Available smart links"
+msgstr "Verfügbare Smart Links"
+
+#: views.py:42
+msgid "Smart links enabled"
+msgstr "Aktivierte Smart Links"
+
+#: views.py:68
+#, python-format
+msgid "Smart links to enable for document type: %s"
+msgstr "Smart Links für Dokumententyp %s"
+
+#: views.py:103
+#, python-format
+msgid "Smart link query error: %s"
+msgstr "Abfragefehler für Smart Link %s"
+
+#: views.py:114
+#, python-format
+msgid "Documents in smart link: %s"
+msgstr "Ähnliche Dokumente für %s"
+
+#: views.py:117
+#, python-format
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr "Dokumente in Smart Link \"%(smart_link)s\" verknüpft zu \"%(document)s\""
+
+#: views.py:153
+msgid "Available document types"
+msgstr "Verfügbare Dokumententypen"
+
+#: views.py:154
+msgid "Document types enabled"
+msgstr "Aktivierte Dokumententypen"
+
+#: views.py:164
+#, python-format
+msgid "Document type for which to enable smart link: %s"
+msgstr "Dokumententyp, für den Smart Link %s aktiviert werden soll"
+
+#: views.py:182
+msgid ""
+"Indexes group documents into units, usually with similar properties and of "
+"equal or similar types. Smart links allow defining relationships between "
+"documents even if they are in different indexes and are of different types."
+msgstr ""
+"Indices gruppieren Dokumente in Einheiten, üblicherweise mit ähnlichen "
+"Eigenschaften und gleichen oder ähnlichen Typen. Smart links ermöglichen die"
+" Definition von Beziehungen zwischen Dokumenten, auch wenn sie in "
+"verschiedenen Indices sind oder einen unterschiedlichen Typ aufweisen."
+
+#: views.py:189
+msgid "There are no smart links"
+msgstr "Keine ähnlichen Dokumente vorhanden"
+
+#: views.py:207
+msgid ""
+"Smart links allow defining relationships between documents even if they are "
+"in different indexes and are of different types."
+msgstr ""
+"Smart links ermöglichen die Definition von Beziehungen zwischen Dokumenten, "
+"auch wenn sie in verschiedenen Indices sind oder einen unterschiedlichen Typ"
+" aufweisen."
+
+#: views.py:212
+msgid "There are no smart links for this document"
+msgstr "Keine ähnlichen Dokumente für dieses Dokument vorhanden"
+
+#: views.py:215
+#, python-format
+msgid "Smart links for document: %s"
+msgstr "Ähnliche Dokumente für Dokument %s"
+
+#: views.py:249
+#, python-format
+msgid "Delete smart link: %s"
+msgstr "Smart Link %s löschen"
+
+#: views.py:265
+#, python-format
+msgid "Edit smart link: %s"
+msgstr "Smart Link %s bearbeiten"
+
+#: views.py:290
+msgid ""
+"Conditions are small logic units that when combined define how the smart "
+"link will behave."
+msgstr ""
+"Bedingungen sind kleine logische Einheiten, die in der Kombination "
+"definieren, wie der Smart Link funktionieren wird."
+
+#: views.py:294
+msgid "There are no conditions for this smart link"
+msgstr "Keine Bedingungen für diesen Smart Link vorhanden"
+
+#: views.py:298
+#, python-format
+msgid "Conditions for smart link: %s"
+msgstr "Bedingungen für Smart Link %s"
+
+#: views.py:317
+#, python-format
+msgid "Add new conditions to smart link: \"%s\""
+msgstr "Neue Bedingungen zu Smart Link \"%s\" hinzufügen"
+
+#: views.py:350
+#, python-format
+msgid "Delete smart link condition: \"%s\"?"
+msgstr "Bedingung für Smart Link \"%s\" wirklich löschen?"
+
+#: views.py:376
+msgid "Edit smart link condition"
+msgstr "Bedingung für Smart Link bearbeiten"

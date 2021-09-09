@@ -1,0 +1,230 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2021
+# bwakkie <bwakkie@gmail.com>, 2021
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:17+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
+"Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:35 events.py:6 permissions.py:6 settings.py:10
+msgid "Authentication"
+msgstr "Authenticatie"
+
+#: events.py:10
+msgid "User impersonation ended"
+msgstr "Nabootsing van gebruikers is beëindigd"
+
+#: events.py:13
+msgid "User impersonation started"
+msgstr "Nabootsing van gebruikers is begonnen"
+
+#: events.py:16
+msgid "User logged in"
+msgstr "Gebruiker is aangemeld"
+
+#: events.py:19
+msgid "User logged out"
+msgstr "Gebruiker is afgemeld"
+
+#: forms.py:20
+msgid "Email"
+msgstr "Email"
+
+#: forms.py:23
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: forms.py:25 forms.py:105
+msgid "Remember me"
+msgstr "Onthoud mij"
+
+#: forms.py:28
+msgid ""
+"Please enter a correct email and password. Note that the password field is "
+"case-sensitive."
+msgstr ""
+"Vul het juiste email adres en wachtwoord in. Houd er rekening mee dat het "
+"wachtwoordveld hoofdlettergevoelig is."
+
+#: forms.py:30
+msgid "This account is inactive."
+msgstr "Deze gebruiker is in-actief."
+
+#: forms.py:79
+msgid "Permanent"
+msgstr "Permanent"
+
+#: forms.py:80
+msgid "If selected, disables ending impersonation."
+msgstr ""
+"Indien geselecteerd, wordt het beëindigen van identiteit nabootsing "
+"uitgeschakeld."
+
+#: forms.py:91
+msgid "User"
+msgstr "Gebruiker"
+
+#: links.py:24
+msgid "Logout"
+msgstr "Afmelden"
+
+#: links.py:29
+msgid "Change password"
+msgstr "Pas wachtwoord aan"
+
+#: links.py:34 views.py:250
+msgid "Impersonate user"
+msgstr "Nabootsen gebruiker"
+
+#: links.py:39
+msgid "Impersonate"
+msgstr ""
+
+#: links.py:44 links.py:48
+msgid "Set password"
+msgstr "Stel wachtwoord in"
+
+#: permissions.py:10
+msgid "Impersonate users"
+msgstr "Nabootsen gebruikers"
+
+#: settings.py:15
+msgid ""
+"Controls the mechanism used to authenticated user. Options are: username, "
+"email"
+msgstr ""
+"Beinvloed de manier waarop gebruikers worden geauthenticeerd. Opties zijn: "
+"gebruikersnaam, email"
+
+#: settings.py:22
+msgid ""
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
+msgstr ""
+"De maximale tijd dat een gebruiker \"Onthoud mij\" gebruikt, aangemeld "
+"blijft. Waarde is in seconden."
+
+#: settings.py:29
+msgid ""
+"Remove the \"Forgot your password?\" link on the login form used to trigger "
+"the password reset."
+msgstr "Verwijder de \"Wachtwoord vergeten\" optie op het aanmeldingsformulier. "
+
+#: templates/authentication/app/viewport.html:11
+#, python-format
+msgid ""
+"\n"
+"                Impersonating user \"%(user)s\".\n"
+"            "
+msgstr ""
+
+#: templates/authentication/app/viewport.html:14
+msgid "Click here when finished"
+msgstr "Klik hier indien voltooid"
+
+#: templates/authentication/login.html:10
+msgid "Login"
+msgstr "Inloggen"
+
+#: templates/authentication/login.html:21
+#: templates/authentication/login.html:30
+msgid "Sign in"
+msgstr "Meld u aan"
+
+#: templates/authentication/login.html:37
+msgid "Forgot your password?"
+msgstr "Paswoord vergeten?"
+
+#: templates/authentication/password_reset_complete.html:8
+#: templates/authentication/password_reset_confirm.html:8
+#: templates/authentication/password_reset_confirm.html:20
+#: templates/authentication/password_reset_done.html:8
+#: templates/authentication/password_reset_form.html:8
+#: templates/authentication/password_reset_form.html:20
+msgid "Password reset"
+msgstr "Paswoord opnieuw instellen"
+
+#: templates/authentication/password_reset_complete.html:15
+msgid "Password reset complete! Click the link below to login."
+msgstr ""
+"Paswoord opnieuw ingesteld! Klik op de link hieronder om in te loggen."
+
+#: templates/authentication/password_reset_complete.html:17
+msgid "Login page"
+msgstr "Login pagina"
+
+#: templates/authentication/password_reset_confirm.html:29
+#: templates/authentication/password_reset_form.html:29 views.py:177
+msgid "Submit"
+msgstr "Indienen"
+
+#: templates/authentication/password_reset_done.html:15
+msgid "Password reset email sent!"
+msgstr "Wachtwoordherstel e-mail verstuurd!"
+
+#: views.py:86
+msgid "Your password has been successfully changed."
+msgstr "Uw wachtwoord is succesvol aangepast,"
+
+#: views.py:93
+msgid "Current user password change"
+msgstr "Pas wachtwoord aan van huidige gebruiker"
+
+#: views.py:101
+msgid "Changing the password is not allowed for this account."
+msgstr "Wachtwoord wijziging niet toegestaan voor dit account."
+
+#: views.py:168
+#, python-format
+msgid "Password change request performed on %(count)d user"
+msgstr "Wachtwoord wijziging uitgevoerd op %(count)d gebruiker"
+
+#: views.py:170
+#, python-format
+msgid "Password change request performed on %(count)d users"
+msgstr "Wachtwoord wijziging uitgevoerd op %(count)d gebruikers"
+
+#: views.py:179
+msgid "Change user password"
+msgid_plural "Change users passwords"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:189
+#, python-format
+msgid "Change password for user: %s"
+msgstr "Wijzig wachtwoord voor gebruiker: %s"
+
+#: views.py:210
+#, python-format
+msgid "Successful password reset for user: %s."
+msgstr "Wachtwoord opnieuw ingesteld voor gebruiker: %s."
+
+#: views.py:216
+#, python-format
+msgid "Error reseting password for user \"%(user)s\": %(error)s"
+msgstr ""
+"Fout tijdens het veranderen van het wachtwoord voor gebruiker \"%(user)s\": "
+"%(error)s"
+
+#: views.py:278
+#, python-format
+msgid "Impersonate user: %s"
+msgstr ""

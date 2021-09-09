@@ -1,0 +1,380 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:21+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:54 events.py:6 permissions.py:6 settings.py:12
+msgid "Document signatures"
+msgstr "文档签名"
+
+#: apps.py:111
+msgid "Date and time"
+msgstr "日期和时间"
+
+#: apps.py:115 models.py:52
+msgid "Key ID"
+msgstr "密钥ID"
+
+#: apps.py:119 forms.py:72
+msgid "None"
+msgstr "没有"
+
+#: apps.py:120 forms.py:60 models.py:57
+msgid "Signature ID"
+msgstr "签名ID"
+
+#: apps.py:125
+msgid "Type"
+msgstr "类型"
+
+#: events.py:10
+msgid "Detached signature created"
+msgstr ""
+
+#: events.py:13
+msgid "Detached signature uploaded"
+msgstr ""
+
+#: events.py:17
+msgid "Embedded signature created"
+msgstr ""
+
+#: forms.py:17 forms.py:31 workflow_actions.py:19
+msgid "Key"
+msgstr "密钥"
+
+#: forms.py:22 serializers.py:66 workflow_actions.py:30
+msgid ""
+"The passphrase to unlock the key and allow it to be used to sign the "
+"document file."
+msgstr ""
+
+#: forms.py:24 workflow_actions.py:27
+msgid "Passphrase"
+msgstr "密码"
+
+#: forms.py:33
+msgid "Private key that will be used to sign this document file."
+msgstr ""
+
+#: forms.py:44
+msgid "Signature is embedded?"
+msgstr "签名是嵌入式的吗？"
+
+#: forms.py:46
+msgid "Signature date"
+msgstr "签名日期"
+
+#: forms.py:49
+msgid "Signature key ID"
+msgstr "签名密钥ID"
+
+#: forms.py:51
+msgid "Signature key present?"
+msgstr "签名密钥存在？"
+
+#: forms.py:62
+msgid "Key fingerprint"
+msgstr "密钥指纹"
+
+#: forms.py:66
+msgid "Key creation date"
+msgstr "密钥创建日期"
+
+#: forms.py:71
+msgid "Key expiration date"
+msgstr "密钥到期日期"
+
+#: forms.py:76
+msgid "Key length"
+msgstr "密钥长度"
+
+#: forms.py:80
+msgid "Key algorithm"
+msgstr "密钥算法"
+
+#: forms.py:84
+msgid "Key user ID"
+msgstr "密钥用户ID"
+
+#: forms.py:88
+msgid "Key type"
+msgstr "密钥类型"
+
+#: links.py:40
+msgid "Refresh all signatures"
+msgstr ""
+
+#: links.py:46
+msgid "Verify all documents"
+msgstr "验证所有文档"
+
+#: links.py:53
+msgid "Delete"
+msgstr "删除"
+
+#: links.py:60
+msgid "Sign detached"
+msgstr "分离签署"
+
+#: links.py:67
+msgid "Details"
+msgstr "细节"
+
+#: links.py:74
+msgid "Download"
+msgstr "下载"
+
+#: links.py:80
+msgid "Sign embedded"
+msgstr "嵌入签署"
+
+#: links.py:86 queues.py:8
+msgid "Signatures"
+msgstr "签名"
+
+#: links.py:92
+msgid "Upload signature"
+msgstr "上传签名"
+
+#: models.py:42
+msgid "Document file"
+msgstr ""
+
+#: models.py:47
+msgid "Date and time signed"
+msgstr ""
+
+#: models.py:51
+msgid "ID of the key that will be used to sign the document."
+msgstr ""
+
+#: models.py:61
+msgid "Public key fingerprint"
+msgstr "公钥指纹"
+
+#: models.py:68
+msgid "Document file signature"
+msgstr ""
+
+#: models.py:69
+msgid "Document file signatures"
+msgstr ""
+
+#: models.py:88
+msgid "Detached"
+msgstr "分离的"
+
+#: models.py:90
+msgid "Embedded"
+msgstr "嵌入的"
+
+#: models.py:155
+msgid "Signature file previously generated."
+msgstr ""
+
+#: models.py:158
+msgid "Signature file"
+msgstr "签名文件"
+
+#: models.py:164
+msgid "Document file detached signature"
+msgstr ""
+
+#: models.py:165
+msgid "Document file detached signatures"
+msgstr ""
+
+#: models.py:168
+msgid "signature"
+msgstr "签名"
+
+#: models.py:210
+msgid "Document file embedded signature"
+msgstr ""
+
+#: models.py:211
+msgid "Document file embedded signatures"
+msgstr ""
+
+#: permissions.py:10
+msgid "Sign documents with detached signatures"
+msgstr "签署带有分离签名的文档"
+
+#: permissions.py:14
+msgid "Sign documents with embedded signatures"
+msgstr "签署带有嵌入签名的文档"
+
+#: permissions.py:18
+msgid "Delete detached signatures"
+msgstr "删除分离签名"
+
+#: permissions.py:22
+msgid "Download detached document signatures"
+msgstr "下载分离的文档签名"
+
+#: permissions.py:26
+msgid "Upload detached document signatures"
+msgstr "上传分离的文档签名"
+
+#: permissions.py:30
+msgid "Verify document signatures"
+msgstr "验证文档签名"
+
+#: permissions.py:34
+msgid "View details of document signatures"
+msgstr "查看文档签名的详情"
+
+#: queues.py:13
+msgid "Verify key signatures"
+msgstr "验证密钥签名"
+
+#: queues.py:17
+msgid "Unverify key signatures"
+msgstr "取消验证密钥签名"
+
+#: queues.py:21
+msgid "Verify document file"
+msgstr ""
+
+#: queues.py:26
+msgid "Verify missing embedded signature"
+msgstr "验证缺少的嵌入签名"
+
+#: queues.py:30
+msgid "Refresh existing signature information"
+msgstr ""
+
+#: serializers.py:60
+msgid "Primary key of the tag to add to the document."
+msgstr ""
+
+#: settings.py:20
+msgid "Path to the Storage subclass to use when storing detached signatures."
+msgstr "存储分离签名时要使用的存储子类的路径。"
+
+#: settings.py:27
+msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
+msgstr ""
+
+#: storages.py:13
+msgid ""
+"Unable to initialize the detached signatures storage. Check the settings {} "
+"and {} for formatting errors."
+msgstr ""
+
+#: storages.py:20
+msgid "Detached signatures"
+msgstr ""
+
+#: views.py:66 views.py:135
+msgid "Passphrase is needed to unlock this key."
+msgstr "解密此密钥需要的密码。"
+
+#: views.py:79 views.py:148
+msgid "Passphrase is incorrect."
+msgstr "密码不正确。"
+
+#: views.py:92 views.py:161
+msgid "Document file signed successfully."
+msgstr ""
+
+#: views.py:102 views.py:178
+msgid "Sign"
+msgstr ""
+
+#: views.py:104
+#, python-format
+msgid "Sign document file \"%s\" with a detached signature"
+msgstr ""
+
+#: views.py:180
+#, python-format
+msgid "Sign document file \"%s\" with a embedded signature"
+msgstr ""
+
+#: views.py:196
+#, python-format
+msgid "Delete detached signature: %s"
+msgstr "删除分离签名：%s"
+
+#: views.py:226
+#, python-format
+msgid "Details for signature: %s"
+msgstr "签名详情：%s"
+
+#: views.py:268
+msgid ""
+"Signatures help provide authorship evidence and tamper detection. They are "
+"very secure and hard to forge. A signature can be embedded as part of the "
+"document itself or uploaded as a separate file."
+msgstr "签名有助于提供作者证据和篡改检测。它们非常安全且难以伪造。签名可以作为文档本身的一部分嵌入，也可以作为单独的文件上传。"
+
+#: views.py:297
+msgid "There are no signatures for this document file."
+msgstr ""
+
+#: views.py:301
+#, python-format
+msgid "Signatures for document file: %s"
+msgstr ""
+
+#: views.py:322
+#, python-format
+msgid "Upload detached signature for document file: %s"
+msgstr ""
+
+#: views.py:340 views.py:359
+msgid "On large databases this operation may take some time to execute."
+msgstr "在大型数据库上，此操作可能需要一些时间才能执行。"
+
+#: views.py:341
+msgid "Refresh all signatures information?"
+msgstr ""
+
+#: views.py:351
+msgid "Signature information refresh queued successfully."
+msgstr ""
+
+#: views.py:360
+msgid "Verify all document for signatures?"
+msgstr "验证签名的所有文档？"
+
+#: views.py:370
+msgid "Signature verification queued successfully."
+msgstr "签名验证成功排队。"
+
+#: workflow_actions.py:22
+msgid "Private key that will be used to sign the document file."
+msgstr ""
+
+#: workflow_actions.py:37
+msgid "Sign document (detached)"
+msgstr ""
+
+#: workflow_actions.py:49
+msgid ""
+"Document has no file to sign. You might be trying to use this action in an "
+"initial state before the created document is yet to be processed."
+msgstr ""
+
+#: workflow_actions.py:80
+msgid "Sign document (embedded)"
+msgstr ""

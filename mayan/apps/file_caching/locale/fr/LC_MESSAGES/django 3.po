@@ -1,0 +1,183 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2021
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
+# Olivier W, 2021
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:22+0000\n"
+"PO-Revision-Date: 2021-04-11 06:23+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
+"Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:27 events.py:6 permissions.py:5 queues.py:8 settings.py:10
+msgid "File caching"
+msgstr "Mise en cache de fichiers"
+
+#: events.py:10
+msgid "Cache created"
+msgstr "Cache créé"
+
+#: events.py:13
+msgid "Cache edited"
+msgstr "Cache modifié"
+
+#: events.py:16
+msgid "Cache purged"
+msgstr "Cache vidé"
+
+#: events.py:19
+msgid "Cache partition purged"
+msgstr ""
+
+#: links.py:24
+msgid "File caches"
+msgstr "Fichiers caches"
+
+#: links.py:29 links.py:35 links.py:39
+msgid "Purge cache"
+msgstr "Vider le cache"
+
+#: models.py:41
+msgid "Internal name of the defined storage for this cache."
+msgstr "Nom interne du stockage défini pour ce cache."
+
+#: models.py:42
+msgid "Defined storage name"
+msgstr "Nom de stockage défini"
+
+#: models.py:45
+msgid "Maximum size of the cache in bytes."
+msgstr "Taille maximale du cache en octets."
+
+#: models.py:47 models.py:73
+msgid "Maximum size"
+msgstr "Taille maximale"
+
+#: models.py:51 models.py:206
+msgid "Cache"
+msgstr "Cache"
+
+#: models.py:52
+msgid "Caches"
+msgstr "Caches"
+
+#: models.py:71
+msgid "Size at which the cache will start deleting old entries."
+msgstr ""
+"Taille à laquelle le cache commencera à supprimer les anciennes entrées."
+
+#: models.py:80
+msgid "Unknown"
+msgstr "Inconnu"
+
+#: models.py:97
+msgid "Current size"
+msgstr "Taille actuelle"
+
+#: models.py:98
+msgid "Current size of the cache."
+msgstr "Taille actuelle du cache."
+
+#: models.py:209
+msgid "Name"
+msgstr "Nom"
+
+#: models.py:214 models.py:305
+msgid "Cache partition"
+msgstr "Partition du cache"
+
+#: models.py:215
+msgid "Cache partitions"
+msgstr "Partitions du cache"
+
+#: models.py:308
+msgid "Date time"
+msgstr "Date et heure"
+
+#: models.py:310
+msgid "Filename"
+msgstr "Nom de fichier"
+
+#: models.py:312
+msgid "File size"
+msgstr "Taille du fichier"
+
+#: models.py:316
+msgid "Times this cache partition file has been accessed."
+msgstr ""
+
+#: models.py:323
+msgid "Cache partition file"
+msgstr "Fichier de partition de cache"
+
+#: models.py:324
+msgid "Cache partition files"
+msgstr "Fichiers de partition de cache"
+
+#: permissions.py:8
+msgid "Purge an object cache"
+msgstr ""
+
+#: permissions.py:11 queues.py:18
+msgid "Purge a file cache"
+msgstr "Purger un fichier cache"
+
+#: permissions.py:14
+msgid "View a file cache"
+msgstr "Afficher un fichier cache"
+
+#: queues.py:13
+msgid "Purge a file cache partition"
+msgstr ""
+
+#: settings.py:15
+msgid ""
+"Number of times a cache will retry failed attempts to prune files to free up"
+" space for new a file being requested, before giving up."
+msgstr ""
+
+#: settings.py:23
+msgid ""
+"Number of times a cache will attempt to prune files to free up space for new"
+" a file being requested, before giving up."
+msgstr ""
+
+#: views.py:43
+#, python-format
+msgid "Details cache: %s"
+msgstr "Détails du cache: %s"
+
+#: views.py:54
+msgid "File caches list"
+msgstr "Liste des fichiers caches"
+
+#: views.py:70
+#, python-format
+msgid "Purge cache partitions of \"%s\"?"
+msgstr ""
+
+#: views.py:86
+msgid "Object cache partitions submitted for purging."
+msgstr ""
+
+#: views.py:103
+msgid "Submit the selected cache for purging?"
+msgid_plural "Submit the selected caches for purging?"
+msgstr[0] ""
+msgstr[1] ""

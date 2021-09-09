@@ -1,0 +1,64 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:27+0000\n"
+"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
+"Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: apps.py:18 settings.py:10
+msgid "Lock manager"
+msgstr "Menedżer blokad"
+
+#: models.py:14
+msgid "Creation datetime"
+msgstr "Data utworzenia"
+
+#: models.py:18
+msgid "Timeout"
+msgstr "Koniec czasu"
+
+#: models.py:21
+msgid "Name"
+msgstr "Nazwa"
+
+#: models.py:27
+msgid "Lock"
+msgstr "Blokada"
+
+#: models.py:28
+msgid "Locks"
+msgstr "Blokady"
+
+#: settings.py:15
+msgid "Path to the class to use when to request and release resource locks."
+msgstr ""
+"Ścieżka do klasy, z której należy skorzystać, podczas ustanawiania i "
+"zwolnień blokady zasobów."
+
+#: settings.py:22
+msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
+msgstr "Argumenty do przekazania LOCK_MANAGER_BACKEND."
+
+#: settings.py:28
+msgid ""
+"Default amount of time in seconds after which a resource lock will be "
+"automatically released."
+msgstr ""
+"Domyślny czas w sekundach, po którym blokada zasobów zostanie automatycznie "
+"zwolniona."

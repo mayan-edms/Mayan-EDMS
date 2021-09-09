@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# Mathias Behrle <mathiasb@m9s.biz>, 2021
+# Berny <berny@bernhard-marx.de>, 2021
+# Jesaja Everling <jeverling@gmail.com>, 2021
+# Fabian Solf <fabian.solf@gmail.com>, 2021
+# Marvin Haschker <marvin@haschker.me>, 2021
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-05 07:23+0000\n"
+"PO-Revision-Date: 2021-04-11 06:32+0000\n"
+"Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:74 events.py:6 permissions.py:6
+msgid "User management"
+msgstr "Benutzerverwaltung"
+
+#: apps.py:92 search.py:10
+msgid "Group"
+msgstr "Gruppe"
+
+#: apps.py:93 apps.py:103 links.py:46 links.py:59 links.py:78 search.py:34
+#: views.py:120
+msgid "Groups"
+msgstr "Gruppen"
+
+#: apps.py:94 search.py:16
+msgid "Name"
+msgstr "Name"
+
+#: apps.py:97 models.py:16 search.py:22
+msgid "User"
+msgstr "Benutzer"
+
+#: apps.py:98 apps.py:187 links.py:51 links.py:86 links.py:104 views.py:306
+msgid "Users"
+msgstr "Benutzer"
+
+#: apps.py:101 search.py:31
+msgid "Email"
+msgstr "E-Mail"
+
+#: apps.py:102 search.py:28
+msgid "First name"
+msgstr "Vorname"
+
+#: apps.py:104
+msgid "Is active?"
+msgstr "Aktiv"
+
+#: apps.py:105 search.py:37
+msgid "Last name"
+msgstr "Nachname"
+
+#: apps.py:106
+msgid "Password"
+msgstr "Passwort"
+
+#: apps.py:107
+msgid "Username"
+msgstr "Benutzer"
+
+#: apps.py:108
+msgid "Last login"
+msgstr "Letzte Anmeldung"
+
+#: apps.py:111
+msgid "Has usable password?"
+msgstr "Verwendbares Passwort"
+
+#: apps.py:129
+msgid "All the groups."
+msgstr "Alle Gruppen."
+
+#: apps.py:133
+msgid "All the users."
+msgstr "Alle Benutzer."
+
+#: dashboard_widgets.py:14
+msgid "Total users"
+msgstr "Benutzer insgesamt"
+
+#: dashboard_widgets.py:30
+msgid "Total groups"
+msgstr "Gruppen insgesamt"
+
+#: events.py:10
+msgid "Group created"
+msgstr "Gruppe erstellt"
+
+#: events.py:13
+msgid "Group edited"
+msgstr "Gruppe bearbeitet"
+
+#: events.py:17
+msgid "User created"
+msgstr "Benutzer erstellt"
+
+#: events.py:20
+msgid "User edited"
+msgstr "Benutzer bearbeitet"
+
+#: events.py:25
+msgid "User logged in"
+msgstr "Benutzer ist angemeldet"
+
+#: events.py:28
+msgid "User logged out"
+msgstr "Benutzer ist abgemeldet"
+
+#: links.py:21
+msgid "User details"
+msgstr "Benutzerdetails"
+
+#: links.py:25
+msgid "Edit user details"
+msgstr "Benutzerdetails bearbeiten"
+
+#: links.py:30 views.py:54
+msgid "Create new group"
+msgstr "Erstellen"
+
+#: links.py:35 links.py:69 links.py:91
+msgid "Delete"
+msgstr "Löschen"
+
+#: links.py:39 links.py:73
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: links.py:64 views.py:152
+msgid "Create new user"
+msgstr "Erstellen"
+
+#: links.py:96
+msgid "User options"
+msgstr "Benutzeroptionen"
+
+#: models.py:20
+msgid "Forbid this user from changing their password."
+msgstr "Diesem Benutzer das Ändern des Passworts verbieten."
+
+#: models.py:26
+msgid "User settings"
+msgstr "Benutzereinstellungen"
+
+#: models.py:27
+msgid "Users settings"
+msgstr "Benutzereinstellungen"
+
+#: permissions.py:10
+msgid "Create new groups"
+msgstr "Gruppen anlegen"
+
+#: permissions.py:13
+msgid "Delete existing groups"
+msgstr "Gruppen löschen"
+
+#: permissions.py:16
+msgid "Edit existing groups"
+msgstr "Gruppen bearbeiten"
+
+#: permissions.py:19
+msgid "View existing groups"
+msgstr "Gruppen anzeigen"
+
+#: permissions.py:22
+msgid "Create new users"
+msgstr "Benutzer anlegen"
+
+#: permissions.py:25
+msgid "Delete existing users"
+msgstr "Benutzer löschen"
+
+#: permissions.py:28
+msgid "Edit existing users"
+msgstr "Benutzer bearbeiten"
+
+#: permissions.py:31
+msgid "View existing users"
+msgstr "Benutzer anzeigen"
+
+#: search.py:40
+msgid "username"
+msgstr "Benutzername"
+
+#: serializers.py:17
+msgid "URL of the API endpoint showing the list users of this group."
+msgstr ""
+"Die URL dieses API-Endpunkts zeigt eine Liste der Benutzer in dieser Gruppe."
+
+#: serializers.py:48
+msgid "Primary key of the user to add to the group."
+msgstr ""
+"Primärschlüssel des Benutzers, welcher zur Gruppe hinzugefügt werden soll."
+
+#: serializers.py:57
+msgid "Primary key of the user to remove from the group."
+msgstr ""
+"Primärschlüssel des Benutzers, welcher von der Gruppe entfernt werden soll."
+
+#: serializers.py:66
+msgid "URL of the API endpoint showing the list groups this user belongs to."
+msgstr ""
+"Die URL dieses API-Endpunkts zeigt eine Liste der Gruppen, in welcher dieser"
+" Benutzer Mitglied ist."
+
+#: utils.py:6
+msgid "Anonymous"
+msgstr "Anonymer Benutzer"
+
+#: views.py:35
+msgid "Current user details"
+msgstr "Aktuelle Benutzerdetails"
+
+#: views.py:43
+msgid "Edit current user details"
+msgstr "Aktuelle Benutzerdetails bearbeiten"
+
+#: views.py:77
+#, python-format
+msgid "Delete the group: %s?"
+msgstr "Gruppe %s löschen?"
+
+#: views.py:93
+#, python-format
+msgid "Edit group: %s"
+msgstr "Gruppe %s bearbeiten"
+
+#: views.py:113
+msgid ""
+"User groups are organizational units. They should mirror the organizational "
+"units of your organization. Groups can't be used for access control. Use "
+"roles for permissions and access control, add groups to them."
+msgstr ""
+"Benutzergruppen sind Organisationseinheiten. Sie sollten die "
+"Organisationseinheiten Ihrer Organisation wiederspiegeln. Gruppen können "
+"nicht für die Zugriffskontrolle verwendet werden. Benutzen Sie Rollen für "
+"Berechtigungen und Zugriffskontrollen und fügen Sie ihnen Gruppen hinzu."
+
+#: views.py:119
+msgid "There are no user groups"
+msgstr "Keine Benutzergruppen vorhanden"
+
+#: views.py:132
+msgid "Available users"
+msgstr "Verfügbare Nutzer"
+
+#: views.py:133
+msgid "Group users"
+msgstr "Gruppenmitglieder"
+
+#: views.py:141
+#, python-format
+msgid "Users of group: %s"
+msgstr "Benutzer von Gruppe %s"
+
+#: views.py:175
+#, python-format
+msgid "User delete request performed on %(count)d user"
+msgstr "%(count)d Benutzer gelöscht"
+
+#: views.py:177
+#, python-format
+msgid "User delete request performed on %(count)d users"
+msgstr "%(count)d Benutzer gelöscht"
+
+#: views.py:185
+msgid "Delete user"
+msgid_plural "Delete users"
+msgstr[0] "Benutzer löschen"
+msgstr[1] "Benutzer löschen"
+
+#: views.py:195
+#, python-format
+msgid "Delete user: %s"
+msgstr "Benutzer löschen: %s"
+
+#: views.py:206
+msgid ""
+"Super user and staff user deleting is not allowed, use the admin interface "
+"for these cases."
+msgstr ""
+"Super User und Staff Benutzer löschen ist nicht erlaubt, benutzen Sie die "
+"Administratoren-Oberfläche dafür."
+
+#: views.py:214
+#, python-format
+msgid "User \"%s\" deleted successfully."
+msgstr "Benutzer \"%s\" erfolgreich gelöscht."
+
+#: views.py:220
+#, python-format
+msgid "Error deleting user \"%(user)s\": %(error)s"
+msgstr "Fehler beim Löschen des Benutzers \"%(user)s\": %(error)s"
+
+#: views.py:238
+#, python-format
+msgid "Details of user: %s"
+msgstr "Details für Benutzer %s"
+
+#: views.py:254
+#, python-format
+msgid "Edit user: %s"
+msgstr "Benutzer %s bearbeiten"
+
+#: views.py:269
+msgid "Available groups"
+msgstr "Verfügbare Gruppen"
+
+#. Translators: "User groups" here refer to the group list of a specific
+#. user.
+#: views.py:272
+msgid "User groups"
+msgstr "Benutzergruppen"
+
+#: views.py:280
+#, python-format
+msgid "Groups of user: %s"
+msgstr "Gruppen von Benutzer %s"
+
+#: views.py:302
+msgid ""
+"User accounts can be create from this view. After creating a user account "
+"you will prompted to set a password for it. "
+msgstr ""
+"Auf dieser Seite können Benutzerkonten erstellt werden. Nach der Erstellung "
+"werden Sie nach dem Passwort gefragt."
+
+#: views.py:305
+msgid "There are no user accounts"
+msgstr "Keine Benutzerkonten vorhanden"
+
+#: views.py:319
+#, python-format
+msgid "Edit options for user: %s"
+msgstr "Optionen für Benutzer %s bearbeiten"
