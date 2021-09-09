@@ -47,7 +47,7 @@
                                                     {% else %}
                                                         <span class="appearance-list-column-label">{{ source_columns_identifier.0.label }}</span>
                                                     {% endif %}
-                                                    {% include 'appearance/partials/column_help_text.html' %}
+                                                    {% include 'appearance/partials/column_help_text.html' with source_column=source_columns_identifier.0 %}
                                                 </span>
                                             </th>
                                         {% endif %}
