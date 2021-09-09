@@ -28,7 +28,7 @@ def factory_conditional_active_by_source(source):
     return conditional_active_by_source
 
 
-def condition_document_creation_access(context):
+def condition_document_creation_access(context, resolved_object):
     AccessControlList = apps.get_model(
         app_label='acls', model_name='AccessControlList'
     )
@@ -42,7 +42,7 @@ def condition_document_creation_access(context):
     ).exists()
 
 
-def condition_document_new_files_allowed(context):
+def condition_document_new_files_allowed(context, resolved_object):
     DocumentFile = apps.get_model(
         app_label='documents', model_name='DocumentFile'
     )
@@ -63,7 +63,7 @@ def condition_document_new_files_allowed(context):
         return True
 
 
-def condition_source_is_not_interactive(context):
+def condition_source_is_not_interactive(context, resolved_object):
     source = context.get('resolved_object', None)
     if source:
         return not getattr(source.get_backend(), 'is_interactive', False)

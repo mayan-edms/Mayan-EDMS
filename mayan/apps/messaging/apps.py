@@ -90,5 +90,5 @@ class MessagingApp(MayanAppConfig):
         )
 
         menu_topbar.bind_links(
-            links=(link_message_list,), position=99
+            links=(link_message_list,), position=40
         )

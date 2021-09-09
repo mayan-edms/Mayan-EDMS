@@ -188,7 +188,7 @@ class TagsApp(MayanAppConfig):
             )
         )
 
-        menu_main.bind_links(links=(menu_tags,), position=98)
+        menu_main.bind_links(links=(menu_tags,), position=60)
 
         menu_multi_item.bind_links(
             links=(link_tag_delete_multiple,), sources=(Tag,)
@@ -202,7 +202,10 @@ class TagsApp(MayanAppConfig):
         )
 
         menu_secondary.bind_links(
-            links=(link_document_tag_multiple_attach, link_document_tag_multiple_remove),
+            links=(
+                link_document_tag_multiple_attach,
+                link_document_tag_multiple_remove
+            ),
             sources=(
                 'tags:tag_attach', 'tags:document_tag_list',
                 'tags:single_document_multiple_tag_remove'

@@ -20,7 +20,7 @@ def get_cascade_condition(
     This is used to avoid showing a link that ends up in a view with an
     empty results set.
     """
-    def condition(context):
+    def condition(context, resolved_object):
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )

@@ -192,6 +192,6 @@ class EventsApp(MayanAppConfig):
         # Other
 
         menu_topbar.bind_links(
-            links=(link_user_notifications_list,), position=99
+            links=(link_user_notifications_list,), position=30
         )
         menu_tools.bind_links(links=(link_events_list,))

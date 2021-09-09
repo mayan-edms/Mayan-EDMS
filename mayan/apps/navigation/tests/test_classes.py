@@ -154,7 +154,7 @@ class MenuClassTestCase(GenericViewTestCase):
     def setUp(self):
         super().setUp()
 
-        self.test_object = self._test_case_group
+        self._create_test_object()
 
         self.add_test_view(test_object=self.test_object)
 
@@ -175,6 +175,30 @@ class MenuClassTestCase(GenericViewTestCase):
         Menu.remove(name=TEST_MENU_NAME)
         Menu.remove(name=TEST_SUBMENU_NAME)
         super().tearDown()
+
+    def test_source_link_unbinding(self):
+        self.menu.bind_links(
+            sources=(self.TestModel,),
+            links=(self.link,)
+        )
+
+        response = self.get(viewname=TEST_VIEW_NAME)
+        context = Context(
+            {
+                'object': self.test_object,
+                'request': response.wsgi_request
+            }
+        )
+        self.assertEqual(
+            self.menu.resolve(context=context)[0]['links'][0].link, self.link
+        )
+
+        self.menu.unbind_links(
+            sources=(self.TestModel,),
+            links=(self.link,)
+        )
+
+        self.assertEqual(self.menu.resolve(context=context), [])
 
     def test_null_source_link_unbinding(self):
         self.menu.bind_links(links=(self.link,))

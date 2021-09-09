@@ -9,11 +9,11 @@ from ..icons import (
 from ..permissions import permission_document_view
 
 
-def condition_is_in_favorites(context):
+def condition_is_in_favorites(context, resolved_object):
     return context['resolved_object'].favorites.exists()
 
 
-def condition_not_is_in_favorites(context):
+def condition_not_is_in_favorites(context, resolved_object):
     return not context['resolved_object'].favorites.exists()
 
 

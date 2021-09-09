@@ -19,7 +19,7 @@ from .permissions import (
 )
 
 
-def condition_cabinet_is_root(context):
+def condition_cabinet_is_root(context, resolved_object):
     return context['resolved_object'].is_root_node()
 
 

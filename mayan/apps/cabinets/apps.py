@@ -185,7 +185,7 @@ class CabinetsApp(MayanAppConfig):
         )
         menu_list_facet.add_proxy_inclusions(source=CabinetSearchResult)
 
-        menu_main.bind_links(links=(menu_cabinets,), position=98)
+        menu_main.bind_links(links=(menu_cabinets,), position=30)
 
         menu_multi_item.bind_links(
             links=(

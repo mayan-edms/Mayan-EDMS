@@ -241,7 +241,7 @@ class DocumentIndexingApp(MayanAppConfig):
                 link_index_template_node_delete
             ), sources=(IndexTemplateNode,)
         )
-        menu_main.bind_links(links=(link_index_instance_menu,), position=98)
+        menu_main.bind_links(links=(link_index_instance_menu,), position=50)
         menu_related.bind_links(
             links=(link_index_template_list,),
             sources=(

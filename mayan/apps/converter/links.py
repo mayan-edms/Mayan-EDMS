@@ -21,7 +21,7 @@ def conditional_active(context, resolved_link):
     return resolved_link.link.view == resolved_link.current_view_name and context.get('layer_name', None) == resolved_link.link.layer_name
 
 
-def condition_valid_transformation_and_arguments(context):
+def condition_valid_transformation_and_arguments(context, resolved_object):
     try:
         transformation = BaseTransformation.get(name=context['object'].name)
     except KeyError:

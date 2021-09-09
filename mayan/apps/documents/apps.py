@@ -732,7 +732,7 @@ class DocumentsApp(MayanAppConfig):
             )
         )
 
-        menu_main.bind_links(links=(menu_documents,), position=0)
+        menu_main.bind_links(links=(menu_documents,), position=10)
 
         menu_setup.bind_links(links=(link_document_type_setup,))
 

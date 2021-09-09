@@ -116,7 +116,6 @@ class MessageListView(SingleObjectListView):
                 'the system.'
             ),
             'no_results_title': _('There are no messages'),
-            'object': self.request.user,
             'title': _('Messages'),
         }
 

@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Link, Separator, Text
@@ -17,6 +18,34 @@ from .permissions import (
     permission_user_edit, permission_user_view
 )
 from .utils import get_user_label_text
+
+
+def condition_user_is_not_admin(context, resolved_object):
+    if not resolved_object:
+        return True
+    else:
+        return not resolved_object.is_superuser and not resolved_object.is_staff
+
+
+def condition_cascade_group_access_and_user_is_not_admin(context, resolved_object):
+    return get_cascade_condition(
+        app_label='auth', model_name='Group',
+        object_permission=permission_group_view,
+        view_permission=permission_group_create
+    ) and condition_user_is_not_admin(
+        context=context, resolved_object=resolved_object
+    )
+
+
+def condition_cascade_user_access_and_user_is_not_admin(context, resolved_object):
+    return get_cascade_condition(
+        app_label='auth', model_name='User',
+        object_permission=permission_user_view,
+        view_permission=permission_user_create,
+    ) and condition_user_is_not_admin(
+        context=context, resolved_object=resolved_object
+    )
+
 
 # Current user
 link_current_user_details = Link(
@@ -61,51 +90,48 @@ link_group_user_list = Link(
     view='user_management:group_members'
 )
 link_group_setup = Link(
-    condition=get_cascade_condition(
-        app_label='auth', model_name='Group',
-        object_permission=permission_group_view,
-        view_permission=permission_group_create,
-    ), icon=icon_group_setup, text=_('Groups'),
+    condition=condition_cascade_group_access_and_user_is_not_admin,
+    icon=icon_group_setup, text=_('Groups'),
     view='user_management:group_list'
 )
 
 # User
 
+
 link_user_create = Link(
-    icon=icon_user_create, permissions=(permission_user_create,),
-    text=_('Create new user'), view='user_management:user_create'
+    condition=condition_user_is_not_admin, icon=icon_user_create,
+    permissions=(permission_user_create,), text=_('Create new user'),
+    view='user_management:user_create'
 )
 link_user_delete_single = Link(
-    args='object.id', icon=icon_user_delete_single,
-    permissions=(permission_user_delete,), tags='dangerous',
-    text=_('Delete'), view='user_management:user_delete_single'
+    args='object.id', condition=condition_user_is_not_admin,
+    icon=icon_user_delete_single, permissions=(permission_user_delete,),
+    tags='dangerous', text=_('Delete'),
+    view='user_management:user_delete_single'
 )
 link_user_delete_multiple = Link(
     icon=icon_user_delete_multiple, tags='dangerous', text=_('Delete'),
     view='user_management:user_delete_multiple'
 )
 link_user_edit = Link(
-    args='object.id', icon=icon_user_edit,
+    args='object.id', condition=condition_user_is_not_admin, icon=icon_user_edit,
     permissions=(permission_user_edit,), text=_('Edit'),
     view='user_management:user_edit'
 )
 link_user_group_list = Link(
-    args='object.id', icon=icon_user_group_list,
-    permissions=(permission_user_edit,), text=_('Groups'),
-    view='user_management:user_groups'
+    args='object.id', condition=condition_user_is_not_admin,
+    icon=icon_user_group_list, permissions=(permission_user_edit,),
+    text=_('Groups'), view='user_management:user_groups'
 )
 link_user_list = Link(
-    condition=get_cascade_condition(
-        app_label='auth', model_name='User',
-        object_permission=permission_user_view,
-        view_permission=permission_user_create,
-    ), icon=icon_user_list, text=_('Users'),
+    icon=icon_user_list, text=_('Users'),
+    condition=condition_cascade_user_access_and_user_is_not_admin,
     view='user_management:user_list'
 )
 link_user_set_options = Link(
-    args='object.id', icon=icon_user_set_options,
-    permissions=(permission_user_edit,), text=_('User options'),
-    view='user_management:user_options'
+    args='object.id', condition=condition_user_is_not_admin,
+    icon=icon_user_set_options, permissions=(permission_user_edit,),
+    text=_('User options'), view='user_management:user_options'
 )
 link_user_setup = Link(
     condition=get_cascade_condition(
@@ -115,7 +141,9 @@ link_user_setup = Link(
     ), icon=icon_user_setup, text=_('Users'),
     view='user_management:user_list'
 )
+
 separator_user_label = Separator()
+
 text_user_label = Text(
     html_extra_classes='menu-user-name', text=get_user_label_text
 )

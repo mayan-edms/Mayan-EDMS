@@ -169,8 +169,13 @@ class UserManagementApp(MayanAppConfig):
                 'id': '{user.user_options.id}'
             }
         )
+
+        def condition_copy_user_model(instance):
+            return not instance.is_superuser and not instance.is_staff
+
         ModelCopy(
-            model=User, bind_link=True, register_permission=True
+            model=User, condition=condition_copy_user_model, bind_link=True,
+            register_permission=True
         ).add_fields(
             field_names=(
                 'username', 'first_name', 'last_name', 'email', 'is_active',

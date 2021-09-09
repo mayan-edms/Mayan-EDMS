@@ -466,7 +466,7 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         menu_main.bind_links(
-            links=(link_workflow_runtime_proxy_list,), position=10
+            links=(link_workflow_runtime_proxy_list,), position=20
         )
         menu_multi_item.bind_links(
             links=(link_document_multiple_workflow_templates_launch,),
