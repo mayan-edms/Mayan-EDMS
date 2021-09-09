@@ -1,5 +1,4 @@
 from django.core import management
-from django.core.management.base import CommandError
 
 from ...signals import signal_perform_upgrade, signal_post_upgrade, signal_pre_upgrade
 

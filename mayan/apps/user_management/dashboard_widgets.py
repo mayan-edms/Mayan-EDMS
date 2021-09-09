@@ -22,7 +22,6 @@ class DashboardWidgetUserTotal(DashboardWidgetNumeric):
             permission=permission_user_view,
             queryset=get_user_model().objects.all(), user=self.request.user
         ).count()
-        return super().render(request)
 
 
 class DashboardWidgetGroupTotal(DashboardWidgetNumeric):

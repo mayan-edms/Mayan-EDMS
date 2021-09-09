@@ -53,4 +53,3 @@ class RecentlyAccessedDocumentProxy(Document):
         proxy = True
         verbose_name = _('Recently accessed document')
         verbose_name_plural = _('Recently accessed documents')
-
