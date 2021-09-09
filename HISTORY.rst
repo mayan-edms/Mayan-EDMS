@@ -316,6 +316,11 @@
 - Refactor ``SourceColumn.get_for_source``.
 - Add ``RecentlyAccessedDocumentProxy`` to allow adding a column with the
   creation date time.
+- Navigation refactor:
+
+  - Rewritten link to source matching code.
+  - Rewritten menu resolution.
+  - Pass the ``resolved_object`` to link conditions.
 
 4.0.15 (2021-08-07)
 ===================
