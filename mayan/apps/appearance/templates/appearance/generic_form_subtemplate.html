@@ -89,7 +89,7 @@
                     {% endif %}
 
                     {% for button in extra_buttons %}
-                        <button class="btn btn-default" style="color:#000000" name="{% if form.prefix %}{{ form.prefix }}-{{ button.name }}{% else %}{{ button.name }}{% endif %}" type="submit">
+                        <button class="btn btn-default" name="{% if form.prefix %}{{ form.prefix }}-{{ button.name }}{% else %}{{ button.name }}{% endif %}" type="submit">
                             {% if button.icon %}
                                 {{ button.icon.render }}
                             {% endif %}
