@@ -16,6 +16,7 @@ class FilteredRelatedFieldMixin:
         self.source_permission = kwargs.pop('source_permission', None)
         self.source_queryset = kwargs.pop('source_queryset', None)
         self.source_queryset_method = kwargs.pop('source_queryset_method', None)
+
         super().__init__(**kwargs)
 
     def get_queryset(self):
@@ -25,7 +26,7 @@ class FilteredRelatedFieldMixin:
 
         if self.source_model:
             queryset = self.source_model._meta.default_manager.all()
-        elif self.source_queryset:
+        elif self.source_queryset is not None:
             queryset = self.source_queryset
             if isinstance(queryset, (QuerySet, Manager)):
                 # Ensure queryset is re-evaluated whenever used.
