@@ -44,7 +44,7 @@ from .permissions import (
 class DocumentIndexingApp(MayanAppConfig):
     app_namespace = 'indexing'
     app_url = 'indexing'
-    has_rest_api = True
+    has_rest_api = False
     has_tests = True
     name = 'mayan.apps.document_indexing'
     verbose_name = _('Document indexing')
@@ -142,13 +142,13 @@ class DocumentIndexingApp(MayanAppConfig):
         SourceColumn(
             func=lambda context: context[
                 'object'
-            ].instance_root.get_descendants_count(), include_label=True,
+            ].index_instance_root_node.get_descendants_count(), include_label=True,
             label=_('Total levels'), source=IndexInstance
         )
         SourceColumn(
             func=lambda context: context[
                 'object'
-            ].instance_root.get_descendants_document_count(
+            ].index_instance_root_node.get_descendants_document_count(
                 user=context['request'].user
             ), include_label=True, label=_('Total documents'),
             source=IndexInstance

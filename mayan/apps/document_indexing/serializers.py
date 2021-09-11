@@ -15,22 +15,20 @@ from .models import (
 
 
 class IndexInstanceSerializer(serializers.ModelSerializer):
-    item_count = serializers.SerializerMethodField(read_only=True)
-    node_count = serializers.SerializerMethodField(read_only=True)
+    #item_count = serializers.SerializerMethodField(read_only=True)
+    #node_count = serializers.SerializerMethodField(read_only=True)
     url = serializers.SerializerMethodField(read_only=True)
     nodes_url = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
-        fields = (
-            'label', 'id', 'item_count', 'node_count', 'nodes_url', 'url'
-        )
+        fields = ('label', 'id', 'nodes_url', 'url')
         model = IndexInstance
 
-    def get_item_count(self, obj):
-        return obj.get_item_count(user=self.context['request'])
+    #def get_item_count(self, obj):
+    #    return obj.get_item_count(user=self.context['request'])
 
-    def get_node_count(self, obj):
-        return obj.get_instance_node_count()
+    #def get_node_count(self, obj):
+    #    return obj.get_instance_node_count()
 
     def get_url(self, obj):
         return reverse(
@@ -49,7 +47,7 @@ class IndexInstanceSerializer(serializers.ModelSerializer):
 
 class IndexInstanceNodeSerializer(serializers.ModelSerializer):
     children = RecursiveField(many=True, read_only=True)
-    documents_count = serializers.SerializerMethodField()
+    #documents_count = serializers.SerializerMethodField()
     documents_url = serializers.SerializerMethodField(read_only=True)
     index_url = serializers.SerializerMethodField(read_only=True)
     parent_url = serializers.SerializerMethodField(read_only=True)
@@ -57,15 +55,15 @@ class IndexInstanceNodeSerializer(serializers.ModelSerializer):
 
     class Meta:
         fields = (
-            'documents_count', 'documents_url', 'children', 'id',
-            'index_url', 'level', 'parent', 'parent_url', 'value', 'url'
+            'documents_url', 'children', 'id', 'index_url', 'level',
+            'parent', 'parent_url', 'value', 'url'
         )
         model = IndexInstanceNode
 
-    def get_documents_count(self, obj):
-        return obj.get_descendants_document_count(
-            user=self.context['request'].user
-        )
+    #def get_documents_count(self, obj):
+    #    return obj.get_descendants_document_count(
+    #        user=self.context['request'].user
+    #    )
 
     def get_documents_url(self, obj):
         return reverse(

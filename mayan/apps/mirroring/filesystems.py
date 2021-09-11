@@ -138,7 +138,7 @@ class IndexFilesystem(LoggingMixIn, Operations):
 
         logger.debug('parts: %s', parts)
 
-        node = self.index_template.instance_root
+        node = self.index_template.index_instance_root_node
 
         if len(parts) > 1 and parts[1] != '':
             path_cache = cache.get_path(path=path)

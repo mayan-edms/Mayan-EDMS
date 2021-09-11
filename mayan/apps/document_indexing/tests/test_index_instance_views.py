@@ -130,7 +130,7 @@ class IndexInstanceViewTestCase(
         self._clear_events()
 
         response = self._request_test_index_instance_node_view(
-            index_instance_node=self.test_index_template.instance_root
+            index_instance_node=self.test_index_template.index_instance_root_node
         )
         self.assertEqual(response.status_code, 403)
 
@@ -146,7 +146,7 @@ class IndexInstanceViewTestCase(
         self._clear_events()
 
         response = self._request_test_index_instance_node_view(
-            index_instance_node=self.test_index_template.instance_root
+            index_instance_node=self.test_index_template.index_instance_root_node
         )
         self.assertContains(
             response=response, text=TEST_INDEX_TEMPLATE_LABEL, status_code=200

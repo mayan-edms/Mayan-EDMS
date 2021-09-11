@@ -859,7 +859,7 @@ class IndexToolsViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
-            self.test_index_template.instance_root.get_children_count(), 0
+            self.test_index_template.index_instance_root_node.get_children_count(), 0
         )
 
     def test_index_all_rebuild_with_access(self):
@@ -880,7 +880,7 @@ class IndexToolsViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         # An instance root exists.
-        self.assertTrue(self.test_index_template.instance_root.pk)
+        self.assertTrue(self.test_index_template.index_instance_root_node.pk)
 
     def test_index_all_reset_no_permission(self):
         self._create_test_index_template(add_test_document_type=True)
@@ -898,7 +898,7 @@ class IndexToolsViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
-            self.test_index_template.instance_root.get_children_count(), 1
+            self.test_index_template.index_instance_root_node.get_children_count(), 1
         )
 
     def test_index_all_reset_with_access(self):
@@ -921,5 +921,5 @@ class IndexToolsViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_index_template.instance_root.get_children_count(), 0
+            self.test_index_template.index_instance_root_node.get_children_count(), 0
         )

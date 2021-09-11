@@ -29,7 +29,7 @@ class IndexTestCase(IndexTemplateTestMixin, DocumentTestMixin, BaseTestCase):
 
     def test_document_description_index(self):
         self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+            parent=self.test_index_template.index_template_root_node,
             expression=TEST_INDEX_TEMPLATE_DOCUMENT_DESCRIPTION_EXPRESSION,
             link_documents=True
         )
@@ -51,7 +51,7 @@ class IndexTestCase(IndexTemplateTestMixin, DocumentTestMixin, BaseTestCase):
 
     def test_document_label_index(self):
         self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+            parent=self.test_index_template.index_template_root_node,
             expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
             link_documents=True
         )
@@ -70,7 +70,7 @@ class IndexTestCase(IndexTemplateTestMixin, DocumentTestMixin, BaseTestCase):
 
     def test_date_based_index(self):
         level_year = self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+            parent=self.test_index_template.index_template_root_node,
             expression='{{ document.datetime_created|date:"Y" }}',
             link_documents=False
         )
@@ -109,7 +109,7 @@ class IndexTestCase(IndexTemplateTestMixin, DocumentTestMixin, BaseTestCase):
         self._create_test_document_stub()
 
         # Create simple index template
-        root = self.test_index_template.template_root
+        root = self.test_index_template.index_template_root_node
         level_1 = self.test_index_template.node_templates.create(
             parent=root, expression='{{ document.uuid }}',
             link_documents=False
@@ -142,7 +142,7 @@ class IndexTestCase(IndexTemplateTestMixin, DocumentTestMixin, BaseTestCase):
         )
 
         # Create simple index template
-        root = self.test_index_template.template_root
+        root = self.test_index_template.index_template_root_node
         self.test_index_template.node_templates.create(
             parent=root, expression=TEST_INDEX_TEMPLATE_METADATA_EXPRESSION,
             link_documents=True
@@ -228,7 +228,7 @@ class IndexTestCase(IndexTemplateTestMixin, DocumentTestMixin, BaseTestCase):
         the indexing should stop. GitLab issue #391.
         """
         level_1 = self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+            parent=self.test_index_template.index_template_root_node,
             expression='',
             link_documents=True
         )
@@ -253,7 +253,7 @@ class IndexTestCase(IndexTemplateTestMixin, DocumentTestMixin, BaseTestCase):
         )
 
         # Create simple index template
-        root = self.test_index_template.template_root
+        root = self.test_index_template.index_template_root_node
         self.test_index_template.node_templates.create(
             parent=root, expression='{{ document.metadata_value_of.test }}',
             link_documents=True
@@ -278,6 +278,23 @@ class IndexTestCase(IndexTemplateTestMixin, DocumentTestMixin, BaseTestCase):
         )
 
 
+# ~ class IndexInstanceTestCase(
+    # ~ IndexTemplateTestMixin, DocumentTestMixin, BaseTestCase
+# ~ ):
+    # ~ auto_upload_test_document = False
+
+    # ~ def setUp(self):
+        # ~ super().setUp()
+        # ~ self._create_test_document_stub()
+        # ~ self._create_test_index_template(add_test_document_type=True)
+
+    # ~ def test_delete_empty(self):
+        # ~ self.test_index_template.rebuild()
+        # ~ #IndexTemplate.objects.rebuild()
+
+
+
+
 class IndexIntegrityTestCase(
     IndexTemplateTestMixin, DocumentTestMixin, BaseTransactionTestCase
 ):
@@ -290,7 +307,7 @@ class IndexIntegrityTestCase(
 
     def test_unique_value_per_level(self):
         self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+            parent=self.test_index_template.index_template_root_node,
             expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
             link_documents=True
         )

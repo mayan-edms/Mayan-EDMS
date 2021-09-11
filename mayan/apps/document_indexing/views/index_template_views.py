@@ -181,15 +181,15 @@ class IndexTemplateNodeListView(
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'index': self.external_object,
-            'navigation_object_list': ('index',),
+            'object': self.external_object,
+            'navigation_object_list': ('object',),
             'title': _(
                 'Tree template nodes for index: %s'
             ) % self.external_object,
         }
 
     def get_source_queryset(self):
-        return self.external_object.template_root.get_descendants(
+        return self.external_object.index_template_root_node.get_descendants(
             include_self=True
         )
 

@@ -60,14 +60,14 @@ def code_rebuild_indexes(apps, schema_editor):
                         )
 
     for index_template in IndexTemplate.objects.filter(enabled=True):
-        template_root = index_template.node_templates.get(parent=None)
+        index_template_root_node = index_template.node_templates.get(parent=None)
 
         IndexInstanceNode.objects.create(
-            index_template_node=template_root, parent=None
+            index_template_node=index_template_root_node, parent=None
         )
 
         for document in Document.objects.filter(document_type__in=index_template.document_types.all()):
-            index_document(node_template=template_root, document=document)
+            index_document(node_template=index_template_root_node, document=document)
 
 
 class Migration(migrations.Migration):

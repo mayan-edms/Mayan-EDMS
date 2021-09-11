@@ -114,7 +114,7 @@ class IndexTemplateNodeViewTestMixin:
     def _request_test_index_node_create_view(self):
         return self.post(
             viewname='indexing:template_node_create', kwargs={
-                'index_template_node_id': self.test_index_template.template_root.pk
+                'index_template_node_id': self.test_index_template.index_template_root_node.pk
             }, data={
                 'expression_template': TEST_INDEX_TEMPLATE_NODE_EXPRESSION,
                 'index': self.test_index_template.pk,
@@ -179,13 +179,13 @@ class IndexTemplateTestMixin:
         expression = expression or TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION
 
         self.test_index_template_node = self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+            parent=self.test_index_template.index_template_root_node,
             expression=expression, link_documents=True
         )
 
         if rebuild:
             IndexTemplate.objects.rebuild()
-            self.test_index_instance_node = self.test_index_template.instance_root.get_children().first()
+            self.test_index_instance_node = self.test_index_template.index_instance_root_node.get_children().first()
 
 
 class IndexTemplateActionAPIViewTestMixin:

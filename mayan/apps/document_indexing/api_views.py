@@ -269,7 +269,7 @@ class APIIndexTemplateNodeListView(
     ordering_fields = ('enabled', 'id', 'link_documents')
 
     def get_queryset(self):
-        return self.get_index_template().template_root.get_children()
+        return self.get_index_template().index_template_root_node.get_children()
 
 
 class APIIndexTemplateNodeDetailView(

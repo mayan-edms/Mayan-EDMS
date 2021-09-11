@@ -13,12 +13,12 @@ logger = logging.getLogger(name=__name__)
     bind=True, ignore_result=True, max_retries=None, retry_backoff=True
 )
 def task_delete_empty(self):
-    IndexInstanceNode = apps.get_model(
-        app_label='document_indexing', model_name='IndexInstanceNode'
+    IndexInstance = apps.get_model(
+        app_label='document_indexing', model_name='IndexInstance'
     )
 
     try:
-        IndexInstanceNode.objects.delete_empty()
+        IndexInstance.objects.delete_empty_nodes()
     except LockError as exception:
         raise self.retry(exc=exception)
 
@@ -30,8 +30,8 @@ def task_index_document(self, document_id):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
     )
-    IndexTemplate = apps.get_model(
-        app_label='document_indexing', model_name='IndexTemplate'
+    IndexInstance = apps.get_model(
+        app_label='document_indexing', model_name='IndexInstance'
     )
 
     try:
@@ -42,7 +42,7 @@ def task_index_document(self, document_id):
         """
     else:
         try:
-            IndexTemplate.objects.index_document(document=document)
+            IndexInstance.objects.document_add(document=document)
         except OperationalError as exception:
             logger.warning(
                 'Operational error while trying to index document: '
@@ -78,8 +78,8 @@ def task_remove_document(self, document_id):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
     )
-    IndexInstanceNode = apps.get_model(
-        app_label='document_indexing', model_name='IndexInstanceNode'
+    IndexInstance = apps.get_model(
+        app_label='document_indexing', model_name='IndexInstance'
     )
 
     try:
@@ -89,11 +89,11 @@ def task_remove_document(self, document_id):
         # Since it was automatically removed from the document M2M
         # we just now delete the empty instance nodes
         try:
-            IndexInstanceNode.objects.delete_empty()
+            IndexInstance.objects.delete_empty_nodes()
         except LockError as exception:
             raise self.retry(exc=exception)
     else:
         try:
-            IndexInstanceNode.objects.remove_document(document=document)
+            IndexInstance.objects.document_remove(document=document)
         except LockError as exception:
             raise self.retry(exc=exception)

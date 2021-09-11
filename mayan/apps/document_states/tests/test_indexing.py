@@ -31,9 +31,10 @@ class DocumentStateIndexingTestCase(
         index_template.document_types.add(self.test_document_type)
 
         # Create simple index template.
-        root = index_template.template_root
-        index_template.node_templates.create(
-            parent=root, expression=TEST_INDEX_TEMPLATE_METADATA_EXPRESSION,
+        index_template_root_node = index_template.index_template_root_node
+        index_template.index_template_root_node.create(
+            parent=index_template_root_node,
+            expression=TEST_INDEX_TEMPLATE_METADATA_EXPRESSION,
             link_documents=True
         )
 

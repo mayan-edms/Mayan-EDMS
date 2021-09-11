@@ -110,12 +110,13 @@ link_index_template_node_create = Link(
     text=_('New child node'), view='indexing:template_node_create'
 )
 link_index_template_node_delete = Link(
-    args='resolved_object.pk', condition=condition_is_not_root_node,
+    args='resolved_object.pk',#, condition=condition_is_not_root_node,
     icon=icon_index_template_node_delete, tags='dangerous',
     text=_('Delete'), view='indexing:template_node_delete'
 )
 link_index_template_node_edit = Link(
     args='resolved_object.pk', icon=icon_index_template_node_edit,
-    condition=condition_is_not_root_node, text=_('Edit'),
+    #condition=condition_is_not_root_node, text=_('Edit'),
+    text=_('Edit'),
     view='indexing:template_node_edit'
 )

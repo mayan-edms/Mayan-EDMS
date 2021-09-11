@@ -19,7 +19,7 @@ class TagSignalIndexingTestCase(
         self._create_test_tag()
         self._create_test_index_template(add_test_document_type=True)
 
-        root = self.test_index_template.template_root
+        root = self.test_index_template.index_template_root_node
         self.test_index_template.node_templates.create(
             parent=root, expression=TEST_TAG_INDEX_NODE_TEMPLATE,
             link_documents=True
