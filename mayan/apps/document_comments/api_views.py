@@ -16,7 +16,7 @@ class APICommentListView(
     get: Returns a list of all the document comments.
     post: Create a new document comment.
     """
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     external_object_pk_url_kwarg = 'document_id'
     mayan_external_object_permissions = {
         'GET': (permission_document_comment_view,),
@@ -43,7 +43,7 @@ class APICommentView(
     delete: Delete the selected document comment.
     get: Returns the details of the selected document comment.
     """
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     external_object_pk_url_kwarg = 'document_id'
     mayan_external_object_permissions = {
         'DELETE': (permission_document_comment_delete,),

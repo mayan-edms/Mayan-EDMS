@@ -20,7 +20,7 @@ class APIWorkflowInstanceListView(
     """
     get: Returns a list of all the document workflow instances.
     """
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     external_object_pk_url_kwarg = 'document_id'
     mayan_external_object_permissions = {
         'GET': (permission_workflow_template_view,),
@@ -40,7 +40,7 @@ class APIWorkflowInstanceDetailView(
     """
     get: Return the details of the selected document workflow instances.
     """
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     external_object_pk_url_kwarg = 'document_id'
     lookup_url_kwarg = 'workflow_instance_id'
     mayan_external_object_permissions = {
@@ -62,7 +62,7 @@ class APIWorkflowInstanceLogEntryDetailView(
     get: Return the details of the selected document instances log entry.
     """
     external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     mayan_external_object_permissions = {
         'GET': (permission_workflow_template_view,),
     }
@@ -89,7 +89,7 @@ class APIWorkflowInstanceLogEntryListView(
     post: Transition a document workflow by creating a new document workflow instance log entry.
     """
     external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     mayan_external_object_permissions = {
         'GET': (permission_workflow_template_view,),
         'POST': (permission_workflow_instance_transition,),
@@ -133,7 +133,7 @@ class APIWorkflowInstanceLogEntryTransitionListView(
     get: Returns a list of all the possible transition choices for the workflow instance.
     """
     external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     mayan_external_object_permissions = {
         'GET': (permission_workflow_template_view,),
     }

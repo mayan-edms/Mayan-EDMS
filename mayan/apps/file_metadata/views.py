@@ -27,7 +27,7 @@ from .permissions import (
 class DocumentFileDriverListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_file_metadata_view
     external_object_pk_url_kwarg = 'document_file_id'
-    external_object_queryset = DocumentFile.valid
+    external_object_queryset = DocumentFile.valid.all()
 
     def get_extra_context(self):
         return {
@@ -107,7 +107,7 @@ class DocumentFileDriverEntryFileMetadataListView(
 class DocumentFileSubmitView(MultipleObjectConfirmActionView):
     object_permission = permission_file_metadata_submit
     pk_url_kwarg = 'document_file_id'
-    source_queryset = DocumentFile.valid
+    source_queryset = DocumentFile.valid.all()
     success_message_singular = '%(count)d document file submitted to the file metadata queue.'
     success_message_plural = '%(count)d documents files submitted to the file metadata queue.'
 

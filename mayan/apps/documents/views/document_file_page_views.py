@@ -50,7 +50,7 @@ logger = logging.getLogger(name=__name__)
 class DocumentFilePageCountUpdateView(MultipleObjectConfirmActionView):
     object_permission = permission_document_file_tools
     pk_url_kwarg = 'document_file_id'
-    source_queryset = DocumentFile.valid
+    source_queryset = DocumentFile.valid.all()
     success_message = _(
         '%(count)d document file queued for page count recalculation.'
     )
@@ -93,7 +93,7 @@ class DocumentFilePageCountUpdateView(MultipleObjectConfirmActionView):
 class DocumentFilePageListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_document_file_view
     external_object_pk_url_kwarg = 'document_file_id'
-    external_object_queryset = DocumentFile.valid
+    external_object_queryset = DocumentFile.valid.all()
 
     def get_extra_context(self):
         return {
@@ -123,7 +123,7 @@ class DocumentFilePageListView(ExternalObjectViewMixin, SingleObjectListView):
 class DocumentFilePageNavigationBase(ExternalObjectViewMixin, RedirectView):
     external_object_permission = permission_document_file_view
     external_object_pk_url_kwarg = 'document_file_page_id'
-    external_object_queryset = DocumentFilePage.valid
+    external_object_queryset = DocumentFilePage.valid.all()
 
     def get_redirect_url(self, *args, **kwargs):
         """
@@ -211,7 +211,7 @@ class DocumentFilePageNavigationPrevious(DocumentFilePageNavigationBase):
 class DocumentFilePageView(ExternalObjectViewMixin, SimpleView):
     external_object_permission = permission_document_file_view
     external_object_pk_url_kwarg = 'document_file_page_id'
-    external_object_queryset = DocumentFilePage.valid
+    external_object_queryset = DocumentFilePage.valid.all()
     template_name = 'appearance/generic_form.html'
 
     def get_extra_context(self):
@@ -263,7 +263,7 @@ class DocumentFilePageInteractiveTransformation(
 ):
     external_object_permission = permission_document_file_view
     external_object_pk_url_kwarg = 'document_file_page_id'
-    external_object_queryset = DocumentFilePage.valid
+    external_object_queryset = DocumentFilePage.valid.all()
 
     def get_object(self):
         return self.external_object

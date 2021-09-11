@@ -30,7 +30,7 @@ class APIDocumentResolvedSmartLinkDetailView(
     get: Return the details of the selected resolved smart link.
     """
     external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     lookup_url_kwarg = 'resolved_smart_link_id'
     mayan_external_object_permissions = {
         'GET': (permission_resolved_smart_link_view,)
@@ -73,7 +73,7 @@ class APIDocumentResolvedSmartLinkDocumentListView(
     get: Returns a list of the smart link documents that apply to the document.
     """
     external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     mayan_external_object_permissions = {
         'GET': (permission_resolved_smart_link_view,)
     }
@@ -119,7 +119,7 @@ class APIDocumentResolvedSmartLinkListView(
     get: Returns a list of the smart links that apply to the document.
     """
     external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     lookup_url_kwarg = 'resolved_smart_link_id'
     mayan_external_object_permissions = {
         'GET': (permission_resolved_smart_link_view,)

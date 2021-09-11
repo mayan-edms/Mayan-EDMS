@@ -34,7 +34,7 @@ logger = logging.getLogger(name=__name__)
 class DocumentResolvedSmartLinkDocumentListView(ExternalObjectViewMixin, DocumentListView):
     external_object_permission = permission_resolved_smart_link_view
     external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
 
     def dispatch(self, request, *args, **kwargs):
         self.resolved_smart_link = self.get_resolved_smart_link()
@@ -153,7 +153,7 @@ class DocumentResolvedSmartLinkListView(
 ):
     external_object_permission = permission_resolved_smart_link_view
     external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     object_permission = permission_resolved_smart_link_view
 
     def get_extra_context(self):

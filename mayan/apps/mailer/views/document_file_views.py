@@ -13,7 +13,7 @@ from .base import ObjectAttachmentMailView, ObjectLinkMailView
 class MailDocumentFileAttachmentView(ObjectAttachmentMailView):
     object_permission = permission_send_document_file_attachment
     pk_url_kwarg = 'document_file_id'
-    source_queryset = DocumentFile.valid
+    source_queryset = DocumentFile.valid.all()
     success_message = _('%(count)d document file queued for email delivery')
     success_message_plural = _(
         '%(count)d document files queued for email delivery'
@@ -26,7 +26,7 @@ class MailDocumentFileAttachmentView(ObjectAttachmentMailView):
 class MailDocumentFileLinkView(ObjectLinkMailView):
     object_permission = permission_send_document_file_link
     pk_url_kwarg = 'document_file_id'
-    source_queryset = DocumentFile.valid
+    source_queryset = DocumentFile.valid.all()
     success_message = _(
         '%(count)d document file link queued for email delivery'
     )

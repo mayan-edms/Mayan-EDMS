@@ -45,7 +45,7 @@ logger = logging.getLogger(name=__name__)
 class DocumentFileDetachedSignatureCreateView(ExternalObjectViewMixin, FormView):
     external_object_permission = permission_document_file_sign_detached
     external_object_pk_url_kwarg = 'document_file_id'
-    external_object_queryset = DocumentFile.valid
+    external_object_queryset = DocumentFile.valid.all()
     form_class = DocumentFileSignatureCreateForm
 
     def form_valid(self, form):
@@ -112,7 +112,7 @@ class DocumentFileDetachedSignatureCreateView(ExternalObjectViewMixin, FormView)
 class DocumentFileEmbeddedSignatureCreateView(ExternalObjectViewMixin, FormView):
     external_object_permission = permission_document_file_sign_embedded
     external_object_pk_url_kwarg = 'document_file_id'
-    external_object_queryset = DocumentFile.valid
+    external_object_queryset = DocumentFile.valid.all()
     form_class = DocumentFileSignatureCreateForm
 
     def form_valid(self, form):
@@ -227,7 +227,7 @@ class DocumentFileDetachedSignatureUploadView(
 ):
     external_object_permission = permission_document_file_signature_upload
     external_object_pk_url_kwarg = 'document_file_id'
-    external_object_queryset = DocumentFile.valid
+    external_object_queryset = DocumentFile.valid.all()
     fields = ('signature_file',)
     model = DetachedSignature
 
@@ -281,7 +281,7 @@ class DocumentFileSignatureListView(
 ):
     external_object_permission = permission_document_file_signature_view
     external_object_pk_url_kwarg = 'document_file_id'
-    external_object_queryset = DocumentFile.valid
+    external_object_queryset = DocumentFile.valid.all()
 
     def get_extra_context(self):
         return {

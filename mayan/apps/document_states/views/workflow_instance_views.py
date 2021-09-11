@@ -24,7 +24,7 @@ from ..permissions import (
 class WorkflowInstanceListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_workflow_template_view
     external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     object_permission = permission_workflow_template_view
 
     def get_extra_context(self):
@@ -95,7 +95,7 @@ class WorkflowInstanceDetailView(ExternalObjectViewMixin, SingleObjectListView):
 
 class WorkflowInstanceTransitionExecuteView(ExternalObjectViewMixin, FormView):
     external_object_pk_url_kwarg = 'workflow_instance_id'
-    external_object_queryset = WorkflowInstance.valid
+    external_object_queryset = WorkflowInstance.valid.all()
     form_class = DynamicForm
     template_name = 'appearance/generic_form.html'
 
@@ -194,7 +194,7 @@ class WorkflowInstanceTransitionExecuteView(ExternalObjectViewMixin, FormView):
 
 class WorkflowInstanceTransitionSelectView(ExternalObjectViewMixin, FormView):
     external_object_pk_url_kwarg = 'workflow_instance_id'
-    external_object_queryset = WorkflowInstance.valid
+    external_object_queryset = WorkflowInstance.valid.all()
     form_class = WorkflowInstanceTransitionSelectForm
     template_name = 'appearance/generic_form.html'
 

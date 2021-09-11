@@ -31,7 +31,7 @@ class TagAttachActionView(MultipleObjectFormActionView):
     form_class = TagMultipleSelectionForm
     object_permission = permission_tag_attach
     pk_url_kwarg = 'document_id'
-    source_queryset = Document.valid
+    source_queryset = Document.valid.all()
     success_message_single = _(
         'Tags attached to document "%(object)s" successfully.'
     )
@@ -208,7 +208,7 @@ class TagDocumentListView(ExternalObjectViewMixin, DocumentListView):
 class DocumentTagListView(ExternalObjectViewMixin, TagListView):
     external_object_permission = permission_tag_view
     external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     tag_model = DocumentTag
 
     def get_extra_context(self):
@@ -240,7 +240,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
     form_class = TagMultipleSelectionForm
     object_permission = permission_tag_remove
     pk_url_kwarg = 'document_id'
-    source_queryset = Document.valid
+    source_queryset = Document.valid.all()
     success_message_single = _(
         'Tags removed from document "%(object)s" successfully.'
     )

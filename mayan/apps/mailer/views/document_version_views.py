@@ -13,7 +13,7 @@ from .base import ObjectAttachmentMailView, ObjectLinkMailView
 class MailDocumentVersionAttachmentView(ObjectAttachmentMailView):
     object_permission = permission_send_document_version_attachment
     pk_url_kwarg = 'document_version_id'
-    source_queryset = DocumentVersion.valid
+    source_queryset = DocumentVersion.valid.all()
     success_message = _(
         '%(count)d document version queued for email delivery'
     )
@@ -28,7 +28,7 @@ class MailDocumentVersionAttachmentView(ObjectAttachmentMailView):
 class MailDocumentVersionLinkView(ObjectLinkMailView):
     object_permission = permission_send_document_version_link
     pk_url_kwarg = 'document_version_id'
-    source_queryset = DocumentVersion.valid
+    source_queryset = DocumentVersion.valid.all()
     success_message = _(
         '%(count)d document version link queued for email delivery'
     )

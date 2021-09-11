@@ -42,7 +42,7 @@ class FavoriteDocumentListView(DocumentListView):
 class FavoriteAddView(MultipleObjectConfirmActionView):
     object_permission = permission_document_view
     pk_url_kwarg = 'document_id'
-    source_queryset = Document.valid
+    source_queryset = Document.valid.all()
     success_message = _(
         '%(count)d document added to favorites.'
     )
@@ -74,7 +74,7 @@ class FavoriteRemoveView(MultipleObjectConfirmActionView):
     error_message = _('Document "%(instance)s" is not in favorites.')
     object_permission = permission_document_view
     pk_url_kwarg = 'document_id'
-    source_queryset = Document.valid
+    source_queryset = Document.valid.all()
     success_message = _(
         '%(count)d document removed from favorites.'
     )

@@ -25,7 +25,7 @@ class APIResolvedWebLinkListView(
     """
     get: Returns a list of resolved web links for the specified document.
     """
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     external_object_pk_url_kwarg = 'document_id'
     mayan_external_object_permissions = {'GET': (permission_web_link_instance_view,)}
     mayan_object_permissions = {'GET': (permission_web_link_instance_view,)}
@@ -43,7 +43,7 @@ class APIResolvedWebLinkView(
     """
     get: Return the details of the selected resolved smart link.
     """
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     external_object_pk_url_kwarg = 'document_id'
     lookup_url_kwarg = 'resolved_web_link_id'
     mayan_external_object_permissions = {'GET': (permission_web_link_instance_view,)}
@@ -62,7 +62,7 @@ class APIResolvedWebLinkNavigateView(
     """
     get: Perform a redirection to the target URL of the selected resolved smart link.
     """
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     external_object_pk_url_kwarg = 'document_id'
     lookup_url_kwarg = 'resolved_web_link_id'
     mayan_external_object_permissions = {'GET': (permission_web_link_instance_view,)}

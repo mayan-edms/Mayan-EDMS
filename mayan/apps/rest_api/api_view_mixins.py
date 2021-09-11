@@ -6,6 +6,7 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 
+from mayan.apps.databases.utils import check_queryset
 from mayan.apps.views.mixins import ExternalObjectBaseMixin
 
 
@@ -47,6 +48,12 @@ class AsymmetricSerializerAPIViewMixin:
             )
         else:
             return self.write_serializer_class
+
+
+class CheckQuerysetAPIViewMixin:
+    def get_queryset(self, *args, **kwargs):
+        queryset = super().get_queryset(*args, **kwargs)
+        return check_queryset(self=self, queryset=queryset)
 
 
 class ContentTypeAPIViewMixin:

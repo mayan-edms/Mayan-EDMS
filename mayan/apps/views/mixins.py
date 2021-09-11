@@ -11,6 +11,7 @@ from django.views.generic.detail import SingleObjectMixin
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.settings import setting_home_view
+from mayan.apps.databases.utils import check_queryset
 from mayan.apps.permissions import Permission
 
 from .compat import FileResponse
@@ -153,7 +154,7 @@ class ExternalObjectBaseMixin:
                 )
             )
 
-        return queryset
+        return check_queryset(self=self, queryset=queryset)
 
     def get_external_object_queryset_filtered(self):
         queryset = self.get_external_object_queryset()

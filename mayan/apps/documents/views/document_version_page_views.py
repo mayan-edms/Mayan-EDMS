@@ -62,7 +62,7 @@ logger = logging.getLogger(name=__name__)
 class DocumentVersionPageDeleteView(SingleObjectDeleteView):
     object_permission = permission_document_version_edit
     pk_url_kwarg = 'document_version_page_id'
-    source_queryset = DocumentVersionPage.valid
+    source_queryset = DocumentVersionPage.valid.all()
 
     def get_extra_context(self):
         return {
@@ -91,7 +91,7 @@ class DocumentVersionPageDeleteView(SingleObjectDeleteView):
 class DocumentVersionPageListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_version_id'
-    external_object_queryset = DocumentVersion.valid
+    external_object_queryset = DocumentVersion.valid.all()
 
     def get_extra_context(self):
         return {
@@ -124,7 +124,7 @@ class DocumentVersionPageListView(ExternalObjectViewMixin, SingleObjectListView)
 class DocumentVersionPageListAppendView(MultipleObjectConfirmActionView):
     object_permission = permission_document_version_edit
     pk_url_kwarg = 'document_version_id'
-    source_queryset = DocumentVersion.valid
+    source_queryset = DocumentVersion.valid.all()
     success_message = _(
         '%(count)d document version queued for page list append.'
     )
@@ -172,7 +172,7 @@ class DocumentVersionPageListAppendView(MultipleObjectConfirmActionView):
 class DocumentVersionPageListRemapView(ExternalObjectViewMixin, FormView):
     external_object_permission = permission_document_version_edit
     external_object_pk_url_kwarg = 'document_version_id'
-    external_object_queryset = DocumentVersion.valid
+    external_object_queryset = DocumentVersion.valid.all()
     form_class = DocumentVersionPageMappingFormSet
 
     def form_valid(self, form):
@@ -282,7 +282,7 @@ class DocumentVersionPageListRemapView(ExternalObjectViewMixin, FormView):
 class DocumentVersionPageListResetView(MultipleObjectConfirmActionView):
     object_permission = permission_document_version_edit
     pk_url_kwarg = 'document_version_id'
-    source_queryset = DocumentVersion.valid
+    source_queryset = DocumentVersion.valid.all()
     success_message = _(
         '%(count)d document version queued for page list reset.'
     )
@@ -328,7 +328,7 @@ class DocumentVersionPageListResetView(MultipleObjectConfirmActionView):
 class DocumentVersionPageNavigationBase(ExternalObjectViewMixin, RedirectView):
     external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_version_page_id'
-    external_object_queryset = DocumentVersionPage.valid
+    external_object_queryset = DocumentVersionPage.valid.all()
 
     def get_redirect_url(self, *args, **kwargs):
         """
@@ -416,7 +416,7 @@ class DocumentVersionPageNavigationPrevious(DocumentVersionPageNavigationBase):
 class DocumentVersionPageView(ExternalObjectViewMixin, SimpleView):
     external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_version_page_id'
-    external_object_queryset = DocumentVersionPage.valid
+    external_object_queryset = DocumentVersionPage.valid.all()
     template_name = 'appearance/generic_form.html'
 
     def get_extra_context(self):
@@ -469,7 +469,7 @@ class DocumentVersionPageInteractiveTransformation(
 ):
     external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_version_page_id'
-    external_object_queryset = DocumentVersionPage.valid
+    external_object_queryset = DocumentVersionPage.valid.all()
 
     def get_object(self):
         return self.external_object

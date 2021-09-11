@@ -26,7 +26,7 @@ class APIDocumentMetadataListView(
     get: Returns a list of selected document's metadata types and values.
     post: Add an existing metadata type and value to the selected document.
     """
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     external_object_pk_url_kwarg = 'document_id'
     mayan_external_object_permissions = {
         'GET': (permission_document_metadata_view,),
@@ -63,7 +63,7 @@ class APIDocumentMetadataView(
     patch: Edit the selected document metadata type and value.
     put: Edit the selected document metadata type and value.
     """
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     external_object_pk_url_kwarg = 'document_id'
     lookup_url_kwarg = 'metadata_id'
     mayan_external_object_permissions = {

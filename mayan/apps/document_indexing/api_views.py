@@ -35,7 +35,7 @@ class APIDocumentIndexInstanceNodeListView(
     Returns a list of all the indexes instance nodes where this document is found.
     """
     external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     mayan_external_object_permissions = {
         'GET': (permission_index_instance_view,)
     }
