@@ -547,14 +547,10 @@ class Menu(TemplateObjectMixin):
 
             if sort_results and not unsorted_source:
                 for link_group in result:
-                    link_group['links'] = sorted(
-                        link_group['links'], key=Menu.get_result_label
-                    )
+                    link_group['links'].sort(key=Menu.get_result_label)
             else:
                 for link_group in result:
-                    link_group['links'] = sorted(
-                        link_group['links'], key=self.get_result_position
-                    )
+                    link_group['links'].sort(key=self.get_result_position)
 
         return result
 
