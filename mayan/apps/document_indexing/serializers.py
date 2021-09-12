@@ -15,20 +15,12 @@ from .models import (
 
 
 class IndexInstanceSerializer(serializers.ModelSerializer):
-    #item_count = serializers.SerializerMethodField(read_only=True)
-    #node_count = serializers.SerializerMethodField(read_only=True)
     url = serializers.SerializerMethodField(read_only=True)
     nodes_url = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         fields = ('label', 'id', 'nodes_url', 'url')
         model = IndexInstance
-
-    #def get_item_count(self, obj):
-    #    return obj.get_item_count(user=self.context['request'])
-
-    #def get_node_count(self, obj):
-    #    return obj.get_instance_node_count()
 
     def get_url(self, obj):
         return reverse(
@@ -46,8 +38,7 @@ class IndexInstanceSerializer(serializers.ModelSerializer):
 
 
 class IndexInstanceNodeSerializer(serializers.ModelSerializer):
-    children = RecursiveField(many=True, read_only=True)
-    #documents_count = serializers.SerializerMethodField()
+    children_url = serializers.SerializerMethodField(read_only=True)
     documents_url = serializers.SerializerMethodField(read_only=True)
     index_url = serializers.SerializerMethodField(read_only=True)
     parent_url = serializers.SerializerMethodField(read_only=True)
@@ -55,15 +46,18 @@ class IndexInstanceNodeSerializer(serializers.ModelSerializer):
 
     class Meta:
         fields = (
-            'documents_url', 'children', 'id', 'index_url', 'level',
-            'parent', 'parent_url', 'value', 'url'
+            'documents_url', 'children_url', 'id', 'index_url', 'level',
+            'parent_id', 'parent_url', 'value', 'url'
         )
         model = IndexInstanceNode
 
-    #def get_documents_count(self, obj):
-    #    return obj.get_descendants_document_count(
-    #        user=self.context['request'].user
-    #    )
+    def get_children_url(self, obj):
+        return reverse(
+            viewname='rest_api:indexinstancenode-children-list', kwargs={
+                'index_instance_id': obj.index().pk,
+                'index_instance_node_id': obj.pk
+            }, format=self.context['format'], request=self.context['request']
+        )
 
     def get_documents_url(self, obj):
         return reverse(
