@@ -24,7 +24,8 @@ def task_delete_empty(self):
 
 
 @app.task(
-    bind=True, ignore_result=True, max_retries=None, retry_backoff=True
+    bind=True, ignore_result=True, max_retries=None, retry_backoff=True,
+    retry_backoff_max=60
 )
 def task_index_document(self, document_id):
     Document = apps.get_model(
