@@ -8,25 +8,7 @@ class DocumentIndexInstanceNodeManager(models.Manager):
         return self.filter(documents=document)
 
 
-# ~ class IndexInstanceNodeManager(TreeManager):
-    # ~ def delete_empty(self):
-        # ~ # Select leaf nodes only because .delete_empty() bubbles up
-        # ~ for root_nodes in self.filter(parent=None):
-            # ~ for index_instance_node in root_nodes.get_leafnodes():
-                # ~ index_instance_node.delete_empty()
-
-    # ~ def document_remove(self, document):
-        # ~ for index_instance_node in self.filter(documents=document):
-            # ~ index_instance_node.document_remove(document=document)
-
-
 class IndexInstanceManager(models.Manager):
-    # ~ def delete_empty(self):
-        # ~ # Select leaf nodes only because .delete_empty() bubbles up
-        # ~ for root_nodes in self.filter(parent=None):
-            # ~ for index_instance_node in root_nodes.get_leafnodes():
-                # ~ index_instance_node.delete_empty()
-
     def delete_empty_nodes(self):
         for index in self.all():
             index.delete_empty_nodes()
@@ -37,7 +19,6 @@ class IndexInstanceManager(models.Manager):
 
     def document_remove(self, document):
         for index_instance in self.filter(node_templates__index_instance_nodes__documents=document):
-            #for index_instance in self.all():#documents=document):
             index_instance.document_remove(document=document)
 
 
