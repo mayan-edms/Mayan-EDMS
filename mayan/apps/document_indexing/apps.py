@@ -44,7 +44,7 @@ from .permissions import (
 class DocumentIndexingApp(MayanAppConfig):
     app_namespace = 'indexing'
     app_url = 'indexing'
-    has_rest_api = False
+    has_rest_api = True
     has_tests = True
     name = 'mayan.apps.document_indexing'
     verbose_name = _('Document indexing')
