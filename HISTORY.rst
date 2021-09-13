@@ -322,6 +322,8 @@
   - Rewritten menu resolution.
   - Pass the ``resolved_object`` to link conditions.
 
+- Don't trigger the settings change flag on user language changes.
+
 4.0.15 (2021-08-07)
 ===================
 - Improve the document version export API endpoint.

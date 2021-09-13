@@ -1,7 +1,9 @@
 from pathlib import Path
 
 from django.conf import settings
+from django.utils import translation
 from django.utils.encoding import force_text
+from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.storage.utils import fs_cleanup
 from mayan.apps.testing.tests.base import BaseTestCase
@@ -20,7 +22,7 @@ from .mocks import (
 )
 
 
-class ClassesTestCase(SmartSettingTestMixin, BaseTestCase):
+class SetttingTestCase(SmartSettingTestMixin, BaseTestCase):
     def test_environment_override(self):
         test_environment_value = 'test environment value'
         test_file_value = 'test file value'
@@ -77,6 +79,21 @@ class ClassesTestCase(SmartSettingTestMixin, BaseTestCase):
         self.assertFalse(Setting.check_changed())
         test_setting.value = 'test value edited'
         self.assertTrue(Setting.check_changed())
+
+    def test_setting_check_changed_for_translations(self):
+        self._create_test_settings_namespace()
+        self.test_settings_namespace.add_setting(
+            global_name='SMART_SETTINGS_TEST_SETTING',
+            default=_('English')
+        )
+        # Initialize hash cache
+        Setting._cache_hash = None
+        Setting.check_changed()
+        self.assertFalse(Setting.check_changed())
+
+        translation.activate(language='es')
+        self.assertFalse(Setting.check_changed())
+        translation.activate(language='en')
 
 
 class SettingNamespaceMigrationTestCase(SmartSettingTestMixin, BaseTestCase):
