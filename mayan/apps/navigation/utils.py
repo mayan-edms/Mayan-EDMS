@@ -76,7 +76,7 @@ def factory_condition_queryset_access(
 
 
 def get_content_type_kwargs_factory(
-    variable_name='resolved_object', result_map=None
+    result_map=None, variable_name='resolved_object'
 ):
     if not result_map:
         result_map = {

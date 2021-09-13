@@ -504,35 +504,34 @@ class Menu(TemplateObjectMixin):
                 self.resolve_matched_links(
                     context=context,
                     matched_links=matched_links,
-                    resolved_navigation_object=resolved_navigation_object
+                    resolved_navigation_object=resolved_navigation_object,
+                    as_resolved_object=True
                 )
             )
 
         # Resolve view links.
-        resolved_navigation_object = current_view_name
         matched_links = self.get_links_for(
-            resolved_navigation_object=resolved_navigation_object
+            resolved_navigation_object=current_view_name
         )
 
         result.extend(
             self.resolve_matched_links(
                 context=context,
                 matched_links=matched_links,
-                resolved_navigation_object=resolved_navigation_object
+                resolved_navigation_object=current_view_name
             )
         )
 
         # Resolve "always one" menu links.
-        resolved_navigation_object = None
         matched_links = self.get_links_for(
-            resolved_navigation_object=resolved_navigation_object
+            resolved_navigation_object=None
         )
 
         result.extend(
             self.resolve_matched_links(
                 context=context,
                 matched_links=matched_links,
-                resolved_navigation_object=resolved_navigation_object
+                resolved_navigation_object=None
             )
         )
 
@@ -554,19 +553,30 @@ class Menu(TemplateObjectMixin):
 
         return result
 
-    def resolve_matched_links(self, context, matched_links, resolved_navigation_object):
+    def resolve_matched_links(
+        self, context, matched_links, resolved_navigation_object,
+        as_resolved_object=False
+    ):
         result = []
 
         object_resolved_links = []
 
         for link in matched_links:
+            kwargs = {
+                'context': context
+            }
+
+            if as_resolved_object:
+                kwargs['resolved_object'] = resolved_navigation_object
+
+
             if isinstance(link, Menu):
-                condition = link.check_condition(context=context)
+                condition = link.check_condition(**kwargs)
                 if condition:
                     object_resolved_links.append(link)
             else:
                 # "Always show" links.
-                resolved_link = link.resolve(context=context)
+                resolved_link = link.resolve(**kwargs)
                 if resolved_link:
                     object_resolved_links.append(resolved_link)
 
