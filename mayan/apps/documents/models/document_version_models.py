@@ -15,6 +15,7 @@ from mayan.apps.converter.exceptions import AppImageError
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
 from mayan.apps.events.decorators import method_event
+from mayan.apps.locales.utils import to_language
 from mayan.apps.messaging.models import Message
 from mayan.apps.storage.models import DownloadFile
 from mayan.apps.templating.classes import Template
@@ -24,7 +25,8 @@ from ..events import (
     event_document_version_edited, event_document_version_exported
 )
 from ..literals import (
-    IMAGE_ERROR_NO_VERSION_PAGES,
+    DOCUMENT_VERSION_EXPORT_MESSAGE_BODY,
+    DOCUMENT_VERSION_EXPORT_MESSAGE_SUBJECT, IMAGE_ERROR_NO_VERSION_PAGES,
     STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE
 )
 from ..managers import ValidDocumentVersionManager
@@ -164,12 +166,13 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
             Message.objects.create(
                 sender_object=download_file,
                 user=user,
-                subject=_('Document version exported.'),
-                body=_(
-                    'Document version "%(document_version)s" has been '
-                    'exported and is available for download using the '
-                    'link: %(download_url)s or from '
-                    'the downloads area (%(download_list_url)s).'
+                subject=to_language(
+                    language=user.locale_profile.language,
+                    promise=DOCUMENT_VERSION_EXPORT_MESSAGE_SUBJECT
+                ),
+                body=to_language(
+                    language=user.locale_profile.language,
+                    promise=DOCUMENT_VERSION_EXPORT_MESSAGE_BODY
                 ) % {
                     'download_list_url': download_list_url,
                     'download_url': download_url,

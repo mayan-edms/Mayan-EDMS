@@ -50,6 +50,7 @@ DEFAULT_DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS = {
         settings.MEDIA_ROOT, 'document_version_page_image_cache'
     )
 }
+
 DEFAULT_DOCUMENTS_ZOOM_MAX_LEVEL = 300
 DEFAULT_DOCUMENTS_ZOOM_MIN_LEVEL = 25
 DEFAULT_DOCUMENTS_ZOOM_PERCENT_STEP = 25
@@ -71,6 +72,7 @@ DEFAULT_LANGUAGE_CODES = (
     'swe', 'hmn', 'sna', 'mos', 'xho', 'bel'
 )
 DEFAULT_STUB_EXPIRATION_INTERVAL = 60 * 60 * 24  # 24 hours
+
 DOCUMENT_FILE_ACTION_PAGES_NEW = 1
 DOCUMENT_FILE_ACTION_PAGES_APPEND = 2
 DOCUMENT_FILE_ACTION_PAGES_KEEP = 3
@@ -79,6 +81,14 @@ DOCUMENT_FILE_ACTION_PAGE_CHOICES = (
     (DOCUMENT_FILE_ACTION_PAGES_APPEND, _('Append. Create a new version and append the new file pages.')),
     (DOCUMENT_FILE_ACTION_PAGES_KEEP, _('Keep. Do not create a new version and keep the current version pages.')),
 )
+
+DOCUMENT_VERSION_EXPORT_MESSAGE_BODY = _(
+    'Document version "%(document_version)s" has been '
+    'exported and is available for download using the '
+    'link: %(download_url)s or from '
+    'the downloads area (%(download_list_url)s).'
+)
+DOCUMENT_VERSION_EXPORT_MESSAGE_SUBJECT = _('Document version exported.')
 DOCUMENT_VERSION_EXPORT_MIMETYPE = 'application/pdf'
 
 IMAGE_ERROR_NO_ACTIVE_VERSION = 'document_no_active_version'
