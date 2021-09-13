@@ -569,7 +569,6 @@ class Menu(TemplateObjectMixin):
             if as_resolved_object:
                 kwargs['resolved_object'] = resolved_navigation_object
 
-
             if isinstance(link, Menu):
                 condition = link.check_condition(**kwargs)
                 if condition:

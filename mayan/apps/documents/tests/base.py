@@ -27,9 +27,8 @@ class GenericTransactionDocumentTestCase(
     Base test case when testing document models or classes with transactions.
     """
 
+
 class GenericTransactionDocumentViewTestCase(
     DocumentTestMixin, GenericTransactionViewTestCase
 ):
     """Base test case when testing document views with transactions."""
-
-
