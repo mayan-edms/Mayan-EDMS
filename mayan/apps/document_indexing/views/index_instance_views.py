@@ -46,7 +46,7 @@ class IndexInstanceListView(SingleObjectListView):
     def get_source_queryset(self):
         queryset = IndexInstance.objects.filter(enabled=True)
         return queryset.filter(
-            node_templates__index_instance_nodes__isnull=False
+            index_template_nodes__index_instance_nodes__isnull=False
         ).distinct()
 
 

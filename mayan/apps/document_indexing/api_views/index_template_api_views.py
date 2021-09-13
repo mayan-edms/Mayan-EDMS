@@ -1,134 +1,25 @@
 from django.shortcuts import get_object_or_404
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.documents.models import Document
-from mayan.apps.documents.permissions import (
-    permission_document_type_view, permission_document_view
-)
-from mayan.apps.documents.serializers.document_serializers import DocumentSerializer
+from mayan.apps.documents.permissions import permission_document_type_view
 from mayan.apps.documents.serializers.document_type_serializers import DocumentTypeSerializer
 from mayan.apps.rest_api import generics
 from mayan.apps.rest_api.api_view_mixins import (
     AsymmetricSerializerAPIViewMixin, ExternalObjectAPIViewMixin
 )
 
-from .models import IndexTemplate, IndexInstance
-from .permissions import (
+from ..models import IndexTemplate
+from ..permissions import (
     permission_index_template_create, permission_index_template_delete,
-    permission_index_template_edit,
-    permission_index_instance_view,
-    permission_index_template_rebuild, permission_index_template_view
+    permission_index_template_edit, permission_index_template_rebuild,
+    permission_index_template_view
 )
-from .serializers import (
+from ..serializers import (
     DocumentTypeAddSerializer, DocumentTypeRemoveSerializer,
-    IndexInstanceNodeSerializer, IndexInstanceSerializer,
     IndexTemplateSerializer, IndexTemplateNodeSerializer,
     IndexTemplateNodeWriteSerializer
 )
-from .tasks import task_rebuild_index
-
-
-class APIDocumentIndexInstanceNodeListView(
-    ExternalObjectAPIViewMixin, generics.ListAPIView
-):
-    """
-    Returns a list of all the indexes instance nodes where this document is found.
-    """
-    external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid.all()
-    mayan_external_object_permissions = {
-        'GET': (permission_index_instance_view,)
-    }
-    mayan_object_permissions = {
-        'GET': (permission_index_instance_view,)
-    }
-    serializer_class = IndexInstanceNodeSerializer
-
-    def get_queryset(self):
-        return self.external_object.index_instance_nodes.all()
-
-
-class APIIndexInstanceDetailView(generics.RetrieveAPIView):
-    """
-    get: Returns the details of the selected index instance.
-    """
-    lookup_url_kwarg = 'index_instance_id'
-    mayan_object_permissions = {'GET': (permission_index_instance_view,)}
-    queryset = IndexInstance.objects.all()
-    serializer_class = IndexInstanceSerializer
-
-
-class APIIndexInstanceListView(generics.ListAPIView):
-    """
-    get: Returns a list of all the indexes instances.
-    """
-    mayan_object_permissions = {'GET': (permission_index_instance_view,)}
-    queryset = IndexInstance.objects.all()
-    serializer_class = IndexInstanceSerializer
-
-
-class APIIndexInstanceNodeViewMixin:
-    serializer_class = IndexInstanceNodeSerializer
-
-    def get_index_instance(self):
-        queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_index_instance_view,
-            queryset=IndexInstance.objects.all(), user=self.request.user
-        )
-
-        return get_object_or_404(
-            klass=queryset, pk=self.kwargs['index_instance_id']
-        )
-
-
-class APIIndexInstanceNodeListView(
-    APIIndexInstanceNodeViewMixin, generics.ListAPIView
-):
-    """
-    get: Returns a list of all the template nodes for the selected index.
-    post: Create a new index template node.
-    """
-    ordering_fields = ('id', 'values')
-
-    def get_queryset(self):
-        return self.get_index_instance().get_children()
-
-
-class APIIndexInstanceNodeDetailView(
-    APIIndexInstanceNodeViewMixin, generics.RetrieveAPIView
-):
-    """
-    delete: Delete the selected index template node.
-    get: Returns the details of the selected index template node.
-    patch: Partially edit an index template node.
-    put: Edit an index template node.
-    """
-    lookup_url_kwarg = 'index_instance_node_id'
-
-    def get_queryset(self):
-        return self.get_index_instance().get_nodes()
-
-
-class APIIndexInstanceNodeDocumentListView(
-    APIIndexInstanceNodeViewMixin, generics.ListAPIView
-):
-    """
-    Returns a list of all the documents contained by a particular index node
-    instance.
-    """
-    mayan_object_permissions = {'GET': (permission_document_view,)}
-    serializer_class = DocumentSerializer
-
-    def get_node(self):
-        return get_object_or_404(
-            klass=self.get_index_instance().get_nodes(),
-            pk=self.kwargs['index_instance_node_id']
-        )
-
-    def get_queryset(self):
-        return Document.valid.filter(
-            pk__in=self.get_node().documents.values('pk')
-        )
+from ..tasks import task_index_template_rebuild
 
 
 class APIIndexTemplateListView(generics.ListCreateAPIView):
@@ -269,7 +160,7 @@ class APIIndexTemplateNodeListView(
     ordering_fields = ('enabled', 'id', 'link_documents')
 
     def get_queryset(self):
-        return self.get_index_template().template_root.get_children()
+        return self.get_index_template().index_template_root_node.get_children()
 
 
 class APIIndexTemplateNodeDetailView(
@@ -284,7 +175,7 @@ class APIIndexTemplateNodeDetailView(
     lookup_url_kwarg = 'index_template_node_id'
 
     def get_queryset(self):
-        return self.get_index_template().node_templates.all()
+        return self.get_index_template().index_template_nodes.all()
 
 
 class APIIndexTemplateRebuildView(generics.ObjectActionAPIView):
@@ -298,8 +189,10 @@ class APIIndexTemplateRebuildView(generics.ObjectActionAPIView):
     queryset = IndexTemplate.objects.all()
 
     def object_action(self, request, serializer):
-        task_rebuild_index.apply_async(
-            kwargs=dict(index_id=self.object.pk)
+        task_index_template_rebuild.apply_async(
+            kwargs={
+                'index_id': self.object.pk
+            }
         )
 
 

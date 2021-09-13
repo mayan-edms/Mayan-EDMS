@@ -1,10 +1,9 @@
 from rest_framework import status
 
-from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
+from mayan.apps.documents.tests.base import GenericDocumentAPIViewTestCase
 from mayan.apps.documents.permissions import (
     permission_document_type_edit, permission_document_type_view
 )
-from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..events import event_index_template_created, event_index_template_edited
 from ..models import IndexInstanceNode, IndexTemplate, IndexTemplateNode
@@ -16,15 +15,19 @@ from ..permissions import (
 
 from .literals import TEST_INDEX_TEMPLATE_LABEL
 from .mixins import (
-    IndexTemplateTestMixin, IndexTemplateActionAPIViewTestMixin,
-    IndexTemplateAPIViewTestMixin, IndexTemplateDocumentTypeAPIViewTestMixin,
-    IndexTemplateNodeAPITestMixin
+    IndexInstanceTestMixin, IndexTemplateTestMixin,
+    IndexTemplateActionAPIViewTestMixin, IndexTemplateAPIViewTestMixin,
+    IndexTemplateDocumentTypeAPIViewTestMixin, IndexTemplateNodeAPITestMixin
 )
 
 
 class IndexTemplateAPIViewTestCase(
-    IndexTemplateTestMixin, IndexTemplateAPIViewTestMixin, BaseAPITestCase
+    IndexTemplateTestMixin, IndexTemplateAPIViewTestMixin,
+    GenericDocumentAPIViewTestCase
 ):
+    auto_create_test_index_template = False
+    auto_upload_test_document = False
+
     def test_index_template_create_api_view_no_permission(self):
         self._clear_events()
 
@@ -199,13 +202,11 @@ class IndexTemplateAPIViewTestCase(
 
 class IndexTemplateDocumentTypeAPIViewTestCase(
     IndexTemplateTestMixin, IndexTemplateDocumentTypeAPIViewTestMixin,
-    DocumentTestMixin, BaseAPITestCase
+    GenericDocumentAPIViewTestCase
 ):
     auto_upload_test_document = False
 
     def test_index_template_document_type_list_api_view_no_permission(self):
-        self._create_test_index_template(add_test_document_type=True)
-
         self._clear_events()
 
         response = self._request_test_index_template_document_type_list_api_view()
@@ -215,8 +216,6 @@ class IndexTemplateDocumentTypeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_document_type_list_api_view_with_document_type_access(self):
-        self._create_test_index_template(add_test_document_type=True)
-
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_view
@@ -231,8 +230,6 @@ class IndexTemplateDocumentTypeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_document_type_list_api_view_with_index_template_access(self):
-        self._create_test_index_template(add_test_document_type=True)
-
         self.grant_access(
             obj=self.test_index_template,
             permission=permission_index_template_view
@@ -248,8 +245,6 @@ class IndexTemplateDocumentTypeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_document_type_list_api_view_with_full_access(self):
-        self._create_test_index_template(add_test_document_type=True)
-
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_view
@@ -272,7 +267,9 @@ class IndexTemplateDocumentTypeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_document_type_add_api_view_no_permission(self):
-        self._create_test_index_template()
+        self.test_document_type.index_templates.remove(
+            self.test_index_template
+        )
 
         self._clear_events()
 
@@ -287,7 +284,9 @@ class IndexTemplateDocumentTypeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_document_type_add_api_view_with_document_type_access(self):
-        self._create_test_index_template()
+        self.test_document_type.index_templates.remove(
+            self.test_index_template
+        )
 
         self.grant_access(
             obj=self.test_document_type,
@@ -307,7 +306,9 @@ class IndexTemplateDocumentTypeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_document_type_add_api_view_with_index_template_access(self):
-        self._create_test_index_template()
+        self.test_document_type.index_templates.remove(
+            self.test_index_template
+        )
 
         self.grant_access(
             obj=self.test_index_template,
@@ -327,7 +328,9 @@ class IndexTemplateDocumentTypeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_document_type_add_api_view_with_full_access(self):
-        self._create_test_index_template()
+        self.test_document_type.index_templates.remove(
+            self.test_index_template
+        )
 
         self.grant_access(
             obj=self.test_document_type,
@@ -356,8 +359,6 @@ class IndexTemplateDocumentTypeAPIViewTestCase(
         self.assertEqual(events[0].verb, event_index_template_edited.id)
 
     def test_index_template_document_type_remove_api_view_no_permission(self):
-        self._create_test_index_template(add_test_document_type=True)
-
         self._clear_events()
 
         response = self._request_test_index_template_document_type_remove_api_view()
@@ -371,8 +372,6 @@ class IndexTemplateDocumentTypeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_document_type_remove_api_view_with_document_type_access(self):
-        self._create_test_index_template(add_test_document_type=True)
-
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
@@ -391,8 +390,6 @@ class IndexTemplateDocumentTypeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_document_type_remove_api_view_with_index_template_access(self):
-        self._create_test_index_template(add_test_document_type=True)
-
         self.grant_access(
             obj=self.test_index_template,
             permission=permission_index_template_edit
@@ -411,8 +408,6 @@ class IndexTemplateDocumentTypeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_document_type_remove_api_view_with_full_access(self):
-        self._create_test_index_template(add_test_document_type=True)
-
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
@@ -441,20 +436,17 @@ class IndexTemplateDocumentTypeAPIViewTestCase(
 
 
 class IndexTemplateRebuildAPIViewTestCase(
-    IndexTemplateTestMixin, IndexTemplateActionAPIViewTestMixin,
-    DocumentTestMixin, BaseAPITestCase
+    IndexInstanceTestMixin, IndexTemplateTestMixin,
+    IndexTemplateActionAPIViewTestMixin, GenericDocumentAPIViewTestCase
 ):
     auto_upload_test_document = False
 
     def setUp(self):
         super().setUp()
-
-        self._upload_test_document()
-        self._create_test_index_template(add_test_document_type=True)
-        self._create_test_index_template_node()
+        IndexInstanceNode.objects.exclude(parent=None).delete()
 
     def test_index_template_rebuild_api_view_no_permission(self):
-        test_index_instance_node_count = IndexInstanceNode.objects.count()
+        test_index_instance_node_count = self.test_index_instance.get_descendants().count()
 
         self._clear_events()
 
@@ -462,9 +454,9 @@ class IndexTemplateRebuildAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(
-            IndexInstanceNode.objects.count(), test_index_instance_node_count
+            self.test_index_instance.get_descendants().count(),
+            test_index_instance_node_count
         )
-        self.assertEqual(IndexInstanceNode.objects.first().parent, None)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -475,7 +467,7 @@ class IndexTemplateRebuildAPIViewTestCase(
             permission=permission_index_template_rebuild
         )
 
-        test_index_instance_node_count = IndexInstanceNode.objects.count()
+        test_index_instance_node_count = self.test_index_instance.get_descendants().count()
 
         self._clear_events()
 
@@ -484,7 +476,7 @@ class IndexTemplateRebuildAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(
-            IndexInstanceNode.objects.count(),
+            self.test_index_instance.get_descendants().count(),
             test_index_instance_node_count + 1
         )
 
@@ -493,22 +485,18 @@ class IndexTemplateRebuildAPIViewTestCase(
 
 
 class IndexTemplateResetAPIViewTestCase(
-    IndexTemplateTestMixin, IndexTemplateActionAPIViewTestMixin,
-    DocumentTestMixin, BaseAPITestCase
+    IndexInstanceTestMixin, IndexTemplateTestMixin,
+    IndexTemplateActionAPIViewTestMixin, GenericDocumentAPIViewTestCase
 ):
     auto_upload_test_document = False
 
     def setUp(self):
         super().setUp()
 
-        self._create_test_index_template(add_test_document_type=True)
-        self._create_test_index_template_node()
-
-        self._create_test_document_stub()
         self.test_index_template.rebuild()
 
     def test_index_template_reset_api_view_no_permission(self):
-        test_index_instance_node_count = self.test_index_template.instance_root.get_children_count()
+        test_index_instance_node_count = self.test_index_instance.get_descendants().count()
 
         self._clear_events()
 
@@ -516,7 +504,7 @@ class IndexTemplateResetAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(
-            self.test_index_template.instance_root.get_children_count(),
+            self.test_index_instance.get_descendants().count(),
             test_index_instance_node_count
         )
 
@@ -529,7 +517,7 @@ class IndexTemplateResetAPIViewTestCase(
             permission=permission_index_template_rebuild
         )
 
-        test_index_instance_node_count = self.test_index_template.instance_root.get_children_count()
+        test_index_instance_node_count = self.test_index_instance.get_descendants().count()
 
         self._clear_events()
 
@@ -538,7 +526,7 @@ class IndexTemplateResetAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(
-            self.test_index_template.instance_root.get_children_count(),
+            self.test_index_instance.get_descendants().count(),
             test_index_instance_node_count - 1
         )
 
@@ -547,16 +535,14 @@ class IndexTemplateResetAPIViewTestCase(
 
 
 class IndexTemplateNodeAPIViewTestCase(
-    IndexTemplateTestMixin, IndexTemplateNodeAPITestMixin, DocumentTestMixin,
-    BaseAPITestCase
+    IndexTemplateTestMixin, IndexTemplateNodeAPITestMixin,
+    GenericDocumentAPIViewTestCase
 ):
     auto_upload_test_document = False
 
-    def setUp(self):
-        super().setUp()
-        self._create_test_index_template()
-
     def test_index_template_node_no_parent_create_api_view_no_permission(self):
+        IndexTemplateNode.objects.all().delete()
+
         index_template_node_count = IndexTemplateNode.objects.count()
 
         self._clear_events()
@@ -572,6 +558,8 @@ class IndexTemplateNodeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_node_no_parent_create_api_view_with_access(self):
+        IndexTemplateNode.objects.all().delete()
+
         self.grant_access(
             obj=self.test_index_template,
             permission=permission_index_template_edit
@@ -599,7 +587,7 @@ class IndexTemplateNodeAPIViewTestCase(
 
         response = self._request_test_index_template_node_create_api_view(
             extra_data={
-                'parent': self.test_index_templates[0].template_root.pk
+                'parent': self.test_index_templates[0].index_template_root_node.pk
             }
         )
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
@@ -624,7 +612,7 @@ class IndexTemplateNodeAPIViewTestCase(
 
         response = self._request_test_index_template_node_create_api_view(
             extra_data={
-                'parent': self.test_index_templates[0].template_root.pk
+                'parent': self.test_index_templates[0].index_template_root_node.pk
             }
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
@@ -643,7 +631,7 @@ class IndexTemplateNodeAPIViewTestCase(
 
         response = self._request_test_index_template_node_create_api_view(
             extra_data={
-                'parent': self.test_index_template.template_root.pk
+                'parent': self.test_index_template.index_template_root_node.pk
             }
         )
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
@@ -666,7 +654,7 @@ class IndexTemplateNodeAPIViewTestCase(
 
         response = self._request_test_index_template_node_create_api_view(
             extra_data={
-                'parent': self.test_index_template.template_root.pk
+                'parent': self.test_index_template.index_template_root_node.pk
             }
         )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -682,8 +670,6 @@ class IndexTemplateNodeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_node_delete_api_view_no_permission(self):
-        self._create_test_index_template_node()
-
         index_template_node_count = IndexTemplateNode.objects.count()
 
         self._clear_events()
@@ -699,8 +685,6 @@ class IndexTemplateNodeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_node_delete_api_view_with_access(self):
-        self._create_test_index_template_node()
-
         self.grant_access(
             obj=self.test_index_template,
             permission=permission_index_template_edit
@@ -720,8 +704,6 @@ class IndexTemplateNodeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_node_detail_api_view_no_permission(self):
-        self._create_test_index_template_node()
-
         self._clear_events()
 
         response = self._request_test_index_template_node_detail_api_view()
@@ -732,8 +714,6 @@ class IndexTemplateNodeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_node_detail_api_view_with_access(self):
-        self._create_test_index_template_node()
-
         self.grant_access(
             obj=self.test_index_template,
             permission=permission_index_template_view
@@ -751,8 +731,6 @@ class IndexTemplateNodeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_node_edit_via_patch_api_view_no_permission(self):
-        self._create_test_index_template_node()
-
         index_template_node_expression = self.test_index_template_node.expression
 
         self._clear_events()
@@ -770,8 +748,6 @@ class IndexTemplateNodeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_node_edit_via_patch_api_view_with_access(self):
-        self._create_test_index_template_node()
-
         self.grant_access(
             obj=self.test_index_template,
             permission=permission_index_template_edit
@@ -793,8 +769,6 @@ class IndexTemplateNodeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_node_list_api_view_no_permission(self):
-        self._create_test_index_template_node()
-
         self._clear_events()
 
         response = self._request_test_index_template_node_list_api_view()
@@ -805,8 +779,6 @@ class IndexTemplateNodeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_node_list_api_view_with_access(self):
-        self._create_test_index_template_node()
-
         self.grant_access(
             obj=self.test_index_template,
             permission=permission_index_template_view

@@ -1,7 +1,7 @@
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.document_indexing.tasks import task_index_document
+from mayan.apps.document_indexing.tasks import task_index_instance_document_add
 from mayan.apps.events.classes import EventType
 
 from .literals import STORAGE_NAME_WORKFLOW_CACHE
@@ -19,7 +19,7 @@ def handler_create_workflow_image_cache(sender, **kwargs):
 
 
 def handler_index_document(sender, **kwargs):
-    task_index_document.apply_async(
+    task_index_instance_document_add.apply_async(
         kwargs=dict(
             document_id=kwargs['instance'].workflow_instance.document.pk
         )

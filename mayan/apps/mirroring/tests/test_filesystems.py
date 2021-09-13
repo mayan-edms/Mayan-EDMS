@@ -32,8 +32,8 @@ class IndexFilesystemTestCase(
         self._create_test_index_template(add_test_document_type=True)
 
     def test_document_access(self):
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+        self.test_index_template.index_template_nodes.create(
+            parent=self.test_index_template.index_template_root_node,
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
@@ -49,8 +49,8 @@ class IndexFilesystemTestCase(
         )
 
     def test_trashed_document_access(self):
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+        self.test_index_template.index_template_nodes.create(
+            parent=self.test_index_template.index_template_root_node,
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
@@ -70,8 +70,8 @@ class IndexFilesystemTestCase(
             )
 
     def test_document_access_failure(self):
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+        self.test_index_template.index_template_nodes.create(
+            parent=self.test_index_template.index_template_root_node,
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
@@ -86,8 +86,8 @@ class IndexFilesystemTestCase(
             )
 
     def test_document_empty(self):
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+        self.test_index_template.index_template_nodes.create(
+            parent=self.test_index_template.index_template_root_node,
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
         index_filesystem = IndexFilesystem(index_slug=self.test_index_template.slug)
@@ -108,8 +108,8 @@ class IndexFilesystemTestCase(
         )
 
     def test_document_open(self):
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+        self.test_index_template.index_template_nodes.create(
+            parent=self.test_index_template.index_template_root_node,
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
@@ -132,8 +132,8 @@ class IndexFilesystemTestCase(
         )
 
     def test_multiline_indexes(self):
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+        self.test_index_template.index_template_nodes.create(
+            parent=self.test_index_template.index_template_root_node,
             expression=TEST_NODE_EXPRESSION_MULTILINE,
             link_documents=True
         )
@@ -147,8 +147,8 @@ class IndexFilesystemTestCase(
         )
 
     def test_multiline_indexes_first_and_last(self):
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+        self.test_index_template.index_template_nodes.create(
+            parent=self.test_index_template.index_template_root_node,
             expression=TEST_NODE_EXPRESSION_MULTILINE_2,
             link_documents=True
         )
@@ -162,8 +162,8 @@ class IndexFilesystemTestCase(
         )
 
     def test_stub_documents(self):
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+        self.test_index_template.index_template_nodes.create(
+            parent=self.test_index_template.index_template_root_node,
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
@@ -178,8 +178,8 @@ class IndexFilesystemTestCase(
         )
 
     def test_duplicated_documents_readdir(self):
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+        self.test_index_template.index_template_nodes.create(
+            parent=self.test_index_template.index_template_root_node,
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
@@ -202,8 +202,8 @@ class IndexFilesystemTestCase(
         )
 
     def test_duplicated_documents_open(self):
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+        self.test_index_template.index_template_nodes.create(
+            parent=self.test_index_template.index_template_root_node,
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
@@ -246,8 +246,8 @@ class IndexFilesystemTestCase(
         index_filesystem.release(path=None, fh=file_handle)
 
     def test_invalid_document_label_character_open(self):
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+        self.test_index_template.index_template_nodes.create(
+            parent=self.test_index_template.index_template_root_node,
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
@@ -275,8 +275,8 @@ class IndexFilesystemTestCase(
         index_filesystem.release(path=None, fh=file_handle)
 
     def test_invalid_document_label_character_readdir(self):
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+        self.test_index_template.index_template_nodes.create(
+            parent=self.test_index_template.index_template_root_node,
             expression=TEST_NODE_EXPRESSION, link_documents=True
         )
 
@@ -296,8 +296,8 @@ class IndexFilesystemTestCase(
         )
 
     def test_invalid_directory_name_character_open(self):
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+        self.test_index_template.index_template_nodes.create(
+            parent=self.test_index_template.index_template_root_node,
             expression=TEST_NODE_EXPRESSION_INVALID, link_documents=True
         )
 
@@ -322,8 +322,8 @@ class IndexFilesystemTestCase(
         index_filesystem.release(path=None, fh=file_handle)
 
     def test_invalid_directory_name_character_readdir(self):
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
+        self.test_index_template.index_template_nodes.create(
+            parent=self.test_index_template.index_template_root_node,
             expression=TEST_NODE_EXPRESSION_INVALID, link_documents=True
         )
 

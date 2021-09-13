@@ -86,7 +86,8 @@ class DocumentIndexingApp(MayanAppConfig):
             model=IndexTemplate, bind_link=True, register_permission=True
         ).add_fields(
             field_names=(
-                'label', 'slug', 'enabled', 'document_types', 'node_templates'
+                'label', 'slug', 'enabled', 'document_types',
+                'index_template_nodes'
             ),
         )
 
@@ -119,6 +120,88 @@ class DocumentIndexingApp(MayanAppConfig):
             model=IndexInstanceNode, related='index_template_node__index'
         )
 
+        # Document Index Instance Node
+
+        SourceColumn(
+            func=lambda context: get_instance_link(
+                index_instance_node=context['object'],
+            ), include_label=True, is_sortable=True, label=_('Level'),
+            sort_field='value', source=DocumentIndexInstanceNode
+        )
+
+        # Index instance
+
+        SourceColumn(
+            attribute='get_level_count', include_label=True,
+            label=_('Depth'), source=IndexInstance
+        )
+        SourceColumn(
+            attribute='get_descendants_count', include_label=True,
+            label=_('Total nodes'), source=IndexInstance
+        )
+        SourceColumn(
+            func=lambda context: context[
+                'object'
+            ].get_descendants_document_count(
+                user=context['request'].user
+            ), include_label=True, label=_('Total documents'),
+            help_text=_(
+                'Number of unique documents this item contains.'
+            ), source=IndexInstance
+        )
+
+        # Index instance node
+
+        column_index_instance_node_level = SourceColumn(
+            func=lambda context: index_instance_item_link(context['object']),
+            is_identifier=True, is_sortable=True, label=_('Level'),
+            sort_field='value', source=IndexInstanceNode
+        )
+        column_index_instance_node_level.add_exclude(
+            source=DocumentIndexInstanceNode
+        )
+
+        column_index_instance_node_level_count = SourceColumn(
+            attribute='get_level_count', include_label=True,
+            label=_('Depth'), source=IndexInstanceNode
+        )
+        column_index_instance_node_level_count.add_exclude(
+            source=DocumentIndexInstanceNode
+        )
+
+        column_index_instance_node_count = SourceColumn(
+            attribute='get_descendants_count',
+            include_label=True, label=_('Nodes'), source=IndexInstanceNode
+        )
+        column_index_instance_node_count.add_exclude(
+            source=DocumentIndexInstanceNode
+        )
+
+        column_index_instance_node_document_count = SourceColumn(
+            func=lambda context: context[
+                'object'
+            ].get_descendants_document_count(
+                user=context['request'].user
+            ), include_label=True, label=_('Documents'),
+            help_text=_(
+                'Number of unique documents this item contains.'
+            ), source=IndexInstanceNode
+        )
+        column_index_instance_node_document_count.add_exclude(
+            source=DocumentIndexInstanceNode
+        )
+
+        SourceColumn(
+            func=lambda context: index_instance_item_link(context['object']),
+            is_identifier=True, is_sortable=True, label=_('Level'),
+            sort_field='value', source=IndexInstanceNodeSearchResult
+        )
+        SourceColumn(
+            attribute='get_full_path', source=IndexInstanceNodeSearchResult
+        )
+
+        # Index template
+
         column_index_label = SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
             source=IndexTemplate
@@ -139,20 +222,7 @@ class DocumentIndexingApp(MayanAppConfig):
         )
         column_index_enabled.add_exclude(source=IndexInstance)
 
-        SourceColumn(
-            func=lambda context: context[
-                'object'
-            ].instance_root.get_descendants_count(), include_label=True,
-            label=_('Total levels'), source=IndexInstance
-        )
-        SourceColumn(
-            func=lambda context: context[
-                'object'
-            ].instance_root.get_descendants_document_count(
-                user=context['request'].user
-            ), include_label=True, label=_('Total documents'),
-            source=IndexInstance
-        )
+        # Index template node
 
         SourceColumn(
             func=lambda context: node_level(context['object']),
@@ -166,52 +236,6 @@ class DocumentIndexingApp(MayanAppConfig):
         SourceColumn(
             attribute='link_documents', include_label=True, is_sortable=True,
             source=IndexTemplateNode, widget=TwoStateWidget
-        )
-
-        column_index_instance_node_level = SourceColumn(
-            func=lambda context: index_instance_item_link(context['object']),
-            is_identifier=True, is_sortable=True, label=_('Level'),
-            sort_field='value', source=IndexInstanceNode
-        )
-        column_index_instance_node_level.add_exclude(
-            source=DocumentIndexInstanceNode
-        )
-
-        column_index_instance_node_levels = SourceColumn(
-            func=lambda context: context['object'].get_descendants_count(),
-            include_label=True, label=_('Levels'), source=IndexInstanceNode
-        )
-
-        column_index_instance_node_levels.add_exclude(
-            source=DocumentIndexInstanceNode
-        )
-
-        column_index_instance_node_document_count = SourceColumn(
-            func=lambda context: context[
-                'object'
-            ].get_descendants_document_count(
-                user=context['request'].user
-            ), include_label=True, label=_('Documents'),
-            source=IndexInstanceNode
-        )
-        column_index_instance_node_document_count.add_exclude(
-            source=DocumentIndexInstanceNode
-        )
-
-        SourceColumn(
-            func=lambda context: index_instance_item_link(context['object']),
-            is_identifier=True, is_sortable=True, label=_('Level'),
-            sort_field='value', source=IndexInstanceNodeSearchResult
-        )
-        SourceColumn(
-            attribute='get_full_path', source=IndexInstanceNodeSearchResult
-        )
-
-        SourceColumn(
-            func=lambda context: get_instance_link(
-                index_instance_node=context['object'],
-            ), include_label=True, is_sortable=True, label=_('Level'),
-            sort_field='value', source=DocumentIndexInstanceNode
         )
 
         menu_facet.bind_links(

@@ -21,7 +21,7 @@ from .permissions import (
 
 
 def condition_is_not_root_node(context, resolved_object):
-    return not context['resolved_object'].is_root_node()
+    return not resolved_object.is_root_node()
 
 
 link_document_index_instance_list = Link(
