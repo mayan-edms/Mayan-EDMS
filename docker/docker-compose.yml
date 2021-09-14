@@ -27,7 +27,7 @@ x-mayan-container:
   volumes:
     - ${MAYAN_APP_VOLUME:-app}:/var/lib/mayan
     # Optional volumes to access external data like staging or watch folders
-    # - /opt/staging_files:/staging_files
+    # - /opt/staging_folder:/staging_folder
     # - /opt/watch_folder:/watch_folder
 
 networks:
