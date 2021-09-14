@@ -11,21 +11,13 @@ class Migration(migrations.Migration):
             model_name='imapemail',
             name='emailbasemodel_ptr',
         ),
-        migrations.RemoveField(
-            model_name='interactivesource',
-            name='source_ptr',
-        ),
-        migrations.RemoveField(
+         migrations.RemoveField(
             model_name='intervalbasemodel',
             name='document_type',
         ),
         migrations.RemoveField(
             model_name='intervalbasemodel',
             name='outofprocesssource_ptr',
-        ),
-        migrations.RemoveField(
-            model_name='outofprocesssource',
-            name='source_ptr',
         ),
         migrations.RemoveField(
             model_name='pop3email',
