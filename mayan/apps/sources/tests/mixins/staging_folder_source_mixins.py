@@ -66,7 +66,6 @@ class StagingFolderTestMixin(SourceTestMixin):
         self.test_staging_folder_files = []
 
     def tearDown(self):
-        fs_cleanup(filename=self.test_source.get_backend_data()['folder_path'])
         for temporary_folders in self._temporary_folders:
             fs_cleanup(filename=temporary_folders)
 

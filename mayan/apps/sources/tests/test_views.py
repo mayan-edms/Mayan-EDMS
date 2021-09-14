@@ -187,3 +187,29 @@ class SourceViewTestCase(
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
+
+    def test_source_test_post_view_no_permission(self):
+        self._create_test_source()
+
+        self._clear_events()
+
+        response = self._request_test_source_test_post_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_source_test_post_view_with_access(self):
+        self._create_test_source()
+
+        self.grant_access(
+            obj=self.test_source, permission=permission_sources_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_source_test_post_view()
+        self.assertEqual(response.status_code, 302)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)

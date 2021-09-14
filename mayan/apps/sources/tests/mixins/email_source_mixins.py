@@ -8,12 +8,17 @@ from ...source_backends.literals import (
     SOURCE_UNCOMPRESS_CHOICE_NEVER
 )
 
-from ..literals import TEST_SOURCE_BACKEND_EMAIL_PATH
+from ..literals import (
+    TEST_EMAIL_ATTACHMENT_AND_INLINE, TEST_SOURCE_BACKEND_EMAIL_PATH
+)
 
 from .base_mixins import SourceTestMixin, SourceViewTestMixin
 
 
 class EmailSourceBackendTestMixin(SourceTestMixin):
+    _create_source_method = '_create_test_email_source_backend'
+    _test_email_source_content = None
+
     def _create_test_email_source_backend(self, extra_data=None):
         backend_data = {
             'document_type_id': self.test_document_type.pk,
@@ -26,7 +31,8 @@ class EmailSourceBackendTestMixin(SourceTestMixin):
             'ssl': True,
             'subject_metadata_type_id': None,
             'store_body': False,
-            'username': ''
+            'username': '',
+            '_test_content': TEST_EMAIL_ATTACHMENT_AND_INLINE
         }
 
         if extra_data:

@@ -47,7 +47,7 @@ __all__ = ('SourceBackendStagingFolder',)
 logger = logging.getLogger(name=__name__)
 
 
-class StagingFile:
+class StagingFolderFile:
     """
     Simple class to extend the File class to add preview capabilities
     files in a directory on a storage.
@@ -208,21 +208,21 @@ class StagingFile:
 class StagingUploadForm(UploadBaseForm):
     """
     Form that show all the files in the staging folder specified by the
-    StagingFile class passed as 'cls' argument.
+    StagingFolderFile class passed as 'cls' argument.
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         try:
-            self.fields['staging_file_id'].choices = [
+            self.fields['staging_folder_file_id'].choices = [
                 (
-                    staging_file.encoded_filename, force_text(s=staging_file)
-                ) for staging_file in self.source.get_backend_instance().get_files()
+                    staging_folder_file.encoded_filename, force_text(s=staging_folder_file)
+                ) for staging_folder_file in self.source.get_backend_instance().get_files()
             ]
         except Exception as exception:
             logger.error('exception: %s', exception)
 
-    staging_file_id = forms.ChoiceField(label=_('Staging file'))
+    staging_folder_file_id = forms.ChoiceField(label=_('Staging file'))
 
 
 class SourceBackendStagingFolder(
@@ -298,12 +298,12 @@ class SourceBackendStagingFolder(
 
     @classmethod
     def intialize(cls):
-        icon_staging_file_delete = Icon(
+        icon_staging_folder_file_delete = Icon(
             driver_name='fontawesome', symbol='times'
         )
 
-        link_staging_file_delete = Link(
-            icon=icon_staging_file_delete, kwargs={
+        link_staging_folder_file_delete = Link(
+            icon=icon_staging_folder_file_delete, kwargs={
                 'source_id': 'source.pk',
                 'action_name': '"file_delete"'
             }, permissions=(permission_document_create,), query={
@@ -315,7 +315,7 @@ class SourceBackendStagingFolder(
             view='sources:source_action'
         )
 
-        class StagingFileThumbnailWidget(ThumbnailWidget):
+        class StagingFolderFileThumbnailWidget(ThumbnailWidget):
             gallery_name = 'sources:staging_list'
 
             def disable_condition(self, instance):
@@ -323,17 +323,17 @@ class SourceBackendStagingFolder(
 
         SourceColumn(
             func=lambda context: context['object'].get_date_time_created(),
-            label=_('Created'), source=StagingFile,
+            label=_('Created'), source=StagingFolderFile,
         )
 
         SourceColumn(
-            label=_('Thumbnail'), source=StagingFile,
-            widget=StagingFileThumbnailWidget,
+            label=_('Thumbnail'), source=StagingFolderFile,
+            widget=StagingFolderFileThumbnailWidget,
             html_extra_classes='text-center'
         )
 
         menu_object.bind_links(
-            links=(link_staging_file_delete,), sources=(StagingFile,)
+            links=(link_staging_folder_file_delete,), sources=(StagingFolderFile,)
         )
 
     def action_file_delete(self, request, encoded_filename):
@@ -363,12 +363,12 @@ class SourceBackendStagingFolder(
             transformation_instance_list=combined_transformation_list
         )
 
-        storage_staging_file_image_cache = DefinedStorage.get(
+        storage_staging_folder_file_image_cache = DefinedStorage.get(
             name=STORAGE_NAME_SOURCE_CACHE_FOLDER
         ).get_storage_instance()
 
         def file_generator():
-            with storage_staging_file_image_cache.open(name=cache_filename) as file_object:
+            with storage_staging_folder_file_image_cache.open(name=cache_filename) as file_object:
                 converter = ConverterBase.get_converter_class()(
                     file_object=file_object
                 )
@@ -432,7 +432,7 @@ class SourceBackendStagingFolder(
 
         self.process_kwargs = {
             'request': request,
-            'staging_file_filename': staging_folder_file.filename
+            'staging_folder_file_filename': staging_folder_file.filename
         }
 
         shared_uploaded_file = SharedUploadedFile.objects.create(
@@ -456,7 +456,7 @@ class SourceBackendStagingFolder(
     def callback(self, document_file, **kwargs):
         if self.kwargs.get('delete_after_upload'):
             path = Path(
-                self.kwargs['folder_path'], kwargs['staging_file_filename']
+                self.kwargs['folder_path'], kwargs['staging_folder_file_filename']
             )
 
             try:
@@ -475,7 +475,7 @@ class SourceBackendStagingFolder(
 
         callback_kwargs.update(
             {
-                'staging_file_filename': self.process_kwargs['staging_file_filename']
+                'staging_folder_file_filename': self.process_kwargs['staging_folder_file_filename']
             }
         )
 
@@ -500,7 +500,7 @@ class SourceBackendStagingFolder(
 
     def get_file(self, *args, **kwargs):
         try:
-            return StagingFile(staging_folder=self, *args, **kwargs)
+            return StagingFolderFile(staging_folder=self, *args, **kwargs)
         except (KeyError, ValueError):
             raise Http404
 
@@ -518,13 +518,13 @@ class SourceBackendStagingFolder(
             )
 
     def get_shared_uploaded_files(self):
-        staging_file = self.get_file(
-            encoded_filename=self.process_kwargs['forms']['source_form'].cleaned_data['staging_file_id']
+        staging_folder_file = self.get_file(
+            encoded_filename=self.process_kwargs['forms']['source_form'].cleaned_data['staging_folder_file_id']
         )
-        self.process_kwargs['staging_file_filename'] = staging_file.filename
+        self.process_kwargs['staging_folder_file_filename'] = staging_folder_file.filename
 
         return (
-            SharedUploadedFile.objects.create(file=staging_file.as_file()),
+            SharedUploadedFile.objects.create(file=staging_folder_file.as_file()),
         )
 
     def get_view_context(self, context, request):

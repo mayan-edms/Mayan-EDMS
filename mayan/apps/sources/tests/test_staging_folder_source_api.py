@@ -29,7 +29,9 @@ class StagingFolderActionAPIViewTestCase(
 
         test_staging_folder = self.test_source.get_backend_instance()
 
-        staging_file_count = len(list(test_staging_folder.get_files()))
+        staging_folder_file_count = len(
+            list(test_staging_folder.get_files())
+        )
 
         self._clear_events()
 
@@ -37,7 +39,9 @@ class StagingFolderActionAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(
-            len(list(test_staging_folder.get_files())), staging_file_count
+            len(
+                list(test_staging_folder.get_files())
+            ), staging_folder_file_count
         )
 
         events = self._get_test_events()
@@ -52,7 +56,9 @@ class StagingFolderActionAPIViewTestCase(
 
         test_staging_folder = self.test_source.get_backend_instance()
 
-        staging_file_count = len(list(test_staging_folder.get_files()))
+        staging_folder_file_count = len(
+            list(test_staging_folder.get_files())
+        )
 
         self._clear_events()
 
@@ -60,7 +66,9 @@ class StagingFolderActionAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(
-            len(list(test_staging_folder.get_files())), staging_file_count - 1
+            len(
+                list(test_staging_folder.get_files())
+            ), staging_folder_file_count - 1
         )
 
         events = self._get_test_events()

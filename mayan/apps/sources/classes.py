@@ -258,13 +258,6 @@ class SourceBackend(AppsModuleLoaderMixin, metaclass=SourceBackendMetaclass):
     def get_view_context(self, context, request):
         return {}
 
-    def process_document(self, **kwargs):
-        raise NotImplementedError(
-            '%(cls)s is missing the method `process_document`.' % {
-                'cls': self.__class__.__name__
-            }
-        )
-
     def save(self):
         """
         Called after the source model's .save() method for existing

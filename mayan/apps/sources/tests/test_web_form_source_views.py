@@ -17,7 +17,7 @@ from ..source_backends.literals import SOURCE_UNCOMPRESS_CHOICE_ALWAYS
 from .mixins.base_mixins import (
     DocumentFileUploadViewTestMixin, DocumentUploadWizardViewTestMixin
 )
-from .mixins.webform_source_mixins import WebFormSourceTestMixin
+from .mixins.web_form_source_mixins import WebFormSourceTestMixin
 
 
 class WebFormDocumentUploadWizardViewTestCase(

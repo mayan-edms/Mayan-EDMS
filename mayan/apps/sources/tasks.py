@@ -35,7 +35,7 @@ def task_source_process_document(source_id, dry_run=False):
         try:
             source = Source.objects.get(pk=source_id)
             if source.enabled or dry_run:
-                source.get_backend_instance().process_document(dry_run=dry_run)
+                source.get_backend_instance().process_documents(dry_run=dry_run)
         except Exception as exception:
             logger.error(
                 'Error processing source id: %s; %s', source_id, exception,

@@ -10,7 +10,7 @@ class StagingFolderViewTestCase(
     StagingFolderTestMixin, StagingFolderViewTestMixin,
     GenericDocumentViewTestCase
 ):
-    def test_staging_file_delete_get_view(self):
+    def test_staging_folder_file_delete_get_view(self):
         self.grant_access(
             obj=self.test_source, permission=permission_document_create
         )
@@ -33,7 +33,7 @@ class StagingFolderViewTestCase(
             ), staging_folder_file_count
         )
 
-    def test_staging_file_delete_post_view(self):
+    def test_staging_folder_file_delete_post_view(self):
         self.grant_access(
             obj=self.test_source, permission=permission_document_create
         )

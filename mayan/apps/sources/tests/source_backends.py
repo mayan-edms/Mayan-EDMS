@@ -12,6 +12,9 @@ __all__ = (
 class SourceBackendSimple(SourceBaseMixin, SourceBackend):
     label = 'Test source backend'
 
+    def process_documents(self, dry_run=False):
+        """Do nothing. This method is added to allow view testing."""
+
 
 class SourceBackendTestPeriodic(
     SourceBackendPeriodicMixin, SourceBaseMixin, SourceBackend
@@ -26,4 +29,8 @@ class SourceBackendTestEmail(
     label = 'Test email source backend'
 
     def get_shared_uploaded_files(self):
-        return self.process_message(message=self.content)
+        data = self.get_model_instance().get_backend_data()
+
+        message = getattr(self, 'content', data.get('_test_content'))
+
+        return self.process_message(message=message)
