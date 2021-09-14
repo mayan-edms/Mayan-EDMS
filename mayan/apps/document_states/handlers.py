@@ -18,10 +18,18 @@ def handler_create_workflow_image_cache(sender, **kwargs):
     )
 
 
-def handler_index_document(sender, **kwargs):
+def handler_index_document_on_workflow_instance_log_entry(sender, **kwargs):
     task_index_instance_document_add.apply_async(
         kwargs=dict(
             document_id=kwargs['instance'].workflow_instance.document.pk
+        )
+    )
+
+
+def handler_index_document_on_workflow_instance(sender, **kwargs):
+    task_index_instance_document_add.apply_async(
+        kwargs=dict(
+            document_id=kwargs['instance'].document.pk
         )
     )
 

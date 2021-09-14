@@ -13,7 +13,7 @@ from django.db.models import (
 from django.db.models.functions import Concat
 
 from mayan.apps.document_indexing.models import (
-    IndexInstanceNode, IndexTemplate
+    IndexInstance, IndexInstanceNode, IndexTemplate
 )
 from mayan.apps.documents.models import Document
 
@@ -138,7 +138,7 @@ class IndexFilesystem(LoggingMixIn, Operations):
 
         logger.debug('parts: %s', parts)
 
-        node = self.index_template.index_instance_root_node
+        node = self.index_instance.index_instance_root_node
 
         if len(parts) > 1 and parts[1] != '':
             path_cache = cache.get_path(path=path)
@@ -213,6 +213,7 @@ class IndexFilesystem(LoggingMixIn, Operations):
         self.file_descriptors = {}
 
         try:
+            self.index_instance = IndexInstance.objects.get(slug=index_slug)
             self.index_template = IndexTemplate.objects.get(slug=index_slug)
         except IndexTemplate.DoesNotExist:
             print('Unknown index slug: {}.'.format(index_slug))

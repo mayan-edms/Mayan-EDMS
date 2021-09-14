@@ -22,9 +22,11 @@ from mayan.apps.views.html_widgets import TwoStateWidget
 from .classes import DocumentStateHelper, WorkflowAction
 from .events import event_workflow_template_edited
 from .handlers import (
-    handler_create_workflow_image_cache, handler_index_document,
-    handler_launch_workflow_on_create, handler_launch_workflow_on_type_change,
-    handler_trigger_transition
+    handler_create_workflow_image_cache,
+    handler_index_document_on_workflow_instance,
+    handler_index_document_on_workflow_instance_log_entry,
+    handler_launch_workflow_on_create,
+    handler_launch_workflow_on_type_change, handler_trigger_transition
 )
 from .html_widgets import WorkflowLogExtraDataWidget, widget_transition_events
 from .links import (
@@ -612,9 +614,14 @@ class DocumentStatesApp(MayanAppConfig):
             receiver=handler_create_workflow_image_cache,
         )
         post_save.connect(
-            dispatch_uid='workflows_handler_index_document_save',
-            receiver=handler_index_document,
+            dispatch_uid='handler_index_document_on_workflow_instance_log_entry',
+            receiver=handler_index_document_on_workflow_instance_log_entry,
             sender=WorkflowInstanceLogEntry
+        )
+        post_save.connect(
+            dispatch_uid='workflows_handler_index_document_on_workflow_instance',
+            receiver=handler_index_document_on_workflow_instance,
+            sender=WorkflowInstance
         )
         post_save.connect(
             dispatch_uid='workflows_handler_trigger_transition',
