@@ -226,6 +226,7 @@ LANGUAGES = (
     ('el', _('Greek')),
     ('en', _('English')),
     ('es', _('Spanish')),
+    ('es-pr', _('Spanish (Puerto Rico)')),
     ('fa', _('Persian')),
     ('fr', _('French')),
     ('hu', _('Hungarian')),
