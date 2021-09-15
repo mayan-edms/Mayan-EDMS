@@ -2,6 +2,7 @@ import json
 import logging
 
 from django.db import models
+from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
@@ -38,6 +39,9 @@ class Quota(ExtraDataModelMixin, models.Model):
     def __str__(self):
         return force_text(s=self.backend_label())
 
+    def get_absolute_url(self):
+        return reverse(viewname='quotas:quota_list')
+
     @method_event(
         event_manager_class=EventManagerSave,
         created={
@@ -67,7 +71,7 @@ class Quota(ExtraDataModelMixin, models.Model):
 
     def dumps(self, data):
         self.backend_data = json.dumps(obj=data)
-        self.save()
+        self.save(update_fields=('backend_data',))
 
     def get_backend_class(self):
         """

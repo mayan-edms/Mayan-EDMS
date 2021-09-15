@@ -14,7 +14,7 @@ class DashboardWidgetTotalCheckouts(DashboardWidgetNumeric):
     label = _('Checked out documents')
     link = reverse_lazy(viewname='checkouts:check_out_list')
 
-    def render(self, request):
+    def get_count(self):
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
@@ -24,11 +24,10 @@ class DashboardWidgetTotalCheckouts(DashboardWidgetNumeric):
         queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_document_check_out_detail_view,
             queryset=DocumentCheckout.objects.checked_out_documents(),
-            user=request.user
+            user=self.request.user
         )
         queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_document_view, queryset=queryset,
-            user=request.user
+            user=self.request.user
         )
-        self.count = queryset.count()
-        return super().render(request)
+        return queryset.count()

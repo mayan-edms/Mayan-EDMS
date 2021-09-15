@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
@@ -60,7 +60,7 @@ msgstr "Telo"
 msgid "The email profile that will be used to send this email."
 msgstr "Profil e-pošte koji će se koristiti za slanje e-pošte."
 
-#: forms.py:71 models.py:55 views.py:212 workflow_actions.py:18
+#: forms.py:71 models.py:56 views.py:216 workflow_actions.py:18
 msgid "Mailing profile"
 msgstr "Mailing profil"
 
@@ -68,7 +68,7 @@ msgstr "Mailing profil"
 msgid "The driver to use when sending emails."
 msgstr ""
 
-#: forms.py:78 models.py:69
+#: forms.py:78 models.py:70
 msgid "Backend"
 msgstr "Backend"
 
@@ -96,11 +96,11 @@ msgstr "Urediti"
 msgid "Mailing profiles list"
 msgstr "Lista poštanskih profila"
 
-#: links.py:58 models.py:56
+#: links.py:58 models.py:57
 msgid "Mailing profiles"
 msgstr "Mailing profili"
 
-#: links.py:63 views.py:236
+#: links.py:63 views.py:240
 msgid "Test"
 msgstr "Test"
 
@@ -234,15 +234,15 @@ msgstr "Putanja fajla"
 msgid "Django file based backend"
 msgstr "Django bazirani fajl"
 
-#: models.py:32
+#: models.py:33
 msgid "A short text describing the mailing profile."
 msgstr ""
 
-#: models.py:33
+#: models.py:34
 msgid "Label"
 msgstr "Labela"
 
-#: models.py:37
+#: models.py:38
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
@@ -250,31 +250,31 @@ msgstr ""
 "Ako je podrazumevano, ovaj mailing profil će biti unapred izabran na obrazcu"
 " za dostavljanje dokumenata."
 
-#: models.py:39
+#: models.py:40
 msgid "Default"
 msgstr "default"
 
-#: models.py:41
+#: models.py:42
 msgid "Enabled"
 msgstr "Omogućeno"
 
-#: models.py:44
+#: models.py:45
 msgid "The dotted Python path to the backend class."
 msgstr "Podešena Python staza do backend klase."
 
-#: models.py:45
+#: models.py:46
 msgid "Backend path"
 msgstr "Backend putanja"
 
-#: models.py:48
+#: models.py:49
 msgid "Backend data"
 msgstr "Backend podaci"
 
-#: models.py:70
+#: models.py:71
 msgid "The backend class for this entry."
 msgstr ""
 
-#: models.py:232
+#: models.py:239
 msgid "Test email from Mayan EDMS"
 msgstr "Testirajte email od Mayan EDMS"
 
@@ -332,64 +332,64 @@ msgstr ""
 msgid "%(email)s is not a valid email address."
 msgstr ""
 
-#: views.py:39
+#: views.py:40
 #, python-format
 msgid "%(count)d document queued for email delivery"
 msgstr "%(count)d dokument postavljen za dostavljanje e-pošte"
 
-#: views.py:41
+#: views.py:42
 #, python-format
 msgid "%(count)d documents queued for email delivery"
 msgstr "%(count)d dokumenata koji su stavljeni u red za dostavljanje e-pošte"
 
-#: views.py:52
+#: views.py:53
 msgid "Send"
 msgstr "Pošalji"
 
-#: views.py:98
+#: views.py:102
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr "%(count)d dokument link je postavljen za dostavljanje e-pošte"
 
-#: views.py:100
+#: views.py:104
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr "%(count)d dokument linkova su postavljana za dostavljanje e-pošte"
 
-#: views.py:109
+#: views.py:113
 msgid "New mailing profile backend selection"
 msgstr "Izbor novog profila pozadinskog profila"
 
-#: views.py:141
+#: views.py:145
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "Kreirajte mailing listu \"%s\""
 
-#: views.py:168
+#: views.py:172
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Obriši mailing profil: %s"
 
-#: views.py:180
+#: views.py:184
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Uredi mailing adresu: %s"
 
-#: views.py:207
+#: views.py:211
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
 msgstr ""
 
-#: views.py:211
+#: views.py:215
 msgid "No mailing profiles available"
 msgstr ""
 
-#: views.py:228
+#: views.py:232
 msgid "Test email sent."
 msgstr ""
 
-#: views.py:237
+#: views.py:241
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Test mailing profila: %s"

@@ -7,4 +7,6 @@ class Command(BaseCommand):
     help = 'Remove obsolete permissions from the database'
 
     def handle(self, *args, **options):
-        StoredPermission.objects.purge_obsolete()
+        total = StoredPermission.objects.purge_obsolete()
+
+        self.stdout.write('\n{} obsolete permissions purged.'.format(total))

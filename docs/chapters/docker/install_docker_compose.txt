@@ -34,28 +34,31 @@ Docker Compose installation
        docker-compose -v
 
 
-#. Download the Mayan EDMS Docker Compose file:
+#. Download the Mayan EDMS Docker Compose files:
 
-   The file is located at: https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/docker/docker-compose.yml
+   The files are located at: https://gitlab.com/mayan-edms/mayan-edms/-/tree/master/docker/
 
    .. code-block:: console
 
        curl https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/docker/docker-compose.yml -O
+       curl https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/docker/env_file -O
+       curl https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/docker/.env -O
 
 
 #. Update the Mayan EDMS Docker Compose file:
 
-   Update the ``docker-compose.yml`` file directly or create a file named
-   ``.env`` in the same folder where the file ``docker-compose.yml`` resides.
+   Update the ``docker-compose.yml`` file directly or the ``.env`` in the
+   same folder where the file ``docker-compose.yml`` resides.
    Add an entry for each of the environment variables to change.
 
    .. note::
 
        If you are upgrading from a previous installation that used the
        deployment script at ``https://get.mayan-edms.com`` or the
-       :ref:`docker_install` method, you need to create the ``.env`` file
-       with at least these three lines. These will let the new Docker Compose
-       deployment use the existing data volumes of the previous installation::
+       :ref:`docker_install` method, you need to download or create the
+       ``.env`` file and add at least these three lines. These will let the
+       new Docker Compose deployment use the existing data volumes of the
+       previous installation::
 
            MAYAN_APP_VOLUME=/docker-volumes/mayan-edms/media
            MAYAN_REDIS_VOLUME=/docker-volumes/mayan-edms/redis

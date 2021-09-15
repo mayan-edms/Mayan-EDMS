@@ -16,6 +16,7 @@ import sys
 
 from docutils.parsers.rst import directives
 
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mayan.settings')
 sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(1, os.path.abspath('.'))
 
@@ -301,6 +302,7 @@ def setup(app):
     environment_variables['MAYAN_PIP_BIN'] = MAYAN_PIP_BIN
     environment_variables['MAYAN_SUPERVISOR_CONF'] = MAYAN_SUPERVISOR_CONF
     environment_variables['MAYAN_VERSION'] = mayan.__version__
+
     substitutions = utils.generate_substitutions(
         dictionary=environment_variables
     )

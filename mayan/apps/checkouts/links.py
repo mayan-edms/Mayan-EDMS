@@ -12,7 +12,7 @@ from .permissions import (
 )
 
 
-def is_checked_out(context):
+def condition_is_checked_out(context, resolved_object):
     try:
         return context['object'].is_checked_out()
     except KeyError:
@@ -20,7 +20,7 @@ def is_checked_out(context):
         return False
 
 
-def is_not_checked_out(context):
+def condition_is_not_checked_out(context, resolved_object):
     try:
         return not context['object'].is_checked_out()
     except KeyError:
@@ -33,7 +33,7 @@ link_check_out_list = Link(
     view='checkouts:check_out_list'
 )
 link_check_out_document = Link(
-    args='object.pk', condition=is_not_checked_out,
+    args='object.pk', condition=condition_is_not_checked_out,
     icon=icon_check_out_document,
     permissions=(permission_document_check_out,),
     text=_('Check out document'), view='checkouts:check_out_document'
@@ -45,7 +45,7 @@ link_check_out_document_multiple = Link(
 )
 link_check_in_document = Link(
     args='object.pk', icon=icon_check_in_document,
-    condition=is_checked_out, permissions=(
+    condition=condition_is_checked_out, permissions=(
         permission_document_check_in, permission_document_check_in_override
     ), text=_('Check in document'), view='checkouts:check_in_document'
 )

@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 
-from ..managers import FavoriteDocumentManager
+from ..managers import FavoriteDocumentManager, ValidFavoriteDocumentManager
 
 from .document_models import Document
 
@@ -32,6 +32,7 @@ class FavoriteDocument(ExtraDataModelMixin, models.Model):
     )
 
     objects = FavoriteDocumentManager()
+    valid = ValidFavoriteDocumentManager()
 
     class Meta:
         ordering = ('datetime_added',)

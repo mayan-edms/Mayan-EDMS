@@ -1,8 +1,12 @@
+{% load i18n %}
+
+{% load appearance_tags %}
 {% load converter_tags %}
 
 {% if instance %}
 
-    {% converter_get_object_image_data obj=instance width=size_preview_width height=size_preview_height as object_image_data %}
+    {% converter_get_object_image_data obj=instance transformation_instance_list=transformation_instance_list user=user as object_image_data %}
+
     {% if 'app_image_error_image' in object_image_data %}
         {% if object_image_data.app_image_error_image.template_name %}
             {% include object_image_data.app_image_error_image.template_name %}
@@ -23,11 +27,22 @@
         >
             {% with 'lazy-load thin_border-thumbnail' as image_classes %}
             {% with '200px' as image_max_height %}
-            {% with size_thumbnail_width as image_width %}
-            {% with size_thumbnail_height as image_height %}
-                {% include 'documents/forms/widgets/page_image.html' %}
-            {% endwith %}
-            {% endwith %}
+
+                <span class="instance-image-widget {{ container_class }}">
+                    <span class="spinner-container text-primary"
+                        style="height: {% if display_full_height %}100%{% else %}{{ display_height|default:150 }}px{% endif %}; display: block;"
+                    >
+                        {% appearance_get_icon 'mayan.apps.documents.icons.icon_document_image_loading' %}
+                    </span>
+                    <img
+                        alt="{{ image_alt }}"
+                        class="thin_border {{ image_classes }}"
+                        data-url="{{ object_image_data.url }}"
+                        src="#"
+                        style="{% if image_max_height %}max-height: {{ image_max_height }}; {% endif %}"
+                     />
+                </span>
+
             {% endwith %}
             {% endwith %}
         </a>

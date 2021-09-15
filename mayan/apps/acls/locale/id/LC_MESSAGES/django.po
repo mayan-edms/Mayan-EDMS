@@ -1,37 +1,38 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Adek Lanin, 2021
 # Faiqul Azmi <kasempurnaningurip@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-09-14 05:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:12+0000\n"
 "Last-Translator: Faiqul Azmi <kasempurnaningurip@gmail.com>, 2021\n"
-"Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/id/)\n"
+"Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/"
+"id/)\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:24 classes.py:143 links.py:27
+#: apps.py:26 classes.py:175 links.py:27
 msgid "ACLs"
 msgstr "Daftar akses kontrol"
 
-#: apps.py:60
+#: apps.py:62
 msgid ""
 "Object for which the access is granted. When sorting objects, only the type "
 "is used and not the actual label of the object."
 msgstr ""
 
-#: apps.py:63
+#: apps.py:65
 msgid "Object"
 msgstr ""
 
@@ -71,12 +72,12 @@ msgstr "Izin"
 msgid "Global ACLs"
 msgstr ""
 
-#: managers.py:230
+#: managers.py:243
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
 msgstr "Objek \"%s\" bukan sebuah model dan tidak dapat dicek akses."
 
-#: managers.py:250
+#: managers.py:263
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr "Akses tidak memenuhi untuk: %s"
@@ -120,8 +121,8 @@ msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
 "ACL entry instead."
 msgstr ""
-"Sebuah daftar akses kontrol untuk \"%(object)s\" menggunakan peran "
-"\"%(role)s\" sudah ada. Ubah daftar akses kontrol tersebut sebagai gantinya."
+"Sebuah daftar akses kontrol untuk \"%(object)s\" menggunakan peran \"%(role)s"
+"\" sudah ada. Ubah daftar akses kontrol tersebut sebagai gantinya."
 
 #: views.py:53
 #, python-format
@@ -145,8 +146,8 @@ msgid ""
 msgstr ""
 "ACL singkatan dari Access Control List merupakas daftar akses kontrol dan "
 "metode yang tepat untuk mengontrol akses pengguna ke objek-objek dalam "
-"sistem. ACLs memperbolehkan memberikan izin ke peran namun hanya untuk objek"
-" yang spesifik atau kumpulan objek."
+"sistem. ACLs memperbolehkan memberikan izin ke peran namun hanya untuk objek "
+"yang spesifik atau kumpulan objek."
 
 #: views.py:149
 #, python-format
@@ -199,8 +200,7 @@ msgid "Object ID"
 msgstr "ID objek"
 
 #: workflow_actions.py:35
-msgid ""
-"Numeric identifier of the object for which the access will be modified."
+msgid "Numeric identifier of the object for which the access will be modified."
 msgstr "Pengidentifikasi numerik objek yang aksesnya akan diubah."
 
 #: workflow_actions.py:40 workflow_actions.py:155

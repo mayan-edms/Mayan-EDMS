@@ -39,8 +39,10 @@ class Cabinet(ExtraDataModelMixin, MPTTModel):
         verbose_name=_('Documents')
     )
 
+    class MPTTMeta:
+        order_insertion_by = ('label',)
+
     class Meta:
-        ordering = ('parent__label', 'label')
         # unique_together doesn't work if there is a FK
         # https://code.djangoproject.com/ticket/1751
         unique_together = ('parent', 'label')

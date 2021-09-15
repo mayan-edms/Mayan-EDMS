@@ -4,7 +4,7 @@ from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
 
 from ..links import (
-    link_document_file_signature_delete,
+    link_document_file_signature_detached_delete,
     link_document_file_signature_details,
 )
 from ..permissions import (
@@ -12,11 +12,11 @@ from ..permissions import (
     permission_document_file_signature_view
 )
 from .literals import TEST_SIGNED_DOCUMENT_PATH
-from .mixins import SignatureTestMixin
+from .mixins import DetachedSignatureTestMixin
 
 
 class DocumentSignatureLinksTestCase(
-    SignatureTestMixin, GenericDocumentViewTestCase
+    DetachedSignatureTestMixin, GenericDocumentViewTestCase
 ):
     def test_document_file_signature_detail_link_no_permission(self):
         self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
@@ -60,7 +60,7 @@ class DocumentSignatureLinksTestCase(
             )
         )
 
-    def test_document_file_signature_delete_link_no_permission(self):
+    def test_document_file_signature_detached_delete_link_no_permission(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self._upload_test_document()
 
@@ -70,12 +70,12 @@ class DocumentSignatureLinksTestCase(
             test_object=self.test_document.file_latest.signatures.first()
         )
         context = self.get_test_view()
-        resolved_link = link_document_file_signature_delete.resolve(
+        resolved_link = link_document_file_signature_detached_delete.resolve(
             context=context
         )
         self.assertEqual(resolved_link, None)
 
-    def test_document_file_signature_delete_link_with_permission(self):
+    def test_document_file_signature_detached_delete_link_with_permission(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self._upload_test_document()
 
@@ -90,14 +90,14 @@ class DocumentSignatureLinksTestCase(
             test_object=self.test_document.file_latest.signatures.first()
         )
         context = self.get_test_view()
-        resolved_link = link_document_file_signature_delete.resolve(
+        resolved_link = link_document_file_signature_detached_delete.resolve(
             context=context
         )
         self.assertNotEqual(resolved_link, None)
         self.assertEqual(
             resolved_link.url,
             reverse(
-                viewname=link_document_file_signature_delete.view,
+                viewname=link_document_file_signature_detached_delete.view,
                 kwargs={
                     'signature_id': self.test_document.file_latest.signatures.first().pk,
                 }

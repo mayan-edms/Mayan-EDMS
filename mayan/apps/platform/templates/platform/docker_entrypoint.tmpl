@@ -1,18 +1,17 @@
-#!/bin/bash
-
-# Use bash and not sh to support argument slicing "${@:2}"
-# sh defaults to dash instead of bash.
+#!/bin/sh
 
 set -e
 echo "mayan: starting entrypoint.sh"
 INSTALL_FLAG=/var/lib/mayan/system/SECRET_KEY
-CONCURRENCY_ARGUMENT=--concurrency=
+CELERY_CONCURRENCY_ARGUMENT=--concurrency=
+CELERY_MAX_MEMORY_PER_CHILD_ARGUMENT=--max-memory-per-child=
+CELERY_MAX_TASKS_PER_CHILD_ARGUMENT=--max-tasks-per-child=
 
-DEFAULT_USER_UID=1000
 DEFAULT_USER_GID=1000
+DEFAULT_USER_UID=1000
 
-MAYAN_USER_UID=${MAYAN_USER_UID:-${DEFAULT_USER_UID}}
 MAYAN_USER_GID=${MAYAN_USER_GID:-${DEFAULT_USER_GID}}
+MAYAN_USER_UID=${MAYAN_USER_UID:-${DEFAULT_USER_UID}}
 
 export MAYAN_ALLOWED_HOSTS='["*"]'
 export MAYAN_BIN=/opt/mayan-edms/bin/mayan-edms.py
@@ -27,6 +26,7 @@ export DJANGO_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE}
 
 export MAYAN_GUNICORN_BIN=${MAYAN_PYTHON_BIN_DIR}gunicorn
 export MAYAN_GUNICORN_JITTER=${MAYAN_GUNICORN_JITTER:-{{GUNICORN_JITTER}}}
+export MAYAN_GUNICORN_LIMIT_REQUEST_LINE=${MAYAN_GUNICORN_LIMIT_REQUEST_LINE:-{{GUNICORN_LIMIT_REQUEST_LINE}}}
 export MAYAN_GUNICORN_MAX_REQUESTS=${MAYAN_GUNICORN_MAX_REQUESTS:-{{GUNICORN_MAX_REQUESTS}}}
 export MAYAN_GUNICORN_WORKER_CLASS=${MAYAN_GUNICORN_WORKER_CLASS:-{{GUNICORN_WORKER_CLASS}}}
 export MAYAN_GUNICORN_WORKERS=${MAYAN_GUNICORN_WORKERS:-{{GUNICORN_WORKERS}}}
@@ -34,15 +34,34 @@ export MAYAN_GUNICORN_TIMEOUT=${MAYAN_GUNICORN_TIMEOUT:-{{GUNICORN_TIMEOUT}}}
 export MAYAN_PIP_BIN=${MAYAN_PYTHON_BIN_DIR}pip
 export MAYAN_STATIC_ROOT=${MAYAN_INSTALL_DIR}/static
 
+# Setup worker environment variables.
 {% for worker in workers %}
-MAYAN_{{ worker.name|upper }}_CONCURRENCY=${MAYAN_{{ worker.name|upper }}_CONCURRENCY:-0}
+MAYAN_{{ worker.name|upper }}_CONCURRENCY=${MAYAN_{{ worker.name|upper }}_CONCURRENCY:-{{ worker.concurrency }}}
 
 if [ "$MAYAN_{{ worker.name|upper }}_CONCURRENCY" -eq 0 ]; then
     MAYAN_{{ worker.name|upper }}_CONCURRENCY=
 else
-    MAYAN_{{ worker.name|upper }}_CONCURRENCY="${CONCURRENCY_ARGUMENT}${MAYAN_{{ worker.name|upper }}_CONCURRENCY}"
+    MAYAN_{{ worker.name|upper }}_CONCURRENCY="${CELERY_CONCURRENCY_ARGUMENT}${MAYAN_{{ worker.name|upper }}_CONCURRENCY}"
 fi
 export MAYAN_{{ worker.name|upper }}_CONCURRENCY
+
+MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD=${MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD:-{{ worker.maximum_memory_per_child }}}
+
+if [ "$MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD" -eq 0 ]; then
+    MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD=
+else
+    MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD="${CELERY_MAX_MEMORY_PER_CHILD_ARGUMENT}${MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD}"
+fi
+export MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD
+
+MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD=${MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD:-{{ worker.maximum_tasks_per_child }}}
+
+if [ "$MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD" -eq 0 ]; then
+    MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD=
+else
+    MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD="${CELERY_MAX_TASKS_PER_CHILD_ARGUMENT}${MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD}"
+fi
+export MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD
 {% endfor %}
 
 if mount | grep '/dev/shm' > /dev/null; then
@@ -51,7 +70,7 @@ else
     MAYAN_GUNICORN_TEMPORARY_DIRECTORY=
 fi
 
-# Allow importing of user setting modules
+# Allow importing of user setting modules.
 export PYTHONPATH=$PYTHONPATH:$MAYAN_MEDIA_ROOT
 
 apt_get_install() {
@@ -73,7 +92,7 @@ initialsetup() {
 
 make_ready() {
     # Check if this is a new install, otherwise try to upgrade the existing
-    # installation on subsequent starts
+    # installation on subsequent starts.
     if [ ! -f $INSTALL_FLAG ]; then
         initialsetup
     else
@@ -116,8 +135,8 @@ update_uid_gid() {
     fi
 }
 
-# Start execution here
-wait.sh ${MAYAN_DOCKER_WAIT}
+# Start execution here.
+${MAYAN_PYTHON_BIN_DIR}python3 /usr/local/bin/wait.py ${MAYAN_DOCKER_WAIT}
 update_uid_gid
 os_package_installs || true
 pip_installs || true
@@ -127,19 +146,21 @@ case "$1" in
 
 run_all)
     make_ready
-    run_all.sh
+    /usr/local/bin/run_all.sh
     ;;
 
 run_celery)
-    run_celery.sh "${@:2}"
+    shift
+    /usr/local/bin/run_celery.sh "${@}"
     ;;
 
 run_command)
-    su mayan -c "${MAYAN_BIN} ${@:2}"
+    shift
+    su mayan -c "${MAYAN_BIN} ${@}"
     ;;
 
 run_frontend)
-    run_frontend.sh
+    /usr/local/bin/run_frontend.sh
     ;;
 
 run_initialsetup)
@@ -152,11 +173,13 @@ run_performupgrade)
 
 run_tests)
     make_ready
-    run_tests.sh "${@:2}"
+    shift
+    /usr/local/bin/run_tests.sh "${@}"
     ;;
 
 run_worker)
-    run_worker.sh "${@:2}"
+    shift
+    /usr/local/bin/run_worker.sh "${@}"
     ;;
 
 *)

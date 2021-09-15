@@ -22,7 +22,7 @@ class APIDocumentCabinetListView(
     """
     Returns a list of all the cabinets to which a document belongs.
     """
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     external_object_pk_url_kwarg = 'document_id'
     mayan_external_object_permissions = {'GET': (permission_cabinet_view,)}
     mayan_object_permissions = {'GET': (permission_cabinet_view,)}
@@ -39,7 +39,7 @@ class APICabinetListView(generics.ListCreateAPIView):
     """
     mayan_object_permissions = {'GET': (permission_cabinet_view,)}
     mayan_view_permissions = {'POST': (permission_cabinet_create,)}
-    ordering_fields = ('label',)
+    ordering_fields = ('id', 'label')
     queryset = Cabinet.objects.all()
     serializer_class = CabinetSerializer
 

@@ -1,7 +1,7 @@
 Version 4.0
 ===========
 
-Released: April XX, 2021
+Released: May 19, 2021
 
 
 This release is of special importance for the project as it also marks
@@ -67,6 +67,8 @@ document version and change its page mapping and ordering.
    paradigm changes for the project. Make sure to validate your data after the
    upgrade and report any issues.
 
+.. important::
+
    The default versions of PostgreSQL and MySQL were also updated. These
    database managers might require dedicated steps to convert your existing
    database from the current version to the new one. This should
@@ -95,8 +97,8 @@ match the major version of the release. For this release and for
 every release of the series 4.x the API version will be "v4".
 
 Support was added for API result sorting. Like the user interface, only
-indexed database fields support. The "OPTION" verb can be used to determine
-with fields are sortable.
+indexed database fields support. The **OPTION** verb can be used to determine
+which fields are sortable.
 
 
 Converter
@@ -163,7 +165,7 @@ storage for image previews.
 The three storages are:
 
   - ``DOCUMENTS_FILE_STORAGE_BACKENS`` - Stores the uploaded document files.
-  - ``DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND - Stores the preview
+  - ``DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND`` - Stores the preview
     images of the uploaded document files.
   - ``DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND`` - Stores the
     preview images of the document version pages.
@@ -285,6 +287,29 @@ In addition to the existing tool to purge caches, it is now possible to purge
 specific document files or document version caches. This can be achieve with
 the new action link and requires the cache purge permission for the object.
 
+Event tracking was added when purging a cache partition.
+
+Many stability, scaling, and performance updates were added to the file
+caching system.
+
+Cache collisions were solved for many scenarios. This allows controlled
+access to the cached content even under heavy load situation where many
+processes might be trying to read or modify cached content.
+
+Failed cache pruning attempts are now automatically retried if the cause was
+lock contention.
+
+Added detection of excessive cache pruning when cache size is
+too small for the workload.
+
+The cache eviction logic was improve to use a LFU (Least frequently used) and
+LRU (Least recently used) combination algorithm. This ensures that only the
+least usable content is evicted from the cache during pruning.
+
+The caches are not only pruned during startup if their maximum size has
+changed. This reduces the startup or restart time in installations that
+are under heavy use.
+
 
 File metadata
 ^^^^^^^^^^^^^
@@ -319,6 +344,26 @@ A new app was added to allowing sending messages to users. At the moment this
 app is only used by the downloads app to let users know their download is
 ready. This is a first stage app and we plan to expand the use of this app
 in subsequent versions.
+
+
+Organizations
+^^^^^^^^^^^^^
+
+A new small app was added to handle details that are specific to an
+organizations installation of Mayan EDMS. The app is called ``organizations``
+and holds two settings. The setting ``ORGANIZATIONS_INSTALLATION_URL``
+allows setting the URL of the installation. This URL is used when composing
+the document link URL when sending document links via email. It is also used
+to create the download link for exported document versions.
+
+If this setting is not specified, Mayan EDMS will try to obtain the URL
+scheme, host, and port from the HTTP request itself. When running Mayan EDMS
+behind proxy servers or load balancers this might not return accurate results
+and will require an explicit value for the setting.
+
+The setting ``ORGANIZATIONS_URL_BASE_PATH`` replaces the previous setting
+named ``COMMON_URL_BASE_PATH`` used when hosting Mayan EDMS in a path other
+than the root path ('/') of the web server.
 
 
 OCR
@@ -635,27 +680,51 @@ Other
   ``True``.
 - Dependency version upgrades:
 
-  - django-rosetta to 0.9.4.
-  - Django to 2.2.20.
-  - pycounty to 20.7.3.
-  - requests to 2.25.1.
-  - sh to 1.14.1.
+  - coverage from 5.1 to 5.5.
+  - Django to 2.2.23.
   - django-debug-toolbar to 3.2.
   - django-extensions to 3.1.2.
+  - django-rosetta to 0.9.4.
   - django-silk to 4.1.0.
   - flake8 to 3.9.0.
   - ipython to 7.22.0.
-  - transifex-client to 0.14.2.
-  - twine to 3.4.1.
-  - wheel to 0.36.2.
+  - pycounty to 20.7.3.
+  - requests to 2.25.1.
   - Sphinx to 3.5.4.
+  - sh to 1.14.1.
   - sphinx-autobuild to 2021.3.14.
   - sphinx-sitemap to 2.2.0.
   - sphinxcontrib-spelling to 7.1.0.
   - tornado to 6.1.
+  - tox from 3.14.6 to 3.23.1.
+  - transifex-client to 0.14.2.
+  - twine to 3.4.1.
+  - wheel to 0.36.2.
 
-- Rename the ``mayan_settings`` directory, which used to allow custom setting
-  modules, to the more intuitive ``user_settings``.
+- Fix sub workflow launch state action.
+- Convert the workflow instance creation to a background task.
+- Add locking to the duplicated document scan code to workaround race
+  condition in Django bug #19544 when adding duplicated documents via
+  the many to many field ``.add()`` method.
+- Remove the default queue. All tasks must now be explicitly assigned to an
+  app defined queue.
+- Detect and avoid duplicated queue names.
+- Added a fourth class of worker.
+- Re-balanced queues.
+- Renamed workers from ``fast``, ``medium``, and ``slow`` to ``A`` (fast),
+  ``B`` (new workers), ``C`` (medium), ``D`` (slow).
+- Add support for passing custom nice level to the workers when using the
+  Docker image ``run_worker`` command. The value is passed via the
+  ``MAYAN_WORKER_NICE_LEVEL`` environment variable. This variable defaults to
+  ``0``.
+- Detect and avoid adding a transformation to a layer for which it was
+  not registered.
+- Added LayerError exception.
+- Fixed redaction ACL support.
+- Added support for typecasting the values used to filter the ACL object
+  inherited fields.
+- Renamed the ``mayan_settings`` directory, which is used to allow custom
+  setting modules, to the more intuitive ``user_settings``.
 
 
 Removals
@@ -664,126 +733,29 @@ Removals
 - Document storage and caching settings.
 - Removed all remaining PDF page orientation detection support. Removed
   rotation test files.
+- Appending extensions when downloading document files. The filename of
+  the downloaded file is now taken as-is from the document file.
+- Bulk downlods.
 
 
 Upgrade process
 ---------------
 
-Upgrading from Mayan EDMS 3.5.x
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-#. Stop supervisord::
-
-    sudo systemctl stop supervisor
+.. include:: partials/upgrade-3.5-4.0.txt
 
 
-#. Make a backup of your supervisord file:
+Troubleshooting
+---------------
 
-   .. code-block:: bash
+If you observe the errors:
 
-       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
 
+or:
 
-#. Make a backup of your database:
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
 
-   Use the respective backup command for the database:
-
-     - PostgreSQL: https://www.postgresql.org/docs/current/backup-dump.html
-     - MySQL: https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html
-
-
-#. Upgrade to the latest pip version:
-
-   .. code-block:: bash
-
-       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install -U pip
-
-
-#. Remove deprecated requirements:
-
-   .. code-block:: bash
-
-    sudo -u |DEFAULT_OS_USERNAME| curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
-    && sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
-
-
-#. Update the Mayan EDMS Python package:
-
-   .. code-block:: bash
-
-    sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install mayan-edms==|MAYAN_VERSION|
-
-   the requirements will also be updated automatically.
-
-
-
-#. Update the Redis configuration to keep 3 databases:
-
-   Replace:
-
-   .. code-block:: ini
-
-      databases 2
-
-   with:
-
-   .. code-block:: ini
-
-      databases 3
-
-
-#. Edit the config file at ``|MAYAN_MEDIA_ROOT|/config.yml``:
-
-   Replace:
-
-   .. code-block:: ini
-
-       MAYAN_LOCK_MANAGER_BACKEND="redis://..."
-       MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS=...
-
-   with:
-
-   .. code-block:: ini
-
-       MAYAN_LOCK_MANAGER_BACKEND="mayan.apps.lock_manager.backends.redis_lock.RedisLock"
-       MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS="{'redis_url':'redis://:|DEFAULT_REDIS_PASSWORD|@172.17.0.1:6379/2'}"
-
-
-#. Update the supervisord configuration file. Replace the environment
-   variables values shown here with your respective settings. This step will refresh
-   the supervisord configuration file with the new queues and the latest
-   recommended layout:
-
-   .. code-block:: bash
-
-       sudo -u |DEFAULT_OS_USERNAME| MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
-       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
-
-
-#. Edit the supervisord configuration file and update any setting specific to your installation:
-
-   .. code-block:: bash
-
-       sudo vi |MAYAN_SUPERVISOR_CONF|
-
-
-#. Migrate existing database schema and static media files with:
-
-   .. code-block:: bash
-
-       sudo -u |DEFAULT_OS_USERNAME| MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
-       |MAYAN_BIN| performupgrade
-
-
-#. Start supervisord:
-
-   .. code-block:: bash
-
-       sudo systemctl start supervisor
-
-#. Clear the browser cache to avoid loading old web assets.
-
-The upgrade procedure is now complete.
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
 
 
 Backward incompatible changes

@@ -4,13 +4,15 @@ from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import (
     DEFAULT_CONVERTER_ASSET_CACHE_MAXIMUM_SIZE,
-    DEFAULT_CONVERTER_ASSET_CACHE_TIME,
     DEFAULT_CONVERTER_ASSET_CACHE_STORAGE_BACKEND,
     DEFAULT_CONVERTER_ASSET_CACHE_STORAGE_BACKEND_ARGUMENTS,
     DEFAULT_CONVERTER_ASSET_STORAGE_BACKEND,
     DEFAULT_CONVERTER_ASSET_STORAGE_BACKEND_ARGUMENTS,
     DEFAULT_CONVERTER_GRAPHICS_BACKEND,
-    DEFAULT_CONVERTER_GRAPHICS_BACKEND_ARGUMENTS
+    DEFAULT_CONVERTER_GRAPHICS_BACKEND_ARGUMENTS,
+    DEFAULT_CONVERTER_IMAGE_CACHE_TIME,
+    DEFAULT_CONVERTER_IMAGE_GENERATION_MAX_RETRIES,
+    DEFAULT_CONVERTER_IMAGE_GENERATION_TIMEOUT
 )
 from .setting_callbacks import callback_update_asset_cache_size
 from .setting_migrations import ConvertSettingMigration
@@ -29,14 +31,6 @@ setting_asset_cache_maximum_size = namespace.add_setting(
         'will start deleting the oldest asset cache files. '
         'Specify the size in bytes.'
     ), post_edit_function=callback_update_asset_cache_size
-)
-setting_asset_cache_time = namespace.add_setting(
-    default=DEFAULT_CONVERTER_ASSET_CACHE_TIME,
-    global_name='CONVERTER_ASSET_CACHE_TIME',
-    help_text=_(
-        'Time in seconds that the browser should cache the supplied asset. '
-        'The default of 31559626 seconds correspond to 1 year.'
-    )
 )
 setting_asset_cache_storage_backend = namespace.add_setting(
     default=DEFAULT_CONVERTER_ASSET_CACHE_STORAGE_BACKEND,
@@ -74,5 +68,28 @@ setting_graphics_backend_arguments = namespace.add_setting(
     default=DEFAULT_CONVERTER_GRAPHICS_BACKEND_ARGUMENTS,
     global_name='CONVERTER_GRAPHICS_BACKEND_ARGUMENTS', help_text=_(
         'Configuration options for the graphics conversion backend.'
+    )
+)
+setting_image_cache_time = namespace.add_setting(
+    default=DEFAULT_CONVERTER_IMAGE_CACHE_TIME,
+    global_name='CONVERTER_IMAGE_CACHE_TIME',
+    help_text=_(
+        'Time in seconds that the browser should cache the supplied image. '
+    )
+)
+setting_image_generation_timeout = namespace.add_setting(
+    default=DEFAULT_CONVERTER_IMAGE_GENERATION_MAX_RETRIES,
+    global_name='CONVERTER_IMAGE_GENERATION_MAX_RETRIES',
+    help_text=_(
+        'Maximum number of retries before giving up. A value of None means '
+        'the task will retry forever.'
+    )
+)
+setting_image_generation_timeout = namespace.add_setting(
+    default=DEFAULT_CONVERTER_IMAGE_GENERATION_TIMEOUT,
+    global_name='CONVERTER_IMAGE_GENERATION_TIMEOUT',
+    help_text=_(
+        'Time in seconds after which the image generation task will stop '
+        'running and raise an error.'
     )
 )

@@ -1,0 +1,76 @@
+Version 4.0.1
+=============
+
+Released: May 20, 2021
+
+Status: Stable
+
+Changes
+-------
+
+
+Documentation
+^^^^^^^^^^^^^
+
+The Docker documentation chapter was updated to fix the worker concurrency
+environment variables names.
+
+A troubleshooting section regarding document file access after upgrade to
+version 4.0 on situations where the settings system is not able to migrate
+the value of the ``DOCUMENTS_STORAGE_BACKEND`` and
+``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS`` settings. A link to this chapter is
+included at the end of the release notes.
+
+
+Documents
+^^^^^^^^^
+
+The documents app migrations for the settings ``DOCUMENTS_STORAGE_BACKEND``
+and ``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS`` to work in more situations.
+
+
+User management
+^^^^^^^^^^^^^^^
+
+The group and user setup link conditional disable was fixed to work as
+expected.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`978` Upgrade 3.5 to 4 missing files
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

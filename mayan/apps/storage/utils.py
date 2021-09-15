@@ -82,6 +82,11 @@ class PassthroughStorageProcessor:
             self.database.close
 
 
+def TemporaryDirectory(*args, **kwargs):
+    kwargs.update({'dir': setting_temporary_directory.value})
+    return tempfile.TemporaryDirectory(*args, **kwargs)
+
+
 def TemporaryFile(*args, **kwargs):
     kwargs.update({'dir': setting_temporary_directory.value})
     return tempfile.TemporaryFile(*args, **kwargs)
@@ -133,16 +138,6 @@ def mkdtemp(*args, **kwargs):
     """
     kwargs.update({'dir': setting_temporary_directory.value})
     return tempfile.mkdtemp(*args, **kwargs)
-
-
-def mkstemp(*args, **kwargs):
-    """
-    Creates a temporary file in the most secure manner possible.
-    There are no race conditions in the file’s creation, assuming that
-    the platform properly implements the os.O_EXCL flag for os.open().
-    """
-    kwargs.update({'dir': setting_temporary_directory.value})
-    return tempfile.mkstemp(*args, **kwargs)
 
 
 def patch_files(path=None, replace_list=None):
@@ -205,24 +200,3 @@ def patch_files(path=None, replace_list=None):
                                 fsrc=temporary_file_object,
                                 fdst=source_file_object
                             )
-
-
-def validate_path(path):
-    if not os.path.exists(path):
-        # If doesn't exist try to create it
-        try:
-            os.mkdir(path)
-        except Exception as exception:
-            logger.debug('unhandled exception: %s', exception)
-            return False
-
-    # Check if it is writable
-    try:
-        fd, test_filepath = tempfile.mkstemp(dir=path)
-        os.close(fd)
-        os.unlink(test_filepath)
-    except Exception as exception:
-        logger.debug('unhandled exception: %s', exception)
-        return False
-
-    return True

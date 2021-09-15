@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2021\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Dynamic search"
 msgstr ""
 
-#: classes.py:265
+#: classes.py:290
 msgid "No search model matching the query"
 msgstr ""
 
@@ -43,16 +43,16 @@ msgstr ""
 "İşaretlenmemiş sonuçlar en az bir alanla eşleşen olduğunda geri "
 "döndürülecektir."
 
-#: forms.py:31 templates/dynamic_search/search_box.html:41
+#: forms.py:30 templates/dynamic_search/search_box.html:41
 msgid "Search terms"
 msgstr "Arama terimleri"
 
 #: links.py:13 permissions.py:5 queues.py:8 settings.py:11
-#: templates/dynamic_search/search_box.html:45 views.py:124 views.py:137
+#: templates/dynamic_search/search_box.html:45 views.py:126 views.py:139
 msgid "Search"
 msgstr "Arama"
 
-#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:151
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:156
 msgid "Advanced search"
 msgstr "Gelişmiş Arama"
 
@@ -60,7 +60,7 @@ msgstr "Gelişmiş Arama"
 msgid "Search again"
 msgstr "Tekrar arama"
 
-#: links.py:25 views.py:97
+#: links.py:25 views.py:99
 msgid "Reindex search backend"
 msgstr ""
 
@@ -116,21 +116,21 @@ msgstr "Arama sonucu bulunamadı"
 msgid "Search results for: %s"
 msgstr "%s Için arama sonuçları: "
 
-#: views.py:93
+#: views.py:95
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
 msgstr ""
 
-#: views.py:99
+#: views.py:101
 msgid "This tool erases and populates the search backend's internal index."
 msgstr ""
 
-#: views.py:117
+#: views.py:119
 msgid "Search backend reindexing queued."
 msgstr ""
 
-#: views.py:139
+#: views.py:141
 #, python-format
 msgid "Search for: %s"
 msgstr ""

@@ -20,14 +20,14 @@ x-mayan-container:
     MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS: "{'redis_url':'redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/2'}"
     # Replace with the line below when using RabbitMQ
     # MAYAN_DOCKER_WAIT: "${MAYAN_DATABASE_HOST:-postgresql}:5432 redis:6379 rabbitmq:5672"
-  image: ${MAYAN_DOCKER_IMAGE_NAME:-mayanedms/mayanedms}:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
+  image: ${MAYAN_DOCKER_IMAGE_NAME:-mayanedms/mayanedms}:${MAYAN_DOCKER_IMAGE_TAG:-s4.1}
   networks:
     - bridge
   restart: unless-stopped
   volumes:
     - ${MAYAN_APP_VOLUME:-app}:/var/lib/mayan
     # Optional volumes to access external data like staging or watch folders
-    # - /opt/staging_files:/staging_files
+    # - /opt/staging_folder:/staging_folder
     # - /opt/watch_folder:/watch_folder
 
 networks:
@@ -42,6 +42,8 @@ services:
       - "traefik.http.routers.app.rule=Host(`www.example.com`)"  # Replace this with your published URL
       - "traefik.http.routers.mayan.rule=Host(`mayan.app`)"
       - "traefik.http.routers.mayan.entrypoints=web"
+    profiles:
+      - all_in_one
     ports:
       - "80:8000"
 
@@ -55,7 +57,7 @@ services:
       - "-c"
       - "maintenance_work_mem=128MB"
       - "-c"
-      - "max_connections=200"
+      - "max_connections=150"
       - "-c"
       - "shared_buffers=256MB"
       - "-c"
@@ -64,9 +66,14 @@ services:
       POSTGRES_DB: ${MAYAN_DATABASE_NAME:-mayan}
       POSTGRES_PASSWORD: ${MAYAN_DATABASE_PASSWORD:-mayandbpass}
       POSTGRES_USER: ${MAYAN_DATABASE_USER:-mayan}
-    image: postgres:${MAYAN_DOCKER_POSTGRES_TAG:-10.15-alpine}
+    image: postgres:${MAYAN_DOCKER_POSTGRES_TAG:-10.18-alpine}
     networks:
       - bridge
+    # Disable to allow external access to the database.
+    # ports:
+    #  - "5432:5432"
+    profiles:
+      - postgresql
     restart: unless-stopped
     volumes:
       - ${MAYAN_POSTGRES_VOLUME:-postgres}:/var/lib/postgresql/data
@@ -90,7 +97,7 @@ services:
       - "256"
       - --requirepass
       - "${MAYAN_REDIS_PASSWORD:-mayanredispassword}"
-    image: redis:${MAYAN_DOCKER_REDIS_TAG:-6.0-alpine}
+    image: redis:${MAYAN_DOCKER_REDIS_TAG:-6.2-alpine}
     networks:
       - bridge
     restart: unless-stopped
@@ -112,10 +119,9 @@ services:
   frontend:
     <<: *mayan-container
     command:
-      - run_worker
-      - fast
+      - run_frontend
     ports:
-      - "81:8000"
+      - "80:8000"
     profiles:
       - extra_frontend
 
@@ -127,7 +133,7 @@ services:
     devices:
       - "/dev/fuse:/dev/fuse"
     entrypoint:
-      - /bin/bash
+      - /bin/sh
       - -c
       - 'mkdir --parents /mnt/index && chown mayan:mayan /mnt/index && /usr/local/bin/entrypoint.sh run_command "mountindex --allow-other creation_date /mnt/index"'  # Replace "creation_date" with the index of your choice.
     profiles:
@@ -146,7 +152,7 @@ services:
     <<: *mayan-container
     command:
       - run_worker
-      - fast
+      - worker_a
     profiles:
       - extra_worker_a
 
@@ -155,7 +161,7 @@ services:
     <<: *mayan-container
     command:
       - run_worker
-      - medium
+      - worker_b
     profiles:
       - extra_worker_b
 
@@ -164,7 +170,7 @@ services:
     <<: *mayan-container
     command:
       - run_worker
-      - medium
+      - worker_c
     profiles:
       - extra_worker_c
 
@@ -173,7 +179,7 @@ services:
     <<: *mayan-container
     command:
       - run_worker
-      - slow
+      - worker_d
     profiles:
       - extra_worker_d
 
@@ -196,18 +202,21 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
-  # Enable to use RabbitMQ
-  # rabbitmq:
-  #   image: rabbitmq:3.8-alpine
-  #   environment:
-  #     RABBITMQ_DEFAULT_USER: ${MAYAN_RABBITMQ_USER:-mayan}
-  #     RABBITMQ_DEFAULT_PASS: ${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}
-  #     RABBITMQ_DEFAULT_VHOST: ${MAYAN_RABBITMQ_VHOST:-mayan}
-  #   networks:
-  #     - bridge
-  #   restart: unless-stopped
-  #   volumes:
-  #      - ${MAYAN_RABBITMQ_VOLUME:-rabbitmq}:/var/lib/rabbitmq
+  rabbitmq:
+    image: rabbitmq:${MAYAN_DOCKER_RABBITMQ_TAG:-3.9-alpine}
+    environment:
+      RABBITMQ_DEFAULT_USER: ${MAYAN_RABBITMQ_USER:-mayan}
+      RABBITMQ_DEFAULT_PASS: ${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}
+      RABBITMQ_DEFAULT_VHOST: ${MAYAN_RABBITMQ_VHOST:-mayan}
+    networks:
+      - bridge
+    ports:
+      - "15672:15672"
+    profiles:
+      - rabbitmq
+    restart: unless-stopped
+    volumes:
+      - ${MAYAN_RABBITMQ_VOLUME:-rabbitmq}:/var/lib/rabbitmq
 
 volumes:
   app:

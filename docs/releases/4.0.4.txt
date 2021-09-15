@@ -1,0 +1,60 @@
+Version 4.0.4
+=============
+
+Released: June 5, 2021
+
+Status: Stable
+
+Changes
+-------
+
+
+Events
+^^^^^^
+
+Merged the following change from version 3.5.10:
+Remove the database transaction handling in the event decorator. This caused
+a race condition which made some background tasks like, workflows launches,
+to attempt to access a document that was not yet available because it was
+in the middle of an unfinished event transaction.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- None
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

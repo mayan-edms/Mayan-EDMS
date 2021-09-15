@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -42,7 +42,7 @@ msgstr "Точная контрольная сумма файла докумен
 msgid "Exact document label"
 msgstr "Точный заголовок документа"
 
-#: links.py:18 models.py:41 views.py:77
+#: links.py:18 models.py:41 views.py:73
 msgid "Duplicated documents"
 msgstr "Дубликаты документов"
 
@@ -78,20 +78,20 @@ msgstr "Очистить пустые повторяющиеся списки"
 msgid "Scan document duplicates"
 msgstr "Поиск дубликатов документов"
 
-#: views.py:36
+#: views.py:32
 msgid "Only exact copies of this document will be shown in the this list."
 msgstr "Здесь отображаются только полные копии файла этого документа."
 
-#: views.py:40
+#: views.py:36
 msgid "There are no duplicates for this document"
 msgstr "У документа нет дубликатов"
 
-#: views.py:44
+#: views.py:40
 #, python-format
 msgid "Duplicates for document: %s"
 msgstr "Дубликаты документа: %s"
 
-#: views.py:68
+#: views.py:64
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
 "the last byte. Files that have the same text or OCR but are not identical or"
@@ -101,14 +101,14 @@ msgstr ""
 "Файлы, имеющие один и тот же текст или распознанное содержимое, но "
 "сохраненные в разных форматах, система не считает дубликатами."
 
-#: views.py:75
+#: views.py:71
 msgid "There are no duplicated documents"
 msgstr "Отсутствуют дубликаты документов"
 
-#: views.py:85
+#: views.py:81
 msgid "Scan for duplicated documents?"
 msgstr "Выполнить поиск дубликатов документов?"
 
-#: views.py:92
+#: views.py:88
 msgid "Duplicated document scan queued successfully."
 msgstr "Задача поиска дубликатов документов поставлена в очередь."

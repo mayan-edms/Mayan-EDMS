@@ -21,8 +21,7 @@ class AdvancedSearchForm(forms.Form):
 
         for name, label in self.search_model.get_fields_simple_list():
             self.fields[name] = forms.CharField(
-                label=label,
-                required=False
+                label=label, required=False
             )
 
 

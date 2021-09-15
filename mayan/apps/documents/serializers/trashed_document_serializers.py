@@ -6,6 +6,10 @@ from .document_serializers import DocumentSerializer
 
 
 class TrashedDocumentSerializer(DocumentSerializer):
+    image_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='document_id',
+        view_name='rest_api:trasheddocument-image'
+    )
     restore_url = serializers.HyperlinkedIdentityField(
         lookup_url_kwarg='document_id',
         view_name='rest_api:trasheddocument-restore'
@@ -20,7 +24,12 @@ class TrashedDocumentSerializer(DocumentSerializer):
         }
         fields = sorted(
             DocumentSerializer.Meta.fields + (
-                'restore_url', 'trashed_date_time'
+                'image_url', 'restore_url', 'trashed_date_time'
             )
         )
         model = TrashedDocument
+        read_only_fields = sorted(
+            DocumentSerializer.Meta.read_only_fields + (
+                'image_url', 'restore_url', 'trashed_date_time'
+            )
+        )

@@ -1,0 +1,92 @@
+Version 4.0.9
+=============
+
+Released: June 29, 2021
+
+Status: Stable
+
+Changes
+-------
+
+
+Search
+^^^^^^
+
+With the feedback of the community some fixes and improvements were made to
+the scoped search feature. It is now possible to aggregate more than two
+scopes using a single operator. Support for specifying the ``match_all``
+logic per scope was also added. The ability to return a single scope without
+rewriting the entire search query was also improved.
+
+To ensure correct query results, search limits are now automatically
+disabled per scope when performing a multi scope search, but still enforced
+for the final result.
+
+The scope decoding code was partially rewritten for clarity and to allow
+the current and future improvements.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+The padding of the main menu panel anchors was increased while the padding
+of the list items was removed. This allows the entire height of the menu
+item to react to click events.
+
+The main menu accordion indicator when will now rotate when a menu is opened
+or closed.
+
+The jQuery usage of the $(this) object was improved. Also some unused jQuery
+code from the document card update methods was removed. This two changes
+lower the browser memory usage when many document cards are displayed and
+speed up the initial display during a page load.
+
+
+Other
+^^^^^
+
+- More uses of the ``update_fields`` argument were to added to ``.save()``
+  methods.
+- Simplify logic using the document parser content update using
+  ``update_or_create``.
+- Raise document list errors on debug or testing.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`1004` UI: Respond side bar dropdown menu over the whole tab
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

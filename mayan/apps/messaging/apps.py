@@ -9,7 +9,6 @@ from mayan.apps.common.menus import (
     menu_multi_item, menu_object, menu_secondary, menu_topbar
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 
@@ -17,8 +16,9 @@ from .events import event_message_edited
 from .links import (
     link_message_all_mark_read, link_message_create,
     link_message_single_delete, link_message_list,
-    link_message_multiple_mark_read, link_message_multiple_delete,
-    link_message_single_mark_read
+    link_message_multiple_delete, link_message_multiple_mark_read,
+    link_message_multiple_mark_unread, link_message_single_mark_read,
+    link_message_single_mark_unread
 )
 from .permissions import permission_message_delete, permission_message_view
 
@@ -47,8 +47,7 @@ class MessagingApp(MayanAppConfig):
         ModelPermission.register(
             model=Message, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_events_view, permission_message_delete,
-                permission_message_view
+                permission_message_delete, permission_message_view
             )
         )
 
@@ -72,12 +71,14 @@ class MessagingApp(MayanAppConfig):
 
         menu_multi_item.bind_links(
             links=(
-                link_message_multiple_delete, link_message_multiple_mark_read
+                link_message_multiple_delete, link_message_multiple_mark_read,
+                link_message_multiple_mark_unread
             ), sources=(Message,)
         )
         menu_object.bind_links(
             links=(
-                link_message_single_delete, link_message_single_mark_read
+                link_message_single_delete, link_message_single_mark_read,
+                link_message_single_mark_unread
             ), sources=(Message,)
         )
 
@@ -89,5 +90,5 @@ class MessagingApp(MayanAppConfig):
         )
 
         menu_topbar.bind_links(
-            links=(link_message_list,), position=99
+            links=(link_message_list,), position=40
         )

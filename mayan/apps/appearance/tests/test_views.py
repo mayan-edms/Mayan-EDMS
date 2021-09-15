@@ -184,3 +184,16 @@ class ThemeViewTestCase(
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
+
+
+class ThemedViewsTestCase(ThemeTestMixin, GenericViewTestCase):
+    def test_normal_view_after_theme_delete(self):
+        self._create_test_theme()
+
+        self._test_case_user.theme_settings.theme = self.test_theme
+        self._test_case_user.theme_settings.save()
+        self.test_theme.delete()
+
+        response = self.get(viewname='common:about_view')
+
+        self.assertEqual(response.status_code, 200)

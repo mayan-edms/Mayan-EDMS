@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
 # bo feng <87289884@qq.com>, 2021
+# Roberto Rosario, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:57+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
-"Last-Translator: bo feng <87289884@qq.com>, 2021\n"
+"Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,28 +21,28 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:52 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
+#: apps.py:55 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
 #: search.py:17 settings.py:11
 msgid "OCR"
 msgstr "文字识别"
 
-#: apps.py:103
+#: apps.py:106
 msgid "The OCR content."
 msgstr "文字识别内容。"
 
-#: apps.py:108
+#: apps.py:111
 msgid "A generator returning the document's pages OCR content."
 msgstr ""
 
-#: apps.py:109
+#: apps.py:112
 msgid "OCR content"
 msgstr "文字识别内容。"
 
-#: apps.py:133
+#: apps.py:138
 msgid "Date and time"
 msgstr "日期和时间"
 
-#: apps.py:136 models.py:50
+#: apps.py:141 models.py:50
 msgid "Result"
 msgstr "结果"
 
@@ -55,16 +55,16 @@ msgid "Free Open Source OCR Engine"
 msgstr "免费开源OCR引擎"
 
 #: events.py:8
-msgid "Document OCR content deleted"
-msgstr "文件OCR内容已删除"
+msgid "Document version OCR content deleted"
+msgstr ""
 
 #: events.py:12
-msgid "Document file submitted for OCR"
-msgstr "提交OCR的文件"
+msgid "Document version submitted for OCR"
+msgstr "提交给OCR的文档版本"
 
 #: events.py:16
-msgid "Document file OCR finished"
-msgstr "文档文件OCR已完成"
+msgid "Document version OCR finished"
+msgstr "文档版本OCR已完成"
 
 #: forms.py:14 forms.py:47
 msgid "Contents"

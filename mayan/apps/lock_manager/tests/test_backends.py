@@ -1,19 +1,24 @@
 from unittest import skip
+
 from django.test import override_settings
 
 from mayan.apps.testing.tests.base import BaseTestCase
 
-from .mixins import BaseLockBackendTestMixin, DefaultTimeoutTestMixin
+from .mixins import (
+    LockBackendTestCaseMixin, LockBackendTestMixin, DefaultTimeoutTestMixin
+)
 
 
 class FileLockBackendTestCase(
-    BaseLockBackendTestMixin, DefaultTimeoutTestMixin, BaseTestCase
+    LockBackendTestMixin, LockBackendTestCaseMixin, DefaultTimeoutTestMixin,
+    BaseTestCase
 ):
     backend_string = 'mayan.apps.lock_manager.backends.file_lock.FileLock'
 
 
 class ModelLockBackendTestCase(
-    BaseLockBackendTestMixin, DefaultTimeoutTestMixin, BaseTestCase
+    LockBackendTestMixin, LockBackendTestCaseMixin, DefaultTimeoutTestMixin,
+    BaseTestCase
 ):
     backend_string = 'mayan.apps.lock_manager.backends.model_lock.ModelLock'
 
@@ -23,6 +28,7 @@ class ModelLockBackendTestCase(
     LOCK_MANAGER_BACKEND_ARGUMENTS={'redis_url': 'redis://127.0.0.1:6379/0'}
 )
 class RedisLockBackendTestCase(
-    BaseLockBackendTestMixin, DefaultTimeoutTestMixin, BaseTestCase
+    LockBackendTestMixin, LockBackendTestCaseMixin, DefaultTimeoutTestMixin,
+    BaseTestCase
 ):
     backend_string = 'mayan.apps.lock_manager.backends.redis_lock.RedisLock'

@@ -11,12 +11,12 @@
         url('../fonts/IM_Fell_English_SC.ttf') format('truetype');
 }
 
-body {
-    padding-top: 60px;
-}
-
 .navbar-brand {
     font-family: "IM Fell English SC", serif;
+}
+
+#appearance-main-viewport {
+    margin-top: 60px;
 }
 
 #fancybox-left-ico {
@@ -33,11 +33,12 @@ body {
 }
 
 #carousel-container {
-    overflow-x: scroll; height: 500px;
+    overflow-y: scroll;
 }
 
 #carousel-container img {
     max-width: 100%;
+    min-width: 100%;
 }
 
 .carousel-item {
@@ -103,15 +104,6 @@ hr {
 
 a i {
     padding-right: 3px;
-}
-
-.dashboard-widget {
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-    border: 1px solid black;
-}
-
-.dashboard-widget-icon {
-    font-size: 200%;
 }
 
 /* Notifications */
@@ -236,11 +228,6 @@ a i {
     margin-top: 3px;
 }
 
-.staging-file-thumbnail-container {
-    width: 150px;
-    margin: auto;
-}
-
 .thin_border-thumbnail {
   display: block;
   max-width: 100%;
@@ -308,9 +295,6 @@ a i {
  * Main content
  */
 
-.main {
-}
-
 /* Remove scroll bar caused by bootstraps -15px on .row margins */
 .zero-margin {
     margin-right: 0;
@@ -324,7 +308,7 @@ a i {
 }
 
 @media (min-width: 768px) {
-    .main {
+    #appearance-main-viewport {
         padding-right: 0px;
         padding-left: 0px;
         margin-left: 210px;
@@ -341,6 +325,7 @@ a i {
 }
 
 #viewport {
+    height: 100%;
     width: 100%;
 }
 
@@ -520,7 +505,7 @@ a i {
     left: 0 !important;
 }
 
-.main .page-header {
+#appearance-main-viewport .page-header {
   margin-top: 0;
 }
 
@@ -595,18 +580,18 @@ a i {
     padding-bottom: 0px;
 }
 
-#accordion-sidebar ul.list-unstyled {
-    margin-bottom: 0px;
+#accordion-sidebar .collapsed .accordion-indicator {
+   transform: rotate(90deg);
 }
 
-#accordion-sidebar .panel-body li {
-    padding: 9px;
+#accordion-sidebar ul.list-unstyled {
+    margin-bottom: 0px;
 }
 
 #accordion-sidebar .panel-body a {
     color: white;
     text-decoration: none;
-    padding: 0px;
+    padding: 9px;
 }
 
 .navbar-fixed-top {

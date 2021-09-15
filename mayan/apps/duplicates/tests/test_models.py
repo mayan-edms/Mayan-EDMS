@@ -29,7 +29,7 @@ class DuplicatedDocumentModelTestCase(
             )
         )
 
-    def test_duplicate_scan(self):
+    def test_duplicate_scan_after_upload(self):
         self._upload_duplicate_document()
 
         self.assertTrue(

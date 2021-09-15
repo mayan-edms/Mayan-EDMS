@@ -21,7 +21,7 @@ def task_check_expired_check_outs():
     lock_id = 'task_expired_check_outs'
     try:
         logger.debug('trying to acquire lock: %s', lock_id)
-        lock = LockingBackend.get_instance().acquire_lock(
+        lock = LockingBackend.get_backend().acquire_lock(
             name=lock_id, timeout=CHECKOUT_EXPIRATION_LOCK_EXPIRE
         )
         logger.debug('acquired lock: %s', lock_id)

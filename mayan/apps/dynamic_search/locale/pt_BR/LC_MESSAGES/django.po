@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -28,7 +28,7 @@ msgstr ""
 msgid "Dynamic search"
 msgstr "Busca dinâmica"
 
-#: classes.py:265
+#: classes.py:290
 msgid "No search model matching the query"
 msgstr "Nenhum modelo de pesquisa que corresponda à consulta"
 
@@ -45,16 +45,16 @@ msgstr ""
 "serão retornados. Quando os resultados não verificados correspondentes a "
 "pelo menos um campo serão retornados."
 
-#: forms.py:31 templates/dynamic_search/search_box.html:41
+#: forms.py:30 templates/dynamic_search/search_box.html:41
 msgid "Search terms"
 msgstr "Termos de pesquisa"
 
 #: links.py:13 permissions.py:5 queues.py:8 settings.py:11
-#: templates/dynamic_search/search_box.html:45 views.py:124 views.py:137
+#: templates/dynamic_search/search_box.html:45 views.py:126 views.py:139
 msgid "Search"
 msgstr "Busca"
 
-#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:151
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:156
 msgid "Advanced search"
 msgstr "pesquisa avançada"
 
@@ -62,7 +62,7 @@ msgstr "pesquisa avançada"
 msgid "Search again"
 msgstr "Buscar novamente"
 
-#: links.py:25 views.py:97
+#: links.py:25 views.py:99
 msgid "Reindex search backend"
 msgstr "Reindexar backend de pesquisa"
 
@@ -118,7 +118,7 @@ msgstr "Não há resultados de busca"
 msgid "Search results for: %s"
 msgstr "Resultados da pesquisa para: %s"
 
-#: views.py:93
+#: views.py:95
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
@@ -127,16 +127,16 @@ msgstr ""
 "resultados da pesquisa serão afetados enquanto o backend está sendo "
 "reindexado."
 
-#: views.py:99
+#: views.py:101
 msgid "This tool erases and populates the search backend's internal index."
 msgstr ""
 "Essa ferramenta apaga e preenche o índice interno do backend de pesquisa."
 
-#: views.py:117
+#: views.py:119
 msgid "Search backend reindexing queued."
 msgstr "Reindexação de backend da pesquisa enfileirada."
 
-#: views.py:139
+#: views.py:141
 #, python-format
 msgid "Search for: %s"
 msgstr "Buscar por: %s"

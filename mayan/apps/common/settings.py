@@ -4,11 +4,9 @@ from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import (
     DEFAULT_COMMON_COLLAPSE_LIST_MENU_LIST_FACET,
-    DEFAULT_COMMON_COLLAPSE_LIST_MENU_OBJECT,
-    DEFAULT_COMMON_DB_SYNC_TASK_DELAY, DEFAULT_COMMON_DISABLED_APPS,
+    DEFAULT_COMMON_COLLAPSE_LIST_MENU_OBJECT, DEFAULT_COMMON_DISABLED_APPS,
     DEFAULT_COMMON_EXTRA_APPS, DEFAULT_COMMON_HOME_VIEW,
-    DEFAULT_COMMON_PROJECT_TITLE, DEFAULT_COMMON_PROJECT_URL,
-    DEFAULT_COMMON_URL_BASE_PATH
+    DEFAULT_COMMON_PROJECT_TITLE, DEFAULT_COMMON_PROJECT_URL
 )
 
 namespace = SettingNamespace(
@@ -29,13 +27,6 @@ setting_collapse_list_menu_object = namespace.add_setting(
     help_text=_(
         'In list mode, show the "object" menu options as a dropdown menu '
         'instead of individual buttons.'
-    )
-)
-settings_db_sync_task_delay = namespace.add_setting(
-    default=DEFAULT_COMMON_DB_SYNC_TASK_DELAY,
-    global_name='COMMON_DB_SYNC_TASK_DELAY', help_text=_(
-        'Time to delay background tasks that depend on a database commit to '
-        'propagate.'
     )
 )
 setting_disabled_apps = namespace.add_setting(
@@ -68,17 +59,9 @@ setting_home_view = namespace.add_setting(
 )
 setting_project_title = namespace.add_setting(
     default=DEFAULT_COMMON_PROJECT_TITLE, global_name='COMMON_PROJECT_TITLE',
-    help_text=_(
-        'Name to be displayed in the main menu.'
-    )
+    help_text=_('Sets the project\'s name.')
 )
 setting_project_url = namespace.add_setting(
     default=DEFAULT_COMMON_PROJECT_URL, global_name='COMMON_PROJECT_URL',
-    help_text=_(
-        'URL of the installation or homepage of the project.'
-    )
-)
-setting_url_base_path = namespace.add_setting(
-    default=DEFAULT_COMMON_URL_BASE_PATH, global_name='COMMON_URL_BASE_PATH',
-    help_text=_('Base URL path to use for all views.')
+    help_text=_('URL of the project\'s homepage.')
 )

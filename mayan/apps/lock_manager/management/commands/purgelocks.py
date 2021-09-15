@@ -7,4 +7,4 @@ class Command(management.BaseCommand):
     help = 'Erase all locks (acquired and stale).'
 
     def handle(self, *args, **options):
-        LockingBackend.get_instance().purge_locks()
+        LockingBackend.get_backend().purge_locks()

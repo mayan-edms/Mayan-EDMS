@@ -8,21 +8,13 @@ from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.converter.classes import ConverterBase
-from mayan.apps.converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
 from mayan.apps.converter.models import LayerTransformation
-from mayan.apps.converter.transformations import (
-    BaseTransformation, TransformationResize, TransformationRotate,
-    TransformationZoom
-)
+from mayan.apps.converter.settings import setting_image_generation_timeout
+from mayan.apps.converter.transformations import BaseTransformation
 from mayan.apps.file_caching.models import CachePartitionFile
 from mayan.apps.lock_manager.backends.base import LockingBackend
 
-from ..literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from ..managers import DocumentFilePageManager, ValidDocumentFilePageManager
-from ..settings import (
-    setting_display_width, setting_display_height, setting_zoom_max_level,
-    setting_zoom_min_level
-)
 
 from .document_file_models import DocumentFile
 from .mixins import PagedModelMixin
@@ -70,12 +62,17 @@ class DocumentFilePage(PagedModelMixin, models.Model):
         self.cache_partition.delete()
         super().delete(*args, **kwargs)
 
-    def generate_image(self, _acquire_lock=True, user=None, **kwargs):
-        transformation_list = self.get_combined_transformation_list(
-            user=user, **kwargs
+    def generate_image(
+        self, user=None, _acquire_lock=True,
+        transformation_instance_list=None, maximum_layer_order=None
+    ):
+        combined_transformation_list = self.get_combined_transformation_list(
+            maximum_layer_order=maximum_layer_order,
+            transformation_instance_list=transformation_instance_list,
+            user=user
         )
         combined_cache_filename = self.get_combined_cache_filename(
-            _transformation_list=transformation_list
+            _combined_transformation_list=combined_transformation_list
         )
 
         logger.debug(
@@ -87,8 +84,9 @@ class DocumentFilePage(PagedModelMixin, models.Model):
                 lock_name = self.get_lock_name(
                     _combined_cache_filename=combined_cache_filename
                 )
-                lock = LockingBackend.get_instance().acquire_lock(
-                    name=lock_name, timeout=DOCUMENT_IMAGE_TASK_TIMEOUT
+                lock = LockingBackend.get_backend().acquire_lock(
+                    name=lock_name,
+                    timeout=setting_image_generation_timeout.value
                 )
         except Exception:
             raise
@@ -104,7 +102,9 @@ class DocumentFilePage(PagedModelMixin, models.Model):
                     logger.debug(
                         'transformations cache file "%s" not found', combined_cache_filename
                     )
-                    image = self.get_image(transformations=transformation_list)
+                    image = self.get_image(
+                        transformation_instance_list=combined_transformation_list
+                    )
                     with self.cache_partition.create_file(filename=combined_cache_filename) as file_object:
                         file_object.write(image.getvalue())
                 else:
@@ -124,7 +124,10 @@ class DocumentFilePage(PagedModelMixin, models.Model):
             }
         )
 
-    def get_api_image_url(self, *args, **kwargs):
+    def get_api_image_url(
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None
+    ):
         """
         Create an unique URL combining:
         - the page's image URL
@@ -133,14 +136,17 @@ class DocumentFilePage(PagedModelMixin, models.Model):
         The purpose of this unique URL is to allow client side caching
         if document page images.
         """
+        transformation_instance_list = transformation_instance_list or ()
+
         transformations_hash = BaseTransformation.combine(
-            self.get_combined_transformation_list(*args, **kwargs)
+            transformations=self.get_combined_transformation_list(
+                maximum_layer_order=maximum_layer_order,
+                transformation_instance_list=transformation_instance_list,
+                user=user
+            )
         )
 
-        kwargs.pop('transformations', None)
-
         final_url = furl()
-        final_url.args = kwargs
         final_url.path = reverse(
             viewname='rest_api:documentfilepage-image', kwargs={
                 'document_id': self.document_file.document_id,
@@ -148,72 +154,55 @@ class DocumentFilePage(PagedModelMixin, models.Model):
                 'document_file_page_id': self.pk
             }
         )
+        # Remove leading '?' character.
+        final_url.query = BaseTransformation.list_as_query_string(
+            transformation_instance_list=transformation_instance_list
+        )[1:]
         final_url.args['_hash'] = transformations_hash
+
+        if maximum_layer_order is not None:
+            final_url.args['maximum_layer_order'] = maximum_layer_order
 
         return final_url.tostr()
 
-    def get_combined_cache_filename(self, _transformation_list=None, user=None, **kwargs):
-        transformation_list = _transformation_list or self.get_combined_transformation_list(
-            user=user, **kwargs
+    def get_combined_cache_filename(
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None, _combined_transformation_list=None
+    ):
+        combined_transformation_list = _combined_transformation_list or self.get_combined_transformation_list(
+            maximum_layer_order=maximum_layer_order,
+            transformation_instance_list=transformation_instance_list,
+            user=user
         )
         return BaseTransformation.combine(
-            transformations=transformation_list
+            transformations=combined_transformation_list
         )
 
-    def get_combined_transformation_list(self, user=None, *args, **kwargs):
+    def get_combined_transformation_list(
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None
+    ):
         """
         Return a list of transformation containing the server side
-        document page transformation as well as tranformations created
-        from the arguments as transient interactive transformation.
+        transformations for this object as well as transformations
+        created from the arguments as transient interactive transformation.
         """
-        # Convert arguments into transformations
-        transformations = kwargs.get('transformations', [])
+        result = []
 
-        # Set sensible defaults if the argument is not specified or if the
-        # argument is None
-        width = kwargs.get('width', setting_display_width.value) or setting_display_width.value
-        height = kwargs.get('height', setting_display_height.value) or setting_display_height.value
-        rotation = kwargs.get('rotation', DEFAULT_ROTATION) or DEFAULT_ROTATION
-        zoom_level = kwargs.get('zoom', DEFAULT_ZOOM_LEVEL) or DEFAULT_ZOOM_LEVEL
-
-        if zoom_level < setting_zoom_min_level.value:
-            zoom_level = setting_zoom_min_level.value
-
-        if zoom_level > setting_zoom_max_level.value:
-            zoom_level = setting_zoom_max_level.value
-
-        # Generate transformation hash
-        transformation_list = []
-
-        maximum_layer_order = kwargs.get('maximum_layer_order', None)
-
-        # Stored transformations first
-        for stored_transformation in LayerTransformation.objects.get_for_object(
-            obj=self, maximum_layer_order=maximum_layer_order, as_classes=True,
-            user=user
-        ):
-            transformation_list.append(stored_transformation)
-
-        # Interactive transformations second
-        for transformation in transformations:
-            transformation_list.append(transformation)
-
-        if rotation:
-            transformation_list.append(
-                TransformationRotate(degrees=rotation)
+        # Stored transformations first.
+        result.extend(
+            LayerTransformation.objects.get_for_object(
+                as_classes=True, maximum_layer_order=maximum_layer_order,
+                obj=self, user=user
             )
+        )
 
-        if width:
-            transformation_list.append(
-                TransformationResize(width=width, height=height)
-            )
+        # Interactive transformations second.
+        result.extend(transformation_instance_list or [])
 
-        if zoom_level:
-            transformation_list.append(TransformationZoom(percent=zoom_level))
+        return result
 
-        return transformation_list
-
-    def get_image(self, transformations=None):
+    def get_image(self, transformation_instance_list=None):
         cache_filename = 'base_image'
         logger.debug('Page cache filename: %s', cache_filename)
 
@@ -231,12 +220,13 @@ class DocumentFilePage(PagedModelMixin, models.Model):
 
                     page_image = converter.get_page()
 
-                    # Since open "wb+" doesn't create files, create it explicitly
+                    # Since open "wb+" doesn't create files, create it
+                    # explicitly.
                     with self.cache_partition.create_file(filename=cache_filename) as file_object:
                         file_object.write(page_image.getvalue())
 
-                    # Apply runtime transformations
-                    for transformation in transformations:
+                    # Apply runtime transformations.
+                    for transformation in transformation_instance_list or ():
                         converter.transform(transformation=transformation)
 
                     return converter.get_page()
@@ -260,8 +250,8 @@ class DocumentFilePage(PagedModelMixin, models.Model):
 
                 # This code is also repeated below to allow using a context
                 # manager with cache_file.open and close it automatically.
-                # Apply runtime transformations
-                for transformation in transformations:
+                # Apply runtime transformations.
+                for transformation in transformation_instance_list or ():
                     converter.transform(transformation=transformation)
 
                 return converter.get_page()
@@ -276,16 +266,17 @@ class DocumentFilePage(PagedModelMixin, models.Model):
         }
     get_label.short_description = _('Label')
 
-    def get_lock_name(self, _combined_cache_filename=None, user=None, **kwargs):
+    def get_lock_name(
+        self, _combined_cache_filename=None, maximum_layer_order=None,
+        transformation_instance_list=None, user=None
+    ):
         if _combined_cache_filename:
             combined_cache_filename = _combined_cache_filename
         else:
-            transformation_list = self.get_combined_transformation_list(
-                user=user, **kwargs
-            )
-
             combined_cache_filename = self.get_combined_cache_filename(
-                _transformation_list=transformation_list
+                maximum_layer_order=maximum_layer_order,
+                transformation_instance_list=transformation_instance_list,
+                user=user
             )
 
         return 'document_file_page_generate_image_{}_{}'.format(
@@ -304,7 +295,7 @@ class DocumentFilePage(PagedModelMixin, models.Model):
     def uuid(self):
         """
         Make cache UUID a mix of file ID and page ID to avoid using stale
-        images
+        images.
         """
         return '{}-{}'.format(self.document_file.uuid, self.pk)
 

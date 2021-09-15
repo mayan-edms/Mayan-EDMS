@@ -2,7 +2,6 @@ from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
@@ -51,7 +50,9 @@ class WebLinksApp(MayanAppConfig):
         ResolvedWebLink = self.get_model(model_name='ResolvedWebLink')
         WebLink = self.get_model(model_name='WebLink')
 
-        EventModelRegistry.register(model=ResolvedWebLink)
+        EventModelRegistry.register(
+            model=ResolvedWebLink, acl_bind_link=False
+        )
         EventModelRegistry.register(model=WebLink)
 
         ModelCopy(
@@ -106,14 +107,16 @@ class WebLinksApp(MayanAppConfig):
             sources=(Document,)
         )
         menu_list_facet.bind_links(
+            exclude=(ResolvedWebLink,),
             links=(
-                link_acl_list, link_web_link_document_types
+                link_web_link_document_types,
             ), sources=(WebLink,)
         )
         menu_list_facet.bind_links(
             links=(link_document_type_web_links,), sources=(DocumentType,)
         )
         menu_object.bind_links(
+            exclude=(ResolvedWebLink,),
             links=(
                 link_web_link_delete, link_web_link_edit
             ), sources=(WebLink,)
@@ -121,11 +124,6 @@ class WebLinksApp(MayanAppConfig):
         menu_object.bind_links(
             links=(link_web_link_instance_view,),
             sources=(ResolvedWebLink,)
-        )
-        menu_object.unbind_links(
-            links=(
-                link_web_link_delete, link_web_link_edit
-            ), sources=(ResolvedWebLink,)
         )
         menu_related.bind_links(
             links=(link_web_link_list,),

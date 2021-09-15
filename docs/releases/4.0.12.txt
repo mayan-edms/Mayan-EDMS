@@ -1,0 +1,92 @@
+Version 4.0.12
+==============
+
+Released: July 19, 2021
+
+Status: Stable
+
+Changes
+-------
+
+
+Documents
+^^^^^^^^^
+
+The ID number in ``document_url`` attribute of the ``DocumentFile``
+and ``DocumentVersion`` serializers were fixed to show to correct one.
+
+
+Search
+^^^^^^
+
+Multi scope search result initialization was fixed. Results from an initial
+scope are now handled properly.
+
+Search scopes that do not specify a query are now detected and reported
+accordingly.
+
+
+Workflows
+^^^^^^^^^
+
+An API endpoint that displays the list of valid transition options for a
+workflow instance was added.
+
+The workflow template object content was added to the workflow instance API
+schema.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+The JavaScript responsible of handling the active main menu link was fixed.
+
+
+Other
+^^^^^
+
+- Clarify purpose of common app project settings.
+- Minor API serializer cleanups.
+- Add explicit cabinet serializer read only fields.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :forum-topic:`5794` Rest API v4: Bad links in some functions (version 4.0.11)
+- :forum-topic:`5795` Rest API v4: "transition_choices" element missing in workflow instance functions (version 4.0.11)
+- :gitlab-issue:`1018` Scoped search returning incorrect results in some cases
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

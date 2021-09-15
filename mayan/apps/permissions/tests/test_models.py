@@ -12,12 +12,10 @@ from .literals import (
     TEST_PERMISSION_LABEL, TEST_PERMISSION_NAME,
     TEST_PERMISSION_NAMESPACE_LABEL, TEST_PERMISSION_NAMESPACE_NAME
 )
-from .mixins import PermissionTestMixin, RoleTestMixin
+from .mixins import RoleTestMixin
 
 
-class PermissionTestCase(
-    GroupTestMixin, PermissionTestMixin, RoleTestMixin, BaseTestCase
-):
+class PermissionTestCase(GroupTestMixin, RoleTestMixin, BaseTestCase):
     def setUp(self):
         super().setUp()
         self._create_test_user()

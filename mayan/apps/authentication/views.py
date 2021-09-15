@@ -174,7 +174,6 @@ class UserSetPasswordView(MultipleObjectFormActionView):
         queryset = self.object_list
 
         result = {
-            'submit_label': _('Submit'),
             'title': ungettext(
                 singular='Change user password',
                 plural='Change users passwords',
@@ -268,7 +267,7 @@ class UserImpersonateStartView(ExternalObjectViewMixin, FormView):
             query[USER_IMPERSONATE_VARIABLE_PERMANENT] = ''
 
         url = URL(
-            viewname=setting_home_view.value, query=query
+            query=query, viewname=setting_home_view.value
         )
         return HttpResponseRedirect(redirect_to=url.to_string())
 

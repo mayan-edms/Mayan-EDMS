@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:57+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -24,10 +24,14 @@ msgstr ""
 msgid "Navigation"
 msgstr "Nawigacja"
 
-#: classes.py:778
+#: classes.py:780
 msgid "Unnamed function"
 msgstr "Funkcja anonimowa"
 
-#: templates/navigation/generic_navigation.html:6
+#: templates/navigation/actions_dropdown.html:9
 msgid "Actions"
 msgstr "Akcje"
+
+#: templates/navigation/actions_dropdown.html:12
+msgid "Toggle Dropdown"
+msgstr "Rozwiń listę"

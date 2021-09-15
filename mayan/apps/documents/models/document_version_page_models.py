@@ -13,12 +13,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.converter.classes import ConverterBase
-from mayan.apps.converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
 from mayan.apps.converter.models import LayerTransformation
-from mayan.apps.converter.transformations import (
-    BaseTransformation, TransformationResize, TransformationRotate,
-    TransformationZoom
-)
+from mayan.apps.converter.settings import setting_image_generation_timeout
+from mayan.apps.converter.transformations import BaseTransformation
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
 from mayan.apps.events.decorators import method_event
 from mayan.apps.file_caching.models import CachePartitionFile
@@ -28,12 +25,7 @@ from ..events import (
     event_document_version_page_created, event_document_version_page_deleted,
     event_document_version_page_edited
 )
-from ..literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from ..managers import ValidDocumentVersionPageManager
-from ..settings import (
-    setting_display_width, setting_display_height, setting_zoom_max_level,
-    setting_zoom_min_level
-)
 
 from .document_version_models import DocumentVersion
 from .mixins import PagedModelMixin
@@ -90,7 +82,7 @@ class DocumentVersionPage(
     @method_event(
         event_manager_class=EventManagerMethodAfter,
         event=event_document_version_page_deleted,
-        target='document_version',
+        target='document_version'
     )
     def delete(self, *args, **kwargs):
         self.cache_partition.delete()
@@ -107,13 +99,17 @@ class DocumentVersionPage(
                 resolution=resolution
             )
 
-    def generate_image(self, user=None, _acquire_lock=True, **kwargs):
-        transformation_list = self.get_combined_transformation_list(
-            user=user, **kwargs
+    def generate_image(
+        self, _acquire_lock=True, maximum_layer_order=None,
+        transformation_instance_list=None, user=None
+    ):
+        combined_transformation_list = self.get_combined_transformation_list(
+            maximum_layer_order=maximum_layer_order,
+            transformation_instance_list=transformation_instance_list,
+            user=user
         )
-
         combined_cache_filename = self.get_combined_cache_filename(
-            _transformation_list=transformation_list
+            _combined_transformation_list=combined_transformation_list
         )
 
         logger.debug(
@@ -122,9 +118,9 @@ class DocumentVersionPage(
 
         content_object_lock_name = self.content_object.get_lock_name(user=user)
         try:
-            content_object_lock = LockingBackend.get_instance().acquire_lock(
+            content_object_lock = LockingBackend.get_backend().acquire_lock(
                 name=content_object_lock_name,
-                timeout=DOCUMENT_IMAGE_TASK_TIMEOUT * 2
+                timeout=setting_image_generation_timeout.value * 2
             )
         except Exception:
             raise
@@ -134,14 +130,16 @@ class DocumentVersionPage(
             )
             try:
                 if _acquire_lock:
-                    lock = LockingBackend.get_instance().acquire_lock(
-                        name=lock_name, timeout=DOCUMENT_IMAGE_TASK_TIMEOUT
+                    lock = LockingBackend.get_backend().acquire_lock(
+                        name=lock_name,
+                        timeout=setting_image_generation_timeout.value
+
                     )
             except Exception:
                 raise
             else:
-                # Second try block to release the lock even on fatal errors inside
-                # the block.
+                # Second try block to release the lock even on fatal errors
+                # inside the block.
                 try:
                     try:
                         self.cache_partition.get_file(
@@ -152,7 +150,9 @@ class DocumentVersionPage(
                             'transformations cache file "%s" not found, '
                             'generating new image', combined_cache_filename
                         )
-                        image = self.get_image(transformations=transformation_list)
+                        image = self.get_image(
+                            transformation_instance_list=combined_transformation_list
+                        )
                         with self.cache_partition.create_file(filename=combined_cache_filename) as file_object:
                             file_object.write(image.getvalue())
                     else:
@@ -175,7 +175,10 @@ class DocumentVersionPage(
             }
         )
 
-    def get_api_image_url(self, *args, **kwargs):
+    def get_api_image_url(
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None, viewname=None, view_kwargs=None
+    ):
         """
         Create an unique URL combining:
         - the page's image URL
@@ -187,28 +190,55 @@ class DocumentVersionPage(
         if not self.content_object:
             return '#'
 
-        transformations_hash = BaseTransformation.combine(
-            self.get_combined_transformation_list(*args, **kwargs)
+        transformation_instance_list = transformation_instance_list or ()
+
+        # Source object transformations first.
+        transformation_list = LayerTransformation.objects.get_for_object(
+            as_classes=True, maximum_layer_order=maximum_layer_order,
+            obj=self.content_object, user=user
         )
 
-        kwargs.pop('transformations', None)
+        transformation_list.extend(
+            self.get_combined_transformation_list(
+                maximum_layer_order=maximum_layer_order,
+                transformation_instance_list=transformation_instance_list,
+                user=user
+            )
+        )
+        transformations_hash = BaseTransformation.combine(
+            transformations=transformation_list
+        )
+
+        view_kwargs = view_kwargs or {
+            'document_id': self.document_version.document_id,
+            'document_version_id': self.document_version_id,
+            'document_version_page_id': self.pk
+        }
 
         final_url = furl()
-        final_url.args = kwargs
         final_url.path = reverse(
-            viewname='rest_api:documentversionpage-image', kwargs={
-                'document_id': self.document_version.document_id,
-                'document_version_id': self.document_version_id,
-                'document_version_page_id': self.pk
-            }
+            viewname=viewname or 'rest_api:documentversionpage-image',
+            kwargs=view_kwargs
         )
+        # Remove leading '?' character.
+        final_url.query = BaseTransformation.list_as_query_string(
+            transformation_instance_list=transformation_instance_list
+        )[1:]
         final_url.args['_hash'] = transformations_hash
+
+        if maximum_layer_order is not None:
+            final_url.args['maximum_layer_order'] = maximum_layer_order
 
         return final_url.tostr()
 
-    def get_combined_cache_filename(self, _transformation_list=None, user=None, **kwargs):
-        transformation_list = _transformation_list or self.get_combined_transformation_list(
-            user=user, **kwargs
+    def get_combined_cache_filename(
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None, _combined_transformation_list=None
+    ):
+        combined_transformation_list = _combined_transformation_list or self.get_combined_transformation_list(
+            maximum_layer_order=maximum_layer_order,
+            transformation_instance_list=transformation_instance_list,
+            user=user
         )
 
         content_object_cache_filename = self.content_object.get_combined_cache_filename(
@@ -216,71 +246,37 @@ class DocumentVersionPage(
         )
         return '{}-{}'.format(
             content_object_cache_filename,
-            BaseTransformation.combine(transformations=transformation_list)
+            BaseTransformation.combine(
+                transformations=combined_transformation_list
+            )
         )
 
-    def get_combined_transformation_list(self, user=None, *args, **kwargs):
+    def get_combined_transformation_list(
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None
+    ):
         """
         Return a list of transformation containing the server side
-        document page transformation as well as tranformations created
-        from the arguments as transient interactive transformation.
+        transformations for this object as well as transformations
+        created from the arguments as transient interactive transformation.
         """
-        # Convert arguments into transformations
-        transformations = kwargs.get('transformations', [])
+        result = []
 
-        # Set sensible defaults if the argument is not specified or if the
-        # argument is None
-        width = kwargs.get('width', setting_display_width.value) or setting_display_width.value
-        height = kwargs.get('height', setting_display_height.value) or setting_display_height.value
-        rotation = kwargs.get('rotation', DEFAULT_ROTATION) or DEFAULT_ROTATION
-        zoom_level = kwargs.get('zoom', DEFAULT_ZOOM_LEVEL) or DEFAULT_ZOOM_LEVEL
-
-        if zoom_level < setting_zoom_min_level.value:
-            zoom_level = setting_zoom_min_level.value
-
-        if zoom_level > setting_zoom_max_level.value:
-            zoom_level = setting_zoom_max_level.value
-
-        # Generate transformation hash
-        transformation_list = []
-
-        maximum_layer_order = kwargs.get('maximum_layer_order', None)
-
-        # Content object transformations first
-        for content_object_stored_transformation in LayerTransformation.objects.get_for_object(
-            obj=self.content_object, maximum_layer_order=maximum_layer_order,
-            as_classes=True, user=user
-        ):
-            transformation_list.append(content_object_stored_transformation)
-
-        # Stored transformations first
-        for stored_transformation in LayerTransformation.objects.get_for_object(
-            obj=self, maximum_layer_order=maximum_layer_order, as_classes=True,
-            user=user
-        ):
-            transformation_list.append(stored_transformation)
-
-        # Interactive transformations second
-        for transformation in transformations:
-            transformation_list.append(transformation)
-
-        if rotation:
-            transformation_list.append(
-                TransformationRotate(degrees=rotation)
+        # Stored transformations first.
+        result.extend(
+            LayerTransformation.objects.get_for_object(
+                as_classes=True, maximum_layer_order=maximum_layer_order,
+                obj=self, user=user
             )
+        )
 
-        if width:
-            transformation_list.append(
-                TransformationResize(width=width, height=height)
-            )
+        # Interactive transformations second.
+        result.extend(transformation_instance_list or [])
 
-        if zoom_level:
-            transformation_list.append(TransformationZoom(percent=zoom_level))
+        return result
 
-        return transformation_list
-
-    def get_image(self, transformations=None):
-        cache_filename = 'base_image'
+    def get_image(self, transformation_instance_list=None):
+        cache_filename = '{}-base_image'.format(self.content_object.get_combined_cache_filename())
         logger.debug('Page cache filename: %s', cache_filename)
 
         try:
@@ -304,17 +300,18 @@ class DocumentVersionPage(
 
                     page_image = converter.get_page()
 
-                    # Since open "wb+" doesn't create versions, create it explicitly
+                    # Since open "wb+" doesn't create versions, create it
+                    # explicitly.
                     with self.cache_partition.create_file(filename=cache_filename) as file_object:
                         file_object.write(page_image.getvalue())
 
-                    # Apply runtime transformations
-                    for transformation in transformations:
+                    # Apply runtime transformations.
+                    for transformation in transformation_instance_list or ():
                         converter.transform(transformation=transformation)
 
                     return converter.get_page()
             except Exception as exception:
-                # Cleanup in case of error
+                # Cleanup in case of error.
                 logger.error(
                     'Error creating document version page cache file '
                     'named "%s"; %s', cache_filename, exception,
@@ -333,8 +330,8 @@ class DocumentVersionPage(
 
                 # This code is also repeated below to allow using a context
                 # manager with cache_version.open and close it automatically.
-                # Apply runtime transformations
-                for transformation in transformations:
+                # Apply runtime transformations.
+                for transformation in transformation_instance_list or ():
                     converter.transform(transformation=transformation)
 
                 return converter.get_page()
@@ -349,16 +346,17 @@ class DocumentVersionPage(
         }
     get_label.short_description = _('Label')
 
-    def get_lock_name(self, _combined_cache_filename=None, user=None, **kwargs):
+    def get_lock_name(
+        self, _combined_cache_filename=None, maximum_layer_order=None,
+        transformation_instance_list=None, user=None
+    ):
         if _combined_cache_filename:
             combined_cache_filename = _combined_cache_filename
         else:
-            transformation_list = self.get_combined_transformation_list(
-                user=user, **kwargs
-            )
-
             combined_cache_filename = self.get_combined_cache_filename(
-                _transformation_list=transformation_list, user=None, **kwargs
+                maximum_layer_order=maximum_layer_order,
+                transformation_instance_list=transformation_instance_list,
+                user=user
             )
 
         return 'document_version_page_generate_image_{}_{}'.format(
@@ -374,12 +372,12 @@ class DocumentVersionPage(
         created={
             'event': event_document_version_page_created,
             'action_object': 'document_version',
-            'target': 'self',
+            'target': 'self'
         },
         edited={
             'event': event_document_version_page_edited,
             'action_object': 'document_version',
-            'target': 'self',
+            'target': 'self'
         }
     )
     def save(self, *args, **kwargs):

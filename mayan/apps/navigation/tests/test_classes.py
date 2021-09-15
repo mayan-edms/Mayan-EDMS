@@ -7,7 +7,6 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.permissions import Permission, PermissionNamespace
 from mayan.apps.testing.literals import TEST_VIEW_NAME
 from mayan.apps.testing.tests.base import GenericViewTestCase
-from mayan.apps.testing.tests.mixins import TestModelTestCaseMixin
 
 from ..classes import Link, Menu, SourceColumn
 
@@ -155,7 +154,7 @@ class MenuClassTestCase(GenericViewTestCase):
     def setUp(self):
         super().setUp()
 
-        self.test_object = self._test_case_group
+        self._create_test_object()
 
         self.add_test_view(test_object=self.test_object)
 
@@ -176,6 +175,30 @@ class MenuClassTestCase(GenericViewTestCase):
         Menu.remove(name=TEST_MENU_NAME)
         Menu.remove(name=TEST_SUBMENU_NAME)
         super().tearDown()
+
+    def test_source_link_unbinding(self):
+        self.menu.bind_links(
+            sources=(self.TestModel,),
+            links=(self.link,)
+        )
+
+        response = self.get(viewname=TEST_VIEW_NAME)
+        context = Context(
+            {
+                'object': self.test_object,
+                'request': response.wsgi_request
+            }
+        )
+        self.assertEqual(
+            self.menu.resolve(context=context)[0]['links'][0].link, self.link
+        )
+
+        self.menu.unbind_links(
+            sources=(self.TestModel,),
+            links=(self.link,)
+        )
+
+        self.assertEqual(self.menu.resolve(context=context), [])
 
     def test_null_source_link_unbinding(self):
         self.menu.bind_links(links=(self.link,))
@@ -205,7 +228,7 @@ class MenuClassTestCase(GenericViewTestCase):
         self.assertEqual(self.menu.resolve(context=context), [])
 
 
-class SourceColumnClassTestCase(TestModelTestCaseMixin, GenericViewTestCase):
+class SourceColumnClassTestCase(GenericViewTestCase):
     def setUp(self):
         super().setUp()
 
@@ -271,3 +294,109 @@ class SourceColumnClassTestCase(TestModelTestCaseMixin, GenericViewTestCase):
         )
 
         self.assertEqual(len(columns), 1)
+
+    def test_get_for_source_for_empty_querysets_with_columns(self):
+        SourceColumn(
+            attribute='__str__', source=self.TestModel
+        )
+
+        columns = SourceColumn.get_for_source(
+            source=self.TestModel.objects.none()
+        )
+
+        self.assertEqual(len(columns), 1)
+
+    def test_get_for_source_for_proxy_model_queryset_with_parent_columns(self):
+        SourceColumn(
+            attribute='test_attribute', source=self.TestModel
+        )
+
+        TestModelProxy = self._create_test_model(
+            base_class=self.TestModel, options={'proxy': True}
+        )
+
+        SourceColumn(
+            attribute='__str__', source=TestModelProxy
+        )
+
+        TestModelProxy.objects.create()
+
+        columns = SourceColumn.get_for_source(
+            source=TestModelProxy.objects.all()
+        )
+
+        self.assertEqual(len(columns), 2)
+
+    def test_get_for_source_proxy_model_queryset_identifier_column_override(self):
+        root_source_column = SourceColumn(
+            attribute='__str__', source=self.TestModel, is_identifier=True
+        )
+
+        TestModelProxy = self._create_test_model(
+            base_class=self.TestModel, options={'proxy': True}
+        )
+
+        proxy_source_column = SourceColumn(
+            attribute='__str__', source=TestModelProxy, is_identifier=True
+        )
+
+        TestModelProxy.objects.create()
+
+        columns = SourceColumn.get_for_source(
+            source=TestModelProxy.objects.all(), only_identifier=True
+        )
+
+        self.assertEqual(len(columns), 1)
+        self.assertNotEqual(columns[0], root_source_column)
+        self.assertEqual(columns[0], proxy_source_column)
+
+    def test_get_for_source_class_list(self):
+        class TestClass:
+            """Empty"""
+
+        SourceColumn(
+            attribute='__str__', source=TestClass
+        )
+
+        columns = SourceColumn.get_for_source(source=(TestClass(),))
+
+        self.assertEqual(len(columns), 1)
+
+    def test_get_for_source_subclass_list(self):
+        class TestClass:
+            """Empty"""
+
+        class SubClass(TestClass):
+            """Empty"""
+
+        SourceColumn(
+            attribute='__str__', source=TestClass
+        )
+
+        columns = SourceColumn.get_for_source(source=(SubClass(),))
+
+        self.assertEqual(len(columns), 1)
+
+    def test_get_for_source_subsubclass_list(self):
+        class TestClass:
+            """Empty"""
+
+        class SubClass(TestClass):
+            """Empty"""
+
+        class SubSubClass(SubClass):
+            """Empty"""
+
+        SourceColumn(
+            attribute='__str__', source=TestClass
+        )
+        SourceColumn(
+            attribute='__str__', source=SubClass
+        )
+        SourceColumn(
+            attribute='__str__', source=SubSubClass
+        )
+
+        columns = SourceColumn.get_for_source(source=(SubSubClass(),))
+
+        self.assertEqual(len(columns), 3)

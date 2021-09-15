@@ -8,9 +8,11 @@ def operation_document_file_filename_copy(apps, schema_editor):
     query_document_file = '''
         UPDATE {documents_documentfile} SET {filename} = %s WHERE {documents_documentfile}.{id} = %s;
     '''.format(
-        documents_documentfile=schema_editor.connection.ops.quote_name('documents_documentfile'),
-        filename=schema_editor.connection.ops.quote_name('filename'),
-        id=schema_editor.connection.ops.quote_name('id')
+        documents_documentfile=schema_editor.connection.ops.quote_name(
+            name='documents_documentfile'
+        ),
+        filename=schema_editor.connection.ops.quote_name(name='filename'),
+        id=schema_editor.connection.ops.quote_name(name='id')
     )
 
     query = '''
@@ -22,11 +24,17 @@ def operation_document_file_filename_copy(apps, schema_editor):
             {documents_documentfile}.{document_id} = {documents_document}.{id}
         )
     '''.format(
-        document_id=schema_editor.connection.ops.quote_name('document_id'),
-        documents_document=schema_editor.connection.ops.quote_name('documents_document'),
-        documents_documentfile=schema_editor.connection.ops.quote_name('documents_documentfile'),
-        id=schema_editor.connection.ops.quote_name('id'),
-        label=schema_editor.connection.ops.quote_name('label')
+        document_id=schema_editor.connection.ops.quote_name(
+            name='document_id'
+        ),
+        documents_document=schema_editor.connection.ops.quote_name(
+            name='documents_document'
+        ),
+        documents_documentfile=schema_editor.connection.ops.quote_name(
+            name='documents_documentfile'
+        ),
+        id=schema_editor.connection.ops.quote_name(name='id'),
+        label=schema_editor.connection.ops.quote_name(name='label')
     )
 
     cursor_main.execute(query)

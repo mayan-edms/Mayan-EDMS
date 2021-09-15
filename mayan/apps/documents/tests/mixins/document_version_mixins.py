@@ -2,10 +2,12 @@ from django.contrib.contenttypes.models import ContentType
 from django.db.models import Q
 
 from mayan.apps.converter.layers import layer_saved_transformations
+from mayan.apps.dynamic_search.tests.mixins import SearchTestMixin
 
 from ...literals import PAGE_RANGE_ALL
 from ...models.document_version_models import DocumentVersion
 from ...models.document_version_page_models import DocumentVersionPage
+from ...search import document_version_search, document_version_page_search
 
 from ..literals import (
     TEST_DOCUMENT_VERSION_COMMENT_EDITED, TEST_TRANSFORMATION_ARGUMENT,
@@ -67,7 +69,15 @@ class DocumentVersionAPIViewTestMixin:
             }
         )
 
-    def _request_test_document_version_export_api_view(self):
+    def _request_test_document_version_export_api_view_via_get(self):
+        return self.get(
+            viewname='rest_api:documentversion-export', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document.version_active.pk,
+            }
+        )
+
+    def _request_test_document_version_export_api_view_via_post(self):
         return self.post(
             viewname='rest_api:documentversion-export', kwargs={
                 'document_id': self.test_document.pk,
@@ -81,6 +91,13 @@ class DocumentVersionAPIViewTestMixin:
                 'document_id': self.test_document.pk
             }
         )
+
+
+class DocumentVersionLinkTestMixin:
+    def _resolve_test_document_version_link(self, test_link):
+        self.add_test_view(test_object=self.test_document_version)
+        context = self.get_test_view()
+        return test_link.resolve(context=context)
 
 
 class DocumentVersionPageAPIViewTestMixin:
@@ -172,6 +189,16 @@ class DocumentVersionPageAPIViewTestMixin:
         )
 
 
+class DocumentVersionSearchTestMixin(SearchTestMixin):
+    def _perform_document_version_search(self, query=None):
+        query = query or {'q': self.test_document.label}
+
+        return self.search_backend.search(
+            search_model=document_version_search, query=query,
+            user=self._test_case_user
+        )
+
+
 class DocumentVersionTestMixin:
     def _create_test_document_version(self):
         self.test_document_version = self.test_document.versions.create()
@@ -182,6 +209,20 @@ class DocumentVersionViewTestMixin:
         return self.post(
             viewname='documents:document_version_active', kwargs={
                 'document_version_id': self.test_document_version.pk
+            }
+        )
+
+    def _request_test_document_version_delete_single_view(self):
+        return self.post(
+            viewname='documents:document_version_delete_single', kwargs={
+                'document_version_id': self.test_document_version.pk
+            }
+        )
+
+    def _request_test_document_version_delete_multiple_view(self):
+        return self.post(
+            viewname='documents:document_version_delete_multiple', data={
+                'id_list': self.test_document_version.pk
             }
         )
 
@@ -285,6 +326,15 @@ class DocumentVersionPageViewTestMixin:
         )
 
 
+class DocumentVersionPageAppendViewTestMixin:
+    def _request_test_document_version_page_list_append_view(self):
+        return self.post(
+            viewname='documents:document_version_page_list_append', kwargs={
+                'document_version_id': self.test_document_version.pk
+            }
+        )
+
+
 class DocumentVersionPageRemapViewTestMixin:
     def _request_test_document_version_page_list_remap_view(self, data):
         return self.post(
@@ -300,6 +350,16 @@ class DocumentVersionPageResetViewTestMixin:
             viewname='documents:document_version_page_list_reset', kwargs={
                 'document_version_id': self.test_document_version.pk
             }
+        )
+
+
+class DocumentVersionPageSearchTestMixin(SearchTestMixin):
+    def _perform_document_version_page_search(self, query=None):
+        query = query or {'q': self.test_document.label}
+
+        return self.search_backend.search(
+            search_model=document_version_page_search, query=query,
+            user=self._test_case_user
         )
 
 

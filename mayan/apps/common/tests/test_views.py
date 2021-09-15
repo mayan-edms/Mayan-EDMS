@@ -1,7 +1,6 @@
 from django.db import models
 
 from mayan.apps.testing.tests.base import GenericViewTestCase
-from mayan.apps.testing.tests.mixins import TestModelTestCaseMixin
 
 from ..classes import ModelCopy
 from ..permissions import permission_object_copy
@@ -16,9 +15,7 @@ class CommonViewTestCase(CommonViewTestMixin, GenericViewTestCase):
         self.assertContains(response=response, text='About', status_code=200)
 
 
-class ObjectCopyViewTestCase(
-    ObjectCopyViewTestMixin, TestModelTestCaseMixin, GenericViewTestCase
-):
+class ObjectCopyViewTestCase(ObjectCopyViewTestMixin, GenericViewTestCase):
     auto_create_test_object = True
     auto_create_test_object_fields = {
         'label': models.CharField(max_length=32, unique=True)

@@ -32,10 +32,10 @@
             // Detect if we are inside of an AJAX content container
             // and break free as this is supposed to be a top level
             // template.
-            var currentHash = window.location.hash;
+            let currentHash = window.location.hash;
             if (currentHash.length) {
-                var uri = new URI(window.location);
-                var uriFragment = uri.fragment();
+                const uri = new URI(window.location);
+                const uriFragment = uri.fragment();
                 window.location = uriFragment;
             }
         </script>

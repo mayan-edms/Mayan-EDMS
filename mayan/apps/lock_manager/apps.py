@@ -24,7 +24,7 @@ class LockManagerApp(MayanAppConfig):
             logger.debug('Starting lock backend connectivity test')
             # Don't test for locks during the `purgelocks` command as there
             # may be some stuck locks which will block the command.
-            lock_instance = LockingBackend.get_instance()
+            lock_instance = LockingBackend.get_backend()
             try:
                 lock = lock_instance.acquire_lock(
                     name=TEST_LOCK_NAME, timeout=1

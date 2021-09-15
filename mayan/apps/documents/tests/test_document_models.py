@@ -40,7 +40,7 @@ class DocumentTestCase(GenericDocumentTestCase):
         )
 
     def test_method_get_absolute_url(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         self.assertTrue(self.test_document.get_absolute_url())
 

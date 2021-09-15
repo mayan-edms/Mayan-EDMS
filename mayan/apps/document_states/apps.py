@@ -3,7 +3,6 @@ from django.db.models.signals import post_migrate, post_save
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import (
     ModelCopy, ModelField, ModelProperty, ModelReverseField
@@ -13,6 +12,7 @@ from mayan.apps.common.menus import (
     menu_related, menu_secondary, menu_setup, menu_tools
 )
 from mayan.apps.documents.links.document_type_links import link_document_type_list
+from mayan.apps.documents.signals import signal_post_document_type_change
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.logging.classes import ErrorLog
 from mayan.apps.logging.permissions import permission_error_log_view
@@ -22,8 +22,11 @@ from mayan.apps.views.html_widgets import TwoStateWidget
 from .classes import DocumentStateHelper, WorkflowAction
 from .events import event_workflow_template_edited
 from .handlers import (
-    handler_create_workflow_image_cache, handler_index_document,
-    handler_launch_workflow, handler_trigger_transition
+    handler_create_workflow_image_cache,
+    handler_index_document_on_workflow_instance,
+    handler_index_document_on_workflow_instance_log_entry,
+    handler_launch_workflow_on_create,
+    handler_launch_workflow_on_type_change, handler_trigger_transition
 )
 from .html_widgets import WorkflowLogExtraDataWidget, widget_transition_events
 from .links import (
@@ -104,8 +107,12 @@ class DocumentStatesApp(MayanAppConfig):
         error_log = ErrorLog(app_config=self)
         error_log.register_model(model=WorkflowStateAction)
 
-        EventModelRegistry.register(model=Workflow)
-        EventModelRegistry.register(model=WorkflowState)
+        EventModelRegistry.register(
+            exclude=(WorkflowRuntimeProxy,), model=Workflow,
+        )
+        EventModelRegistry.register(
+            exclude=(WorkflowStateRuntimeProxy,), model=WorkflowState
+        )
         EventModelRegistry.register(model=WorkflowStateAction)
         EventModelRegistry.register(model=WorkflowTransition)
         EventModelRegistry.register(model=WorkflowTransitionField)
@@ -441,21 +448,13 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         menu_list_facet.bind_links(
+            exclude=(WorkflowRuntimeProxy,),
             links=(
-                link_acl_list, link_workflow_template_document_types,
+                link_workflow_template_document_types,
                 link_workflow_template_state_list,
                 link_workflow_template_transition_list,
                 link_workflow_template_preview
             ), sources=(Workflow,)
-        )
-
-        menu_list_facet.unbind_links(
-            links=(
-                link_acl_list, link_workflow_template_document_types,
-                link_workflow_template_state_list,
-                link_workflow_template_transition_list,
-                link_workflow_template_preview
-            ), sources=(WorkflowRuntimeProxy,)
         )
 
         menu_list_facet.bind_links(
@@ -465,7 +464,7 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         menu_main.bind_links(
-            links=(link_workflow_runtime_proxy_list,), position=10
+            links=(link_workflow_runtime_proxy_list,), position=20
         )
         menu_multi_item.bind_links(
             links=(link_document_multiple_workflow_templates_launch,),
@@ -476,6 +475,7 @@ class DocumentStatesApp(MayanAppConfig):
             sources=(Workflow,)
         )
         menu_object.bind_links(
+            exclude=(WorkflowRuntimeProxy,),
             links=(
                 link_workflow_template_single_delete,
                 link_workflow_template_edit,
@@ -483,17 +483,15 @@ class DocumentStatesApp(MayanAppConfig):
             ), sources=(Workflow,)
         )
         menu_object.bind_links(
+            exclude=(WorkflowStateRuntimeProxy,),
             links=(
                 link_workflow_template_state_edit,
-                link_workflow_template_state_action_list,
                 link_workflow_template_state_delete
             ), sources=(WorkflowState,)
         )
         menu_object.bind_links(
             links=(
                 link_workflow_template_transition_edit,
-                link_workflow_template_transition_events,
-                link_workflow_template_transition_field_list, link_acl_list,
                 link_workflow_template_transition_delete
             ), sources=(WorkflowTransition,)
         )
@@ -509,6 +507,12 @@ class DocumentStatesApp(MayanAppConfig):
                 link_workflow_instance_transition
             ), sources=(WorkflowInstance,)
         )
+        menu_object.bind_links(
+            links=(
+                link_workflow_template_state_action_edit,
+                link_workflow_template_state_action_delete,
+            ), sources=(WorkflowStateAction,)
+        )
 
         menu_list_facet.bind_links(
             links=(
@@ -517,16 +521,23 @@ class DocumentStatesApp(MayanAppConfig):
             ), sources=(WorkflowRuntimeProxy,)
         )
         menu_list_facet.bind_links(
+            exclude=(WorkflowStateRuntimeProxy,),
+            links=(
+                link_workflow_template_state_action_list,
+            ), sources=(WorkflowState,)
+        )
+        menu_list_facet.bind_links(
             links=(
                 link_workflow_runtime_proxy_state_document_list,
             ), sources=(WorkflowStateRuntimeProxy,)
         )
-        menu_object.bind_links(
+        menu_list_facet.bind_links(
             links=(
-                link_workflow_template_state_action_edit,
-                link_workflow_template_state_action_delete,
-            ), sources=(WorkflowStateAction,)
+                link_workflow_template_transition_events,
+                link_workflow_template_transition_field_list,
+            ), sources=(WorkflowTransition,)
         )
+
         menu_related.bind_links(
             links=(link_workflow_template_list,),
             sources=(
@@ -535,6 +546,7 @@ class DocumentStatesApp(MayanAppConfig):
             )
         )
         menu_related.bind_links(
+            exclude=(WorkflowRuntimeProxy,),
             links=(link_document_type_list,),
             sources=(
                 Workflow, 'document_states:workflow_template_create',
@@ -542,6 +554,7 @@ class DocumentStatesApp(MayanAppConfig):
             )
         )
         menu_secondary.bind_links(
+            exclude=(WorkflowRuntimeProxy,),
             links=(link_workflow_template_list, link_workflow_template_create),
             sources=(
                 Workflow, 'document_states:workflow_template_create',
@@ -584,8 +597,13 @@ class DocumentStatesApp(MayanAppConfig):
         menu_tools.bind_links(links=(link_tool_launch_workflows,))
 
         post_save.connect(
-            dispatch_uid='workflows_handler_launch_workflow',
-            receiver=handler_launch_workflow,
+            dispatch_uid='workflows_handler_launch_workflow_on_create',
+            receiver=handler_launch_workflow_on_create,
+            sender=Document
+        )
+        signal_post_document_type_change.connect(
+            dispatch_uid='workflows_handler_launch_workflow_on_type_change',
+            receiver=handler_launch_workflow_on_type_change,
             sender=Document
         )
 
@@ -596,9 +614,14 @@ class DocumentStatesApp(MayanAppConfig):
             receiver=handler_create_workflow_image_cache,
         )
         post_save.connect(
-            dispatch_uid='workflows_handler_index_document_save',
-            receiver=handler_index_document,
+            dispatch_uid='handler_index_document_on_workflow_instance_log_entry',
+            receiver=handler_index_document_on_workflow_instance_log_entry,
             sender=WorkflowInstanceLogEntry
+        )
+        post_save.connect(
+            dispatch_uid='workflows_handler_index_document_on_workflow_instance',
+            receiver=handler_index_document_on_workflow_instance,
+            sender=WorkflowInstance
         )
         post_save.connect(
             dispatch_uid='workflows_handler_trigger_transition',

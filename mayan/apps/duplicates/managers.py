@@ -21,7 +21,7 @@ class StoredDuplicateBackendManager(models.Manager):
         lock_name = 'duplicates__scan_document-{}'.format(document.pk)
         try:
             logger.debug('trying to acquire lock: %s', lock_name)
-            lock = LockingBackend.get_instance().acquire_lock(name=lock_name)
+            lock = LockingBackend.get_backend().acquire_lock(name=lock_name)
             logger.debug('acquired lock: %s', lock_name)
             try:
                 DuplicateBackendEntry = apps.get_model(

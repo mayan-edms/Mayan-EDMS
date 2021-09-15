@@ -9,25 +9,35 @@ from mayan.apps.user_management.tests.mixins import UserTestMixin
 
 from .mixins import (
     ClientMethodsTestCaseMixin, ConnectionsCheckTestCaseMixin,
-    ContentTypeCheckTestCaseMixin, DelayTestCaseMixin, DownloadTestCaseMixin,
+    ContentTypeCheckTestCaseMixin, DelayTestCaseMixin,
+    DescriptorLeakCheckTestCaseMixin, DownloadTestCaseMixin,
     ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
     RandomPrimaryKeyModelMonkeyPatchMixin, SilenceLoggerTestCaseMixin,
-    TempfileCheckTestCasekMixin, TestViewTestCaseMixin
+    TempfileCheckTestCasekMixin, TestModelTestCaseMixin,
+    TestViewTestCaseMixin
 )
 
 
 class BaseTestCaseMixin(
     DelayTestCaseMixin, LayerTestCaseMixin, SilenceLoggerTestCaseMixin,
-    ConnectionsCheckTestCaseMixin, DownloadTestCaseMixin,
-    EventTestCaseMixin, RandomPrimaryKeyModelMonkeyPatchMixin,
-    ACLTestCaseMixin, ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
-    PermissionTestCaseMixin, SmartSettingsTestCaseMixin,
-    TempfileCheckTestCasekMixin, UserTestMixin,
+    ConnectionsCheckTestCaseMixin, DownloadTestCaseMixin, EventTestCaseMixin,
+    RandomPrimaryKeyModelMonkeyPatchMixin, ACLTestCaseMixin,
+    ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
+    DescriptorLeakCheckTestCaseMixin, PermissionTestCaseMixin,
+    SmartSettingsTestCaseMixin, TempfileCheckTestCasekMixin, UserTestMixin,
+    TestModelTestCaseMixin
 ):
     """
     This is the most basic test case mixin class any test in the project
     should use.
+    TestModelTestCaseMixin must go before TestViewTestCaseMixin to allow
+    the test object to be available when the test view is prepared.
+
+    Favor `OpenFileCheckTestCaseMixin` over
+    `DescriptorLeakCheckTestCaseMixin` as it provides more context.
     """
+    _skip_file_descriptor_test = True
+    _skip_open_file_leak_test = True
 
 
 class BaseTestCase(BaseTestCaseMixin, TestCase):

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -439,7 +439,6 @@ msgid "Bulk actions"
 msgstr "الإعدادات "
 
 #: templates/appearance/list_toolbar.html:67
-#: templates/appearance/partials/actions_dropdown.html:12
 msgid "Toggle Dropdown"
 msgstr "تغير القائمة المنسدلة"
 
@@ -450,10 +449,6 @@ msgstr "تغير الاستعراض"
 #: templates/appearance/no_results.html:18
 msgid "No results"
 msgstr "لا يوجد نتائج"
-
-#: templates/appearance/partials/actions_dropdown.html:9
-msgid "Actions"
-msgstr "الإجراءات"
 
 #: templates/appearance/root.html:63
 msgid "Close"
@@ -467,7 +462,7 @@ msgstr "خطأ في الاتصال بالخوادم"
 msgid "Check you network connection and try again in a few moments."
 msgstr "مشكلة إتصال ! يرجى مراجعة مدير النظام "
 
-#: templatetags/appearance_tags.py:62
+#: templatetags/appearance_tags.py:63
 msgid "None"
 msgstr "لا شيء"
 

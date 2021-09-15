@@ -62,6 +62,12 @@ source_file = mayan/apps/dashboards/locale/en/LC_MESSAGES/django.po
 source_lang = en
 type = PO
 
+[mayan-edms.databases-4-0]
+file_filter = mayan/apps/databases/locale/<lang>/LC_MESSAGES/django.po
+source_file = mayan/apps/databases/locale/en/LC_MESSAGES/django.po
+source_lang = en
+type = PO
+
 [mayan-edms.dependencies-4-0]
 file_filter = mayan/apps/dependencies/locale/<lang>/LC_MESSAGES/django.po
 source_file = mayan/apps/dependencies/locale/en/LC_MESSAGES/django.po
@@ -209,6 +215,12 @@ type = PO
 [mayan-edms.ocr-4-0]
 file_filter = mayan/apps/ocr/locale/<lang>/LC_MESSAGES/django.po
 source_file = mayan/apps/ocr/locale/en/LC_MESSAGES/django.po
+source_lang = en
+type = PO
+
+[mayan-edms.organizations-4-0]
+file_filter = mayan/apps/organizations/locale/<lang>/LC_MESSAGES/django.po
+source_file = mayan/apps/organizations/locale/en/LC_MESSAGES/django.po
 source_lang = en
 type = PO
 

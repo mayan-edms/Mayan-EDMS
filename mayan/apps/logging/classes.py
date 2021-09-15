@@ -41,7 +41,7 @@ class ErrorLog:
 
         try:
             logger.debug('trying to acquire lock: %s', lock_id)
-            lock = LockingBackend.get_instance().acquire_lock(lock_id)
+            lock = LockingBackend.get_backend().acquire_lock(lock_id)
             logger.debug('acquired lock: %s', lock_id)
         except LockError:
             logger.debug('unable to obtain lock: %s' % lock_id)

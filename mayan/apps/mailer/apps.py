@@ -2,12 +2,13 @@ from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
-from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.acls.permissions import (
+    permission_acl_edit, permission_acl_view
+)
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_setup,
+    menu_multi_item, menu_object, menu_secondary, menu_setup
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.logging.classes import ErrorLog
@@ -17,15 +18,25 @@ from mayan.apps.views.html_widgets import TwoStateWidget
 from .classes import MailerBackend
 from .events import event_email_sent
 from .links import (
-    link_send_document_link, link_send_document, link_send_multiple_document,
-    link_send_multiple_document_link, link_user_mailer_create,
-    link_user_mailer_delete, link_user_mailer_edit, link_user_mailer_list,
-    link_user_mailer_setup, link_user_mailer_test
+    link_send_document_link_single, link_send_document_link_multiple,
+    link_send_document_file_attachment_single,
+    link_send_document_file_attachment_multiple,
+    link_send_document_file_link_single,
+    link_send_document_file_link_multiple,
+    link_send_document_version_attachment_single,
+    link_send_document_version_attachment_multiple,
+    link_send_document_version_link_single,
+    link_send_document_version_link_multiple,
+    link_user_mailer_create, link_user_mailer_delete, link_user_mailer_edit,
+    link_user_mailer_list, link_user_mailer_setup, link_user_mailer_test
 )
 from .permissions import (
-    permission_mailing_link, permission_mailing_send_document,
-    permission_user_mailer_delete, permission_user_mailer_edit,
-    permission_user_mailer_use, permission_user_mailer_view,
+    permission_send_document_link, permission_send_document_file_attachment,
+    permission_send_document_file_link,
+    permission_send_document_version_attachment,
+    permission_send_document_version_link, permission_user_mailer_delete,
+    permission_user_mailer_edit, permission_user_mailer_use,
+    permission_user_mailer_view
 )
 
 
@@ -41,6 +52,12 @@ class MailerApp(MayanAppConfig):
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
+        )
+        DocumentFile = apps.get_model(
+            app_label='documents', model_name='DocumentFile'
+        )
+        DocumentVersion = apps.get_model(
+            app_label='documents', model_name='DocumentVersion'
         )
 
         UserMailer = self.get_model(model_name='UserMailer')
@@ -79,12 +96,25 @@ class MailerApp(MayanAppConfig):
             source=UserMailer, widget=TwoStateWidget
         )
         SourceColumn(
-            attribute='backend_label', include_label=True, source=UserMailer
+            attribute='get_backend_label', include_label=True,
+            source=UserMailer
         )
 
         ModelPermission.register(
             model=Document, permissions=(
-                permission_mailing_link, permission_mailing_send_document
+                permission_send_document_link,
+            )
+        )
+        ModelPermission.register(
+            model=DocumentFile, permissions=(
+                permission_send_document_file_attachment,
+                permission_send_document_file_link
+            )
+        )
+        ModelPermission.register(
+            model=DocumentVersion, permissions=(
+                permission_send_document_version_attachment,
+                permission_send_document_version_link
             )
         )
 
@@ -96,21 +126,53 @@ class MailerApp(MayanAppConfig):
             )
         )
 
-        menu_list_facet.bind_links(
-            links=(link_acl_list,), sources=(UserMailer,)
-        )
+        # Document
 
         menu_multi_item.bind_links(
             links=(
-                link_send_multiple_document, link_send_multiple_document_link
+                link_send_document_link_multiple,
             ), sources=(Document,)
         )
 
         menu_object.bind_links(
             links=(
-                link_send_document_link, link_send_document
+                link_send_document_link_single,
             ), sources=(Document,)
         )
+
+        # Document file
+
+        menu_multi_item.bind_links(
+            links=(
+                link_send_document_file_attachment_multiple,
+                link_send_document_file_link_multiple
+            ), sources=(DocumentFile,)
+        )
+
+        menu_object.bind_links(
+            links=(
+                link_send_document_file_link_single,
+                link_send_document_file_attachment_single
+            ), sources=(DocumentFile,)
+        )
+
+        # Document version
+
+        menu_multi_item.bind_links(
+            links=(
+                link_send_document_version_attachment_multiple,
+                link_send_document_version_link_multiple
+            ), sources=(DocumentVersion,)
+        )
+
+        menu_object.bind_links(
+            links=(
+                link_send_document_version_link_single,
+                link_send_document_version_attachment_single
+            ), sources=(DocumentVersion,)
+        )
+
+        # Mailing profile
 
         menu_object.bind_links(
             links=(

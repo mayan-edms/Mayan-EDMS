@@ -52,17 +52,16 @@ class DocumentSerializer(
             'version_list_url'
         )
         model = Document
-        read_only_fields = ('document_type',)
+        read_only_fields = (
+            'document_change_type_url', 'document_type', 'file_latest',
+            'file_list_url', 'id', 'version_active', 'version_list_url', 'url'
+        )
 
 
-class DocumentChangeTypeSerializer(serializers.ModelSerializer):
+class DocumentChangeTypeSerializer(serializers.Serializer):
     document_type_id = serializers.PrimaryKeyRelatedField(
         queryset=DocumentType.objects.all(), write_only=True
     )
-
-    class Meta:
-        fields = ('document_type_id',)
-        model = Document
 
 
 class DocumentUploadSerializer(DocumentSerializer):

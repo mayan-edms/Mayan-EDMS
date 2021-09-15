@@ -2,6 +2,12 @@
 Features
 ========
 
+- Free open source software.
+
+  - :doc:`Very permissive license compatible with commercial usage <../parts/license>`.
+  - Use as-is or add your own customizations.
+  - Sell your own services or custom code.
+
 - :doc:`Document versioning <../chapters/versioning>`.
 
   - Store many versions of the same document, download or revert to a
@@ -13,14 +19,11 @@ Features
     cryptographic signatures or upload detached signatures for document
     signed after they were stored.
 
-- :doc:`Collaboration tools <../parts/collaboration>`.
-
-  - Discuss documents, or comment on new versions of a document.
-
 - :doc:`User-defined document metadata <../chapters/metadata>`.
 
   - Several metadata fields can be matched to a document type as per technical,
-    legal or structural requirements such as the `Dublin core`_.
+    legal or structural requirements such as the `Dublin core`_ or `ISO 23081`_
+    just to name a few.
   - Metadata fields can have an initial value, which can be static or determined
     by a template code snippet provided by the user.
 
@@ -29,11 +32,19 @@ Features
   - Local file or server side file uploads, multifunctional copier, or even via
     email.
 
-- Batch uploads.
+- Precision engineering.
 
-  - Many documents can be upload in a single action.
-  - Clone a document's metadata for speedier uploads and eliminate repetitive
-    data entry.
+  - Multi disciplinary team with decades of enterprise system engineering
+    and enterprise software development experience.
+  - Complex design changes are documented via a formal processes called
+    :ref:`mercs`.
+
+- :doc:`Advanced access control system <../chapters/permissions>`.
+
+  - Role based access control. It is possible to create an unlimited amount
+    of different roles not being restricted to the traditional admin,
+    operator, guest paradigm.
+  - There is a permission for every atomic operation performed by users.
 
 - Previews for many file formats.
 
@@ -42,8 +53,8 @@ Features
 
 - Office document format support.
 
-  - Mayan EDMS can detect the presence of Libre Office and use it to support
-    word processing files, spreadsheets and presentations.
+  - Mayan EDMS can detect the presence of LibreOffice and use it to generate
+    previews for word processing files, spreadsheets, and presentations.
 
 - Full text searching.
 
@@ -54,17 +65,6 @@ Features
 
   - Automatic linking of documents based on metadata values or document
     properties.
-
-- :doc:`Advanced access control system <../chapters/permissions>`.
-
-  - Role based access control. It is possible to create an unlimited amount
-    of different roles not being restricted to the traditional admin,
-    operator, guest paradigm.
-  - There is a permission for every atomic operation performed by users.
-
-- Multi page document support.
-
-  - Multiple page PDF and TIFF files are supported.
 
 - :doc:`Automatic OCR processing <../chapters/ocr_backend>`.
 
@@ -82,19 +82,104 @@ Features
 
 - :doc:`Plugable storage backends <../parts/storage>`.
 
+  - Built in support for file system storage.
   - It is very easy to use 3rd party plugins such as the ones available for
     Amazon EC2.
-
-- :doc:`Color coded tags <../chapters/tags>`.
-
-  - Labeled and color coded tags can be assigned for intuitive recognition.
+  - Use cloud object storage like S3 or on premise using Minio.
 
 - :doc:`Workflows <../chapters/workflows>`.
 
   - Keep track of the state of documents, along with the log of the previous
     state changes.
+  - Use the workflow engine to automate business processes by executing
+    system actions.
+  - Trigger external processes using the workflow. Execute actions in other
+    systems when a document hits a specific state for complete business
+    automation.
+
+- :doc:`Non destructive page remapping and disabling <../releases/4.0>`.
+
+  - Change the order of the pages of the files uploaded to a document or
+    disable them to remove them from view. Pages from multiple document files
+    can also be joined or appended to create multiple document versions from
+    the same set of files.
+
+- Automatic duplicate document scanning.
+
+  - Extensible system to allow for specific duplication search criteria. By
+    default, backends are supplied to scan for documents with exact files and
+    exact labels.
+
+- Complete event tracking system.
+
+  - Every action performed in the system is recorded, perfect for auditing.
+  - Users and other apps can subscribe to events to perform actions or
+    provide notifications.
+
+- :doc:`Non destructive image transformations <../chapters/transformations>`.
+
+  - Multi layer image support. Each layer can support different permission
+    layout to restrict image manipulation to different roles.
+  - Rotate, crop, flip images to correct bad scans.
+  - Every transformation can be undone and never modifies the uploaded file.
+  - User overlays to add privacy makers to internal documents not meant for
+    printing.
+  - Add redaction to hide sensitive information before publication.
+
+- Configurable authentication system.
+
+  - Take advantage of the default username or email authentication backends
+    provided for a quick deployment or install your own.
+  - Can extended to support single sign on, LDAP, or other protocols.
+
+- Automatic extraction of file metadata.
+
+  - In addition to the metadata defined by your organization, make use of the
+    built in metadata available in many file formats.
+  - Extra author information, camera settings used to take a photo, or even
+    GPS coordinates.
+  - Extracted file metadata can be used in other apps of the system to do
+    things like automatic categorization by GPS coordinates.
+
+- Can be deploy in many different environments, vendors, hardware.
+
+  - Do a direct Python installation for maximum control and performance.
+  - Use the official `Docker image`_ for easier installation and scalability.
+  - Deploy to a virtual machine, direct hardware, public cloud, private
+    cloud, or a single board computer.
+  - Has been successfully deployed to IBM cloud, Google Cloud, Digital Ocean,
+    and Azure. Either using Docker, Docker Compose, Docker Machine, and
+    Kubernetes.
+
+- Scalable as a design principle.
+
+  - Grow your document repository without future capacity concern.
+  - Extensive regression testing ensures each version is faster than the
+    previous one.
+  - Default installation scales to hundred of thousand of documents.
+  - Tuned installations scale to millions of documents.
+
+- :doc:`Color coded tags <../chapters/tags>`.
+
+  - Labeled and color coded tags can be assigned for intuitive recognition.
+
+- Batch uploads.
+
+  - Many documents can be upload in a single action.
+  - Clone a document's metadata for speedier uploads and eliminate repetitive
+    data entry.
+
+- :doc:`Collaboration tools <../parts/collaboration>`.
+
+  - Discuss documents, or comment on new versions of a document.
+
+- Multi page document support.
+
+  - Multiple page PDF, office files, and TIFF files are supported.
 
 
 .. _`Dublin core`: http://dublincore.org/metadata-basics/
 .. _Django:  https://www.djangoproject.com/
 .. _Transifex: https://www.transifex.com/projects/p/mayan-edms/
+.. _`ISO 23081`: https://www.iso.org/standard/73172.html
+.. _`Docker image`: https://hub.docker.com/r/mayanedms/mayanedms

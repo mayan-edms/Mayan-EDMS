@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
 "Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -43,7 +43,7 @@ msgstr ""
 msgid "Exact document label"
 msgstr ""
 
-#: links.py:18 models.py:41 views.py:77
+#: links.py:18 models.py:41 views.py:73
 msgid "Duplicated documents"
 msgstr "Documenti duplicati"
 
@@ -79,22 +79,22 @@ msgstr "Pulisci le liste dei duplicati vuote"
 msgid "Scan document duplicates"
 msgstr "Cerca duplicati del documento"
 
-#: views.py:36
+#: views.py:32
 msgid "Only exact copies of this document will be shown in the this list."
 msgstr ""
 "In questo elenco verranno visualizzate solo copie esatte di questo "
 "documento."
 
-#: views.py:40
+#: views.py:36
 msgid "There are no duplicates for this document"
 msgstr "Non ci sono duplicati per questo documento"
 
-#: views.py:44
+#: views.py:40
 #, python-format
 msgid "Duplicates for document: %s"
 msgstr "Duplicati per il documento: %s"
 
-#: views.py:68
+#: views.py:64
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
 "the last byte. Files that have the same text or OCR but are not identical or"
@@ -105,14 +105,14 @@ msgstr ""
 " o sono stati salvati utilizzando un formato di file diverso non verranno "
 "visualizzati come duplicati."
 
-#: views.py:75
+#: views.py:71
 msgid "There are no duplicated documents"
 msgstr "Non ci sono documenti duplicati."
 
-#: views.py:85
+#: views.py:81
 msgid "Scan for duplicated documents?"
 msgstr "Scansione per documenti duplicati?"
 
-#: views.py:92
+#: views.py:88
 msgid "Duplicated document scan queued successfully."
 msgstr "Scansione duplicata del documento messa in coda correttamente."

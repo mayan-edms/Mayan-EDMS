@@ -3,7 +3,7 @@ from rest_framework.reverse import reverse
 
 
 class BlankSerializer(serializers.Serializer):
-    """Serializer for the object action API view"""
+    """Serializer for the object action API view."""
 
 
 class EndpointSerializer(serializers.Serializer):

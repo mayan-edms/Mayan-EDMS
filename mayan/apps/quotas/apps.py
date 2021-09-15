@@ -3,15 +3,12 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import (
     permission_acl_edit, permission_acl_view
 )
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
-from mayan.apps.common.menus import (
-    menu_list_facet, menu_object, menu_secondary, menu_setup
-)
+from mayan.apps.common.menus import menu_object, menu_secondary, menu_setup
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
@@ -94,10 +91,6 @@ class QuotasApp(MayanAppConfig):
         SourceColumn(
             attribute='enabled', include_label=True, is_sortable=True,
             source=Quota, widget=TwoStateWidget
-        )
-
-        menu_list_facet.bind_links(
-            links=(link_acl_list,), sources=(Quota,)
         )
 
         menu_object.bind_links(

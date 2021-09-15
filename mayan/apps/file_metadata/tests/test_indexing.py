@@ -19,8 +19,8 @@ class IndexingTestCase(DocumentTestMixin, BaseTransactionTestCase):
         )
         self.test_index_template.document_types.add(self.test_document_type)
 
-        root = self.test_index_template.template_root
-        self.test_index_template.node_templates.create(
+        root = self.test_index_template.index_template_root_node
+        self.test_index_template.index_template_nodes.create(
             parent=root, expression=TEST_FILE_METADATA_INDEX_NODE_TEMPLATE,
             link_documents=True
         )

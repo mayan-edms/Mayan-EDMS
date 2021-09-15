@@ -13,8 +13,8 @@ from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
-    event_detached_signature_created, event_detached_signature_uploaded,
-    event_embedded_signature_created
+    event_detached_signature_created, event_detached_signature_deleted,
+    event_detached_signature_uploaded, event_embedded_signature_created
 )
 from .handlers import (
     handler_unverify_key_signatures, handler_verify_key_signatures
@@ -25,13 +25,13 @@ from .hooks import (
 from .links import (
     link_document_file_all_signature_refresh,
     link_document_file_all_signature_verify,
-    link_document_file_signature_delete,
+    link_document_file_signature_detached_delete,
     link_document_file_signature_detached_create,
     link_document_file_signature_embedded_create,
     link_document_file_signature_details,
-    link_document_file_signature_download,
+    link_document_file_signature_detached_download,
     link_document_file_signature_list,
-    link_document_file_signature_upload,
+    link_document_file_signature_detached_upload,
 )
 from .permissions import (
     permission_document_file_sign_detached,
@@ -85,6 +85,7 @@ class DocumentSignaturesApp(MayanAppConfig):
         ModelEventType.register(
             model=DocumentFile, event_types=(
                 event_detached_signature_created,
+                event_detached_signature_deleted,
                 event_detached_signature_uploaded,
                 event_embedded_signature_created
             )
@@ -126,24 +127,41 @@ class DocumentSignaturesApp(MayanAppConfig):
             source=SignatureBaseModel
         )
 
+        # Document file
+
         menu_list_facet.bind_links(
             links=(link_document_file_signature_list,),
             sources=(DocumentFile,)
         )
+
+        # Signatures
+
         menu_object.bind_links(
             links=(
                 link_document_file_signature_details,
-                link_document_file_signature_download,
-                link_document_file_signature_delete,
+                link_document_file_signature_detached_download,
+                link_document_file_signature_detached_delete,
             ), sources=(SignatureBaseModel,)
         )
+
         menu_secondary.bind_links(
             links=(
                 link_document_file_signature_detached_create,
                 link_document_file_signature_embedded_create,
-                link_document_file_signature_upload
-            ), sources=(DocumentFile,)
+                link_document_file_signature_detached_upload
+            ), sources=(
+                'signatures:document_file_signature_list',
+                'signatures:document_file_signature_detached_create',
+                'signatures:document_file_signature_upload',
+                'signatures:document_file_signature_embedded_create',
+                'signatures:document_file_signature_detached_delete',
+                'signatures:document_file_signature_details',
+                'signatures:document_file_signature_detached_download',
+            )
         )
+
+        # Tools
+
         menu_tools.bind_links(
             links=(
                 link_document_file_all_signature_refresh,

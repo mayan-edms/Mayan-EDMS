@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
@@ -80,15 +80,15 @@ msgstr ""
 msgid "File metadata processing per type"
 msgstr ""
 
-#: methods.py:36
+#: methods.py:41
 msgid "get_file_metadata(< file metadata dotted path >)"
 msgstr ""
 
-#: methods.py:39
+#: methods.py:44
 msgid "Return the specified document file metadata entry."
 msgstr ""
 
-#: methods.py:66
+#: methods.py:71
 msgid "Return the specified document file file metadata entry."
 msgstr ""
 
@@ -231,16 +231,16 @@ msgid_plural "Submit the selected documents files to the file metadata queue?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:145
+#: views.py:147
 #, python-format
 msgid "Edit file metadata settings for document type: %s"
 msgstr ""
 
-#: views.py:156
+#: views.py:158
 msgid "Submit all documents of a type for file metadata processing."
 msgstr ""
 
-#: views.py:180
+#: views.py:184
 #, python-format
 msgid "%(count)d documents added to the file metadata processing queue."
 msgstr ""

@@ -1,11 +1,6 @@
-from datetime import timedelta
+from mayan.apps.converter.settings import setting_image_generation_timeout
 
-from django.utils.timezone import now
-
-from mayan.apps.common.settings import settings_db_sync_task_delay
-from mayan.apps.documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT
-
-from .events import event_ocr_document_version_submit
+from .events import event_ocr_document_version_submitted
 from .literals import TASK_DOCUMENT_VERSION_PAGE_OCR_TIMEOUT
 from .tasks import task_document_version_ocr_process
 
@@ -18,7 +13,7 @@ def method_document_ocr_submit(self, _user=None):
 
 
 def method_document_version_ocr_submit(self, _user=None):
-    event_ocr_document_version_submit.commit(
+    event_ocr_document_version_submitted.commit(
         action_object=self.document, actor=_user, target=self
     )
 
@@ -35,10 +30,9 @@ def method_document_version_ocr_submit(self, _user=None):
     # rendering finishes.
 
     task_document_version_ocr_process.apply_async(
-        eta=now() + timedelta(seconds=settings_db_sync_task_delay.value),
         kwargs={
             'document_version_id': self.pk, 'user_id': user_id
         }, timeout=(
-            TASK_DOCUMENT_VERSION_PAGE_OCR_TIMEOUT + DOCUMENT_IMAGE_TASK_TIMEOUT * 2
+            TASK_DOCUMENT_VERSION_PAGE_OCR_TIMEOUT + setting_image_generation_timeout.value * 2
         ) * self.pages.count()
     )

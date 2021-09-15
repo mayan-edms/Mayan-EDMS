@@ -39,5 +39,29 @@ class MessageViewTestMixin:
             }
         )
 
+    def _request_test_message_detail_view(self):
+        return self.get(
+            viewname='messaging:message_detail', kwargs={
+                'message_id': self.test_message.pk
+            }
+        )
+
     def _request_test_message_list_view(self):
         return self.get(viewname='messaging:message_list')
+
+    def _request_test_message_mark_all_read_view(self):
+        return self.post(viewname='messaging:message_all_mark_read')
+
+    def _request_test_message_mark_read_view(self):
+        return self.post(
+            viewname='messaging:message_single_mark_read', kwargs={
+                'message_id': self.test_message.pk
+            }
+        )
+
+    def _request_test_message_mark_unread_view(self):
+        return self.post(
+            viewname='messaging:message_single_mark_unread', kwargs={
+                'message_id': self.test_message.pk
+            }
+        )

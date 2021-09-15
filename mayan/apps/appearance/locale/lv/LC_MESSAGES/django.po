@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -438,7 +438,6 @@ msgid "Bulk actions"
 msgstr "Lielapjoma darbības"
 
 #: templates/appearance/list_toolbar.html:67
-#: templates/appearance/partials/actions_dropdown.html:12
 msgid "Toggle Dropdown"
 msgstr "Toggle Dropdown"
 
@@ -449,10 +448,6 @@ msgstr "Pārslēgt navigāciju"
 #: templates/appearance/no_results.html:18
 msgid "No results"
 msgstr "Nav rezultātu"
-
-#: templates/appearance/partials/actions_dropdown.html:9
-msgid "Actions"
-msgstr "Darbības"
 
 #: templates/appearance/root.html:63
 msgid "Close"
@@ -466,7 +461,7 @@ msgstr "Servera sakaru kļūda"
 msgid "Check you network connection and try again in a few moments."
 msgstr "Pārbaudiet tīkla savienojumu un pēc brīža mēģiniet vēlreiz."
 
-#: templatetags/appearance_tags.py:62
+#: templatetags/appearance_tags.py:63
 msgid "None"
 msgstr "Nav neviens"
 

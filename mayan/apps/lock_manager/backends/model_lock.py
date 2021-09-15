@@ -18,7 +18,7 @@ class ModelLock(LockingBackend):
         Lock = apps.get_model(app_label='lock_manager', model_name='Lock')
         Lock.objects.select_for_update().delete()
 
-    def __init__(self, model_instance):
+    def _init(self, model_instance):
         self.model_instance = model_instance
         self.name = model_instance.name
 

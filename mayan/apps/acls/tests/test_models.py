@@ -494,6 +494,57 @@ class GenericForeignKeyFieldModelTestCase(ACLTestMixin, BaseTestCase):
 
         self.assertTrue(test_object in queryset)
 
+    def test_generic_foreign_key_model_with_typecasting(self):
+        self._create_test_permission()
+
+        self.TestModelExternal = self._create_test_model(
+            model_name='TestModelExternal'
+        )
+        self.TestModelChild = self._create_test_model(
+            fields={
+                'content_type': models.ForeignKey(
+                    on_delete=models.CASCADE, related_name='object_content_type',
+                    to=ContentType
+                ),
+                'object_id': models.CharField(max_length=255),
+                'content_object': GenericForeignKey(
+                    ct_field='content_type', fk_field='object_id',
+                )
+            }, model_name='TestModelChild'
+        )
+
+        ModelPermission.register(
+            model=self.TestModelExternal, permissions=(
+                self.test_permission,
+            )
+        )
+        ModelPermission.register(
+            model=self.TestModelChild, permissions=(
+                self.test_permission,
+            )
+        )
+
+        ModelPermission.register_inheritance(
+            model=self.TestModelChild, related='content_object',
+            fk_field_cast=models.CharField
+        )
+
+        test_external_object = self.TestModelExternal.objects.create()
+        test_object = self.TestModelChild.objects.create(
+            content_object=test_external_object
+        )
+
+        self.grant_access(
+            obj=test_external_object, permission=self.test_permission
+        )
+
+        queryset = AccessControlList.objects.restrict_queryset(
+            queryset=self.TestModelChild.objects.all(),
+            permission=self.test_permission, user=self._test_case_user
+        )
+
+        self.assertTrue(test_object in queryset)
+
 
 class ProxyModelPermissionTestCase(ACLTestMixin, BaseTestCase):
     def test_proxy_model_filtering_no_permission(self):

@@ -9,14 +9,13 @@ from django.db import OperationalError
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.celery import app
 
-from .events import event_ocr_document_version_finish
-from .literals import TASK_DOCUMENT_VERSION_PAGE_OCR_RETRY_DELAY
+from .events import event_ocr_document_version_finished
 from .signals import signal_post_document_version_ocr
 
 logger = logging.getLogger(name=__name__)
 
 
-@app.task(bind=True, ignore_result=True)
+@app.task(bind=True, ignore_result=True, retry_backoff=True)
 def task_document_version_ocr_process(self, document_version_id, user_id=None):
     logger.info(
         'Starting OCR for document version page ID: %s', document_version_id
@@ -48,9 +47,7 @@ def task_document_version_ocr_process(self, document_version_id, user_id=None):
         raise
 
 
-@app.task(
-    bind=True, default_retry_delay=TASK_DOCUMENT_VERSION_PAGE_OCR_RETRY_DELAY
-)
+@app.task(bind=True, retry_backoff=True)
 def task_document_version_page_ocr_process(
     self, document_version_page_id, user_id=None
 ):
@@ -92,7 +89,9 @@ def task_document_version_page_ocr_process(
 
 
 @app.task(bind=True, ignore_result=True)
-def task_document_version_ocr_finished(self, results, document_version_id, user_id=None):
+def task_document_version_ocr_finished(
+    self, results, document_version_id, user_id=None
+):
     logger.info(
         'OCR complete for document version ID: %s', document_version_id
     )
@@ -112,7 +111,7 @@ def task_document_version_ocr_finished(self, results, document_version_id, user_
         user = None
 
     try:
-        event_ocr_document_version_finish.commit(
+        event_ocr_document_version_finished.commit(
             action_object=document_version.document, actor=user,
             target=document_version
         )

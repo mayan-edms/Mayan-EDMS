@@ -10,13 +10,13 @@ from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.views.document_views import DocumentListView
 from mayan.apps.views.generics import (
-    MultipleObjectFormActionView, MultipleObjectConfirmActionView,
+    MultipleObjectFormActionView, MultipleObjectDeleteView,
     SingleObjectCreateView, SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import TagMultipleSelectionForm
-from .icons import icon_menu_tags, icon_document_tag_remove_submit
+from .icons import icon_menu_tags
 from .links import link_document_tag_multiple_attach, link_tag_create
 from .models import DocumentTag, Tag
 from .permissions import (
@@ -31,7 +31,7 @@ class TagAttachActionView(MultipleObjectFormActionView):
     form_class = TagMultipleSelectionForm
     object_permission = permission_tag_attach
     pk_url_kwarg = 'document_id'
-    source_queryset = Document.valid
+    source_queryset = Document.valid.all()
     success_message_single = _(
         'Tags attached to document "%(object)s" successfully.'
     )
@@ -46,9 +46,7 @@ class TagAttachActionView(MultipleObjectFormActionView):
     title_plural = _('Attach tags to %(count)d documents.')
 
     def get_extra_context(self):
-        context = {
-            'submit_label': _('Attach'),
-        }
+        context = {}
 
         if self.object_list.count() == 1:
             context.update(
@@ -112,7 +110,7 @@ class TagCreateView(SingleObjectCreateView):
         }
 
 
-class TagDeleteActionView(MultipleObjectConfirmActionView):
+class TagDeleteView(MultipleObjectDeleteView):
     error_message = _('Error deleting tag "%(instance)s"; %(exception)s')
     model = Tag
     object_permission = permission_tag_delete
@@ -126,22 +124,12 @@ class TagDeleteActionView(MultipleObjectConfirmActionView):
     title_plural = _('Delete the %(count)d selected tags.')
 
     def get_extra_context(self):
+        context = super().get_extra_context()
         context = {
-            'delete_view': True,
             'message': _('Will be removed from all documents.'),
         }
 
-        if self.object_list.count() == 1:
-            context.update(
-                {
-                    'object': self.object_list.first(),
-                }
-            )
-
         return context
-
-    def object_action(self, instance, form=None):
-        instance.delete()
 
 
 class TagEditView(SingleObjectEditView):
@@ -220,7 +208,7 @@ class TagDocumentListView(ExternalObjectViewMixin, DocumentListView):
 class DocumentTagListView(ExternalObjectViewMixin, TagListView):
     external_object_permission = permission_tag_view
     external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     tag_model = DocumentTag
 
     def get_extra_context(self):
@@ -252,7 +240,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
     form_class = TagMultipleSelectionForm
     object_permission = permission_tag_remove
     pk_url_kwarg = 'document_id'
-    source_queryset = Document.valid
+    source_queryset = Document.valid.all()
     success_message_single = _(
         'Tags removed from document "%(object)s" successfully.'
     )
@@ -267,10 +255,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
     title_plural = _('Remove tags from %(count)d documents.')
 
     def get_extra_context(self):
-        context = {
-            'submit_icon': icon_document_tag_remove_submit,
-            'submit_label': _('Remove'),
-        }
+        context = {}
 
         if self.object_list.count() == 1:
             context.update(

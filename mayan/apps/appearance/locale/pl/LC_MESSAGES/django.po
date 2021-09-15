@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -443,7 +443,6 @@ msgid "Bulk actions"
 msgstr "Akcje zbiorcze"
 
 #: templates/appearance/list_toolbar.html:67
-#: templates/appearance/partials/actions_dropdown.html:12
 msgid "Toggle Dropdown"
 msgstr "Rozwiń listę"
 
@@ -454,10 +453,6 @@ msgstr "Rozwiń nawigację"
 #: templates/appearance/no_results.html:18
 msgid "No results"
 msgstr "Brak wyników"
-
-#: templates/appearance/partials/actions_dropdown.html:9
-msgid "Actions"
-msgstr "Akcje"
 
 #: templates/appearance/root.html:63
 msgid "Close"
@@ -471,7 +466,7 @@ msgstr "Błąd komunikacji z serwerem"
 msgid "Check you network connection and try again in a few moments."
 msgstr "Sprawdź połączenie z siecią i spróbuj za chwilę."
 
-#: templatetags/appearance_tags.py:62
+#: templatetags/appearance_tags.py:63
 msgid "None"
 msgstr "Brak"
 

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:57+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -114,88 +114,93 @@ msgstr "%(object)s non cancellato, errore: %(error)s."
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s cancellato con successo.."
 
-#: generics.py:814
+#: generics.py:729
+#, python-format
+msgid "Error retrieving %(object)s; %(error)s"
+msgstr ""
+
+#: generics.py:833
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s non aggiornato, errore: %(error)s."
 
-#: generics.py:823
+#: generics.py:842
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s aggiornato con successo."
 
-#: generics.py:885
+#: generics.py:904
 #, python-format
 msgid "\"%(object)s\" deleted successfully."
 msgstr ""
 
-#: generics.py:886
+#: generics.py:905
 #, python-format
 msgid "%(count)d object deleted successfully."
 msgstr ""
 
-#: generics.py:887
+#: generics.py:906
 #, python-format
 msgid "%(count)d objects deleted successfully."
 msgstr ""
 
-#: generics.py:888
+#: generics.py:907
 #, python-format
 msgid "Delete \"%(object)s\"."
 msgstr ""
 
-#: generics.py:889
+#: generics.py:908
 #, python-format
 msgid "Delete %(count)d object."
 msgstr ""
 
-#: generics.py:890
+#: generics.py:909
 #, python-format
 msgid "Delete %(count)d objects."
 msgstr ""
 
-#: mixins.py:325
+#: mixins.py:327
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr "Nessun %(verbose_name)s trovato con questa query"
 
-#: mixins.py:350
+#: mixins.py:352
 #, python-format
 msgid "Unable to perform operation on object %(instance)s; %(exception)s."
 msgstr ""
 "Impossibile eseguire l'operazione sull'oggetto %(instance)s; %(exception)s."
 
-#: mixins.py:352
+#: mixins.py:354
 #, python-format
 msgid "Operation performed on %(object)s."
 msgstr "Operazione eseguita su %(object)s."
 
-#: mixins.py:353
+#: mixins.py:355
 #, python-format
 msgid "Operation performed on %(count)d object."
 msgstr ""
 
-#: mixins.py:354
+#: mixins.py:356
 #, python-format
 msgid "Operation performed on %(count)d objects."
 msgstr ""
 
-#: mixins.py:355
+#: mixins.py:357
 #, python-format
 msgid "Perform operation on %(object)s."
 msgstr ""
 
-#: mixins.py:356
+#: mixins.py:358
 #, python-format
 msgid "Perform operation on %(count)d object."
 msgstr ""
 
-#: mixins.py:357
+#: mixins.py:359
 #, python-format
 msgid "Perform operation on %(count)d objects."
 msgstr ""
 
-#: mixins.py:439
+#: mixins.py:441
 msgid "Object"
 msgstr "Oggetto"
 

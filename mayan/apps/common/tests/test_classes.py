@@ -1,14 +1,11 @@
 from django.db import models
 
 from mayan.apps.testing.tests.base import BaseTestCase
-from mayan.apps.testing.tests.mixins import TestModelTestCaseMixin
 
 from ..classes import QuerysetParametersSerializer
 
 
-class QuerysetParametersSerializerTestCase(
-    TestModelTestCaseMixin, BaseTestCase
-):
+class QuerysetParametersSerializerTestCase(BaseTestCase):
     def _assertQuerysetEqual(self):
         rebuilt_items = list(map(repr, self.queryset_rebuilt))
 

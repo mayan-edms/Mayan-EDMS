@@ -1,48 +1,50 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
 # Mathias Behrle <mathiasb@m9s.biz>, 2021
 # Tobias Paepke <tobias.paepke@paepke.net>, 2021
 # Berny <berny@bernhard-marx.de>, 2021
-# 
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-09-14 05:16+0000\n"
 "PO-Revision-Date: 2021-04-12 03:38+0000\n"
-"Last-Translator: Berny <berny@bernhard-marx.de>, 2021\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
+"teams/13584/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
+#: apps.py:35 events.py:5 links.py:40 models.py:42 permissions.py:6
 #: templates/announcements/announcements.html:8 views.py:119
 msgid "Announcements"
-msgstr ""
+msgstr "Ankündigungen"
 
-#: apps.py:74 apps.py:78
+#: apps.py:72 apps.py:76
 msgid "None"
 msgstr "Keine"
 
 #: events.py:8
 msgid "Announcement created"
-msgstr ""
+msgstr "Ankündigung erstellt"
 
 #: events.py:11
 msgid "Announcement edited"
-msgstr ""
+msgstr "Ankündigung bearbeitet"
 
 #: links.py:17 views.py:30
 msgid "Create announcement"
-msgstr ""
+msgstr "Ankündigung erstellen"
 
 #: links.py:20 links.py:26
 msgid "Delete"
@@ -52,101 +54,101 @@ msgstr "Löschen"
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: models.py:18
-msgid "Short description of this announcement."
-msgstr ""
-
 #: models.py:19
+msgid "Short description of this announcement."
+msgstr "Kurze Beschreibung dieser Ankündigung."
+
+#: models.py:20
 msgid "Label"
 msgstr "Bezeichner"
 
-#: models.py:22
-msgid "The actual text to be displayed."
-msgstr ""
-
 #: models.py:23
+msgid "The actual text to be displayed."
+msgstr "Der tatsächlich anzuzeigende Text."
+
+#: models.py:24
 msgid "Text"
 msgstr "Text"
 
-#: models.py:25
+#: models.py:26
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: models.py:28
-msgid "Date and time after which this announcement will be displayed."
-msgstr ""
-
 #: models.py:29
+msgid "Date and time after which this announcement will be displayed."
+msgstr "Datum und Uhrzeit, nach denen diese Ankündigung angezeigt wird."
+
+#: models.py:30
 msgid "Start date time"
 msgstr "Startdatum und Uhrzeit"
 
-#: models.py:33
-msgid "Date and time until when this announcement is to be displayed."
-msgstr ""
-
 #: models.py:34
+msgid "Date and time until when this announcement is to be displayed."
+msgstr "Datum und Uhrzeit bis der diese Ankündigung angezeigt wird."
+
+#: models.py:35
 msgid "End date time"
 msgstr "Enddatum und Uhrzeit"
 
-#: models.py:40
+#: models.py:41
 msgid "Announcement"
-msgstr ""
+msgstr "Ankündigung"
 
 #: permissions.py:10
 msgid "Create announcements"
-msgstr ""
+msgstr "Ankündigungen erstellen"
 
 #: permissions.py:13
 msgid "Delete announcements"
-msgstr ""
+msgstr "Ankündigungen löschen"
 
 #: permissions.py:16
 msgid "Edit announcements"
-msgstr ""
+msgstr "Ankündigungen bearbeiten"
 
 #: permissions.py:19
 msgid "View announcements"
-msgstr ""
+msgstr "Ankündigungen anzeigen"
 
 #: views.py:41
 #, python-format
 msgid "Error deleting announcement \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Fehler beim Löschen der Ankündigung \"%(instance)s\"; %(exception)s"
 
 #: views.py:50
 #, python-format
 msgid "Announcement \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Ankündigung \"%(object)s\" erfolgreich gelöscht."
 
 #: views.py:53
 #, python-format
 msgid "%(count)d announcement deleted successfully."
-msgstr ""
+msgstr "%(count)d Ankündigung erfolgreich gelöscht."
 
 #: views.py:56
 #, python-format
 msgid "%(count)d announcements deleted successfully."
-msgstr ""
+msgstr "%(count)d Ankündigungen erfolgreich gelöscht."
 
 #: views.py:58
 #, python-format
 msgid "Delete announcement: %(object)s."
-msgstr ""
+msgstr "Ankündigung löschen: %(object)s."
 
 #: views.py:59
 #, python-format
 msgid "Delete the %(count)d selected announcement."
-msgstr ""
+msgstr "Die ausgewählte  %(count)d Ankündigung löschen."
 
 #: views.py:60
 #, python-format
 msgid "Delete the %(count)d selected announcements."
-msgstr ""
+msgstr "Die %(count)d ausgewählten Ankündigungen löschen."
 
 #: views.py:92
 #, python-format
 msgid "Edit announcement: %s"
-msgstr ""
+msgstr "Ankündigung bearbeiten: %s"
 
 #: views.py:114
 msgid ""
@@ -154,7 +156,10 @@ msgid ""
 "convery information about your organzation, announcements or usage "
 "guidelines for your users."
 msgstr ""
+"Ankündigungen werden bei der Anmeldung angezeigt. Sie können dies nutzen, um "
+"Informationen zu Ihrem Unternehmen, Ankündigungen oder Nutzungsrichtlinien "
+"anzuzeigen. "
 
 #: views.py:118
 msgid "No announcements available"
-msgstr ""
+msgstr "Keine Ankündigungen verfügbar"

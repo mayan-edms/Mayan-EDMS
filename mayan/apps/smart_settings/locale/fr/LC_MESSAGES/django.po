@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:57+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -40,11 +40,11 @@ msgstr "Nom"
 msgid "Value"
 msgstr "Valeur"
 
-#: classes.py:338
+#: classes.py:341
 msgid "Overridden"
 msgstr "Remplacé"
 
-#: classes.py:340
+#: classes.py:343
 msgid "Is this settings being overridden by an environment variable?"
 msgstr ""
 "Est-ce que ces paramètres sont remplacés par une variable d'environnement?"

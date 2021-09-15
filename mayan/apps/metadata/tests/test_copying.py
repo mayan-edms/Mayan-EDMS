@@ -6,7 +6,8 @@ from .mixins import MetadataTypeTestMixin
 
 
 class MetadataTypeCopyTestCase(
-    DocumentTestMixin, MetadataTypeTestMixin, ObjectCopyTestMixin, BaseTestCase
+    DocumentTestMixin, MetadataTypeTestMixin, ObjectCopyTestMixin,
+    BaseTestCase
 ):
     auto_upload_test_document = False
 

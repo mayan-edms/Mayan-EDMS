@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Link
-from mayan.apps.navigation.utils import get_cascade_condition
+from mayan.apps.navigation.utils import factory_condition_queryset_access
 
 from ..icons import (
     icon_document_type_create, icon_document_type_delete,
@@ -71,16 +71,17 @@ link_document_type_filename_generator = Link(
     view='documents:document_type_filename_generator'
 )
 link_document_type_list = Link(
-    condition=get_cascade_condition(
+    condition=factory_condition_queryset_access(
         app_label='documents', model_name='DocumentType',
         object_permission=permission_document_type_view,
     ), icon=icon_document_type_list, text=_('Document types'),
     view='documents:document_type_list'
 )
 link_document_type_setup = Link(
-    condition=get_cascade_condition(
+    condition=factory_condition_queryset_access(
         app_label='documents', model_name='DocumentType',
         object_permission=permission_document_type_view,
+        view_permission=permission_document_type_create,
     ), icon=icon_document_type_setup, text=_('Document types'),
     view='documents:document_type_list'
 )

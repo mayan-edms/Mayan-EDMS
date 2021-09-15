@@ -1,3 +1,6 @@
+import pytz
+
+from django.conf import settings
 from django.db import migrations, reset_queries
 
 
@@ -20,6 +23,7 @@ def operation_document_version_page_create(apps, schema_editor):
     query = '''
     SELECT
         {documents_documentfile}.{document_id},
+        {documents_documentfile}.{timestamp},
         {documents_documentfilepage}.{document_file_id},
         {documents_documentfilepage}.{id}
     FROM {documents_documentfilepage}
@@ -27,11 +31,20 @@ def operation_document_version_page_create(apps, schema_editor):
         {documents_documentfilepage}.{document_file_id} = {documents_documentfile}.{id}
     ) ORDER BY {documents_documentfilepage}.{id} ASC
     '''.format(
-        documents_documentfile=schema_editor.connection.ops.quote_name('documents_documentfile'),
-        document_id=schema_editor.connection.ops.quote_name('document_id'),
-        documents_documentfilepage=schema_editor.connection.ops.quote_name('documents_documentfilepage'),
-        document_file_id=schema_editor.connection.ops.quote_name('document_file_id'),
-        id=schema_editor.connection.ops.quote_name('id')
+        documents_documentfile=schema_editor.connection.ops.quote_name(
+            name='documents_documentfile'
+        ),
+        document_id=schema_editor.connection.ops.quote_name(
+            name='document_id'
+        ),
+        timestamp=schema_editor.connection.ops.quote_name(name='timestamp'),
+        documents_documentfilepage=schema_editor.connection.ops.quote_name(
+            name='documents_documentfilepage'
+        ),
+        document_file_id=schema_editor.connection.ops.quote_name(
+            name='document_file_id'
+        ),
+        id=schema_editor.connection.ops.quote_name(name='id')
     )
 
     cursor_main.execute(query)
@@ -45,14 +58,33 @@ def operation_document_version_page_create(apps, schema_editor):
     document_version = DummyDocumentVersion()
 
     document_version_page_insert_query = '''
-        INSERT INTO documents_documentversionpage (
-            document_version_id,content_type_id,object_id,page_number
-        ) VALUES {};
-    '''
+        INSERT INTO {documents_documentversionpage} (
+            {document_version_id},{content_type_id},{object_id},{page_number}
+        ) VALUES {{}};
+    '''.format(
+        content_type_id=schema_editor.connection.ops.quote_name(
+            name='content_type_id'
+        ),
+        document_version_id=schema_editor.connection.ops.quote_name(
+            name='document_version_id'
+        ),
+        documents_documentversionpage=schema_editor.connection.ops.quote_name(
+            name='documents_documentversionpage'
+        ),
+        object_id=schema_editor.connection.ops.quote_name(
+            name='object_id'
+        ),
+        page_number=schema_editor.connection.ops.quote_name(
+            name='page_number'
+        )
+    )
+
     document_version_page_values = []
     page_number = 1
 
     FETCH_SIZE = 100000
+
+    time_zone = pytz.timezone(zone=settings.TIME_ZONE)
 
     while True:
         rows = cursor_main.fetchmany(FETCH_SIZE)
@@ -61,7 +93,8 @@ def operation_document_version_page_create(apps, schema_editor):
             break
 
         for row in rows:
-            document_id, document_file_id, document_file_page_id = row
+            document_id, timestamp, document_file_id, document_file_page_id = row
+            timestamp = timestamp.astimezone(tz=time_zone)
 
             if document_id_last != document_id:
                 document_version.active = True
@@ -69,7 +102,11 @@ def operation_document_version_page_create(apps, schema_editor):
                 document_id_last = document_id
 
             if document_file_id_last != document_file_id:
-                document_version = DocumentVersion.objects.create(document_id=document_id)
+                document_version = DocumentVersion.objects.create(
+                    document_id=document_id
+                )
+                document_version.timestamp = timestamp
+                document_version.save()
                 document_version_id = document_version.pk
                 document_file_id_last = document_file_id
                 if document_version_page_values:

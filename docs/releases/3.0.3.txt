@@ -1,5 +1,5 @@
-Versin 3.0.3
-============
+Version 3.0.3
+=============
 
 Released: August 17, 2018
 

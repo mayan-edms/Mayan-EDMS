@@ -30,9 +30,6 @@ event_document_file_downloaded = namespace.add_event_type(
 event_document_file_edited = namespace.add_event_type(
     label=_('Document file edited'), name='document_file_edited'
 )
-event_document_file_new = namespace.add_event_type(
-    label=_('Document file uploaded'), name='document_file_new'
-)
 
 # Document type
 

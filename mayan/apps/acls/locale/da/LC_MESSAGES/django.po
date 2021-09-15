@@ -1,37 +1,37 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Mads L. Nielsen <sirlundgaard@gmail.com>, 2021
 # Rasmus Kierudsen <tebrasso@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-09-14 05:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:12+0000\n"
 "Last-Translator: Rasmus Kierudsen <tebrasso@gmail.com>, 2021\n"
 "Language-Team: Danish (https://www.transifex.com/rosarior/teams/13584/da/)\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:24 classes.py:143 links.py:27
+#: apps.py:26 classes.py:175 links.py:27
 msgid "ACLs"
 msgstr "ACLs"
 
-#: apps.py:60
+#: apps.py:62
 msgid ""
 "Object for which the access is granted. When sorting objects, only the type "
 "is used and not the actual label of the object."
 msgstr ""
 
-#: apps.py:63
+#: apps.py:65
 msgid "Object"
 msgstr "Objekt"
 
@@ -71,12 +71,12 @@ msgstr "Tilladelse"
 msgid "Global ACLs"
 msgstr ""
 
-#: managers.py:230
+#: managers.py:243
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
 msgstr ""
 
-#: managers.py:250
+#: managers.py:263
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr "Utilstrækkelig adgang til: %s"
@@ -189,8 +189,7 @@ msgid "Object ID"
 msgstr ""
 
 #: workflow_actions.py:35
-msgid ""
-"Numeric identifier of the object for which the access will be modified."
+msgid "Numeric identifier of the object for which the access will be modified."
 msgstr ""
 
 #: workflow_actions.py:40 workflow_actions.py:155

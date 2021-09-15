@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:57+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -32,20 +32,20 @@ msgstr "Управление пользователями"
 msgid "Group"
 msgstr "Группа"
 
-#: apps.py:93 apps.py:103 links.py:46 links.py:58 links.py:77 search.py:34
+#: apps.py:93 apps.py:103 links.py:46 links.py:59 links.py:78 search.py:34
 #: views.py:120
 msgid "Groups"
 msgstr "Группы"
 
 #: apps.py:94 search.py:16
 msgid "Name"
-msgstr "Название"
+msgstr "Имя"
 
 #: apps.py:97 models.py:16 search.py:22
 msgid "User"
 msgstr "Пользователь"
 
-#: apps.py:98 apps.py:187 links.py:51 links.py:84 links.py:101 views.py:306
+#: apps.py:98 apps.py:187 links.py:51 links.py:86 links.py:104 views.py:306
 msgid "Users"
 msgstr "Пользователи"
 
@@ -75,7 +75,7 @@ msgstr "Имя пользователя"
 
 #: apps.py:108
 msgid "Last login"
-msgstr ""
+msgstr "Последний вход"
 
 #: apps.py:111
 msgid "Has usable password?"
@@ -133,19 +133,19 @@ msgstr "Редактировать сведения"
 msgid "Create new group"
 msgstr "Создать группу"
 
-#: links.py:35 links.py:68 links.py:89
+#: links.py:35 links.py:69 links.py:91
 msgid "Delete"
 msgstr "Удалить"
 
-#: links.py:39 links.py:72
+#: links.py:39 links.py:73
 msgid "Edit"
 msgstr "Редактировать"
 
-#: links.py:63 views.py:152
+#: links.py:64 views.py:152
 msgid "Create new user"
 msgstr "Создать пользователя"
 
-#: links.py:94
+#: links.py:96
 msgid "User options"
 msgstr "Настройки"
 
@@ -199,19 +199,21 @@ msgstr "имя пользователя"
 
 #: serializers.py:17
 msgid "URL of the API endpoint showing the list users of this group."
-msgstr ""
+msgstr "URL-адрес API, показывающий список пользователей этой группы."
 
 #: serializers.py:48
 msgid "Primary key of the user to add to the group."
-msgstr ""
+msgstr "Первичный ключ пользователя, которого нужно добавить в группу."
 
 #: serializers.py:57
 msgid "Primary key of the user to remove from the group."
-msgstr ""
+msgstr "Первичный ключ пользователя, которого нужно удалить из группы."
 
 #: serializers.py:66
 msgid "URL of the API endpoint showing the list groups this user belongs to."
 msgstr ""
+"URL-адрес API, показывающий список групп, к которым принадлежит этот "
+"пользователь."
 
 #: utils.py:6
 msgid "Anonymous"
@@ -291,8 +293,8 @@ msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
 msgstr ""
-"Удаление суперпользователя и  персонала не допускается, используйте "
-"интерфейс администратора для этих случаев."
+"Удаление пользователей с флагами superuser и stuff запрещено, используйте "
+"интерфейс администратора Django для этих случаев."
 
 #: views.py:214
 #, python-format

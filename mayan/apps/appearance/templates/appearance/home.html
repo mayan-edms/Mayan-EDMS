@@ -7,7 +7,7 @@
 {% load dashboards_tags %}
 {% load navigation_tags %}
 
-{% block title %}{% trans 'Dashboard' %}{% endblock %}
+{% block title %}{% include 'appearance/calculate_form_title.html' with non_html_title=True %}{% endblock %}
 
 {% block javascript %}
     <script>
@@ -44,6 +44,6 @@
 
     {% include 'dynamic_search/search_box.html' %}
 
-    {% dashboards_render_dashboard 'main' %}
+    {% dashboards_render_default_dashboard %}
 
 {% endblock %}

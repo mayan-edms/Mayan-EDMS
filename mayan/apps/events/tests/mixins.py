@@ -2,7 +2,6 @@ from actstream.models import Action
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.permissions.tests.mixins import RoleTestMixin
-from mayan.apps.testing.tests.mixins import TestModelTestCaseMixin
 from mayan.apps.user_management.tests.mixins import GroupTestMixin
 
 from ..classes import (
@@ -17,9 +16,68 @@ from .literals import (
 )
 
 
+class EventsClearViewTestMixin:
+    def _request_test_current_user_events_clear_view(self):
+        return self.post(
+            viewname='events:current_user_events_clear'
+        )
+
+    def _request_test_events_by_verb_clear_view(self):
+        return self.post(
+            viewname='events:events_by_verb_clear', kwargs={
+                'verb': self.test_event_type.id
+            }
+        )
+
+    def _request_test_events_list_clear_view(self):
+        return self.post(viewname='events:events_list_clear')
+
+    def _request_events_for_object_clear_view(self):
+        return self.post(
+            viewname='events:events_for_object_clear',
+            kwargs=self.view_arguments
+        )
+
+
+class EventsExportViewTestMixin:
+    def _request_test_current_user_events_export_view(self):
+        return self.post(
+            viewname='events:current_user_events_export'
+        )
+
+    def _request_test_events_by_verb_export_view(self):
+        return self.post(
+            viewname='events:events_by_verb_export', kwargs={
+                'verb': self.test_event_type.id
+            }
+        )
+
+    def _request_test_events_list_export_view(self):
+        return self.post(viewname='events:events_list_export')
+
+    def _request_events_for_object_export_view(self):
+        return self.post(
+            viewname='events:events_for_object_export',
+            kwargs=self.view_arguments
+        )
+
+
 class EventListAPIViewTestMixin:
     def _request_test_event_list_api_view(self):
         return self.get(viewname='rest_api:event-list')
+
+
+class EventTestMixin:
+    def setUp(self):
+        super().setUp()
+        self.test_events = []
+
+    def _create_test_event(self, action_object=None, actor=None, target=None):
+        self.test_event = self.test_event_type.commit(
+            action_object=action_object, actor=actor or self._test_case_user,
+            target=target
+        )
+        self.test_events.append(self.test_event)
 
 
 class EventTestCaseMixin:
@@ -51,10 +109,6 @@ class EventTypeNamespaceAPITestMixin:
 
 
 class EventTypeTestMixin:
-    def setUp(self):
-        super().setUp()
-        self.test_actions = []
-
     def _create_test_event_type(self):
         self.test_event_type_namespace = EventTypeNamespace(
             label=TEST_EVENT_TYPE_NAMESPACE_LABEL,
@@ -88,31 +142,8 @@ class EventViewTestMixin:
         )
 
 
-class EventsExportViewTestMixin:
-    def _request_test_current_user_events_export_view(self):
-        return self.post(
-            viewname='events:current_user_events_export'
-        )
-
-    def _request_test_events_by_verb_export_view(self):
-        return self.post(
-            viewname='events:events_by_verb_export', kwargs={
-                'verb': self.test_event_type.id
-            }
-        )
-
-    def _request_test_events_list_export_view(self):
-        return self.post(viewname='events:events_list_export')
-
-    def _request_events_for_object_export_view(self):
-        return self.post(
-            viewname='events:events_for_object_export',
-            kwargs=self.view_arguments
-        )
-
-
 class NotificationTestMixin(
-    EventTypeTestMixin, GroupTestMixin, RoleTestMixin, TestModelTestCaseMixin
+    EventTypeTestMixin, GroupTestMixin, RoleTestMixin
 ):
     def _create_local_test_object(self):
         super()._create_test_object()
@@ -168,4 +199,4 @@ class ObjectEventAPITestMixin:
 
 class UserEventViewsTestMixin:
     def _request_test_user_event_type_subscription_list_view(self):
-        return self.get(viewname='events:event_types_user_subcriptions_list')
+        return self.get(viewname='events:event_types_user_subscriptions_list')

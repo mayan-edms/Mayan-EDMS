@@ -6,8 +6,11 @@ from django.core.exceptions import ImproperlyConfigured
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.menus import menu_list_facet
 from mayan.apps.common.utils import get_related_field
-from mayan.apps.events.classes import EventModelRegistry
+
+from .events import event_acl_created, event_acl_deleted, event_acl_edited
+from .links import link_acl_list
 
 logger = logging.getLogger(name=__name__)
 
@@ -89,7 +92,7 @@ class ModelPermission:
 
     @classmethod
     def get_inheritances(cls, model):
-        # Proxy models get the inheritance from their base model
+        # Proxy models get the inheritance from their base model.
         if model._meta.proxy:
             model = model._meta.proxy_for_model
 
@@ -114,47 +117,73 @@ class ModelPermission:
         return cls._manager_names[model]
 
     @classmethod
-    def register(cls, model, permissions):
+    def register(cls, model, permissions, bind_link=True, exclude=None):
         """
         Match a model class to a set of permissions. And connect the model
         to the ACLs via a GenericRelation field.
         """
+        # Hidden imports
         from django.contrib.contenttypes.fields import GenericRelation
         from mayan.apps.common.classes import ModelCopy
-
-        cls._model_permissions.setdefault(model, [])
-        try:
-            for permission in permissions:
-                cls._model_permissions[model].append(permission)
-        except TypeError as exception:
-            raise ImproperlyConfigured(
-                'Make sure the permissions argument to .the register() '
-                'method is an iterable. Current value: "{}"'.format(
-                    permissions
-                )
-            ) from exception
+        from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
-
-        model.add_to_class(
-            name='acls', value=GenericRelation(
-                to=AccessControlList, verbose_name=_('ACLs')
-            )
+        StoredPermission = apps.get_model(
+            app_label='permissions', model_name='StoredPermission'
         )
 
-        ModelCopy.add_fields_lazy(model=model, field_names=('acls',))
+        initalize_model_for_events = model not in cls._model_permissions
+        is_excluded_subclass = issubclass(model, (AccessControlList, StoredPermission))
 
-        # Allow the model to be used as the action_object for the ACL events.
-        EventModelRegistry.register(model=model)
+        cls._model_permissions.setdefault(model, set())
+
+        if not is_excluded_subclass:
+            try:
+                cls._model_permissions[model].update(permissions)
+            except TypeError as exception:
+                raise ImproperlyConfigured(
+                    'Make sure the permissions argument to the .register() '
+                    'method is an iterable. Current value: "{}"'.format(
+                        permissions
+                    )
+                ) from exception
+
+        if initalize_model_for_events:
+            # These need to happen only once.
+
+            # Allow the model to be used as the action_object for the ACL
+            # events.
+            EventModelRegistry.register(model=model)
+
+            if not is_excluded_subclass:
+                ModelEventType.register(
+                    event_types=(
+                        event_acl_created, event_acl_deleted, event_acl_edited
+                    ), model=model
+                )
+
+                if bind_link:
+                    menu_list_facet.bind_links(
+                        exclude=exclude, links=(link_acl_list,),
+                        sources=(model,)
+                    )
+
+                model.add_to_class(
+                    name='acls', value=GenericRelation(
+                        to=AccessControlList, verbose_name=_('ACLs')
+                    )
+                )
+
+                ModelCopy.add_fields_lazy(model=model, field_names=('acls',))
 
     @classmethod
     def register_field_query_function(cls, model, function):
         cls._field_query_functions[model] = function
 
     @classmethod
-    def register_inheritance(cls, model, related):
+    def register_inheritance(cls, model, related, fk_field_cast=None):
         model_reverse = get_related_field(
             model=model, related_field_name=related
         ).related_model
@@ -162,7 +191,9 @@ class ModelPermission:
         cls._inheritances_reverse[model_reverse].append(model)
 
         cls._inheritances.setdefault(model, [])
-        cls._inheritances[model].append(related)
+        cls._inheritances[model].append(
+            {'field_name': related, 'fk_field_cast': fk_field_cast}
+        )
 
     @classmethod
     def register_manager(cls, model, manager_name):

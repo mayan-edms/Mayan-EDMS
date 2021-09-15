@@ -1,0 +1,109 @@
+Version 4.0.2
+=============
+
+Released: May 25, 2021
+
+Status: Stable
+
+Changes
+-------
+
+API
+^^^
+
+Some API endpoints that used parent-child resources were not working
+correctly on some use cases when using token authentication, returning error
+404 for valid requests. The API views now ensure that authentication has
+completed before doing initial filtering on the parent resource.
+
+The Django REST framework version was updated from version 3.11.0 to 3.11.2.
+
+
+Cabinets
+^^^^^^^^
+
+A solution for the longstanding issue of cabinet sorting was found. Cabinets
+are a nested model and cannot be sorted properly with Django's queryset
+sorting methods. Native tree sorting was implemented. This requires a rebuild
+of the existing cabinet tree which is accomplished by an included migration.
+
+The django-mptt library was updated from version 0.11.0 to 0.12.0.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+PIP was updated from version 21.0.1 to 21.1.1.
+
+
+Documentation
+^^^^^^^^^^^^^
+
+Several typos in the documentation were fixed. More context was added to some
+upgrade steps.
+
+
+Messaging
+^^^^^^^^^
+
+Support for marking messages as unread was added.
+
+Opening a message will now mark it as read automatically.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+The action dropdown template partial was moved to the navigation app.
+
+Some unused and deprecated markup was removed.
+
+The appearance of disabled action links was fixed.
+
+
+Other
+^^^^^
+
+- Minor source string fixes.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`981` 4.0, version export and messages app
+- :gitlab-issue:`984` Documentation: "Upgrade process 7.Create the user_settings folder inside the media folder"
+- :gitlab-issue:`986` Cabinets are listed in order of creation in drop-down, but in alphabetical order in cabinet view
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

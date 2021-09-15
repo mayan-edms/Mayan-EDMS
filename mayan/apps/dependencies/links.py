@@ -10,8 +10,8 @@ from .icons import (
 from .permissions import permission_dependencies_view
 
 link_check_version = Link(
-    icon=icon_check_version, text=_('Check for updates'),
-    view='dependencies:check_version_view'
+    icon=icon_check_version, permissions=(permission_dependencies_view,),
+    text=_('Check for updates'), view='dependencies:check_version_view'
 )
 link_dependency_group_list = Link(
     icon=icon_dependency_group_list,

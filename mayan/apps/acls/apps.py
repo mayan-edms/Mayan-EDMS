@@ -2,7 +2,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
-from mayan.apps.common.menus import menu_object, menu_secondary, menu_setup
+from mayan.apps.common.menus import (
+    menu_list_facet, menu_object, menu_secondary, menu_setup
+)
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import ObjectLinkWidget
@@ -31,7 +33,7 @@ class ACLsApp(MayanAppConfig):
             model_name='GlobalAccessControlListProxy'
         )
 
-        EventModelRegistry.register(model=AccessControlList, menu=menu_object)
+        EventModelRegistry.register(model=AccessControlList)
 
         ModelCopy(model=AccessControlList).add_fields(
             field_names=(
@@ -65,10 +67,15 @@ class ACLsApp(MayanAppConfig):
             widget=ObjectLinkWidget
         )
 
+        menu_list_facet.bind_links(
+            links=(
+                link_acl_permissions,
+            ), sources=(AccessControlList, GlobalAccessControlListProxy,)
+        )
         menu_object.bind_links(
             links=(
-                link_acl_permissions, link_acl_delete
-            ), sources=(AccessControlList, GlobalAccessControlListProxy)
+                link_acl_delete,
+            ), sources=(AccessControlList, GlobalAccessControlListProxy,)
         )
         menu_secondary.bind_links(
             links=(link_acl_create,), sources=('acls:acl_list',)

@@ -14,6 +14,8 @@ from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event
+from mayan.apps.storage.compressed_files import Archive
+from mayan.apps.storage.exceptions import NoMIMETypeMatch
 
 from ..events import (
     event_document_created, event_document_edited,
@@ -26,8 +28,8 @@ from ..literals import (
     IMAGE_ERROR_NO_ACTIVE_VERSION
 )
 from ..managers import (
-    DocumentManager, RecentlyCreatedDocumentManager, TrashCanManager,
-    ValidDocumentManager
+    DocumentManager, TrashCanManager, ValidDocumentManager,
+    ValidRecentlyCreatedDocumentManager
 )
 from ..signals import signal_post_document_type_change
 
@@ -76,8 +78,7 @@ class Document(
     )
     datetime_created = models.DateTimeField(
         auto_now_add=True, db_index=True, help_text=_(
-            'The server date and time when the document was finally '
-            'processed and created in the system.'
+            'The date and time of the document creation.'
         ), verbose_name=_('Created')
     )
     language = models.CharField(
@@ -136,7 +137,7 @@ class Document(
         RecentlyAccessedDocument = apps.get_model(
             app_label='documents', model_name='RecentlyAccessedDocument'
         )
-        return RecentlyAccessedDocument.objects.add_document_for_user(
+        return RecentlyAccessedDocument.valid.add_document_for_user(
             document=self, user=user
         )
 
@@ -149,7 +150,7 @@ class Document(
             self.trashed_date_time = now()
             with transaction.atomic():
                 self._event_ignore = True
-                self.save()
+                self.save(update_fields=('in_trash', 'trashed_date_time'))
 
             event_document_trashed.commit(actor=user, target=self)
         else:
@@ -168,18 +169,21 @@ class Document(
 
         if has_changed or force:
             self.document_type = document_type
+
             with transaction.atomic():
                 self._event_ignore = True
-                self.save()
-                signal_post_document_type_change.send(
-                    sender=self.__class__, instance=self
-                )
+                self.save(update_fields=('document_type',))
 
-                event_document_type_changed.commit(
-                    action_object=document_type, actor=_user, target=self
-                )
                 if _user:
                     self.add_as_recent_document_for_user(user=_user)
+
+            signal_post_document_type_change.send(
+                sender=self.__class__, instance=self
+            )
+
+            event_document_type_changed.commit(
+                action_object=document_type, actor=_user, target=self
+            )
 
     @property
     def file_latest(self):
@@ -187,7 +191,7 @@ class Document(
 
     def file_new(
         self, file_object, action=None, comment=None, filename=None,
-        _user=None
+        expand=False, _user=None
     ):
         logger.info('Creating new document file for document: %s', self)
 
@@ -200,6 +204,31 @@ class Document(
         DocumentFile = apps.get_model(
             app_label='documents', model_name='DocumentFile'
         )
+
+        if expand:
+            try:
+                compressed_file = Archive.open(file_object=file_object)
+                for compressed_file_member in compressed_file.members():
+                    with compressed_file.open_member(filename=compressed_file_member) as compressed_file_member_file_object:
+                        # Recursive call to expand nested compressed files
+                        # expand=True literal for recursive nested files.
+                        # Might cause problem with office files inside a
+                        # compressed file.
+                        # Don't use keyword arguments for Path to allow
+                        # partials.
+                        self.file_new(
+                            action=action, comment=comment, expand=False,
+                            file_object=compressed_file_member_file_object,
+                            filename=Path(compressed_file_member).name,
+                            _user=_user
+                        )
+
+                # Avoid executing the expand=False code path.
+                return
+            except NoMIMETypeMatch:
+                logger.debug(msg='No expanding; Exception: NoMIMETypeMatch')
+                # Fall through to same code path as expand=False to avoid
+                # duplicating code.
 
         DocumentVersion = apps.get_model(
             app_label='documents', model_name='DocumentVersion'
@@ -307,7 +336,7 @@ class Document(
         try:
             return self.version_active.pages
         except AttributeError:
-            # Document has no version yet
+            # Document has no version yet.
             DocumentVersionPage = apps.get_model(
                 app_label='documents', model_name='DocumentVersionPage'
             )
@@ -355,7 +384,7 @@ class DocumentSearchResult(Document):
 
 class RecentlyCreatedDocument(Document):
     objects = models.Manager()
-    recently_created = RecentlyCreatedDocumentManager()
+    valid = ValidRecentlyCreatedDocumentManager()
 
     class Meta:
         proxy = True

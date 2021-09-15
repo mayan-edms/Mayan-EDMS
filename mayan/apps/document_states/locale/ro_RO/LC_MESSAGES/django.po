@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -636,19 +636,19 @@ msgstr ""
 msgid "Generate workflow previews"
 msgstr "Generați previzualizări ale fluxului de lucru"
 
-#: queues.py:21
+#: queues.py:22
 msgid "Launch a workflow for a document"
 msgstr "Lansați un flux de lucru pentru un document"
 
-#: queues.py:25
+#: queues.py:26
 msgid "Launch all workflows for a document"
 msgstr "Lansați toate fluxurile de lucru pentru un document"
 
-#: queues.py:30
+#: queues.py:31
 msgid "Launch all workflows for all documents"
 msgstr "Lansați toate fluxurile de lucru pentru toate documentele"
 
-#: queues.py:34
+#: queues.py:35
 msgid "Launch a workflow"
 msgstr "Lansați un flux de lucru"
 
@@ -664,23 +664,23 @@ msgstr ""
 msgid "Primary key of the document type to remove from the workflow."
 msgstr ""
 
-#: serializers.py:160
+#: serializers.py:165
 msgid "Primary key of the destination state to be added."
 msgstr "Cheia primară a stării destinației care urmează să fie adăugată."
 
-#: serializers.py:167
+#: serializers.py:173
 msgid "Primary key of the origin state to be added."
 msgstr "Cheia primară a stării de origine care urmează să fie adăugată."
 
-#: serializers.py:251
+#: serializers.py:259
 msgid "Primary key of the transition to be added."
 msgstr "Cheia primară a tranziției care urmează să fie adăugată."
 
-#: serializers.py:327
+#: serializers.py:339
 msgid "A link to the entire history of this workflow."
 msgstr "O legătură către întreaga istorie a acestui flux de lucru."
 
-#: serializers.py:332
+#: serializers.py:348
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."

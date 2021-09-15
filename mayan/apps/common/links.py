@@ -10,12 +10,11 @@ from .icons import (
 )
 
 
-def object_copy_conditional_disable(context):
+def object_copy_conditional_disable(context, resolved_object):
+    # Hidden import.
     from .classes import ModelCopy
 
-    try:
-        resolved_object = context['resolved_object']
-    except KeyError:
+    if not resolved_object:
         return False
     else:
         try:

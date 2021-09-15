@@ -3,7 +3,6 @@ from django.db.models.signals import post_migrate
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import (
@@ -23,14 +22,14 @@ from mayan.apps.converter.permissions import (
     permission_transformation_delete, permission_transformation_edit,
     permission_transformation_view,
 )
-from mayan.apps.dashboards.dashboards import dashboard_main
+from mayan.apps.dashboards.dashboards import dashboard_administrator
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.file_caching.links import link_cache_partition_purge
 from mayan.apps.file_caching.permissions import permission_cache_partition_purge
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.templating.classes import AJAXTemplate
+from mayan.apps.user_management.dashboards import dashboard_user
 from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .dashboard_widgets import (
@@ -38,6 +37,9 @@ from .dashboard_widgets import (
     DashboardWidgetDocumentsNewThisMonth,
     DashboardWidgetDocumentsPagesNewThisMonth, DashboardWidgetDocumentsTotal,
     DashboardWidgetDocumentsTypesTotal,
+    DashboardWidgetUserRecentlyAccessedDocuments,
+    DashboardWidgetUserRecentlyCreatedDocuments,
+    DashboardWidgetUserFavoriteDocuments
 )
 
 # Documents
@@ -118,9 +120,10 @@ from .links.document_type_links import (
 )
 from .links.document_version_links import (
     link_document_version_active, link_document_version_create,
-    link_document_version_delete, link_document_version_edit,
+    link_document_version_delete_single,
+    link_document_version_delete_multiple, link_document_version_edit,
     link_document_version_export, link_document_version_list,
-    link_document_version_multiple_delete, link_document_version_return_list,
+    link_document_version_return_list,
     link_document_version_return_to_document, link_document_version_preview,
     link_document_version_print_form,
     link_document_version_transformations_clear,
@@ -129,6 +132,7 @@ from .links.document_version_links import (
 )
 from .links.document_version_page_links import (
     link_document_version_page_delete, link_document_version_page_list,
+    link_document_version_page_list_append,
     link_document_version_page_list_remap,
     link_document_version_page_list_reset,
     link_document_version_page_navigation_first,
@@ -145,8 +149,8 @@ from .links.document_version_page_links import (
 )
 from .links.favorite_links import (
     link_document_favorites_add, link_document_favorites_remove,
-    link_document_list_favorites, link_document_multiple_favorites_add,
-    link_document_multiple_favorites_remove
+    link_document_favorites_list, link_document_favorites_add_multiple,
+    link_document_favorites_remove_multiple
 )
 from .links.trashed_document_links import (
     link_document_delete, link_document_list_deleted,
@@ -243,6 +247,9 @@ class DocumentsApp(MayanAppConfig):
         )
         RecentlyAccessedDocument = self.get_model(
             model_name='RecentlyAccessedDocument'
+        )
+        RecentlyAccessedDocumentProxy = self.get_model(
+            model_name='RecentlyAccessedDocumentProxy'
         )
         RecentlyCreatedDocument = self.get_model(
             model_name='RecentlyCreatedDocument'
@@ -389,7 +396,7 @@ class DocumentsApp(MayanAppConfig):
             name='files__encoding'
         )
         ModelFieldRelated(
-            model=Document, label=_('File mime types'),
+            model=Document, label=_('File MIME types'),
             name='files__mimetype'
         )
         ModelFieldRelated(
@@ -422,9 +429,9 @@ class DocumentsApp(MayanAppConfig):
                 permission_document_properties_edit,
                 permission_document_tools,
                 permission_document_trash, permission_document_view,
-                permission_document_version_create, permission_events_view,
+                permission_document_version_create,
                 permission_trashed_document_delete,
-                permission_trashed_document_restore,
+                permission_trashed_document_restore
             )
         )
         ModelPermission.register(
@@ -437,7 +444,7 @@ class DocumentsApp(MayanAppConfig):
                 permission_document_file_print,
                 permission_document_file_tools,
                 permission_document_file_view,
-                permission_events_view, permission_transformation_create,
+                permission_transformation_create,
                 permission_transformation_delete,
                 permission_transformation_edit,
                 permission_transformation_view
@@ -445,10 +452,9 @@ class DocumentsApp(MayanAppConfig):
         )
         ModelPermission.register(
             model=DocumentType, permissions=(
-                permission_document_create, permission_document_type_delete,
-                permission_document_type_edit, permission_document_type_view,
                 permission_acl_edit, permission_acl_view,
-                permission_events_view,
+                permission_document_create, permission_document_type_delete,
+                permission_document_type_edit, permission_document_type_view
             )
         )
         ModelPermission.register(
@@ -460,7 +466,7 @@ class DocumentsApp(MayanAppConfig):
                 permission_document_version_export,
                 permission_document_version_print,
                 permission_document_version_view,
-                permission_events_view, permission_transformation_create,
+                permission_transformation_create,
                 permission_transformation_delete,
                 permission_transformation_edit,
                 permission_transformation_view
@@ -538,8 +544,8 @@ class DocumentsApp(MayanAppConfig):
 
         SourceColumn(
             attribute='get_label', is_object_absolute_url=True,
-            is_identifier=True, is_sortable=True, sort_field='label',
-            source=Document
+            is_identifier=True, is_sortable=True, name='label',
+            sort_field='label', source=Document
         )
         SourceColumn(
             html_extra_classes='text-center document-thumbnail-list',
@@ -549,18 +555,31 @@ class DocumentsApp(MayanAppConfig):
 
         SourceColumn(
             attribute='document_type', include_label=True, is_sortable=True,
-            label=_('Type'), order=-9, source=Document
+            label=_('Type'), name='document_type', order=-9, source=Document
         )
         SourceColumn(
             func=lambda context: context['object'].pages.count(),
             label=_('Pages'), include_label=True, order=-8, source=Document
         )
 
+        # RecentlyAccessedDocument
+
+        SourceColumn(
+            func=lambda context: context['object'].recent.first().datetime_accessed,
+            include_label=True,
+            is_sortable=True,
+            label=_('Access date and time'),
+            name='datetime_accessed',
+            sort_field='recent__datetime_accessed',
+            source=RecentlyAccessedDocumentProxy
+        )
+
         # RecentlyCreatedDocument
 
         SourceColumn(
             attribute='datetime_created', include_label=True,
-            is_sortable=True, source=RecentlyCreatedDocument
+            is_sortable=True, name='datetime_created',
+            source=RecentlyCreatedDocument
         )
 
         # DocumentFile
@@ -674,42 +693,51 @@ class DocumentsApp(MayanAppConfig):
             source=TrashedDocument
         )
 
-        dashboard_main.add_widget(
+        # Dashboards
+
+        dashboard_administrator.add_widget(
             widget=DashboardWidgetDocumentsTotal, order=0
         )
-        dashboard_main.add_widget(
+        dashboard_administrator.add_widget(
             widget=DashboardWidgetDocumentFilePagesTotal, order=1
         )
-        dashboard_main.add_widget(
+        dashboard_administrator.add_widget(
             widget=DashboardWidgetDocumentsInTrash, order=2
         )
-        dashboard_main.add_widget(
+        dashboard_administrator.add_widget(
             widget=DashboardWidgetDocumentsTypesTotal, order=3
         )
-        dashboard_main.add_widget(
+        dashboard_administrator.add_widget(
             widget=DashboardWidgetDocumentsNewThisMonth, order=4
         )
-        dashboard_main.add_widget(
+        dashboard_administrator.add_widget(
             widget=DashboardWidgetDocumentsPagesNewThisMonth, order=5
+        )
+
+        dashboard_user.add_widget(
+            widget=DashboardWidgetUserRecentlyAccessedDocuments, order=1
+        )
+        dashboard_user.add_widget(
+            widget=DashboardWidgetUserRecentlyCreatedDocuments, order=2
+        )
+        dashboard_user.add_widget(
+            widget=DashboardWidgetUserFavoriteDocuments, order=3
         )
 
         menu_documents.bind_links(
             links=(
                 link_document_recently_accessed_list,
-                link_document_recently_created_list, link_document_list_favorites,
+                link_document_recently_created_list, link_document_favorites_list,
                 link_document_list, link_document_list_deleted
             )
         )
 
-        menu_main.bind_links(links=(menu_documents,), position=0)
+        menu_main.bind_links(links=(menu_documents,), position=10)
 
         menu_setup.bind_links(links=(link_document_type_setup,))
 
         # Document
 
-        menu_facet.bind_links(
-            links=(link_acl_list,), sources=(Document,)
-        )
         menu_facet.bind_links(
             links=(link_document_preview,), sources=(Document,), position=0
         )
@@ -732,8 +760,8 @@ class DocumentsApp(MayanAppConfig):
 
         menu_multi_item.bind_links(
             links=(
-                link_document_multiple_favorites_add,
-                link_document_multiple_favorites_remove,
+                link_document_favorites_add_multiple,
+                link_document_favorites_remove_multiple,
                 link_document_multiple_trash,
                 link_document_multiple_type_change
             ), sources=(Document,)
@@ -752,7 +780,7 @@ class DocumentsApp(MayanAppConfig):
         menu_list_facet.bind_links(
             links=(
                 link_document_file_page_list, link_document_file_properties,
-                link_document_file_preview, link_acl_list
+                link_document_file_preview
             ), sources=(DocumentFile,)
         )
         menu_multi_item.bind_links(
@@ -820,7 +848,7 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_type_filename_list,
                 link_document_type_policies,
-                link_document_type_filename_generator, link_acl_list
+                link_document_type_filename_generator
             ), sources=(DocumentType,)
         )
 
@@ -861,13 +889,13 @@ class DocumentsApp(MayanAppConfig):
         menu_list_facet.bind_links(
             links=(
                 link_document_version_page_list,
-                link_document_version_preview, link_acl_list
+                link_document_version_preview
             ),
             sources=(DocumentVersion,)
         )
         menu_multi_item.bind_links(
             links=(
-                link_document_version_multiple_delete,
+                link_document_version_delete_multiple,
                 link_document_version_multiple_transformations_clear,
             ), sources=(DocumentVersion,)
         )
@@ -875,8 +903,9 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_version_active,
                 link_cache_partition_purge,
-                link_document_version_delete, link_document_version_edit,
+                link_document_version_delete_single, link_document_version_edit,
                 link_document_version_export,
+                link_document_version_page_list_append,
                 link_document_version_page_list_remap,
                 link_document_version_page_list_reset,
                 link_document_version_print_form,

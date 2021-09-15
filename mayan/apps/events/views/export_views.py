@@ -73,7 +73,7 @@ class ObjectEventExportView(
         context.update(
             {
                 'object': self.external_object,
-                'title': _('Export events for: %s') % self.external_object,
+                'title': _('Export events of: %s') % self.external_object,
             }
         )
         return context

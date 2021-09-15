@@ -8,6 +8,8 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.views.http import URL
+
 from .layers import layer_decorations, layer_saved_transformations
 
 logger = logging.getLogger(name=__name__)
@@ -30,15 +32,27 @@ class BaseTransformation(metaclass=BaseTransformationType):
 
     @staticmethod
     def combine(transformations):
-        result = None
+        result = hashlib.sha256()
 
-        for transformation in transformations:
-            if not result:
-                result = hashlib.sha256(transformation.cache_hash())
-            else:
-                result.update(transformation.cache_hash())
+        for transformation in transformations or ():
+            result.update(transformation.cache_hash())
 
         return result.hexdigest()
+
+    @staticmethod
+    def list_as_query_string(transformation_instance_list):
+        result = URL()
+
+        for index, transformation in enumerate(transformation_instance_list):
+            result.args['transformation_{}_name'.format(index)] = transformation.name
+
+            for argument in transformation.arguments:
+                value = getattr(transformation, argument)
+                result.args[
+                    'transformation_{}_argument__{}'.format(index, argument)
+                ] = value
+
+        return result.to_string()
 
     @classmethod
     def get(cls, name):
@@ -66,7 +80,7 @@ class BaseTransformation(metaclass=BaseTransformationType):
     def get_transformation_choices(cls, group_by_layer=False, layer=None):
         if layer:
             transformation_list = [
-                (transformation.name, transformation) for transformation in cls._layer_transformations[layer]
+                (transformation.name, transformation) for transformation in cls._layer_transformations.get(layer, ())
             ]
         else:
             transformation_list = cls._registry.items()
@@ -102,8 +116,8 @@ class BaseTransformation(metaclass=BaseTransformationType):
     @classmethod
     def register(cls, layer, transformation):
         cls._registry[transformation.name] = transformation
-        cls._layer_transformations.setdefault(layer, [])
-        cls._layer_transformations[layer].append(transformation)
+        cls._layer_transformations.setdefault(layer, set())
+        cls._layer_transformations[layer].add(transformation)
 
     def __init__(self, **kwargs):
         self.kwargs = {}
@@ -114,7 +128,7 @@ class BaseTransformation(metaclass=BaseTransformationType):
     def cache_hash(self):
         result = hashlib.sha256(force_bytes(s=self.name))
 
-        # Sort arguments for guaranteed repeatability
+        # Sort arguments for guaranteed repeatability.
         for key, value in sorted(self.kwargs.items()):
             result.update(force_bytes(s=key))
             result.update(force_bytes(s=value))
@@ -126,7 +140,7 @@ class BaseTransformation(metaclass=BaseTransformationType):
         self.aspect = 1.0 * image.size[0] / image.size[1]
 
 
-class AssertTransformationMixin:
+class AssetTransformationMixin:
     @classmethod
     def get_arguments(cls):
         arguments = super().get_arguments() + (
@@ -176,10 +190,10 @@ class AssertTransformationMixin:
             if zoom != 100.0:
                 decimal_value = zoom / 100.0
                 image_asset = image_asset.resize(
-                    (
+                    size=(
                         int(image_asset.size[0] * decimal_value),
                         int(image_asset.size[1] * decimal_value)
-                    ), Image.ANTIALIAS
+                    ), resample=Image.ANTIALIAS
                 )
 
             paste_mask = image_asset.getchannel(channel='A').point(
@@ -191,7 +205,7 @@ class AssertTransformationMixin:
             }
 
 
-class TransformationAssetPaste(AssertTransformationMixin, BaseTransformation):
+class TransformationAssetPaste(AssetTransformationMixin, BaseTransformation):
     arguments = ('left', 'top')
     label = _('Paste an asset')
     name = 'paste_asset'
@@ -281,7 +295,7 @@ class TransformationAssetPastePercent(TransformationAssetPaste):
 
 
 class TransformationAssetWatermark(
-    AssertTransformationMixin, BaseTransformation
+    AssetTransformationMixin, BaseTransformation
 ):
     arguments = (
         'left', 'top', 'right', 'bottom', 'horizontal_increment',
@@ -397,12 +411,12 @@ class TransformationCrop(BaseTransformation):
         if bottom > self.image.size[1] - 1:
             bottom = self.image.size[1] - 1
 
-        # Invert right value
+        # Invert right value.
         # Pillow uses left, top, right, bottom to define a viewport
-        # of real coordinates
+        # of real coordinates.
         # We invert the right and bottom to define a viewport
         # that can crop from the right and bottom borders without
-        # having to know the real dimensions of an image
+        # having to know the real dimensions of an image.
         right = self.image.size[0] - right
         bottom = self.image.size[1] - bottom
 
@@ -417,7 +431,7 @@ class TransformationCrop(BaseTransformation):
             bottom
         )
 
-        return self.image.crop((left, top, right, bottom))
+        return self.image.crop(box=(left, top, right, bottom))
 
 
 class TransformationDrawRectangle(BaseTransformation):
@@ -475,12 +489,12 @@ class TransformationDrawRectangle(BaseTransformation):
         if bottom > self.image.size[1] - 1:
             bottom = self.image.size[1] - 1
 
-        # Invert right value
-        # Pillow uses left, top, right, bottom to define a viewport
-        # of real coordinates
+        # Invert right value.
+        # Pillow uses left, top,right, bottom to define a viewport
+        # of real coordinates.
         # We invert the right and bottom to define a viewport
         # that can crop from the right and bottom borders without
-        # having to know the real dimensions of an image
+        # having to know the real dimensions of an image.
         right = self.image.size[0] - right
         bottom = self.image.size[1] - bottom
 
@@ -497,13 +511,13 @@ class TransformationDrawRectangle(BaseTransformation):
 
         fillcolor_value = getattr(self, 'fillcolor', None)
         if fillcolor_value:
-            fill_color = ImageColor.getrgb(fillcolor_value)
+            fill_color = ImageColor.getrgb(color=fillcolor_value)
         else:
             fill_color = 0
 
         outlinecolor_value = getattr(self, 'outlinecolor', None)
         if outlinecolor_value:
-            outline_color = ImageColor.getrgb(outlinecolor_value)
+            outline_color = ImageColor.getrgb(color=outlinecolor_value)
         else:
             outline_color = None
 
@@ -513,10 +527,10 @@ class TransformationDrawRectangle(BaseTransformation):
         else:
             outline_width = 0
 
-        draw = ImageDraw.Draw(self.image)
+        draw = ImageDraw.Draw(image=self.image)
         draw.rectangle(
-            (left, top, right, bottom), fill=fill_color, outline=outline_color,
-            width=outline_width
+            xy=(left, top, right, bottom), fill=fill_color,
+            outline=outline_color, width=outline_width
         )
 
         return self.image
@@ -584,13 +598,13 @@ class TransformationDrawRectanglePercent(BaseTransformation):
 
         fillcolor_value = getattr(self, 'fillcolor', None)
         if fillcolor_value:
-            fill_color = ImageColor.getrgb(fillcolor_value)
+            fill_color = ImageColor.getrgb(color=fillcolor_value)
         else:
             fill_color = 0
 
         outlinecolor_value = getattr(self, 'outlinecolor', None)
         if outlinecolor_value:
-            outline_color = ImageColor.getrgb(outlinecolor_value)
+            outline_color = ImageColor.getrgb(color=outlinecolor_value)
         else:
             outline_color = None
 
@@ -603,19 +617,19 @@ class TransformationDrawRectanglePercent(BaseTransformation):
         left = left / 100.0 * self.image.size[0]
         top = top / 100.0 * self.image.size[1]
 
-        # Invert right value
+        # Invert right value.
         # Pillow uses left, top, right, bottom to define a viewport
-        # of real coordinates
+        # of real coordinates.
         # We invert the right and bottom to define a viewport
         # that can crop from the right and bottom borders without
-        # having to know the real dimensions of an image
+        # having to know the real dimensions of an image.
 
         right = self.image.size[0] - (right / 100.0 * self.image.size[0])
         bottom = self.image.size[1] - (bottom / 100.0 * self.image.size[1])
 
-        draw = ImageDraw.Draw(self.image)
+        draw = ImageDraw.Draw(im=self.image)
         draw.rectangle(
-            (left, top, right, bottom), fill=fill_color, outline=outline_color,
+            xy=(left, top, right, bottom), fill=fill_color, outline=outline_color,
             width=outline_width
         )
 
@@ -630,7 +644,7 @@ class TransformationFlip(BaseTransformation):
     def execute_on(self, *args, **kwargs):
         super().execute_on(*args, **kwargs)
 
-        return self.image.transpose(Image.FLIP_TOP_BOTTOM)
+        return self.image.transpose(method=Image.FLIP_TOP_BOTTOM)
 
 
 class TransformationGaussianBlur(BaseTransformation):
@@ -641,7 +655,9 @@ class TransformationGaussianBlur(BaseTransformation):
     def execute_on(self, *args, **kwargs):
         super().execute_on(*args, **kwargs)
 
-        return self.image.filter(ImageFilter.GaussianBlur(radius=self.radius))
+        return self.image.filter(
+            filter=ImageFilter.GaussianBlur(radius=self.radius)
+        )
 
 
 class TransformationLineArt(BaseTransformation):
@@ -651,7 +667,10 @@ class TransformationLineArt(BaseTransformation):
     def execute_on(self, *args, **kwargs):
         super().execute_on(*args, **kwargs)
 
-        return self.image.convert('L').point(lambda x: 0 if x < 128 else 255, '1')
+        def lut(x):
+            return 0 if x < 128 else 255
+
+        return self.image.convert(mode='L').point(lut=lut, mode='1')
 
 
 class TransformationMirror(BaseTransformation):
@@ -662,7 +681,7 @@ class TransformationMirror(BaseTransformation):
     def execute_on(self, *args, **kwargs):
         super().execute_on(*args, **kwargs)
 
-        return self.image.transpose(Image.FLIP_LEFT_RIGHT)
+        return self.image.transpose(method=Image.FLIP_LEFT_RIGHT)
 
 
 class TransformationResize(BaseTransformation):
@@ -674,7 +693,7 @@ class TransformationResize(BaseTransformation):
         super().execute_on(*args, **kwargs)
 
         width = int(self.width)
-        height = int(self.height or 1.0 * width / self.aspect)
+        height = int(self.height or (1.0 * width / self.aspect))
 
         factor = 1
         while self.image.size[0] / factor > 2 * width and self.image.size[1] * 2 / factor > 2 * height:
@@ -682,12 +701,12 @@ class TransformationResize(BaseTransformation):
 
         if factor > 1:
             self.image.thumbnail(
-                (self.image.size[0] / factor, self.image.size[1] / factor),
-                Image.NEAREST
+                size=(self.image.size[0] / factor, self.image.size[1] / factor),
+                resample=Image.NEAREST
             )
 
-        # Resize the image with best quality algorithm ANTI-ALIAS
-        self.image.thumbnail((width, height), Image.ANTIALIAS)
+        # Resize the image with best quality algorithm ANTIALIAS.
+        self.image.thumbnail(size=(width, height), resample=Image.ANTIALIAS)
 
         return self.image
 
@@ -700,14 +719,18 @@ class TransformationRotate(BaseTransformation):
     def execute_on(self, *args, **kwargs):
         super().execute_on(*args, **kwargs)
 
+        self.degrees = float(self.degrees or '0')
         self.degrees %= 360
 
         if self.degrees == 0:
             return self.image
 
         fillcolor_value = getattr(self, 'fillcolor', None)
+        if fillcolor_value == 'None':
+            fillcolor_value = None
+
         if fillcolor_value:
-            fillcolor = ImageColor.getrgb(fillcolor_value)
+            fillcolor = ImageColor.getrgb(color=fillcolor_value)
         else:
             fillcolor = None
 
@@ -774,15 +797,17 @@ class TransformationZoom(BaseTransformation):
     def execute_on(self, *args, **kwargs):
         super().execute_on(*args, **kwargs)
 
-        if self.percent == 100:
+        percent = float(self.percent or '100')
+
+        if percent == 100:
             return self.image
 
-        decimal_value = float(self.percent) / 100
+        decimal_value = percent / 100
         return self.image.resize(
-            (
+            size=(
                 int(self.image.size[0] * decimal_value),
                 int(self.image.size[1] * decimal_value)
-            ), Image.ANTIALIAS
+            ), resample=Image.ANTIALIAS
         )
 
 

@@ -85,7 +85,7 @@ class DocumentFile(
             'An optional short text describing the document file.'
         ), verbose_name=_('Comment')
     )
-    # File related fields
+    # File related fields.
     file = models.FileField(
         storage=DefinedStorageLazy(name=STORAGE_NAME_DOCUMENT_FILES),
         upload_to=upload_to, verbose_name=_('File')
@@ -181,7 +181,7 @@ class DocumentFile(
     def checksum_update(self, save=True):
         """
         Open a document file's file and update the checksum field using
-        the user provided checksum function
+        the user provided checksum function.
         """
         block_size = setting_hash_block_size.value
         if block_size == 0:
@@ -203,7 +203,7 @@ class DocumentFile(
 
             self.checksum = force_text(s=hash_object.hexdigest())
             if save:
-                self.save()
+                self.save(update_fields=('checksum',))
 
             return self.checksum
 
@@ -216,7 +216,9 @@ class DocumentFile(
         for page in self.pages.all():
             page.delete()
 
-        self.file.storage.delete(name=self.file.name)
+        name = self.file.name
+        self.file.close()
+        self.file.storage.delete(name=name)
         self.cache_partition.delete()
 
         result = super().delete(*args, **kwargs)
@@ -224,7 +226,7 @@ class DocumentFile(
         if self.document.files.count() == 0:
             self.document.is_stub = False
             self.document._event_ignore = True
-            self.document.save()
+            self.document.save(update_fields=('is_stub',))
 
         return result
 
@@ -245,7 +247,10 @@ class DocumentFile(
         be in the document storage. This is a diagnostic flag to help users
         detect if the storage has desynchronized (ie: Amazon's S3).
         """
-        return self.file.storage.exists(self.file.name)
+        name = self.file.name
+        self.file.close()
+
+        return self.file.storage.exists(name=name)
 
     def get_absolute_url(self):
         return reverse(
@@ -254,10 +259,17 @@ class DocumentFile(
             }
         )
 
-    def get_api_image_url(self, *args, **kwargs):
+    def get_api_image_url(
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None
+    ):
         first_page = self.pages.first()
         if first_page:
-            return first_page.get_api_image_url(*args, **kwargs)
+            return first_page.get_api_image_url(
+                maximum_layer_order=maximum_layer_order,
+                transformation_instance_list=transformation_instance_list,
+                user=user
+            )
 
     def get_cache_partitions(self):
         result = [self.cache_partition]
@@ -323,7 +335,7 @@ class DocumentFile(
     def mimetype_update(self, save=True):
         """
         Read a document verions's file and determine the mimetype by calling
-        the get_mimetype wrapper
+        the get_mimetype wrapper.
         """
         if self.exists():
             try:
@@ -336,7 +348,7 @@ class DocumentFile(
                 self.encoding = ''
             finally:
                 if save:
-                    self.save()
+                    self.save(update_fields=('encoding', 'mimetype'))
 
     def natural_key(self):
         return (self.checksum, self.document.natural_key())
@@ -349,12 +361,14 @@ class DocumentFile(
     def open(self, raw=False):
         """
         Return a file descriptor to a document file's file irrespective of
-        the storage backend
+        the storage backend.
         """
+        name = self.file.name
+        self.file.close()
         if raw:
-            return self.file.storage.open(name=self.file.name)
+            return self.file.storage.open(name=name)
         else:
-            file_object = self.file.storage.open(name=self.file.name)
+            file_object = self.file.storage.open(name=name)
 
             result = DocumentFile._execute_hooks(
                 hook_list=DocumentFile._pre_open_hooks,
@@ -366,7 +380,7 @@ class DocumentFile(
             else:
                 return file_object
 
-    def page_count_update(self, save=True):
+    def page_count_update(self, save=True, user=None):
         try:
             with self.open() as file_object:
                 converter = ConverterBase.get_converter_class()(
@@ -388,6 +402,7 @@ class DocumentFile(
                 )
 
             if save:
+                self._event_actor = user
                 self.save()
 
             return detected_pages
@@ -413,31 +428,32 @@ class DocumentFile(
             DocumentFile.execute_pre_create_hooks(
                 kwargs={
                     'document': self.document,
-                    'shared_uploaded_file': None,
+                    'file_object': self.file.open(mode='rb'),
                     'user': user
                 }
             )
 
         try:
-            with transaction.atomic():
-                self.execute_pre_save_hooks()
+            self.execute_pre_save_hooks()
 
-                signal_mayan_pre_save.send(
-                    instance=self, sender=DocumentFile, user=user
+            signal_mayan_pre_save.send(
+                instance=self, sender=DocumentFile, user=user
+            )
+
+            super().save(*args, **kwargs)
+
+            DocumentFile._execute_hooks(
+                hook_list=DocumentFile._post_save_hooks,
+                instance=self
+            )
+
+            if new_document_file:
+                # Only do this for new documents.
+                event_document_file_created.commit(
+                    actor=user, target=self, action_object=self.document
                 )
 
-                super().save(*args, **kwargs)
-
-                DocumentFile._execute_hooks(
-                    hook_list=DocumentFile._post_save_hooks,
-                    instance=self
-                )
-
-                if new_document_file:
-                    # Only do this for new documents
-                    event_document_file_created.commit(
-                        actor=user, target=self, action_object=self.document
-                    )
+                with transaction.atomic():
                     self.checksum_update(save=False)
                     self.mimetype_update(save=False)
                     self._event_actor = user
@@ -454,11 +470,7 @@ class DocumentFile(
                         self.document.label = force_text(s=self.file)
 
                     self.document._event_ignore = True
-                    self.document.save()
-                else:
-                    event_document_file_edited.commit(
-                        actor=user, target=self, action_object=self.document
-                    )
+                    self.document.save(update_fields=('is_stub', 'label'))
         except Exception as exception:
             logger.error(
                 'Error creating new document file for document "%s"; %s',
@@ -475,11 +487,15 @@ class DocumentFile(
                     signal_post_document_created.send(
                         instance=self.document, sender=Document
                     )
+            else:
+                event_document_file_edited.commit(
+                    actor=user, target=self, action_object=self.document
+                )
 
     def save_to_file(self, file_object):
         """
         Save a copy of the document from the document storage backend
-        to the local filesystem
+        to the local filesystem.
         """
         with self.open() as input_file_object:
             shutil.copyfileobj(fsrc=input_file_object, fdst=file_object)
@@ -487,13 +503,15 @@ class DocumentFile(
     @property
     def size(self):
         if self.exists():
-            return self.file.storage.size(self.file.name)
+            name = self.file.name
+            self.file.close()
+            return self.file.storage.size(name=name)
         else:
             return None
 
     @property
     def uuid(self):
-        # Make cache UUID a mix of document UUID, file ID
+        # Make cache UUID a mix of document UUID, file ID.
         return '{}-{}'.format(self.document.uuid, self.pk)
 
 

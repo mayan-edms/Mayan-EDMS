@@ -2,7 +2,7 @@ from collections import Iterable
 import logging
 
 from django.apps import apps
-from django.db.models.signals import post_save, pre_delete
+from django.db.models.signals import m2m_changed, post_save, pre_delete
 from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
@@ -17,8 +17,8 @@ from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
 from .exceptions import DynamicSearchException
 from .literals import (
-    DEFAULT_SCOPE_OPERATOR, DELIMITER, SCOPE_DELIMITER,
-    SCOPE_OPERATOR_CHOICES
+    DEFAULT_SCOPE_ID, DELIMITER, SCOPE_MATCH_ALL, SCOPE_MARKER,
+    SCOPE_OPERATOR_CHOICES, SCOPE_OPERATOR_MARKER, SCOPE_RESULT_MAKER
 )
 from .settings import (
     setting_backend, setting_backend_arguments,
@@ -42,8 +42,27 @@ class SearchBackend:
     def __init__(self, **kwargs):
         self.kwargs = kwargs
 
-    def _search(self, global_and_search, search_model, query_string, user):
+    def _search(self, global_and_search, query, search_model, user):
         raise NotImplementedError
+
+    def cleanup_query(self, query, search_model):
+        search_field_names = [
+            search_field.get_full_name() for search_field in search_model.search_fields
+        ]
+
+        clean_query = {}
+
+        if 'q' in query:
+            value = query['q']
+            if value:
+                clean_query = {key: value for key in search_field_names}
+        else:
+            # Allow only valid search fields for the search model and scoping keys.
+            clean_query = {
+                key: value for key, value in query.items() if key in search_field_names and value
+            }
+
+        return clean_query
 
     def deindex_instance(self, instance):
         raise NotImplementedError
@@ -52,77 +71,22 @@ class SearchBackend:
         raise NotImplementedError
 
     def search(
-        self, search_model, query_string, user, global_and_search=False
+        self, search_model, query, user, global_and_search=False
     ):
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
 
-        # Clean up the query_string
-        # The original query_string is immutable, create a new
-        # mutable copy
-        query_string = query_string.copy()
-        query_string.pop('_match_all', None)
-
-        # Turn scoped query dictionary into a series of unscoped queries.
-        scopes = {}
-        operators = []
-
-        operator_marker = '{}operator'.format(SCOPE_DELIMITER)
-        result_marker = '{}result'.format(SCOPE_DELIMITER)
-        result = '0'
-
-        unscoped_entry = False
-
-        for key, value in query_string.items():
-            # Check if the entry is a special operator key.
-            if key.startswith(operator_marker):
-                scope_sources = list(
-                    key[len(operator_marker) + 1:].split(DELIMITER)
-                )
-
-                operator, result = value.split(DELIMITER)
-
-                operators.append(
-                    {
-                        'scope_sources': scope_sources,
-                        'function': SCOPE_OPERATOR_CHOICES[operator],
-                        'result': result
-                    }
-                )
-            elif key.startswith(result_marker):
-                result = value
-            else:
-                # Detect scope markers. Example: __0 or __10 or __b.
-                if key.startswith(SCOPE_DELIMITER):
-                    # Scoped entry found.
-                    scope_index, unscoped_key = key[len(SCOPE_DELIMITER):].split(DELIMITER, 1)
-                else:
-                    # Non scoped query entries are assigned to scope 0.
-                    scope_index = '0'
-                    unscoped_key = key
-                    unscoped_entry = True
-
-                scopes.setdefault(scope_index, {'query': {}})
-                scopes[scope_index]['query'][unscoped_key] = value
-
-        if unscoped_entry:
-            operators.append(
-                {
-                    'scope_sources': ['0', '0'],
-                    'function': SCOPE_OPERATOR_CHOICES[DEFAULT_SCOPE_OPERATOR],
-                    'result': '0'
-                }
-            )
+        result = self.decode_query(
+            global_and_search=global_and_search, query=query
+        )
 
         # Recursive call to the backend's search using queries as unscoped
         # and then merge then using the corresponding operator.
-        queryset = search_model.model._meta.default_manager.none()
-
         queryset = self.solve_scope(
-            global_and_search=global_and_search, operators=operators,
-            result=result, search_model=search_model, scopes=scopes,
-            user=user
+            operators=result['operators'],
+            result_scope=result['result_scope'], search_model=search_model,
+            scopes=result['scopes'], user=user
         )
 
         if search_model.permission:
@@ -131,43 +95,133 @@ class SearchBackend:
                 user=user
             )
 
-        return queryset
+        return SearchBackend.limit_queryset(queryset=queryset)
 
-    def solve_scope(self, global_and_search, search_model, user, result, scopes, operators):
-        queryset = search_model.model._meta.default_manager.none()
+    def decode_query(self, query, global_and_search=False):
+        # Clean up the query.
+        # The original query is immutable, create a new
+        # mutable copy.
+        query.pop('_match_all', None)
 
-        for operator in operators:
-            if result == operator['result']:
+        # Turn scoped query dictionary into a series of unscoped queries.
+        operators = {}
+        result_scope = DEFAULT_SCOPE_ID
+        scope_match_all = False
+        scopes = {}
 
-                for scope_index in operator['scope_sources']:
-                    try:
-                        query_string = scopes[scope_index]['query']
-                    except KeyError:
-                        raise DynamicSearchException(
-                            'Scope `{}` not found.'.format(scope_index)
-                        )
+        for key, value in query.items():
+            scope_id = DEFAULT_SCOPE_ID
 
-                    results = self._search(
-                        global_and_search=global_and_search,
-                        search_model=search_model, query_string=query_string,
-                        user=user
+            # Check if the entry has a scope marker.
+            if key.startswith(SCOPE_MARKER):
+                # Remove the scope marker.
+                key = key[len(SCOPE_MARKER):]
+
+                if key.startswith(SCOPE_OPERATOR_MARKER):
+                    # Check for operator.
+                    # __operator_SCOPE_SCOPE=OPERATOR_SCOPE
+                    key = key[len(SCOPE_OPERATOR_MARKER):]
+                    operator_scopes = key[len(DELIMITER):].split(DELIMITER)
+                    operator_text, result = value.split(DELIMITER)
+
+                    operators[result] = {
+                        'scopes': operator_scopes,
+                        'function': SCOPE_OPERATOR_CHOICES[operator_text],
+                    }
+                elif key.startswith(SCOPE_RESULT_MAKER):
+                    # Check for result.
+                    # __result=SCOPE
+                    result_scope = value
+                else:
+                    # Check scope match all.
+                    # __SCOPE_match_all
+                    if key.endswith(SCOPE_MATCH_ALL):
+                        scope_id, key = key.split(DELIMITER, 1)
+                        scopes.setdefault(scope_id, {})
+                        scope_match_all = value.upper() == 'TRUE'
+                        scopes[scope_id]['match_all'] = scope_match_all
+                    else:
+                        # Must be a scoped query.
+                        # __SCOPE_QUERY=VALUE
+                        scope_id, key = key.split(DELIMITER, 1)
+                        scopes.setdefault(scope_id, {})
+                        scopes[scope_id].setdefault('match_all', False)
+                        scopes[scope_id].setdefault('query', {})
+
+                        scopes[scope_id]['query'][key] = value
+            else:
+                scopes.setdefault(scope_id, {})
+                scopes[scope_id].setdefault('match_all', scope_match_all)
+                scopes[scope_id].setdefault('query', {})
+                scopes[scope_id]['query'][key] = value
+        else:
+            # If query if empty, create an empty scope 0.
+            scopes.setdefault(DEFAULT_SCOPE_ID, {})
+            scopes[DEFAULT_SCOPE_ID].setdefault('match_all', scope_match_all)
+            scopes[DEFAULT_SCOPE_ID].setdefault('query', {})
+
+        return {
+            'operators': operators, 'result_scope': result_scope,
+            'scopes': scopes
+        }
+
+    def solve_scope(
+        self, search_model, user, result_scope, scopes, operators
+    ):
+        if len(scopes) > 1:
+            ignore_limit = True
+        else:
+            ignore_limit = False
+
+        try:
+            # Try scopes.
+            scope = scopes[result_scope]
+        except KeyError:
+            try:
+                # Try operators.
+                operator = operators[result_scope]
+            except KeyError:
+                raise DynamicSearchException(
+                    'Scope `{}` not found.'.format(result_scope)
+                )
+            else:
+                result = None
+                for scope in operator['scopes']:
+                    queryset = self.solve_scope(
+                        operators=operators, result_scope=scope,
+                        search_model=search_model, scopes=scopes, user=user
                     )
 
-                    if not queryset:
-                        queryset = results
+                    if result is None:
+                        result = queryset
                     else:
-                        queryset = operator['function'](queryset, results)
+                        result = operator['function'](result, queryset)
 
-                return queryset
-
-        raise DynamicSearchException(
-            'Result scope `{}` not found.'.format(result)
-        )
+                return result
+        else:
+            try:
+                query = self.cleanup_query(
+                    query=scope['query'], search_model=search_model
+                )
+            except KeyError:
+                raise DynamicSearchException(
+                    'Scope `{}` does not specify a query.'.format(result_scope)
+                )
+            else:
+                if query:
+                    return self._search(
+                        global_and_search=scope['match_all'],
+                        ignore_limit=ignore_limit, search_model=search_model,
+                        query=query, user=user
+                    )
+                else:
+                    return search_model.model._meta.default_manager.none()
 
 
 class SearchField:
     """
-    Search for terms in fields that directly belong to the parent SearchModel
+    Search for terms in fields that directly belong to the parent
+    SearchModel.
     """
     def __init__(
         self, search_model, field, label=None, transformation_function=None
@@ -215,12 +269,18 @@ class SearchModel(AppsModuleLoaderMixin):
 
     @staticmethod
     def initialize():
-        # Hide a circular import
+        # Hide a circular import.
         from .handlers import (
-            handler_factory_deindex_instance, handler_index_instance
+            handler_factory_deindex_instance, handler_factory_index_instance_m2m,
+            handler_index_instance
         )
 
         for search_model in SearchModel.all():
+            m2m_changed.connect(
+                dispatch_uid='search_handler_index_instance_m2m_{}'.format(search_model),
+                receiver=handler_factory_index_instance_m2m(model=search_model.model),
+                weak=False
+            )
             post_save.connect(
                 dispatch_uid='search_handler_index_instance_{}'.format(search_model),
                 receiver=handler_index_instance,
@@ -233,6 +293,11 @@ class SearchModel(AppsModuleLoaderMixin):
                 weak=False
             )
             for proxy in search_model.proxies:
+                m2m_changed.connect(
+                    dispatch_uid='search_handler_index_instance_m2m_{}'.format(search_model),
+                    receiver=handler_factory_index_instance_m2m(model=proxy),
+                    weak=False
+                )
                 post_save.connect(
                     dispatch_uid='search_handler_index_instance_{}'.format(search_model),
                     receiver=handler_index_instance,
@@ -262,9 +327,12 @@ class SearchModel(AppsModuleLoaderMixin):
         try:
             result = cls._registry[name]
         except KeyError:
-            raise KeyError(_('No search model matching the query'))
-        if not hasattr(result, 'serializer'):
-            result.serializer = import_string(dotted_path=result.serializer_path)
+            raise KeyError(_('Unknown search model `%s`.') % name)
+        else:
+            if not hasattr(result, 'serializer'):
+                result.serializer = import_string(
+                    dotted_path=result.serializer_path
+                )
 
         return result
 
@@ -280,7 +348,8 @@ class SearchModel(AppsModuleLoaderMixin):
 
     def __init__(
         self, app_label, model_name, serializer_path, default=False,
-        label=None, list_mode=None, permission=None, queryset=None
+        label=None, list_mode=None, manager_name=None, permission=None,
+        queryset=None
     ):
         self.default = default
         self._label = label
@@ -292,6 +361,8 @@ class SearchModel(AppsModuleLoaderMixin):
         self.queryset = queryset
         self.search_fields = []
         self.serializer_path = serializer_path
+
+        self.manager_name = manager_name or self.model._meta.default_manager.name
 
         if default:
             for search_class in self.__class__._registry.values():
@@ -330,7 +401,7 @@ class SearchModel(AppsModuleLoaderMixin):
 
     def add_model_field(self, *args, **kwargs):
         """
-        Add a search field that directly belongs to the parent SearchModel
+        Add a search field that directly belongs to the parent SearchModel.
         """
         search_field = SearchField(self, *args, **kwargs)
         self.search_fields.append(search_field)
@@ -346,7 +417,7 @@ class SearchModel(AppsModuleLoaderMixin):
 
     def get_fields_simple_list(self):
         """
-        Returns a list of the fields for the SearchModel
+        Returns a list of the fields for the SearchModel.
         """
         result = []
         for search_field in self.search_fields:
@@ -363,7 +434,7 @@ class SearchModel(AppsModuleLoaderMixin):
         if self.queryset:
             return self.queryset()
         else:
-            return self.model.objects.all()
+            return self.model._meta.managers_map[self.manager_name].all()
 
     def get_search_field(self, full_name):
         try:
@@ -417,11 +488,11 @@ class SearchModel(AppsModuleLoaderMixin):
                     if value == [None]:
                         value = None
                     else:
-                        value = ''.join(value)
+                        value = ' '.join(value)
                 except TypeError:
-                    """Value is not a list"""
+                    """Value is not a list."""
             except ResolverPipelineError:
-                """Not fatal"""
+                """Not fatal."""
             else:
                 result[field] = field_map[field].get(
                     'transformation', SearchModel.function_return_same

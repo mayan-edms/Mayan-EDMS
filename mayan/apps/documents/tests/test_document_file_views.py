@@ -8,7 +8,6 @@ from mayan.apps.file_caching.events import event_cache_partition_purged
 from mayan.apps.file_caching.models import CachePartitionFile
 from mayan.apps.file_caching.permissions import permission_cache_partition_purge
 from mayan.apps.file_caching.tests.mixins import CachePartitionViewTestMixin
-from mayan.apps.testing.tests.mixins import ContentTypeTestCaseMixin
 
 from ..events import (
     event_document_file_deleted, event_document_file_downloaded,
@@ -651,8 +650,7 @@ class DocumentFileTransformationViewTestCase(
 
 
 class DocumentFileCachePurgeViewTestCase(
-    CachePartitionViewTestMixin, ContentTypeTestCaseMixin,
-    GenericDocumentViewTestCase
+    CachePartitionViewTestMixin, GenericDocumentViewTestCase
 ):
     def test_document_file_cache_purge_no_permission(self):
         self.test_object = self.test_document_file

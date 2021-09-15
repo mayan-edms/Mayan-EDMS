@@ -226,7 +226,7 @@ class CachePartition(models.Model):
         lock_name = self.get_file_lock_name(filename=filename)
         try:
             logger.debug('trying to acquire lock: %s', lock_name)
-            lock = LockingBackend.get_instance().acquire_lock(name=lock_name)
+            lock = LockingBackend.get_backend().acquire_lock(name=lock_name)
             logger.debug('acquired lock: %s', lock_name)
             try:
                 self.cache.prune()
@@ -270,6 +270,16 @@ class CachePartition(models.Model):
             logger.debug('unable to obtain lock: %s' % lock_name)
             raise
 
+    def __str__(self):
+        return '{} ({})'.format(self.cache, self.name)
+
+    def get_absolute_url(self):
+        return reverse(
+            viewname='file_caching:cache_partition_detail', kwargs={
+                'cache_partition_id': self.pk
+            }
+        )
+
     def delete(self, *args, **kwargs):
         self.purge()
         return super().delete(*args, **kwargs)
@@ -286,6 +296,22 @@ class CachePartition(models.Model):
         return CachePartition.get_combined_filename(
             parent=self.name, filename=filename
         )
+
+    def get_total_size(self):
+        """
+        Return the actual usage of the cache partition.
+        """
+        return self.files.aggregate(
+            file_size__sum=Sum('file_size')
+        )['file_size__sum'] or 0
+
+    def get_total_size_display(self):
+        return filesizeformat(bytes_=self.get_total_size())
+
+    get_total_size_display.short_description = _('Current size')
+    get_total_size_display.help_text = _(
+        'Current size of the cache partition.'
+    )
 
     @method_event(
         event=event_cache_partition_purged,
@@ -352,7 +378,7 @@ class CachePartitionFile(models.Model):
         self.file_size = self.partition.cache.storage.size(
             name=self.full_filename
         )
-        self.save()
+        self.save(update_fields=('file_size',))
         if self.file_size > self.partition.cache.maximum_size:
             raise FileCachingException(
                 'Cache partition file %s is bigger than the maximum cache '
@@ -384,7 +410,7 @@ class CachePartitionFile(models.Model):
         lock_name = self._lock_manager_get_lock_name()
         try:
             logger.debug('trying to acquire lock: %s', lock_name)
-            self._lock = LockingBackend.get_instance().acquire_lock(name=lock_name)
+            self._lock = LockingBackend.get_backend().acquire_lock(name=lock_name)
             CachePartitionFile.objects.filter(pk=self.pk).update(hits=F('hits') + 1)
             logger.debug('acquired lock: %s', lock_name)
             self._storage_object = None

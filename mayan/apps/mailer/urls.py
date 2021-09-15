@@ -1,29 +1,79 @@
 from django.conf.urls import url
 
-from .views import (
-    MailDocumentLinkView, MailDocumentView, UserMailerBackendSelectionView,
-    UserMailingCreateView, UserMailingDeleteView, UserMailingEditView,
-    UserMailerTestView, UserMailerListView
+from .views.document_views import MailDocumentLinkView
+from .views.document_file_views import (
+    MailDocumentFileLinkView, MailDocumentFileAttachmentView
+)
+from .views.document_version_views import (
+    MailDocumentVersionLinkView, MailDocumentVersionAttachmentView
+)
+from .views.mailing_profile_views import (
+    UserMailerBackendSelectionView, UserMailingCreateView,
+    UserMailingDeleteView, UserMailingEditView, UserMailerTestView,
+    UserMailerListView
 )
 
-urlpatterns = [
+
+urlpatterns_document = [
     url(
         regex=r'^documents/(?P<document_id>\d+)/send/link/$',
-        name='send_document_link', view=MailDocumentLinkView.as_view()
-    ),
-    url(
-        regex=r'^documents/multiple/send/link/$',
-        name='send_multiple_document_link',
+        name='send_document_link_single',
         view=MailDocumentLinkView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_id>\d+)/send/document/$',
-        name='send_document', view=MailDocumentView.as_view()
+        regex=r'^documents/multiple/send/link/$',
+        name='send_document_link_multiple',
+        view=MailDocumentLinkView.as_view()
+    )
+]
+
+urlpatterns_document_file = [
+    url(
+        regex=r'^documents/files/(?P<document_file_id>\d+)/send/attachment/$',
+        name='send_document_file_attachment_single',
+        view=MailDocumentFileAttachmentView.as_view()
     ),
     url(
-        regex=r'^documents/multiple/send/document/$',
-        name='send_multiple_document', view=MailDocumentView.as_view()
+        regex=r'^documents/files/multiple/send/attachment/$',
+        name='send_document_file_attachment_multiple',
+        view=MailDocumentFileAttachmentView.as_view()
     ),
+    url(
+        regex=r'^documents/files/(?P<document_file_id>\d+)/send/link/$',
+        name='send_document_file_link_single',
+        view=MailDocumentFileLinkView.as_view()
+    ),
+    url(
+        regex=r'^documents/files/multiple/send/link/$',
+        name='send_document_file_link_multiple',
+        view=MailDocumentFileLinkView.as_view()
+    )
+]
+
+urlpatterns_document_version = [
+    url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/send/attachment/$',
+        name='send_document_version_attachment_single',
+        view=MailDocumentVersionAttachmentView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/multiple/send/attachment/$',
+        name='send_document_version_attachment_multiple',
+        view=MailDocumentVersionAttachmentView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/send/link/$',
+        name='send_document_version_link_single',
+        view=MailDocumentVersionLinkView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/multiple/send/link/$',
+        name='send_document_version_link_multiple',
+        view=MailDocumentVersionLinkView.as_view()
+    )
+]
+
+urlpatterns_user_mailers = [
     url(
         regex=r'^user_mailers/backend/selection/$',
         name='user_mailer_backend_selection',
@@ -50,3 +100,9 @@ urlpatterns = [
         view=UserMailerListView.as_view()
     )
 ]
+
+urlpatterns = []
+urlpatterns.extend(urlpatterns_document)
+urlpatterns.extend(urlpatterns_document_file)
+urlpatterns.extend(urlpatterns_document_version)
+urlpatterns.extend(urlpatterns_user_mailers)

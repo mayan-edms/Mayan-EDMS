@@ -13,7 +13,7 @@ class DashboardWidgetRoleTotal(DashboardWidgetNumeric):
     label = _('Total roles')
     link = reverse_lazy(viewname='permissions:role_list')
 
-    def render(self, request):
+    def get_count(self):
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
@@ -21,8 +21,7 @@ class DashboardWidgetRoleTotal(DashboardWidgetNumeric):
             app_label='permissions', model_name='Role'
         )
 
-        self.count = AccessControlList.objects.restrict_queryset(
-            permission=permission_role_view, user=request.user,
+        return AccessControlList.objects.restrict_queryset(
+            permission=permission_role_view, user=self.request.user,
             queryset=Role.objects.all()
         ).count()
-        return super().render(request)

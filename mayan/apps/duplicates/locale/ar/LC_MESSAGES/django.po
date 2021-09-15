@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -41,7 +41,7 @@ msgstr ""
 msgid "Exact document label"
 msgstr ""
 
-#: links.py:18 models.py:41 views.py:77
+#: links.py:18 models.py:41 views.py:73
 msgid "Duplicated documents"
 msgstr "الوثائق المكررة"
 
@@ -77,20 +77,20 @@ msgstr "تنظيف القوائم المكررة الفارغة"
 msgid "Scan document duplicates"
 msgstr "مسح تكرارات المستند"
 
-#: views.py:36
+#: views.py:32
 msgid "Only exact copies of this document will be shown in the this list."
 msgstr "سيتم عرض النسخ الدقيقة فقط من هذا المستند في هذه القائمة."
 
-#: views.py:40
+#: views.py:36
 msgid "There are no duplicates for this document"
 msgstr "لا توجد تكرارات لهذه الوثيقة"
 
-#: views.py:44
+#: views.py:40
 #, python-format
 msgid "Duplicates for document: %s"
 msgstr "التكرارات للوثيقة: %s"
 
-#: views.py:68
+#: views.py:64
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
 "the last byte. Files that have the same text or OCR but are not identical or"
@@ -100,14 +100,14 @@ msgstr ""
 "الأخير. لن تظهر الملفات التي لها نفس النص أو OCR ولكنها ليست متطابقة أو تم "
 "حفظها باستخدام تنسيق ملف مختلف على أنها مكررة."
 
-#: views.py:75
+#: views.py:71
 msgid "There are no duplicated documents"
 msgstr "لا توجد وثائق مكررة"
 
-#: views.py:85
+#: views.py:81
 msgid "Scan for duplicated documents?"
 msgstr "المسح الضوئي للوثائق المكررة؟"
 
-#: views.py:92
+#: views.py:88
 msgid "Duplicated document scan queued successfully."
 msgstr "تم وضع مسح ضوئي للمستند المكرر في قائمة الانتظار بنجاح."

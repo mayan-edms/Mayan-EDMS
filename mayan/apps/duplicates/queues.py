@@ -2,11 +2,11 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.queues import queue_tools
 from mayan.apps.task_manager.classes import CeleryQueue
-from mayan.apps.task_manager.workers import worker_c
+from mayan.apps.task_manager.workers import worker_b
 
 
 queue_duplicates = CeleryQueue(
-    label=_('Duplicates'), name='duplicates', worker=worker_c
+    label=_('Duplicates'), name='duplicates', worker=worker_b
 )
 
 queue_duplicates.add_task_type(

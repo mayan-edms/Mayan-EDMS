@@ -218,7 +218,9 @@ Archive.register(
     archive_classes=(TarArchive,), mime_types=('application/gzip',)
 )
 Archive.register(
-    archive_classes=(TarArchive,), mime_types=('application/x-bzip2',)
+    archive_classes=(TarArchive,), mime_types=(
+        'application/x-bzip', 'application/x-bzip2'
+    )
 )
 Archive.register(
     archive_classes=(ZipArchive,), mime_types=('application/zip',)

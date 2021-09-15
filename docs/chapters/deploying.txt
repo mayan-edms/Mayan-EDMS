@@ -31,10 +31,11 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: console
 
-       sudo apt-get install exiftool g++ gcc coreutils ghostscript gnupg1 graphviz \
-       libfuse2 libjpeg-dev libmagic1 libpq-dev libpng-dev libreoffice \
-       libtiff-dev poppler-utils postgresql python3-dev python3-virtualenv \
-       redis-server sane-utils supervisor tesseract-ocr zlib1g-dev -y
+       sudo apt-get install --yes exiftool g++ gcc coreutils ghostscript \
+       gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpq-dev libpng-dev \
+       libreoffice libtiff-dev poppler-utils postgresql python3-dev \
+       python3-venv redis-server sane-utils supervisor tesseract-ocr \
+       zlib1g-dev
 
    .. note::
 
@@ -42,7 +43,7 @@ For another setup that offers more performance and scalability refer to the
 
        .. code-block:: console
 
-           sudo apt-get install libffi-dev libssl-dev -y
+           sudo apt-get install --yes libffi-dev libssl-dev
 
 
 #. Create the user account for the installation:
@@ -62,7 +63,7 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: console
 
-       sudo mkdir /opt
+       sudo mkdir --parent /opt
 
 
 #. Create the Python virtual environment:
@@ -72,7 +73,7 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: console
 
-       sudo virtualenv |MAYAN_INSTALLATION_DIRECTORY| -p /usr/bin/python3
+       sudo python3 -m venv |MAYAN_INSTALLATION_DIRECTORY|
 
 
 #. Make the mayan user the owner of the installation directory:
@@ -199,7 +200,7 @@ For another setup that offers more performance and scalability refer to the
 
    .. code-block:: console
 
-       sudo apt-get remove --purge libjpeg-dev libpq-dev libpng-dev libtiff-dev zlib1g-dev
+       sudo apt-get remove --purge --yes libjpeg-dev libpq-dev libpng-dev libtiff-dev zlib1g-dev
 
 
 .. _deployment_advanced:
@@ -210,7 +211,8 @@ Advanced deployment
 This variation uses RabbitMQ as the message broker. RabbitMQ consumes more
 memory but scales to thousands of messages per second. RabbitMQ messages are also
 persistent by default, this means that pending tasks are not lost in the case
-of a restart or power failure. The Gunicorn workers are increased to 3.
+of a restart or power failure. The Gunicorn workers are increased as well as
+the concurrency of the task workers.
 
 
 #. Install RabbitMQ:
@@ -220,7 +222,7 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
 
    .. code-block:: console
 
-       sudo apt-get install rabbitmq-server -y
+       sudo apt-get install --yes rabbitmq-server
 
 
 #. Install the Python client for RabbitMQ:
@@ -239,31 +241,34 @@ of a restart or power failure. The Gunicorn workers are increased to 3.
        sudo rabbitmqctl set_permissions -p |DEFAULT_RABBITMQ_VHOST| |DEFAULT_RABBITMQ_USER| ".*" ".*" ".*"
 
 
-#. Edit the config file at ``|MAYAN_MEDIA_ROOT|/config.yml``:
+#. Edit the config file at ``|MAYAN_MEDIA_ROOT|config.yml``:
 
    Replace:
 
    .. code-block:: ini
 
-       MAYAN_CELERY_BROKER_URL="redis://..."
+       CELERY_BROKER_URL="..."
 
    with:
 
    .. code-block:: ini
 
-       MAYAN_CELERY_BROKER_URL="amqp://|DEFAULT_RABBITMQ_USER|:|DEFAULT_RABBITMQ_PASSWORD|@127.0.0.1:5672/|DEFAULT_RABBITMQ_VHOST|"
+       CELERY_BROKER_URL="amqp://|DEFAULT_RABBITMQ_USER|:|DEFAULT_RABBITMQ_PASSWORD|@127.0.0.1:5672/|DEFAULT_RABBITMQ_VHOST|"
+
+   .. note::
+
+       Only replace the ``CELERY_BROKER_URL`` setting to use RabbitMQ,
+       the ``CELERY_RESULT_BACKEND`` setting should remain unchanged.
 
 
-#. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|``:
-
-   Increase the number of Gunicorn workers to 2-4 times the number of CPU cores. Changing the ``-w 3`` argument:
+#. Increase the number of Gunicorn workers. Use 2 to 4 times the number of CPU cores. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|`` and change only the ``-w`` argument. Example for 3 workers:
 
    .. code-block:: ini
 
-       command = |MAYAN_GUNICORN_BIN| -w 3 mayan.wsgi --max-requests 1000 --max-requests-jitter 50 --worker-class gevent --bind 0.0.0.0:8000 --timeout 120
+       command = |MAYAN_GUNICORN_BIN| ... -w 3 ...
 
 
-#. Remove (or increase) the concurrency limit of the workers (remove or edit ``--concurrency=1``). Change one worker at a time, restart, and profile with your workload.
+#. Remove (or increase) the concurrency limit of the workers. Edit the supervisor file at ``|MAYAN_SUPERVISOR_CONF|`` and edit or remove the argument ``--concurrency=1``. Change one worker at a time, restart, and profile with your workload.
 
 
 #. Restart the services:

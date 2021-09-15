@@ -18,9 +18,7 @@ TEST_COMMAND = ./manage.py test $(MODULE) --settings=$(SETTINGS) $(SKIPMIGRATION
 TEST_MYSQL_CONTAINER_NAME = mayan-test-mysql
 TEST_ORACLE_CONTAINER_NAME = mayan-test-oracle
 TEST_POSTGRESQL_CONTAINER_NAME = mayan-test-postgresql
-
-STAGING_POSTGRESQL_CONTAINER_NAME = mayan-staging-postgresql
-STAGING_REDIS_CONTAINER_NAME = mayan-staging-postgresql
+TEST_REDIS_CONTAINER_NAME = mayan-staging-redis
 
 .PHONY: clean clean-pyc clean-build test
 
@@ -34,15 +32,15 @@ clean: ## Remove Python and build artifacts.
 clean: clean-build clean-pyc
 
 clean-build: ## Remove build artifacts.
-	rm -fr build/
-	rm -fr dist/
-	rm -fr *.egg-info
+	rm --force --recursive build/
+	rm --force --recursive dist/
+	rm --force --recursive *.egg-info
 
 clean-pyc: ## Remove Python artifacts.
-	find . -name '*.pyc' -exec rm -f {} +
-	find . -name '*.pyo' -exec rm -f {} +
-	find . -name '*~' -exec rm -f {} +
-	find . -name '__pycache__' -exec rm -R -f {} +
+	find . -name '*.pyc' -exec rm --force {} +
+	find . -name '*.pyo' -exec rm --force {} +
+	find . -name '*~' -exec rm --force {} +
+	find . -name '__pycache__' -exec rm --force --recursive {} +
 
 # Testing
 
@@ -71,54 +69,58 @@ test-all-migrations: clean-pyc _test-command
 test-with-mysql: ## MODULE=<python module name> - Run tests for a single app, module or test class against a MySQL database container.
 test-with-mysql:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test $(MODULE) --settings=mayan.settings.testing --skip-migrations
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.development --skip-migrations
 
 test-all-with-mysql: ## Run all tests against a MySQL database container.
 test-all-with-mysql:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing --skip-migrations
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --skip-migrations
 
 test-all-migrations-with-mysql: ## Run all migration tests against a MySQL database container.
 test-all-migrations-with-mysql:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing --no-exclude --tag=migration
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration
 
 test-with-oracle: ## MODULE=<python module name> - Run tests for a single app, module or test class against an Oracle database container.
 test-with-oracle:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.oracle','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test $(MODULE) --settings=mayan.settings.testing --skip-migrations
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.development --skip-migrations
 
 test-all-with-oracle: ## Run all tests against an Oracle database container.
 test-all-with-oracle:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.oracle','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing --skip-migrations
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --skip-migrations
 
 test-all-migrations-with-oracle: ## Run all migration tests against an Oracle database container.
 test-all-migrations-with-oracle:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.oracle','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing --no-exclude --tag=migration
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration
 
 test-with-postgresql: ## MODULE=<python module name> - Run tests for a single app, module or test class against a PostgreSQL database container.
 test-with-postgresql:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test $(MODULE) --settings=mayan.settings.testing --skip-migrations
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.development --skip-migrations
 
 test-all-with-postgresql: ## Run all tests against a PostgreSQL database container.
 test-all-with-postgresql:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing --skip-migrations
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --skip-migrations
 
 test-all-migrations-with-postgresql: ## Run all migration tests against a PostgreSQL database container.
 test-all-migrations-with-postgresql:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing --no-exclude --tag=migration
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration
+
+gitlab-ci-update: ## Update the GitLab CI file from the platform template.
+gitlab-ci-update: copy-config-env
+	./manage.py platformtemplate gitlab-ci > .gitlab-ci.yml
 
 gitlab-ci-run: ## Execute a GitLab CI job locally
 gitlab-ci-run:
 	if [ -z $(GITLAB_CI_JOB) ]; then echo "Specify the job to execute using GITLAB_CI_JOB."; exit 1; fi; \
 	docker rm --force gitlab-runner || true
-	docker run --detach --name gitlab-runner --restart no -v $$PWD:$$PWD -v /var/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner:latest
-	docker exec -it -w $$PWD gitlab-runner gitlab-runner exec docker --docker-privileged --docker-volumes /var/run/docker.sock:/var/run/docker.sock --docker-volumes $$PWD/gitlab-ci-volume:/builds $(GITLAB_CI_JOB)
+	docker run --detach --name gitlab-runner --restart no --volume $$PWD:$$PWD --volume /var/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner:latest
+	docker exec --interactive --tty --workdir $$PWD gitlab-runner gitlab-runner exec docker --docker-privileged --docker-volumes /var/run/docker.sock:/var/run/docker.sock --docker-volumes $$PWD/gitlab-ci-volume:/builds $(GITLAB_CI_JOB)
 	docker rm --force gitlab-runner || true
 
 # Coverage
@@ -133,7 +135,7 @@ coverage-html:
 
 # Documentation
 
-docs-html: ## Run the html documentation target.
+docs-html: ## Run the html documentation target. Use optional FILENAMES to specific which files to build.
 	cd docs;make html
 
 docs-serve: ## Run the livehtml documentation generator.
@@ -184,7 +186,7 @@ increase-version: ## Increase the version number of the entire project's files.
 python-test-release: ## Package (sdist and wheel) and upload to the PyPI test server.
 python-test-release: clean wheel
 	twine upload dist/* -r testpypi
-	@echo "Test with: pip install -i https://testpypi.python.org/pypi mayan-edms"
+	@echo "Test with: pip install --index-url https://testpypi.python.org/pypi mayan-edms"
 
 python-release: ## Package (sdist and wheel) and upload a release.
 python-release: clean python-wheel
@@ -201,75 +203,75 @@ python-wheel: clean python-sdist
 	ls -l dist
 
 python-release-test-via-docker-ubuntu: ## Package (sdist and wheel) and upload to the PyPI test server using an Ubuntu Docker builder.
-	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/bash -c "\
+	docker run --rm --name mayan_release --volume $(HOME):/host_home:ro --volume `pwd`:/host_source --workdir /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/sh -c "\
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
 	locale-gen en_US.UTF-8 && \
 	update-locale LANG=en_US.UTF-8 && \
 	export LC_ALL=en_US.UTF-8 && \
-	cp -r /host_source/* . && \
+	cp --recursive /host_source/* . && \
 	apt-get update && \
-	apt-get install make python-pip -y && \
-	pip install -r requirements/build.txt && \
-	cp -r /host_home/.pypirc ~/.pypirc && \
+	apt-get install make python-pip --yes && \
+	pip install --requirement requirements/build.txt && \
+	cp --recursive /host_home/.pypirc ~/.pypirc && \
 	make test-release"
 
 python-release-via-docker-ubuntu: ## Package (sdist and wheel) and upload to PyPI using an Ubuntu Docker builder.
-	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/bash -c "\
+	docker run --rm --name mayan_release --volume $(HOME):/host_home:ro --volume `pwd`:/host_source --workdir /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/sh -c "\
 	apt-get update && \
-	apt-get -y install locales && \
+	apt-get install --yes locales && \
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
 	locale-gen en_US.UTF-8 && \
 	update-locale LANG=en_US.UTF-8 && \
 	export LC_ALL=en_US.UTF-8 && \
-	cp -r /host_source/* . && \
-	apt-get install make python-pip -y && \
-	pip install -r requirements/build.txt && \
-	cp -r /host_home/.pypirc ~/.pypirc && \
+	cp --recursive /host_source/* . && \
+	apt-get install make python-pip --yes && \
+	pip install --requirement requirements/build.txt && \
+	cp --recursive /host_home/.pypirc ~/.pypirc && \
 	make release"
 
 test-sdist-via-docker-ubuntu: ## Make an sdist package and test it using an Ubuntu Docker container.
-	docker run --rm --name mayan_sdist_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/bash -c "\
-	cp -r /host_source/* . && \
+	docker run --rm --name mayan_sdist_test --volume $(HOME):/host_home:ro --volume `pwd`:/host_source --workdir /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/sh -c "\
+	cp --recursive /host_source/* . && \
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
 	locale-gen en_US.UTF-8 && \
 	update-locale LANG=en_US.UTF-8 && \
 	export LC_ALL=en_US.UTF-8 && \
 	apt-get update && \
-	apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && \
-	pip install -r requirements/development.txt && \
-        pip install -r requirements/testing.txt && \
+	apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils --yes && \
+	pip install --requirement requirements/development.txt && \
+	pip install --requirement requirements/testing.txt && \
 	make sdist-test-suit \
 	"
 
 test-wheel-via-docker-ubuntu: ## Make a wheel package and test it using an Ubuntu Docker container.
-	docker run --rm --name mayan_wheel_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/bash -c "\
-	cp -r /host_source/* . && \
+	docker run --rm --name mayan_wheel_test --volume $(HOME):/host_home:ro --volume `pwd`:/host_source --workdir /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/sh -c "\
+	cp --recursive /host_source/* . && \
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
 	locale-gen en_US.UTF-8 && \
 	update-locale LANG=en_US.UTF-8 && \
 	export LC_ALL=en_US.UTF-8 && \
 	apt-get update && \
-	apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && \
-	pip install -r requirements/development.txt && \
-        pip install -r requirements/testing.txt && \
+	apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils --yes && \
+	pip install --requirement requirements/development.txt && \
+	pip install --requirement requirements/testing.txt && \
 	make wheel-test-suit \
 	"
 
 python-sdist-test-suit: ## Run the test suit from a built sdist package
 python-sdist-test-suit: python-sdist
-	rm -f -R _virtualenv
+	rm --force --recursive _virtualenv
 	virtualenv _virtualenv
 	sh -c '\
 	. _virtualenv/bin/activate; \
 	pip install `ls dist/*.gz`; \
 	_virtualenv/bin/mayan-edms.py initialsetup; \
-        pip install -r requirements/testing.txt; \
+	pip install --requirement requirements/testing.txt; \
 	_virtualenv/bin/mayan-edms.py test --mayan-apps \
 	'
 
 python-wheel-test-suit: ## Run the test suit from a built wheel package
 python-wheel-test-suit: wheel
-	rm -f -R _virtualenv
+	rm --force --recursive _virtualenv
 	virtualenv _virtualenv
 	sh -c '\
 	. _virtualenv/bin/activate; \
@@ -313,7 +315,7 @@ gitlab-release-python-major:
 	git push
 	git push --tags
 	git push origin :releases/python_major || true
-	git push origin HEAD:releases/python
+	git push origin HEAD:releases/python_major
 
 gitlab-release-all-major: ## Trigger the Python package, Docker image, and documentation build and publication using GitLab CI
 gitlab-release-all-major:
@@ -365,18 +367,17 @@ manage-with-postgresql: ## Run the development server using a Docker PostgreSQL 
 runserver: ## Run the development server.
 	./manage.py runserver --settings=mayan.settings.development $(ADDRPORT)
 
-runserver_plus: ## Run the Django extension's development server.
+runserver-plus: ## Run the Django extension's development server.
 	./manage.py runserver_plus --settings=mayan.settings.development $(ADDRPORT)
 
-shell_plus: ## Run the shell_plus command.
+shell-plus: ## Run the shell_plus command.
 	./manage.py shell_plus --settings=mayan.settings.development
 
 # Test database containers
 
-docker-mysql-start: ## Launch and initialize a MySQL Docker container.
-	@docker run --detach --name $(TEST_MYSQL_CONTAINER_NAME) -p 3306:3306 -e MYSQL_ROOT_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) -e MYSQL_USER=$(DEFAULT_DATABASE_USER) -e MYSQL_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) -e MYSQL_DATABASE=$(DEFAULT_DATABASE_NAME) -v $(TEST_MYSQL_CONTAINER_NAME):/var/lib/mysql $(DOCKER_MYSQL_IMAGE_VERSION) --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+docker-mysql-start: ## Start a MySQL Docker container.
+	@docker run --detach --name $(TEST_MYSQL_CONTAINER_NAME) --publish 3306:3306 --env MYSQL_ALLOW_EMPTY_PASSWORD="yes" --env MYSQL_USER=$(DEFAULT_DATABASE_USER) --env MYSQL_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) --env MYSQL_DATABASE=$(DEFAULT_DATABASE_NAME) --volume $(TEST_MYSQL_CONTAINER_NAME):/var/lib/mysql $(DOCKER_MYSQL_IMAGE_VERSION) --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 	@while ! mysql -h 127.0.0.1 --user=$(DEFAULT_DATABASE_USER) --password=$(DEFAULT_DATABASE_PASSWORD) --execute "SHOW TABLES;" $(DEFAULT_DATABASE_NAME) >/dev/null 2>&1; do echo -n .;sleep 2; done
-	@mysql -h 127.0.0.1 --user=root --password=$(DEFAULT_DATABASE_PASSWORD) --execute "GRANT ALL PRIVILEGES ON *.* TO '$(DEFAULT_DATABASE_USER)'@'%';FLUSH PRIVILEGES;" >/dev/null
 
 docker-mysql-stop: ## Stop and delete the MySQL Docker container.
 	@docker rm --force $(TEST_MYSQL_CONTAINER_NAME) >/dev/null 2>&1
@@ -388,9 +389,9 @@ docker-mysql-backup:
 docker-mysql-restore:
 	@mysql --host=127.0.0.1 --user=$(DEFAULT_DATABASE_USER) --password=$(DEFAULT_DATABASE_PASSWORD) $(DEFAULT_DATABASE_NAME) < mayan-docker-mysql-backup.sql
 
-docker-oracle-start: ## Launch and initialize an Oracle Docker container.
+docker-oracle-start: ## Start an Oracle Docker container.
 docker-oracle-start:
-	@docker run --detach --name $(TEST_ORACLE_CONTAINER_NAME) -p 49160:22 -p 49161:1521 -e ORACLE_ALLOW_REMOTE=true -v $(TEST_ORACLE_CONTAINER_NAME):/u01/app/oracle $(DOCKER_ORACLE_IMAGE_VERSION)
+	@docker run --detach --name $(TEST_ORACLE_CONTAINER_NAME) --publish 49160:22 --publish 49161:1521 --env ORACLE_ALLOW_REMOTE=true --volume $(TEST_ORACLE_CONTAINER_NAME):/u01/app/oracle $(DOCKER_ORACLE_IMAGE_VERSION)
 	@sleep 10
 	@while ! nc -z 127.0.0.1 49161; do echo -n .; sleep 2; done
 
@@ -398,8 +399,8 @@ docker-oracle-stop:
 	@docker rm --force $(TEST_ORACLE_CONTAINER_NAME) >/dev/null 2>&1
 	@docker volume rm $(TEST_ORACLE_CONTAINER_NAME) >/dev/null 2>&1 || true
 
-docker-postgresql-start: ## Launch and initialize a PostgreSQL Docker container.
-	@docker run --detach --name $(TEST_POSTGRESQL_CONTAINER_NAME) -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_USER=$(DEFAULT_DATABASE_USER) -e=POSTGRES_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) -e POSTGRES_DB=$(DEFAULT_DATABASE_NAME) -p 5432:5432 -v $(TEST_POSTGRESQL_CONTAINER_NAME):/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
+docker-postgresql-start: ## Start a PostgreSQL Docker container.
+	@docker run --detach --name $(TEST_POSTGRESQL_CONTAINER_NAME) --env POSTGRES_HOST_AUTH_METHOD=trust --env POSTGRES_USER=$(DEFAULT_DATABASE_USER) --env POSTGRES_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) --env POSTGRES_DB=$(DEFAULT_DATABASE_NAME) --publish 5432:5432 --volume $(TEST_POSTGRESQL_CONTAINER_NAME):/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
 	@while ! psql --command "\l" --dbname=$(DEFAULT_DATABASE_NAME) --host=127.0.0.1 --username=$(DEFAULT_DATABASE_USER) >/dev/null 2>&1; do echo -n .;sleep 2; done
 
 docker-postgresql-stop: ## Stop and delete the PostgreSQL Docker container.
@@ -412,20 +413,24 @@ docker-postgresql-backup:
 docker-postgresql-restore:
 	@cat mayan-docker-postgresql-backup.sql | psql --dbname=$(DEFAULT_DATABASE_NAME) --host=127.0.0.1 --username=$(DEFAULT_DATABASE_USER) > /dev/null
 
+docker-redis-start: ## Start a Redis Docker container.
+docker-redis-start:
+	@docker run --detach --name $(TEST_REDIS_CONTAINER_NAME) --publish 6379:6379 $(DOCKER_REDIS_IMAGE_VERSION)
+	@while ! nc -z 127.0.0.1 6379; do echo -n .; sleep 1; done
+
+docker-redis-stop: ## Stop and delete the Redis Docker container.
+docker-redis-stop:
+	@docker rm --force $(TEST_REDIS_CONTAINER_NAME) >/dev/null 2>&1
+
 # Staging
 
 staging-start: ## Launch and initialize production-like services using Docker (PostgreSQL and Redis).
-staging-start: staging-stop
-	@docker run --detach --name $(STAGING_POSTGRESQL_CONTAINER_NAME) -p 5432:5432 -e POSTGRES_DB=$(DEFAULT_DATABASE_NAME) -e POSTGRES_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) -e POSTGRES_USER=$(DEFAULT_DATABASE_USER) $(DOCKER_POSTGRES_IMAGE_VERSION)
-	@docker run --detach --name $(STAGING_REDIS_CONTAINER_NAME) -p 6379:6379 $(DOCKER_REDIS_IMAGE_VERSION)
-	@while ! psql --command "\l" --dbname=$(DEFAULT_DATABASE_NAME) --host=127.0.0.1 --username=$(DEFAULT_DATABASE_USER) >/dev/null 2>&1; do echo -n .;sleep 2; done
-	while ! nc -z 127.0.0.1 6379; do sleep 1; done
+staging-start: staging-stop docker-postgres-start docker-redis-start
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
 	./manage.py initialsetup --settings=mayan.settings.staging.docker
 
 staging-stop: ## Stop and delete the Docker production-like services.
-	@docker stop $(TEST_POSTGRESQL_CONTAINER_NAME) || true >/dev/null 2>&1
-	@docker stop $(STAGING_REDIS_CONTAINER_NAME) || true >/dev/null 2>&1
+staging-stop: docker-postgresql-stop docker-redis-stop
 
 staging-frontend: ## Launch a front end instance that uses the production-like services.
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
@@ -442,25 +447,29 @@ safety-check: ## Run a package safety check.
 
 # Other
 
+docker-dockerfile-update: ## Update the Dockerfile file from the platform template.
+docker-dockerfile-update: copy-config-env
+	./manage.py platformtemplate dockerfile > docker/Dockerfile
+
 find-gitignores: ## Find stray .gitignore files.
 	@export FIND_GITIGNORES=`find -name '.gitignore'| wc -l`; \
 	if [ $${FIND_GITIGNORES} -gt 1 ] ;then echo "More than one .gitignore found: $$FIND_GITIGNORES"; fi
 
 python-build:
 	docker rm --force mayan-edms-build || true && \
-	docker run --rm --name mayan-edms-build -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source $(DOCKER_PYTHON_IMAGE_VERSION) sh -c "\
+	docker run --rm --name mayan-edms-build --volume $(HOME):/host_home:ro --volume `pwd`:/host_source --workdir /source $(DOCKER_PYTHON_IMAGE_VERSION) sh -c "\
 	rm /host_source/dist -R || true && \
 	mkdir /host_source/dist || true && \
 	export LC_ALL=C.UTF-8 && \
-	cp -r /host_source/* . && \
+	cp --recursive /host_source/* . && \
 	apt-get update && \
-	apt-get install -y make && \
-	pip install -r requirements/build.txt && \
+	apt-get install --yes make && \
+	pip install --requirement requirements/build.txt && \
 	make wheel && \
 	cp dist/* /host_source/dist/"
 
 check-readme: ## Checks validity of the README.rst file for PyPI publication.
-	python setup.py check -r -s
+	python setup.py check --restructuredtext --strict
 
 check-missing-migrations: ## Make sure all models have proper migrations.
 	./manage.py makemigrations --dry-run --noinput --check
@@ -470,8 +479,8 @@ check-missing-inits:
 	@contrib/scripts/find_missing_inits.py
 
 setup-dev-environment: ## Bootstrap a virtualenv by install all dependencies to start developing.
-	sudo apt-get install -y exiftool firefox-geckodriver gcc gettext gnupg1 graphviz poppler-utils python3-dev tesseract-ocr-deu
-	pip install -r requirements.txt -r requirements/development.txt -r requirements/testing-base.txt -r requirements/documentation.txt -r requirements/build.txt
+	sudo apt-get install --yes exiftool firefox-geckodriver gcc gettext gnupg1 graphviz poppler-utils python3-dev sane-utils tesseract-ocr-deu
+	pip install --requirement requirements.txt --requirement requirements/development.txt --requirement requirements/testing-base.txt --requirement requirements/documentation.txt --requirement requirements/build.txt
 
 setup-python-mysql:
 	@pip install mysqlclient==$(PYTHON_MYSQL_VERSION)

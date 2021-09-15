@@ -7,14 +7,15 @@
 # Roberto Rosario, 2021
 # Mathias Behrle <mathiasb@m9s.biz>, 2021
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2021
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:57+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2021\n"
+"Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -112,10 +113,12 @@ msgstr "Weblink-Instanzen anzeigen"
 #: serializers.py:16
 msgid "Primary key of the document type to add to the web link."
 msgstr ""
+"Primärschlüssel des Dokumententyps, welcher zum Weblink hinzuzufügt wird."
 
 #: serializers.py:25
 msgid "Primary key of the document type to remove from the web link."
 msgstr ""
+"Primärschlüssel des Dokumenttyps, welcher aus dem Weblink entfernt wird."
 
 #: views.py:38
 msgid "Available web links"

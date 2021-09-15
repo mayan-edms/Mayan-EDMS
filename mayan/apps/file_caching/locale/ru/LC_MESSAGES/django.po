@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -116,7 +116,7 @@ msgstr "Размер"
 
 #: models.py:316
 msgid "Times this cache partition file has been accessed."
-msgstr ""
+msgstr "Количество обращений к этому файлу раздела кеша."
 
 #: models.py:323
 msgid "Cache partition file"
@@ -147,12 +147,16 @@ msgid ""
 "Number of times a cache will retry failed attempts to prune files to free up"
 " space for new a file being requested, before giving up."
 msgstr ""
+"Сколько раз кеш будет повторять неудачные попытки удалить файлы, чтобы "
+"освободить место для нового запрашиваемого файла, прежде чем отказаться."
 
 #: settings.py:23
 msgid ""
 "Number of times a cache will attempt to prune files to free up space for new"
 " a file being requested, before giving up."
 msgstr ""
+"Сколько раз кеш будет пытаться удалить файлы, чтобы освободить место для "
+"нового запрашиваемого файла, прежде чем отказаться."
 
 #: views.py:43
 #, python-format

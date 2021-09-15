@@ -1,4 +1,632 @@
-4.0 (2021-04-XX)
+4.1 (2021-XX-XX)
+================
+- Add support for editing the document version page OCR content.
+  Closes GitLab issue #592. Thanks for Martin (@efelon) for the
+  request.
+- Refactor sources app.
+
+  - Add object permission support to source views.
+  - Remove locking support from staging folder uploads.
+  - Update staging preview to use new preview generation
+    code.
+  - Use streaming response to serve staging folder images.
+  - Convert the sources from models into backend classes.
+    The sources are now decoupled from the app. Each source
+    backend can defined its own callbacks and use an unified
+    background task.
+  - Perform code reduction. Remove PseudoFile and SourceUploaded
+    classes. Each source backend is now responsible for providing
+    a list of shared uploaded files.
+  - Multiform improvements:
+
+    - Support multi form extra kwargs.
+    - Move the dynamic part of the multi form method to the end
+      of the name.
+    - Add a white horizontal ruler to separate the form
+      instances.
+
+- Consolidate the image generation task
+
+  - Remove document file, version, converter asset, and workflow template
+    preview image generation.
+  - Remove converter literal `TASK_ASSET_IMAGE_GENERATE_RETRY_DELAY`.
+  - Remove workflow literals `TASK_GENERATE_WORKFLOW_IMAGE_RETRY_DELAY`.
+  - Remove `document_states_fast` queue.
+  - Remove documents literals
+    `DEFAULT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY` and
+    `DEFAULT_TASK_GENERATE_DOCUMENT_VERSION_PAGE_IMAGE_RETRY_DELAY`.
+  - Remove settings
+    `DOCUMENT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY` and
+    `DOCUMENT_TASK_GENERATE_DOCUMENT_VERSION_PAGE_IMAGE_RETRY_DELAY`.
+
+- Search updates
+
+  - Remove `TASK_RETRY_DELAY` and use `retry_backoff`.
+  - Add the tag color as a search field
+  - Improve and simplify query cleaning up by doing so after the
+    scopes are decoded.
+  - Fix Whoosh reindexing after m2m fields perform a remove.
+  - Fix Whoosh search for related m2m fields with multiple
+    values.
+  - Improve tests for edge cases.
+  - Fix document version API tests module.
+  - Variables renamed for clarity and to specify their purpose.
+  - Process the 'q' parameter at the class and not in the
+    backend.
+  - Ignore invalid query fields.
+  - Index for search on m2m signal.
+  - Return empty results on an empty query.
+  - Produce an empty scope 0 on an empty query.
+  - Improve tests.
+  - Add UUID field for all document child objects.
+
+- Add detail view for groups.
+- Show total permission when running the `purgepermissions` command.
+- Add detail for file partitions.
+- Add placeholder absolute links for announcements, workflow templates, quotas.
+- Add detail view for stored permissions.
+- Rename role setup views.
+- Load user management first to allow patching
+- Register ACL events when enabling ACLs. Objects that are registered to
+  support ACLs will also be registered for ACL events to allow subscribing to
+  ACL changes of the object.
+- Allow bind either the events links, the subscription link, both or none.
+- Improve workflow app navigation.
+- Improve sidebar navigation.
+- Improve clarity of the action dropdown sections.
+- Make the index instance node value field an unique field among its own tree
+  level. This prevents tree corruption under heavy load.
+- Update dependencies:
+
+  - Docker Compose from 1.29.1 to 1.29.2
+  - PostgreSQL Docker image from 10.15-alpine to 10.18-alpine
+  - RabbitMQ Docker image from 3.8-alpine to 3.9-alpine
+  - Redis Docker images from 6.0-alpine to 6.2-alpine
+  - psycopg2 from 2.8.6 to 2.9.1
+  - psutil from 5.7.2 to 5.8.0
+  - jQuery from 3.5.1 to 3.6.0
+  - jquery-form from 4.2.2 to 4.3.0
+  - jquery-lazyload from 1.9.3 to 1.9.7
+  - urijs from 1.19.1 to 1.19.7
+  - bleach from 3.1.5 to 4.0.0
+  - jstree from 3.3.3 to 3.3.11
+  - PyYAML from 5.3.1 to 5.4.1
+  - django-model-utils from 4.0.0 to 4.1.1
+  - requests from 2.25.1 to 2.26.0
+  - sh from 1.14.1 to 1.14.2
+  - devpi-server from 5.5.1 to 6.2.0
+  - django-debug-toolbar from 3.1.2 to 3.1.4
+  - django-extensions from 3.1.2 to 3.1.4
+  - django-rosetta from 0.9.4 to 0.9.7
+  - flake8 from 3.9.0 to 3.9.2
+  - ipython from 7.22.0 to 7.26.0
+  - safety from 1.9.0 to 1.10.3
+  - transifex-client from 0.14.2 to 0.14.3
+  - twine from 3.4.1 to 3.4.2
+  - wheel from 0.36.2 to 0.37.0
+  - Pillow from 7.1.2 to 8.3.1
+  - packaging from 20.3 to 21.0
+  - python_gnupg from 0.4.6 to 0.4.7
+  - graphviz from 0.14 to 0.17
+  - django-activity-stream from 0.8.0 to 0.10.0
+  - pytz from 2020.1 to 2021.1
+  - python-dateutil from 2.8.1 to 2.8.2
+  - python-magic from 0.4.22 to 0.4.24
+  - gevent from 20.4.0 to 21.8.0
+  - gunicorn from 20.0.4 to 20.1.0
+  - whitenoise from 5.0.1 to 5.3.0
+  - cropperjs from 1.4.1 to 1.5.2
+  - jquery-cropper from 1.0.0 to 1.0.1
+  - django-cors-headers from 3.2.1 to 3.8.0
+  - djangorestframework from 3.11.2 to 3.12.2
+  - drf-yasg from 1.17.1 to 1.20.0
+  - swagger-spec-validator from 2.5.0 to 2.7.3
+  - dropzone from 5.7.2 to 5.9.2
+  - extract-msg from 0.23.3 to 0.28.7
+  - pycryptodome from 3.9.7 to 3.10.1
+  - celery from 4.4.7 to 5.1.2
+  - django-celery-beat from 2.0.0 to 2.2.1
+  - coveralls from 2.0.0 to 3.2.0
+  - django-test-migrations from 0.2.0 to 0.3.0
+  - mock from 4.0.2 to 4.0.3
+  - tox from 3.23.1 to 3.24.3
+  - psutil from 5.7.0 to 5.80
+  - furl from 2.1.0 to 2.1.2
+
+- Launch workflows when the type of the document is changed. Closes GitLab
+  issue #863 "Start workflows when changing document type", thanks to
+  Dennis Ploeger (@dploeger) for the request.
+- Add support for deleting multiple metadata types in a single action.
+- Tags app updates:
+
+  - Use MultipleObjectDeleteView class.
+  - Replace edit icon.
+  - Code style updates.
+
+- Move theme stylesheet sanitization to the save method.
+- Remove final uses of .six library.
+- Add support for clearing the event list.
+- Events app updates:
+
+  - Load all events at startup. Does not rely anymore of importing an event
+    for it to become recognized.
+  - Allow loading events by their name. Avoid doing direct imports when
+    there circular dependencies.
+  - Move the events app to the top of the installed apps to allow it to
+    preload all events.
+  - Only show the event clear and export links for object whose events
+    that can be cleared and exported.
+
+- ACLs apps updates:
+
+  - The ACL edited event is now triggered only once when all permissions are
+    changed.
+  - The action object of the ACL edited event is now the content object and
+    not the permission.
+
+- Enable event subscriptions for workflow states, workflow state actions,
+  and workflow transitions.
+- Support deleting multiple roles in a single action.
+- OCR app updates:
+
+  - Use ``MultipleObjectDeleteView`` for the delete view.
+  - Rename single and multiple delete view names.
+  - Improve tests.
+
+- Document comments app API updates:
+
+  - Modernize code to use latest internal interfaces.
+  - Exclude trashed documents.
+  - Reduce serializers.
+  - Return error 404 on insufficient access.
+
+- Document indexing API updates:
+
+  - Exclude trashed documents.
+  - Split tests.
+  - Add event checking to remaining tests.
+
+- Events app API updates:
+
+  - Return error 404 on insufficient permissions.
+  - Modernize `APIObjectEventListView` to use latest interfaces
+    and mixins.
+
+- Document parsing app updates:
+
+  - Update API to latest internal interfaces.
+  - Add testing for multiple document file content delete views.
+  - Speed up tests.
+  - Add event checking to tests.
+  - Use `MultipleObjectDeleteView` for the file content delete view.
+  - Improve text string of the `DocumentFileContentDeleteView` view.
+
+- Document signatures app updates:
+
+  - Exclude trashed documents from the API.
+  - Add event checking to tests.
+  - Track user when uploading signature files.
+
+- Workflows app updates:
+
+  - Split API views.
+  - Add trashed document test.
+  - Code style updates.
+
+- Smart link app refactor:
+
+  - Exclude trashed documents from API.
+  - Improve existing tests.
+  - Add additional tests.
+  - Rebuild the resolved smart link API and serializer.
+  - Add a new permission to view resolved smart links. This permission needs
+    to be granted for the smart link and for the document/document type.
+  - Update API to return error 404 on insufficient access.
+  - Remove unused test mixins.
+  - Split view and API test modules.
+
+- Documents app updates:
+
+  - Exclude trashed documents from all API views.
+  - New `valid` model managers for recently accessed, recently created, and
+    favorite documents. These managers exclude trashed documents at the model
+    level. The 'objects' manager for these model returns the unfiltered
+    queryset.
+  - Trashed document delete API now returns a 202 code instead of 204. The
+    delete method now runs in the background in the same was as the trashed
+    document delete view works in the UI. The return code was updated to
+    reflect this internal change.
+  - Track the user for the trashed document delete, restore and for the
+    trash can empty methods.
+  - Add event checking for some remaining tests.
+  - Add additional tests.
+
+- Add ``BackendDynamicForm``, a dynamic form for interacting with backends.
+- Add a reusable backend class named ``mayan.apps.databases.classes.BaseBackend``.
+
+- Refactor mailer app:
+
+  - Allow sending document files and document versions as attachments.
+  - Update the ``UserMailer`` model to work with the ``BackendModelMixin``
+    mixin. This allows removing all backend managing code from the model.
+  - Generate the dynamic form schema in the base backend class. Removes
+    dynamic form schema from the views.
+  - Use ``BackendDynamicForm`` and remove dynamic form code from the forms
+    module.
+  - Generalize document file and document version to support any type of
+    object.
+  - Update workflow action to send links to documents or attach the active
+    versions.
+  - Use the reusable ``BaseBackend`` class and remove explicit backend
+    scaffolding.
+
+- Improve test open file and descriptor leak detection.
+- Close storage model file after inspection as Django creates a new
+  file descriptor on inspection.
+- Ensure the name and not the path is used. Compressed files can include
+  path references, these are now scrubbed and only the filename of the file
+  in the compressed archive is used.
+- File handling was improved. Context managers are now used for temporary
+  files and directories. This ensure file descriptors are closed and freed up
+  in all scenarios.
+- Add detached signature deleted event.
+- Document signature app general improvements. Renamed links, icons and
+  view for clarity. Split tests modules.
+- Metadata API updates:
+
+  - Unify document type metadata type serializers.
+  - Update the permission layout to match the one of the views.
+    The edit or view permission is now required for the document
+    type as well as the metadata type.
+
+- Add ``CONVERTER_IMAGE_GENERATION_MAX_RETRIES`` to control how many times
+  the image regeration task will retry lock errors.
+- Add support for appending all document file pages as a single document
+  version.
+- Moved signals, hooks and events outside of the document file creation
+  transaction.
+- Capture the user for the document version page reset and remap action
+  events.
+- Add conditions to the favorite document links.
+- Update mailing icons.
+- Remove submit button label and submit button icons.
+- The ``performupgrade`` command won't try to hide critical errors and
+  instead raise any exception to obtain the maximum amount of debug
+  information.
+- Add support to filter the add/remove choice form.
+- Dependencies app updates:
+
+  - Move the link to check for the latest version to the tools
+    menu.
+  - Checking for updates now required the view dependencies
+    permission.
+
+- Unify request resolution for navigation classes.
+- Support retrieving a list of ``SourceColumn`` by name.
+- Dashboard app updates:
+
+  - Extend dashboard widget interfaces.
+  - Add list dashboard widget.
+  - Move dashboard CSS from the appearance app to the dashboards app.
+  - Add dashboard list and detail views.
+  - Add setting to select the default dashboard.
+  - Add template tag to display the default dashboard in the home
+    view.
+
+- Refactor ``SourceColumn.get_for_source``.
+- Add ``RecentlyAccessedDocumentProxy`` to allow adding a column with the
+  creation date time.
+- Navigation refactor:
+
+  - Rewritten link to source matching code.
+  - Rewritten menu resolution.
+  - Pass the ``resolved_object`` to link conditions.
+
+- Don't trigger the settings change flag on user language changes.
+
+4.0.15 (2021-08-07)
+===================
+- Improve the document version export API endpoint.
+
+  - Enable tracking the user and persisting the value for the events.
+  - Change the view class form a custom mixin to be a subclass of
+    `generics.ObjectActionAPIView` one.
+  - Improve test to check for message creation after export.
+  - Avoid returning an error when using the `GET` method for the view.
+
+- Improve the `generics.ObjectActionAPIView` class.
+
+  - Merge with `ActionAPIViewMixin`.
+  - Add `action_response_status` for predetermined status codes.
+  - Add message when the `.object_action` method is missing.
+
+- Fix the view to mark all messages as read.
+- Track the user when marking messages as read or unread.
+- Fix action messages.
+
+4.0.14 (2021-08-05)
+===================
+- Fix a regression in the document version page image cache maximum size
+  setting callback.
+- Fix converter layer priority exclusion for layers with a priority of 0.
+  This fixes the preview layer priority when editing the redactions of pages
+  that also contain transformations in other layers.
+
+4.0.13 (2021-08-02)
+===================
+- Checkout test updates.
+
+  - Silence debug output of tests.
+  - Speed up tests using document stubs.
+
+- Improve organization URL and host settings. Closes GitLab issues
+  #966 and #1002. Thanks to None Given (@nastodon) and
+  Bw (@bwakkie) for the reports.
+
+  - Patch Django's HttpRequest object to override scheme
+    and host.
+  - Fix organization setting used to set the REST API URL
+    base path.
+
+- Track user for event when submitting a document version for OCR.
+- Fix OCR version event texts.
+- Update the document index list and document cabinet list links to require
+  the same permission scheme as the views they reference.
+- Add the document creation date time as a search field.
+
+4.0.12 (2021-07-19)
+===================
+- Fix main menu active entry handling.
+- Fix ID number in ``document_url`` attribute of the ``DocumentFile``
+  and ``DocumentVersion`` serializers. Thanks to forum user @qra for the
+  report. Topic 5794.
+- Add API endpoint to display the list of valid transition options for a
+  workflow instance. Thanks to forum user @qra for the report. Topic 5795.
+- Add the workflow template content to the workflow instance API schema.
+  Thanks to forum user @qra for the request. Topic 5795.
+- Clarify purpose of project settings.
+- Minor API serializer cleanups.
+- Add explicit cabinet serializer read only fields.
+- Fix multi scope search result initialization. Closes GitLab issue #1018.
+  Thanks to Ryan Showalter (@ryanshow) for the report.
+- Detect and report when a search scope does not specify a query.
+
+4.0.11 (2021-07-06)
+===================
+- Update date time copy code from migration document:0063 to work with
+  database that store time zone information and those that don't.
+- Switch deployment instructions to use ``venv`` instead of ``virtualenv``.
+- Add support for using local PIP cache to build Docker images.
+- Add a Vagrant setup for testing. Integrates project
+  https://gitlab.com/mayan-edms/mayan-edms-vagrant. Closes GitLab issue
+  #937. Thanks to Max Kornyev (@mkornyev) for the report.
+- Improve ``user_settings_folder`` variable creation. Works with
+  ``MEDIA_ROOT`` paths with and without a trailing slash.
+- The GitLab CI upgrade tests now update a test document to populate the
+  older version install and trigger more migration code paths.
+- Update all shell usage from ``bash`` to ``sh``. ``sh`` symlinks to ``dash``
+  in the Docker image. This also expands the usability of the supervisor
+  file for direct deployments in more operating systems. Closes GitLab
+  issue #1013. Thanks to joh-ku (@joh-ku) for the report.
+- Replace the ``wait.sh`` file with a Python alternative that can wait on
+  network ports or PostgreSQL directly as a client.
+- Upgrade ``supervisord`` from Debian buster version 3.3.5-1 to Debian
+  bullseye version 4.2.2-2. This version uses Python3 and was the last
+  dependency that required installing Python2 in the Docker image.
+- Add the ``id`` field as sortable field in all the API that have ordering
+  enabled.
+
+4.0.10 (2021-07-02)
+===================
+- Simplify code block to delete OCR content of a document version.
+- Make document version timestamp time zone aware before copying them over
+  during migration.
+- Split duplicates migration query into two separate queries to increase
+  compatibility with database managers.
+- Add support to the GitLab CI for local apt proxies.
+
+4.0.9 (2021-06-29)
+==================
+- Improve scope search.
+
+  - Support more than two source scopes per operator.
+  - Support ``match_all`` logic per scope.
+  - Support returning a single scope without using the operator output.
+  - Disable search limits when multiple scopes are specified.
+  - Add separate query decoding method.
+
+- Increase the padding of the main menu panel anchors. Closes GitLab issue
+  #1004. Thanks to Bw (@bwakkie) for the report.
+- Rotate the main menu accordion indicator when opened or closed.
+- Optimize jQuery usage of the $(this) object. Remove some unused jQuery
+  code from the document card update methods.
+- Add more uses of ``update_fields`` to ``.save()`` methods.
+- Simplify logic using the document parser content update using
+  ``update_or_create``.
+- Raise document list errors on debug or testing.
+
+4.0.8 (2021-06-23)
+==================
+- Update PIP to version 21.1.2.
+- Use longer version of the Celery worker option.
+- Make optional the `user_id` argument of
+  `task_document_file_page_image_generate`.
+- Another round of worker queue assignments tuning.
+- Simplify the GPG temporary home preparation. A temporary directory context
+  manager is now used that also guarantees that the temporary folder will be
+  removed even on failures.
+- Don't assume all signatures provide a ``date_time`` field.
+- Optimize file and version page image API. Load the page object only once
+  per request.
+- Unify the supervisord templates. The direct deployment and the Docker image
+  now use the same supervisord template.
+- Email the active document version. Instead of emailing the latest updated
+  document file, the document emailing with attachment will now export the
+  active version and email that as an attachments. This mimics more closely
+  the existing behavior of this feature before the document version were
+  separated into versions and files.
+- Update Django version 2.2.23 to 2.2.24.
+- Improve Docker Compose installation and upgrade instructions.
+- Fix the document type button not appearing. Update the cascade condition
+  of the document type setup link to display when there are not document
+  types created.
+- Don't cache the missing items template to allow it to be removed when
+  the missing items are fixed.
+- Event testing improvements for several apps.
+- The date and time of document version timestamps are now carried over
+  during the upgrade from version 3.5.x to 4.0.x.
+- Update the file metadata submit actions to keep track of the user and apply
+  it to the events.
+- Update the document parsing submit actions to keep track of the user and
+  apply it to the events.
+- Apply small optimization to ``MultipleObjectViewMixin``
+  ``.get_object_list()`` method. The method now reuses the existing
+  ``pk_list`` variable.
+- Fixed an issue with the document metadata add and edit actions which
+  prevented the user value to be ignored at the event commit.
+- Convert the GitLab CI and Dockerfile into platform templates.
+- Update Docker base image from Debian:10.8-slim to Debian:10.10-slim.
+- Add config entry ``DEFAULT_USER_SETTINGS_MODULE``.
+- Add serializer explicit read only fields.
+- Optimize documents app saves with `update_fields`.
+
+4.0.7 (2021-06-11)
+==================
+- Fix typo in the CELERY_MAX_TASKS_PER_CHILD_ARGUMENT environment
+  variable.
+
+4.0.6 (2021-06-10)
+==================
+- Fix celery argument names in supervisord template. Set correct attribute
+  names max-tasks-per-child and max-memory-per-child when starting celery
+  workers. Closes #998. Thanks to joh-ku (@joh-ku) for the report and patch.
+- Use different environment when composing the child limits arguments.
+  Update CELERY_MAX_MEMORY_PER_CHILD and CELERY_TASKS_MEMORY_PER_CHILD
+  to use a separate argument variable, like CELERY_CONCURRENCY.
+
+4.0.5 (2021-06-08)
+==================
+- Turn the release notes upgrade instructions into a partial template.
+- Add support for Celery's max memory and tasks. Support
+  ``--max-memory-per-child`` and ``--max-tasks-per-child`` using
+  the environment variables ``MAYAN_WORKER_X_MAX_MEMORY_PER_CHILD``
+  and ``MAYAN_WORKER_X_MAX_TASKS_PER_CHILD``.
+- Add commented Docker compose database port entry.
+- Support Gunicorn's ``--limit-request-line`` via the
+  ``MAYAN_GUNICORN_LIMIT_REQUEST_LINE`` environment variable.
+- Improve the Docker image environment variables chapter. Include missing
+  variables and automate displaying the default values of several.
+  Organize variables by topic.
+- Exclude trashed documents from the workflow runtime proxy document count.
+- Fix metadata form ``KeyError`` exception when required metadata is missing.
+  Closes GitLab issue #997. Thanks to Raimar Sandner (@PiQuer) for the report
+  and debug information.
+- Document file and version page image updates:
+
+  - Improve document version page base image cache invalidation on source
+    image transformation updates.
+  - Optimize transformation list generation by replacing several loops with
+    list extensions.
+  - Avoid using the source content transformations when calculating the
+    document version transformation list hash. This cause duplicated document
+    version page transformation in some cases. Closes GitLab issue #996.
+    Thanks to Reinhard Ernst (@reinhardernst) for the report and debug
+    information.
+  - Improve document version page image API URL hash uniqueness generation.
+    Ensure browsers do not use a cached document version page image when
+    the transformations of the source object of the version are updated.
+
+4.0.4 (2021-06-05)
+==================
+- Merge updates from version 3.5.10
+
+  - Remove event decorator database transaction
+    Solves workflows not being launched on document creation. Closes
+    GitLab issue #976 and issue #990, thanks to users Megamorf (@megamorf),
+    A F (@adzzzz) for the reports and debug information.
+
+4.0.3 (2021-06-03)
+==================
+- Merge updates from version 3.5.9
+
+  - Fix user model theme related field error after deleting a theme already
+    assigned to a user. Closes GitLab issue #972. Thanks to Niklas Maurer
+    (@nmaurer) for the report.
+  - Add duplicate document tool tests.
+  - Speed up some OCR view tests.
+  - Add explicit Docker logout repository in CD/CI jobs.
+  - Fix permission required for the document content error list link to match
+    the permission required for the document parsed content error list view.
+    GitLab issue #954. Thanks to Ilya Pavlov (@spirkaa) for the report.
+  - Fix permission required for the OCR content delete link to match the
+    permission required for the OCR content delete view. GitLab issue #954.
+    Thanks to Ilya Pavlov (@spirkaa) for the report.
+
+- Update dependency versions:
+
+  - django-solo from version 1.1.3 to 1.1.5.
+  - python-magic from version 0.4.15 to 0.4.22
+
+- Makefile updates
+
+  - Unify Docker test with staging targets.
+  - Replace underscore in target names with hyphen for uniformity.
+  - Add Redis Docker test targets.
+
+- Lock manager updates
+
+  - Rename get_instance() method to get_backend(). This method
+    returns a class and not an instance.
+  - Add management command tests.
+  - Add optional _initialization method for backends.
+  - Update the RedisLock backend to use a connection pool.
+
+- Update Docker entrypoint template to support default worker
+  concurrency values. Now correctly passes the default concurrency
+  value of the D class worker.
+- Updated REST API examples for version 4 of the API.
+
+4.0.2 (2021-05-25)
+==================
+- Messaging app updates:
+
+    - Add links to set messages as unread.
+    - Automatically set messages as read upon accessing them. GitLab issue
+      #981, thanks to Ilya Pavlov (@spirkaa) for the report.
+    - Disable links to mark messages as read or unread based on the state of
+      the message.
+
+- Clarify Redis and Lock manager upgrade steps.
+- Action dropdown template updates:
+
+  - Move dropdown template partial to the navigation app.
+  - Remove unused {{ link_extra_classes }}.
+  - Remove obsolete dropdown HTML markup.
+
+- Fix action menu disabled link appearance.
+- Correct user_settings folder creation step. Closes GitLab issue #984.
+  Thanks to Matthias Löblich (@startmat) for the report.
+- Ensure the API authentication has completed before doing initial filtering.
+  Fixes API views returning 404 errors when using token authentication.
+- Minor source string fixes.
+- Update Django REST framework from version 3.11.0 to 3.11.2.
+- Update PIP from version 21.0.1 to 21.1.1.
+- Update django-mptt from version 0.11.0 to 0.12.0.
+- Add ordering to cabinets. Closes GitLab issue #986. Thanks to Hanno Zulla
+  (@hzulla) for the report.
+
+4.0.1 (2021-05-20)
+==================
+- Fix group and user setup link conditional disable not working as
+  expected.
+- Fix Docker environment variables documentation chapter regarding
+  worker concurrency.
+- Add troubleshooting section regarding document file access after upgrade
+  to version 4.0.
+- Allow migration of the settings ``DOCUMENTS_STORAGE_BACKEND`` and
+  ``DOCUMENTS_STORAGE_BACKEND_ARGUMENTS`` for more situations.
+
+4.0 (2021-05-19)
 ================
 - Add document version page list reset.
 - Add document version page delete.
@@ -69,6 +697,7 @@
 - Rename ``DeletedDocument`` to ``TrashedDocument``, same with the
   corresponding trashed fields and manager methods.
 - Add document file download event.
+- Update Dropzone from version 5.4.0 to 5.7.2.
 - Rename all instances of ``icon_class`` to ``icon`` as only icon instances
   are used now in every app.
 - Add icons to the mark notification as seen and mark all notification as
@@ -303,24 +932,26 @@
   ``True``.
 - Dependency version upgrades:
 
-  - django-rosetta to 0.9.4.
-  - Django to 2.2.20.
-  - pycounty to 20.7.3.
-  - requests to 2.25.1.
-  - sh to 1.14.1.
+  - coverage from 5.1 to 5.5.
+  - Django to 2.2.23.
   - django-debug-toolbar to 3.2.
   - django-extensions to 3.1.2.
+  - django-rosetta to 0.9.4.
   - django-silk to 4.1.0.
   - flake8 to 3.9.0.
   - ipython to 7.22.0.
-  - transifex-client to 0.14.2.
-  - twine to 3.4.1.
-  - wheel to 0.36.2.
+  - pycounty to 20.7.3.
+  - requests to 2.25.1.
   - Sphinx to 3.5.4.
+  - sh to 1.14.1.
   - sphinx-autobuild to 2021.3.14.
   - sphinx-sitemap to 2.2.0.
   - sphinxcontrib-spelling to 7.1.0.
   - tornado to 6.1.
+  - tox from 3.14.6 to 3.23.1.
+  - transifex-client to 0.14.2.
+  - twine to 3.4.1.
+  - wheel to 0.36.2.
 
 - Fix sub workflow launch state action.
 - Convert the workflow instance creation to a background task.
@@ -351,3 +982,11 @@
   Docker image ``run_worker`` command. The value is passed via the
   ``MAYAN_WORKER_NICE_LEVEL`` environment variable. This variable defaults to
   ``0``.
+- Avoid adding a transformation to a layer for which it was
+  not registered.
+- Add LayerError exception.
+- Fix redaction ACL support.
+- Add support for typecasting the values used to filter the ACL object
+  inherited fields.
+- Rename the ``mayan_settings`` directory, which is used to allow custom
+  setting modules, to the more intuitive ``user_settings``.

@@ -7,8 +7,9 @@ from .mixins.workflow_template_state_mixins import WorkflowTemplateStateActionTe
 
 
 class WorkflowTemplateCopyTestCase(
-    DocumentTestMixin, ObjectCopyTestMixin, WorkflowTemplateStateActionTestMixin,
-    WorkflowTemplateTestMixin, BaseTestCase
+    DocumentTestMixin, ObjectCopyTestMixin,
+    WorkflowTemplateStateActionTestMixin, WorkflowTemplateTestMixin,
+    BaseTestCase
 ):
     auto_upload_test_document = False
 

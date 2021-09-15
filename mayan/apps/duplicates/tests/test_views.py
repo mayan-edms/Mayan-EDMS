@@ -1,8 +1,13 @@
-from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.documents.permissions import (
+    permission_document_tools, permission_document_view
+)
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
+from ..models import DuplicateBackendEntry
+
 from .mixins import (
-    DuplicatedDocumentTestMixin, DuplicatedDocumentViewTestMixin
+    DuplicatedDocumentTestMixin, DuplicatedDocumentToolViewTestMixin,
+    DuplicatedDocumentViewTestMixin
 )
 
 
@@ -217,4 +222,37 @@ class DuplicatedDocumentListViewsTestCase(
         self.assertNotContains(
             response=response, status_code=200,
             text=self.test_documents[1].label
+        )
+
+
+class DuplicatedDocumentToolsViewsTestCase(
+    DuplicatedDocumentTestMixin, DuplicatedDocumentToolViewTestMixin,
+    GenericDocumentViewTestCase
+):
+    def test_duplicated_document_scan_no_permission(self):
+        self._upload_duplicate_document()
+        DuplicateBackendEntry.objects.all().delete()
+
+        response = self._request_duplicated_document_scan_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertFalse(
+            self.test_documents[1] in DuplicateBackendEntry.objects.get_duplicates_of(
+                document=self.test_documents[0]
+            )
+        )
+
+    def test_duplicated_document_scan_with_permission(self):
+        self._upload_duplicate_document()
+        DuplicateBackendEntry.objects.all().delete()
+
+        self.grant_permission(permission=permission_document_tools)
+
+        response = self._request_duplicated_document_scan_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(
+            self.test_documents[1] in DuplicateBackendEntry.objects.get_duplicates_of(
+                document=self.test_documents[0]
+            )
         )

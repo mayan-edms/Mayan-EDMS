@@ -2,34 +2,19 @@
 Document versioning
 ===================
 
-Mayan EDMS has the ability to store different versions of the same
-document. A comment field is provided to allow users to summarize the new
-version changes in comparison with the previous one. If a new version was
-uploaded by mistake or such new version is no longer necessary the option to
-revert to a previous version of the document is provided.
 
-.. blockdiag::
+.. note::
 
-   blockdiag {
-      default_shape = roundedbox
-      orientation = portrait
-        node_width = 200;
-      version_1 [ label = "Version 1" ];
-      version_2 [ label = "Version 2" ];
-      document_1 [ label = "payroll_report.pdf" ];
-      document_2 [ label = "payroll_report_fixed.pdf" ];
-      upload_1 [ label = "payroll_report.pdf" ];
-      upload_2 [ label = "payroll_report_fixed.pdf" ];
+   Previous to version 4.0, there was no distinction between a document file
+   and a document version. In addition, each document version had a 1 to 1
+   relationship to a document file. That relationship extended to the pages
+   and their layout.
 
-        upload_1 -> version_1 -> document_1;
-        upload_2 -> version_2 -> document_2;
-        document_1 -> document_2;
-   }
 
-Only the interactive document sources (:doc:`../chapters/sources`)
-(``Web`` and ``Staging folders``) are available to upload new document versions.
+Every time a :doc:`document file <files>` is upload, a corresponding
+document version object is created. Document versions act like a "view" that
+presents the pages of document files to the end user in a specific layout.
 
-There is no limit to the number of versions a document can have.
 
 .. blockdiag::
 
@@ -38,11 +23,90 @@ There is no limit to the number of versions a document can have.
         orientation = portrait
         node_width = 200;
 
-        document [ label = "payroll_report.pdf" ];
+        document [ label = "Document" ];
         versions [ label = "Versions", stacked ];
 
         document -> versions;
    }
 
-By default, the last version will be showed when working with the document
-but any of the versions can be inspected and viewed.
+
+Page composition
+================
+
+.. versionadded:: 4.0
+
+Since document versions and their pages are nothing more than pointers,
+they can be modified without affecting their underlying source.
+
+Document version pages can disabled, enabled, appended, removed, or even
+reordered. All of this is achieved in a non destructive way (the original
+uploaded file is never changed in any way), all of the changes happen only
+at the application level for the document version.
+
+.. blockdiag::
+
+   blockdiag {
+     default_shape = roundedbox
+     orientation = landscape
+
+     group {
+       shape = line;
+       style = dashed;
+       color = lightgray;
+       label = 'Document files';
+       orientation = portrait;
+
+       group {
+         color = lightgray;
+         orientation = portrait
+         "File 1 page 1";
+         "File 1 page 2";
+       }
+
+       group {
+         color = lightgray;
+         orientation = portrait
+         "File 2 page 1";
+         "File 2 page 2";
+       }
+     }
+
+     group {
+       color = lightgray;
+       label = 'Document version';
+       orientation = portrait
+       "Version page 1";
+       "Version page 2";
+
+     }
+
+     "File 1 page 1" -> "Version page 1" [folded];
+     "File 2 page 2" -> "Version page 2" [folded];
+
+   }
+
+
+There is no limit to the number of versions a document can have. Document
+versions can also be deleted in any order and at any time.
+
+Although many versions for a single document, only one version can be marked
+as the active version.
+
+
+Transformations
+===============
+
+:doc:`Transformations <transformations>` can be applied to document version
+pages as they can be applied to document file pages. However, since
+document file pages are the source for the document version pages,
+transformations applied to a document file page will be reflected on any
+document version page, transformations applied a document version page
+will not be reflected on the source document version file.
+
+
+Downloads
+=========
+
+Since document versions are virtual objects, they cannot be downloaded.
+Instead document versions are exported as a PDF and this PDF representation
+of the document version is then downloaded.

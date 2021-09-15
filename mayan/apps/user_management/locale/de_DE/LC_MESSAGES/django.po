@@ -10,14 +10,15 @@
 # Jesaja Everling <jeverling@gmail.com>, 2021
 # Fabian Solf <fabian.solf@gmail.com>, 2021
 # Marvin Haschker <marvin@haschker.me>, 2021
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:57+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Marvin Haschker <marvin@haschker.me>, 2021\n"
+"Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,7 +34,7 @@ msgstr "Benutzerverwaltung"
 msgid "Group"
 msgstr "Gruppe"
 
-#: apps.py:93 apps.py:103 links.py:46 links.py:58 links.py:77 search.py:34
+#: apps.py:93 apps.py:103 links.py:46 links.py:59 links.py:78 search.py:34
 #: views.py:120
 msgid "Groups"
 msgstr "Gruppen"
@@ -46,7 +47,7 @@ msgstr "Name"
 msgid "User"
 msgstr "Benutzer"
 
-#: apps.py:98 apps.py:187 links.py:51 links.py:84 links.py:101 views.py:306
+#: apps.py:98 apps.py:187 links.py:51 links.py:86 links.py:104 views.py:306
 msgid "Users"
 msgstr "Benutzer"
 
@@ -76,7 +77,7 @@ msgstr "Benutzer"
 
 #: apps.py:108
 msgid "Last login"
-msgstr ""
+msgstr "Letzte Anmeldung"
 
 #: apps.py:111
 msgid "Has usable password?"
@@ -128,25 +129,25 @@ msgstr "Benutzerdetails"
 
 #: links.py:25
 msgid "Edit user details"
-msgstr ""
+msgstr "Benutzerdetails bearbeiten"
 
 #: links.py:30 views.py:54
 msgid "Create new group"
 msgstr "Erstellen"
 
-#: links.py:35 links.py:68 links.py:89
+#: links.py:35 links.py:69 links.py:91
 msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:39 links.py:72
+#: links.py:39 links.py:73
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: links.py:63 views.py:152
+#: links.py:64 views.py:152
 msgid "Create new user"
 msgstr "Erstellen"
 
-#: links.py:94
+#: links.py:96
 msgid "User options"
 msgstr "Benutzeroptionen"
 
@@ -201,18 +202,23 @@ msgstr "Benutzername"
 #: serializers.py:17
 msgid "URL of the API endpoint showing the list users of this group."
 msgstr ""
+"Die URL dieses API-Endpunkts zeigt eine Liste der Benutzer in dieser Gruppe."
 
 #: serializers.py:48
 msgid "Primary key of the user to add to the group."
 msgstr ""
+"Primärschlüssel des Benutzers, welcher zur Gruppe hinzugefügt werden soll."
 
 #: serializers.py:57
 msgid "Primary key of the user to remove from the group."
 msgstr ""
+"Primärschlüssel des Benutzers, welcher von der Gruppe entfernt werden soll."
 
 #: serializers.py:66
 msgid "URL of the API endpoint showing the list groups this user belongs to."
 msgstr ""
+"Die URL dieses API-Endpunkts zeigt eine Liste der Gruppen, in welcher dieser"
+" Benutzer Mitglied ist."
 
 #: utils.py:6
 msgid "Anonymous"
@@ -277,8 +283,8 @@ msgstr "%(count)d Benutzer gelöscht"
 #: views.py:185
 msgid "Delete user"
 msgid_plural "Delete users"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Benutzer löschen"
+msgstr[1] "Benutzer löschen"
 
 #: views.py:195
 #, python-format

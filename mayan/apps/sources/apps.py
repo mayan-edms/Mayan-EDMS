@@ -2,38 +2,44 @@ from django.apps import apps
 from django.db.models.signals import pre_delete
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.acls.classes import ModelPermission
+from mayan.apps.acls.permissions import (
+    permission_acl_edit, permission_acl_view
+)
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import MissingItem
 from mayan.apps.common.signals import (
     signal_post_initial_setup, signal_post_upgrade
 )
 from mayan.apps.converter.links import link_transformation_list
+from mayan.apps.documents.permissions import (
+    permission_document_create, permission_document_file_new
+)
 from mayan.apps.documents.menus import menu_documents
-from mayan.apps.documents.signals import signal_post_document_file_upload
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.logging.classes import ErrorLog
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
-    menu_list_facet, menu_object, menu_secondary, menu_setup
+    menu_list_facet, menu_object, menu_related, menu_secondary, menu_setup
 )
 
-from .classes import DocumentCreateWizardStep, StagingFile
+from .classes import DocumentCreateWizardStep, SourceBackend
+from .events import event_source_edited
 from .handlers import (
-    handler_copy_transformations_to_file,
     handler_create_default_document_source,
     handler_delete_interval_source_periodic_task,
     handler_initialize_periodic_tasks
 )
 from .links import (
-    link_document_create_multiple, link_setup_sources,
-    link_setup_source_check_now, link_setup_source_create_imap_email,
-    link_setup_source_create_pop3_email, link_setup_source_create_sane_scanner,
-    link_setup_source_create_watch_folder, link_setup_source_create_webform,
-    link_setup_source_create_staging_folder, link_setup_source_delete,
-    link_setup_source_edit, link_staging_file_delete,
-    link_document_file_upload
+    link_document_create_multiple, link_source_test,
+    link_source_backend_selection, link_source_delete, link_source_edit,
+    link_source_list, link_document_file_upload
 )
-from .widgets import StagingFileThumbnailWidget
+from .permissions import (
+    permission_sources_delete, permission_sources_edit,
+    permission_sources_view
+)
 
 
 class SourcesApp(MayanAppConfig):
@@ -58,19 +64,18 @@ class SourcesApp(MayanAppConfig):
             app_label='documents', model_name='DocumentType'
         )
 
-        IMAPEmail = self.get_model(model_name='IMAPEmail')
-        POP3Email = self.get_model(model_name='POP3Email')
         Source = self.get_model(model_name='Source')
-        SaneScanner = self.get_model(model_name='SaneScanner')
-        StagingFolderSource = self.get_model(model_name='StagingFolderSource')
-        WatchFolderSource = self.get_model(model_name='WatchFolderSource')
-        WebFormSource = self.get_model(model_name='WebFormSource')
+
+        SourceBackend.load_modules()
 
         error_log = ErrorLog(app_config=self)
-        error_log.register_model(model=IMAPEmail)
-        error_log.register_model(model=POP3Email)
-        error_log.register_model(model=SaneScanner)
-        error_log.register_model(model=WatchFolderSource)
+        error_log.register_model(model=Source)
+
+        EventModelRegistry.register(model=Source)
+
+        ModelEventType.register(
+            model=Source, event_types=(event_source_edited,)
+        )
 
         MissingItem(
             label=_('Create a document source'),
@@ -80,7 +85,16 @@ class SourcesApp(MayanAppConfig):
                 'be able to upload documents from a browser.'
             ),
             condition=lambda: not Source.objects.exists(),
-            view='sources:setup_source_list'
+            view='sources:source_list'
+        )
+
+        ModelPermission.register(
+            model=Source, permissions=(
+                permission_acl_edit, permission_acl_view,
+                permission_document_create, permission_document_file_new,
+                permission_sources_delete, permission_sources_edit,
+                permission_sources_view
+            )
         )
 
         SourceColumn(
@@ -88,27 +102,13 @@ class SourcesApp(MayanAppConfig):
             source=Source
         )
         SourceColumn(
-            attribute='class_fullname', include_label=True, label=_('Type'),
-            source=Source
+            attribute='get_backend_label', include_label=True,
+            label=_('Type'), source=Source
         )
         SourceColumn(
             attribute='enabled', include_label=True, is_sortable=True,
             source=Source,
             widget=TwoStateWidget
-        )
-
-        SourceColumn(
-            func=lambda context: context['object'].get_date_time_created(),
-            label=_('Created'), source=StagingFile,
-        )
-
-        html_widget = StagingFileThumbnailWidget()
-        SourceColumn(
-            source=StagingFile,
-            label=_('Thumbnail'),
-            func=lambda context: html_widget.render(
-                instance=context['object'],
-            )
         )
 
         menu_documents.bind_links(links=(link_document_create_multiple,))
@@ -117,41 +117,32 @@ class SourcesApp(MayanAppConfig):
             links=(
                 link_transformation_list,
             ), sources=(
-                POP3Email, IMAPEmail, SaneScanner, StagingFolderSource,
-                WatchFolderSource, WebFormSource
+                Source,
             )
         )
 
         menu_object.bind_links(
             links=(
-                link_setup_source_delete, link_setup_source_edit
+                link_source_delete, link_source_edit
             ), sources=(
-                POP3Email, IMAPEmail, SaneScanner, StagingFolderSource,
-                WatchFolderSource, WebFormSource
+                Source,
             )
         )
+
         menu_object.bind_links(
-            links=(link_staging_file_delete,), sources=(StagingFile,)
-        )
-        menu_object.bind_links(
-            links=(link_setup_source_check_now,),
-            sources=(IMAPEmail, POP3Email, WatchFolderSource,)
+            links=(link_source_test,),
+            sources=(Source,)
         )
         menu_secondary.bind_links(
             links=(
-                link_setup_sources, link_setup_source_create_webform,
-                link_setup_source_create_sane_scanner,
-                link_setup_source_create_staging_folder,
-                link_setup_source_create_pop3_email,
-                link_setup_source_create_imap_email,
-                link_setup_source_create_watch_folder
+                link_source_backend_selection, link_source_list
             ), sources=(
-                POP3Email, IMAPEmail, StagingFolderSource, WatchFolderSource,
-                WebFormSource, 'sources:setup_source_list',
-                'sources:setup_source_create'
+                Source,
+                'sources:source_backend_selection', 'sources:source_create',
+                'sources:source_list'
             )
         )
-        menu_setup.bind_links(links=(link_setup_sources,))
+        menu_setup.bind_links(links=(link_source_list,))
         menu_secondary.bind_links(
             links=(link_document_file_upload,),
             sources=(
@@ -172,8 +163,4 @@ class SourcesApp(MayanAppConfig):
         signal_post_upgrade.connect(
             receiver=handler_initialize_periodic_tasks,
             dispatch_uid='sources_handler_initialize_periodic_tasks'
-        )
-        signal_post_document_file_upload.connect(
-            receiver=handler_copy_transformations_to_file,
-            dispatch_uid='sources_handler_copy_transformations_to_file'
         )

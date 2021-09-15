@@ -1,0 +1,122 @@
+Version 4.0.3
+=============
+
+Released: June 3, 2021
+
+Status: Stable
+
+Changes
+-------
+
+
+Dependencies
+^^^^^^^^^^^^
+
+Updated dependency versions:
+
+  - django-solo from version 1.1.3 to 1.1.5.
+  - python-magic from version 0.4.15 to 0.4.22
+
+
+Lock manager
+^^^^^^^^^^^^
+
+Renamed the ``get_instance()`` method to ``get_backend()``. This change
+reflects the purpose of the method which is to return a class and not an
+instance.
+
+Added test for the ``purgelocks`` for all backends.
+
+Added an optional ``_initialization`` method for backends. This allows
+removing initialization code in the global scope.
+
+Updated the ``RedisLock`` backend to use a connection pool. The connection
+resides in the class scope and is available to all instances. Profiling
+showed reduced connection and memory usage.
+
+
+Makefile
+^^^^^^^^
+
+Unified Docker tests with staging targets. The staging targets now use
+the same targets meant for testing.
+
+Replaced underscore in target names with hyphen for uniformity. All target
+names now use hyphens.
+
+Added a Redis Docker container test targets.
+
+
+Platform
+^^^^^^^^
+
+Updated the Docker entrypoint template to support default worker
+concurrency values. The template now correctly passes the default concurrency
+value of the D class worker. This lowers the number of workers, in turn
+lowering the number of concurrent OCR processes for a reduction in CPU and
+memory usage in default deployments.
+
+
+REST API
+^^^^^^^^
+
+Updated the REST API examples for version 4 of the API.
+
+
+Other
+^^^^^
+
+- Merged updates from version 3.5.9
+
+  - Fix user model theme related field error after deleting a theme already
+    assigned to a user. Closes GitLab issue #972. Thanks to Niklas Maurer
+    (@nmaurer) for the report.
+  - Add duplicate document tool tests.
+  - Speed up some OCR view tests.
+  - Add explicit Docker logout repository in CD/CI jobs.
+  - Fix permission required for the document content error list link to match
+    the permission required for the document parsed content error list view.
+    GitLab issue #954. Thanks to Ilya Pavlov (@spirkaa) for the report.
+  - Fix permission required for the OCR content delete link to match the
+    permission required for the OCR content delete view. GitLab issue #954.
+    Thanks to Ilya Pavlov (@spirkaa) for the report.
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- None
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

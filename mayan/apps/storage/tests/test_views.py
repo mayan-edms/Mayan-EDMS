@@ -1,7 +1,6 @@
 from django.utils.encoding import force_text
 
 from mayan.apps.testing.tests.base import GenericViewTestCase
-from mayan.apps.testing.tests.mixins import TestModelTestCaseMixin
 
 from ..events import (
     event_download_file_deleted, event_download_file_downloaded
@@ -13,8 +12,7 @@ from .mixins import DownloadFileTestMixin, DownloadFileViewTestMixin
 
 
 class DownloadFileViewTestCase(
-    DownloadFileTestMixin, DownloadFileViewTestMixin, TestModelTestCaseMixin,
-    GenericViewTestCase
+    DownloadFileTestMixin, DownloadFileViewTestMixin, GenericViewTestCase
 ):
     def test_download_file_no_permission_delete_view(self):
         self._create_test_download_file()

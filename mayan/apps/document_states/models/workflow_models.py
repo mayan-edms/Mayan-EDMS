@@ -19,7 +19,9 @@ from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event
 from mayan.apps.file_caching.models import CachePartitionFile
-from ..events import event_workflow_template_created, event_workflow_template_edited
+from ..events import (
+    event_workflow_template_created, event_workflow_template_edited
+)
 from ..literals import (
     STORAGE_NAME_WORKFLOW_CACHE, SYMBOL_MATH_CONDITIONAL,
     WORKFLOW_ACTION_ON_ENTRY
@@ -67,6 +69,9 @@ class Workflow(ExtraDataModelMixin, models.Model):
     def __str__(self):
         return self.label
 
+    def get_absolute_url(self):
+        return reverse(viewname='document_states:workflow_template_list')
+
     @cached_property
     def cache(self):
         Cache = apps.get_model(app_label='file_caching', model_name='Cache')
@@ -106,7 +111,11 @@ class Workflow(ExtraDataModelMixin, models.Model):
                 document__document_type_id=document_type.pk
             ).delete()
 
-    def generate_image(self):
+    def generate_image(
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None
+    ):
+        # `user` argument added for compatibility.
         cache_filename = '{}'.format(self.get_hash())
 
         try:
@@ -308,6 +317,6 @@ class WorkflowRuntimeProxy(Workflow):
         """
         return AccessControlList.objects.restrict_queryset(
             permission=permission_document_view,
-            queryset=Document.objects.filter(workflows__workflow=self),
+            queryset=Document.valid.filter(workflows__workflow=self),
             user=user
         ).count()

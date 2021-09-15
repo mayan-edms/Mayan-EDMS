@@ -5,7 +5,7 @@ from ...models.favorite_document_models import FavoriteDocument
 
 class FavoriteDocumentAPIViewTestMixin:
     def _request_test_favorite_document_create_api_view(self):
-        pk_list = list(FavoriteDocument.objects.values_list('pk', flat=True))
+        pk_list = list(FavoriteDocument.valid.values_list('pk', flat=True))
 
         response = self.post(
             viewname='rest_api:favoritedocument-list', data={
@@ -14,7 +14,7 @@ class FavoriteDocumentAPIViewTestMixin:
         )
 
         try:
-            self.test_favorite_document = FavoriteDocument.objects.get(
+            self.test_favorite_document = FavoriteDocument.valid.get(
                 ~Q(pk__in=pk_list)
             )
         except FavoriteDocument.DoesNotExist:
@@ -42,7 +42,7 @@ class FavoriteDocumentAPIViewTestMixin:
 
 class FavoriteDocumentTestMixin:
     def _test_document_favorite_add(self):
-        self.test_favorite_document = FavoriteDocument.objects.add_for_user(
+        self.test_favorite_document = FavoriteDocument.valid.add_for_user(
             document=self.test_document, user=self._test_case_user
         )
 

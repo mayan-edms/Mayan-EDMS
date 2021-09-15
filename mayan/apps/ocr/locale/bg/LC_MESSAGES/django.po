@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:57+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -22,28 +22,28 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:52 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
+#: apps.py:55 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
 #: search.py:17 settings.py:11
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:103
+#: apps.py:106
 msgid "The OCR content."
 msgstr "Съдържанието на OCR."
 
-#: apps.py:108
+#: apps.py:111
 msgid "A generator returning the document's pages OCR content."
 msgstr "Генератор, връщащ OCR съдържанието на страниците на документа."
 
-#: apps.py:109
+#: apps.py:112
 msgid "OCR content"
 msgstr "OCR съдържание"
 
-#: apps.py:133
+#: apps.py:138
 msgid "Date and time"
 msgstr "Дата и час"
 
-#: apps.py:136 models.py:50
+#: apps.py:141 models.py:50
 msgid "Result"
 msgstr "Резултат"
 
@@ -56,16 +56,16 @@ msgid "Free Open Source OCR Engine"
 msgstr "Безплатна OCR машина с отворен код"
 
 #: events.py:8
-msgid "Document OCR content deleted"
-msgstr "OCR съдържанието на документа е изтрито"
+msgid "Document version OCR content deleted"
+msgstr "Изтрито е OCR съдържанието на версията на документа"
 
 #: events.py:12
-msgid "Document file submitted for OCR"
-msgstr "Предоставен файл на документ за OCR"
+msgid "Document version submitted for OCR"
+msgstr "Версия на документа, представена за OCR"
 
 #: events.py:16
-msgid "Document file OCR finished"
-msgstr "OCR на файла с документи завърши"
+msgid "Document version OCR finished"
+msgstr "OCR на версия на документ приключи"
 
 #: forms.py:14 forms.py:47
 msgid "Contents"
@@ -243,11 +243,11 @@ msgid ""
 "logical None, or an empty string ('') are considered to be logical false, "
 "any other value is considered to be the logical true."
 msgstr ""
-"Състоянието, което ще определи дали съдържанието на OCR на страница на "
-"документ ще бъде променено или не. Условието се оценява спрямо итерираната "
+"Състоянието, което ще определи дали извлечения текст от страница на документ"
+" ще бъде променен или не. Условието се оценява спрямо последователната "
 "страница на документа. Условия, които не връщат никаква стойност, които "
-"връщат Python логически None, или празен низ (&#39;&#39;) се считат за "
-"логически false, всяка друга стойност се счита за логически true."
+"връщат логическо НЕ в Python, или празен низ (&#39;&#39;) се считат за "
+"логическа неистина, всяка друга стойност се счита за логическа истина."
 
 #: workflow_actions.py:31
 msgid "Page content"

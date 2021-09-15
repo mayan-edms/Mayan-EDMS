@@ -19,7 +19,7 @@ class WorkflowActionActionTestCase(
     auto_upload_test_document = False
 
     def test_document_type_change_action(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         document_type = self.test_document.document_type
 
@@ -43,14 +43,20 @@ class WorkflowActionActionTestCase(
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_transition()
         self.test_workflow_template_states[1].actions.create(
-            action_data=json.dumps(obj={'document_type': self.test_document_types[1].pk}),
+            action_data=json.dumps(
+                obj={'document_type': self.test_document_types[1].pk}
+            ),
             action_path=TEST_DOCUMENT_TYPE_CHANGE_ACTION_DOTTED_PATH,
             label='', when=WORKFLOW_ACTION_ON_ENTRY,
 
         )
-        self.test_workflow_template.document_types.add(self.test_document_types[0])
+        self.test_workflow_template.document_types.add(
+            self.test_document_types[0]
+        )
 
-        self._upload_test_document(document_type=self.test_document_types[0])
+        self._create_test_document_stub(
+            document_type=self.test_document_types[0]
+        )
 
         document_type = self.test_document.document_type
 
@@ -65,7 +71,7 @@ class WorkflowActionActionTestCase(
     def test_trash_document_action(self):
         trashed_document_count = TrashedDocument.objects.count()
 
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         action = TrashDocumentAction()
 
@@ -88,7 +94,7 @@ class WorkflowActionActionTestCase(
 
         trashed_document_count = TrashedDocument.objects.count()
 
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         self.test_document.workflows.first().do_transition(
             transition=self.test_workflow_template_transition

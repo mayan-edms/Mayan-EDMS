@@ -15,19 +15,25 @@ from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
-    event_ocr_document_version_content_deleted, event_ocr_document_version_finish,
-    event_ocr_document_version_submit
+    event_ocr_document_version_content_deleted,
+    event_ocr_document_version_page_content_edited,
+    event_ocr_document_version_finished, event_ocr_document_version_submitted
 )
 from .handlers import (
     handler_index_document_version, handler_initialize_new_ocr_settings,
     handler_ocr_document_version,
 )
 from .links import (
-    link_document_version_page_ocr_content_view, link_document_version_ocr_content_view,
-    link_document_version_ocr_content_delete,
-    link_document_version_multiple_ocr_content_delete, link_document_version_ocr_download,
-    link_document_version_ocr_errors_list, link_document_version_ocr_submit,
-    link_document_version_multiple_ocr_submit, link_document_type_ocr_settings,
+    link_document_version_page_ocr_content_detail_view,
+    link_document_version_page_ocr_content_edit_view,
+    link_document_version_ocr_content_view,
+    link_document_version_ocr_content_delete_single,
+    link_document_version_ocr_content_delete_multiple,
+    link_document_version_ocr_download,
+    link_document_version_ocr_errors_list,
+    link_document_version_ocr_submit_single,
+    link_document_version_ocr_submit_multiple,
+    link_document_type_ocr_settings,
     link_document_type_submit, link_entry_list
 )
 from .methods import (
@@ -35,6 +41,7 @@ from .methods import (
 )
 from .permissions import (
     permission_document_type_ocr_setup, permission_document_version_ocr,
+    permission_document_version_ocr_content_edit,
     permission_document_version_ocr_content_view
 )
 from .signals import signal_post_document_version_ocr
@@ -90,8 +97,14 @@ class OCRApp(MayanAppConfig):
         ModelEventType.register(
             model=Document, event_types=(
                 event_ocr_document_version_content_deleted,
-                event_ocr_document_version_finish,
-                event_ocr_document_version_submit
+                event_ocr_document_version_page_content_edited,
+                event_ocr_document_version_finished,
+                event_ocr_document_version_submitted
+            )
+        )
+        ModelEventType.register(
+            model=DocumentVersionPage, event_types=(
+                event_ocr_document_version_page_content_edited,
             )
         )
 
@@ -112,7 +125,9 @@ class OCRApp(MayanAppConfig):
 
         ModelPermission.register(
             model=Document, permissions=(
-                permission_document_version_ocr, permission_document_version_ocr_content_view
+                permission_document_version_ocr,
+                permission_document_version_ocr_content_edit,
+                permission_document_version_ocr_content_view
             )
         )
         ModelPermission.register(
@@ -125,8 +140,9 @@ class OCRApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='document_version__document', is_attribute_absolute_url=True,
-            is_identifier=True, is_sortable=True, source=DocumentVersionOCRError
+            attribute='document_version__document',
+            is_attribute_absolute_url=True, is_identifier=True,
+            is_sortable=True, source=DocumentVersionOCRError
         )
         SourceColumn(
             attribute='datetime_submitted', is_sortable=True,
@@ -137,35 +153,42 @@ class OCRApp(MayanAppConfig):
             attribute='result'
         )
 
-        menu_list_facet.bind_links(
-            links=(link_document_version_ocr_content_view,), sources=(DocumentVersion,)
-        )
-        menu_list_facet.bind_links(
-            links=(link_document_version_page_ocr_content_view,), sources=(DocumentVersionPage,)
-        )
+        # Document type
+
         menu_list_facet.bind_links(
             links=(link_document_type_ocr_settings,), sources=(DocumentType,)
         )
+
+        # Document version
+
+        menu_list_facet.bind_links(
+            links=(link_document_version_ocr_content_view,),
+            sources=(DocumentVersion,)
+        )
+
         menu_multi_item.bind_links(
             links=(
-                link_document_version_multiple_ocr_content_delete,
-                link_document_version_multiple_ocr_submit,
+                link_document_version_ocr_content_delete_multiple,
+                link_document_version_ocr_submit_multiple
             ), sources=(DocumentVersion,)
         )
+
         menu_secondary.bind_links(
             links=(
-                link_document_version_ocr_content_delete,
+                link_document_version_ocr_content_delete_single,
+                link_document_version_ocr_download,
                 link_document_version_ocr_errors_list,
-                link_document_version_ocr_download, link_document_version_ocr_submit
+                link_document_version_ocr_submit_single
             ),
             sources=(
                 'ocr:document_version_ocr_content_view_delete',
                 'ocr:document_version_ocr_content_view',
                 'ocr:document_version_ocr_download',
                 'ocr:document_version_ocr_error_list',
-                'ocr:document_version_ocr_submit',
+                'ocr:document_version_ocr_submit_single'
             )
         )
+
         menu_secondary.bind_links(
             links=(link_entry_list,),
             sources=(
@@ -173,6 +196,24 @@ class OCRApp(MayanAppConfig):
                 'ocr:entry_re_queue_multiple', DocumentVersionOCRError
             )
         )
+
+        # Document version page
+
+        menu_list_facet.bind_links(
+            links=(
+                link_document_version_page_ocr_content_detail_view,
+            ), sources=(DocumentVersionPage,)
+        )
+
+        menu_secondary.bind_links(
+            links=(
+                link_document_version_page_ocr_content_edit_view,
+            ), sources=(
+                'ocr:document_version_page_ocr_content_detail_view',
+                'ocr:document_version_page_ocr_content_edit_view'
+            )
+        )
+
         menu_tools.bind_links(
             links=(
                 link_document_type_submit, link_entry_list

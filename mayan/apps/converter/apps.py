@@ -3,17 +3,14 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import (
     permission_acl_edit, permission_acl_view
 )
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
-    menu_list_facet, menu_multi_item, menu_object, menu_secondary,
-    menu_setup
+    menu_multi_item, menu_object, menu_secondary, menu_setup
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import event_asset_edited
@@ -56,7 +53,7 @@ class ConverterApp(MayanAppConfig):
             model=Asset, permissions=(
                 permission_acl_edit, permission_acl_view,
                 permission_asset_delete, permission_asset_edit,
-                permission_asset_view, permission_events_view
+                permission_asset_view
             )
         )
 
@@ -86,10 +83,6 @@ class ConverterApp(MayanAppConfig):
         SourceColumn(
             attribute='arguments', include_label=True,
             source=LayerTransformation
-        )
-
-        menu_list_facet.bind_links(
-            links=(link_acl_list,), sources=(Asset,)
         )
 
         menu_multi_item.bind_links(

@@ -1,3 +1,54 @@
+3.5.11 (2021-08-19)
+===================
+- Update Django from version 2.2.23 to 2.2.24.
+- Backport fixes from versions 4.0 and 4.1-a.
+- Avoid passing ``None`` to the template. The ``html_extra_classes``
+  property is passed directly  to the template which renders the
+  value ``None`` as a string.
+- Add support for using local PIP and APT caches to build Docker images.
+- Update to Debian 10.10 for the Docker image and for the GitLab CD/CI.
+- Fix metadata form ``KeyError`` exception when required metadata is missing.
+  Closes GitLab issue #997. Thanks to Raimar Sandner (@PiQuer) for the report
+  and debug information.
+- Exclude trashed documents from the workflow runtime proxy document count.
+
+3.5.10 (2021-06-05)
+===================
+- Remove database transaction form the event decorator.  Solves workflows
+  not being launched on document creation. Closes GitLab issue #976 and
+  issue #990, thanks to users Megamorf (@megamorf), A F (@adzzzz) for the
+  reports and debug information.
+
+3.5.9 (2021-05-29)
+==================
+- Fix duplicated document manager scan method. Closes GitLab issue
+  #974. Thanks to Nguyen Dinh Tu (@tund3010) for the report.
+- Fix user model theme related field error after deleting a theme already
+  assigned to a user. Closes GitLab issue #972. Thanks to Niklas Maurer
+  (@nmaurer) for the report.
+- Update dependency versions:
+
+  - Django from version 2.2.20 to 2.2.23.
+  - django-solo from version 1.1.3 to 1.1.5.
+  - djangorestframework from version 3.11.0 to 3.11.2.
+  - python-magic from version 0.4.15 to 0.4.22.
+
+- Speed up some OCR view tests.
+- Add explicit Docker logout repository during the CD/CI jobs.
+- Fix permission required for the OCR content delete link to match the
+  permission required for the OCR content delete view. GitLab issue #954.
+  Thanks to Ilya Pavlov (@spirkaa) for the report.
+- Fix permission required for the document content error list link to match
+  the permission required for the document parsed content error list view.
+  GitLab issue #954. Thanks to Ilya Pavlov (@spirkaa) for the report.
+
+3.5.8 (2021-04-15)
+==================
+- Fix sub workflow launch state action.
+- Exclude the current workflow from the sub workflow launch state action
+  workflow selection form.
+- Update Django from version 2.2.19 to 2.2.20.
+
 3.5.7 (2021-03-28)
 ==================
 - Update the sample LDAP settings file to add note about package

@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2021
+# trendspotter, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Last-Translator: trendspotter, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -58,11 +59,11 @@ msgstr "EXIF Tool"
 
 #: events.py:10
 msgid "Document file submitted for file metadata processing"
-msgstr ""
+msgstr "Soubor dokumentu odeslaný ke zpracování metadat souboru"
 
 #: events.py:14
 msgid "Document file file metadata processing finished"
-msgstr ""
+msgstr "Zpracování metadat souboru dokumentu dokončeno"
 
 #: links.py:23
 msgid "Attributes"
@@ -80,17 +81,17 @@ msgstr "Nastavení souborových metadat"
 msgid "File metadata processing per type"
 msgstr "Zpracování metadat souborů podle typu"
 
-#: methods.py:36
+#: methods.py:41
 msgid "get_file_metadata(< file metadata dotted path >)"
 msgstr "get_file_metadata (<soubor metadata tečkovaná cesta>)"
 
-#: methods.py:39
+#: methods.py:44
 msgid "Return the specified document file metadata entry."
 msgstr "Vraťte zadanou položku metadat souboru dokumentu."
 
-#: methods.py:66
+#: methods.py:71
 msgid "Return the specified document file file metadata entry."
-msgstr ""
+msgstr "Vrátí zadaný záznam metadat souboru souboru souboru."
 
 #: models.py:18
 msgid "Driver path"
@@ -127,7 +128,7 @@ msgstr "Nastavení typů dokumentů"
 
 #: models.py:74
 msgid "Document file"
-msgstr ""
+msgstr "Soubor dokumentu"
 
 #: models.py:80 models.py:95
 msgid "Document file driver entry"
@@ -223,6 +224,8 @@ msgid ""
 "the driver does not support any metadata field for the file type of this "
 "document."
 msgstr ""
+"To by mohlo znamenat, že detekce metadat souboru nebyla dokončena, nebo že "
+"ovladač nepodporuje žádné pole metadat pro typ souboru tohoto dokumentu."
 
 #: views.py:86
 msgid "No file metadata available for this driver."
@@ -242,17 +245,17 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: views.py:145
+#: views.py:147
 #, python-format
 msgid "Edit file metadata settings for document type: %s"
 msgstr "Upravit nastavení metadat souboru pro typ dokumentu: %s"
 
-#: views.py:156
+#: views.py:158
 msgid "Submit all documents of a type for file metadata processing."
 msgstr ""
 "Odešlete všechny dokumenty určitého typu ke zpracování metadat souboru."
 
-#: views.py:180
+#: views.py:184
 #, python-format
 msgid "%(count)d documents added to the file metadata processing queue."
 msgstr "%(count)d dokumenty přidané do fronty zpracování metadat souboru."

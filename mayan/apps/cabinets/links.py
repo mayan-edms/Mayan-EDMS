@@ -3,9 +3,8 @@ import copy
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.links import link_acl_list
-from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.navigation.classes import Link
-from mayan.apps.navigation.utils import get_cascade_condition
+from mayan.apps.navigation.utils import factory_condition_queryset_access
 
 from .icons import (
     icon_document_cabinet_add, icon_document_cabinet_remove,
@@ -20,7 +19,7 @@ from .permissions import (
 )
 
 
-def condition_cabinet_is_root(context):
+def condition_cabinet_is_root(context, resolved_object):
     return context['resolved_object'].is_root_node()
 
 
@@ -28,7 +27,7 @@ def condition_cabinet_is_root(context):
 
 link_document_cabinet_list = Link(
     args='resolved_object.pk', icon=icon_cabinet_list,
-    permissions=(permission_document_view,), text=_('Cabinets'),
+    permissions=(permission_cabinet_view,), text=_('Cabinets'),
     view='cabinets:document_cabinet_list'
 )
 link_document_cabinet_remove = Link(
@@ -75,7 +74,7 @@ link_cabinet_edit = Link(
     view='cabinets:cabinet_edit'
 )
 link_cabinet_list = Link(
-    condition=get_cascade_condition(
+    condition=factory_condition_queryset_access(
         app_label='cabinets', model_name='Cabinet',
         object_permission=permission_cabinet_view,
     ), icon=icon_cabinet_list,

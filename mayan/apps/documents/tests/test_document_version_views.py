@@ -6,15 +6,15 @@ from mayan.apps.messaging.events import event_message_created
 from mayan.apps.messaging.models import Message
 from mayan.apps.storage.events import event_download_file_created
 from mayan.apps.storage.models import DownloadFile
-from mayan.apps.testing.tests.mixins import ContentTypeTestCaseMixin
 
 from ..events import (
-    event_document_version_edited, event_document_version_exported,
-    event_document_viewed
+    event_document_version_deleted, event_document_version_edited,
+    event_document_version_exported, event_document_viewed
 )
 from ..permissions import (
-    permission_document_version_edit, permission_document_version_export,
-    permission_document_version_print, permission_document_version_view
+    permission_document_version_delete, permission_document_version_edit,
+    permission_document_version_export, permission_document_version_print,
+    permission_document_version_view
 )
 
 from .base import (
@@ -67,7 +67,7 @@ class DocumentVersionViewTestCase(
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, self.test_document)
-        self.assertEqual(events[0].actor, self.test_document_version)
+        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_document_version)
         self.assertEqual(events[0].verb, event_document_version_edited.id)
 
@@ -92,6 +92,93 @@ class DocumentVersionViewTestCase(
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
+
+    def test_document_version_delete_single_view_no_permission(self):
+        self._create_test_document_version()
+
+        document_version_count = self.test_document.versions.count()
+
+        self._clear_events()
+
+        response = self._request_test_document_version_delete_single_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            self.test_document.versions.count(), document_version_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_version_delete_single_view_with_access(self):
+        self._create_test_document_version()
+        self.grant_access(
+            obj=self.test_document_version,
+            permission=permission_document_version_delete
+        )
+
+        document_version_count = self.test_document.versions.count()
+
+        self._clear_events()
+
+        response = self._request_test_document_version_delete_single_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            self.test_document.versions.count(), document_version_count - 1
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].verb, event_document_version_deleted.id)
+
+    def test_document_version_delete_multiple_view_no_permission(self):
+        self._create_test_document_version()
+
+        document_version_count = self.test_document.versions.count()
+
+        self._clear_events()
+
+        response = self._request_test_document_version_delete_multiple_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            self.test_document.versions.count(), document_version_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_version_delete_multiple_view_with_access(self):
+        self._create_test_document_version()
+
+        document_version_count = self.test_document.versions.count()
+
+        self.grant_access(
+            obj=self.test_document_version,
+            permission=permission_document_version_delete
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_version_delete_multiple_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            self.test_document.versions.count(), document_version_count - 1
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].verb, event_document_version_deleted.id)
 
     def test_document_version_edit_view_no_permission(self):
         document_version_comment = self.test_document_version.comment
@@ -411,8 +498,7 @@ class DocumentVersionExportViewTestCase(
 
 
 class DocumentVersionCachePurgeViewTestCase(
-    CachePartitionViewTestMixin, ContentTypeTestCaseMixin,
-    GenericDocumentViewTestCase
+    CachePartitionViewTestMixin, GenericDocumentViewTestCase
 ):
     def test_document_version_cache_purge_no_permission(self):
         self.test_object = self.test_document_version

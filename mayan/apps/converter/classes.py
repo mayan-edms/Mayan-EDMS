@@ -24,10 +24,12 @@ from mayan.apps.storage.compressed_files import MsgArchive
 from mayan.apps.storage.literals import MSG_MIME_TYPES
 from mayan.apps.storage.settings import setting_temporary_directory
 from mayan.apps.storage.utils import (
-    NamedTemporaryFile, fs_cleanup, mkdtemp
+    NamedTemporaryFile, TemporaryDirectory, fs_cleanup
 )
 
-from .exceptions import InvalidOfficeFormat, OfficeConversionError
+from .exceptions import (
+    InvalidOfficeFormat, LayerError, OfficeConversionError
+)
 from .literals import (
     CONVERTER_OFFICE_FILE_MIMETYPES, DEFAULT_LIBREOFFICE_PATH,
     DEFAULT_PAGE_NUMBER, DEFAULT_PILLOW_FORMAT
@@ -105,7 +107,7 @@ class ConverterBase:
 
         if output_format.upper() == 'JPEG':
             # JPEG doesn't support transparency channel, convert the image to
-            # RGB. Removes modes: P and RGBA
+            # RGB. Removes modes: P and RGBA.
             new_mode = 'RGB'
 
         self.image.convert(new_mode).save(image_buffer, format=output_format)
@@ -126,13 +128,13 @@ class ConverterBase:
         If the file is a paged image get the page if not convert it to a
         paged image format and return the specified page as an image.
         """
-        # Starting with #0
+        # Starting with #0.
         self.file_object.seek(0)
 
         try:
             self.image = Image.open(fp=self.file_object)
         except IOError:
-            # Cannot identify image file
+            # Cannot identify image file.
             self.image = self.convert(page_number=page_number)
         except PIL.Image.DecompressionBombError as exception:
             logger.error(
@@ -148,7 +150,7 @@ class ConverterBase:
 
     def soffice(self):
         """
-        Executes LibreOffice as a sub process
+        Executes LibreOffice as a sub process.
         """
         if not self.command_libreoffice:
             raise OfficeConversionError(
@@ -166,43 +168,41 @@ class ConverterBase:
             self.file_object.seek(0)
             temporary_file_object.seek(0)
 
-            libreoffice_home_directory = mkdtemp()
-            args = (
-                temporary_file_object.name, '--outdir', setting_temporary_directory.value,
-                '-env:UserInstallation=file://{}'.format(
-                    os.path.join(
-                        libreoffice_home_directory, 'LibreOffice_Conversion'
+            with TemporaryDirectory() as libreoffice_home_directory:
+                args = (
+                    temporary_file_object.name, '--outdir', setting_temporary_directory.value,
+                    '-env:UserInstallation=file://{}'.format(
+                        os.path.join(
+                            libreoffice_home_directory, 'LibreOffice_Conversion'
+                        )
+                    ),
+                )
+
+                kwargs = {'_env': {'HOME': libreoffice_home_directory}}
+
+                if self.mime_type == 'text/plain':
+                    kwargs.update(
+                        {'infilter': 'Text (encoded):UTF8,LF,,,'}
                     )
-                ),
-            )
 
-            kwargs = {'_env': {'HOME': libreoffice_home_directory}}
-
-            if self.mime_type == 'text/plain':
-                kwargs.update(
-                    {'infilter': 'Text (encoded):UTF8,LF,,,'}
-                )
-
-            try:
-                self.command_libreoffice(*args, **kwargs)
-            except sh.ErrorReturnCode as exception:
-                temporary_file_object.close()
-                raise OfficeConversionError(exception)
-            except Exception as exception:
-                temporary_file_object.close()
-                logger.error(
-                    'Exception launching Libre Office; %s', exception,
-                    exc_info=True
-                )
-                raise
-            finally:
-                fs_cleanup(filename=libreoffice_home_directory)
+                try:
+                    self.command_libreoffice(*args, **kwargs)
+                except sh.ErrorReturnCode as exception:
+                    temporary_file_object.close()
+                    raise OfficeConversionError(exception)
+                except Exception as exception:
+                    temporary_file_object.close()
+                    logger.error(
+                        'Exception launching LibreOffice; %s', exception,
+                        exc_info=True
+                    )
+                    raise
 
             # LibreOffice return a PDF file with the same name as the input
             # provided but with the .pdf extension.
 
             # Get the converted output file path out of the temporary file
-            # name plus the temporary directory
+            # name plus the temporary directory.
 
             filename, extension = os.path.splitext(
                 os.path.basename(temporary_file_object.name)
@@ -221,11 +221,10 @@ class ConverterBase:
         # Don't use context manager with the NamedTemporaryFile on purpose
         # so that it is deleted when the caller closes the file and not
         # before.
-
         temporary_converted_file_object = NamedTemporaryFile()
 
         # Copy the LibreOffice output file to a new named temporary file
-        # and delete the converted file
+        # and delete the converted file.
         with open(file=converted_file_path, mode='rb') as converted_file_object:
             shutil.copyfileobj(
                 fsrc=converted_file_object, fdst=temporary_converted_file_object
@@ -333,13 +332,12 @@ class Layer:
 
         self.__class__._registry[name] = self
 
-    def get_permission(self, action):
-        return self.permissions.get(action, None)
-
     def __str__(self):
         return force_text(s=self.label)
 
-    def add_transformation_to(self, obj, transformation_class, arguments=None):
+    def add_transformation_to(
+        self, obj, transformation_class, arguments=None, order=None
+    ):
         ContentType = apps.get_model(
             app_label='contenttypes', model_name='ContentType'
         )
@@ -347,13 +345,22 @@ class Layer:
         object_layer, created = self.stored_layer.object_layers.get_or_create(
             content_type=content_type, object_id=obj.pk
         )
-        object_layer.transformations.create(
-            name=transformation_class.name, arguments=arguments
-        )
+
+        if self in transformation_class._layer_transformations:
+            return object_layer.transformations.create(
+                arguments=arguments or '', order=order,
+                name=transformation_class.name
+            )
+        else:
+            raise LayerError(
+                'Transformation `{}` not registered for layer `{}`.'.format(
+                    transformation_class, self
+                )
+            )
 
     def copy_transformations(self, source, targets, delete_existing=False):
         """
-        Copy transformation from source to all targets
+        Copy transformation from source to all targets.
         """
         ContentType = apps.get_model(
             app_label='contenttypes', model_name='ContentType'
@@ -400,10 +407,13 @@ class Layer:
 
         return stored_layer
 
+    def get_permission(self, action):
+        return self.permissions.get(action, None)
+
     def get_transformations_for(self, obj, as_classes=False):
         """
         as_classes == True returns the transformation classes from .classes
-        ready to be feed to the converter class
+        ready to be feed to the converter class.
         """
         LayerTransformation = apps.get_model(
             app_label='converter', model_name='LayerTransformation'

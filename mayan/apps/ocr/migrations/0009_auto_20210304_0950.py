@@ -9,7 +9,9 @@ def code_remap_document_version_pages_ocr_content(apps, schema_editor):
     document version page that is connected to the original document file
     page.
     """
-    cursor_primary = schema_editor.connection.create_cursor(name='merged_content_page_id')
+    cursor_primary = schema_editor.connection.create_cursor(
+        name='merged_content_page_id'
+    )
     cursor_secondary = schema_editor.connection.cursor()
 
     query = '''
@@ -22,12 +24,18 @@ def code_remap_document_version_pages_ocr_content(apps, schema_editor):
                 {documents_documentversionpage}.{object_id} = {ocr_documentpageocrcontent}.{document_page_id}
             )
     '''.format(
-        content=schema_editor.connection.ops.quote_name('content'),
-        document_page_id=schema_editor.connection.ops.quote_name('document_page_id'),
-        documents_documentversionpage=schema_editor.connection.ops.quote_name('documents_documentversionpage'),
-        id=schema_editor.connection.ops.quote_name('id'),
-        object_id=schema_editor.connection.ops.quote_name('object_id'),
-        ocr_documentpageocrcontent=schema_editor.connection.ops.quote_name('ocr_documentpageocrcontent')
+        content=schema_editor.connection.ops.quote_name(name='content'),
+        document_page_id=schema_editor.connection.ops.quote_name(
+            name='document_page_id'
+        ),
+        documents_documentversionpage=schema_editor.connection.ops.quote_name(
+            name='documents_documentversionpage'
+        ),
+        id=schema_editor.connection.ops.quote_name(name='id'),
+        object_id=schema_editor.connection.ops.quote_name(name='object_id'),
+        ocr_documentpageocrcontent=schema_editor.connection.ops.quote_name(
+            name='ocr_documentpageocrcontent'
+        )
     )
 
     cursor_primary.execute(query)
@@ -37,7 +45,9 @@ def code_remap_document_version_pages_ocr_content(apps, schema_editor):
             content,document_version_page_id
         ) VALUES {{}};
     '''.format(
-        ocr_documentversionpageocrcontent=schema_editor.connection.ops.quote_name('ocr_documentversionpageocrcontent')
+        ocr_documentversionpageocrcontent=schema_editor.connection.ops.quote_name(
+            name='ocr_documentversionpageocrcontent'
+        )
     )
 
     FETCH_SIZE = 10000

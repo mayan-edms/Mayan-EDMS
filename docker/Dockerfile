@@ -5,7 +5,7 @@
 #              Mayan EDMS.
 ####
 
-FROM debian:10.8-slim as base_image
+FROM debian:10.10-slim as base_image
 
 LABEL maintainer="Roberto Rosario roberto.rosario@mayan-edms.com"
 
@@ -24,15 +24,18 @@ RUN set -x \
 # Install base OS packages to run Mayan EDMS.
 && echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list \
 && echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list \
+&& echo "deb http://deb.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list \
+&& echo "deb-src http://deb.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list \
+&& echo "Package: *\nPin: release n=bullseye\nPin-Priority: 50\n" > /etc/apt/preferences \
 && DEBIAN_FRONTEND=noninteractive \
 apt-get update \
-&& apt-get install -y --no-install-recommends -t buster-backports \
+&& apt-get install --no-install-recommends --target-release buster-backports --yes \
     libreoffice-calc-nogui \
     libreoffice-draw-nogui \
     libreoffice-impress-nogui \
     libreoffice-math-nogui \
     libreoffice-writer-nogui \
-&& apt-get install -y --no-install-recommends \
+&& apt-get install --no-install-recommends --yes \
     ca-certificates \
     exiftool \
     fonts-arphic-uming \
@@ -53,10 +56,11 @@ apt-get update \
     python3-distutils \
     sane-utils \
     sudo \
-    supervisor \
     tesseract-ocr \
+&& apt-get install --no-install-recommends --target-release bullseye --yes \
+    supervisor \
 # Remove make and build dependencies.
-&& apt-get remove -y \
+&& apt-get remove --purge --yes \
     make \
     libproxy-tools \
     libreoffice-avmedia-backend-vlc \
@@ -66,7 +70,7 @@ apt-get update \
     adwaita-icon-theme \
     gsettings-desktop-schemas \
     libgstreamer-plugins-base1.0-0 \
-&& apt-get autoremove -y --purge \
+&& apt-get autoremove --purge --yes \
 # Add mayan user.
 && adduser mayan --disabled-password --disabled-login --no-create-home --gecos "" \
 # Pillow can't find zlib or libjpeg on aarch64 (ODROID C2).
@@ -110,7 +114,7 @@ COPY --chown=mayan:mayan mayan /src/mayan
 
 # Install development packages needed to build the Python packages.
 RUN DEBIAN_FRONTEND=noninteractive \
-apt-get install -y --no-install-recommends \
+apt-get install --no-install-recommends --yes \
     default-libmysqlclient-dev \
     libffi-dev \
     libjpeg-dev \
@@ -141,14 +145,13 @@ RUN set -a \
     mysqlclient==${PYTHON_MYSQL_VERSION} \
     psycopg2==${PYTHON_PSYCOPG2_VERSION} \
     redis==${PYTHON_REDIS_VERSION} \
-    flower==${PYTHON_FLOWER_VERSION} \
 # psutil is needed by ARM builds otherwise gevent and gunicorn fail to start.
 && UNAME=`uname -m` && if [ "${UNAME#*arm}" != ${UNAME} ]; then \
     pip install --no-cache-dir \
     psutil==${PYTHON_PSUTIL_VERSION} \
 ; fi \
 # Install the Python packages needed to build Mayan EDMS.
-&& pip install --no-cache-dir -r /src/requirements/build.txt \
+&& pip install --no-cache-dir --requirement /src/requirements/build.txt \
 # Build Mayan EDMS.
 && python3 setup.py sdist \
 && pip wheel --no-index --no-deps --wheel-dir dist dist/mayan-edms-*.tar.gz \
@@ -187,7 +190,7 @@ RUN set -a \
 && chmod +x /usr/local/bin/entrypoint.sh \
 && ${PROJECT_INSTALL_DIR}bin/mayan-edms.py platformtemplate docker_supervisord > ${SUPERVISOR_CONFIGURATION_DIRECTORY}${SUPERVISOR_CONFIGURATION_FILENAME} \
 && apt-get clean autoclean \
-&& apt-get autoremove --purge -y \
+&& apt-get autoremove --purge --yes \
 && rm -rf /var/lib/apt/lists/* \
 && rm -f /var/cache/apt/archives/*.deb \
 # Remove temporary files owned by root from the platformtemplate step.

@@ -151,13 +151,14 @@ class TransformationCreateView(
 
     def form_valid(self, form):
         object_layer, created = ObjectLayer.objects.get_for(
-            obj=self.external_object, layer=self.layer
+            layer=self.layer, obj=self.external_object
         )
 
         instance = form.save(commit=False)
         instance.content_object = self.external_object
         instance.name = self.kwargs['transformation_name']
         instance.object_layer = object_layer
+
         try:
             instance.full_clean()
             instance.save()

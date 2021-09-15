@@ -1,12 +1,15 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 
+from ..links import link_group_setup, link_user_setup
+
 from .literals import (
-    TEST_CASE_SUPERUSER_EMAIL, TEST_CASE_SUPERUSER_PASSWORD, TEST_CASE_SUPERUSER_USERNAME,
-    TEST_CASE_GROUP_NAME, TEST_GROUP_NAME_EDITED, TEST_CASE_USER_EMAIL,
-    TEST_CASE_USER_PASSWORD, TEST_CASE_USER_USERNAME, TEST_GROUP_NAME,
-    TEST_USER_EMAIL, TEST_USER_USERNAME, TEST_USER_USERNAME_EDITED,
-    TEST_USER_PASSWORD, TEST_USER_PASSWORD_EDITED
+    TEST_CASE_GROUP_NAME, TEST_CASE_SUPERUSER_EMAIL,
+    TEST_CASE_SUPERUSER_PASSWORD, TEST_CASE_SUPERUSER_USERNAME,
+    TEST_CASE_USER_EMAIL, TEST_CASE_USER_PASSWORD, TEST_CASE_USER_USERNAME,
+    TEST_GROUP_NAME, TEST_GROUP_NAME_EDITED, TEST_USER_EMAIL,
+    TEST_USER_PASSWORD, TEST_USER_PASSWORD_EDITED, TEST_USER_USERNAME,
+    TEST_USER_USERNAME_EDITED
 )
 
 
@@ -56,6 +59,13 @@ class GroupAPIViewTestMixin:
 
     def _request_test_group_list_api_view(self):
         return self.get(viewname='rest_api:group-list')
+
+
+class GroupLinkTestMixin:
+    def _resolve_group_setup_link(self):
+        self.add_test_view()
+        context = self.get_test_view()
+        return link_group_setup.resolve(context=context)
 
 
 class GroupTestMixin:
@@ -141,10 +151,17 @@ class GroupViewTestMixin:
         self.test_group = Group.objects.filter(name=TEST_GROUP_NAME).first()
         return reponse
 
-    def _request_test_group_delete_view(self):
+    def _request_test_group_delete_single_view(self):
         return self.post(
-            viewname='user_management:group_delete', kwargs={
+            viewname='user_management:group_delete_single', kwargs={
                 'group_id': self.test_group.pk
+            }
+        )
+
+    def _request_test_group_delete_multiple_view(self):
+        return self.post(
+            viewname='user_management:group_delete_multiple', data={
+                'id_list': self.test_group.pk
             }
         )
 
@@ -232,6 +249,13 @@ class UserGroupAPIViewTestMixin:
                 'user_id': self.test_user.pk
             }
         )
+
+
+class UserLinkTestMixin:
+    def _resolve_user_setup_link(self):
+        self.add_test_view()
+        context = self.get_test_view()
+        return link_user_setup.resolve(context=context)
 
 
 class UserTestCaseMixin:
@@ -340,7 +364,7 @@ class UserViewTestMixin:
 
     def _request_test_superuser_delete_view(self):
         return self.post(
-            viewname='user_management:user_delete',
+            viewname='user_management:user_delete_single',
             kwargs={'user_id': self.test_superuser.pk}
         )
 
@@ -363,15 +387,15 @@ class UserViewTestMixin:
         ).first()
         return reponse
 
-    def _request_test_user_delete_view(self):
+    def _request_test_user_delete_single_view(self):
         return self.post(
-            viewname='user_management:user_delete',
+            viewname='user_management:user_delete_single',
             kwargs={'user_id': self.test_user.pk}
         )
 
     def _request_test_user_delete_multiple_view(self):
         return self.post(
-            viewname='user_management:user_multiple_delete', data={
+            viewname='user_management:user_delete_multiple', data={
                 'id_list': self.test_user.pk
             }
         )

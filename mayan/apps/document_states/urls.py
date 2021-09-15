@@ -1,19 +1,17 @@
 from django.conf.urls import url
 
-from .api_views import (
-    APIWorkflowInstanceListView,
-    APIWorkflowInstanceDetailView,
+from .api_views.workflow_instance_api_views import (
+    APIWorkflowInstanceListView, APIWorkflowInstanceDetailView,
     APIWorkflowInstanceLogEntryDetailView,
     APIWorkflowInstanceLogEntryListView,
-    APIWorkflowTemplateDetailView,
-    APIWorkflowTemplateDocumentTypeAddView,
+    APIWorkflowInstanceLogEntryTransitionListView,
+)
+from .api_views.workflow_template_api_views import (
+    APIWorkflowTemplateDetailView, APIWorkflowTemplateDocumentTypeAddView,
     APIWorkflowTemplateDocumentTypeListView,
-    APIWorkflowTemplateDocumentTypeRemoveView,
-    APIWorkflowTemplateImageView,
-    APIWorkflowTemplateListView,
-    APIWorkflowTemplateStateListView,
-    APIWorkflowTemplateStateView,
-    APIWorkflowTemplateTransitionListView,
+    APIWorkflowTemplateDocumentTypeRemoveView, APIWorkflowTemplateImageView,
+    APIWorkflowTemplateListView, APIWorkflowTemplateStateListView,
+    APIWorkflowTemplateStateView, APIWorkflowTemplateTransitionListView,
     APIWorkflowTemplateTransitionView,
     APIWorkflowTemplateTransitionFieldDetailView,
     APIWorkflowTemplateTransitionFieldListView
@@ -349,8 +347,13 @@ api_urls = [
         view=APIWorkflowInstanceLogEntryListView.as_view()
     ),
     url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/workflow_instances/(?P<workflow_instance_id>[0-9]+)/log_entries/transitions/$',
+        name='workflow-instance-log-entry-transition-list',
+        view=APIWorkflowInstanceLogEntryTransitionListView.as_view()
+    ),
+    url(
         regex=r'^documents/(?P<document_id>[0-9]+)/workflow_instances/(?P<workflow_instance_id>[0-9]+)/log_entries/(?P<workflow_instance_log_entry_id>[0-9]+)/$',
         name='workflow-instance-log-entry-detail',
         view=APIWorkflowInstanceLogEntryDetailView.as_view()
-    ),
+    )
 ]

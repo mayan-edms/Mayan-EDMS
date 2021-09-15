@@ -21,7 +21,7 @@ logger = logging.getLogger(name=__name__)
 
 class FavoriteDocumentListView(DocumentListView):
     def get_document_queryset(self):
-        return FavoriteDocument.objects.get_for_user(user=self.request.user)
+        return FavoriteDocument.valid.get_for_user(user=self.request.user)
 
     def get_extra_context(self):
         context = super().get_extra_context()
@@ -42,7 +42,7 @@ class FavoriteDocumentListView(DocumentListView):
 class FavoriteAddView(MultipleObjectConfirmActionView):
     object_permission = permission_document_view
     pk_url_kwarg = 'document_id'
-    source_queryset = Document.valid
+    source_queryset = Document.valid.all()
     success_message = _(
         '%(count)d document added to favorites.'
     )
@@ -52,8 +52,6 @@ class FavoriteAddView(MultipleObjectConfirmActionView):
 
     def get_extra_context(self):
         context = {
-            'submit_label': _('Add'),
-            'submit_icon': icon_favorite_document_list,
             'title': ungettext(
                 singular='Add the selected document to favorites?',
                 plural='Add the selected documents to favorites?',
@@ -67,7 +65,7 @@ class FavoriteAddView(MultipleObjectConfirmActionView):
         return context
 
     def object_action(self, form, instance):
-        FavoriteDocument.objects.add_for_user(
+        FavoriteDocument.valid.add_for_user(
             document=instance, user=self.request.user
         )
 
@@ -76,7 +74,7 @@ class FavoriteRemoveView(MultipleObjectConfirmActionView):
     error_message = _('Document "%(instance)s" is not in favorites.')
     object_permission = permission_document_view
     pk_url_kwarg = 'document_id'
-    source_queryset = Document.valid
+    source_queryset = Document.valid.all()
     success_message = _(
         '%(count)d document removed from favorites.'
     )
@@ -86,8 +84,6 @@ class FavoriteRemoveView(MultipleObjectConfirmActionView):
 
     def get_extra_context(self):
         context = {
-            'submit_label': _('Remove'),
-            'submit_icon': icon_favorite_document_list,
             'title': ungettext(
                 singular='Remove the selected document from favorites?',
                 plural='Remove the selected documents from favorites?',
@@ -102,7 +98,7 @@ class FavoriteRemoveView(MultipleObjectConfirmActionView):
 
     def object_action(self, form, instance):
         try:
-            FavoriteDocument.objects.remove_for_user(
+            FavoriteDocument.valid.remove_for_user(
                 document=instance, user=self.request.user
             )
         except FavoriteDocument.DoesNotExist:

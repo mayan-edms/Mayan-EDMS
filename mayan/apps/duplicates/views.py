@@ -15,10 +15,6 @@ from .icons import icon_duplicated_document_list
 from .models import DuplicateBackendEntry
 from .tasks import task_duplicates_scan_all
 
-__all__ = (
-    'DocumentDuplicatesListView', 'DuplicatedDocumentListView',
-    'ScanDuplicatedDocuments'
-)
 logger = logging.getLogger(name=__name__)
 
 

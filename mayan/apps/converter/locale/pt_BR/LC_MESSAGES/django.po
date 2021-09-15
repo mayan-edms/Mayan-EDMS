@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -45,15 +45,15 @@ msgstr "Exceção ao determinar o número de páginas do PDF; %s"
 msgid "Exception determining page count using Pillow; %s"
 msgstr "Exceção ao determinar o número de páginas usando Pillow; %s"
 
-#: classes.py:155
+#: classes.py:157
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice não instalado ou não encontrado."
 
-#: classes.py:259
+#: classes.py:261
 msgid "Not an office file format."
 msgstr "Não é um formato de arquivo office."
 
-#: classes.py:385
+#: classes.py:395
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
@@ -61,7 +61,7 @@ msgstr ""
 "As transformações permitem mudar a aparência de documentos sem fazer "
 "mudanças permanentes nos arquivos dos documentos."
 
-#: classes.py:433
+#: classes.py:446
 msgid "transformation"
 msgstr "transformação"
 
@@ -444,12 +444,12 @@ msgstr ""
 msgid "No assets available"
 msgstr "Nenhum recurso disponível"
 
-#: views.py:167
+#: views.py:168
 #, python-format
 msgid "Error creating transformation: %s."
 msgstr "Erro ao criar a transformação: %s"
 
-#: views.py:184
+#: views.py:185
 #, python-format
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
@@ -458,35 +458,35 @@ msgstr ""
 "Criar a transformação \"%(transformation)s\" de camada \"%(layer)s\" para: "
 "%(object)s"
 
-#: views.py:240
+#: views.py:241
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr "Excluir transformaçãa \"%(transformation)s\" para: %(content_object)s?"
 
-#: views.py:289
+#: views.py:290
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr "Editar transformação \"%(transformation)s\" para: %(content_object)s"
 
-#: views.py:343
+#: views.py:344
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
 msgstr "Não existem entradas para a camada \"%(layer_name)s\""
 
-#: views.py:346
+#: views.py:347
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
 msgstr "Transformações da camada \"%(layer)s\" para: %(object)s"
 
-#: views.py:391
+#: views.py:392
 msgid "Transformation created successfully."
 msgstr "Transformação criada com sucesso"
 
-#: views.py:415
+#: views.py:416
 msgid "Select"
 msgstr "Selecionar"
 
-#: views.py:417
+#: views.py:418
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
 msgstr "Selecionar nova transformação de camada \"%(layer)s\"  para: %(object)s"

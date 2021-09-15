@@ -6,31 +6,8 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 
-from mayan.apps.views.mixins import ExternalObjectViewMixin
-
-
-class ActionAPIViewMixin:
-    action_response_status = None
-
-    def get_success_headers(self, data):
-        try:
-            return {'Location': str(data[api_settings.URL_FIELD_NAME])}
-        except (TypeError, KeyError):
-            return {}
-
-    def perform_view_action(self):
-        raise ImproperlyConfigured(
-            'Need to specify the `.perform_action()` method.'
-        )
-
-    def post(self, request, *args, **kwargs):
-        return self.view_action(request=request, *args, **kwargs)
-
-    def view_action(self, request, *args, **kwargs):
-        self.perform_view_action()
-        return Response(
-            status=self.action_response_status or status.HTTP_200_OK
-        )
+from mayan.apps.databases.utils import check_queryset
+from mayan.apps.views.mixins import ExternalObjectBaseMixin
 
 
 class AsymmetricSerializerAPIViewMixin:
@@ -73,6 +50,12 @@ class AsymmetricSerializerAPIViewMixin:
             return self.write_serializer_class
 
 
+class CheckQuerysetAPIViewMixin:
+    def get_queryset(self, *args, **kwargs):
+        queryset = super().get_queryset(*args, **kwargs)
+        return check_queryset(self=self, queryset=queryset)
+
+
 class ContentTypeAPIViewMixin:
     """
     This mixin makes it easier for API views to retrieve a content type from
@@ -93,10 +76,15 @@ class ContentTypeAPIViewMixin:
         )
 
 
-class ExternalObjectAPIViewMixin(ExternalObjectViewMixin):
+class ExternalObjectAPIViewMixin(ExternalObjectBaseMixin):
     """
     Override get_external_object to use REST API get_object_or_404.
     """
+    def initial(self, *args, **kwargs):
+        result = super().initial(*args, **kwargs)
+        self.external_object = self.get_external_object()
+        return result
+
     def get_serializer_extra_context(self):
         """
         Add the external object to the serializer context. Useful for the
@@ -104,7 +92,7 @@ class ExternalObjectAPIViewMixin(ExternalObjectViewMixin):
         """
         result = {}
         if self.kwargs:
-            result['external_object'] = self.get_external_object()
+            result['external_object'] = self.external_object
 
         return result
 
@@ -129,8 +117,8 @@ class ExternalContentTypeObjectAPIViewMixin(
     external_object_pk_url_kwarg = 'object_id'
 
     def get_external_object_queryset(self):
-        content_type = self.get_content_type()
-        self.external_object_class = content_type.model_class()
+        self.content_type = self.get_content_type()
+        self.external_object_class = self.content_type.model_class()
         return super().get_external_object_queryset()
 
 

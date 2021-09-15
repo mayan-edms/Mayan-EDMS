@@ -1,5 +1,3 @@
-import json
-
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
@@ -7,19 +5,19 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.settings import (
     setting_project_title, setting_project_url
 )
-from mayan.apps.views.forms import DynamicModelForm
+from mayan.apps.views.forms import BackendDynamicForm
 
 from .classes import MailerBackend
 from .models import UserMailer
 from .permissions import permission_user_mailer_use
 from .settings import (
-    setting_document_body_template, setting_document_subject_template,
-    setting_link_body_template, setting_link_subject_template
+    setting_attachment_body_template, setting_attachment_subject_template,
+    setting_document_link_body_template, setting_document_link_subject_template
 )
 from .validators import validate_email_multiple
 
 
-class DocumentMailForm(forms.Form):
+class ObjectMailForm(forms.Form):
     def __init__(self, *args, **kwargs):
         as_attachment = kwargs.pop('as_attachment', False)
         user = kwargs.pop('user', None)
@@ -27,26 +25,26 @@ class DocumentMailForm(forms.Form):
         if as_attachment:
             self.fields[
                 'subject'
-            ].initial = setting_document_subject_template.value
+            ].initial = setting_attachment_subject_template.value
 
             self.fields[
                 'body'
-            ].initial = setting_document_body_template.value % {
+            ].initial = setting_attachment_body_template.value % {
                 'project_title': setting_project_title.value,
                 'project_website': setting_project_url.value
             }
         else:
             self.fields[
                 'subject'
-            ].initial = setting_link_subject_template.value
-            self.fields['body'].initial = setting_link_body_template.value % {
+            ].initial = setting_document_link_subject_template.value
+            self.fields['body'].initial = setting_document_link_body_template.value % {
                 'project_title': setting_project_title.value,
                 'project_website': setting_project_url.value
             }
 
         queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_user_mailer_use, user=user,
-            queryset=UserMailer.objects.filter(enabled=True)
+            permission=permission_user_mailer_use,
+            queryset=UserMailer.objects.filter(enabled=True), user=user
         )
 
         self.fields['user_mailer'].queryset = queryset
@@ -83,35 +81,10 @@ class UserMailerBackendSelectionForm(forms.Form):
         self.fields['backend'].choices = MailerBackend.get_choices()
 
 
-class UserMailerDynamicForm(DynamicModelForm):
+class UserMailerDynamicForm(BackendDynamicForm):
     class Meta:
-        fields = ('label', 'default', 'enabled', 'backend_data')
+        fields = ('label', 'enabled')
         model = UserMailer
-        widgets = {'backend_data': forms.widgets.HiddenInput}
-
-    def __init__(self, *args, **kwargs):
-        result = super().__init__(*args, **kwargs)
-        if self.instance.backend_data:
-            backend_data = json.loads(s=self.instance.backend_data)
-            for key in self.instance.get_backend().fields:
-                self.fields[key].initial = backend_data.get(key)
-
-        return result
-
-    def clean(self):
-        data = super().clean()
-
-        # Consolidate the dynamic fields into a single JSON field called
-        # 'backend_data'.
-        backend_data = {}
-
-        for field_name, field_data in self.schema['fields'].items():
-            backend_data[field_name] = data.pop(
-                field_name, field_data.get('default', None)
-            )
-
-        data['backend_data'] = json.dumps(obj=backend_data)
-        return data
 
 
 class UserMailerTestForm(forms.Form):

@@ -1,0 +1,67 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+APT_PROXY = "http://<host>:<port>"
+VM_BOX = "debian/buster64"
+VM_CPUS = 2
+VM_HOST_PORT = 8000
+VM_NAME = "mayan-edms"
+VM_RAM = "2048"
+PIP_CACHE = "<host>"
+SCRIPT_DEPLOYMENT = "scripts/deployment-basic.sh"
+VAGRANTFILE_API_VERSION = "2"
+
+# Optional:
+# vagrant-proxyconf: vagrant plugin install vagrant-proxyconf
+
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.synced_folder ".", "/vagrant", type: "nfs", nfs_version: 3
+
+  if Vagrant.has_plugin?("vagrant-proxyconf")
+    config.apt_proxy.http  = APT_PROXY
+    config.apt_proxy.https = APT_PROXY
+  end
+
+  # Providers:
+
+  # VirtualBox.
+
+  config.vm.provider :virtualbox do |virtualbox|
+    virtualbox.customize ["modifyvm", :id, "--memory", VM_RAM]
+    virtualbox.cpus = VM_CPUS
+    virtualbox.gui = true
+    virtualbox.memory = VM_RAM
+    virtualbox.name = VM_NAME
+  end
+
+  # Libvirt.
+  config.vm.provider :libvirt do |libvirt|
+    # Local server.
+    # libvirt.uri = "qemu:///system"
+
+    # Remote server.
+    # libvirt.uri = "qemu+ssh://<host>/system"
+    # libvirt.management_network_name = "vagrant-<host>"
+    # libvirt.management_network_address = "192.168.122.0/24"
+
+    libvirt.cpus = VM_CPUS
+    libvirt.memory = VM_RAM
+  end
+
+  # VM configuration.
+  config.vm.define VM_NAME do |mayan_vm|
+    mayan_vm.vm.box = VM_BOX
+    # Allow external access to the VM.
+    # mayan_vm.vm.network "forwarded_port", guest: 8000, host: VM_HOST_PORT, gateway_ports: true, host_ip: "0.0.0.0"
+    mayan_vm.vm.network "forwarded_port", guest: 8000, host: VM_HOST_PORT
+    mayan_vm.vm.provision :shell do |shell|
+      shell.env = {
+        "PIP_INDEX_URL" => "http://" + PIP_CACHE + ":3141/root/pypi/+simple/",
+        "PIP_TRUSTED_HOST" => PIP_CACHE
+      }
+      shell.path = SCRIPT_DEPLOYMENT
+      shell.privileged = false
+    end
+  end

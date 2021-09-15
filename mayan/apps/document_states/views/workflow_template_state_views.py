@@ -45,9 +45,11 @@ class WorkflowTemplateStateActionCreateView(
             'navigation_object_list': ('object', 'workflow'),
             'object': self.external_object,
             'title': _(
-                'Create a "%s" workflow action'
-            ) % self.get_class().label,
-            'workflow': self.external_object.workflow
+                'Create a "%(action_class)s" workflow action for: %(workflow_state)s'
+            ) % {
+                'action_class': self.get_class().label,
+                'workflow_state': self.external_object
+            }, 'workflow': self.external_object.workflow
         }
 
     def get_form_extra_kwargs(self):
@@ -200,7 +202,7 @@ class WorkflowTemplateStateActionSelectionView(
                 'object', 'workflow'
             ),
             'object': self.external_object,
-            'title': _('New workflow state action selection'),
+            'title': _('New workflow state action selection for: %s') % self.external_object,
             'workflow': self.external_object.workflow,
         }
 

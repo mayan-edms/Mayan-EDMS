@@ -4,10 +4,9 @@ from ..classes import Permission, PermissionNamespace
 from ..models import Role
 
 from .literals import (
-    TEST_CASE_ROLE_LABEL, TEST_PERMISSION_LABEL, TEST_PERMISSION_LABEL_2,
-    TEST_PERMISSION_NAME, TEST_PERMISSION_NAME_2, TEST_PERMISSION_NAMESPACE_LABEL,
-    TEST_PERMISSION_NAMESPACE_LABEL_2, TEST_PERMISSION_NAMESPACE_NAME,
-    TEST_PERMISSION_NAMESPACE_NAME_2, TEST_ROLE_LABEL, TEST_ROLE_LABEL_EDITED
+    TEST_CASE_ROLE_LABEL, TEST_PERMISSION_LABEL, TEST_PERMISSION_NAME,
+    TEST_PERMISSION_NAMESPACE_LABEL, TEST_PERMISSION_NAMESPACE_NAME,
+    TEST_ROLE_LABEL, TEST_ROLE_LABEL_EDITED
 )
 
 
@@ -54,16 +53,6 @@ class PermissionTestMixin:
         self.test_permission = self.test_permission_namespace.add_permission(
             label=TEST_PERMISSION_LABEL,
             name=TEST_PERMISSION_NAME
-        )
-
-    def _create_test_permission_2(self):
-        self.test_permission_namespace_2 = PermissionNamespace(
-            label=TEST_PERMISSION_NAMESPACE_LABEL_2,
-            name=TEST_PERMISSION_NAMESPACE_NAME_2
-        )
-        self.test_permission_2 = self.test_permission_namespace_2.add_permission(
-            label=TEST_PERMISSION_LABEL_2,
-            name=TEST_PERMISSION_NAME_2
         )
 
 
@@ -294,10 +283,17 @@ class RoleViewTestMixin:
 
         return response
 
-    def _request_test_role_delete_view(self):
+    def _request_test_role_delete_single_view(self):
         return self.post(
-            viewname='permissions:role_delete', kwargs={
+            viewname='permissions:role_delete_single', kwargs={
                 'role_id': self.test_role.pk
+            }
+        )
+
+    def _request_test_role_delete_multiple_view(self):
+        return self.post(
+            viewname='permissions:role_delete_multiple', data={
+                'id_list': self.test_role.pk
             }
         )
 

@@ -5,17 +5,18 @@
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
-# Mathias Behrle <mathiasb@m9s.biz>, 2021
 # Berny <berny@bernhard-marx.de>, 2021
 # Felix <felix.com@gmx.com>, 2021
+# Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
+# Mathias Behrle <mathiasb@m9s.biz>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:57+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
-"Last-Translator: Felix <felix.com@gmx.com>, 2021\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,29 +24,29 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:52 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
+#: apps.py:55 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
 #: search.py:17 settings.py:11
 msgid "OCR"
 msgstr "OCR-Schrifterkennung"
 
-#: apps.py:103
+#: apps.py:106
 msgid "The OCR content."
-msgstr ""
+msgstr "Der OCR-Inhalt."
 
-#: apps.py:108
+#: apps.py:111
 msgid "A generator returning the document's pages OCR content."
 msgstr ""
 "Ein Generatorobjekt, das den OCR Inhalt der Dokumentenseiten zurückgibt."
 
-#: apps.py:109
+#: apps.py:112
 msgid "OCR content"
 msgstr "OCR Inhalt"
 
-#: apps.py:133
+#: apps.py:138
 msgid "Date and time"
 msgstr "Datum und Uhrzeit"
 
-#: apps.py:136 models.py:50
+#: apps.py:141 models.py:50
 msgid "Result"
 msgstr "Ergebnis"
 
@@ -58,16 +59,17 @@ msgid "Free Open Source OCR Engine"
 msgstr "Freies OpenSource OCR-Programm"
 
 #: events.py:8
-msgid "Document OCR content deleted"
-msgstr "OCR-Inhalt des Dokumentes gelöscht"
+msgid "Document version OCR content deleted"
+msgstr ""
 
 #: events.py:12
-msgid "Document file submitted for OCR"
-msgstr ""
+msgid "Document version submitted for OCR"
+msgstr "Dokumentenversion, die in die OCR-Warteschlange eingereiht ist"
 
 #: events.py:16
-msgid "Document file OCR finished"
+msgid "Document version OCR finished"
 msgstr ""
+"Dokumentenversion, für die die OCR-Schrifterkennung durchgeführt wurde"
 
 #: forms.py:14 forms.py:47
 msgid "Contents"
@@ -136,7 +138,7 @@ msgstr "Fehler bei der OCR-Schrifterkennung für Dokumentenversion"
 
 #: models.py:67
 msgid "Document version page"
-msgstr ""
+msgstr "Seite der Dokumentenversion"
 
 #: models.py:71
 msgid "The actual text content extracted by the OCR backend."
@@ -237,7 +239,7 @@ msgstr "OCR-Einstellungen für Dokumententyp %s bearbeiten."
 
 #: workflow_actions.py:15
 msgid "Page condition"
-msgstr ""
+msgstr "Seitenbedingung"
 
 #: workflow_actions.py:19
 msgid ""
@@ -247,15 +249,20 @@ msgid ""
 "logical None, or an empty string ('') are considered to be logical false, "
 "any other value is considered to be the logical true."
 msgstr ""
+"Die Bedingung, die bestimmt, ob der OCR-Inhalt wird oder nicht. Die "
+"Bedingung wird anhand der aktuellen Dokumentenseite ausgewertet. "
+"Bedingungen, die keinen Wert zurückgeben, die das logische Python None oder "
+"eine leere Zeichenfolge ('') zurückgeben, werden als logisch falsch "
+"betrachtet, jeder andere Wert wird als logisch wahr angesehen."
 
 #: workflow_actions.py:31
 msgid "Page content"
-msgstr ""
+msgstr "Inhalt der Seite"
 
 #: workflow_actions.py:35
 msgid "A template that will generate the OCR content to be saved."
-msgstr ""
+msgstr "Eine Vorlage, die den zu speichernden OCR-Inhalt erstellt."
 
 #: workflow_actions.py:43
 msgid "Update document page OCR content"
-msgstr ""
+msgstr "OCR-Inhalt der Dokumentenseite aktualisieren"

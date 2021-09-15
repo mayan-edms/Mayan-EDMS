@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2021\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
@@ -41,7 +41,7 @@ msgstr ""
 msgid "Exact document label"
 msgstr ""
 
-#: links.py:18 models.py:41 views.py:77
+#: links.py:18 models.py:41 views.py:73
 msgid "Duplicated documents"
 msgstr "Yinelenen belgeler"
 
@@ -77,20 +77,20 @@ msgstr ""
 msgid "Scan document duplicates"
 msgstr ""
 
-#: views.py:36
+#: views.py:32
 msgid "Only exact copies of this document will be shown in the this list."
 msgstr "Bu listede bu belgenin sadece birebir aynı kopyaları gösterilir. "
 
-#: views.py:40
+#: views.py:36
 msgid "There are no duplicates for this document"
 msgstr "Bu belgenin kopyası bulunmamaktadır"
 
-#: views.py:44
+#: views.py:40
 #, python-format
 msgid "Duplicates for document: %s"
 msgstr "Belge için yineler: %s"
 
-#: views.py:68
+#: views.py:64
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
 "the last byte. Files that have the same text or OCR but are not identical or"
@@ -101,14 +101,14 @@ msgstr ""
 "aynı olmayan ya da farklı bir dosya uzantısıyla kaydedilen belgeler "
 "(belge.pdf ve belge.docx gibi ) yinelenen belge olarak gösterilmemektedir."
 
-#: views.py:75
+#: views.py:71
 msgid "There are no duplicated documents"
 msgstr "Yinelenen belge bulunmamaktadır"
 
-#: views.py:85
+#: views.py:81
 msgid "Scan for duplicated documents?"
 msgstr ""
 
-#: views.py:92
+#: views.py:88
 msgid "Duplicated document scan queued successfully."
 msgstr ""

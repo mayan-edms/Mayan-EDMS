@@ -9,7 +9,7 @@ from mayan.apps.views.widgets import TextAreaDiv
 from .models import DocumentVersionPageOCRContent
 
 
-class DocumentVersionPageOCRContentForm(forms.Form):
+class DocumentVersionPageOCRContentDetailForm(forms.Form):
     contents = forms.CharField(
         label=_('Contents'),
         widget=TextAreaDiv(
@@ -30,12 +30,28 @@ class DocumentVersionPageOCRContentForm(forms.Form):
             page_content = page.ocr_content.content
         except DocumentVersionPageOCRContent.DoesNotExist:
             """
-            Not critical, just ignore and proceed to next page.
+            Not critical, just ignore and display empty content.
             """
         else:
             content = conditional_escape(force_text(s=page_content))
 
         self.fields['contents'].initial = mark_safe(content)
+
+
+class DocumentVersionPageOCRContentEditForm(forms.ModelForm):
+    content = forms.CharField(
+        label=_('Contents'),
+        widget=forms.widgets.Textarea(
+            attrs={
+                'class': 'full-height',
+                'data-height-difference': 360
+            }
+        )
+    )
+
+    class Meta:
+        fields = ('content',)
+        model = DocumentVersionPageOCRContent
 
 
 class DocumentVersionOCRContentForm(forms.Form):

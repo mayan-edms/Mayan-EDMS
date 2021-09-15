@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
@@ -10,26 +10,28 @@
 # Panasoft, 2021
 # Alex Chigrin <chalex84@mail.ru>, 2021
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-09-14 05:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:12+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:24 classes.py:143 links.py:27
+#: apps.py:26 classes.py:175 links.py:27
 msgid "ACLs"
 msgstr "Списки контроля доступа"
 
-#: apps.py:60
+#: apps.py:62
 msgid ""
 "Object for which the access is granted. When sorting objects, only the type "
 "is used and not the actual label of the object."
@@ -37,7 +39,7 @@ msgstr ""
 "Объект, к которому предоставлен доступ. При сортировке используется только "
 "тип объекта, а не его заголовок."
 
-#: apps.py:63
+#: apps.py:65
 msgid "Object"
 msgstr "Объект"
 
@@ -77,12 +79,12 @@ msgstr "Разрешения"
 msgid "Global ACLs"
 msgstr "Глобальные списки контроля доступа"
 
-#: managers.py:230
+#: managers.py:243
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
 msgstr "Объект \"%s\" не является моделью и не может быть проверен на доступ."
 
-#: managers.py:250
+#: managers.py:263
 #, python-format
 msgid "Insufficient access for: %s"
 msgstr "Недостаточный доступ для: %s"
@@ -126,8 +128,8 @@ msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
 "ACL entry instead."
 msgstr ""
-"Список контроля доступа для \"%(object)s\" с использованием роли "
-"\"%(role)s\" уже существует. Отредактируйте этот существующий список."
+"Список контроля доступа для \"%(object)s\" с использованием роли \"%(role)s"
+"\" уже существует. Отредактируйте этот существующий список."
 
 #: views.py:53
 #, python-format
@@ -205,8 +207,7 @@ msgid "Object ID"
 msgstr "ID объекта"
 
 #: workflow_actions.py:35
-msgid ""
-"Numeric identifier of the object for which the access will be modified."
+msgid "Numeric identifier of the object for which the access will be modified."
 msgstr "Числовой идентификатор объекта, к которому будет изменен доступ."
 
 #: workflow_actions.py:40 workflow_actions.py:155

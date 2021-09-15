@@ -1,3 +1,8 @@
+from ..models import DocumentFilePageContent
+
+from .literals import TEST_DOCUMENT_CONTENT
+
+
 class DocumentFileContentToolsViewsTestMixin:
     def _request_document_parsing_error_list_view(self):
         return self.get(viewname='document_parsing:error_list')
@@ -10,12 +15,32 @@ class DocumentFileContentToolsViewsTestMixin:
         )
 
 
+class DocumentFileContentTestMixin:
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_file_parsed_content()
+
+    def _create_test_document_file_parsed_content(self):
+        DocumentFilePageContent.objects.create(
+            document_file_page=self.test_document_file_page,
+            content=TEST_DOCUMENT_CONTENT
+        )
+
+
 class DocumentFileContentViewTestMixin:
-    def _request_test_document_file_content_delete_view(self):
+    def _request_test_document_file_content_delete_single_view(self):
         return self.post(
-            viewname='document_parsing:document_file_content_delete',
+            viewname='document_parsing:document_file_content_delete_single',
             kwargs={
                 'document_file_id': self.test_document_file.pk
+            }
+        )
+
+    def _request_test_document_file_content_delete_multiple_view(self):
+        return self.post(
+            viewname='document_parsing:document_file_content_delete_multiple',
+            data={
+                'id_list': self.test_document_file.pk
             }
         )
 
@@ -65,10 +90,9 @@ class DocumentFileContentViewTestMixin:
         )
 
 
-class DocumentParsingAPITestMixin:
+class DocumentFilePageContentAPITestMixin:
     def _request_document_file_page_content_api_view(self):
         return self.get(
-
             viewname='rest_api:document-file-page-content-view', kwargs={
                 'document_id': self.test_document.pk,
                 'document_file_id': self.test_document_file.pk,

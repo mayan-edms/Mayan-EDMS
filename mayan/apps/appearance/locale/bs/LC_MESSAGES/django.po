@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:56+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
@@ -410,7 +410,6 @@ msgid "Bulk actions"
 msgstr ""
 
 #: templates/appearance/list_toolbar.html:67
-#: templates/appearance/partials/actions_dropdown.html:12
 msgid "Toggle Dropdown"
 msgstr "Toggle Dropdown"
 
@@ -421,10 +420,6 @@ msgstr "Prebacite navigaciju"
 #: templates/appearance/no_results.html:18
 msgid "No results"
 msgstr "Nema rezultata"
-
-#: templates/appearance/partials/actions_dropdown.html:9
-msgid "Actions"
-msgstr "Akcije"
 
 #: templates/appearance/root.html:63
 msgid "Close"
@@ -438,7 +433,7 @@ msgstr "Problem u komunikaciji sa serverom"
 msgid "Check you network connection and try again in a few moments."
 msgstr "Proverite mrežnu vezu i pokušajte ponovo za nekoliko trenutaka."
 
-#: templatetags/appearance_tags.py:62
+#: templatetags/appearance_tags.py:63
 msgid "None"
 msgstr "Nijedno"
 

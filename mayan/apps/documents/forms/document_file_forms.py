@@ -22,8 +22,16 @@ class DocumentFileForm(forms.ModelForm):
 class DocumentFilePreviewForm(forms.Form):
     def __init__(self, *args, **kwargs):
         document_file = kwargs.pop('instance', None)
+        transformation_instance_list = kwargs.pop(
+            'transformation_instance_list', ()
+        )
         super().__init__(*args, **kwargs)
         self.fields['document_file'].initial = document_file
+        self.fields['document_file'].widget.attrs.update(
+            {
+                'transformation_instance_list': transformation_instance_list
+            }
+        )
 
     document_file = DocumentFileField()
 
@@ -40,7 +48,7 @@ class DocumentFilePropertiesForm(DetailForm):
                 'widget': forms.widgets.DateTimeInput
             },
             {
-                'label': _('Mimetype'),
+                'label': _('MIME type'),
                 'field': 'mimetype',
             },
             {

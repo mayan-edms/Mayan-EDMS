@@ -13,6 +13,17 @@ database structure to the newest version if necessary.
     Deleting the volume will delete all the document files.
 
 
+.. important::
+
+   To upgrade the database container, follow the database container upgrade
+   procedure. In some cases, the existing database files may not be compatible
+   with the new database container version. A manual database full dump and
+   subsequent restore may be required.
+
+
+Simple installation
+===================
+
 #. Stop the container to be upgraded:
 
   .. code-block:: console
@@ -63,9 +74,177 @@ database structure to the newest version if necessary.
          this could be a cause.
 
 
-.. important::
+Docker Compose installation
+===========================
 
-   To upgrade the database container, follow the database container upgrade
-   procedure. In some cases, the existing database files may not be compatible
-   with the new database container version. A manual database full dump and
-   subsequent restore may be required.
+.. note::
+
+   If you are invoking the ``docker-compose`` command in the same directory
+   where the file ``docker-compose.yml`` resides, there is no need to
+   add the ``--file docker-compose.yml`` option.
+
+.. note::
+
+   Use the same project name as your did during installation. This example
+   follows the installation shown in :ref:`docker_compose_install` which
+   specifies a project name of ``mayan``.
+
+
+Upgrade between minor versions
+------------------------------
+
+#. Stop and delete the container stack:
+
+   .. code-block:: console
+
+     docker-compose --file docker-compose.yml --project-name mayan down
+
+
+#. Rename the Docker Compose file and keep it for future reference:
+
+   .. code-block:: console
+
+     mv docker-compose.yml docker-compose.yml.bck
+
+
+#. Download the new Docker Compose files:
+
+   .. code-block:: console
+
+     curl https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/docker/docker-compose.yml -O
+     curl https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/docker/env_file -O
+     curl https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/docker/.env -O
+
+
+#. Edit and the adjust the new Docker Compose file, copying over all relevant
+   values like username, password, etc.
+
+
+#. Launch the rest of container stack:
+
+   .. code-block:: console
+
+     docker-compose --file docker-compose.yml --project-name mayan up --detach
+
+   .. note::
+
+     The app container will perform all the necessary migrations to the
+     existing data.
+
+
+Upgrade between major versions
+------------------------------
+
+.. note::
+
+  The additional steps in this process are required to move the database
+  content from one version of PostgreSQL to a new version of PostgreSQL.
+  If the upgrade is between major versions of Mayan EDMS but the major
+  version of the database manager remains the same, this process is not
+  necessary and the simpler upgrade process can be used.
+
+
+#. Dump the existing database into an SQL file.
+
+   .. code-block:: console
+
+     docker-compose --file docker-compose.yml --project-name mayan exec postgresql /bin/bash -c 'pg_dumpall --username="$POSTGRES_USER"' > mayan.sql
+
+
+#. Verify the SQL file:
+
+   .. code-block:: console
+
+     cat mayan.sql | more
+
+
+#. Stop and delete the container stack:
+
+   .. code-block:: console
+
+     docker-compose --file docker-compose.yml --project-name mayan down
+
+
+#. Make a backup of the database binary files:
+
+   .. code-block:: console
+
+     docker volume inspect mayan_postgres
+
+     > [
+     >     {
+     >         "CreatedAt": "2021-06-17T05:32:28Z",
+     >         "Driver": "local",
+     >         "Labels": {
+     >             "com.docker.compose.project": "mayan",
+     >             "com.docker.compose.version": "1.29.1",
+     >             "com.docker.compose.volume": "postgres"
+     >         },
+     >         "Mountpoint": "/var/lib/docker/volumes/mayan_postgres/_data",
+     >         "Name": "mayan_postgres",
+     >         "Options": null,
+     >         "Scope": "local"
+     >     }
+     > ]
+
+     sudo cp --recursive /var/lib/docker/volumes/mayan_postgres/_data ~/mayan_binary_backup
+
+
+#. Delete the database volume:
+
+   .. code-block:: console
+
+     docker volume rm mayan_postgres
+
+   .. important::
+
+     Only delete the database volume after dumping the data into SQL, backing
+     up the volume binary content, and verifying that both files were created
+     successfully. Do not delete the app volume. This is where the actual
+     document files are stored.
+
+
+#. Rename the Docker Compose file and keep it for future reference:
+
+   .. code-block:: console
+
+     mv docker-compose.yml docker-compose.yml.bck
+
+
+#. Download the new Docker Compose files:
+
+   .. code-block:: console
+
+     curl https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/docker/docker-compose.yml -O
+     curl https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/docker/env_file -O
+     curl https://gitlab.com/mayan-edms/mayan-edms/-/raw/master/docker/.env -O
+
+
+#. Edit and the adjust the new Docker Compose file, copying over all relevant
+   values like username, password, etc.
+
+
+#. Launch the database container alone:
+
+   .. code-block:: console
+
+     docker-compose --file docker-compose.yml --project-name mayan up --detach postgresql
+
+
+#. Load the database data from the SQL file:
+
+   .. code-block:: console
+
+     cat mayan.sql | docker-compose --file docker-compose.yml --project-name mayan exec -T postgresql /bin/bash -c 'psql --username="$POSTGRES_USER"'
+
+
+#. Launch the rest of container stack:
+
+   .. code-block:: console
+
+     docker-compose --file docker-compose.yml --project-name mayan up --detach
+
+   .. note::
+
+     The app container will perform all the necessary migrations to the
+     existing data.

@@ -3,16 +3,11 @@
 import os
 import sys
 
-#import django
-
 
 class ConfigEnvCopier:
     def __init__(self):
         sys.path.insert(1, os.path.abspath('.'))
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mayan.settings')
-
-        #import mayan
-        #django.setup()
 
     def copy(self):
         from mayan.apps.platform.utils import load_env_file
@@ -31,5 +26,3 @@ class ConfigEnvCopier:
 if __name__ == '__main__':
     instance = ConfigEnvCopier()
     instance.copy()
-
-

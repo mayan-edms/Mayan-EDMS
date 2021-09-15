@@ -1,7 +1,6 @@
 import logging
 
 from django.apps import apps
-from django.utils import six
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
@@ -27,7 +26,7 @@ class DuplicateBackendMetaclass(type):
 
 
 class DuplicateBackend(
-    six.with_metaclass(DuplicateBackendMetaclass, AppsModuleLoaderMixin)
+    AppsModuleLoaderMixin, metaclass=DuplicateBackendMetaclass
 ):
     _loader_module_name = 'duplicate_backends'
 

@@ -1,17 +1,13 @@
 import logging
 
-from django.conf import settings
-from django.http import HttpResponse
-from django.views.decorators.cache import cache_control, patch_cache_control
-
 from rest_framework import status
 from rest_framework.response import Response
 
+from mayan.apps.converter.api_view_mixins import APIImageViewMixin
 from mayan.apps.rest_api import generics
 from mayan.apps.storage.models import SharedUploadedFile
 from mayan.apps.views.generics import DownloadViewMixin
 
-from ..literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from ..permissions import (
     permission_document_file_delete, permission_document_file_download,
     permission_document_file_edit, permission_document_file_new,
@@ -20,10 +16,7 @@ from ..permissions import (
 from ..serializers.document_file_serializers import (
     DocumentFileSerializer, DocumentFilePageSerializer
 )
-from ..settings import setting_document_file_page_image_cache_time
-from ..tasks import (
-    task_document_file_page_image_generate, task_document_file_upload
-)
+from ..tasks import task_document_file_upload
 
 from .mixins import (
     ParentObjectDocumentAPIViewMixin, ParentObjectDocumentFileAPIViewMixin
@@ -39,7 +32,7 @@ class APIDocumentFileListView(
     get: Return a list of the selected document's files.
     post: Create a new document file.
     """
-    ordering_fields = ('comment', 'encoding', 'mime_type',)
+    ordering_fields = ('comment', 'encoding', 'id', 'mime_type')
     serializer_class = DocumentFileSerializer
 
     def create(self, request, *args, **kwargs):
@@ -149,7 +142,8 @@ class APIDocumentFilePageDetailView(
 
 
 class APIDocumentFilePageImageView(
-    ParentObjectDocumentFileAPIViewMixin, generics.RetrieveAPIView
+    APIImageViewMixin, ParentObjectDocumentFileAPIViewMixin,
+    generics.RetrieveAPIView
 ):
     """
     get: Returns an image representation of the selected document.
@@ -161,60 +155,6 @@ class APIDocumentFilePageImageView(
 
     def get_queryset(self):
         return self.get_document_file().pages.all()
-
-    def get_serializer(self, *args, **kwargs):
-        return None
-
-    def get_serializer_class(self):
-        return None
-
-    @cache_control(private=True)
-    def retrieve(self, request, *args, **kwargs):
-        width = request.GET.get('width')
-        height = request.GET.get('height')
-        zoom = request.GET.get('zoom')
-
-        if zoom:
-            zoom = int(zoom)
-
-        rotation = request.GET.get('rotation')
-
-        if rotation:
-            rotation = int(rotation)
-
-        maximum_layer_order = request.GET.get('maximum_layer_order')
-        if maximum_layer_order:
-            maximum_layer_order = int(maximum_layer_order)
-
-        task = task_document_file_page_image_generate.apply_async(
-            kwargs={
-                'document_file_page_id': self.get_object().pk,
-                'height': height,
-                'maximum_layer_order': maximum_layer_order,
-                'rotation': rotation,
-                'user_id': request.user.pk,
-                'width': width,
-                'zoom': zoom
-            }
-        )
-
-        kwargs = {'timeout': DOCUMENT_IMAGE_TASK_TIMEOUT}
-        if settings.DEBUG:
-            # In debug more, task are run synchronously, causing this method
-            # to be called inside another task. Disable the check of nested
-            # tasks when using debug mode.
-            kwargs['disable_sync_subtasks'] = False
-
-        cache_filename = task.get(**kwargs)
-        cache_file = self.get_object().cache_partition.get_file(filename=cache_filename)
-        with cache_file.open() as file_object:
-            response = HttpResponse(file_object.read(), content_type='image')
-            if '_hash' in request.GET:
-                patch_cache_control(
-                    response=response,
-                    max_age=setting_document_file_page_image_cache_time.value
-                )
-            return response
 
 
 class APIDocumentFilePageListView(

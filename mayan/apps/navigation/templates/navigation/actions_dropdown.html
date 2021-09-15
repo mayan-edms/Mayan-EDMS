@@ -1,0 +1,49 @@
+{% load i18n %}
+
+{% load common_tags %}
+
+<button aria-expanded="false" aria-haspopup="true" class="{{ action_dropdown_classes|default:"btn btn-default btn-danger"}} btn-sm dropdown-toggle" data-toggle="dropdown" type="button">
+    {% if action_dropdown_label %}
+        {{ action_dropdown_label }}
+    {% else %}
+        {% trans 'Actions' %}
+    {% endif %}
+    <span class="caret"></span>
+    <span class="sr-only">{% trans 'Toggle Dropdown' %}</span>
+</button>
+<ul class="dropdown-menu" role="menu">
+    {% for menus_link_result in action_menus_link_results %}
+        {% if not action_menu_disable_labels and action_menus_link_results|length > 1 %}
+            <li class="dropdown-header"><strong>{{ menus_link_result.menu.label }}</strong></li>
+            <li class="divider"></li>
+        {% endif %}
+
+        {% for link_group in menus_link_result.link_groups %}
+            {% if navigation_object_list %}
+
+                {% ifchanged link_group.object %}
+                {% common_get_object_verbose_name obj=link_group.object as link_group_object_verbose_name %}
+                    {% if link_group_object_verbose_name %}<li class="dropdown-header">{{ link_group_object_verbose_name }}</li>{% endif %}
+                {% endifchanged %}
+            {% endif %}
+
+            {% with link_group.links as object_navigation_links %}
+            {% with 'true' as as_li %}
+            {% with 'true' as hide_active_anchor %}
+            {% with 'btn btn-sm navigation-btn-dropdown' as link_classes %}
+                {% include 'navigation/generic_navigation.html' %}
+            {% endwith %}
+            {% endwith %}
+            {% endwith %}
+            {% endwith %}
+
+            {% if not forloop.last and link_group %}
+                <li class="divider"></li>
+            {% endif %}
+
+        {% endfor %}
+        {% if not forloop.last and menus_link_result %}
+            <li class="divider"></li>
+        {% endif %}
+    {% endfor %}
+</ul>

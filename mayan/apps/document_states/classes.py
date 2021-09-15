@@ -2,7 +2,6 @@ import logging
 
 from django.apps import apps
 from django.db.utils import OperationalError, ProgrammingError
-from django.utils import six
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
@@ -41,14 +40,11 @@ class WorkflowActionMetaclass(type):
         return new_class
 
 
-class WorkflowActionBase(AppsModuleLoaderMixin):
-    fields = ()
-
-
 class WorkflowAction(
-    six.with_metaclass(WorkflowActionMetaclass, WorkflowActionBase)
+    AppsModuleLoaderMixin, metaclass=WorkflowActionMetaclass
 ):
     _loader_module_name = 'workflow_actions'
+    fields = {}
     previous_dotted_paths = ()
 
     @classmethod
@@ -76,20 +72,22 @@ class WorkflowAction(
             app.name: app for app in apps.get_app_configs()
         }
 
-        # Match each workflow action to an app
+        # Match each workflow action to an app.
         apps_workflow_action_map = {}
 
         for klass in WorkflowAction.get_all():
             for app_name, app in apps_name_map.items():
                 if klass.__module__.startswith(app_name):
                     apps_workflow_action_map.setdefault(app, [])
-                    apps_workflow_action_map[app].append((klass.id(), klass.label))
+                    apps_workflow_action_map[app].append(
+                        (klass.id(), klass.label)
+                    )
 
         result = [
             (app.verbose_name, workflow_actions) for app, workflow_actions in apps_workflow_action_map.items()
         ]
 
-        # Sort by app, then by workflow action
+        # Sort by app, then by workflow action.
         return sorted(result, key=lambda x: (x[0], x[1]))
 
     @classmethod
@@ -117,17 +115,31 @@ class WorkflowAction(
     def execute(self, context):
         raise NotImplementedError
 
+    def get_fields(self):
+        return getattr(self, 'fields', {})
+
+    def get_field_order(self):
+        return getattr(self, 'field_order', ())
+
+    def get_media(self):
+        return getattr(self, 'media', {})
+
     def get_form_schema(self, workflow_state, request=None):
         result = {
-            'fields': self.fields or {},
-            'media': getattr(self, 'media', {}),
-            'widgets': getattr(self, 'widgets', {}),
+            'fields': self.get_fields(),
+            'media': self.get_media(),
+            'widgets': self.get_widgets(),
         }
 
-        if hasattr(self, 'field_order'):
-            result['field_order'] = self.field_order
+        field_order = self.get_field_order()
+
+        if field_order:
+            result['field_order'] = field_order
 
         return result
+
+    def get_widgets(self):
+        return getattr(self, 'widgets', {})
 
     def render_field(self, field_name, context):
         try:

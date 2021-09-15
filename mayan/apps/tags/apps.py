@@ -3,8 +3,9 @@ from django.db.models.signals import m2m_changed, pre_delete
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
-from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.acls.permissions import (
+    permission_acl_edit, permission_acl_view
+)
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import (
     ModelCopy, ModelFieldRelated, ModelQueryFields
@@ -14,7 +15,6 @@ from mayan.apps.common.menus import (
     menu_secondary
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
@@ -25,9 +25,9 @@ from .html_widgets import DocumentTagWidget
 from .links import (
     link_document_tag_list, link_document_multiple_tag_multiple_attach,
     link_document_multiple_tag_multiple_remove,
-    link_document_tag_multiple_remove, link_document_tag_multiple_attach, link_tag_create,
-    link_tag_delete, link_tag_edit, link_tag_list,
-    link_tag_multiple_delete, link_tag_document_list
+    link_document_tag_multiple_remove, link_document_tag_multiple_attach,
+    link_tag_create, link_tag_delete_single, link_tag_delete_multiple,
+    link_tag_edit, link_tag_list, link_tag_document_list
 )
 from .menus import menu_tags
 from .methods import method_document_get_tags
@@ -99,22 +99,23 @@ class TagsApp(MayanAppConfig):
         ModelPermission.register(
             model=Tag, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_events_view, permission_tag_attach,
-                permission_tag_delete, permission_tag_edit,
-                permission_tag_remove, permission_tag_view,
+                permission_tag_attach, permission_tag_delete,
+                permission_tag_edit, permission_tag_remove,
+                permission_tag_view
             )
         )
 
         model_query_fields_document = ModelQueryFields.get(model=Document)
-        model_query_fields_document.add_prefetch_related_field(field_name='tags')
+        model_query_fields_document.add_prefetch_related_field(
+            field_name='tags'
+        )
 
         model_query_fields_tag = ModelQueryFields.get(model=Tag)
-        model_query_fields_tag.add_prefetch_related_field(field_name='documents')
-
-        SourceColumn(
-            attribute='label', is_identifier=True, is_sortable=True,
-            source=DocumentTag
+        model_query_fields_tag.add_prefetch_related_field(
+            field_name='documents'
         )
+
+        # Document
 
         SourceColumn(
             label=_('Tags'), source=Document, widget=DocumentTagWidget
@@ -138,6 +139,13 @@ class TagsApp(MayanAppConfig):
             source=DocumentVersionPageSearchResult, widget=DocumentTagWidget
         )
 
+        # Tag
+
+        SourceColumn(
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=DocumentTag
+        )
+
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
             source=Tag
@@ -152,13 +160,25 @@ class TagsApp(MayanAppConfig):
         )
         source_column_tag_document_count.add_exclude(source=DocumentTag)
 
+        # Document
+
         menu_facet.bind_links(
             links=(link_document_tag_list,), sources=(Document,)
         )
 
+        menu_multi_item.bind_links(
+            links=(
+                link_document_multiple_tag_multiple_attach,
+                link_document_multiple_tag_multiple_remove
+            ),
+            sources=(Document,)
+        )
+
+        # Tag
+
         menu_list_facet.bind_links(
             links=(
-                link_acl_list, link_tag_document_list,
+                link_tag_document_list,
             ), sources=(Tag,)
         )
 
@@ -168,26 +188,26 @@ class TagsApp(MayanAppConfig):
             )
         )
 
-        menu_main.bind_links(links=(menu_tags,), position=98)
+        menu_main.bind_links(links=(menu_tags,), position=60)
 
         menu_multi_item.bind_links(
-            links=(
-                link_document_multiple_tag_multiple_attach,
-                link_document_multiple_tag_multiple_remove
-            ),
-            sources=(Document,)
+            exclude=(DocumentTag,),
+            links=(link_tag_delete_multiple,), sources=(Tag,)
         )
-        menu_multi_item.bind_links(
-            links=(link_tag_multiple_delete,), sources=(Tag,)
-        )
+
         menu_object.bind_links(
+            exclude=(DocumentTag,),
             links=(
-                link_tag_edit, link_tag_delete
+                link_tag_edit, link_tag_delete_single
             ),
             sources=(Tag,)
         )
+
         menu_secondary.bind_links(
-            links=(link_document_tag_multiple_attach, link_document_tag_multiple_remove),
+            links=(
+                link_document_tag_multiple_attach,
+                link_document_tag_multiple_remove
+            ),
             sources=(
                 'tags:tag_attach', 'tags:document_tag_list',
                 'tags:single_document_multiple_tag_remove'

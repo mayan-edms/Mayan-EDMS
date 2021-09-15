@@ -4,8 +4,8 @@ from mayan.apps.dependencies.classes import JavaScriptDependency
 
 JavaScriptDependency(
     label=_('JavaScript image cropper'), module=__name__, name='cropperjs',
-    version_string='=1.4.1'
+    version_string='=1.5.2'
 )
 JavaScriptDependency(
-    module=__name__, name='jquery-cropper', version_string='=1.0.0'
+    module=__name__, name='jquery-cropper', version_string='=1.0.1'
 )

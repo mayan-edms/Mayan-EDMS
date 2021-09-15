@@ -10,7 +10,6 @@ from mayan.apps.common.menus import (
     menu_secondary
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
@@ -77,7 +76,7 @@ class CabinetsApp(MayanAppConfig):
             name='get_cabinets', value=method_document_get_cabinets
         )
 
-        EventModelRegistry.register(model=Cabinet)
+        EventModelRegistry.register(model=Cabinet, acl_bind_link=False)
 
         def cabinet_model_copy_condition(instance):
             return instance.is_root_node()
@@ -90,7 +89,7 @@ class CabinetsApp(MayanAppConfig):
 
         ModelCopy(
             model=Cabinet, condition=cabinet_model_copy_condition,
-            bind_link=True, register_permission=True
+            bind_link=True, acl_bind_link=False, register_permission=True
         ).add_fields(
             field_names=('label', 'documents'), unique_conditional={
                 'label': cabinet_unique_conditional
@@ -107,8 +106,7 @@ class CabinetsApp(MayanAppConfig):
         ModelPermission.register(
             model=Document, permissions=(
                 permission_cabinet_add_document,
-                permission_cabinet_remove_document, permission_cabinet_view,
-                permission_events_view
+                permission_cabinet_remove_document, permission_cabinet_view
             )
         )
 
@@ -118,7 +116,7 @@ class CabinetsApp(MayanAppConfig):
                 permission_cabinet_delete, permission_cabinet_edit,
                 permission_cabinet_view, permission_cabinet_add_document,
                 permission_cabinet_remove_document
-            )
+            ), bind_link=False
         )
 
         model_query_fields_document = ModelQueryFields(model=Document)
@@ -187,7 +185,7 @@ class CabinetsApp(MayanAppConfig):
         )
         menu_list_facet.add_proxy_inclusions(source=CabinetSearchResult)
 
-        menu_main.bind_links(links=(menu_cabinets,), position=98)
+        menu_main.bind_links(links=(menu_cabinets,), position=30)
 
         menu_multi_item.bind_links(
             links=(
@@ -196,11 +194,7 @@ class CabinetsApp(MayanAppConfig):
             ), sources=(Document,)
         )
         menu_object.bind_links(
-            links=(
-                link_cabinet_view,
-            ), sources=(DocumentCabinet, )
-        )
-        menu_object.bind_links(
+            exclude=(DocumentCabinet,),
             links=(
                 link_cabinet_delete, link_cabinet_edit, link_cabinet_child_add
             ), sources=(Cabinet,)

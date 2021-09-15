@@ -2,7 +2,6 @@ import json
 import logging
 
 from django.apps import apps
-from django.utils import six
 from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 
@@ -11,10 +10,8 @@ from .handlers import handler_process_quota_signal
 
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 
-logger = logging.getLogger(name=__name__)
-
-
 __all__ = ('QuotaBackend',)
+logger = logging.getLogger(name=__name__)
 
 
 class QuotaBackendMetaclass(type):
@@ -48,16 +45,13 @@ class QuotaBackendBase(AppsModuleLoaderMixin):
         'initial': ''  # Field initial value
         'default': ''  # Default value.
     }
-
     """
     fields = {}
     signal = None
     widgets = {}
 
 
-class QuotaBackend(
-    six.with_metaclass(QuotaBackendMetaclass, QuotaBackendBase)
-):
+class QuotaBackend(QuotaBackendBase, metaclass=QuotaBackendMetaclass):
     _loader_module_name = 'quota_backends'
 
     @staticmethod

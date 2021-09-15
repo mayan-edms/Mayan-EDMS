@@ -1,0 +1,182 @@
+Version 4.0.8
+=============
+
+Released: June 23, 2021
+
+Status: Stable
+
+
+Changes
+-------
+
+
+Background tasks
+^^^^^^^^^^^^^^^^
+
+The queue distribution was tuned again to continue improving throughput and
+efficiency of the workers. Message consumption rate was increased for the
+``indexing``, ``search``, ``uploads``, ``duplicates``, ``file metadata`` and
+``metadata`` queues.
+
+The readability Celery worker options was improved by using the long version
+of the options.
+
+
+Docker
+^^^^^^
+
+The Docker base image was updated from Debian:10.8-slim to Debian:10.10-slim.
+
+The example RabbitMQ container entry in the Docker Compose file was updated
+to include the entries necessary to enable the image with the management
+plugin.
+
+A new chapter was added explaining document files. The document version
+chapter was updated to include the changes since version 4.0.
+
+
+Document parsing
+^^^^^^^^^^^^^^^^
+
+The document parsing submit actions were updated to keep track of the user and
+apply it to the events when committed.
+
+
+Documents
+^^^^^^^^^
+
+The document file and version page image API were optimized by reusing the
+page object per request.
+
+The date and time of document version timestamps are now carried over
+during the upgrade from version 3.5.x to 4.0.x.
+
+Fixed the situation where the document type button was not appearing. The
+cascade condition of the document type setup link was updated to correctly
+display when there are not document types created.
+
+
+Digital signatures
+^^^^^^^^^^^^^^^^^^
+
+The preparation of the GPG temporary home folder was improved. A temporary
+directory context manager is now used which also guarantees that the
+temporary folder will be removed even on failures.
+
+The document signature logic was updated to not assume that all signatures
+provide a ``date_time`` field.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+PIP was updated to version 21.1.2 and Django was updated from version 2.2.23
+to 2.2.24.
+
+
+Documentation
+^^^^^^^^^^^^^
+
+The Docker Compose installation and upgrade instructions we improved.
+PostgreSQL migration instructions were also added.
+
+
+Emailing
+^^^^^^^^
+
+The document email attachment was updated to send the active version instead
+of the last file uploaded. The email action will now export the active
+version and email that as an attachments. This mimics more closely the
+existing behavior of this feature before the document version were separated
+into versions and files.
+
+
+File metadata
+^^^^^^^^^^^^^
+
+The file metadata submit actions were updated to keep track of the user and
+apply it to the events committed.
+
+
+Metadata
+^^^^^^^^
+
+Fixed an issue with the document metadata add and edit actions which
+caused the user value to be ignored at the event commit.
+
+
+Platform
+^^^^^^^^
+
+The direct deployment and Docker supervisord templates were unified. The
+direct deployment and the Docker image now use the same supervisord
+template.
+
+The GitLab CI configuration files and the Dockerfile were converted into
+templates. This allows these to use the same settings and Docker image
+tags as the rest of the project without requiring manual updates.
+
+
+Testing
+^^^^^^^
+
+Event testing was improved for several apps. Events testing is now performed
+in an unified manner using the provided ``._clear_events()`` and
+``.get_test_events()``. This supercedes the imporing the ``Action`` model
+directly.
+
+
+Other
+^^^^^
+
+- Make optional the `user_id` argument of
+  `task_document_file_page_image_generate`.
+- Don't cache the missing items template to allow it to be removed when
+  the missing items are fixed.
+- Apply small optimization to ``MultipleObjectViewMixin``
+  ``.get_object_list()`` method. The method now reuses the existing
+  ``pk_list`` variable.
+- Add serializer explicit read only fields.
+- Optimize documents app saves with `update_fields`.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`1001` Possibly worng path in supervisor config
+- :gitlab-issue:`1006` CELERY_RESULT_BACKEND setting in RabbitMQ unclear in Documentation
+- :gitlab-issue:`1007` Typo in Advanced Deployment section
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

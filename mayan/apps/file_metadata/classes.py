@@ -4,7 +4,7 @@ from django.apps import apps
 
 from mayan.apps.common.classes import PropertyHelper
 
-from .events import event_file_metadata_document_file_finish
+from .events import event_file_metadata_document_file_finished
 from .exceptions import FileMetadataDriverError
 from .signals import signal_post_document_file_file_metadata_processing
 
@@ -26,10 +26,11 @@ class FileMetadataDriver:
     _registry = {}
 
     @classmethod
-    def process_document_file(cls, document_file):
+    def process_document_file(cls, document_file, user=None):
         # Get list of drivers for the document's MIME type
         driver_classes = cls._registry.get(document_file.mimetype, ())
-        # Add wilcard drivers, drivers meant to be executed for all MIME types.
+        # Add wilcard drivers, drivers meant to be executed for all MIME
+        # types.
         driver_classes = driver_classes + tuple(cls._registry.get('*', ()))
 
         for driver_class in driver_classes:
@@ -45,8 +46,8 @@ class FileMetadataDriver:
                     instance=document_file
                 )
 
-                event_file_metadata_document_file_finish.commit(
-                    action_object=document_file.document,
+                event_file_metadata_document_file_finished.commit(
+                    action_object=document_file.document, actor=user,
                     target=document_file
                 )
 

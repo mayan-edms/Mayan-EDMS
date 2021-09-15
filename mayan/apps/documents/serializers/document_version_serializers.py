@@ -11,6 +11,7 @@ from ..models.document_version_page_models import DocumentVersionPage
 
 class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
     document_url = serializers.HyperlinkedIdentityField(
+        lookup_field='document_id',
         lookup_url_kwarg='document_id',
         view_name='rest_api:document-detail'
     )
@@ -60,6 +61,9 @@ class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
             'page_list_url', 'timestamp', 'url'
         )
         model = DocumentVersion
+        read_only_fields = (
+            'document_url', 'export_url', 'id', 'page_list_url', 'url'
+        )
 
 
 class DocumentVersionPageSerializer(serializers.HyperlinkedModelSerializer):
@@ -122,3 +126,6 @@ class DocumentVersionPageSerializer(serializers.HyperlinkedModelSerializer):
             'id', 'image_url', 'object_id', 'page_number', 'url'
         )
         model = DocumentVersionPage
+        read_only_fields = (
+            'content_type', 'document_version_url', 'id', 'image_url', 'url'
+        )

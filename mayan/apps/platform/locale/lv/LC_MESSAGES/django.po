@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 08:57+0000\n"
+"POT-Creation-Date: 2021-08-05 04:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -24,18 +24,26 @@ msgstr ""
 msgid "Platform"
 msgstr ""
 
-#: classes.py:130
+#: classes.py:134
 msgid "Template for entrypoint.sh file inside a Docker image."
 msgstr ""
 
-#: classes.py:140
+#: classes.py:144
+msgid "Template that generates a Dockerfile file."
+msgstr ""
+
+#: classes.py:158
 msgid "Template for Supervisord inside a Docker image."
 msgstr "Supervisord veidne Docker attēla iekšpusē."
 
-#: classes.py:148
+#: classes.py:174
+msgid "Template that generates a GitLab CI config file."
+msgstr ""
+
+#: classes.py:218
 msgid "Template for Supervisord."
 msgstr "Veidne priekš Supervisord."
 
-#: classes.py:205
+#: classes.py:287
 msgid "Template showing the queues of a worker."
 msgstr ""

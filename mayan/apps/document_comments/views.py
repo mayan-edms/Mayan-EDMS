@@ -22,7 +22,7 @@ from .permissions import (
 class DocumentCommentCreateView(ExternalObjectViewMixin, SingleObjectCreateView):
     external_object_permission = permission_document_comment_create
     external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     fields = ('text',)
 
     def get_extra_context(self):
@@ -130,7 +130,7 @@ class DocumentCommentEditView(SingleObjectEditView):
 class DocumentCommentListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_document_comment_view
     external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
 
     def get_extra_context(self):
         return {

@@ -11,6 +11,7 @@ from django.views.generic.detail import SingleObjectMixin
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.settings import setting_home_view
+from mayan.apps.databases.utils import check_queryset
 from mayan.apps.permissions import Permission
 
 from .compat import FileResponse
@@ -93,11 +94,13 @@ class DynamicFormViewMixin:
 
     def get_form_kwargs(self):
         data = super().get_form_kwargs()
-        data.update({'schema': self.get_form_schema()})
+        data.update(
+            {'schema': self.get_form_schema()}
+        )
         return data
 
 
-class ExternalObjectViewMixin:
+class ExternalObjectBaseMixin:
     """
     Mixin to allow views to load an object with minimal code but with all
     the filtering and configurability possible. This object is often use as
@@ -108,10 +111,6 @@ class ExternalObjectViewMixin:
     external_object_pk_url_kwarg = 'pk'
     external_object_pk_url_kwargs = None  # Usage: {'pk': 'pk'}
     external_object_queryset = None
-
-    def dispatch(self, *args, **kwargs):
-        self.external_object = self.get_external_object()
-        return super().dispatch(*args, **kwargs)
 
     def get_pk_url_kwargs(self):
         pk_url_kwargs = {}
@@ -155,7 +154,7 @@ class ExternalObjectViewMixin:
                 )
             )
 
-        return queryset
+        return check_queryset(self=self, queryset=queryset)
 
     def get_external_object_queryset_filtered(self):
         queryset = self.get_external_object_queryset()
@@ -170,6 +169,12 @@ class ExternalObjectViewMixin:
         return queryset
 
 
+class ExternalObjectViewMixin(ExternalObjectBaseMixin):
+    def dispatch(self, *args, **kwargs):
+        self.external_object = self.get_external_object()
+        return super().dispatch(*args, **kwargs)
+
+
 class ExternalContentTypeObjectViewMixin(
     ContentTypeViewMixin, ExternalObjectViewMixin
 ):
@@ -179,8 +184,8 @@ class ExternalContentTypeObjectViewMixin(
     external_object_pk_url_kwarg = 'object_id'
 
     def get_external_object_queryset(self):
-        content_type = self.get_content_type()
-        self.external_object_class = content_type.model_class()
+        self.external_object_content_type = self.get_content_type()
+        self.external_object_class = self.external_object_content_type.model_class()
         return super().get_external_object_queryset()
 
 
@@ -303,7 +308,7 @@ class MultipleObjectViewMixin(SingleObjectMixin):
             self.view_mode_single = True
 
         if pk_list is not None:
-            queryset = queryset.filter(pk__in=self.get_pk_list())
+            queryset = queryset.filter(pk__in=pk_list)
             self.view_mode_multiple = True
 
         # If none of those are defined, it's an error.

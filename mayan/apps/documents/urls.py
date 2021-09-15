@@ -28,8 +28,8 @@ from .api_views.recently_created_document_api_views import (
     APIRecentlyCreatedDocumentListView
 )
 from .api_views.trashed_document_api_views import (
-    APITrashedDocumentListView, APITrashedDocumentRestoreView,
-    APITrashedDocumentDetailView
+    APITrashedDocumentDetailView, APITrashedDocumentListView,
+    APITrashedDocumentRestoreView, APITrashedDocumentImageView
 )
 from .views.document_file_views import (
     DocumentFileDeleteView, DocumentFileDownloadView, DocumentFileEditView,
@@ -56,12 +56,13 @@ from .views.document_type_views import (
 )
 from .views.document_version_page_views import (
     DocumentVersionPageDeleteView, DocumentVersionPageListView,
-    DocumentVersionPageListRemapView, DocumentVersionPageListResetView,
-    DocumentVersionPageNavigationFirst, DocumentVersionPageNavigationLast,
-    DocumentVersionPageNavigationNext, DocumentVersionPageNavigationPrevious,
-    DocumentVersionPageRotateLeftView, DocumentVersionPageRotateRightView,
-    DocumentVersionPageView, DocumentVersionPageViewResetView,
-    DocumentVersionPageZoomInView, DocumentVersionPageZoomOutView
+    DocumentVersionPageListAppendView, DocumentVersionPageListRemapView,
+    DocumentVersionPageListResetView, DocumentVersionPageNavigationFirst,
+    DocumentVersionPageNavigationLast, DocumentVersionPageNavigationNext,
+    DocumentVersionPageNavigationPrevious, DocumentVersionPageRotateLeftView,
+    DocumentVersionPageRotateRightView, DocumentVersionPageView,
+    DocumentVersionPageViewResetView, DocumentVersionPageZoomInView,
+    DocumentVersionPageZoomOutView
 )
 from .views.document_version_views import (
     DocumentVersionActiveView, DocumentVersionCreateView,
@@ -284,7 +285,7 @@ urlpatterns_document_version = [
     ),
     url(
         regex=r'^documents/versions/(?P<document_version_id>\d+)/delete/$',
-        name='document_version_delete',
+        name='document_version_delete_single',
         view=DocumentVersionDeleteView.as_view()
     ),
     url(
@@ -299,7 +300,7 @@ urlpatterns_document_version = [
     ),
     url(
         regex=r'^documents/versions/multiple/delete/$',
-        name='document_version_multiple_delete',
+        name='document_version_delete_multiple',
         view=DocumentVersionDeleteView.as_view()
     ),
     url(
@@ -344,6 +345,11 @@ urlpatterns_document_version_pages = [
         regex=r'^documents/versions/pages/(?P<document_version_page_id>\d+)/delete/$',
         name='document_version_page_delete',
         view=DocumentVersionPageDeleteView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/pages/append/$',
+        name='document_version_page_list_append',
+        view=DocumentVersionPageListAppendView.as_view()
     ),
     url(
         regex=r'^documents/versions/(?P<document_version_id>\d+)/pages/remap/$',
@@ -456,7 +462,7 @@ urlpatterns_favorite_documents = [
     ),
     url(
         regex=r'^documents/multiple/add_to_favorites/$',
-        name='document_multiple_favorite_add', view=FavoriteAddView.as_view()
+        name='document_favorite_add_multiple', view=FavoriteAddView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/remove_from_favorites/$',
@@ -464,7 +470,7 @@ urlpatterns_favorite_documents = [
     ),
     url(
         regex=r'^documents/multiple/remove_from_favorites/$',
-        name='document_multiple_favorite_remove',
+        name='document_favorite_remove_multiple',
         view=FavoriteRemoveView.as_view()
     ),
 ]
@@ -657,6 +663,11 @@ api_urls_trashed_documents = [
         name='trasheddocument-restore',
         view=APITrashedDocumentRestoreView.as_view()
     ),
+    url(
+        regex=r'^trashed_documents/(?P<document_id>[0-9]+)/image/$',
+        name='trasheddocument-image',
+        view=APITrashedDocumentImageView.as_view()
+    )
 ]
 
 api_urls = []
