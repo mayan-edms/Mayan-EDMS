@@ -104,17 +104,6 @@ services:
     volumes:
       - ${MAYAN_REDIS_VOLUME:-redis}:/data
 
-  # Celery flower a monitor for Celery
-  celery_flower:
-    <<: *mayan-container
-    command:
-      - run_celery
-      - flower
-    ports:
-      - "5555:5555"
-    profiles:
-      - celery_flower
-
   # Run a frontend gunicorn container
   frontend:
     <<: *mayan-container
@@ -182,6 +171,17 @@ services:
       - worker_d
     profiles:
       - extra_worker_d
+
+  # Run a separate Celery beat container
+  celery_beat:
+    <<: *mayan-container
+    command:
+      - run_celery
+      - beat
+      - --pidfile=
+      - --loglevel=ERROR
+    profiles:
+      - extra_celery_beat
 
   # Optional services
 
