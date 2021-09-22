@@ -4,30 +4,23 @@
 Building the image
 ==================
 
-Clone the repository with:
+#. Perform and activate a development deployment as outlined in chapter:
+   :ref:`development_deployment`
 
-.. code-block:: console
+#. Execute the provided makefile target:
 
-    git clone |SOURCE_CODE_GIT|
+  .. code-block:: console
 
-Change to the directory of the cloned repository:
+      make docker-build
 
-.. code-block:: console
+  You can also use an APT cache to speed up the build:
 
-    cd mayan-edms
+  .. code-block:: console
 
-Execute Docker's build command using the provided makefile:
+      make docker-build-with-proxy APT_PROXY=172.17.0.1:3142
 
-.. code-block:: console
+  A PIP cache can also be used to provide a local cache of Python packages:
 
-    make docker-build
+  .. code-block:: console
 
-Or using an APT cache to speed up the build:
-
-.. code-block:: console
-
-    make docker-build-with-proxy APT_PROXY=172.17.0.1:3142
-
-Replace the IP address `172.17.0.1` with the IP address of the computer
-running the APT proxy and caching service.
-
+      make docker-build-with-proxy APT_PROXY=<APT cache IP address>:3142 PIP_INDEX_URL=http://<PIP cache IP address>:3141/root/pypi/+simple/ PIP_TRUSTED_HOST=<PIP cache IP address>
