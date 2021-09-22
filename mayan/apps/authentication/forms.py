@@ -2,6 +2,7 @@ import warnings
 
 from django import forms
 from django.contrib.auth import authenticate
+from django.contrib.auth.forms import UsernameField
 from django.contrib.auth.forms import AuthenticationForm
 from django.forms.widgets import EmailInput
 from django.utils.translation import ugettext_lazy as _
@@ -10,6 +11,40 @@ from mayan.apps.user_management.querysets import get_user_queryset
 from mayan.apps.views.forms import FilteredSelectionForm
 
 from .permissions import permission_users_impersonate
+
+
+class AuthenticationFormBase(AuthenticationForm):
+    @classmethod
+    def done(cls, wizard):
+        return
+
+
+class AuthenticationFormMixinRememberMe(forms.Form):
+    _form_field_name_remember_me = 'remember_me'
+    remember_me = forms.BooleanField(label=_('Remember me'), required=False)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        field_order = [
+            field for field in self.fields if field != self._form_field_name_remember_me
+        ]
+        field_order.append(self._form_field_name_remember_me)
+
+        self.order_fields(field_order=field_order)
+
+
+class AuthenticationFormUsernamePassword(
+    AuthenticationFormMixinRememberMe, AuthenticationFormBase
+):
+    username = UsernameField(
+        label=_('Username'), widget=forms.TextInput(
+            attrs={'autofocus': True}
+        )
+    )
+    password = forms.CharField(
+        label=_('Password'), strip=False, widget=forms.PasswordInput
+    )
 
 
 class EmailAuthenticationForm(forms.Form):
