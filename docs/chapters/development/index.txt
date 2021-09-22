@@ -4,6 +4,7 @@ For developers
 
 - :doc:`philosophies`
 - :doc:`code_structure`
+- :doc:`development_deployment`
 - :doc:`documentation`
 - :doc:`source_control`
 - :doc:`contributing`
