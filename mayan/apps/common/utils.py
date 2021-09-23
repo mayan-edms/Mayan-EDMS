@@ -133,6 +133,10 @@ def check_for_sqlite():
     return settings.DATABASES['default']['ENGINE'] == DJANGO_SQLITE_BACKEND and settings.DEBUG is False
 
 
+def get_class_full_name(klass):
+    return '{klass.__module__}.{klass.__qualname__}'.format(klass=klass)
+
+
 def get_related_field(model, related_field_name):
     try:
         local_field_name, remaining_field_path = related_field_name.split(
