@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
             model_name='imapemail',
             name='emailbasemodel_ptr',
         ),
-         migrations.RemoveField(
+        migrations.RemoveField(
             model_name='intervalbasemodel',
             name='document_type',
         ),
