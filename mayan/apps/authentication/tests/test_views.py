@@ -24,7 +24,6 @@ from ..events import (
 )
 from ..literals import USER_IMPERSONATE_VARIABLE_DISABLE
 from ..permissions import permission_users_impersonate
-from ..settings import setting_maximum_session_length
 
 from .literals import TEST_EMAIL_AUTHENTICATION_BACKEND
 from .mixins import (

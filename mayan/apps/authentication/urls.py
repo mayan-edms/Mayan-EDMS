@@ -1,7 +1,7 @@
 from django.conf.urls import url
 
 from .views.authentication_views import (
-    MayanLoginView, MayanLogoutView, MayanPasswordChangeDoneView,
+    MayanMultiStepLoginView, MayanLogoutView, MayanPasswordChangeDoneView,
     MayanPasswordChangeView, MayanPasswordResetCompleteView,
     MayanPasswordResetConfirmView, MayanPasswordResetDoneView,
     MayanPasswordResetView, UserSetPasswordView
@@ -11,8 +11,12 @@ from .views.impersonation_views import (
     UserImpersonateStartView
 )
 
+
 urlpatterns_authenticattion = [
-    url(regex=r'^login/$', view=MayanLoginView.as_view(), name='login_view'),
+    url(
+        regex=r'^login/$', name='login_view',
+        view=MayanMultiStepLoginView.as_view()
+    ),
     url(
         regex=r'^logout/$', view=MayanLogoutView.as_view(), name='logout_view'
     ),

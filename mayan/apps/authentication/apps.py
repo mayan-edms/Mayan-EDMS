@@ -12,6 +12,7 @@ from mayan.apps.common.menus import (
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import Separator
 
+from .classes import AuthenticationBackend
 from .events import (
     event_user_impersonation_ended, event_user_impersonation_started,
     event_user_logged_in, event_user_logged_out
@@ -38,6 +39,8 @@ class AuthenticationApp(MayanAppConfig):
         super().ready()
 
         User = get_user_model()
+
+        AuthenticationBackend.load_modules()
 
         ModelEventType.register(
             model=User, event_types=(
