@@ -6,13 +6,15 @@ from mayan.apps.common.serialization import yaml_dump
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.metadata.models import MetadataType
+from mayan.apps.metadata.tests.mixins import MetadataTypeTestMixin
 
 from .literals import (
     TEST_EMAIL_ATTACHMENT_AND_INLINE, TEST_EMAIL_BASE64_FILENAME,
     TEST_EMAIL_BASE64_FILENAME_ATTACHMENT_FILENAME,
     TEST_EMAIL_BASE64_FILENAME_FROM, TEST_EMAIL_BASE64_FILENAME_SUBJECT,
-    TEST_EMAIL_INLINE_IMAGE, TEST_EMAIL_NO_CONTENT_TYPE,
-    TEST_EMAIL_NO_CONTENT_TYPE_STRING, TEST_EMAIL_ZERO_LENGTH_ATTACHMENT
+    TEST_EMAIL_BASE64_MESSAGE_ID, TEST_EMAIL_INLINE_IMAGE,
+    TEST_EMAIL_NO_CONTENT_TYPE, TEST_EMAIL_NO_CONTENT_TYPE_STRING,
+    TEST_EMAIL_ZERO_LENGTH_ATTACHMENT
 )
 from .mixins.email_source_mixins import (
     EmailSourceBackendTestMixin, IMAPEmailSourceTestMixin,
@@ -106,37 +108,6 @@ class EmailSourceBackendTestCase(
             ),
         )
 
-    def test_decode_email_and_store_from_and_subject_as_metadata(self):
-        metadata_from = MetadataType.objects.create(name='from')
-        metadata_subject = MetadataType.objects.create(name='subject')
-        self.test_document_type.metadata.create(metadata_type=metadata_from)
-        self.test_document_type.metadata.create(metadata_type=metadata_subject)
-
-        self._create_test_email_source_backend(
-            extra_data={
-                'from_metadata_type_id': metadata_from.pk,
-                'subject_metadata_type_id': metadata_subject.pk
-            }
-        )
-        source_backend_instance = self.test_source.get_backend_instance()
-
-        source_backend_instance.content = TEST_EMAIL_BASE64_FILENAME
-        source_backend_instance.process_documents()
-
-        document = Document.objects.first()
-
-        self.assertEqual(
-            document.label, 'Ampelm\xe4nnchen.txt'
-        )
-        self.assertEqual(
-            document.metadata.get(metadata_type=metadata_from).value,
-            TEST_EMAIL_BASE64_FILENAME_FROM
-        )
-        self.assertEqual(
-            document.metadata.get(metadata_type=metadata_subject).value,
-            TEST_EMAIL_BASE64_FILENAME_SUBJECT
-        )
-
     def test_document_upload_no_body(self):
         self._create_test_email_source_backend()
         source_backend_instance = self.test_source.get_backend_instance()
@@ -164,6 +135,88 @@ class EmailSourceBackendTestCase(
 
         # Only two attachments and a body document
         self.assertEqual(Document.objects.count(), 2)
+
+
+class EmailSourceBackendMedatadataTestCase(
+    EmailSourceBackendTestMixin, MetadataTypeTestMixin,
+    GenericDocumentTestCase
+):
+    auto_create_test_source = False
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_metadata_type(add_test_document_type=True)
+
+    def test_email_from_value_as_metadata(self):
+        self._create_test_email_source_backend(
+            extra_data={
+                'from_metadata_type_id': self.test_metadata_type.pk,
+            }
+        )
+        source_backend_instance = self.test_source.get_backend_instance()
+
+        source_backend_instance.content = TEST_EMAIL_BASE64_FILENAME
+        source_backend_instance.process_documents()
+
+        document = Document.objects.first()
+
+        self.assertEqual(
+            document.label, 'Ampelm\xe4nnchen.txt'
+        )
+        self.assertEqual(
+            document.metadata.get(metadata_type=self.test_metadata_type).value,
+            TEST_EMAIL_BASE64_FILENAME_FROM
+        )
+
+    def test_email_subjet_value_as_metadata(self):
+        self._create_test_email_source_backend(
+            extra_data={
+                'subject_metadata_type_id': self.test_metadata_type.pk,
+            }
+        )
+        source_backend_instance = self.test_source.get_backend_instance()
+
+        source_backend_instance.content = TEST_EMAIL_BASE64_FILENAME
+        source_backend_instance.process_documents()
+
+        document = Document.objects.first()
+
+        self.assertEqual(
+            document.label, 'Ampelm\xe4nnchen.txt'
+        )
+        self.assertEqual(
+            document.metadata.get(metadata_type=self.test_metadata_type).value,
+            TEST_EMAIL_BASE64_FILENAME_SUBJECT
+        )
+
+    def test_message_id_subjet_value_as_metadata(self):
+        self._create_test_email_source_backend(
+            extra_data={
+                'message_id_metadata_type_id': self.test_metadata_type.pk,
+            }
+        )
+        source_backend_instance = self.test_source.get_backend_instance()
+
+        source_backend_instance.content = TEST_EMAIL_BASE64_FILENAME
+        source_backend_instance.process_documents()
+
+        document = Document.objects.first()
+
+        self.assertEqual(
+            document.label, 'Ampelm\xe4nnchen.txt'
+        )
+        self.assertEqual(
+            document.metadata.get(metadata_type=self.test_metadata_type).value,
+            TEST_EMAIL_BASE64_MESSAGE_ID
+        )
+
+
+class EmailSourceBackendMetadataYAMLAttachmentTestCase(
+    EmailSourceBackendTestMixin, GenericDocumentTestCase
+):
+    auto_create_test_source = False
+    auto_upload_test_document = False
 
     def test_metadata_yaml_attachment(self):
         TEST_METADATA_VALUE_1 = 'test value 1'

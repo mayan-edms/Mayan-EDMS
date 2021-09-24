@@ -60,7 +60,6 @@ class SourceBackendWatchFolder(
         if not path.is_dir():
             raise SourceException('Path {} is not a directory.'.format(path))
 
-
         if self.kwargs['include_subdirectories']:
             iterator = path.rglob(pattern='*')
         else:
