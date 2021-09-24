@@ -323,6 +323,8 @@
   - Pass the ``resolved_object`` to link conditions.
 
 - Don't trigger the settings change flag on user language changes.
+- Add settings to allow changing the default and the maximums
+  REST API page size.
 
 4.0.15 (2021-08-07)
 ===================
