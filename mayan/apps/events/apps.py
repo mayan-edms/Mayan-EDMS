@@ -112,12 +112,6 @@ class EventsApp(MayanAppConfig):
             label=_('Seen'), source=Notification, widget=TwoStateWidget
         )
 
-        # Dashboards
-
-        dashboard_user.add_widget(
-            widget=DashboardWidgetUserEvents, order=4
-        )
-
         # Clear
 
         menu_secondary.bind_links(
