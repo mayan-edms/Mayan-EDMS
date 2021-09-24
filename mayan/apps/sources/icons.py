@@ -17,4 +17,7 @@ icon_source_list = Icon(driver_name='fontawesome', symbol='upload')
 icon_source_test = Icon(driver_name='fontawesome', symbol='check')
 
 icon_upload_view_link = Icon(driver_name='fontawesome', symbol='upload')
-icon_wizard_submit = Icon(driver_name='fontawesome', symbol='arrow-right')
+
+icon_wizard_step_previous = Icon(driver_name='fontawesome', symbol='caret-left')
+icon_wizard_step_first = Icon(driver_name='fontawesome', symbol='step-backward')
+icon_wizard_step_next = Icon(driver_name='fontawesome', symbol='caret-right')

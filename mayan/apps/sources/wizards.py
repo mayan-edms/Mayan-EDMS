@@ -11,7 +11,9 @@ from django.utils.translation import ugettext_lazy as _
 from formtools.wizard.views import SessionWizardView
 
 from .classes import DocumentCreateWizardStep
-from .icons import icon_wizard_submit
+from .icons import (
+    icon_wizard_step_first, icon_wizard_step_next, icon_wizard_step_previous
+)
 
 
 class DocumentCreateWizard(SessionWizardView):
@@ -64,20 +66,47 @@ class DocumentCreateWizard(SessionWizardView):
 
         context.update(
             {
-                'form_css_classes': 'form-hotkey-double-click',
+                'form_css_classes': 'form-hotkey-enter form-hotkey-double-click',
                 'step_title': _(
                     'Step %(step)d of %(total_steps)d: %(step_label)s'
                 ) % {
                     'step': self.steps.step1, 'total_steps': len(self.form_list),
                     'step_label': wizard_step.label,
                 },
-                'submit_label': _('Next step'),
-                'submit_icon': icon_wizard_submit,
                 'title': _('Document upload wizard'),
                 'wizard_step': wizard_step,
                 'wizard_steps': DocumentCreateWizardStep.get_all(),
             }
         )
+
+        context['form_button_overrides'] = []
+
+        if self.steps.prev:
+            context['form_button_overrides'].extend(
+                (
+                    {
+                        'icon': icon_wizard_step_first,
+                        'label': _('First'),
+                        'name_override': 'wizard_goto_step',
+                        'value': self.steps.first
+                    },
+                    {
+                        'icon': icon_wizard_step_previous,
+                        'label': _('Previous'),
+                        'name_override': 'wizard_goto_step',
+                        'value': self.steps.prev
+                    }
+                )
+            )
+
+        context['form_button_overrides'].append(
+            {
+                'icon': icon_wizard_step_next,
+                'is_primary': True,
+                'label': _('Next')
+            }
+        )
+
         return context
 
     def get_form_initial(self, step):
