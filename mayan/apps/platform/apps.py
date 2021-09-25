@@ -2,6 +2,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
 
+from .classes import ClientBackend
+
 
 class PlatformApp(MayanAppConfig):
     app_namespace = 'platform'
@@ -13,3 +15,5 @@ class PlatformApp(MayanAppConfig):
 
     def ready(self):
         super().ready()
+
+        ClientBackend.load_modules()

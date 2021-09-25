@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 
 from django.conf import settings
+from django.conf.urls import include, url
 from django.template import loader
 from django.template.base import Template
 from django.template.context import Context
@@ -10,6 +11,7 @@ from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.serialization import yaml_dump, yaml_load
+from mayan.apps.databases.classes import BaseBackend
 from mayan.apps.task_manager.classes import Worker
 from mayan.settings.literals import (
     DEFAULT_DATABASE_NAME, DEFAULT_DATABASE_PASSWORD, DEFAULT_DATABASE_USER,
@@ -20,7 +22,53 @@ from mayan.settings.literals import (
     GUNICORN_TIMEOUT, GUNICORN_WORKER_CLASS, GUNICORN_WORKERS
 )
 
+from .settings import (
+    setting_client_backend_arguments, setting_client_backend_enabled
+)
 from .utils import load_env_file
+
+
+class ClientBackend(BaseBackend):
+    _loader_module_name = 'client_backends'
+
+    @classmethod
+    def get_backend_instance(cls, name):
+        backend_class = cls.get(name=name)
+        kwargs = setting_client_backend_arguments.value.get(name, {})
+        return backend_class(**kwargs)
+
+    @classmethod
+    def post_load_modules(cls):
+        cls.register_url_patterns()
+        cls.launch_backends()
+
+    @classmethod
+    def launch_backends(cls):
+        for backend_name in setting_client_backend_enabled.value:
+            cls.get_backend_instance(name=backend_name).launch()
+
+    @classmethod
+    def register_url_patterns(cls):
+        # Hidden import.
+        from .urls import urlpatterns
+
+        for backend_name in setting_client_backend_enabled.value:
+            backend_instance = cls.get_backend_instance(name=backend_name)
+
+            top_url = '{}/'.format(
+                getattr(backend_instance, '_url_namespace', backend_instance.__class__.__name__)
+            )
+
+            urlpatterns += (
+                url(
+                    regex=r'^{}'.format(top_url), view=include(
+                        backend_instance.get_url_patterns()
+                    )
+                ),
+            )
+
+    def __init__(self, **kwargs):
+        self.kwargs = kwargs
 
 
 class Variable:
