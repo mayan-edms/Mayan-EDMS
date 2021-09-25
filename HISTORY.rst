@@ -325,6 +325,8 @@
 - Don't trigger the settings change flag on user language changes.
 - Add settings to allow changing the default and the maximums
   REST API page size.
+- Add support for service client backends to the platform app.
+- Add Sentry.io service client backend.
 
 4.0.15 (2021-08-07)
 ===================
