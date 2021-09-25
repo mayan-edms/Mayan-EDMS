@@ -62,7 +62,7 @@ link_store = Link(
 )
 link_support = Link(
     icon=icon_support, tags='new_window', text=_('Get support'),
-    url='http://www.mayan-edms.com/providers/'
+    url='http://www.mayan-edms.com/support/'
 )
 link_tools = Link(
     icon=icon_tools, text=_('Tools'), view='common:tools_list'
