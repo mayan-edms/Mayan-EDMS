@@ -38,6 +38,7 @@ python-magic==0.4.24
 python_gnupg==0.4.7
 pytz==2021.1
 requests==2.26.0
+sentry-sdk==1.4.1
 sh==1.14.2
 swagger-spec-validator==2.7.3
 whitenoise==5.3.0
