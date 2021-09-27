@@ -161,7 +161,7 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_development, module=__name__,
-    name='django-extensions', version_string='==3.1.4'
+    name='django-extensions', version_string='==3.1.3'
 )
 PythonDependency(
     environment=environment_development, help_text=_(
