@@ -327,6 +327,30 @@
   REST API page size.
 - Add support for service client backends to the platform app.
 - Add Sentry.io service client backend.
+- Support overriding form buttons.
+- Improve metadata type form tab order. Disables metadata type name field
+  to skip them during tabbing.
+- Support step rewinding for the sources wizard.
+- Add support for recoding email Message ID. The email source can now record
+  an email Message ID from the header as it is processed into a documents.
+  All documents created from the same email will have the same Message ID.
+  Thanks to forum user qra (@qra) for the request.
+
+- Improve `BaseBackend` class
+
+  - Add deterministic parent base backend class detection.
+  - Register backend class only to their respective parent base
+    backend classes.
+
+- Render main menu icons properly. The change in
+  bbbb92edb85f192987fdfb4efc574bd79221b6ed removed literal CSS icon
+  support. A single reference to the old CSS icon render was left behind
+  which cause the icon object Python memory location to be rendered
+  inline with the menu HTML. This cause the same menu to have different
+  hashes when rendered by the different Gunicorn workers. Solved GitLab
+  issue #1038. Thanks to Ludovic Anterieur (@lanterieur) for the report.
+- Add setting to change the menu polling interval. Values specified in
+  milliseconds. Use `None` to disable.
 
 4.0.15 (2021-08-07)
 ===================
