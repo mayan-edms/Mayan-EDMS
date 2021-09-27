@@ -4,7 +4,8 @@
 - Remove duplicated makefile targets.
 - Add keyword arguments to PIL methods.
 - Quote parameters of remaining migration query.
-- Track user when setting a version active
+- Track user when setting a version active.
+- Fix menus randomly closing on refresh.
 
 4.0.15 (2021-08-07)
 ===================
