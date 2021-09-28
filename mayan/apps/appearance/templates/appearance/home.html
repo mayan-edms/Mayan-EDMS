@@ -6,6 +6,7 @@
 {% load common_tags %}
 {% load dashboards_tags %}
 {% load navigation_tags %}
+{% load smart_settings_tags %}
 
 {% block title %}{% include 'appearance/calculate_form_title.html' with non_html_title=True %}{% endblock %}
 
@@ -44,6 +45,7 @@
 
     {% include 'dynamic_search/search_box.html' %}
 
-    {% dashboards_render_default_dashboard %}
+    {% smart_setting "COMMON_HOME_VIEW_DASHBOARD_NAME" as home_view_dashboard_name %}
 
+    {% dashboards_render_dashboard name=home_view_dashboard_name %}
 {% endblock %}
