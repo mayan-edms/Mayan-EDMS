@@ -17,15 +17,16 @@
   - Perform code reduction. Remove PseudoFile and SourceUploaded
     classes. Each source backend is now responsible for providing
     a list of shared uploaded files.
-  - Multiform improvements:
 
-    - Support multi form extra kwargs.
-    - Move the dynamic part of the multi form method to the end
-      of the name.
-    - Add a white horizontal ruler to separate the form
-      instances.
+- Multiform improvements:
 
-- Consolidate the image generation task
+  - Support multi form extra kwargs.
+  - Move the dynamic part of the multi form method to the end
+    of the name.
+  - Add a white horizontal ruler to separate the form
+    instances.
+
+- Consolidate the image generation task:
 
   - Remove document file, version, converter asset, and workflow template
     preview image generation.
@@ -233,7 +234,7 @@
     level. The 'objects' manager for these model returns the unfiltered
     queryset.
   - Trashed document delete API now returns a 202 code instead of 204. The
-    delete method now runs in the background in the same was as the trashed
+    delete method now runs in the background in the same way as the trashed
     document delete view works in the UI. The return code was updated to
     reflect this internal change.
   - Track the user for the trashed document delete, restore and for the
