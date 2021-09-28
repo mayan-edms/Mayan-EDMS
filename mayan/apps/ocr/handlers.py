@@ -11,7 +11,9 @@ logger = logging.getLogger(name=__name__)
 
 def handler_index_document_version(sender, **kwargs):
     task_index_instance_document_add.apply_async(
-        kwargs=dict(document_id=kwargs['instance'].document_id)
+        kwargs={
+            'document_id': kwargs['instance'].document_id
+        }
     )
 
 

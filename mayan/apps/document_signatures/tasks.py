@@ -55,7 +55,9 @@ def task_verify_missing_embedded_signature(self):
 
     for document_file in EmbeddedSignature.objects.unsigned_document_files():
         task_verify_document_file.apply_async(
-            kwargs=dict(document_file_pk=document_file.pk)
+            kwargs={
+                'document_file_pk': document_file.pk
+            }
         )
 
 
