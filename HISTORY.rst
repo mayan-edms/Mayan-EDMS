@@ -6,7 +6,6 @@
 - Quote parameters of remaining migration query.
 - Track user when setting a version active.
 - Fix menus randomly closing on refresh.
-
 - Don't trigger the settings change flag on user language changes.
 
 4.0.15 (2021-08-07)
