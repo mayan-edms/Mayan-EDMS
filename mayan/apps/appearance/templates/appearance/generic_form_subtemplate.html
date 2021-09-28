@@ -75,7 +75,7 @@
             {# Is a normal form, a wizard form, or a formset with at least one form #}
                 <div class="form-group">
                     {% for button in form_button_overrides %}
-                        <button class="btn btn-primary {% if button.is_primary %}btn-hotkey-default{% endif %}" name="{% if button.name_override %}{{ button.name_override }}{% else %}{% if form.prefix %}{{ form.prefix }}-{{ button.name }}{% else %}{{ button.name }}{% endif %}{% endif %}" type="submit" value="{{ button.value }}">
+                        <button class="btn btn-primary {{ button.css_classes }}{% if button.is_primary %}btn-hotkey-default{% endif %}" {% if button.disabled %}disabled="disabled"{% endif %} name="{% if button.name_override %}{{ button.name_override }}{% else %}{% if form.prefix %}{{ form.prefix }}-{{ button.name }}{% else %}{{ button.name }}{% endif %}{% endif %}" type="submit" value="{{ button.value }}">
                             {% if button.icon %}
                                 {{ button.icon.render }}
                             {% else %}

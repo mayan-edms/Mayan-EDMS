@@ -79,33 +79,31 @@ class DocumentCreateWizard(SessionWizardView):
             }
         )
 
-        context['form_button_overrides'] = []
-
-        if self.steps.prev:
-            context['form_button_overrides'].extend(
-                (
-                    {
-                        'icon': icon_wizard_step_first,
-                        'label': _('First'),
-                        'name_override': 'wizard_goto_step',
-                        'value': self.steps.first
-                    },
-                    {
-                        'icon': icon_wizard_step_previous,
-                        'label': _('Previous'),
-                        'name_override': 'wizard_goto_step',
-                        'value': self.steps.prev
-                    }
-                )
-            )
-
-        context['form_button_overrides'].append(
+        context['form_button_overrides'] = (
+            {
+                'icon': icon_wizard_step_first,
+                'label': _('First'),
+                'name_override': 'wizard_goto_step',
+                'value': self.steps.first
+            },
+            {
+                'icon': icon_wizard_step_previous,
+                'label': _('Previous'),
+                'name_override': 'wizard_goto_step',
+                'value': self.steps.prev
+            },
             {
                 'icon': icon_wizard_step_next,
                 'is_primary': True,
                 'label': _('Next')
             }
         )
+
+        if not self.steps.prev:
+            context['form_button_overrides'][0]['css_classes'] = 'disabled'
+            context['form_button_overrides'][0]['disabled'] = True
+            context['form_button_overrides'][1]['css_classes'] = 'disabled'
+            context['form_button_overrides'][1]['disabled'] = True
 
         return context
 
