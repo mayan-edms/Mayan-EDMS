@@ -48,8 +48,6 @@ Appearance
 The theme stylesheet sanitization process was moved to the theme save method.
 This improves performance when themes are used.
 
-A situation that caused menus to reset and collapse at random was fixed.
-
 A setting was added to allow changing to menu polling interval. The value
 is specified in milliseconds with `None` used to disable polling.
 
@@ -417,13 +415,6 @@ Several operation like query processing were moved to the base class reducing
 the amount of code in the search backends.
 
 
-Settings
-^^^^^^^^
-
-An edge situation that could cause the system restart banner to be triggered
-when a user changed their default language or timezone was fixed.
-
-
 Signatures
 ^^^^^^^^^^
 
@@ -651,9 +642,6 @@ Issues closed
 - :gitlab-issue:`1017` get() returned more than one IndexInstanceNode -- it returned 6!
 - :gitlab-issue:`1024` Error with docker build
 - :gitlab-issue:`1027` Source missing method process_document (4.1a1)
-- :gitlab-issue:`1030` Replace latest_version with version_active in documentation "examples.txt"
-- :gitlab-issue:`1035` Support link is broken
-- :gitlab-issue:`1038` [s4] GUI menu refreshing every 5 seconds
 - :gitlab-issue:`1039` [v4.1b1] Missing requirement
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
