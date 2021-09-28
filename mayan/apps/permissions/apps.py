@@ -149,9 +149,9 @@ class PermissionsApp(MayanAppConfig):
 
         menu_secondary.bind_links(
             links=(link_role_list, link_role_create), sources=(
-                'user_management:role_create',
-                'user_management:role_delete_multiple',
-                'user_management:role_list', Role
+                'permissions:role_create',
+                'permissions:role_delete_multiple',
+                'permissions:role_list', Role
             )
         )
 
