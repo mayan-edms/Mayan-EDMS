@@ -372,6 +372,8 @@
 - Fix the view to mark all messages as read.
 - Track the user when marking messages as read or unread.
 - Fix action messages.
+- Enforce ``CONVERTER_IMAGE_GENERATION_MAX_RETRIES`` setting and add logging
+  message when the maximum retires are exhausted.
 
 4.0.14 (2021-08-05)
 ===================
