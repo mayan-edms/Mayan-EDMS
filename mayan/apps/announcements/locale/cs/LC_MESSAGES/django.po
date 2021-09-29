@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-24 02:59+0000\n"
+"POT-Creation-Date: 2021-09-29 05:49+0000\n"
 "PO-Revision-Date: 2021-04-12 03:38+0000\n"
 "Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -53,7 +53,7 @@ msgstr "Upravit"
 
 #: models.py:18
 msgid "Short description of this announcement."
-msgstr ""
+msgstr "Krátký popis tohoto oznámení."
 
 #: models.py:19
 msgid "Label"
@@ -61,7 +61,7 @@ msgstr "Jmenovka"
 
 #: models.py:22
 msgid "The actual text to be displayed."
-msgstr ""
+msgstr "Skutečný text, který se má zobrazit."
 
 #: models.py:23
 msgid "Text"
@@ -159,4 +159,4 @@ msgstr ""
 
 #: views.py:118
 msgid "No announcements available"
-msgstr ""
+msgstr "Nejsou k dispozici žádná oznámení"

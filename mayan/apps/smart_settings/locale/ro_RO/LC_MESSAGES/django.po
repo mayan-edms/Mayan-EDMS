@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-24 02:59+0000\n"
+"POT-Creation-Date: 2021-09-29 05:51+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -503,6 +503,10 @@ msgid ""
 msgstr ""
 "Setările actualizate, reporniți instalarea și reîmprospătați browserul "
 "pentru ca modificările să intre în vigoare."
+
+#: tests/test_classes.py:87
+msgid "English"
+msgstr ""
 
 #: views.py:21
 msgid "Setting updated successfully."

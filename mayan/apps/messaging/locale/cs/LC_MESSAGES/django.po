@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-24 02:59+0000\n"
+"POT-Creation-Date: 2021-09-29 05:50+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
 "Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: apps.py:35 events.py:5 permissions.py:5
 msgid "Messaging"
-msgstr ""
+msgstr "Zprávy"
 
 #: apps.py:57
 msgid "None"
@@ -32,7 +32,7 @@ msgstr "Žádný"
 
 #: apps.py:63
 msgid "Sender"
-msgstr ""
+msgstr "Odesílatel"
 
 #: events.py:8
 msgid "Message created"
@@ -56,15 +56,15 @@ msgstr "Odstranit"
 
 #: links.py:54 links.py:65
 msgid "Mark as read"
-msgstr ""
+msgstr "Označit jako přečtené"
 
 #: links.py:60 links.py:69
 msgid "Mark as unread"
-msgstr ""
+msgstr "Označit jako nepřečtené"
 
 #: links.py:73
 msgid "Mark all as read"
-msgstr ""
+msgstr "Označit vše jako přečtené"
 
 #: models.py:29
 msgid "User"
@@ -80,11 +80,11 @@ msgstr "Předmět"
 
 #: models.py:36
 msgid "The actual content of the message."
-msgstr ""
+msgstr "Skutečný obsah zprávy."
 
 #: models.py:41
 msgid "This field determines if the message has been read or not."
-msgstr ""
+msgstr "Toto pole určuje, zda byla zpráva přečtena nebo ne."
 
 #: models.py:42
 msgid "Read"
@@ -92,11 +92,11 @@ msgstr "Číst"
 
 #: models.py:46
 msgid "Date and time of the message creation."
-msgstr ""
+msgstr "Datum a čas vytvoření zprávy."
 
 #: models.py:47
 msgid "Creation date and time"
-msgstr ""
+msgstr "Datum a čas vytvoření"
 
 #: models.py:52
 msgid "Message"
@@ -144,12 +144,12 @@ msgstr ""
 #: views.py:52
 #, python-format
 msgid "%(count)d messages deleted successfully."
-msgstr ""
+msgstr "%(count)d zpráv bylo úspěšně odstraněno."
 
 #: views.py:53
 #, python-format
 msgid "Delete message: %(object)s."
-msgstr ""
+msgstr "Smazat zprávu: %(object)s."
 
 #: views.py:54
 #, python-format
@@ -168,11 +168,11 @@ msgstr ""
 
 #: views.py:117
 msgid "Here you will find text messages from other users or from the system."
-msgstr ""
+msgstr "Zde najdete textové zprávy od jiných uživatelů nebo ze systému."
 
 #: views.py:120
 msgid "There are no messages"
-msgstr ""
+msgstr "Nejsou žádné zprávy"
 
 #: views.py:131
 #, python-format
@@ -187,12 +187,12 @@ msgstr ""
 #: views.py:140
 #, python-format
 msgid "%(count)d message marked as read successfully."
-msgstr ""
+msgstr "%(count)d zpráva označena jako úspěšně přečtená."
 
 #: views.py:143
 #, python-format
 msgid "%(count)d messages marked as read successfully."
-msgstr ""
+msgstr "%(count)d zprávy označené jako úspěšně přečtené."
 
 #: views.py:145
 #, python-format
@@ -202,20 +202,20 @@ msgstr ""
 #: views.py:146
 #, python-format
 msgid "Mark the %(count)d selected message as read."
-msgstr ""
+msgstr "Označit %(count)d vybrané zprávy jako přečtené."
 
 #: views.py:147
 #, python-format
 msgid "Mark the %(count)d selected messages as read."
-msgstr ""
+msgstr "Označit %(count)d vybraných zpráv jako přečtené."
 
 #: views.py:174
 msgid "Mark all message as read?"
-msgstr ""
+msgstr "Označit všechny zprávy jako přečtené?"
 
 #: views.py:191
 msgid "All messages marked as read."
-msgstr ""
+msgstr "Všechny zprávy označené jako přečtené."
 
 #: views.py:198
 #, python-format

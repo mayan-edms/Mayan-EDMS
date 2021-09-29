@@ -11,16 +11,16 @@
 # Baptiste GAILLET <baptiste.gaillet@cstb.fr>, 2021
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2021
 # Yves Dubois <ydubois@gmail.com>, 2021
-# Frédéric Sheedy <sheedf@gmail.com>, 2021
 # Guillaume Trottier <gui.trottier@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-24 02:59+0000\n"
+"POT-Creation-Date: 2021-09-29 05:50+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -118,7 +118,7 @@ msgstr "Importer"
 
 #: links.py:46
 msgid "Upload key"
-msgstr "Uploader la clé"
+msgstr "Téléverser la clé"
 
 #: links.py:50 views.py:194
 msgid "Private keys"
@@ -216,7 +216,7 @@ msgstr "Utiliser des clefs pour signer le document"
 
 #: permissions.py:20
 msgid "Upload keys"
-msgstr "Uploader les clés"
+msgstr "Téléverser les clés"
 
 #: permissions.py:23
 msgid "View keys"
@@ -291,7 +291,7 @@ msgstr "Interroger le serveur de clés"
 
 #: views.py:166
 msgid "Upload new key"
-msgstr "Uploader une nouvelle clé"
+msgstr "Téléverser une nouvelle clé"
 
 #: views.py:187
 msgid ""
