@@ -1,4 +1,4 @@
-4.0.16 (2021-XX-XX)
+4.0.16 (2021-09-29)
 ===================
 - Minor fixes merged from version 3.5.11.
 - Remove duplicated makefile targets.
@@ -7,7 +7,7 @@
 - Track user when setting a version active.
 - Fix menus randomly closing on refresh.
 - Don't trigger the settings change flag on user language changes.
-- Backport setting `CONVERTER_IMAGE_GENERATION_MAX_RETRIES`. 
+- Backport setting `CONVERTER_IMAGE_GENERATION_MAX_RETRIES`.
   This setting allows changing the image generation task maximum
   retry count. Celery's built in default value is 3, this setting
   increases that default to 7.
