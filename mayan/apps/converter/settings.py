@@ -64,6 +64,14 @@ setting_asset_storage_backend_arguments = namespace.add_setting(
         'Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND.'
     )
 )
+setting_image_generation_max_retries = namespace.add_setting(
+    default=DEFAULT_CONVERTER_IMAGE_GENERATION_MAX_RETRIES,
+    global_name='CONVERTER_IMAGE_GENERATION_MAX_RETRIES',
+    help_text=_(
+        'Maximum number of retries before giving up. A value of None means '
+        'the task will retry forever.'
+    )
+)
 setting_graphics_backend = namespace.add_setting(
     default=DEFAULT_CONVERTER_GRAPHICS_BACKEND,
     global_name='CONVERTER_GRAPHICS_BACKEND', help_text=_(

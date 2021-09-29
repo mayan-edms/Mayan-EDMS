@@ -7,6 +7,10 @@
 - Track user when setting a version active.
 - Fix menus randomly closing on refresh.
 - Don't trigger the settings change flag on user language changes.
+- Backport setting `CONVERTER_IMAGE_GENERATION_MAX_RETRIES`. 
+  This setting allows changing the image generation task maximum
+  retry count. Celery's built in default value is 3, this setting
+  increases that default to 7.
 
 4.0.15 (2021-08-07)
 ===================
