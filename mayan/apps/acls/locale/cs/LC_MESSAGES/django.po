@@ -6,6 +6,7 @@
 # Translators:
 # Jiri Fait <fait@orkasolutions.cz>, 2021
 # Michal Švábík <snadno@lehce.cz>, 2021
+# trendspotter <jirka.p@volny.cz>, 2021
 #
 msgid ""
 msgstr ""
@@ -13,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-14 05:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:12+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -31,6 +32,8 @@ msgid ""
 "Object for which the access is granted. When sorting objects, only the type "
 "is used and not the actual label of the object."
 msgstr ""
+"Objekt, ke kterému je přístup udělen. Při třídění objektů se používá pouze "
+"typ a ne skutečný štítek objektu."
 
 #: apps.py:65
 msgid "Object"
@@ -46,7 +49,7 @@ msgstr "ACL vytvořen"
 
 #: events.py:13
 msgid "ACL deleted"
-msgstr ""
+msgstr "ACL smazán"
 
 #: events.py:16
 msgid "ACL edited"
@@ -70,7 +73,7 @@ msgstr "Práva"
 
 #: links.py:35
 msgid "Global ACLs"
-msgstr ""
+msgstr "Globální ACL"
 
 #: managers.py:243
 #, python-format
@@ -85,7 +88,7 @@ msgstr "Nedostatečný přístup pro: %s"
 
 #: models.py:49
 msgid "Role to which the access is granted for the specified object."
-msgstr ""
+msgstr "Role, ke které je pro zadaný objekt udělen přístup."
 
 #: models.py:59
 msgid "Access entry"
@@ -110,11 +113,11 @@ msgstr "Zobrazit seznamy ACL"
 
 #: serializers.py:125
 msgid "Primary key of the permission to add to the ACL."
-msgstr ""
+msgstr "Primární klíč oprávnění přidat do seznamu ACL."
 
 #: serializers.py:132
 msgid "Primary key of the permission to remove from the ACL."
-msgstr ""
+msgstr "Primární klíč oprávnění odebrat z ACL."
 
 #: views.py:40
 #, python-format
@@ -180,11 +183,11 @@ msgstr ""
 
 #: views.py:256
 msgid "There are no ACLs"
-msgstr ""
+msgstr "Neexistují žádné seznamy ACL"
 
 #: views.py:265
 msgid "Global access control lists"
-msgstr ""
+msgstr "Globální seznamy řízení přístupu"
 
 #: workflow_actions.py:23
 msgid "Object type"

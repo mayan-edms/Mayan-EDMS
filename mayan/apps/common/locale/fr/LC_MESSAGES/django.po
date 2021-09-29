@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-09-29 05:50+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -232,11 +232,11 @@ msgstr ""
 
 #: settings.py:70
 msgid "Sets the project's name."
-msgstr ""
+msgstr "Définit le nom du projet."
 
 #: settings.py:74
 msgid "URL of the project's homepage."
-msgstr ""
+msgstr "URL de la page d'accueil du projet."
 
 #: templates/common/app/viewport.html:9
 msgid "Warning"

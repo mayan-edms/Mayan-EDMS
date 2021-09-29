@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-09-29 05:50+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
+#: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:20
 msgid "Converter"
 msgstr "Convertidor"
 
@@ -253,7 +253,7 @@ msgstr "Ver transformaciones existentes"
 msgid "Generate a image of an asset."
 msgstr "Genera una imagen de un activo."
 
-#: settings.py:28
+#: settings.py:29
 msgid ""
 "The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest asset cache files. Specify the size in bytes."
@@ -262,7 +262,7 @@ msgstr ""
 "eliminar los archivos de caché de activos más antiguos. Especifique el "
 "tamaño en bytes."
 
-#: settings.py:37
+#: settings.py:38
 msgid ""
 "Time in seconds that the browser should cache the supplied asset. The "
 "default of 31559626 seconds correspond to 1 year."
@@ -271,30 +271,36 @@ msgstr ""
 "proporcionado. El valor predeterminado de 31559626 segundos corresponde a 1 "
 "año."
 
-#: settings.py:44
+#: settings.py:45
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
 msgstr ""
 "Ruta a la subclase de almacenamiento que se utilizará al almacenar los "
 "archivos de activos en caché."
 
-#: settings.py:52
+#: settings.py:53
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
 msgstr "Argumentos para pasar al CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
 
-#: settings.py:58
+#: settings.py:59
 msgid "Path to the Storage subclass to use when storing assets."
 msgstr "Ruta a la subclase de almacenamiento para usar al almacenar activos."
 
-#: settings.py:64
+#: settings.py:65
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgstr "Argumentos para pasar al CONVERTER_ASSET_STORAGE_BACKEND."
 
-#: settings.py:70
+#: settings.py:72
+msgid ""
+"Maximum number of retries before giving up. A value of None means the task "
+"will retry forever."
+msgstr ""
+
+#: settings.py:79
 msgid "Graphics conversion backend to use."
 msgstr "Módulo de conversión de gráficos a ser usado."
 
-#: settings.py:76
+#: settings.py:85
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Opciones de configuración para el modulo de conversión de gráficos."
 
@@ -351,39 +357,39 @@ msgstr "Voltear"
 msgid "Gaussian blur"
 msgstr "Desenfoque gaussiano"
 
-#: transformations.py:648
+#: transformations.py:650
 msgid "Line art"
 msgstr "Arte lineal"
 
-#: transformations.py:659
+#: transformations.py:664
 msgid "Mirror"
 msgstr "Espejo"
 
-#: transformations.py:670
+#: transformations.py:675
 msgid "Resize"
 msgstr "Cambiar el tamaño"
 
-#: transformations.py:697
+#: transformations.py:702
 msgid "Rotate"
 msgstr "Girar"
 
-#: transformations.py:723
+#: transformations.py:728
 msgid "Rotate 90 degrees"
 msgstr "Girar 90 grados"
 
-#: transformations.py:734
+#: transformations.py:739
 msgid "Rotate 180 degrees"
 msgstr "Girar 180 grados"
 
-#: transformations.py:745
+#: transformations.py:750
 msgid "Rotate 270 degrees"
 msgstr "Girar 270 grados"
 
-#: transformations.py:755
+#: transformations.py:760
 msgid "Unsharp masking"
 msgstr "Reenfocar "
 
-#: transformations.py:771
+#: transformations.py:776
 msgid "Zoom"
 msgstr "Ampliar"
 
