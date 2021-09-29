@@ -6,15 +6,15 @@
 # Translators:
 # Jiri Fait <fait@orkasolutions.cz>, 2021
 # Michal Švábík <snadno@lehce.cz>, 2021
-# trendspotter, 2021
+# trendspotter <jirka.p@volny.cz>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-09-29 05:50+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: trendspotter, 2021\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -52,11 +52,11 @@ msgstr ""
 
 #: events.py:13
 msgid "Detached signature uploaded"
-msgstr ""
+msgstr "Odpojený podpis nahrán"
 
 #: events.py:17
 msgid "Embedded signature created"
-msgstr ""
+msgstr "Vložený podpis vytvořen"
 
 #: forms.py:17 forms.py:31 workflow_actions.py:19
 msgid "Key"
@@ -75,6 +75,7 @@ msgstr "Přístupová fráze"
 #: forms.py:33
 msgid "Private key that will be used to sign this document file."
 msgstr ""
+"Soukromý klíč, který bude použit k podepsání tohoto souboru dokumentu."
 
 #: forms.py:44
 msgid "Signature is embedded?"
@@ -122,7 +123,7 @@ msgstr "Typ klíče"
 
 #: links.py:40
 msgid "Refresh all signatures"
-msgstr ""
+msgstr "Obnovit všechny podpisy"
 
 #: links.py:46
 msgid "Verify all documents"
@@ -162,7 +163,7 @@ msgstr "Soubor dokumentu"
 
 #: models.py:47
 msgid "Date and time signed"
-msgstr ""
+msgstr "Datum a čas podpisu"
 
 #: models.py:51
 msgid "ID of the key that will be used to sign the document."
@@ -198,11 +199,11 @@ msgstr "Podpisový soubor"
 
 #: models.py:164
 msgid "Document file detached signature"
-msgstr ""
+msgstr "Odpojený podpis souboru dokumentu"
 
 #: models.py:165
 msgid "Document file detached signatures"
-msgstr ""
+msgstr "Odpojené podpisy souboru dokumentu"
 
 #: models.py:168
 msgid "signature"
@@ -210,11 +211,11 @@ msgstr "podpis"
 
 #: models.py:210
 msgid "Document file embedded signature"
-msgstr ""
+msgstr "Vložený podpisový soubor dokumentu"
 
 #: models.py:211
 msgid "Document file embedded signatures"
-msgstr ""
+msgstr "Vložené podpisové dokumenty"
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
@@ -254,7 +255,7 @@ msgstr "Zrušit ověření podpisů klíčů "
 
 #: queues.py:21
 msgid "Verify document file"
-msgstr ""
+msgstr "Ověřit soubor dokumentu"
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
@@ -266,7 +267,7 @@ msgstr ""
 
 #: serializers.py:60
 msgid "Primary key of the tag to add to the document."
-msgstr ""
+msgstr "Primární klíč značky, který se má přidat do dokumentu."
 
 #: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."
@@ -299,7 +300,7 @@ msgstr "Heslo je nesprávné."
 
 #: views.py:92 views.py:161
 msgid "Document file signed successfully."
-msgstr ""
+msgstr "Soubor dokumentu byl úspěšně podepsán."
 
 #: views.py:102 views.py:178
 msgid "Sign"
@@ -355,11 +356,11 @@ msgstr "Ve velkých databázích může provedení této operace nějakou dobu t
 
 #: views.py:341
 msgid "Refresh all signatures information?"
-msgstr ""
+msgstr "Obnovit všechny informace o podpisech?"
 
 #: views.py:351
 msgid "Signature information refresh queued successfully."
-msgstr ""
+msgstr "Obnovení informací o podpisu bylo úspěšně zařazeno do fronty."
 
 #: views.py:360
 msgid "Verify all document for signatures?"
@@ -382,6 +383,8 @@ msgid ""
 "Document has no file to sign. You might be trying to use this action in an "
 "initial state before the created document is yet to be processed."
 msgstr ""
+"Dokument neobsahuje žádný soubor k podpisu. Možná se pokoušíte použít tuto "
+"akci v počátečním stavu, než bude vytvořený dokument ještě zpracován."
 
 #: workflow_actions.py:80
 msgid "Sign document (embedded)"

@@ -182,14 +182,14 @@ class Setting:
         if isinstance(value, (list, tuple)):
             return [Setting.express_promises(item) for item in value]
         elif isinstance(value, Promise):
-            return force_text(s=value)
+            return value._proxy____args[0]
         else:
             return value
 
     @staticmethod
     def serialize_value(value):
         result = yaml_dump(
-            data=Setting.express_promises(value), allow_unicode=True,
+            data=Setting.express_promises(value=value), allow_unicode=True,
             default_flow_style=False,
         )
         # safe_dump returns bytestrings
@@ -224,7 +224,7 @@ class Setting:
             # otherwise return always True to include all (or not None == True)
             if (namespace and setting.namespace.name == namespace) or not namespace:
                 if (filter_term and filter_term.lower() in setting.global_name.lower()) or not filter_term:
-                    dictionary[setting.global_name] = Setting.express_promises(setting.value)
+                    dictionary[setting.global_name] = Setting.express_promises(value=setting.value)
 
         return yaml_dump(
             data=dictionary, default_flow_style=False

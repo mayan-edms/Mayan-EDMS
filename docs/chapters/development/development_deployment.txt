@@ -1,0 +1,60 @@
+.. _development_deployment:
+
+
+======================
+Development deployment
+======================
+
+
+#. Clone the repository:
+
+   .. code-block:: console
+
+     git clone |SOURCE_CODE_GIT| mayan-edms-|MAYAN_VERSION|
+
+   Alternatively, you can also fork the original repository and clone
+   from your fork to allow pushing persistent code changes.
+
+#. Create a folder for the Python virtualenv:
+
+   .. code-block:: console
+
+     mkdir ~/.virtualenvs
+
+#. Install Python's venv package:
+
+   .. code-block:: console
+
+     apt install python3-venv
+
+#. Create a virtualenv for Mayan EDMS:
+
+   .. code-block:: console
+
+     python3 -m venv ~/.virtualenvs/mayan-edms-|MAYAN_VERSION|
+
+#. Activate the virtualenv:
+
+   .. code-block:: console
+
+     source ~/.virtualenvs/mayan-edms-|MAYAN_VERSION|/bin/activate
+
+#. Install the development dependencies:
+
+   .. code-block:: console
+
+     make setup-dev-environment
+
+#. Initialize the installation:
+
+   .. code-block:: console
+
+     ./manage.py initialsetup
+
+#. Launch the development server
+
+   .. code-block:: console
+
+     make runserver
+
+#. Browse to http://localhost:8000

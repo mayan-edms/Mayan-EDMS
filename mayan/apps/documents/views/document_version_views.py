@@ -58,6 +58,7 @@ class DocumentVersionActiveView(ExternalObjectViewMixin, ConfirmView):
         }
 
     def view_action(self, form=None):
+        self.external_object._event_actor = self.request.user
         self.external_object.active_set()
         messages.success(
             message=_(
@@ -106,6 +107,18 @@ class DocumentVersionDeleteView(MultipleObjectDeleteView):
     title_single = _('Delete document version "%(object)s".')
     title_singular = _('Delete %(count)d document version.')
     title_plural = _('Delete %(count)d document versions.')
+
+    def get_extra_context(self, **kwargs):
+        context = {}
+
+        if self.object_list.count() > 1:
+            context.update(
+                {
+                    'object': self.object_list.first().document,
+                }
+            )
+
+        return context
 
     def get_instance_extra_data(self):
         return {

@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from django.db import OperationalError
 
 from mayan.apps.lock_manager.exceptions import LockError
+from mayan.apps.converter.settings import setting_image_generation_max_retries
 from mayan.celery import app
 
 from .literals import (
@@ -56,7 +57,8 @@ def task_document_file_page_count_update(self, document_file_id):
 
 @app.task(
     bind=True,
-    default_retry_delay=setting_task_document_file_page_image_generate_retry_delay.value
+    default_retry_delay=setting_task_document_file_page_image_generate_retry_delay.value,
+    max_retries=setting_image_generation_max_retries.value
 )
 def task_document_file_page_image_generate(
     self, document_file_page_id, user_id=None, **kwargs
@@ -224,7 +226,8 @@ def task_document_version_export(
 
 @app.task(
     bind=True,
-    default_retry_delay=setting_task_document_version_page_image_generate_retry_delay.value
+    default_retry_delay=setting_task_document_version_page_image_generate_retry_delay.value,
+    max_retries=setting_image_generation_max_retries.value
 )
 def task_document_version_page_image_generate(
     self, document_version_page_id, user_id=None, **kwargs

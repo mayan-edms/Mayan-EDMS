@@ -703,7 +703,7 @@ class SourceColumn:
         self.empty_value = empty_value
         self.exclude = set()
         self.func = func
-        self.html_extra_classes = html_extra_classes
+        self.html_extra_classes = html_extra_classes or ''
         self.is_attribute_absolute_url = is_attribute_absolute_url
         self.is_object_absolute_url = is_object_absolute_url
         self.is_identifier = is_identifier

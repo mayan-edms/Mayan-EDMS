@@ -73,6 +73,7 @@ DEFAULT_CONVERTER_ASSET_STORAGE_BACKEND_ARGUMENTS = {
     'location': os.path.join(settings.MEDIA_ROOT, 'converter_assets')
 }
 DEFAULT_CONVERTER_GRAPHICS_BACKEND = 'mayan.apps.converter.backends.python.Python'
+DEFAULT_CONVERTER_IMAGE_GENERATION_MAX_RETRIES = 7
 DEFAULT_PAGE_NUMBER = 1
 DEFAULT_PDFTOPPM_DPI = 300
 DEFAULT_PDFTOPPM_FORMAT = 'jpeg'  # Possible values jpeg, png, tiff

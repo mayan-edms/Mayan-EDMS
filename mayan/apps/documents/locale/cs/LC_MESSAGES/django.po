@@ -7,15 +7,15 @@
 # Jiri Fait <fait@orkasolutions.cz>, 2021
 # Sebastian Fait <seba.fait@gmail.com>, 2021
 # Michal Švábík <snadno@lehce.cz>, 2021
-# trendspotter, 2021
+# trendspotter <jirka.p@volny.cz>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-09-29 05:50+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: trendspotter, 2021\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -47,19 +47,19 @@ msgstr ""
 
 #: apps.py:384
 msgid "File comments"
-msgstr ""
+msgstr "Komentáře k souboru"
 
 #: apps.py:388
 msgid "File encodings"
-msgstr ""
+msgstr "Kódování souborů"
 
 #: apps.py:392
 msgid "File MIME types"
-msgstr ""
+msgstr "MIME Typy souborů"
 
 #: apps.py:396
 msgid "File timestamps"
-msgstr ""
+msgstr "Časová razítka souborů"
 
 #: apps.py:401 links/document_file_page_links.py:79
 #: models/document_file_models.py:120 models/document_file_page_models.py:42
@@ -74,7 +74,7 @@ msgstr "Číslo strany"
 
 #: apps.py:410
 msgid "Return the latest file of the document."
-msgstr ""
+msgstr "Vrátit nejnovější soubor dokumentu."
 
 #: apps.py:411
 msgid "Latest file"
@@ -125,13 +125,15 @@ msgstr ""
 
 #: classes.py:80
 msgid "UUID plus original"
-msgstr ""
+msgstr "UUID plus originál"
 
 #: classes.py:82
 msgid ""
 "Generates an immutable, random UUID (RFC 4122) for each file and appends the"
 " original filename of the uploaded file."
 msgstr ""
+"Pro každý soubor generuje neměnné, náhodné UUID (RFC 4122) a připojí původní"
+" název souboru nahraného souboru."
 
 #: dashboard_widgets.py:23
 msgid "Total pages"
@@ -165,7 +167,7 @@ msgstr "Dokument byl vytvořen"
 
 #: events.py:13
 msgid "Document edited"
-msgstr ""
+msgstr "Dokument upraven"
 
 #: events.py:16
 msgid "Document viewed"
@@ -173,19 +175,19 @@ msgstr "Dokument zobrazen"
 
 #: events.py:22
 msgid "Document file created"
-msgstr ""
+msgstr "Soubor dokumentu vytvořen"
 
 #: events.py:25
 msgid "Document file deleted"
-msgstr ""
+msgstr "Soubor dokumentu odstraněn"
 
 #: events.py:28
 msgid "Document file downloaded"
-msgstr ""
+msgstr "Soubor dokumentu stažen"
 
 #: events.py:31
 msgid "Document file edited"
-msgstr ""
+msgstr "Soubor s dokumentem upraven"
 
 #: events.py:37
 msgid "Document type created"
@@ -197,15 +199,15 @@ msgstr "Typ dokumentu byl upraven"
 
 #: events.py:43
 msgid "Document type quick label created"
-msgstr ""
+msgstr "Bylo vytvořeno rychlé označení typu dokumentu"
 
 #: events.py:47
 msgid "Document type quick label deleted"
-msgstr ""
+msgstr "Rychlý štítek typu dokumentu odstraněn"
 
 #: events.py:51
 msgid "Document type quick label edited"
-msgstr ""
+msgstr "Rychlá úprava typu dokumentu"
 
 #: events.py:56
 msgid "Document type changed"
@@ -213,7 +215,7 @@ msgstr "Typ dokumentu se změnil"
 
 #: events.py:62
 msgid "Document version created"
-msgstr ""
+msgstr "Verze dokumentu vytvořena"
 
 #: events.py:65
 msgid "Document version deleted"
@@ -221,23 +223,23 @@ msgstr "Verze dokumentu smazána"
 
 #: events.py:68
 msgid "Document version edited"
-msgstr ""
+msgstr "Verze dokumentu upravena"
 
 #: events.py:71
 msgid "Document version exported"
-msgstr ""
+msgstr "Exportovaná verze dokumentu"
 
 #: events.py:77
 msgid "Document version page created"
-msgstr ""
+msgstr "Stránka verze dokumentu vytvořena"
 
 #: events.py:81
 msgid "Document version page deleted"
-msgstr ""
+msgstr "Stránka verze dokumentu odstraněna"
 
 #: events.py:85
 msgid "Document version page edited"
-msgstr ""
+msgstr "Stránka verze dokumentu upravena"
 
 #: events.py:92
 msgid "Document trashed"
@@ -253,19 +255,19 @@ msgstr "Zničený dokument obnoven"
 
 #: events.py:104
 msgid "Document downloaded (historic)"
-msgstr ""
+msgstr "Stažení dokumentu (historicky)"
 
 #: events.py:107
 msgid "Document file created (historic)"
-msgstr ""
+msgstr "Soubor dokumentu vytvořen (historický)"
 
 #: events.py:111
 msgid "Document version reverted (historic)"
-msgstr ""
+msgstr "Vrácených verzí dokumentu (historicky)"
 
 #: events.py:115
 msgid "Document version uploaded (historic)"
-msgstr ""
+msgstr "Nahraných verzí dokumentu (historicky)"
 
 #: forms/document_file_forms.py:38
 msgid "Date added"
@@ -281,7 +283,7 @@ msgstr "Kódování"
 
 #: forms/document_file_forms.py:51
 msgid "Size"
-msgstr ""
+msgstr "Velikost"
 
 #: forms/document_file_forms.py:56
 msgid "Exists in storage"
@@ -289,7 +291,7 @@ msgstr "Existuje v úložišti"
 
 #: forms/document_file_forms.py:58
 msgid "Path in storage"
-msgstr ""
+msgstr "Cesta v úložišti"
 
 #: forms/document_file_forms.py:61 models/document_file_models.py:115
 msgid "Checksum"
@@ -314,7 +316,7 @@ msgstr ""
 
 #: forms/document_forms.py:104
 msgid "Date created"
-msgstr ""
+msgstr "Datum vytvoření"
 
 #: forms/document_forms.py:110 models/document_models.py:86
 msgid "Language"
@@ -328,7 +330,7 @@ msgstr "Typ dokumentu"
 
 #: forms/document_version_page_forms.py:27
 msgid "Content type"
-msgstr ""
+msgstr "Typ obsahu"
 
 #: forms/document_version_page_forms.py:30
 msgid "Object ID"
@@ -340,11 +342,11 @@ msgstr "Zdroj"
 
 #: forms/document_version_page_forms.py:38
 msgid "Destination page number"
-msgstr ""
+msgstr "Číslo cílové stránky"
 
 #: forms/document_version_page_forms.py:82
 msgid "Target page number can't be repeated."
-msgstr ""
+msgstr "Číslo cílové stránky nelze opakovat."
 
 #: forms/misc_forms.py:12 literals.py:102
 msgid "Page range"
@@ -377,7 +379,7 @@ msgstr "Rychlé stažení"
 
 #: links/document_file_links.py:47 links/document_file_links.py:69
 msgid "Files"
-msgstr ""
+msgstr "Soubory"
 
 #: links/document_file_links.py:51 links/document_version_links.py:69
 msgid "Print"
@@ -424,7 +426,7 @@ msgstr "Další strana"
 #: links/document_file_page_links.py:86 models/document_file_page_models.py:54
 #: models/document_file_page_models.py:317
 msgid "Document file pages"
-msgstr ""
+msgstr "Stránky souboru dokumentu"
 
 #: links/document_file_page_links.py:91
 #: links/document_version_page_links.py:114
@@ -474,7 +476,7 @@ msgstr "Nedávno otevřeno"
 
 #: links/document_links.py:29 views/recently_created_document_views.py:27
 msgid "Recently created"
-msgstr ""
+msgstr "Nedávno vytvořeno"
 
 #: links/document_links.py:50
 msgid "Edit properties"
@@ -502,11 +504,11 @@ msgstr "Generování názvu souboru"
 
 #: links/document_version_links.py:29
 msgid "Make active"
-msgstr ""
+msgstr "Aktivovat"
 
 #: links/document_version_links.py:34
 msgid "Create document version"
-msgstr ""
+msgstr "Vytvořit verzi dokumentu"
 
 #: links/document_version_links.py:51
 msgid "Export"
@@ -518,7 +520,7 @@ msgstr "Verze"
 
 #: links/document_version_page_links.py:56
 msgid "Remap pages"
-msgstr ""
+msgstr "Přemapovat stránky"
 
 #: links/document_version_page_links.py:61
 msgid "Reset pages"
@@ -534,7 +536,7 @@ msgstr "Verze dokumentu"
 #: models/document_version_page_models.py:75
 #: models/document_version_page_models.py:402
 msgid "Document version pages"
-msgstr ""
+msgstr "Stránky verze dokumentu"
 
 #: links/favorite_links.py:13 views/favorite_document_views.py:36
 msgid "Favorites"
@@ -570,11 +572,11 @@ msgstr "Výchozí"
 
 #: literals.py:83
 msgid "Replace. Create a new version and use the new file pages."
-msgstr ""
+msgstr "Nahradit. Vytvořte novou verzi a použijte nové stránky se soubory."
 
 #: literals.py:84
 msgid "Append. Create a new version and append the new file pages."
-msgstr ""
+msgstr "Připojit. Vytvořte novou verzi a připojte nové stránky souborů."
 
 #: literals.py:85
 msgid "Keep. Do not create a new version and keep the current version pages."
@@ -634,7 +636,7 @@ msgstr "Všechny strany"
 
 #: models/document_file_models.py:80
 msgid "The server date and time when the document file was processed."
-msgstr ""
+msgstr "Datum a čas serveru, kdy byl zpracován soubor dokumentu."
 
 #: models/document_file_models.py:81 models/document_version_models.py:49
 msgid "Timestamp"
@@ -642,7 +644,7 @@ msgstr "Časové razítko"
 
 #: models/document_file_models.py:85
 msgid "An optional short text describing the document file."
-msgstr ""
+msgstr "Volitelný krátký text popisující soubor dokumentu."
 
 #: models/document_file_models.py:86 models/document_version_models.py:54
 msgid "Comment"
@@ -662,12 +664,17 @@ msgid ""
 " the format of a file, in this case the file format of the document. Some "
 "examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
+"Mimetype souboru souboru dokumentu. Typy MIME jsou standardním způsobem, jak"
+" popsat formát souboru, v tomto případě formát souboru dokumentu. Několik "
+"příkladů: „text/plain“ nebo „image/jpeg“."
 
 #: models/document_file_models.py:106
 msgid ""
 "The document file file encoding. binary 7-bit, binary 8-bit, text, base64, "
 "etc."
 msgstr ""
+"Kódování souboru dokumentu. binární 7bitové, binární 8bitové, textové, "
+"base64 atd."
 
 #: models/document_file_models.py:121 storages.py:27
 msgid "Document files"
@@ -684,12 +691,12 @@ msgstr "Jmenovka"
 #: models/document_file_page_models.py:53
 #: models/document_file_page_models.py:316 search.py:79
 msgid "Document file page"
-msgstr ""
+msgstr "Stránka se souborem dokumentu"
 
 #: models/document_file_page_models.py:271
 #, python-format
 msgid "%(document_file)s - page %(page_num)d of %(total_pages)d"
-msgstr ""
+msgstr "%(document_file)s - stránka %(page_num)d z %(total_pages)d"
 
 #: models/document_models.py:55
 msgid ""
@@ -708,6 +715,8 @@ msgid ""
 "A short text identifying the document. By default, will be set to the "
 "filename of the first file uploaded to the document."
 msgstr ""
+"Krátký text identifikující dokument. Ve výchozím nastavení bude nastaveno na"
+" název souboru prvního souboru nahraného do dokumentu."
 
 #: models/document_models.py:74
 msgid "An optional short text describing a document."
@@ -722,6 +731,8 @@ msgid ""
 "The server date and time when the document was finally processed and created"
 " in the system."
 msgstr ""
+"Datum a čas serveru, kdy byl dokument nakonec zpracován a vytvořen v "
+"systému."
 
 #: models/document_models.py:81
 msgid "Created"
@@ -729,7 +740,7 @@ msgstr "Vytvořen"
 
 #: models/document_models.py:85
 msgid "The primary language in the document."
-msgstr ""
+msgstr "Primární jazyk v dokumentu."
 
 #: models/document_models.py:90
 msgid "Whether or not this document is in the trash."
@@ -832,7 +843,7 @@ msgstr "Rychlé jmenovky"
 
 #: models/document_version_models.py:48
 msgid "The server date and time when the document version was created."
-msgstr ""
+msgstr "Datum a čas serveru, kdy byla vytvořena verze dokumentu."
 
 #: models/document_version_models.py:53
 msgid "An optional short text describing the document version."
@@ -840,19 +851,19 @@ msgstr "Volitelný krátký text popisující verzi dokumentu."
 
 #: models/document_version_models.py:58
 msgid "Determines the active version of the document."
-msgstr ""
+msgstr "Určuje aktivní verzi dokumentu."
 
 #: models/document_version_models.py:59
 msgid "Active"
-msgstr ""
+msgstr "Aktivní"
 
 #: models/document_version_models.py:65
 msgid "Document versions"
-msgstr ""
+msgstr "Verze dokumentů"
 
 #: models/document_version_models.py:136
 msgid "Document version export to PDF"
-msgstr ""
+msgstr "Export verze dokumentu do PDF"
 
 #: models/document_version_models.py:167
 msgid "Document version exported."
@@ -873,7 +884,7 @@ msgstr ""
 
 #: models/document_version_page_models.py:61
 msgid "Content type for the source object of the page."
-msgstr ""
+msgstr "Typ obsahu pro zdrojový objekt stránky."
 
 #: models/document_version_page_models.py:65
 msgid "ID for the source object of the page."
@@ -882,12 +893,12 @@ msgstr ""
 #: models/document_version_page_models.py:74
 #: models/document_version_page_models.py:401 search.py:142
 msgid "Document version page"
-msgstr ""
+msgstr "Stránka verze dokumentu"
 
 #: models/document_version_page_models.py:345
 #, python-format
 msgid "%(document_version)s page %(page_number)d of %(total_pages)d"
-msgstr ""
+msgstr "%(document_version)s stránka %(page_number)d z %(total_pages)d"
 
 #: models/favorite_document_models.py:24
 #: models/recently_accessed_document_models.py:23
@@ -896,7 +907,7 @@ msgstr "Uživatel"
 
 #: models/favorite_document_models.py:31
 msgid "Date and time added"
-msgstr ""
+msgstr "Datum a čas přidány"
 
 #: models/favorite_document_models.py:38
 msgid "Favorite document"
@@ -944,11 +955,11 @@ msgstr "Smazat soubory dokumentů"
 
 #: permissions.py:31
 msgid "Edit document files"
-msgstr ""
+msgstr "Upravte soubory dokumentů"
 
 #: permissions.py:34
 msgid "Download document files"
-msgstr ""
+msgstr "Stáhnout soubory dokumentů"
 
 #: permissions.py:37
 msgid "Create new document files"
@@ -956,19 +967,19 @@ msgstr "Vytvořit nové soubory dokumentů"
 
 #: permissions.py:40
 msgid "Print document files"
-msgstr ""
+msgstr "Tisk souborů dokumentů"
 
 #: permissions.py:43
 msgid "Execute document file modifying tools"
-msgstr ""
+msgstr "Spustit nástroje pro úpravu souboru dokumentu"
 
 #: permissions.py:47
 msgid "View document files"
-msgstr ""
+msgstr "Zobrazit soubory dokumentů"
 
 #: permissions.py:54
 msgid "Create document versions"
-msgstr ""
+msgstr "Vytvářejte verze dokumentů"
 
 #: permissions.py:58
 msgid "Delete document versions"
@@ -976,19 +987,19 @@ msgstr "Smazat verze dokumentů"
 
 #: permissions.py:62
 msgid "Edit document versions"
-msgstr ""
+msgstr "Upravit verze dokumentu"
 
 #: permissions.py:66
 msgid "Export document versions"
-msgstr ""
+msgstr "Exportovat verze dokumentu"
 
 #: permissions.py:70
 msgid "Print document versions"
-msgstr ""
+msgstr "Vytisknout verze dokumentu"
 
 #: permissions.py:73
 msgid "View document versions"
-msgstr ""
+msgstr "Zobrazit verze dokumentu"
 
 #: permissions.py:83
 msgid "Create document types"
@@ -1012,7 +1023,7 @@ msgstr "Obnovit dokument z koše"
 
 #: permissions.py:101
 msgid "Delete trashed documents"
-msgstr ""
+msgstr "Smazat dokumenty v koši"
 
 #: permissions.py:104
 msgid "Trash documents"
@@ -1028,11 +1039,11 @@ msgstr "Nahrávání"
 
 #: queues.py:27
 msgid "Generate document file page image"
-msgstr ""
+msgstr "Vygenerovat obrázek stránky souboru dokumentu"
 
 #: queues.py:31
 msgid "Generate document version page image"
-msgstr ""
+msgstr "Vygenerovat obrázek stránky verze dokumentu"
 
 #: queues.py:36
 msgid "Empty the trash can"
@@ -1044,11 +1055,11 @@ msgstr "Odstranění dokumentu"
 
 #: queues.py:44
 msgid "Reset the page list of a document version"
-msgstr ""
+msgstr "Obnovit seznam stránek verze dokumentu"
 
 #: queues.py:48
 msgid "Export a document version"
-msgstr ""
+msgstr "Exportovat verzi dokumentu"
 
 #: queues.py:53
 msgid "Check document type trash periods"
@@ -1084,15 +1095,15 @@ msgstr "Popis dokumentu"
 
 #: search.py:100
 msgid "Document file checksum"
-msgstr ""
+msgstr "Kontrolní součet souboru dokumentu"
 
 #: search.py:103
 msgid "Document file MIME type"
-msgstr ""
+msgstr "Soubor dokumentu typu MIME"
 
 #: search.py:157
 msgid "Document version comment"
-msgstr ""
+msgstr "Komentář k verzi dokumentu"
 
 #: serializers/document_file_serializers.py:38
 msgid "Binary content for the new file."
@@ -1100,15 +1111,15 @@ msgstr ""
 
 #: serializers/document_serializers.py:23
 msgid "Document type ID for the new document."
-msgstr ""
+msgstr "ID typu dokumentu pro nový dokument."
 
 #: serializers/document_version_serializers.py:72
 msgid "Content type ID of the source object for the page."
-msgstr ""
+msgstr "ID typu obsahu zdrojového objektu pro stránku."
 
 #: serializers/favorite_document_serializers.py:18
 msgid "Document ID for the new favorite document."
-msgstr ""
+msgstr "ID dokumentu pro nový oblíbený dokument."
 
 #: settings.py:54
 msgid ""
@@ -1116,12 +1127,18 @@ msgid ""
 "will start deleting the oldest document file page image cache files. Specify"
 " the size in bytes."
 msgstr ""
+"Prah, při kterém DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND začne "
+"odstraňovat nejstarší soubory mezipaměti obrazu stránky souboru. Zadejte "
+"velikost v bajtech."
 
 #: settings.py:62
 msgid ""
 "Time in seconds that the browser should cache the supplied document file "
 "page images. The default of 31559626 seconds correspond to 1 year."
 msgstr ""
+"Čas v sekundách, kdy by měl prohlížeč ukládat do mezipaměti dodané obrázky "
+"stránky se soubory dokumentu. Výchozí hodnota 31559626 sekund odpovídá 1 "
+"roku."
 
 #: settings.py:70
 msgid "Path to the Storage subclass to use when storing document files."
@@ -1143,7 +1160,7 @@ msgstr ""
 #: settings.py:91
 msgid ""
 "Arguments to pass to the DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argumenty k předání DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND."
 
 #: settings.py:97
 msgid "Maximum number of favorite documents to remember per user."
@@ -1179,12 +1196,16 @@ msgid ""
 "Time in seconds that the browser should cache the supplied document version "
 "page images. The default of 31559626 seconds correspond to 1 year."
 msgstr ""
+"Doba v sekundách, po kterou má prohlížeč ukládat do mezipaměti obrázky "
+"dodané verze dokumentu. Výchozí hodnota 31559626 sekund odpovídá 1 roku."
 
 #: settings.py:137
 msgid ""
 "Path to the Storage subclass to use when storing the cached document version"
 " page image versions."
 msgstr ""
+"Cesta k podtřídě Úložiště, která se má použít při ukládání verzí obrázku "
+"stránky verze dokumentu v mezipaměti."
 
 #: settings.py:145
 msgid ""
@@ -1217,12 +1238,16 @@ msgid ""
 "Amount of time in seconds, a failed document file page image task will wait "
 "before retrying."
 msgstr ""
+"Množství času v sekundách, neúspěšná úloha obrázku stránky dokumentu bude "
+"čekat před opakováním."
 
 #: settings.py:202
 msgid ""
 "Amount of time in seconds, a failed document version page image task will "
 "wait before retrying."
 msgstr ""
+"Množství času v sekundách, neúspěšná úloha obrázku stránky s verzí dokumentu"
+" počká před opakováním."
 
 #: settings.py:209
 msgid "Height in pixels of the document thumbnail image."
@@ -1256,7 +1281,7 @@ msgstr "Nové dokumenty za měsíc"
 
 #: statistics.py:241
 msgid "New document files per month"
-msgstr ""
+msgstr "Nové soubory dokumentů za měsíc"
 
 #: statistics.py:248
 msgid "New document pages per month"
@@ -1268,7 +1293,7 @@ msgstr "Celkem dokumentů za každý měsíc"
 
 #: statistics.py:262
 msgid "Total document files at each month"
-msgstr ""
+msgstr "Soubory dokumentů celkem za každý měsíc"
 
 #: statistics.py:269
 msgid "Total document pages at each month"
@@ -1287,10 +1312,12 @@ msgid ""
 "Unable to initialize the document file image storage. Check the settings {} "
 "and {} for formatting errors."
 msgstr ""
+"Nelze inicializovat úložiště obrazu souboru dokumentu. Zkontrolujte "
+"nastavení {} a {}, zda neobsahují chyby formátování."
 
 #: storages.py:41
 msgid "Document file page images"
-msgstr ""
+msgstr "Obrázky stránek souboru dokumentu"
 
 #: storages.py:49
 msgid ""
@@ -1300,7 +1327,7 @@ msgstr ""
 
 #: storages.py:55
 msgid "Document version page images"
-msgstr ""
+msgstr "Obrázky stránky verze dokumentu"
 
 #: templates/documents/document_print.html:13
 msgid "Document page image preview"
@@ -1308,11 +1335,11 @@ msgstr "Náhled obrázku strany dokumentu"
 
 #: templates/documents/errors/no_valid_version.html:5
 msgid "No valid or active version"
-msgstr ""
+msgstr "Žádná platná nebo aktivní verze"
 
 #: templates/documents/errors/no_version_pages.html:5
 msgid "No version pages"
-msgstr ""
+msgstr "Žádné stránky s verzemi"
 
 #: templates/documents/forms/widgets/page_carousel.html:16
 #, python-format
@@ -1367,15 +1394,18 @@ msgid ""
 "document file page recalculation action to attempt to introspect the page "
 "count again."
 msgstr ""
+"To může znamenat, že soubor dokumentu je ve formátu, který není podporován, "
+"je poškozený nebo byl přerušen proces odesílání. Pomocí akce přepočtu "
+"stránky souboru dokumentu se pokuste znovu prozkoumat počet stránek."
 
 #: views/document_file_page_views.py:106
 msgid "No document file pages available"
-msgstr ""
+msgstr "Nejsou k dispozici žádné stránky souboru dokumentu"
 
 #: views/document_file_page_views.py:108
 #, python-format
 msgid "Pages of document file: %s"
-msgstr ""
+msgstr "Stránky souboru dokumentu: %s"
 
 #: views/document_file_page_views.py:182
 #: views/document_version_page_views.py:335
@@ -1406,7 +1436,7 @@ msgstr ""
 #: views/document_file_views.py:55
 #, python-format
 msgid "%(count)d document file deleted successfully."
-msgstr ""
+msgstr "%(count)d soubor dokumentu  byl úspěšně odstraněn."
 
 #: views/document_file_views.py:58
 #, python-format
@@ -1433,26 +1463,30 @@ msgid ""
 "All document files pages from this document file and the document version "
 "pages linked to them will be deleted too."
 msgstr ""
+"Budou odstraněny také všechny stránky souborů dokumentu z tohoto souboru "
+"dokumentu a stránky s verzemi dokumentu, které jsou k nim připojeny."
 
 #: views/document_file_views.py:117
 #, python-format
 msgid "Edit document file: %s"
-msgstr ""
+msgstr "Upravit soubor dokumentu: %s"
 
 #: views/document_file_views.py:156
 msgid ""
 "File are the actual files that were uploaded for each document. Their "
 "contents needs to be mapped to a version before it can be used."
 msgstr ""
+"Soubor jsou skutečné soubory, které byly nahrány pro každý dokument. Jejich "
+"obsah je třeba před použitím namapovat na verzi."
 
 #: views/document_file_views.py:160
 msgid "No files available"
-msgstr ""
+msgstr "Nejsou k dispozici žádné soubory"
 
 #: views/document_file_views.py:163
 #, python-format
 msgid "Files of document: %s"
-msgstr ""
+msgstr "Soubory dokumentu: %s"
 
 #: views/document_file_views.py:192
 #, python-format
@@ -1462,12 +1496,13 @@ msgstr ""
 #: views/document_file_views.py:237
 #, python-format
 msgid "Properties of document file: %s"
-msgstr ""
+msgstr "Vlastnosti souboru dokumentu: %s"
 
 #: views/document_file_views.py:246
 #, python-format
 msgid "Transformation clear request processed for %(count)d document file."
 msgstr ""
+"Žádost o vymazání transformace zpracována pro %(count)dsouborů dokumentu."
 
 #: views/document_file_views.py:249
 #, python-format
@@ -1502,11 +1537,11 @@ msgid ""
 " %(error)s."
 msgstr ""
 
-#: views/document_file_views.py:328 views/document_version_views.py:360
+#: views/document_file_views.py:328 views/document_version_views.py:373
 msgid "Transformations cloned successfully."
 msgstr "Transformace byly úspěšně klonovány."
 
-#: views/document_file_views.py:342 views/document_version_views.py:374
+#: views/document_file_views.py:342 views/document_version_views.py:387
 #: views/misc_views.py:41
 msgid "Submit"
 msgstr "Odeslat"
@@ -1514,7 +1549,7 @@ msgstr "Odeslat"
 #: views/document_file_views.py:344
 #, python-format
 msgid "Clone page transformations of document file: %s"
-msgstr ""
+msgstr "Klonování transformací stránky souboru dokumentu: %s"
 
 #: views/document_type_views.py:53
 #, python-format
@@ -1603,11 +1638,13 @@ msgid ""
 "The page number of this page will be skipped. If you want to achieve "
 "sequential page numbering, use the page remap action instead."
 msgstr ""
+"Číslo stránky této stránky bude přeskočeno. Pokud chcete dosáhnout "
+"sekvenčního číslování stránek, použijte místo toho akci přemapování stránky."
 
 #: views/document_version_page_views.py:68
 #, python-format
 msgid "Delete document version page %s ?"
-msgstr ""
+msgstr "Odstranit stránku verze dokumentu %s?"
 
 #: views/document_version_page_views.py:103
 msgid ""
@@ -1619,12 +1656,12 @@ msgstr ""
 
 #: views/document_version_page_views.py:107
 msgid "No document version pages available"
-msgstr ""
+msgstr "Nejsou k dispozici žádné stránky s verzemi dokumentu"
 
 #: views/document_version_page_views.py:109
 #, python-format
 msgid "Pages of document version: %s"
-msgstr ""
+msgstr "Stránky verze dokumentu: %s"
 
 #: views/document_version_page_views.py:149
 msgid "None"
@@ -1633,20 +1670,21 @@ msgstr "Žádný"
 #: views/document_version_page_views.py:174
 msgid "There are no sources available to remap for this document version."
 msgstr ""
+"Pro tuto verzi dokumentu nejsou k dispozici žádné zdroje k přemapování."
 
 #: views/document_version_page_views.py:177
 msgid "No page sources available"
-msgstr ""
+msgstr "Nejsou k dispozici žádné zdroje stránek"
 
 #: views/document_version_page_views.py:180
 #, python-format
 msgid "Remap pages of document version: %s"
-msgstr ""
+msgstr "Přemapovat stránky verze dokumentu: %s"
 
 #: views/document_version_page_views.py:231
 #, python-format
 msgid "%(count)d document version queued for page list reset."
-msgstr ""
+msgstr "%(count)d verzí dokumentu  ve frontě na reset seznamu stránek."
 
 #: views/document_version_page_views.py:234
 #, python-format
@@ -1669,88 +1707,88 @@ msgstr[3] ""
 #: views/document_version_page_views.py:256
 #, python-format
 msgid "Reset the page list of document version: %s?"
-msgstr ""
+msgstr "Obnovit seznam stránek verze dokumentu: %s?"
 
 #: views/document_version_views.py:56
 #, python-format
 msgid "Make the document version \"%s\" the active version?"
 msgstr ""
 
-#: views/document_version_views.py:64
+#: views/document_version_views.py:65
 msgid "Successfully changed the active document version."
-msgstr ""
+msgstr "Úspěšně změněna verze aktivního dokumentu."
 
-#: views/document_version_views.py:79
+#: views/document_version_views.py:80
 #, python-format
 msgid "Create a document version for document: %s"
-msgstr ""
+msgstr "Vytvořit verzi dokumentu pro dokument: %s"
 
-#: views/document_version_views.py:98
+#: views/document_version_views.py:99
 #, python-format
 msgid "Document version \"%(object)s\" deleted successfully."
 msgstr ""
 
-#: views/document_version_views.py:101
+#: views/document_version_views.py:102
 #, python-format
 msgid "%(count)d document version deleted successfully."
 msgstr ""
 
-#: views/document_version_views.py:104
+#: views/document_version_views.py:105
 #, python-format
 msgid "%(count)d document versions deleted successfully."
-msgstr ""
+msgstr "%(count)dverzí dokumentu  bylo úspěšně odstraněno."
 
-#: views/document_version_views.py:106
+#: views/document_version_views.py:107
 #, python-format
 msgid "Delete document version \"%(object)s\"."
 msgstr ""
 
-#: views/document_version_views.py:107
+#: views/document_version_views.py:108
 #, python-format
 msgid "Delete %(count)d document version."
 msgstr ""
 
-#: views/document_version_views.py:108
+#: views/document_version_views.py:109
 #, python-format
 msgid "Delete %(count)d document versions."
 msgstr ""
 
-#: views/document_version_views.py:132
+#: views/document_version_views.py:145
 #, python-format
 msgid "Edit document version: %s"
 msgstr ""
 
-#: views/document_version_views.py:153
+#: views/document_version_views.py:166
 #, python-format
 msgid "Document version \"%(object)s\" export successfully queued."
 msgstr ""
 
-#: views/document_version_views.py:156
+#: views/document_version_views.py:169
 #, python-format
 msgid "%(count)d document version export successfully queued."
 msgstr ""
 
-#: views/document_version_views.py:159
+#: views/document_version_views.py:172
 #, python-format
 msgid "%(count)d document versions exports successfully queued."
 msgstr ""
 
-#: views/document_version_views.py:161
+#: views/document_version_views.py:174
 #, python-format
 msgid "Export document version \"%(object)s\"."
 msgstr ""
 
-#: views/document_version_views.py:162
+#: views/document_version_views.py:175
 #, python-format
 msgid "Export %(count)d document version."
 msgstr ""
 
-#: views/document_version_views.py:163
+#: views/document_version_views.py:176
 #, python-format
 msgid "Export %(count)d document versions."
-msgstr ""
+msgstr "Exportovat %(count)d verzí dokumentu. "
 
-#: views/document_version_views.py:168
+#: views/document_version_views.py:181
 msgid ""
 "The process will be performed in the background. The exported file will be "
 "available in the downloads area."
@@ -1758,7 +1796,7 @@ msgstr ""
 "Proces bude probíhat na pozadí. Exportovaný soubor bude k dispozici v místě "
 "stahování."
 
-#: views/document_version_views.py:210
+#: views/document_version_views.py:223
 msgid ""
 "Versions are views that can display document file pages as they are, remap "
 "or merge them into different layouts."
@@ -1766,32 +1804,32 @@ msgstr ""
 "Verze jsou pohledy, které mohou zobrazovat stránky souboru dokumentu tak, "
 "jak jsou, přemapovávat je nebo je slučovat do různých rozvržení."
 
-#: views/document_version_views.py:213
+#: views/document_version_views.py:226
 msgid "No versions available"
 msgstr "Nejsou k dispozici žádné verze"
 
-#: views/document_version_views.py:216
+#: views/document_version_views.py:229
 #, python-format
 msgid "Versions of document: %s"
 msgstr "Verze dokumentu: %s"
 
-#: views/document_version_views.py:245
+#: views/document_version_views.py:258
 #, python-format
 msgid "Preview of document version: %s"
 msgstr "Náhled verze dokumentu: %s"
 
-#: views/document_version_views.py:278
+#: views/document_version_views.py:291
 #, python-format
 msgid "Transformation clear request processed for %(count)d document version."
 msgstr ""
 
-#: views/document_version_views.py:281
+#: views/document_version_views.py:294
 #, python-format
 msgid ""
 "Transformation clear request processed for %(count)d document versions."
 msgstr ""
 
-#: views/document_version_views.py:287
+#: views/document_version_views.py:300
 msgid "Clear all the page transformations for the selected document version?"
 msgid_plural ""
 "Clear all the page transformations for the selected document version?"
@@ -1800,29 +1838,29 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: views/document_version_views.py:298
+#: views/document_version_views.py:311
 #, python-format
 msgid "Clear all the page transformations for the document version: %s?"
 msgstr ""
 
-#: views/document_version_views.py:315
+#: views/document_version_views.py:328
 #, python-format
 msgid ""
 "Error deleting the page transformations for document version: "
 "%(document_version)s; %(error)s."
 msgstr ""
 
-#: views/document_version_views.py:351
+#: views/document_version_views.py:364
 #, python-format
 msgid ""
 "Error cloning the page transformations for document version: "
 "%(document_version)s; %(error)s."
 msgstr ""
 
-#: views/document_version_views.py:376
+#: views/document_version_views.py:389
 #, python-format
 msgid "Clone page transformations of document version: %s"
-msgstr ""
+msgstr "Transformace stránky klonování verze dokumentu: %s"
 
 #: views/document_views.py:41
 #, python-format
@@ -1968,15 +2006,16 @@ msgstr ""
 
 #: views/recently_accessed_document_views.py:27
 msgid "There are no recently accessed documents"
-msgstr ""
+msgstr "Nejsou k dispozici žádné nedávno přístupné dokumenty"
 
 #: views/recently_created_document_views.py:21
 msgid "This view will list the latest documents created in the system."
 msgstr ""
+"Toto zobrazení zobrazí seznam nejnovějších dokumentů vytvořených v systému."
 
 #: views/recently_created_document_views.py:25
 msgid "There are no recently created documents"
-msgstr ""
+msgstr "Neexistují žádné nedávno vytvořené dokumenty"
 
 #: views/trashed_document_views.py:37
 #, python-format
@@ -2059,7 +2098,7 @@ msgstr "Nový typ dokumentu pro dokument pracovního postupu."
 
 #: workflow_actions.py:18
 msgid "Change document type"
-msgstr ""
+msgstr "Změnit typ dokumentu"
 
 #: workflow_actions.py:37
 msgid "Send document to trash"

@@ -58,10 +58,27 @@ def operation_document_version_page_create(apps, schema_editor):
     document_version = DummyDocumentVersion()
 
     document_version_page_insert_query = '''
-        INSERT INTO documents_documentversionpage (
-            document_version_id,content_type_id,object_id,page_number
-        ) VALUES {};
-    '''
+        INSERT INTO {documents_documentversionpage} (
+            {document_version_id},{content_type_id},{object_id},{page_number}
+        ) VALUES {{}};
+    '''.format(
+        content_type_id=schema_editor.connection.ops.quote_name(
+            name='content_type_id'
+        ),
+        document_version_id=schema_editor.connection.ops.quote_name(
+            name='document_version_id'
+        ),
+        documents_documentversionpage=schema_editor.connection.ops.quote_name(
+            name='documents_documentversionpage'
+        ),
+        object_id=schema_editor.connection.ops.quote_name(
+            name='object_id'
+        ),
+        page_number=schema_editor.connection.ops.quote_name(
+            name='page_number'
+        )
+    )
+
     document_version_page_values = []
     page_number = 1
 

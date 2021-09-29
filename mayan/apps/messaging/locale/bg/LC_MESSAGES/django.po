@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-09-29 05:50+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -213,47 +213,47 @@ msgstr "Маркирайте %(count)d избрано съобщение кат�
 msgid "Mark the %(count)d selected messages as read."
 msgstr "Маркирайте %(count)d избрани съобщения като прочетени."
 
-#: views.py:173
+#: views.py:174
 msgid "Mark all message as read?"
 msgstr "Да се означат ли всички съобщения като прочетени?"
 
-#: views.py:189
+#: views.py:191
 msgid "All messages marked as read."
 msgstr "Всички съобщения са означени като прочетени."
 
-#: views.py:196
+#: views.py:198
 #, python-format
 msgid "Error marking message \"%(instance)s\" as unread; %(exception)s"
 msgstr ""
 "Грешка при маркирането на съобщението „%(instance)s“ като непрочетено; "
 "%(exception)s"
 
-#: views.py:202
+#: views.py:204
 #, python-format
 msgid "Message \"%(object)s\" marked as unread successfully."
 msgstr "Съобщението „%(object)s“ бе отбелязано като непрочетено успешно."
 
-#: views.py:205
+#: views.py:207
 #, python-format
 msgid "%(count)d message marked as unread successfully."
 msgstr "%(count)d съобщение, успешно означено като непрочетено."
 
-#: views.py:208
+#: views.py:210
 #, python-format
 msgid "%(count)d messages marked as unread successfully."
 msgstr "%(count)d съобщения, успешно отбелязани като непрочетени."
 
-#: views.py:210
+#: views.py:212
 #, python-format
 msgid "Mark the message \"%(object)s\" as unread."
 msgstr "Маркирайте съобщението \"%(object)s\" като непрочетено."
 
-#: views.py:211
+#: views.py:213
 #, python-format
 msgid "Mark the %(count)d selected message as unread."
 msgstr "Маркирайте избраното съобщение %(count)d като непрочетено."
 
-#: views.py:212
+#: views.py:214
 #, python-format
 msgid "Mark the %(count)d selected messages as unread."
 msgstr "Маркирайте избраните съобщения %(count)d като непрочетени."
