@@ -354,6 +354,14 @@
   milliseconds. Use `None` to disable.
 - Enforce ``CONVERTER_IMAGE_GENERATION_MAX_RETRIES`` setting and add logging
   message when the maximum retires are exhausted.
+- Messaging app updates:
+
+  - Add API views.
+  - Exclude superusers and staff users from being message recipients.
+  - Add dedicated create message form.
+  - Use Select2 for the user selection field.
+  - Add message edit permission. This permission is required in order to
+    change the message read status.
 
 4.0.16 (2021-09-29)
 ===================
