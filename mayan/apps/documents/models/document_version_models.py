@@ -187,6 +187,14 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
             }
         )
 
+    def get_absolute_api_url(self):
+        return reverse(
+            viewname='rest_api:documentversion-detail', kwargs={
+                'document_id': self.document_id,
+                'document_version_id': self.pk
+            }
+        )
+
     def get_api_image_url(
         self, maximum_layer_order=None, transformation_instance_list=None,
         user=None

@@ -363,6 +363,9 @@
   - Add message edit permission. This permission is required in order to
     change the message read status.
 
+- Add ``get_absolute_api_url`` method to download files, document versions
+  and users. These URL are used to determine the message sender's API URL.
+
 4.0.16 (2021-09-29)
 ===================
 - Minor fixes merged from version 3.5.11.
