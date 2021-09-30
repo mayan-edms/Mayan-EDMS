@@ -7,7 +7,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 
-from ..managers import FavoriteDocumentManager, ValidFavoriteDocumentManager
+from ..managers import (
+    FavoriteDocumentManager, ValidFavoriteDocumentProxyManager,
+    ValidFavoriteDocumentManager
+)
 
 from .document_models import Document
 
@@ -45,3 +48,11 @@ class FavoriteDocument(ExtraDataModelMixin, models.Model):
     def natural_key(self):
         return (self.document.natural_key(), self.user.natural_key())
     natural_key.dependencies = ['documents.Document', settings.AUTH_USER_MODEL]
+
+
+class FavoriteDocumentProxy(Document):
+    objects = models.Manager()
+    valid = ValidFavoriteDocumentProxyManager()
+
+    class Meta:
+        proxy = True
