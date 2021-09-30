@@ -175,7 +175,7 @@ class DashboardWidgetUserRecentlyCreatedDocuments(DashboardWidgetList):
 
 
 class DashboardWidgetUserFavoriteDocuments(DashboardWidgetList):
-    columns = ('document_type', 'label',)
+    columns = ('datetime_added', 'label',)
     icon = link_document_favorites_list.icon
     label = link_document_favorites_list.text
     link = reverse_lazy(

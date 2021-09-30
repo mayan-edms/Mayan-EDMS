@@ -6,6 +6,7 @@
 # Translators:
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2021
 # serhatcan77 <serhat_can@yahoo.com>, 2021
+# Çağlar Yeşilyurt <grch@mm.st>, 2021
 #
 msgid ""
 msgstr ""
@@ -80,7 +81,7 @@ msgstr ""
 #: managers.py:263
 #, python-format
 msgid "Insufficient access for: %s"
-msgstr ""
+msgstr "%siçin yetersiz izin"
 
 #: models.py:49
 msgid "Role to which the access is granted for the specified object."

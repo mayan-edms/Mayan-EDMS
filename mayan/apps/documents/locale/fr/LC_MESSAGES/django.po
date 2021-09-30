@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-09-29 05:50+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -1531,11 +1531,11 @@ msgstr ""
 "Erreur de clonage des transformations de page pour le document: "
 "%(document_file)s; %(error)s."
 
-#: views/document_file_views.py:328 views/document_version_views.py:360
+#: views/document_file_views.py:328 views/document_version_views.py:373
 msgid "Transformations cloned successfully."
 msgstr "Les transformations ont été dupliquées avec succès."
 
-#: views/document_file_views.py:342 views/document_version_views.py:374
+#: views/document_file_views.py:342 views/document_version_views.py:387
 #: views/misc_views.py:41
 msgid "Submit"
 msgstr "Soumettre"
@@ -1709,83 +1709,83 @@ msgstr "Réinitialiser la liste des pages de la version du document: %s?"
 msgid "Make the document version \"%s\" the active version?"
 msgstr "Faire de la version \"%s\" la version active du document?"
 
-#: views/document_version_views.py:64
+#: views/document_version_views.py:65
 msgid "Successfully changed the active document version."
 msgstr "La version active du document a bien été modifiée."
 
-#: views/document_version_views.py:79
+#: views/document_version_views.py:80
 #, python-format
 msgid "Create a document version for document: %s"
 msgstr "Créer une version de document pour le document: %s"
 
-#: views/document_version_views.py:98
+#: views/document_version_views.py:99
 #, python-format
 msgid "Document version \"%(object)s\" deleted successfully."
 msgstr "La version du document \"%(object)s\" a bien été supprimée."
 
-#: views/document_version_views.py:101
+#: views/document_version_views.py:102
 #, python-format
 msgid "%(count)d document version deleted successfully."
 msgstr " %(count)d version du document a été supprimée avec succès."
 
-#: views/document_version_views.py:104
+#: views/document_version_views.py:105
 #, python-format
 msgid "%(count)d document versions deleted successfully."
 msgstr "%(count)d versions du document ont été supprimées avec succès."
 
-#: views/document_version_views.py:106
+#: views/document_version_views.py:107
 #, python-format
 msgid "Delete document version \"%(object)s\"."
 msgstr "Supprimer la version du document \"%(object)s\"."
 
-#: views/document_version_views.py:107
+#: views/document_version_views.py:108
 #, python-format
 msgid "Delete %(count)d document version."
 msgstr "Supprimez %(count)d version du document ."
 
-#: views/document_version_views.py:108
+#: views/document_version_views.py:109
 #, python-format
 msgid "Delete %(count)d document versions."
 msgstr "Supprimez %(count)d versions de ce document."
 
-#: views/document_version_views.py:132
+#: views/document_version_views.py:145
 #, python-format
 msgid "Edit document version: %s"
 msgstr "Modifier la version du document: %s"
 
-#: views/document_version_views.py:153
+#: views/document_version_views.py:166
 #, python-format
 msgid "Document version \"%(object)s\" export successfully queued."
 msgstr ""
 
-#: views/document_version_views.py:156
+#: views/document_version_views.py:169
 #, python-format
 msgid "%(count)d document version export successfully queued."
 msgstr ""
 
-#: views/document_version_views.py:159
+#: views/document_version_views.py:172
 #, python-format
 msgid "%(count)d document versions exports successfully queued."
 msgstr ""
 "%(count)d exportations de versions de document ont été correctement mises en"
 " file de traitement."
 
-#: views/document_version_views.py:161
+#: views/document_version_views.py:174
 #, python-format
 msgid "Export document version \"%(object)s\"."
 msgstr "Exporter la version du document \"%(object)s\"."
 
-#: views/document_version_views.py:162
+#: views/document_version_views.py:175
 #, python-format
 msgid "Export %(count)d document version."
 msgstr "Exporter %(count)d version du document."
 
-#: views/document_version_views.py:163
+#: views/document_version_views.py:176
 #, python-format
 msgid "Export %(count)d document versions."
 msgstr ""
 
-#: views/document_version_views.py:168
+#: views/document_version_views.py:181
 msgid ""
 "The process will be performed in the background. The exported file will be "
 "available in the downloads area."
@@ -1793,38 +1793,38 @@ msgstr ""
 "Le processus sera exécuté en arrière-plan. Le fichier exporté sera "
 "disponible dans la zone de téléchargement."
 
-#: views/document_version_views.py:210
+#: views/document_version_views.py:223
 msgid ""
 "Versions are views that can display document file pages as they are, remap "
 "or merge them into different layouts."
 msgstr ""
 
-#: views/document_version_views.py:213
+#: views/document_version_views.py:226
 msgid "No versions available"
 msgstr "Aucune version disponible"
 
-#: views/document_version_views.py:216
+#: views/document_version_views.py:229
 #, python-format
 msgid "Versions of document: %s"
 msgstr "Versions du document : %s"
 
-#: views/document_version_views.py:245
+#: views/document_version_views.py:258
 #, python-format
 msgid "Preview of document version: %s"
 msgstr "Prévisualiser la version du document : %s"
 
-#: views/document_version_views.py:278
+#: views/document_version_views.py:291
 #, python-format
 msgid "Transformation clear request processed for %(count)d document version."
 msgstr ""
 
-#: views/document_version_views.py:281
+#: views/document_version_views.py:294
 #, python-format
 msgid ""
 "Transformation clear request processed for %(count)d document versions."
 msgstr ""
 
-#: views/document_version_views.py:287
+#: views/document_version_views.py:300
 msgid "Clear all the page transformations for the selected document version?"
 msgid_plural ""
 "Clear all the page transformations for the selected document version?"
@@ -1835,13 +1835,13 @@ msgstr[1] ""
 "Effacer toutes les transformations de page pour la version du document "
 "sélectionné?"
 
-#: views/document_version_views.py:298
+#: views/document_version_views.py:311
 #, python-format
 msgid "Clear all the page transformations for the document version: %s?"
 msgstr ""
 "Effacez toutes les transformations de page pour la version du document: %s?"
 
-#: views/document_version_views.py:315
+#: views/document_version_views.py:328
 #, python-format
 msgid ""
 "Error deleting the page transformations for document version: "
@@ -1850,7 +1850,7 @@ msgstr ""
 "Erreur lors de la suppression des transformations de page pour la version du"
 " document: %(document_version)s; %(error)s."
 
-#: views/document_version_views.py:351
+#: views/document_version_views.py:364
 #, python-format
 msgid ""
 "Error cloning the page transformations for document version: "
@@ -1859,7 +1859,7 @@ msgstr ""
 "Erreur de clonage des transformations de page pour la version du document: "
 "%(document_version)s; %(error)s."
 
-#: views/document_version_views.py:376
+#: views/document_version_views.py:389
 #, python-format
 msgid "Clone page transformations of document version: %s"
 msgstr ""

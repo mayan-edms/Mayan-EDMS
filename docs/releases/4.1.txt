@@ -1,0 +1,648 @@
+Version 4.1
+===========
+
+Released: XX, 2021
+
+Status: Stable
+
+Changes
+-------
+
+
+General
+^^^^^^^
+
+The code used to detect open file and descriptor leak detection was improved
+and made more strict. New descriptor leaks were fixed.
+
+File descriptors created after inspecting a Django file field (even if the
+file is not opened) are now explicitly managed and closed.
+
+Context managers are now used for temporary files and directories. This
+ensures file descriptors are closed and freed up in all scenarios even
+exception errors.
+
+The final uses of the ``.six`` library were removed.
+
+The ``performupgrade`` command was updated to not hide critical errors and
+instead raise any exception to obtain the maximum amount of debug
+information.
+
+Whenever applicable, the use of the ``sorted`` function was replace with
+the ``.sort`` method to reduce memory usage.
+
+
+ACLs
+^^^^
+
+The ACL edited event is now triggered only once when all permissions are
+changed.
+
+The action object of the ACL edited event is now the content object and
+not the permission being added or removed.
+
+
+Appearance
+^^^^^^^^^^
+
+The theme stylesheet sanitization process was moved to the theme save method.
+This improves performance when themes are used.
+
+A setting was added to allow changing to menu polling interval. The value
+is specified in milliseconds with `None` used to disable polling.
+
+
+Comments
+^^^^^^^^
+
+The comments API was updated to exclude trashed documents. The serializers
+in use was reduced by consolidation. The API permission filter was updated
+to return error 404 and not 403 on insufficient access for function parity
+with the rest of the API.
+
+
+Converter
+^^^^^^^^^
+
+Image generation in all apps can consolidated to a common core which is then
+expanded and customized by the apps. As part of this consolidation settings
+and internal literals used by external app were merged or removed.
+The settings ``DOCUMENT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY``
+and  ``DOCUMENT_TASK_GENERATE_DOCUMENT_VERSION_PAGE_IMAGE_RETRY_DELAY`` were
+removed as the image generation task now uses exponentially incrementing
+retry delays. App specific image generation task queues were removed.
+This includes the ``document_states_fast`` task queue.
+
+The setting ``CONVERTER_IMAGE_GENERATION_MAX_RETRIES`` was added to control
+how many times the image generation task will retry lock errors before raising
+an error and giving up.
+
+The unification of the image generation also allows the use of streaming
+responses when serving images. Streaming responses allow offloading the
+actual transfer of data to the application and web server. This results
+is faster response times, faster image transfers, lower CPU and memory usage.
+
+
+Dashboards
+^^^^^^^^^^
+
+It is now possible to create multiple dashboards. These are created at the
+app level and can be reused by other apps.
+
+A new user dashboard was added to reflect Mayan's nature as a multi user
+system. The new default user dashboard tracks the documents relevant
+documents for quick access. The previous dashboard has been renamed as the
+"administrator dashboard" as it shows a consolidated view of the entire
+installation.
+
+A tool was added to allow accessing all defined dashboards.
+
+Support as also added for selecting the default dashboard for display in the
+home view.
+
+A new dashboard widget was added to allow displaying a list of objects.
+
+The dashboard widget class was interface was updated to allow subclassing
+existing widget classes.
+
+Dashboard CSS was moved from the appearance app to the dashboards app.
+
+Support disabling the home page dashboard. Used to disable the home view
+dashboard during tests.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+The link used to check for the latest version was moved to the tools menu.
+
+A new permission was added to the view used to check for the latest version.
+
+Project dependencies version used were update as follows:
+
+- Docker Compose from 1.29.1 to 1.29.2
+- PostgreSQL Docker image from 10.15-alpine to 10.18-alpine
+- RabbitMQ Docker image from 3.8-alpine to 3.9-alpine
+- Redis Docker images from 6.0-alpine to 6.2-alpine
+- psycopg2 from 2.8.6 to 2.9.1
+- psutil from 5.7.2 to 5.8.0
+- jQuery from 3.5.1 to 3.6.0
+- jquery-form from 4.2.2 to 4.3.0
+- jquery-lazyload from 1.9.3 to 1.9.7
+- urijs from 1.19.1 to 1.19.7
+- bleach from 3.1.5 to 4.0.0
+- jstree from 3.3.3 to 3.3.11
+- PyYAML from 5.3.1 to 5.4.1
+- django-model-utils from 4.0.0 to 4.1.1
+- requests from 2.25.1 to 2.26.0
+- sh from 1.14.1 to 1.14.2
+- devpi-server from 5.5.1 to 6.2.0
+- django-debug-toolbar from 3.1.2 to 3.1.4
+- django-extensions from 3.1.2 to 3.1.4
+- django-rosetta from 0.9.4 to 0.9.7
+- flake8 from 3.9.0 to 3.9.2
+- ipython from 7.22.0 to 7.26.0
+- safety from 1.9.0 to 1.10.3
+- transifex-client from 0.14.2 to 0.14.3
+- twine from 3.4.1 to 3.4.2
+- wheel from 0.36.2 to 0.37.0
+- Pillow from 7.1.2 to 8.3.1
+- packaging from 20.3 to 21.0
+- python_gnupg from 0.4.6 to 0.4.7
+- graphviz from 0.14 to 0.17
+- django-activity-stream from 0.8.0 to 0.10.0
+- pytz from 2020.1 to 2021.1
+- python-dateutil from 2.8.1 to 2.8.2
+- python-magic from 0.4.22 to 0.4.24
+- gevent from 20.4.0 to 21.8.0
+- gunicorn from 20.0.4 to 20.1.0
+- whitenoise from 5.0.1 to 5.3.0
+- cropperjs from 1.4.1 to 1.5.2
+- jquery-cropper from 1.0.0 to 1.0.1
+- django-cors-headers from 3.2.1 to 3.8.0
+- djangorestframework from 3.11.2 to 3.12.2
+- drf-yasg from 1.17.1 to 1.20.0
+- swagger-spec-validator from 2.5.0 to 2.7.3
+- dropzone from 5.7.2 to 5.9.2
+- extract-msg from 0.23.3 to 0.28.7
+- pycryptodome from 3.9.7 to 3.10.1
+- celery from 4.4.7 to 5.1.2
+- django-celery-beat from 2.0.0 to 2.2.1
+- coveralls from 2.0.0 to 3.2.0
+- django-test-migrations from 0.2.0 to 0.3.0
+- mock from 4.0.2 to 4.0.3
+- tox from 3.23.1 to 3.24.3
+- psutil from 5.7.0 to 5.80
+- furl from 2.1.0 to 2.1.2
+
+
+Documents
+^^^^^^^^^
+
+The API was updated to exclude trashed documents from all endpoints. A new
+endpoints was added to service trashed documents.
+
+A new ``valid`` model managers was added for recently accessed,
+recently created, and favorite documents. These managers exclude trashed
+documents at the model level. The ``objects`` manager for these model
+returns the unfiltered queryset.
+
+The trashed document delete API now returns a 202 code instead of 204. The
+delete method now runs in the background in the same way as the trashed
+document delete view works in the UI. The return code was updated to reflect
+this internal change.
+
+Better user tracking for trashed document events was added.
+
+Support was added to append all document file pages as a single document
+version.
+
+The UUID field of all document child objects was added as a search field.
+
+Stricter check to ensure the name and not the path of a file is used during
+upload. Compressed files can include path references, these are now
+scrubbed and only the filename of the file in the compressed archive is used.
+
+Signals, hooks, and events were moved outside of the document file creation
+database transaction. These are only triggered when the transaction is
+committed.
+
+When using the document version page reset and remap action the current user
+is capture for the events.
+
+Conditionals were added to the favorite document links to ensure they only
+active when relevant.
+
+The recently accessed document list now has a new column showing the data
+and time of the last access.
+
+The text message sent to users to notify them that a document has been
+exported is now translated into the locale of the user and not of the system.
+
+
+Docker
+^^^^^^
+
+The use of Docker Compose profiles added in version 4.0 was expanded to allow
+more deployment options. By default a single container running the entire
+stack. However the same Docker Compose file can launch independent workers
+and frontend containers.
+
+
+Events
+^^^^^^
+
+Support was added for clearing the event list. This feature works for all the
+different event views.
+
+All events are now preloaded at bootup. This allow all events to be
+recognized even if they are not used and does not rely on imports to activate
+an event.
+
+Event can now be loaded by their name. This avoids doing direct imports when
+there circular dependencies.
+
+The events app was moved to the top of the installed apps list to allow it to
+preload all events.
+
+The event clear and event export links are now only displayed for object
+whose events can be cleared and/or exported.
+
+The events app was API updated to return error 404 on insufficient
+permissions.
+
+
+Indexing
+^^^^^^^^
+
+The index instance node value field was updated to be an unique field among
+its own tree level. This prevents tree corruption under heavy load.
+
+The partial distributed indexing algorithm was replaced with a linear
+algorithm. The previous algorithm was very fast but suffered from a complete
+retry if there was a locking error in one of the tree levels during update.
+The new algorithm is slower in theory as it locks the entire tree, but in
+practice is more efficient because there are less lock collisions.
+
+Locking the entire tree along with new database integrity changes, further
+reduces the chances of index tree corruption.
+
+The new algorithm also allows very quick removals using a single query
+operation as opposed to the previous looped locking. Additions are also now
+performed using forward related through field managers which permit adding
+values to many to many fields using a single query instead of a Python loop.
+
+The change in the algorithm required the API to also be updated. Each tree
+level node returns an URL to list view of its respective children. This
+change also enabled the switch to a paged API for the index instance.
+
+Index instance columns were updated to be more consistent in their
+information. New columns were added with additional information. The ordering
+of the columns was also made consistent between the top level index instance
+view and the index instance node navigation views.
+
+The document indexing API was updated to exclude trashed documents.
+
+The indexing task was updated to use exponential retry delays with a maximum
+retry backoff delay of 60 seconds.
+
+
+Mailing
+^^^^^^^
+
+The mailing app was refactored to support all document features introduced in
+version 4.0.
+
+It is now possible to mail document files and document versions as
+attachments as well as links. Documents can only be shared over email as
+links.
+
+The workflow action was updated to send a link to the document or send
+the active version of the document as attachment.
+
+The app icons were updated to make the more intuitive.
+
+
+Metadata
+^^^^^^^^
+
+The API permission layout was updated to match the one of the user interface
+views. The edit or view permission is now required for the document type
+as well as the metadata type.
+
+API serializers were unified and redundant code removed.
+
+The metadata type form tab order was improve. The metadata type name field
+is now disabled via CSS to skip it during data entry when using tabs.
+
+Support was added for deleting multiple metadata types in a single action.
+
+
+Navigation
+^^^^^^^^^^
+
+The navigation classes were refactored and several important patches merged.
+
+Request and context resolution was unified for all navigation app classes.
+
+Support was added for retrieving a list of ``SourceColumn`` by name.
+
+The ``SourceColumn.get_for_source`` was refactored for better and faster
+object resolution. Some navigation object would include child or proxy
+objects in the resolution of the parent object navigation while other
+excluded them and required explicit inclusion. This logic has been unified
+to default to inclusion. All exclusion must now be explicit.
+
+The views ``resolved_object`` is now passed as an argument to the link's
+display conditions callback. While the view context is still passed to the
+callback, the ``resolved_object`` argument makes determining the active
+object using the context unnecessary. The context is still provided for link
+conditions that are dependent on other values in the view context.
+
+    - Rename `get_cascade_condition` to
+      `factory_condition_queryset_access` which better reflects its
+      purpose.
+    - Add support for exclusion during menu link binding.
+    - Add support for callbacks to `factory_condition_queryset_access`.
+    - Add proxy model exclusions.
+
+
+OCR
+^^^
+
+Support for editing the document version page OCR content was added.
+This work via the user interface and the API.
+
+
+Parsing
+^^^^^^^
+
+Support was added to allow deleting the parsed content of multiple files
+as a single action.
+
+
+Platform
+^^^^^^^^
+
+Support was added for service client backends. These are clients for
+specialized services operating outside Mayan EDMS.
+
+A service client for Sentry.io was added to allow production exception
+tracking.
+
+The settings ``PLATFORM_CLIENT_BACKEND_ENABLED`` and
+``PLATFORM_CLIENT_BACKEND_ARGUMENTS`` are used to pass argument such as
+credentials to the service backends and select which are to be launched as
+startup.
+
+
+REST API
+^^^^^^^^
+
+The settings ``REST_API_MAXIMUM_PAGE_SIZE`` and ``REST_API_PAGE_SIZE`` were
+added to allow controlling the default page size and the maximum page size
+of the result responses.
+
+
+Roles
+^^^^^
+
+Support was added for deleting multiple roles in a single action.
+
+
+Search
+^^^^^^
+
+The ``TASK_RETRY_DELAY`` setting was remove and exponential retry used
+instead.
+
+The query string is now sanitized and non valid search criteria removed.
+
+The Whoosh backend received many updates. While it is still not the default
+search backend, this version moves that goal closer.
+
+The Whoosh backend can now reindexing object after related many to many
+fields values are removed or added. Support for indexing multiple many to
+many field values as independent values was also added.
+
+The default behavior of the search system was to work as a filter and remove
+values from the total based on the search query. This caused search results
+to be inclusive, adding results that were not relevant to the query. The
+behavior was updated to work like a search filter. Incorrect search queries
+will now return an empty result set.
+
+Several operation like query processing were moved to the base class reducing
+the amount of code in the search backends.
+
+
+Signatures
+^^^^^^^^^^
+
+The API was updated to exclude trashed documents.
+
+When a signature file is uploaded, the current user is captured and used
+for the event.
+
+A new event was added to track detached signature deletion.
+
+
+Sources
+^^^^^^^
+
+The sources app was refactored. This refactor remove model inheritance, makes
+sources work like backends, and allow external app to create their own
+sources.
+
+The refactor also allows object level permission to be applied to sources
+which means sources now support ACLs. A default requirement was added to
+sources, they required the document create permission. This permission must
+be explicitly granted for new or existing sources.
+
+File locking support was remove from the staging folder uploads. File locking
+did not prevented incomplete files to be processed.
+
+The sources API now work by having a common set of CRUD operations for all
+sources while also allowing the sources to register their own unique
+functionality as source actions. Example of this is the staging folder file
+preview and staging folder file upload actions.
+
+The refactor also allows unifying background tasks. Source can now also
+define callbacks that are execute after the document if created to allow
+add or changing document attributes in an asynchronous manner.
+
+Support for recoding email Message ID was added . The email source can now
+record an email Message ID from the header as it is processed into documents.
+All documents created from the same email will have the same Message ID.
+
+Support was added to rewind the step of the upload wizard.
+
+
+Smart links
+^^^^^^^^^^^
+
+The API was updated to exclude trashed documents.
+
+The resolved smart link API and serializer were refactored to modernize the
+implementation.
+
+A permission requirement was added to view resolved smart links. This
+permission needs to be granted for the smart link and for the
+document/document type.
+
+The API was updated to return error 404 on insufficient access.
+
+
+Tags
+^^^^
+
+The tag color value was added as a search field.
+
+
+Tasks
+^^^^^
+
+Celery workers are now launched with the options ``--without-gossip`` and
+``--without-heartbeat`` to reducer chatter and broker resources.
+
+
+Translations
+^^^^^^^^^^^^
+
+The Spanish locale was split into Spanish (Puerto Rico) and Spanish.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+Choice forms now support realtime filtering of items. These forms are used
+in the add/remove views of groups, roles, ACLs, indexes, and smart links.
+
+Support was added for overriding form buttons. This is important for
+integrators wanting to add not just additional form button but also remove
+the default submit button.
+
+Custom submit button label and submit button icons were removed from most
+views. These are still supported but their usage reduced for a more
+consistent user experience.
+
+
+Workflows
+^^^^^^^^^
+
+Changing the document type of a document will now cause the workflows for
+the new document type to be launched automatically.
+
+Event subscriptions was enabled for workflow states, workflow state actions,
+and workflow transitions.
+
+Using workflows as source for indexes was improved.
+
+
+Other
+^^^^^
+
+- Multiform improvements:
+
+  - Support multi form extra kwargs.
+  - Move the dynamic part of the multi form method to the end
+    of the name.
+  - Add a white horizontal ruler to separate the form
+    instances.
+
+- Add detail view for groups.
+- Show total permission when running the `purgepermissions` command.
+- Add detail for file partitions.
+- Add placeholder absolute links for announcements, workflow templates, quotas.
+- Add detail view for stored permissions.
+- Rename role setup views.
+- Load user management first to allow patching.
+- Register ACL events when enabling ACLs. Objects that are registered to
+  support ACLs will also be registered for ACL events to allow subscribing to
+  ACL changes of the object.
+- Allow bind either the events links, the subscription link, both or none.
+- Improve workflow app navigation.
+- Improve sidebar navigation.
+- Improve clarity of the action dropdown sections.
+- Tags app updates:
+
+  - Use MultipleObjectDeleteView class.
+  - Replace edit icon.
+  - Code style updates.
+
+- OCR app updates:
+
+  - Use ``MultipleObjectDeleteView`` for the delete view.
+  - Rename single and multiple delete view names.
+  - Improve tests.
+
+- Add ``BackendDynamicForm``, a dynamic form for interacting with backends.
+- Add a reusable backend class named ``mayan.apps.databases.classes.BaseBackend``.
+- Document parsing app updates:
+
+  - Update API to latest internal interfaces.
+  - Speed up tests.
+  - Add event checking to tests.
+  - Use `MultipleObjectDeleteView` for the file content delete view.
+  - Improve text string of the `DocumentFileContentDeleteView` view.
+
+- Improve `BaseBackend` class
+
+  - Add deterministic parent base backend class detection.
+  - Register backend class only to their respective parent base
+    backend classes.
+
+- Perform sources app code reduction. Remove PseudoFile and SourceUploaded
+  classes. Each source backend is now responsible for providing
+  a list of shared uploaded files.
+- Fix ``FilteredRelatedFieldMixin`` to properly detect empty source
+  querysets. The previous boolean conditional would fail if the queryset
+  passed was empty as it only used an empty ``if`` statement. The
+  comparison is now performed using ``is None``.
+- Add a queryset attribute check mixin to ensure view are
+  specifing a complete queryset and not just a manager.
+- Update all view and API views not passing a complete
+  queryset declaratio
+- Update UI double click to act on elements. Previously it bonded to the
+  entire form. By binding it to an element other element can be made to
+  react to the double click event for other purposes.
+
+
+Removals
+--------
+
+- Settings ``DOCUMENT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY``
+  and ``DOCUMENT_TASK_GENERATE_DOCUMENT_VERSION_PAGE_IMAGE_RETRY_DELAY``.
+- Converter literal ``TASK_ASSET_IMAGE_GENERATE_RETRY_DELAY``.
+- Workflow literals ``TASK_GENERATE_WORKFLOW_IMAGE_RETRY_DELAY``.
+- The ``document_states_fast`` task queue.
+- Document app literals
+  ``DEFAULT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY`` and
+  ``DEFAULT_TASK_GENERATE_DOCUMENT_VERSION_PAGE_IMAGE_RETRY_DELAY``.
+- File locking support was remove from the staging folder uploads.
+  File locking did not prevented incomplete files to be processed.
+- Celery Flower removed from the Docker image.
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+Using a source now requires a permission. The document create permission must
+be granted now not only for the document type but also for a source in order
+to be able to upload new documents.
+
+To be able to use a source to upload new document files to an existing
+document, the new document file permission must also be granted for the
+source.
+
+A permission requirement was added to view resolved smart links. This
+permission needs to be granted for the smart link and for the
+document/document type.
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`442` [NFR] Preserve extension checkbox should be always available and not only when downloading version
+- :gitlab-issue:`592` Possiblity to revise OCR result
+- :gitlab-issue:`845` Python 3.8: mod_wsgi: os.fork() RuntimeError: fork not supported for subinterpreters
+- :gitlab-issue:`863` Start workflows when changing document type
+- :gitlab-issue:`981` 4.0, version export and messages app
+- :gitlab-issue:`1017` get() returned more than one IndexInstanceNode -- it returned 6!
+- :gitlab-issue:`1024` Error with docker build
+- :gitlab-issue:`1027` Source missing method process_document (4.1a1)
+- :gitlab-issue:`1039` [v4.1b1] Missing requirement
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
+

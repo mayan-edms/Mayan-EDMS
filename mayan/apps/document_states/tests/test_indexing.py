@@ -1,12 +1,8 @@
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
-from mayan.apps.document_indexing.models import (
-    IndexInstanceNode, IndexTemplate
-)
+from mayan.apps.document_indexing.models import IndexInstanceNode
 from mayan.apps.document_indexing.tests.mixins import IndexTemplateTestMixin
 
-from .literals import (
-    TEST_INDEX_TEMPLATE_LABEL, TEST_INDEX_TEMPLATE_METADATA_EXPRESSION
-)
+from .literals import TEST_INDEX_TEMPLATE_METADATA_EXPRESSION
 from .mixins.workflow_template_mixins import WorkflowTemplateTestMixin
 
 

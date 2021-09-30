@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-09-29 05:50+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
+#: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:20
 msgid "Converter"
 msgstr "Конвертор"
 
@@ -255,7 +255,7 @@ msgstr "Преглед на съществуващите трансформац�
 msgid "Generate a image of an asset."
 msgstr "Генерирайте изображение на актив."
 
-#: settings.py:28
+#: settings.py:29
 msgid ""
 "The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest asset cache files. Specify the size in bytes."
@@ -263,7 +263,7 @@ msgstr ""
 "Прагът, при който CONVERTER_ASSET_CACHE_STORAGE_BACKEND ще започне да "
 "изтрива най-старите кеширани файлове на активи. Посочете размера в байтове."
 
-#: settings.py:37
+#: settings.py:38
 msgid ""
 "Time in seconds that the browser should cache the supplied asset. The "
 "default of 31559626 seconds correspond to 1 year."
@@ -271,31 +271,37 @@ msgstr ""
 "Време в секунди, през което браузърът трябва да кешира предоставения актив. "
 "По подразбиране 31559626 секунди съответстват на 1 година."
 
-#: settings.py:44
+#: settings.py:45
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
 msgstr ""
 "Път към подкласа Storage, който да се използва при съхраняване на кешираните"
 " файлове с активи."
 
-#: settings.py:52
+#: settings.py:53
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
 msgstr "Аргументи за предаване на CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
 
-#: settings.py:58
+#: settings.py:59
 msgid "Path to the Storage subclass to use when storing assets."
 msgstr ""
 "Път към подкласа Storage, който да се използва при съхранение на активи."
 
-#: settings.py:64
+#: settings.py:65
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgstr "Аргументи за предаване на CONVERTER_ASSET_STORAGE_BACKEND."
 
-#: settings.py:70
+#: settings.py:72
+msgid ""
+"Maximum number of retries before giving up. A value of None means the task "
+"will retry forever."
+msgstr ""
+
+#: settings.py:79
 msgid "Graphics conversion backend to use."
 msgstr "Използван бекенд за преобразуване на графики."
 
-#: settings.py:76
+#: settings.py:85
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Опции за конфигуриране на бекенда за графично преобразуване"
 
@@ -351,39 +357,39 @@ msgstr "Преобръщане"
 msgid "Gaussian blur"
 msgstr "Гаусово замъгляване"
 
-#: transformations.py:648
+#: transformations.py:650
 msgid "Line art"
 msgstr "Графично изкуство"
 
-#: transformations.py:659
+#: transformations.py:664
 msgid "Mirror"
 msgstr "Огледало"
 
-#: transformations.py:670
+#: transformations.py:675
 msgid "Resize"
 msgstr "Преоразмеряване"
 
-#: transformations.py:697
+#: transformations.py:702
 msgid "Rotate"
 msgstr "Завъртане"
 
-#: transformations.py:723
+#: transformations.py:728
 msgid "Rotate 90 degrees"
 msgstr "Завъртане на 90 градуса"
 
-#: transformations.py:734
+#: transformations.py:739
 msgid "Rotate 180 degrees"
 msgstr "Въртене на 180 градуса"
 
-#: transformations.py:745
+#: transformations.py:750
 msgid "Rotate 270 degrees"
 msgstr "Въртене на 270 градуса"
 
-#: transformations.py:755
+#: transformations.py:760
 msgid "Unsharp masking"
 msgstr "Размазващо маскиране"
 
-#: transformations.py:771
+#: transformations.py:776
 msgid "Zoom"
 msgstr "Увеличаване"
 

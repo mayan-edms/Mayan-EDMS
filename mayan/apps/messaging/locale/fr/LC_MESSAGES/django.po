@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-09-29 05:50+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -214,46 +214,46 @@ msgstr "Marquez le %(count)d message sélectionné comme lu."
 msgid "Mark the %(count)d selected messages as read."
 msgstr "Marquez les %(count)d messages sélectionnés comme lus."
 
-#: views.py:173
+#: views.py:174
 msgid "Mark all message as read?"
 msgstr "Marquer tous les messages comme lus?"
 
-#: views.py:189
+#: views.py:191
 msgid "All messages marked as read."
 msgstr "Tous les messages ont été marqués comme lus."
 
-#: views.py:196
+#: views.py:198
 #, python-format
 msgid "Error marking message \"%(instance)s\" as unread; %(exception)s"
 msgstr ""
 "Erreur pour marquer le message \"%(instance)s\" comme non lu; %(exception)s"
 
-#: views.py:202
+#: views.py:204
 #, python-format
 msgid "Message \"%(object)s\" marked as unread successfully."
 msgstr "Message \"%(object)s\" marqué comme non lu avec succès."
 
-#: views.py:205
+#: views.py:207
 #, python-format
 msgid "%(count)d message marked as unread successfully."
 msgstr " %(count)d message marqué comme non lu avec succès."
 
-#: views.py:208
+#: views.py:210
 #, python-format
 msgid "%(count)d messages marked as unread successfully."
 msgstr "%(count)d messages marqués comme non lus avec succès."
 
-#: views.py:210
+#: views.py:212
 #, python-format
 msgid "Mark the message \"%(object)s\" as unread."
 msgstr "Marquez le message \"%(object)s\" comme non lu."
 
-#: views.py:211
+#: views.py:213
 #, python-format
 msgid "Mark the %(count)d selected message as unread."
 msgstr "Marquez  %(count)d message sélectionné comme non lu."
 
-#: views.py:212
+#: views.py:214
 #, python-format
 msgid "Mark the %(count)d selected messages as unread."
 msgstr "Marquez les %(count)d messages sélectionnés comme non lus."

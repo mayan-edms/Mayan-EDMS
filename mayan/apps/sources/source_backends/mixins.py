@@ -285,6 +285,24 @@ class SourceBackendEmailMixin:
                     'null': True,
                     'required': False
                 },
+                'message_id_metadata_type_id': {
+                    'blank': True,
+                    'class': 'django.forms.ChoiceField',
+                    'help_text': _(
+                        'Select a metadata type to store the email\'s '
+                        'message ID value. Must be a valid metadata type '
+                        'for the document type selected previously.'
+                    ),
+                    'kwargs': {
+                        'choices': itertools.chain(
+                            [(None, '---------')],
+                            [(instance.id, instance) for instance in MetadataType.objects.all()],
+                        )
+                    },
+                    'label': _('Message ID metadata type'),
+                    'null': True,
+                    'required': False
+                },
                 'store_body': {
                     'class': 'django.forms.BooleanField',
                     'default': True,
@@ -299,7 +317,8 @@ class SourceBackendEmailMixin:
         result['field_order'] = (
             'host', 'ssl', 'port', 'username', 'password',
             'metadata_attachment_name', 'from_metadata_type_id',
-            'subject_metadata_type_id', 'store_body'
+            'subject_metadata_type_id', 'message_id_metadata_type_id',
+            'store_body'
         ) + result['field_order']
 
         result['widgets'].update(
@@ -315,6 +334,11 @@ class SourceBackendEmailMixin:
                     }
                 },
                 'subject_metadata_type_id': {
+                    'class': 'django.forms.widgets.Select', 'kwargs': {
+                        'attrs': {'class': 'select2'},
+                    }
+                },
+                'message_id_metadata_type_id': {
                     'class': 'django.forms.widgets.Select', 'kwargs': {
                         'attrs': {'class': 'select2'},
                     }
@@ -345,6 +369,10 @@ class SourceBackendEmailMixin:
         subject_metadata_type = self.get_subject_metadata_type()
         if subject_metadata_type:
             self.document_metadata[subject_metadata_type.pk] = message.headers.get('Subject')
+
+        message_id_metadata_type = self.get_message_id_metadata_type()
+        if message_id_metadata_type:
+            self.document_metadata[message_id_metadata_type.pk] = message.headers.get('Message-ID')
 
         return shared_uploaded_files
 
@@ -421,6 +449,7 @@ class SourceBackendEmailMixin:
 
         form_metadata_type = self.get_from_metadata_type()
         subject_metadata_type = self.get_subject_metadata_type()
+        message_id_metadata_type = self.get_message_id_metadata_type()
 
         if form_metadata_type:
             if not document_type.metadata.filter(metadata_type=form_metadata_type).exists():
@@ -450,6 +479,20 @@ class SourceBackendEmailMixin:
                     }
                 )
 
+        if message_id_metadata_type:
+            if not document_type.metadata.filter(metadata_type=message_id_metadata_type).exists():
+                raise ValidationError(
+                    {
+                        'message_id_metadata_type': _(
+                            'Message ID metadata type "%(metadata_type)s" is not '
+                            'valid for the document type: %(document_type)s'
+                        ) % {
+                            'metadata_type': subject_metadata_type,
+                            'document_type': document_type
+                        }
+                    }
+                )
+
     def get_callback_kwargs(self):
         callback_kwargs = super().get_callback_kwargs()
         callback_kwargs.update(
@@ -459,13 +502,19 @@ class SourceBackendEmailMixin:
         return callback_kwargs
 
     def get_from_metadata_type(self):
-        pk = self.kwargs['from_metadata_type_id']
+        pk = self.kwargs.get('from_metadata_type_id')
 
         if pk:
             return MetadataType.objects.get(pk=pk)
 
     def get_subject_metadata_type(self):
-        pk = self.kwargs['subject_metadata_type_id']
+        pk = self.kwargs.get('subject_metadata_type_id')
+
+        if pk:
+            return MetadataType.objects.get(pk=pk)
+
+    def get_message_id_metadata_type(self):
+        pk = self.kwargs.get('message_id_metadata_type_id')
 
         if pk:
             return MetadataType.objects.get(pk=pk)

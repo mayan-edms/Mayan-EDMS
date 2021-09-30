@@ -245,6 +245,9 @@ class DocumentsApp(MayanAppConfig):
         FavoriteDocument = self.get_model(
             model_name='FavoriteDocument'
         )
+        FavoriteDocumentProxy = self.get_model(
+            model_name='FavoriteDocumentProxy'
+        )
         RecentlyAccessedDocument = self.get_model(
             model_name='RecentlyAccessedDocument'
         )
@@ -560,6 +563,17 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(
             func=lambda context: context['object'].pages.count(),
             label=_('Pages'), include_label=True, order=-8, source=Document
+        )
+
+        # FavoriteDocumentProxy
+
+        SourceColumn(
+            func=lambda context: context['object'].favorites.get(
+                user=context['request'].user
+            ).datetime_added, include_label=True, is_sortable=True,
+            label=_('Date and time added'), name='datetime_added',
+            sort_field='favorites__datetime_added',
+            source=FavoriteDocumentProxy
         )
 
         # RecentlyAccessedDocument

@@ -5,14 +5,15 @@
 # Translators:
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2021
+# trendspotter <jirka.p@volny.cz>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-09-29 05:50+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -55,7 +56,7 @@ msgstr "Free Open Source OCR Engine"
 
 #: events.py:8
 msgid "Document version OCR content deleted"
-msgstr ""
+msgstr "Verze dokumentu Obsah OCR odstraněn"
 
 #: events.py:12
 msgid "Document version submitted for OCR"
@@ -132,7 +133,7 @@ msgstr "Chyby OCR verze dokumentu"
 
 #: models.py:67
 msgid "Document version page"
-msgstr ""
+msgstr "Stránka verze dokumentu"
 
 #: models.py:71
 msgid "The actual text content extracted by the OCR backend."
@@ -144,11 +145,11 @@ msgstr "Obsah"
 
 #: models.py:78
 msgid "Document version page OCR content"
-msgstr ""
+msgstr "Stránka s obsahem OCR verzí dokumentu "
 
 #: models.py:79
 msgid "Document version pages OCR contents"
-msgstr ""
+msgstr " OCR obsah stránky verze dokumentu"
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
@@ -164,15 +165,15 @@ msgstr "Změna nastavení OCR pro typu dokumentu"
 
 #: queues.py:10
 msgid "Finish document file OCR"
-msgstr ""
+msgstr "Dokončit soubor dokumentu OCR"
 
 #: queues.py:14
 msgid "Document file page OCR"
-msgstr ""
+msgstr "Stránka OCR souboru dokumentu "
 
 #: queues.py:18
 msgid "Document file OCR"
-msgstr ""
+msgstr "Soubor dokumentu OCR"
 
 #: search.py:11 search.py:23
 msgid "Document version OCR"

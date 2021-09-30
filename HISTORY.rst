@@ -17,15 +17,16 @@
   - Perform code reduction. Remove PseudoFile and SourceUploaded
     classes. Each source backend is now responsible for providing
     a list of shared uploaded files.
-  - Multiform improvements:
 
-    - Support multi form extra kwargs.
-    - Move the dynamic part of the multi form method to the end
-      of the name.
-    - Add a white horizontal ruler to separate the form
-      instances.
+- Multiform improvements:
 
-- Consolidate the image generation task
+  - Support multi form extra kwargs.
+  - Move the dynamic part of the multi form method to the end
+    of the name.
+  - Add a white horizontal ruler to separate the form
+    instances.
+
+- Consolidate the image generation task:
 
   - Remove document file, version, converter asset, and workflow template
     preview image generation.
@@ -233,7 +234,7 @@
     level. The 'objects' manager for these model returns the unfiltered
     queryset.
   - Trashed document delete API now returns a 202 code instead of 204. The
-    delete method now runs in the background in the same was as the trashed
+    delete method now runs in the background in the same way as the trashed
     document delete view works in the UI. The return code was updated to
     reflect this internal change.
   - Track the user for the trashed document delete, restore and for the
@@ -323,6 +324,50 @@
   - Pass the ``resolved_object`` to link conditions.
 
 - Don't trigger the settings change flag on user language changes.
+- Add settings to allow changing the default and the maximums
+  REST API page size.
+- Add support for service client backends to the platform app.
+- Add Sentry.io service client backend.
+- Support overriding form buttons.
+- Improve metadata type form tab order. Disables metadata type name field
+  to skip them during tabbing.
+- Support step rewinding for the sources wizard.
+- Add support for recoding email Message ID. The email source can now record
+  an email Message ID from the header as it is processed into a documents.
+  All documents created from the same email will have the same Message ID.
+  Thanks to forum user qra (@qra) for the request.
+
+- Improve `BaseBackend` class
+
+  - Add deterministic parent base backend class detection.
+  - Register backend class only to their respective parent base
+    backend classes.
+
+- Render main menu icons properly. The change in
+  bbbb92edb85f192987fdfb4efc574bd79221b6ed removed literal CSS icon
+  support. A single reference to the old CSS icon render was left behind
+  which cause the icon object Python memory location to be rendered
+  inline with the menu HTML. This cause the same menu to have different
+  hashes when rendered by the different Gunicorn workers. Solved GitLab
+  issue #1038. Thanks to Ludovic Anterieur (@lanterieur) for the report.
+- Add setting to change the menu polling interval. Values specified in
+  milliseconds. Use `None` to disable.
+- Enforce ``CONVERTER_IMAGE_GENERATION_MAX_RETRIES`` setting and add logging
+  message when the maximum retires are exhausted.
+
+4.0.16 (2021-09-29)
+===================
+- Minor fixes merged from version 3.5.11.
+- Remove duplicated makefile targets.
+- Add keyword arguments to PIL methods.
+- Quote parameters of remaining migration query.
+- Track user when setting a version active.
+- Fix menus randomly closing on refresh.
+- Don't trigger the settings change flag on user language changes.
+- Backport setting `CONVERTER_IMAGE_GENERATION_MAX_RETRIES`.
+  This setting allows changing the image generation task maximum
+  retry count. Celery's built in default value is 3, this setting
+  increases that default to 7.
 
 4.0.15 (2021-08-07)
 ===================

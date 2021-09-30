@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-09-29 05:50+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
+#: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:20
 msgid "Converter"
 msgstr "Convertitore"
 
@@ -254,42 +254,48 @@ msgstr "Visualizza le trasformazioni esistenti"
 msgid "Generate a image of an asset."
 msgstr ""
 
-#: settings.py:28
+#: settings.py:29
 msgid ""
 "The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest asset cache files. Specify the size in bytes."
 msgstr ""
 
-#: settings.py:37
+#: settings.py:38
 msgid ""
 "Time in seconds that the browser should cache the supplied asset. The "
 "default of 31559626 seconds correspond to 1 year."
 msgstr ""
 
-#: settings.py:44
+#: settings.py:45
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
 msgstr ""
 
-#: settings.py:52
+#: settings.py:53
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
 msgstr ""
 
-#: settings.py:58
+#: settings.py:59
 msgid "Path to the Storage subclass to use when storing assets."
 msgstr ""
 "Percorso della sottoclasse di archiviazione da utilizzare durante "
 "l'archiviazione degli risorsa visiva."
 
-#: settings.py:64
+#: settings.py:65
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgstr "Argomenti da passare a CONVERTER_ASSET_STORAGE_BACKEND."
 
-#: settings.py:70
+#: settings.py:72
+msgid ""
+"Maximum number of retries before giving up. A value of None means the task "
+"will retry forever."
+msgstr ""
+
+#: settings.py:79
 msgid "Graphics conversion backend to use."
 msgstr "Conversioni grafiche di backend da utilizzare."
 
-#: settings.py:76
+#: settings.py:85
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Opzioni di configurazione per il backend di conversione grafica."
 
@@ -343,39 +349,39 @@ msgstr "Capovolgi"
 msgid "Gaussian blur"
 msgstr "Sfocatura gaussiana"
 
-#: transformations.py:648
+#: transformations.py:650
 msgid "Line art"
 msgstr "Line art"
 
-#: transformations.py:659
+#: transformations.py:664
 msgid "Mirror"
 msgstr "Specchio"
 
-#: transformations.py:670
+#: transformations.py:675
 msgid "Resize"
 msgstr "Ridimensiona"
 
-#: transformations.py:697
+#: transformations.py:702
 msgid "Rotate"
 msgstr "Ruotare"
 
-#: transformations.py:723
+#: transformations.py:728
 msgid "Rotate 90 degrees"
 msgstr "Ruota di 90 Gradi"
 
-#: transformations.py:734
+#: transformations.py:739
 msgid "Rotate 180 degrees"
 msgstr "Ruota di 180 gradi"
 
-#: transformations.py:745
+#: transformations.py:750
 msgid "Rotate 270 degrees"
 msgstr "Ruota di 270 gradi"
 
-#: transformations.py:755
+#: transformations.py:760
 msgid "Unsharp masking"
 msgstr "Maschera di contrasto"
 
-#: transformations.py:771
+#: transformations.py:776
 msgid "Zoom"
 msgstr "Zoom"
 

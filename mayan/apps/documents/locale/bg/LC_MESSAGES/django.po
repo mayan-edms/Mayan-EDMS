@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-09-29 05:50+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -1566,11 +1566,11 @@ msgstr ""
 "Грешка при клонирането на трансформациите на страницата за файл на документ:"
 " %(document_file)s; %(error)s."
 
-#: views/document_file_views.py:328 views/document_version_views.py:360
+#: views/document_file_views.py:328 views/document_version_views.py:373
 msgid "Transformations cloned successfully."
 msgstr "Трансформациите клонирани успешно."
 
-#: views/document_file_views.py:342 views/document_version_views.py:374
+#: views/document_file_views.py:342 views/document_version_views.py:387
 #: views/misc_views.py:41
 msgid "Submit"
 msgstr "Подаване"
@@ -1749,87 +1749,87 @@ msgstr "Нулиране на списъка със страници на вер
 msgid "Make the document version \"%s\" the active version?"
 msgstr "Да стане ли версията на документа &quot;%s&quot; активна версия?"
 
-#: views/document_version_views.py:64
+#: views/document_version_views.py:65
 msgid "Successfully changed the active document version."
 msgstr "Успешно променена активна версия на документа."
 
-#: views/document_version_views.py:79
+#: views/document_version_views.py:80
 #, python-format
 msgid "Create a document version for document: %s"
 msgstr "Създаване версия за документ: %s"
 
-#: views/document_version_views.py:98
+#: views/document_version_views.py:99
 #, python-format
 msgid "Document version \"%(object)s\" deleted successfully."
 msgstr "Версията на документа &quot;%(object)s&quot; беше изтрита успешно."
 
-#: views/document_version_views.py:101
+#: views/document_version_views.py:102
 #, python-format
 msgid "%(count)d document version deleted successfully."
 msgstr "%(count)d версия на документа е изтрита успешно."
 
-#: views/document_version_views.py:104
+#: views/document_version_views.py:105
 #, python-format
 msgid "%(count)d document versions deleted successfully."
 msgstr "%(count)d версии на документа бяха изтрити успешно."
 
-#: views/document_version_views.py:106
+#: views/document_version_views.py:107
 #, python-format
 msgid "Delete document version \"%(object)s\"."
 msgstr "Изтрийте версия на документа &quot;%(object)s&quot;."
 
-#: views/document_version_views.py:107
+#: views/document_version_views.py:108
 #, python-format
 msgid "Delete %(count)d document version."
 msgstr "Изтрийте %(count)d версия на документа."
 
-#: views/document_version_views.py:108
+#: views/document_version_views.py:109
 #, python-format
 msgid "Delete %(count)d document versions."
 msgstr "Изтрийте %(count)d версии на документа."
 
-#: views/document_version_views.py:132
+#: views/document_version_views.py:145
 #, python-format
 msgid "Edit document version: %s"
 msgstr "Редактиране на версия на документа: %s"
 
-#: views/document_version_views.py:153
+#: views/document_version_views.py:166
 #, python-format
 msgid "Document version \"%(object)s\" export successfully queued."
 msgstr ""
 "Експортирането на версията на документа „%(object)s“ бе успешно поставено на"
 " опашка."
 
-#: views/document_version_views.py:156
+#: views/document_version_views.py:169
 #, python-format
 msgid "%(count)d document version export successfully queued."
 msgstr ""
 "%(count)d експортиране на версия на документа бе поставено успешно на "
 "опашка."
 
-#: views/document_version_views.py:159
+#: views/document_version_views.py:172
 #, python-format
 msgid "%(count)d document versions exports successfully queued."
 msgstr ""
 "%(count)d експортирания на версии на документа беше поставено успешно на "
 "опашка."
 
-#: views/document_version_views.py:161
+#: views/document_version_views.py:174
 #, python-format
 msgid "Export document version \"%(object)s\"."
 msgstr "Експортирайте версия на документа &quot;%(object)s&quot;."
 
-#: views/document_version_views.py:162
+#: views/document_version_views.py:175
 #, python-format
 msgid "Export %(count)d document version."
 msgstr "Експортирайте %(count)d версия на документа."
 
-#: views/document_version_views.py:163
+#: views/document_version_views.py:176
 #, python-format
 msgid "Export %(count)d document versions."
 msgstr "Експортирайте %(count)d версии на документа."
 
-#: views/document_version_views.py:168
+#: views/document_version_views.py:181
 msgid ""
 "The process will be performed in the background. The exported file will be "
 "available in the downloads area."
@@ -1837,7 +1837,7 @@ msgstr ""
 "Процесът ще се извърши във фонов режим. Експортираният файл ще бъде достъпен"
 " в областта за изтегляне."
 
-#: views/document_version_views.py:210
+#: views/document_version_views.py:223
 msgid ""
 "Versions are views that can display document file pages as they are, remap "
 "or merge them into different layouts."
@@ -1845,28 +1845,28 @@ msgstr ""
 "Версиите са изгледи, които могат да показват страници на файлове с документи"
 " такива, каквито са, да ги пренастроят или обединят в различни оформления."
 
-#: views/document_version_views.py:213
+#: views/document_version_views.py:226
 msgid "No versions available"
 msgstr "Няма налични версии"
 
-#: views/document_version_views.py:216
+#: views/document_version_views.py:229
 #, python-format
 msgid "Versions of document: %s"
 msgstr "Версии на документа: %s"
 
-#: views/document_version_views.py:245
+#: views/document_version_views.py:258
 #, python-format
 msgid "Preview of document version: %s"
 msgstr "Визуализация на версията на документа: %s"
 
-#: views/document_version_views.py:278
+#: views/document_version_views.py:291
 #, python-format
 msgid "Transformation clear request processed for %(count)d document version."
 msgstr ""
 "Обработена заявка за изчистване на преобразуване за версия на документ "
 "%(count)d."
 
-#: views/document_version_views.py:281
+#: views/document_version_views.py:294
 #, python-format
 msgid ""
 "Transformation clear request processed for %(count)d document versions."
@@ -1874,7 +1874,7 @@ msgstr ""
 "Обработена заявка за изчистване на преобразуване, за версии на документ "
 "%(count)d."
 
-#: views/document_version_views.py:287
+#: views/document_version_views.py:300
 msgid "Clear all the page transformations for the selected document version?"
 msgid_plural ""
 "Clear all the page transformations for the selected document version?"
@@ -1885,14 +1885,14 @@ msgstr[1] ""
 "Да изчистите ли всички преобразувания на страници за избраната версия на "
 "документа?"
 
-#: views/document_version_views.py:298
+#: views/document_version_views.py:311
 #, python-format
 msgid "Clear all the page transformations for the document version: %s?"
 msgstr ""
 "Да изчистите ли  всички преобразувания на страници за версията на документа:"
 " %s?"
 
-#: views/document_version_views.py:315
+#: views/document_version_views.py:328
 #, python-format
 msgid ""
 "Error deleting the page transformations for document version: "
@@ -1901,7 +1901,7 @@ msgstr ""
 "Грешка при изтриването на трансформациите на страници за версия на "
 "документа: %(document_version)s; %(error)s."
 
-#: views/document_version_views.py:351
+#: views/document_version_views.py:364
 #, python-format
 msgid ""
 "Error cloning the page transformations for document version: "
@@ -1910,7 +1910,7 @@ msgstr ""
 "Грешка при клонирането на трансформациите на страницата за версия на "
 "документа: %(document_version)s; %(error)s."
 
-#: views/document_version_views.py:376
+#: views/document_version_views.py:389
 #, python-format
 msgid "Clone page transformations of document version: %s"
 msgstr "Клониране на трансформации на страница на версия на документа: %s"
