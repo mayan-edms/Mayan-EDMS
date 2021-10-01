@@ -1,11 +1,23 @@
+import copy
+import json
+
+from furl import furl
 from drf_yasg.views import get_schema_view
+
+from django.http.request import QueryDict
+from django.template import Variable, VariableDoesNotExist
 
 from rest_framework import permissions, renderers
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.schemas.generators import EndpointEnumerator
 
+from rest_framework import serializers
+
 import mayan
 from mayan.apps.organizations.settings import setting_organization_url_base_path
+from mayan.apps.templating.classes import Template
+from mayan.apps.rest_api import generics
+from mayan.apps.views.utils import resolve
 
 from .classes import Endpoint
 from .generics import RetrieveAPIView, ListAPIView
@@ -95,6 +107,89 @@ class ProjectInformationAPIView(RetrieveAPIView):
 
     def get_object(self):
         return mayan
+
+
+class BatchRequest:
+    def __init__(self, requests):
+        self.requests = requests
+
+    def _execute_request(self, context, request):
+        result = context.copy()
+
+        if request.get('iterator'):
+            for instance_index, instance in enumerate(Variable(request.get('iterator')).resolve(context=result)):
+                temp_context = result.copy()
+                temp_context['iterator_instance'] = instance
+
+                rendered_url = Template(request['url']).render(context=temp_context)
+                rendered_name = Template(request['name']).render(context=temp_context)
+
+                sub_request = {
+                    'url': rendered_url,
+                    'name': rendered_name
+                }
+                result.update(
+                    self._execute_request(context=result, request=sub_request)
+                )
+        else:
+            method = request.get('method', 'GET')
+            url_parts = furl(request['url'])
+
+            resolved_match = resolve(path=str(url_parts.path))
+
+            serializer_request = copy.copy(self.serializer.context['request']._request)
+            serializer_request.method = method
+            setattr(serializer_request, method, QueryDict(str(url_parts.query)))
+            serializer_request.path = request['url']
+
+            response = resolved_match.func(
+                request=serializer_request, **resolved_match.kwargs
+            )
+            result[request['name']] = response.data
+
+        return result
+
+    def execute(self, serializer):
+        context = {}
+        requests = json.loads(self.requests)
+        self.serializer = serializer
+
+        for request in requests:
+            context.update(
+                self._execute_request(
+                    context=context, request=request
+                )
+            )
+
+        return context
+
+
+class BatchAPIRequestSerializer(serializers.Serializer):
+    requests = serializers.CharField()
+
+    def create(self, validated_data):
+        test_batch_requests = '''
+        [
+            {"url": "/api/v4/search/documents.DocumentSearchResult/?label=8b3332489", "name": "document_list"},
+            {
+                "iterator": "document_list.results",
+                "url": "/api/v4/documents/{{ iterator_instance.id }}/metadata/",
+                "name": "document_metadata_{{ iterator_instance.id }}"
+            }
+        ]
+        '''
+        batch_request = BatchRequest(requests=test_batch_requests)
+        result = batch_request.execute(serializer=self)
+
+        breakpoint()
+        return batch_request
+
+
+class BatchRequestAPIView(generics.CreateAPIView):
+    """
+    post: Create a batch API request.
+    """
+    serializer_class = BatchAPIRequestSerializer
 
 
 schema_view = get_schema_view(
