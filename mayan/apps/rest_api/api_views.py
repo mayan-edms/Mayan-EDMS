@@ -1,17 +1,14 @@
-import json
-
 from drf_yasg.views import get_schema_view
 
-from rest_framework import mixins, permissions, renderers, status
+from rest_framework import mixins, permissions, renderers
 from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.response import Response
 from rest_framework.schemas.generators import EndpointEnumerator
 
 import mayan
 from mayan.apps.organizations.settings import setting_organization_url_base_path
 from mayan.apps.rest_api import generics
 
-from .classes import BatchRequest, BatchRequestCollection, Endpoint
+from .classes import BatchRequestCollection, Endpoint
 from .generics import RetrieveAPIView, ListAPIView
 from .serializers import (
     BatchAPIRequestResponseSerializer, EndpointSerializer,
@@ -100,91 +97,11 @@ class BatchRequestAPIView(mixins.ListModelMixin, generics.GenericAPIView):
         return self.list(request, *args, **kwargs)
 
     def get_queryset(self):
-        test_batch_requests = '''
-        [
-            {
-                "name": "document_list_{{ view_request.user }}",
-                "url": "/api/v4/search/advanced/documents.DocumentSearchResult/?label=8b3332489"
-            },
-            {
-                "iterator": "document_list.data.results",
-                "url": "/api/v4/documents/{{ iterator_instance.id }}/metadata/",
-                "name": "document_metadata_{{ iterator_instance.id }}"
-            }
-        ]
-        '''
-        # ~ test_batch_requests = '''
-        # ~ [
-            # ~ {"url": "/api/v4/search/documents.DocumentSearchResult/?label=8b3332489", "name": "document_list"},
-            # ~ {
-                # ~ "iterator": "document_list.data.results",
-                # ~ "url": "/api/v4/documents/{{ iterator_instance.id }}/",
-                # ~ "name": "document_metadata_{{ iterator_instance.id }}"
-            # ~ }
-        # ~ ]
-        # ~ '''
-
-
-        test_batch_requests = '''
-        [
-            {
-                "body": {"metadata_type_id": 1, "value": "{{ view_request.user.pk }}"},
-                "method": "POST",
-                "name": "document_metadata_set",
-                "url": "/api/v4/documents/26/metadata/"
-            },
-            {
-                "method": "GET",
-                "name": "document_metadata_get",
-                "url": "/api/v4/documents/26/metadata/"
-            }
-        ]
-        '''
-
-        test_batch_requests = '''
-        [
-            {
-                "name": "document_list",
-                "url": "/api/v4/search/advanced/documents.DocumentSearchResult/?label=8b3332489"
-            },
-            {
-                "iterator": "document_list.data.results",
-                "body": {"metadata_type_id": 1, "value": "{{ view_request.user.pk }}"},
-                "method": "POST",
-                "name": "document_metadata_set_{{ iterator_instance.id }}",
-                "url": "/api/v4/documents/{{ iterator_instance.id }}/metadata/"
-            },
-            {
-                "iterator": "document_list.data.results",
-                "url": "/api/v4/documents/{{ iterator_instance.id }}/metadata/",
-                "name": "document_metadata_get_{{ iterator_instance.id }}"
-            }
-        ]
-        '''
-
-        test_batch_requests = '''
-        [
-            {
-                "include": "false",
-                "name": "document_list",
-                "url": "/api/v4/search/advanced/documents.DocumentSearchResult/?label=8b3332489"
-            },
-            {
-                "include": "false",
-                "iterators": ["document_list.data.results"],
-                "url": "/api/v4/documents/{{ iterators.0.id }}/metadata/",
-                "name": "document_metadata_get",
-                "merge_key": "{{ data.document.id }}",
-            },
-            {
-                "iterators": ["document_metadata_get", "iterators.0.id"],
-                "url": "/api/v4/documents/{{ iterator_instance.id }}/metadata/",
-                "name": "document_metadata_get_{{ iterator_instance.id }}"
-            }
-        ]
-        '''
-
-        batch_request_collection = BatchRequestCollection(requests_string=test_batch_requests)
+        serializer = self.get_serializer(data=self.request.data)
+        serializer.is_valid(raise_exception=True)
+        batch_request_collection = BatchRequestCollection(
+            requests_list=serializer.validated_data.get('requests')
+        )
         return batch_request_collection.execute(view_request=self.request._request)
 
 

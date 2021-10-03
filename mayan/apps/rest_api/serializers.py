@@ -7,7 +7,7 @@ class BatchAPIRequestResponseSerializer(serializers.Serializer):
     headers = serializers.DictField(read_only=True)
     name = serializers.CharField(read_only=True)
     status_code = serializers.IntegerField(read_only=True)
-    requests = serializers.CharField(
+    requests = serializers.JSONField(
         style={'base_template': 'textarea.html'},
         write_only=True
     )
