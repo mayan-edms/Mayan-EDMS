@@ -124,6 +124,8 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
             }
         ]
 
+        self.test_object.delete()
+
         test_model_count = self.TestModel.objects.count()
 
         self._clear_events()
