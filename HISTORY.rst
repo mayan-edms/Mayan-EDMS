@@ -365,6 +365,14 @@
 
 - Add ``get_absolute_api_url`` method to download files, document versions
   and users. These URL are used to determine the message sender's API URL.
+- Test view mixin updates:
+
+  - Add a default ordering to the ``TestModel`` to silence warning.
+  - Fix ``TestModel.save()`` method.
+  - Support multiple test views per test case.
+  - Allow subclasses to supply their own ``urlpatterns``.
+  - Support passing arguments to ``add_test_view``.
+
 
 4.0.16 (2021-09-29)
 ===================

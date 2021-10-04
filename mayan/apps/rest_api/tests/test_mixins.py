@@ -4,11 +4,11 @@ from ..api_view_mixins import ExternalObjectAPIViewMixin
 from ..generics import ListCreateAPIView, RetrieveAPIView
 
 from .base import BaseAPITestCase
-from .mixins import APIUserTestCaseMixin, TestAPIViewTestCaseMixin
+from .mixins import APIUserTestCaseMixin
 
 
 class ExternalObjectAPIViewMixinTestCase(
-    APIUserTestCaseMixin, TestAPIViewTestCaseMixin, BaseAPITestCase
+    APIUserTestCaseMixin, BaseAPITestCase
 ):
     auto_add_test_view = True
     auto_create_test_object = True
@@ -39,7 +39,7 @@ class ExternalObjectAPIViewMixinTestCase(
                 'HTTP_AUTHORIZATION': 'Token {}'.format(
                     self._test_case_user_token
                 )
-            }, viewname='rest_api:{}'.format(self.test_view_name), kwargs={
+            }, viewname='rest_api:{}'.format(self._test_view_name), kwargs={
                 'test_object_id': self.test_object.pk,
             },
         )
@@ -59,11 +59,10 @@ class ExternalObjectAPIViewMixinTestCase(
 
 
 class ChildExternalObjectAPIViewMixinTestCase(
-    APIUserTestCaseMixin, TestAPIViewTestCaseMixin, BaseAPITestCase
+    APIUserTestCaseMixin, BaseAPITestCase
 ):
     auto_add_test_view = True
     auto_create_test_object = True
-
     test_view_url = r'^test-view-url/(?P<test_object_id>\d+)/$'
 
     def _test_view_factory(self, test_object=None):
@@ -81,7 +80,7 @@ class ChildExternalObjectAPIViewMixinTestCase(
 
     def _request_test_api_view(self):
         return self.get(
-            viewname='rest_api:{}'.format(self.test_view_name), kwargs={
+            viewname='rest_api:{}'.format(self._test_view_name), kwargs={
                 'test_object_id': self.test_object.pk + 1,
             }, query={'format': 'api'}
         )
