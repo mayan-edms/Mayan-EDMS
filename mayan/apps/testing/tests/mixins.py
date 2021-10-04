@@ -644,7 +644,7 @@ class TestViewTestCaseMixin:
     auto_add_test_view = False
     test_view_is_public = False
     test_view_object = None
-    test_view_name = TEST_VIEW_NAME
+    test_view_name = None
     test_view_template = '{{ object }}'
     test_view_url = TEST_VIEW_URL
 
