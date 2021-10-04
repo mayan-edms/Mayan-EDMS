@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:51+0000\n"
+"POT-Creation-Date: 2021-10-04 01:09+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -26,68 +26,68 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:74 events.py:6 permissions.py:6
+#: apps.py:72 events.py:6 permissions.py:6
 msgid "User management"
 msgstr "Benutzerverwaltung"
 
-#: apps.py:92 search.py:10
+#: apps.py:90 search.py:10
 msgid "Group"
 msgstr "Gruppe"
 
-#: apps.py:93 apps.py:103 links.py:46 links.py:59 links.py:78 search.py:34
+#: apps.py:91 apps.py:101 links.py:46 links.py:59 links.py:78 search.py:34
 #: views.py:120
 msgid "Groups"
 msgstr "Gruppen"
 
-#: apps.py:94 search.py:16
+#: apps.py:92 search.py:16
 msgid "Name"
 msgstr "Name"
 
-#: apps.py:97 models.py:16 search.py:22
+#: apps.py:95 models.py:16 search.py:22
 msgid "User"
 msgstr "Benutzer"
 
-#: apps.py:98 apps.py:187 links.py:51 links.py:86 links.py:104 views.py:306
+#: apps.py:96 apps.py:185 links.py:51 links.py:86 links.py:104 views.py:306
 msgid "Users"
 msgstr "Benutzer"
 
-#: apps.py:101 search.py:31
+#: apps.py:99 search.py:31
 msgid "Email"
 msgstr "E-Mail"
 
-#: apps.py:102 search.py:28
+#: apps.py:100 search.py:28
 msgid "First name"
 msgstr "Vorname"
 
-#: apps.py:104
+#: apps.py:102
 msgid "Is active?"
 msgstr "Aktiv"
 
-#: apps.py:105 search.py:37
+#: apps.py:103 search.py:37
 msgid "Last name"
 msgstr "Nachname"
 
-#: apps.py:106
+#: apps.py:104
 msgid "Password"
 msgstr "Passwort"
 
-#: apps.py:107
+#: apps.py:105
 msgid "Username"
 msgstr "Benutzer"
 
-#: apps.py:108
+#: apps.py:106
 msgid "Last login"
 msgstr "Letzte Anmeldung"
 
-#: apps.py:111
+#: apps.py:109
 msgid "Has usable password?"
 msgstr "Verwendbares Passwort"
 
-#: apps.py:129
+#: apps.py:127
 msgid "All the groups."
 msgstr "Alle Gruppen."
 
-#: apps.py:133
+#: apps.py:131
 msgid "All the users."
 msgstr "Alle Benutzer."
 
