@@ -2,10 +2,13 @@
 REST API
 ========
 
+Introduction
+============
+
 Mayan EDMS provides an HTTP REST Application Program Interface (or API). This
 API allows integration with 3rd party software using simple HTTP requests.
 
-Several API authentication methods are provides: **Session**, **Token**,
+Several API authentication methods are provided: **Session**, **Token**,
 and **HTTP Basic**.
 
 The URL for the API can be found via the :menuselection:`Tools --> REST API`
@@ -17,11 +20,11 @@ the Swagger version and in the
 There are a few ways to structure REST APIs. In the case of Mayan EDMS, API
 endpoints are structured by resource type. Examples:
 
-* /cabinets - To view or create new cabinets
-* /cabinets/<id> - To view the details, edit, or delete an existing cabinet.
-* /cabinets/<id>/documents - To view, add, or remove documents from an existing
+* ``/cabinets`` - To view or create new cabinets
+* ``/cabinets/{id}`` - To view the details, edit, or delete an existing cabinet.
+* ``/cabinets/{id}/documents`` - To view, add, or remove documents from an existing
   cabinet.
-* /cabinets/<id>/documents/<id> - To view, add, or remove one document from an
+* ``/cabinets/{id}/documents/{id}`` - To view, add, or remove one document from an
   existing cabinet.
 
 The API is versioned with a top level entry. Since Mayan uses semantic
@@ -32,13 +35,247 @@ the API version will be "v4".
 The API supports the HTTP verbs: **GET**, **POST**, **PUT**, **PATCH**,
 and **DELETE**.
 
-The API also supports result sorting. Like the user interface, only
-indexed database fields support. The **OPTION** verb can be used to determine
+The API supports result sorting. Like the user interface, only indexed
+database fields support. The **OPTION** verb can be used to determine
 which fields are sortable.
 
 
-Example use
-===========
+Batch API requests
+==================
+
+In addition to single resource API requests, batch API requests are also
+supported. These allow making several API requests in a single HTTP request.
+
+Advanced features like templating, iteration, referencing, and response
+grouping are also supported.
+
+Batch API requests are encoded in JSON format and sent via POST to the
+``/batch_requests/`` endpoint as a list of dictionaries.
+
+Each request service in the same order as it was submitted. As each request
+is resolved, its output is keep in a volatile context that is accessible to
+the subsequent requests. This way, one request can access or even iterate
+over the results of a previous request.
+
+The structure of the an API batch request is as follows:
+
+.. code-block:: json
+
+  [
+    {
+      "body": {},
+      "iterables": [],
+      "include": "true",
+      "group_name": "",
+      "method": "GET",
+      "name": "document_list",
+      "url": "/api/v4/documents/"
+    }
+  ]
+
+
+Body
+----
+
+The ``body`` attribute is a dictionary of values to be included in the
+request. The body is only used for PATCH, POST, and PUT requests.
+
+This attribute supports templating and iteration.
+
+
+Iterables
+---------
+
+The ``iterables`` list is a string reference to lists in the context. Each
+reference can be nested using a dotted notation to traverse the hierarchy.
+For example to reference the ``results`` list of a dictionary named
+``documents`` with the following structure
+``{"results": [{"id": 1}, {"id": 2}]``, the reference notation
+would be ``"iterables": ["documents.results"]``. A new iterable context
+variable named ``iterables.0`` will be available for the rest of the
+fields of the request.
+
+Specifying iterables will cause the request to be evaluated and resolved
+for as many items there are for the each iterable specified.
+
+Iterables can also reference previous iterables to allow for nested loops.
+To reference a dictionary named ``document_metadata`` with the format:
+
+.. code-block:: json
+
+  {
+    "results": [
+      "document": {
+        "id": 1,
+        "metadata": [
+          {
+            "metadata_type_id": 1,
+            "value": "1"
+          },
+          {
+            "metadata_type_id": 2,
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "document": {
+          "id": 2
+          "metadata": [
+            {
+              "metadata_type_id": 3,
+              "value": "3"
+            }
+          ]
+        }
+      }
+    ]
+  }
+
+
+The iterables attribute would be as follows:
+
+.. code-block:: json
+
+  "iterables": ["document_metadata.results", "iterables.0.metadata"]
+
+This will inject two context variables named ``iterables.0`` which references
+``document_metadata.results`` and ``iterables.1`` which references every
+metadata item of each document in ``iterables.0``. The request will be
+evaluated for each value of ``iterable.1`` times the values of
+``iterables.0``.
+
+The attribute does not support templating only direct references or iteration
+as it is an iterable itself.
+
+
+Include
+-------
+
+The ``include`` attribute controls if a requests response is rendered and
+returned or not. This attribute allows creating requests that are only meant
+to insert information in the context for use by other request but are of no
+interest.
+
+This attribute does not support templating or iteration.
+
+
+Method
+------
+
+The ``method`` attribute allows specifying the HTTP method. If not specified,
+the "GET" method will be used.
+
+This attribute supports templating.
+
+
+Name
+----
+
+The ``name`` attribute uniquely identifies the request and will be used to
+identify the corresponding response. The value of the ``name`` attribute will
+also be used to insert the response as a dictionary in the context.
+
+This attribute supports templating and iteration.
+
+For example, ``"name": "document_detail_for_{{ iterables.0.document.id }}"``.
+
+
+Group name
+----------
+
+The ``group_name`` attribute is used to keep all responses of a request that
+uses iteration and a variable ``name``, as a list that can be accessed via a
+single group name.
+
+This attribute does not support templating or iteration.
+
+
+URL
+---
+
+The ``url`` attribute specifies the URL path to call. Only specify the path and
+the query. Example, ``"url": "/api/v4/documents/"``
+
+This attribute does supports templating and iteration.
+
+For example, ``"url": "/api/v4/documents/{{ iterables.0.id }}/metadata/"``
+
+
+Additional context
+------------------
+
+The initial request that encapsulates all batch requests is include in the
+context as the variable ``view_request``. It contains all attributes and
+values of a normal request including the logged in user, the site instance
+among other values injected by the middleware classes.
+
+
+Responses
+---------
+
+The response for each batch API request will contain the data returned as
+a dictionary, the headers as a dictionary, the name of the request, and
+the status code as an interger.
+
+Each batch API request response will be enclosed in a top level response with
+following format:
+
+.. code-block:: json
+
+  {
+    "count": 1,
+    "next": "None",
+    "previous": "None",
+    "results": [
+      {
+        "data": {},
+        "headers": {},
+        "name": "",
+        "status_code": 200
+      }
+    ]
+  }
+
+
+Design decisions, limitations, caveats
+--------------------------------------
+
+Batch API requests share the same headers as the parent request made to the
+``/batch_requests/`` endpoint. This means that all requests in a batch will
+have the same authentication credentials and content type.
+
+File uploads and downloads are not suppoted.
+
+Batch API requests are limited by the page size. They do not have the ability
+to iterate over multiple result pages. Increase the page size with the
+``?page_size`` URL query to workaround this limitation if the expected
+response count will exceed the default response page size.
+
+The ``url`` attribute only supports local paths, it is not possible to call
+external APIs.
+
+Batch API requests does not use a traditional HTTP client. Instead it uses
+an artificial HTTP request which is used to call the views as functions
+removing the entire HTTP overhead from the process. This means that HTTP
+timeouts are not required. The only timeout are supported only for the
+initial POST request encapsulating the batch request as this initial
+request is a normal HTTP request.
+
+Batch API requests are resolved in sequence, there is no support for parallel
+execution.
+
+Error reporting is limited. To debug a batch API request, remove the last
+entries in the list and test until the expected results are obtained. Then
+add more requests in the list to increase its complexity. Include all
+responses at first, then as the batch complexity increases, switch the
+``include`` attribute to ``false`` to reduce the response size.
+
+Several of these limitations will be addressed in future updates.
+
+
+Examples
+========
 
 Install the Python Requests library (http://docs.python-requests.org/en/master/):
 
@@ -115,6 +352,9 @@ The API will return status code 202 meaning it has accepted the request and
 will perform the processing in the background.
 
 
+API Tokens
+----------
+
 Use API tokens to avoid sending the username and password on every request. Obtain a token by making a POST request to ``/api/v4/auth/token/obtain/?format=json``:
 
 .. code-block:: python
@@ -156,6 +396,9 @@ Add the API token to the request header:
      'url': 'http://127.0.0.1:8000/api/v4/document_types/1/'}]}
 
 
+Sessions
+--------
+
 Use sessions to avoid having to add the headers on each request:
 
 .. code-block:: python
@@ -181,3 +424,68 @@ Use sessions to avoid having to add the headers on each request:
      'trash_time_period': None,
      'trash_time_unit': None,
      'url': 'http://127.0.0.1:8000/api/v4/document_types/1/'}]}
+
+
+Batch API requests
+------------------
+
+Search documents for a term and return the results along with their
+respective metadata types and values.
+
+.. code-block:: json
+
+  [
+    {
+      "name": "document_list",
+      "url": "/api/v4/search/advanced/documents.DocumentSearchResult/?label=company AND xyz"
+    },
+    {
+      "iterables": ["document_list.data.results"],
+      "name": "document_metadata_{{ iterables.0.id }}",
+      "url": "/api/v4/documents/{{ iterables.0.id }}/metadata/"
+    }
+  ]
+
+
+Add the user ID as a document metadata.
+
+.. code-block:: json
+
+  [
+    {
+      "body": {"metadata_type_id": 5, "value": "{{ view_request.user.pk }}"},
+      "method": "POST",
+      "name": "document_metadata_set",
+      "url": "/api/v4/documents/6/metadata/"
+    }
+  ]
+
+
+Search documents for a term, retrieve the metadata values of the results,
+and patch the metadata values of the results. Return only the response
+of the last request for verification.
+
+
+.. code-block:: json
+
+  [
+    {
+      "include": "false",
+      "name": "document_list",
+      "url": "/api/v4/search/advanced/documents.DocumentSearchResult/?label=company AND xyz"
+    },
+    {
+      "iterables": ["document_list.data.results"],
+      "include": "false",
+      "group_name": "document_metadata_get",
+      "name": "document_metadata_get_{{ iterables.0.id }}",
+      "url": "/api/v4/documents/{{ iterables.0.id }}/metadata/"
+    },
+    {
+      "body": {"value": "1234"},
+      "iterables": ["groups.document_metadata_get", "iterables.0.data.results"],
+      "method": "PATCH",
+      "name": "document_metadata_set_{{ iterables.1.document.id }}_{{ iterables.1.id }}",
+      "url": "{{ iterables.1.url }}"
+    }
+  ]

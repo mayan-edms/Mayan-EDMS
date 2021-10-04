@@ -1,7 +1,7 @@
 from django.conf.urls import include, url
 
 from .api_views import (
-    APIRoot, APIVersionRoot, BrowseableObtainAuthToken,
+    APIRoot, APIVersionRoot, BatchRequestAPIView, BrowseableObtainAuthToken,
     ProjectInformationAPIView, schema_view
 )
 from .literals import API_VERSION
@@ -16,6 +16,10 @@ api_version_urls = [
     url(
         regex=r'^project/$', name='project_information',
         view=ProjectInformationAPIView.as_view()
+    ),
+    url(
+        regex=r'^batch_requests/$', name='batchrequest-create',
+        view=BatchRequestAPIView.as_view()
     )
 ]
 
