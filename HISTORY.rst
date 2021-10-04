@@ -373,6 +373,7 @@
   - Allow subclasses to supply their own ``urlpatterns``.
   - Support passing arguments to ``add_test_view``.
 
+- Add batch API request support.
 
 4.0.16 (2021-09-29)
 ===================
