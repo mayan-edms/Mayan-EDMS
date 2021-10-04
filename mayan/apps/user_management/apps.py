@@ -27,7 +27,6 @@ from .events import (
     event_group_created, event_group_edited, event_user_created,
     event_user_edited
 )
-
 from .handlers import handler_initialize_new_user_options
 from .links import (
     link_current_user_details, link_current_user_edit, link_group_create,
@@ -43,7 +42,6 @@ from .methods import (
     method_group_get_users, method_group_users_add, method_group_users_remove,
     method_user_get_groups, method_user_groups_add, method_user_groups_remove
 )
-
 from .permissions import (
     permission_group_delete, permission_group_edit,
     permission_group_view, permission_user_delete, permission_user_edit,
