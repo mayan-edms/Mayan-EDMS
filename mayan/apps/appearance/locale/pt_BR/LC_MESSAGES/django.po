@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
@@ -12,7 +12,7 @@
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2021
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
 # Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
@@ -356,7 +356,7 @@ msgstr ""
 msgid "Object"
 msgstr "Objeto"
 
-#: templates/appearance/calculate_form_title.html:10
+#: templates/appearance/partials/form_title.html:10
 msgid "Open main menu"
 msgstr "Abrir menu principal"
 

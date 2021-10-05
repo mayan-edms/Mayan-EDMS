@@ -1,12 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
 # Jože Detečnik <joze.detecnik@3tav.si>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
@@ -342,7 +342,7 @@ msgstr ""
 msgid "Object"
 msgstr "Predmet"
 
-#: templates/appearance/calculate_form_title.html:10
+#: templates/appearance/partials/form_title.html:10
 msgid "Open main menu"
 msgstr ""
 

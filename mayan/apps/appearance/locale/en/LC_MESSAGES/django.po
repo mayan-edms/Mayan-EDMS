@@ -332,7 +332,7 @@ msgstr ""
 msgid "Object"
 msgstr ""
 
-#: templates/appearance/calculate_form_title.html:10
+#: templates/appearance/partials/form_title.html:10
 msgid "Open main menu"
 msgstr ""
 

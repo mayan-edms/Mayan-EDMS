@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
 # Mohammed ALDOUB <voulnet@gmail.com>, 2021
 # Yaman Sanobar <yman.snober@gmail.com>, 2021
 # Marwan Rahhal <Marwanr@sssit.net>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
@@ -346,7 +346,7 @@ msgstr ""
 msgid "Object"
 msgstr "عنصر"
 
-#: templates/appearance/calculate_form_title.html:10
+#: templates/appearance/partials/form_title.html:10
 msgid "Open main menu"
 msgstr "إستعراض القائمة الرئيسية"
 
