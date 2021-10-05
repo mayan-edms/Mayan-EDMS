@@ -454,7 +454,7 @@ msgstr "Εναλλαγή αναδυόμενης λίστας"
 msgid "Toggle navigation"
 msgstr "Εναλλαγή πλοήγησης"
 
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Κανένα αποτέλεσμα"
 

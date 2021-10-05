@@ -458,7 +458,7 @@ msgstr "Mostrar/esconder menu"
 msgid "Toggle navigation"
 msgstr "Ativar/desativar navegação"
 
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Nenhum resultado"
 

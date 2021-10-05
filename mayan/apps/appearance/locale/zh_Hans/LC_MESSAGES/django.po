@@ -429,7 +429,7 @@ msgstr "切换下拉列表"
 msgid "Toggle navigation"
 msgstr "切换导航"
 
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "没有结果"
 

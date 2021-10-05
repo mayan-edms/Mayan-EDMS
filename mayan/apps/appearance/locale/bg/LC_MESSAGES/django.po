@@ -452,7 +452,7 @@ msgstr "Превключване на плаващо меню"
 msgid "Toggle navigation"
 msgstr "Превключване на навигацията"
 
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Няма резултати"
 

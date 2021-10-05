@@ -464,7 +464,7 @@ msgstr "Activer la liste déroulante"
 msgid "Toggle navigation"
 msgstr "Activer la navigation"
 
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Aucun résultat"
 

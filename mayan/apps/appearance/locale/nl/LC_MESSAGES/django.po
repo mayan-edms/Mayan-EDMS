@@ -444,7 +444,7 @@ msgstr "Toggle Dropdown"
 msgid "Toggle navigation"
 msgstr "Wissel navigatie"
 
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Geen resultaten"
 

@@ -446,7 +446,7 @@ msgstr "تغير القائمة المنسدلة"
 msgid "Toggle navigation"
 msgstr "تغير الاستعراض"
 
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "لا يوجد نتائج"
 

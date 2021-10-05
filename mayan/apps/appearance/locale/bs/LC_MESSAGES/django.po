@@ -417,7 +417,7 @@ msgstr "Toggle Dropdown"
 msgid "Toggle navigation"
 msgstr "Prebacite navigaciju"
 
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Nema rezultata"
 

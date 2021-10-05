@@ -462,7 +462,7 @@ msgstr "Ausklappmenü ein-/ausschalten"
 msgid "Toggle navigation"
 msgstr "Navigation ein-/ausschalten"
 
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Kein Ergebnis"
 

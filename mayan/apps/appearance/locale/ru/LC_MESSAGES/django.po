@@ -450,7 +450,7 @@ msgstr "Переключение выпадающего списка"
 msgid "Toggle navigation"
 msgstr "Переключение навигации"
 
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Нет результатов"
 

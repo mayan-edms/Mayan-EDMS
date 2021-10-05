@@ -444,7 +444,7 @@ msgstr "Přepnout rozevírací seznam"
 msgid "Toggle navigation"
 msgstr "Přepnout navigaci"
 
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Žádné výsledky"
 

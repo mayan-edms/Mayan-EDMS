@@ -451,7 +451,7 @@ msgstr "Alternar desplegable"
 msgid "Toggle navigation"
 msgstr "Activar/Desactivar navegación"
 
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Ningún resultado"
 

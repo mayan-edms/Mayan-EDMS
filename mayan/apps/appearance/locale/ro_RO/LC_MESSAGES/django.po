@@ -452,7 +452,7 @@ msgstr "Comutare  mod listă"
 msgid "Toggle navigation"
 msgstr "Comutare navigare"
 
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Fără rezultate"
 

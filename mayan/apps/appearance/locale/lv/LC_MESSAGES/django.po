@@ -445,7 +445,7 @@ msgstr "Toggle Dropdown"
 msgid "Toggle navigation"
 msgstr "Pārslēgt navigāciju"
 
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Nav rezultātu"
 

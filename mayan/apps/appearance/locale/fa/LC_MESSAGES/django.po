@@ -420,7 +420,7 @@ msgstr "تغییر وضعیت dropdown"
 msgid "Toggle navigation"
 msgstr "تغییر ناوبری"
 
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "بی جواب و یا بی جواب"
 
