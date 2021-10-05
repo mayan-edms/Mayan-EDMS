@@ -139,10 +139,6 @@ class CabinetsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='label', is_identifier=True, is_sortable=True,
-            source=CabinetSearchResult
-        )
-        SourceColumn(
             attribute='get_full_path', source=CabinetSearchResult
         )
 
