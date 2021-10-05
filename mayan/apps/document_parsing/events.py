@@ -7,7 +7,7 @@ namespace = EventTypeNamespace(
 )
 
 event_parsing_document_file_content_deleted = namespace.add_event_type(
-    label=_('Document parsed content deleted'),
+    label=_('Document file parsed content deleted'),
     name='document_content_deleted'
 )
 event_parsing_document_file_submitted = namespace.add_event_type(

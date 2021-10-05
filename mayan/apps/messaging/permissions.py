@@ -10,6 +10,9 @@ permission_message_create = namespace.add_permission(
 permission_message_delete = namespace.add_permission(
     label=_('Delete messages'), name='message_delete'
 )
+permission_message_edit = namespace.add_permission(
+    label=_('Edit messages'), name='message_edit'
+)
 permission_message_view = namespace.add_permission(
     label=_('View messages'), name='message_view'
 )

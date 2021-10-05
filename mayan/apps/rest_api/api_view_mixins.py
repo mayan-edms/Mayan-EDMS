@@ -82,6 +82,11 @@ class ExternalObjectAPIViewMixin(ExternalObjectBaseMixin):
     """
     def initial(self, *args, **kwargs):
         result = super().initial(*args, **kwargs)
+        # Ensure self.external_object is initialized to allow the browseable
+        # API view to display when attempting to introspect the serializer
+        # and the parent object is not found.
+        self.external_object = None
+
         self.external_object = self.get_external_object()
         return result
 

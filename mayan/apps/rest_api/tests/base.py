@@ -6,8 +6,12 @@ from mayan.apps.testing.tests.base import (
     GenericViewTestCase, GenericTransactionViewTestCase
 )
 
+from .mixins import TestAPIViewTestCaseMixin
 
-class BaseAPITestCase(APITestCase, GenericViewTestCase):
+
+class BaseAPITestCase(
+    TestAPIViewTestCaseMixin, APITestCase, GenericViewTestCase
+):
     """
     API test case class that invalidates permissions and smart settings.
     """

@@ -140,10 +140,10 @@ class CommonApp(MayanAppConfig):
             )
 
         AJAXTemplate(
-            name='menu_main', template_name='appearance/menu_main.html'
+            name='menu_main', template_name='appearance/menus/menu_main.html'
         )
         AJAXTemplate(
-            name='menu_topbar', template_name='appearance/menu_topbar.html'
+            name='menu_topbar', template_name='appearance/menus/menu_topbar.html'
         )
 
         menu_about.bind_links(

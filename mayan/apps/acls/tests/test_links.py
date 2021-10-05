@@ -46,7 +46,9 @@ class ACLsLinksTestCase(ACLTestMixin, GenericViewTestCase):
 
         self.assertEqual(
             resolved_link.url, reverse(
-                viewname=link_acl_delete.view, args=(self.test_acl.pk,)
+                viewname=link_acl_delete.view, kwargs={
+                    'acl_id': self.test_acl.pk
+                }
             )
         )
 
@@ -65,8 +67,9 @@ class ACLsLinksTestCase(ACLTestMixin, GenericViewTestCase):
 
         self.assertEqual(
             resolved_link.url, reverse(
-                viewname=link_acl_permissions.view,
-                args=(self.test_acl.pk,)
+                viewname=link_acl_permissions.view, kwargs={
+                    'acl_id': self.test_acl.pk
+                }
             )
         )
 
