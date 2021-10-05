@@ -2,12 +2,13 @@ from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.acls.permissions import (
+    permission_acl_edit, permission_acl_view
+)
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_object, menu_related, menu_secondary,
-    menu_setup
+    menu_list_facet, menu_object, menu_related, menu_secondary, menu_setup
 )
 from mayan.apps.documents.links.document_type_links import link_document_type_list
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
@@ -130,7 +131,7 @@ class LinkingApp(MayanAppConfig):
 
         # Document
 
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(link_smart_link_instances_for_document,),
             sources=(Document,)
         )

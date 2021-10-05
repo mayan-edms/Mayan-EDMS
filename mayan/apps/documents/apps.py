@@ -760,13 +760,13 @@ class DocumentsApp(MayanAppConfig):
 
         # Document
 
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(link_document_preview,), sources=(Document,), position=0
         )
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(link_document_properties,), sources=(Document,), position=2
         )
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(
                 link_document_file_list, link_document_version_list
             ), sources=(Document,), position=2

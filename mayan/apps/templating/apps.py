@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.menus import menu_facet
+from mayan.apps.common.menus import menu_list_facet
 
 from .links import link_document_template_sandbox
 from .permissions import permission_template_sandbox
@@ -30,7 +30,7 @@ class TemplatingApp(MayanAppConfig):
             )
         )
 
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(
                 link_document_template_sandbox,
             ), sources=(Document,)
