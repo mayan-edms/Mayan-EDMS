@@ -442,7 +442,7 @@ msgstr "Ações em massa"
 msgid "Toggle Dropdown"
 msgstr "Alternar caixa de seleção"
 
-#: templates/appearance/menu_topbar.html:11
+#: templates/appearance/menus/menu_topbar.html:11
 msgid "Toggle navigation"
 msgstr "Alternar navegação"
 

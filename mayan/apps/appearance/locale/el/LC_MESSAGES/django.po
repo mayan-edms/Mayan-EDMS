@@ -450,7 +450,7 @@ msgstr "Μαζικές ενέργειες"
 msgid "Toggle Dropdown"
 msgstr "Εναλλαγή αναδυόμενης λίστας"
 
-#: templates/appearance/menu_topbar.html:11
+#: templates/appearance/menus/menu_topbar.html:11
 msgid "Toggle navigation"
 msgstr "Εναλλαγή πλοήγησης"
 

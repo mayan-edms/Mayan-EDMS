@@ -448,7 +448,7 @@ msgstr "Azioni in blocco"
 msgid "Toggle Dropdown"
 msgstr "Apri dropdown"
 
-#: templates/appearance/menu_topbar.html:11
+#: templates/appearance/menus/menu_topbar.html:11
 msgid "Toggle navigation"
 msgstr "Cambia navigazione"
 

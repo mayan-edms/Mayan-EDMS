@@ -440,7 +440,7 @@ msgstr "Hromadné akce"
 msgid "Toggle Dropdown"
 msgstr "Přepnout rozevírací seznam"
 
-#: templates/appearance/menu_topbar.html:11
+#: templates/appearance/menus/menu_topbar.html:11
 msgid "Toggle navigation"
 msgstr "Přepnout navigaci"
 

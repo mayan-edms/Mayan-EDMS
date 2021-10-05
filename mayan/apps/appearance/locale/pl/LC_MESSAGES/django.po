@@ -446,7 +446,7 @@ msgstr "Akcje zbiorcze"
 msgid "Toggle Dropdown"
 msgstr "Rozwiń listę"
 
-#: templates/appearance/menu_topbar.html:11
+#: templates/appearance/menus/menu_topbar.html:11
 msgid "Toggle navigation"
 msgstr "Rozwiń nawigację"
 

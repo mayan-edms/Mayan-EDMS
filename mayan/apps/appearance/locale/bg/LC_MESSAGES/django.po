@@ -448,7 +448,7 @@ msgstr "Групови действия"
 msgid "Toggle Dropdown"
 msgstr "Превключване на плаващо меню"
 
-#: templates/appearance/menu_topbar.html:11
+#: templates/appearance/menus/menu_topbar.html:11
 msgid "Toggle navigation"
 msgstr "Превключване на навигацията"
 

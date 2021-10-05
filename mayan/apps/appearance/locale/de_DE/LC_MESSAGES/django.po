@@ -458,7 +458,7 @@ msgstr "Massenaktionen"
 msgid "Toggle Dropdown"
 msgstr "Ausklappmenü ein-/ausschalten"
 
-#: templates/appearance/menu_topbar.html:11
+#: templates/appearance/menus/menu_topbar.html:11
 msgid "Toggle navigation"
 msgstr "Navigation ein-/ausschalten"
 

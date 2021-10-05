@@ -441,7 +441,7 @@ msgstr "Lielapjoma darbības"
 msgid "Toggle Dropdown"
 msgstr "Toggle Dropdown"
 
-#: templates/appearance/menu_topbar.html:11
+#: templates/appearance/menus/menu_topbar.html:11
 msgid "Toggle navigation"
 msgstr "Pārslēgt navigāciju"
 

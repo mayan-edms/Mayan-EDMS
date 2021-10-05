@@ -448,7 +448,7 @@ msgstr "Acțiuni în vrac"
 msgid "Toggle Dropdown"
 msgstr "Comutare  mod listă"
 
-#: templates/appearance/menu_topbar.html:11
+#: templates/appearance/menus/menu_topbar.html:11
 msgid "Toggle navigation"
 msgstr "Comutare navigare"
 

@@ -460,7 +460,7 @@ msgstr "Action groupée"
 msgid "Toggle Dropdown"
 msgstr "Activer la liste déroulante"
 
-#: templates/appearance/menu_topbar.html:11
+#: templates/appearance/menus/menu_topbar.html:11
 msgid "Toggle navigation"
 msgstr "Activer la navigation"
 

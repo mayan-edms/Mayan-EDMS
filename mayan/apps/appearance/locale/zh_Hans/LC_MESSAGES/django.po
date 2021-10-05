@@ -425,7 +425,7 @@ msgstr "批量操作"
 msgid "Toggle Dropdown"
 msgstr "切换下拉列表"
 
-#: templates/appearance/menu_topbar.html:11
+#: templates/appearance/menus/menu_topbar.html:11
 msgid "Toggle navigation"
 msgstr "切换导航"
 

@@ -447,7 +447,7 @@ msgstr "Acciones masivas"
 msgid "Toggle Dropdown"
 msgstr "Alternar desplegable"
 
-#: templates/appearance/menu_topbar.html:11
+#: templates/appearance/menus/menu_topbar.html:11
 msgid "Toggle navigation"
 msgstr "Activar/Desactivar navegación"
 
