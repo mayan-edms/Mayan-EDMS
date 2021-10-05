@@ -374,6 +374,31 @@
   - Support passing arguments to ``add_test_view``.
 
 - Add batch API request support.
+- Adjust event registrations:
+
+  - Register cabinet document add and remove events to the Document model too.
+  - Register document file parsing events to the Document model too.
+  - Rename label of the document parsed content deleted event.
+  - Replace the ``DownloadFile`` content object registration from the
+    ``Document`` model to the ``DocumentVersion`` model.
+  - Register the document file created, edited events to the ``Document``
+    model too.
+  - Register the document version created, edited events to the ``Document``
+    model too.
+  - Register the document trashed event to the ``Document`` model too.
+  - Remove the document file created event from the ``DocumentFile`` model.
+  - Remove the document version created event from the ``DocumentVersion``
+    model.
+  - Register the document version page deleted event to the
+    ``DocumentVersion`` model.
+  - Remove the document version page deleted event from the
+    ``DocumentVersionPage`` model.
+  - Register the tag attached, removed events to the ``Document`` model too.
+  - Register the web link navigated event to the ``Document`` model too.
+  - Remove the document version page OCR edited event from the ``Document``
+    model.
+  - Register the document version OCR submitted, finished, content deleted
+    events to the ``DocumentVersion`` model.
 
 4.0.16 (2021-09-29)
 ===================

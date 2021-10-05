@@ -65,6 +65,11 @@ class WebLinksApp(MayanAppConfig):
 
         ModelEventType.register(
             event_types=(
+                event_web_link_navigated,
+            ), model=Document
+        )
+        ModelEventType.register(
+            event_types=(
                 event_web_link_edited, event_web_link_navigated
             ), model=WebLink
         )

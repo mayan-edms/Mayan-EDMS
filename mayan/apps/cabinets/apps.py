@@ -102,6 +102,11 @@ class CabinetsApp(MayanAppConfig):
                 event_cabinet_document_removed
             )
         )
+        ModelEventType.register(
+            model=Document, event_types=(
+                event_cabinet_document_added, event_cabinet_document_removed
+            )
+        )
 
         ModelPermission.register(
             model=Document, permissions=(

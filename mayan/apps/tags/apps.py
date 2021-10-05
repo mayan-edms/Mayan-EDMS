@@ -81,6 +81,11 @@ class TagsApp(MayanAppConfig):
         )
 
         ModelEventType.register(
+            model=Document, event_types=(
+                event_tag_attached, event_tag_removed
+            )
+        )
+        ModelEventType.register(
             model=Tag, event_types=(
                 event_tag_attached, event_tag_edited, event_tag_removed
             )

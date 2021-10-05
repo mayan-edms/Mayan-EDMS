@@ -45,8 +45,9 @@ from .dashboard_widgets import (
 # Documents
 
 from .events import (
-    event_document_created, event_document_edited, event_document_viewed,
-    event_trashed_document_deleted, event_trashed_document_restored
+    event_document_created, event_document_edited, event_document_trashed,
+    event_document_viewed, event_trashed_document_deleted,
+    event_trashed_document_restored
 )
 
 # Document files
@@ -278,7 +279,7 @@ class DocumentsApp(MayanAppConfig):
         )
         link_decorations_list.text = _('Decorations')
 
-        DownloadFile.objects.register_content_object(model=Document)
+        DownloadFile.objects.register_content_object(model=DocumentVersion)
 
         DynamicSerializerField.add_serializer(
             klass=Document,
@@ -333,15 +334,23 @@ class DocumentsApp(MayanAppConfig):
 
         ModelEventType.register(
             model=Document, event_types=(
-                event_document_edited, event_document_type_changed,
-                event_document_file_deleted, event_document_version_deleted,
-                event_document_viewed, event_trashed_document_restored
+                event_document_edited,
+                event_document_type_changed,
+                event_document_file_created,
+                event_document_file_edited,
+                event_document_file_deleted,
+                event_document_version_created,
+                event_document_version_edited,
+                event_document_version_deleted,
+                event_document_viewed,
+                event_document_trashed,
+                event_trashed_document_restored
             )
         )
         ModelEventType.register(
             model=DocumentFile, event_types=(
-                event_document_file_created, event_document_file_downloaded,
-                event_document_file_edited
+                event_document_file_downloaded,
+                event_document_file_edited,
             )
         )
         ModelEventType.register(
@@ -360,16 +369,15 @@ class DocumentsApp(MayanAppConfig):
         )
         ModelEventType.register(
             model=DocumentVersion, event_types=(
-                event_document_version_created,
                 event_document_version_edited,
                 event_document_version_exported,
-                event_document_version_page_created
+                event_document_version_page_created,
+                event_document_version_page_deleted
             )
         )
         ModelEventType.register(
             model=DocumentVersionPage, event_types=(
-                event_document_version_page_deleted,
-                event_document_version_page_edited
+                event_document_version_page_edited,
             )
         )
 
