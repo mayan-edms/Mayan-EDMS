@@ -390,7 +390,7 @@ msgstr "入门"
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "在您充分使用Mayan EDMS之前，您需要以下内容："
 
-#: templates/appearance/list_header.html:12
+#: templates/appearance/partials/list_header.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
@@ -398,8 +398,8 @@ msgid ""
 msgstr ""
 "总计（%(start)s  -  %(end)s，%(total)s）（第%(page_number)s页，总%(total_pages)s页）"
 
-#: templates/appearance/list_header.html:14
-#: templates/appearance/list_header.html:17
+#: templates/appearance/partials/list_header.html:14
+#: templates/appearance/partials/list_header.html:17
 #, python-format
 msgid "Total: %(total)s"
 msgstr "总计：%(total)s"

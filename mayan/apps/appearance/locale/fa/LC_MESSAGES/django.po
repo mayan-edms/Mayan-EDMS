@@ -380,7 +380,7 @@ msgstr ""
 "قبل از اینکه بتوانید به طور کامل از EDMS مایان استفاده کنید، به موارد زیر "
 "نیاز دارید:"
 
-#: templates/appearance/list_header.html:12
+#: templates/appearance/partials/list_header.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
@@ -389,8 +389,8 @@ msgstr ""
 "مجموع (%(start)s - %(end)s از %(total)s) (صفحه %(page_number)s از "
 "%(total_pages)s)"
 
-#: templates/appearance/list_header.html:14
-#: templates/appearance/list_header.html:17
+#: templates/appearance/partials/list_header.html:14
+#: templates/appearance/partials/list_header.html:17
 #, python-format
 msgid "Total: %(total)s"
 msgstr "مجموع: %(total)s"

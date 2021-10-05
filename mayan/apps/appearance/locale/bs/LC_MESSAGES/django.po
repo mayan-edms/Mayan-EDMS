@@ -377,7 +377,7 @@ msgstr "Početak"
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Prije nego što možete korisiti Mayan EDMS treba vam sljedeće:"
 
-#: templates/appearance/list_header.html:12
+#: templates/appearance/partials/list_header.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
@@ -386,8 +386,8 @@ msgstr ""
 "Total (%(start)s - %(end)s od %(total)s) (Strana%(page_number)s od "
 "%(total_pages)s)"
 
-#: templates/appearance/list_header.html:14
-#: templates/appearance/list_header.html:17
+#: templates/appearance/partials/list_header.html:14
+#: templates/appearance/partials/list_header.html:17
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Total: %(total)s"

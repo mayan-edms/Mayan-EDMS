@@ -13,7 +13,7 @@
                 {% include 'appearance/partials/partials/no_results.html' %}
             </div>
         {% else %}
-            {% include 'appearance/list_header.html' %}
+            {% include 'appearance/partials/list_header.html' %}
 
             {% navigation_resolve_menu name='multi item' sort_results=True source=object_list.0 as links_multi_menus_results %}
 

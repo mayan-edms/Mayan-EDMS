@@ -408,7 +408,7 @@ msgstr ""
 "Прежде чем вы сможете полноценно использовать Mayan EDMS, вам потребуется "
 "следующее:"
 
-#: templates/appearance/list_header.html:12
+#: templates/appearance/partials/list_header.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
@@ -417,8 +417,8 @@ msgstr ""
 "Всего (%(start)s - %(end)s из %(total)s) (Страница %(page_number)s из "
 "%(total_pages)s)"
 
-#: templates/appearance/list_header.html:14
-#: templates/appearance/list_header.html:17
+#: templates/appearance/partials/list_header.html:14
+#: templates/appearance/partials/list_header.html:17
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Всего: %(total)s"

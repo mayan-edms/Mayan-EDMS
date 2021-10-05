@@ -404,7 +404,7 @@ msgstr "Começar"
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Para conseguir utilizar o Mayan EDMS no total precisa do seguinte:"
 
-#: templates/appearance/list_header.html:12
+#: templates/appearance/partials/list_header.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
@@ -413,8 +413,8 @@ msgstr ""
 "Total (%(start)s - %(end)s de %(total)s) (Página %(page_number)s de "
 "%(total_pages)s)"
 
-#: templates/appearance/list_header.html:14
-#: templates/appearance/list_header.html:17
+#: templates/appearance/partials/list_header.html:14
+#: templates/appearance/partials/list_header.html:17
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Total: %(total)s"
