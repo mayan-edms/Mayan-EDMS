@@ -219,6 +219,24 @@ and time of the last access.
 The text message sent to users to notify them that a document has been
 exported is now translated into the locale of the user and not of the system.
 
+The way the document resolution settings are used has been updated.
+There are four resolutions specified by the documents app: ``thumbnail``,
+``preview``, ``display``, and ``print``. The ``display`` resolution is
+the highest one meant for detailed viewing of a document's page. This view
+allows interactive transformations like zooming and rotation at the highest
+quality level.
+
+Previously, the view showing the document page images was using the
+``display`` resolution. Since document pages in this view cannot be zoomed
+or interactively transformed, the extra resolution and added image processing
+was not fully utilized. In this version, this view now uses the ``preview``
+resolution.
+
+To continue displaying the images in the document preview window at the
+previous resolution, set the values of the ``DOCUMENTS_PREVIEW_WIDTH`` and
+``DOCUMENTS_PREVIEW_HEIGHT`` setting to match the values of the
+``DOCUMENTS_DISPLAY_WIDTH`` and ``DOCUMENTS_DISPLAY_HEIGHT`` settings.
+
 
 Docker
 ^^^^^^
