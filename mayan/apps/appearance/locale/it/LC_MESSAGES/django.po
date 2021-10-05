@@ -425,26 +425,26 @@ msgstr ""
 msgid "Total: %(total)s"
 msgstr "Totale: %(total)s"
 
-#: templates/appearance/list_toolbar.html:13
+#: templates/appearance/partials/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "Seleziona / Deseleziona tutto"
 
-#: templates/appearance/list_toolbar.html:17
+#: templates/appearance/partials/list_toolbar.html:17
 msgid "Toggle list display mode"
 msgstr "Attiva / disattiva la modalità di visualizzazione dell'elenco"
 
-#: templates/appearance/list_toolbar.html:60
+#: templates/appearance/partials/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr ""
 "Seleziona gli elementi per attivare azioni in blocco. Usa Maiusc + clic per "
 "selezionare molti."
 
-#: templates/appearance/list_toolbar.html:65
+#: templates/appearance/partials/list_toolbar.html:65
 msgid "Bulk actions"
 msgstr "Azioni in blocco"
 
-#: templates/appearance/list_toolbar.html:67
+#: templates/appearance/partials/list_toolbar.html:67
 msgid "Toggle Dropdown"
 msgstr "Apri dropdown"
 

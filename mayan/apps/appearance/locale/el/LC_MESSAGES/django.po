@@ -429,24 +429,24 @@ msgstr ""
 msgid "Total: %(total)s"
 msgstr "Σύνολο: %(total)s"
 
-#: templates/appearance/list_toolbar.html:13
+#: templates/appearance/partials/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "Επιλογή/Αποεπιλογή όλων"
 
-#: templates/appearance/list_toolbar.html:17
+#: templates/appearance/partials/list_toolbar.html:17
 msgid "Toggle list display mode"
 msgstr "Εναλλαγή προβολής λίστας"
 
-#: templates/appearance/list_toolbar.html:60
+#: templates/appearance/partials/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr "Επιλέξτε αντικείμενα για την ενεργοποίηση μαζικών ενεργειών."
 
-#: templates/appearance/list_toolbar.html:65
+#: templates/appearance/partials/list_toolbar.html:65
 msgid "Bulk actions"
 msgstr "Μαζικές ενέργειες"
 
-#: templates/appearance/list_toolbar.html:67
+#: templates/appearance/partials/list_toolbar.html:67
 msgid "Toggle Dropdown"
 msgstr "Εναλλαγή αναδυόμενης λίστας"
 

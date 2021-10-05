@@ -417,26 +417,26 @@ msgstr ""
 msgid "Total: %(total)s"
 msgstr "Celkem: %(total)s"
 
-#: templates/appearance/list_toolbar.html:13
+#: templates/appearance/partials/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "Vyberte / Zrušte výběr všech"
 
-#: templates/appearance/list_toolbar.html:17
+#: templates/appearance/partials/list_toolbar.html:17
 msgid "Toggle list display mode"
 msgstr "Přepnout režim zobrazení seznamu"
 
-#: templates/appearance/list_toolbar.html:60
+#: templates/appearance/partials/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr ""
 "Vyberte položky pro aktivaci hromadných akcí. Použijte Shift + click pro "
 "výběr více položek."
 
-#: templates/appearance/list_toolbar.html:65
+#: templates/appearance/partials/list_toolbar.html:65
 msgid "Bulk actions"
 msgstr "Hromadné akce"
 
-#: templates/appearance/list_toolbar.html:67
+#: templates/appearance/partials/list_toolbar.html:67
 msgid "Toggle Dropdown"
 msgstr "Přepnout rozevírací seznam"
 

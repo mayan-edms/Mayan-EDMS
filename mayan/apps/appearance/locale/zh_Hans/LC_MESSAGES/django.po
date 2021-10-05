@@ -404,24 +404,24 @@ msgstr ""
 msgid "Total: %(total)s"
 msgstr "总计：%(total)s"
 
-#: templates/appearance/list_toolbar.html:13
+#: templates/appearance/partials/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "全选/全不选"
 
-#: templates/appearance/list_toolbar.html:17
+#: templates/appearance/partials/list_toolbar.html:17
 msgid "Toggle list display mode"
 msgstr "切换列表显示模式"
 
-#: templates/appearance/list_toolbar.html:60
+#: templates/appearance/partials/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr "选择项目激活批量操作。使用Shift +单击以选择多个。"
 
-#: templates/appearance/list_toolbar.html:65
+#: templates/appearance/partials/list_toolbar.html:65
 msgid "Bulk actions"
 msgstr "批量操作"
 
-#: templates/appearance/list_toolbar.html:67
+#: templates/appearance/partials/list_toolbar.html:67
 msgid "Toggle Dropdown"
 msgstr "切换下拉列表"
 

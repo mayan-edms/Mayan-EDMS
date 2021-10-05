@@ -435,26 +435,26 @@ msgstr ""
 msgid "Total: %(total)s"
 msgstr "Gesamt: %(total)s"
 
-#: templates/appearance/list_toolbar.html:13
+#: templates/appearance/partials/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "Alle auswählen/abwählen"
 
-#: templates/appearance/list_toolbar.html:17
+#: templates/appearance/partials/list_toolbar.html:17
 msgid "Toggle list display mode"
 msgstr "Listenanzeigemodus umschalten"
 
-#: templates/appearance/list_toolbar.html:60
+#: templates/appearance/partials/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr ""
 "Wählen Sie Elemente aus, um Massenaktionen zu aktivieren. Verwenden Sie die "
 "Umschalttaste + Klick, um mehrere auszuwählen."
 
-#: templates/appearance/list_toolbar.html:65
+#: templates/appearance/partials/list_toolbar.html:65
 msgid "Bulk actions"
 msgstr "Massenaktionen"
 
-#: templates/appearance/list_toolbar.html:67
+#: templates/appearance/partials/list_toolbar.html:67
 msgid "Toggle Dropdown"
 msgstr "Ausklappmenü ein-/ausschalten"
 

@@ -418,26 +418,26 @@ msgstr ""
 msgid "Total: %(total)s"
 msgstr "Kopā: %(total)s"
 
-#: templates/appearance/list_toolbar.html:13
+#: templates/appearance/partials/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "Atlasīt / noņemt atlasi visiem"
 
-#: templates/appearance/list_toolbar.html:17
+#: templates/appearance/partials/list_toolbar.html:17
 msgid "Toggle list display mode"
 msgstr "Pārslēgt saraksta skata režīmu"
 
-#: templates/appearance/list_toolbar.html:60
+#: templates/appearance/partials/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr ""
 "Atlasiet vienumus, lai aktivizētu lielapjoma darbības. Izmantojiet taustiņu "
 "kombināciju Shift + noklikšķiniet, lai atlasītu daudzus."
 
-#: templates/appearance/list_toolbar.html:65
+#: templates/appearance/partials/list_toolbar.html:65
 msgid "Bulk actions"
 msgstr "Lielapjoma darbības"
 
-#: templates/appearance/list_toolbar.html:67
+#: templates/appearance/partials/list_toolbar.html:67
 msgid "Toggle Dropdown"
 msgstr "Toggle Dropdown"
 
