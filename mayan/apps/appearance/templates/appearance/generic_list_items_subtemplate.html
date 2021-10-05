@@ -60,7 +60,7 @@
 
                                     {% if not hide_links %}
                                         <hr/>
-                                        {% navigation_resolve_menus names='list facet,object' source=object as facet_menus_link_results %}
+                                        {% navigation_resolve_menus sort_results=True names='list facet,object' source=object as facet_menus_link_results %}
                                         {% if facet_menus_link_results %}
                                             {% with facet_menus_link_results as action_menus_link_results %}
                                                 <div class="dropdown text-center">

@@ -400,6 +400,8 @@
   - Register the document version OCR submitted, finished, content deleted
     events to the ``DocumentVersion`` model.
 
+- Sort object and list facet links when using the list item view.
+
 4.0.16 (2021-09-29)
 ===================
 - Minor fixes merged from version 3.5.11.
