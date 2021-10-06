@@ -3,7 +3,7 @@
 [program:mayan-edms-gunicorn]
 autorestart = {{ autorestart }}
 autostart = true
-command = %(ENV_MAYAN_GUNICORN_BIN)s --workers %(ENV_MAYAN_GUNICORN_WORKERS)s %(ENV_MAYAN_GUNICORN_TEMPORARY_DIRECTORY)s mayan.wsgi --max-requests %(ENV_MAYAN_GUNICORN_MAX_REQUESTS)s --max-requests-jitter %(ENV_MAYAN_GUNICORN_JITTER)s --worker-class %(ENV_MAYAN_GUNICORN_WORKER_CLASS)s --bind 0.0.0.0:8000 --env DJANGO_SETTINGS_MODULE=%(ENV_MAYAN_SETTINGS_MODULE)s --timeout %(ENV_MAYAN_GUNICORN_TIMEOUT)s --limit-request-line %(ENV_MAYAN_GUNICORN_LIMIT_REQUEST_LINE)s"
+command = %(ENV_MAYAN_GUNICORN_BIN)s --workers %(ENV_MAYAN_GUNICORN_WORKERS)s %(ENV_MAYAN_GUNICORN_TEMPORARY_DIRECTORY)s mayan.wsgi --max-requests %(ENV_MAYAN_GUNICORN_MAX_REQUESTS)s --max-requests-jitter %(ENV_MAYAN_GUNICORN_JITTER)s --worker-class %(ENV_MAYAN_GUNICORN_WORKER_CLASS)s --bind 0.0.0.0:8000 --env DJANGO_SETTINGS_MODULE=%(ENV_MAYAN_SETTINGS_MODULE)s --timeout %(ENV_MAYAN_GUNICORN_TIMEOUT)s --limit-request-line %(ENV_MAYAN_GUNICORN_LIMIT_REQUEST_LINE)s
 redirect_stderr = true
 {% if stderr_logfile %}stderr_logfile = {{ stderr_logfile }}{% endif %}
 {% if stderr_logfile_maxbytes %}stderr_logfile_maxbytes = {{ stderr_logfile_maxbytes }}{% endif %}
@@ -16,7 +16,7 @@ user = mayan
 [program:mayan-edms-{{ worker.name }}]
 autorestart = {{ autorestart }}
 autostart = true
-command = nice -n {{ worker.nice_level }} %(ENV_MAYAN_PYTHON_BIN_DIR)scelery -A mayan worker %(ENV_MAYAN_{{ worker.name|upper }}_CONCURRENCY)s --hostname=mayan-edms-{{ worker.name }}.%%h --loglevel=ERROR -Ofair --queues={% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} %(ENV_MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD)s %(ENV_MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD)s --without-gossip --without-heartbeat"
+command = nice -n {{ worker.nice_level }} %(ENV_MAYAN_PYTHON_BIN_DIR)scelery -A mayan worker %(ENV_MAYAN_{{ worker.name|upper }}_CONCURRENCY)s --hostname=mayan-edms-{{ worker.name }}.%%h --loglevel=ERROR -Ofair --queues={% for queue in worker.queues %}{{ queue.name }}{% if not forloop.last %},{% endif %}{% endfor %} %(ENV_MAYAN_{{ worker.name|upper }}_MAX_MEMORY_PER_CHILD)s %(ENV_MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD)s --without-gossip --without-heartbeat
 killasgroup = true
 numprocs = 1
 priority = 998
