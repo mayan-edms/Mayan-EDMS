@@ -1,27 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
 # Mohammed ALDOUB <voulnet@gmail.com>, 2021
 # Bashar Al-Abdulhadi, 2021
 # Marwan Rahhal <Marwanr@sssit.net>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:49+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:35 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
@@ -77,23 +78,23 @@ msgstr "الغاء التفويض للمحدد"
 msgid "User"
 msgstr "مستخدم"
 
-#: links.py:24
+#: links.py:29
 msgid "Logout"
 msgstr "خروج"
 
-#: links.py:29
+#: links.py:34
 msgid "Change password"
 msgstr "تغير كلمة المرور"
 
-#: links.py:34 views.py:250
+#: links.py:39 views/impersonation_views.py:50
 msgid "Impersonate user"
 msgstr "تفويض المستخدم"
 
-#: links.py:39
+#: links.py:44
 msgid "Impersonate"
 msgstr ""
 
-#: links.py:44 links.py:48
+#: links.py:49 links.py:53
 msgid "Set password"
 msgstr "ادخال كلمة المرور"
 
@@ -109,8 +110,8 @@ msgstr "المصادقة على بيانات المستخدم"
 
 #: settings.py:22
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
-" in. Value is time in seconds."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
+"in. Value is time in seconds."
 msgstr "أقصى مدة لتذكر كلمة المرور /الثانية"
 
 #: settings.py:29
@@ -162,7 +163,7 @@ msgid "Login page"
 msgstr "صفحة تسجيل الدخول الى النظام"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:177
+#: templates/authentication/password_reset_form.html:29
 msgid "Submit"
 msgstr "اعتماد"
 
@@ -170,29 +171,29 @@ msgstr "اعتماد"
 msgid "Password reset email sent!"
 msgstr "تم اعادة تعيني كلمة المرور ! تم ارسال الايميل "
 
-#: views.py:86
+#: views/authentication_views.py:75
 msgid "Your password has been successfully changed."
 msgstr "تم تغيير كلمة المرور الخاصة بك بنجاح."
 
-#: views.py:93
+#: views/authentication_views.py:82
 msgid "Current user password change"
 msgstr "تغيير كلمة السر للمستخدم الحالي"
 
-#: views.py:101
+#: views/authentication_views.py:90
 msgid "Changing the password is not allowed for this account."
 msgstr "لا يمكن تغير كلمة المرور للمستخدم"
 
-#: views.py:168
+#: views/authentication_views.py:157
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "تم تغير كلمة المرور بانجاز %(count)d "
 
-#: views.py:170
+#: views/authentication_views.py:159
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "تم تغير كلمة المرور بانجاز %(count)d "
 
-#: views.py:179
+#: views/authentication_views.py:167
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
@@ -202,22 +203,22 @@ msgstr[3] ""
 msgstr[4] ""
 msgstr[5] ""
 
-#: views.py:189
+#: views/authentication_views.py:177
 #, python-format
 msgid "Change password for user: %s"
 msgstr "تغير كلمة المرور للمستخدم : %s"
 
-#: views.py:210
+#: views/authentication_views.py:198
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "تم إعادة تعين كلمة المرور : %s."
 
-#: views.py:216
+#: views/authentication_views.py:204
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "خطأ أثناء إعادة تعيين كلمة المرور للمستخدم \"%(user)s\": %(error)s"
 
-#: views.py:278
+#: views/impersonation_views.py:78
 #, python-format
 msgid "Impersonate user: %s"
 msgstr ""

@@ -2,25 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2021
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2021
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:49+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
@@ -179,8 +179,7 @@ msgid "List of children cabinets."
 msgstr "Elenco degli livelli di schedario"
 
 #: serializers.py:22
-msgid ""
-"URL of the API endpoint showing the list documents inside this cabinet."
+msgid "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 "URL dell'endpoint API che mostra i documenti dell'elenco all'interno di "
 "questo schedario."
@@ -210,8 +209,8 @@ msgid ""
 "Cabinet levels can contain documents or other cabinet sub levels. To add "
 "documents to a cabinet, select the cabinet view of a document view."
 msgstr ""
-"I livelli del schedario possono contenere documenti o altri sottolivelli del"
-" schedario. Per aggiungere documenti a un schedario, selezionare la vista "
+"I livelli del schedario possono contenere documenti o altri sottolivelli del "
+"schedario. Per aggiungere documenti a un schedario, selezionare la vista "
 "cabinet di una vista documento."
 
 #: views.py:120
@@ -270,62 +269,54 @@ msgstr ""
 msgid "Add %(count)d documents to cabinets."
 msgstr ""
 
-#: views.py:192
-msgid "Add"
-msgstr "Aggiungi"
-
-#: views.py:207
+#: views.py:205
 msgid "Cabinets to which the selected documents will be added."
 msgstr "Schedari a cui verranno aggiunti i documenti selezionati."
 
-#: views.py:253
+#: views.py:251
 msgid "Documents can be added to many cabinets."
 msgstr "I documenti possono essere aggiunti a molti schedari."
 
-#: views.py:256
+#: views.py:254
 msgid "This document is not in any cabinet"
 msgstr "Questo documento non è in nessun schedario"
 
-#: views.py:260
+#: views.py:258
 #, python-format
 msgid "Cabinets containing document: %s"
 msgstr "Schedari contenenti documento: %s"
 
-#: views.py:276
+#: views.py:274
 #, python-format
 msgid "Document \"%(object)s\" removed from cabinets successfully."
 msgstr ""
 
-#: views.py:279
+#: views.py:277
 #, python-format
 msgid "%(count)d document removed from cabinets successfully."
 msgstr ""
 
-#: views.py:282
+#: views.py:280
 #, python-format
 msgid "%(count)d documents removed from cabinets successfully."
 msgstr ""
 
-#: views.py:284
+#: views.py:282
 #, python-format
 msgid "Remove document \"%(object)s\" from cabinets."
 msgstr ""
 
-#: views.py:285
+#: views.py:283
 #, python-format
 msgid "Remove %(count)d document from cabinets."
 msgstr ""
 
-#: views.py:286
+#: views.py:284
 #, python-format
 msgid "Remove %(count)d documents from cabinets."
 msgstr ""
 
-#: views.py:290
-msgid "Remove"
-msgstr "Rimuovi"
-
-#: views.py:305
+#: views.py:301
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Schedari da cui verranno rimossi i documenti selezionati."
 

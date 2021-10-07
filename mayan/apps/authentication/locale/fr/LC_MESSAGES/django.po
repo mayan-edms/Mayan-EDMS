@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
@@ -9,19 +9,19 @@
 # Yves Dubois <ydubois@gmail.com>, 2021
 # Guillaume Trottier <gui.trottier@gmail.com>, 2021
 # Frédéric Sheedy <sheedf@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:49+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:35 events.py:6 permissions.py:6 settings.py:10
@@ -80,23 +80,23 @@ msgstr "Cette option désactive la fin de l'emprunt d'identité."
 msgid "User"
 msgstr "Utilisateur"
 
-#: links.py:24
+#: links.py:29
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: links.py:29
+#: links.py:34
 msgid "Change password"
 msgstr "Modifier le mot de passe"
 
-#: links.py:34 views.py:250
+#: links.py:39 views/impersonation_views.py:50
 msgid "Impersonate user"
 msgstr "Prendre temporairement l'identité de l'utilisateur"
 
-#: links.py:39
+#: links.py:44
 msgid "Impersonate"
 msgstr "Prendre l'identité"
 
-#: links.py:44 links.py:48
+#: links.py:49 links.py:53
 msgid "Set password"
 msgstr " Définir le mot de passe"
 
@@ -114,8 +114,8 @@ msgstr ""
 
 #: settings.py:22
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
-" in. Value is time in seconds."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
+"in. Value is time in seconds."
 msgstr ""
 "Le temps maximum pendant lequel un utilisateur restera connecté lorsqu'il a "
 "coché la case à cocher \"Se souvenir de moi\". La valeur est le temps en "
@@ -176,7 +176,7 @@ msgid "Login page"
 msgstr "Page de connexion"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:177
+#: templates/authentication/password_reset_form.html:29
 msgid "Submit"
 msgstr "Soumettre"
 
@@ -184,55 +184,54 @@ msgstr "Soumettre"
 msgid "Password reset email sent!"
 msgstr "Courriel de réinitialisation du mot de passe envoyé!"
 
-#: views.py:86
+#: views/authentication_views.py:75
 msgid "Your password has been successfully changed."
 msgstr "Votre mot de passe a été changé avec succès."
 
-#: views.py:93
+#: views/authentication_views.py:82
 msgid "Current user password change"
 msgstr "Modifier le mot de passe de l'utilisateur actuel"
 
-#: views.py:101
+#: views/authentication_views.py:90
 msgid "Changing the password is not allowed for this account."
 msgstr "Le changement de mot de passe n'est pas autorisé pour ce compte."
 
-#: views.py:168
+#: views/authentication_views.py:157
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr ""
 "Demande de changement de mot de passe exécutée sur %(count)d utilisateur"
 
-#: views.py:170
+#: views/authentication_views.py:159
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr ""
 "Demande de changement de mot de passe exécutée sur %(count)d utilisateurs"
 
-#: views.py:179
+#: views/authentication_views.py:167
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] "Changer le mot de passe de l&#39;utilisateur"
 msgstr[1] "Modifier les mots de passe des utilisateurs"
 
-#: views.py:189
+#: views/authentication_views.py:177
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Modifier le mot de passe pour l'utilisateur: %s"
 
-#: views.py:210
+#: views/authentication_views.py:198
 #, python-format
 msgid "Successful password reset for user: %s."
-msgstr ""
-"Le mot de passe de l'utilisateur : %s a été ré-initialisé avec succès."
+msgstr "Le mot de passe de l'utilisateur : %s a été ré-initialisé avec succès."
 
-#: views.py:216
+#: views/authentication_views.py:204
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr ""
 "Erreur lors de la ré-initialisation du mot de passe pour l'utilisateur "
 "\"%(user)s\" : %(error)s"
 
-#: views.py:278
+#: views/impersonation_views.py:78
 #, python-format
 msgid "Impersonate user: %s"
 msgstr "Prendre l'identité de l'utilisateur : %s"

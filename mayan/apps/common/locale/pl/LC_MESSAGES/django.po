@@ -1,46 +1,48 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # mic <winterfall24@gmail.com>, 2021
 # Roberto Rosario, 2021
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
 # Marcin Lozynski <mlozynski@wp.pl>, 2021
 # Tomasz Szymanowicz <alakdae@gmail.com>, 2021
-# 
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:129 permissions.py:5 settings.py:14
 msgid "Common"
 msgstr "Ustawienia wspólne"
 
-#: classes.py:408
+#: classes.py:409
 msgid "Model properties"
 msgstr "Właściwości modelu"
 
-#: classes.py:413
+#: classes.py:414
 msgid "Model fields"
 msgstr "Pola modelu"
 
-#: classes.py:456
+#: classes.py:457
 msgid "Model related fields"
 msgstr "Pola związane z modelem"
 
-#: classes.py:461
+#: classes.py:462
 msgid "Model reverse fields"
 msgstr "Modeluj pola odwrotne"
 
@@ -61,47 +63,47 @@ msgstr "Środowisko wiersza poleceń z funkcją autouzupełniania."
 msgid "Checks proper formatting of the README file."
 msgstr "Sprawdza poprawność formatowania pliku README."
 
-#: links.py:30
+#: links.py:29
 msgid "About this"
 msgstr "O programie"
 
-#: links.py:33
+#: links.py:32
 msgid "Get the book"
 msgstr "Pobierz książkę"
 
-#: links.py:38
+#: links.py:37
 msgid "Documentation"
 msgstr "Dokumentacja"
 
-#: links.py:41
+#: links.py:40
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:45 views.py:48
+#: links.py:44 views.py:48
 msgid "License"
 msgstr "Licencja"
 
-#: links.py:50
+#: links.py:49
 msgid "Copy"
 msgstr "Skopiuj"
 
-#: links.py:53
+#: links.py:52
 msgid "Setup"
 msgstr "Ustawienia"
 
-#: links.py:56
+#: links.py:55
 msgid "Source code"
 msgstr "Kod źródłowy"
 
-#: links.py:60
+#: links.py:59
 msgid "Online store"
 msgstr "Sklep internetowy"
 
-#: links.py:64
+#: links.py:63
 msgid "Get support"
 msgstr "Uzyskaj wsparcie"
 
-#: links.py:68 queues.py:6 views.py:122
+#: links.py:67 queues.py:6 views.py:122
 msgid "Tools"
 msgstr "Narzędzia"
 
@@ -117,8 +119,7 @@ msgid ""
 "development and testing, not for production."
 msgstr ""
 "Twój backend bazy danych jest skonfigurowany do używania SQLite. SQLite "
-"powinien być używany tylko do programowania i testowania, a nie na "
-"produkcji."
+"powinien być używany tylko do programowania i testowania, a nie na produkcji."
 
 #: literals.py:31
 msgid "Days"
@@ -172,40 +173,37 @@ msgstr ""
 
 #: settings.py:29
 msgid ""
-"In list mode, show the \"object\" menu options as a dropdown menu instead of"
-" individual buttons."
+"In list mode, show the \"object\" menu options as a dropdown menu instead of "
+"individual buttons."
 msgstr ""
 
 #: settings.py:36
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr ""
-"Czas opóźnienia wykonania zadań zależnych od operacji na bazie danych."
-
-#: settings.py:43
-msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:53
+#: settings.py:46
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:63
+#: settings.py:56
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also"
-" the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also "
+"the view to which users will be redirected after log in."
 msgstr ""
 "Nazwa widoku dołączonego do marki w menu głównym. Jest to również widok, do "
 "którego użytkownicy będą przekierowywani po zalogowaniu."
+
+#: settings.py:65
+msgid "Name of the dashboard to display in the home view."
+msgstr ""
 
 #: settings.py:70
 msgid "Sets the project's name."
@@ -223,15 +221,15 @@ msgstr "Ostrzeżenie"
 msgid "Click here to fix this."
 msgstr "Kliknij, aby to naprawić."
 
-#: validators.py:41
+#: validators.py:40
 msgid "Enter a valid JSON value."
 msgstr "Podaj prawidłową wartość JSON."
 
-#: validators.py:65
+#: validators.py:64
 msgid "Enter a valid YAML value."
 msgstr "Wprowadź poprawną wartość YAML."
 
-#: validators.py:81
+#: validators.py:80
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
@@ -243,7 +241,7 @@ msgid "About"
 msgstr "Informacje"
 
 #: views.py:39
-msgid "Dashboard"
+msgid "Home"
 msgstr "Strona główna"
 
 #: views.py:62

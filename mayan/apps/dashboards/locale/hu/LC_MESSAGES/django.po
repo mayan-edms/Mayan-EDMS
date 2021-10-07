@@ -2,28 +2,51 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
+# Translators:
+# Dezső József <dejo60@gmail.com>, 2021
+# molnars <szabolcs.molnar@gmail.com>, 2021
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
+"Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2021\n"
+"Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/"
+"hu/)\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:12
+#: apps.py:17 links.py:9 views.py:11
 msgid "Dashboards"
 msgstr ""
 
-#: dashboards.py:5
-msgid "Main"
+#: apps.py:24
+msgid "Widgets"
 msgstr ""
 
+#: apps.py:28
+msgid "Label"
+msgstr "Cimke"
+
+#: dashboards.py:6
+msgid "Administrator dashboard"
+msgstr ""
+
+#: links.py:14
+msgid "Details"
+msgstr "Részletek"
+
 #: templates/dashboards/numeric_widget.html:27
+#: templates/dashboards/widget_list.html:47
 msgid "View details"
+msgstr ""
+
+#: views.py:27
+msgid "Dashboard detail"
 msgstr ""

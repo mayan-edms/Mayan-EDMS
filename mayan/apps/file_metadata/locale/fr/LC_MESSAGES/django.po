@@ -2,50 +2,50 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2021
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2021
 # Baptiste GAILLET <baptiste.gaillet@cstb.fr>, 2021
 # Frédéric Sheedy <sheedf@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: admin.py:13
 msgid "Label"
 msgstr "Étiquette"
 
-#: apps.py:48 events.py:6 links.py:17 permissions.py:5 queues.py:7
+#: apps.py:51 events.py:6 links.py:19 permissions.py:5 queues.py:7
 #: settings.py:12
 msgid "File metadata"
 msgstr "Métadonnées du fichier"
 
-#: apps.py:98 search.py:11 search.py:22 search.py:33
+#: apps.py:102 search.py:11 search.py:22 search.py:33
 msgid "File metadata key"
 msgstr "Clé de métadonnées de fichier"
 
-#: apps.py:102 search.py:15 search.py:26 search.py:37
+#: apps.py:106 search.py:15 search.py:26 search.py:37
 msgid "File metadata value"
 msgstr "Valeur des métadonnées du fichier"
 
-#: apps.py:129
+#: apps.py:134
 msgid "Return the value of a specific file metadata."
 msgstr "Renvoie la valeur des métadonnées  pour un fichier spécifique."
 
-#: apps.py:130
+#: apps.py:135
 msgid "File metadata value of"
 msgstr "Valeur de métadonnée de fichier de"
 
@@ -68,19 +68,19 @@ msgstr "Document soumis pour le traitement des métadonnées de fichier"
 msgid "Document file file metadata processing finished"
 msgstr ""
 
-#: links.py:23
+#: links.py:25
 msgid "Attributes"
 msgstr "Attributs"
 
-#: links.py:30 links.py:35
+#: links.py:32 links.py:37
 msgid "Submit for file metadata"
 msgstr "Soumettre pour les métadonnées de fichier"
 
-#: links.py:42
+#: links.py:47
 msgid "Setup file metadata"
 msgstr "Métadonnées du fichier d'installation"
 
-#: links.py:47
+#: links.py:52
 msgid "File metadata processing per type"
 msgstr "Traitement des métadonnées de fichier par type"
 
@@ -200,8 +200,8 @@ msgstr "Arguments à transmettre au pilote."
 
 #: views.py:44
 msgid ""
-"File metadata are the attributes of the document's file. They can range from"
-" camera information used to take a photo to the author that created a file. "
+"File metadata are the attributes of the document's file. They can range from "
+"camera information used to take a photo to the author that created a file. "
 "File metadata are set when the document's file was first created. File "
 "metadata attributes reside in the file itself. They are not the same as the "
 "document metadata, which are user defined and reside in the database."
@@ -223,8 +223,8 @@ msgid ""
 "document."
 msgstr ""
 "Cela peut signifier que la détection des métadonnées de fichier n'est pas "
-"terminée ou que le pilote ne prend en charge aucun champ de métadonnées pour"
-" le type de document."
+"terminée ou que le pilote ne prend en charge aucun champ de métadonnées pour "
+"le type de document."
 
 #: views.py:86
 msgid "No file metadata available for this driver."
@@ -232,8 +232,7 @@ msgstr "Aucune métadonnée de fichier disponible pour ce pilote."
 
 #: views.py:90
 #, python-format
-msgid ""
-"File metadata attributes for: %(document_file)s with driver: %(driver)s"
+msgid "File metadata attributes for: %(document_file)s with driver: %(driver)s"
 msgstr ""
 
 #: views.py:119
@@ -252,8 +251,8 @@ msgstr ""
 #: views.py:158
 msgid "Submit all documents of a type for file metadata processing."
 msgstr ""
-"Soumettez tous les documents d'un type pour le traitement des métadonnées de"
-" fichier."
+"Soumettez tous les documents d'un type pour le traitement des métadonnées de "
+"fichier."
 
 #: views.py:184
 #, python-format

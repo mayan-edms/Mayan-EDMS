@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2021
 # Sergey Glita <gsv70@mail.ru>, 2021
@@ -12,20 +12,22 @@
 # Roman Z <clubtat@mail.ru>, 2021
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
 # OLeg Si <olegsm35@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: OLeg Si <olegsm35@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:24 links.py:38 permissions.py:5
 msgid "Dependencies"
@@ -43,11 +45,11 @@ msgstr "Внутреннее имя"
 msgid "Description"
 msgstr "Описание"
 
-#: apps.py:45 classes.py:138
+#: apps.py:45 classes.py:140
 msgid "Type"
 msgstr "Тип"
 
-#: apps.py:49 classes.py:140
+#: apps.py:49 classes.py:142
 msgid "Other data"
 msgstr "Прочие данные"
 
@@ -55,97 +57,97 @@ msgstr "Прочие данные"
 msgid "Declared by"
 msgstr "Объявлено в"
 
-#: apps.py:57 classes.py:138
+#: apps.py:57 classes.py:140
 msgid "Version"
 msgstr "Версия"
 
-#: apps.py:61 classes.py:139 classes.py:781
+#: apps.py:61 classes.py:141 classes.py:781
 msgid "Environment"
 msgstr "Среда"
 
-#: apps.py:64 classes.py:140
+#: apps.py:64 classes.py:142
 msgid "Check"
 msgstr "Проверять"
 
-#: classes.py:138
+#: classes.py:140
 msgid "Name"
 msgstr "Название"
 
-#: classes.py:139
+#: classes.py:141
 msgid "App"
 msgstr "Приложение"
 
-#: classes.py:254
+#: classes.py:256
 msgid "Need to specify at least one: app_label or module."
 msgstr "Необходимо указать хотя бы одно: app_label или module."
 
-#: classes.py:259
+#: classes.py:261
 #, python-format
 msgid "Dependency \"%s\" already registered."
 msgstr "Зависимость \"%s\" уже зарегистрирована."
 
-#: classes.py:285
+#: classes.py:287
 #, python-format
 msgid "Installing package: %s... "
 msgstr "Установка пакета: %s ..."
 
-#: classes.py:290
+#: classes.py:292
 msgid "Already installed."
 msgstr "Уже установлено."
 
-#: classes.py:293 classes.py:298 classes.py:302
+#: classes.py:295 classes.py:300 classes.py:304
 msgid "Complete."
 msgstr "Завершено."
 
-#: classes.py:328
+#: classes.py:330
 msgid "Installed and correct version"
 msgstr "Установленная и правильная версия"
 
-#: classes.py:330
+#: classes.py:332
 msgid "Missing or incorrect version"
 msgstr "Версия отсутствует или неверна"
 
-#: classes.py:359
+#: classes.py:361
 msgid "None"
 msgstr "Нет"
 
-#: classes.py:368
+#: classes.py:370
 msgid "Not specified"
 msgstr "Не указано"
 
-#: classes.py:371
+#: classes.py:373
 msgid "Patching files... "
 msgstr "Патчинг файлов..."
 
-#: classes.py:399
+#: classes.py:401
 msgid "Executables that are called directly by the code."
 msgstr "Исполняемые файлы, вызываемые непосредственно из кода."
 
-#: classes.py:401
+#: classes.py:403
 msgid "Binary"
 msgstr "Binary"
 
-#: classes.py:418
+#: classes.py:420
 msgid ""
-"JavaScript libraries downloaded the from NPM registry and used for front-end"
-" functionality."
+"JavaScript libraries downloaded the from NPM registry and used for front-end "
+"functionality."
 msgstr ""
 "Библиотеки JavaScript, загруженные из реестра NPM и используемые для "
 "функциональных возможностей интерфейса."
 
-#: classes.py:421
+#: classes.py:423
 msgid "JavaScript"
 msgstr "JavaScript"
 
-#: classes.py:451 classes.py:694
+#: classes.py:453 classes.py:694
 msgid "Downloading... "
 msgstr "Скачивание..."
 
-#: classes.py:454
+#: classes.py:456
 msgid "Verifying... "
 msgstr "Проверка..."
 
-#: classes.py:457 classes.py:697
+#: classes.py:459 classes.py:697
 msgid "Extracting... "
 msgstr "Извлечение..."
 
@@ -204,8 +206,8 @@ msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
 msgstr ""
-"Зависимости, необходимые для одной среды, могут не потребоваться для другой."
-" Примеры сред: Production, Development."
+"Зависимости, необходимые для одной среды, могут не потребоваться для другой. "
+"Примеры сред: Production, Development."
 
 #: environments.py:18
 msgid ""
@@ -270,7 +272,7 @@ msgstr ""
 msgid "Testing"
 msgstr "Testing"
 
-#: links.py:13 views.py:17
+#: links.py:14 views.py:18
 msgid "Check for updates"
 msgstr "Проверить обновления"
 
@@ -321,30 +323,30 @@ msgstr "Принудительная установка, даже если он�
 msgid "View dependencies"
 msgstr "Просмотр зависимостей"
 
-#: views.py:31
+#: views.py:32
 #, python-format
 msgid "Entries for dependency group: %s"
 msgstr "Записи для группы зависимостей: %s"
 
-#: views.py:44 views.py:89
+#: views.py:45 views.py:90
 #, python-format
 msgid "Group %s not found."
 msgstr "Группа %s не найдена."
 
-#: views.py:57
+#: views.py:58
 msgid "Dependency groups"
 msgstr "Зависимости по группам"
 
-#: views.py:77
+#: views.py:78
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
 msgstr "Группа зависимостей и запись: %(group)s, %(entry)s"
 
-#: views.py:101
+#: views.py:102
 #, python-format
 msgid "Entry %s not found."
 msgstr "Запись %s не найдена."
 
-#: views.py:119
+#: views.py:120
 msgid "Other packages licenses"
 msgstr "Лицензии других пакетов"

@@ -2,39 +2,39 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2021
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:51+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2021\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:36 events.py:6 links.py:34 models.py:36 permissions.py:5
+#: apps.py:33 events.py:6 links.py:34 models.py:37 permissions.py:5
 #: views.py:136
 msgid "Quotas"
 msgstr ""
 
-#: classes.py:65
+#: classes.py:59
 msgid "none"
 msgstr ""
 
-#: classes.py:157
+#: classes.py:151
 msgid "Does not apply"
 msgstr ""
 
-#: classes.py:161 classes.py:165
+#: classes.py:155 classes.py:159
 msgid "Null backend"
 msgstr ""
 
@@ -46,7 +46,7 @@ msgstr ""
 msgid "Quota edited"
 msgstr ""
 
-#: forms.py:15 models.py:58
+#: forms.py:15 models.py:62
 msgid "Backend"
 msgstr ""
 
@@ -133,39 +133,39 @@ msgstr ""
 msgid "groups: %(groups)s, users: %(users)s"
 msgstr ""
 
-#: models.py:22
+#: models.py:23
 msgid "The dotted Python path to the backend class."
 msgstr ""
 
-#: models.py:23
+#: models.py:24
 msgid "Backend path"
 msgstr ""
 
-#: models.py:26
+#: models.py:27
 msgid "Backend data"
 msgstr ""
 
-#: models.py:30
+#: models.py:31
 msgid "Allow quick disable or enable of the quota."
 msgstr ""
 
-#: models.py:31
+#: models.py:32
 msgid "Enabled"
 msgstr "فعال شده است"
 
-#: models.py:35
+#: models.py:36
 msgid "Quota"
 msgstr ""
 
-#: models.py:57
+#: models.py:61
 msgid "Driver used for this quota entry."
 msgstr ""
 
-#: models.py:62
+#: models.py:66
 msgid "Arguments"
 msgstr "استدلال"
 
-#: models.py:66
+#: models.py:70
 msgid "Usage"
 msgstr ""
 
@@ -185,41 +185,41 @@ msgstr ""
 msgid "View a quota"
 msgstr ""
 
-#: quota_backends.py:70 quota_backends.py:170
+#: quota_backends.py:71 quota_backends.py:171
 msgid "Document count quota exceeded."
 msgstr ""
 
-#: quota_backends.py:74
+#: quota_backends.py:75
 msgid "Documents limit"
 msgstr ""
 
-#: quota_backends.py:77
+#: quota_backends.py:78
 msgid "Maximum number of documents."
 msgstr ""
 
-#: quota_backends.py:81
+#: quota_backends.py:82
 msgid "Document count limit"
 msgstr ""
 
-#: quota_backends.py:106
+#: quota_backends.py:107
 #, python-format
 msgid "document count: %(document_count)s"
 msgstr ""
 
-#: quota_backends.py:180 quota_backends.py:185
+#: quota_backends.py:181 quota_backends.py:186
 msgid "Document size limit"
 msgstr ""
 
-#: quota_backends.py:182
+#: quota_backends.py:183
 msgid "Maximum document size in megabytes (MB)."
 msgstr ""
 
-#: quota_backends.py:210
+#: quota_backends.py:211
 #, python-format
 msgid "document size: %(formatted_file_size)s"
 msgstr ""
 
-#: quota_backends.py:230
+#: quota_backends.py:231
 msgid "Document size quota exceeded."
 msgstr ""
 

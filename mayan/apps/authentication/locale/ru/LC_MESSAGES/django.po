@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Sergey Glita <gsv70@mail.ru>, 2021
@@ -9,20 +9,22 @@
 # mizhgan <i@mizhgan.ru>, 2021
 # Alex Chigrin <chalex84@mail.ru>, 2021
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:49+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:35 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
@@ -80,23 +82,23 @@ msgstr "Если отмечено, возможность завершить и�
 msgid "User"
 msgstr "Пользователь"
 
-#: links.py:24
+#: links.py:29
 msgid "Logout"
 msgstr "Выход"
 
-#: links.py:29
+#: links.py:34
 msgid "Change password"
 msgstr "Изменить пароль"
 
-#: links.py:34 views.py:250
+#: links.py:39 views/impersonation_views.py:50
 msgid "Impersonate user"
 msgstr "Имперсонировать пользователя"
 
-#: links.py:39
+#: links.py:44
 msgid "Impersonate"
 msgstr "Имперсонировать"
 
-#: links.py:44 links.py:48
+#: links.py:49 links.py:53
 msgid "Set password"
 msgstr "Установка пароля"
 
@@ -114,11 +116,11 @@ msgstr ""
 
 #: settings.py:22
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
-" in. Value is time in seconds."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
+"in. Value is time in seconds."
 msgstr ""
-"Максимальное время в секундах, в течение которого пользователь, установивший"
-" флажок \"Запомнить меня\", будет оставаться в системе."
+"Максимальное время в секундах, в течение которого пользователь, установивший "
+"флажок \"Запомнить меня\", будет оставаться в системе."
 
 #: settings.py:29
 msgid ""
@@ -171,7 +173,7 @@ msgid "Login page"
 msgstr "Вход"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:177
+#: templates/authentication/password_reset_form.html:29
 msgid "Submit"
 msgstr "Отправить"
 
@@ -179,29 +181,29 @@ msgstr "Отправить"
 msgid "Password reset email sent!"
 msgstr "Письмо для сброса пароля отправлено!"
 
-#: views.py:86
+#: views/authentication_views.py:75
 msgid "Your password has been successfully changed."
 msgstr "Ваш пароль был изменен."
 
-#: views.py:93
+#: views/authentication_views.py:82
 msgid "Current user password change"
 msgstr "Изменить пароль пользователя"
 
-#: views.py:101
+#: views/authentication_views.py:90
 msgid "Changing the password is not allowed for this account."
 msgstr "Изменение пароля этой учетной записи запрещено."
 
-#: views.py:168
+#: views/authentication_views.py:157
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Запрос на изменение пароля выполнен для %(count)d пользователя"
 
-#: views.py:170
+#: views/authentication_views.py:159
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Запрос на изменение пароля выполнен для %(count)d пользователей"
 
-#: views.py:179
+#: views/authentication_views.py:167
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] "Изменить пароль пользователя"
@@ -209,22 +211,22 @@ msgstr[1] "Изменить пароли пользователей"
 msgstr[2] "Изменить пароли пользователей"
 msgstr[3] "Изменить пароли пользователей"
 
-#: views.py:189
+#: views/authentication_views.py:177
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Изменить пароль пользователя: %s"
 
-#: views.py:210
+#: views/authentication_views.py:198
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Успешный сброс пароля пользователя: %s."
 
-#: views.py:216
+#: views/authentication_views.py:204
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Ошибка сброса пароля пользователя \"%(user)s\": %(error)s"
 
-#: views.py:278
+#: views/impersonation_views.py:78
 #, python-format
 msgid "Impersonate user: %s"
 msgstr "Имперсонировать пользователя: %s"

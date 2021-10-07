@@ -1,45 +1,47 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
 # Badea Gabriel <gcbadea@gmail.com>, 2021
 # Harald Ersch, 2021
 # Stefaniu Criste <gupi@hangar.ro>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
-"Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
+"Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/"
+"teams/13584/ro_RO/)\n"
+"Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro_RO\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
 
 #: apps.py:129 permissions.py:5 settings.py:14
 msgid "Common"
 msgstr "Comune"
 
-#: classes.py:408
+#: classes.py:409
 msgid "Model properties"
 msgstr "Proprietățile modelului"
 
-#: classes.py:413
+#: classes.py:414
 msgid "Model fields"
 msgstr "Câmpurile modelului"
 
-#: classes.py:456
+#: classes.py:457
 msgid "Model related fields"
 msgstr "Câmpuri legate de model"
 
-#: classes.py:461
+#: classes.py:462
 msgid "Model reverse fields"
 msgstr "Model câmpuri invers"
 
@@ -59,47 +61,47 @@ msgstr "Mediul liniei de comandă cu autocompletare."
 msgid "Checks proper formatting of the README file."
 msgstr "Verifică formatarea corectă a fișierului README."
 
-#: links.py:30
+#: links.py:29
 msgid "About this"
 msgstr "Despre asta"
 
-#: links.py:33
+#: links.py:32
 msgid "Get the book"
 msgstr "Obțineți cartea"
 
-#: links.py:38
+#: links.py:37
 msgid "Documentation"
 msgstr "Documentație"
 
-#: links.py:41
+#: links.py:40
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:45 views.py:48
+#: links.py:44 views.py:48
 msgid "License"
 msgstr "Licenţă"
 
-#: links.py:50
+#: links.py:49
 msgid "Copy"
 msgstr "Copiere"
 
-#: links.py:53
+#: links.py:52
 msgid "Setup"
 msgstr "Configurare"
 
-#: links.py:56
+#: links.py:55
 msgid "Source code"
 msgstr "Cod sursă"
 
-#: links.py:60
+#: links.py:59
 msgid "Online store"
 msgstr "Magazin online"
 
-#: links.py:64
+#: links.py:63
 msgid "Get support"
 msgstr "Obțineți sprijin"
 
-#: links.py:68 queues.py:6 views.py:122
+#: links.py:67 queues.py:6 views.py:122
 msgid "Tools"
 msgstr "Unelte"
 
@@ -170,41 +172,37 @@ msgstr ""
 
 #: settings.py:29
 msgid ""
-"In list mode, show the \"object\" menu options as a dropdown menu instead of"
-" individual buttons."
+"In list mode, show the \"object\" menu options as a dropdown menu instead of "
+"individual buttons."
 msgstr ""
 
 #: settings.py:36
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr ""
-"Timpul de întârziere pentru sarcini de fundal care depind de propagarea "
-"schimbărilor în  baza de date."
-
-#: settings.py:43
-msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:53
+#: settings.py:46
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:63
+#: settings.py:56
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also"
-" the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also "
+"the view to which users will be redirected after log in."
 msgstr ""
 "Numele afișării atașate ancorei de marcă din meniul principal. Aceasta este "
 "și perspectiva la care utilizatorii vor fi redirecționați după conectare."
+
+#: settings.py:65
+msgid "Name of the dashboard to display in the home view."
+msgstr ""
 
 #: settings.py:70
 msgid "Sets the project's name."
@@ -222,15 +220,15 @@ msgstr "Alertă"
 msgid "Click here to fix this."
 msgstr "Faceți clic aici pentru a remedia această problemă."
 
-#: validators.py:41
+#: validators.py:40
 msgid "Enter a valid JSON value."
 msgstr "Introduceți o valoare JSON validă."
 
-#: validators.py:65
+#: validators.py:64
 msgid "Enter a valid YAML value."
 msgstr "Introduceți o valoare validă YAML."
 
-#: validators.py:81
+#: validators.py:80
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
@@ -243,8 +241,8 @@ msgid "About"
 msgstr "Despre"
 
 #: views.py:39
-msgid "Dashboard"
-msgstr "Panou principal"
+msgid "Home"
+msgstr "Acasă"
 
 #: views.py:62
 #, python-format

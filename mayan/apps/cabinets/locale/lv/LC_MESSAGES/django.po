@@ -2,23 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:49+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lv\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
 
 #: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
 #: events.py:5 forms.py:14 links.py:30 menus.py:14 models.py:50 models.py:174
@@ -176,8 +177,7 @@ msgid "List of children cabinets."
 msgstr "Bērnu kabinetu saraksts."
 
 #: serializers.py:22
-msgid ""
-"URL of the API endpoint showing the list documents inside this cabinet."
+msgid "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr "API gala punkta URL, kurā redzami saraksta dokumenti šajā kabinetā."
 
 #: serializers.py:29
@@ -262,62 +262,54 @@ msgstr ""
 msgid "Add %(count)d documents to cabinets."
 msgstr ""
 
-#: views.py:192
-msgid "Add"
-msgstr "Pievienot"
-
-#: views.py:207
+#: views.py:205
 msgid "Cabinets to which the selected documents will be added."
 msgstr "Kabienti, kuriem iezīmētie dokumenti tiks pievienoti."
 
-#: views.py:253
+#: views.py:251
 msgid "Documents can be added to many cabinets."
 msgstr "Dokumentus var pievienot daudziem kabinetiem."
 
-#: views.py:256
+#: views.py:254
 msgid "This document is not in any cabinet"
 msgstr "Šis dokuments nav nevienā kabinetā"
 
-#: views.py:260
+#: views.py:258
 #, python-format
 msgid "Cabinets containing document: %s"
 msgstr "Kabineti, kas satur dokumentu: %s"
 
-#: views.py:276
+#: views.py:274
 #, python-format
 msgid "Document \"%(object)s\" removed from cabinets successfully."
 msgstr ""
 
-#: views.py:279
+#: views.py:277
 #, python-format
 msgid "%(count)d document removed from cabinets successfully."
 msgstr ""
 
-#: views.py:282
+#: views.py:280
 #, python-format
 msgid "%(count)d documents removed from cabinets successfully."
 msgstr ""
 
-#: views.py:284
+#: views.py:282
 #, python-format
 msgid "Remove document \"%(object)s\" from cabinets."
 msgstr ""
 
-#: views.py:285
+#: views.py:283
 #, python-format
 msgid "Remove %(count)d document from cabinets."
 msgstr ""
 
-#: views.py:286
+#: views.py:284
 #, python-format
 msgid "Remove %(count)d documents from cabinets."
 msgstr ""
 
-#: views.py:290
-msgid "Remove"
-msgstr "Noņemt"
-
-#: views.py:305
+#: views.py:301
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Kabineti, no kuriem tiks izņemti atlasītie dokumenti."
 

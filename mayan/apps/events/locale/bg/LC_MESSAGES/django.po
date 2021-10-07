@@ -1,73 +1,74 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2021
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
+"bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:28 events.py:5 links.py:38 links.py:43 links.py:53 permissions.py:5
+#: apps.py:31 events.py:11 links.py:61 links.py:66 links.py:84 permissions.py:5
 #: queues.py:7 views/event_views.py:30
 msgid "Events"
 msgstr "Събития"
 
-#: apps.py:53 apps.py:81
+#: apps.py:59 apps.py:88
 msgid "Date and time"
 msgstr "Дата и час"
 
-#: apps.py:56 apps.py:84
+#: apps.py:63 apps.py:91
 msgid "Actor"
 msgstr "Деец"
 
-#: apps.py:60 apps.py:89
+#: apps.py:67 apps.py:96
 msgid "Event"
 msgstr "Събитие"
 
-#: apps.py:64 apps.py:94
+#: apps.py:71 apps.py:101
 msgid "Target"
 msgstr "Цел"
 
-#: apps.py:68 apps.py:98
+#: apps.py:75 apps.py:105
 msgid "Action object"
 msgstr "Обект на действие"
 
-#: apps.py:73 forms.py:10 forms.py:67
+#: apps.py:80 forms.py:10 forms.py:67
 msgid "Namespace"
 msgstr "Именно пространство"
 
-#: apps.py:76 forms.py:14 forms.py:71
+#: apps.py:83 forms.py:14 forms.py:71
 msgid "Label"
 msgstr "Етикет"
 
-#: apps.py:103
+#: apps.py:110
 msgid "Seen"
 msgstr "Видяно"
 
-#: classes.py:79
+#: classes.py:88
 msgid "Event list export to CSV"
 msgstr "Експорт на списък със събития в CSV"
 
-#: classes.py:108
+#: classes.py:117
 msgid "Events exported."
 msgstr "Събитията са експортирани."
 
-#: classes.py:110
+#: classes.py:119
 #, python-format
 msgid ""
 "The event list has been exported and is available for download using the "
@@ -76,12 +77,16 @@ msgstr ""
 "Списъкът със събития е експортиран и е достъпен за изтегляне чрез връзката: "
 "%(download_url)s или от областта за изтегляния (%(download_list_url)s)."
 
-#: classes.py:274
+#: classes.py:343
 #, python-format
 msgid "Unknown or obsolete event type: %s"
 msgstr "Неизвестен или остарял тип събитие: %s"
 
-#: events.py:8
+#: events.py:15
+msgid "Events cleared"
+msgstr ""
+
+#: events.py:18
 msgid "Events exported"
 msgstr "Експортирани събития"
 
@@ -101,27 +106,31 @@ msgstr "Абониран"
 msgid "System"
 msgstr "Система"
 
-#: links.py:30
+#: links.py:49
 msgid "My events"
 msgstr "Моите събития"
 
-#: links.py:34 links.py:49 links.py:56 views/export_views.py:57
+#: links.py:53 links.py:73 links.py:87 views/clear_views.py:62
+msgid "Clear events"
+msgstr ""
+
+#: links.py:57 links.py:80 links.py:91 views/export_views.py:57
 msgid "Export events"
 msgstr "Експортирай събития"
 
-#: links.py:61 models.py:63 views/subscription_views.py:56
+#: links.py:96 models.py:63 views/subscription_views.py:56
 msgid "Event subscriptions"
 msgstr "Абонаменти за събитие"
 
-#: links.py:66
+#: links.py:101
 msgid "Mark as seen"
 msgstr "Маркирайте като видяно"
 
-#: links.py:69
+#: links.py:104
 msgid "Mark all as seen"
 msgstr "Маркирайте всички като видяни"
 
-#: links.py:75
+#: links.py:110
 msgid "Subscriptions"
 msgstr "Абонаменти"
 
@@ -174,16 +183,44 @@ msgid "Object event subscriptions"
 msgstr "Абонаменти за обектни събития"
 
 #: permissions.py:8
+msgid "Clear the events of an object"
+msgstr ""
+
+#: permissions.py:11
 msgid "Export the events of an object"
 msgstr "Експортирайте събитията на обект"
 
-#: permissions.py:11
-msgid "Access the events of an object"
-msgstr "Достъп до събитията на обект"
+#: permissions.py:14
+msgid "View the events of an object"
+msgstr ""
 
 #: queues.py:13
+msgid "Clear event querysets"
+msgstr ""
+
+#: queues.py:17
 msgid "Export event querysets"
 msgstr "Експортиране на набори от заявки за събития"
+
+#: views/clear_views.py:26
+msgid ""
+"This action is not reversible. The process will be performed in the "
+"background. "
+msgstr ""
+
+#: views/clear_views.py:50
+msgid "Event list clear task queued successfully."
+msgstr ""
+
+#: views/clear_views.py:81
+#, python-format
+msgid "Clear events of: %s"
+msgstr ""
+
+#: views/clear_views.py:119 views/event_views.py:70 views/export_views.py:105
+#, python-format
+msgid "Events of type: %s"
+msgstr "Събития от тип: %s"
 
 #: views/event_views.py:26
 msgid "Events track actions that have been performed on, to, or with objects."
@@ -206,15 +243,10 @@ msgstr "Събития за: %s"
 msgid "There are no events of this type"
 msgstr "Няма събития от този тип"
 
-#: views/event_views.py:70 views/export_views.py:105
-#, python-format
-msgid "Events of type: %s"
-msgstr "Събития от тип: %s"
-
 #: views/export_views.py:26
 msgid ""
-"The process will be performed in the background. The exported events will be"
-" available in the downloads area."
+"The process will be performed in the background. The exported events will be "
+"available in the downloads area."
 msgstr ""
 "Процесът ще се извърши във фонов режим. Експортираните събития ще бъдат "
 "налични в областта за изтегляне."
@@ -222,13 +254,12 @@ msgstr ""
 #: views/export_views.py:45
 msgid "Event list export task queued successfully."
 msgstr ""
-"Задачата за експортиране на списък със събития е поставена на опашка "
-"успешно."
+"Задачата за експортиране на списък със събития е поставена на опашка успешно."
 
 #: views/export_views.py:76
 #, python-format
-msgid "Export events for: %s"
-msgstr "Експортиране на събития за: %s"
+msgid "Export events of: %s"
+msgstr ""
 
 #: views/notification_views.py:25
 msgid "Subscribe to global or object events to receive notifications."

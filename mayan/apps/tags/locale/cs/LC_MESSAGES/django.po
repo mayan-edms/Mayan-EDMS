@@ -1,36 +1,35 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Jiri Fait <fait@orkasolutions.cz>, 2021
-# Sebastian Fait <seba.fait@gmail.com>, 2021
 # Michal Švábík <snadno@lehce.cz>, 2021
 # trendspotter <jirka.p@volny.cz>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:51+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:47 apps.py:120 apps.py:124 apps.py:128 apps.py:133 apps.py:137
-#: events.py:5 forms.py:15 links.py:27 menus.py:14 models.py:41
-#: permissions.py:5 search.py:13 views.py:183 workflow_actions.py:18
-#: workflow_actions.py:61
+#: apps.py:46 apps.py:125 apps.py:129 apps.py:133 apps.py:138 apps.py:142
+#: events.py:5 forms.py:15 links.py:28 menus.py:14 models.py:41
+#: permissions.py:5 views.py:171 workflow_actions.py:18 workflow_actions.py:61
 msgid "Tags"
 msgstr "Značky"
 
-#: apps.py:151 models.py:35
+#: apps.py:163 models.py:35
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -50,31 +49,31 @@ msgstr "Značka byla upravena"
 msgid "Tag removed from document"
 msgstr "Značka byla z dokumentu odstraněna"
 
-#: links.py:18 links.py:37
+#: links.py:19 links.py:38
 msgid "Attach tags"
 msgstr "Připojte značky"
 
-#: links.py:22 workflow_actions.py:68
+#: links.py:23 workflow_actions.py:68
 msgid "Remove tag"
 msgstr "Odstranit značku"
 
-#: links.py:32
+#: links.py:33
 msgid "Remove tags"
 msgstr "Odebrat značky"
 
-#: links.py:43
+#: links.py:44
 msgid "Create new tag"
 msgstr "Vytvořit novou značku"
 
-#: links.py:48 links.py:64
+#: links.py:49 links.py:52
 msgid "Delete"
 msgstr "Odstranit"
 
-#: links.py:52
+#: links.py:57
 msgid "Edit"
 msgstr "Upravit"
 
-#: links.py:60
+#: links.py:65
 msgid "All"
 msgstr "Vše"
 
@@ -114,7 +113,7 @@ msgstr "Náhled"
 msgid "Document tag"
 msgstr "Značka dokumentu"
 
-#: models.py:113 search.py:18 search.py:24 search.py:30 search.py:36
+#: models.py:113 search.py:19 search.py:25 search.py:31 search.py:37
 msgid "Document tags"
 msgstr "Značky dokumentů"
 
@@ -141,6 +140,14 @@ msgstr "Připojit značky k dokumentům"
 #: permissions.py:23
 msgid "Remove tags from documents"
 msgstr "Odebrat značky z dokumentů"
+
+#: search.py:13
+msgid "Tag label"
+msgstr ""
+
+#: search.py:14
+msgid "Tag color"
+msgstr ""
 
 #: serializers.py:33
 msgid "Primary key of the tag to add to the document."
@@ -180,63 +187,59 @@ msgstr ""
 msgid "Attach tags to %(count)d documents."
 msgstr ""
 
-#: views.py:50
-msgid "Attach"
-msgstr "Připojit"
-
-#: views.py:64 wizard_steps.py:27
+#: views.py:62 wizard_steps.py:27
 msgid "Tags to be attached."
 msgstr "Značky, které mají být připojeny."
 
-#: views.py:103
+#: views.py:101
 msgid "Create tag"
 msgstr "Vytvořit značku"
 
-#: views.py:116
+#: views.py:114
 #, python-format
 msgid "Error deleting tag \"%(instance)s\"; %(exception)s"
 msgstr ""
 
-#: views.py:121
+#: views.py:119
 #, python-format
 msgid "Tag \"%(object)s\" deleted successfully."
 msgstr ""
 
-#: views.py:122
+#: views.py:120
 #, python-format
 msgid "%(count)d tag deleted successfully."
 msgstr ""
 
-#: views.py:123
+#: views.py:121
 #, python-format
 msgid "%(count)d tags deleted successfully."
 msgstr ""
 
-#: views.py:124
+#: views.py:122
 #, python-format
 msgid "Delete tag: %(object)s."
 msgstr "Odstranit značku: %(object)s."
 
-#: views.py:125
+#: views.py:123
 #, python-format
 msgid "Delete the %(count)d selected tag."
 msgstr ""
 
-#: views.py:126
+#: views.py:124
 #, python-format
 msgid "Delete the %(count)d selected tags."
 msgstr ""
 
-#: views.py:131
+#: views.py:129
 msgid "Will be removed from all documents."
 msgstr "Bude odstraněna ze všech dokumentů."
 
-#: views.py:157
+#: views.py:145
 #, python-format
 msgid "Edit tag: %s"
 msgstr "Upravit značku: %s"
 
-#: views.py:179
+#: views.py:167
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
@@ -244,59 +247,55 @@ msgstr ""
 "Značky jsou barevně označené vlastnosti, které lze připojit nebo odebrat z "
 "dokumentů."
 
-#: views.py:182
+#: views.py:170
 msgid "No tags available"
 msgstr "Nejsou k dispozici žádné značky"
 
-#: views.py:211
+#: views.py:199
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Dokumenty se značkou: %s"
 
-#: views.py:236
+#: views.py:224
 msgid "Document has no tags attached"
 msgstr "K dokumentu nejsou připojeny žádné značky"
 
-#: views.py:239
+#: views.py:227
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Značky pro dokument: %s"
 
-#: views.py:257
+#: views.py:245
 #, python-format
 msgid "Tags removed from document \"%(object)s\" successfully."
 msgstr ""
 
-#: views.py:260
+#: views.py:248
 #, python-format
 msgid "Tags removed from %(count)d document successfully."
 msgstr ""
 
-#: views.py:263
+#: views.py:251
 #, python-format
 msgid "Tags removed from %(count)d documents successfully."
 msgstr ""
 
-#: views.py:265
+#: views.py:253
 #, python-format
 msgid "Remove tags from document: %(object)s"
 msgstr ""
 
-#: views.py:266
+#: views.py:254
 #, python-format
 msgid "Remove tags from %(count)d document."
 msgstr ""
 
-#: views.py:267
+#: views.py:255
 #, python-format
 msgid "Remove tags from %(count)d documents."
 msgstr ""
 
-#: views.py:272
-msgid "Remove"
-msgstr "Odstranit"
-
-#: views.py:286
+#: views.py:271
 msgid "Tags to be removed."
 msgstr "Značky, které mají být odstraněny."
 

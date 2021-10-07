@@ -1,32 +1,33 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:19
 msgid "Dynamic search"
 msgstr "Búsqueda dinámica "
 
-#: classes.py:290
-msgid "No search model matching the query"
-msgstr "Ningún modelo de búsqueda que coincida con la consulta"
+#: classes.py:330
+#, python-format
+msgid "Unknown search model `%s`."
+msgstr ""
 
 #: forms.py:9
 msgid "Match all"
@@ -77,8 +78,7 @@ msgstr "Indexar una instancia de modelo en el motor de búsqueda."
 #: queues.py:24
 msgid "Index all instances of a search model to the search engine."
 msgstr ""
-"Indexa todas las instancias de un modelo de búsqueda en el motor de "
-"búsqueda."
+"Indexa todas las instancias de un modelo de búsqueda en el motor de búsqueda."
 
 #: settings.py:16
 msgid "Full path to the backend to be used to handle the search."
@@ -95,8 +95,8 @@ msgstr ""
 #: settings.py:33
 msgid "Sets the default state of the \"Match all\" checkbox."
 msgstr ""
-"Establece el estado predeterminado de la casilla de verificación \"Coincidir"
-" con todos\"."
+"Establece el estado predeterminado de la casilla de verificación \"Coincidir "
+"con todos\"."
 
 #: settings.py:37
 msgid "Maximum number search results to fetch and display."
@@ -125,8 +125,7 @@ msgid ""
 "affected while the backend is being reindexed."
 msgstr ""
 "Esta herramienta es necesaria solo para algunos backends de búsqueda. Los "
-"resultados de la búsqueda se verán afectados mientras se reindexa el "
-"backend."
+"resultados de la búsqueda se verán afectados mientras se reindexa el backend."
 
 #: views.py:101
 msgid "This tool erases and populates the search backend's internal index."
@@ -141,3 +140,6 @@ msgstr "Indexación de backend de búsqueda en cola."
 #, python-format
 msgid "Search for: %s"
 msgstr "Búsqueda para: %s"
+
+#~ msgid "No search model matching the query"
+#~ msgstr "Ningún modelo de búsqueda que coincida con la consulta"

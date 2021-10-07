@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
@@ -11,19 +11,20 @@
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
 # Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:49+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
+"teams/13584/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:35 events.py:6 permissions.py:6 settings.py:10
@@ -63,8 +64,8 @@ msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
 msgstr ""
-"Por favor, indique um e-mail e senha corretamente. Note que o campo de senha"
-" diferencia maiúsculas de minúsculas."
+"Por favor, indique um e-mail e senha corretamente. Note que o campo de senha "
+"diferencia maiúsculas de minúsculas."
 
 #: forms.py:30
 msgid "This account is inactive."
@@ -82,23 +83,23 @@ msgstr "Se selecionado, desabilita o uso de outro usuário."
 msgid "User"
 msgstr "Usuário"
 
-#: links.py:24
+#: links.py:29
 msgid "Logout"
 msgstr "Sair"
 
-#: links.py:29
+#: links.py:34
 msgid "Change password"
 msgstr "Alterar a senha"
 
-#: links.py:34 views.py:250
+#: links.py:39 views/impersonation_views.py:50
 msgid "Impersonate user"
 msgstr "Usar o usuário"
 
-#: links.py:39
+#: links.py:44
 msgid "Impersonate"
 msgstr "Personificar"
 
-#: links.py:44 links.py:48
+#: links.py:49 links.py:53
 msgid "Set password"
 msgstr "Configurar senha"
 
@@ -111,13 +112,13 @@ msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
 msgstr ""
-"Controla o mecanismo usado para autenticar o usuário. As opções são: nome de"
-" usuário, e-mail"
+"Controla o mecanismo usado para autenticar o usuário. As opções são: nome de "
+"usuário, e-mail"
 
 #: settings.py:22
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
-" in. Value is time in seconds."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
+"in. Value is time in seconds."
 msgstr ""
 "Tempo máximo que um usuário que selecionou \"Lembrar-me\" ficará logado. O "
 "valor é em segundos."
@@ -175,7 +176,7 @@ msgid "Login page"
 msgstr "Página de login"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:177
+#: templates/authentication/password_reset_form.html:29
 msgid "Submit"
 msgstr "Enviar"
 
@@ -183,50 +184,50 @@ msgstr "Enviar"
 msgid "Password reset email sent!"
 msgstr "E-mail de redefinição de senha enviado!"
 
-#: views.py:86
+#: views/authentication_views.py:75
 msgid "Your password has been successfully changed."
 msgstr "Sua senha foi alterada com sucesso"
 
-#: views.py:93
+#: views/authentication_views.py:82
 msgid "Current user password change"
 msgstr "Alteração de senha do usuário atual"
 
-#: views.py:101
+#: views/authentication_views.py:90
 msgid "Changing the password is not allowed for this account."
 msgstr "Alterar a senha não é permitido para esta conta."
 
-#: views.py:168
+#: views/authentication_views.py:157
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Solicitação de alteração de senha executada em %(count)d usuário"
 
-#: views.py:170
+#: views/authentication_views.py:159
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Solicitação de alteração de senha realizada em %(count)d usuários"
 
-#: views.py:179
+#: views/authentication_views.py:167
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] "Alterar senha de usuário"
 msgstr[1] "Alterar senhas de usuários"
 
-#: views.py:189
+#: views/authentication_views.py:177
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Alterar senha para o usuário: %s"
 
-#: views.py:210
+#: views/authentication_views.py:198
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Senha foi alterada com sucesso para o usuário %s."
 
-#: views.py:216
+#: views/authentication_views.py:204
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Erro de redefinição de senha para o usuário \"%(user)s\": %(error)s "
 
-#: views.py:278
+#: views/impersonation_views.py:78
 #, python-format
 msgid "Impersonate user: %s"
 msgstr "Personificação de usuário: %s"

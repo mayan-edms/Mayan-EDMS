@@ -2,49 +2,62 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2021
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:51+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
+"bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:12
+#: apps.py:14 settings.py:11
 msgid "Platform"
 msgstr "Платформа"
 
-#: classes.py:134
+#: classes.py:182
 msgid "Template for entrypoint.sh file inside a Docker image."
 msgstr "Шаблон за файл entrypoint.sh в изображение на Docker."
 
-#: classes.py:144
+#: classes.py:192
 msgid "Template that generates a Dockerfile file."
 msgstr "Шаблон, който генерира Dockerfile файл."
 
-#: classes.py:158
+#: classes.py:206
 msgid "Template for Supervisord inside a Docker image."
 msgstr "Шаблон за Supervisord в Docker образ"
 
-#: classes.py:174
+#: classes.py:222
 msgid "Template that generates a GitLab CI config file."
 msgstr "Шаблон, който генерира GitLab CI конфигурационен файл."
 
-#: classes.py:218
+#: classes.py:266
 msgid "Template for Supervisord."
 msgstr "Шаблон за Supervisord"
 
-#: classes.py:287
+#: classes.py:335
 msgid "Template showing the queues of a worker."
 msgstr "Шаблон, показващ опашките на работна програма."
+
+#: settings.py:16
+msgid ""
+"List of client backends to launch after startup. Use full dotted path to the "
+"client backend classes."
+msgstr ""
+
+#: settings.py:23
+msgid ""
+"Arguments for the client backends. Use the client backend dotted path as the "
+"dictionary key for the arguments in dictionary format."
+msgstr ""

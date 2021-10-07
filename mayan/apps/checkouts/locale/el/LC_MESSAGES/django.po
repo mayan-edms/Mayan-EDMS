@@ -1,31 +1,31 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Hmayag Antonian <hmayag@freemail.gr>, 2021
 # pyrotech <anastasios@tutamail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:49+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:41 events.py:5 links.py:32
 msgid "Checkouts"
 msgstr "Δεσμευμένα"
 
-#: dashboard_widgets.py:14 views.py:182
+#: dashboard_widgets.py:14 views.py:178
 msgid "Checked out documents"
 msgstr "Δεσμευμένα έγγραφα"
 
@@ -57,7 +57,7 @@ msgstr "Έγγραφο ήδη δεσμευμένο."
 msgid "Document status"
 msgstr "Κατάσταση εγγράφου"
 
-#: forms.py:37 models.py:40 models.py:106
+#: forms.py:37 models.py:46 models.py:126
 msgid "User"
 msgstr "Χρήστης"
 
@@ -93,7 +93,7 @@ msgstr "Δέσμευση"
 msgid "Check in document"
 msgstr "Αποδέσμευση εγγράφου"
 
-#: links.py:54 views.py:43
+#: links.py:54
 msgid "Check in"
 msgstr "Αποδέσμευση"
 
@@ -109,47 +109,47 @@ msgstr "Δεσμευμένο"
 msgid "Checked in/available"
 msgstr "Αποδεσμευμένο / διαθέσιμο"
 
-#: models.py:27
+#: models.py:33
 msgid "Document"
 msgstr "Έγγραφο"
 
-#: models.py:30
+#: models.py:36
 msgid "Check out date and time"
 msgstr "Ημέρα και ώρα δέσμευσης"
 
-#: models.py:34
+#: models.py:40
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Χρονική διάρκεια δέσμευσης εγγράφου σε λεπτά."
 
-#: models.py:36
+#: models.py:42
 msgid "Check out expiration date and time"
 msgstr "Ημέρα και ώρα λήξης δέσμευσης"
 
-#: models.py:45
+#: models.py:51
 msgid "Do not allow new file of this document to be uploaded."
 msgstr ""
 
-#: models.py:47
+#: models.py:53
 msgid "Block new file upload"
 msgstr ""
 
-#: models.py:55 permissions.py:5
+#: models.py:61 permissions.py:5
 msgid "Document checkout"
 msgstr "Δέσμευση εγγράφου"
 
-#: models.py:56
+#: models.py:62
 msgid "Document checkouts"
 msgstr "Δέσμευση εγγράφων"
 
-#: models.py:64
+#: models.py:70
 msgid "Check out expiration date and time must be in the future."
 msgstr "Η ημέρα και ώρα λήξης δέσμευσης θα πρέπει να είναι στο μέλλον."
 
-#: models.py:111
+#: models.py:131
 msgid "Checkout time and date"
 msgstr "Ημερομηνία και ώρα δέσμευσης"
 
-#: models.py:116
+#: models.py:136
 msgid "Checkout expiration"
 msgstr "Λήξη δέσμευσης"
 
@@ -177,7 +177,7 @@ msgstr "Περιοδικές δεσμεύσεις"
 msgid "Check expired checkouts"
 msgstr "Έλεγχος ληγμένων δεσμεύσεων"
 
-#: serializers.py:30
+#: serializers.py:31
 msgid "Primary key of the document to be checked out."
 msgstr "Πρωτεύον κλειδί του εγγράφου προς δέσμευση."
 
@@ -216,51 +216,47 @@ msgstr ""
 msgid "Check in %(count)d documents."
 msgstr ""
 
-#: views.py:93
+#: views.py:91
 #, python-format
 msgid "Unable to checkout document \"%(instance)s\"; %(exception)s"
 msgstr ""
 
-#: views.py:100
+#: views.py:98
 #, python-format
 msgid "Document \"%(object)s\" checked out successfully."
 msgstr ""
 
-#: views.py:103
+#: views.py:101
 #, python-format
 msgid "%(count)d document checked out successfully."
 msgstr ""
 
-#: views.py:106
+#: views.py:104
 #, python-format
 msgid "%(count)d documents checked out successfully."
 msgstr ""
 
-#: views.py:108
+#: views.py:106
 #, python-format
 msgid "Checkout document \"%(object)s\"."
 msgstr ""
 
-#: views.py:109
+#: views.py:107
 #, python-format
 msgid "Checkout %(count)d document."
 msgstr ""
 
-#: views.py:110
+#: views.py:108
 #, python-format
 msgid "Checkout %(count)d documents."
 msgstr ""
 
-#: views.py:114
-msgid "Checkout"
-msgstr ""
-
-#: views.py:158
+#: views.py:154
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Λεπτομέρειες δέσμευσης για έγγραφο: %s"
 
-#: views.py:178
+#: views.py:174
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
@@ -268,7 +264,7 @@ msgstr ""
 "Η δέσμευση ενός εγγράφου, αποκλείει ορισμένες λειτουργίες για ένα "
 "προκαθορισμένο χρονικό διάστημα."
 
-#: views.py:181
+#: views.py:177
 msgid "No documents have been checked out"
 msgstr "Δεν υπάρχουν δεσμευμένα έγγραφα"
 

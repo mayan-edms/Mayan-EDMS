@@ -1,44 +1,45 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2021
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
+"bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:129 permissions.py:5 settings.py:14
 msgid "Common"
 msgstr "Общи"
 
-#: classes.py:408
+#: classes.py:409
 msgid "Model properties"
 msgstr "Свойства на модела"
 
-#: classes.py:413
+#: classes.py:414
 msgid "Model fields"
 msgstr "Полета на модела"
 
-#: classes.py:456
+#: classes.py:457
 msgid "Model related fields"
 msgstr "Свързани с модела полета"
 
-#: classes.py:461
+#: classes.py:462
 msgid "Model reverse fields"
 msgstr "Обратни полета на модела"
 
@@ -58,47 +59,47 @@ msgstr "Команден ред с автоматично довършване."
 msgid "Checks proper formatting of the README file."
 msgstr "Проверява правилното форматиране на файла README."
 
-#: links.py:30
+#: links.py:29
 msgid "About this"
 msgstr "Относно това"
 
-#: links.py:33
+#: links.py:32
 msgid "Get the book"
 msgstr "Вземете книгата"
 
-#: links.py:38
+#: links.py:37
 msgid "Documentation"
 msgstr "Документация"
 
-#: links.py:41
+#: links.py:40
 msgid "Forum"
 msgstr "Форум"
 
-#: links.py:45 views.py:48
+#: links.py:44 views.py:48
 msgid "License"
 msgstr "Лиценз"
 
-#: links.py:50
+#: links.py:49
 msgid "Copy"
 msgstr "Копие"
 
-#: links.py:53
+#: links.py:52
 msgid "Setup"
 msgstr "Настройка"
 
-#: links.py:56
+#: links.py:55
 msgid "Source code"
 msgstr "Изходен код"
 
-#: links.py:60
+#: links.py:59
 msgid "Online store"
 msgstr "Онлайн магазин"
 
-#: links.py:64
+#: links.py:63
 msgid "Get support"
 msgstr "Поддръжка"
 
-#: links.py:68 queues.py:6 views.py:122
+#: links.py:67 queues.py:6 views.py:122
 msgid "Tools"
 msgstr "Инструменти"
 
@@ -169,53 +170,49 @@ msgstr ""
 
 #: settings.py:29
 msgid ""
-"In list mode, show the \"object\" menu options as a dropdown menu instead of"
-" individual buttons."
+"In list mode, show the \"object\" menu options as a dropdown menu instead of "
+"individual buttons."
 msgstr ""
 "В режим на списък покажете опциите на менюто &quot;обект&quot; като падащо "
 "меню вместо отделни бутони."
 
 #: settings.py:36
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr ""
-"Време за забавяне на фоновите задачи, които зависят от запис в базата данни,"
-" за да се изпълнят."
-
-#: settings.py:43
-msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 "Списък с низове, обозначаващи всички приложения, които трябва да бъдат "
 "премахнати от списъка, който обикновено се инсталира от Mayan EDMS. Всеки "
 "низ трябва да бъде точкуван Python път към: конфигурационен клас на "
-"приложение (за предпочитане) или пакет, съдържащ приложение. Пример: "
-"[&#39;app_1&#39;, &#39;app_2&#39;]"
+"приложение (за предпочитане) или пакет, съдържащ приложение. Пример: [&#39;"
+"app_1&#39;, &#39;app_2&#39;]"
 
-#: settings.py:53
+#: settings.py:46
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 "Списък с низове, обозначаващи всички приложения, които са инсталирани извън "
 "тези, които обикновено са инсталирани от Mayan EDMS. Всеки низ трябва да "
 "бъде точкуван Python път към: конфигурационен клас на приложение (за "
-"предпочитане) или пакет, съдържащ приложение. Пример: [&#39;app_1&#39;, "
-"&#39;app_2&#39;]"
+"предпочитане) или пакет, съдържащ приложение. Пример: [&#39;app_1&#39;, &#39;"
+"app_2&#39;]"
 
-#: settings.py:63
+#: settings.py:56
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also"
-" the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also "
+"the view to which users will be redirected after log in."
 msgstr ""
 "Име на изгледа, прикрепен към котвата на марката в главното меню. Това е и "
 "изгледът, към който потребителите ще бъдат пренасочени след влизане."
+
+#: settings.py:65
+msgid "Name of the dashboard to display in the home view."
+msgstr ""
 
 #: settings.py:70
 msgid "Sets the project's name."
@@ -233,15 +230,15 @@ msgstr "Предупреждение"
 msgid "Click here to fix this."
 msgstr "Кликнете тук, за да поправите това."
 
-#: validators.py:41
+#: validators.py:40
 msgid "Enter a valid JSON value."
 msgstr "Въведете валидна JSON стойност."
 
-#: validators.py:65
+#: validators.py:64
 msgid "Enter a valid YAML value."
 msgstr "Въведете валидна YAML стойност."
 
-#: validators.py:81
+#: validators.py:80
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
@@ -253,8 +250,8 @@ msgid "About"
 msgstr "Относно"
 
 #: views.py:39
-msgid "Dashboard"
-msgstr "Контролно табло"
+msgid "Home"
+msgstr ""
 
 #: views.py:62
 #, python-format

@@ -14,17 +14,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:49+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021\n"
-"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
+"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/"
+"pt/)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:56 events.py:5 permissions.py:5 settings.py:7
+#: apps.py:55 events.py:5 permissions.py:5 settings.py:10
 msgid "Appearance"
 msgstr "Aparência"
 
@@ -104,41 +105,41 @@ msgstr "Eliminar"
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:40 links.py:45 models.py:29 views.py:111
+#: links.py:40 links.py:45 models.py:31 views.py:111
 msgid "Themes"
 msgstr ""
 
-#: models.py:16
+#: models.py:18
 msgid "A short text describing the theme."
 msgstr ""
 
-#: models.py:17
+#: models.py:19
 msgid "Label"
 msgstr "Nome"
 
-#: models.py:21
+#: models.py:23
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
 msgstr ""
 
-#: models.py:23
+#: models.py:25
 msgid "Stylesheet"
 msgstr ""
 
-#: models.py:28 models.py:63
+#: models.py:30 models.py:68
 msgid "Theme"
 msgstr ""
 
-#: models.py:59
+#: models.py:64
 msgid "User"
 msgstr "Utilizador"
 
-#: models.py:67
+#: models.py:72
 msgid "User theme setting"
 msgstr ""
 
-#: models.py:68
+#: models.py:73
 msgid "User theme settings"
 msgstr ""
 
@@ -158,17 +159,22 @@ msgstr ""
 msgid "View existing themes"
 msgstr ""
 
-#: settings.py:12
+#: settings.py:15
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "Número máximo de caracteres que será mostrado como título da vista."
 
-#: settings.py:19
+#: settings.py:22
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
 msgstr ""
-"Posição em que será mostrada a mensagem de sistema. As opções são: top-left,"
-" top-center, top-right, bottom-left, bottom-center, bottom-right."
+"Posição em que será mostrada a mensagem de sistema. As opções são: top-left, "
+"top-center, top-right, bottom-left, bottom-center, bottom-right."
+
+#: settings.py:30
+msgid ""
+"Delay in milliseconds after which the menus will be checked for updates."
+msgstr ""
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
@@ -206,8 +212,7 @@ msgstr ""
 "A localização está correta, mas a sua conta não tem as permissões "
 "necessárias."
 
-#: templates/500.html:5 templates/500.html:30
-#: templates/appearance/root.html:58
+#: templates/500.html:5 templates/500.html:30 templates/appearance/root.html:58
 msgid "Server error"
 msgstr "Erro do servidor"
 
@@ -232,7 +237,9 @@ msgid "Contact your system administrator."
 msgstr "Contacte o seu administrador de sistemas."
 
 #: templates/500.html:47
-msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgid ""
+"Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL"
+"\"."
 msgstr ""
 "Verifique os logs por mensagens com as etiquetas \"ERROR\", \"CRITICAL\" ou "
 "\"FATAL\"."
@@ -273,80 +280,108 @@ msgstr "Publicado sob a licença: "
 #, python-format
 msgid ""
 "\n"
-"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
+"                %(project_title)s is a free and open-source software brought "
+"to you with <i class=\"fa fa-heart text-danger\" style=\"transform: "
+"rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
 msgstr ""
 "\n"
-"%(project_title)s é um software gratuito e open-source, trazido até sim com <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> por Roberto Rosario e outros contribuintes."
+"%(project_title)s é um software gratuito e open-source, trazido até sim com "
+"<i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></"
+"i> por Roberto Rosario e outros contribuintes."
 
 #: templates/appearance/about.html:105
 #, python-format
 msgid ""
 "\n"
-"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
+"                It takes great effort to make %(project_title)s as feature-"
+"rich as it is.\n"
 "            "
 msgstr ""
 "\n"
-"É necessário um grande esforço para garantir que o %(project_title)s tenha tantas funcionalidades.\n"
+"É necessário um grande esforço para garantir que o %(project_title)s tenha "
+"tantas funcionalidades.\n"
 " "
 
 #: templates/appearance/about.html:111
 #, python-format
 msgid ""
 "\n"
-"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
+"                If you use %(project_title)s please <a class=\"new_window\" "
+"href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
+"xclick&hosted_button_id=3PXN336XFXQNN\">make a donation "
+"%(icon_social_paypal)s</a>\n"
 "            "
 msgstr ""
 "\n"
-"Se utiliza o %(project_title)s por favor considere <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">fazer uma doação %(icon_social_paypal)s</a>"
+"Se utiliza o %(project_title)s por favor considere <a class=\"new_window\" "
+"href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
+"xclick&hosted_button_id=3PXN336XFXQNN\">fazer uma doação "
+"%(icon_social_paypal)s</a>"
 
 #: templates/appearance/about.html:117
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a class="
+"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
+"\">Release notes %(icon_documentation)s</a> or the short version <a class="
+"\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/"
+"HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"A lista de modificações completa encontra-se disponível nas <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Notas de Publicação %(icon_documentation)s</a> ou na versão mais curta <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Registo de alterações %(icon_documentation)s</a>."
+"A lista de modificações completa encontra-se disponível nas <a class="
+"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
+"\">Notas de Publicação %(icon_documentation)s</a> ou na versão mais curta <a "
+"class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/"
+"master/HISTORY.rst\">Registo de alterações %(icon_documentation)s</a>."
 
 #: templates/appearance/about.html:123
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
+"                For questions check the <a class=\"new_window\" href="
+"\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"Para questões, aceda à <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentação %(icon_documentation)s</a>."
+"Para questões, aceda à <a class=\"new_window\" href=\"https://docs.mayan-"
+"edms.com\">Documentação %(icon_documentation)s</a>."
 
 #: templates/appearance/about.html:129
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a "
+"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
+"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href="
+"\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
+"%(icon_source_code)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"Se encontrou um problema ou tem uma ideia para uma funcionalidade, visite o <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> ou crie um pedido no <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Repositório de código %(icon_source_code)s</a>."
+"Se encontrou um problema ou tem uma ideia para uma funcionalidade, visite o "
+"<a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
+"%(icon_forum)s</a> ou crie um pedido no <a class=\"new_window\" href="
+"\"https://gitlab.com/mayan-edms/mayan-edms\">Repositório de código "
+"%(icon_source_code)s</a>."
 
 #: templates/appearance/about.html:134
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
+"                Spread the word. Talk to your friends and colleagues about "
+"how awesome %(project_title)s is!\n"
 "            "
 msgstr ""
 "\n"
-"Espalhe a palavra. fale com os seus amigos e colegas sobre o quão fantástico o %(project_title)s é."
+"Espalhe a palavra. fale com os seus amigos e colegas sobre o quão fantástico "
+"o %(project_title)s é."
 
-#: templates/appearance/base.html:71
+#: templates/appearance/base.html:72
 msgid "Object"
 msgstr "Objeto"
-
-#: templates/appearance/partials/form_title.html:10
-msgid "Open main menu"
-msgstr "Abrir menu principal"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
@@ -367,24 +402,26 @@ msgstr "Não"
 msgid "required"
 msgstr "obrigatório"
 
-#: templates/appearance/generic_form_subtemplate.html:83
-#: templates/appearance/generic_form_subtemplate.html:96
-#: templates/appearance/generic_multiform_subtemplate.html:59
+#: templates/appearance/generic_form_subtemplate.html:84
+#: templates/appearance/generic_form_subtemplate.html:94
+#: templates/appearance/generic_form_subtemplate.html:108
+#: templates/appearance/generic_multiform_subtemplate.html:62
 msgid "Save"
 msgstr "Guardar"
 
-#: templates/appearance/generic_form_subtemplate.html:83
-#: templates/appearance/generic_form_subtemplate.html:96
-#: templates/appearance/generic_multiform_subtemplate.html:59
+#: templates/appearance/generic_form_subtemplate.html:84
+#: templates/appearance/generic_form_subtemplate.html:94
+#: templates/appearance/generic_form_subtemplate.html:108
+#: templates/appearance/generic_multiform_subtemplate.html:62
 msgid "Submit"
 msgstr "Submeter"
 
-#: templates/appearance/generic_form_subtemplate.html:87
-#: templates/appearance/generic_multiform_subtemplate.html:63
+#: templates/appearance/generic_form_subtemplate.html:98
+#: templates/appearance/generic_multiform_subtemplate.html:66
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: templates/appearance/generic_list_subtemplate.html:29
+#: templates/appearance/generic_list_subtemplate.html:34
 msgid "Identifier"
 msgstr "Identificador"
 
@@ -392,17 +429,21 @@ msgstr "Identificador"
 msgid "Facets"
 msgstr ""
 
-#: templates/appearance/home.html:10
-msgid "Dashboard"
-msgstr "Painel de Instrumentos"
-
-#: templates/appearance/home.html:26
+#: templates/appearance/home.html:27
 msgid "Getting started"
 msgstr "Começar"
 
-#: templates/appearance/home.html:29
+#: templates/appearance/home.html:30
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Para conseguir utilizar o Mayan EDMS no total precisa do seguinte:"
+
+#: templates/appearance/menus/menu_topbar.html:11
+msgid "Toggle navigation"
+msgstr "Alternar navegação"
+
+#: templates/appearance/partials/form_title.html:10
+msgid "Open main menu"
+msgstr "Abrir menu principal"
 
 #: templates/appearance/partials/list_header.html:12
 #, python-format
@@ -442,10 +483,6 @@ msgstr "Ações em massa"
 msgid "Toggle Dropdown"
 msgstr "Alternar caixa de seleção"
 
-#: templates/appearance/menus/menu_topbar.html:11
-msgid "Toggle navigation"
-msgstr "Alternar navegação"
-
 #: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Sem resultados"
@@ -463,7 +500,7 @@ msgid "Check you network connection and try again in a few moments."
 msgstr ""
 "Verifique a conexão à rede e tente novamente dentro de alguns momentos."
 
-#: templatetags/appearance_tags.py:63
+#: templatetags/appearance_tags.py:61
 msgid "None"
 msgstr "Nenhum"
 

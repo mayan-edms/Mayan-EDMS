@@ -11,17 +11,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:49+0000\n"
+"POT-Creation-Date: 2021-10-07 06:42+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: yan songwei <yansw@vip.163.com>, 2021\n"
-"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/"
+"teams/13584/zh-Hans/)\n"
+"Language: zh-Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:56 events.py:5 permissions.py:5 settings.py:7
+#: apps.py:55 events.py:5 permissions.py:5 settings.py:10
 msgid "Appearance"
 msgstr "外观"
 
@@ -101,41 +102,41 @@ msgstr "删除"
 msgid "Edit"
 msgstr "编辑"
 
-#: links.py:40 links.py:45 models.py:29 views.py:111
+#: links.py:40 links.py:45 models.py:31 views.py:111
 msgid "Themes"
 msgstr ""
 
-#: models.py:16
+#: models.py:18
 msgid "A short text describing the theme."
 msgstr ""
 
-#: models.py:17
+#: models.py:19
 msgid "Label"
 msgstr "标签"
 
-#: models.py:21
+#: models.py:23
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
 msgstr ""
 
-#: models.py:23
+#: models.py:25
 msgid "Stylesheet"
 msgstr ""
 
-#: models.py:28 models.py:63
+#: models.py:30 models.py:68
 msgid "Theme"
 msgstr ""
 
-#: models.py:59
+#: models.py:64
 msgid "User"
 msgstr "用户"
 
-#: models.py:67
+#: models.py:72
 msgid "User theme setting"
 msgstr ""
 
-#: models.py:68
+#: models.py:73
 msgid "User theme settings"
 msgstr ""
 
@@ -155,15 +156,21 @@ msgstr ""
 msgid "View existing themes"
 msgstr ""
 
-#: settings.py:12
+#: settings.py:15
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "显示视图标题的最大字符数。"
 
-#: settings.py:19
+#: settings.py:22
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr "显示系统消息的位置。选项包括：左上，顶部居中，右上，左下，底部居中，右下。"
+msgstr ""
+"显示系统消息的位置。选项包括：左上，顶部居中，右上，左下，底部居中，右下。"
+
+#: settings.py:30
+msgid ""
+"Delay in milliseconds after which the menus will be checked for updates."
+msgstr ""
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
@@ -199,8 +206,7 @@ msgid ""
 "permission to access it."
 msgstr "位置正确，但是您的帐户没有访问权限。"
 
-#: templates/500.html:5 templates/500.html:30
-#: templates/appearance/root.html:58
+#: templates/500.html:5 templates/500.html:30 templates/appearance/root.html:58
 msgid "Server error"
 msgstr "服务器错误"
 
@@ -225,8 +231,11 @@ msgid "Contact your system administrator."
 msgstr "请与系统管理员联系。"
 
 #: templates/500.html:47
-msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
-msgstr "检查日志中是否带有标签“ ERROR”-错误，“ CRITICAL”-关键或“ FATAL”-致命的消息。"
+msgid ""
+"Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL"
+"\"."
+msgstr ""
+"检查日志中是否带有标签“ ERROR”-错误，“ CRITICAL”-关键或“ FATAL”-致命的消息。"
 
 #: templates/500.html:48
 #, python-format
@@ -265,18 +274,23 @@ msgstr "根据许可证发布："
 #, python-format
 msgid ""
 "\n"
-"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
+"                %(project_title)s is a free and open-source software brought "
+"to you with <i class=\"fa fa-heart text-danger\" style=\"transform: "
+"rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
 msgstr ""
 "\n"
-"                %(project_title)s是一个免费的开源软件，由Roberto Rosario和贡献者提供<i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i>。\n"
+"                %(project_title)s是一个免费的开源软件，由Roberto Rosario和贡"
+"献者提供<i class=\"fa fa-heart text-danger\" style=\"transform: "
+"rotate(10deg);\"></i>。\n"
 "            "
 
 #: templates/appearance/about.html:105
 #, python-format
 msgid ""
 "\n"
-"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
+"                It takes great effort to make %(project_title)s as feature-"
+"rich as it is.\n"
 "            "
 msgstr ""
 
@@ -284,7 +298,10 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
+"                If you use %(project_title)s please <a class=\"new_window\" "
+"href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
+"xclick&hosted_button_id=3PXN336XFXQNN\">make a donation "
+"%(icon_social_paypal)s</a>\n"
 "            "
 msgstr ""
 
@@ -292,18 +309,26 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a class="
+"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
+"\">Release notes %(icon_documentation)s</a> or the short version <a class="
+"\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/"
+"HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"                完整的更改列表可见于<a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">发行说明%(icon_documentation)s </a>或简短版本<a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">更改日志%(icon_documentation)s </a>。\n"
+"                完整的更改列表可见于<a class=\"new_window\" href=\"https://"
+"docs.mayan-edms.com/releases/index.html\">发行说明%(icon_documentation)s </a>"
+"或简短版本<a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-"
+"edms/blob/master/HISTORY.rst\">更改日志%(icon_documentation)s </a>。\n"
 "            "
 
 #: templates/appearance/about.html:123
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
+"                For questions check the <a class=\"new_window\" href="
+"\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 
@@ -311,28 +336,32 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a "
+"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
+"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href="
+"\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
+"%(icon_source_code)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"                如果您发现了bug或有功能创意，请访问<a class=\"new_window\" href=\"https://forum.mayan-edms.com\">论坛%(icon_forum)s </a>或在<a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">源代码仓库%(icon_source_code)s </a>提交问题。\n"
+"                如果您发现了bug或有功能创意，请访问<a class=\"new_window\" "
+"href=\"https://forum.mayan-edms.com\">论坛%(icon_forum)s </a>或在<a class="
+"\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">源代码仓"
+"库%(icon_source_code)s </a>提交问题。\n"
 "            "
 
 #: templates/appearance/about.html:134
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
+"                Spread the word. Talk to your friends and colleagues about "
+"how awesome %(project_title)s is!\n"
 "            "
 msgstr ""
 
-#: templates/appearance/base.html:71
+#: templates/appearance/base.html:72
 msgid "Object"
 msgstr "对象"
-
-#: templates/appearance/partials/form_title.html:10
-msgid "Open main menu"
-msgstr "打开主菜单"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
@@ -353,24 +382,26 @@ msgstr "否"
 msgid "required"
 msgstr "需要的"
 
-#: templates/appearance/generic_form_subtemplate.html:83
-#: templates/appearance/generic_form_subtemplate.html:96
-#: templates/appearance/generic_multiform_subtemplate.html:59
+#: templates/appearance/generic_form_subtemplate.html:84
+#: templates/appearance/generic_form_subtemplate.html:94
+#: templates/appearance/generic_form_subtemplate.html:108
+#: templates/appearance/generic_multiform_subtemplate.html:62
 msgid "Save"
 msgstr "保存"
 
-#: templates/appearance/generic_form_subtemplate.html:83
-#: templates/appearance/generic_form_subtemplate.html:96
-#: templates/appearance/generic_multiform_subtemplate.html:59
+#: templates/appearance/generic_form_subtemplate.html:84
+#: templates/appearance/generic_form_subtemplate.html:94
+#: templates/appearance/generic_form_subtemplate.html:108
+#: templates/appearance/generic_multiform_subtemplate.html:62
 msgid "Submit"
 msgstr "提交"
 
-#: templates/appearance/generic_form_subtemplate.html:87
-#: templates/appearance/generic_multiform_subtemplate.html:63
+#: templates/appearance/generic_form_subtemplate.html:98
+#: templates/appearance/generic_multiform_subtemplate.html:66
 msgid "Cancel"
 msgstr "取消"
 
-#: templates/appearance/generic_list_subtemplate.html:29
+#: templates/appearance/generic_list_subtemplate.html:34
 msgid "Identifier"
 msgstr "识别码"
 
@@ -378,17 +409,21 @@ msgstr "识别码"
 msgid "Facets"
 msgstr ""
 
-#: templates/appearance/home.html:10
-msgid "Dashboard"
-msgstr "仪表板"
-
-#: templates/appearance/home.html:26
+#: templates/appearance/home.html:27
 msgid "Getting started"
 msgstr "入门"
 
-#: templates/appearance/home.html:29
+#: templates/appearance/home.html:30
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "在您充分使用Mayan EDMS之前，您需要以下内容："
+
+#: templates/appearance/menus/menu_topbar.html:11
+msgid "Toggle navigation"
+msgstr "切换导航"
+
+#: templates/appearance/partials/form_title.html:10
+msgid "Open main menu"
+msgstr "打开主菜单"
 
 #: templates/appearance/partials/list_header.html:12
 #, python-format
@@ -396,7 +431,8 @@ msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
 msgstr ""
-"总计（%(start)s  -  %(end)s，%(total)s）（第%(page_number)s页，总%(total_pages)s页）"
+"总计（%(start)s  -  %(end)s，%(total)s）（第%(page_number)s页，"
+"总%(total_pages)s页）"
 
 #: templates/appearance/partials/list_header.html:14
 #: templates/appearance/partials/list_header.html:17
@@ -425,10 +461,6 @@ msgstr "批量操作"
 msgid "Toggle Dropdown"
 msgstr "切换下拉列表"
 
-#: templates/appearance/menus/menu_topbar.html:11
-msgid "Toggle navigation"
-msgstr "切换导航"
-
 #: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "没有结果"
@@ -445,7 +477,7 @@ msgstr "服务器通信错误"
 msgid "Check you network connection and try again in a few moments."
 msgstr "检查网络连接，并稍后再试。"
 
-#: templatetags/appearance_tags.py:63
+#: templatetags/appearance_tags.py:61
 msgid "None"
 msgstr "没有"
 
