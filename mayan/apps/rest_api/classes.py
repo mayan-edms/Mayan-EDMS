@@ -67,7 +67,11 @@ class NestableLazyIterator:
         self.items = Variable(var=self.iterable_string).resolve(context=self.context)
 
 
-RenderedContent = namedtuple(typename='RenderedContent', field_names=('body', 'include', 'method', 'name', 'url'))
+RenderedContent = namedtuple(
+    typename='RenderedContent', field_names=(
+        'body', 'include', 'method', 'name', 'url'
+    )
+)
 
 
 class BatchRequest:
@@ -234,9 +238,18 @@ class BatchRequestCollection:
     def __init__(self, request_list=None):
         self.requests = []
 
-        for request_dict in request_list:
-            request_dict.update({'collection': self})
-            self.requests.append(BatchRequest(**request_dict))
+        for request_index, request_dict in enumerate(request_list):
+            request_dict.update(
+                {'collection': self}
+            )
+            try:
+                self.requests.append(BatchRequest(**request_dict))
+            except Exception as exception:
+                raise ValueError(
+                    'Error instantiating request #{}; {}'.format(
+                        request_index, exception
+                    )
+                ) from exception
 
     def execute(self, view_request):
         self.context = {'view_request': view_request}
