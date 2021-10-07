@@ -269,6 +269,35 @@ whose events can be cleared and/or exported.
 The events app was API updated to return error 404 on insufficient
 permissions.
 
+The event registrations for several models was adjusted:
+
+- Register cabinet document add and remove events to the Document model too.
+- Register document file parsing events to the Document model too.
+- Rename label of the document parsed content deleted event.
+- Replace the ``DownloadFile`` content object registration from the
+``Document`` model to the ``DocumentVersion`` model.
+- Register the document file created, edited events to the ``Document``
+model too.
+- Register the document version created, edited events to the ``Document``
+model too.
+- Register the document trashed event to the ``Document`` model too.
+- Remove the document file created event from the ``DocumentFile`` model.
+- Remove the document version created event from the ``DocumentVersion``
+model.
+- Register the document version page deleted event to the
+``DocumentVersion`` model.
+- Remove the document version page deleted event from the
+``DocumentVersionPage`` model.
+- Register the tag attached, removed events to the ``Document`` model too.
+- Register the web link navigated event to the ``Document`` model too.
+- Remove the document version page OCR edited event from the ``Document``
+model.
+- Register the document version OCR submitted, finished, content deleted
+events to the ``DocumentVersion`` model.
+
+These event adjustments removed some obsolete model interactions. These also
+allow new subscriptions and workflow triggers.
+
 
 Indexing
 ^^^^^^^^
@@ -336,6 +365,22 @@ is now disabled via CSS to skip it during data entry when using tabs.
 Support was added for deleting multiple metadata types in a single action.
 
 
+Messaging
+^^^^^^^^^
+
+This version add the API for the messaging app.
+
+Superusers and staff users are now excluded from being message recipients.
+
+A dedicated create message form was added with improved widgets and widget
+attributes.
+
+Select2 is now used for the user selection field.
+
+The message edit permission was added. This permission is required in order
+to change the message read status.
+
+
 Navigation
 ^^^^^^^^^^
 
@@ -357,12 +402,16 @@ callback, the ``resolved_object`` argument makes determining the active
 object using the context unnecessary. The context is still provided for link
 conditions that are dependent on other values in the view context.
 
-    - Rename `get_cascade_condition` to
-      `factory_condition_queryset_access` which better reflects its
-      purpose.
-    - Add support for exclusion during menu link binding.
-    - Add support for callbacks to `factory_condition_queryset_access`.
-    - Add proxy model exclusions.
+Link de-duplication was added to links that are part of the same menu.
+
+The helper function ``get_cascade_condition`` was renamed to
+``factory_condition_queryset_access`` which better reflects its purpose.
+
+Support was added for exclusion during menu link binding.
+
+Callback support was added to ``factory_condition_queryset_access``.
+
+Support for proxy model exclusions was added.
 
 
 OCR
@@ -400,6 +449,14 @@ REST API
 The settings ``REST_API_MAXIMUM_PAGE_SIZE`` and ``REST_API_PAGE_SIZE`` were
 added to allow controlling the default page size and the maximum page size
 of the result responses.
+
+The ``get_absolute_api_url`` method was added to download files,
+document versions and users. These URLs are used to determine the message
+sender's API URL.
+
+Batch API request support added. These allow sending multiple API requests
+inside a single HTTP request. Items of a batch API request can also share
+their responses to allow for advanced API automation.
 
 
 Roles
@@ -503,6 +560,16 @@ Celery workers are now launched with the options ``--without-gossip`` and
 ``--without-heartbeat`` to reducer chatter and broker resources.
 
 
+Testing
+^^^^^^^
+
+The test view mixin was updated to support multiple test views per test case.
+It is now possible to passing arguments to the ``.add_test_view()`` method.
+
+Test view mixin subclasses can now supply their own ``urlpatterns``. This is
+used to allow creation of API test views with minimal scaffolding.
+
+
 Translations
 ^^^^^^^^^^^^
 
@@ -603,6 +670,8 @@ Other
 - Update UI double click to act on elements. Previously it bonded to the
   entire form. By binding it to an element other element can be made to
   react to the double click event for other purposes.
+- Add a default ordering to the ``TestModel`` to silence warning.
+- Fix ``TestModel.save()`` method.
 
 
 Removals
