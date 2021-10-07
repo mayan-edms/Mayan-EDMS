@@ -15,6 +15,7 @@
 - Print the path when failing to access the configuration file.
 - Expose the workflow template ``auto_launch`` field via the REST API.
   Thanks to forum user @qra for the request.
+- Cleanup markup of the confirmation form.
 
 4.0.21 (2021-11-29)
 ===================
