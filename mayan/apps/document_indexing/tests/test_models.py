@@ -103,7 +103,6 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
             )
         )
 
-
     def test_document_description_index(self):
         self._create_test_index_template_node(
             expression=TEST_INDEX_TEMPLATE_DOCUMENT_DESCRIPTION_EXPRESSION
