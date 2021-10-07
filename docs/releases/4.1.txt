@@ -189,8 +189,8 @@ returns the unfiltered queryset.
 
 The trashed document delete API now returns a 202 code instead of 204. The
 delete method now runs in the background in the same way as the trashed
-document delete view works in the UI. The return code was updated to reflect
-this internal change.
+document delete view works in the user interface. The return code was
+updated to reflect this internal change.
 
 Better user tracking for trashed document events was added.
 
@@ -275,25 +275,25 @@ The event registrations for several models was adjusted:
 - Register document file parsing events to the Document model too.
 - Rename label of the document parsed content deleted event.
 - Replace the ``DownloadFile`` content object registration from the
-``Document`` model to the ``DocumentVersion`` model.
+  ``Document`` model to the ``DocumentVersion`` model.
 - Register the document file created, edited events to the ``Document``
-model too.
+  model too.
 - Register the document version created, edited events to the ``Document``
-model too.
+  model too.
 - Register the document trashed event to the ``Document`` model too.
 - Remove the document file created event from the ``DocumentFile`` model.
 - Remove the document version created event from the ``DocumentVersion``
-model.
+  model.
 - Register the document version page deleted event to the
-``DocumentVersion`` model.
+  ``DocumentVersion`` model.
 - Remove the document version page deleted event from the
-``DocumentVersionPage`` model.
+  ``DocumentVersionPage`` model.
 - Register the tag attached, removed events to the ``Document`` model too.
 - Register the web link navigated event to the ``Document`` model too.
 - Remove the document version page OCR edited event from the ``Document``
-model.
+  model.
 - Register the document version OCR submitted, finished, content deleted
-events to the ``DocumentVersion`` model.
+  events to the ``DocumentVersion`` model.
 
 These event adjustments removed some obsolete model interactions. These also
 allow new subscriptions and workflow triggers.
@@ -370,7 +370,7 @@ Messaging
 
 This version add the API for the messaging app.
 
-Superusers and staff users are now excluded from being message recipients.
+Super users and staff users are now excluded from being message recipients.
 
 A dedicated create message form was added with improved widgets and widget
 attributes.
@@ -579,7 +579,7 @@ The Spanish locale was split into Spanish (Puerto Rico) and Spanish.
 User interface
 ^^^^^^^^^^^^^^
 
-Choice forms now support realtime filtering of items. These forms are used
+Choice forms now support real-time filtering of items. These forms are used
 in the add/remove views of groups, roles, ACLs, indexes, and smart links.
 
 Support was added for overriding form buttons. This is important for
@@ -717,6 +717,17 @@ A permission requirement was added to view resolved smart links. This
 permission needs to be granted for the smart link and for the
 document/document type.
 
+Trashed documents are now excluded from all API endpoints.
+
+Superusers and staff users are now excluded from being message recipients.
+
+The message edit permission was added. This permission is required in order
+to change the message read status.
+
+Due to the changes in the index tree generation algorithm and database
+integrity configuration, existing index trees will deleted during upgrade
+and need to be rebuild after upgrade.
+
 
 Issues closed
 -------------
@@ -732,4 +743,3 @@ Issues closed
 - :gitlab-issue:`1039` [v4.1b1] Missing requirement
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
-
