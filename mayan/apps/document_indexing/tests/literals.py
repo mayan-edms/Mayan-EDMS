@@ -8,3 +8,4 @@ TEST_METADATA_TYPE_NAME = 'test_metadata_name'
 TEST_INDEX_TEMPLATE_METADATA_EXPRESSION = '{{ document.metadata_value_of.%s }}' % TEST_METADATA_TYPE_NAME
 TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION = '{{ document.label }}'
 TEST_INDEX_TEMPLATE_DOCUMENT_DESCRIPTION_EXPRESSION = '{{ document.description }}'
+TEST_INDEX_TEMPLATE_DOCUMENT_TYPE_EXPRESSION = '{{ document.document_type.label }}'
