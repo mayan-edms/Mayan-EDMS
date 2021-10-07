@@ -30,7 +30,7 @@ job_docker_build:
     - docker logout $CI_REGISTRY
   services:
     - docker:20-dind
-    - postgres:10.15-alpine
+    - postgres:10.18-alpine
   stage: stage_build_docker
   tags:
     - postgres
@@ -285,7 +285,7 @@ job_postgres_upgrade_test:
     - pip install dist/mayan_edms-*.whl
     - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
   services:
-    - postgres:10.15-alpine
+    - postgres:10.18-alpine
   tags:
     - postgres
   variables:
@@ -344,7 +344,7 @@ job_postgres_test:
     - make test-all SETTINGS=mayan.settings.testing.gitlab-ci
     - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci
   services:
-    - postgres:10.15-alpine
+    - postgres:10.18-alpine
   tags:
     - postgres
   variables:
