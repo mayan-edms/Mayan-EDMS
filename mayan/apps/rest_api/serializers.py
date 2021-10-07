@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from rest_framework.reverse import reverse
 
+from .classes import BatchRequestCollection
+
 
 class BatchAPIRequestResponseSerializer(serializers.Serializer):
     data = serializers.JSONField(read_only=True)
@@ -11,6 +13,16 @@ class BatchAPIRequestResponseSerializer(serializers.Serializer):
         style={'base_template': 'textarea.html'},
         write_only=True
     )
+
+    def validate(self, data):
+        try:
+            BatchRequestCollection(request_list=data['requests'])
+        except Exception as exception:
+            raise serializers.ValidationError(
+                'Error validating requests; {}'.format(exception)
+            )
+
+        return data
 
 
 class BlankSerializer(serializers.Serializer):

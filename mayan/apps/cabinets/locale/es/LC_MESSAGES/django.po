@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:49+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -269,62 +269,54 @@ msgstr "Agregar %(count)d documento a gabinetes."
 msgid "Add %(count)d documents to cabinets."
 msgstr "Agregar %(count)d documentos a gabinetes."
 
-#: views.py:192
-msgid "Add"
-msgstr "Agregar"
-
-#: views.py:207
+#: views.py:205
 msgid "Cabinets to which the selected documents will be added."
 msgstr "Gabinetes a los cuales el documento seleccionado va a ser agregado."
 
-#: views.py:253
+#: views.py:251
 msgid "Documents can be added to many cabinets."
 msgstr "Los documentos se pueden agregar a muchos gabinetes."
 
-#: views.py:256
+#: views.py:254
 msgid "This document is not in any cabinet"
 msgstr "Este documento no está en ningún gabinete"
 
-#: views.py:260
+#: views.py:258
 #, python-format
 msgid "Cabinets containing document: %s"
 msgstr "Gabinetes que contienen el documento: %s"
 
-#: views.py:276
+#: views.py:274
 #, python-format
 msgid "Document \"%(object)s\" removed from cabinets successfully."
 msgstr "El documento \"%(object)s\" se eliminó correctamente de los gabinetes."
 
-#: views.py:279
+#: views.py:277
 #, python-format
 msgid "%(count)d document removed from cabinets successfully."
 msgstr "%(count)d documento eliminado de los gabinetes con éxito."
 
-#: views.py:282
+#: views.py:280
 #, python-format
 msgid "%(count)d documents removed from cabinets successfully."
 msgstr "%(count)d documentos eliminados de los gabinetes con éxito."
 
-#: views.py:284
+#: views.py:282
 #, python-format
 msgid "Remove document \"%(object)s\" from cabinets."
 msgstr "Remover el documento \"%(object)s\" de los gabinetes."
 
-#: views.py:285
+#: views.py:283
 #, python-format
 msgid "Remove %(count)d document from cabinets."
 msgstr "Remover %(count)d documento de los gabinetes."
 
-#: views.py:286
+#: views.py:284
 #, python-format
 msgid "Remove %(count)d documents from cabinets."
 msgstr "Remover %(count)d documentos de los gabinetes."
 
-#: views.py:290
-msgid "Remove"
-msgstr "Remover"
-
-#: views.py:305
+#: views.py:301
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Gabinetes de los que se eliminarán los documentos seleccionados."
 

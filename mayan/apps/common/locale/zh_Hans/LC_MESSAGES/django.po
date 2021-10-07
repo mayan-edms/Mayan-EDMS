@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: yan songwei <yansw@vip.163.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -25,19 +25,19 @@ msgstr ""
 msgid "Common"
 msgstr "常用"
 
-#: classes.py:408
+#: classes.py:409
 msgid "Model properties"
 msgstr ""
 
-#: classes.py:413
+#: classes.py:414
 msgid "Model fields"
 msgstr ""
 
-#: classes.py:456
+#: classes.py:457
 msgid "Model related fields"
 msgstr ""
 
-#: classes.py:461
+#: classes.py:462
 msgid "Model reverse fields"
 msgstr ""
 
@@ -57,47 +57,47 @@ msgstr ""
 msgid "Checks proper formatting of the README file."
 msgstr ""
 
-#: links.py:30
+#: links.py:29
 msgid "About this"
 msgstr "关于这个"
 
-#: links.py:33
+#: links.py:32
 msgid "Get the book"
 msgstr ""
 
-#: links.py:38
+#: links.py:37
 msgid "Documentation"
 msgstr "文档"
 
-#: links.py:41
+#: links.py:40
 msgid "Forum"
 msgstr "论坛"
 
-#: links.py:45 views.py:48
+#: links.py:44 views.py:48
 msgid "License"
 msgstr "许可"
 
-#: links.py:50
+#: links.py:49
 msgid "Copy"
 msgstr ""
 
-#: links.py:53
+#: links.py:52
 msgid "Setup"
 msgstr "设置"
 
-#: links.py:56
+#: links.py:55
 msgid "Source code"
 msgstr "源代码"
 
-#: links.py:60
+#: links.py:59
 msgid "Online store"
 msgstr ""
 
-#: links.py:64
+#: links.py:63
 msgid "Get support"
 msgstr ""
 
-#: links.py:68 queues.py:6 views.py:122
+#: links.py:67 queues.py:6 views.py:122
 msgid "Tools"
 msgstr "工具"
 
@@ -170,19 +170,13 @@ msgstr ""
 
 #: settings.py:36
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr "是时候延迟依赖于数据库提交传播的后台任务了。"
-
-#: settings.py:43
-msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:53
+#: settings.py:46
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -190,10 +184,14 @@ msgid ""
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:63
+#: settings.py:56
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
+msgstr ""
+
+#: settings.py:65
+msgid "Name of the dashboard to display in the home view."
 msgstr ""
 
 #: settings.py:70
@@ -212,15 +210,15 @@ msgstr "警告"
 msgid "Click here to fix this."
 msgstr "单击此处修复此问题。"
 
-#: validators.py:41
+#: validators.py:40
 msgid "Enter a valid JSON value."
 msgstr ""
 
-#: validators.py:65
+#: validators.py:64
 msgid "Enter a valid YAML value."
 msgstr "输入有效的YAML值。"
 
-#: validators.py:81
+#: validators.py:80
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
@@ -231,8 +229,8 @@ msgid "About"
 msgstr "关于"
 
 #: views.py:39
-msgid "Dashboard"
-msgstr "仪表板"
+msgid "Home"
+msgstr ""
 
 #: views.py:62
 #, python-format

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -21,20 +21,20 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:20
+#: apps.py:36 events.py:5 permissions.py:5 queues.py:7 settings.py:21
 msgid "Converter"
 msgstr "Μετατροπέας"
 
-#: apps.py:83 forms.py:37
+#: apps.py:80 forms.py:37
 msgid "Transformation"
 msgstr "Μετασχηματισμός"
 
-#: backends/python.py:124 backends/python.py:137
+#: backends/python.py:120 backends/python.py:133
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "Εξαίρεση που καθορίζει τον αριθμό σελίδων PDF. %s"
 
-#: backends/python.py:151
+#: backends/python.py:147
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
 msgstr ""
@@ -44,11 +44,11 @@ msgstr ""
 msgid "LibreOffice not installed or not found."
 msgstr "Το LibreOffice δεν είναι εγκατεστημένο ή δεν βρέθηκε."
 
-#: classes.py:261
+#: classes.py:258
 msgid "Not an office file format."
 msgstr "Δεν είναι μορφή αρχείου office."
 
-#: classes.py:395
+#: classes.py:392
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
@@ -56,7 +56,7 @@ msgstr ""
 "Οι μετασχηματισμοί επιτρέπουν την αλλαγή της οπτικής εμφάνισης των εγγράφων "
 "χωρίς να πραγματοποιούνται μόνιμες αλλαγές στο ίδια τα αρχεία εγγράφων."
 
-#: classes.py:446
+#: classes.py:443
 msgid "transformation"
 msgstr "μετασχηματισμός"
 
@@ -158,35 +158,35 @@ msgstr "Αρχείο"
 msgid "Asset"
 msgstr "Στοιχείο"
 
-#: models.py:157 models.py:228
+#: models.py:162 models.py:233
 msgid "Name"
 msgstr "Όνομα"
 
-#: models.py:160 models.py:226
+#: models.py:165 models.py:231
 msgid "Order"
 msgstr "Σειρά προτεραιότητας"
 
-#: models.py:165 models.py:184
+#: models.py:170 models.py:189
 msgid "Stored layer"
 msgstr "Αποθηκευμένο επίπεδο"
 
-#: models.py:166
+#: models.py:171
 msgid "Stored layers"
 msgstr "Αποθηκευμένα επίπεδα"
 
-#: models.py:181 models.py:235
+#: models.py:186 models.py:240
 msgid "Enabled"
 msgstr "Ενεργοποιημένο"
 
-#: models.py:192 models.py:220
+#: models.py:197 models.py:225
 msgid "Object layer"
 msgstr "Επίπεδο αντικειμένου"
 
-#: models.py:193
+#: models.py:198
 msgid "Object layers"
 msgstr "Επίπεδα αντικειμένων"
 
-#: models.py:224
+#: models.py:229
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
@@ -194,7 +194,7 @@ msgstr ""
 "Σειρά με την οποία θα εκτελεστούν οι μετασχηματισμοί. Εάν παραμείνει "
 "αμετάβλητη, θα εκχωρηθεί αυτόματα σειρά προτεραιότητας."
 
-#: models.py:231 workflow_actions.py:45
+#: models.py:236 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
@@ -202,19 +202,19 @@ msgstr ""
 "Εισάγετε τα ορίσματα για τον μετασχηματισμό ως λεξικό YAML. δηλαδή: "
 "{\"degrees\": 180}"
 
-#: models.py:233
+#: models.py:238
 msgid "Arguments"
 msgstr "Ορίσματα"
 
-#: models.py:242
+#: models.py:247
 msgid "Layer transformation"
 msgstr "Μετασχηματισμός επιπέδου"
 
-#: models.py:243
+#: models.py:248
 msgid "Layer transformations"
 msgstr "Μετασχηματισμοί επιπέδου"
 
-#: models.py:249
+#: models.py:254
 msgid "Unknown transformation class"
 msgstr "Άγνωστη κλάση μετασχηματισμού"
 
@@ -251,10 +251,10 @@ msgid "View existing transformations"
 msgstr "Προβολή υπαρχόντων μετασχηματισμών"
 
 #: queues.py:12
-msgid "Generate a image of an asset."
+msgid "Generate a image of an object."
 msgstr ""
 
-#: settings.py:29
+#: settings.py:30
 msgid ""
 "The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest asset cache files. Specify the size in bytes."
@@ -262,42 +262,46 @@ msgstr ""
 
 #: settings.py:38
 msgid ""
-"Time in seconds that the browser should cache the supplied asset. The "
-"default of 31559626 seconds correspond to 1 year."
-msgstr ""
-
-#: settings.py:45
-msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
 msgstr ""
 
-#: settings.py:53
+#: settings.py:46
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
 msgstr ""
 
-#: settings.py:59
+#: settings.py:52
 msgid "Path to the Storage subclass to use when storing assets."
 msgstr ""
 "Διαδρομή προς την υποτάξη Storage για χρήση κατά την αποθήκευση στοιχείων."
 
-#: settings.py:65
+#: settings.py:58
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgstr "Ορίσματα για διαβίβαση στο CONVERTER_ASSET_STORAGE_BACKEND."
 
-#: settings.py:72
+#: settings.py:64
+msgid "Graphics conversion backend to use."
+msgstr "Επιλογή υποκείμενου συστήματος μετατροπής γραφικών."
+
+#: settings.py:70
+msgid "Configuration options for the graphics conversion backend."
+msgstr ""
+"Επιλογές παραμετροποίησης για το υποκείμενο σύστημα μετατροπής γραφικών."
+
+#: settings.py:77
+msgid "Time in seconds that the browser should cache the supplied image. "
+msgstr ""
+
+#: settings.py:84
 msgid ""
 "Maximum number of retries before giving up. A value of None means the task "
 "will retry forever."
 msgstr ""
 
-#: settings.py:79
-msgid "Graphics conversion backend to use."
-msgstr "Επιλογή υποκείμενου συστήματος μετατροπής γραφικών."
-
-#: settings.py:85
-msgid "Configuration options for the graphics conversion backend."
+#: settings.py:92
+msgid ""
+"Time in seconds after which the image generation task will stop running and "
+"raise an error."
 msgstr ""
-"Επιλογές παραμετροποίησης για το υποκείμενο σύστημα μετατροπής γραφικών."
 
 #: storages.py:15
 msgid ""
@@ -317,71 +321,71 @@ msgstr ""
 msgid "Assets cache"
 msgstr ""
 
-#: transformations.py:196
+#: transformations.py:210
 msgid "Paste an asset"
 msgstr "Επικόλληση ενός στοιχείου"
 
-#: transformations.py:247
+#: transformations.py:261
 msgid "Paste an asset (percents coordinates)"
 msgstr "Επικόλληση ενός στοιχείου (ποσοστά συντεταγμένων)"
 
-#: transformations.py:290
+#: transformations.py:304
 msgid "Paste an asset as watermark"
 msgstr "Επικόλληση ενός στοιχείου ως υδατογράφημα"
 
-#: transformations.py:350
+#: transformations.py:364
 msgid "Crop"
 msgstr "Περικοπή"
 
-#: transformations.py:428
+#: transformations.py:442
 msgid "Draw rectangle"
 msgstr "Σχεδίαση ορθογωνίου"
 
-#: transformations.py:530
+#: transformations.py:544
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Σχεδίαση ορθογωνίου (ποσοστά συντεταγμένων)"
 
-#: transformations.py:627
+#: transformations.py:641
 msgid "Flip"
 msgstr "Αναστροφή"
 
-#: transformations.py:638
+#: transformations.py:652
 msgid "Gaussian blur"
 msgstr "Γκαουσιανό θάμπωμα"
 
-#: transformations.py:650
+#: transformations.py:664
 msgid "Line art"
 msgstr "Γραμμικό σχέδιο"
 
-#: transformations.py:664
+#: transformations.py:678
 msgid "Mirror"
 msgstr "Αντικατοπτρισμός"
 
-#: transformations.py:675
+#: transformations.py:689
 msgid "Resize"
 msgstr "Αλλαγή μεγέθους"
 
-#: transformations.py:702
+#: transformations.py:716
 msgid "Rotate"
 msgstr "Περιστροφή"
 
-#: transformations.py:728
+#: transformations.py:746
 msgid "Rotate 90 degrees"
 msgstr "Περιστροφή κατά 90 μοιρες"
 
-#: transformations.py:739
+#: transformations.py:757
 msgid "Rotate 180 degrees"
 msgstr "Περιστροφή κατά 180 μοίρες"
 
-#: transformations.py:750
+#: transformations.py:768
 msgid "Rotate 270 degrees"
 msgstr "Περιστροφή κατά 270 μοίρες"
 
-#: transformations.py:760
+#: transformations.py:778
 msgid "Unsharp masking"
 msgstr "Άμβλυνση επικάλυψης"
 
-#: transformations.py:776
+#: transformations.py:794
 msgid "Zoom"
 msgstr "Εστίασμός"
 

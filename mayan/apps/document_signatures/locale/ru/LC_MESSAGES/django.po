@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -29,23 +29,23 @@ msgstr ""
 msgid "Document signatures"
 msgstr "Подписи документа"
 
-#: apps.py:111
+#: apps.py:112
 msgid "Date and time"
 msgstr "Дата и время"
 
-#: apps.py:115 models.py:52
+#: apps.py:116 models.py:56
 msgid "Key ID"
 msgstr "ID ключа"
 
-#: apps.py:119 forms.py:72
+#: apps.py:120 forms.py:72
 msgid "None"
 msgstr "Нет"
 
-#: apps.py:120 forms.py:60 models.py:57
+#: apps.py:121 forms.py:60 models.py:61
 msgid "Signature ID"
 msgstr "ID подписи"
 
-#: apps.py:125
+#: apps.py:126
 msgid "Type"
 msgstr "Тип"
 
@@ -54,10 +54,14 @@ msgid "Detached signature created"
 msgstr "Отсоединенная подпись создана"
 
 #: events.py:13
+msgid "Detached signature deleted"
+msgstr ""
+
+#: events.py:16
 msgid "Detached signature uploaded"
 msgstr "Отсоединенная подпись загружена"
 
-#: events.py:17
+#: events.py:20
 msgid "Embedded signature created"
 msgstr "Присоединенная подпись создана"
 
@@ -127,99 +131,99 @@ msgstr "ID пользователя ключа"
 msgid "Key type"
 msgstr "Тип ключа"
 
-#: links.py:40
+#: links.py:42
 msgid "Refresh all signatures"
 msgstr "Обновить все подписи"
 
-#: links.py:46
+#: links.py:48
 msgid "Verify all documents"
 msgstr "Проверить подписи документов"
 
-#: links.py:53
-msgid "Delete"
-msgstr "Удалить"
-
-#: links.py:60
+#: links.py:58
 msgid "Sign detached"
 msgstr "Подписать отсоединенной"
 
-#: links.py:67
-msgid "Details"
-msgstr "Подробности"
+#: links.py:65
+msgid "Delete"
+msgstr "Удалить"
 
-#: links.py:74
+#: links.py:73
 msgid "Download"
 msgstr "Скачать"
 
-#: links.py:80
-msgid "Sign embedded"
-msgstr "Подписать присоединенной"
-
-#: links.py:86 queues.py:8
-msgid "Signatures"
-msgstr "Подписи"
-
-#: links.py:92
+#: links.py:79
 msgid "Upload signature"
 msgstr "Загрузить подпись"
 
-#: models.py:42
+#: links.py:89
+msgid "Sign embedded"
+msgstr "Подписать присоединенной"
+
+#: links.py:99
+msgid "Details"
+msgstr "Подробности"
+
+#: links.py:105 queues.py:8
+msgid "Signatures"
+msgstr "Подписи"
+
+#: models.py:46
 msgid "Document file"
 msgstr "Файл документа"
 
-#: models.py:47
+#: models.py:51
 msgid "Date and time signed"
 msgstr "Дата и время подписания"
 
-#: models.py:51
+#: models.py:55
 msgid "ID of the key that will be used to sign the document."
 msgstr "ID ключа, которым будет подписан документ."
 
-#: models.py:61
+#: models.py:65
 msgid "Public key fingerprint"
 msgstr "Отпечаток открытого ключа"
 
-#: models.py:68
+#: models.py:72
 msgid "Document file signature"
 msgstr "Подпись файла документа"
 
-#: models.py:69
+#: models.py:73
 msgid "Document file signatures"
 msgstr "Подписи файла документа"
 
-#: models.py:88
+#: models.py:92
 msgid "Detached"
 msgstr "Отсоединенная"
 
-#: models.py:90
+#: models.py:94
 msgid "Embedded"
 msgstr "Присоединенная"
 
-#: models.py:155
+#: models.py:159
 msgid "Signature file previously generated."
 msgstr "Файл подписи, сгенерированный ранее."
 
-#: models.py:158
+#: models.py:162
 msgid "Signature file"
 msgstr "Файл подписи"
 
-#: models.py:164
+#: models.py:168
 msgid "Document file detached signature"
 msgstr "Отсоединенная подпись файла документа"
 
-#: models.py:165
+#: models.py:169
 msgid "Document file detached signatures"
 msgstr "Отсоединенные подписи файла документа"
 
-#: models.py:168
+#: models.py:172
 msgid "signature"
 msgstr "подпись"
 
-#: models.py:210
+#: models.py:222
 msgid "Document file embedded signature"
 msgstr "Присоединенная подпись файла документа"
 
-#: models.py:211
+#: models.py:223
 msgid "Document file embedded signatures"
 msgstr "Присоединенные подписи файла документа"
 
@@ -297,43 +301,44 @@ msgstr ""
 msgid "Detached signatures"
 msgstr "Отсоединенные подписи"
 
-#: views.py:66 views.py:135
+#: views.py:62 views.py:129
 msgid "Passphrase is needed to unlock this key."
 msgstr "Для разблокировки ключа необходима кодовая фраза."
 
-#: views.py:79 views.py:148
+#: views.py:75 views.py:142
 msgid "Passphrase is incorrect."
 msgstr "Кодовая фраза неверна."
 
-#: views.py:92 views.py:161
+#: views.py:88 views.py:155
 msgid "Document file signed successfully."
 msgstr "Файл документа подписан."
 
-#: views.py:102 views.py:178
-msgid "Sign"
-msgstr "Подписать"
-
-#: views.py:104
+#: views.py:98
 #, python-format
 msgid "Sign document file \"%s\" with a detached signature"
 msgstr "Подписать отсоединенной подписью файл документа \"%s\""
 
-#: views.py:180
+#: views.py:172
 #, python-format
 msgid "Sign document file \"%s\" with a embedded signature"
 msgstr "Подписать присоединенной подписью файл документа \"%s\""
 
-#: views.py:196
+#: views.py:188
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "Удалить отсоединенную подпись: %s"
 
-#: views.py:226
+#: views.py:238
+#, python-format
+msgid "Upload detached signature for document file: %s"
+msgstr "Загрузить отсоединенную подпись для файла документа: %s"
+
+#: views.py:267
 #, python-format
 msgid "Details for signature: %s"
 msgstr "Подробности подписи: %s"
 
-#: views.py:268
+#: views.py:291
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
@@ -344,37 +349,32 @@ msgstr ""
 " присоединенной к документу или выгруженной отдельным файлом, т.е. "
 "отсоединенной. "
 
-#: views.py:297
+#: views.py:320
 msgid "There are no signatures for this document file."
 msgstr "Отсутствуют подписи файла документа."
 
-#: views.py:301
+#: views.py:324
 #, python-format
 msgid "Signatures for document file: %s"
 msgstr "Подписи для файла документа: %s"
 
-#: views.py:322
-#, python-format
-msgid "Upload detached signature for document file: %s"
-msgstr "Загрузить отсоединенную подпись для файла документа: %s"
-
-#: views.py:340 views.py:359
+#: views.py:335 views.py:354
 msgid "On large databases this operation may take some time to execute."
 msgstr "В больших базах данных эта операция может занять некоторое время."
 
-#: views.py:341
+#: views.py:336
 msgid "Refresh all signatures information?"
 msgstr "Обновить информацию обо всех подписях?"
 
-#: views.py:351
+#: views.py:346
 msgid "Signature information refresh queued successfully."
 msgstr "Обновление информации о подписях поставлено в очередь."
 
-#: views.py:360
+#: views.py:355
 msgid "Verify all document for signatures?"
 msgstr "Проверить подписи во всех документах?"
 
-#: views.py:370
+#: views.py:365
 msgid "Signature verification queued successfully."
 msgstr "Проверка подписей поставлена в очередь."
 

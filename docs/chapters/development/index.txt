@@ -22,6 +22,7 @@ For developers
     code_structure
     documentation
     source_control
+    development_deployment
     contributing
     releases
     translations

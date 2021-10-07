@@ -7,7 +7,7 @@
 COMPOSE_PROJECT_NAME=mayan
 
 # Default profile
-# COMPOSE_PROFILES=all_in_one,postgresql
+COMPOSE_PROFILES=all_in_one,postgresql
 
 # To use block storage.
 # MAYAN_PIP_INSTALLS="django-storages==1.10 boto3==1.14.58"

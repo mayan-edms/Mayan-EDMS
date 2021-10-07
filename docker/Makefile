@@ -189,7 +189,7 @@ docker-development-cleanup: ## Delete the test container and the test volume.
 
 devpi-init:
 	@if [ -z "$$(pip list | grep devpi-server)" ]; then echo "devpi-server not installed"; exit 1;fi
-	devpi-server --init || true
+	devpi-init || true
 
 devpi-start: devpi-init
 	devpi-server --host=0.0.0.0 >/dev/null &

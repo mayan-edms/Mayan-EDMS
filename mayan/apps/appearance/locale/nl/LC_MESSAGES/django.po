@@ -1,19 +1,19 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
 # e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2021
 # bwakkie <bwakkie@gmail.com>, 2021
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:49+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:56 events.py:5 permissions.py:5 settings.py:7
+#: apps.py:55 events.py:5 permissions.py:5 settings.py:10
 msgid "Appearance"
 msgstr "Uiterlijk"
 
@@ -103,41 +103,41 @@ msgstr "Verwijderen"
 msgid "Edit"
 msgstr "Bewerken"
 
-#: links.py:40 links.py:45 models.py:29 views.py:111
+#: links.py:40 links.py:45 models.py:31 views.py:111
 msgid "Themes"
 msgstr ""
 
-#: models.py:16
+#: models.py:18
 msgid "A short text describing the theme."
 msgstr ""
 
-#: models.py:17
+#: models.py:19
 msgid "Label"
 msgstr "Label"
 
-#: models.py:21
+#: models.py:23
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
 msgstr ""
 
-#: models.py:23
+#: models.py:25
 msgid "Stylesheet"
 msgstr ""
 
-#: models.py:28 models.py:63
+#: models.py:30 models.py:68
 msgid "Theme"
 msgstr ""
 
-#: models.py:59
+#: models.py:64
 msgid "User"
 msgstr "Gebruiker"
 
-#: models.py:67
+#: models.py:72
 msgid "User theme setting"
 msgstr ""
 
-#: models.py:68
+#: models.py:73
 msgid "User theme settings"
 msgstr ""
 
@@ -157,17 +157,22 @@ msgstr ""
 msgid "View existing themes"
 msgstr ""
 
-#: settings.py:12
+#: settings.py:15
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "Mamximum aantal tekens dat in de titel wordt weergegeven."
 
-#: settings.py:19
+#: settings.py:22
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
 msgstr ""
 "Positie waar systeemberichten worden weergegeven.\n"
 "Opties zijn: links-boven, rechts-boven, links-onder, midden-onder, rechts-onder."
+
+#: settings.py:30
+msgid ""
+"Delay in milliseconds after which the menus will be checked for updates."
+msgstr ""
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
@@ -336,13 +341,9 @@ msgstr ""
 "\n"
 "Vertel het verder. Laat je vrienden en collega's weten hoe fantastisch %(project_title)s is!"
 
-#: templates/appearance/base.html:71
+#: templates/appearance/base.html:72
 msgid "Object"
 msgstr "Object"
-
-#: templates/appearance/partials/form_title.html:10
-msgid "Open main menu"
-msgstr "Open hoofdmenu"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
@@ -363,24 +364,26 @@ msgstr "Nee"
 msgid "required"
 msgstr "Verplicht"
 
-#: templates/appearance/generic_form_subtemplate.html:83
-#: templates/appearance/generic_form_subtemplate.html:96
-#: templates/appearance/generic_multiform_subtemplate.html:59
+#: templates/appearance/generic_form_subtemplate.html:84
+#: templates/appearance/generic_form_subtemplate.html:94
+#: templates/appearance/generic_form_subtemplate.html:108
+#: templates/appearance/generic_multiform_subtemplate.html:62
 msgid "Save"
 msgstr "Opslaan"
 
-#: templates/appearance/generic_form_subtemplate.html:83
-#: templates/appearance/generic_form_subtemplate.html:96
-#: templates/appearance/generic_multiform_subtemplate.html:59
+#: templates/appearance/generic_form_subtemplate.html:84
+#: templates/appearance/generic_form_subtemplate.html:94
+#: templates/appearance/generic_form_subtemplate.html:108
+#: templates/appearance/generic_multiform_subtemplate.html:62
 msgid "Submit"
 msgstr "Indienen"
 
-#: templates/appearance/generic_form_subtemplate.html:87
-#: templates/appearance/generic_multiform_subtemplate.html:63
+#: templates/appearance/generic_form_subtemplate.html:98
+#: templates/appearance/generic_multiform_subtemplate.html:66
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: templates/appearance/generic_list_subtemplate.html:29
+#: templates/appearance/generic_list_subtemplate.html:34
 msgid "Identifier"
 msgstr "Identifier"
 
@@ -388,19 +391,23 @@ msgstr "Identifier"
 msgid "Facets"
 msgstr ""
 
-#: templates/appearance/home.html:10
-msgid "Dashboard"
-msgstr "Dashboard"
-
-#: templates/appearance/home.html:26
+#: templates/appearance/home.html:27
 msgid "Getting started"
 msgstr "Beginnen"
 
-#: templates/appearance/home.html:29
+#: templates/appearance/home.html:30
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr ""
 "Voordat u volledig gebruik kunt maken van Mayan EDMS heeft u het volgende "
 "nodig:"
+
+#: templates/appearance/menus/menu_topbar.html:11
+msgid "Toggle navigation"
+msgstr "Wissel navigatie"
+
+#: templates/appearance/partials/form_title.html:10
+msgid "Open main menu"
+msgstr "Open hoofdmenu"
 
 #: templates/appearance/partials/list_header.html:12
 #, python-format
@@ -440,10 +447,6 @@ msgstr "Bulk acties"
 msgid "Toggle Dropdown"
 msgstr "Toggle Dropdown"
 
-#: templates/appearance/menus/menu_topbar.html:11
-msgid "Toggle navigation"
-msgstr "Wissel navigatie"
-
 #: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Geen resultaten"
@@ -460,7 +463,7 @@ msgstr "Server communicatie probleem"
 msgid "Check you network connection and try again in a few moments."
 msgstr "Controleer uw netwerkverbinding en probeer het later nog eens."
 
-#: templatetags/appearance_tags.py:63
+#: templatetags/appearance_tags.py:61
 msgid "None"
 msgstr "Geen"
 

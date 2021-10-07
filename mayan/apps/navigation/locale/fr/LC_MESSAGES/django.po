@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Navigation"
 msgstr "Navigation"
 
-#: classes.py:780
+#: classes.py:882
 msgid "Unnamed function"
 msgstr "Sans nom"
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -25,24 +25,24 @@ msgstr ""
 msgid "Label"
 msgstr "Етикет"
 
-#: apps.py:48 events.py:6 links.py:17 permissions.py:5 queues.py:7
+#: apps.py:51 events.py:6 links.py:19 permissions.py:5 queues.py:7
 #: settings.py:12
 msgid "File metadata"
 msgstr "Метаданни на файла"
 
-#: apps.py:98 search.py:11 search.py:22 search.py:33
+#: apps.py:102 search.py:11 search.py:22 search.py:33
 msgid "File metadata key"
 msgstr "Ключ за метаданни на файл"
 
-#: apps.py:102 search.py:15 search.py:26 search.py:37
+#: apps.py:106 search.py:15 search.py:26 search.py:37
 msgid "File metadata value"
 msgstr "Стойност на метаданни на файл"
 
-#: apps.py:129
+#: apps.py:134
 msgid "Return the value of a specific file metadata."
 msgstr "Покажете стойността на определени метаданни на файла"
 
-#: apps.py:130
+#: apps.py:135
 msgid "File metadata value of"
 msgstr "Метаданни във файл за"
 
@@ -65,19 +65,19 @@ msgstr "Файл на документ, изпратен за обработка
 msgid "Document file file metadata processing finished"
 msgstr "Обработката на метаданните на файл с документ приключи"
 
-#: links.py:23
+#: links.py:25
 msgid "Attributes"
 msgstr "Характеристики"
 
-#: links.py:30 links.py:35
+#: links.py:32 links.py:37
 msgid "Submit for file metadata"
 msgstr "Подайте за метаданни на файла"
 
-#: links.py:42
+#: links.py:47
 msgid "Setup file metadata"
 msgstr "Настройте метаданни на файла"
 
-#: links.py:47
+#: links.py:52
 msgid "File metadata processing per type"
 msgstr "Обработка на метаданни на файл според типа"
 

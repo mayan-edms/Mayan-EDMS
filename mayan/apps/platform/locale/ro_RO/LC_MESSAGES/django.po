@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:51+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Harald Ersch, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -21,30 +21,42 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:12
+#: apps.py:14 settings.py:11
 msgid "Platform"
 msgstr "Platformă"
 
-#: classes.py:134
+#: classes.py:182
 msgid "Template for entrypoint.sh file inside a Docker image."
 msgstr ""
 
-#: classes.py:144
+#: classes.py:192
 msgid "Template that generates a Dockerfile file."
 msgstr ""
 
-#: classes.py:158
+#: classes.py:206
 msgid "Template for Supervisord inside a Docker image."
 msgstr "Șablon pentru Supervisord în interiorul unei imagini Docker."
 
-#: classes.py:174
+#: classes.py:222
 msgid "Template that generates a GitLab CI config file."
 msgstr ""
 
-#: classes.py:218
+#: classes.py:266
 msgid "Template for Supervisord."
 msgstr "Șablon pentru Supervisord."
 
-#: classes.py:287
+#: classes.py:335
 msgid "Template showing the queues of a worker."
 msgstr "Șablon care arată cozile unui lucrător."
+
+#: settings.py:16
+msgid ""
+"List of client backends to launch after startup. Use full dotted path to the"
+" client backend classes."
+msgstr ""
+
+#: settings.py:23
+msgid ""
+"Arguments for the client backends. Use the client backend dotted path as the"
+" dictionary key for the arguments in dictionary format."
+msgstr ""

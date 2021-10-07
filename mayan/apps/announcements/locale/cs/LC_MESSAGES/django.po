@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:49+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-12 03:38+0000\n"
 "Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -22,12 +22,12 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
+#: apps.py:35 events.py:5 links.py:40 models.py:42 permissions.py:6
 #: templates/announcements/announcements.html:8 views.py:119
 msgid "Announcements"
 msgstr ""
 
-#: apps.py:74 apps.py:78
+#: apps.py:72 apps.py:76
 msgid "None"
 msgstr "Žádný"
 
@@ -51,43 +51,43 @@ msgstr "Odstranit"
 msgid "Edit"
 msgstr "Upravit"
 
-#: models.py:18
+#: models.py:19
 msgid "Short description of this announcement."
 msgstr "Krátký popis tohoto oznámení."
 
-#: models.py:19
+#: models.py:20
 msgid "Label"
 msgstr "Jmenovka"
 
-#: models.py:22
+#: models.py:23
 msgid "The actual text to be displayed."
 msgstr "Skutečný text, který se má zobrazit."
 
-#: models.py:23
+#: models.py:24
 msgid "Text"
 msgstr "Text"
 
-#: models.py:25
+#: models.py:26
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: models.py:28
+#: models.py:29
 msgid "Date and time after which this announcement will be displayed."
 msgstr "Datum a čas, po kterém se toto oznámení zobrazí."
 
-#: models.py:29
+#: models.py:30
 msgid "Start date time"
 msgstr "Počáteční datum"
 
-#: models.py:33
+#: models.py:34
 msgid "Date and time until when this announcement is to be displayed."
 msgstr ""
 
-#: models.py:34
+#: models.py:35
 msgid "End date time"
 msgstr "Datum ukončení"
 
-#: models.py:40
+#: models.py:41
 msgid "Announcement"
 msgstr ""
 

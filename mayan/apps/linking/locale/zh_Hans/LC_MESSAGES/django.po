@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:26+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -24,12 +24,12 @@ msgstr ""
 msgid "Linking"
 msgstr "链接"
 
-#: apps.py:94 models.py:29
+#: apps.py:100 models.py:29
 msgid "Label"
 msgstr "标签"
 
 #: events.py:6 links.py:24 links.py:75 links.py:80 links.py:85 models.py:48
-#: permissions.py:5 views.py:191
+#: permissions.py:5 views.py:147
 msgid "Smart links"
 msgstr "智能链接"
 
@@ -61,7 +61,7 @@ msgstr "编辑"
 msgid "Conditions"
 msgstr "条件"
 
-#: links.py:50 views.py:227
+#: links.py:50 views.py:248
 msgid "Create new smart link"
 msgstr "创建新的智能链接"
 
@@ -155,11 +155,11 @@ msgstr ""
 msgid "Dynamic label"
 msgstr "动态标签"
 
-#: models.py:37 models.py:186
+#: models.py:37 models.py:188
 msgid "Enabled"
 msgstr "启用"
 
-#: models.py:47 models.py:164
+#: models.py:47 models.py:166
 msgid "Smart link"
 msgstr "智能链接"
 
@@ -172,178 +172,184 @@ msgstr "生成动态标签时出错; %s"
 msgid "This smart link is not allowed for the selected document's type."
 msgstr "所选文档的类型不允许使用此智能链接。"
 
-#: models.py:168
+#: models.py:170
 msgid "The inclusion is ignored for the first item."
 msgstr "第一项忽略此包含。"
 
-#: models.py:172
+#: models.py:174
 msgid "This represents the metadata of all other documents."
 msgstr "这表示所有其他文档的元数据。"
 
-#: models.py:173
+#: models.py:175
 msgid "Foreign document attribute"
 msgstr "外部文档属性"
 
-#: models.py:178
+#: models.py:180
 msgid ""
 "The expression using document properties to be evaluated against the foreign"
 " document field."
 msgstr ""
 
-#: models.py:180
+#: models.py:182
 msgid "Expression"
 msgstr "表达式"
 
-#: models.py:183
+#: models.py:185
 msgid "Inverts the logic of the operator."
 msgstr "反转运算符的逻辑。"
 
-#: models.py:184
+#: models.py:186
 msgid "Negated"
 msgstr "否定"
 
-#: models.py:189
+#: models.py:191
 msgid "Link condition"
 msgstr "链接条件"
 
-#: models.py:190
+#: models.py:192
 msgid "Link conditions"
 msgstr "链接条件"
 
-#: models.py:206
+#: models.py:208
 msgid "not"
 msgstr "否"
 
-#: models.py:210
+#: models.py:212
 msgid "Full label"
 msgstr ""
 
 #: permissions.py:8
+msgid "View resolved smart links"
+msgstr ""
+
+#: permissions.py:11
 msgid "Create new smart links"
 msgstr "创建新的智能链接"
 
-#: permissions.py:11
+#: permissions.py:14
 msgid "Delete smart links"
 msgstr "删除智能链接"
 
-#: permissions.py:14
+#: permissions.py:17
 msgid "Edit smart links"
 msgstr "编辑智能链接"
 
-#: permissions.py:17
+#: permissions.py:20
 msgid "View existing smart links"
 msgstr "查看现有的智能链接"
 
-#: serializers.py:52
+#: serializers.py:49
 msgid "Primary key of the document type to add to the smart link."
 msgstr ""
 
-#: serializers.py:61
+#: serializers.py:58
 msgid "Primary key of the document type to remove from the smart link."
 msgstr ""
 
-#: views.py:41
-msgid "Available smart links"
+#: views.py:65
+#, python-format
+msgid "Resolved smart link query error: %s"
 msgstr ""
 
-#: views.py:42
-msgid "Smart links enabled"
+#: views.py:92
+#, python-format
+msgid "Resolved smart link dynamic label error: %s"
 msgstr ""
 
-#: views.py:68
+#: views.py:97
 #, python-format
-msgid "Smart links to enable for document type: %s"
+msgid ""
+"Documents in resolved smart link \"%(resolved_smart_link)s\" for "
+"\"%(document)s\""
 msgstr ""
 
-#: views.py:103
-#, python-format
-msgid "Smart link query error: %s"
-msgstr "智能链接查询错误：%s"
-
-#: views.py:114
-#, python-format
-msgid "Documents in smart link: %s"
-msgstr "智能链接中的文档：%s"
-
-#: views.py:117
-#, python-format
-msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr "与“%(document)s”相关的智能链接“%(smart_link)s”中的文档"
-
-#: views.py:153
-msgid "Available document types"
-msgstr "可用的文档类型"
-
-#: views.py:154
-msgid "Document types enabled"
-msgstr "文档类型已启用"
-
-#: views.py:164
-#, python-format
-msgid "Document type for which to enable smart link: %s"
-msgstr "要为其启用智能链接的文档类型：%s"
-
-#: views.py:182
+#: views.py:138
 msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
 msgstr "索引将文档分组为单元，通常具有相似的属性和相同或相似的类型。智能链接允许定义文档之间的关系，即使它们位于不同的索引中且属于不同类型。"
 
-#: views.py:189
+#: views.py:145
 msgid "There are no smart links"
 msgstr "没有智能链接"
 
-#: views.py:207
+#: views.py:166
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
 msgstr "智能链接允许定义文档之间的关系，即使它们位于不同的索引中且属于不同类型。"
 
-#: views.py:212
-msgid "There are no smart links for this document"
-msgstr "此文档没有智能链接"
+#: views.py:171
+msgid "There are no resolved smart links for this document"
+msgstr ""
 
-#: views.py:215
+#: views.py:175
 #, python-format
-msgid "Smart links for document: %s"
-msgstr "文档的智能链接：%s"
+msgid "Resolved smart links for document: %s"
+msgstr ""
 
-#: views.py:249
+#: views.py:191
+msgid "Available smart links"
+msgstr ""
+
+#: views.py:192
+msgid "Smart links enabled"
+msgstr ""
+
+#: views.py:218
+#, python-format
+msgid "Smart links to enable for document type: %s"
+msgstr ""
+
+#: views.py:231
+msgid "Available document types"
+msgstr "可用的文档类型"
+
+#: views.py:232
+msgid "Document types enabled"
+msgstr "文档类型已启用"
+
+#: views.py:242
+#, python-format
+msgid "Document type for which to enable smart link: %s"
+msgstr "要为其启用智能链接的文档类型：%s"
+
+#: views.py:270
 #, python-format
 msgid "Delete smart link: %s"
 msgstr "删除智能链接：%s"
 
-#: views.py:265
+#: views.py:286
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "编辑智能链接：%s"
 
-#: views.py:290
+#: views.py:311
 msgid ""
 "Conditions are small logic units that when combined define how the smart "
 "link will behave."
 msgstr "条件是小逻辑单元，在组合时定义智能链接的行为方式。"
 
-#: views.py:294
+#: views.py:315
 msgid "There are no conditions for this smart link"
 msgstr "此智能链接没有条件"
 
-#: views.py:298
+#: views.py:319
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr "智能链接的条件：%s"
 
-#: views.py:317
+#: views.py:338
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "为智能链接添加新条件：“%s”"
 
-#: views.py:350
+#: views.py:371
 #, python-format
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "删除智能链接条件：“%s”？"
 
-#: views.py:376
+#: views.py:397
 msgid "Edit smart link condition"
 msgstr "编辑智能链接条件"

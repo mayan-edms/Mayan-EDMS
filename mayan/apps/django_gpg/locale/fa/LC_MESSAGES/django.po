@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Nima Towhidi <nima.towhidi@gmail.com>, 2021\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
@@ -22,35 +22,35 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:33
+#: apps.py:31
 msgid "Django GPG"
 msgstr "Django GPG"
 
-#: apps.py:56 apps.py:62 forms.py:15
+#: apps.py:53 apps.py:59 forms.py:15
 msgid "Key ID"
 msgstr "شناسه کلیدی"
 
-#: apps.py:66 forms.py:32 models.py:59
+#: apps.py:63 forms.py:32 models.py:59
 msgid "Type"
 msgstr "نوع"
 
-#: apps.py:70 forms.py:21 models.py:40
+#: apps.py:67 forms.py:21 models.py:40
 msgid "Creation date"
 msgstr "تاریخ ایجاد"
 
-#: apps.py:74
+#: apps.py:71
 msgid "No expiration"
 msgstr "بدون انقضا"
 
-#: apps.py:75 forms.py:25 models.py:44
+#: apps.py:72 forms.py:25 models.py:44
 msgid "Expiration date"
 msgstr "تاریخ انقضا"
 
-#: apps.py:78 forms.py:30 models.py:51
+#: apps.py:75 forms.py:30 models.py:51
 msgid "Length"
 msgstr "طول"
 
-#: apps.py:83 forms.py:17 models.py:56
+#: apps.py:80 forms.py:17 models.py:56
 msgid "User ID"
 msgstr "شناسه کاربری"
 
@@ -114,11 +114,11 @@ msgstr "وارد کردن"
 msgid "Upload key"
 msgstr "کلید آپلود"
 
-#: links.py:50 views.py:194
+#: links.py:50 views.py:189
 msgid "Private keys"
 msgstr "کلید شخصی"
 
-#: links.py:54 views.py:218
+#: links.py:54 views.py:213
 msgid "Public keys"
 msgstr "کلید عمومی"
 
@@ -226,78 +226,74 @@ msgstr ""
 msgid "Keyserver used to query for keys."
 msgstr "Keyserver برای پرس و جو برای کلید استفاده می شود."
 
-#: views.py:39
+#: views.py:36
 #, python-format
 msgid "Delete key: %s"
 msgstr "کلید حذف: %s"
 
-#: views.py:56
+#: views.py:53
 #, python-format
 msgid "Details for key: %s"
 msgstr "جزئیات برای کلید: %s"
 
-#: views.py:84
+#: views.py:81
 #, python-format
 msgid "Import key ID: %s?"
 msgstr "وارد کردن شناسه کلیدی: %s"
 
-#: views.py:85
+#: views.py:82
 msgid "Import key"
 msgstr "وارد کردن کلید"
 
-#: views.py:94
+#: views.py:91
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "قادر به وارد کردن کلید نیست: %(key_id)s؛ %(error)s"
 
-#: views.py:102
+#: views.py:99
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr "کلید موفقیت آمیز دریافت کرد: %(key_id)s"
 
-#: views.py:119
+#: views.py:116
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
 msgstr ""
 
-#: views.py:123
+#: views.py:120
 msgid "No results returned"
 msgstr ""
 
-#: views.py:125
+#: views.py:122
 msgid "Key query results"
 msgstr "نتایج پرس و جو کلید"
 
-#: views.py:145
-msgid "Search"
-msgstr "جستجو"
-
-#: views.py:147
+#: views.py:142
 msgid "Query key server"
 msgstr "پرسش از سرور کلید"
 
-#: views.py:166
+#: views.py:161
 msgid "Upload new key"
 msgstr "بارگذاری کلید جدید"
 
-#: views.py:187
+#: views.py:182
 msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user. The view to upload private and public keys is the same."
 msgstr ""
 
-#: views.py:192
+#: views.py:187
 msgid "There no private keys"
 msgstr ""
 
-#: views.py:210
+#: views.py:205
 msgid ""
 "Public keys are used to verify signed documents. Public keys can be uploaded"
 " by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr ""
 
-#: views.py:216
+#: views.py:211
 msgid "There no public keys"
 msgstr ""

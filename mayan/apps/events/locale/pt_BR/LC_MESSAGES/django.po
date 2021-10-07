@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -23,64 +23,68 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:28 events.py:5 links.py:38 links.py:43 links.py:53 permissions.py:5
-#: queues.py:7 views/event_views.py:30
+#: apps.py:31 events.py:11 links.py:61 links.py:66 links.py:84
+#: permissions.py:5 queues.py:7 views/event_views.py:30
 msgid "Events"
 msgstr "Eventos"
 
-#: apps.py:53 apps.py:81
+#: apps.py:59 apps.py:88
 msgid "Date and time"
 msgstr "Data e hora"
 
-#: apps.py:56 apps.py:84
+#: apps.py:63 apps.py:91
 msgid "Actor"
 msgstr "Ator"
 
-#: apps.py:60 apps.py:89
+#: apps.py:67 apps.py:96
 msgid "Event"
 msgstr "Evento"
 
-#: apps.py:64 apps.py:94
+#: apps.py:71 apps.py:101
 msgid "Target"
 msgstr "Alvo"
 
-#: apps.py:68 apps.py:98
+#: apps.py:75 apps.py:105
 msgid "Action object"
 msgstr "Objeto de ação"
 
-#: apps.py:73 forms.py:10 forms.py:67
+#: apps.py:80 forms.py:10 forms.py:67
 msgid "Namespace"
 msgstr "Namespace"
 
-#: apps.py:76 forms.py:14 forms.py:71
+#: apps.py:83 forms.py:14 forms.py:71
 msgid "Label"
 msgstr "Rótulo"
 
-#: apps.py:103
+#: apps.py:110
 msgid "Seen"
 msgstr "Visto"
 
-#: classes.py:79
+#: classes.py:88
 msgid "Event list export to CSV"
 msgstr ""
 
-#: classes.py:108
+#: classes.py:117
 msgid "Events exported."
 msgstr ""
 
-#: classes.py:110
+#: classes.py:119
 #, python-format
 msgid ""
 "The event list has been exported and is available for download using the "
 "link: %(download_url)s or from the downloads area (%(download_list_url)s)."
 msgstr ""
 
-#: classes.py:274
+#: classes.py:343
 #, python-format
 msgid "Unknown or obsolete event type: %s"
 msgstr "Tipo de evento desconhecido ou obsoleto: %s"
 
-#: events.py:8
+#: events.py:15
+msgid "Events cleared"
+msgstr ""
+
+#: events.py:18
 msgid "Events exported"
 msgstr ""
 
@@ -100,27 +104,31 @@ msgstr "Inscrito"
 msgid "System"
 msgstr "Sistema"
 
-#: links.py:30
+#: links.py:49
 msgid "My events"
 msgstr "Meus eventos"
 
-#: links.py:34 links.py:49 links.py:56 views/export_views.py:57
+#: links.py:53 links.py:73 links.py:87 views/clear_views.py:62
+msgid "Clear events"
+msgstr ""
+
+#: links.py:57 links.py:80 links.py:91 views/export_views.py:57
 msgid "Export events"
 msgstr ""
 
-#: links.py:61 models.py:63 views/subscription_views.py:56
+#: links.py:96 models.py:63 views/subscription_views.py:56
 msgid "Event subscriptions"
 msgstr "Inscrições em eventos"
 
-#: links.py:66
+#: links.py:101
 msgid "Mark as seen"
 msgstr "Marcar como visto"
 
-#: links.py:69
+#: links.py:104
 msgid "Mark all as seen"
 msgstr "Marcar todos como vistos"
 
-#: links.py:75
+#: links.py:110
 msgid "Subscriptions"
 msgstr "Inscrições"
 
@@ -173,16 +181,44 @@ msgid "Object event subscriptions"
 msgstr "Inscrições em eventos de objetos"
 
 #: permissions.py:8
-msgid "Export the events of an object"
+msgid "Clear the events of an object"
 msgstr ""
 
 #: permissions.py:11
-msgid "Access the events of an object"
-msgstr "Acessar os eventos de um objeto"
+msgid "Export the events of an object"
+msgstr ""
+
+#: permissions.py:14
+msgid "View the events of an object"
+msgstr ""
 
 #: queues.py:13
+msgid "Clear event querysets"
+msgstr ""
+
+#: queues.py:17
 msgid "Export event querysets"
 msgstr ""
+
+#: views/clear_views.py:26
+msgid ""
+"This action is not reversible. The process will be performed in the "
+"background. "
+msgstr ""
+
+#: views/clear_views.py:50
+msgid "Event list clear task queued successfully."
+msgstr ""
+
+#: views/clear_views.py:81
+#, python-format
+msgid "Clear events of: %s"
+msgstr ""
+
+#: views/clear_views.py:119 views/event_views.py:70 views/export_views.py:105
+#, python-format
+msgid "Events of type: %s"
+msgstr "Eventos do Tipo: %s"
 
 #: views/event_views.py:26
 msgid "Events track actions that have been performed on, to, or with objects."
@@ -205,11 +241,6 @@ msgstr "Eventos para: %s"
 msgid "There are no events of this type"
 msgstr ""
 
-#: views/event_views.py:70 views/export_views.py:105
-#, python-format
-msgid "Events of type: %s"
-msgstr "Eventos do Tipo: %s"
-
 #: views/export_views.py:26
 msgid ""
 "The process will be performed in the background. The exported events will be"
@@ -222,7 +253,7 @@ msgstr ""
 
 #: views/export_views.py:76
 #, python-format
-msgid "Export events for: %s"
+msgid "Export events of: %s"
 msgstr ""
 
 #: views/notification_views.py:25

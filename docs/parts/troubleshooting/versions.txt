@@ -33,3 +33,16 @@ Error: ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan
 ------------------------------------------------------------------------------------------------------------
 
 Same solution as with error: ``...CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+
+.. _troubleshooting-version-4.1:
+
+After upgrade to version 4.1
+============================
+
+Existing indexes are missing
+----------------------------
+
+Due to the changes in the index tree generation algorithm and database
+integrity configuration, existing index trees will deleted during upgrade
+and need to be rebuild after upgrade.

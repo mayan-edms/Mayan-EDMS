@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:51+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -21,20 +21,20 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:36 events.py:6 links.py:34 models.py:36 permissions.py:5
+#: apps.py:33 events.py:6 links.py:34 models.py:37 permissions.py:5
 #: views.py:136
 msgid "Quotas"
 msgstr "Quota"
 
-#: classes.py:65
+#: classes.py:59
 msgid "none"
 msgstr "geen"
 
-#: classes.py:157
+#: classes.py:151
 msgid "Does not apply"
 msgstr "Niet van toepassing"
 
-#: classes.py:161 classes.py:165
+#: classes.py:155 classes.py:159
 msgid "Null backend"
 msgstr "Null backend"
 
@@ -46,7 +46,7 @@ msgstr "Quota aangemaakt"
 msgid "Quota edited"
 msgstr "Quota bewerkt"
 
-#: forms.py:15 models.py:58
+#: forms.py:15 models.py:62
 msgid "Backend"
 msgstr "Backend"
 
@@ -138,39 +138,39 @@ msgstr "alle gebruikers"
 msgid "groups: %(groups)s, users: %(users)s"
 msgstr "groepen: %(groups)s, gebruikers: %(users)s"
 
-#: models.py:22
+#: models.py:23
 msgid "The dotted Python path to the backend class."
 msgstr "Het Python-pad naar de backend class."
 
-#: models.py:23
+#: models.py:24
 msgid "Backend path"
 msgstr "Backend pad"
 
-#: models.py:26
+#: models.py:27
 msgid "Backend data"
 msgstr "Backend gegevens"
 
-#: models.py:30
+#: models.py:31
 msgid "Allow quick disable or enable of the quota."
 msgstr "Snel inschakelen en uitschakelen van quota toestaan."
 
-#: models.py:31
+#: models.py:32
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: models.py:35
+#: models.py:36
 msgid "Quota"
 msgstr "Quota"
 
-#: models.py:57
+#: models.py:61
 msgid "Driver used for this quota entry."
 msgstr "Stuurprogramma gebruikt voor deze quotumvermelding."
 
-#: models.py:62
+#: models.py:66
 msgid "Arguments"
 msgstr "Argumenten"
 
-#: models.py:66
+#: models.py:70
 msgid "Usage"
 msgstr "Gebruik"
 
@@ -190,41 +190,41 @@ msgstr "Een quotum bewerken"
 msgid "View a quota"
 msgstr "Een quotum bekijken"
 
-#: quota_backends.py:70 quota_backends.py:170
+#: quota_backends.py:71 quota_backends.py:171
 msgid "Document count quota exceeded."
 msgstr "Quotum aantal documenten overschreden."
 
-#: quota_backends.py:74
+#: quota_backends.py:75
 msgid "Documents limit"
 msgstr "Documentbeperking"
 
-#: quota_backends.py:77
+#: quota_backends.py:78
 msgid "Maximum number of documents."
 msgstr "Maximaal aantal documenten."
 
-#: quota_backends.py:81
+#: quota_backends.py:82
 msgid "Document count limit"
 msgstr "Beperking aantal documenten "
 
-#: quota_backends.py:106
+#: quota_backends.py:107
 #, python-format
 msgid "document count: %(document_count)s"
 msgstr "aantal documenten: %(document_count)s"
 
-#: quota_backends.py:180 quota_backends.py:185
+#: quota_backends.py:181 quota_backends.py:186
 msgid "Document size limit"
 msgstr "Beperking omvang documenten"
 
-#: quota_backends.py:182
+#: quota_backends.py:183
 msgid "Maximum document size in megabytes (MB)."
 msgstr "Maximum documentgrootte in megabytes (MB)."
 
-#: quota_backends.py:210
+#: quota_backends.py:211
 #, python-format
 msgid "document size: %(formatted_file_size)s"
 msgstr "documentgrootte: %(formatted_file_size)s"
 
-#: quota_backends.py:230
+#: quota_backends.py:231
 msgid "Document size quota exceeded."
 msgstr "Quotum omvang documenten overschreden."
 
