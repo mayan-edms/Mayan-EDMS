@@ -1,28 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
 # Aline Freitas <aline@alinefreitas.com.br>, 2021
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, "
-"2021\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
-"teams/13584/pt_BR/)\n"
-"Language: pt_BR\n"
+"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:54 events.py:6 permissions.py:6 settings.py:12
@@ -341,8 +339,8 @@ msgid ""
 "document itself or uploaded as a separate file."
 msgstr ""
 "Assinaturas ajudam a proporcionar evidência de autoria e detecção de "
-"manipulação. São muito seguras e difíceis de falsificar. Uma assinatura pode "
-"ser integrada ao próprio documento ou carregada como um arquivo destacado."
+"manipulação. São muito seguras e difíceis de falsificar. Uma assinatura pode"
+" ser integrada ao próprio documento ou carregada como um arquivo destacado."
 
 #: views.py:320
 msgid "There are no signatures for this document file."
@@ -356,7 +354,8 @@ msgstr ""
 #: views.py:335 views.py:354
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
-"Em grandes bases de dados esta operação pode levar algum tempo para executar."
+"Em grandes bases de dados esta operação pode levar algum tempo para "
+"executar."
 
 #: views.py:336
 msgid "Refresh all signatures information?"

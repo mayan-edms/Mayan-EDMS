@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Hmayag Antonian <hmayag@freemail.gr>, 2021
 # pyrotech <anastasios@tutamail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
-"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:43 events.py:6 models.py:37 models.py:157 permissions.py:5
@@ -191,8 +191,8 @@ msgstr ""
 "Οι ρόλοι είναι μονάδες εξουσιοδότησης. Περιέχουν ομάδες χρηστών που "
 "κληρονομούν τα δικαιώματα ρόλου για ολόκληρο το σύστημα. Οι ρόλοι μπορούν "
 "επίσης να αποτελούν μέρος των λιστών ελέγχου πρόσβασης. Η λίστα ελέγχου "
-"πρόσβασης αποτελούν δικαιώματα που εκχωρούνται σε έναν ρόλο για συγκεκριμένα "
-"αντικείμενα που κληρονομούν τα μέλη της ομάδας του."
+"πρόσβασης αποτελούν δικαιώματα που εκχωρούνται σε έναν ρόλο για συγκεκριμένα"
+" αντικείμενα που κληρονομούν τα μέλη της ομάδας του."
 
 #: views.py:102
 msgid "There are no roles"
@@ -231,8 +231,8 @@ msgstr "Εκχωρημένα δικαιώματα"
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
 msgstr ""
-"Τα δικαιώματα που χορηγούνται εδώ θα ισχύουν για ολόκληρο το σύστημα και για "
-"όλα τα αντικείμενα."
+"Τα δικαιώματα που χορηγούνται εδώ θα ισχύουν για ολόκληρο το σύστημα και για"
+" όλα τα αντικείμενα."
 
 #: views.py:179
 #, python-format

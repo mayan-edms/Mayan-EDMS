@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
@@ -9,19 +9,19 @@
 # Yves Dubois <ydubois@gmail.com>, 2021
 # Guillaume Trottier <gui.trottier@gmail.com>, 2021
 # Frédéric Sheedy <sheedf@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:35 events.py:6 permissions.py:6 settings.py:10
@@ -114,8 +114,8 @@ msgstr ""
 
 #: settings.py:22
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
-"in. Value is time in seconds."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
 msgstr ""
 "Le temps maximum pendant lequel un utilisateur restera connecté lorsqu'il a "
 "coché la case à cocher \"Se souvenir de moi\". La valeur est le temps en "
@@ -222,7 +222,8 @@ msgstr "Modifier le mot de passe pour l'utilisateur: %s"
 #: views/authentication_views.py:198
 #, python-format
 msgid "Successful password reset for user: %s."
-msgstr "Le mot de passe de l'utilisateur : %s a été ré-initialisé avec succès."
+msgstr ""
+"Le mot de passe de l'utilisateur : %s a été ré-initialisé avec succès."
 
 #: views/authentication_views.py:204
 #, python-format

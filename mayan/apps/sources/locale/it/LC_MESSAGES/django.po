@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2021
@@ -9,19 +9,19 @@
 # Roberto Rosario, 2021
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
-"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:56 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
@@ -211,8 +211,8 @@ msgid ""
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 msgstr ""
 "Criteri da utilizzare durante la ricerca di messaggi da elaborare. Utilizza "
-"il formato specificato in https://tools.ietf.org/html/rfc2060."
-"html#section-6.4.4"
+"il formato specificato in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
 #: source_backends/email_backends.py:52
 msgid "Search criteria"
@@ -221,13 +221,14 @@ msgstr "Criterio di ricerca"
 #: source_backends/email_backends.py:60
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 "Comando IMAP STORE da eseguire sui messaggi dopo che sono stati elaborati. "
-"Un comando per riga. Utilizza i comandi specificati in https://tools.ietf."
-"org/html/rfc2060.html#section-6.4.6 o i comandi personalizzati per il tuo "
-"server IMAP."
+"Un comando per riga. Utilizza i comandi specificati in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 o i comandi "
+"personalizzati per il tuo server IMAP."
 
 #: source_backends/email_backends.py:65
 msgid "Store commands"
@@ -381,8 +382,8 @@ msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
-"Il tipo metadato \"mittente\" \"%(metadata_type)s\" non è valido per il tipo "
-"documento: %(document_type)s"
+"Il tipo metadato \"mittente\" \"%(metadata_type)s\" non è valido per il tipo"
+" documento: %(document_type)s"
 
 #: source_backends/mixins.py:473
 #, python-format
@@ -396,8 +397,8 @@ msgstr ""
 #: source_backends/mixins.py:487
 #, python-format
 msgid ""
-"Message ID metadata type \"%(metadata_type)s\" is not valid for the document "
-"type: %(document_type)s"
+"Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
+" type: %(document_type)s"
 msgstr ""
 
 #: source_backends/mixins.py:588
@@ -461,7 +462,8 @@ msgstr "Percorso cartella"
 #: source_backends/staging_folder_backends.py:267
 msgid "Width value to be passed to the converter backend."
 msgstr ""
-"valore della larghezza da passare per le operazioni di conversione in backend"
+"valore della larghezza da passare per le operazioni di conversione in "
+"backend"
 
 #: source_backends/staging_folder_backends.py:272
 msgid "Preview width"
@@ -514,8 +516,8 @@ msgstr "Impossibile ottenere lista dei file di gestione temporanea: %s"
 #: source_backends/staging_folder_backends.py:544
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
 "Ciò potrebbe significare che la cartella di gestione temporanea è vuota. "
 "Potrebbe anche significare che l'account utente del sistema operativo "
@@ -589,11 +591,11 @@ msgstr "Il server ha risposto con il codice {{statusCode}}."
 
 #: views/base.py:53 wizards.py:52
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
-"Nessuna fonte interattiva dei documenti è stata definita o non ne sono state "
-"attivate."
+"Nessuna fonte interattiva dei documenti è stata definita o non ne sono state"
+" attivate."
 
 #: views/document_file_views.py:49
 #, python-format
@@ -633,13 +635,13 @@ msgstr ""
 
 #: views/document_views.py:53
 msgid "New document queued for upload and will be available shortly."
-msgstr "Nuovo documento in coda per il caricamento e sarà disponibile a breve."
+msgstr ""
+"Nuovo documento in coda per il caricamento e sarà disponibile a breve."
 
 #: views/document_views.py:79
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr ""
-"Carica un documento di tipo \"%(document_type)s\" dalla fonte: %(source)s"
+msgstr "Carica un documento di tipo \"%(document_type)s\" dalla fonte: %(source)s"
 
 #: views/source_views.py:37
 msgid "New source backend selection"
@@ -673,8 +675,8 @@ msgstr "Nessuna fonte disponibile"
 
 #: views/source_views.py:181
 msgid ""
-"This will execute the source code even if the source is not enabled. Sources "
-"that delete content after downloading will not do so while being tested. "
+"This will execute the source code even if the source is not enabled. Sources"
+" that delete content after downloading will not do so while being tested. "
 "Check the source's error log for information during testing. A successful "
 "test will clear the error log."
 msgstr ""

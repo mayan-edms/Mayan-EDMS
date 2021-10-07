@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
@@ -9,20 +9,19 @@
 # Felix <felix.com@gmx.com>, 2021
 # Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
 # Mathias Behrle <mathiasb@m9s.biz>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2021\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
-"teams/13584/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:59 events.py:5 links.py:56 links.py:86 permissions.py:5 queues.py:6
@@ -73,7 +72,8 @@ msgstr "Dokumentenversion, die in die OCR-Warteschlange eingereiht ist"
 
 #: events.py:20
 msgid "Document version OCR finished"
-msgstr "Dokumentenversion, für die die OCR-Schrifterkennung durchgeführt wurde"
+msgstr ""
+"Dokumentenversion, für die die OCR-Schrifterkennung durchgeführt wurde"
 
 #: forms.py:14 forms.py:43 forms.py:63
 msgid "Contents"

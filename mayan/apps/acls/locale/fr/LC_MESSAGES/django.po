@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
@@ -12,19 +12,19 @@
 # Benoît GROUSSET <benoit@grousset.xyz>, 2021
 # Frédéric Sheedy <sheedf@gmail.com>, 2021
 # Guillaume Trottier <gui.trottier@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:12+0000\n"
 "Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:26 classes.py:175 links.py:27
@@ -82,8 +82,7 @@ msgstr "Droits globaux"
 #: managers.py:243
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
-msgstr ""
-"L'objet \"%s\" n'est pas un modèle et l'accès ne peut pas être vérifié."
+msgstr "L'objet \"%s\" n'est pas un modèle et l'accès ne peut pas être vérifié."
 
 #: managers.py:263
 #, python-format
@@ -182,10 +181,10 @@ msgid ""
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
 msgstr ""
-"Les autorisations désactivées sont héritées d'un objet parent ou directement "
-"accordées au rôle et ne peuvent pas être supprimées de cette vue. Les "
-"autorisations héritées doivent être supprimées de l'ACL de l'objet parent ou "
-"de leur rôle via le menu Configuration."
+"Les autorisations désactivées sont héritées d'un objet parent ou directement"
+" accordées au rôle et ne peuvent pas être supprimées de cette vue. Les "
+"autorisations héritées doivent être supprimées de l'ACL de l'objet parent ou"
+" de leur rôle via le menu Configuration."
 
 #: views.py:256
 msgid "There are no ACLs"
@@ -208,7 +207,8 @@ msgid "Object ID"
 msgstr "Identifiant de l'objet"
 
 #: workflow_actions.py:35
-msgid "Numeric identifier of the object for which the access will be modified."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
 msgstr ""
 "Identifiant numérique de l'objet pour lequel les droits d'accès vont être "
 "modifiés."
@@ -225,7 +225,8 @@ msgstr "Rôles pour lesquels les droits d'accès vont être modifiés."
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr ""
-"Autorisations à accorder/révoquer au rôle pour l'objet sélectionné ci-dessus."
+"Autorisations à accorder/révoquer au rôle pour l'objet sélectionné ci-"
+"dessus."
 
 #: workflow_actions.py:57
 msgid "Grant object access"

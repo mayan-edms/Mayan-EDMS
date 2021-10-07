@@ -2,24 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roberto Rosario, 2021
 # e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2021
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
-"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:24 links.py:38 permissions.py:5
@@ -123,8 +123,8 @@ msgstr "Binair"
 
 #: classes.py:420
 msgid ""
-"JavaScript libraries downloaded the from NPM registry and used for front-end "
-"functionality."
+"JavaScript libraries downloaded the from NPM registry and used for front-end"
+" functionality."
 msgstr ""
 "JavaScript bibliotheken gedownload van het NPM-register en gebruikt voor "
 "front-end functionaliteit."
@@ -223,8 +223,8 @@ msgid ""
 "missing dependencies under this environment."
 msgstr ""
 "Omgeving die door ontwikkelaars wordt gebruikt om codewijzigingen aan te "
-"brengen. Eindgebruikers kunnen ontbrekende afhankelijkheden in deze omgeving "
-"negeren."
+"brengen. Eindgebruikers kunnen ontbrekende afhankelijkheden in deze omgeving"
+" negeren."
 
 #: environments.py:27
 msgid "Development"

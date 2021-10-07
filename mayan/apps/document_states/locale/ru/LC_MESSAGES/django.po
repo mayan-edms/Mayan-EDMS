@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Alex Chigrin <chalex84@mail.ru>, 2021
@@ -9,22 +9,20 @@
 # lilo.panic, 2021
 # Panasoft, 2021
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:75 events.py:6 forms.py:42 links.py:46 links.py:87 links.py:240
 #: links.py:264 models/workflow_models.py:67 settings.py:13
@@ -54,8 +52,8 @@ msgid ""
 "following fields: datetime, transition, user, and comment."
 msgstr ""
 "Возвращает последнюю запись журнала экземпляра рабочего процесса. Сама "
-"запись журнала имеет следующие поля: \"datetime\", \"transition\", \"user\", "
-"\"comment\"."
+"запись журнала имеет следующие поля: \"datetime\", \"transition\", \"user\","
+" \"comment\"."
 
 #: apps.py:244
 msgid "Get last log entry"
@@ -165,8 +163,9 @@ msgstr "Действие"
 msgid "Namespace"
 msgstr "Пространство имен"
 
-#: forms.py:135 models/workflow_models.py:54 models/workflow_state_models.py:55
-#: models/workflow_state_models.py:172 models/workflow_transition_models.py:40
+#: forms.py:135 models/workflow_models.py:54
+#: models/workflow_state_models.py:55 models/workflow_state_models.py:172
+#: models/workflow_transition_models.py:40
 #: models/workflow_transition_models.py:150
 msgid "Label"
 msgstr "Заголовок"
@@ -311,7 +310,8 @@ msgstr "Документ"
 msgid "Context"
 msgstr "Контекст"
 
-#: models/workflow_instance_models.py:45 models/workflow_instance_models.py:175
+#: models/workflow_instance_models.py:45
+#: models/workflow_instance_models.py:175
 msgid "Workflow instance"
 msgstr "Экземпляр рабочего процесса"
 
@@ -439,8 +439,8 @@ msgstr "Данные действия"
 #: models/workflow_state_models.py:191
 msgid ""
 "The condition that will determine if this state action is executed or not. "
-"The condition is evaluated against the workflow instance. Conditions that do "
-"not return any value, that return the Python logical None, or an empty "
+"The condition is evaluated against the workflow instance. Conditions that do"
+" not return any value, that return the Python logical None, or an empty "
 "string ('') are considered to be logical false, any other value is "
 "considered to be the logical true."
 msgstr ""
@@ -473,7 +473,8 @@ msgstr ""
 "Действие состояния будет выполнено в зависимости от возвращаемого значения "
 "условия."
 
-#: models/workflow_state_models.py:269 models/workflow_transition_models.py:114
+#: models/workflow_state_models.py:269
+#: models/workflow_transition_models.py:114
 msgid "Has a condition?"
 msgstr "Есть условие?"
 
@@ -500,10 +501,10 @@ msgstr "Целевое состояние"
 #: models/workflow_transition_models.py:52
 msgid ""
 "The condition that will determine if this transition is enabled or not. The "
-"condition is evaluated against the workflow instance. Conditions that do not "
-"return any value, that return the Python logical None, or an empty string "
-"('') are considered to be logical false, any other value is considered to be "
-"the logical true."
+"condition is evaluated against the workflow instance. Conditions that do not"
+" return any value, that return the Python logical None, or an empty string "
+"('') are considered to be logical false, any other value is considered to be"
+" the logical true."
 msgstr ""
 "Условие, которое определяет, включен этот переход или нет. Условие "
 "оценивается по экземпляру рабочего процесса. Условия, которые не возвращают "
@@ -684,8 +685,8 @@ msgstr ""
 msgid ""
 "File path to the graphviz dot program used to generate workflow previews."
 msgstr ""
-"Путь к файлу программы graphviz dot, используемой для создания предпросмотра "
-"рабочего процесса."
+"Путь к файлу программы graphviz dot, используемой для создания предпросмотра"
+" рабочего процесса."
 
 #: settings.py:26
 msgid ""
@@ -710,8 +711,8 @@ msgstr "Аргументы, передаваемые в WORKFLOWS_IMAGE_CACHE_ST
 
 #: storages.py:14
 msgid ""
-"Unable to initialize the workflow preview storage. Check the settings {} and "
-"{} for formatting errors."
+"Unable to initialize the workflow preview storage. Check the settings {} and"
+" {} for formatting errors."
 msgstr ""
 "Невозможно инициализировать хранилище предпросмотра рабочего процесса. "
 "Проверьте настройки {} и {} на наличие ошибок форматирования."
@@ -726,8 +727,8 @@ msgstr "Предпросмотр рабочего процесса"
 
 #: views/workflow_instance_views.py:35
 msgid ""
-"Assign workflows to the document type of this document to have this document "
-"execute those workflows. "
+"Assign workflows to the document type of this document to have this document"
+" execute those workflows. "
 msgstr ""
 "Назначьте рабочие процессы типу этого документа, чтобы этот документ "
 "выполнял эти рабочие процессы."
@@ -743,7 +744,8 @@ msgstr "Рабочие процессы документа: %s"
 
 #: views/workflow_instance_views.py:68
 msgid ""
-"This view will show the state changes as a workflow instance is transitioned."
+"This view will show the state changes as a workflow instance is "
+"transitioned."
 msgstr ""
 "В этом представлении будут отображаться изменения состояния при переходе "
 "экземпляра рабочего процесса."
@@ -777,10 +779,8 @@ msgstr "Выбрать"
 
 #: views/workflow_instance_views.py:218
 #, python-format
-msgid ""
-"Select transition for workflow \"%(workflow)s\" of document \"%(document)s\""
-msgstr ""
-"Выбрать переход рабочего процесса \"%(workflow)s\" документа \"%(document)s\""
+msgid "Select transition for workflow \"%(workflow)s\" of document \"%(document)s\""
+msgstr "Выбрать переход рабочего процесса \"%(workflow)s\" документа \"%(document)s\""
 
 #: views/workflow_proxy_views.py:32
 msgid ""
@@ -821,7 +821,8 @@ msgstr "В этом состоянии рабочего процесса нет 
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "Документы в процессе \"%s\" в состоянии \"%s\""
 
-#: views/workflow_proxy_views.py:117 views/workflow_template_state_views.py:332
+#: views/workflow_proxy_views.py:117
+#: views/workflow_template_state_views.py:332
 msgid "Create states and link them using transitions."
 msgstr "Создайте состояния и свяжите их с помощью переходов."
 
@@ -829,7 +830,8 @@ msgstr "Создайте состояния и свяжите их с помощ
 msgid "This workflow doesn't have any state"
 msgstr "У этого рабочего процесса нет состояний"
 
-#: views/workflow_proxy_views.py:123 views/workflow_template_state_views.py:338
+#: views/workflow_proxy_views.py:123
+#: views/workflow_template_state_views.py:338
 #, python-format
 msgid "States of workflow: %s"
 msgstr "Состояния рабочего процесса: %s"
@@ -851,8 +853,8 @@ msgstr "Редактировать действие: %s"
 
 #: views/workflow_template_state_views.py:174
 msgid ""
-"Workflow state actions are macros that get executed when documents enters or "
-"leaves the state in which they reside."
+"Workflow state actions are macros that get executed when documents enters or"
+" leaves the state in which they reside."
 msgstr ""
 "Действия состояния рабочего процесса - это макросы, которые выполняются, "
 "когда документы входят в состояние или покидают его."
@@ -907,7 +909,8 @@ msgstr "Редактировать переход: %s"
 
 #: views/workflow_template_transition_views.py:146
 msgid ""
-"Create a transition and use it to move a workflow from  one state to another."
+"Create a transition and use it to move a workflow from  one state to "
+"another."
 msgstr ""
 "Создайте переход и используйте его для перемещения рабочего процесса из "
 "одного состояния в другое."
@@ -959,8 +962,8 @@ msgstr "Редактировать поле перехода: %s"
 
 #: views/workflow_template_transition_views.py:362
 msgid ""
-"Workflow transition fields allow adding data to the workflow's context. This "
-"additional context data can then be used by other elements of the workflow "
+"Workflow transition fields allow adding data to the workflow's context. This"
+" additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
 msgstr ""
 "Поля перехода рабочего процесса позволяют добавлять данные в контекст "
@@ -1185,7 +1188,8 @@ msgstr "Изменить свойства документа"
 
 #: workflow_actions.py:77
 msgid "Additional workflows to launch for the document."
-msgstr "Дополнительные рабочие процессы, которые будут запущены для документа."
+msgstr ""
+"Дополнительные рабочие процессы, которые будут запущены для документа."
 
 #: workflow_actions.py:120
 msgid "URL"
@@ -1193,14 +1197,14 @@ msgstr "URL"
 
 #: workflow_actions.py:123
 msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow "
-"log entry instance as part of their context via the variable \"entry_log\". "
-"The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
-"\"transition\", \"user\", and \"comment\" attributes."
+"Can be an IP address, a domain or a template. Templates receive the workflow"
+" log entry instance as part of their context via the variable \"entry_log\"."
+" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
+" \"transition\", \"user\", and \"comment\" attributes."
 msgstr ""
 "Может быть IP-адресом, доменом или шаблоном. Шаблоны получают экземпляр "
-"записи журнала рабочего процесса как часть своего контекста через переменную "
-"\"entry_log\". В свою очередь, \"entry_log\" предоставляет атрибуты "
+"записи журнала рабочего процесса как часть своего контекста через переменную"
+" \"entry_log\". В свою очередь, \"entry_log\" предоставляет атрибуты "
 "\"workflow_instance\", \"datetime\", \"transition\", \"user\", \"comment\"."
 
 #: workflow_actions.py:133
@@ -1209,7 +1213,8 @@ msgstr "Тайм-аут"
 
 #: workflow_actions.py:137
 msgid ""
-"Time in seconds to wait for a response. Can be a static value or a template. "
+"Time in seconds to wait for a response. Can be a static value or a template."
+" "
 msgstr ""
 "Время ожидания ответа в секундах. Может быть статическим значением или "
 "шаблоном."
@@ -1221,16 +1226,16 @@ msgstr "Данные"
 #: workflow_actions.py:146
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as "
-"part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
+"return a JSON document. Templates receive the workflow log entry instance as"
+" part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
 msgstr ""
 "Документ JSON для включения в запрос. Также может быть шаблоном, "
 "возвращающим документ JSON. Шаблоны получают экземпляр записи журнала "
-"рабочего процесса как часть своего контекста через переменную \"entry_log\". "
-"В свою очередь, \"entry_log\" предоставляет атрибуты \"workflow_instance\", "
-"\"datetime\", \"transition\", \"user\", \"comment\"."
+"рабочего процесса как часть своего контекста через переменную \"entry_log\"."
+" В свою очередь, \"entry_log\" предоставляет атрибуты \"workflow_instance\","
+" \"datetime\", \"transition\", \"user\", \"comment\"."
 
 #: workflow_actions.py:156
 msgid "Username"
@@ -1238,11 +1243,11 @@ msgstr "Имя пользователя"
 
 #: workflow_actions.py:159
 msgid ""
-"Username to use for making the request with HTTP Basic Auth. Can be a static "
-"value or a template. Templates receive the workflow log entry instance as "
+"Username to use for making the request with HTTP Basic Auth. Can be a static"
+" value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
 msgstr ""
 "Имя пользователя, которое будет использоваться для запроса с помощью HTTP "
 "Basic Auth. Может быть статическим значением или шаблоном. Шаблоны получают "
@@ -1257,16 +1262,16 @@ msgstr "Пароль"
 
 #: workflow_actions.py:172
 msgid ""
-"Password to use for making the request with HTTP Basic Auth. Can be a static "
-"value or a template. Templates receive the workflow log entry instance as "
+"Password to use for making the request with HTTP Basic Auth. Can be a static"
+" value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
 msgstr ""
 "Пароль, который будет использоваться для запроса с помощью HTTP Basic Auth. "
 "Может быть статическим значением или шаблоном. Шаблоны получают экземпляр "
-"записи журнала рабочего процесса как часть своего контекста через переменную "
-"\"entry_log\". В свою очередь, \"entry_log\" предоставляет атрибуты "
+"записи журнала рабочего процесса как часть своего контекста через переменную"
+" \"entry_log\". В свою очередь, \"entry_log\" предоставляет атрибуты "
 "\"workflow_instance\", \"datetime\", \"transition\", \"user\", \"comment\"."
 
 #: workflow_actions.py:182

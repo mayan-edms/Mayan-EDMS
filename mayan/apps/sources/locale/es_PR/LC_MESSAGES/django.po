@@ -1,25 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# jmcainzos <jmcainzos@vodafone.es>, 2021
-# Lory977 <helga.carrero@gmail.com>, 2021
 # Roberto Rosario, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_PR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:56 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
@@ -47,7 +45,7 @@ msgstr "Tipo"
 
 #: classes.py:269
 msgid "Null backend"
-msgstr ""
+msgstr "Controlador nulo"
 
 #: dependencies.py:11
 msgid ""
@@ -86,11 +84,11 @@ msgstr ""
 
 #: forms.py:48
 msgid "The backend used to create the new source."
-msgstr ""
+msgstr "El backend utilizado para crear la nueva fuente."
 
 #: forms.py:49
 msgid "Backend"
-msgstr ""
+msgstr "Controlador"
 
 #: forms.py:99
 msgid "File"
@@ -122,7 +120,7 @@ msgstr "Editar"
 
 #: links.py:110
 msgid "Test"
-msgstr ""
+msgstr "Probar"
 
 #: models.py:32
 msgid "A short text to describe this source."
@@ -178,15 +176,15 @@ msgstr "Manejar la carga"
 
 #: serializers.py:50
 msgid "Optional arguments for the action. Must be JSON formatted."
-msgstr ""
+msgstr "Argumentos opcionales para la acción. Debe tener formato JSON."
 
 #: serializers.py:51 source_backends/sane_scanner_backends.py:44
 msgid "Arguments"
-msgstr ""
+msgstr "Argumentos"
 
 #: settings.py:20
 msgid "Arguments to use when creating source backends."
-msgstr ""
+msgstr "Argumentos para usar al crear backends de la fuente."
 
 #: settings.py:26
 msgid "Path to the Storage subclass used to store cached source image files."
@@ -221,13 +219,14 @@ msgstr "Criterio de búsqueda"
 #: source_backends/email_backends.py:60
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 "Comando IMAP STORE para ejecutar en mensajes después de que se procesan. Un "
-"comando por línea. Use los comandos especificados en https://tools.ietf.org/"
-"html/rfc2060.html#section-6.4.6 o los comandos personalizados para su "
-"servidor IMAP."
+"comando por línea. Use los comandos especificados en "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 o los comandos "
+"personalizados para su servidor IMAP."
 
 #: source_backends/email_backends.py:65
 msgid "Store commands"
@@ -375,7 +374,8 @@ msgstr "Tipo de metadatos de asunto "
 
 #: source_backends/mixins.py:310
 msgid "Store the body of the email as a text document."
-msgstr "Almacenar el cuerpo del correo electrónico como un documento de texto."
+msgstr ""
+"Almacenar el cuerpo del correo electrónico como un documento de texto."
 
 #: source_backends/mixins.py:312
 msgid "Store email body"
@@ -396,17 +396,17 @@ msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
-"El tipo de metadatos de tema \"%(metadata_type)s\" no es válido para el tipo "
-"de documento: %(document_type)s"
+"El tipo de metadatos de tema \"%(metadata_type)s\" no es válido para el tipo"
+" de documento: %(document_type)s"
 
 #: source_backends/mixins.py:487
 #, python-format
 msgid ""
-"Message ID metadata type \"%(metadata_type)s\" is not valid for the document "
-"type: %(document_type)s"
+"Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
+" type: %(document_type)s"
 msgstr ""
-"El tipo de metadatos de tema \"%(metadata_type)s\" no es válido para el tipo "
-"de documento: %(document_type)s"
+"El tipo de metadatos de tema \"%(metadata_type)s\" no es válido para el tipo"
+" de documento: %(document_type)s"
 
 #: source_backends/mixins.py:588
 msgid "Assign a document type to documents uploaded from this source."
@@ -439,6 +439,9 @@ msgid ""
 "will change depending on the device. Execute `scanimage --help --device-"
 "name=DEVICE` for the list of supported arguments."
 msgstr ""
+"Argumentos con formato YAML para pasar al comando `scanimage`. Los "
+"argumentos cambiarán según el dispositivo. Ejecute `scanimage --help "
+"--device-name = DEVICE` para obtener la lista de argumentos admitidos."
 
 #: source_backends/sane_scanner_backends.py:48
 msgid "SANE Scanner"
@@ -521,11 +524,11 @@ msgstr "¿Eliminar archivo provisional \"%s\"?"
 #: source_backends/staging_folder_backends.py:544
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
-"Esto podría significar que la carpeta provisional está vacía. También podría "
-"significar que la cuenta de usuario del sistema operativo que se utiliza "
+"Esto podría significar que la carpeta provisional está vacía. También podría"
+" significar que la cuenta de usuario del sistema operativo que se utiliza "
 "para Mayan EDMS no tiene los permisos necesarios del sistema de archivos "
 "para la carpeta."
 
@@ -599,8 +602,8 @@ msgstr "El servidor respondió con el código {{statusCode}}."
 
 #: views/base.py:53 wizards.py:52
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 "No se han definido fuentes de documentos interactivos o no hay ninguna "
 "habilitada, cree una antes de continuar."
@@ -653,13 +656,12 @@ msgstr ""
 
 #: views/source_views.py:37
 msgid "New source backend selection"
-msgstr ""
+msgstr "Nueva selección de backend de fuente"
 
 #: views/source_views.py:93
-#, fuzzy, python-format
-#| msgid "Create a \"%s\" source"
+#, python-format
 msgid "Create a \"%s\" source"
-msgstr "Crear una nueva fuente de documentos"
+msgstr "Cree una fuente \"%s\""
 
 #: views/source_views.py:118
 #, python-format
@@ -677,8 +679,8 @@ msgid ""
 "and require user input to operate. Others are automatic and run in the "
 "background without user intervention."
 msgstr ""
-"Las fuentes proporcionan los medios para cargar documentos. Algunas fuentes, "
-"como el formulario web, son interactivas y requieren la intervención del "
+"Las fuentes proporcionan los medios para cargar documentos. Algunas fuentes,"
+" como el formulario web, son interactivas y requieren la intervención del "
 "usuario para operar. Otros, como las fuentes de correo electrónico, son "
 "automáticos y se ejecutan en segundo plano sin la intervención del usuario."
 
@@ -688,8 +690,8 @@ msgstr "No hay fuentes disponibles"
 
 #: views/source_views.py:181
 msgid ""
-"This will execute the source code even if the source is not enabled. Sources "
-"that delete content after downloading will not do so while being tested. "
+"This will execute the source code even if the source is not enabled. Sources"
+" that delete content after downloading will not do so while being tested. "
 "Check the source's error log for information during testing. A successful "
 "test will clear the error log."
 msgstr ""
@@ -723,171 +725,12 @@ msgstr "Asistente de carga de documentos"
 
 #: wizards.py:85
 msgid "First"
-msgstr ""
+msgstr "Primero"
 
 #: wizards.py:91
 msgid "Previous"
-msgstr ""
+msgstr "Anterior"
 
 #: wizards.py:98
 msgid "Next"
 msgstr "Siguiente paso"
-
-#~ msgid "Add new IMAP email"
-#~ msgstr "Añadir nuevo correo electrónico IMAP"
-
-#~ msgid "Add new POP3 email"
-#~ msgstr "Añadir nuevo correo electrónico POP3"
-
-#~ msgid "Add new staging folder"
-#~ msgstr "Añadir nueva carpeta de ensayo"
-
-#~ msgid "Add new watch folder"
-#~ msgstr "Añadir nueva carpeta observada"
-
-#~ msgid "Add new webform source"
-#~ msgstr "Añadir nueva fuente en formato web"
-
-#~ msgid "Add new SANE scanner"
-#~ msgstr "Añadir un nuevo escáner SANE"
-
-#~ msgid "Document sources"
-#~ msgstr "Fuentes de documentos"
-
-#~ msgid "Check now"
-#~ msgstr "Revisar ahora"
-
-#~ msgid "Flatbed"
-#~ msgstr "Cama plana"
-
-#~ msgid "Document feeder"
-#~ msgstr "Alimentador de documentos"
-
-#~ msgid "Simplex"
-#~ msgstr "Simple"
-
-#~ msgid "Duplex"
-#~ msgstr "Dúplex"
-
-#~ msgid "Lineart"
-#~ msgstr "Arte lineal"
-
-#~ msgid "Monochrome"
-#~ msgstr "Monocromático"
-
-#~ msgid "Color"
-#~ msgstr "Color"
-
-#~ msgid "Scanner"
-#~ msgstr "Escáner"
-
-#~ msgid "Interactive source"
-#~ msgstr "Fuente interactiva"
-
-#~ msgid "Interactive sources"
-#~ msgstr "Fuentes interactivas"
-
-#~ msgid "Out of process"
-#~ msgstr "Fuera de proceso"
-
-#~ msgid "Whether to expand or not, compressed archives."
-#~ msgstr "Expandir o no archivos comprimidos."
-
-#~ msgid "Interval source"
-#~ msgstr "Fuente de intervalo"
-
-#~ msgid "Interval sources"
-#~ msgstr "Fuentes de intervalo"
-
-#~ msgid "Email source"
-#~ msgstr "Fuente de correo electrónico"
-
-#~ msgid "Email sources"
-#~ msgstr "Fuentes de correo electrónico"
-
-#~ msgid "POP email"
-#~ msgstr "Correo electrónico POP"
-
-#~ msgid ""
-#~ "Selects the scan mode (e.g., lineart, monochrome, or color). If this "
-#~ "option is not supported by your scanner, leave it blank."
-#~ msgstr ""
-#~ "Selecciona el modo de escáner (por ejemplo, lineart, monochrome o color). "
-#~ "Si esta opción no es compatible con el escáner, déjela en blanco."
-
-#~ msgid "Mode"
-#~ msgstr "Modo"
-
-#~ msgid ""
-#~ "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
-#~ "value is 200. If this option is not supported by your scanner, leave it "
-#~ "blank."
-#~ msgstr ""
-#~ "Define la resolución de la imagen escaneada en DPI (puntos por pulgada). "
-#~ "El valor típico es 200. Si esta opción no es compatible con el escáner, "
-#~ "déjelo en blanco."
-
-#~ msgid "Resolution"
-#~ msgstr "Resolución"
-
-#~ msgid ""
-#~ "Selects the scan source (such as a document-feeder). If this option is "
-#~ "not supported by your scanner, leave it blank."
-#~ msgstr ""
-#~ "Selecciona la fuente de escaneado (como un alimentador de documentos). Si "
-#~ "esta opción no es compatible con el escáner, déjela en blanco."
-
-#~ msgid ""
-#~ "Selects the document feeder mode (simplex/duplex). If this option is not "
-#~ "supported by your scanner, leave it blank."
-#~ msgstr ""
-#~ "Selecciona el modo de alimentador de documentos (simplex / dúplex). Si "
-#~ "esta opción no es compatible con el escáner, déjela en blanco."
-
-#~ msgid "ADF mode"
-#~ msgstr "Modo ADF"
-
-#~ msgid "SANE Scanners"
-#~ msgstr "Escáneres SANE"
-
-#, python-format
-#~ msgid ""
-#~ "Error while executing scanning command \"%(command_line)s\"; "
-#~ "%(error_message)s"
-#~ msgstr ""
-#~ "Error al ejecutar el comando de escaneo \"%(command_line)s\"; "
-#~ "%(error_message)s"
-
-#~ msgid "Staging folders"
-#~ msgstr "Archivos provisionales"
-
-#~ msgid "Server side filesystem path to scan for files."
-#~ msgstr ""
-#~ "Ruta del sistema de archivos del lado del servidor para buscar archivos."
-
-#~ msgid "Watch folders"
-#~ msgstr "Carpetas observadas"
-
-#~ msgid "Web forms"
-#~ msgstr "Formularios web"
-
-#~ msgid "Delete staging files"
-#~ msgstr "Borrar archivos provisionales"
-
-#~ msgid "Generate staging file image"
-#~ msgstr "Generar imagen de archivo de provisional"
-
-#~ msgid "Upload document"
-#~ msgstr "Subir documento"
-
-#~ msgid "File path to the scanimage program used to control image scanners."
-#~ msgstr ""
-#~ "Ruta de acceso al programa scanimage utilizado para controlar los "
-#~ "escáneres de imágenes."
-
-#~ msgid "Files in staging path"
-#~ msgstr "Archivos provisionales en la ruta"
-
-#, python-format
-#~ msgid "Create new source of type: %s"
-#~ msgstr "Crear nuevo tipo de fuente: %s"

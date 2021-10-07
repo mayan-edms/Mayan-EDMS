@@ -2,22 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roberto Rosario, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_PR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:53 events.py:6 permissions.py:6 settings.py:10
@@ -98,7 +98,8 @@ msgstr "Página de archivo de documento"
 #: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr ""
-"El contenido de texto real extraído por el documento que analiza el servidor."
+"El contenido de texto real extraído por el documento que analiza el "
+"servidor."
 
 #: models.py:30
 msgid "Document file page content"
@@ -183,7 +184,8 @@ msgstr ""
 
 #: settings.py:21
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr ""
 "Ruta de acceso al programa de poppler llamado pdftotext utilizado para "
 "extraer texto de archivos PDF."
@@ -214,16 +216,14 @@ msgid "Delete the content of: %(object)s."
 msgstr ""
 
 #: views.py:46
-#, fuzzy, python-format
-#| msgid "Delete the content of the %(count)d selected document version."
+#, python-format
 msgid "Delete the content of the %(count)d selected document version."
-msgstr "¿Eliminar el contenido extraído del archivo de documento seleccionado?"
+msgstr ""
 
 #: views.py:49
-#, fuzzy, python-format
-#| msgid "Delete the content of the %(count)d selected document versions."
+#, python-format
 msgid "Delete the content of the %(count)d selected document versions."
-msgstr "¿Eliminar el contenido extraído del archivo de documento seleccionado?"
+msgstr ""
 
 #: views.py:87
 #, python-format
@@ -274,8 +274,8 @@ msgstr ""
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr ""
-"Edite la configuración de extracción de contenido para el tipo de documento: "
-"%s."
+"Edite la configuración de extracción de contenido para el tipo de documento:"
+" %s."
 
 #: views.py:204
 msgid "Submit all documents of a type for parsing"

@@ -1,26 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2021
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
-"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:64 apps.py:194 apps.py:200 apps.py:204 apps.py:209 apps.py:213
@@ -173,8 +173,8 @@ msgid ""
 "Name used by other apps to reference this metadata type. Do not use python "
 "reserved words, or spaces."
 msgstr ""
-"Nome utilizzato da altre app per fare riferimento a questo tipo di metadati. "
-"Non utilizzare parole riservate a Python o spazi."
+"Nome utilizzato da altre app per fare riferimento a questo tipo di metadati."
+" Non utilizzare parole riservate a Python o spazi."
 
 #: models.py:55
 msgid "Short description of this metadata type."
@@ -205,8 +205,8 @@ msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
 msgstr ""
-"Il validatore rifiuterà l'inserimento se il valore immesso non è conforme al "
-"formato richiesto."
+"Il validatore rifiuterà l'inserimento se il valore immesso non è conforme al"
+" formato richiesto."
 
 #: models.py:74
 msgid "Validator"
@@ -214,7 +214,8 @@ msgstr "Validatore"
 
 #: models.py:78
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
+"The parser will reformat the value entered to conform to the expected "
+"format."
 msgstr ""
 "Il parser riformatta il valore immesso per renderlo conforme al formato "
 "voluto."
@@ -366,7 +367,8 @@ msgstr ""
 #: views/document_views.py:157
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
 msgstr ""
 "Tipo metadata: %(metadata_type)s aggiunto con successo al documento "
 "%(document)s."
@@ -424,11 +426,12 @@ msgstr "Metadato per il documento %s modificato con successo."
 
 #: views/document_views.py:357
 msgid ""
-"Add metadata types this document's type to be able to add them to individual "
-"documents. Once added to individual document, you can then edit their values."
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
 msgstr ""
-"Aggiungi tipi di metadati Il tipo di questo documento per poterli aggiungere "
-"ai singoli documenti. Una volta aggiunti al singolo documento, puoi quindi "
+"Aggiungi tipi di metadati Il tipo di questo documento per poterli aggiungere"
+" ai singoli documenti. Una volta aggiunti al singolo documento, puoi quindi "
 "modificarne i valori."
 
 #: views/document_views.py:362

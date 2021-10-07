@@ -1,24 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# jmcainzos <jmcainzos@vodafone.es>, 2021
 # Roberto Rosario, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_PR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:75 events.py:6 permissions.py:6
@@ -229,44 +228,39 @@ msgid "Edit current user details"
 msgstr "Editar los detalles del usuario actual"
 
 #: views.py:65
-#, fuzzy, python-format
-#| msgid "Error deleting group \"%(instance)s\"; %(exception)s"
+#, python-format
 msgid "Error deleting group \"%(instance)s\"; %(exception)s"
-msgstr "Error eliminando el usuario \"%(user)s\": %(error)s "
+msgstr "Error eliminando el grupo \"%(instance)s\"; %(exception)s"
 
 #: views.py:72
-#, fuzzy, python-format
-#| msgid "Group \"%(object)s\" deleted successfully."
+#, python-format
 msgid "Group \"%(object)s\" deleted successfully."
-msgstr "Usuario \"%s\" eliminado con éxito."
+msgstr "El grupo \"%(object)s\" se eliminó con éxito."
 
 #: views.py:73
-#, fuzzy, python-format
-#| msgid "%(count)d group deleted successfully."
+#, python-format
 msgid "%(count)d group deleted successfully."
-msgstr "Usuario \"%s\" eliminado con éxito."
+msgstr "%(count)d grupo eliminado con éxito."
 
 #: views.py:74
-#, fuzzy, python-format
-#| msgid "%(count)d groups deleted successfully."
+#, python-format
 msgid "%(count)d groups deleted successfully."
-msgstr "Usuario \"%s\" eliminado con éxito."
+msgstr "%(count)d grupos eliminados con éxito."
 
 #: views.py:75
-#, fuzzy, python-format
-#| msgid "Delete group: %(object)s."
+#, python-format
 msgid "Delete group: %(object)s."
-msgstr "¿Borrar el grupo: %s?"
+msgstr "Eliminar el grupo: %(object)s."
 
 #: views.py:76
 #, python-format
 msgid "Delete the %(count)d selected group."
-msgstr ""
+msgstr "Eliminar %(count)d grupo seleccionado."
 
 #: views.py:77
 #, python-format
 msgid "Delete the %(count)d selected groups."
-msgstr ""
+msgstr "Elimine los %(count)d grupos seleccionados."
 
 #: views.py:89
 #, python-format
@@ -307,44 +301,39 @@ msgid "Users of group: %s"
 msgstr "Usuarios del grupo: %s"
 
 #: views.py:184
-#, fuzzy, python-format
-#| msgid "Error deleting user \"%(instance)s\"; %(exception)s"
+#, python-format
 msgid "Error deleting user \"%(instance)s\"; %(exception)s"
-msgstr "Error eliminando el usuario \"%(user)s\": %(error)s "
+msgstr "Error al eliminando el usuario \"%(instance)s\"; %(exception)s"
 
 #: views.py:189
-#, fuzzy, python-format
-#| msgid "User \"%(object)s\" deleted successfully."
+#, python-format
 msgid "User \"%(object)s\" deleted successfully."
-msgstr "Usuario \"%s\" eliminado con éxito."
+msgstr "El usuario \"%(object)s\" se eliminó con éxito."
 
 #: views.py:190
-#, fuzzy, python-format
-#| msgid "%(count)d user deleted successfully."
+#, python-format
 msgid "%(count)d user deleted successfully."
-msgstr "Usuario \"%s\" eliminado con éxito."
+msgstr "%(count)d usuario eliminado con éxito."
 
 #: views.py:191
-#, fuzzy, python-format
-#| msgid "%(count)d users deleted successfully."
+#, python-format
 msgid "%(count)d users deleted successfully."
-msgstr "Usuario \"%s\" eliminado con éxito."
+msgstr "%(count)d usuarios eliminados con éxito."
 
 #: views.py:192
-#, fuzzy, python-format
-#| msgid "Delete user: %(object)s."
+#, python-format
 msgid "Delete user: %(object)s."
-msgstr "Borrar usuario: %s"
+msgstr "Eliminar usuario: %(object)s."
 
 #: views.py:193
 #, python-format
 msgid "Delete the %(count)d selected user."
-msgstr ""
+msgstr "Elimina %(count)d  usuario seleccionado."
 
 #: views.py:194
 #, python-format
 msgid "Delete the %(count)d selected users."
-msgstr ""
+msgstr "Elimina los %(count)d usuarios seleccionados."
 
 #: views.py:209
 #, python-format
@@ -387,23 +376,3 @@ msgstr "No hay cuentas de usuario."
 #, python-format
 msgid "Edit options for user: %s"
 msgstr "Edición de ajustes para el usuario: %s"
-
-#, python-format
-#~ msgid "User delete request performed on %(count)d user"
-#~ msgstr "Solicitud de eliminación de usuario realizada a %(count)d usuario "
-
-#, python-format
-#~ msgid "User delete request performed on %(count)d users"
-#~ msgstr "Solicitud de eliminación de usuario realizada a %(count)d usuarios"
-
-#~ msgid "Delete user"
-#~ msgid_plural "Delete users"
-#~ msgstr[0] "Eliminar usuario"
-#~ msgstr[1] "Eliminar usuarios"
-
-#~ msgid ""
-#~ "Super user and staff user deleting is not allowed, use the admin "
-#~ "interface for these cases."
-#~ msgstr ""
-#~ "No se permite eliminar el super usuario y usuario de personal. Use la "
-#~ "interfaz de administración para estos casos."

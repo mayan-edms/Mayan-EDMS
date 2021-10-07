@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_PR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:59 events.py:5 links.py:56 links.py:86 permissions.py:5 queues.py:6
@@ -105,7 +105,7 @@ msgstr "Enviar para OCR"
 
 #: links.py:92
 msgid "Edit OCR"
-msgstr ""
+msgstr "Editar OCR"
 
 #: models.py:24
 msgid "Document type"
@@ -113,7 +113,8 @@ msgstr "Tipo de documento"
 
 #: models.py:28
 msgid "Automatically queue newly created documents for OCR."
-msgstr "Poner en lista automáticamente los documentos recién creados para OCR."
+msgstr ""
+"Poner en lista automáticamente los documentos recién creados para OCR."
 
 #: models.py:34
 msgid "Document type settings"
@@ -203,41 +204,44 @@ msgstr "Ruta completa a la aplicación que se usará para OCR."
 #, python-format
 msgid "Error deleting document version OCR \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Error eliminando el OCR de la versión del documento \"%(instance)s\"; "
+"%(exception)s"
 
 #: views.py:38
 #, python-format
 msgid "OCR content of \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "El contenido de OCR de \"%(object)s\" se eliminó con éxito."
 
 #: views.py:39
 #, python-format
 msgid "OCR content of %(count)d document version deleted successfully."
 msgstr ""
+"%(count)d contenido de OCR de la versión del documento se eliminó con éxito."
 
 #: views.py:40
 #, python-format
 msgid "OCR content of %(count)d document versions deleted successfully."
 msgstr ""
+"%(count)d contenidos de OCR de las versiones del documento se eliminaron con"
+" éxito."
 
 #: views.py:41
-#, fuzzy, python-format
-#| msgid "Delete the OCR content of: %(object)s."
+#, python-format
 msgid "Delete the OCR content of: %(object)s."
-msgstr "Eliminar contenido OCR"
+msgstr "Eliminar el contenido de OCR de: %(object)s."
 
 #: views.py:42
-#, fuzzy, python-format
-#| msgid "Delete the OCR content of the %(count)d selected document version."
+#, python-format
 msgid "Delete the OCR content of the %(count)d selected document version."
 msgstr ""
-"¿Eliminar el contenido de OCR de la versión del documento seleccionada?"
+"Eliminar el contenido de OCR de %(count)d versión de documento seleccionada."
 
 #: views.py:43
-#, fuzzy, python-format
-#| msgid "Delete the OCR content of the %(count)d selected document versions."
+#, python-format
 msgid "Delete the OCR content of the %(count)d selected document versions."
 msgstr ""
-"¿Eliminar el contenido de OCR de la versión del documento seleccionada?"
+"Eliminar el contenido de OCR de las %(count)d versiones de documento "
+"seleccionadas."
 
 #: views.py:69
 #, python-format

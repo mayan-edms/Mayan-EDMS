@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Hmayag Antonian <hmayag@freemail.gr>, 2021
 # pyrotech <anastasios@tutamail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
-"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:36 events.py:5 permissions.py:5 queues.py:7 settings.py:21
@@ -143,8 +143,8 @@ msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
 msgstr ""
-"Αυτή η τιμή θα χρησιμοποιηθεί για την αναφορά σε αυτό το στοιχείο. Μπορεί να "
-"περιέχει μόνο γράμματα, αριθμούς και κάτω παύλες."
+"Αυτή η τιμή θα χρησιμοποιηθεί για την αναφορά σε αυτό το στοιχείο. Μπορεί να"
+" περιέχει μόνο γράμματα, αριθμούς και κάτω παύλες."
 
 #: models.py:52
 msgid "Internal name"
@@ -313,8 +313,8 @@ msgstr ""
 
 #: storages.py:28
 msgid ""
-"Unable to initialize the converter asset cachestorage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the converter asset cachestorage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""
 
 #: storages.py:34
@@ -432,7 +432,8 @@ msgstr "Επεξεργασία στοιχείου: %s"
 
 #: views.py:139
 msgid ""
-"Assets are files that can be used in conjuction with certain transformations."
+"Assets are files that can be used in conjuction with certain "
+"transformations."
 msgstr ""
 "Τα στοιχεία είναι αρχεία που μπορούν να χρησιμοποιηθούν σε συνδυασμό με "
 "συγκεκριμένους μετασχηματισμούς."
@@ -458,8 +459,7 @@ msgstr ""
 #: views.py:241
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
-"Διαγραφή μετασχηματισμού \"%(transformation)s\" για: %(content_object)s;"
+msgstr "Διαγραφή μετασχηματισμού \"%(transformation)s\" για: %(content_object)s;"
 
 #: views.py:290
 #, python-format
@@ -496,8 +496,8 @@ msgstr "Σελίδες"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas and/"
-"or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
 "Σελίδες στις οποίες θα προστεθούν οι νέοι μετασχηματισμοί. Διαχωρίστε με "
 "κόμμα και / ή χρησιμοποιήστε παύλες για εύρος σελίδων. Αφήστε κενό για να "

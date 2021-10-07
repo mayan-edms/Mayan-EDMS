@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Hmayag Antonian <hmayag@freemail.gr>, 2021
 # pyrotech <anastasios@tutamail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:26+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
-"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:40
@@ -190,8 +190,8 @@ msgstr "Ιδιότητα έταιρου εγγράφου"
 
 #: models.py:180
 msgid ""
-"The expression using document properties to be evaluated against the foreign "
-"document field."
+"The expression using document properties to be evaluated against the foreign"
+" document field."
 msgstr ""
 "Η έκφραση που χρησιμοποιεί ιδιότητες εγγράφου προς αξιολόγηση έναντι του "
 "πεδίου του έταιρου εγγράφου."
@@ -275,8 +275,8 @@ msgid ""
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
 msgstr ""
-"Τα ευρετήρια ομαδοποιούν έγγραφα σε ενότητες, συνήθως με παρόμοιες ιδιότητες "
-"και παρόμοιων ή ιδίων τύπων. Οι έξυπνοι σύνδεσμοι επιτρέπουν τον καθορισμό "
+"Τα ευρετήρια ομαδοποιούν έγγραφα σε ενότητες, συνήθως με παρόμοιες ιδιότητες"
+" και παρόμοιων ή ιδίων τύπων. Οι έξυπνοι σύνδεσμοι επιτρέπουν τον καθορισμό "
 "σχέσεων μεταξύ εγγράφων ακόμα και αν περιέχονται σε διαφορετικά ευρετήρια ή "
 "είναι διαφορετικών τύπων."
 

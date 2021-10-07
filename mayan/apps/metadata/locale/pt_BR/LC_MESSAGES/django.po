@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
@@ -11,21 +11,19 @@
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2021
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
 # Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: Rodrigo de Almeida Sottomaior Macedo "
-"<rmsolucoeseminformatica@protonmail.com>, 2021\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
-"teams/13584/pt_BR/)\n"
-"Language: pt_BR\n"
+"Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:64 apps.py:194 apps.py:200 apps.py:204 apps.py:209 apps.py:213
@@ -221,7 +219,8 @@ msgstr "Validador"
 
 #: models.py:78
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
+"The parser will reformat the value entered to conform to the expected "
+"format."
 msgstr ""
 "O analisador irá reformatar o valor inserido para estar em conformidade com "
 "o formato esperado."
@@ -347,7 +346,8 @@ msgstr "Solicitação de adicionar metadados executada em %(count)d documento"
 #: views/document_views.py:44
 #, python-format
 msgid "Metadata add request performed on %(count)d documents"
-msgstr "Solicitação de inserção de metadados realizada em %(count)d documentos"
+msgstr ""
+"Solicitação de inserção de metadados realizada em %(count)d documentos"
 
 #: views/document_views.py:52
 msgid "Add metadata types to document"
@@ -372,7 +372,8 @@ msgstr ""
 #: views/document_views.py:157
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
 msgstr ""
 "Tipo Metadado %(metadata_type)s adicionado com sucesso para o documento "
 "%(document)s."
@@ -420,7 +421,8 @@ msgstr "Editar os metadados do documento: %s"
 #: views/document_views.py:319
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
-msgstr "Erro editando metadados para o documento: %(document)s; %(exception)s."
+msgstr ""
+"Erro editando metadados para o documento: %(document)s; %(exception)s."
 
 #: views/document_views.py:332
 #, python-format
@@ -429,8 +431,9 @@ msgstr "Metadados para o documento %s alterados com sucesso."
 
 #: views/document_views.py:357
 msgid ""
-"Add metadata types this document's type to be able to add them to individual "
-"documents. Once added to individual document, you can then edit their values."
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
 msgstr ""
 "Adicione tipos de metadado para este tipo de documento para poder adicioná-"
 "los aos documentos individuais. Uma vez adicionados aos documentos "
@@ -472,8 +475,8 @@ msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
 msgstr ""
-"Removido com sucesso o tipo de  metadado \"%(metadata_type)s\" do documento: "
-"%(document)s."
+"Removido com sucesso o tipo de  metadado \"%(metadata_type)s\" do documento:"
+" %(document)s."
 
 #: views/document_views.py:476
 #, python-format
@@ -539,8 +542,8 @@ msgstr ""
 "Tipos de metadados são propriedades definidas pelo usuário às quais podem "
 "ser atribuídos valores. Uma vez criados, devem ser associados a tipos de "
 "documento, opcional ou obrigatoriamente. Definir um tipo de metadados como "
-"obrigatório para um documento irá impedir o upload do documento até que este "
-"valor seja fornecido."
+"obrigatório para um documento irá impedir o upload do documento até que este"
+" valor seja fornecido."
 
 #: views/metadata_type_views.py:106
 msgid "There are no metadata types"

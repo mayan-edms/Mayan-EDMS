@@ -1,24 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# jmcainzos <jmcainzos@vodafone.es>, 2021
 # Roberto Rosario, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_PR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:64 apps.py:194 apps.py:200 apps.py:204 apps.py:209 apps.py:213
@@ -171,8 +170,8 @@ msgid ""
 "Name used by other apps to reference this metadata type. Do not use python "
 "reserved words, or spaces."
 msgstr ""
-"Nombre utilizado por otras aplicaciones para hacer referencia a este tipo de "
-"metadatos. No utilice palabras reservadas de python, o espacios."
+"Nombre utilizado por otras aplicaciones para hacer referencia a este tipo de"
+" metadatos. No utilice palabras reservadas de python, o espacios."
 
 #: models.py:55
 msgid "Short description of this metadata type."
@@ -214,7 +213,8 @@ msgstr "Validador"
 
 #: models.py:78
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
+"The parser will reformat the value entered to conform to the expected "
+"format."
 msgstr ""
 "El analizador volverá a formatear el valor introducido para ajustarse al "
 "formato esperado."
@@ -335,12 +335,14 @@ msgstr "Llave primaria del tipo de metadato que se agregará al documento."
 #: views/document_views.py:42
 #, python-format
 msgid "Metadata add request performed on %(count)d document"
-msgstr "Solicitud de agregación de metadatos realizada en %(count)d documento "
+msgstr ""
+"Solicitud de agregación de metadatos realizada en %(count)d documento "
 
 #: views/document_views.py:44
 #, python-format
 msgid "Metadata add request performed on %(count)d documents"
-msgstr "Solicitud de agregación de metadatos realizada en %(count)d documentos"
+msgstr ""
+"Solicitud de agregación de metadatos realizada en %(count)d documentos"
 
 #: views/document_views.py:52
 msgid "Add metadata types to document"
@@ -365,7 +367,8 @@ msgstr ""
 #: views/document_views.py:157
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
 msgstr ""
 "Tipo de metadatos: %(metadata_type)s añadido con éxito al documento "
 "%(document)s."
@@ -414,7 +417,8 @@ msgstr "Editar metadatos del documento: %s"
 #: views/document_views.py:319
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
-msgstr "Error editando metadato para el documento %(document)s; %(exception)s."
+msgstr ""
+"Error editando metadato para el documento %(document)s; %(exception)s."
 
 #: views/document_views.py:332
 #, python-format
@@ -423,8 +427,9 @@ msgstr "Metadatos del documento %s editados con éxito."
 
 #: views/document_views.py:357
 msgid ""
-"Add metadata types this document's type to be able to add them to individual "
-"documents. Once added to individual document, you can then edit their values."
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
 msgstr ""
 "Agregue tipos de metadatos del tipo de este documento para poder agregarlos "
 "a documentos individuales. Una vez agregado al documento individual, puede "
@@ -485,46 +490,39 @@ msgid "Create metadata type"
 msgstr "Crear tipo de metadatos"
 
 #: views/metadata_type_views.py:43
-#, fuzzy, python-format
-#| msgid "Error deleting metadata type \"%(instance)s\"; %(exception)s"
+#, python-format
 msgid "Error deleting metadata type \"%(instance)s\"; %(exception)s"
-msgstr "Error editando metadato para el documento %(document)s; %(exception)s."
+msgstr ""
 
 #: views/metadata_type_views.py:52
-#, fuzzy, python-format
-#| msgid "Metadata type \"%(object)s\" deleted successfully."
+#, python-format
 msgid "Metadata type \"%(object)s\" deleted successfully."
-msgstr "Metadatos del documento %s editados con éxito."
+msgstr ""
 
 #: views/metadata_type_views.py:55
-#, fuzzy, python-format
-#| msgid "%(count)d metadata type deleted successfully."
+#, python-format
 msgid "%(count)d metadata type deleted successfully."
-msgstr "Metadatos del documento %s editados con éxito."
+msgstr ""
 
 #: views/metadata_type_views.py:58
-#, fuzzy, python-format
-#| msgid "%(count)d metadata types deleted successfully."
+#, python-format
 msgid "%(count)d metadata types deleted successfully."
-msgstr "Metadatos del documento %s editados con éxito."
+msgstr ""
 
 #: views/metadata_type_views.py:60
-#, fuzzy, python-format
-#| msgid "Delete metadata type: %(object)s."
+#, python-format
 msgid "Delete metadata type: %(object)s."
-msgstr "Borrar tipos de metadatos"
+msgstr ""
 
 #: views/metadata_type_views.py:61
-#, fuzzy, python-format
-#| msgid "Delete the %(count)d selected metadata type."
+#, python-format
 msgid "Delete the %(count)d selected metadata type."
-msgstr "¿Borrar el tipo de metadato: %s?"
+msgstr ""
 
 #: views/metadata_type_views.py:62
-#, fuzzy, python-format
-#| msgid "Delete the %(count)d selected metadata types."
+#, python-format
 msgid "Delete the %(count)d selected metadata types."
-msgstr "¿Borrar el tipo de metadato: %s?"
+msgstr ""
 
 #: views/metadata_type_views.py:77
 #, python-format
@@ -607,8 +605,8 @@ msgid ""
 "%(document)s. Document does not have the metadata type to be edit. "
 "Exception: %(exception)s"
 msgstr ""
-"No se puede editar el tipo de metadatos \"%(metadata_type)s\" del documento: "
-"%(document)s. El documento no tiene el tipo de metadatos para editar. "
+"No se puede editar el tipo de metadatos \"%(metadata_type)s\" del documento:"
+" %(document)s. El documento no tiene el tipo de metadatos para editar. "
 "Excepción: %(exception)s"
 
 #: workflow_actions.py:172
@@ -623,6 +621,3 @@ msgid ""
 msgstr ""
 "No se puede eliminar el tipo de metadatos \"%(metadata_type)s\" del "
 "documento: %(document)s. Excepción: %(exception)s"
-
-#~ msgid "Add"
-#~ msgstr "Agregar"

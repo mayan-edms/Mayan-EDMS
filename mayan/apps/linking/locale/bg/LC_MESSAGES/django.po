@@ -1,27 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
 # 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2021
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2021
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:26+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
-"bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:40
@@ -192,8 +191,8 @@ msgstr "Характеристика на чужд документ"
 
 #: models.py:180
 msgid ""
-"The expression using document properties to be evaluated against the foreign "
-"document field."
+"The expression using document properties to be evaluated against the foreign"
+" document field."
 msgstr ""
 "Изразът, използващ свойствата на документа, които трябва да бъдат оценени "
 "спрямо чуждото документно поле."
@@ -254,7 +253,8 @@ msgstr ""
 #: serializers.py:58
 msgid "Primary key of the document type to remove from the smart link."
 msgstr ""
-"Основен ключ от типа документ, който да се премахне от интелигентната връзка."
+"Основен ключ от типа документ, който да се премахне от интелигентната "
+"връзка."
 
 #: views.py:65
 #, python-format
@@ -281,8 +281,8 @@ msgid ""
 msgstr ""
 "Индексите групират документи в групи, обикновено със сходни свойства и с "
 "еднакви или сходни типове. Умните връзки позволяват да се определят "
-"отношенията между документите, дори ако те са в различни индексни групи и са "
-"от различен тип."
+"отношенията между документите, дори ако те са в различни индексни групи и са"
+" от различен тип."
 
 #: views.py:145
 msgid "There are no smart links"
@@ -293,8 +293,8 @@ msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
 msgstr ""
-"Умните връзки позволяват да се определят отношенията между документите, дори "
-"ако те са в различни индексни групи и са от различен тип."
+"Умните връзки позволяват да се определят отношенията между документите, дори"
+" ако те са в различни индексни групи и са от различен тип."
 
 #: views.py:171
 msgid "There are no resolved smart links for this document"
@@ -346,8 +346,8 @@ msgid ""
 "Conditions are small logic units that when combined define how the smart "
 "link will behave."
 msgstr ""
-"Условията са малки логически единици, които в комбинация определят как ще се "
-"държи умната връзка."
+"Условията са малки логически единици, които в комбинация определят как ще се"
+" държи умната връзка."
 
 #: views.py:315
 msgid "There are no conditions for this smart link"

@@ -2,23 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Hmayag Antonian <hmayag@freemail.gr>, 2021
 # pyrotech <anastasios@tutamail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
-"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:24 links.py:10 permissions.py:5
@@ -75,21 +75,20 @@ msgstr "Celery"
 
 #: settings.py:15
 msgid "Default: \"AMQPLAIN\". Set custom amqp login method."
-msgstr ""
-"Προεπιλογή: \"AMQPLAIN\". Ορισμός προσαρμοσμένης μεθόδου σύνδεσης amqp."
+msgstr "Προεπιλογή: \"AMQPLAIN\". Ορισμός προσαρμοσμένης μεθόδου σύνδεσης amqp."
 
 #: settings.py:21
 msgid ""
-"Default: \"amqp://\". Default broker URL. This must be a URL in the form of: "
-"transport://userid:password@hostname:port/virtual_host Only the scheme part "
-"(transport://) is required, the rest is optional, and defaults to the "
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
+" transport://userid:password@hostname:port/virtual_host Only the scheme part"
+" (transport://) is required, the rest is optional, and defaults to the "
 "specific transports default values."
 msgstr ""
 "Προεπιλογή: \"amqp: //\". Προεπιλεγμένη διεύθυνση URL μεσολαβητή. Πρέπει να "
-"είναι μια διεύθυνση URL με τη μορφή: transport://userid:password@hostname:"
-"port/virtual_host Απαιτείται μόνο το τμήμα σχήματος (transport: //), το "
-"υπόλοιπο είναι προαιρετικό και από προεπιλογή παίρνει τις προεπιλεγμένες "
-"τιμές του συγκεκριμένης μεταφοράς."
+"είναι μια διεύθυνση URL με τη μορφή: "
+"transport://userid:password@hostname:port/virtual_host Απαιτείται μόνο το "
+"τμήμα σχήματος (transport: //), το υπόλοιπο είναι προαιρετικό και από "
+"προεπιλογή παίρνει τις προεπιλεγμένες τιμές του συγκεκριμένης μεταφοράς."
 
 #: settings.py:30
 msgid ""
@@ -103,13 +102,15 @@ msgstr ""
 #: settings.py:38
 msgid ""
 "Default: No result backend enabled by default. The backend used to store "
-"task results (tombstones). Refer to http://docs.celeryproject.org/en/v4.1.0/"
-"userguide/configuration.html#result-backend"
+"task results (tombstones). Refer to "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
 msgstr ""
 "Προεπιλογή: Δεν έχει ενεργοποιηθεί από προεπιλογή κανένα υποκείμενο σύστημα "
 "αποτελεσμάτων. Το υποκείμενο σύστημα που χρησιμοποιείται για την αποθήκευση "
-"αποτελεσμάτων εργασιών (επιτύμβιες στήλες). Ανατρέξτε στο http://docs."
-"celeryproject.org/en/v4.1.0/userguide/configuration.html#result-backend"
+"αποτελεσμάτων εργασιών (επιτύμβιες στήλες). Ανατρέξτε στο "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
 
 #: tests/literals.py:3
 msgid "Test queue"

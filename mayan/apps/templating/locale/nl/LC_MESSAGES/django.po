@@ -2,24 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roberto Rosario, 2021
 # bwakkie <bwakkie@gmail.com>, 2021
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
-"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:19 permissions.py:5
@@ -29,22 +29,24 @@ msgstr "Sjablonering"
 #: fields.py:19
 #, python-format
 msgid ""
-"Use Django's default templating language (https://docs.djangoproject.com/en/"
-"%(django_version)s/ref/templates/builtins/). "
+"Use Django's default templating language "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" "
 msgstr ""
-"Gebruik Django's standaard templating taal  (https://docs.djangoproject.com/"
-"en/%(django_version)s/ref/templates/builtins/). "
+"Gebruik Django's standaard templating taal  "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" "
 
 #: fields.py:38
 #, python-format
 msgid ""
-"Use Django's default templating language (https://docs.djangoproject.com/en/"
-"%(django_version)s/ref/templates/builtins/). The {{ %(variable)s }} variable "
-"is available to the template."
+"Use Django's default templating language "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" The {{ %(variable)s }} variable is available to the template."
 msgstr ""
-"Django's standaard sjabloneringstaal gebruiken (https://docs.djangoproject."
-"com/en/%(django_version)s/ref/templates/builtins/). The {{ %(variable)s }} "
-"variabele is beschikbaar voor het sjabloon."
+"Django's standaard sjabloneringstaal gebruiken "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" The {{ %(variable)s }} variabele is beschikbaar voor het sjabloon."
 
 #: forms.py:9
 msgid "Resulting text from the evaluated template."

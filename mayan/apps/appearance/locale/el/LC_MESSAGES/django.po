@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Hmayag Antonian <hmayag@freemail.gr>, 2021
 # pyrotech <anastasios@tutamail.com>, 2021
 # dkstiler dk <dkstiler@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: dkstiler dk <dkstiler@gmail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
-"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:55 events.py:5 permissions.py:5 settings.py:10
@@ -211,7 +211,8 @@ msgstr ""
 "Η τοποθεσία είναι σωστή, όμως ο λογαριασμός σας δεν έχει το απαιτούμενο "
 "δικαίωμα πρόσβασης."
 
-#: templates/500.html:5 templates/500.html:30 templates/appearance/root.html:58
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:58
 msgid "Server error"
 msgstr "Σφάλμα διακομηστή"
 
@@ -236,9 +237,7 @@ msgid "Contact your system administrator."
 msgstr "Επικοινωνήστε με τον διαχειριστή του συστήματος."
 
 #: templates/500.html:47
-msgid ""
-"Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL"
-"\"."
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
 msgstr ""
 "Ελέγξτε τις καταγραφές - logs - για μηνύματα με τις ακόλουθες επισημάνσεις "
 "\"ERROR\", \"CRITICAL\" or \"FATAL\"."
@@ -262,8 +261,7 @@ msgid ""
 "                "
 msgstr ""
 "\n"
-"                    το %(setting_project_title)s βασίζεται στο "
-"%(project_title)s\n"
+"                    το %(setting_project_title)s βασίζεται στο %(project_title)s\n"
 "                "
 
 #: templates/appearance/about.html:78
@@ -283,111 +281,77 @@ msgstr "Διανέμεται υπό την άδεια:"
 #, python-format
 msgid ""
 "\n"
-"                %(project_title)s is a free and open-source software brought "
-"to you with <i class=\"fa fa-heart text-danger\" style=\"transform: "
-"rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
+"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
 msgstr ""
 "\n"
-"                Το %(project_title)s είναι ένα δωρεάν και ανοιχτού κώδικα "
-"λογισμικό που προσφέρεται σε εσάς με <i class=\"fa fa-heart text-danger\" "
-"style=\"transform: rotate(10deg);\"></i> από τον  Roberto Rosario και τους "
-"συνεισφέροντες.\n"
+"                Το %(project_title)s είναι ένα δωρεάν και ανοιχτού κώδικα λογισμικό που προσφέρεται σε εσάς με <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> από τον  Roberto Rosario και τους συνεισφέροντες.\n"
 "            "
 
 #: templates/appearance/about.html:105
 #, python-format
 msgid ""
 "\n"
-"                It takes great effort to make %(project_title)s as feature-"
-"rich as it is.\n"
+"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
 msgstr ""
 "\n"
-"                Απαιτείται πολύ προσπάθεια για την δημιουργία του "
-"%(project_title)s με το πλήθος των δυνατοτήτων που περιέχει.\n"
+"                Απαιτείται πολύ προσπάθεια για την δημιουργία του %(project_title)s με το πλήθος των δυνατοτήτων που περιέχει.\n"
 "            "
 
 #: templates/appearance/about.html:111
 #, python-format
 msgid ""
 "\n"
-"                If you use %(project_title)s please <a class=\"new_window\" "
-"href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
-"xclick&hosted_button_id=3PXN336XFXQNN\">make a donation "
-"%(icon_social_paypal)s</a>\n"
+"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
 "            "
 msgstr ""
 "\n"
-"               Εάν χρησιμοποιείτε το %(project_title)s παρακαλώ <a class="
-"\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
-"xclick&hosted_button_id=3PXN336XFXQNN\">κάντε μια δωρεά "
-"%(icon_social_paypal)s</a>\n"
+"               Εάν χρησιμοποιείτε το %(project_title)s παρακαλώ <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">κάντε μια δωρεά %(icon_social_paypal)s</a>\n"
 "            "
 
 #: templates/appearance/about.html:117
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a class="
-"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
-"\">Release notes %(icon_documentation)s</a> or the short version <a class="
-"\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/"
-"HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"                Η πλήρης λίστα αλλαγών είναι διαθέσιμη στις <a class="
-"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
-"\">Σημειώσεις έκδοσης %(icon_documentation)s</a> ενώ η σύντομη έκδοση των "
-"αλλαγών στις <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/"
-"mayan-edms/blob/master/HISTORY.rst\">Αλλαγές έκδοσης %(icon_documentation)s</"
-"a>.\n"
+"                Η πλήρης λίστα αλλαγών είναι διαθέσιμη στις <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Σημειώσεις έκδοσης %(icon_documentation)s</a> ενώ η σύντομη έκδοση των αλλαγών στις <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Αλλαγές έκδοσης %(icon_documentation)s</a>.\n"
 "            "
 
 #: templates/appearance/about.html:123
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" href="
-"\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
+"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"                Για ερωτήματα ελέγξτε την <a class=\"new_window\" href="
-"\"https://docs.mayan-edms.com\">Τεκμηρίωση %(icon_documentation)s</a>.\n"
+"                Για ερωτήματα ελέγξτε την <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Τεκμηρίωση %(icon_documentation)s</a>.\n"
 "            "
 
 #: templates/appearance/about.html:129
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a "
-"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
-"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href="
-"\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
-"%(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"                Εάν έχετε εντοπίσει κάποιο σφάλμα (bug) ή έχετε προτάσεις "
-"για νέα χαρακτηριστικά, επισκεφθείτε το <a class=\"new_window\" href="
-"\"https://forum.mayan-edms.com\">Φόρουμ %(icon_forum)s</a> ή δημιουργήστε "
-"ένα νέο ticket στο <a class=\"new_window\" href=\"https://gitlab.com/mayan-"
-"edms/mayan-edms\">Αποθετήριο κώδικα %(icon_source_code)s</a>.\n"
+"                Εάν έχετε εντοπίσει κάποιο σφάλμα (bug) ή έχετε προτάσεις για νέα χαρακτηριστικά, επισκεφθείτε το <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Φόρουμ %(icon_forum)s</a> ή δημιουργήστε ένα νέο ticket στο <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Αποθετήριο κώδικα %(icon_source_code)s</a>.\n"
 "            "
 
 #: templates/appearance/about.html:134
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about "
-"how awesome %(project_title)s is!\n"
+"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
 msgstr ""
 "\n"
-"                Διαδώστε. Μιλήστε στους φίλους και συναδέλφους για το "
-"%(project_title)s! \n"
+"                Διαδώστε. Μιλήστε στους φίλους και συναδέλφους για το %(project_title)s! \n"
 "            "
 
 #: templates/appearance/base.html:72

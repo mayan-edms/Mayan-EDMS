@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Bashar Al-Abdulhadi, 2021
@@ -11,21 +11,20 @@
 # Roberto Rosario, 2021
 # Mohammed ALDOUB <voulnet@gmail.com>, 2021
 # Marwan Rahhal <Marwanr@sssit.net>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
-"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:56 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
 #: settings.py:13 views/source_views.py:164
@@ -220,12 +219,13 @@ msgstr "معايير البحث"
 #: source_backends/email_backends.py:60
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 "أمر IMAP STORE لتنفيذه على الرسائل بعد معالجتها. أمر واحد لكل سطر. استخدم "
-"الأوامر المحددة في https://tools.ietf.org/html/rfc2060.html#section-6.4.6 أو "
-"الأوامر المخصصة لخادم IMAP."
+"الأوامر المحددة في https://tools.ietf.org/html/rfc2060.html#section-6.4.6 أو"
+" الأوامر المخصصة لخادم IMAP."
 
 #: source_backends/email_backends.py:65
 msgid "Store commands"
@@ -390,8 +390,8 @@ msgstr ""
 #: source_backends/mixins.py:487
 #, python-format
 msgid ""
-"Message ID metadata type \"%(metadata_type)s\" is not valid for the document "
-"type: %(document_type)s"
+"Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
+" type: %(document_type)s"
 msgstr ""
 
 #: source_backends/mixins.py:588
@@ -506,8 +506,8 @@ msgstr "غير قادر على ايجاد قائمة بملفات الاعداد
 #: source_backends/staging_folder_backends.py:544
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr "المجلد فارغ ! أو لا تمتلك الاذونات الكافية"
 
 #: source_backends/staging_folder_backends.py:551
@@ -576,11 +576,11 @@ msgstr "استجاب الخادم برمز {{statusCode}}."
 
 #: views/base.py:53 wizards.py:52
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
-"لم يتم تحديد أية مصادر تفاعلية للمستندات أو لم يتم تمكين أي منها ، قم بإنشاء "
-"واحدة قبل المتابعة."
+"لم يتم تحديد أية مصادر تفاعلية للمستندات أو لم يتم تمكين أي منها ، قم بإنشاء"
+" واحدة قبل المتابعة."
 
 #: views/document_file_views.py:49
 #, python-format
@@ -612,7 +612,8 @@ msgstr ""
 
 #: views/document_views.py:53
 msgid "New document queued for upload and will be available shortly."
-msgstr "إصدار جديد في قائمة الانتظار من الوثيقة قيد التحميل وسيكون متاحًا قريبًا"
+msgstr ""
+"إصدار جديد في قائمة الانتظار من الوثيقة قيد التحميل وسيكون متاحًا قريبًا"
 
 #: views/document_views.py:79
 #, python-format
@@ -652,8 +653,8 @@ msgstr "لا توجد مصادر متاحة"
 
 #: views/source_views.py:181
 msgid ""
-"This will execute the source code even if the source is not enabled. Sources "
-"that delete content after downloading will not do so while being tested. "
+"This will execute the source code even if the source is not enabled. Sources"
+" that delete content after downloading will not do so while being tested. "
 "Check the source's error log for information during testing. A successful "
 "test will clear the error log."
 msgstr ""

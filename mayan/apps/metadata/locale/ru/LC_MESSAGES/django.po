@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
@@ -9,22 +9,20 @@
 # lilo.panic, 2021
 # Panasoft, 2021
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:64 apps.py:194 apps.py:200 apps.py:204 apps.py:209 apps.py:213
 #: events.py:5 links.py:52 permissions.py:5 queues.py:7 settings.py:9
@@ -219,7 +217,8 @@ msgstr "Валидатор"
 
 #: models.py:78
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
+"The parser will reformat the value entered to conform to the expected "
+"format."
 msgstr ""
 "Парсер переформатирует введенное значение, чтобы оно соответствовало "
 "ожидаемому формату."
@@ -242,7 +241,8 @@ msgstr "Тип"
 
 #: models.py:187
 msgid "The actual value stored in the metadata type field for the document."
-msgstr "Фактическое значение, хранящееся в поле типа метаданных для документа."
+msgstr ""
+"Фактическое значение, хранящееся в поле типа метаданных для документа."
 
 #: models.py:195 models.py:196
 msgid "Document metadata"
@@ -371,7 +371,8 @@ msgstr ""
 #: views/document_views.py:157
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
 msgstr "Тип метаданных %(metadata_type)s добавлен к документу %(document)s."
 
 #: views/document_views.py:167
@@ -395,8 +396,8 @@ msgid ""
 "Add metadata types available for this document's type and assign them "
 "corresponding values."
 msgstr ""
-"Добавьте типы метаданных, доступные для этого типа документа, и присвойте им "
-"соответствующие значения."
+"Добавьте типы метаданных, доступные для этого типа документа, и присвойте им"
+" соответствующие значения."
 
 #: views/document_views.py:221
 msgid "There is no metadata to edit"
@@ -428,12 +429,13 @@ msgstr "Метаданные для документа %s изменены."
 
 #: views/document_views.py:357
 msgid ""
-"Add metadata types this document's type to be able to add them to individual "
-"documents. Once added to individual document, you can then edit their values."
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
 msgstr ""
 "Добавьте типы метаданных к типу этого документа, чтобы иметь возможность "
-"добавлять их в отдельные документы. После добавления в отдельный документ вы "
-"можете редактировать их значения."
+"добавлять их в отдельные документы. После добавления в отдельный документ вы"
+" можете редактировать их значения."
 
 #: views/document_views.py:362
 msgid "This document doesn't have any metadata"
@@ -472,8 +474,7 @@ msgstr "Удалить типы метаданных из документа: %s
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
-msgstr ""
-"Тип метаданных \"%(metadata_type)s\" удален из документа: %(document)s."
+msgstr "Тип метаданных \"%(metadata_type)s\" удален из документа: %(document)s."
 
 #: views/document_views.py:476
 #, python-format
@@ -593,8 +594,8 @@ msgstr "Тип метаданных для редактирования."
 msgid ""
 "Value to assign to the metadata. Can be a literal value or template code."
 msgstr ""
-"Значение, присваиваемое типу метаданных. Может быть буквальным значением или "
-"кодом шаблона."
+"Значение, присваиваемое типу метаданных. Может быть буквальным значением или"
+" кодом шаблона."
 
 #: workflow_actions.py:128
 #, python-format

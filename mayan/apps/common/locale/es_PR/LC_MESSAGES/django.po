@@ -1,25 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# jmcainzos <jmcainzos@vodafone.es>, 2021
 # Roberto Rosario, 2021
-# JAIRO DAVILA <jdavilaco@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: JAIRO DAVILA <jdavilaco@gmail.com>, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
-"Language: es\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_PR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:129 permissions.py:5 settings.py:14
@@ -45,7 +43,8 @@ msgstr "Campos inversos de modelo"
 #: dependencies.py:168
 msgid "Used to allow offline translation of the code text strings."
 msgstr ""
-"Se utiliza para permitir la traducción sin conexión de los textos del código."
+"Se utiliza para permitir la traducción sin conexión de los textos del "
+"código."
 
 #: dependencies.py:177
 msgid "Provides style checking."
@@ -171,8 +170,8 @@ msgstr ""
 
 #: settings.py:29
 msgid ""
-"In list mode, show the \"object\" menu options as a dropdown menu instead of "
-"individual buttons."
+"In list mode, show the \"object\" menu options as a dropdown menu instead of"
+" individual buttons."
 msgstr ""
 "En el modo de lista, muestra las opciones del menú \"objeto\" como un menú "
 "desplegable en lugar de botones individuales."
@@ -181,8 +180,8 @@ msgstr ""
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 "Una lista de nombres que designan todas las aplicaciones que se eliminarán "
 "de la lista normalmente activas para Mayan EDMS. Cada cadena debe ser una "
@@ -194,19 +193,19 @@ msgstr ""
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
-"Una lista de nombres que designan todas las aplicaciones a ser activadas más "
-"allá de las que normalmente se activan para Mayan EDMS. Cada cadena debe ser "
-"una ruta de Python con puntos a: una clase de configuración de la aplicación "
-"(preferida), o un paquete que contiene una aplicación. Ejemplo: ['app_1', "
-"'app_2']"
+"Una lista de nombres que designan todas las aplicaciones a ser activadas más"
+" allá de las que normalmente se activan para Mayan EDMS. Cada cadena debe "
+"ser una ruta de Python con puntos a: una clase de configuración de la "
+"aplicación (preferida), o un paquete que contiene una aplicación. Ejemplo: "
+"['app_1', 'app_2']"
 
 #: settings.py:56
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
 msgstr ""
 "Nombre de la vista adjunta al ancla de la marca en el menú principal. Esta "
 "es también la vista a la que los usuarios serán redirigidos después de "
@@ -214,7 +213,7 @@ msgstr ""
 
 #: settings.py:65
 msgid "Name of the dashboard to display in the home view."
-msgstr ""
+msgstr "Nombre del tablero que se mostrará en la vista inicial."
 
 #: settings.py:70
 msgid "Sets the project's name."
@@ -254,7 +253,7 @@ msgstr "Sobre"
 
 #: views.py:39
 msgid "Home"
-msgstr ""
+msgstr "Inicio"
 
 #: views.py:62
 #, python-format
@@ -293,13 +292,3 @@ msgstr "Aquí puede configurar todos los aspectos del sistema."
 #: views.py:124
 msgid "These modules are used to do system maintenance."
 msgstr "Estos módulos se utilizan para hacer el mantenimiento del sistema."
-
-#~ msgid ""
-#~ "Time to delay background tasks that depend on a database commit to "
-#~ "propagate."
-#~ msgstr ""
-#~ "Tiempo para retrasar las tareas de fondo que dependen de la propagación "
-#~ "de información en la base de datos."
-
-#~ msgid "Dashboard"
-#~ msgstr "Tablero"

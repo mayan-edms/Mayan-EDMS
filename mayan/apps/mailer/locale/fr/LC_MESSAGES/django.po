@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
@@ -11,19 +11,19 @@
 # Yves Dubois <ydubois@gmail.com>, 2021
 # Guillaume Trottier <gui.trottier@gmail.com>, 2021
 # Frédéric Sheedy <sheedf@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:48
@@ -44,8 +44,8 @@ msgstr "Courriel envoyé"
 
 #: forms.py:58 forms.py:93
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
 msgstr ""
 "Adresse électronique du destinataire. Il peut s'agir de plusieurs adresses "
 "séparées par une virgule ou un point-virgule."
@@ -161,8 +161,8 @@ msgstr "De"
 
 #: mailers.py:22 mailers.py:111
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value "
-"is not set."
+"The sender's address. Some system will refuse to send messages if this value"
+" is not set."
 msgstr ""
 "L'adresse de l'expéditeur. Certains systèmes refuseront d’envoyer des "
 "messages si cette valeur n’est pas définie."
@@ -206,11 +206,11 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
-"True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
 msgstr ""
-"Faut-il utiliser une connexion implicite TLS (sécurisée) pour dialoguer avec "
-"le serveur SMTP. Dans la plupart des documents électroniques, ce type de "
+"Faut-il utiliser une connexion implicite TLS (sécurisée) pour dialoguer avec"
+" le serveur SMTP. Dans la plupart des documents électroniques, ce type de "
 "connexion TLS est appelé SSL. Il est généralement utilisé sur le port 465. "
 "Si vous rencontrez des problèmes, consultez le paramètre TLS explicite "
 "\"Utiliser TLS\". Notez que \"Utiliser TLS\" et \"Utiliser SSL\" sont "
@@ -235,13 +235,13 @@ msgstr "Mot de passe"
 #: mailers.py:72
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these "
-"settings is empty, authentication won't be attempted."
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
 msgstr ""
 "Mot de passe à utiliser pour le serveur SMTP. Ce paramètre est utilisé "
 "conjointement avec le nom d'utilisateur lors de l'authentification sur le "
-"serveur SMTP. Si l'un de ces paramètres est vide, l'authentification ne sera "
-"pas tentée."
+"serveur SMTP. Si l'un de ces paramètres est vide, l'authentification ne sera"
+" pas tentée."
 
 #: mailers.py:81
 msgid "Django SMTP backend"
@@ -470,12 +470,13 @@ msgstr "Destinataire"
 
 #: workflow_actions.py:30
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon. A template can be used to reference properties of the document."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon. A template can be used to reference properties of the "
+"document."
 msgstr ""
 "Adresse courriel du destinataire. Peut être plusieurs adresses séparées par "
-"une virgule ou un point-virgule. Un modèle peut être utilisé pour référencer "
-"les propriétés du document."
+"une virgule ou un point-virgule. Un modèle peut être utilisé pour référencer"
+" les propriétés du document."
 
 #: workflow_actions.py:38
 msgid "CC"
@@ -505,8 +506,8 @@ msgid ""
 "multiple addresses separated by comma or semicolon. A template can be used "
 "to reference properties of the document."
 msgstr ""
-"Adresse utilisée dans l'en-tête «Répondre à» lors de l'envoi du courriel. Il "
-"peut s'agir de plusieurs adresses séparées par une virgule ou un point-"
+"Adresse utilisée dans l'en-tête «Répondre à» lors de l'envoi du courriel. Il"
+" peut s'agir de plusieurs adresses séparées par une virgule ou un point-"
 "virgule. Un modèle peut être utilisé pour faire référence aux propriétés du "
 "document."
 

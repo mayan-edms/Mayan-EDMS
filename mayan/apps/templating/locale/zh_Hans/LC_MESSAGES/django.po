@@ -2,25 +2,24 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roberto Rosario, 2021
 # xisafe <root@xisafe.com>, 2021
 # bo feng <87289884@qq.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: bo feng <87289884@qq.com>, 2021\n"
-"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/"
-"teams/13584/zh-Hans/)\n"
-"Language: zh-Hans\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:19 permissions.py:5
@@ -30,22 +29,21 @@ msgstr "模板化"
 #: fields.py:19
 #, python-format
 msgid ""
-"Use Django's default templating language (https://docs.djangoproject.com/en/"
-"%(django_version)s/ref/templates/builtins/). "
+"Use Django's default templating language "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" "
 msgstr ""
-"使用Django的默认模板语言（https://docs.djangoproject.com/en/"
-"%(django_version)s/ref/templates/builtins/）。"
+"使用Django的默认模板语言（https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/）。"
 
 #: fields.py:38
 #, python-format
 msgid ""
-"Use Django's default templating language (https://docs.djangoproject.com/en/"
-"%(django_version)s/ref/templates/builtins/). The {{ %(variable)s }} variable "
-"is available to the template."
+"Use Django's default templating language "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" The {{ %(variable)s }} variable is available to the template."
 msgstr ""
-"使用Django的默认模板语言（https://docs.djangoproject.com/"
-"en/1%(django_version)s/ref/templates/builtins/）。{{%(variable)s }}这个变量可"
-"用于模板。"
+"使用Django的默认模板语言（https://docs.djangoproject.com/en/1%(django_version)s/ref/templates/builtins/）。{{%(variable)s"
+" }}这个变量可用于模板。"
 
 #: forms.py:9
 msgid "Resulting text from the evaluated template."

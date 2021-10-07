@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # mizhgan <i@mizhgan.ru>, 2021
@@ -10,22 +10,20 @@
 # Sergey Glita <gsv70@mail.ru>, 2021
 # lilo.panic, 2021
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:56 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
 #: settings.py:13 views/source_views.py:164
@@ -42,8 +40,8 @@ msgid ""
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr ""
-"Источники документов - это способы добавления новых документов в Mayan EDMS. "
-"Как минимум, создайте веб-форму, чтобы загружать документы из браузера."
+"Источники документов - это способы добавления новых документов в Mayan EDMS."
+" Как минимум, создайте веб-форму, чтобы загружать документы из браузера."
 
 #: apps.py:106
 msgid "Type"
@@ -214,8 +212,8 @@ msgid ""
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 msgstr ""
 "Критерии, которые следует использовать при поиске сообщений для обработки. "
-"Используйте формат, указанный в https://tools.ietf.org/html/rfc2060."
-"html#section-6.4.4"
+"Используйте формат, указанный в "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
 #: source_backends/email_backends.py:52
 msgid "Search criteria"
@@ -224,13 +222,14 @@ msgstr "Критерии поиска"
 #: source_backends/email_backends.py:60
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 "Команды IMAP STORE, выполняемые для сообщений после их обработки. По одной "
-"команде на строку. Используйте команды, указанные в https://tools.ietf.org/"
-"html/rfc2060.html#section-6.4.6, или пользовательские команды для вашего "
-"сервера IMAP."
+"команде на строку. Используйте команды, указанные в "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6, или пользовательские"
+" команды для вашего сервера IMAP."
 
 #: source_backends/email_backends.py:65
 msgid "Store commands"
@@ -309,8 +308,8 @@ msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr ""
-"Обычно выбирают 110 для POP3, 995 для POP3 с SSL, 143 для IMAP, 993 для IMAP "
-"с SSL"
+"Обычно выбирают 110 для POP3, 995 для POP3 с SSL, 143 для IMAP, 993 для IMAP"
+" с SSL"
 
 #: source_backends/mixins.py:222
 msgid "Port"
@@ -329,8 +328,8 @@ msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
 msgstr ""
-"Имя вложения, которое будет содержать пары \"имя типа метаданных: значение"
-"\", которые будут присвоены остальным загруженным вложениям."
+"Имя вложения, которое будет содержать пары \"имя типа метаданных: "
+"значение\", которые будут присвоены остальным загруженным вложениям."
 
 #: source_backends/mixins.py:250
 msgid "Metadata attachment name"
@@ -400,8 +399,8 @@ msgstr ""
 #: source_backends/mixins.py:487
 #, python-format
 msgid ""
-"Message ID metadata type \"%(metadata_type)s\" is not valid for the document "
-"type: %(document_type)s"
+"Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
+" type: %(document_type)s"
 msgstr ""
 
 #: source_backends/mixins.py:588
@@ -517,11 +516,11 @@ msgstr "Не удалось получить список промежуточн
 #: source_backends/staging_folder_backends.py:544
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
-"Это может означать, что промежуточная папка пуста. Это также может означать, "
-"что учетная запись пользователя операционной системы, используемая для "
+"Это может означать, что промежуточная папка пуста. Это также может означать,"
+" что учетная запись пользователя операционной системы, используемая для "
 "запуска Mayan EDMS, не имеет необходимых разрешений для доступа к папке."
 
 #: source_backends/staging_folder_backends.py:551
@@ -590,8 +589,8 @@ msgstr "Сервер ответил кодом {{statusCode}}."
 
 #: views/base.py:53 wizards.py:52
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 "Интерактивные источники документов не определены или отключены. Чтобы "
 "продолжить, создайте или включите источник."
@@ -611,13 +610,13 @@ msgstr "Ошибка при загрузке файла документа; %(ex
 #: views/document_file_views.py:88
 msgid "New document file queued for upload and will be available shortly."
 msgstr ""
-"Новый файл документа поставлен в очередь на загрузку и скоро станет доступен."
+"Новый файл документа поставлен в очередь на загрузку и скоро станет "
+"доступен."
 
 #: views/document_file_views.py:121
 #, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
-msgstr ""
-"Загрузка нового файла документа \"%(document)s\" из источника: %(source)s"
+msgstr "Загрузка нового файла документа \"%(document)s\" из источника: %(source)s"
 
 #: views/document_file_views.py:127
 msgid "Submit"
@@ -670,8 +669,8 @@ msgstr "Нет доступных источников"
 
 #: views/source_views.py:181
 msgid ""
-"This will execute the source code even if the source is not enabled. Sources "
-"that delete content after downloading will not do so while being tested. "
+"This will execute the source code even if the source is not enabled. Sources"
+" that delete content after downloading will not do so while being tested. "
 "Check the source's error log for information during testing. A successful "
 "test will clear the error log."
 msgstr ""

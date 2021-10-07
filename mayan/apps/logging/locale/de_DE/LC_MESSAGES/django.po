@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Roberto Rosario, 2021
 # Mathias Behrle <mathiasb@m9s.biz>, 2021
@@ -10,20 +10,19 @@
 # Felix <felix.com@gmx.com>, 2021
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2021
 # Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
-"teams/13584/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:16 permissions.py:5 settings.py:10
@@ -98,8 +97,8 @@ msgstr ""
 #: settings.py:31
 msgid "Path to the logfile that will track errors during production."
 msgstr ""
-"Der Pfad zur Protokolldatei, in der Fehler im Produktivbetrieb aufgezeichnet "
-"werden."
+"Der Pfad zur Protokolldatei, in der Fehler im Produktivbetrieb aufgezeichnet"
+" werden."
 
 #: views.py:20
 #, python-format
@@ -115,8 +114,8 @@ msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
 msgstr ""
-"Diese Ansicht zeigt das Fehlerprotokoll verschiedener Objekte an. Eine leere "
-"Liste ist eine gute Sache."
+"Diese Ansicht zeigt das Fehlerprotokoll verschiedener Objekte an. Eine leere"
+" Liste ist eine gute Sache."
 
 #: views.py:46
 msgid "There are no error log entries"

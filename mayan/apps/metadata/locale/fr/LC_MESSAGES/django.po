@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
@@ -12,19 +12,19 @@
 # Yves Dubois <ydubois@gmail.com>, 2021
 # Frédéric Sheedy <sheedf@gmail.com>, 2021
 # Guillaume Trottier <gui.trottier@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:64 apps.py:194 apps.py:200 apps.py:204 apps.py:209 apps.py:213
@@ -220,7 +220,8 @@ msgstr "Validateur"
 
 #: models.py:78
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
+"The parser will reformat the value entered to conform to the expected "
+"format."
 msgstr ""
 "L'analyseur syntaxique reformatera la valeur saisie pour la rendre conforme "
 "au format attendu."
@@ -372,7 +373,8 @@ msgstr ""
 #: views/document_views.py:157
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
 msgstr ""
 "Le type de métadonnées : %(metadata_type)s a été ajouté avec succès au "
 "document %(document)s."
@@ -382,8 +384,8 @@ msgstr ""
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
 msgstr ""
-"Le type de métadonnées : %(metadata_type)s est déjà présent dans le document "
-"%(document)s."
+"Le type de métadonnées : %(metadata_type)s est déjà présent dans le document"
+" %(document)s."
 
 #: views/document_views.py:184
 #, python-format
@@ -434,12 +436,13 @@ msgstr "Métadonnées pour le document %s modifiées avec succès."
 
 #: views/document_views.py:357
 msgid ""
-"Add metadata types this document's type to be able to add them to individual "
-"documents. Once added to individual document, you can then edit their values."
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
 msgstr ""
 "Ajoutez des types de métadonnées de ce type de document pour pouvoir les "
-"ajouter à des documents individuels. Une fois ajouté au document individuel, "
-"vous pouvez ensuite modifier leurs valeurs."
+"ajouter à des documents individuels. Une fois ajouté au document individuel,"
+" vous pouvez ensuite modifier leurs valeurs."
 
 #: views/document_views.py:362
 msgid "This document doesn't have any metadata"
@@ -453,7 +456,8 @@ msgstr "Métadonnées du document: %s"
 #: views/document_views.py:378
 #, python-format
 msgid "Metadata remove request performed on %(count)d document"
-msgstr "Demande de suppression de métadonnées effectuée sur %(count)d document"
+msgstr ""
+"Demande de suppression de métadonnées effectuée sur %(count)d document"
 
 #: views/document_views.py:381
 #, python-format

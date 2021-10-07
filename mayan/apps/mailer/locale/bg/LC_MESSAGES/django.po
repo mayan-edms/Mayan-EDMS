@@ -1,26 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2021
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
-"bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:48
@@ -41,8 +40,8 @@ msgstr "Електронното съобщение е изпратено"
 
 #: forms.py:58 forms.py:93
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
 msgstr ""
 "Имейл адрес на получателя. Могат да бъдат множество адреси, разделени със "
 "запетая или точка и запетая."
@@ -156,8 +155,8 @@ msgstr "От"
 
 #: mailers.py:22 mailers.py:111
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value "
-"is not set."
+"The sender's address. Some system will refuse to send messages if this value"
+" is not set."
 msgstr ""
 "Адресът на подателя. Някои системи ще откажат да изпращат съобщения, ако "
 "тази стойност не е зададена."
@@ -187,8 +186,8 @@ msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
 msgstr ""
-"Дали да се използва TLS (сигурна) връзка, когато се говори със SMTP сървъра. "
-"Това се използва за изрични TLS връзки, обикновено на порт 587."
+"Дали да се използва TLS (сигурна) връзка, когато се говори със SMTP сървъра."
+" Това се използва за изрични TLS връзки, обикновено на порт 587."
 
 #: mailers.py:48
 msgid "Use SSL"
@@ -200,14 +199,14 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
-"True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
 msgstr ""
 "Дали да се използва неявна TLS (сигурна) връзка, когато се говори със SMTP "
 "сървъра. В повечето имейл документации този тип TLS връзка се нарича SSL. "
 "Обикновено се използва на порт 465. Ако имате проблеми, вижте изричната "
-"настройка на TLS „Използване на TLS“. Обърнете внимание, че „Използване TLS“ "
-"и „Използване SSL“ са взаимно изключващи се, така че задайте само една от "
+"настройка на TLS „Използване на TLS“. Обърнете внимание, че „Използване TLS“"
+" и „Използване SSL“ са взаимно изключващи се, така че задайте само една от "
 "тези настройки като True."
 
 #: mailers.py:60
@@ -229,12 +228,12 @@ msgstr "Парола"
 #: mailers.py:72
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these "
-"settings is empty, authentication won't be attempted."
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
 msgstr ""
 "Парола за SMTP сървър. Тази настройка се използва заедно с потребителското "
-"име при удостоверяване в SMTP сървъра. Ако някоя от тези настройки е празна, "
-"удостоверяване няма да се опита."
+"име при удостоверяване в SMTP сървъра. Ако някоя от тези настройки е празна,"
+" удостоверяване няма да се опита."
 
 #: mailers.py:81
 msgid "Django SMTP backend"
@@ -261,8 +260,8 @@ msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
 msgstr ""
-"Ако е по подразбиране, този пощенски профил ще бъде предварително избран във "
-"формата за изпращане на документи."
+"Ако е по подразбиране, този пощенски профил ще бъде предварително избран във"
+" формата за изпращане на документи."
 
 #: models.py:41
 msgid "Default"
@@ -461,8 +460,9 @@ msgstr "Получател"
 
 #: workflow_actions.py:30
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon. A template can be used to reference properties of the document."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon. A template can be used to reference properties of the "
+"document."
 msgstr ""
 "Имейл адрес на получателя. Могат да бъдат няколко адреса, разделени със "
 "запетая или точка и запетая. Шаблонът може да се използва за манипулиране "
@@ -497,8 +497,8 @@ msgid ""
 "to reference properties of the document."
 msgstr ""
 "Адрес, използван в заглавката „Отговор на“ при изпращане на имейла. Може да "
-"бъде множество адреси, разделени със запетая или точка и запетая. Може да се "
-"използва шаблон за препращане към свойства на документа."
+"бъде множество адреси, разделени със запетая или точка и запетая. Може да се"
+" използва шаблон за препращане към свойства на документа."
 
 #: workflow_actions.py:77
 msgid "Subject of the email. Can be a string or a template."

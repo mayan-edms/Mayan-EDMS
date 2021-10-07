@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
@@ -10,21 +10,19 @@
 # Aline Freitas <aline@alinefreitas.com.br>, 2021
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
 # Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Rodrigo de Almeida Sottomaior Macedo "
-"<rmsolucoeseminformatica@protonmail.com>, 2021\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
-"teams/13584/pt_BR/)\n"
-"Language: pt_BR\n"
+"Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:31
@@ -93,7 +91,8 @@ msgstr "Termo"
 
 #: forms.py:46
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr "Nome, e-mail, ID da chave ou impressão digital da chave para procurar."
+msgstr ""
+"Nome, e-mail, ID da chave ou impressão digital da chave para procurar."
 
 #: links.py:17
 msgid "Delete"
@@ -288,8 +287,8 @@ msgstr "Carregar nova chave"
 
 #: views.py:182
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded "
-"by the user. The view to upload private and public keys is the same."
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user. The view to upload private and public keys is the same."
 msgstr ""
 "Chaves privadas são usadas para assinaturas de documentos. Chaves privadas "
 "somente podem ser carregadas pelo usuário. A tela para carregar chaves "
@@ -301,13 +300,14 @@ msgstr "Não há chaves privadas"
 
 #: views.py:205
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded "
-"by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr ""
-"Chaves públicas são usadas para verificar documentos assinados digitalmente. "
-"Chaves públicas podem ser carregadas pelo usuário ou baixadas de servidores "
-"de chaves. A tela para carregamento de chaves públicas e privadas é a mesma."
+"Chaves públicas são usadas para verificar documentos assinados digitalmente."
+" Chaves públicas podem ser carregadas pelo usuário ou baixadas de servidores"
+" de chaves. A tela para carregamento de chaves públicas e privadas é a "
+"mesma."
 
 #: views.py:211
 msgid "There no public keys"

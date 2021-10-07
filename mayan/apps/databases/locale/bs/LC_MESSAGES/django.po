@@ -2,29 +2,31 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# Roberto Rosario, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"PO-Revision-Date: 2021-10-07 06:42+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: model_mixins.py:18
 msgid "The dotted Python path to the backend class."
-msgstr ""
+msgstr "Podešena Python staza do backend klase."
 
 #: model_mixins.py:19
 msgid "Backend path"
-msgstr ""
+msgstr "Backend putanja"
 
 #: model_mixins.py:23
 msgid "JSON encoded data for the backend class."
@@ -32,11 +34,11 @@ msgstr ""
 
 #: model_mixins.py:24
 msgid "Backend data"
-msgstr ""
+msgstr "Backend podaci"
 
 #: model_mixins.py:72
 msgid "Backend"
-msgstr ""
+msgstr "Backend"
 
 #: model_mixins.py:73
 msgid "The backend class for this entry."

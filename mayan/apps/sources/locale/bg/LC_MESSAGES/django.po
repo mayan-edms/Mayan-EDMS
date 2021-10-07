@@ -1,26 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2021
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
-"bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:56 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
@@ -211,8 +210,8 @@ msgid ""
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 msgstr ""
 "Критерии, които се използват при търсене на съобщения за обработка. "
-"Използвайте формата, посочен в https://tools.ietf.org/html/rfc2060."
-"html#section-6.4.4"
+"Използвайте формата, посочен в "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
 #: source_backends/email_backends.py:52
 msgid "Search criteria"
@@ -221,13 +220,14 @@ msgstr "Критерии за търсене"
 #: source_backends/email_backends.py:60
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 "IMAP STORE команда за изпълнение на съобщения след тяхното обработване. По "
-"една команда на ред. Използвайте командите, посочени в https://tools.ietf."
-"org/html/rfc2060.html#section-6.4.6 или персонализираните команди за вашия "
-"IMAP сървър."
+"една команда на ред. Използвайте командите, посочени в "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 или персонализираните"
+" команди за вашия IMAP сървър."
 
 #: source_backends/email_backends.py:65
 msgid "Store commands"
@@ -244,7 +244,8 @@ msgstr "Премахнете изцяло"
 
 #: source_backends/email_backends.py:82
 msgid "IMAP Mailbox to which processed messages will be copied."
-msgstr "IMAP пощенска кутия, в която ще бъдат копирани обработените съобщения."
+msgstr ""
+"IMAP пощенска кутия, в която ще бъдат копирани обработените съобщения."
 
 #: source_backends/email_backends.py:84
 msgid "Destination mailbox"
@@ -336,8 +337,8 @@ msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
 msgstr ""
-"Изберете тип метаданни за съхраняване стойността „от“ на имейла. Трябва да е "
-"валиден тип метаданни за избрания преди това тип документ."
+"Изберете тип метаданни за съхраняване стойността „от“ на имейла. Трябва да е"
+" валиден тип метаданни за избрания преди това тип документ."
 
 #: source_backends/mixins.py:266
 msgid "From metadata type"
@@ -388,14 +389,14 @@ msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
-"Типът метаданни за темата &quot;%(metadata_type)s&quot; не е валиден за типа "
-"документ: %(document_type)s"
+"Типът метаданни за темата &quot;%(metadata_type)s&quot; не е валиден за типа"
+" документ: %(document_type)s"
 
 #: source_backends/mixins.py:487
 #, python-format
 msgid ""
-"Message ID metadata type \"%(metadata_type)s\" is not valid for the document "
-"type: %(document_type)s"
+"Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
+" type: %(document_type)s"
 msgstr ""
 
 #: source_backends/mixins.py:588
@@ -513,8 +514,8 @@ msgstr "Невъзможно е да се получи списък с изхо�
 #: source_backends/staging_folder_backends.py:544
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
 "Това може да означава, че папката за поставяне е празна. Това също може да "
 "означава, че потребителският акаунт на операционната система, използвана за "
@@ -587,8 +588,8 @@ msgstr "Сървърът отговори с {{statusCode}} код."
 
 #: views/base.py:53 wizards.py:52
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 "Не са дефинирани интерактивни източници на документи или никой не е "
 "активиран, създайте такъв преди да продължите."
@@ -669,8 +670,8 @@ msgstr "Няма налични източници"
 
 #: views/source_views.py:181
 msgid ""
-"This will execute the source code even if the source is not enabled. Sources "
-"that delete content after downloading will not do so while being tested. "
+"This will execute the source code even if the source is not enabled. Sources"
+" that delete content after downloading will not do so while being tested. "
 "Check the source's error log for information during testing. A successful "
 "test will clear the error log."
 msgstr ""

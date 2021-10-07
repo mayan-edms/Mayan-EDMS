@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
-"Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_PR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:22
@@ -144,7 +144,8 @@ msgid "Slug"
 msgstr "Identificador"
 
 #: models.py:47
-msgid "Causes this index to be visible and updated when document data changes."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
 msgstr ""
 "Hace que este índice sea visible y actualizado cuando los datos de "
 "documentos cambien."
@@ -165,8 +166,8 @@ msgstr "Índice"
 msgid "Enter a template to render. Use Django's default templating language."
 msgstr ""
 "Ingrese una plantilla para renderizar. Utilice el lenguaje de plantillas "
-"predeterminado de Django (https://docs.djangoproject.com/en/1.11/ref/"
-"templates/builtins/)"
+"predeterminado de Django "
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
 #: models.py:181
 msgid "Indexing expression"
@@ -180,11 +181,11 @@ msgstr ""
 
 #: models.py:194
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 msgstr ""
-"Marque esta opción para que el nodo actúe como un contenedor de documentos y "
-"no como un padre para otros nodos secundarios."
+"Marque esta opción para que el nodo actúe como un contenedor de documentos y"
+" no como un padre para otros nodos secundarios."
 
 #: models.py:197
 msgid "Link documents"
@@ -337,11 +338,11 @@ msgstr "El padre debe ser de la misma plantilla de índice."
 
 #: serializers.py:207
 msgid ""
-"URL of the API endpoint showing the list document types associated with this "
-"index template."
+"URL of the API endpoint showing the list document types associated with this"
+" index template."
 msgstr ""
-"URL de la API que muestra la lista de tipos de documentos asociados con esta "
-"plantilla de índice."
+"URL de la API que muestra la lista de tipos de documentos asociados con esta"
+" plantilla de índice."
 
 #: serializers.py:214
 msgid "URL of the API endpoint to add document types to this index template."
@@ -430,8 +431,8 @@ msgstr "Índices vinculados al tipo de documento: %s"
 #: views/index_template_views.py:90
 msgid ""
 "Indexes group document automatically into levels. Indexes are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
 "Los índices agrupan el documento automáticamente en niveles. Los índices se "
 "definen utilizando una plantilla cuyos marcadores se reemplazan con "
@@ -521,23 +522,3 @@ msgstr[1] "%(count)d índices reiniciados."
 #: views/index_template_views.py:372
 msgid "Index templates for which their instances will be deleted."
 msgstr "Plantillas de índice para las que se eliminarán sus instancias."
-
-#~ msgid "Levels"
-#~ msgstr "Niveles"
-
-#~ msgid "Index node template"
-#~ msgstr "Nodo de plantilla de indice"
-
-#~ msgid "Indexes node template"
-#~ msgstr "Nodos de plantillas de índices"
-
-#~ msgid ""
-#~ "Amount of time in seconds, a failed indexing task will wait before "
-#~ "retrying. Lower values will increase the speed at which documents are "
-#~ "indexed but will cause a higher count of failed/retried tasks in the "
-#~ "queue."
-#~ msgstr ""
-#~ "Cantidad de tiempo en segundos, una tarea de indexación fallida esperará "
-#~ "antes de volver a intentarlo. Los valores más bajos aumentarán la "
-#~ "velocidad a la que se indexan los documentos, pero provocarán una mayor "
-#~ "cantidad de tareas fallidas / reintentadas en la cola."

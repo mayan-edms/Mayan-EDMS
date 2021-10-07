@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
@@ -13,19 +13,19 @@
 # Yves Dubois <ydubois@gmail.com>, 2021
 # Guillaume Trottier <gui.trottier@gmail.com>, 2021
 # Frédéric Sheedy <sheedf@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2021-10-07 07:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:31
@@ -291,8 +291,8 @@ msgstr "Téléverser une nouvelle clé"
 
 #: views.py:182
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded "
-"by the user. The view to upload private and public keys is the same."
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user. The view to upload private and public keys is the same."
 msgstr ""
 "Les clés privées sont utilisées pour signer des documents. Les clés privées "
 "ne peuvent être téléversées que par l'utilisateur. La page pour téléverser "
@@ -304,13 +304,13 @@ msgstr "Aucune clé privée"
 
 #: views.py:205
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded "
-"by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr ""
 "Les clés publiques sont utilisées pour vérifier les documents signés. Les "
-"clés publiques peuvent être téléversées par l'utilisateur ou téléchargées du "
-"serveur de clés. La page est la même pour téléverser une clé privée ou "
+"clés publiques peuvent être téléversées par l'utilisateur ou téléchargées du"
+" serveur de clés. La page est la même pour téléverser une clé privée ou "
 "publique."
 
 #: views.py:211
