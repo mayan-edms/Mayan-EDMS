@@ -401,6 +401,14 @@
     events to the ``DocumentVersion`` model.
 
 - Sort object and list facet links when using the list item view.
+- Rename environment variable ``MAYAN_GUNICORN_JITTER`` to
+  ``MAYAN_GUNICORN_REQUESTS_JITTER``.
+- Support changing the operating system user when creating the supervisord
+  file using the environment variable ``MAYAN_OS_USERNAME``.
+- Reorder the Gunicorn arguments.
+- Make the ``DJANGO_SETTINGS_MODULE`` environment variable an alias of
+  ``MAYAN_SETTINGS_MODULE`` in the supervisord file.
+
 
 4.0.16 (2021-09-29)
 ===================

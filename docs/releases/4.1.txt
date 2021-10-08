@@ -735,6 +735,9 @@ Due to the changes in the index tree generation algorithm and database
 integrity configuration, existing index trees will deleted during upgrade
 and need to be rebuild after upgrade.
 
+Environment variable ``MAYAN_GUNICORN_JITTER`` renamed to
+``MAYAN_GUNICORN_REQUESTS_JITTER``.
+
 
 Issues closed
 -------------

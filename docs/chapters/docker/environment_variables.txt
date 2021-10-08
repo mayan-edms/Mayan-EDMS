@@ -137,12 +137,6 @@ Docker
 Gunicorn
 ========
 
-- ``MAYAN_GUNICORN_JITTER``
-
-  Optional. Allows setting Gunicorn's ``max_requests_jitter`` value
-  (https://docs.gunicorn.org/en/latest/settings.html#max-requests-jitter).
-  Default: |GUNICORN_JITTER|.
-
 - ``MAYAN_GUNICORN_LIMIT_REQUEST_LINE``
 
   Optional. Allows setting Gunicorn's ``limit_request_line`` value
@@ -154,6 +148,12 @@ Gunicorn
   Optional. Allows setting Gunicorn's ``max_requests`` value
   (https://docs.gunicorn.org/en/latest/settings.html#max-requests).
   Default: |GUNICORN_MAX_REQUESTS|.
+
+- ``MAYAN_GUNICORN_REQUESTS_JITTER``
+
+  Optional. Allows setting Gunicorn's ``max_requests_jitter`` value
+  (https://docs.gunicorn.org/en/latest/settings.html#max-requests-jitter).
+  Default: |MAYAN_GUNICORN_REQUESTS_JITTER|.
 
 - ``MAYAN_GUNICORN_TIMEOUT``
 
