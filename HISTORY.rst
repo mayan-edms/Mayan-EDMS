@@ -408,7 +408,8 @@
 - Reorder the Gunicorn arguments.
 - Make the ``DJANGO_SETTINGS_MODULE`` environment variable an alias of
   ``MAYAN_SETTINGS_MODULE`` in the supervisord file.
-
+- Add ``MAYAN_GUNICORN_TEMPORARY_DIRECTORY`` to the gunicorn invocation in
+  the ``run_frontend.sh`` batch file.
 
 4.0.16 (2021-09-29)
 ===================
