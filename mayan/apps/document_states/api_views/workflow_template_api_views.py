@@ -65,7 +65,7 @@ class APIWorkflowTemplateDocumentTypeAddView(generics.ObjectActionAPIView):
 
 class APIWorkflowTemplateDocumentTypeRemoveView(generics.ObjectActionAPIView):
     """
-    post: Add a document type from a workflow template.
+    post: Remove a document type from a workflow template.
     """
     lookup_url_kwarg = 'workflow_template_id'
     mayan_object_permissions = {
