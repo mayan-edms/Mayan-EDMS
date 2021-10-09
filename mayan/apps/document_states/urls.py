@@ -10,7 +10,8 @@ from .api_views.workflow_template_api_views import (
     APIWorkflowTemplateDetailView, APIWorkflowTemplateDocumentTypeAddView,
     APIWorkflowTemplateDocumentTypeListView,
     APIWorkflowTemplateDocumentTypeRemoveView, APIWorkflowTemplateImageView,
-    APIWorkflowTemplateListView, APIWorkflowTemplateStateListView,
+    APIWorkflowTemplateListView, APIWorkflowTemplateStateActionDetailView,
+    APIWorkflowTemplateStateActionListView, APIWorkflowTemplateStateListView,
     APIWorkflowTemplateStateView, APIWorkflowTemplateTransitionListView,
     APIWorkflowTemplateTransitionView,
     APIWorkflowTemplateTransitionFieldDetailView,
@@ -310,6 +311,16 @@ api_urls = [
         regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/states/(?P<workflow_template_state_id>[0-9]+)/$',
         name='workflow-template-state-detail',
         view=APIWorkflowTemplateStateView.as_view()
+    ),
+    url(
+        regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/states/(?P<workflow_template_state_id>[0-9]+)/actions/$',
+        name='workflow-template-state-action-list',
+        view=APIWorkflowTemplateStateActionListView.as_view()
+    ),
+    url(
+        regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/states/(?P<workflow_template_state_id>[0-9]+)/actions/(?P<workflow_template_state_action_id>[0-9]+)/$',
+        name='workflow-template-state-action-detail',
+        view=APIWorkflowTemplateStateActionDetailView.as_view()
     ),
     url(
         regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/transitions/$',

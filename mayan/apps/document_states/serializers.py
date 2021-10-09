@@ -14,7 +14,7 @@ from mayan.apps.user_management.serializers import UserSerializer
 
 from .models import (
     Workflow, WorkflowInstance, WorkflowInstanceLogEntry, WorkflowState,
-    WorkflowTransition, WorkflowTransitionField
+    WorkflowStateAction, WorkflowTransition, WorkflowTransitionField
 )
 
 
@@ -78,6 +78,19 @@ class WorkflowTemplateDocumentTypeRemoveSerializer(serializers.Serializer):
 
 
 class WorkflowTemplateStateSerializer(serializers.HyperlinkedModelSerializer):
+    actions_url = MultiKwargHyperlinkedIdentityField(
+        view_kwargs=(
+            {
+                'lookup_field': 'workflow_id',
+                'lookup_url_kwarg': 'workflow_template_id',
+            },
+            {
+                'lookup_field': 'pk',
+                'lookup_url_kwarg': 'workflow_template_state_id',
+            }
+        ),
+        view_name='rest_api:workflow-template-state-action-list'
+    )
     url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
@@ -98,10 +111,51 @@ class WorkflowTemplateStateSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         fields = (
-            'completion', 'id', 'initial', 'label', 'url',
-            'workflow_template_url',
+            'actions_url', 'completion', 'id', 'initial', 'label', 'url',
+            'workflow_template_url'
         )
         model = WorkflowState
+
+
+class WorkflowTemplateStateActionSerializer(serializers.HyperlinkedModelSerializer):
+    url = MultiKwargHyperlinkedIdentityField(
+        view_kwargs=(
+            {
+                'lookup_field': 'state__workflow_id',
+                'lookup_url_kwarg': 'workflow_template_id',
+            },
+            {
+                'lookup_field': 'state_id',
+                'lookup_url_kwarg': 'workflow_template_state_id',
+            },
+            {
+                'lookup_field': 'pk',
+                'lookup_url_kwarg': 'workflow_template_state_action_id',
+            }
+        ),
+        view_name='rest_api:workflow-template-state-action-detail'
+    )
+    workflow_template_state_url = MultiKwargHyperlinkedIdentityField(
+        view_kwargs=(
+            {
+                'lookup_field': 'state__workflow_id',
+                'lookup_url_kwarg': 'workflow_template_id',
+            },
+            {
+                'lookup_field': 'state_id',
+                'lookup_url_kwarg': 'workflow_template_state_id',
+            }
+        ),
+        view_name='rest_api:workflow-template-state-detail'
+    )
+
+    class Meta:
+        fields = (
+            'action_path', 'action_data', 'condition', 'enabled', 'id',
+            'label', 'url', 'when', 'workflow_template_state_url'
+        )
+        model = WorkflowStateAction
+        read_only_fields = ('id', 'url', 'workflow_template_state_url')
 
 
 class WorkflowTransitionFieldSerializer(

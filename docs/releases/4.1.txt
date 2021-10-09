@@ -752,5 +752,6 @@ Issues closed
 - :gitlab-issue:`1027` Source missing method process_document (4.1a1)
 - :gitlab-issue:`1039` [v4.1b1] Missing requirement
 - :gitlab-issue:`1042` [4.1] [Doc] description typo for APIWorkflowTemplateDocumentTypeRemoveView
+- :gitlab-issue:`1043` [4.1] [API] Feature Request: Endpoint for workflow state action
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

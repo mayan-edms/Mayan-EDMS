@@ -410,6 +410,10 @@
   ``MAYAN_SETTINGS_MODULE`` in the supervisord file.
 - Add ``MAYAN_GUNICORN_TEMPORARY_DIRECTORY`` to the gunicorn invocation in
   the ``run_frontend.sh`` batch file.
+- Fix workflow template API description text. Closes GitLab issue #1042.
+  Thanks to Ludovic Anterieur (@lanterieur) for the report.
+- Add document template state action API endpoints. Closes GitLab issue #1043
+  Thanks to Ludovic Anterieur (@lanterieur) for the request.
 
 4.0.16 (2021-09-29)
 ===================
