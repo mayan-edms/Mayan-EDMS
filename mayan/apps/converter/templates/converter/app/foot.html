@@ -1,0 +1,15 @@
+{% load static %}
+
+<script src="{% static 'converter/js/mayan_image.js' %}" type="text/javascript"></script>
+
+<script>
+    app.addAfterBaseLoadCallback(
+        {
+            func: MayanImage.intialize,
+            self: MayanImage,
+            args: {
+                templateInvalidImage: '{% spaceless %}{% include "documents/invalid_document.html" %}{% endspaceless %}'
+            }
+        }
+    );
+</script>

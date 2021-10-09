@@ -410,6 +410,14 @@
   ``MAYAN_SETTINGS_MODULE`` in the supervisord file.
 - Add ``MAYAN_GUNICORN_TEMPORARY_DIRECTORY`` to the gunicorn invocation in
   the ``run_frontend.sh`` batch file.
+- Frontend updates:
+
+  - Ensure list groups use <ul> and <li> instead of plain <div>.
+  - Move ``mayan_image.js`` to the converter app.
+  - Update ``afterBaseLoad`` to work by defining a list of callbacks. This
+    allows defining callbacks from different apps.
+  - Set JavaScript callbacks and setup method to run in async mode.
+  - Move static inline app CSS to individual CSS files.
 
 4.0.16 (2021-09-29)
 ===================

@@ -1,0 +1,12 @@
+.document-thumbnail-list {
+    width: {{ thumbnail_width }}px;
+    margin: auto;
+}
+
+.document-thumbnail-list a.fancybox span.instance-image-widget span.spinner-container {
+    height: 100% !important;
+}
+
+.document-thumbnail-list div.text-center div.fa-4x {
+    font-size: 0px;
+}
