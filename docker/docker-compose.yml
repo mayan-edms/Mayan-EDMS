@@ -177,9 +177,7 @@ services:
     <<: *mayan-container
     command:
       - run_celery
-      - beat
-      - --pidfile=
-      - --loglevel=ERROR
+      - "beat --pidfile= --loglevel=ERROR"
     profiles:
       - extra_celery_beat
 
