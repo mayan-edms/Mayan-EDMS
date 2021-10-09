@@ -418,6 +418,10 @@
     allows defining callbacks from different apps.
   - Set JavaScript callbacks and setup method to run in async mode.
   - Move static inline app CSS to individual CSS files.
+- Fix workflow template API description text. Closes GitLab issue #1042.
+  Thanks to Ludovic Anterieur (@lanterieur) for the report.
+- Add document template state action API endpoints. Closes GitLab issue #1043
+  Thanks to Ludovic Anterieur (@lanterieur) for the request.
 
 4.0.16 (2021-09-29)
 ===================
