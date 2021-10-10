@@ -133,6 +133,7 @@
   - tox from 3.23.1 to 3.24.3
   - psutil from 5.7.0 to 5.80
   - furl from 2.1.0 to 2.1.2
+  - django-test-migrations from 0.3.0 to 1.1.0
 
 - Launch workflows when the type of the document is changed. Closes GitLab
   issue #863 "Start workflows when changing document type", thanks to
