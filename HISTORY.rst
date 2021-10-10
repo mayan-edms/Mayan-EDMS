@@ -8,6 +8,13 @@
   upload wizard. Closes GitLab issue #1118. Thanks to
   haithoum (@haithembenammar) for the report.
 - Display exception errors to console when Celery fails to initialize.
+- Backport workaround for swagger-spec-validator dependency
+  bug. Pin jsonschema to version 3.2.0 to avoid errors with
+  swagger-spec-validator 2.7.3. swagger-spec-validator does not specify a
+  version for jsonschema
+  (https://github.com/Yelp/swagger_spec_validator/blob/master/setup.py#L17),
+  which installs the latest version 4.0.1. This version removes
+  ``jsonschema.compat`` still used by swagger-spec-validator.
 
 3.5.11 (2021-08-19)
 ===================
