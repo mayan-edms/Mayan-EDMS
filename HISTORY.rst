@@ -1,4 +1,4 @@
-4.1 (2021-10-XX)
+4.1 (2021-10-10)
 ================
 - Add support for editing the document version page OCR content.
   Closes GitLab issue #592. Thanks for Martin (@efelon) for the
