@@ -119,7 +119,7 @@
   - cropperjs from 1.4.1 to 1.5.2
   - jquery-cropper from 1.0.0 to 1.0.1
   - django-cors-headers from 3.2.1 to 3.8.0
-  - djangorestframework from 3.11.2 to 3.12.2
+  - djangorestframework from 3.11.2 to 3.12.4
   - drf-yasg from 1.17.1 to 1.20.0
   - swagger-spec-validator from 2.5.0 to 2.7.3
   - dropzone from 5.7.2 to 5.9.2
@@ -414,6 +414,12 @@
   Thanks to Ludovic Anterieur (@lanterieur) for the report.
 - Add document template state action API endpoints. Closes GitLab issue #1043
   Thanks to Ludovic Anterieur (@lanterieur) for the request.
+- Pin jsonschema to version 3.2.0 to avoid errors with
+  swagger-spec-validator 2.7.3. swagger-spec-validator does not specify a
+  version for jsonschema
+  (https://github.com/Yelp/swagger_spec_validator/blob/master/setup.py#L17),
+  which installs the latest version 4.0.1. This version removes
+  ``jsonschema.compat`` still used by swagger-spec-validator.
 
 4.0.16 (2021-09-29)
 ===================
