@@ -66,4 +66,3 @@ PythonDependency(
 PythonDependency(
     module=__name__, name='swagger-spec-validator', version_string='==2.7.3'
 )
-
