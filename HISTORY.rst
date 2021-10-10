@@ -410,6 +410,14 @@
   ``MAYAN_SETTINGS_MODULE`` in the supervisord file.
 - Add ``MAYAN_GUNICORN_TEMPORARY_DIRECTORY`` to the gunicorn invocation in
   the ``run_frontend.sh`` batch file.
+- Frontend updates:
+
+  - Ensure list groups use <ul> and <li> instead of plain <div>.
+  - Move ``mayan_image.js`` to the converter app.
+  - Update ``afterBaseLoad`` to work by defining a list of callbacks. This
+    allows defining callbacks from different apps.
+  - Set JavaScript callbacks and setup method to run in async mode.
+  - Move static inline app CSS to individual CSS files.
 - Fix workflow template API description text. Closes GitLab issue #1042.
   Thanks to Ludovic Anterieur (@lanterieur) for the report.
 - Add document template state action API endpoints. Closes GitLab issue #1043

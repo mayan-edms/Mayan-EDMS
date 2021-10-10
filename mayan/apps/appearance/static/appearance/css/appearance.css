@@ -19,64 +19,72 @@
     margin-top: 60px;
 }
 
-#fancybox-left-ico {
- left: 20px;
+/* User menu */
+.link-text-span {
+    padding-left: 10px;
+    padding-right: 20px;
 }
 
-#fancybox-right-ico {
- right: 20px;
- left: auto;
+/* Make facet list group horizontal on small or smaller */
+@media (max-width: 767px) {
+    ul.list-group:after {
+      clear: both;
+      display: block;
+      content: "";
+    }
+
+    .list-group-item {
+        float: left;
+    }
 }
 
-.mayan-page-wrapper-interactive {
-    overflow: auto;
+/* Nullify the 5px padding to the right */
+.appearance-list-column-sort-icon {
+    margin-right: -5px;
 }
 
-#carousel-container {
-    overflow-y: scroll;
+/* Make column text behave the same way as column links. */
+.appearance-list-column-label {
+    padding: 0px;
 }
 
-#carousel-container img {
-    max-width: 100%;
-    min-width: 100%;
+.appearance-list-columns-help-text {
+    margin-left: 3px;
 }
 
-.carousel-item {
-    margin: 5px 10px 10px 10px;
-    min-height: 100%;
+.fashadow svg {
+    color:rgba(0, 0, 0, 0.3);
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 20;
+    transform: translate(3px, 5px) !important;
 }
 
-.carousel-item-page-number {
-    text-align: center;
+/*
+ * Fix dropdowns inside responsive tables. On small viewports, the dropdown
+ * menu float is set to none in order to show centered with the dropdown
+ * button and the position is set to static to force the table to expand.
+ */
+@media (max-width: 767px) {
+    .table-responsive .dropdown-menu {
+        position: static !important;
+        float: none;
+    }
+}
+@media (min-width: 768px) {
+    .table-responsive {
+        overflow: inherit;
+    }
+
+    .table-responsive .dropdown-menu {
+        float: left;
+    }
 }
 
-img.lazy-load {
-    visibility: hidden;
-    width: 0px;
-    height: 0px;
-}
-
-img.lazy-load-carousel {
-    visibility: hidden;
-    width: 0px;
-    height: 0px;
-}
-
-.img-nolazyload {
-    border: 1px solid black;
-}
-
-.document-page-content-divider {
-    text-align: center;
-}
-
-.fancybox-nav span {
-    visibility: visible;
-}
-
-.instance-image-widget {
-    text-align: center;
-    height: 100%;
+/* Avoid sidebar ul-li displaying disc decoration on small screens. */
+@media (max-width: 767px) {
+    .list-group {
+        list-style-type: none;
+    }
 }
 
 hr {
@@ -109,26 +117,6 @@ a i {
 /* Notifications */
 #toast-container > div {
   opacity: 1;
-}
-
-/* User menu */
-.link-text-span {
-    padding-left: 10px;
-    padding-right: 20px;
-}
-
-
-/* Make facet list group horizontal on small or smaller */
-@media (max-width: 767px) {
-    ul.list-group:after {
-      clear: both;
-      display: block;
-      content: "";
-    }
-
-    .list-group-item {
-        float: left;
-    }
 }
 
 /* Collapse navigation on medium or smaller */
@@ -223,23 +211,6 @@ a i {
     margin-top: 3px;
 }
 
-.thin_border-thumbnail {
-  display: block;
-  max-width: 100%;
-  max-height: 200px;
-  width: auto;
-  height: auto;
-  margin: auto;
-}
-
-/* Must go after .thin_border-thumbnail */
-.thin_border {
-    border: 1px solid black;
-    display: inline;
-    margin-left: 0px;
-    margin-right: 0px;
-}
-
 #ajax-spinner {
     position: fixed;
     top: 16px;
@@ -328,9 +299,6 @@ a i {
     padding-right: 0px;
 }
 
-#sidebar {
-}
-
 @media (min-width: 768px) {
     #sidebar {
         bottom: 0;
@@ -350,8 +318,7 @@ a i {
     }
 }
 
-
-/*Bootstrap button outline override*/
+/* Bootstrap button outline override. */
 .btn-outline {
     background-color: transparent;
     color: inherit;

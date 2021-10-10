@@ -6,6 +6,7 @@ class MayanApp {
             ajaxMenusOptions: []
         }
 
+        this.afterBaseLoadCallbacks = [];
         this.ajaxExecuting = false;
         this.ajaxMenusOptions = options.ajaxMenusOptions;
         this.ajaxMenuHashes = {};
@@ -15,7 +16,7 @@ class MayanApp {
 
     // Class methods and variables
 
-    static countChecked() {
+    static async countChecked() {
         const checkCount = $('.check-all-slave:checked').length;
 
         if (checkCount) {
@@ -27,7 +28,7 @@ class MayanApp {
         }
     }
 
-    static setupDropdownDirectionChange () {
+    static async setupDropdownDirectionChange () {
         $('body').on('shown.bs.dropdown', '.dropdown', function () {
             const $this = $(this);
             const $elementMenu = $this.children('.dropdown-menu');
@@ -49,7 +50,7 @@ class MayanApp {
         });
     }
 
-    static setupMultiItemActions () {
+    static async setupMultiItemActions () {
         $('body').on('change', '.check-all-slave', function () {
             MayanApp.countChecked();
         });
@@ -67,14 +68,14 @@ class MayanApp {
         });
     }
 
-    static setupNavBarState () {
+    static async setupNavBarState () {
         $('body').on('click', '#accordion-sidebar a', function (event) {
             $('#accordion-sidebar li').removeClass('active');
             $(this).parents('li').addClass('active');
         });
     }
 
-    static updateNavbarState () {
+    static async updateNavbarState () {
         const uri = new URI(window.location.hash);
         const uriFragment = uri.fragment();
         $('#accordion-sidebar a').each(function (index, value) {
@@ -89,13 +90,37 @@ class MayanApp {
 
     // Instance methods
 
+    async addAfterBaseLoadCallback ({func, self, args=null}) {
+        this.afterBaseLoadCallbacks.push({func: func, self: self, args: args});
+    }
+
+    async afterBaseLoad (callContext) {
+        let context = {
+            ...callContext,
+            self: this
+        };
+
+        const self = this;
+        for (const callback of self.afterBaseLoadCallbacks) {
+            let callingArguments;
+
+            if (callback.args) {
+                callingArguments = callback.args;
+            } else {
+                callingArguments = context;
+            }
+
+            callback.func.bind(callback.self)(callingArguments);
+        };
+    }
+
     callbackAJAXSpinnerUpdate () {
         if (this.ajaxExecuting) {
             $(this.ajaxSpinnerSeletor).fadeIn(50);
         }
     }
 
-    doRefreshAJAXMenu (options) {
+    async doRefreshAJAXMenu (options) {
         $.ajax({
             complete: function() {
                 if (options.interval !== null) {
@@ -117,7 +142,7 @@ class MayanApp {
         });
     }
 
-    doToastrMessages (djangoMessages) {
+    async doToastrMessages (context) {
         toastr.options = {
             'closeButton': true,
             'debug': false,
@@ -172,7 +197,7 @@ class MayanApp {
             </style>\
         ');
 
-        $.each(djangoMessages, function (index, value) {
+        $.each(context.djangoMessages, function (index, value) {
             let options = {};
 
             if (value.tags === 'error') {
@@ -188,7 +213,7 @@ class MayanApp {
         });
     }
 
-    initialize () {
+    async initialize () {
         const self = this;
 
         this.setupAJAXSpinner();
@@ -228,7 +253,7 @@ class MayanApp {
         });
     }
 
-    setupFormHotkeys () {
+    async setupFormHotkeys () {
         $('body').on('keypress', '.form-hotkey-enter', function (event) {
             if ((event.which && event.which == 13) || (event.keyCode && event.keyCode == 13)) {
                 $(this).find('.btn-hotkey-default').click();
@@ -241,7 +266,7 @@ class MayanApp {
         });
     }
 
-    setupFullHeightResizing () {
+    async setupFullHeightResizing () {
         const self = this;
 
         this.resizeFullHeight();
@@ -251,7 +276,7 @@ class MayanApp {
         });
     }
 
-    setupItemsSelector () {
+    async setupItemsSelector () {
         const app = this;
         app.lastChecked = null;
 
@@ -295,7 +320,7 @@ class MayanApp {
         })
     }
 
-    setupListToolbar () {
+    async setupListToolbar () {
         const $listToolbar = $('#list-toolbar');
 
         if ($listToolbar.length !== 0) {
@@ -342,7 +367,7 @@ class MayanApp {
         }
     }
 
-    setupNavbarCollapse () {
+    async setupNavbarCollapse () {
         $(document).keyup(function(e) {
             if (e.keyCode === 27) {
                 $('.navbar-collapse').collapse('hide');
@@ -368,7 +393,7 @@ class MayanApp {
         });
     }
 
-    setupNewWindowAnchor () {
+    async setupNewWindowAnchor () {
         $('body').on('click', 'a.new_window', function (event) {
             event.preventDefault();
             const newWindow = window.open($(this).attr('href'), '_blank');
@@ -376,7 +401,7 @@ class MayanApp {
         });
     }
 
-    setupPanelSelection () {
+    async setupPanelSelection () {
         const app = this;
 
         // Setup panel highlighting on check
@@ -431,18 +456,20 @@ class MayanApp {
         });
     }
 
-    setupScrollView () {
+    async setupScrollView () {
         $('.scrollable').scrollview();
     }
 
-    setupSelect2 () {
+    async setupSelect2 () {
         $('.select2').select2({
             dropdownAutoWidth: true,
             width: '100%'
         });
     }
 
-    resizeFullHeight () {
-        $('.full-height').height(this.window.height() - $('.full-height').data('height-difference'));
+    async resizeFullHeight () {
+        $('.full-height').height(
+            this.window.height() - $('.full-height').data('height-difference')
+        );
     }
 }
