@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -41,11 +41,11 @@ msgstr "Ниво"
 
 #: apps.py:136 apps.py:166
 msgid "Depth"
-msgstr ""
+msgstr "Дълбочина"
 
 #: apps.py:140
 msgid "Total nodes"
-msgstr ""
+msgstr "Общо възли"
 
 #: apps.py:147
 msgid "Total documents"
@@ -53,11 +53,11 @@ msgstr "Общо документи"
 
 #: apps.py:149 apps.py:187
 msgid "Number of unique documents this item contains."
-msgstr ""
+msgstr "Брой уникални документи, които съдържа този елемент."
 
 #: apps.py:174
 msgid "Nodes"
-msgstr ""
+msgstr "Възли"
 
 #: apps.py:185 models.py:437
 msgid "Documents"
@@ -161,7 +161,7 @@ msgstr "Активиран"
 
 #: models.py:61
 msgid "Index template"
-msgstr ""
+msgstr "Шаблон за индекс"
 
 #: models.py:174
 msgid "Index"
@@ -170,6 +170,8 @@ msgstr "Индекс"
 #: models.py:178
 msgid "Enter a template to render. Use Django's default templating language."
 msgstr ""
+"Въведете шаблон за изобразяване. Използвайте стандартния език за шаблони на "
+"Django."
 
 #: models.py:181
 msgid "Indexing expression"
@@ -199,7 +201,7 @@ msgstr "Възел на шаблона на индекс"
 
 #: models.py:202
 msgid "Index template nodes"
-msgstr ""
+msgstr "Възли на шаблонен индекс"
 
 #: models.py:206
 msgid "Root"
@@ -224,15 +226,15 @@ msgstr ""
 
 #: models.py:387
 msgid "Total number of nodes with unique values this item contains."
-msgstr ""
+msgstr "Общ брой възли с уникални стойности, които този елемент съдържа."
 
 #: models.py:396
 msgid "Total number of unique documents this item contains."
-msgstr ""
+msgstr "Общ брой уникални документи, които този елемент съдържа."
 
 #: models.py:406
 msgid "Total number of node levels this item contains."
-msgstr ""
+msgstr "Общ брой нива на възли, които този елемент съдържа."
 
 #: models.py:433 search.py:26
 msgid "Value"
@@ -497,7 +499,7 @@ msgstr "Изтрийте възела на шаблона на индекса: %
 #: views/index_template_views.py:261
 #, python-format
 msgid "Edit the index template node: %s"
-msgstr ""
+msgstr "Редактирайте възела на шаблонен индекс: %s"
 
 #: views/index_template_views.py:281
 #, python-format

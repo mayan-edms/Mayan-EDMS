@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2021\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
@@ -205,7 +205,7 @@ msgid ""
 msgstr ""
 
 #: templates/500.html:5 templates/500.html:30
-#: templates/appearance/root.html:58
+#: templates/appearance/root.html:53
 msgid "Server error"
 msgstr "Napaka strežnika"
 
@@ -242,7 +242,7 @@ msgstr ""
 msgid "About"
 msgstr " O programu"
 
-#: templates/appearance/about.html:73
+#: templates/appearance/about.html:72
 #, python-format
 msgid ""
 "\n"
@@ -253,53 +253,20 @@ msgstr ""
 "                    %(setting_project_title)s temelji na %(project_title)s\n"
 "                "
 
-#: templates/appearance/about.html:78
+#: templates/appearance/about.html:77
 msgid "Version"
 msgstr "Različica"
 
-#: templates/appearance/about.html:80
+#: templates/appearance/about.html:79
 #, python-format
 msgid "Build number: %(build_number)s"
 msgstr "Številka izgradnje: %(build_number)s"
 
-#: templates/appearance/about.html:93
+#: templates/appearance/about.html:92
 msgid "Released under the license:"
 msgstr ""
 
-#: templates/appearance/about.html:99
-#, python-format
-msgid ""
-"\n"
-"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
-"            "
-msgstr ""
-"\n"
-"                %(project_title)s je brezplačna in odprtokodna programska oprema, ki vam jo prinašamo <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> Roberto Rosario in ekipa.\n"
-"            "
-
-#: templates/appearance/about.html:105
-#, python-format
-msgid ""
-"\n"
-"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
-"            "
-msgstr ""
-"\n"
-"               Za to si je treba zelo prizadevati da je   %(project_title)s tako funkcionalen.\n"
-"            "
-
-#: templates/appearance/about.html:111
-#, python-format
-msgid ""
-"\n"
-"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
-"            "
-msgstr ""
-"\n"
-"                Če uporabljate %(project_title)s prosim <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">za prispevek %(icon_social_paypal)s</a>\n"
-"            "
-
-#: templates/appearance/about.html:117
+#: templates/appearance/about.html:98
 #, python-format
 msgid ""
 "\n"
@@ -310,7 +277,7 @@ msgstr ""
 "                Celoten seznam sprememb je na voljo na <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Opombe ob izdaji %(icon_documentation)s</a> oziroma v kratki različici <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Spremembe %(icon_documentation)s</a>.\n"
 "            "
 
-#: templates/appearance/about.html:123
+#: templates/appearance/about.html:104
 #, python-format
 msgid ""
 "\n"
@@ -321,7 +288,7 @@ msgstr ""
 "                Za vprašanja preverite <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">dokumentacijo%(icon_documentation)s</a>.\n"
 "            "
 
-#: templates/appearance/about.html:129
+#: templates/appearance/about.html:110
 #, python-format
 msgid ""
 "\n"
@@ -332,7 +299,7 @@ msgstr ""
 "                Če ste našli napako ali imate idejo za funkcijo, obiščite <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> ali odprite zahtevek <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Izvorna koda %(icon_source_code)s</a>.\n"
 "            "
 
-#: templates/appearance/about.html:134
+#: templates/appearance/about.html:115
 #, python-format
 msgid ""
 "\n"
@@ -347,15 +314,15 @@ msgstr ""
 msgid "Object"
 msgstr "Predmet"
 
-#: templates/appearance/generic_confirm.html:14
+#: templates/appearance/generic_confirm.html:13
 msgid "Are you sure?"
 msgstr ""
 
-#: templates/appearance/generic_confirm.html:38
+#: templates/appearance/generic_confirm.html:37
 msgid "Yes"
 msgstr "Da"
 
-#: templates/appearance/generic_confirm.html:48
+#: templates/appearance/generic_confirm.html:47
 msgid "No"
 msgstr "Ne"
 
@@ -389,7 +356,7 @@ msgstr "Prekliči"
 msgid "Identifier"
 msgstr "Identifikator"
 
-#: templates/appearance/generic_list_subtemplate.html:133
+#: templates/appearance/generic_list_subtemplate.html:137
 msgid "Facets"
 msgstr ""
 
@@ -449,15 +416,15 @@ msgstr "Preklopi spustni seznam"
 msgid "No results"
 msgstr "Ni rezultatov"
 
-#: templates/appearance/root.html:63
+#: templates/appearance/root.html:58
 msgid "Close"
 msgstr ""
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:68
 msgid "Server communication error"
 msgstr ""
 
-#: templates/appearance/root.html:75
+#: templates/appearance/root.html:70
 msgid "Check you network connection and try again in a few moments."
 msgstr ""
 

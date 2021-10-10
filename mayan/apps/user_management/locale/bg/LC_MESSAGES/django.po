@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:20+0000\n"
+"POT-Creation-Date: 2021-10-10 06:02+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -98,7 +98,7 @@ msgstr "Общо групи"
 
 #: dashboards.py:5
 msgid "User dashboard"
-msgstr ""
+msgstr "Табло за управление на потребителя"
 
 #: events.py:10
 msgid "Group created"
@@ -235,42 +235,42 @@ msgstr "Редактиране на текущите данни на потре�
 #: views.py:65
 #, python-format
 msgid "Error deleting group \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Грешка при изтриване на група „%(instance)s“; %(exception)s"
 
 #: views.py:72
 #, python-format
 msgid "Group \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Групата &quot;%(object)s&quot; е изтрита успешно."
 
 #: views.py:73
 #, python-format
 msgid "%(count)d group deleted successfully."
-msgstr ""
+msgstr "%(count)d групата е изтрита успешно."
 
 #: views.py:74
 #, python-format
 msgid "%(count)d groups deleted successfully."
-msgstr ""
+msgstr "%(count)d групи са изтрити успешно."
 
 #: views.py:75
 #, python-format
 msgid "Delete group: %(object)s."
-msgstr ""
+msgstr "Изтриване на група: %(object)s."
 
 #: views.py:76
 #, python-format
 msgid "Delete the %(count)d selected group."
-msgstr ""
+msgstr "Изтрийте %(count)dизбрана група ."
 
 #: views.py:77
 #, python-format
 msgid "Delete the %(count)d selected groups."
-msgstr ""
+msgstr "Изтрийте %(count)dизбрани групи ."
 
 #: views.py:89
 #, python-format
 msgid "Details of group: %s"
-msgstr ""
+msgstr "Подробности за групата: %s"
 
 #: views.py:105
 #, python-format
@@ -308,37 +308,37 @@ msgstr "Потребители в групата: %s"
 #: views.py:184
 #, python-format
 msgid "Error deleting user \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Грешка при изтриване на потребител „%(instance)s“; %(exception)s"
 
 #: views.py:189
 #, python-format
 msgid "User \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Потребителят „%(object)s“ е изтрит успешно."
 
 #: views.py:190
 #, python-format
 msgid "%(count)d user deleted successfully."
-msgstr ""
+msgstr "%(count)d потребител е изтрит успешно."
 
 #: views.py:191
 #, python-format
 msgid "%(count)d users deleted successfully."
-msgstr ""
+msgstr "%(count)d потребители са изтрити успешно."
 
 #: views.py:192
 #, python-format
 msgid "Delete user: %(object)s."
-msgstr ""
+msgstr "Изтриване на потребител: %(object)s."
 
 #: views.py:193
 #, python-format
 msgid "Delete the %(count)d selected user."
-msgstr ""
+msgstr "Изтрийте %(count)d избран потребител."
 
 #: views.py:194
 #, python-format
 msgid "Delete the %(count)d selected users."
-msgstr ""
+msgstr "Изтрийте %(count)d избрани потребители."
 
 #: views.py:209
 #, python-format

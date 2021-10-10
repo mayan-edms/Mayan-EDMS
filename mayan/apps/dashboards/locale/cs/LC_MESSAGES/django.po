@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -21,21 +21,21 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:17 links.py:9 views.py:11
+#: apps.py:18 links.py:9 views.py:11
 msgid "Dashboards"
 msgstr "Řídicí panely"
 
-#: apps.py:24
+#: apps.py:25
 msgid "Widgets"
-msgstr ""
+msgstr "Widgety"
 
-#: apps.py:28
+#: apps.py:29
 msgid "Label"
 msgstr "Jmenovka"
 
 #: dashboards.py:6
 msgid "Administrator dashboard"
-msgstr ""
+msgstr "Administrátorský panel"
 
 #: links.py:14
 msgid "Details"
@@ -48,4 +48,4 @@ msgstr "Zobrazit podrobnosti"
 
 #: views.py:27
 msgid "Dashboard detail"
-msgstr ""
+msgstr "Detail panelu"

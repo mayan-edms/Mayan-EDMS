@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Converter"
 msgstr "Конвертор"
 
-#: apps.py:80 forms.py:37
+#: apps.py:82 forms.py:37
 msgid "Transformation"
 msgstr "Трансформация"
 
@@ -253,7 +253,7 @@ msgstr "Преглед на съществуващите трансформац�
 
 #: queues.py:12
 msgid "Generate a image of an object."
-msgstr ""
+msgstr "Генерирайте изображение на обект."
 
 #: settings.py:30
 msgid ""
@@ -294,6 +294,8 @@ msgstr "Опции за конфигуриране на бекенда за гр
 #: settings.py:77
 msgid "Time in seconds that the browser should cache the supplied image. "
 msgstr ""
+"Време в секунди, когато браузърът трябва да кешира предоставеното "
+"изображение."
 
 #: settings.py:84
 msgid ""
@@ -308,6 +310,8 @@ msgid ""
 "Time in seconds after which the image generation task will stop running and "
 "raise an error."
 msgstr ""
+"Време в секунди, след което задачата за генериране на изображения ще спре да"
+" се изпълнява и ще предизвика грешка."
 
 #: storages.py:15
 msgid ""

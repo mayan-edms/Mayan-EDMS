@@ -8,14 +8,15 @@
 # Yaman Sanobar <yman.snober@gmail.com>, 2021
 # Marwan Rahhal <Marwanr@sssit.net>, 2021
 # Roberto Rosario, 2021
+# WM Shinkada <shinkadawasim@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:20+0000\n"
+"POT-Creation-Date: 2021-10-10 06:02+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -170,12 +171,12 @@ msgstr "لا %(verbose_name)s ايجاد المتشابه"
 #: mixins.py:355
 #, python-format
 msgid "Unable to perform operation on object %(instance)s; %(exception)s."
-msgstr ""
+msgstr "تعذر إجراء العملية على الكائن %(instance)s ؛ %(exception)s."
 
 #: mixins.py:357
 #, python-format
 msgid "Operation performed on %(object)s."
-msgstr ""
+msgstr "تم تنفيذ العملية على %(object)s."
 
 #: mixins.py:358
 #, python-format

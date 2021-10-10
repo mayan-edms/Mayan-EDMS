@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-10-10 06:02+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -152,36 +152,37 @@ msgstr "Роли на групата: %s"
 #, python-format
 msgid "Error deleting role \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Грешка при изтриване на ролята &quot;%(instance)s&quot;; %(exception)s"
 
 #: views.py:64
 #, python-format
 msgid "Role \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Ролята &quot;%(object)s&quot; е изтрита успешно."
 
 #: views.py:65
 #, python-format
 msgid "%(count)d role deleted successfully."
-msgstr ""
+msgstr "%(count)d роля е изтрита успешно."
 
 #: views.py:66
 #, python-format
 msgid "%(count)d roles deleted successfully."
-msgstr ""
+msgstr "%(count)d роли са изтрити успешно."
 
 #: views.py:67
 #, python-format
 msgid "Delete role: %(object)s."
-msgstr ""
+msgstr "Изтриване на роля: %(object)s."
 
 #: views.py:68
 #, python-format
 msgid "Delete the %(count)d selected role."
-msgstr ""
+msgstr "Изтрийте %(count)d избрана роля."
 
 #: views.py:69
 #, python-format
 msgid "Delete the %(count)d selected roles."
-msgstr ""
+msgstr "Изтрийте %(count)dизбрани роли."
 
 #: views.py:95
 msgid ""
@@ -244,4 +245,4 @@ msgstr "Разрешения за роля: %s"
 #: views.py:198
 #, python-format
 msgid "Details of permission: %s"
-msgstr ""
+msgstr "Подробности за разрешението: %s"

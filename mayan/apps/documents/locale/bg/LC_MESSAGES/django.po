@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -23,21 +23,21 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:214 apps.py:658 events.py:5 menus.py:8
+#: apps.py:215 apps.py:659 events.py:5 menus.py:8
 #: models/document_models.py:131 permissions.py:5 queues.py:21 settings.py:33
 #: statistics.py:230
 msgid "Documents"
 msgstr "Документи"
 
-#: apps.py:280
+#: apps.py:281
 msgid "Decorations"
 msgstr "Декорации"
 
-#: apps.py:299
+#: apps.py:300
 msgid "Create a document type"
 msgstr "Създайте тип документ"
 
-#: apps.py:301
+#: apps.py:302
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
@@ -45,46 +45,46 @@ msgstr ""
 "На всеки качен документ трябва да бъде присвоен тип документ, това е "
 "основният начин, по който Mayan EDMS категоризира документите."
 
-#: apps.py:402
+#: apps.py:403
 msgid "File comments"
 msgstr "Файлови коментари"
 
-#: apps.py:406
+#: apps.py:407
 msgid "File encodings"
 msgstr "Файлови кодирания"
 
-#: apps.py:410
+#: apps.py:411
 msgid "File MIME types"
 msgstr "Файлови MIME типове"
 
-#: apps.py:414
+#: apps.py:415
 msgid "File timestamps"
 msgstr "Файлови времеви печати"
 
-#: apps.py:419 links/document_file_page_links.py:79
+#: apps.py:420 links/document_file_page_links.py:79
 #: models/document_file_models.py:120 models/document_file_page_models.py:34
 #: search.py:52
 msgid "Document file"
 msgstr "Файл на документа"
 
-#: apps.py:423 models/document_file_page_models.py:38
+#: apps.py:424 models/document_file_page_models.py:38
 #: models/document_version_page_models.py:50
 msgid "Page number"
 msgstr "Номер на страница"
 
-#: apps.py:428
+#: apps.py:429
 msgid "Return the latest file of the document."
 msgstr "Върнете най-новия файл на документа."
 
-#: apps.py:429
+#: apps.py:430
 msgid "Latest file"
 msgstr "Последен файл"
 
-#: apps.py:432
+#: apps.py:433
 msgid "Return the document instance."
 msgstr "Върнете екземпляра на документа."
 
-#: apps.py:433 links/document_file_links.py:63
+#: apps.py:434 links/document_file_links.py:63
 #: links/document_file_page_links.py:73 links/document_version_links.py:75
 #: links/document_version_page_links.py:102 models/document_file_models.py:76
 #: models/document_models.py:130 models/document_version_models.py:46
@@ -93,27 +93,27 @@ msgstr "Върнете екземпляра на документа."
 msgid "Document"
 msgstr "Документ"
 
-#: apps.py:563 apps.py:615 apps.py:644 apps.py:678 apps.py:703
+#: apps.py:564 apps.py:616 apps.py:645 apps.py:679 apps.py:704
 msgid "Thumbnail"
 msgstr "Умалено изображение"
 
-#: apps.py:569
+#: apps.py:570
 msgid "Type"
 msgstr "Тип"
 
-#: apps.py:573 apps.py:620 apps.py:683 forms/document_file_forms.py:71
+#: apps.py:574 apps.py:621 apps.py:684 forms/document_file_forms.py:71
 #: links/document_file_page_links.py:122
 #: links/document_version_page_links.py:52
 msgid "Pages"
 msgstr "Страници"
 
-#: apps.py:582 models/favorite_document_models.py:34
+#: apps.py:583 models/favorite_document_models.py:34
 msgid "Date and time added"
 msgstr "Добавени дата и час"
 
-#: apps.py:593
+#: apps.py:594
 msgid "Access date and time"
-msgstr ""
+msgstr "Дата и час на достъп"
 
 #: classes.py:57
 msgid "Original"
@@ -528,7 +528,7 @@ msgstr "Версии"
 
 #: links/document_version_page_links.py:57
 msgid "Append all pages"
-msgstr ""
+msgstr "Добавете всички страници"
 
 #: links/document_version_page_links.py:62
 msgid "Remap pages"
@@ -709,8 +709,8 @@ msgid "Document files"
 msgstr "Файлове на документи"
 
 #: models/document_file_models.py:333 models/document_file_page_models.py:267
-#: models/document_models.py:72 models/document_models.py:319
-#: models/document_models.py:324 models/document_type_models.py:41
+#: models/document_models.py:72 models/document_models.py:318
+#: models/document_models.py:323 models/document_type_models.py:41
 #: models/document_type_models.py:203 models/document_version_models.py:236
 #: models/document_version_page_models.py:347
 msgid "Label"
@@ -756,7 +756,7 @@ msgstr "Описание"
 
 #: models/document_models.py:81
 msgid "The date and time of the document creation."
-msgstr ""
+msgstr "Датата и часът на създаване на документа."
 
 #: models/document_models.py:82
 msgid "Created"
@@ -795,7 +795,7 @@ msgstr ""
 msgid "Is stub?"
 msgstr "Кочан ли е?"
 
-#: models/document_models.py:317 models/document_models.py:322
+#: models/document_models.py:316 models/document_models.py:321
 #, python-format
 msgid "Document stub, id: %d"
 msgstr "Кочан на документ, №: %d"
@@ -940,11 +940,11 @@ msgstr "Последни документи"
 
 #: models/recently_accessed_document_models.py:54
 msgid "Recently accessed document"
-msgstr ""
+msgstr "Наскоро достъпен документ"
 
 #: models/recently_accessed_document_models.py:55
 msgid "Recently accessed documents"
-msgstr ""
+msgstr "Наскоро достъпни документи"
 
 #: permissions.py:10
 msgid "Create documents"
@@ -1065,6 +1065,7 @@ msgstr "Изтриване на документ"
 #: queues.py:34
 msgid "Append all document file pages to a document version"
 msgstr ""
+"Добавете всички страници с файлове с документи към версия на документа"
 
 #: queues.py:38
 msgid "Reset the page list of a document version"
@@ -1072,7 +1073,7 @@ msgstr "Нулирайте списъка със страници на верс�
 
 #: queues.py:42
 msgid "Delete a document version"
-msgstr ""
+msgstr "Изтрийте версия на документ"
 
 #: queues.py:46
 msgid "Export a document version"
@@ -1100,7 +1101,7 @@ msgstr "Качете нов файл с документ"
 
 #: queues.py:80
 msgid "Upload new document"
-msgstr ""
+msgstr "Качете нов документ"
 
 #: search.py:31 search.py:64 search.py:96 search.py:141 search.py:169
 msgid "Document type label"
@@ -1678,29 +1679,41 @@ msgstr "Страници на версия на документа: %s"
 #, python-format
 msgid "%(count)d document version queued for page list append."
 msgstr ""
+"%(count)d версия на документа е поставена на опашка за добавяне на списък "
+"със страници."
 
 #: views/document_version_page_views.py:132
 #, python-format
 msgid "%(count)d document versions queued for page list append."
 msgstr ""
+"%(count)d версии на документи, поставени на опашка за добавяне на списък със"
+" страници."
 
 #: views/document_version_page_views.py:140
 msgid ""
 "The current pages will be deleted and then all the document file pages will "
 "be appended as pages of this document version."
 msgstr ""
+"Текущите страници ще бъдат изтрити и след това всички страници с файлове с "
+"документи ще бъдат добавени като страници на тази версия на документа."
 
 #: views/document_version_page_views.py:145
 msgid "Append all the document file pages to the selected document version?"
 msgid_plural ""
 "Append all the document file pages to the selected document versions?"
 msgstr[0] ""
+"Да се добавят ли всички страници с файлове с документи към избраната версия "
+"на документа?"
 msgstr[1] ""
+"Да се добавят ли всички страници с файлове с документи към избраните версии "
+"на документа?"
 
 #: views/document_version_page_views.py:156
 #, python-format
 msgid "Append all the document file pages to document version: %s?"
 msgstr ""
+"Да се добавят ли всички страници с файлове с документи към версията на "
+"документа: %s?"
 
 #: views/document_version_page_views.py:205
 msgid "None"
@@ -1767,16 +1780,20 @@ msgstr "Създаване версия за документ: %s"
 #, python-format
 msgid "Document version \"%(object)s\" deletion queued successfully."
 msgstr ""
+"Изтриването на версия на документа „%(object)s“ е поставено на опашка "
+"успешно."
 
 #: views/document_version_views.py:106
 #, python-format
 msgid "%(count)d document version deletion queued successfully."
-msgstr ""
+msgstr "%(count)d изтриване на версията на документа е на опашка успешно."
 
 #: views/document_version_views.py:109
 #, python-format
 msgid "%(count)d document version deletions queued successfully."
 msgstr ""
+"%(count)d изтривания на версията на документа успешно са поставени на "
+"опашка."
 
 #: views/document_version_views.py:111
 #, python-format
@@ -1795,7 +1812,7 @@ msgstr "Изтрийте %(count)d версии на документа."
 
 #: views/document_version_views.py:118
 msgid "The process will be performed in the background. "
-msgstr ""
+msgstr "Процесът ще се извършва във фонов режим."
 
 #: views/document_version_views.py:156
 #, python-format

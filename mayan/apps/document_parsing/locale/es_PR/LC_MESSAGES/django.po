@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -194,36 +194,41 @@ msgstr ""
 #, python-format
 msgid "Error deleting document version content \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Error eliminando el contenido de la versión del documento \"%(instance)s\"; "
+"%(exception)s"
 
 #: views.py:36
 #, python-format
 msgid "Content of \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "El contenido de \"%(object)s\" se eliminó con éxito."
 
 #: views.py:39
 #, python-format
 msgid "Content of %(count)d document version deleted successfully."
-msgstr ""
+msgstr "El contenido de %(count)d versión del documento se eliminó con éxito."
 
 #: views.py:42
 #, python-format
 msgid "Content of %(count)d document versions deleted successfully."
 msgstr ""
+"El contenido de las %(count)d versiones del documento se eliminó "
+"correctamente."
 
 #: views.py:44
 #, python-format
 msgid "Delete the content of: %(object)s."
-msgstr ""
+msgstr "Eliminar el contenido de: %(object)s."
 
 #: views.py:46
 #, python-format
 msgid "Delete the content of the %(count)d selected document version."
-msgstr ""
+msgstr "Eliminar contenido de %(count)d versión de documento seleccionada."
 
 #: views.py:49
 #, python-format
 msgid "Delete the content of the %(count)d selected document versions."
 msgstr ""
+"Eliminar el contenido de las %(count)d versiones de documento seleccionadas."
 
 #: views.py:87
 #, python-format

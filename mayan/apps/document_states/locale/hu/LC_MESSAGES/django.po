@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2021\n"
 "Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
@@ -618,23 +618,23 @@ msgstr ""
 msgid "Primary key of the document type to remove from the workflow."
 msgstr ""
 
-#: serializers.py:165
+#: serializers.py:219
 msgid "Primary key of the destination state to be added."
 msgstr ""
 
-#: serializers.py:173
+#: serializers.py:227
 msgid "Primary key of the origin state to be added."
 msgstr ""
 
-#: serializers.py:259
+#: serializers.py:313
 msgid "Primary key of the transition to be added."
 msgstr ""
 
-#: serializers.py:339
+#: serializers.py:393
 msgid "A link to the entire history of this workflow."
 msgstr ""
 
-#: serializers.py:348
+#: serializers.py:402
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."

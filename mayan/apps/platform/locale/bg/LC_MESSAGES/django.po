@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-10-10 06:02+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -25,27 +25,27 @@ msgstr ""
 msgid "Platform"
 msgstr "Платформа"
 
-#: classes.py:182
+#: classes.py:183
 msgid "Template for entrypoint.sh file inside a Docker image."
 msgstr "Шаблон за файл entrypoint.sh в изображение на Docker."
 
-#: classes.py:192
+#: classes.py:193
 msgid "Template that generates a Dockerfile file."
 msgstr "Шаблон, който генерира Dockerfile файл."
 
-#: classes.py:206
+#: classes.py:207
 msgid "Template for Supervisord inside a Docker image."
 msgstr "Шаблон за Supervisord в Docker образ"
 
-#: classes.py:222
+#: classes.py:224
 msgid "Template that generates a GitLab CI config file."
 msgstr "Шаблон, който генерира GitLab CI конфигурационен файл."
 
-#: classes.py:266
+#: classes.py:268
 msgid "Template for Supervisord."
 msgstr "Шаблон за Supervisord"
 
-#: classes.py:335
+#: classes.py:341
 msgid "Template showing the queues of a worker."
 msgstr "Шаблон, показващ опашките на работна програма."
 
@@ -54,9 +54,13 @@ msgid ""
 "List of client backends to launch after startup. Use full dotted path to the"
 " client backend classes."
 msgstr ""
+"Списък с клиентски бекенди, които да се пуснат след стартиране. Използвайте "
+"пълен пунктиран път до клиентските бекенд класове."
 
 #: settings.py:23
 msgid ""
 "Arguments for the client backends. Use the client backend dotted path as the"
 " dictionary key for the arguments in dictionary format."
 msgstr ""
+"Аргументи за клиентските бекъндове. Използвайте  пунктиран път към "
+"клиентския бекенд като ключ на речника за аргументите във речников формат."

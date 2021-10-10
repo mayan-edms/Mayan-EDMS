@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
@@ -20,15 +20,15 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:17 links.py:9 views.py:11
+#: apps.py:18 links.py:9 views.py:11
 msgid "Dashboards"
 msgstr ""
 
-#: apps.py:24
+#: apps.py:25
 msgid "Widgets"
 msgstr ""
 
-#: apps.py:28
+#: apps.py:29
 msgid "Label"
 msgstr "Labela"
 

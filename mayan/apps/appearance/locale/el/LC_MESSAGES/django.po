@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: dkstiler dk <dkstiler@gmail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -212,7 +212,7 @@ msgstr ""
 "δικαίωμα πρόσβασης."
 
 #: templates/500.html:5 templates/500.html:30
-#: templates/appearance/root.html:58
+#: templates/appearance/root.html:53
 msgid "Server error"
 msgstr "Σφάλμα διακομηστή"
 
@@ -253,7 +253,7 @@ msgstr ""
 msgid "About"
 msgstr "Σχετικά"
 
-#: templates/appearance/about.html:73
+#: templates/appearance/about.html:72
 #, python-format
 msgid ""
 "\n"
@@ -264,53 +264,20 @@ msgstr ""
 "                    το %(setting_project_title)s βασίζεται στο %(project_title)s\n"
 "                "
 
-#: templates/appearance/about.html:78
+#: templates/appearance/about.html:77
 msgid "Version"
 msgstr "Έκδοση"
 
-#: templates/appearance/about.html:80
+#: templates/appearance/about.html:79
 #, python-format
 msgid "Build number: %(build_number)s"
 msgstr "Αριθμός build: %(build_number)s"
 
-#: templates/appearance/about.html:93
+#: templates/appearance/about.html:92
 msgid "Released under the license:"
 msgstr "Διανέμεται υπό την άδεια:"
 
-#: templates/appearance/about.html:99
-#, python-format
-msgid ""
-"\n"
-"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
-"            "
-msgstr ""
-"\n"
-"                Το %(project_title)s είναι ένα δωρεάν και ανοιχτού κώδικα λογισμικό που προσφέρεται σε εσάς με <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> από τον  Roberto Rosario και τους συνεισφέροντες.\n"
-"            "
-
-#: templates/appearance/about.html:105
-#, python-format
-msgid ""
-"\n"
-"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
-"            "
-msgstr ""
-"\n"
-"                Απαιτείται πολύ προσπάθεια για την δημιουργία του %(project_title)s με το πλήθος των δυνατοτήτων που περιέχει.\n"
-"            "
-
-#: templates/appearance/about.html:111
-#, python-format
-msgid ""
-"\n"
-"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
-"            "
-msgstr ""
-"\n"
-"               Εάν χρησιμοποιείτε το %(project_title)s παρακαλώ <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">κάντε μια δωρεά %(icon_social_paypal)s</a>\n"
-"            "
-
-#: templates/appearance/about.html:117
+#: templates/appearance/about.html:98
 #, python-format
 msgid ""
 "\n"
@@ -321,7 +288,7 @@ msgstr ""
 "                Η πλήρης λίστα αλλαγών είναι διαθέσιμη στις <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Σημειώσεις έκδοσης %(icon_documentation)s</a> ενώ η σύντομη έκδοση των αλλαγών στις <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Αλλαγές έκδοσης %(icon_documentation)s</a>.\n"
 "            "
 
-#: templates/appearance/about.html:123
+#: templates/appearance/about.html:104
 #, python-format
 msgid ""
 "\n"
@@ -332,7 +299,7 @@ msgstr ""
 "                Για ερωτήματα ελέγξτε την <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Τεκμηρίωση %(icon_documentation)s</a>.\n"
 "            "
 
-#: templates/appearance/about.html:129
+#: templates/appearance/about.html:110
 #, python-format
 msgid ""
 "\n"
@@ -343,7 +310,7 @@ msgstr ""
 "                Εάν έχετε εντοπίσει κάποιο σφάλμα (bug) ή έχετε προτάσεις για νέα χαρακτηριστικά, επισκεφθείτε το <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Φόρουμ %(icon_forum)s</a> ή δημιουργήστε ένα νέο ticket στο <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Αποθετήριο κώδικα %(icon_source_code)s</a>.\n"
 "            "
 
-#: templates/appearance/about.html:134
+#: templates/appearance/about.html:115
 #, python-format
 msgid ""
 "\n"
@@ -358,15 +325,15 @@ msgstr ""
 msgid "Object"
 msgstr "Αντικείμενο"
 
-#: templates/appearance/generic_confirm.html:14
+#: templates/appearance/generic_confirm.html:13
 msgid "Are you sure?"
 msgstr "Είστε βέβαιως;"
 
-#: templates/appearance/generic_confirm.html:38
+#: templates/appearance/generic_confirm.html:37
 msgid "Yes"
 msgstr "Ναι"
 
-#: templates/appearance/generic_confirm.html:48
+#: templates/appearance/generic_confirm.html:47
 msgid "No"
 msgstr "Όχι"
 
@@ -400,7 +367,7 @@ msgstr "Ακύρωση"
 msgid "Identifier"
 msgstr "Αναγνωριστικό"
 
-#: templates/appearance/generic_list_subtemplate.html:133
+#: templates/appearance/generic_list_subtemplate.html:137
 msgid "Facets"
 msgstr "Όψεις"
 
@@ -461,15 +428,15 @@ msgstr "Εναλλαγή αναδυόμενης λίστας"
 msgid "No results"
 msgstr "Κανένα αποτέλεσμα"
 
-#: templates/appearance/root.html:63
+#: templates/appearance/root.html:58
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:68
 msgid "Server communication error"
 msgstr "Σφάλμα επικοινωνίας διακομιστή"
 
-#: templates/appearance/root.html:75
+#: templates/appearance/root.html:70
 msgid "Check you network connection and try again in a few moments."
 msgstr "Ελέγξτε την σύνδεση δικτύου σας και δοκιμάστε ξανά σε λίγα λεπτά."
 

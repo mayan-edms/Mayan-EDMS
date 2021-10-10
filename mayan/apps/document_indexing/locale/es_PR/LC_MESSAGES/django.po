@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -38,7 +38,7 @@ msgstr "Nível"
 
 #: apps.py:136 apps.py:166
 msgid "Depth"
-msgstr ""
+msgstr "Profundidad"
 
 #: apps.py:140
 msgid "Total nodes"
@@ -50,11 +50,11 @@ msgstr "Total de documentos"
 
 #: apps.py:149 apps.py:187
 msgid "Number of unique documents this item contains."
-msgstr ""
+msgstr "Número de documentos únicos que contiene este elemento."
 
 #: apps.py:174
 msgid "Nodes"
-msgstr ""
+msgstr "Nodos"
 
 #: apps.py:185 models.py:437
 msgid "Documents"
@@ -222,15 +222,15 @@ msgstr ""
 
 #: models.py:387
 msgid "Total number of nodes with unique values this item contains."
-msgstr ""
+msgstr "Número total de nodos con valores únicos que contiene este elemento."
 
 #: models.py:396
 msgid "Total number of unique documents this item contains."
-msgstr ""
+msgstr "Número total de documentos únicos que contiene este elemento."
 
 #: models.py:406
 msgid "Total number of node levels this item contains."
-msgstr ""
+msgstr "Número total de niveles de nodo que contiene este elemento."
 
 #: models.py:433 search.py:26
 msgid "Value"

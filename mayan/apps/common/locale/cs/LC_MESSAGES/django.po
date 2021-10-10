@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2021
 # trendspotter <jirka.p@volny.cz>, 2021
+# Michal Švábík <snadno@lehce.cz>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -148,7 +148,7 @@ msgstr "Sekundární"
 
 #: menus.py:18
 msgid "Return"
-msgstr ""
+msgstr "Návrat"
 
 #: menus.py:22
 msgid "User"
@@ -208,15 +208,15 @@ msgstr ""
 
 #: settings.py:65
 msgid "Name of the dashboard to display in the home view."
-msgstr ""
+msgstr "Název řídicího panelu, který se má zobrazit v domovském zobrazení."
 
 #: settings.py:70
 msgid "Sets the project's name."
-msgstr ""
+msgstr "Nastavuje název projektu."
 
 #: settings.py:74
 msgid "URL of the project's homepage."
-msgstr ""
+msgstr "URL domovské stránky projektu."
 
 #: templates/common/app/viewport.html:9
 msgid "Warning"
@@ -247,7 +247,7 @@ msgstr "O Mayan EDMS"
 
 #: views.py:39
 msgid "Home"
-msgstr ""
+msgstr "Domů"
 
 #: views.py:62
 #, python-format

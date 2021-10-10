@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -83,7 +83,7 @@ msgstr "Неизвестен или остарял тип събитие: %s"
 
 #: events.py:15
 msgid "Events cleared"
-msgstr ""
+msgstr "Събитията са изчистени"
 
 #: events.py:18
 msgid "Events exported"
@@ -111,7 +111,7 @@ msgstr "Моите събития"
 
 #: links.py:53 links.py:73 links.py:87 views/clear_views.py:62
 msgid "Clear events"
-msgstr ""
+msgstr "Изчистете събитията"
 
 #: links.py:57 links.py:80 links.py:91 views/export_views.py:57
 msgid "Export events"
@@ -183,7 +183,7 @@ msgstr "Абонаменти за обектни събития"
 
 #: permissions.py:8
 msgid "Clear the events of an object"
-msgstr ""
+msgstr "Изчистете събитията на обект"
 
 #: permissions.py:11
 msgid "Export the events of an object"
@@ -191,11 +191,11 @@ msgstr "Експортирайте събитията на обект"
 
 #: permissions.py:14
 msgid "View the events of an object"
-msgstr ""
+msgstr "Преглед на събитията на обект"
 
 #: queues.py:13
 msgid "Clear event querysets"
-msgstr ""
+msgstr "Изчистване на набори от заявки за събития"
 
 #: queues.py:17
 msgid "Export event querysets"
@@ -205,16 +205,17 @@ msgstr "Експортиране на набори от заявки за съб
 msgid ""
 "This action is not reversible. The process will be performed in the "
 "background. "
-msgstr ""
+msgstr "Това действие не е обратимо. Процесът ще се извършва във фонов режим."
 
 #: views/clear_views.py:50
 msgid "Event list clear task queued successfully."
 msgstr ""
+"Изчистената задача на списъка със събития е поставена на опашка успешно."
 
 #: views/clear_views.py:81
 #, python-format
 msgid "Clear events of: %s"
-msgstr ""
+msgstr "Изчистване на събитията от: %s"
 
 #: views/clear_views.py:119 views/event_views.py:70 views/export_views.py:105
 #, python-format
@@ -259,7 +260,7 @@ msgstr ""
 #: views/export_views.py:76
 #, python-format
 msgid "Export events of: %s"
-msgstr ""
+msgstr "Експортирайте събития на: %s"
 
 #: views/notification_views.py:25
 msgid "Subscribe to global or object events to receive notifications."

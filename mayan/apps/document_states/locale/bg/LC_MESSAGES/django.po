@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -656,24 +656,24 @@ msgid "Primary key of the document type to remove from the workflow."
 msgstr ""
 "Първичен ключ от типа документ, който да се премахне от работния поток."
 
-#: serializers.py:165
+#: serializers.py:219
 msgid "Primary key of the destination state to be added."
 msgstr ""
 "Основен ключ на състоянието на местоназначение, което трябва да се добави."
 
-#: serializers.py:173
+#: serializers.py:227
 msgid "Primary key of the origin state to be added."
 msgstr "Основен ключ на първоначалното състояние, което трябва да се добави."
 
-#: serializers.py:259
+#: serializers.py:313
 msgid "Primary key of the transition to be added."
 msgstr "Основен ключ на прехода, който трябва да бъде добавен."
 
-#: serializers.py:339
+#: serializers.py:393
 msgid "A link to the entire history of this workflow."
 msgstr "Връзка към цялата история на този работен поток."
 
-#: serializers.py:348
+#: serializers.py:402
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
@@ -842,7 +842,7 @@ msgstr "Състояния на работния поток: %s"
 #: views/workflow_template_state_views.py:48
 #, python-format
 msgid "Create a \"%(action_class)s\" workflow action for: %(workflow_state)s"
-msgstr ""
+msgstr "Създайте &quot;%(action_class)s&quot; действие за: %(workflow_state)s"
 
 #: views/workflow_template_state_views.py:93
 #, python-format
@@ -874,7 +874,7 @@ msgstr "Действия за състояние на работния пото�
 #: views/workflow_template_state_views.py:205
 #, python-format
 msgid "New workflow state action selection for: %s"
-msgstr ""
+msgstr "Избор на ново действие за състоянието на работния процес за: %s"
 
 #: views/workflow_template_state_views.py:234
 #, python-format

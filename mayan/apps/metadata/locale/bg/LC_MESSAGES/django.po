@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-10-10 06:02+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -328,7 +328,7 @@ msgstr "Основен ключ на типа метаданни, които т�
 
 #: serializers.py:48
 msgid "Metadata type ID"
-msgstr ""
+msgstr "Идент. № на типа метаданни"
 
 #: serializers.py:93
 msgid "Primary key of the metadata type to be added to the document."
@@ -491,37 +491,37 @@ msgstr "Създаване на тип метаданни"
 #: views/metadata_type_views.py:43
 #, python-format
 msgid "Error deleting metadata type \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Грешка при изтриване на тип метаданни „%(instance)s“; %(exception)s"
 
 #: views/metadata_type_views.py:52
 #, python-format
 msgid "Metadata type \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Тип метаданни „%(object)s“ е изтрит успешно."
 
 #: views/metadata_type_views.py:55
 #, python-format
 msgid "%(count)d metadata type deleted successfully."
-msgstr ""
+msgstr "%(count)d тип метаданни е изтрит успешно."
 
 #: views/metadata_type_views.py:58
 #, python-format
 msgid "%(count)d metadata types deleted successfully."
-msgstr ""
+msgstr "%(count)d типове метаданни са изтрити успешно."
 
 #: views/metadata_type_views.py:60
 #, python-format
 msgid "Delete metadata type: %(object)s."
-msgstr ""
+msgstr "Изтрийте типа метаданни: %(object)s."
 
 #: views/metadata_type_views.py:61
 #, python-format
 msgid "Delete the %(count)d selected metadata type."
-msgstr ""
+msgstr "Изтрийте %(count)d избран тип метаданни."
 
 #: views/metadata_type_views.py:62
 #, python-format
 msgid "Delete the %(count)d selected metadata types."
-msgstr ""
+msgstr "Изтрийте %(count)d избрани типове метаданни."
 
 #: views/metadata_type_views.py:77
 #, python-format

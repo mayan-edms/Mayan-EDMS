@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -211,7 +211,7 @@ msgstr ""
 
 #: settings.py:65
 msgid "Name of the dashboard to display in the home view."
-msgstr ""
+msgstr "Име на таблото за управление, което да се показва в началния изглед."
 
 #: settings.py:70
 msgid "Sets the project's name."
@@ -250,7 +250,7 @@ msgstr "Относно"
 
 #: views.py:39
 msgid "Home"
-msgstr ""
+msgstr "Начало"
 
 #: views.py:62
 #, python-format
