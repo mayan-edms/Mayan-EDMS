@@ -1,4 +1,7 @@
+from django.apps import apps
 from django.test import TestCase, TransactionTestCase
+
+from django_test_migrations.contrib.unittest_case import MigratorTestCase
 
 from mayan.apps.acls.tests.mixins import ACLTestCaseMixin
 from mayan.apps.converter.tests.mixins import LayerTestCaseMixin
@@ -72,3 +75,14 @@ class GenericTransactionViewTestCase(
     providing a single, user customizable view to test object resolution
     and shorthand HTTP method functions.
     """
+
+
+class MayanMigratorTestCase(MigratorTestCase):
+    def tearDown(self):
+        ContentType = apps.get_model(
+            app_label='contenttypes', model_name='ContentType'
+        )
+
+        ContentType.objects.clear_cache()
+
+        super().tearDown()
