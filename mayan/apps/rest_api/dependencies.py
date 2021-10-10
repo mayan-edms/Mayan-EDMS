@@ -57,6 +57,9 @@ PythonDependency(
     module=__name__, name='drf-yasg', version_string='==1.17.1'
 )
 PythonDependency(
+    module=__name__, name='jsonschema', version_string='==3.2.0'
+)
+PythonDependency(
     module=__name__, name='flex', version_string='==6.14.1'
 )
 PythonDependency(

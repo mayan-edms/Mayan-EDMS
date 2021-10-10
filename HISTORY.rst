@@ -1,3 +1,13 @@
+4.0.17 (2021-XX-XX)
+===================
+- Backport workaround for swagger-spec-validator dependency
+  bug. Pin jsonschema to version 3.2.0 to avoid errors with
+  swagger-spec-validator 2.7.3. swagger-spec-validator does not specify a
+  version for jsonschema
+  (https://github.com/Yelp/swagger_spec_validator/blob/master/setup.py#L17),
+  which installs the latest version 4.0.1. This version removes
+  ``jsonschema.compat`` still used by swagger-spec-validator.
+
 4.0.16 (2021-09-29)
 ===================
 - Minor fixes merged from version 3.5.11.
