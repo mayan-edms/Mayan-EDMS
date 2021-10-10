@@ -321,7 +321,6 @@ class IndexIntegrityTestCase(
         super().setUp()
         self._create_test_document_stub()
 
-
     def test_unique_value_per_level(self):
         self._create_test_index_template_node(
             expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION
@@ -343,5 +342,7 @@ class IndexIntegrityTestCase(
         IndexInstanceNode.objects.create(
             parent=index_instance_node.parent,
             index_template_node=index_instance_node.index_template_node,
-            value='{}_{}'.format(index_instance_node.value, index_instance_node.pk)
+            value='{}_{}'.format(
+                index_instance_node.value, index_instance_node.pk
+            )
         )
