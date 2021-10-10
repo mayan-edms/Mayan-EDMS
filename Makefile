@@ -62,7 +62,7 @@ test-all-debug: DEBUG=--debug-mode
 test-all-debug: clean-pyc _test-command
 
 test-all-migrations: ## Run all migration tests.
-test-all-migrations: ARGUMENTS=--no-exclude --tag=migration
+test-all-migrations: ARGUMENTS=--no-exclude --tag=migration_test
 test-all-migrations: SKIPMIGRATIONS=
 test-all-migrations: clean-pyc _test-command
 
@@ -79,7 +79,7 @@ test-all-with-mysql:
 test-all-migrations-with-mysql: ## Run all migration tests against a MySQL database container.
 test-all-migrations-with-mysql:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration_test
 
 test-with-oracle: ## MODULE=<python module name> - Run tests for a single app, module or test class against an Oracle database container.
 test-with-oracle:
@@ -94,7 +94,7 @@ test-all-with-oracle:
 test-all-migrations-with-oracle: ## Run all migration tests against an Oracle database container.
 test-all-migrations-with-oracle:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.oracle','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration_test
 
 test-with-postgresql: ## MODULE=<python module name> - Run tests for a single app, module or test class against a PostgreSQL database container.
 test-with-postgresql:
@@ -109,7 +109,7 @@ test-all-with-postgresql:
 test-all-migrations-with-postgresql: ## Run all migration tests against a PostgreSQL database container.
 test-all-migrations-with-postgresql:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration_test
 
 gitlab-ci-update: ## Update the GitLab CI file from the platform template.
 gitlab-ci-update: copy-config-env
