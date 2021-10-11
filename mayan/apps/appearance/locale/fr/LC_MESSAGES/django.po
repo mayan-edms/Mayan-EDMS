@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-04 01:08+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:56 events.py:5 permissions.py:5 settings.py:7
+#: apps.py:55 events.py:5 permissions.py:5 settings.py:10
 msgid "Appearance"
 msgstr "Apparence"
 
@@ -107,19 +107,19 @@ msgstr "Supprimer"
 msgid "Edit"
 msgstr "Modifier"
 
-#: links.py:40 links.py:45 models.py:29 views.py:111
+#: links.py:40 links.py:45 models.py:31 views.py:111
 msgid "Themes"
 msgstr "Thèmes"
 
-#: models.py:16
+#: models.py:18
 msgid "A short text describing the theme."
 msgstr "Un court texte décrivant le thème."
 
-#: models.py:17
+#: models.py:19
 msgid "Label"
 msgstr "Étiquette"
 
-#: models.py:21
+#: models.py:23
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
@@ -127,23 +127,23 @@ msgstr ""
 "La feuille de style CSS pour changer l'apparence des différents éléments de "
 "l'interface utilisateur."
 
-#: models.py:23
+#: models.py:25
 msgid "Stylesheet"
 msgstr "Feuille de style"
 
-#: models.py:28 models.py:63
+#: models.py:30 models.py:68
 msgid "Theme"
 msgstr "Thème"
 
-#: models.py:59
+#: models.py:64
 msgid "User"
 msgstr "Utilisateur"
 
-#: models.py:67
+#: models.py:72
 msgid "User theme setting"
 msgstr "Paramètre du thème utilisateur"
 
-#: models.py:68
+#: models.py:73
 msgid "User theme settings"
 msgstr "Paramètres du thème utilisateur"
 
@@ -163,11 +163,11 @@ msgstr "Modifier les thèmes"
 msgid "View existing themes"
 msgstr "Afficher les thèmes existants"
 
-#: settings.py:12
+#: settings.py:15
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "Nombre maximal de caractères affichés comme titre."
 
-#: settings.py:19
+#: settings.py:22
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
@@ -175,6 +175,11 @@ msgstr ""
 "Position où le message du système sera affiché. Les options sont: en haut à "
 "gauche, en haut au centre, en haut à droite, en bas à gauche, en bas au "
 "centre et en bas à droite."
+
+#: settings.py:30
+msgid ""
+"Delay in milliseconds after which the menus will be checked for updates."
+msgstr ""
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
@@ -214,7 +219,7 @@ msgstr ""
 "l'autorisation requise pour y accéder."
 
 #: templates/500.html:5 templates/500.html:30
-#: templates/appearance/root.html:58
+#: templates/appearance/root.html:53
 msgid "Server error"
 msgstr "Erreur du serveur"
 
@@ -255,7 +260,7 @@ msgstr ""
 msgid "About"
 msgstr "À propos"
 
-#: templates/appearance/about.html:73
+#: templates/appearance/about.html:72
 #, python-format
 msgid ""
 "\n"
@@ -266,53 +271,20 @@ msgstr ""
 "                    %(setting_project_title)s est basé sur %(project_title)s\n"
 "                "
 
-#: templates/appearance/about.html:78
+#: templates/appearance/about.html:77
 msgid "Version"
 msgstr "Version"
 
-#: templates/appearance/about.html:80
+#: templates/appearance/about.html:79
 #, python-format
 msgid "Build number: %(build_number)s"
 msgstr "Numéro de build : %(build_number)s"
 
-#: templates/appearance/about.html:93
+#: templates/appearance/about.html:92
 msgid "Released under the license:"
 msgstr "Publié sous la licence :"
 
-#: templates/appearance/about.html:99
-#, python-format
-msgid ""
-"\n"
-"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
-"            "
-msgstr ""
-"\n"
-"                %(project_title)s est un logiciel libre et gratuit conçu pour vous <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> par Roberto Rosario et les contributeurs.\n"
-"            "
-
-#: templates/appearance/about.html:105
-#, python-format
-msgid ""
-"\n"
-"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
-"            "
-msgstr ""
-"\n"
-"                Il faut beaucoup d'efforts pour rendre %(project_title)s aussi riche en fonctionnalités qu'il l'est.\n"
-"            "
-
-#: templates/appearance/about.html:111
-#, python-format
-msgid ""
-"\n"
-"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
-"            "
-msgstr ""
-"\n"
-"                Si vous utilisez %(project_title)s, veuillez <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">faire un don %(icon_social_paypal)s</a>\n"
-"            "
-
-#: templates/appearance/about.html:117
+#: templates/appearance/about.html:98
 #, python-format
 msgid ""
 "\n"
@@ -323,7 +295,7 @@ msgstr ""
 "                La liste complète des changements est disponible dans les <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">notes de publication %(icon_documentation)s</a> ou en version courte dans le <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">journal des modifications %(icon_documentation)s</a>.\n"
 "            "
 
-#: templates/appearance/about.html:123
+#: templates/appearance/about.html:104
 #, python-format
 msgid ""
 "\n"
@@ -334,7 +306,7 @@ msgstr ""
 "                Pour des questions, consulter la <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
 
-#: templates/appearance/about.html:129
+#: templates/appearance/about.html:110
 #, python-format
 msgid ""
 "\n"
@@ -345,7 +317,7 @@ msgstr ""
 "                Si vous avez trouvé un bogue ou une idée pour une nouvelle fonctionnalité, visitez le <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">forum %(icon_forum)s</a> ou soumettez un nouveau billet dans le <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">dépôt de code source %(icon_source_code)s</a>.\n"
 "            "
 
-#: templates/appearance/about.html:134
+#: templates/appearance/about.html:115
 #, python-format
 msgid ""
 "\n"
@@ -356,23 +328,19 @@ msgstr ""
 "                Faites connaitre notre logiciel. Dites à vos amis et collègues à quel point %(project_title)s est génial!\n"
 "            "
 
-#: templates/appearance/base.html:71
+#: templates/appearance/base.html:72
 msgid "Object"
 msgstr "Objet"
 
-#: templates/appearance/calculate_form_title.html:10
-msgid "Open main menu"
-msgstr "Ouvrir le menu principal"
-
-#: templates/appearance/generic_confirm.html:14
+#: templates/appearance/generic_confirm.html:13
 msgid "Are you sure?"
 msgstr "Êtes-vous sûr?"
 
-#: templates/appearance/generic_confirm.html:38
+#: templates/appearance/generic_confirm.html:37
 msgid "Yes"
 msgstr "Oui"
 
-#: templates/appearance/generic_confirm.html:48
+#: templates/appearance/generic_confirm.html:47
 msgid "No"
 msgstr "Non"
 
@@ -383,46 +351,52 @@ msgstr "Non"
 msgid "required"
 msgstr "obligatoire"
 
-#: templates/appearance/generic_form_subtemplate.html:83
-#: templates/appearance/generic_form_subtemplate.html:96
-#: templates/appearance/generic_multiform_subtemplate.html:59
+#: templates/appearance/generic_form_subtemplate.html:84
+#: templates/appearance/generic_form_subtemplate.html:94
+#: templates/appearance/generic_form_subtemplate.html:108
+#: templates/appearance/generic_multiform_subtemplate.html:62
 msgid "Save"
 msgstr "Enregistrer"
 
-#: templates/appearance/generic_form_subtemplate.html:83
-#: templates/appearance/generic_form_subtemplate.html:96
-#: templates/appearance/generic_multiform_subtemplate.html:59
+#: templates/appearance/generic_form_subtemplate.html:84
+#: templates/appearance/generic_form_subtemplate.html:94
+#: templates/appearance/generic_form_subtemplate.html:108
+#: templates/appearance/generic_multiform_subtemplate.html:62
 msgid "Submit"
 msgstr "Soumettre"
 
-#: templates/appearance/generic_form_subtemplate.html:87
-#: templates/appearance/generic_multiform_subtemplate.html:63
+#: templates/appearance/generic_form_subtemplate.html:98
+#: templates/appearance/generic_multiform_subtemplate.html:66
 msgid "Cancel"
 msgstr "Annuler"
 
-#: templates/appearance/generic_list_subtemplate.html:29
+#: templates/appearance/generic_list_subtemplate.html:34
 msgid "Identifier"
 msgstr "Identifiant"
 
-#: templates/appearance/generic_list_subtemplate.html:133
+#: templates/appearance/generic_list_subtemplate.html:137
 msgid "Facets"
 msgstr "Facettes"
 
-#: templates/appearance/home.html:10
-msgid "Dashboard"
-msgstr "Tableau de bord"
-
-#: templates/appearance/home.html:26
+#: templates/appearance/home.html:27
 msgid "Getting started"
 msgstr "Démarrage"
 
-#: templates/appearance/home.html:29
+#: templates/appearance/home.html:30
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr ""
 "Avant de pouvoir utiliser pleinement Mayan EDMS, les éléments suivants sont "
 "nécessaires :"
 
-#: templates/appearance/list_header.html:12
+#: templates/appearance/menus/menu_topbar.html:11
+msgid "Toggle navigation"
+msgstr "Activer la navigation"
+
+#: templates/appearance/partials/form_title.html:10
+msgid "Open main menu"
+msgstr "Ouvrir le menu principal"
+
+#: templates/appearance/partials/list_header.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
@@ -431,56 +405,52 @@ msgstr ""
 "Total (%(start)s - %(end)s sur %(total)s) (page %(page_number)s sur "
 "%(total_pages)s)"
 
-#: templates/appearance/list_header.html:14
-#: templates/appearance/list_header.html:17
+#: templates/appearance/partials/list_header.html:14
+#: templates/appearance/partials/list_header.html:17
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Total : %(total)s"
 
-#: templates/appearance/list_toolbar.html:13
+#: templates/appearance/partials/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "Tout sélectionner/Désélectionner"
 
-#: templates/appearance/list_toolbar.html:17
+#: templates/appearance/partials/list_toolbar.html:17
 msgid "Toggle list display mode"
 msgstr "Basculer en mode d'affichage « liste »"
 
-#: templates/appearance/list_toolbar.html:60
+#: templates/appearance/partials/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr ""
 "Sélectionner les éléments pour activer les actions en masse. Utilisez Maj + "
 "clic pour en sélectionner plusieurs."
 
-#: templates/appearance/list_toolbar.html:65
+#: templates/appearance/partials/list_toolbar.html:65
 msgid "Bulk actions"
 msgstr "Action groupée"
 
-#: templates/appearance/list_toolbar.html:67
+#: templates/appearance/partials/list_toolbar.html:67
 msgid "Toggle Dropdown"
 msgstr "Activer la liste déroulante"
 
-#: templates/appearance/menu_topbar.html:11
-msgid "Toggle navigation"
-msgstr "Activer la navigation"
-
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Aucun résultat"
 
-#: templates/appearance/root.html:63
+#: templates/appearance/root.html:58
 msgid "Close"
 msgstr "Fermer"
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:68
 msgid "Server communication error"
 msgstr "Erreur de communication serveur"
 
-#: templates/appearance/root.html:75
+#: templates/appearance/root.html:70
 msgid "Check you network connection and try again in a few moments."
 msgstr "Vérifiez votre connexion réseau et réessayez dans quelques instants."
 
-#: templatetags/appearance_tags.py:63
+#: templatetags/appearance_tags.py:61
 msgid "None"
 msgstr "Aucun"
 

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-04 01:08+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Harald Ersch, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -79,23 +79,23 @@ msgstr "Dacă este selectat, dezactivează încetarea preluării rolului."
 msgid "User"
 msgstr "Utilizator"
 
-#: links.py:24
+#: links.py:29
 msgid "Logout"
 msgstr "Deconectare"
 
-#: links.py:29
+#: links.py:34
 msgid "Change password"
 msgstr "Schimbați parola"
 
-#: links.py:34 views.py:250
+#: links.py:39 views/impersonation_views.py:50
 msgid "Impersonate user"
 msgstr "Schimb de rol a utilizatorului"
 
-#: links.py:39
+#: links.py:44
 msgid "Impersonate"
 msgstr ""
 
-#: links.py:44 links.py:48
+#: links.py:49 links.py:53
 msgid "Set password"
 msgstr "Seteaza parola"
 
@@ -172,7 +172,7 @@ msgid "Login page"
 msgstr "Pagina de conectare"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:177
+#: templates/authentication/password_reset_form.html:29
 msgid "Submit"
 msgstr "Trimiteţi"
 
@@ -180,52 +180,52 @@ msgstr "Trimiteţi"
 msgid "Password reset email sent!"
 msgstr "Email-ul de reinițializare a parolei a fost trimis!"
 
-#: views.py:86
+#: views/authentication_views.py:75
 msgid "Your password has been successfully changed."
 msgstr "Parola dvs. a fost schimbată cu succes"
 
-#: views.py:93
+#: views/authentication_views.py:82
 msgid "Current user password change"
 msgstr "Schimbare parolă pentru utilizatorul curent"
 
-#: views.py:101
+#: views/authentication_views.py:90
 msgid "Changing the password is not allowed for this account."
 msgstr "Schimbarea parolei nu este permisă pentru acest cont."
 
-#: views.py:168
+#: views/authentication_views.py:157
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Solicitarea de schimbare a parolei efectuată pe %(count)dutilizator "
 
-#: views.py:170
+#: views/authentication_views.py:159
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr ""
 "Solicitarea de modificare a parolei efectuată pe %(count)dutilizatori "
 
-#: views.py:179
+#: views/authentication_views.py:167
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: views.py:189
+#: views/authentication_views.py:177
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Schimbați parola pentru utilizatorul: %s"
 
-#: views.py:210
+#: views/authentication_views.py:198
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Resetarea reușită a parolei pentru utilizatorul: %s."
 
-#: views.py:216
+#: views/authentication_views.py:204
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Eroare resetarea parola pentru utilizatorul %(user)s\": %(error)s"
 
-#: views.py:278
+#: views/impersonation_views.py:78
 #, python-format
 msgid "Impersonate user: %s"
 msgstr ""

@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
     <head>
+        <meta content="{% common_project_information '__description__' as project_description %}{% trans project_description %}" name="description" >
         <meta content="width=device-width, initial-scale=1, maximum-scale=5" name="viewport">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
@@ -21,7 +22,7 @@
 
         <link href="{% static 'appearance/node_modules/@fortawesome/fontawesome-free/css/all.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
         <link href="{% static 'appearance/node_modules/bootswatch/flatly/bootstrap.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
-        <link href="{% static 'appearance/css/base.css' %}" media="screen" rel="stylesheet" type="text/css" />
+        <link href="{% static 'appearance/css/appearance.css' %}" media="screen" rel="stylesheet" type="text/css" />
         {% block stylesheets %}{% endblock %}
 
         <style>

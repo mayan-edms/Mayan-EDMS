@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-04 01:08+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -268,62 +268,54 @@ msgstr ""
 msgid "Add %(count)d documents to cabinets."
 msgstr ""
 
-#: views.py:192
-msgid "Add"
-msgstr "Adăugți"
-
-#: views.py:207
+#: views.py:205
 msgid "Cabinets to which the selected documents will be added."
 msgstr "Fișetele la care vor fi adăugate documentele selectate."
 
-#: views.py:253
+#: views.py:251
 msgid "Documents can be added to many cabinets."
 msgstr "Documentele pot fi adăugate la multe fișete."
 
-#: views.py:256
+#: views.py:254
 msgid "This document is not in any cabinet"
 msgstr "Acest document nu se află în nici un fișet"
 
-#: views.py:260
+#: views.py:258
 #, python-format
 msgid "Cabinets containing document: %s"
 msgstr "Fișete care conțin documentul: %s"
 
-#: views.py:276
+#: views.py:274
 #, python-format
 msgid "Document \"%(object)s\" removed from cabinets successfully."
 msgstr ""
 
-#: views.py:279
+#: views.py:277
 #, python-format
 msgid "%(count)d document removed from cabinets successfully."
 msgstr ""
 
-#: views.py:282
+#: views.py:280
 #, python-format
 msgid "%(count)d documents removed from cabinets successfully."
 msgstr ""
 
-#: views.py:284
+#: views.py:282
 #, python-format
 msgid "Remove document \"%(object)s\" from cabinets."
 msgstr ""
 
-#: views.py:285
+#: views.py:283
 #, python-format
 msgid "Remove %(count)d document from cabinets."
 msgstr ""
 
-#: views.py:286
+#: views.py:284
 #, python-format
 msgid "Remove %(count)d documents from cabinets."
 msgstr ""
 
-#: views.py:290
-msgid "Remove"
-msgstr "Eliminați"
-
-#: views.py:305
+#: views.py:301
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Fișetele din care vor fi eliminate documentele selectate."
 

@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Link
-from mayan.apps.navigation.utils import get_cascade_condition
+from mayan.apps.navigation.utils import factory_condition_queryset_access
 
 from .icons import (
     icon_document_index_instance_list, icon_document_type_index_templates,
@@ -20,8 +20,8 @@ from .permissions import (
 )
 
 
-def is_not_root_node(context):
-    return not context['resolved_object'].is_root_node()
+def condition_is_not_root_node(context, resolved_object):
+    return not resolved_object.is_root_node()
 
 
 link_document_index_instance_list = Link(
@@ -37,7 +37,7 @@ link_document_type_index_templates = Link(
 )
 
 link_index_instance_menu = Link(
-    condition=get_cascade_condition(
+    condition=factory_condition_queryset_access(
         app_label='document_indexing', model_name='IndexTemplate',
         object_permission=permission_index_instance_view,
     ), icon=icon_index,
@@ -49,7 +49,7 @@ link_index_instance_rebuild = Link(
     text=_('Rebuild index'), view='indexing:index_template_rebuild'
 )
 link_index_instances_rebuild = Link(
-    condition=get_cascade_condition(
+    condition=factory_condition_queryset_access(
         app_label='document_indexing', model_name='IndexTemplate',
         object_permission=permission_index_template_rebuild,
     ), description=_(
@@ -58,7 +58,7 @@ link_index_instances_rebuild = Link(
     view='indexing:rebuild_index_instances'
 )
 link_index_instances_reset = Link(
-    condition=get_cascade_condition(
+    condition=factory_condition_queryset_access(
         app_label='document_indexing', model_name='IndexTemplate',
         object_permission=permission_index_template_rebuild,
     ), description=_(
@@ -68,7 +68,7 @@ link_index_instances_reset = Link(
 )
 
 link_index_template_setup = Link(
-    condition=get_cascade_condition(
+    condition=factory_condition_queryset_access(
         app_label='document_indexing', model_name='IndexTemplate',
         object_permission=permission_index_template_view,
         view_permission=permission_index_template_create,
@@ -110,12 +110,12 @@ link_index_template_node_create = Link(
     text=_('New child node'), view='indexing:template_node_create'
 )
 link_index_template_node_delete = Link(
-    args='resolved_object.pk', condition=is_not_root_node,
+    args='resolved_object.pk', condition=condition_is_not_root_node,
     icon=icon_index_template_node_delete, tags='dangerous',
     text=_('Delete'), view='indexing:template_node_delete'
 )
 link_index_template_node_edit = Link(
     args='resolved_object.pk', icon=icon_index_template_node_edit,
-    condition=is_not_root_node, text=_('Edit'),
+    condition=condition_is_not_root_node, text=_('Edit'),
     view='indexing:template_node_edit'
 )

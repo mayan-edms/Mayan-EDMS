@@ -21,7 +21,9 @@ from django.utils.translation import ugettext_lazy as _, ugettext
 
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.utils import resolve_attribute
-from mayan.apps.storage.utils import mkdtemp, patch_files as storage_patch_files
+from mayan.apps.storage.utils import (
+    TemporaryDirectory, mkdtemp, patch_files as storage_patch_files
+)
 
 from .algorithms import HashAlgorithm
 from .environments import environment_production
@@ -466,38 +468,36 @@ class JavaScriptDependency(Dependency):
                 dependency.install(include_dependencies=False)
 
     def extract(self, replace_list=None):
-        temporary_directory = mkdtemp()
-        path_compressed_file = self.get_tar_file_path()
+        with TemporaryDirectory() as temporary_directory:
+            path_compressed_file = self.get_tar_file_path()
 
-        with tarfile.open(name=force_text(s=path_compressed_file), mode='r') as file_object:
-            file_object.extractall(path=temporary_directory)
+            with tarfile.open(name=force_text(s=path_compressed_file), mode='r') as file_object:
+                file_object.extractall(path=temporary_directory)
 
-        self.patch_files(path=temporary_directory, replace_list=replace_list)
+            self.patch_files(path=temporary_directory, replace_list=replace_list)
 
-        path_install = self.get_install_path()
+            path_install = self.get_install_path()
 
-        # Clear the installation path of previous content
-        shutil.rmtree(path=force_text(s=path_install), ignore_errors=True)
+            # Clear the installation path of previous content
+            shutil.rmtree(path=force_text(s=path_install), ignore_errors=True)
 
-        # Scoped packages are nested under a parent directory
-        # create it to avoid rename errors.
-        path_install.mkdir(parents=True)
+            # Scoped packages are nested under a parent directory
+            # create it to avoid rename errors.
+            path_install.mkdir(parents=True)
 
-        # Copy the content under the dependency's extracted content folder
-        # 'package' to the final location.
-        # We do a copy and delete instead of move because os.rename doesn't
-        # support renames across filesystems.
-        path_uncompressed_package = Path(temporary_directory, 'package')
-        shutil.rmtree(path=force_text(s=path_install))
-        shutil.copytree(
-            src=force_text(s=path_uncompressed_package),
-            dst=force_text(s=path_install)
-        )
-        shutil.rmtree(path=force_text(s=path_uncompressed_package))
+            # Copy the content under the dependency's extracted content folder
+            # 'package' to the final location.
+            # We do a copy and delete instead of move because os.rename doesn't
+            # support renames across filesystems.
+            path_uncompressed_package = Path(temporary_directory, 'package')
+            shutil.rmtree(path=force_text(s=path_install))
+            shutil.copytree(
+                src=force_text(s=path_uncompressed_package),
+                dst=force_text(s=path_install)
+            )
 
-        # Clean up temporary directory used for download
-        shutil.rmtree(path=temporary_directory, ignore_errors=True)
-        shutil.rmtree(path=self.path_cache, ignore_errors=True)
+            # Clean up temporary directory used for download
+            shutil.rmtree(path=self.path_cache, ignore_errors=True)
 
     def download(self):
         self.path_cache = mkdtemp()

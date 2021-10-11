@@ -81,6 +81,10 @@ class DownloadFile(DatabaseFileModelMixin, ExtraDataModelMixin, models.Model):
         if self.content_object:
             return self.content_object.get_absolute_url()
 
+    def get_absolute_api_url(self):
+        if self.content_object:
+            return self.content_object.get_absolute_api_url()
+
     @method_event(
         event_manager_class=EventManagerMethodAfter,
         event=event_download_file_downloaded,
@@ -127,3 +131,4 @@ class SharedUploadedFile(DatabaseFileModelMixin, models.Model):
     def save(self, *args, **kwargs):
         self.filename = self.filename or Path(path=self.file.name).name
         super().save(*args, **kwargs)
+        self.file.close()

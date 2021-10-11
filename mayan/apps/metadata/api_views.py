@@ -1,5 +1,3 @@
-from django.shortcuts import get_object_or_404
-
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import (
@@ -17,8 +15,7 @@ from .permissions import (
 )
 from .serializers import (
     DocumentMetadataSerializer, DocumentTypeMetadataTypeSerializer,
-    MetadataTypeSerializer, NewDocumentTypeMetadataTypeSerializer,
-    WritableDocumentTypeMetadataTypeSerializer
+    MetadataTypeSerializer
 )
 
 
@@ -29,7 +26,7 @@ class APIDocumentMetadataListView(
     get: Returns a list of selected document's metadata types and values.
     post: Add an existing metadata type and value to the selected document.
     """
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     external_object_pk_url_kwarg = 'document_id'
     mayan_external_object_permissions = {
         'GET': (permission_document_metadata_view,),
@@ -41,14 +38,14 @@ class APIDocumentMetadataListView(
     ordering_fields = ('id', 'metadata_type', 'value')
     serializer_class = DocumentMetadataSerializer
 
-    def get_queryset(self):
-        return self.external_object.metadata.all()
-
     def get_instance_extra_data(self):
         return {
             '_event_actor': self.request.user,
             'document': self.external_object
         }
+
+    def get_queryset(self):
+        return self.external_object.metadata.all()
 
     def perform_create(self, serializer):
         if 'metadata_type_id' in serializer.validated_data:
@@ -66,7 +63,7 @@ class APIDocumentMetadataView(
     patch: Edit the selected document metadata type and value.
     put: Edit the selected document metadata type and value.
     """
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     external_object_pk_url_kwarg = 'document_id'
     lookup_url_kwarg = 'metadata_id'
     mayan_external_object_permissions = {
@@ -132,108 +129,78 @@ class APIMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
         }
 
 
-class APIDocumentTypeMetadataTypeListView(generics.ListCreateAPIView):
+class MetadataTypeFilterAPIMixin:
+    metadata_type_permissions = {
+        'DELETE': (permission_metadata_type_edit,),
+        'GET': (permission_metadata_type_view,),
+        'PATCH': (permission_metadata_type_edit,),
+        'PUT': (permission_metadata_type_edit,)
+    }
+
+    def get_metadata_type_queryset(self):
+        permission = self.metadata_type_permissions.get(
+            self.request.method, (None,)
+        )[0]
+
+        queryset = MetadataType.objects.all()
+        if permission:
+            queryset = AccessControlList.objects.restrict_queryset(
+                permission=permission, queryset=queryset,
+                user=self.request.user
+            )
+
+        return queryset
+
+    def get_queryset(self):
+        return self.external_object.metadata.filter(
+            metadata_type__in=self.get_metadata_type_queryset()
+        )
+
+
+class APIDocumentTypeMetadataTypeListView(
+    ExternalObjectAPIViewMixin, MetadataTypeFilterAPIMixin,
+    generics.ListCreateAPIView
+):
     """
     get: Returns a list of selected document type's metadata types.
     post: Add a metadata type to the selected document type.
     """
-    lookup_url_kwarg = 'metadata_type_id'
-
-    def get_document_type(self):
-        if self.request.method == 'GET':
-            permission_required = permission_document_type_view
-        else:
-            permission_required = permission_document_type_edit
-
-        document_type = get_object_or_404(
-            klass=DocumentType, pk=self.kwargs['document_type_id']
-        )
-
-        AccessControlList.objects.check_access(
-            obj=document_type, permissions=(permission_required,),
-            user=self.request.user
-        )
-
-        return document_type
+    external_object_class = DocumentType
+    external_object_pk_url_kwarg = 'document_type_id'
+    mayan_external_object_permissions = {
+        'GET': (permission_document_type_view,),
+        'POST': (permission_document_type_edit,)
+    }
+    serializer_class = DocumentTypeMetadataTypeSerializer
 
     def get_instance_extra_data(self):
         return {
-            '_event_actor': self.request.user
+            '_event_actor': self.request.user,
         }
 
-    def get_queryset(self):
-        return self.get_document_type().metadata.all()
 
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
-
-        return super().get_serializer(*args, **kwargs)
-
-    def get_serializer_class(self):
-        if self.request.method == 'GET':
-            return DocumentTypeMetadataTypeSerializer
-        else:
-            return NewDocumentTypeMetadataTypeSerializer
-
-    def get_serializer_context(self):
-        """
-        Extra context provided to the serializer class.
-        """
-        context = super().get_serializer_context()
-        if self.kwargs:
-            context.update(
-                {
-                    'document_type': self.get_document_type(),
-                }
-            )
-
-        return context
-
-
-class APIDocumentTypeMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
+class APIDocumentTypeMetadataTypeView(
+    ExternalObjectAPIViewMixin, MetadataTypeFilterAPIMixin,
+    generics.RetrieveUpdateDestroyAPIView
+):
     """
     delete: Remove a metadata type from a document type.
     get: Retrieve the details of a document type metadata type.
     patch: Edit the selected document type metadata type.
     put: Edit the selected document type metadata type.
     """
+    external_object_class = DocumentType
+    external_object_pk_url_kwarg = 'document_type_id'
     lookup_url_kwarg = 'metadata_type_id'
+    mayan_external_object_permissions = {
+        'DELETE': (permission_document_type_edit,),
+        'GET': (permission_document_type_view,),
+        'PATCH': (permission_document_type_edit,),
+        'PUT': (permission_document_type_edit,)
+    }
     serializer_class = DocumentTypeMetadataTypeSerializer
-
-    def get_document_type(self):
-        if self.request.method == 'GET':
-            permission_required = permission_document_type_view
-        else:
-            permission_required = permission_document_type_edit
-
-        document_type = get_object_or_404(
-            klass=DocumentType, pk=self.kwargs['document_type_id']
-        )
-
-        AccessControlList.objects.check_access(
-            obj=document_type, permissions=(permission_required,),
-            user=self.request.user
-        )
-
-        return document_type
 
     def get_instance_extra_data(self):
         return {
-            '_event_actor': self.request.user
+            '_event_actor': self.request.user,
         }
-
-    def get_queryset(self):
-        return self.get_document_type().metadata.all()
-
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
-
-        return super().get_serializer(*args, **kwargs)
-
-    def get_serializer_class(self):
-        if self.request.method == 'GET':
-            return DocumentTypeMetadataTypeSerializer
-        else:
-            return WritableDocumentTypeMetadataTypeSerializer

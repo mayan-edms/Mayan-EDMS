@@ -172,7 +172,7 @@ class DocumentCommentViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_documen_comment_detail_view_with_access(self):
+    def test_trashed_document_comment_detail_view_with_access(self):
         self._create_test_comment()
 
         self.grant_access(
@@ -202,6 +202,7 @@ class DocumentCommentViewTestCase(
 
         self.test_document_comment.refresh_from_db()
         self.assertEqual(self.test_document_comment.text, comment_text)
+        self.assertEqual(self.test_document_comment.user, self.test_user)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -222,6 +223,7 @@ class DocumentCommentViewTestCase(
 
         self.test_document_comment.refresh_from_db()
         self.assertNotEqual(self.test_document_comment.text, comment_text)
+        self.assertEqual(self.test_document_comment.user, self.test_user)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
@@ -249,6 +251,7 @@ class DocumentCommentViewTestCase(
 
         self.test_document_comment.refresh_from_db()
         self.assertEqual(self.test_document_comment.text, comment_text)
+        self.assertEqual(self.test_document_comment.user, self.test_user)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)

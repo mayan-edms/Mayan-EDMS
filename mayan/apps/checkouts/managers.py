@@ -1,16 +1,12 @@
 import logging
 
 from django.apps import apps
-from django.db import models, transaction
+from django.db import models
 from django.utils.timezone import now
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
 
-from .events import (
-    event_document_auto_checked_in, event_document_checked_in,
-    event_document_forcefully_checked_in
-)
 from .exceptions import DocumentNotCheckedOut
 from .literals import STATE_CHECKED_OUT, STATE_CHECKED_IN
 from .permissions import (
@@ -22,7 +18,6 @@ logger = logging.getLogger(name=__name__)
 
 class DocumentCheckoutBusinessLogicManager(models.Manager):
     def check_in_document(self, document, user=None):
-        # Convert any document submodel to the parent model class
         queryset = document._meta.default_manager.filter(pk=document.pk)
 
         if not self.filter(document__pk__in=queryset).exists():
@@ -44,25 +39,14 @@ class DocumentCheckoutBusinessLogicManager(models.Manager):
                 user=user
             )
 
-        with transaction.atomic():
-            if user:
-                for checkout in user_document_checkouts:
-                    event_document_checked_in.commit(
-                        actor=user, target=checkout.document
-                    )
-                    checkout.delete()
-
-                for checkout in others_document_checkouts:
-                    event_document_forcefully_checked_in.commit(
-                        actor=user, target=checkout.document
-                    )
-                    checkout.delete()
-            else:
-                for checkout in self.filter(document__in=queryset):
-                    event_document_auto_checked_in.commit(
-                        target=checkout.document
-                    )
-                    checkout.delete()
+        if user:
+            for checkout in user_document_checkouts | others_document_checkouts:
+                checkout._event_actor = user
+                checkout._event_keep_attributes = ('_event_actor',)
+                checkout.delete()
+        else:
+            for checkout in self.filter(document__in=queryset):
+                checkout.delete()
 
 
 class DocumentCheckoutManager(models.Manager):

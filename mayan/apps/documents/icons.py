@@ -246,7 +246,12 @@ icon_document_version_page_return_to_document_version_page_list = Icon(
     driver_name='fontawesome-dual', primary_symbol='copy',
     secondary_symbol='chevron-left'
 )
-icon_document_version_page_list = Icon(driver_name='fontawesome', symbol='copy')
+icon_document_version_page_list = Icon(
+    driver_name='fontawesome', symbol='copy'
+)
+icon_document_version_page_list_append = Icon(
+    driver_name='fontawesome', symbol='layer-group'
+)
 icon_document_version_page_list_remap = Icon(
     driver_name='fontawesome', symbol='project-diagram'
 )

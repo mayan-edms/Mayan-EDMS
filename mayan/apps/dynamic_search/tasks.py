@@ -6,14 +6,12 @@ from mayan.apps.lock_manager.exceptions import LockError
 from mayan.celery import app
 
 from .classes import SearchBackend, SearchModel
-from .literals import TASK_RETRY_DELAY
 
 logger = logging.getLogger(name=__name__)
 
 
 @app.task(
-    bind=True, default_retry_delay=TASK_RETRY_DELAY, max_retries=None,
-    ignore_result=True
+    bind=True, ignore_result=True, max_retries=None, retry_backoff=True
 )
 def task_deindex_instance(self, app_label, model_name, object_id):
     logger.info('Executing')
@@ -30,8 +28,7 @@ def task_deindex_instance(self, app_label, model_name, object_id):
 
 
 @app.task(
-    bind=True, default_retry_delay=TASK_RETRY_DELAY, max_retries=None,
-    ignore_result=True
+    bind=True, ignore_result=True, max_retries=None, retry_backoff=True
 )
 def task_index_search_model(self, search_model_full_name):
     search_model = SearchModel.get(name=search_model_full_name)
@@ -47,8 +44,7 @@ def task_index_search_model(self, search_model_full_name):
 
 
 @app.task(
-    bind=True, default_retry_delay=TASK_RETRY_DELAY, max_retries=None,
-    ignore_result=True
+    bind=True, ignore_result=True, max_retries=None, retry_backoff=True
 )
 def task_index_instance(self, app_label, model_name, object_id):
     logger.info('Executing')

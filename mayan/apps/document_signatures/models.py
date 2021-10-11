@@ -12,11 +12,15 @@ from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.django_gpg.exceptions import VerificationError
 from mayan.apps.django_gpg.models import Key
 from mayan.apps.documents.models import DocumentFile
-from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.classes import (
+    EventManagerMethodAfter, EventManagerSave
+)
 from mayan.apps.events.decorators import method_event
 from mayan.apps.storage.classes import DefinedStorageLazy
 
-from .events import event_detached_signature_uploaded
+from .events import (
+    event_detached_signature_deleted, event_detached_signature_uploaded
+)
 from .literals import STORAGE_NAME_DOCUMENT_SIGNATURES_DETACHED_SIGNATURE
 from .managers import DetachedSignatureManager, EmbeddedSignatureManager
 
@@ -167,9 +171,16 @@ class DetachedSignature(ExtraDataModelMixin, SignatureBaseModel):
     def __str__(self):
         return '{}-{}'.format(self.document_file, _('signature'))
 
+    @method_event(
+        event_manager_class=EventManagerMethodAfter,
+        event=event_detached_signature_deleted,
+        target='document_file'
+    )
     def delete(self, *args, **kwargs):
-        if self.signature_file.name:
-            self.signature_file.storage.delete(name=self.signature_file.name)
+        signature_file_name = self.signature_file.name
+        if signature_file_name:
+            self.signature_file.close()
+            self.signature_file.storage.delete(name=signature_file_name)
         super().delete(*args, **kwargs)
 
     @method_event(
@@ -184,7 +195,8 @@ class DetachedSignature(ExtraDataModelMixin, SignatureBaseModel):
         with self.document_file.open() as file_object:
             try:
                 verify_result = Key.objects.verify_file(
-                    file_object=file_object, signature_file=self.signature_file
+                    file_object=file_object,
+                    signature_file=self.signature_file
                 )
             except VerificationError as exception:
                 # Not signed

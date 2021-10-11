@@ -9,6 +9,9 @@ namespace = EventTypeNamespace(
 event_detached_signature_created = namespace.add_event_type(
     label=_('Detached signature created'), name='detached_signature_created'
 )
+event_detached_signature_deleted = namespace.add_event_type(
+    label=_('Detached signature deleted'), name='detached_signature_deleted'
+)
 event_detached_signature_uploaded = namespace.add_event_type(
     label=_('Detached signature uploaded'),
     name='detached_signature_uploaded'

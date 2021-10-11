@@ -2,7 +2,7 @@ from collections import Iterable
 import logging
 
 from django.apps import apps
-from django.db.models.signals import post_save, pre_delete
+from django.db.models.signals import m2m_changed, post_save, pre_delete
 from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
@@ -42,8 +42,27 @@ class SearchBackend:
     def __init__(self, **kwargs):
         self.kwargs = kwargs
 
-    def _search(self, global_and_search, search_model, query_string, user):
+    def _search(self, global_and_search, query, search_model, user):
         raise NotImplementedError
+
+    def cleanup_query(self, query, search_model):
+        search_field_names = [
+            search_field.get_full_name() for search_field in search_model.search_fields
+        ]
+
+        clean_query = {}
+
+        if 'q' in query:
+            value = query['q']
+            if value:
+                clean_query = {key: value for key in search_field_names}
+        else:
+            # Allow only valid search fields for the search model and scoping keys.
+            clean_query = {
+                key: value for key, value in query.items() if key in search_field_names and value
+            }
+
+        return clean_query
 
     def deindex_instance(self, instance):
         raise NotImplementedError
@@ -59,7 +78,7 @@ class SearchBackend:
         )
 
         result = self.decode_query(
-            query=query, global_and_search=global_and_search
+            global_and_search=global_and_search, query=query
         )
 
         # Recursive call to the backend's search using queries as unscoped
@@ -135,6 +154,11 @@ class SearchBackend:
                 scopes[scope_id].setdefault('match_all', scope_match_all)
                 scopes[scope_id].setdefault('query', {})
                 scopes[scope_id]['query'][key] = value
+        else:
+            # If query if empty, create an empty scope 0.
+            scopes.setdefault(DEFAULT_SCOPE_ID, {})
+            scopes[DEFAULT_SCOPE_ID].setdefault('match_all', scope_match_all)
+            scopes[DEFAULT_SCOPE_ID].setdefault('query', {})
 
         return {
             'operators': operators, 'result_scope': result_scope,
@@ -176,17 +200,22 @@ class SearchBackend:
                 return result
         else:
             try:
-                query_string = scope['query']
+                query = self.cleanup_query(
+                    query=scope['query'], search_model=search_model
+                )
             except KeyError:
                 raise DynamicSearchException(
                     'Scope `{}` does not specify a query.'.format(result_scope)
                 )
             else:
-                return self._search(
-                    global_and_search=scope['match_all'],
-                    ignore_limit=ignore_limit, search_model=search_model,
-                    query_string=query_string, user=user
-                )
+                if query:
+                    return self._search(
+                        global_and_search=scope['match_all'],
+                        ignore_limit=ignore_limit, search_model=search_model,
+                        query=query, user=user
+                    )
+                else:
+                    return search_model.model._meta.default_manager.none()
 
 
 class SearchField:
@@ -242,10 +271,16 @@ class SearchModel(AppsModuleLoaderMixin):
     def initialize():
         # Hide a circular import.
         from .handlers import (
-            handler_factory_deindex_instance, handler_index_instance
+            handler_factory_deindex_instance, handler_factory_index_instance_m2m,
+            handler_index_instance
         )
 
         for search_model in SearchModel.all():
+            m2m_changed.connect(
+                dispatch_uid='search_handler_index_instance_m2m_{}'.format(search_model),
+                receiver=handler_factory_index_instance_m2m(model=search_model.model),
+                weak=False
+            )
             post_save.connect(
                 dispatch_uid='search_handler_index_instance_{}'.format(search_model),
                 receiver=handler_index_instance,
@@ -258,6 +293,11 @@ class SearchModel(AppsModuleLoaderMixin):
                 weak=False
             )
             for proxy in search_model.proxies:
+                m2m_changed.connect(
+                    dispatch_uid='search_handler_index_instance_m2m_{}'.format(search_model),
+                    receiver=handler_factory_index_instance_m2m(model=proxy),
+                    weak=False
+                )
                 post_save.connect(
                     dispatch_uid='search_handler_index_instance_{}'.format(search_model),
                     receiver=handler_index_instance,
@@ -287,9 +327,12 @@ class SearchModel(AppsModuleLoaderMixin):
         try:
             result = cls._registry[name]
         except KeyError:
-            raise KeyError(_('No search model matching the query'))
-        if not hasattr(result, 'serializer'):
-            result.serializer = import_string(dotted_path=result.serializer_path)
+            raise KeyError(_('Unknown search model `%s`.') % name)
+        else:
+            if not hasattr(result, 'serializer'):
+                result.serializer = import_string(
+                    dotted_path=result.serializer_path
+                )
 
         return result
 
@@ -305,7 +348,8 @@ class SearchModel(AppsModuleLoaderMixin):
 
     def __init__(
         self, app_label, model_name, serializer_path, default=False,
-        label=None, list_mode=None, permission=None, queryset=None
+        label=None, list_mode=None, manager_name=None, permission=None,
+        queryset=None
     ):
         self.default = default
         self._label = label
@@ -317,6 +361,8 @@ class SearchModel(AppsModuleLoaderMixin):
         self.queryset = queryset
         self.search_fields = []
         self.serializer_path = serializer_path
+
+        self.manager_name = manager_name or self.model._meta.default_manager.name
 
         if default:
             for search_class in self.__class__._registry.values():
@@ -388,7 +434,7 @@ class SearchModel(AppsModuleLoaderMixin):
         if self.queryset:
             return self.queryset()
         else:
-            return self.model.objects.all()
+            return self.model._meta.managers_map[self.manager_name].all()
 
     def get_search_field(self, full_name):
         try:
@@ -442,7 +488,7 @@ class SearchModel(AppsModuleLoaderMixin):
                     if value == [None]:
                         value = None
                     else:
-                        value = ''.join(value)
+                        value = ' '.join(value)
                 except TypeError:
                     """Value is not a list."""
             except ResolverPipelineError:

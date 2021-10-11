@@ -3,9 +3,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.menus import menu_facet, menu_object, menu_secondary
+from mayan.apps.common.menus import (
+    menu_list_facet, menu_object, menu_secondary
+)
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
@@ -53,9 +54,6 @@ class DocumentCommentsApp(MayanAppConfig):
             )
         )
 
-        ModelPermission.register(
-            model=Comment, permissions=(permission_events_view,)
-        )
         ModelPermission.register_inheritance(
             model=Comment, related='document',
         )
@@ -78,7 +76,7 @@ class DocumentCommentsApp(MayanAppConfig):
         )
         SourceColumn(attribute='text', include_label=True, source=Comment)
 
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(link_comments_for_document,), sources=(Document,)
         )
 

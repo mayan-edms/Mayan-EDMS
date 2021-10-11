@@ -7,23 +7,32 @@ from .mixins.favorite_document_mixins import FavoriteDocumentTestMixin
 
 
 @override_settings(DOCUMENTS_FAVORITE_COUNT=2)
-class TrashedDocumentTestCase(
+class FavoriteDocumentModelTestCase(
     FavoriteDocumentTestMixin, GenericDocumentTestCase
 ):
     auto_upload_test_document = False
 
     def test_favorite_documents_deletion_ordering(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
         self._test_document_favorite_add()
 
         first_favorite_document = self.test_favorite_document.document
 
-        self._upload_test_document()
+        self._create_test_document_stub()
         self._test_document_favorite_add()
 
-        self._upload_test_document()
+        self._create_test_document_stub()
         self._test_document_favorite_add()
 
         self.assertFalse(
-            FavoriteDocument.objects.filter(document=first_favorite_document).exists()
+            FavoriteDocument.valid.filter(document=first_favorite_document).exists()
+        )
+
+    def test_trashed_document_favorite_document_add(self):
+        self._create_test_document_stub()
+        self.test_document.delete()
+        self._test_document_favorite_add()
+
+        self.assertFalse(
+            FavoriteDocument.valid.filter(document=self.test_document).exists()
         )

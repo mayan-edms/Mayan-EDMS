@@ -66,23 +66,19 @@ class Python(ConverterBase):
         super().convert(*args, **kwargs)
 
         if self.mime_type == 'application/pdf' and pdftoppm:
-            new_file_object = NamedTemporaryFile()
-            input_filepath = new_file_object.name
-            self.file_object.seek(0)
-            shutil.copyfileobj(fsrc=self.file_object, fdst=new_file_object)
-            self.file_object.seek(0)
-            new_file_object.seek(0)
+            with NamedTemporaryFile() as new_file_object:
+                self.file_object.seek(0)
+                shutil.copyfileobj(fsrc=self.file_object, fdst=new_file_object)
+                self.file_object.seek(0)
+                new_file_object.seek(0)
 
-            image_buffer = io.BytesIO()
-            try:
+                image_buffer = io.BytesIO()
                 pdftoppm(
-                    input_filepath, f=self.page_number + 1,
+                    new_file_object.name, f=self.page_number + 1,
                     l=self.page_number + 1, _out=image_buffer
                 )
                 image_buffer.seek(0)
                 return Image.open(fp=image_buffer)
-            finally:
-                new_file_object.close()
 
     def get_page_count(self):
         super().get_page_count()

@@ -10,7 +10,8 @@ from .permissions import permission_tag_view
 
 # Document
 
-document_search.add_model_field(field='tags__label', label=_('Tags'))
+document_search.add_model_field(field='tags__label', label=_('Tag label'))
+document_search.add_model_field(field='tags__color', label=_('Tag color'))
 
 # Document file
 

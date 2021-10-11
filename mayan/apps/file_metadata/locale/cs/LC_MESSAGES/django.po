@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-04 01:08+0000\n"
+"POT-Creation-Date: 2021-10-10 06:02+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -25,24 +25,24 @@ msgstr ""
 msgid "Label"
 msgstr "Jmenovka"
 
-#: apps.py:48 events.py:6 links.py:17 permissions.py:5 queues.py:7
+#: apps.py:51 events.py:6 links.py:19 permissions.py:5 queues.py:7
 #: settings.py:12
 msgid "File metadata"
 msgstr "Souborová metadata"
 
-#: apps.py:98 search.py:11 search.py:22 search.py:33
+#: apps.py:102 search.py:11 search.py:22 search.py:33
 msgid "File metadata key"
 msgstr "Klíč metadat souboru"
 
-#: apps.py:102 search.py:15 search.py:26 search.py:37
+#: apps.py:106 search.py:15 search.py:26 search.py:37
 msgid "File metadata value"
 msgstr "Hodnota metadat souboru"
 
-#: apps.py:129
+#: apps.py:134
 msgid "Return the value of a specific file metadata."
 msgstr "Vraťte hodnotu konkrétních metadat souboru."
 
-#: apps.py:130
+#: apps.py:135
 msgid "File metadata value of"
 msgstr "Hodnota metadat souboru"
 
@@ -65,19 +65,19 @@ msgstr "Soubor dokumentu odeslaný ke zpracování metadat souboru"
 msgid "Document file file metadata processing finished"
 msgstr "Zpracování metadat souboru dokumentu dokončeno"
 
-#: links.py:23
+#: links.py:25
 msgid "Attributes"
 msgstr "Atributy"
 
-#: links.py:30 links.py:35
+#: links.py:32 links.py:37
 msgid "Submit for file metadata"
 msgstr "Odeslat do souboru metadata"
 
-#: links.py:42
+#: links.py:47
 msgid "Setup file metadata"
 msgstr "Nastavení souborových metadat"
 
-#: links.py:47
+#: links.py:52
 msgid "File metadata processing per type"
 msgstr "Zpracování metadat souborů podle typu"
 

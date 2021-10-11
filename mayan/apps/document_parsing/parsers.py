@@ -126,41 +126,39 @@ class PopplerParser(Parser):
     def execute(self, file_object, page_number):
         logger.debug('Parsing PDF page: %d', page_number)
 
-        temporary_file_object = NamedTemporaryFile()
-        copyfileobj(fsrc=file_object, fdst=temporary_file_object)
-        temporary_file_object.seek(0)
+        with NamedTemporaryFile() as temporary_file_object:
+            copyfileobj(fsrc=file_object, fdst=temporary_file_object)
+            temporary_file_object.seek(0)
 
-        command = []
-        command.append(self.pdftotext_path)
-        command.append('-f')
-        command.append(str(page_number))
-        command.append('-l')
-        command.append(str(page_number))
-        command.append(temporary_file_object.name)
-        command.append('-')
+            command = []
+            command.append(self.pdftotext_path)
+            command.append('-f')
+            command.append(str(page_number))
+            command.append('-l')
+            command.append(str(page_number))
+            command.append(temporary_file_object.name)
+            command.append('-')
 
-        proc = subprocess.Popen(
-            command, close_fds=True, stderr=subprocess.PIPE,
-            stdout=subprocess.PIPE
-        )
-        return_code = proc.wait()
-        if return_code != 0:
-            logger.error(proc.stderr.readline())
-            temporary_file_object.close()
+            proc = subprocess.Popen(
+                command, close_fds=True, stderr=subprocess.PIPE,
+                stdout=subprocess.PIPE
+            )
+            return_code = proc.wait()
+            if return_code != 0:
+                logger.error(proc.stderr.readline())
 
-            raise ParserError
+                raise ParserError
 
-        output = proc.stdout.read()
-        temporary_file_object.close()
+            output = proc.stdout.read()
 
-        if output == b'\x0c':
-            logger.debug('Parser didn\'t return any output')
-            return ''
+            if output == b'\x0c':
+                logger.debug('Parser didn\'t return any output')
+                return ''
 
-        if output[-3:] == b'\x0a\x0a\x0c':
-            return force_text(s=output[:-3])
+            if output[-3:] == b'\x0a\x0a\x0c':
+                return force_text(s=output[:-3])
 
-        return force_text(s=output)
+            return force_text(s=output)
 
 
 Parser.register(

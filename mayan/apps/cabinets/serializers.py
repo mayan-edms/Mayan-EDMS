@@ -72,13 +72,13 @@ class CabinetSerializer(serializers.ModelSerializer):
 
 class CabinetDocumentAddSerializer(serializers.Serializer):
     document = FilteredPrimaryKeyRelatedField(
-        source_queryset=Document.valid,
+        source_queryset=Document.valid.all(),
         source_permission=permission_cabinet_add_document
     )
 
 
 class CabinetDocumentRemoveSerializer(serializers.Serializer):
     document = FilteredPrimaryKeyRelatedField(
-        source_queryset=Document.valid,
+        source_queryset=Document.valid.all(),
         source_permission=permission_cabinet_remove_document
     )

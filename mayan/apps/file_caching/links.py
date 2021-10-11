@@ -10,7 +10,7 @@ from .icons import (
 from .permissions import permission_cache_purge, permission_cache_view
 
 
-def condition_valid_storage(context):
+def condition_valid_storage(context, resolved_object):
     try:
         storage = DefinedStorage.get(name=context['object'].defined_storage_name)
     except KeyError:

@@ -4,10 +4,10 @@ from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import (
     DEFAULT_COMMON_COLLAPSE_LIST_MENU_LIST_FACET,
-    DEFAULT_COMMON_COLLAPSE_LIST_MENU_OBJECT,
-    DEFAULT_COMMON_DB_SYNC_TASK_DELAY, DEFAULT_COMMON_DISABLED_APPS,
+    DEFAULT_COMMON_COLLAPSE_LIST_MENU_OBJECT, DEFAULT_COMMON_DISABLED_APPS,
     DEFAULT_COMMON_EXTRA_APPS, DEFAULT_COMMON_HOME_VIEW,
-    DEFAULT_COMMON_PROJECT_TITLE, DEFAULT_COMMON_PROJECT_URL
+    DEFAULT_COMMON_HOME_VIEW_DASHBOARD_NAME, DEFAULT_COMMON_PROJECT_TITLE,
+    DEFAULT_COMMON_PROJECT_URL
 )
 
 namespace = SettingNamespace(
@@ -28,13 +28,6 @@ setting_collapse_list_menu_object = namespace.add_setting(
     help_text=_(
         'In list mode, show the "object" menu options as a dropdown menu '
         'instead of individual buttons.'
-    )
-)
-settings_db_sync_task_delay = namespace.add_setting(
-    default=DEFAULT_COMMON_DB_SYNC_TASK_DELAY,
-    global_name='COMMON_DB_SYNC_TASK_DELAY', help_text=_(
-        'Time to delay background tasks that depend on a database commit to '
-        'propagate.'
     )
 )
 setting_disabled_apps = namespace.add_setting(
@@ -63,6 +56,13 @@ setting_home_view = namespace.add_setting(
         'Name of the view attached to the brand anchor in the main menu. '
         'This is also the view to which users will be redirected after '
         'log in.'
+    )
+)
+setting_home_view_dashboard = namespace.add_setting(
+    default=DEFAULT_COMMON_HOME_VIEW_DASHBOARD_NAME,
+    global_name='COMMON_HOME_VIEW_DASHBOARD_NAME',
+    help_text=_(
+        'Name of the dashboard to display in the home view.'
     )
 )
 setting_project_title = namespace.add_setting(

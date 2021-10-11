@@ -17,4 +17,4 @@ class APIRecentlyAccessedDocumentListView(generics.ListAPIView):
     serializer_class = RecentlyAccessedDocumentSerializer
 
     def get_queryset(self):
-        return RecentlyAccessedDocument.objects.filter(user=self.request.user)
+        return RecentlyAccessedDocument.valid.filter(user=self.request.user)

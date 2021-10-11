@@ -40,7 +40,7 @@ from .settings import setting_paginate_by
 logger = logging.getLogger(name=__name__)
 
 
-# Required by other views, moved to the top
+# Required by other views, moved to the top.
 class MultiFormView(DjangoFormView):
     form_extra_kwargs = None
     prefix = None
@@ -49,7 +49,7 @@ class MultiFormView(DjangoFormView):
 
     def _create_form(self, form_name, klass):
         form_kwargs = self.get_form_kwargs(form_name=form_name)
-        form_create_method = 'create_{}_form'.format(form_name)
+        form_create_method = 'create_form__{}'.format(form_name)
         if hasattr(self, form_create_method):
             form = getattr(self, form_create_method)(**form_kwargs)
         else:
@@ -69,7 +69,7 @@ class MultiFormView(DjangoFormView):
 
     def forms_valid(self, forms):
         for form_name, form in forms.items():
-            form_valid_method = '{}_form_valid'.format(form_name)
+            form_valid_method = 'form_valid__{}'.format(form_name)
 
             if hasattr(self, form_valid_method):
                 return getattr(self, form_valid_method)(form=form)
@@ -92,7 +92,11 @@ class MultiFormView(DjangoFormView):
         return self.form_classes
 
     def get_form_extra_kwargs(self, form_name):
-        return self.form_extra_kwargs
+        method = 'get_form_extra_kwargs__{}'.format(form_name)
+        if hasattr(self, method):
+            return getattr(self, method)()
+        else:
+            return {}
 
     def get_form_kwargs(self, form_name):
         kwargs = {}
@@ -121,7 +125,7 @@ class MultiFormView(DjangoFormView):
         )
 
     def get_initial(self, form_name):
-        initial_method = 'get_{}_initial'.format(form_name)
+        initial_method = 'get_initial__{}'.format(form_name)
         if hasattr(self, initial_method):
             return getattr(self, initial_method)()
         else:
@@ -153,29 +157,29 @@ class AddRemoveView(
         'or double click the list to activate the action.'
     )
 
-    # Form titles
+    # Form titles.
     list_added_title = None
     list_available_title = None
 
     # Attributes to filter the object to which selections will be added or
-    # remove
+    # remove.
     main_object_model = None
     main_object_permission = None
     main_object_pk_url_kwarg = None
     main_object_pk_url_kwargs = None
     main_object_source_queryset = None
 
-    # Attributes to filter the queryset of the selection
+    # Attributes to filter the queryset of the selection.
     secondary_object_model = None
     secondary_object_permission = None
     secondary_object_source_queryset = None
 
-    # Main object methods to use to add and remove selections
+    # Main object methods to use to add and remove selections.
     main_object_method_add_name = None
     main_object_method_remove_name = None
 
     # If a method is not specified, use this related field to add and remove
-    # selections
+    # selections.
     related_field = None
 
     prefixes = {'form_available': 'available', 'form_added': 'added'}
@@ -263,19 +267,19 @@ class AddRemoveView(
             yield (obj.pk, force_text(s=obj))
 
     def get_action_add_extra_kwargs(self):
-        # Keyword arguments to apply to the add method
+        # Keyword arguments to apply to the add method.
         return {}
 
     def get_action_remove_extra_kwargs(self):
-        # Keyword arguments to apply to the remove method
+        # Keyword arguments to apply to the remove method.
         return {}
 
     def get_actions_extra_kwargs(self):
-        # Keyword arguments to apply to both the add and remove methods
+        # Keyword arguments to apply to both the add and remove methods.
         return {}
 
     def get_context_data(self, **kwargs):
-        # Use get_context_data to leave the get_extra_context for subclasses
+        # Use get_context_data to leave the get_extra_context for subclasses.
         context = super().get_context_data(**kwargs)
         context.update(
             {
@@ -292,7 +296,6 @@ class AddRemoveView(
                                 }
                             ],
                             'form': self.forms['form_available'],
-                            'form_css_classes': 'form-hotkey-double-click',
                             'hide_labels': True,
                             'submit_icon': icon_assign_remove_add,
                             'submit_label': _('Add'),
@@ -311,7 +314,6 @@ class AddRemoveView(
                                 }
                             ],
                             'form': self.forms['form_added'],
-                            'form_css_classes': 'form-hotkey-double-click',
                             'hide_labels': True,
                             'submit_icon': icon_assign_remove_remove,
                             'submit_label': _('Remove'),
@@ -386,7 +388,7 @@ class AddRemoveView(
         return self.secondary_object_source_queryset
 
     def get_success_url(self):
-        # Redirect to the same view
+        # Redirect to the same view.
         return reverse(
             viewname=self.request.resolver_match.view_name,
             kwargs=self.request.resolver_match.kwargs
@@ -482,6 +484,7 @@ class MultipleObjectConfirmActionView(
     Form that will execute an action to a queryset upon user Yes/No
     confirmation.
     """
+
     template_name = 'appearance/generic_confirm.html'
 
     def __init__(self, *args, **kwargs):
@@ -574,7 +577,7 @@ class SingleObjectCreateView(
     template_name = 'appearance/generic_form.html'
 
     def form_valid(self, form):
-        # This overrides the original Django form_valid method
+        # This overrides the original Django form_valid method.
 
         self.object = form.save(commit=False)
 
@@ -587,7 +590,7 @@ class SingleObjectCreateView(
         else:
             save_extra_data = {}
 
-        # Validate duplicates first
+        # Validate duplicates first.
         try:
             self.object.validate_unique()
         except ValidationError as exception:
@@ -807,7 +810,7 @@ class SingleObjectEditView(
     template_name = 'appearance/generic_form.html'
 
     def form_valid(self, form):
-        # This overrides the original Django form_valid method
+        # This overrides the original Django form_valid method.
 
         self.object = form.save(commit=False)
 

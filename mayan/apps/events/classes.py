@@ -12,17 +12,22 @@ from django.utils.translation import ugettext_lazy as _
 
 from actstream import action
 
+from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.menus import menu_list_facet
 from mayan.apps.common.settings import setting_project_url
 from mayan.apps.common.utils import return_attrib
 
 from .literals import (
-    DEFAULT_EVENT_LIST_EXPORT_FILENAME, EVENT_MANAGER_ORDER_AFTER
+    DEFAULT_EVENT_LIST_EXPORT_FILENAME, EVENT_MANAGER_ORDER_AFTER,
+    EVENT_TYPE_NAMESPACE_NAME, EVENT_EVENTS_CLEARED_NAME,
+    EVENT_EVENTS_EXPORTED_NAME
 )
 from .links import (
-    link_events_for_object, link_object_event_types_user_subcriptions_list
+    link_events_for_object, link_object_event_types_user_subscriptions_list
 )
-from .permissions import permission_events_export, permission_events_view
+from .permissions import (
+    permission_events_clear, permission_events_export, permission_events_view
+)
 
 logger = logging.getLogger(name=__name__)
 
@@ -64,8 +69,12 @@ class ActionExporter:
             writer.writerow(row)
 
     def export_to_download_file(self, user=None):
-        # Avoid circular import
-        from .events import event_events_exported
+        event_type_namespace = EventTypeNamespace.get(
+            name=EVENT_TYPE_NAMESPACE_NAME
+        )
+        event_events_exported = event_type_namespace.get_event(
+            name=EVENT_EVENTS_EXPORTED_NAME
+        )
 
         DownloadFile = apps.get_model(
             app_label='storage', model_name='DownloadFile'
@@ -118,7 +127,7 @@ class ActionExporter:
 
 
 class EventManager:
-    EVENT_ATTRIBUTES = ('ignore', 'keep_attributes',)
+    EVENT_ATTRIBUTES = ('ignore', 'keep_attributes', 'type')
     EVENT_ARGUMENTS = ('actor', 'action_object', 'target')
 
     def __init__(self, instance, **kwargs):
@@ -160,6 +169,10 @@ class EventManager:
 
         keep_attributes = self.instance_event_attributes['keep_attributes'] or ()
 
+        # Allow passing a runtime defined event.
+        if self.instance_event_attributes['type']:
+            self.kwargs['event'] = self.instance_event_attributes['type']
+
         for attribute in self.EVENT_ARGUMENTS:
             # If the attribute is not set or is set but is None.
             if not self.instance_event_attributes.get(attribute, None):
@@ -172,7 +185,7 @@ class EventManager:
                 self.instance_event_attributes[attribute] = value
 
     def prepare(self):
-        """Optional method to gather information before the actual commit"""
+        """Optional method to gather information before the actual commit."""
 
 
 class EventManagerMethodAfter(EventManager):
@@ -204,24 +217,77 @@ class EventManagerSave(EventManager):
 
 
 class EventModelRegistry:
-    @staticmethod
-    def register(model, bind_links=True, menu=None):
-        from actstream import registry
-        registry.register(model)
+    _registry = set()
 
-        if bind_links:
+    @classmethod
+    def register(
+        cls, model, acl_bind_link=True, bind_events_link=True,
+        bind_subscription_link=True, exclude=None, menu=None,
+        register_permissions=True
+    ):
+        # Hidden imports.
+        from actstream import registry
+        from mayan.apps.acls.classes import ModelPermission
+
+        event_type_namespace = EventTypeNamespace.get(
+            name=EVENT_TYPE_NAMESPACE_NAME
+        )
+        event_events_cleared = event_type_namespace.get_event(
+            name=EVENT_EVENTS_CLEARED_NAME
+        )
+        event_events_exported = event_type_namespace.get_event(
+            name=EVENT_EVENTS_EXPORTED_NAME
+        )
+
+        if model not in cls._registry:
+            cls._registry.add(model)
+            # These need to happen only once.
+            registry.register(model)
+
             menu = menu or menu_list_facet
 
-            menu.bind_links(
-                links=(
-                    link_events_for_object,
-                    link_object_event_types_user_subcriptions_list
-                ), sources=(model,)
+            if bind_events_link:
+                menu.bind_links(
+                    exclude=exclude,
+                    links=(
+                        link_events_for_object,
+                    ), sources=(model,)
+                )
+
+            if bind_subscription_link:
+                menu.bind_links(
+                    exclude=exclude,
+                    links=(
+                        link_object_event_types_user_subscriptions_list,
+                    ), sources=(model,)
+                )
+
+            AccessControlList = apps.get_model(
+                app_label='acls', model_name='AccessControlList'
+            )
+            StoredPermission = apps.get_model(
+                app_label='permissions', model_name='StoredPermission'
             )
 
+            if register_permissions and not issubclass(model, (AccessControlList, StoredPermission)):
+                ModelPermission.register(
+                    exclude=exclude,
+                    model=model, permissions=(
+                        permission_events_clear, permission_events_export,
+                        permission_events_view
+                    ), bind_link=acl_bind_link
+                )
 
-class EventTypeNamespace:
+                ModelEventType.register(
+                    event_types=(
+                        event_events_cleared, event_events_exported
+                    ), model=model
+                )
+
+
+class EventTypeNamespace(AppsModuleLoaderMixin):
     _registry = {}
+    _loader_module_name = 'events'
 
     @classmethod
     def all(cls):
@@ -247,6 +313,9 @@ class EventTypeNamespace:
         event_type = EventType(namespace=self, name=name, label=label)
         self.event_types.append(event_type)
         return event_type
+
+    def get_event(self, name):
+        return EventType.get(name='{}.{}'.format(self.name, name))
 
     def get_event_types(self):
         return EventType.sort(event_type_list=self.event_types)

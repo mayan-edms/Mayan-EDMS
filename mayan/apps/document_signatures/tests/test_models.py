@@ -1,5 +1,6 @@
 import hashlib
 
+from mayan.apps.django_gpg.events import event_key_created
 from mayan.apps.django_gpg.tests.literals import (
     TEST_KEY_PRIVATE_PASSPHRASE, TEST_KEY_PUBLIC_ID
 )
@@ -10,21 +11,69 @@ from mayan.apps.documents.tests.literals import (
     TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
 )
 
+from ..events import (
+    event_detached_signature_created, event_detached_signature_deleted,
+    event_detached_signature_uploaded
+)
 from ..models import DetachedSignature, EmbeddedSignature
 from ..tasks import task_verify_missing_embedded_signature
 
 from .literals import TEST_SIGNED_DOCUMENT_PATH, TEST_SIGNATURE_ID
-from .mixins import SignatureTestMixin
+from .mixins import DetachedSignatureTestMixin
 
 
 class DetachedSignaturesTestCase(
-    KeyTestMixin, SignatureTestMixin, GenericDocumentTestCase
+    KeyTestMixin, DetachedSignatureTestMixin, GenericDocumentTestCase
 ):
     auto_upload_test_document = False
+
+    def test_detached_signature_create(self):
+        self._create_test_key_private()
+
+        self._upload_test_document()
+
+        self._clear_events()
+
+        test_detached_signature = DetachedSignature.objects.sign_document_file(
+            document_file=self.test_document.file_latest,
+            key=self.test_key_private,
+            passphrase=TEST_KEY_PRIVATE_PASSPHRASE
+        )
+
+        self.assertEqual(DetachedSignature.objects.count(), 1)
+        self.assertTrue(test_detached_signature.signature_file.file is not None)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, test_detached_signature)
+        self.assertEqual(events[0].actor, self.test_document_file)
+        self.assertEqual(events[0].target, self.test_document_file)
+        self.assertEqual(events[0].verb, event_detached_signature_created.id)
+
+    def test_detached_signature_delete(self):
+        self._create_test_key_private()
+
+        self._upload_test_document()
+        self._upload_test_detached_signature()
+
+        self._clear_events()
+
+        self.test_signature.delete()
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self.test_document_file)
+        self.assertEqual(events[0].target, self.test_document_file)
+        self.assertEqual(events[0].verb, event_detached_signature_deleted.id)
 
     def test_detached_signature_upload_no_key(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self._upload_test_document()
+
+        self._clear_events()
 
         self._upload_test_detached_signature()
 
@@ -37,10 +86,20 @@ class DetachedSignaturesTestCase(
         self.assertEqual(self.test_signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(self.test_signature.public_key_fingerprint, None)
 
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_signature)
+        self.assertEqual(events[0].actor, self.test_document_file)
+        self.assertEqual(events[0].target, self.test_document_file)
+        self.assertEqual(events[0].verb, event_detached_signature_uploaded.id)
+
     def test_detached_signature_upload_with_key(self):
         self._create_test_key_public()
         self.test_document_path = TEST_DOCUMENT_PATH
         self._upload_test_document()
+
+        self._clear_events()
 
         self._upload_test_detached_signature()
 
@@ -56,9 +115,19 @@ class DetachedSignaturesTestCase(
             self.test_key_public.fingerprint
         )
 
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_signature)
+        self.assertEqual(events[0].actor, self.test_document_file)
+        self.assertEqual(events[0].target, self.test_document_file)
+        self.assertEqual(events[0].verb, event_detached_signature_uploaded.id)
+
     def test_detached_signature_upload_post_key_verify(self):
         self.test_document_path = TEST_DOCUMENT_PATH
         self._upload_test_document()
+
+        self._clear_events()
 
         self._upload_test_detached_signature()
 
@@ -79,10 +148,25 @@ class DetachedSignaturesTestCase(
             signature.public_key_fingerprint, self.test_key_public.fingerprint
         )
 
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 2)
+
+        self.assertEqual(events[0].action_object, self.test_signature)
+        self.assertEqual(events[0].actor, self.test_document_file)
+        self.assertEqual(events[0].target, self.test_document_file)
+        self.assertEqual(events[0].verb, event_detached_signature_uploaded.id)
+
+        self.assertEqual(events[1].action_object, None)
+        self.assertEqual(events[1].actor, self.test_key_public)
+        self.assertEqual(events[1].target, self.test_key_public)
+        self.assertEqual(events[1].verb, event_key_created.id)
+
     def test_detached_signature_upload_post_no_key_verify(self):
         self._create_test_key_public()
         self.test_document_path = TEST_DOCUMENT_PATH
         self._upload_test_document()
+
+        self._clear_events()
 
         self._upload_test_detached_signature()
 
@@ -104,22 +188,18 @@ class DetachedSignaturesTestCase(
 
         self.assertEqual(signature.public_key_fingerprint, None)
 
-    def test_sign_detached(self):
-        self._create_test_key_private()
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
 
-        self._upload_test_document()
-
-        test_detached_signature = DetachedSignature.objects.sign_document_file(
-            document_file=self.test_document.file_latest,
-            key=self.test_key_private,
-            passphrase=TEST_KEY_PRIVATE_PASSPHRASE
-        )
-
-        self.assertEqual(DetachedSignature.objects.count(), 1)
-        self.assertTrue(test_detached_signature.signature_file.file is not None)
+        self.assertEqual(events[0].action_object, self.test_signature)
+        self.assertEqual(events[0].actor, self.test_document_file)
+        self.assertEqual(events[0].target, self.test_document_file)
+        self.assertEqual(events[0].verb, event_detached_signature_uploaded.id)
 
 
-class DocumentSignaturesTestCase(SignatureTestMixin, GenericDocumentTestCase):
+class DocumentSignaturesTestCase(
+    DetachedSignatureTestMixin, GenericDocumentTestCase
+):
     auto_upload_test_document = False
 
     def test_unsigned_document_file_method(self):
@@ -147,7 +227,7 @@ class DocumentSignaturesTestCase(SignatureTestMixin, GenericDocumentTestCase):
 
 
 class EmbeddedSignaturesTestCase(
-    KeyTestMixin, SignatureTestMixin, GenericDocumentTestCase
+    KeyTestMixin, DetachedSignatureTestMixin, GenericDocumentTestCase
 ):
     auto_upload_test_document = False
 

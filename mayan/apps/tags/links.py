@@ -1,12 +1,13 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Link
-from mayan.apps.navigation.utils import get_cascade_condition
+from mayan.apps.navigation.utils import factory_condition_queryset_access
 
 from .icons import (
     icon_document_tag_multiple_attach, icon_document_tag_multiple_remove,
-    icon_document_tag_list, icon_tag_create, icon_tag_delete,
-    icon_tag_document_list, icon_tag_edit, icon_tag_list
+    icon_document_tag_list, icon_tag_create, icon_tag_delete_single,
+    icon_tag_delete_multiple, icon_tag_document_list, icon_tag_edit,
+    icon_tag_list
 )
 from .permissions import (
     permission_tag_attach, permission_tag_create, permission_tag_delete,
@@ -42,10 +43,14 @@ link_tag_create = Link(
     icon=icon_tag_create, permissions=(permission_tag_create,),
     text=_('Create new tag'), view='tags:tag_create'
 )
-link_tag_delete = Link(
-    args='object.id', icon=icon_tag_delete,
+link_tag_delete_single = Link(
+    args='object.id', icon=icon_tag_delete_single,
     permissions=(permission_tag_delete,), tags='dangerous',
-    text=_('Delete'), view='tags:tag_delete'
+    text=_('Delete'), view='tags:tag_delete_single'
+)
+link_tag_delete_multiple = Link(
+    icon=icon_tag_delete_multiple, text=_('Delete'),
+    view='tags:tag_delete_multiple'
 )
 link_tag_edit = Link(
     args='object.id', icon=icon_tag_edit,
@@ -53,15 +58,11 @@ link_tag_edit = Link(
     view='tags:tag_edit'
 )
 link_tag_list = Link(
-    condition=get_cascade_condition(
+    condition=factory_condition_queryset_access(
         app_label='tags', model_name='Tag',
         object_permission=permission_tag_view,
     ), icon=icon_tag_list,
     text=_('All'), view='tags:tag_list'
-)
-link_tag_multiple_delete = Link(
-    icon=icon_tag_delete, permissions=(permission_tag_delete,),
-    text=_('Delete'), view='tags:tag_multiple_delete'
 )
 link_tag_document_list = Link(
     args='object.id', icon=icon_tag_document_list,

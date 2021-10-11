@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-04 01:08+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -25,9 +25,10 @@ msgstr ""
 msgid "Dynamic search"
 msgstr "البحث الديناميكي"
 
-#: classes.py:290
-msgid "No search model matching the query"
-msgstr "لا يوجد نموذج بحث يطابق الاستعلام"
+#: classes.py:330
+#, python-format
+msgid "Unknown search model `%s`."
+msgstr ""
 
 #: forms.py:9
 msgid "Match all"

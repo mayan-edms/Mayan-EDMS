@@ -162,6 +162,13 @@ class StoredPermission(models.Model):
         except KeyError:
             return self.name
 
+    def get_absolute_url(self):
+        return reverse(
+            viewname='permissions:stored_permission_detail', kwargs={
+                'stored_permission_id': self.pk
+            }
+        )
+
     @cached_property
     def volatile_permission_id(self):
         """

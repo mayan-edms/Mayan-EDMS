@@ -58,14 +58,14 @@ class GroupViewsTestCase(
         self.assertEqual(events[0].target, self.test_group)
         self.assertEqual(events[0].verb, event_group_created.id)
 
-    def test_group_delete_view_no_permission(self):
+    def test_group_delete_single_view_no_permission(self):
         self._create_test_group()
 
         group_count = Group.objects.count()
 
         self._clear_events()
 
-        response = self._request_test_group_delete_view()
+        response = self._request_test_group_delete_single_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(Group.objects.count(), group_count)
@@ -73,7 +73,7 @@ class GroupViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_group_delete_view_with_access(self):
+    def test_group_delete_single_view_with_access(self):
         self._create_test_group()
         self.grant_access(
             obj=self.test_group, permission=permission_group_delete
@@ -83,7 +83,41 @@ class GroupViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_test_group_delete_view()
+        response = self._request_test_group_delete_single_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(Group.objects.count(), group_count - 1)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_delete_multiple_view_no_permission(self):
+        self._create_test_group()
+
+        group_count = Group.objects.count()
+
+        self._clear_events()
+
+        response = self._request_test_group_delete_multiple_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(Group.objects.count(), group_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_delete_multiple_view_with_access(self):
+        self._create_test_group()
+
+        group_count = Group.objects.count()
+
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_delete
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_delete_multiple_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(Group.objects.count(), group_count - 1)
@@ -505,7 +539,7 @@ class UserViewTestCase(UserViewTestMixin, GenericViewTestCase):
 
         self._clear_events()
 
-        response = self._request_test_user_delete_view()
+        response = self._request_test_user_delete_single_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(get_user_model().objects.count(), user_count)
@@ -518,11 +552,13 @@ class UserViewTestCase(UserViewTestMixin, GenericViewTestCase):
 
         user_count = get_user_model().objects.count()
 
-        self.grant_access(obj=self.test_user, permission=permission_user_delete)
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_delete
+        )
 
         self._clear_events()
 
-        response = self._request_test_user_delete_view()
+        response = self._request_test_user_delete_single_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(get_user_model().objects.count(), user_count - 1)
@@ -530,7 +566,7 @@ class UserViewTestCase(UserViewTestMixin, GenericViewTestCase):
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_user_multiple_delete_view_no_permission(self):
+    def test_user_delete_multiple_view_no_permission(self):
         self._create_test_user()
 
         user_count = get_user_model().objects.count()
@@ -545,12 +581,14 @@ class UserViewTestCase(UserViewTestMixin, GenericViewTestCase):
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_user_multiple_delete_view_with_access(self):
+    def test_user_delete_multiple_view_with_access(self):
         self._create_test_user()
 
         user_count = get_user_model().objects.count()
 
-        self.grant_access(obj=self.test_user, permission=permission_user_delete)
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_delete
+        )
 
         self._clear_events()
 
@@ -583,7 +621,9 @@ class UserViewTestCase(UserViewTestMixin, GenericViewTestCase):
 
         username = self.test_user.username
 
-        self.grant_access(obj=self.test_user, permission=permission_user_edit)
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_edit
+        )
 
         self._clear_events()
 

@@ -12,5 +12,5 @@ class APIRecentlyCreatedDocumentListView(generics.ListAPIView):
     mayan_object_permissions = {
         'GET': (permission_document_view,)
     }
-    queryset = RecentlyCreatedDocument.recently_created.all()
+    queryset = RecentlyCreatedDocument.valid.all()
     serializer_class = DocumentSerializer

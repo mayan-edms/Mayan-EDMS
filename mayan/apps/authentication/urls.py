@@ -1,11 +1,14 @@
 from django.conf.urls import url
 
-from .views import (
+from .views.authentication_views import (
     MayanLoginView, MayanLogoutView, MayanPasswordChangeDoneView,
     MayanPasswordChangeView, MayanPasswordResetCompleteView,
     MayanPasswordResetConfirmView, MayanPasswordResetDoneView,
-    MayanPasswordResetView, UserSetPasswordView, UserImpersonateEndView,
-    UserImpersonateFormStartView, UserImpersonateStartView
+    MayanPasswordResetView, UserSetPasswordView
+)
+from .views.impersonation_views import (
+    UserImpersonateEndView, UserImpersonateFormStartView,
+    UserImpersonateStartView
 )
 
 urlpatterns_authenticattion = [

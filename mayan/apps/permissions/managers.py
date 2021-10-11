@@ -15,8 +15,13 @@ class StoredPermissionManager(models.Manager):
         return self.get(namespace=namespace, name=name)
 
     def purge_obsolete(self):
+        total = 0
+
         for permission in self.all():
             try:
                 permission.volatile_permission
             except KeyError:
                 permission.delete()
+                total += 1
+
+        return total

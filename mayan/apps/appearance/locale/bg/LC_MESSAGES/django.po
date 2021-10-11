@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-04 01:08+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:56 events.py:5 permissions.py:5 settings.py:7
+#: apps.py:55 events.py:5 permissions.py:5 settings.py:10
 msgid "Appearance"
 msgstr "Изглед"
 
@@ -102,19 +102,19 @@ msgstr "Изтрийте"
 msgid "Edit"
 msgstr "Редактиране"
 
-#: links.py:40 links.py:45 models.py:29 views.py:111
+#: links.py:40 links.py:45 models.py:31 views.py:111
 msgid "Themes"
 msgstr "Теми"
 
-#: models.py:16
+#: models.py:18
 msgid "A short text describing the theme."
 msgstr "Кратък текст, описващ темата."
 
-#: models.py:17
+#: models.py:19
 msgid "Label"
 msgstr "Етикет"
 
-#: models.py:21
+#: models.py:23
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
@@ -122,23 +122,23 @@ msgstr ""
 "CSS таблицата със стилове за промяна на външния вид на различните елементи "
 "на потребителския интерфейс."
 
-#: models.py:23
+#: models.py:25
 msgid "Stylesheet"
 msgstr "Таблица със стилове"
 
-#: models.py:28 models.py:63
+#: models.py:30 models.py:68
 msgid "Theme"
 msgstr "Тема"
 
-#: models.py:59
+#: models.py:64
 msgid "User"
 msgstr "Потребител"
 
-#: models.py:67
+#: models.py:72
 msgid "User theme setting"
 msgstr "Настройка на потребителска тема"
 
-#: models.py:68
+#: models.py:73
 msgid "User theme settings"
 msgstr "Настройки на потребителска тема"
 
@@ -158,18 +158,25 @@ msgstr "Редактирайте теми"
 msgid "View existing themes"
 msgstr "Вижте съществуващите теми"
 
-#: settings.py:12
+#: settings.py:15
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr ""
 "Максимален брой на знаците, които ще се изобразят в заглавката на изгледа."
 
-#: settings.py:19
+#: settings.py:22
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
 msgstr ""
 "Позиция, където ще се показва системното съобщение. Опциите са: горе вляво, "
 "горе в центъра, горе вдясно, отдолу вляво, отдолу в центъра, отдолу вдясно."
+
+#: settings.py:30
+msgid ""
+"Delay in milliseconds after which the menus will be checked for updates."
+msgstr ""
+"Забавяне в милисекунди, след което менютата ще бъдат проверени за "
+"актуализации."
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
@@ -208,7 +215,7 @@ msgstr ""
 "достъп до него."
 
 #: templates/500.html:5 templates/500.html:30
-#: templates/appearance/root.html:58
+#: templates/appearance/root.html:53
 msgid "Server error"
 msgstr "Грешка в сървъра"
 
@@ -249,7 +256,7 @@ msgstr ""
 msgid "About"
 msgstr "Относно"
 
-#: templates/appearance/about.html:73
+#: templates/appearance/about.html:72
 #, python-format
 msgid ""
 "\n"
@@ -260,51 +267,20 @@ msgstr ""
 "                    %(setting_project_title)s се основава на%(project_title)s\n"
 "                "
 
-#: templates/appearance/about.html:78
+#: templates/appearance/about.html:77
 msgid "Version"
 msgstr "Версия"
 
-#: templates/appearance/about.html:80
+#: templates/appearance/about.html:79
 #, python-format
 msgid "Build number: %(build_number)s"
 msgstr "Номер на конструкцията: %(build_number)s"
 
-#: templates/appearance/about.html:93
+#: templates/appearance/about.html:92
 msgid "Released under the license:"
 msgstr "Издаден под лиценз:"
 
-#: templates/appearance/about.html:99
-#, python-format
-msgid ""
-"\n"
-"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
-"            "
-msgstr ""
-"\n"
-"                %(project_title)s е безплатен софтуер с отворен код предоставен Ви <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> от Роберто Росарио и сътрудници.\n"
-"            "
-
-#: templates/appearance/about.html:105
-#, python-format
-msgid ""
-"\n"
-"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
-"            "
-msgstr ""
-"\n"
-"Необходими са големи усилия, за да се направи %(project_title)s толкова богат на функции, колкото е сега."
-
-#: templates/appearance/about.html:111
-#, python-format
-msgid ""
-"\n"
-"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
-"            "
-msgstr ""
-"\n"
-"Ако използвате %(project_title)s, моля, <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">направете дарение %(icon_social_paypal)s</a>"
-
-#: templates/appearance/about.html:117
+#: templates/appearance/about.html:98
 #, python-format
 msgid ""
 "\n"
@@ -315,7 +291,7 @@ msgstr ""
 "                Пълният списък на промените е наличен чрез <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Бележки към версията %(icon_documentation)s</a> или кратката версия <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Дневник на промените%(icon_documentation)s</a>.\n"
 "            "
 
-#: templates/appearance/about.html:123
+#: templates/appearance/about.html:104
 #, python-format
 msgid ""
 "\n"
@@ -325,7 +301,7 @@ msgstr ""
 "\n"
 "За въпроси проверете <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Документация %(icon_documentation)s</a> ."
 
-#: templates/appearance/about.html:129
+#: templates/appearance/about.html:110
 #, python-format
 msgid ""
 "\n"
@@ -336,7 +312,7 @@ msgstr ""
 "                Ако намерите бъг или имате идея за прибавка, посетете <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Форум %(icon_forum)s</a> или направете заявка в <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Хранилище на изходен код %(icon_source_code)s</a>.\n"
 "            "
 
-#: templates/appearance/about.html:134
+#: templates/appearance/about.html:115
 #, python-format
 msgid ""
 "\n"
@@ -346,23 +322,19 @@ msgstr ""
 "\n"
 "Разпространете информация за този проект. Говорете с вашите приятели и колеги за това колко страхотен е %(project_title)s!"
 
-#: templates/appearance/base.html:71
+#: templates/appearance/base.html:72
 msgid "Object"
 msgstr "Обект"
 
-#: templates/appearance/calculate_form_title.html:10
-msgid "Open main menu"
-msgstr "Отворете главното меню"
-
-#: templates/appearance/generic_confirm.html:14
+#: templates/appearance/generic_confirm.html:13
 msgid "Are you sure?"
 msgstr "Сигурен ли сте?"
 
-#: templates/appearance/generic_confirm.html:38
+#: templates/appearance/generic_confirm.html:37
 msgid "Yes"
 msgstr "Да"
 
-#: templates/appearance/generic_confirm.html:48
+#: templates/appearance/generic_confirm.html:47
 msgid "No"
 msgstr "Не"
 
@@ -373,44 +345,50 @@ msgstr "Не"
 msgid "required"
 msgstr "задължително"
 
-#: templates/appearance/generic_form_subtemplate.html:83
-#: templates/appearance/generic_form_subtemplate.html:96
-#: templates/appearance/generic_multiform_subtemplate.html:59
+#: templates/appearance/generic_form_subtemplate.html:84
+#: templates/appearance/generic_form_subtemplate.html:94
+#: templates/appearance/generic_form_subtemplate.html:108
+#: templates/appearance/generic_multiform_subtemplate.html:62
 msgid "Save"
 msgstr "Запазване"
 
-#: templates/appearance/generic_form_subtemplate.html:83
-#: templates/appearance/generic_form_subtemplate.html:96
-#: templates/appearance/generic_multiform_subtemplate.html:59
+#: templates/appearance/generic_form_subtemplate.html:84
+#: templates/appearance/generic_form_subtemplate.html:94
+#: templates/appearance/generic_form_subtemplate.html:108
+#: templates/appearance/generic_multiform_subtemplate.html:62
 msgid "Submit"
 msgstr "Подаване"
 
-#: templates/appearance/generic_form_subtemplate.html:87
-#: templates/appearance/generic_multiform_subtemplate.html:63
+#: templates/appearance/generic_form_subtemplate.html:98
+#: templates/appearance/generic_multiform_subtemplate.html:66
 msgid "Cancel"
 msgstr "Отказ"
 
-#: templates/appearance/generic_list_subtemplate.html:29
+#: templates/appearance/generic_list_subtemplate.html:34
 msgid "Identifier"
 msgstr "Идентификатор"
 
-#: templates/appearance/generic_list_subtemplate.html:133
+#: templates/appearance/generic_list_subtemplate.html:137
 msgid "Facets"
 msgstr "Фасети"
 
-#: templates/appearance/home.html:10
-msgid "Dashboard"
-msgstr "Контролно табло"
-
-#: templates/appearance/home.html:26
+#: templates/appearance/home.html:27
 msgid "Getting started"
 msgstr "Начален етап"
 
-#: templates/appearance/home.html:29
+#: templates/appearance/home.html:30
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Преди да можете да ползвате напълно Mayan EDMS необходимо е следното:"
 
-#: templates/appearance/list_header.html:12
+#: templates/appearance/menus/menu_topbar.html:11
+msgid "Toggle navigation"
+msgstr "Превключване на навигацията"
+
+#: templates/appearance/partials/form_title.html:10
+msgid "Open main menu"
+msgstr "Отворете главното меню"
+
+#: templates/appearance/partials/list_header.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
@@ -419,56 +397,52 @@ msgstr ""
 "Общо (%(start)s - %(end)s от %(total)s) (Страница %(page_number)s от "
 "%(total_pages)s)"
 
-#: templates/appearance/list_header.html:14
-#: templates/appearance/list_header.html:17
+#: templates/appearance/partials/list_header.html:14
+#: templates/appearance/partials/list_header.html:17
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Общо: %(total)s"
 
-#: templates/appearance/list_toolbar.html:13
+#: templates/appearance/partials/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "Изберете / премахнете избора на всички"
 
-#: templates/appearance/list_toolbar.html:17
+#: templates/appearance/partials/list_toolbar.html:17
 msgid "Toggle list display mode"
 msgstr "Превключване на режима на показване на списък"
 
-#: templates/appearance/list_toolbar.html:60
+#: templates/appearance/partials/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr ""
 "Изберете елементи, за да активирате групови действия. Използвайте Shift + "
 "щракване, за да изберете няколко."
 
-#: templates/appearance/list_toolbar.html:65
+#: templates/appearance/partials/list_toolbar.html:65
 msgid "Bulk actions"
 msgstr "Групови действия"
 
-#: templates/appearance/list_toolbar.html:67
+#: templates/appearance/partials/list_toolbar.html:67
 msgid "Toggle Dropdown"
 msgstr "Превключване на плаващо меню"
 
-#: templates/appearance/menu_topbar.html:11
-msgid "Toggle navigation"
-msgstr "Превключване на навигацията"
-
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Няма резултати"
 
-#: templates/appearance/root.html:63
+#: templates/appearance/root.html:58
 msgid "Close"
 msgstr "Затваряне"
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:68
 msgid "Server communication error"
 msgstr "Грешка при свързването със сървъра"
 
-#: templates/appearance/root.html:75
+#: templates/appearance/root.html:70
 msgid "Check you network connection and try again in a few moments."
 msgstr "Проверете връзката с мрежата и опитайте отново след няколко секунди."
 
-#: templatetags/appearance_tags.py:63
+#: templatetags/appearance_tags.py:61
 msgid "None"
 msgstr "Няма"
 

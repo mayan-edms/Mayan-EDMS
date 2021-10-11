@@ -5,15 +5,12 @@ from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.tags.tests.mixins import TagTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 
-from ..classes import SearchBackend
 from ..exceptions import DynamicSearchException
 
+from .mixins import SearchTestMixin
 
-class QueryStringDecodeTestCase(BaseTestCase):
-    def setUp(self):
-        super().setUp()
-        self.search_backend = SearchBackend.get_instance()
 
+class QueryStringDecodeTestCase(SearchTestMixin, BaseTestCase):
     def test_decode_default_scope(self):
         query = {
             'test_field': 'test_value'
@@ -108,12 +105,13 @@ class QueryStringDecodeTestCase(BaseTestCase):
         )
 
 
-class ScopedSearchTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
+class ScopedSearchTestCase(
+    DocumentTestMixin, TagTestMixin, SearchTestMixin, BaseTestCase
+):
     auto_upload_test_document = False
 
     def setUp(self):
         super().setUp()
-        self.search_backend = SearchBackend.get_instance()
 
         self._create_test_document_stub()
         self._create_test_tag()
@@ -219,14 +217,14 @@ class ScopedSearchTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
         self.assertEqual(queryset.count(), 1)
         self.assertTrue(self.test_documents[0] in queryset)
 
-    def test_scoped_and_non_scoped(self):
+    def test_match_all_scope_and_non_match_all_scope(self):
         query = {
             '__0_match_all': 'TRUE',
             '__0_tags__label': self.test_tags[0].label,
-            '__0_tags__color': 'FFFFFF',
+            '__0_tags__color': self.test_tags[0].color,
             '__operator_0_bc': 'AND_cc',
             '__bc_tags__label': self.test_tags[1].label,
-            '__bc_tags__color': '000000',
+            '__bc_tags__color': 'INVALID COLOR',
             '__result': 'cc'
         }
         queryset = self.search_backend.search(
@@ -237,12 +235,13 @@ class ScopedSearchTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
         self.assertTrue(self.test_documents[0] in queryset)
 
 
-class ScopeOperatorSearchTestCase(DocumentTestMixin, BaseTestCase):
+class ScopeOperatorSearchTestCase(
+    DocumentTestMixin, SearchTestMixin, BaseTestCase
+):
     auto_upload_test_document = False
 
     def setUp(self):
         super().setUp()
-        self.search_backend = SearchBackend.get_instance()
 
         self._create_test_document_stub()
         self._create_test_document_stub()

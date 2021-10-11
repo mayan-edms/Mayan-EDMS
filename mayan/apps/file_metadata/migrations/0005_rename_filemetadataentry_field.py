@@ -10,6 +10,6 @@ class Migration(migrations.Migration):
         migrations.RenameField(
             model_name='filemetadataentry',
             old_name='document_version_driver_entry',
-            new_name='document_file_driver_entry',
-        ),
+            new_name='document_file_driver_entry'
+        )
     ]

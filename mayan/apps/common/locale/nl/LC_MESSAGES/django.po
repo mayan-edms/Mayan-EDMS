@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-04 01:08+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -26,19 +26,19 @@ msgstr ""
 msgid "Common"
 msgstr "Gemeenschappelijk"
 
-#: classes.py:408
+#: classes.py:409
 msgid "Model properties"
 msgstr "Model eigenschappen"
 
-#: classes.py:413
+#: classes.py:414
 msgid "Model fields"
 msgstr "Model velden"
 
-#: classes.py:456
+#: classes.py:457
 msgid "Model related fields"
 msgstr "Model gerelateerde velden"
 
-#: classes.py:461
+#: classes.py:462
 msgid "Model reverse fields"
 msgstr "Model omgekeerde velden"
 
@@ -58,47 +58,47 @@ msgstr "Opdrachtregelomgeving met automatisch aanvullen."
 msgid "Checks proper formatting of the README file."
 msgstr "Controleert de juiste opmaak van het README-bestand."
 
-#: links.py:30
+#: links.py:29
 msgid "About this"
 msgstr "Over Mayan EDMS"
 
-#: links.py:33
+#: links.py:32
 msgid "Get the book"
 msgstr "Koop het boek"
 
-#: links.py:38
+#: links.py:37
 msgid "Documentation"
 msgstr "Documentatie"
 
-#: links.py:41
+#: links.py:40
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:45 views.py:48
+#: links.py:44 views.py:48
 msgid "License"
 msgstr "Licentie"
 
-#: links.py:50
+#: links.py:49
 msgid "Copy"
 msgstr ""
 
-#: links.py:53
+#: links.py:52
 msgid "Setup"
 msgstr "Setup"
 
-#: links.py:56
+#: links.py:55
 msgid "Source code"
 msgstr "Broncode"
 
-#: links.py:60
+#: links.py:59
 msgid "Online store"
 msgstr "Online opslag"
 
-#: links.py:64
+#: links.py:63
 msgid "Get support"
 msgstr "Ondersteuning"
 
-#: links.py:68 queues.py:6 views.py:122
+#: links.py:67 queues.py:6 views.py:122
 msgid "Tools"
 msgstr "Gereedschappen"
 
@@ -175,21 +175,13 @@ msgstr ""
 
 #: settings.py:36
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr ""
-"Wachttijd voor achtergrondtaken die afhankelijk zijn van het verbreiden van "
-"een database commit."
-
-#: settings.py:43
-msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:53
+#: settings.py:46
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -197,7 +189,7 @@ msgid ""
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:63
+#: settings.py:56
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
@@ -205,6 +197,10 @@ msgstr ""
 "Naam van de overzicht gekoppeld aan het logo in het hoofdmenu. Dit is ook "
 "het overzicht waarnaar gebruikers worden doorgestuurd nadat ze zich hebben "
 "aangemeld."
+
+#: settings.py:65
+msgid "Name of the dashboard to display in the home view."
+msgstr ""
 
 #: settings.py:70
 msgid "Sets the project's name."
@@ -222,15 +218,15 @@ msgstr "Waarschuwing"
 msgid "Click here to fix this."
 msgstr "Klik hier om dit te herstellen."
 
-#: validators.py:41
+#: validators.py:40
 msgid "Enter a valid JSON value."
 msgstr "Voer een geldige JSON-waarde in."
 
-#: validators.py:65
+#: validators.py:64
 msgid "Enter a valid YAML value."
 msgstr "Voer een geldige YAML-waarde in."
 
-#: validators.py:81
+#: validators.py:80
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
@@ -243,8 +239,8 @@ msgid "About"
 msgstr "Over"
 
 #: views.py:39
-msgid "Dashboard"
-msgstr "Dashboard"
+msgid "Home"
+msgstr ""
 
 #: views.py:62
 #, python-format

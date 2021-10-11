@@ -145,7 +145,6 @@ RUN set -a \
     mysqlclient==${PYTHON_MYSQL_VERSION} \
     psycopg2==${PYTHON_PSYCOPG2_VERSION} \
     redis==${PYTHON_REDIS_VERSION} \
-    flower==${PYTHON_FLOWER_VERSION} \
 # psutil is needed by ARM builds otherwise gevent and gunicorn fail to start.
 && UNAME=`uname -m` && if [ "${UNAME#*arm}" != ${UNAME} ]; then \
     pip install --no-cache-dir \

@@ -39,11 +39,13 @@ Content-Type: image/png; name="test-02.png"
 Content-Disposition: attachment; filename="test-02.png"
 Content-Transfer-Encoding: base64
 X-Attachment-Id: f_ia6yymei1'''
+TEST_EMAIL_BASE64_FILENAME_ATTACHMENT_FILENAME = 'Ampelmännchen.txt'
+TEST_EMAIL_BASE64_MESSAGE_ID = '<00000001.465619c9.1.00@BRN30055CCF4D76>'
 TEST_EMAIL_BASE64_FILENAME = force_bytes(s='''From: noreply@example.com
 To: test@example.com
 Subject: Scan to E-mail Server Job
 Date: Tue, 23 May 2017 23:03:37 +0200
-Message-Id: <00000001.465619c9.1.00@BRN30055CCF4D76>
+Message-Id: {}
 Mime-Version: 1.0
 Content-Type: multipart/mixed;
     boundary="RS1tYWlsIENsaWVudA=="
@@ -63,7 +65,7 @@ Content-Disposition: attachment; filename="=?UTF-8?B?QW1wZWxtw6RubmNoZW4udHh0?="
 
 SGFsbG8gQW1wZWxtw6RubmNoZW4hCg==
 
---RS1tYWlsIENsaWVudA==--''')
+--RS1tYWlsIENsaWVudA==--'''.format(TEST_EMAIL_BASE64_MESSAGE_ID))
 TEST_EMAIL_BASE64_FILENAME_FROM = 'noreply@example.com'
 TEST_EMAIL_BASE64_FILENAME_SUBJECT = 'Scan to E-mail Server Job'
 TEST_EMAIL_NO_CONTENT_TYPE = '''MIME-Version: 1.0
@@ -134,8 +136,16 @@ Content-MD5: 1B2M2Y8AsgTpgAmY7PhCfg==
 
 
 -----'''
+TEST_SOURCE_BACKEND_EMAIL_PATH = 'mayan.apps.sources.tests.source_backends.SourceBackendTestEmail'
+TEST_SOURCE_BACKEND_PERIODIC_PATH = 'mayan.apps.sources.tests.source_backends.SourceBackendTestPeriodic'
+TEST_SOURCE_BACKEND_PATH = 'mayan.apps.sources.tests.source_backends.SourceBackendSimple'
 TEST_SOURCE_LABEL = 'test source'
 TEST_SOURCE_LABEL_EDITED = 'test source edited'
-TEST_SOURCE_UNCOMPRESS_N = 'n'
+
+TEST_SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND = 'test.backend'
+TEST_SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND_ARGUMENTS = {'location': 'test value'}
+
+TEST_STAGING_PREVIEW_HEIGHT = ''
 TEST_STAGING_PREVIEW_WIDTH = 640
+
 TEST_WATCHFOLDER_SUBFOLDER = 'test_subfolder'

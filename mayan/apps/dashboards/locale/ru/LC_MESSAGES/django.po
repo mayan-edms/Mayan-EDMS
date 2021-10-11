@@ -4,7 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Sergey Glita <gsv70@mail.ru>, 2021
 # mizhgan <i@mizhgan.ru>, 2021
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
 # 
@@ -12,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-04 01:08+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -22,14 +21,31 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:12
+#: apps.py:18 links.py:9 views.py:11
 msgid "Dashboards"
 msgstr "Дашборды"
 
-#: dashboards.py:5
-msgid "Main"
-msgstr "Основной"
+#: apps.py:25
+msgid "Widgets"
+msgstr ""
+
+#: apps.py:29
+msgid "Label"
+msgstr "Заголовок"
+
+#: dashboards.py:6
+msgid "Administrator dashboard"
+msgstr ""
+
+#: links.py:14
+msgid "Details"
+msgstr "Подробности"
 
 #: templates/dashboards/numeric_widget.html:27
+#: templates/dashboards/widget_list.html:47
 msgid "View details"
 msgstr "Просмотр подробностей"
+
+#: views.py:27
+msgid "Dashboard detail"
+msgstr ""

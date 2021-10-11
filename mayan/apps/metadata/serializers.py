@@ -12,10 +12,14 @@ from mayan.apps.documents.serializers.document_type_serializers import (
     DocumentTypeSerializer
 )
 from mayan.apps.rest_api.serializer_mixins import CreateOnlyFieldSerializerMixin
-from mayan.apps.rest_api.relations import FilteredPrimaryKeyRelatedField
+from mayan.apps.rest_api.relations import (
+    FilteredPrimaryKeyRelatedField, FilteredSimplePrimaryKeyRelatedField
+)
 
 from .models import DocumentMetadata, DocumentTypeMetadataType, MetadataType
-from .permissions import permission_document_metadata_add
+from .permissions import (
+    permission_document_metadata_add, permission_metadata_type_edit
+)
 
 
 class MetadataTypeSerializer(serializers.HyperlinkedModelSerializer):
@@ -33,36 +37,27 @@ class MetadataTypeSerializer(serializers.HyperlinkedModelSerializer):
         model = MetadataType
 
 
-class DocumentTypeMetadataTypeSerializer(serializers.HyperlinkedModelSerializer):
+class DocumentTypeMetadataTypeSerializer(
+    CreateOnlyFieldSerializerMixin, serializers.HyperlinkedModelSerializer
+):
     document_type = DocumentTypeSerializer(read_only=True)
     metadata_type = MetadataTypeSerializer(read_only=True)
-    url = serializers.SerializerMethodField()
-
-    class Meta:
-        fields = ('document_type', 'id', 'metadata_type', 'required', 'url')
-        model = DocumentTypeMetadataType
-
-    def get_url(self, instance):
-        return reverse(
-            viewname='rest_api:documenttypemetadatatype-detail', kwargs={
-                'document_type_id': instance.document_type.pk,
-                'metadata_type_id': instance.pk
-            }, request=self.context['request'], format=self.context['format']
-        )
-
-
-class NewDocumentTypeMetadataTypeSerializer(serializers.ModelSerializer):
-    metadata_type_id = serializers.IntegerField(
-        help_text=_('Primary key of the metadata type to be added.'),
-        write_only=True
+    metadata_type_id = FilteredSimplePrimaryKeyRelatedField(
+        help_text=_(
+            'Primary key of the metadata type to be added.'
+        ), label=_('Metadata type ID'), source_model=MetadataType,
+        source_permission=permission_metadata_type_edit, write_only=True
     )
     url = serializers.SerializerMethodField()
 
     class Meta:
+        create_only_fields = ('metadata_type_id',)
         fields = (
-            'id', 'metadata_type_id', 'required', 'url'
+            'document_type', 'id', 'metadata_type', 'metadata_type_id',
+            'required', 'url'
         )
         model = DocumentTypeMetadataType
+        read_only_field = ('document_type', 'id', 'metadata_type', 'url')
 
     def get_url(self, instance):
         return reverse(
@@ -73,7 +68,10 @@ class NewDocumentTypeMetadataTypeSerializer(serializers.ModelSerializer):
         )
 
     def validate(self, attrs):
-        attrs['document_type'] = self.context['document_type']
+        if self.instance:
+            return attrs
+
+        attrs['document_type'] = self.context['external_object']
         attrs['metadata_type'] = MetadataType.objects.get(
             pk=attrs.pop('metadata_type_id')
         )
@@ -85,24 +83,6 @@ class NewDocumentTypeMetadataTypeSerializer(serializers.ModelSerializer):
             raise ValidationError(exception)
 
         return attrs
-
-
-class WritableDocumentTypeMetadataTypeSerializer(serializers.ModelSerializer):
-    url = serializers.SerializerMethodField()
-
-    class Meta:
-        fields = (
-            'id', 'required', 'url'
-        )
-        model = DocumentTypeMetadataType
-
-    def get_url(self, instance):
-        return reverse(
-            viewname='rest_api:documenttypemetadatatype-detail', kwargs={
-                'document_type_id': instance.document_type.pk,
-                'metadata_type_id': instance.pk
-            }, request=self.context['request'], format=self.context['format']
-        )
 
 
 class DocumentMetadataSerializer(

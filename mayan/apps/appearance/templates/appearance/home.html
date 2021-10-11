@@ -6,8 +6,9 @@
 {% load common_tags %}
 {% load dashboards_tags %}
 {% load navigation_tags %}
+{% load smart_settings_tags %}
 
-{% block title %}{% trans 'Dashboard' %}{% endblock %}
+{% block title %}{% include 'appearance/partials/form_title.html' with non_html_title=True %}{% endblock %}
 
 {% block javascript %}
     <script>
@@ -44,6 +45,7 @@
 
     {% include 'dynamic_search/search_box.html' %}
 
-    {% dashboards_render_dashboard 'main' %}
+    {% smart_setting "COMMON_HOME_VIEW_DASHBOARD_NAME" as home_view_dashboard_name %}
 
+    {% dashboards_render_dashboard name=home_view_dashboard_name %}
 {% endblock %}

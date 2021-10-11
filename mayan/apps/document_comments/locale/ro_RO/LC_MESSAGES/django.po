@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-04 01:08+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:31 events.py:6 search.py:18 search.py:25 search.py:32 search.py:39
+#: apps.py:32 events.py:6 search.py:18 search.py:25 search.py:32 search.py:39
 msgid "Document comments"
 msgstr "Comentariile documentului"
 
@@ -51,27 +51,27 @@ msgstr "Șterge"
 msgid "Edit"
 msgstr "Editați"
 
-#: links.py:31 models.py:45 permissions.py:5 search.py:11
+#: links.py:31 models.py:46 permissions.py:5 search.py:11
 msgid "Comments"
 msgstr "Comentarii"
 
-#: models.py:29
+#: models.py:30
 msgid "Document"
 msgstr "Document"
 
-#: models.py:33 models.py:70
+#: models.py:34 models.py:71
 msgid "User"
 msgstr "Utilizator"
 
-#: models.py:35
+#: models.py:36
 msgid "Text"
 msgstr "Text"
 
-#: models.py:38
+#: models.py:39
 msgid "Date time submitted"
 msgstr "Marcaj temporal al trimiterii"
 
-#: models.py:44
+#: models.py:45
 msgid "Comment"
 msgstr "Comentariu"
 

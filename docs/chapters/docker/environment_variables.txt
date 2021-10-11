@@ -137,12 +137,6 @@ Docker
 Gunicorn
 ========
 
-- ``MAYAN_GUNICORN_JITTER``
-
-  Optional. Allows setting Gunicorn's ``max_requests_jitter`` value
-  (https://docs.gunicorn.org/en/latest/settings.html#max-requests-jitter).
-  Default: |GUNICORN_JITTER|.
-
 - ``MAYAN_GUNICORN_LIMIT_REQUEST_LINE``
 
   Optional. Allows setting Gunicorn's ``limit_request_line`` value
@@ -154,6 +148,12 @@ Gunicorn
   Optional. Allows setting Gunicorn's ``max_requests`` value
   (https://docs.gunicorn.org/en/latest/settings.html#max-requests).
   Default: |GUNICORN_MAX_REQUESTS|.
+
+- ``MAYAN_GUNICORN_REQUESTS_JITTER``
+
+  Optional. Allows setting Gunicorn's ``max_requests_jitter`` value
+  (https://docs.gunicorn.org/en/latest/settings.html#max-requests-jitter).
+  Default: |MAYAN_GUNICORN_REQUESTS_JITTER|.
 
 - ``MAYAN_GUNICORN_TIMEOUT``
 
@@ -212,3 +212,25 @@ Python
   Specifies a list of Python packages to be installed via ``pip``. Packages will
   be downloaded from the Python Package Index (https://pypi.python.org) by
   default.
+
+
+User code
+=========
+
+- ``MAYAN_DOCKER_SCRIPT_PRE_SETUP``
+
+  Optional. Executed after the container's environment variables are
+  configured but before the UID/GID setup, extra OS package installation
+  and extra Python library installations. Executes the content as a script
+  or call a script using the value as the filename.
+
+- ``MAYAN_DOCKER_SCRIPT_POST_SETUP``
+
+  Optional. Executed after the container's environment variables are
+  configured, after the UID/GID setup, extra OS package installation
+  and extra Python library installations but before launching the Mayan EDMS
+  stack. Executes the content as a script or call a script using the value
+  as the filename.
+
+Complete details about these environment variables can be found in the
+chapter: :ref:`docker_user_scripts`

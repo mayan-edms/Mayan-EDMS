@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Link
-from mayan.apps.navigation.utils import get_cascade_condition
+from mayan.apps.navigation.utils import factory_condition_queryset_access
 
 from .icons import (
     icon_announcement_create, icon_announcement_delete, icon_announcement_edit,
@@ -32,7 +32,7 @@ link_announcement_edit = Link(
     view='announcements:announcement_edit'
 )
 link_announcement_list = Link(
-    condition=get_cascade_condition(
+    condition=factory_condition_queryset_access(
         app_label='announcements', model_name='Announcement',
         object_permission=permission_announcement_view,
         view_permission=permission_announcement_create,

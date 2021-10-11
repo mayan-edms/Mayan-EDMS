@@ -16,7 +16,7 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .icons import icon_file_metadata
-from .links import link_document_file_submit
+from .links import link_document_file_metadata_submit_single
 from .models import DocumentFileDriverEntry
 from .permissions import (
     permission_document_type_file_metadata_setup,
@@ -27,13 +27,13 @@ from .permissions import (
 class DocumentFileDriverListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_file_metadata_view
     external_object_pk_url_kwarg = 'document_file_id'
-    external_object_queryset = DocumentFile.valid
+    external_object_queryset = DocumentFile.valid.all()
 
     def get_extra_context(self):
         return {
             'hide_object': True,
             'no_results_icon': icon_file_metadata,
-            'no_results_main_link': link_document_file_submit.resolve(
+            'no_results_main_link': link_document_file_metadata_submit_single.resolve(
                 context=RequestContext(
                     dict_={
                         'resolved_object': self.external_object
@@ -70,7 +70,7 @@ class DocumentFileDriverEntryFileMetadataListView(
         return {
             'hide_object': True,
             'no_results_icon': icon_file_metadata,
-            'no_results_main_link': link_document_file_submit.resolve(
+            'no_results_main_link': link_document_file_metadata_submit_single.resolve(
                 context=RequestContext(
                     dict_={
                         'resolved_object': self.external_object.document_file
@@ -107,7 +107,7 @@ class DocumentFileDriverEntryFileMetadataListView(
 class DocumentFileSubmitView(MultipleObjectConfirmActionView):
     object_permission = permission_file_metadata_submit
     pk_url_kwarg = 'document_file_id'
-    source_queryset = DocumentFile.valid
+    source_queryset = DocumentFile.valid.all()
     success_message_singular = '%(count)d document file submitted to the file metadata queue.'
     success_message_plural = '%(count)d documents files submitted to the file metadata queue.'
 

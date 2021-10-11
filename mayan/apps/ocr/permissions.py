@@ -7,6 +7,10 @@ namespace = PermissionNamespace(label=_('OCR'), name='ocr')
 permission_document_version_ocr = namespace.add_permission(
     label=_('Submit documents for OCR'), name='ocr_document'
 )
+permission_document_version_ocr_content_edit = namespace.add_permission(
+    label=_('Edit the transcribed text from document'),
+    name='ocr_content_edit'
+)
 permission_document_version_ocr_content_view = namespace.add_permission(
     label=_('View the transcribed text from document'),
     name='ocr_content_view'

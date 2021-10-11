@@ -77,7 +77,7 @@ class DocumentWorkflowTemplatesLaunchView(MultipleObjectFormActionView):
     form_class = WorkflowMultipleSelectionForm
     object_permission = permission_workflow_tools
     pk_url_kwarg = 'document_id'
-    source_queryset = Document.valid
+    source_queryset = Document.valid.all()
     success_message_single = _('Workflows launched successfully for document "%(object)s".')
     success_message_singular = _('Workflows launched successfully for %(count)d document.')
     success_message_plural = _('Workflows launched successfully for %(count)d documents.')
@@ -87,12 +87,11 @@ class DocumentWorkflowTemplatesLaunchView(MultipleObjectFormActionView):
 
     def get_extra_context(self):
         return {
-            'submit_label': _('Launch'),
             'subtitle': _(
                 'Workflows already launched or workflows not applicable to '
                 'some documents when multiple documents are selected, '
                 'will be silently ignored.'
-            ),
+            )
         }
 
     def get_form_extra_kwargs(self):

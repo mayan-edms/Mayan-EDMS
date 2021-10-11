@@ -6,6 +6,7 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 
+from mayan.apps.databases.utils import check_queryset
 from mayan.apps.views.mixins import ExternalObjectBaseMixin
 
 
@@ -49,6 +50,12 @@ class AsymmetricSerializerAPIViewMixin:
             return self.write_serializer_class
 
 
+class CheckQuerysetAPIViewMixin:
+    def get_queryset(self, *args, **kwargs):
+        queryset = super().get_queryset(*args, **kwargs)
+        return check_queryset(self=self, queryset=queryset)
+
+
 class ContentTypeAPIViewMixin:
     """
     This mixin makes it easier for API views to retrieve a content type from
@@ -75,6 +82,11 @@ class ExternalObjectAPIViewMixin(ExternalObjectBaseMixin):
     """
     def initial(self, *args, **kwargs):
         result = super().initial(*args, **kwargs)
+        # Ensure self.external_object is initialized to allow the browseable
+        # API view to display when attempting to introspect the serializer
+        # and the parent object is not found.
+        self.external_object = None
+
         self.external_object = self.get_external_object()
         return result
 
@@ -85,7 +97,7 @@ class ExternalObjectAPIViewMixin(ExternalObjectBaseMixin):
         """
         result = {}
         if self.kwargs:
-            result['external_object'] = self.get_external_object()
+            result['external_object'] = self.external_object
 
         return result
 
@@ -110,8 +122,8 @@ class ExternalContentTypeObjectAPIViewMixin(
     external_object_pk_url_kwarg = 'object_id'
 
     def get_external_object_queryset(self):
-        content_type = self.get_content_type()
-        self.external_object_class = content_type.model_class()
+        self.content_type = self.get_content_type()
+        self.external_object_class = self.content_type.model_class()
         return super().get_external_object_queryset()
 
 

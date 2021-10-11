@@ -12,9 +12,9 @@ from .api_views import (
 from .views import (
     AllDocumentSignatureRefreshView, AllDocumentSignatureVerifyView,
     DocumentFileDetachedSignatureCreateView,
-    DocumentFileEmbeddedSignatureCreateView, DocumentFileSignatureDeleteView,
-    DocumentFileSignatureDetailView, DocumentFileSignatureDownloadView,
-    DocumentFileSignatureListView, DocumentFileSignatureUploadView
+    DocumentFileEmbeddedSignatureCreateView, DocumentFileDetachedSignatureDeleteView,
+    DocumentFileSignatureDetailView, DocumentFileDetachedSignatureDownloadView,
+    DocumentFileSignatureListView, DocumentFileDetachedSignatureUploadView
 )
 
 urlpatterns = [
@@ -30,8 +30,8 @@ urlpatterns = [
     ),
     url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/signatures/detached/upload/$',
-        name='document_file_signature_upload',
-        view=DocumentFileSignatureUploadView.as_view()
+        name='document_file_signature_detached_upload',
+        view=DocumentFileDetachedSignatureUploadView.as_view()
     ),
     url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/signatures/embedded/create/$',
@@ -39,19 +39,19 @@ urlpatterns = [
         view=DocumentFileEmbeddedSignatureCreateView.as_view()
     ),
     url(
-        regex=r'^signatures/(?P<signature_id>\d+)/delete/$',
-        name='document_file_signature_delete',
-        view=DocumentFileSignatureDeleteView.as_view()
+        regex=r'^signatures/detached/(?P<signature_id>\d+)/delete/$',
+        name='document_file_signature_detached_delete',
+        view=DocumentFileDetachedSignatureDeleteView.as_view()
+    ),
+    url(
+        regex=r'^signatures/detached/(?P<signature_id>\d+)/download/$',
+        name='document_file_signature_detached_download',
+        view=DocumentFileDetachedSignatureDownloadView.as_view()
     ),
     url(
         regex=r'^signatures/(?P<signature_id>\d+)/details/$',
         name='document_file_signature_details',
         view=DocumentFileSignatureDetailView.as_view()
-    ),
-    url(
-        regex=r'^signatures/(?P<signature_id>\d+)/download/$',
-        name='document_file_signature_download',
-        view=DocumentFileSignatureDownloadView.as_view()
     ),
     url(
         regex=r'^tools/all/document/file/signature/refresh/$',

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-04 01:08+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:27 events.py:6 permissions.py:5 queues.py:8 settings.py:10
+#: apps.py:26 events.py:6 permissions.py:5 queues.py:8 settings.py:10
 msgid "File caching"
 msgstr "Ukládání souborů do mezipaměti"
 
@@ -81,7 +81,7 @@ msgstr "Velikost, od které se v mezipaměti začnou mazat staré záznamy."
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: models.py:97
+#: models.py:97 models.py:311
 msgid "Current size"
 msgstr "Aktuální velikost"
 
@@ -93,7 +93,7 @@ msgstr "Aktuální velikost mezipaměti."
 msgid "Name"
 msgstr "název"
 
-#: models.py:214 models.py:305
+#: models.py:214 models.py:331
 msgid "Cache partition"
 msgstr "Oddíl mezipaměti"
 
@@ -101,27 +101,31 @@ msgstr "Oddíl mezipaměti"
 msgid "Cache partitions"
 msgstr "Oddíly mezipaměti"
 
-#: models.py:308
+#: models.py:313
+msgid "Current size of the cache partition."
+msgstr ""
+
+#: models.py:334
 msgid "Date time"
 msgstr "Datum a čas"
 
-#: models.py:310
+#: models.py:336
 msgid "Filename"
 msgstr "Název souboru"
 
-#: models.py:312
+#: models.py:338
 msgid "File size"
 msgstr "Velikost souboru"
 
-#: models.py:316
+#: models.py:342
 msgid "Times this cache partition file has been accessed."
 msgstr ""
 
-#: models.py:323
+#: models.py:349
 msgid "Cache partition file"
 msgstr "Soubor mezipaměti"
 
-#: models.py:324
+#: models.py:350
 msgid "Cache partition files"
 msgstr "Soubory mezipaměti"
 
@@ -155,25 +159,30 @@ msgstr ""
 "Kolikrát se mezipaměť pokusí ořezat soubory, aby uvolnila místo pro nový "
 "požadovaný soubor, než to vzdá."
 
-#: views.py:43
+#: views.py:45
+#, python-format
+msgid "Details of cache: %s"
+msgstr ""
+
+#: views.py:56
+msgid "File caches list"
+msgstr "Seznam souborů v mezipaměti"
+
+#: views.py:76
 #, python-format
 msgid "Details cache: %s"
 msgstr "Mezipaměť podrobností: %s"
 
-#: views.py:54
-msgid "File caches list"
-msgstr "Seznam souborů v mezipaměti"
-
-#: views.py:70
+#: views.py:92
 #, python-format
 msgid "Purge cache partitions of \"%s\"?"
 msgstr ""
 
-#: views.py:86
+#: views.py:108
 msgid "Object cache partitions submitted for purging."
 msgstr "Oddíly mezipaměti objektů odeslané k vyčištění."
 
-#: views.py:103
+#: views.py:125
 msgid "Submit the selected cache for purging?"
 msgid_plural "Submit the selected caches for purging?"
 msgstr[0] ""

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-04 01:08+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-12 03:38+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -24,12 +24,12 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
+#: apps.py:35 events.py:5 links.py:40 models.py:42 permissions.py:6
 #: templates/announcements/announcements.html:8 views.py:119
 msgid "Announcements"
 msgstr "Annonces"
 
-#: apps.py:74 apps.py:78
+#: apps.py:72 apps.py:76
 msgid "None"
 msgstr "Aucun"
 
@@ -53,43 +53,43 @@ msgstr "Supprimer"
 msgid "Edit"
 msgstr "Modifier"
 
-#: models.py:18
+#: models.py:19
 msgid "Short description of this announcement."
 msgstr "Brève description de cette annonce."
 
-#: models.py:19
+#: models.py:20
 msgid "Label"
 msgstr "Étiquette"
 
-#: models.py:22
+#: models.py:23
 msgid "The actual text to be displayed."
 msgstr ""
 
-#: models.py:23
+#: models.py:24
 msgid "Text"
 msgstr "Texte"
 
-#: models.py:25
+#: models.py:26
 msgid "Enabled"
 msgstr "Activé"
 
-#: models.py:28
+#: models.py:29
 msgid "Date and time after which this announcement will be displayed."
 msgstr "Date et heure représentant le moment que cette annonce sera affichée."
 
-#: models.py:29
+#: models.py:30
 msgid "Start date time"
 msgstr "Date de début"
 
-#: models.py:33
+#: models.py:34
 msgid "Date and time until when this announcement is to be displayed."
 msgstr "Date et heure qui indique quand cette annonce doit être affichée."
 
-#: models.py:34
+#: models.py:35
 msgid "End date time"
 msgstr "Date de fin"
 
-#: models.py:40
+#: models.py:41
 msgid "Announcement"
 msgstr "Annonce"
 

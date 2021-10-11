@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-04 01:08+0000\n"
+"POT-Creation-Date: 2021-10-10 06:02+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:23 links.py:17 settings.py:8
+#: apps.py:23 links.py:17 settings.py:11
 msgid "REST API"
 msgstr "REST API"
 
@@ -37,11 +37,33 @@ msgstr "Τεκμηρίωση API (Swagger)"
 msgid "API Documentation (ReDoc)"
 msgstr "Τεκμηρίωση API (ReDoc)"
 
+#: relations.py:78
+msgid "This field is required."
+msgstr ""
+
+#: relations.py:79
+#, python-brace-format
+msgid "Invalid pk \"{pk_value}\" - object does not exist."
+msgstr ""
+
+#: relations.py:80
+#, python-brace-format
+msgid "Incorrect type. Expected pk value, received {data_type}."
+msgstr ""
+
 #: schemas.py:11
 #, python-format
 msgid "%s API"
 msgstr "%s API"
 
-#: settings.py:14
+#: settings.py:17
 msgid "Disable the REST API links in the tools menu."
 msgstr "Απενεργοποίηση των συνδέσμων REST API από το μενού εργαλείων."
+
+#: settings.py:23
+msgid "The maximum page size that can be requested."
+msgstr ""
+
+#: settings.py:29
+msgid "The default page size if none is specified."
+msgstr ""

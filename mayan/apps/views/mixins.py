@@ -11,6 +11,7 @@ from django.views.generic.detail import SingleObjectMixin
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.settings import setting_home_view
+from mayan.apps.databases.utils import check_queryset
 from mayan.apps.permissions import Permission
 
 from .compat import FileResponse
@@ -93,7 +94,9 @@ class DynamicFormViewMixin:
 
     def get_form_kwargs(self):
         data = super().get_form_kwargs()
-        data.update({'schema': self.get_form_schema()})
+        data.update(
+            {'schema': self.get_form_schema()}
+        )
         return data
 
 
@@ -151,7 +154,7 @@ class ExternalObjectBaseMixin:
                 )
             )
 
-        return queryset
+        return check_queryset(self=self, queryset=queryset)
 
     def get_external_object_queryset_filtered(self):
         queryset = self.get_external_object_queryset()
@@ -181,8 +184,8 @@ class ExternalContentTypeObjectViewMixin(
     external_object_pk_url_kwarg = 'object_id'
 
     def get_external_object_queryset(self):
-        content_type = self.get_content_type()
-        self.external_object_class = content_type.model_class()
+        self.external_object_content_type = self.get_content_type()
+        self.external_object_class = self.external_object_content_type.model_class()
         return super().get_external_object_queryset()
 
 

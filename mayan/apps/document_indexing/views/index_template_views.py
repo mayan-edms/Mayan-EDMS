@@ -23,7 +23,7 @@ from ..permissions import (
     permission_index_template_edit, permission_index_template_rebuild,
     permission_index_template_view
 )
-from ..tasks import task_rebuild_index
+from ..tasks import task_index_template_rebuild
 
 __all__ = (
     'DocumentTypeIndexTemplateListView', 'IndexTemplateListView',
@@ -181,15 +181,14 @@ class IndexTemplateNodeListView(
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'index': self.external_object,
-            'navigation_object_list': ('index',),
+            'object': self.external_object,
             'title': _(
                 'Tree template nodes for index: %s'
             ) % self.external_object,
         }
 
     def get_source_queryset(self):
-        return self.external_object.template_root.get_descendants(
+        return self.external_object.index_template_root_node.get_descendants(
             include_self=True
         )
 
@@ -208,8 +207,7 @@ class IndexTemplateNodeCreateView(SingleObjectCreateView):
 
     def get_extra_context(self):
         return {
-            'index': self.get_parent_node().index,
-            'navigation_object_list': ('index',),
+            'object': self.get_parent_node().index,
             'title': _('Create child node of: %s') % self.get_parent_node(),
         }
 
@@ -260,7 +258,7 @@ class IndexTemplateNodeEditView(SingleObjectEditView):
             'navigation_object_list': ('index', 'node'),
             'node': self.object,
             'title': _(
-                'Edit the index template node: %s?'
+                'Edit the index template node: %s'
             ) % self.object,
         }
 
@@ -295,8 +293,10 @@ class IndexTemplateRebuildView(ConfirmView):
         )
 
     def view_action(self):
-        task_rebuild_index.apply_async(
-            kwargs=dict(index_id=self.get_object().pk)
+        task_index_template_rebuild.apply_async(
+            kwargs={
+                'index_id': self.get_object().pk
+            }
         )
 
         messages.success(
@@ -314,8 +314,10 @@ class IndexTemplateAllRebuildView(FormView):
     def form_valid(self, form):
         count = 0
         for index in form.cleaned_data['index_templates']:
-            task_rebuild_index.apply_async(
-                kwargs=dict(index_id=index.pk)
+            task_index_template_rebuild.apply_async(
+                kwargs={
+                    'index_id': index.pk
+                }
             )
             count += 1
 

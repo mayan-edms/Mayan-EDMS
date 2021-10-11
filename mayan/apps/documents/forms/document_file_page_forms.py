@@ -10,11 +10,13 @@ class DocumentFilePageForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         instance = kwargs.pop('instance', None)
-        rotation = kwargs.pop('rotation', None)
-        zoom = kwargs.pop('zoom', None)
+        transformation_instance_list = kwargs.pop(
+            'transformation_instance_list', ()
+        )
         super().__init__(*args, **kwargs)
         self.fields['document_file_page'].initial = instance
-        self.fields['document_file_page'].widget.attrs.update({
-            'zoom': zoom,
-            'rotation': rotation,
-        })
+        self.fields['document_file_page'].widget.attrs.update(
+            {
+                'transformation_instance_list': transformation_instance_list
+            }
+        )

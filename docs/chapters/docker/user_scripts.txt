@@ -1,0 +1,75 @@
+.. _docker_user_scripts:
+
+======================
+Executing user scripts
+======================
+
+It is possible to automate the execution of user code inside a container
+every time it starts. This can take the form of a dash script or the path to
+a script file.
+
+This feature is controlled by two environment variables:
+
+- ``MAYAN_DOCKER_SCRIPT_PRE_SETUP``
+
+  Optional. Executed after the container's environment variables are
+  configured but before the UID/GID setup, extra OS package installation
+  and extra Python library installations. Executes the content as a script
+  or call a script using the value as the filename.
+
+- ``MAYAN_DOCKER_SCRIPT_POST_SETUP``
+
+  Optional. Executed after the container's environment variables are
+  configured, after the UID/GID setup, extra OS package installation
+  and extra Python library installations but before launching the Mayan EDMS
+  stack. Executes the content as a script or call a script using the value
+  as the filename.
+
+Examples:
+
+As script content:
+
+.. code-block:: console
+
+   docker run \
+   -d \
+   --name mayan-edms \
+   --restart=always \
+   -p 80:8000 \
+   ...
+   -e MAYAN_DOCKER_SCRIPT_PRE_SETUP='echo "Pre setup command" >/tmp/pre_setup_output.txt'
+   -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
+   mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
+
+
+As a script file:
+
+.. code-block:: console
+
+   echo 'echo "Pre setup script" >/tmp/pre_setup_output.txt' > /docker-volumes/mayan-edms/media/script.sh
+
+   docker run \
+   -d \
+   --name mayan-edms \
+   --restart=always \
+   -p 80:8000 \
+   ...
+   -e MAYAN_DOCKER_SCRIPT_PRE_SETUP=/var/lib/mayan/script.sh
+   -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
+   mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
+
+
+With Docker Compose, make the changes in the ``env_file`` using the same
+format.
+
+As script content:
+
+.. code-block:: yaml
+
+  MAYAN_DOCKER_SCRIPT_PRE_SETUP='echo "Pre setup command" >/tmp/pre_setup_output.txt'
+
+As a script file:
+
+.. code-block:: yaml
+
+  MAYAN_DOCKER_SCRIPT_PRE_SETUP=/var/lib/mayan/script.sh

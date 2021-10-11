@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-04 01:08+0000\n"
+"POT-Creation-Date: 2021-10-10 06:02+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -21,20 +21,20 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:36 events.py:6 links.py:34 models.py:36 permissions.py:5
+#: apps.py:33 events.py:6 links.py:34 models.py:37 permissions.py:5
 #: views.py:136
 msgid "Quotas"
 msgstr "Kvóty"
 
-#: classes.py:65
+#: classes.py:59
 msgid "none"
 msgstr "žádný"
 
-#: classes.py:157
+#: classes.py:151
 msgid "Does not apply"
 msgstr "Nepoužito"
 
-#: classes.py:161 classes.py:165
+#: classes.py:155 classes.py:159
 msgid "Null backend"
 msgstr "Null backend"
 
@@ -46,7 +46,7 @@ msgstr "Kvóta byla vytvořena"
 msgid "Quota edited"
 msgstr "Kvóta byla upravena"
 
-#: forms.py:15 models.py:58
+#: forms.py:15 models.py:62
 msgid "Backend"
 msgstr "Backend"
 
@@ -138,39 +138,39 @@ msgstr "všichni uživatelé"
 msgid "groups: %(groups)s, users: %(users)s"
 msgstr "skupiny: %(groups)s, uživatelé: %(users)s"
 
-#: models.py:22
+#: models.py:23
 msgid "The dotted Python path to the backend class."
 msgstr "Tečkovaná cesta Pythonu ke třídě backendu."
 
-#: models.py:23
+#: models.py:24
 msgid "Backend path"
 msgstr "Backend cesta"
 
-#: models.py:26
+#: models.py:27
 msgid "Backend data"
 msgstr "Backend data"
 
-#: models.py:30
+#: models.py:31
 msgid "Allow quick disable or enable of the quota."
 msgstr "Povolit rychlé zakázání nebo povolení kvóty."
 
-#: models.py:31
+#: models.py:32
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: models.py:35
+#: models.py:36
 msgid "Quota"
 msgstr "Kvóta"
 
-#: models.py:57
+#: models.py:61
 msgid "Driver used for this quota entry."
 msgstr "Ovladač použitý pro tuto položku kvóty."
 
-#: models.py:62
+#: models.py:66
 msgid "Arguments"
 msgstr "Argumenty"
 
-#: models.py:66
+#: models.py:70
 msgid "Usage"
 msgstr "Používání"
 
@@ -190,41 +190,41 @@ msgstr "Upravte kvótu"
 msgid "View a quota"
 msgstr "Zobrazit kvótu"
 
-#: quota_backends.py:70 quota_backends.py:170
+#: quota_backends.py:71 quota_backends.py:171
 msgid "Document count quota exceeded."
 msgstr "Kvóta počtu dokumentů překročena."
 
-#: quota_backends.py:74
+#: quota_backends.py:75
 msgid "Documents limit"
 msgstr "Limit dokumentů"
 
-#: quota_backends.py:77
+#: quota_backends.py:78
 msgid "Maximum number of documents."
 msgstr "Maximální počet dokumentů."
 
-#: quota_backends.py:81
+#: quota_backends.py:82
 msgid "Document count limit"
 msgstr "Limit počtu dokumentů"
 
-#: quota_backends.py:106
+#: quota_backends.py:107
 #, python-format
 msgid "document count: %(document_count)s"
 msgstr "počet dokumentů: %(document_count)s"
 
-#: quota_backends.py:180 quota_backends.py:185
+#: quota_backends.py:181 quota_backends.py:186
 msgid "Document size limit"
 msgstr "Limit velikosti dokumentu"
 
-#: quota_backends.py:182
+#: quota_backends.py:183
 msgid "Maximum document size in megabytes (MB)."
 msgstr "Maximální velikost dokumentu v megabajtech (MB)."
 
-#: quota_backends.py:210
+#: quota_backends.py:211
 #, python-format
 msgid "document size: %(formatted_file_size)s"
 msgstr "velikost dokumentu: %(formatted_file_size)s"
 
-#: quota_backends.py:230
+#: quota_backends.py:231
 msgid "Document size quota exceeded."
 msgstr "Kvóta velikosti dokumentu byla překročena."
 

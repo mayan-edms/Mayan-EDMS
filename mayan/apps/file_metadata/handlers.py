@@ -1,13 +1,15 @@
 from django.apps import apps
 
-from mayan.apps.document_indexing.tasks import task_index_document
+from mayan.apps.document_indexing.tasks import task_index_instance_document_add
 
 from .settings import setting_auto_process
 
 
 def handler_index_document_file(sender, **kwargs):
-    task_index_document.apply_async(
-        kwargs=dict(document_id=kwargs['instance'].document.pk)
+    task_index_instance_document_add.apply_async(
+        kwargs={
+            'document_id': kwargs['instance'].document.pk
+        }
     )
 
 

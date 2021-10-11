@@ -15,7 +15,12 @@ class DocumentMetadataForm(forms.Form):
     metadata_type_id = forms.CharField(label=_('ID'), widget=forms.HiddenInput)
     metadata_type_name = forms.CharField(
         label=_('Name'), required=False,
-        widget=forms.TextInput(attrs={'readonly': 'readonly'})
+        widget=forms.TextInput(
+            attrs={
+                'disabled': 'disabled',
+                'readonly': 'readonly'
+            }
+        )
     )
     value = forms.CharField(
         label=_('Value'), required=False, widget=forms.TextInput(

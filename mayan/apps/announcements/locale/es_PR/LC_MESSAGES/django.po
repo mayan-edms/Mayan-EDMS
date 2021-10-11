@@ -1,0 +1,160 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Translators:
+# Roberto Rosario, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
+"PO-Revision-Date: 2021-04-12 03:38+0000\n"
+"Last-Translator: Roberto Rosario, 2021\n"
+"Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es_PR\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:35 events.py:5 links.py:40 models.py:42 permissions.py:6
+#: templates/announcements/announcements.html:8 views.py:119
+msgid "Announcements"
+msgstr "Anuncios"
+
+#: apps.py:72 apps.py:76
+msgid "None"
+msgstr "Ninguno"
+
+#: events.py:8
+msgid "Announcement created"
+msgstr "Anuncio creado"
+
+#: events.py:11
+msgid "Announcement edited"
+msgstr "Anuncio editado"
+
+#: links.py:17 views.py:30
+msgid "Create announcement"
+msgstr "Crear anuncio"
+
+#: links.py:20 links.py:26
+msgid "Delete"
+msgstr "Eliminar"
+
+#: links.py:31
+msgid "Edit"
+msgstr "Editar"
+
+#: models.py:19
+msgid "Short description of this announcement."
+msgstr "Breve descripción de este anuncio."
+
+#: models.py:20
+msgid "Label"
+msgstr "Etiqueta"
+
+#: models.py:23
+msgid "The actual text to be displayed."
+msgstr "El texto que se mostrará."
+
+#: models.py:24
+msgid "Text"
+msgstr "Texto"
+
+#: models.py:26
+msgid "Enabled"
+msgstr "Habilitado"
+
+#: models.py:29
+msgid "Date and time after which this announcement will be displayed."
+msgstr "Fecha y hora después de las cuales se mostrará este anuncio."
+
+#: models.py:30
+msgid "Start date time"
+msgstr "Fecha y hora de comienzo"
+
+#: models.py:34
+msgid "Date and time until when this announcement is to be displayed."
+msgstr "Fecha y hora hasta la cuál se mostrará este anuncio."
+
+#: models.py:35
+msgid "End date time"
+msgstr "Fecha y hora final"
+
+#: models.py:41
+msgid "Announcement"
+msgstr "Anuncio"
+
+#: permissions.py:10
+msgid "Create announcements"
+msgstr "Crea anuncios"
+
+#: permissions.py:13
+msgid "Delete announcements"
+msgstr "Eliminar anuncios"
+
+#: permissions.py:16
+msgid "Edit announcements"
+msgstr "Editar anuncios"
+
+#: permissions.py:19
+msgid "View announcements"
+msgstr "Ver anuncios"
+
+#: views.py:41
+#, python-format
+msgid "Error deleting announcement \"%(instance)s\"; %(exception)s"
+msgstr "Error al eliminar el anuncio \"%(instance)s\"; %(exception)s"
+
+#: views.py:50
+#, python-format
+msgid "Announcement \"%(object)s\" deleted successfully."
+msgstr "El anuncio \"%(object)s\" se eliminó correctamente."
+
+#: views.py:53
+#, python-format
+msgid "%(count)d announcement deleted successfully."
+msgstr "%(count)d anuncio eliminado correctamente."
+
+#: views.py:56
+#, python-format
+msgid "%(count)d announcements deleted successfully."
+msgstr "%(count)d anuncios eliminados con éxito."
+
+#: views.py:58
+#, python-format
+msgid "Delete announcement: %(object)s."
+msgstr "Eliminar anuncio: %(object)s."
+
+#: views.py:59
+#, python-format
+msgid "Delete the %(count)d selected announcement."
+msgstr "Eliminar %(count)d anuncio seleccionado."
+
+#: views.py:60
+#, python-format
+msgid "Delete the %(count)d selected announcements."
+msgstr "Elimina los %(count)d anuncios seleccionados."
+
+#: views.py:92
+#, python-format
+msgid "Edit announcement: %s"
+msgstr "Editar anuncio: %s"
+
+#: views.py:114
+msgid ""
+"Announcements are displayed in the login view. You can use announcements to "
+"convery information about your organzation, announcements or usage "
+"guidelines for your users."
+msgstr ""
+"Los anuncios se muestran en la vista de inicio de sesión. Puede utilizarlos "
+"para transmitir información sobre su organización, anuncios o pautas de uso "
+"para sus usuarios."
+
+#: views.py:118
+msgid "No announcements available"
+msgstr "No hay anuncios disponibles"

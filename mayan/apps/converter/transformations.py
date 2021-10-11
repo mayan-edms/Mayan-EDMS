@@ -8,6 +8,8 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.views.http import URL
+
 from .layers import layer_decorations, layer_saved_transformations
 
 logger = logging.getLogger(name=__name__)
@@ -30,15 +32,27 @@ class BaseTransformation(metaclass=BaseTransformationType):
 
     @staticmethod
     def combine(transformations):
-        result = None
+        result = hashlib.sha256()
 
-        for transformation in transformations:
-            if not result:
-                result = hashlib.sha256(transformation.cache_hash())
-            else:
-                result.update(transformation.cache_hash())
+        for transformation in transformations or ():
+            result.update(transformation.cache_hash())
 
         return result.hexdigest()
+
+    @staticmethod
+    def list_as_query_string(transformation_instance_list):
+        result = URL()
+
+        for index, transformation in enumerate(transformation_instance_list):
+            result.args['transformation_{}_name'.format(index)] = transformation.name
+
+            for argument in transformation.arguments:
+                value = getattr(transformation, argument)
+                result.args[
+                    'transformation_{}_argument__{}'.format(index, argument)
+                ] = value
+
+        return result.to_string()
 
     @classmethod
     def get(cls, name):
@@ -114,7 +128,7 @@ class BaseTransformation(metaclass=BaseTransformationType):
     def cache_hash(self):
         result = hashlib.sha256(force_bytes(s=self.name))
 
-        # Sort arguments for guaranteed repeatability
+        # Sort arguments for guaranteed repeatability.
         for key, value in sorted(self.kwargs.items()):
             result.update(force_bytes(s=key))
             result.update(force_bytes(s=value))
@@ -397,12 +411,12 @@ class TransformationCrop(BaseTransformation):
         if bottom > self.image.size[1] - 1:
             bottom = self.image.size[1] - 1
 
-        # Invert right value
+        # Invert right value.
         # Pillow uses left, top, right, bottom to define a viewport
-        # of real coordinates
+        # of real coordinates.
         # We invert the right and bottom to define a viewport
         # that can crop from the right and bottom borders without
-        # having to know the real dimensions of an image
+        # having to know the real dimensions of an image.
         right = self.image.size[0] - right
         bottom = self.image.size[1] - bottom
 
@@ -475,12 +489,12 @@ class TransformationDrawRectangle(BaseTransformation):
         if bottom > self.image.size[1] - 1:
             bottom = self.image.size[1] - 1
 
-        # Invert right value
-        # Pillow uses left, top, right, bottom to define a viewport
-        # of real coordinates
+        # Invert right value.
+        # Pillow uses left, top,right, bottom to define a viewport
+        # of real coordinates.
         # We invert the right and bottom to define a viewport
         # that can crop from the right and bottom borders without
-        # having to know the real dimensions of an image
+        # having to know the real dimensions of an image.
         right = self.image.size[0] - right
         bottom = self.image.size[1] - bottom
 
@@ -603,12 +617,12 @@ class TransformationDrawRectanglePercent(BaseTransformation):
         left = left / 100.0 * self.image.size[0]
         top = top / 100.0 * self.image.size[1]
 
-        # Invert right value
+        # Invert right value.
         # Pillow uses left, top, right, bottom to define a viewport
-        # of real coordinates
+        # of real coordinates.
         # We invert the right and bottom to define a viewport
         # that can crop from the right and bottom borders without
-        # having to know the real dimensions of an image
+        # having to know the real dimensions of an image.
 
         right = self.image.size[0] - (right / 100.0 * self.image.size[0])
         bottom = self.image.size[1] - (bottom / 100.0 * self.image.size[1])
@@ -679,7 +693,7 @@ class TransformationResize(BaseTransformation):
         super().execute_on(*args, **kwargs)
 
         width = int(self.width)
-        height = int(self.height or 1.0 * width / self.aspect)
+        height = int(self.height or (1.0 * width / self.aspect))
 
         factor = 1
         while self.image.size[0] / factor > 2 * width and self.image.size[1] * 2 / factor > 2 * height:
@@ -705,12 +719,16 @@ class TransformationRotate(BaseTransformation):
     def execute_on(self, *args, **kwargs):
         super().execute_on(*args, **kwargs)
 
+        self.degrees = float(self.degrees or '0')
         self.degrees %= 360
 
         if self.degrees == 0:
             return self.image
 
         fillcolor_value = getattr(self, 'fillcolor', None)
+        if fillcolor_value == 'None':
+            fillcolor_value = None
+
         if fillcolor_value:
             fillcolor = ImageColor.getrgb(color=fillcolor_value)
         else:
@@ -779,10 +797,12 @@ class TransformationZoom(BaseTransformation):
     def execute_on(self, *args, **kwargs):
         super().execute_on(*args, **kwargs)
 
-        if self.percent == 100:
+        percent = float(self.percent or '100')
+
+        if percent == 100:
             return self.image
 
-        decimal_value = float(self.percent) / 100
+        decimal_value = percent / 100
         return self.image.resize(
             size=(
                 int(self.image.size[0] * decimal_value),

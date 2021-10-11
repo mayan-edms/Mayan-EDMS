@@ -80,10 +80,13 @@ class Asset(ExtraDataModelMixin, models.Model):
 
     def delete(self, *args, **kwargs):
         self.cache_partition.delete()
-        self.file.storage.delete(name=self.file.name)
+        name = self.file.name
+        self.file.close()
+        self.file.storage.delete(name=name)
         return super().delete(*args, **kwargs)
 
-    def generate_image(self):
+    def generate_image(self, user=None):
+        # The `user` parameter is not used, but added to retain compatibility.
         cache_filename = '{}'.format(self.get_hash())
 
         if self.cache_partition.get_file(filename=cache_filename):
@@ -135,7 +138,9 @@ class Asset(ExtraDataModelMixin, models.Model):
             return image
 
     def open(self):
-        return self.file.storage.open(name=self.file.name)
+        name = self.file.name
+        self.file.close()
+        return self.file.storage.open(name=name)
 
     @method_event(
         event_manager_class=EventManagerSave,

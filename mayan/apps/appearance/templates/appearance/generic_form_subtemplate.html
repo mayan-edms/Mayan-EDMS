@@ -57,7 +57,7 @@
                     {% include 'appearance/generic_form_instance.html' %}
                 {% empty %}
                     <tr><td class="text-center" colspan=99>
-                        {% include 'appearance/no_results.html' %}
+                        {% include 'appearance/partials/no_results.html' %}
                     </td></tr>
                 {% endfor %}
 
@@ -74,27 +74,40 @@
             {% if not form.management_form or wizard.management_form or form.forms %}
             {# Is a normal form, a wizard form, or a formset with at least one form #}
                 <div class="form-group">
-                    <button class="btn btn-primary btn-hotkey-default" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit">
-                        {% if submit_icon %}
-                            {{ submit_icon.render }}
-                        {% else %}
-                            <i class="fa fa-check"></i>
-                        {% endif %}
-                        {% if submit_label %}{{ submit_label }}{% else %}{% if form.instance %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}
-                    </button>
-                    {% if previous %}
-                          &nbsp;<a class="btn btn-default" onclick='history.back();'>
-                            <i class="fa fa-times"></i> {% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}
-                          </a>
-                    {% endif %}
-
-                    {% for button in extra_buttons %}
-                        <button class="btn btn-default" name="{% if form.prefix %}{{ form.prefix }}-{{ button.name }}{% else %}{{ button.name }}{% endif %}" type="submit">
+                    {% for button in form_button_overrides %}
+                        <button class="btn btn-primary {{ button.css_classes }}{% if button.is_primary %}btn-hotkey-default{% endif %}" {% if button.disabled %}disabled="disabled"{% endif %} name="{% if button.name_override %}{{ button.name_override }}{% else %}{% if form.prefix %}{{ form.prefix }}-{{ button.name }}{% else %}{{ button.name }}{% endif %}{% endif %}" type="submit" value="{{ button.value }}">
                             {% if button.icon %}
                                 {{ button.icon.render }}
+                            {% else %}
+                                <i class="fa fa-check"></i>
                             {% endif %}
                             {% if button.label %}{{ button.label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}
                         </button>
+                        &nbsp;
+                    {% empty %}
+                        <button class="btn btn-primary btn-hotkey-default" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit">
+                            {% if submit_icon %}
+                                {{ submit_icon.render }}
+                            {% else %}
+                                <i class="fa fa-check"></i>
+                            {% endif %}
+                            {% if submit_label %}{{ submit_label }}{% else %}{% if form.instance %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}
+                        </button>
+                        {% if previous %}
+                              &nbsp;<a class="btn btn-default" onclick='history.back();'>
+                                <i class="fa fa-times"></i> {% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}
+                              </a>
+                        {% endif %}
+
+                        {% for button in extra_buttons %}
+                            &nbsp;
+                            <button class="btn btn-default" name="{% if form.prefix %}{{ form.prefix }}-{{ button.name }}{% else %}{{ button.name }}{% endif %}" type="submit">
+                                {% if button.icon %}
+                                    {{ button.icon.render }}
+                                {% endif %}
+                                {% if button.label %}{{ button.label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}
+                            </button>
+                        {% endfor %}
                     {% endfor %}
                 </div>
             {% endif %}
