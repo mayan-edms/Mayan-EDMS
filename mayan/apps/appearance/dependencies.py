@@ -35,15 +35,15 @@ JavaScriptDependency(
     name='@fortawesome/fontawesome-free', version_string='=5.6.3'
 )
 JavaScriptDependency(
-    label=_('jQuery'), module=__name__, name='jquery', version_string='=3.5.1'
+    label=_('jQuery'), module=__name__, name='jquery', version_string='=3.6.0'
 )
 JavaScriptDependency(
     label=_('JQuery Form'), module=__name__, name='jquery-form',
-    version_string='=4.2.2'
+    version_string='=4.3.0'
 )
 JavaScriptDependency(
     label=_('jQuery Lazy Load'), module=__name__, name='jquery-lazyload',
-    version_string='=1.9.3'
+    version_string='=1.9.7'
 )
 JavaScriptDependency(
     label=_('JQuery Match Height'), module=__name__, name='jquery-match-height',
@@ -57,9 +57,9 @@ JavaScriptDependency(
     label=_('Toastr'), module=__name__, name='toastr', version_string='=2.1.4'
 )
 JavaScriptDependency(
-    label=_('URI.js'), module=__name__, name='urijs', version_string='=1.19.1'
+    label=_('URI.js'), module=__name__, name='urijs', version_string='=1.19.7'
 )
 
 PythonDependency(
-    module=__name__, name='bleach', version_string='==3.1.5'
+    module=__name__, name='bleach', version_string='==4.0.0'
 )

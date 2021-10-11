@@ -2,13 +2,13 @@ import os
 
 from django.conf import settings
 from django.db.models import Q
-from django.utils.module_loading import import_string
 
 from mayan.apps.converter.classes import Layer
+from mayan.apps.dynamic_search.tests.mixins import SearchTestMixin
 
 from ...literals import DOCUMENT_FILE_ACTION_PAGES_NEW, PAGE_RANGE_ALL
 from ...models import Document, DocumentType
-from ...search import document_file_page_search, document_search
+from ...search import document_search
 
 from ..literals import (
     DEFAULT_DOCUMENT_STUB_LABEL, TEST_DOCUMENT_DESCRIPTION_EDITED,
@@ -22,7 +22,7 @@ class DocumentAPIViewTestMixin:
         return self.post(
             viewname='rest_api:document-change-type', kwargs={
                 'document_id': self.test_document.pk
-            }, data={'document_type_id': self.test_document_type_2.pk}
+            }, data={'document_type_id': self.test_document_types[1].pk}
         )
 
     def _request_test_document_create_api_view(self):
@@ -88,22 +88,12 @@ class DocumentAPIViewTestMixin:
         return response
 
 
-class DocumentSearchTestMixin:
-    search_backend = import_string(
-        dotted_path='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend'
-    )()
+class DocumentSearchTestMixin(SearchTestMixin):
+    def _perform_document_search(self, query=None):
+        query = query or {'q': self.test_document.label}
 
-    def _perform_document_file_page_search(self):
         return self.search_backend.search(
-            search_model=document_file_page_search,
-            query={'q': self.test_document.label},
-            user=self._test_case_user
-        )
-
-    def _perform_document_search(self):
-        return self.search_backend.search(
-            search_model=document_search,
-            query={'q': self.test_document.label},
+            search_model=document_search, query=query,
             user=self._test_case_user
         )
 
@@ -255,18 +245,18 @@ class DocumentViewTestMixin:
             }
         )
 
-    def _request_test_document_type_change_post_view(self, document_type):
+    def _request_test_document_type_change_post_view(self):
         return self.post(
             viewname='documents:document_type_change', kwargs={
                 'document_id': self.test_document.pk
-            }, data={'document_type': document_type.pk}
+            }, data={'document_type': self.test_document_types[1].pk}
         )
 
-    def _request_test_document_multiple_type_change(self, document_type):
+    def _request_test_document_multiple_type_change(self):
         return self.post(
             viewname='documents:document_multiple_type_change',
             data={
                 'id_list': self.test_document.pk,
-                'document_type': document_type.pk
+                'document_type': self.test_document_types[1].pk
             }
         )

@@ -1,6 +1,6 @@
 import logging
 
-from mayan.apps.document_indexing.tasks import task_index_document
+from mayan.apps.document_indexing.tasks import task_index_instance_document_add
 
 logger = logging.getLogger(name=__name__)
 
@@ -8,7 +8,9 @@ logger = logging.getLogger(name=__name__)
 def handler_index_document(sender, **kwargs):
     if kwargs['action'] in ('post_add', 'post_remove'):
         for pk in kwargs['pk_set']:
-            task_index_document.apply_async(kwargs={'document_id': pk})
+            task_index_instance_document_add.apply_async(
+                kwargs={'document_id': pk}
+            )
 
 
 def handler_tag_pre_delete(sender, **kwargs):

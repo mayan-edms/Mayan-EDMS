@@ -1,9 +1,11 @@
 from django.db.models import Q
 
 from mayan.apps.converter.layers import layer_saved_transformations
+from mayan.apps.dynamic_search.tests.mixins import SearchTestMixin
 
 from ...literals import PAGE_RANGE_ALL
 from ...models.document_file_models import DocumentFile
+from ...search import document_file_search, document_file_page_search
 
 from ..literals import (
     TEST_DOCUMENT_FILE_ACTION, TEST_DOCUMENT_FILE_COMMENT,
@@ -73,6 +75,16 @@ class DocumentFileLinkTestMixin:
         self.add_test_view(test_object=self.test_document_file)
         context = self.get_test_view()
         return test_link.resolve(context=context)
+
+
+class DocumentFileSearchTestMixin(SearchTestMixin):
+    def _perform_document_file_search(self, query=None):
+        query = query or {'q': self.test_document.label}
+
+        return self.search_backend.search(
+            search_model=document_file_search, query=query,
+            user=self._test_case_user
+        )
 
 
 class DocumentFileTestMixin:
@@ -166,13 +178,15 @@ class DocumentFilePageAPIViewTestMixin:
             }
         )
 
-    def _request_test_document_file_page_image_api_view(self):
+    def _request_test_document_file_page_image_api_view(
+        self, maximum_layer_order=None
+    ):
         return self.get(
             viewname='rest_api:documentfilepage-image', kwargs={
                 'document_id': self.test_document.pk,
                 'document_file_id': self.test_document_file.pk,
                 'document_file_page_id': self.test_document_file_page.pk
-            }
+            }, query={'maximum_layer_order': maximum_layer_order}
         )
 
     def _request_test_document_file_page_list_api_view(self):
@@ -181,6 +195,16 @@ class DocumentFilePageAPIViewTestMixin:
                 'document_id': self.test_document.pk,
                 'document_file_id': self.test_document_file.pk,
             }
+        )
+
+
+class DocumentFilePageSearchTestMixin(SearchTestMixin):
+    def _perform_document_file_page_search(self, query=None):
+        query = query or {'q': self.test_document.label}
+
+        return self.search_backend.search(
+            search_model=document_file_page_search, query=query,
+            user=self._test_case_user
         )
 
 

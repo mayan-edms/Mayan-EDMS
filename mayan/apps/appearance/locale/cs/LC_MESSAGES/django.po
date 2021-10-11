@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:49+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:56 events.py:5 permissions.py:5 settings.py:7
+#: apps.py:55 events.py:5 permissions.py:5 settings.py:10
 msgid "Appearance"
 msgstr "Vzhled"
 
@@ -102,42 +102,42 @@ msgstr "Odstranit"
 msgid "Edit"
 msgstr "Upravit"
 
-#: links.py:40 links.py:45 models.py:29 views.py:111
+#: links.py:40 links.py:45 models.py:31 views.py:111
 msgid "Themes"
 msgstr "Motivy"
 
-#: models.py:16
+#: models.py:18
 msgid "A short text describing the theme."
 msgstr "Krátký text popisující téma."
 
-#: models.py:17
+#: models.py:19
 msgid "Label"
 msgstr "Jmenovka"
 
-#: models.py:21
+#: models.py:23
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
 msgstr ""
 "Šablona stylů CSS pro změnu vzhledu různých prvků uživatelského rozhraní."
 
-#: models.py:23
+#: models.py:25
 msgid "Stylesheet"
 msgstr "Stylesheet"
 
-#: models.py:28 models.py:63
+#: models.py:30 models.py:68
 msgid "Theme"
 msgstr "Motiv"
 
-#: models.py:59
+#: models.py:64
 msgid "User"
 msgstr "Uživatel"
 
-#: models.py:67
+#: models.py:72
 msgid "User theme setting"
 msgstr "Nastavení uživatelského motivu"
 
-#: models.py:68
+#: models.py:73
 msgid "User theme settings"
 msgstr "Nastavení uživatelského motivu"
 
@@ -157,17 +157,22 @@ msgstr "Upravit motivy"
 msgid "View existing themes"
 msgstr "Zobrazit stávající motivy"
 
-#: settings.py:12
+#: settings.py:15
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "Maximální počet znaků, které se zobrazí jako název pohledu."
 
-#: settings.py:19
+#: settings.py:22
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
 msgstr ""
 "Pozice, kde se zobrazí systémová zpráva. Možnosti jsou: nahoře vlevo, nahoře"
 " na středu, vpravo nahoře, dole-vlevo, dole-uprostřed, vpravo dole."
+
+#: settings.py:30
+msgid ""
+"Delay in milliseconds after which the menus will be checked for updates."
+msgstr ""
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
@@ -204,7 +209,7 @@ msgid ""
 msgstr "Poloha je správná, ale váš účet nemá k přístupu potřebná oprávnění."
 
 #: templates/500.html:5 templates/500.html:30
-#: templates/appearance/root.html:58
+#: templates/appearance/root.html:53
 msgid "Server error"
 msgstr "Chyba serveru"
 
@@ -245,7 +250,7 @@ msgstr ""
 msgid "About"
 msgstr "O Mayan EDMS"
 
-#: templates/appearance/about.html:73
+#: templates/appearance/about.html:72
 #, python-format
 msgid ""
 "\n"
@@ -255,50 +260,20 @@ msgstr ""
 "\n"
 "%(setting_project_title)s je založen na %(project_title)s"
 
-#: templates/appearance/about.html:78
+#: templates/appearance/about.html:77
 msgid "Version"
 msgstr "Verze"
 
-#: templates/appearance/about.html:80
+#: templates/appearance/about.html:79
 #, python-format
 msgid "Build number: %(build_number)s"
 msgstr "Číslo sestavy: %(build_number)s"
 
-#: templates/appearance/about.html:93
+#: templates/appearance/about.html:92
 msgid "Released under the license:"
 msgstr "Vydáno na základě licence:"
 
-#: templates/appearance/about.html:99
-#, python-format
-msgid ""
-"\n"
-"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
-"            "
-msgstr ""
-"\n"
-"%(project_title)s je bezplatný a open-source software, který vám přináší <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> Roberto Rosario a přispěvatelé."
-
-#: templates/appearance/about.html:105
-#, python-format
-msgid ""
-"\n"
-"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
-"            "
-msgstr ""
-"\n"
-"Vynakládá velké úsilí, aby byl %(project_title)s stejně bohatý na funkce."
-
-#: templates/appearance/about.html:111
-#, python-format
-msgid ""
-"\n"
-"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
-"            "
-msgstr ""
-"\n"
-"Pokud používáte %(project_title)s,  <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">darujte prosím %(icon_social_paypal)s</a>"
-
-#: templates/appearance/about.html:117
+#: templates/appearance/about.html:98
 #, python-format
 msgid ""
 "\n"
@@ -308,7 +283,7 @@ msgstr ""
 "\n"
 "Úplný seznam změn je k dispozici v <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">poznámkách</a> k <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">vydání %(icon_documentation)s</a> nebo v krátké verzi <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a> ."
 
-#: templates/appearance/about.html:123
+#: templates/appearance/about.html:104
 #, python-format
 msgid ""
 "\n"
@@ -318,7 +293,7 @@ msgstr ""
 "\n"
 "Dotazy najdete v <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">dokumentaci %(icon_documentation)s</a> ."
 
-#: templates/appearance/about.html:129
+#: templates/appearance/about.html:110
 #, python-format
 msgid ""
 "\n"
@@ -328,7 +303,7 @@ msgstr ""
 "\n"
 "Pokud jste našli chybu nebo máte nějaký nápad, navštivte <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">fórum %(icon_forum)s</a> nebo otevřete lístek v <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">úložišti zdrojových kódů %(icon_source_code)s</a> ."
 
-#: templates/appearance/about.html:134
+#: templates/appearance/about.html:115
 #, python-format
 msgid ""
 "\n"
@@ -338,23 +313,19 @@ msgstr ""
 "\n"
 "Popularizace. Promluvte si se svými přáteli a kolegy o tom, jak úžasný je %(project_title)s!"
 
-#: templates/appearance/base.html:71
+#: templates/appearance/base.html:72
 msgid "Object"
 msgstr "Objekt"
 
-#: templates/appearance/calculate_form_title.html:10
-msgid "Open main menu"
-msgstr "Otevřete hlavní menu"
-
-#: templates/appearance/generic_confirm.html:14
+#: templates/appearance/generic_confirm.html:13
 msgid "Are you sure?"
 msgstr "Jsi si jistí?"
 
-#: templates/appearance/generic_confirm.html:38
+#: templates/appearance/generic_confirm.html:37
 msgid "Yes"
 msgstr "Ano"
 
-#: templates/appearance/generic_confirm.html:48
+#: templates/appearance/generic_confirm.html:47
 msgid "No"
 msgstr "Ne"
 
@@ -365,44 +336,50 @@ msgstr "Ne"
 msgid "required"
 msgstr "Požadované"
 
-#: templates/appearance/generic_form_subtemplate.html:83
-#: templates/appearance/generic_form_subtemplate.html:96
-#: templates/appearance/generic_multiform_subtemplate.html:59
+#: templates/appearance/generic_form_subtemplate.html:84
+#: templates/appearance/generic_form_subtemplate.html:94
+#: templates/appearance/generic_form_subtemplate.html:108
+#: templates/appearance/generic_multiform_subtemplate.html:62
 msgid "Save"
 msgstr "Uložit"
 
-#: templates/appearance/generic_form_subtemplate.html:83
-#: templates/appearance/generic_form_subtemplate.html:96
-#: templates/appearance/generic_multiform_subtemplate.html:59
+#: templates/appearance/generic_form_subtemplate.html:84
+#: templates/appearance/generic_form_subtemplate.html:94
+#: templates/appearance/generic_form_subtemplate.html:108
+#: templates/appearance/generic_multiform_subtemplate.html:62
 msgid "Submit"
 msgstr "Odeslat"
 
-#: templates/appearance/generic_form_subtemplate.html:87
-#: templates/appearance/generic_multiform_subtemplate.html:63
+#: templates/appearance/generic_form_subtemplate.html:98
+#: templates/appearance/generic_multiform_subtemplate.html:66
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: templates/appearance/generic_list_subtemplate.html:29
+#: templates/appearance/generic_list_subtemplate.html:34
 msgid "Identifier"
 msgstr "Identifikátor"
 
-#: templates/appearance/generic_list_subtemplate.html:133
+#: templates/appearance/generic_list_subtemplate.html:137
 msgid "Facets"
 msgstr "Fazety"
 
-#: templates/appearance/home.html:10
-msgid "Dashboard"
-msgstr "Řídící panel"
-
-#: templates/appearance/home.html:26
+#: templates/appearance/home.html:27
 msgid "Getting started"
 msgstr "Začínáme"
 
-#: templates/appearance/home.html:29
+#: templates/appearance/home.html:30
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr "Než začnete plně používat Mayan EDMS, potřebujete následující:"
 
-#: templates/appearance/list_header.html:12
+#: templates/appearance/menus/menu_topbar.html:11
+msgid "Toggle navigation"
+msgstr "Přepnout navigaci"
+
+#: templates/appearance/partials/form_title.html:10
+msgid "Open main menu"
+msgstr "Otevřete hlavní menu"
+
+#: templates/appearance/partials/list_header.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
@@ -411,56 +388,52 @@ msgstr ""
 "Celkem (%(start)s - %(end)s z %(total)s) (stránka %(page_number)s z "
 "%(total_pages)s)"
 
-#: templates/appearance/list_header.html:14
-#: templates/appearance/list_header.html:17
+#: templates/appearance/partials/list_header.html:14
+#: templates/appearance/partials/list_header.html:17
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Celkem: %(total)s"
 
-#: templates/appearance/list_toolbar.html:13
+#: templates/appearance/partials/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "Vyberte / Zrušte výběr všech"
 
-#: templates/appearance/list_toolbar.html:17
+#: templates/appearance/partials/list_toolbar.html:17
 msgid "Toggle list display mode"
 msgstr "Přepnout režim zobrazení seznamu"
 
-#: templates/appearance/list_toolbar.html:60
+#: templates/appearance/partials/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr ""
 "Vyberte položky pro aktivaci hromadných akcí. Použijte Shift + click pro "
 "výběr více položek."
 
-#: templates/appearance/list_toolbar.html:65
+#: templates/appearance/partials/list_toolbar.html:65
 msgid "Bulk actions"
 msgstr "Hromadné akce"
 
-#: templates/appearance/list_toolbar.html:67
+#: templates/appearance/partials/list_toolbar.html:67
 msgid "Toggle Dropdown"
 msgstr "Přepnout rozevírací seznam"
 
-#: templates/appearance/menu_topbar.html:11
-msgid "Toggle navigation"
-msgstr "Přepnout navigaci"
-
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Žádné výsledky"
 
-#: templates/appearance/root.html:63
+#: templates/appearance/root.html:58
 msgid "Close"
 msgstr "Zavřít"
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:68
 msgid "Server communication error"
 msgstr "Chyba komunikace se serverem"
 
-#: templates/appearance/root.html:75
+#: templates/appearance/root.html:70
 msgid "Check you network connection and try again in a few moments."
 msgstr "Zkontrolujte připojení k síti a zkuste to znovu za chvíli."
 
-#: templatetags/appearance_tags.py:63
+#: templatetags/appearance_tags.py:61
 msgid "None"
 msgstr "Žádný"
 

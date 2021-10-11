@@ -5,6 +5,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.documents.models import Document
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
 from mayan.apps.events.decorators import method_event
@@ -17,7 +18,7 @@ from .events import (
 logger = logging.getLogger(name=__name__)
 
 
-class Comment(models.Model):
+class Comment(ExtraDataModelMixin, models.Model):
     """
     Model to store one comment per document per user per date & time.
     """

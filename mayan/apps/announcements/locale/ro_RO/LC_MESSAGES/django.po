@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:49+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-12 03:38+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -23,12 +23,12 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
+#: apps.py:35 events.py:5 links.py:40 models.py:42 permissions.py:6
 #: templates/announcements/announcements.html:8 views.py:119
 msgid "Announcements"
 msgstr ""
 
-#: apps.py:74 apps.py:78
+#: apps.py:72 apps.py:76
 msgid "None"
 msgstr "Nici unul"
 
@@ -52,43 +52,43 @@ msgstr "Șterge"
 msgid "Edit"
 msgstr "Editați"
 
-#: models.py:18
+#: models.py:19
 msgid "Short description of this announcement."
 msgstr ""
 
-#: models.py:19
+#: models.py:20
 msgid "Label"
 msgstr "Conținut etichetă"
 
-#: models.py:22
+#: models.py:23
 msgid "The actual text to be displayed."
 msgstr ""
 
-#: models.py:23
+#: models.py:24
 msgid "Text"
 msgstr "Text"
 
-#: models.py:25
+#: models.py:26
 msgid "Enabled"
 msgstr "Activat"
 
-#: models.py:28
+#: models.py:29
 msgid "Date and time after which this announcement will be displayed."
 msgstr ""
 
-#: models.py:29
+#: models.py:30
 msgid "Start date time"
 msgstr "Marcaj temporal al începutului"
 
-#: models.py:33
+#: models.py:34
 msgid "Date and time until when this announcement is to be displayed."
 msgstr ""
 
-#: models.py:34
+#: models.py:35
 msgid "End date time"
 msgstr "Marcaj temporal al sfârșitului"
 
-#: models.py:40
+#: models.py:41
 msgid "Announcement"
 msgstr ""
 

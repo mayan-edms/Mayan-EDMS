@@ -6,7 +6,6 @@
 # Translators:
 # Roberto Rosario, 2021
 # Mathias Behrle <mathiasb@m9s.biz>, 2021
-# Berny <berny@bernhard-marx.de>, 2021
 # Jesaja Everling <jeverling@gmail.com>, 2021
 # Felix <felix.com@gmx.com>, 2021
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2021
@@ -14,14 +13,15 @@
 # Marvin Haschker <marvin@haschker.me>, 2021
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2021
 # Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
+# Berny <berny@bernhard-marx.de>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
+"Last-Translator: Berny <berny@bernhard-marx.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,19 +33,19 @@ msgstr ""
 msgid "Common"
 msgstr "Allgemein"
 
-#: classes.py:408
+#: classes.py:409
 msgid "Model properties"
 msgstr "Modelleigenschaften"
 
-#: classes.py:413
+#: classes.py:414
 msgid "Model fields"
 msgstr "Modellfelder"
 
-#: classes.py:456
+#: classes.py:457
 msgid "Model related fields"
 msgstr "Verknüpfte Felder des Modells"
 
-#: classes.py:461
+#: classes.py:462
 msgid "Model reverse fields"
 msgstr ""
 
@@ -65,47 +65,47 @@ msgstr "Kommandozeilenumgebung mit Autovervollständigung."
 msgid "Checks proper formatting of the README file."
 msgstr "Überprüft die korrekte Formatierung der README-Datei."
 
-#: links.py:30
+#: links.py:29
 msgid "About this"
 msgstr "Über Mayan"
 
-#: links.py:33
+#: links.py:32
 msgid "Get the book"
 msgstr "Holen Sie sich das Buch"
 
-#: links.py:38
+#: links.py:37
 msgid "Documentation"
 msgstr "Dokumentation"
 
-#: links.py:41
+#: links.py:40
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:45 views.py:48
+#: links.py:44 views.py:48
 msgid "License"
 msgstr "Lizenz"
 
-#: links.py:50
+#: links.py:49
 msgid "Copy"
 msgstr "Kopieren"
 
-#: links.py:53
+#: links.py:52
 msgid "Setup"
 msgstr "Einrichtung"
 
-#: links.py:56
+#: links.py:55
 msgid "Source code"
 msgstr "Quelltext"
 
-#: links.py:60
+#: links.py:59
 msgid "Online store"
 msgstr "Online-Shop"
 
-#: links.py:64
+#: links.py:63
 msgid "Get support"
 msgstr "Support erhalten"
 
-#: links.py:68 queues.py:6 views.py:122
+#: links.py:67 queues.py:6 views.py:122
 msgid "Tools"
 msgstr "Werkzeuge"
 
@@ -182,21 +182,13 @@ msgstr ""
 
 #: settings.py:36
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr ""
-"Zeit für die Verzögerung von Hintergrundaufgaben, die für ihre Fortsetzung "
-"auf einen Datenbankcommit warten."
-
-#: settings.py:43
-msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:53
+#: settings.py:46
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -204,7 +196,7 @@ msgid ""
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:63
+#: settings.py:56
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
@@ -212,6 +204,10 @@ msgstr ""
 "Name des Formulars, das mit dem Markenanker im Hauptmenü verknüpft ist. Zu "
 "diesem Formular werden die Benutzer auch nach dem Anmeldevorgang "
 "weitergeleitet."
+
+#: settings.py:65
+msgid "Name of the dashboard to display in the home view."
+msgstr ""
 
 #: settings.py:70
 msgid "Sets the project's name."
@@ -229,15 +225,15 @@ msgstr "Warnung"
 msgid "Click here to fix this."
 msgstr "Klicken Sie hier, um dies zu beheben."
 
-#: validators.py:41
+#: validators.py:40
 msgid "Enter a valid JSON value."
 msgstr "Geben Sie einen gültigen JSON-Wert ein."
 
-#: validators.py:65
+#: validators.py:64
 msgid "Enter a valid YAML value."
 msgstr "Einen gültigen YAML-Wert eingeben."
 
-#: validators.py:81
+#: validators.py:80
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
@@ -250,8 +246,8 @@ msgid "About"
 msgstr "Über"
 
 #: views.py:39
-msgid "Dashboard"
-msgstr "Dashboard"
+msgid "Home"
+msgstr "Start"
 
 #: views.py:62
 #, python-format

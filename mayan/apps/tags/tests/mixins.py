@@ -180,14 +180,16 @@ class TagViewTestMixin:
 
     def _request_test_tag_delete_view(self):
         return self.post(
-            viewname='tags:tag_delete', kwargs={'tag_id': self.test_tag.pk}
+            viewname='tags:tag_delete_single', kwargs={
+                'tag_id': self.test_tag.pk
+            }
         )
 
     def _request_test_tag_delete_multiple_view(self):
         return self.post(
-            viewname='tags:tag_multiple_delete', data={
+            viewname='tags:tag_delete_multiple', data={
                 'id_list': self.test_tag.pk
-            },
+            }
         )
 
     def _request_test_tag_edit_view(self):

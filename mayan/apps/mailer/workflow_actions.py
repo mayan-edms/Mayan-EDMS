@@ -5,29 +5,31 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.document_states.classes import WorkflowAction
 
+from .literals import MODEL_SEND_FUNCTION_DOTTED_PATH
 from .models import UserMailer
 from .permissions import permission_user_mailer_use
 
-__all__ = ('EmailAction',)
+__all__ = ('DocumentEmailAction',)
 logger = logging.getLogger(name=__name__)
 
 
-class EmailAction(WorkflowAction):
+class ObjectEmailActionMixin:
     fields = {
         'mailing_profile': {
             'label': _('Mailing profile'),
             'class': 'django.forms.ModelChoiceField', 'kwargs': {
-                'help_text': _('Mailing profile to use when sending the email.'),
-                'queryset': UserMailer.objects.none(), 'required': True
+                'help_text': _(
+                    'Mailing profile to use when sending the email.'
+                ), 'queryset': UserMailer.objects.none(), 'required': True
             }
         },
         'recipient': {
             'label': _('Recipient'),
             'class': 'django.forms.CharField', 'kwargs': {
                 'help_text': _(
-                    'Email address of the recipient. Can be multiple addresses '
-                    'separated by comma or semicolon. A template can be used '
-                    'to reference properties of the document.'
+                    'Email address of the recipient. Can be multiple '
+                    'addresses separated by comma or semicolon. A template '
+                    'can be used to reference properties of the document.'
                 ),
                 'required': True
             }
@@ -38,8 +40,8 @@ class EmailAction(WorkflowAction):
                 'help_text': _(
                     'Address used in the "Bcc" header when sending the '
                     'email. Can be multiple addresses '
-                    'separated by comma or semicolon. A template can be used '
-                    'to reference properties of the document.'
+                    'separated by comma or semicolon. A template can be '
+                    'used to reference properties of the document.'
                 ),
                 'required': False
             }
@@ -50,8 +52,8 @@ class EmailAction(WorkflowAction):
                 'help_text': _(
                     'Address used in the "Bcc" header when sending the '
                     'email. Can be multiple addresses '
-                    'separated by comma or semicolon. A template can be used '
-                    'to reference properties of the document.'
+                    'separated by comma or semicolon. A template can be '
+                    'used to reference properties of the document.'
                 ),
                 'required': False
             }
@@ -60,10 +62,10 @@ class EmailAction(WorkflowAction):
             'label': _('Reply to'),
             'class': 'django.forms.CharField', 'kwargs': {
                 'help_text': _(
-                    'Address used in the "Reply-To" header when sending the '
-                    'email. Can be multiple addresses '
-                    'separated by comma or semicolon. A template can be used '
-                    'to reference properties of the document.'
+                    'Address used in the "Reply-To" header when sending '
+                    'the email. Can be multiple addresses separated by '
+                    'comma or semicolon. A template can be used to '
+                    'reference properties of the document.'
                 ),
                 'required': False
             }
@@ -81,7 +83,8 @@ class EmailAction(WorkflowAction):
             'label': _('Body'),
             'class': 'django.forms.CharField', 'kwargs': {
                 'help_text': _(
-                    'Body of the email to send. Can be a string or a template.'
+                    'Body of the email to send. Can be a string or '
+                    'a template.'
                 ),
                 'required': True
             }
@@ -90,16 +93,16 @@ class EmailAction(WorkflowAction):
             'label': _('Attachment'),
             'class': 'django.forms.BooleanField', 'default': False,
             'help_text': _(
-                'Attach the document to the mail.'
+                'Attach an object to the email.'
             ),
             'required': False
         },
     }
     field_order = (
         'mailing_profile', 'recipient', 'cc', 'bcc', 'reply_to', 'subject',
-        'body', 'attachment'
+        'body'
     )
-    label = _('Send email')
+    label = _('Send object via email')
     widgets = {
         'body': {
             'class': 'django.forms.widgets.Textarea', 'kwargs': {}
@@ -108,6 +111,10 @@ class EmailAction(WorkflowAction):
     permission = permission_user_mailer_use
 
     def execute(self, context):
+        user_mailer = self.get_user_mailer()
+        user_mailer.send_object(**self.get_execute_data(context=context))
+
+    def get_execute_data(self, context):
         recipient = self.render_field(
             field_name='recipient', context=context
         )
@@ -126,29 +133,21 @@ class EmailAction(WorkflowAction):
         body = self.render_field(
             field_name='body', context=context
         )
-        user_mailer = self.get_user_mailer()
 
         kwargs = {
-            'bcc': bcc, 'cc': cc, 'body': body, 'reply_to': reply_to,
+            'bcc': bcc, 'cc': cc, 'body': body,
+            'obj': self.get_object(context=context), 'reply_to': reply_to,
             'subject': subject, 'to': recipient
         }
 
-        if self.form_data.get('attachment', False):
-            kwargs.update(
-                {
-                    'as_attachment': True,
-                    'document': context['document']
-                }
-            )
-            user_mailer.send_document(**kwargs)
-        else:
-            user_mailer.send(**kwargs)
+        return kwargs
 
     def get_form_schema(self, **kwargs):
         result = super().get_form_schema(**kwargs)
 
         queryset = AccessControlList.objects.restrict_queryset(
-            permission=self.permission, queryset=UserMailer.objects.all(),
+            permission=self.permission,
+            queryset=UserMailer.objects.filter(enabled=True),
             user=kwargs['request'].user
         )
 
@@ -156,5 +155,54 @@ class EmailAction(WorkflowAction):
 
         return result
 
+    def get_object(self, context):
+        return NotImplementedError
+
     def get_user_mailer(self):
         return UserMailer.objects.get(pk=self.form_data['mailing_profile'])
+
+
+class DocumentEmailAction(ObjectEmailActionMixin, WorkflowAction):
+    fields = ObjectEmailActionMixin.fields.copy()
+    fields.update(
+        {
+            'attachment': {
+                'label': _('Attachment'),
+                'class': 'django.forms.BooleanField', 'default': False,
+                'help_text': _(
+                    'Attach the exported document version to the email.'
+                ),
+                'required': False
+            },
+        }
+    )
+    field_order = list(
+        ObjectEmailActionMixin.field_order
+    ).append('attachment')
+    label = _('Send document via email')
+
+    def get_execute_data(self, context):
+        result = super().get_execute_data(context=context)
+        document = self.get_object(context=context)
+
+        if self.form_data.get('attachment', False):
+            if document.version_active:
+                # Document must have a version active in order to be able
+                # to export and attach.
+                obj = document.version_active
+                result.update(
+                    {
+                        'as_attachment': True,
+                        'obj': obj
+                    }
+                )
+                result.update(
+                    MODEL_SEND_FUNCTION_DOTTED_PATH.get(
+                        obj._meta.model, {}
+                    )
+                )
+
+        return result
+
+    def get_object(self, context):
+        return context['document']

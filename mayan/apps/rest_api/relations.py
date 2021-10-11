@@ -1,7 +1,8 @@
 from django.apps import apps
-from django.core.exceptions import ImproperlyConfigured
+from django.core.exceptions import ImproperlyConfigured, ObjectDoesNotExist
 from django.db.models import Manager
 from django.db.models.query import QuerySet
+from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
 from rest_framework.relations import HyperlinkedIdentityField
@@ -9,12 +10,13 @@ from rest_framework.relations import HyperlinkedIdentityField
 from mayan.apps.common.utils import resolve_attribute
 
 
-class FilteredPrimaryKeyRelatedField(serializers.PrimaryKeyRelatedField):
+class FilteredRelatedFieldMixin:
     def __init__(self, **kwargs):
         self.source_model = kwargs.pop('source_model', None)
         self.source_permission = kwargs.pop('source_permission', None)
         self.source_queryset = kwargs.pop('source_queryset', None)
         self.source_queryset_method = kwargs.pop('source_queryset_method', None)
+
         super().__init__(**kwargs)
 
     def get_queryset(self):
@@ -24,7 +26,7 @@ class FilteredPrimaryKeyRelatedField(serializers.PrimaryKeyRelatedField):
 
         if self.source_model:
             queryset = self.source_model._meta.default_manager.all()
-        elif self.source_queryset:
+        elif self.source_queryset is not None:
             queryset = self.source_queryset
             if isinstance(queryset, (QuerySet, Manager)):
                 # Ensure queryset is re-evaluated whenever used.
@@ -57,6 +59,46 @@ class FilteredPrimaryKeyRelatedField(serializers.PrimaryKeyRelatedField):
             )
         else:
             return queryset
+
+
+class FilteredPrimaryKeyRelatedField(
+    FilteredRelatedFieldMixin, serializers.PrimaryKeyRelatedField
+):
+    """PrimaryKeyRelatedField that allows runtime queryset filtering by ACL."""
+
+
+class FilteredSimplePrimaryKeyRelatedField(
+    FilteredRelatedFieldMixin, serializers.RelatedField
+):
+    """
+    PrimaryKeyRelatedField that allows runtime queryset filtering by ACL
+    and that only stores the primary key.
+    """
+    default_error_messages = {
+        'required': _('This field is required.'),
+        'does_not_exist': _('Invalid pk "{pk_value}" - object does not exist.'),
+        'incorrect_type': _('Incorrect type. Expected pk value, received {data_type}.'),
+    }
+
+    def __init__(self, **kwargs):
+        self.pk_field = kwargs.pop('pk_field', 'pk')
+        super().__init__(**kwargs)
+
+    def to_internal_value(self, data):
+        kwargs = {
+            self.pk_field: data
+        }
+
+        queryset = self.get_queryset()
+        try:
+            return getattr(queryset.get(**kwargs), self.pk_field)
+        except ObjectDoesNotExist:
+            self.fail('does_not_exist', pk_value=data)
+        except (TypeError, ValueError):
+            self.fail('incorrect_type', data_type=type(data).__name__)
+
+    def to_representation(self, value):
+        return getattr(value, self.pk_field)
 
 
 class MultiKwargHyperlinkedIdentityField(HyperlinkedIdentityField):

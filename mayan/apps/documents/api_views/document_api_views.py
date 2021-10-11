@@ -1,8 +1,6 @@
 import logging
 
-from rest_framework import status
 from rest_framework.generics import get_object_or_404
-from rest_framework.response import Response
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.rest_api import generics
@@ -36,7 +34,7 @@ class APIDocumentDetailView(generics.RetrieveUpdateDestroyAPIView):
         'PATCH': (permission_document_properties_edit,),
         'DELETE': (permission_document_trash,)
     }
-    queryset = Document.objects.all()
+    queryset = Document.valid.all()
     serializer_class = DocumentSerializer
 
     def get_instance_extra_data(self):
@@ -54,7 +52,7 @@ class APIDocumentListView(generics.ListCreateAPIView):
         'GET': (permission_document_view,),
     }
     ordering_fields = ('datetime_created', 'document_type', 'id', 'label')
-    queryset = Document.objects.all()
+    queryset = Document.valid.all()
     serializer_class = DocumentSerializer
 
     def perform_create(self, serializer):
@@ -76,27 +74,22 @@ class APIDocumentListView(generics.ListCreateAPIView):
         }
 
 
-class APIDocumentChangeTypeView(generics.GenericAPIView):
+class APIDocumentChangeTypeView(generics.ObjectActionAPIView):
     """
     post: Change the type of the selected document.
     """
     lookup_url_kwarg = 'document_id'
     mayan_object_permissions = {
-        'POST': (permission_document_properties_edit,),
+        'POST': (permission_document_properties_edit,)
     }
-    queryset = Document.objects.all()
     serializer_class = DocumentChangeTypeSerializer
+    queryset = Document.valid.all()
 
-    def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        document_type = DocumentType.objects.get(
-            pk=request.data['document_type_id']
+    def object_action(self, request, serializer):
+        document_type_id = serializer.validated_data['document_type_id']
+        self.object.document_type_change(
+            document_type=document_type_id, _user=self.request.user
         )
-        self.get_object().document_type_change(
-            document_type=document_type, _user=self.request.user
-        )
-        return Response(status=status.HTTP_200_OK)
 
 
 class APIDocumentUploadView(generics.CreateAPIView):

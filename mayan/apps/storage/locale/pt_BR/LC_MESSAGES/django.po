@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:51+0000\n"
+"POT-Creation-Date: 2021-10-10 06:02+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Aline Freitas <aline@alinefreitas.com.br>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -22,11 +22,11 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:25 settings.py:12
+#: apps.py:23 settings.py:12
 msgid "Storage"
 msgstr "Armazenamento"
 
-#: apps.py:59
+#: apps.py:56
 msgid "Source object"
 msgstr ""
 
@@ -90,7 +90,7 @@ msgstr ""
 msgid "Name of the storage to process."
 msgstr "Nome do armazenamento a processar."
 
-#: model_mixins.py:13 models.py:115
+#: model_mixins.py:13 models.py:119
 msgid "Filename"
 msgstr "Nome do arquivo"
 
@@ -98,11 +98,11 @@ msgstr "Nome do arquivo"
 msgid "Date time"
 msgstr "Data e hora"
 
-#: model_mixins.py:48
+#: model_mixins.py:70
 msgid "Unnamed file"
 msgstr ""
 
-#: models.py:42 models.py:112
+#: models.py:42 models.py:116
 msgid "File"
 msgstr "Arquivo"
 
@@ -118,11 +118,11 @@ msgstr "Permissão"
 msgid "Download file"
 msgstr ""
 
-#: models.py:121
+#: models.py:125
 msgid "Shared uploaded file"
 msgstr "Arquivo compartilhado carregado"
 
-#: models.py:122 storages.py:36
+#: models.py:126 storages.py:36
 msgid "Shared uploaded files"
 msgstr "Arquivos compartilhados carregado"
 

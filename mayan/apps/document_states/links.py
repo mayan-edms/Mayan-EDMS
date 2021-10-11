@@ -2,7 +2,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.permissions import permission_document_type_edit
 from mayan.apps.navigation.classes import Link
-from mayan.apps.navigation.utils import get_cascade_condition
+from mayan.apps.navigation.utils import factory_condition_queryset_access
 
 from .icons import (
     icon_workflow_instance_detail, icon_workflow_instance_list,
@@ -257,7 +257,7 @@ link_workflow_runtime_proxy_document_list = Link(
     view='document_states:workflow_runtime_proxy_document_list',
 )
 link_workflow_runtime_proxy_list = Link(
-    condition=get_cascade_condition(
+    condition=factory_condition_queryset_access(
         app_label='document_states', model_name='WorkflowRuntimeProxy',
         object_permission=permission_workflow_template_view,
     ), icon=icon_workflow_runtime_proxy_list,

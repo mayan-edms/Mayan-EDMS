@@ -76,7 +76,7 @@ def node_tree(node, user):
             '<a href="{url}" class="list-group-item {active}"><span class="badge">{count}</span>{icon} {text}</a>'.format(
                 url=element.get_absolute_url(),
                 active='active' if element == node or node.get_ancestors(include_self=True).count() == 1 else '',
-                count=element.get_item_count(user=user),
+                count=element.get_descendants_document_count(user=user),
                 icon=icon.render(),
                 text=escape(element)
             )

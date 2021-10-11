@@ -151,10 +151,17 @@ class GroupViewTestMixin:
         self.test_group = Group.objects.filter(name=TEST_GROUP_NAME).first()
         return reponse
 
-    def _request_test_group_delete_view(self):
+    def _request_test_group_delete_single_view(self):
         return self.post(
-            viewname='user_management:group_delete', kwargs={
+            viewname='user_management:group_delete_single', kwargs={
                 'group_id': self.test_group.pk
+            }
+        )
+
+    def _request_test_group_delete_multiple_view(self):
+        return self.post(
+            viewname='user_management:group_delete_multiple', data={
+                'id_list': self.test_group.pk
             }
         )
 
@@ -357,7 +364,7 @@ class UserViewTestMixin:
 
     def _request_test_superuser_delete_view(self):
         return self.post(
-            viewname='user_management:user_delete',
+            viewname='user_management:user_delete_single',
             kwargs={'user_id': self.test_superuser.pk}
         )
 
@@ -380,15 +387,15 @@ class UserViewTestMixin:
         ).first()
         return reponse
 
-    def _request_test_user_delete_view(self):
+    def _request_test_user_delete_single_view(self):
         return self.post(
-            viewname='user_management:user_delete',
+            viewname='user_management:user_delete_single',
             kwargs={'user_id': self.test_user.pk}
         )
 
     def _request_test_user_delete_multiple_view(self):
         return self.post(
-            viewname='user_management:user_multiple_delete', data={
+            viewname='user_management:user_delete_multiple', data={
                 'id_list': self.test_user.pk
             }
         )

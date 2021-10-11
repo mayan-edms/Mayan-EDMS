@@ -5,15 +5,26 @@ from .api_views import (
     APIDocumentTypeMetadataTypeListView, APIDocumentTypeMetadataTypeView,
     APIMetadataTypeListView, APIMetadataTypeView
 )
-from .views import (
+from .views.document_views import (
     DocumentMetadataAddView, DocumentMetadataEditView,
-    DocumentMetadataListView, DocumentMetadataRemoveView,
+    DocumentMetadataListView, DocumentMetadataRemoveView
+)
+from .views.metadata_type_views import (
     MetadataTypeCreateView, MetadataTypeDeleteView, MetadataTypeEditView,
     MetadataTypeListView, DocumentTypeMetadataTypeRelationshipView,
     MetadataTypesDocumentTypeRelationshipView
 )
 
-urlpatterns = [
+
+urlpatterns_document_type = [
+    url(
+        regex=r'^document_types/(?P<document_type_id>\d+)/metadata_types/$',
+        name='document_type_metadata_type_relationship',
+        view=DocumentTypeMetadataTypeRelationshipView.as_view()
+    )
+]
+
+urlpatterns_document_metadata = [
     url(
         regex=r'^document_types/(?P<document_type_id>\d+)/metadata_types/$',
         name='document_type_metadata_type_relationship',
@@ -47,7 +58,10 @@ urlpatterns = [
         regex=r'^documents/multiple/metadata/remove/$',
         name='metadata_multiple_remove',
         view=DocumentMetadataRemoveView.as_view()
-    ),
+    )
+]
+
+urlpatterns_metadata_type = [
     url(
         regex=r'^metadata_types/$', name='metadata_type_list',
         view=MetadataTypeListView.as_view()
@@ -57,20 +71,30 @@ urlpatterns = [
         view=MetadataTypeCreateView.as_view()
     ),
     url(
-        regex=r'^metadata_types/(?P<metadata_type_id>\d+)/edit/$',
-        name='metadata_type_edit', view=MetadataTypeEditView.as_view()
-    ),
-    url(
         regex=r'^metadata_types/(?P<metadata_type_id>\d+)/delete/$',
-        name='metadata_type_delete',
+        name='metadata_type_delete_single',
         view=MetadataTypeDeleteView.as_view()
     ),
     url(
         regex=r'^metadata_types/(?P<metadata_type_id>\d+)/document_types/$',
         name='metadata_type_document_type_relationship',
         view=MetadataTypesDocumentTypeRelationshipView.as_view()
+    ),
+    url(
+        regex=r'^metadata_types/(?P<metadata_type_id>\d+)/edit/$',
+        name='metadata_type_edit', view=MetadataTypeEditView.as_view()
+    ),
+    url(
+        regex=r'^metadata_types/multiple/delete/$',
+        name='metadata_type_delete_multiple',
+        view=MetadataTypeDeleteView.as_view()
     )
 ]
+
+urlpatterns = []
+urlpatterns.extend(urlpatterns_document_metadata)
+urlpatterns.extend(urlpatterns_document_type)
+urlpatterns.extend(urlpatterns_metadata_type)
 
 api_urls = [
     url(

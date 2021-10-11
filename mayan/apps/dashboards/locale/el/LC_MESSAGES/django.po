@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Hmayag Antonian <hmayag@freemail.gr>, 2021
 # UE4 Hobbyist, 2021
 # pyrotech <anastasios@tutamail.com>, 2021
+# Hmayag Antonian <hmayag@freemail.gr>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,14 +22,31 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:12
+#: apps.py:18 links.py:9 views.py:11
 msgid "Dashboards"
 msgstr "Πίνακες"
 
-#: dashboards.py:5
-msgid "Main"
-msgstr "Κεντρικό"
+#: apps.py:25
+msgid "Widgets"
+msgstr ""
+
+#: apps.py:29
+msgid "Label"
+msgstr "Ετικέτα"
+
+#: dashboards.py:6
+msgid "Administrator dashboard"
+msgstr ""
+
+#: links.py:14
+msgid "Details"
+msgstr "Λεπτομέρειες"
 
 #: templates/dashboards/numeric_widget.html:27
+#: templates/dashboards/widget_list.html:47
 msgid "View details"
 msgstr "Εμφάνιση λεπτομερειών"
+
+#: views.py:27
+msgid "Dashboard detail"
+msgstr ""

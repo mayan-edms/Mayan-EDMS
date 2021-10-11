@@ -12,7 +12,6 @@ DEFAULT_SCOPE_ID = '0'
 DELIMITER = '_'
 
 SEARCH_MODEL_NAME_KWARG = 'search_model_name'
-TASK_RETRY_DELAY = 5
 
 SCOPE_MARKER = '__'
 SCOPE_MATCH_ALL = 'match_all'

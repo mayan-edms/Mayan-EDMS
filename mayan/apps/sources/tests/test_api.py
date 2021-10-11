@@ -1,224 +1,197 @@
 from rest_framework import status
 
-from mayan.apps.documents.models.document_models import Document
-from mayan.apps.documents.permissions import permission_document_create
-from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
-from ..models.staging_folder_sources import StagingFolderSource
+from ..events import event_source_created, event_source_edited
+from ..models import Source
 from ..permissions import (
-    permission_sources_setup_create, permission_sources_setup_delete,
-    permission_sources_setup_edit, permission_sources_setup_view,
-    permission_staging_file_delete
+    permission_sources_create, permission_sources_delete,
+    permission_sources_edit, permission_sources_view
 )
 
-from .mixins import (
-    StagingFolderAPIViewTestMixin, StagingFolderFileAPIViewTestMixin,
-    StagingFolderTestMixin
-)
+from .mixins.base_mixins import SourceAPIViewTestMixin, SourceTestMixin
 
 
-class StagingFolderAPIViewTestCase(
-    StagingFolderAPIViewTestMixin, StagingFolderTestMixin, BaseAPITestCase
+class SourceAPIViewTestCase(
+    SourceAPIViewTestMixin, SourceTestMixin, BaseAPITestCase
 ):
-    def test_staging_folder_create_api_view_no_permission(self):
-        staging_folder_count = StagingFolderSource.objects.count()
+    auto_create_test_source = False
 
-        response = self._request_test_staging_folder_create_api_view()
+    def test_source_create_api_view_no_permission(self):
+        source_count = Source.objects.count()
+
+        self._clear_events()
+
+        response = self._request_test_source_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-        self.assertEqual(
-            StagingFolderSource.objects.count(), staging_folder_count
-        )
+        self.assertEqual(Source.objects.count(), source_count)
 
-    def test_staging_folder_create_api_view_with_permission(self):
-        self.grant_permission(permission=permission_sources_setup_create)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
-        staging_folder_count = StagingFolderSource.objects.count()
+    def test_source_create_api_view_with_permission(self):
+        self.grant_permission(permission=permission_sources_create)
 
-        response = self._request_test_staging_folder_create_api_view()
+        source_count = Source.objects.count()
+
+        self._clear_events()
+
+        response = self._request_test_source_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        self.assertEqual(
-            StagingFolderSource.objects.count(), staging_folder_count + 1
-        )
+        self.assertEqual(Source.objects.count(), source_count + 1)
 
-    def test_staging_folder_delete_api_view_no_permission(self):
-        self._create_test_staging_folder()
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
 
-        staging_folder_count = StagingFolderSource.objects.count()
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_source)
+        self.assertEqual(events[0].verb, event_source_created.id)
 
-        response = self._request_test_staging_folder_delete_api_view()
+    def test_source_delete_api_view_no_permission(self):
+        self._create_test_source()
+
+        source_count = Source.objects.count()
+
+        self._clear_events()
+
+        response = self._request_test_source_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.assertEqual(
-            StagingFolderSource.objects.count(), staging_folder_count
+        self.assertEqual(Source.objects.count(), source_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_source_delete_api_view_with_access(self):
+        self._create_test_source()
+
+        self.grant_access(
+            obj=self.test_source, permission=permission_sources_delete
         )
 
-    def test_staging_folder_delete_api_view_with_permission(self):
-        self._create_test_staging_folder()
+        source_count = Source.objects.count()
 
-        self.grant_permission(permission=permission_sources_setup_delete)
+        self._clear_events()
 
-        staging_folder_count = StagingFolderSource.objects.count()
-
-        response = self._request_test_staging_folder_delete_api_view()
+        response = self._request_test_source_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
-        self.assertEqual(
-            StagingFolderSource.objects.count(), staging_folder_count - 1
-        )
+        self.assertEqual(Source.objects.count(), source_count - 1)
 
-    def test_staging_folder_edit_api_view_via_patch_no_permission(self):
-        self._create_test_staging_folder()
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
-        staging_folder_label = self.test_staging_folder.label
+    def test_source_edit_api_view_via_patch_no_permission(self):
+        self._create_test_source()
 
-        response = self._request_test_staging_folder_edit_api_view(verb='patch')
+        source_label = self.test_source.label
+
+        self._clear_events()
+
+        response = self._request_test_source_edit_api_view_via_patch()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.test_staging_folder.refresh_from_db()
-        self.assertEqual(self.test_staging_folder.label, staging_folder_label)
+        self.test_source.refresh_from_db()
+        self.assertEqual(self.test_source.label, source_label)
 
-    def test_staging_folder_edit_api_view_via_patch_with_permission(self):
-        self._create_test_staging_folder()
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
-        self.grant_permission(permission=permission_sources_setup_edit)
+    def test_source_edit_api_view_via_patch_with_access(self):
+        self._create_test_source()
 
-        staging_folder_label = self.test_staging_folder.label
+        self.grant_access(
+            obj=self.test_source, permission=permission_sources_edit
+        )
 
-        response = self._request_test_staging_folder_edit_api_view(verb='patch')
+        source_label = self.test_source.label
+
+        self._clear_events()
+
+        response = self._request_test_source_edit_api_view_via_patch()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.test_staging_folder.refresh_from_db()
-        self.assertNotEqual(
-            self.test_staging_folder.label, staging_folder_label
-        )
+        self.test_source.refresh_from_db()
+        self.assertNotEqual(self.test_source.label, source_label)
 
-    def test_staging_folder_edit_api_view_via_put_no_permission(self):
-        self._create_test_staging_folder()
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
 
-        staging_folder_label = self.test_staging_folder.label
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_source)
+        self.assertEqual(events[0].verb, event_source_edited.id)
 
-        response = self._request_test_staging_folder_edit_api_view(
-            extra_data={
-                'folder_path': self.test_staging_folder.folder_path,
-                'preview_width': self.test_staging_folder.preview_width,
-                'uncompress': self.test_staging_folder.uncompress
-            }, verb='put'
-        )
+    def test_source_edit_api_view_via_put_no_permission(self):
+        self._create_test_source()
+
+        source_label = self.test_source.label
+
+        self._clear_events()
+
+        response = self._request_test_source_edit_api_view_via_put()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.test_staging_folder.refresh_from_db()
-        self.assertEqual(self.test_staging_folder.label, staging_folder_label)
+        self.test_source.refresh_from_db()
+        self.assertEqual(self.test_source.label, source_label)
 
-    def test_staging_folder_edit_api_view_via_put_with_permission(self):
-        self._create_test_staging_folder()
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
-        self.grant_permission(permission=permission_sources_setup_edit)
+    def test_source_edit_api_view_via_put_with_access(self):
+        self._create_test_source()
 
-        staging_folder_label = self.test_staging_folder.label
-
-        response = self._request_test_staging_folder_edit_api_view(
-            extra_data={
-                'folder_path': self.test_staging_folder.folder_path,
-                'preview_width': self.test_staging_folder.preview_width,
-                'uncompress': self.test_staging_folder.uncompress
-            }, verb='put'
+        self.grant_access(
+            obj=self.test_source, permission=permission_sources_edit
         )
+
+        source_label = self.test_source.label
+
+        self._clear_events()
+
+        response = self._request_test_source_edit_api_view_via_put()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.test_staging_folder.refresh_from_db()
-        self.assertNotEqual(
-            self.test_staging_folder.label, staging_folder_label
+        self.test_source.refresh_from_db()
+        self.assertNotEqual(self.test_source.label, source_label)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_source)
+        self.assertEqual(events[0].verb, event_source_edited.id)
+
+    def test_source_api_list_api_view_no_permission(self):
+        self._create_test_source()
+
+        self._clear_events()
+
+        response = self._request_test_source_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 0)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_source_api_list_api_view_with_access(self):
+        self._create_test_source()
+
+        self.grant_access(
+            obj=self.test_source, permission=permission_sources_view
         )
+        self._clear_events()
 
-    def test_staging_folder_api_list_api_view_no_permission(self):
-        self._create_test_staging_folder()
-
-        response = self._request_test_staging_folder_list_api_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-
-    def test_staging_folder_api_list_api_view_with_permission(self):
-        self._create_test_staging_folder()
-
-        self.grant_permission(permission=permission_sources_setup_view)
-
-        response = self._request_test_staging_folder_list_api_view()
+        response = self._request_test_source_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['label'],
-            self.test_staging_folder.label
+            self.test_source.label
         )
 
-
-class StagingFolderFileAPIViewTestCase(
-    DocumentTestMixin, StagingFolderFileAPIViewTestMixin,
-    StagingFolderTestMixin, BaseAPITestCase
-):
-    auto_create_test_document_type = False
-    auto_upload_test_document = False
-
-    def test_staging_folder_file_delete_api_view_no_permission(self):
-        self._create_test_staging_folder()
-        self._copy_test_document()
-        staging_file_count = len(list(self.test_staging_folder.get_files()))
-
-        response = self._request_test_staging_folder_file_delete_api_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-
-        self.assertEqual(
-            len(list(self.test_staging_folder.get_files())),
-            staging_file_count
-        )
-
-    def test_staging_folder_file_delete_api_view_with_permission(self):
-        self.grant_permission(permission=permission_staging_file_delete)
-        self._create_test_staging_folder()
-        self._copy_test_document()
-        staging_file_count = len(list(self.test_staging_folder.get_files()))
-
-        response = self._request_test_staging_folder_file_delete_api_view()
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-        self.assertTrue(response.data is None)
-
-        self.assertNotEqual(
-            len(list(self.test_staging_folder.get_files())),
-            staging_file_count
-        )
-
-    def test_staging_folder_file_detail_api_view(self):
-        self._create_test_staging_folder()
-        self._copy_test_document()
-
-        response = self._request_test_staging_folder_file_detail_api_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertTrue(
-            response.data['image_url'].endswith(
-                self.test_staging_folder_file.get_api_image_url()
-            )
-        )
-
-    def test_staging_folder_file_upload_api_view_no_permission(self):
-        self._create_test_document_type()
-        self._create_test_staging_folder()
-        self._copy_test_document()
-        document_count = Document.objects.count()
-
-        response = self._request_test_staging_folder_file_upload_api_view()
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-        self.assertEqual(Document.objects.count(), document_count)
-
-    def test_staging_folder_file_upload_api_view_document_access(self):
-        self._create_test_document_type()
-        self._create_test_staging_folder()
-        self._copy_test_document()
-        document_count = Document.objects.count()
-
-        self.grant_access(
-            obj=self.test_document_type, permission=permission_document_create
-        )
-
-        response = self._request_test_staging_folder_file_upload_api_view()
-        self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
-        self.assertEqual(Document.objects.count(), document_count + 1)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)

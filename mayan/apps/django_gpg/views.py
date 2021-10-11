@@ -15,10 +15,7 @@ from mayan.apps.events.decorators import method_event
 
 from .events import event_key_downloaded
 from .forms import KeyDetailForm, KeySearchForm
-from .icons import (
-    icon_key_setup, icon_keyserver_search, icon_private_keys,
-    icon_public_keys
-)
+from .icons import icon_key_setup, icon_private_keys, icon_public_keys
 from .links import link_key_query, link_key_upload
 from .literals import KEY_TYPE_PUBLIC
 from .models import Key
@@ -141,8 +138,6 @@ class KeyQueryView(SimpleView):
         return {
             'form': self.get_form(),
             'form_action': reverse(viewname='django_gpg:key_query_results'),
-            'submit_icon': icon_keyserver_search,
-            'submit_label': _('Search'),
             'submit_method': 'GET',
             'title': _('Query key server'),
         }

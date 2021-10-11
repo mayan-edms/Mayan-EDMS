@@ -16,6 +16,94 @@ from ..literals import (
 from ..workflow_actions import TestWorkflowAction
 
 
+class WorkflowTemplateStateActionAPIViewTestMixin:
+    def _request_test_workflow_template_state_action_create_api_view(self):
+        pk_list = list(WorkflowStateAction.objects.values('pk'))
+
+        total_test_workflow_template_state_actions = len(
+            self.test_workflow_template_state_actions
+        )
+        label = '{}_{}'.format(
+            TEST_WORKFLOW_TEMPLATE_STATE_ACTION_LABEL,
+            total_test_workflow_template_state_actions
+        )
+
+        data = {
+            'label': label,
+            'action_path': self.test_workflow_template_state_action_path
+        }
+
+        response = self.post(
+            viewname='rest_api:workflow-template-state-action-list',
+            kwargs={
+                'workflow_template_id': self.test_workflow_template.pk,
+                'workflow_template_state_id': self.test_workflow_template_state.pk
+            }, data=data
+        )
+
+        try:
+            self.test_workflow_template_state_action = WorkflowStateAction.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except WorkflowStateAction.DoesNotExist:
+            self.test_workflow_template_state_action = None
+
+        return response
+
+    def _request_test_workflow_template_state_action_delete_api_view(self):
+        return self.delete(
+            viewname='rest_api:workflow-template-state-action-detail',
+            kwargs={
+                'workflow_template_id': self.test_workflow_template.pk,
+                'workflow_template_state_id': self.test_workflow_template_state.pk,
+                'workflow_template_state_action_id': self.test_workflow_template_state_action.pk
+            }
+        )
+
+    def _request_test_workflow_template_state_action_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:workflow-template-state-action-detail',
+            kwargs={
+                'workflow_template_id': self.test_workflow_template.pk,
+                'workflow_template_state_id': self.test_workflow_template_state.pk,
+                'workflow_template_state_action_id': self.test_workflow_template_state_action.pk
+            }
+        )
+
+    def _request_test_workflow_template_state_action_list_api_view(self):
+        return self.get(
+            viewname='rest_api:workflow-template-state-action-list', kwargs={
+                'workflow_template_id': self.test_workflow_template.pk,
+                'workflow_template_state_id': self.test_workflow_template_state.pk
+            }
+        )
+
+    def _request_test_workflow_template_state_action_edit_patch_api_view(self):
+        return self.patch(
+            viewname='rest_api:workflow-template-state-action-detail',
+            kwargs={
+                'workflow_template_id': self.test_workflow_template.pk,
+                'workflow_template_state_id': self.test_workflow_template_state.pk,
+                'workflow_template_state_action_id': self.test_workflow_template_state_action.pk
+            }, data={
+                'label': TEST_WORKFLOW_TEMPLATE_STATE_ACTION_LABEL_EDITED
+            }
+        )
+
+    def _request_test_workflow_template_state_action_edit_put_api_view(self):
+        return self.put(
+            viewname='rest_api:workflow-template-state-action-detail',
+            kwargs={
+                'workflow_template_id': self.test_workflow_template.pk,
+                'workflow_template_state_id': self.test_workflow_template_state.pk,
+                'workflow_template_state_action_id': self.test_workflow_template_state_action.pk
+            }, data={
+                'label': TEST_WORKFLOW_TEMPLATE_STATE_ACTION_LABEL_EDITED,
+                'action_path': self.test_workflow_template_state_action_path
+            }
+        )
+
+
 class WorkflowTemplateStateActionLaunchViewTestMixin:
     def _request_document_workflow_template_launch_action_create_view(self):
         return self.post(

@@ -59,7 +59,7 @@ class DocumentCheckoutTestCase(
     def test_document_auto_check_in(self):
         self._check_out_test_document()
 
-        # Ensure we wait from longer than the document check out expiration
+        # Ensure we wait from longer than the document check out expiration.
         self._test_delay(seconds=self._test_document_check_out_seconds + 0.1)
 
         DocumentCheckout.objects.check_in_expired_check_outs()
@@ -72,7 +72,7 @@ class DocumentCheckoutTestCase(
         self.assertTrue(self.test_check_out.get_absolute_url())
 
     def test_blocking_new_files(self):
-        # Silence unrelated logging
+        # Silence unrelated logging.
         self._silence_logger(name='mayan.apps.documents.models')
         self._check_out_test_document()
 
@@ -81,7 +81,7 @@ class DocumentCheckoutTestCase(
                 self.test_document.file_new(file_object=file_object)
 
     def test_file_creation_blocking(self):
-        # Silence unrelated logging
+        # Silence unrelated logging.
         self._silence_logger(name='mayan.apps.documents.models')
 
         self._create_test_case_superuser()

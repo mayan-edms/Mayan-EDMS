@@ -173,7 +173,7 @@ class DocumentCabinetAddView(MultipleObjectFormActionView):
     form_class = CabinetListForm
     object_permission = permission_cabinet_add_document
     pk_url_kwarg = 'document_id'
-    source_queryset = Document.valid
+    source_queryset = Document.valid.all()
     success_message_single = _(
         'Document "%(object)s" added to cabinets successfully.'
     )
@@ -188,9 +188,7 @@ class DocumentCabinetAddView(MultipleObjectFormActionView):
     title_plural = _('Add %(count)d documents to cabinets.')
 
     def get_extra_context(self):
-        context = {
-            'submit_label': _('Add'),
-        }
+        context = {}
 
         if self.object_list.count() == 1:
             context.update(
@@ -236,7 +234,7 @@ class DocumentCabinetAddView(MultipleObjectFormActionView):
 class DocumentCabinetListView(ExternalObjectViewMixin, CabinetListView):
     external_object_permission = permission_cabinet_view
     external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
 
     def get_extra_context(self):
         return {
@@ -271,7 +269,7 @@ class DocumentCabinetRemoveView(MultipleObjectFormActionView):
     form_class = CabinetListForm
     object_permission = permission_cabinet_remove_document
     pk_url_kwarg = 'document_id'
-    source_queryset = Document.valid
+    source_queryset = Document.valid.all()
     success_message_single = _(
         'Document "%(object)s" removed from cabinets successfully.'
     )
@@ -286,9 +284,7 @@ class DocumentCabinetRemoveView(MultipleObjectFormActionView):
     title_plural = _('Remove %(count)d documents from cabinets.')
 
     def get_extra_context(self):
-        context = {
-            'submit_label': _('Remove'),
-        }
+        context = {}
 
         if self.object_list.count() == 1:
             context.update(

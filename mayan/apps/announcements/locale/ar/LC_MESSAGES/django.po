@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:49+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-12 03:38+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -23,12 +23,12 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
+#: apps.py:35 events.py:5 links.py:40 models.py:42 permissions.py:6
 #: templates/announcements/announcements.html:8 views.py:119
 msgid "Announcements"
 msgstr ""
 
-#: apps.py:74 apps.py:78
+#: apps.py:72 apps.py:76
 msgid "None"
 msgstr "لا شيء"
 
@@ -52,43 +52,43 @@ msgstr "حذف"
 msgid "Edit"
 msgstr "تعديل"
 
-#: models.py:18
+#: models.py:19
 msgid "Short description of this announcement."
 msgstr ""
 
-#: models.py:19
+#: models.py:20
 msgid "Label"
 msgstr "العنوان"
 
-#: models.py:22
+#: models.py:23
 msgid "The actual text to be displayed."
 msgstr ""
 
-#: models.py:23
+#: models.py:24
 msgid "Text"
 msgstr "النص"
 
-#: models.py:25
+#: models.py:26
 msgid "Enabled"
 msgstr "مفعل"
 
-#: models.py:28
+#: models.py:29
 msgid "Date and time after which this announcement will be displayed."
 msgstr ""
 
-#: models.py:29
+#: models.py:30
 msgid "Start date time"
 msgstr "وقت تاريخ البدء"
 
-#: models.py:33
+#: models.py:34
 msgid "Date and time until when this announcement is to be displayed."
 msgstr ""
 
-#: models.py:34
+#: models.py:35
 msgid "End date time"
 msgstr "وقت تاريخ الانتهاء"
 
-#: models.py:40
+#: models.py:41
 msgid "Announcement"
 msgstr ""
 

@@ -61,5 +61,5 @@ PythonDependency(
     ''', module=__name__, name='django-widget-tweaks', version_string='==1.4.8'
 )
 PythonDependency(
-    module=__name__, name='furl', version_string='==2.1.0'
+    module=__name__, name='furl', version_string='==2.1.2'
 )

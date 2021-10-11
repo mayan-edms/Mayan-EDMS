@@ -1,14 +1,12 @@
-from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
-from django.utils.translation import ungettext, ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.views.generics import (
-    AddRemoveView, MultipleObjectConfirmActionView,
-    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectDetailView,
-    SingleObjectEditView, SingleObjectListView
+    AddRemoveView, MultipleObjectDeleteView, SingleObjectCreateView,
+    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
@@ -23,7 +21,7 @@ from .permissions import (
 from .querysets import get_user_queryset
 
 
-class CurrentUserDetailsView(SingleObjectDetailView):
+class CurrentUserDetailView(SingleObjectDetailView):
     fields = (
         'username', 'first_name', 'last_name', 'email', 'last_login',
         'date_joined', 'groups'
@@ -63,18 +61,32 @@ class GroupCreateView(SingleObjectCreateView):
         return {'_event_actor': self.request.user}
 
 
-class GroupDeleteView(SingleObjectDeleteView):
+class GroupDeleteView(MultipleObjectDeleteView):
+    error_message = _('Error deleting group "%(instance)s"; %(exception)s')
     model = Group
     object_permission = permission_group_delete
     pk_url_kwarg = 'group_id'
     post_action_redirect = reverse_lazy(
         viewname='user_management:group_list'
     )
+    success_message_single = _('Group "%(object)s" deleted successfully.')
+    success_message_singular = _('%(count)d group deleted successfully.')
+    success_message_plural = _('%(count)d groups deleted successfully.')
+    title_single = _('Delete group: %(object)s.')
+    title_singular = _('Delete the %(count)d selected group.')
+    title_plural = _('Delete the %(count)d selected groups.')
 
-    def get_extra_context(self):
+
+class GroupDetailView(SingleObjectDetailView):
+    fields = ('name',)
+    model = Group
+    object_permission = permission_group_view
+    pk_url_kwarg = 'group_id'
+
+    def get_extra_context(self, **kwargs):
         return {
             'object': self.object,
-            'title': _('Delete the group: %s?') % self.object,
+            'title': _('Details of group: %s') % self.object
         }
 
 
@@ -168,62 +180,21 @@ class UserCreateView(SingleObjectCreateView):
         return {'_event_actor': self.request.user}
 
 
-class UserDeleteView(MultipleObjectConfirmActionView):
+class UserDeleteView(MultipleObjectDeleteView):
+    error_message = _('Error deleting user "%(instance)s"; %(exception)s')
     object_permission = permission_user_delete
     pk_url_kwarg = 'user_id'
+    post_action_redirect = reverse_lazy(viewname='user_management:user_list')
     source_queryset = get_user_queryset()
-    success_message = _('User delete request performed on %(count)d user')
-    success_message_plural = _(
-        'User delete request performed on %(count)d users'
-    )
-
-    def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
-            'title': ungettext(
-                singular='Delete user',
-                plural='Delete users',
-                number=queryset.count()
-            )
-        }
-
-        if queryset.count() == 1:
-            result.update(
-                {
-                    'object': queryset.first(),
-                    'title': _('Delete user: %s') % queryset.first()
-                }
-            )
-
-        return result
-
-    def object_action(self, form, instance):
-        try:
-            if instance.is_superuser or instance.is_staff:
-                messages.error(
-                    message=_(
-                        'Super user and staff user deleting is not '
-                        'allowed, use the admin interface for these cases.'
-                    ), request=self.request
-                )
-            else:
-                instance.delete()
-                messages.success(
-                    message=_(
-                        'User "%s" deleted successfully.'
-                    ) % instance, request=self.request
-                )
-        except Exception as exception:
-            messages.error(
-                message=_(
-                    'Error deleting user "%(user)s": %(error)s'
-                ) % {'user': instance, 'error': exception},
-                request=self.request
-            )
+    success_message_single = _('User "%(object)s" deleted successfully.')
+    success_message_singular = _('%(count)d user deleted successfully.')
+    success_message_plural = _('%(count)d users deleted successfully.')
+    title_single = _('Delete user: %(object)s.')
+    title_singular = _('Delete the %(count)d selected user.')
+    title_plural = _('Delete the %(count)d selected users.')
 
 
-class UserDetailsView(SingleObjectDetailView):
+class UserDetailView(SingleObjectDetailView):
     fields = (
         'username', 'first_name', 'last_name', 'email', 'last_login',
         'date_joined', 'groups',

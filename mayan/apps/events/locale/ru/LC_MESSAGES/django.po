@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -23,52 +23,52 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:28 events.py:5 links.py:38 links.py:43 links.py:53 permissions.py:5
-#: queues.py:7 views/event_views.py:30
+#: apps.py:31 events.py:11 links.py:61 links.py:66 links.py:84
+#: permissions.py:5 queues.py:7 views/event_views.py:30
 msgid "Events"
 msgstr "События"
 
-#: apps.py:53 apps.py:81
+#: apps.py:59 apps.py:88
 msgid "Date and time"
 msgstr "Дата и время"
 
-#: apps.py:56 apps.py:84
+#: apps.py:63 apps.py:91
 msgid "Actor"
 msgstr "Субъект"
 
-#: apps.py:60 apps.py:89
+#: apps.py:67 apps.py:96
 msgid "Event"
 msgstr "Событие"
 
-#: apps.py:64 apps.py:94
+#: apps.py:71 apps.py:101
 msgid "Target"
 msgstr "Объект"
 
-#: apps.py:68 apps.py:98
+#: apps.py:75 apps.py:105
 msgid "Action object"
 msgstr "Объект действия"
 
-#: apps.py:73 forms.py:10 forms.py:67
+#: apps.py:80 forms.py:10 forms.py:67
 msgid "Namespace"
 msgstr "Пространство имен"
 
-#: apps.py:76 forms.py:14 forms.py:71
+#: apps.py:83 forms.py:14 forms.py:71
 msgid "Label"
 msgstr "Заголовок"
 
-#: apps.py:103
+#: apps.py:110
 msgid "Seen"
 msgstr "Просмотрено"
 
-#: classes.py:79
+#: classes.py:88
 msgid "Event list export to CSV"
 msgstr "Экспорт списка событий в CSV"
 
-#: classes.py:108
+#: classes.py:117
 msgid "Events exported."
 msgstr "События экспортированы."
 
-#: classes.py:110
+#: classes.py:119
 #, python-format
 msgid ""
 "The event list has been exported and is available for download using the "
@@ -77,12 +77,16 @@ msgstr ""
 "Список событий экспортирован и доступен для скачивания по ссылке: "
 "%(download_url)s или из области загрузок (%(download_list_url)s)."
 
-#: classes.py:274
+#: classes.py:343
 #, python-format
 msgid "Unknown or obsolete event type: %s"
 msgstr "Неизвестный или устаревший тип события: %s"
 
-#: events.py:8
+#: events.py:15
+msgid "Events cleared"
+msgstr ""
+
+#: events.py:18
 msgid "Events exported"
 msgstr "События экспортированы"
 
@@ -102,27 +106,31 @@ msgstr "Подписан"
 msgid "System"
 msgstr "Система"
 
-#: links.py:30
+#: links.py:49
 msgid "My events"
 msgstr "Мои события"
 
-#: links.py:34 links.py:49 links.py:56 views/export_views.py:57
+#: links.py:53 links.py:73 links.py:87 views/clear_views.py:62
+msgid "Clear events"
+msgstr ""
+
+#: links.py:57 links.py:80 links.py:91 views/export_views.py:57
 msgid "Export events"
 msgstr "Экспорт событий"
 
-#: links.py:61 models.py:63 views/subscription_views.py:56
+#: links.py:96 models.py:63 views/subscription_views.py:56
 msgid "Event subscriptions"
 msgstr "Подписки на события"
 
-#: links.py:66
+#: links.py:101
 msgid "Mark as seen"
 msgstr "Отметить как просмотренное"
 
-#: links.py:69
+#: links.py:104
 msgid "Mark all as seen"
 msgstr "Отметить все как просмотренные"
 
-#: links.py:75
+#: links.py:110
 msgid "Subscriptions"
 msgstr "Подписки"
 
@@ -175,16 +183,44 @@ msgid "Object event subscriptions"
 msgstr "Подписки на события объекта"
 
 #: permissions.py:8
+msgid "Clear the events of an object"
+msgstr ""
+
+#: permissions.py:11
 msgid "Export the events of an object"
 msgstr "Экспортировать события объекта"
 
-#: permissions.py:11
-msgid "Access the events of an object"
-msgstr "Доступ к событиям объекта"
+#: permissions.py:14
+msgid "View the events of an object"
+msgstr ""
 
 #: queues.py:13
+msgid "Clear event querysets"
+msgstr ""
+
+#: queues.py:17
 msgid "Export event querysets"
 msgstr "Запросы для экспорта событий"
+
+#: views/clear_views.py:26
+msgid ""
+"This action is not reversible. The process will be performed in the "
+"background. "
+msgstr ""
+
+#: views/clear_views.py:50
+msgid "Event list clear task queued successfully."
+msgstr ""
+
+#: views/clear_views.py:81
+#, python-format
+msgid "Clear events of: %s"
+msgstr ""
+
+#: views/clear_views.py:119 views/event_views.py:70 views/export_views.py:105
+#, python-format
+msgid "Events of type: %s"
+msgstr "События с типом: %s"
 
 #: views/event_views.py:26
 msgid "Events track actions that have been performed on, to, or with objects."
@@ -207,11 +243,6 @@ msgstr "События для: %s"
 msgid "There are no events of this type"
 msgstr "Нет событий этого типа"
 
-#: views/event_views.py:70 views/export_views.py:105
-#, python-format
-msgid "Events of type: %s"
-msgstr "События с типом: %s"
-
 #: views/export_views.py:26
 msgid ""
 "The process will be performed in the background. The exported events will be"
@@ -226,8 +257,8 @@ msgstr "Задача экспорта списка событий поставл
 
 #: views/export_views.py:76
 #, python-format
-msgid "Export events for: %s"
-msgstr "Экспорт событий для: %s"
+msgid "Export events of: %s"
+msgstr ""
 
 #: views/notification_views.py:25
 msgid "Subscribe to global or object events to receive notifications."

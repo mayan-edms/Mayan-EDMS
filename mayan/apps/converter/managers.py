@@ -55,7 +55,7 @@ class LayerTransformationManager(models.Manager):
                 """
             else:
                 access_permission = layer_class.permissions.get(
-                    'access_permission', None
+                    'access', None
                 )
                 if access_permission:
                     try:
@@ -67,7 +67,7 @@ class LayerTransformationManager(models.Manager):
 
         for stored_layer in exclude_layers:
             exclude_permission = stored_layer.get_layer().permissions.get(
-                'exclude_permission', None
+                'exclude', None
             )
             if exclude_permission:
                 try:
@@ -75,9 +75,8 @@ class LayerTransformationManager(models.Manager):
                         obj=obj, permissions=(exclude_permission,), user=user
                     )
                 except PermissionDenied:
-                    pass
-                else:
                     exclude_layers = exclude_layers.exclude(pk=stored_layer.pk)
+                    access_layers |= StoredLayer.objects.filter(pk=stored_layer.pk)
 
         if only_stored_layer:
             transformations = transformations.filter(

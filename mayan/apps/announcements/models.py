@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
@@ -42,6 +43,9 @@ class Announcement(ExtraDataModelMixin, models.Model):
 
     def __str__(self):
         return self.label
+
+    def get_absolute_url(self):
+        return reverse(viewname='announcements:announcement_list')
 
     @method_event(
         event_manager_class=EventManagerSave,

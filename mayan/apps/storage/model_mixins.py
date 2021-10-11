@@ -20,8 +20,11 @@ class DatabaseFileModelMixin(models.Model):
         abstract = True
 
     def delete(self, *args, **kwargs):
-        if self.file.name:
-            self.file.storage.delete(name=self.file.name)
+        name = self.file.name
+        self.file.close()
+
+        if name:
+            self.file.storage.delete(name=name)
         return super().delete(*args, **kwargs)
 
     def open(self, **kwargs):
@@ -29,6 +32,25 @@ class DatabaseFileModelMixin(models.Model):
             'mode': self.file.file.mode,
             'name': self.file.name
         }
+
+        # Close the self.file object as Django generates a new descriptor
+        # when the file field is accessed.
+        # From django/db/models/fields/files.py.
+        """
+        The descriptor for the file attribute on the model instance. Return a
+        FieldFile when accessed so you can write code like::
+
+            >>> from myapp.models import MyModel
+            >>> instance = MyModel.objects.get(pk=1)
+            >>> instance.file.size
+
+        Assign a file object on assignment so you can do::
+
+            >>> with open('/path/to/hello.world', 'r') as f:
+            ...     instance.file = File(f)
+        """
+        self.file.close()
+        self.file.file.close()
 
         default_kwargs.update(**kwargs)
 

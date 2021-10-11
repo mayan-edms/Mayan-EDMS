@@ -2,7 +2,7 @@ from django.apps import apps
 
 import logging
 
-from mayan.apps.document_indexing.tasks import task_index_document
+from mayan.apps.document_indexing.tasks import task_index_instance_document_add
 
 from .tasks import task_add_required_metadata_type, task_remove_metadata_type
 
@@ -10,8 +10,10 @@ logger = logging.getLogger(name=__name__)
 
 
 def handler_index_document(sender, **kwargs):
-    task_index_document.apply_async(
-        kwargs=dict(document_id=kwargs['instance'].document.pk)
+    task_index_instance_document_add.apply_async(
+        kwargs={
+            'document_id': kwargs['instance'].document.pk
+        }
     )
 
 

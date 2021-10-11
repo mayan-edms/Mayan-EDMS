@@ -3,14 +3,13 @@ from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import (
     permission_acl_edit, permission_acl_view
 )
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_list_facet, menu_object, menu_secondary, menu_setup, menu_user
+    menu_object, menu_secondary, menu_setup, menu_user
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
@@ -93,9 +92,6 @@ class AppearanceApp(MayanAppConfig):
             sender=settings.AUTH_USER_MODEL
         )
 
-        menu_list_facet.bind_links(
-            links=(link_acl_list,), sources=(Theme,)
-        )
         menu_object.bind_links(
             links=(
                 link_theme_delete, link_theme_edit

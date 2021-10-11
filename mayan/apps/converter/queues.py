@@ -8,7 +8,7 @@ queue_converter = CeleryQueue(
 )
 
 queue_converter.add_task_type(
-    dotted_path='mayan.apps.converter.tasks.task_asset_image_generate',
-    label=_('Generate a image of an asset.'),
-    name='task_asset_image_generate',
+    dotted_path='mayan.apps.converter.tasks.task_content_object_image_generate',
+    label=_('Generate a image of an object.'),
+    name='task_content_object_image_generate',
 )

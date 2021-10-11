@@ -1,0 +1,54 @@
+{% load i18n %}
+
+{% load appearance_tags %}
+{% load navigation_tags %}
+
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 match-height">
+    <div class="panel panel-secondary dashboards-panel-widget">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-2">
+                    {% if icon %}
+                        <div class="dashboards-panel-widget-icon">
+                            {% appearance_icon_render icon enable_shadow=True %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-xs-10">
+                    <strong>{{ label }}</strong>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    {% navigation_get_source_columns source=object_list names=columns as source_columns %}
+                    <table class="table table-condensed table-hover table-striped">
+                        <tbody>
+                            {% for object in object_list %}
+                                <tr>
+                                    {% for column in source_columns %}
+                                        <td>
+                                            {% navigation_source_column_resolve column=column as column_value %}
+                                            {{ column_value }}
+                                            {# Use explicit 'as column_value ' to force date rendering #}
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% if link %}
+            <a href="{{ link }}">
+                <div class="panel-footer">
+                    <span class="pull-left">{% trans 'View details' %}</span>
+                    <span class="pull-right">{% appearance_icon_render link_icon %}</span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        {% endif %}
+    </div>
+</div>

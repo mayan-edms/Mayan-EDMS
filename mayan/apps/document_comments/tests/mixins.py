@@ -50,6 +50,14 @@ class CommentAPIViewTestMixin:
             }, data={'text': TEST_COMMENT_TEXT_EDITED}
         )
 
+    def _request_test_comment_edit_put_api_view(self):
+        return self.put(
+            viewname='rest_api:comment-detail', kwargs={
+                'document_id': self.test_document.pk,
+                'comment_id': self.test_document_comment.pk,
+            }, data={'text': TEST_COMMENT_TEXT_EDITED}
+        )
+
     def _request_test_comment_list_api_view(self):
         return self.get(
             viewname='rest_api:comment-list', kwargs={

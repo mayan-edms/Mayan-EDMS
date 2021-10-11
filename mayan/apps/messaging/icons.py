@@ -1,6 +1,5 @@
 from mayan.apps.appearance.classes import Icon
 
-icon_form_button_send = Icon(driver_name='fontawesome', symbol='paper-plane')
 icon_message_create = icon_tag_create = Icon(
     driver_name='fontawesome-dual', primary_symbol='envelope',
     secondary_symbol='plus'

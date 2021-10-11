@@ -8,22 +8,22 @@ from .icons import (
 from .settings import setting_disable_links
 
 
-def api_links_enabled(context):
+def condition_api_links_enabled(context, resolved_object):
     return not setting_disable_links.value
 
 
 link_api = Link(
-    condition=api_links_enabled, icon=icon_api, tags='new_window',
+    condition=condition_api_links_enabled, icon=icon_api, tags='new_window',
     text=_('REST API'), view='rest_api:api_root'
 )
 link_api_documentation = Link(
-    condition=api_links_enabled, icon=icon_api_documentation,
+    condition=condition_api_links_enabled, icon=icon_api_documentation,
     tags='new_window', text=_('API Documentation (Swagger)'),
     view='rest_api:schema-swagger-ui'
 )
 
 link_api_documentation_redoc = Link(
-    condition=api_links_enabled, icon=icon_api_documentation_redoc,
+    condition=condition_api_links_enabled, icon=icon_api_documentation_redoc,
     tags='new_window', text=_('API Documentation (ReDoc)'),
     view='rest_api:schema-redoc'
 )

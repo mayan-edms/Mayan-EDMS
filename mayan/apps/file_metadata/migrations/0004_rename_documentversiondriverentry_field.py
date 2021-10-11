@@ -11,6 +11,6 @@ class Migration(migrations.Migration):
         migrations.RenameField(
             model_name='documentversiondriverentry',
             old_name='document_version',
-            new_name='document_file',
-        ),
+            new_name='document_file'
+        )
     ]

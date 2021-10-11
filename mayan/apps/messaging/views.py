@@ -11,28 +11,26 @@ from mayan.apps.views.generics import (
     SingleObjectDetailView, SingleObjectListView
 )
 
-from .forms import MessageDetailForm
-from .icons import icon_form_button_send, icon_message_list
+from .forms import MessageCreateForm, MessageDetailForm
+from .icons import icon_message_list
 from .links import link_message_create
 from .models import Message
 from .permissions import (
     permission_message_create, permission_message_delete,
-    permission_message_view
+    permission_message_edit, permission_message_view
 )
 
 logger = logging.getLogger(name=__name__)
 
 
 class MessageCreateView(SingleObjectCreateView):
-    fields = ('user', 'subject', 'body')
+    form_class = MessageCreateForm
     model = Message
     view_permission = permission_message_create
 
     def get_extra_context(self):
         return {
-            'title': _('Create message'),
-            'submit_label': _('Send'),
-            'submit_icon': icon_form_button_send,
+            'title': _('Create message')
         }
 
     def get_instance_extra_data(self):
@@ -118,7 +116,6 @@ class MessageListView(SingleObjectListView):
                 'the system.'
             ),
             'no_results_title': _('There are no messages'),
-            'object': self.request.user,
             'title': _('Messages'),
         }
 
@@ -130,7 +127,7 @@ class MessageMarkReadView(MultipleObjectConfirmActionView):
     error_message = _(
         'Error marking message "%(instance)s" as read; %(exception)s'
     )
-    object_permission = permission_message_view
+    object_permission = permission_message_edit
     pk_url_kwarg = 'message_id'
     post_action_redirect = reverse_lazy(viewname='messaging:message_list')
     success_message_single = _(
@@ -179,7 +176,7 @@ class MessageMarkReadAllView(ConfirmView):
 
     def view_action(self, form=None):
         queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_message_view, queryset=self.get_queryset(),
+            permission=permission_message_edit, queryset=self.get_queryset(),
             user=self.request.user
         )
 
@@ -197,7 +194,7 @@ class MessageMarkUnReadView(MultipleObjectConfirmActionView):
     error_message = _(
         'Error marking message "%(instance)s" as unread; %(exception)s'
     )
-    object_permission = permission_message_view
+    object_permission = permission_message_edit
     pk_url_kwarg = 'message_id'
     post_action_redirect = reverse_lazy(viewname='messaging:message_list')
     success_message_single = _(

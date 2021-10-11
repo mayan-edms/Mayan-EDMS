@@ -1,9 +1,12 @@
 from django.conf.urls import url
 
-from .api_views import (
+from .api_views.index_instance_api_views import (
     APIDocumentIndexInstanceNodeListView, APIIndexInstanceDetailView,
-    APIIndexInstanceListView, APIIndexInstanceNodeDetailView,
-    APIIndexInstanceNodeDocumentListView, APIIndexInstanceNodeListView,
+    APIIndexInstanceListView, APIIndexInstanceNodeChildrenNodeListView,
+    APIIndexInstanceNodeDetailView, APIIndexInstanceNodeDocumentListView,
+    APIIndexInstanceNodeListView
+)
+from .api_views.index_template_api_views import (
     APIIndexTemplateDetailView, APIIndexTemplateDocumentTypeAddView,
     APIIndexTemplateDocumentTypeListView,
     APIIndexTemplateDocumentTypeRemoveView, APIIndexTemplateListView,
@@ -130,6 +133,11 @@ api_urls_index_instances = [
         regex=r'^index_instances/(?P<index_instance_id>[0-9]+)/nodes/(?P<index_instance_node_id>[0-9]+)/$',
         name='indexinstancenode-detail',
         view=APIIndexInstanceNodeDetailView.as_view()
+    ),
+    url(
+        regex=r'^index_instances/(?P<index_instance_id>[0-9]+)/nodes/(?P<index_instance_node_id>[0-9]+)/nodes/$',
+        name='indexinstancenode-children-list',
+        view=APIIndexInstanceNodeChildrenNodeListView.as_view()
     ),
     url(
         regex=r'^index_instances/(?P<index_instance_id>[0-9]+)/nodes/(?P<index_instance_node_id>[0-9]+)/documents/$',

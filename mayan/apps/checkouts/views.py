@@ -39,9 +39,7 @@ class DocumentCheckInView(MultipleObjectConfirmActionView):
     title_plural = _('Check in %(count)d documents.')
 
     def get_extra_context(self):
-        context = {
-            'submit_label': _('Check in'),
-        }
+        context = {}
 
         if self.object_list.count() == 1:
             context.update(
@@ -95,7 +93,7 @@ class DocumentCheckOutView(MultipleObjectFormActionView):
     form_class = DocumentCheckOutForm
     object_permission = permission_document_check_out
     pk_url_kwarg = 'document_id'
-    source_queryset = Document.valid
+    source_queryset = Document.valid.all()
     success_message_single = _(
         'Document "%(object)s" checked out successfully.'
     )
@@ -110,9 +108,7 @@ class DocumentCheckOutView(MultipleObjectFormActionView):
     title_plural = _('Checkout %(count)d documents.')
 
     def get_extra_context(self):
-        context = {
-            'submit_label': _('Checkout'),
-        }
+        context = {}
 
         if self.object_list.count() == 1:
             context.update(
@@ -149,7 +145,7 @@ class DocumentCheckOutDetailView(SingleObjectDetailView):
     form_class = DocumentCheckOutDetailForm
     object_permission = permission_document_check_out_detail_view
     pk_url_kwarg = 'document_id'
-    source_queryset = Document.valid
+    source_queryset = Document.valid.all()
 
     def get_extra_context(self):
         return {

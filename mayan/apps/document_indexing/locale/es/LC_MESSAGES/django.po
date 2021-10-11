@@ -5,14 +5,15 @@
 # Translators:
 # Translators:
 # Roberto Rosario, 2021
+# Lory977 <helga.carrero@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"Last-Translator: Lory977 <helga.carrero@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,27 +29,35 @@ msgstr "Ninguno"
 msgid "Document types"
 msgstr "Tipos de documento"
 
-#: apps.py:51 events.py:6 settings.py:8
+#: apps.py:50 events.py:6
 msgid "Document indexing"
 msgstr "Indexación de documentos"
 
-#: apps.py:147
-msgid "Total levels"
-msgstr "Niveles totales"
-
-#: apps.py:154
-msgid "Total documents"
-msgstr "Total de documentos"
-
-#: apps.py:160 apps.py:174 apps.py:204 apps.py:214
+#: apps.py:128 apps.py:157 apps.py:196 apps.py:229
 msgid "Level"
 msgstr "Nível"
 
-#: apps.py:183
-msgid "Levels"
-msgstr "Niveles"
+#: apps.py:136 apps.py:166
+msgid "Depth"
+msgstr ""
 
-#: apps.py:195 models.py:393
+#: apps.py:140
+msgid "Total nodes"
+msgstr "Nodos totales"
+
+#: apps.py:147
+msgid "Total documents"
+msgstr "Total de documentos"
+
+#: apps.py:149 apps.py:187
+msgid "Number of unique documents this item contains."
+msgstr ""
+
+#: apps.py:174
+msgid "Nodes"
+msgstr "Nodos"
+
+#: apps.py:185 models.py:437
 msgid "Documents"
 msgstr "Documentos"
 
@@ -64,7 +73,7 @@ msgstr "Plantilla de índice editada"
 msgid "Index templates to be queued for rebuilding."
 msgstr "Las plantillas de índice se pondrán en cola para su reconstrucción."
 
-#: forms.py:17 links.py:36 views/index_template_views.py:96
+#: forms.py:17 links.py:36 models.py:62 views/index_template_views.py:96
 msgid "Index templates"
 msgstr "Plantillas de índice"
 
@@ -72,11 +81,11 @@ msgstr "Plantillas de índice"
 msgid "Template"
 msgstr "Plantilla"
 
-#: handlers.py:18
+#: handlers.py:19
 msgid "Creation date"
 msgstr "Fecha de creación"
 
-#: links.py:30 links.py:44 links.py:75 links.py:79 models.py:62
+#: links.py:30 links.py:44 links.py:75 links.py:79
 #: views/index_instance_views.py:43
 msgid "Indexes"
 msgstr "Índices"
@@ -93,7 +102,7 @@ msgstr "Borra y crea desde cero todos los índices de documentos."
 msgid "Rebuild indexes"
 msgstr "Reconstruir índices"
 
-#: links.py:66 views/index_template_views.py:345
+#: links.py:66 views/index_template_views.py:347
 msgid "Reset indexes"
 msgstr "Restablecer índices"
 
@@ -142,34 +151,33 @@ msgstr ""
 "Hace que este índice sea visible y actualizado cuando los datos de "
 "documentos cambien."
 
-#: models.py:50 models.py:229
+#: models.py:50 models.py:189
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: models.py:61 models.py:213
+#: models.py:61
+msgid "Index template"
+msgstr ""
+
+#: models.py:174
 msgid "Index"
 msgstr "Índice"
 
-#: models.py:217
-msgid ""
-"Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+#: models.py:178
+msgid "Enter a template to render. Use Django's default templating language."
 msgstr ""
-"Ingrese una plantilla para renderizar. Utilice el lenguaje de plantillas "
-"predeterminado de Django "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
-#: models.py:221
+#: models.py:181
 msgid "Indexing expression"
 msgstr "Expresión de indexación"
 
-#: models.py:226
+#: models.py:186
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr ""
 "Hace que este nodo sea visible y actualizado cuando los datos de los "
 "documentos son cambiados."
 
-#: models.py:234
+#: models.py:194
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
@@ -177,23 +185,31 @@ msgstr ""
 "Marque esta opción para que el nodo actúe como un contenedor de documentos y"
 " no como un padre para otros nodos secundarios."
 
-#: models.py:237
+#: models.py:197
 msgid "Link documents"
 msgstr "Vincular documentos"
 
-#: models.py:241
-msgid "Index node template"
+#: models.py:201 models.py:430
+msgid "Index template node"
 msgstr "Nodo de plantilla de indice"
 
-#: models.py:242
-msgid "Indexes node template"
-msgstr "Nodos de plantillas de índices"
+#: models.py:202
+msgid "Index template nodes"
+msgstr ""
 
-#: models.py:246
+#: models.py:206
 msgid "Root"
 msgstr "Nodo principal"
 
-#: models.py:304
+#: models.py:227
+msgid "Index instance"
+msgstr "Instancia de índice"
+
+#: models.py:228
+msgid "Index instances"
+msgstr "Instancias de índices"
+
+#: models.py:309
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
@@ -202,47 +218,47 @@ msgstr ""
 "Error indexando documento: %(document)s; expresión: %(expression)s; "
 "%(exception)s"
 
-#: models.py:345
-msgid "Index instance"
-msgstr "Instancia de índice"
+#: models.py:387
+msgid "Total number of nodes with unique values this item contains."
+msgstr ""
 
-#: models.py:346
-msgid "Index instances"
-msgstr "Instancias de índices"
+#: models.py:396
+msgid "Total number of unique documents this item contains."
+msgstr ""
 
-#: models.py:386
-msgid "Index template node"
-msgstr "Nodo de plantilla de indice"
+#: models.py:406
+msgid "Total number of node levels this item contains."
+msgstr ""
 
-#: models.py:389 search.py:26
+#: models.py:433 search.py:26
 msgid "Value"
 msgstr "Valor"
 
-#: models.py:399 models.py:528
+#: models.py:442 models.py:523
 msgid "Index instance node"
 msgstr "Nodo de instancia de índice"
 
-#: models.py:400
+#: models.py:443
 msgid "Indexes instances node"
 msgstr "Nodo de instancias de índices"
 
-#: models.py:465
+#: models.py:490
 msgid "The path to the index including all ancestors."
 msgstr "La ruta al nodo del índice, incluidos todos los que lo contienen."
 
-#: models.py:467
+#: models.py:492
 msgid "Full path"
 msgstr "Ruta completa"
 
-#: models.py:521
+#: models.py:516
 msgid "Document index node instance"
 msgstr "Instancia del nodo del índice de documentos"
 
-#: models.py:522
+#: models.py:517
 msgid "Document indexes node instances"
 msgstr "Instancias de nodos de índices de documentos"
 
-#: models.py:529
+#: models.py:524
 msgid "Index instance nodes"
 msgstr "Nodos de instancia de índice"
 
@@ -310,15 +326,15 @@ msgstr "UUID del documento"
 msgid "Document checksum"
 msgstr "Suma de comprobación del documento"
 
-#: serializers.py:197
+#: serializers.py:189
 msgid "Parent cannot be empty."
 msgstr "El padre no puede estar vacío."
 
-#: serializers.py:204
+#: serializers.py:196
 msgid "Parent must be from the same index template."
 msgstr "El padre debe ser de la misma plantilla de índice."
 
-#: serializers.py:215
+#: serializers.py:207
 msgid ""
 "URL of the API endpoint showing the list document types associated with this"
 " index template."
@@ -326,38 +342,27 @@ msgstr ""
 "URL de la API que muestra la lista de tipos de documentos asociados con esta"
 " plantilla de índice."
 
-#: serializers.py:222
+#: serializers.py:214
 msgid "URL of the API endpoint to add document types to this index template."
 msgstr ""
 "URL de la API para agregar tipos de documentos a esta plantilla de índice."
 
-#: serializers.py:229
+#: serializers.py:221
 msgid ""
 "URL of the API endpoint to remove document types from this index template."
 msgstr ""
 "URL de la API para eliminar tipos de documentos de esta plantilla de índice."
 
-#: serializers.py:277
+#: serializers.py:269
 msgid "Primary key of the document type to add to the index template."
 msgstr ""
 "Llave principal del tipo de documento para agregar a la plantilla de índice."
 
-#: serializers.py:286
+#: serializers.py:278
 msgid "Primary key of the document type to remove from the index template."
 msgstr ""
 "Llave principal del tipo de documento que se eliminará de la plantilla de "
 "índice."
-
-#: settings.py:14
-msgid ""
-"Amount of time in seconds, a failed indexing task will wait before retrying."
-" Lower values will increase the speed at which documents are indexed but "
-"will cause a higher count of failed/retried tasks in the queue."
-msgstr ""
-"Cantidad de tiempo en segundos, una tarea de indexación fallida esperará "
-"antes de volver a intentarlo. Los valores más bajos aumentarán la velocidad "
-"a la que se indexan los documentos, pero provocarán una mayor cantidad de "
-"tareas fallidas / reintentadas en la cola."
 
 #: views/index_instance_views.py:38
 msgid ""
@@ -469,27 +474,27 @@ msgstr "Tipos de documentos enlazados al índice: %s"
 msgid "Edit index: %s"
 msgstr "Editar índice: %s"
 
-#: views/index_template_views.py:187
+#: views/index_template_views.py:186
 #, python-format
 msgid "Tree template nodes for index: %s"
 msgstr "Nodos de la plantilla del árbol del índice: %s"
 
-#: views/index_template_views.py:213
+#: views/index_template_views.py:211
 #, python-format
 msgid "Create child node of: %s"
 msgstr "Crear nodo hijo de: %s"
 
-#: views/index_template_views.py:239
+#: views/index_template_views.py:237
 #, python-format
 msgid "Delete the index template node: %s?"
 msgstr "¿Borrar el nodo de plantilla de indice: %s?"
 
-#: views/index_template_views.py:263
+#: views/index_template_views.py:261
 #, python-format
-msgid "Edit the index template node: %s?"
-msgstr "¿Editar el nodo de plantilla de indice: %s?"
+msgid "Edit the index template node: %s"
+msgstr ""
 
-#: views/index_template_views.py:283
+#: views/index_template_views.py:281
 #, python-format
 msgid "Rebuild index template: %s"
 msgstr "Reconstruir plantilla de índice: %s"
@@ -498,20 +503,20 @@ msgstr "Reconstruir plantilla de índice: %s"
 msgid "Index template queued for rebuild."
 msgstr "Plantilla de índice en cola para reconstrucción."
 
-#: views/index_template_views.py:324
+#: views/index_template_views.py:326
 #, python-format
 msgid "%(count)d index template queued for rebuild."
 msgid_plural "%(count)d index templates queued for rebuild."
 msgstr[0] "%(count)d plantilla de índice en cola para reconstrucción."
 msgstr[1] "%(count)d plantillas de índice en cola para reconstrucción."
 
-#: views/index_template_views.py:357
+#: views/index_template_views.py:359
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
 msgstr[0] "%(count)d índice reiniciado."
 msgstr[1] "%(count)d índices reiniciados."
 
-#: views/index_template_views.py:370
+#: views/index_template_views.py:372
 msgid "Index templates for which their instances will be deleted."
 msgstr "Plantillas de índice para las que se eliminarán sus instancias."

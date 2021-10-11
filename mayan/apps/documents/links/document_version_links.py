@@ -34,11 +34,15 @@ link_document_version_create = Link(
     text=_('Create document version'),
     view='documents:document_version_create'
 )
-link_document_version_delete = Link(
+link_document_version_delete_single = Link(
     args='resolved_object.pk',
     icon=icon_document_version_delete,
     permissions=(permission_document_version_delete,), tags='dangerous',
-    text=_('Delete'), view='documents:document_version_delete'
+    text=_('Delete'), view='documents:document_version_delete_single'
+)
+link_document_version_delete_multiple = Link(
+    icon=icon_document_version_delete, tags='dangerous',
+    text=_('Delete'), view='documents:document_version_delete_multiple'
 )
 link_document_version_edit = Link(
     args='resolved_object.pk', icon=icon_document_version_edit,
@@ -49,10 +53,6 @@ link_document_version_export = Link(
     args='resolved_object.pk', icon=icon_document_version_export,
     permissions=(permission_document_version_export,),
     text=_('Export'), view='documents:document_version_export'
-)
-link_document_version_multiple_delete = Link(
-    icon=icon_document_version_delete, tags='dangerous',
-    text=_('Delete'), view='documents:document_version_multiple_delete'
 )
 link_document_version_list = Link(
     args='resolved_object.pk', icon=icon_document_version_list,

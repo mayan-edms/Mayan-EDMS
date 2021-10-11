@@ -44,9 +44,9 @@ class DocumentCreateWizardStepCabinets(DocumentCreateWizardStep):
         return result
 
     @classmethod
-    def step_post_upload_process(cls, document, querystring=None):
+    def step_post_upload_process(cls, document, query_string=None):
         Cabinet = apps.get_model(app_label='cabinets', model_name='Cabinet')
-        cabinet_id_list = URL(query_string=querystring).args.getlist('cabinets')
+        cabinet_id_list = URL(query_string=query_string).args.getlist('cabinets')
 
         for cabinet in Cabinet.objects.filter(pk__in=cabinet_id_list):
             cabinet.documents.add(document)

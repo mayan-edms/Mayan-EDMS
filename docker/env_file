@@ -6,6 +6,9 @@
 # Default project name. Change this using the docker-compose `-p, --project-name NAME` option.
 COMPOSE_PROJECT_NAME=mayan
 
+# Default profile
+COMPOSE_PROFILES=all_in_one,postgresql
+
 # To use block storage.
 # MAYAN_PIP_INSTALLS="django-storages==1.10 boto3==1.14.58"
 # MAYAN_DOCUMENTS_STORAGE_BACKEND="storages.backends.s3boto3.S3Boto3Storage"

@@ -46,7 +46,7 @@ class IndexInstanceListView(SingleObjectListView):
     def get_source_queryset(self):
         queryset = IndexInstance.objects.filter(enabled=True)
         return queryset.filter(
-            node_templates__index_instance_nodes__isnull=False
+            index_template_nodes__index_instance_nodes__isnull=False
         ).distinct()
 
 
@@ -129,7 +129,7 @@ class DocumentIndexInstanceNodeListView(ExternalObjectViewMixin, SingleObjectLis
     """
     external_object_permission = permission_index_instance_view
     external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     object_permission = permission_index_instance_view
 
     def get_extra_context(self):

@@ -4,6 +4,12 @@ from .base import GenericDocumentTestCase
 
 
 class TrashedDocumentTestCase(GenericDocumentTestCase):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_restoring_documents(self):
         self.assertEqual(Document.valid.count(), 1)
 
@@ -30,6 +36,8 @@ class TrashedDocumentTestCase(GenericDocumentTestCase):
         self.assertEqual(TrashedDocument.objects.count(), 0)
         self.assertEqual(Document.valid.count(), 0)
 
+
+class TrashedDocumentPageTestCase(GenericDocumentTestCase):
     def test_trashed_document_page_count(self):
         page_count = self.test_document.version_active.pages.count()
         self.test_document.delete()

@@ -1,5 +1,3 @@
-from django.test import override_settings
-
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.literals import TEST_HYBRID_DOCUMENT
 
@@ -50,10 +48,26 @@ class DocumentFileContentViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_content_delete_view_no_permission(self):
+    def test_trashed_document_file_content_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_content_view
+        )
+
+        self.test_document.delete()
+
         self._clear_events()
 
-        response = self._request_test_document_file_content_delete_view()
+        response = self._request_test_document_file_content_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_file_content_delete_single_view_no_permission(self):
+        self._clear_events()
+
+        response = self._request_test_document_file_content_delete_single_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
@@ -65,14 +79,14 @@ class DocumentFileContentViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_content_delete_view_with_access(self):
+    def test_document_file_content_delete_single_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_file_parse
         )
 
         self._clear_events()
 
-        response = self._request_test_document_file_content_delete_view()
+        response = self._request_test_document_file_content_delete_single_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertFalse(
@@ -91,6 +105,94 @@ class DocumentFileContentViewsTestCase(
             events[0].verb, event_parsing_document_file_content_deleted.id
         )
 
+    def test_trashed_document_file_content_delete_single_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_file_parse
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_file_content_delete_single_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            DocumentFilePageContent.objects.filter(
+                document_file_page=self.test_document_file.pages.first()
+            ).exists()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_file_content_delete_multiple_view_no_permission(self):
+        self._clear_events()
+
+        response = self._request_test_document_file_content_delete_multiple_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            DocumentFilePageContent.objects.filter(
+                document_file_page=self.test_document_file.pages.first()
+            ).exists()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_file_content_delete_multiple_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_file_parse
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_file_content_delete_multiple_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertFalse(
+            DocumentFilePageContent.objects.filter(
+                document_file_page=self.test_document_file.pages.first()
+            ).exists()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].action_object, self.test_document)
+        self.assertEqual(events[0].target, self.test_document_file)
+        self.assertEqual(
+            events[0].verb, event_parsing_document_file_content_deleted.id
+        )
+
+    def test_trashed_document_file_content_delete_multiple_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_file_parse
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_file_content_delete_multiple_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            DocumentFilePageContent.objects.filter(
+                document_file_page=self.test_document_file.pages.first()
+            ).exists()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+
+class DocumentFilePageContentViewsTestCase(
+    DocumentFileContentViewTestMixin, DocumentFileContentTestMixin,
+    GenericDocumentViewTestCase
+):
     def test_document_file_page_content_view_no_permission(self):
         self._clear_events()
 
@@ -171,13 +273,10 @@ class DocumentFileContentViewsTestCase(
         self.assertEqual(events.count(), 0)
 
 
-@override_settings(DOCUMENT_PARSING_AUTO_PARSING=True)
 class DocumentFileContentParsingViewsTestCase(
     DocumentFileContentViewTestMixin, GenericDocumentViewTestCase
 ):
     _skip_file_descriptor_test = True
-    # Ensure we use a PDF file.
-    test_document_filename = TEST_HYBRID_DOCUMENT
 
     def test_document_file_parsing_download_view_no_permission(self):
         self._clear_events()
@@ -229,7 +328,7 @@ class DocumentFileContentParsingViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_parsing_submit_view_no_permission(self):
+    def test_document_file_parsing_submit_single_view_no_permission(self):
         self._clear_events()
 
         response = self._request_test_document_file_parsing_submit_view()
@@ -238,7 +337,7 @@ class DocumentFileContentParsingViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_parsing_submit_view_with_access(self):
+    def test_document_file_parsing_submit_single_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_file_parse
         )
@@ -265,7 +364,58 @@ class DocumentFileContentParsingViewsTestCase(
             events[1].verb, event_parsing_document_file_finished.id
         )
 
-    def test_trashed_document_file_parsing_submit_view_with_access(self):
+    def test_trashed_document_file_parsing_single_submit_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_file_parse
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_file_parsing_submit_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_file_parsing_submit_multiple_view_no_permission(self):
+        self._clear_events()
+
+        response = self._request_test_document_file_parsing_submit_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_file_parsing_submit_multiple_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_file_parse
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_file_parsing_submit_view()
+        self.assertEqual(response.status_code, 302)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 2)
+
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].action_object, self.test_document)
+        self.assertEqual(events[0].target, self.test_document_file)
+        self.assertEqual(
+            events[0].verb, event_parsing_document_file_submitted.id
+        )
+
+        self.assertEqual(events[1].actor, self._test_case_user)
+        self.assertEqual(events[1].action_object, self.test_document)
+        self.assertEqual(events[1].target, self.test_document_file)
+        self.assertEqual(
+            events[1].verb, event_parsing_document_file_finished.id
+        )
+
+    def test_trashed_document_file_parsing_multiple_submit_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_file_parse
         )

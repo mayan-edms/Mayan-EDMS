@@ -34,7 +34,7 @@ logger = logging.getLogger(name=__name__)
 class DocumentType(ExtraDataModelMixin, models.Model):
     """
     Define document types or classes to which a specific set of
-    properties can be attached
+    properties can be attached.
     """
     label = models.CharField(
         help_text=_('The name of the document type.'), max_length=96,
@@ -170,6 +170,7 @@ class DocumentType(ExtraDataModelMixin, models.Model):
                     'file for document %s; %s',
                     label or file_object.name, exception
                 )
+                document.delete(to_trash=False)
                 raise
             else:
                 return document, document_file
@@ -192,7 +193,7 @@ class DocumentType(ExtraDataModelMixin, models.Model):
 class DocumentTypeFilename(ExtraDataModelMixin, models.Model):
     """
     List of labels available to a specific document type for the
-    quick rename functionality
+    quick rename functionality.
     """
     document_type = models.ForeignKey(
         on_delete=models.CASCADE, related_name='filenames', to=DocumentType,

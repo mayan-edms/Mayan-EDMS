@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:49+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-12 03:38+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
@@ -20,12 +20,12 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
+#: apps.py:35 events.py:5 links.py:40 models.py:42 permissions.py:6
 #: templates/announcements/announcements.html:8 views.py:119
 msgid "Announcements"
 msgstr ""
 
-#: apps.py:74 apps.py:78
+#: apps.py:72 apps.py:76
 msgid "None"
 msgstr "Nijedno"
 
@@ -49,43 +49,43 @@ msgstr "Obriši"
 msgid "Edit"
 msgstr "Urediti"
 
-#: models.py:18
+#: models.py:19
 msgid "Short description of this announcement."
 msgstr ""
 
-#: models.py:19
+#: models.py:20
 msgid "Label"
 msgstr "Labela"
 
-#: models.py:22
+#: models.py:23
 msgid "The actual text to be displayed."
 msgstr ""
 
-#: models.py:23
+#: models.py:24
 msgid "Text"
 msgstr ""
 
-#: models.py:25
+#: models.py:26
 msgid "Enabled"
 msgstr "Omogućeno"
 
-#: models.py:28
+#: models.py:29
 msgid "Date and time after which this announcement will be displayed."
 msgstr ""
 
-#: models.py:29
+#: models.py:30
 msgid "Start date time"
 msgstr "Vreme početka"
 
-#: models.py:33
+#: models.py:34
 msgid "Date and time until when this announcement is to be displayed."
 msgstr ""
 
-#: models.py:34
+#: models.py:35
 msgid "End date time"
 msgstr "Vreme završetka "
 
-#: models.py:40
+#: models.py:41
 msgid "Announcement"
 msgstr ""
 

@@ -14,7 +14,8 @@
 <ul class="dropdown-menu" role="menu">
     {% for menus_link_result in action_menus_link_results %}
         {% if not action_menu_disable_labels and action_menus_link_results|length > 1 %}
-            <li class="dropdown-header">{{ menus_link_result.menu.label }}</li>
+            <li class="dropdown-header"><strong>{{ menus_link_result.menu.label }}</strong></li>
+            <li class="divider"></li>
         {% endif %}
 
         {% for link_group in menus_link_result.link_groups %}

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-29 05:50+0000\n"
+"POT-Creation-Date: 2021-10-10 06:01+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -24,20 +24,20 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:20
+#: apps.py:36 events.py:5 permissions.py:5 queues.py:7 settings.py:21
 msgid "Converter"
 msgstr "Конвертер"
 
-#: apps.py:83 forms.py:37
+#: apps.py:82 forms.py:37
 msgid "Transformation"
 msgstr "Преобразование"
 
-#: backends/python.py:124 backends/python.py:137
+#: backends/python.py:120 backends/python.py:133
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "Ошибка при определении числа страниц PDF; %s"
 
-#: backends/python.py:151
+#: backends/python.py:147
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
 msgstr "Ошибка Pillow при определении числа страниц; %s"
@@ -46,11 +46,11 @@ msgstr "Ошибка Pillow при определении числа стран�
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice не установлен или не найден."
 
-#: classes.py:261
+#: classes.py:258
 msgid "Not an office file format."
 msgstr "Не является файлом офисного формата."
 
-#: classes.py:395
+#: classes.py:392
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
@@ -58,7 +58,7 @@ msgstr ""
 "Преобразования позволяют изменить отображение документа на сайте без "
 "внесения изменений в исходный файл документа."
 
-#: classes.py:446
+#: classes.py:443
 msgid "transformation"
 msgstr "преобразование"
 
@@ -160,35 +160,35 @@ msgstr "Файл"
 msgid "Asset"
 msgstr "Ресурс"
 
-#: models.py:157 models.py:228
+#: models.py:162 models.py:233
 msgid "Name"
 msgstr "Название"
 
-#: models.py:160 models.py:226
+#: models.py:165 models.py:231
 msgid "Order"
 msgstr "Порядок"
 
-#: models.py:165 models.py:184
+#: models.py:170 models.py:189
 msgid "Stored layer"
 msgstr "Сохраненный слой"
 
-#: models.py:166
+#: models.py:171
 msgid "Stored layers"
 msgstr "Сохраненные слои"
 
-#: models.py:181 models.py:235
+#: models.py:186 models.py:240
 msgid "Enabled"
 msgstr "Включено"
 
-#: models.py:192 models.py:220
+#: models.py:197 models.py:225
 msgid "Object layer"
 msgstr "Слой объекта"
 
-#: models.py:193
+#: models.py:198
 msgid "Object layers"
 msgstr "Слои объекта"
 
-#: models.py:224
+#: models.py:229
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
@@ -196,7 +196,7 @@ msgstr ""
 "Порядок выполнения преобразований. Если оставить неизменным, будет "
 "установлен флаг автоматического выставления порядка."
 
-#: models.py:231 workflow_actions.py:45
+#: models.py:236 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
@@ -204,19 +204,19 @@ msgstr ""
 "Введите аргументы для преобразования в формате YAML-словаря, например: "
 "{\"degrees\": 180}"
 
-#: models.py:233
+#: models.py:238
 msgid "Arguments"
 msgstr "Аргументы"
 
-#: models.py:242
+#: models.py:247
 msgid "Layer transformation"
 msgstr "Слой трансформации"
 
-#: models.py:243
+#: models.py:248
 msgid "Layer transformations"
 msgstr "Слои трансформации"
 
-#: models.py:249
+#: models.py:254
 msgid "Unknown transformation class"
 msgstr "Неизвестный класс преобразования"
 
@@ -253,10 +253,10 @@ msgid "View existing transformations"
 msgstr "Просмотр существующих преобразований"
 
 #: queues.py:12
-msgid "Generate a image of an asset."
-msgstr "Создать изображение ресурса"
+msgid "Generate a image of an object."
+msgstr ""
 
-#: settings.py:29
+#: settings.py:30
 msgid ""
 "The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest asset cache files. Specify the size in bytes."
@@ -267,44 +267,46 @@ msgstr ""
 
 #: settings.py:38
 msgid ""
-"Time in seconds that the browser should cache the supplied asset. The "
-"default of 31559626 seconds correspond to 1 year."
-msgstr ""
-"Время в секундах, в течение которого браузер должен кэшировать ресурс. "
-"Значение по умолчанию 31559626 секунд соответствует 1 году."
-
-#: settings.py:45
-msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
 msgstr ""
 "Путь к подклассу Storage для использования при хранении файлов кэша "
 "ресурсов."
 
-#: settings.py:53
+#: settings.py:46
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
 msgstr "Аргументы, передаваемые в CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
 
-#: settings.py:59
+#: settings.py:52
 msgid "Path to the Storage subclass to use when storing assets."
 msgstr "Путь к подклассу Storage для использования при хранении ресурсов."
 
-#: settings.py:65
+#: settings.py:58
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgstr "Аргументы, передаваемые в CONVERTER_ASSET_STORAGE_BACKEND."
 
-#: settings.py:72
+#: settings.py:64
+msgid "Graphics conversion backend to use."
+msgstr "Бэкэнд преобразования графики."
+
+#: settings.py:70
+msgid "Configuration options for the graphics conversion backend."
+msgstr "Параметры бэкэнда преобразования графики."
+
+#: settings.py:77
+msgid "Time in seconds that the browser should cache the supplied image. "
+msgstr ""
+
+#: settings.py:84
 msgid ""
 "Maximum number of retries before giving up. A value of None means the task "
 "will retry forever."
 msgstr ""
 
-#: settings.py:79
-msgid "Graphics conversion backend to use."
-msgstr "Бэкэнд преобразования графики."
-
-#: settings.py:85
-msgid "Configuration options for the graphics conversion backend."
-msgstr "Параметры бэкэнда преобразования графики."
+#: settings.py:92
+msgid ""
+"Time in seconds after which the image generation task will stop running and "
+"raise an error."
+msgstr ""
 
 #: storages.py:15
 msgid ""
@@ -326,71 +328,71 @@ msgstr ""
 msgid "Assets cache"
 msgstr "Кеш ресурсов"
 
-#: transformations.py:196
+#: transformations.py:210
 msgid "Paste an asset"
 msgstr "Вставить ресурс"
 
-#: transformations.py:247
+#: transformations.py:261
 msgid "Paste an asset (percents coordinates)"
 msgstr "Вставить ресурс (координаты в процентах)"
 
-#: transformations.py:290
+#: transformations.py:304
 msgid "Paste an asset as watermark"
 msgstr "Наложить ресурс как водяной знак"
 
-#: transformations.py:350
+#: transformations.py:364
 msgid "Crop"
 msgstr "Кадрировать"
 
-#: transformations.py:428
+#: transformations.py:442
 msgid "Draw rectangle"
 msgstr "Нарисовать прямоугольник"
 
-#: transformations.py:530
+#: transformations.py:544
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Нарисовать прямоугольник (координаты в процентах)"
 
-#: transformations.py:627
+#: transformations.py:641
 msgid "Flip"
 msgstr "Перевернуть"
 
-#: transformations.py:638
+#: transformations.py:652
 msgid "Gaussian blur"
 msgstr "Размытие по Гауссу"
 
-#: transformations.py:650
+#: transformations.py:664
 msgid "Line art"
 msgstr "Штриховый рисунок"
 
-#: transformations.py:664
+#: transformations.py:678
 msgid "Mirror"
 msgstr "Отразить"
 
-#: transformations.py:675
+#: transformations.py:689
 msgid "Resize"
 msgstr "Изменить размер"
 
-#: transformations.py:702
+#: transformations.py:716
 msgid "Rotate"
 msgstr "Повернуть"
 
-#: transformations.py:728
+#: transformations.py:746
 msgid "Rotate 90 degrees"
 msgstr "Повернуть на 90 градусов"
 
-#: transformations.py:739
+#: transformations.py:757
 msgid "Rotate 180 degrees"
 msgstr "Повернуть на 180 градусов"
 
-#: transformations.py:750
+#: transformations.py:768
 msgid "Rotate 270 degrees"
 msgstr "Повернуть на 270 градусов"
 
-#: transformations.py:760
+#: transformations.py:778
 msgid "Unsharp masking"
 msgstr "Нерезкая маска"
 
-#: transformations.py:776
+#: transformations.py:794
 msgid "Zoom"
 msgstr "Увеличить"
 

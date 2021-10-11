@@ -10,7 +10,7 @@ __all__ = ('RecentCreatedDocumentListView',)
 
 class RecentCreatedDocumentListView(DocumentListView):
     def get_document_queryset(self):
-        return RecentlyCreatedDocument.recently_created.all()
+        return RecentlyCreatedDocument.valid.all()
 
     def get_extra_context(self):
         context = super().get_extra_context()

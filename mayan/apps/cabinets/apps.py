@@ -2,15 +2,15 @@ from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.acls.permissions import (
+    permission_acl_edit, permission_acl_view
+)
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy, ModelQueryFields
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_main, menu_multi_item, menu_object,
-    menu_secondary
+    menu_list_facet, menu_main, menu_multi_item, menu_object, menu_secondary
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
@@ -77,7 +77,7 @@ class CabinetsApp(MayanAppConfig):
             name='get_cabinets', value=method_document_get_cabinets
         )
 
-        EventModelRegistry.register(model=Cabinet)
+        EventModelRegistry.register(model=Cabinet, acl_bind_link=False)
 
         def cabinet_model_copy_condition(instance):
             return instance.is_root_node()
@@ -90,7 +90,7 @@ class CabinetsApp(MayanAppConfig):
 
         ModelCopy(
             model=Cabinet, condition=cabinet_model_copy_condition,
-            bind_link=True, register_permission=True
+            bind_link=True, acl_bind_link=False, register_permission=True
         ).add_fields(
             field_names=('label', 'documents'), unique_conditional={
                 'label': cabinet_unique_conditional
@@ -103,12 +103,16 @@ class CabinetsApp(MayanAppConfig):
                 event_cabinet_document_removed
             )
         )
+        ModelEventType.register(
+            model=Document, event_types=(
+                event_cabinet_document_added, event_cabinet_document_removed
+            )
+        )
 
         ModelPermission.register(
             model=Document, permissions=(
                 permission_cabinet_add_document,
-                permission_cabinet_remove_document, permission_cabinet_view,
-                permission_events_view
+                permission_cabinet_remove_document, permission_cabinet_view
             )
         )
 
@@ -118,7 +122,7 @@ class CabinetsApp(MayanAppConfig):
                 permission_cabinet_delete, permission_cabinet_edit,
                 permission_cabinet_view, permission_cabinet_add_document,
                 permission_cabinet_remove_document
-            )
+            ), bind_link=False
         )
 
         model_query_fields_document = ModelQueryFields(model=Document)
@@ -140,10 +144,6 @@ class CabinetsApp(MayanAppConfig):
             source=Cabinet
         )
 
-        SourceColumn(
-            attribute='label', is_identifier=True, is_sortable=True,
-            source=CabinetSearchResult
-        )
         SourceColumn(
             attribute='get_full_path', source=CabinetSearchResult
         )
@@ -170,7 +170,7 @@ class CabinetsApp(MayanAppConfig):
             widget=DocumentCabinetWidget
         )
 
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(link_document_cabinet_list,), sources=(Document,)
         )
 
@@ -187,7 +187,7 @@ class CabinetsApp(MayanAppConfig):
         )
         menu_list_facet.add_proxy_inclusions(source=CabinetSearchResult)
 
-        menu_main.bind_links(links=(menu_cabinets,), position=98)
+        menu_main.bind_links(links=(menu_cabinets,), position=30)
 
         menu_multi_item.bind_links(
             links=(
@@ -196,11 +196,7 @@ class CabinetsApp(MayanAppConfig):
             ), sources=(Document,)
         )
         menu_object.bind_links(
-            links=(
-                link_cabinet_view,
-            ), sources=(DocumentCabinet, )
-        )
-        menu_object.bind_links(
+            exclude=(DocumentCabinet,),
             links=(
                 link_cabinet_delete, link_cabinet_edit, link_cabinet_child_add
             ), sources=(Cabinet,)

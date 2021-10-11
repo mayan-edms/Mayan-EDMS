@@ -31,7 +31,7 @@ class WhooshSearchBackend(SearchBackend):
         self.index_path.mkdir(exist_ok=True)
 
     def _search(
-        self, query_string, search_model, user, global_and_search=False,
+        self, query, search_model, user, global_and_search=False,
         ignore_limit=False
     ):
         index = self.get_index(search_model=search_model)
@@ -40,18 +40,10 @@ class WhooshSearchBackend(SearchBackend):
         with index.searcher() as searcher:
             search_string = []
 
-            if 'q' in query_string:
-                # Emulate full field set search
-                for search_field in self.get_search_model_fields(search_model=search_model):
-                    search_string.append(
-                        '{}:({})'.format(search_field.get_full_name(), query_string['q'])
-                    )
-            else:
-                for key, value in query_string.items():
-                    if value:
-                        search_string.append(
-                            '{}:({})'.format(key, value)
-                        )
+            for key, value in query.items():
+                search_string.append(
+                    '{}:({})'.format(key, value)
+                )
 
             global_logic_string = ' AND ' if global_and_search else ' OR '
             search_string = global_logic_string.join(search_string)
@@ -63,14 +55,14 @@ class WhooshSearchBackend(SearchBackend):
             )
             parser.remove_plugin_class(cls=qparser.WildcardPlugin)
             parser.add_plugin(pin=qparser.PrefixPlugin())
-            query = parser.parse(text=search_string)
+            whoosh_query = parser.parse(text=search_string)
 
             if ignore_limit:
                 limit = None
             else:
                 limit = setting_results_limit.value
 
-            results = searcher.search(q=query, limit=limit)
+            results = searcher.search(q=whoosh_query, limit=limit)
 
             logger.debug('results: %s', results)
 
@@ -84,7 +76,7 @@ class WhooshSearchBackend(SearchBackend):
     def clear_search_model_index(self, search_model):
         index = self.get_index(search_model=search_model)
 
-        # Clear the model index
+        # Clear the model index.
         self.get_storage().create_index(
             index.schema, indexname=search_model.get_full_name()
         )
@@ -244,10 +236,10 @@ class WhooshSearchBackend(SearchBackend):
     def index_search_model(self, search_model):
         index = self.get_index(search_model=search_model)
 
-        # Clear the model index
+        # Clear the model index.
         self.get_storage().create_index(
             index.schema, indexname=search_model.get_full_name()
         )
 
-        for instance in search_model.model._meta.default_manager.all():
+        for instance in search_model.model._meta.managers_map[search_model.manager_name].all():
             self.index_instance(instance=instance)

@@ -3,17 +3,14 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import (
     permission_acl_edit, permission_acl_view
 )
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
-    menu_list_facet, menu_multi_item, menu_object, menu_secondary,
-    menu_setup
+    menu_multi_item, menu_object, menu_secondary, menu_setup
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import event_asset_edited
@@ -25,8 +22,7 @@ from .links import (
     link_transformation_select
 )
 from .permissions import (
-    permission_asset_delete, permission_asset_edit,
-    permission_asset_view
+    permission_asset_delete, permission_asset_edit, permission_asset_view
 )
 
 
@@ -34,6 +30,7 @@ class ConverterApp(MayanAppConfig):
     app_namespace = 'converter'
     app_url = 'converter'
     has_rest_api = True
+    has_static_media = True
     has_tests = True
     name = 'mayan.apps.converter'
     verbose_name = _('Converter')
@@ -42,7 +39,9 @@ class ConverterApp(MayanAppConfig):
         super().ready()
 
         Asset = self.get_model(model_name='Asset')
-        LayerTransformation = self.get_model(model_name='LayerTransformation')
+        LayerTransformation = self.get_model(
+            model_name='LayerTransformation'
+        )
 
         EventModelRegistry.register(model=Asset)
 
@@ -56,7 +55,7 @@ class ConverterApp(MayanAppConfig):
             model=Asset, permissions=(
                 permission_acl_edit, permission_acl_view,
                 permission_asset_delete, permission_asset_edit,
-                permission_asset_view, permission_events_view
+                permission_asset_view
             )
         )
 
@@ -88,10 +87,6 @@ class ConverterApp(MayanAppConfig):
             source=LayerTransformation
         )
 
-        menu_list_facet.bind_links(
-            links=(link_acl_list,), sources=(Asset,)
-        )
-
         menu_multi_item.bind_links(
             links=(link_asset_multiple_delete,), sources=(Asset,)
         )
@@ -116,7 +111,8 @@ class ConverterApp(MayanAppConfig):
             sources=(LayerTransformation,)
         )
         menu_secondary.bind_links(
-            links=(link_transformation_select,), sources=(LayerTransformation,)
+            links=(link_transformation_select,),
+            sources=(LayerTransformation,)
         )
         menu_secondary.bind_links(
             links=(link_transformation_select,),

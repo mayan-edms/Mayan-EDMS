@@ -270,6 +270,16 @@ class CachePartition(models.Model):
             logger.debug('unable to obtain lock: %s' % lock_name)
             raise
 
+    def __str__(self):
+        return '{} ({})'.format(self.cache, self.name)
+
+    def get_absolute_url(self):
+        return reverse(
+            viewname='file_caching:cache_partition_detail', kwargs={
+                'cache_partition_id': self.pk
+            }
+        )
+
     def delete(self, *args, **kwargs):
         self.purge()
         return super().delete(*args, **kwargs)
@@ -286,6 +296,22 @@ class CachePartition(models.Model):
         return CachePartition.get_combined_filename(
             parent=self.name, filename=filename
         )
+
+    def get_total_size(self):
+        """
+        Return the actual usage of the cache partition.
+        """
+        return self.files.aggregate(
+            file_size__sum=Sum('file_size')
+        )['file_size__sum'] or 0
+
+    def get_total_size_display(self):
+        return filesizeformat(bytes_=self.get_total_size())
+
+    get_total_size_display.short_description = _('Current size')
+    get_total_size_display.help_text = _(
+        'Current size of the cache partition.'
+    )
 
     @method_event(
         event=event_cache_partition_purged,

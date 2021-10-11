@@ -72,16 +72,24 @@ class DetachedSignatureViewTestMixin:
             }
         )
 
-    def _request_test_document_file_signature_download_view(self):
+    def _request_test_document_file_signature_detached_delete_view(self):
+        return self.post(
+            viewname='signatures:document_file_signature_detached_delete',
+            kwargs={
+                'signature_id': self.test_signature.pk
+            }
+        )
+
+    def _request_test_document_file_signature_detached_download_view(self):
         return self.get(
-            viewname='signatures:document_file_signature_download',
+            viewname='signatures:document_file_signature_detached_download',
             kwargs={'signature_id': self.test_signature.pk}
         )
 
-    def _request_test_document_file_signature_upload_view(self):
+    def _request_test_document_file_signature_detached_upload_view(self):
         with open(file=TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             return self.post(
-                viewname='signatures:document_file_signature_upload',
+                viewname='signatures:document_file_signature_detached_upload',
                 kwargs={
                     'document_file_id': self.test_document.file_latest.pk
                 }, data={'signature_file': file_object}
@@ -134,7 +142,7 @@ class EmbeddedSignatureViewTestMixin:
         )
 
 
-class SignatureTestMixin:
+class DetachedSignatureTestMixin:
     def _upload_test_detached_signature(self):
         with open(file=TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             self.test_signature = DetachedSignature.objects.create(
@@ -144,12 +152,6 @@ class SignatureTestMixin:
 
 
 class SignatureViewTestMixin:
-    def _request_test_document_file_signature_delete_view(self):
-        return self.post(
-            viewname='signatures:document_file_signature_delete', kwargs={
-                'signature_id': self.test_signature.pk
-            }
-        )
 
     def _request_test_document_file_signature_details_view(self):
         return self.get(

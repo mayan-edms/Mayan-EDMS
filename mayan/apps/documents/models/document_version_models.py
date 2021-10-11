@@ -15,6 +15,7 @@ from mayan.apps.converter.exceptions import AppImageError
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
 from mayan.apps.events.decorators import method_event
+from mayan.apps.locales.utils import to_language
 from mayan.apps.messaging.models import Message
 from mayan.apps.storage.models import DownloadFile
 from mayan.apps.templating.classes import Template
@@ -24,7 +25,8 @@ from ..events import (
     event_document_version_edited, event_document_version_exported
 )
 from ..literals import (
-    IMAGE_ERROR_NO_VERSION_PAGES,
+    DOCUMENT_VERSION_EXPORT_MESSAGE_BODY,
+    DOCUMENT_VERSION_EXPORT_MESSAGE_SUBJECT, IMAGE_ERROR_NO_VERSION_PAGES,
     STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE
 )
 from ..managers import ValidDocumentVersionManager
@@ -164,12 +166,13 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
             Message.objects.create(
                 sender_object=download_file,
                 user=user,
-                subject=_('Document version exported.'),
-                body=_(
-                    'Document version "%(document_version)s" has been '
-                    'exported and is available for download using the '
-                    'link: %(download_url)s or from '
-                    'the downloads area (%(download_list_url)s).'
+                subject=to_language(
+                    language=user.locale_profile.language,
+                    promise=DOCUMENT_VERSION_EXPORT_MESSAGE_SUBJECT
+                ),
+                body=to_language(
+                    language=user.locale_profile.language,
+                    promise=DOCUMENT_VERSION_EXPORT_MESSAGE_BODY
                 ) % {
                     'download_list_url': download_list_url,
                     'download_url': download_url,
@@ -184,10 +187,24 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
             }
         )
 
-    def get_api_image_url(self, *args, **kwargs):
+    def get_absolute_api_url(self):
+        return reverse(
+            viewname='rest_api:documentversion-detail', kwargs={
+                'document_id': self.document_id,
+                'document_version_id': self.pk
+            }
+        )
+
+    def get_api_image_url(
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None
+    ):
         first_page = self.pages.first()
         if first_page:
-            return first_page.get_api_image_url(*args, **kwargs)
+            return first_page.get_api_image_url(
+                maximum_layer_order=None, transformation_instance_list=None,
+                user=user
+            )
         else:
             raise AppImageError(error_name=IMAGE_ERROR_NO_VERSION_PAGES)
 
@@ -256,12 +273,33 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
         queryset = ModelQueryFields.get(model=DocumentVersionPage).get_queryset()
         return queryset.filter(pk__in=self.version_pages.all())
 
+    def pages_append_all(self, _user=None):
+        """
+        Append the pages of all document files.
+        """
+        DocumentFilePage = apps.get_model(
+            app_label='documents', model_name='DocumentFilePage'
+        )
+
+        document_file_pages = DocumentFilePage.objects.filter(
+            document_file__document=self.document
+        ).order_by('document_file__timestamp', 'document_file__page_number')
+
+        annotated_content_object_list = DocumentVersion.annotate_content_object_list(
+            content_object_list=list(document_file_pages)
+        )
+        return self.pages_remap(
+            annotated_content_object_list=annotated_content_object_list,
+            _user=_user
+        )
+
     def pages_remap(self, annotated_content_object_list=None, _user=None):
         DocumentVersionPage = apps.get_model(
             app_label='documents', model_name='DocumentVersionPage'
         )
 
         for page in self.pages.all():
+            page._event_actor = _user
             page.delete()
 
         if not annotated_content_object_list:
@@ -280,7 +318,7 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
             sender=DocumentVersion, instance=self
         )
 
-    def pages_reset(self, document_file=None):
+    def pages_reset(self, document_file=None, _user=None):
         """
         Remove all page mappings and recreate them to be a 1 to 1 match
         to the latest document file or the document file supplied.
@@ -296,7 +334,8 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
             content_object_list=content_object_list
         )
         return self.pages_remap(
-            annotated_content_object_list=annotated_content_object_list
+            annotated_content_object_list=annotated_content_object_list,
+            _user=_user
         )
 
     @method_event(
@@ -304,12 +343,12 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
         created={
             'event': event_document_version_created,
             'action_object': 'document',
-            'target': 'self',
+            'target': 'self'
         },
         edited={
             'event': event_document_version_edited,
             'action_object': 'document',
-            'target': 'self',
+            'target': 'self'
         }
     )
     def save(self, *args, **kwargs):
