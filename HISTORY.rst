@@ -1,3 +1,9 @@
+4.1.1 (2021-XX-XX)
+==================
+- Move Docker Compose variables to the correct file. Move
+  ``COMPOSE_PROJECT_NAME`` and ``COMPOSE_PROFILES`` to the
+  .env file.
+
 4.1 (2021-10-10)
 ================
 - Add support for editing the document version page OCR content.
