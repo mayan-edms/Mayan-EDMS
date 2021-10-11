@@ -429,6 +429,7 @@
   (https://github.com/Yelp/swagger_spec_validator/blob/master/setup.py#L17),
   which installs the latest version 4.0.1. This version removes
   ``jsonschema.compat`` still used by swagger-spec-validator.
+- Add ``project_url`` to the Python setup file.
 
 4.0.16 (2021-09-29)
 ===================
