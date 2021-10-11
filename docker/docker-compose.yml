@@ -181,6 +181,24 @@ services:
     profiles:
       - extra_celery_beat
 
+  command_initialsetup:
+    <<: *mayan-container
+    command:
+      - run_command
+      - "initialsetup --no-dependencies"
+    profiles:
+      - extra_command_initialsetup
+    restart: "no"
+
+  command_performupgrade:
+    <<: *mayan-container
+    command:
+      - run_command
+      - "performupgrade --no-dependencies"
+    profiles:
+      - extra_command_performupgrade
+    restart: "no"
+
   # Optional services
 
   traefik:
