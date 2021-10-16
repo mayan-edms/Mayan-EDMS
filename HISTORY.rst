@@ -15,6 +15,8 @@
 - Fix usage of ``.user.has_usable_password``. Use as a method not a flag.
   Fixes the `Change Password` link appearing even when using external
   authentication.
+- Support blank app URL namespaces. These are used to register the
+  ``urlpatterns`` of encapsulated libraries as top level named URLs.
 
 4.0.16 (2021-09-29)
 ===================

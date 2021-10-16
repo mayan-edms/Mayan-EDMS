@@ -77,10 +77,18 @@ class MayanAppConfig(apps.AppConfig):
                 traceback.print_exception(*exc_info)
                 raise exception
         else:
+            # Allow blank namespaces. These are used to register the
+            # urlpatterns of encapsulated libraries as top level named
+            # URLs.
+            if self.app_namespace is not None:
+                app_namespace = self.app_namespace
+            else:
+                app_namespace = self.name
+
             mayan_urlpatterns += (
                 url(
                     regex=r'^{}'.format(top_url), view=include(
-                        (app_urlpatterns, self.app_namespace or self.name)
+                        (app_urlpatterns, app_namespace)
                     )
                 ),
             )
