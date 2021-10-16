@@ -121,6 +121,19 @@ class FontAwesomeLayersDriver(IconDriver):
         }
 
 
+class FontAwesomeStackDriver(IconDriver):
+    name = 'fontawesome-stack'
+    template_name = 'appearance/icons/font_awesome_stack.html'
+
+    def __init__(self, data):
+        self.data = data
+
+    def get_context(self):
+        return {
+            'data': self.data,
+        }
+
+
 class Icon:
     def __init__(self, driver_name, **kwargs):
         self.kwargs = kwargs
@@ -136,3 +149,4 @@ IconDriver.register(driver_class=FontAwesomeDualClassesDriver)
 IconDriver.register(driver_class=FontAwesomeDualDriver)
 IconDriver.register(driver_class=FontAwesomeLayersDriver)
 IconDriver.register(driver_class=FontAwesomeMasksDriver)
+IconDriver.register(driver_class=FontAwesomeStackDriver)
