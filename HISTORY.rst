@@ -8,6 +8,10 @@
   which installs the latest version 4.0.1. This version removes
   ``jsonschema.compat`` still used by swagger-spec-validator.
 - Add ``project_url`` to the Python setup file.
+- Add support for ``COMMON_EXTRA_APPS_PRE``. This setting works
+  like ``COMMON_EXTRA_APPS`` but installs the new apps before the default
+  apps. This allows the extra apps to override templates and other system
+  data.
 
 4.0.16 (2021-09-29)
 ===================
