@@ -12,6 +12,9 @@
   like ``COMMON_EXTRA_APPS`` but installs the new apps before the default
   apps. This allows the extra apps to override templates and other system
   data.
+- Fix usage of ``.user.has_usable_password``. Use as a method not a flag.
+  Fixes the `Change Password` link appearing even when using external
+  authentication.
 
 4.0.16 (2021-09-29)
 ===================

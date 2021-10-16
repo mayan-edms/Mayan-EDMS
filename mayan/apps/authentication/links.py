@@ -12,7 +12,7 @@ def has_usable_password_and_can_change_password(context):
         return (
             context[
                 'request'
-            ].user.has_usable_password and not context[
+            ].user.has_usable_password() and not context[
                 'request'
             ].user.user_options.block_password_change
         )
