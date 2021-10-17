@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-10 06:01+0000\n"
+"POT-Creation-Date: 2021-10-16 21:51+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Allan Møller <it@brandts.dk>, 2021\n"
 "Language-Team: Danish (https://www.transifex.com/rosarior/teams/13584/da/)\n"
@@ -207,7 +207,7 @@ msgid ""
 msgstr ""
 
 #: templates/500.html:5 templates/500.html:30
-#: templates/appearance/root.html:53
+#: templates/appearance/root.html:52
 msgid "Server error"
 msgstr ""
 
@@ -343,7 +343,7 @@ msgstr ""
 msgid "Identifier"
 msgstr ""
 
-#: templates/appearance/generic_list_subtemplate.html:137
+#: templates/appearance/generic_list_subtemplate.html:133
 msgid "Facets"
 msgstr ""
 
@@ -401,15 +401,15 @@ msgstr ""
 msgid "No results"
 msgstr ""
 
-#: templates/appearance/root.html:58
+#: templates/appearance/root.html:57
 msgid "Close"
 msgstr ""
 
-#: templates/appearance/root.html:68
+#: templates/appearance/root.html:67
 msgid "Server communication error"
 msgstr ""
 
-#: templates/appearance/root.html:70
+#: templates/appearance/root.html:69
 msgid "Check you network connection and try again in a few moments."
 msgstr ""
 

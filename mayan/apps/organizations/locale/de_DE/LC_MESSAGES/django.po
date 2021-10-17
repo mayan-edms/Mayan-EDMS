@@ -3,12 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Mathias Behrle <mathiasb@m9s.biz>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-10 06:02+0000\n"
+"POT-Creation-Date: 2021-10-16 21:52+0000\n"
 "PO-Revision-Date: 2021-05-18 10:02+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,16 +22,20 @@ msgstr ""
 
 #: apps.py:16 settings.py:10
 msgid "Organizations"
-msgstr ""
+msgstr "Organisationen"
 
 #: settings.py:16
 msgid ""
 "Fully qualified URL including scheme and port number if using a custom one. "
 "Example: https://www.example.com:8080"
 msgstr ""
+"Voll qualifizierte URL inklusive Schema und Portnummer falls eine eigene "
+"benutzt wird. Beispiel: https://www.example.com:8080"
 
 #: settings.py:24
 msgid ""
 "Base URL path to use for all views. Used when hosting using a path that is "
 "not the root path of the web server."
 msgstr ""
+"Basis-URL-Pfad für alle Sichten. Er kommt zur Anwendung wenn das "
+"Hostingsetup einen Pfad verwendet, der nicht der Wurzelpfad des Servers ist."

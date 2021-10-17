@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-10 06:01+0000\n"
+"POT-Creation-Date: 2021-10-16 21:51+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: yan songwei <yansw@vip.163.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -205,7 +205,7 @@ msgid ""
 msgstr "位置正确，但是您的帐户没有访问权限。"
 
 #: templates/500.html:5 templates/500.html:30
-#: templates/appearance/root.html:53
+#: templates/appearance/root.html:52
 msgid "Server error"
 msgstr "服务器错误"
 
@@ -350,7 +350,7 @@ msgstr "取消"
 msgid "Identifier"
 msgstr "识别码"
 
-#: templates/appearance/generic_list_subtemplate.html:137
+#: templates/appearance/generic_list_subtemplate.html:133
 msgid "Facets"
 msgstr ""
 
@@ -409,15 +409,15 @@ msgstr "切换下拉列表"
 msgid "No results"
 msgstr "没有结果"
 
-#: templates/appearance/root.html:58
+#: templates/appearance/root.html:57
 msgid "Close"
 msgstr "关闭"
 
-#: templates/appearance/root.html:68
+#: templates/appearance/root.html:67
 msgid "Server communication error"
 msgstr "服务器通信错误"
 
-#: templates/appearance/root.html:70
+#: templates/appearance/root.html:69
 msgid "Check you network connection and try again in a few moments."
 msgstr "检查网络连接，并稍后再试。"
 
