@@ -20,6 +20,8 @@
 - Add a stacked Font Awesome icon class.
 - Ensure ``MAYAN_GUNICORN_TEMPORARY_DIRECTORY`` is exported and available to
   ``supervisord`.
+- Always change the owner of ``/var/lib/mayan/``. Ensure that Mayan can
+  always read and write from the mounted volume.
 
 4.0.16 (2021-09-29)
 ===================
