@@ -28,6 +28,7 @@
 - Expand help text of ``ORGANIZATIONS_INSTALLATION_URL`` and
   ``ORGANIZATIONS_URL_BASE_PATH`` settings. GitLab issue #1045. Thanks to
   bw (@bwakkie) for the report.
+- Create the ``user_settings`` folder on upgrades too.
 
 4.0.16 (2021-09-29)
 ===================

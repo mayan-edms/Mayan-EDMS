@@ -1,5 +1,12 @@
+import errno
+import os
+
+from django.conf import settings
 from django.core import management
 from django.core.management.base import CommandError
+
+from mayan.settings.literals import DEFAULT_USER_SETTINGS_FOLDER
+from mayan.apps.storage.utils import touch
 
 from ...signals import signal_perform_upgrade, signal_post_upgrade, signal_pre_upgrade
 
@@ -14,6 +21,10 @@ class Command(management.BaseCommand):
         )
 
     def handle(self, *args, **options):
+        settings_path = os.path.join(
+            settings.MEDIA_ROOT, DEFAULT_USER_SETTINGS_FOLDER
+        )
+
         try:
             signal_pre_upgrade.send(sender=self)
         except Exception as exception:
@@ -22,6 +33,18 @@ class Command(management.BaseCommand):
                     exception, type(exception)
                 )
             )
+
+        # Create user settings folder
+        try:
+            os.makedirs(name=settings_path)
+        except OSError as exception:
+            if exception.errno == errno.EEXIST:
+                """Folder already exists. Ignore."""
+            else:
+                raise
+
+        # Touch media/settings/__init__.py
+        touch(filename=os.path.join(settings_path, '__init__.py'))
 
         if not options.get('no_dependencies', False):
             management.call_command(
