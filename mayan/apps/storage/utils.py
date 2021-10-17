@@ -212,6 +212,11 @@ def patch_files(path=None, replace_list=None):
                             )
 
 
+def touch(filename, times=None):
+    with open(file=filename, mode='a'):
+        os.utime(filename, times)
+
+
 def validate_path(path):
     if not os.path.exists(path):
         # If doesn't exist try to create it
