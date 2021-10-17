@@ -25,6 +25,9 @@
   volume.
 - Fix asset image caching. Closes GitLab issue #1047 for series 4.0.
   Thanks to Ryan Showalter (@ryanshow) for the report and debug information.
+- Expand help text of ``ORGANIZATIONS_INSTALLATION_URL`` and
+  ``ORGANIZATIONS_URL_BASE_PATH`` settings. GitLab issue #1045. Thanks to
+  bw (@bwakkie) for the report.
 
 4.0.16 (2021-09-29)
 ===================
