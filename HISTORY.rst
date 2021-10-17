@@ -29,6 +29,8 @@
   ``ORGANIZATIONS_URL_BASE_PATH`` settings. GitLab issue #1045. Thanks to
   bw (@bwakkie) for the report.
 - Create the ``user_settings`` folder on upgrades too.
+- Improve initial setup folder creation error logic. Add keyword arguments.
+  Use storages app ``touch`` function.
 
 4.0.16 (2021-09-29)
 ===================

@@ -9,17 +9,13 @@ import mayan
 from mayan.settings.literals import (
     DEFAULT_USER_SETTINGS_FOLDER, SECRET_KEY_FILENAME, SYSTEM_DIR
 )
+from mayan.apps.storage.utils import touch
 
 from ...signals import signal_post_initial_setup, signal_pre_initial_setup
 
 
 class Command(management.BaseCommand):
     help = 'Initializes an install and gets it ready to be used.'
-
-    @staticmethod
-    def touch(filename, times=None):
-        with open(file=filename, mode='a'):
-            os.utime(filename, times)
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -39,33 +35,39 @@ class Command(management.BaseCommand):
         )
         secret_key_file_path = os.path.join(system_path, SECRET_KEY_FILENAME)
 
-        if not os.path.exists(settings.MEDIA_ROOT) or force:
+        if not os.path.exists(path=settings.MEDIA_ROOT) or force:
             # Create the media folder
             try:
-                os.makedirs(settings.MEDIA_ROOT)
-            except OSError as exception:
-                if exception.errno == errno.EEXIST and force:
-                    pass
-
-            # Touch media/__init__.py
-            Command.touch(os.path.join(settings.MEDIA_ROOT, '__init__.py'))
-
-            # Create user settings folder
-            try:
-                os.makedirs(settings_path)
+                os.makedirs(name=settings.MEDIA_ROOT)
             except OSError as exception:
                 if exception.errno == errno.EEXIST and force:
                     """Folder already exists. Ignore."""
+                else:
+                    raise
+
+            # Touch media/__init__.py
+            touch(os.path.join(settings.MEDIA_ROOT, '__init__.py')
+
+            # Create user settings folder
+            try:
+                os.makedirs(name=settings_path)
+            except OSError as exception:
+                if exception.errno == errno.EEXIST and force:
+                    """Folder already exists. Ignore."""
+                else:
+                    raise
 
             # Touch media/settings/__init__.py
-            Command.touch(os.path.join(settings_path, '__init__.py'))
+            touch(filename=os.path.join(settings_path, '__init__.py')
 
             # Create the media/system folder
             try:
-                os.makedirs(system_path)
+                os.makedirs(name=system_path)
             except OSError as exception:
                 if exception.errno == errno.EEXIST and force:
-                    pass
+                    """Folder already exists. Ignore."""
+                else:
+                    raise
 
             version_file_path = os.path.join(system_path, 'VERSION')
             with open(file=version_file_path, mode='w') as file_object:
