@@ -20,8 +20,9 @@
 - Add a stacked Font Awesome icon class.
 - Ensure ``MAYAN_GUNICORN_TEMPORARY_DIRECTORY`` is exported and available to
   ``supervisord`.
-- Always change the owner of ``/var/lib/mayan/``. Ensure that Mayan can
-  always read and write from the mounted volume.
+- Always change the owner of ``/var/lib/mayan/``. Ensure that the ``mayan``
+  operating system user can always read and write from and to the mounted
+  volume.
 - Fix asset image caching. Closes GitLab issue #1047 for series 4.0.
   Thanks to Ryan Showalter (@ryanshow) for the report and debug information.
 
