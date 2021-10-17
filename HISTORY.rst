@@ -22,6 +22,8 @@
   ``supervisord`.
 - Always change the owner of ``/var/lib/mayan/``. Ensure that Mayan can
   always read and write from the mounted volume.
+- Fix asset image caching. Closes GitLab issue #1047 for series 4.0.
+  Thanks to Ryan Showalter (@ryanshow) for the report and debug information.
 
 4.0.16 (2021-09-29)
 ===================
