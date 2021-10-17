@@ -65,9 +65,9 @@ export MAYAN_{{ worker.name|upper }}_MAX_TASKS_PER_CHILD
 {% endfor %}
 
 if mount | grep '/dev/shm' > /dev/null; then
-    MAYAN_GUNICORN_TEMPORARY_DIRECTORY="--worker-tmp-dir /dev/shm"
+    export MAYAN_GUNICORN_TEMPORARY_DIRECTORY="--worker-tmp-dir /dev/shm"
 else
-    MAYAN_GUNICORN_TEMPORARY_DIRECTORY=
+    export MAYAN_GUNICORN_TEMPORARY_DIRECTORY=
 fi
 
 # Allow importing of user setting modules.

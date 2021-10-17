@@ -18,6 +18,8 @@
 - Support blank app URL namespaces. These are used to register the
   ``urlpatterns`` of encapsulated libraries as top level named URLs.
 - Add a stacked Font Awesome icon class.
+- Ensure ``MAYAN_GUNICORN_TEMPORARY_DIRECTORY`` is exported and available to
+  ``supervisord`.
 
 4.0.16 (2021-09-29)
 ===================
