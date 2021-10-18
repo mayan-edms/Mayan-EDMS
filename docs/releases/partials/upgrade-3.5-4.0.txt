@@ -74,6 +74,11 @@ Direct deployment
 
       databases 3
 
+#. Restart Redis for the changes to take effect:
+
+   .. code-block:: console
+
+      sudo systemctl restart redis
 
 #. Edit the config file at ``|MAYAN_MEDIA_ROOT|config.yml``:
 
