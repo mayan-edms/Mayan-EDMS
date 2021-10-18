@@ -1,4 +1,4 @@
-4.0.17 (2021-XX-XX)
+4.0.17 (2021-10-18)
 ===================
 - Backport workaround for swagger-spec-validator dependency
   bug. Pin jsonschema to version 3.2.0 to avoid errors with
