@@ -143,9 +143,16 @@ setup(
     name=PACKAGE_NAME,
     packages=find_packages(PACKAGE_DIR),
     platforms=['any'],
+    project_urls={
+        'Documentation': 'https://docs.mayan-edms.com/',
+        'Changelog': 'https://gitlab.com/mayan-edms/mayan-edms/-/blob/master/HISTORY.rst',
+        'Bug Tracker': 'https://gitlab.com/mayan-edms/mayan-edms/-/issues',
+        'Source Code': 'https://gitlab.com/mayan-edms/mayan-edms',
+        'Support': 'https://www.mayan-edms.com/support/'
+    },
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*',
     scripts=['mayan/bin/mayan-edms.py'],
-    url='https://gitlab.com/mayan-edms/mayan-edms',
+    url=mayan.__website__,
     version=mayan.__version__,
     zip_safe=False,
 )
