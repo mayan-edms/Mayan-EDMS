@@ -116,6 +116,7 @@ class DocumentTestMixin:
     test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
     test_document_language = None
     test_document_path = None
+    auto_delete_test_document_type = True
 
     def setUp(self):
         super().setUp()
@@ -131,8 +132,9 @@ class DocumentTestMixin:
                 self._upload_test_document()
 
     def tearDown(self):
-        for document_type in DocumentType.objects.all():
-            document_type.delete()
+        if self.auto_delete_test_document_type:
+            for document_type in DocumentType.objects.all():
+                document_type.delete()
         super().tearDown()
 
     def _create_test_document_stub(self, document_type=None, label=None):
@@ -146,9 +148,8 @@ class DocumentTestMixin:
         self.test_documents.append(self.test_document)
 
     def _create_test_document_type(self, label=None):
-        total_document_types = len(self.test_document_types)
         label = label or '{}_{}'.format(
-            TEST_DOCUMENT_TYPE_LABEL, total_document_types
+            TEST_DOCUMENT_TYPE_LABEL, len(self.test_document_types)
         )
 
         self.test_document_type = DocumentType.objects.create(label=label)

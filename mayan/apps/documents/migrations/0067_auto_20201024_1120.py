@@ -1,4 +1,6 @@
-from django.db import migrations
+from django.db import models, migrations
+from django.db.models import Max
+from django.db.models.functions import Concat
 
 
 def operation_document_file_filename_copy(apps, schema_editor):
@@ -45,6 +47,47 @@ def operation_document_file_filename_copy(apps, schema_editor):
         )
 
 
+def operation_set_active_versions(apps, schema_editor):
+    Document = apps.get_model(
+        app_label='documents', model_name='Document'
+    )
+    DocumentVersion = apps.get_model(
+        app_label='documents', model_name='DocumentVersion'
+    )
+
+    # Select the latest version for each document by date.
+    document_queryset = Document.objects.only('id').annotate(
+        latest_version_timestamp=Max('versions__timestamp')
+    )
+
+    # Exclude documents with no latest version.
+    document_queryset = document_queryset.exclude(
+        latest_version_timestamp=None
+    )
+
+    # Create a new unique version identifier.
+    document_queryset = document_queryset.annotate(
+        version_identifier=Concat(
+            'id', 'latest_version_timestamp', output_field=models.CharField()
+        )
+    )
+
+    # Get all document versions and add a new unique version identifier.
+    document_version_queryset = DocumentVersion.objects.only('id').annotate(
+        version_identifier=Concat(
+            'document_id', 'timestamp', output_field=models.CharField()
+        )
+    )
+
+    # Set all version as not active.
+    document_version_queryset.update(active=False)
+
+    # Set all latest versions as active.
+    document_version_queryset.filter(
+        version_identifier__in=document_queryset.values('version_identifier')
+    ).update(active=True)
+
+
 class Migration(migrations.Migration):
     dependencies = [
         ('documents', '0066_documentfile_filename'),
@@ -53,6 +96,10 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunPython(
             code=operation_document_file_filename_copy,
+            reverse_code=migrations.RunPython.noop
+        ),
+        migrations.RunPython(
+            code=operation_set_active_versions,
             reverse_code=migrations.RunPython.noop
         ),
     ]

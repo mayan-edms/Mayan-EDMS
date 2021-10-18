@@ -31,6 +31,8 @@
 - Create the ``user_settings`` folder on upgrades too.
 - Improve initial setup folder creation error logic. Add keyword arguments.
   Use storages app ``touch`` function.
+- Ensure only one document version is active when migrating from version 3.5.
+  Forum topic 9430. Thanks to forum user @woec for the report.
 
 4.0.16 (2021-09-29)
 ===================

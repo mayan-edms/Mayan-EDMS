@@ -54,7 +54,6 @@ def operation_document_version_page_create(apps, schema_editor):
             """Does not do anything."""
 
     document_file_id_last = None
-    document_id_last = None
     document_version = DummyDocumentVersion()
 
     document_version_page_insert_query = '''
@@ -95,11 +94,6 @@ def operation_document_version_page_create(apps, schema_editor):
         for row in rows:
             document_id, timestamp, document_file_id, document_file_page_id = row
             timestamp = timestamp.astimezone(tz=time_zone)
-
-            if document_id_last != document_id:
-                document_version.active = True
-                document_version.save()
-                document_id_last = document_id
 
             if document_file_id_last != document_file_id:
                 document_version = DocumentVersion.objects.create(
