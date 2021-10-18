@@ -19,7 +19,7 @@
   ``urlpatterns`` of encapsulated libraries as top level named URLs.
 - Add a stacked Font Awesome icon class.
 - Ensure ``MAYAN_GUNICORN_TEMPORARY_DIRECTORY`` is exported and available to
-  ``supervisord`.
+  ``supervisord``.
 - Always change the owner of ``/var/lib/mayan/``. Ensure that the ``mayan``
   operating system user can always read and write from and to the mounted
   volume.
