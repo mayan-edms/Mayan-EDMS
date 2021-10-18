@@ -92,47 +92,6 @@ class IndexTestCase(IndexTemplateTestMixin, DocumentTestMixin, BaseTestCase):
         )
 
     def test_document_description_index(self):
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
-            expression=TEST_INDEX_TEMPLATE_DOCUMENT_DESCRIPTION_EXPRESSION,
-            link_documents=True
-        )
-
-        self.test_document.description = TEST_DOCUMENT_DESCRIPTION
-        self.test_document.save()
-
-        self.test_index_template.rebuild()
-
-        self.assertEqual(
-            IndexInstanceNode.objects.last().value, self.test_document.description
-        )
-        self.test_document.description = TEST_DOCUMENT_DESCRIPTION_EDITED
-        self.test_document.save()
-
-        self.assertEqual(
-            IndexInstanceNode.objects.last().value, self.test_document.description
-        )
-
-    def test_document_label_index(self):
-        self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
-            expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
-            link_documents=True
-        )
-
-        self.test_index_template.rebuild()
-
-        self.assertEqual(
-            IndexInstanceNode.objects.last().value, self.test_document.label
-        )
-        self.test_document.label = TEST_DOCUMENT_LABEL_EDITED
-        self.test_document.save()
-
-        self.assertEqual(
-            IndexInstanceNode.objects.last().value, self.test_document.label
-        )
-
-    def test_document_description_index(self):
         self._create_test_index_template_node(
             expression=TEST_INDEX_TEMPLATE_DOCUMENT_DESCRIPTION_EXPRESSION
         )
