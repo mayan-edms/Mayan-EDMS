@@ -46,7 +46,7 @@ class Command(management.BaseCommand):
                     raise
 
             # Touch media/__init__.py
-            touch(os.path.join(settings.MEDIA_ROOT, '__init__.py')
+            touch(os.path.join(settings.MEDIA_ROOT, '__init__.py'))
 
             # Create user settings folder
             try:
@@ -58,7 +58,7 @@ class Command(management.BaseCommand):
                     raise
 
             # Touch media/settings/__init__.py
-            touch(filename=os.path.join(settings_path, '__init__.py')
+            touch(filename=os.path.join(settings_path, '__init__.py'))
 
             # Create the media/system folder
             try:
