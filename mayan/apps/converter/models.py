@@ -86,8 +86,13 @@ class Asset(ExtraDataModelMixin, models.Model):
         self.file.storage.delete(name=name)
         return super().delete(*args, **kwargs)
 
-    def generate_image(self, user=None):
-        # The `user` parameter is not used, but added to retain compatibility.
+    def generate_image(
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None
+    ):
+        # The parameters 'maximum_layer_order',
+        # `transformation_instance_list`, `user` are not used, but added
+        # to retain interface compatibility.
         cache_filename = '{}'.format(self.get_hash())
 
         try:

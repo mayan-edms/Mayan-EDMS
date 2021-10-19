@@ -1,3 +1,4 @@
+from django.contrib.contenttypes.models import ContentType
 from django.core.files import File
 from django.db.models import Q
 
@@ -6,6 +7,7 @@ from mayan.apps.permissions.tests.mixins import PermissionTestMixin
 
 from ..classes import Layer
 from ..models import Asset, LayerTransformation
+from ..tasks import task_content_object_image_generate
 from ..transformations import BaseTransformation
 
 from .literals import (
@@ -69,6 +71,18 @@ class AssetAPIViewTestMixin:
 
     def _request_test_asset_list_api_view(self):
         return self.get(viewname='rest_api:asset-list')
+
+
+class AssetTaskTestMixin:
+    def _execute_asset_task_content_object_image_generate(self):
+        content_type = ContentType.objects.get_for_model(model=Asset)
+
+        task_content_object_image_generate.apply_async(
+            kwargs={
+                'content_type_id': content_type.pk,
+                'object_id': self.test_asset.pk
+            }
+        ).get()
 
 
 class AssetTestMixin:

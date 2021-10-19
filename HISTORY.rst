@@ -3,6 +3,8 @@
 - Move Docker Compose variables to the correct file. Move
   ``COMPOSE_PROJECT_NAME`` and ``COMPOSE_PROFILES`` to the
   .env file.
+- Fix asset image generation. Closes GitLab issue #1047 for series 4.1.
+  Thanks to Ryan Showalter (@ryanshow) for the report and debug information.
 
 4.1 (2021-10-10)
 ================
