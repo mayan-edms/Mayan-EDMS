@@ -332,9 +332,20 @@ for app in INSTALLED_APPS:
             'in https://docs.mayan-edms.com/releases/3.2.html#backward-incompatible-changes'
         )
 
-for APP in (COMMON_EXTRA_APPS or ()):  # NOQA: F821
-    INSTALLED_APPS = INSTALLED_APPS + (APP,)
+repeated_apps = tuple(
+    set(COMMON_EXTRA_APPS_PRE).intersection(set(COMMON_EXTRA_APPS))
+)
+if repeated_apps:
+    raise ImproperlyConfigured(
+        'Apps "{}" cannot be specified in `COMMON_EXTRA_APPS_PRE` and '
+        '`COMMON_EXTRA_APPS` at the same time.'.format(
+            ', '.join(tuple(repeated_apps))
+        )
+    )
 
+INSTALLED_APPS = tuple(COMMON_EXTRA_APPS_PRE or ()) + INSTALLED_APPS  # NOQA: F821
+
+INSTALLED_APPS = INSTALLED_APPS + tuple(COMMON_EXTRA_APPS or ())  # NOQA: F821
 
 INSTALLED_APPS = [
     APP for APP in INSTALLED_APPS if APP not in (COMMON_DISABLED_APPS or ())  # NOQA: F821

@@ -5,8 +5,9 @@ from mayan.apps.smart_settings.classes import SettingNamespace
 from .literals import (
     DEFAULT_COMMON_COLLAPSE_LIST_MENU_LIST_FACET,
     DEFAULT_COMMON_COLLAPSE_LIST_MENU_OBJECT, DEFAULT_COMMON_DISABLED_APPS,
-    DEFAULT_COMMON_EXTRA_APPS, DEFAULT_COMMON_HOME_VIEW,
-    DEFAULT_COMMON_HOME_VIEW_DASHBOARD_NAME, DEFAULT_COMMON_PROJECT_TITLE,
+    DEFAULT_COMMON_EXTRA_APPS, DEFAULT_COMMON_EXTRA_APPS_PRE,
+    DEFAULT_COMMON_HOME_VIEW, DEFAULT_COMMON_HOME_VIEW_DASHBOARD_NAME,
+    DEFAULT_COMMON_PROJECT_TITLE,
     DEFAULT_COMMON_PROJECT_URL
 )
 
@@ -47,6 +48,18 @@ setting_extra_apps = namespace.add_setting(
         'beyond those normally installed by Mayan EDMS. Each string '
         'should be a dotted Python path to: an application configuration '
         'class (preferred), or a package containing an application. '
+        'Example: [\'app_1\', \'app_2\']'
+    )
+)
+setting_extra_apps = namespace.add_setting(
+    default=DEFAULT_COMMON_EXTRA_APPS_PRE,
+    global_name='COMMON_EXTRA_APPS_PRE',
+    help_text=_(
+        'A list of strings designating all applications that are installed '
+        'beyond those normally installed by Mayan EDMS. Each string '
+        'should be a dotted Python path to: an application configuration '
+        'class (preferred), or a package containing an application. '
+        'These apps will be installed before the default apps. '
         'Example: [\'app_1\', \'app_2\']'
     )
 )
