@@ -1,3 +1,8 @@
+4.0.18 (2021-XX-XX)
+===================
+- Add settings to allow changing the default and the maximums
+  REST API page size.
+
 4.0.17 (2021-10-18)
 ===================
 - Backport workaround for swagger-spec-validator dependency
