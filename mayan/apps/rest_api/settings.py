@@ -12,7 +12,7 @@ namespace = SettingNamespace(
 )
 
 setting_disable_links = namespace.add_setting(
-    default=DEFAULT_DISABLE_LINKS,
+    default=DEFAULT_REST_API_DISABLE_LINKS,
     global_name='REST_API_DISABLE_LINKS', help_text=_(
         'Disable the REST API links in the tools menu.'
     )
