@@ -215,24 +215,3 @@ def patch_files(path=None, replace_list=None):
 def touch(filename, times=None):
     with open(file=filename, mode='a'):
         os.utime(filename, times)
-
-
-def validate_path(path):
-    if not os.path.exists(path):
-        # If doesn't exist try to create it
-        try:
-            os.mkdir(path)
-        except Exception as exception:
-            logger.debug('unhandled exception: %s', exception)
-            return False
-
-    # Check if it is writable
-    try:
-        fd, test_filepath = tempfile.mkstemp(dir=path)
-        os.close(fd)
-        os.unlink(test_filepath)
-    except Exception as exception:
-        logger.debug('unhandled exception: %s', exception)
-        return False
-
-    return True
