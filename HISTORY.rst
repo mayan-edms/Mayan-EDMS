@@ -6,6 +6,9 @@
 - Fix asset image generation. Closes GitLab issue #1047 for series 4.1.
   Thanks to Ryan Showalter (@ryanshow) for the report and debug information.
 - Improve sidebar menu heading display logic.
+- Fix leftover HTML markup in the server error dialog window.
+- Remove redundant close button for the server error dialog window.
+- Merged fixes and improvements from version 4.0.17.
 
 4.1 (2021-10-10)
 ================
