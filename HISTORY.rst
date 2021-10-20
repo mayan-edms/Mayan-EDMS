@@ -2,6 +2,9 @@
 ===================
 - Add settings to allow changing the default and the maximums
   REST API page size.
+- Ensure ``ORGANIZATIONS_URL_BASE_PATH`` is applied to properly
+  trigger the root SPA template. Closes merge request !91. Thanks
+  to Foo Bar(@stuxxn) for the original patch.
 
 4.0.17 (2021-10-18)
 ===================
