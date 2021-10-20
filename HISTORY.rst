@@ -5,6 +5,7 @@
   .env file.
 - Fix asset image generation. Closes GitLab issue #1047 for series 4.1.
   Thanks to Ryan Showalter (@ryanshow) for the report and debug information.
+- Improve sidebar menu heading display logic.
 
 4.1 (2021-10-10)
 ================
