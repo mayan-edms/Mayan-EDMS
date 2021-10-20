@@ -6,6 +6,8 @@
   trigger the root SPA template. Closes merge request !91. Thanks
   to Foo Bar(@stuxxn) for the original patch.
 - Add support for setting validation.
+- Validate the format of the ``ORGANIZATIONS_URL_BASE_PATH``
+  setting.
 
 4.0.17 (2021-10-18)
 ===================

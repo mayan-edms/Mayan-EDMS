@@ -6,6 +6,7 @@ from .literals import (
     DEFAULT_ORGANIZATIONS_INSTALLATION_URL,
     DEFAULT_ORGANIZATIONS_URL_BASE_PATH
 )
+from .setting_validators import validation_fuction_check_path_format
 
 namespace = SettingNamespace(label=_('Organizations'), name='organizations')
 
@@ -26,5 +27,5 @@ setting_organization_url_base_path = namespace.add_setting(
         'Base URL path to use for all views. Used when hosting using a path '
         'that is not the root path of the web server. '
         'Example: /mayan-installations/home/'
-    )
+    ), validation_function=validation_fuction_check_path_format
 )
