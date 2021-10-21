@@ -29,4 +29,3 @@ setting_page_size = namespace.add_setting(
         'The default page size if none is specified.'
     )
 )
-
