@@ -14,6 +14,9 @@
   - Add setting view tests.
   - Separate namespace and setting tests and mixins.
 
+- Add MySQL workaround for unique document version activation added to
+  migration documents 0067 in version 4.0.17.
+
 4.0.17 (2021-10-18)
 ===================
 - Backport workaround for swagger-spec-validator dependency
