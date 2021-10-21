@@ -1,6 +1,6 @@
 4.0.18 (2021-XX-XX)
 ===================
-- Add settings to allow changing the default and the maximums
+- Add settings to allow changing the default and the maximum
   REST API page size.
 - Ensure ``ORGANIZATIONS_URL_BASE_PATH`` is applied to properly
   trigger the root SPA template. Closes merge request !91. Thanks
@@ -8,6 +8,11 @@
 - Add support for setting validation.
 - Validate the format of the ``ORGANIZATIONS_URL_BASE_PATH``
   setting.
+- Smart setting test updates: 
+  
+  - Add smart setting validation tests.
+  - Add setting view tests.
+  - Separate namespace and setting tests and mixins.
 
 4.0.17 (2021-10-18)
 ===================
