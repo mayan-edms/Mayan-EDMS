@@ -1,4 +1,4 @@
-4.0.18 (2021-XX-XX)
+4.0.18 (2021-10-21)
 ===================
 - Add settings to allow changing the default and the maximum
   REST API page size.
@@ -8,8 +8,8 @@
 - Add support for setting validation.
 - Validate the format of the ``ORGANIZATIONS_URL_BASE_PATH``
   setting.
-- Smart setting test updates: 
-  
+- Smart setting test updates:
+
   - Add smart setting validation tests.
   - Add setting view tests.
   - Separate namespace and setting tests and mixins.
