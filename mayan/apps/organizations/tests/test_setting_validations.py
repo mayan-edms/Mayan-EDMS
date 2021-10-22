@@ -27,3 +27,8 @@ class OrganizationSettingValidationTestCase(BaseTestCase):
         setting_organization_url_base_path.validate(
             raw_value=TEST_PATH_GOOD
         )
+
+    def test_url_base_path_none_value_validation(self):
+        setting_organization_url_base_path.validate(
+            raw_value=None
+        )
