@@ -100,9 +100,10 @@ def operation_set_active_versions(apps, schema_editor):
         )
     )
 
+
     FETCH_SIZE = 10000
     query_document_version_active_update = '''
-        UPDATE {documents_documentversion} SET {active} = 1 WHERE {documents_documentversion}.{id} IN {{}};
+        UPDATE {documents_documentversion} SET {active} = '1' WHERE {documents_documentversion}.{id} IN {{}};
     '''.format(
         documents_documentversion=schema_editor.connection.ops.quote_name(
             name='documents_documentversion'
