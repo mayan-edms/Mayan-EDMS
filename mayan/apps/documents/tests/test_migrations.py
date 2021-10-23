@@ -1,22 +1,26 @@
 from django.apps import apps
-
-from django.db.models.signals import post_save
+from django.db.models.signals import post_migrate, post_save
 from django.test import tag
 
-from django_test_migrations.contrib.unittest_case import MigratorTestCase
-
 from mayan.apps.documents.signals import signal_post_document_file_upload
+from mayan.apps.testing.tests.base import MayanMigratorTestCase
 
 from .mixins.document_mixins import DocumentTestMixin
 
 
 @tag('exclude', 'migration')
-class DocumentsAppMigrationTestCase(DocumentTestMixin, MigratorTestCase):
+class DocumentsAppMigrationTestCase(
+    DocumentTestMixin, MayanMigratorTestCase
+):
     auto_create_test_document_type = False
     auto_create_test_document = False
     auto_delete_test_document_type = False
     migrate_from = ('documents', '0055_auto_20200814_0626')
     migrate_to = ('documents', '0075_delete_duplicateddocumentold')
+
+    def setUp(self):
+        self.clear_signals_and_hooks()
+        super().setUp()
 
     def tearDown(self):
         super().tearDown()
@@ -53,6 +57,10 @@ class DocumentsAppMigrationTestCase(DocumentTestMixin, MigratorTestCase):
         post_save.receivers = []
         post_save.sender_receivers_cache.clear()
 
+        self.post_migrate_receivers = post_migrate.receivers
+        post_migrate.receivers = []
+        post_migrate.sender_receivers_cache.clear()
+
     def restore_signals_and_hooks(self):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -73,9 +81,10 @@ class DocumentsAppMigrationTestCase(DocumentTestMixin, MigratorTestCase):
         post_save.receivers = self.post_save_receivers
         post_save.sender_receivers_cache.clear()
 
-    def prepare(self):
-        self.clear_signals_and_hooks()
+        post_migrate.receivers = self.post_migrate_receivers
+        post_migrate.sender_receivers_cache.clear()
 
+    def prepare(self):
         DocumentType = self.old_state.apps.get_model(
             app_label='documents', model_name='DocumentType'
         )
