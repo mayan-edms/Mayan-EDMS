@@ -10,6 +10,9 @@
 - Remove redundant close button for the server error dialog window.
 - Merged fixes and improvements from versions 4.0.17 and 4.0.18.
 - Update PIP from version 21.2.4 to 21.3.1.
+- Remove MySQL upgrade CD/CI testing pipeline stage until support is properly
+  re-implemented for version 8.0.
+- Add CD/CI triggers for local testing.
 
 4.1 (2021-10-10)
 ================
