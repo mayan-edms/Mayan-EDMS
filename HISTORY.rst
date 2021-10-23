@@ -13,6 +13,8 @@
 - Remove MySQL upgrade CD/CI testing pipeline stage until support is properly
   re-implemented for version 8.0.
 - Add CD/CI triggers for local testing.
+- Exclude all migration tests by tagging automatically at the
+  ``MayanMigratorTestCase`` subclass definition.
 
 4.1 (2021-10-10)
 ================

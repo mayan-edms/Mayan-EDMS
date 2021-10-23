@@ -1,9 +1,6 @@
-from django.test import tag
-
 from mayan.apps.testing.tests.base import MayanMigratorTestCase
 
 
-@tag('exclude',)
 class Migration0003UniqueFieldsTestCase(MayanMigratorTestCase):
     migrate_from = ('file_metadata', '0002_documenttypesettings')
     migrate_to = ('file_metadata', '0003_auto_20191226_0606')

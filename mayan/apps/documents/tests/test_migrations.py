@@ -1,6 +1,5 @@
 from django.apps import apps
 from django.db.models.signals import post_migrate, post_save
-from django.test import tag
 
 from mayan.apps.documents.signals import signal_post_document_file_upload
 from mayan.apps.testing.tests.base import MayanMigratorTestCase
@@ -8,7 +7,6 @@ from mayan.apps.testing.tests.base import MayanMigratorTestCase
 from .mixins.document_mixins import DocumentTestMixin
 
 
-@tag('exclude', 'migration')
 class DocumentsAppMigrationTestCase(
     DocumentTestMixin, MayanMigratorTestCase
 ):
