@@ -1,4 +1,4 @@
-4.1.1 (2021-XX-XX)
+4.1.1 (2021-10-22)
 ==================
 - Move Docker Compose variables to the correct file. Move
   ``COMPOSE_PROJECT_NAME`` and ``COMPOSE_PROFILES`` to the
