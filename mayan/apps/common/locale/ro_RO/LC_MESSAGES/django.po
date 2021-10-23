@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-16 21:52+0000\n"
+"POT-Creation-Date: 2021-10-23 04:22+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:129 permissions.py:5 settings.py:14
+#: apps.py:137 permissions.py:5 settings.py:15
 msgid "Common"
 msgstr "Comune"
 
@@ -103,14 +103,14 @@ msgstr "Obțineți sprijin"
 msgid "Tools"
 msgstr "Unelte"
 
-#: literals.py:19
+#: literals.py:20
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr ""
 "Această caracteristică a fost depreciată și va fi eliminată într-o versiune "
 "viitoare."
 
-#: literals.py:22
+#: literals.py:23
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
@@ -118,15 +118,15 @@ msgstr ""
 "Backendul bazei de date este setat să utilizeze SQLite. SQLite ar trebui "
 "folosit numai pentru dezvoltare și testare, nu pentru producție."
 
-#: literals.py:31
+#: literals.py:32
 msgid "Days"
 msgstr "Zile"
 
-#: literals.py:32
+#: literals.py:33
 msgid "Hours"
 msgstr "Ore"
 
-#: literals.py:33
+#: literals.py:34
 msgid "Minutes"
 msgstr "Minute"
 
@@ -162,19 +162,19 @@ msgstr "Utilizator"
 msgid "Copy object"
 msgstr "Copiați obiectul"
 
-#: settings.py:21
+#: settings.py:22
 msgid ""
 "In list mode, show the \"list facet\" menu options as a dropdown menu "
 "instead of individual buttons."
 msgstr ""
 
-#: settings.py:29
+#: settings.py:30
 msgid ""
 "In list mode, show the \"object\" menu options as a dropdown menu instead of"
 " individual buttons."
 msgstr ""
 
-#: settings.py:36
+#: settings.py:37
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -182,7 +182,7 @@ msgid ""
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:46
+#: settings.py:47
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -190,7 +190,16 @@ msgid ""
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:56
+#: settings.py:58
+msgid ""
+"A list of strings designating all applications that are installed beyond "
+"those normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. These apps will be installed before the default "
+"apps. Example: ['app_1', 'app_2']"
+msgstr ""
+
+#: settings.py:69
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
@@ -198,15 +207,15 @@ msgstr ""
 "Numele afișării atașate ancorei de marcă din meniul principal. Aceasta este "
 "și perspectiva la care utilizatorii vor fi redirecționați după conectare."
 
-#: settings.py:65
+#: settings.py:78
 msgid "Name of the dashboard to display in the home view."
 msgstr ""
 
-#: settings.py:70
+#: settings.py:83
 msgid "Sets the project's name."
 msgstr ""
 
-#: settings.py:74
+#: settings.py:87
 msgid "URL of the project's homepage."
 msgstr ""
 

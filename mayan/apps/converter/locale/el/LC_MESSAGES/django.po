@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-16 21:52+0000\n"
+"POT-Creation-Date: 2021-10-23 04:22+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -122,7 +122,7 @@ msgstr "Διαγραφή"
 msgid "Edit"
 msgstr "Τροποποίηση"
 
-#: links.py:56 models.py:62 storages.py:21 views.py:143
+#: links.py:56 models.py:63 storages.py:21 views.py:143
 msgid "Assets"
 msgstr "Στοιχεία"
 
@@ -134,11 +134,11 @@ msgstr "Μετασχηματισμοί"
 msgid "Select new transformation"
 msgstr "Επιλογή νέου μετασχηματισμού"
 
-#: models.py:45
+#: models.py:46
 msgid "Label"
 msgstr "Ετικέτα"
 
-#: models.py:49
+#: models.py:50
 msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
@@ -146,47 +146,47 @@ msgstr ""
 "Αυτή η τιμή θα χρησιμοποιηθεί για την αναφορά σε αυτό το στοιχείο. Μπορεί να"
 " περιέχει μόνο γράμματα, αριθμούς και κάτω παύλες."
 
-#: models.py:52
+#: models.py:53
 msgid "Internal name"
 msgstr "Όνομα εσωτερικής αναφοράς"
 
-#: models.py:56
+#: models.py:57
 msgid "File"
 msgstr "Αρχείο"
 
-#: models.py:61
+#: models.py:62
 msgid "Asset"
 msgstr "Στοιχείο"
 
-#: models.py:162 models.py:233
+#: models.py:172 models.py:243
 msgid "Name"
 msgstr "Όνομα"
 
-#: models.py:165 models.py:231
+#: models.py:175 models.py:241
 msgid "Order"
 msgstr "Σειρά προτεραιότητας"
 
-#: models.py:170 models.py:189
+#: models.py:180 models.py:199
 msgid "Stored layer"
 msgstr "Αποθηκευμένο επίπεδο"
 
-#: models.py:171
+#: models.py:181
 msgid "Stored layers"
 msgstr "Αποθηκευμένα επίπεδα"
 
-#: models.py:186 models.py:240
+#: models.py:196 models.py:250
 msgid "Enabled"
 msgstr "Ενεργοποιημένο"
 
-#: models.py:197 models.py:225
+#: models.py:207 models.py:235
 msgid "Object layer"
 msgstr "Επίπεδο αντικειμένου"
 
-#: models.py:198
+#: models.py:208
 msgid "Object layers"
 msgstr "Επίπεδα αντικειμένων"
 
-#: models.py:229
+#: models.py:239
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
@@ -194,7 +194,7 @@ msgstr ""
 "Σειρά με την οποία θα εκτελεστούν οι μετασχηματισμοί. Εάν παραμείνει "
 "αμετάβλητη, θα εκχωρηθεί αυτόματα σειρά προτεραιότητας."
 
-#: models.py:236 workflow_actions.py:45
+#: models.py:246 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
@@ -202,19 +202,19 @@ msgstr ""
 "Εισάγετε τα ορίσματα για τον μετασχηματισμό ως λεξικό YAML. δηλαδή: "
 "{\"degrees\": 180}"
 
-#: models.py:238
+#: models.py:248
 msgid "Arguments"
 msgstr "Ορίσματα"
 
-#: models.py:247
+#: models.py:257
 msgid "Layer transformation"
 msgstr "Μετασχηματισμός επιπέδου"
 
-#: models.py:248
+#: models.py:258
 msgid "Layer transformations"
 msgstr "Μετασχηματισμοί επιπέδου"
 
-#: models.py:254
+#: models.py:264
 msgid "Unknown transformation class"
 msgstr "Άγνωστη κλάση μετασχηματισμού"
 

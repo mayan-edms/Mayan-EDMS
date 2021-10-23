@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-16 21:51+0000\n"
+"POT-Creation-Date: 2021-10-23 04:22+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -80,23 +80,23 @@ msgstr "Cette option désactive la fin de l'emprunt d'identité."
 msgid "User"
 msgstr "Utilisateur"
 
-#: links.py:29
+#: links.py:35
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: links.py:34
+#: links.py:40
 msgid "Change password"
 msgstr "Modifier le mot de passe"
 
-#: links.py:39 views/impersonation_views.py:50
+#: links.py:45 views/impersonation_views.py:50
 msgid "Impersonate user"
 msgstr "Prendre temporairement l'identité de l'utilisateur"
 
-#: links.py:44
+#: links.py:50
 msgid "Impersonate"
 msgstr "Prendre l'identité"
 
-#: links.py:49 links.py:53
+#: links.py:55 links.py:60
 msgid "Set password"
 msgstr " Définir le mot de passe"
 

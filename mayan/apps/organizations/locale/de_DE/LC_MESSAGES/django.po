@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-16 21:52+0000\n"
+"POT-Creation-Date: 2021-10-23 04:22+0000\n"
 "PO-Revision-Date: 2021-05-18 10:02+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -20,22 +20,23 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:16 settings.py:10
+#: apps.py:16 settings.py:11
 msgid "Organizations"
 msgstr "Organisationen"
 
-#: settings.py:16
-msgid ""
-"Fully qualified URL including scheme and port number if using a custom one. "
-"Example: https://www.example.com:8080"
+#: setting_validators.py:13
+msgid "The path value must not include a leading or trailing slash."
 msgstr ""
-"Voll qualifizierte URL inklusive Schema und Portnummer falls eine eigene "
-"benutzt wird. Beispiel: https://www.example.com:8080"
 
-#: settings.py:24
+#: settings.py:17
+msgid ""
+"Fully qualified domain including scheme, and port number if using a custom "
+"one. Do not include the path. Use the ORGANIZATIONS_URL_BASE_PATH setting to"
+" specify the path. Example: https://www.example.com:8080"
+msgstr ""
+
+#: settings.py:27
 msgid ""
 "Base URL path to use for all views. Used when hosting using a path that is "
-"not the root path of the web server."
+"not the root path of the web server. Example: /mayan-installations/home/"
 msgstr ""
-"Basis-URL-Pfad für alle Sichten. Er kommt zur Anwendung wenn das "
-"Hostingsetup einen Pfad verwendet, der nicht der Wurzelpfad des Servers ist."

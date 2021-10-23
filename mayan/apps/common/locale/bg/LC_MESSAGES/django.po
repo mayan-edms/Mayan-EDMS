@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-16 21:52+0000\n"
+"POT-Creation-Date: 2021-10-23 04:22+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:129 permissions.py:5 settings.py:14
+#: apps.py:137 permissions.py:5 settings.py:15
 msgid "Common"
 msgstr "Общи"
 
@@ -102,12 +102,12 @@ msgstr "Поддръжка"
 msgid "Tools"
 msgstr "Инструменти"
 
-#: literals.py:19
+#: literals.py:20
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Тази функция е оттеглена и ще бъде премахната в бъдеща версия."
 
-#: literals.py:22
+#: literals.py:23
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
@@ -115,15 +115,15 @@ msgstr ""
 "Вашата база данни е настроена да използва SQLite. SQLite трябва да се "
 "използва само за разработка и тестване, а не за производство."
 
-#: literals.py:31
+#: literals.py:32
 msgid "Days"
 msgstr "Дни"
 
-#: literals.py:32
+#: literals.py:33
 msgid "Hours"
 msgstr "Часове"
 
-#: literals.py:33
+#: literals.py:34
 msgid "Minutes"
 msgstr "Минути"
 
@@ -159,7 +159,7 @@ msgstr "Потребител"
 msgid "Copy object"
 msgstr "Копиране на обект"
 
-#: settings.py:21
+#: settings.py:22
 msgid ""
 "In list mode, show the \"list facet\" menu options as a dropdown menu "
 "instead of individual buttons."
@@ -167,7 +167,7 @@ msgstr ""
 "В режим на списък покажете опциите на менюто &quot;фасет списък&quot; като "
 "падащо меню вместо отделни бутони."
 
-#: settings.py:29
+#: settings.py:30
 msgid ""
 "In list mode, show the \"object\" menu options as a dropdown menu instead of"
 " individual buttons."
@@ -175,7 +175,7 @@ msgstr ""
 "В режим на списък покажете опциите на менюто &quot;обект&quot; като падащо "
 "меню вместо отделни бутони."
 
-#: settings.py:36
+#: settings.py:37
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -188,7 +188,7 @@ msgstr ""
 "приложение (за предпочитане) или пакет, съдържащ приложение. Пример: "
 "[&#39;app_1&#39;, &#39;app_2&#39;]"
 
-#: settings.py:46
+#: settings.py:47
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -201,7 +201,16 @@ msgstr ""
 "предпочитане) или пакет, съдържащ приложение. Пример: [&#39;app_1&#39;, "
 "&#39;app_2&#39;]"
 
-#: settings.py:56
+#: settings.py:58
+msgid ""
+"A list of strings designating all applications that are installed beyond "
+"those normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. These apps will be installed before the default "
+"apps. Example: ['app_1', 'app_2']"
+msgstr ""
+
+#: settings.py:69
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
@@ -209,15 +218,15 @@ msgstr ""
 "Име на изгледа, прикрепен към котвата на марката в главното меню. Това е и "
 "изгледът, към който потребителите ще бъдат пренасочени след влизане."
 
-#: settings.py:65
+#: settings.py:78
 msgid "Name of the dashboard to display in the home view."
 msgstr "Име на таблото за управление, което да се показва в началния изглед."
 
-#: settings.py:70
+#: settings.py:83
 msgid "Sets the project's name."
 msgstr "Задава името на проекта."
 
-#: settings.py:74
+#: settings.py:87
 msgid "URL of the project's homepage."
 msgstr "URL на началната страница на проекта."
 

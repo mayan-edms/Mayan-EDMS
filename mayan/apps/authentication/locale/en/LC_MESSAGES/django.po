@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-16 21:51+0000\n"
+"POT-Creation-Date: 2021-10-23 04:22+0000\n"
 "PO-Revision-Date: 2020-03-28 07:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -72,23 +72,23 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: links.py:29
+#: links.py:35
 msgid "Logout"
 msgstr ""
 
-#: links.py:34
+#: links.py:40
 msgid "Change password"
 msgstr ""
 
-#: links.py:39 views/impersonation_views.py:50
+#: links.py:45 views/impersonation_views.py:50
 msgid "Impersonate user"
 msgstr ""
 
-#: links.py:44
+#: links.py:50
 msgid "Impersonate"
 msgstr ""
 
-#: links.py:49 links.py:53
+#: links.py:55 links.py:60
 msgid "Set password"
 msgstr ""
 
