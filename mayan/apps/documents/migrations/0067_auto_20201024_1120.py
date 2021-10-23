@@ -1,4 +1,4 @@
-from django.db import models, migrations
+from django.db import models, migrations, reset_queries
 from django.db.models import Max
 from django.db.models.functions import Concat
 
@@ -55,6 +55,9 @@ def operation_set_active_versions(apps, schema_editor):
         app_label='documents', model_name='DocumentVersion'
     )
 
+    cursor_main = schema_editor.connection.create_cursor(name='cursor_main')
+    cursor_document_version = schema_editor.connection.cursor()
+
     # Select the latest version for each document by date.
     document_queryset = Document.objects.only('id').annotate(
         latest_version_timestamp=Max('versions__timestamp')
@@ -80,12 +83,51 @@ def operation_set_active_versions(apps, schema_editor):
     )
 
     # Set all version as not active.
-    document_version_queryset.update(active=False)
+    DocumentVersion.objects.update(active=False)
 
-    # Set all latest versions as active.
-    document_version_queryset.filter(
+    # Workaround MySQL: (1093, "You can't specify target table 'documents_documentversion' for update in FROM clause")
+    document_version_queryset = document_version_queryset.filter(
         version_identifier__in=document_queryset.values('version_identifier')
-    ).update(active=True)
+    ).values('id')
+
+    compiler = document_version_queryset.query.get_compiler(
+        connection=schema_editor.connection
+    )
+
+    cursor_main.execute(
+        *document_version_queryset.query.as_sql(
+            compiler=compiler, connection=schema_editor.connection
+        )
+    )
+
+
+    FETCH_SIZE = 10000
+    query_document_version_active_update = '''
+        UPDATE {documents_documentversion} SET {active} = '1' WHERE {documents_documentversion}.{id} IN {{}};
+    '''.format(
+        documents_documentversion=schema_editor.connection.ops.quote_name(
+            name='documents_documentversion'
+        ),
+        active=schema_editor.connection.ops.quote_name(name='active'),
+        id=schema_editor.connection.ops.quote_name(name='id')
+    )
+
+    while True:
+        rows = cursor_main.fetchmany(FETCH_SIZE)
+        document_version_values = []
+
+        if not rows:
+            break
+
+        for row in rows:
+            document_version_values += (row[0],)
+
+        query_argument_placeholders = ('%s',) * len(rows)
+        values_query = '({})'.format(', '.join(query_argument_placeholders))
+        cursor_document_version.execute(
+            query_document_version_active_update.format(values_query), document_version_values
+        )
+        reset_queries()
 
 
 class Migration(migrations.Migration):

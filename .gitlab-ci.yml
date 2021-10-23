@@ -249,29 +249,8 @@ job_python_push_pypi:
     - releases/staging
     - tests/all
     - tests/python
+    - tests/upgrade
   stage: stage_test
-
-job_mysql_upgrade_test:
-  <<: *job_base_upgrade_test
-  script:
-    - apt-get install --yes default-libmysqlclient-dev default-mysql-client libssl-dev
-    - . venv/bin/activate
-    - pip install mysqlclient==$PYTHON_MYSQL_VERSION
-    - mysql --host="$MYSQL_PORT_3306_TCP_ADDR" --port="$MYSQL_PORT_3306_TCP_PORT" --user=root --password="$MYSQL_ENV_MYSQL_ROOT_PASSWORD" --execute="set global character_set_server=utf8mb4;" --ssl=TRUE
-    - export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'$MYSQL_PORT_3306_TCP_ADDR','OPTIONS':{'ssl':True}}}"
-    - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
-    - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell
-    - pip install dist/mayan_edms-*.whl
-    - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
-  services:
-    - mysql:8.0
-  tags:
-    - mysql
-  variables:
-    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    MYSQL_DATABASE: "mayan"
-    MYSQL_PASSWORD: "mayanuserpass"
-    MYSQL_USER: "mayan"
 
 job_postgres_upgrade_test:
   <<: *job_base_upgrade_test
@@ -331,6 +310,7 @@ job_sqlite_upgrade_test:
     - releases/python_minor
     - releases/staging
     - tests/all
+    - tests/base
     - tests/python
   stage: stage_test
 

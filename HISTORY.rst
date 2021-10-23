@@ -8,7 +8,7 @@
 - Improve sidebar menu heading display logic.
 - Fix leftover HTML markup in the server error dialog window.
 - Remove redundant close button for the server error dialog window.
-- Merged fixes and improvements from version 4.0.17.
+- Merged fixes and improvements from versions 4.0.17 and 4.0.18.
 
 4.1 (2021-10-10)
 ================
@@ -436,6 +436,25 @@
 - Add document template state action API endpoints. Closes GitLab issue #1043
   Thanks to Ludovic Anterieur (@lanterieur) for the request.
 - Pin jsonschema to version 3.2.0 to avoid errors with
+
+4.0.18 (2021-10-21)
+===================
+- Add settings to allow changing the default and the maximum
+  REST API page size.
+- Ensure ``ORGANIZATIONS_URL_BASE_PATH`` is applied to properly
+  trigger the root SPA template. Closes merge request !91. Thanks
+  to Foo Bar(@stuxxn) for the original patch.
+- Add support for setting validation.
+- Validate the format of the ``ORGANIZATIONS_URL_BASE_PATH``
+  setting.
+- Smart setting test updates:
+
+  - Add smart setting validation tests.
+  - Add setting view tests.
+  - Separate namespace and setting tests and mixins.
+
+- Add MySQL workaround for unique document version activation added to
+  migration documents 0067 in version 4.0.17.
 
 4.0.17 (2021-10-18)
 ===================
