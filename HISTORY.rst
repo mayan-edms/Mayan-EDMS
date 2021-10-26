@@ -16,6 +16,9 @@
 - Exclude all migration tests by tagging automatically at the
   ``MayanMigratorTestCase`` subclass definition.
 - Support multiple environments per dependency.
+- Update the ``wheel`` library to be a dependency of the ``build`` and the
+  ``documentation`` environments to workaround a bug in PIP that causes
+  ``"error: invalid command 'bdist_wheel'"``.
 
 4.1 (2021-10-10)
 ================

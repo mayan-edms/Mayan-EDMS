@@ -203,8 +203,8 @@ PythonDependency(
     version_string='==3.4.2'
 )
 PythonDependency(
-    environment=environment_build, module=__name__, name='wheel',
-    version_string='==0.37.0'
+    environments=(environment_build, environment_documentation),
+    module=__name__, name='wheel', version_string='==0.37.0'
 )
 
 # Documentation
