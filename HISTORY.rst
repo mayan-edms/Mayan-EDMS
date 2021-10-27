@@ -2,6 +2,10 @@
 ==================
 - Don't insert the value ``ORGANIZATIONS_URL_BASE_PATH`` in the path
   then it is ``None``.
+- Fix ``ModelTemplateField`` not displaying the ``initial_help_text``
+  for the specific usage instance. The ``initial_help_text`` was
+  being removed from the ``kwargs`` in the ``ModelTemplateField``
+  as well as the super class.
 
 4.1.1 (2021-10-26)
 ==================
