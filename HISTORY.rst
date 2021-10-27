@@ -6,6 +6,11 @@
   for the specific usage instance. The ``initial_help_text`` was
   being removed from the ``kwargs`` in the ``ModelTemplateField``
   as well as the super class.
+- Workflows improvements.
+
+  - Use the templating widget for the workflow document properties
+    modification and the HTTP request actions.
+  - Consolidate the workflow action help text.
 
 4.1.1 (2021-10-26)
 ==================
