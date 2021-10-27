@@ -21,6 +21,7 @@ from mayan.apps.common.validators import (
 )
 from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event
+from mayan.apps.file_caching.models import CachePartitionFile
 from mayan.apps.storage.classes import DefinedStorageLazy
 
 from .classes import Layer
@@ -85,24 +86,32 @@ class Asset(ExtraDataModelMixin, models.Model):
         self.file.storage.delete(name=name)
         return super().delete(*args, **kwargs)
 
-    def generate_image(self, user=None):
-        # The `user` parameter is not used, but added to retain compatibility.
+    def generate_image(
+        self, maximum_layer_order=None, transformation_instance_list=None,
+        user=None
+    ):
+        # The parameters 'maximum_layer_order',
+        # `transformation_instance_list`, `user` are not used, but added
+        # to retain interface compatibility.
         cache_filename = '{}'.format(self.get_hash())
 
-        if self.cache_partition.get_file(filename=cache_filename):
-            logger.debug(
-                'asset cache file "%s" found', cache_filename
-            )
-        else:
+        try:
+            self.cache_partition.get_file(filename=cache_filename)
+        except CachePartitionFile.DoesNotExist:
             logger.debug(
                 'asset cache file "%s" not found', cache_filename
             )
 
             image = self.get_image()
-            image_buffer = io.BytesIO()
-            image.save(image_buffer, format='PNG')
-            with self.cache_partition.create_file(filename=cache_filename) as file_object:
-                file_object.write(image_buffer.getvalue())
+            with io.BytesIO() as image_buffer:
+                image.save(image_buffer, format='PNG')
+
+                with self.cache_partition.create_file(filename=cache_filename) as file_object:
+                    file_object.write(image_buffer.getvalue())
+        else:
+            logger.debug(
+                'asset cache file "%s" found', cache_filename
+            )
 
         return cache_filename
 
@@ -131,11 +140,12 @@ class Asset(ExtraDataModelMixin, models.Model):
     def get_image(self):
         with self.open() as file_object:
             image = Image.open(fp=file_object)
+            image.load()
 
             if image.mode != 'RGBA':
                 image.putalpha(alpha=255)
 
-            return image
+        return image
 
     def open(self):
         name = self.file.name

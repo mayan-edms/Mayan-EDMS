@@ -1,8 +1,24 @@
-4.1.1 (2021-XX-XX)
+4.1.1 (2021-10-26)
 ==================
 - Move Docker Compose variables to the correct file. Move
   ``COMPOSE_PROJECT_NAME`` and ``COMPOSE_PROFILES`` to the
   .env file.
+- Fix asset image generation. Closes GitLab issue #1047 for series 4.1.
+  Thanks to Ryan Showalter (@ryanshow) for the report and debug information.
+- Improve sidebar menu heading display logic.
+- Fix leftover HTML markup in the server error dialog window.
+- Remove redundant close button for the server error dialog window.
+- Merged fixes and improvements from versions 4.0.17 and 4.0.18.
+- Update PIP from version 21.2.4 to 21.3.1.
+- Remove MySQL upgrade CD/CI testing pipeline stage until support is properly
+  re-implemented for version 8.0.
+- Add CD/CI triggers for local testing.
+- Exclude all migration tests by tagging automatically at the
+  ``MayanMigratorTestCase`` subclass definition.
+- Support multiple environments per dependency.
+- Update the ``wheel`` library to be a dependency of the ``build`` and the
+  ``documentation`` environments to workaround a bug in PIP that causes
+  ``"error: invalid command 'bdist_wheel'"``.
 
 4.1 (2021-10-10)
 ================
@@ -430,12 +446,61 @@
 - Add document template state action API endpoints. Closes GitLab issue #1043
   Thanks to Ludovic Anterieur (@lanterieur) for the request.
 - Pin jsonschema to version 3.2.0 to avoid errors with
+
+4.0.18 (2021-10-21)
+===================
+- Add settings to allow changing the default and the maximum
+  REST API page size.
+- Ensure ``ORGANIZATIONS_URL_BASE_PATH`` is applied to properly
+  trigger the root SPA template. Closes merge request !91. Thanks
+  to Foo Bar(@stuxxn) for the original patch.
+- Add support for setting validation.
+- Validate the format of the ``ORGANIZATIONS_URL_BASE_PATH``
+  setting.
+- Smart setting test updates:
+
+  - Add smart setting validation tests.
+  - Add setting view tests.
+  - Separate namespace and setting tests and mixins.
+
+- Add MySQL workaround for unique document version activation added to
+  migration documents 0067 in version 4.0.17.
+
+4.0.17 (2021-10-18)
+===================
+- Backport workaround for swagger-spec-validator dependency
+  bug. Pin jsonschema to version 3.2.0 to avoid errors with
   swagger-spec-validator 2.7.3. swagger-spec-validator does not specify a
   version for jsonschema
   (https://github.com/Yelp/swagger_spec_validator/blob/master/setup.py#L17),
   which installs the latest version 4.0.1. This version removes
   ``jsonschema.compat`` still used by swagger-spec-validator.
 - Add ``project_url`` to the Python setup file.
+- Add support for ``COMMON_EXTRA_APPS_PRE``. This setting works
+  like ``COMMON_EXTRA_APPS`` but installs the new apps before the default
+  apps. This allows the extra apps to override templates and other system
+  data.
+- Fix usage of ``.user.has_usable_password``. Use as a method not a flag.
+  Fixes the `Change Password` link appearing even when using external
+  authentication.
+- Support blank app URL namespaces. These are used to register the
+  ``urlpatterns`` of encapsulated libraries as top level named URLs.
+- Add a stacked Font Awesome icon class.
+- Ensure ``MAYAN_GUNICORN_TEMPORARY_DIRECTORY`` is exported and available to
+  ``supervisord``.
+- Always change the owner of ``/var/lib/mayan/``. Ensure that the ``mayan``
+  operating system user can always read and write from and to the mounted
+  volume.
+- Fix asset image caching. Closes GitLab issue #1047 for series 4.0.
+  Thanks to Ryan Showalter (@ryanshow) for the report and debug information.
+- Expand help text of ``ORGANIZATIONS_INSTALLATION_URL`` and
+  ``ORGANIZATIONS_URL_BASE_PATH`` settings. GitLab issue #1045. Thanks to
+  bw (@bwakkie) for the report.
+- Create the ``user_settings`` folder on upgrades too.
+- Improve initial setup folder creation error logic. Add keyword arguments.
+  Use storages app ``touch`` function.
+- Ensure only one document version is active when migrating from version 3.5.
+  Forum topic 9430. Thanks to forum user @woec for the report.
 
 4.0.16 (2021-09-29)
 ===================

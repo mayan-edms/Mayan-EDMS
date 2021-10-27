@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-10 06:01+0000\n"
+"POT-Creation-Date: 2021-10-23 04:22+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -76,23 +76,23 @@ msgstr "Si se selecciona, deshabilita terminar la personificación."
 msgid "User"
 msgstr "Usuario"
 
-#: links.py:29
+#: links.py:35
 msgid "Logout"
 msgstr "Cerrar sesión"
 
-#: links.py:34
+#: links.py:40
 msgid "Change password"
 msgstr "Cambiar contraseña"
 
-#: links.py:39 views/impersonation_views.py:50
+#: links.py:45 views/impersonation_views.py:50
 msgid "Impersonate user"
 msgstr "Personificar usuario"
 
-#: links.py:44
+#: links.py:50
 msgid "Impersonate"
 msgstr "Personificar"
 
-#: links.py:49 links.py:53
+#: links.py:55 links.py:60
 msgid "Set password"
 msgstr "Asignar contraseña"
 

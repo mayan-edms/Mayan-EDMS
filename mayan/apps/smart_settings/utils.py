@@ -391,6 +391,11 @@ SettingNamespaceSingleton.register_setting(
     }
 )
 SettingNamespaceSingleton.register_setting(
+    name='COMMON_EXTRA_APPS_PRE', klass=BaseSetting, kwargs={
+        'critical': True, 'has_default': True, 'default_value': ()
+    }
+)
+SettingNamespaceSingleton.register_setting(
     name='DATABASE_ENGINE', klass=BaseSetting, kwargs={
         'has_default': True, 'default_value': None
     }

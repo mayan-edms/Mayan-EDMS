@@ -12,13 +12,13 @@ class ClientBackendSentry(ClientBackend):
     _url_namespace = 'sentry'
 
     def get_url_patterns(self):
-        def trigger_error(request):
+        def view_trigger_error(request):
             1 / 0
 
         return [
             url(
                 regex=r'^debug/$', name='sentry_debug',
-                view=trigger_error
+                view=view_trigger_error
             )
         ]
 

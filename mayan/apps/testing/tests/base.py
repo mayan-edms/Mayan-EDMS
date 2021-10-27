@@ -1,5 +1,5 @@
 from django.apps import apps
-from django.test import TestCase, TransactionTestCase
+from django.test import TestCase, TransactionTestCase, tag
 
 from django_test_migrations.contrib.unittest_case import MigratorTestCase
 
@@ -9,6 +9,8 @@ from mayan.apps.events.tests.mixins import EventTestCaseMixin
 from mayan.apps.permissions.tests.mixins import PermissionTestCaseMixin
 from mayan.apps.smart_settings.tests.mixins import SmartSettingsTestCaseMixin
 from mayan.apps.user_management.tests.mixins import UserTestMixin
+
+from ..literals import EXCLUDE_TEST_TAG
 
 from .mixins import (
     ClientMethodsTestCaseMixin, ConnectionsCheckTestCaseMixin,
@@ -77,6 +79,7 @@ class GenericTransactionViewTestCase(
     """
 
 
+@tag(EXCLUDE_TEST_TAG,)
 class MayanMigratorTestCase(MigratorTestCase):
     def tearDown(self):
         ContentType = apps.get_model(

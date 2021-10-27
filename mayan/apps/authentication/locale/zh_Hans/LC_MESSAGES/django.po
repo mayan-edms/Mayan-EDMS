@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-10 06:01+0000\n"
+"POT-Creation-Date: 2021-10-23 04:22+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: bo feng <87289884@qq.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -76,23 +76,23 @@ msgstr ""
 msgid "User"
 msgstr "用户"
 
-#: links.py:29
+#: links.py:35
 msgid "Logout"
 msgstr "登出"
 
-#: links.py:34
+#: links.py:40
 msgid "Change password"
 msgstr "更改密码"
 
-#: links.py:39 views/impersonation_views.py:50
+#: links.py:45 views/impersonation_views.py:50
 msgid "Impersonate user"
 msgstr ""
 
-#: links.py:44
+#: links.py:50
 msgid "Impersonate"
 msgstr ""
 
-#: links.py:49 links.py:53
+#: links.py:55 links.py:60
 msgid "Set password"
 msgstr "设置密码"
 

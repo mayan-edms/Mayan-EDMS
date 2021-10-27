@@ -200,3 +200,8 @@ def patch_files(path=None, replace_list=None):
                                 fsrc=temporary_file_object,
                                 fdst=source_file_object
                             )
+
+
+def touch(filename, times=None):
+    with open(file=filename, mode='a'):
+        os.utime(filename, times)

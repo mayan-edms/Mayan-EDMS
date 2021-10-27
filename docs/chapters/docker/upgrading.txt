@@ -26,52 +26,52 @@ Simple installation
 
 #. Stop the container to be upgraded:
 
-  .. code-block:: console
+   .. code-block:: console
 
-      docker stop mayan-edms
+     docker stop mayan-edms
 
 
 #. Remove the container:
 
-  .. code-block:: console
+   .. code-block:: console
 
-      docker rm mayan-edms
+     docker rm mayan-edms
 
 
 #. Pull the new image version:
 
-  .. code-block:: console
+   .. code-block:: console
 
-      docker pull mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
+     docker pull mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
 
-  .. note::
+   .. note::
 
      Do not use the ``latest`` tag, it does not point to the latest version.
 
 
 #. Start the container again with the new image version:
 
-     .. code-block:: console
+   .. code-block:: console
 
-         docker run \
-         -d \
-         --name mayan-edms \
-         --restart=always \
-         -p 80:8000 \
-         -e MAYAN_CELERY_BROKER_URL="redis://:|DEFAULT_REDIS_PASSWORD|@172.17.0.1:6379/0" \
-         -e MAYAN_CELERY_RESULT_BACKEND="redis://:|DEFAULT_REDIS_PASSWORD|@172.17.0.1:6379/1" \
-         -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'172.17.0.1'}}" \
-         -e MAYAN_LOCK_MANAGER_BACKEND="mayan.apps.lock_manager.backends.redis_lock.RedisLock" \
-         -e MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS="{'redis_url':'redis://:|DEFAULT_REDIS_PASSWORD|@172.17.0.1:6379/2'}" \
-         -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
-         mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
+       docker run \
+       -d \
+       --name mayan-edms \
+       --restart=always \
+       -p 80:8000 \
+       -e MAYAN_CELERY_BROKER_URL="redis://:|DEFAULT_REDIS_PASSWORD|@172.17.0.1:6379/0" \
+       -e MAYAN_CELERY_RESULT_BACKEND="redis://:|DEFAULT_REDIS_PASSWORD|@172.17.0.1:6379/1" \
+       -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'172.17.0.1'}}" \
+       -e MAYAN_LOCK_MANAGER_BACKEND="mayan.apps.lock_manager.backends.redis_lock.RedisLock" \
+       -e MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS="{'redis_url':'redis://:|DEFAULT_REDIS_PASSWORD|@172.17.0.1:6379/2'}" \
+       -v /docker-volumes/mayan-edms/media:/var/lib/mayan \
+       mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
 
-     .. note::
+   .. note::
 
-         Ensure any customized environment variables used when launching the old version
-         of the container match the variables used to launch the new version
-         (e.g database password). If Mayan loads but login fails post upgrade,
-         this could be a cause.
+       Ensure any customized environment variables used when launching the old version
+       of the container match the variables used to launch the new version
+       (e.g database password). If Mayan loads but login fails post upgrade,
+       this could be a cause.
 
 
 Docker Compose installation
@@ -98,6 +98,17 @@ Upgrade between minor versions
    .. code-block:: console
 
      docker-compose --file docker-compose.yml --project-name mayan down
+
+
+#. Pull the new image version:
+
+   .. code-block:: console
+
+     docker pull mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
+
+   .. note::
+
+     Do not use the ``latest`` tag, it does not point to the latest version.
 
 
 #. Rename the Docker Compose file and keep it for future reference:
@@ -163,6 +174,17 @@ Upgrade between major versions
    .. code-block:: console
 
      docker-compose --file docker-compose.yml --project-name mayan down
+
+
+#. Pull the new image version:
+
+   .. code-block:: console
+
+     docker pull mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
+
+   .. note::
+
+     Do not use the ``latest`` tag, it does not point to the latest version.
 
 
 #. Make a backup of the database binary files:

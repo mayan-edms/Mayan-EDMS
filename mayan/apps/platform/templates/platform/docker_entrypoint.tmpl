@@ -4,20 +4,16 @@
 set -e
 
 apt_get_install() {
-    apt-get -q update
-    apt-get install -y --force-yes --no-install-recommends --auto-remove "$@"
-    apt-get -q clean
-    rm -rf /var/lib/apt/lists/*
+    apt-get update
+    apt-get install --auto-remove --force-yes --no-install-recommends --yes "$@"
+    apt-get clean
+    rm --force --recursive /var/lib/apt/lists/*
 }
 
 initialsetup() {
     echo "mayan: initialsetup()"
 
-    # Change the owner of the /var/lib/mayan always to allow adding the
-    # initial files. Top level only.
-    chown mayan:mayan ${MAYAN_MEDIA_ROOT}
-
-    su mayan -c "${MAYAN_BIN} initialsetup --force --no-dependencies"
+    su mayan --command "${MAYAN_BIN} initialsetup --force --no-dependencies"
 }
 
 make_ready() {
@@ -39,28 +35,32 @@ os_package_installs() {
 
 performupgrade() {
     echo "mayan: performupgrade()"
-    su mayan -c "${MAYAN_BIN} performupgrade --no-dependencies"
+    su mayan --command "${MAYAN_BIN} performupgrade --no-dependencies"
 }
 
 pip_installs() {
     echo "mayan: pip_installs()"
     if [ "${MAYAN_PIP_INSTALLS}" ]; then
-        su mayan -c "${MAYAN_PIP_BIN} install $MAYAN_PIP_INSTALLS"
+        su mayan --command "${MAYAN_PIP_BIN} install $MAYAN_PIP_INSTALLS"
     fi
 }
 
 update_uid_gid() {
+    # Change the owner of the /var/lib/mayan always to allow adding the
+    # initial files. Top level only.
+    chown mayan:mayan ${MAYAN_MEDIA_ROOT}
+
     echo "mayan: update_uid_gid()"
-    groupmod mayan -o -g ${MAYAN_USER_GID}
-    usermod mayan -o -u ${MAYAN_USER_UID}
+    groupmod mayan --gid ${MAYAN_USER_GID} --non-unique
+    usermod mayan --uid ${MAYAN_USER_UID} --non-unique
 
     if [ ${MAYAN_USER_UID} -ne ${DEFAULT_USER_UID} ] || [ ${MAYAN_USER_GID} -ne ${DEFAULT_USER_GID} ]; then
         echo "mayan: Updating file ownership. This might take a while if there are many documents."
-        chown -R mayan:mayan ${MAYAN_INSTALL_DIR} ${MAYAN_STATIC_ROOT}
+        chown --recursive mayan:mayan ${MAYAN_INSTALL_DIR} ${MAYAN_STATIC_ROOT}
         if [ "${MAYAN_SKIP_CHOWN_ON_STARTUP}" = "true" ]; then
             echo "mayan: skipping chown on startup"
         else
-            chown -R mayan:mayan ${MAYAN_MEDIA_ROOT}
+            chown --recursive mayan:mayan ${MAYAN_MEDIA_ROOT}
         fi
     fi
 }
