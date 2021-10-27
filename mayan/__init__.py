@@ -1,7 +1,7 @@
 __title__ = 'Mayan EDMS'
 __version__ = '4.1.2'
 __build__ = 0x040102
-__build_string__ = 'v4.1.1-14-gdcde0bd89c_Wed Oct 27 06:29:13 2021 -0400'
+__build_string__ = 'v4.1.2_Wed Oct 27 06:30:39 2021 -0400'
 __django_version__ = '2.2'
 __author__ = 'Roberto Rosario'
 __author_email__ = 'roberto.rosario@mayan-edms.com'
