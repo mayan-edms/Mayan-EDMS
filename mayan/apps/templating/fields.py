@@ -42,5 +42,6 @@ class ModelTemplateField(TemplateField):
                 'variable': self.model_variable
             }
         )
-        self.widget.attrs['model'] = self.model
+        self.widget.attrs['app_label'] = self.model._meta.app_label
+        self.widget.attrs['model_name'] = self.model._meta.model_name
         self.widget.attrs['data-model-variable'] = self.model_variable
