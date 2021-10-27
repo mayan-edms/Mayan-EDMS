@@ -216,7 +216,8 @@ class HTTPWorkflowActionViewTestCase(
         response = self._request_test_workflow_template_state_action_create_post_view(
             class_path='mayan.apps.document_states.workflow_actions.HTTPAction',
             extra_data={
-                'method': 'POST', 'timeout': 0, 'url': '127.0.0.1'
+                'method_template': 'POST', 'timeout_template': '0',
+                'url_template': '127.0.0.1'
             }
         )
         self.assertEqual(response.status_code, 404)
@@ -236,7 +237,8 @@ class HTTPWorkflowActionViewTestCase(
         response = self._request_test_workflow_template_state_action_create_post_view(
             class_path='mayan.apps.document_states.workflow_actions.HTTPAction',
             extra_data={
-                'method': 'POST', 'timeout': 0, 'url': '127.0.0.1'
+                'method_template': 'POST', 'timeout_template': '0',
+                'url_template': '127.0.0.1'
             }
         )
         self.assertEqual(response.status_code, 302)
