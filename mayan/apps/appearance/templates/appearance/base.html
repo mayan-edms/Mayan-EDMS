@@ -17,7 +17,8 @@
          */
         document.write('<script type="text/undefined">')
         const currentPath = window.location.pathname + window.location.search;
-        window.location = '/{% smart_setting "ORGANIZATIONS_URL_BASE_PATH" %}#' + currentPath;
+        {% smart_setting "ORGANIZATIONS_URL_BASE_PATH" as base_url %}
+        window.location = '/{{ base_url|default:"" }}#' + currentPath;
     }
 </script>
 

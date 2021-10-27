@@ -1,3 +1,7 @@
+4.0.19 (2021-10-27)
+===================
+- Backport null ``ORGANIZATIONS_URL_BASE_PATH`` value fix from version 4.1.2.
+
 4.0.18 (2021-10-21)
 ===================
 - Add settings to allow changing the default and the maximum
