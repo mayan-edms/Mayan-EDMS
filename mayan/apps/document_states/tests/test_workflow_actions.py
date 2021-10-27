@@ -33,8 +33,8 @@ from .mixins.workflow_template_state_mixins import (
 
 
 class HTTPWorkflowActionTestCase(
-    TestServerTestCaseMixin, GenericDocumentViewTestCase,
-    WorkflowTemplateTestMixin,
+    TestServerTestCaseMixin, WorkflowTemplateTestMixin,
+    GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
     auto_add_test_view = True
