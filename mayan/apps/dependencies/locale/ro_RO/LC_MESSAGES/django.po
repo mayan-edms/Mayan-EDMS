@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-23 04:22+0000\n"
+"POT-Creation-Date: 2021-10-27 09:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -39,11 +39,11 @@ msgstr "Nume intern"
 msgid "Description"
 msgstr "Descriere"
 
-#: apps.py:45 classes.py:140
+#: apps.py:45 classes.py:214
 msgid "Type"
 msgstr "Tip"
 
-#: apps.py:49 classes.py:142
+#: apps.py:49 classes.py:216
 msgid "Other data"
 msgstr "Alte date"
 
@@ -51,77 +51,81 @@ msgstr "Alte date"
 msgid "Declared by"
 msgstr "Declarată de"
 
-#: apps.py:57 classes.py:140
+#: apps.py:57 classes.py:214
 msgid "Version"
 msgstr "Versiune"
 
-#: apps.py:61 classes.py:141 classes.py:781
+#: apps.py:61
 msgid "Environment"
 msgstr "Mediu inconjurator"
 
-#: apps.py:64 classes.py:142
+#: apps.py:64 classes.py:216
 msgid "Check"
 msgstr "Verificare"
 
-#: classes.py:140
+#: classes.py:214
 msgid "Name"
 msgstr "Nume"
 
-#: classes.py:141
+#: classes.py:215
 msgid "App"
 msgstr "App"
 
-#: classes.py:256
+#: classes.py:215 classes.py:840
+msgid "Environments"
+msgstr ""
+
+#: classes.py:308
 msgid "Need to specify at least one: app_label or module."
 msgstr "Trebuie să specificați cel puțin una: app_label sau modul."
 
-#: classes.py:261
+#: classes.py:313
 #, python-format
 msgid "Dependency \"%s\" already registered."
 msgstr "Dependența \"%s\" deja înregistrată."
 
-#: classes.py:287
+#: classes.py:339
 #, python-format
 msgid "Installing package: %s... "
 msgstr "Instalarea pachetului: %s ..."
 
-#: classes.py:292
+#: classes.py:344
 msgid "Already installed."
 msgstr "Deja instalat."
 
-#: classes.py:295 classes.py:300 classes.py:304
+#: classes.py:347 classes.py:352 classes.py:356
 msgid "Complete."
 msgstr "Complet."
 
-#: classes.py:330
+#: classes.py:382
 msgid "Installed and correct version"
 msgstr "Versiunea instalată și corectă"
 
-#: classes.py:332
+#: classes.py:384
 msgid "Missing or incorrect version"
 msgstr "Versiune lipsă sau incorectă"
 
-#: classes.py:361
+#: classes.py:419
 msgid "None"
 msgstr "Nici unul"
 
-#: classes.py:370
+#: classes.py:428
 msgid "Not specified"
 msgstr "Nespecificat"
 
-#: classes.py:373
+#: classes.py:431
 msgid "Patching files... "
 msgstr "Patching fișiere ..."
 
-#: classes.py:401
+#: classes.py:459
 msgid "Executables that are called directly by the code."
 msgstr "Executabile care sunt apelate direct de cod."
 
-#: classes.py:403
+#: classes.py:461
 msgid "Binary"
 msgstr "Binar"
 
-#: classes.py:420
+#: classes.py:478
 msgid ""
 "JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
@@ -129,51 +133,51 @@ msgstr ""
 "Bibliotecile JavaScript descărcate din registrul NPM și folosite la "
 "funcționalitatea front-end."
 
-#: classes.py:423
+#: classes.py:481
 msgid "JavaScript"
 msgstr "JavaScript"
 
-#: classes.py:453 classes.py:694
+#: classes.py:511 classes.py:752
 msgid "Downloading... "
 msgstr "Descărcare..."
 
-#: classes.py:456
+#: classes.py:514
 msgid "Verifying... "
 msgstr "Se verifică ..."
 
-#: classes.py:459 classes.py:697
+#: classes.py:517 classes.py:755
 msgid "Extracting... "
 msgstr "Se extrage ..."
 
-#: classes.py:636
+#: classes.py:694
 msgid "Python packages downloaded from PyPI."
 msgstr "Pachetele Python descărcate de la PyPI."
 
-#: classes.py:638
+#: classes.py:696
 msgid "Python"
 msgstr "Python"
 
-#: classes.py:675
+#: classes.py:733
 msgid "Fonts downloaded from fonts.googleapis.com."
 msgstr "Fonturi descărcate de la fonts.googleapis.com."
 
-#: classes.py:677
+#: classes.py:735
 msgid "Google font"
 msgstr "Font Google"
 
-#: classes.py:763
+#: classes.py:821
 msgid "Declared in app"
 msgstr "Declarate în aplicație"
 
-#: classes.py:764
+#: classes.py:822
 msgid "Show dependencies by the app that declared them."
 msgstr "Afișați dependențele după aplicația care le-a declarat."
 
-#: classes.py:768
+#: classes.py:826
 msgid "Class"
 msgstr "Clasă"
 
-#: classes.py:769
+#: classes.py:827
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
@@ -181,11 +185,11 @@ msgstr ""
 "Arătați diferitele clase de dependențe. Clasele sunt de obicei împărțite în "
 "funcție de limbă sau de tipurile de fișiere ale dependenței."
 
-#: classes.py:774
+#: classes.py:832
 msgid "State"
 msgstr "Stare"
 
-#: classes.py:775
+#: classes.py:833
 msgid ""
 "Show the different states of the dependencies. True means that the "
 "dependencies is installed and is of a correct version. False means the "
@@ -195,7 +199,7 @@ msgstr ""
 "sunt instalate și că au o versiune corectă. Fals înseamnă că lipsesc "
 "dependențele sau există o versiune incorectă."
 
-#: classes.py:782
+#: classes.py:841
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."

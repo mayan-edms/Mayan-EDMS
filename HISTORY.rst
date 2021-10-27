@@ -1,3 +1,23 @@
+4.1.2 (2021-10-27)
+==================
+- Don't insert the value ``ORGANIZATIONS_URL_BASE_PATH`` in the path
+  then it is ``None``.
+- Fix ``ModelTemplateField`` not displaying the ``initial_help_text``
+  for the specific usage instance. The ``initial_help_text`` was
+  being removed from the ``kwargs`` in the ``ModelTemplateField``
+  as well as the super class.
+- Workflows improvements.
+
+  - Use the templating widget for the workflow document properties
+    modification and the HTTP request actions.
+  - Consolidate the workflow action help text.
+
+- Fix issue when attempting to create a Document version page OCR update
+  workflow action. Instead of the model class, the template form field now
+  passes the ``app_label`` and the ``model_name`` of the model via the
+  widget attributes to avoid Django's attribute template to attempt
+  getting a string representation of the model.
+
 4.1.1 (2021-10-26)
 ==================
 - Move Docker Compose variables to the correct file. Move

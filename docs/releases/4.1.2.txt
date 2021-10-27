@@ -1,0 +1,76 @@
+Version 4.1.2
+=============
+
+Released: October 27, 2021
+
+Status: Stable
+
+Changes
+-------
+
+Organizations
+^^^^^^^^^^^^^
+
+An bug was fixed where an empty ``ORGANIZATIONS_URL_BASE_PATH`` value
+would cause the work ``None`` to be appended to the URL after login.
+
+
+Templating
+^^^^^^^^^^
+
+An issue that cause ``initial_help_text`` of ``ModelTemplateField`` to be
+ignored was fixed.
+
+The issue that prevented the creation of a Document version page OCR update
+workflow action was rooted in the way the ``ModelTemplateField`` passed
+the model value to the widget, which caused Django to attempt getting a
+string representation of the model. The issue was fixed for all tested
+cases.
+
+
+Workflows
+^^^^^^^^^
+
+The ``ModelTemplateField`` was added to the document properties modification
+and the HTTP request workflow actions.
+
+The first stage of the workflow action help text consolidation was merged.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- None
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-23 04:22+0000\n"
+"POT-Creation-Date: 2021-10-27 09:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: bo feng <87289884@qq.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -35,7 +35,7 @@ msgid ""
 msgstr ""
 "使用Django的默认模板语言（https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/）。"
 
-#: fields.py:38
+#: fields.py:37
 #, python-format
 msgid ""
 "Use Django's default templating language "
@@ -79,18 +79,18 @@ msgstr "沙箱模板%s"
 msgid "Template error; %(exception)s"
 msgstr "模板错误%(exception)s"
 
-#: widgets.py:63
+#: widgets.py:64
 msgid "Filters"
 msgstr "过滤器"
 
-#: widgets.py:70
+#: widgets.py:71
 msgid "Tags"
 msgstr "标签"
 
-#: widgets.py:76
+#: widgets.py:77
 msgid "<Filters and tags>"
 msgstr ""
 
-#: widgets.py:114
+#: widgets.py:118
 msgid "<Model attributes>"
 msgstr ""

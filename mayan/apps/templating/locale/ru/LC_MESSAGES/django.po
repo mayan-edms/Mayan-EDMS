@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-23 04:22+0000\n"
+"POT-Creation-Date: 2021-10-27 09:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: OLeg Si <olegsm35@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -38,7 +38,7 @@ msgstr ""
 "Используйте стандартный язык шаблонов Django "
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 
-#: fields.py:38
+#: fields.py:37
 #, python-format
 msgid ""
 "Use Django's default templating language "
@@ -83,18 +83,18 @@ msgstr "Песочница шаблонов для: %s"
 msgid "Template error; %(exception)s"
 msgstr "Ошибка в шаблоне; %(exception)s"
 
-#: widgets.py:63
+#: widgets.py:64
 msgid "Filters"
 msgstr "Фильтры"
 
-#: widgets.py:70
+#: widgets.py:71
 msgid "Tags"
 msgstr "Метки"
 
-#: widgets.py:76
+#: widgets.py:77
 msgid "<Filters and tags>"
 msgstr "<Фильтры и метки>"
 
-#: widgets.py:114
+#: widgets.py:118
 msgid "<Model attributes>"
 msgstr "<Атрибуты модели>"

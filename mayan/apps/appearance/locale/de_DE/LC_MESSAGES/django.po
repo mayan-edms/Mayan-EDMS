@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-23 04:22+0000\n"
+"POT-Creation-Date: 2021-10-27 09:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Niklas Maurer <niklas.maurer@web.energy>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -329,7 +329,7 @@ msgstr ""
 "\n"
 "Geben Sie den Tipp weiter. Erzählen Sie Ihren Freunden und Kollegen, wie toll %(project_title)s ist!"
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:73
 msgid "Object"
 msgstr "Objekt"
 
