@@ -1,3 +1,8 @@
+4.1.2 (2021-10-XX)
+==================
+- Don't insert the value ``ORGANIZATIONS_URL_BASE_PATH`` in the path
+  then it is ``None``.
+
 4.1.1 (2021-10-26)
 ==================
 - Move Docker Compose variables to the correct file. Move
