@@ -1,6 +1,9 @@
 4.0.19 (2021-10-27)
 ===================
-- Backport null ``ORGANIZATIONS_URL_BASE_PATH`` value fix from version 4.1.2.
+- Backported fixes from version 4.1.2:
+
+  - ``ORGANIZATIONS_URL_BASE_PATH`` null value fix.
+  - Fix ``ModelTemplateField`` not displaying the ``initial_help_text``.
 
 4.0.18 (2021-10-21)
 ===================
