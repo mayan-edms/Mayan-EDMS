@@ -1,4 +1,4 @@
-4.1.2 (2021-10-XX)
+4.1.2 (2021-10-27)
 ==================
 - Don't insert the value ``ORGANIZATIONS_URL_BASE_PATH`` in the path
   then it is ``None``.
