@@ -2,6 +2,9 @@ from django.core.exceptions import ImproperlyConfigured
 
 
 def check_queryset(self, queryset):
+    """
+    Validate that a view queryset is usable.
+    """
     try:
         queryset.query
     except AttributeError:
