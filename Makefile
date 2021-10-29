@@ -520,5 +520,17 @@ setup-python-redis:
 copy-config-env:
 	@contrib/scripts/copy_config_env.py > mayan/settings/literals.py
 
+# Devpi
+
+devpi-init:
+	@if [ -z "$$(pip list | grep devpi-server)" ]; then echo "devpi-server not installed"; exit 1;fi
+	devpi-init || true
+
+devpi-start: devpi-init
+	devpi-server --host=0.0.0.0 >/dev/null &
+
+devpi-stop:
+	killall devpi-server || true
 
 -include docker/Makefile
+-include vagrant/Makefile

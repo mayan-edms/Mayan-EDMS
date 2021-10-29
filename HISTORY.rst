@@ -1,3 +1,15 @@
+4.1.3 (2021-XX-XX)
+==================
+- Vagrant updates
+
+  - Load installation value from ``config.env`` file.
+  - Update supervisord during installation.
+  - Setup the APT proxy during installation.
+  - Change how APT and PIP proxies are defined to match the Docker build
+    target.
+  - Add makefile for vagrant.
+  - Move devpi targets to the main makefile.
+
 4.1.2 (2021-10-27)
 ==================
 - Don't insert the value ``ORGANIZATIONS_URL_BASE_PATH`` in the path
