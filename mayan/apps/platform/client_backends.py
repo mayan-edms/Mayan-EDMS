@@ -1,3 +1,6 @@
+from distutils import util
+import logging
+
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -7,9 +10,19 @@ import mayan
 
 from .classes import ClientBackend
 
+logger = logging.getLogger(name=__name__)
+
 
 class ClientBackendSentry(ClientBackend):
     _url_namespace = 'sentry'
+
+    @staticmethod
+    def any_to_bool(value):
+        if not isinstance(value, bool):
+            value = bool(
+                util.strtobool(val=value)
+            )
+        return value
 
     def get_url_patterns(self):
         def view_trigger_error(request):
@@ -23,30 +36,69 @@ class ClientBackendSentry(ClientBackend):
         ]
 
     def launch(self):
-        self.setup_arguments()
+        kwargs = self.setup_arguments()
 
-        sentry_sdk.init(
-            dsn=self.dsn,
-            integrations=(DjangoIntegration(),),
-            traces_sample_rate=self.traces_sample_rate,
-            send_default_pii=self.send_default_pii,
-            release=self.release
-        )
+        kwargs['integrations'] = (DjangoIntegration(),)
+
+        logger.debug('cleaned arguments: %s', kwargs)
+
+        sentry_instance = sentry_sdk.init(**kwargs)
+
+        logger.debug('client options: %s', sentry_instance._client.options)
 
     def setup_arguments(self):
-        self.dsn = self.kwargs['dsn']
+        logger.debug('raw arguments: %s', self.kwargs)
 
-        # Set traces_sample_rate to 1.0 to capture 100%
-        # of transactions for performance monitoring.
-        # We recommend adjusting this value in production,
-        self.traces_sample_rate = self.kwargs.get('traces_sample_rate', 1.0)
+        # https://docs.sentry.io/platforms/python/configuration/options/
+        options = {}
 
-        # If you wish to associate users to errors (assuming you are using
-        # django.contrib.auth) you may enable sending PII data.
-        self.send_default_pii = self.kwargs.get('send_default_pii', True)
+        # Common Options
+        options['dsn'] = self.kwargs['dsn']
 
-        # By default the SDK will try to use the SENTRY_RELEASE
-        # environment variable, or infer a git commit
-        # SHA as release, however you may want to set
-        # something more human-readable.
-        self.release = mayan.__build_string__
+        options['debug'] = ClientBackendSentry.any_to_bool(
+            value=self.kwargs.get('debug', False)
+        )
+
+        options['release'] = mayan.__build_string__
+
+        options['environment'] = self.kwargs.get('environment')
+
+        options['sample_rate'] = float(
+            self.kwargs.get('sample_rate', 1.0)
+        )
+
+        options['max_breadcrumbs'] = int(
+            self.kwargs.get('max_breadcrumbs', 100)
+        )
+
+        options['attach_stacktrace'] = ClientBackendSentry.any_to_bool(
+            value=self.kwargs.get('attach_stacktrace', False)
+        )
+
+        options['send_default_pii'] = ClientBackendSentry.any_to_bool(
+            value=self.kwargs.get('send_default_pii', True)
+        )
+
+        options['server_name'] = self.kwargs.get('server_name')
+
+        options['with_locals'] = ClientBackendSentry.any_to_bool(
+            value=self.kwargs.get('with_locals', True)
+        )
+
+        # Transport Options
+        options['transport'] = self.kwargs.get('transport')
+
+        options['http_proxy'] = self.kwargs.get('http_proxy')
+
+        options['https_proxy'] = self.kwargs.get('https_proxy')
+
+        options['shutdown_timeout'] = int(
+            self.kwargs.get('shutdown_timeout', 2)
+        )
+
+        # Tracing Options
+        options['traces_sample_rate'] = float(
+            self.kwargs.get('traces_sample_rate', 1.0)
+        )
+
+        return options

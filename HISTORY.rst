@@ -10,6 +10,12 @@
   - Add makefile for vagrant.
   - Move devpi targets to the main makefile.
 
+- Sentry client backend updates
+
+  - Add more SDK options.
+  - Add typecasting to options.
+  - Add debug logging.
+
 4.1.2 (2021-10-27)
 ==================
 - Don't insert the value ``ORGANIZATIONS_URL_BASE_PATH`` in the path
