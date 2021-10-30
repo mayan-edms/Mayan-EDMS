@@ -1,3 +1,8 @@
+4.0.20 (2021-XX-XX)
+===================
+- Update gevent from version 20.4.0 to 21.8.0.
+- Update gunicorn from version 20.0.4 to 20.1.0.
+
 4.0.19 (2021-10-27)
 ===================
 - Backported fixes from version 4.1.2:
