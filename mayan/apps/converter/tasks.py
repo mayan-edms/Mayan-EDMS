@@ -37,7 +37,7 @@ def task_content_object_image_generate(
     obj = content_type.get_object_for_this_type(pk=object_id)
 
     transformation_indexed_dictionary = IndexedDictionary.from_dictionary_list(
-        dictionary_list=transformation_dictionary_list
+        dictionary_list=transformation_dictionary_list or ()
     )
 
     transformation_instance_list = transformation_indexed_dictionary.as_instance_list()

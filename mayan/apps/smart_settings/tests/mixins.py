@@ -64,6 +64,34 @@ class SmartSettingsTestCaseMixin:
             setting.set(value=old_value)
 
 
+class SmartSettingNamespaceTestMixin(EnvironmentTestCaseMixin):
+    def _create_test_settings_namespace(self, **kwargs):
+        try:
+            self.test_settings_namespace = SettingNamespace.get(
+                name=TEST_NAMESPACE_NAME
+            )
+            self.test_settings_namespace.migration_class = None
+            self.test_settings_namespace.version = None
+            self.test_settings_namespace.__dict__.update(kwargs)
+        except KeyError:
+            self.test_settings_namespace = SettingNamespace(
+                label=TEST_NAMESPACE_LABEL, name=TEST_NAMESPACE_NAME,
+                **kwargs
+            )
+
+
+class SmartSettingNamespaceViewTestMixin:
+    def _request_namespace_list_view(self):
+        return self.get(viewname='settings:namespace_list')
+
+    def _request_namespace_detail_view(self):
+        return self.get(
+            viewname='settings:namespace_detail', kwargs={
+                'namespace_name': self.test_settings_namespace.name
+            }
+        )
+
+
 class SmartSettingTestMixin(EnvironmentTestCaseMixin):
     test_setting_global_name = None
     test_config_file_object = None
@@ -101,34 +129,18 @@ class SmartSettingTestMixin(EnvironmentTestCaseMixin):
             if callback:
                 callback()
 
-    def _create_test_settings_namespace(self, **kwargs):
-        try:
-            self.test_settings_namespace = SettingNamespace.get(
-                name=TEST_NAMESPACE_NAME
-            )
-            self.test_settings_namespace.migration_class = None
-            self.test_settings_namespace.version = None
-            self.test_settings_namespace.__dict__.update(kwargs)
-        except KeyError:
-            self.test_settings_namespace = SettingNamespace(
-                label=TEST_NAMESPACE_LABEL, name=TEST_NAMESPACE_NAME,
-                **kwargs
-            )
-
-    def _create_test_setting(self):
+    def _create_test_setting(self, validation_function=None):
         self.test_setting = self.test_settings_namespace.add_setting(
             global_name=TEST_SETTING_GLOBAL_NAME,
-            default=TEST_SETTING_DEFAULT_VALUE
+            default=TEST_SETTING_DEFAULT_VALUE,
+            validation_function=validation_function
         )
 
 
 class SmartSettingViewTestMixin:
-    def _request_namespace_list_view(self):
-        return self.get(viewname='settings:namespace_list')
-
-    def _request_namespace_detail_view(self):
-        return self.get(
-            viewname='settings:namespace_detail', kwargs={
-                'namespace_name': self.test_settings_namespace.name
-            }
+    def _request_setting_edit_view(self, value):
+        return self.post(
+            viewname='settings:setting_edit_view', kwargs={
+                'setting_global_name': self.test_setting.global_name
+            }, data={'value': value}
         )

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-10 06:02+0000\n"
+"POT-Creation-Date: 2021-10-27 09:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -37,11 +37,11 @@ msgstr "اسم"
 msgid "Value"
 msgstr "قيمة"
 
-#: classes.py:341
+#: classes.py:347
 msgid "Overridden"
 msgstr "تم الإلغاء"
 
-#: classes.py:343
+#: classes.py:349
 msgid "Is this settings being overridden by an environment variable?"
 msgstr "هل تم الغاء هذه الإعدادات بواسطة متغير بيئة؟"
 
@@ -373,7 +373,7 @@ msgid ""
 "changes to take effect."
 msgstr "تم تحديث الإعدادات ، قم بإعادة تحميل لإحداث التغير"
 
-#: tests/test_classes.py:87
+#: tests/test_classes.py:162
 msgid "English"
 msgstr ""
 

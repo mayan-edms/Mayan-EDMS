@@ -17,7 +17,8 @@
          */
         document.write('<script type="text/undefined">')
         const currentPath = window.location.pathname + window.location.search;
-        window.location = '/#' + currentPath;
+        {% smart_setting "ORGANIZATIONS_URL_BASE_PATH" as base_url %}
+        window.location = '/{{ base_url|default:"" }}#' + currentPath;
     }
 </script>
 
@@ -63,7 +64,7 @@
                     <ul class="list-group">
                         {% for menu_link_result in sidebar_menus_link_results %}
                             {% for link_group in menu_link_result.link_groups %}
-                                {% if sidebar_menus_link_results|length > 1 %}
+                                {% if menu_link_result|length > 1 %}
                                     {% if menu_link_result.menu.name not in 'facet,list facet'|split:"," %}
                                         <li class="dropdown-header">{{ menu_link_result.menu.label }}</li>
                                     {% else %}

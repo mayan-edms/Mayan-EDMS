@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-10 06:01+0000\n"
+"POT-Creation-Date: 2021-10-27 09:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -124,7 +124,7 @@ msgstr "Удалить"
 msgid "Edit"
 msgstr "Редактировать"
 
-#: links.py:56 models.py:62 storages.py:21 views.py:143
+#: links.py:56 models.py:63 storages.py:21 views.py:143
 msgid "Assets"
 msgstr "Ресурсы"
 
@@ -136,11 +136,11 @@ msgstr "Преобразования"
 msgid "Select new transformation"
 msgstr "Выбрать новое преобразование"
 
-#: models.py:45
+#: models.py:46
 msgid "Label"
 msgstr "Заголовок"
 
-#: models.py:49
+#: models.py:50
 msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
@@ -148,47 +148,47 @@ msgstr ""
 "Это значение будет использоваться для ссылки на этот ресурс. Может содержать"
 " только латинские буквы, цифры и знак подчеркивания."
 
-#: models.py:52
+#: models.py:53
 msgid "Internal name"
 msgstr "Внутреннее имя"
 
-#: models.py:56
+#: models.py:57
 msgid "File"
 msgstr "Файл"
 
-#: models.py:61
+#: models.py:62
 msgid "Asset"
 msgstr "Ресурс"
 
-#: models.py:162 models.py:233
+#: models.py:172 models.py:243
 msgid "Name"
 msgstr "Название"
 
-#: models.py:165 models.py:231
+#: models.py:175 models.py:241
 msgid "Order"
 msgstr "Порядок"
 
-#: models.py:170 models.py:189
+#: models.py:180 models.py:199
 msgid "Stored layer"
 msgstr "Сохраненный слой"
 
-#: models.py:171
+#: models.py:181
 msgid "Stored layers"
 msgstr "Сохраненные слои"
 
-#: models.py:186 models.py:240
+#: models.py:196 models.py:250
 msgid "Enabled"
 msgstr "Включено"
 
-#: models.py:197 models.py:225
+#: models.py:207 models.py:235
 msgid "Object layer"
 msgstr "Слой объекта"
 
-#: models.py:198
+#: models.py:208
 msgid "Object layers"
 msgstr "Слои объекта"
 
-#: models.py:229
+#: models.py:239
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
@@ -196,7 +196,7 @@ msgstr ""
 "Порядок выполнения преобразований. Если оставить неизменным, будет "
 "установлен флаг автоматического выставления порядка."
 
-#: models.py:236 workflow_actions.py:45
+#: models.py:246 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
@@ -204,19 +204,19 @@ msgstr ""
 "Введите аргументы для преобразования в формате YAML-словаря, например: "
 "{\"degrees\": 180}"
 
-#: models.py:238
+#: models.py:248
 msgid "Arguments"
 msgstr "Аргументы"
 
-#: models.py:247
+#: models.py:257
 msgid "Layer transformation"
 msgstr "Слой трансформации"
 
-#: models.py:248
+#: models.py:258
 msgid "Layer transformations"
 msgstr "Слои трансформации"
 
-#: models.py:254
+#: models.py:264
 msgid "Unknown transformation class"
 msgstr "Неизвестный класс преобразования"
 

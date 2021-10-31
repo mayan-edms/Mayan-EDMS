@@ -10,7 +10,7 @@ from .permissions import permission_users_impersonate
 
 def _condition_user_has_usable_password_and_can_change_password(user):
     if user.is_authenticated:
-        return user.has_usable_password and not user.user_options.block_password_change
+        return user.has_usable_password() and not user.user_options.block_password_change
     else:
         return False
 
@@ -18,11 +18,17 @@ def _condition_user_has_usable_password_and_can_change_password(user):
 def condition_user_has_usable_password_and_can_change_password(context, resolved_object):
     user = context['request'].user
 
-    return _condition_user_has_usable_password_and_can_change_password(user=user)
+    return _condition_user_has_usable_password_and_can_change_password(
+        user=user
+    )
 
 
 def condition_user_has_usable_password_and_can_change_password_and_is_not_admin(context, resolved_object):
-    return _condition_user_has_usable_password_and_can_change_password(user=resolved_object) and condition_user_is_not_admin(context=context, resolved_object=resolved_object)
+    return _condition_user_has_usable_password_and_can_change_password(
+        user=resolved_object
+    ) and condition_user_is_not_admin(
+        context=context, resolved_object=resolved_object
+    )
 
 
 link_logout = Link(
@@ -49,7 +55,7 @@ link_user_multiple_set_password = Link(
     text=_('Set password'), view='authentication:user_multiple_set_password'
 )
 link_user_set_password = Link(
-    args='object.id', condition=condition_user_has_usable_password_and_can_change_password_and_is_not_admin, icon=icon_password_change,
-    permissions=(permission_user_edit,), text=_('Set password'),
-    view='authentication:user_set_password'
+    args='object.id', condition=condition_user_has_usable_password_and_can_change_password_and_is_not_admin,
+    icon=icon_password_change, permissions=(permission_user_edit,),
+    text=_('Set password'), view='authentication:user_set_password'
 )

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-10 06:02+0000\n"
+"POT-Creation-Date: 2021-10-27 09:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -63,11 +63,11 @@ msgstr ""
 
 #: events.py:8
 msgid "Source created"
-msgstr ""
+msgstr "Quelle erstellt"
 
 #: events.py:11
 msgid "Source edited"
-msgstr ""
+msgstr "Quelle bearbeitet"
 
 #: forms.py:26
 msgid "An optional comment to explain the upload."
@@ -90,7 +90,7 @@ msgstr ""
 
 #: forms.py:48
 msgid "The backend used to create the new source."
-msgstr ""
+msgstr "Das für die Erstellung der neuen Quelle verwendete Backend"
 
 #: forms.py:49
 msgid "Backend"
@@ -114,7 +114,7 @@ msgstr "Neue Datei hochladen"
 
 #: links.py:88
 msgid "Create source"
-msgstr ""
+msgstr "Quelle erstellen"
 
 #: links.py:94 source_backends/staging_folder_backends.py:314
 msgid "Delete"
@@ -166,7 +166,7 @@ msgstr "Existierende Dokumentenquellen anzeigen"
 
 #: queues.py:10
 msgid "Sources periodic"
-msgstr "Quellen regelmäßig"
+msgstr "Quellen wiederkehrend"
 
 #: queues.py:14
 msgid "Sources fast"
@@ -182,7 +182,7 @@ msgstr "Hochladen erledigen"
 
 #: serializers.py:50
 msgid "Optional arguments for the action. Must be JSON formatted."
-msgstr ""
+msgstr "Optionale Argumente für die Aktion in JSON-Formatierung"
 
 #: serializers.py:51 source_backends/sane_scanner_backends.py:44
 msgid "Arguments"

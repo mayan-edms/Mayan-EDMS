@@ -24,7 +24,7 @@ class Command(management.BaseCommand):
 
     def handle(self, *args, **options):
         dependency_list = PythonDependency.get_for_attribute(
-            attribute_name='environment__name',
+            attribute_name='environments.name',
             attribute_value=options['environment'], subclass_only=True
         )
         exclude_list = (options['exclude'] or '').split(',')

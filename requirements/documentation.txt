@@ -5,3 +5,4 @@ sphinx_rtd_theme==0.5.2
 sphinxcontrib-blockdiag==2.0.0
 sphinxcontrib-spelling==7.1.0
 tornado==6.1
+wheel==0.37.0

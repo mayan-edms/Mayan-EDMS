@@ -244,7 +244,6 @@ class DocumentStatesApp(MayanAppConfig):
             ), label=_('Get last log entry'), model=WorkflowInstance,
             name='get_last_log_entry'
         )
-
         ModelProperty(
             description=_(
                 'Return the current context dictionary which includes '
@@ -252,7 +251,6 @@ class DocumentStatesApp(MayanAppConfig):
             ), label=_('Get the context'), model=WorkflowInstance,
             name='get_runtime_context'
         )
-
         ModelProperty(
             description=_(
                 'Return the transition of the workflow instance.'

@@ -33,8 +33,8 @@ from .mixins.workflow_template_state_mixins import (
 
 
 class HTTPWorkflowActionTestCase(
-    TestServerTestCaseMixin, GenericDocumentViewTestCase,
-    WorkflowTemplateTestMixin,
+    TestServerTestCaseMixin, WorkflowTemplateTestMixin,
+    GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
     auto_add_test_view = True
@@ -216,7 +216,8 @@ class HTTPWorkflowActionViewTestCase(
         response = self._request_test_workflow_template_state_action_create_post_view(
             class_path='mayan.apps.document_states.workflow_actions.HTTPAction',
             extra_data={
-                'method': 'POST', 'timeout': 0, 'url': '127.0.0.1'
+                'method_template': 'POST', 'timeout_template': '0',
+                'url_template': '127.0.0.1'
             }
         )
         self.assertEqual(response.status_code, 404)
@@ -236,7 +237,8 @@ class HTTPWorkflowActionViewTestCase(
         response = self._request_test_workflow_template_state_action_create_post_view(
             class_path='mayan.apps.document_states.workflow_actions.HTTPAction',
             extra_data={
-                'method': 'POST', 'timeout': 0, 'url': '127.0.0.1'
+                'method_template': 'POST', 'timeout_template': '0',
+                'url_template': '127.0.0.1'
             }
         )
         self.assertEqual(response.status_code, 302)
@@ -292,7 +294,7 @@ class DocumentPropertiesEditActionTestCase(
         )
 
     def test_document_properties_edit_action_workflow_execute(self):
-        self._create_test_workflow_template()
+        self._create_test_workflow_template(add_test_document_type=True)
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_transition()
@@ -304,9 +306,6 @@ class DocumentPropertiesEditActionTestCase(
             ),
             action_path=TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_DOTTED_PATH,
             label='', when=WORKFLOW_ACTION_ON_ENTRY,
-        )
-        self.test_workflow_template.document_types.add(
-            self.test_document_type
         )
 
         self._create_test_document_stub()

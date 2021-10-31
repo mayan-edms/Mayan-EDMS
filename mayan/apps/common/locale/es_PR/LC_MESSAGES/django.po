@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-10 06:01+0000\n"
+"POT-Creation-Date: 2021-10-27 09:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: es_PR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:129 permissions.py:5 settings.py:14
+#: apps.py:137 permissions.py:5 settings.py:15
 msgid "Common"
 msgstr "Común"
 
@@ -102,13 +102,13 @@ msgstr "Obtener apoyo"
 msgid "Tools"
 msgstr "Herramientas"
 
-#: literals.py:19
+#: literals.py:20
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr ""
 "Esta función ha quedado en desuso y se eliminará en una versión futura."
 
-#: literals.py:22
+#: literals.py:23
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
@@ -116,15 +116,15 @@ msgstr ""
 "El backend de su base de datos está configurado para usar SQLite. SQLite "
 "solo debe usarse para desarrollo y pruebas, no para producción."
 
-#: literals.py:31
+#: literals.py:32
 msgid "Days"
 msgstr "Días"
 
-#: literals.py:32
+#: literals.py:33
 msgid "Hours"
 msgstr "Horas"
 
-#: literals.py:33
+#: literals.py:34
 msgid "Minutes"
 msgstr "Minutos"
 
@@ -160,7 +160,7 @@ msgstr "Usuario"
 msgid "Copy object"
 msgstr "Copiar objeto"
 
-#: settings.py:21
+#: settings.py:22
 msgid ""
 "In list mode, show the \"list facet\" menu options as a dropdown menu "
 "instead of individual buttons."
@@ -168,7 +168,7 @@ msgstr ""
 "En el modo de lista, muestra las opciones del menú \"faceta de lista\" como "
 "un menú desplegable en lugar de botones individuales."
 
-#: settings.py:29
+#: settings.py:30
 msgid ""
 "In list mode, show the \"object\" menu options as a dropdown menu instead of"
 " individual buttons."
@@ -176,7 +176,7 @@ msgstr ""
 "En el modo de lista, muestra las opciones del menú \"objeto\" como un menú "
 "desplegable en lugar de botones individuales."
 
-#: settings.py:36
+#: settings.py:37
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -189,7 +189,7 @@ msgstr ""
 "aplicación (preferida), o un paquete que contiene una aplicación. Ejemplo: "
 "['app_1', 'app_2']"
 
-#: settings.py:46
+#: settings.py:47
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -202,7 +202,22 @@ msgstr ""
 "aplicación (preferida), o un paquete que contiene una aplicación. Ejemplo: "
 "['app_1', 'app_2']"
 
-#: settings.py:56
+#: settings.py:58
+msgid ""
+"A list of strings designating all applications that are installed beyond "
+"those normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. These apps will be installed before the default "
+"apps. Example: ['app_1', 'app_2']"
+msgstr ""
+"Una lista de textos que designan todas las aplicaciones que están instaladas"
+" más allá de las que normalmente instala Mayan EDMS. Cada entrada debe ser "
+"una ruta de Python separada por puntos a: una clase de configuración de la "
+"aplicación (preferida), o un paquete que contiene una aplicación. Estas "
+"aplicaciones se instalarán antes que las aplicaciones predeterminadas. "
+"Ejemplo: [\"app_1\", \"app_2\"]"
+
+#: settings.py:69
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
@@ -211,15 +226,15 @@ msgstr ""
 "es también la vista a la que los usuarios serán redirigidos después de "
 "iniciar sesión."
 
-#: settings.py:65
+#: settings.py:78
 msgid "Name of the dashboard to display in the home view."
 msgstr "Nombre del tablero que se mostrará en la vista inicial."
 
-#: settings.py:70
+#: settings.py:83
 msgid "Sets the project's name."
 msgstr "Establece el nombre del proyecto."
 
-#: settings.py:74
+#: settings.py:87
 msgid "URL of the project's homepage."
 msgstr "URL de la página de inicio del proyecto."
 

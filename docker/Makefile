@@ -186,13 +186,3 @@ docker-development-cleanup: ## Delete the test container and the test volume.
 	@docker volume rm mayan-development-postgres || true
 	@docker volume rm mayan-development-rabbitmq || true
 	@docker volume rm mayan-development-redis || true
-
-devpi-init:
-	@if [ -z "$$(pip list | grep devpi-server)" ]; then echo "devpi-server not installed"; exit 1;fi
-	devpi-init || true
-
-devpi-start: devpi-init
-	devpi-server --host=0.0.0.0 >/dev/null &
-
-devpi-stop:
-	killall devpi-server || true

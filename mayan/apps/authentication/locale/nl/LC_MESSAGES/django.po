@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-10 06:01+0000\n"
+"POT-Creation-Date: 2021-10-27 09:00+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -81,23 +81,23 @@ msgstr ""
 msgid "User"
 msgstr "Gebruiker"
 
-#: links.py:29
+#: links.py:35
 msgid "Logout"
 msgstr "Afmelden"
 
-#: links.py:34
+#: links.py:40
 msgid "Change password"
 msgstr "Pas wachtwoord aan"
 
-#: links.py:39 views/impersonation_views.py:50
+#: links.py:45 views/impersonation_views.py:50
 msgid "Impersonate user"
 msgstr "Nabootsen gebruiker"
 
-#: links.py:44
+#: links.py:50
 msgid "Impersonate"
 msgstr ""
 
-#: links.py:49 links.py:53
+#: links.py:55 links.py:60
 msgid "Set password"
 msgstr "Stel wachtwoord in"
 

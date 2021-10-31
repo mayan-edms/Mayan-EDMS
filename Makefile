@@ -347,6 +347,29 @@ gitlab-release-all-minor:
 	git push origin :releases/all_minor || true
 	git push origin HEAD:releases/all_minor
 
+# Internal testing
+
+gitlab-tests-internal-all: ## Trigger all tests as a CD/CI pipeline
+gitlab-tests-internal-all:
+	git push internal
+	git push internal --tags
+	git push internal :tests/all || true
+	git push internal HEAD:tests/all
+
+gitlab-tests-internal-base: ## Trigger normal and migration tests as a CD/CI pipeline
+gitlab-tests-internal-base:
+	git push internal
+	git push internal --tags
+	git push internal :tests/base || true
+	git push internal HEAD:tests/base
+
+gitlab-tests-internal-upgrade: ## Trigger upgrade tests as a CD/CI pipeline
+gitlab-tests-internal-upgrade:
+	git push internal
+	git push internal --tags
+	git push internal :tests/upgrade || true
+	git push internal HEAD:tests/upgrade
+
 # Dev server
 
 manage: ## Run a command with the development settings.
@@ -497,5 +520,17 @@ setup-python-redis:
 copy-config-env:
 	@contrib/scripts/copy_config_env.py > mayan/settings/literals.py
 
+# Devpi
+
+devpi-init:
+	@if [ -z "$$(pip list | grep devpi-server)" ]; then echo "devpi-server not installed"; exit 1;fi
+	devpi-init || true
+
+devpi-start: devpi-init
+	devpi-server --host=0.0.0.0 >/dev/null &
+
+devpi-stop:
+	killall devpi-server || true
 
 -include docker/Makefile
+-include vagrant/Makefile
