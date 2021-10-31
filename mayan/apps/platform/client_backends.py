@@ -2,6 +2,7 @@ from distutils import util
 import logging
 
 import sentry_sdk
+from sentry_sdk.integrations.celery import CeleryIntegration
 from sentry_sdk.integrations.django import DjangoIntegration
 
 from django.conf.urls import url
@@ -38,7 +39,7 @@ class ClientBackendSentry(ClientBackend):
     def launch(self):
         kwargs = self.setup_arguments()
 
-        kwargs['integrations'] = (DjangoIntegration(),)
+        kwargs['integrations'] = (CeleryIntegration(), DjangoIntegration(),)
 
         logger.debug('cleaned arguments: %s', kwargs)
 
