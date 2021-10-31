@@ -2,6 +2,13 @@
 ================
 - Update Django to version 3.2.8.
 - Update django-widget-tweaks from version 1.4.8 to 1.4.9.
+- File staging sources updates:
+
+  - Use ``StreamingHttpResponse`` to serve previews.
+  - Support office document files for preview.
+  - Fix extra brackets in the enconded and cached filenames.
+  - Simplify image generation.
+  - Use context manager to ensure preview images are always closed.
 
 4.1.3 (2021-XX-XX)
 ==================

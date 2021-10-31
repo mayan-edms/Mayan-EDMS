@@ -1,4 +1,4 @@
-from django.http.response import FileResponse
+from django.http.response import StreamingHttpResponse
 
 from rest_framework import status
 
@@ -96,7 +96,7 @@ class StagingFolderActionAPIViewTestCase(
 
         response = self._request_test_staging_folder_file_image_action_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertTrue(isinstance(response, FileResponse))
+        self.assertTrue(isinstance(response, StreamingHttpResponse))
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
