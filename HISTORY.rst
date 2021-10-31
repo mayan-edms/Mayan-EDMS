@@ -10,13 +10,21 @@
   - Add makefile for vagrant.
   - Move devpi targets to the main makefile.
 
-- Sentry client backend updates
+- Sentry client backend updates:
 
   - Add more SDK options.
   - Add typecasting to options.
   - Add debug logging.
   - Add Celery integration.
   - Add Redis Integration.
+
+- File staging sources updates:
+
+  - Use ``StreamingHttpResponse`` to serve previews.
+  - Support previews for office document files.
+  - Fix extra brackets in the encoded and cached filenames.
+  - Simplify image generation.
+  - Use context manager to ensure preview images are always closed.
 
 4.1.2 (2021-10-27)
 ==================
