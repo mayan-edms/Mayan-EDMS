@@ -27,7 +27,6 @@ if 'revertsettings' in sys.argv:
 else:
     setting_namespace.update_globals()
 
-# SECURITY WARNING: keep the secret key used in production secret!
 environment_secret_key = os.environ.get('MAYAN_SECRET_KEY')
 if environment_secret_key:
     SECRET_KEY = environment_secret_key
@@ -39,7 +38,9 @@ else:
     except IOError:
         SECRET_KEY = DEFAULT_SECRET_KEY
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# Silence warning and keep default for the time being.
+# https://docs.djangoproject.com/en/3.2/releases/3.2/#customizing-type-of-auto-created-primary-keys
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # Application definition
 
