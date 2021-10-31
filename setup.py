@@ -79,7 +79,7 @@ django-pure-pagination==0.3.0
 django-qsstats-magic==1.1.0
 django-solo==1.1.5
 django-stronghold==0.4.0
-django-widget-tweaks==1.4.8
+django-widget-tweaks==1.4.9
 djangorestframework==3.12.4
 djangorestframework-recursive==0.1.2
 drf-yasg==1.20.0

@@ -1,6 +1,7 @@
 4.2 (202X-XX-XX)
 ================
 - Update Django to version 3.2.8.
+- Update django-widget-tweaks from version 1.4.8 to 1.4.9.
 
 4.1.3 (2021-XX-XX)
 ==================
