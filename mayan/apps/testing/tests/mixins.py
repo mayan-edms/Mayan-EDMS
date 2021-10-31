@@ -128,7 +128,7 @@ class ContentTypeCheckTestCaseMixin:
             def request(self, *args, **kwargs):
                 response = super().request(*args, **kwargs)
 
-                content_type = response._headers.get('content-type', [None, ''])[1]
+                content_type = response.headers.get('content-type', '')
                 if test_instance.expected_content_types:
                     test_instance.assertTrue(
                         content_type in test_instance.expected_content_types,
