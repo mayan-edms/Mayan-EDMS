@@ -1,3 +1,7 @@
+4.2 (202X-XX-XX)
+================
+- Update Django to version 3.2.8.
+
 4.1.1 (2021-XX-XX)
 ==================
 - Move Docker Compose variables to the correct file. Move
