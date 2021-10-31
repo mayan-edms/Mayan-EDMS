@@ -3,6 +3,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models.query import QuerySet
 from django.http import Http404, HttpResponseRedirect
+from django.http.response import FileResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.utils.translation import ungettext, ugettext_lazy as _
@@ -12,9 +13,9 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.settings import setting_home_view
 from mayan.apps.databases.utils import check_queryset
+from mayan.apps.mimetype.api import get_mimetype
 from mayan.apps.permissions import Permission
 
-from .compat import FileResponse
 from .exceptions import ActionError
 from .forms import DynamicForm
 from .literals import (
@@ -82,11 +83,30 @@ class DownloadViewMixin:
         return None
 
     def render_to_response(self, **response_kwargs):
-        return FileResponse(
+        response = FileResponse(
             as_attachment=self.get_as_attachment(),
             filename=self.get_download_filename(),
             streaming_content=self.get_download_file_object()
         )
+
+        encoding_map = {
+            'bzip2': 'application/x-bzip',
+            'gzip': 'application/gzip',
+            'xz': 'application/x-xz',
+        }
+
+        if response.file_to_stream:
+            content_type, encoding = get_mimetype(
+                file_object=response.file_to_stream, mimetype_only=True
+            )
+            # Encoding isn't set to prevent browsers from automatically
+            # uncompressing files.
+            content_type = encoding_map.get(encoding, content_type)
+            response.headers['Content-Type'] = content_type or 'application/octet-stream'
+        else:
+            response.headers['Content-Type'] = 'application/octet-stream'
+
+        return response
 
 
 class DynamicFormViewMixin:

@@ -17,6 +17,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import connection, connections, models
 from django.db.models.signals import post_save, pre_save
 from django.http import HttpResponse
+from django.http.response import FileResponse
 from django.template import Context, Template
 from django.test.utils import ContextList
 from django.urls import clear_url_caches, reverse
@@ -27,7 +28,6 @@ from stronghold.decorators import public
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.permissions.tests.mixins import PermissionTestMixin
 from mayan.apps.storage.settings import setting_temporary_directory
-from mayan.apps.views.compat import FileResponse
 
 from ..literals import (
     TEST_SERVER_HOST, TEST_SERVER_SCHEME, TEST_VIEW_NAME, TEST_VIEW_URL
