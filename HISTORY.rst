@@ -26,6 +26,14 @@
   - Simplify image generation.
   - Use context manager to ensure preview images are always closed.
 
+- Sources app updates:
+
+  - Don't assume all source backends provide an upload form.
+  - Improve SANE scanner error handling.
+  - Fix logging of non interactive source errors.
+  - Show interactive source processing as a message.
+
+
 4.1.2 (2021-10-27)
 ==================
 - Don't insert the value ``ORGANIZATIONS_URL_BASE_PATH`` in the path
