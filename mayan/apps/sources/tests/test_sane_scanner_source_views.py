@@ -1,5 +1,3 @@
-from django.test import override_settings
-
 from mayan.apps.documents.events import (
     event_document_created, event_document_file_created,
     event_document_file_edited, event_document_version_created,
@@ -10,9 +8,6 @@ from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_file_new
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
-from mayan.apps.documents.tests.literals import TEST_COMPRESSED_DOCUMENT_PATH
-
-from ..source_backends.literals import SOURCE_UNCOMPRESS_CHOICE_ALWAYS
 
 from .mixins.base_mixins import (
     DocumentFileUploadViewTestMixin, DocumentUploadWizardViewTestMixin
