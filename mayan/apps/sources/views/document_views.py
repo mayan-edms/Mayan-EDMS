@@ -1,5 +1,6 @@
 import logging
 
+from django.conf import settings
 from django.contrib import messages
 from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
@@ -46,7 +47,12 @@ class DocumentUploadInteractiveView(ExternalObjectViewMixin, UploadBaseView):
                     data={'error': force_text(s=message)}, status=500
                 )
             else:
-                raise type(exception)(message)
+                messages.error(
+                    message=message.replace('\n', ' '),
+                    request=self.request
+                )
+                if settings.DEBUG:
+                    raise type(exception)(message)
         else:
             messages.success(
                 message=_(
