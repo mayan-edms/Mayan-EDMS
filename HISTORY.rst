@@ -15,6 +15,8 @@
   - Add more SDK options.
   - Add typecasting to options.
   - Add debug logging.
+  - Add Celery integration.
+  - Add Redis Integration.
 
 4.1.2 (2021-10-27)
 ==================
