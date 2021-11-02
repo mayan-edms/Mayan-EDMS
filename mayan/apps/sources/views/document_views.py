@@ -51,8 +51,7 @@ class DocumentUploadInteractiveView(ExternalObjectViewMixin, UploadBaseView):
                     message=message.replace('\n', ' '),
                     request=self.request
                 )
-                if settings.DEBUG:
-                    raise type(exception)(message)
+                raise type(exception)(message)
         else:
             messages.success(
                 message=_(
