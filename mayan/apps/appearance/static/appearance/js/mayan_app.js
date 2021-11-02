@@ -160,43 +160,6 @@ class MayanApp {
             'hideMethod': 'fadeOut'
         }
 
-        // Add invisible bootstrap messages to copy the styles to toastr.js
-
-        $('#div-javascript-dynamic-content').html('\
-            <div class="hidden alert alert-success">\
-                <p>text</p>\
-            </div>\
-            <div class="hidden alert alert-info">\
-                <p>text</p>\
-            </div>\
-            <div class="hidden alert alert-danger">\
-                <p>text</p>\
-            </div>\
-            <div class="hidden alert alert-warning">\
-                <p>text</p>\
-            </div>\
-        ');
-
-        // Copy the bootstrap style from the sample alerts to toaster.js via
-        // dynamic document style tag
-
-        $('#style-javascript').html('\
-            <style>\
-                .toast-success {\
-                    background-color: ' + $('.alert-success').css('background-color') +'\
-                }\
-                .toast-info {\
-                    background-color: ' + $('.alert-info').css('background-color') +'\
-                }\
-                .toast-error {\
-                    background-color: ' + $('.alert-danger').css('background-color') +'\
-                }\
-                .toast-warning {\
-                    background-color: ' + $('.alert-warning').css('background-color') +'\
-                }\
-            </style>\
-        ');
-
         $.each(context.djangoMessages, function (index, value) {
             let options = {};
 

@@ -33,6 +33,11 @@
   - Fix logging of non interactive source errors.
   - Show interactive source processing as a message.
 
+- Fix the copying of the bootstrap alert style.
+- Optimize the copying of the boostrap alert style by executing it only
+  in the root template. This runs the code just once instead of running it
+  on each page refresh. The element ``#div-javascript-dynamic-content`` was
+  also remove and it is now created and destroyed dynamically once just.
 
 4.1.2 (2021-10-27)
 ==================
