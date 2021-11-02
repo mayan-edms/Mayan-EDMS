@@ -102,7 +102,7 @@ class ClientBackendSentry(ClientBackend):
 
         # Tracing Options
         options['traces_sample_rate'] = float(
-            self.kwargs.get('traces_sample_rate', 1.0)
+            self.kwargs.get('traces_sample_rate', 0.25)
         )
 
         return options
