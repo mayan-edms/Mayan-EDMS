@@ -1,4 +1,4 @@
-4.1.3 (2021-XX-XX)
+4.1.3 (2021-11-02)
 ==================
 - Vagrant updates
 
@@ -17,6 +17,9 @@
   - Add debug logging.
   - Add Celery integration.
   - Add Redis Integration.
+  - Lower the default value of ``traces_sample_rate`` from 1 to 0.25.
+    This value is better suited for production deployments. Increase to 1
+    for full debug information capture during development or testing.
 
 - File staging sources updates:
 
