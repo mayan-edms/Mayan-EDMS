@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-27 09:00+0000\n"
+"POT-Creation-Date: 2021-11-02 20:55+0000\n"
 "PO-Revision-Date: 2020-01-31 04:42+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -299,71 +299,71 @@ msgstr ""
 msgid "Assets cache"
 msgstr ""
 
-#: transformations.py:210
+#: transformations.py:226
 msgid "Paste an asset"
 msgstr ""
 
-#: transformations.py:261
+#: transformations.py:277
 msgid "Paste an asset (percents coordinates)"
 msgstr ""
 
-#: transformations.py:304
+#: transformations.py:324
 msgid "Paste an asset as watermark"
 msgstr ""
 
-#: transformations.py:364
+#: transformations.py:384
 msgid "Crop"
 msgstr ""
 
-#: transformations.py:442
+#: transformations.py:462
 msgid "Draw rectangle"
 msgstr ""
 
-#: transformations.py:544
+#: transformations.py:564
 msgid "Draw rectangle (percents coordinates)"
 msgstr ""
 
-#: transformations.py:641
+#: transformations.py:661
 msgid "Flip"
 msgstr ""
 
-#: transformations.py:652
+#: transformations.py:672
 msgid "Gaussian blur"
 msgstr ""
 
-#: transformations.py:664
+#: transformations.py:684
 msgid "Line art"
 msgstr ""
 
-#: transformations.py:678
+#: transformations.py:698
 msgid "Mirror"
 msgstr ""
 
-#: transformations.py:689
+#: transformations.py:709
 msgid "Resize"
 msgstr ""
 
-#: transformations.py:716
+#: transformations.py:736
 msgid "Rotate"
 msgstr ""
 
-#: transformations.py:746
+#: transformations.py:766
 msgid "Rotate 90 degrees"
 msgstr ""
 
-#: transformations.py:757
+#: transformations.py:777
 msgid "Rotate 180 degrees"
 msgstr ""
 
-#: transformations.py:768
+#: transformations.py:788
 msgid "Rotate 270 degrees"
 msgstr ""
 
-#: transformations.py:778
+#: transformations.py:798
 msgid "Unsharp masking"
 msgstr ""
 
-#: transformations.py:794
+#: transformations.py:814
 msgid "Zoom"
 msgstr ""
 

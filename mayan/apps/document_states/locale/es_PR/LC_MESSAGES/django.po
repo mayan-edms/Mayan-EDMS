@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-27 09:00+0000\n"
+"POT-Creation-Date: 2021-11-02 20:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -281,6 +281,12 @@ msgid ""
 "\"transition\", \"user\", \"comment\") and any values from workflow template"
 " fields."
 msgstr ""
+"Puede ser un valor estático o una plantilla. Además de la instancia del "
+"flujo de trabajo, la plantilla recibe el contexto de la instancia del flujo "
+"de trabajo, que a su vez incluye el \"entry_log\" (que contiene "
+"\"workflow_instance\", \"datetime\", \"transición\", \"usuario\", "
+"\"comentario\") y cualquier valor de los campos de la plantilla del flujo de"
+" trabajo. ."
 
 #: literals.py:27
 msgid "Character"
@@ -1190,7 +1196,7 @@ msgstr "Etiqueta de documento"
 
 #: workflow_actions.py:31
 msgid "The new label to be assigned to the document."
-msgstr ""
+msgstr "La nueva etiqueta que se asignará al documento."
 
 #: workflow_actions.py:40
 msgid "Document description"
@@ -1198,7 +1204,7 @@ msgstr "Descripción del documento"
 
 #: workflow_actions.py:47
 msgid "The new description to be assigned to the document."
-msgstr ""
+msgstr "La nueva descripción que se asignará al documento."
 
 #: workflow_actions.py:59
 msgid "Modify document properties"
@@ -1214,7 +1220,7 @@ msgstr "URL"
 
 #: workflow_actions.py:140
 msgid "The URL to access."
-msgstr ""
+msgstr "La URL para acceder."
 
 #: workflow_actions.py:149
 msgid "Timeout"
@@ -1222,7 +1228,7 @@ msgstr "Tiempo de expiración"
 
 #: workflow_actions.py:156
 msgid "Time in seconds to wait for a response."
-msgstr ""
+msgstr "Tiempo en segundos para esperar una respuesta."
 
 #: workflow_actions.py:165
 msgid "Payload"
@@ -1230,7 +1236,7 @@ msgstr "Datos a enviar"
 
 #: workflow_actions.py:171
 msgid "A JSON document to include in the request."
-msgstr ""
+msgstr "Un documento JSON para incluir en la solicitud."
 
 #: workflow_actions.py:180
 msgid "Username"
@@ -1239,6 +1245,8 @@ msgstr "Nombre de usuario"
 #: workflow_actions.py:187
 msgid "Username to use for making the request with HTTP Basic Auth."
 msgstr ""
+"Nombre de usuario que se utilizará para realizar la solicitud con HTTP Basic"
+" Auth."
 
 #: workflow_actions.py:198
 msgid "Password"
@@ -1247,6 +1255,7 @@ msgstr "Contraseña"
 #: workflow_actions.py:205
 msgid "Password to use for making the request with HTTP Basic Auth."
 msgstr ""
+"Contraseña que se utilizará para realizar la solicitud con HTTP Basic Auth."
 
 #: workflow_actions.py:216
 msgid "Method"
@@ -1257,6 +1266,8 @@ msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE."
 msgstr ""
+"El método HTTP que se utilizará para la solicitud. Las opciones típicas son "
+"OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE."
 
 #: workflow_actions.py:234
 msgid "Headers"
@@ -1265,6 +1276,7 @@ msgstr "Encabezados"
 #: workflow_actions.py:241
 msgid "Headers to send with the HTTP request. Must be in JSON format."
 msgstr ""
+"Encabezados para enviar con la solicitud HTTP. Debe estar en formato JSON."
 
 #: workflow_actions.py:256
 msgid "Perform an HTTP request"

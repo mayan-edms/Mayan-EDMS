@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-27 09:00+0000\n"
+"POT-Creation-Date: 2021-11-02 20:55+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2021\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
@@ -407,11 +407,11 @@ msgstr "بی جواب و یا بی جواب"
 msgid "Close"
 msgstr ""
 
-#: templates/appearance/root.html:67
+#: templates/appearance/root.html:65
 msgid "Server communication error"
 msgstr ""
 
-#: templates/appearance/root.html:69
+#: templates/appearance/root.html:67
 msgid "Check you network connection and try again in a few moments."
 msgstr ""
 
