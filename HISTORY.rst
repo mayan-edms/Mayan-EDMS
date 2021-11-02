@@ -38,6 +38,11 @@
   in the root template. This runs the code just once instead of running it
   on each page refresh. The element ``#div-javascript-dynamic-content`` was
   also remove and it is now created and destroyed dynamically once just.
+- Ensure that the ``resolved_object`` is injected into the context before
+  passing the context to the link's ``check_condition`` method. Suspected
+  cause of the GitLab issue #1052 and #1049. Thanks to Ludovic Anterieur
+  (@lanterieur) and Johannes Bornhold (@joh5) for the reports and debug
+  information.
 
 4.1.2 (2021-10-27)
 ==================
