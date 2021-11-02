@@ -1,6 +1,5 @@
-from django.test import TestCase
-
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..transformations import (
     BaseTransformation, TransformationCrop, TransformationLineArt,
@@ -21,7 +20,7 @@ from .literals import (
 from .mixins import LayerTestMixin
 
 
-class TransformationBaseTestCase(TestCase):
+class TransformationBaseTestCase(BaseTestCase):
     def test_cache_uniqness(self):
         transformation_1 = TransformationResize(width=640, height=640)
 

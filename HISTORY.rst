@@ -43,6 +43,17 @@
   cause of the GitLab issue #1052 and #1049. Thanks to Ludovic Anterieur
   (@lanterieur) and Johannes Bornhold (@joh5) for the reports and debug
   information.
+- Converter updates:
+
+  - Fix duplicate asset display. Closes GitLab issue #1053. Thanks to
+    Ryan Showalter (@ryanshow) for the report.
+  - Split the transformation ``cache_hash`` method to allow subclasses to
+    modify how the cache hash is calculated.
+  - Include the asset image hash into the asset transformation hash
+    calculation. This change invalidates all cached page images that
+    use an asset if the asset image is modified.
+  - Improve the way the absolute coordinates of the percentage asset paste
+    transformation are calculated.
 
 4.1.2 (2021-10-27)
 ==================
