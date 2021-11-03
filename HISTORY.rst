@@ -58,6 +58,9 @@
   - Improve the way the absolute coordinates of the percentage asset paste
     transformation are calculated.
 
+- Use redirection instead of the ``output_file`` argument to allow the SANE
+  scanner source to work with more SANE scanner versions.
+
 4.1.2 (2021-10-27)
 ==================
 - Don't insert the value ``ORGANIZATIONS_URL_BASE_PATH`` in the path

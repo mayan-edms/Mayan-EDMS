@@ -66,11 +66,15 @@ class SourceBackendSANEScanner(
         with NamedTemporaryFile() as file_object:
             command_scanimage = command_scanimage.bake(
                 device_name=self.kwargs['device_name'],
-                format='tiff', output_file=file_object.name
+                format='tiff'
             )
             loaded_arguments = yaml_load(
                 stream=self.kwargs.get('arguments', '{}')
             ) or {}
+            # The output_file argument is only supported in version 1.0.28
+            # https://gitlab.com/sane-project/backends/-/releases/1.0.28
+            # Using redirection make this compatible with more versions.
+            loaded_arguments['_out'] = file_object.name
 
             try:
                 command_scanimage(**loaded_arguments)
