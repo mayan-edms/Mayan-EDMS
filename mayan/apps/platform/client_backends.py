@@ -2,7 +2,9 @@ from distutils import util
 import logging
 
 import sentry_sdk
+from sentry_sdk.integrations.celery import CeleryIntegration
 from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.redis import RedisIntegration
 
 from django.conf.urls import url
 
@@ -38,7 +40,9 @@ class ClientBackendSentry(ClientBackend):
     def launch(self):
         kwargs = self.setup_arguments()
 
-        kwargs['integrations'] = (DjangoIntegration(),)
+        kwargs['integrations'] = (
+            CeleryIntegration(), DjangoIntegration(), RedisIntegration()
+        )
 
         logger.debug('cleaned arguments: %s', kwargs)
 
@@ -98,7 +102,7 @@ class ClientBackendSentry(ClientBackend):
 
         # Tracing Options
         options['traces_sample_rate'] = float(
-            self.kwargs.get('traces_sample_rate', 1.0)
+            self.kwargs.get('traces_sample_rate', 0.25)
         )
 
         return options

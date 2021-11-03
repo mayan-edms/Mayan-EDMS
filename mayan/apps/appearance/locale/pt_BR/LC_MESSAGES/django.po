@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-27 09:00+0000\n"
+"POT-Creation-Date: 2021-11-02 20:55+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -436,11 +436,11 @@ msgstr "Nenhum resultado"
 msgid "Close"
 msgstr "Fechar"
 
-#: templates/appearance/root.html:67
+#: templates/appearance/root.html:65
 msgid "Server communication error"
 msgstr "Erro na comunicação com o servidor"
 
-#: templates/appearance/root.html:69
+#: templates/appearance/root.html:67
 msgid "Check you network connection and try again in a few moments."
 msgstr "Verifique sua conexão de rede e tente novamente em alguns instantes. "
 
