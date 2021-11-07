@@ -1,5 +1,4 @@
-from rest_framework import serializers
-
+from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import MultiKwargHyperlinkedIdentityField
 
 from ..models.document_type_models import DocumentType, DocumentTypeFilename

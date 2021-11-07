@@ -6,8 +6,8 @@ from rest_framework.settings import api_settings
 from django.core.exceptions import ImproperlyConfigured
 
 from .api_view_mixins import (
-    InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin,
-    SchemaInspectionAPIViewMixin
+    DynamicFieldListAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    SerializerExtraContextAPIViewMixin, SchemaInspectionAPIViewMixin
 )
 from .filters import MayanObjectPermissionsFilter, MayanSortingFilter
 from .permissions import MayanPermission
@@ -33,8 +33,8 @@ class CreateAPIView(
 
 
 class ListAPIView(
-    SchemaInspectionAPIViewMixin, SerializerExtraContextAPIViewMixin,
-    rest_framework_generics.ListAPIView
+    SchemaInspectionAPIViewMixin, DynamicFieldListAPIViewMixin,
+    SerializerExtraContextAPIViewMixin, rest_framework_generics.ListAPIView
 ):
     """
     requires:
@@ -49,7 +49,7 @@ class ListAPIView(
 
 class ListCreateAPIView(
     SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
-    SerializerExtraContextAPIViewMixin,
+    DynamicFieldListAPIViewMixin, SerializerExtraContextAPIViewMixin,
     rest_framework_generics.ListCreateAPIView
 ):
     """
@@ -108,7 +108,7 @@ class ObjectActionAPIView(GenericAPIView):
 
 class RetrieveAPIView(
     SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
-    SerializerExtraContextAPIViewMixin,
+    DynamicFieldListAPIViewMixin, SerializerExtraContextAPIViewMixin,
     rest_framework_generics.RetrieveAPIView
 ):
     """
@@ -122,7 +122,7 @@ class RetrieveAPIView(
 
 class RetrieveDestroyAPIView(
     SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
-    SerializerExtraContextAPIViewMixin,
+    DynamicFieldListAPIViewMixin, SerializerExtraContextAPIViewMixin,
     rest_framework_generics.RetrieveDestroyAPIView
 ):
     """
@@ -137,7 +137,7 @@ class RetrieveDestroyAPIView(
 
 class RetrieveUpdateAPIView(
     SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
-    SerializerExtraContextAPIViewMixin,
+    DynamicFieldListAPIViewMixin, SerializerExtraContextAPIViewMixin,
     rest_framework_generics.RetrieveUpdateAPIView
 ):
     """
@@ -153,7 +153,7 @@ class RetrieveUpdateAPIView(
 
 class RetrieveUpdateDestroyAPIView(
     SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
-    SerializerExtraContextAPIViewMixin,
+    DynamicFieldListAPIViewMixin, SerializerExtraContextAPIViewMixin,
     rest_framework_generics.RetrieveUpdateDestroyAPIView
 ):
     """
