@@ -35,6 +35,7 @@ job_docker_build:
   tags:
     - postgres
   variables:
+    DOCKER_DRIVER: overlay2
     POSTGRES_DB: "mayan"
     POSTGRES_PASSWORD: "mayanuserpass"
     POSTGRES_USER: "mayan"
@@ -67,6 +68,8 @@ job_docker_push_major:
   services:
     - docker:20-dind
   stage: stage_push_docker
+  variables:
+    DOCKER_DRIVER: overlay2
 
 job_docker_push_minor:
   before_script:
@@ -93,6 +96,8 @@ job_docker_push_minor:
   services:
     - docker:20-dind
   stage: stage_push_docker
+  variables:
+    DOCKER_DRIVER: overlay2
 
 job_docker_nightly:
   before_script:
@@ -108,6 +113,8 @@ job_docker_nightly:
   services:
     - docker:20-dind
   stage: stage_build_docker
+  variables:
+    DOCKER_DRIVER: overlay2
 
 job_docker_testing:
   before_script:
@@ -124,6 +131,8 @@ job_docker_testing:
   services:
     - docker:20-dind
   stage: stage_build_docker
+  variables:
+    DOCKER_DRIVER: overlay2
 
 # Documentation
 
