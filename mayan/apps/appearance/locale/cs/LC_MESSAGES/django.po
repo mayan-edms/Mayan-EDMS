@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-27 09:00+0000\n"
+"POT-Creation-Date: 2021-11-02 20:55+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -425,11 +425,11 @@ msgstr "Žádné výsledky"
 msgid "Close"
 msgstr "Zavřít"
 
-#: templates/appearance/root.html:67
+#: templates/appearance/root.html:65
 msgid "Server communication error"
 msgstr "Chyba komunikace se serverem"
 
-#: templates/appearance/root.html:69
+#: templates/appearance/root.html:67
 msgid "Check you network connection and try again in a few moments."
 msgstr "Zkontrolujte připojení k síti a zkuste to znovu za chvíli."
 

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-27 09:00+0000\n"
+"POT-Creation-Date: 2021-11-02 20:55+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -320,71 +320,71 @@ msgstr ""
 msgid "Assets cache"
 msgstr ""
 
-#: transformations.py:210
+#: transformations.py:226
 msgid "Paste an asset"
 msgstr "Lipiți un element"
 
-#: transformations.py:261
+#: transformations.py:277
 msgid "Paste an asset (percents coordinates)"
 msgstr "Lipiți un element (procente de coordonate)"
 
-#: transformations.py:304
+#: transformations.py:324
 msgid "Paste an asset as watermark"
 msgstr "Inserați un element ca filigran"
 
-#: transformations.py:364
+#: transformations.py:384
 msgid "Crop"
 msgstr "Decupare"
 
-#: transformations.py:442
+#: transformations.py:462
 msgid "Draw rectangle"
 msgstr "Desenați dreptunghiul"
 
-#: transformations.py:544
+#: transformations.py:564
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Desenați un dreptunghi (coordonate procente)"
 
-#: transformations.py:641
+#: transformations.py:661
 msgid "Flip"
 msgstr "Basculare"
 
-#: transformations.py:652
+#: transformations.py:672
 msgid "Gaussian blur"
 msgstr "Încețoșare Gaussiană"
 
-#: transformations.py:664
+#: transformations.py:684
 msgid "Line art"
 msgstr "Linie de arta"
 
-#: transformations.py:678
+#: transformations.py:698
 msgid "Mirror"
 msgstr "Oglindire"
 
-#: transformations.py:689
+#: transformations.py:709
 msgid "Resize"
 msgstr "Redimensionare"
 
-#: transformations.py:716
+#: transformations.py:736
 msgid "Rotate"
 msgstr "Rotire"
 
-#: transformations.py:746
+#: transformations.py:766
 msgid "Rotate 90 degrees"
 msgstr "Rotiți 90 de grade"
 
-#: transformations.py:757
+#: transformations.py:777
 msgid "Rotate 180 degrees"
 msgstr "Rotiți 180 de grade"
 
-#: transformations.py:768
+#: transformations.py:788
 msgid "Rotate 270 degrees"
 msgstr "Rotiți 270 de grade"
 
-#: transformations.py:778
+#: transformations.py:798
 msgid "Unsharp masking"
 msgstr "Unsharp masking"
 
-#: transformations.py:794
+#: transformations.py:814
 msgid "Zoom"
 msgstr "Zoom"
 

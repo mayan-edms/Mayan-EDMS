@@ -43,6 +43,14 @@ def task_source_process_document(source_id, dry_run=False):
             )
             if settings.DEBUG:
                 raise
+            else:
+                source.error_log.create(
+                    text='{}; {}'.format(
+                        exception.__class__.__name__, exception
+                    )
+                )
+        else:
+            source.error_log.all().delete()
         finally:
             lock.release()
 

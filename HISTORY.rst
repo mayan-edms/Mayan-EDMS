@@ -1,3 +1,66 @@
+4.1.3 (2021-11-02)
+==================
+- Vagrant updates
+
+  - Load installation value from ``config.env`` file.
+  - Update supervisord during installation.
+  - Setup the APT proxy during installation.
+  - Change how APT and PIP proxies are defined to match the Docker build
+    target.
+  - Add makefile for vagrant.
+  - Move devpi targets to the main makefile.
+
+- Sentry client backend updates:
+
+  - Add more SDK options.
+  - Add typecasting to options.
+  - Add debug logging.
+  - Add Celery integration.
+  - Add Redis Integration.
+  - Lower the default value of ``traces_sample_rate`` from 1 to 0.25.
+    This value is better suited for production deployments. Increase to 1
+    for full debug information capture during development or testing.
+
+- File staging sources updates:
+
+  - Use ``StreamingHttpResponse`` to serve previews.
+  - Support previews for office document files.
+  - Fix extra brackets in the encoded and cached filenames.
+  - Simplify image generation.
+  - Use context manager to ensure preview images are always closed.
+
+- Sources app updates:
+
+  - Don't assume all source backends provide an upload form.
+  - Improve SANE scanner error handling.
+  - Fix logging of non interactive source errors.
+  - Show interactive source processing as a message.
+
+- Fix the copying of the bootstrap alert style.
+- Optimize the copying of the boostrap alert style by executing it only
+  in the root template. This runs the code just once instead of running it
+  on each page refresh. The element ``#div-javascript-dynamic-content`` was
+  also remove and it is now created and destroyed dynamically once just.
+- Ensure that the ``resolved_object`` is injected into the context before
+  passing the context to the link's ``check_condition`` method. Suspected
+  cause of the GitLab issue #1052 and #1049. Thanks to Ludovic Anterieur
+  (@lanterieur) and Johannes Bornhold (@joh5) for the reports and debug
+  information.
+- Converter updates:
+
+  - Fix duplicate asset display. Closes GitLab issue #1053. Thanks to
+    Ryan Showalter (@ryanshow) for the report.
+  - Split the transformation ``cache_hash`` method to allow subclasses to
+    modify how the cache hash is calculated.
+  - Include the asset image hash into the asset transformation hash
+    calculation. This change invalidates all cached page images that
+    use an asset if the asset image is modified.
+  - Improve the way the absolute coordinates of the percentage asset paste
+    transformation are calculated.
+
+- Use redirection instead of the ``output_file`` argument to allow the SANE
+  scanner source to work with more SANE scanner versions.
+
 4.1.2 (2021-10-27)
 ==================
 - Don't insert the value ``ORGANIZATIONS_URL_BASE_PATH`` in the path

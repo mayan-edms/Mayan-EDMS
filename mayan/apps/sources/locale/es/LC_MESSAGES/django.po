@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-27 09:00+0000\n"
+"POT-Creation-Date: 2021-11-02 20:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Lory977 <helga.carrero@gmail.com>, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -112,7 +112,7 @@ msgstr "Subir archivo nuevo"
 msgid "Create source"
 msgstr ""
 
-#: links.py:94 source_backends/staging_folder_backends.py:314
+#: links.py:94 source_backends/staging_folder_backends.py:311
 msgid "Delete"
 msgstr "Eliminar"
 
@@ -439,81 +439,81 @@ msgstr ""
 msgid "SANE Scanner"
 msgstr "Escáner SANE"
 
-#: source_backends/sane_scanner_backends.py:94
+#: source_backends/sane_scanner_backends.py:102
 msgid "Document properties"
 msgstr "Propiedades de documento"
 
-#: source_backends/sane_scanner_backends.py:95
+#: source_backends/sane_scanner_backends.py:103
 msgid "Scan"
 msgstr "Escanear"
 
-#: source_backends/staging_folder_backends.py:225
-#: source_backends/staging_folder_backends.py:490
+#: source_backends/staging_folder_backends.py:222
+#: source_backends/staging_folder_backends.py:492
 msgid "Staging file"
 msgstr "Archivo provisional"
 
-#: source_backends/staging_folder_backends.py:256
+#: source_backends/staging_folder_backends.py:253
 #: source_backends/watch_folder_backends.py:31
 msgid "Server side filesystem path."
 msgstr "Ruta a los archivos en el servidor."
 
-#: source_backends/staging_folder_backends.py:261
+#: source_backends/staging_folder_backends.py:258
 #: source_backends/watch_folder_backends.py:36
 msgid "Folder path"
 msgstr "Ruta de la carpeta"
 
-#: source_backends/staging_folder_backends.py:267
+#: source_backends/staging_folder_backends.py:264
 msgid "Width value to be passed to the converter backend."
 msgstr "Valor de la anchura que se pasa al backend convertidor."
 
-#: source_backends/staging_folder_backends.py:272
+#: source_backends/staging_folder_backends.py:269
 msgid "Preview width"
 msgstr "Ancho de muestra"
 
-#: source_backends/staging_folder_backends.py:278
+#: source_backends/staging_folder_backends.py:275
 msgid "Height value to be passed to the converter backend."
 msgstr "Valor de la altura que se pasa al backend convertidor."
 
-#: source_backends/staging_folder_backends.py:283
+#: source_backends/staging_folder_backends.py:280
 msgid "Preview height"
 msgstr "Alto de muestra"
 
-#: source_backends/staging_folder_backends.py:289
+#: source_backends/staging_folder_backends.py:286
 msgid "Delete the file after is has been successfully uploaded."
 msgstr "Eliminar el archivo después de que se haya cargado correctamente."
 
-#: source_backends/staging_folder_backends.py:291
+#: source_backends/staging_folder_backends.py:288
 msgid "Delete after upload"
 msgstr "Borrar después de subir"
 
-#: source_backends/staging_folder_backends.py:296
+#: source_backends/staging_folder_backends.py:293
 msgid "Staging folder"
 msgstr "Archivos provisionales"
 
-#: source_backends/staging_folder_backends.py:326
+#: source_backends/staging_folder_backends.py:323
 msgid "Created"
 msgstr "Creado"
 
-#: source_backends/staging_folder_backends.py:330
+#: source_backends/staging_folder_backends.py:327
 msgid "Thumbnail"
 msgstr "Foto miniatura"
 
-#: source_backends/staging_folder_backends.py:470
+#: source_backends/staging_folder_backends.py:472
 #, python-format
 msgid "Error deleting staging file; %s"
 msgstr "Error al borrar archivo de provisional; %s"
 
-#: source_backends/staging_folder_backends.py:491
+#: source_backends/staging_folder_backends.py:493
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "¿Eliminar archivo provisional \"%s\"?"
 
-#: source_backends/staging_folder_backends.py:517
+#: source_backends/staging_folder_backends.py:519
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr "No es posible obtener la lista de los archivos provisionales: %s"
 
-#: source_backends/staging_folder_backends.py:544
+#: source_backends/staging_folder_backends.py:546
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
 "the operating system user account being used for Mayan EDMS doesn't have the"
@@ -524,7 +524,7 @@ msgstr ""
 "para Mayan EDMS no tiene los permisos necesarios del sistema de archivos "
 "para la carpeta."
 
-#: source_backends/staging_folder_backends.py:551
+#: source_backends/staging_folder_backends.py:553
 msgid "No staging files available"
 msgstr "No hay archivos de ensayo disponibles."
 
@@ -613,34 +613,34 @@ msgid "Error executing document file upload task; %(exception)s"
 msgstr ""
 "Error al ejecutar la tarea de carga del archivo del documento; %(exception)s"
 
-#: views/document_file_views.py:88
+#: views/document_file_views.py:92
 msgid "New document file queued for upload and will be available shortly."
 msgstr ""
 "Nuevo archivo de documento en cola para su carga y estará disponible en "
 "breve."
 
-#: views/document_file_views.py:121
+#: views/document_file_views.py:125
 #, python-format
 msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 "Cargar un nuevo archivo para el documento \"%(document)s\" de la fuente: "
 "%(source)s"
 
-#: views/document_file_views.py:127
+#: views/document_file_views.py:131
 msgid "Submit"
 msgstr "Enviar"
 
-#: views/document_views.py:38
+#: views/document_views.py:39
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
 msgstr ""
 
-#: views/document_views.py:53
+#: views/document_views.py:58
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 "Nuevo documento puesto en cola para su carga y estará disponible en breve."
 
-#: views/document_views.py:79
+#: views/document_views.py:84
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""

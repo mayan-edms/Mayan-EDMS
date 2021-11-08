@@ -1,0 +1,33 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+APT_PROXY = ENV["APT_PROXY"]
+PIP_INDEX_URL = ENV["PIP_INDEX_URL"]
+PIP_TRUSTED_HOST = ENV["PIP_TRUSTED_HOST"]
+SCRIPT_DEPLOYMENT = "scripts/install.sh"
+VAGRANTFILE_API_VERSION = "2"
+
+# Optional:
+# vagrant-proxyconf: vagrant plugin install vagrant-proxyconf
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  # config.vm.synced_folder ".", "/vagrant", type: "nfs", nfs_version: 3
+  config.vm.synced_folder ".", "/vagrant", type: "rsync"
+
+  if Vagrant.has_plugin?("vagrant-proxyconf")
+    config.apt_proxy.http  = APT_PROXY
+    config.apt_proxy.https = APT_PROXY
+  end
+
+  config.vm.provision "file", source: "../config.env", destination: "config.env"
+  config.vm.provision :shell do |shell|
+    shell.env = {
+      "APT_PROXY" => APT_PROXY,
+      "PIP_INDEX_URL" => PIP_INDEX_URL,
+      "PIP_TRUSTED_HOST" => PIP_TRUSTED_HOST,
+    }
+    shell.path = SCRIPT_DEPLOYMENT
+    shell.privileged = false
+  end
+end
+
