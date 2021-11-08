@@ -1,4 +1,5 @@
 __title__ = 'Mayan EDMS'
+
 __version__ = '4.1.3'
 __build__ = 0x040103
 __build_string__ = 'v4.1.3-2-gb424004cf8_Wed Nov 3 03:31:08 2021 -0400'

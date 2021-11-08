@@ -35,6 +35,7 @@ class MetadataTypeSerializer(serializers.HyperlinkedModelSerializer):
             'validation'
         )
         model = MetadataType
+        read_only_fields = ('id', 'url')
 
 
 class DocumentTypeMetadataTypeSerializer(
@@ -105,7 +106,7 @@ class DocumentMetadataSerializer(
             'value'
         )
         model = DocumentMetadata
-        read_only_fields = ('document', 'metadata_type',)
+        read_only_fields = ('document', 'id', 'metadata_type', 'url')
 
     def get_url(self, instance):
         return reverse(

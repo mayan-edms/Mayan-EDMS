@@ -1,3 +1,7 @@
+4.1.4 (2021-XX-XX)
+==================
+- Merges from version 4.0.20.
+
 4.1.3 (2021-11-02)
 ==================
 - Vagrant updates
@@ -529,6 +533,21 @@
 - Add document template state action API endpoints. Closes GitLab issue #1043
   Thanks to Ludovic Anterieur (@lanterieur) for the request.
 - Pin jsonschema to version 3.2.0 to avoid errors with
+
+4.0.20 (2021-11-08)
+===================
+- Use overlay2 driver when using Docker in Docker
+  in the GitLab CD/CI stages.
+- Update gevent from version 20.4.0 to 21.8.0.
+- Update gunicorn from version 20.0.4 to 20.1.0.
+- Add more explicit serializer read only fields.
+
+4.0.19 (2021-10-27)
+===================
+- Backported fixes from version 4.1.2:
+
+  - ``ORGANIZATIONS_URL_BASE_PATH`` null value fix.
+  - Fix ``ModelTemplateField`` not displaying the ``initial_help_text``.
 
 4.0.18 (2021-10-21)
 ===================

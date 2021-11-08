@@ -1,0 +1,69 @@
+Version 4.0.20
+==============
+
+Released: November 8, 2021
+
+Status: Maintenance
+
+Changes
+--------
+
+GitLab CD/CI
+^^^^^^^^^^^^
+
+The GitLab CD/CI stages now use the ``overlay2`` driver when employing
+Docker in Docker for faster builds with less overhead.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+The Gunicorn version was updated 20.0.4 to 20.1.0. The Gevent version was
+updated from 20.4.0 to 21.8.0.
+
+
+REST API
+^^^^^^^^
+
+All serializer now specify their read only fields explicitly. This improves
+serialization speed on large API responses.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- None
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
