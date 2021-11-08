@@ -25,6 +25,7 @@ class IndexInstanceSerializer(serializers.ModelSerializer):
             'label', 'id', 'item_count', 'node_count', 'nodes_url', 'url'
         )
         model = IndexInstance
+        read_only_fields = fields
 
     def get_item_count(self, obj):
         return obj.get_item_count(user=self.context['request'])
@@ -61,6 +62,7 @@ class IndexInstanceNodeSerializer(serializers.ModelSerializer):
             'index_url', 'level', 'parent', 'parent_url', 'value', 'url'
         )
         model = IndexInstanceNode
+        read_only_fields = fields
 
     def get_documents_count(self, obj):
         return obj.get_descendants_document_count(
@@ -115,7 +117,10 @@ class IndexTemplateNodeSerializer(serializers.ModelSerializer):
             'level', 'link_documents', 'parent', 'parent_url', 'url'
         )
         model = IndexTemplateNode
-        read_only_fields = ('children', 'id', 'index', 'level')
+        read_only_fields = (
+            'children', 'id', 'index', 'index_url', 'level', 'parent_url',
+            'url'
+        )
 
     def get_index_url(self, obj):
         return reverse(
@@ -157,7 +162,10 @@ class IndexTemplateNodeWriteSerializer(serializers.ModelSerializer):
             'level', 'link_documents', 'parent', 'parent_url', 'url'
         )
         model = IndexTemplateNode
-        read_only_fields = ('children', 'id', 'index', 'level')
+        read_only_fields = (
+            'children', 'id', 'index', 'index_url', 'level', 'parent_url',
+            'url'
+        )
 
     def create(self, validated_data):
         validated_data['index'] = self.context['index_template']
@@ -255,6 +263,11 @@ class IndexTemplateSerializer(serializers.HyperlinkedModelSerializer):
             'nodes_url', 'rebuild_url', 'reset_url', 'slug', 'url'
         )
         model = IndexTemplate
+        read_only_fields = (
+            'document_types_add_url', 'document_types_url',
+            'document_types_remove_url', 'id', 'nodes_url', 'rebuild_url',
+            'reset_url', 'url'
+        )
 
     def get_url(self, obj):
         return reverse(

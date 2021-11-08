@@ -31,6 +31,7 @@ class MetadataTypeSerializer(serializers.HyperlinkedModelSerializer):
             'validation'
         )
         model = MetadataType
+        read_only_fields = ('id', 'url')
 
 
 class DocumentTypeMetadataTypeSerializer(serializers.HyperlinkedModelSerializer):
@@ -41,6 +42,7 @@ class DocumentTypeMetadataTypeSerializer(serializers.HyperlinkedModelSerializer)
     class Meta:
         fields = ('document_type', 'id', 'metadata_type', 'required', 'url')
         model = DocumentTypeMetadataType
+        read_only_fields = ('id', 'url')
 
     def get_url(self, instance):
         return reverse(
@@ -59,10 +61,9 @@ class NewDocumentTypeMetadataTypeSerializer(serializers.ModelSerializer):
     url = serializers.SerializerMethodField()
 
     class Meta:
-        fields = (
-            'id', 'metadata_type_id', 'required', 'url'
-        )
+        fields = ('id', 'metadata_type_id', 'required', 'url')
         model = DocumentTypeMetadataType
+        read_only_fields = ('id', 'url',)
 
     def get_url(self, instance):
         return reverse(
@@ -91,10 +92,9 @@ class WritableDocumentTypeMetadataTypeSerializer(serializers.ModelSerializer):
     url = serializers.SerializerMethodField()
 
     class Meta:
-        fields = (
-            'id', 'required', 'url'
-        )
+        fields = ('id', 'required', 'url')
         model = DocumentTypeMetadataType
+        read_only_fields = ('id', 'url')
 
     def get_url(self, instance):
         return reverse(
@@ -125,7 +125,7 @@ class DocumentMetadataSerializer(
             'value'
         )
         model = DocumentMetadata
-        read_only_fields = ('document', 'metadata_type',)
+        read_only_fields = ('document', 'id', 'metadata_type', 'url')
 
     def get_url(self, instance):
         return reverse(

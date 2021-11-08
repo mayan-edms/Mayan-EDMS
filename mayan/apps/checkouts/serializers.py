@@ -22,6 +22,7 @@ class DocumentCheckoutSerializer(serializers.ModelSerializer):
         }
         fields = ('document', 'id', 'url')
         model = DocumentCheckout
+        read_only_fields = ('document', 'id', 'url')
 
 
 class NewDocumentCheckoutSerializer(serializers.ModelSerializer):
