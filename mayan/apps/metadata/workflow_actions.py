@@ -127,7 +127,7 @@ class DocumentMetadataEditAction(WorkflowAction):
                 _(
                     'Unable to edit metadata type "%(metadata_type)s" '
                     'from document: %(document)s. Document does not have '
-                    'the metadata type to be edit. Exception: '
+                    'the metadata type to be edited. Exception: '
                     '%(exception)s'
                 ) % {
                     'document': context['document'],
