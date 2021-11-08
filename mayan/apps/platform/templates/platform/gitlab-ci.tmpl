@@ -258,6 +258,7 @@ job_python_push_pypi:
     - releases/staging
     - tests/all
     - tests/python
+    - tests/upgrade
   stage: stage_test
 
 job_mysql_upgrade_test:
@@ -340,6 +341,7 @@ job_sqlite_upgrade_test:
     - releases/python_minor
     - releases/staging
     - tests/all
+    - tests/base
     - tests/python
   stage: stage_test
 
