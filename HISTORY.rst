@@ -1,4 +1,4 @@
-4.0.20 (2021-XX-XX)
+4.0.20 (2021-11-08)
 ===================
 - Use overlay2 driver when using Docker in Docker
   in the GitLab CD/CI stages.
