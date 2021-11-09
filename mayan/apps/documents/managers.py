@@ -245,7 +245,10 @@ class ValidFavoriteDocumentManager(models.Manager):
             app_label='documents', model_name='FavoriteDocumentProxy'
         )
 
-        return FavoriteDocumentProxy.valid.filter(favorites__user=user)
+        if user.is_authenticated:
+            return FavoriteDocumentProxy.valid.filter(favorites__user=user)
+        else:
+            return FavoriteDocumentProxy.valid.none()
 
     def get_queryset(self):
         return super().get_queryset().filter(
