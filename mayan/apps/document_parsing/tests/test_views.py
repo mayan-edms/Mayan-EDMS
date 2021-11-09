@@ -288,7 +288,8 @@ class DocumentFileContentParsingViewsTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_file_parsing_download_view_with_access(self):
-        self.expected_content_types = ('text/html; charset=utf-8',)
+        self.expected_content_types = ('application/octet-stream',)
+
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_file_content_view
