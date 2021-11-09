@@ -53,8 +53,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.forms',
-    # Allow using WhiteNoise in development.
-    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     # 3rd party.
     'actstream',
