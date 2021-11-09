@@ -91,6 +91,7 @@ fusepy==3.0.1
 gevent==20.4.0
 graphviz==0.14
 gunicorn==20.0.4
+jsonschema==3.2.0
 mock==4.0.2
 node-semver==0.8.0
 packaging==20.3
