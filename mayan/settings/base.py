@@ -249,7 +249,7 @@ STATIC_ROOT = os.environ.get(
     'MAYAN_STATIC_ROOT', os.path.join(MEDIA_ROOT, 'static')  # NOQA: F821
 )
 
-MEDIA_URL = None
+MEDIA_URL = 'media/'
 
 # Silence warning and keep default for the time being.
 # https://docs.djangoproject.com/en/3.2/releases/3.2/#customizing-type-of-auto-created-primary-keys
