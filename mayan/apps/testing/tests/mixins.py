@@ -203,11 +203,7 @@ class DownloadTestCaseMixin:
         self.assertTrue(isinstance(response, FileResponse))
 
         if filename:
-            self.assertEqual(
-                response[
-                    'Content-Disposition'
-                ].split('filename="')[1].split('"')[0], filename
-            )
+            self.assertEqual(response.filename, filename)
 
         if content:
             response_content = b''.join(list(response))
@@ -220,10 +216,12 @@ class DownloadTestCaseMixin:
             self.assertEqual(response_content, content)
 
         if is_attachment is not None:
-            self.assertEqual(response['Content-Disposition'], 'attachment')
+            self.assertTrue(response.as_attachment)
 
         if mime_type:
-            self.assertTrue(response['Content-Type'].startswith(mime_type))
+            self.assertTrue(
+                response.headers['Content-Type'].startswith(mime_type)
+            )
 
 
 class EnvironmentTestCaseMixin:
