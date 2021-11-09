@@ -334,13 +334,10 @@ class SourceBackendStagingFolder(
         )
 
     def action_file_delete(self, request, encoded_filename):
-        # encoded_filename is passed as a list by the view's QueryDict
-        encoded_filename = encoded_filename[0]
         staging_folder_file = self.get_file(encoded_filename=encoded_filename)
         staging_folder_file.delete()
 
     def action_file_image(self, request, encoded_filename, **kwargs):
-        # encoded_filename is passed as a list by the view's QueryDict
         encoded_filename = encoded_filename[0]
 
         query_dict = request.GET
@@ -422,9 +419,6 @@ class SourceBackendStagingFolder(
     def action_file_upload(
         self, request, document_type_id, encoded_filename, expand=False
     ):
-        # encoded_filename is passed as a list by the view's QueryDict
-        encoded_filename = encoded_filename[0]
-
         staging_folder_file = self.get_file(encoded_filename=encoded_filename)
 
         queryset = AccessControlList.objects.restrict_queryset(
