@@ -10,6 +10,8 @@
   - Simplify image generation.
   - Use context manager to ensure preview images are always closed.
 
+- Hide all links that depend on users being authenticated.
+
 4.1.3 (2021-11-02)
 ==================
 - Vagrant updates
