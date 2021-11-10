@@ -54,8 +54,8 @@ class EventTypeSerializer(serializers.Serializer):
 
 class EventSerializer(serializers.ModelSerializer):
     actor = DynamicSerializerField(read_only=True)
-    target = DynamicSerializerField(read_only=True)
     actor_content_type = ContentTypeSerializer(read_only=True)
+    target = DynamicSerializerField(read_only=True)
     target_content_type = ContentTypeSerializer(read_only=True)
     verb = EventTypeSerializer(read_only=True)
 
@@ -64,6 +64,10 @@ class EventSerializer(serializers.ModelSerializer):
             'action_object_content_type', 'action_object_object_id'
         )
         model = Action
+        read_only_fields = (
+            'action', 'actor_content_type', 'target', 'target_content_type',
+            'verb'
+        )
 
 
 class NotificationSerializer(serializers.ModelSerializer):
@@ -73,3 +77,4 @@ class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('action', 'read', 'user')
         model = Notification
+        read_only_fields = ('action', 'user')
