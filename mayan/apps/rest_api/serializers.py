@@ -5,6 +5,7 @@ from .classes import BatchRequestCollection
 
 
 class BatchAPIRequestResponseSerializer(serializers.Serializer):
+    content = serializers.CharField(read_only=True)
     data = serializers.JSONField(read_only=True)
     headers = serializers.DictField(read_only=True)
     name = serializers.CharField(read_only=True)

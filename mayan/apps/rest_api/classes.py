@@ -1,3 +1,4 @@
+import base64
 from collections import namedtuple
 import io
 import json
@@ -10,6 +11,7 @@ from django.template import Variable, VariableDoesNotExist
 from django.test.client import MULTIPART_CONTENT
 from django.urls import resolve
 from django.urls.exceptions import Resolver404
+from django.utils.encoding import force_bytes, force_str
 
 from mayan.apps.organizations.settings import setting_organization_url_base_path
 from mayan.apps.templating.classes import Template
@@ -18,7 +20,8 @@ from .literals import API_VERSION
 
 
 class BatchResponse:
-    def __init__(self, name, status_code, data, headers):
+    def __init__(self, content, name, status_code, data, headers):
+        self.content = content
         self.name = name
         self.status_code = status_code
         self.data = data
@@ -185,12 +188,20 @@ class BatchRequest:
                 )
 
                 result = {
-                    'data': response.data,
                     'headers': {key: value for key, value in response.items()},
                     'include': rendered_content.include,
                     'is_response': True,
                     'status_code': response.status_code
                 }
+
+                try:
+                    result['data'] = response.data
+                except AttributeError:
+                    result['content'] = force_str(
+                        s=base64.b64encode(
+                            s=force_bytes(s=response.content)
+                        )
+                    )
 
                 self.collection.context[rendered_content.name] = result
                 self.collection.responses[rendered_content.name] = result
@@ -265,6 +276,7 @@ class BatchRequestCollection:
             if json.loads(s=value.get('include', 'true')):
                 result.append(
                     BatchResponse(
+                        content=value.get('content', ''),
                         name=key,
                         status_code=value.get('status_code', 0),
                         data=value.get('data', {}),
