@@ -1,6 +1,6 @@
 from django.contrib.contenttypes.models import ContentType
 
-from rest_framework import serializers
+from mayan.apps.rest_api import serializers
 
 
 class ContentTypeSerializer(serializers.ModelSerializer):

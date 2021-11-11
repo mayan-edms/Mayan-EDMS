@@ -1,8 +1,8 @@
 from actstream.models import Action
-from rest_framework import serializers
 from rest_framework.reverse import reverse
 
 from mayan.apps.common.serializers import ContentTypeSerializer
+from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.user_management.serializers import UserSerializer
 

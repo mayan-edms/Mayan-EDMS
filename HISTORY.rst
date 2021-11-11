@@ -6,11 +6,16 @@
 
   - Use ``StreamingHttpResponse`` to serve previews.
   - Support office document files for preview.
-  - Fix extra brackets in the enconded and cached filenames.
+  - Fix extra brackets in the encoded and cached filenames.
   - Simplify image generation.
   - Use context manager to ensure preview images are always closed.
 
 - Hide all links that depend on users being authenticated.
+- Add support for return binary content in batch API requests as a base64
+  string.
+- Add support for dynamic field API serialization. This feature adds the
+  URL query keys ``_fields_only`` and ``_fields_exclude``. Nested serializers
+  are supported using the double underscore (``__``) separator.
 
 4.1.4 (2021-XX-XX)
 ==================

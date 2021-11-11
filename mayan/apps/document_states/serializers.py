@@ -2,11 +2,11 @@ import json
 
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import serializers
 from rest_framework.reverse import reverse
 
 from mayan.apps.documents.models import DocumentType
 from mayan.apps.documents.permissions import permission_document_type_edit
+from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import (
     FilteredPrimaryKeyRelatedField, MultiKwargHyperlinkedIdentityField
 )

@@ -1,10 +1,9 @@
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import serializers
-
 from mayan.apps.common.serializers import ContentTypeSerializer
 from mayan.apps.permissions import Permission
 from mayan.apps.permissions.serializers import RoleSerializer
+from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import (
     FilteredPrimaryKeyRelatedField, MultiKwargHyperlinkedIdentityField
 )

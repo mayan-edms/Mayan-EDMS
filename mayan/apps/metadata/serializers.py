@@ -1,7 +1,6 @@
 from django.core.exceptions import ValidationError as DjangoValidationError
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 
@@ -11,6 +10,7 @@ from mayan.apps.documents.serializers.document_serializers import (
 from mayan.apps.documents.serializers.document_type_serializers import (
     DocumentTypeSerializer
 )
+from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.serializer_mixins import CreateOnlyFieldSerializerMixin
 from mayan.apps.rest_api.relations import (
     FilteredPrimaryKeyRelatedField, FilteredSimplePrimaryKeyRelatedField

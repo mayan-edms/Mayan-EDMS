@@ -9,6 +9,10 @@ from rest_framework.settings import api_settings
 from mayan.apps.databases.utils import check_queryset
 from mayan.apps.views.mixins import ExternalObjectBaseMixin
 
+from .literals import (
+    QUERY_FIELD_EXCLUDE_PARAMETER, QUERY_FIELD_ONLY_PARAMETER
+)
+
 
 class AsymmetricSerializerAPIViewMixin:
     _write_methods = ('PATCH', 'POST', 'PUT')
@@ -74,6 +78,25 @@ class ContentTypeAPIViewMixin:
                 self.content_type_url_kw_args['model_name']
             ]
         )
+
+
+class DynamicFieldListAPIViewMixin:
+    def get_serializer_extra_context(self):
+        context = super().get_serializer_extra_context()
+
+        if self.request.method == 'GET':
+            context.update(
+                {
+                    'fields_exclude': self.request.query_params.get(
+                        QUERY_FIELD_EXCLUDE_PARAMETER, ''
+                    ),
+                    'fields_only': self.request.query_params.get(
+                        QUERY_FIELD_ONLY_PARAMETER, ''
+                    )
+                }
+            )
+
+        return context
 
 
 class ExternalObjectAPIViewMixin(ExternalObjectBaseMixin):

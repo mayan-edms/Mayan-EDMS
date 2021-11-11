@@ -40,6 +40,19 @@ database fields support. The **OPTION** verb can be used to determine
 which fields are sortable.
 
 
+Dynamic fields
+==============
+
+The schema of the responses can be modified to reduce the serialization
+performance penalty of complex API. This is supported via the URL query
+keys ``_fields_only`` and ``_fields_exclude``. ``_fields_only`` will cause
+the schema to include only the fields listed while ``_fields_exclude``
+works in reverse removing the fields listed.
+
+Related fields from other serializers are supported using the double
+underscore (``__``) separator.
+
+
 Batch API requests
 ==================
 
@@ -245,7 +258,10 @@ Batch API requests share the same headers as the parent request made to the
 ``/batch_requests/`` endpoint. This means that all requests in a batch will
 have the same authentication credentials and content type.
 
-File uploads and downloads are not suppoted.
+File uploads are not supported. Binary content in responses is returned
+as a base64 encoded string. In order to allow the encoding the raw data of
+the response is collapsed. This negates the advantage of the streaming
+responses used to deliver large binary content.
 
 Batch API requests are limited by the page size. They do not have the ability
 to iterate over multiple result pages. Increase the page size with the
@@ -489,3 +505,87 @@ of the last request for verification.
       "url": "{{ iterables.1.url }}"
     }
   ]
+
+
+Dynamic fields
+--------------
+
+For an fictional document API endpoint that returns:
+
+.. code-block:: json
+
+    {
+      "datetime_created": "2021-10-30T11:08:14.893527Z",
+      "description": "",
+      "document_change_type_url": "http://127.0.0.1:8000/api/v4/documents/1/type/change/",
+      "document_type": {
+        "delete_time_period": 30,
+        "delete_time_unit": "days",
+        "filename_generator_backend": "uuid",
+        "filename_generator_backend_arguments": "",
+        "id": 1,
+        "label": "Default",
+        "quick_label_list_url": "http://127.0.0.1:8000/api/v4/document_types/1/quick_labels/",
+        "trash_time_period": null,
+        "trash_time_unit": null,
+        "url": "http://127.0.0.1:8000/api/v4/document_types/1/"
+      },
+      "file_latest": {
+        "checksum": "0cbfebd6414236de73c851bd8ac16b040e096b3c13c86d7b1024dcedf3291620",
+        "comment": "",
+        "document_url": "http://127.0.0.1:8000/api/v4/documents/1/",
+        "download_url": "http://127.0.0.1:8000/api/v4/documents/1/files/1/download/",
+        "encoding": "binary",
+        "file": "e3139bfa-f734-42d5-b0b3-9afdf408580e",
+        "filename": "lorem impsum",
+        "id": 1,
+        "mimetype": "application/pdf",
+        "page_list_url": "http://127.0.0.1:8000/api/v4/documents/1/files/1/pages/",
+        "size": 45726,
+        "timestamp": "2021-10-30T11:08:14.972253Z",
+        "url": "http://127.0.0.1:8000/api/v4/documents/1/files/1/"
+      },
+      "file_list_url": "http://127.0.0.1:8000/api/v4/documents/1/files/",
+      "id": 1,
+      "label": "lorem impsum",
+      "language": "eng",
+      "url": "http://127.0.0.1:8000/api/v4/documents/1/",
+      "uuid": "49395648-96fa-492e-8f44-b568a456859a",
+      "version_active": {
+        "active": true,
+        "comment": "",
+        "document_url": "http://127.0.0.1:8000/api/v4/documents/1/",
+        "export_url": "http://127.0.0.1:8000/api/v4/documents/1/versions/1/export/",
+        "id": 1,
+        "page_list_url": "http://127.0.0.1:8000/api/v4/documents/1/versions/1/pages/",
+        "timestamp": "2021-10-30T11:08:15.778539Z",
+        "url": "http://127.0.0.1:8000/api/v4/documents/1/versions/1/"
+      },
+      "version_list_url": "http://127.0.0.1:8000/api/v4/documents/1/versions/"
+    }
+
+Using ``_fields_only=id,label`` will return:
+
+.. code-block:: json
+
+    {
+      "id": 1,
+      "label": "lorem impsum",
+    }
+
+Related fields are supported. Using ``_fields_only=id,label,document_type__label,file_latest__id`` will return:
+
+.. code-block:: json
+
+    {
+      "document_type": {
+        "label": "Default",
+      },
+      "file_latest": {
+        "id": 1,
+      },
+      "id": 1,
+      "label": "lorem impsum",
+    }
+
+

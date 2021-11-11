@@ -1,12 +1,12 @@
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 from rest_framework_recursive.fields import RecursiveField
 
 from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.documents.permissions import permission_document_type_edit
+from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import FilteredPrimaryKeyRelatedField
 
 from .models import (

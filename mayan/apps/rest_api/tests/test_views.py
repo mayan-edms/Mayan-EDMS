@@ -3,12 +3,12 @@ import unittest
 
 from django.db import connection, models
 
-from rest_framework import serializers, status
+from rest_framework import status
 from rest_framework.reverse import reverse
 
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
-from .. import generics
+from .. import generics, serializers
 
 from .base import BaseAPITestCase
 from .literals import TEST_OBJECT_LABEL, TEST_OBJECT_LABEL_EDITED
@@ -74,7 +74,8 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
             return TestView.as_view()
 
         self.add_test_view(
-            test_object=self.test_object, test_view_factory=_test_view_factory,
+            test_object=self.test_object,
+            test_view_factory=_test_view_factory,
             test_view_url=r'^test-view-url/$'
         )
         self._test_model_list_api_view_name = self._test_view_name
@@ -96,7 +97,8 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
             return TestView.as_view()
 
         self.add_test_view(
-            test_object=self.test_object, test_view_factory=_test_view_factory,
+            test_object=self.test_object,
+            test_view_factory=_test_view_factory,
             test_view_url=r'^test-view-url/(?P<test_object_id>\d+)/$'
         )
         self._test_model_detail_api_view_name = self._test_view_name
@@ -137,10 +139,13 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
         self.assertEqual(response.data['count'], 1)
 
         self.assertEqual(
-            response.data['results'][0]['status_code'], status.HTTP_201_CREATED
+            response.data['results'][0]['status_code'],
+            status.HTTP_201_CREATED
         )
 
-        self.assertEqual(self.TestModel.objects.count(), test_model_count + 1)
+        self.assertEqual(
+            self.TestModel.objects.count(), test_model_count + 1
+        )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -173,10 +178,13 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
         self.assertEqual(response.data['count'], 1)
 
         self.assertEqual(
-            response.data['results'][0]['status_code'], status.HTTP_204_NO_CONTENT
+            response.data['results'][0]['status_code'],
+            status.HTTP_204_NO_CONTENT
         )
 
-        self.assertEqual(self.TestModel.objects.count(), test_model_count - 1)
+        self.assertEqual(
+            self.TestModel.objects.count(), test_model_count - 1
+        )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -350,3 +358,188 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
+
+
+class DynamicFieldSerializerAPIViewTestCase(BaseAPITestCase):
+    auto_add_test_view = True
+    auto_create_test_object = False
+    test_view_url = r'^test-view-url/(?P<test_object_id>\d+)/$'
+
+    def _test_view_factory(self, test_object=None):
+        self.TestModelParent = self._create_test_model(
+            fields={
+                'test_field_1': models.CharField(
+                    blank=True, max_length=1
+                ),
+                'test_field_2': models.CharField(
+                    blank=True, max_length=1
+                )
+            }, model_name='TestModelParent'
+        )
+
+        self.TestModelChild = self._create_test_model(
+            fields={
+                'parent': models.ForeignKey(
+                    on_delete=models.CASCADE, related_name='children',
+                    to='TestModelParent',
+                ),
+                'test_field_3': models.CharField(
+                    blank=True, max_length=1
+                ),
+                'test_field_4': models.CharField(
+                    blank=True, max_length=1
+                )
+            }, model_name='TestModelChild'
+        )
+
+        self.test_object_parent = self.TestModelParent.objects.create()
+        self.test_object_child = self.TestModelChild.objects.create(
+            parent=self.test_object_parent
+        )
+
+        TestModelParent = self.TestModelParent
+        TestModelChild = self.TestModelChild
+
+        class TestModelParentSerializer(serializers.ModelSerializer):
+            class Meta:
+                fields = ('id', 'test_field_1', 'test_field_2')
+                model = TestModelParent
+
+        class TestModelChildSerializer(serializers.ModelSerializer):
+            parent = TestModelParentSerializer()
+
+            class Meta:
+                fields = ('parent', 'id', 'test_field_3', 'test_field_4')
+                model = TestModelChild
+
+        class TestView(generics.RetrieveAPIView):
+            lookup_url_kwarg = 'test_object_id'
+            queryset = self.TestModelChild.objects.all()
+            serializer_class = TestModelChildSerializer
+
+        return TestView.as_view()
+
+    def _request_test_api_view(self, query):
+        return self.get(
+            viewname='rest_api:{}'.format(self._test_view_name), kwargs={
+                'test_object_id': self.test_object_child.pk,
+            }, query=query
+        )
+
+    def test_current_model_only_field_single(self):
+        response = self._request_test_api_view(
+            query={'_fields_only': 'test_field_3'}
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        data = response.json()
+        self.assertTrue('parent' not in data)
+        self.assertTrue('test_field_3' in data)
+        self.assertTrue('test_field_4' not in data)
+
+    def test_current_model_only_field_multiple(self):
+        response = self._request_test_api_view(
+            query={'_fields_only': 'test_field_3,test_field_4'}
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        data = response.json()
+        self.assertTrue('parent' not in data)
+        self.assertTrue('test_field_3' in data)
+        self.assertTrue('test_field_4' in data)
+
+    def test_current_model_only_rleated_field(self):
+        response = self._request_test_api_view(
+            query={'_fields_only': 'parent'}
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        data = response.json()
+        self.assertTrue('parent' in data)
+        self.assertTrue('test_field_1' in data['parent'])
+        self.assertTrue('test_field_2' in data['parent'])
+        self.assertTrue('test_field_3' not in data)
+        self.assertTrue('test_field_4' not in data)
+
+    def test_related_model_only_field_single(self):
+        response = self._request_test_api_view(
+            query={'_fields_only': 'parent__test_field_1'}
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        data = response.json()
+        self.assertTrue('parent' in data)
+        self.assertTrue('test_field_1' in data['parent'])
+        self.assertTrue('test_field_2' not in data['parent'])
+        self.assertTrue('test_field_3' not in data)
+        self.assertTrue('test_field_4' not in data)
+
+    def test_related_model_only_field_multiple(self):
+        response = self._request_test_api_view(
+            query={
+                '_fields_only': 'parent__test_field_1,parent__test_field_2'
+            }
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        data = response.json()
+        self.assertTrue('parent' in data)
+        self.assertTrue('test_field_1' in data['parent'])
+        self.assertTrue('test_field_2' in data['parent'])
+        self.assertTrue('test_field_3' not in data)
+        self.assertTrue('test_field_4' not in data)
+
+    def test_current_model_exclude_field_single(self):
+        response = self._request_test_api_view(
+            query={'_fields_exclude': 'test_field_3'}
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        data = response.json()
+        self.assertTrue('parent' in data)
+        self.assertTrue('test_field_1' in data['parent'])
+        self.assertTrue('test_field_2' in data['parent'])
+        self.assertTrue('test_field_3' not in data)
+        self.assertTrue('test_field_4' in data)
+
+    def test_current_model_exclude_field_multiple(self):
+        response = self._request_test_api_view(
+            query={'_fields_exclude': 'test_field_3,test_field_4'}
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        data = response.json()
+        self.assertTrue('parent' in data)
+        self.assertTrue('test_field_1' in data['parent'])
+        self.assertTrue('test_field_2' in data['parent'])
+        self.assertTrue('test_field_3' not in data)
+        self.assertTrue('test_field_4' not in data)
+
+    def test_current_model_exclude_related_field(self):
+        response = self._request_test_api_view(
+            query={'_fields_exclude': 'parent'}
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        data = response.json()
+        self.assertTrue('parent' not in data)
+        self.assertTrue('test_field_3' in data)
+        self.assertTrue('test_field_4' in data)
+
+    def test_related_model_exclude_field_single(self):
+        response = self._request_test_api_view(
+            query={'_fields_exclude': 'parent__test_field_1'}
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        data = response.json()
+        self.assertTrue('parent' in data)
+        self.assertTrue('test_field_1' not in data['parent'])
+        self.assertTrue('test_field_2' in data['parent'])
+        self.assertTrue('test_field_3' in data)
+        self.assertTrue('test_field_4' in data)
+
+    def test_related_model_exclude_field_multiple(self):
+        response = self._request_test_api_view(
+            query={
+                '_fields_exclude': 'parent__test_field_1,parent__test_field_2'
+            }
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        data = response.json()
+        self.assertTrue('parent' in data)
+        self.assertTrue('test_field_1' not in data['parent'])
+        self.assertTrue('test_field_2' not in data['parent'])
+        self.assertTrue('test_field_3' in data)
+        self.assertTrue('test_field_4' in data)
