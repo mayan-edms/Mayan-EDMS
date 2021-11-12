@@ -1,3 +1,4 @@
+[![Build](https://github.com/rohanpadhye/Mayan-EDMS/actions/workflows/build.yml/badge.svg)](https://github.com/rohanpadhye/Mayan-EDMS/actions/workflows/build.yml)
 [![pypi][pypi]][pypi-url]
 ![python][python]
 ![license][license]
@@ -7,6 +8,7 @@
 [![Support][support]][support-url]
 [![Store](https://img.shields.io/badge/Online_store-black)](https://teespring.com/stores/mayan-edms)
 [![Donation](https://img.shields.io/badge/donation-PayPal-brightgreen)](https://paypal.me/MayanEDMS)
+
 
 
 [pypi]: https://img.shields.io/pypi/v/mayan-edms.svg

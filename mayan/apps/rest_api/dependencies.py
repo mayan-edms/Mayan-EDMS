@@ -60,5 +60,8 @@ PythonDependency(
     module=__name__, name='flex', version_string='==6.14.1'
 )
 PythonDependency(
+    module=__name__, name='jsonschema', version_string='==3.2.0'
+)
+PythonDependency(
     module=__name__, name='swagger-spec-validator', version_string='==2.5.0'
 )
