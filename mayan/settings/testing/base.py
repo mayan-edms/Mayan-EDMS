@@ -40,6 +40,9 @@ PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.MD5PasswordHasher',
 )
 
+SEARCH_BACKEND = 'mayan.apps.dynamic_search.tests.mocks.TestSearchBackend'
+
+
 STATICFILES_STORAGE = None
 
 # Cache templates in memory
