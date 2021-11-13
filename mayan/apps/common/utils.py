@@ -1,3 +1,4 @@
+from distutils import util
 from functools import reduce
 import logging
 import types
@@ -127,6 +128,14 @@ class ResolverPipelineModelAttribute(ResolverPipelineObjectAttribute):
     def resolve(cls, attribute, obj, kwargs=None):
         attribute = attribute.replace(LOOKUP_SEP, '.')
         return super().resolve(attribute=attribute, obj=obj, kwargs=kwargs)
+
+
+def any_to_bool(value):
+    if not isinstance(value, bool):
+        value = bool(
+            util.strtobool(val=value)
+        )
+    return value
 
 
 def check_for_sqlite():

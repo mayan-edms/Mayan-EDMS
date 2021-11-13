@@ -1,4 +1,3 @@
-from distutils import util
 import logging
 
 import sentry_sdk
@@ -9,6 +8,7 @@ from sentry_sdk.integrations.redis import RedisIntegration
 from django.conf.urls import url
 
 import mayan
+from mayan.apps.common.utils import any_to_bool
 
 from .classes import ClientBackend
 
@@ -17,14 +17,6 @@ logger = logging.getLogger(name=__name__)
 
 class ClientBackendSentry(ClientBackend):
     _url_namespace = 'sentry'
-
-    @staticmethod
-    def any_to_bool(value):
-        if not isinstance(value, bool):
-            value = bool(
-                util.strtobool(val=value)
-            )
-        return value
 
     def get_url_patterns(self):
         def view_trigger_error(request):
@@ -59,7 +51,7 @@ class ClientBackendSentry(ClientBackend):
         # Common Options
         options['dsn'] = self.kwargs['dsn']
 
-        options['debug'] = ClientBackendSentry.any_to_bool(
+        options['debug'] = any_to_bool(
             value=self.kwargs.get('debug', False)
         )
 
@@ -75,17 +67,17 @@ class ClientBackendSentry(ClientBackend):
             self.kwargs.get('max_breadcrumbs', 100)
         )
 
-        options['attach_stacktrace'] = ClientBackendSentry.any_to_bool(
+        options['attach_stacktrace'] = any_to_bool(
             value=self.kwargs.get('attach_stacktrace', False)
         )
 
-        options['send_default_pii'] = ClientBackendSentry.any_to_bool(
+        options['send_default_pii'] = any_to_bool(
             value=self.kwargs.get('send_default_pii', True)
         )
 
         options['server_name'] = self.kwargs.get('server_name')
 
-        options['with_locals'] = ClientBackendSentry.any_to_bool(
+        options['with_locals'] = any_to_bool(
             value=self.kwargs.get('with_locals', True)
         )
 
