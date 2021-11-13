@@ -16,7 +16,8 @@ TERM_SPACE_CHARACTER = ' '
 
 DJANGO_TO_WHOOSH_FIELD_MAP = {
     models.AutoField: {
-        'field': whoosh.fields.ID(stored=True), 'transformation': str
+        'field': whoosh.fields.ID(stored=True, unique=True),
+        'transformation': str
     },
     models.CharField: {'field': whoosh.fields.TEXT},
     models.DateTimeField: {

@@ -4,6 +4,8 @@ from django.utils.encoding import force_text
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
+from mayan.apps.tags.permissions import permission_tag_view
+from mayan.apps.tags.search import tag_search
 from mayan.apps.tags.tests.mixins import TagTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 
@@ -27,7 +29,28 @@ class CommonBackendFunctionalityTestCaseMixin(TagTestMixin):
         self.assertEqual(queryset.count(), 1)
         self.assertTrue(self.test_document in queryset)
 
-    def test_related_many_to_many_field_with_multiple_values(self):
+    def test_many_to_many_field(self):
+        self._create_test_document_stub()
+
+        self._create_test_tag()
+
+        self.test_tag.documents.add(self.test_document)
+
+        self.grant_access(
+            obj=self.test_tag, permission=permission_tag_view
+        )
+
+        query = {
+            'documents__label': self.test_document.label
+        }
+        queryset = self.search_backend.search(
+            search_model=tag_search, query=query,
+            user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.test_tag in queryset)
+
+    def test_reverse_many_to_many_field_with_multiple_values(self):
         self._create_test_document_stub()
 
         self._create_test_tag()
@@ -60,7 +83,7 @@ class CommonBackendFunctionalityTestCaseMixin(TagTestMixin):
         self.assertEqual(queryset.count(), 1)
         self.assertTrue(self.test_document in queryset)
 
-    def test_related_many_to_many_field_after_remove_values(self):
+    def test_reverse_many_to_many_field_after_remove_values(self):
         self._create_test_document_stub()
 
         self._create_test_tag()
@@ -104,6 +127,82 @@ class CommonBackendFunctionalityTestCaseMixin(TagTestMixin):
         )
         self.assertEqual(queryset.count(), 0)
         self.assertTrue(self.test_document not in queryset)
+
+    def test_related_model_deleted(self):
+        self._create_test_document_stub()
+
+        self._create_test_tag()
+
+        self.test_tags[0].documents.add(self.test_document)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        query = {
+            'tags__label': self.test_tags[0].label
+        }
+        queryset = self.search_backend.search(
+            search_model=document_search, query=query,
+            user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.test_document in queryset)
+
+        self.test_tag.delete()
+        queryset = self.search_backend.search(
+            search_model=document_search, query=query,
+            user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 0)
+        self.assertTrue(self.test_document not in queryset)
+
+    def test_related_model_edited(self):
+        self._create_test_document_stub()
+
+        self._create_test_tag()
+
+        self.test_tags[0].documents.add(self.test_document)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        old_related_model_field_value = self.test_tags[0].label
+
+        query = {
+            'tags__label': self.test_tags[0].label
+        }
+        queryset = self.search_backend.search(
+            search_model=document_search, query=query,
+            user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.test_document in queryset)
+
+        self.test_tag.label = 'new value'
+        self.test_tag.save()
+
+        query = {
+            'tags__label': old_related_model_field_value
+        }
+
+        queryset = self.search_backend.search(
+            search_model=document_search, query=query,
+            user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 0)
+        self.assertTrue(self.test_document not in queryset)
+
+        query = {
+            'tags__label': self.test_tags[0].label
+        }
+        queryset = self.search_backend.search(
+            search_model=document_search, query=query,
+            user=self._test_case_user
+        )
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.test_document in queryset)
 
     def test_search_field_transformation_functions(self):
         self._upload_test_document()

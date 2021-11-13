@@ -1,8 +1,6 @@
 from mayan.apps.documents.search import document_search
-from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
 from ..classes import SearchBackend
-from ..settings import setting_backend_arguments
 
 
 class SearchAPIViewTestMixin:
@@ -25,19 +23,39 @@ class SearchAPIViewTestMixin:
 
 
 class SearchTestMixin:
-    def setUp(self):
-        self.old_value = setting_backend_arguments.value
-        super().setUp()
-        setting_backend_arguments.set(
-            value={'index_path': mkdtemp()}
+    _test_search_index_object_name = None
+    _test_search_model = None
+
+    def _deindex_instance(self, instance):
+        self.search_backend.deindex_instance(instance=instance)
+
+    def _index_instance(self, instance):
+        self.search_backend.index_instance(instance=instance)
+
+    def do_test_search(self, terms=None, query=None):
+        if self._test_search_index_object_name:
+            self.search_backend.index_instance(
+                instance=getattr(self, self._test_search_index_object_name)
+            )
+
+        query = query or {'q': terms}
+
+        return self.search_backend.search(
+            search_model=self._test_search_model, query=query,
+            user=self._test_case_user
         )
-        self.search_backend = SearchBackend.get_instance()
+
+    def setUp(self):
+        super().setUp()
+
+        self.search_backend = SearchBackend.get_instance(
+            extra_kwargs={'_search_test': True}
+        )
 
     def tearDown(self):
-        fs_cleanup(
-            filename=setting_backend_arguments.value['index_path']
-        )
-        setting_backend_arguments.set(value=self.old_value)
+        if hasattr(self.search_backend, '_cleanup'):
+            self.search_backend._cleanup()
+
         super().tearDown()
 
 

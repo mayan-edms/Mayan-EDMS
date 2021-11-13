@@ -1,7 +1,9 @@
 from collections import Iterable
+import functools
 import logging
 
 from django.apps import apps
+from django.db import models
 from django.db.models.signals import m2m_changed, post_save, pre_delete
 from django.utils.encoding import force_text
 from django.utils.functional import cached_property
@@ -11,7 +13,8 @@ from django.utils.translation import ugettext as _
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.exceptions import ResolverPipelineError
 from mayan.apps.common.utils import (
-    ResolverPipelineModelAttribute, get_related_field
+    ResolverPipelineModelAttribute, introspect_attribute,
+    get_class_full_name, get_related_field
 )
 from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
@@ -29,9 +32,13 @@ logger = logging.getLogger(name=__name__)
 
 class SearchBackend:
     @staticmethod
-    def get_instance():
+    def get_instance(extra_kwargs=None):
+        kwargs = setting_backend_arguments.value.copy()
+        if extra_kwargs:
+            kwargs.update(extra_kwargs)
+
         return import_string(dotted_path=setting_backend.value)(
-            **setting_backend_arguments.value
+            **kwargs
         )
 
     @staticmethod
@@ -63,39 +70,6 @@ class SearchBackend:
             }
 
         return clean_query
-
-    def deindex_instance(self, instance):
-        raise NotImplementedError
-
-    def index_instance(self, instance):
-        raise NotImplementedError
-
-    def search(
-        self, search_model, query, user, global_and_search=False
-    ):
-        AccessControlList = apps.get_model(
-            app_label='acls', model_name='AccessControlList'
-        )
-
-        result = self.decode_query(
-            global_and_search=global_and_search, query=query
-        )
-
-        # Recursive call to the backend's search using queries as unscoped
-        # and then merge then using the corresponding operator.
-        queryset = self.solve_scope(
-            operators=result['operators'],
-            result_scope=result['result_scope'], search_model=search_model,
-            scopes=result['scopes'], user=user
-        )
-
-        if search_model.permission:
-            queryset = AccessControlList.objects.restrict_queryset(
-                permission=search_model.permission, queryset=queryset,
-                user=user
-            )
-
-        return SearchBackend.limit_queryset(queryset=queryset)
 
     def decode_query(self, query, global_and_search=False):
         # Clean up the query.
@@ -164,6 +138,39 @@ class SearchBackend:
             'operators': operators, 'result_scope': result_scope,
             'scopes': scopes
         }
+
+    def deindex_instance(self, instance):
+        raise NotImplementedError
+
+    def index_instance(self, instance):
+        raise NotImplementedError
+
+    def search(
+        self, query, search_model, user, global_and_search=False
+    ):
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
+        result = self.decode_query(
+            global_and_search=global_and_search, query=query
+        )
+
+        # Recursive call to the backend's search using queries as unscoped
+        # and then merge then using the corresponding operator.
+        queryset = self.solve_scope(
+            operators=result['operators'],
+            result_scope=result['result_scope'], search_model=search_model,
+            scopes=result['scopes'], user=user
+        )
+
+        if search_model.permission:
+            queryset = AccessControlList.objects.restrict_queryset(
+                permission=search_model.permission, queryset=queryset,
+                user=user
+            )
+
+        return SearchBackend.limit_queryset(queryset=queryset)
 
     def solve_scope(
         self, search_model, user, result_scope, scopes, operators
@@ -242,9 +249,22 @@ class SearchField:
             model=self.get_model(), related_field_name=self.field
         )
 
+    def uses_many_to_many_field(self):
+        try:
+            local_field_name, related_field_name = self.field.split('__', 1)
+        except ValueError:
+            local_field_name = self.field
+
+        field = self.get_models()._meta.get_field(field_name=local_field_name)
+        return isinstance(field, models.fields.related.ManyToManyField)
+
     @property
     def label(self):
         return self._label or self.get_model_field().verbose_name
+
+    @cached_property
+    def model(self):
+        return self.search_model.model
 
 
 class SearchModel(AppsModuleLoaderMixin):
@@ -271,43 +291,69 @@ class SearchModel(AppsModuleLoaderMixin):
     def initialize():
         # Hide a circular import.
         from .handlers import (
-            handler_factory_deindex_instance, handler_factory_index_instance_m2m,
+            handler_factory_deindex_instance,
+            handler_factory_index_instance_m2m,
+            handler_factory_index_related_instance_save,
             handler_index_instance
         )
 
         for search_model in SearchModel.all():
-            m2m_changed.connect(
-                dispatch_uid='search_handler_index_instance_m2m_{}'.format(search_model),
-                receiver=handler_factory_index_instance_m2m(model=search_model.model),
-                weak=False
-            )
+            unique_value = get_class_full_name(search_model.model)
+
+            if search_model.uses_many_to_many_fields():
+                m2m_changed.connect(
+                    dispatch_uid='search_handler_index_instance_m2m_{}'.format(
+                        unique_value
+                    ),
+                    receiver=handler_factory_index_instance_m2m(
+                        model=search_model.model
+                    ),
+                    weak=False
+                )
+
             post_save.connect(
-                dispatch_uid='search_handler_index_instance_{}'.format(search_model),
-                receiver=handler_index_instance,
-                sender=search_model.model
+                dispatch_uid='search_handler_index_instance',
+                receiver=handler_index_instance, sender=search_model.model
             )
             pre_delete.connect(
-                dispatch_uid='search_handler_deindex_instance_{}'.format(search_model),
-                receiver=handler_factory_deindex_instance(search_model=search_model),
-                sender=search_model.model,
-                weak=False
+                dispatch_uid='search_handler_deindex_instance_{}'.format(
+                    unique_value
+                ),
+                receiver=handler_factory_deindex_instance(
+                    search_model=search_model
+                ),
+                sender=search_model.model, weak=False
             )
             for proxy in search_model.proxies:
-                m2m_changed.connect(
-                    dispatch_uid='search_handler_index_instance_m2m_{}'.format(search_model),
-                    receiver=handler_factory_index_instance_m2m(model=proxy),
-                    weak=False
-                )
+                if search_model.uses_many_to_many_fields():
+                    m2m_changed.connect(
+                        dispatch_uid='search_handler_index_instance_m2m_{}'.format(unique_value),
+                        receiver=handler_factory_index_instance_m2m(
+                            model=proxy
+                        ),
+                        weak=False
+                    )
+
                 post_save.connect(
-                    dispatch_uid='search_handler_index_instance_{}'.format(search_model),
-                    receiver=handler_index_instance,
-                    sender=proxy
+                    dispatch_uid='search_handler_index_instance',
+                    receiver=handler_index_instance, sender=proxy
                 )
                 pre_delete.connect(
-                    dispatch_uid='search_handler_deindex_instance_{}'.format(search_model),
-                    receiver=handler_factory_deindex_instance(search_model=search_model),
-                    sender=proxy,
-                    weak=False
+                    dispatch_uid='search_handler_deindex_instance_{}'.format(
+                        unique_value
+                    ),
+                    receiver=handler_factory_deindex_instance(
+                        search_model=search_model
+                    ),
+                    sender=proxy, weak=False
+                )
+
+            for field, related_model in search_model.get_related_models():
+                post_save.connect(
+                    dispatch_uid='search_handler_index_related_instance_{}'.format(unique_value),
+                    receiver=handler_factory_index_related_instance_save(
+                        field=field
+                    ), sender=related_model, weak=False
                 )
 
             search_model._initialize()
@@ -323,6 +369,7 @@ class SearchModel(AppsModuleLoaderMixin):
         return cls._registry
 
     @classmethod
+    @functools.lru_cache(maxsize=None)
     def get(cls, name):
         try:
             result = cls._registry[name]
@@ -436,6 +483,21 @@ class SearchModel(AppsModuleLoaderMixin):
         else:
             return self.model._meta.managers_map[self.manager_name].all()
 
+    def get_related_models(self):
+        result = []
+        for search_field in self.search_fields:
+            attribute_name, obj = introspect_attribute(
+                attribute_name=search_field.field, obj=self.model
+            )
+            for field in obj._meta.get_fields():
+                if field.related_model == self.model or field.related_model == self.model._meta.proxy_for_model:
+                    entry = (field.name, obj)
+
+                    if entry not in result:
+                        result.append(entry)
+
+        return result
+
     def get_search_field(self, full_name):
         try:
             return self.search_fields[full_name]
@@ -447,6 +509,13 @@ class SearchModel(AppsModuleLoaderMixin):
         if not self._label:
             self._label = self.model._meta.verbose_name
         return self._label
+
+    def uses_many_to_many_fields(self):
+        return any(
+            [
+                search_field.uses_many_to_many_field for search_field in self.search_fields
+            ]
+        )
 
     @cached_property
     def model(self):
@@ -469,7 +538,7 @@ class SearchModel(AppsModuleLoaderMixin):
             )
         return result
 
-    def sieve(self, field_map, instance):
+    def populate(self, field_map, instance):
         """
         Method that receives an instance and a field map dictionary
         consisting of attribute names and transformations to apply.
