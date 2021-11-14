@@ -13,8 +13,7 @@ from django.utils.translation import ugettext as _
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.exceptions import ResolverPipelineError
 from mayan.apps.common.utils import (
-    ResolverPipelineModelAttribute, introspect_attribute,
-    get_class_full_name, get_related_field
+    ResolverPipelineModelAttribute, get_class_full_name, get_related_field
 )
 from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
@@ -293,7 +292,6 @@ class SearchModel(AppsModuleLoaderMixin):
         from .handlers import (
             handler_factory_deindex_instance,
             handler_factory_index_instance_m2m,
-            handler_factory_index_related_instance_save,
             handler_index_instance
         )
 
@@ -348,14 +346,6 @@ class SearchModel(AppsModuleLoaderMixin):
                     sender=proxy, weak=False
                 )
 
-            for field, related_model in search_model.get_related_models():
-                post_save.connect(
-                    dispatch_uid='search_handler_index_related_instance_{}'.format(unique_value),
-                    receiver=handler_factory_index_related_instance_save(
-                        field=field
-                    ), sender=related_model, weak=False
-                )
-
             search_model._initialize()
 
     @classmethod
@@ -391,6 +381,7 @@ class SearchModel(AppsModuleLoaderMixin):
 
     @classmethod
     def get_for_model(cls, instance):
+        # Works the same for model classes and model instances.
         return cls.get(name=instance._meta.label)
 
     def __init__(
@@ -438,6 +429,10 @@ class SearchModel(AppsModuleLoaderMixin):
                 self.__class__._model_search_relationships[self.model].add(
                     related_model
                 )
+                for proxy in self.proxies:
+                    self.__class__._model_search_relationships[self.model].add(
+                        proxy
+                    )
 
                 self.__class__._model_search_relationships.setdefault(
                     related_model, set()
@@ -445,6 +440,11 @@ class SearchModel(AppsModuleLoaderMixin):
                 self.__class__._model_search_relationships[related_model].add(
                     self.model
                 )
+
+                for proxy in self.proxies:
+                    self.__class__._model_search_relationships[related_model].add(
+                        proxy
+                    )
 
     def add_model_field(self, *args, **kwargs):
         """
@@ -482,21 +482,6 @@ class SearchModel(AppsModuleLoaderMixin):
             return self.queryset()
         else:
             return self.model._meta.managers_map[self.manager_name].all()
-
-    def get_related_models(self):
-        result = []
-        for search_field in self.search_fields:
-            attribute_name, obj = introspect_attribute(
-                attribute_name=search_field.field, obj=self.model
-            )
-            for field in obj._meta.get_fields():
-                if field.related_model == self.model or field.related_model == self.model._meta.proxy_for_model:
-                    entry = (field.name, obj)
-
-                    if entry not in result:
-                        result.append(entry)
-
-        return result
 
     def get_search_field(self, full_name):
         try:
