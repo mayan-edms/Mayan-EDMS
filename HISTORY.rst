@@ -2,6 +2,7 @@
 ==================
 - Clean up the test model app config cache after the test
   end not before the test model is created.
+- Improve lock manager test cases.
 
 4.0.20 (2021-11-08)
 ===================
