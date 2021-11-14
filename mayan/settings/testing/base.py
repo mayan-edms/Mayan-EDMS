@@ -42,7 +42,6 @@ PASSWORD_HASHERS = (
 
 SEARCH_BACKEND = 'mayan.apps.dynamic_search.tests.mocks.TestSearchBackend'
 
-
 STATICFILES_STORAGE = None
 
 # Cache templates in memory
