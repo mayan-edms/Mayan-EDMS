@@ -280,7 +280,10 @@ class SearchModel(AppsModuleLoaderMixin):
                 if isinstance(item, Iterable) and not isinstance(item, (str, bytes)):
                     yield from SearchModel.flatten_list(value=item)
                 else:
-                    yield item
+                    if item is not None:
+                        yield item
+                    else:
+                        yield ''
 
     @staticmethod
     def function_return_same(value):
