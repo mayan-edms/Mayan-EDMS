@@ -12,7 +12,7 @@ from mayan.apps.testing.tests.base import BaseTestCase
 from .mixins import SearchTestMixin
 
 
-class CommonBackendFunctionalityTestCaseMixin(TagTestMixin):
+class CommonBackendFunctionalityTestCaseMixin(SearchTestMixin, TagTestMixin):
     def test_advanced_search_related(self):
         self._upload_test_document()
         self.grant_access(
@@ -36,17 +36,18 @@ class CommonBackendFunctionalityTestCaseMixin(TagTestMixin):
 
         self.test_tag.documents.add(self.test_document)
 
+        self._index_instance(instance=self.test_document)
+
         self.grant_access(
             obj=self.test_tag, permission=permission_tag_view
         )
 
-        query = {
-            'documents__label': self.test_document.label
-        }
         queryset = self.search_backend.search(
-            search_model=tag_search, query=query,
-            user=self._test_case_user
+            search_model=tag_search, query={
+                'documents__label': self.test_document.label
+            }, user=self._test_case_user
         )
+
         self.assertEqual(queryset.count(), 1)
         self.assertTrue(self.test_tag in queryset)
 
@@ -233,7 +234,7 @@ class CommonBackendFunctionalityTestCaseMixin(TagTestMixin):
 @override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend')
 class DjangoSearchBackendDocumentSearchTestCase(
     CommonBackendFunctionalityTestCaseMixin, DocumentTestMixin,
-    SearchTestMixin, BaseTestCase
+    BaseTestCase
 ):
     auto_upload_test_document = False
 
@@ -375,7 +376,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
 @override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend')
 class WhooshSearchBackendDocumentSearchTestCase(
     CommonBackendFunctionalityTestCaseMixin, DocumentTestMixin,
-    SearchTestMixin, BaseTestCase
+    BaseTestCase
 ):
     auto_upload_test_document = False
 

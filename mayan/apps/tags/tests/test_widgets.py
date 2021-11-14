@@ -144,6 +144,8 @@ class DocumentSearchResultWidgetViewTestCase(
     DocumentViewTestMixin, SearchViewTestMixin, TagTestMixin,
     GenericDocumentViewTestCase
 ):
+    _test_search_index_object_name = 'test_document'
+    _test_search_model = document_search
     auto_upload_test_document = False
 
     def setUp(self):
@@ -287,6 +289,9 @@ class DocumentSearchResultWidgetViewTestCase(
 class DocumentFileSearchResultWidgetViewTestCase(
     DocumentSearchResultWidgetViewTestCase
 ):
+    _test_search_index_object_name = 'test_document_file'
+    _test_search_model = document_file_search
+
     def setUp(self):
         super().setUp()
         self._test_object_text = self.test_document_file.filename
@@ -300,6 +305,9 @@ class DocumentFileSearchResultWidgetViewTestCase(
 class DocumentFilePageSearchResultWidgetViewTestCase(
     DocumentSearchResultWidgetViewTestCase
 ):
+    _test_search_index_object_name = 'test_document_file_page'
+    _test_search_model = document_file_page_search
+
     def setUp(self):
         super().setUp()
         self._test_object_text = force_text(s=self.test_document_file.pages.first())
@@ -313,6 +321,9 @@ class DocumentFilePageSearchResultWidgetViewTestCase(
 class DocumentVersionSearchResultWidgetViewTestCase(
     DocumentSearchResultWidgetViewTestCase
 ):
+    _test_search_index_object_name = 'test_document_version'
+    _test_search_model = document_version_search
+
     def setUp(self):
         super().setUp()
         self._test_object_text = force_text(s=self.test_document_version)
@@ -326,6 +337,9 @@ class DocumentVersionSearchResultWidgetViewTestCase(
 class DocumentVersionPageSearchResultWidgetViewTestCase(
     DocumentSearchResultWidgetViewTestCase
 ):
+    _test_search_index_object_name = 'test_document_version_page'
+    _test_search_model = document_version_page_search
+
     def setUp(self):
         super().setUp()
         self._test_object_text = force_text(s=self.test_document_version.pages.first())

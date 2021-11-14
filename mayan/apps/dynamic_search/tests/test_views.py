@@ -15,7 +15,7 @@ from .mixins import (
 
 
 class AdvancedSearchViewTestCaseMixin(
-    DocumentTestMixin, SearchViewTestMixin, GenericViewTestCase
+    DocumentTestMixin, SearchViewTestMixin
 ):
     auto_upload_test_document = False
 
@@ -23,19 +23,16 @@ class AdvancedSearchViewTestCaseMixin(
         super().setUp()
         self.test_document_count = 4
 
-        # Upload many instances of the same test document
+        # Upload many instances of the same test document.
         for i in range(self.test_document_count):
             self._upload_test_document()
-
-        self.search_backend = SearchBackend.get_instance()
+            self._index_instance(instance=self.test_document)
+            self.grant_access(
+                obj=self.test_document, permission=permission_document_view
+            )
 
     def test_advanced_search_past_first_page(self):
         test_document_label = self.test_documents[0].label
-
-        for document in self.test_documents:
-            self.grant_access(
-                obj=document, permission=permission_document_view
-            )
 
         # Make sure all documents are returned by the search
         queryset = self.search_backend.search(

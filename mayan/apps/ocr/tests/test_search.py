@@ -18,10 +18,10 @@ class DocumentOCRSearchTestCase(
     auto_create_test_document_version_ocr_content = True
 
     def _do_test_search(self):
-        return self.do_test_search(
-            query={
+        return self.search_backend.search(
+            search_model=self._test_search_model, query={
                 'versions__version_pages__ocr_content__content': self.test_document_version_page.ocr_content.content
-            }
+            }, user=self._test_case_user
         )
 
     def test_document_search_no_permission(self):
@@ -70,10 +70,10 @@ class DocumentVersionOCRSearchTestCase(
     auto_create_test_document_version_ocr_content = True
 
     def _do_test_search(self):
-        return self.do_test_search(
-            query={
+        return self.search_backend.search(
+            search_model=self._test_search_model, query={
                 'version_pages__ocr_content__content': self.test_document_version_page.ocr_content.content
-            }
+            }, user=self._test_case_user
         )
 
     def test_document_version_search_no_permission(self):
@@ -124,10 +124,10 @@ class DocumentVersionPageOCRSearchTestCase(
     auto_create_test_document_version_ocr_content = True
 
     def _do_test_search(self):
-        return self.do_test_search(
-            query={
+        return self.search_backend.search(
+            search_model=self._test_search_model, query={
                 'ocr_content__content': self.test_document_version_page.ocr_content.content
-            }
+            }, user=self._test_case_user
         )
 
     def test_document_version_search_no_permission(self):

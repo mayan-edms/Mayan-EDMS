@@ -15,10 +15,10 @@ class DocumentTagSearchTestCase(
     test_tag_add_test_document = True
 
     def _do_test_search(self):
-        return self.do_test_search(
-            query={
+        return self.search_backend.search(
+            search_model=self._test_search_model, query={
                 'tags__label': self.test_tag.label
-            }
+            }, user=self._test_case_user
         )
 
     def test_document_search_no_permission(self):
