@@ -3,6 +3,7 @@ import functools
 import logging
 
 from django.apps import apps
+from django.contrib.admin.utils import reverse_field_path
 from django.db import models
 from django.db.models.signals import m2m_changed, post_save, pre_delete
 from django.utils.encoding import force_text
@@ -295,6 +296,7 @@ class SearchModel(AppsModuleLoaderMixin):
         from .handlers import (
             handler_factory_deindex_instance,
             handler_factory_index_instance_m2m,
+            handler_factory_index_related_instance_save,
             handler_index_instance
         )
 
@@ -347,6 +349,14 @@ class SearchModel(AppsModuleLoaderMixin):
                         search_model=search_model
                     ),
                     sender=proxy, weak=False
+                )
+
+            for related_model, path in search_model.get_related_models():
+                post_save.connect(
+                    dispatch_uid='search_handler_index_related_instance_{}'.format(unique_value),
+                    receiver=handler_factory_index_related_instance_save(
+                        reverse_field_path=path
+                    ), sender=related_model, weak=False
                 )
 
             search_model._initialize()
@@ -485,6 +495,18 @@ class SearchModel(AppsModuleLoaderMixin):
             return self.queryset()
         else:
             return self.model._meta.managers_map[self.manager_name].all()
+
+    def get_related_models(self):
+        result = set()
+        for search_field in self.search_fields:
+            obj, path = reverse_field_path(
+                model=self.model, path=search_field.field
+            )
+            if path:
+                # Ignore search model fields.
+                result.add((obj, path))
+
+        return result
 
     def get_search_field(self, full_name):
         try:

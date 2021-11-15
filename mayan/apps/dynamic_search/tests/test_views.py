@@ -6,7 +6,7 @@ from mayan.apps.documents.search import document_search
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
-from ..classes import SearchBackend, SearchModel
+from ..classes import SearchModel
 from ..permissions import permission_search_tools
 
 from .mixins import (
