@@ -1,3 +1,8 @@
+4.0.21 (2021-XX-XX)
+==================
+- Clean up the test model app config cache after the test
+  end not before the test model is created.
+
 4.0.20 (2021-11-08)
 ===================
 - Use overlay2 driver when using Docker in Docker
