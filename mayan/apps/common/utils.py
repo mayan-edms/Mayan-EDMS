@@ -4,6 +4,7 @@ import logging
 import types
 
 from django.conf import settings
+from django.contrib.admin.utils import get_fields_from_path
 from django.core.exceptions import FieldDoesNotExist
 from django.db.models.constants import LOOKUP_SEP
 
@@ -103,7 +104,7 @@ class ResolverPipelineObjectAttribute:
 
             if result == obj:
                 raise ResolverPipelineError(
-                    'Unable to resolve attribute "{attribute}" of object "{obj}"'.format(
+                    'Unable to resolve attribute `{attribute}` of object `{obj}`'.format(
                         attribute=attribute, obj=obj
                     )
                 )
@@ -112,10 +113,24 @@ class ResolverPipelineObjectAttribute:
 
 
 class ResolverRelatedManager(Resolver):
-    exceptions = (AttributeError,)
+    exceptions = (AttributeError, FieldDoesNotExist)
 
     def _resolve(self):
-        return getattr(self.obj, self.attribute).all()
+        fields = get_fields_from_path(model=self.obj, path=self.attribute)
+        if not fields:
+            return
+        else:
+            field = fields[0]
+            try:
+                through = field.through
+            except AttributeError:
+                return field.related_model._meta.default_manager.filter(
+                    **{field.remote_field.name: self.obj.pk}
+                )
+            else:
+                return field.remote_field.model._meta.default_manager.filter(
+                    **{field.remote_field.name: self.obj.pk}
+                )
 
 
 class ResolverPipelineModelAttribute(ResolverPipelineObjectAttribute):
@@ -164,35 +179,6 @@ def get_related_field(model, related_field_name):
         )
 
     return related_field
-
-
-def introspect_attribute(attribute_name, obj):
-    """
-    Resolve the attribute of model. Supports nested reference using dotted
-    paths or double underscore.
-    """
-    try:
-        # Try as a related field
-        obj._meta.get_field(field_name=attribute_name)
-    except (AttributeError, FieldDoesNotExist):
-        attribute_name = attribute_name.replace('__', '.')
-
-        try:
-            # If there are separators in the attribute name, traverse them
-            # to the final attribute
-            attribute_part, attribute_remaining = attribute_name.split(
-                '.', 1
-            )
-        except ValueError:
-            return attribute_name, obj
-        else:
-            related_field = obj._meta.get_field(field_name=attribute_part)
-            return introspect_attribute(
-                attribute_name=attribute_part,
-                obj=related_field.related_model,
-            )
-    else:
-        return attribute_name, obj
 
 
 def resolve_attribute(attribute, obj, kwargs=None):
@@ -257,4 +243,4 @@ def return_related(instance, related_field):
     meant for related models. Support multiple levels of relationship
     using double underscore.
     """
-    return reduce(getattr, related_field.split('__'), instance)
+    return reduce(getattr, related_field.split(LOOKUP_SEP), instance)
