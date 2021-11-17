@@ -122,13 +122,13 @@ class WhooshSearchBackend(SearchBackend):
 
     def get_or_create_index(self, search_model):
         storage = self.get_storage()
+        schema = self.get_search_model_schema(search_model=search_model)
 
         try:
             index = storage.open_index(
-                indexname=search_model.get_full_name()
+                indexname=search_model.get_full_name(), schema=schema
             )
         except EmptyIndexError:
-            schema = self.get_search_model_schema(search_model=search_model)
             index = storage.create_index(
                 indexname=search_model.get_full_name(), schema=schema
             )
@@ -229,30 +229,6 @@ class WhooshSearchBackend(SearchBackend):
                     exception, exc_info=True
                 )
                 raise
-
-        for field_class in instance._meta.get_fields():
-            # Only to recursive indexing for related models that are
-            # known to have a search configuration.
-            if field_class.related_model and field_class.related_model in SearchModel._model_search_relationships.get(instance._meta.model, ()):
-                field_instance = getattr(instance, field_class.name, None)
-
-                if field_instance:
-                    try:
-                        # Try as a many field.
-                        results = field_instance.all()
-                    except AttributeError:
-                        # Try as a one to one field.
-                        try:
-                            results = [field_instance.get()]
-                        except AttributeError:
-                            # It is neither then it must be a
-                            # foreign key.
-                            results = [field_instance]
-
-                    for instance in results:
-                        self._index_instance(
-                            instance=instance, exclude_set=exclude_set
-                        )
 
     def index_search_model(self, search_model):
         schema = self.get_search_model_schema(search_model=search_model)

@@ -3,7 +3,9 @@ import functools
 import logging
 
 from django.apps import apps
-from django.contrib.admin.utils import reverse_field_path
+from django.contrib.admin.utils import (
+    get_fields_from_path, reverse_field_path
+)
 from django.db import models
 from django.db.models.signals import m2m_changed, post_save, pre_delete
 from django.utils.encoding import force_text
@@ -14,7 +16,7 @@ from django.utils.translation import ugettext as _
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.exceptions import ResolverPipelineError
 from mayan.apps.common.utils import (
-    ResolverPipelineModelAttribute, get_class_full_name, get_related_field
+    ResolverPipelineModelAttribute, get_class_full_name
 )
 from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
@@ -245,9 +247,7 @@ class SearchField:
         return self.search_model.model
 
     def get_model_field(self):
-        return get_related_field(
-            model=self.get_model(), related_field_name=self.field
-        )
+        return get_fields_from_path(model=self.get_model(), path=self.field)[-1]
 
     def uses_many_to_many_field(self):
         try:
@@ -269,7 +269,6 @@ class SearchField:
 
 class SearchModel(AppsModuleLoaderMixin):
     _loader_module_name = 'search'
-    _model_search_relationships = {}
     _registry = {}
 
     @staticmethod
@@ -294,25 +293,32 @@ class SearchModel(AppsModuleLoaderMixin):
     def initialize():
         # Hide a circular import.
         from .handlers import (
+            handler_index_instance,
+            handler_index_instance_m2m,
             handler_factory_deindex_instance,
-            handler_factory_index_instance_m2m,
-            handler_factory_index_related_instance_save,
-            handler_index_instance
+            handler_factory_index_related_instance_delete,
+            handler_factory_index_related_instance_m2m,
+            handler_factory_index_related_instance_save
         )
 
         for search_model in SearchModel.all():
-            unique_value = get_class_full_name(search_model.model)
-
-            if search_model.uses_many_to_many_fields():
-                m2m_changed.connect(
-                    dispatch_uid='search_handler_index_instance_m2m_{}'.format(
-                        unique_value
-                    ),
-                    receiver=handler_factory_index_instance_m2m(
-                        model=search_model.model
-                    ),
-                    weak=False
+            for field in search_model.search_fields:
+                fields = get_fields_from_path(
+                    model=search_model.model, path=field.field
                 )
+                field = fields[0]
+
+                try:
+                    through = field.remote_field.through
+                except AttributeError:
+                    pass
+                else:
+                    m2m_changed.connect(
+                        dispatch_uid='search_handler_index_instance_m2m',
+                        receiver=handler_index_instance_m2m,
+                        sender=through,
+                        weak=False
+                    )
 
             post_save.connect(
                 dispatch_uid='search_handler_index_instance',
@@ -320,46 +326,63 @@ class SearchModel(AppsModuleLoaderMixin):
             )
             pre_delete.connect(
                 dispatch_uid='search_handler_deindex_instance_{}'.format(
-                    unique_value
+                    get_class_full_name(klass=search_model.model)
                 ),
                 receiver=handler_factory_deindex_instance(
                     search_model=search_model
                 ),
                 sender=search_model.model, weak=False
             )
-            for proxy in search_model.proxies:
-                if search_model.uses_many_to_many_fields():
-                    m2m_changed.connect(
-                        dispatch_uid='search_handler_index_instance_m2m_{}'.format(unique_value),
-                        receiver=handler_factory_index_instance_m2m(
-                            model=proxy
-                        ),
-                        weak=False
-                    )
-
-                post_save.connect(
-                    dispatch_uid='search_handler_index_instance',
-                    receiver=handler_index_instance, sender=proxy
-                )
-                pre_delete.connect(
-                    dispatch_uid='search_handler_deindex_instance_{}'.format(
-                        unique_value
-                    ),
-                    receiver=handler_factory_deindex_instance(
-                        search_model=search_model
-                    ),
-                    sender=proxy, weak=False
-                )
 
             for related_model, path in search_model.get_related_models():
                 post_save.connect(
-                    dispatch_uid='search_handler_index_related_instance_{}'.format(unique_value),
+                    dispatch_uid='search_handler_index_related_instance_{}_{}'.format(
+                        get_class_full_name(klass=search_model.model),
+                        get_class_full_name(klass=related_model)
+                    ),
                     receiver=handler_factory_index_related_instance_save(
                         reverse_field_path=path
                     ), sender=related_model, weak=False
                 )
+                pre_delete.connect(
+                    dispatch_uid='search_handler_index_related_instance_delete_{}_{}'.format(
+                        get_class_full_name(klass=search_model.model),
+                        get_class_full_name(klass=related_model)
+                    ),
+                    receiver=handler_factory_index_related_instance_delete(
+                        reverse_field_path=path
+                    ), sender=related_model, weak=False
+                )
 
-            search_model._initialize()
+                many_to_many_field = get_fields_from_path(
+                    model=related_model, path=path
+                )[0]
+                try:
+                    through = many_to_many_field.through
+                except AttributeError:
+                    """Non fatal."""
+                else:
+                    # Since we are using the through model, remove the first
+                    # entry of the path as it references the through model
+                    # itself.
+                    path_parts = path.split('__')
+
+                    new_path = '__'.join(path_parts[1:])
+
+                    if not new_path:
+                        new_path = path
+
+                    m2m_changed.connect(
+                        dispatch_uid='search_handler_index_related_instance_m2m_{}_{}'.format(
+                            get_class_full_name(klass=search_model.model),
+                            get_class_full_name(klass=related_model)
+                        ),
+                        receiver=handler_factory_index_related_instance_m2m(
+                            reverse_field_path=new_path
+                        ),
+                        sender=through,
+                        weak=False
+                    )
 
     @classmethod
     def all(cls):
@@ -379,7 +402,8 @@ class SearchModel(AppsModuleLoaderMixin):
         except KeyError:
             raise KeyError(_('Unknown search model `%s`.') % name)
         else:
-            if not hasattr(result, 'serializer'):
+            #if not hasattr(result, 'serializer'):
+            if getattr(result, 'serializer_path', None):
                 result.serializer = import_string(
                     dotted_path=result.serializer_path
                 )
@@ -398,9 +422,9 @@ class SearchModel(AppsModuleLoaderMixin):
         return cls.get(name=instance._meta.label)
 
     def __init__(
-        self, app_label, model_name, serializer_path, default=False,
-        label=None, list_mode=None, manager_name=None, permission=None,
-        queryset=None
+        self, app_label, model_name, default=False, label=None,
+        list_mode=None, manager_name=None, permission=None,
+        queryset=None, serializer_path=None
     ):
         self.default = default
         self._label = label
@@ -428,36 +452,6 @@ class SearchModel(AppsModuleLoaderMixin):
 
     def __str__(self):
         return force_text(s=self.label)
-
-    def _initialize(self):
-        for search_field in self.search_fields:
-            related_model = get_related_field(
-                model=self.model, related_field_name=search_field.field
-            ).model
-
-            if related_model != self.model:
-                self.__class__._model_search_relationships.setdefault(
-                    self.model, set()
-                )
-                self.__class__._model_search_relationships[self.model].add(
-                    related_model
-                )
-                for proxy in self.proxies:
-                    self.__class__._model_search_relationships[self.model].add(
-                        proxy
-                    )
-
-                self.__class__._model_search_relationships.setdefault(
-                    related_model, set()
-                )
-                self.__class__._model_search_relationships[related_model].add(
-                    self.model
-                )
-
-                for proxy in self.proxies:
-                    self.__class__._model_search_relationships[related_model].add(
-                        proxy
-                    )
 
     def add_model_field(self, *args, **kwargs):
         """
