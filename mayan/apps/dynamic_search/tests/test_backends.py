@@ -91,6 +91,17 @@ class SearchTestCase(SearchTestMixin, BaseTestCase):
             field='attributes__label'
         )
 
+        self._test_search_attribute = SearchModel(
+            app_label=self.TestModelAttribute._meta.app_label,
+            model_name='TestModelAttribute',
+        )
+        self._test_search_grandchild.add_model_field(
+            field='label'
+        )
+        self._test_search_attribute.add_model_field(
+            field='children__label'
+        )
+
         SearchModel.initialize()
 
         # Model instances.
@@ -216,6 +227,16 @@ class SearchTestCase(SearchTestMixin, BaseTestCase):
         )
 
         self.assertTrue(self._test_object_grandchild not in queryset)
+
+    def test_object_reverse_many_to_many_search(self):
+        queryset = self.search_backend.search(
+            search_model=self._test_search_attribute,
+            query={
+                'children__label': self._test_object_grandchild.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_attribute in queryset)
 
     # Related object
 
