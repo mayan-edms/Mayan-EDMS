@@ -78,6 +78,15 @@ class ResolverRelatedManagerTestCase(BaseTestCase):
         self.assertEqual(result[0].count(), 1)
         self.assertEqual(result[0][0], self._test_object_grandparent)
 
+    def test_single_level_reverse_many_to_many(self):
+        result = ResolverPipelineModelAttribute.resolve(
+            attribute='children',
+            obj=self._test_object_attribute,
+        )
+
+        self.assertEqual(result.count(), 1)
+        self.assertEqual(result[0], self._test_object_grandchild)
+
     def test_multiple_level_reverse_relation_from_many_to_many_field(self):
         result = ResolverPipelineModelAttribute.resolve(
             attribute='children__parent__parent',
@@ -91,7 +100,8 @@ class ResolverRelatedManagerTestCase(BaseTestCase):
 
     def test_multiple_level_relation(self):
         result = ResolverPipelineModelAttribute.resolve(
-            attribute='children__children', obj=self._test_object_grandparent,
+            attribute='children__children',
+            obj=self._test_object_grandparent,
         )
 
         self.assertEqual(len(result), 1)

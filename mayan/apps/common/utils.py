@@ -4,7 +4,6 @@ import logging
 import types
 
 from django.conf import settings
-from django.contrib.admin.utils import get_fields_from_path
 from django.core.exceptions import FieldDoesNotExist
 from django.db.models.constants import LOOKUP_SEP
 
@@ -116,21 +115,24 @@ class ResolverRelatedManager(Resolver):
     exceptions = (AttributeError, FieldDoesNotExist)
 
     def _resolve(self):
-        fields = get_fields_from_path(model=self.obj, path=self.attribute)
-        if not fields:
-            return
-        else:
-            field = fields[0]
-            try:
-                through = field.through
-            except AttributeError:
-                return field.related_model._meta.default_manager.filter(
-                    **{field.remote_field.name: self.obj.pk}
-                )
-            else:
-                return field.remote_field.model._meta.default_manager.filter(
-                    **{field.remote_field.name: self.obj.pk}
-                )
+        field = self.obj._meta.get_field(field_name=self.attribute)
+
+        if field.many_to_one:
+            # Many to one.
+            return field.related_model._meta.default_manager.filter(
+                **{field.remote_field.name: self.obj.pk}
+            )
+        elif field.many_to_many:
+            # Many to many from the parent side.
+            if hasattr(field, 'get_filter_kwargs_for_object'):
+                return field.get_filter_kwargs_for_object(obj=self.obj)[self.attribute].all()
+
+        # Many to many from the child side.
+        # One to many.
+        # One to one.
+        return field.remote_field.model._meta.default_manager.filter(
+            **{field.remote_field.name: self.obj.pk}
+        )
 
 
 class ResolverPipelineModelAttribute(ResolverPipelineObjectAttribute):
