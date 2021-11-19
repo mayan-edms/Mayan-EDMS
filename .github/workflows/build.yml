@@ -16,14 +16,10 @@ jobs:
       run: make docker-build
     - name: Run tests
       run: make docker-runtest-all
-    - name: Cache
-      uses: actions/cache@v2.1.6
+    - name: Mypy Check
+    # You may pin to the exact commit or the version.
+    # uses: jpetrucciani/mypy-check@e4de43b8ca2e83e7cc9caac4ecddcd2b8f947b7e
+      uses: jpetrucciani/mypy-check@0.910
       with:
-        # A list of files, directories, and wildcard patterns to cache and restore
-        path: 
-        # An explicit key for restoring and saving the cache
-        key: 
-        # An ordered list of keys to use for restoring the cache if no cache hit occurred for key
-        restore-keys: # optional
-        # The chunk size used to split up large files during upload, in bytes
-        upload-chunk-size: # optional
+        # File or directory to run mypy on
+        path: '.'
