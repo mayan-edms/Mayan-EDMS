@@ -16,11 +16,12 @@ logger = logging.getLogger(name=__name__)
 class Resolver:
     exceptions = ()
 
-    def __init__(self, attribute, obj, kwargs, klass):
+    def __init__(self, attribute, obj, kwargs, klass, resolver_extra_kwargs):
         self.attribute = attribute
         self.obj = obj
         self.kwargs = kwargs
         self.klass = klass
+        self.resolver_extra_kwargs = resolver_extra_kwargs
 
     def resolve(self):
         try:
@@ -68,7 +69,8 @@ class ResolverList(Resolver):
         for item in self.obj:
             result.append(
                 self.klass.resolve(
-                    attribute=self.attribute, obj=item, kwargs=self.kwargs
+                    attribute=self.attribute, obj=item, kwargs=self.kwargs,
+                    resolver_extra_kwargs=self.resolver_extra_kwargs
                 )
             )
 
@@ -82,9 +84,9 @@ class ResolverPipelineObjectAttribute:
     )
 
     @classmethod
-    def resolve(cls, attribute, obj, kwargs=None):
-        if not kwargs:
-            kwargs = {}
+    def resolve(cls, attribute, obj, resolver_extra_kwargs=None, kwargs=None):
+        kwargs = kwargs or {}
+        resolver_extra_kwargs = resolver_extra_kwargs or {}
 
         if '.' in attribute:
             attribute_list = attribute.split('.')
@@ -96,7 +98,8 @@ class ResolverPipelineObjectAttribute:
             for resolver in cls.resolver_list:
                 try:
                     result = resolver(
-                        attribute=attribute, obj=result, kwargs=kwargs, klass=cls
+                        attribute=attribute, obj=result, kwargs=kwargs,
+                        klass=cls, resolver_extra_kwargs=resolver_extra_kwargs
                     ).resolve()
                 except ResolverError:
                     """Expected, try the next resolver in the list."""
@@ -115,24 +118,44 @@ class ResolverRelatedManager(Resolver):
     exceptions = (AttributeError, FieldDoesNotExist)
 
     def _resolve(self):
+        model = self.resolver_extra_kwargs.get('model', {})
+        exclude = self.resolver_extra_kwargs.get('exclude', {})
+
         field = self.obj._meta.get_field(field_name=self.attribute)
 
         if field.many_to_one:
             # Many to one.
-            return field.related_model._meta.default_manager.filter(
+            queryset = field.related_model._meta.default_manager.filter(
                 **{field.remote_field.name: self.obj.pk}
             )
+
+            if field.related_model == model:
+                queryset = queryset.exclude(**exclude)
+
+            return queryset
         elif field.many_to_many:
             # Many to many from the parent side.
             if hasattr(field, 'get_filter_kwargs_for_object'):
-                return field.get_filter_kwargs_for_object(obj=self.obj)[self.attribute].all()
+                queryset = getattr(self.obj, field.attname)
+
+                if queryset.model == model:
+                    queryset = queryset.exclude(**exclude)
+                else:
+                    queryset = queryset.all()
+
+                return queryset
 
         # Many to many from the child side.
         # One to many.
         # One to one.
-        return field.remote_field.model._meta.default_manager.filter(
+        queryset = field.remote_field.model._meta.default_manager.filter(
             **{field.remote_field.name: self.obj.pk}
         )
+
+        if field.related_model == model:
+            queryset = queryset.exclude(**exclude)
+
+        return queryset
 
 
 class ResolverPipelineModelAttribute(ResolverPipelineObjectAttribute):
@@ -142,9 +165,12 @@ class ResolverPipelineModelAttribute(ResolverPipelineObjectAttribute):
     )
 
     @classmethod
-    def resolve(cls, attribute, obj, kwargs=None):
+    def resolve(cls, attribute, obj, resolver_extra_kwargs=None, kwargs=None):
         attribute = attribute.replace(LOOKUP_SEP, '.')
-        return super().resolve(attribute=attribute, obj=obj, kwargs=kwargs)
+        return super().resolve(
+            attribute=attribute, obj=obj, kwargs=kwargs,
+            resolver_extra_kwargs=resolver_extra_kwargs
+        )
 
 
 def any_to_bool(value):
