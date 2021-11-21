@@ -287,7 +287,7 @@ class SearchModel(AppsModuleLoaderMixin):
 
         for search_model in SearchModel.all():
             for related_model, related_path in search_model.get_related_models():
-                # Check is each related model is connected to a many to many
+                # Check is each related model is connected to a many to many.
                 for field in related_model._meta.get_fields():
                     if field.many_to_many:
                         try:
