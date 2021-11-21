@@ -125,6 +125,8 @@ class WhooshSearchBackend(SearchBackend):
         schema = self.get_search_model_schema(search_model=search_model)
 
         try:
+            # Explictly specify the schema. Allows using existing index
+            # when the schema changes.
             index = storage.open_index(
                 indexname=search_model.get_full_name(), schema=schema
             )
@@ -170,7 +172,7 @@ class WhooshSearchBackend(SearchBackend):
     def get_storage(self):
         return FileStorage(path=self.index_path)
 
-    def index_instance(self, instance):
+    def index_instance(self, instance, exclude_model=None, exclude_kwargs=None):
         try:
             lock = LockingBackend.get_backend().acquire_lock(
                 name=TEXT_LOCK_INSTANCE_INDEX
@@ -179,56 +181,35 @@ class WhooshSearchBackend(SearchBackend):
             raise
         else:
             try:
-                # Use a private method to allow using a single lock for
-                # all recursions.
-                self._index_instance(instance=instance)
+                search_model = SearchModel.get_for_model(instance=instance)
+                index = self.get_or_create_index(search_model=search_model)
+
+                writer = index.writer(**self.writer_kwargs)
+
+                kwargs = search_model.populate(
+                    field_map=self.get_resolved_field_map(
+                        search_model=search_model
+                    ), instance=instance, exclude_model=exclude_model,
+                    exclude_kwargs=exclude_kwargs
+                )
+
+                writer.delete_by_term('id', str(instance.pk))
+
+                try:
+                    writer.add_document(**kwargs)
+                    writer.commit()
+                except Exception as exception:
+                    logger.error(
+                        'Unexpected exception while indexing object id: %s, '
+                        'search model: %s, index data: %s, raw data: %s, '
+                        'field map: %s; %s', search_model.get_full_name(),
+                        instance.pk, kwargs, instance.__dict__,
+                        self.get_resolved_field_map(search_model=search_model),
+                        exception, exc_info=True
+                    )
+                    raise
             finally:
                 lock.release()
-
-    def _index_instance(self, instance, exclude_set=None):
-        exclude_set = exclude_set or set()
-
-        # Avoid infinite recursion.
-        if instance in exclude_set:
-            return
-
-        exclude_set.add(instance)
-
-        try:
-            search_model = SearchModel.get_for_model(instance=instance)
-        except KeyError:
-            """
-            A KeyError is not fatal. It means search is not configured
-            for this instance but we still need to check if one of its
-            field's related models are configure for search and need
-            to be updated.
-            """
-        else:
-            index = self.get_or_create_index(search_model=search_model)
-
-            writer = index.writer(**self.writer_kwargs)
-
-            kwargs = search_model.populate(
-                field_map=self.get_resolved_field_map(
-                    search_model=search_model
-                ), instance=instance
-            )
-
-            writer.delete_by_term('id', str(instance.pk))
-
-            try:
-                writer.add_document(**kwargs)
-                writer.commit()
-            except Exception as exception:
-                logger.error(
-                    'Unexpected exception while indexing object id: %s, '
-                    'search model: %s, index data: %s, raw data: %s, '
-                    'field map: %s; %s', search_model.get_full_name(),
-                    instance.pk, kwargs, instance.__dict__,
-                    self.get_resolved_field_map(search_model=search_model),
-                    exception, exc_info=True
-                )
-                raise
 
     def index_search_model(self, search_model):
         schema = self.get_search_model_schema(search_model=search_model)

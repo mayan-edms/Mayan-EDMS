@@ -30,29 +30,20 @@ class TestSearchBackend(default_search_backend):
 
         if self._test_view:
             if issubclass(default_search_backend, WhooshSearchBackend):
-                self._temporary_directory = TemporaryDirectory()
-                kwargs['index_path'] = self._temporary_directory.name
+                if not hasattr(self.__class__, '_temporary_directory'):
+                    self.__class__._temporary_directory = TemporaryDirectory()
+
+                kwargs['index_path'] = self.__class__._temporary_directory.name
 
         super().__init__(*args, **kwargs)
 
-    def deindex_instance(self, instance):
+    def deindex_instance(self, *args, **kwargs):
         if self._test_view:
-            super().deindex_instance(instance=instance)
+            super().deindex_instance(*args, **kwargs)
 
-    def index_instance(self, instance):
+    def index_instance(self, *args, **kwargs):
         if self._test_view:
-            super().index_instance(instance=instance)
+            super().index_instance(*args, **kwargs)
 
     def search(self, *args, **kwargs):
-        if self._test_view:
-            # if running as part of a search test. Index the test object
-            # before executing the search method.
-            if self._test_view._test_search_index_object_name:
-                self.index_instance(
-                    instance=getattr(
-                        self._test_view,
-                        self._test_view._test_search_index_object_name
-                    )
-                )
-
         return super().search(*args, **kwargs)

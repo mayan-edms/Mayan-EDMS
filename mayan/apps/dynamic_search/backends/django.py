@@ -26,10 +26,10 @@ class DjangoSearchBackend(SearchBackend):
             search_query.django_query
         ).distinct()
 
-    def deindex_instance(self, instance):
+    def deindex_instance(self, *args, **kwargs):
         """This backend doesn't remove instances."""
 
-    def index_instance(self, instance):
+    def index_instance(self, *args, **kwargs):
         """
         This backend doesn't index instances. Searches query the
         database directly.

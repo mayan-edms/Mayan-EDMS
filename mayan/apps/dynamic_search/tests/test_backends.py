@@ -44,7 +44,6 @@ class SearchTestCase(SearchTestMixin, BaseTestCase):
                 )
             }, model_name='TestModelParent'
         )
-
         self.TestModelGrandChild = self._create_test_model(
             fields={
                 'parent': models.ForeignKey(
@@ -58,6 +57,13 @@ class SearchTestCase(SearchTestMixin, BaseTestCase):
                     max_length=32
                 )
             }, model_name='TestModelGrandChild'
+        )
+        self.TestModelGrandChildProxy = self._create_test_model(
+            base_class=self.TestModelGrandChild,
+            model_name='TestModelGrandChildProxy',
+            options={
+                'proxy': True
+            }
         )
 
         # Search setup.
@@ -90,6 +96,10 @@ class SearchTestCase(SearchTestMixin, BaseTestCase):
         self._test_search_grandchild.add_model_field(
             field='attributes__label'
         )
+        self._test_search_grandchild.add_proxy_model(
+            app_label=self.TestModelAttribute._meta.app_label,
+            model_name='TestModelGrandChildProxy'
+        )
 
         self._test_search_attribute = SearchModel(
             app_label=self.TestModelAttribute._meta.app_label,
@@ -117,6 +127,8 @@ class SearchTestCase(SearchTestMixin, BaseTestCase):
             parent=self._test_object_parent,
             label='grandchild'
         )
+        self._test_object_grandchild_proxy = self.TestModelGrandChildProxy.objects.first()
+
         self._test_object_attribute = self.TestModelAttribute.objects.create(
             label='attribute'
         )
@@ -237,6 +249,18 @@ class SearchTestCase(SearchTestMixin, BaseTestCase):
         )
 
         self.assertTrue(self._test_object_attribute in queryset)
+
+    def test_object_reverse_many_to_many_parent_delete_search(self):
+        self._test_object_grandchild.delete()
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_attribute,
+            query={
+                'children__label': self._test_object_grandchild.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_attribute not in queryset)
 
     # Related object
 
@@ -388,6 +412,57 @@ class SearchTestCase(SearchTestMixin, BaseTestCase):
         )
 
         self.assertTrue(self._test_object_grandparent not in queryset)
+
+    # Proxies
+
+    def test_proxy_object_field_update_search(self):
+        old_label = self._test_object_grandchild_proxy.label
+        self._test_object_grandchild_proxy.label += 'edited'
+        self._test_object_grandchild_proxy.save()
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandchild,
+            query={
+                'label': self._test_object_grandchild_proxy.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandchild in queryset)
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandchild,
+            query={
+                'label': '"{}"'.format(old_label)
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandchild not in queryset)
+
+    def test_proxy_object_delete_search(self):
+        self._test_object_grandchild_proxy.delete()
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandchild,
+            query={
+                'label': self._test_object_grandchild.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandchild not in queryset)
+
+    def test_proxy_object_many_to_many_remove_search(self):
+        self._test_object_grandchild_proxy.attributes.remove(
+            self._test_object_attribute
+        )
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandchild,
+            query={
+                'attributes__label': self._test_object_attribute.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandchild not in queryset)
 
 
 class CommonBackendFunctionalityTestCaseMixin(SearchTestMixin, TagTestMixin):
