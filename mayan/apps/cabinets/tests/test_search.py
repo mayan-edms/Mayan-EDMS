@@ -12,7 +12,7 @@ from .mixins import CabinetTestMixin
 class CabinetSearchTestCase(
     CabinetTestMixin, SearchTestMixin, GenericDocumentViewTestCase
 ):
-    _test_search_index_object_name = 'test_document'
+    _test_search_index_object_name = 'test_cabinet'
     _test_search_model = cabinet_search
     auto_create_test_cabinet = True
     test_cabinet_add_test_document = True
