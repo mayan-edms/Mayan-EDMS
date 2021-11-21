@@ -108,7 +108,9 @@ class DocumentPropertiesForm(DetailForm):
             {'label': _('UUID'), 'field': 'uuid'},
             {
                 'label': _('Language'),
-                'field': lambda x: get_language(language_code=document.language)
+                'func': lambda x: get_language(
+                    language_code=document.language
+                )
             },
         ]
 
