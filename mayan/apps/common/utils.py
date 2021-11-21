@@ -1,3 +1,4 @@
+from collections import Iterable
 from distutils import util
 from functools import reduce
 import logging
@@ -183,6 +184,20 @@ def any_to_bool(value):
 
 def check_for_sqlite():
     return settings.DATABASES['default']['ENGINE'] == DJANGO_SQLITE_BACKEND and settings.DEBUG is False
+
+
+def flatten_list(value):
+    if isinstance(value, (str, bytes)):
+        yield value
+    else:
+        for item in value:
+            if isinstance(item, Iterable) and not isinstance(item, (str, bytes)):
+                yield from flatten_list(value=item)
+            else:
+                if item is not None:
+                    yield item
+                else:
+                    yield ''
 
 
 def get_class_full_name(klass):

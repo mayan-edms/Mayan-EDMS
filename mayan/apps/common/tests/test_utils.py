@@ -134,4 +134,6 @@ class ResolverRelatedManagerTestCase(BaseTestCase):
             }
         )
 
-        self.assertEqual(len(result), 0)
+        self.assertEqual(len(result), 1)
+        self.assertEqual(len(result[0]), 1)
+        self.assertEqual(result[0][0].count(), 0)
