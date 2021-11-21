@@ -498,11 +498,27 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
         # permissions, this avoids their Content Type from being looked up
         # in subsequent tests where they don't exists due to the database
         # transaction rollback.
+
+        # Clear previous model registration before re-registering it again to
+        # avoid conflict with test models with the same name, in the same app
+        # but from another test module.
+
         for model in self._test_models:
+            model.objects.all().delete()
+
             content_type = ContentType.objects.get_for_model(model=model)
             if content_type.pk:
                 content_type.delete()
+
             ModelPermission.deregister(model=model)
+
+        model_names = list(apps.app_configs[self.app_config.label].models)
+        for model_name in model_names:
+            apps.app_configs[self.app_config.label].models.pop(model_name)
+
+        ContentType.objects.clear_cache()
+
+        apps.clear_cache()
 
         super().tearDown()
 
@@ -535,13 +551,6 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
 
         if fields:
             attrs.update(fields)
-
-        # Clear previous model registration before re-registering it again to
-        # avoid conflict with test models with the same name, in the same app
-        # but from another test module.
-        apps.all_models[self.app_config.label].pop(
-            self._test_model_name.lower(), None
-        )
 
         model = type(
             self._test_model_name, (base_class,), attrs
