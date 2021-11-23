@@ -96,6 +96,14 @@ class DocumentVersionPageOCRAPIViewTestMixin:
 
 
 class DocumentVersionOCRTestMixin:
+    auto_create_test_document_version_ocr_content = False
+
+    def setUp(self):
+        super().setUp()
+
+        if self.auto_create_test_document_version_ocr_content:
+            self._create_test_document_version_ocr_content()
+
     def _create_test_document_version_ocr_content(self):
         DocumentVersionPageOCRContent.objects.create(
             document_version_page=self.test_document_version.pages.first(),

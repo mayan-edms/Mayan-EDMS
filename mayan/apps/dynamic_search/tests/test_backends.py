@@ -1,140 +1,480 @@
+from django.db import models
 from django.test import override_settings
-from django.utils.encoding import force_text
 
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
-from mayan.apps.tags.tests.mixins import TagTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
+
+from ..classes import SearchModel
 
 from .mixins import SearchTestMixin
 
 
-class CommonBackendFunctionalityTestCaseMixin(TagTestMixin):
-    def test_advanced_search_related(self):
-        self._upload_test_document()
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+class CommonBackendFunctionalityTestCaseMixin(SearchTestMixin, BaseTestCase):
+    def _create_test_instances(self):
+        self._test_object_grandparent = self.TestModelGrandParent.objects.create(
+            label='grandparent'
+        )
+        self._test_object_parent = self.TestModelParent.objects.create(
+            parent=self._test_object_grandparent,
+            label='parent'
+        )
+        self._test_object_grandchild = self.TestModelGrandChild.objects.create(
+            parent=self._test_object_parent,
+            label='grandchild'
+        )
+        self._test_object_grandchild_proxy = self.TestModelGrandChildProxy.objects.first()
+
+        self._test_object_attribute = self.TestModelAttribute.objects.create(
+            label='attribute'
+        )
+        self._test_object_grandchild.attributes.add(self._test_object_attribute)
+
+    def _create_test_models(self):
+        self.TestModelAttribute = self._create_test_model(
+            fields={
+                'label': models.CharField(
+                    max_length=32
+                )
+            }, model_name='TestModelAttribute'
+        )
+        self.TestModelGrandParent = self._create_test_model(
+            fields={
+                'label': models.CharField(
+                    max_length=32
+                )
+            }, model_name='TestModelGrandParent'
+        )
+        self.TestModelParent = self._create_test_model(
+            fields={
+                'parent': models.ForeignKey(
+                    on_delete=models.CASCADE, related_name='children',
+                    to='TestModelGrandParent',
+                ),
+                'label': models.CharField(
+                    max_length=32
+                )
+            }, model_name='TestModelParent'
+        )
+        self.TestModelGrandChild = self._create_test_model(
+            fields={
+                'parent': models.ForeignKey(
+                    on_delete=models.CASCADE, related_name='children',
+                    to='TestModelParent',
+                ),
+                'attributes': models.ManyToManyField(
+                    related_name='children', to='TestModelAttribute',
+                ),
+                'label': models.CharField(
+                    max_length=32
+                )
+            }, model_name='TestModelGrandChild'
+        )
+        self.TestModelGrandChildProxy = self._create_test_model(
+            base_class=self.TestModelGrandChild,
+            model_name='TestModelGrandChildProxy',
+            options={
+                'proxy': True
+            }
         )
 
+    def _setup_test_model_search(self):
+        self._create_test_models()
+
+        self._test_search_grandparent = SearchModel(
+            app_label=self.TestModelGrandParent._meta.app_label,
+            model_name='TestModelGrandParent',
+        )
+
+        self._test_search_grandparent.add_model_field(
+            field='label'
+        )
+        self._test_search_grandparent.add_model_field(
+            field='children__label'
+        )
+        self._test_search_grandparent.add_model_field(
+            field='children__children__label'
+        )
+        self._test_search_grandparent.add_model_field(
+            field='children__children__attributes__label'
+        )
+
+        self._test_search_grandchild = SearchModel(
+            app_label=self.TestModelGrandChild._meta.app_label,
+            model_name='TestModelGrandChild',
+        )
+        self._test_search_grandchild.add_model_field(
+            field='label'
+        )
+        self._test_search_grandchild.add_model_field(
+            field='attributes__label'
+        )
+        self._test_search_grandchild.add_proxy_model(
+            app_label=self.TestModelAttribute._meta.app_label,
+            model_name='TestModelGrandChildProxy'
+        )
+
+        self._test_search_attribute = SearchModel(
+            app_label=self.TestModelAttribute._meta.app_label,
+            model_name='TestModelAttribute',
+        )
+        self._test_search_grandchild.add_model_field(
+            field='label'
+        )
+        self._test_search_attribute.add_model_field(
+            field='children__label'
+        )
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_instances()
+
+    # Direct object.
+
+    def test_object_field_search(self):
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=self._test_search_grandparent,
             query={
-                'files__mimetype': self.test_document.file_latest.mimetype
+                'label': self._test_object_grandparent.label
             }, user=self._test_case_user
         )
 
-        self.assertEqual(queryset.count(), 1)
-        self.assertTrue(self.test_document in queryset)
+        self.assertTrue(self._test_object_grandparent in queryset)
 
-    def test_related_many_to_many_field_with_multiple_values(self):
-        self._create_test_document_stub()
-
-        self._create_test_tag()
-        self._create_test_tag()
-
-        self.test_tags[0].documents.add(self.test_document)
-        self.test_tags[1].documents.add(self.test_document)
-
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_view
-        )
-
-        query = {
-            'tags__label': self.test_tags[0].label
-        }
-        queryset = self.search_backend.search(
-            search_model=document_search, query=query,
-            user=self._test_case_user
-        )
-        self.assertEqual(queryset.count(), 1)
-        self.assertTrue(self.test_document in queryset)
-
-        query = {
-            'tags__label': self.test_tags[1].label
-        }
-        queryset = self.search_backend.search(
-            search_model=document_search, query=query,
-            user=self._test_case_user
-        )
-        self.assertEqual(queryset.count(), 1)
-        self.assertTrue(self.test_document in queryset)
-
-    def test_related_many_to_many_field_after_remove_values(self):
-        self._create_test_document_stub()
-
-        self._create_test_tag()
-        self._create_test_tag()
-
-        self.test_tags[0].documents.add(self.test_document)
-        self.test_tags[1].documents.add(self.test_document)
-
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_view
-        )
-
-        query = {
-            'tags__label': self.test_tags[0].label
-        }
-        queryset = self.search_backend.search(
-            search_model=document_search, query=query,
-            user=self._test_case_user
-        )
-        self.assertEqual(queryset.count(), 1)
-        self.assertTrue(self.test_document in queryset)
-
-        query = {
-            'tags__label': self.test_tags[1].label
-        }
-        queryset = self.search_backend.search(
-            search_model=document_search, query=query,
-            user=self._test_case_user
-        )
-        self.assertEqual(queryset.count(), 1)
-        self.assertTrue(self.test_document in queryset)
-
-        self.test_tags[1].documents.remove(self.test_document)
-
-        query = {
-            'tags__label': self.test_tags[1].label
-        }
-        queryset = self.search_backend.search(
-            search_model=document_search, query=query,
-            user=self._test_case_user
-        )
-        self.assertEqual(queryset.count(), 0)
-        self.assertTrue(self.test_document not in queryset)
-
-    def test_search_field_transformation_functions(self):
-        self._upload_test_document()
-
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_view
-        )
+    def test_object_field_update_search(self):
+        old_label = self._test_object_grandparent.label
+        self._test_object_grandparent.label = 'edited'
+        self._test_object_grandparent.save()
 
         queryset = self.search_backend.search(
-            search_model=document_search,
-            query={'uuid': force_text(s=self.test_document.uuid)},
-            user=self._test_case_user
+            search_model=self._test_search_grandparent,
+            query={
+                'label': self._test_object_grandparent.label
+            }, user=self._test_case_user
         )
-        self.assertEqual(queryset.count(), 1)
+
+        self.assertTrue(self._test_object_grandparent in queryset)
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandparent,
+            query={
+                'label': '"{}"'.format(old_label)
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandparent not in queryset)
+
+    def test_object_field_delete_search(self):
+        self._test_object_grandparent.delete()
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandparent,
+            query={
+                'label': self._test_object_grandparent.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandparent not in queryset)
+
+    # Direct object many to many.
+
+    def test_object_many_to_many_search(self):
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandchild,
+            query={
+                'attributes__label': self._test_object_attribute.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandchild in queryset)
+
+    def test_object_many_to_many_delete_search(self):
+        self._test_object_attribute.delete()
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandchild,
+            query={
+                'attributes__label': self._test_object_attribute.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandchild not in queryset)
+
+    def test_object_many_to_many_updated_search(self):
+        old_label_value = self._test_object_attribute.label
+        self._test_object_attribute.label = 'edited'
+        self._test_object_attribute.save()
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandchild,
+            query={
+                'attributes__label': self._test_object_attribute.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandchild in queryset)
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandchild,
+            query={
+                'attributes__label': old_label_value
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandchild not in queryset)
+
+    def test_object_many_to_many_remove_search(self):
+        self._test_object_grandchild.attributes.remove(self._test_object_attribute)
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandchild,
+            query={
+                'attributes__label': self._test_object_attribute.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandchild not in queryset)
+
+    def test_object_reverse_many_to_many_search(self):
+        queryset = self.search_backend.search(
+            search_model=self._test_search_attribute,
+            query={
+                'children__label': self._test_object_grandchild.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_attribute in queryset)
+
+    def test_object_reverse_many_to_many_parent_delete_search(self):
+        self._test_object_grandchild.delete()
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_attribute,
+            query={
+                'children__label': self._test_object_grandchild.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_attribute not in queryset)
+
+    # Related object
+
+    def test_object_related_search(self):
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandparent,
+            query={
+                'children__label': self._test_object_parent.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandparent in queryset)
+
+    def test_object_related_delete_search(self):
+        self._test_object_parent.delete()
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandparent,
+            query={
+                'children__label': self._test_object_parent.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandparent not in queryset)
+
+    def test_object_related_update_search(self):
+        old_label_value = self._test_object_parent.label
+        self._test_object_parent.label = 'edited'
+        self._test_object_parent.save()
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandparent,
+            query={
+                'children__label': self._test_object_parent.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandparent in queryset)
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandparent,
+            query={
+                'children__label': old_label_value
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandparent not in queryset)
+
+    def test_object_related_multiple_level_search(self):
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandparent,
+            query={
+                'children__children__label': self._test_object_grandchild.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandparent in queryset)
+
+    def test_object_related_multiple_level_delete_search(self):
+        self._test_object_grandchild.delete()
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandparent,
+            query={
+                'children__children__label': self._test_object_grandchild.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandparent not in queryset)
+
+    def test_object_related_multiple_level_update_search(self):
+        old_label_value = self._test_object_grandchild.label
+        self._test_object_grandchild.label = 'edited'
+        self._test_object_grandchild.save()
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandparent,
+            query={
+                'children__children__label': self._test_object_grandchild.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandparent in queryset)
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandparent,
+            query={
+                'children__children__label': old_label_value
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandparent not in queryset)
+
+    # Related with many to many
+
+    def test_object_related_multiple_level_many_to_many_search(self):
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandparent,
+            query={
+                'children__children__attributes__label': self._test_object_attribute.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandparent in queryset)
+
+    def test_object_related_multiple_level_many_to_many_delete_search(self):
+        self._test_object_attribute.delete()
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandparent,
+            query={
+                'children__children__attributes__label': self._test_object_attribute.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandparent not in queryset)
+
+    def test_object_related_multiple_level_many_to_many_updated_search(self):
+        old_label_value = self._test_object_attribute.label
+        self._test_object_attribute.label = 'edited'
+        self._test_object_attribute.save()
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandparent,
+            query={
+                'children__children__attributes__label': self._test_object_attribute.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandparent in queryset)
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandparent,
+            query={
+                'children__children__attributes__label': old_label_value
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandparent not in queryset)
+
+    def test_object_related_multiple_level_many_to_many_remove_search(self):
+        self._test_object_grandchild.attributes.remove(self._test_object_attribute)
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandparent,
+            query={
+                'children__children__attributes__label': self._test_object_attribute.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandparent not in queryset)
+
+    # Proxies
+
+    def test_proxy_object_field_update_search(self):
+        old_label = self._test_object_grandchild_proxy.label
+        self._test_object_grandchild_proxy.label = 'edited'
+        self._test_object_grandchild_proxy.save()
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandchild,
+            query={
+                'label': self._test_object_grandchild_proxy.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandchild in queryset)
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandchild,
+            query={
+                'label': '"{}"'.format(old_label)
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandchild not in queryset)
+
+    def test_proxy_object_delete_search(self):
+        self._test_object_grandchild_proxy.delete()
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandchild,
+            query={
+                'label': self._test_object_grandchild.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandchild not in queryset)
+
+    def test_proxy_object_many_to_many_remove_search(self):
+        self._test_object_grandchild_proxy.attributes.remove(
+            self._test_object_attribute
+        )
+
+        queryset = self.search_backend.search(
+            search_model=self._test_search_grandchild,
+            query={
+                'attributes__label': self._test_object_attribute.label
+            }, user=self._test_case_user
+        )
+
+        self.assertTrue(self._test_object_grandchild not in queryset)
 
     def test_undefined_search_field(self):
-        self._upload_test_document()
-        self.grant_access(
-            obj=self.test_documents[0], permission=permission_document_view
-        )
         queryset = self.search_backend.search(
-            search_model=document_search,
-            query={'invalid': 'invalid'}, user=self._test_case_user
+            search_model=self._test_search_grandchild,
+            query={
+                'invalid': 'invalid'
+            }, user=self._test_case_user
         )
-        self.assertEqual(queryset.count(), 0)
+
+        self.assertTrue(self._test_object_grandchild not in queryset)
 
 
 @override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend')
 class DjangoSearchBackendDocumentSearchTestCase(
     CommonBackendFunctionalityTestCaseMixin, DocumentTestMixin,
-    SearchTestMixin, BaseTestCase
+    BaseTestCase
 ):
     auto_upload_test_document = False
 
@@ -273,10 +613,10 @@ class DjangoSearchBackendDocumentSearchTestCase(
         self.assertEqual(queryset.count(), 0)
 
 
-@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend')
+@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.tests.backends.TestSearchBackend')
 class WhooshSearchBackendDocumentSearchTestCase(
     CommonBackendFunctionalityTestCaseMixin, DocumentTestMixin,
-    SearchTestMixin, BaseTestCase
+    BaseTestCase
 ):
     auto_upload_test_document = False
 

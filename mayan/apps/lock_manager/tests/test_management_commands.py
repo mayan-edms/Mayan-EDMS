@@ -13,14 +13,14 @@ class FileLockBackendManagementCommandTestCase(
     LockBackendTestMixin, LockBackendManagementCommandTestCaseMixin,
     BaseTestCase
 ):
-    backend_string = 'mayan.apps.lock_manager.backends.file_lock.FileLock'
+    test_locking_backend_string = 'mayan.apps.lock_manager.backends.file_lock.FileLock'
 
 
 class ModelLockBackendManagementCommandTestCase(
     LockBackendTestMixin, LockBackendManagementCommandTestCaseMixin,
     BaseTestCase
 ):
-    backend_string = 'mayan.apps.lock_manager.backends.model_lock.ModelLock'
+    test_locking_backend_string = 'mayan.apps.lock_manager.backends.model_lock.ModelLock'
 
 
 @skip('Skip until a Mock Redis server class is added.')
@@ -31,4 +31,4 @@ class RedisLockBackendManagementCommandTestCase(
     LockBackendTestMixin, LockBackendManagementCommandTestCaseMixin,
     BaseTestCase
 ):
-    backend_string = 'mayan.apps.lock_manager.backends.redis_lock.RedisLock'
+    test_locking_backend_string = 'mayan.apps.lock_manager.backends.redis_lock.RedisLock'

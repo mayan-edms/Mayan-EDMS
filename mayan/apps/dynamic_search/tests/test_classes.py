@@ -1,6 +1,5 @@
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
-from mayan.apps.documents.tests.literals import DEFAULT_DOCUMENT_STUB_LABEL
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.tags.tests.mixins import TagTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
@@ -106,7 +105,7 @@ class QueryStringDecodeTestCase(SearchTestMixin, BaseTestCase):
 
 
 class ScopedSearchTestCase(
-    DocumentTestMixin, TagTestMixin, SearchTestMixin, BaseTestCase
+    DocumentTestMixin, SearchTestMixin, TagTestMixin, BaseTestCase
 ):
     auto_upload_test_document = False
 
@@ -123,6 +122,10 @@ class ScopedSearchTestCase(
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
+
+        self._index_instance(instance=self.test_document)
+        self._index_instance(instance=self.test_tags[0])
+        self._index_instance(instance=self.test_tags[1])
 
     def test_missing_scope_query(self):
         query = {
@@ -151,6 +154,8 @@ class ScopedSearchTestCase(
         self.assertEqual(queryset.count(), 1)
 
         self.test_tags[1].documents.remove(self.test_document)
+        self._index_instance(instance=self.test_document)
+        self._index_instance(instance=self.test_tags[1])
 
         query = {
             '__0_tags__label': self.test_tags[0].label,
@@ -253,11 +258,14 @@ class ScopeOperatorSearchTestCase(
             obj=self.test_documents[1], permission=permission_document_view
         )
 
+        self._index_instance(instance=self.test_documents[0])
+        self._index_instance(instance=self.test_documents[1])
+
     def test_and_operator_both_scopes_with_data(self):
         query = {
-            '__0_label': DEFAULT_DOCUMENT_STUB_LABEL,
-            '__operator_0_1': 'AND_2',
-            '__1_label': DEFAULT_DOCUMENT_STUB_LABEL,
+            '__0_label': self.test_documents[0].label,
+            '__operator_0_1': 'OR_2',
+            '__1_label': self.test_documents[1].label,
             '__result': '2'
         }
         queryset = self.search_backend.search(
@@ -268,7 +276,7 @@ class ScopeOperatorSearchTestCase(
 
     def test_and_operator_scope_1_with_data(self):
         query = {
-            '__0_label': DEFAULT_DOCUMENT_STUB_LABEL,
+            '__0_label': self.test_documents[0].label,
             '__operator_0_1': 'AND_2',
             '__1_label': 'invalid',
             '__result': '2'
@@ -283,7 +291,7 @@ class ScopeOperatorSearchTestCase(
         query = {
             '__0_label': 'invalid',
             '__operator_0_1': 'AND_2',
-            '__1_label': DEFAULT_DOCUMENT_STUB_LABEL,
+            '__1_label': self.test_documents[1].label,
             '__result': '2'
         }
         queryset = self.search_backend.search(

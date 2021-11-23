@@ -15,7 +15,7 @@ class KeyDetailForm(DetailForm):
             {'label': _('Key ID'), 'field': 'key_id'},
             {
                 'label': _('User ID'),
-                'field': lambda x: escape(instance.user_id),
+                'func': lambda x: escape(instance.user_id),
             },
             {
                 'label': _('Creation date'), 'field': 'creation_date',
@@ -23,13 +23,16 @@ class KeyDetailForm(DetailForm):
             },
             {
                 'label': _('Expiration date'),
-                'field': lambda x: instance.expiration_date or _('None'),
+                'func': lambda x: instance.expiration_date or _('None'),
                 'widget': forms.widgets.DateInput
             },
             {'label': _('Fingerprint'), 'field': 'fingerprint'},
             {'label': _('Length'), 'field': 'length'},
             {'label': _('Algorithm'), 'field': 'algorithm'},
-            {'label': _('Type'), 'field': lambda x: instance.get_key_type_display()},
+            {
+                'label': _('Type'),
+                'func': lambda x: instance.get_key_type_display()
+            },
         )
 
         kwargs['extra_fields'] = extra_fields

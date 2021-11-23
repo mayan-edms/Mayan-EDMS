@@ -16,6 +16,7 @@
 - Add support for dynamic field API serialization. This feature adds the
   URL query keys ``_fields_only`` and ``_fields_exclude``. Nested serializers
   are supported using the double underscore (``__``) separator.
+- Refactor ``ResolverRelatedManager``.
 
 4.1.4 (2021-XX-XX)
 ==================

@@ -1,7 +1,7 @@
 import operator
 
 DEFAULT_RESULTS_LIMIT = 100
-DEFAULT_SEARCH_BACKEND = 'mayan.apps.dynamic_search.backends.django.DjangoSearchBackend'
+DEFAULT_SEARCH_BACKEND = 'mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend'
 DEFAULT_SEARCH_BACKEND_ARGUMENTS = {}
 DEFAULT_SEARCH_DISABLE_SIMPLE_SEARCH = False
 DEFAULT_SEARCH_MATCH_ALL_DEFAULT_VALUE = 'false'
