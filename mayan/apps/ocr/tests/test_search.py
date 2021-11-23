@@ -13,13 +13,11 @@ from .mixins import DocumentVersionOCRTestMixin
 class DocumentOCRSearchTestCase(
     DocumentVersionOCRTestMixin, SearchTestMixin, GenericDocumentViewTestCase
 ):
-    _test_search_index_object_name = 'test_document'
-    _test_search_model = document_search
     auto_create_test_document_version_ocr_content = True
 
     def _do_test_search(self):
         return self.search_backend.search(
-            search_model=self._test_search_model, query={
+            search_model=document_search, query={
                 'versions__version_pages__ocr_content__content': self.test_document_version_page.ocr_content.content
             }, user=self._test_case_user
         )
@@ -65,13 +63,11 @@ class DocumentOCRSearchTestCase(
 class DocumentVersionOCRSearchTestCase(
     DocumentVersionOCRTestMixin, SearchTestMixin, GenericDocumentViewTestCase
 ):
-    _test_search_index_object_name = 'test_document_version'
-    _test_search_model = document_version_search
     auto_create_test_document_version_ocr_content = True
 
     def _do_test_search(self):
         return self.search_backend.search(
-            search_model=self._test_search_model, query={
+            search_model=document_version_search, query={
                 'version_pages__ocr_content__content': self.test_document_version_page.ocr_content.content
             }, user=self._test_case_user
         )
@@ -119,13 +115,11 @@ class DocumentVersionOCRSearchTestCase(
 class DocumentVersionPageOCRSearchTestCase(
     DocumentVersionOCRTestMixin, SearchTestMixin, GenericDocumentViewTestCase
 ):
-    _test_search_index_object_name = 'test_document_version_page'
-    _test_search_model = document_version_page_search
     auto_create_test_document_version_ocr_content = True
 
     def _do_test_search(self):
         return self.search_backend.search(
-            search_model=self._test_search_model, query={
+            search_model=document_version_page_search, query={
                 'ocr_content__content': self.test_document_version_page.ocr_content.content
             }, user=self._test_case_user
         )

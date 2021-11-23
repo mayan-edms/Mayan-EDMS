@@ -2,6 +2,7 @@ from django.utils.module_loading import import_string
 
 from mayan.apps.storage.utils import TemporaryDirectory
 
+from ..classes import SearchBackend
 from ..backends.whoosh import WhooshSearchBackend
 from ..literals import DEFAULT_SEARCH_BACKEND
 from ..settings import setting_backend_arguments
@@ -28,12 +29,14 @@ class TestSearchBackend(default_search_backend):
     def __init__(self, *args, **kwargs):
         kwargs = setting_backend_arguments.value.copy()
 
-        if self._test_view:
-            if issubclass(default_search_backend, WhooshSearchBackend):
-                if not hasattr(self.__class__, '_temporary_directory'):
-                    self.__class__._temporary_directory = TemporaryDirectory()
+        if issubclass(default_search_backend, WhooshSearchBackend):
+            if not hasattr(self.__class__, '_temporary_directory'):
+                self.__class__._temporary_directory = TemporaryDirectory()
 
-                kwargs['index_path'] = self.__class__._temporary_directory.name
+            kwargs['index_path'] = self.__class__._temporary_directory.name
+
+        if not self._test_view:
+            SearchBackend.terminate()
 
         super().__init__(*args, **kwargs)
 

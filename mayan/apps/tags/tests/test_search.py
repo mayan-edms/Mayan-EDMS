@@ -9,14 +9,12 @@ from .mixins import TagTestMixin
 class DocumentTagSearchTestCase(
     TagTestMixin, SearchTestMixin, GenericDocumentViewTestCase
 ):
-    _test_search_index_object_name = 'test_document'
-    _test_search_model = document_search
     auto_create_test_tag = True
     test_tag_add_test_document = True
 
     def _do_test_search(self):
         return self.search_backend.search(
-            search_model=self._test_search_model, query={
+            search_model=document_search, query={
                 'tags__label': self.test_tag.label
             }, user=self._test_case_user
         )

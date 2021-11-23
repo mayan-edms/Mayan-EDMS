@@ -123,14 +123,14 @@ class DjangoSearchViewTestCase(
     """Test against Django backend."""
 
 
-@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend')
+@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.tests.backends.TestSearchBackend')
 class WhooshSearchViewTestCase(
     SearchViewTestCaseMixin, GenericViewTestCase
 ):
     """Test against Whoosh backend."""
 
 
-@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend')
+@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.tests.backends.TestSearchBackend')
 class SearchToolsViewTestCase(
     DocumentTestMixin, SearchToolsViewTestMixin, SearchTestMixin,
     GenericViewTestCase

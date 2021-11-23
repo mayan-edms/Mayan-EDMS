@@ -13,15 +13,18 @@ from .base import GenericDocumentViewTestCase
 
 
 class DocumentSearchTestCase(SearchTestMixin, GenericDocumentViewTestCase):
-    _test_search_index_object_name = 'test_document'
-    _test_search_model = document_search
+    auto_upload_test_document = False
 
     def _do_test_search(self):
         return self.search_backend.search(
-            search_model=self._test_search_model, query={
+            search_model=document_search, query={
                 'label': self.test_document.label
             }, user=self._test_case_user
         )
+
+    def setUp(self):
+        super().setUp()
+        self._upload_test_document()
 
     def test_document_search_no_permission(self):
         self._clear_events()
@@ -64,15 +67,18 @@ class DocumentSearchTestCase(SearchTestMixin, GenericDocumentViewTestCase):
 class DocumentFileSearchTestCase(
     SearchTestMixin, GenericDocumentViewTestCase
 ):
-    _test_search_index_object_name = 'test_document_file'
-    _test_search_model = document_file_search
+    auto_upload_test_document = False
 
     def _do_test_search(self):
         return self.search_backend.search(
-            search_model=self._test_search_model, query={
+            search_model=document_file_search, query={
                 'document__label': self.test_document.label
             }, user=self._test_case_user
         )
+
+    def setUp(self):
+        super().setUp()
+        self._upload_test_document()
 
     def test_document_file_search_no_permission(self):
         self._clear_events()
@@ -115,15 +121,18 @@ class DocumentFileSearchTestCase(
 class DocumentFilePageSearchTestCase(
     SearchTestMixin, GenericDocumentViewTestCase
 ):
-    _test_search_index_object_name = 'test_document_file_page'
-    _test_search_model = document_file_page_search
+    auto_upload_test_document = False
 
     def _do_test_search(self):
         return self.search_backend.search(
-            search_model=self._test_search_model, query={
+            search_model=document_file_page_search, query={
                 'document_file__document__label': self.test_document.label
             }, user=self._test_case_user
         )
+
+    def setUp(self):
+        super().setUp()
+        self._upload_test_document()
 
     def test_document_file_page_search_no_permission(self):
         self._clear_events()
@@ -166,15 +175,18 @@ class DocumentFilePageSearchTestCase(
 class DocumentVersionSearchTestCase(
     SearchTestMixin, GenericDocumentViewTestCase
 ):
-    _test_search_index_object_name = 'test_document_version'
-    _test_search_model = document_version_search
+    auto_upload_test_document = False
 
     def _do_test_search(self):
         return self.search_backend.search(
-            search_model=self._test_search_model, query={
+            search_model=document_version_search, query={
                 'document__label': self.test_document.label
             }, user=self._test_case_user
         )
+
+    def setUp(self):
+        super().setUp()
+        self._upload_test_document()
 
     def test_document_version_search_no_permission(self):
         self._clear_events()
@@ -219,15 +231,18 @@ class DocumentVersionSearchTestCase(
 class DocumentVersionPageSearchTestCase(
     SearchTestMixin, GenericDocumentViewTestCase
 ):
-    _test_search_index_object_name = 'test_document_version_page'
-    _test_search_model = document_version_page_search
+    auto_upload_test_document = False
 
     def _do_test_search(self):
         return self.search_backend.search(
-            search_model=self._test_search_model, query={
+            search_model=document_version_page_search, query={
                 'document_version__document__label': self.test_document.label
             }, user=self._test_case_user
         )
+
+    def setUp(self):
+        super().setUp()
+        self._upload_test_document()
 
     def test_document_version_page_search_no_permission(self):
         self._clear_events()

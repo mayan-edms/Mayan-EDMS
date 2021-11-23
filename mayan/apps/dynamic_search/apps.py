@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_facet, menu_secondary, menu_tools
 
-from .classes import SearchModel
+from .classes import SearchBackend, SearchModel
 from .links import (
     link_search, link_search_advanced, link_search_again,
     link_search_backend_reindex
@@ -22,7 +22,7 @@ class DynamicSearchApp(MayanAppConfig):
         super().ready()
 
         SearchModel.load_modules()
-        SearchModel.initialize()
+        SearchBackend.initialize()
 
         menu_facet.bind_links(
             links=(link_search, link_search_advanced),

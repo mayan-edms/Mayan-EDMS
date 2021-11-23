@@ -1,4 +1,3 @@
-import functools
 import logging
 from pathlib import Path
 
@@ -16,11 +15,11 @@ from mayan.apps.lock_manager.exceptions import LockError
 from ..classes import SearchBackend, SearchField, SearchModel
 from ..settings import setting_results_limit
 
-from .literals import DJANGO_TO_WHOOSH_FIELD_MAP, WHOOSH_INDEX_DIRECTORY_NAME
+from .literals import (
+    DJANGO_TO_WHOOSH_FIELD_MAP, TEXT_LOCK_INSTANCE_DEINDEX,
+    TEXT_LOCK_INSTANCE_INDEX, WHOOSH_INDEX_DIRECTORY_NAME,
+)
 logger = logging.getLogger(name=__name__)
-
-TEXT_LOCK_INSTANCE_DEINDEX = 'dynamic_search_whoosh_deindex_instance'
-TEXT_LOCK_INSTANCE_INDEX = 'dynamic_search_whoosh_index_instance'
 
 
 class WhooshSearchBackend(SearchBackend):
@@ -114,9 +113,8 @@ class WhooshSearchBackend(SearchBackend):
                 search_model = SearchModel.get_for_model(instance=instance)
                 index = self.get_or_create_index(search_model=search_model)
 
-                writer = index.writer(**self.writer_kwargs)
-                writer.delete_by_term('id', str(instance.pk))
-                writer.commit()
+                with index.writer(**self.writer_kwargs) as writer:
+                    writer.delete_by_term('id', str(instance.pk))
             finally:
                 lock.release()
 
@@ -137,7 +135,6 @@ class WhooshSearchBackend(SearchBackend):
 
         return index
 
-    @functools.lru_cache(maxsize=None)
     def get_resolved_field_map(self, search_model):
         result = {}
         for search_field in self.get_search_model_fields(search_model=search_model):
@@ -162,7 +159,6 @@ class WhooshSearchBackend(SearchBackend):
         )
         return result
 
-    @functools.lru_cache(maxsize=None)
     def get_search_model_schema(self, search_model):
         field_map = self.get_resolved_field_map(search_model=search_model)
         schema_kwargs = {key: value['field'] for key, value in field_map.items()}
@@ -184,40 +180,32 @@ class WhooshSearchBackend(SearchBackend):
                 search_model = SearchModel.get_for_model(instance=instance)
                 index = self.get_or_create_index(search_model=search_model)
 
-                writer = index.writer(**self.writer_kwargs)
-
-                kwargs = search_model.populate(
-                    field_map=self.get_resolved_field_map(
-                        search_model=search_model
-                    ), instance=instance, exclude_model=exclude_model,
-                    exclude_kwargs=exclude_kwargs
-                )
-
-                writer.delete_by_term('id', str(instance.pk))
-
-                try:
-                    writer.add_document(**kwargs)
-                    writer.commit()
-                except Exception as exception:
-                    logger.error(
-                        'Unexpected exception while indexing object id: %s, '
-                        'search model: %s, index data: %s, raw data: %s, '
-                        'field map: %s; %s', search_model.get_full_name(),
-                        instance.pk, kwargs, instance.__dict__,
-                        self.get_resolved_field_map(search_model=search_model),
-                        exception, exc_info=True
+                with index.writer(**self.writer_kwargs) as writer:
+                    kwargs = search_model.populate(
+                        field_map=self.get_resolved_field_map(
+                            search_model=search_model
+                        ), instance=instance, exclude_model=exclude_model,
+                        exclude_kwargs=exclude_kwargs
                     )
-                    raise
+
+                    try:
+                        writer.delete_by_term('id', str(instance.pk))
+                        writer.add_document(**kwargs)
+                    except Exception as exception:
+                        logger.error(
+                            'Unexpected exception while indexing object id: %s, '
+                            'search model: %s, index data: %s, raw data: %s, '
+                            'field map: %s; %s', search_model.get_full_name(),
+                            instance.pk, kwargs, instance.__dict__,
+                            self.get_resolved_field_map(search_model=search_model),
+                            exception, exc_info=True
+                        )
+                        raise
             finally:
                 lock.release()
 
     def index_search_model(self, search_model):
-        schema = self.get_search_model_schema(search_model=search_model)
-
-        # Clear the model index.
-        self.get_storage().create_index(
-            indexname=search_model.get_full_name(), schema=schema
-        )
+        self.clear_search_model_index(search_model=search_model)
 
         for instance in search_model.model._meta.managers_map[search_model.manager_name].all():
             self.index_instance(instance=instance)

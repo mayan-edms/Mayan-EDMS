@@ -2,18 +2,21 @@ from mayan.apps.documents.search import document_search
 
 from ..classes import SearchBackend
 
-from .mocks import TestSearchBackend
+from .backends import TestSearchBackend
 
 
 class SearchTestMixin:
-    _test_search_index_object_name = None
-    _test_search_model = None
-
     def _deindex_instance(self, instance):
         self.search_backend.deindex_instance(instance=instance)
 
     def _index_instance(self, instance):
         self.search_backend.index_instance(instance=instance)
+
+    def _setup_test_model_search(self):
+        """
+        This method allows tests to add model search configurations and
+        not have to import and initialize the SearchBackend.
+        """
 
     def setUp(self):
         super().setUp()
@@ -21,6 +24,12 @@ class SearchTestMixin:
         # enabled when called from a search test.
         TestSearchBackend._test_view = self
         self.search_backend = SearchBackend.get_instance()
+        self._setup_test_model_search()
+        SearchBackend.initialize()
+
+    def tearDown(self):
+        SearchBackend.terminate()
+        super().tearDown()
 
 
 class SearchAPIViewTestMixin(SearchTestMixin):

@@ -12,14 +12,12 @@ from .mixins import CabinetTestMixin
 class CabinetSearchTestCase(
     CabinetTestMixin, SearchTestMixin, GenericDocumentViewTestCase
 ):
-    _test_search_index_object_name = 'test_cabinet'
-    _test_search_model = cabinet_search
     auto_create_test_cabinet = True
     test_cabinet_add_test_document = True
 
     def _do_test_search(self):
         return self.search_backend.search(
-            search_model=self._test_search_model, query={
+            search_model=cabinet_search, query={
                 'documents__label': self.test_document.label
             }, user=self._test_case_user
         )
@@ -65,14 +63,12 @@ class CabinetSearchTestCase(
 class DocumentCabinetSearchTestCase(
     CabinetTestMixin, SearchTestMixin, GenericDocumentViewTestCase
 ):
-    _test_search_index_object_name = 'test_document'
-    _test_search_model = document_search
     auto_create_test_cabinet = True
     test_cabinet_add_test_document = True
 
     def _do_test_search(self):
         return self.search_backend.search(
-            search_model=self._test_search_model, query={
+            search_model=document_search, query={
                 'cabinets__label': self.test_cabinet.label
             }, user=self._test_case_user
         )

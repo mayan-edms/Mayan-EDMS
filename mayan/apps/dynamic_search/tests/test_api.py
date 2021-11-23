@@ -1,7 +1,6 @@
 from rest_framework import status
 
 from mayan.apps.documents.permissions import permission_document_view
-from mayan.apps.documents.search import document_search
 from mayan.apps.documents.tests.base import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
@@ -24,11 +23,8 @@ class SearchModelAPIViewTestCase(BaseAPITestCase):
 
 
 class SearchAPIViewTestCase(
-    SearchAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
+    DocumentTestMixin, SearchAPIViewTestMixin, BaseAPITestCase
 ):
-    _test_search_index_object_name = 'test_document'
-    _test_search_model = document_search
-
     def test_search_api_view_no_permission(self):
         response = self._request_search_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
