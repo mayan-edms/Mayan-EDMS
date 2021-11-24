@@ -26,6 +26,7 @@
 
 - Update psycopg2 from version 2.8.6 to 3.0.4.
 - Update redis client from version 3.5.3 to 4.0.2.
+- Reduce the Sentry client default ``traces_sample_rate`` from 0.25 to 0.05.
 
 4.1.4 (2021-XX-XX)
 ==================
