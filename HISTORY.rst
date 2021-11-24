@@ -17,6 +17,7 @@
   Thanks to forum user @qra for the request.
 - Cleanup markup of the confirmation form.
 - Remove redundant modal close button.
+- Fix search proxies method decorator.
 
 4.0.21 (2021-11-29)
 ===================
