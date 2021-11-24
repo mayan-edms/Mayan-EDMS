@@ -569,6 +569,7 @@ class SearchModel(AppsModuleLoaderMixin):
 
         return result
 
+    @property
     def proxies(self):
         result = []
         for proxy in self._proxies:
