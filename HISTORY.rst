@@ -18,6 +18,8 @@
   - Remove repeated partition file close call.
   - Update Django version 2.2.24 to 2.2.28.
 
+- Reduce the Sentry client default ``traces_sample_rate`` from 0.25 to 0.05.
+
 4.1.7 (2022-04-01)
 ==================
 - Backport fixes from version 4.2.3
