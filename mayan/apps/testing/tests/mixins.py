@@ -457,6 +457,7 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
 
     def setUp(self):
         self._test_models = []
+        self._test_models_extra = set()
         self.test_objects = []
 
         super().setUp()
@@ -478,17 +479,42 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
         # avoid conflict with test models with the same name, in the same app
         # but from another test module.
         for model in self._test_models:
+            model.objects.all().delete()
+
+        for model in self._test_models:
+            ModelPermission.deregister(model=model)
+
             content_type = ContentType.objects.get_for_model(model=model)
             if content_type.pk:
                 content_type.delete()
 
+            if not model._meta.proxy:
+                with connection.schema_editor() as schema_editor:
+                    schema_editor.delete_model(model=model)
+
+            del apps.all_models[model._meta.app_label][model._meta.model_name]
+
+            ContentType.objects.clear_cache()
+            apps.clear_cache()
+
+        for model in self._test_models_extra:
             ModelPermission.deregister(model=model)
 
-            apps.all_models[self.app_config.label].pop(
-                model._meta.model_name,
-            )
+            content_type = ContentType.objects.get_for_model(model=model)
+            if content_type.pk:
+                content_type.delete()
 
-        ContentType.objects.clear_cache()
+            # Only attempt to deleted if the model was not deleted as part
+            # of the previous main test model deletion.
+            if model in apps.all_models[model._meta.app_label]:
+                if not model._meta.proxy:
+                    with connection.schema_editor() as schema_editor:
+                        schema_editor.delete_model(model=model)
+
+            del apps.all_models[model._meta.app_label][model._meta.model_name]
+
+            ContentType.objects.clear_cache()
+            apps.clear_cache()
 
         super().tearDown()
 
@@ -516,11 +542,15 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
         attrs = {
             '__module__': self.__class__.__module__,
             'save': self._get_test_model_save_method(),
-            'Meta': self._get_test_model_meta(),
+            'Meta': self._get_test_model_meta()
         }
 
         if fields:
             attrs.update(fields)
+
+        model_list_previous = set(
+            apps.app_configs[self.app_config.label].models.values()
+        )
 
         model = type(
             self._test_model_name, (base_class,), attrs
@@ -530,8 +560,15 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
             with connection.schema_editor() as schema_editor:
                 schema_editor.create_model(model=model)
 
+        self._test_models_extra.update(
+            set(
+                apps.app_configs[self.app_config.label].models.values()
+            ) - model_list_previous - set((model,))
+        )
+
         self._test_models.append(model)
         ContentType.objects.clear_cache()
+        apps.clear_cache()
 
         return model
 
