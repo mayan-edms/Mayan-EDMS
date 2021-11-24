@@ -179,6 +179,15 @@ services:
     profiles:
       - extra_worker_d
 
+  # Run a separate Celery beat container
+  celery_beat:
+    <<: *mayan-container
+    command:
+      - run_celery
+      - "beat --pidfile= --loglevel=ERROR"
+    profiles:
+      - extra_celery_beat
+
   # Optional services
 
   traefik:
