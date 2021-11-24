@@ -19,6 +19,13 @@
 - Refactor ``ResolverRelatedManager``.
 - Move Docker templates to their own folder.
 - Move the ``docker-dockerfile-update`` target to the Docker makefile.
+- Update Docker image tags:
+
+  - Postgresq from 10.18-alpine to 12.9-alpine.
+  - Python from 3.8-slim to 3.11-slim.
+
+- Update psycopg2 from version 2.8.6 to 3.0.4.
+- Update redis client from version 3.5.3 to 4.0.2.
 
 4.1.4 (2021-XX-XX)
 ==================
