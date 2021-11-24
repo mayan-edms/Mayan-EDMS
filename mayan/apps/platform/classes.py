@@ -182,6 +182,7 @@ class PlatformTemplate:
 class PlatformTemplateDockerEntrypoint(PlatformTemplate):
     label = _('Template for entrypoint.sh file inside a Docker image.')
     name = 'docker_entrypoint'
+    template_name = 'platform/docker/entrypoint.tmpl'
 
     def get_context(self):
         context = load_env_file()
@@ -191,7 +192,8 @@ class PlatformTemplateDockerEntrypoint(PlatformTemplate):
 
 class PlatformTemplateDockerfile(PlatformTemplate):
     label = _('Template that generates a Dockerfile file.')
-    name = 'dockerfile'
+    name = 'docker_dockerfile'
+    template_name = 'platform/docker/dockerfile.tmpl'
 
     def __init__(self):
         self.variables = (
@@ -206,6 +208,7 @@ class PlatformTemplateDockerfile(PlatformTemplate):
 class PlatformTemplateDockerSupervisord(PlatformTemplate):
     label = _('Template for Supervisord inside a Docker image.')
     name = 'docker_supervisord'
+    template_name = 'platform/docker/supervisord.tmpl'
 
     def get_context(self):
         return {
