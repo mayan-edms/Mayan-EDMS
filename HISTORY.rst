@@ -1,8 +1,10 @@
 4.0.21 (2021-XX-XX)
 ==================
+- Perform more strict cleanup of test models.
 - Clean up the test model app config cache after the test
   end not before the test model is created.
 - Improve lock manager test cases.
+- Add standalone Celery beat container.
 
 4.0.20 (2021-11-08)
 ===================
