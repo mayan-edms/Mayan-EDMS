@@ -29,6 +29,13 @@
 - Reduce the Sentry client default ``traces_sample_rate`` from 0.25 to 0.05.
 - Add the ``run_initialsetup_or_performupgrade`` command to the Docker
   entrypoint.
+- Docker Compose updates:
+
+  - Add a Redis profile.
+  - Default to RabbitMQ a broker.
+  - Change default RabbitMQ image from 3.9-alpine to 3.9-management-alpine.
+  - Improve Traefik configuration.
+  - Add a dedicated network for Traefik.
 
 4.1.4 (2021-XX-XX)
 ==================
