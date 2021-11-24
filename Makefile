@@ -470,10 +470,6 @@ safety-check: ## Run a package safety check.
 
 # Other
 
-docker-dockerfile-update: ## Update the Dockerfile file from the platform template.
-docker-dockerfile-update: copy-config-env
-	./manage.py platformtemplate dockerfile > docker/Dockerfile
-
 find-gitignores: ## Find stray .gitignore files.
 	@export FIND_GITIGNORES=`find -name '.gitignore'| wc -l`; \
 	if [ $${FIND_GITIGNORES} -gt 1 ] ;then echo "More than one .gitignore found: $$FIND_GITIGNORES"; fi

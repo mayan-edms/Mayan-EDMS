@@ -17,6 +17,8 @@
   URL query keys ``_fields_only`` and ``_fields_exclude``. Nested serializers
   are supported using the double underscore (``__``) separator.
 - Refactor ``ResolverRelatedManager``.
+- Move Docker templates to their own folder.
+- Move the ``docker-dockerfile-update`` target to the Docker makefile.
 
 4.1.4 (2021-XX-XX)
 ==================

@@ -24,6 +24,10 @@ docker-build-with-proxy: docker-dockerfile-update devpi-start
 docker-build-with-proxy-push: ## Build an image with an APT proxy and push to the test registry.
 docker-build-with-proxy-push: docker-build-with-proxy docker-registry-push
 
+docker-dockerfile-update: ## Update the Dockerfile file from the platform template.
+docker-dockerfile-update: copy-config-env
+	./manage.py platformtemplate docker_dockerfile > Dockerfile
+
 docker-registry-push: ## Push a built image to the test Docker registry.
 	docker tag $(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION) $(DOCKER_HOST_REGISTRY_NAME):$(DOCKER_HOST_REGISTRY_PORT)/$(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION)
 	docker push $(DOCKER_HOST_REGISTRY_NAME):$(DOCKER_HOST_REGISTRY_PORT)/$(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION)
