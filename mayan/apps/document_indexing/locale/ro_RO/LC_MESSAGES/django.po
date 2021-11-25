@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2021-11-25 10:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -59,7 +59,7 @@ msgstr ""
 msgid "Nodes"
 msgstr ""
 
-#: apps.py:185 models.py:437
+#: apps.py:185 models.py:438
 msgid "Documents"
 msgstr "Documente"
 
@@ -155,7 +155,7 @@ msgstr ""
 "Cauză pentru acest index să fie vizibil și actualizat când documentul suferă"
 " schimbări."
 
-#: models.py:50 models.py:189
+#: models.py:50 models.py:190
 msgid "Enabled"
 msgstr "Activat"
 
@@ -163,25 +163,29 @@ msgstr "Activat"
 msgid "Index template"
 msgstr ""
 
-#: models.py:174
+#: models.py:169
+msgid "Parent index template node of this node."
+msgstr ""
+
+#: models.py:175
 msgid "Index"
 msgstr "Index"
 
-#: models.py:178
+#: models.py:179
 msgid "Enter a template to render. Use Django's default templating language."
 msgstr ""
 
-#: models.py:181
+#: models.py:182
 msgid "Indexing expression"
 msgstr "Expresie de indexare"
 
-#: models.py:186
+#: models.py:187
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr ""
 "Va face ca acest nod să fie vizibil și actualizat la modificarea datelor "
 "documentului."
 
-#: models.py:194
+#: models.py:195
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
@@ -189,31 +193,31 @@ msgstr ""
 "Bifați această opțiune pentru a avea acest nod ca un container pentru "
 "documente și nu ca un părinte pentru nodurile suplimentare."
 
-#: models.py:197
+#: models.py:198
 msgid "Link documents"
 msgstr "Leagă documente"
 
-#: models.py:201 models.py:430
+#: models.py:202 models.py:431
 msgid "Index template node"
 msgstr "Nodul șablonului de index"
 
-#: models.py:202
+#: models.py:203
 msgid "Index template nodes"
 msgstr ""
 
-#: models.py:206
+#: models.py:207
 msgid "Root"
 msgstr "Rădăcină"
 
-#: models.py:227
+#: models.py:228
 msgid "Index instance"
 msgstr "Exemplu de index"
 
-#: models.py:228
+#: models.py:229
 msgid "Index instances"
 msgstr "Exemple de index-uri"
 
-#: models.py:309
+#: models.py:310
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
@@ -222,47 +226,47 @@ msgstr ""
 "Eroare la indexarea ducumentuluir: %(document)s; expresie: %(expression)s; "
 "%(exception)s"
 
-#: models.py:387
+#: models.py:388
 msgid "Total number of nodes with unique values this item contains."
 msgstr ""
 
-#: models.py:396
+#: models.py:397
 msgid "Total number of unique documents this item contains."
 msgstr ""
 
-#: models.py:406
+#: models.py:407
 msgid "Total number of node levels this item contains."
 msgstr ""
 
-#: models.py:433 search.py:26
+#: models.py:434 search.py:26
 msgid "Value"
 msgstr "Valoare"
 
-#: models.py:442 models.py:523
+#: models.py:443 models.py:524
 msgid "Index instance node"
 msgstr "Nod de instanță index"
 
-#: models.py:443
+#: models.py:444
 msgid "Indexes instances node"
 msgstr "Nod instanțe indexuri"
 
-#: models.py:490
+#: models.py:491
 msgid "The path to the index including all ancestors."
 msgstr "Calea către index, inclusiv toți strămoșii."
 
-#: models.py:492
+#: models.py:493
 msgid "Full path"
 msgstr "Calea completă"
 
-#: models.py:516
+#: models.py:517
 msgid "Document index node instance"
 msgstr "Exemplu de nod index document"
 
-#: models.py:517
+#: models.py:518
 msgid "Document indexes node instances"
 msgstr "Documentul indexează instanțele de noduri"
 
-#: models.py:524
+#: models.py:525
 msgid "Index instance nodes"
 msgstr "Noduri de instanță index"
 
@@ -330,25 +334,17 @@ msgstr "UUID al documentului"
 msgid "Document checksum"
 msgstr "Suma de control a documentului"
 
-#: serializers.py:189
-msgid "Parent cannot be empty."
-msgstr "Părintele nu poate fi vid."
-
-#: serializers.py:196
-msgid "Parent must be from the same index template."
-msgstr "Părintele trebuie să provină din același șablon de index."
-
-#: serializers.py:207
+#: serializers.py:201
 msgid ""
 "URL of the API endpoint showing the list document types associated with this"
 " index template."
 msgstr ""
 
-#: serializers.py:214
+#: serializers.py:208
 msgid "URL of the API endpoint to add document types to this index template."
 msgstr ""
 
-#: serializers.py:221
+#: serializers.py:215
 msgid ""
 "URL of the API endpoint to remove document types from this index template."
 msgstr ""

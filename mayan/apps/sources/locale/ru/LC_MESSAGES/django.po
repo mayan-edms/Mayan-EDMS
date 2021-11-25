@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2021-11-25 10:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -439,11 +439,11 @@ msgstr ""
 msgid "SANE Scanner"
 msgstr "Сканер SANE"
 
-#: source_backends/sane_scanner_backends.py:102
+#: source_backends/sane_scanner_backends.py:106
 msgid "Document properties"
 msgstr "Свойства документа"
 
-#: source_backends/sane_scanner_backends.py:103
+#: source_backends/sane_scanner_backends.py:107
 msgid "Scan"
 msgstr "Сканировать"
 
@@ -622,17 +622,17 @@ msgstr "Загрузка нового файла документа \"%(document
 msgid "Submit"
 msgstr "Отправить"
 
-#: views/document_views.py:39
+#: views/document_views.py:38
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
 msgstr ""
 
-#: views/document_views.py:58
+#: views/document_views.py:57
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 "Новый документ поставлен в очередь на загрузку и скоро станет доступен."
 
-#: views/document_views.py:84
+#: views/document_views.py:83
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr "Загрузка документа типа \"%(document_type)s\" из источника: %(source)s"

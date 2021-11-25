@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2021-11-25 10:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -480,7 +480,7 @@ msgstr "Προσφάτως προσπελασμένα"
 
 #: links/document_links.py:29 views/recently_created_document_views.py:27
 msgid "Recently created"
-msgstr ""
+msgstr "Προσφάτως δημιουργηθέντα"
 
 #: links/document_links.py:50
 msgid "Edit properties"
@@ -1209,6 +1209,8 @@ msgid ""
 "Maximum number of recently accessed documents (created, edited, viewed) to "
 "remember per user."
 msgstr ""
+"Μέγιστος αριθμός εγγράφων που προσπελάστηκαν πρόσφατα (δημιουργήθηκαν, "
+"επεξεργάστηκαν, προβλήθηκαν) προς απομνημόνευση ανά χρήστη."
 
 #: settings.py:153
 msgid "Maximum number of recently created documents to show."
@@ -1970,7 +1972,7 @@ msgstr ""
 
 #: views/recently_created_document_views.py:25
 msgid "There are no recently created documents"
-msgstr ""
+msgstr "Δεν έχουν δημιουργηθεί προσφάτως έγγραφα"
 
 #: views/trashed_document_views.py:37
 #, python-format

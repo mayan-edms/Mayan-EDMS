@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2021-11-25 10:56+0000\n"
 "PO-Revision-Date: 2020-01-28 07:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -308,15 +308,15 @@ msgstr ""
 msgid "Document metadata value"
 msgstr ""
 
-#: serializers.py:47
+#: serializers.py:48
 msgid "Primary key of the metadata type to be added."
 msgstr ""
 
-#: serializers.py:48
+#: serializers.py:49
 msgid "Metadata type ID"
 msgstr ""
 
-#: serializers.py:93
+#: serializers.py:94
 msgid "Primary key of the metadata type to be added to the document."
 msgstr ""
 
@@ -556,7 +556,7 @@ msgstr ""
 #, python-format
 msgid ""
 "Unable to edit metadata type \"%(metadata_type)s\" from document: "
-"%(document)s. Document does not have the metadata type to be edit. "
+"%(document)s. Document does not have the metadata type to be edited. "
 "Exception: %(exception)s"
 msgstr ""
 

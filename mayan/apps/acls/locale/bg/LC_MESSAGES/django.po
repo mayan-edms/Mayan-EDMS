@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:55+0000\n"
+"POT-Creation-Date: 2021-11-25 10:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:12+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -110,11 +110,11 @@ msgstr "Редактиране на контролни списъци за до�
 msgid "View ACLs"
 msgstr "Преглед на контролни списъци за достъп"
 
-#: serializers.py:125
+#: serializers.py:120
 msgid "Primary key of the permission to add to the ACL."
 msgstr "Първичен ключ на разрешението за добавяне към ACL."
 
-#: serializers.py:132
+#: serializers.py:127
 msgid "Primary key of the permission to remove from the ACL."
 msgstr "Първичен ключ на разрешението за премахване от ACL."
 
@@ -137,11 +137,11 @@ msgstr "Нови контролни списъци на достъп за: %s"
 msgid "Delete ACL: %s"
 msgstr "Изтрийте ACL: %s"
 
-#: views.py:139
+#: views.py:141
 msgid "There are no ACLs for this object"
 msgstr "Няма контролни списъци за достъп за този обект"
 
-#: views.py:142 views.py:259
+#: views.py:144 views.py:261
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
@@ -151,25 +151,25 @@ msgstr ""
 "достъпа на потребителите до обекти в системата. ACL позволява предоставяне "
 "на разрешение за роля, но само за конкретен обект или набор от обекти."
 
-#: views.py:149
+#: views.py:151
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "Контролни списъци на достъп за: %s"
 
-#: views.py:163
+#: views.py:165
 msgid "Granted permissions"
 msgstr "Дадени разрешения"
 
-#: views.py:164
+#: views.py:166
 msgid "Available permissions"
 msgstr "Налични разрешения"
 
-#: views.py:208
+#: views.py:210
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr "Роля \"%(role)s\" разрешение за \"%(object)s\""
 
-#: views.py:217
+#: views.py:219
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -181,11 +181,11 @@ msgstr ""
 "изглед. Наследените разрешения трябва да бъдат премахнати от ACL на "
 "родителския обект или от определената роля чрез меню Настройки."
 
-#: views.py:256
+#: views.py:258
 msgid "There are no ACLs"
 msgstr "Няма ACL"
 
-#: views.py:265
+#: views.py:267
 msgid "Global access control lists"
 msgstr "Глобални списъци за контрол на достъпа"
 
