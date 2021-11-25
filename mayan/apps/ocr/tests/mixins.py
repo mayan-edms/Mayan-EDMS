@@ -57,7 +57,7 @@ class DocumentVersionOCRAPIViewTestMixin:
         return self.post(
             viewname='rest_api:document-version-ocr-submit-view', kwargs={
                 'document_id': self.test_document.pk,
-                'document_version_id': self.test_document.version_active.pk
+                'document_version_id': self.test_document_version.pk
             }
         )
 
@@ -67,8 +67,8 @@ class DocumentVersionPageOCRAPIViewTestMixin:
         return self.get(
             viewname='rest_api:document-version-page-ocr-content-detail-view', kwargs={
                 'document_id': self.test_document.pk,
-                'document_version_id': self.test_document.version_active.pk,
-                'document_version_page_id': self.test_document.version_active.pages.first().pk,
+                'document_version_id': self.test_document_version.pk,
+                'document_version_page_id': self.test_document_version_page.pk
             }
         )
 
@@ -76,8 +76,8 @@ class DocumentVersionPageOCRAPIViewTestMixin:
         return self.patch(
             viewname='rest_api:document-version-page-ocr-content-detail-view', kwargs={
                 'document_id': self.test_document.pk,
-                'document_version_id': self.test_document.version_active.pk,
-                'document_version_page_id': self.test_document.version_active.pages.first().pk,
+                'document_version_id': self.test_document_version.pk,
+                'document_version_page_id': self.test_document_version_page.pk
             }, data={
                 'content': TEST_DOCUMENT_VERSION_PAGE_OCR_CONTENT_UPDATED
             }
@@ -87,8 +87,8 @@ class DocumentVersionPageOCRAPIViewTestMixin:
         return self.put(
             viewname='rest_api:document-version-page-ocr-content-detail-view', kwargs={
                 'document_id': self.test_document.pk,
-                'document_version_id': self.test_document.version_active.pk,
-                'document_version_page_id': self.test_document.version_active.pages.first().pk,
+                'document_version_id': self.test_document_version.pk,
+                'document_version_page_id': self.test_document_version_page.pk
             }, data={
                 'content': TEST_DOCUMENT_VERSION_PAGE_OCR_CONTENT_UPDATED
             }
@@ -98,7 +98,7 @@ class DocumentVersionPageOCRAPIViewTestMixin:
 class DocumentVersionOCRTestMixin:
     def _create_test_document_version_ocr_content(self):
         DocumentVersionPageOCRContent.objects.create(
-            document_version_page=self.test_document_version.pages.first(),
+            document_version_page=self.test_document_version_page,
             content=TEST_DOCUMENT_VERSION_OCR_CONTENT
         )
 
@@ -160,14 +160,14 @@ class DocumentVersionPageOCRViewTestMixin:
     def _request_test_document_version_page_ocr_content_detail_view(self):
         return self.get(
             viewname='ocr:document_version_page_ocr_content_detail_view', kwargs={
-                'document_version_page_id': self.test_document_version.pages.first().pk
+                'document_version_page_id': self.test_document_version_page.pk
             }
         )
 
     def _request_test_document_version_page_ocr_content_edit_view(self):
         return self.post(
             viewname='ocr:document_version_page_ocr_content_edit_view', kwargs={
-                'document_version_page_id': self.test_document_version.pages.first().pk
+                'document_version_page_id': self.test_document_version_page.pk
             }, data={
                 'content': TEST_DOCUMENT_VERSION_PAGE_OCR_CONTENT_UPDATED
             }
