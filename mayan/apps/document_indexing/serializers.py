@@ -1,7 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
-from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 from rest_framework_recursive.fields import RecursiveField
 
@@ -145,6 +144,7 @@ class IndexTemplateNodeSerializer(serializers.ModelSerializer):
 class IndexTemplateNodeWriteSerializer(serializers.ModelSerializer):
     children = RecursiveField(many=True, read_only=True)
     index_url = serializers.SerializerMethodField(read_only=True)
+    parent = FilteredPrimaryKeyRelatedField()
     parent_url = serializers.SerializerMethodField(read_only=True)
     url = serializers.SerializerMethodField(read_only=True)
 
@@ -170,6 +170,9 @@ class IndexTemplateNodeWriteSerializer(serializers.ModelSerializer):
             }, format=self.context['format'], request=self.context['request']
         )
 
+    def get_parent_queryset(self):
+        return self.context['index_template'].index_template_nodes.all()
+
     def get_parent_url(self, obj):
         if obj.parent:
             return reverse(
@@ -189,24 +192,6 @@ class IndexTemplateNodeWriteSerializer(serializers.ModelSerializer):
                 'index_template_node_id': obj.pk
             }, format=self.context['format'], request=self.context['request']
         )
-
-    def validate(self, attrs):
-        parent = attrs.get('parent', None)
-        if not parent:
-            raise ValidationError(
-                {'parent': [_('Parent cannot be empty.')]}
-            )
-        else:
-            if not self.context['index_template'].index_template_nodes.filter(id=parent.pk).exists():
-                raise ValidationError(
-                    {
-                        'parent': [
-                            _('Parent must be from the same index template.')
-                        ]
-                    }
-                )
-
-        return attrs
 
 
 class IndexTemplateSerializer(serializers.HyperlinkedModelSerializer):

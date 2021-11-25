@@ -11,6 +11,17 @@
 - Fix document version first page thumbnail image resolution.
   Closes GitLab issue #1063. Thanks to Will Wright (@fireatwill)
   for the report and the patch.
+- Add libjpeg and libpng to the dev setup target.
+- Fix editing OCR content via the API.
+- Fix the ``AdvancedSearchViewTestCaseMixin`` class. It had
+  ``GenericViewTestCase`` as a base class when it is supposed to be a mixin
+  and not have any.
+- Add ``AutoHelpTextLabelFieldMixin``. This mixin tried to extract the
+  label and help text from the model field when the serializer field does
+  not specify any.
+- Add filtering to the ``parent`` field of the index template node
+  serializers. Restrict options to the current index template and allows
+  removing the now redundant validation.
 
 4.1.3 (2021-11-02)
 ==================
