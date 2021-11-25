@@ -17,7 +17,6 @@ class ACLSerializer(
     CreateOnlyFieldSerializerMixin, serializers.ModelSerializer
 ):
     content_type = ContentTypeSerializer(read_only=True)
-
     permissions_add_url = MultiKwargHyperlinkedIdentityField(
         view_name='rest_api:accesscontrollist-permission-add',
         view_kwargs=(
@@ -39,7 +38,6 @@ class ACLSerializer(
             }
         ),
     )
-
     permissions_remove_url = MultiKwargHyperlinkedIdentityField(
         view_name='rest_api:accesscontrollist-permission-remove',
         view_kwargs=(
@@ -61,7 +59,6 @@ class ACLSerializer(
             }
         ),
     )
-
     permissions_url = MultiKwargHyperlinkedIdentityField(
         view_name='rest_api:accesscontrollist-permission-list',
         view_kwargs=(
@@ -83,10 +80,8 @@ class ACLSerializer(
             }
         ),
     )
-
     role = RoleSerializer(read_only=True)
     role_id = serializers.IntegerField(write_only=True)
-
     url = MultiKwargHyperlinkedIdentityField(
         view_name='rest_api:accesscontrollist-detail',
         view_kwargs=(
