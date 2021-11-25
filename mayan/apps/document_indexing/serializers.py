@@ -216,6 +216,9 @@ class IndexTemplateSerializer(serializers.HyperlinkedModelSerializer):
         ), lookup_url_kwarg='index_template_id',
         view_name='rest_api:indextemplate-documenttype-remove'
     )
+    index_template_root_node_id = serializers.PrimaryKeyRelatedField(
+        source='index_template_root_node', read_only=True
+    )
     nodes_url = serializers.SerializerMethodField(read_only=True)
     rebuild_url = serializers.HyperlinkedIdentityField(
         lookup_url_kwarg='index_template_id',
@@ -236,14 +239,15 @@ class IndexTemplateSerializer(serializers.HyperlinkedModelSerializer):
         }
         fields = (
             'document_types_add_url', 'document_types_url',
-            'document_types_remove_url', 'enabled', 'id', 'label',
-            'nodes_url', 'rebuild_url', 'reset_url', 'slug', 'url'
+            'document_types_remove_url', 'enabled', 'id',
+            'index_template_root_node_id', 'label', 'nodes_url',
+            'rebuild_url', 'reset_url', 'slug', 'url'
         )
         model = IndexTemplate
         read_only_fields = (
             'document_types_add_url', 'document_types_url',
-            'document_types_remove_url', 'id', 'nodes_url', 'rebuild_url',
-            'reset_url', 'url'
+            'document_types_remove_url', 'id', 'index_template_root_node_id',
+            'nodes_url', 'rebuild_url', 'reset_url', 'url'
         )
 
     def get_url(self, obj):

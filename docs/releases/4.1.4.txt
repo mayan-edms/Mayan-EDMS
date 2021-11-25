@@ -51,6 +51,7 @@ Issues closed
 Issues addressed
 ----------------
 
+- :gitlab-issue:`1061` [4.1] [API] index_template impossible to create node ONLY from the API
 - :gitlab-issue:`1063` Document version thumbnails are served up as full resolution and not transformed as expected
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

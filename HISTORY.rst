@@ -22,6 +22,9 @@
 - Add filtering to the ``parent`` field of the index template node
   serializers. Restrict options to the current index template and allows
   removing the now redundant validation.
+- Add ``index_template_root_node_id`` field to the index template
+  serializer. Closes GitLab issue #1061. Thanks to
+  Ludovic Anterieur(@lanterieur) for the report and initial implementation.
 
 4.1.3 (2021-11-02)
 ==================
