@@ -502,7 +502,7 @@ check-missing-inits:
 	@contrib/scripts/find_missing_inits.py
 
 setup-dev-environment: ## Bootstrap a virtualenv by install all dependencies to start developing.
-	sudo apt-get install --yes exiftool firefox-geckodriver gcc gettext gnupg1 graphviz poppler-utils python3-dev sane-utils tesseract-ocr-deu
+	sudo apt-get install --yes exiftool firefox-geckodriver gcc gettext gnupg1 graphviz libjpeg-dev libpng-dev poppler-utils python3-dev sane-utils tesseract-ocr-deu
 	pip install --requirement requirements.txt --requirement requirements/development.txt --requirement requirements/testing-base.txt --requirement requirements/documentation.txt --requirement requirements/build.txt
 
 setup-python-mysql:
