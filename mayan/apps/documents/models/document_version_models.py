@@ -202,7 +202,7 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
         first_page = self.pages.first()
         if first_page:
             return first_page.get_api_image_url(
-                maximum_layer_order=None, transformation_instance_list=None,
+                maximum_layer_order=maximum_layer_order, transformation_instance_list=transformation_instance_list,
                 user=user
             )
         else:
