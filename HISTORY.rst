@@ -8,6 +8,10 @@
   - Improve lock manager test cases.
   - Add standalone Celery beat container.
 
+- Fix document version first page thumbnail image resolution.
+  Closes GitLab issue #1063. Thanks to Will Wright (@fireatwill)
+  for the report and the patch.
+
 4.1.3 (2021-11-02)
 ==================
 - Vagrant updates
