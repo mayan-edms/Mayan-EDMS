@@ -1,5 +1,5 @@
-4.0.21 (2021-XX-XX)
-==================
+4.0.21 (2021-11-27)
+===================
 - Perform more strict cleanup of test models.
 - Clean up the test model app config cache after the test
   end not before the test model is created.
@@ -11,6 +11,10 @@
 - Backport asset image cache invalidation.
 - Backport asset duplication fix.
 - Backport asset percentage position calculation fix.
+- Add an explicit default value for ``MEDIA_URL``. Ensures forward
+  compatibility with future login dependency versions.
+- Move meta tags to their own partial template.
+- Add libjpeg and libpng to the dev setup target.
 
 4.0.20 (2021-11-08)
 ===================
