@@ -9,6 +9,8 @@
   Moved to two functions to allow subclasses to modify
   how the cache hash is calculated.
 - Backport asset image cache invalidation.
+- Backport asset duplication fix.
+- Backport asset percentage position calculation fix.
 
 4.0.20 (2021-11-08)
 ===================

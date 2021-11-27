@@ -263,9 +263,7 @@ class TransformationAssetPastePercent(TransformationAssetPaste):
     label = _('Paste an asset (percents coordinates)')
     name = 'paste_asset_percent'
 
-    def execute_on(self, *args, **kwargs):
-        super().execute_on(*args, **kwargs)
-
+    def _execute_on(self, *args, **kwargs):
         try:
             left = float(self.left or '0')
         except ValueError:
@@ -288,12 +286,18 @@ class TransformationAssetPastePercent(TransformationAssetPaste):
         if top > 100:
             top = 100
 
-        self.left = left / 100.0 * self.image.size[0]
-        self.top = top / 100.0 * self.image.size[1]
-        self.align_horizontal = 'center'
-        self.align_vertical = 'middle'
+        result = self.get_asset_images()
 
-        return self._execute_on(self, *args, **kwargs)
+        self.left = left / 100.0 * (
+            self.image.size[0] - result['image_asset'].size[0]
+        )
+        self.top = top / 100.0 * (
+            self.image.size[1] - result['image_asset'].size[1]
+        )
+        self.align_horizontal = 'left'
+        self.align_vertical = 'top'
+
+        return super()._execute_on(self, *args, **kwargs)
 
 
 class TransformationAssetWatermark(
