@@ -5,6 +5,9 @@
   end not before the test model is created.
 - Improve lock manager test cases.
 - Add standalone Celery beat container.
+- Backport transformation ``cache_hash`` method split.
+  Moved to two functions to allow subclasses to modify
+  how the cache hash is calculated.
 
 4.0.20 (2021-11-08)
 ===================

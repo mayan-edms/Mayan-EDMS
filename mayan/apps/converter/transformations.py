@@ -111,15 +111,18 @@ class BaseTransformation(metaclass=BaseTransformationType):
             setattr(self, argument_name, kwargs.get(argument_name))
             self.kwargs[argument_name] = kwargs.get(argument_name)
 
-    def cache_hash(self):
+    def _update_hash(self):
         result = hashlib.sha256(force_bytes(s=self.name))
 
-        # Sort arguments for guaranteed repeatability
+        # Sort arguments for guaranteed repeatability.
         for key, value in sorted(self.kwargs.items()):
             result.update(force_bytes(s=key))
             result.update(force_bytes(s=value))
 
-        return force_bytes(s=result.hexdigest())
+        return result
+
+    def cache_hash(self):
+        return force_bytes(s=self._update_hash().hexdigest())
 
     def execute_on(self, image):
         self.image = image
