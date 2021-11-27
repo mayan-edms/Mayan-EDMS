@@ -77,4 +77,3 @@ class DecorationTestCase(AssetTestMixin, GenericDocumentTestCase):
                 )
             ), test_asset_pixel_color
         )
-
