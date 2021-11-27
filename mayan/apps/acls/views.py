@@ -111,7 +111,9 @@ class ACLDeleteView(SingleObjectDeleteView):
         )
 
 
-class ACLListView(ContentTypeViewMixin, ExternalObjectViewMixin, SingleObjectListView):
+class ACLListView(
+    ContentTypeViewMixin, ExternalObjectViewMixin, SingleObjectListView
+):
     content_type_url_kw_args = {
         'app_label': 'app_label',
         'model_name': 'model_name'

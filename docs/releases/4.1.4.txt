@@ -1,0 +1,57 @@
+Version 4.1.4
+=============
+
+Released: XX, 2021
+
+Status: Stable
+
+Changes
+-------
+
+
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`1053` Paste an asset (percents coordinates) transformation duplicates asset
+
+
+Issues addressed
+----------------
+
+- :gitlab-issue:`1061` [4.1] [API] index_template impossible to create node ONLY from the API
+- :gitlab-issue:`1063` Document version thumbnails are served up as full resolution and not transformed as expected
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

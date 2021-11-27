@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:55+0000\n"
+"POT-Creation-Date: 2021-11-25 10:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Harald Ersch, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -180,7 +180,7 @@ msgid "Check expired checkouts"
 msgstr ""
 "Consemnați drept intrate documentele cu consemnarea de ieșire expirată"
 
-#: serializers.py:31
+#: serializers.py:32
 msgid "Primary key of the document to be checked out."
 msgstr "Cheia primară a documentului care urmează să fie consemnat ca ieșit."
 

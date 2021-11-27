@@ -568,7 +568,7 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
         attrs = {
             '__module__': self.__class__.__module__,
             'save': self._get_test_model_save_method(),
-            'Meta': self._get_test_model_meta(),
+            'Meta': self._get_test_model_meta()
         }
 
         if fields:

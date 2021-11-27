@@ -7,7 +7,7 @@ class DocumentVersionPageOCRContentSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('content',)
         model = DocumentVersionPageOCRContent
-        read_only_fields = ('content',)
+        read_only_fields = ()
 
 
 class DocumentTypeOCRSettingsSerializer(serializers.ModelSerializer):

@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2021-11-25 10:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -663,31 +663,31 @@ msgstr "Einen Workflow starten"
 msgid "Document workflow transition comment"
 msgstr ""
 
-#: serializers.py:65
+#: serializers.py:70
 msgid "Primary key of the document type to add to the workflow."
 msgstr ""
 
-#: serializers.py:74
+#: serializers.py:79
 msgid "Primary key of the document type to remove from the workflow."
 msgstr ""
 
-#: serializers.py:219
+#: serializers.py:228
 msgid "Primary key of the destination state to be added."
 msgstr "Primärschlüssel  des hinzuzufügenden Zielstatus."
 
-#: serializers.py:227
+#: serializers.py:236
 msgid "Primary key of the origin state to be added."
 msgstr "Primärschlüssel des hinzuzufügenden Herkunftsstatus."
 
-#: serializers.py:313
+#: serializers.py:319
 msgid "Primary key of the transition to be added."
 msgstr "Primärschlüssel  des hinzuzufügenden Übergangs."
 
-#: serializers.py:393
+#: serializers.py:403
 msgid "A link to the entire history of this workflow."
 msgstr "Ein Link zur kompletten Historie dieses Workflows."
 
-#: serializers.py:402
+#: serializers.py:412
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."

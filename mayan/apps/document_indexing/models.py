@@ -166,7 +166,8 @@ class IndexTemplateNode(MPTTModel):
     documents but not both.
     """
     parent = TreeForeignKey(
-        blank=True, null=True, on_delete=models.CASCADE,
+        blank=True, help_text=_('Parent index template node of this node.'),
+        null=True, on_delete=models.CASCADE,
         related_name='children', to='self'
     )
     index = models.ForeignKey(

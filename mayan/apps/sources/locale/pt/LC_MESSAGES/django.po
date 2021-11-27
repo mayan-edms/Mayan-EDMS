@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2021-11-25 10:56+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
@@ -407,11 +407,11 @@ msgstr ""
 msgid "SANE Scanner"
 msgstr ""
 
-#: source_backends/sane_scanner_backends.py:102
+#: source_backends/sane_scanner_backends.py:106
 msgid "Document properties"
 msgstr ""
 
-#: source_backends/sane_scanner_backends.py:103
+#: source_backends/sane_scanner_backends.py:107
 msgid "Scan"
 msgstr ""
 
@@ -577,16 +577,16 @@ msgstr ""
 msgid "Submit"
 msgstr "Submeter"
 
-#: views/document_views.py:39
+#: views/document_views.py:38
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
 msgstr ""
 
-#: views/document_views.py:58
+#: views/document_views.py:57
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 
-#: views/document_views.py:84
+#: views/document_views.py:83
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""

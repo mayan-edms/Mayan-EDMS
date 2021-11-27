@@ -39,7 +39,31 @@
 
 4.1.4 (2021-XX-XX)
 ==================
-- Merges from version 4.0.20.
+- Changes merged from versions 4.0.20 and 4.0.21.
+
+  - Perform more strict cleanup of test models.
+  - Clean up the test model app config cache after the test
+    end not before the test model is created.
+  - Improve lock manager test cases.
+  - Add standalone Celery beat container.
+
+- Fix document version first page thumbnail image resolution.
+  Closes GitLab issue #1063. Thanks to Will Wright (@fireatwill)
+  for the report and the patch.
+- Add libjpeg and libpng to the dev setup target.
+- Fix editing OCR content via the API.
+- Fix the ``AdvancedSearchViewTestCaseMixin`` class. It had
+  ``GenericViewTestCase`` as a base class when it is supposed to be a mixin
+  and not have any.
+- Add ``AutoHelpTextLabelFieldMixin``. This mixin tried to extract the
+  label and help text from the model field when the serializer field does
+  not specify any.
+- Add filtering to the ``parent`` field of the index template node
+  serializers. Restrict options to the current index template and allows
+  removing the now redundant validation.
+- Add ``index_template_root_node_id`` field to the index template
+  serializer. Closes GitLab issue #1061. Thanks to
+  Ludovic Anterieur(@lanterieur) for the report and initial implementation.
 
 4.1.3 (2021-11-02)
 ==================
@@ -572,6 +596,24 @@
 - Add document template state action API endpoints. Closes GitLab issue #1043
   Thanks to Ludovic Anterieur (@lanterieur) for the request.
 - Pin jsonschema to version 3.2.0 to avoid errors with
+
+4.0.21 (2021-11-27)
+===================
+- Perform more strict cleanup of test models.
+- Clean up the test model app config cache after the test
+  end not before the test model is created.
+- Improve lock manager test cases.
+- Add standalone Celery beat container.
+- Backport transformation ``cache_hash`` method split.
+  Moved to two functions to allow subclasses to modify
+  how the cache hash is calculated.
+- Backport asset image cache invalidation.
+- Backport asset duplication fix.
+- Backport asset percentage position calculation fix.
+- Add an explicit default value for ``MEDIA_URL``. Ensures forward
+  compatibility with future login dependency versions.
+- Move meta tags to their own partial template.
+- Add libjpeg and libpng to the dev setup target.
 
 4.0.20 (2021-11-08)
 ===================
