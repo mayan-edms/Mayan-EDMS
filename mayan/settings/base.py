@@ -246,6 +246,8 @@ LANGUAGES = (
     ('zh-hans', _('Chinese (Simplified)'))
 )
 
+MEDIA_URL = 'media/'
+
 SITE_ID = 1
 
 STATIC_ROOT = os.environ.get(
