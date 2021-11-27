@@ -52,35 +52,22 @@ def task_index_instance(
 ):
     logger.info('Executing')
 
-    try:
-        Model = apps.get_model(app_label=app_label, model_name=model_name)
-        if exclude_app_label and exclude_model_name:
-            ExcludeModel = apps.get_model(
-                app_label=exclude_app_label, model_name=exclude_model_name
-            )
-        else:
-            ExcludeModel = None
-
-    except LookupError:
-        """
-        The app or model does not exists anymore. Non fatal, just exit
-        the task.
-        """
+    Model = apps.get_model(app_label=app_label, model_name=model_name)
+    if exclude_app_label and exclude_model_name:
+        ExcludeModel = apps.get_model(
+            app_label=exclude_app_label, model_name=exclude_model_name
+        )
     else:
-        try:
-            instance = Model._meta.default_manager.get(pk=object_id)
-        except Model.DoesNotExist:
-            """
-            This is not fatal, the task is triggered on the post_save
-            signal and the instance might still not be ready to access.
-            """
-        else:
-            try:
-                SearchBackend.get_instance().index_instance(
-                    instance=instance, exclude_model=ExcludeModel,
-                    exclude_kwargs=exclude_kwargs
-                )
-            except LockError as exception:
-                raise self.retry(exc=exception)
+        ExcludeModel = None
+
+    instance = Model._meta.default_manager.get(pk=object_id)
+
+    try:
+        SearchBackend.get_instance().index_instance(
+            instance=instance, exclude_model=ExcludeModel,
+            exclude_kwargs=exclude_kwargs
+        )
+    except LockError as exception:
+        raise self.retry(exc=exception)
 
     logger.info('Finished')
