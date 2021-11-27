@@ -8,6 +8,7 @@
 - Backport transformation ``cache_hash`` method split.
   Moved to two functions to allow subclasses to modify
   how the cache hash is calculated.
+- Backport asset image cache invalidation.
 
 4.0.20 (2021-11-08)
 ===================

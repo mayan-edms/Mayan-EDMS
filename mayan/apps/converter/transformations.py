@@ -137,7 +137,26 @@ class AssetTransformationMixin:
         )
         return arguments
 
-    def get_asset_images(self, asset_name):
+    def _update_hash(self):
+        result = super()._update_hash()
+        asset = self.get_asset()
+        result = hashlib.sha256(force_bytes(s=asset.get_hash()))
+        return result
+
+    def get_asset(self):
+        asset_name = getattr(self, 'asset_name', None)
+
+        Asset = apps.get_model(app_label='converter', model_name='Asset')
+
+        try:
+            asset = Asset.objects.get(internal_name=asset_name)
+        except Asset.DoesNotExist:
+            logger.error('Asset "%s" not found.', asset_name)
+            raise
+        else:
+            return asset
+
+    def get_asset_images(self):
         try:
             transparency = float(self.transparency or '100.0')
         except ValueError:
@@ -158,40 +177,34 @@ class AssetTransformationMixin:
         except ValueError:
             zoom = 100.0
 
-        Asset = apps.get_model(app_label='converter', model_name='Asset')
+        asset = self.get_asset()
 
-        try:
-            asset = Asset.objects.get(internal_name=asset_name)
-        except Asset.DoesNotExist:
-            logger.error('Asset "%s" not found.', asset_name)
-            raise
-        else:
-            image_asset = asset.get_image()
+        image_asset = asset.get_image()
 
-            if image_asset.mode != 'RGBA':
-                image_asset.putalpha(alpha=255)
+        if image_asset.mode != 'RGBA':
+            image_asset.putalpha(alpha=255)
 
-            image_asset = image_asset.rotate(
-                angle=360 - rotation, resample=Image.BICUBIC,
-                expand=True
+        image_asset = image_asset.rotate(
+            angle=360 - rotation, resample=Image.BICUBIC,
+            expand=True
+        )
+
+        if zoom != 100.0:
+            decimal_value = zoom / 100.0
+            image_asset = image_asset.resize(
+                size=(
+                    int(image_asset.size[0] * decimal_value),
+                    int(image_asset.size[1] * decimal_value)
+                ), resample=Image.ANTIALIAS
             )
 
-            if zoom != 100.0:
-                decimal_value = zoom / 100.0
-                image_asset = image_asset.resize(
-                    size=(
-                        int(image_asset.size[0] * decimal_value),
-                        int(image_asset.size[1] * decimal_value)
-                    ), resample=Image.ANTIALIAS
-                )
+        paste_mask = image_asset.getchannel(channel='A').point(
+            lambda i: i * transparency / 100.0
+        )
 
-            paste_mask = image_asset.getchannel(channel='A').point(
-                lambda i: i * transparency / 100.0
-            )
-
-            return {
-                'image_asset': image_asset, 'paste_mask': paste_mask
-            }
+        return {
+            'image_asset': image_asset, 'paste_mask': paste_mask
+        }
 
 
 class TransformationAssetPaste(AssetTransformationMixin, BaseTransformation):
@@ -216,7 +229,7 @@ class TransformationAssetPaste(AssetTransformationMixin, BaseTransformation):
             align_horizontal = getattr(self, 'align_horizontal', 'left')
             align_vertical = getattr(self, 'align_vertical', 'top')
 
-            result = self.get_asset_images(asset_name=asset_name)
+            result = self.get_asset_images()
             if result:
                 if align_horizontal == 'left':
                     left = left
@@ -318,7 +331,7 @@ class TransformationAssetWatermark(
         asset_name = getattr(self, 'asset_name', None)
 
         if asset_name:
-            result = self.get_asset_images(asset_name=asset_name)
+            result = self.get_asset_images()
             if result:
                 try:
                     horizontal_increment = int(self.horizontal_increment or '0')
