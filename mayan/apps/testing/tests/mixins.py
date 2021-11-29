@@ -320,7 +320,6 @@ class RandomPrimaryKeyModelMonkeyPatchMixin:
 
                     return result
 
-
             setattr(models.Model, 'save', method_save_new)
         super().setUp()
 

@@ -1,6 +1,6 @@
-from django.db import models, transaction
+from django.db import models
 
-from mayan.apps.testing.tests.base import BaseTestCase, BaseTransactionTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..classes import QuerysetParametersSerializer
 
