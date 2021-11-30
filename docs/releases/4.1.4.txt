@@ -51,7 +51,9 @@ Issues closed
 Issues addressed
 ----------------
 
+- :gitlab-issue:`1057` [4.1] Responsive Design: closing navigation menu redirects to home page
 - :gitlab-issue:`1061` [4.1] [API] index_template impossible to create node ONLY from the API
 - :gitlab-issue:`1063` Document version thumbnails are served up as full resolution and not transformed as expected
+- :gitlab-issue:`1065` [4.1.3] Task mayan.apps.sources.tasks.task_source_process_document raises unexpected LockError
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

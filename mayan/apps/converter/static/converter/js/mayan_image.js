@@ -6,7 +6,7 @@ class MayanImage {
         this.load();
     }
 
-    static intialize (options) {
+    static async setup (options) {
         this.options = options || {};
         this.options.templateInvalidImage = this.options.templateInvalidImage || '<span>Error loading image</span>';
 
@@ -26,23 +26,25 @@ class MayanImage {
             infobar: true,
             selector: 'a.fancybox',
         });
+    }
 
+    static async intialize () {
         $('img.lazy-load').lazyload({
-            appear: function(elements_left, settings) {
+            appear: async function(elements_left, settings) {
                 new MayanImage({element: $(this)});
             },
             threshold: 400,
         });
 
         $('img.lazy-load-carousel').lazyload({
-            appear: function(elements_left, settings) {
+            appear: async function(elements_left, settings) {
                 new MayanImage({element: $(this)});
             },
             container: $('#carousel-container'),
             threshold: 2000,
         });
 
-        $('.lazy-load').one('load', function() {
+        $('.lazy-load').on('load', function() {
             const $this = $(this);
 
             $this.siblings('.spinner-container').remove();
@@ -51,7 +53,7 @@ class MayanImage {
             MayanImage.timer = setTimeout(MayanImage.timerFunction, 250);
         });
 
-        $('.lazy-load-carousel').one('load', function() {
+        $('.lazy-load-carousel').on('load', function() {
             const $this = $(this);
 
             $this.siblings('.spinner-container').remove();
@@ -63,7 +65,7 @@ class MayanImage {
         $.fn.matchHeight._update();
     }
 
-    load () {
+    async load () {
         const self = this;
         const container = this.element.parent().parent().parent();
         const dataURL = this.element.attr('data-url');

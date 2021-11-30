@@ -473,6 +473,33 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
     auto_create_test_object_instance_kwargs = None
     auto_create_test_object_permission = False
 
+    @staticmethod
+    def _delete_test_model(model):
+        ModelPermission.deregister(model=model)
+
+        content_type = ContentType.objects.get_for_model(model=model)
+        if content_type.pk:
+            content_type.delete()
+
+        # Only attempt to delete if the model was not deleted as part
+        # of the previous main test model deletion.
+        TestModelTestCaseMixin._unregister_model(
+            app_label=model._meta.app_label, model_name=model._meta.model_name
+        )
+
+        ContentType.objects.clear_cache()
+        apps.clear_cache()
+
+    @staticmethod
+    def _unregister_model(app_label, model_name):
+        try:
+            del apps.all_models[app_label][model_name]
+            del apps.app_configs[app_label].models[model_name]
+        except KeyError:
+            """
+            Non fatal. Means the model was deleted in the first attempt.
+            """
+
     @classmethod
     def setUpClass(cls):
         if connection.vendor == 'sqlite':
@@ -480,10 +507,31 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
 
         super().setUpClass()
 
+    def _delete_test_models(self):
+        # Delete the test models' content type entries and deregister the
+        # permissions, this avoids their Content Type from being looked up
+        # in subsequent tests where they don't exists due to the database
+        # transaction rollback.
+
+        # Clear previous model registration before re-registering it again to
+        # avoid conflict with test models with the same name, in the same app
+        # but from another test module.
+        self._test_models.reverse()
+
+        for model in self._test_models:
+            model.objects.all().delete()
+
+        for model in self._test_models:
+            TestModelTestCaseMixin._delete_test_model(model=model)
+
+        for model in self._test_models_extra:
+            TestModelTestCaseMixin._delete_test_model(model=model)
+
     def setUp(self):
         self._test_models = []
         self._test_models_extra = set()
         self.test_objects = []
+        self._test_migrations = []
 
         super().setUp()
 
@@ -495,59 +543,14 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
             )
 
     def tearDown(self):
-        # Delete the test models' content type entries and deregister the
-        # permissions, this avoids their Content Type from being looked up
-        # in subsequent tests where they don't exists due to the database
-        # transaction rollback.
-
-        # Clear previous model registration before re-registering it again to
-        # avoid conflict with test models with the same name, in the same app
-        # but from another test module.
-
-        for model in self._test_models:
-            model.objects.all().delete()
-
-        for model in self._test_models:
-            ModelPermission.deregister(model=model)
-
-            content_type = ContentType.objects.get_for_model(model=model)
-            if content_type.pk:
-                content_type.delete()
-
-            if not model._meta.proxy:
-                with connection.schema_editor() as schema_editor:
-                    schema_editor.delete_model(model=model)
-
-            del apps.all_models[model._meta.app_label][model._meta.model_name]
-
-            ContentType.objects.clear_cache()
-            apps.clear_cache()
-
-        for model in self._test_models_extra:
-            ModelPermission.deregister(model=model)
-
-            content_type = ContentType.objects.get_for_model(model=model)
-            if content_type.pk:
-                content_type.delete()
-
-            # Only attempt to deleted if the model was not deleted as part
-            # of the previous main test model deletion.
-            if model in apps.all_models[model._meta.app_label]:
-                if not model._meta.proxy:
-                    with connection.schema_editor() as schema_editor:
-                        schema_editor.delete_model(model=model)
-
-            del apps.all_models[model._meta.app_label][model._meta.model_name]
-
-            ContentType.objects.clear_cache()
-            apps.clear_cache()
-
+        self._delete_test_models()
         super().tearDown()
 
     def _create_test_model(
-        self, base_class=models.Model, fields=None, model_name=None,
+        self, base_class=None, fields=None, model_name=None,
         options=None
     ):
+        base_class = base_class or models.Model
         test_model_count = len(self._test_models)
         self._test_model_name = model_name or '{}_{}'.format(
             'TestModel', test_model_count
@@ -567,7 +570,6 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
 
         attrs = {
             '__module__': self.__class__.__module__,
-            'save': self._get_test_model_save_method(),
             'Meta': self._get_test_model_meta()
         }
 
@@ -638,21 +640,6 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
                 setattr(Meta, key, value)
 
         return Meta
-
-    def _get_test_model_save_method(self):
-        def save(instance, *args, **kwargs):
-            # Custom .save() method to use random primary key values.
-            if instance.pk:
-                return models.Model.save(instance, *args, **kwargs)
-            else:
-                instance.pk = RandomPrimaryKeyModelMonkeyPatchMixin.get_unique_primary_key(
-                    model=instance._meta.model
-                )
-                instance.id = instance.pk
-
-                kwargs['force_insert'] = True
-                return instance.save_base(*args, **kwargs)
-        return save
 
 
 class TestServerTestCaseMixin:

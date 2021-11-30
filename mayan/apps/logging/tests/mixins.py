@@ -7,7 +7,7 @@ from ..classes import ErrorLog
 from .literals import TEST_ERROR_LOG_ENTRY_RESULT
 
 
-class LoggingTextMixin:
+class ErrorLoggingTextMixin:
     def _create_error_log_test_object(self):
         self._create_test_user()
         self.test_model = get_user_model()
@@ -25,7 +25,7 @@ class LoggingTextMixin:
         )
 
 
-class LoggingViewTestMixin:
+class ErrorLoggingViewTestMixin:
     def _request_object_error_log_list_view(self):
         content_type = ContentType.objects.get_for_model(
             model=self.test_object

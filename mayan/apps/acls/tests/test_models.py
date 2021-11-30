@@ -503,7 +503,8 @@ class GenericForeignKeyFieldModelTestCase(ACLTestMixin, BaseTestCase):
         self.TestModelChild = self._create_test_model(
             fields={
                 'content_type': models.ForeignKey(
-                    on_delete=models.CASCADE, related_name='object_content_type',
+                    on_delete=models.CASCADE,
+                    related_name='object_content_type',
                     to=ContentType
                 ),
                 'object_id': models.CharField(max_length=255),

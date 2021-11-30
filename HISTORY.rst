@@ -64,6 +64,19 @@
 - Add ``index_template_root_node_id`` field to the index template
   serializer. Closes GitLab issue #1061. Thanks to
   Ludovic Anterieur(@lanterieur) for the report and initial implementation.
+- Fix responsive menu close button triggering home navigation. Closes
+  GitLab issue #1057. Thanks to Raimar Sandner (@PiQuer) for the report and
+  debug information.
+- JavaScript optimizations:
+
+  - Cache argument length when in ``.fn.hasAnyClass``.
+  - Configure fancybox just once.
+  - Set converter image functions as ``async``.
+  - Remove jQuery's ``one`` usage.
+
+- Remove the error logger model locking and cache the model value instead
+  at the time of registration. Closes GitLab issue #1065. Thanks to
+  Will Wright (@fireatwill) for the report and debug information.
 
 4.1.3 (2021-11-02)
 ==================
@@ -597,7 +610,7 @@
   Thanks to Ludovic Anterieur (@lanterieur) for the request.
 - Pin jsonschema to version 3.2.0 to avoid errors with
 
-4.0.21 (2021-11-27)
+4.0.21 (2021-11-29)
 ===================
 - Perform more strict cleanup of test models.
 - Clean up the test model app config cache after the test

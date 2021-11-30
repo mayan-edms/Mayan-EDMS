@@ -5,8 +5,6 @@ from django.db.models.signals import pre_delete
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.menus import menu_list_facet
-from mayan.apps.lock_manager.backends.base import LockingBackend
-from mayan.apps.lock_manager.exceptions import LockError
 
 from .links import link_object_error_list
 from .literals import DEFAULT_ERROR_LOG_PARTITION_ENTRY_LIMIT
@@ -17,6 +15,10 @@ logger = logging.getLogger(name=__name__)
 
 class ErrorLog:
     _registry = {}
+
+    @classmethod
+    def all(cls):
+        return cls._registry
 
     @classmethod
     def get(cls, name):
@@ -31,38 +33,21 @@ class ErrorLog:
     def __str__(self):
         return str(self.app_config.verbose_name)
 
-    @property
-    def model(self):
+    def register_model(self, model, register_permission=False):
         ErrorLogModel = apps.get_model(
             app_label='logging', model_name='ErrorLog'
         )
-
-        lock_id = 'logging-get-or-create-errorlogmodel-{}'.format(self.app_config.name)
-
         try:
-            logger.debug('trying to acquire lock: %s', lock_id)
-            lock = LockingBackend.get_backend().acquire_lock(lock_id)
-            logger.debug('acquired lock: %s', lock_id)
-        except LockError:
-            logger.debug('unable to obtain lock: %s' % lock_id)
-            raise
-        else:
-            try:
-                model, created = ErrorLogModel.objects.get_or_create(
-                    name=self.app_config.name
-                )
-            except ErrorLogModel.MultipleObjectsReturned:
-                # Self heal previously repeated entries
-                ErrorLogModel.objects.filter(name=self.app_config.name).delete()
-                model, created = ErrorLogModel.objects.get_or_create(
-                    name=self.app_config.name
-                )
-            else:
-                return model
-            finally:
-                lock.release()
+            self.model, created = ErrorLogModel.objects.get_or_create(
+                name=self.app_config.name
+            )
+        except ErrorLogModel.MultipleObjectsReturned:
+            # Self heal previously repeated entries.
+            ErrorLogModel.objects.filter(name=self.app_config.name).delete()
+            self.model, created = ErrorLogModel.objects.get_or_create(
+                name=self.app_config.name
+            )
 
-    def register_model(self, model, register_permission=False):
         error_log_instance = self
 
         @property
