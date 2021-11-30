@@ -117,7 +117,8 @@ class PartialNavigation {
         }
 
         if ($this.hasAnyClass(this.disabledAnchorClasses)) {
-            return false;
+            event.preventDefault();
+            return;
         }
 
         if ($this.parents().hasAnyClass(this.disabledAnchorClasses)) {

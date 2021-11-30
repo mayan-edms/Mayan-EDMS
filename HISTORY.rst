@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 4.1.4 (2021-XX-XX)
 ==================
 - Changes merged from versions 4.0.20 and 4.0.21.
@@ -26,6 +25,9 @@
 - Add ``index_template_root_node_id`` field to the index template
   serializer. Closes GitLab issue #1061. Thanks to
   Ludovic Anterieur(@lanterieur) for the report and initial implementation.
+- Fix responsive menu close button triggering home navigation. Closes
+  GitLab issue #1057. Thanks to Raimar Sandner (@PiQuer) for the report and
+  debug information.
 
 4.1.3 (2021-11-02)
 ==================
