@@ -35,6 +35,10 @@
   - Set converter image functions as ``async``.
   - Remove jQuery's ``one`` usage.
 
+- Remove the error logger model locking and cache the model value instead
+  at the time of registration. Closes GitLab issue #1065. Thanks to
+  Will Wright (@fireatwill) for the report and debug information.
+
 4.1.3 (2021-11-02)
 ==================
 - Vagrant updates
