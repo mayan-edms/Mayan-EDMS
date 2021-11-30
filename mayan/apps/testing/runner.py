@@ -5,7 +5,7 @@ from django.test.runner import DiscoverRunner
 from .literals import EXCLUDE_TEST_TAG
 
 
-class NullMigrationsClass():
+class NullMigrationsClass:
     def __contains__(self, item):
         return True
 
