@@ -28,6 +28,12 @@
 - Fix responsive menu close button triggering home navigation. Closes
   GitLab issue #1057. Thanks to Raimar Sandner (@PiQuer) for the report and
   debug information.
+- JavaScript optimizations:
+
+  - Cache argument length when in ``.fn.hasAnyClass``.
+  - Configure fancybox just once.
+  - Set converter image functions as ``async``.
+  - Remove jQuery's ``one`` usage.
 
 4.1.3 (2021-11-02)
 ==================
