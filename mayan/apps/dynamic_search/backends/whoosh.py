@@ -5,6 +5,7 @@ import whoosh
 from whoosh import qparser
 from whoosh.filedb.filestore import FileStorage
 from whoosh.index import EmptyIndexError
+from whoosh.query import Every
 
 from django.conf import settings
 
@@ -164,6 +165,25 @@ class WhooshSearchBackend(SearchBackend):
         schema_kwargs = {key: value['field'] for key, value in field_map.items()}
 
         return whoosh.fields.Schema(**schema_kwargs)
+
+    def get_status(self):
+        result = []
+
+        title = 'Whoosh search model indexing status'
+        result.append(title)
+        result.append(len(title) * '=')
+
+        backend = SearchBackend.get_instance()
+
+        for search_model in SearchModel.all():
+            index = self.get_or_create_index(search_model=search_model)
+            search_results = index.searcher().search(Every('id'))
+
+            result.append(
+                '{}: {}'.format(search_model.label, search_results.estimated_length())
+            )
+
+        return result
 
     def get_storage(self):
         return FileStorage(path=self.index_path)
