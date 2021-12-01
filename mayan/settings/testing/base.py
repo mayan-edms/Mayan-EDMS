@@ -5,6 +5,14 @@ CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = True
 
 COMMON_HOME_VIEW_DASHBOARD_NAME = None
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': ':memory:'
+    }
+}
+
 DOCUMENT_PARSING_AUTO_PARSING = False
 
 FILE_METADATA_AUTO_PROCESS = False

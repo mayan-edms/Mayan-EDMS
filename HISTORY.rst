@@ -46,6 +46,7 @@
 - Normalize the error log partition name format using a static method.
 - Delete the error log partition on model instance deletion and not just the
   error log partition entries.
+- Ensure a memory database is used when running the tests.
 
 4.1.3 (2021-11-02)
 ==================
