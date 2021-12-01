@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-25 10:56+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -32,43 +32,43 @@ msgstr "Chyby"
 msgid "Clear errors"
 msgstr "Vymazat chyby"
 
-#: models.py:10 models.py:38
+#: models.py:9 models.py:37
 msgid "Internal name"
 msgstr "Vnitřní název"
 
-#: models.py:15 models.py:35
+#: models.py:14 models.py:34
 msgid "Error log"
 msgstr "Protokol chyb"
 
-#: models.py:16
+#: models.py:15
 msgid "Error logs"
 msgstr "Protokoly chyb"
 
-#: models.py:25
+#: models.py:24
 msgid "App label"
 msgstr "Štítek aplikace"
 
-#: models.py:43 models.py:60
+#: models.py:42 models.py:52
 msgid "Error log partition"
 msgstr "Oddíl protokolu chyb"
 
-#: models.py:44
+#: models.py:43
 msgid "Error log partitions"
 msgstr "Chybové logické oddíly"
 
-#: models.py:63
+#: models.py:55
 msgid "Date and time"
 msgstr "Datum a čas"
 
-#: models.py:65
+#: models.py:57
 msgid "Text"
 msgstr "Text"
 
-#: models.py:70
+#: models.py:62
 msgid "Error log partition entry"
 msgstr "Chyba záznamu logického oddílu"
 
-#: models.py:71
+#: models.py:63
 msgid "Error log partition entries"
 msgstr "Chyba záznamu oddílu oddílu"
 

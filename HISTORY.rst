@@ -37,7 +37,7 @@
   - Improve Traefik configuration.
   - Add a dedicated network for Traefik.
 
-4.1.4 (2021-XX-XX)
+4.1.4 (2021-12-01)
 ==================
 - Changes merged from versions 4.0.20 and 4.0.21.
 
@@ -55,7 +55,7 @@
 - Fix the ``AdvancedSearchViewTestCaseMixin`` class. It had
   ``GenericViewTestCase`` as a base class when it is supposed to be a mixin
   and not have any.
-- Add ``AutoHelpTextLabelFieldMixin``. This mixin tried to extract the
+- Add ``AutoHelpTextLabelFieldMixin``. This mixin tries to extract the
   label and help text from the model field when the serializer field does
   not specify any.
 - Add filtering to the ``parent`` field of the index template node
@@ -77,6 +77,15 @@
 - Remove the error logger model locking and cache the model value instead
   at the time of registration. Closes GitLab issue #1065. Thanks to
   Will Wright (@fireatwill) for the report and debug information.
+- Rename ``ErrorLog`` model to ``StoredErrorLog``. This change follow the
+  normal paradigm when a service is provided by a model and a runtime class.
+- Make the ``StoredErrorLog`` name field unique to ensure ``get_or_create``
+  works in an atomic way.
+- Create the error log partition when the model instance is created.
+- Normalize the error log partition name format using a static method.
+- Delete the error log partition on model instance deletion and not just the
+  error log partition entries.
+- Ensure a memory database is used when running the tests.
 
 4.1.3 (2021-11-02)
 ==================

@@ -481,6 +481,13 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
         if content_type.pk:
             content_type.delete()
 
+        # Only attempt to deleted if the model was not deleted as part
+        # of the previous main test model deletion.
+        if model in apps.all_models[model._meta.app_label] or model in apps.app_configs[model._meta.app_label].models:
+            if not model._meta.proxy:
+                with connection.schema_editor() as schema_editor:
+                    schema_editor.delete_model(model=model)
+
         # Only attempt to delete if the model was not deleted as part
         # of the previous main test model deletion.
         TestModelTestCaseMixin._unregister_model(
