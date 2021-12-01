@@ -1,4 +1,4 @@
-4.1.4 (2021-XX-XX)
+4.1.4 (2021-12-01)
 ==================
 - Changes merged from versions 4.0.20 and 4.0.21.
 
@@ -16,7 +16,7 @@
 - Fix the ``AdvancedSearchViewTestCaseMixin`` class. It had
   ``GenericViewTestCase`` as a base class when it is supposed to be a mixin
   and not have any.
-- Add ``AutoHelpTextLabelFieldMixin``. This mixin tried to extract the
+- Add ``AutoHelpTextLabelFieldMixin``. This mixin tries to extract the
   label and help text from the model field when the serializer field does
   not specify any.
 - Add filtering to the ``parent`` field of the index template node
