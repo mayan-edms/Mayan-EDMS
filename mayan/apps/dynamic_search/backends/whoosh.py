@@ -14,6 +14,7 @@ from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError
 
 from ..classes import SearchBackend, SearchField, SearchModel
+from ..exceptions import DynamicSearchRetry
 from ..settings import setting_results_limit
 
 from .literals import (
@@ -172,8 +173,6 @@ class WhooshSearchBackend(SearchBackend):
         title = 'Whoosh search model indexing status'
         result.append(title)
         result.append(len(title) * '=')
-
-        backend = SearchBackend.get_instance()
 
         for search_model in SearchModel.all():
             index = self.get_or_create_index(search_model=search_model)

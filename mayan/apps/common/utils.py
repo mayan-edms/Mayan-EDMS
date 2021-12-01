@@ -14,6 +14,36 @@ from .literals import DJANGO_SQLITE_BACKEND
 logger = logging.getLogger(name=__name__)
 
 
+class ProgressBar:
+    def __init__(
+        self, total, prefix=None, suffix=None,
+        decimal_places=1, length=100, fill_symbol='█', print_end='\r'
+    ):
+        self.total = total
+        self.prefix = prefix
+        self.suffix = suffix
+        self.decimal_places = decimal_places
+        self.length = length
+        self.fill_symbol = fill_symbol
+        self.print_end = print_end
+        self.template_percent = '{{0:.{}f}}'.format(self.decimal_places)
+
+    def update(self, index):
+        percent = self.template_percent.format(
+            index / self.total * 100.0
+        )
+        fill_size = int(self.length * index // self.total)
+        bar = '{}{}'.format(
+            self.fill_symbol * fill_size, '-' * (self.length - fill_size)
+        )
+        print(
+            f'\r{self.prefix} |{bar}| {percent}% {self.suffix}', end = self.print_end
+        )
+        # Print New Line on Complete
+        if index == self.total:
+            print()
+
+
 class Resolver:
     exceptions = ()
 
@@ -222,6 +252,16 @@ def get_related_field(model, related_field_name):
         )
 
     return related_field
+
+
+def parse_range(astr):
+    # http://stackoverflow.com/questions/4248399/
+    # page-range-for-printing-algorithm
+    result = set()
+    for part in astr.split(','):
+        x = part.split('-')
+        result.update(range(int(x[0]), int(x[-1]) + 1))
+    return sorted(result)
 
 
 def resolve_attribute(attribute, obj, kwargs=None):
