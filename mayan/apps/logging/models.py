@@ -1,13 +1,12 @@
-from django.apps import apps
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import ErrorLog as ErrorLogProxy
 
 
-class ErrorLog(models.Model):
+class StoredErrorLog(models.Model):
     name = models.CharField(
-        max_length=128, verbose_name=_('Internal name')
+        max_length=128, unique=True, verbose_name=_('Internal name')
     )
 
     class Meta:
@@ -31,8 +30,8 @@ class ErrorLog(models.Model):
 
 class ErrorLogPartition(models.Model):
     error_log = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='partitions', to=ErrorLog,
-        verbose_name=_('Error log')
+        on_delete=models.CASCADE, related_name='partitions',
+        to=StoredErrorLog, verbose_name=_('Error log')
     )
     name = models.CharField(
         db_index=True, max_length=128, verbose_name=_('Internal name')
@@ -45,13 +44,6 @@ class ErrorLogPartition(models.Model):
 
     def __str__(self):
         return self.name
-
-    def get_model_instance(self):
-        app_label, model_name, object_id = self.name.split('.')
-        Model = apps.get_model(
-            app_label=app_label, model_name=model_name
-        )
-        return Model._meta.default_manager.get(pk=object_id)
 
 
 class ErrorLogPartitionEntry(models.Model):

@@ -38,6 +38,14 @@
 - Remove the error logger model locking and cache the model value instead
   at the time of registration. Closes GitLab issue #1065. Thanks to
   Will Wright (@fireatwill) for the report and debug information.
+- Rename ``ErrorLog`` model to ``StoredErrorLog``. This change follow the
+  normal paradigm when a service is provided by a model and a runtime class.
+- Make the ``StoredErrorLog`` name field unique to ensure ``get_or_create``
+  works in an atomic way.
+- Create the error log partition when the model instance is created.
+- Normalize the error log partition name format using a static method.
+- Delete the error log partition on model instance deletion and not just the
+  error log partition entries.
 
 4.1.3 (2021-11-02)
 ==================
