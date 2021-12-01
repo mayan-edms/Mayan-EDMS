@@ -201,6 +201,8 @@ class WhooshSearchBackend(SearchBackend):
                             exception, exc_info=True
                         )
                         raise
+            except whoosh.index.LockError:
+                raise DynamicSearchRetry
             finally:
                 lock.release()
 
