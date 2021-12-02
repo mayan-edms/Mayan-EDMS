@@ -26,7 +26,7 @@ docker-build-with-proxy-push: docker-build-with-proxy docker-registry-push
 
 docker-dockerfile-update: ## Update the Dockerfile file from the platform template.
 docker-dockerfile-update: copy-config-env
-	./manage.py platformtemplate docker_dockerfile > Dockerfile
+	./manage.py platformtemplate docker_dockerfile > docker/Dockerfile
 
 docker-registry-push: ## Push a built image to the test Docker registry.
 	docker tag $(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION) $(DOCKER_HOST_REGISTRY_NAME):$(DOCKER_HOST_REGISTRY_PORT)/$(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION)
