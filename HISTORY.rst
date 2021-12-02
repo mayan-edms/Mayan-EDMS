@@ -37,7 +37,49 @@
   - Improve Traefik configuration.
   - Add a dedicated network for Traefik.
 
+- Completed the Whoosh backend and made it the default search backend.
+
+    - Ensure all test models are deleted, including intermediate many
+      to many models created automatically.
+    - Update ``DetailForm`` usage for the new interface.
+    - Move `flatten_list` to the common app.
+    - ResolverPipeline updates:
+
+      - Support ``resolver_extra_kwargs``.
+      - Add queryset exclusion support to ``ResolverRelatedManager``.
+
+    - Update related field resolution using pure Django
+    - Solve all search indexing edge cases.
+    - Models are indexed using smaller tasks to improve scalability.
+    - Refactor ``ResolverRelatedManager``. Use Django's internal
+      ``get_fields_from_path`` for related field introspection.
+      Support more related field cases.
+    - Trigger indexing on related model changes
+    - Fix lock manager management command test.
+    - Don't index `None` values in lists.
+    - Unify the search test mixins.
+    - Use ``TemporaryDirectory`` for test search backend. Do automatic
+      clean up of the temporary index directory.
+    - Remove the separate related model index signal handlers.
+    - Make Whoosh the default search backend.
+    - Support reverse many to many indexing.
+    - Add indexing optimizations.
+    - Rename methods for clarity.
+    - Move the ``any_to_bool`` function to the common app.
+
 - Update base image from Debian 10.10-slim to 11.1-slim.
+- Move the ``parse_range`` utility from the documents app to the common app.
+- Retry Whoosh LockErrors by encapsulating then in the general app exception
+  ``DynamicSearchRetry``.
+- Added the ``search_index_objects`` management command to trigger the
+  queuing of search models from the CLI.
+- Added the ``search_status`` management command to show indexing status of
+  the search backend.
+
+
+
+
+
 
 4.1.4 (2021-12-01)
 ==================
