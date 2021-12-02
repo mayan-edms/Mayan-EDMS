@@ -24,7 +24,7 @@ RUN set -x \
 # Install base OS packages to run Mayan EDMS.
 && DEBIAN_FRONTEND=noninteractive \
 apt-get update \
-&& apt-get install --no-install-recommends --target-release buster-backports --yes \
+&& apt-get install --no-install-recommends --yes \
     libreoffice-calc-nogui \
     libreoffice-draw-nogui \
     libreoffice-impress-nogui \
