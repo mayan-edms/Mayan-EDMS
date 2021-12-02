@@ -8,7 +8,7 @@ import sh
 
 import django
 from django.template import Template, Context
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 
 sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(1, os.path.abspath('.'))
@@ -41,7 +41,7 @@ def generate_build_number():
 
 
 def generate_commit_timestamp():
-    datetime = parser.parse(force_text(s=DATE()))
+    datetime = parser.parse(force_str(s=DATE()))
     return datetime.strftime('%y%m%d%H%M')
 
 

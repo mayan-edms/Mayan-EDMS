@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:20+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -40,11 +40,11 @@ msgstr "Nom interne"
 msgid "Description"
 msgstr "Description"
 
-#: apps.py:45 classes.py:138
+#: apps.py:45 classes.py:214
 msgid "Type"
 msgstr "Type"
 
-#: apps.py:49 classes.py:140
+#: apps.py:49 classes.py:216
 msgid "Other data"
 msgstr "Autre données"
 
@@ -52,77 +52,81 @@ msgstr "Autre données"
 msgid "Declared by"
 msgstr "Déclaré par"
 
-#: apps.py:57 classes.py:138
+#: apps.py:57 classes.py:214
 msgid "Version"
 msgstr "Version"
 
-#: apps.py:61 classes.py:139 classes.py:781
+#: apps.py:61
 msgid "Environment"
 msgstr "Environnement"
 
-#: apps.py:64 classes.py:140
+#: apps.py:64 classes.py:216
 msgid "Check"
 msgstr "Vérifier"
 
-#: classes.py:138
+#: classes.py:214
 msgid "Name"
 msgstr "Nom"
 
-#: classes.py:139
+#: classes.py:215
 msgid "App"
 msgstr "App"
 
-#: classes.py:254
+#: classes.py:215 classes.py:840
+msgid "Environments"
+msgstr ""
+
+#: classes.py:308
 msgid "Need to specify at least one: app_label or module."
 msgstr "Besoin de spécifier au moins un: app_label ou module."
 
-#: classes.py:259
+#: classes.py:313
 #, python-format
 msgid "Dependency \"%s\" already registered."
 msgstr "La dépendance \"%s\" est déjà enregistrée."
 
-#: classes.py:285
+#: classes.py:339
 #, python-format
 msgid "Installing package: %s... "
 msgstr "Installation du paquet: %s ..."
 
-#: classes.py:290
+#: classes.py:344
 msgid "Already installed."
 msgstr "Déjà installé."
 
-#: classes.py:293 classes.py:298 classes.py:302
+#: classes.py:347 classes.py:352 classes.py:356
 msgid "Complete."
 msgstr "Complété."
 
-#: classes.py:328
+#: classes.py:382
 msgid "Installed and correct version"
 msgstr "Version installée et correcte"
 
-#: classes.py:330
+#: classes.py:384
 msgid "Missing or incorrect version"
 msgstr "Version manquante ou incorrecte"
 
-#: classes.py:359
+#: classes.py:419
 msgid "None"
 msgstr "Aucun"
 
-#: classes.py:368
+#: classes.py:428
 msgid "Not specified"
 msgstr "Non spécifié"
 
-#: classes.py:371
+#: classes.py:431
 msgid "Patching files... "
 msgstr "Modification des fichiers ..."
 
-#: classes.py:399
+#: classes.py:459
 msgid "Executables that are called directly by the code."
 msgstr "Des exécutables appelés directement par le code."
 
-#: classes.py:401
+#: classes.py:461
 msgid "Binary"
 msgstr "Binaire"
 
-#: classes.py:418
+#: classes.py:478
 msgid ""
 "JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
@@ -130,51 +134,51 @@ msgstr ""
 "Les bibliothèques JavaScript sont téléchargées à partir du NPM et utilisé "
 "pour les fonctionnalités front-end."
 
-#: classes.py:421
+#: classes.py:481
 msgid "JavaScript"
 msgstr "JavaScript"
 
-#: classes.py:451 classes.py:694
+#: classes.py:511 classes.py:752
 msgid "Downloading... "
 msgstr "Téléchargement ..."
 
-#: classes.py:454
+#: classes.py:514
 msgid "Verifying... "
 msgstr "Vérification ..."
 
-#: classes.py:457 classes.py:697
+#: classes.py:517 classes.py:755
 msgid "Extracting... "
 msgstr "Extraction ..."
 
-#: classes.py:636
+#: classes.py:694
 msgid "Python packages downloaded from PyPI."
 msgstr "Paquets Python téléchargés depuis PyPI."
 
-#: classes.py:638
+#: classes.py:696
 msgid "Python"
 msgstr "Python"
 
-#: classes.py:675
+#: classes.py:733
 msgid "Fonts downloaded from fonts.googleapis.com."
 msgstr "Polices téléchargées à partir de fonts.googleapis.com."
 
-#: classes.py:677
+#: classes.py:735
 msgid "Google font"
 msgstr "Google Font"
 
-#: classes.py:763
+#: classes.py:821
 msgid "Declared in app"
 msgstr "Déclaré dans l'application"
 
-#: classes.py:764
+#: classes.py:822
 msgid "Show dependencies by the app that declared them."
 msgstr "Afficher les dépendances par l'application qui les a déclarées."
 
-#: classes.py:768
+#: classes.py:826
 msgid "Class"
 msgstr "Classe"
 
-#: classes.py:769
+#: classes.py:827
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
@@ -182,11 +186,11 @@ msgstr ""
 "Affiche les différentes classes de dépendances. Les classes sont "
 "généralement divisées par langue ou par type de fichier de la dépendance."
 
-#: classes.py:774
+#: classes.py:832
 msgid "State"
 msgstr "État"
 
-#: classes.py:775
+#: classes.py:833
 msgid ""
 "Show the different states of the dependencies. True means that the "
 "dependencies is installed and is of a correct version. False means the "
@@ -197,7 +201,7 @@ msgstr ""
 "que les dépendances sont manquantes ou qu'une version incorrecte est "
 "présente."
 
-#: classes.py:782
+#: classes.py:841
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
@@ -270,7 +274,7 @@ msgstr ""
 msgid "Testing"
 msgstr "Test"
 
-#: links.py:13 views.py:17
+#: links.py:14 views.py:18
 msgid "Check for updates"
 msgstr "Vérifier les mises à jour"
 
@@ -320,30 +324,30 @@ msgstr "Forcer l'installation même s'il est déjà installé."
 msgid "View dependencies"
 msgstr "Voir les dépendances"
 
-#: views.py:31
+#: views.py:32
 #, python-format
 msgid "Entries for dependency group: %s"
 msgstr "Entrées pour le groupe de dépendance: %s"
 
-#: views.py:44 views.py:89
+#: views.py:45 views.py:90
 #, python-format
 msgid "Group %s not found."
 msgstr "Groupe %s introuvable."
 
-#: views.py:57
+#: views.py:58
 msgid "Dependency groups"
 msgstr "Groupes de dépendance"
 
-#: views.py:77
+#: views.py:78
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
 msgstr "Groupe de dépendance et entrée: %(group)s, %(entry)s"
 
-#: views.py:101
+#: views.py:102
 #, python-format
 msgid "Entry %s not found."
 msgstr "Entrée %s introuvable."
 
-#: views.py:119
+#: views.py:120
 msgid "Other packages licenses"
 msgstr "Licences des bibliothèques tierces"

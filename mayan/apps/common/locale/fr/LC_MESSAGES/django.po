@@ -9,19 +9,19 @@
 # 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2021
 # Olivier W, 2021
 # Franck Boucher <boucher.fk@gmail.com>, 2021
-# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
 # Yves Dubois <ydubois@gmail.com>, 2021
 # Benoît GROUSSET <benoit@grousset.xyz>, 2021
 # Guillaume Trottier <gui.trottier@gmail.com>, 2021
 # Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:20+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
+"Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,23 +29,23 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:125 permissions.py:5 settings.py:14
+#: apps.py:137 permissions.py:5 settings.py:15
 msgid "Common"
 msgstr "Commun"
 
-#: classes.py:408
+#: classes.py:409
 msgid "Model properties"
 msgstr "Propriétés du modèle"
 
-#: classes.py:413
+#: classes.py:414
 msgid "Model fields"
 msgstr "Champs de modèle"
 
-#: classes.py:456
+#: classes.py:457
 msgid "Model related fields"
 msgstr "Champs liés au modèle"
 
-#: classes.py:461
+#: classes.py:462
 msgid "Model reverse fields"
 msgstr "Modéliser les champs inversés"
 
@@ -67,58 +67,58 @@ msgstr "Environnement de ligne de commande avec autocomplétion."
 msgid "Checks proper formatting of the README file."
 msgstr "Vérifie le formatage du fichier README."
 
-#: links.py:30
+#: links.py:29
 msgid "About this"
 msgstr "À propos de"
 
-#: links.py:33
+#: links.py:32
 msgid "Get the book"
 msgstr "Obtenez le livre"
 
-#: links.py:38
+#: links.py:37
 msgid "Documentation"
 msgstr "Documentation"
 
-#: links.py:41
+#: links.py:40
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:45 views.py:48
+#: links.py:44 views.py:48
 msgid "License"
 msgstr "Licence"
 
-#: links.py:50
+#: links.py:49
 msgid "Copy"
 msgstr "Copier"
 
-#: links.py:53
+#: links.py:52
 msgid "Setup"
 msgstr "Configuration"
 
-#: links.py:56
+#: links.py:55
 msgid "Source code"
 msgstr "Code source"
 
-#: links.py:60
+#: links.py:59
 msgid "Online store"
 msgstr "Boutique en ligne"
 
-#: links.py:64
+#: links.py:63
 msgid "Get support"
 msgstr "Obtenez de l'aide"
 
-#: links.py:68 queues.py:6 views.py:122
+#: links.py:67 queues.py:6 views.py:122
 msgid "Tools"
 msgstr "Outils"
 
-#: literals.py:19
+#: literals.py:20
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr ""
 "Cette fonctionnalité n'est plus utilisée et sera supprimée dans une version "
 "ultérieure."
 
-#: literals.py:22
+#: literals.py:23
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
@@ -127,15 +127,15 @@ msgstr ""
 " ne devrait être utilisé qu'à des fins de développement et de test, pas en "
 "production."
 
-#: literals.py:31
+#: literals.py:32
 msgid "Days"
 msgstr "Jours"
 
-#: literals.py:32
+#: literals.py:33
 msgid "Hours"
 msgstr "Heures"
 
-#: literals.py:33
+#: literals.py:34
 msgid "Minutes"
 msgstr "Minutes"
 
@@ -171,7 +171,7 @@ msgstr "Utilisateur"
 msgid "Copy object"
 msgstr "Copier l'objet"
 
-#: settings.py:21
+#: settings.py:22
 msgid ""
 "In list mode, show the \"list facet\" menu options as a dropdown menu "
 "instead of individual buttons."
@@ -179,7 +179,7 @@ msgstr ""
 "En mode liste, affichez les options du menu «facette de liste» sous forme de"
 " menu déroulant au lieu de boutons individuels."
 
-#: settings.py:29
+#: settings.py:30
 msgid ""
 "In list mode, show the \"object\" menu options as a dropdown menu instead of"
 " individual buttons."
@@ -187,15 +187,7 @@ msgstr ""
 "En mode liste, affichez les options du menu «objet» sous forme de menu "
 "déroulant au lieu de boutons individuels."
 
-#: settings.py:36
-msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr ""
-"Durée de temporisation des tâches d'arrière plan dépendant d'une mise à jour"
-" de la base de données."
-
-#: settings.py:43
+#: settings.py:37
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -208,7 +200,7 @@ msgstr ""
 "configuration d'application (recommandé), soit un package contenant une "
 "application. Exemple: ['app_1', 'app_2']"
 
-#: settings.py:53
+#: settings.py:47
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -221,7 +213,16 @@ msgstr ""
 "d'application (recommandé) ou un package contenant une application. Exemple "
 ": ['app_1', 'app_2']"
 
-#: settings.py:63
+#: settings.py:58
+msgid ""
+"A list of strings designating all applications that are installed beyond "
+"those normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. These apps will be installed before the default "
+"apps. Example: ['app_1', 'app_2']"
+msgstr ""
+
+#: settings.py:69
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
@@ -230,13 +231,17 @@ msgstr ""
 "également la page vers laquelle les utilisateurs seront redirigés après la "
 "connexion."
 
-#: settings.py:71
-msgid "Name to be displayed in the main menu."
-msgstr "Nom qui sera affiché dans le menu principal."
+#: settings.py:78
+msgid "Name of the dashboard to display in the home view."
+msgstr ""
 
-#: settings.py:77
-msgid "URL of the installation or homepage of the project."
-msgstr "URL de l'installation ou de la page d'accueil du projet."
+#: settings.py:83
+msgid "Sets the project's name."
+msgstr "Définit le nom du projet."
+
+#: settings.py:87
+msgid "URL of the project's homepage."
+msgstr "URL de la page d'accueil du projet."
 
 #: templates/common/app/viewport.html:9
 msgid "Warning"
@@ -246,15 +251,15 @@ msgstr "Avertissement"
 msgid "Click here to fix this."
 msgstr "Cliquez ici pour résoudre ce problème."
 
-#: validators.py:41
+#: validators.py:40
 msgid "Enter a valid JSON value."
 msgstr "Saisissez une valeur JSON valide."
 
-#: validators.py:65
+#: validators.py:64
 msgid "Enter a valid YAML value."
 msgstr "Saisissez une valeur YAML valide."
 
-#: validators.py:81
+#: validators.py:80
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
@@ -267,8 +272,8 @@ msgid "About"
 msgstr "À propos"
 
 #: views.py:39
-msgid "Dashboard"
-msgstr "Tableau de bord"
+msgid "Home"
+msgstr "Accueil"
 
 #: views.py:62
 #, python-format

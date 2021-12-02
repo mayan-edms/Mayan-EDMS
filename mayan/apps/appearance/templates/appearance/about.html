@@ -62,7 +62,6 @@
 
     {% appearance_get_icon 'mayan.apps.common.icons.icon_documentation' as icon_documentation %}
     {% appearance_get_icon 'mayan.apps.common.icons.icon_forum' as icon_forum %}
-    {% appearance_get_icon 'mayan.apps.common.icons.icon_social_paypal' as icon_social_paypal %}
     {% appearance_get_icon 'mayan.apps.common.icons.icon_source_code' as icon_source_code %}
 
     <div class="well">
@@ -94,24 +93,6 @@
         </p>
 
         <p class="text-center mayan-edms-logo"><span class="icon-mayan-edms-logo"></span> {% common_project_information '__title__' %}</p>
-
-        <p class="text-center">
-            {% blocktrans with project_title as project_title %}
-                {{ project_title }} is a free and open-source software brought to you with <i class="fa fa-heart text-danger" style="transform: rotate(10deg);"></i> by Roberto Rosario and contributors.
-            {% endblocktrans %}
-        </p>
-
-        <p class="text-center">
-            {% blocktrans with project_title as project_title %}
-                It takes great effort to make {{ project_title }} as feature-rich as it is.
-            {% endblocktrans %}
-        </p>
-
-        <p class="text-center">
-            {% blocktrans with project_title as project_title and icon_social_paypal as icon_social_paypal%}
-                If you use {{ project_title }} please <a class="new_window" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN">make a donation {{ icon_social_paypal }}</a>
-            {% endblocktrans %}
-        </p>
 
         <p class="text-center">
             {% blocktrans with icon_documentation as icon_documentation and icon_wiki as icon_wiki %}

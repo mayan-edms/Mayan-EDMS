@@ -58,8 +58,8 @@ PythonDependency(
         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
         THE SOFTWARE.
-    ''', module=__name__, name='django-widget-tweaks', version_string='==1.4.8'
+    ''', module=__name__, name='django-widget-tweaks', version_string='==1.4.9'
 )
 PythonDependency(
-    module=__name__, name='furl', version_string='==2.1.0'
+    module=__name__, name='furl', version_string='==2.1.2'
 )

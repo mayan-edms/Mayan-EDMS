@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:20+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -81,23 +81,23 @@ msgstr ""
 msgid "User"
 msgstr "Gebruiker"
 
-#: links.py:24
+#: links.py:35
 msgid "Logout"
 msgstr "Afmelden"
 
-#: links.py:29
+#: links.py:40
 msgid "Change password"
 msgstr "Pas wachtwoord aan"
 
-#: links.py:34 views.py:250
+#: links.py:45 views/impersonation_views.py:50
 msgid "Impersonate user"
 msgstr "Nabootsen gebruiker"
 
-#: links.py:39
+#: links.py:50
 msgid "Impersonate"
 msgstr ""
 
-#: links.py:44 links.py:48
+#: links.py:55 links.py:60
 msgid "Set password"
 msgstr "Stel wachtwoord in"
 
@@ -171,7 +171,7 @@ msgid "Login page"
 msgstr "Login pagina"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:177
+#: templates/authentication/password_reset_form.html:29
 msgid "Submit"
 msgstr "Indienen"
 
@@ -179,52 +179,52 @@ msgstr "Indienen"
 msgid "Password reset email sent!"
 msgstr "Wachtwoordherstel e-mail verstuurd!"
 
-#: views.py:86
+#: views/authentication_views.py:75
 msgid "Your password has been successfully changed."
 msgstr "Uw wachtwoord is succesvol aangepast,"
 
-#: views.py:93
+#: views/authentication_views.py:82
 msgid "Current user password change"
 msgstr "Pas wachtwoord aan van huidige gebruiker"
 
-#: views.py:101
+#: views/authentication_views.py:90
 msgid "Changing the password is not allowed for this account."
 msgstr "Wachtwoord wijziging niet toegestaan voor dit account."
 
-#: views.py:168
+#: views/authentication_views.py:157
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Wachtwoord wijziging uitgevoerd op %(count)d gebruiker"
 
-#: views.py:170
+#: views/authentication_views.py:159
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Wachtwoord wijziging uitgevoerd op %(count)d gebruikers"
 
-#: views.py:179
+#: views/authentication_views.py:167
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:189
+#: views/authentication_views.py:177
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Wijzig wachtwoord voor gebruiker: %s"
 
-#: views.py:210
+#: views/authentication_views.py:198
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Wachtwoord opnieuw ingesteld voor gebruiker: %s."
 
-#: views.py:216
+#: views/authentication_views.py:204
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr ""
 "Fout tijdens het veranderen van het wachtwoord voor gebruiker \"%(user)s\": "
 "%(error)s"
 
-#: views.py:278
+#: views/impersonation_views.py:78
 #, python-format
 msgid "Impersonate user: %s"
 msgstr ""

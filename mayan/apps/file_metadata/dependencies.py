@@ -9,7 +9,7 @@ exiftool.read_settings()
 
 BinaryDependency(
     help_text=_(
-        'Library and program to read and write meta information in multimedia '
-        'files.'
+        'Library and program to read and write meta information in '
+        'multimedia files.'
     ), module=__name__, name='exiftool', path=exiftool.exiftool_path
 )

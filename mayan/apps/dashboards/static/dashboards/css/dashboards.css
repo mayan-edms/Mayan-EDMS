@@ -1,0 +1,22 @@
+.dashboards-panel-widget {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    border: 1px solid black;
+}
+
+.dashboards-panel-widget > .panel-body {
+    font-size: 90%;
+    max-height: 308px;
+    overflow-y: auto;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 15px;
+    padding-top: 5px;
+}
+
+.dashboards-panel-widget > .panel-body table {
+    margin-bottom: 5px;
+}
+
+.dashboards-panel-widget-icon {
+    font-size: 200%;
+}

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:20+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
-#: events.py:5 forms.py:14 links.py:31 menus.py:14 models.py:50 models.py:174
+#: events.py:5 forms.py:14 links.py:30 menus.py:14 models.py:50 models.py:174
 #: permissions.py:5 search.py:56 views.py:155 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "Gabinetes"
@@ -43,35 +43,35 @@ msgstr "Documento agregado al gabinete"
 msgid "Document removed from cabinet"
 msgstr "Documento retirado del gabinete"
 
-#: links.py:37 links.py:49 workflow_actions.py:72
+#: links.py:36 links.py:48 workflow_actions.py:72
 msgid "Remove from cabinets"
 msgstr "Retirar de los gabinetes"
 
-#: links.py:41 links.py:45 workflow_actions.py:29
+#: links.py:40 links.py:44 workflow_actions.py:29
 msgid "Add to cabinets"
 msgstr "Agregar a gabinetes"
 
-#: links.py:60
+#: links.py:59
 msgid "Add new level"
 msgstr "Agregar un nuevo nivel"
 
-#: links.py:65 views.py:40
+#: links.py:64 views.py:40
 msgid "Create cabinet"
 msgstr "Crear gabinete"
 
-#: links.py:70
+#: links.py:69
 msgid "Delete"
 msgstr "Eliminar"
 
-#: links.py:74
+#: links.py:73
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:82
+#: links.py:81
 msgid "All"
 msgstr "Todos"
 
-#: links.py:86
+#: links.py:85
 msgid "Details"
 msgstr "Detalles"
 
@@ -177,17 +177,17 @@ msgid "List of children cabinets."
 msgstr "Lista de los gabinetes contenidos."
 
 #: serializers.py:22
-msgid "The name of this cabinet level appended to the names of its ancestors."
-msgstr ""
-"El nombre de este nivel de gabinete añadido al de los gabinetes que lo "
-"contienen. "
-
-#: serializers.py:28
 msgid ""
 "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 "URL de la API del servicio que muestra los documentos contenidos en este "
 "gabinete."
+
+#: serializers.py:29
+msgid "The name of this cabinet level appended to the names of its ancestors."
+msgstr ""
+"El nombre de este nivel de gabinete añadido al de los gabinetes que lo "
+"contienen. "
 
 #: templates/cabinets/cabinet_details.html:17
 msgid "Navigation:"
@@ -269,62 +269,54 @@ msgstr "Agregar %(count)d documento a gabinetes."
 msgid "Add %(count)d documents to cabinets."
 msgstr "Agregar %(count)d documentos a gabinetes."
 
-#: views.py:192
-msgid "Add"
-msgstr "Agregar"
-
-#: views.py:207
+#: views.py:205
 msgid "Cabinets to which the selected documents will be added."
 msgstr "Gabinetes a los cuales el documento seleccionado va a ser agregado."
 
-#: views.py:253
+#: views.py:251
 msgid "Documents can be added to many cabinets."
 msgstr "Los documentos se pueden agregar a muchos gabinetes."
 
-#: views.py:256
+#: views.py:254
 msgid "This document is not in any cabinet"
 msgstr "Este documento no está en ningún gabinete"
 
-#: views.py:260
+#: views.py:258
 #, python-format
 msgid "Cabinets containing document: %s"
 msgstr "Gabinetes que contienen el documento: %s"
 
-#: views.py:276
+#: views.py:274
 #, python-format
 msgid "Document \"%(object)s\" removed from cabinets successfully."
 msgstr "El documento \"%(object)s\" se eliminó correctamente de los gabinetes."
 
-#: views.py:279
+#: views.py:277
 #, python-format
 msgid "%(count)d document removed from cabinets successfully."
 msgstr "%(count)d documento eliminado de los gabinetes con éxito."
 
-#: views.py:282
+#: views.py:280
 #, python-format
 msgid "%(count)d documents removed from cabinets successfully."
 msgstr "%(count)d documentos eliminados de los gabinetes con éxito."
 
-#: views.py:284
+#: views.py:282
 #, python-format
 msgid "Remove document \"%(object)s\" from cabinets."
 msgstr "Remover el documento \"%(object)s\" de los gabinetes."
 
-#: views.py:285
+#: views.py:283
 #, python-format
 msgid "Remove %(count)d document from cabinets."
 msgstr "Remover %(count)d documento de los gabinetes."
 
-#: views.py:286
+#: views.py:284
 #, python-format
 msgid "Remove %(count)d documents from cabinets."
 msgstr "Remover %(count)d documentos de los gabinetes."
 
-#: views.py:290
-msgid "Remove"
-msgstr "Remover"
-
-#: views.py:305
+#: views.py:301
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Gabinetes de los que se eliminarán los documentos seleccionados."
 

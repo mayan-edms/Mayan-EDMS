@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
-    menu_facet, menu_multi_item, menu_tools
+    menu_list_facet, menu_multi_item, menu_tools
 )
 from mayan.apps.documents.menus import menu_documents
 from mayan.apps.documents.permissions import permission_document_view
@@ -66,12 +66,12 @@ class DuplicatesApp(MayanAppConfig):
         menu_documents.bind_links(
             links=(link_duplicated_document_list,)
         )
-        menu_tools.bind_links(
-            links=(link_duplicated_document_scan,)
-        )
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(link_document_duplicates_list,),
             sources=(Document,)
+        )
+        menu_tools.bind_links(
+            links=(link_duplicated_document_scan,)
         )
 
         # DuplicateSourceDocument

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:17+0000\n"
 "PO-Revision-Date: 2020-01-31 04:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:23 links.py:17 settings.py:8
+#: apps.py:23 links.py:17 settings.py:11
 msgid "REST API"
 msgstr ""
 
@@ -35,11 +35,33 @@ msgstr ""
 msgid "API Documentation (ReDoc)"
 msgstr ""
 
+#: relations.py:82
+msgid "This field is required."
+msgstr ""
+
+#: relations.py:83
+#, python-brace-format
+msgid "Invalid pk \"{pk_value}\" - object does not exist."
+msgstr ""
+
+#: relations.py:84
+#, python-brace-format
+msgid "Incorrect type. Expected pk value, received {data_type}."
+msgstr ""
+
 #: schemas.py:11
 #, python-format
 msgid "%s API"
 msgstr ""
 
-#: settings.py:14
+#: settings.py:17
 msgid "Disable the REST API links in the tools menu."
+msgstr ""
+
+#: settings.py:23
+msgid "The maximum page size that can be requested."
+msgstr ""
+
+#: settings.py:29
+msgid "The default page size if none is specified."
 msgstr ""

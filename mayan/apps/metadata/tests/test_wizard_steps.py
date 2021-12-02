@@ -4,10 +4,7 @@ from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_create
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
-from mayan.apps.sources.models import WebFormSource
-from mayan.apps.sources.tests.literals import (
-    TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N,
-)
+from mayan.apps.sources.tests.mixins.web_form_source_mixins import WebFormSourceTestMixin
 from mayan.apps.views.http import URL
 
 from .literals import (
@@ -17,16 +14,13 @@ from .mixins import MetadataTypeTestMixin
 
 
 class DocumentUploadMetadataTestCase(
-    MetadataTypeTestMixin, GenericDocumentViewTestCase
+    MetadataTypeTestMixin, WebFormSourceTestMixin,
+    GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
 
     def setUp(self):
         super().setUp()
-        self.source = WebFormSource.objects.create(
-            enabled=True, label=TEST_SOURCE_LABEL,
-            uncompress=TEST_SOURCE_UNCOMPRESS_N
-        )
         self._create_test_metadata_type()
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type, required=True
@@ -41,6 +35,9 @@ class DocumentUploadMetadataTestCase(
 
         self.grant_access(
             obj=self.test_document_type, permission=permission_document_create
+        )
+        self.grant_access(
+            obj=self.test_source, permission=permission_document_create
         )
 
         # Upload the test document
@@ -69,6 +66,9 @@ class DocumentUploadMetadataTestCase(
         self.grant_access(
             permission=permission_document_create, obj=self.test_document_type
         )
+        self.grant_access(
+            obj=self.test_source, permission=permission_document_create
+        )
 
         # Upload the test document
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
@@ -90,6 +90,9 @@ class DocumentUploadMetadataTestCase(
     def test_initial_step_conditions(self):
         self.grant_access(
             obj=self.test_document_type, permission=permission_document_create
+        )
+        self.grant_access(
+            obj=self.test_source, permission=permission_document_create
         )
 
         response = self.post(

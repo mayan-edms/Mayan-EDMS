@@ -5,7 +5,8 @@ $.fn.hasAnyClass = function() {
      *  Return true is an element has any of the passed classes
      *  The classes are bassed as an array
      */
-    for (var i = 0; i < arguments[0].length; i++) {
+    const length = arguments[0].length;
+    for (let i = 0; i < length; i++) {
         if (this.hasClass(arguments[0][i])) {
             return true;
         }
@@ -49,8 +50,8 @@ class PartialNavigation {
         /*
          * Method to validate new locations
          */
-        var uri = new URI(newLocation);
-        var currentLocation = new URI(location);
+        let uri = new URI(newLocation);
+        const currentLocation = new URI(location);
 
         if (uri.path() === '') {
             // href with no path remain in the same location
@@ -74,7 +75,7 @@ class PartialNavigation {
          *  Method to load and display partial backend views to the main
          *  view port.
          */
-        var app = this;
+        const app = this;
 
         url = this.filterLocation(url);
         $.ajax({
@@ -85,7 +86,7 @@ class PartialNavigation {
             success: function (data, textStatus, response){
                 if (response.status == 278) {
                     // Handle redirects
-                    var newLocation = response.getResponseHeader('Location');
+                    const newLocation = response.getResponseHeader('Location');
 
                     app.setLocation(newLocation);
                     app.lastLocation = newLocation;
@@ -110,7 +111,7 @@ class PartialNavigation {
          * Anchor click event manager. We intercept all click events and
          * route them to load the content via AJAX instead.
          */
-        var url;
+        let url;
 
         if ($this.hasAnyClass(this.excludeAnchorClasses)) {
             return true;
@@ -118,11 +119,10 @@ class PartialNavigation {
 
         if ($this.hasAnyClass(this.disabledAnchorClasses)) {
             event.preventDefault();
-            return false;
+            return;
         }
 
         if ($this.parents().hasAnyClass(this.disabledAnchorClasses)) {
-            event.preventDefault();
             return false;
         }
 
@@ -132,12 +132,12 @@ class PartialNavigation {
         }
 
         if (url.indexOf('javascript:;') > -1) {
-            // Ignore links meant to execute javascript on click.
+            // Ignore/exclude links meant to execute javascript on click.
             return true;
         }
 
         if (url === '#') {
-            // Ignore links with hash at the.
+            // Ignore/exclude links with only a hash .
             return true;
         }
 
@@ -159,7 +159,7 @@ class PartialNavigation {
          * user.
          */
         if (djangoDEBUG) {
-            var errorMessage = null;
+            let errorMessage = null;
 
             if (jqXHR.status != 0) {
                 errorMessage = jqXHR.responseText || jqXHR.statusText;
@@ -208,7 +208,7 @@ class PartialNavigation {
             pushState = true;
         }
 
-        var currentLocation = new URI(location);
+        let currentLocation = new URI(location);
         currentLocation.fragment(newLocation);
 
         if (pushState) {
@@ -221,7 +221,7 @@ class PartialNavigation {
         /*
          * Setup the new click event handler.
          */
-        var app = this;
+        const app = this;
         $('body').on('click', 'a', function (event) {
             app.onAnchorClick($(this), event);
         });
@@ -231,8 +231,8 @@ class PartialNavigation {
         /*
          * Method to setup the handling of form in an AJAX way.
          */
-        var app = this;
-        var lastAjaxFormData = {};
+        const app = this;
+        let lastAjaxFormData = {};
 
         $('form').ajaxForm({
             async: true,
@@ -243,11 +243,13 @@ class PartialNavigation {
                 });
             },
             beforeSubmit: function(arr, $form, options) {
-                var uri = new URI(location);
-                var uriFragment = uri.fragment();
-                var url = $form.attr('action') || uriFragment;
-                var finalUrl = new URI(url);
-                var formQueryString = new URLSearchParams(decodeURIComponent($form.serialize()));
+                const uri = new URI(location);
+                let uriFragment = uri.fragment();
+                let url = $form.attr('action') || uriFragment;
+                let finalUrl = new URI(url);
+                let formQueryString = new URLSearchParams(
+                    decodeURIComponent($form.serialize())
+                );
 
                 options.url = url;
 
@@ -263,8 +265,8 @@ class PartialNavigation {
                     // If the form has a target attribute we emulate it by
                     // opening a new window and passing the form serialized
                     // data as the query.
-                    var finalUrl = new URI($form.attr('action'));
-                    var formQueryString = new URLSearchParams(decodeURIComponent($form.serialize()));
+                    let finalUrl = new URI($form.attr('action'));
+                    let formQueryString = new URLSearchParams(decodeURIComponent($form.serialize()));
 
                     // Merge the URL and the form values in a smart way instead
                     // of just blindly adding a '?' between them.
@@ -285,16 +287,16 @@ class PartialNavigation {
             success: function(data, textStatus, request){
                 if (request.status == 278) {
                     // Handle redirects after submitting the form
-                    var newLocation = request.getResponseHeader('Location');
-                    var uri = new URI(newLocation);
-                    var uriFragment = uri.fragment();
-                    var currentUri = new URI(window.location.hash);
-                    var currentUriFragment = currentUri.fragment();
-                    var url = uriFragment || currentUriFragment;
+                    let newLocation = request.getResponseHeader('Location');
+                    let uri = new URI(newLocation);
+                    let uriFragment = uri.fragment();
+                    let currentUri = new URI(window.location.hash);
+                    let currentUriFragment = currentUri.fragment();
+                    let url = uriFragment || currentUriFragment;
 
                     app.setLocation(newLocation);
                 } else {
-                    var currentUri = new URI(window.location.hash);
+                    let currentUri = new URI(window.location.hash);
                     currentUri.fragment(lastAjaxFormData.url);
                     history.pushState({}, '', currentUri);
                     $('#ajax-content').html(data).change();
@@ -311,21 +313,21 @@ class PartialNavigation {
          * a callback to send an emulated HTTP_REFERER so that the backends
          * code will still work without change.
          */
-        var app = this;
+        const app = this;
 
         // Load ajax content when the hash changes
         if (window.history && window.history.pushState) {
             $(window).on('popstate', function() {
-                var uri = new URI(location);
-                var uriFragment = uri.fragment();
+                let uri = new URI(location);
+                let uriFragment = uri.fragment();
                 app.setLocation(uriFragment, false);
             });
         }
 
         // Load any initial address in the URL of the browser
         if (window.location.hash) {
-            var uri = new URI(window.location.hash);
-            var uriFragment = uri.fragment();
+            let uri = new URI(window.location.hash);
+            let uriFragment = uri.fragment();
             this.setLocation(uriFragment);
         } else {
             this.setLocation('/');

@@ -4,10 +4,11 @@ from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import (
     DEFAULT_COMMON_COLLAPSE_LIST_MENU_LIST_FACET,
-    DEFAULT_COMMON_COLLAPSE_LIST_MENU_OBJECT,
-    DEFAULT_COMMON_DB_SYNC_TASK_DELAY, DEFAULT_COMMON_DISABLED_APPS,
-    DEFAULT_COMMON_EXTRA_APPS, DEFAULT_COMMON_HOME_VIEW,
-    DEFAULT_COMMON_PROJECT_TITLE, DEFAULT_COMMON_PROJECT_URL
+    DEFAULT_COMMON_COLLAPSE_LIST_MENU_OBJECT, DEFAULT_COMMON_DISABLED_APPS,
+    DEFAULT_COMMON_EXTRA_APPS, DEFAULT_COMMON_EXTRA_APPS_PRE,
+    DEFAULT_COMMON_HOME_VIEW, DEFAULT_COMMON_HOME_VIEW_DASHBOARD_NAME,
+    DEFAULT_COMMON_PROJECT_TITLE,
+    DEFAULT_COMMON_PROJECT_URL
 )
 
 namespace = SettingNamespace(
@@ -30,13 +31,6 @@ setting_collapse_list_menu_object = namespace.add_setting(
         'instead of individual buttons.'
     )
 )
-settings_db_sync_task_delay = namespace.add_setting(
-    default=DEFAULT_COMMON_DB_SYNC_TASK_DELAY,
-    global_name='COMMON_DB_SYNC_TASK_DELAY', help_text=_(
-        'Time to delay background tasks that depend on a database commit to '
-        'propagate.'
-    )
-)
 setting_disabled_apps = namespace.add_setting(
     default=DEFAULT_COMMON_DISABLED_APPS,
     global_name='COMMON_DISABLED_APPS', help_text=_(
@@ -57,6 +51,18 @@ setting_extra_apps = namespace.add_setting(
         'Example: [\'app_1\', \'app_2\']'
     )
 )
+setting_extra_apps = namespace.add_setting(
+    default=DEFAULT_COMMON_EXTRA_APPS_PRE,
+    global_name='COMMON_EXTRA_APPS_PRE',
+    help_text=_(
+        'A list of strings designating all applications that are installed '
+        'beyond those normally installed by Mayan EDMS. Each string '
+        'should be a dotted Python path to: an application configuration '
+        'class (preferred), or a package containing an application. '
+        'These apps will be installed before the default apps. '
+        'Example: [\'app_1\', \'app_2\']'
+    )
+)
 setting_home_view = namespace.add_setting(
     default=DEFAULT_COMMON_HOME_VIEW, global_name='COMMON_HOME_VIEW',
     help_text=_(
@@ -65,15 +71,18 @@ setting_home_view = namespace.add_setting(
         'log in.'
     )
 )
+setting_home_view_dashboard = namespace.add_setting(
+    default=DEFAULT_COMMON_HOME_VIEW_DASHBOARD_NAME,
+    global_name='COMMON_HOME_VIEW_DASHBOARD_NAME',
+    help_text=_(
+        'Name of the dashboard to display in the home view.'
+    )
+)
 setting_project_title = namespace.add_setting(
     default=DEFAULT_COMMON_PROJECT_TITLE, global_name='COMMON_PROJECT_TITLE',
-    help_text=_(
-        'Name to be displayed in the main menu.'
-    )
+    help_text=_('Sets the project\'s name.')
 )
 setting_project_url = namespace.add_setting(
     default=DEFAULT_COMMON_PROJECT_URL, global_name='COMMON_PROJECT_URL',
-    help_text=_(
-        'URL of the installation or homepage of the project.'
-    )
+    help_text=_('URL of the project\'s homepage.')
 )

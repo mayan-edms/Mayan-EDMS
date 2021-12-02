@@ -5,20 +5,20 @@ from django.db.models.signals import post_delete, post_save
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
-from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.acls.permissions import (
+    permission_acl_edit, permission_acl_view
+)
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import (
     ModelCopy, ModelFieldRelated, ModelProperty, ModelQueryFields
 )
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_related,
+    menu_list_facet, menu_multi_item, menu_object, menu_related,
     menu_secondary, menu_setup
 )
 from mayan.apps.documents.links.document_type_links import link_document_type_list
 from mayan.apps.documents.signals import signal_post_document_type_change
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 
@@ -39,8 +39,9 @@ from .links import (
     link_metadata_multiple_edit, link_metadata_multiple_remove,
     link_metadata_remove, link_metadata_view,
     link_document_type_metadata_type_relationship, link_metadata_type_create,
-    link_metadata_type_delete, link_metadata_type_document_type_relationship,
-    link_metadata_type_edit, link_metadata_type_list,
+    link_metadata_type_delete_multiple, link_metadata_type_delete_single,
+    link_metadata_type_document_type_relationship, link_metadata_type_edit,
+    link_metadata_type_list
 )
 from .methods import method_document_get_metadata
 from .permissions import (
@@ -173,7 +174,7 @@ class MetadataApp(MayanAppConfig):
                 permission_document_metadata_add,
                 permission_document_metadata_edit,
                 permission_document_metadata_remove,
-                permission_document_metadata_view, permission_events_view,
+                permission_document_metadata_view,
                 permission_metadata_type_delete,
                 permission_metadata_type_edit, permission_metadata_type_view
             )
@@ -186,6 +187,8 @@ class MetadataApp(MayanAppConfig):
         model_query_fields_document.add_prefetch_related_field(
             field_name='metadata'
         )
+
+        # Columns
 
         SourceColumn(
             source=Document, label=_('Metadata'),
@@ -234,11 +237,10 @@ class MetadataApp(MayanAppConfig):
             source=MetadataType
         )
 
-        menu_facet.bind_links(links=(link_metadata_view,), sources=(Document,))
+        # Document metadata
+
         menu_list_facet.bind_links(
-            links=(link_document_type_metadata_type_relationship,), sources=(
-                DocumentType,
-            )
+            links=(link_metadata_view,), sources=(Document,)
         )
         menu_multi_item.bind_links(
             links=(
@@ -246,16 +248,24 @@ class MetadataApp(MayanAppConfig):
                 link_metadata_multiple_remove
             ), sources=(Document,)
         )
+
+        menu_secondary.bind_links(
+            links=(
+                link_metadata_add, link_metadata_edit, link_metadata_remove
+            ), sources=(
+                'metadata:metadata_add', 'metadata:metadata_edit',
+                'metadata:metadata_remove', 'metadata:metadata_view'
+            )
+        )
+
+        # Document type
+
         menu_list_facet.bind_links(
-            links=(
-                link_acl_list, link_metadata_type_document_type_relationship
-            ), sources=(MetadataType,)
+            links=(link_document_type_metadata_type_relationship,), sources=(
+                DocumentType,
+            )
         )
-        menu_object.bind_links(
-            links=(
-                link_metadata_type_delete, link_metadata_type_edit
-            ), sources=(MetadataType,)
-        )
+
         menu_related.bind_links(
             links=(link_metadata_type_list,),
             sources=(
@@ -263,6 +273,27 @@ class MetadataApp(MayanAppConfig):
                 'documents:document_type_create'
             )
         )
+
+        # Metadata type
+
+        menu_list_facet.bind_links(
+            links=(
+                link_metadata_type_document_type_relationship,
+            ), sources=(MetadataType,)
+        )
+
+        menu_multi_item.bind_links(
+            links=(
+                link_metadata_type_delete_multiple,
+            ), sources=(MetadataType,)
+        )
+
+        menu_object.bind_links(
+            links=(
+                link_metadata_type_delete_single, link_metadata_type_edit
+            ), sources=(MetadataType,)
+        )
+
         menu_related.bind_links(
             links=(
                 link_document_type_list,
@@ -271,6 +302,7 @@ class MetadataApp(MayanAppConfig):
                 'metadata:metadata_type_create'
             )
         )
+
         menu_secondary.bind_links(
             links=(
                 link_metadata_type_list,
@@ -280,15 +312,10 @@ class MetadataApp(MayanAppConfig):
                 'metadata:metadata_type_create'
             )
         )
+
         menu_setup.bind_links(links=(link_metadata_type_list,))
-        menu_secondary.bind_links(
-            links=(
-                link_metadata_add, link_metadata_edit, link_metadata_remove
-            ), sources=(
-                'metadata:metadata_add', 'metadata:metadata_edit',
-                'metadata:metadata_remove', 'metadata:metadata_view'
-            )
-        )
+
+        # Signals
 
         post_delete.connect(
             dispatch_uid='metadata_handler_post_document_type_metadata_type_delete',

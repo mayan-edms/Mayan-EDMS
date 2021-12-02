@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
@@ -20,22 +20,42 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:12
+#: apps.py:14 settings.py:11
 msgid "Platform"
 msgstr "Platforma"
 
-#: classes.py:130
+#: classes.py:183
 msgid "Template for entrypoint.sh file inside a Docker image."
 msgstr ""
 
-#: classes.py:140
+#: classes.py:193
+msgid "Template that generates a Dockerfile file."
+msgstr ""
+
+#: classes.py:207
 msgid "Template for Supervisord inside a Docker image."
 msgstr ""
 
-#: classes.py:155
+#: classes.py:224
+msgid "Template that generates a GitLab CI config file."
+msgstr ""
+
+#: classes.py:268
 msgid "Template for Supervisord."
 msgstr ""
 
-#: classes.py:218
+#: classes.py:341
 msgid "Template showing the queues of a worker."
+msgstr ""
+
+#: settings.py:16
+msgid ""
+"List of client backends to launch after startup. Use full dotted path to the"
+" client backend classes."
+msgstr ""
+
+#: settings.py:23
+msgid ""
+"Arguments for the client backends. Use the client backend dotted path as the"
+" dictionary key for the arguments in dictionary format."
 msgstr ""

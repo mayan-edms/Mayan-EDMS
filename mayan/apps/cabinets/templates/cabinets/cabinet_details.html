@@ -5,7 +5,7 @@
 
 {% load navigation_tags %}
 
-{% block title %}{% include 'appearance/calculate_form_title.html' with non_html_title=True %}{% endblock %}
+{% block title %}{% include 'appearance/partials/form_title.html' with non_html_title=True %}{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{% static 'cabinets/node_modules/jstree/dist/themes/default/style.min.css' %}" />
@@ -33,11 +33,11 @@
         $.getScript( "{% static 'cabinets/node_modules/jstree/dist/jstree.min.js' %}" )
             .done(function(script, textStatus) {
                 $(function () {
-                    var jstreeElement = $('#jstree');
+                    const jstreeElement = $('#jstree');
 
                     jstreeElement
-                    .on('select_node.jstree', function (e, data) {
-                        if(data.selected.length) {
+                    .on('select_node.jstree', function (event, data) {
+                        if (data.selected.length) {
                             partialNavigation.setLocation(data.instance.get_node(data.selected[0]).data.href);
                         }
                     })

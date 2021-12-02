@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -20,20 +20,20 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:36 events.py:6 links.py:34 models.py:36 permissions.py:5
+#: apps.py:33 events.py:6 links.py:34 models.py:37 permissions.py:5
 #: views.py:136
 msgid "Quotas"
 msgstr "Cuotas"
 
-#: classes.py:65
+#: classes.py:59
 msgid "none"
 msgstr "ninguna"
 
-#: classes.py:157
+#: classes.py:151
 msgid "Does not apply"
 msgstr "No aplica"
 
-#: classes.py:161 classes.py:165
+#: classes.py:155 classes.py:159
 msgid "Null backend"
 msgstr "Controlador nulo"
 
@@ -45,7 +45,7 @@ msgstr "Cuota creada"
 msgid "Quota edited"
 msgstr "Cuota editada"
 
-#: forms.py:15 models.py:58
+#: forms.py:15 models.py:62
 msgid "Backend"
 msgstr "Controlador"
 
@@ -137,39 +137,39 @@ msgstr "todos los usuarios"
 msgid "groups: %(groups)s, users: %(users)s"
 msgstr "grupos: %(groups)s, usuarios: %(users)s"
 
-#: models.py:22
+#: models.py:23
 msgid "The dotted Python path to the backend class."
 msgstr "La ruta de Python separada por puntos a la clase del controlador."
 
-#: models.py:23
+#: models.py:24
 msgid "Backend path"
 msgstr "Ruta del controlador"
 
-#: models.py:26
+#: models.py:27
 msgid "Backend data"
 msgstr "Datos del controlador"
 
-#: models.py:30
+#: models.py:31
 msgid "Allow quick disable or enable of the quota."
 msgstr "Permitir deshabilitar rápidamente o habilitar la cuota."
 
-#: models.py:31
+#: models.py:32
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: models.py:35
+#: models.py:36
 msgid "Quota"
 msgstr "Cuota"
 
-#: models.py:57
+#: models.py:61
 msgid "Driver used for this quota entry."
 msgstr "Controlador utilizado para esta entrada de cuota."
 
-#: models.py:62
+#: models.py:66
 msgid "Arguments"
 msgstr "Argumentos"
 
-#: models.py:66
+#: models.py:70
 msgid "Usage"
 msgstr "Uso"
 
@@ -189,41 +189,41 @@ msgstr "Editar una cuota"
 msgid "View a quota"
 msgstr "Ver una cuota"
 
-#: quota_backends.py:70 quota_backends.py:170
+#: quota_backends.py:71 quota_backends.py:171
 msgid "Document count quota exceeded."
 msgstr "Cuota de recuento de documentos excedida."
 
-#: quota_backends.py:74
+#: quota_backends.py:75
 msgid "Documents limit"
 msgstr "Límite de documentos"
 
-#: quota_backends.py:77
+#: quota_backends.py:78
 msgid "Maximum number of documents."
 msgstr "Número máximo de documentos."
 
-#: quota_backends.py:81
+#: quota_backends.py:82
 msgid "Document count limit"
 msgstr "Límite de cantidad de documentos"
 
-#: quota_backends.py:106
+#: quota_backends.py:107
 #, python-format
 msgid "document count: %(document_count)s"
 msgstr "cantidad de documentos: %(document_count)s"
 
-#: quota_backends.py:180 quota_backends.py:185
+#: quota_backends.py:181 quota_backends.py:186
 msgid "Document size limit"
 msgstr "Límite de tamaño de documento"
 
-#: quota_backends.py:182
+#: quota_backends.py:183
 msgid "Maximum document size in megabytes (MB)."
 msgstr "Tamaño máximo del documento en megabytes (MB)."
 
-#: quota_backends.py:210
+#: quota_backends.py:211
 #, python-format
 msgid "document size: %(formatted_file_size)s"
 msgstr "tamaño de documento: %(formatted_file_size)s"
 
-#: quota_backends.py:230
+#: quota_backends.py:231
 msgid "Document size quota exceeded."
 msgstr "Cuota de tamaño de documento excedida."
 

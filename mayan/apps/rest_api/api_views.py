@@ -1,15 +1,19 @@
 from drf_yasg.views import get_schema_view
 
-from rest_framework import permissions, renderers
+from rest_framework import mixins, permissions, renderers
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.schemas.generators import EndpointEnumerator
 
 import mayan
-from mayan.apps.organizations.settings import setting_organization_installation_url
+from mayan.apps.organizations.settings import setting_organization_url_base_path
+from mayan.apps.rest_api import generics
 
-from .classes import Endpoint
+from .classes import BatchRequestCollection, Endpoint
 from .generics import RetrieveAPIView, ListAPIView
-from .serializers import EndpointSerializer, ProjectInformationSerializer
+from .serializers import (
+    BatchAPIRequestResponseSerializer, EndpointSerializer,
+    ProjectInformationSerializer
+)
 from .schemas import openapi_info
 
 
@@ -58,7 +62,7 @@ class APIVersionRoot(ListAPIView):
         """
         endpoint_enumerator = EndpointEnumerator()
 
-        if setting_organization_installation_url.value:
+        if setting_organization_url_base_path.value:
             url_index = 4
         else:
             url_index = 3
@@ -81,6 +85,26 @@ class APIVersionRoot(ListAPIView):
                 )
 
         return endpoints
+
+
+class BatchRequestAPIView(mixins.ListModelMixin, generics.GenericAPIView):
+    """
+    post: Submit a batch API request.
+    """
+    serializer_class = BatchAPIRequestResponseSerializer
+
+    def post(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def get_queryset(self):
+        serializer = self.get_serializer(data=self.request.data)
+        serializer.is_valid(raise_exception=True)
+        batch_request_collection = BatchRequestCollection(
+            request_list=serializer.validated_data.get('requests')
+        )
+        return batch_request_collection.execute(
+            view_request=self.request._request
+        )
 
 
 class BrowseableObtainAuthToken(ObtainAuthToken):

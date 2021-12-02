@@ -68,7 +68,7 @@ class DocumentTypeWebLinksView(AddRemoveView):
 class ResolvedWebLinkView(ExternalObjectViewMixin, RedirectView):
     external_object_pk_url_kwarg = 'document_id'
     external_object_permission = permission_web_link_instance_view
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
 
     def get_redirect_url(self, *args, **kwargs):
         return self.get_web_link().get_redirect(
@@ -192,7 +192,7 @@ class WebLinkListView(SingleObjectListView):
 class DocumentWebLinkListView(ExternalObjectViewMixin, WebLinkListView):
     external_object_permission = permission_web_link_instance_view
     external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
+    external_object_queryset = Document.valid.all()
     object_permission = permission_web_link_instance_view
 
     def get_extra_context(self):

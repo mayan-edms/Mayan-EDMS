@@ -13,38 +13,41 @@ logger = logging.getLogger(name=__name__)
 
 
 class DjangoSearchBackend(SearchBackend):
-    def _search(self, query_string, search_model, user, global_and_search=False):
+    def _search(
+        self, query, search_model, user, global_and_search=False,
+        ignore_limit=False
+    ):
         search_query = self.get_search_query(
-            search_model=search_model, query_string=query_string,
-            global_and_search=global_and_search
+            global_and_search=global_and_search, query=query,
+            search_model=search_model
         )
 
-        queryset = search_model.get_queryset().filter(
-            search_query.query
+        return search_model.get_queryset().filter(
+            search_query.django_query
         ).distinct()
 
-        return SearchBackend.limit_queryset(queryset=queryset)
-
-    def deindex_instance(self, instance):
+    def deindex_instance(self, *args, **kwargs):
         """This backend doesn't remove instances."""
 
-    def index_instance(self, instance):
+    def index_instance(self, *args, **kwargs):
         """
         This backend doesn't index instances. Searches query the
         database directly.
         """
 
-    def get_search_query(self, search_model, query_string, global_and_search=False):
+    def get_search_query(
+        self, query, search_model, global_and_search=False
+    ):
         return SearchQuery(
-            query_string=query_string, search_model=search_model,
-            global_and_search=global_and_search
+            global_and_search=global_and_search, query=query,
+            search_model=search_model
         )
 
 
 class FieldQuery:
     def __init__(self, search_field, search_term_collection):
         query_operation = QUERY_OPERATION_AND
-        self.query = None
+        self.django_query = None
         self.parts = []
 
         for term in search_term_collection.terms:
@@ -67,13 +70,13 @@ class FieldQuery:
                 if term.negated:
                     q_object = ~q_object
 
-                if self.query is None:
-                    self.query = q_object
+                if self.django_query is None:
+                    self.django_query = q_object
                 else:
                     if query_operation == QUERY_OPERATION_AND:
-                        self.query = self.query & q_object
+                        self.django_query &= q_object
                     else:
-                        self.query = self.query | q_object
+                        self.django_query |= q_object
 
             if not term.is_meta:
                 self.parts.append(force_text(s=search_field.label))
@@ -86,15 +89,13 @@ class FieldQuery:
 
 
 class SearchQuery:
-    def __init__(self, query_string, search_model, global_and_search=False):
-        self.query = None
+    def __init__(self, query, search_model, global_and_search=False):
+        self.django_query = None
         self.text = []
 
         for search_field in search_model.search_fields:
             search_term_collection = SearchTermCollection(
-                text=query_string.get(
-                    search_field.field, query_string.get('q', '')
-                ).strip()
+                text=query.get(search_field.field, '').strip()
             )
 
             field_query = FieldQuery(
@@ -102,7 +103,7 @@ class SearchQuery:
                 search_term_collection=search_term_collection
             )
 
-            if field_query.query:
+            if field_query.django_query:
                 self.text.append('({})'.format(force_text(s=field_query)))
 
                 if global_and_search:
@@ -110,15 +111,15 @@ class SearchQuery:
                 else:
                     self.text.append('OR')
 
-                if self.query is None:
-                    self.query = field_query.query
+                if self.django_query is None:
+                    self.django_query = field_query.django_query
                 else:
                     if global_and_search:
-                        self.query = self.query & field_query.query
+                        self.django_query &= field_query.django_query
                     else:
-                        self.query = self.query | field_query.query
+                        self.django_query |= field_query.django_query
 
-        self.query = self.query or Q()
+        self.django_query = self.django_query or Q()
 
     def __str__(self):
         return ' '.join(self.text[:-1])

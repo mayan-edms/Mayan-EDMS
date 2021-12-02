@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:26+0000\n"
 "Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -28,12 +28,12 @@ msgstr ""
 msgid "Linking"
 msgstr "Ligações"
 
-#: apps.py:94 models.py:29
+#: apps.py:100 models.py:29
 msgid "Label"
 msgstr "Rótulo"
 
 #: events.py:6 links.py:24 links.py:75 links.py:80 links.py:85 models.py:48
-#: permissions.py:5 views.py:191
+#: permissions.py:5 views.py:147
 msgid "Smart links"
 msgstr "Links inteligentes"
 
@@ -65,7 +65,7 @@ msgstr "Editar"
 msgid "Conditions"
 msgstr "Condições"
 
-#: links.py:50 views.py:227
+#: links.py:50 views.py:248
 msgid "Create new smart link"
 msgstr "Criar novo link inteligente"
 
@@ -161,11 +161,11 @@ msgstr ""
 msgid "Dynamic label"
 msgstr "Rótulo dinâmico"
 
-#: models.py:37 models.py:186
+#: models.py:37 models.py:188
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: models.py:47 models.py:164
+#: models.py:47 models.py:166
 msgid "Smart link"
 msgstr "Link inteligente"
 
@@ -179,19 +179,19 @@ msgid "This smart link is not allowed for the selected document's type."
 msgstr ""
 "Este link inteligente não é permitido para o tipo de documento selecionado. "
 
-#: models.py:168
+#: models.py:170
 msgid "The inclusion is ignored for the first item."
 msgstr "A inclusão é ignorada para o primeiro item."
 
-#: models.py:172
+#: models.py:174
 msgid "This represents the metadata of all other documents."
 msgstr "Esta expressão será avaliada contra o documento atual."
 
-#: models.py:173
+#: models.py:175
 msgid "Foreign document attribute"
 msgstr "Atributo documento externo"
 
-#: models.py:178
+#: models.py:180
 msgid ""
 "The expression using document properties to be evaluated against the foreign"
 " document field."
@@ -199,104 +199,82 @@ msgstr ""
 "A expressão usando propriedades de documento a ser avaliada contra o campo "
 "de documento externo."
 
-#: models.py:180
+#: models.py:182
 msgid "Expression"
 msgstr "Expressão"
 
-#: models.py:183
+#: models.py:185
 msgid "Inverts the logic of the operator."
 msgstr "Inverte a lógica do operador."
 
-#: models.py:184
+#: models.py:186
 msgid "Negated"
 msgstr "Negada"
 
-#: models.py:189
+#: models.py:191
 msgid "Link condition"
 msgstr "Condição de ligação"
 
-#: models.py:190
+#: models.py:192
 msgid "Link conditions"
 msgstr "Condições de ligação"
 
-#: models.py:206
+#: models.py:208
 msgid "not"
 msgstr "não"
 
-#: models.py:210
+#: models.py:212
 msgid "Full label"
 msgstr "Rótulo completo"
 
 #: permissions.py:8
+msgid "View resolved smart links"
+msgstr ""
+
+#: permissions.py:11
 msgid "Create new smart links"
 msgstr "Criar novos links inteligentes"
 
-#: permissions.py:11
+#: permissions.py:14
 msgid "Delete smart links"
 msgstr "Excluir links inteligentes"
 
-#: permissions.py:14
+#: permissions.py:17
 msgid "Edit smart links"
 msgstr "Editar links inteligentes"
 
-#: permissions.py:17
+#: permissions.py:20
 msgid "View existing smart links"
 msgstr "Ver os links inteligentes"
 
-#: serializers.py:52
+#: serializers.py:49
 msgid "Primary key of the document type to add to the smart link."
 msgstr ""
 "Chave primária do tipo de documento a ser adicionado ao link inteligente."
 
-#: serializers.py:61
+#: serializers.py:58
 msgid "Primary key of the document type to remove from the smart link."
 msgstr ""
 "Chave primária do tipo de documento a ser removido do link inteligente."
 
-#: views.py:41
-msgid "Available smart links"
-msgstr "Links inteligentes disponíveis"
-
-#: views.py:42
-msgid "Smart links enabled"
-msgstr "Links inteligentes habilitados"
-
-#: views.py:68
+#: views.py:65
 #, python-format
-msgid "Smart links to enable for document type: %s"
-msgstr "Habilitar links inteligentes para o tipo de documento: %s"
-
-#: views.py:103
-#, python-format
-msgid "Smart link query error: %s"
-msgstr "Erro de consulta de link inteligente : %s"
-
-#: views.py:114
-#, python-format
-msgid "Documents in smart link: %s"
-msgstr "Os documentos em links inteligente: %s "
-
-#: views.py:117
-#, python-format
-msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgid "Resolved smart link query error: %s"
 msgstr ""
-"Os documentos em link inteligente \"%(smart_link)s\" em relação com "
-"\"%(document)s\""
 
-#: views.py:153
-msgid "Available document types"
-msgstr "Tipos de documentos disponíveis"
-
-#: views.py:154
-msgid "Document types enabled"
-msgstr "Tipos de documentos habilitados"
-
-#: views.py:164
+#: views.py:92
 #, python-format
-msgid "Document type for which to enable smart link: %s"
-msgstr "Tipo de documento para o qual a permitir link inteligente:  %s"
+msgid "Resolved smart link dynamic label error: %s"
+msgstr ""
 
-#: views.py:182
+#: views.py:97
+#, python-format
+msgid ""
+"Documents in resolved smart link \"%(resolved_smart_link)s\" for "
+"\"%(document)s\""
+msgstr ""
+
+#: views.py:138
 msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
@@ -307,11 +285,11 @@ msgstr ""
 "documentos mesmo se eles estiverem em índices diferentes e forem de tipos "
 "diferentes."
 
-#: views.py:189
+#: views.py:145
 msgid "There are no smart links"
 msgstr "Não há links inteligentes"
 
-#: views.py:207
+#: views.py:166
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
@@ -319,26 +297,52 @@ msgstr ""
 "Links inteligentes permitem a definição de relações entre documentos mesmo "
 "se eles estiverem em índices diferentes e forem de tipos diferentes."
 
-#: views.py:212
-msgid "There are no smart links for this document"
-msgstr "Não há links inteligentes para este documento"
+#: views.py:171
+msgid "There are no resolved smart links for this document"
+msgstr ""
 
-#: views.py:215
+#: views.py:175
 #, python-format
-msgid "Smart links for document: %s"
-msgstr "Links inteligentes para documento: %s"
+msgid "Resolved smart links for document: %s"
+msgstr ""
 
-#: views.py:249
+#: views.py:191
+msgid "Available smart links"
+msgstr "Links inteligentes disponíveis"
+
+#: views.py:192
+msgid "Smart links enabled"
+msgstr "Links inteligentes habilitados"
+
+#: views.py:218
+#, python-format
+msgid "Smart links to enable for document type: %s"
+msgstr "Habilitar links inteligentes para o tipo de documento: %s"
+
+#: views.py:231
+msgid "Available document types"
+msgstr "Tipos de documentos disponíveis"
+
+#: views.py:232
+msgid "Document types enabled"
+msgstr "Tipos de documentos habilitados"
+
+#: views.py:242
+#, python-format
+msgid "Document type for which to enable smart link: %s"
+msgstr "Tipo de documento para o qual a permitir link inteligente:  %s"
+
+#: views.py:270
 #, python-format
 msgid "Delete smart link: %s"
 msgstr "Apagar link inteligente: %s"
 
-#: views.py:265
+#: views.py:286
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Editar link inteligente: %s"
 
-#: views.py:290
+#: views.py:311
 msgid ""
 "Conditions are small logic units that when combined define how the smart "
 "link will behave."
@@ -346,25 +350,25 @@ msgstr ""
 "Condições são pequenas unidades lógicas que quando combinadas definem como "
 "um link inteligente irá se comportar."
 
-#: views.py:294
+#: views.py:315
 msgid "There are no conditions for this smart link"
 msgstr "Não há condições para este link inteligente"
 
-#: views.py:298
+#: views.py:319
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr "Condições para a link inteligente: %s criado com sucesso."
 
-#: views.py:317
+#: views.py:338
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Adiciona novas condições para a link inteligente: %s "
 
-#: views.py:350
+#: views.py:371
 #, python-format
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "Apagar condição de link inteligente: %s?"
 
-#: views.py:376
+#: views.py:397
 msgid "Edit smart link condition"
 msgstr "Editar condição de link inteligente"

@@ -1,7 +1,7 @@
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.document_indexing.tasks import task_index_document
+from mayan.apps.document_indexing.tasks import task_index_instance_document_add
 from mayan.apps.events.classes import EventType
 
 from .literals import STORAGE_NAME_WORKFLOW_CACHE
@@ -18,19 +18,33 @@ def handler_create_workflow_image_cache(sender, **kwargs):
     )
 
 
-def handler_index_document(sender, **kwargs):
-    task_index_document.apply_async(
-        kwargs=dict(
-            document_id=kwargs['instance'].workflow_instance.document.pk
-        )
+def handler_index_document_on_workflow_instance_log_entry(sender, **kwargs):
+    task_index_instance_document_add.apply_async(
+        kwargs={
+            'document_id': kwargs['instance'].workflow_instance.document.pk
+        }
     )
 
 
-def handler_launch_workflow(sender, instance, created, **kwargs):
+def handler_index_document_on_workflow_instance(sender, **kwargs):
+    task_index_instance_document_add.apply_async(
+        kwargs={
+            'document_id': kwargs['instance'].document.pk
+        }
+    )
+
+
+def handler_launch_workflow_on_create(sender, instance, created, **kwargs):
     if created:
         task_launch_all_workflow_for.apply_async(
             kwargs={'document_id': instance.pk}
         )
+
+
+def handler_launch_workflow_on_type_change(sender, instance, **kwargs):
+    task_launch_all_workflow_for.apply_async(
+        kwargs={'document_id': instance.pk}
+    )
 
 
 def handler_trigger_transition(sender, **kwargs):
@@ -52,19 +66,25 @@ def handler_trigger_transition(sender, **kwargs):
 
     if isinstance(action.target, Document):
         workflow_instances = WorkflowInstance.objects.filter(
-            workflow__transitions__in=trigger_transitions, document=action.target
+            workflow__transitions__in=trigger_transitions,
+            document=action.target
         ).distinct()
     elif isinstance(action.action_object, Document):
         workflow_instances = WorkflowInstance.objects.filter(
-            workflow__transitions__in=trigger_transitions, document=action.action_object
+            workflow__transitions__in=trigger_transitions,
+            document=action.action_object
         ).distinct()
     else:
         workflow_instances = WorkflowInstance.objects.none()
 
     for workflow_instance in workflow_instances:
-        # Select the first transition that is valid for this workflow state
+        # Select the first transition that is valid for this workflow state.
         valid_transitions = list(
-            set(trigger_transitions) & set(workflow_instance.get_transition_choices())
+            set(
+                trigger_transitions
+            ) & set(
+                workflow_instance.get_transition_choices()
+            )
         )
         if valid_transitions:
             workflow_instance.do_transition(

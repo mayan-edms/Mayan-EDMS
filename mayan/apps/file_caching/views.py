@@ -6,10 +6,12 @@ from mayan.apps.views.generics import (
     ConfirmView, MultipleObjectConfirmActionView, SingleObjectDetailView,
     SingleObjectListView
 )
-from mayan.apps.views.mixins import ContentTypeViewMixin, ExternalObjectViewMixin
+from mayan.apps.views.mixins import (
+    ContentTypeViewMixin, ExternalObjectViewMixin
+)
 
-from .forms import CacheDetailForm
-from .models import Cache
+from .forms import CacheDetailForm, CachePartitionDetailForm
+from .models import Cache, CachePartition
 from .permissions import (
     permission_cache_partition_purge, permission_cache_purge,
     permission_cache_view
@@ -23,14 +25,14 @@ class CacheDetailView(SingleObjectDetailView):
     form_extra_kwargs = {
         'extra_fields': [
             {
-                'field': 'label',
+                'field': 'label'
             },
             {
-                'field': 'get_maximum_size_display',
+                'field': 'get_maximum_size_display'
             },
             {
-                'field': 'get_total_size_display',
-            },
+                'field': 'get_total_size_display'
+            }
         ]
     }
     model = Cache
@@ -40,7 +42,7 @@ class CacheDetailView(SingleObjectDetailView):
     def get_extra_context(self):
         return {
             'object': self.object,
-            'title': _('Details cache: %s') % self.object,
+            'title': _('Details of cache: %s') % self.object,
         }
 
 
@@ -52,6 +54,26 @@ class CacheListView(SingleObjectListView):
         return {
             'hide_object': True,
             'title': _('File caches list')
+        }
+
+
+class CachePartitionDetailView(SingleObjectDetailView):
+    form_class = CachePartitionDetailForm
+    form_extra_kwargs = {
+        'extra_fields': [
+            {
+                'field': 'get_total_size_display'
+            }
+        ]
+    }
+    model = CachePartition
+    object_permission = permission_cache_view
+    pk_url_kwarg = 'cache_partition_id'
+
+    def get_extra_context(self):
+        return {
+            'object': self.object,
+            'title': _('Details cache: %s') % self.object,
         }
 
 

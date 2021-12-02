@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:17+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:23 links.py:17 settings.py:8
+#: apps.py:23 links.py:17 settings.py:11
 msgid "REST API"
 msgstr "REST API"
 
@@ -39,11 +39,33 @@ msgstr "Documentazione API (Swagger)"
 msgid "API Documentation (ReDoc)"
 msgstr "Documentazione API (ReDoc)"
 
+#: relations.py:82
+msgid "This field is required."
+msgstr ""
+
+#: relations.py:83
+#, python-brace-format
+msgid "Invalid pk \"{pk_value}\" - object does not exist."
+msgstr ""
+
+#: relations.py:84
+#, python-brace-format
+msgid "Incorrect type. Expected pk value, received {data_type}."
+msgstr ""
+
 #: schemas.py:11
 #, python-format
 msgid "%s API"
 msgstr "%s API"
 
-#: settings.py:14
+#: settings.py:17
 msgid "Disable the REST API links in the tools menu."
 msgstr "Disabilita i collegamenti API REST nel menu strumenti."
+
+#: settings.py:23
+msgid "The maximum page size that can be requested."
+msgstr ""
+
+#: settings.py:29
+msgid "The default page size if none is specified."
+msgstr ""

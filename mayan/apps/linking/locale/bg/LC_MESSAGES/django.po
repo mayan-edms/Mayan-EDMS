@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:26+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -27,12 +27,12 @@ msgstr ""
 msgid "Linking"
 msgstr "Свързване"
 
-#: apps.py:94 models.py:29
+#: apps.py:100 models.py:29
 msgid "Label"
 msgstr "Етикет"
 
 #: events.py:6 links.py:24 links.py:75 links.py:80 links.py:85 models.py:48
-#: permissions.py:5 views.py:191
+#: permissions.py:5 views.py:147
 msgid "Smart links"
 msgstr "Умни връзки"
 
@@ -64,7 +64,7 @@ msgstr "Редактиране"
 msgid "Conditions"
 msgstr "Условия"
 
-#: links.py:50 views.py:227
+#: links.py:50 views.py:248
 msgid "Create new smart link"
 msgstr "Създайте нова умна връзка"
 
@@ -160,11 +160,11 @@ msgstr ""
 msgid "Dynamic label"
 msgstr "Динамичен етикет"
 
-#: models.py:37 models.py:186
+#: models.py:37 models.py:188
 msgid "Enabled"
 msgstr "Активиран"
 
-#: models.py:47 models.py:164
+#: models.py:47 models.py:166
 msgid "Smart link"
 msgstr "Умна връзка"
 
@@ -177,19 +177,19 @@ msgstr "Грешка при генериране на динамичен ети�
 msgid "This smart link is not allowed for the selected document's type."
 msgstr "Тази умна връзка не е разрешена за типа на избрания документ."
 
-#: models.py:168
+#: models.py:170
 msgid "The inclusion is ignored for the first item."
 msgstr "Включването се игнорира за първия елемент."
 
-#: models.py:172
+#: models.py:174
 msgid "This represents the metadata of all other documents."
 msgstr "Това представлява метаданните на всички останали документи."
 
-#: models.py:173
+#: models.py:175
 msgid "Foreign document attribute"
 msgstr "Характеристика на чужд документ"
 
-#: models.py:178
+#: models.py:180
 msgid ""
 "The expression using document properties to be evaluated against the foreign"
 " document field."
@@ -197,105 +197,85 @@ msgstr ""
 "Изразът, използващ свойствата на документа, които трябва да бъдат оценени "
 "спрямо чуждото документно поле."
 
-#: models.py:180
+#: models.py:182
 msgid "Expression"
 msgstr "Израз"
 
-#: models.py:183
+#: models.py:185
 msgid "Inverts the logic of the operator."
 msgstr "Обръща логиката на оператора."
 
-#: models.py:184
+#: models.py:186
 msgid "Negated"
 msgstr "Отказано"
 
-#: models.py:189
+#: models.py:191
 msgid "Link condition"
 msgstr "Състояние на връзката"
 
-#: models.py:190
+#: models.py:192
 msgid "Link conditions"
 msgstr "Състояния на връзката"
 
-#: models.py:206
+#: models.py:208
 msgid "not"
 msgstr "не"
 
-#: models.py:210
+#: models.py:212
 msgid "Full label"
 msgstr "Пълен етикет"
 
 #: permissions.py:8
+msgid "View resolved smart links"
+msgstr "Преглед на разрешените интелигентни връзки"
+
+#: permissions.py:11
 msgid "Create new smart links"
 msgstr "Създайте нови умни връзки"
 
-#: permissions.py:11
+#: permissions.py:14
 msgid "Delete smart links"
 msgstr "Изтрийте умните връзки"
 
-#: permissions.py:14
+#: permissions.py:17
 msgid "Edit smart links"
 msgstr "Редактиране на умни връзки"
 
-#: permissions.py:17
+#: permissions.py:20
 msgid "View existing smart links"
 msgstr "Преглед на съществуващите умни връзки"
 
-#: serializers.py:52
+#: serializers.py:49
 msgid "Primary key of the document type to add to the smart link."
 msgstr ""
 "Основен ключ от типа документ, който да добавите към интелигентната връзка."
 
-#: serializers.py:61
+#: serializers.py:58
 msgid "Primary key of the document type to remove from the smart link."
 msgstr ""
 "Основен ключ от типа документ, който да се премахне от интелигентната "
 "връзка."
 
-#: views.py:41
-msgid "Available smart links"
-msgstr "Налични умни връзки"
-
-#: views.py:42
-msgid "Smart links enabled"
-msgstr "Умните връзки са активирани"
-
-#: views.py:68
+#: views.py:65
 #, python-format
-msgid "Smart links to enable for document type: %s"
-msgstr "Умни връзки за активиране на тип документ: %s"
+msgid "Resolved smart link query error: %s"
+msgstr "Разрешена грешка в заявката за интелигентна връзка: %s"
 
-#: views.py:103
+#: views.py:92
 #, python-format
-msgid "Smart link query error: %s"
-msgstr "Грешка в заявката за умна връзка: %s"
+msgid "Resolved smart link dynamic label error: %s"
+msgstr "Разрешена грешка в динамичния етикет на интелигентната връзка: %s"
 
-#: views.py:114
+#: views.py:97
 #, python-format
-msgid "Documents in smart link: %s"
-msgstr "Документи в умна връзка: %s"
-
-#: views.py:117
-#, python-format
-msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgid ""
+"Documents in resolved smart link \"%(resolved_smart_link)s\" for "
+"\"%(document)s\""
 msgstr ""
-"Документи в умна връзка &quot;%(smart_link)s&quot; във връзка с "
-"&quot;%(document)s&quot;"
+"Документи в разрешена интелигентна връзка „%(resolved_smart_link)s“ за "
+"„%(document)s“"
 
-#: views.py:153
-msgid "Available document types"
-msgstr "Налични типове документи"
-
-#: views.py:154
-msgid "Document types enabled"
-msgstr "Активирани типове документи"
-
-#: views.py:164
-#, python-format
-msgid "Document type for which to enable smart link: %s"
-msgstr "Тип документ, за който да се даде възможност за умна връзка: %s"
-
-#: views.py:182
+#: views.py:138
 msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
@@ -306,11 +286,11 @@ msgstr ""
 "отношенията между документите, дори ако те са в различни индексни групи и са"
 " от различен тип."
 
-#: views.py:189
+#: views.py:145
 msgid "There are no smart links"
 msgstr "Няма умни връзки"
 
-#: views.py:207
+#: views.py:166
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
@@ -318,26 +298,52 @@ msgstr ""
 "Умните връзки позволяват да се определят отношенията между документите, дори"
 " ако те са в различни индексни групи и са от различен тип."
 
-#: views.py:212
-msgid "There are no smart links for this document"
-msgstr "Няма умни връзки за този документ"
+#: views.py:171
+msgid "There are no resolved smart links for this document"
+msgstr "За този документ няма разрешени интелигентни връзки"
 
-#: views.py:215
+#: views.py:175
 #, python-format
-msgid "Smart links for document: %s"
-msgstr "Умни връзки за документ: %s"
+msgid "Resolved smart links for document: %s"
+msgstr "Разрешени интелигентни връзки за документ: %s"
 
-#: views.py:249
+#: views.py:191
+msgid "Available smart links"
+msgstr "Налични умни връзки"
+
+#: views.py:192
+msgid "Smart links enabled"
+msgstr "Умните връзки са активирани"
+
+#: views.py:218
+#, python-format
+msgid "Smart links to enable for document type: %s"
+msgstr "Умни връзки за активиране на тип документ: %s"
+
+#: views.py:231
+msgid "Available document types"
+msgstr "Налични типове документи"
+
+#: views.py:232
+msgid "Document types enabled"
+msgstr "Активирани типове документи"
+
+#: views.py:242
+#, python-format
+msgid "Document type for which to enable smart link: %s"
+msgstr "Тип документ, за който да се даде възможност за умна връзка: %s"
+
+#: views.py:270
 #, python-format
 msgid "Delete smart link: %s"
 msgstr "Изтриване на умна връзка: %s"
 
-#: views.py:265
+#: views.py:286
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Редактиране на умна връзка: %s"
 
-#: views.py:290
+#: views.py:311
 msgid ""
 "Conditions are small logic units that when combined define how the smart "
 "link will behave."
@@ -345,25 +351,25 @@ msgstr ""
 "Условията са малки логически единици, които в комбинация определят как ще се"
 " държи умната връзка."
 
-#: views.py:294
+#: views.py:315
 msgid "There are no conditions for this smart link"
 msgstr "Няма условия за тази умна връзка"
 
-#: views.py:298
+#: views.py:319
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr "Условия за умна връзка: %s"
 
-#: views.py:317
+#: views.py:338
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Добавете нови условия към умната връзка: &quot;%s&quot;"
 
-#: views.py:350
+#: views.py:371
 #, python-format
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "Изтриване на условие на умна връзка: &quot;%s&quot;?"
 
-#: views.py:376
+#: views.py:397
 msgid "Edit smart link condition"
 msgstr "Редактиране на условие на умна връзка"

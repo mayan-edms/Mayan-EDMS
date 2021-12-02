@@ -6,6 +6,7 @@ import random
 import time
 
 from furl import furl
+import psutil
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.webdriver import WebDriver
 
@@ -16,6 +17,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import connection, connections, models
 from django.db.models.signals import post_save, pre_save
 from django.http import HttpResponse
+from django.http.response import FileResponse
 from django.template import Context, Template
 from django.test.utils import ContextList
 from django.urls import clear_url_caches, reverse
@@ -26,15 +28,10 @@ from stronghold.decorators import public
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.permissions.tests.mixins import PermissionTestMixin
 from mayan.apps.storage.settings import setting_temporary_directory
-from mayan.apps.views.compat import FileResponse
 
 from ..literals import (
     TEST_SERVER_HOST, TEST_SERVER_SCHEME, TEST_VIEW_NAME, TEST_VIEW_URL
 )
-
-
-if getattr(settings, 'COMMON_TEST_FILE_HANDLES', False):
-    import psutil
 
 
 class ClientMethodsTestCaseMixin:
@@ -131,7 +128,7 @@ class ContentTypeCheckTestCaseMixin:
             def request(self, *args, **kwargs):
                 response = super().request(*args, **kwargs)
 
-                content_type = response._headers.get('content-type', [None, ''])[1]
+                content_type = response.headers.get('content-type', '')
                 if test_instance.expected_content_types:
                     test_instance.assertTrue(
                         content_type in test_instance.expected_content_types,
@@ -163,6 +160,41 @@ class DelayTestCaseMixin:
         time.sleep(seconds)
 
 
+class DescriptorLeakCheckTestCaseMixin:
+    _skip_file_descriptor_test = False
+
+    def _get_process_descriptor_count(self):
+        process = psutil.Process()
+        return process.num_fds()
+
+    def _get_process_descriptors(self):
+        process = psutil.Process()._proc
+        return os.listdir("%s/%s/fd" % (process._procfs_path, process.pid))
+
+    def setUp(self):
+        super().setUp()
+        self._process_descriptor_count = self._get_process_descriptor_count()
+        self._process_descriptors = self._get_process_descriptors()
+
+    def tearDown(self):
+        if not self._skip_file_descriptor_test:
+            if self._get_process_descriptor_count() > self._process_descriptor_count:
+                raise ValueError(
+                    'File descriptor leak. The number of file descriptors '
+                    'at the end are higher than at the start of the test.'
+                )
+
+            for descriptor in self._get_process_descriptors():
+                if descriptor not in self._process_descriptors:
+                    raise ValueError(
+                        'File descriptor leak. A descriptor was found at '
+                        'the end of the test that was not present at the '
+                        'start of the test.'
+                    )
+
+        super().tearDown()
+
+
 class DownloadTestCaseMixin:
     def assert_download_response(
         self, response, content=None, filename=None, is_attachment=None,
@@ -171,11 +203,7 @@ class DownloadTestCaseMixin:
         self.assertTrue(isinstance(response, FileResponse))
 
         if filename:
-            self.assertEqual(
-                response[
-                    'Content-Disposition'
-                ].split('filename="')[1].split('"')[0], filename
-            )
+            self.assertEqual(response.filename, filename)
 
         if content:
             response_content = b''.join(list(response))
@@ -188,10 +216,12 @@ class DownloadTestCaseMixin:
             self.assertEqual(response_content, content)
 
         if is_attachment is not None:
-            self.assertEqual(response['Content-Disposition'], 'attachment')
+            self.assertTrue(response.as_attachment)
 
         if mime_type:
-            self.assertTrue(response['Content-Type'].startswith(mime_type))
+            self.assertTrue(
+                response.headers['Content-Type'].startswith(mime_type)
+            )
 
 
 class EnvironmentTestCaseMixin:
@@ -218,9 +248,7 @@ class ModelTestCaseMixin:
 
 
 class OpenFileCheckTestCaseMixin:
-    def _get_descriptor_count(self):
-        process = psutil.Process()
-        return process.num_fds()
+    _skip_open_file_leak_test = False
 
     def _get_open_files(self):
         process = psutil.Process()
@@ -228,19 +256,16 @@ class OpenFileCheckTestCaseMixin:
 
     def setUp(self):
         super().setUp()
-        if getattr(settings, 'COMMON_TEST_FILE_HANDLES', False):
-            self._open_files = self._get_open_files()
+
+        self._open_files = self._get_open_files()
 
     def tearDown(self):
-        if getattr(settings, 'COMMON_TEST_FILE_HANDLES', False) and not getattr(self, '_skip_file_descriptor_test', False):
+        if not self._skip_open_file_leak_test:
             for new_open_file in self._get_open_files():
-                self.assertFalse(
-                    new_open_file not in self._open_files,
-                    msg='File descriptor leak. The number of file descriptors '
-                    'at the start and at the end of the test are not the same.'
-                )
-
-            self._skip_file_descriptor_test = False
+                if new_open_file not in self._open_files:
+                    raise ValueError(
+                        'File left open: {}'.format(new_open_file)
+                    )
 
         super().tearDown()
 
@@ -268,7 +293,7 @@ class RandomPrimaryKeyModelMonkeyPatchMixin:
             attempts = attempts + 1
 
             if attempts > RandomPrimaryKeyModelMonkeyPatchMixin.random_primary_key_maximum_attempts:
-                raise Exception(
+                raise ValueError(
                     'Maximum number of retries for an unique random primary '
                     'key reached.'
                 )
@@ -400,15 +425,15 @@ class SilenceLoggerTestCaseMixin:
 
 
 class TempfileCheckTestCasekMixin:
-    # Ignore the jvmstat instrumentation and GitLab's CI .config files
-    # Ignore LibreOffice fontconfig cache dir
+    # Ignore the jvmstat instrumentation and GitLab's CI .config files.
+    # Ignore LibreOffice fontconfig cache dir.
     ignore_globs = ('hsperfdata_*', '.config', '.cache')
 
     def _get_temporary_entries(self):
         ignored_result = []
 
         # Expand globs by joining the temporary directory and then flattening
-        # the list of lists into a single list
+        # the list of lists into a single list.
         for item in self.ignore_globs:
             ignored_result.extend(
                 glob.glob(
@@ -416,7 +441,7 @@ class TempfileCheckTestCasekMixin:
                 )
             )
 
-        # Remove the path and leave only the expanded filename
+        # Remove the path and leave only the expanded filename.
         ignored_result = map(lambda x: os.path.split(x)[-1], ignored_result)
 
         return set(
@@ -433,9 +458,9 @@ class TempfileCheckTestCasekMixin:
             final_temporary_items = self._get_temporary_entries()
             self.assertEqual(
                 self._temporary_items, final_temporary_items,
-                msg='Orphan temporary file. The number of temporary files and/or '
-                'directories at the start and at the end of the test are not the '
-                'same. Orphan entries: {}'.format(
+                msg='Orphan temporary file. The number of temporary '
+                'files and/or directories at the start and at the end of '
+                'the test are not the same. Orphan entries: {}'.format(
                     ','.join(final_temporary_items - self._temporary_items)
                 )
             )
@@ -448,6 +473,40 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
     auto_create_test_object_instance_kwargs = None
     auto_create_test_object_permission = False
 
+    @staticmethod
+    def _delete_test_model(model):
+        ModelPermission.deregister(model=model)
+
+        content_type = ContentType.objects.get_for_model(model=model)
+        if content_type.pk:
+            content_type.delete()
+
+        # Only attempt to deleted if the model was not deleted as part
+        # of the previous main test model deletion.
+        if model in apps.all_models[model._meta.app_label] or model in apps.app_configs[model._meta.app_label].models:
+            if not model._meta.proxy:
+                with connection.schema_editor() as schema_editor:
+                    schema_editor.delete_model(model=model)
+
+        # Only attempt to delete if the model was not deleted as part
+        # of the previous main test model deletion.
+        TestModelTestCaseMixin._unregister_model(
+            app_label=model._meta.app_label, model_name=model._meta.model_name
+        )
+
+        ContentType.objects.clear_cache()
+        apps.clear_cache()
+
+    @staticmethod
+    def _unregister_model(app_label, model_name):
+        try:
+            del apps.all_models[app_label][model_name]
+            del apps.app_configs[app_label].models[model_name]
+        except KeyError:
+            """
+            Non fatal. Means the model was deleted in the first attempt.
+            """
+
     @classmethod
     def setUpClass(cls):
         if connection.vendor == 'sqlite':
@@ -455,9 +514,31 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
 
         super().setUpClass()
 
+    def _delete_test_models(self):
+        # Delete the test models' content type entries and deregister the
+        # permissions, this avoids their Content Type from being looked up
+        # in subsequent tests where they don't exists due to the database
+        # transaction rollback.
+
+        # Clear previous model registration before re-registering it again to
+        # avoid conflict with test models with the same name, in the same app
+        # but from another test module.
+        self._test_models.reverse()
+
+        for model in self._test_models:
+            model.objects.all().delete()
+
+        for model in self._test_models:
+            TestModelTestCaseMixin._delete_test_model(model=model)
+
+        for model in self._test_models_extra:
+            TestModelTestCaseMixin._delete_test_model(model=model)
+
     def setUp(self):
         self._test_models = []
+        self._test_models_extra = set()
         self.test_objects = []
+        self._test_migrations = []
 
         super().setUp()
 
@@ -469,29 +550,21 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
             )
 
     def tearDown(self):
-        # Delete the test models' content type entries and deregister the
-        # permissions, this avoids their Content Type from being looked up
-        # in subsequent tests where they don't exists due to the database
-        # transaction rollback.
-        for model in self._test_models:
-            content_type = ContentType.objects.get_for_model(model=model)
-            if content_type.pk:
-                content_type.delete()
-            ModelPermission.deregister(model=model)
-
+        self._delete_test_models()
         super().tearDown()
 
     def _create_test_model(
-        self, base_class=models.Model, fields=None, model_name=None,
+        self, base_class=None, fields=None, model_name=None,
         options=None
     ):
+        base_class = base_class or models.Model
         test_model_count = len(self._test_models)
         self._test_model_name = model_name or '{}_{}'.format(
             'TestModel', test_model_count
         )
 
         self.options = options
-        # Obtain the app_config and app_label from the test's module path
+        # Obtain the app_config and app_label from the test's module path.
         self.app_config = apps.get_containing_app_config(
             object_name=self.__class__.__module__
         )
@@ -504,18 +577,14 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
 
         attrs = {
             '__module__': self.__class__.__module__,
-            'save': self._get_test_model_save_method(),
-            'Meta': self._get_test_model_meta(),
+            'Meta': self._get_test_model_meta()
         }
 
         if fields:
             attrs.update(fields)
 
-        # Clear previous model registration before re-registering it again to
-        # avoid conflict with test models with the same name, in the same app
-        # but from another test module.
-        apps.all_models[self.app_config.label].pop(
-            self._test_model_name.lower(), None
+        model_list_previous = set(
+            apps.app_configs[self.app_config.label].models.values()
         )
 
         model = type(
@@ -526,8 +595,16 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
             with connection.schema_editor() as schema_editor:
                 schema_editor.create_model(model=model)
 
+        self._test_models_extra.update(
+            set(
+                apps.app_configs[self.app_config.label].models.values()
+            ) - model_list_previous - set((model,))
+        )
+
         self._test_models.append(model)
+
         ContentType.objects.clear_cache()
+        apps.clear_cache()
 
         return model
 
@@ -562,6 +639,7 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
         class Meta:
             app_label = self.app_config.label
             db_table = self._test_db_table
+            ordering = ('id',)
             verbose_name = self._test_model_name
 
         if self.options:
@@ -569,21 +647,6 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
                 setattr(Meta, key, value)
 
         return Meta
-
-    def _get_test_model_save_method(self):
-        def save(instance, *args, **kwargs):
-            # Custom .save() method to use random primary key values.
-            if instance.pk:
-                return models.Model.self(instance, *args, **kwargs)
-            else:
-                instance.pk = RandomPrimaryKeyModelMonkeyPatchMixin.get_unique_primary_key(
-                    model=instance._meta.model
-                )
-                instance.id = instance.pk
-
-                kwargs['force_insert'] = True
-                return instance.save_base(*args, **kwargs)
-        return save
 
 
 class TestServerTestCaseMixin:
@@ -614,29 +677,31 @@ class TestServerTestCaseMixin:
 
 class TestViewTestCaseMixin:
     auto_add_test_view = False
-    has_test_view = False
     test_view_is_public = False
     test_view_object = None
-    test_view_name = TEST_VIEW_NAME
+    test_view_name = None
     test_view_template = '{{ object }}'
     test_view_url = TEST_VIEW_URL
 
     def setUp(self):
         super().setUp()
+        self._test_view_count = 0
+        self._test_view_names = []
+
         if self.auto_add_test_view:
             self.add_test_view(test_object=self.test_view_object)
 
     def tearDown(self):
-        urlconf = importlib.import_module(settings.ROOT_URLCONF)
-
         self.client.logout()
-        if self.has_test_view:
-            urlconf.urlpatterns.pop(0)
+
+        for _ in range(self._test_view_count):
+            self._get_test_view_urlpatterns().pop(0)
+
         super().tearDown()
 
     def _get_context_from_test_response(self, response):
         if isinstance(response.context, ContextList):
-            # template widget rendering causes test client response to be
+            # Template widget rendering causes test client response to be
             # ContextList rather than RequestContext. Typecast to dictionary
             # before updating.
             result = dict(response.context).copy()
@@ -663,19 +728,37 @@ class TestViewTestCaseMixin:
         else:
             return test_view
 
-    def add_test_view(self, test_object=None):
-        urlconf = importlib.import_module(settings.ROOT_URLCONF)
+    def _get_test_view_urlpatterns(self):
+        return importlib.import_module(settings.ROOT_URLCONF).urlpatterns
 
-        urlconf.urlpatterns.insert(
+    def add_test_view(
+        self, test_object=None, test_view_factory=None, test_view_name=None,
+        test_view_url=None
+    ):
+        if test_view_factory:
+            view = test_view_factory()
+        else:
+            view = self._test_view_factory(
+                test_object=test_object
+            )
+
+        if test_view_name:
+            self._test_view_name = test_view_name
+        else:
+            self._test_view_name = '{}_{}'.format(
+                TEST_VIEW_NAME, len(self._test_view_names)
+            )
+
+        self._get_test_view_urlpatterns().insert(
             0, url(
-                regex=self.test_view_url, view=self._test_view_factory(
-                    test_object=test_object
-                ), name=self.test_view_name
+                regex=test_view_url or self.test_view_url, view=view,
+                name=self._test_view_name
             )
         )
         clear_url_caches()
-        self.has_test_view = True
+        self._test_view_count += 1
+        self._test_view_names.append(self._test_view_name)
 
     def get_test_view(self):
-        response = self.get(viewname=self.test_view_name)
+        response = self.get(viewname=self._test_view_name)
         return self._get_context_from_test_response(response=response)

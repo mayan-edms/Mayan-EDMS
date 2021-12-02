@@ -67,7 +67,15 @@ class DocumentVersionAPIViewTestMixin:
             }
         )
 
-    def _request_test_document_version_export_api_view(self):
+    def _request_test_document_version_export_api_view_via_get(self):
+        return self.get(
+            viewname='rest_api:documentversion-export', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document.version_active.pk,
+            }
+        )
+
+    def _request_test_document_version_export_api_view_via_post(self):
         return self.post(
             viewname='rest_api:documentversion-export', kwargs={
                 'document_id': self.test_document.pk,
@@ -192,6 +200,20 @@ class DocumentVersionViewTestMixin:
             }
         )
 
+    def _request_test_document_version_delete_single_view(self):
+        return self.post(
+            viewname='documents:document_version_delete_single', kwargs={
+                'document_version_id': self.test_document_version.pk
+            }
+        )
+
+    def _request_test_document_version_delete_multiple_view(self):
+        return self.post(
+            viewname='documents:document_version_delete_multiple', data={
+                'id_list': self.test_document_version.pk
+            }
+        )
+
     def _request_test_document_version_edit_view(self):
         return self.post(
             viewname='documents:document_version_edit', kwargs={
@@ -288,6 +310,15 @@ class DocumentVersionPageViewTestMixin:
         return self.post(
             viewname='documents:document_version_page_zoom_out', kwargs={
                 'document_version_page_id': self.test_document_version_page.pk
+            }
+        )
+
+
+class DocumentVersionPageAppendViewTestMixin:
+    def _request_test_document_version_page_list_append_view(self):
+        return self.post(
+            viewname='documents:document_version_page_list_append', kwargs={
+                'document_version_id': self.test_document_version.pk
             }
         )
 

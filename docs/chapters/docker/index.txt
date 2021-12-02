@@ -7,11 +7,44 @@ Docker
 Docker is a container technology. Containers are a standard unit of software
 that packages up code and all its dependencies.
 
+Mayan EDMS uses Docker as its main distribution method.
+
+By default, the entire software stack is deployed as a single container. This
+provides an easy way to get started and will be sufficient for several
+thousand documents.
+
+
+.. important::
+
+    For larger installations, a distributed deployment will be required where
+    multiple Docker containers are started, each running a different part of the
+    software stack.
+
+    This requires deeper Docker knowledge and might require additional software
+    products like load balancers, object storage, container orchestration,
+    monitoring, self healing, among others.
+
+    Each multi container deployment is unique and there is no single
+    recommendation or guidance that applies to all. For this reason
+    information on scaling up is not provided as it alone would be the topic
+    of an entire book.
+
+    If you or your organization needs to scale Mayan EDMS beyond what is possible
+    with a default installation, commercial services are available and performed
+    by members of the core team.
+
+    We have helped hundred of companies scale up Mayan EDMS to host millions of
+    documents with unlimited growth potential as well as creating high
+    availability and fault tolerant deployments.
+
+    We would love to meet you and your team to have a discussion. For more details,
+    visit https://www.mayan-edms.com/support/
+
 
 - Installation: :doc:`install_simple` | :doc:`install_docker_network` | :doc:`docker_compose` | :doc:`start_stop`
-- Setup: :doc:`environment_variables` | :doc:`drivers`
+- Setup: :doc:`environment_variables` | :doc:`drivers` | :doc:`customizing` | :doc:`user_scripts`
 - Integration: :doc:`accessing_data`
-- Development: :doc:`building` | :doc:`customizing` | :doc:`nightly`
+- Development: :doc:`building` | :doc:`nightly`
 - Administration: :doc:`backups` | :doc:`upgrading` | :doc:`commands`
 
 
@@ -23,6 +56,8 @@ that packages up code and all its dependencies.
     install_docker_network
     start_stop
     environment_variables
+    commands
+    user_scripts
     drivers
     accessing_data
     backups
@@ -31,6 +66,5 @@ that packages up code and all its dependencies.
     customizing
     docker_compose
     nightly
-    commands
 
 

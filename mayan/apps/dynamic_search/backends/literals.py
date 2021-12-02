@@ -14,14 +14,23 @@ TERM_QUOTES = ['"', '\'']
 TERM_NEGATION_CHARACTER = '-'
 TERM_SPACE_CHARACTER = ' '
 
+TEXT_LOCK_INSTANCE_DEINDEX = 'dynamic_search_whoosh_deindex_instance'
+TEXT_LOCK_INSTANCE_INDEX = 'dynamic_search_whoosh_index_instance'
+
+# Whoosh specific.
 DJANGO_TO_WHOOSH_FIELD_MAP = {
     models.AutoField: {
-        'field': whoosh.fields.ID(stored=True), 'transformation': str
+        'field': whoosh.fields.ID(stored=True, unique=True),
+        'transformation': str
     },
     models.CharField: {'field': whoosh.fields.TEXT},
+    models.DateTimeField: {
+        'field': whoosh.fields.TEXT, 'transformation': str
+    },
     models.EmailField: {'field': whoosh.fields.TEXT},
     models.TextField: {'field': whoosh.fields.TEXT},
     models.UUIDField: {'field': whoosh.fields.TEXT, 'transformation': str},
     RGBColorField: {'field': whoosh.fields.TEXT},
 }
+
 WHOOSH_INDEX_DIRECTORY_NAME = 'whoosh'

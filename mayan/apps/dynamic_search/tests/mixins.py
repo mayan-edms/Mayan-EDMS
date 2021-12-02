@@ -1,7 +1,38 @@
 from mayan.apps.documents.search import document_search
 
+from ..classes import SearchBackend
 
-class SearchAPIViewTestMixin:
+from .backends import TestSearchBackend
+
+
+class SearchTestMixin:
+    def _deindex_instance(self, instance):
+        self.search_backend.deindex_instance(instance=instance)
+
+    def _index_instance(self, instance):
+        self.search_backend.index_instance(instance=instance)
+
+    def _setup_test_model_search(self):
+        """
+        This method allows tests to add model search configurations and
+        not have to import and initialize the SearchBackend.
+        """
+
+    def setUp(self):
+        super().setUp()
+        # Monkeypatch the search class so that the test behavior is only
+        # enabled when called from a search test.
+        TestSearchBackend._test_view = self
+        self.search_backend = SearchBackend.get_instance()
+        self._setup_test_model_search()
+        SearchBackend.initialize()
+
+    def tearDown(self):
+        SearchBackend.terminate()
+        super().tearDown()
+
+
+class SearchAPIViewTestMixin(SearchTestMixin):
     def _request_search_view(self):
         query = {'q': self.test_document.label}
         return self.get(
@@ -25,7 +56,7 @@ class SearchToolsViewTestMixin:
         return self.post(viewname='search:search_backend_reindex')
 
 
-class SearchViewTestMixin:
+class SearchViewTestMixin(SearchTestMixin):
     def _request_search_results_view(self, data, kwargs=None, query=None):
         return self.get(
             viewname='search:results', kwargs=kwargs, data=data, query=query

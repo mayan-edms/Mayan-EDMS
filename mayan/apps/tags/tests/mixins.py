@@ -140,9 +140,16 @@ class TagAPIViewTestMixin:
 
 
 class TagTestMixin:
+    auto_create_test_tag = False
+    test_tag_add_test_document = False
+
     def setUp(self):
         super().setUp()
         self.test_tags = []
+        if self.auto_create_test_tag:
+            self._create_test_tag(
+                add_test_document=self.test_tag_add_test_document
+            )
 
     def _create_test_tag(self, add_test_document=False):
         total_test_labels = len(self.test_tags)
@@ -180,14 +187,16 @@ class TagViewTestMixin:
 
     def _request_test_tag_delete_view(self):
         return self.post(
-            viewname='tags:tag_delete', kwargs={'tag_id': self.test_tag.pk}
+            viewname='tags:tag_delete_single', kwargs={
+                'tag_id': self.test_tag.pk
+            }
         )
 
     def _request_test_tag_delete_multiple_view(self):
         return self.post(
-            viewname='tags:tag_multiple_delete', data={
+            viewname='tags:tag_delete_multiple', data={
                 'id_list': self.test_tag.pk
-            },
+            }
         )
 
     def _request_test_tag_edit_view(self):

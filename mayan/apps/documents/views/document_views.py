@@ -1,5 +1,6 @@
 import logging
 
+from django.conf import settings
 from django.contrib import messages
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, ungettext
@@ -42,6 +43,10 @@ class DocumentListView(SingleObjectListView):
                     'exception': exception
                 }, request=self.request
             )
+
+            if settings.DEBUG or settings.TESTING:
+                raise
+
             self.object_list = Document.valid.none()
             return super().get_context_data(**kwargs)
 
@@ -72,7 +77,7 @@ class DocumentTypeChangeView(MultipleObjectFormActionView):
     form_class = DocumentTypeFilteredSelectForm
     object_permission = permission_document_properties_edit
     pk_url_kwarg = 'document_id'
-    source_queryset = Document.valid
+    source_queryset = Document.valid.all()
     success_message = _(
         'Document type change request performed on %(count)d document'
     )
@@ -84,7 +89,6 @@ class DocumentTypeChangeView(MultipleObjectFormActionView):
         queryset = self.object_list
 
         result = {
-            'submit_label': _('Change'),
             'title': ungettext(
                 singular='Change the type of the selected document',
                 plural='Change the type of the selected documents',
@@ -127,7 +131,7 @@ class DocumentTypeChangeView(MultipleObjectFormActionView):
 class DocumentPreviewView(DocumentVersionPreviewView):
     object_permission = permission_document_view
     pk_url_kwarg = 'document_id'
-    source_queryset = Document.valid
+    source_queryset = Document.valid.all()
 
     def dispatch(self, request, *args, **kwargs):
         result = super(
@@ -152,7 +156,7 @@ class DocumentPropertiesEditView(SingleObjectEditView):
     form_class = DocumentForm
     object_permission = permission_document_properties_edit
     pk_url_kwarg = 'document_id'
-    source_queryset = Document.valid
+    source_queryset = Document.valid.all()
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request, *args, **kwargs)
@@ -182,7 +186,7 @@ class DocumentPropertiesView(SingleObjectDetailView):
     form_class = DocumentPropertiesForm
     object_permission = permission_document_view
     pk_url_kwarg = 'document_id'
-    source_queryset = Document.valid
+    source_queryset = Document.valid.all()
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request, *args, **kwargs)

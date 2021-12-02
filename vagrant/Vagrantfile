@@ -1,0 +1,45 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+VM_BOX = "debian/buster64"
+VM_CPUS = 2
+VM_HOST_PORT = 8000
+VM_NAME = "mayan-edms"
+VM_RAM = "2048"
+
+load "vagrant/Vagrantfile.provision"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  # Providers:
+
+  # VirtualBox.
+  config.vm.provider :virtualbox do |virtualbox|
+    virtualbox.customize ["modifyvm", :id, "--memory", VM_RAM]
+    virtualbox.cpus = VM_CPUS
+    virtualbox.gui = true
+    virtualbox.memory = VM_RAM
+    virtualbox.name = VM_NAME
+  end
+
+  # Libvirt.
+  config.vm.provider :libvirt do |libvirt|
+    # Local server.
+    # libvirt.uri = "qemu:///system"
+
+    # Remote server.
+    # libvirt.uri = "qemu+ssh://<host>/system"
+    # libvirt.management_network_name = "vagrant-<host>"
+    # libvirt.management_network_address = "192.168.122.0/24"
+
+    libvirt.cpus = VM_CPUS
+    libvirt.memory = VM_RAM
+  end
+
+  # VM configuration.
+  config.vm.define VM_NAME do |mayan_vm|
+    mayan_vm.vm.box = VM_BOX
+    # Allow external access to the VM.
+    mayan_vm.vm.network "forwarded_port", guest: 8000, host: VM_HOST_PORT, gateway_ports: true, host_ip: "0.0.0.0"
+  end
+end

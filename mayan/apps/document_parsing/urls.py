@@ -10,7 +10,7 @@ from .views import (
     DocumentTypeSettingsEditView, DocumentTypeSubmitView, ParseErrorListView
 )
 
-urlpatterns = [
+urlpatterns_document_files = [
     url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/content/$',
         name='document_file_content_view',
@@ -18,12 +18,12 @@ urlpatterns = [
     ),
     url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/content/delete/$',
-        name='document_file_content_delete',
+        name='document_file_content_delete_single',
         view=DocumentFileContentDeleteView.as_view()
     ),
     url(
         regex=r'^documents/files/multiple/content/delete/$',
-        name='document_file_multiple_content_delete',
+        name='document_file_content_delete_multiple',
         view=DocumentFileContentDeleteView.as_view()
     ),
     url(
@@ -51,6 +51,13 @@ urlpatterns = [
         view=DocumentFilePageContentView.as_view()
     ),
     url(
+        regex=r'^errors/all/$', name='error_list',
+        view=ParseErrorListView.as_view()
+    )
+]
+
+urlpatterns_document_types = [
+    url(
         regex=r'^document_types/submit/$', name='document_type_submit',
         view=DocumentTypeSubmitView.as_view()
     ),
@@ -58,12 +65,12 @@ urlpatterns = [
         regex=r'^document_types/(?P<document_type_id>\d+)/parsing/settings/$',
         name='document_type_parsing_settings',
         view=DocumentTypeSettingsEditView.as_view()
-    ),
-    url(
-        regex=r'^errors/all/$', name='error_list',
-        view=ParseErrorListView.as_view()
     )
 ]
+
+urlpatterns = []
+urlpatterns.extend(urlpatterns_document_files)
+urlpatterns.extend(urlpatterns_document_types)
 
 api_urls = [
     url(

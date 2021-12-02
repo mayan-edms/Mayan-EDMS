@@ -5,16 +5,16 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.menus import (
-    menu_facet, menu_main, menu_multi_item, menu_secondary
+    menu_list_facet, menu_main, menu_multi_item, menu_secondary
 )
-from mayan.apps.dashboards.dashboards import dashboard_main
+from mayan.apps.dashboards.dashboards import dashboard_administrator
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
 from .dashboard_widgets import DashboardWidgetTotalCheckouts
 from .events import (
-    event_document_auto_check_in, event_document_check_in,
-    event_document_check_out, event_document_forceful_check_in
+    event_document_auto_checked_in, event_document_checked_in,
+    event_document_checked_out, event_document_forcefully_checked_in
 )
 from .hooks import hook_is_new_file_allowed
 from .links import (
@@ -69,8 +69,8 @@ class CheckoutsApp(MayanAppConfig):
 
         ModelEventType.register(
             model=Document, event_types=(
-                event_document_auto_check_in, event_document_check_in,
-                event_document_check_out, event_document_forceful_check_in
+                event_document_auto_checked_in, event_document_checked_in,
+                event_document_checked_out, event_document_forcefully_checked_in
             )
         )
 
@@ -102,14 +102,14 @@ class CheckoutsApp(MayanAppConfig):
             source=CheckedOutDocument
         )
 
-        dashboard_main.add_widget(
+        dashboard_administrator.add_widget(
             widget=DashboardWidgetTotalCheckouts, order=-1
         )
 
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(link_check_out_info,), sources=(Document,)
         )
-        menu_main.bind_links(links=(link_check_out_list,), position=98)
+        menu_main.bind_links(links=(link_check_out_list,), position=40)
         menu_multi_item.bind_links(
             links=(
                 link_check_in_document_multiple,

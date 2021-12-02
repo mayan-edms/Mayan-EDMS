@@ -6,14 +6,15 @@
 # Translators:
 # Jiri Fait <fait@orkasolutions.cz>, 2021
 # Michal Švábík <snadno@lehce.cz>, 2021
+# trendspotter <jirka.p@volny.cz>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:17+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,11 +22,11 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:25 settings.py:12
+#: apps.py:23 settings.py:12
 msgid "Storage"
 msgstr "Úložiště"
 
-#: apps.py:59
+#: apps.py:56
 msgid "Source object"
 msgstr ""
 
@@ -40,19 +41,19 @@ msgstr ""
 
 #: events.py:6 links.py:19 models.py:64 storages.py:22
 msgid "Download files"
-msgstr ""
+msgstr "Stáhnout soubory"
 
 #: events.py:10
 msgid "Download file created"
-msgstr ""
+msgstr "Stažený soubor byl vytvořen"
 
 #: events.py:13
 msgid "Download file deleted"
-msgstr ""
+msgstr "Stažený soubor smazán"
 
 #: events.py:16
 msgid "Download file downloaded"
-msgstr ""
+msgstr "Stažený soubor stažen"
 
 #: links.py:12
 msgid "Delete"
@@ -87,7 +88,7 @@ msgstr "Reverzní zpracování souborů zruší transformace uložiště"
 msgid "Name of the storage to process."
 msgstr "Název úložiště ke zpracování."
 
-#: model_mixins.py:13 models.py:115
+#: model_mixins.py:13 models.py:119
 msgid "Filename"
 msgstr "Název souboru"
 
@@ -95,11 +96,11 @@ msgstr "Název souboru"
 msgid "Date time"
 msgstr "Datum a čas"
 
-#: model_mixins.py:48
+#: model_mixins.py:70
 msgid "Unnamed file"
-msgstr ""
+msgstr "Nejmenovaný soubor"
 
-#: models.py:42 models.py:112
+#: models.py:42 models.py:116
 msgid "File"
 msgstr "Soubor"
 
@@ -113,13 +114,13 @@ msgstr "Oprávnění"
 
 #: models.py:63
 msgid "Download file"
-msgstr ""
+msgstr "Stáhnout soubor"
 
-#: models.py:121
+#: models.py:125
 msgid "Shared uploaded file"
 msgstr "Sdílený nahraný soubor"
 
-#: models.py:122 storages.py:36
+#: models.py:126 storages.py:36
 msgid "Shared uploaded files"
 msgstr "Sdílené nahrané soubory"
 
@@ -140,6 +141,8 @@ msgid ""
 "A storage backend that all workers can use to generate and hold files for "
 "download."
 msgstr ""
+"Backend úložiště, který mohou všichni pracovníci použít ke generování a "
+"uchovávání souborů ke stažení."
 
 #: settings.py:28
 msgid "A storage backend that all workers can use to share files."
@@ -158,6 +161,8 @@ msgid ""
 "Unable to initialize the download file storage. Check the settings {} and {}"
 " for formatting errors."
 msgstr ""
+"Nelze inicializovat úložiště stahovaných souborů. Zkontrolujte nastavení {} "
+"a {}, zda neobsahují chyby formátování."
 
 #: storages.py:29
 msgid ""
@@ -173,6 +178,9 @@ msgid ""
 "export. Download files are retained over a span of time and then removed "
 "automatically."
 msgstr ""
+"Soubory ke stažení jsou vytvořeny jako výsledek externího procesu, jako je "
+"export. Stažené soubory jsou uchovány po určitou dobu a poté automaticky "
+"odstraněny."
 
 #: views.py:59
 msgid "There are no files to download."
@@ -180,4 +188,4 @@ msgstr ""
 
 #: views.py:60
 msgid "Downloads"
-msgstr ""
+msgstr "Soubory ke stažení"

@@ -20,7 +20,7 @@ class FileMetadataViewsTestMixin:
             kwargs={'document_file_id': self.test_document_file.pk}
         )
 
-    def _request_document_file_file_metadata_list_view(self):
+    def _request_document_file_metadata_list_view(self):
         return self.get(
             viewname='file_metadata:document_file_driver_file_metadata_list',
             kwargs={
@@ -28,15 +28,15 @@ class FileMetadataViewsTestMixin:
             }
         )
 
-    def _request_document_file_submit_view(self):
+    def _request_document_file_submit_single_view(self):
         return self.post(
-            viewname='file_metadata:document_file_submit',
+            viewname='file_metadata:document_file_submit_single',
             kwargs={'document_file_id': self.test_document_file.pk}
         )
 
-    def _request_document_file_multiple_submit_view(self):
+    def _request_document_file_submit_multiple_view(self):
         return self.post(
-            viewname='file_metadata:document_file_multiple_submit',
+            viewname='file_metadata:document_file_submit_multiple',
             data={
                 'id_list': self.test_document_file.pk,
             }

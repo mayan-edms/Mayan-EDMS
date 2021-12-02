@@ -5,10 +5,10 @@ from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_file_new
 )
 from mayan.apps.documents.tests.base import DocumentTestMixin
-from mayan.apps.sources.tests.mixins import (
-    DocumentFileUploadViewTestMixin, DocumentUploadWizardViewTestMixin,
-    SourceTestMixin
+from mayan.apps.sources.tests.mixins.base_mixins import (
+    DocumentFileUploadViewTestMixin, DocumentUploadWizardViewTestMixin
 )
+from mayan.apps.sources.tests.mixins.web_form_source_mixins import WebFormSourceTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..classes import QuotaBackend
@@ -18,7 +18,8 @@ from ..quota_backends import DocumentCountQuota, DocumentSizeQuota
 
 class QuotaHooksTestCase(
     DocumentFileUploadViewTestMixin, DocumentTestMixin,
-    DocumentUploadWizardViewTestMixin, SourceTestMixin, GenericViewTestCase
+    DocumentUploadWizardViewTestMixin, WebFormSourceTestMixin,
+    GenericViewTestCase
 ):
     auto_upload_test_document = False
 
@@ -27,8 +28,10 @@ class QuotaHooksTestCase(
         # Increase the initial usage count to 1 by uploading a document
         # as the test case user.
         self._upload_test_document(_user=self._test_case_user)
-        self.test_case_silenced_logger_new_level = logging.FATAL + 10
+        self.test_case_silenced_logger_new_level = logging.CRITICAL + 10
         self._silence_logger(name='mayan.apps.navigation.classes')
+        self._silence_logger(name='mayan.apps.documents.models')
+        self._silence_logger(name='mayan.apps.documents.tasks')
         self._silence_logger(name='mayan.apps.sources.views')
         self._silence_logger(
             name='mayan.apps.logging.middleware.error_logging'
@@ -38,7 +41,7 @@ class QuotaHooksTestCase(
         QuotaBackend.connect_signals()
         super().tearDown()
 
-    def test_document_quantity_quota_and_source_upload_wizard_view_with_permission(self):
+    def test_document_quantity_quota_and_source_upload_wizard_view_with_access(self):
         self.test_quota_backend = DocumentCountQuota
 
         self.test_quota = DocumentCountQuota.create(
@@ -55,7 +58,14 @@ class QuotaHooksTestCase(
             sender=self.test_quota_backend.sender
         )
 
-        self.grant_permission(permission=permission_document_create)
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_create
+        )
+        self.grant_access(
+            obj=self.test_source,
+            permission=permission_document_create
+        )
 
         document_count = Document.objects.count()
 
@@ -64,7 +74,7 @@ class QuotaHooksTestCase(
 
         self.assertEqual(Document.objects.count(), document_count)
 
-    def test_document_size_quota_and_source_upload_wizard_view_with_permission(self):
+    def test_document_size_quota_and_source_upload_wizard_view_with_access(self):
         self.test_quota_backend = DocumentSizeQuota
 
         self.test_quota = DocumentSizeQuota.create(
@@ -81,7 +91,14 @@ class QuotaHooksTestCase(
             sender=self.test_quota_backend.sender
         )
 
-        self.grant_permission(permission=permission_document_create)
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_create
+        )
+        self.grant_access(
+            obj=self.test_source,
+            permission=permission_document_create
+        )
 
         document_count = Document.objects.count()
 
@@ -90,7 +107,7 @@ class QuotaHooksTestCase(
 
         self.assertEqual(Document.objects.count(), document_count)
 
-    def test_document_size_quota_and_document_version_upload_with_access(self):
+    def test_document_size_quota_and_document_file_upload_with_access(self):
         self.test_quota_backend = DocumentSizeQuota
 
         self.test_quota = DocumentSizeQuota.create(
@@ -111,12 +128,16 @@ class QuotaHooksTestCase(
             obj=self.test_document,
             permission=permission_document_file_new
         )
-        version_count = self.test_document.versions.count()
+        self.grant_access(
+            obj=self.test_source,
+            permission=permission_document_file_new
+        )
+        file_count = self.test_document.files.count()
 
         with self.assertRaises(expected_exception=QuotaExceeded):
             self._request_document_file_upload_view()
 
         self.test_document.refresh_from_db()
         self.assertEqual(
-            self.test_document.versions.count(), version_count
+            self.test_document.files.count(), file_count
         )

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:17+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -38,11 +38,11 @@ msgstr "Nume"
 msgid "Value"
 msgstr "Valoare"
 
-#: classes.py:341
+#: classes.py:347
 msgid "Overridden"
 msgstr "Suprascris"
 
-#: classes.py:343
+#: classes.py:349
 msgid "Is this settings being overridden by an environment variable?"
 msgstr "Această setare este suprascrisă de o variabilă de mediu?"
 
@@ -503,6 +503,10 @@ msgid ""
 msgstr ""
 "Setările actualizate, reporniți instalarea și reîmprospătați browserul "
 "pentru ca modificările să intre în vigoare."
+
+#: tests/test_classes.py:162
+msgid "English"
+msgstr ""
 
 #: views.py:21
 msgid "Setting updated successfully."

@@ -241,9 +241,7 @@ class AccessControlListPermissionViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(
-            events[0].action_object, self.test_permission.stored_permission
-        )
+        self.assertEqual(events[0].action_object, self.test_object)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_acl)
         self.assertEqual(events[0].verb, event_acl_edited.id)
@@ -273,9 +271,7 @@ class AccessControlListPermissionViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(
-            events[0].action_object, self.test_permission.stored_permission
-        )
+        self.assertEqual(events[0].action_object, self.test_object)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_acl)
         self.assertEqual(events[0].verb, event_acl_edited.id)

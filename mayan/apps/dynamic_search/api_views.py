@@ -17,16 +17,21 @@ class APISearchView(SearchModelAPIViewMixin, generics.ListAPIView):
         search_model = self.get_search_model()
 
         # Override serializer class just before producing the queryset of
-        # search results
+        # search results.
         self.serializer_class = search_model.serializer
 
         if search_model.permission:
-            self.mayan_object_permissions = {'GET': (search_model.permission,)}
+            self.mayan_object_permissions = {
+                'GET': (search_model.permission,)
+            }
+
+        query_dict = self.request.GET.copy()
+        query_dict.update(self.request.POST)
 
         try:
             queryset = SearchBackend.get_instance().search(
-                search_model=search_model,
-                query_string=self.request.GET, user=self.request.user
+                search_model=search_model, query=query_dict,
+                user=self.request.user
             )
         except Exception as exception:
             raise ParseError(force_text(s=exception))
@@ -48,7 +53,7 @@ class APIAdvancedSearchView(SearchModelAPIViewMixin, generics.ListAPIView):
         self.search_model = self.get_search_model()
 
         # Override serializer class just before producing the queryset of
-        # search results
+        # search results.
         self.serializer_class = self.search_model.serializer
 
         if self.search_model.permission:
@@ -56,15 +61,17 @@ class APIAdvancedSearchView(SearchModelAPIViewMixin, generics.ListAPIView):
                 'GET': (self.search_model.permission,)
             }
 
-        if self.request.GET.get('_match_all', 'off') == 'on':
+        query_dict = self.request.GET.copy()
+        query_dict.update(self.request.POST)
+
+        if query_dict.get('_match_all', 'off') == 'on':
             global_and_search = True
         else:
             global_and_search = False
 
         try:
             queryset = SearchBackend.get_instance().search(
-                global_and_search=global_and_search,
-                query_string=self.request.GET,
+                global_and_search=global_and_search, query=query_dict,
                 search_model=self.search_model, user=self.request.user
             )
         except Exception as exception:

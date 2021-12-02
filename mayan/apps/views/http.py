@@ -78,6 +78,12 @@ class URL:
         if not split_result.netloc and self._netloc:
             split_result = split_result._replace(netloc=self._netloc)
 
+        if self._port:
+            netloc_parts = split_result.netloc.split(':')
+            split_result = split_result._replace(
+                netloc='{}:{}'.format(netloc_parts[0], self._port)
+            )
+
         split_result = split_result._replace(query=query_string)
 
         return urlunsplit(split_result)

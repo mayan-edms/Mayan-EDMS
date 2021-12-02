@@ -3,14 +3,14 @@ from mayan.apps.document_indexing.models import (
 )
 from mayan.apps.document_indexing.tests.literals import TEST_INDEX_TEMPLATE_LABEL
 from mayan.apps.documents.tests.base import DocumentTestMixin
-from mayan.apps.testing.tests.base import BaseTransactionTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from .literals import (
     TEST_FILE_METADATA_INDEX_NODE_TEMPLATE, TEST_FILE_METADATA_VALUE
 )
 
 
-class IndexingTestCase(DocumentTestMixin, BaseTransactionTestCase):
+class IndexingTestCase(DocumentTestMixin, BaseTestCase):
     auto_upload_test_document = False
 
     def test_indexing(self):
@@ -19,8 +19,8 @@ class IndexingTestCase(DocumentTestMixin, BaseTransactionTestCase):
         )
         self.test_index_template.document_types.add(self.test_document_type)
 
-        root = self.test_index_template.template_root
-        self.test_index_template.node_templates.create(
+        root = self.test_index_template.index_template_root_node
+        self.test_index_template.index_template_nodes.create(
             parent=root, expression=TEST_FILE_METADATA_INDEX_NODE_TEMPLATE,
             link_documents=True
         )

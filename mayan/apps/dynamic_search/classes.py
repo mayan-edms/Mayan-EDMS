@@ -1,8 +1,10 @@
-from collections import Iterable
 import logging
 
 from django.apps import apps
-from django.db.models.signals import post_save, pre_delete
+from django.contrib.admin.utils import (
+    get_fields_from_path, reverse_field_path
+)
+from django.db.models.signals import m2m_changed, post_save, pre_delete
 from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
@@ -11,14 +13,14 @@ from django.utils.translation import ugettext as _
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.exceptions import ResolverPipelineError
 from mayan.apps.common.utils import (
-    ResolverPipelineModelAttribute, get_related_field
+    ResolverPipelineModelAttribute, flatten_list, get_class_full_name
 )
 from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
 from .exceptions import DynamicSearchException
 from .literals import (
-    DEFAULT_SCOPE_OPERATOR, DELIMITER, SCOPE_DELIMITER,
-    SCOPE_OPERATOR_CHOICES
+    DEFAULT_SCOPE_ID, DELIMITER, SCOPE_MATCH_ALL, SCOPE_MARKER,
+    SCOPE_OPERATOR_CHOICES, SCOPE_OPERATOR_MARKER, SCOPE_RESULT_MAKER
 )
 from .settings import (
     setting_backend, setting_backend_arguments,
@@ -29,100 +31,242 @@ logger = logging.getLogger(name=__name__)
 
 class SearchBackend:
     @staticmethod
-    def get_instance():
+    def get_instance(extra_kwargs=None):
+        kwargs = setting_backend_arguments.value.copy()
+        if extra_kwargs:
+            kwargs.update(extra_kwargs)
+
         return import_string(dotted_path=setting_backend.value)(
-            **setting_backend_arguments.value
+            **kwargs
         )
+
+    @staticmethod
+    def initialize():
+        # Hidden import.
+        from .handlers import (
+            handler_deindex_instance, handler_index_instance,
+            handler_factory_index_related_instance_delete,
+            handler_factory_index_related_instance_m2m,
+            handler_factory_index_related_instance_save
+        )
+
+        for search_model in SearchModel.all():
+            post_save.connect(
+                dispatch_uid='search_handler_index_instance',
+                receiver=handler_index_instance, sender=search_model.model
+            )
+            pre_delete.connect(
+                dispatch_uid='search_handler_deindex_instance',
+                receiver=handler_deindex_instance,
+                sender=search_model.model, weak=False
+            )
+
+            for proxy in search_model.proxies:
+                post_save.connect(
+                    dispatch_uid='search_handler_index_instance',
+                    receiver=handler_index_instance, sender=proxy
+                )
+                pre_delete.connect(
+                    dispatch_uid='search_handler_deindex_instance',
+                    receiver=handler_deindex_instance,
+                    sender=proxy, weak=False
+                )
+
+            for related_model, path in search_model.get_related_models():
+                post_save.connect(
+                    dispatch_uid='search_handler_index_related_instance_{}_{}'.format(
+                        get_class_full_name(klass=search_model.model),
+                        get_class_full_name(klass=related_model)
+                    ),
+                    receiver=handler_factory_index_related_instance_save(
+                        reverse_field_path=path
+                    ), sender=related_model, weak=False
+                )
+                pre_delete.connect(
+                    dispatch_uid='search_handler_index_related_instance_delete_{}_{}'.format(
+                        get_class_full_name(klass=search_model.model),
+                        get_class_full_name(klass=related_model)
+                    ),
+                    receiver=handler_factory_index_related_instance_delete(
+                        reverse_field_path=path
+                    ), sender=related_model, weak=False
+                )
+
+        for through_model, data in SearchModel.get_through_models().items():
+            m2m_changed.connect(
+                dispatch_uid='search_handler_index_related_instance_m2m_{}'.format(
+                    get_class_full_name(klass=through_model),
+                ),
+                receiver=handler_factory_index_related_instance_m2m(
+                    data=data,
+                ),
+                sender=through_model, weak=False
+            )
 
     @staticmethod
     def limit_queryset(queryset):
         pk_list = queryset.values('pk')[:setting_results_limit.value]
         return queryset.filter(pk__in=pk_list)
 
+    @staticmethod
+    def terminate():
+        for search_model in SearchModel.all():
+            post_save.disconnect(
+                dispatch_uid='search_handler_index_instance',
+                sender=search_model.model
+            )
+            pre_delete.disconnect(
+                dispatch_uid='search_handler_deindex_instance',
+                sender=search_model.model
+            )
+
+            for proxy in search_model.proxies:
+                post_save.disconnect(
+                    dispatch_uid='search_handler_index_instance',
+                    sender=proxy
+                )
+                pre_delete.disconnect(
+                    dispatch_uid='search_handler_deindex_instance',
+                    sender=proxy
+                )
+
+            for related_model, path in search_model.get_related_models():
+                post_save.disconnect(
+                    dispatch_uid='search_handler_index_related_instance_{}_{}'.format(
+                        get_class_full_name(klass=search_model.model),
+                        get_class_full_name(klass=related_model)
+                    ), sender=related_model
+                )
+                pre_delete.disconnect(
+                    dispatch_uid='search_handler_index_related_instance_delete_{}_{}'.format(
+                        get_class_full_name(klass=search_model.model),
+                        get_class_full_name(klass=related_model)
+                    ), sender=related_model
+                )
+
+        for through_model, data in SearchModel.get_through_models().items():
+            m2m_changed.disconnect(
+                dispatch_uid='search_handler_index_related_instance_m2m_{}'.format(
+                    get_class_full_name(klass=through_model),
+                ), sender=through_model
+            )
+
     def __init__(self, **kwargs):
         self.kwargs = kwargs
 
-    def _search(self, global_and_search, search_model, query_string, user):
+    def _search(self, global_and_search, query, search_model, user):
         raise NotImplementedError
+
+    def cleanup_query(self, query, search_model):
+        search_field_names = [
+            search_field.get_full_name() for search_field in search_model.search_fields
+        ]
+
+        clean_query = {}
+
+        if 'q' in query:
+            value = query['q']
+            if value:
+                clean_query = {key: value for key in search_field_names}
+        else:
+            # Allow only valid search fields for the search model and scoping keys.
+            clean_query = {
+                key: value for key, value in query.items() if key in search_field_names and value
+            }
+
+        return clean_query
+
+    def decode_query(self, query, global_and_search=False):
+        # Clean up the query.
+        # The original query is immutable, create a new
+        # mutable copy.
+        query.pop('_match_all', None)
+
+        # Turn scoped query dictionary into a series of unscoped queries.
+        operators = {}
+        result_scope = DEFAULT_SCOPE_ID
+        scope_match_all = False
+        scopes = {}
+
+        for key, value in query.items():
+            scope_id = DEFAULT_SCOPE_ID
+
+            # Check if the entry has a scope marker.
+            if key.startswith(SCOPE_MARKER):
+                # Remove the scope marker.
+                key = key[len(SCOPE_MARKER):]
+
+                if key.startswith(SCOPE_OPERATOR_MARKER):
+                    # Check for operator.
+                    # __operator_SCOPE_SCOPE=OPERATOR_SCOPE
+                    key = key[len(SCOPE_OPERATOR_MARKER):]
+                    operator_scopes = key[len(DELIMITER):].split(DELIMITER)
+                    operator_text, result = value.split(DELIMITER)
+
+                    operators[result] = {
+                        'scopes': operator_scopes,
+                        'function': SCOPE_OPERATOR_CHOICES[operator_text],
+                    }
+                elif key.startswith(SCOPE_RESULT_MAKER):
+                    # Check for result.
+                    # __result=SCOPE
+                    result_scope = value
+                else:
+                    # Check scope match all.
+                    # __SCOPE_match_all
+                    if key.endswith(SCOPE_MATCH_ALL):
+                        scope_id, key = key.split(DELIMITER, 1)
+                        scopes.setdefault(scope_id, {})
+                        scope_match_all = value.upper() == 'TRUE'
+                        scopes[scope_id]['match_all'] = scope_match_all
+                    else:
+                        # Must be a scoped query.
+                        # __SCOPE_QUERY=VALUE
+                        scope_id, key = key.split(DELIMITER, 1)
+                        scopes.setdefault(scope_id, {})
+                        scopes[scope_id].setdefault('match_all', False)
+                        scopes[scope_id].setdefault('query', {})
+
+                        scopes[scope_id]['query'][key] = value
+            else:
+                scopes.setdefault(scope_id, {})
+                scopes[scope_id].setdefault('match_all', scope_match_all)
+                scopes[scope_id].setdefault('query', {})
+                scopes[scope_id]['query'][key] = value
+        else:
+            # If query if empty, create an empty scope 0.
+            scopes.setdefault(DEFAULT_SCOPE_ID, {})
+            scopes[DEFAULT_SCOPE_ID].setdefault('match_all', scope_match_all)
+            scopes[DEFAULT_SCOPE_ID].setdefault('query', {})
+
+        return {
+            'operators': operators, 'result_scope': result_scope,
+            'scopes': scopes
+        }
 
     def deindex_instance(self, instance):
         raise NotImplementedError
 
-    def index_instance(self, instance):
+    def index_instance(self, instance, exclude_model=None, exclude_kwargs=None):
         raise NotImplementedError
 
     def search(
-        self, search_model, query_string, user, global_and_search=False
+        self, query, search_model, user, global_and_search=False
     ):
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
 
-        # Clean up the query_string
-        # The original query_string is immutable, create a new
-        # mutable copy
-        query_string = query_string.copy()
-        query_string.pop('_match_all', None)
-
-        # Turn scoped query dictionary into a series of unscoped queries.
-        scopes = {}
-        operators = []
-
-        operator_marker = '{}operator'.format(SCOPE_DELIMITER)
-        result_marker = '{}result'.format(SCOPE_DELIMITER)
-        result = '0'
-
-        unscoped_entry = False
-
-        for key, value in query_string.items():
-            # Check if the entry is a special operator key.
-            if key.startswith(operator_marker):
-                scope_sources = list(
-                    key[len(operator_marker) + 1:].split(DELIMITER)
-                )
-
-                operator, result = value.split(DELIMITER)
-
-                operators.append(
-                    {
-                        'scope_sources': scope_sources,
-                        'function': SCOPE_OPERATOR_CHOICES[operator],
-                        'result': result
-                    }
-                )
-            elif key.startswith(result_marker):
-                result = value
-            else:
-                # Detect scope markers. Example: __0 or __10 or __b.
-                if key.startswith(SCOPE_DELIMITER):
-                    # Scoped entry found.
-                    scope_index, unscoped_key = key[len(SCOPE_DELIMITER):].split(DELIMITER, 1)
-                else:
-                    # Non scoped query entries are assigned to scope 0.
-                    scope_index = '0'
-                    unscoped_key = key
-                    unscoped_entry = True
-
-                scopes.setdefault(scope_index, {'query': {}})
-                scopes[scope_index]['query'][unscoped_key] = value
-
-        if unscoped_entry:
-            operators.append(
-                {
-                    'scope_sources': ['0', '0'],
-                    'function': SCOPE_OPERATOR_CHOICES[DEFAULT_SCOPE_OPERATOR],
-                    'result': '0'
-                }
-            )
+        result = self.decode_query(
+            global_and_search=global_and_search, query=query
+        )
 
         # Recursive call to the backend's search using queries as unscoped
         # and then merge then using the corresponding operator.
-        queryset = search_model.model._meta.default_manager.none()
-
         queryset = self.solve_scope(
-            global_and_search=global_and_search, operators=operators,
-            result=result, search_model=search_model, scopes=scopes,
-            user=user
+            operators=result['operators'],
+            result_scope=result['result_scope'], search_model=search_model,
+            scopes=result['scopes'], user=user
         )
 
         if search_model.permission:
@@ -131,43 +275,65 @@ class SearchBackend:
                 user=user
             )
 
-        return queryset
+        return SearchBackend.limit_queryset(queryset=queryset)
 
-    def solve_scope(self, global_and_search, search_model, user, result, scopes, operators):
-        queryset = search_model.model._meta.default_manager.none()
+    def solve_scope(
+        self, search_model, user, result_scope, scopes, operators
+    ):
+        if len(scopes) > 1:
+            ignore_limit = True
+        else:
+            ignore_limit = False
 
-        for operator in operators:
-            if result == operator['result']:
-
-                for scope_index in operator['scope_sources']:
-                    try:
-                        query_string = scopes[scope_index]['query']
-                    except KeyError:
-                        raise DynamicSearchException(
-                            'Scope `{}` not found.'.format(scope_index)
-                        )
-
-                    results = self._search(
-                        global_and_search=global_and_search,
-                        search_model=search_model, query_string=query_string,
-                        user=user
+        try:
+            # Try scopes.
+            scope = scopes[result_scope]
+        except KeyError:
+            try:
+                # Try operators.
+                operator = operators[result_scope]
+            except KeyError:
+                raise DynamicSearchException(
+                    'Scope `{}` not found.'.format(result_scope)
+                )
+            else:
+                result = None
+                for scope in operator['scopes']:
+                    queryset = self.solve_scope(
+                        operators=operators, result_scope=scope,
+                        search_model=search_model, scopes=scopes, user=user
                     )
 
-                    if not queryset:
-                        queryset = results
+                    if result is None:
+                        result = queryset
                     else:
-                        queryset = operator['function'](queryset, results)
+                        result = operator['function'](result, queryset)
 
-                return queryset
-
-        raise DynamicSearchException(
-            'Result scope `{}` not found.'.format(result)
-        )
+                return result
+        else:
+            try:
+                query = self.cleanup_query(
+                    query=scope['query'], search_model=search_model
+                )
+            except KeyError:
+                raise DynamicSearchException(
+                    'Scope `{}` does not specify a query.'.format(result_scope)
+                )
+            else:
+                if query:
+                    return self._search(
+                        global_and_search=scope['match_all'],
+                        ignore_limit=ignore_limit, search_model=search_model,
+                        query=query, user=user
+                    )
+                else:
+                    return search_model.model._meta.default_manager.none()
 
 
 class SearchField:
     """
-    Search for terms in fields that directly belong to the parent SearchModel
+    Search for terms in fields that directly belong to the parent
+    SearchModel.
     """
     def __init__(
         self, search_model, field, label=None, transformation_function=None
@@ -184,68 +350,24 @@ class SearchField:
         return self.search_model.model
 
     def get_model_field(self):
-        return get_related_field(
-            model=self.get_model(), related_field_name=self.field
-        )
+        return get_fields_from_path(model=self.get_model(), path=self.field)[-1]
 
     @property
     def label(self):
         return self._label or self.get_model_field().verbose_name
 
+    @cached_property
+    def model(self):
+        return self.search_model.model
+
 
 class SearchModel(AppsModuleLoaderMixin):
     _loader_module_name = 'search'
-    _model_search_relationships = {}
     _registry = {}
-
-    @staticmethod
-    def flatten_list(value):
-        if isinstance(value, (str, bytes)):
-            yield value
-        else:
-            for item in value:
-                if isinstance(item, Iterable) and not isinstance(item, (str, bytes)):
-                    yield from SearchModel.flatten_list(value=item)
-                else:
-                    yield item
 
     @staticmethod
     def function_return_same(value):
         return value
-
-    @staticmethod
-    def initialize():
-        # Hide a circular import
-        from .handlers import (
-            handler_factory_deindex_instance, handler_index_instance
-        )
-
-        for search_model in SearchModel.all():
-            post_save.connect(
-                dispatch_uid='search_handler_index_instance_{}'.format(search_model),
-                receiver=handler_index_instance,
-                sender=search_model.model
-            )
-            pre_delete.connect(
-                dispatch_uid='search_handler_deindex_instance_{}'.format(search_model),
-                receiver=handler_factory_deindex_instance(search_model=search_model),
-                sender=search_model.model,
-                weak=False
-            )
-            for proxy in search_model.proxies:
-                post_save.connect(
-                    dispatch_uid='search_handler_index_instance_{}'.format(search_model),
-                    receiver=handler_index_instance,
-                    sender=proxy
-                )
-                pre_delete.connect(
-                    dispatch_uid='search_handler_deindex_instance_{}'.format(search_model),
-                    receiver=handler_factory_deindex_instance(search_model=search_model),
-                    sender=proxy,
-                    weak=False
-                )
-
-            search_model._initialize()
 
     @classmethod
     def all(cls):
@@ -262,9 +384,13 @@ class SearchModel(AppsModuleLoaderMixin):
         try:
             result = cls._registry[name]
         except KeyError:
-            raise KeyError(_('No search model matching the query'))
-        if not hasattr(result, 'serializer'):
-            result.serializer = import_string(dotted_path=result.serializer_path)
+            raise KeyError(_('Unknown search model `%s`.') % name)
+        else:
+            #if not hasattr(result, 'serializer'):
+            if getattr(result, 'serializer_path', None):
+                result.serializer = import_string(
+                    dotted_path=result.serializer_path
+                )
 
         return result
 
@@ -276,11 +402,33 @@ class SearchModel(AppsModuleLoaderMixin):
 
     @classmethod
     def get_for_model(cls, instance):
+        # Works the same for model classes and model instances.
         return cls.get(name=instance._meta.label)
 
+    @classmethod
+    def get_through_models(cls):
+        through_models = {}
+
+        for search_model in cls.all():
+            for related_model, related_path in search_model.get_related_models():
+                # Check is each related model is connected to a many to many.
+                for field in related_model._meta.get_fields():
+                    if field.many_to_many:
+                        try:
+                            through_model = field.through
+                        except AttributeError:
+                            through_model = field.remote_field.through
+
+                        through_models.setdefault(through_model, {})
+                        through_models[through_model].setdefault(related_model, set())
+                        through_models[through_model][related_model].add(related_path)
+
+        return through_models
+
     def __init__(
-        self, app_label, model_name, serializer_path, default=False,
-        label=None, list_mode=None, permission=None, queryset=None
+        self, app_label, model_name, default=False, label=None,
+        list_mode=None, manager_name=None, permission=None,
+        queryset=None, serializer_path=None
     ):
         self.default = default
         self._label = label
@@ -292,6 +440,8 @@ class SearchModel(AppsModuleLoaderMixin):
         self.queryset = queryset
         self.search_fields = []
         self.serializer_path = serializer_path
+
+        self.manager_name = manager_name or self.model._meta.default_manager.name
 
         if default:
             for search_class in self.__class__._registry.values():
@@ -307,30 +457,9 @@ class SearchModel(AppsModuleLoaderMixin):
     def __str__(self):
         return force_text(s=self.label)
 
-    def _initialize(self):
-        for search_field in self.search_fields:
-            related_model = get_related_field(
-                model=self.model, related_field_name=search_field.field
-            ).model
-
-            if related_model != self.model:
-                self.__class__._model_search_relationships.setdefault(
-                    self.model, set()
-                )
-                self.__class__._model_search_relationships[self.model].add(
-                    related_model
-                )
-
-                self.__class__._model_search_relationships.setdefault(
-                    related_model, set()
-                )
-                self.__class__._model_search_relationships[related_model].add(
-                    self.model
-                )
-
     def add_model_field(self, *args, **kwargs):
         """
-        Add a search field that directly belongs to the parent SearchModel
+        Add a search field that directly belongs to the parent SearchModel.
         """
         search_field = SearchField(self, *args, **kwargs)
         self.search_fields.append(search_field)
@@ -346,7 +475,7 @@ class SearchModel(AppsModuleLoaderMixin):
 
     def get_fields_simple_list(self):
         """
-        Returns a list of the fields for the SearchModel
+        Returns a list of the fields for the SearchModel.
         """
         result = []
         for search_field in self.search_fields:
@@ -363,13 +492,30 @@ class SearchModel(AppsModuleLoaderMixin):
         if self.queryset:
             return self.queryset()
         else:
-            return self.model.objects.all()
+            return self.model._meta.managers_map[self.manager_name].all()
+
+    def get_related_models(self):
+        result = set()
+        for search_field in self.search_fields:
+            obj, path = reverse_field_path(
+                model=self.model, path=search_field.field
+            )
+            if path:
+                # Ignore search model fields.
+                result.add((obj, path))
+
+        return result
 
     def get_search_field(self, full_name):
         try:
             return self.search_fields[full_name]
         except KeyError:
             raise KeyError('No search field named: %s' % full_name)
+
+    def get_status(self):
+        """
+        Backend specify method to provide status and statistics information.
+        """
 
     @cached_property
     def label(self):
@@ -387,7 +533,48 @@ class SearchModel(AppsModuleLoaderMixin):
     def pk(self):
         return self.get_full_name()
 
-    @cached_property
+    def populate(
+        self, field_map, instance, exclude_model=None, exclude_kwargs=None
+    ):
+        """
+        Method that receives an instance and a field map dictionary
+        consisting of attribute names and transformations to apply.
+        Returns a dictionary of the instance values with their respective
+        transformations. Makes it easy to pre process an instance before
+        indexing it.
+        """
+        if exclude_model and exclude_kwargs:
+            resolver_extra_kwargs = {
+                'exclude': exclude_kwargs, 'model': exclude_model
+            }
+        else:
+            resolver_extra_kwargs = {}
+
+        result = {}
+        for field in field_map:
+            try:
+                value = ResolverPipelineModelAttribute.resolve(
+                    attribute=field, obj=instance,
+                    resolver_extra_kwargs=resolver_extra_kwargs
+                )
+                try:
+                    value = list(flatten_list(value=value))
+                    if value == [None]:
+                        value = None
+                    else:
+                        value = ' '.join(value)
+                except TypeError:
+                    """Value is not a list."""
+            except ResolverPipelineError:
+                """Not fatal."""
+            else:
+                result[field] = field_map[field].get(
+                    'transformation', SearchModel.function_return_same
+                )(value)
+
+        return result
+
+    @property
     def proxies(self):
         result = []
         for proxy in self._proxies:
@@ -396,35 +583,4 @@ class SearchModel(AppsModuleLoaderMixin):
                     app_label=proxy['app_label'], model_name=proxy['model_name']
                 )
             )
-        return result
-
-    def sieve(self, field_map, instance):
-        """
-        Method that receives an instance and a field map dictionary
-        consisting of attribute names and transformations to apply.
-        Returns a dictionary of the instance values with their respective
-        transformations. Makes it easy to pre process an instance before
-        indexing it.
-        """
-        result = {}
-        for field in field_map:
-            try:
-                value = ResolverPipelineModelAttribute.resolve(
-                    attribute=field, obj=instance
-                )
-                try:
-                    value = list(SearchModel.flatten_list(value))
-                    if value == [None]:
-                        value = None
-                    else:
-                        value = ''.join(value)
-                except TypeError:
-                    """Value is not a list"""
-            except ResolverPipelineError:
-                """Not fatal"""
-            else:
-                result[field] = field_map[field].get(
-                    'transformation', SearchModel.function_return_same
-                )(value)
-
         return result

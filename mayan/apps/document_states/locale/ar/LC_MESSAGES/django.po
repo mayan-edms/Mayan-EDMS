@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: WM Shinkada <shinkadawasim@gmail.com>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -25,27 +25,27 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:72 events.py:6 forms.py:42 links.py:46 links.py:87 links.py:240
-#: links.py:264 models/workflow_models.py:65 settings.py:14
-#: views/workflow_proxy_views.py:64 views/workflow_template_views.py:261
-#: workflow_actions.py:74
+#: apps.py:75 events.py:6 forms.py:42 links.py:46 links.py:87 links.py:240
+#: links.py:264 models/workflow_models.py:67 settings.py:13
+#: views/workflow_proxy_views.py:64 views/workflow_template_views.py:260
+#: workflow_actions.py:88
 msgid "Workflows"
 msgstr "المسارات"
 
-#: apps.py:171 apps.py:178
+#: apps.py:178 apps.py:185
 msgid "Current state of a workflow"
 msgstr "الحالة الحالية للمسار"
 
-#: apps.py:172
+#: apps.py:179
 msgid "Return the current state of the selected workflow."
 msgstr "إرجاع الحالة الحالية المسار المحدد."
 
-#: apps.py:179
+#: apps.py:186
 msgid ""
 "Return the completion value of the current state of the selected workflow."
 msgstr "إرجاع قيمة الإكمال للحالة الحالية المسار المحدد."
 
-#: apps.py:234
+#: apps.py:241
 msgid ""
 "Return the last workflow instance log entry. The log entry itself has the "
 "following fields: datetime, transition, user, and comment."
@@ -53,11 +53,11 @@ msgstr ""
 "قم بإرجاع آخر إدخال لسجل مثيل سير العمل. يحتوي إدخال السجل نفسه على الحقول "
 "التالية: التاريخ والوقت والانتقال والمستخدم والتعليق."
 
-#: apps.py:237
+#: apps.py:244
 msgid "Get last log entry"
 msgstr "احصل على آخر إدخال في السجل"
 
-#: apps.py:243
+#: apps.py:249
 msgid ""
 "Return the current context dictionary which includes runtime data from the "
 "workflow transition fields."
@@ -65,76 +65,76 @@ msgstr ""
 "قم بإرجاع قاموس السياق الحالي الذي يتضمن بيانات وقت التشغيل من حقول انتقال "
 "سير العمل."
 
-#: apps.py:245
+#: apps.py:251
 msgid "Get the context"
 msgstr "احصل على السياق"
 
-#: apps.py:251
+#: apps.py:256
 msgid "Return the transition of the workflow instance."
 msgstr "تغير المسار"
 
-#: apps.py:252
+#: apps.py:257
 msgid "Get last transition"
 msgstr "احصل على آخر انتقال"
 
-#: apps.py:266 apps.py:278 apps.py:287 apps.py:293
+#: apps.py:271 apps.py:283 apps.py:292 apps.py:298
 msgid "None"
 msgstr "لا شيء"
 
-#: apps.py:274
+#: apps.py:279
 msgid "Current state"
 msgstr "الوضع الحالي"
 
-#: apps.py:279 apps.py:303 models/workflow_instance_models.py:186
+#: apps.py:284 apps.py:308 models/workflow_instance_models.py:186
 msgid "User"
 msgstr "مستخدم"
 
-#: apps.py:283
+#: apps.py:288
 msgid "Last transition"
 msgstr "الانتقال الأخير"
 
-#: apps.py:288 apps.py:299
+#: apps.py:293 apps.py:304
 msgid "Date and time"
 msgstr "الوقت والتاريخ"
 
-#: apps.py:294 models/workflow_state_models.py:68
+#: apps.py:299 models/workflow_state_models.py:68
 msgid "Completion"
 msgstr "إكمال"
 
-#: apps.py:324
+#: apps.py:329
 msgid "Additional details"
 msgstr "تفاصيل إضافية"
 
-#: apps.py:351
+#: apps.py:356
 msgid "When?"
 msgstr "متي؟"
 
-#: apps.py:355
+#: apps.py:360
 msgid "Action type"
 msgstr "نوع الإجراء"
 
-#: apps.py:386
+#: apps.py:391
 msgid ""
 "Triggers are system events that will cause the transition to be applied."
 msgstr "سيتم تطبيق الانتقال عن طريق محددات مسبقة "
 
-#: apps.py:388
+#: apps.py:393
 msgid "Triggers"
 msgstr "محفزات"
 
-#: apps.py:402 models/workflow_transition_models.py:139
+#: apps.py:407 models/workflow_transition_models.py:139
 msgid "Type"
 msgstr "النوع"
 
-#: apps.py:410
+#: apps.py:415
 msgid "Widget"
 msgstr "القطعة"
 
-#: apps.py:421 apps.py:427
+#: apps.py:426 apps.py:432
 msgid "Documents"
 msgstr "الوثائق"
 
-#: classes.py:141
+#: classes.py:153
 #, python-format
 msgid "%(field_name)s template error: %(exception)s"
 msgstr "خطأ قالب %(field_name)s: %(exception)s"
@@ -159,7 +159,7 @@ msgstr "إجراء"
 msgid "Namespace"
 msgstr "مساحة الاسم"
 
-#: forms.py:135 models/workflow_models.py:52
+#: forms.py:135 models/workflow_models.py:54
 #: models/workflow_state_models.py:55 models/workflow_state_models.py:172
 #: models/workflow_transition_models.py:40
 #: models/workflow_transition_models.py:150
@@ -188,12 +188,12 @@ msgstr "حدد انتقالًا لتنفيذه في الخطوة التالية.
 msgid "Transition"
 msgstr "انتقال"
 
-#: handlers.py:71
+#: handlers.py:91
 #, python-format
 msgid "Event trigger: %s"
 msgstr "مشغل الحدث: %s"
 
-#: links.py:52 views/workflow_template_views.py:127
+#: links.py:52 views/workflow_template_views.py:126
 msgid "Create workflow"
 msgstr "إنشاء المسار"
 
@@ -201,7 +201,7 @@ msgstr "إنشاء المسار"
 msgid "Delete"
 msgstr "حذف"
 
-#: links.py:69 models/workflow_models.py:56
+#: links.py:69 models/workflow_models.py:58
 msgid "Document types"
 msgstr "أنواع الوثائق"
 
@@ -245,7 +245,7 @@ msgstr "مشغلات الانتقال"
 msgid "Transitions"
 msgstr "الانتقالات"
 
-#: links.py:193 links.py:199 workflow_actions.py:83
+#: links.py:193 links.py:199 workflow_actions.py:97
 msgid "Launch workflows"
 msgstr "تفعيل المسارات"
 
@@ -273,27 +273,36 @@ msgstr "وثائق الدولة"
 msgid "Launch all workflows"
 msgstr "تفعيل جميع المسارات"
 
-#: literals.py:18
+#: literals.py:7
+msgid ""
+"Can be a static value or a template. In addition to the workflow instance, "
+"the template receives the workflow instance context which itself includes "
+"the \"entry_log\" (containing \"workflow_instance\", \"datetime\", "
+"\"transition\", \"user\", \"comment\") and any values from workflow template"
+" fields."
+msgstr ""
+
+#: literals.py:27
 msgid "Character"
 msgstr "حرف"
 
-#: literals.py:19
+#: literals.py:28
 msgid "Number (Integer)"
 msgstr "رقم (صحيح)"
 
-#: literals.py:34
+#: literals.py:41
 msgid "Text area"
 msgstr "منطقة النص"
 
-#: literals.py:43
+#: literals.py:50
 msgid "On entry"
 msgstr "عند الدخول"
 
-#: literals.py:44
+#: literals.py:51
 msgid "On exit"
 msgstr "عند الخروج"
 
-#: models/workflow_instance_models.py:29 models/workflow_models.py:64
+#: models/workflow_instance_models.py:29 models/workflow_models.py:66
 #: models/workflow_state_models.py:51 models/workflow_transition_models.py:36
 msgid "Workflow"
 msgstr "المسار"
@@ -319,7 +328,7 @@ msgstr "حالات المسار"
 msgid "Datetime"
 msgstr "التاريخ والوقت"
 
-#: models/workflow_instance_models.py:188 views/workflow_instance_views.py:136
+#: models/workflow_instance_models.py:188 views/workflow_instance_views.py:135
 msgid "Comment"
 msgstr "الشرح"
 
@@ -339,15 +348,15 @@ msgstr "إدخالات سجل المسار المتشابه"
 msgid "Not a valid transition choice."
 msgstr "ليس اختيار انتقال صالح."
 
-#: models/workflow_models.py:40
+#: models/workflow_models.py:42
 msgid "Launch workflow when document is created."
 msgstr "تشغيل المسار عند إنشاء الوثيقة"
 
-#: models/workflow_models.py:41
+#: models/workflow_models.py:43
 msgid "Auto launch"
 msgstr "تشغيل تلقائي"
 
-#: models/workflow_models.py:45
+#: models/workflow_models.py:47
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
@@ -355,23 +364,23 @@ msgstr ""
 "سيتم استخدام هذه القيمة بواسطة التطبيقات الأخرى للإشارة إلى سير العمل هذا. "
 "لا يمكن أن يحتوي إلا على أحرف وأرقام وشرطات سفلية."
 
-#: models/workflow_models.py:48 models/workflow_transition_models.py:145
+#: models/workflow_models.py:50 models/workflow_transition_models.py:145
 msgid "Internal name"
 msgstr "الإسم الداخلي"
 
-#: models/workflow_models.py:51
+#: models/workflow_models.py:53
 msgid "A short text to describe the workflow."
 msgstr "وصف المسار"
 
-#: models/workflow_models.py:160
+#: models/workflow_models.py:169
 msgid "Initial state"
 msgstr "الحالة الأولية"
 
-#: models/workflow_models.py:301
+#: models/workflow_models.py:310
 msgid "Workflow runtime proxy"
 msgstr "وقت تشغيل المسار"
 
-#: models/workflow_models.py:302
+#: models/workflow_models.py:311
 msgid "Workflow runtime proxies"
 msgstr " وقت تشغيل المسار"
 
@@ -610,30 +619,22 @@ msgid "Execute workflow tools"
 msgstr "تفعيل ادوات المسار"
 
 #: queues.py:8
-msgid "Document states fast"
-msgstr "الوثيقة تنص بسرعة"
-
-#: queues.py:12
 msgid "Document states medium"
 msgstr ""
 
-#: queues.py:17
-msgid "Generate workflow previews"
-msgstr "إنشاء معاينات المسار"
-
-#: queues.py:22
+#: queues.py:13
 msgid "Launch a workflow for a document"
 msgstr "تشغيل المسارات"
 
-#: queues.py:26
+#: queues.py:17
 msgid "Launch all workflows for a document"
 msgstr "تفعيل المسارات للوثيقة"
 
-#: queues.py:31
+#: queues.py:22
 msgid "Launch all workflows for all documents"
 msgstr "تفعيل جميع المسارات لجميع الوثائق"
 
-#: queues.py:35
+#: queues.py:26
 msgid "Launch a workflow"
 msgstr "ابدأ المسار"
 
@@ -641,31 +642,31 @@ msgstr "ابدأ المسار"
 msgid "Document workflow transition comment"
 msgstr ""
 
-#: serializers.py:65
+#: serializers.py:70
 msgid "Primary key of the document type to add to the workflow."
 msgstr ""
 
-#: serializers.py:74
+#: serializers.py:79
 msgid "Primary key of the document type to remove from the workflow."
 msgstr ""
 
-#: serializers.py:160
+#: serializers.py:228
 msgid "Primary key of the destination state to be added."
 msgstr "المفتاح الأساسي للدولة الوجهة المراد إضافتها."
 
-#: serializers.py:167
+#: serializers.py:236
 msgid "Primary key of the origin state to be added."
 msgstr "المفتاح الأساسي لحالة الأصل المراد إضافتها."
 
-#: serializers.py:251
+#: serializers.py:319
 msgid "Primary key of the transition to be added."
 msgstr "سيتم إضافة المفتاح الأساسي للانتقال."
 
-#: serializers.py:327
+#: serializers.py:403
 msgid "A link to the entire history of this workflow."
 msgstr "ربط سجل المسار"
 
-#: serializers.py:332
+#: serializers.py:412
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
@@ -673,12 +674,12 @@ msgstr ""
 "يشير عنوان URL الخاص بواجهة برمجة التطبيقات إلى سير عمل يتعلق بالوثيقةالمرفق"
 " به. يختلف عنوان URL هذا عن عنوان URL الأساسي لسير العمل."
 
-#: settings.py:19
+#: settings.py:18
 msgid ""
 "File path to the graphviz dot program used to generate workflow previews."
 msgstr "مسار الملف الستخدم لإنشاء معاينة للمسار"
 
-#: settings.py:27
+#: settings.py:26
 msgid ""
 "The threshold at which the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest workflow image cache files. Specify the size in bytes."
@@ -686,13 +687,7 @@ msgstr ""
 "الحد الذي سيبدأ عنده WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND في حذف أقدم ملفات"
 " ذاكرة التخزين المؤقت لصورة مسار العمل. حدد الحجم بالبايت."
 
-#: settings.py:36
-msgid ""
-"Time in seconds that the browser should cache the supplied workflow images. "
-"The default of 31559626 seconds correspond to 1 year."
-msgstr ""
-
-#: settings.py:43
+#: settings.py:35
 msgid ""
 "Path to the Storage subclass to use when storing the cached workflow image "
 "files."
@@ -700,7 +695,7 @@ msgstr ""
 "المسار إلى فئة التخزين الفرعية لاستخدامها عند تخزين ملفات صور سير العمل "
 "المخزنة مؤقتًا."
 
-#: settings.py:51
+#: settings.py:43
 msgid "Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 msgstr "وسيطات لتمريرها إلى WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 
@@ -755,24 +750,20 @@ msgstr "تفاصيل المسار: %(workflow)s"
 msgid "Document \"%s\" transitioned successfully"
 msgstr "تم نقل المستند &quot;%s&quot; بنجاح"
 
-#: views/workflow_instance_views.py:122
-msgid "Submit"
-msgstr "اعتماد"
-
-#: views/workflow_instance_views.py:124
+#: views/workflow_instance_views.py:123
 #, python-format
 msgid "Execute transition \"%(transition)s\" for workflow: %(workflow)s"
 msgstr "تشغيل النقل &quot;%(transition)s&quot; المسار: %(workflow)s"
 
-#: views/workflow_instance_views.py:139
+#: views/workflow_instance_views.py:138
 msgid "Optional comment to attach to the transition."
 msgstr "تعليق اختياري لإرفاقه بالنقل."
 
-#: views/workflow_instance_views.py:217
+#: views/workflow_instance_views.py:216
 msgid "Select"
 msgstr "إختيار"
 
-#: views/workflow_instance_views.py:219
+#: views/workflow_instance_views.py:218
 #, python-format
 msgid "Select transition for workflow \"%(workflow)s\" of document \"%(document)s\""
 msgstr ""
@@ -812,7 +803,7 @@ msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "الوثائق الموجودة في المسار &quot;%s&quot; ، الحالة &quot;%s&quot;"
 
 #: views/workflow_proxy_views.py:117
-#: views/workflow_template_state_views.py:330
+#: views/workflow_template_state_views.py:332
 msgid "Create states and link them using transitions."
 msgstr "إنشاء حالات وربطها باستخدام التحولات."
 
@@ -821,27 +812,27 @@ msgid "This workflow doesn't have any state"
 msgstr "المسار هذا ليس له أي حالة"
 
 #: views/workflow_proxy_views.py:123
-#: views/workflow_template_state_views.py:336
+#: views/workflow_template_state_views.py:338
 #, python-format
 msgid "States of workflow: %s"
 msgstr "حالات المسار: %s"
 
 #: views/workflow_template_state_views.py:48
 #, python-format
-msgid "Create a \"%s\" workflow action"
-msgstr "قم بتكوين إجراء مسار عمل &quot;%s&quot;"
+msgid "Create a \"%(action_class)s\" workflow action for: %(workflow_state)s"
+msgstr ""
 
-#: views/workflow_template_state_views.py:91
+#: views/workflow_template_state_views.py:93
 #, python-format
 msgid "Delete workflow state action: %s"
 msgstr "حذف إجراء حالة المسار: %s"
 
-#: views/workflow_template_state_views.py:122
+#: views/workflow_template_state_views.py:124
 #, python-format
 msgid "Edit workflow state action: %s"
 msgstr "تعديل إجراء حالة المسار: %s"
 
-#: views/workflow_template_state_views.py:172
+#: views/workflow_template_state_views.py:174
 msgid ""
 "Workflow state actions are macros that get executed when documents enters or"
 " leaves the state in which they reside."
@@ -849,35 +840,36 @@ msgstr ""
 "إجراءات حالة المسار هي وحدات ماكرو يتم تنفيذها عند دخول الوثائق أو حذف "
 "حالتها."
 
-#: views/workflow_template_state_views.py:176
+#: views/workflow_template_state_views.py:178
 msgid "There are no actions for this workflow state"
 msgstr "لا توجد إجراءات لحالة المسار"
 
-#: views/workflow_template_state_views.py:180
+#: views/workflow_template_state_views.py:182
 #, python-format
 msgid "Actions for workflow state: %s"
 msgstr "إجراءات حالة المسار: %s"
 
-#: views/workflow_template_state_views.py:203
-msgid "New workflow state action selection"
-msgstr "إجراء جديد لحالة المسار"
+#: views/workflow_template_state_views.py:205
+#, python-format
+msgid "New workflow state action selection for: %s"
+msgstr ""
 
-#: views/workflow_template_state_views.py:232
+#: views/workflow_template_state_views.py:234
 #, python-format
 msgid "Create states for workflow: %s"
 msgstr "إنشاء حالات المسار: %s"
 
-#: views/workflow_template_state_views.py:265
+#: views/workflow_template_state_views.py:267
 #, python-format
 msgid "Delete workflow state: %s?"
 msgstr "حذف المسار: %s؟"
 
-#: views/workflow_template_state_views.py:295
+#: views/workflow_template_state_views.py:297
 #, python-format
 msgid "Edit workflow state: %s"
 msgstr "تعديل حالة المسار: %s"
 
-#: views/workflow_template_state_views.py:333
+#: views/workflow_template_state_views.py:335
 msgid "This workflow doesn't have any states"
 msgstr "المسار هذا ليس له أي حالات"
 
@@ -1020,11 +1012,7 @@ msgstr ""
 msgid "Launch workflows for the selected %(count)d documents."
 msgstr ""
 
-#: views/workflow_template_views.py:90
-msgid "Launch"
-msgstr "تشغيل"
-
-#: views/workflow_template_views.py:92
+#: views/workflow_template_views.py:91
 msgid ""
 "Workflows already launched or workflows not applicable to some documents "
 "when multiple documents are selected, will be silently ignored."
@@ -1032,262 +1020,198 @@ msgstr ""
 "سيتم تجاهل المسارات التي تم تشغيلها بالفعل ! للتأكد من مطابقة المسارات "
 "المحددة للوثائق"
 
-#: views/workflow_template_views.py:104
+#: views/workflow_template_views.py:103
 msgid "Workflows to be launched."
 msgstr "سيتم تفعيل المسارات"
 
-#: views/workflow_template_views.py:142
+#: views/workflow_template_views.py:141
 #, python-format
 msgid "Error deleting workflow \"%(instance)s\"; %(exception)s"
 msgstr ""
 
-#: views/workflow_template_views.py:149
+#: views/workflow_template_views.py:148
 #, python-format
 msgid "Workflow \"%(object)s\" deleted successfully."
 msgstr ""
 
-#: views/workflow_template_views.py:150
+#: views/workflow_template_views.py:149
 #, python-format
 msgid "%(count)d workflow deleted successfully."
 msgstr ""
 
-#: views/workflow_template_views.py:151
+#: views/workflow_template_views.py:150
 #, python-format
 msgid "%(count)d workflows deleted successfully."
 msgstr ""
 
-#: views/workflow_template_views.py:152
+#: views/workflow_template_views.py:151
 #, python-format
 msgid "Delete workflow: %(object)s."
 msgstr ""
 
-#: views/workflow_template_views.py:153
+#: views/workflow_template_views.py:152
 #, python-format
 msgid "Delete the %(count)d selected workflow."
 msgstr ""
 
-#: views/workflow_template_views.py:154
+#: views/workflow_template_views.py:153
 #, python-format
 msgid "Delete the %(count)d selected workflows."
 msgstr ""
 
-#: views/workflow_template_views.py:158
+#: views/workflow_template_views.py:157
 msgid "All workflow instances will also be deleted."
 msgstr "سيتم حذف جميع حالات المسار."
 
-#: views/workflow_template_views.py:177
+#: views/workflow_template_views.py:176
 #, python-format
 msgid "Edit workflow: %s"
 msgstr "تعديل المسار: %s"
 
-#: views/workflow_template_views.py:195
+#: views/workflow_template_views.py:194
 msgid "Available document types"
 msgstr "أنواع الوثائق المتاحة"
 
-#: views/workflow_template_views.py:196
+#: views/workflow_template_views.py:195
 msgid "Document types assigned this workflow"
 msgstr "أنواع الوثائق المحددة بمسار"
 
-#: views/workflow_template_views.py:206
+#: views/workflow_template_views.py:205
 msgid ""
 "Removing a document type from a workflow will also remove all running "
 "instances of that workflow for documents of the document type just removed."
 msgstr "سيقوم النظام بالغاء جميع المسارات للوثيقة والوثائق المرتبطة "
 
-#: views/workflow_template_views.py:211
+#: views/workflow_template_views.py:210
 #, python-format
 msgid "Document types assigned the workflow: %s"
 msgstr "أنواع الوثائق المحددة بمسار: %s"
 
-#: views/workflow_template_views.py:223
+#: views/workflow_template_views.py:222
 msgid "Launch workflow?"
 msgstr "تشغيل المسار؟"
 
-#: views/workflow_template_views.py:225
+#: views/workflow_template_views.py:224
 msgid ""
 "This will launch the workflow for documents that have already been uploaded."
 msgstr "سيؤدي هذا إلى  تشغيل المسار للمستندات التي تم تحميلها بالفعل."
 
-#: views/workflow_template_views.py:237 views/workflow_template_views.py:292
+#: views/workflow_template_views.py:236 views/workflow_template_views.py:291
 msgid "Workflow launch queued successfully."
 msgstr "تشغيل المسار في قائمة الانتظار "
 
-#: views/workflow_template_views.py:254
+#: views/workflow_template_views.py:253
 msgid ""
 "Workflows store a series of states and keep track of the current state of a "
 "document. Transitions are used to change the current state to a new one."
 msgstr "تغير المسارات للوثائق من الحالة الحالية الى الحالة الجديدة"
 
-#: views/workflow_template_views.py:259
+#: views/workflow_template_views.py:258
 msgid "No workflows have been defined"
 msgstr "لم يتم تحديد أية مسارات للوثيقة"
 
-#: views/workflow_template_views.py:275
+#: views/workflow_template_views.py:274
 #, python-format
 msgid "Preview of: %s"
 msgstr "معاينة: %s"
 
-#: views/workflow_template_views.py:281
+#: views/workflow_template_views.py:280
 msgid "Launch all workflows?"
 msgstr "تفعيل جميع المسارات؟"
 
-#: views/workflow_template_views.py:283
+#: views/workflow_template_views.py:282
 msgid ""
 "This will launch all workflows created after documents have already been "
 "uploaded."
 msgstr "سيتم تفعيل المسارات على الوثيقة "
 
-#: workflow_actions.py:20
+#: workflow_actions.py:25
 msgid "Document label"
 msgstr "اسم الوثيقة"
 
-#: workflow_actions.py:23
-msgid ""
-"The new label to be assigned to the document. Can be a string or a template."
-msgstr "يمكن تحديد نموذج أو سلسة للإسم الجديد للوثيقة"
+#: workflow_actions.py:31
+msgid "The new label to be assigned to the document."
+msgstr ""
 
-#: workflow_actions.py:28
+#: workflow_actions.py:40
 msgid "Document description"
 msgstr "وصف الوثيقة"
 
-#: workflow_actions.py:31
-msgid ""
-"The new description to be assigned to the document. Can be a string or a "
-"template."
-msgstr "يمكن تحديد نموذج أو سلسة للوصف الجديد للوثيقة"
+#: workflow_actions.py:47
+msgid "The new description to be assigned to the document."
+msgstr ""
 
-#: workflow_actions.py:38
+#: workflow_actions.py:59
 msgid "Modify document properties"
 msgstr "تعديل خصائص الوثيقة"
 
-#: workflow_actions.py:77
+#: workflow_actions.py:91
 msgid "Additional workflows to launch for the document."
 msgstr "إضافة مسارات جديدة للوثيقة "
 
-#: workflow_actions.py:120
+#: workflow_actions.py:134
 msgid "URL"
 msgstr "URL"
 
-#: workflow_actions.py:123
-msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow"
-" log entry instance as part of their context via the variable \"entry_log\"."
-" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
-" \"transition\", \"user\", and \"comment\" attributes."
+#: workflow_actions.py:140
+msgid "The URL to access."
 msgstr ""
-"يمكن أن يكون عنوان IP أو مجالًا أو نموذجًا. تتلقى القوالب طبعة إدخال سجل سير"
-" العمل كجزء من سياقها عبر المتغير &quot;entry_log&quot;. يوفر "
-"&quot;entry_log&quot; بدوره سمات &quot;workflow_instance&quot; و "
-"&quot;التاريخ والوقت&quot; و &quot;الانتقال&quot; و &quot;المستخدم&quot; و "
-"&quot;التعليق&quot;."
 
-#: workflow_actions.py:133
+#: workflow_actions.py:149
 msgid "Timeout"
 msgstr "انتهاء الوقت"
 
-#: workflow_actions.py:137
-msgid ""
-"Time in seconds to wait for a response. Can be a static value or a template."
-" "
-msgstr "الوقت بالثواني لانتظار الرد. يمكن أن تكون قيمة ثابتة أو نموذجًا."
+#: workflow_actions.py:156
+msgid "Time in seconds to wait for a response."
+msgstr ""
 
-#: workflow_actions.py:143
+#: workflow_actions.py:165
 msgid "Payload"
 msgstr "الحمولة"
 
-#: workflow_actions.py:146
-msgid ""
-"A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as"
-" part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
-"\"user\", and \"comment\" attributes."
+#: workflow_actions.py:171
+msgid "A JSON document to include in the request."
 msgstr ""
-"وثيقة JSON لتضمينها في الطلب. يمكن أيضًا أن يكون نموذجًا يقوم بإرجاع مستند "
-"JSON. تتلقى القوالب طبعة إدخال سجل سير العمل كجزء من سياقها عبر المتغير "
-"&quot;entry_log&quot;. يوفر &quot;entry_log&quot; بدوره سمات "
-"&quot;workflow_instance&quot; و &quot;التاريخ والوقت&quot; و "
-"&quot;الانتقال&quot; و &quot;المستخدم&quot; و &quot;التعليق&quot;."
 
-#: workflow_actions.py:156
+#: workflow_actions.py:180
 msgid "Username"
 msgstr "اسم الدخول"
 
-#: workflow_actions.py:159
-msgid ""
-"Username to use for making the request with HTTP Basic Auth. Can be a static"
-" value or a template. Templates receive the workflow log entry instance as "
-"part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
-"\"user\", and \"comment\" attributes."
+#: workflow_actions.py:187
+msgid "Username to use for making the request with HTTP Basic Auth."
 msgstr ""
-"اسم المستخدم المطلوب استخدامه لتقديم الطلب باستخدام مصادقة HTTP الأساسية. "
-"يمكن أن تكون قيمة ثابتة أو نموذجًا. تتلقى القوالب طبعة إدخال سجل سير العمل "
-"كجزء من سياقها عبر المتغير &quot;entry_log&quot;. يوفر &quot;entry_log&quot;"
-" بدوره سمات &quot;workflow_instance&quot; و &quot;التاريخ والوقت&quot; و "
-"&quot;الانتقال&quot; و &quot;المستخدم&quot; و &quot;التعليق&quot;."
 
-#: workflow_actions.py:169
+#: workflow_actions.py:198
 msgid "Password"
 msgstr "كلمة المرور"
 
-#: workflow_actions.py:172
-msgid ""
-"Password to use for making the request with HTTP Basic Auth. Can be a static"
-" value or a template. Templates receive the workflow log entry instance as "
-"part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
-"\"user\", and \"comment\" attributes."
+#: workflow_actions.py:205
+msgid "Password to use for making the request with HTTP Basic Auth."
 msgstr ""
-"كلمة المرور لاستخدامها لإجراء الطلب باستخدام مصادقة HTTP الأساسية. يمكن أن "
-"تكون قيمة ثابتة أو نموذجًا. تتلقى القوالب طبعة إدخال سجل سير العمل كجزء من "
-"سياقها عبر المتغير &quot;entry_log&quot;. يوفر &quot;entry_log&quot; بدوره "
-"سمات &quot;workflow_instance&quot; و &quot;التاريخ والوقت&quot; و "
-"&quot;الانتقال&quot; و &quot;المستخدم&quot; و &quot;التعليق&quot;."
 
-#: workflow_actions.py:182
+#: workflow_actions.py:216
 msgid "Method"
 msgstr "طريقة"
 
-#: workflow_actions.py:185
+#: workflow_actions.py:223
 msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
-"POST, GET, PUT, PATCH, DELETE. Can be a static value or a template that "
-"returns the method text. Templates receive the workflow log entry instance "
-"as part of their context via the variable \"entry_log\". The \"entry_log\" "
-"in turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
-"\"user\", and \"comment\" attributes."
+"POST, GET, PUT, PATCH, DELETE."
 msgstr ""
-"طريقة HTTP المراد استخدامها للطلب. الخيارات النموذجية هي OPTIONS ، HEAD ، "
-"POST ، GET ، PUT ، PATCH ، DELETE. يمكن أن تكون قيمة ثابتة أو نموذجًا يُرجع "
-"نص الأسلوب. تتلقى القوالب طبعة إدخال سجل سير العمل كجزء من سياقها عبر "
-"المتغير &quot;entry_log&quot;. يوفر &quot;entry_log&quot; بدوره سمات "
-"&quot;workflow_instance&quot; و &quot;التاريخ والوقت&quot; و "
-"&quot;الانتقال&quot; و &quot;المستخدم&quot; و &quot;التعليق&quot;."
 
-#: workflow_actions.py:196
+#: workflow_actions.py:234
 msgid "Headers"
 msgstr "الرؤوس"
 
-#: workflow_actions.py:199
-msgid ""
-"Headers to send with the HTTP request. Must be in JSON format. Can be a "
-"static value or a template. Templates receive the workflow log entry "
-"instance as part of their context via the variable \"entry_log\". The "
-"\"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
-"\"transition\", \"user\", and \"comment\" attributes."
+#: workflow_actions.py:241
+msgid "Headers to send with the HTTP request. Must be in JSON format."
 msgstr ""
-"رؤوس يتم إرسالها مع طلب HTTP. يجب أن يكون بتنسيق JSON. يمكن أن تكون قيمة "
-"ثابتة أو نموذجًا. تتلقى القوالب طبعة إدخال سجل سير العمل كجزء من سياقها عبر "
-"المتغير &quot;entry_log&quot;. يوفر &quot;entry_log&quot; بدوره سمات "
-"&quot;workflow_instance&quot; و &quot;التاريخ والوقت&quot; و "
-"&quot;الانتقال&quot; و &quot;المستخدم&quot; و &quot;التعليق&quot;."
 
-#: workflow_actions.py:213
+#: workflow_actions.py:256
 msgid "Perform an HTTP request"
 msgstr "نفذ طلب HTTP"
 
-#: workflow_actions.py:242
+#: workflow_actions.py:273
 #, python-format
 msgid "%(field_name)s JSON error: %(exception)s"
 msgstr "%(field_name)s خطأ JSON: %(exception)s"

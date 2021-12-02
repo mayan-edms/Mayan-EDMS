@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:27 events.py:6 permissions.py:5 queues.py:8 settings.py:10
+#: apps.py:26 events.py:6 permissions.py:5 queues.py:8 settings.py:10
 msgid "File caching"
 msgstr "Кеширование файлов"
 
@@ -82,7 +82,7 @@ msgstr "Размер, при котором кеш начнет удалять �
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: models.py:97
+#: models.py:97 models.py:311
 msgid "Current size"
 msgstr "Текущий размер"
 
@@ -94,7 +94,7 @@ msgstr "Текущий размер кеша."
 msgid "Name"
 msgstr "Название"
 
-#: models.py:214 models.py:305
+#: models.py:214 models.py:331
 msgid "Cache partition"
 msgstr "Раздел кеша"
 
@@ -102,27 +102,31 @@ msgstr "Раздел кеша"
 msgid "Cache partitions"
 msgstr "Разделы кеша"
 
-#: models.py:308
+#: models.py:313
+msgid "Current size of the cache partition."
+msgstr ""
+
+#: models.py:334
 msgid "Date time"
 msgstr "Дата и время"
 
-#: models.py:310
+#: models.py:336
 msgid "Filename"
 msgstr "Имя файла"
 
-#: models.py:312
+#: models.py:338
 msgid "File size"
 msgstr "Размер"
 
-#: models.py:316
+#: models.py:342
 msgid "Times this cache partition file has been accessed."
 msgstr "Количество обращений к этому файлу раздела кеша."
 
-#: models.py:323
+#: models.py:349
 msgid "Cache partition file"
 msgstr "Файл раздела кеша"
 
-#: models.py:324
+#: models.py:350
 msgid "Cache partition files"
 msgstr "Файлы раздела кеша"
 
@@ -158,25 +162,30 @@ msgstr ""
 "Сколько раз кеш будет пытаться удалить файлы, чтобы освободить место для "
 "нового запрашиваемого файла, прежде чем отказаться."
 
-#: views.py:43
+#: views.py:45
+#, python-format
+msgid "Details of cache: %s"
+msgstr ""
+
+#: views.py:56
+msgid "File caches list"
+msgstr "Список файловых кешей"
+
+#: views.py:76
 #, python-format
 msgid "Details cache: %s"
 msgstr "Подробности кеша: %s"
 
-#: views.py:54
-msgid "File caches list"
-msgstr "Список файловых кешей"
-
-#: views.py:70
+#: views.py:92
 #, python-format
 msgid "Purge cache partitions of \"%s\"?"
 msgstr "Очистить разделы кеша \"%s\"?"
 
-#: views.py:86
+#: views.py:108
 msgid "Object cache partitions submitted for purging."
 msgstr "Разделы кеша объекта отправлены на очистку."
 
-#: views.py:103
+#: views.py:125
 msgid "Submit the selected cache for purging?"
 msgid_plural "Submit the selected caches for purging?"
 msgstr[0] "Отправить выбранный кеш на очистку?"

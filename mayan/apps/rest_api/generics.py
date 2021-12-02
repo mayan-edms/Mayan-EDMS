@@ -3,7 +3,10 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 
+from django.core.exceptions import ImproperlyConfigured
+
 from .api_view_mixins import (
+    CheckQuerysetAPIViewMixin, DynamicFieldListAPIViewMixin,
     InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin,
     SchemaInspectionAPIViewMixin
 )
@@ -13,15 +16,17 @@ from .serializers import BlankSerializer
 
 
 class GenericAPIView(
-    SchemaInspectionAPIViewMixin, rest_framework_generics.GenericAPIView
+    CheckQuerysetAPIViewMixin, SchemaInspectionAPIViewMixin,
+    rest_framework_generics.GenericAPIView
 ):
     filter_backends = (MayanObjectPermissionsFilter,)
     permission_classes = (MayanPermission,)
 
 
 class CreateAPIView(
-    SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
-    SerializerExtraContextAPIViewMixin, rest_framework_generics.CreateAPIView
+    CheckQuerysetAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    SchemaInspectionAPIViewMixin, SerializerExtraContextAPIViewMixin,
+    rest_framework_generics.CreateAPIView
 ):
     """
     requires:
@@ -31,6 +36,7 @@ class CreateAPIView(
 
 
 class ListAPIView(
+    CheckQuerysetAPIViewMixin, DynamicFieldListAPIViewMixin,
     SchemaInspectionAPIViewMixin, SerializerExtraContextAPIViewMixin,
     rest_framework_generics.ListAPIView
 ):
@@ -46,7 +52,8 @@ class ListAPIView(
 
 
 class ListCreateAPIView(
-    SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    CheckQuerysetAPIViewMixin, DynamicFieldListAPIViewMixin,
+    InstanceExtraDataAPIViewMixin, SchemaInspectionAPIViewMixin,
     SerializerExtraContextAPIViewMixin,
     rest_framework_generics.ListCreateAPIView
 ):
@@ -60,6 +67,7 @@ class ListCreateAPIView(
 
 
 class ObjectActionAPIView(GenericAPIView):
+    action_response_status = None
     serializer_class = BlankSerializer
 
     def get_success_headers(self, data):
@@ -69,7 +77,11 @@ class ObjectActionAPIView(GenericAPIView):
             return {}
 
     def object_action(self, serializer):
-        raise NotImplementedError
+        raise ImproperlyConfigured(
+            '%(cls)s class needs to specify the `.perform_action()` method.' % {
+                'cls': self.__class__.__name__
+            }
+        )
 
     def post(self, request, *args, **kwargs):
         return self.view_action(request, *args, **kwargs)
@@ -87,17 +99,21 @@ class ObjectActionAPIView(GenericAPIView):
         result = self.object_action(request=request, serializer=serializer)
 
         if result:
-            # If object action returned serializer.data
+            # If object action returned serializer.data.
             headers = self.get_success_headers(data=result)
             return Response(
-                data=result, status=status.HTTP_200_OK, headers=headers
+                headers=headers, data=result,
+                status=self.action_response_status or status.HTTP_200_OK
             )
         else:
-            return Response(status=status.HTTP_200_OK)
+            return Response(
+                status=self.action_response_status or status.HTTP_200_OK
+            )
 
 
 class RetrieveAPIView(
-    SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    CheckQuerysetAPIViewMixin, DynamicFieldListAPIViewMixin,
+    InstanceExtraDataAPIViewMixin, SchemaInspectionAPIViewMixin,
     SerializerExtraContextAPIViewMixin,
     rest_framework_generics.RetrieveAPIView
 ):
@@ -111,7 +127,8 @@ class RetrieveAPIView(
 
 
 class RetrieveDestroyAPIView(
-    SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    CheckQuerysetAPIViewMixin, DynamicFieldListAPIViewMixin,
+    InstanceExtraDataAPIViewMixin, SchemaInspectionAPIViewMixin,
     SerializerExtraContextAPIViewMixin,
     rest_framework_generics.RetrieveDestroyAPIView
 ):
@@ -126,7 +143,8 @@ class RetrieveDestroyAPIView(
 
 
 class RetrieveUpdateAPIView(
-    SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    CheckQuerysetAPIViewMixin, DynamicFieldListAPIViewMixin,
+    InstanceExtraDataAPIViewMixin, SchemaInspectionAPIViewMixin,
     SerializerExtraContextAPIViewMixin,
     rest_framework_generics.RetrieveUpdateAPIView
 ):
@@ -142,7 +160,8 @@ class RetrieveUpdateAPIView(
 
 
 class RetrieveUpdateDestroyAPIView(
-    SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    CheckQuerysetAPIViewMixin, DynamicFieldListAPIViewMixin,
+    InstanceExtraDataAPIViewMixin, SchemaInspectionAPIViewMixin,
     SerializerExtraContextAPIViewMixin,
     rest_framework_generics.RetrieveUpdateDestroyAPIView
 ):

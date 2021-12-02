@@ -4,14 +4,13 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:20+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -21,14 +20,31 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:12
+#: apps.py:18 links.py:9 views.py:11
 msgid "Dashboards"
 msgstr "Контролни табла"
 
-#: dashboards.py:5
-msgid "Main"
-msgstr "Главно"
+#: apps.py:25
+msgid "Widgets"
+msgstr "Управляващи елементи"
+
+#: apps.py:29
+msgid "Label"
+msgstr "Етикет"
+
+#: dashboards.py:6
+msgid "Administrator dashboard"
+msgstr "Табло за управление на администратора"
+
+#: links.py:14
+msgid "Details"
+msgstr "Подробности"
 
 #: templates/dashboards/numeric_widget.html:27
+#: templates/dashboards/widget_list.html:47
 msgid "View details"
 msgstr "Разгледайте подробности"
+
+#: views.py:27
+msgid "Dashboard detail"
+msgstr "Детайли на таблото"

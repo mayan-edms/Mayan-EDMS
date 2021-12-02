@@ -3,6 +3,16 @@ import os
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
+BASE_WORKFLOW_TEMPLATE_STATE_ACTION_HELP_TEXT = _(
+    'Can be a static value or a template. '
+    'In addition to the workflow instance, the template '
+    'receives the workflow instance context which itself '
+    'includes the "entry_log" (containing '
+    '"workflow_instance", "datetime", "transition", "user", '
+    '"comment") and any values from workflow template '
+    'fields.'
+)
+
 DEFAULT_GRAPHVIZ_DOT_PATH = '/usr/bin/dot'
 DEFAULT_HTTP_ACTION_TIMEOUT = 4  # 4 seconds
 DEFAULT_WORKFLOWS_IMAGE_CACHE_MAXIMUM_SIZE = 50 * 2 ** 20  # 50 Megabytes
@@ -10,7 +20,6 @@ DEFAULT_WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND = 'django.core.files.storage.FileS
 DEFAULT_WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS = {
     'location': os.path.join(settings.MEDIA_ROOT, 'workflows')
 }
-DEFAULT_WORKFLOWS_IMAGE_CACHE_TIME = '31556926'
 
 FIELD_TYPE_CHOICE_CHAR = 1
 FIELD_TYPE_CHOICE_INTEGER = 2
@@ -27,8 +36,6 @@ STORAGE_NAME_WORKFLOW_CACHE = 'document_states__workflowimagecache'
 
 SYMBOL_MATH_CONDITIONAL = '&rarr;'
 
-TASK_GENERATE_WORKFLOW_IMAGE_RETRY_DELAY = 10
-
 WIDGET_CLASS_TEXTAREA = 1
 WIDGET_CLASS_CHOICES = (
     (WIDGET_CLASS_TEXTAREA, _('Text area')),
@@ -43,4 +50,3 @@ WORKFLOW_ACTION_WHEN_CHOICES = (
     (WORKFLOW_ACTION_ON_ENTRY, _('On entry')),
     (WORKFLOW_ACTION_ON_EXIT, _('On exit')),
 )
-WORKFLOW_IMAGE_TASK_TIMEOUT = 60

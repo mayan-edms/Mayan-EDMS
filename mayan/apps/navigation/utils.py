@@ -10,8 +10,9 @@ from mayan.apps.permissions import Permission
 logger = logging.getLogger(name=__name__)
 
 
-def get_cascade_condition(
-    app_label, model_name, object_permission, view_permission=None
+def factory_condition_queryset_access(
+    app_label, model_name, object_permission, callback=None,
+    view_permission=None
 ):
     """
     Return a function that first checks to see if the user has the view
@@ -20,10 +21,11 @@ def get_cascade_condition(
     This is used to avoid showing a link that ends up in a view with an
     empty results set.
     """
-    def condition(context):
+    def condition(context, resolved_object):
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
+
         Model = apps.get_model(app_label=app_label, model_name=model_name)
 
         try:
@@ -32,11 +34,13 @@ def get_cascade_condition(
             # Simple request extraction failed. Might not be a view context.
             # Try alternate method.
             try:
-                request = Variable('request').resolve(context)
+                request = Variable(var='request').resolve(context=context)
             except VariableDoesNotExist:
                 # There is no request variable, most probable a 500 in a test
-                # view. Don't return any resolved links then.
-                logger.warning('No request variable, aborting cascade resolution')
+                # view. Don't return anything.
+                logger.warning(
+                    'No request variable, aborting cascade condition.'
+                )
                 return ()
 
         if view_permission:
@@ -50,19 +54,29 @@ def get_cascade_condition(
                 .restrict_queryset() perform a fine grained filtering.
                 """
             else:
-                return True
+                if callback:
+                    return callback(
+                        context=context, resolved_object=resolved_object
+                    )
+                else:
+                    return True
 
         queryset = AccessControlList.objects.restrict_queryset(
             permission=object_permission, user=request.user,
             queryset=Model.objects.all()
         )
-        return queryset.count() > 0
+        if callback:
+            return queryset.exists() and callback(
+                context=context, resolved_object=resolved_object
+            )
+        else:
+            return queryset.exists()
 
     return condition
 
 
 def get_content_type_kwargs_factory(
-    variable_name='resolved_object', result_map=None
+    result_map=None, variable_name='resolved_object'
 ):
     if not result_map:
         result_map = {
@@ -77,7 +91,7 @@ def get_content_type_kwargs_factory(
         )
 
         content_type = ContentType.objects.get_for_model(
-            context[variable_name]
+            model=context[variable_name]
         )
         return {
             result_map['app_label']: '"{}"'.format(content_type.app_label),
@@ -91,9 +105,9 @@ def get_content_type_kwargs_factory(
 def get_current_view_name(request):
     current_path = request.META['PATH_INFO']
 
-    # Get sources: view name, view objects
+    # Get sources: view name, view objects.
     try:
-        current_view_name = resolve(current_path).view_name
+        current_view_name = resolve(path=current_path).view_name
     except Resolver404:
         # Can't figure out which view corresponds to this URL.
         # Most likely it is an invalid URL.

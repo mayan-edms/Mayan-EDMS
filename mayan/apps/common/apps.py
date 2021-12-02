@@ -1,7 +1,6 @@
 import logging
 import sys
 import traceback
-import warnings
 
 from django import apps
 from django.conf.urls import include, url
@@ -10,7 +9,7 @@ from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.organizations.settings import setting_organization_installation_url
+from mayan.apps.organizations.settings import setting_organization_url_base_path
 from mayan.apps.templating.classes import AJAXTemplate
 
 from .handlers import handler_pre_initial_setup, handler_pre_upgrade
@@ -19,12 +18,8 @@ from .links import (
     link_support, link_tools
 )
 
-from .literals import MESSAGE_SQLITE_WARNING
 from .menus import menu_about, menu_topbar, menu_user
-
 from .signals import signal_pre_initial_setup, signal_pre_upgrade
-from .utils import check_for_sqlite
-from .warnings import DatabaseWarning
 
 logger = logging.getLogger(name=__name__)
 
@@ -33,11 +28,11 @@ class MayanAppConfig(apps.AppConfig):
     app_namespace = None
     app_url = None
 
-    def ready(self):
-        logger.debug('Initializing app: %s', self.name)
+    def configure_urls(self):
+        # Hidden import.
         from mayan.urls import urlpatterns as mayan_urlpatterns
 
-        installation_base_url = setting_organization_installation_url.value
+        installation_base_url = setting_organization_url_base_path.value
         if installation_base_url:
             installation_base_url = '{}/'.format(installation_base_url)
         else:
@@ -77,10 +72,18 @@ class MayanAppConfig(apps.AppConfig):
                 traceback.print_exception(*exc_info)
                 raise exception
         else:
+            # Allow blank namespaces. These are used to register the
+            # urlpatterns of encapsulated libraries as top level named
+            # URLs.
+            if self.app_namespace is not None:
+                app_namespace = self.app_namespace
+            else:
+                app_namespace = self.name
+
             mayan_urlpatterns += (
                 url(
                     regex=r'^{}'.format(top_url), view=include(
-                        (app_urlpatterns, self.app_namespace or self.name)
+                        (app_urlpatterns, app_namespace)
                     )
                 ),
             )
@@ -112,6 +115,10 @@ class MayanAppConfig(apps.AppConfig):
                 ),
             )
 
+    def ready(self):
+        logger.debug('Initializing app: %s', self.name)
+        self.configure_urls()
+
 
 class CommonApp(MayanAppConfig):
     app_namespace = 'common'
@@ -129,27 +136,21 @@ class CommonApp(MayanAppConfig):
 
         admin.autodiscover()
 
-        if check_for_sqlite():
-            warnings.warn(
-                category=DatabaseWarning,
-                message=force_text(s=MESSAGE_SQLITE_WARNING)
-            )
-
         AJAXTemplate(
-            name='menu_main', template_name='appearance/menu_main.html'
+            name='menu_main', template_name='appearance/menus/menu_main.html'
         )
         AJAXTemplate(
-            name='menu_topbar', template_name='appearance/menu_topbar.html'
+            name='menu_topbar', template_name='appearance/menus/menu_topbar.html'
         )
 
         menu_about.bind_links(
             links=(
                 link_tools, link_setup, link_about, link_book, link_store,
-                link_support, link_license,
+                link_support, link_license
             )
         )
 
-        menu_topbar.bind_links(links=(menu_about, menu_user,), position=99)
+        menu_topbar.bind_links(links=(menu_about, menu_user), position=10)
 
         signal_pre_initial_setup.connect(
             dispatch_uid='common_handler_pre_initial_setup',

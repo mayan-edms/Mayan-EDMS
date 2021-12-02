@@ -1,0 +1,132 @@
+Version 4.0.17
+==============
+
+Released: October 18, 2021
+
+Status: Maintenance
+
+Changes
+--------
+
+
+Appearance
+^^^^^^^^^^
+
+A new icon driver was added to support stacked Font Awesome icons.
+
+
+Authentication
+^^^^^^^^^^^^^^
+
+The usage ``.user.has_usable_password`` was fixed. This solves the
+"Change Password" link not being disabled when using external authentication.
+
+
+Common
+^^^^^^
+
+Support was added for ``COMMON_EXTRA_APPS_PRE``. This setting works like
+``COMMON_EXTRA_APPS`` but installs the new apps before the default
+apps. This allows the extra apps to override templates and other system
+data.
+
+Support for blank/empty app URL namespaces was added. These are used to
+register the ``urlpatterns`` of encapsulated libraries as top level named
+URLs.
+
+The ``user_settings`` folder is now created and initialized on upgrades too.
+
+The error handling logic of the initial folder creation was improved.
+
+
+Converter
+^^^^^^^^^
+
+Asset image cache creation was fixed. Allows using assets for decorations
+in all cases.
+
+
+Docker
+^^^^^^
+
+The ``MAYAN_GUNICORN_TEMPORARY_DIRECTORY`` environment variable is now
+exported and available to ``supervisord`` in all cases.
+
+The owner of the ``/var/lib/mayan/`` is now always changed on container
+startup. This ensures that the ``mayan`` operating system user can always
+read and write from and to the mounted volume.
+
+
+Documents
+^^^^^^^^^
+
+The migration from version 3.5.x to 4.0.x was improved to ensure only one
+document version per document is active after the migration.
+
+
+Organizations
+^^^^^^^^^^^^^
+
+The help texts of the ``ORGANIZATIONS_INSTALLATION_URL`` and
+``ORGANIZATIONS_URL_BASE_PATH`` settings were expanded to better explain
+their functions.
+
+
+REST API
+^^^^^^^^
+
+A workaround for a ``swagger-spec-validator`` dependency bug was backported
+from version 4.1. The library ``jsonschema`` is now pinned to version 3.2.0
+to avoid errors with ``swagger-spec-validator`` 2.7.3.
+``swagger-spec-validator`` does not specify a version for ``jsonschema``
+(https://github.com/Yelp/swagger_spec_validator/blob/master/setup.py#L17),
+which installs the latest version of ``jsonschema``, 4.0.1. This version
+removes ``jsonschema.compat`` still used by ``swagger-spec-validator``.
+
+
+Other
+^^^^^
+
+- Add ``project_url`` attribute to the Python setup file.
+- Move the filesystem ``touch`` function to the storages app.
+- Add Redis restart step to the upgrade instructions.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- None
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

@@ -42,10 +42,10 @@ class DocumentCreateWizardStepTags(DocumentCreateWizardStep):
         return result
 
     @classmethod
-    def step_post_upload_process(cls, document, querystring=None):
+    def step_post_upload_process(cls, document, query_string=None):
         Tag = apps.get_model(app_label='tags', model_name='Tag')
 
-        tag_id_list = URL(query_string=querystring).args.getlist('tags')
+        tag_id_list = URL(query_string=query_string).args.getlist('tags')
 
         for tag in Tag.objects.filter(pk__in=tag_id_list):
             tag.documents.add(document)

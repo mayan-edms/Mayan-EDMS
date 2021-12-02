@@ -1,8 +1,8 @@
 from actstream.models import Action
-from rest_framework import serializers
 from rest_framework.reverse import reverse
 
 from mayan.apps.common.serializers import ContentTypeSerializer
+from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.user_management.serializers import UserSerializer
 
@@ -22,9 +22,9 @@ class EventTypeNamespaceSerializer(serializers.Serializer):
 
     def get_url(self, instance):
         return reverse(
-            viewname='rest_api:event-type-namespace-detail', args=(
-                instance.name,
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:event-type-namespace-detail', kwargs={
+                'name': instance.name
+            }, request=self.context['request'], format=self.context['format']
         )
 
 
@@ -36,9 +36,9 @@ class EventTypeSerializer(serializers.Serializer):
 
     def get_event_type_namespace_url(self, instance):
         return reverse(
-            viewname='rest_api:event-type-namespace-detail', args=(
-                instance.namespace.name,
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:event-type-namespace-detail', kwargs={
+                'name': instance.namespace.name
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def to_representation(self, instance):
@@ -54,8 +54,8 @@ class EventTypeSerializer(serializers.Serializer):
 
 class EventSerializer(serializers.ModelSerializer):
     actor = DynamicSerializerField(read_only=True)
-    target = DynamicSerializerField(read_only=True)
     actor_content_type = ContentTypeSerializer(read_only=True)
+    target = DynamicSerializerField(read_only=True)
     target_content_type = ContentTypeSerializer(read_only=True)
     verb = EventTypeSerializer(read_only=True)
 
@@ -64,6 +64,10 @@ class EventSerializer(serializers.ModelSerializer):
             'action_object_content_type', 'action_object_object_id'
         )
         model = Action
+        read_only_fields = (
+            'action', 'actor_content_type', 'target', 'target_content_type',
+            'verb'
+        )
 
 
 class NotificationSerializer(serializers.ModelSerializer):
@@ -73,3 +77,4 @@ class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('action', 'read', 'user')
         model = Notification
+        read_only_fields = ('action', 'user')

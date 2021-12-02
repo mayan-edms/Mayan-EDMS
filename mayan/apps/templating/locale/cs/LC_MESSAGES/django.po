@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2021
+# trendspotter <jirka.p@volny.cz>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:17+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,8 +32,10 @@ msgid ""
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 " "
 msgstr ""
+"Použijte výchozí jazyk šablon Django "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 
-#: fields.py:38
+#: fields.py:37
 #, python-format
 msgid ""
 "Use Django's default templating language "
@@ -77,18 +80,18 @@ msgstr "Karanténa šablony pro: %s"
 msgid "Template error; %(exception)s"
 msgstr "Chyba šablony; %(exception)s"
 
-#: widgets.py:63
+#: widgets.py:64
 msgid "Filters"
-msgstr ""
+msgstr "Filtry"
 
-#: widgets.py:70
+#: widgets.py:71
 msgid "Tags"
 msgstr "Značky"
 
-#: widgets.py:76
+#: widgets.py:77
 msgid "<Filters and tags>"
-msgstr ""
+msgstr "<Filters and tags>"
 
-#: widgets.py:114
+#: widgets.py:118
 msgid "<Model attributes>"
-msgstr ""
+msgstr "<Model attributes>"

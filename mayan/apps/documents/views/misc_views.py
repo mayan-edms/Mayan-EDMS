@@ -1,13 +1,14 @@
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.utils import parse_range
+from mayan.apps.converter.transformations import TransformationResize
 from mayan.apps.views.generics import FormView, SimpleView
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..forms.misc_forms import PrintForm
 from ..literals import PAGE_RANGE_RANGE
 from ..settings import setting_print_width, setting_print_height
-from ..utils import parse_range
 
 
 class PrintFormView(ExternalObjectViewMixin, FormView):
@@ -38,7 +39,6 @@ class PrintFormView(ExternalObjectViewMixin, FormView):
                 }
             ),
             'object': self.external_object,
-            'submit_label': _('Submit'),
             'submit_method': 'GET',
             'submit_target': '_blank',
             'title': _('Print: %s') % self.external_object,
@@ -67,6 +67,13 @@ class DocumentPrintView(ExternalObjectViewMixin, SimpleView):
         page_group = self.request.GET.get('page_group', None)
         page_range = self.request.GET.get('page_range', None)
 
+        transformation_instance_list = (
+            TransformationResize(
+                height=setting_print_height.value,
+                width=setting_print_width.value
+            ),
+        )
+
         if page_group == PAGE_RANGE_RANGE:
             if page_range:
                 page_range = parse_range(astr=page_range)
@@ -81,6 +88,5 @@ class DocumentPrintView(ExternalObjectViewMixin, SimpleView):
         return {
             'appearance_type': 'plain',
             'pages': pages,
-            'width': setting_print_width.value,
-            'height': setting_print_height.value,
+            'transformation_instance_list': transformation_instance_list
         }

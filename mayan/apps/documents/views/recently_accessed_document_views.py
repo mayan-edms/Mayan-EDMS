@@ -10,7 +10,7 @@ __all__ = ('RecentlyAccessedDocumentListView',)
 
 class RecentlyAccessedDocumentListView(DocumentListView):
     def get_document_queryset(self):
-        return RecentlyAccessedDocument.objects.get_for_user(
+        return RecentlyAccessedDocument.valid.get_for_user(
             user=self.request.user
         )
 

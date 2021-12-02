@@ -1,23 +1,10 @@
-import base64
+import collections
 import logging
-import os
-import time
-from urllib.parse import quote_plus, unquote_plus
 
-from furl import furl
-
-from django.core.files import File
-from django.core.files.base import ContentFile
-from django.urls import reverse
-from django.utils.encoding import force_text
-from django.utils.functional import cached_property
+from django.apps import apps
+from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
-from mayan.apps.converter.classes import ConverterBase
-from mayan.apps.converter.transformations import TransformationResize
-from mayan.apps.storage.classes import DefinedStorage
-
-from .literals import STORAGE_NAME_SOURCE_STAGING_FOLDER_FILE
 
 logger = logging.getLogger(name=__name__)
 
@@ -69,10 +56,10 @@ class DocumentCreateWizardStep(AppsModuleLoaderMixin):
         return {}
 
     @classmethod
-    def post_upload_process(cls, document, querystring=None):
+    def post_upload_process(cls, document, query_string=None):
         for step in cls.get_all():
             step.step_post_upload_process(
-                document=document, querystring=querystring
+                document=document, query_string=query_string
             )
 
     @classmethod
@@ -94,170 +81,189 @@ class DocumentCreateWizardStep(AppsModuleLoaderMixin):
         cls._deregistry = {}
 
     @classmethod
-    def step_post_upload_process(cls, document, querystring=None):
+    def step_post_upload_process(cls, document, query_string=None):
         """
         Optional method executed when the wizard ends to allow the step to
         perform its action.
         """
 
 
-class PseudoFile(File):
-    def __init__(self, file, name):
-        self.name = name
-        self.file = file
-        self.file.seek(0, os.SEEK_END)
-        self.size = self.file.tell()
-        self.file.seek(0)
+SourceBackendActionNamedTuple = collections.namedtuple(
+    typename='SourceBackendAction', field_names=(
+        'name', 'arguments', 'confirmation', 'method'
+    )
+)
 
 
-class SourceUploadedFile(File):
-    def __init__(self, source, file, extra_data=None):
-        self.file = file
-        self.source = source
-        self.extra_data = extra_data
-
-
-class StagingFile:
-    """
-    Simple class to extend the File class to add preview capabilities
-    files in a directory on a storage
-    """
-    def __init__(self, staging_folder, filename=None, encoded_filename=None):
-        self.staging_folder = staging_folder
-        if encoded_filename:
-            self.encoded_filename = str(encoded_filename)
-            self.filename = base64.urlsafe_b64decode(
-                unquote_plus(self.encoded_filename)
-            ).decode('utf8')
-        else:
-            self.filename = filename
-            self.encoded_filename = quote_plus(base64.urlsafe_b64encode(
-                filename.encode('utf8')
-            ))
-
-    def __str__(self):
-        return force_text(s=self.filename)
-
-    def as_file(self):
-        return File(
-            file=open(
-                file=self.get_full_path(), mode='rb'
-            ), name=self.filename
+class SourceBackendAction(SourceBackendActionNamedTuple):
+    def __new__(cls, name, arguments=None, confirmation=True, method=None):
+        if not method:
+            method = 'action_{}'.format(name)
+        return super().__new__(
+            cls, name=name, arguments=arguments or (),
+            confirmation=confirmation, method=method
         )
 
-    @property
-    def cache_filename(self):
-        return '{}{}'.format(self.staging_folder.pk, self.encoded_filename)
 
-    def delete(self):
-        self.storage.delete(self.cache_filename)
-        os.unlink(self.get_full_path())
+class SourceBackendMetaclass(type):
+    _registry = {}
 
-    def generate_image(self, *args, **kwargs):
-        transformation_list = self.get_combined_transformation_list(*args, **kwargs)
+    def __new__(mcs, name, bases, attrs):
+        new_class = super().__new__(
+            mcs, name, bases, attrs
+        )
+        if not new_class.__module__ == 'mayan.apps.sources.classes':
+            mcs._registry[
+                '{}.{}'.format(new_class.__module__, name)
+            ] = new_class
 
-        # Check is transformed image is available
-        logger.debug('transformations cache filename: %s', self.cache_filename)
+        return new_class
 
-        if self.storage.exists(self.cache_filename):
-            logger.debug(
-                'staging file cache file "%s" found', self.cache_filename
-            )
-        else:
-            logger.debug(
-                'staging file cache file "%s" not found', self.cache_filename
-            )
-            image = self.get_image(transformations=transformation_list)
-            with self.storage.open(name=self.cache_filename, mode='wb+') as file_object:
-                file_object.write(image.getvalue())
 
-        return self.cache_filename
+class SourceBackend(AppsModuleLoaderMixin, metaclass=SourceBackendMetaclass):
+    """
+    Base class for the source backends.
 
-    def get_api_image_url(self, *args, **kwargs):
-        final_url = furl()
-        final_url.args = kwargs
-        final_url.path = reverse(
-            'rest_api:stagingfolderfile-image', kwargs={
-                'staging_folder_pk': self.staging_folder.pk,
-                'encoded_filename': self.encoded_filename
-            }
+    The fields attribute is a list of dictionaries with the format:
+    {
+        'name': ''  # Field internal name
+        'label': ''  # Label to show to users
+        'initial': ''  # Field initial value
+        'default': ''  # Default value.
+    }
+    """
+    _loader_module_name = 'source_backends'
+
+    @classmethod
+    def post_load_modules(cls):
+        for name, source_backend in cls.get_all().items():
+            source_backend.intialize()
+
+    @classmethod
+    def get(cls, name):
+        return cls._registry[name]
+
+    @classmethod
+    def get_action(cls, name):
+        for action in cls.actions:
+            if action.name == name:
+                return action
+
+        raise KeyError('Unknown source action `{}`.'.format(name))
+
+    @classmethod
+    def get_actions(cls):
+        return getattr(cls, 'actions', ())
+
+    @classmethod
+    def get_all(cls):
+        return cls._registry
+
+    @classmethod
+    def get_choices(cls):
+        return sorted(
+            [
+                (
+                    key, backend.label
+                ) for key, backend in cls.get_all().items()
+            ], key=lambda x: x[1]
         )
 
-        return final_url.tostr()
+    @classmethod
+    def get_class_path(cls):
+        for path, klass in cls.get_all().items():
+            if klass is cls:
+                return path
 
-    def get_combined_transformation_list(self, *args, **kwargs):
-        """
-        Return a list of transformation containing the server side
-        staging file transformation as well as tranformations created
-        from the arguments as transient interactive transformation.
-        """
-        # Convert arguments into transformations
-        transformations = kwargs.get('transformations', [])
+    @classmethod
+    def get_fields(cls):
+        return getattr(cls, 'fields', {})
 
-        # Set sensible defaults if the argument is not specified or if the
-        # argument is None
-        width = self.staging_folder.preview_width
-        height = self.staging_folder.preview_height
+    @classmethod
+    def get_upload_form_class(cls):
+        return getattr(cls, 'upload_form_class', None)
 
-        # Generate transformation hash
-        transformation_list = []
+    @classmethod
+    def get_setup_form_schema(cls):
+        result = {
+            'fields': cls.get_fields(),
+            'widgets': cls.get_widgets(),
+        }
+        if hasattr(cls, 'field_order'):
+            result['field_order'] = cls.field_order
+        else:
+            result['field_order'] = ()
 
-        # Interactive transformations second
-        for transformation in transformations:
-            transformation_list.append(transformation)
-
-        if width:
-            transformation_list.append(
-                TransformationResize(width=width, height=height)
-            )
-
-        return transformation_list
-
-    def get_date_time_created(self):
-        return time.ctime(os.path.getctime(self.get_full_path()))
-
-    def get_full_path(self):
-        return os.path.join(self.staging_folder.folder_path, self.filename)
-
-    def get_image(self, transformations=None):
-        cache_filename = self.cache_filename
-        file_object = None
-
-        try:
-            file_object = open(file=self.get_full_path(), mode='rb')
-            converter = ConverterBase.get_converter_class()(
-                file_object=file_object
-            )
-
-            page_image = converter.get_page()
-
-            # Since open "wb+" doesn't create files, check if the file
-            # exists, if not then create it
-            if not self.storage.exists(cache_filename):
-                self.storage.save(name=cache_filename, content=ContentFile(content=''))
-
-            with self.storage.open(name=cache_filename, mode='wb+') as file_object:
-                file_object.write(page_image.getvalue())
-        except Exception as exception:
-            # Cleanup in case of error
-            logger.error(
-                'Error creating staging file cache "%s"; %s',
-                cache_filename, exception, exc_info=True
-            )
-            self.storage.delete(cache_filename)
-            if file_object:
-                file_object.close()
-            raise
-
-        for transformation in transformations:
-            converter.transform(transformation=transformation)
-
-        result = converter.get_page()
-        file_object.close()
         return result
 
-    @cached_property
-    def storage(self):
-        return DefinedStorage.get(
-            name=STORAGE_NAME_SOURCE_STAGING_FOLDER_FILE
-        ).get_storage_instance()
+    @classmethod
+    def get_widgets(cls):
+        return getattr(cls, 'widgets', {})
+
+    @classmethod
+    def intialize(cls):
+        """
+        Optional method for subclasses execute their own initialization
+        code.
+        """
+
+    def __init__(self, model_instance_id, **kwargs):
+        self.model_instance_id = model_instance_id
+        self.kwargs = kwargs
+
+    def create(self):
+        """
+        Called after the source model's .save() method for new
+        instances.
+        """
+
+    def delete(self):
+        """
+        Called before the source model's .delete() method.
+        """
+
+    def execute_action(self, request, name, **kwargs):
+        action = self.get_action(name=name)
+        clean_kwargs = self.get_action_kwargs(action=action, **kwargs)
+        clean_kwargs['request'] = request
+
+        return getattr(self, action.method)(**clean_kwargs)
+
+    def get_action_kwargs(self, action, **kwargs):
+        clean_kwargs = {}
+        for argument in action.arguments:
+            clean_kwargs[argument] = kwargs.get(argument)
+
+        return clean_kwargs
+
+    def get_action_context(self, name, view, **kwargs):
+        action = self.get_action(name=name)
+        clean_kwargs = self.get_action_kwargs(action=action, **kwargs)
+        clean_kwargs['view'] = view
+
+        try:
+            return getattr(
+                self, 'get_{}_context'.format(action.method)
+            )(**clean_kwargs)
+        except AttributeError:
+            """Non fatal. The context method is optional."""
+
+    def get_model_instance(self):
+        Source = apps.get_model(app_label='sources', model_name='Source')
+        return Source.objects.get(pk=self.model_instance_id)
+
+    def get_task_extra_kwargs(self):
+        return {}
+
+    def get_view_context(self, context, request):
+        return {}
+
+    def save(self):
+        """
+        Called after the source model's .save() method for existing
+        instances.
+        """
+
+
+class SourceBackendNull(SourceBackend):
+    label = _('Null backend')

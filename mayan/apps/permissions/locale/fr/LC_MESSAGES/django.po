@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -30,7 +30,7 @@ msgstr ""
 msgid "Permissions"
 msgstr "Autorisations"
 
-#: apps.py:98 models.py:75
+#: apps.py:100 models.py:75
 msgid "Group count"
 msgstr "Nombre de groupes"
 
@@ -50,27 +50,27 @@ msgstr "Rôle créé"
 msgid "Role edited"
 msgstr "Rôle modifié"
 
-#: links.py:17 links.py:37 models.py:48 views.py:171
+#: links.py:20 links.py:46 models.py:48 views.py:103
 msgid "Roles"
 msgstr "Rôles"
 
-#: links.py:23 views.py:51
+#: links.py:28 views.py:52
 msgid "Create new role"
 msgstr "Créer un nouveau rôle"
 
-#: links.py:28
+#: links.py:33 links.py:36
 msgid "Delete"
 msgstr "Supprimer"
 
-#: links.py:32
+#: links.py:41
 msgid "Edit"
 msgstr "Modifier"
 
-#: links.py:41 models.py:40
+#: links.py:50 models.py:40
 msgid "Groups"
 msgstr "Groupes"
 
-#: links.py:47
+#: links.py:56
 msgid "Role permissions"
 msgstr "Autorisations du rôle"
 
@@ -138,61 +138,55 @@ msgstr "Clé primaire de l'autorisation à ajouter au rôle."
 msgid "Primary key of the permission to remove from the role."
 msgstr "Clé primaire de l'autorisation à retirer du rôle."
 
-#: views.py:30
+#: views.py:31
 msgid "Available roles"
 msgstr "Rôles disponibles"
 
-#: views.py:31
+#: views.py:32
 msgid "Group roles"
 msgstr "Rôles du groupe"
 
-#: views.py:40
+#: views.py:41
 #, python-format
 msgid "Roles of group: %s"
 msgstr "Rôles du groupe : %s"
 
-#: views.py:82
-msgid "Available groups"
-msgstr "Groupes disponibles"
-
-#: views.py:83
-msgid "Role groups"
-msgstr "Groupes du rôle"
-
-#: views.py:92
+#: views.py:59
 #, python-format
-msgid "Groups of role: %s"
-msgstr "Groupes ayant le rôle : %s"
-
-#: views.py:94
-msgid ""
-"Add groups to be part of a role. They will inherit the role's permissions "
-"and access controls."
+msgid "Error deleting role \"%(instance)s\"; %(exception)s"
 msgstr ""
-"Ajoutez des groupes à faire partie d'un rôle. Ils hériteront des "
-"autorisations et des contrôles d'accès du rôle."
 
-#: views.py:107
-msgid "Available permissions"
-msgstr "Autorisations disponibles"
-
-#: views.py:108
-msgid "Granted permissions"
-msgstr "Autorisations accordées"
-
-#: views.py:143
-msgid ""
-"Permissions granted here will apply to the entire system and all objects."
-msgstr ""
-"Les autorisations accordées ici s'appliqueront à l'ensemble du système et à "
-"tous les objets."
-
-#: views.py:146
+#: views.py:64
 #, python-format
-msgid "Permissions for role: %s"
-msgstr "Autorisations pour le rôle : %s"
+msgid "Role \"%(object)s\" deleted successfully."
+msgstr ""
 
-#: views.py:163
+#: views.py:65
+#, python-format
+msgid "%(count)d role deleted successfully."
+msgstr ""
+
+#: views.py:66
+#, python-format
+msgid "%(count)d roles deleted successfully."
+msgstr ""
+
+#: views.py:67
+#, python-format
+msgid "Delete role: %(object)s."
+msgstr ""
+
+#: views.py:68
+#, python-format
+msgid "Delete the %(count)d selected role."
+msgstr ""
+
+#: views.py:69
+#, python-format
+msgid "Delete the %(count)d selected roles."
+msgstr ""
+
+#: views.py:95
 msgid ""
 "Roles are authorization units. They contain user groups which inherit the "
 "role permissions for the entire system. Roles can also part of access "
@@ -206,6 +200,52 @@ msgstr ""
 "accordées à un rôle pour des objets spécifiques dont les membres du groupe "
 "héritent."
 
-#: views.py:170
+#: views.py:102
 msgid "There are no roles"
 msgstr "Il n'y a pas de rôles"
+
+#: views.py:115
+msgid "Available groups"
+msgstr "Groupes disponibles"
+
+#: views.py:116
+msgid "Role groups"
+msgstr "Groupes du rôle"
+
+#: views.py:125
+#, python-format
+msgid "Groups of role: %s"
+msgstr "Groupes ayant le rôle : %s"
+
+#: views.py:127
+msgid ""
+"Add groups to be part of a role. They will inherit the role's permissions "
+"and access controls."
+msgstr ""
+"Ajoutez des groupes à faire partie d'un rôle. Ils hériteront des "
+"autorisations et des contrôles d'accès du rôle."
+
+#: views.py:140
+msgid "Available permissions"
+msgstr "Autorisations disponibles"
+
+#: views.py:141
+msgid "Granted permissions"
+msgstr "Autorisations accordées"
+
+#: views.py:176
+msgid ""
+"Permissions granted here will apply to the entire system and all objects."
+msgstr ""
+"Les autorisations accordées ici s'appliqueront à l'ensemble du système et à "
+"tous les objets."
+
+#: views.py:179
+#, python-format
+msgid "Permissions for role: %s"
+msgstr "Autorisations pour le rôle : %s"
+
+#: views.py:198
+#, python-format
+msgid "Details of permission: %s"
+msgstr ""

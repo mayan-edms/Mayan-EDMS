@@ -45,6 +45,15 @@ class DuplicatedDocumentAPIViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
+
+class DocumentDuplicatesAPIViewTestCase(
+    DocumentTestMixin, DuplicatedDocumentAPIViewTestMixin,
+    DuplicatedDocumentTestMixin, BaseAPITestCase
+):
+    def setUp(self):
+        super().setUp()
+        self._upload_duplicate_document()
+
     def test_document_duplicates_list_api_view_no_permission(self):
         self._clear_events()
 
@@ -98,6 +107,43 @@ class DuplicatedDocumentAPIViewTestCase(
             response.data['results'][0]['id'],
             self.test_documents[1].pk
         )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_trashed_source_document_duplicates_list_api_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_documents[0], permission=permission_document_view
+        )
+        self.grant_access(
+            obj=self.test_documents[1], permission=permission_document_view
+        )
+
+        self.test_documents[0].delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_duplicates_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_trashed_target_document_duplicates_list_api_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_documents[0], permission=permission_document_view
+        )
+        self.grant_access(
+            obj=self.test_documents[1], permission=permission_document_view
+        )
+
+        self.test_documents[1].delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_duplicates_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 0)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)

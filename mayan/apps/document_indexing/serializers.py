@@ -1,12 +1,11 @@
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import serializers
-from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 from rest_framework_recursive.fields import RecursiveField
 
 from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.documents.permissions import permission_document_type_edit
+from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import FilteredPrimaryKeyRelatedField
 
 from .models import (
@@ -15,22 +14,13 @@ from .models import (
 
 
 class IndexInstanceSerializer(serializers.ModelSerializer):
-    item_count = serializers.SerializerMethodField(read_only=True)
-    node_count = serializers.SerializerMethodField(read_only=True)
     url = serializers.SerializerMethodField(read_only=True)
     nodes_url = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
-        fields = (
-            'label', 'id', 'item_count', 'node_count', 'nodes_url', 'url'
-        )
+        fields = ('label', 'id', 'nodes_url', 'url')
         model = IndexInstance
-
-    def get_item_count(self, obj):
-        return obj.get_item_count(user=self.context['request'])
-
-    def get_node_count(self, obj):
-        return obj.get_instance_node_count()
+        read_only_fields = fields
 
     def get_url(self, obj):
         return reverse(
@@ -48,8 +38,7 @@ class IndexInstanceSerializer(serializers.ModelSerializer):
 
 
 class IndexInstanceNodeSerializer(serializers.ModelSerializer):
-    children = RecursiveField(many=True, read_only=True)
-    documents_count = serializers.SerializerMethodField()
+    children_url = serializers.SerializerMethodField(read_only=True)
     documents_url = serializers.SerializerMethodField(read_only=True)
     index_url = serializers.SerializerMethodField(read_only=True)
     parent_url = serializers.SerializerMethodField(read_only=True)
@@ -57,14 +46,18 @@ class IndexInstanceNodeSerializer(serializers.ModelSerializer):
 
     class Meta:
         fields = (
-            'documents_count', 'documents_url', 'children', 'id',
-            'index_url', 'level', 'parent', 'parent_url', 'value', 'url'
+            'documents_url', 'children_url', 'id', 'index_url', 'level',
+            'parent_id', 'parent_url', 'value', 'url'
         )
         model = IndexInstanceNode
+        read_only_fields = fields
 
-    def get_documents_count(self, obj):
-        return obj.get_descendants_document_count(
-            user=self.context['request'].user
+    def get_children_url(self, obj):
+        return reverse(
+            viewname='rest_api:indexinstancenode-children-list', kwargs={
+                'index_instance_id': obj.index().pk,
+                'index_instance_node_id': obj.pk
+            }, format=self.context['format'], request=self.context['request']
         )
 
     def get_documents_url(self, obj):
@@ -115,7 +108,10 @@ class IndexTemplateNodeSerializer(serializers.ModelSerializer):
             'level', 'link_documents', 'parent', 'parent_url', 'url'
         )
         model = IndexTemplateNode
-        read_only_fields = ('children', 'id', 'index', 'level')
+        read_only_fields = (
+            'children', 'id', 'index', 'index_url', 'level', 'parent_url',
+            'url'
+        )
 
     def get_index_url(self, obj):
         return reverse(
@@ -148,6 +144,7 @@ class IndexTemplateNodeSerializer(serializers.ModelSerializer):
 class IndexTemplateNodeWriteSerializer(serializers.ModelSerializer):
     children = RecursiveField(many=True, read_only=True)
     index_url = serializers.SerializerMethodField(read_only=True)
+    parent = FilteredPrimaryKeyRelatedField()
     parent_url = serializers.SerializerMethodField(read_only=True)
     url = serializers.SerializerMethodField(read_only=True)
 
@@ -157,7 +154,10 @@ class IndexTemplateNodeWriteSerializer(serializers.ModelSerializer):
             'level', 'link_documents', 'parent', 'parent_url', 'url'
         )
         model = IndexTemplateNode
-        read_only_fields = ('children', 'id', 'index', 'level')
+        read_only_fields = (
+            'children', 'id', 'index', 'index_url', 'level', 'parent_url',
+            'url'
+        )
 
     def create(self, validated_data):
         validated_data['index'] = self.context['index_template']
@@ -169,6 +169,9 @@ class IndexTemplateNodeWriteSerializer(serializers.ModelSerializer):
                 'index_template_id': obj.index.pk,
             }, format=self.context['format'], request=self.context['request']
         )
+
+    def get_parent_queryset(self):
+        return self.context['index_template'].index_template_nodes.all()
 
     def get_parent_url(self, obj):
         if obj.parent:
@@ -189,24 +192,6 @@ class IndexTemplateNodeWriteSerializer(serializers.ModelSerializer):
                 'index_template_node_id': obj.pk
             }, format=self.context['format'], request=self.context['request']
         )
-
-    def validate(self, attrs):
-        parent = attrs.get('parent', None)
-        if not parent:
-            raise ValidationError(
-                {'parent': [_('Parent cannot be empty.')]}
-            )
-        else:
-            if not self.context['index_template'].node_templates.filter(id=parent.pk).exists():
-                raise ValidationError(
-                    {
-                        'parent': [
-                            _('Parent must be from the same index template.')
-                        ]
-                    }
-                )
-
-        return attrs
 
 
 class IndexTemplateSerializer(serializers.HyperlinkedModelSerializer):
@@ -231,6 +216,9 @@ class IndexTemplateSerializer(serializers.HyperlinkedModelSerializer):
         ), lookup_url_kwarg='index_template_id',
         view_name='rest_api:indextemplate-documenttype-remove'
     )
+    index_template_root_node_id = serializers.PrimaryKeyRelatedField(
+        source='index_template_root_node', read_only=True
+    )
     nodes_url = serializers.SerializerMethodField(read_only=True)
     rebuild_url = serializers.HyperlinkedIdentityField(
         lookup_url_kwarg='index_template_id',
@@ -251,10 +239,16 @@ class IndexTemplateSerializer(serializers.HyperlinkedModelSerializer):
         }
         fields = (
             'document_types_add_url', 'document_types_url',
-            'document_types_remove_url', 'enabled', 'id', 'label',
-            'nodes_url', 'rebuild_url', 'reset_url', 'slug', 'url'
+            'document_types_remove_url', 'enabled', 'id',
+            'index_template_root_node_id', 'label', 'nodes_url',
+            'rebuild_url', 'reset_url', 'slug', 'url'
         )
         model = IndexTemplate
+        read_only_fields = (
+            'document_types_add_url', 'document_types_url',
+            'document_types_remove_url', 'id', 'index_template_root_node_id',
+            'nodes_url', 'rebuild_url', 'reset_url', 'url'
+        )
 
     def get_url(self, obj):
         return reverse(

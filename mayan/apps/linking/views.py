@@ -9,9 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document, DocumentType
-from mayan.apps.documents.permissions import (
-    permission_document_type_edit, permission_document_view
-)
+from mayan.apps.documents.permissions import permission_document_type_edit
 from mayan.apps.documents.views.document_views import DocumentListView
 from mayan.apps.views.generics import (
     AddRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
@@ -25,11 +23,163 @@ from .icons import icon_smart_link_setup, icon_smart_link_condition
 from .links import link_smart_link_create, link_smart_link_condition_create
 from .models import ResolvedSmartLink, SmartLink, SmartLinkCondition
 from .permissions import (
-    permission_smart_link_create, permission_smart_link_delete,
-    permission_smart_link_edit, permission_smart_link_view
+    permission_resolved_smart_link_view, permission_smart_link_create,
+    permission_smart_link_delete, permission_smart_link_edit,
+    permission_smart_link_view
 )
 
 logger = logging.getLogger(name=__name__)
+
+
+class DocumentResolvedSmartLinkDocumentListView(ExternalObjectViewMixin, DocumentListView):
+    external_object_permission = permission_resolved_smart_link_view
+    external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid.all()
+
+    def dispatch(self, request, *args, **kwargs):
+        self.resolved_smart_link = self.get_resolved_smart_link()
+
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_document_queryset(self):
+        try:
+            queryset = self.resolved_smart_link.get_linked_documents_for(
+                document=self.external_object
+            )
+        except Exception as exception:
+            queryset = Document.objects.none()
+
+            # Check if the user has the smart link edit permission before
+            # showing the exception text.
+            try:
+                AccessControlList.objects.check_access(
+                    obj=self.resolved_smart_link,
+                    permissions=(permission_smart_link_edit,),
+                    user=self.request.user
+                )
+            except PermissionDenied:
+                """User doesn't have the required permission."""
+            else:
+                messages.error(
+                    message=_(
+                        'Resolved smart link query error: %s' % exception
+                    ), request=self.request
+                )
+
+        return queryset
+
+    def get_extra_context(self):
+        try:
+            resolved_smart_link_label = self.resolved_smart_link.get_label_for(
+                document=self.external_object
+            )
+        except Exception as exception:
+            resolved_smart_link_label = self.resolved_smart_link.label
+
+            # Check if the user has the smart link edit permission before
+            # showing the exception text.
+            try:
+                AccessControlList.objects.check_access(
+                    obj=self.resolved_smart_link,
+                    permissions=(permission_smart_link_edit,),
+                    user=self.request.user
+                )
+            except PermissionDenied:
+                """User doesn't have the required permission."""
+            else:
+                messages.error(
+                    message=_(
+                        'Resolved smart link dynamic label error: %s' % exception
+                    ), request=self.request
+                )
+
+        title = _(
+            'Documents in resolved smart link "%(resolved_smart_link)s" for '
+            '"%(document)s"'
+        ) % {
+            'document': self.external_object,
+            'resolved_smart_link': resolved_smart_link_label
+        }
+
+        context = super().get_extra_context()
+        context.update(
+            {
+                'object': self.external_object,
+                'title': title,
+            }
+        )
+        return context
+
+    def get_resolved_smart_link(self):
+        queryset = AccessControlList.objects.restrict_queryset(
+            permission=permission_resolved_smart_link_view,
+            queryset=ResolvedSmartLink.objects.filter(enabled=True),
+            user=self.request.user
+        )
+
+        return get_object_or_404(
+            klass=queryset, pk=self.kwargs['smart_link_id']
+        )
+
+
+class SmartLinkListView(SingleObjectListView):
+    model = SmartLink
+    object_permission = permission_smart_link_view
+
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'hide_object': True,
+            'no_results_icon': icon_smart_link_setup,
+            'no_results_main_link': link_smart_link_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
+            'no_results_text': _(
+                'Indexes group documents into units, usually with similar '
+                'properties and of equal or similar types. Smart links '
+                'allow defining relationships between documents even '
+                'if they are in different indexes and are of different '
+                'types.'
+            ),
+            'no_results_title': _(
+                'There are no smart links'
+            ),
+            'title': _('Smart links'),
+        }
+
+
+class DocumentResolvedSmartLinkListView(
+    ExternalObjectViewMixin, SingleObjectListView
+):
+    external_object_permission = permission_resolved_smart_link_view
+    external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid.all()
+    object_permission = permission_resolved_smart_link_view
+
+    def get_extra_context(self):
+        return {
+            'document': self.external_object,
+            'hide_link': True,
+            'hide_object': True,
+            'no_results_icon': icon_smart_link_setup,
+            'no_results_text': _(
+                'Smart links allow defining relationships between '
+                'documents even if they are in different indexes and '
+                'are of different types.'
+            ),
+            'no_results_title': _(
+                'There are no resolved smart links for this document'
+            ),
+            'object': self.external_object,
+            'title': _(
+                'Resolved smart links for document: %s'
+            ) % self.external_object,
+        }
+
+    def get_source_queryset(self):
+        return ResolvedSmartLink.objects.get_for(
+            document=self.external_object
+        )
 
 
 class DocumentTypeSmartLinkAddRemoveView(AddRemoveView):
@@ -70,78 +220,6 @@ class DocumentTypeSmartLinkAddRemoveView(AddRemoveView):
         }
 
 
-class ResolvedSmartLinkView(ExternalObjectViewMixin, DocumentListView):
-    external_object_permission = permission_document_view
-    external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
-
-    def dispatch(self, request, *args, **kwargs):
-        self.smart_link = self.get_smart_link()
-
-        return super().dispatch(request, *args, **kwargs)
-
-    def get_document_queryset(self):
-        try:
-            queryset = self.smart_link.get_linked_document_for(
-                document=self.external_object
-            )
-        except Exception as exception:
-            queryset = Document.objects.none()
-
-            # Check if the user has the smart link edit permission before
-            # showing the exception text.
-            try:
-                AccessControlList.objects.check_access(
-                    obj=self.smart_link,
-                    permissions=(permission_smart_link_edit,),
-                    user=self.request.user
-                )
-            except PermissionDenied:
-                """User doesn't have the required permission."""
-            else:
-                messages.error(
-                    message=_('Smart link query error: %s' % exception),
-                    request=self.request
-                )
-
-        return queryset
-
-    def get_extra_context(self):
-        dynamic_label = self.smart_link.get_dynamic_label(
-            document=self.external_object
-        )
-        if dynamic_label:
-            title = _('Documents in smart link: %s') % dynamic_label
-        else:
-            title = _(
-                'Documents in smart link "%(smart_link)s" as related to '
-                '"%(document)s"'
-            ) % {
-                'document': self.external_object,
-                'smart_link': self.smart_link.label,
-            }
-
-        context = super().get_extra_context()
-        context.update(
-            {
-                'object': self.external_object,
-                'title': title,
-            }
-        )
-        return context
-
-    def get_smart_link(self):
-        queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_smart_link_view,
-            queryset=SmartLink.objects.filter(enabled=True),
-            user=self.request.user
-        )
-
-        return get_object_or_404(
-            klass=queryset, pk=self.kwargs['smart_link_id']
-        )
-
-
 class SmartLinkDocumentTypeAddRemoveView(AddRemoveView):
     main_object_method_add_name = 'document_types_add'
     main_object_method_remove_name = 'document_types_remove'
@@ -164,63 +242,6 @@ class SmartLinkDocumentTypeAddRemoveView(AddRemoveView):
                 'Document type for which to enable smart link: %s'
             ) % self.main_object,
         }
-
-
-class SmartLinkListView(SingleObjectListView):
-    model = SmartLink
-    object_permission = permission_smart_link_view
-
-    def get_extra_context(self):
-        return {
-            'hide_link': True,
-            'hide_object': True,
-            'no_results_icon': icon_smart_link_setup,
-            'no_results_main_link': link_smart_link_create.resolve(
-                context=RequestContext(request=self.request)
-            ),
-            'no_results_text': _(
-                'Indexes group documents into units, usually with similar '
-                'properties and of equal or similar types. Smart links '
-                'allow defining relationships between documents even '
-                'if they are in different indexes and are of different '
-                'types.'
-            ),
-            'no_results_title': _(
-                'There are no smart links'
-            ),
-            'title': _('Smart links'),
-        }
-
-
-class DocumentSmartLinkListView(ExternalObjectViewMixin, SmartLinkListView):
-    external_object_permission = permission_document_view
-    external_object_pk_url_kwarg = 'document_id'
-    external_object_queryset = Document.valid
-
-    def get_extra_context(self):
-        return {
-            'document': self.external_object,
-            'hide_link': True,
-            'hide_object': True,
-            'no_results_icon': icon_smart_link_setup,
-            'no_results_text': _(
-                'Smart links allow defining relationships between '
-                'documents even if they are in different indexes and '
-                'are of different types.'
-            ),
-            'no_results_title': _(
-                'There are no smart links for this document'
-            ),
-            'object': self.external_object,
-            'title': _('Smart links for document: %s') % self.external_object,
-        }
-
-    def get_source_queryset(self):
-        # Override SingleObjectListView source queryset from SmartLink to
-        # ResolvedSmartLink.
-        return ResolvedSmartLink.objects.get_for(
-            document=self.external_object
-        )
 
 
 class SmartLinkCreateView(SingleObjectCreateView):

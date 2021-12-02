@@ -5,13 +5,29 @@ import os
 from pathlib import Path
 import sys
 
-import django
-from django.conf import settings
 from docutils import core
 from html2bbcode.parser import HTML2BBCode
 from lxml import etree, html
+import sh
 
-VERSION = '2.0'
+import django
+from django.conf import settings
+
+MONTHS_TO_NUMBER = {
+    'January': 1,
+    'February': 2,
+    'March': 3,
+    'April': 4,
+    'May': 5,
+    'June': 6,
+    'July': 7,
+    'August': 8,
+    'September': 9,
+    'October': 10,
+    'November': 11,
+    'December': 12
+}
+VERSION = '3.0'
 ignore_ids_list = ('upgrade-process', 'troubleshooting')
 
 
@@ -130,6 +146,50 @@ class ReleaseNoteExporter:
                 result = result.replace(*bbcode_replace_item)
 
             return result
+        elif self.options.output_format == 'md':
+            command_pandoc = sh.Command('pandoc')
+
+            markdown_tag_cleanup = (
+                (b'class="docutils literal"', b''),
+                (b'class="reference external"', b''),
+            )
+
+            joined_result = b''.join(result)
+
+            for markdown_tag_cleanup_item in markdown_tag_cleanup:
+                joined_result = joined_result.replace(*markdown_tag_cleanup_item)
+
+            return command_pandoc(_in=joined_result, f='html', t='markdown')
+        elif self.options.output_format == 'news':
+            command_pandoc = sh.Command('pandoc')
+
+            markdown_tag_cleanup = (
+                (b'class="docutils literal"', b''),
+                (b'class="reference external"', b''),
+            )
+
+            joined_result = b''.join(result)
+
+            for markdown_tag_cleanup_item in markdown_tag_cleanup:
+                joined_result = joined_result.replace(*markdown_tag_cleanup_item)
+
+            result_body = command_pandoc(_in=joined_result, f='html', t='markdown')
+
+            tree = html.fromstring(html_fragment)
+            # ~ title = tree[0].text
+            # ~ date tree[1].text)
+
+            released, month, day, year = tree[1].text.split(' ')
+
+            return '\n'.join(
+                (
+                    '---',
+                    'date: {}-{:02d}-{:02d}'.format(year, MONTHS_TO_NUMBER[month], int(day[:-1])),
+                    'title: "{}"'.format(tree[0].text),
+                    '---',
+                    str(result_body)
+                )
+            )
         else:
             return b''.join(result)
 

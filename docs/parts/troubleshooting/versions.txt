@@ -33,3 +33,37 @@ Error: ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan
 ------------------------------------------------------------------------------------------------------------
 
 Same solution as with error: ``...CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+
+.. _troubleshooting-version-4.1:
+
+After upgrade to version 4.1
+============================
+
+Existing indexes are missing
+----------------------------
+
+Due to the changes in the index tree generation algorithm and database
+integrity configuration, existing index trees will deleted during upgrade
+and need to be rebuild after upgrade.
+
+Supervisord error using direct deployment
+-----------------------------------------
+
+
+.. code-block:: console
+
+    Error: Format string '%(ENV_MAYAN_GUNICORN_BIN)s --workers%(ENV_MAYAN_GUNICORN_WORKERS)s ...' for 'program:mayan-edms-gunicorn.command' contains names ('ENV_MAYAN_GUNICORN_BIN') which cannot be expanded. Available names: ... in section 'program:mayan-edms-gunicorn' (file: '/etc/supervisor/conf.d/mayan-edms.conf')
+
+This is a bug with Supervisord fixed in version 4.2.2:
+
+    "Fixed a bug where environment variables defined in environment= in the [supervisord] section or a [program:x] section could not be used in %(ENV_x)s expansions. Patch by MythRen."
+
+    http://supervisord.org/changes.html
+
+To solve this upgrade Supervisord to version 4.2.2.
+
+For Debian and Ubuntu:
+
+Install the ``supervisor_4.2.2-2_all.deb`` package from Debian
+"bullseye": https://packages.debian.org/bullseye/supervisor

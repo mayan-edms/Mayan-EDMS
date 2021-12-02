@@ -1,7 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import serializers
-
+from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import MultiKwargHyperlinkedIdentityField
 from mayan.apps.rest_api.serializer_mixins import CreateOnlyFieldSerializerMixin
 
@@ -17,6 +16,7 @@ class DocumentFileSerializer(
         choices=DOCUMENT_FILE_ACTION_PAGE_CHOICES
     )
     document_url = serializers.HyperlinkedIdentityField(
+        lookup_field='document_id',
         lookup_url_kwarg='document_id',
         view_name='rest_api:document-detail'
     )
@@ -71,12 +71,15 @@ class DocumentFileSerializer(
             'file': {'use_url': False},
         }
         fields = (
-            'action', 'checksum', 'comment', 'document_url', 'download_url', 'encoding',
-            'file', 'filename', 'file_new', 'id', 'mimetype', 'page_list_url',
-            'size', 'timestamp', 'url'
+            'action', 'checksum', 'comment', 'document_url', 'download_url',
+            'encoding', 'file', 'filename', 'file_new', 'id', 'mimetype',
+            'page_list_url', 'size', 'timestamp', 'url'
         )
         model = DocumentFile
-        read_only_fields = ('document', 'file', 'size')
+        read_only_fields = (
+            'checksum', 'document_url', 'download_url', 'encoding', 'file',
+            'id', 'mimetype', 'page_list_url', 'size', 'timestamp', 'url'
+        )
 
     def get_size(self, instance):
         return instance.size
@@ -136,3 +139,4 @@ class DocumentFilePageSerializer(serializers.HyperlinkedModelSerializer):
             'document_file_url', 'id', 'image_url', 'page_number', 'url'
         )
         model = DocumentFilePage
+        read_only_fields = ('document_file_url', 'id', 'image_url', 'url')

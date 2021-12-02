@@ -3,15 +3,13 @@ import logging
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_setup
+    menu_multi_item, menu_object, menu_secondary, menu_setup
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 
@@ -58,8 +56,8 @@ class AnnouncementsApp(MayanAppConfig):
         ModelPermission.register(
             model=Announcement, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_events_view, permission_announcement_delete,
-                permission_announcement_edit, permission_announcement_view
+                permission_announcement_delete, permission_announcement_edit,
+                permission_announcement_view
             )
         )
         SourceColumn(
@@ -77,10 +75,6 @@ class AnnouncementsApp(MayanAppConfig):
         SourceColumn(
             attribute='end_datetime', empty_value=_('None'),
             include_label=True, is_sortable=True, source=Announcement
-        )
-
-        menu_list_facet.bind_links(
-            links=(link_acl_list,), sources=(Announcement,)
         )
 
         menu_multi_item.bind_links(

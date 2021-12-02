@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:20+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: yan songwei <yansw@vip.163.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
-#: events.py:5 forms.py:14 links.py:31 menus.py:14 models.py:50 models.py:174
+#: events.py:5 forms.py:14 links.py:30 menus.py:14 models.py:50 models.py:174
 #: permissions.py:5 search.py:56 views.py:155 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "文档柜"
@@ -43,35 +43,35 @@ msgstr "文件已添加到文档柜"
 msgid "Document removed from cabinet"
 msgstr "文档从文档柜中移除"
 
-#: links.py:37 links.py:49 workflow_actions.py:72
+#: links.py:36 links.py:48 workflow_actions.py:72
 msgid "Remove from cabinets"
 msgstr "从文档柜中删除"
 
-#: links.py:41 links.py:45 workflow_actions.py:29
+#: links.py:40 links.py:44 workflow_actions.py:29
 msgid "Add to cabinets"
 msgstr "添加到文档柜"
 
-#: links.py:60
+#: links.py:59
 msgid "Add new level"
 msgstr "添加新级别"
 
-#: links.py:65 views.py:40
+#: links.py:64 views.py:40
 msgid "Create cabinet"
 msgstr "创建文档柜"
 
-#: links.py:70
+#: links.py:69
 msgid "Delete"
 msgstr "删除"
 
-#: links.py:74
+#: links.py:73
 msgid "Edit"
 msgstr "编辑"
 
-#: links.py:82
+#: links.py:81
 msgid "All"
 msgstr "所有"
 
-#: links.py:86
+#: links.py:85
 msgid "Details"
 msgstr "细节"
 
@@ -177,13 +177,13 @@ msgid "List of children cabinets."
 msgstr "子文档柜列表。"
 
 #: serializers.py:22
-msgid "The name of this cabinet level appended to the names of its ancestors."
-msgstr "此文档柜级别的名称附加到其祖级的名称。"
-
-#: serializers.py:28
 msgid ""
 "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr "API端点的URL，显示此文档柜内的列表文档。"
+
+#: serializers.py:29
+msgid "The name of this cabinet level appended to the names of its ancestors."
+msgstr "此文档柜级别的名称附加到其祖级的名称。"
 
 #: templates/cabinets/cabinet_details.html:17
 msgid "Navigation:"
@@ -259,62 +259,54 @@ msgstr ""
 msgid "Add %(count)d documents to cabinets."
 msgstr ""
 
-#: views.py:192
-msgid "Add"
-msgstr "添加"
-
-#: views.py:207
+#: views.py:205
 msgid "Cabinets to which the selected documents will be added."
 msgstr "将添加所选文档的文档柜。"
 
-#: views.py:253
+#: views.py:251
 msgid "Documents can be added to many cabinets."
 msgstr "文档可添加至许多文档柜。"
 
-#: views.py:256
+#: views.py:254
 msgid "This document is not in any cabinet"
 msgstr "本文档不在任何文档柜中"
 
-#: views.py:260
+#: views.py:258
 #, python-format
 msgid "Cabinets containing document: %s"
 msgstr "文档柜包含文档：%s"
 
-#: views.py:276
+#: views.py:274
 #, python-format
 msgid "Document \"%(object)s\" removed from cabinets successfully."
 msgstr ""
 
-#: views.py:279
+#: views.py:277
 #, python-format
 msgid "%(count)d document removed from cabinets successfully."
 msgstr ""
 
-#: views.py:282
+#: views.py:280
 #, python-format
 msgid "%(count)d documents removed from cabinets successfully."
 msgstr ""
 
-#: views.py:284
+#: views.py:282
 #, python-format
 msgid "Remove document \"%(object)s\" from cabinets."
 msgstr ""
 
-#: views.py:285
+#: views.py:283
 #, python-format
 msgid "Remove %(count)d document from cabinets."
 msgstr ""
 
-#: views.py:286
+#: views.py:284
 #, python-format
 msgid "Remove %(count)d documents from cabinets."
 msgstr ""
 
-#: views.py:290
-msgid "Remove"
-msgstr "移除"
-
-#: views.py:305
+#: views.py:301
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "将从中删除所选文档的文档柜。"
 

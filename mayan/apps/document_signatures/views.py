@@ -19,15 +19,11 @@ from .forms import (
     DocumentFileSignatureCreateForm,
     DocumentFileSignatureDetailForm
 )
-from .icons import (
-    icon_document_file_signature_detached_create,
-    icon_document_file_signature_embedded_create,
-    icon_document_file_signature_list
-)
+from .icons import icon_document_file_signature_list
 from .links import (
     link_document_file_signature_detached_create,
     link_document_file_signature_embedded_create,
-    link_document_file_signature_upload
+    link_document_file_signature_detached_upload
 )
 from .models import DetachedSignature, EmbeddedSignature, SignatureBaseModel
 from .permissions import (
@@ -49,7 +45,7 @@ logger = logging.getLogger(name=__name__)
 class DocumentFileDetachedSignatureCreateView(ExternalObjectViewMixin, FormView):
     external_object_permission = permission_document_file_sign_detached
     external_object_pk_url_kwarg = 'document_file_id'
-    external_object_queryset = DocumentFile.valid
+    external_object_queryset = DocumentFile.valid.all()
     form_class = DocumentFileSignatureCreateForm
 
     def form_valid(self, form):
@@ -98,8 +94,6 @@ class DocumentFileDetachedSignatureCreateView(ExternalObjectViewMixin, FormView)
     def get_extra_context(self):
         return {
             'object': self.external_object,
-            'submit_icon': icon_document_file_signature_detached_create,
-            'submit_label': _('Sign'),
             'title': _(
                 'Sign document file "%s" with a detached signature'
             ) % self.external_object,
@@ -118,7 +112,7 @@ class DocumentFileDetachedSignatureCreateView(ExternalObjectViewMixin, FormView)
 class DocumentFileEmbeddedSignatureCreateView(ExternalObjectViewMixin, FormView):
     external_object_permission = permission_document_file_sign_embedded
     external_object_pk_url_kwarg = 'document_file_id'
-    external_object_queryset = DocumentFile.valid
+    external_object_queryset = DocumentFile.valid.all()
     form_class = DocumentFileSignatureCreateForm
 
     def form_valid(self, form):
@@ -174,8 +168,6 @@ class DocumentFileEmbeddedSignatureCreateView(ExternalObjectViewMixin, FormView)
     def get_extra_context(self):
         return {
             'object': self.external_object,
-            'submit_icon': icon_document_file_signature_embedded_create,
-            'submit_label': _('Sign'),
             'title': _(
                 'Sign document file "%s" with a embedded signature'
             ) % self.external_object,
@@ -185,7 +177,7 @@ class DocumentFileEmbeddedSignatureCreateView(ExternalObjectViewMixin, FormView)
         return {'user': self.request.user}
 
 
-class DocumentFileSignatureDeleteView(SingleObjectDeleteView):
+class DocumentFileDetachedSignatureDeleteView(SingleObjectDeleteView):
     object_permission = permission_document_file_signature_delete
     pk_url_kwarg = 'signature_id'
 
@@ -212,6 +204,55 @@ class DocumentFileSignatureDeleteView(SingleObjectDeleteView):
         )
 
 
+class DocumentFileDetachedSignatureDownloadView(SingleObjectDownloadView):
+    object_permission = permission_document_file_signature_download
+    pk_url_kwarg = 'signature_id'
+
+    def get_download_file_object(self):
+        return self.object.signature_file
+
+    def get_download_filename(self):
+        return force_text(s=self.object)
+
+    def get_source_queryset(self):
+        document_file_queryset = DocumentFile.valid.all()
+
+        return DetachedSignature.objects.filter(
+            document_file_id__in=document_file_queryset.values('pk')
+        )
+
+
+class DocumentFileDetachedSignatureUploadView(
+    ExternalObjectViewMixin, SingleObjectCreateView
+):
+    external_object_permission = permission_document_file_signature_upload
+    external_object_pk_url_kwarg = 'document_file_id'
+    external_object_queryset = DocumentFile.valid.all()
+    fields = ('signature_file',)
+    model = DetachedSignature
+
+    def get_extra_context(self):
+        return {
+            'object': self.external_object,
+            'title': _(
+                'Upload detached signature for document file: %s'
+            ) % self.external_object,
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
+            'document_file': self.external_object
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='signatures:document_file_signature_list', kwargs={
+                'document_file_id': self.external_object.pk
+            }
+        )
+
+
 class DocumentFileSignatureDetailView(SingleObjectDetailView):
     form_class = DocumentFileSignatureDetailForm
     object_permission = permission_document_file_signature_view
@@ -235,30 +276,12 @@ class DocumentFileSignatureDetailView(SingleObjectDetailView):
         )
 
 
-class DocumentFileSignatureDownloadView(SingleObjectDownloadView):
-    object_permission = permission_document_file_signature_download
-    pk_url_kwarg = 'signature_id'
-
-    def get_download_file_object(self):
-        return self.object.signature_file
-
-    def get_download_filename(self):
-        return force_text(s=self.object)
-
-    def get_source_queryset(self):
-        document_file_queryset = DocumentFile.valid.all()
-
-        return DetachedSignature.objects.filter(
-            document_file_id__in=document_file_queryset.values('pk')
-        )
-
-
 class DocumentFileSignatureListView(
     ExternalObjectViewMixin, SingleObjectListView
 ):
     external_object_permission = permission_document_file_signature_view
     external_object_pk_url_kwarg = 'document_file_id'
-    external_object_queryset = DocumentFile.valid
+    external_object_queryset = DocumentFile.valid.all()
 
     def get_extra_context(self):
         return {
@@ -285,7 +308,7 @@ class DocumentFileSignatureListView(
                         }
                     )
                 ),
-                link_document_file_signature_upload.resolve(
+                link_document_file_signature_detached_upload.resolve(
                     RequestContext(
                         request=self.request, dict_={
                             'object': self.external_object
@@ -304,34 +327,6 @@ class DocumentFileSignatureListView(
 
     def get_source_queryset(self):
         return self.external_object.signatures.all()
-
-
-class DocumentFileSignatureUploadView(
-    ExternalObjectViewMixin, SingleObjectCreateView
-):
-    external_object_permission = permission_document_file_signature_upload
-    external_object_pk_url_kwarg = 'document_file_id'
-    external_object_queryset = DocumentFile.valid
-    fields = ('signature_file',)
-    model = DetachedSignature
-
-    def get_extra_context(self):
-        return {
-            'object': self.external_object,
-            'title': _(
-                'Upload detached signature for document file: %s'
-            ) % self.external_object,
-        }
-
-    def get_instance_extra_data(self):
-        return {'document_file': self.external_object}
-
-    def get_post_action_redirect(self):
-        return reverse(
-            viewname='signatures:document_file_signature_list', kwargs={
-                'document_file_id': self.external_object.pk
-            }
-        )
 
 
 class AllDocumentSignatureRefreshView(ConfirmView):

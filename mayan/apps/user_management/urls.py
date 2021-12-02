@@ -6,16 +6,16 @@ from .api_views import (
     APIUserDetailView, APIUserGroupListView, APIUserListView
 )
 from .views import (
-    CurrentUserDetailsView, CurrentUserEditView, GroupCreateView,
-    GroupDeleteView, GroupEditView, GroupListView, GroupUsersView,
-    UserCreateView, UserDeleteView, UserDetailsView, UserEditView,
-    UserGroupsView, UserListView, UserOptionsEditView
+    CurrentUserDetailView, CurrentUserEditView, GroupCreateView,
+    GroupDeleteView, GroupDetailView, GroupEditView, GroupListView,
+    GroupUsersView, UserCreateView, UserDeleteView, UserDetailView,
+    UserEditView, UserGroupsView, UserListView, UserOptionsEditView
 )
 
 urlpatterns_current_user = [
     url(
         regex=r'^user/$', name='current_user_details',
-        view=CurrentUserDetailsView.as_view()
+        view=CurrentUserDetailView.as_view()
     ),
     url(
         regex=r'^user/edit/$', name='current_user_edit',
@@ -32,8 +32,16 @@ urlpatterns_groups = [
         view=GroupCreateView.as_view()
     ),
     url(
-        regex=r'^groups/(?P<group_id>\d+)/delete/$', name='group_delete',
+        regex=r'^groups/(?P<group_id>\d+)/delete/$',
+        name='group_delete_single', view=GroupDeleteView.as_view()
+    ),
+    url(
+        regex=r'^groups/multiple/delete/$', name='group_delete_multiple',
         view=GroupDeleteView.as_view()
+    ),
+    url(
+        regex=r'^groups/(?P<group_id>\d+)/$', name='group_detail',
+        view=GroupDetailView.as_view()
     ),
     url(
         regex=r'^groups/(?P<group_id>\d+)/edit/$', name='group_edit',
@@ -52,16 +60,16 @@ urlpatterns_users = [
         view=UserCreateView.as_view()
     ),
     url(
-        regex=r'^users/(?P<user_id>\d+)/delete/$', name='user_delete',
+        regex=r'^users/(?P<user_id>\d+)/delete/$', name='user_delete_single',
         view=UserDeleteView.as_view()
     ),
     url(
-        regex=r'^users/multiple/delete/$', name='user_multiple_delete',
+        regex=r'^users/multiple/delete/$', name='user_delete_multiple',
         view=UserDeleteView.as_view()
     ),
     url(
         regex=r'^users/(?P<user_id>\d+)/$', name='user_details',
-        view=UserDetailsView.as_view()
+        view=UserDetailView.as_view()
     ),
     url(
         regex=r'^users/(?P<user_id>\d+)/edit/$', name='user_edit',

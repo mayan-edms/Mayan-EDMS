@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2020-08-18 04:38+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -22,23 +22,23 @@ msgstr ""
 msgid "Document signatures"
 msgstr ""
 
-#: apps.py:111
+#: apps.py:112
 msgid "Date and time"
 msgstr ""
 
-#: apps.py:115 models.py:52
+#: apps.py:116 models.py:56
 msgid "Key ID"
 msgstr ""
 
-#: apps.py:119 forms.py:72
+#: apps.py:120 forms.py:72
 msgid "None"
 msgstr ""
 
-#: apps.py:120 forms.py:60 models.py:57
+#: apps.py:121 forms.py:60 models.py:61
 msgid "Signature ID"
 msgstr ""
 
-#: apps.py:125
+#: apps.py:126
 msgid "Type"
 msgstr ""
 
@@ -47,10 +47,14 @@ msgid "Detached signature created"
 msgstr ""
 
 #: events.py:13
+msgid "Detached signature deleted"
+msgstr ""
+
+#: events.py:16
 msgid "Detached signature uploaded"
 msgstr ""
 
-#: events.py:17
+#: events.py:20
 msgid "Embedded signature created"
 msgstr ""
 
@@ -116,99 +120,99 @@ msgstr ""
 msgid "Key type"
 msgstr ""
 
-#: links.py:40
+#: links.py:42
 msgid "Refresh all signatures"
 msgstr ""
 
-#: links.py:46
+#: links.py:48
 msgid "Verify all documents"
 msgstr ""
 
-#: links.py:53
-msgid "Delete"
-msgstr ""
-
-#: links.py:60
+#: links.py:58
 msgid "Sign detached"
 msgstr ""
 
-#: links.py:67
-msgid "Details"
+#: links.py:65
+msgid "Delete"
 msgstr ""
 
-#: links.py:74
+#: links.py:73
 msgid "Download"
 msgstr ""
 
-#: links.py:80
-msgid "Sign embedded"
-msgstr ""
-
-#: links.py:86 queues.py:8
-msgid "Signatures"
-msgstr ""
-
-#: links.py:92
+#: links.py:79
 msgid "Upload signature"
 msgstr ""
 
-#: models.py:42
+#: links.py:89
+msgid "Sign embedded"
+msgstr ""
+
+#: links.py:99
+msgid "Details"
+msgstr ""
+
+#: links.py:105 queues.py:8
+msgid "Signatures"
+msgstr ""
+
+#: models.py:46
 msgid "Document file"
 msgstr ""
 
-#: models.py:47
+#: models.py:51
 msgid "Date and time signed"
 msgstr ""
 
-#: models.py:51
+#: models.py:55
 msgid "ID of the key that will be used to sign the document."
 msgstr ""
 
-#: models.py:61
+#: models.py:65
 msgid "Public key fingerprint"
 msgstr ""
 
-#: models.py:68
+#: models.py:72
 msgid "Document file signature"
 msgstr ""
 
-#: models.py:69
+#: models.py:73
 msgid "Document file signatures"
 msgstr ""
 
-#: models.py:88
+#: models.py:92
 msgid "Detached"
 msgstr ""
 
-#: models.py:90
+#: models.py:94
 msgid "Embedded"
 msgstr ""
 
-#: models.py:155
+#: models.py:159
 msgid "Signature file previously generated."
 msgstr ""
 
-#: models.py:158
+#: models.py:162
 msgid "Signature file"
 msgstr ""
 
-#: models.py:164
+#: models.py:168
 msgid "Document file detached signature"
 msgstr ""
 
-#: models.py:165
+#: models.py:169
 msgid "Document file detached signatures"
 msgstr ""
 
-#: models.py:168
+#: models.py:172
 msgid "signature"
 msgstr ""
 
-#: models.py:210
+#: models.py:222
 msgid "Document file embedded signature"
 msgstr ""
 
-#: models.py:211
+#: models.py:223
 msgid "Document file embedded signatures"
 msgstr ""
 
@@ -282,80 +286,76 @@ msgstr ""
 msgid "Detached signatures"
 msgstr ""
 
-#: views.py:66 views.py:135
+#: views.py:62 views.py:129
 msgid "Passphrase is needed to unlock this key."
 msgstr ""
 
-#: views.py:79 views.py:148
+#: views.py:75 views.py:142
 msgid "Passphrase is incorrect."
 msgstr ""
 
-#: views.py:92 views.py:161
+#: views.py:88 views.py:155
 msgid "Document file signed successfully."
 msgstr ""
 
-#: views.py:102 views.py:178
-msgid "Sign"
-msgstr ""
-
-#: views.py:104
+#: views.py:98
 #, python-format
 msgid "Sign document file \"%s\" with a detached signature"
 msgstr ""
 
-#: views.py:180
+#: views.py:172
 #, python-format
 msgid "Sign document file \"%s\" with a embedded signature"
 msgstr ""
 
-#: views.py:196
+#: views.py:188
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr ""
 
-#: views.py:226
+#: views.py:238
+#, python-format
+msgid "Upload detached signature for document file: %s"
+msgstr ""
+
+#: views.py:267
 #, python-format
 msgid "Details for signature: %s"
 msgstr ""
 
-#: views.py:268
+#: views.py:291
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr ""
 
-#: views.py:297
+#: views.py:320
 msgid "There are no signatures for this document file."
 msgstr ""
 
-#: views.py:301
+#: views.py:324
 #, python-format
 msgid "Signatures for document file: %s"
 msgstr ""
 
-#: views.py:322
-#, python-format
-msgid "Upload detached signature for document file: %s"
-msgstr ""
-
-#: views.py:340 views.py:359
+#: views.py:335 views.py:354
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
 
-#: views.py:341
+#: views.py:336
 msgid "Refresh all signatures information?"
 msgstr ""
 
-#: views.py:351
+#: views.py:346
 msgid "Signature information refresh queued successfully."
 msgstr ""
 
-#: views.py:360
+#: views.py:355
 msgid "Verify all document for signatures?"
 msgstr ""
 
-#: views.py:370
+#: views.py:365
 msgid "Signature verification queued successfully."
 msgstr ""
 

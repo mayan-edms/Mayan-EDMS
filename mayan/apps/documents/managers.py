@@ -127,20 +127,6 @@ class DocumentTypeManager(models.Manager):
 
 
 class FavoriteDocumentManager(models.Manager):
-    def add_for_user(self, user, document):
-        favorite_document, created = self.model.objects.get_or_create(
-            user=user, document=document
-        )
-
-        # Delete old (by date) favorites in excess of the values of
-        # setting_favorite_count.
-        favorites_to_delete = self.filter(user=user).values('pk').order_by(
-            '-datetime_added'
-        )[setting_favorite_count.value:]
-        self.filter(pk__in=favorites_to_delete).delete()
-
-        return favorite_document
-
     def get_by_natural_key(
         self, datetime_accessed, document_natural_key, user_natural_key
     ):
@@ -162,37 +148,8 @@ class FavoriteDocumentManager(models.Manager):
 
         return self.get(document__pk=document.pk, user__pk=user.pk)
 
-    def get_for_user(self, user):
-        Document = apps.get_model(
-            app_label='documents', model_name='Document'
-        )
-
-        return Document.valid.filter(favorites__user=user)
-
-    def remove_for_user(self, user, document):
-        self.get(user=user, document=document).delete()
-
 
 class RecentlyAccessedDocumentManager(models.Manager):
-    def add_document_for_user(self, user, document):
-        if user.is_authenticated:
-            new_recent, created = self.model.objects.get_or_create(
-                user=user, document=document
-            )
-            if not created:
-                # document already in the recent list, just save to force
-                # accessed date and time update
-                new_recent.save()
-
-            recent_to_delete = self.filter(user=user).values_list(
-                'pk', flat=True
-            )[
-                setting_recently_accessed_document_count.value:
-            ]
-
-            self.filter(pk__in=list(recent_to_delete)).delete()
-        return new_recent
-
     def get_by_natural_key(
         self, datetime_accessed, document_natural_key, user_natural_key
     ):
@@ -216,35 +173,6 @@ class RecentlyAccessedDocumentManager(models.Manager):
             document__pk=document.pk, user__pk=user.pk,
             datetime_accessed=datetime_accessed
         )
-
-    def get_for_user(self, user):
-        Document = apps.get_model(
-            app_label='documents', model_name='Document'
-        )
-
-        if user.is_authenticated:
-            return Document.valid.filter(
-                recent__user=user
-            ).order_by('-recent__datetime_accessed')
-        else:
-            return Document.objects.none()
-
-
-class RecentlyCreatedDocumentManager(models.Manager):
-    def get_queryset(self):
-        RecentlyCreatedDocument = apps.get_model(
-            app_label='documents', model_name='RecentlyCreatedDocument'
-        )
-
-        queryset = ModelQueryFields.get(
-            model=RecentlyCreatedDocument
-        ).get_queryset(manager_name='valid')
-
-        return queryset.filter(
-            pk__in=queryset.order_by('-datetime_created')[
-                :setting_recently_created_document_count.value
-            ].values('pk')
-        ).order_by('-datetime_created')
 
 
 class TrashCanManager(models.Manager):
@@ -295,3 +223,99 @@ class ValidDocumentVersionPageManager(models.Manager):
         ).filter(
             document_version__document__in_trash=False
         )
+
+
+class ValidFavoriteDocumentManager(models.Manager):
+    def add_for_user(self, user, document):
+        favorite_document, created = self.model.objects.get_or_create(
+            user=user, document=document
+        )
+
+        # Delete old (by date) favorites in excess of the values of
+        # setting_favorite_count.
+        favorites_to_delete = self.filter(user=user).values('pk').order_by(
+            '-datetime_added'
+        )[setting_favorite_count.value:]
+        self.filter(pk__in=favorites_to_delete).delete()
+
+        return favorite_document
+
+    def get_for_user(self, user):
+        FavoriteDocumentProxy = apps.get_model(
+            app_label='documents', model_name='FavoriteDocumentProxy'
+        )
+
+        if user.is_authenticated:
+            return FavoriteDocumentProxy.valid.filter(favorites__user=user)
+        else:
+            return FavoriteDocumentProxy.valid.none()
+
+    def get_queryset(self):
+        return super().get_queryset().filter(
+            document__in_trash=False
+        )
+
+    def remove_for_user(self, user, document):
+        self.get(user=user, document=document).delete()
+
+
+class ValidFavoriteDocumentProxyManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(
+            in_trash=False
+        )
+
+
+class ValidRecentlyAccessedDocumentManager(models.Manager):
+    def add_document_for_user(self, user, document):
+        if user.is_authenticated:
+            new_recent, created = self.model.objects.get_or_create(
+                user=user, document=document
+            )
+            if not created:
+                # Document already in the recent list, just save to force
+                # accessed date and time update.
+                new_recent.save(update_fields=('datetime_accessed',))
+
+            recent_to_delete = self.filter(user=user).values_list(
+                'pk', flat=True
+            )[
+                setting_recently_accessed_document_count.value:
+            ]
+
+            self.filter(pk__in=list(recent_to_delete)).delete()
+        return new_recent
+
+    def get_for_user(self, user):
+        RecentlyAccessedDocumentProxy = apps.get_model(
+            app_label='documents', model_name='RecentlyAccessedDocumentProxy'
+        )
+
+        if user.is_authenticated:
+            return RecentlyAccessedDocumentProxy.valid.filter(
+                recent__user=user
+            ).order_by('-recent__datetime_accessed')
+        else:
+            return RecentlyAccessedDocumentProxy.objects.none()
+
+    def get_queryset(self):
+        return super().get_queryset().filter(
+            document__in_trash=False
+        )
+
+
+class ValidRecentlyCreatedDocumentManager(models.Manager):
+    def get_queryset(self):
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        queryset = ModelQueryFields.get(
+            model=Document
+        ).get_queryset(manager_name='valid')
+
+        return super().get_queryset().filter(
+            pk__in=queryset.order_by('-datetime_created')[
+                :setting_recently_created_document_count.value
+            ].values('pk')
+        ).order_by('-datetime_created')

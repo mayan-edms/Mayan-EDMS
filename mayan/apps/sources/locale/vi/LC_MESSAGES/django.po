@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:17+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/rosarior/teams/13584/vi/)\n"
@@ -20,38 +20,42 @@ msgstr ""
 "Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
-#: settings.py:14 views/source_views.py:173
+#: apps.py:56 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
+#: settings.py:13 views/source_views.py:164
 msgid "Sources"
 msgstr ""
 
-#: apps.py:76
+#: apps.py:81
 msgid "Create a document source"
 msgstr ""
 
-#: apps.py:78
+#: apps.py:83
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr ""
 
-#: apps.py:91
+#: apps.py:106
 msgid "Type"
 msgstr "Kiểu"
 
-#: apps.py:102
-msgid "Created"
+#: classes.py:269
+msgid "Null backend"
 msgstr ""
-
-#: apps.py:108
-msgid "Thumbnail"
-msgstr "Hình xem trước"
 
 #: dependencies.py:11
 msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
+msgstr ""
+
+#: events.py:8
+msgid "Source created"
+msgstr ""
+
+#: events.py:11
+msgid "Source edited"
 msgstr ""
 
 #: forms.py:26
@@ -71,487 +75,80 @@ msgid ""
 "The action to take in regards to the pages of the new file being uploaded."
 msgstr ""
 
-#: forms.py:48 serializers.py:21
-msgid "Expand compressed files"
+#: forms.py:48
+msgid "The backend used to create the new source."
 msgstr ""
 
-#: forms.py:50 serializers.py:22
-msgid "Upload a compressed file's contained files as individual documents."
+#: forms.py:49
+msgid "Backend"
 msgstr ""
 
-#: forms.py:71 views/source_views.py:185
-msgid "Staging file"
-msgstr ""
-
-#: forms.py:75 forms.py:80
+#: forms.py:99
 msgid "File"
 msgstr "Tệp tin"
 
-#: handlers.py:22
+#: handlers.py:15
 msgid "Default"
 msgstr "Mặc định"
 
-#: links.py:73
+#: links.py:74
 msgid "New document"
 msgstr ""
 
-#: links.py:84
-msgid "Add new IMAP email"
-msgstr ""
-
-#: links.py:89
-msgid "Add new POP3 email"
-msgstr ""
-
-#: links.py:94
-msgid "Add new staging folder"
-msgstr ""
-
-#: links.py:99
-msgid "Add new watch folder"
-msgstr ""
-
-#: links.py:104
-msgid "Add new webform source"
-msgstr ""
-
-#: links.py:109
-msgid "Add new SANE scanner"
-msgstr ""
-
-#: links.py:114 links.py:130
-msgid "Delete"
-msgstr "Xóa"
-
-#: links.py:118
-msgid "Edit"
-msgstr "Sửa"
-
-#: links.py:123
-msgid "Document sources"
-msgstr ""
-
-#: links.py:137
+#: links.py:82
 msgid "Upload new file"
 msgstr ""
 
-#: links.py:141
-msgid "Check now"
+#: links.py:88
+msgid "Create source"
 msgstr ""
 
-#: literals.py:25
-msgid "Flatbed"
+#: links.py:94 source_backends/staging_folder_backends.py:311
+msgid "Delete"
+msgstr "Xóa"
+
+#: links.py:98
+msgid "Edit"
+msgstr "Sửa"
+
+#: links.py:110
+msgid "Test"
 msgstr ""
 
-#: literals.py:26
-msgid "Document feeder"
-msgstr ""
-
-#: literals.py:33
-msgid "Simplex"
-msgstr ""
-
-#: literals.py:34
-msgid "Duplex"
-msgstr ""
-
-#: literals.py:42
-msgid "Lineart"
-msgstr ""
-
-#: literals.py:43
-msgid "Monochrome"
-msgstr ""
-
-#: literals.py:44
-msgid "Color"
-msgstr ""
-
-#: literals.py:52 literals.py:57
-msgid "Always"
-msgstr ""
-
-#: literals.py:53 literals.py:58
-msgid "Never"
-msgstr ""
-
-#: literals.py:59
-msgid "Ask user"
-msgstr ""
-
-#: literals.py:70
-msgid "Scanner"
-msgstr ""
-
-#: literals.py:71 models/webform_sources.py:39
-msgid "Web form"
-msgstr ""
-
-#: literals.py:72 models/staging_folder_sources.py:67
-msgid "Staging folder"
-msgstr ""
-
-#: literals.py:73 models/watch_folder_sources.py:46
-msgid "Watch folder"
-msgstr ""
-
-#: literals.py:74
-msgid "POP3 email"
-msgstr ""
-
-#: literals.py:75 models/email_sources.py:249 models/email_sources.py:250
-msgid "IMAP email"
-msgstr ""
-
-#: models/base.py:26
+#: models.py:32
 msgid "A short text to describe this source."
 msgstr ""
 
-#: models/base.py:27
+#: models.py:33
 msgid "Label"
 msgstr "Nhãn"
 
-#: models/base.py:29
+#: models.py:35
 msgid "Enabled"
 msgstr "Đã kích hoạt"
 
-#: models/base.py:35
+#: models.py:41
 msgid "Source"
 msgstr ""
 
-#: models/base.py:142
-msgid "Interactive source"
-msgstr ""
-
-#: models/base.py:143
-msgid "Interactive sources"
-msgstr ""
-
-#: models/base.py:152 models/base.py:153
-msgid "Out of process"
-msgstr ""
-
-#: models/base.py:159
-msgid "Interval in seconds between checks for new documents."
-msgstr ""
-
-#: models/base.py:160
-msgid "Interval"
-msgstr ""
-
-#: models/base.py:164
-msgid "Assign a document type to documents uploaded from this source."
-msgstr ""
-
-#: models/base.py:166 serializers.py:17
-msgid "Document type"
-msgstr "Kiểu tài liệu"
-
-#: models/base.py:170
-msgid "Whether to expand or not, compressed archives."
-msgstr ""
-
-#: models/base.py:171 models/staging_folder_sources.py:54
-#: models/webform_sources.py:33
-msgid "Uncompress"
-msgstr ""
-
-#: models/base.py:177
-msgid "Interval source"
-msgstr ""
-
-#: models/base.py:178
-msgid "Interval sources"
-msgstr ""
-
-#: models/email_sources.py:40
-msgid "Host"
-msgstr ""
-
-#: models/email_sources.py:41
-msgid "SSL"
-msgstr ""
-
-#: models/email_sources.py:43
-msgid ""
-"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
-"for IMAP over SSL."
-msgstr ""
-
-#: models/email_sources.py:44
-msgid "Port"
-msgstr ""
-
-#: models/email_sources.py:46
-msgid "Username"
-msgstr ""
-
-#: models/email_sources.py:47
-msgid "Password"
-msgstr ""
-
-#: models/email_sources.py:51
-msgid ""
-"Name of the attachment that will contains the metadata type names and value "
-"pairs to be assigned to the rest of the downloaded attachments."
-msgstr ""
-
-#: models/email_sources.py:54
-msgid "Metadata attachment name"
-msgstr ""
-
-#: models/email_sources.py:58
-msgid ""
-"Select a metadata type to store the email's subject value. Must be a valid "
-"metadata type for the document type selected previously."
-msgstr ""
-
-#: models/email_sources.py:62
-msgid "Subject metadata type"
-msgstr ""
-
-#: models/email_sources.py:66
-msgid ""
-"Select a metadata type to store the email's \"from\" value. Must be a valid "
-"metadata type for the document type selected previously."
-msgstr ""
-
-#: models/email_sources.py:70
-msgid "From metadata type"
-msgstr ""
-
-#: models/email_sources.py:74
-msgid "Store the body of the email as a text document."
-msgstr ""
-
-#: models/email_sources.py:75
-msgid "Store email body"
-msgstr ""
-
-#: models/email_sources.py:81
-msgid "Email source"
-msgstr ""
-
-#: models/email_sources.py:82
-msgid "Email sources"
-msgstr ""
-
-#: models/email_sources.py:187
-#, python-format
-msgid ""
-"Subject metadata type \"%(metadata_type)s\" is not valid for the document "
-"type: %(document_type)s"
-msgstr ""
-
-#: models/email_sources.py:201
-#, python-format
-msgid ""
-"\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
-"type: %(document_type)s"
-msgstr ""
-
-#: models/email_sources.py:216
-msgid "IMAP Mailbox from which to check for messages."
-msgstr ""
-
-#: models/email_sources.py:217
-msgid "Mailbox"
-msgstr ""
-
-#: models/email_sources.py:221
-msgid ""
-"Criteria to use when searching for messages to process. Use the format "
-"specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
-msgstr ""
-
-#: models/email_sources.py:224
-msgid "Search criteria"
-msgstr ""
-
-#: models/email_sources.py:228
-msgid ""
-"IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
-"commands for your IMAP server."
-msgstr ""
-
-#: models/email_sources.py:232
-msgid "Store commands"
-msgstr ""
-
-#: models/email_sources.py:236
-msgid "Execute the IMAP expunge command after processing each email message."
-msgstr ""
-
-#: models/email_sources.py:238
-msgid "Execute expunge"
-msgstr ""
-
-#: models/email_sources.py:242
-msgid "IMAP Mailbox to which processed messages will be copied."
-msgstr ""
-
-#: models/email_sources.py:243
-msgid "Destination mailbox"
-msgstr ""
-
-#: models/email_sources.py:349
-msgid "Timeout"
-msgstr ""
-
-#: models/email_sources.py:355 models/email_sources.py:356
-msgid "POP email"
-msgstr ""
-
-#: models/scanner_sources.py:31
-msgid "Device name as returned by the SANE backend."
-msgstr ""
-
-#: models/scanner_sources.py:32
-msgid "Device name"
-msgstr ""
-
-#: models/scanner_sources.py:37
-msgid ""
-"Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
-"is not supported by your scanner, leave it blank."
-msgstr ""
-
-#: models/scanner_sources.py:39
-msgid "Mode"
-msgstr ""
-
-#: models/scanner_sources.py:43
-msgid ""
-"Sets the resolution of the scanned image in DPI (dots per inch). Typical "
-"value is 200. If this option is not supported by your scanner, leave it "
-"blank."
-msgstr ""
-
-#: models/scanner_sources.py:46
-msgid "Resolution"
-msgstr ""
-
-#: models/scanner_sources.py:50
-msgid ""
-"Selects the scan source (such as a document-feeder). If this option is not "
-"supported by your scanner, leave it blank."
-msgstr ""
-
-#: models/scanner_sources.py:52
-msgid "Paper source"
-msgstr ""
-
-#: models/scanner_sources.py:57
-msgid ""
-"Selects the document feeder mode (simplex/duplex). If this option is not "
-"supported by your scanner, leave it blank."
-msgstr ""
-
-#: models/scanner_sources.py:59
-msgid "ADF mode"
-msgstr ""
-
-#: models/scanner_sources.py:65
-msgid "SANE Scanner"
-msgstr ""
-
-#: models/scanner_sources.py:66
-msgid "SANE Scanners"
-msgstr ""
-
-#: models/scanner_sources.py:95
-#, python-format
-msgid ""
-"Error while executing scanning command \"%(command_line)s\"; "
-"%(error_message)s"
-msgstr ""
-
-#: models/staging_folder_sources.py:39
-msgid "Server side filesystem path."
-msgstr ""
-
-#: models/staging_folder_sources.py:40 models/watch_folder_sources.py:33
-msgid "Folder path"
-msgstr ""
-
-#: models/staging_folder_sources.py:43
-msgid "Width value to be passed to the converter backend."
-msgstr ""
-
-#: models/staging_folder_sources.py:44
-msgid "Preview width"
-msgstr ""
-
-#: models/staging_folder_sources.py:48
-msgid "Height value to be passed to the converter backend."
-msgstr ""
-
-#: models/staging_folder_sources.py:49
-msgid "Preview height"
-msgstr ""
-
-#: models/staging_folder_sources.py:53 models/webform_sources.py:32
-msgid "Whether to expand or not compressed archives."
-msgstr ""
-
-#: models/staging_folder_sources.py:59
-msgid "Delete the file after is has been successfully uploaded."
-msgstr ""
-
-#: models/staging_folder_sources.py:61
-msgid "Delete after upload"
-msgstr ""
-
-#: models/staging_folder_sources.py:68
-msgid "Staging folders"
-msgstr ""
-
-#: models/watch_folder_sources.py:32
-msgid "Server side filesystem path to scan for files."
-msgstr ""
-
-#: models/watch_folder_sources.py:37
-msgid ""
-"If checked, not only will the folder path be scanned for files but also its "
-"subdirectories."
-msgstr ""
-
-#: models/watch_folder_sources.py:40
-msgid "Include subdirectories?"
-msgstr ""
-
-#: models/watch_folder_sources.py:47
-msgid "Watch folders"
-msgstr ""
-
-#: models/webform_sources.py:40
-msgid "Web forms"
-msgstr ""
-
-#: permissions.py:5
+#: permissions.py:6
 msgid "Sources setup"
 msgstr ""
 
-#: permissions.py:8
+#: permissions.py:10
 msgid "Create new document sources"
 msgstr ""
 
-#: permissions.py:11
+#: permissions.py:13
 msgid "Delete document sources"
 msgstr ""
 
-#: permissions.py:14
+#: permissions.py:16
 msgid "Edit document sources"
 msgstr ""
 
-#: permissions.py:17
+#: permissions.py:19
 msgid "View existing document sources"
-msgstr ""
-
-#: permissions.py:20
-msgid "Delete staging files"
 msgstr ""
 
 #: queues.py:10
@@ -563,42 +160,359 @@ msgid "Sources fast"
 msgstr ""
 
 #: queues.py:19
-msgid "Generate staging file image"
-msgstr ""
-
-#: queues.py:24
 msgid "Check interval source"
 msgstr ""
 
-#: queues.py:29
+#: queues.py:24
 msgid "Handle upload"
 msgstr ""
 
-#: queues.py:33
-msgid "Upload document"
+#: serializers.py:50
+msgid "Optional arguments for the action. Must be JSON formatted."
 msgstr ""
 
-#: settings.py:21
-msgid "File path to the scanimage program used to control image scanners."
+#: serializers.py:51 source_backends/sane_scanner_backends.py:44
+msgid "Arguments"
 msgstr ""
 
-#: settings.py:27
+#: settings.py:20
+msgid "Arguments to use when creating source backends."
+msgstr ""
+
+#: settings.py:26
+msgid "Path to the Storage subclass used to store cached source image files."
+msgstr ""
+
+#: settings.py:34
+msgid "Arguments to pass to the SOURCES_SOURCE_CACHE_STORAGE_BACKEND."
+msgstr ""
+
+#: source_backends/email_backends.py:37
+msgid "IMAP Mailbox from which to check for messages."
+msgstr ""
+
+#: source_backends/email_backends.py:41
+msgid "Mailbox"
+msgstr ""
+
+#: source_backends/email_backends.py:48
 msgid ""
-"Path to the Storage subclass to use when storing the cached staging_file "
-"image files."
+"Criteria to use when searching for messages to process. Use the format "
+"specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 msgstr ""
 
-#: settings.py:35
-msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
+#: source_backends/email_backends.py:52
+msgid "Search criteria"
 msgstr ""
 
-#: storages.py:16
+#: source_backends/email_backends.py:60
+msgid ""
+"IMAP STORE command to execute on messages after they are processed. One "
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
+msgstr ""
+
+#: source_backends/email_backends.py:65
+msgid "Store commands"
+msgstr ""
+
+#: source_backends/email_backends.py:72
+msgid "Execute the IMAP expunge command after processing each email message."
+msgstr ""
+
+#: source_backends/email_backends.py:75
+msgid "Execute expunge"
+msgstr ""
+
+#: source_backends/email_backends.py:82
+msgid "IMAP Mailbox to which processed messages will be copied."
+msgstr ""
+
+#: source_backends/email_backends.py:84
+msgid "Destination mailbox"
+msgstr ""
+
+#: source_backends/email_backends.py:90
+msgid "IMAP email"
+msgstr ""
+
+#: source_backends/email_backends.py:216
+msgid "Timeout"
+msgstr ""
+
+#: source_backends/email_backends.py:219
+msgid "POP3 email"
+msgstr ""
+
+#: source_backends/literals.py:15 source_backends/literals.py:20
+msgid "Always"
+msgstr ""
+
+#: source_backends/literals.py:16 source_backends/literals.py:21
+msgid "Never"
+msgstr ""
+
+#: source_backends/literals.py:22
+msgid "Ask user"
+msgstr ""
+
+#: source_backends/mixins.py:139
+msgid "Uncompress"
+msgstr ""
+
+#: source_backends/mixins.py:143
+msgid "Whether to expand or not compressed archives."
+msgstr ""
+
+#: source_backends/mixins.py:167
+msgid "Expand compressed files"
+msgstr ""
+
+#: source_backends/mixins.py:169
+msgid "Upload a compressed file's contained files as individual documents."
+msgstr ""
+
+#: source_backends/mixins.py:202
+msgid "Host"
+msgstr ""
+
+#: source_backends/mixins.py:211
+msgid "SSL"
+msgstr ""
+
+#: source_backends/mixins.py:216
+msgid ""
+"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
+"for IMAP over SSL."
+msgstr ""
+
+#: source_backends/mixins.py:222
+msgid "Port"
+msgstr ""
+
+#: source_backends/mixins.py:229
+msgid "Username"
+msgstr ""
+
+#: source_backends/mixins.py:236
+msgid "Password"
+msgstr ""
+
+#: source_backends/mixins.py:243
+msgid ""
+"Name of the attachment that will contains the metadata type names and value "
+"pairs to be assigned to the rest of the downloaded attachments."
+msgstr ""
+
+#: source_backends/mixins.py:250
+msgid "Metadata attachment name"
+msgstr ""
+
+#: source_backends/mixins.py:256
+msgid ""
+"Select a metadata type to store the email's \"from\" value. Must be a valid "
+"metadata type for the document type selected previously."
+msgstr ""
+
+#: source_backends/mixins.py:266
+msgid "From metadata type"
+msgstr ""
+
+#: source_backends/mixins.py:274
+msgid ""
+"Select a metadata type to store the email's subject value. Must be a valid "
+"metadata type for the document type selected previously."
+msgstr ""
+
+#: source_backends/mixins.py:284
+msgid "Subject metadata type"
+msgstr ""
+
+#: source_backends/mixins.py:292
+msgid ""
+"Select a metadata type to store the email's message ID value. Must be a "
+"valid metadata type for the document type selected previously."
+msgstr ""
+
+#: source_backends/mixins.py:302
+msgid "Message ID metadata type"
+msgstr ""
+
+#: source_backends/mixins.py:310
+msgid "Store the body of the email as a text document."
+msgstr ""
+
+#: source_backends/mixins.py:312
+msgid "Store email body"
+msgstr ""
+
+#: source_backends/mixins.py:459
+#, python-format
+msgid ""
+"\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr ""
+
+#: source_backends/mixins.py:473
+#, python-format
+msgid ""
+"Subject metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr ""
+
+#: source_backends/mixins.py:487
+#, python-format
+msgid ""
+"Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
+" type: %(document_type)s"
+msgstr ""
+
+#: source_backends/mixins.py:588
+msgid "Assign a document type to documents uploaded from this source."
+msgstr ""
+
+#: source_backends/mixins.py:594
+msgid "Document type"
+msgstr "Kiểu tài liệu"
+
+#: source_backends/mixins.py:601
+msgid "Interval in seconds between checks for new documents."
+msgstr ""
+
+#: source_backends/mixins.py:607
+msgid "Interval"
+msgstr ""
+
+#: source_backends/sane_scanner_backends.py:30
+msgid "Device name as returned by the SANE backend."
+msgstr ""
+
+#: source_backends/sane_scanner_backends.py:33
+msgid "Device name"
+msgstr ""
+
+#: source_backends/sane_scanner_backends.py:39
+msgid ""
+"YAML formatted arguments to pass to the `scanimage` command. The arguments "
+"will change depending on the device. Execute `scanimage --help --device-"
+"name=DEVICE` for the list of supported arguments."
+msgstr ""
+
+#: source_backends/sane_scanner_backends.py:48
+msgid "SANE Scanner"
+msgstr ""
+
+#: source_backends/sane_scanner_backends.py:106
+msgid "Document properties"
+msgstr ""
+
+#: source_backends/sane_scanner_backends.py:107
+msgid "Scan"
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:222
+#: source_backends/staging_folder_backends.py:492
+msgid "Staging file"
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:253
+#: source_backends/watch_folder_backends.py:31
+msgid "Server side filesystem path."
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:258
+#: source_backends/watch_folder_backends.py:36
+msgid "Folder path"
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:264
+msgid "Width value to be passed to the converter backend."
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:269
+msgid "Preview width"
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:275
+msgid "Height value to be passed to the converter backend."
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:280
+msgid "Preview height"
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:286
+msgid "Delete the file after is has been successfully uploaded."
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:288
+msgid "Delete after upload"
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:293
+msgid "Staging folder"
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:323
+msgid "Created"
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:327
+msgid "Thumbnail"
+msgstr "Hình xem trước"
+
+#: source_backends/staging_folder_backends.py:472
+#, python-format
+msgid "Error deleting staging file; %s"
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:493
+#, python-format
+msgid "Delete staging file \"%s\"?"
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:519
+#, python-format
+msgid "Unable get list of staging files: %s"
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:546
+msgid ""
+"This could mean that the staging folder is empty. It could also mean that "
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
+msgstr ""
+
+#: source_backends/staging_folder_backends.py:553
+msgid "No staging files available"
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:43
+msgid ""
+"If checked, not only will the folder path be scanned for files but also its "
+"subdirectories."
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:46
+msgid "Include subdirectories?"
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:50
+msgid "Watch folder"
+msgstr ""
+
+#: source_backends/web_form_backends.py:24
+msgid "Web form"
+msgstr ""
+
+#: storages.py:14
 msgid ""
 "Unable to initialize the staging folder file image storage. Check the "
 "settings {} and {} for formatting errors."
 msgstr ""
 
-#: storages.py:23
+#: storages.py:21
 msgid "Staging folder files"
 msgstr ""
 
@@ -630,135 +544,117 @@ msgstr ""
 msgid "Server responded with {{statusCode}} code."
 msgstr ""
 
-#: views/document_file_views.py:61
-#, python-format
-msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
-msgstr ""
-
-#: views/document_file_views.py:125
-#, python-format
-msgid "Error executing document file upload task; %(exception)s"
-msgstr ""
-
-#: views/document_file_views.py:140
-msgid "New document file queued for upload and will be available shortly."
-msgstr ""
-
-#: views/document_file_views.py:165
-#, python-format
-msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
-msgstr ""
-
-#: views/document_file_views.py:168
-msgid "Submit"
-msgstr "Gửi"
-
-#: views/document_views.py:79 wizards.py:50
+#: views/base.py:53 wizards.py:52
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
 msgstr ""
 
-#: views/document_views.py:107 views/document_views.py:136
-#: views/document_views.py:146
-msgid "Document properties"
-msgstr ""
-
-#: views/document_views.py:116
-msgid ""
-"This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the"
-" necessary file system permissions for the folder."
-msgstr ""
-
-#: views/document_views.py:123
-msgid "No staging files available"
-msgstr ""
-
-#: views/document_views.py:126
-msgid "Files in staging path"
-msgstr ""
-
-#: views/document_views.py:137
-msgid "Scan"
-msgstr ""
-
-#: views/document_views.py:282
+#: views/document_file_views.py:49
 #, python-format
-msgid "Error executing document upload task; %(exception)s"
+msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
 
-#: views/document_views.py:292
+#: views/document_file_views.py:73
+#, python-format
+msgid "Error executing document file upload task; %(exception)s"
+msgstr ""
+
+#: views/document_file_views.py:92
+msgid "New document file queued for upload and will be available shortly."
+msgstr ""
+
+#: views/document_file_views.py:125
+#, python-format
+msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
+msgstr ""
+
+#: views/document_file_views.py:131
+msgid "Submit"
+msgstr "Gửi"
+
+#: views/document_views.py:38
+#, python-format
+msgid "Error processing source document upload; %(exception)s"
+msgstr ""
+
+#: views/document_views.py:57
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 
-#: views/document_views.py:309
+#: views/document_views.py:83
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
 
-#: views/source_views.py:50
-msgid ""
-"This will execute the source check code even if the source is not enabled. "
-"Sources that delete content after downloading will not do so while being "
-"tested. Check the source's error log for information during testing. A "
-"successful test will clear the error log."
+#: views/source_views.py:37
+msgid "New source backend selection"
 msgstr ""
 
-#: views/source_views.py:56
+#: views/source_views.py:93
 #, python-format
-msgid "Trigger check for source \"%s\"?"
+msgid "Create a \"%s\" source"
 msgstr ""
 
-#: views/source_views.py:68
-msgid "Source check queued."
-msgstr ""
-
-#: views/source_views.py:82
-#, python-format
-msgid "Create new source of type: %s"
-msgstr ""
-
-#: views/source_views.py:105
+#: views/source_views.py:118
 #, python-format
 msgid "Delete the source: %s?"
 msgstr ""
 
-#: views/source_views.py:127
+#: views/source_views.py:133
 #, python-format
 msgid "Edit source: %s"
 msgstr ""
 
-#: views/source_views.py:167
+#: views/source_views.py:158
 msgid ""
-"Sources provide the means to upload documents. Some sources like the "
-"webform, are interactive and require user input to operate. Others like the "
-"email sources, are automatic and run on the background without user "
-"intervention."
+"Sources provide the means to upload documents. Some sources are interactive "
+"and require user input to operate. Others are automatic and run in the "
+"background without user intervention."
 msgstr ""
 
-#: views/source_views.py:172
+#: views/source_views.py:163
 msgid "No sources available"
 msgstr ""
 
-#: views/source_views.py:186
+#: views/source_views.py:181
+msgid ""
+"This will execute the source code even if the source is not enabled. Sources"
+" that delete content after downloading will not do so while being tested. "
+"Check the source's error log for information during testing. A successful "
+"test will clear the error log."
+msgstr ""
+
+#: views/source_views.py:187
 #, python-format
-msgid "Delete staging file \"%s\"?"
+msgid "Trigger check for source \"%s\"?"
+msgstr ""
+
+#: views/source_views.py:199
+msgid "Source test queued."
 msgstr ""
 
 #: wizard_steps.py:11
 msgid "Select document type"
 msgstr ""
 
-#: wizards.py:70
+#: wizards.py:71
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr ""
 
-#: wizards.py:75
-msgid "Next step"
+#: wizards.py:76
+msgid "Document upload wizard"
 msgstr ""
 
-#: wizards.py:77
-msgid "Document upload wizard"
+#: wizards.py:85
+msgid "First"
+msgstr ""
+
+#: wizards.py:91
+msgid "Previous"
+msgstr ""
+
+#: wizards.py:98
+msgid "Next"
 msgstr ""

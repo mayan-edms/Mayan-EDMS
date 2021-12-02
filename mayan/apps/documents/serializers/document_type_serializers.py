@@ -1,5 +1,4 @@
-from rest_framework import serializers
-
+from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import MultiKwargHyperlinkedIdentityField
 
 from ..models.document_type_models import DocumentType, DocumentTypeFilename
@@ -27,6 +26,7 @@ class DocumentTypeQuickLabelSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('document_type_url', 'enabled', 'filename', 'id', 'url')
         model = DocumentTypeFilename
+        read_only_fields = ('document_type_url', 'id', 'url')
 
 
 class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
@@ -50,3 +50,4 @@ class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
             'url'
         )
         model = DocumentType
+        read_only_fields = ('id', 'quick_label_list_url', 'url')

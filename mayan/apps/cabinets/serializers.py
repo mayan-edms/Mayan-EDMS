@@ -1,10 +1,10 @@
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import serializers
 from rest_framework.reverse import reverse
 from rest_framework_recursive.fields import RecursiveField
 
 from mayan.apps.documents.models import Document
+from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import FilteredPrimaryKeyRelatedField
 
 from .models import Cabinet
@@ -17,12 +17,6 @@ class CabinetSerializer(serializers.ModelSerializer):
     children = RecursiveField(
         help_text=_('List of children cabinets.'), many=True, read_only=True
     )
-    full_path = serializers.SerializerMethodField(
-        help_text=_(
-            'The name of this cabinet level appended to the names of its '
-            'ancestors.'
-        )
-    )
     documents_url = serializers.HyperlinkedIdentityField(
         help_text=_(
             'URL of the API endpoint showing the list documents inside this '
@@ -30,7 +24,13 @@ class CabinetSerializer(serializers.ModelSerializer):
         ), lookup_url_kwarg='cabinet_id',
         view_name='rest_api:cabinet-document-list'
     )
-    parent_url = serializers.SerializerMethodField()
+    full_path = serializers.SerializerMethodField(
+        help_text=_(
+            'The name of this cabinet level appended to the names of its '
+            'ancestors.'
+        ), read_only=True
+    )
+    parent_url = serializers.SerializerMethodField(read_only=True)
 
     # This is here because parent is optional in the model but the serializer
     # sets it as required.
@@ -50,6 +50,10 @@ class CabinetSerializer(serializers.ModelSerializer):
             'parent', 'parent_url', 'url'
         )
         model = Cabinet
+        read_only_fields = (
+            'children', 'documents_url', 'full_path', 'id',
+            'parent_url', 'url'
+        )
 
     def get_full_path(self, obj):
         return obj.get_full_path()
@@ -68,13 +72,13 @@ class CabinetSerializer(serializers.ModelSerializer):
 
 class CabinetDocumentAddSerializer(serializers.Serializer):
     document = FilteredPrimaryKeyRelatedField(
-        source_queryset=Document.valid,
+        source_queryset=Document.valid.all(),
         source_permission=permission_cabinet_add_document
     )
 
 
 class CabinetDocumentRemoveSerializer(serializers.Serializer):
     document = FilteredPrimaryKeyRelatedField(
-        source_queryset=Document.valid,
+        source_queryset=Document.valid.all(),
         source_permission=permission_cabinet_remove_document
     )

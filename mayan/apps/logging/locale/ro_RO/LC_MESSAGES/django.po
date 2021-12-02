@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Harald Ersch, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -33,43 +33,43 @@ msgstr "Erori"
 msgid "Clear errors"
 msgstr "Ștergeți erorile"
 
-#: models.py:10 models.py:38
+#: models.py:9 models.py:37
 msgid "Internal name"
 msgstr "Nume intern"
 
-#: models.py:15 models.py:35
+#: models.py:14 models.py:34
 msgid "Error log"
 msgstr "Jurnal de erori"
 
-#: models.py:16
+#: models.py:15
 msgid "Error logs"
 msgstr "Jurnalele de erori"
 
-#: models.py:25
+#: models.py:24
 msgid "App label"
 msgstr "Eticheta aplicației"
 
-#: models.py:43 models.py:60
+#: models.py:42 models.py:52
 msgid "Error log partition"
 msgstr "Partiție jurnal erori"
 
-#: models.py:44
+#: models.py:43
 msgid "Error log partitions"
 msgstr "Partiții jurnal de erori"
 
-#: models.py:63
+#: models.py:55
 msgid "Date and time"
 msgstr "Data și ora"
 
-#: models.py:65
+#: models.py:57
 msgid "Text"
 msgstr "Text"
 
-#: models.py:70
+#: models.py:62
 msgid "Error log partition entry"
 msgstr "Intrarea partiției jurnal de erori"
 
-#: models.py:71
+#: models.py:63
 msgid "Error log partition entries"
 msgstr "Intrări de partiție jurnal de erori"
 

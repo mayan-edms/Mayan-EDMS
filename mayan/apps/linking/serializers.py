@@ -1,6 +1,5 @@
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import serializers
 from rest_framework.reverse import reverse
 
 from mayan.apps.documents.models import DocumentType
@@ -8,11 +7,12 @@ from mayan.apps.documents.permissions import permission_document_type_edit
 from mayan.apps.documents.serializers.document_serializers import (
     DocumentSerializer
 )
+from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import (
     FilteredPrimaryKeyRelatedField, MultiKwargHyperlinkedIdentityField
 )
 
-from .models import SmartLink, SmartLinkCondition
+from .models import ResolvedSmartLink, SmartLink, SmartLinkCondition
 
 
 class SmartLinkConditionSerializer(serializers.HyperlinkedModelSerializer):
@@ -40,10 +40,7 @@ class SmartLinkConditionSerializer(serializers.HyperlinkedModelSerializer):
             'id', 'negated', 'operator', 'smart_link_url', 'url'
         )
         model = SmartLinkCondition
-
-    def create(self, validated_data):
-        validated_data['smart_link'] = self.context['smart_link']
-        return super().create(validated_data)
+        read_only_fields = ('id', 'url')
 
 
 class SmartLinkDocumentTypeAddSerializer(serializers.Serializer):
@@ -95,6 +92,10 @@ class SmartLinkSerializer(serializers.HyperlinkedModelSerializer):
             'label', 'id', 'url'
         )
         model = SmartLink
+        read_only_fields = (
+            'conditions_url', 'document_types_url', 'document_types_add_url',
+            'document_types_remove_url', 'id', 'url'
+        )
 
 
 class ResolvedSmartLinkDocumentSerializer(DocumentSerializer):
@@ -110,42 +111,52 @@ class ResolvedSmartLinkDocumentSerializer(DocumentSerializer):
         return reverse(
             viewname='rest_api:resolvedsmartlink-detail', kwargs={
                 'document_id': self.context['document'].pk,
-                'smart_link_id': self.context['smart_link'].pk
+                'resolved_smart_link_id': self.context['resolved_smart_link'].pk
             }, request=self.context['request'],
             format=self.context['format']
         )
 
 
-class ResolvedSmartLinkSerializer(SmartLinkSerializer):
-    resolved_dynamic_label = serializers.SerializerMethodField()
-    resolved_smart_link_url = serializers.SerializerMethodField()
-    resolved_documents_url = serializers.SerializerMethodField()
+class ResolvedSmartLinkSerializer(serializers.HyperlinkedModelSerializer):
+    documents_url = serializers.SerializerMethodField()
+    label = serializers.SerializerMethodField()
+    smart_link_url = serializers.SerializerMethodField()
+    url = serializers.SerializerMethodField()
 
-    class Meta(SmartLinkSerializer.Meta):
-        fields = SmartLinkSerializer.Meta.fields + (
-            'resolved_dynamic_label', 'resolved_smart_link_url',
-            'resolved_documents_url'
+    class Meta:
+        fields = (
+            'documents_url', 'label', 'smart_link_url', 'url'
         )
-        read_only_fields = SmartLinkSerializer.Meta.fields
+        model = ResolvedSmartLink
+        read_only_fields = fields
 
-    def get_resolved_documents_url(self, instance):
+    def get_documents_url(self, instance):
         return reverse(
             viewname='rest_api:resolvedsmartlinkdocument-list',
             kwargs={
                 'document_id': self.context['document'].pk,
-                'smart_link_id': instance.pk
+                'resolved_smart_link_id': instance.pk
             },
             request=self.context['request'], format=self.context['format']
         )
 
-    def get_resolved_dynamic_label(self, instance):
-        return instance.get_dynamic_label(document=self.context['document'])
+    def get_label(self, instance):
+        return instance.get_label_for(document=self.context['document'])
 
-    def get_resolved_smart_link_url(self, instance):
+    def get_smart_link_url(self, instance):
+        return reverse(
+            viewname='rest_api:smartlink-detail',
+            kwargs={
+                'smart_link_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
+        )
+
+    def get_url(self, instance):
         return reverse(
             viewname='rest_api:resolvedsmartlink-detail',
             kwargs={
                 'document_id': self.context['document'].pk,
-                'smart_link_id': instance.pk
-            }, request=self.context['request'], format=self.context['format']
+                'resolved_smart_link_id': instance.pk
+            },
+            request=self.context['request'], format=self.context['format']
         )

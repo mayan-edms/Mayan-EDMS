@@ -387,7 +387,7 @@ class WorkflowTemplateDocumentTypeAPIViewTestCase(
         self.assertEqual(events[0].target, self.test_workflow_template)
         self.assertEqual(events[0].verb, event_workflow_template_edited.id)
 
-    def test_workflow_template_permission_list_api_view_no_permission(self):
+    def test_workflow_template_document_type_list_api_view_no_permission(self):
         self.test_workflow_template.document_types.add(
             self.test_document_type
         )
@@ -400,7 +400,7 @@ class WorkflowTemplateDocumentTypeAPIViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_workflow_template_permission_list_api_view_with_document_type_access(self):
+    def test_workflow_template_document_type_list_api_view_with_document_type_access(self):
         self.test_workflow_template.document_types.add(
             self.test_document_type
         )
@@ -418,7 +418,7 @@ class WorkflowTemplateDocumentTypeAPIViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_workflow_template_permission_list_api_view_with_workflow_template_access(self):
+    def test_workflow_template_document_type_list_api_view_with_workflow_template_access(self):
         self.test_workflow_template.document_types.add(self.test_document_type)
 
         self.grant_access(
@@ -435,7 +435,7 @@ class WorkflowTemplateDocumentTypeAPIViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_workflow_template_permission_list_api_view_with_full_access(self):
+    def test_workflow_template_document_type_list_api_view_with_full_access(self):
         self.test_workflow_template.document_types.add(
             self.test_document_type
         )

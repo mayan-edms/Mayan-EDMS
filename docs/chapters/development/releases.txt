@@ -58,21 +58,25 @@ X.Y     # Final release
 Release checklist
 =================
 
+#. Copy the ``config.env`` values::
+
+    make copy-config-env
+
+#. Update the distrution ``.gitlab-ci.yml`` file::
+
+    make gitlab-ci-update
+
+#. Scan the code with flake8 for simple style warnings.
+#. Run all tests::
+
+    make test-all
+
 #. Check for missing migrations::
 
     make check-missing-migrations
 
-#. Synchronize translations::
-
-    make translations-pull
-
-#. Compile translations::
-
-    make translations-compile
-
 #. Update changelog.
 #. Write release notes.
-#. Scan the code with flake8 for simple style warnings.
 #. Check README.rst format with::
 
     python setup.py check -r -s
@@ -81,14 +85,13 @@ Release checklist
 
        make check-readme
 
+#. Synchronize translations::
+
+    make translations-all
+
 #. Bump version in ``mayan/__init__.py`` and ``docker/rootfs/version``::
 
     make increase-version PART=<major, minor or micro>
-
-#. Update requirements version in ``setup.py`` using:
-   ::
-
-       make generate-setup
 
 #. Commit as version bump.
 #. Build source package and test:

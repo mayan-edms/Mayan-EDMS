@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Allan Møller <it@brandts.dk>, 2021\n"
 "Language-Team: Danish (https://www.transifex.com/rosarior/teams/13584/da/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Navigation"
 msgstr "Navigation"
 
-#: classes.py:778
+#: classes.py:882
 msgid "Unnamed function"
 msgstr ""
 

@@ -4,6 +4,7 @@ from mayan.apps.navigation.classes import Link
 
 from ..icons import (
     icon_document_version_page_delete, icon_document_version_page_list,
+    icon_document_version_page_list_append,
     icon_document_version_page_list_remap,
     icon_document_version_page_list_reset,
     icon_document_version_page_navigation_first,
@@ -50,6 +51,11 @@ link_document_version_page_list = Link(
     args='resolved_object.pk', icon=icon_document_version_page_list,
     permissions=(permission_document_version_view,), text=_('Pages'),
     view='documents:document_version_page_list'
+)
+link_document_version_page_list_append = Link(
+    args='resolved_object.pk', icon=icon_document_version_page_list_append,
+    permissions=(permission_document_version_edit,), text=_('Append all pages'),
+    view='documents:document_version_page_list_append'
 )
 link_document_version_page_list_remap = Link(
     args='resolved_object.pk', icon=icon_document_version_page_list_remap,

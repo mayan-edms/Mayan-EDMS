@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from bleach import Cleaner
 from bleach.linkifier import LinkifyFilter
 
+from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event
 from mayan.apps.templating.classes import Template
@@ -15,7 +16,7 @@ from mayan.apps.templating.classes import Template
 from .events import event_message_created, event_message_edited
 
 
-class Message(models.Model):
+class Message(ExtraDataModelMixin, models.Model):
     sender_content_type = models.ForeignKey(
         blank=True, null=True, on_delete=models.CASCADE, to=ContentType
     )
@@ -80,11 +81,11 @@ class Message(models.Model):
 
     def mark_read(self):
         self.read = True
-        self.save()
+        self.save(update_fields=('read',))
 
     def mark_unread(self):
         self.read = False
-        self.save()
+        self.save(update_fields=('read',))
 
     @method_event(
         event_manager_class=EventManagerSave,

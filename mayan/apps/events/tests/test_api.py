@@ -66,14 +66,14 @@ class ObjectEventAPITestCase(
 
         self.view_arguments = {
             'app_label': content_type.app_label,
-            'model': content_type.model,
+            'model_name': content_type.model,
             'object_id': self.test_object.pk
         }
 
     def test_object_event_list_api_view_no_permission(self):
         response = self._request_object_event_list_api_view()
         self.assertEqual(
-            response.status_code, status.HTTP_403_FORBIDDEN
+            response.status_code, status.HTTP_404_NOT_FOUND
         )
 
     def test_object_event_list_api_view_with_access(self):

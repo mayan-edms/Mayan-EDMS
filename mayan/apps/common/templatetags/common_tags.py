@@ -6,17 +6,10 @@ from django.utils.encoding import force_text
 import mayan
 
 from ..classes import MissingItem
-from ..literals import MESSAGE_SQLITE_WARNING
-from ..utils import check_for_sqlite, return_attrib
+from ..utils import return_attrib
 
 logger = logging.getLogger(name=__name__)
 register = Library()
-
-
-@register.simple_tag
-def common_check_sqlite():
-    if check_for_sqlite():
-        return MESSAGE_SQLITE_WARNING
 
 
 @register.simple_tag

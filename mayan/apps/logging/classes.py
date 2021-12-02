@@ -1,12 +1,10 @@
 import logging
 
 from django.apps import apps
-from django.db.models.signals import pre_delete
+from django.db.models.signals import post_save, pre_delete
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.menus import menu_list_facet
-from mayan.apps.lock_manager.backends.base import LockingBackend
-from mayan.apps.lock_manager.exceptions import LockError
 
 from .links import link_object_error_list
 from .literals import DEFAULT_ERROR_LOG_PARTITION_ENTRY_LIMIT
@@ -17,6 +15,14 @@ logger = logging.getLogger(name=__name__)
 
 class ErrorLog:
     _registry = {}
+
+    @staticmethod
+    def get_model_instance_partition_name(model_instance):
+        return '{}.{}'.format(model_instance._meta.label, model_instance.pk)
+
+    @classmethod
+    def all(cls):
+        return cls._registry
 
     @classmethod
     def get(cls, name):
@@ -31,44 +37,15 @@ class ErrorLog:
     def __str__(self):
         return str(self.app_config.verbose_name)
 
-    @property
-    def model(self):
-        ErrorLogModel = apps.get_model(
-            app_label='logging', model_name='ErrorLog'
-        )
-
-        lock_id = 'logging-get-or-create-errorlogmodel-{}'.format(self.app_config.name)
-
-        try:
-            logger.debug('trying to acquire lock: %s', lock_id)
-            lock = LockingBackend.get_backend().acquire_lock(lock_id)
-            logger.debug('acquired lock: %s', lock_id)
-        except LockError:
-            logger.debug('unable to obtain lock: %s' % lock_id)
-            raise
-        else:
-            try:
-                model, created = ErrorLogModel.objects.get_or_create(
-                    name=self.app_config.name
-                )
-            except ErrorLogModel.MultipleObjectsReturned:
-                # Self heal previously repeated entries
-                ErrorLogModel.objects.filter(name=self.app_config.name).delete()
-                model, created = ErrorLogModel.objects.get_or_create(
-                    name=self.app_config.name
-                )
-            else:
-                return model
-            finally:
-                lock.release()
-
     def register_model(self, model, register_permission=False):
         error_log_instance = self
 
         @property
         def method_instance_logs(self):
-            error_log_partition, created = error_log_instance.model.partitions.get_or_create(
-                name='{}.{}'.format(model._meta.label, self.pk)
+            error_log_partition = error_log_instance.stored_error_log.partitions.get(
+                name=ErrorLog.get_model_instance_partition_name(
+                    model_instance=self
+                )
             )
 
             error_log_partition.entries.exclude(
@@ -88,11 +65,46 @@ class ErrorLog:
                 model=model, permissions=(permission_error_log_view,)
             )
 
-        def handler_delete_model_entries(sender, instance, **kwargs):
-            instance.error_log.all().delete()
+        def handler_model_instance_delete_partition(sender, instance, **kwargs):
+            return self.stored_error_log.partitions.get(
+                name=ErrorLog.get_model_instance_partition_name(
+                    model_instance=instance
+                )
+            ).delete()
 
-        pre_delete.connect(
-            dispatch_uid='logging_handler_delete_model_entries',
-            receiver=handler_delete_model_entries,
+        def handler_model_instance_create_partition(sender, instance, **kwargs):
+            if kwargs['created']:
+                return self.stored_error_log.partitions.create(
+                    name=ErrorLog.get_model_instance_partition_name(
+                        model_instance=instance
+                    )
+                )
+
+        post_save.connect(
+            dispatch_uid='logging_handler_model_instance_create_partition',
+            receiver=handler_model_instance_create_partition,
             sender=model, weak=False
         )
+        pre_delete.connect(
+            dispatch_uid='logging_handler_model_instance_delete_partition',
+            receiver=handler_model_instance_delete_partition,
+            sender=model, weak=False
+        )
+
+    @property
+    def stored_error_log(self):
+        StoredErrorLog = apps.get_model(
+            app_label='logging', model_name='StoredErrorLog'
+        )
+        try:
+            stored_error_log, created = StoredErrorLog.objects.get_or_create(
+                name=self.app_config.name
+            )
+        except StoredErrorLog.MultipleObjectsReturned:
+            # Self heal previously repeated entries.
+            StoredErrorLog.objects.filter(name=self.app_config.name).delete()
+            stored_error_log, created = StoredErrorLog.objects.get_or_create(
+                name=self.app_config.name
+            )
+
+        return stored_error_log

@@ -1,0 +1,137 @@
+Version 4.1.4
+=============
+
+Released: December 1, 2021
+
+Status: Stable
+
+Changes
+-------
+
+
+Appearance
+^^^^^^^^^^
+
+An issue that caused the closing of the responsive menu to trigger the
+home view navigation was fixed.
+
+Some JavaScript optimizations were added:
+
+- Cache argument length when in ``.fn.hasAnyClass``.
+- Configure fancybox just once.
+- Set converter image functions as ``async``.
+- Remove jQuery's ``one`` usage.
+
+
+Development
+^^^^^^^^^^^
+
+``libjpeg`` and ``libpng`` were added to the development setup makefile
+target.
+
+
+Documents
+^^^^^^^^^
+
+An issue with the image generation of the document version first page
+thumbnail that caused the thumbnail dimensions to be ignored was fixed.
+
+
+Error logging
+^^^^^^^^^^^^^
+
+The resource locking was removed from the error logging. This fixes the
+random lock error message when using watch folders running from multiple
+workers.
+
+The error logging instances are now created when the underlying model
+instance is also created. This removed the need for the resource locking.
+
+The ``ErrorLog`` model was renamed to ``StoredErrorLog``. This change follows
+the normal paradigm when a service is provided by a model and a runtime class.
+
+The ``name`` field of the ``StoredErrorLog`` model was updated to be unique.
+This ensures that ``get_or_create`` works in an atomic way when creating
+the ``StoredErrorLog`` instance.
+
+When a model instance is deleted, its error log partition is now deleted too,
+instead of just deleting the error log partition entries.
+
+
+REST API
+^^^^^^^^
+
+Added the ``AutoHelpTextLabelFieldMixin`` class. This mixin tries to extract
+the label and help text from the model field when the serializer field does
+not specify any.
+
+Filtering was added to the ``parent`` field of the index template node
+serializers. This restricts options to the current index template and allows
+removing the now redundant validation.
+
+The field ``index_template_root_node_id`` was added to the index template
+serializer.
+
+
+Testing
+^^^^^^^
+
+A memory database is now used when running the tests.
+
+
+Other
+^^^^^
+
+- Fix the ``AdvancedSearchViewTestCaseMixin`` class. It had
+  ``GenericViewTestCase`` as a base class when it is supposed to be a mixin
+  and not have any.
+- Changes merged from versions 4.0.20 and 4.0.21.
+
+  - Perform more strict cleanup of test models.
+  - Clean up the test model app config cache after the test
+    end not before the test model is created.
+  - Improve lock manager test cases.
+  - Add standalone Celery beat container.
+
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`1057` [4.1] Responsive Design: closing navigation menu redirects to home page
+- :gitlab-issue:`1061` [4.1] [API] index_template impossible to create node ONLY from the API
+- :gitlab-issue:`1063` Document version thumbnails are served up as full resolution and not transformed as expected
+- :gitlab-issue:`1065` [4.1.3] Task mayan.apps.sources.tasks.task_source_process_document raises unexpected LockError
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

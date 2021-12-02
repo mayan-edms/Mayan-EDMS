@@ -1,12 +1,12 @@
 {% load i18n %}
 
-<div class="full-height scrollable" data-height-difference=230 id="carousel-container">
+<div class="full-height" data-height-difference=230 id="carousel-container">
     {% for page in widget.value.pages.all %}
         <div class="carousel-item">
             <a href="{% url widget.attrs.target_view page.pk %}">
                 {% with 'lazy-load-carousel' as image_classes %}
                 {% with page as instance %}
-                {% with widget.attrs.height as display_height %}
+                {% with widget.attrs.transformation_instance_list as transformation_instance_list %}
                     {% include 'documents/forms/widgets/page_image.html' %}
                 {% endwith %}
                 {% endwith %}

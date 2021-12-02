@@ -1,0 +1,65 @@
+Version 4.0.14
+==============
+
+Released: August 5, 2021
+
+Status: Stable
+
+Changes
+-------
+
+
+Converter
+^^^^^^^^^
+A bug was fixed that affected converter layer exclusion for layers with a
+priority of 0. This fixes the preview layer priority when editing the
+redactions of pages that also contain transformations in other layers.
+
+
+Documents
+^^^^^^^^^
+
+Fixed a regression that made it impossible to change the document version page
+image cache maximum size setting. The regression was found in the setting
+change callback.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- None
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
+

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:26+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -26,12 +26,12 @@ msgstr ""
 msgid "Linking"
 msgstr "Łącza"
 
-#: apps.py:94 models.py:29
+#: apps.py:100 models.py:29
 msgid "Label"
 msgstr "Etykieta"
 
 #: events.py:6 links.py:24 links.py:75 links.py:80 links.py:85 models.py:48
-#: permissions.py:5 views.py:191
+#: permissions.py:5 views.py:147
 msgid "Smart links"
 msgstr "Łącza"
 
@@ -63,7 +63,7 @@ msgstr "Edytuj"
 msgid "Conditions"
 msgstr "Warunki"
 
-#: links.py:50 views.py:227
+#: links.py:50 views.py:248
 msgid "Create new smart link"
 msgstr "Utwórz nowe łącze"
 
@@ -159,11 +159,11 @@ msgstr ""
 msgid "Dynamic label"
 msgstr "Dynamiczna etykieta"
 
-#: models.py:37 models.py:186
+#: models.py:37 models.py:188
 msgid "Enabled"
 msgstr "Włączone"
 
-#: models.py:47 models.py:164
+#: models.py:47 models.py:166
 msgid "Smart link"
 msgstr "Łącze"
 
@@ -176,19 +176,19 @@ msgstr "Błąd podczas generowania dynamicznej etykiety: %s"
 msgid "This smart link is not allowed for the selected document's type."
 msgstr "To łącze nie jest dostępne dla wybranego typu dokumentu."
 
-#: models.py:168
+#: models.py:170
 msgid "The inclusion is ignored for the first item."
 msgstr "To wliczenie jest ignorowane dla pierwszego elementu."
 
-#: models.py:172
+#: models.py:174
 msgid "This represents the metadata of all other documents."
 msgstr "To odpowiada meta danym wszystkich pozostałych dokumentów."
 
-#: models.py:173
+#: models.py:175
 msgid "Foreign document attribute"
 msgstr "Atrybut obcego dokumentu"
 
-#: models.py:178
+#: models.py:180
 msgid ""
 "The expression using document properties to be evaluated against the foreign"
 " document field."
@@ -196,100 +196,80 @@ msgstr ""
 "Wyrażenie używające właściwości dokumentu, które ma zostać ocenione w "
 "stosunku do pola dokumentu zewnętrznego."
 
-#: models.py:180
+#: models.py:182
 msgid "Expression"
 msgstr "Wyrażenie"
 
-#: models.py:183
+#: models.py:185
 msgid "Inverts the logic of the operator."
 msgstr "Odwraca logikę operatora."
 
-#: models.py:184
+#: models.py:186
 msgid "Negated"
 msgstr "Zanegowany"
 
-#: models.py:189
+#: models.py:191
 msgid "Link condition"
 msgstr "Warunek łącza"
 
-#: models.py:190
+#: models.py:192
 msgid "Link conditions"
 msgstr "Warunki łącza"
 
-#: models.py:206
+#: models.py:208
 msgid "not"
 msgstr "nie"
 
-#: models.py:210
+#: models.py:212
 msgid "Full label"
 msgstr "Pełna etykieta"
 
 #: permissions.py:8
+msgid "View resolved smart links"
+msgstr ""
+
+#: permissions.py:11
 msgid "Create new smart links"
 msgstr "Utwórz nowe łącza"
 
-#: permissions.py:11
+#: permissions.py:14
 msgid "Delete smart links"
 msgstr "Usuń łącza"
 
-#: permissions.py:14
+#: permissions.py:17
 msgid "Edit smart links"
 msgstr "Edytuj łącza"
 
-#: permissions.py:17
+#: permissions.py:20
 msgid "View existing smart links"
 msgstr "Przeglądaj istniejące łącza"
 
-#: serializers.py:52
+#: serializers.py:49
 msgid "Primary key of the document type to add to the smart link."
 msgstr ""
 
-#: serializers.py:61
+#: serializers.py:58
 msgid "Primary key of the document type to remove from the smart link."
 msgstr ""
 
-#: views.py:41
-msgid "Available smart links"
-msgstr "Dostępne inteligentne linki"
-
-#: views.py:42
-msgid "Smart links enabled"
-msgstr "Inteligentne linki właczone"
-
-#: views.py:68
+#: views.py:65
 #, python-format
-msgid "Smart links to enable for document type: %s"
-msgstr "Inteligentne łącza do włączenia dla typu dokumentu: %s"
+msgid "Resolved smart link query error: %s"
+msgstr ""
 
-#: views.py:103
+#: views.py:92
 #, python-format
-msgid "Smart link query error: %s"
-msgstr "Błąd zapytania o łącze: %s"
+msgid "Resolved smart link dynamic label error: %s"
+msgstr ""
 
-#: views.py:114
+#: views.py:97
 #, python-format
-msgid "Documents in smart link: %s"
-msgstr "Dokumenty w łączu: %s"
+msgid ""
+"Documents in resolved smart link \"%(resolved_smart_link)s\" for "
+"\"%(document)s\""
+msgstr ""
 
-#: views.py:117
-#, python-format
-msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr "Dokumenty w łączu \"%(smart_link)s\" powiązane z \"%(document)s\""
-
-#: views.py:153
-msgid "Available document types"
-msgstr "Dostępne typy dokumentów"
-
-#: views.py:154
-msgid "Document types enabled"
-msgstr "Typy dokumentów z udostępnionym łączem"
-
-#: views.py:164
-#, python-format
-msgid "Document type for which to enable smart link: %s"
-msgstr "Typy dokumentów, dla których zostanie udostępnione łącze: %s"
-
-#: views.py:182
+#: views.py:138
 msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
@@ -300,11 +280,11 @@ msgstr ""
 "pozwalają definiować relacje między dokumentami, nawet jeśli mają one różne "
 "indeksy i są różnego rodzaju."
 
-#: views.py:189
+#: views.py:145
 msgid "There are no smart links"
 msgstr "Brak inteligentnych linków"
 
-#: views.py:207
+#: views.py:166
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
@@ -312,26 +292,52 @@ msgstr ""
 "Inteligentne łącza pozwalają definiować relacje między dokumentami, nawet "
 "jeśli mają one różne indeksy i są różnego rodzaju."
 
-#: views.py:212
-msgid "There are no smart links for this document"
-msgstr "Brak inteligentnych linków do tego dokumentu"
+#: views.py:171
+msgid "There are no resolved smart links for this document"
+msgstr ""
 
-#: views.py:215
+#: views.py:175
 #, python-format
-msgid "Smart links for document: %s"
-msgstr "Łącza dla dokumentu: %s"
+msgid "Resolved smart links for document: %s"
+msgstr ""
 
-#: views.py:249
+#: views.py:191
+msgid "Available smart links"
+msgstr "Dostępne inteligentne linki"
+
+#: views.py:192
+msgid "Smart links enabled"
+msgstr "Inteligentne linki właczone"
+
+#: views.py:218
+#, python-format
+msgid "Smart links to enable for document type: %s"
+msgstr "Inteligentne łącza do włączenia dla typu dokumentu: %s"
+
+#: views.py:231
+msgid "Available document types"
+msgstr "Dostępne typy dokumentów"
+
+#: views.py:232
+msgid "Document types enabled"
+msgstr "Typy dokumentów z udostępnionym łączem"
+
+#: views.py:242
+#, python-format
+msgid "Document type for which to enable smart link: %s"
+msgstr "Typy dokumentów, dla których zostanie udostępnione łącze: %s"
+
+#: views.py:270
 #, python-format
 msgid "Delete smart link: %s"
 msgstr "Usuń łącze: %s"
 
-#: views.py:265
+#: views.py:286
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Edytuj łącze: %s"
 
-#: views.py:290
+#: views.py:311
 msgid ""
 "Conditions are small logic units that when combined define how the smart "
 "link will behave."
@@ -339,25 +345,25 @@ msgstr ""
 "Warunki to małe jednostki logiczne, które po połączeniu określają zachowanie"
 " inteligentnego linku."
 
-#: views.py:294
+#: views.py:315
 msgid "There are no conditions for this smart link"
 msgstr "Nie ma żadnych warunków dla tego inteligentnego linki"
 
-#: views.py:298
+#: views.py:319
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr "Warunki łącza: %s"
 
-#: views.py:317
+#: views.py:338
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Dodaj nowe warunki do łącza: \"%s\""
 
-#: views.py:350
+#: views.py:371
 #, python-format
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "Usunąć warunek łącza: \"%s\"?"
 
-#: views.py:376
+#: views.py:397
 msgid "Edit smart link condition"
 msgstr "Edycja warunku łącza"

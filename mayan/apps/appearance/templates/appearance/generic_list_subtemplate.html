@@ -10,11 +10,16 @@
     <div class="col-xs-12">
         {% if not object_list %}
             <div class="well center-block">
-                {% include 'appearance/no_results.html' %}
+                {% include 'appearance/partials/no_results.html' %}
             </div>
         {% else %}
-            {% include 'appearance/list_header.html' %}
+            {% include 'appearance/partials/list_header.html' %}
+
             {% navigation_resolve_menu name='multi item' sort_results=True source=object_list.0 as links_multi_menus_results %}
+
+            {% navigation_get_source_columns source=object_list only_identifier=True as source_columns_identifier %}
+            {% navigation_get_source_columns source=object_list exclude_identifier=True as source_columns_non_identifier %}
+
             <div class="well center-block">
                 <div class="table-responsive">
                     <table class="table table-condensed table-striped">
@@ -28,30 +33,28 @@
                                     {% if not hide_object %}
                                         <th>{% trans 'Identifier' %}</th>
                                     {% else %}
-                                        {% navigation_get_source_columns source=object_list only_identifier=True as source_column %}
-                                        {% if source_column %}
+                                        {% if source_columns_identifier %}
                                             <th>
                                                 <span style="white-space: nowrap">
-                                                    {% if source_column.is_sortable %}
-                                                        <a href="{% navigation_get_sort_field_querystring column=source_column %}">{{ source_column.label }}</a>
-                                                            {% navigation_source_column_get_sort_icon column=source_column as icon_sort %}
-                                                            {% if icon_sort %}
+                                                    {% if source_columns_identifier.0.is_sortable %}
+                                                        <a href="{% navigation_get_sort_field_querystring column=source_columns_identifier.0 %}">{{ source_columns_identifier.0.label }}</a>
+                                                            {% navigation_source_column_get_sort_icon column=source_columns_identifier.0 as icon_sort %}
+                                                            {% if icon_sort %}`
                                                                 <span class="appearance-list-column-sort-icon">
                                                                     {{ icon_sort.render }}
                                                                 </span>
                                                             {% endif %}
                                                     {% else %}
-                                                        <span class="appearance-list-column-label">{{ source_column.label }}</span>
+                                                        <span class="appearance-list-column-label">{{ source_columns_identifier.0.label }}</span>
                                                     {% endif %}
-                                                    {% include 'appearance/partials/column_help_text.html' %}
+                                                    {% include 'appearance/partials/column_help_text.html' with source_column=source_columns_identifier.0 %}
                                                 </span>
                                             </th>
                                         {% endif %}
                                     {% endif %}
 
                                     {% if not hide_columns %}
-                                        {% navigation_get_source_columns source=object_list exclude_identifier=True as source_columns %}
-                                        {% for source_column in source_columns %}
+                                        {% for source_column in source_columns_non_identifier %}
                                             <th>
                                                 <span style="white-space: nowrap">
                                                     {% if source_column.is_sortable %}
@@ -93,9 +96,8 @@
                                     {% if not hide_object %}
                                         <td>{% if not hide_link %}<a href="{{ object.get_absolute_url }}">{{ object }}</a>{% else %}{{ object }}{% endif %}</td>
                                     {% else %}
-                                        {% navigation_get_source_columns source=object only_identifier=True as source_column %}
-                                        {% if source_column %}
-                                            {% navigation_source_column_resolve column=source_column as column_value %}
+                                        {% if source_columns_identifier %}
+                                            {% navigation_source_column_resolve column=source_columns_identifier.0 as column_value %}
                                             <td>
                                                 {{ column_value }}
                                             </td>
@@ -103,8 +105,7 @@
                                     {% endif %}
 
                                     {% if not hide_columns %}
-                                        {% navigation_get_source_columns source=object exclude_identifier=True as source_columns %}
-                                        {% for column in source_columns %}
+                                        {% for column in source_columns_non_identifier %}
                                             <td>
                                                 <div class="{{ table_cell_container_classes }} {{ column.html_extra_classes }}">
                                                     {% navigation_source_column_resolve column=column as column_value %}{{ column_value }}
@@ -121,9 +122,8 @@
                                     {% if not hide_links %}
                                         <td class="last">
                                            <div class="btn-list">
-                                                {% navigation_resolve_menu name='list facet' sort_results=True source=object as facet_menus_results %}
-
                                                 {% smart_setting "COMMON_COLLAPSE_LIST_MENU_LIST_FACET" as setting_common_collapse_list_menu_list_facet %}
+                                                {% navigation_resolve_menu name='list facet' sort_results=True source=object as facet_menus_results %}
                                                 {% if setting_common_collapse_list_menu_list_facet %}
                                                     {% if facet_menus_results %}
                                                         {% with facet_menus_results as action_menus_link_results %}

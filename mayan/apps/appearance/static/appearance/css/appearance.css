@@ -1,0 +1,598 @@
+@font-face {
+    font-family: 'IM Fell English SC';
+    font-style: normal;
+    font-weight: normal;
+    src:
+        local('IM FELL English SC'),
+        local('IM_FELL_English_SC'),
+        url('../fonts/IM_Fell_English_SC.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/IM_Fell_English_SC.woff') format('woff'),
+        url('../fonts/IM_Fell_English_SC.svg#IMFellEnglishSC') format('svg'),
+        url('../fonts/IM_Fell_English_SC.ttf') format('truetype');
+}
+
+.navbar-brand {
+    font-family: "IM Fell English SC", serif;
+}
+
+#appearance-main-viewport {
+    margin-top: 60px;
+}
+
+/* User menu */
+.link-text-span {
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+/* Make facet list group horizontal on small or smaller */
+@media (max-width: 767px) {
+    ul.list-group:after {
+      clear: both;
+      display: block;
+      content: "";
+    }
+
+    .list-group-item {
+        float: left;
+    }
+}
+
+/* Nullify the 5px padding to the right */
+.appearance-list-column-sort-icon {
+    margin-right: -5px;
+}
+
+/* Make column text behave the same way as column links. */
+.appearance-list-column-label {
+    padding: 0px;
+}
+
+.appearance-list-columns-help-text {
+    margin-left: 3px;
+}
+
+.fashadow svg {
+    color:rgba(0, 0, 0, 0.3);
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 20;
+    transform: translate(3px, 5px) !important;
+}
+
+/*
+ * Fix dropdowns inside responsive tables. On small viewports, the dropdown
+ * menu float is set to none in order to show centered with the dropdown
+ * button and the position is set to static to force the table to expand.
+ */
+@media (max-width: 767px) {
+    .table-responsive .dropdown-menu {
+        position: static !important;
+        float: none;
+    }
+}
+@media (min-width: 768px) {
+    .table-responsive {
+        overflow: inherit;
+    }
+
+    .table-responsive .dropdown-menu {
+        float: left;
+    }
+}
+
+/* Avoid sidebar ul-li displaying disc decoration on small screens. */
+@media (max-width: 767px) {
+    .list-group {
+        list-style-type: none;
+    }
+}
+
+hr {
+    margin-top: 5px;
+    margin-bottom: 11px;
+}
+
+.btn-block {
+    border-top: 2px solid rgba(255, 255, 255, 0.7);
+    border-left: 2px solid rgba(255, 255, 255, 0.7);
+    border-right: 2px solid rgba(0, 0, 0, 0.7);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.7);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 15px;
+    min-height: 120px;
+    padding-bottom: 1px;
+    padding-top: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
+    white-space: normal;
+}
+
+.radio ul li {
+    list-style-type:none;
+}
+
+a i {
+    padding-right: 3px;
+}
+
+/* Notifications */
+#toast-container > div {
+  opacity: 1;
+}
+
+/* Collapse navigation on medium or smaller */
+@media (max-width: 991px) {
+  .navbar-header {
+      float: none;
+  }
+  .navbar-left,.navbar-right {
+      float: none !important;
+  }
+  .navbar-toggle {
+      display: block;
+  }
+  .navbar-collapse {
+      border-top: 1px solid transparent;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  .navbar-fixed-top {
+      top: 0;
+      border-width: 0 0 1px;
+  }
+  .navbar-collapse.collapse {
+      display: none!important;
+  }
+  .navbar-nav {
+      float: none!important;
+      margin-top: 7.5px;
+  }
+  .navbar-nav>li {
+      float: none;
+  }
+  .navbar-nav>li>a {
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+  .collapse.in{
+      display:block !important;
+  }
+}
+
+/* List item view */
+
+.panel-item {
+    box-shadow: 2px 2px 18px rgba(0, 0, 0, .2);
+    transition: all .2s ease;
+}
+
+.panel-item > .panel-heading {
+    padding: 1px 10px;
+}
+
+.panel-item > .panel-body {
+    padding: 10px;
+    word-wrap: break-word;
+}
+
+.list-extra-column-label {
+    font-weight: bold;
+}
+
+.source-column-label {
+    font-weight: bold;
+}
+
+.panel-highlighted {
+    box-shadow: 0px 0px 3px #18bc9c, 10px 10px 20px #000000;
+}
+
+.panel-highlighted:hover {
+    box-shadow: 0px 0px 3px #18bc9c, 10px 10px 20px #000000, 0px 0px 8px #000000;
+}
+
+.panel-item:not(.panel-highlighted):hover  {
+    box-shadow: 0px 0px 8px #000000;
+}
+
+/* Content */
+@media (min-width:1200px) {
+    .container-fluid {
+        width: 95%;
+    }
+}
+
+.spinner-container {
+    margin: auto;
+    width: 100%;
+    border: 1px solid lightgray;
+}
+
+.spinner-container > .spinner-icon {
+    margin-left: 4px;
+    margin-top: 3px;
+}
+
+#ajax-spinner {
+    position: fixed;
+    top: 16px;
+    left: 10px;
+    z-index: 9999;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid #222;
+    border-top: 2px solid #03A9F4;
+    border-bottom: 2px solid #03A9F4;
+    -webkit-animation: .5s spin linear infinite;
+    animation: .5s spin linear infinite;
+}
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+/* Imitate the default look of Django's debug template */
+.pre-server-error {
+    background-color:#ffe7ae;
+    color: black;
+    font-size: 110%;
+    font-weight: bold;
+}
+
+/*
+ * Main content
+ */
+
+/* Remove scroll bar caused by bootstraps -15px on .row margins */
+.zero-margin {
+    margin-right: 0;
+    margin-left: 0;
+
+    > .col,
+    > [class*="col-"] {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    #appearance-main-viewport {
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-left: 210px;
+    }
+}
+
+
+/* Side bar */
+#menu-actions {
+    position: fixed;
+    right: 5px;
+    top: 65px;
+    z-index: 1020;
+}
+
+#viewport {
+    height: 100%;
+    width: 100%;
+}
+
+.has-sidebar {
+    padding-right: 0px;
+}
+
+@media (min-width: 768px) {
+    #sidebar {
+        bottom: 0;
+        display: block;
+        overflow-x: visible;
+        overflow-y: auto;
+        padding-top: 10px;
+        position: fixed;
+        right: 0;
+        top: 100px;
+        width: 160px;
+        z-index: 1000;
+    }
+
+    .has-sidebar {
+        padding-right: 160px;
+    }
+}
+
+/* Bootstrap button outline override. */
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+}
+
+.btn-primary.btn-outline {
+    color: #428bca;
+}
+
+.btn-success.btn-outline {
+    color: #5cb85c;
+}
+
+.btn-info.btn-outline {
+    color: #5bc0de;
+}
+
+.btn-warning.btn-outline {
+    color: #f0ad4e;
+}
+
+.btn-danger.btn-outline {
+    color: #d9534f;
+}
+
+.btn-default.btn-outline:hover,
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
+    color: #fff;
+}
+
+.btn-list > .btn {
+    margin-bottom: 2px;
+}
+
+.btn-list > .btn:not(:last-child) {
+    margin-right: 4px;
+}
+
+.btn-xs {
+    padding: 1px 5px 0px;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+
+/* menu_main */
+/* Hide for mobile, show later */
+
+#menu-main {
+    display: block;
+    background-color: #2c3e50;
+    border-right: 1px solid #18bc9c;
+    bottom: 0;
+    left: -210px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 10px;
+    position: fixed;
+    top: 51px;
+    transition: left 0.3s;
+    width: 210px;
+    z-index: 1000;
+
+}
+
+#menu-main-button-close {
+    border-radius: 0;
+    border-top: 2px solid #1c2733;
+    border-bottom: 2px solid #1c2733;
+    bottom: 0;
+    display: block;
+    height: 40px;
+    position: relative;
+    text-align: center;
+    width: 209px;
+}
+
+#main-menu-button-open {
+    background-color: transparent;
+    border: 0;
+    border-right: 1px solid #95a5a6;
+    display: block;
+    padding: 6px 20px 0px 10px;
+    margin: 0 10px 0 -15px;
+}
+
+.menu-user-name {
+    color: white;
+}
+
+#multi-item-title-responsible-wrapper {
+    display: none;
+}
+
+.overlay-gray {
+    background-color: rgba(0,0,0,0.25);
+    display: block;
+    height: 100%;
+    position: fixed;
+    transition: background-color 0.3s;
+    width: 100%;
+    z-index: 50;
+}
+
+@media (min-width: 768px) {
+    #menu-main {
+        display: block;
+        left: 0;
+    }
+
+    .menu-user-name {
+        color: inherit;
+    }
+
+    #menu-main-button-close {
+        display: none;
+    }
+
+    #main-menu-button-open {
+        display: none;
+
+    }
+
+    #multi-item-title-responsible-wrapper {
+        display: block;
+    }
+
+    .navbar-brand {
+        text-align: center;
+        width: 210px;
+    }
+}
+
+.menu-main-opened {
+    display: block !important;
+    left: 0 !important;
+}
+
+#appearance-main-viewport .page-header {
+  margin-top: 0;
+}
+
+.navbar-brand {
+}
+
+.navbar-brand {
+    outline: none;
+}
+
+.container-fluid {
+    margin-right: 0px;
+    margin-left: 0px;
+    width: 100%;
+}
+
+#accordion-sidebar a {
+    padding: 10px 15px;
+}
+
+#accordion-sidebar a[aria-expanded="true"] {
+    background: #1a242f;
+}
+
+#accordion-sidebar .panel {
+    border: 0px;
+}
+
+#accordion-sidebar a {
+    outline: none;
+}
+
+#accordion-sidebar > .panel > div > div > ul > li > a,
+#accordion-sidebar > .panel > div > h4 > a {
+    text-decoration: none;
+    outline: none;
+    position: relative;
+    display: block;
+}
+
+#accordion-sidebar .panel-heading {
+    background-color: #2c3e50;
+    color: white;
+    padding: 0px;
+}
+
+#accordion-sidebar .panel-heading:hover {
+    background-color: #517394;
+    transition: .1s ease;
+}
+
+#accordion-sidebar > .panel > div > .panel-body > ul > li.active {
+   background: #1a242f;
+}
+
+#accordion-sidebar > .panel > div > .panel-body > ul > li:hover {
+    background-color: #517394;
+    transition: .1s ease;
+}
+
+#accordion-sidebar .panel-title {
+    font-size: 15px;
+}
+
+#accordion-sidebar .panel-body {
+    font-size: 13px;
+    border: 0px;
+    background-color: #2c3e50;
+    padding-top: 3px;
+    padding-left: 20px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+}
+
+#accordion-sidebar .collapsed .accordion-indicator {
+   transform: rotate(90deg);
+}
+
+#accordion-sidebar ul.list-unstyled {
+    margin-bottom: 0px;
+}
+
+#accordion-sidebar .panel-body a {
+    color: white;
+    text-decoration: none;
+    padding: 9px;
+}
+
+.navbar-fixed-top {
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+.toolbar {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    padding-right: 15px;
+    padding-top: 8px;
+}
+
+#body-plain {
+    padding-top: 0px;
+    margin-top: 10px;
+}
+
+/* appearance - JavaScript server error */
+.banner-server-error {
+    margin-top: 10px;
+}
+
+/* List toolbar affix */
+#list-toolbar.affix {
+    top: 60px;  /* OuterHeight of navbar */
+    z-index: 90;
+}
+
+.dropdown-menu > li > a {
+    color: #585e5e;
+}
+
+.dropdown-header {
+    text-align:center;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}

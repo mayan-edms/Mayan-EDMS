@@ -20,8 +20,11 @@ from django.utils.termcolors import colorize
 from django.utils.translation import ugettext_lazy as _, ugettext
 
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
-from mayan.apps.common.utils import resolve_attribute
-from mayan.apps.storage.utils import mkdtemp, patch_files as storage_patch_files
+from mayan.apps.common.exceptions import ResolverPipelineError
+from mayan.apps.common.utils import ResolverPipelineObjectAttribute
+from mayan.apps.storage.utils import (
+    TemporaryDirectory, mkdtemp, patch_files as storage_patch_files
+)
 
 from .algorithms import HashAlgorithm
 from .environments import environment_production
@@ -61,7 +64,11 @@ class DependencyGroup:
     def get_all(cls):
         return sorted(cls._registry.values(), key=lambda x: x.label)
 
-    def __init__(self, attribute_name, label, name, help_text=None):
+    def __init__(
+        self, attribute_name, label, name, allow_multiple=False,
+        help_text=None
+    ):
+        self.allow_multiple = allow_multiple
         self.attribute_name = attribute_name
         self.label = label
         self.help_text = help_text
@@ -72,17 +79,63 @@ class DependencyGroup:
     def __str__(self):
         return force_text(s=self.label)
 
+    @staticmethod
+    def get_options_for_dependency_group(dependency_group):
+        result = []
+
+        for dependency in Dependency.get_all():
+            value = ResolverPipelineObjectAttribute.resolve(
+                attribute=dependency_group.attribute_name, obj=dependency
+            )
+
+            try:
+                label = ResolverPipelineObjectAttribute.resolve(
+                    attribute='{}_verbose_name'.format(
+                        dependency_group.attribute_name
+                    ), obj=dependency
+                )
+            except ResolverPipelineError:
+                label = value
+
+            try:
+                help_text = ResolverPipelineObjectAttribute.resolve(
+                    attribute='{}_help_text'.format(
+                        dependency_group.attribute_name
+                    ), obj=dependency
+                )
+            except ResolverPipelineError:
+                if dependency_group.allow_multiple:
+                    help_text = (None,) * len(value)
+                else:
+                    help_text = None
+
+            if dependency_group.allow_multiple:
+                for entry_index, entry in enumerate(value):
+                    dictionary = {
+                        'label': label[entry_index], 'help_text': help_text[entry_index], 'value': entry
+                    }
+                    if dictionary not in result:
+                        result.append(dictionary)
+            else:
+                dictionary = {
+                    'label': label, 'help_text': help_text, 'value': value
+                }
+                if dictionary not in result:
+                    result.append(dictionary)
+
+        return result
+
     def get_entries(self):
-        results = Dependency.get_values_of_attribute(
-            attribute_name=self.attribute_name
+        options = DependencyGroup.get_options_for_dependency_group(
+            dependency_group=self
         )
         result = []
 
-        for entry in results:
+        for option in options:
             result.append(
                 DependencyGroupEntry(
-                    dependency_group=self, help_text=entry['help_text'],
-                    label=entry['label'], name=entry['value']
+                    dependency_group=self, help_text=option['help_text'],
+                    label=option['label'], name=option['value']
                 )
             )
 
@@ -97,7 +150,9 @@ class DependencyGroup:
 
 
 class DependencyGroupEntry:
-    def __init__(self, dependency_group, label, name, help_text=None):
+    def __init__(
+        self, dependency_group, label, name, help_text=None
+    ):
         self.dependency_group = dependency_group
         self.help_text = help_text or ''
         self.label = label
@@ -124,52 +179,76 @@ class Dependency(AppsModuleLoaderMixin):
         return sorted(dependencies, key=lambda x: x.get_label())
 
     @classmethod
-    def check_all(cls, as_csv=False, use_color=False):
-        if as_csv:
-            template = '{},{},{},{},{},{},{}'
-        else:
-            template = '{:<35}{:<11} {:<15} {:<20} {:<15} {:<30} {:<10}'
-
-        if not as_csv:
-            print('\n  ', end='')
-
-        print(
-            template.format(
-                ugettext('Name'), ugettext('Type'), ugettext('Version'),
-                ugettext('App'), ugettext('Environment'),
-                ugettext('Other data'), ugettext('Check')
-            )
-        )
-        if not as_csv:
-            print('-' * 140)
+    def _check_all(cls):
+        result = []
 
         for dependency in cls.get_all():
             check = dependency.check()
 
-            if not as_csv and not check and dependency.environment.mark_missing:
-                check = '* {} *'.format(check)
-
-                if use_color:
-                    check = colorize(
-                        text=check, fg='red', opts=('bold', 'blink', 'reverse')
+            if check and any(map(lambda x: x.mark_missing, dependency.environments)):
+                check_text = '* {} *'.format(check)
+                check_color = check if check else colorize(
+                    text=check_text, fg='red', opts=(
+                        'bold', 'blink', 'reverse'
                     )
+                )
 
-            if not as_csv:
-                print('* ', end='')
+                result.append(
+                    {
+                        'check': check,
+                        'check_text': check_text,
+                        'check_color': check_color,
+                        'dependency': dependency
+                    }
+                )
+
+        return result
+
+    @classmethod
+    def check_all(cls, as_csv=False, use_color=False):
+        if as_csv:
+            template = '{},{},{},{},{},{},{}'
 
             print(
                 template.format(
-                    dependency.name,
-                    force_text(s=dependency.class_name_verbose_name),
-                    force_text(s=dependency.get_version_string()),
-                    force_text(s=dependency.app_label_verbose_name()),
-                    force_text(s=dependency.get_environment_verbose_name()),
-                    force_text(s=dependency.get_other_data()),
-                    force_text(s=check),
+                    ugettext('Name'), ugettext('Type'), ugettext('Version'),
+                    ugettext('App'), ugettext('Environments'),
+                    ugettext('Other data'), ugettext('Check')
                 )
             )
+            for result in cls._check_all():
+                dependency = result['dependency']
 
-            sys.stdout.flush()
+                print(
+                    template.format(
+                        dependency.name,
+                        force_text(s=dependency.class_name_verbose_name),
+                        force_text(s=dependency.get_version_string()),
+                        force_text(s=dependency.app_label_verbose_name()),
+                        force_text(s=dependency.get_environments_verbose_name()),
+                        force_text(s=dependency.get_other_data()),
+                        force_text(s=result['check'])
+                    )
+                )
+        else:
+            for result in cls._check_all():
+                dependency = result['dependency']
+                print('-' * 40)
+                print('* {}'.format(dependency.name))
+                print(
+                    'Class: {class_name} | Version: {version} '
+                    '| App: {app_label} | Environments: {environments} '
+                    '| Other data: {other} | Check: {check}'.format(
+                        class_name=dependency.class_name_verbose_name,
+                        version=dependency.get_version_string(),
+                        app_label=dependency.app_label_verbose_name(),
+                        environments=dependency.get_environments_verbose_name(),
+                        other=dependency.get_other_data(),
+                        check=result['check_color'] if use_color else result['check_text']
+                    )
+                )
+
+        sys.stdout.flush()
 
     @classmethod
     def get(cls, pk):
@@ -188,37 +267,12 @@ class Dependency(AppsModuleLoaderMixin):
         result = []
 
         for dependency in cls.get_all(**kwargs):
-            if resolve_attribute(attribute=attribute_name, obj=dependency) == attribute_value:
+            resolved_attibute_value = ResolverPipelineObjectAttribute.resolve(
+                attribute=attribute_name, obj=dependency
+            )
+
+            if attribute_value == resolved_attibute_value or attribute_value in resolved_attibute_value:
                 result.append(dependency)
-
-        return result
-
-    @classmethod
-    def get_values_of_attribute(cls, attribute_name):
-        result = []
-
-        for dependency in cls.get_all():
-            value = resolve_attribute(attribute=attribute_name, obj=dependency)
-
-            try:
-                label = resolve_attribute(
-                    attribute='{}_verbose_name'.format(attribute_name),
-                    obj=dependency
-                )
-            except AttributeError:
-                label = value
-
-            try:
-                help_text = resolve_attribute(
-                    attribute='{}_help_text'.format(attribute_name),
-                    obj=dependency
-                )
-            except AttributeError:
-                help_text = None
-
-            dictionary = {'label': label, 'help_text': help_text, 'value': value}
-            if dictionary not in result:
-                result.append(dictionary)
 
         return result
 
@@ -232,13 +286,13 @@ class Dependency(AppsModuleLoaderMixin):
                 dependency.install(force=force)
 
     def __init__(
-        self, name, app_label=None, copyright_text=None, help_text=None,
-        environment=environment_production, label=None, module=None,
-        replace_list=None, version_string=None
+        self, name, environment=environment_production, app_label=None, copyright_text=None,
+        environments=None, help_text=None, label=None, module=None, replace_list=None,
+        version_string=None
     ):
         self._app_label = app_label
         self.copyright_text = copyright_text
-        self.environment = environment
+        self.environments = environments or (environment,)
         self.help_text = help_text
         self.label = label
         self.module = module
@@ -335,14 +389,20 @@ class Dependency(AppsModuleLoaderMixin):
     def get_help_text(self):
         return self.help_text or ''
 
-    def get_environment(self):
-        return self.environment.name
+    def get_environments(self):
+        return [
+            environment.name for environment in self.environments
+        ]
 
-    def get_environment_help_text(self):
-        return self.environment.help_text
+    def get_environments_help_text(self):
+        return [
+            environment.help_text for environment in self.environments
+        ]
 
-    def get_environment_verbose_name(self):
-        return self.environment.label
+    def get_environments_verbose_name(self):
+        return [
+            environment.label for environment in self.environments
+        ]
 
     def get_label(self):
         return self.label or self.name
@@ -466,38 +526,36 @@ class JavaScriptDependency(Dependency):
                 dependency.install(include_dependencies=False)
 
     def extract(self, replace_list=None):
-        temporary_directory = mkdtemp()
-        path_compressed_file = self.get_tar_file_path()
+        with TemporaryDirectory() as temporary_directory:
+            path_compressed_file = self.get_tar_file_path()
 
-        with tarfile.open(name=force_text(s=path_compressed_file), mode='r') as file_object:
-            file_object.extractall(path=temporary_directory)
+            with tarfile.open(name=force_text(s=path_compressed_file), mode='r') as file_object:
+                file_object.extractall(path=temporary_directory)
 
-        self.patch_files(path=temporary_directory, replace_list=replace_list)
+            self.patch_files(path=temporary_directory, replace_list=replace_list)
 
-        path_install = self.get_install_path()
+            path_install = self.get_install_path()
 
-        # Clear the installation path of previous content
-        shutil.rmtree(path=force_text(s=path_install), ignore_errors=True)
+            # Clear the installation path of previous content
+            shutil.rmtree(path=force_text(s=path_install), ignore_errors=True)
 
-        # Scoped packages are nested under a parent directory
-        # create it to avoid rename errors.
-        path_install.mkdir(parents=True)
+            # Scoped packages are nested under a parent directory
+            # create it to avoid rename errors.
+            path_install.mkdir(parents=True)
 
-        # Copy the content under the dependency's extracted content folder
-        # 'package' to the final location.
-        # We do a copy and delete instead of move because os.rename doesn't
-        # support renames across filesystems.
-        path_uncompressed_package = Path(temporary_directory, 'package')
-        shutil.rmtree(path=force_text(s=path_install))
-        shutil.copytree(
-            src=force_text(s=path_uncompressed_package),
-            dst=force_text(s=path_install)
-        )
-        shutil.rmtree(path=force_text(s=path_uncompressed_package))
+            # Copy the content under the dependency's extracted content folder
+            # 'package' to the final location.
+            # We do a copy and delete instead of move because os.rename doesn't
+            # support renames across filesystems.
+            path_uncompressed_package = Path(temporary_directory, 'package')
+            shutil.rmtree(path=force_text(s=path_install))
+            shutil.copytree(
+                src=force_text(s=path_uncompressed_package),
+                dst=force_text(s=path_install)
+            )
 
-        # Clean up temporary directory used for download
-        shutil.rmtree(path=temporary_directory, ignore_errors=True)
-        shutil.rmtree(path=self.path_cache, ignore_errors=True)
+            # Clean up temporary directory used for download
+            shutil.rmtree(path=self.path_cache, ignore_errors=True)
 
     def download(self):
         self.path_cache = mkdtemp()
@@ -778,7 +836,8 @@ DependencyGroup(
     ), name='state'
 )
 DependencyGroup(
-    attribute_name='get_environment', label=_('Environment'), help_text=_(
+    allow_multiple=True, attribute_name='get_environments',
+    label=_('Environments'), help_text=_(
         'Dependencies required for an environment might not be required for '
         'another. Example environments: Production, Development.'
     ), name='environment'

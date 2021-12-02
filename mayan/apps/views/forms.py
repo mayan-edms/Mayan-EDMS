@@ -1,15 +1,21 @@
+import json
 import os
 
 from django import forms
 from django.conf import settings
-from django.contrib.admin.utils import label_for_field
+from django.contrib.admin.utils import (
+    get_fields_from_path, help_text_for_field, label_for_field
+)
 from django.core.exceptions import FieldDoesNotExist, ImproperlyConfigured
 from django.db import models
+from django.db.models import Model
+from django.db.models.query import QuerySet
+from django.forms.models import ModelFormMetaclass
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.utils import introspect_attribute, resolve_attribute
+from mayan.apps.common.utils import resolve_attribute
 
 from .widgets import DisableableSelectWidget, PlainWidget, TextAreaDiv
 
@@ -17,8 +23,21 @@ from .widgets import DisableableSelectWidget, PlainWidget, TextAreaDiv
 class ChoiceForm(forms.Form):
     """
     Form to be used in side by side templates used to add or remove
-    items from a many to many field
+    items from a many to many field.
     """
+    search = forms.CharField(
+        label=_('Search'), required=False, widget=forms.widgets.TextInput(
+            attrs={
+                'autocomplete': 'off',
+                'class': 'views-select-search',
+                'placeholder': 'Filter list'
+            }
+        )
+    )
+    selection = forms.MultipleChoiceField(
+        required=False, widget=DisableableSelectWidget()
+    )
+
     def __init__(self, *args, **kwargs):
         choices = kwargs.pop('choices', [])
         label = kwargs.pop('label', _('Selection'))
@@ -31,13 +50,10 @@ class ChoiceForm(forms.Form):
         self.fields['selection'].widget.disabled_choices = disabled_choices
         self.fields['selection'].widget.attrs.update(
             {
-                'class': 'full-height', 'data-height-difference': '450'
+                'class': 'full-height input-hotkey-double-click',
+                'data-height-difference': '495'
             }
         )
-
-    selection = forms.MultipleChoiceField(
-        required=False, widget=DisableableSelectWidget()
-    )
 
 
 class FormOptions:
@@ -69,7 +85,7 @@ class FormOptions:
 
 
 class DetailFormOption(FormOptions):
-    # Dictionary list of option names and default values
+    # Dictionary list of option names and default values.
     option_definitions = {'extra_fields': []}
 
 
@@ -80,57 +96,59 @@ class DetailForm(forms.ModelForm):
         )
         super().__init__(*args, **kwargs)
 
-        for extra_field in self.opts.extra_fields:
+        for field_index, extra_field in enumerate(iterable=self.opts.extra_fields):
             obj = extra_field.get('object', self.instance)
-            field = extra_field['field']
-
-            result = resolve_attribute(
-                attribute=field, obj=obj
-            )
-
+            field = extra_field.get('field', None)
+            func = extra_field.get('func', None)
             label = extra_field.get('label', None)
-
-            # If label is not specified try to get it from the object itself
-            if not label:
-                attribute_name, obj = introspect_attribute(
-                    attribute_name=field, obj=obj
-                )
-
-                if not obj:
-                    label = _('None')
-                else:
-                    try:
-                        label = getattr(
-                            getattr(obj, attribute_name), 'short_description'
-                        )
-                    except AttributeError:
-                        label = label_for_field(
-                            name=attribute_name, model=obj
-                        )
-
             help_text = extra_field.get('help_text', None)
-            # If help_text is not specified try to get it from the object itself
-            if not help_text:
-                if obj:
+
+            if field:
+                if not label:
+                    # If label is not specified try to get it from the object
+                    # itself.
                     try:
-                        field_object = obj._meta.get_field(field_name=field)
+                        fields = get_fields_from_path(model=obj, path=field)
                     except FieldDoesNotExist:
-                        field_object = field
+                        # Might be property of a method.
+                        label = getattr(
+                            getattr(obj, field), 'short_description',
+                            field
+                        )
+                    else:
+                        label = label_for_field(
+                            model=obj, name=fields[-1].name
+                        )
 
-                    help_text = getattr(
-                        field_object, 'help_text', None
-                    )
+                if not help_text:
+                    # If help_text is not specified try to get it from the
+                    # object itself.
+                    try:
+                        fields = get_fields_from_path(model=obj, path=field)
+                    except FieldDoesNotExist:
+                        # Might be property of a method.
+                        help_text = getattr(
+                            getattr(obj, field), 'help_text', None
+                        )
+                    else:
+                        help_text = help_text_for_field(
+                            model=obj, name=fields[-1].name
+                        )
 
-            if isinstance(result, models.query.QuerySet):
+                value = resolve_attribute(attribute=field, obj=obj)
+
+            if func:
+                value = func(obj)
+
+            field = field or 'anonymous_field_{}'.format(field_index)
+
+            if isinstance(value, models.query.QuerySet):
                 self.fields[field] = forms.ModelMultipleChoiceField(
-                    queryset=result, label=label
+                    queryset=value, label=label
                 )
             else:
                 self.fields[field] = forms.CharField(
-                    initial=resolve_attribute(
-                        obj=obj,
-                        attribute=field
-                    ), label=label, help_text=help_text,
+                    initial=value, label=label, help_text=help_text,
                     widget=extra_field.get('widget', PlainWidget)
                 )
 
@@ -179,11 +197,63 @@ class DynamicFormMixin:
 
 
 class DynamicForm(DynamicFormMixin, forms.Form):
-    """Normal dynamic form"""
+    """Normal dynamic form."""
 
 
 class DynamicModelForm(DynamicFormMixin, forms.ModelForm):
-    """Dynamic model form"""
+    """Dynamic model form."""
+
+
+class DynamicFormMetaclass(ModelFormMetaclass):
+    def __new__(mcs, name, bases, attrs):
+        new_class = super(DynamicFormMetaclass, mcs).__new__(
+            mcs=mcs, name=name, bases=bases, attrs=attrs
+        )
+
+        if new_class._meta.fields:
+            new_class._meta.fields += ('backend_data',)
+            widgets = getattr(new_class._meta, 'widgets', {}) or {}
+            widgets['backend_data'] = forms.widgets.HiddenInput
+            new_class._meta.widgets = widgets
+
+        return new_class
+
+
+class BackendDynamicForm(DynamicModelForm, metaclass=DynamicFormMetaclass):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        backend_data = self.instance.get_backend_data()
+
+        if backend_data:
+            for field_name in self.instance.get_backend().get_fields():
+                self.fields[field_name].initial = backend_data.get(
+                    field_name, None
+                )
+
+    def clean(self):
+        data = super().clean()
+
+        # Consolidate the dynamic fields into a single JSON field called
+        # 'backend_data'.
+        backend_data = {}
+
+        for field_name, field_data in self.schema['fields'].items():
+            backend_data[field_name] = data.pop(
+                field_name, field_data.get('default', None)
+            )
+            if isinstance(backend_data[field_name], QuerySet):
+                # Flatten the queryset to a list of ids.
+                backend_data[field_name] = list(
+                    backend_data[field_name].values_list('id', flat=True)
+                )
+            elif isinstance(backend_data[field_name], Model):
+                # Store only the ID of a model instance.
+                backend_data[field_name] = backend_data[field_name].pk
+
+        data['backend_data'] = json.dumps(obj=backend_data)
+
+        return data
 
 
 class FileDisplayForm(forms.Form):
@@ -193,7 +263,10 @@ class FileDisplayForm(forms.Form):
     text = forms.CharField(
         label='',
         widget=TextAreaDiv(
-            attrs={'class': 'full-height scrollable', 'data-height-difference': 270}
+            attrs={
+                'class': 'full-height scrollable',
+                'data-height-difference': 270
+            }
         )
     )
 
@@ -208,7 +281,7 @@ class FileDisplayForm(forms.Form):
 
 
 class FilteredSelectionFormOptions(FormOptions):
-    # Dictionary list of option names and default values
+    # Dictionary list of option names and default values.
     option_definitions = {
         'allow_multiple': False,
         'field_name': None,
@@ -299,7 +372,8 @@ class RelationshipForm(forms.Form):
 
     def get_new_relationship_instance(self):
         related_manager = getattr(
-            self.initial.get('object'), self.initial['relationship_related_field']
+            self.initial.get('object'),
+            self.initial['relationship_related_field']
         )
         main_field_name = related_manager.field.name
 
@@ -312,7 +386,8 @@ class RelationshipForm(forms.Form):
 
     def get_relationship_queryset(self):
         return getattr(
-            self.initial.get('object'), self.initial['relationship_related_field']
+            self.initial.get('object'),
+            self.initial['relationship_related_field']
         ).filter(
             **{
                 self.initial['relationship_related_query_field']: self.initial.get('sub_object')

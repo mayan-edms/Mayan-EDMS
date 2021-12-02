@@ -1,10 +1,11 @@
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import serializers
+from rest_framework.generics import get_object_or_404
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.serializers.document_serializers import DocumentSerializer
+from mayan.apps.rest_api import serializers
 
 from .models import DocumentCheckout
 from .permissions import permission_document_check_out
@@ -22,6 +23,7 @@ class DocumentCheckoutSerializer(serializers.ModelSerializer):
         }
         fields = ('document', 'id', 'url')
         model = DocumentCheckout
+        read_only_fields = ('document', 'id', 'url')
 
 
 class NewDocumentCheckoutSerializer(serializers.ModelSerializer):
@@ -42,11 +44,14 @@ class NewDocumentCheckoutSerializer(serializers.ModelSerializer):
         write_only_fields = ('document_pk',)
 
     def create(self, validated_data):
-        document = Document.objects.get(pk=validated_data.pop('document_pk'))
-
-        AccessControlList.objects.check_access(
-            obj=document, permissions=(permission_document_check_out,),
+        queryset = AccessControlList.objects.restrict_queryset(
+            permission=permission_document_check_out,
+            queryset=Document.valid.all(),
             user=self.context['request'].user
+        )
+
+        document = get_object_or_404(
+            queryset=queryset, pk=validated_data.pop('document_pk')
         )
 
         validated_data['document'] = document

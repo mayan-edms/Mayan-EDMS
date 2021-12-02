@@ -1,3 +1,6 @@
+import pytz
+
+from django.conf import settings
 from django.db import migrations, reset_queries
 
 
@@ -51,18 +54,36 @@ def operation_document_version_page_create(apps, schema_editor):
             """Does not do anything."""
 
     document_file_id_last = None
-    document_id_last = None
     document_version = DummyDocumentVersion()
 
     document_version_page_insert_query = '''
-        INSERT INTO documents_documentversionpage (
-            document_version_id,content_type_id,object_id,page_number
-        ) VALUES {};
-    '''
+        INSERT INTO {documents_documentversionpage} (
+            {document_version_id},{content_type_id},{object_id},{page_number}
+        ) VALUES {{}};
+    '''.format(
+        content_type_id=schema_editor.connection.ops.quote_name(
+            name='content_type_id'
+        ),
+        document_version_id=schema_editor.connection.ops.quote_name(
+            name='document_version_id'
+        ),
+        documents_documentversionpage=schema_editor.connection.ops.quote_name(
+            name='documents_documentversionpage'
+        ),
+        object_id=schema_editor.connection.ops.quote_name(
+            name='object_id'
+        ),
+        page_number=schema_editor.connection.ops.quote_name(
+            name='page_number'
+        )
+    )
+
     document_version_page_values = []
     page_number = 1
 
     FETCH_SIZE = 100000
+
+    time_zone = pytz.timezone(zone=settings.TIME_ZONE)
 
     while True:
         rows = cursor_main.fetchmany(FETCH_SIZE)
@@ -72,18 +93,14 @@ def operation_document_version_page_create(apps, schema_editor):
 
         for row in rows:
             document_id, timestamp, document_file_id, document_file_page_id = row
-
-            if document_id_last != document_id:
-                document_version.active = True
-                document_version.save()
-                document_id_last = document_id
+            timestamp = timestamp.astimezone(tz=time_zone)
 
             if document_file_id_last != document_file_id:
                 document_version = DocumentVersion.objects.create(
                     document_id=document_id
                 )
                 document_version.timestamp = timestamp
-                document_version.save(update_fields=('timestamp',))
+                document_version.save()
                 document_version_id = document_version.pk
                 document_file_id_last = document_file_id
                 if document_version_page_values:

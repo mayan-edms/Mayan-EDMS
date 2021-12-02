@@ -6,31 +6,12 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 
+from mayan.apps.databases.utils import check_queryset
 from mayan.apps.views.mixins import ExternalObjectBaseMixin
 
-
-class ActionAPIViewMixin:
-    action_response_status = None
-
-    def get_success_headers(self, data):
-        try:
-            return {'Location': str(data[api_settings.URL_FIELD_NAME])}
-        except (TypeError, KeyError):
-            return {}
-
-    def perform_view_action(self):
-        raise ImproperlyConfigured(
-            'Need to specify the `.perform_action()` method.'
-        )
-
-    def post(self, request, *args, **kwargs):
-        return self.view_action(request=request, *args, **kwargs)
-
-    def view_action(self, request, *args, **kwargs):
-        self.perform_view_action()
-        return Response(
-            status=self.action_response_status or status.HTTP_200_OK
-        )
+from .literals import (
+    QUERY_FIELD_EXCLUDE_PARAMETER, QUERY_FIELD_ONLY_PARAMETER
+)
 
 
 class AsymmetricSerializerAPIViewMixin:
@@ -73,6 +54,12 @@ class AsymmetricSerializerAPIViewMixin:
             return self.write_serializer_class
 
 
+class CheckQuerysetAPIViewMixin:
+    def get_queryset(self, *args, **kwargs):
+        queryset = super().get_queryset(*args, **kwargs)
+        return check_queryset(self=self, queryset=queryset)
+
+
 class ContentTypeAPIViewMixin:
     """
     This mixin makes it easier for API views to retrieve a content type from
@@ -93,12 +80,36 @@ class ContentTypeAPIViewMixin:
         )
 
 
+class DynamicFieldListAPIViewMixin:
+    def get_serializer_extra_context(self):
+        context = super().get_serializer_extra_context()
+
+        if self.request.method == 'GET':
+            context.update(
+                {
+                    'fields_exclude': self.request.query_params.get(
+                        QUERY_FIELD_EXCLUDE_PARAMETER, ''
+                    ),
+                    'fields_only': self.request.query_params.get(
+                        QUERY_FIELD_ONLY_PARAMETER, ''
+                    )
+                }
+            )
+
+        return context
+
+
 class ExternalObjectAPIViewMixin(ExternalObjectBaseMixin):
     """
     Override get_external_object to use REST API get_object_or_404.
     """
     def initial(self, *args, **kwargs):
         result = super().initial(*args, **kwargs)
+        # Ensure self.external_object is initialized to allow the browseable
+        # API view to display when attempting to introspect the serializer
+        # and the parent object is not found.
+        self.external_object = None
+
         self.external_object = self.get_external_object()
         return result
 
@@ -109,7 +120,7 @@ class ExternalObjectAPIViewMixin(ExternalObjectBaseMixin):
         """
         result = {}
         if self.kwargs:
-            result['external_object'] = self.get_external_object()
+            result['external_object'] = self.external_object
 
         return result
 
@@ -134,8 +145,8 @@ class ExternalContentTypeObjectAPIViewMixin(
     external_object_pk_url_kwarg = 'object_id'
 
     def get_external_object_queryset(self):
-        content_type = self.get_content_type()
-        self.external_object_class = content_type.model_class()
+        self.content_type = self.get_content_type()
+        self.external_object_class = self.content_type.model_class()
         return super().get_external_object_queryset()
 
 

@@ -33,8 +33,8 @@ class ModelCopy:
         return cls._registry[model]
 
     def __init__(
-        self, model, condition=None, bind_link=False, excludes=None, register_permission=False,
-        extra_kwargs=None
+        self, model, acl_bind_link=True, condition=None, bind_link=False,
+        excludes=None, register_permission=False, extra_kwargs=None
     ):
         self.condition = condition
         self.excludes = excludes or {}
@@ -61,7 +61,8 @@ class ModelCopy:
 
         if register_permission:
             ModelPermission.register(
-                model=model, permissions=(permission_object_copy,)
+                model=model, permissions=(permission_object_copy,),
+                bind_link=acl_bind_link
             )
 
         for entry in self.__class__._lazy.get(model, ()):
@@ -161,16 +162,16 @@ class ModelCopy:
 
         new_model_dictionary = {}
 
-        # Static values
+        # Static values.
         for field, value in self.field_values.items():
             new_model_dictionary[field] = value
 
-        # Static values templates
+        # Static values templates.
         for field, value in self.field_value_templates.items():
             result = value.format(**context) or None
             new_model_dictionary[field] = result
 
-        # Base fields whose values are copied
+        # Base fields whose values are copied.
         for field in self.fields_copy:
             value = values.get(field, getattr(instance, field))
 
@@ -179,7 +180,7 @@ class ModelCopy:
             )
             new_model_dictionary[field] = value
 
-        # Base fields with unique values
+        # Base fields with unique values.
         for field in self.fields_unique:
             base_value = getattr(instance, field)
             counter = 1
@@ -196,7 +197,7 @@ class ModelCopy:
             )
             new_model_dictionary[field] = value
 
-        # Foreign keys
+        # Foreign keys.
         for field in self.fields_foreign_keys:
             value = values.get(field, getattr(instance, field))
 
@@ -205,7 +206,7 @@ class ModelCopy:
             )
             new_model_dictionary[field] = value
 
-        # Fields that are given an unique value if a condition is met
+        # Fields that are given an unique value if a condition is met.
         for field in self.unique_conditional:
             if self.unique_conditional[field](
                 instance=instance, new_instance_dictionary=new_model_dictionary
@@ -233,15 +234,15 @@ class ModelCopy:
             new_instance = self.model(**new_model_dictionary)
             new_instance.save()
 
-        # Many to many fields added after instance creation
+        # Many to many fields added after instance creation.
         for field in self.fields_many_to_many:
             getattr(new_instance, field).set(getattr(instance, field).all())
 
-        # Many to many reverse related fields added after instance creation
+        # Many to many reverse related fields added after instance creation.
         for field in self.fields_many_to_many_reverse_related:
             getattr(new_instance, field).set(getattr(instance, field).all())
 
-        # Reverse related
+        # Reverse related.
         for field in self.fields_reverse_related:
             related_field = self.model._meta.get_field(field_name=field)
             related_field_name = related_field.field.name
@@ -252,7 +253,7 @@ class ModelCopy:
                     values=values
                 )
 
-        # Reverse related one to one
+        # Reverse related one to one.
         for field in self.fields_related_one_to_one:
             related_field = self.model._meta.get_field(field_name=field)
             related_field_name = related_field.field.name
@@ -261,7 +262,7 @@ class ModelCopy:
                 values={related_field_name: new_instance}
             )
 
-        # Generic relations
+        # Generic relations.
         for field in self.fields_generic_related:
             related_field = self.model._meta.get_field(field_name=field)
             related_field_name = 'content_object'
@@ -374,9 +375,9 @@ class ModelAttribute:
             return cls._model_registry[cls.class_name][model]
         except KeyError:
             # We were passed a model instance, try again using the model of
-            # the instance
+            # the instance.
 
-            # If we are already in the model class, exit with an error
+            # If we are already in the model class, exit with an error.
             if model.__class__ == models.base.ModelBase:
                 return []
 
@@ -530,7 +531,9 @@ class ModelQueryFields:
             queryset = queryset.select_related(*self.select_related_fields)
 
         if self.prefetch_related_fields:
-            queryset = queryset.prefetch_related(*self.prefetch_related_fields)
+            queryset = queryset.prefetch_related(
+                *self.prefetch_related_fields
+            )
 
         return queryset
 

@@ -5,17 +5,17 @@ from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
-from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
-from ..classes import SearchBackend, SearchModel
+from ..classes import SearchModel
 from ..permissions import permission_search_tools
-from ..settings import setting_backend_arguments
 
-from .mixins import SearchToolsViewTestMixin, SearchViewTestMixin
+from .mixins import (
+    SearchTestMixin, SearchToolsViewTestMixin, SearchViewTestMixin
+)
 
 
-class AdvancedSearchViewTestCase(
-    DocumentTestMixin, SearchViewTestMixin, GenericViewTestCase
+class AdvancedSearchViewTestCaseMixin(
+    DocumentTestMixin, SearchViewTestMixin
 ):
     auto_upload_test_document = False
 
@@ -23,24 +23,21 @@ class AdvancedSearchViewTestCase(
         super().setUp()
         self.test_document_count = 4
 
-        # Upload many instances of the same test document
+        # Upload many instances of the same test document.
         for i in range(self.test_document_count):
             self._upload_test_document()
-
-        self.search_backend = SearchBackend.get_instance()
+            self._index_instance(instance=self.test_document)
+            self.grant_access(
+                obj=self.test_document, permission=permission_document_view
+            )
 
     def test_advanced_search_past_first_page(self):
         test_document_label = self.test_documents[0].label
 
-        for document in self.test_documents:
-            self.grant_access(
-                obj=document, permission=permission_document_view
-            )
-
         # Make sure all documents are returned by the search
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'label': test_document_label},
+            query={'label': test_document_label},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), self.test_document_count)
@@ -86,8 +83,22 @@ class AdvancedSearchViewTestCase(
             )
 
 
-class SearchViewTestCase(
-    DocumentTestMixin, SearchViewTestMixin, GenericViewTestCase
+@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend')
+class DjangoAdvancedSearchViewTestCase(
+    AdvancedSearchViewTestCaseMixin, GenericViewTestCase
+):
+    """Test against Django backend."""
+
+
+@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend')
+class WhooshAdvancedSearchViewTestCase(
+    AdvancedSearchViewTestCaseMixin, GenericViewTestCase
+):
+    """Test against Whoosh backend."""
+
+
+class SearchViewTestCaseMixin(
+    DocumentTestMixin, SearchViewTestMixin,
 ):
     def test_result_view_with_search_mode_in_data(self):
         self.grant_access(
@@ -105,27 +116,31 @@ class SearchViewTestCase(
         )
 
 
-@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend')
+@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend')
+class DjangoSearchViewTestCase(
+    SearchViewTestCaseMixin, GenericViewTestCase
+):
+    """Test against Django backend."""
+
+
+@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.tests.backends.TestSearchBackend')
+class WhooshSearchViewTestCase(
+    SearchViewTestCaseMixin, GenericViewTestCase
+):
+    """Test against Whoosh backend."""
+
+
+@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.tests.backends.TestSearchBackend')
 class SearchToolsViewTestCase(
-    DocumentTestMixin, SearchToolsViewTestMixin, GenericViewTestCase
+    DocumentTestMixin, SearchToolsViewTestMixin, SearchTestMixin,
+    GenericViewTestCase
 ):
     def setUp(self):
-        self.old_value = setting_backend_arguments.value
         super().setUp()
+
         self.document_search_model = SearchModel.get_for_model(
             instance=DocumentSearchResult
         )
-        setting_backend_arguments.set(
-            value={'index_path': mkdtemp()}
-        )
-        self.search_backend = SearchBackend.get_instance()
-
-    def tearDown(self):
-        fs_cleanup(
-            filename=setting_backend_arguments.value['index_path']
-        )
-        setting_backend_arguments.set(value=self.old_value)
-        super().tearDown()
 
     def test_search_backend_reindex_view_no_permission(self):
         self.search_backend.clear_search_model_index(
@@ -140,7 +155,7 @@ class SearchToolsViewTestCase(
 
         queryset = self.search_backend.search(
             search_model=self.document_search_model,
-            query_string={'q': self.test_document.label},
+            query={'q': self.test_document.label},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
@@ -159,7 +174,7 @@ class SearchToolsViewTestCase(
 
         queryset = self.search_backend.search(
             search_model=self.document_search_model,
-            query_string={'q': self.test_document.label},
+            query={'q': self.test_document.label},
             user=self._test_case_user
         )
         self.assertNotEqual(queryset.count(), 0)

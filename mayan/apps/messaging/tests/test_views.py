@@ -6,7 +6,7 @@ from ..events import event_message_created, event_message_edited
 from ..models import Message
 from ..permissions import (
     permission_message_create, permission_message_delete,
-    permission_message_view
+    permission_message_edit, permission_message_view
 )
 
 
@@ -45,6 +45,25 @@ class MessageViewTestCase(
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_message)
         self.assertEqual(events[0].verb, event_message_created.id)
+
+    def test_message_create_view_for_superuser_with_permissions(self):
+        self.grant_permission(permission=permission_message_create)
+
+        message_count = Message.objects.count()
+
+        self._create_test_superuser()
+
+        self._clear_events()
+
+        response = self._request_test_message_create_view(
+            extra_data={'user': self.test_superuser.pk}
+        )
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(Message.objects.count(), message_count)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_message_delete_view_no_permission(self):
         self._create_test_message()
@@ -157,3 +176,118 @@ class MessageViewTestCase(
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
+
+    def test_message_mark_all_read_view_no_permission(self):
+        self._create_test_message()
+
+        self._clear_events()
+
+        response = self._request_test_message_mark_all_read_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_message.refresh_from_db()
+        self.assertEqual(self.test_message.read, False)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_message_mark_all_read_view_with_access(self):
+        self._create_test_message()
+
+        self.grant_access(
+            obj=self.test_message, permission=permission_message_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_message_mark_all_read_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_message.refresh_from_db()
+        self.assertEqual(self.test_message.read, True)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_message)
+        self.assertEqual(events[0].verb, event_message_edited.id)
+
+    def test_message_mark_unread_view_no_permission(self):
+        self._create_test_message()
+
+        self.test_message.mark_read()
+
+        self._clear_events()
+
+        response = self._request_test_message_mark_unread_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_message.refresh_from_db()
+        self.assertEqual(self.test_message.read, True)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_message_mark_unread_view_with_access(self):
+        self._create_test_message()
+
+        self.grant_access(
+            obj=self.test_message, permission=permission_message_edit
+        )
+
+        self.test_message.mark_read()
+
+        self._clear_events()
+
+        response = self._request_test_message_mark_unread_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_message.refresh_from_db()
+        self.assertEqual(self.test_message.read, False)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_message)
+        self.assertEqual(events[0].verb, event_message_edited.id)
+
+    def test_message_mark_read_view_no_permission(self):
+        self._create_test_message()
+
+        self._clear_events()
+
+        response = self._request_test_message_mark_read_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_message.refresh_from_db()
+        self.assertEqual(self.test_message.read, False)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_message_mark_read_view_with_access(self):
+        self._create_test_message()
+
+        self.grant_access(
+            obj=self.test_message, permission=permission_message_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_message_mark_read_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_message.refresh_from_db()
+        self.assertEqual(self.test_message.read, True)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_message)
+        self.assertEqual(events[0].verb, event_message_edited.id)

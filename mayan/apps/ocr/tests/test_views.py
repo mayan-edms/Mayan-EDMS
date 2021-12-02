@@ -2,10 +2,12 @@ from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from ..events import (
     event_ocr_document_version_content_deleted,
-    event_ocr_document_version_submit, event_ocr_document_version_finish
+    event_ocr_document_version_page_content_edited,
+    event_ocr_document_version_submitted, event_ocr_document_version_finished
 )
 from ..models import DocumentVersionPageOCRContent
 from ..permissions import (
+    permission_document_version_ocr_content_edit,
     permission_document_version_ocr_content_view,
     permission_document_version_ocr, permission_document_type_ocr_setup
 )
@@ -14,7 +16,7 @@ from ..utils import get_instance_ocr_content
 from .literals import TEST_DOCUMENT_VERSION_OCR_CONTENT
 from .mixins import (
     DocumentVersionOCRTestMixin, DocumentVersionOCRViewTestMixin,
-    DocumentTypeOCRViewTestMixin
+    DocumentVersionPageOCRViewTestMixin, DocumentTypeOCRViewTestMixin
 )
 
 
@@ -89,14 +91,14 @@ class DocumentTypeOCRViewsTestCase(
         self.assertEqual(events[0].action_object, self.test_document)
         self.assertEqual(events[0].target, self.test_document_version)
         self.assertEqual(
-            events[0].verb, event_ocr_document_version_submit.id
+            events[0].verb, event_ocr_document_version_submitted.id
         )
 
         self.assertEqual(events[1].actor, self._test_case_user)
         self.assertEqual(events[1].action_object, self.test_document)
         self.assertEqual(events[1].target, self.test_document_version)
         self.assertEqual(
-            events[1].verb, event_ocr_document_version_finish.id
+            events[1].verb, event_ocr_document_version_finished.id
         )
 
     def test_trashed_document_type_ocr_submit_view_with_access(self):
@@ -128,12 +130,12 @@ class DocumentVersionOCRViewsTestCase(
     DocumentVersionOCRTestMixin, DocumentVersionOCRViewTestMixin,
     GenericDocumentViewTestCase
 ):
-    def test_document_content_delete_view_no_permission(self):
+    def test_document_verions_ocr_content_delete_single_view_no_permission(self):
         self._create_test_document_version_ocr_content()
 
         self._clear_events()
 
-        response = self._request_test_document_version_ocr_content_delete_view()
+        response = self._request_test_document_version_ocr_content_delete_single_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
@@ -145,7 +147,7 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_content_delete_view_with_access(self):
+    def test_document_version_ocr_content_delete_single_view_with_access(self):
         self._create_test_document_version_ocr_content()
 
         self.grant_access(
@@ -154,7 +156,7 @@ class DocumentVersionOCRViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_version_ocr_content_delete_view()
+        response = self._request_test_document_version_ocr_content_delete_single_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertFalse(
@@ -173,7 +175,7 @@ class DocumentVersionOCRViewsTestCase(
             events[0].verb, event_ocr_document_version_content_deleted.id
         )
 
-    def test_trashed_document_content_delete_view_with_access(self):
+    def test_trashed_document_version_ocr_content_delete_single_view_with_access(self):
         self._create_test_document_version_ocr_content()
 
         self.grant_access(
@@ -184,7 +186,7 @@ class DocumentVersionOCRViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_version_ocr_content_delete_view()
+        response = self._request_test_document_version_ocr_content_delete_single_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
@@ -196,7 +198,75 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_content_view_no_permission(self):
+    def test_document_version_ocr_content_delete_multiple_view_no_permission(self):
+        self._create_test_document_version_ocr_content()
+
+        self._clear_events()
+
+        response = self._request_test_document_version_ocr_content_delete_multiple_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            DocumentVersionPageOCRContent.objects.filter(
+                document_version_page=self.test_document_version.pages.first()
+            ).exists()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_version_ocr_content_delete_multiple_view_with_access(self):
+        self._create_test_document_version_ocr_content()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_version_ocr
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_version_ocr_content_delete_multiple_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertFalse(
+            DocumentVersionPageOCRContent.objects.filter(
+                document_version_page=self.test_document_version.pages.first()
+            ).exists()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].action_object, self.test_document)
+        self.assertEqual(events[0].target, self.test_document_version)
+        self.assertEqual(
+            events[0].verb, event_ocr_document_version_content_deleted.id
+        )
+
+    def test_trashed_document_version_ocr_content_delete_multiple_view_with_access(self):
+        self._create_test_document_version_ocr_content()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_version_ocr
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_version_ocr_content_delete_multiple_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            DocumentVersionPageOCRContent.objects.filter(
+                document_version_page=self.test_document_version.pages.first()
+            ).exists()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_version_ocr_content_view_no_permission(self):
         self._create_test_document_version_ocr_content()
 
         self._clear_events()
@@ -207,7 +277,7 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_content_view_with_access(self):
+    def test_document_version_ocr_content_view_with_access(self):
         self._create_test_document_version_ocr_content()
 
         self.grant_access(
@@ -226,7 +296,7 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_content_view_with_access(self):
+    def test_trashed_document_version_ocr_content_view_with_access(self):
         self._create_test_document_version_ocr_content()
 
         self.grant_access(
@@ -244,58 +314,10 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_page_content_view_no_permission(self):
-        self._create_test_document_version_ocr_content()
-
+    def test_document_version_ocr_submit_view_no_permission(self):
         self._clear_events()
 
-        response = self._request_test_document_version_page_ocr_content_view()
-        self.assertEqual(response.status_code, 404)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_document_page_content_view_with_access(self):
-        self._create_test_document_version_ocr_content()
-
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_version_ocr_content_view
-        )
-
-        self._clear_events()
-
-        response = self._request_test_document_version_page_ocr_content_view()
-        self.assertContains(
-            response=response, text=TEST_DOCUMENT_VERSION_OCR_CONTENT,
-            status_code=200
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_trashed_document_page_content_view_with_access(self):
-        self._create_test_document_version_ocr_content()
-
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_version_ocr_content_view
-        )
-
-        self.test_document.delete()
-
-        self._clear_events()
-
-        response = self._request_test_document_version_page_ocr_content_view()
-        self.assertEqual(response.status_code, 404)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_document_submit_view_no_permission(self):
-        self._clear_events()
-
-        response = self._request_test_document_version_ocr_submit_view()
+        response = self._request_test_document_version_ocr_submit_single_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
@@ -305,14 +327,14 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_submit_view_with_access(self):
+    def test_document_version_ocr_submit_view_with_access(self):
         self.grant_access(
             permission=permission_document_version_ocr, obj=self.test_document
         )
 
         self._clear_events()
 
-        response = self._request_test_document_version_ocr_submit_view()
+        response = self._request_test_document_version_ocr_submit_single_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(
@@ -328,17 +350,17 @@ class DocumentVersionOCRViewsTestCase(
         self.assertEqual(events[0].action_object, self.test_document)
         self.assertEqual(events[0].target, self.test_document_version)
         self.assertEqual(
-            events[0].verb, event_ocr_document_version_submit.id
+            events[0].verb, event_ocr_document_version_submitted.id
         )
 
         self.assertEqual(events[1].actor, self._test_case_user)
         self.assertEqual(events[1].action_object, self.test_document)
         self.assertEqual(events[1].target, self.test_document_version)
         self.assertEqual(
-            events[1].verb, event_ocr_document_version_finish.id
+            events[1].verb, event_ocr_document_version_finished.id
         )
 
-    def test_trashed_document_submit_view_with_access(self):
+    def test_trashed_document_version_ocr_submit_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_version_ocr
         )
@@ -347,7 +369,7 @@ class DocumentVersionOCRViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_version_ocr_submit_view()
+        response = self._request_test_document_version_ocr_submit_single_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertFalse(
@@ -359,10 +381,10 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_multiple_document_submit_view_no_permission(self):
+    def test_document_version_ocr_submit_multiple_view_no_permission(self):
         self._clear_events()
 
-        response = self._request_test_document_version_multiple_ocr_submit_view()
+        response = self._request_test_document_version_ocr_submit_multiple_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
@@ -372,14 +394,14 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_multiple_document_submit_view_with_access(self):
+    def test_document_version_ocr_submit_multiple_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_version_ocr
         )
 
         self._clear_events()
 
-        response = self._request_test_document_version_multiple_ocr_submit_view()
+        response = self._request_test_document_version_ocr_submit_multiple_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(
@@ -395,17 +417,17 @@ class DocumentVersionOCRViewsTestCase(
         self.assertEqual(events[0].action_object, self.test_document)
         self.assertEqual(events[0].target, self.test_document_version)
         self.assertEqual(
-            events[0].verb, event_ocr_document_version_submit.id
+            events[0].verb, event_ocr_document_version_submitted.id
         )
 
         self.assertEqual(events[1].actor, self._test_case_user)
         self.assertEqual(events[1].action_object, self.test_document)
         self.assertEqual(events[1].target, self.test_document_version)
         self.assertEqual(
-            events[1].verb, event_ocr_document_version_finish.id
+            events[1].verb, event_ocr_document_version_finished.id
         )
 
-    def test_trashed_document_multiple_document_submit_view_with_access(self):
+    def test_trashed_document_version_ocr_submit_multiple_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_version_ocr
         )
@@ -414,7 +436,7 @@ class DocumentVersionOCRViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_version_multiple_ocr_submit_view()
+        response = self._request_test_document_version_ocr_submit_multiple_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertFalse(
@@ -426,7 +448,7 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_ocr_download_view_no_permission(self):
+    def test_document_version_ocr_download_view_no_permission(self):
         self._create_test_document_version_ocr_content()
 
         self._clear_events()
@@ -437,10 +459,10 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_ocr_download_view_with_access(self):
-        self._create_test_document_version_ocr_content()
+    def test_document_version_ocr_download_view_with_access(self):
+        self.expected_content_types = ('application/octet-stream',)
 
-        self.expected_content_types = ('text/html; charset=utf-8',)
+        self._create_test_document_version_ocr_content()
 
         self.grant_access(
             obj=self.test_document,
@@ -461,7 +483,7 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_ocr_download_view_with_access(self):
+    def test_trashed_document_version_ocr_download_view_with_access(self):
         self._create_test_document_version_ocr_content()
 
         self.grant_access(
@@ -479,7 +501,7 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_ocr_error_list_view_no_permission(self):
+    def test_document_version_ocr_error_list_view_no_permission(self):
         self._clear_events()
 
         response = self._request_test_document_version_ocr_error_list_view()
@@ -488,7 +510,7 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_ocr_error_list_view_with_access(self):
+    def test_document_version_ocr_error_list_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_version_ocr
         )
@@ -501,7 +523,7 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_ocr_error_list_view_with_access(self):
+    def test_trashed_document_version_ocr_error_list_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_version_ocr
         )
@@ -512,6 +534,131 @@ class DocumentVersionOCRViewsTestCase(
 
         response = self._request_test_document_version_ocr_error_list_view()
         self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+
+class DocumentVersionPageOCRViewsTestCase(
+    DocumentVersionOCRTestMixin, DocumentVersionPageOCRViewTestMixin,
+    GenericDocumentViewTestCase
+):
+    def test_document_version_page_ocr_content_detail_view_no_permission(self):
+        self._create_test_document_version_ocr_content()
+
+        self._clear_events()
+
+        response = self._request_test_document_version_page_ocr_content_detail_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_version_page_ocr_content_detail_view_with_access(self):
+        self._create_test_document_version_ocr_content()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_ocr_content_view
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_version_page_ocr_content_detail_view()
+        self.assertContains(
+            response=response, text=TEST_DOCUMENT_VERSION_OCR_CONTENT,
+            status_code=200
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_trashed_document_version_page_ocr_content_detail_view_with_access(self):
+        self._create_test_document_version_ocr_content()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_ocr_content_view
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_version_page_ocr_content_detail_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_version_page_ocr_content_edit_view_no_permission(self):
+        self._create_test_document_version_ocr_content()
+
+        test_document_version_page_ocr_content = self.test_document_version_page.ocr_content.content
+        self._clear_events()
+
+        response = self._request_test_document_version_page_ocr_content_edit_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document_version_page.ocr_content.refresh_from_db()
+        self.assertEqual(
+            self.test_document_version_page.ocr_content.content,
+            test_document_version_page_ocr_content
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_version_page_ocr_content_edit_view_with_access(self):
+        self._create_test_document_version_ocr_content()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_ocr_content_edit
+        )
+
+        test_document_version_page_ocr_content = self.test_document_version_page.ocr_content.content
+        self._clear_events()
+
+        response = self._request_test_document_version_page_ocr_content_edit_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_document_version_page.ocr_content.refresh_from_db()
+        self.assertNotEqual(
+            self.test_document_version_page.ocr_content.content,
+            test_document_version_page_ocr_content
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].action_object, self.test_document_version)
+        self.assertEqual(events[0].target, self.test_document_version_page)
+        self.assertEqual(
+            events[0].verb, event_ocr_document_version_page_content_edited.id
+        )
+
+    def test_trashed_document_version_page_ocr_content_edit_view_with_access(self):
+        self._create_test_document_version_ocr_content()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_ocr_content_edit
+        )
+
+        test_document_version_page_ocr_content = self.test_document_version_page.ocr_content.content
+        self.test_document.delete()
+        self._clear_events()
+
+        response = self._request_test_document_version_page_ocr_content_edit_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document_version_page.ocr_content.refresh_from_db()
+        self.assertEqual(
+            self.test_document_version_page.ocr_content.content,
+            test_document_version_page_ocr_content
+        )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)

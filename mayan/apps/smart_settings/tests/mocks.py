@@ -1,4 +1,8 @@
+from django.core.exceptions import ValidationError
+
 from ..classes import SettingNamespaceMigration
+
+from .literals import TEST_SETTING_VALIDATION_BAD_VALUE
 
 
 class TestNamespaceMigrationOne(SettingNamespaceMigration):
@@ -22,3 +26,10 @@ class TestNamespaceMigrationInvalid(SettingNamespaceMigration):
 class TestNamespaceMigrationInvalidDual(SettingNamespaceMigration):
     def smart_settings_test_setting_with_longer_name(self, value):
         return 'invalid migration'
+
+
+def test_validation_function(setting, raw_value):
+    if raw_value == TEST_SETTING_VALIDATION_BAD_VALUE:
+        raise ValidationError(message='')
+    else:
+        return raw_value

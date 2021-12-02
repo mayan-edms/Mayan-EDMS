@@ -1,11 +1,10 @@
 from django.db.models import Q
 
-from ..models import IndexTemplate, IndexTemplateNode
+from ..models import IndexInstance, IndexTemplate, IndexTemplateNode
 
 from .literals import (
-    TEST_INDEX_TEMPLATE_LABEL, TEST_INDEX_TEMPLATE_LABEL_EDITED, TEST_INDEX_TEMPLATE_SLUG,
-    TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
-    TEST_INDEX_TEMPLATE_NODE_EXPRESSION_EDITED,
+    TEST_INDEX_TEMPLATE_LABEL, TEST_INDEX_TEMPLATE_LABEL_EDITED,
+    TEST_INDEX_TEMPLATE_SLUG, TEST_INDEX_TEMPLATE_NODE_EXPRESSION_EDITED,
     TEST_INDEX_TEMPLATE_NODE_EXPRESSION
 )
 
@@ -64,23 +63,24 @@ class IndexInstanceAPIViewTestMixin:
     def _request_test_index_instance_detail_api_view(self):
         return self.get(
             viewname='rest_api:indexinstance-detail', kwargs={
-                'index_instance_id': self.test_index_template.pk
+                'index_instance_id': self.test_index_instance.pk
             }
         )
 
 
 class IndexInstanceNodeAPIViewTestMixin:
-    def _request_test_index_instance_node_list_api_view(self):
+    def _request_test_index_instance_node_children_list_api_view(self):
         return self.get(
-            viewname='rest_api:indexinstancenode-list', kwargs={
-                'index_instance_id': self.test_index_template.pk
+            viewname='rest_api:indexinstancenode-children-list', kwargs={
+                'index_instance_id': self.test_index_instance.pk,
+                'index_instance_node_id': self.test_index_instance_node.pk
             }
         )
 
     def _request_test_index_instance_node_detail_api_view(self):
         return self.get(
             viewname='rest_api:indexinstancenode-detail', kwargs={
-                'index_instance_id': self.test_index_template.pk,
+                'index_instance_id': self.test_index_instance.pk,
                 'index_instance_node_id': self.test_index_instance_node.pk
             }
         )
@@ -88,10 +88,31 @@ class IndexInstanceNodeAPIViewTestMixin:
     def _request_test_index_instance_node_document_list_api_view(self):
         return self.get(
             viewname='rest_api:indexinstancenode-document-list', kwargs={
-                'index_instance_id': self.test_index_template.pk,
+                'index_instance_id': self.test_index_instance.pk,
                 'index_instance_node_id': self.test_index_instance_node.pk
             }
         )
+
+    def _request_test_index_instance_node_list_api_view(self):
+        return self.get(
+            viewname='rest_api:indexinstancenode-list', kwargs={
+                'index_instance_id': self.test_index_instance.pk
+            }
+        )
+
+
+class IndexInstanceTestMixin:
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
+        self.test_index_instance = IndexInstance.objects.get(
+            pk=self.test_index_template.pk
+        )
+        self.test_index_instance_root_node = self.test_index_instance.index_instance_root_node
+        self.test_index_instance_node = self.test_index_instance_root_node.get_children().first()
 
 
 class IndexInstanceViewTestMixin:
@@ -114,7 +135,7 @@ class IndexTemplateNodeViewTestMixin:
     def _request_test_index_node_create_view(self):
         return self.post(
             viewname='indexing:template_node_create', kwargs={
-                'index_template_node_id': self.test_index_template.template_root.pk
+                'index_template_node_id': self.test_index_template.index_template_root_node.pk
             }, data={
                 'expression_template': TEST_INDEX_TEMPLATE_NODE_EXPRESSION,
                 'index': self.test_index_template.pk,
@@ -139,7 +160,7 @@ class IndexTemplateNodeViewTestMixin:
             }
         )
 
-    def _request_test_index_node_list_get_view(self):
+    def _request_test_index_node_list_view(self):
         return self.get(
             viewname='indexing:index_template_view', kwargs={
                 'index_template_id': self.test_index_template.pk
@@ -148,6 +169,11 @@ class IndexTemplateNodeViewTestMixin:
 
 
 class IndexTemplateTestMixin:
+    auto_create_test_index_template = True
+    auto_create_test_index_template_node = True
+    auto_add_test_index_template_to_test_document_type = True
+    _test_index_template_node_expression = None
+
     def setUp(self):
         super().setUp()
         self.test_index_templates = []
@@ -159,8 +185,17 @@ class IndexTemplateTestMixin:
             },
         ]
 
+        if self.auto_create_test_index_template:
+            self._create_test_index_template(
+                add_test_document_type=self.auto_add_test_index_template_to_test_document_type
+            )
+            if self.auto_create_test_index_template_node:
+                self._create_test_index_template_node(
+                    expression=self._test_index_template_node_expression
+                )
+
     def _create_test_index_template(
-        self, add_test_document_type=False, extra_data=None
+        self, add_test_document_type=True, extra_data=None
     ):
         data = self._test_index_template_data[len(self.test_index_templates)]
 
@@ -172,20 +207,23 @@ class IndexTemplateTestMixin:
 
         self.test_index_templates.append(self.test_index_template)
 
+        self.test_index_template_root_node = self.test_index_template.index_template_root_node
+
         if add_test_document_type:
             self.test_index_template.document_types.add(self.test_document_type)
 
-    def _create_test_index_template_node(self, expression=None, rebuild=False):
-        expression = expression or TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION
+    def _create_test_index_template_node(
+        self, expression=None, link_documents=True, rebuild=False
+    ):
+        expression = expression or TEST_INDEX_TEMPLATE_NODE_EXPRESSION
 
-        self.test_index_template_node = self.test_index_template.node_templates.create(
-            parent=self.test_index_template.template_root,
-            expression=expression, link_documents=True
+        self.test_index_template_node = self.test_index_template.index_template_nodes.create(
+            parent=self.test_index_template.index_template_root_node,
+            expression=expression, link_documents=link_documents
         )
 
         if rebuild:
-            IndexTemplate.objects.rebuild()
-            self.test_index_instance_node = self.test_index_template.instance_root.get_children().first()
+            self._rebuild_test_index_template()
 
 
 class IndexTemplateActionAPIViewTestMixin:
@@ -210,7 +248,8 @@ class IndexTemplateAPIViewTestMixin:
 
         response = self.post(
             viewname='rest_api:indextemplate-list', data={
-                'label': TEST_INDEX_TEMPLATE_LABEL, 'slug': TEST_INDEX_TEMPLATE_SLUG,
+                'label': TEST_INDEX_TEMPLATE_LABEL,
+                'slug': TEST_INDEX_TEMPLATE_SLUG,
             }
         )
 
@@ -278,7 +317,7 @@ class IndexTemplateDocumentTypeAPIViewTestMixin:
 class IndexTemplateNodeAPITestMixin:
     def _request_test_index_template_node_create_api_view(self, extra_data=None):
         data = {
-            'expression': TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION
+            'expression': TEST_INDEX_TEMPLATE_NODE_EXPRESSION
         }
 
         if extra_data:

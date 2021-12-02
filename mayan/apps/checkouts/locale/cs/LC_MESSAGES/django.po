@@ -5,14 +5,15 @@
 # Translators:
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2021
+# trendspotter <jirka.p@volny.cz>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:20+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +25,7 @@ msgstr ""
 msgid "Checkouts"
 msgstr "Kontrola"
 
-#: dashboard_widgets.py:14 views.py:182
+#: dashboard_widgets.py:14 views.py:178
 msgid "Checked out documents"
 msgstr "Dokomenty ke kontrole"
 
@@ -34,29 +35,29 @@ msgstr "Provedena automatická vstupní kontrola"
 
 #: events.py:12
 msgid "Document checked in"
-msgstr ""
+msgstr "Dokument přihlášen"
 
 #: events.py:15
 msgid "Document checked out"
-msgstr ""
+msgstr "Dokument odhlášen"
 
 #: events.py:18
 msgid "Document forcefully checked in"
-msgstr ""
+msgstr "Dokument byl násilně přihlášen"
 
 #: exceptions.py:15
 msgid "Document not checked out."
-msgstr ""
+msgstr "Dokument nebyl odhlášen."
 
 #: exceptions.py:23
 msgid "Document already checked out."
-msgstr ""
+msgstr "Dokument již byl odhlášen."
 
 #: forms.py:26
 msgid "Document status"
 msgstr "Stav dokumentu"
 
-#: forms.py:37 models.py:40 models.py:106
+#: forms.py:37 models.py:46 models.py:126
 msgid "User"
 msgstr "Uživatel"
 
@@ -86,69 +87,69 @@ msgstr ""
 
 #: links.py:43
 msgid "Check out"
-msgstr ""
+msgstr "Odhlášení"
 
 #: links.py:50
 msgid "Check in document"
 msgstr ""
 
-#: links.py:54 views.py:43
+#: links.py:54
 msgid "Check in"
 msgstr ""
 
 #: links.py:60
 msgid "Check in/out"
-msgstr ""
+msgstr "Přihlášení / odhlášení"
 
 #: literals.py:10
 msgid "Checked out"
-msgstr ""
+msgstr "Odhlášen"
 
 #: literals.py:11
 msgid "Checked in/available"
 msgstr ""
 
-#: models.py:27
+#: models.py:33
 msgid "Document"
 msgstr "Dokument"
 
-#: models.py:30
+#: models.py:36
 msgid "Check out date and time"
 msgstr ""
 
-#: models.py:34
+#: models.py:40
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr ""
 
-#: models.py:36
+#: models.py:42
 msgid "Check out expiration date and time"
 msgstr ""
 
-#: models.py:45
+#: models.py:51
 msgid "Do not allow new file of this document to be uploaded."
-msgstr ""
+msgstr "Nepovolit nahrání nového souboru tohoto dokumentu."
 
-#: models.py:47
+#: models.py:53
 msgid "Block new file upload"
-msgstr ""
+msgstr "Blokovat nahrávání nového souboru"
 
-#: models.py:55 permissions.py:5
+#: models.py:61 permissions.py:5
 msgid "Document checkout"
-msgstr ""
+msgstr "Odhlášení dokumentu"
 
-#: models.py:56
+#: models.py:62
 msgid "Document checkouts"
-msgstr ""
+msgstr "Odhlášení dokumentů"
 
-#: models.py:64
+#: models.py:70
 msgid "Check out expiration date and time must be in the future."
 msgstr ""
 
-#: models.py:111
+#: models.py:131
 msgid "Checkout time and date"
-msgstr ""
+msgstr "Čas a datum odhlášení"
 
-#: models.py:116
+#: models.py:136
 msgid "Checkout expiration"
 msgstr ""
 
@@ -158,7 +159,7 @@ msgstr ""
 
 #: permissions.py:11
 msgid "Forcefully check in documents"
-msgstr ""
+msgstr "Násilně přihlásit dokumenty"
 
 #: permissions.py:14
 msgid "Check out documents"
@@ -176,9 +177,9 @@ msgstr ""
 msgid "Check expired checkouts"
 msgstr ""
 
-#: serializers.py:30
+#: serializers.py:32
 msgid "Primary key of the document to be checked out."
-msgstr ""
+msgstr "Primární klíč dokumentu, který se má odhlásit."
 
 #: views.py:25
 #, python-format
@@ -215,57 +216,54 @@ msgstr ""
 msgid "Check in %(count)d documents."
 msgstr ""
 
-#: views.py:93
+#: views.py:91
 #, python-format
 msgid "Unable to checkout document \"%(instance)s\"; %(exception)s"
 msgstr ""
 
-#: views.py:100
+#: views.py:98
 #, python-format
 msgid "Document \"%(object)s\" checked out successfully."
 msgstr ""
 
-#: views.py:103
+#: views.py:101
 #, python-format
 msgid "%(count)d document checked out successfully."
 msgstr ""
 
-#: views.py:106
+#: views.py:104
 #, python-format
 msgid "%(count)d documents checked out successfully."
 msgstr ""
 
-#: views.py:108
+#: views.py:106
 #, python-format
 msgid "Checkout document \"%(object)s\"."
 msgstr ""
 
-#: views.py:109
+#: views.py:107
 #, python-format
 msgid "Checkout %(count)d document."
 msgstr ""
 
-#: views.py:110
+#: views.py:108
 #, python-format
 msgid "Checkout %(count)d documents."
 msgstr ""
 
-#: views.py:114
-msgid "Checkout"
-msgstr ""
-
-#: views.py:158
+#: views.py:154
 #, python-format
 msgid "Check out details for document: %s"
-msgstr ""
+msgstr "Podívejte se na podrobnosti dokumentu: %s"
 
-#: views.py:178
+#: views.py:174
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
 msgstr ""
+"Odhlášení z dokumentu blokuje určité operace na předem stanovenou dobu."
 
-#: views.py:181
+#: views.py:177
 msgid "No documents have been checked out"
 msgstr ""
 

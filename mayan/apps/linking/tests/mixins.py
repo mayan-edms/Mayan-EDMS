@@ -46,8 +46,8 @@ class ResolvedSmartLinkAPIViewTestMixin:
         return self.get(
             viewname='rest_api:resolvedsmartlink-detail',
             kwargs={
-                'document_id': self.test_document.pk,
-                'smart_link_id': self.test_smart_link.pk
+                'document_id': self.test_documents[0].pk,
+                'resolved_smart_link_id': self.test_smart_link.pk
             }
         )
         self._create_test_smart_link(add_test_document_type=True)
@@ -55,7 +55,7 @@ class ResolvedSmartLinkAPIViewTestMixin:
     def _request_resolved_smart_link_list_api_view(self):
         return self.get(
             viewname='rest_api:resolvedsmartlink-list', kwargs={
-                'document_id': self.test_document.pk
+                'document_id': self.test_documents[0].pk
             }
         )
 
@@ -63,8 +63,8 @@ class ResolvedSmartLinkAPIViewTestMixin:
         return self.get(
             viewname='rest_api:resolvedsmartlinkdocument-list',
             kwargs={
-                'document_id': self.test_document.pk,
-                'smart_link_id': self.test_smart_link.pk
+                'document_id': self.test_documents[0].pk,
+                'resolved_smart_link_id': self.test_smart_link.pk
             }
         )
 
@@ -300,19 +300,19 @@ class SmartLinkDocumentTypeViewTestMixin:
         )
 
 
-class SmartLinkDocumentViewTestMixin:
-    def _request_test_document_resolved_smart_link_view(self):
+class ResolvedSmartLinkDocumentViewTestMixin:
+    def _request_test_document_resolved_smart_link_document_list_view(self):
         return self.get(
             viewname='linking:smart_link_instance_view', kwargs={
-                'document_id': self.test_document.pk,
+                'document_id': self.test_documents[0].pk,
                 'smart_link_id': self.test_smart_link.pk
             }
         )
 
-    def _request_test_smart_link_document_instances_view(self):
+    def _request_test_document_resolved_smart_link_list_view(self):
         return self.get(
             viewname='linking:smart_link_instances_for_document', kwargs={
-                'document_id': self.test_document.pk
+                'document_id': self.test_documents[0].pk
             }
         )
 
@@ -325,29 +325,6 @@ class SmartLinkTestMixin:
         )
         if add_test_document_type:
             self.test_smart_link.document_types.add(self.test_document_type)
-
-    def _create_test_smart_links(self, add_test_document_type=False):
-        self.test_smart_links = []
-        self.test_smart_links.append(
-            SmartLink.objects.create(
-                label=TEST_SMART_LINK_LABEL,
-                dynamic_label=TEST_SMART_LINK_DYNAMIC_LABEL
-            )
-        )
-        self.test_smart_links.append(
-            SmartLink.objects.create(
-                label=TEST_SMART_LINK_LABEL,
-                dynamic_label=TEST_SMART_LINK_DYNAMIC_LABEL
-            )
-        )
-        self.test_smart_link = self.test_smart_links[0]
-        if add_test_document_type:
-            self.test_smart_links[0].document_types.add(
-                self.test_document_type
-            )
-            self.test_smart_links[1].document_types.add(
-                self.test_document_type
-            )
 
     def _create_test_smart_link_condition(self):
         self.test_smart_link_condition = SmartLinkCondition.objects.create(

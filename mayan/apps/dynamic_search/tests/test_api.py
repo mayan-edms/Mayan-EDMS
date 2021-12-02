@@ -23,7 +23,7 @@ class SearchModelAPIViewTestCase(BaseAPITestCase):
 
 
 class SearchAPIViewTestCase(
-    SearchAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
+    DocumentTestMixin, SearchAPIViewTestMixin, BaseAPITestCase
 ):
     def test_search_api_view_no_permission(self):
         response = self._request_search_view()

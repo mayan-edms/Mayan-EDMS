@@ -1,0 +1,37 @@
+<script>
+    'use strict';
+
+    $(document).ready(function() {
+        $('body').on('keyup', '.views-select-search', function (event) {
+            const $this = $(this);
+            const searchValue = $this.val().toLowerCase().trim();
+            const $siblingSelect = $this.parents('form').find('select');
+
+            // Hide options that do not match the search.
+            $siblingSelect.find('option').each(function () {
+                const $option = $(this);
+                const optionText = $option.text().toLowerCase();
+
+                if (optionText.indexOf(searchValue) !== -1) {
+                    $option.show();
+                    $option.removeAttr('disabled');
+                } else {
+                    $option.hide();
+                    $option.attr('disabled','disabled')
+                }
+            });
+
+            // Hide all empty option groups.
+            $siblingSelect.find('optgroup').each(function () {
+                const $optionGroup = $(this);
+
+                if ($optionGroup.children(':enabled').length == 0) {
+                    $optionGroup.hide();
+                } else {
+                    $optionGroup.show();
+                }
+            });
+
+        });
+    });
+</script>

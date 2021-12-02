@@ -3,14 +3,14 @@ from mayan.apps.document_indexing.models import (
     IndexInstanceNode, IndexTemplate
 )
 from mayan.apps.document_indexing.tests.literals import TEST_INDEX_TEMPLATE_LABEL
-from mayan.apps.testing.tests.base import BaseTransactionTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from .literals import (
     TEST_OCR_INDEX_NODE_TEMPLATE, TEST_OCR_INDEX_NODE_TEMPLATE_LEVEL
 )
 
 
-class DocumentVersionOCRIndexingTestCase(DocumentTestMixin, BaseTransactionTestCase):
+class DocumentVersionOCRIndexingTestCase(DocumentTestMixin, BaseTestCase):
     auto_upload_test_document = False
 
     def test_ocr_indexing(self):
@@ -20,8 +20,8 @@ class DocumentVersionOCRIndexingTestCase(DocumentTestMixin, BaseTransactionTestC
 
         self.test_index_template.document_types.add(self.test_document_type)
 
-        root = self.test_index_template.template_root
-        self.test_index_template.node_templates.create(
+        root = self.test_index_template.index_template_root_node
+        self.test_index_template.index_template_nodes.create(
             parent=root, expression=TEST_OCR_INDEX_NODE_TEMPLATE,
             link_documents=True
         )

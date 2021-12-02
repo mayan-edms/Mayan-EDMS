@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:20+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
-#: events.py:5 forms.py:14 links.py:31 menus.py:14 models.py:50 models.py:174
+#: events.py:5 forms.py:14 links.py:30 menus.py:14 models.py:50 models.py:174
 #: permissions.py:5 search.py:56 views.py:155 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "Classeurs"
@@ -48,35 +48,35 @@ msgstr "Document ajouté au classeur"
 msgid "Document removed from cabinet"
 msgstr "Document retiré du classeur"
 
-#: links.py:37 links.py:49 workflow_actions.py:72
+#: links.py:36 links.py:48 workflow_actions.py:72
 msgid "Remove from cabinets"
 msgstr "Retirer des classeurs"
 
-#: links.py:41 links.py:45 workflow_actions.py:29
+#: links.py:40 links.py:44 workflow_actions.py:29
 msgid "Add to cabinets"
 msgstr "Ajouter aux classeurs"
 
-#: links.py:60
+#: links.py:59
 msgid "Add new level"
 msgstr "Ajouter un nouveau niveau"
 
-#: links.py:65 views.py:40
+#: links.py:64 views.py:40
 msgid "Create cabinet"
 msgstr "Nouveau classeur"
 
-#: links.py:70
+#: links.py:69
 msgid "Delete"
 msgstr "Supprimer"
 
-#: links.py:74
+#: links.py:73
 msgid "Edit"
 msgstr "Modifier"
 
-#: links.py:82
+#: links.py:81
 msgid "All"
 msgstr "Tout"
 
-#: links.py:86
+#: links.py:85
 msgid "Details"
 msgstr "Détails"
 
@@ -182,15 +182,15 @@ msgid "List of children cabinets."
 msgstr "Liste des classeurs enfants."
 
 #: serializers.py:22
-msgid "The name of this cabinet level appended to the names of its ancestors."
-msgstr "Le nom de ce niveau de classeur a été ajouté au nom de ses ancêtres."
-
-#: serializers.py:28
 msgid ""
 "URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 "URL du point de terminaison de l'API listant les documents contenus dans ce "
 "classeur."
+
+#: serializers.py:29
+msgid "The name of this cabinet level appended to the names of its ancestors."
+msgstr "Le nom de ce niveau de classeur a été ajouté au nom de ses ancêtres."
 
 #: templates/cabinets/cabinet_details.html:17
 msgid "Navigation:"
@@ -272,62 +272,54 @@ msgstr "Ajouter le document %(count)d aux classeurs."
 msgid "Add %(count)d documents to cabinets."
 msgstr "Ajouter %(count)d documents aux classeurs."
 
-#: views.py:192
-msgid "Add"
-msgstr "Ajouter"
-
-#: views.py:207
+#: views.py:205
 msgid "Cabinets to which the selected documents will be added."
 msgstr "Classeurs auxquels les documents sélectionnés seront ajoutés."
 
-#: views.py:253
+#: views.py:251
 msgid "Documents can be added to many cabinets."
 msgstr "Les documents peuvent être ajoutés dans plusieurs classeurs."
 
-#: views.py:256
+#: views.py:254
 msgid "This document is not in any cabinet"
 msgstr "Ce document n'est dans aucun classeur."
 
-#: views.py:260
+#: views.py:258
 #, python-format
 msgid "Cabinets containing document: %s"
 msgstr "Classeurs contenant le document : %s"
 
-#: views.py:276
+#: views.py:274
 #, python-format
 msgid "Document \"%(object)s\" removed from cabinets successfully."
 msgstr "Le document \"%(object)s\" a été supprimé des classeurs avec succès."
 
-#: views.py:279
+#: views.py:277
 #, python-format
 msgid "%(count)d document removed from cabinets successfully."
 msgstr "%(count)d document a été retiré des classeurs avec succès."
 
-#: views.py:282
+#: views.py:280
 #, python-format
 msgid "%(count)d documents removed from cabinets successfully."
 msgstr "%(count)d documents retirés des classeurs avec succès."
 
-#: views.py:284
+#: views.py:282
 #, python-format
 msgid "Remove document \"%(object)s\" from cabinets."
 msgstr "Retirez le document \"%(object)s\" des classeurs."
 
-#: views.py:285
+#: views.py:283
 #, python-format
 msgid "Remove %(count)d document from cabinets."
 msgstr "Retirez %(count)d document des classeurs."
 
-#: views.py:286
+#: views.py:284
 #, python-format
 msgid "Remove %(count)d documents from cabinets."
 msgstr "Retirez %(count)d documents des classeurs."
 
-#: views.py:290
-msgid "Remove"
-msgstr "Retirer"
-
-#: views.py:305
+#: views.py:301
 msgid "Cabinets from which the selected documents will be removed."
 msgstr "Classeurs desquels les documents sélectionnés seront retirés."
 

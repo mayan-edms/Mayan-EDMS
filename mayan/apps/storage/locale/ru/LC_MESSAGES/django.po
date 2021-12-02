@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:17+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -24,11 +24,11 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:25 settings.py:12
+#: apps.py:23 settings.py:12
 msgid "Storage"
 msgstr "Хранилище"
 
-#: apps.py:59
+#: apps.py:56
 msgid "Source object"
 msgstr "Исходный объект"
 
@@ -92,7 +92,7 @@ msgstr ""
 msgid "Name of the storage to process."
 msgstr "Имя обрабатываемого хранилища."
 
-#: model_mixins.py:13 models.py:115
+#: model_mixins.py:13 models.py:119
 msgid "Filename"
 msgstr "Имя файла"
 
@@ -100,11 +100,11 @@ msgstr "Имя файла"
 msgid "Date time"
 msgstr "Дата и время"
 
-#: model_mixins.py:48
+#: model_mixins.py:70
 msgid "Unnamed file"
 msgstr "Безымянный файл"
 
-#: models.py:42 models.py:112
+#: models.py:42 models.py:116
 msgid "File"
 msgstr "Файл"
 
@@ -120,11 +120,11 @@ msgstr "Разрешение"
 msgid "Download file"
 msgstr "Файл для скачивания"
 
-#: models.py:121
+#: models.py:125
 msgid "Shared uploaded file"
 msgstr "Загруженный файл совместного пользования"
 
-#: models.py:122 storages.py:36
+#: models.py:126 storages.py:36
 msgid "Shared uploaded files"
 msgstr "Загруженные файлы совместного пользования"
 

@@ -140,16 +140,6 @@ def mkdtemp(*args, **kwargs):
     return tempfile.mkdtemp(*args, **kwargs)
 
 
-def mkstemp(*args, **kwargs):
-    """
-    Creates a temporary file in the most secure manner possible.
-    There are no race conditions in the file’s creation, assuming that
-    the platform properly implements the os.O_EXCL flag for os.open().
-    """
-    kwargs.update({'dir': setting_temporary_directory.value})
-    return tempfile.mkstemp(*args, **kwargs)
-
-
 def patch_files(path=None, replace_list=None):
     """
     Search and replace content from a list of file based on a pattern
@@ -212,22 +202,6 @@ def patch_files(path=None, replace_list=None):
                             )
 
 
-def validate_path(path):
-    if not os.path.exists(path):
-        # If doesn't exist try to create it
-        try:
-            os.mkdir(path)
-        except Exception as exception:
-            logger.debug('unhandled exception: %s', exception)
-            return False
-
-    # Check if it is writable
-    try:
-        fd, test_filepath = tempfile.mkstemp(dir=path)
-        os.close(fd)
-        os.unlink(test_filepath)
-    except Exception as exception:
-        logger.debug('unhandled exception: %s', exception)
-        return False
-
-    return True
+def touch(filename, times=None):
+    with open(file=filename, mode='a'):
+        os.utime(filename, times)

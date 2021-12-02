@@ -1,6 +1,8 @@
 import os
+from pathlib import Path
 
 from django.conf import settings
+from django.conf.urls import include, url
 from django.template import loader
 from django.template.base import Template
 from django.template.context import Context
@@ -9,14 +11,65 @@ from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.serialization import yaml_dump, yaml_load
+from mayan.apps.databases.classes import BaseBackend
 from mayan.apps.task_manager.classes import Worker
 from mayan.settings.literals import (
-    DEFAULT_DIRECTORY_INSTALLATION, DEFAULT_USER_SETTINGS_FOLDER,
-    GUNICORN_JITTER, GUNICORN_LIMIT_REQUEST_LINE, GUNICORN_MAX_REQUESTS,
-    GUNICORN_TIMEOUT, GUNICORN_WORKER_CLASS, GUNICORN_WORKERS
+    DEFAULT_DATABASE_NAME, DEFAULT_DATABASE_PASSWORD, DEFAULT_DATABASE_USER,
+    DEFAULT_DIRECTORY_INSTALLATION, DEFAULT_OS_USERNAME,
+    DEFAULT_USER_SETTINGS_FOLDER, DOCKER_DIND_IMAGE_VERSION,
+    DOCKER_LINUX_IMAGE_VERSION, DOCKER_MYSQL_IMAGE_VERSION,
+    DOCKER_POSTGRES_IMAGE_VERSION, GUNICORN_LIMIT_REQUEST_LINE,
+    GUNICORN_MAX_REQUESTS, GUNICORN_REQUESTS_JITTER, GUNICORN_TIMEOUT,
+    GUNICORN_WORKER_CLASS, GUNICORN_WORKERS
 )
 
+from .settings import (
+    setting_client_backend_arguments, setting_client_backend_enabled
+)
 from .utils import load_env_file
+
+
+class ClientBackend(BaseBackend):
+    _loader_module_name = 'client_backends'
+
+    @classmethod
+    def get_backend_instance(cls, name):
+        backend_class = cls.get(name=name)
+        kwargs = setting_client_backend_arguments.value.get(name, {})
+        return backend_class(**kwargs)
+
+    @classmethod
+    def post_load_modules(cls):
+        cls.register_url_patterns()
+        cls.launch_backends()
+
+    @classmethod
+    def launch_backends(cls):
+        for backend_name in setting_client_backend_enabled.value:
+            cls.get_backend_instance(name=backend_name).launch()
+
+    @classmethod
+    def register_url_patterns(cls):
+        # Hidden import.
+        from .urls import urlpatterns
+
+        for backend_name in setting_client_backend_enabled.value:
+            backend_instance = cls.get_backend_instance(name=backend_name)
+
+            top_url = '{}/'.format(
+                getattr(backend_instance, '_url_namespace', backend_instance.__class__.__name__)
+            )
+
+            urlpatterns += (
+                url(
+                    regex=r'^{}'.format(top_url), view=include(
+                        backend_instance.get_url_patterns()
+                    )
+                ),
+            )
+
+    def __init__(self, **kwargs):
+        self.kwargs = kwargs
 
 
 class Variable:
@@ -129,6 +182,7 @@ class PlatformTemplate:
 class PlatformTemplateDockerEntrypoint(PlatformTemplate):
     label = _('Template for entrypoint.sh file inside a Docker image.')
     name = 'docker_entrypoint'
+    template_name = 'platform/docker/entrypoint.tmpl'
 
     def get_context(self):
         context = load_env_file()
@@ -136,19 +190,81 @@ class PlatformTemplateDockerEntrypoint(PlatformTemplate):
         return context
 
 
+class PlatformTemplateDockerfile(PlatformTemplate):
+    label = _('Template that generates a Dockerfile file.')
+    name = 'docker_dockerfile'
+    template_name = 'platform/docker/dockerfile.tmpl'
+
+    def __init__(self):
+        self.variables = (
+            Variable(
+                name='DOCKER_LINUX_IMAGE_VERSION',
+                default=DOCKER_LINUX_IMAGE_VERSION,
+                environment_name='MAYAN_DOCKER_LINUX_IMAGE_VERSION'
+            ),
+        )
+
+
 class PlatformTemplateDockerSupervisord(PlatformTemplate):
     label = _('Template for Supervisord inside a Docker image.')
     name = 'docker_supervisord'
+    template_name = 'platform/docker/supervisord.tmpl'
 
     def get_context(self):
         return {
+            'OS_USERNAME': DEFAULT_OS_USERNAME,
             'autorestart': 'false',
+            'shell_path': '/bin/sh',
             'stderr_logfile': '/dev/fd/2',
             'stderr_logfile_maxbytes': '0',
             'stdout_logfile': '/dev/fd/1',
             'stdout_logfile_maxbytes': '0',
             'workers': Worker.all()
         }
+
+
+class PlatformTemplateGitLabCI(PlatformTemplate):
+    label = _('Template that generates a GitLab CI config file.')
+    name = 'gitlab-ci'
+
+    def __init__(self):
+        self.variables = (
+            Variable(
+                name='DEFAULT_DATABASE_NAME',
+                default=DEFAULT_DATABASE_NAME,
+                environment_name='MAYAN_DEFAULT_DATABASE_NAME'
+            ),
+            Variable(
+                name='DEFAULT_DATABASE_PASSWORD',
+                default=DEFAULT_DATABASE_PASSWORD,
+                environment_name='MAYAN_DEFAULT_DATABASE_PASSWORD'
+            ),
+            Variable(
+                name='DEFAULT_DATABASE_USER',
+                default=DEFAULT_DATABASE_USER,
+                environment_name='MAYAN_DEFAULT_DATABASE_USER'
+            ),
+            Variable(
+                name='DOCKER_DIND_IMAGE_VERSION',
+                default=DOCKER_DIND_IMAGE_VERSION,
+                environment_name='MAYAN_DOCKER_DIND_IMAGE_VERSION'
+            ),
+            Variable(
+                name='DOCKER_LINUX_IMAGE_VERSION',
+                default=DOCKER_LINUX_IMAGE_VERSION,
+                environment_name='MAYAN_DOCKER_LINUX_IMAGE_VERSION'
+            ),
+            Variable(
+                name='DOCKER_MYSQL_IMAGE_VERSION',
+                default=DOCKER_MYSQL_IMAGE_VERSION,
+                environment_name='MAYAN_DOCKER_MYSQL_IMAGE_VERSION'
+            ),
+            Variable(
+                name='DOCKER_POSTGRES_IMAGE_VERSION',
+                default=DOCKER_POSTGRES_IMAGE_VERSION,
+                environment_name='MAYAN_DOCKER_POSTGRES_IMAGE_VERSION'
+            ),
+        )
 
 
 class PlatformTemplateSupervisord(PlatformTemplate):
@@ -158,9 +274,9 @@ class PlatformTemplateSupervisord(PlatformTemplate):
     def __init__(self):
         self.variables = (
             Variable(
-                name='GUNICORN_JITTER',
-                default=GUNICORN_JITTER,
-                environment_name='MAYAN_GUNICORN_JITTER'
+                name='GUNICORN_REQUESTS_JITTER',
+                default=GUNICORN_REQUESTS_JITTER,
+                environment_name='MAYAN_GUNICORN_REQUESTS_JITTER'
             ),
             Variable(
                 name='GUNICORN_LIMIT_REQUEST_LINE',
@@ -197,6 +313,10 @@ class PlatformTemplateSupervisord(PlatformTemplate):
                 environment_name='MAYAN_INSTALLATION_PATH'
             ),
             Variable(
+                name='OS_USERNAME', default=DEFAULT_OS_USERNAME,
+                environment_name='MAYAN_OS_USERNAME'
+            ),
+            Variable(
                 name='USER_SETTINGS_FOLDER',
                 default=DEFAULT_USER_SETTINGS_FOLDER,
                 environment_name='MAYAN_USER_SETTINGS_FOLDER'
@@ -204,12 +324,18 @@ class PlatformTemplateSupervisord(PlatformTemplate):
             YAMLVariable(
                 name='MEDIA_ROOT', default=settings.MEDIA_ROOT,
                 environment_name='MAYAN_MEDIA_ROOT'
-            ),
+            )
         )
 
     def get_context(self):
+        *_, user_settings_folder, media_root = self.variables
+
         return {
             'autorestart': 'true',
+            'shell_path': '/bin/sh',
+            'user_settings_folder': Path(
+                media_root.get_value()
+            ) / user_settings_folder.get_value(),
             'workers': Worker.all(),
         }
 
@@ -240,6 +366,8 @@ class PlatformTemplateWorkerQueues(PlatformTemplate):
 
 
 PlatformTemplate.register(klass=PlatformTemplateDockerEntrypoint)
+PlatformTemplate.register(klass=PlatformTemplateDockerfile)
 PlatformTemplate.register(klass=PlatformTemplateDockerSupervisord)
+PlatformTemplate.register(klass=PlatformTemplateGitLabCI)
 PlatformTemplate.register(klass=PlatformTemplateSupervisord)
 PlatformTemplate.register(klass=PlatformTemplateWorkerQueues)

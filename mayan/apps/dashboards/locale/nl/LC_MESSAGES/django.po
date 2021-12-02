@@ -4,13 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
+# Roberto Rosario, 2021
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:20+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -20,14 +21,31 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:12
+#: apps.py:18 links.py:9 views.py:11
 msgid "Dashboards"
 msgstr "Dashboards"
 
-#: dashboards.py:5
-msgid "Main"
-msgstr "Startscherm"
+#: apps.py:25
+msgid "Widgets"
+msgstr ""
+
+#: apps.py:29
+msgid "Label"
+msgstr "Label"
+
+#: dashboards.py:6
+msgid "Administrator dashboard"
+msgstr ""
+
+#: links.py:14
+msgid "Details"
+msgstr "Details"
 
 #: templates/dashboards/numeric_widget.html:27
+#: templates/dashboards/widget_list.html:47
 msgid "View details"
 msgstr "Details bekijken"
+
+#: views.py:27
+msgid "Dashboard detail"
+msgstr ""

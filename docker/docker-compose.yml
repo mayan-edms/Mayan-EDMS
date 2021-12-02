@@ -5,43 +5,37 @@ x-mayan-container:
   depends_on:
     - postgresql
     - redis
-    # Enable to use RabbitMQ
-    #- rabbitmq
+    - rabbitmq
   env_file: env_file
   environment:
-    # Enable to use RabbitMQ
-    # MAYAN_CELERY_BROKER_URL: amqp://${MAYAN_RABBITMQ_USER:-mayan}:${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}@rabbitmq:5672/${MAYAN_RABBITMQ_VHOST:-mayan}
-    # To use RabbitMQ as broker, disable Redis as broker
-    MAYAN_CELERY_BROKER_URL: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/0
+    MAYAN_CELERY_BROKER_URL: amqp://${MAYAN_RABBITMQ_USER:-mayan}:${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}@rabbitmq:5672/${MAYAN_RABBITMQ_VHOST:-mayan}
     MAYAN_CELERY_RESULT_BACKEND: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/1
     MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'${MAYAN_DATABASE_NAME:-mayan}','PASSWORD':'${MAYAN_DATABASE_PASSWORD:-mayandbpass}','USER':'${MAYAN_DATABASE_USER:-mayan}','HOST':'${MAYAN_DATABASE_HOST:-postgresql}'}}"
-    MAYAN_DOCKER_WAIT: "${MAYAN_DATABASE_HOST:-postgresql}:5432 redis:6379"
+    MAYAN_DOCKER_WAIT: "${MAYAN_DATABASE_HOST:-postgresql}:5432 redis:6379 rabbitmq:5672"
     MAYAN_LOCK_MANAGER_BACKEND: mayan.apps.lock_manager.backends.redis_lock.RedisLock
     MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS: "{'redis_url':'redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/2'}"
-    # Replace with the line below when using RabbitMQ
-    # MAYAN_DOCKER_WAIT: "${MAYAN_DATABASE_HOST:-postgresql}:5432 redis:6379 rabbitmq:5672"
-  image: ${MAYAN_DOCKER_IMAGE_NAME:-mayanedms/mayanedms}:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
+  image: ${MAYAN_DOCKER_IMAGE_NAME:-mayanedms/mayanedms}:${MAYAN_DOCKER_IMAGE_TAG:-s4.2}
   networks:
     - bridge
   restart: unless-stopped
   volumes:
     - ${MAYAN_APP_VOLUME:-app}:/var/lib/mayan
     # Optional volumes to access external data like staging or watch folders
-    # - /opt/staging_files:/staging_files
+    # - /opt/staging_folder:/staging_folder
     # - /opt/watch_folder:/watch_folder
 
 networks:
-  bridge:
+  mayan:
     driver: bridge
+    # Change to true when using Traefik for increased security.
+    internal: false
+  traefik: {}
 
 services:
   app:
     <<: *mayan-container
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.app.rule=Host(`www.example.com`)"  # Replace this with your published URL
-      - "traefik.http.routers.mayan.rule=Host(`mayan.app`)"
-      - "traefik.http.routers.mayan.entrypoints=web"
+    profiles:
+      - all_in_one
     ports:
       - "80:8000"
 
@@ -55,7 +49,7 @@ services:
       - "-c"
       - "maintenance_work_mem=128MB"
       - "-c"
-      - "max_connections=200"
+      - "max_connections=150"
       - "-c"
       - "shared_buffers=256MB"
       - "-c"
@@ -64,12 +58,14 @@ services:
       POSTGRES_DB: ${MAYAN_DATABASE_NAME:-mayan}
       POSTGRES_PASSWORD: ${MAYAN_DATABASE_PASSWORD:-mayandbpass}
       POSTGRES_USER: ${MAYAN_DATABASE_USER:-mayan}
-    image: postgres:${MAYAN_DOCKER_POSTGRES_TAG:-10.15-alpine}
+    image: postgres:${MAYAN_DOCKER_POSTGRES_TAG:-12.9-alpine}
     networks:
       - bridge
-    # Disable to allow external access to the database.    
+    # Enable to allow external access to the database.
     # ports:
     #  - "5432:5432"
+    profiles:
+      - postgresql
     restart: unless-stopped
     volumes:
       - ${MAYAN_POSTGRES_VOLUME:-postgres}:/var/lib/postgresql/data
@@ -93,32 +89,34 @@ services:
       - "256"
       - --requirepass
       - "${MAYAN_REDIS_PASSWORD:-mayanredispassword}"
-    image: redis:${MAYAN_DOCKER_REDIS_TAG:-6.0-alpine}
+    image: redis:${MAYAN_DOCKER_REDIS_TAG:-6.2-alpine}
     networks:
       - bridge
+    profiles:
+      - redis
     restart: unless-stopped
     volumes:
       - ${MAYAN_REDIS_VOLUME:-redis}:/data
-
-  # Celery flower a monitor for Celery
-  celery_flower:
-    <<: *mayan-container
-    command:
-      - run_celery
-      - flower
-    ports:
-      - "5555:5555"
-    profiles:
-      - celery_flower
 
   # Run a frontend gunicorn container
   frontend:
     <<: *mayan-container
     command:
-      - run_worker
-      - fast
+      - run_frontend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.mayan_redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.mayan_redirect.redirectscheme.permanent=false"
+      - "traefik.http.routers.mayan_frontend.rule=Host(`${MAYAN_TRAEFIK_EXTERNAL_DOMAIN}`)"
+      - "traefik.http.routers.mayan_frontend.entrypoints=http"
+      - "traefik.http.routers.mayan_frontend.middlewares=mayan_redirect"
+      - "traefik.http.routers.mayan_frontend_https.rule=Host(`${MAYAN_TRAEFIK_EXTERNAL_DOMAIN}`)"
+      - "traefik.http.routers.mayan_frontend_https.entrypoints=https"
+      - "traefik.http.routers.mayan_frontend_https.tls=true"
+      - "traefik.http.routers.mayan_frontend_https.tls.certresolver=letsencrypt"
+      - "traefik.http.services.mayan_frontend.loadbalancer.server.port=8000"
     ports:
-      - "81:8000"
+      - "80:8000"
     profiles:
       - extra_frontend
 
@@ -130,7 +128,7 @@ services:
     devices:
       - "/dev/fuse:/dev/fuse"
     entrypoint:
-      - /bin/bash
+      - /bin/sh
       - -c
       - 'mkdir --parents /mnt/index && chown mayan:mayan /mnt/index && /usr/local/bin/entrypoint.sh run_command "mountindex --allow-other creation_date /mnt/index"'  # Replace "creation_date" with the index of your choice.
     profiles:
@@ -150,6 +148,7 @@ services:
     command:
       - run_worker
       - worker_a
+      - "--prefetch-multiplier=1"
     profiles:
       - extra_worker_a
 
@@ -180,37 +179,70 @@ services:
     profiles:
       - extra_worker_d
 
-  # Optional services
+  # Run a separate Celery beat container
+  celery_beat:
+    <<: *mayan-container
+    command:
+      - run_celery
+      - "beat --pidfile= --loglevel=ERROR"
+    profiles:
+      - extra_celery_beat
+
+  command_initialsetup_or_performupgrade:
+    <<: *mayan-container
+    command:
+      - run_initialsetup_or_performupgrade
+    profiles:
+      - extra_command_initialsetup_or_performupgrade
+    restart: "no"
+
+  rabbitmq:
+    image: rabbitmq:${MAYAN_DOCKER_RABBITMQ_TAG:-3.9-management-alpine}
+    environment:
+      RABBITMQ_DEFAULT_USER: ${MAYAN_RABBITMQ_USER:-mayan}
+      RABBITMQ_DEFAULT_PASS: ${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}
+      RABBITMQ_DEFAULT_VHOST: ${MAYAN_RABBITMQ_VHOST:-mayan}
+    labels:
+      - "traefik.enable=${MAYAN_TRAEFIK_RABBITMQ_ENABLE}"
+      - "traefik.http.routers.mayan_frontend_https.tls=true"
+      - "traefik.http.routers.mayan_frontend.rule=Host(`${MAYAN_TRAEFIK_EXTERNAL_DOMAIN}`)"
+      - "traefik.http.routers.mayan_frontend.entrypoints=:15672"
+    networks:
+      - bridge
+    ports:
+      - "15672:15672"
+    profiles:
+      - rabbitmq
+    restart: unless-stopped
+    volumes:
+      - ${MAYAN_RABBITMQ_VOLUME:-rabbitmq}:/var/lib/rabbitmq
 
   traefik:
     container_name: "traefik"
     command:
-      #- "--log.level=DEBUG"
-      - "--api.insecure=true"
+      # - "--log.level=DEBUG"
+      - "--api.insecure=${MAYAN_TRAEFIK_API_INSECURE:-false}"
+      - "--certificatesresolvers.letsencrypt.acme.caserver=${MAYAN_TRAEFIK_LETS_ENCRYPT_SERVER:-https://acme-staging-v02.api.letsencrypt.org/directory}"
+      - "--certificatesresolvers.letsencrypt.acme.email=${MAYAN_TRAEFIK_LETS_ENCRYPT_EMAIL}"
+      - "--certificatesresolvers.letsencrypt.acme.storage=/certificates/letsencrypt/acme.json"
+      - "--certificatesresolvers.letsencrypt.acme.tlschallenge=${MAYAN_TRAEFIK_LETS_ENCRYPT_TLS_CHALLENGE:-false}"
+      - "--entrypoints.http.address=:80"
+      - "--entrypoints.https.address=:443"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-    image: "traefik:v2.4"
+    image: traefik:${MAYAN_DOCKER_TRAEFIK_TAG:-v2.5}
+    networks:
+      - bridge
+      - traefik
     ports:
       - "80:80"
+      - "443:443"
       - "8080:8080"
     profiles:
       - traefik
     volumes:
+      - traefik-certificates:/certificates
       - /var/run/docker.sock:/var/run/docker.sock:ro
-
-  # Enable to use RabbitMQ
-  # rabbitmq:
-  #   image: rabbitmq:${MAYAN_DOCKER_RABBITMQ_TAG:-3.8-alpine}
-  #   environment:
-  #     RABBITMQ_DEFAULT_USER: ${MAYAN_RABBITMQ_USER:-mayan}
-  #     RABBITMQ_DEFAULT_PASS: ${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}
-  #     RABBITMQ_DEFAULT_VHOST: ${MAYAN_RABBITMQ_VHOST:-mayan}
-  #   networks:
-  #     - bridge
-  #   restart: unless-stopped
-  #   volumes:
-  #      - ${MAYAN_RABBITMQ_VOLUME:-rabbitmq}:/var/lib/rabbitmq
 
 volumes:
   app:
@@ -218,3 +250,4 @@ volumes:
   mountindex:
   rabbitmq:
   redis:
+  traefik-certificates:

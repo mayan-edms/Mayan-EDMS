@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -23,20 +23,20 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:36 events.py:6 links.py:34 models.py:36 permissions.py:5
+#: apps.py:33 events.py:6 links.py:34 models.py:37 permissions.py:5
 #: views.py:136
 msgid "Quotas"
 msgstr "Cote"
 
-#: classes.py:65
+#: classes.py:59
 msgid "none"
 msgstr "nici unul"
 
-#: classes.py:157
+#: classes.py:151
 msgid "Does not apply"
 msgstr "Nu se aplică"
 
-#: classes.py:161 classes.py:165
+#: classes.py:155 classes.py:159
 msgid "Null backend"
 msgstr "Backend vid"
 
@@ -48,7 +48,7 @@ msgstr "Cotă creată"
 msgid "Quota edited"
 msgstr "Cotă editată"
 
-#: forms.py:15 models.py:58
+#: forms.py:15 models.py:62
 msgid "Backend"
 msgstr "Backend"
 
@@ -140,39 +140,39 @@ msgstr "toți utilizatorii"
 msgid "groups: %(groups)s, users: %(users)s"
 msgstr "grupuri: %(groups)s, utilizatori: %(users)s"
 
-#: models.py:22
+#: models.py:23
 msgid "The dotted Python path to the backend class."
 msgstr "Calea Python punctată la clasa backend."
 
-#: models.py:23
+#: models.py:24
 msgid "Backend path"
 msgstr "Calea de backend"
 
-#: models.py:26
+#: models.py:27
 msgid "Backend data"
 msgstr "Date backend"
 
-#: models.py:30
+#: models.py:31
 msgid "Allow quick disable or enable of the quota."
 msgstr "Permite dezactivarea rapidă sau activarea cotei."
 
-#: models.py:31
+#: models.py:32
 msgid "Enabled"
 msgstr "Activat"
 
-#: models.py:35
+#: models.py:36
 msgid "Quota"
 msgstr "Cotă"
 
-#: models.py:57
+#: models.py:61
 msgid "Driver used for this quota entry."
 msgstr "Pilotul utilizat pentru această intrare de cotă."
 
-#: models.py:62
+#: models.py:66
 msgid "Arguments"
 msgstr "Argumente"
 
-#: models.py:66
+#: models.py:70
 msgid "Usage"
 msgstr "utilizare"
 
@@ -192,41 +192,41 @@ msgstr "Editați o cotă"
 msgid "View a quota"
 msgstr "Vizualizați o cotă"
 
-#: quota_backends.py:70 quota_backends.py:170
+#: quota_backends.py:71 quota_backends.py:171
 msgid "Document count quota exceeded."
 msgstr "Cota numărului de documente a fost depășită."
 
-#: quota_backends.py:74
+#: quota_backends.py:75
 msgid "Documents limit"
 msgstr "Limita documentelor"
 
-#: quota_backends.py:77
+#: quota_backends.py:78
 msgid "Maximum number of documents."
 msgstr "Numărul maxim de documente."
 
-#: quota_backends.py:81
+#: quota_backends.py:82
 msgid "Document count limit"
 msgstr "Limita numărului de documente"
 
-#: quota_backends.py:106
+#: quota_backends.py:107
 #, python-format
 msgid "document count: %(document_count)s"
 msgstr "număr de documente: %(document_count)s"
 
-#: quota_backends.py:180 quota_backends.py:185
+#: quota_backends.py:181 quota_backends.py:186
 msgid "Document size limit"
 msgstr "Dimensiunea documentului limită"
 
-#: quota_backends.py:182
+#: quota_backends.py:183
 msgid "Maximum document size in megabytes (MB)."
 msgstr "Dimensiunea maximă a documentului în megabyte (MB)."
 
-#: quota_backends.py:210
+#: quota_backends.py:211
 #, python-format
 msgid "document size: %(formatted_file_size)s"
 msgstr "dimensiunea documentului: %(formatted_file_size)s"
 
-#: quota_backends.py:230
+#: quota_backends.py:231
 msgid "Document size quota exceeded."
 msgstr "Cota dimensiunii documentului a fost depășită."
 

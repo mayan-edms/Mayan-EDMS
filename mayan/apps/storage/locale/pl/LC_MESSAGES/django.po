@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:21+0000\n"
+"POT-Creation-Date: 2021-12-01 12:17+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -23,11 +23,11 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:25 settings.py:12
+#: apps.py:23 settings.py:12
 msgid "Storage"
 msgstr "Magazyn"
 
-#: apps.py:59
+#: apps.py:56
 msgid "Source object"
 msgstr ""
 
@@ -91,7 +91,7 @@ msgstr ""
 msgid "Name of the storage to process."
 msgstr "Nazwa magazynu do przetworzenia."
 
-#: model_mixins.py:13 models.py:115
+#: model_mixins.py:13 models.py:119
 msgid "Filename"
 msgstr "Nazwa"
 
@@ -99,11 +99,11 @@ msgstr "Nazwa"
 msgid "Date time"
 msgstr "Data i godzina"
 
-#: model_mixins.py:48
+#: model_mixins.py:70
 msgid "Unnamed file"
 msgstr ""
 
-#: models.py:42 models.py:112
+#: models.py:42 models.py:116
 msgid "File"
 msgstr "Plik"
 
@@ -119,11 +119,11 @@ msgstr "Uprawnienia"
 msgid "Download file"
 msgstr ""
 
-#: models.py:121
+#: models.py:125
 msgid "Shared uploaded file"
 msgstr "Udostępniony plik"
 
-#: models.py:122 storages.py:36
+#: models.py:126 storages.py:36
 msgid "Shared uploaded files"
 msgstr "Pliki udostępnione"
 

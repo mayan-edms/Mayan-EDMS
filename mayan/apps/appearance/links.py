@@ -1,5 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.authentication.link_conditions import condition_user_is_authenticated
 from mayan.apps.navigation.classes import Link
 
 from .icons import (
@@ -17,6 +18,7 @@ link_current_user_theme_settings_details = Link(
     view='appearance:current_user_theme_settings_details'
 )
 link_current_user_theme_settings_edit = Link(
+    condition=condition_user_is_authenticated,
     icon=icon_current_user_theme_settings_edit,
     text=_('Edit theme settings'),
     view='appearance:current_user_theme_settings_edit'

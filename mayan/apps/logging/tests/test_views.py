@@ -3,11 +3,11 @@ from mayan.apps.testing.tests.base import GenericViewTestCase
 from ..permissions import permission_error_log_view
 
 from .literals import TEST_ERROR_LOG_ENTRY_RESULT
-from .mixins import LoggingTextMixin, LoggingViewTestMixin
+from .mixins import ErrorLoggingTextMixin, ErrorLoggingViewTestMixin
 
 
-class LoggingViewTestCase(
-    LoggingTextMixin, LoggingViewTestMixin, GenericViewTestCase
+class ErrorLoggingViewTestCase(
+    ErrorLoggingTextMixin, ErrorLoggingViewTestMixin, GenericViewTestCase
 ):
     def setUp(self):
         super().setUp()

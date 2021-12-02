@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-21 22:20+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2021\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
@@ -21,20 +21,20 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
+#: apps.py:36 events.py:5 permissions.py:5 queues.py:7 settings.py:21
 msgid "Converter"
 msgstr "مبدل"
 
-#: apps.py:83 forms.py:37
+#: apps.py:82 forms.py:37
 msgid "Transformation"
 msgstr "دگرگونی"
 
-#: backends/python.py:124 backends/python.py:137
+#: backends/python.py:120 backends/python.py:133
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "تعداد صفحات PDF را تعیین کنید؛ %s"
 
-#: backends/python.py:151
+#: backends/python.py:147
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
 msgstr "شمارش صفحه تعیین میزان استثنا با استفاده از بالش؛ %s"
@@ -43,17 +43,17 @@ msgstr "شمارش صفحه تعیین میزان استثنا با استفاد
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice نصب نشده یا یافت نشد"
 
-#: classes.py:261
+#: classes.py:258
 msgid "Not an office file format."
 msgstr "فرمت فایل دفتر نیست"
 
-#: classes.py:395
+#: classes.py:392
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
 msgstr ""
 
-#: classes.py:446
+#: classes.py:443
 msgid "transformation"
 msgstr "تبدیل"
 
@@ -113,7 +113,7 @@ msgstr "حذف"
 msgid "Edit"
 msgstr "ویرایش"
 
-#: links.py:56 models.py:62 storages.py:21 views.py:143
+#: links.py:56 models.py:63 storages.py:21 views.py:143
 msgid "Assets"
 msgstr ""
 
@@ -125,57 +125,57 @@ msgstr "تغییرات"
 msgid "Select new transformation"
 msgstr ""
 
-#: models.py:45
+#: models.py:46
 msgid "Label"
 msgstr "برچسب"
 
-#: models.py:49
+#: models.py:50
 msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
 msgstr ""
 
-#: models.py:52
+#: models.py:53
 msgid "Internal name"
 msgstr "نام داخلی"
 
-#: models.py:56
+#: models.py:57
 msgid "File"
 msgstr "فایل"
 
-#: models.py:61
+#: models.py:62
 msgid "Asset"
 msgstr ""
 
-#: models.py:157 models.py:228
+#: models.py:172 models.py:243
 msgid "Name"
 msgstr "نام"
 
-#: models.py:160 models.py:226
+#: models.py:175 models.py:241
 msgid "Order"
 msgstr "سفارش"
 
-#: models.py:165 models.py:184
+#: models.py:180 models.py:199
 msgid "Stored layer"
 msgstr ""
 
-#: models.py:166
+#: models.py:181
 msgid "Stored layers"
 msgstr ""
 
-#: models.py:181 models.py:235
+#: models.py:196 models.py:250
 msgid "Enabled"
 msgstr "فعال شده است"
 
-#: models.py:192 models.py:220
+#: models.py:207 models.py:235
 msgid "Object layer"
 msgstr ""
 
-#: models.py:193
+#: models.py:208
 msgid "Object layers"
 msgstr ""
 
-#: models.py:224
+#: models.py:239
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
@@ -183,7 +183,7 @@ msgstr ""
 "سفارش که در آن تحولات اجرا خواهد شد. اگر بدون تغییر باقی بماند، یک مقدار "
 "سفارش خودکار تعیین می شود."
 
-#: models.py:231 workflow_actions.py:45
+#: models.py:246 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
@@ -191,19 +191,19 @@ msgstr ""
 "آرگومان را برای تبدیل به عنوان یک فرهنگ لغت YAML وارد کنید. یعنی: {\"درجه\":"
 " 180}"
 
-#: models.py:233
+#: models.py:248
 msgid "Arguments"
 msgstr "استدلال"
 
-#: models.py:242
+#: models.py:257
 msgid "Layer transformation"
 msgstr ""
 
-#: models.py:243
+#: models.py:258
 msgid "Layer transformations"
 msgstr ""
 
-#: models.py:249
+#: models.py:264
 msgid "Unknown transformation class"
 msgstr ""
 
@@ -240,45 +240,55 @@ msgid "View existing transformations"
 msgstr "مشاهده تغییرات موجود"
 
 #: queues.py:12
-msgid "Generate a image of an asset."
+msgid "Generate a image of an object."
 msgstr ""
 
-#: settings.py:28
+#: settings.py:30
 msgid ""
 "The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest asset cache files. Specify the size in bytes."
 msgstr ""
 
-#: settings.py:37
-msgid ""
-"Time in seconds that the browser should cache the supplied asset. The "
-"default of 31559626 seconds correspond to 1 year."
-msgstr ""
-
-#: settings.py:44
+#: settings.py:38
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
 msgstr ""
 
-#: settings.py:52
+#: settings.py:46
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
 msgstr ""
 
-#: settings.py:58
+#: settings.py:52
 msgid "Path to the Storage subclass to use when storing assets."
 msgstr ""
 
-#: settings.py:64
+#: settings.py:58
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgstr ""
 
-#: settings.py:70
+#: settings.py:64
 msgid "Graphics conversion backend to use."
 msgstr "باطن تبدیل گرافیک برای استفاده."
 
-#: settings.py:76
+#: settings.py:70
 msgid "Configuration options for the graphics conversion backend."
 msgstr "گزینه های پیکربندی برای backend تبدیل گرافیک."
+
+#: settings.py:77
+msgid "Time in seconds that the browser should cache the supplied image. "
+msgstr ""
+
+#: settings.py:84
+msgid ""
+"Maximum number of retries before giving up. A value of None means the task "
+"will retry forever."
+msgstr ""
+
+#: settings.py:92
+msgid ""
+"Time in seconds after which the image generation task will stop running and "
+"raise an error."
+msgstr ""
 
 #: storages.py:15
 msgid ""
@@ -296,71 +306,71 @@ msgstr ""
 msgid "Assets cache"
 msgstr ""
 
-#: transformations.py:196
+#: transformations.py:226
 msgid "Paste an asset"
 msgstr ""
 
-#: transformations.py:247
+#: transformations.py:277
 msgid "Paste an asset (percents coordinates)"
 msgstr ""
 
-#: transformations.py:290
+#: transformations.py:324
 msgid "Paste an asset as watermark"
 msgstr ""
 
-#: transformations.py:350
+#: transformations.py:384
 msgid "Crop"
 msgstr "محصول"
 
-#: transformations.py:428
+#: transformations.py:462
 msgid "Draw rectangle"
 msgstr ""
 
-#: transformations.py:530
+#: transformations.py:564
 msgid "Draw rectangle (percents coordinates)"
 msgstr ""
 
-#: transformations.py:627
+#: transformations.py:661
 msgid "Flip"
 msgstr "تلنگر"
 
-#: transformations.py:638
+#: transformations.py:672
 msgid "Gaussian blur"
 msgstr "تار گاوسی"
 
-#: transformations.py:648
+#: transformations.py:684
 msgid "Line art"
 msgstr "هنر خط"
 
-#: transformations.py:659
+#: transformations.py:698
 msgid "Mirror"
 msgstr "آینه"
 
-#: transformations.py:670
+#: transformations.py:709
 msgid "Resize"
 msgstr "تغییر اندازه"
 
-#: transformations.py:697
+#: transformations.py:736
 msgid "Rotate"
 msgstr "چرخش"
 
-#: transformations.py:723
+#: transformations.py:766
 msgid "Rotate 90 degrees"
 msgstr "چرخش 90 درجه"
 
-#: transformations.py:734
+#: transformations.py:777
 msgid "Rotate 180 degrees"
 msgstr "چرخش 180 درجه"
 
-#: transformations.py:745
+#: transformations.py:788
 msgid "Rotate 270 degrees"
 msgstr "چرخش 270 درجه"
 
-#: transformations.py:755
+#: transformations.py:798
 msgid "Unsharp masking"
 msgstr "ماسک غیرشفاف"
 
-#: transformations.py:771
+#: transformations.py:814
 msgid "Zoom"
 msgstr "بزرگنمایی"
 

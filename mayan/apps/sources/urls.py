@@ -1,23 +1,15 @@
 from django.conf.urls import url
 
-from .api_views import (
-    APIStagingSourceFileView, APIStagingSourceFileImageView,
-    APIStagingSourceFileUploadView, APIStagingSourceListView,
-    APIStagingSourceView
-)
-from .views import (
-    SourceCheckView, SourceCreateView, SourceDeleteView,
-    SourceEditView, SourceListView, StagingFileDeleteView,
-    DocumentFileUploadInteractiveView, UploadInteractiveView
+from .api_views import APISourceActionView, APISourceListView, APISourceView
+from .views.document_file_views import DocumentFileUploadInteractiveView
+from .views.document_views import DocumentUploadInteractiveView
+from .views.source_views import (
+    SourceActionView, SourceBackendSelectionView, SourceCreateView,
+    SourceDeleteView, SourceEditView, SourceListView, SourceTestView
 )
 from .wizards import DocumentCreateWizard
 
 urlpatterns = [
-    url(
-        regex=r'^staging_folders/(?P<staging_folder_id>\d+)/files/(?P<encoded_filename>.+)/delete/$',
-        name='staging_file_delete', view=StagingFileDeleteView.as_view()
-    ),
-
     # Document create views
 
     url(
@@ -27,12 +19,12 @@ urlpatterns = [
     url(
         regex=r'^documents/upload/new/interactive/(?P<source_id>\d+)/$',
         name='document_upload_interactive',
-        view=UploadInteractiveView.as_view()
+        view=DocumentUploadInteractiveView.as_view()
     ),
     url(
         regex=r'^documents/upload/new/interactive/$',
         name='document_upload_interactive',
-        view=UploadInteractiveView.as_view()
+        view=DocumentUploadInteractiveView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/files/upload/interactive/(?P<source_id>\d+)/$',
@@ -48,49 +40,47 @@ urlpatterns = [
     # Setup views
 
     url(
-        regex=r'^sources/$', name='setup_source_list',
+        regex=r'^sources/$', name='source_list',
         view=SourceListView.as_view()
     ),
     url(
-        regex=r'^sources/create/(?P<source_type_name>\w+)/$',
-        name='setup_source_create', view=SourceCreateView.as_view()
+        regex=r'^sources/backend/selection/$',
+        name='source_backend_selection',
+        view=SourceBackendSelectionView.as_view()
     ),
     url(
-        regex=r'^sources/(?P<source_id>\d+)/check/$',
-        name='setup_source_check', view=SourceCheckView.as_view()
+        regex=r'^sources/(?P<backend_path>[a-zA-Z0-9_.]+)/create/$',
+        name='source_create', view=SourceCreateView.as_view()
+    ),
+    url(
+        regex=r'^sources/(?P<source_id>\d+)/actions/(?P<action_name>[a-zA-Z0-9_.]+)/$',
+        name='source_action', view=SourceActionView.as_view()
     ),
     url(
         regex=r'^sources/(?P<source_id>\d+)/delete/$',
-        name='setup_source_delete', view=SourceDeleteView.as_view()
+        name='source_delete', view=SourceDeleteView.as_view()
     ),
     url(
-        regex=r'^sources/(?P<source_id>\d+)/edit/$', name='setup_source_edit',
+        regex=r'^sources/(?P<source_id>\d+)/edit/$', name='source_edit',
         view=SourceEditView.as_view()
+    ),
+    url(
+        regex=r'^sources/(?P<source_id>\d+)/test/$',
+        name='source_test', view=SourceTestView.as_view()
     ),
 ]
 
 api_urls = [
     url(
-        regex=r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/image/$',
-        name='stagingfolderfile-image',
-        view=APIStagingSourceFileImageView.as_view()
+        regex=r'^sources/$', name='source-list',
+        view=APISourceListView.as_view()
     ),
     url(
-        regex=r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/upload/$',
-        name='stagingfolderfile-upload',
-        view=APIStagingSourceFileUploadView.as_view()
+        regex=r'^sources/(?P<source_id>[0-9]+)/$',
+        name='source-detail', view=APISourceView.as_view()
     ),
     url(
-        regex=r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/$',
-        name='stagingfolderfile-detail',
-        view=APIStagingSourceFileView.as_view()
-    ),
-    url(
-        regex=r'^staging_folders/$', name='stagingfolder-list',
-        view=APIStagingSourceListView.as_view()
-    ),
-    url(
-        regex=r'^staging_folders/(?P<pk>[0-9]+)/$',
-        name='stagingfolder-detail', view=APIStagingSourceView.as_view()
+        regex=r'^sources/(?P<source_id>[0-9]+)/actions/(?P<action_name>[a-zA-Z0-9_.]+)/$',
+        name='source-action', view=APISourceActionView.as_view()
     )
 ]

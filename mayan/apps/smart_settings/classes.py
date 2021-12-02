@@ -182,14 +182,14 @@ class Setting:
         if isinstance(value, (list, tuple)):
             return [Setting.express_promises(item) for item in value]
         elif isinstance(value, Promise):
-            return force_text(s=value)
+            return value._proxy____args[0]
         else:
             return value
 
     @staticmethod
     def serialize_value(value):
         result = yaml_dump(
-            data=Setting.express_promises(value), allow_unicode=True,
+            data=Setting.express_promises(value=value), allow_unicode=True,
             default_flow_style=False,
         )
         # safe_dump returns bytestrings
@@ -224,7 +224,7 @@ class Setting:
             # otherwise return always True to include all (or not None == True)
             if (namespace and setting.namespace.name == namespace) or not namespace:
                 if (filter_term and filter_term.lower() in setting.global_name.lower()) or not filter_term:
-                    dictionary[setting.global_name] = Setting.express_promises(setting.value)
+                    dictionary[setting.global_name] = Setting.express_promises(value=setting.value)
 
         return yaml_dump(
             data=dictionary, default_flow_style=False
@@ -279,7 +279,7 @@ class Setting:
 
     def __init__(
         self, namespace, global_name, default, help_text=None, is_path=False,
-        post_edit_function=None
+        post_edit_function=None, validation_function=None
     ):
         self.global_name = global_name
         self.default = default
@@ -288,6 +288,7 @@ class Setting:
         self.namespace = namespace
         self.environment_variable = False
         self.post_edit_function = post_edit_function
+        self.validation_function = validation_function
         namespace._settings.append(self)
         self.__class__._registry[global_name] = self
 
@@ -329,6 +330,11 @@ class Setting:
                 # Found in the config file, try to migrate the value
                 self.migrate()
 
+        if self.validation_function:
+            self.raw_value = self.validation_function(
+                setting=self, raw_value=self.raw_value
+            )
+
         self.yaml = Setting.serialize_value(self.raw_value)
         self.loaded = True
 
@@ -360,6 +366,12 @@ class Setting:
     def set(self, value):
         self.value = Setting.serialize_value(value=value)
         self.loaded = True
+
+    def validate(self, raw_value):
+        if self.validation_function:
+            return self.validation_function(
+                setting=self, raw_value=raw_value
+            )
 
     @property
     def value(self):

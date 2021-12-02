@@ -93,13 +93,25 @@ class CabinetDocumentUploadWizardStepTestMixin:
 
 
 class CabinetTestMixin:
+    auto_create_test_cabinet = False
+    test_cabinet_add_test_document = False
+
     def setUp(self):
         super().setUp()
         if not hasattr(self, 'test_cabinets'):
             self.test_cabinets = []
 
-    def _create_test_cabinet(self):
+        if self.auto_create_test_cabinet:
+            self._create_test_cabinet(
+                add_test_document=self.test_cabinet_add_test_document
+            )
+
+    def _create_test_cabinet(self, add_test_document=False):
         self.test_cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
+
+        if add_test_document:
+            self.test_cabinet.documents.add(self.test_document)
+
         self.test_cabinets.append(self.test_cabinet)
 
     def _create_test_cabinet_child(self):
