@@ -24,7 +24,7 @@
   - Postgresq from 10.18-alpine to 12.9-alpine.
   - Python from 3.8-slim to 3.11-slim.
 
-- Update psycopg2 from version 2.8.6 to 3.0.4.
+- Update psycopg2 from version 2.8.6 to 2.9.2.
 - Update redis client from version 3.5.3 to 4.0.2.
 - Reduce the Sentry client default ``traces_sample_rate`` from 0.25 to 0.05.
 - Add the ``run_initialsetup_or_performupgrade`` command to the Docker
@@ -36,6 +36,8 @@
   - Change default RabbitMQ image from 3.9-alpine to 3.9-management-alpine.
   - Improve Traefik configuration.
   - Add a dedicated network for Traefik.
+
+- Update base image from Debian 10.10-slim to 11.1-slim.
 
 4.1.4 (2021-12-01)
 ==================
