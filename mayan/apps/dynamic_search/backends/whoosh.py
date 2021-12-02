@@ -5,6 +5,7 @@ import whoosh
 from whoosh import qparser
 from whoosh.filedb.filestore import FileStorage
 from whoosh.index import EmptyIndexError
+from whoosh.query import Every
 
 from django.conf import settings
 
@@ -13,6 +14,7 @@ from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError
 
 from ..classes import SearchBackend, SearchField, SearchModel
+from ..exceptions import DynamicSearchRetry
 from ..settings import setting_results_limit
 
 from .literals import (
@@ -165,6 +167,25 @@ class WhooshSearchBackend(SearchBackend):
 
         return whoosh.fields.Schema(**schema_kwargs)
 
+    def get_status(self):
+        result = []
+
+        title = 'Whoosh search model indexing status'
+        result.append(title)
+        result.append(len(title) * '=')
+
+        for search_model in SearchModel.all():
+            index = self.get_or_create_index(search_model=search_model)
+            search_results = index.searcher().search(Every('id'))
+
+            result.append(
+                '{}: {}'.format(
+                    search_model.label, search_results.estimated_length()
+                )
+            )
+
+        return result
+
     def get_storage(self):
         return FileStorage(path=self.index_path)
 
@@ -201,6 +222,8 @@ class WhooshSearchBackend(SearchBackend):
                             exception, exc_info=True
                         )
                         raise
+            except whoosh.index.LockError:
+                raise DynamicSearchRetry
             finally:
                 lock.release()
 

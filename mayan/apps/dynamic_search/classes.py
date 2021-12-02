@@ -512,6 +512,11 @@ class SearchModel(AppsModuleLoaderMixin):
         except KeyError:
             raise KeyError('No search field named: %s' % full_name)
 
+    def get_status(self):
+        """
+        Backend specify method to provide status and statistics information.
+        """
+
     @cached_property
     def label(self):
         if not self._label:

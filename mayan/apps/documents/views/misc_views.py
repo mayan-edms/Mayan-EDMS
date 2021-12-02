@@ -1,6 +1,7 @@
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.utils import parse_range
 from mayan.apps.converter.transformations import TransformationResize
 from mayan.apps.views.generics import FormView, SimpleView
 from mayan.apps.views.mixins import ExternalObjectViewMixin
@@ -8,7 +9,6 @@ from mayan.apps.views.mixins import ExternalObjectViewMixin
 from ..forms.misc_forms import PrintForm
 from ..literals import PAGE_RANGE_RANGE
 from ..settings import setting_print_width, setting_print_height
-from ..utils import parse_range
 
 
 class PrintFormView(ExternalObjectViewMixin, FormView):

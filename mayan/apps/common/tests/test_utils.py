@@ -2,7 +2,26 @@ from django.db import models
 
 from mayan.apps.testing.tests.base import BaseTestCase
 
-from ..utils import ResolverPipelineModelAttribute
+from ..utils import ResolverPipelineModelAttribute, parse_range
+
+
+class ParseRangeTestCase(BaseTestCase):
+    def test_parse_range(self):
+        self.assertEqual(
+            parse_range('1'), [1]
+        )
+
+        self.assertEqual(
+            parse_range('1-5'), [1, 2, 3, 4, 5]
+        )
+
+        self.assertEqual(
+            parse_range('2,4,6'), [2, 4, 6]
+        )
+
+        self.assertEqual(
+            parse_range('2,4,6-8'), [2, 4, 6, 7, 8]
+        )
 
 
 class ResolverRelatedManagerTestCase(BaseTestCase):

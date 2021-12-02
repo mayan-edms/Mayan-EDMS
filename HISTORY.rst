@@ -76,11 +76,6 @@
 - Added the ``search_status`` management command to show indexing status of
   the search backend.
 
-
-
-
-
-
 4.1.4 (2021-12-01)
 ==================
 - Changes merged from versions 4.0.20 and 4.0.21.

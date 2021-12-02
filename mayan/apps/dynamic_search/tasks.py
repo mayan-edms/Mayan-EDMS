@@ -6,6 +6,7 @@ from mayan.apps.lock_manager.exceptions import LockError
 from mayan.celery import app
 
 from .classes import SearchBackend, SearchModel
+from .exceptions import DynamicSearchRetry
 
 logger = logging.getLogger(name=__name__)
 
@@ -21,7 +22,7 @@ def task_deindex_instance(self, app_label, model_name, object_id):
 
     try:
         SearchBackend.get_instance().deindex_instance(instance=instance)
-    except LockError as exception:
+    except (DynamicSearchRetry, LockError) as exception:
         raise self.retry(exc=exception)
 
     logger.info('Finished')
@@ -67,7 +68,7 @@ def task_index_instance(
             instance=instance, exclude_model=ExcludeModel,
             exclude_kwargs=exclude_kwargs
         )
-    except LockError as exception:
+    except (DynamicSearchRetry, LockError) as exception:
         raise self.retry(exc=exception)
 
     logger.info('Finished')
