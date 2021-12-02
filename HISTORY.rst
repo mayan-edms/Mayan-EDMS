@@ -76,6 +76,9 @@
 - Added the ``search_status`` management command to show indexing status of
   the search backend.
 - Move SQLite check to the databases app.
+- Add support for inclusion and exclusion regular expressions for watch
+  folders. Closes GitLab issue #965. Thanks to Sven Gaechter (@sgaechter)
+  for the request.
 
 4.1.4 (2021-12-01)
 ==================
