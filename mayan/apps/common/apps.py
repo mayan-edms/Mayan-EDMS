@@ -1,7 +1,6 @@
 import logging
 import sys
 import traceback
-import warnings
 
 from django import apps
 from django.conf.urls import include, url
@@ -19,12 +18,8 @@ from .links import (
     link_support, link_tools
 )
 
-from .literals import MESSAGE_SQLITE_WARNING
 from .menus import menu_about, menu_topbar, menu_user
-
 from .signals import signal_pre_initial_setup, signal_pre_upgrade
-from .utils import check_for_sqlite
-from .warnings import DatabaseWarning
 
 logger = logging.getLogger(name=__name__)
 
@@ -140,12 +135,6 @@ class CommonApp(MayanAppConfig):
         super().ready()
 
         admin.autodiscover()
-
-        if check_for_sqlite():
-            warnings.warn(
-                category=DatabaseWarning,
-                message=force_text(s=MESSAGE_SQLITE_WARNING)
-            )
 
         AJAXTemplate(
             name='menu_main', template_name='appearance/menus/menu_main.html'

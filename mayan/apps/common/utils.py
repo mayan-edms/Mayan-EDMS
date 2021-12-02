@@ -4,12 +4,10 @@ from functools import reduce
 import logging
 import types
 
-from django.conf import settings
 from django.core.exceptions import FieldDoesNotExist
 from django.db.models.constants import LOOKUP_SEP
 
 from .exceptions import ResolverError, ResolverPipelineError
-from .literals import DJANGO_SQLITE_BACKEND
 
 logger = logging.getLogger(name=__name__)
 
@@ -37,7 +35,8 @@ class ProgressBar:
             self.fill_symbol * fill_size, '-' * (self.length - fill_size)
         )
         print(
-            f'\r{self.prefix} |{bar}| {percent}% {self.suffix}', end = self.print_end
+            f'\r{self.prefix} |{bar}| {percent}% {self.suffix}',
+            end=self.print_end
         )
         # Print New Line on Complete
         if index == self.total:
@@ -210,10 +209,6 @@ def any_to_bool(value):
             util.strtobool(val=value)
         )
     return value
-
-
-def check_for_sqlite():
-    return settings.DATABASES['default']['ENGINE'] == DJANGO_SQLITE_BACKEND and settings.DEBUG is False
 
 
 def flatten_list(value):

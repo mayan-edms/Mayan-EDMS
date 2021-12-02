@@ -75,6 +75,7 @@
   queuing of search models from the CLI.
 - Added the ``search_status`` management command to show indexing status of
   the search backend.
+- Move SQLite check to the databases app.
 
 4.1.4 (2021-12-01)
 ==================
