@@ -19,7 +19,7 @@ from mayan.apps.converter.exceptions import (
 from mayan.apps.events.classes import EventManagerMethodAfter
 from mayan.apps.events.decorators import method_event
 from mayan.apps.file_caching.models import CachePartitionFile
-from mayan.apps.mimetype.api import get_mimetype
+from mayan.apps.mime_types.classes import MIMETypeBackend
 from mayan.apps.storage.classes import DefinedStorageLazy
 
 from ..events import (
@@ -334,13 +334,14 @@ class DocumentFile(
 
     def mimetype_update(self, save=True):
         """
-        Read a document verions's file and determine the mimetype by calling
-        the get_mimetype wrapper.
+        Read a document verions's file and determine the mimetype by using
+        the MIME type backend.
         """
         if self.exists():
             try:
                 with self.open() as file_object:
-                    self.mimetype, self.encoding = get_mimetype(
+                    mimetype_backend = MIMETypeBackend.get_backend_instance()
+                    self.mimetype, self.encoding = mimetype_backend.get_mime_type(
                         file_object=file_object
                     )
             except Exception:

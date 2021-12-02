@@ -18,7 +18,7 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.appearance.classes import Icon
-from mayan.apps.mimetype.api import get_mimetype
+from mayan.apps.mime_types.classes import MIMETypeBackend
 from mayan.apps.navigation.classes import Link
 from mayan.apps.storage.compressed_files import MsgArchive
 from mayan.apps.storage.literals import MSG_MIME_TYPES
@@ -79,8 +79,9 @@ class ConverterBase:
     def __init__(self, file_object, mime_type=None):
         self.file_object = file_object
         self.image = None
-        self.mime_type = mime_type or get_mimetype(
-            file_object=file_object, mimetype_only=False
+
+        self.mime_type = mime_type or MIMETypeBackend.get_backend_instance().get_mime_type(
+            file_object=file_object, mime_type_only=False
         )[0]
         self.soffice_file = None
         Image.init()
@@ -248,10 +249,9 @@ class ConverterBase:
                         filename=members[0]
                     )
 
-                self.mime_type = get_mimetype(
-                    file_object=self.file_object, mimetype_only=True
+                self.mime_type = MIMETypeBackend.get_backend_instance().get_mime_type(
+                    file_object=self.file_object, mime_type_only=True
                 )[0]
-
         if self.mime_type in CONVERTER_OFFICE_FILE_MIMETYPES:
             return self.soffice()
         else:

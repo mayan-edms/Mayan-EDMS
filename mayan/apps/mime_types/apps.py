@@ -4,7 +4,7 @@ from mayan.apps.common.apps import MayanAppConfig
 
 
 class MIMETypesApp(MayanAppConfig):
-    name = 'mayan.apps.mimetype'
+    name = 'mayan.apps.mime_types'
     has_tests = True
     verbose_name = _('MIME types')
 

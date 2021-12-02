@@ -26,7 +26,7 @@ class MIMETypeBackendPerlFileMIMEInfo(MIMETypeBackend):
                 _('mimetype not installed or not found.')
             )
 
-    def _get_mimetype(self, file_object, mimetype_only):
+    def _get_mime_type(self, file_object, mime_type_only):
         with NamedTemporaryFile() as temporary_file_object:
             file_object.seek(0)
             copyfileobj(

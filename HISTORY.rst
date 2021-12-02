@@ -79,6 +79,12 @@
 - Add support for inclusion and exclusion regular expressions for watch
   folders. Closes GitLab issue #965. Thanks to Sven Gaechter (@sgaechter)
   for the request.
+- MIME type app updates:
+
+  - Add support for MIME type detection backends.
+  - Add PERL ``mimetype`` backend.
+  - Add Linux ``file`` command backend.
+  - Rename ``mimetype`` app to ``mime_types``.
 
 4.1.4 (2021-12-01)
 ==================

@@ -13,7 +13,7 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.settings import setting_home_view
 from mayan.apps.databases.utils import check_queryset
-from mayan.apps.mimetype.api import get_mimetype
+from mayan.apps.mime_types.classes import MIMETypeBackend
 from mayan.apps.permissions import Permission
 
 from .exceptions import ActionError
@@ -96,8 +96,8 @@ class DownloadViewMixin:
         }
 
         if response.file_to_stream:
-            content_type, encoding = get_mimetype(
-                file_object=response.file_to_stream, mimetype_only=True
+            content_type, encoding = MIMETypeBackend.get_backend_instance().get_mime_type(
+                file_object=response.file_to_stream, mime_type_only=True
             )
             # Encoding isn't set to prevent browsers from automatically
             # uncompressing files.

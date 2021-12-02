@@ -21,7 +21,7 @@ class MIMETypeBackend:
     def _init(self, **kwargs):
         """Option method for subclasses to overload."""
 
-    def get_mimetype(self, file_object, mimetype_only=False):
-        return self._get_mimetype(
-            file_object=file_object, mimetype_only=mimetype_only
+    def get_mime_type(self, file_object, mime_type_only=False):
+        return self._get_mime_type(
+            file_object=file_object, mime_type_only=mime_type_only
         )
