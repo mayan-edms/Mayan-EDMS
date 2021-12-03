@@ -613,6 +613,15 @@ class DjangoSearchBackendDocumentSearchTestCase(
         self.assertEqual(queryset.count(), 0)
 
 
+#@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.elastic_search.ElasticSearchBackend')
+class ElasticSearchBackendDocumentSearchTestCase(
+    CommonBackendFunctionalityTestCaseMixin, DocumentTestMixin,
+    BaseTestCase
+):
+    _test_search_backend_path = 'mayan.apps.dynamic_search.backends.elastic_search.ElasticSearchBackend'
+    auto_upload_test_document = False
+
+
 @override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.tests.backends.TestSearchBackend')
 class WhooshSearchBackendDocumentSearchTestCase(
     CommonBackendFunctionalityTestCaseMixin, DocumentTestMixin,

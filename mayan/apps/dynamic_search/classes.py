@@ -154,7 +154,7 @@ class SearchBackend:
     def __init__(self, **kwargs):
         self.kwargs = kwargs
 
-    def _search(self, global_and_search, query, search_model, user):
+    def _search(self, global_and_search, query, search_model, user, ignore_limit):
         raise NotImplementedError
 
     def cleanup_query(self, query, search_model):

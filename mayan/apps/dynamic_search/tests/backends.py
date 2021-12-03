@@ -3,14 +3,13 @@ from django.utils.module_loading import import_string
 from mayan.apps.storage.utils import TemporaryDirectory
 
 from ..classes import SearchBackend
+from ..backends.elastic_search import ElasticSearchBackend
 from ..backends.whoosh import WhooshSearchBackend
 from ..literals import DEFAULT_SEARCH_BACKEND
 from ..settings import setting_backend_arguments
 
-default_search_backend = import_string(dotted_path=DEFAULT_SEARCH_BACKEND)
 
-
-class TestSearchBackend(default_search_backend):
+class TestSearchBackend(SearchBackend):
     """
     Test search backend dynamically generated from the default search
     backend. If the default backend is the Whoosh backend, a temporary
@@ -27,26 +26,42 @@ class TestSearchBackend(default_search_backend):
     _test_view = None
 
     def __init__(self, *args, **kwargs):
-        kwargs = setting_backend_arguments.value.copy()
+        if self._test_view:
+            backend_path = self._test_view._test_search_backend_path
+        else:
+            backend_path = DEFAULT_SEARCH_BACKEND
 
-        if issubclass(default_search_backend, WhooshSearchBackend):
-            if not hasattr(self.__class__, '_temporary_directory'):
-                self.__class__._temporary_directory = TemporaryDirectory()
+        self._backend_kwargs = setting_backend_arguments.value.copy()
+        self._backend_class = import_string(dotted_path=backend_path)
 
-            kwargs['index_path'] = self.__class__._temporary_directory.name
+        if issubclass(self._backend_class, WhooshSearchBackend):
+            if not hasattr(self.__class__, '_local_attribute_backend_temporary_directory'):
+                self.__class__._local_attribute_backend_temporary_directory = TemporaryDirectory()
+
+            self._backend_kwargs['index_path'] = self._local_attribute_backend_temporary_directory.name
+            self._backend = self._backend_class(**self._backend_kwargs)
+        elif issubclass(self._backend_class, ElasticSearchBackend):
+            self._backend = self._backend_class(**self._backend_kwargs)
+
+            if not hasattr(self.__class__, '_local_attribute_backend_indices_cleared'):
+                self.__class__._local_attribute_backend_indices_cleared = True
+                client = self._backend.get_client()
+                client.indices.delete(index='_all')
+        else:
+            self._backend = self._backend_class(**self._backend_kwargs)
 
         if not self._test_view:
             SearchBackend.terminate()
 
         super().__init__(*args, **kwargs)
 
+    def _search(self, *args, **kwargs):
+        return self._backend._search(*args, **kwargs)
+
     def deindex_instance(self, *args, **kwargs):
         if self._test_view:
-            super().deindex_instance(*args, **kwargs)
+            return self._backend.deindex_instance(*args, **kwargs)
 
     def index_instance(self, *args, **kwargs):
         if self._test_view:
-            super().index_instance(*args, **kwargs)
-
-    def search(self, *args, **kwargs):
-        return super().search(*args, **kwargs)
+            return self._backend.index_instance(*args, **kwargs)
