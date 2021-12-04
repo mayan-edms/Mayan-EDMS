@@ -27,7 +27,7 @@ class TestSearchBackend(SearchBackend):
 
     def __init__(self, *args, **kwargs):
         if self._test_view:
-            backend_path = self._test_view._test_search_backend_path
+            backend_path = getattr(self._test_view, '_test_search_backend_path', DEFAULT_SEARCH_BACKEND)
         else:
             backend_path = DEFAULT_SEARCH_BACKEND
 
@@ -41,17 +41,17 @@ class TestSearchBackend(SearchBackend):
             self._backend_kwargs['index_path'] = self._local_attribute_backend_temporary_directory.name
             self._backend = self._backend_class(**self._backend_kwargs)
         elif issubclass(self._backend_class, ElasticSearchBackend):
+            self._backend_kwargs['indices_namespace'] = 'test'
             self._backend = self._backend_class(**self._backend_kwargs)
 
             if not hasattr(self.__class__, '_local_attribute_backend_indices_cleared'):
                 self.__class__._local_attribute_backend_indices_cleared = True
-                client = self._backend.get_client()
-                client.indices.delete(index='_all')
+                self._backend.reset()
         else:
             self._backend = self._backend_class(**self._backend_kwargs)
 
         if not self._test_view:
-            SearchBackend.terminate()
+            SearchBackend._terminate()
 
         super().__init__(*args, **kwargs)
 
@@ -65,3 +65,6 @@ class TestSearchBackend(SearchBackend):
     def index_instance(self, *args, **kwargs):
         if self._test_view:
             return self._backend.index_instance(*args, **kwargs)
+
+    def reset(self):
+        return self._backend.reset()

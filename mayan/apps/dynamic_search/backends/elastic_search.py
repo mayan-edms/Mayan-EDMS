@@ -1,48 +1,79 @@
 import logging
 
+import elasticsearch
 from elasticsearch import Elasticsearch
-from elasticsearch_dsl import AttrDict, Q, Search
+from elasticsearch_dsl import Q, Search
 
-from django.utils.encoding import force_text
+from ..classes import SearchBackend, SearchModel
+from ..settings import setting_results_limit
 
-from ..classes import SearchBackend, SearchField, SearchModel
+from .literals import DJANGO_TO_ELASTIC_SEARCH_FIELD_MAP
 
-from .literals import (
-    QUERY_OPERATION_AND, QUERY_OPERATION_OR, TERM_NEGATION_CHARACTER,
-    TERM_OPERATION_OR, TERM_OPERATIONS, TERM_QUOTES, TERM_SPACE_CHARACTER
-)
+DEFAULT_ELASTIC_SEARCH_INDICES_NAMESPACE = 'mayan'
+DEFAULT_ELASTIC_SEARCH_HOST = 'http://127.0.0.1:9200'
 logger = logging.getLogger(name=__name__)
 
 
 class ElasticSearchBackend(SearchBackend):
+    field_map = DJANGO_TO_ELASTIC_SEARCH_FIELD_MAP
+
+    def __init__(self, **kwargs):
+        self.indices_namespace = kwargs.pop(
+            'indices_namespace', DEFAULT_ELASTIC_SEARCH_INDICES_NAMESPACE
+        )
+        self.host = kwargs.pop('host', DEFAULT_ELASTIC_SEARCH_HOST)
+        self.hosts = kwargs.pop('hosts', None)
+
+        super().__init__(**kwargs)
+
     def _search(
         self, query, search_model, user, global_and_search=False,
         ignore_limit=False
     ):
         client = self.get_client()
-
-        query_kwargs = {}
-
-        search = Search(
-            using=client, index=self.get_index_name(
-                search_model=search_model
-            )
+        index_name = self.get_index_name(
+            search_model=search_model
         )
 
-        elastic_search_query = Q('fuzzy', _expand__to_dot=False, **query) | Q('match', _expand__to_dot=False, **query) | Q('wildcard', _expand__to_dot=False, **query)
-        search = search.query(elastic_search_query)
+        search = Search(index=index_name, using=client)
 
-        client.indices.refresh(
-            index=self.get_index_name(
-                search_model=search_model
+        final_elastic_search_query = None
+
+        for key, value in query.items():
+            elastic_search_query = Q(
+                Q(
+                    name_or_query='fuzzy', _expand__to_dot=False, **{key: value}
+                ) | Q(
+                    name_or_query='match', _expand__to_dot=False, **{key: value}
+                ) | Q(
+                    name_or_query='regexp', _expand__to_dot=False, **{key: value}
+                ) | Q(
+                    name_or_query='wildcard', _expand__to_dot=False, **{key: value}
+                )
             )
-        )
+
+            if final_elastic_search_query is None:
+                final_elastic_search_query = elastic_search_query
+            else:
+                if global_and_search:
+                    final_elastic_search_query &= elastic_search_query
+                else:
+                    final_elastic_search_query |= elastic_search_query
+
+        search = search.source(None).query(final_elastic_search_query)
+
+        client.indices.refresh(index=index_name)
 
         response = search.execute()
 
         id_list = []
 
-        for hit in response[0:100]:  #TODO change to setting
+        if ignore_limit:
+            limit = None
+        else:
+            limit = setting_results_limit.value
+
+        for hit in response[0:limit]:
             id_list.append(hit.meta.id)
 
         return search_model.get_queryset().filter(
@@ -58,41 +89,20 @@ class ElasticSearchBackend(SearchBackend):
         )
 
     def get_client(self):
-        #TODO: (host="localhost", port=9200
+        if not self.hosts:
+            self.hosts = (self.host,)
+
         return Elasticsearch(
+            hosts=self.hosts,
             sniff_on_start=True,
             sniff_on_connection_fail=True,
             sniffer_timeout=60
         )
 
     def get_index_name(self, search_model):
-        return search_model.model_name.lower()
-
-    def get_resolved_field_map(self, search_model):
-        result = {}
-        for search_field in self.get_search_model_fields(search_model=search_model):
-            ##TODO:FIX
-            from elasticsearch_dsl.field import Text
-            backend_field_type = {'field': Text}
-
-
-            if backend_field_type:
-                result[search_field.get_full_name()] = backend_field_type
-            else:
-                logger.warning(
-                    'Unknown field type "%s" for model "%s"',
-                    search_field.get_full_name(),
-                    search_model.get_full_name()
-                )
-
-        return result
-
-    def get_search_model_fields(self, search_model):
-        result = search_model.search_fields.copy()
-        result.append(
-            SearchField(search_model=search_model, field='id', label='ID')
+        return '{}-{}'.format(
+            self.indices_namespace, search_model.model_name.lower()
         )
-        return result
 
     def index_instance(self, instance, exclude_model=None, exclude_kwargs=None):
         search_model = SearchModel.get_for_model(instance=instance)
@@ -105,7 +115,49 @@ class ElasticSearchBackend(SearchBackend):
 
         kwargs['id'] = instance.id
 
-        response = self.get_client().index(
+        self.get_client().index(
             index=self.get_index_name(search_model=search_model),
             id=instance.pk, document=kwargs
         )
+
+    def initialize(self):
+        self.update_mappings()
+
+    def reset(self):
+        client = self.get_client()
+        client.indices.delete(index='{}-*'.format(self.indices_namespace))
+        self.update_mappings()
+
+    def update_mappings(self):
+        client = self.get_client()
+
+        for search_model in SearchModel.all():
+            index_name = self.get_index_name(search_model=search_model)
+
+            body = {
+                'mappings': {
+                    'properties': {}
+                }
+            }
+
+            field_map = self.get_resolved_field_map(search_model=search_model)
+            for field_name, search_field_data in field_map.items():
+                body['mappings']['properties'][field_name] = {'type': search_field_data['field'].name}
+
+            try:
+                client.indices.create(
+                    index=index_name,
+                    body=body
+                )
+            except elasticsearch.exceptions.RequestError:
+                try:
+                    client.indices.put_mapping(
+                        index=index_name,
+                        body=body['mappings']
+                    )
+                except elasticsearch.exceptions.RequestError:
+                    """There a mapping changes that were not allowed.
+                    Example: Text to Keyword.
+                    Boot up regardless and allow user to reindex to delete
+                    old indices.
+                    """

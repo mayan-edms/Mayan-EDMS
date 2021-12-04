@@ -13,7 +13,7 @@ from mayan.apps.common.utils import any_to_bool
 from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError
 
-from ..classes import SearchBackend, SearchField, SearchModel
+from ..classes import SearchBackend, SearchModel
 from ..exceptions import DynamicSearchRetry
 from ..settings import setting_results_limit
 
@@ -25,6 +25,8 @@ logger = logging.getLogger(name=__name__)
 
 
 class WhooshSearchBackend(SearchBackend):
+    field_map = DJANGO_TO_WHOOSH_FIELD_MAP
+
     def __init__(self, **kwargs):
         index_path = kwargs.pop('index_path', None)
         writer_limitmb = kwargs.pop('writer_limitmb', 128)
@@ -125,7 +127,7 @@ class WhooshSearchBackend(SearchBackend):
         schema = self.get_search_model_schema(search_model=search_model)
 
         try:
-            # Explictly specify the schema. Allows using existing index
+            # Explicitly specify the schema. Allows using existing index
             # when the schema changes.
             index = storage.open_index(
                 indexname=search_model.get_full_name(), schema=schema
@@ -136,30 +138,6 @@ class WhooshSearchBackend(SearchBackend):
             )
 
         return index
-
-    def get_resolved_field_map(self, search_model):
-        result = {}
-        for search_field in self.get_search_model_fields(search_model=search_model):
-            whoosh_field_type = DJANGO_TO_WHOOSH_FIELD_MAP.get(
-                search_field.get_model_field().__class__
-            )
-            if whoosh_field_type:
-                result[search_field.get_full_name()] = whoosh_field_type
-            else:
-                logger.warning(
-                    'unknown field type "%s" for model "%s"',
-                    search_field.get_full_name(),
-                    search_model.get_full_name()
-                )
-
-        return result
-
-    def get_search_model_fields(self, search_model):
-        result = search_model.search_fields.copy()
-        result.append(
-            SearchField(search_model=search_model, field='id', label='ID')
-        )
-        return result
 
     def get_search_model_schema(self, search_model):
         field_map = self.get_resolved_field_map(search_model=search_model)

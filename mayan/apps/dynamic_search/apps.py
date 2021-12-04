@@ -22,7 +22,10 @@ class DynamicSearchApp(MayanAppConfig):
         super().ready()
 
         SearchModel.load_modules()
-        SearchBackend.initialize()
+        SearchBackend._initialize()
+
+        backend = SearchBackend.get_instance()
+        backend.initialize()
 
         menu_facet.bind_links(
             links=(link_search, link_search_advanced),

@@ -1,5 +1,4 @@
 from django.db import models
-from django.test import override_settings
 
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
@@ -471,11 +470,11 @@ class CommonBackendFunctionalityTestCaseMixin(SearchTestMixin, BaseTestCase):
         self.assertTrue(self._test_object_grandchild not in queryset)
 
 
-@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend')
 class DjangoSearchBackendDocumentSearchTestCase(
     CommonBackendFunctionalityTestCaseMixin, DocumentTestMixin,
     BaseTestCase
 ):
+    _test_search_backend_path = 'mayan.apps.dynamic_search.backends.django.DjangoSearchBackend'
     auto_upload_test_document = False
 
     def test_meta_only(self):
@@ -613,7 +612,6 @@ class DjangoSearchBackendDocumentSearchTestCase(
         self.assertEqual(queryset.count(), 0)
 
 
-#@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.elastic_search.ElasticSearchBackend')
 class ElasticSearchBackendDocumentSearchTestCase(
     CommonBackendFunctionalityTestCaseMixin, DocumentTestMixin,
     BaseTestCase
@@ -621,12 +619,27 @@ class ElasticSearchBackendDocumentSearchTestCase(
     _test_search_backend_path = 'mayan.apps.dynamic_search.backends.elastic_search.ElasticSearchBackend'
     auto_upload_test_document = False
 
+    def test_simple_document_search(self):
+        self._upload_test_document(label='first_doc')
 
-@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.tests.backends.TestSearchBackend')
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        queryset = self.search_backend.search(
+            search_model=document_search,
+            query={'q': 'first*'}, user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.test_document in queryset)
+
+
 class WhooshSearchBackendDocumentSearchTestCase(
     CommonBackendFunctionalityTestCaseMixin, DocumentTestMixin,
     BaseTestCase
 ):
+    _test_search_backend_path = 'mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend'
     auto_upload_test_document = False
 
     def test_simple_search(self):

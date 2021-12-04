@@ -18,9 +18,13 @@ queue_search.add_task_type(
     label=_('Index a model instance to the search engine.'),
     name='task_index_instance',
 )
-
 queue_tools.add_task_type(
     dotted_path='mayan.apps.dynamic_search.tasks.task_index_search_model',
     label=_('Index all instances of a search model to the search engine.'),
     name='task_index_search_model',
+)
+queue_tools.add_task_type(
+    dotted_path='mayan.apps.dynamic_search.tasks.task_reindex_backend',
+    label=_('Reset the search backend indices and index all instances again.'),
+    name='task_reindex_backend',
 )

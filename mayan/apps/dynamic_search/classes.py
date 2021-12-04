@@ -41,7 +41,7 @@ class SearchBackend:
         )
 
     @staticmethod
-    def initialize():
+    def _initialize():
         # Hidden import.
         from .handlers import (
             handler_deindex_instance, handler_index_instance,
@@ -109,7 +109,7 @@ class SearchBackend:
         return queryset.filter(pk__in=pk_list)
 
     @staticmethod
-    def terminate():
+    def _terminate():
         for search_model in SearchModel.all():
             post_save.disconnect(
                 dispatch_uid='search_handler_index_instance',
@@ -178,8 +178,6 @@ class SearchBackend:
 
     def decode_query(self, query, global_and_search=False):
         # Clean up the query.
-        # The original query is immutable, create a new
-        # mutable copy.
         query.pop('_match_all', None)
 
         # Turn scoped query dictionary into a series of unscoped queries.
@@ -217,7 +215,7 @@ class SearchBackend:
                     if key.endswith(SCOPE_MATCH_ALL):
                         scope_id, key = key.split(DELIMITER, 1)
                         scopes.setdefault(scope_id, {})
-                        scope_match_all = value.upper() == 'TRUE'
+                        scope_match_all = value.lower() in ['on', 'true']
                         scopes[scope_id]['match_all'] = scope_match_all
                     else:
                         # Must be a scoped query.
@@ -230,7 +228,7 @@ class SearchBackend:
                         scopes[scope_id]['query'][key] = value
             else:
                 scopes.setdefault(scope_id, {})
-                scopes[scope_id].setdefault('match_all', scope_match_all)
+                scopes[scope_id].setdefault('match_all', global_and_search)
                 scopes[scope_id].setdefault('query', {})
                 scopes[scope_id]['query'][key] = value
         else:
@@ -245,10 +243,50 @@ class SearchBackend:
         }
 
     def deindex_instance(self, instance):
-        raise NotImplementedError
+        """
+        Optional method to remove an model instance from the search index.
+        """
+
+    def get_resolved_field_map(self, search_model):
+        result = {}
+        for search_field in self.get_search_model_fields(search_model=search_model):
+            backend_field_type = self.field_map.get(
+                search_field.field_type
+            )
+
+            if backend_field_type:
+                result[search_field.get_full_name()] = backend_field_type
+            else:
+                logger.warning(
+                    'Unknown field type "%s" for model "%s"',
+                    search_field.get_full_name(),
+                    search_model.get_full_name()
+                )
+
+        return result
+
+    def get_search_model_fields(self, search_model):
+        result = search_model.search_fields.copy()
+        result.append(
+            SearchField(search_model=search_model, field='id', label='ID')
+        )
+        return result
 
     def index_instance(self, instance, exclude_model=None, exclude_kwargs=None):
-        raise NotImplementedError
+        """
+        Optional method to add or update an model instance to the search
+        index.
+        """
+
+    def initialize(self):
+        """
+        Optional method to setup the backend. Executed once on every boot up.
+        """
+
+    def reset(self):
+        """
+        Optional method to clear all search indices.
+        """
 
     def search(
         self, query, search_model, user, global_and_search=False
@@ -260,7 +298,6 @@ class SearchBackend:
         result = self.decode_query(
             global_and_search=global_and_search, query=query
         )
-
         # Recursive call to the backend's search using queries as unscoped
         # and then merge then using the corresponding operator.
         queryset = self.solve_scope(
@@ -342,6 +379,10 @@ class SearchField:
         self.field = field
         self._label = label
         self.transformation_function = transformation_function
+
+    @cached_property
+    def field_type(self):
+        return self.get_model_field().__class__
 
     def get_full_name(self):
         return self.field
@@ -439,6 +480,7 @@ class SearchModel(AppsModuleLoaderMixin):
         self.permission = permission
         self.queryset = queryset
         self.search_fields = []
+        self.search_fields_dict = {}
         self.serializer_path = serializer_path
 
         self.manager_name = manager_name or self.model._meta.default_manager.name
@@ -463,6 +505,7 @@ class SearchModel(AppsModuleLoaderMixin):
         """
         search_field = SearchField(self, *args, **kwargs)
         self.search_fields.append(search_field)
+        self.search_fields_dict[search_field.get_full_name()] = search_field
 
     def add_proxy_model(self, app_label, model_name):
         self._proxies.append(
@@ -508,7 +551,7 @@ class SearchModel(AppsModuleLoaderMixin):
 
     def get_search_field(self, full_name):
         try:
-            return self.search_fields[full_name]
+            return self.search_fields_dict[full_name]
         except KeyError:
             raise KeyError('No search field named: %s' % full_name)
 
