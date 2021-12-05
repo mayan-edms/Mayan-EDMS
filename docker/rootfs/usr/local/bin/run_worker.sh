@@ -14,5 +14,7 @@ fi
 
 # Use -A and not --app. Both are the same but behave differently.
 # -A can be located before the command while --app cannot.
-shift
+if [ "$#" -gt 0 ]; then
+    shift
+fi
 su mayan --command "nice -n ${MAYAN_WORKER_NICE_LEVEL} ${MAYAN_PYTHON_BIN_DIR}celery -A mayan worker --loglevel=ERROR -Ofair --queues=${MAYAN_QUEUE_LIST} --without-gossip --without-heartbeat ${@}"
