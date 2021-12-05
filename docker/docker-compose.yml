@@ -39,6 +39,22 @@ services:
     ports:
       - "80:8000"
 
+  elasticsearch:
+    environment:
+      #- xpack.security.enabled=false
+      - "discovery.type=single-node"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    image: elasticsearch:${MAYAN_DOCKER_ELASTIC_SEARCH_TAG:-7.14.2}
+    networks:
+      - bridge
+    ports:
+      - "9200:9200"
+    profiles:
+      - elastic_search
+    restart: unless-stopped
+    volumes:
+      - ${MAYAN_ELASTIC_SEARCH_VOLUME:-redis}:/usr/share/elasticsearch/data
+
   postgresql:
     command:
       - "postgres"
@@ -246,6 +262,7 @@ services:
 
 volumes:
   app:
+  elasticsearch:
   postgres:
   mountindex:
   rabbitmq:
