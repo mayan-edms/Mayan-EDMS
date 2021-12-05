@@ -192,6 +192,7 @@ services:
     command:
       - run_worker
       - worker_d
+      - "--concurrency=1 --prefetch-multiplier=1"
     profiles:
       - extra_worker_d
 
