@@ -249,14 +249,23 @@ def get_related_field(model, related_field_name):
     return related_field
 
 
-def parse_range(astr):
-    # http://stackoverflow.com/questions/4248399/
-    # page-range-for-printing-algorithm
-    result = set()
-    for part in astr.split(','):
-        x = part.split('-')
-        result.update(range(int(x[0]), int(x[-1]) + 1))
-    return sorted(result)
+def parse_range(range_string):
+    for part in range_string.split(','):
+        part = part.strip()
+
+        if '-' in part:
+            part_range = part.split('-')
+            start = int(part_range[0].strip())
+            stop = int(part_range[1].strip())
+
+            if stop > start:
+                step = 1
+            else:
+                step = -1
+
+            yield from range(start, stop + step, step)
+        else:
+            yield int(part)
 
 
 def resolve_attribute(attribute, obj, kwargs=None):
