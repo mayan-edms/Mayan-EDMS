@@ -2,7 +2,38 @@ from django.db import models
 
 from mayan.apps.testing.tests.base import BaseTestCase
 
-from ..utils import ResolverPipelineModelAttribute, parse_range
+from ..utils import ResolverPipelineModelAttribute, flatten_list, parse_range
+
+
+class FlattenListTestCase(BaseTestCase):
+    def test_string_values(self):
+        self.assertEqual(
+            list(flatten_list(value='test string')), ['test string']
+        )
+
+        self.assertEqual(
+            list(flatten_list(value=['test string'])), ['test string']
+        )
+
+        self.assertEqual(
+            list(flatten_list(value=['test string1', 'test string2'])),
+            ['test string1', 'test string2']
+        )
+
+        self.assertEqual(
+            list(flatten_list(value=['test string1', 1])),
+            ['test string1', 1]
+        )
+
+        self.assertEqual(
+            list(flatten_list(value=[['test string1'], 1])),
+            ['test string1', 1]
+        )
+
+        self.assertEqual(
+            list(flatten_list(value=[['test string1'], [1]])),
+            ['test string1', 1]
+        )
 
 
 class ParseRangeTestCase(BaseTestCase):
