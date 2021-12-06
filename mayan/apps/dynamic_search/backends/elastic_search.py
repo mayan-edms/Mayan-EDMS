@@ -5,6 +5,8 @@ import elasticsearch
 from elasticsearch import Elasticsearch, helpers
 from elasticsearch_dsl import Q, Search
 
+from mayan.apps.common.utils import parse_range
+
 from ..classes import SearchBackend, SearchModel
 from ..settings import setting_results_limit
 
@@ -142,7 +144,7 @@ class ElasticSearchBackend(SearchBackend):
             id=instance.pk, document=kwargs
         )
 
-    def index_search_model(self, search_model):
+    def index_search_model(self, search_model, range_string):
         client = self.get_client()
         index_name = self.get_index_name(search_model=search_model)
         field_map = self.get_resolved_field_map(
@@ -150,7 +152,9 @@ class ElasticSearchBackend(SearchBackend):
         )
 
         def generate_actions():
-            for instance in search_model.model._meta.managers_map[search_model.manager_name].all():
+            queryset = search_model.model._meta.managers_map[search_model.manager_name].all()
+
+            for instance in queryset.filter(pk__in=parse_range(range_string=range_string)):
                 kwargs = search_model.populate(
                     field_map=field_map, instance=instance
                 )

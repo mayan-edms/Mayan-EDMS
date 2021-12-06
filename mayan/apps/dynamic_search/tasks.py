@@ -8,7 +8,8 @@ from mayan.celery import app
 from .classes import SearchBackend, SearchModel
 from .exceptions import DynamicSearchRetry
 from .literals import (
-    TASK_DEINDEX_INSTANCE_MAX_RETRIES, TASK_INDEX_INSTANCE_MAX_RETRIES
+    TASK_DEINDEX_INSTANCE_MAX_RETRIES, TASK_INDEX_INSTANCE_MAX_RETRIES,
+    TASK_REINDEX_BACKEND_STEP
 )
 
 logger = logging.getLogger(name=__name__)
@@ -35,10 +36,12 @@ def task_deindex_instance(self, app_label, model_name, object_id):
 @app.task(
     bind=True, ignore_result=True, max_retries=None, retry_backoff=True
 )
-def task_index_search_model(self, search_model_full_name):
+def task_index_search_model(self, search_model_full_name, range_string=None):
     search_model = SearchModel.get(name=search_model_full_name)
 
-    SearchBackend.get_instance().index_search_model(search_model=search_model)
+    SearchBackend.get_instance().index_search_model(
+        range_string=range_string, search_model=search_model
+    )
 
 
 @app.task(
@@ -78,8 +81,14 @@ def task_reindex_backend():
     backend.reset()
 
     for search_model in SearchModel.all():
-        task_index_search_model.apply_async(
-            kwargs={
-                'search_model_full_name': search_model.get_full_name(),
-            }
-        )
+        count = search_model.model._meta.managers_map[search_model.manager_name].all().count()
+        step = TASK_REINDEX_BACKEND_STEP
+
+        for id_start in range(1, count, step):
+            range_string = '{}-{}'.format(id_start, id_start + step)
+            task_index_search_model.apply_async(
+                kwargs={
+                    'range_string': range_string,
+                    'search_model_full_name': search_model.get_full_name(),
+                }
+            )

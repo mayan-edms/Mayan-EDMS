@@ -278,7 +278,7 @@ class SearchBackend:
         index.
         """
 
-    def index_search_model(self, search_model):
+    def index_search_model(self, search_model, range_string=None):
         """
         Optional method to add or update all instance of a model.
         """
