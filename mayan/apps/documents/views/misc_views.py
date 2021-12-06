@@ -76,7 +76,7 @@ class DocumentPrintView(ExternalObjectViewMixin, SimpleView):
 
         if page_group == PAGE_RANGE_RANGE:
             if page_range:
-                page_range = parse_range(astr=page_range)
+                page_range = parse_range(range_string=page_range)
                 pages = self.external_object.pages.filter(
                     page_number__in=page_range
                 )

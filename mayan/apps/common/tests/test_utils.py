@@ -39,19 +39,34 @@ class FlattenListTestCase(BaseTestCase):
 class ParseRangeTestCase(BaseTestCase):
     def test_parse_range(self):
         self.assertEqual(
-            parse_range('1'), [1]
+            list(parse_range('1')), [1]
         )
 
         self.assertEqual(
-            parse_range('1-5'), [1, 2, 3, 4, 5]
+            list(parse_range('1-5')), [1, 2, 3, 4, 5]
         )
 
         self.assertEqual(
-            parse_range('2,4,6'), [2, 4, 6]
+            list(parse_range('2,4,6')), [2, 4, 6]
         )
 
         self.assertEqual(
-            parse_range('2,4,6-8'), [2, 4, 6, 7, 8]
+            list(parse_range('2,4,6-8')), [2, 4, 6, 7, 8]
+        )
+
+    def test_repeated_numbers(self):
+        self.assertEqual(
+            list(parse_range('1,2,3,1,2,3')), [1, 2, 3, 1, 2, 3]
+        )
+
+    def test_reverse(self):
+        self.assertEqual(
+            list(parse_range('9-5')), [9, 8, 7, 6, 5]
+        )
+
+    def test_unsorted_range(self):
+        self.assertEqual(
+            list(parse_range('9,2,4,6-8')), [9, 2, 4, 6, 7, 8]
         )
 
 

@@ -79,7 +79,7 @@ class TransformationAddAction(WorkflowAction):
 
     def execute(self, context):
         if self.form_data['pages']:
-            page_range = parse_range(astr=self.form_data['pages'])
+            page_range = parse_range(range_string=self.form_data['pages'])
             queryset = context['document'].pages.filter(
                 page_number__in=page_range
             )
