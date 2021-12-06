@@ -401,7 +401,7 @@ shell-plus: ## Run the shell_plus command.
 
 docker-elastic-start: ## Start an Elastic Search test container.
 docker-elastic-start:
-	@docker run --detach -e ES_JAVA_OPTS="-Xms128m -Xmx128m" -e "discovery.type=single-node" --name $(TEST_ELASTIC_CONTAINER_NAME) --publish 9200:9200 --publish 9300:9300 $(DOCKER_ELASTIC_IMAGE_VERSION)
+	@docker run --detach -e ES_JAVA_OPTS="-Xms256m -Xmx256m" -e "discovery.type=single-node" --name $(TEST_ELASTIC_CONTAINER_NAME) --publish 9200:9200 --publish 9300:9300 $(DOCKER_ELASTIC_IMAGE_VERSION)
 	@while ! nc -z 127.0.0.1 9200; do echo -n .; sleep 1; done
 
 docker-elastic-stop: ## Stop and delete the Elastic Search container.
