@@ -22,7 +22,7 @@ class DynamicSearchApp(MayanAppConfig):
         super().ready()
 
         SearchModel.load_modules()
-        SearchBackend._initialize()
+        SearchBackend.initialize_class()
 
         backend = SearchBackend.get_instance()
         backend.initialize()

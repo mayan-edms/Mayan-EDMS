@@ -38,14 +38,7 @@ def task_deindex_instance(self, app_label, model_name, object_id):
 def task_index_search_model(self, search_model_full_name):
     search_model = SearchModel.get(name=search_model_full_name)
 
-    for instance in search_model.model._meta.default_manager.all():
-        task_index_instance.apply_async(
-            kwargs={
-                'app_label': instance._meta.app_label,
-                'model_name': instance._meta.model_name,
-                'object_id': instance.pk
-            }
-        )
+    SearchBackend.get_instance().index_search_model(search_model=search_model)
 
 
 @app.task(

@@ -51,7 +51,7 @@ class TestSearchBackend(SearchBackend):
             self._backend = self._backend_class(**self._backend_kwargs)
 
         if not self._test_view:
-            SearchBackend._terminate()
+            SearchBackend.uninitialize_class()
 
         super().__init__(*args, **kwargs)
 

@@ -1,7 +1,8 @@
+from collections import deque
 import logging
 
 import elasticsearch
-from elasticsearch import Elasticsearch
+from elasticsearch import Elasticsearch, helpers
 from elasticsearch_dsl import Q, Search
 
 from ..classes import SearchBackend, SearchModel
@@ -15,6 +16,7 @@ logger = logging.getLogger(name=__name__)
 
 
 class ElasticSearchBackend(SearchBackend):
+    _search_model_mappings = {}
     field_map = DJANGO_TO_ELASTIC_SEARCH_FIELD_MAP
 
     def __init__(self, **kwargs):
@@ -64,17 +66,17 @@ class ElasticSearchBackend(SearchBackend):
 
         client.indices.refresh(index=index_name)
 
-        response = search.execute()
-
-        id_list = []
-
         if ignore_limit:
             limit = None
         else:
             limit = setting_results_limit.value
 
-        for hit in response[0:limit]:
-            id_list.append(hit.meta.id)
+        response = search[0:limit].execute()
+
+        id_list = []
+
+        for hit in response:
+            id_list.append(hit['id'])
 
         return search_model.get_queryset().filter(
             pk__in=id_list
@@ -104,6 +106,28 @@ class ElasticSearchBackend(SearchBackend):
             self.indices_namespace, search_model.model_name.lower()
         )
 
+    def get_status(self):
+        client = self.get_client()
+        result = []
+
+        title = 'Elastic Search search model indexing status'
+        result.append(title)
+        result.append(len(title) * '=')
+
+        stats = client.indices.stats()
+
+        for search_model in SearchModel.all():
+            index_name = self.get_index_name(search_model=search_model)
+            index_stats = stats['indices'][index_name]
+
+            result.append(
+                '{}: {}'.format(
+                    search_model.label, index_stats['total']['docs']['count']
+                )
+            )
+
+        return result
+
     def index_instance(self, instance, exclude_model=None, exclude_kwargs=None):
         search_model = SearchModel.get_for_model(instance=instance)
         kwargs = search_model.populate(
@@ -113,12 +137,33 @@ class ElasticSearchBackend(SearchBackend):
             exclude_kwargs=exclude_kwargs
         )
 
-        kwargs['id'] = instance.id
-
         self.get_client().index(
             index=self.get_index_name(search_model=search_model),
             id=instance.pk, document=kwargs
         )
+
+    def index_search_model(self, search_model):
+        client = self.get_client()
+        index_name = self.get_index_name(search_model=search_model)
+        field_map = self.get_resolved_field_map(
+            search_model=search_model
+        )
+
+        def generate_actions():
+            for instance in search_model.model._meta.managers_map[search_model.manager_name].all():
+                kwargs = search_model.populate(
+                    field_map=field_map, instance=instance
+                )
+                kwargs['id'] = instance.pk
+                kwargs['_id'] = kwargs['id']
+                yield kwargs
+
+        bulk_indexing_generator = helpers.streaming_bulk(
+            client=client, index=index_name, actions=generate_actions(),
+            yield_ok=False
+        )
+
+        deque(iterable=bulk_indexing_generator, maxlen=0)
 
     def initialize(self):
         self.update_mappings()
@@ -128,32 +173,38 @@ class ElasticSearchBackend(SearchBackend):
         client.indices.delete(index='{}-*'.format(self.indices_namespace))
         self.update_mappings()
 
-    def update_mappings(self):
-        client = self.get_client()
-
-        for search_model in SearchModel.all():
-            index_name = self.get_index_name(search_model=search_model)
-
-            body = {
-                'mappings': {
-                    'properties': {}
-                }
-            }
+    def get_search_model_mappings(self, search_model):
+        try:
+            return self.__class__._search_model_mappings[search_model]
+        except KeyError:
+            mappings = {}
 
             field_map = self.get_resolved_field_map(search_model=search_model)
             for field_name, search_field_data in field_map.items():
-                body['mappings']['properties'][field_name] = {'type': search_field_data['field'].name}
+                mappings[field_name] = {'type': search_field_data['field'].name}
+
+            self.__class__._search_model_mappings[search_model] = mappings
+            return mappings
+
+    def update_mappings(self):
+        client = self.get_client()
+
+        actions = []
+        for search_model in SearchModel.all():
+            index_name = self.get_index_name(search_model=search_model)
+
+            mappings = self.get_search_model_mappings(search_model=search_model)
 
             try:
                 client.indices.create(
                     index=index_name,
-                    body=body
+                    body={'mappings': {'properties': mappings}}
                 )
             except elasticsearch.exceptions.RequestError:
                 try:
                     client.indices.put_mapping(
                         index=index_name,
-                        body=body['mappings']
+                        body={'properties': mappings}
                     )
                 except elasticsearch.exceptions.RequestError:
                     """There a mapping changes that were not allowed.

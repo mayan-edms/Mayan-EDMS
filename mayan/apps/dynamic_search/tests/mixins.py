@@ -25,10 +25,10 @@ class SearchTestMixin:
         TestSearchBackend._test_view = self
         self.search_backend = SearchBackend.get_instance()
         self._setup_test_model_search()
-        SearchBackend._initialize()
+        SearchBackend.initialize_class()
 
     def tearDown(self):
-        SearchBackend._terminate()
+        SearchBackend.uninitialize_class()
         self.search_backend.reset()
         super().tearDown()
 

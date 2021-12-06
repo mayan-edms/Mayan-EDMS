@@ -41,7 +41,7 @@ class SearchBackend:
         )
 
     @staticmethod
-    def _initialize():
+    def initialize_class():
         # Hidden import.
         from .handlers import (
             handler_deindex_instance, handler_index_instance,
@@ -109,7 +109,7 @@ class SearchBackend:
         return queryset.filter(pk__in=pk_list)
 
     @staticmethod
-    def _terminate():
+    def uninitialize_class():
         for search_model in SearchModel.all():
             post_save.disconnect(
                 dispatch_uid='search_handler_index_instance',
@@ -276,6 +276,11 @@ class SearchBackend:
         """
         Optional method to add or update an model instance to the search
         index.
+        """
+
+    def index_search_model(self, search_model):
+        """
+        Optional method to add or update all instance of a model.
         """
 
     def initialize(self):
