@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:17+0000\n"
+"POT-Creation-Date: 2021-12-09 04:33+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -96,7 +96,7 @@ msgstr "Grupos totales"
 
 #: dashboards.py:5
 msgid "User dashboard"
-msgstr ""
+msgstr "Panel de usuario"
 
 #: events.py:10
 msgid "Group created"
@@ -231,42 +231,42 @@ msgstr "Editar los detalles del usuario actual"
 #: views.py:65
 #, python-format
 msgid "Error deleting group \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Error eliminando el grupo \"%(instance)s\"; %(exception)s"
 
 #: views.py:72
 #, python-format
 msgid "Group \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "El grupo \"%(object)s\" se eliminó con éxito."
 
 #: views.py:73
 #, python-format
 msgid "%(count)d group deleted successfully."
-msgstr ""
+msgstr "%(count)d grupo eliminado con éxito."
 
 #: views.py:74
 #, python-format
 msgid "%(count)d groups deleted successfully."
-msgstr ""
+msgstr "%(count)d grupos eliminados con éxito."
 
 #: views.py:75
 #, python-format
 msgid "Delete group: %(object)s."
-msgstr ""
+msgstr "Eliminar grupo: %(object)s."
 
 #: views.py:76
 #, python-format
 msgid "Delete the %(count)d selected group."
-msgstr ""
+msgstr "Eliminar %(count)d grupo seleccionado."
 
 #: views.py:77
 #, python-format
 msgid "Delete the %(count)d selected groups."
-msgstr ""
+msgstr "Eliminar los %(count)d grupos seleccionados."
 
 #: views.py:89
 #, python-format
 msgid "Details of group: %s"
-msgstr ""
+msgstr "Detalles del grupo: %s"
 
 #: views.py:105
 #, python-format
@@ -304,37 +304,37 @@ msgstr "Usuarios del grupo: %s"
 #: views.py:184
 #, python-format
 msgid "Error deleting user \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Error al eliminando el usuario \"%(instance)s\"; %(exception)s"
 
 #: views.py:189
 #, python-format
 msgid "User \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "El usuario \"%(object)s\" se eliminó con éxito."
 
 #: views.py:190
 #, python-format
 msgid "%(count)d user deleted successfully."
-msgstr ""
+msgstr "%(count)d usuario eliminado con éxito."
 
 #: views.py:191
 #, python-format
 msgid "%(count)d users deleted successfully."
-msgstr ""
+msgstr "%(count)d usuarios eliminados con éxito."
 
 #: views.py:192
 #, python-format
 msgid "Delete user: %(object)s."
-msgstr ""
+msgstr "Eliminar usuario: %(object)s."
 
 #: views.py:193
 #, python-format
 msgid "Delete the %(count)d selected user."
-msgstr ""
+msgstr "Eliminar %(count)d usuario seleccionado."
 
 #: views.py:194
 #, python-format
 msgid "Delete the %(count)d selected users."
-msgstr ""
+msgstr "Eliminar los %(count)d usuarios seleccionados."
 
 #: views.py:209
 #, python-format

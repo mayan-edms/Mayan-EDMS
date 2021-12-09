@@ -10,14 +10,15 @@
 # Berny <berny@bernhard-marx.de>, 2021
 # Jesaja Everling <jeverling@gmail.com>, 2021
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2021
+# Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
+"POT-Creation-Date: 2021-12-09 04:33+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2021\n"
+"Last-Translator: Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -498,22 +499,22 @@ msgstr ""
 #: views/metadata_type_views.py:52
 #, python-format
 msgid "Metadata type \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Metadatentyp \"%(object)s\" erfolgreich gelöscht."
 
 #: views/metadata_type_views.py:55
 #, python-format
 msgid "%(count)d metadata type deleted successfully."
-msgstr ""
+msgstr "%(count)d Metadatentyp erfolgreich gelöscht."
 
 #: views/metadata_type_views.py:58
 #, python-format
 msgid "%(count)d metadata types deleted successfully."
-msgstr ""
+msgstr "%(count)d Metadatentypen erfolgreich gelöscht."
 
 #: views/metadata_type_views.py:60
 #, python-format
 msgid "Delete metadata type: %(object)s."
-msgstr ""
+msgstr "Lösche Metadatentyp: %(object)s."
 
 #: views/metadata_type_views.py:61
 #, python-format

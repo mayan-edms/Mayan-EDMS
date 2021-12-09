@@ -6,14 +6,15 @@
 # Translators:
 # Mathias Behrle <mathiasb@m9s.biz>, 2021
 # Marvin Haschker <marvin@haschker.me>, 2021
+# Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
+"POT-Creation-Date: 2021-12-09 04:32+0000\n"
 "PO-Revision-Date: 2021-10-07 06:42+0000\n"
-"Last-Translator: Marvin Haschker <marvin@haschker.me>, 2021\n"
+"Last-Translator: Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,7 +32,7 @@ msgstr "Backendpfad"
 
 #: model_mixins.py:23
 msgid "JSON encoded data for the backend class."
-msgstr ""
+msgstr "JSON kodierte Daten für die Backend Klasse."
 
 #: model_mixins.py:24
 msgid "Backend data"
