@@ -1,6 +1,7 @@
 import logging
 
 from django.apps import apps
+from django.db.models.aggregates import Max, Min
 
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.celery import app
@@ -81,14 +82,17 @@ def task_reindex_backend():
     backend.reset()
 
     for search_model in SearchModel.all():
-        count = search_model.model._meta.managers_map[search_model.manager_name].all().count()
-        step = TASK_REINDEX_BACKEND_STEP
 
-        for id_start in range(1, count, step):
-            range_string = '{}-{}'.format(id_start, id_start + step)
-            task_index_search_model.apply_async(
-                kwargs={
-                    'range_string': range_string,
-                    'search_model_full_name': search_model.get_full_name(),
-                }
-            )
+        queryset = search_model.model._meta.managers_map[search_model.manager_name].all()
+        if queryset:
+            queryset = queryset.aggregate(min_id=Min('id'), max_id=Max('id'))
+            step = TASK_REINDEX_BACKEND_STEP
+
+            for id_start in range(queryset['min_id'], queryset['max_id'] + 1, step):
+                range_string = '{}-{}'.format(id_start, id_start + step)
+                task_index_search_model.apply_async(
+                    kwargs={
+                        'range_string': range_string,
+                        'search_model_full_name': search_model.get_full_name(),
+                    }
+                )
