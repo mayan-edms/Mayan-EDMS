@@ -86,6 +86,23 @@ services:
     volumes:
       - ${MAYAN_POSTGRES_VOLUME:-postgres}:/var/lib/postgresql/data
 
+  pgadmin:
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${MAYAN_PGADMIN_EMAIL:-admin@example.org}
+      PGADMIN_DEFAULT_PASSWORD: ${MAYAN_PGADMIN_PASSWORD:-admin}
+      PGADMIN_DISABLE_POSTFIX: "true"
+    image: dpage/pgadmin4
+    networks:
+      - bridge
+    ports:
+      - "8080:80"
+      - "4443:443"
+    profiles:
+      - pgadmin
+    restart: unless-stopped
+    volumes:
+      - ${MAYAN_PGADMIN_VOLUME:-pgadmin}:/pgadmin
+
   redis:
     command:
       - redis-server
@@ -196,6 +213,15 @@ services:
     profiles:
       - extra_worker_d
 
+  worker_custom_queue:
+    <<: *mayan-container
+    command:
+      - /bin/sh
+      - -c
+      - 'MAYAN_QUEUE_LIST=${MAYAN_QUEUE_LIST} /usr/local/bin/run_worker.sh --prefetch-multiplier=1'
+    profiles:
+      - extra_worker_custom
+
   # Run a separate Celery beat container
   celery_beat:
     <<: *mayan-container
@@ -264,6 +290,7 @@ services:
 volumes:
   app:
   elasticsearch:
+  pgadmin:
   postgres:
   mountindex:
   rabbitmq:
