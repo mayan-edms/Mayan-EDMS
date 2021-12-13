@@ -2,21 +2,16 @@ version: '3.9'
 
 x-mayan-container:
   &mayan-container
-  depends_on:
-    - postgresql
-    - redis
-    - rabbitmq
-  env_file: env_file
+  env_file: .env
   environment:
     MAYAN_CELERY_BROKER_URL: amqp://${MAYAN_RABBITMQ_USER:-mayan}:${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}@rabbitmq:5672/${MAYAN_RABBITMQ_VHOST:-mayan}
     MAYAN_CELERY_RESULT_BACKEND: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/1
     MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'${MAYAN_DATABASE_NAME:-mayan}','PASSWORD':'${MAYAN_DATABASE_PASSWORD:-mayandbpass}','USER':'${MAYAN_DATABASE_USER:-mayan}','HOST':'${MAYAN_DATABASE_HOST:-postgresql}'}}"
-    MAYAN_DOCKER_WAIT: "${MAYAN_DATABASE_HOST:-postgresql}:5432 redis:6379 rabbitmq:5672"
     MAYAN_LOCK_MANAGER_BACKEND: mayan.apps.lock_manager.backends.redis_lock.RedisLock
     MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS: "{'redis_url':'redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/2'}"
   image: ${MAYAN_DOCKER_IMAGE_NAME:-mayanedms/mayanedms}:${MAYAN_DOCKER_IMAGE_TAG:-s4.2}
   networks:
-    - bridge
+    - mayan
   restart: unless-stopped
   volumes:
     - ${MAYAN_APP_VOLUME:-app}:/var/lib/mayan
@@ -42,18 +37,24 @@ services:
   elasticsearch:
     environment:
       #- xpack.security.enabled=false
-      - "discovery.type=single-node"
+      - discovery.type=single-node
+      - http.max_content_length=400mb
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    image: elasticsearch:${MAYAN_DOCKER_ELASTIC_SEARCH_TAG:-7.14.2}
+    image: ${MAYAN_DOCKER_ELASTICSEARCH_IMAGE:-docker.elastic.co/elasticsearch/elasticsearch}:${MAYAN_DOCKER_ELASTICSEARCH_TAG:-7.16.0}
     networks:
-      - bridge
-    ports:
-      - "9200:9200"
+      - mayan
+    # Enable to allow external access to the database.
+    # ports:
+    #  - "9200:9200"
     profiles:
-      - elastic_search
+      - elasticsearch_single
     restart: unless-stopped
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
     volumes:
-      - ${MAYAN_ELASTIC_SEARCH_VOLUME:-redis}:/usr/share/elasticsearch/data
+      - ${MAYAN_ELASTICSEARCH_VOLUME:-elasticsearch}:/usr/share/elasticsearch/data
 
   postgresql:
     command:
@@ -76,7 +77,7 @@ services:
       POSTGRES_USER: ${MAYAN_DATABASE_USER:-mayan}
     image: postgres:${MAYAN_DOCKER_POSTGRES_TAG:-12.9-alpine}
     networks:
-      - bridge
+      - mayan
     # Enable to allow external access to the database.
     # ports:
     #  - "5432:5432"
@@ -85,23 +86,6 @@ services:
     restart: unless-stopped
     volumes:
       - ${MAYAN_POSTGRES_VOLUME:-postgres}:/var/lib/postgresql/data
-
-  pgadmin:
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${MAYAN_PGADMIN_EMAIL:-admin@example.org}
-      PGADMIN_DEFAULT_PASSWORD: ${MAYAN_PGADMIN_PASSWORD:-admin}
-      PGADMIN_DISABLE_POSTFIX: "true"
-    image: dpage/pgadmin4
-    networks:
-      - bridge
-    ports:
-      - "8080:80"
-      - "4443:443"
-    profiles:
-      - pgadmin
-    restart: unless-stopped
-    volumes:
-      - ${MAYAN_PGADMIN_VOLUME:-pgadmin}:/pgadmin
 
   redis:
     command:
@@ -124,7 +108,7 @@ services:
       - "${MAYAN_REDIS_PASSWORD:-mayanredispassword}"
     image: redis:${MAYAN_DOCKER_REDIS_TAG:-6.2-alpine}
     networks:
-      - bridge
+      - mayan
     profiles:
       - redis
     restart: unless-stopped
@@ -191,6 +175,7 @@ services:
     command:
       - run_worker
       - worker_b
+      - "--prefetch-multiplier=1"
     profiles:
       - extra_worker_b
 
@@ -200,6 +185,7 @@ services:
     command:
       - run_worker
       - worker_c
+      - "--prefetch-multiplier=1"
     profiles:
       - extra_worker_c
 
@@ -246,14 +232,15 @@ services:
       RABBITMQ_DEFAULT_PASS: ${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}
       RABBITMQ_DEFAULT_VHOST: ${MAYAN_RABBITMQ_VHOST:-mayan}
     labels:
-      - "traefik.enable=${MAYAN_TRAEFIK_RABBITMQ_ENABLE}"
+      - "traefik.enable=${MAYAN_TRAEFIK_RABBITMQ_ENABLE;-false}"
       - "traefik.http.routers.mayan_frontend_https.tls=true"
       - "traefik.http.routers.mayan_frontend.rule=Host(`${MAYAN_TRAEFIK_EXTERNAL_DOMAIN}`)"
       - "traefik.http.routers.mayan_frontend.entrypoints=:15672"
     networks:
-      - bridge
-    ports:
-      - "15672:15672"
+      - mayan
+    # Enable to allow access to the administration interface.
+    # ports:
+    #   - "15672:15672"
     profiles:
       - rabbitmq
     restart: unless-stopped
@@ -267,7 +254,7 @@ services:
       - "--api.insecure=${MAYAN_TRAEFIK_API_INSECURE:-false}"
       - "--certificatesresolvers.letsencrypt.acme.caserver=${MAYAN_TRAEFIK_LETS_ENCRYPT_SERVER:-https://acme-staging-v02.api.letsencrypt.org/directory}"
       - "--certificatesresolvers.letsencrypt.acme.email=${MAYAN_TRAEFIK_LETS_ENCRYPT_EMAIL}"
-      - "--certificatesresolvers.letsencrypt.acme.storage=/certificates/letsencrypt/acme.json"
+      - "--certificatesresolvers.letsencrypt.acme.storage=/certificates-letsencrypt/letsencrypt/acme.json"
       - "--certificatesresolvers.letsencrypt.acme.tlschallenge=${MAYAN_TRAEFIK_LETS_ENCRYPT_TLS_CHALLENGE:-false}"
       - "--entrypoints.http.address=:80"
       - "--entrypoints.https.address=:443"
@@ -275,7 +262,7 @@ services:
       - "--providers.docker.exposedbydefault=false"
     image: traefik:${MAYAN_DOCKER_TRAEFIK_TAG:-v2.5}
     networks:
-      - bridge
+      - mayan
       - traefik
     ports:
       - "80:80"
@@ -284,8 +271,8 @@ services:
     profiles:
       - traefik
     volumes:
-      - traefik-certificates:/certificates
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - traefik-certificates-letsencrypt:/certificates
 
 volumes:
   app:
@@ -295,4 +282,4 @@ volumes:
   mountindex:
   rabbitmq:
   redis:
-  traefik-certificates:
+  traefik-certificates-letsencrypt:
