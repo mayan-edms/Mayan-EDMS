@@ -15,6 +15,10 @@ ENV LC_ALL=C.UTF-8 \
     PYTHONUNBUFFERED=1 \
     PROJECT_INSTALL_DIR=/opt/mayan-edms/
 
+ENV MAYAN_MEDIA_ROOT=/var/lib/mayan \
+    MAYAN_SEARCH_BACKEND=mayan.apps.dynamic_search.backends.django.DjangoSearchBackend \
+    MAYAN_STATIC_ROOT=${PROJECT_INSTALL_DIR}static
+
 # Debian package caching.
 ARG APT_PROXY
 RUN set -x \
@@ -153,7 +157,7 @@ RUN set -a \
 && pip install --no-cache-dir dist/mayan_edms-*.whl \
 # Install the static content.
 && mayan-edms.py installdependencies \
-&& MAYAN_STATIC_ROOT=${PROJECT_INSTALL_DIR}static mayan-edms.py preparestatic --link --noinput
+&& mayan-edms.py preparestatic --link --noinput
 
 COPY --chown=mayan:mayan requirements/testing-base.txt "${PROJECT_INSTALL_DIR}"
 
