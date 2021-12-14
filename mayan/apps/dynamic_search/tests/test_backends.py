@@ -616,7 +616,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
     CommonBackendFunctionalityTestCaseMixin, DocumentTestMixin,
     BaseTestCase
 ):
-    _test_search_backend_path = 'mayan.apps.dynamic_search.backends.elastic_search.ElasticSearchBackend'
+    _test_search_backend_path = 'mayan.apps.dynamic_search.backends.elasticsearch.ElasticSearchBackend'
     auto_upload_test_document = False
 
     def test_simple_document_search(self):

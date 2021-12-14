@@ -97,6 +97,11 @@
   - Added a new task ``task_reindex_backend`` to abstract backend reindexing.
   - Add constant maximum retries value to the ``task_deindex_instance`` and
     ``task_index_instance`` tasks.
+  - Add ranged search model indexing.
+  - Add the ``search_slow`` queue for long running search tasks.
+  - Support backend initialization, reset, and tear down.
+  - Automatically add the ``id`` field as a search field for all search
+    models.
 
 4.1.4 (2021-12-01)
 ==================

@@ -5,6 +5,9 @@ from whoosh import qparser  # NOQA Used to initialize the whoosh.fields module.
 
 from django.db import models
 
+DEFAULT_ELASTIC_SEARCH_HOST = 'http://127.0.0.1:9200'
+DEFAULT_ELASTIC_SEARCH_INDICES_NAMESPACE = 'mayan'
+
 QUERY_OPERATION_AND = 1
 QUERY_OPERATION_OR = 2
 TERM_OPERATION_AND = 'AND'
@@ -42,7 +45,8 @@ DJANGO_TO_WHOOSH_FIELD_MAP = {
     },
     models.CharField: {'field': whoosh.fields.TEXT},
     models.DateTimeField: {
-        'field': whoosh.fields.TEXT, 'transformation': str
+        'field': whoosh.fields.TEXT,
+        'transformation': lambda value: value.isoformat()
     },
     models.EmailField: {'field': whoosh.fields.TEXT},
     models.TextField: {'field': whoosh.fields.TEXT},

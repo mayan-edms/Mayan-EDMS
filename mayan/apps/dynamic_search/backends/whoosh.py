@@ -181,9 +181,8 @@ class WhooshSearchBackend(SearchBackend):
 
                 with index.writer(**self.writer_kwargs) as writer:
                     kwargs = search_model.populate(
-                        field_map=self.get_resolved_field_map(
-                            search_model=search_model
-                        ), instance=instance, exclude_model=exclude_model,
+                        backend=self, instance=instance,
+                        exclude_model=exclude_model,
                         exclude_kwargs=exclude_kwargs
                     )
 

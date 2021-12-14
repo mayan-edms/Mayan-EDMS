@@ -1,9 +1,9 @@
 from django.core.management.base import BaseCommand
 
-from mayan.apps.common.utils import ProgressBar, parse_range
+from mayan.apps.common.utils import parse_range
 
 from ...classes import SearchModel
-from ...tasks import task_index_instance, task_index_search_model
+from ...tasks import task_index_search_model
 
 
 class Command(BaseCommand):

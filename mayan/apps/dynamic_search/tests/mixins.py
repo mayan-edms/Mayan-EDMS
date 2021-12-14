@@ -18,18 +18,27 @@ class SearchTestMixin:
         not have to import and initialize the SearchBackend.
         """
 
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        TestSearchBackend._test_class = cls
+        cls.search_backend = SearchBackend.get_instance()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.search_backend.tear_down()
+        cls.search_backend.close()
+        super().tearDownClass()
+
     def setUp(self):
         super().setUp()
         # Monkeypatch the search class so that the test behavior is only
         # enabled when called from a search test.
-        TestSearchBackend._test_view = self
-        self.search_backend = SearchBackend.get_instance()
         self._setup_test_model_search()
-        SearchBackend.initialize_class()
+        SearchBackend._enable()
 
     def tearDown(self):
-        SearchBackend.uninitialize_class()
-        self.search_backend.reset()
+        SearchBackend._disable()
         super().tearDown()
 
 
@@ -52,7 +61,7 @@ class SearchAPIViewTestMixin(SearchTestMixin):
         )
 
 
-class SearchToolsViewTestMixin:
+class SearchToolsViewTestMixin(SearchTestMixin):
     def _request_search_backend_reindex_view(self):
         return self.post(viewname='search:search_backend_reindex')
 

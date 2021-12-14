@@ -11,10 +11,7 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext as _
 
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
-from mayan.apps.common.exceptions import ResolverPipelineError
-from mayan.apps.common.utils import (
-    ResolverPipelineModelAttribute, flatten_list, get_class_full_name
-)
+from mayan.apps.common.utils import get_class_full_name
 from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
 from .exceptions import DynamicSearchException
@@ -30,18 +27,54 @@ logger = logging.getLogger(name=__name__)
 
 
 class SearchBackend:
-    @staticmethod
-    def get_instance(extra_kwargs=None):
-        kwargs = setting_backend_arguments.value.copy()
-        if extra_kwargs:
-            kwargs.update(extra_kwargs)
-
-        return import_string(dotted_path=setting_backend.value)(
-            **kwargs
-        )
+    _initialized = False
+    _search_field_transformations = {}
 
     @staticmethod
-    def initialize_class():
+    def _disable():
+        for search_model in SearchModel.all():
+            post_save.disconnect(
+                dispatch_uid='search_handler_index_instance',
+                sender=search_model.model
+            )
+            pre_delete.disconnect(
+                dispatch_uid='search_handler_deindex_instance',
+                sender=search_model.model
+            )
+
+            for proxy in search_model.proxies:
+                post_save.disconnect(
+                    dispatch_uid='search_handler_index_instance',
+                    sender=proxy
+                )
+                pre_delete.disconnect(
+                    dispatch_uid='search_handler_deindex_instance',
+                    sender=proxy
+                )
+
+            for related_model, path in search_model.get_related_models():
+                post_save.disconnect(
+                    dispatch_uid='search_handler_index_related_instance_{}_{}'.format(
+                        get_class_full_name(klass=search_model.model),
+                        get_class_full_name(klass=related_model)
+                    ), sender=related_model
+                )
+                pre_delete.disconnect(
+                    dispatch_uid='search_handler_index_related_instance_delete_{}_{}'.format(
+                        get_class_full_name(klass=search_model.model),
+                        get_class_full_name(klass=related_model)
+                    ), sender=related_model
+                )
+
+        for through_model, data in SearchModel.get_through_models().items():
+            m2m_changed.disconnect(
+                dispatch_uid='search_handler_index_related_instance_m2m_{}'.format(
+                    get_class_full_name(klass=through_model),
+                ), sender=through_model
+            )
+
+    @staticmethod
+    def _enable():
         # Hidden import.
         from .handlers import (
             handler_deindex_instance, handler_index_instance,
@@ -104,52 +137,19 @@ class SearchBackend:
             )
 
     @staticmethod
+    def get_instance(extra_kwargs=None):
+        kwargs = setting_backend_arguments.value.copy()
+        if extra_kwargs:
+            kwargs.update(extra_kwargs)
+
+        return import_string(dotted_path=setting_backend.value)(
+            **kwargs
+        )
+
+    @staticmethod
     def limit_queryset(queryset):
         pk_list = queryset.values('pk')[:setting_results_limit.value]
         return queryset.filter(pk__in=pk_list)
-
-    @staticmethod
-    def uninitialize_class():
-        for search_model in SearchModel.all():
-            post_save.disconnect(
-                dispatch_uid='search_handler_index_instance',
-                sender=search_model.model
-            )
-            pre_delete.disconnect(
-                dispatch_uid='search_handler_deindex_instance',
-                sender=search_model.model
-            )
-
-            for proxy in search_model.proxies:
-                post_save.disconnect(
-                    dispatch_uid='search_handler_index_instance',
-                    sender=proxy
-                )
-                pre_delete.disconnect(
-                    dispatch_uid='search_handler_deindex_instance',
-                    sender=proxy
-                )
-
-            for related_model, path in search_model.get_related_models():
-                post_save.disconnect(
-                    dispatch_uid='search_handler_index_related_instance_{}_{}'.format(
-                        get_class_full_name(klass=search_model.model),
-                        get_class_full_name(klass=related_model)
-                    ), sender=related_model
-                )
-                pre_delete.disconnect(
-                    dispatch_uid='search_handler_index_related_instance_delete_{}_{}'.format(
-                        get_class_full_name(klass=search_model.model),
-                        get_class_full_name(klass=related_model)
-                    ), sender=related_model
-                )
-
-        for through_model, data in SearchModel.get_through_models().items():
-            m2m_changed.disconnect(
-                dispatch_uid='search_handler_index_related_instance_m2m_{}'.format(
-                    get_class_full_name(klass=through_model),
-                ), sender=through_model
-            )
 
     def __init__(self, **kwargs):
         self.kwargs = kwargs
@@ -175,6 +175,12 @@ class SearchBackend:
             }
 
         return clean_query
+
+    def close(self):
+        """
+        Optional method to terminate a backend instance, such as closing
+        connections.
+        """
 
     def decode_query(self, query, global_and_search=False):
         # Clean up the query.
@@ -265,6 +271,20 @@ class SearchBackend:
 
         return result
 
+    def get_search_field_transformation(self, search_field):
+        if search_field not in self.__class__._search_field_transformations:
+            field_map = self.get_resolved_field_map(
+                search_model=search_field.search_model
+            )
+            transformation = field_map[search_field.field].get(
+                'transformation', SearchModel.function_return_same
+            )
+            self.__class__._search_field_transformations[
+                search_field
+            ] = transformation
+
+        return self.__class__._search_field_transformations[search_field]
+
     def get_search_model_fields(self, search_model):
         result = search_model.search_fields.copy()
         result.append(
@@ -284,11 +304,16 @@ class SearchBackend:
         """
 
     def initialize(self):
+        if not self.__class__._initialized:
+            self.__class__._initialized = True
+            self._initialize()
+
+    def _initialize(self):
         """
         Optional method to setup the backend. Executed once on every boot up.
         """
 
-    def reset(self):
+    def reset(self, search_model=None):
         """
         Optional method to clear all search indices.
         """
@@ -369,7 +394,13 @@ class SearchBackend:
                         query=query, user=user
                     )
                 else:
-                    return search_model.model._meta.default_manager.none()
+                    return search_model.get_queryset().node()
+
+    def tear_down(self):
+        """
+        Optional method to clean up and/or destroy search backend structures
+        like indices.
+        """
 
 
 class SearchField:
@@ -384,6 +415,11 @@ class SearchField:
         self.field = field
         self._label = label
         self.transformation_function = transformation_function
+
+    def __repr__(self):
+        return '<{}: {}>'.format(
+            self.__class__.__name__, self.field
+        )
 
     @cached_property
     def field_type(self):
@@ -488,6 +524,8 @@ class SearchModel(AppsModuleLoaderMixin):
         self.search_fields_dict = {}
         self.serializer_path = serializer_path
 
+        self.add_model_field(field='id', label=_('ID'))
+
         self.manager_name = manager_name or self.model._meta.default_manager.name
 
         if default:
@@ -521,6 +559,30 @@ class SearchModel(AppsModuleLoaderMixin):
 
         self.__class__._registry['{}.{}'.format(app_label, model_name)] = self
 
+    @cached_property
+    def fields_direct(self):
+        result = []
+
+        for search_field in self.search_fields:
+            field_name = search_field.field
+
+            if '__' not in field_name:
+                result.append(search_field)
+
+        return result
+
+    @cached_property
+    def fields_related(self):
+        result = []
+
+        for search_field in self.search_fields:
+            field_name = search_field.field
+
+            if '__' in field_name:
+                result.append(search_field)
+
+        return result
+
     def get_fields_simple_list(self):
         """
         Returns a list of the fields for the SearchModel.
@@ -537,7 +599,7 @@ class SearchModel(AppsModuleLoaderMixin):
         return '{}.{}'.format(self.app_label, self.model_name)
 
     def get_queryset(self):
-        if self.queryset:
+        if self.queryset is not None:
             return self.queryset()
         else:
             return self.model._meta.managers_map[self.manager_name].all()
@@ -572,6 +634,10 @@ class SearchModel(AppsModuleLoaderMixin):
         return self._label
 
     @cached_property
+    def base_model(self):
+        return self.model._meta.proxy_for_model or self.model
+
+    @cached_property
     def model(self):
         return apps.get_model(
             app_label=self.app_label, model_name=self.model_name
@@ -582,45 +648,57 @@ class SearchModel(AppsModuleLoaderMixin):
         return self.get_full_name()
 
     def populate(
-        self, field_map, instance, exclude_model=None, exclude_kwargs=None
+        self, backend, instance, exclude_model=None, exclude_kwargs=None
     ):
-        """
-        Method that receives an instance and a field map dictionary
-        consisting of attribute names and transformations to apply.
-        Returns a dictionary of the instance values with their respective
-        transformations. Makes it easy to pre process an instance before
-        indexing it.
-        """
-        if exclude_model and exclude_kwargs:
-            resolver_extra_kwargs = {
-                'exclude': exclude_kwargs, 'model': exclude_model
-            }
-        else:
-            resolver_extra_kwargs = {}
+        search_model = SearchModel.get_for_model(instance=instance)
+        queryset = search_model.get_queryset().filter(pk=instance.pk)
 
-        result = {}
-        for field in field_map:
-            try:
-                value = ResolverPipelineModelAttribute.resolve(
-                    attribute=field, obj=instance,
-                    resolver_extra_kwargs=resolver_extra_kwargs
+        document = {}
+
+        for direct_field in search_model.fields_direct:
+            field_name = direct_field.field
+
+            # Fetch the fields that produce a finite number of results.
+            value = getattr(instance, field_name)
+
+            document[field_name] = backend.get_search_field_transformation(
+                search_field=direct_field
+            )(value)
+
+        for related_field in search_model.fields_related:
+            # Fetch the fields that produce an undetermined number of
+            # results.
+            # This implementation is a balance between memory usage and
+            # performance.
+            # Attempting to fetch all of these fields at the same time using
+            # joins creates a single query that kills the database and
+            # causes the OOM to kill this method's process due to run away
+            # memory usage.
+            # This implementation is not infinitely scalable but has been
+            # tested up to 500 pages per document version + 500 pages per
+            # document file with an indexing chunk size of 25 for a total
+            # of 25,000 page results per super call.
+            field_name = related_field.field
+            model, reverse_path = reverse_field_path(model=queryset.model, path=field_name)
+            last_field = field_name.split('__')[-1]
+
+            sub_queryset = model._meta.default_manager.filter(
+                **{
+                    '{}'.format(reverse_path): instance.pk
+                }
+            ).values_list(last_field, flat=True)
+
+            final_value = []
+            for value in sub_queryset.distinct():
+                final_value.append(
+                    backend.get_search_field_transformation(
+                        search_field=related_field
+                    )(value) or ''
                 )
-                try:
-                    value = list(flatten_list(value=value))
-                    if value == [None]:
-                        value = None
-                    else:
-                        value = ' '.join(value)
-                except TypeError:
-                    """Value is not a list."""
-            except ResolverPipelineError:
-                """Not fatal."""
-            else:
-                result[field] = field_map[field].get(
-                    'transformation', SearchModel.function_return_same
-                )(value)
 
-        return result
+            document[field_name] = ' '.join(final_value)
+
+        return document
 
     @property
     def proxies(self):

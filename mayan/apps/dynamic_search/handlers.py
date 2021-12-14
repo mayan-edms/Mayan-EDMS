@@ -1,3 +1,5 @@
+from collections import Iterable
+
 from mayan.apps.common.utils import (
     ResolverPipelineModelAttribute, flatten_list
 )
@@ -39,10 +41,10 @@ def handler_factory_index_related_instance_delete(reverse_field_path):
                 }
             )
 
-        try:
+        if isinstance(entries, Iterable):
             for instance in entries:
                 call_task(instance=instance)
-        except TypeError:
+        else:
             call_task(instance=result)
 
     return handler_index_by_related_to_delete_instance
@@ -67,10 +69,10 @@ def handler_factory_index_related_instance_save(reverse_field_path):
                 }
             )
 
-        try:
+        if isinstance(entries, Iterable):
             for instance in entries:
                 call_task(instance=instance)
-        except TypeError:
+        else:
             call_task(instance=result)
 
     return handler_index_by_related_instance

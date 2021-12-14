@@ -10,25 +10,48 @@ from mayan.apps.common.utils import parse_range
 from ..classes import SearchBackend, SearchModel
 from ..settings import setting_results_limit
 
-from .literals import DJANGO_TO_ELASTIC_SEARCH_FIELD_MAP
+from .literals import (
+    DEFAULT_ELASTIC_SEARCH_HOST, DEFAULT_ELASTIC_SEARCH_INDICES_NAMESPACE,
+    DJANGO_TO_ELASTIC_SEARCH_FIELD_MAP
+)
 
-DEFAULT_ELASTIC_SEARCH_INDICES_NAMESPACE = 'mayan'
-DEFAULT_ELASTIC_SEARCH_HOST = 'http://127.0.0.1:9200'
 logger = logging.getLogger(name=__name__)
 
 
 class ElasticSearchBackend(SearchBackend):
+    _client = None
     _search_model_mappings = {}
     field_map = DJANGO_TO_ELASTIC_SEARCH_FIELD_MAP
 
     def __init__(self, **kwargs):
+        self.client_kwargs = {}
+
         self.indices_namespace = kwargs.pop(
             'indices_namespace', DEFAULT_ELASTIC_SEARCH_INDICES_NAMESPACE
         )
-        self.host = kwargs.pop('host', DEFAULT_ELASTIC_SEARCH_HOST)
-        self.hosts = kwargs.pop('hosts', None)
+
+        host = kwargs.pop('host', DEFAULT_ELASTIC_SEARCH_HOST)
+        hosts = kwargs.pop('hosts', None)
+
+        if hosts:
+            hosts = (host,)
+
+        self.client_kwargs['hosts'] = hosts
+
+        self.client_kwargs['sniff_on_start'] = kwargs.pop(
+            'client_sniff_on_start', True
+        )
+        self.client_kwargs['sniff_on_connection_fail'] = kwargs.pop(
+            'client_sniff_on_connection_fail', True
+        )
+        self.client_kwargs['sniffer_timeout'] = kwargs.pop(
+            'client_sniffer_timeout', 60
+        )
 
         super().__init__(**kwargs)
+
+    def _initialize(self):
+        self.update_mappings()
 
     def _search(
         self, query, search_model, user, global_and_search=False,
@@ -41,10 +64,10 @@ class ElasticSearchBackend(SearchBackend):
 
         search = Search(index=index_name, using=client)
 
-        final_elastic_search_query = None
+        final_elasticsearch_query = None
 
         for key, value in query.items():
-            elastic_search_query = Q(
+            elasticsearch_query = Q(
                 Q(
                     name_or_query='fuzzy', _expand__to_dot=False, **{key: value}
                 ) | Q(
@@ -56,15 +79,15 @@ class ElasticSearchBackend(SearchBackend):
                 )
             )
 
-            if final_elastic_search_query is None:
-                final_elastic_search_query = elastic_search_query
+            if final_elasticsearch_query is None:
+                final_elasticsearch_query = elasticsearch_query
             else:
                 if global_and_search:
-                    final_elastic_search_query &= elastic_search_query
+                    final_elasticsearch_query &= elasticsearch_query
                 else:
-                    final_elastic_search_query |= elastic_search_query
+                    final_elasticsearch_query |= elasticsearch_query
 
-        search = search.source(None).query(final_elastic_search_query)
+        search = search.source(None).query(final_elasticsearch_query)
 
         client.indices.refresh(index=index_name)
 
@@ -84,6 +107,10 @@ class ElasticSearchBackend(SearchBackend):
             pk__in=id_list
         ).distinct()
 
+    def close(self):
+        self.get_client().transport.close()
+        self.__class__._client = None
+
     def deindex_instance(self, instance):
         search_model = SearchModel.get_for_model(instance=instance)
         client = self.get_client()
@@ -93,20 +120,28 @@ class ElasticSearchBackend(SearchBackend):
         )
 
     def get_client(self):
-        if not self.hosts:
-            self.hosts = (self.host,)
+        if self.__class__._client is None:
+            self.__class__._client = Elasticsearch(**self.client_kwargs)
 
-        return Elasticsearch(
-            hosts=self.hosts,
-            sniff_on_start=True,
-            sniff_on_connection_fail=True,
-            sniffer_timeout=60
-        )
+        return self.__class__._client
 
     def get_index_name(self, search_model):
         return '{}-{}'.format(
             self.indices_namespace, search_model.model_name.lower()
         )
+
+    def get_search_model_mappings(self, search_model):
+        try:
+            return self.__class__._search_model_mappings[search_model]
+        except KeyError:
+            mappings = {}
+
+            field_map = self.get_resolved_field_map(search_model=search_model)
+            for field_name, search_field_data in field_map.items():
+                mappings[field_name] = {'type': search_field_data['field'].name}
+
+            self.__class__._search_model_mappings[search_model] = mappings
+        return mappings
 
     def get_status(self):
         client = self.get_client()
@@ -132,10 +167,9 @@ class ElasticSearchBackend(SearchBackend):
 
     def index_instance(self, instance, exclude_model=None, exclude_kwargs=None):
         search_model = SearchModel.get_for_model(instance=instance)
+
         kwargs = search_model.populate(
-            field_map=self.get_resolved_field_map(
-                search_model=search_model
-            ), instance=instance, exclude_model=exclude_model,
+            backend=self, instance=instance, exclude_model=exclude_model,
             exclude_kwargs=exclude_kwargs
         )
 
@@ -144,22 +178,22 @@ class ElasticSearchBackend(SearchBackend):
             id=instance.pk, document=kwargs
         )
 
-    def index_search_model(self, search_model, range_string):
+    def index_search_model(self, search_model, range_string=None):
         client = self.get_client()
         index_name = self.get_index_name(search_model=search_model)
-        field_map = self.get_resolved_field_map(
-            search_model=search_model
-        )
 
         def generate_actions():
-            queryset = search_model.model._meta.managers_map[search_model.manager_name].all()
+            queryset = search_model.get_queryset()
 
-            for instance in queryset.filter(pk__in=parse_range(range_string=range_string)):
+            if range_string:
+                queryset = queryset.filter(pk__in=list(parse_range(range_string=range_string)))
+
+            for instance in queryset:
                 kwargs = search_model.populate(
-                    field_map=field_map, instance=instance
+                    backend=self, instance=instance
                 )
-                kwargs['id'] = instance.pk
                 kwargs['_id'] = kwargs['id']
+
                 yield kwargs
 
         bulk_indexing_generator = helpers.streaming_bulk(
@@ -169,32 +203,30 @@ class ElasticSearchBackend(SearchBackend):
 
         deque(iterable=bulk_indexing_generator, maxlen=0)
 
-    def initialize(self):
-        self.update_mappings()
+    def reset(self, search_model=None):
+        self.tear_down(search_model=search_model)
+        self.update_mappings(search_model=search_model)
 
-    def reset(self):
+    def tear_down(self, search_model=None):
         client = self.get_client()
-        client.indices.delete(index='{}-*'.format(self.indices_namespace))
-        self.update_mappings()
+        if search_model:
+            client.indices.delete(
+                index=self.get_index_name(search_model=search_model)
+            )
+        else:
+            client.indices.delete(
+                index='{}-*'.format(self.indices_namespace)
+            )
 
-    def get_search_model_mappings(self, search_model):
-        try:
-            return self.__class__._search_model_mappings[search_model]
-        except KeyError:
-            mappings = {}
-
-            field_map = self.get_resolved_field_map(search_model=search_model)
-            for field_name, search_field_data in field_map.items():
-                mappings[field_name] = {'type': search_field_data['field'].name}
-
-            self.__class__._search_model_mappings[search_model] = mappings
-            return mappings
-
-    def update_mappings(self):
+    def update_mappings(self, search_model=None):
         client = self.get_client()
 
-        actions = []
-        for search_model in SearchModel.all():
+        if search_model:
+            search_models = (search_model,)
+        else:
+            search_models = SearchModel.all()
+
+        for search_model in search_models:
             index_name = self.get_index_name(search_model=search_model)
 
             mappings = self.get_search_model_mappings(search_model=search_model)

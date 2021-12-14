@@ -7,11 +7,11 @@ from mayan.apps.lock_manager.exceptions import LockError
 from mayan.celery import app
 
 from .classes import SearchBackend, SearchModel
-from .exceptions import DynamicSearchRetry
+from .exceptions import DynamicSearchException, DynamicSearchRetry
 from .literals import (
-    TASK_DEINDEX_INSTANCE_MAX_RETRIES, TASK_INDEX_INSTANCE_MAX_RETRIES,
-    TASK_REINDEX_BACKEND_STEP
+    TASK_DEINDEX_INSTANCE_MAX_RETRIES, TASK_INDEX_INSTANCE_MAX_RETRIES
 )
+from .settings import setting_indexing_chunk_size
 
 logger = logging.getLogger(name=__name__)
 
@@ -40,9 +40,17 @@ def task_deindex_instance(self, app_label, model_name, object_id):
 def task_index_search_model(self, search_model_full_name, range_string=None):
     search_model = SearchModel.get(name=search_model_full_name)
 
-    SearchBackend.get_instance().index_search_model(
-        range_string=range_string, search_model=search_model
-    )
+    kwargs = {
+        'range_string': range_string, 'search_model': search_model
+    }
+
+    try:
+        SearchBackend.get_instance().index_search_model(**kwargs)
+    except Exception as exception:
+        raise DynamicSearchException(
+            'Unexpected error calling `index_search_model` with '
+            'keyword arguments {}.'.format(kwargs)
+        ) from exception
 
 
 @app.task(
@@ -82,14 +90,13 @@ def task_reindex_backend():
     backend.reset()
 
     for search_model in SearchModel.all():
-
         queryset = search_model.model._meta.managers_map[search_model.manager_name].all()
         if queryset:
             queryset = queryset.aggregate(min_id=Min('id'), max_id=Max('id'))
-            step = TASK_REINDEX_BACKEND_STEP
+            step = setting_indexing_chunk_size.value - 1
 
             for id_start in range(queryset['min_id'], queryset['max_id'] + 1, step):
-                range_string = '{}-{}'.format(id_start, id_start + step)
+                range_string = '{}-{}'.format(id_start, id_start + step - 1)
                 task_index_search_model.apply_async(
                     kwargs={
                         'range_string': range_string,
