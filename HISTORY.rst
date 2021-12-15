@@ -102,6 +102,7 @@
   - Support backend initialization, reset, and tear down.
   - Automatically add the ``id`` field as a search field for all search
     models.
+  - Separate backend initialization from app initialization.
 
 4.1.4 (2021-12-01)
 ==================

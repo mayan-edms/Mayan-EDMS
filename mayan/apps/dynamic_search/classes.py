@@ -394,7 +394,7 @@ class SearchBackend:
                         query=query, user=user
                     )
                 else:
-                    return search_model.get_queryset().node()
+                    return search_model.get_queryset().none()
 
     def tear_down(self):
         """

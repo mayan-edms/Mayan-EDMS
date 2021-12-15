@@ -8,6 +8,7 @@ from elasticsearch_dsl import Q, Search
 from mayan.apps.common.utils import parse_range
 
 from ..classes import SearchBackend, SearchModel
+from ..exceptions import DynamicSearchException
 from ..settings import setting_results_limit
 
 from .literals import (
@@ -15,6 +16,10 @@ from .literals import (
     DJANGO_TO_ELASTIC_SEARCH_FIELD_MAP
 )
 
+DEFAULT_CLIENT_MAXSIZE = 10
+DEFAULT_CLIENT_SNIFF_ON_START = True
+DEFAULT_CLIENT_SNIFF_ON_CONNECTION_FAIL = True
+DEFAULT_CLIENT_SNIFFER_TIMEOUT = 60
 logger = logging.getLogger(name=__name__)
 
 
@@ -33,19 +38,22 @@ class ElasticSearchBackend(SearchBackend):
         host = kwargs.pop('host', DEFAULT_ELASTIC_SEARCH_HOST)
         hosts = kwargs.pop('hosts', None)
 
-        if hosts:
+        if not hosts:
             hosts = (host,)
 
         self.client_kwargs['hosts'] = hosts
 
+        self.client_kwargs['maxsize'] = kwargs.pop(
+            'client_maxsize', DEFAULT_CLIENT_MAXSIZE
+        )
         self.client_kwargs['sniff_on_start'] = kwargs.pop(
-            'client_sniff_on_start', True
+            'client_sniff_on_start', DEFAULT_CLIENT_SNIFF_ON_START
         )
         self.client_kwargs['sniff_on_connection_fail'] = kwargs.pop(
-            'client_sniff_on_connection_fail', True
+            'client_sniff_on_connection_fail', DEFAULT_CLIENT_SNIFF_ON_CONNECTION_FAIL
         )
         self.client_kwargs['sniffer_timeout'] = kwargs.pop(
-            'client_sniffer_timeout', 60
+            'client_sniffer_timeout', DEFAULT_CLIENT_SNIFFER_TIMEOUT
         )
 
         super().__init__(**kwargs)
@@ -120,8 +128,13 @@ class ElasticSearchBackend(SearchBackend):
         )
 
     def get_client(self):
-        if self.__class__._client is None:
-            self.__class__._client = Elasticsearch(**self.client_kwargs)
+        try:
+            if self.__class__._client is None:
+                self.__class__._client = Elasticsearch(**self.client_kwargs)
+        except Exception as exception:
+            raise DynamicSearchException(
+                'Unable to instantiate client; {}'.format(self.client_kwargs)
+            ) from exception
 
         return self.__class__._client
 

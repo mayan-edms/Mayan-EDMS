@@ -2,8 +2,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_facet, menu_secondary, menu_tools
+from mayan.apps.common.signals import signal_post_initial_setup
 
 from .classes import SearchBackend, SearchModel
+from .handlers import handler_search_backend_initialize
 from .links import (
     link_search, link_search_advanced, link_search_again,
     link_search_backend_reindex
@@ -25,7 +27,6 @@ class DynamicSearchApp(MayanAppConfig):
         SearchBackend._enable()
 
         backend = SearchBackend.get_instance()
-        backend.initialize()
 
         menu_facet.bind_links(
             links=(link_search, link_search_advanced),
@@ -38,4 +39,9 @@ class DynamicSearchApp(MayanAppConfig):
         )
         menu_tools.bind_links(
             links=(link_search_backend_reindex,),
+        )
+
+        signal_post_initial_setup.connect(
+            dispatch_uid='search_handler_search_backend_initialize',
+            receiver=handler_search_backend_initialize
         )

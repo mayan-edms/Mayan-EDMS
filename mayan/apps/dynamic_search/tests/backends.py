@@ -55,6 +55,7 @@ class TestSearchBackend(SearchBackend):
         if not self.__class__._test_backend_initialized:
             self.__class__._test_backend_initialized = True
             self._backend._initialize()
+            SearchBackend._search_field_transformations = {}
 
         super().__init__(*args, **kwargs)
 

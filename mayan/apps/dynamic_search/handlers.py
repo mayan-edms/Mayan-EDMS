@@ -4,6 +4,7 @@ from mayan.apps.common.utils import (
     ResolverPipelineModelAttribute, flatten_list
 )
 
+from .classes import SearchBackend
 from .tasks import task_deindex_instance, task_index_instance
 
 
@@ -78,18 +79,6 @@ def handler_factory_index_related_instance_save(reverse_field_path):
     return handler_index_by_related_instance
 
 
-def handler_index_instance(sender, **kwargs):
-    instance = kwargs['instance']
-
-    task_index_instance.apply_async(
-        kwargs={
-            'app_label': instance._meta.app_label,
-            'model_name': instance._meta.model_name,
-            'object_id': instance.pk
-        }
-    )
-
-
 def handler_factory_index_related_instance_m2m(data):
     def handler_index_related_instance_m2m(sender, **kwargs):
         action = kwargs.get('action')
@@ -158,3 +147,21 @@ def handler_factory_index_related_instance_m2m(data):
                         )
 
     return handler_index_related_instance_m2m
+
+
+def handler_index_instance(sender, **kwargs):
+    instance = kwargs['instance']
+
+    task_index_instance.apply_async(
+        kwargs={
+            'app_label': instance._meta.app_label,
+            'model_name': instance._meta.model_name,
+            'object_id': instance.pk
+        }
+    )
+
+
+def handler_search_backend_initialize(sender, **kwargs):
+    backend = SearchBackend.get_instance()
+
+    backend.initialize()
