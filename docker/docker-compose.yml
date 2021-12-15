@@ -180,6 +180,15 @@ services:
     profiles:
       - extra_worker_d
 
+  worker_custom_queue:
+    <<: *mayan-container
+    command:
+      - /bin/sh
+      - -c
+      - 'MAYAN_QUEUE_LIST=${MAYAN_WORKER_CUSTOM_QUEUE_LIST} /usr/local/bin/run_worker.sh --prefetch-multiplier=1'
+    profiles:
+      - extra_worker_custom
+
   # Run a separate Celery beat container
   celery_beat:
     <<: *mayan-container
