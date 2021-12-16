@@ -36,10 +36,12 @@ services:
 
   elasticsearch:
     environment:
-      #- xpack.security.enabled=false
+      - bootstrap.memory_lock=true
       - discovery.type=single-node
       - http.max_content_length=400mb
+      - xpack.security.enabled=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - ELASTIC_PASSWORD=${MAYAN_ELASTICSEARCH_PASSWORD:-mayanespassword}
     image: ${MAYAN_DOCKER_ELASTICSEARCH_IMAGE:-docker.elastic.co/elasticsearch/elasticsearch}:${MAYAN_DOCKER_ELASTICSEARCH_TAG:-7.16.0}
     networks:
       - mayan
