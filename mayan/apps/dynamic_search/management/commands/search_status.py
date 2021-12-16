@@ -11,4 +11,4 @@ class Command(BaseCommand):
 
         result = backend.get_status()
 
-        self.stdout.write('\n'.join(result))
+        self.stdout.write(msg=result)

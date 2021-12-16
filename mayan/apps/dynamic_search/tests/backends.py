@@ -66,6 +66,9 @@ class TestSearchBackend(SearchBackend):
         if self._test_class:
             return self._backend.deindex_instance(*args, **kwargs)
 
+    def get_status(self, *args, **kwargs):
+        return self._backend.get_status(*args, **kwargs)
+
     def index_instance(self, *args, **kwargs):
         if self._test_class:
             return self._backend.index_instance(*args, **kwargs)

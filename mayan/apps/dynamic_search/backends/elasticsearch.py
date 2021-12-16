@@ -58,6 +58,28 @@ class ElasticSearchBackend(SearchBackend):
 
         super().__init__(**kwargs)
 
+    def _get_status(self):
+        client = self.get_client()
+        result = []
+
+        title = 'Elastic Search search model indexing status'
+        result.append(title)
+        result.append(len(title) * '=')
+
+        stats = client.indices.stats()
+
+        for search_model in SearchModel.all():
+            index_name = self.get_index_name(search_model=search_model)
+            index_stats = stats['indices'][index_name]
+
+            result.append(
+                '{}: {}'.format(
+                    search_model.label, index_stats['total']['docs']['count']
+                )
+            )
+
+        return '\n'.join(result)
+
     def _initialize(self):
         self.update_mappings()
 
@@ -155,28 +177,6 @@ class ElasticSearchBackend(SearchBackend):
 
             self.__class__._search_model_mappings[search_model] = mappings
         return mappings
-
-    def get_status(self):
-        client = self.get_client()
-        result = []
-
-        title = 'Elastic Search search model indexing status'
-        result.append(title)
-        result.append(len(title) * '=')
-
-        stats = client.indices.stats()
-
-        for search_model in SearchModel.all():
-            index_name = self.get_index_name(search_model=search_model)
-            index_stats = stats['indices'][index_name]
-
-            result.append(
-                '{}: {}'.format(
-                    search_model.label, index_stats['total']['docs']['count']
-                )
-            )
-
-        return result
 
     def index_instance(self, instance, exclude_model=None, exclude_kwargs=None):
         search_model = SearchModel.get_for_model(instance=instance)

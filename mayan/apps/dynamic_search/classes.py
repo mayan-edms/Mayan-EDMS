@@ -16,8 +16,9 @@ from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
 from .exceptions import DynamicSearchException
 from .literals import (
-    DEFAULT_SCOPE_ID, DELIMITER, SCOPE_MATCH_ALL, SCOPE_MARKER,
-    SCOPE_OPERATOR_CHOICES, SCOPE_OPERATOR_MARKER, SCOPE_RESULT_MAKER
+    DEFAULT_SCOPE_ID, DELIMITER, MESSAGE_FEATURE_NO_STATUS, SCOPE_MATCH_ALL,
+    SCOPE_MARKER, SCOPE_OPERATOR_CHOICES, SCOPE_OPERATOR_MARKER,
+    SCOPE_RESULT_MAKER
 )
 from .settings import (
     setting_backend, setting_backend_arguments,
@@ -292,6 +293,15 @@ class SearchBackend:
         )
         return result
 
+    def get_status(self):
+        """
+        Backend specific method to provide status and statistics information.
+        """
+        if not hasattr(self, '_get_status'):
+            return MESSAGE_FEATURE_NO_STATUS
+        else:
+            return self._get_status()
+
     def index_instance(self, instance, exclude_model=None, exclude_kwargs=None):
         """
         Optional method to add or update an model instance to the search
@@ -485,7 +495,7 @@ class SearchModel(AppsModuleLoaderMixin):
     @classmethod
     def get_for_model(cls, instance):
         # Works the same for model classes and model instances.
-        return cls.get(name=instance._meta.label)
+        return cls.get(name=instance._meta.label.lower())
 
     @classmethod
     def get_through_models(cls):
@@ -516,7 +526,7 @@ class SearchModel(AppsModuleLoaderMixin):
         self._label = label
         self.app_label = app_label
         self.list_mode = list_mode or LIST_MODE_CHOICE_LIST
-        self.model_name = model_name
+        self.model_name = model_name.lower()
         self._proxies = []  # Lazy
         self.permission = permission
         self.queryset = queryset
@@ -551,6 +561,7 @@ class SearchModel(AppsModuleLoaderMixin):
         self.search_fields_dict[search_field.get_full_name()] = search_field
 
     def add_proxy_model(self, app_label, model_name):
+        model_name = model_name.lower()
         self._proxies.append(
             {
                 'app_label': app_label, 'model_name': model_name
@@ -621,11 +632,6 @@ class SearchModel(AppsModuleLoaderMixin):
             return self.search_fields_dict[full_name]
         except KeyError:
             raise KeyError('No search field named: %s' % full_name)
-
-    def get_status(self):
-        """
-        Backend specify method to provide status and statistics information.
-        """
 
     @cached_property
     def label(self):

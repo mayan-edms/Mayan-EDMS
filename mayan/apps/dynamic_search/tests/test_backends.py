@@ -83,12 +83,10 @@ class CommonBackendFunctionalityTestCaseMixin(SearchTestMixin, BaseTestCase):
 
         self._test_search_grandparent = SearchModel(
             app_label=self.TestModelGrandParent._meta.app_label,
-            model_name='TestModelGrandParent',
+            model_name=self.TestModelGrandParent._meta.model_name
         )
 
-        self._test_search_grandparent.add_model_field(
-            field='label'
-        )
+        self._test_search_grandparent.add_model_field(field='label')
         self._test_search_grandparent.add_model_field(
             field='children__label'
         )
@@ -101,7 +99,7 @@ class CommonBackendFunctionalityTestCaseMixin(SearchTestMixin, BaseTestCase):
 
         self._test_search_grandchild = SearchModel(
             app_label=self.TestModelGrandChild._meta.app_label,
-            model_name='TestModelGrandChild',
+            model_name=self.TestModelGrandChild._meta.model_name
         )
         self._test_search_grandchild.add_model_field(
             field='label'
@@ -116,7 +114,7 @@ class CommonBackendFunctionalityTestCaseMixin(SearchTestMixin, BaseTestCase):
 
         self._test_search_attribute = SearchModel(
             app_label=self.TestModelAttribute._meta.app_label,
-            model_name='TestModelAttribute',
+            model_name=self.TestModelAttribute._meta.model_name
         )
         self._test_search_grandchild.add_model_field(
             field='label'
