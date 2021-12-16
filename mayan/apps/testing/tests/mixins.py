@@ -471,6 +471,7 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
     auto_create_test_object = False
     auto_create_test_object_fields = None
     auto_create_test_object_instance_kwargs = None
+    auto_create_test_object_model = False
     auto_create_test_object_permission = False
 
     @staticmethod
@@ -542,10 +543,22 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
 
         super().setUp()
 
+        if self.auto_create_test_object or self.auto_create_test_object_model:
+            self.TestModel = self._create_test_model(
+                fields=self.auto_create_test_object_fields
+            )
+
+            if self.auto_create_test_object_permission:
+                self._create_test_permission()
+
+                ModelPermission.register(
+                    model=self.TestModel, permissions=(
+                        self.test_permission,
+                    )
+                )
+
         if self.auto_create_test_object:
             self._create_test_object(
-                fields=self.auto_create_test_object_fields,
-                create_test_permission=self.auto_create_test_object_permission,
                 instance_kwargs=self.auto_create_test_object_instance_kwargs
             )
 
@@ -608,26 +621,11 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
 
         return model
 
-    def _create_test_object(
-        self, fields=None, model_name=None, create_test_permission=False,
-        instance_kwargs=None
-    ):
+    def _create_test_object(self, instance_kwargs=None):
         instance_kwargs = instance_kwargs or {}
 
-        self.TestModel = self._create_test_model(
-            fields=fields, model_name=model_name
-        )
         self.test_object = self.TestModel.objects.create(**instance_kwargs)
         self._inject_test_object_content_type()
-
-        if create_test_permission:
-            self._create_test_permission()
-
-            ModelPermission.register(
-                model=self.TestModel, permissions=(
-                    self.test_permission,
-                )
-            )
 
         self.test_objects.append(self.test_object)
 
