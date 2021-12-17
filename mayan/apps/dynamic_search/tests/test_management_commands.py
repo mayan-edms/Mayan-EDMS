@@ -156,9 +156,6 @@ class SearchStatusManagementCommandTestCaseMixin(SearchTestMixin):
 
         lines = output.readlines()
 
-        if MESSAGE_FEATURE_NO_STATUS in lines[0]:
-            return
-
         for line in lines:
             if self._test_model_search.model_name in line.lower():
                 model_name, count = line.split(':')
