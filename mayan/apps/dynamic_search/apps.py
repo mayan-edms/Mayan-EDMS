@@ -26,8 +26,6 @@ class DynamicSearchApp(MayanAppConfig):
         SearchModel.load_modules()
         SearchBackend._enable()
 
-        backend = SearchBackend.get_instance()
-
         menu_facet.bind_links(
             links=(link_search, link_search_advanced),
             sources=(

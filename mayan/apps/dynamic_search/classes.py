@@ -452,6 +452,14 @@ class SearchField:
     def model(self):
         return self.search_model.model
 
+    @cached_property
+    def related_model(self):
+        return self.get_model_field().model
+
+    @cached_property
+    def reverse_path(self):
+        return reverse_field_path(model=self.model, path=self.field)[1]
+
 
 class SearchModel(AppsModuleLoaderMixin):
     _loader_module_name = 'search'
@@ -656,10 +664,8 @@ class SearchModel(AppsModuleLoaderMixin):
     def populate(
         self, backend, instance, exclude_model=None, exclude_kwargs=None
     ):
+        result = {}
         search_model = SearchModel.get_for_model(instance=instance)
-        queryset = search_model.get_queryset().filter(pk=instance.pk)
-
-        document = {}
 
         for direct_field in search_model.fields_direct:
             field_name = direct_field.field
@@ -667,7 +673,7 @@ class SearchModel(AppsModuleLoaderMixin):
             # Fetch the fields that produce a finite number of results.
             value = getattr(instance, field_name)
 
-            document[field_name] = backend.get_search_field_transformation(
+            result[field_name] = backend.get_search_field_transformation(
                 search_field=direct_field
             )(value)
 
@@ -685,14 +691,16 @@ class SearchModel(AppsModuleLoaderMixin):
             # document file with an indexing chunk size of 25 for a total
             # of 25,000 page results per super call.
             field_name = related_field.field
-            model, reverse_path = reverse_field_path(model=queryset.model, path=field_name)
             last_field = field_name.split('__')[-1]
 
-            sub_queryset = model._meta.default_manager.filter(
+            sub_queryset = related_field.related_model._meta.default_manager.filter(
                 **{
-                    '{}'.format(reverse_path): instance.pk
+                    '{}'.format(related_field.reverse_path): instance.pk
                 }
             ).values_list(last_field, flat=True)
+
+            if exclude_model and related_field.related_model == exclude_model:
+                sub_queryset = sub_queryset.exclude(**exclude_kwargs)
 
             final_value = []
             for value in sub_queryset.distinct():
@@ -702,9 +710,9 @@ class SearchModel(AppsModuleLoaderMixin):
                     )(value) or ''
                 )
 
-            document[field_name] = ' '.join(final_value)
+            result[field_name] = ' '.join(final_value)
 
-        return document
+        return result
 
     @property
     def proxies(self):

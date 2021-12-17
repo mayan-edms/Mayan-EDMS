@@ -7,7 +7,6 @@ from mayan.apps.testing.tests.base import BaseTestCase
 from mayan.apps.testing.tests.utils import mute_stdout
 
 from ..classes import SearchBackend, SearchModel
-from ..literals import MESSAGE_FEATURE_NO_STATUS
 
 from .mixins import SearchTestMixin
 
