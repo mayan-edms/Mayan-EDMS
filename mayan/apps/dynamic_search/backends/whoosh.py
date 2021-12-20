@@ -9,11 +9,11 @@ from whoosh.query import Every
 
 from django.conf import settings
 
-from mayan.apps.common.utils import any_to_bool
+from mayan.apps.common.utils import any_to_bool, parse_range
 from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError
 
-from ..classes import SearchBackend, SearchField, SearchModel
+from ..classes import SearchBackend, SearchModel
 from ..exceptions import DynamicSearchRetry
 from ..settings import setting_results_limit
 
@@ -25,6 +25,8 @@ logger = logging.getLogger(name=__name__)
 
 
 class WhooshSearchBackend(SearchBackend):
+    field_map = DJANGO_TO_WHOOSH_FIELD_MAP
+
     def __init__(self, **kwargs):
         index_path = kwargs.pop('index_path', None)
         writer_limitmb = kwargs.pop('writer_limitmb', 128)
@@ -36,7 +38,6 @@ class WhooshSearchBackend(SearchBackend):
         self.index_path = Path(
             index_path or Path(settings.MEDIA_ROOT, WHOOSH_INDEX_DIRECTORY_NAME)
         )
-        self.index_path.mkdir(exist_ok=True)
 
         if writer_limitmb:
             writer_limitmb = int(writer_limitmb)
@@ -51,6 +52,28 @@ class WhooshSearchBackend(SearchBackend):
             'limitmb': writer_limitmb, 'multisegment': writer_multisegment,
             'procs': writer_procs
         }
+
+    def _get_status(self):
+        result = []
+
+        title = 'Whoosh search model indexing status'
+        result.append(title)
+        result.append(len(title) * '=')
+
+        for search_model in SearchModel.all():
+            index = self.get_or_create_index(search_model=search_model)
+            search_results = index.searcher().search(Every('id'))
+
+            result.append(
+                '{}: {}'.format(
+                    search_model.label, search_results.estimated_length()
+                )
+            )
+
+        return '\n'.join(result)
+
+    def _initialize(self):
+        self.index_path.mkdir(exist_ok=True)
 
     def _search(
         self, query, search_model, user, global_and_search=False,
@@ -125,7 +148,7 @@ class WhooshSearchBackend(SearchBackend):
         schema = self.get_search_model_schema(search_model=search_model)
 
         try:
-            # Explictly specify the schema. Allows using existing index
+            # Explicitly specify the schema. Allows using existing index
             # when the schema changes.
             index = storage.open_index(
                 indexname=search_model.get_full_name(), schema=schema
@@ -137,54 +160,11 @@ class WhooshSearchBackend(SearchBackend):
 
         return index
 
-    def get_resolved_field_map(self, search_model):
-        result = {}
-        for search_field in self.get_search_model_fields(search_model=search_model):
-            whoosh_field_type = DJANGO_TO_WHOOSH_FIELD_MAP.get(
-                search_field.get_model_field().__class__
-            )
-            if whoosh_field_type:
-                result[search_field.get_full_name()] = whoosh_field_type
-            else:
-                logger.warning(
-                    'unknown field type "%s" for model "%s"',
-                    search_field.get_full_name(),
-                    search_model.get_full_name()
-                )
-
-        return result
-
-    def get_search_model_fields(self, search_model):
-        result = search_model.search_fields.copy()
-        result.append(
-            SearchField(search_model=search_model, field='id', label='ID')
-        )
-        return result
-
     def get_search_model_schema(self, search_model):
         field_map = self.get_resolved_field_map(search_model=search_model)
         schema_kwargs = {key: value['field'] for key, value in field_map.items()}
 
         return whoosh.fields.Schema(**schema_kwargs)
-
-    def get_status(self):
-        result = []
-
-        title = 'Whoosh search model indexing status'
-        result.append(title)
-        result.append(len(title) * '=')
-
-        for search_model in SearchModel.all():
-            index = self.get_or_create_index(search_model=search_model)
-            search_results = index.searcher().search(Every('id'))
-
-            result.append(
-                '{}: {}'.format(
-                    search_model.label, search_results.estimated_length()
-                )
-            )
-
-        return result
 
     def get_storage(self):
         return FileStorage(path=self.index_path)
@@ -203,9 +183,8 @@ class WhooshSearchBackend(SearchBackend):
 
                 with index.writer(**self.writer_kwargs) as writer:
                     kwargs = search_model.populate(
-                        field_map=self.get_resolved_field_map(
-                            search_model=search_model
-                        ), instance=instance, exclude_model=exclude_model,
+                        backend=self, instance=instance,
+                        exclude_model=exclude_model,
                         exclude_kwargs=exclude_kwargs
                     )
 
@@ -214,12 +193,20 @@ class WhooshSearchBackend(SearchBackend):
                         writer.add_document(**kwargs)
                     except Exception as exception:
                         logger.error(
-                            'Unexpected exception while indexing object id: %s, '
-                            'search model: %s, index data: %s, raw data: %s, '
-                            'field map: %s; %s', search_model.get_full_name(),
-                            instance.pk, kwargs, instance.__dict__,
-                            self.get_resolved_field_map(search_model=search_model),
-                            exception, exc_info=True
+                            'Unexpected exception while indexing object '
+                            'id: %(id)s, search model: %(search_model)s, '
+                            'index data: %(index_data)s, raw data: '
+                            '%(raw_data)s, field map: %(field_map)s; '
+                            '%(exception)s' % {
+                                'exception': exception,
+                                'field_map': self.get_resolved_field_map(
+                                    search_model=search_model
+                                ),
+                                'id': instance.pk,
+                                'index_data': kwargs,
+                                'raw_data': instance.__dict__,
+                                'search_model': search_model.get_full_name()
+                            }, exc_info=True
                         )
                         raise
             except whoosh.index.LockError:
@@ -227,8 +214,37 @@ class WhooshSearchBackend(SearchBackend):
             finally:
                 lock.release()
 
-    def index_search_model(self, search_model):
-        self.clear_search_model_index(search_model=search_model)
+    def index_search_model(self, search_model, range_string=None):
+        queryset = search_model.get_queryset()
 
-        for instance in search_model.model._meta.managers_map[search_model.manager_name].all():
+        queryset = search_model.get_queryset()
+
+        if range_string:
+            queryset = queryset.filter(
+                pk__in=list(parse_range(range_string=range_string))
+            )
+
+        for instance in queryset:
             self.index_instance(instance=instance)
+
+    def reset(self, search_model=None):
+        self.tear_down(search_model=search_model)
+        self.update_mappings(search_model=search_model)
+
+    def tear_down(self, search_model=None):
+        if search_model:
+            search_models = (search_model,)
+        else:
+            search_models = SearchModel.all()
+
+        for search_model in search_models:
+            self.clear_search_model_index(search_model=search_model)
+
+    def update_mappings(self, search_model=None):
+        if search_model:
+            search_models = (search_model,)
+        else:
+            search_models = SearchModel.all()
+
+        for search_model in search_models:
+            self.get_or_create_index(search_model=search_model)

@@ -4,11 +4,9 @@ from ...classes import SearchBackend
 
 
 class Command(BaseCommand):
-    help = 'Show search backend statistics.'
+    help = 'Upgrade existing search backend persistent structures.'
 
     def handle(self, *args, **options):
         backend = SearchBackend.get_instance()
 
-        result = backend.get_status()
-
-        self.stdout.write(msg=result)
+        backend.upgrade()

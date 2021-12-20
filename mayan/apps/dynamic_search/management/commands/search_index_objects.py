@@ -1,9 +1,9 @@
 from django.core.management.base import BaseCommand
 
-from mayan.apps.common.utils import ProgressBar, parse_range
+from mayan.apps.common.utils import parse_range
 
 from ...classes import SearchModel
-from ...tasks import task_index_instance
+from ...tasks import task_index_search_model
 
 
 class Command(BaseCommand):
@@ -16,11 +16,11 @@ class Command(BaseCommand):
             metavar='<model name>'
         )
         parser.add_argument(
-            dest='id_range', help='Range of IDs to index.',
-            metavar='ID range'
+            dest='id_range_string', help='Range of IDs to index.',
+            metavar='<ID range>'
         )
 
-    def handle(self, model_name, id_range, **options):
+    def handle(self, model_name, id_range_string, **options):
         try:
             search_model = SearchModel.get(name=model_name)
         except KeyError:
@@ -28,30 +28,22 @@ class Command(BaseCommand):
             exit(1)
 
         try:
-            results = parse_range(astr=id_range)
+            id_range = parse_range(range_string=id_range_string)
         except Exception as exception:
             self.stderr.write(
                 'Unknown or invalid range format `{}`; {}'.format(
-                    id_range, exception
+                    id_range_string, exception
                 )
             )
             exit(1)
 
-        self.stdout.write('\nSearch model: {}'.format(search_model))
-
-        progress_bar = ProgressBar(
-            decimal_places=2, length=40,
-            prefix='Queuing instances indexing:', suffix='complete',
-            total=len(results)
+        task_index_search_model.apply_async(
+            kwargs={
+                'range_string': id_range_string,
+                'search_model_full_name': search_model.get_full_name()
+            }
         )
 
-        for id_number_index, id_number in enumerate(results):
-            progress_bar.update(index=id_number_index + 1)
-
-            task_index_instance.apply_async(
-                kwargs={
-                    'app_label': search_model.app_label,
-                    'model_name': search_model.model_name,
-                    'object_id': int(id_number)
-                }
-            )
+        self.stdout.write(
+            '\nInstances queued for indexing: {}'.format(len(list(id_range)))
+        )

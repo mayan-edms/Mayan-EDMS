@@ -3,7 +3,7 @@ import logging
 from django.db.models import Q
 from django.utils.encoding import force_text
 
-from ..classes import SearchBackend
+from ..classes import SearchBackend, SearchModel
 
 from .literals import (
     QUERY_OPERATION_AND, QUERY_OPERATION_OR, TERM_NEGATION_CHARACTER,
@@ -13,6 +13,20 @@ logger = logging.getLogger(name=__name__)
 
 
 class DjangoSearchBackend(SearchBackend):
+    def _get_status(self):
+        result = []
+
+        for search_model in SearchModel.all():
+            queryset = search_model.get_queryset()
+
+            result.append(
+                '{}: {}'.format(
+                    search_model.label, queryset.count()
+                )
+            )
+
+        return '\n'.join(result)
+
     def _search(
         self, query, search_model, user, global_and_search=False,
         ignore_limit=False
@@ -25,15 +39,6 @@ class DjangoSearchBackend(SearchBackend):
         return search_model.get_queryset().filter(
             search_query.django_query
         ).distinct()
-
-    def deindex_instance(self, *args, **kwargs):
-        """This backend doesn't remove instances."""
-
-    def index_instance(self, *args, **kwargs):
-        """
-        This backend doesn't index instances. Searches query the
-        database directly.
-        """
 
     def get_search_query(
         self, query, search_model, global_and_search=False

@@ -1,7 +1,10 @@
+from collections import Iterable
+
 from mayan.apps.common.utils import (
     ResolverPipelineModelAttribute, flatten_list
 )
 
+from .classes import SearchBackend
 from .tasks import task_deindex_instance, task_index_instance
 
 
@@ -39,10 +42,10 @@ def handler_factory_index_related_instance_delete(reverse_field_path):
                 }
             )
 
-        try:
+        if isinstance(entries, Iterable):
             for instance in entries:
                 call_task(instance=instance)
-        except TypeError:
+        else:
             call_task(instance=result)
 
     return handler_index_by_related_to_delete_instance
@@ -67,25 +70,13 @@ def handler_factory_index_related_instance_save(reverse_field_path):
                 }
             )
 
-        try:
+        if isinstance(entries, Iterable):
             for instance in entries:
                 call_task(instance=instance)
-        except TypeError:
+        else:
             call_task(instance=result)
 
     return handler_index_by_related_instance
-
-
-def handler_index_instance(sender, **kwargs):
-    instance = kwargs['instance']
-
-    task_index_instance.apply_async(
-        kwargs={
-            'app_label': instance._meta.app_label,
-            'model_name': instance._meta.model_name,
-            'object_id': instance.pk
-        }
-    )
 
 
 def handler_factory_index_related_instance_m2m(data):
@@ -156,3 +147,27 @@ def handler_factory_index_related_instance_m2m(data):
                         )
 
     return handler_index_related_instance_m2m
+
+
+def handler_index_instance(sender, **kwargs):
+    instance = kwargs['instance']
+
+    task_index_instance.apply_async(
+        kwargs={
+            'app_label': instance._meta.app_label,
+            'model_name': instance._meta.model_name,
+            'object_id': instance.pk
+        }
+    )
+
+
+def handler_search_backend_initialize(sender, **kwargs):
+    backend = SearchBackend.get_instance()
+
+    backend.initialize()
+
+
+def handler_search_backend_upgrade(sender, **kwargs):
+    backend = SearchBackend.get_instance()
+
+    backend.upgrade()

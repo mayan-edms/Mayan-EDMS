@@ -86,6 +86,24 @@
   - Add Linux ``file`` command backend.
   - Rename ``mimetype`` app to ``mime_types``.
 
+- Add a search backend for Elastic Search.
+- Search app updates:
+
+  - Support initializing the search backends.
+  - Add method to reset backends.
+  - Moved ``get_resolved_field_map`` and ``get_search_model_fields`` to the
+    ``SearchBackend`` class.
+  - Normalize true values for scope 0 ``match_all``.
+  - Added a new task ``task_reindex_backend`` to abstract backend reindexing.
+  - Add constant maximum retries value to the ``task_deindex_instance`` and
+    ``task_index_instance`` tasks.
+  - Add ranged search model indexing.
+  - Add the ``search_slow`` queue for long running search tasks.
+  - Support backend initialization, reset, and tear down.
+  - Automatically add the ``id`` field as a search field for all search
+    models.
+  - Separate backend initialization from app initialization.
+
 4.1.4 (2021-12-01)
 ==================
 - Changes merged from versions 4.0.20 and 4.0.21.

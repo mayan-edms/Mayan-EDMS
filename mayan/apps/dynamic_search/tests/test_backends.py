@@ -1,5 +1,4 @@
 from django.db import models
-from django.test import override_settings
 
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
@@ -84,12 +83,10 @@ class CommonBackendFunctionalityTestCaseMixin(SearchTestMixin, BaseTestCase):
 
         self._test_search_grandparent = SearchModel(
             app_label=self.TestModelGrandParent._meta.app_label,
-            model_name='TestModelGrandParent',
+            model_name=self.TestModelGrandParent._meta.model_name
         )
 
-        self._test_search_grandparent.add_model_field(
-            field='label'
-        )
+        self._test_search_grandparent.add_model_field(field='label')
         self._test_search_grandparent.add_model_field(
             field='children__label'
         )
@@ -102,7 +99,7 @@ class CommonBackendFunctionalityTestCaseMixin(SearchTestMixin, BaseTestCase):
 
         self._test_search_grandchild = SearchModel(
             app_label=self.TestModelGrandChild._meta.app_label,
-            model_name='TestModelGrandChild',
+            model_name=self.TestModelGrandChild._meta.model_name
         )
         self._test_search_grandchild.add_model_field(
             field='label'
@@ -117,7 +114,7 @@ class CommonBackendFunctionalityTestCaseMixin(SearchTestMixin, BaseTestCase):
 
         self._test_search_attribute = SearchModel(
             app_label=self.TestModelAttribute._meta.app_label,
-            model_name='TestModelAttribute',
+            model_name=self.TestModelAttribute._meta.model_name
         )
         self._test_search_grandchild.add_model_field(
             field='label'
@@ -471,11 +468,11 @@ class CommonBackendFunctionalityTestCaseMixin(SearchTestMixin, BaseTestCase):
         self.assertTrue(self._test_object_grandchild not in queryset)
 
 
-@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend')
 class DjangoSearchBackendDocumentSearchTestCase(
     CommonBackendFunctionalityTestCaseMixin, DocumentTestMixin,
     BaseTestCase
 ):
+    _test_search_backend_path = 'mayan.apps.dynamic_search.backends.django.DjangoSearchBackend'
     auto_upload_test_document = False
 
     def test_meta_only(self):
@@ -613,11 +610,34 @@ class DjangoSearchBackendDocumentSearchTestCase(
         self.assertEqual(queryset.count(), 0)
 
 
-@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.tests.backends.TestSearchBackend')
+class ElasticSearchBackendDocumentSearchTestCase(
+    CommonBackendFunctionalityTestCaseMixin, DocumentTestMixin,
+    BaseTestCase
+):
+    _test_search_backend_path = 'mayan.apps.dynamic_search.backends.elasticsearch.ElasticSearchBackend'
+    auto_upload_test_document = False
+
+    def test_simple_document_search(self):
+        self._upload_test_document(label='first_doc')
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        queryset = self.search_backend.search(
+            search_model=document_search,
+            query={'q': 'first*'}, user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.test_document in queryset)
+
+
 class WhooshSearchBackendDocumentSearchTestCase(
     CommonBackendFunctionalityTestCaseMixin, DocumentTestMixin,
     BaseTestCase
 ):
+    _test_search_backend_path = 'mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend'
     auto_upload_test_document = False
 
     def test_simple_search(self):

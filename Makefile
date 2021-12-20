@@ -15,10 +15,11 @@ endif
 
 TEST_COMMAND = ./manage.py test $(MODULE) --settings=$(SETTINGS) $(SKIPMIGRATIONS) $(DEBUG) $(ARGUMENTS)
 
+TEST_ELASTIC_CONTAINER_NAME = mayan-test-elastic
 TEST_MYSQL_CONTAINER_NAME = mayan-test-mysql
 TEST_ORACLE_CONTAINER_NAME = mayan-test-oracle
 TEST_POSTGRESQL_CONTAINER_NAME = mayan-test-postgresql
-TEST_REDIS_CONTAINER_NAME = mayan-staging-redis
+TEST_REDIS_CONTAINER_NAME = mayan-test-redis
 
 .PHONY: clean clean-pyc clean-build test
 
@@ -398,11 +399,21 @@ shell-plus: ## Run the shell_plus command.
 
 # Test database containers
 
-docker-mysql-start: ## Start a MySQL Docker container.
+docker-elastic-start: ## Start an Elastic Search test container.
+docker-elastic-start:
+	@docker run --detach -e ES_JAVA_OPTS="-Xms256m -Xmx256m" -e "discovery.type=single-node" --name $(TEST_ELASTIC_CONTAINER_NAME) --publish 9200:9200 --publish 9300:9300 $(DOCKER_ELASTIC_IMAGE_VERSION)
+	@while ! nc -z 127.0.0.1 9200; do echo -n .; sleep 1; done
+
+docker-elastic-stop: ## Stop and delete the Elastic Search container.
+docker-elastic-stop:
+	@docker rm --force $(TEST_ELASTIC_CONTAINER_NAME) >/dev/null 2>&1
+
+
+docker-mysql-start: ## Start a MySQL Docker test container.
 	@docker run --detach --name $(TEST_MYSQL_CONTAINER_NAME) --publish 3306:3306 --env MYSQL_ALLOW_EMPTY_PASSWORD="yes" --env MYSQL_USER=$(DEFAULT_DATABASE_USER) --env MYSQL_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) --env MYSQL_DATABASE=$(DEFAULT_DATABASE_NAME) --volume $(TEST_MYSQL_CONTAINER_NAME):/var/lib/mysql $(DOCKER_MYSQL_IMAGE_VERSION) --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 	@while ! mysql -h 127.0.0.1 --user=$(DEFAULT_DATABASE_USER) --password=$(DEFAULT_DATABASE_PASSWORD) --execute "SHOW TABLES;" $(DEFAULT_DATABASE_NAME) >/dev/null 2>&1; do echo -n .;sleep 2; done
 
-docker-mysql-stop: ## Stop and delete the MySQL Docker container.
+docker-mysql-stop: ## Stop and delete the MySQL container.
 	@docker rm --force $(TEST_MYSQL_CONTAINER_NAME) >/dev/null 2>&1
 	@docker volume rm $(TEST_MYSQL_CONTAINER_NAME) >/dev/null 2>&1 || true
 
@@ -412,21 +423,22 @@ docker-mysql-backup:
 docker-mysql-restore:
 	@mysql --host=127.0.0.1 --user=$(DEFAULT_DATABASE_USER) --password=$(DEFAULT_DATABASE_PASSWORD) $(DEFAULT_DATABASE_NAME) < mayan-docker-mysql-backup.sql
 
-docker-oracle-start: ## Start an Oracle Docker container.
+docker-oracle-start: ## Start an Oracle test container.
 docker-oracle-start:
 	@docker run --detach --name $(TEST_ORACLE_CONTAINER_NAME) --publish 49160:22 --publish 49161:1521 --env ORACLE_ALLOW_REMOTE=true --volume $(TEST_ORACLE_CONTAINER_NAME):/u01/app/oracle $(DOCKER_ORACLE_IMAGE_VERSION)
 	@sleep 10
 	@while ! nc -z 127.0.0.1 49161; do echo -n .; sleep 2; done
 
 docker-oracle-stop:
+docker-oracle-stop: ## Stop and delete the Oracle test container.
 	@docker rm --force $(TEST_ORACLE_CONTAINER_NAME) >/dev/null 2>&1
 	@docker volume rm $(TEST_ORACLE_CONTAINER_NAME) >/dev/null 2>&1 || true
 
-docker-postgresql-start: ## Start a PostgreSQL Docker container.
+docker-postgresql-start: ## Start a PostgreSQL Docker test container.
 	@docker run --detach --name $(TEST_POSTGRESQL_CONTAINER_NAME) --env POSTGRES_HOST_AUTH_METHOD=trust --env POSTGRES_USER=$(DEFAULT_DATABASE_USER) --env POSTGRES_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) --env POSTGRES_DB=$(DEFAULT_DATABASE_NAME) --publish 5432:5432 --volume $(TEST_POSTGRESQL_CONTAINER_NAME):/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
 	@while ! psql --command "\l" --dbname=$(DEFAULT_DATABASE_NAME) --host=127.0.0.1 --username=$(DEFAULT_DATABASE_USER) >/dev/null 2>&1; do echo -n .;sleep 2; done
 
-docker-postgresql-stop: ## Stop and delete the PostgreSQL Docker container.
+docker-postgresql-stop: ## Stop and delete the PostgreSQL container.
 	@docker rm --force $(TEST_POSTGRESQL_CONTAINER_NAME) >/dev/null 2>&1
 	@docker volume rm $(TEST_POSTGRESQL_CONTAINER_NAME) >/dev/null 2>&1 || true
 
@@ -436,12 +448,12 @@ docker-postgresql-backup:
 docker-postgresql-restore:
 	@cat mayan-docker-postgresql-backup.sql | psql --dbname=$(DEFAULT_DATABASE_NAME) --host=127.0.0.1 --username=$(DEFAULT_DATABASE_USER) > /dev/null
 
-docker-redis-start: ## Start a Redis Docker container.
+docker-redis-start: ## Start a Redis Docker test container.
 docker-redis-start:
 	@docker run --detach --name $(TEST_REDIS_CONTAINER_NAME) --publish 6379:6379 $(DOCKER_REDIS_IMAGE_VERSION)
 	@while ! nc -z 127.0.0.1 6379; do echo -n .; sleep 1; done
 
-docker-redis-stop: ## Stop and delete the Redis Docker container.
+docker-redis-stop: ## Stop and delete the Redis container.
 docker-redis-stop:
 	@docker rm --force $(TEST_REDIS_CONTAINER_NAME) >/dev/null 2>&1
 

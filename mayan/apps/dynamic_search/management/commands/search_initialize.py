@@ -4,11 +4,9 @@ from ...classes import SearchBackend
 
 
 class Command(BaseCommand):
-    help = 'Show search backend statistics.'
+    help = 'Initialize the search backend.'
 
     def handle(self, *args, **options):
         backend = SearchBackend.get_instance()
 
-        result = backend.get_status()
-
-        self.stdout.write(msg=result)
+        backend.initialize()

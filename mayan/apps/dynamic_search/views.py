@@ -12,13 +12,13 @@ from mayan.apps.views.generics import (
 )
 from mayan.apps.views.literals import LIST_MODE_CHOICE_ITEM
 
-from .classes import SearchBackend, SearchModel
+from .classes import SearchBackend
 from .exceptions import DynamicSearchException
 from .forms import SearchForm, AdvancedSearchForm
 from .icons import icon_search_submit
 from .links import link_search_again
 from .permissions import permission_search_tools
-from .tasks import task_index_search_model
+from .tasks import task_reindex_backend
 from .view_mixins import SearchModelViewMixin
 
 logger = logging.getLogger(name=__name__)
@@ -53,7 +53,7 @@ class ResultsView(SearchModelViewMixin, SingleObjectListView):
         query_dict = self.request.GET.copy()
         query_dict.update(self.request.POST)
 
-        if query_dict.get('_match_all', 'off') == 'on':
+        if query_dict.get('_match_all', 'off').lower() in ['on', 'true']:
             global_and_search = True
         else:
             global_and_search = False
@@ -108,12 +108,7 @@ class SearchBackendReindexView(ConfirmView):
         return reverse(viewname='common:tools_list')
 
     def view_action(self):
-        for search_model in SearchModel.all():
-            task_index_search_model.apply_async(
-                kwargs={
-                    'search_model_full_name': search_model.get_full_name(),
-                }
-            )
+        task_reindex_backend.apply_async()
 
         messages.success(
             message=_('Search backend reindexing queued.'),
