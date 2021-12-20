@@ -12,48 +12,52 @@ from ..exceptions import DynamicSearchException
 from ..settings import setting_results_limit
 
 from .literals import (
-    DEFAULT_ELASTIC_SEARCH_HOST, DEFAULT_ELASTIC_SEARCH_INDICES_NAMESPACE,
-    DJANGO_TO_ELASTIC_SEARCH_FIELD_MAP
+    DEFAULT_ELASTICSEARCH_CLIENT_MAXSIZE,
+    DEFAULT_ELASTICSEARCH_CLIENT_SNIFF_ON_START,
+    DEFAULT_ELASTICSEARCH_CLIENT_SNIFF_ON_CONNECTION_FAIL,
+    DEFAULT_ELASTICSEARCH_CLIENT_SNIFFER_TIMEOUT, DEFAULT_ELASTICSEARCH_HOST,
+    DEFAULT_ELASTICSEARCH_INDICES_NAMESPACE,
+    DJANGO_TO_ELASTICSEARCH_FIELD_MAP
 )
 
-DEFAULT_CLIENT_MAXSIZE = 10
-DEFAULT_CLIENT_SNIFF_ON_START = True
-DEFAULT_CLIENT_SNIFF_ON_CONNECTION_FAIL = True
-DEFAULT_CLIENT_SNIFFER_TIMEOUT = 60
 logger = logging.getLogger(name=__name__)
 
 
 class ElasticSearchBackend(SearchBackend):
     _client = None
     _search_model_mappings = {}
-    field_map = DJANGO_TO_ELASTIC_SEARCH_FIELD_MAP
+    field_map = DJANGO_TO_ELASTICSEARCH_FIELD_MAP
 
     def __init__(self, **kwargs):
         self.client_kwargs = {}
 
         self.indices_namespace = kwargs.pop(
-            'indices_namespace', DEFAULT_ELASTIC_SEARCH_INDICES_NAMESPACE
+            'indices_namespace', DEFAULT_ELASTICSEARCH_INDICES_NAMESPACE
         )
 
-        host = kwargs.pop('host', DEFAULT_ELASTIC_SEARCH_HOST)
-        hosts = kwargs.pop('hosts', None)
+        host = kwargs.pop('client_host', DEFAULT_ELASTICSEARCH_HOST)
+        hosts = kwargs.pop('client_hosts', None)
 
         if not hosts:
             hosts = (host,)
 
         self.client_kwargs['hosts'] = hosts
 
+        self.client_kwargs['http_auth'] = kwargs.pop('client_http_auth', None)
+        self.client_kwargs['port'] = kwargs.pop('client_port', None)
+        self.client_kwargs['scheme'] = kwargs.pop('client_scheme', None)
+
         self.client_kwargs['maxsize'] = kwargs.pop(
-            'client_maxsize', DEFAULT_CLIENT_MAXSIZE
+            'client_maxsize', DEFAULT_ELASTICSEARCH_CLIENT_MAXSIZE
         )
         self.client_kwargs['sniff_on_start'] = kwargs.pop(
-            'client_sniff_on_start', DEFAULT_CLIENT_SNIFF_ON_START
+            'client_sniff_on_start', DEFAULT_ELASTICSEARCH_CLIENT_SNIFF_ON_START
         )
         self.client_kwargs['sniff_on_connection_fail'] = kwargs.pop(
-            'client_sniff_on_connection_fail', DEFAULT_CLIENT_SNIFF_ON_CONNECTION_FAIL
+            'client_sniff_on_connection_fail', DEFAULT_ELASTICSEARCH_CLIENT_SNIFF_ON_CONNECTION_FAIL
         )
         self.client_kwargs['sniffer_timeout'] = kwargs.pop(
-            'client_sniffer_timeout', DEFAULT_CLIENT_SNIFFER_TIMEOUT
+            'client_sniffer_timeout', DEFAULT_ELASTICSEARCH_CLIENT_SNIFFER_TIMEOUT
         )
 
         super().__init__(**kwargs)
@@ -181,14 +185,14 @@ class ElasticSearchBackend(SearchBackend):
     def index_instance(self, instance, exclude_model=None, exclude_kwargs=None):
         search_model = SearchModel.get_for_model(instance=instance)
 
-        kwargs = search_model.populate(
+        document = search_model.populate(
             backend=self, instance=instance, exclude_model=exclude_model,
             exclude_kwargs=exclude_kwargs
         )
 
         self.get_client().index(
             index=self.get_index_name(search_model=search_model),
-            id=instance.pk, document=kwargs
+            id=instance.pk, document=document
         )
 
     def index_search_model(self, search_model, range_string=None):
