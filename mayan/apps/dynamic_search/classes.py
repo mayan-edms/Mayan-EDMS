@@ -412,6 +412,11 @@ class SearchBackend:
         like indices.
         """
 
+    def upgrade(self):
+        """
+        Optional method to upgrade the search backend persistent structures.
+        """
+
 
 class SearchField:
     """

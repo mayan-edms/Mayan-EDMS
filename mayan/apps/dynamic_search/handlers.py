@@ -165,3 +165,9 @@ def handler_search_backend_initialize(sender, **kwargs):
     backend = SearchBackend.get_instance()
 
     backend.initialize()
+
+
+def handler_search_backend_upgrade(sender, **kwargs):
+    backend = SearchBackend.get_instance()
+
+    backend.upgrade()
