@@ -104,6 +104,15 @@
     models.
   - Separate backend initialization from app initialization.
 
+- Add Elasticsearch test container makefile targets.
+- Unify the files ``.env`` and ``env_file``.
+- Switch all standalone containers to use a ``prefetch-multiplier`` of ``1``.
+- Change the Docker Compose network name from ``bridge`` to ``mayan``.
+- Add the ``search_initialize`` and ``search_upgrade`` management commands.
+  These are called automatically after the initial setup and after upgrades.
+- Add new search settings called ``SEARCH_INDEXING_CHUNK_SIZE`` to set the
+  number of objects to prepare when performing bulk indexing.
+
 4.1.4 (2021-12-01)
 ==================
 - Changes merged from versions 4.0.20 and 4.0.21.
