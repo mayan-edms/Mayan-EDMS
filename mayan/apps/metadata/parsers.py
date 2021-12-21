@@ -22,6 +22,9 @@ class MetadataParser:
     def get_import_paths(cls):
         return [validator.get_import_path() for validator in cls.get_all()]
 
+    def __init__(self, **kwargs):
+        self.kwargs = kwargs
+
     def execute(self, input_data):
         raise NotImplementedError
 

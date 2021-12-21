@@ -350,7 +350,7 @@ class MetadataTypeTestMixin:
         )
 
     def _create_test_metadata_type(
-        self, add_test_document_type=False, required=False
+        self, add_test_document_type=False, extra_kwargs=None, required=False
     ):
         total_test_metadata_types = len(self.test_metadata_types)
         name = '{}_{}'.format(
@@ -360,9 +360,12 @@ class MetadataTypeTestMixin:
             TEST_METADATA_TYPE_LABEL, total_test_metadata_types
         )
 
-        self.test_metadata_type = MetadataType.objects.create(
-            name=name, label=label
-        )
+        kwargs = {'name': name, 'label': label}
+
+        if extra_kwargs:
+            kwargs.update(extra_kwargs)
+
+        self.test_metadata_type = MetadataType.objects.create(**kwargs)
         self.test_metadata_types.append(self.test_metadata_type)
 
         if add_test_document_type:

@@ -7,6 +7,8 @@ from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.validators import YAMLValidator
+from mayan.apps.common.serialization import yaml_load
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
@@ -72,6 +74,13 @@ class MetadataType(ExtraDataModelMixin, models.Model):
             'The validator will reject data entry if the value entered does '
             'not conform to the expected format.'
         ), max_length=64, verbose_name=_('Validator')
+    )
+    validation_arguments = models.TextField(
+        blank=True, help_text=_(
+            'Enter the arguments for the validator in YAML format.'
+        ), validators=[YAMLValidator()], verbose_name=_(
+            'Validator arguments'
+        )
     )
     parser = models.CharField(
         blank=True, choices=parser_choices(), help_text=_(
@@ -160,7 +169,11 @@ class MetadataType(ExtraDataModelMixin, models.Model):
                 )
 
         if self.validation:
-            validator = import_string(dotted_path=self.validation)()
+            validator_class = import_string(dotted_path=self.validation)
+            validator_arguments = yaml_load(
+                stream=self.validation_arguments or '{}'
+            )
+            validator = validator_class(**validator_arguments)
             validator.validate(value)
 
         if self.parser:

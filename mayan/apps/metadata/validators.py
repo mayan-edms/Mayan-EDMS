@@ -1,6 +1,9 @@
+import re
+
 from dateutil.parser import parse
 
 from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext_lazy as _
 
 from .parsers import MetadataParser
 
@@ -25,6 +28,19 @@ class DateValidator(MetadataValidator):
         return parse(input_data).date().isoformat()
 
 
+class RegularExpressionValidator(MetadataValidator):
+    def execute(self, input_data):
+        result = re.fullmatch(
+            pattern=self.kwargs['pattern'], string=input_data
+        )
+        if not result:
+            raise ValidationError(
+                _('The input string does not match the pattern.')
+            )
+        else:
+            return result
+
+
 class TimeValidator(MetadataValidator):
     def execute(self, input_data):
         return parse(input_data).time().isoformat()
@@ -32,4 +48,5 @@ class TimeValidator(MetadataValidator):
 
 MetadataValidator.register(parser=DateAndTimeValidator)
 MetadataValidator.register(parser=DateValidator)
+MetadataValidator.register(parser=RegularExpressionValidator)
 MetadataValidator.register(parser=TimeValidator)
