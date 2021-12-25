@@ -22,21 +22,6 @@ from .events import (
     event_metadata_type_edited, event_metadata_type_relationship_updated
 )
 from .managers import DocumentTypeMetadataTypeManager, MetadataTypeManager
-from .settings import setting_available_parsers, setting_available_validators
-
-
-def validation_choices():
-    return zip(
-        setting_available_validators.value,
-        setting_available_validators.value
-    )
-
-
-def parser_choices():
-    return zip(
-        setting_available_parsers.value,
-        setting_available_parsers.value
-    )
 
 
 class MetadataType(ExtraDataModelMixin, models.Model):
@@ -69,11 +54,10 @@ class MetadataType(ExtraDataModelMixin, models.Model):
         ), verbose_name=_('Lookup')
     )
     validation = models.CharField(
-        blank=True, choices=validation_choices(),
-        help_text=_(
+        blank=True, help_text=_(
             'The validator will reject data entry if the value entered does '
             'not conform to the expected format.'
-        ), max_length=64, verbose_name=_('Validator')
+        ), max_length=224, verbose_name=_('Validator')
     )
     validation_arguments = models.TextField(
         blank=True, help_text=_(
@@ -83,10 +67,10 @@ class MetadataType(ExtraDataModelMixin, models.Model):
         )
     )
     parser = models.CharField(
-        blank=True, choices=parser_choices(), help_text=_(
+        blank=True, help_text=_(
             'The parser will reformat the value entered to conform to the '
             'expected format.'
-        ), max_length=64, verbose_name=_('Parser')
+        ), max_length=224, verbose_name=_('Parser')
     )
 
     objects = MetadataTypeManager()
