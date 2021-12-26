@@ -193,7 +193,7 @@ class MetadataTypeForm(forms.ModelForm):
     class Meta:
         fields = (
             'name', 'label', 'default', 'lookup', 'validation',
-            'validation_arguments', 'parser'
+            'validation_arguments', 'parser', 'parser_arguments'
         )
         model = MetadataType
 
