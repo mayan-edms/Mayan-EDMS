@@ -112,6 +112,13 @@
   These are called automatically after the initial setup and after upgrades.
 - Add new search settings called ``SEARCH_INDEXING_CHUNK_SIZE`` to set the
   number of objects to prepare when performing bulk indexing.
+- Metadata validation and parsing updates:
+
+  - Expand the parser and validator path fields to 224 characters.
+  - Add automatic registration of parsers and validators.
+  - Add support for passing arguments to parsers and validators.
+  - Add a regular expression parser to replace values and a regular
+    expression validator.
 
 4.1.4 (2021-12-01)
 ==================

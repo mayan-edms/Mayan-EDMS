@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.templating.fields import TemplateField
 from mayan.apps.views.forms import RelationshipForm
 
-from .classes import MetadataLookup
+from .classes import MetadataLookup, MetadataParser, MetadataValidator
 from .models import MetadataType
 
 
@@ -183,9 +183,18 @@ class MetadataTypeForm(forms.ModelForm):
                 MetadataLookup.get_as_help_text()
             ), required=False
         )
+        self.fields['parser'].widget = forms.widgets.Select(
+            choices=MetadataParser.get_choices(add_blank=True)
+        )
+        self.fields['validation'].widget = forms.widgets.Select(
+            choices=MetadataValidator.get_choices(add_blank=True)
+        )
 
     class Meta:
-        fields = ('name', 'label', 'default', 'lookup', 'validation', 'parser')
+        fields = (
+            'name', 'label', 'default', 'lookup', 'validation',
+            'validation_arguments', 'parser'
+        )
         model = MetadataType
 
 

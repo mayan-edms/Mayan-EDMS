@@ -22,7 +22,9 @@ from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 
-from .classes import DocumentMetadataHelper
+from .classes import (
+    DocumentMetadataHelper, MetadataParser, MetadataValidator
+)
 from .events import (
     event_document_metadata_added, event_document_metadata_edited,
     event_document_metadata_removed, event_metadata_type_edited,
@@ -102,6 +104,9 @@ class MetadataApp(MayanAppConfig):
 
         EventModelRegistry.register(model=MetadataType)
         EventModelRegistry.register(model=DocumentTypeMetadataType)
+
+        MetadataParser.load_modules()
+        MetadataValidator.load_modules()
 
         ModelCopy(
             model=DocumentTypeMetadataType,

@@ -31,8 +31,8 @@ class MetadataTypeSerializer(serializers.HyperlinkedModelSerializer):
             },
         }
         fields = (
-            'default', 'id', 'label', 'lookup', 'name', 'parser', 'url',
-            'validation'
+            'default', 'id', 'label', 'lookup', 'name', 'parser',
+            'parser_arguments', 'url', 'validation', 'validation_arguments'
         )
         model = MetadataType
         read_only_fields = ('id', 'url')

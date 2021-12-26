@@ -14,6 +14,8 @@ DEFAULT_COMMON_HOME_VIEW_DASHBOARD_NAME = 'user'
 DEFAULT_COMMON_PROJECT_TITLE = mayan.__title__
 DEFAULT_COMMON_PROJECT_URL = mayan.__website__
 
+EMPTY_LABEL = '---------'
+
 MESSAGE_DEPRECATION_WARNING = _(
     'This feature has been deprecated and will be removed in a future version.'
 )
