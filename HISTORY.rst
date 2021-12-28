@@ -120,6 +120,22 @@
   - Add a regular expression parser to replace values and a regular
     expression validator.
 
+- Authentication refactor:
+
+  - Subclass Django's authentication views to add multi form and multi factor
+    authentication.
+  - Add support for authentication backends. Authentication backends are
+    able to control and customize the entire log in process, including
+    the forms presented to the user. Authentication backends can use mixins
+    and can be subclasses to mix and expand their capabilities.
+    Included authentication mixins: ``AuthenticationBackendRememberMeMixin``
+    Included authentication backends:
+    ``AuthenticationBackendModelUsernamePassword``,
+    ``AuthenticationBackendEmailPassword``.
+    Apps define authentication backends in the module
+    ``authentication_backends.py`` which is automatically loaded at startup.
+  - Removed the now unused``EmailAuthBackend`` class.
+
 4.1.4 (2021-12-01)
 ==================
 - Changes merged from versions 4.0.20 and 4.0.21.

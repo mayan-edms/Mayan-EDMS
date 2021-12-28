@@ -1,6 +1,5 @@
 from collections import OrderedDict
 
-from django import forms
 from django.contrib import messages
 from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.views import (
@@ -16,7 +15,6 @@ from django.urls import reverse, reverse_lazy
 from django.utils.decorators import classonlymethod
 from django.utils.translation import ungettext, ugettext_lazy as _
 
-from formtools.wizard.storage.exceptions import NoFileStorageConfigured
 from formtools.wizard.views import SessionWizardView
 from stronghold.views import StrongholdPublicMixin
 
@@ -30,10 +28,7 @@ from mayan.apps.views.generics import MultipleObjectFormActionView
 
 from ..classes import AuthenticationBackend
 from ..forms import AuthenticationFormBase
-from ..settings import (
-    setting_authentication_backend, setting_authentication_backend_arguments,
-    setting_disable_password_reset
-)
+from ..settings import setting_disable_password_reset
 
 
 class MayanMultiStepLoginView(
@@ -50,12 +45,8 @@ class MayanMultiStepLoginView(
         """
         Return the processed form list after the view has initialized.
         """
-        self.authentication_backend_class = AuthenticationBackend.get(
-            name=setting_authentication_backend.value
-        )
-        self.authentication_backend = self.authentication_backend_class(
-            **setting_authentication_backend_arguments.value
-        )
+        self.authentication_backend = AuthenticationBackend.get_instance()
+
         form_list = self.authentication_backend.get_form_list()
 
         computed_form_list = OrderedDict()
@@ -126,8 +117,8 @@ class MayanMultiStepLoginView(
 
     def done(self, form_list, **kwargs):
         self.authentication_backend.login(
-            cleaned_data=self.get_all_cleaned_data(), form_list=form_list,
-            request=self.request
+            form_list=form_list, request=self.request,
+            kwargs=self.get_all_cleaned_data()
         )
 
         return HttpResponseRedirect(

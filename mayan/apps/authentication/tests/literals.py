@@ -1,1 +1,2 @@
 TEST_EMAIL_AUTHENTICATION_BACKEND = 'mayan.apps.authentication.authentication_backends.AuthenticationBackendEmailPassword'
+TEST_PASSWORD_NEW = 'new_password_123'
