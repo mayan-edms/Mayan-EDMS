@@ -60,33 +60,12 @@ class MayanMultiStepLoginView(
 
         computed_form_list = OrderedDict()
 
-        # walk through the passed form list
-        for i, form in enumerate(form_list):
-            if isinstance(form, (list, tuple)):
-                # if the element is a tuple, add the tuple to the new created
-                # sorted dictionary.
-                computed_form_list[str(form[0])] = form[1]
-            else:
-                # if not, add the form with a zero based counter as unicode
-                computed_form_list[str(i)] = form
+        for form_index, form in enumerate(iterable=form_list):
+            computed_form_list[str(form_index)] = form
 
-        # walk through the new created list of forms
         for form in computed_form_list.values():
             if issubclass(form, formsets.BaseFormSet):
-                # if the element is based on BaseFormSet (FormSet/ModelFormSet)
-                # we need to override the form variable.
                 form = form.form
-            # check if any form contains a FileField, if yes, we need a
-            # file_storage added to the wizardview (by subclassing).
-            for field in form.base_fields.values():
-                if (
-                    isinstance(field, forms.FileField) and not
-                    hasattr(self.__class__, 'file_storage')
-                ):
-                    raise NoFileStorageConfigured(
-                        'You need to define \'file_storage\' in your '
-                        'wizard view in order to handle file uploads.'
-                    )
 
         return computed_form_list
 

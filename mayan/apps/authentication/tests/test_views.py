@@ -321,7 +321,6 @@ class UserLoginTestCase(UserLoginTestMixin, GenericViewTestCase):
         super().setUp()
         SettingNamespace.invalidate_cache_all()
 
-    @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
     def test_non_authenticated_request(self):
         self._clear_events()
 
@@ -333,7 +332,6 @@ class UserLoginTestCase(UserLoginTestMixin, GenericViewTestCase):
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
     def test_username_login(self):
         logged_in = self.login(
             username=self._test_case_superuser.username,
@@ -374,7 +372,6 @@ class UserLoginTestCase(UserLoginTestMixin, GenericViewTestCase):
             events = self._get_test_events()
             self.assertEqual(events.count(), 0)
 
-    @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
     def test_username_login_via_views(self):
         self._clear_events()
 
@@ -417,7 +414,6 @@ class UserLoginTestCase(UserLoginTestMixin, GenericViewTestCase):
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    @override_settings(AUTHENTICATION_LOGIN_METHOD='email')
     def test_email_login_via_views(self):
         with self.settings(AUTHENTICATION_BACKENDS=(TEST_EMAIL_AUTHENTICATION_BACKEND,)):
             self._clear_events()
@@ -536,9 +532,8 @@ class UserLoginTestCase(UserLoginTestMixin, GenericViewTestCase):
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    @override_settings(AUTHENTICATION_LOGIN_METHOD='email')
     def test_email_remember_me(self):
-        with self.settings(AUTHENTICATION_BACKENDS=(TEST_EMAIL_AUTHENTICATION_BACKEND,)):
+        with self.settings(AUTHENTICATION_BACKEND=TEST_EMAIL_AUTHENTICATION_BACKEND):
             self._clear_events()
 
             response = self.post(
@@ -578,9 +573,8 @@ class UserLoginTestCase(UserLoginTestMixin, GenericViewTestCase):
             events = self._get_test_events()
             self.assertEqual(events.count(), 0)
 
-    @override_settings(AUTHENTICATION_LOGIN_METHOD='email')
     def test_email_dont_remember_me(self):
-        with self.settings(AUTHENTICATION_BACKENDS=(TEST_EMAIL_AUTHENTICATION_BACKEND,)):
+        with self.settings(AUTHENTICATION_BACKEND=TEST_EMAIL_AUTHENTICATION_BACKEND):
             self._clear_events()
 
             response = self.post(
@@ -614,7 +608,6 @@ class UserLoginTestCase(UserLoginTestMixin, GenericViewTestCase):
             events = self._get_test_events()
             self.assertEqual(events.count(), 0)
 
-    @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
     def test_password_reset(self):
         self.logout()
         self._clear_events()

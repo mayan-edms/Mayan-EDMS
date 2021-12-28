@@ -1,5 +1,7 @@
 from mayan.apps.databases.classes import BaseBackend
 
+from .literals import DEFAULT_MAXIMUM_SESSION_LENGTH
+
 
 class AuthenticationBackend(BaseBackend):
     _loader_module_name = 'authentication_backends'
@@ -10,7 +12,9 @@ class AuthenticationBackend(BaseBackend):
 
 class AuthenticationBackendRememberMeMixin:
     def __init__(self, **kwargs):
-        self.maximum_session_length = kwargs.pop('maximum_session_length')
+        self.maximum_session_length = kwargs.pop(
+            'maximum_session_length', DEFAULT_MAXIMUM_SESSION_LENGTH
+        )
         super().__init__(**kwargs)
 
     def login(self, cleaned_data, form_list, request):

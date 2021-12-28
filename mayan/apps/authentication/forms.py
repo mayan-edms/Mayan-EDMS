@@ -50,7 +50,7 @@ class AuthenticationFormUsernamePassword(
     )
 
 
-class AuthenticationFormEmail(
+class AuthenticationFormEmailPassword(
     AuthenticationFormMixinRememberMe, AuthenticationForm,
     AuthenticationFormBase
 ):

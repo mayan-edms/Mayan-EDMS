@@ -4,7 +4,7 @@ from .classes import (
     AuthenticationBackend, AuthenticationBackendRememberMeMixin
 )
 from .forms import (
-    AuthenticationFormEmail, AuthenticationFormUsernamePassword
+    AuthenticationFormEmailPassword, AuthenticationFormUsernamePassword
 )
 
 
@@ -21,10 +21,10 @@ class AuthenticationBackendModelUsernamePassword(
         )
 
 
-class AuthenticationBackendEmail(
+class AuthenticationBackendEmailPassword(
     AuthenticationBackendRememberMeMixin, AuthenticationBackend
 ):
-    form_list = (AuthenticationFormEmail,)
+    form_list = (AuthenticationFormEmailPassword,)
 
     def login(self, cleaned_data, form_list, request):
         auth_login(request, list(form_list)[0].get_user())
