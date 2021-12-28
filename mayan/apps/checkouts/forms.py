@@ -24,7 +24,7 @@ class DocumentCheckOutDetailForm(DetailForm):
         extra_fields = (
             {
                 'label': _('Document status'),
-                'field': lambda instance: STATE_LABELS[
+                'func': lambda instance: STATE_LABELS[
                     instance.get_check_out_state()
                 ]
             },
@@ -35,21 +35,21 @@ class DocumentCheckOutDetailForm(DetailForm):
             extra_fields += (
                 {
                     'label': _('User'),
-                    'field': lambda instance: checkout_info.user.get_full_name() or checkout_info.user
+                    'func': lambda instance: checkout_info.user.get_full_name() or checkout_info.user
                 },
                 {
                     'label': _('Check out time'),
-                    'field': lambda instance: checkout_info.checkout_datetime,
+                    'func': lambda instance: checkout_info.checkout_datetime,
                     'widget': forms.widgets.DateTimeInput
                 },
                 {
                     'label': _('Check out expiration'),
-                    'field': lambda instance: checkout_info.expiration_datetime,
+                    'func': lambda instance: checkout_info.expiration_datetime,
                     'widget': forms.widgets.DateTimeInput
                 },
                 {
                     'label': _('New files allowed?'),
-                    'field': lambda instance: _('Yes') if not checkout_info.block_new_file else _('No')
+                    'func': lambda instance: _('Yes') if not checkout_info.block_new_file else _('No')
                 },
             )
 

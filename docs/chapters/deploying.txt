@@ -37,6 +37,14 @@ For another setup that offers more performance and scalability refer to the
        python3-venv redis-server sane-utils supervisor tesseract-ocr \
        zlib1g-dev
 
+
+
+   .. important::
+
+     For Mayan EDMS 4.1, Supervisord must be upgraded to version
+     4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
    .. note::
 
        Platforms with the ARM CPU might also need additional requirements:

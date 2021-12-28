@@ -69,6 +69,6 @@ class TestClientAdapter(requests.adapters.BaseAdapter):
                 data=request.body,
                 headers=request.headers,
                 method=request.method,
-                viewname=self.test_case.test_view_name,
+                viewname=self.test_case._test_view_name,
             )
         )

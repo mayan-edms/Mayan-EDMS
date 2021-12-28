@@ -3,13 +3,13 @@ from django.utils.encoding import force_text
 
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.storages import storage_document_files
-from mayan.apps.mimetype.api import get_mimetype
+from mayan.apps.mime_types.tests.mixins import MIMETypeBackendMixin
 
 from .mixins import StorageProcessorTestMixin
 
 
 class StorageProcessManagementCommandTestCase(
-    StorageProcessorTestMixin, GenericDocumentTestCase
+    MIMETypeBackendMixin, StorageProcessorTestMixin, GenericDocumentTestCase
 ):
     def _call_command(self, reverse=None):
         options = {
@@ -44,7 +44,7 @@ class StorageProcessManagementCommandTestCase(
 
         with open(file=self.test_document.file_latest.file.path, mode='rb') as file_object:
             self.assertEqual(
-                get_mimetype(file_object=file_object),
+                self.mime_type_backend.get_mime_type(file_object=file_object),
                 ('application/zip', 'binary')
             )
 
@@ -65,7 +65,7 @@ class StorageProcessManagementCommandTestCase(
 
         with open(file=self.test_document.file_latest.file.path, mode='rb') as file_object:
             self.assertNotEqual(
-                get_mimetype(file_object=file_object),
+                self.mime_type_backend.get_mime_type(file_object=file_object),
                 ('application/zip', 'binary')
             )
 

@@ -1,26 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Jiri Fait <fait@orkasolutions.cz>, 2021
 # Michal Švábík <snadno@lehce.cz>, 2021
-#
+# trendspotter <jirka.p@volny.cz>, 2021
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 05:16+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:12+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
-"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:26 classes.py:175 links.py:27
 msgid "ACLs"
@@ -31,6 +31,8 @@ msgid ""
 "Object for which the access is granted. When sorting objects, only the type "
 "is used and not the actual label of the object."
 msgstr ""
+"Objekt, ke kterému je přístup udělen. Při třídění objektů se používá pouze "
+"typ a ne skutečný štítek objektu."
 
 #: apps.py:65
 msgid "Object"
@@ -46,7 +48,7 @@ msgstr "ACL vytvořen"
 
 #: events.py:13
 msgid "ACL deleted"
-msgstr ""
+msgstr "ACL smazán"
 
 #: events.py:16
 msgid "ACL edited"
@@ -70,7 +72,7 @@ msgstr "Práva"
 
 #: links.py:35
 msgid "Global ACLs"
-msgstr ""
+msgstr "Globální ACL"
 
 #: managers.py:243
 #, python-format
@@ -85,7 +87,7 @@ msgstr "Nedostatečný přístup pro: %s"
 
 #: models.py:49
 msgid "Role to which the access is granted for the specified object."
-msgstr ""
+msgstr "Role, ke které je pro zadaný objekt udělen přístup."
 
 #: models.py:59
 msgid "Access entry"
@@ -108,13 +110,13 @@ msgstr "Upravit seznamy ACL"
 msgid "View ACLs"
 msgstr "Zobrazit seznamy ACL"
 
-#: serializers.py:125
+#: serializers.py:120
 msgid "Primary key of the permission to add to the ACL."
-msgstr ""
+msgstr "Primární klíč oprávnění přidat do seznamu ACL."
 
-#: serializers.py:132
+#: serializers.py:127
 msgid "Primary key of the permission to remove from the ACL."
-msgstr ""
+msgstr "Primární klíč oprávnění odebrat z ACL."
 
 #: views.py:40
 #, python-format
@@ -135,11 +137,11 @@ msgstr "Nové seznamy řízení přístupu pro: %s"
 msgid "Delete ACL: %s"
 msgstr "Odstranit ACL: %s"
 
-#: views.py:139
+#: views.py:141
 msgid "There are no ACLs for this object"
 msgstr "Pro tento objekt neexistují žádné ACL"
 
-#: views.py:142 views.py:259
+#: views.py:144 views.py:261
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
@@ -149,25 +151,25 @@ msgstr ""
 "přístupu uživatelů k objektům v systému. Seznamy ACL umožňují udělit "
 "oprávnění roli, ale pouze pro určitý objekt nebo skupinu objektů."
 
-#: views.py:149
+#: views.py:151
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "Seznamy řízení přístupu pro: %s"
 
-#: views.py:163
+#: views.py:165
 msgid "Granted permissions"
 msgstr "Udělení oprávnění"
 
-#: views.py:164
+#: views.py:166
 msgid "Available permissions"
 msgstr "Dostupná oprávnění"
 
-#: views.py:208
+#: views.py:210
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr "Role „%(role)s“ má oprávnění „%(object)s“."
 
-#: views.py:217
+#: views.py:219
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -175,16 +177,17 @@ msgid ""
 "menu."
 msgstr ""
 "Zakázaná oprávnění jsou zděděna z nadřazeného objektu nebo přímo udělena "
-"roli a nelze je z tohoto pohledu odebrat. Zděděná oprávnění je třeba odebrat "
-"z ACL nadřazeného objektu nebo z jeho role prostřednictvím nabídky Nastavení."
+"roli a nelze je z tohoto pohledu odebrat. Zděděná oprávnění je třeba odebrat"
+" z ACL nadřazeného objektu nebo z jeho role prostřednictvím nabídky "
+"Nastavení."
 
-#: views.py:256
+#: views.py:258
 msgid "There are no ACLs"
-msgstr ""
+msgstr "Neexistují žádné seznamy ACL"
 
-#: views.py:265
+#: views.py:267
 msgid "Global access control lists"
-msgstr ""
+msgstr "Globální seznamy řízení přístupu"
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -199,7 +202,8 @@ msgid "Object ID"
 msgstr "ID objektu"
 
 #: workflow_actions.py:35
-msgid "Numeric identifier of the object for which the access will be modified."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
 msgstr "Numerický identifikátor objektu, pro který bude přístup upraven."
 
 #: workflow_actions.py:40 workflow_actions.py:155

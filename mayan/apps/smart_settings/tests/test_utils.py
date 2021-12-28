@@ -4,11 +4,15 @@ from .literals import (
     TEST_BOOTSTAP_SETTING_NAME, TEST_SETTING_VALUE,
     TEST_SETTING_VALUE_OVERRIDE
 )
-from .mixins import BoostrapSettingTestMixin, SmartSettingTestMixin
+from .mixins import (
+    BoostrapSettingTestMixin, SmartSettingTestMixin,
+    SmartSettingNamespaceTestMixin
+)
 
 
 class BoostrapSettingTestCase(
-    BoostrapSettingTestMixin, SmartSettingTestMixin, BaseTestCase
+    BoostrapSettingTestMixin, SmartSettingTestMixin,
+    SmartSettingNamespaceTestMixin, BaseTestCase
 ):
     def setUp(self):
         super().setUp()

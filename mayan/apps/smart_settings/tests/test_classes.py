@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from django.conf import settings
+from django.core.exceptions import ValidationError
 from django.utils import translation
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
@@ -9,94 +10,24 @@ from mayan.apps.storage.utils import fs_cleanup
 from mayan.apps.testing.tests.base import BaseTestCase
 from mayan.apps.views.settings import setting_paginate_by
 
-from ..classes import Setting
+from ..classes import Setting, SettingNamespace
 
 from .literals import (
     ENVIRONMENT_TEST_NAME, ENVIRONMENT_TEST_VALUE, TEST_SETTING_GLOBAL_NAME,
-    TEST_SETTING_INITIAL_VALUE, TEST_SETTING_VALUE
+    TEST_SETTING_INITIAL_VALUE, TEST_SETTING_VALIDATION_BAD_VALUE,
+    TEST_SETTING_VALIDATION_GOOD_VALUE, TEST_SETTING_VALUE
 )
-from .mixins import SmartSettingTestMixin
+from .mixins import SmartSettingTestMixin, SmartSettingNamespaceTestMixin
 from .mocks import (
     TestNamespaceMigrationOne, TestNamespaceMigrationTwo,
-    TestNamespaceMigrationInvalid, TestNamespaceMigrationInvalidDual
+    TestNamespaceMigrationInvalid, TestNamespaceMigrationInvalidDual,
+    test_validation_function
 )
 
 
-class SetttingTestCase(SmartSettingTestMixin, BaseTestCase):
-    def test_environment_override(self):
-        test_environment_value = 'test environment value'
-        test_file_value = 'test file value'
-
-        self._create_test_settings_namespace()
-        self._create_test_setting()
-
-        self._set_environment_variable(
-            name='MAYAN_{}'.format(self.test_setting.global_name),
-            value=test_environment_value
-        )
-
-        self.test_config_value = test_file_value
-        self._create_test_config_file()
-
-        self.assertEqual(
-            self.test_setting.value, test_environment_value
-        )
-
-    def test_environment_variable(self):
-        self._set_environment_variable(
-            name='MAYAN_{}'.format(ENVIRONMENT_TEST_NAME),
-            value=ENVIRONMENT_TEST_VALUE
-        )
-
-        self.assertTrue(setting_paginate_by.value, ENVIRONMENT_TEST_VALUE)
-
-    def test_config_backup_creation(self):
-        path_config_backup = Path(settings.CONFIGURATION_LAST_GOOD_FILEPATH)
-        fs_cleanup(filename=force_text(s=path_config_backup))
-
-        Setting.save_last_known_good()
-        self.assertTrue(path_config_backup.exists())
-
-    def test_config_backup_creation_no_tags(self):
-        path_config_backup = Path(settings.CONFIGURATION_LAST_GOOD_FILEPATH)
-        fs_cleanup(filename=force_text(s=path_config_backup))
-
-        Setting.save_last_known_good()
-        self.assertTrue(path_config_backup.exists())
-
-        with path_config_backup.open(mode='r') as file_object:
-            self.assertFalse('!!python/' in file_object.read())
-
-    def test_setting_check_changed(self):
-        self._create_test_settings_namespace()
-        test_setting = self.test_settings_namespace.add_setting(
-            global_name='SMART_SETTINGS_TEST_SETTING',
-            default='test value'
-        )
-        # Initialize hash cache
-        Setting._cache_hash = None
-        Setting.check_changed()
-        self.assertFalse(Setting.check_changed())
-        test_setting.value = 'test value edited'
-        self.assertTrue(Setting.check_changed())
-
-    def test_setting_check_changed_for_translations(self):
-        self._create_test_settings_namespace()
-        self.test_settings_namespace.add_setting(
-            global_name='SMART_SETTINGS_TEST_SETTING',
-            default=_('English')
-        )
-        # Initialize hash cache
-        Setting._cache_hash = None
-        Setting.check_changed()
-        self.assertFalse(Setting.check_changed())
-
-        translation.activate(language='es')
-        self.assertFalse(Setting.check_changed())
-        translation.activate(language='en')
-
-
-class SettingNamespaceMigrationTestCase(SmartSettingTestMixin, BaseTestCase):
+class SettingNamespaceMigrationTestCase(
+    SmartSettingNamespaceTestMixin, SmartSettingTestMixin, BaseTestCase
+):
     def test_environment_migration(self):
         self._set_environment_variable(
             name='MAYAN_{}'.format(TEST_SETTING_GLOBAL_NAME),
@@ -162,3 +93,108 @@ class SettingNamespaceMigrationTestCase(SmartSettingTestMixin, BaseTestCase):
         self.assertEqual(
             self.test_setting.value, TEST_SETTING_VALUE
         )
+
+
+class SettingTestCase(
+    SmartSettingTestMixin, SmartSettingNamespaceTestMixin, BaseTestCase
+):
+    def test_environment_override(self):
+        test_environment_value = 'test environment value'
+        test_file_value = 'test file value'
+
+        self._create_test_settings_namespace()
+        self._create_test_setting()
+
+        self._set_environment_variable(
+            name='MAYAN_{}'.format(self.test_setting.global_name),
+            value=test_environment_value
+        )
+
+        self.test_config_value = test_file_value
+        self._create_test_config_file()
+
+        self.assertEqual(
+            self.test_setting.value, test_environment_value
+        )
+
+    def test_environment_variable(self):
+        self._set_environment_variable(
+            name='MAYAN_{}'.format(ENVIRONMENT_TEST_NAME),
+            value=ENVIRONMENT_TEST_VALUE
+        )
+
+        self.assertTrue(setting_paginate_by.value, ENVIRONMENT_TEST_VALUE)
+
+    def test_config_backup_creation(self):
+        path_config_backup = Path(settings.CONFIGURATION_LAST_GOOD_FILEPATH)
+        fs_cleanup(filename=force_text(s=path_config_backup))
+
+        Setting.save_last_known_good()
+        self.assertTrue(path_config_backup.exists())
+
+    def test_config_backup_creation_no_tags(self):
+        path_config_backup = Path(settings.CONFIGURATION_LAST_GOOD_FILEPATH)
+        fs_cleanup(filename=force_text(s=path_config_backup))
+
+        Setting.save_last_known_good()
+        self.assertTrue(path_config_backup.exists())
+
+        with path_config_backup.open(mode='r') as file_object:
+            self.assertFalse('!!python/' in file_object.read())
+
+    def test_setting_check_changed(self):
+        self._create_test_settings_namespace()
+        test_setting = self.test_settings_namespace.add_setting(
+            global_name='SMART_SETTINGS_TEST_SETTING',
+            default='test value'
+        )
+        # Initialize hash cache.
+        Setting._cache_hash = None
+        Setting.check_changed()
+        self.assertFalse(Setting.check_changed())
+        test_setting.value = 'test value edited'
+        self.assertTrue(Setting.check_changed())
+
+    def test_setting_check_changed_for_translations(self):
+        self._create_test_settings_namespace()
+        self.test_settings_namespace.add_setting(
+            global_name='SMART_SETTINGS_TEST_SETTING',
+            default=_('English')
+        )
+        # Initialize hash cache.
+        Setting._cache_hash = None
+        Setting.check_changed()
+        self.assertFalse(Setting.check_changed())
+
+        translation.activate(language='es')
+        self.assertFalse(Setting.check_changed())
+        translation.activate(language='en')
+
+    def test_setting_validation_call(self):
+        self._create_test_settings_namespace()
+        self._create_test_setting(
+            validation_function=test_validation_function
+        )
+
+        self.test_setting.validate(
+            raw_value=TEST_SETTING_VALIDATION_GOOD_VALUE
+        )
+
+        with self.assertRaises(expected_exception=ValidationError):
+            self.test_setting.validate(
+                raw_value=TEST_SETTING_VALIDATION_BAD_VALUE
+            )
+
+    def test_setting_validation_at_loading(self):
+        self._create_test_settings_namespace()
+        self._create_test_setting(
+            validation_function=test_validation_function
+        )
+
+        SettingNamespace.invalidate_cache_all()
+
+        self.test_config_value = TEST_SETTING_VALIDATION_BAD_VALUE
+        self._create_test_config_file()
+
+        with self.assertRaises(expected_exception=ValidationError):
+            self.test_setting.value

@@ -27,7 +27,6 @@ from .events import (
     event_group_created, event_group_edited, event_user_created,
     event_user_edited
 )
-
 from .handlers import handler_initialize_new_user_options
 from .links import (
     link_current_user_details, link_current_user_edit, link_group_create,
@@ -42,10 +41,10 @@ from .methods import (
     get_method_group_init, get_method_group_save, get_method_user_init,
     get_method_user_save, method_group_get_absolute_url,
     method_group_get_users, method_group_users_add,
-    method_group_users_remove, method_user_get_absolute_url,
-    method_user_get_groups, method_user_groups_add, method_user_groups_remove
+    method_group_users_remove, method_user_get_absolute_api_url,
+    method_user_get_absolute_url, method_user_get_groups,
+    method_user_groups_add, method_user_groups_remove
 )
-
 from .permissions import (
     permission_group_delete, permission_group_edit,
     permission_group_view, permission_user_delete, permission_user_edit,
@@ -125,6 +124,10 @@ class UserManagementApp(MayanAppConfig):
 
         User.add_to_class(
             name='__init__', value=get_method_user_init()
+        )
+        User.add_to_class(
+            name='get_absolute_api_url',
+            value=method_user_get_absolute_api_url
         )
         User.add_to_class(
             name='get_absolute_url', value=method_user_get_absolute_url

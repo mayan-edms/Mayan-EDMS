@@ -8,8 +8,8 @@ from mayan.apps.common.classes import (
     ModelCopy, ModelField, ModelProperty, ModelReverseField
 )
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_main, menu_multi_item, menu_object,
-    menu_related, menu_secondary, menu_setup, menu_tools
+    menu_list_facet, menu_main, menu_multi_item, menu_object, menu_related,
+    menu_secondary, menu_setup, menu_tools
 )
 from mayan.apps.documents.links.document_type_links import link_document_type_list
 from mayan.apps.documents.signals import signal_post_document_type_change
@@ -244,7 +244,6 @@ class DocumentStatesApp(MayanAppConfig):
             ), label=_('Get last log entry'), model=WorkflowInstance,
             name='get_last_log_entry'
         )
-
         ModelProperty(
             description=_(
                 'Return the current context dictionary which includes '
@@ -252,7 +251,6 @@ class DocumentStatesApp(MayanAppConfig):
             ), label=_('Get the context'), model=WorkflowInstance,
             name='get_runtime_context'
         )
-
         ModelProperty(
             description=_(
                 'Return the transition of the workflow instance.'
@@ -435,7 +433,7 @@ class DocumentStatesApp(MayanAppConfig):
             source=WorkflowStateRuntimeProxy
         )
 
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(link_workflow_instance_list,), sources=(Document,)
         )
         menu_secondary.bind_links(

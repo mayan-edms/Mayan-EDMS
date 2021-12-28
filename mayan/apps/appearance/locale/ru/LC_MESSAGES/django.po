@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:56 events.py:5 permissions.py:5 settings.py:7
+#: apps.py:55 events.py:5 permissions.py:5 settings.py:10
 msgid "Appearance"
 msgstr "Внешний вид"
 
@@ -105,41 +105,41 @@ msgstr "Удалить"
 msgid "Edit"
 msgstr "Редактировать"
 
-#: links.py:40 links.py:45 models.py:29 views.py:111
+#: links.py:40 links.py:45 models.py:31 views.py:111
 msgid "Themes"
 msgstr "Темы"
 
-#: models.py:16
+#: models.py:18
 msgid "A short text describing the theme."
 msgstr "Краткое описание темы."
 
-#: models.py:17
+#: models.py:19
 msgid "Label"
 msgstr "Заголовок"
 
-#: models.py:21
+#: models.py:23
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
 msgstr "Стили CSS для изменения внешнего вида различных элементов интерфейса."
 
-#: models.py:23
+#: models.py:25
 msgid "Stylesheet"
 msgstr "Таблица стилей"
 
-#: models.py:28 models.py:63
+#: models.py:30 models.py:68
 msgid "Theme"
 msgstr "Тема"
 
-#: models.py:59
+#: models.py:64
 msgid "User"
 msgstr "Пользователь"
 
-#: models.py:67
+#: models.py:72
 msgid "User theme setting"
 msgstr "Настройка темы пользователя"
 
-#: models.py:68
+#: models.py:73
 msgid "User theme settings"
 msgstr "Настройки темы пользователя"
 
@@ -159,17 +159,22 @@ msgstr "Редактировать темы"
 msgid "View existing themes"
 msgstr "Просмотр существующих тем"
 
-#: settings.py:12
+#: settings.py:15
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "Максимальное количество символов, отображаемое в заголовке."
 
-#: settings.py:19
+#: settings.py:22
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
 msgstr ""
 "Расположение всплывающих системных сообщений. Варианты: top-left, top-"
 "center, top-right, bottom-left, bottom-center, bottom-right."
+
+#: settings.py:30
+msgid ""
+"Delay in milliseconds after which the menus will be checked for updates."
+msgstr ""
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
@@ -208,7 +213,7 @@ msgstr ""
 "разрешений для доступа к элементу."
 
 #: templates/500.html:5 templates/500.html:30
-#: templates/appearance/root.html:58
+#: templates/appearance/root.html:48
 msgid "Server error"
 msgstr "Ошибка сервера"
 
@@ -249,7 +254,7 @@ msgstr ""
 msgid "About"
 msgstr "О программе"
 
-#: templates/appearance/about.html:73
+#: templates/appearance/about.html:72
 #, python-format
 msgid ""
 "\n"
@@ -259,50 +264,20 @@ msgstr ""
 "\n"
 "%(setting_project_title)s основан(ы) на %(project_title)s"
 
-#: templates/appearance/about.html:78
+#: templates/appearance/about.html:77
 msgid "Version"
 msgstr "Версия"
 
-#: templates/appearance/about.html:80
+#: templates/appearance/about.html:79
 #, python-format
 msgid "Build number: %(build_number)s"
 msgstr "Сборка: %(build_number)s"
 
-#: templates/appearance/about.html:93
+#: templates/appearance/about.html:92
 msgid "Released under the license:"
 msgstr "Выпущено под лицензией:"
 
-#: templates/appearance/about.html:99
-#, python-format
-msgid ""
-"\n"
-"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
-"            "
-msgstr ""
-"\n"
-"%(project_title)s - это бесплатное программное обеспечение с открытым исходным кодом, предоставляемое вам с<i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> Роберто Росарио и соавторами."
-
-#: templates/appearance/about.html:105
-#, python-format
-msgid ""
-"\n"
-"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
-"            "
-msgstr ""
-"\n"
-"Чтобы сделать %(project_title)s таким многофункциональным, нужно приложить немало усилий."
-
-#: templates/appearance/about.html:111
-#, python-format
-msgid ""
-"\n"
-"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
-"            "
-msgstr ""
-"\n"
-"Если вы используете %(project_title)s, <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">сделайте пожертвование %(icon_social_paypal)s</a>"
-
-#: templates/appearance/about.html:117
+#: templates/appearance/about.html:98
 #, python-format
 msgid ""
 "\n"
@@ -312,7 +287,7 @@ msgstr ""
 "\n"
 "Полный список изменений доступен в <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">примечаниях к выпуску %(icon_documentation)s</a> или в краткой версии <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">журнала изменений %(icon_documentation)s</a> ."
 
-#: templates/appearance/about.html:123
+#: templates/appearance/about.html:104
 #, python-format
 msgid ""
 "\n"
@@ -322,7 +297,7 @@ msgstr ""
 "\n"
 "По вопросам <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">обращайтесь к документации %(icon_documentation)s</a> ."
 
-#: templates/appearance/about.html:129
+#: templates/appearance/about.html:110
 #, python-format
 msgid ""
 "\n"
@@ -332,7 +307,7 @@ msgstr ""
 "\n"
 "Если вы обнаружили ошибку или у вас есть идея, посетите <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">форум %(icon_forum)s</a> или откройте <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">заявку в репозитории исходного кода %(icon_source_code)s</a> ."
 
-#: templates/appearance/about.html:134
+#: templates/appearance/about.html:115
 #, python-format
 msgid ""
 "\n"
@@ -342,23 +317,19 @@ msgstr ""
 "\n"
 "Расскажите своим друзьям и коллегам о том, какой классный %(project_title)s!"
 
-#: templates/appearance/base.html:71
+#: templates/appearance/base.html:73
 msgid "Object"
 msgstr "Объект"
 
-#: templates/appearance/calculate_form_title.html:10
-msgid "Open main menu"
-msgstr "Открыть главное меню"
-
-#: templates/appearance/generic_confirm.html:14
+#: templates/appearance/generic_confirm.html:13
 msgid "Are you sure?"
 msgstr "Вы уверены?"
 
-#: templates/appearance/generic_confirm.html:38
+#: templates/appearance/generic_confirm.html:37
 msgid "Yes"
 msgstr "Да"
 
-#: templates/appearance/generic_confirm.html:48
+#: templates/appearance/generic_confirm.html:47
 msgid "No"
 msgstr "Нет"
 
@@ -369,24 +340,26 @@ msgstr "Нет"
 msgid "required"
 msgstr "требуется"
 
-#: templates/appearance/generic_form_subtemplate.html:83
-#: templates/appearance/generic_form_subtemplate.html:96
-#: templates/appearance/generic_multiform_subtemplate.html:59
+#: templates/appearance/generic_form_subtemplate.html:84
+#: templates/appearance/generic_form_subtemplate.html:94
+#: templates/appearance/generic_form_subtemplate.html:108
+#: templates/appearance/generic_multiform_subtemplate.html:62
 msgid "Save"
 msgstr "Сохранить"
 
-#: templates/appearance/generic_form_subtemplate.html:83
-#: templates/appearance/generic_form_subtemplate.html:96
-#: templates/appearance/generic_multiform_subtemplate.html:59
+#: templates/appearance/generic_form_subtemplate.html:84
+#: templates/appearance/generic_form_subtemplate.html:94
+#: templates/appearance/generic_form_subtemplate.html:108
+#: templates/appearance/generic_multiform_subtemplate.html:62
 msgid "Submit"
 msgstr "Отправить"
 
-#: templates/appearance/generic_form_subtemplate.html:87
-#: templates/appearance/generic_multiform_subtemplate.html:63
+#: templates/appearance/generic_form_subtemplate.html:98
+#: templates/appearance/generic_multiform_subtemplate.html:66
 msgid "Cancel"
 msgstr "Отменить"
 
-#: templates/appearance/generic_list_subtemplate.html:29
+#: templates/appearance/generic_list_subtemplate.html:34
 msgid "Identifier"
 msgstr "Идентификатор"
 
@@ -394,21 +367,25 @@ msgstr "Идентификатор"
 msgid "Facets"
 msgstr "Грани"
 
-#: templates/appearance/home.html:10
-msgid "Dashboard"
-msgstr "Дашборд"
-
-#: templates/appearance/home.html:26
+#: templates/appearance/home.html:27
 msgid "Getting started"
 msgstr "Приступая к работе"
 
-#: templates/appearance/home.html:29
+#: templates/appearance/home.html:30
 msgid "Before you can fully use Mayan EDMS you need the following:"
 msgstr ""
 "Прежде чем вы сможете полноценно использовать Mayan EDMS, вам потребуется "
 "следующее:"
 
-#: templates/appearance/list_header.html:12
+#: templates/appearance/menus/menu_topbar.html:11
+msgid "Toggle navigation"
+msgstr "Переключение навигации"
+
+#: templates/appearance/partials/form_title.html:10
+msgid "Open main menu"
+msgstr "Открыть главное меню"
+
+#: templates/appearance/partials/list_header.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
@@ -417,56 +394,52 @@ msgstr ""
 "Всего (%(start)s - %(end)s из %(total)s) (Страница %(page_number)s из "
 "%(total_pages)s)"
 
-#: templates/appearance/list_header.html:14
-#: templates/appearance/list_header.html:17
+#: templates/appearance/partials/list_header.html:14
+#: templates/appearance/partials/list_header.html:17
 #, python-format
 msgid "Total: %(total)s"
 msgstr "Всего: %(total)s"
 
-#: templates/appearance/list_toolbar.html:13
+#: templates/appearance/partials/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "Выбрать все / отменить выбор"
 
-#: templates/appearance/list_toolbar.html:17
+#: templates/appearance/partials/list_toolbar.html:17
 msgid "Toggle list display mode"
 msgstr "Переключить режим отображения"
 
-#: templates/appearance/list_toolbar.html:60
+#: templates/appearance/partials/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr ""
 "Выберите элементы для массовых действий. Чтобы отметить сразу несколько, "
 "нажмите Shift + клик."
 
-#: templates/appearance/list_toolbar.html:65
+#: templates/appearance/partials/list_toolbar.html:65
 msgid "Bulk actions"
 msgstr "Массовые действия"
 
-#: templates/appearance/list_toolbar.html:67
+#: templates/appearance/partials/list_toolbar.html:67
 msgid "Toggle Dropdown"
 msgstr "Переключение выпадающего списка"
 
-#: templates/appearance/menu_topbar.html:11
-msgid "Toggle navigation"
-msgstr "Переключение навигации"
-
-#: templates/appearance/no_results.html:18
+#: templates/appearance/partials/no_results.html:18
 msgid "No results"
 msgstr "Нет результатов"
 
-#: templates/appearance/root.html:63
+#: templates/appearance/root.html:53
 msgid "Close"
 msgstr "Закрыть"
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:61
 msgid "Server communication error"
 msgstr "Ошибка связи с сервером"
 
-#: templates/appearance/root.html:75
+#: templates/appearance/root.html:63
 msgid "Check you network connection and try again in a few moments."
 msgstr "Проверьте ваше подключение к сети и повторите попытку позже."
 
-#: templatetags/appearance_tags.py:63
+#: templatetags/appearance_tags.py:61
 msgid "None"
 msgstr "Нет"
 

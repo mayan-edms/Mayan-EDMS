@@ -460,9 +460,9 @@ class DocumentVersionOCRViewsTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_version_ocr_download_view_with_access(self):
-        self._create_test_document_version_ocr_content()
+        self.expected_content_types = ('application/octet-stream',)
 
-        self.expected_content_types = ('text/html; charset=utf-8',)
+        self._create_test_document_version_ocr_content()
 
         self.grant_access(
             obj=self.test_document,

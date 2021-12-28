@@ -11,8 +11,7 @@ from mayan.apps.common.classes import (
     ModelCopy, ModelFieldRelated, ModelQueryFields
 )
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_main, menu_multi_item, menu_object,
-    menu_secondary
+    menu_list_facet, menu_main, menu_multi_item, menu_object, menu_secondary
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
@@ -80,6 +79,11 @@ class TagsApp(MayanAppConfig):
             ),
         )
 
+        ModelEventType.register(
+            model=Document, event_types=(
+                event_tag_attached, event_tag_removed
+            )
+        )
         ModelEventType.register(
             model=Tag, event_types=(
                 event_tag_attached, event_tag_edited, event_tag_removed
@@ -162,7 +166,7 @@ class TagsApp(MayanAppConfig):
 
         # Document
 
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(link_document_tag_list,), sources=(Document,)
         )
 

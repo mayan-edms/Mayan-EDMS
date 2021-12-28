@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-12-01 12:17+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2021\n"
 "Language-Team: Vietnamese (https://www.transifex.com/rosarior/teams/13584/vi/)\n"
@@ -36,11 +36,11 @@ msgstr ""
 msgid "Value"
 msgstr ""
 
-#: classes.py:341
+#: classes.py:347
 msgid "Overridden"
 msgstr ""
 
-#: classes.py:343
+#: classes.py:349
 msgid "Is this settings being overridden by an environment variable?"
 msgstr ""
 
@@ -344,6 +344,10 @@ msgstr ""
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
+msgstr ""
+
+#: tests/test_classes.py:162
+msgid "English"
 msgstr ""
 
 #: views.py:21

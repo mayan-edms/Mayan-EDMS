@@ -13,7 +13,7 @@ except ImportError:
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.utils.encoding import force_bytes, force_text
 
-from mayan.apps.mimetype.api import get_mimetype
+from mayan.apps.mime_types.classes import MIMETypeBackend
 
 from .exceptions import NoMIMETypeMatch
 from .literals import MSG_MIME_TYPES
@@ -32,8 +32,8 @@ class Archive:
 
     @classmethod
     def open(cls, file_object):
-        mime_type = get_mimetype(
-            file_object=file_object, mimetype_only=True
+        mime_type = MIMETypeBackend.get_backend_instance().get_mime_type(
+            file_object=file_object, mime_type_only=True
         )[0]
 
         try:

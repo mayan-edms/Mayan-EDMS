@@ -97,6 +97,13 @@ class OCRApp(MayanAppConfig):
         ModelEventType.register(
             model=Document, event_types=(
                 event_ocr_document_version_content_deleted,
+                event_ocr_document_version_finished,
+                event_ocr_document_version_submitted
+            )
+        )
+        ModelEventType.register(
+            model=DocumentVersion, event_types=(
+                event_ocr_document_version_content_deleted,
                 event_ocr_document_version_page_content_edited,
                 event_ocr_document_version_finished,
                 event_ocr_document_version_submitted

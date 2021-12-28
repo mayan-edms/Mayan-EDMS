@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
 
 from mayan.apps.common.serialization import yaml_load
-from mayan.apps.documents.utils import parse_range
+from mayan.apps.common.utils import parse_range
 from mayan.apps.document_states.classes import WorkflowAction
 
 from .models import ObjectLayer
@@ -79,7 +79,7 @@ class TransformationAddAction(WorkflowAction):
 
     def execute(self, context):
         if self.form_data['pages']:
-            page_range = parse_range(astr=self.form_data['pages'])
+            page_range = parse_range(range_string=self.form_data['pages'])
             queryset = context['document'].pages.filter(
                 page_number__in=page_range
             )

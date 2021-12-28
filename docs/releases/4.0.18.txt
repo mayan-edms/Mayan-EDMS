@@ -1,0 +1,85 @@
+Version 4.0.18
+==============
+
+Released: October 21, 2021
+
+Status: Maintenance
+
+Changes
+--------
+
+
+Settings
+^^^^^^^^
+
+Support was added for setting validation. Validation is performed when
+changing the setting value via the user interface of during startup.
+
+
+Organizations
+^^^^^^^^^^^^^
+
+The base template was updated to ensure that the value of the
+``ORGANIZATIONS_URL_BASE_PATH`` setting is applied to properly
+trigger the root SPA template.
+
+Validation was added to the format of the ``ORGANIZATIONS_URL_BASE_PATH``
+setting.
+
+
+REST API
+^^^^^^^^
+
+Two settings were backported that allow changing the default and the maximum
+REST API page size. These are ``REST_API_MAXIMUM_PAGE_SIZE`` and
+``REST_API_PAGE_SIZE``.
+
+
+Other
+^^^^^
+
+- Smart setting test updates:
+
+  - Add smart setting validation tests.
+  - Add setting view tests.
+  - Separate namespace and setting tests and mixins.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- None
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

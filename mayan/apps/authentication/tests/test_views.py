@@ -2,7 +2,7 @@ from furl import furl
 
 from django.conf import settings
 from django.contrib.auth.views import (
-    INTERNAL_RESET_SESSION_TOKEN, INTERNAL_RESET_URL_TOKEN,
+    INTERNAL_RESET_SESSION_TOKEN, PasswordResetConfirmView
 )
 from django.core import mail
 from django.test import override_settings
@@ -44,7 +44,7 @@ class CurrentUserViewTestCase(GenericViewTestCase):
                 'new_password1': new_password,
                 'new_password2': new_password
             }, follow=True
-            # The follow is to test this and the next redirect, two tests in
+            # The follow is to test this and the next redirect,two tests in
             # one.
         )
         self.assertEqual(response.status_code, 200)
@@ -642,7 +642,10 @@ class UserLoginTestCase(UserLoginTestMixin, GenericViewTestCase):
 
         response = self.post(
             viewname='authentication:password_reset_confirm_view',
-            kwargs={'uidb64': uidb64, 'token': INTERNAL_RESET_URL_TOKEN},
+            kwargs={
+                'uidb64': uidb64,
+                'token': PasswordResetConfirmView.reset_url_token
+            },
             data={
                 'new_password1': new_password,
                 'new_password2': new_password

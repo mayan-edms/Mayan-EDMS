@@ -22,14 +22,12 @@ class EmailSourceBackendTestMixin(SourceTestMixin):
     def _create_test_email_source_backend(self, extra_data=None):
         backend_data = {
             'document_type_id': self.test_document_type.pk,
-            'from_metadata_type_id': None,
             'host': '',
             'interval': DEFAULT_PERIOD_INTERVAL,
             'metadata_attachment_name': DEFAULT_EMAIL_METADATA_ATTACHMENT_NAME,
             'password': '',
             'port': '',
             'ssl': True,
-            'subject_metadata_type_id': None,
             'store_body': False,
             'username': '',
             '_test_content': TEST_EMAIL_ATTACHMENT_AND_INLINE
@@ -51,7 +49,6 @@ class IMAPEmailSourceTestMixin(SourceTestMixin):
         backend_data = {
             'document_type_id': self.test_document_type.pk,
             'execute_expunge': True,
-            'from_metadata_type_id': None,
             'host': '',
             'interval': DEFAULT_PERIOD_INTERVAL,
             'mailbox': DEFAULT_EMAIL_IMAP_MAILBOX,
@@ -63,7 +60,6 @@ class IMAPEmailSourceTestMixin(SourceTestMixin):
             'ssl': True,
             'store_body': False,
             'store_commands': DEFAULT_EMAIL_IMAP_STORE_COMMANDS,
-            'subject_metadata_type_id': None,
             'uncompress': SOURCE_UNCOMPRESS_CHOICE_NEVER,
             'username': ''
         }
@@ -83,7 +79,6 @@ class POP3EmailSourceTestMixin(SourceTestMixin):
     def _create_test_pop3_email_source(self, extra_data=None):
         backend_data = {
             'document_type_id': self.test_document_type.pk,
-            'from_metadata_type_id': None,
             'host': '',
             'interval': DEFAULT_PERIOD_INTERVAL,
             'metadata_attachment_name': DEFAULT_EMAIL_METADATA_ATTACHMENT_NAME,
@@ -91,7 +86,6 @@ class POP3EmailSourceTestMixin(SourceTestMixin):
             'port': '',
             'ssl': True,
             'store_body': False,
-            'subject_metadata_type_id': None,
             'timeout': DEFAULT_EMAIL_POP3_TIMEOUT,
             'uncompress': SOURCE_UNCOMPRESS_CHOICE_NEVER,
             'username': ''

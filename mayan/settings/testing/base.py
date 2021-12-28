@@ -4,7 +4,15 @@ CELERY_BROKER_URL = 'memory://'
 CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = True
 
-DASHBOARDS_DEFAULT_DASHBOARD_NAME = None
+COMMON_HOME_VIEW_DASHBOARD_NAME = None
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': ':memory:'
+    }
+}
+
 DOCUMENT_PARSING_AUTO_PARSING = False
 
 FILE_METADATA_AUTO_PROCESS = False
@@ -39,6 +47,8 @@ OCR_AUTO_OCR = False
 PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.MD5PasswordHasher',
 )
+
+SEARCH_BACKEND = 'mayan.apps.dynamic_search.tests.backends.TestSearchBackend'
 
 STATICFILES_STORAGE = None
 

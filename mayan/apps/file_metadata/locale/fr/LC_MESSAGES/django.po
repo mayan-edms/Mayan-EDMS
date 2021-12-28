@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -28,24 +28,24 @@ msgstr ""
 msgid "Label"
 msgstr "Étiquette"
 
-#: apps.py:48 events.py:6 links.py:17 permissions.py:5 queues.py:7
+#: apps.py:51 events.py:6 links.py:19 permissions.py:5 queues.py:7
 #: settings.py:12
 msgid "File metadata"
 msgstr "Métadonnées du fichier"
 
-#: apps.py:98 search.py:11 search.py:22 search.py:33
+#: apps.py:102 search.py:11 search.py:22 search.py:33
 msgid "File metadata key"
 msgstr "Clé de métadonnées de fichier"
 
-#: apps.py:102 search.py:15 search.py:26 search.py:37
+#: apps.py:106 search.py:15 search.py:26 search.py:37
 msgid "File metadata value"
 msgstr "Valeur des métadonnées du fichier"
 
-#: apps.py:129
+#: apps.py:134
 msgid "Return the value of a specific file metadata."
 msgstr "Renvoie la valeur des métadonnées  pour un fichier spécifique."
 
-#: apps.py:130
+#: apps.py:135
 msgid "File metadata value of"
 msgstr "Valeur de métadonnée de fichier de"
 
@@ -68,19 +68,19 @@ msgstr "Document soumis pour le traitement des métadonnées de fichier"
 msgid "Document file file metadata processing finished"
 msgstr ""
 
-#: links.py:23
+#: links.py:25
 msgid "Attributes"
 msgstr "Attributs"
 
-#: links.py:30 links.py:35
+#: links.py:32 links.py:37
 msgid "Submit for file metadata"
 msgstr "Soumettre pour les métadonnées de fichier"
 
-#: links.py:42
+#: links.py:47
 msgid "Setup file metadata"
 msgstr "Métadonnées du fichier d'installation"
 
-#: links.py:47
+#: links.py:52
 msgid "File metadata processing per type"
 msgstr "Traitement des métadonnées de fichier par type"
 

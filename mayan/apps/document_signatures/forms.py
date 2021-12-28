@@ -49,7 +49,7 @@ class DocumentFileSignatureDetailForm(DetailForm):
             {'label': _('Signature key ID'), 'field': 'key_id'},
             {
                 'label': _('Signature key present?'),
-                'field': lambda x: x.public_key_fingerprint is not None
+                'func': lambda x: x.public_key_fingerprint is not None
             },
         )
 
@@ -60,7 +60,7 @@ class DocumentFileSignatureDetailForm(DetailForm):
                 {'label': _('Signature ID'), 'field': 'signature_id'},
                 {
                     'label': _('Key fingerprint'),
-                    'field': lambda x: key.fingerprint
+                    'func': lambda x: key.fingerprint
                 },
                 {
                     'label': _('Key creation date'),
@@ -69,7 +69,7 @@ class DocumentFileSignatureDetailForm(DetailForm):
                 },
                 {
                     'label': _('Key expiration date'),
-                    'field': lambda x: key.expiration_date or _('None'),
+                    'func': lambda x: key.expiration_date or _('None'),
                     'widget': forms.widgets.DateTimeInput
                 },
                 {
@@ -86,7 +86,7 @@ class DocumentFileSignatureDetailForm(DetailForm):
                 },
                 {
                     'label': _('Key type'),
-                    'field': lambda x: key.get_key_type_display()
+                    'func': lambda x: key.get_key_type_display()
                 },
             )
 

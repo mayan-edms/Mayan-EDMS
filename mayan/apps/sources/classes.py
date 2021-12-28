@@ -181,7 +181,7 @@ class SourceBackend(AppsModuleLoaderMixin, metaclass=SourceBackendMetaclass):
 
     @classmethod
     def get_upload_form_class(cls):
-        return getattr(cls, 'upload_form_class')
+        return getattr(cls, 'upload_form_class', None)
 
     @classmethod
     def get_setup_form_schema(cls):

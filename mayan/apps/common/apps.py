@@ -1,7 +1,6 @@
 import logging
 import sys
 import traceback
-import warnings
 
 from django import apps
 from django.conf.urls import include, url
@@ -19,12 +18,8 @@ from .links import (
     link_support, link_tools
 )
 
-from .literals import MESSAGE_SQLITE_WARNING
 from .menus import menu_about, menu_topbar, menu_user
-
 from .signals import signal_pre_initial_setup, signal_pre_upgrade
-from .utils import check_for_sqlite
-from .warnings import DatabaseWarning
 
 logger = logging.getLogger(name=__name__)
 
@@ -77,10 +72,18 @@ class MayanAppConfig(apps.AppConfig):
                 traceback.print_exception(*exc_info)
                 raise exception
         else:
+            # Allow blank namespaces. These are used to register the
+            # urlpatterns of encapsulated libraries as top level named
+            # URLs.
+            if self.app_namespace is not None:
+                app_namespace = self.app_namespace
+            else:
+                app_namespace = self.name
+
             mayan_urlpatterns += (
                 url(
                     regex=r'^{}'.format(top_url), view=include(
-                        (app_urlpatterns, self.app_namespace or self.name)
+                        (app_urlpatterns, app_namespace)
                     )
                 ),
             )
@@ -133,17 +136,11 @@ class CommonApp(MayanAppConfig):
 
         admin.autodiscover()
 
-        if check_for_sqlite():
-            warnings.warn(
-                category=DatabaseWarning,
-                message=force_text(s=MESSAGE_SQLITE_WARNING)
-            )
-
         AJAXTemplate(
-            name='menu_main', template_name='appearance/menu_main.html'
+            name='menu_main', template_name='appearance/menus/menu_main.html'
         )
         AJAXTemplate(
-            name='menu_topbar', template_name='appearance/menu_topbar.html'
+            name='menu_topbar', template_name='appearance/menus/menu_topbar.html'
         )
 
         menu_about.bind_links(

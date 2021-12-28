@@ -3,7 +3,9 @@ import logging
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
-from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
+from mayan.apps.acls.permissions import (
+    permission_acl_edit, permission_acl_view
+)
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
     menu_multi_item, menu_object, menu_secondary, menu_topbar
@@ -20,7 +22,10 @@ from .links import (
     link_message_multiple_mark_unread, link_message_single_mark_read,
     link_message_single_mark_unread
 )
-from .permissions import permission_message_delete, permission_message_view
+from .permissions import (
+    permission_message_delete, permission_message_edit,
+    permission_message_view
+)
 
 logger = logging.getLogger(name=__name__)
 
@@ -28,7 +33,7 @@ logger = logging.getLogger(name=__name__)
 class MessagingApp(MayanAppConfig):
     app_namespace = 'messaging'
     app_url = 'messaging'
-    has_rest_api = False
+    has_rest_api = True
     has_tests = True
     name = 'mayan.apps.messaging'
     verbose_name = _('Messaging')
@@ -47,7 +52,8 @@ class MessagingApp(MayanAppConfig):
         ModelPermission.register(
             model=Message, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_message_delete, permission_message_view
+                permission_message_delete, permission_message_edit,
+                permission_message_view
             )
         )
 

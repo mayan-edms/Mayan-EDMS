@@ -7,25 +7,25 @@ from ..classes import ErrorLog
 from .literals import TEST_ERROR_LOG_ENTRY_RESULT
 
 
-class LoggingTextMixin:
+class ErrorLoggingTextMixin:
     def _create_error_log_test_object(self):
-        self._create_test_user()
         self.test_model = get_user_model()
-        self.test_object = self.test_user
-
-    def _create_error_log_entry(self):
         app_config = apps.get_app_config(app_label='logging')
         self.error_log = ErrorLog(app_config=app_config)
         self.error_log.register_model(
             model=self.test_model, register_permission=True
         )
 
+        self._create_test_user()
+        self.test_object = self.test_user
+
+    def _create_error_log_entry(self):
         self.error_log_entry = self.test_object.error_log.create(
             text=TEST_ERROR_LOG_ENTRY_RESULT
         )
 
 
-class LoggingViewTestMixin:
+class ErrorLoggingViewTestMixin:
     def _request_object_error_log_list_view(self):
         content_type = ContentType.objects.get_for_model(
             model=self.test_object

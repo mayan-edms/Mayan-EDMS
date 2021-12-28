@@ -1,6 +1,7 @@
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.authentication.link_conditions import condition_user_is_authenticated
 from mayan.apps.navigation.classes import Link
 
 from .icons import (
@@ -46,6 +47,7 @@ link_message_single_delete = Link(
     tags='dangerous', text=_('Delete'), view='messaging:message_single_delete'
 )
 link_message_list = Link(
+    condition=condition_user_is_authenticated,
     badge_text=get_unread_message_count, icon=icon_message_list,
     text='', view='messaging:message_list'
 )

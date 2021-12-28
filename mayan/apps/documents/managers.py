@@ -241,11 +241,14 @@ class ValidFavoriteDocumentManager(models.Manager):
         return favorite_document
 
     def get_for_user(self, user):
-        Document = apps.get_model(
-            app_label='documents', model_name='Document'
+        FavoriteDocumentProxy = apps.get_model(
+            app_label='documents', model_name='FavoriteDocumentProxy'
         )
 
-        return Document.valid.filter(favorites__user=user)
+        if user.is_authenticated:
+            return FavoriteDocumentProxy.valid.filter(favorites__user=user)
+        else:
+            return FavoriteDocumentProxy.valid.none()
 
     def get_queryset(self):
         return super().get_queryset().filter(
@@ -254,6 +257,13 @@ class ValidFavoriteDocumentManager(models.Manager):
 
     def remove_for_user(self, user, document):
         self.get(user=user, document=document).delete()
+
+
+class ValidFavoriteDocumentProxyManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(
+            in_trash=False
+        )
 
 
 class ValidRecentlyAccessedDocumentManager(models.Manager):

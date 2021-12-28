@@ -3,12 +3,17 @@ import json
 
 import requests
 
+from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import WorkflowAction
 from .exceptions import WorkflowStateActionError
-from .literals import DEFAULT_HTTP_ACTION_TIMEOUT
-from .models import Workflow
+from .literals import (
+    BASE_WORKFLOW_TEMPLATE_STATE_ACTION_HELP_TEXT,
+    DEFAULT_HTTP_ACTION_TIMEOUT
+)
+from .models.workflow_instance_models import WorkflowInstance
+from .models.workflow_models import Workflow
 from .tasks import task_launch_workflow_for
 
 logger = logging.getLogger(name=__name__)
@@ -18,31 +23,40 @@ class DocumentPropertiesEditAction(WorkflowAction):
     fields = {
         'document_label': {
             'label': _('Document label'),
-            'class': 'django.forms.CharField', 'kwargs': {
-                'help_text': _(
-                    'The new label to be assigned to the document. Can be a '
-                    'string or a template.'
-                ), 'required': False
+            'class': 'mayan.apps.templating.fields.ModelTemplateField',
+            'kwargs': {
+                'initial_help_text': _(
+                    format_lazy(
+                        '{}. {}',
+                        _('The new label to be assigned to the document.'),
+                        BASE_WORKFLOW_TEMPLATE_STATE_ACTION_HELP_TEXT
+                    )
+                ),
+                'model': WorkflowInstance,
+                'model_variable': 'workflow_instance',
+                'required': False
             },
         }, 'document_description': {
             'label': _('Document description'),
-            'class': 'django.forms.CharField', 'kwargs': {
-                'help_text': _(
-                    'The new description to be assigned to the document. '
-                    'Can be a string or a template.'
-                ), 'required': False
+            'class': 'mayan.apps.templating.fields.ModelTemplateField',
+            'kwargs': {
+                'initial_help_text': _(
+                    format_lazy(
+                        '{}. {}',
+                        _(
+                            'The new description to be assigned to the '
+                            'document.'
+                        ), BASE_WORKFLOW_TEMPLATE_STATE_ACTION_HELP_TEXT
+                    )
+                ),
+                'model': WorkflowInstance,
+                'model_variable': 'workflow_instance',
+                'required': False
             },
         },
     }
     field_order = ('document_label', 'document_description')
     label = _('Modify document properties')
-    widgets = {
-        'document_description': {
-            'class': 'django.forms.widgets.Textarea', 'kwargs': {
-                'attrs': {'rows': '10'},
-            }
-        }
-    }
 
     def execute(self, context):
         self.document_label = self.form_data.get('document_label')
@@ -118,114 +132,131 @@ class HTTPAction(WorkflowAction):
     fields = {
         'url': {
             'label': _('URL'),
-            'class': 'django.forms.CharField', 'kwargs': {
-                'help_text': _(
-                    'Can be an IP address, a domain or a template. Templates '
-                    'receive the workflow log entry instance as part of '
-                    'their context via the variable "entry_log". '
-                    'The "entry_log" in turn provides the '
-                    '"workflow_instance", "datetime", "transition", "user", '
-                    'and "comment" attributes.'
+            'class': 'mayan.apps.templating.fields.ModelTemplateField',
+            'kwargs': {
+                'initial_help_text': _(
+                    format_lazy(
+                        '{}. {}',
+                        _('The URL to access.'),
+                        BASE_WORKFLOW_TEMPLATE_STATE_ACTION_HELP_TEXT
+                    )
                 ),
+                'model': WorkflowInstance,
+                'model_variable': 'workflow_instance',
                 'required': True
             },
         }, 'timeout': {
             'label': _('Timeout'),
-            'class': 'django.forms.IntegerField',
+            'class': 'mayan.apps.templating.fields.ModelTemplateField',
             'default': DEFAULT_HTTP_ACTION_TIMEOUT,
-            'help_text': _(
-                'Time in seconds to wait for a response. Can be a static '
-                'value or a template. '
-            ),
-            'required': True
-
+            'kwargs': {
+                'initial_help_text': _(
+                    format_lazy(
+                        '{}. {}',
+                        _('Time in seconds to wait for a response.'),
+                        BASE_WORKFLOW_TEMPLATE_STATE_ACTION_HELP_TEXT
+                    )
+                ),
+                'model': WorkflowInstance,
+                'model_variable': 'workflow_instance',
+                'required': True
+            }
         }, 'payload': {
             'label': _('Payload'),
-            'class': 'django.forms.CharField', 'kwargs': {
-                'help_text': _(
-                    'A JSON document to include in the request. Can also be '
-                    'a template that return a JSON document. Templates '
-                    'receive the workflow log entry instance as part of '
-                    'their context via the variable "entry_log". '
-                    'The "entry_log" in turn provides the '
-                    '"workflow_instance", "datetime", "transition", "user", '
-                    'and "comment" attributes.'
-                ), 'required': False
-            },
+            'class': 'mayan.apps.templating.fields.ModelTemplateField',
+            'kwargs': {
+                'initial_help_text': _(
+                    format_lazy(
+                        '{}. {}',
+                        _('A JSON document to include in the request.'),
+                        BASE_WORKFLOW_TEMPLATE_STATE_ACTION_HELP_TEXT
+                    )
+                ),
+                'model': WorkflowInstance,
+                'model_variable': 'workflow_instance',
+                'required': False
+            }
         }, 'username': {
             'label': _('Username'),
-            'class': 'django.forms.CharField', 'kwargs': {
-                'help_text': _(
-                    'Username to use for making the request with HTTP Basic '
-                    'Auth. Can be a static value or a template. Templates '
-                    'receive the workflow log entry instance as part of '
-                    'their context via the variable "entry_log". '
-                    'The "entry_log" in turn provides the '
-                    '"workflow_instance", "datetime", "transition", "user", '
-                    'and "comment" attributes.'
-                ), 'max_length': 192, 'required': False
+            'class': 'mayan.apps.templating.fields.ModelTemplateField',
+            'kwargs': {
+                'initial_help_text': _(
+                    format_lazy(
+                        '{}. {}',
+                        _(
+                            'Username to use for making the request with '
+                            'HTTP Basic Auth.'
+                        ), BASE_WORKFLOW_TEMPLATE_STATE_ACTION_HELP_TEXT
+                    )
+                ),
+                'max_length': 192,
+                'model': WorkflowInstance,
+                'model_variable': 'workflow_instance',
+                'required': False
             },
         }, 'password': {
             'label': _('Password'),
-            'class': 'django.forms.CharField', 'kwargs': {
-                'help_text': _(
-                    'Password to use for making the request with HTTP Basic '
-                    'Auth. Can be a static value or a template. Templates '
-                    'receive the workflow log entry instance as part of '
-                    'their context via the variable "entry_log". '
-                    'The "entry_log" in turn provides the '
-                    '"workflow_instance", "datetime", "transition", "user", '
-                    'and "comment" attributes.'
-                ), 'max_length': 192, 'required': False
+            'class': 'mayan.apps.templating.fields.ModelTemplateField',
+            'kwargs': {
+                'initial_help_text': _(
+                    format_lazy(
+                        '{}. {}',
+                        _(
+                            'Password to use for making the request with '
+                            'HTTP Basic Auth.'
+                        ), BASE_WORKFLOW_TEMPLATE_STATE_ACTION_HELP_TEXT
+                    )
+                ),
+                'max_length': 192,
+                'model': WorkflowInstance,
+                'model_variable': 'workflow_instance',
+                'required': False
             },
         }, 'method': {
             'label': _('Method'),
-            'class': 'django.forms.CharField', 'kwargs': {
-                'help_text': _(
-                    'The HTTP method to use for the request. Typical choices '
-                    'are OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. '
-                    'Can be a static value or a template that returns the '
-                    'method text. Templates receive the workflow log entry '
-                    'instance as part of their context via the '
-                    'variable "entry_log". The "entry_log" in turn '
-                    'provides the "workflow_instance", "datetime", '
-                    '"transition", "user", and "comment" attributes.'
-                ), 'required': True
+            'class': 'mayan.apps.templating.fields.ModelTemplateField',
+            'kwargs': {
+                'initial_help_text': _(
+                    format_lazy(
+                        '{}. {}',
+                        _(
+                            'The HTTP method to use for the request. '
+                            'Typical choices are OPTIONS, HEAD, POST, GET, '
+                            'PUT, PATCH, DELETE.'
+                        ), BASE_WORKFLOW_TEMPLATE_STATE_ACTION_HELP_TEXT
+                    )
+                ),
+                'model': WorkflowInstance,
+                'model_variable': 'workflow_instance',
+                'required': True
             }
         }, 'headers': {
             'label': _('Headers'),
-            'class': 'django.forms.CharField', 'kwargs': {
-                'help_text': _(
-                    'Headers to send with the HTTP request. Must be in JSON '
-                    'format. Can be a static value or a template. Templates '
-                    'receive the workflow log entry instance as part of '
-                    'their context via the variable "entry_log". '
-                    'The "entry_log" in turn provides the '
-                    '"workflow_instance", "datetime", "transition", "user", '
-                    'and "comment" attributes.'
-                ), 'required': False
-            },
+            'class': 'mayan.apps.templating.fields.ModelTemplateField',
+            'kwargs': {
+                'initial_help_text': _(
+                    format_lazy(
+                        '{}. {}',
+                        _(
+                            'Headers to send with the HTTP request. Must '
+                            'be in JSON format.'
+                        ), BASE_WORKFLOW_TEMPLATE_STATE_ACTION_HELP_TEXT
+                    )
+                ),
+                'model': WorkflowInstance,
+                'model_variable': 'workflow_instance',
+                'required': False
+            }
         }
     }
     field_order = (
-        'url', 'username', 'password', 'headers', 'timeout', 'method', 'payload'
+        'url', 'username', 'password', 'headers', 'timeout', 'method',
+        'payload'
     )
     label = _('Perform an HTTP request')
     previous_dotted_paths = (
         'mayan.apps.document_states.workflow_actions.HTTPPostAction',
     )
-    widgets = {
-        'payload': {
-            'class': 'django.forms.widgets.Textarea', 'kwargs': {
-                'attrs': {'rows': '10'},
-            }
-        },
-        'headers': {
-            'class': 'django.forms.widgets.Textarea', 'kwargs': {
-                'attrs': {'rows': '10'},
-            }
-        }
-    }
 
     def render_field_load(self, field_name, context):
         """

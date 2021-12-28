@@ -2,10 +2,10 @@ from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..models import ErrorLogPartitionEntry
 
-from .mixins import LoggingTextMixin
+from .mixins import ErrorLoggingTextMixin
 
 
-class LoggingModelTestCase(LoggingTextMixin, BaseTestCase):
+class ErrorLoggingModelTestCase(ErrorLoggingTextMixin, BaseTestCase):
     def setUp(self):
         super().setUp()
         self._create_error_log_test_object()

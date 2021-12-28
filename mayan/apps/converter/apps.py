@@ -22,8 +22,7 @@ from .links import (
     link_transformation_select
 )
 from .permissions import (
-    permission_asset_delete, permission_asset_edit,
-    permission_asset_view
+    permission_asset_delete, permission_asset_edit, permission_asset_view
 )
 
 
@@ -31,6 +30,7 @@ class ConverterApp(MayanAppConfig):
     app_namespace = 'converter'
     app_url = 'converter'
     has_rest_api = True
+    has_static_media = True
     has_tests = True
     name = 'mayan.apps.converter'
     verbose_name = _('Converter')
@@ -39,7 +39,9 @@ class ConverterApp(MayanAppConfig):
         super().ready()
 
         Asset = self.get_model(model_name='Asset')
-        LayerTransformation = self.get_model(model_name='LayerTransformation')
+        LayerTransformation = self.get_model(
+            model_name='LayerTransformation'
+        )
 
         EventModelRegistry.register(model=Asset)
 
@@ -109,7 +111,8 @@ class ConverterApp(MayanAppConfig):
             sources=(LayerTransformation,)
         )
         menu_secondary.bind_links(
-            links=(link_transformation_select,), sources=(LayerTransformation,)
+            links=(link_transformation_select,),
+            sources=(LayerTransformation,)
         )
         menu_secondary.bind_links(
             links=(link_transformation_select,),

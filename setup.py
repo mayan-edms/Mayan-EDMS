@@ -60,7 +60,7 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-django==2.2.24
+django==3.2.8
 Pillow==8.3.1
 PyPDF2==1.26.0
 PyYAML==5.4.1
@@ -79,10 +79,12 @@ django-pure-pagination==0.3.0
 django-qsstats-magic==1.1.0
 django-solo==1.1.5
 django-stronghold==0.4.0
-django-widget-tweaks==1.4.8
-djangorestframework==3.12.2
+django-widget-tweaks==1.4.9
+djangorestframework==3.12.4
 djangorestframework-recursive==0.1.2
 drf-yasg==1.20.0
+elasticsearch==7.15.2
+elasticsearch-dsl==7.4.0
 extract-msg==0.28.7
 flanker==0.9.11
 flex==6.14.1
@@ -91,6 +93,7 @@ fusepy==3.0.1
 gevent==21.8.0
 graphviz==0.17
 gunicorn==20.1.0
+jsonschema==3.2.0
 mock==4.0.3
 node-semver==0.8.0
 packaging==21.0
@@ -101,6 +104,7 @@ python-magic==0.4.24
 python_gnupg==0.4.7
 pytz==2021.1
 requests==2.26.0
+sentry-sdk==1.4.1
 sh==1.14.2
 swagger-spec-validator==2.7.3
 whitenoise==5.3.0
@@ -142,9 +146,16 @@ setup(
     name=PACKAGE_NAME,
     packages=find_packages(PACKAGE_DIR),
     platforms=['any'],
+    project_urls={
+        'Documentation': 'https://docs.mayan-edms.com/',
+        'Changelog': 'https://gitlab.com/mayan-edms/mayan-edms/-/blob/master/HISTORY.rst',
+        'Bug Tracker': 'https://gitlab.com/mayan-edms/mayan-edms/-/issues',
+        'Source Code': 'https://gitlab.com/mayan-edms/mayan-edms',
+        'Support': 'https://www.mayan-edms.com/support/'
+    },
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*',
     scripts=['mayan/bin/mayan-edms.py'],
-    url='https://gitlab.com/mayan-edms/mayan-edms',
+    url=mayan.__website__,
     version=mayan.__version__,
     zip_safe=False,
 )

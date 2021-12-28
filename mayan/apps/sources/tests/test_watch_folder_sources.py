@@ -21,6 +21,56 @@ class WatchFolderSourceBackendTestCase(
     auto_create_test_source = False
     auto_upload_test_document = False
 
+    def test_exclude_regular_expression(self):
+        path = Path(TEST_SMALL_DOCUMENT_PATH)
+
+        self._create_test_watch_folder(
+            extra_data={'exclude_regex': path.name}
+        )
+
+        document_count = Document.objects.count()
+
+        temporary_directory = self.test_source.get_backend_data()['folder_path']
+
+        shutil.copy(src=TEST_SMALL_DOCUMENT_PATH, dst=temporary_directory)
+
+        self.test_source.get_backend_instance().process_documents()
+
+        self.assertEqual(Document.objects.count(), document_count)
+
+        backend_data = self.test_source.get_backend_data()
+        backend_data['exclude_regex'] = ''
+        self.test_source.set_backend_data(obj=backend_data)
+
+        self.test_source.get_backend_instance().process_documents()
+
+        self.assertEqual(Document.objects.count(), document_count + 1)
+
+    def test_include_regular_expression(self):
+        path = Path(TEST_SMALL_DOCUMENT_PATH)
+
+        self._create_test_watch_folder(
+            extra_data={'include_regex': '_____.*'}
+        )
+
+        document_count = Document.objects.count()
+
+        temporary_directory = self.test_source.get_backend_data()['folder_path']
+
+        shutil.copy(src=TEST_SMALL_DOCUMENT_PATH, dst=temporary_directory)
+
+        self.test_source.get_backend_instance().process_documents()
+
+        self.assertEqual(Document.objects.count(), document_count)
+
+        backend_data = self.test_source.get_backend_data()
+        backend_data['include_regex'] = path.name
+        self.test_source.set_backend_data(obj=backend_data)
+
+        self.test_source.get_backend_instance().process_documents()
+
+        self.assertEqual(Document.objects.count(), document_count + 1)
+
     def test_upload_simple_file(self):
         self._create_test_watch_folder()
 

@@ -29,11 +29,10 @@ cabinet_search.add_proxy_model(
 
 cabinet_search.add_model_field(field='label')
 
+# Cabinet documents
+
 cabinet_search.add_model_field(
     field='documents__document_type__label', label=_('Document type')
-)
-cabinet_search.add_model_field(
-    field='documents__files__mimetype', label=_('Document MIME type')
 )
 cabinet_search.add_model_field(
     field='documents__label', label=_('Document label')
@@ -46,8 +45,13 @@ cabinet_search.add_model_field(
     transformation_function=transformation_format_uuid
 )
 
+# Cabinet documents files
+
 cabinet_search.add_model_field(
-    field='documents__files__checksum', label=_('Document checksum')
+    field='documents__files__checksum', label=_('Document file checksum')
+)
+cabinet_search.add_model_field(
+    field='documents__files__mimetype', label=_('Document file MIME type')
 )
 
 # Document

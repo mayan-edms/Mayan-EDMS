@@ -75,6 +75,8 @@ Release checklist
 
     make check-missing-migrations
 
+#. Update changelog.
+#. Write release notes.
 #. Check README.rst format with::
 
     python setup.py check -r -s
@@ -83,8 +85,6 @@ Release checklist
 
        make check-readme
 
-#. Update changelog.
-#. Write release notes.
 #. Synchronize translations::
 
     make translations-all

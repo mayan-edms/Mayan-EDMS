@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -35,43 +35,43 @@ msgstr "Errori"
 msgid "Clear errors"
 msgstr "Cancella errori"
 
-#: models.py:10 models.py:38
+#: models.py:9 models.py:37
 msgid "Internal name"
 msgstr "Nome interno"
 
-#: models.py:15 models.py:35
+#: models.py:14 models.py:34
 msgid "Error log"
 msgstr "Registro degli errori"
 
-#: models.py:16
+#: models.py:15
 msgid "Error logs"
 msgstr "Registri degli errori"
 
-#: models.py:25
+#: models.py:24
 msgid "App label"
 msgstr "Etichetta del'app"
 
-#: models.py:43 models.py:60
+#: models.py:42 models.py:52
 msgid "Error log partition"
 msgstr "Partizione del registro degli errori"
 
-#: models.py:44
+#: models.py:43
 msgid "Error log partitions"
 msgstr "Partizioni del registro degli errori"
 
-#: models.py:63
+#: models.py:55
 msgid "Date and time"
 msgstr "Data e ora"
 
-#: models.py:65
+#: models.py:57
 msgid "Text"
 msgstr "Testo"
 
-#: models.py:70
+#: models.py:62
 msgid "Error log partition entry"
 msgstr "Voce di partizione del registro degli errori"
 
-#: models.py:71
+#: models.py:63
 msgid "Error log partition entries"
 msgstr "Voci della partizione del registro degli errori"
 

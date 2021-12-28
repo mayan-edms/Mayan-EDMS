@@ -15,10 +15,11 @@ endif
 
 TEST_COMMAND = ./manage.py test $(MODULE) --settings=$(SETTINGS) $(SKIPMIGRATIONS) $(DEBUG) $(ARGUMENTS)
 
+TEST_ELASTIC_CONTAINER_NAME = mayan-test-elastic
 TEST_MYSQL_CONTAINER_NAME = mayan-test-mysql
 TEST_ORACLE_CONTAINER_NAME = mayan-test-oracle
 TEST_POSTGRESQL_CONTAINER_NAME = mayan-test-postgresql
-TEST_REDIS_CONTAINER_NAME = mayan-staging-redis
+TEST_REDIS_CONTAINER_NAME = mayan-test-redis
 
 .PHONY: clean clean-pyc clean-build test
 
@@ -62,7 +63,7 @@ test-all-debug: DEBUG=--debug-mode
 test-all-debug: clean-pyc _test-command
 
 test-all-migrations: ## Run all migration tests.
-test-all-migrations: ARGUMENTS=--no-exclude --tag=migration
+test-all-migrations: ARGUMENTS=--no-exclude --tag=migration_test
 test-all-migrations: SKIPMIGRATIONS=
 test-all-migrations: clean-pyc _test-command
 
@@ -79,7 +80,7 @@ test-all-with-mysql:
 test-all-migrations-with-mysql: ## Run all migration tests against a MySQL database container.
 test-all-migrations-with-mysql:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration_test
 
 test-with-oracle: ## MODULE=<python module name> - Run tests for a single app, module or test class against an Oracle database container.
 test-with-oracle:
@@ -94,7 +95,7 @@ test-all-with-oracle:
 test-all-migrations-with-oracle: ## Run all migration tests against an Oracle database container.
 test-all-migrations-with-oracle:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.oracle','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration_test
 
 test-with-postgresql: ## MODULE=<python module name> - Run tests for a single app, module or test class against a PostgreSQL database container.
 test-with-postgresql:
@@ -109,7 +110,7 @@ test-all-with-postgresql:
 test-all-migrations-with-postgresql: ## Run all migration tests against a PostgreSQL database container.
 test-all-migrations-with-postgresql:
 	export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'$(DEFAULT_DATABASE_NAME)','PASSWORD':'$(DEFAULT_DATABASE_PASSWORD)','USER':'$(DEFAULT_DATABASE_USER)','HOST':'127.0.0.1'}}"; \
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.development --no-exclude --tag=migration_test
 
 gitlab-ci-update: ## Update the GitLab CI file from the platform template.
 gitlab-ci-update: copy-config-env
@@ -347,6 +348,29 @@ gitlab-release-all-minor:
 	git push origin :releases/all_minor || true
 	git push origin HEAD:releases/all_minor
 
+# Internal testing
+
+gitlab-tests-internal-all: ## Trigger all tests as a CD/CI pipeline
+gitlab-tests-internal-all:
+	git push internal
+	git push internal --tags
+	git push internal :tests/all || true
+	git push internal HEAD:tests/all
+
+gitlab-tests-internal-base: ## Trigger normal and migration tests as a CD/CI pipeline
+gitlab-tests-internal-base:
+	git push internal
+	git push internal --tags
+	git push internal :tests/base || true
+	git push internal HEAD:tests/base
+
+gitlab-tests-internal-upgrade: ## Trigger upgrade tests as a CD/CI pipeline
+gitlab-tests-internal-upgrade:
+	git push internal
+	git push internal --tags
+	git push internal :tests/upgrade || true
+	git push internal HEAD:tests/upgrade
+
 # Dev server
 
 manage: ## Run a command with the development settings.
@@ -375,11 +399,21 @@ shell-plus: ## Run the shell_plus command.
 
 # Test database containers
 
-docker-mysql-start: ## Start a MySQL Docker container.
+docker-elastic-start: ## Start an Elastic Search test container.
+docker-elastic-start:
+	@docker run --detach -e ES_JAVA_OPTS="-Xms256m -Xmx256m" -e "discovery.type=single-node" --name $(TEST_ELASTIC_CONTAINER_NAME) --publish 9200:9200 --publish 9300:9300 $(DOCKER_ELASTIC_IMAGE_VERSION)
+	@while ! nc -z 127.0.0.1 9200; do echo -n .; sleep 1; done
+
+docker-elastic-stop: ## Stop and delete the Elastic Search container.
+docker-elastic-stop:
+	@docker rm --force $(TEST_ELASTIC_CONTAINER_NAME) >/dev/null 2>&1
+
+
+docker-mysql-start: ## Start a MySQL Docker test container.
 	@docker run --detach --name $(TEST_MYSQL_CONTAINER_NAME) --publish 3306:3306 --env MYSQL_ALLOW_EMPTY_PASSWORD="yes" --env MYSQL_USER=$(DEFAULT_DATABASE_USER) --env MYSQL_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) --env MYSQL_DATABASE=$(DEFAULT_DATABASE_NAME) --volume $(TEST_MYSQL_CONTAINER_NAME):/var/lib/mysql $(DOCKER_MYSQL_IMAGE_VERSION) --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 	@while ! mysql -h 127.0.0.1 --user=$(DEFAULT_DATABASE_USER) --password=$(DEFAULT_DATABASE_PASSWORD) --execute "SHOW TABLES;" $(DEFAULT_DATABASE_NAME) >/dev/null 2>&1; do echo -n .;sleep 2; done
 
-docker-mysql-stop: ## Stop and delete the MySQL Docker container.
+docker-mysql-stop: ## Stop and delete the MySQL container.
 	@docker rm --force $(TEST_MYSQL_CONTAINER_NAME) >/dev/null 2>&1
 	@docker volume rm $(TEST_MYSQL_CONTAINER_NAME) >/dev/null 2>&1 || true
 
@@ -389,21 +423,22 @@ docker-mysql-backup:
 docker-mysql-restore:
 	@mysql --host=127.0.0.1 --user=$(DEFAULT_DATABASE_USER) --password=$(DEFAULT_DATABASE_PASSWORD) $(DEFAULT_DATABASE_NAME) < mayan-docker-mysql-backup.sql
 
-docker-oracle-start: ## Start an Oracle Docker container.
+docker-oracle-start: ## Start an Oracle test container.
 docker-oracle-start:
 	@docker run --detach --name $(TEST_ORACLE_CONTAINER_NAME) --publish 49160:22 --publish 49161:1521 --env ORACLE_ALLOW_REMOTE=true --volume $(TEST_ORACLE_CONTAINER_NAME):/u01/app/oracle $(DOCKER_ORACLE_IMAGE_VERSION)
 	@sleep 10
 	@while ! nc -z 127.0.0.1 49161; do echo -n .; sleep 2; done
 
 docker-oracle-stop:
+docker-oracle-stop: ## Stop and delete the Oracle test container.
 	@docker rm --force $(TEST_ORACLE_CONTAINER_NAME) >/dev/null 2>&1
 	@docker volume rm $(TEST_ORACLE_CONTAINER_NAME) >/dev/null 2>&1 || true
 
-docker-postgresql-start: ## Start a PostgreSQL Docker container.
+docker-postgresql-start: ## Start a PostgreSQL Docker test container.
 	@docker run --detach --name $(TEST_POSTGRESQL_CONTAINER_NAME) --env POSTGRES_HOST_AUTH_METHOD=trust --env POSTGRES_USER=$(DEFAULT_DATABASE_USER) --env POSTGRES_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) --env POSTGRES_DB=$(DEFAULT_DATABASE_NAME) --publish 5432:5432 --volume $(TEST_POSTGRESQL_CONTAINER_NAME):/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
 	@while ! psql --command "\l" --dbname=$(DEFAULT_DATABASE_NAME) --host=127.0.0.1 --username=$(DEFAULT_DATABASE_USER) >/dev/null 2>&1; do echo -n .;sleep 2; done
 
-docker-postgresql-stop: ## Stop and delete the PostgreSQL Docker container.
+docker-postgresql-stop: ## Stop and delete the PostgreSQL container.
 	@docker rm --force $(TEST_POSTGRESQL_CONTAINER_NAME) >/dev/null 2>&1
 	@docker volume rm $(TEST_POSTGRESQL_CONTAINER_NAME) >/dev/null 2>&1 || true
 
@@ -413,12 +448,12 @@ docker-postgresql-backup:
 docker-postgresql-restore:
 	@cat mayan-docker-postgresql-backup.sql | psql --dbname=$(DEFAULT_DATABASE_NAME) --host=127.0.0.1 --username=$(DEFAULT_DATABASE_USER) > /dev/null
 
-docker-redis-start: ## Start a Redis Docker container.
+docker-redis-start: ## Start a Redis Docker test container.
 docker-redis-start:
 	@docker run --detach --name $(TEST_REDIS_CONTAINER_NAME) --publish 6379:6379 $(DOCKER_REDIS_IMAGE_VERSION)
 	@while ! nc -z 127.0.0.1 6379; do echo -n .; sleep 1; done
 
-docker-redis-stop: ## Stop and delete the Redis Docker container.
+docker-redis-stop: ## Stop and delete the Redis container.
 docker-redis-stop:
 	@docker rm --force $(TEST_REDIS_CONTAINER_NAME) >/dev/null 2>&1
 
@@ -446,10 +481,6 @@ safety-check: ## Run a package safety check.
 	safety check
 
 # Other
-
-docker-dockerfile-update: ## Update the Dockerfile file from the platform template.
-docker-dockerfile-update: copy-config-env
-	./manage.py platformtemplate dockerfile > docker/Dockerfile
 
 find-gitignores: ## Find stray .gitignore files.
 	@export FIND_GITIGNORES=`find -name '.gitignore'| wc -l`; \
@@ -479,7 +510,7 @@ check-missing-inits:
 	@contrib/scripts/find_missing_inits.py
 
 setup-dev-environment: ## Bootstrap a virtualenv by install all dependencies to start developing.
-	sudo apt-get install --yes exiftool firefox-geckodriver gcc gettext gnupg1 graphviz poppler-utils python3-dev sane-utils tesseract-ocr-deu
+	sudo apt-get install --yes exiftool firefox-geckodriver gcc gettext gnupg1 graphviz libjpeg-dev libpng-dev poppler-utils python3-dev sane-utils tesseract-ocr-deu
 	pip install --requirement requirements.txt --requirement requirements/development.txt --requirement requirements/testing-base.txt --requirement requirements/documentation.txt --requirement requirements/build.txt
 
 setup-python-mysql:
@@ -497,5 +528,17 @@ setup-python-redis:
 copy-config-env:
 	@contrib/scripts/copy_config_env.py > mayan/settings/literals.py
 
+# Devpi
+
+devpi-init:
+	@if [ -z "$$(pip list | grep devpi-server)" ]; then echo "devpi-server not installed"; exit 1;fi
+	devpi-init || true
+
+devpi-start: devpi-stop devpi-init
+	devpi-server --host=0.0.0.0 >/dev/null &
+
+devpi-stop:
+	killall devpi-server || true
 
 -include docker/Makefile
+-include vagrant/Makefile

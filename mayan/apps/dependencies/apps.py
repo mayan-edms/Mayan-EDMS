@@ -57,7 +57,7 @@ class DependenciesApp(MayanAppConfig):
             label=_('Version'), order=5, source=Dependency
         )
         SourceColumn(
-            attribute='get_environment_verbose_name', include_label=True,
+            attribute='get_environments_verbose_name', include_label=True,
             label=_('Environment'), order=6, source=Dependency
         )
         SourceColumn(

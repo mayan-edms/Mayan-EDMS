@@ -21,7 +21,7 @@ from mayan.apps.logging.classes import ErrorLog
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
-    menu_list_facet, menu_object, menu_related, menu_secondary, menu_setup
+    menu_list_facet, menu_object, menu_secondary, menu_setup
 )
 
 from .classes import DocumentCreateWizardStep, SourceBackend

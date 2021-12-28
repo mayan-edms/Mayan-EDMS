@@ -2,14 +2,6 @@
 
 {% load common_tags %}
 
-{% common_check_sqlite as check_sqlite %}
-{% if common_check_sqlite %}
-    <div class="alert alert-dismissible alert-warning">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <p><strong>{% trans 'Warning' %}</strong> {{ check_sqlite }}</p>
-    </div>
-{% endif %}
-
 {# appearance_app_template_nocache #}
 
 {% common_get_missing_items as missing_items %}

@@ -81,7 +81,9 @@ class APIDocumentVersionPageOCRContentDetailView(
 
     def get_object(self):
         document_version_page = self.get_document_version_page(
-            permission=self.mayan_object_permissions[self.request.method][0]
+            permission=self.mayan_object_permissions.get(
+                self.request.method, (None,)
+            )[0]
         )
 
         try:

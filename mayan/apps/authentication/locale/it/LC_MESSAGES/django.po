@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:17+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -79,23 +79,23 @@ msgstr "Se selezionato, disabilita la fine della impersonazione."
 msgid "User"
 msgstr "Utente"
 
-#: links.py:24
+#: links.py:35
 msgid "Logout"
 msgstr "Logout"
 
-#: links.py:29
+#: links.py:40
 msgid "Change password"
 msgstr "Cambiare la password"
 
-#: links.py:34 views.py:250
+#: links.py:45 views/impersonation_views.py:50
 msgid "Impersonate user"
 msgstr "Impersonare l'utente"
 
-#: links.py:39
+#: links.py:50
 msgid "Impersonate"
 msgstr ""
 
-#: links.py:44 links.py:48
+#: links.py:55 links.py:60
 msgid "Set password"
 msgstr "Imposta password"
 
@@ -171,7 +171,7 @@ msgid "Login page"
 msgstr "Pagina di login"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:177
+#: templates/authentication/password_reset_form.html:29
 msgid "Submit"
 msgstr "Invia"
 
@@ -179,52 +179,52 @@ msgstr "Invia"
 msgid "Password reset email sent!"
 msgstr "Email per la reimpostazione della password inviata!"
 
-#: views.py:86
+#: views/authentication_views.py:75
 msgid "Your password has been successfully changed."
 msgstr "La tua password è stata cambiata con successo"
 
-#: views.py:93
+#: views/authentication_views.py:82
 msgid "Current user password change"
 msgstr "Modifica della password dell'utente corrente"
 
-#: views.py:101
+#: views/authentication_views.py:90
 msgid "Changing the password is not allowed for this account."
 msgstr "Il cambio password non è consentito per questo account."
 
-#: views.py:168
+#: views/authentication_views.py:157
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Effettuato il cambio password richiesto per %(count)d utente"
 
-#: views.py:170
+#: views/authentication_views.py:159
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Effettuato il cambio password richiesto per %(count)d utenti"
 
-#: views.py:179
+#: views/authentication_views.py:167
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:189
+#: views/authentication_views.py:177
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Cambia la password dell'utente: %s"
 
-#: views.py:210
+#: views/authentication_views.py:198
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Effettuato reset della password per l'utente: %s."
 
-#: views.py:216
+#: views/authentication_views.py:204
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr ""
 "Errore per il reimpostamento della password per l'utente \"%(user)s\": "
 "%(error)s"
 
-#: views.py:278
+#: views/impersonation_views.py:78
 #, python-format
 msgid "Impersonate user: %s"
 msgstr ""
