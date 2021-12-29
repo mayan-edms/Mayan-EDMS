@@ -97,6 +97,8 @@ class LoginTestCase(LoginViewTestMixin, GenericViewTestCase):
 
     @override_settings(AUTHENTICATION_BACKEND=TEST_EMAIL_AUTHENTICATION_BACKEND)
     def test_login_view_with_email(self):
+        AuthenticationBackend.cls_initialize()
+
         self._clear_events()
 
         response = self._request_login_view_with_email()
@@ -117,6 +119,8 @@ class LoginTestCase(LoginViewTestMixin, GenericViewTestCase):
 
     @override_settings(AUTHENTICATION_BACKEND=TEST_EMAIL_AUTHENTICATION_BACKEND)
     def test_login_view_with_email_and_dont_remember_me(self):
+        AuthenticationBackend.cls_initialize()
+
         self._clear_events()
 
         response = self._request_login_view_with_email(
@@ -140,6 +144,8 @@ class LoginTestCase(LoginViewTestMixin, GenericViewTestCase):
 
     @override_settings(AUTHENTICATION_BACKEND=TEST_EMAIL_AUTHENTICATION_BACKEND)
     def test_login_view_with_email_and_remember_me(self):
+        AuthenticationBackend.cls_initialize()
+
         self._clear_events()
 
         response = self._request_login_view_with_email(
@@ -148,7 +154,7 @@ class LoginTestCase(LoginViewTestMixin, GenericViewTestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(
             self.client.session.get_expiry_age(),
-            AuthenticationBackend.get_instance().maximum_session_length
+            AuthenticationBackend.cls_get_instance().maximum_session_length
         )
         self.assertFalse(self.client.session.get_expire_at_browser_close())
 
@@ -215,7 +221,7 @@ class LoginTestCase(LoginViewTestMixin, GenericViewTestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(
             self.client.session.get_expiry_age(),
-            AuthenticationBackend.get_instance().maximum_session_length
+            AuthenticationBackend.cls_get_instance().maximum_session_length
         )
         self.assertFalse(self.client.session.get_expire_at_browser_close())
 

@@ -22,7 +22,7 @@ class LoginViewTestMixin:
 
     def _request_login_view_with_email(self, extra_data=None):
         data = {
-            '0-email': self._test_case_superuser.email,
+            '0-username': self._test_case_superuser.email,
             '0-password': self._test_case_superuser.cleartext_password,
         }
 

@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import AuthenticationForm, UsernameField
-from django.forms.widgets import EmailInput
+from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.user_management.querysets import get_user_queryset
@@ -40,14 +39,9 @@ class AuthenticationFormUsernamePassword(
     AuthenticationFormMixinRememberMe, AuthenticationForm,
     AuthenticationFormBase
 ):
-    username = UsernameField(
-        label=_('Username'), widget=forms.TextInput(
-            attrs={'autofocus': True}
-        )
-    )
-    password = forms.CharField(
-        label=_('Password'), strip=False, widget=forms.PasswordInput
-    )
+    """
+    Modified authentication form to include the "Remember me" field.
+    """
 
 
 class AuthenticationFormEmailPassword(
@@ -57,54 +51,16 @@ class AuthenticationFormEmailPassword(
     """
     A form to use email address authentication.
     """
-    username = None
-    email = forms.CharField(
-        label=_('Email'), max_length=254, widget=EmailInput()
-    )
-
-    error_messages = {
-        'invalid_login': _(
-            'Please enter a correct email and password. '
-            'Note that the password field is case-sensitive.'
-        ),
-        'inactive': _('This account is inactive.'),
-    }
-
     def __init__(self, *args, **kwargs):
-        self.user_cache = None
-        # Bypass AuthenticationForm __init__ to avoid error referencing
-        # non existent username fields.
-        super(AuthenticationForm, self).__init__(*args, **kwargs)
-        self.order_fields(field_order=('email', 'password'))
+        super().__init__(*args, **kwargs)
 
-    def _authenticate(self, email=None, password=None):
         UserModel = get_user_model()
-        try:
-            user = UserModel.objects.get(email=email)
-            if user.check_password(password):
-                return user
-        except UserModel.DoesNotExist:
-            # Run the default password hasher once to reduce the timing
-            # difference between an existing and a non-existing user (#20760).
-            UserModel().set_password(password)
 
-    def clean(self):
-        email = self.cleaned_data.get('email')
-        password = self.cleaned_data.get('password')
-
-        if email and password:
-            self.user_cache = self._authenticate(email=email, password=password)
-            if self.user_cache is None:
-                raise forms.ValidationError(
-                    self.error_messages['invalid_login'],
-                    code='invalid_login',
-                )
-            elif not self.user_cache.is_active:
-                raise forms.ValidationError(
-                    self.error_messages['inactive'],
-                    code='inactive',
-                )
-        return self.cleaned_data
+        self.username_field = UserModel._meta.get_field(field_name='email')
+        username_max_length = self.username_field.max_length or 254
+        self.fields['username'].max_length = username_max_length
+        self.fields['username'].widget.attrs['maxlength'] = username_max_length
+        self.fields['username'].label = self.username_field.verbose_name
 
 
 class UserImpersonationOptionsForm(forms.Form):

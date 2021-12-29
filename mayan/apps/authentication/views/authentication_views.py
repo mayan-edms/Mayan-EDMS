@@ -1,6 +1,7 @@
 from collections import OrderedDict
 
 from django.contrib import messages
+from django.contrib.auth import login as django_auth_login
 from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.views import (
     LoginView, LogoutView, PasswordChangeDoneView, PasswordChangeView,
@@ -45,7 +46,7 @@ class MayanMultiStepLoginView(
         """
         Return the processed form list after the view has initialized.
         """
-        self.authentication_backend = AuthenticationBackend.get_instance()
+        self.authentication_backend = AuthenticationBackend.cls_get_instance()
 
         form_list = self.authentication_backend.get_form_list()
 
@@ -116,14 +117,21 @@ class MayanMultiStepLoginView(
         return kwargs
 
     def done(self, form_list, **kwargs):
-        self.authentication_backend.login(
+        """
+        Perform the same function as Django's .form_valid()
+        """
+        kwargs = self.get_all_cleaned_data()
+        self.authentication_backend.process(
             form_list=form_list, request=self.request,
-            kwargs=self.get_all_cleaned_data()
+            kwargs=kwargs
+        )
+        user = self.authentication_backend.identify(
+            form_list=form_list, request=self.request,
+            kwargs=kwargs
         )
 
-        return HttpResponseRedirect(
-            redirect_to=self.get_success_url()
-        )
+        django_auth_login(request=self.request, user=user)
+        return HttpResponseRedirect(redirect_to=self.get_success_url())
 
 
 class MayanLogoutView(LogoutView):
