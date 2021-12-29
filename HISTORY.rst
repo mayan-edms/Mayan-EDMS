@@ -125,16 +125,22 @@
   - Subclass Django's authentication views to add multi form and multi factor
     authentication.
   - Add support for authentication backends. Authentication backends are
-    able to control and customize the entire log in process, including
+    able to control and customize the entire login process, including
     the forms presented to the user. Authentication backends can use mixins
-    and can be subclasses to mix and expand their capabilities.
+    and can be subclassed to mix and expand their capabilities.
     Included authentication mixins: ``AuthenticationBackendRememberMeMixin``
     Included authentication backends:
     ``AuthenticationBackendModelUsernamePassword``,
-    ``AuthenticationBackendEmailPassword``.
+    ``AuthenticationBackendModelEmailPassword``.
     Apps define authentication backends in the module
-    ``authentication_backends.py`` which is automatically loaded at startup.
-  - Removed the now unused``EmailAuthBackend`` class.
+    ``authentication_backends.py``.
+  - Removed the now unused ``EmailAuthBackend`` class.
+  - New settings:
+
+    - ``AUTHENTICATION_BACKEND`` which must be the dotted path
+      to the backend used to process user authentication.
+    - ``AUTHENTICATION_BACKEND_ARGUMENTS`` which is an optional YAML
+      structure to pass to the authentication backend.
 
 4.1.4 (2021-12-01)
 ==================
