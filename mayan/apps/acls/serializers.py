@@ -1,10 +1,9 @@
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import serializers
-
 from mayan.apps.common.serializers import ContentTypeSerializer
 from mayan.apps.permissions import Permission
 from mayan.apps.permissions.serializers import RoleSerializer
+from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import (
     FilteredPrimaryKeyRelatedField, MultiKwargHyperlinkedIdentityField
 )
@@ -17,7 +16,6 @@ class ACLSerializer(
     CreateOnlyFieldSerializerMixin, serializers.ModelSerializer
 ):
     content_type = ContentTypeSerializer(read_only=True)
-
     permissions_add_url = MultiKwargHyperlinkedIdentityField(
         view_name='rest_api:accesscontrollist-permission-add',
         view_kwargs=(
@@ -39,7 +37,6 @@ class ACLSerializer(
             }
         ),
     )
-
     permissions_remove_url = MultiKwargHyperlinkedIdentityField(
         view_name='rest_api:accesscontrollist-permission-remove',
         view_kwargs=(
@@ -61,7 +58,6 @@ class ACLSerializer(
             }
         ),
     )
-
     permissions_url = MultiKwargHyperlinkedIdentityField(
         view_name='rest_api:accesscontrollist-permission-list',
         view_kwargs=(
@@ -83,10 +79,8 @@ class ACLSerializer(
             }
         ),
     )
-
     role = RoleSerializer(read_only=True)
     role_id = serializers.IntegerField(write_only=True)
-
     url = MultiKwargHyperlinkedIdentityField(
         view_name='rest_api:accesscontrollist-detail',
         view_kwargs=(

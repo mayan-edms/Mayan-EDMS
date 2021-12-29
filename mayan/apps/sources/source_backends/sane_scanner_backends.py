@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.serialization import yaml_load
 from mayan.apps.storage.models import SharedUploadedFile
-from mayan.apps.storage.utils import NamedTemporaryFile
+from mayan.apps.storage.utils import NamedTemporaryFile, touch
 
 from ..classes import SourceBackend
 from ..settings import setting_backend_arguments
@@ -66,22 +66,34 @@ class SourceBackendSANEScanner(
         with NamedTemporaryFile() as file_object:
             command_scanimage = command_scanimage.bake(
                 device_name=self.kwargs['device_name'],
-                format='tiff', output_file=file_object.name
+                format='tiff'
             )
             loaded_arguments = yaml_load(
                 stream=self.kwargs.get('arguments', '{}')
             ) or {}
-            command_scanimage(**loaded_arguments)
+            # The output_file argument is only supported in version 1.0.28
+            # https://gitlab.com/sane-project/backends/-/releases/1.0.28
+            # Using redirection make this compatible with more versions.
+            loaded_arguments['_out'] = file_object.name
 
-            file_object.seek(0)
+            try:
+                command_scanimage(**loaded_arguments)
+            except sh.ErrorReturnCode:
+                # The shell command is deleting the temporary file on errors.
+                # Recreate it so that `NamedTemporaryFile` is able to delete
+                # it when the context exits.
+                touch(filename=file_object.name)
+                raise
+            else:
+                file_object.seek(0)
 
-            return (
-                SharedUploadedFile.objects.create(
-                    file=File(file=file_object), filename='scan {}'.format(
-                        now()
-                    )
-                ),
-            )
+                return (
+                    SharedUploadedFile.objects.create(
+                        file=File(file=file_object), filename='scan {}'.format(
+                            now()
+                        )
+                    ),
+                )
 
     def get_view_context(self, context, request):
         return {

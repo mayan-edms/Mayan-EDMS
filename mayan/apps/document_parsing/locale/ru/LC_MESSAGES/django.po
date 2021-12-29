@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -27,17 +27,17 @@ msgstr ""
 msgid "Document parsing"
 msgstr "Анализ документа"
 
-#: apps.py:105
+#: apps.py:112
 msgid "A generator returning the document file's pages parsed content."
 msgstr ""
 "Генератор, возвращающий проанализированное содержимое страниц файла "
 "документа."
 
-#: apps.py:106 links.py:21 links.py:43 models.py:24 search.py:10
+#: apps.py:113 links.py:23 links.py:46 models.py:24 search.py:10
 msgid "Content"
 msgstr "Содержимое"
 
-#: apps.py:135 models.py:74
+#: apps.py:142 models.py:74
 msgid "Result"
 msgstr "Результат"
 
@@ -50,8 +50,8 @@ msgstr ""
 "файлов PDF"
 
 #: events.py:10
-msgid "Document parsed content deleted"
-msgstr "Проанализированное содержимое документа удалено"
+msgid "Document file parsed content deleted"
+msgstr ""
 
 #: events.py:14
 msgid "Document file submitted for parsing"
@@ -70,27 +70,27 @@ msgstr "Страница %(page_number)d"
 msgid "Contents"
 msgstr "Содержимое"
 
-#: links.py:27 links.py:31
+#: links.py:29 links.py:34
 msgid "Delete parsed content"
 msgstr "Удалить проанализированное содержимое"
 
-#: links.py:37
+#: links.py:40
 msgid "Download content"
 msgstr "Скачать проанализированное содержимое"
 
-#: links.py:49 links.py:82 views.py:235
+#: links.py:52 links.py:91 views.py:237
 msgid "Parsing errors"
 msgstr "Ошибки анализа"
 
-#: links.py:54 links.py:61
+#: links.py:57 links.py:64
 msgid "Submit for parsing"
 msgstr "Отправить на анализ"
 
-#: links.py:68
+#: links.py:74
 msgid "Setup parsing"
 msgstr "Настройки анализа"
 
-#: links.py:77
+#: links.py:83
 msgid "Parse documents per type"
 msgstr "Проанализировать документы указанного типа"
 
@@ -192,40 +192,67 @@ msgstr ""
 "Путь к файлу программы pdftotext Poppler, используемой для извлечения текста"
 " из PDF файлов."
 
-#: views.py:39
-msgid "Delete the parsed content of the selected document file?"
-msgid_plural "Delete the parsed content of the selected document files?"
-msgstr[0] "Удалить проанализированное содержимое выбранного файла документа?"
-msgstr[1] "Удалить проанализированное содержимое выбранных файлов документа?"
-msgstr[2] "Удалить проанализированное содержимое выбранных файлов документа?"
-msgstr[3] "Удалить проанализированное содержимое выбранных файлов документа?"
+#: views.py:30
+#, python-format
+msgid "Error deleting document version content \"%(instance)s\"; %(exception)s"
+msgstr ""
 
-#: views.py:85
+#: views.py:36
+#, python-format
+msgid "Content of \"%(object)s\" deleted successfully."
+msgstr ""
+
+#: views.py:39
+#, python-format
+msgid "Content of %(count)d document version deleted successfully."
+msgstr ""
+
+#: views.py:42
+#, python-format
+msgid "Content of %(count)d document versions deleted successfully."
+msgstr ""
+
+#: views.py:44
+#, python-format
+msgid "Delete the content of: %(object)s."
+msgstr ""
+
+#: views.py:46
+#, python-format
+msgid "Delete the content of the %(count)d selected document version."
+msgstr ""
+
+#: views.py:49
+#, python-format
+msgid "Delete the content of the %(count)d selected document versions."
+msgstr ""
+
+#: views.py:87
 #, python-format
 msgid "Content for document file: %s"
 msgstr "Содержимое файла документа: %s"
 
-#: views.py:106
+#: views.py:108
 #, python-format
 msgid "Content for document file page: %s"
 msgstr "Содержимое страницы файла документа: %s"
 
-#: views.py:128
+#: views.py:130
 #, python-format
 msgid "Parsing errors for document file: %s"
 msgstr "Ошибки анализа файла документа: %s"
 
-#: views.py:141
+#: views.py:143
 #, python-format
 msgid "%(count)d document file added to the parsing queue"
 msgstr "%(count)d файл документа добавлен в очередь для анализа"
 
-#: views.py:144
+#: views.py:146
 #, python-format
 msgid "%(count)d documents files added to the parsing queue"
 msgstr "%(count)d файлов документов добавлено в очередь для анализа"
 
-#: views.py:152
+#: views.py:154
 #, python-format
 msgid "Submit %(count)d document file to the parsing queue?"
 msgid_plural "Submit %(count)d documents files to the parsing queue?"
@@ -234,21 +261,21 @@ msgstr[1] "Отправить %(count)d файлов документов в о�
 msgstr[2] "Отправить %(count)d файлов документов в очередь для анализа?"
 msgstr[3] "Отправить %(count)d файлов документов в очередь для анализа?"
 
-#: views.py:165
+#: views.py:167
 #, python-format
 msgid "Submit document file \"%s\" to the parsing queue"
 msgstr "Отправить файл документа \"%s\" в очередь на анализ"
 
-#: views.py:192
+#: views.py:194
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr "Настройки анализа для типа документа: %s"
 
-#: views.py:202
+#: views.py:204
 msgid "Submit all documents of a type for parsing"
 msgstr "Отправить все документы указанного типа на анализ"
 
-#: views.py:223
+#: views.py:225
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr "%(count)d документов добавлено в очередь для анализа"

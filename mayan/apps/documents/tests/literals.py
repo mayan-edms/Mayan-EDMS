@@ -30,6 +30,7 @@ TEST_DOCUMENT_TYPE_2_LABEL = 'test document type 2'
 TEST_DOCUMENT_TYPE_LABEL_EDITED = 'test document type label edited'
 TEST_DOCUMENT_TYPE_QUICK_LABEL = 'test quick label'
 TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED = 'test quick label edited'
+TEST_DOCUMENT_VERSION_COMMENT = 'test document version comment'
 TEST_DOCUMENT_VERSION_COMMENT_EDITED = 'test document version comment edited'
 TEST_DUPLICATED_DOCUMENT_LABEL = 'test duplicated document label'
 TEST_HYBRID_DOCUMENT = 'hybrid_text_and_image.pdf'
@@ -102,4 +103,3 @@ TEST_TRASH_DOCUMENT_WORKFLOW_ACTION_DOTTED_PATH = 'mayan.apps.documents.workflow
 # Others
 
 TEST_DOCUMENT_FILE_ACTION = DOCUMENT_FILE_ACTION_PAGES_NEW
-TEST_VERSION_COMMENT = 'test file comment'

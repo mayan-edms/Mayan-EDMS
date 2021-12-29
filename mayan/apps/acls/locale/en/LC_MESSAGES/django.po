@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 05:16+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2020-03-28 07:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -103,11 +103,11 @@ msgstr ""
 msgid "View ACLs"
 msgstr ""
 
-#: serializers.py:125
+#: serializers.py:120
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
 
-#: serializers.py:132
+#: serializers.py:127
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
 
@@ -128,36 +128,36 @@ msgstr ""
 msgid "Delete ACL: %s"
 msgstr ""
 
-#: views.py:139
+#: views.py:141
 msgid "There are no ACLs for this object"
 msgstr ""
 
-#: views.py:142 views.py:259
+#: views.py:144 views.py:261
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
 msgstr ""
 
-#: views.py:149
+#: views.py:151
 #, python-format
 msgid "Access control lists for: %s"
 msgstr ""
 
-#: views.py:163
+#: views.py:165
 msgid "Granted permissions"
 msgstr ""
 
-#: views.py:164
+#: views.py:166
 msgid "Available permissions"
 msgstr ""
 
-#: views.py:208
+#: views.py:210
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr ""
 
-#: views.py:217
+#: views.py:219
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -165,11 +165,11 @@ msgid ""
 "menu."
 msgstr ""
 
-#: views.py:256
+#: views.py:258
 msgid "There are no ACLs"
 msgstr ""
 
-#: views.py:265
+#: views.py:267
 msgid "Global access control lists"
 msgstr ""
 

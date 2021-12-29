@@ -4,16 +4,14 @@ from django.conf import settings
 from django.db.models import Q
 
 from mayan.apps.converter.classes import Layer
-from mayan.apps.dynamic_search.tests.mixins import SearchTestMixin
 
 from ...literals import DOCUMENT_FILE_ACTION_PAGES_NEW, PAGE_RANGE_ALL
 from ...models import Document, DocumentType
-from ...search import document_search
 
 from ..literals import (
-    DEFAULT_DOCUMENT_STUB_LABEL, TEST_DOCUMENT_DESCRIPTION_EDITED,
-    TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_FILENAME,
-    TEST_SMALL_DOCUMENT_PATH
+    DEFAULT_DOCUMENT_STUB_LABEL, TEST_DOCUMENT_DESCRIPTION,
+    TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_DOCUMENT_TYPE_LABEL,
+    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH
 )
 
 
@@ -88,16 +86,6 @@ class DocumentAPIViewTestMixin:
         return response
 
 
-class DocumentSearchTestMixin(SearchTestMixin):
-    def _perform_document_search(self, query=None):
-        query = query or {'q': self.test_document.label}
-
-        return self.search_backend.search(
-            search_model=document_search, query=query,
-            user=self._test_case_user
-        )
-
-
 class DocumentTestMixin:
     auto_create_test_document_type = True
     auto_upload_test_document = True
@@ -106,6 +94,7 @@ class DocumentTestMixin:
     test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
     test_document_language = None
     test_document_path = None
+    auto_delete_test_document_type = True
 
     def setUp(self):
         super().setUp()
@@ -121,8 +110,9 @@ class DocumentTestMixin:
                 self._upload_test_document()
 
     def tearDown(self):
-        for document_type in DocumentType.objects.all():
-            document_type.delete()
+        if self.auto_delete_test_document_type:
+            for document_type in DocumentType.objects.all():
+                document_type.delete()
         super().tearDown()
 
     def _create_test_document_stub(self, document_type=None, label=None):
@@ -136,9 +126,8 @@ class DocumentTestMixin:
         self.test_documents.append(self.test_document)
 
     def _create_test_document_type(self, label=None):
-        total_document_types = len(self.test_document_types)
         label = label or '{}_{}'.format(
-            TEST_DOCUMENT_TYPE_LABEL, total_document_types
+            TEST_DOCUMENT_TYPE_LABEL, len(self.test_document_types)
         )
 
         self.test_document_type = DocumentType.objects.create(label=label)
@@ -158,16 +147,25 @@ class DocumentTestMixin:
                 'sample_documents', self.test_document_file_filename
             )
 
-    def _upload_test_document(self, document_type=None, label=None, _user=None):
+    def _upload_test_document(
+        self, description=None, document_file_attributes=None,
+        document_type=None, document_version_attributes=None, label=None,
+        _user=None
+    ):
         self._calculate_test_document_path()
 
         if not label:
             label = self.test_document_filename
 
+        test_document_description = description or '{}_{}'.format(
+            TEST_DOCUMENT_DESCRIPTION, len(self.test_documents)
+        )
+
         document_type = document_type or self.test_document_type
 
         with open(file=self.test_document_path, mode='rb') as file_object:
             document, document_file = document_type.new_document(
+                description=test_document_description,
                 file_object=file_object, label=label,
                 language=self.test_document_language, _user=_user
             )
@@ -179,6 +177,18 @@ class DocumentTestMixin:
         self.test_document_file_page = document_file.file_pages.first()
         self.test_document_version = self.test_document.version_active
         self.test_document_version_page = self.test_document_version.version_pages.first()
+
+        if document_file_attributes:
+            for key, value in document_file_attributes.items():
+                setattr(self.test_document_file, key, value)
+
+            self.test_document_file.save()
+
+        if document_version_attributes:
+            for key, value in document_version_attributes.items():
+                setattr(self.test_document_version, key, value)
+
+            self.test_document_version.save()
 
     def _upload_test_document_file(self, action=None, _user=None):
         self._calculate_test_document_file_path()

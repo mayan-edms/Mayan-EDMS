@@ -57,7 +57,7 @@ class DocumentFilePropertiesForm(DetailForm):
             },
             {
                 'label': _('Size'),
-                'field': lambda document_file: filesizeformat(
+                'func': lambda document_file: filesizeformat(
                     document_file.size
                 ) if document_file.size else '-'
             },
@@ -69,7 +69,7 @@ class DocumentFilePropertiesForm(DetailForm):
             {'label': _('Checksum'), 'field': 'checksum'},
             {
                 'label': _('Pages'),
-                'field': lambda document_file: document_file.pages.count()
+                'func': lambda document_file: document_file.pages.count()
             },
         ]
         fields = ('filename', 'comment',)

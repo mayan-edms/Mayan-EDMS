@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -23,20 +23,20 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
+#: apps.py:36 events.py:5 permissions.py:5 queues.py:7 settings.py:21
 msgid "Converter"
 msgstr "Convertizor"
 
-#: apps.py:83 forms.py:37
+#: apps.py:82 forms.py:37
 msgid "Transformation"
 msgstr "Transformare"
 
-#: backends/python.py:124 backends/python.py:137
+#: backends/python.py:120 backends/python.py:133
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "Excepție determinând numărul de pagini PDF; %s"
 
-#: backends/python.py:151
+#: backends/python.py:147
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
 msgstr "Excepție de determinare a numărului de pagini PDF; %s"
@@ -45,11 +45,11 @@ msgstr "Excepție de determinare a numărului de pagini PDF; %s"
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice nu este instalat sau nu a fost găsit."
 
-#: classes.py:261
+#: classes.py:258
 msgid "Not an office file format."
 msgstr "Nu este un format de fișier Office."
 
-#: classes.py:395
+#: classes.py:392
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
@@ -57,7 +57,7 @@ msgstr ""
 "Transformările permit modificarea aspectului vizual al documentelor, fără a "
 "face modificări permanente ale fișierului documentului în sine."
 
-#: classes.py:446
+#: classes.py:443
 msgid "transformation"
 msgstr "transformare"
 
@@ -123,7 +123,7 @@ msgstr "Șterge"
 msgid "Edit"
 msgstr "Editați"
 
-#: links.py:56 models.py:62 storages.py:21 views.py:143
+#: links.py:56 models.py:63 storages.py:21 views.py:143
 msgid "Assets"
 msgstr "Elemente"
 
@@ -135,11 +135,11 @@ msgstr "Transformări"
 msgid "Select new transformation"
 msgstr "Selectați o nouă transformare"
 
-#: models.py:45
+#: models.py:46
 msgid "Label"
 msgstr "Conținut etichetă"
 
-#: models.py:49
+#: models.py:50
 msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
@@ -147,47 +147,47 @@ msgstr ""
 "Această valoare va fi utilizată atunci când faceți referire la acest "
 "element. Poate conține doar litere, cifre și caractere de subliniere."
 
-#: models.py:52
+#: models.py:53
 msgid "Internal name"
 msgstr "Nume intern"
 
-#: models.py:56
+#: models.py:57
 msgid "File"
 msgstr "Fișier"
 
-#: models.py:61
+#: models.py:62
 msgid "Asset"
 msgstr "Element"
 
-#: models.py:157 models.py:228
+#: models.py:172 models.py:243
 msgid "Name"
 msgstr "Nume"
 
-#: models.py:160 models.py:226
+#: models.py:175 models.py:241
 msgid "Order"
 msgstr "Ordine"
 
-#: models.py:165 models.py:184
+#: models.py:180 models.py:199
 msgid "Stored layer"
 msgstr "Stratul depozitat"
 
-#: models.py:166
+#: models.py:181
 msgid "Stored layers"
 msgstr "Straturi stocate"
 
-#: models.py:181 models.py:235
+#: models.py:196 models.py:250
 msgid "Enabled"
 msgstr "Activat"
 
-#: models.py:192 models.py:220
+#: models.py:207 models.py:235
 msgid "Object layer"
 msgstr "Strat obiect"
 
-#: models.py:193
+#: models.py:208
 msgid "Object layers"
 msgstr "Straturi de obiecte"
 
-#: models.py:224
+#: models.py:239
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
@@ -195,7 +195,7 @@ msgstr ""
 "Ordinea în care vor fi executate transformările. Dacă este lăsat neschimbat,"
 " va fi alocată o ordine automată."
 
-#: models.py:231 workflow_actions.py:45
+#: models.py:246 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
@@ -203,19 +203,19 @@ msgstr ""
 "Introduceți argumentele pentru transformare ca dicționar YAML. adică: "
 "{\"grade\": 180}"
 
-#: models.py:233
+#: models.py:248
 msgid "Arguments"
 msgstr "Argumente"
 
-#: models.py:242
+#: models.py:257
 msgid "Layer transformation"
 msgstr "Transformarea stratului"
 
-#: models.py:243
+#: models.py:258
 msgid "Layer transformations"
 msgstr "Transformările stratului"
 
-#: models.py:249
+#: models.py:264
 msgid "Unknown transformation class"
 msgstr "Clasă de transformare necunoscută"
 
@@ -252,45 +252,55 @@ msgid "View existing transformations"
 msgstr "Vizualizați transformările existente"
 
 #: queues.py:12
-msgid "Generate a image of an asset."
+msgid "Generate a image of an object."
 msgstr ""
 
-#: settings.py:28
+#: settings.py:30
 msgid ""
 "The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest asset cache files. Specify the size in bytes."
 msgstr ""
 
-#: settings.py:37
-msgid ""
-"Time in seconds that the browser should cache the supplied asset. The "
-"default of 31559626 seconds correspond to 1 year."
-msgstr ""
-
-#: settings.py:44
+#: settings.py:38
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
 msgstr ""
 
-#: settings.py:52
+#: settings.py:46
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
 msgstr ""
 
-#: settings.py:58
+#: settings.py:52
 msgid "Path to the Storage subclass to use when storing assets."
 msgstr "Calea către subclasa de stocare de utilizat la stocarea elementelor."
 
-#: settings.py:64
+#: settings.py:58
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgstr "Argumente de transmis la CONVERTER_ASSET_STORAGE_BACKEND."
 
-#: settings.py:70
+#: settings.py:64
 msgid "Graphics conversion backend to use."
 msgstr "Back-end de conversie grafică."
 
-#: settings.py:76
+#: settings.py:70
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Opțiuni de configurare pentru backend-ul de conversie grafică."
+
+#: settings.py:77
+msgid "Time in seconds that the browser should cache the supplied image. "
+msgstr ""
+
+#: settings.py:84
+msgid ""
+"Maximum number of retries before giving up. A value of None means the task "
+"will retry forever."
+msgstr ""
+
+#: settings.py:92
+msgid ""
+"Time in seconds after which the image generation task will stop running and "
+"raise an error."
+msgstr ""
 
 #: storages.py:15
 msgid ""
@@ -310,71 +320,71 @@ msgstr ""
 msgid "Assets cache"
 msgstr ""
 
-#: transformations.py:196
+#: transformations.py:226
 msgid "Paste an asset"
 msgstr "Lipiți un element"
 
-#: transformations.py:247
+#: transformations.py:277
 msgid "Paste an asset (percents coordinates)"
 msgstr "Lipiți un element (procente de coordonate)"
 
-#: transformations.py:290
+#: transformations.py:324
 msgid "Paste an asset as watermark"
 msgstr "Inserați un element ca filigran"
 
-#: transformations.py:350
+#: transformations.py:384
 msgid "Crop"
 msgstr "Decupare"
 
-#: transformations.py:428
+#: transformations.py:462
 msgid "Draw rectangle"
 msgstr "Desenați dreptunghiul"
 
-#: transformations.py:530
+#: transformations.py:564
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Desenați un dreptunghi (coordonate procente)"
 
-#: transformations.py:627
+#: transformations.py:661
 msgid "Flip"
 msgstr "Basculare"
 
-#: transformations.py:638
+#: transformations.py:672
 msgid "Gaussian blur"
 msgstr "Încețoșare Gaussiană"
 
-#: transformations.py:648
+#: transformations.py:684
 msgid "Line art"
 msgstr "Linie de arta"
 
-#: transformations.py:659
+#: transformations.py:698
 msgid "Mirror"
 msgstr "Oglindire"
 
-#: transformations.py:670
+#: transformations.py:709
 msgid "Resize"
 msgstr "Redimensionare"
 
-#: transformations.py:697
+#: transformations.py:736
 msgid "Rotate"
 msgstr "Rotire"
 
-#: transformations.py:723
+#: transformations.py:766
 msgid "Rotate 90 degrees"
 msgstr "Rotiți 90 de grade"
 
-#: transformations.py:734
+#: transformations.py:777
 msgid "Rotate 180 degrees"
 msgstr "Rotiți 180 de grade"
 
-#: transformations.py:745
+#: transformations.py:788
 msgid "Rotate 270 degrees"
 msgstr "Rotiți 270 de grade"
 
-#: transformations.py:755
+#: transformations.py:798
 msgid "Unsharp masking"
 msgstr "Unsharp masking"
 
-#: transformations.py:771
+#: transformations.py:814
 msgid "Zoom"
 msgstr "Zoom"
 

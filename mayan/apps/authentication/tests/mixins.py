@@ -1,22 +1,72 @@
+from django.conf import settings
+from django.contrib.auth.views import PasswordResetConfirmView
+
 from ..literals import USER_IMPERSONATE_VARIABLE_ID
 
 
-class UserPasswordViewTestMixin:
-    def _request_test_user_password_set_view(self, password):
+class LoginViewTestMixin:
+    def _request_authenticated_view(self):
+        return self.get(path=self.authenticated_url)
+
+    def _request_login_view(self, data, query=None, follow=False):
+        default_data = {
+            'mayan_multi_step_login_view-current_step': '0'
+        }
+
+        default_data.update(data)
+
         return self.post(
-            viewname='authentication:user_set_password', kwargs={
-                'user_id': self.test_user.pk
+            follow=follow, viewname=settings.LOGIN_URL, data=default_data,
+            query=query
+        )
+
+    def _request_login_view_with_email(self, extra_data=None):
+        data = {
+            '0-username': self._test_case_superuser.email,
+            '0-password': self._test_case_superuser.cleartext_password,
+        }
+
+        if extra_data:
+            data.update(extra_data)
+
+        return self._request_login_view(data=data)
+
+    def _request_login_view_with_username(self, extra_data=None):
+        data = {
+            '0-username': self._test_case_superuser.username,
+            '0-password': self._test_case_superuser.cleartext_password,
+        }
+
+        if extra_data:
+            data.update(extra_data)
+
+        return self._request_login_view(data=data)
+
+
+class PasswordResetViewTestMixin:
+    def _request_password_reset_confirm_view(self, new_password, uidb64):
+        return self.post(
+            viewname='authentication:password_reset_confirm_view',
+            kwargs={
+                'uidb64': uidb64,
+                'token': PasswordResetConfirmView.reset_url_token
             }, data={
-                'new_password1': password, 'new_password2': password
+                'new_password1': new_password,
+                'new_password2': new_password
             }
         )
 
-    def _request_test_user_password_set_multiple_view(self, password):
+    def _request_password_reset_get_view(self):
+        return self.get(
+            viewname='authentication:password_reset_view', data={
+                'email': self._test_case_superuser.email,
+            }
+        )
+
+    def _request_password_reset_post_view(self):
         return self.post(
-            viewname='authentication:user_multiple_set_password', data={
-                'id_list': self.test_user.pk,
-                'new_password1': password,
-                'new_password2': password
+            viewname='authentication:password_reset_view', data={
+                'email': self._test_case_superuser.email,
             }
         )
 
@@ -48,20 +98,21 @@ class UserImpersonationViewTestMixin:
         )
 
 
-class UserLoginTestMixin:
-    def _request_authenticated_view(self):
-        return self.get(path=self.authenticated_url)
-
-    def _request_password_reset_get_view(self):
-        return self.get(
-            viewname='authentication:password_reset_view', data={
-                'email': self._test_case_superuser.email,
+class UserPasswordViewTestMixin:
+    def _request_test_user_password_set_view(self, password):
+        return self.post(
+            viewname='authentication:user_set_password', kwargs={
+                'user_id': self.test_user.pk
+            }, data={
+                'new_password1': password, 'new_password2': password
             }
         )
 
-    def _request_password_reset_post_view(self):
+    def _request_test_user_password_set_multiple_view(self, password):
         return self.post(
-            viewname='authentication:password_reset_view', data={
-                'email': self._test_case_superuser.email,
+            viewname='authentication:user_multiple_set_password', data={
+                'id_list': self.test_user.pk,
+                'new_password1': password,
+                'new_password2': password
             }
         )

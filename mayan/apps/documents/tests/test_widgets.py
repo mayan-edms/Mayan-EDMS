@@ -1,3 +1,5 @@
+from mayan.apps.dynamic_search.tests.mixins import SearchTestMixin
+
 from ..permissions import permission_document_view
 
 from .base import GenericDocumentViewTestCase
@@ -5,7 +7,7 @@ from .mixins.document_mixins import DocumentViewTestMixin
 
 
 class DocumentPreviewWidgetViewTestCase(
-    DocumentViewTestMixin, GenericDocumentViewTestCase
+    DocumentViewTestMixin, SearchTestMixin, GenericDocumentViewTestCase
 ):
     def test_document_preview_page_carousel_widget_render(self):
         self.grant_access(

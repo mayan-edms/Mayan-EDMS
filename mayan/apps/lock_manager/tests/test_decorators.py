@@ -12,11 +12,13 @@ from .literals import TEST_LOCK_1
 
 
 class FileLockDecoratorTestCase(BaseTestCase):
-    backend_string = 'mayan.apps.lock_manager.backends.file_lock.FileLock'
+    test_locking_backend_string = 'mayan.apps.lock_manager.backends.file_lock.FileLock'
 
     def setUp(self):
         super().setUp()
-        self.locking_backend = import_string(dotted_path=self.backend_string)
+        self.locking_backend = import_string(
+            dotted_path=self.test_locking_backend_string
+        )
 
     def test_decorator_single_class(self):
         class TestClass:
@@ -62,7 +64,7 @@ class FileLockDecoratorTestCase(BaseTestCase):
 
 
 class ModelLockTestCase(FileLockDecoratorTestCase):
-    backend_string = 'mayan.apps.lock_manager.backends.model_lock.ModelLock'
+    test_locking_backend_string = 'mayan.apps.lock_manager.backends.model_lock.ModelLock'
 
 
 @skip('Skip until a Mock Redis server class is added.')
@@ -70,4 +72,4 @@ class ModelLockTestCase(FileLockDecoratorTestCase):
     LOCK_MANAGER_BACKEND_ARGUMENTS={'redis_url': 'redis://127.0.0.1:6379/0'}
 )
 class RedisLockTestCase(FileLockDecoratorTestCase):
-    backend_string = 'mayan.apps.lock_manager.backends.redis_lock.RedisLock'
+    test_locking_backend_string = 'mayan.apps.lock_manager.backends.redis_lock.RedisLock'

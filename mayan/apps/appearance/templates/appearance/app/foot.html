@@ -1,0 +1,97 @@
+{% load static %}
+
+{% load smart_settings_tags %}
+
+<script src="{% static 'appearance/node_modules/jquery/dist/jquery.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'appearance/node_modules/bootstrap/dist/js/bootstrap.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'appearance/packages/jquery.scrollview.js' %}" type="text/javascript"></script>
+
+<script src="{% static 'appearance/node_modules/jquery-lazyload/jquery.lazyload.js' %}" type="text/javascript"></script>
+<script src="{% static 'appearance/node_modules/jquery-lazyload/jquery.scrollstop.js' %}" type="text/javascript"></script>
+
+<script src="{% static 'appearance/node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'appearance/node_modules/select2/dist/js/select2.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'appearance/node_modules/toastr/build/toastr.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'appearance/node_modules/jquery-match-height/dist/jquery.matchHeight-min.js' %}" type="text/javascript"></script>
+<script src="{% static 'appearance/node_modules/@fortawesome/fontawesome-free/js/all.min.js' %}" data-auto-replace-svg="nest" type="text/javascript"></script>
+<script src="{% static 'appearance/node_modules/urijs/src/IPv6.js' %}" type="text/javascript"></script>
+<script src="{% static 'appearance/node_modules/urijs/src/punycode.js' %}" type="text/javascript"></script>
+<script src="{% static 'appearance/node_modules/urijs/src/SecondLevelDomains.js' %}" type="text/javascript"></script>
+<script src="{% static 'appearance/node_modules/urijs/src/URI.js' %}" type="text/javascript"></script>
+<script src="{% static 'appearance/node_modules/urijs/src/URITemplate.js' %}" type="text/javascript"></script>
+<script src="{% static 'appearance/node_modules/urijs/src/URI.fragmentURI.js' %}" type="text/javascript"></script>
+<script src="{% static 'appearance/node_modules/jquery-form/dist/jquery.form.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'appearance/js/mayan_app.js' %}" type="text/javascript"></script>
+<script src="{% static 'appearance/js/partial_navigation.js' %}" type="text/javascript"></script>
+<script src="{% static 'appearance/js/base.js' %}" type="text/javascript"></script>
+
+<script>
+    {% smart_setting "APPEARANCE_MENU_POLLING_INTERVAL" as menu_polling_interval %}
+    const app = new MayanApp({
+        ajaxMenusOptions: [
+            {
+                callback: function (options) {
+                    MayanApp.updateNavbarState();
+                },
+                interval: {% if menu_polling_interval == 'None' %}null{% else %}{{ menu_polling_interval }}{% endif %},
+                menuSelector: '#menu-main',
+                name: 'menu_main',
+                url: '{% url "rest_api:template-detail" "menu_main" %}'
+            },
+            {
+                interval: {% if menu_polling_interval == 'None' %}null{% else %}{{ menu_polling_interval }}{% endif %},
+                menuSelector: '#menu-topbar',
+                name: 'menu_topbar',
+                url: '{% url "rest_api:template-detail" "menu_topbar" %}'
+            },
+        ],
+        messagePosition: '{% smart_setting "APPEARANCE_MESSAGE_POSITION" %}'
+    });
+
+    app.addAfterBaseLoadCallback({func: app.doToastrMessages, self: app});
+    app.addAfterBaseLoadCallback({func: app.resizeFullHeight, self: app});
+    app.addAfterBaseLoadCallback({func: app.setupSelect2, self: app});
+    app.addAfterBaseLoadCallback({func: app.setupScrollView, self: app});
+    app.addAfterBaseLoadCallback({func: app.setupListToolbar, self: app});
+
+    jQuery(document).ready(function() {
+        app.initialize();
+    });
+
+    // Add invisible bootstrap messages to copy the styles to toastr.js.
+    $('body').append('<div id="div-javascript-dynamic-content"></div>');
+    $('#div-javascript-dynamic-content').html('\
+        <div class="hidden alert alert-success">\
+            <p>text</p>\
+        </div>\
+        <div class="hidden alert alert-info">\
+            <p>text</p>\
+        </div>\
+        <div class="hidden alert alert-danger">\
+            <p>text</p>\
+        </div>\
+        <div class="hidden alert alert-warning">\
+            <p>text</p>\
+        </div>\
+    ');
+
+    // Copy the bootstrap style from the sample alerts to toaster.js via
+    // dynamic document style tag.
+    $('head').append('\
+        <style>\
+            .toast-success {\
+                background-color: ' + $('.alert-success').css('background-color') +'\
+            }\
+            .toast-info {\
+                background-color: ' + $('.alert-info').css('background-color') +'\
+            }\
+            .toast-error {\
+                background-color: ' + $('.alert-danger').css('background-color') +'\
+            }\
+            .toast-warning {\
+                background-color: ' + $('.alert-warning').css('background-color') +'\
+            }\
+        </style>\
+    ');
+    $('#div-javascript-dynamic-content').remove();
+</script>

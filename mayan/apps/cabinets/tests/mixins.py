@@ -1,8 +1,6 @@
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
-from mayan.apps.dynamic_search.tests.mixins import SearchTestMixin
 
 from ..models import Cabinet
-from ..search import cabinet_search
 
 from .literals import (
     TEST_CABINET_CHILD_LABEL, TEST_CABINET_LABEL, TEST_CABINET_LABEL_EDITED
@@ -94,21 +92,19 @@ class CabinetDocumentUploadWizardStepTestMixin:
         return self.get(viewname='sources:document_create_multiple')
 
 
-class CabinetSearchTestMixin(SearchTestMixin):
-    def _perform_cabinet_search(self, query=None):
-        query = query or {'documents__label': self.test_document.label}
-
-        return self.search_backend.search(
-            search_model=cabinet_search, query=query,
-            user=self._test_case_user
-        )
-
-
 class CabinetTestMixin:
+    auto_create_test_cabinet = False
+    test_cabinet_add_test_document = False
+
     def setUp(self):
         super().setUp()
         if not hasattr(self, 'test_cabinets'):
             self.test_cabinets = []
+
+        if self.auto_create_test_cabinet:
+            self._create_test_cabinet(
+                add_test_document=self.test_cabinet_add_test_document
+            )
 
     def _create_test_cabinet(self, add_test_document=False):
         self.test_cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)

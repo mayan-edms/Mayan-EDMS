@@ -77,7 +77,7 @@ setting_image_cache_time = namespace.add_setting(
         'Time in seconds that the browser should cache the supplied image. '
     )
 )
-setting_image_generation_timeout = namespace.add_setting(
+setting_image_generation_max_retries = namespace.add_setting(
     default=DEFAULT_CONVERTER_IMAGE_GENERATION_MAX_RETRIES,
     global_name='CONVERTER_IMAGE_GENERATION_MAX_RETRIES',
     help_text=_(

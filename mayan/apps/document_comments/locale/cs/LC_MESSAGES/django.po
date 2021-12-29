@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:31 events.py:6 search.py:18 search.py:25 search.py:32 search.py:39
+#: apps.py:32 events.py:6 search.py:18 search.py:25 search.py:32 search.py:39
 msgid "Document comments"
 msgstr "Komentáře k dokumentu"
 
@@ -49,27 +49,27 @@ msgstr "Odstranit"
 msgid "Edit"
 msgstr "Upravit"
 
-#: links.py:31 models.py:45 permissions.py:5 search.py:11
+#: links.py:31 models.py:46 permissions.py:5 search.py:11
 msgid "Comments"
 msgstr "Komentáře"
 
-#: models.py:29
+#: models.py:30
 msgid "Document"
 msgstr "Dokument"
 
-#: models.py:33 models.py:70
+#: models.py:34 models.py:71
 msgid "User"
 msgstr "Uživatel"
 
-#: models.py:35
+#: models.py:36
 msgid "Text"
 msgstr "Text"
 
-#: models.py:38
+#: models.py:39
 msgid "Date time submitted"
 msgstr "Datum a čas odeslání"
 
-#: models.py:44
+#: models.py:45
 msgid "Comment"
 msgstr "Komentář"
 

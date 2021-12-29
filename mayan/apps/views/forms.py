@@ -3,7 +3,9 @@ import os
 
 from django import forms
 from django.conf import settings
-from django.contrib.admin.utils import label_for_field
+from django.contrib.admin.utils import (
+    get_fields_from_path, help_text_for_field, label_for_field
+)
 from django.core.exceptions import FieldDoesNotExist, ImproperlyConfigured
 from django.db import models
 from django.db.models import Model
@@ -13,7 +15,7 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.utils import introspect_attribute, resolve_attribute
+from mayan.apps.common.utils import resolve_attribute
 
 from .widgets import DisableableSelectWidget, PlainWidget, TextAreaDiv
 
@@ -94,58 +96,59 @@ class DetailForm(forms.ModelForm):
         )
         super().__init__(*args, **kwargs)
 
-        for extra_field in self.opts.extra_fields:
+        for field_index, extra_field in enumerate(iterable=self.opts.extra_fields):
             obj = extra_field.get('object', self.instance)
-            field = extra_field['field']
-
-            result = resolve_attribute(
-                attribute=field, obj=obj
-            )
-
+            field = extra_field.get('field', None)
+            func = extra_field.get('func', None)
             label = extra_field.get('label', None)
-
-            # If label is not specified try to get it from the object itself.
-            if not label:
-                attribute_name, obj = introspect_attribute(
-                    attribute_name=field, obj=obj
-                )
-
-                if not obj:
-                    label = _('None')
-                else:
-                    try:
-                        label = getattr(
-                            getattr(obj, attribute_name), 'short_description'
-                        )
-                    except AttributeError:
-                        label = label_for_field(
-                            name=attribute_name, model=obj
-                        )
-
             help_text = extra_field.get('help_text', None)
-            # If help_text is not specified try to get it from the object
-            # itself.
-            if not help_text:
-                if obj:
+
+            if field:
+                if not label:
+                    # If label is not specified try to get it from the object
+                    # itself.
                     try:
-                        field_object = obj._meta.get_field(field_name=field)
+                        fields = get_fields_from_path(model=obj, path=field)
                     except FieldDoesNotExist:
-                        field_object = field
+                        # Might be property of a method.
+                        label = getattr(
+                            getattr(obj, field), 'short_description',
+                            field
+                        )
+                    else:
+                        label = label_for_field(
+                            model=obj, name=fields[-1].name
+                        )
 
-                    help_text = getattr(
-                        field_object, 'help_text', None
-                    )
+                if not help_text:
+                    # If help_text is not specified try to get it from the
+                    # object itself.
+                    try:
+                        fields = get_fields_from_path(model=obj, path=field)
+                    except FieldDoesNotExist:
+                        # Might be property of a method.
+                        help_text = getattr(
+                            getattr(obj, field), 'help_text', None
+                        )
+                    else:
+                        help_text = help_text_for_field(
+                            model=obj, name=fields[-1].name
+                        )
 
-            if isinstance(result, models.query.QuerySet):
+                value = resolve_attribute(attribute=field, obj=obj)
+
+            if func:
+                value = func(obj)
+
+            field = field or 'anonymous_field_{}'.format(field_index)
+
+            if isinstance(value, models.query.QuerySet):
                 self.fields[field] = forms.ModelMultipleChoiceField(
-                    queryset=result, label=label
+                    queryset=value, label=label
                 )
             else:
                 self.fields[field] = forms.CharField(
-                    initial=resolve_attribute(
-                        obj=obj,
-                        attribute=field
-                    ), label=label, help_text=help_text,
+                    initial=value, label=label, help_text=help_text,
                     widget=extra_field.get('widget', PlainWidget)
                 )
 

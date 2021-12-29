@@ -4,14 +4,12 @@ from mayan.apps.document_indexing.models import (
     IndexInstanceNode, IndexTemplate
 )
 from mayan.apps.document_indexing.tests.literals import TEST_INDEX_TEMPLATE_LABEL
-from mayan.apps.testing.tests.base import BaseTransactionTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from .literals import TEST_PARSING_INDEX_NODE_TEMPLATE
 
 
-class DocumentFileParsingIndexingTestCase(
-    DocumentTestMixin, BaseTransactionTestCase
-):
+class DocumentFileParsingIndexingTestCase(DocumentTestMixin, BaseTestCase):
     auto_upload_test_document = False
     test_document_filename = TEST_HYBRID_DOCUMENT
 

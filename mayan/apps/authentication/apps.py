@@ -41,6 +41,7 @@ class AuthenticationApp(MayanAppConfig):
         User = get_user_model()
 
         AuthenticationBackend.load_modules()
+        AuthenticationBackend.cls_initialize()
 
         ModelEventType.register(
             model=User, event_types=(

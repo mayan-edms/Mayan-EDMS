@@ -1,7 +1,8 @@
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import serializers
 from rest_framework.reverse import reverse
+
+from mayan.apps.rest_api import serializers
 
 from .models import Source
 

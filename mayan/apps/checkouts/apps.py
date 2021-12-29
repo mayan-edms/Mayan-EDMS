@@ -5,7 +5,7 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.menus import (
-    menu_facet, menu_main, menu_multi_item, menu_secondary
+    menu_list_facet, menu_main, menu_multi_item, menu_secondary
 )
 from mayan.apps.dashboards.dashboards import dashboard_administrator
 from mayan.apps.events.classes import ModelEventType
@@ -106,7 +106,7 @@ class CheckoutsApp(MayanAppConfig):
             widget=DashboardWidgetTotalCheckouts, order=-1
         )
 
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(link_check_out_info,), sources=(Document,)
         )
         menu_main.bind_links(links=(link_check_out_list,), position=40)

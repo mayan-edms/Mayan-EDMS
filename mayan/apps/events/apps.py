@@ -8,11 +8,9 @@ from mayan.apps.common.menus import (
     menu_object, menu_secondary, menu_tools, menu_topbar, menu_user
 )
 from mayan.apps.navigation.classes import SourceColumn
-from mayan.apps.user_management.dashboards import dashboard_user
 from mayan.apps.views.html_widgets import ObjectLinkWidget, TwoStateWidget
 
 from .classes import EventTypeNamespace
-from .dashboard_widgets import DashboardWidgetUserEvents
 from .html_widgets import widget_event_actor_link, widget_event_type_link
 from .links import (
     link_current_user_events, link_current_user_events_clear,

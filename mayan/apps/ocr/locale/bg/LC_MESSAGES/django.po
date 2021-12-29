@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -22,32 +22,32 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:55 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
+#: apps.py:59 events.py:5 links.py:56 links.py:86 permissions.py:5 queues.py:6
 #: search.py:17 settings.py:11
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:106
+#: apps.py:123
 msgid "The OCR content."
 msgstr "Съдържанието на OCR."
 
-#: apps.py:111
+#: apps.py:128
 msgid "A generator returning the document's pages OCR content."
 msgstr "Генератор, връщащ OCR съдържанието на страниците на документа."
 
-#: apps.py:112
+#: apps.py:129
 msgid "OCR content"
 msgstr "OCR съдържание"
 
-#: apps.py:138
+#: apps.py:156
 msgid "Date and time"
 msgstr "Дата и час"
 
-#: apps.py:141 models.py:50
+#: apps.py:159 models.py:54
 msgid "Result"
 msgstr "Резултат"
 
-#: backends/tesseract.py:89
+#: backends/tesseract.py:86
 msgid "Tesseract OCR not found."
 msgstr "Tesseract OCR не е намерен."
 
@@ -60,95 +60,103 @@ msgid "Document version OCR content deleted"
 msgstr "Изтрито е OCR съдържанието на версията на документа"
 
 #: events.py:12
+msgid "Document version page OCR content edited"
+msgstr "Редактирано OCR съдържание на страницата с версия на документа"
+
+#: events.py:16
 msgid "Document version submitted for OCR"
 msgstr "Версия на документа, представена за OCR"
 
-#: events.py:16
+#: events.py:20
 msgid "Document version OCR finished"
 msgstr "OCR на версия на документ приключи"
 
-#: forms.py:14 forms.py:47
+#: forms.py:14 forms.py:43 forms.py:63
 msgid "Contents"
 msgstr "Съдържание"
 
-#: forms.py:78
+#: forms.py:94
 #, python-format
 msgid "Page %(page_number)d"
 msgstr "Страница %(page_number)d"
 
-#: links.py:24
+#: links.py:29
 msgid "Setup OCR"
 msgstr "Настройка на OCR"
 
-#: links.py:30
+#: links.py:35
 msgid "OCR documents per type"
 msgstr "OCR на документи по тип"
 
-#: links.py:45 links.py:50
+#: links.py:42 links.py:49
 msgid "Delete OCR content"
 msgstr "Изтриване на OCR съдържание"
 
-#: links.py:56 links.py:61
-msgid "Submit for OCR"
-msgstr "Изпращане за OCR"
-
-#: links.py:67 links.py:88 views.py:221
-msgid "OCR errors"
-msgstr "Грешки в OCR"
-
-#: links.py:72
+#: links.py:61
 msgid "Download OCR text"
 msgstr "Изтеглете OCR текст"
 
-#: models.py:20
+#: links.py:67 links.py:99 views.py:258
+msgid "OCR errors"
+msgstr "Грешки в OCR"
+
+#: links.py:71 links.py:76
+msgid "Submit for OCR"
+msgstr "Изпращане за OCR"
+
+#: links.py:92
+msgid "Edit OCR"
+msgstr "Редактиране на OCR"
+
+#: models.py:24
 msgid "Document type"
 msgstr "Тип документ"
 
-#: models.py:24
+#: models.py:28
 msgid "Automatically queue newly created documents for OCR."
 msgstr "Автоматично поставете на опашка новосъздадените документи за OCR."
 
-#: models.py:30
+#: models.py:34
 msgid "Document type settings"
 msgstr "Настройки за тип на документ"
 
-#: models.py:31
+#: models.py:35
 msgid "Document types settings"
 msgstr "Настройки за типове документи"
 
-#: models.py:45
+#: models.py:49
 msgid "Document version"
 msgstr "Версия на документа"
 
-#: models.py:48
+#: models.py:52
 msgid "Date time submitted"
 msgstr "Дата и час на подаване"
 
-#: models.py:54
+#: models.py:58
 msgid "Document version OCR error"
 msgstr "OCR грешка за версия на документа"
 
-#: models.py:55
+#: models.py:59
 msgid "Document version OCR errors"
 msgstr "OCR грешки за версия на документа"
 
-#: models.py:67
+#: models.py:71
 msgid "Document version page"
 msgstr "Страница с версия на документа"
 
-#: models.py:71
+#: models.py:75
 msgid "The actual text content extracted by the OCR backend."
 msgstr "Действителното текстово съдържание, извлечено от OCR бекенда."
 
-#: models.py:72
+#: models.py:76
 msgid "Content"
 msgstr "Съдържание"
 
-#: models.py:78
+#: models.py:82
 msgid "Document version page OCR content"
 msgstr "Съдържание на OCR на страницата с версия на документа"
 
-#: models.py:79
+#: models.py:83
 msgid "Document version pages OCR contents"
 msgstr "Страници с OCR съдържание на версията на документа"
 
@@ -157,10 +165,14 @@ msgid "Submit documents for OCR"
 msgstr "Подаване на документи за OCR"
 
 #: permissions.py:11
+msgid "Edit the transcribed text from document"
+msgstr "Редактирайте транскрибирания текст от документа"
+
+#: permissions.py:15
 msgid "View the transcribed text from document"
 msgstr "Преглед на транскрибирания текст от документ"
 
-#: permissions.py:15
+#: permissions.py:19
 msgid "Change document type OCR settings"
 msgstr "Промяна на настройките на OCR за типа документ"
 
@@ -190,43 +202,79 @@ msgstr ""
 msgid "Full path to the backend to be used to do OCR."
 msgstr "Пълен път към бекенда, за да се използва OCR."
 
-#: views.py:39
-msgid "Delete the OCR content of the selected document version?"
-msgid_plural "Delete the OCR content of the selected document versions?"
-msgstr[0] "Да се изтрие ли OCR съдържанието на избраната версия на документа?"
-msgstr[1] "Да се изтрие ли OCR съдържанието на избраните версии на документа?"
+#: views.py:33
+#, python-format
+msgid "Error deleting document version OCR \"%(instance)s\"; %(exception)s"
+msgstr ""
+"Грешка при изтриване на OCR версия на документа &quot;%(instance)s&quot;; "
+"%(exception)s"
 
-#: views.py:74
+#: views.py:38
+#, python-format
+msgid "OCR content of \"%(object)s\" deleted successfully."
+msgstr "OCR съдържанието на „%(object)s“ е изтрито успешно."
+
+#: views.py:39
+#, python-format
+msgid "OCR content of %(count)d document version deleted successfully."
+msgstr "OCR съдържанието на %(count)d версия на документа е изтрито успешно."
+
+#: views.py:40
+#, python-format
+msgid "OCR content of %(count)d document versions deleted successfully."
+msgstr "OCR съдържанието на %(count)d версии на документи е изтрито успешно."
+
+#: views.py:41
+#, python-format
+msgid "Delete the OCR content of: %(object)s."
+msgstr "Изтрийте съдържанието на OCR на: %(object)s."
+
+#: views.py:42
+#, python-format
+msgid "Delete the OCR content of the %(count)d selected document version."
+msgstr "Изтрийте OCR съдържанието на  на %(count)dизбрана версия."
+
+#: views.py:43
+#, python-format
+msgid "Delete the OCR content of the %(count)d selected document versions."
+msgstr "Изтрийте OCR съдържанието на  %(count)dизбрани версии."
+
+#: views.py:69
 #, python-format
 msgid "OCR result for document: %s"
 msgstr "OCR резултат за документ: %s"
 
-#: views.py:99
+#: views.py:94
 #, python-format
 msgid "OCR errors for document: %s"
 msgstr "OCR грешки за документ: %s"
 
-#: views.py:118
+#: views.py:113
 msgid "Submit the selected document version to the OCR queue?"
 msgid_plural "Submit the selected document versions to the OCR queue?"
 msgstr[0] "Изпратете избраната версия на документа на OCR опашката?"
 msgstr[1] "Да се изпратят ли избраните версии на документа на OCR опашката?"
 
-#: views.py:152
+#: views.py:148
 #, python-format
 msgid "OCR result for document version page: %s"
 msgstr "OCR резултат за страница с версия на документа: %s"
 
-#: views.py:158
+#: views.py:175
+#, python-format
+msgid "Edit OCR for document version page: %s"
+msgstr "Редактирайте OCR за страницата с версия на документа: %s"
+
+#: views.py:195
 msgid "Submit all documents of a type for OCR"
 msgstr "Изпратете всички документи от даден тип за OCR"
 
-#: views.py:175
+#: views.py:212
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
 msgstr "%(count)d документа, добавени към OCR опашката."
 
-#: views.py:210
+#: views.py:247
 #, python-format
 msgid "Edit OCR settings for document type: %s."
 msgstr "Редактиране на настройките на OCR за типа документ: %s."

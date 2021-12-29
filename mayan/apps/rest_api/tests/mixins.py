@@ -1,6 +1,3 @@
-from django.conf.urls import url
-from django.urls import clear_url_caches
-
 from rest_framework.authtoken.models import Token
 
 from mayan.apps.testing.tests.mixins import TestViewTestCaseMixin
@@ -43,15 +40,6 @@ class RESTAPIViewTestMixin:
 
 
 class TestAPIViewTestCaseMixin(TestViewTestCaseMixin):
-    def add_test_view(self, test_object=None):
-        from ..urls import api_urls as urlpatterns
-
-        urlpatterns.insert(
-            0, url(
-                regex=self.test_view_url, view=self._test_view_factory(
-                    test_object=test_object
-                ), name=self.test_view_name
-            )
-        )
-        clear_url_caches()
-        self.has_test_view = True
+    def _get_test_view_urlpatterns(self):
+        from ..urls import api_version_urls
+        return api_version_urls

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-12-01 12:17+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -35,7 +35,7 @@ msgstr ""
 "Use a linguagem de template padrão do Django "
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 
-#: fields.py:38
+#: fields.py:37
 #, python-format
 msgid ""
 "Use Django's default templating language "
@@ -80,18 +80,18 @@ msgstr "Sandbox do template para: %s"
 msgid "Template error; %(exception)s"
 msgstr "Erro do template; %(exception)s"
 
-#: widgets.py:63
+#: widgets.py:64
 msgid "Filters"
 msgstr "Filtros"
 
-#: widgets.py:70
+#: widgets.py:71
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: widgets.py:76
+#: widgets.py:77
 msgid "<Filters and tags>"
 msgstr "<Filters and tags>"
 
-#: widgets.py:114
+#: widgets.py:118
 msgid "<Model attributes>"
 msgstr "<Model attributes>"

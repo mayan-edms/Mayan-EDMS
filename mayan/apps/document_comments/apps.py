@@ -3,7 +3,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.menus import menu_facet, menu_object, menu_secondary
+from mayan.apps.common.menus import (
+    menu_list_facet, menu_object, menu_secondary
+)
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
@@ -74,7 +76,7 @@ class DocumentCommentsApp(MayanAppConfig):
         )
         SourceColumn(attribute='text', include_label=True, source=Comment)
 
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(link_comments_for_document,), sources=(Document,)
         )
 

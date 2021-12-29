@@ -1,6 +1,5 @@
-from rest_framework import serializers
-
 from mayan.apps.documents.serializers.document_serializers import DocumentSerializer
+from mayan.apps.rest_api import serializers
 
 from .models import DuplicateTargetDocument
 

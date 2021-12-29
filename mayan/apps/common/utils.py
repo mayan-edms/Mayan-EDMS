@@ -1,25 +1,57 @@
+from collections import Iterable
+from distutils import util
 from functools import reduce
 import logging
 import types
 
-from django.conf import settings
 from django.core.exceptions import FieldDoesNotExist
 from django.db.models.constants import LOOKUP_SEP
 
 from .exceptions import ResolverError, ResolverPipelineError
-from .literals import DJANGO_SQLITE_BACKEND
 
 logger = logging.getLogger(name=__name__)
+
+
+class ProgressBar:
+    def __init__(
+        self, total, prefix=None, suffix=None,
+        decimal_places=1, length=100, fill_symbol='█', print_end='\r'
+    ):
+        self.total = total
+        self.prefix = prefix
+        self.suffix = suffix
+        self.decimal_places = decimal_places
+        self.length = length
+        self.fill_symbol = fill_symbol
+        self.print_end = print_end
+        self.template_percent = '{{0:.{}f}}'.format(self.decimal_places)
+
+    def update(self, index):
+        percent = self.template_percent.format(
+            index / self.total * 100.0
+        )
+        fill_size = int(self.length * index // self.total)
+        bar = '{}{}'.format(
+            self.fill_symbol * fill_size, '-' * (self.length - fill_size)
+        )
+        print(
+            f'\r{self.prefix} |{bar}| {percent}% {self.suffix}',
+            end=self.print_end
+        )
+        # Print New Line on Complete
+        if index == self.total:
+            print()
 
 
 class Resolver:
     exceptions = ()
 
-    def __init__(self, attribute, obj, kwargs, klass):
+    def __init__(self, attribute, obj, kwargs, klass, resolver_extra_kwargs):
         self.attribute = attribute
         self.obj = obj
         self.kwargs = kwargs
         self.klass = klass
+        self.resolver_extra_kwargs = resolver_extra_kwargs
 
     def resolve(self):
         try:
@@ -67,7 +99,8 @@ class ResolverList(Resolver):
         for item in self.obj:
             result.append(
                 self.klass.resolve(
-                    attribute=self.attribute, obj=item, kwargs=self.kwargs
+                    attribute=self.attribute, obj=item, kwargs=self.kwargs,
+                    resolver_extra_kwargs=self.resolver_extra_kwargs
                 )
             )
 
@@ -81,9 +114,9 @@ class ResolverPipelineObjectAttribute:
     )
 
     @classmethod
-    def resolve(cls, attribute, obj, kwargs=None):
-        if not kwargs:
-            kwargs = {}
+    def resolve(cls, attribute, obj, resolver_extra_kwargs=None, kwargs=None):
+        kwargs = kwargs or {}
+        resolver_extra_kwargs = resolver_extra_kwargs or {}
 
         if '.' in attribute:
             attribute_list = attribute.split('.')
@@ -95,14 +128,15 @@ class ResolverPipelineObjectAttribute:
             for resolver in cls.resolver_list:
                 try:
                     result = resolver(
-                        attribute=attribute, obj=result, kwargs=kwargs, klass=cls
+                        attribute=attribute, obj=result, kwargs=kwargs,
+                        klass=cls, resolver_extra_kwargs=resolver_extra_kwargs
                     ).resolve()
                 except ResolverError:
                     """Expected, try the next resolver in the list."""
 
             if result == obj:
                 raise ResolverPipelineError(
-                    'Unable to resolve attribute "{attribute}" of object "{obj}"'.format(
+                    'Unable to resolve attribute `{attribute}` of object `{obj}`'.format(
                         attribute=attribute, obj=obj
                     )
                 )
@@ -111,10 +145,47 @@ class ResolverPipelineObjectAttribute:
 
 
 class ResolverRelatedManager(Resolver):
-    exceptions = (AttributeError,)
+    exceptions = (AttributeError, FieldDoesNotExist)
 
     def _resolve(self):
-        return getattr(self.obj, self.attribute).all()
+        model = self.resolver_extra_kwargs.get('model', {})
+        exclude = self.resolver_extra_kwargs.get('exclude', {})
+
+        field = self.obj._meta.get_field(field_name=self.attribute)
+
+        if field.many_to_one:
+            # Many to one.
+            queryset = field.related_model._meta.default_manager.filter(
+                **{field.remote_field.name: self.obj.pk}
+            )
+
+            if field.related_model == model:
+                queryset = queryset.exclude(**exclude)
+
+            return queryset
+        elif field.many_to_many:
+            # Many to many from the parent side.
+            if hasattr(field, 'get_filter_kwargs_for_object'):
+                queryset = getattr(self.obj, field.attname)
+
+                if queryset.model == model:
+                    queryset = queryset.exclude(**exclude)
+                else:
+                    queryset = queryset.all()
+
+                return queryset
+
+        # Many to many from the child side.
+        # One to many.
+        # One to one.
+        queryset = field.remote_field.model._meta.default_manager.filter(
+            **{field.remote_field.name: self.obj.pk}
+        )
+
+        if field.related_model == model:
+            queryset = queryset.exclude(**exclude)
+
+        return queryset
 
 
 class ResolverPipelineModelAttribute(ResolverPipelineObjectAttribute):
@@ -124,13 +195,34 @@ class ResolverPipelineModelAttribute(ResolverPipelineObjectAttribute):
     )
 
     @classmethod
-    def resolve(cls, attribute, obj, kwargs=None):
+    def resolve(cls, attribute, obj, resolver_extra_kwargs=None, kwargs=None):
         attribute = attribute.replace(LOOKUP_SEP, '.')
-        return super().resolve(attribute=attribute, obj=obj, kwargs=kwargs)
+        return super().resolve(
+            attribute=attribute, obj=obj, kwargs=kwargs,
+            resolver_extra_kwargs=resolver_extra_kwargs
+        )
 
 
-def check_for_sqlite():
-    return settings.DATABASES['default']['ENGINE'] == DJANGO_SQLITE_BACKEND and settings.DEBUG is False
+def any_to_bool(value):
+    if not isinstance(value, bool):
+        value = bool(
+            util.strtobool(val=value)
+        )
+    return value
+
+
+def flatten_list(value):
+    if isinstance(value, (str, bytes)):
+        yield value
+    else:
+        for item in value:
+            if isinstance(item, Iterable) and not isinstance(item, (str, bytes)):
+                yield from flatten_list(value=item)
+            else:
+                if item is not None:
+                    yield item
+                else:
+                    yield ''
 
 
 def get_class_full_name(klass):
@@ -157,33 +249,23 @@ def get_related_field(model, related_field_name):
     return related_field
 
 
-def introspect_attribute(attribute_name, obj):
-    """
-    Resolve the attribute of model. Supports nested reference using dotted
-    paths or double underscore.
-    """
-    try:
-        # Try as a related field
-        obj._meta.get_field(field_name=attribute_name)
-    except (AttributeError, FieldDoesNotExist):
-        attribute_name = attribute_name.replace('__', '.')
+def parse_range(range_string):
+    for part in range_string.split(','):
+        part = part.strip()
 
-        try:
-            # If there are separators in the attribute name, traverse them
-            # to the final attribute
-            attribute_part, attribute_remaining = attribute_name.split(
-                '.', 1
-            )
-        except ValueError:
-            return attribute_name, obj
+        if '-' in part:
+            part_range = part.split('-')
+            start = int(part_range[0].strip())
+            stop = int(part_range[1].strip())
+
+            if stop > start:
+                step = 1
+            else:
+                step = -1
+
+            yield from range(start, stop + step, step)
         else:
-            related_field = obj._meta.get_field(field_name=attribute_part)
-            return introspect_attribute(
-                attribute_name=attribute_part,
-                obj=related_field.related_model,
-            )
-    else:
-        return attribute_name, obj
+            yield int(part)
 
 
 def resolve_attribute(attribute, obj, kwargs=None):
@@ -248,4 +330,4 @@ def return_related(instance, related_field):
     meant for related models. Support multiple levels of relationship
     using double underscore.
     """
-    return reduce(getattr, related_field.split('__'), instance)
+    return reduce(getattr, related_field.split(LOOKUP_SEP), instance)

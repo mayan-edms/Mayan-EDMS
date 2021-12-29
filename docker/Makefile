@@ -24,6 +24,10 @@ docker-build-with-proxy: docker-dockerfile-update devpi-start
 docker-build-with-proxy-push: ## Build an image with an APT proxy and push to the test registry.
 docker-build-with-proxy-push: docker-build-with-proxy docker-registry-push
 
+docker-dockerfile-update: ## Update the Dockerfile file from the platform template.
+docker-dockerfile-update: copy-config-env
+	./manage.py platformtemplate docker_dockerfile > docker/Dockerfile
+
 docker-registry-push: ## Push a built image to the test Docker registry.
 	docker tag $(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION) $(DOCKER_HOST_REGISTRY_NAME):$(DOCKER_HOST_REGISTRY_PORT)/$(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION)
 	docker push $(DOCKER_HOST_REGISTRY_NAME):$(DOCKER_HOST_REGISTRY_PORT)/$(DOCKER_IMAGE_MAYAN_NAME):$(IMAGE_VERSION)
@@ -186,13 +190,3 @@ docker-development-cleanup: ## Delete the test container and the test volume.
 	@docker volume rm mayan-development-postgres || true
 	@docker volume rm mayan-development-rabbitmq || true
 	@docker volume rm mayan-development-redis || true
-
-devpi-init:
-	@if [ -z "$$(pip list | grep devpi-server)" ]; then echo "devpi-server not installed"; exit 1;fi
-	devpi-server --init || true
-
-devpi-start: devpi-init
-	devpi-server --host=0.0.0.0 >/dev/null &
-
-devpi-stop:
-	killall devpi-server || true

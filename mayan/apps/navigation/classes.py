@@ -156,6 +156,12 @@ class Link(TemplateObjectMixin):
                 except PermissionDenied:
                     return None
 
+        # If we were passed an instance of the view context object we are
+        # resolving, inject it into the context. This help resolve links for
+        # object lists.
+        if resolved_object:
+            context['resolved_object'] = resolved_object
+
         # Check to see if link has conditional display function and only
         # display it if the result of the conditional display function is
         # True.
@@ -172,12 +178,6 @@ class Link(TemplateObjectMixin):
                 args = [Variable(var=arg) for arg in self.args]
             else:
                 args = [Variable(var=self.args)]
-
-            # If we were passed an instance of the view context object we are
-            # resolving, inject it into the context. This help resolve links for
-            # object lists.
-            if resolved_object:
-                context['resolved_object'] = resolved_object
 
             try:
                 kwargs = self.kwargs(context)
@@ -467,6 +467,7 @@ class Menu(TemplateObjectMixin):
 
     def resolve(self, context=None, request=None, source=None, sort_results=False):
         result = []
+        self.matched_link_set = set()
 
         if not context and not request:
             raise ImproperlyConfigured(
@@ -560,6 +561,12 @@ class Menu(TemplateObjectMixin):
         result = []
 
         object_resolved_links = []
+
+        # Deduplicate matched links.
+        matched_links = list(
+            set(matched_links).difference(self.matched_link_set)
+        )
+        self.matched_link_set.update(matched_links)
 
         for link in matched_links:
             kwargs = {

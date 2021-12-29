@@ -2,11 +2,11 @@ import json
 
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import serializers
 from rest_framework.reverse import reverse
 
 from mayan.apps.documents.models import DocumentType
 from mayan.apps.documents.permissions import permission_document_type_edit
+from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import (
     FilteredPrimaryKeyRelatedField, MultiKwargHyperlinkedIdentityField
 )
@@ -14,7 +14,7 @@ from mayan.apps.user_management.serializers import UserSerializer
 
 from .models import (
     Workflow, WorkflowInstance, WorkflowInstanceLogEntry, WorkflowState,
-    WorkflowTransition, WorkflowTransitionField
+    WorkflowStateAction, WorkflowTransition, WorkflowTransitionField
 )
 
 
@@ -57,6 +57,11 @@ class WorkflowTemplateSerializer(serializers.HyperlinkedModelSerializer):
             'label', 'states_url', 'transitions_url', 'url'
         )
         model = Workflow
+        read_only_fields = (
+            'document_types_add_url', 'document_types_remove_url',
+            'document_types_url', 'id', 'image_url', 'states_url',
+            'transitions_url', 'url'
+        )
 
 
 class WorkflowTemplateDocumentTypeAddSerializer(serializers.Serializer):
@@ -78,6 +83,19 @@ class WorkflowTemplateDocumentTypeRemoveSerializer(serializers.Serializer):
 
 
 class WorkflowTemplateStateSerializer(serializers.HyperlinkedModelSerializer):
+    actions_url = MultiKwargHyperlinkedIdentityField(
+        view_kwargs=(
+            {
+                'lookup_field': 'workflow_id',
+                'lookup_url_kwarg': 'workflow_template_id',
+            },
+            {
+                'lookup_field': 'pk',
+                'lookup_url_kwarg': 'workflow_template_state_id',
+            }
+        ),
+        view_name='rest_api:workflow-template-state-action-list'
+    )
     url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
@@ -98,10 +116,52 @@ class WorkflowTemplateStateSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         fields = (
-            'completion', 'id', 'initial', 'label', 'url',
-            'workflow_template_url',
+            'actions_url', 'completion', 'id', 'initial', 'label', 'url',
+            'workflow_template_url'
         )
         model = WorkflowState
+        read_only_fields = ('id', 'url', 'workflow_template_url')
+
+
+class WorkflowTemplateStateActionSerializer(serializers.HyperlinkedModelSerializer):
+    url = MultiKwargHyperlinkedIdentityField(
+        view_kwargs=(
+            {
+                'lookup_field': 'state__workflow_id',
+                'lookup_url_kwarg': 'workflow_template_id',
+            },
+            {
+                'lookup_field': 'state_id',
+                'lookup_url_kwarg': 'workflow_template_state_id',
+            },
+            {
+                'lookup_field': 'pk',
+                'lookup_url_kwarg': 'workflow_template_state_action_id',
+            }
+        ),
+        view_name='rest_api:workflow-template-state-action-detail'
+    )
+    workflow_template_state_url = MultiKwargHyperlinkedIdentityField(
+        view_kwargs=(
+            {
+                'lookup_field': 'state__workflow_id',
+                'lookup_url_kwarg': 'workflow_template_id',
+            },
+            {
+                'lookup_field': 'state_id',
+                'lookup_url_kwarg': 'workflow_template_state_id',
+            }
+        ),
+        view_name='rest_api:workflow-template-state-detail'
+    )
+
+    class Meta:
+        fields = (
+            'action_path', 'action_data', 'condition', 'enabled', 'id',
+            'label', 'url', 'when', 'workflow_template_state_url'
+        )
+        model = WorkflowStateAction
+        read_only_fields = ('id', 'url', 'workflow_template_state_url')
 
 
 class WorkflowTransitionFieldSerializer(
@@ -154,6 +214,9 @@ class WorkflowTransitionFieldSerializer(
             'workflow_transition_url'
         )
         model = WorkflowTransitionField
+        read_only_fields = (
+            'id', 'url', 'workflow_template_url', 'workflow_transition_url'
+        )
 
 
 class WorkflowTemplateTransitionSerializer(
@@ -179,16 +242,13 @@ class WorkflowTemplateTransitionSerializer(
 
     class Meta:
         fields = (
-            'condition', 'destination_state', 'field_list_url', 'id', 'label',
-            'origin_state', 'url', 'workflow_template_url',
-
-            'destination_state_id',
-            'origin_state_id'
+            'condition', 'destination_state', 'destination_state_id',
+            'field_list_url', 'id', 'label', 'origin_state',
+            'origin_state_id', 'url', 'workflow_template_url'
         )
         model = WorkflowTransition
         read_only_fields = (
-            'destination_state', 'field_list_url', 'id', 'origin_state',
-            'url', 'workflow_template_url'
+            'field_list_url', 'id', 'url', 'workflow_template_url'
         )
 
     def create(self, validated_data):
@@ -308,6 +368,10 @@ class WorkflowInstanceLogEntrySerializer(serializers.ModelSerializer):
             'workflow_instance_url', 'workflow_template_url'
         )
         model = WorkflowInstanceLogEntry
+        read_only_fields = (
+            'datetime', 'document_url', 'id', 'transition',
+            'url', 'user', 'workflow_instance_url', 'workflow_template_url'
+        )
 
     def create(self, validated_data):
         return self.context['workflow_instance'].do_transition(
@@ -359,7 +423,7 @@ class WorkflowInstanceSerializer(serializers.ModelSerializer):
             'workflow_template_url'
         )
         model = WorkflowInstance
-        read_only_field = fields
+        read_only_fields = fields
 
     def get_document_url(self, instance):
         return reverse(

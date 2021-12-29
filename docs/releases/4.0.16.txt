@@ -1,0 +1,109 @@
+Version 4.0.16
+==============
+
+Released: September 29, 2021
+
+Status: Stable
+
+Changes
+-------
+
+Appearance
+^^^^^^^^^^
+
+An issue that caused menus to reset and collapse at random was fixed.
+
+
+Documents
+^^^^^^^^^
+
+On overload systems, document page image generation will reach the timeout
+value as display the placeholder icon for invalid images. The setting
+``CONVERTER_IMAGE_GENERATION_MAX_RETRIES`` was backported from version 4.1
+to allow changing the maximum retry value of the image generation tasks from
+a single location.
+
+Celery's maximum retry value defaults to 3, which couple with the default
+retry delay of 5 seconds means an image generation task will stop retrying
+after 15 seconds. The new settings sets this values to a default of 7 for
+estimated maximum retry time of 35 seconds per image.
+
+Automatic quoting was added to the remaining migration query parameters to
+ensure maximum compatibility with database managers.
+
+
+Documentation
+^^^^^^^^^^^^^
+
+The OCR indexing examples in the documentation were updated according to the
+document changes in version 4.0.
+
+A new chapter was added outlining the step to create a development
+deployment. The Docker image build chapter was updated to reference this new
+chapter.
+
+Instructions were added on how to use a PIP cache to speed up the Docker
+image build process.
+
+The current user is now capture and applied to the event when changing
+the active version of a document.
+
+
+Settings
+^^^^^^^^
+
+An edge situation that could cause the system restart banner to be
+triggered when a user changed their default language or timezone was
+fixed.
+
+
+Other
+^^^^^
+
+- Minor fixes merged from version 3.5.11.
+- Remove duplicated makefile targets.
+- Add keyword arguments to PIL methods.
+- Fix support link in the menu.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`1030` Replace latest_version with version_active in documentation "examples.txt"
+- :gitlab-issue:`1035` Support link is broken
+- :gitlab-issue:`1038` [s4] GUI menu refreshing every 5 seconds
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
+

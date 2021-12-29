@@ -30,7 +30,6 @@ class ModelTemplateField(TemplateField):
     def __init__(self, *args, **kwargs):
         self.model = kwargs.pop('model')
         self.model_variable = kwargs.pop('model_variable')
-        self.initial_help_text = kwargs.pop('initial_help_text', '')
         super().__init__(*args, **kwargs)
         self.help_text = format_lazy(
             '{} {}', self.initial_help_text,
@@ -43,5 +42,6 @@ class ModelTemplateField(TemplateField):
                 'variable': self.model_variable
             }
         )
-        self.widget.attrs['model'] = self.model
+        self.widget.attrs['app_label'] = self.model._meta.app_label
+        self.widget.attrs['model_name'] = self.model._meta.model_name
         self.widget.attrs['data-model-variable'] = self.model_variable

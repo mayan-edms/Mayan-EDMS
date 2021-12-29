@@ -6,19 +6,19 @@
 # Translators:
 # Roberto Rosario, 2021
 # Sergey Glita <gsv70@mail.ru>, 2021
-# lilo.panic, 2021
 # mizhgan <i@mizhgan.ru>, 2021
 # Alex Chigrin <chalex84@mail.ru>, 2021
 # OLeg Si <olegsm35@gmail.com>, 2021
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
+# lilo.panic, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"Last-Translator: lilo.panic, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,23 +26,23 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:129 permissions.py:5 settings.py:14
+#: apps.py:137 permissions.py:5 settings.py:15
 msgid "Common"
 msgstr "Общий"
 
-#: classes.py:408
+#: classes.py:409
 msgid "Model properties"
 msgstr "Свойства модели"
 
-#: classes.py:413
+#: classes.py:414
 msgid "Model fields"
 msgstr "Поля модели"
 
-#: classes.py:456
+#: classes.py:457
 msgid "Model related fields"
 msgstr "Связанные поля модели"
 
-#: classes.py:461
+#: classes.py:462
 msgid "Model reverse fields"
 msgstr "Обратные поля модели"
 
@@ -63,56 +63,56 @@ msgstr "Среда командной строки с автодополнени
 msgid "Checks proper formatting of the README file."
 msgstr "Проверяет правильность форматирования файла README."
 
-#: links.py:30
+#: links.py:29
 msgid "About this"
 msgstr "О программе"
 
-#: links.py:33
+#: links.py:32
 msgid "Get the book"
 msgstr "Купить книгу"
 
-#: links.py:38
+#: links.py:37
 msgid "Documentation"
 msgstr "Документация"
 
-#: links.py:41
+#: links.py:40
 msgid "Forum"
 msgstr "Форум"
 
-#: links.py:45 views.py:48
+#: links.py:44 views.py:48
 msgid "License"
 msgstr "Лицензия"
 
-#: links.py:50
+#: links.py:49
 msgid "Copy"
 msgstr "Копировать"
 
-#: links.py:53
+#: links.py:52
 msgid "Setup"
 msgstr "Настройки"
 
-#: links.py:56
+#: links.py:55
 msgid "Source code"
 msgstr "Исходный код"
 
-#: links.py:60
+#: links.py:59
 msgid "Online store"
 msgstr "Магазин"
 
-#: links.py:64
+#: links.py:63
 msgid "Get support"
 msgstr "Получить поддержку"
 
-#: links.py:68 queues.py:6 views.py:122
+#: links.py:67 queues.py:6 views.py:122
 msgid "Tools"
 msgstr "Инструменты"
 
-#: literals.py:19
+#: literals.py:20
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Эта функция устарела и будет удалена в будущей версии."
 
-#: literals.py:22
+#: literals.py:23
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
@@ -120,15 +120,15 @@ msgstr ""
 "В качестве базы данных задан SQLite. SQLite не должен использоваться в "
 "рабочем окружении, только для разработки и тестирования!"
 
-#: literals.py:31
+#: literals.py:32
 msgid "Days"
 msgstr "Дни"
 
-#: literals.py:32
+#: literals.py:33
 msgid "Hours"
 msgstr "Часы"
 
-#: literals.py:33
+#: literals.py:34
 msgid "Minutes"
 msgstr "Минуты"
 
@@ -164,7 +164,7 @@ msgstr "Пользователь"
 msgid "Copy object"
 msgstr "Копировать объект"
 
-#: settings.py:21
+#: settings.py:22
 msgid ""
 "In list mode, show the \"list facet\" menu options as a dropdown menu "
 "instead of individual buttons."
@@ -172,7 +172,7 @@ msgstr ""
 "В режиме списка показывать пункты меню боковой грани в виде выпадающего "
 "списка вместо отдельных кнопок."
 
-#: settings.py:29
+#: settings.py:30
 msgid ""
 "In list mode, show the \"object\" menu options as a dropdown menu instead of"
 " individual buttons."
@@ -180,15 +180,7 @@ msgstr ""
 "В режиме списка показывать пункты меню объекта в виде выпадающего списка "
 "вместо отдельных кнопок."
 
-#: settings.py:36
-msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr ""
-"Время задержки фоновых задач, зависящих от процесса распространения "
-"записанных в БД данных."
-
-#: settings.py:43
+#: settings.py:37
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -201,7 +193,7 @@ msgstr ""
 "(предпочтительно) или пакету, содержащему приложение. Пример: ['app_1', "
 "'app_2']"
 
-#: settings.py:53
+#: settings.py:47
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -214,7 +206,16 @@ msgstr ""
 "(предпочтительно) или пакету, содержащему приложение. Пример: ['app_1', "
 "'app_2']"
 
-#: settings.py:63
+#: settings.py:58
+msgid ""
+"A list of strings designating all applications that are installed beyond "
+"those normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. These apps will be installed before the default "
+"apps. Example: ['app_1', 'app_2']"
+msgstr ""
+
+#: settings.py:69
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
@@ -223,11 +224,15 @@ msgstr ""
 "также представление, на которое пользователи будут перенаправлены после "
 "входа в систему."
 
-#: settings.py:70
+#: settings.py:78
+msgid "Name of the dashboard to display in the home view."
+msgstr ""
+
+#: settings.py:83
 msgid "Sets the project's name."
 msgstr "Устанавливает название проекта."
 
-#: settings.py:74
+#: settings.py:87
 msgid "URL of the project's homepage."
 msgstr "URL домашней страницы проекта."
 
@@ -239,15 +244,15 @@ msgstr "Предупреждение"
 msgid "Click here to fix this."
 msgstr "Щелкните здесь, чтобы исправить это."
 
-#: validators.py:41
+#: validators.py:40
 msgid "Enter a valid JSON value."
 msgstr "Введите допустимое JSON-значение."
 
-#: validators.py:65
+#: validators.py:64
 msgid "Enter a valid YAML value."
 msgstr "Введите допустимое YAML-значение."
 
-#: validators.py:81
+#: validators.py:80
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
@@ -260,8 +265,8 @@ msgid "About"
 msgstr "О программе"
 
 #: views.py:39
-msgid "Dashboard"
-msgstr "Дашборд"
+msgid "Home"
+msgstr "Начало"
 
 #: views.py:62
 #, python-format

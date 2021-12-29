@@ -1,5 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.authentication.link_conditions import condition_user_is_authenticated
 from mayan.apps.navigation.classes import Link
 
 from ..icons import (
@@ -18,6 +19,7 @@ def condition_not_is_in_favorites(context, resolved_object):
 
 
 link_document_favorites_list = Link(
+    condition=condition_user_is_authenticated,
     icon=icon_favorite_document_list, text=_('Favorites'),
     view='documents:document_favorite_list'
 )

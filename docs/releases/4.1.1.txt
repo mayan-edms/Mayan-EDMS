@@ -1,0 +1,92 @@
+Version 4.1.1
+=============
+
+Released: October 26, 2021
+
+Status: Stable
+
+Changes
+-------
+
+
+Appearance
+^^^^^^^^^^
+
+The sidebar menu heading display logic was improved. In some views and
+with some specific combination of objects, link headings were sometimes
+not shown. This was fixed for all reported cases.
+
+Some HTML markup left over by a merge in the server error dialog window was
+removed.
+
+The X style close button for the server error dialog breaks the visual
+pattern of the rest of the dialogs and was removed.
+
+
+Converter
+^^^^^^^^^
+
+The layer exclusion error caused by the asset image generation in version 4.1
+was fixed.
+
+
+Docker
+^^^^^^
+
+The variables ``COMPOSE_PROJECT_NAME`` and ``COMPOSE_PROFILES`` were moved
+to the correct file, the ``.env`` file.
+
+
+Other
+^^^^^
+
+- Merged fixes and improvements from versions 4.0.17 and 4.0.18.
+- Update PIP from version 21.2.4 to 21.3.1.
+- Remove MySQL upgrade CD/CI testing pipeline stage until support is properly
+  re-implemented for version 8.0.
+- Add CD/CI triggers for local testing.
+- Exclude all migration tests by tagging automatically at the
+  ``MayanMigratorTestCase`` subclass definition.
+- Support multiple environments per dependency.
+- Update the ``wheel`` library to be a dependency of the ``build`` and the
+  ``documentation`` environments to workaround a bug in PIP that causes
+  ``"error: invalid command 'bdist_wheel'"``.
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`1047` Multiple issues with Asset generation
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

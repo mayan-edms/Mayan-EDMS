@@ -1,0 +1,158 @@
+Version 4.1.3
+=============
+
+Released: November 2, 2021
+
+Status: Stable
+
+Changes
+-------
+
+
+Appearance
+^^^^^^^^^^
+
+The copying of the bootstrap alert style was fixed. Alert styles now change
+when the theme changes.
+
+The copying of the bootstrap alert style was optimized by executing it only
+in the root template. This runs the code just once instead of running it
+on each page refresh. The element ``#div-javascript-dynamic-content`` was
+also removed and it is now created and destroyed dynamically once just.
+
+
+Converter
+^^^^^^^^^
+
+An asset duplication bug in the percent coordinate transformation was fixed.
+
+The ``cache_hash`` method of the ``Transformation`` class was split to
+allow subclasses to modify how the cache hash is calculated.
+
+The asset transformations now include the image hash as part of the
+transformation hash calculation. This change allows automatic invalidation
+of all cached document images that use an asset if the asset image is
+modified.
+
+The way the absolute coordinates of the percentage asset paste transformation
+were calculated has been updated to more closely reflect the purpose of the
+transformation. Minimum (0) or maximum (100) coordinate values does not cause
+the asset to clip outside of the image borders anymore.
+
+
+Navigation
+^^^^^^^^^^
+
+The order in which link conditional display functions are evaluated was
+updated to ensure that the ``resolved_object`` variable is injected into
+the context before passing the context to the link's ``check_condition``
+function. While not reproduced, this code path was suspected to cause a user
+interface issue with navigation links for a group of users.
+
+
+Platform
+^^^^^^^^
+
+The Sentry client backend received some updates to increase its usefulness.
+More SDK options were added. Sentry options are now typecasted from Mayan
+settings to ensure proper data types.
+
+Celery and Redis instrumentation integration was added to the Sentry client
+backend.
+
+The default value of ``traces_sample_rate`` option was lowered from 1 to
+0.25. This value is better suited for production deployments. Increase to 1
+for full debug information capture during development or testing.
+
+
+Sources
+^^^^^^^
+
+Several staging folder source fixes and patches were merged. Staging
+folders now use ``StreamingHttpResponse`` to serve previews bringing image
+processing to the same level as the rest of the code. Code optimizations and
+simplification were also merged which include better image cache
+utilization and removal of a potential file descriptor leak.
+
+Staging folders can now generate previews for office document files.
+
+The source backend base class now does not assume all source backends provide
+an upload form. This expands the usability of the new source backend system
+introduced in version 4.1 to more stylwe of document sources.
+
+A bug that prevented the SANE scanner source backend to work properly was
+fixed. The error handling of the SANE scanner source was also improved.
+
+Error logging of non interactive sources was also fixed.
+
+
+Vagrant
+^^^^^^^
+
+The development Vagrant setup was improved. The virtual machine deployment
+script now loads all values from the root ``config.env`` file. This ensures
+that the virtual machine is generated using the same libraries,
+dependencies and paths as the Docker image.
+
+The version of the ``Supervisord`` program is now updated automatically.
+
+The way APT and PIP proxies are configured was updated to match how they
+are processed in the rest of the code base. This allows a single proxy
+configuration to work with all build methods.
+
+A makefile was added to aid in working with the Vagrant setup.
+
+
+Other
+^^^^^
+
+- The devpi targets were moved to the main makefile to allow them to be used
+  by all the build methods.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`1053` Paste an asset (percents coordinates) transformation duplicates asset
+
+
+Issues addressed
+----------------
+
+- :gitlab-issue:`1049` [4.1] Front End: Source ACL server error.
+- :gitlab-issue:`1050` [4.1] Workflow State Action "Http request to node API": document.id missing
+- :gitlab-issue:`1052` KeyError after upgrade to 4.1.2
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

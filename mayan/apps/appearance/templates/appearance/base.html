@@ -17,7 +17,8 @@
          */
         document.write('<script type="text/undefined">')
         const currentPath = window.location.pathname + window.location.search;
-        window.location = '/#' + currentPath;
+        {% smart_setting "ORGANIZATIONS_URL_BASE_PATH" as base_url %}
+        window.location = '/{{ base_url|default:"" }}#' + currentPath;
     }
 </script>
 
@@ -31,9 +32,9 @@
     {% block content_plain %}{% endblock %}
 {% else %}
     <div class="">
-        {% navigation_resolve_menus names='facet,list facet,related,return,sources' sort_results=True as facet_menus_link_results %}
+        {% navigation_resolve_menus names='facet,list facet,related,return,sources' sort_results=True as sidebar_menus_link_results %}
         <div class="row zero-margin">
-            <div class="col-xs-12 {% if facet_menus_link_results %}has-sidebar{% endif %}" id="viewport">
+            <div class="col-xs-12 {% if sidebar_menus_link_results %}has-sidebar{% endif %}" id="viewport">
                 <div class="row zero-margin">
                     <div class="col-xs-12">
                         {% block messages %}
@@ -43,7 +44,7 @@
                     </div>
                 </div>
 
-                {% include 'appearance/calculate_form_title.html' %}
+                {% include 'appearance/partials/form_title.html' %}
 
                 {# action menu #}
                 {% navigation_resolve_menus names='object,secondary' sort_results=True as action_menus_link_results %}
@@ -58,32 +59,36 @@
                 {% block footer %}{% endblock %}
             </div>
 
-            {% if facet_menus_link_results %}
+            {% if sidebar_menus_link_results %}
                 <div id="sidebar">
-                    <div class="list-group">
-                        {% for menu_link_result in facet_menus_link_results %}
+                    <ul class="list-group">
+                        {% for menu_link_result in sidebar_menus_link_results %}
                             {% for link_group in menu_link_result.link_groups %}
-                                {% if menu_link_result.menu.name not in 'facet,list facet'|split:"," %}
-                                    <li class="dropdown-header">{{ menu_link_result.menu.label }}</li>
-                                {% else %}
-                                    {% ifchanged link_group.object %}
-                                        {% common_get_object_verbose_name obj=link_group.object as link_group_object_verbose_name %}
-                                        <li class="dropdown-header">{% if link_group_object_verbose_name %}{{ link_group_object_verbose_name }}{% else %}{% trans 'Object' %}{% endif %}</li>
-                                    {% endifchanged %}
+                                {% if menu_link_result|length > 1 %}
+                                    {% if menu_link_result.menu.name not in 'facet,list facet'|split:"," %}
+                                        <li class="dropdown-header">{{ menu_link_result.menu.label }}</li>
+                                    {% else %}
+                                        {% ifchanged link_group.object %}
+                                            {% common_get_object_verbose_name obj=link_group.object as link_group_object_verbose_name %}
+                                            <li class="dropdown-header">{% if link_group_object_verbose_name %}{{ link_group_object_verbose_name }}{% else %}{% trans 'Object' %}{% endif %}</li>
+                                        {% endifchanged %}
+                                    {% endif %}
                                 {% endif %}
 
                                 {% with link_group.links as object_navigation_links %}
                                 {% with 'true' as hide_active_anchor %}
                                 {% with 'active' as link_class_active %}
                                 {% with 'list-group-item btn-sm' as link_classes %}
+                                {% with 'true' as as_li %}
                                     {% include 'navigation/generic_navigation.html' %}
+                                {% endwith %}
                                 {% endwith %}
                                 {% endwith %}
                                 {% endwith %}
                                 {% endwith %}
                             {% endfor %}
                         {% endfor %}
-                    </div>
+                    </ul>
                 </div>
             {% endif %}
         </div>
@@ -109,7 +114,7 @@
             {% endfor %}
         ];
 
-        afterBaseLoad(djangoMessages);
+        app.afterBaseLoad({'djangoMessages': djangoMessages});
     });
 </script>
 {% endspaceless %}

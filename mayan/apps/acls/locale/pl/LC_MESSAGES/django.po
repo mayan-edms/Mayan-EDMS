@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # mic <winterfall24@gmail.com>, 2021
@@ -9,22 +9,20 @@
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
 # Marcin Lozynski <mlozynski@wp.pl>, 2021
 # Tomasz Szymanowicz <alakdae@gmail.com>, 2021
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-14 05:16+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:12+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
-"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:26 classes.py:175 links.py:27
 msgid "ACLs"
@@ -112,11 +110,11 @@ msgstr "Edytuj listy ACL"
 msgid "View ACLs"
 msgstr "Przeglądaj listy ACL"
 
-#: serializers.py:125
+#: serializers.py:120
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
 
-#: serializers.py:132
+#: serializers.py:127
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
 
@@ -139,11 +137,11 @@ msgstr "Nowe listy ACL dla: %s"
 msgid "Delete ACL: %s"
 msgstr "Usuń listę ACL: %s"
 
-#: views.py:139
+#: views.py:141
 msgid "There are no ACLs for this object"
 msgstr "Brak listy ACL dla tego objektu"
 
-#: views.py:142 views.py:259
+#: views.py:144 views.py:261
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
@@ -154,25 +152,25 @@ msgstr ""
 "przyznanie uprawnienia do roli, ale tylko dla określonego obiektu lub "
 "zestawu obiektów."
 
-#: views.py:149
+#: views.py:151
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "Listy ACL dla: %s"
 
-#: views.py:163
+#: views.py:165
 msgid "Granted permissions"
 msgstr "Przyznane uprawnienia"
 
-#: views.py:164
+#: views.py:166
 msgid "Available permissions"
 msgstr "Dostępne uprawnienia"
 
-#: views.py:208
+#: views.py:210
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr "Rola \"%(role)s\" uprawnienia dla \"%(object)s\"."
 
-#: views.py:217
+#: views.py:219
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -183,11 +181,11 @@ msgstr ""
 "dla roli i nie mogą być usunięte w tym widoku. Dziedziczone prawa muszą być "
 "usunięte z listy ACL obiektu rodzica lub z roli w menu Ustawień."
 
-#: views.py:256
+#: views.py:258
 msgid "There are no ACLs"
 msgstr ""
 
-#: views.py:265
+#: views.py:267
 msgid "Global access control lists"
 msgstr ""
 
@@ -204,7 +202,8 @@ msgid "Object ID"
 msgstr "ID obiektu"
 
 #: workflow_actions.py:35
-msgid "Numeric identifier of the object for which the access will be modified."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
 msgstr ""
 "Numeryczny identyfikator obiektu, dla którego dostęp zostanie zmodyfikowany."
 

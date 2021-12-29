@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
 "Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -31,7 +31,7 @@ msgstr "Duplicati"
 msgid "Duplicate backend"
 msgstr ""
 
-#: classes.py:91
+#: classes.py:90
 msgid "Null backend"
 msgstr "Backend nullo"
 

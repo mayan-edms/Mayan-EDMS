@@ -1,8 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import serializers
-
 from mayan.apps.common.serializers import ContentTypeSerializer
+from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import MultiKwargHyperlinkedIdentityField
 
 from ..models.document_version_models import DocumentVersion
@@ -62,7 +61,8 @@ class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
         )
         model = DocumentVersion
         read_only_fields = (
-            'document_url', 'export_url', 'id', 'page_list_url', 'url'
+            'document_url', 'export_url', 'id', 'page_list_url',
+            'timestamp', 'url'
         )
 
 

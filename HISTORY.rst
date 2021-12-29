@@ -1,4 +1,297 @@
-4.1 (2021-XX-XX)
+4.2 (2022-XX-XX)
+================
+- Update Django to version 3.2.8.
+- Update django-widget-tweaks from version 1.4.8 to 1.4.9.
+- File staging sources updates:
+
+  - Use ``StreamingHttpResponse`` to serve previews.
+  - Support office document files for preview.
+  - Fix extra brackets in the encoded and cached filenames.
+  - Simplify image generation.
+  - Use context manager to ensure preview images are always closed.
+
+- Hide all links that depend on users being authenticated.
+- Add support for return binary content in batch API requests as a base64
+  string.
+- Add support for dynamic field API serialization. This feature adds the
+  URL query keys ``_fields_only`` and ``_fields_exclude``. Nested serializers
+  are supported using the double underscore (``__``) separator.
+- Refactor ``ResolverRelatedManager``.
+- Move Docker templates to their own folder.
+- Move the ``docker-dockerfile-update`` target to the Docker makefile.
+- Update Docker image tags:
+
+  - Postgresq from 10.18-alpine to 12.9-alpine.
+  - Python from 3.8-slim to 3.11-slim.
+
+- Update psycopg2 from version 2.8.6 to 2.9.2.
+- Update redis client from version 3.5.3 to 4.0.2.
+- Reduce the Sentry client default ``traces_sample_rate`` from 0.25 to 0.05.
+- Add the ``run_initialsetup_or_performupgrade`` command to the Docker
+  entrypoint.
+- Docker Compose updates:
+
+  - Add a Redis profile.
+  - Default to RabbitMQ a broker.
+  - Change default RabbitMQ image from 3.9-alpine to 3.9-management-alpine.
+  - Improve Traefik configuration.
+  - Add a dedicated network for Traefik.
+
+- Completed the Whoosh backend and made it the default search backend.
+
+    - Ensure all test models are deleted, including intermediate many
+      to many models created automatically.
+    - Update ``DetailForm`` usage for the new interface.
+    - Move `flatten_list` to the common app.
+    - ResolverPipeline updates:
+
+      - Support ``resolver_extra_kwargs``.
+      - Add queryset exclusion support to ``ResolverRelatedManager``.
+
+    - Update related field resolution using pure Django
+    - Solve all search indexing edge cases.
+    - Models are indexed using smaller tasks to improve scalability.
+    - Refactor ``ResolverRelatedManager``. Use Django's internal
+      ``get_fields_from_path`` for related field introspection.
+      Support more related field cases.
+    - Trigger indexing on related model changes
+    - Fix lock manager management command test.
+    - Don't index `None` values in lists.
+    - Unify the search test mixins.
+    - Use ``TemporaryDirectory`` for test search backend. Do automatic
+      clean up of the temporary index directory.
+    - Remove the separate related model index signal handlers.
+    - Make Whoosh the default search backend.
+    - Support reverse many to many indexing.
+    - Add indexing optimizations.
+    - Rename methods for clarity.
+    - Move the ``any_to_bool`` function to the common app.
+
+- Update base image from Debian 10.10-slim to 11.1-slim.
+- Move the ``parse_range`` utility from the documents app to the common app.
+- Retry Whoosh LockErrors by encapsulating then in the general app exception
+  ``DynamicSearchRetry``.
+- Added the ``search_index_objects`` management command to trigger the
+  queuing of search models from the CLI.
+- Added the ``search_status`` management command to show indexing status of
+  the search backend.
+- Move SQLite check to the databases app.
+- Add support for inclusion and exclusion regular expressions for watch
+  folders. Closes GitLab issue #965. Thanks to Sven Gaechter (@sgaechter)
+  for the request.
+- MIME type app updates:
+
+  - Add support for MIME type detection backends.
+  - Add PERL ``mimetype`` backend.
+  - Add Linux ``file`` command backend.
+  - Rename ``mimetype`` app to ``mime_types``.
+
+- Add a search backend for Elastic Search.
+- Search app updates:
+
+  - Support initializing the search backends.
+  - Add method to reset backends.
+  - Moved ``get_resolved_field_map`` and ``get_search_model_fields`` to the
+    ``SearchBackend`` class.
+  - Normalize true values for scope 0 ``match_all``.
+  - Added a new task ``task_reindex_backend`` to abstract backend reindexing.
+  - Add constant maximum retries value to the ``task_deindex_instance`` and
+    ``task_index_instance`` tasks.
+  - Add ranged search model indexing.
+  - Add the ``search_slow`` queue for long running search tasks.
+  - Support backend initialization, reset, and tear down.
+  - Automatically add the ``id`` field as a search field for all search
+    models.
+  - Separate backend initialization from app initialization.
+
+- Add Elasticsearch test container makefile targets.
+- Unify the files ``.env`` and ``env_file``.
+- Switch all standalone containers to use a ``prefetch-multiplier`` of ``1``.
+- Change the Docker Compose network name from ``bridge`` to ``mayan``.
+- Add the ``search_initialize`` and ``search_upgrade`` management commands.
+  These are called automatically after the initial setup and after upgrades.
+- Add new search settings called ``SEARCH_INDEXING_CHUNK_SIZE`` to set the
+  number of objects to prepare when performing bulk indexing.
+- Metadata validation and parsing updates:
+
+  - Expand the parser and validator path fields to 224 characters.
+  - Add automatic registration of parsers and validators.
+  - Add support for passing arguments to parsers and validators.
+  - Add a regular expression parser to replace values and a regular
+    expression validator.
+
+- Authentication refactor:
+
+  - Subclass Django's authentication views to add multi form and multi factor
+    authentication.
+  - Add support for authentication backends. Authentication backends are
+    able to control and customize the entire log in process, including
+    the forms presented to the user. Authentication backends can use mixins
+    and can be subclasses to mix and expand their capabilities.
+    Included authentication mixins: ``AuthenticationBackendRememberMeMixin``
+    Included authentication backends:
+    ``AuthenticationBackendModelUsernamePassword``,
+    ``AuthenticationBackendEmailPassword``.
+    Apps define authentication backends in the module
+    ``authentication_backends.py`` which is automatically loaded at startup.
+  - Removed the now unused``EmailAuthBackend`` class.
+
+4.1.4 (2021-12-01)
+==================
+- Changes merged from versions 4.0.20 and 4.0.21.
+
+  - Perform more strict cleanup of test models.
+  - Clean up the test model app config cache after the test
+    end not before the test model is created.
+  - Improve lock manager test cases.
+  - Add standalone Celery beat container.
+
+- Fix document version first page thumbnail image resolution.
+  Closes GitLab issue #1063. Thanks to Will Wright (@fireatwill)
+  for the report and the patch.
+- Add libjpeg and libpng to the dev setup target.
+- Fix editing OCR content via the API.
+- Fix the ``AdvancedSearchViewTestCaseMixin`` class. It had
+  ``GenericViewTestCase`` as a base class when it is supposed to be a mixin
+  and not have any.
+- Add ``AutoHelpTextLabelFieldMixin``. This mixin tries to extract the
+  label and help text from the model field when the serializer field does
+  not specify any.
+- Add filtering to the ``parent`` field of the index template node
+  serializers. Restrict options to the current index template and allows
+  removing the now redundant validation.
+- Add ``index_template_root_node_id`` field to the index template
+  serializer. Closes GitLab issue #1061. Thanks to
+  Ludovic Anterieur(@lanterieur) for the report and initial implementation.
+- Fix responsive menu close button triggering home navigation. Closes
+  GitLab issue #1057. Thanks to Raimar Sandner (@PiQuer) for the report and
+  debug information.
+- JavaScript optimizations:
+
+  - Cache argument length when in ``.fn.hasAnyClass``.
+  - Configure fancybox just once.
+  - Set converter image functions as ``async``.
+  - Remove jQuery's ``one`` usage.
+
+- Remove the error logger model locking and cache the model value instead
+  at the time of registration. Closes GitLab issue #1065. Thanks to
+  Will Wright (@fireatwill) for the report and debug information.
+- Rename ``ErrorLog`` model to ``StoredErrorLog``. This change follow the
+  normal paradigm when a service is provided by a model and a runtime class.
+- Make the ``StoredErrorLog`` name field unique to ensure ``get_or_create``
+  works in an atomic way.
+- Create the error log partition when the model instance is created.
+- Normalize the error log partition name format using a static method.
+- Delete the error log partition on model instance deletion and not just the
+  error log partition entries.
+- Ensure a memory database is used when running the tests.
+
+4.1.3 (2021-11-02)
+==================
+- Vagrant updates
+
+  - Load installation value from ``config.env`` file.
+  - Update supervisord during installation.
+  - Setup the APT proxy during installation.
+  - Change how APT and PIP proxies are defined to match the Docker build
+    target.
+  - Add makefile for vagrant.
+  - Move devpi targets to the main makefile.
+
+- Sentry client backend updates:
+
+  - Add more SDK options.
+  - Add typecasting to options.
+  - Add debug logging.
+  - Add Celery integration.
+  - Add Redis Integration.
+  - Lower the default value of ``traces_sample_rate`` from 1 to 0.25.
+    This value is better suited for production deployments. Increase to 1
+    for full debug information capture during development or testing.
+
+- File staging sources updates:
+
+  - Use ``StreamingHttpResponse`` to serve previews.
+  - Support previews for office document files.
+  - Fix extra brackets in the encoded and cached filenames.
+  - Simplify image generation.
+  - Use context manager to ensure preview images are always closed.
+
+- Sources app updates:
+
+  - Don't assume all source backends provide an upload form.
+  - Improve SANE scanner error handling.
+  - Fix logging of non interactive source errors.
+  - Show interactive source processing as a message.
+
+- Fix the copying of the bootstrap alert style.
+- Optimize the copying of the boostrap alert style by executing it only
+  in the root template. This runs the code just once instead of running it
+  on each page refresh. The element ``#div-javascript-dynamic-content`` was
+  also remove and it is now created and destroyed dynamically once just.
+- Ensure that the ``resolved_object`` is injected into the context before
+  passing the context to the link's ``check_condition`` method. Suspected
+  cause of the GitLab issue #1052 and #1049. Thanks to Ludovic Anterieur
+  (@lanterieur) and Johannes Bornhold (@joh5) for the reports and debug
+  information.
+- Converter updates:
+
+  - Fix duplicate asset display. Closes GitLab issue #1053. Thanks to
+    Ryan Showalter (@ryanshow) for the report.
+  - Split the transformation ``cache_hash`` method to allow subclasses to
+    modify how the cache hash is calculated.
+  - Include the asset image hash into the asset transformation hash
+    calculation. This change invalidates all cached page images that
+    use an asset if the asset image is modified.
+  - Improve the way the absolute coordinates of the percentage asset paste
+    transformation are calculated.
+
+- Use redirection instead of the ``output_file`` argument to allow the SANE
+  scanner source to work with more SANE scanner versions.
+
+4.1.2 (2021-10-27)
+==================
+- Don't insert the value ``ORGANIZATIONS_URL_BASE_PATH`` in the path
+  then it is ``None``.
+- Fix ``ModelTemplateField`` not displaying the ``initial_help_text``
+  for the specific usage instance. The ``initial_help_text`` was
+  being removed from the ``kwargs`` in the ``ModelTemplateField``
+  as well as the super class.
+- Workflows improvements.
+
+  - Use the templating widget for the workflow document properties
+    modification and the HTTP request actions.
+  - Consolidate the workflow action help text.
+
+- Fix issue when attempting to create a Document version page OCR update
+  workflow action. Instead of the model class, the template form field now
+  passes the ``app_label`` and the ``model_name`` of the model via the
+  widget attributes to avoid Django's attribute template to attempt
+  getting a string representation of the model.
+
+4.1.1 (2021-10-26)
+==================
+- Move Docker Compose variables to the correct file. Move
+  ``COMPOSE_PROJECT_NAME`` and ``COMPOSE_PROFILES`` to the
+  .env file.
+- Fix asset image generation. Closes GitLab issue #1047 for series 4.1.
+  Thanks to Ryan Showalter (@ryanshow) for the report and debug information.
+- Improve sidebar menu heading display logic.
+- Fix leftover HTML markup in the server error dialog window.
+- Remove redundant close button for the server error dialog window.
+- Merged fixes and improvements from versions 4.0.17 and 4.0.18.
+- Update PIP from version 21.2.4 to 21.3.1.
+- Remove MySQL upgrade CD/CI testing pipeline stage until support is properly
+  re-implemented for version 8.0.
+- Add CD/CI triggers for local testing.
+- Exclude all migration tests by tagging automatically at the
+  ``MayanMigratorTestCase`` subclass definition.
+- Support multiple environments per dependency.
+- Update the ``wheel`` library to be a dependency of the ``build`` and the
+  ``documentation`` environments to workaround a bug in PIP that causes
+  ``"error: invalid command 'bdist_wheel'"``.
+
+4.1 (2021-10-10)
 ================
 - Add support for editing the document version page OCR content.
   Closes GitLab issue #592. Thanks for Martin (@efelon) for the
@@ -17,15 +310,16 @@
   - Perform code reduction. Remove PseudoFile and SourceUploaded
     classes. Each source backend is now responsible for providing
     a list of shared uploaded files.
-  - Multiform improvements:
 
-    - Support multi form extra kwargs.
-    - Move the dynamic part of the multi form method to the end
-      of the name.
-    - Add a white horizontal ruler to separate the form
-      instances.
+- Multiform improvements:
 
-- Consolidate the image generation task
+  - Support multi form extra kwargs.
+  - Move the dynamic part of the multi form method to the end
+    of the name.
+  - Add a white horizontal ruler to separate the form
+    instances.
+
+- Consolidate the image generation task:
 
   - Remove document file, version, converter asset, and workflow template
     preview image generation.
@@ -118,7 +412,7 @@
   - cropperjs from 1.4.1 to 1.5.2
   - jquery-cropper from 1.0.0 to 1.0.1
   - django-cors-headers from 3.2.1 to 3.8.0
-  - djangorestframework from 3.11.2 to 3.12.2
+  - djangorestframework from 3.11.2 to 3.12.4
   - drf-yasg from 1.17.1 to 1.20.0
   - swagger-spec-validator from 2.5.0 to 2.7.3
   - dropzone from 5.7.2 to 5.9.2
@@ -132,6 +426,7 @@
   - tox from 3.23.1 to 3.24.3
   - psutil from 5.7.0 to 5.80
   - furl from 2.1.0 to 2.1.2
+  - django-test-migrations from 0.3.0 to 1.1.0
 
 - Launch workflows when the type of the document is changed. Closes GitLab
   issue #863 "Start workflows when changing document type", thanks to
@@ -233,7 +528,7 @@
     level. The 'objects' manager for these model returns the unfiltered
     queryset.
   - Trashed document delete API now returns a 202 code instead of 204. The
-    delete method now runs in the background in the same was as the trashed
+    delete method now runs in the background in the same way as the trashed
     document delete view works in the UI. The return code was updated to
     reflect this internal change.
   - Track the user for the trashed document delete, restore and for the
@@ -325,6 +620,205 @@
 - Don't trigger the settings change flag on user language changes.
 - Add settings to allow changing the default and the maximums
   REST API page size.
+- Add support for service client backends to the platform app.
+- Add Sentry.io service client backend.
+- Support overriding form buttons.
+- Improve metadata type form tab order. Disables metadata type name field
+  to skip them during tabbing.
+- Support step rewinding for the sources wizard.
+- Add support for recoding email Message ID. The email source can now record
+  an email Message ID from the header as it is processed into a documents.
+  All documents created from the same email will have the same Message ID.
+  Thanks to forum user qra (@qra) for the request.
+
+- Improve `BaseBackend` class
+
+  - Add deterministic parent base backend class detection.
+  - Register backend class only to their respective parent base
+    backend classes.
+
+- Render main menu icons properly. The change in
+  bbbb92edb85f192987fdfb4efc574bd79221b6ed removed literal CSS icon
+  support. A single reference to the old CSS icon render was left behind
+  which cause the icon object Python memory location to be rendered
+  inline with the menu HTML. This cause the same menu to have different
+  hashes when rendered by the different Gunicorn workers. Solved GitLab
+  issue #1038. Thanks to Ludovic Anterieur (@lanterieur) for the report.
+- Add setting to change the menu polling interval. Values specified in
+  milliseconds. Use `None` to disable.
+- Enforce ``CONVERTER_IMAGE_GENERATION_MAX_RETRIES`` setting and add logging
+  message when the maximum retires are exhausted.
+- Messaging app updates:
+
+  - Add API views.
+  - Exclude superusers and staff users from being message recipients.
+  - Add dedicated create message form.
+  - Use Select2 for the user selection field.
+  - Add message edit permission. This permission is required in order to
+    change the message read status.
+
+- Add ``get_absolute_api_url`` method to download files, document versions
+  and users. These URL are used to determine the message sender's API URL.
+- Test view mixin updates:
+
+  - Add a default ordering to the ``TestModel`` to silence warning.
+  - Fix ``TestModel.save()`` method.
+  - Support multiple test views per test case.
+  - Allow subclasses to supply their own ``urlpatterns``.
+  - Support passing arguments to ``add_test_view``.
+
+- Add batch API request support.
+- Adjust event registrations:
+
+  - Register cabinet document add and remove events to the Document model too.
+  - Register document file parsing events to the Document model too.
+  - Rename label of the document parsed content deleted event.
+  - Replace the ``DownloadFile`` content object registration from the
+    ``Document`` model to the ``DocumentVersion`` model.
+  - Register the document file created, edited events to the ``Document``
+    model too.
+  - Register the document version created, edited events to the ``Document``
+    model too.
+  - Register the document trashed event to the ``Document`` model too.
+  - Remove the document file created event from the ``DocumentFile`` model.
+  - Remove the document version created event from the ``DocumentVersion``
+    model.
+  - Register the document version page deleted event to the
+    ``DocumentVersion`` model.
+  - Remove the document version page deleted event from the
+    ``DocumentVersionPage`` model.
+  - Register the tag attached, removed events to the ``Document`` model too.
+  - Register the web link navigated event to the ``Document`` model too.
+  - Remove the document version page OCR edited event from the ``Document``
+    model.
+  - Register the document version OCR submitted, finished, content deleted
+    events to the ``DocumentVersion`` model.
+
+- Sort object and list facet links when using the list item view.
+- Rename environment variable ``MAYAN_GUNICORN_JITTER`` to
+  ``MAYAN_GUNICORN_REQUESTS_JITTER``.
+- Support changing the operating system user when creating the supervisord
+  file using the environment variable ``MAYAN_OS_USERNAME``.
+- Reorder the Gunicorn arguments.
+- Make the ``DJANGO_SETTINGS_MODULE`` environment variable an alias of
+  ``MAYAN_SETTINGS_MODULE`` in the supervisord file.
+- Add ``MAYAN_GUNICORN_TEMPORARY_DIRECTORY`` to the gunicorn invocation in
+  the ``run_frontend.sh`` batch file.
+- Frontend updates:
+
+  - Ensure list groups use <ul> and <li> instead of plain <div>.
+  - Move ``mayan_image.js`` to the converter app.
+  - Update ``afterBaseLoad`` to work by defining a list of callbacks. This
+    allows defining callbacks from different apps.
+  - Set JavaScript callbacks and setup method to run in async mode.
+  - Move static inline app CSS to individual CSS files.
+- Fix workflow template API description text. Closes GitLab issue #1042.
+  Thanks to Ludovic Anterieur (@lanterieur) for the report.
+- Add document template state action API endpoints. Closes GitLab issue #1043
+  Thanks to Ludovic Anterieur (@lanterieur) for the request.
+- Pin jsonschema to version 3.2.0 to avoid errors with
+
+4.0.21 (2021-11-29)
+===================
+- Perform more strict cleanup of test models.
+- Clean up the test model app config cache after the test
+  end not before the test model is created.
+- Improve lock manager test cases.
+- Add standalone Celery beat container.
+- Backport transformation ``cache_hash`` method split.
+  Moved to two functions to allow subclasses to modify
+  how the cache hash is calculated.
+- Backport asset image cache invalidation.
+- Backport asset duplication fix.
+- Backport asset percentage position calculation fix.
+- Add an explicit default value for ``MEDIA_URL``. Ensures forward
+  compatibility with future login dependency versions.
+- Move meta tags to their own partial template.
+- Add libjpeg and libpng to the dev setup target.
+
+4.0.20 (2021-11-08)
+===================
+- Use overlay2 driver when using Docker in Docker
+  in the GitLab CD/CI stages.
+- Update gevent from version 20.4.0 to 21.8.0.
+- Update gunicorn from version 20.0.4 to 20.1.0.
+- Add more explicit serializer read only fields.
+
+4.0.19 (2021-10-27)
+===================
+- Backported fixes from version 4.1.2:
+
+  - ``ORGANIZATIONS_URL_BASE_PATH`` null value fix.
+  - Fix ``ModelTemplateField`` not displaying the ``initial_help_text``.
+
+4.0.18 (2021-10-21)
+===================
+- Add settings to allow changing the default and the maximum
+  REST API page size.
+- Ensure ``ORGANIZATIONS_URL_BASE_PATH`` is applied to properly
+  trigger the root SPA template. Closes merge request !91. Thanks
+  to Foo Bar(@stuxxn) for the original patch.
+- Add support for setting validation.
+- Validate the format of the ``ORGANIZATIONS_URL_BASE_PATH``
+  setting.
+- Smart setting test updates:
+
+  - Add smart setting validation tests.
+  - Add setting view tests.
+  - Separate namespace and setting tests and mixins.
+
+- Add MySQL workaround for unique document version activation added to
+  migration documents 0067 in version 4.0.17.
+
+4.0.17 (2021-10-18)
+===================
+- Backport workaround for swagger-spec-validator dependency
+  bug. Pin jsonschema to version 3.2.0 to avoid errors with
+  swagger-spec-validator 2.7.3. swagger-spec-validator does not specify a
+  version for jsonschema
+  (https://github.com/Yelp/swagger_spec_validator/blob/master/setup.py#L17),
+  which installs the latest version 4.0.1. This version removes
+  ``jsonschema.compat`` still used by swagger-spec-validator.
+- Add ``project_url`` to the Python setup file.
+- Add support for ``COMMON_EXTRA_APPS_PRE``. This setting works
+  like ``COMMON_EXTRA_APPS`` but installs the new apps before the default
+  apps. This allows the extra apps to override templates and other system
+  data.
+- Fix usage of ``.user.has_usable_password``. Use as a method not a flag.
+  Fixes the `Change Password` link appearing even when using external
+  authentication.
+- Support blank app URL namespaces. These are used to register the
+  ``urlpatterns`` of encapsulated libraries as top level named URLs.
+- Add a stacked Font Awesome icon class.
+- Ensure ``MAYAN_GUNICORN_TEMPORARY_DIRECTORY`` is exported and available to
+  ``supervisord``.
+- Always change the owner of ``/var/lib/mayan/``. Ensure that the ``mayan``
+  operating system user can always read and write from and to the mounted
+  volume.
+- Fix asset image caching. Closes GitLab issue #1047 for series 4.0.
+  Thanks to Ryan Showalter (@ryanshow) for the report and debug information.
+- Expand help text of ``ORGANIZATIONS_INSTALLATION_URL`` and
+  ``ORGANIZATIONS_URL_BASE_PATH`` settings. GitLab issue #1045. Thanks to
+  bw (@bwakkie) for the report.
+- Create the ``user_settings`` folder on upgrades too.
+- Improve initial setup folder creation error logic. Add keyword arguments.
+  Use storages app ``touch`` function.
+- Ensure only one document version is active when migrating from version 3.5.
+  Forum topic 9430. Thanks to forum user @woec for the report.
+
+4.0.16 (2021-09-29)
+===================
+- Minor fixes merged from version 3.5.11.
+- Remove duplicated makefile targets.
+- Add keyword arguments to PIL methods.
+- Quote parameters of remaining migration query.
+- Track user when setting a version active.
+- Fix menus randomly closing on refresh.
+- Don't trigger the settings change flag on user language changes.
+- Backport setting `CONVERTER_IMAGE_GENERATION_MAX_RETRIES`.
+  This setting allows changing the image generation task maximum
+  retry count. Celery's built in default value is 3, this setting
+  increases that default to 7.
 
 4.0.15 (2021-08-07)
 ===================

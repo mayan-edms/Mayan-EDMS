@@ -46,6 +46,10 @@ class DocumentUploadInteractiveView(ExternalObjectViewMixin, UploadBaseView):
                     data={'error': force_text(s=message)}, status=500
                 )
             else:
+                messages.error(
+                    message=message.replace('\n', ' '),
+                    request=self.request
+                )
                 raise type(exception)(message)
         else:
             messages.success(

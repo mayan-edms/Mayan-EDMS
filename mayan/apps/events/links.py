@@ -1,6 +1,7 @@
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.authentication.link_conditions import condition_user_is_authenticated
 from mayan.apps.navigation.classes import Link
 from mayan.apps.navigation.utils import get_content_type_kwargs_factory
 
@@ -46,6 +47,7 @@ def get_unread_notification_count(context):
 
 
 link_current_user_events = Link(
+    condition=condition_user_is_authenticated,
     icon=icon_current_user_events, text=_('My events'),
     view='events:current_user_events'
 )
@@ -92,6 +94,7 @@ link_events_list_export = Link(
     view='events:events_list_export'
 )
 link_event_types_subscriptions_list = Link(
+    condition=condition_user_is_authenticated,
     icon=icon_event_types_subscriptions_list,
     text=_('Event subscriptions'),
     view='events:event_types_user_subscriptions_list'
@@ -112,6 +115,7 @@ link_object_event_types_user_subscriptions_list = Link(
 )
 link_user_notifications_list = Link(
     badge_text=get_unread_notification_count,
+    condition=condition_user_is_authenticated,
     icon=icon_user_notifications_list, text='',
     view='events:user_notifications_list'
 )

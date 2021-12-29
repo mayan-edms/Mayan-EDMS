@@ -13,6 +13,6 @@ class TagFormWidget(forms.SelectMultiple):
             selected=selected, subindex=subindex, value=value
         )
 
-        result['attrs']['data-color'] = self.choices.queryset.get(pk=value).color
+        result['attrs']['data-color'] = value.instance.color
 
         return result

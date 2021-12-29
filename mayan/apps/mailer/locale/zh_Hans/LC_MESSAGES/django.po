@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: bo feng <87289884@qq.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -22,11 +22,11 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:37
+#: apps.py:48
 msgid "Mailer"
 msgstr "邮件程序"
 
-#: classes.py:80
+#: classes.py:54
 msgid "Null backend"
 msgstr "空后端"
 
@@ -38,105 +38,114 @@ msgstr "邮件"
 msgid "Email sent"
 msgstr "邮件已发送"
 
-#: forms.py:60 forms.py:120
+#: forms.py:58 forms.py:93
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon."
 msgstr "收件人的电子邮件地址。可以是以逗号或分号分隔的多个地址。"
 
-#: forms.py:62 forms.py:122
+#: forms.py:60 forms.py:95
 msgid "Email address"
 msgstr "电子邮件地址"
 
-#: forms.py:64 workflow_actions.py:72
+#: forms.py:62 workflow_actions.py:74
 msgid "Subject"
 msgstr "主题"
 
-#: forms.py:66 workflow_actions.py:81
+#: forms.py:64 workflow_actions.py:83
 msgid "Body"
 msgstr "正文"
 
-#: forms.py:70
+#: forms.py:68
 msgid "The email profile that will be used to send this email."
 msgstr "将用于发送此电子邮件的电子邮件配置文件。"
 
-#: forms.py:71 models.py:56 views.py:216 workflow_actions.py:18
+#: forms.py:69 models.py:57 views/mailing_profile_views.py:120
+#: workflow_actions.py:19
 msgid "Mailing profile"
 msgstr "邮件配置文件"
 
-#: forms.py:77
+#: forms.py:75
 msgid "The driver to use when sending emails."
 msgstr "发送电子邮件时使用的驱动程序。"
 
-#: forms.py:78 models.py:70
+#: forms.py:76
 msgid "Backend"
 msgstr "后端"
 
-#: links.py:20 links.py:28
-msgid "Email document"
-msgstr "电子邮件文档"
+#: links.py:33 links.py:36
+msgid "Email document link"
+msgstr ""
 
-#: links.py:25 links.py:32
-msgid "Email link"
-msgstr "电子邮件链接"
+#: links.py:46 links.py:51
+msgid "Email document file"
+msgstr ""
 
-#: links.py:38
+#: links.py:57 links.py:62
+msgid "Email document file link"
+msgstr ""
+
+#: links.py:72 links.py:77
+msgid "Email document version"
+msgstr ""
+
+#: links.py:83
+msgid "Email document version link"
+msgstr ""
+
+#: links.py:88
+msgid "Email link version"
+msgstr ""
+
+#: links.py:97
 msgid "Create mailing profile"
 msgstr ""
 
-#: links.py:44
+#: links.py:103
 msgid "Delete"
 msgstr "删除"
 
-#: links.py:48
+#: links.py:107
 msgid "Edit"
 msgstr "编辑"
 
-#: links.py:54
+#: links.py:113
 msgid "Mailing profiles list"
 msgstr "邮件配置文件列表"
 
-#: links.py:58 models.py:57
+#: links.py:117 models.py:58
 msgid "Mailing profiles"
 msgstr "邮件配置文件"
 
-#: links.py:63 views.py:240
+#: links.py:122 views/mailing_profile_views.py:144
 msgid "Test"
 msgstr "测试"
 
-#: literals.py:5
+#: literals.py:7
 #, python-format
 msgid ""
-"Attached to this email is the document: {{ document }}\n"
+"Attached to this email is the {{ object_name }}: {{ object }}\n"
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr ""
-"该电子邮件附有以下文件：{{document}}\n"
-"\n"
-" --------\n"
-" 此电子邮件地址是%(project_title)s（%(project_website)s）"
-
-#: literals.py:9
-msgid "Document: {{ document }}"
-msgstr "文档：{{document}}"
 
 #: literals.py:11
+msgid "{{ object_name }}: {{ object }}"
+msgstr ""
+
+#: literals.py:13
 #, python-format
 msgid ""
-"To access this document click on the following link: {{ link }}\n"
+"To access this {{ object_name }} click on the following link: {{ link }}\n"
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr ""
-"要访问此文档，请单击以下链接：{{link}}\n"
-"\n"
-"--------\n"
-" 此电子邮件地址是%(project_title)s（%(project_website)s）"
 
-#: literals.py:15
-msgid "Link for document: {{ document }}"
-msgstr "文档链接：{{document}}"
+#: literals.py:17
+msgid "Link for {{ object_name }}: {{ object }}"
+msgstr ""
 
 #: mailers.py:19 mailers.py:108
 msgid "From"
@@ -222,79 +231,87 @@ msgstr "文件路径"
 msgid "Django file based backend"
 msgstr "基于Django文件的后端"
 
-#: models.py:33
+#: models.py:34
 msgid "A short text describing the mailing profile."
 msgstr ""
 
-#: models.py:34
+#: models.py:35
 msgid "Label"
 msgstr "标签"
 
-#: models.py:38
+#: models.py:39
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
 msgstr "如果是默认值，则会在文档邮件表单上预先选择此邮件配置文件。"
 
-#: models.py:40
+#: models.py:41
 msgid "Default"
 msgstr "默认"
 
-#: models.py:42
+#: models.py:43
 msgid "Enabled"
 msgstr "启用"
 
-#: models.py:45
+#: models.py:46
 msgid "The dotted Python path to the backend class."
 msgstr ""
 
-#: models.py:46
+#: models.py:47
 msgid "Backend path"
 msgstr "后端路径"
 
-#: models.py:49
+#: models.py:50
 msgid "Backend data"
 msgstr "后端数据"
 
-#: models.py:71
-msgid "The backend class for this entry."
-msgstr ""
-
-#: models.py:239
+#: models.py:221
 msgid "Test email from Mayan EDMS"
 msgstr "测试来自Mayan EDMS的电子邮件"
 
-#: permissions.py:8
-msgid "Send document link via email"
-msgstr "通过电子邮件发送文档链接"
-
-#: permissions.py:11
-msgid "Send document via email"
-msgstr "通过电子邮件发送文档"
-
-#: permissions.py:14
+#: permissions.py:10
 msgid "Create a mailing profile"
 msgstr "创建邮件配置文件"
 
-#: permissions.py:17
+#: permissions.py:13
 msgid "Delete a mailing profile"
 msgstr "删除邮件配置文件"
 
-#: permissions.py:20
+#: permissions.py:16
 msgid "Edit a mailing profile"
 msgstr "编辑邮件配置文件"
 
-#: permissions.py:23
+#: permissions.py:19
 msgid "View a mailing profile"
 msgstr "查看邮件配置文件"
 
-#: permissions.py:26
+#: permissions.py:22
 msgid "Use a mailing profile"
 msgstr "使用邮件配置文件"
 
+#: permissions.py:28
+msgid "Send document link via email"
+msgstr "通过电子邮件发送文档链接"
+
+#: permissions.py:34
+msgid "Send document file via email"
+msgstr ""
+
+#: permissions.py:38
+msgid "Send document file link via email"
+msgstr ""
+
+#: permissions.py:45
+msgid "Send document version via email"
+msgstr ""
+
+#: permissions.py:49
+msgid "Send document version link via email"
+msgstr ""
+
 #: queues.py:11
-msgid "Send document"
-msgstr "发送文档"
+msgid "Send object"
+msgstr ""
 
 #: settings.py:15
 msgid "Template for the document email form subject line."
@@ -317,125 +334,163 @@ msgstr "文档链接电子邮件表单正文文本的模板。可以包含HTML�
 msgid "%(email)s is not a valid email address."
 msgstr "%(email)s不是有效的电子邮件地址。"
 
-#: views.py:40
+#: views/base.py:65
+msgid "Document file"
+msgstr ""
+
+#: views/document_file_views.py:17
 #, python-format
-msgid "%(count)d document queued for email delivery"
-msgstr "%(count)d文档排队等待电子邮件递送"
+msgid "%(count)d document file queued for email delivery"
+msgstr ""
 
-#: views.py:42
+#: views/document_file_views.py:19
 #, python-format
-msgid "%(count)d documents queued for email delivery"
-msgstr "%(count)d文档排队等待电子邮件递送"
+msgid "%(count)d document files queued for email delivery"
+msgstr ""
 
-#: views.py:53
-msgid "Send"
-msgstr "发送"
+#: views/document_file_views.py:31
+#, python-format
+msgid "%(count)d document file link queued for email delivery"
+msgstr ""
 
-#: views.py:102
+#: views/document_file_views.py:34
+#, python-format
+msgid "%(count)d document file links queued for email delivery"
+msgstr ""
+
+#: views/document_version_views.py:18
+#, python-format
+msgid "%(count)d document version queued for email delivery"
+msgstr ""
+
+#: views/document_version_views.py:21
+#, python-format
+msgid "%(count)d document versions queued for email delivery"
+msgstr ""
+
+#: views/document_version_views.py:33
+#, python-format
+msgid "%(count)d document version link queued for email delivery"
+msgstr ""
+
+#: views/document_version_views.py:36
+#, python-format
+msgid "%(count)d document version links queued for email delivery"
+msgstr ""
+
+#: views/document_views.py:14
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr "%(count)d文档链接排队等待电子邮件递送"
 
-#: views.py:104
+#: views/document_views.py:16
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr "%(count)d文档链接排队等待电子邮件递送"
 
-#: views.py:113
+#: views/mailing_profile_views.py:29
 msgid "New mailing profile backend selection"
 msgstr "新的邮件配置文件后端选择"
 
-#: views.py:145
+#: views/mailing_profile_views.py:61
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "创建“%s”邮件配置文件"
 
-#: views.py:172
+#: views/mailing_profile_views.py:82
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "删除邮件配置文件：%s"
 
-#: views.py:184
+#: views/mailing_profile_views.py:94
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "编辑邮件配置文件：%s"
 
-#: views.py:211
+#: views/mailing_profile_views.py:115
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
 msgstr ""
 
-#: views.py:215
+#: views/mailing_profile_views.py:119
 msgid "No mailing profiles available"
 msgstr "没有可用的邮件配置文件"
 
-#: views.py:232
+#: views/mailing_profile_views.py:136
 msgid "Test email sent."
 msgstr ""
 
-#: views.py:241
+#: views/mailing_profile_views.py:145
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "测试邮件配置文件：%s"
 
-#: workflow_actions.py:20
+#: workflow_actions.py:22
 msgid "Mailing profile to use when sending the email."
 msgstr ""
 
-#: workflow_actions.py:25
+#: workflow_actions.py:27
 msgid "Recipient"
 msgstr ""
 
-#: workflow_actions.py:28
+#: workflow_actions.py:30
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon. A template can be used to reference properties of the "
 "document."
 msgstr ""
 
-#: workflow_actions.py:36
+#: workflow_actions.py:38
 msgid "CC"
 msgstr ""
 
-#: workflow_actions.py:39 workflow_actions.py:51
+#: workflow_actions.py:41 workflow_actions.py:53
 msgid ""
 "Address used in the \"Bcc\" header when sending the email. Can be multiple "
 "addresses separated by comma or semicolon. A template can be used to "
 "reference properties of the document."
 msgstr ""
 
-#: workflow_actions.py:48
+#: workflow_actions.py:50
 msgid "BCC"
 msgstr ""
 
-#: workflow_actions.py:60
+#: workflow_actions.py:62
 msgid "Reply to"
 msgstr ""
 
-#: workflow_actions.py:63
+#: workflow_actions.py:65
 msgid ""
 "Address used in the \"Reply-To\" header when sending the email. Can be "
 "multiple addresses separated by comma or semicolon. A template can be used "
 "to reference properties of the document."
 msgstr ""
 
-#: workflow_actions.py:75
+#: workflow_actions.py:77
 msgid "Subject of the email. Can be a string or a template."
 msgstr ""
 
-#: workflow_actions.py:84
+#: workflow_actions.py:86
 msgid "Body of the email to send. Can be a string or a template."
 msgstr ""
 
-#: workflow_actions.py:90
+#: workflow_actions.py:93 workflow_actions.py:170
 msgid "Attachment"
 msgstr ""
 
-#: workflow_actions.py:93
-msgid "Attach the document to the mail."
+#: workflow_actions.py:96
+msgid "Attach an object to the email."
 msgstr ""
 
-#: workflow_actions.py:102
-msgid "Send email"
+#: workflow_actions.py:105
+msgid "Send object via email"
 msgstr ""
+
+#: workflow_actions.py:173
+msgid "Attach the exported document version to the email."
+msgstr ""
+
+#: workflow_actions.py:182
+msgid "Send document via email"
+msgstr "通过电子邮件发送文档"

@@ -125,7 +125,7 @@ class BaseTransformation(metaclass=BaseTransformationType):
             setattr(self, argument_name, kwargs.get(argument_name))
             self.kwargs[argument_name] = kwargs.get(argument_name)
 
-    def cache_hash(self):
+    def _update_hash(self):
         result = hashlib.sha256(force_bytes(s=self.name))
 
         # Sort arguments for guaranteed repeatability.
@@ -133,7 +133,10 @@ class BaseTransformation(metaclass=BaseTransformationType):
             result.update(force_bytes(s=key))
             result.update(force_bytes(s=value))
 
-        return force_bytes(s=result.hexdigest())
+        return result
+
+    def cache_hash(self):
+        return force_bytes(s=self._update_hash().hexdigest())
 
     def execute_on(self, image):
         self.image = image
@@ -148,7 +151,26 @@ class AssetTransformationMixin:
         )
         return arguments
 
-    def get_asset_images(self, asset_name):
+    def _update_hash(self):
+        result = super()._update_hash()
+        asset = self.get_asset()
+        result = hashlib.sha256(force_bytes(s=asset.get_hash()))
+        return result
+
+    def get_asset(self):
+        asset_name = getattr(self, 'asset_name', None)
+
+        Asset = apps.get_model(app_label='converter', model_name='Asset')
+
+        try:
+            asset = Asset.objects.get(internal_name=asset_name)
+        except Asset.DoesNotExist:
+            logger.error('Asset "%s" not found.', asset_name)
+            raise
+        else:
+            return asset
+
+    def get_asset_images(self):
         try:
             transparency = float(self.transparency or '100.0')
         except ValueError:
@@ -169,40 +191,34 @@ class AssetTransformationMixin:
         except ValueError:
             zoom = 100.0
 
-        Asset = apps.get_model(app_label='converter', model_name='Asset')
+        asset = self.get_asset()
 
-        try:
-            asset = Asset.objects.get(internal_name=asset_name)
-        except Asset.DoesNotExist:
-            logger.error('Asset "%s" not found.', asset_name)
-            raise
-        else:
-            image_asset = asset.get_image()
+        image_asset = asset.get_image()
 
-            if image_asset.mode != 'RGBA':
-                image_asset.putalpha(alpha=255)
+        if image_asset.mode != 'RGBA':
+            image_asset.putalpha(alpha=255)
 
-            image_asset = image_asset.rotate(
-                angle=360 - rotation, resample=Image.BICUBIC,
-                expand=True
+        image_asset = image_asset.rotate(
+            angle=360 - rotation, resample=Image.BICUBIC,
+            expand=True
+        )
+
+        if zoom != 100.0:
+            decimal_value = zoom / 100.0
+            image_asset = image_asset.resize(
+                size=(
+                    int(image_asset.size[0] * decimal_value),
+                    int(image_asset.size[1] * decimal_value)
+                ), resample=Image.ANTIALIAS
             )
 
-            if zoom != 100.0:
-                decimal_value = zoom / 100.0
-                image_asset = image_asset.resize(
-                    size=(
-                        int(image_asset.size[0] * decimal_value),
-                        int(image_asset.size[1] * decimal_value)
-                    ), resample=Image.ANTIALIAS
-                )
+        paste_mask = image_asset.getchannel(channel='A').point(
+            lambda i: i * transparency / 100.0
+        )
 
-            paste_mask = image_asset.getchannel(channel='A').point(
-                lambda i: i * transparency / 100.0
-            )
-
-            return {
-                'image_asset': image_asset, 'paste_mask': paste_mask
-            }
+        return {
+            'image_asset': image_asset, 'paste_mask': paste_mask
+        }
 
 
 class TransformationAssetPaste(AssetTransformationMixin, BaseTransformation):
@@ -227,7 +243,7 @@ class TransformationAssetPaste(AssetTransformationMixin, BaseTransformation):
             align_horizontal = getattr(self, 'align_horizontal', 'left')
             align_vertical = getattr(self, 'align_vertical', 'top')
 
-            result = self.get_asset_images(asset_name=asset_name)
+            result = self.get_asset_images()
             if result:
                 if align_horizontal == 'left':
                     left = left
@@ -261,9 +277,7 @@ class TransformationAssetPastePercent(TransformationAssetPaste):
     label = _('Paste an asset (percents coordinates)')
     name = 'paste_asset_percent'
 
-    def execute_on(self, *args, **kwargs):
-        super().execute_on(*args, **kwargs)
-
+    def _execute_on(self, *args, **kwargs):
         try:
             left = float(self.left or '0')
         except ValueError:
@@ -286,12 +300,18 @@ class TransformationAssetPastePercent(TransformationAssetPaste):
         if top > 100:
             top = 100
 
-        self.left = left / 100.0 * self.image.size[0]
-        self.top = top / 100.0 * self.image.size[1]
-        self.align_horizontal = 'center'
-        self.align_vertical = 'middle'
+        result = self.get_asset_images()
 
-        return self._execute_on(self, *args, **kwargs)
+        self.left = left / 100.0 * (
+            self.image.size[0] - result['image_asset'].size[0]
+        )
+        self.top = top / 100.0 * (
+            self.image.size[1] - result['image_asset'].size[1]
+        )
+        self.align_horizontal = 'left'
+        self.align_vertical = 'top'
+
+        return super()._execute_on(self, *args, **kwargs)
 
 
 class TransformationAssetWatermark(
@@ -329,7 +349,7 @@ class TransformationAssetWatermark(
         asset_name = getattr(self, 'asset_name', None)
 
         if asset_name:
-            result = self.get_asset_images(asset_name=asset_name)
+            result = self.get_asset_images()
             if result:
                 try:
                     horizontal_increment = int(self.horizontal_increment or '0')

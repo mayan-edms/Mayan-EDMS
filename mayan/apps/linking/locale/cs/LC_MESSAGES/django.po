@@ -6,14 +6,15 @@
 # Translators:
 # Jiri Fait <fait@orkasolutions.cz>, 2021
 # Michal Švábík <snadno@lehce.cz>, 2021
+# trendspotter <jirka.p@volny.cz>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:26+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,12 +26,12 @@ msgstr ""
 msgid "Linking"
 msgstr "Propojení"
 
-#: apps.py:94 models.py:29
+#: apps.py:100 models.py:29
 msgid "Label"
 msgstr "Jmenovka"
 
 #: events.py:6 links.py:24 links.py:75 links.py:80 links.py:85 models.py:48
-#: permissions.py:5 views.py:191
+#: permissions.py:5 views.py:147
 msgid "Smart links"
 msgstr "Chytré odkazy"
 
@@ -62,7 +63,7 @@ msgstr "Upravit"
 msgid "Conditions"
 msgstr "Podmínky"
 
-#: links.py:50 views.py:227
+#: links.py:50 views.py:248
 msgid "Create new smart link"
 msgstr "Vytvořit nový chytrý odkaz"
 
@@ -158,11 +159,11 @@ msgstr ""
 msgid "Dynamic label"
 msgstr "Dynamický štítek"
 
-#: models.py:37 models.py:186
+#: models.py:37 models.py:188
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: models.py:47 models.py:164
+#: models.py:47 models.py:166
 msgid "Smart link"
 msgstr "Chytrý odkaz"
 
@@ -175,19 +176,19 @@ msgstr "Chyba při generování dynamického štítku; %s"
 msgid "This smart link is not allowed for the selected document's type."
 msgstr "Tento chytrý odkaz není povolen pro typ vybraného dokumentu."
 
-#: models.py:168
+#: models.py:170
 msgid "The inclusion is ignored for the first item."
 msgstr "Zahrnutí se u první položky ignoruje."
 
-#: models.py:172
+#: models.py:174
 msgid "This represents the metadata of all other documents."
 msgstr "To představuje metadata všech ostatních dokumentů."
 
-#: models.py:173
+#: models.py:175
 msgid "Foreign document attribute"
 msgstr "Atribut cizího dokumentu"
 
-#: models.py:178
+#: models.py:180
 msgid ""
 "The expression using document properties to be evaluated against the foreign"
 " document field."
@@ -195,101 +196,81 @@ msgstr ""
 "Výraz používající vlastnosti dokumentu, které má být vyhodnoceny proti poli "
 "cizího dokumentu."
 
-#: models.py:180
+#: models.py:182
 msgid "Expression"
 msgstr "Výraz"
 
-#: models.py:183
+#: models.py:185
 msgid "Inverts the logic of the operator."
 msgstr "Obrací logiku operátora."
 
-#: models.py:184
+#: models.py:186
 msgid "Negated"
 msgstr "Vyloučeno"
 
-#: models.py:189
+#: models.py:191
 msgid "Link condition"
 msgstr "Podmínka odkazu"
 
-#: models.py:190
+#: models.py:192
 msgid "Link conditions"
 msgstr "Podmínky odkazu"
 
-#: models.py:206
+#: models.py:208
 msgid "not"
 msgstr "ne"
 
-#: models.py:210
+#: models.py:212
 msgid "Full label"
 msgstr "Úplný štítek"
 
 #: permissions.py:8
+msgid "View resolved smart links"
+msgstr ""
+
+#: permissions.py:11
 msgid "Create new smart links"
 msgstr "Vytvářit nové chytré odkazy"
 
-#: permissions.py:11
+#: permissions.py:14
 msgid "Delete smart links"
 msgstr "Smazat chytré odkazy"
 
-#: permissions.py:14
+#: permissions.py:17
 msgid "Edit smart links"
 msgstr "Upravit chytré odkazy"
 
-#: permissions.py:17
+#: permissions.py:20
 msgid "View existing smart links"
 msgstr "Zobrazit existující chytré odkazy"
 
-#: serializers.py:52
+#: serializers.py:49
 msgid "Primary key of the document type to add to the smart link."
 msgstr ""
 
-#: serializers.py:61
+#: serializers.py:58
 msgid "Primary key of the document type to remove from the smart link."
 msgstr ""
+"Primární klíč typu dokumentu, který chcete odebrat z inteligentního odkazu."
 
-#: views.py:41
-msgid "Available smart links"
-msgstr "Dostupné chytré odkazy"
-
-#: views.py:42
-msgid "Smart links enabled"
-msgstr "Chytré odkazy jsou povoleny"
-
-#: views.py:68
+#: views.py:65
 #, python-format
-msgid "Smart links to enable for document type: %s"
-msgstr "Chytré odkazy pro povolení typu dokumentu: %s"
-
-#: views.py:103
-#, python-format
-msgid "Smart link query error: %s"
-msgstr "Chyba dotazu chytrého odkazu: %s"
-
-#: views.py:114
-#, python-format
-msgid "Documents in smart link: %s"
-msgstr "Dokumenty v chytrém odkazu: %s"
-
-#: views.py:117
-#, python-format
-msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgid "Resolved smart link query error: %s"
 msgstr ""
-"Dokumenty v inteligentním odkazu „%(smart_link)s“ ve vztahu k „%(document)s“"
 
-#: views.py:153
-msgid "Available document types"
-msgstr "Dostupné typy dokumentů"
-
-#: views.py:154
-msgid "Document types enabled"
-msgstr "Typy dokumentů povoleny"
-
-#: views.py:164
+#: views.py:92
 #, python-format
-msgid "Document type for which to enable smart link: %s"
-msgstr "Typ dokumentu, pro který chcete povolit chytré propojení: %s"
+msgid "Resolved smart link dynamic label error: %s"
+msgstr ""
 
-#: views.py:182
+#: views.py:97
+#, python-format
+msgid ""
+"Documents in resolved smart link \"%(resolved_smart_link)s\" for "
+"\"%(document)s\""
+msgstr ""
+
+#: views.py:138
 msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
@@ -299,11 +280,11 @@ msgstr ""
 "stejných nebo podobných typů. Chytré odkazy umožňují definovat vztahy mezi "
 "dokumenty, i když jsou v různých rejstřících a jsou různého typu."
 
-#: views.py:189
+#: views.py:145
 msgid "There are no smart links"
 msgstr "Neexistují žádné chytré odkazy"
 
-#: views.py:207
+#: views.py:166
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
@@ -311,26 +292,52 @@ msgstr ""
 "Chytré odkazy umožňují definovat vztahy mezi dokumenty, i když jsou v "
 "různých indexech a jsou různého typu."
 
-#: views.py:212
-msgid "There are no smart links for this document"
-msgstr "Pro tento dokument neexistují žádné chytré odkazy"
+#: views.py:171
+msgid "There are no resolved smart links for this document"
+msgstr ""
 
-#: views.py:215
+#: views.py:175
 #, python-format
-msgid "Smart links for document: %s"
-msgstr "Chytré odkazy pro dokument: %s"
+msgid "Resolved smart links for document: %s"
+msgstr ""
 
-#: views.py:249
+#: views.py:191
+msgid "Available smart links"
+msgstr "Dostupné chytré odkazy"
+
+#: views.py:192
+msgid "Smart links enabled"
+msgstr "Chytré odkazy jsou povoleny"
+
+#: views.py:218
+#, python-format
+msgid "Smart links to enable for document type: %s"
+msgstr "Chytré odkazy pro povolení typu dokumentu: %s"
+
+#: views.py:231
+msgid "Available document types"
+msgstr "Dostupné typy dokumentů"
+
+#: views.py:232
+msgid "Document types enabled"
+msgstr "Typy dokumentů povoleny"
+
+#: views.py:242
+#, python-format
+msgid "Document type for which to enable smart link: %s"
+msgstr "Typ dokumentu, pro který chcete povolit chytré propojení: %s"
+
+#: views.py:270
 #, python-format
 msgid "Delete smart link: %s"
 msgstr "Smazat chytrý odkaz: %s"
 
-#: views.py:265
+#: views.py:286
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Upravit chytrý odkaz: %s"
 
-#: views.py:290
+#: views.py:311
 msgid ""
 "Conditions are small logic units that when combined define how the smart "
 "link will behave."
@@ -338,25 +345,25 @@ msgstr ""
 "Podmínky jsou malé logické jednotky, které při kombinaci definují chování "
 "chytrého odkazu."
 
-#: views.py:294
+#: views.py:315
 msgid "There are no conditions for this smart link"
 msgstr "Pro tento chytrý odkaz neexistují žádné podmínky"
 
-#: views.py:298
+#: views.py:319
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr "Podmínky pro chytrý odkaz: %s"
 
-#: views.py:317
+#: views.py:338
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Přidejte nové podmínky chytrému odkazu: \"%s\""
 
-#: views.py:350
+#: views.py:371
 #, python-format
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "Odstranit podmínku chytrého odkazu: \"%s\"?"
 
-#: views.py:376
+#: views.py:397
 msgid "Edit smart link condition"
 msgstr "Upravit podmínku chytrého odkazu"

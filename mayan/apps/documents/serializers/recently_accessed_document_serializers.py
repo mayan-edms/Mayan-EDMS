@@ -1,5 +1,4 @@
-from rest_framework import serializers
-
+from mayan.apps.rest_api import serializers
 from mayan.apps.user_management.serializers import UserSerializer
 
 from ..models.recently_accessed_document_models import RecentlyAccessedDocument

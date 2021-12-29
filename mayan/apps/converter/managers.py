@@ -20,8 +20,8 @@ class LayerTransformationManager(models.Manager):
         only_stored_layer=None, user=None
     ):
         """
-        as_classes == True returns the transformation classes from .classes
-        ready to be feed to the converter class
+        as_classes == True returns the transformation classes from
+        `.classes` ready to be feed to the converter class.
         """
         Layer.update()
 

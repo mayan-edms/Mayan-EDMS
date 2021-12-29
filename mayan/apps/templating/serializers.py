@@ -1,4 +1,4 @@
-from rest_framework import serializers
+from mayan.apps.rest_api import serializers
 
 
 class AJAXTemplateSerializer(serializers.Serializer):

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-12-01 12:17+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
@@ -20,11 +20,11 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:25 settings.py:12
+#: apps.py:23 settings.py:12
 msgid "Storage"
 msgstr "Skladište"
 
-#: apps.py:59
+#: apps.py:56
 msgid "Source object"
 msgstr ""
 
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Name of the storage to process."
 msgstr ""
 
-#: model_mixins.py:13 models.py:115
+#: model_mixins.py:13 models.py:119
 msgid "Filename"
 msgstr "Naziv datoteke"
 
@@ -90,11 +90,11 @@ msgstr "Naziv datoteke"
 msgid "Date time"
 msgstr "Datum vreme"
 
-#: model_mixins.py:48
+#: model_mixins.py:70
 msgid "Unnamed file"
 msgstr ""
 
-#: models.py:42 models.py:112
+#: models.py:42 models.py:116
 msgid "File"
 msgstr "Datoteka"
 
@@ -110,11 +110,11 @@ msgstr "Permisija"
 msgid "Download file"
 msgstr ""
 
-#: models.py:121
+#: models.py:125
 msgid "Shared uploaded file"
 msgstr "Deljeni otpremljeni fajl"
 
-#: models.py:122 storages.py:36
+#: models.py:126 storages.py:36
 msgid "Shared uploaded files"
 msgstr "Deljeni otpremljeni fajlovi"
 

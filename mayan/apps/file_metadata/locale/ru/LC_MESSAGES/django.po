@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-05 04:46+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -27,24 +27,24 @@ msgstr ""
 msgid "Label"
 msgstr "Заголовок"
 
-#: apps.py:48 events.py:6 links.py:17 permissions.py:5 queues.py:7
+#: apps.py:51 events.py:6 links.py:19 permissions.py:5 queues.py:7
 #: settings.py:12
 msgid "File metadata"
 msgstr "Метаданные файла"
 
-#: apps.py:98 search.py:11 search.py:22 search.py:33
+#: apps.py:102 search.py:11 search.py:22 search.py:33
 msgid "File metadata key"
 msgstr "Ключ метаданных файла"
 
-#: apps.py:102 search.py:15 search.py:26 search.py:37
+#: apps.py:106 search.py:15 search.py:26 search.py:37
 msgid "File metadata value"
 msgstr "Значение метаданных файла"
 
-#: apps.py:129
+#: apps.py:134
 msgid "Return the value of a specific file metadata."
 msgstr "Возвращает значение метаданных конкретного файла."
 
-#: apps.py:130
+#: apps.py:135
 msgid "File metadata value of"
 msgstr "Значение метаданных файла"
 
@@ -66,19 +66,19 @@ msgstr "Файл документа отправлен на обработку �
 msgid "Document file file metadata processing finished"
 msgstr "Обработка метаданных файла документа завершена"
 
-#: links.py:23
+#: links.py:25
 msgid "Attributes"
 msgstr "Атрибуты"
 
-#: links.py:30 links.py:35
+#: links.py:32 links.py:37
 msgid "Submit for file metadata"
 msgstr "Обработать метаданные файла"
 
-#: links.py:42
+#: links.py:47
 msgid "Setup file metadata"
 msgstr "Настройки метаданных файла"
 
-#: links.py:47
+#: links.py:52
 msgid "File metadata processing per type"
 msgstr "Обработать метаданные файла указанного типа"
 

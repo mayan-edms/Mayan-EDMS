@@ -45,8 +45,9 @@ from .dashboard_widgets import (
 # Documents
 
 from .events import (
-    event_document_created, event_document_edited, event_document_viewed,
-    event_trashed_document_deleted, event_trashed_document_restored
+    event_document_created, event_document_edited, event_document_trashed,
+    event_document_viewed, event_trashed_document_deleted,
+    event_trashed_document_restored
 )
 
 # Document files
@@ -208,6 +209,7 @@ class DocumentsApp(MayanAppConfig):
     app_namespace = 'documents'
     app_url = 'documents'
     has_rest_api = True
+    has_static_media = True
     has_tests = True
     name = 'mayan.apps.documents'
     verbose_name = _('Documents')
@@ -245,6 +247,9 @@ class DocumentsApp(MayanAppConfig):
         FavoriteDocument = self.get_model(
             model_name='FavoriteDocument'
         )
+        FavoriteDocumentProxy = self.get_model(
+            model_name='FavoriteDocumentProxy'
+        )
         RecentlyAccessedDocument = self.get_model(
             model_name='RecentlyAccessedDocument'
         )
@@ -275,7 +280,7 @@ class DocumentsApp(MayanAppConfig):
         )
         link_decorations_list.text = _('Decorations')
 
-        DownloadFile.objects.register_content_object(model=Document)
+        DownloadFile.objects.register_content_object(model=DocumentVersion)
 
         DynamicSerializerField.add_serializer(
             klass=Document,
@@ -330,15 +335,23 @@ class DocumentsApp(MayanAppConfig):
 
         ModelEventType.register(
             model=Document, event_types=(
-                event_document_edited, event_document_type_changed,
-                event_document_file_deleted, event_document_version_deleted,
-                event_document_viewed, event_trashed_document_restored
+                event_document_edited,
+                event_document_type_changed,
+                event_document_file_created,
+                event_document_file_edited,
+                event_document_file_deleted,
+                event_document_version_created,
+                event_document_version_edited,
+                event_document_version_deleted,
+                event_document_viewed,
+                event_document_trashed,
+                event_trashed_document_restored
             )
         )
         ModelEventType.register(
             model=DocumentFile, event_types=(
-                event_document_file_created, event_document_file_downloaded,
-                event_document_file_edited
+                event_document_file_downloaded,
+                event_document_file_edited,
             )
         )
         ModelEventType.register(
@@ -357,16 +370,15 @@ class DocumentsApp(MayanAppConfig):
         )
         ModelEventType.register(
             model=DocumentVersion, event_types=(
-                event_document_version_created,
                 event_document_version_edited,
                 event_document_version_exported,
-                event_document_version_page_created
+                event_document_version_page_created,
+                event_document_version_page_deleted
             )
         )
         ModelEventType.register(
             model=DocumentVersionPage, event_types=(
-                event_document_version_page_deleted,
-                event_document_version_page_edited
+                event_document_version_page_edited,
             )
         )
 
@@ -562,6 +574,17 @@ class DocumentsApp(MayanAppConfig):
             label=_('Pages'), include_label=True, order=-8, source=Document
         )
 
+        # FavoriteDocumentProxy
+
+        SourceColumn(
+            func=lambda context: context['object'].favorites.get(
+                user=context['request'].user
+            ).datetime_added, include_label=True, is_sortable=True,
+            label=_('Date and time added'), name='datetime_added',
+            sort_field='favorites__datetime_added',
+            source=FavoriteDocumentProxy
+        )
+
         # RecentlyAccessedDocument
 
         SourceColumn(
@@ -738,13 +761,13 @@ class DocumentsApp(MayanAppConfig):
 
         # Document
 
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(link_document_preview,), sources=(Document,), position=0
         )
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(link_document_properties,), sources=(Document,), position=2
         )
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
             links=(
                 link_document_file_list, link_document_version_list
             ), sources=(Document,), position=2

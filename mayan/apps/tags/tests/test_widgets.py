@@ -10,7 +10,9 @@ from mayan.apps.documents.search import (
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentViewTestMixin
-from mayan.apps.dynamic_search.tests.mixins import SearchViewTestMixin
+from mayan.apps.dynamic_search.tests.mixins import (
+    SearchTestMixin, SearchViewTestMixin
+)
 
 from ..permissions import permission_tag_view
 
@@ -18,7 +20,8 @@ from .mixins import TagTestMixin
 
 
 class DocumentTagHTMLWidgetTestCase(
-    DocumentViewTestMixin, TagTestMixin, GenericDocumentViewTestCase
+    DocumentViewTestMixin, SearchTestMixin, TagTestMixin,
+    GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
 

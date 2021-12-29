@@ -89,6 +89,13 @@ class DocumentParsingApp(MayanAppConfig):
         )
 
         ModelEventType.register(
+            model=Document, event_types=(
+                event_parsing_document_file_content_deleted,
+                event_parsing_document_file_submitted,
+                event_parsing_document_file_finished
+            )
+        )
+        ModelEventType.register(
             model=DocumentFile, event_types=(
                 event_parsing_document_file_content_deleted,
                 event_parsing_document_file_submitted,
