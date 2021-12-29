@@ -22,14 +22,44 @@
                 </div>
                 <div class="panel-body">
                     <div class="content login">
-                        <form action="." method="post" class="form login">{% csrf_token %}
+                        <form action="." method="post" class="form login">
+                            {% csrf_token %}
                             <div class="group wat-cf">
-                                {% include 'appearance/generic_form_instance.html' %}
+                                {{ wizard.management_form }}
+
+                                {% if wizard.form.forms %}
+                                    {{ wizard.form.management_form }}
+
+                                    {% with wizard.form as form %}
+                                    {% with 'true' as form_display_mode_table %}
+                                        {% include 'appearance/generic_form_instance.html' %}
+                                    {% endwith %}
+                                    {% endwith %}
+                                {% else %}
+                                    {% if wizard.form %}
+                                        {% with wizard.form as form %}
+                                            {% include 'appearance/generic_form_instance.html' %}
+                                        {% endwith %}
+                                    {% else %}
+                                        {% include 'appearance/generic_form_instance.html' %}
+                                    {% endif %}
+                                {% endif %}
+
                                 <input type="hidden" name="next" value="{{ next|escape }}" />
-                            <div class="form-group">
-                                <button class="btn btn-primary" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit"><i class="fa fa-sign-in-alt"></i> {% trans 'Sign in' %}</button>
+
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-hotkey-default" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit">
+                                        {% if submit_icon %}
+                                            {{ submit_icon.render }}
+                                        {% else %}
+                                            <i class="fa fa-check"></i>
+                                        {% endif %}
+                                        {% if submit_label %}{{ submit_label }}{% else %}{% if form.instance %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}
+                                    </button>
+                                </div>
                             </div>
                         </form>
+
                         {% smart_setting global_name="AUTHENTICATION_DISABLE_PASSWORD_RESET" as setting_disable_password_reset %}
                         {% if not setting_disable_password_reset %}
                             <hr>
