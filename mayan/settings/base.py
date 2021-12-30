@@ -80,6 +80,7 @@ INSTALLED_APPS = (
     # and User models are properly setup using runtime methods.
     'mayan.apps.user_management',
     'mayan.apps.authentication',
+    'mayan.apps.authentication_otp',
     'mayan.apps.autoadmin',
     'mayan.apps.common',
     'mayan.apps.converter',

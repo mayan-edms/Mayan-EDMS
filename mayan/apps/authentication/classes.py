@@ -27,6 +27,16 @@ class AuthenticationBackend(BaseBackend):
         Optional subclass initialization method.
         """
 
+    def get_condition_dict(self):
+        result = {}
+
+        for form_index, form in enumerate(iterable=self.form_list):
+            condition = getattr(form, 'condition', None)
+            if condition:
+                result[str(form_index)] = condition
+
+        return result
+
     def get_form_list(self):
         return self.form_list
 

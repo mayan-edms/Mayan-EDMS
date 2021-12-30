@@ -42,6 +42,14 @@ class MayanMultiStepLoginView(
     template_name = 'authentication/login.html'
 
     @staticmethod
+    def condition_dict(self):
+        self.authentication_backend = AuthenticationBackend.cls_get_instance()
+
+        condition_dict = self.authentication_backend.get_condition_dict()
+
+        return condition_dict
+
+    @staticmethod
     def form_list_property(self):
         """
         Return the processed form list after the view has initialized.
@@ -80,6 +88,10 @@ class MayanMultiStepLoginView(
 
         cls.form_list = property(
             fget=MayanMultiStepLoginView.form_list_property,
+            fset=null_setter
+        )
+        cls.condition_dict = property(
+            fget=MayanMultiStepLoginView.condition_dict,
             fset=null_setter
         )
 

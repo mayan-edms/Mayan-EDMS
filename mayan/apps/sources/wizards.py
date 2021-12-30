@@ -35,7 +35,9 @@ class DocumentCreateWizard(SessionWizardView):
             app_label='sources', model_name='Source'
         )
 
-        form_list = DocumentCreateWizardStep.get_choices(attribute_name='form_class')
+        form_list = DocumentCreateWizardStep.get_choices(
+            attribute_name='form_class'
+        )
         condition_dict = dict(
             DocumentCreateWizardStep.get_choices(attribute_name='condition')
         )

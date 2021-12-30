@@ -14,5 +14,5 @@ class AuthenticationBackendModelUsernamePasswordOTP(
 ):
     """
     Same backend as AuthenticationBackendModelUsernamePassword but with
-    an additional form for and TOPT token.
+    an additional form for and TOTP token.
     """
