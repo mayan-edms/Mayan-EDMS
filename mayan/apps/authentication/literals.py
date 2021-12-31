@@ -1,6 +1,6 @@
 DEFAULT_MAXIMUM_SESSION_LENGTH = 60 * 60 * 24 * 30  # 30 days
 
-DEFAULT_AUTHENTICATION_BACKEND = 'mayan.apps.authentication.authentication_backends.AuthenticationBackendModelUsernamePassword'
+DEFAULT_AUTHENTICATION_BACKEND = 'mayan.apps.authentication_otp.authentication_backends.AuthenticationBackendModelUsernamePasswordTOTP'
 DEFAULT_AUTHENTICATION_BACKEND_ARGUMENTS = {
     'maximum_session_length': DEFAULT_MAXIMUM_SESSION_LENGTH
 }

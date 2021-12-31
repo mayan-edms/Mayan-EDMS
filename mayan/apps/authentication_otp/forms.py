@@ -4,7 +4,9 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
+import mayan
 from mayan.apps.authentication.forms import AuthenticationFormBase
+from mayan.apps.converter.fields import QRCodeImageField
 from mayan.apps.views.forms import DetailForm
 
 from .models import UserOTPData
@@ -77,19 +79,35 @@ class FormUserOTPDataDetail(DetailForm):
 
 
 class FormUserOTPDataEdit(forms.Form):
+    qr_code = QRCodeImageField(
+        disabled=True, label=_('QR code'), required=False
+    )
     secret = forms.CharField(
-        required=False, widget=forms.TextInput(
+        disabled=True, label=_('Secret'), required=False,
+        widget=forms.TextInput(
             attrs={'readonly': 'readonly'}
         )
     )
-    token = forms.CharField()
+    signed_secret = forms.CharField(
+        label=_('Secret'), required=False, widget=forms.HiddenInput(
+            attrs={'readonly': 'readonly'}
+        )
+    )
+    token = forms.CharField(label=_('Token'))
 
     def __init__(self, *args, **kwargs):
-        initial = kwargs.get('initial', {})
-        initial['secret'] = initial.get('initial', pyotp.random_base32())
-        kwargs.update({'initial': initial})
+        user = kwargs.pop('user')
 
         super().__init__(*args, **kwargs)
+
+        secret = self.initial['secret']
+        if secret:
+            topt = pyotp.totp.TOTP(s=secret)
+            url = topt.provisioning_uri(
+                name=user.email, issuer_name=mayan.__title__
+            )
+
+            self.fields['qr_code'].initial = url
 
     def clean_token(self):
         secret = self.cleaned_data['secret']

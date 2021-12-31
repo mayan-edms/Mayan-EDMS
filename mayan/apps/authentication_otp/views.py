@@ -1,16 +1,24 @@
+import pyotp
+
 from django.contrib import messages
+from django.core.signing import BadSignature, dumps, loads
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
+from django.views.generic import RedirectView
 
 from mayan.apps.views.generics import (
     ConfirmView, FormView, SingleObjectDetailView
 )
+from mayan.apps.views.http import URL
 
 from .forms import FormUserOTPDataDetail, FormUserOTPDataEdit
+from .view_mixins import OTPBackendEnabledViewMixin
 
 
-class UserOTPDataDetailView(SingleObjectDetailView):
+class UserOTPDataDetailView(
+    OTPBackendEnabledViewMixin, SingleObjectDetailView
+):
     form_class = FormUserOTPDataDetail
 
     def get_extra_context(self):
@@ -25,7 +33,7 @@ class UserOTPDataDetailView(SingleObjectDetailView):
         return self.request.user
 
 
-class UserOTPDataDisableView(ConfirmView):
+class UserOTPDataDisableView(OTPBackendEnabledViewMixin, ConfirmView):
     def dispatch(self, request, *args, **kwargs):
         self.object = self.get_object()
         return super().dispatch(request=request, *args, **kwargs)
@@ -49,7 +57,17 @@ class UserOTPDataDisableView(ConfirmView):
         )
 
 
-class UserOTPDataEnableView(FormView):
+class UserOTPDataEnableView(OTPBackendEnabledViewMixin, RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        signed_secret = dumps(obj=pyotp.random_base32())
+
+        return URL(
+            path=reverse(viewname='authentication_otp:otp_verify'),
+            query={'signed_secret': signed_secret}
+        ).to_string()
+
+
+class UserOTPDataVerifyTokenView(OTPBackendEnabledViewMixin, FormView):
     form_class = FormUserOTPDataEdit
 
     def dispatch(self, request, *args, **kwargs):
@@ -84,6 +102,27 @@ class UserOTPDataEnableView(FormView):
             'title': _(
                 'Enable one time pad for user: %s'
             ) % self.object
+        }
+
+    def get_form_extra_kwargs(self):
+        signed_secret = self.request.GET.get('signed_secret', '')
+
+        try:
+            secret = loads(s=signed_secret)
+        except BadSignature:
+            messages.error(
+                request=self.request, message=_(
+                    'OTP secret validation error.'
+                )
+            )
+            secret = None
+
+        return {
+            'initial': {
+                'secret': secret,
+                'signed_secret': signed_secret,
+            },
+            'user': self.request.user
         }
 
     def get_object(self):

@@ -1,7 +1,8 @@
 from django.conf.urls import url
 
 from .views import (
-    UserOTPDataDetailView, UserOTPDataDisableView, UserOTPDataEnableView
+    UserOTPDataDetailView, UserOTPDataDisableView, UserOTPDataEnableView,
+    UserOTPDataVerifyTokenView
 )
 
 
@@ -17,5 +18,9 @@ urlpatterns = [
     url(
         regex=r'^otp/enable/$', name='otp_enable',
         view=UserOTPDataEnableView.as_view()
+    ),
+    url(
+        regex=r'^otp/verify/$', name='otp_verify',
+        view=UserOTPDataVerifyTokenView.as_view()
     )
 ]
