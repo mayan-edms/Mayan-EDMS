@@ -124,7 +124,7 @@ class LoginTestCase(LoginViewTestMixin, GenericViewTestCase):
         self._clear_events()
 
         response = self._request_login_view_with_email(
-            extra_data={'0-remember_me': False}
+            extra_data={'remember_me': False}
         )
         self.assertEqual(response.status_code, 302)
         self.assertTrue(self.client.session.get_expire_at_browser_close())
@@ -149,7 +149,7 @@ class LoginTestCase(LoginViewTestMixin, GenericViewTestCase):
         self._clear_events()
 
         response = self._request_login_view_with_email(
-            extra_data={'0-remember_me': True}
+            extra_data={'remember_me': True}
         )
         self.assertEqual(response.status_code, 302)
         self.assertEqual(
@@ -194,7 +194,7 @@ class LoginTestCase(LoginViewTestMixin, GenericViewTestCase):
         self._clear_events()
 
         response = self._request_login_view_with_username(
-            extra_data={'0-remember_me': False}
+            extra_data={'remember_me': False}
         )
         self.assertEqual(response.status_code, 302)
         self.assertTrue(self.client.session.get_expire_at_browser_close())
@@ -216,7 +216,7 @@ class LoginTestCase(LoginViewTestMixin, GenericViewTestCase):
         self._clear_events()
 
         response = self._request_login_view_with_username(
-            extra_data={'0-remember_me': True}
+            extra_data={'remember_me': True}
         )
         self.assertEqual(response.status_code, 302)
         self.assertEqual(
@@ -245,9 +245,9 @@ class LoginTestCase(LoginViewTestMixin, GenericViewTestCase):
 
         response = self._request_login_view(
             data={
-                '0-username': self._test_case_superuser.username,
-                '0-password': self._test_case_superuser.cleartext_password,
-                '0-remember_me': False
+                'username': self._test_case_superuser.username,
+                'password': self._test_case_superuser.cleartext_password,
+                'remember_me': False
             }, query={'next': TEST_REDIRECT_URL}, follow=True
         )
         self.assertEqual(response.status_code, 200)

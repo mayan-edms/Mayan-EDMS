@@ -11,13 +11,19 @@ from .permissions import permission_users_impersonate
 
 class AuthenticationFormBase(forms.Form):
     _label = None
+    PASSWORD_FIELD = 'username'
 
     def __init__(self, wizard, data, files, prefix, initial, request=None):
         self.request = request
+        self.user_cache = None
         self.wizard = wizard
+
         super().__init__(
             data=data, files=files, prefix=prefix, initial=initial
         )
+
+    def get_user(self):
+        return self.user_cache
 
 
 class AuthenticationFormMixinRememberMe(forms.Form):
@@ -51,6 +57,8 @@ class AuthenticationFormEmailPassword(
     """
     A form to use email address authentication.
     """
+    PASSWORD_FIELD = 'email'
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 

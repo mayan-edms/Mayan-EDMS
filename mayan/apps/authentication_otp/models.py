@@ -29,9 +29,7 @@ class UserOTPData(models.Model):
         self.save()
 
     def enable(self, secret, token):
-        totp = pyotp.TOTP(s=secret)
-
-        if token == totp.now():
+        if self.verify_token(secret=secret, token=token):
             self.secret = secret
             self.save()
 
@@ -47,3 +45,10 @@ class UserOTPData(models.Model):
     def natural_key(self):
         return self.user.natural_key()
     natural_key.dependencies = [settings.AUTH_USER_MODEL]
+
+    def verify_token(self, token, secret=None):
+        if not secret:
+            secret = self.secret
+
+        totp = pyotp.TOTP(s=secret)
+        return token == totp.now()

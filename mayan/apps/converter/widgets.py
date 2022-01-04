@@ -22,9 +22,9 @@ class Base64ImageWidget(forms.widgets.Widget):
             return None
         else:
             with io.BytesIO() as output:
-                value.save(output, format='JPEG')
+                value.save(output, format='PNG')
                 image = output.getvalue()
-                url = 'data:image/jpeg;charset=utf-8;base64,{}'.format(
+                url = 'data:image/png;charset=utf-8;base64,{}'.format(
                     force_text(base64.b64encode(image))
                 )
 

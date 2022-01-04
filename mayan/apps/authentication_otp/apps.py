@@ -1,11 +1,13 @@
 import logging
 
 from django.contrib.auth import get_user_model
+from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_secondary, menu_user
 
+from .handlers import handler_initialize_new_user_otp_data
 from .links import link_otp_detail, link_otp_disable, link_otp_enable
 
 logger = logging.getLogger(name=__name__)
@@ -31,4 +33,10 @@ class AuthenticationOTPApp(MayanAppConfig):
             links=(
                 link_otp_detail,
             )
+        )
+
+        post_save.connect(
+            dispatch_uid='authentication_otp_handler_initialize_new_user_otp_data',
+            receiver=handler_initialize_new_user_otp_data,
+            sender=User
         )

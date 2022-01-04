@@ -1,6 +1,7 @@
 import pyotp
 
 from django import forms
+from django.contrib.auth import authenticate, get_user_model
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
@@ -13,45 +14,96 @@ from .models import UserOTPData
 
 
 class AuthenticationFormTOTP(AuthenticationFormBase):
-    token = forms.CharField(
-        label=_('TOTP token'), widget=forms.TextInput(
-            attrs={'autofocus': True}
-        )
-    )
     error_messages = {
         'invalid_token': _(
             'Token is either invalid or expired.'
-        ),
+        )
     }
 
-    @classmethod
-    def condition(cls, wizard):
-        cleaned_data = wizard.get_cleaned_data_for_step('0')
-        if cleaned_data:
-            otp_data = UserOTPData.objects.get(
-                user__username=cleaned_data['username']
-            )
+    token = forms.CharField(
+        label=_('TOTP token'), widget=forms.TextInput(
+            attrs={
+                'autocomplete': 'one-time-code', 'autofocus': True,
+                'inputmode': 'numeric'
+            }
+        )
+    )
 
-            return otp_data.is_enabled()
+    @classmethod
+    def condition(cls, authentication_backend, wizard):
+        #username_password_form_index = '0'
+
+        #form_class = wizard.form_list[username_password_form_index]
+        #cleaned_data = wizard.get_cleaned_data_for_step(username_password_form_index)
+
+        user_id = wizard.request.session.get('_multi_factor_user_id', None)
+
+        if user_id:
+            user = get_user_model().objects.get(pk=user_id)
+            #breakpoint()
+            print("@@@@ FIELD", authentication_backend.form_class.PASSWORD_FIELD)
+            kwargs = {
+                #'user__{}'.format(form_class.PASSWORD_FIELD): cleaned_data['username']
+                'user__{}'.format(authentication_backend.form_class.PASSWORD_FIELD): user.username
+            }
+
+            try:
+                otp_data = UserOTPData.objects.get(**kwargs)
+                    # ~ user__username=cleaned_data['username']
+                # ~ )
+            except UserOTPData.DoesNotExist:
+                ###FIX This path should not exist.
+                print("!!!!! False")
+                return False
+            else:
+                print("otp_data.is_enabled", otp_data.is_enabled())
+                return otp_data.is_enabled()
         else:
             return False
 
+    # ~ def clean(self):
+        # ~ form = self.wizard.get_form('0')
+        # ~ form.cleaned_data = self.wizard.get_cleaned_data_for_step('0')
+        # ~ form.clean()
+
+        # ~ otp_data = form.get_user().otp_data
+
+
+        # ~ secret = otp_data.secret
+
+        # ~ token = self.cleaned_data.get('token')
+
+        # ~ if token != pyotp.TOTP(secret).now():
+            # ~ raise forms.ValidationError(
+                # ~ self.error_messages['invalid_token'],
+                # ~ code='invalid_token',
+            # ~ )
+
+        # ~ return self.cleaned_data
+
     def clean(self):
-        form = self.wizard.get_form('0')
-        form.cleaned_data = self.wizard.get_cleaned_data_for_step('0')
-        form.clean()
+        # ~ form = self.wizard.get_form('0')
+        # ~ form.cleaned_data = self.wizard.get_cleaned_data_for_step('0')
+        # ~ form.clean()
 
-        otp_data = form.get_user().otp_data
+        #user = form.get_user()
 
-        secret = otp_data.secret
+        #user_id = self.wizard.request.get('_multi_factor_user_id', None)
+        user_id = self.request.session.get('_multi_factor_user_id', None)
 
-        token = self.cleaned_data.get('token')
-
-        if token != pyotp.TOTP(secret).now():
-            raise forms.ValidationError(
-                self.error_messages['invalid_token'],
-                code='invalid_token',
+        #if user:
+        if user_id:
+            user = get_user_model().objects.get(pk=user_id)
+            self.user_cache = authenticate(
+                factor_name='otp_token',
+                otp_token=self.cleaned_data.get('token'),
+                request=self.request, user=user
             )
+            if self.user_cache is None:
+                raise forms.ValidationError(
+                    self.error_messages['invalid_token'],
+                    code='invalid_token',
+                )
 
         return self.cleaned_data
 
@@ -79,12 +131,13 @@ class FormUserOTPDataDetail(DetailForm):
 
 
 class FormUserOTPDataEdit(forms.Form):
-    qr_code = QRCodeImageField(
-        disabled=True, label=_('QR code'), required=False
-    )
+    qr_code = QRCodeImageField(disabled=True, label='', required=False)
     secret = forms.CharField(
-        disabled=True, label=_('Secret'), required=False,
-        widget=forms.TextInput(
+        disabled=True,
+        help_text=_(
+            'Scan the QR code or enter the secret in your authentication '
+            'device. Do not share this secret, treat it like a password.'
+        ), label=_('Secret'), required=False, widget=forms.TextInput(
             attrs={'readonly': 'readonly'}
         )
     )
@@ -93,7 +146,18 @@ class FormUserOTPDataEdit(forms.Form):
             attrs={'readonly': 'readonly'}
         )
     )
-    token = forms.CharField(label=_('Token'))
+    token = forms.CharField(
+        help_text=_(
+            'Enter the corresponding token to validate that the secret '
+            'was saved correct.'
+        ),
+        label=_('Token'), widget=forms.TextInput(
+            attrs={
+                'autocomplete': 'one-time-code', 'autofocus': True,
+                'inputmode': 'numeric'
+            }
+        )
+    )
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
@@ -108,6 +172,10 @@ class FormUserOTPDataEdit(forms.Form):
             )
 
             self.fields['qr_code'].initial = url
+
+        self.fields['qr_code'].widget.attrs.update(
+            {'style': 'margin:auto;'}
+        )
 
     def clean_token(self):
         secret = self.cleaned_data['secret']

@@ -33,20 +33,30 @@ class AuthenticationBackend(BaseBackend):
         for form_index, form in enumerate(iterable=self.form_list):
             condition = getattr(form, 'condition', None)
             if condition:
-                result[str(form_index)] = condition
+                def condition_wrapper(authentication_backend):
+                    def wrapper(wizard):
+                        return condition(
+                            authentication_backend=authentication_backend,
+                            wizard=wizard
+                        )
+
+                    return wrapper
+
+                #result[str(form_index)] = condition
+                result[str(form_index)] = condition_wrapper(authentication_backend=self)
 
         return result
 
     def get_form_list(self):
         return self.form_list
 
-    def identify(self, form_list, request, kwargs=None):
+    def identify(self, request, form_list=None, kwargs=None):
         """
         Required method to identify the user based on form and request data.
         """
         raise NotImplementedError
 
-    def process(form_list=None, kwargs=None, request=None):
+    def process(request, form_list=None, kwargs=None):
         """
         Optional method to do login related setup based on form data like
         session TTL.

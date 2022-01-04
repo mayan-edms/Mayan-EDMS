@@ -15,10 +15,15 @@ from .forms import (
 class AuthenticationBackendModelUsernamePassword(
     AuthenticationBackendRememberMeMixin, AuthenticationBackend
 ):
-    form_list = (AuthenticationFormUsernamePassword,)
+    form_class = AuthenticationFormUsernamePassword
+    #form_list = (AuthenticationFormUsernamePassword,)
+    form_list = ()
 
-    def identify(self, form_list, request, kwargs=None):
-        return list(form_list)[0].get_user()
+    def identify(self, request, form_list=None, kwargs=None):
+        #return list(form_list)[0].get_user()
+        return get_user_model().objects.get(
+            pk=request.session['_multi_factor_user_id']
+        )
 
 
 class EmailModelBackend(ModelBackend):
@@ -43,8 +48,11 @@ class AuthenticationBackendModelEmailPassword(
 ):
     form_list = (AuthenticationFormEmailPassword,)
 
-    def identify(self, form_list, request, kwargs=None):
-        return list(form_list)[0].get_user()
+    #def identify(self, form_list, request, kwargs=None):
+    #    return list(form_list)[0].get_user()
+    def identify(self, request, form_list=None, kwargs=None):
+        #return list(form_list)[0].get_user()
+        return get_user_model().get(pk=self.request._multi_factor_user_id)
 
     def initialize(self):
         settings.AUTHENTICATION_BACKENDS = (
