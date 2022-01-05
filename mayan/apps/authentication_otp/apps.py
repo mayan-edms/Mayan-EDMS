@@ -6,7 +6,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_secondary, menu_user
+from mayan.apps.events.classes import ModelEventType
 
+from .events import event_otp_disabled, event_otp_enabled
 from .handlers import handler_initialize_new_user_otp_data
 from .links import link_otp_detail, link_otp_disable, link_otp_enable
 
@@ -24,6 +26,12 @@ class AuthenticationOTPApp(MayanAppConfig):
         super().ready()
 
         User = get_user_model()
+
+        ModelEventType.register(
+            model=User, event_types=(
+                event_otp_disabled, event_otp_enabled
+            )
+        )
 
         menu_secondary.bind_links(
             links=(link_otp_disable, link_otp_enable,), sources=(User,)

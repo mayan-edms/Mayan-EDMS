@@ -1,8 +1,6 @@
 from furl import furl
 
 from django.conf import settings
-from django.contrib.auth.views import INTERNAL_RESET_SESSION_TOKEN
-from django.core import mail
 from django.test import override_settings
 from django.urls import reverse
 from django.utils.http import urlunquote_plus
@@ -10,11 +8,8 @@ from django.utils.http import urlunquote_plus
 from mayan.apps.authentication.classes import AuthenticationBackend
 from mayan.apps.authentication.events import event_user_logged_in
 from mayan.apps.authentication.tests.mixins import LoginViewTestMixin
-from mayan.apps.common.settings import setting_home_view
 from mayan.apps.smart_settings.classes import SettingNamespace
 from mayan.apps.testing.tests.base import GenericViewTestCase
-from mayan.apps.user_management.events import event_user_edited
-from mayan.apps.user_management.permissions import permission_user_edit
 from mayan.apps.user_management.tests.literals import (
     TEST_USER_PASSWORD_EDITED
 )
@@ -93,8 +88,6 @@ class LoginOTPTestCase(
         # ~ self.assertEqual(events[1].actor, self._test_case_superuser)
         # ~ self.assertEqual(events[1].target, self._test_case_superuser)
         # ~ self.assertEqual(events[1].verb, event_user_logged_in.id)
-
-
 
 
     @override_settings(AUTHENTICATION_BACKEND=PATH_AUTHENTICATION_BACKEND_USERNAME_OTP)

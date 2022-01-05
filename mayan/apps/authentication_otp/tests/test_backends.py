@@ -1,5 +1,4 @@
 from furl import furl
-import pyotp
 
 from django.conf import settings
 from django.contrib.auth import authenticate
@@ -9,7 +8,6 @@ from django.utils.http import urlunquote_plus
 
 from mayan.apps.authentication.classes import AuthenticationBackend
 from mayan.apps.authentication.tests.mixins import LoginViewTestMixin
-from mayan.apps.common.utils import get_class_full_name
 from mayan.apps.smart_settings.classes import SettingNamespace
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
@@ -52,7 +50,6 @@ class AuthenticationOTPBackendTestCase(
             password=self._test_case_superuser.cleartext_password
         )
         self.assertEqual(user, self._test_case_superuser)
-
 
     @override_settings(AUTHENTICATION_BACKEND=PATH_AUTHENTICATION_BACKEND_EMAIL_OTP)
     def test_authentication_backend_email_with_otp(self):

@@ -13,7 +13,7 @@ class AuthenticationFormBase(forms.Form):
     _label = None
     PASSWORD_FIELD = 'username'
 
-    def __init__(self, wizard, data, files, prefix, initial, request=None):
+    def __init__(self, data, files, prefix, initial, request=None, wizard=None):
         self.request = request
         self.user_cache = None
         self.wizard = wizard
@@ -42,8 +42,7 @@ class AuthenticationFormMixinRememberMe(forms.Form):
 
 
 class AuthenticationFormUsernamePassword(
-    AuthenticationFormMixinRememberMe, AuthenticationForm,
-    AuthenticationFormBase
+    AuthenticationFormMixinRememberMe, AuthenticationForm
 ):
     """
     Modified authentication form to include the "Remember me" field.
@@ -51,8 +50,7 @@ class AuthenticationFormUsernamePassword(
 
 
 class AuthenticationFormEmailPassword(
-    AuthenticationFormMixinRememberMe, AuthenticationForm,
-    AuthenticationFormBase
+    AuthenticationFormMixinRememberMe, AuthenticationForm
 ):
     """
     A form to use email address authentication.

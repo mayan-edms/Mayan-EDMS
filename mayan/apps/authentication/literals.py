@@ -4,8 +4,9 @@ DEFAULT_AUTHENTICATION_BACKEND = 'mayan.apps.authentication_otp.authentication_b
 DEFAULT_AUTHENTICATION_BACKEND_ARGUMENTS = {
     'maximum_session_length': DEFAULT_MAXIMUM_SESSION_LENGTH
 }
-
 DEFAULT_AUTHENTICATION_DISABLE_PASSWORD_RESET = False
+
+SESSION_MULTI_FACTOR_USER_ID_KEY = '_multi_factor_user_id'
 
 USER_IMPERSONATE_VARIABLE_ID = '_user_impersonate_id'
 USER_IMPERSONATE_VARIABLE_DISABLE = '_user_impersonate_end'

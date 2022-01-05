@@ -5,6 +5,8 @@ from django.db import models
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
+from .events import event_otp_disabled, event_otp_enabled
+
 
 class UserOTPData(models.Model):
     """
@@ -27,11 +29,18 @@ class UserOTPData(models.Model):
     def disable(self):
         self.secret = ''
         self.save()
+        event_otp_disabled.commit(
+            actor=self.user, target=self.user
+        )
 
     def enable(self, secret, token):
         if self.verify_token(secret=secret, token=token):
             self.secret = secret
             self.save()
+
+            event_otp_enabled.commit(
+                actor=self.user, target=self.user
+            )
 
     def get_absolute_url(self):
         return reverse(viewname='authentication_otp:otp_detail')

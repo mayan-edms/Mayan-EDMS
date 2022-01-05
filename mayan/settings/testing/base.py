@@ -1,5 +1,7 @@
 from .. import *  # NOQA
 
+AUTHENTICATION_BACKEND = 'mayan.apps.authentication.authentication_backends.AuthenticationBackendModelDjangoDefault'
+
 CELERY_BROKER_URL = 'memory://'
 CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = True

@@ -11,7 +11,9 @@ from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..classes import AuthenticationBackend
 
-from .literals import TEST_EMAIL_AUTHENTICATION_BACKEND
+from .literals import (
+    PATH_AUTHENTICATION_BACKEND_EMAIL, PATH_AUTHENTICATION_BACKEND_USERNAME
+)
 from .mixins import LoginViewTestMixin
 
 
@@ -31,7 +33,7 @@ class AuthenticationBackendTestCase(LoginViewTestMixin, GenericViewTestCase):
         super().setUp()
         SettingNamespace.invalidate_cache_all()
 
-    @override_settings(AUTHENTICATION_BACKEND=TEST_EMAIL_AUTHENTICATION_BACKEND)
+    @override_settings(AUTHENTICATION_BACKEND=PATH_AUTHENTICATION_BACKEND_EMAIL)
     def test_email_authentication_backend(self):
         AuthenticationBackend.cls_initialize()
 
@@ -41,6 +43,7 @@ class AuthenticationBackendTestCase(LoginViewTestMixin, GenericViewTestCase):
         )
         self.assertEqual(user, self._test_case_superuser)
 
+    @override_settings(AUTHENTICATION_BACKEND=PATH_AUTHENTICATION_BACKEND_USERNAME)
     def test_username_authentication_backend(self):
         AuthenticationBackend.cls_initialize()
 

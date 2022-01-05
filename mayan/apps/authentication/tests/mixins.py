@@ -9,13 +9,10 @@ class LoginViewTestMixin:
         return self.get(path=self.authenticated_url)
 
     def _request_login_view(self, data, query=None, follow=False):
-        default_data = {
-            #'mayan_multi_step_login_view-current_step': '0'
-        }
+        default_data = {}
 
         default_data.update(data)
 
-        print("### default_data", default_data)
         return self.post(
             follow=follow, viewname=settings.LOGIN_URL, data=default_data,
             query=query
@@ -48,6 +45,11 @@ class LoginViewTestMixin:
             data=data, follow=follow, query=query,
             viewname='authentication:multi_factor_authentication_view'
         )
+
+
+class LogoutViewTestMixin:
+    def _request_logout_view(self):
+        return self.post(viewname='authentication:logout_view')
 
 
 class PasswordResetViewTestMixin:

@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 
 import mayan
 from mayan.apps.authentication.forms import AuthenticationFormBase
+from mayan.apps.authentication.literals import SESSION_MULTI_FACTOR_USER_ID_KEY
 from mayan.apps.converter.fields import QRCodeImageField
 from mayan.apps.views.forms import DetailForm
 
@@ -31,29 +32,17 @@ class AuthenticationFormTOTP(AuthenticationFormBase):
 
     @classmethod
     def condition(cls, authentication_backend, wizard):
-        #username_password_form_index = '0'
-
-        #form_class = wizard.form_list[username_password_form_index]
-        #cleaned_data = wizard.get_cleaned_data_for_step(username_password_form_index)
-
-        user_id = wizard.request.session.get('_multi_factor_user_id', None)
+        user_id = wizard.request.session.get(SESSION_MULTI_FACTOR_USER_ID_KEY, None)
 
         if user_id:
             user = get_user_model().objects.get(pk=user_id)
-            #breakpoint()
-            print("@@@@ FIELD", authentication_backend.form_class.PASSWORD_FIELD)
             kwargs = {
-                #'user__{}'.format(form_class.PASSWORD_FIELD): cleaned_data['username']
                 'user__{}'.format(authentication_backend.form_class.PASSWORD_FIELD): user.username
             }
 
             try:
                 otp_data = UserOTPData.objects.get(**kwargs)
-                    # ~ user__username=cleaned_data['username']
-                # ~ )
             except UserOTPData.DoesNotExist:
-                ###FIX This path should not exist.
-                print("!!!!! False")
                 return False
             else:
                 print("otp_data.is_enabled", otp_data.is_enabled())
@@ -61,37 +50,9 @@ class AuthenticationFormTOTP(AuthenticationFormBase):
         else:
             return False
 
-    # ~ def clean(self):
-        # ~ form = self.wizard.get_form('0')
-        # ~ form.cleaned_data = self.wizard.get_cleaned_data_for_step('0')
-        # ~ form.clean()
-
-        # ~ otp_data = form.get_user().otp_data
-
-
-        # ~ secret = otp_data.secret
-
-        # ~ token = self.cleaned_data.get('token')
-
-        # ~ if token != pyotp.TOTP(secret).now():
-            # ~ raise forms.ValidationError(
-                # ~ self.error_messages['invalid_token'],
-                # ~ code='invalid_token',
-            # ~ )
-
-        # ~ return self.cleaned_data
-
     def clean(self):
-        # ~ form = self.wizard.get_form('0')
-        # ~ form.cleaned_data = self.wizard.get_cleaned_data_for_step('0')
-        # ~ form.clean()
+        user_id = self.request.session.get(SESSION_MULTI_FACTOR_USER_ID_KEY, None)
 
-        #user = form.get_user()
-
-        #user_id = self.wizard.request.get('_multi_factor_user_id', None)
-        user_id = self.request.session.get('_multi_factor_user_id', None)
-
-        #if user:
         if user_id:
             user = get_user_model().objects.get(pk=user_id)
             self.user_cache = authenticate(

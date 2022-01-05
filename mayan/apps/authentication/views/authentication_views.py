@@ -15,13 +15,14 @@ from django.forms import formsets
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, resolve_url
 from django.urls import reverse, reverse_lazy
-from django.utils.decorators import classonlymethod
-from django.utils.http import (
-    url_has_allowed_host_and_scheme, urlsafe_base64_decode
-)
+from django.utils.decorators import classonlymethod, method_decorator
 from django.utils.translation import ungettext, ugettext_lazy as _
+from django.views.decorators.cache import never_cache
+from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.debug import sensitive_post_parameters
 
 from formtools.wizard.views import SessionWizardView, StepsHelper
+from stronghold.decorators import public
 from stronghold.views import StrongholdPublicMixin
 
 import mayan
@@ -30,27 +31,18 @@ from mayan.apps.common.settings import (
 )
 from mayan.apps.user_management.permissions import permission_user_edit
 from mayan.apps.user_management.querysets import get_user_queryset
-from mayan.apps.views.generics import SimpleView, MultipleObjectFormActionView
+from mayan.apps.views.generics import MultipleObjectFormActionView
 
 from ..classes import AuthenticationBackend
 from ..forms import AuthenticationFormBase
+from ..literals import SESSION_MULTI_FACTOR_USER_ID_KEY
 from ..settings import setting_disable_password_reset
-
-
-
-from django.utils.decorators import method_decorator
-from stronghold.decorators import public
 
 
 class MultiFactorAuthenticationView(
     SuccessURLAllowedHostsMixin, SessionWizardView
 ):
     redirect_field_name = REDIRECT_FIELD_NAME
-
-    #extra_context = {
-    #    'appearance_type': 'plain'
-    #}
-    #redirect_authenticated_user = True
     template_name = 'authentication/login.html'
 
     # Login view methods.
@@ -109,12 +101,17 @@ class MultiFactorAuthenticationView(
 
         return result
 
+    @method_decorator(sensitive_post_parameters())
+    @method_decorator(csrf_protect)
+    @method_decorator(never_cache)
     @method_decorator(public)
     def dispatch(self, request, *args, **kwargs):
         steps = StepsHelper(self)
 
         if steps.count == 0:
-            user_id = request.session.get('_multi_factor_user_id', None)
+            user_id = request.session.get(
+                SESSION_MULTI_FACTOR_USER_ID_KEY, None
+            )
             if user_id:
                 return self.done()
             else:
@@ -135,7 +132,7 @@ class MultiFactorAuthenticationView(
             form_list=form_list, request=self.request,
             kwargs=kwargs
         )
-        user = self.authentication_backend.identify(
+        user = self.authentication_backend.get_user(
             form_list=form_list, request=self.request,
             kwargs=kwargs
         )
@@ -183,14 +180,26 @@ class MayanLoginView(StrongholdPublicMixin, LoginView):
     redirect_authenticated_user = True
     template_name = 'authentication/login.html'
 
-    def form_valid(self, form):
-        self.request.session['_multi_factor_user_id'] = form.get_user().pk
+    def get_form_class(self):
+        return AuthenticationBackend.cls_get_instance().get_login_form_class()
 
-        return HttpResponseRedirect(
-            redirect_to=reverse(
-                viewname='authentication:multi_factor_authentication_view'
+    def form_valid(self, form):
+        if not AuthenticationBackend.cls_get_instance().form_list:
+            AuthenticationBackend.cls_get_instance().process(
+                request=self.request, kwargs=form.cleaned_data
+
             )
-        )
+            return super().form_valid(form=form)
+        else:
+            self.request.session[
+                SESSION_MULTI_FACTOR_USER_ID_KEY
+            ] = form.get_user().pk
+
+            return HttpResponseRedirect(
+                redirect_to=reverse(
+                    viewname='authentication:multi_factor_authentication_view'
+                )
+            )
 
 
 class MayanMultiStepLoginView_old(
@@ -258,14 +267,6 @@ class MayanMultiStepLoginView_old(
 
         return result
 
-    # ~ @method_decorator(sensitive_post_parameters())
-    # ~ @method_decorator(csrf_protect)
-    # ~ @method_decorator(never_cache)
-    # ~ def dispatch(self, *args, **kwargs):
-        # ~ print("@@@@")
-        # ~ #print('####### self.form_list', self.form_list)
-        # ~ return super().dispatch(*args, **kwargs)
-
     def get_context_data(self, form, **kwargs):
         context = super().get_context_data(form=form, **kwargs)
 
@@ -302,9 +303,6 @@ class MayanMultiStepLoginView_old(
         Perform the same function as Django's .form_valid().
         """
         kwargs = self.get_all_cleaned_data()
-        print("DONE!")
-        print("@@@ kwargs", kwargs)
-        #breakpoint()
         self.authentication_backend.process(
             form_list=form_list, request=self.request,
             kwargs=kwargs

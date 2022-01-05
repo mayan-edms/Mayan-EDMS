@@ -7,7 +7,6 @@ class Command(management.BaseCommand):
     help = 'Display the current settings.'
 
     def add_arguments(self, parser):
-
         parser.add_argument(
             dest='filter_term', nargs='?', help='Use this term to filter the '
             'list of settings.'
