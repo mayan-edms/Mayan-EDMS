@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:12+0000\n"
 "Last-Translator: yan songwei <yansw@vip.163.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -106,11 +106,11 @@ msgstr "编辑访问控制列表"
 msgid "View ACLs"
 msgstr "查看访问控制列表"
 
-#: serializers.py:125
+#: serializers.py:120
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
 
-#: serializers.py:132
+#: serializers.py:127
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
 
@@ -131,36 +131,36 @@ msgstr "新的访问控制列表：%s"
 msgid "Delete ACL: %s"
 msgstr "删除访问控制列表：%s"
 
-#: views.py:139
+#: views.py:141
 msgid "There are no ACLs for this object"
 msgstr "此对象没有访问控制列表"
 
-#: views.py:142 views.py:259
+#: views.py:144 views.py:261
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
 msgstr "ACL代表访问控制列表，是控制用户对系统中对象的访问的精确方法。 ACL允许授予角色权限，但只能授予特定对象或一组对象的权限。"
 
-#: views.py:149
+#: views.py:151
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "访问控制列表：%s"
 
-#: views.py:163
+#: views.py:165
 msgid "Granted permissions"
 msgstr "授予的权限"
 
-#: views.py:164
+#: views.py:166
 msgid "Available permissions"
 msgstr "可用权限"
 
-#: views.py:208
+#: views.py:210
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr "为\"%(object)s\"的角色 \"%(role)s\" 权限"
 
-#: views.py:217
+#: views.py:219
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -168,11 +168,11 @@ msgid ""
 "menu."
 msgstr "禁用的权限是从父对象继承或直接授予角色的，不能从此视图中删除。需要通过“设置”菜单从父对象的ACL或角色中删除继承的权限。"
 
-#: views.py:256
+#: views.py:258
 msgid "There are no ACLs"
 msgstr ""
 
-#: views.py:265
+#: views.py:267
 msgid "Global access control lists"
 msgstr ""
 

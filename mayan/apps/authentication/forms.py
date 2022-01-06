@@ -1,9 +1,6 @@
-import warnings
-
 from django import forms
-from django.contrib.auth import authenticate
+from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm
-from django.forms.widgets import EmailInput
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.user_management.querysets import get_user_queryset
@@ -12,64 +9,65 @@ from mayan.apps.views.forms import FilteredSelectionForm
 from .permissions import permission_users_impersonate
 
 
-class EmailAuthenticationForm(forms.Form):
-    """
-    A form to use email address authentication
-    """
-    email = forms.CharField(
-        label=_('Email'), max_length=254, widget=EmailInput()
-    )
-    password = forms.CharField(
-        label=_('Password'), widget=forms.PasswordInput
-    )
-    remember_me = forms.BooleanField(label=_('Remember me'), required=False)
+class AuthenticationFormBase(forms.Form):
+    _label = None
+    PASSWORD_FIELD = 'username'
 
-    error_messages = {
-        'invalid_login': _('Please enter a correct email and password. '
-                           'Note that the password field is case-sensitive.'),
-        'inactive': _('This account is inactive.'),
-    }
-
-    def __init__(self, request=None, *args, **kwargs):
-        """
-        The 'request' parameter is set for custom auth use by subclasses.
-        The form data comes in via the standard 'data' kwarg.
-        """
+    def __init__(self, data, files, prefix, initial, request=None, wizard=None):
         self.request = request
         self.user_cache = None
-        super().__init__(*args, **kwargs)
+        self.wizard = wizard
 
-    def clean(self):
-        email = self.cleaned_data.get('email')
-        password = self.cleaned_data.get('password')
-
-        if email and password:
-            self.user_cache = authenticate(email=email, password=password)
-            if self.user_cache is None:
-                raise forms.ValidationError(
-                    self.error_messages['invalid_login'],
-                    code='invalid_login',
-                )
-            elif not self.user_cache.is_active:
-                raise forms.ValidationError(
-                    self.error_messages['inactive'],
-                    code='inactive',
-                )
-        return self.cleaned_data
-
-    def check_for_test_cookie(self):
-        warnings.warn(
-            'check_for_test_cookie is deprecated; ensure your login '
-            'view is CSRF-protected.', DeprecationWarning
+        super().__init__(
+            data=data, files=files, prefix=prefix, initial=initial
         )
-
-    def get_user_id(self):
-        if self.user_cache:
-            return self.user_cache.id
-        return None
 
     def get_user(self):
         return self.user_cache
+
+
+class AuthenticationFormMixinRememberMe(forms.Form):
+    _form_field_name_remember_me = 'remember_me'
+    remember_me = forms.BooleanField(label=_('Remember me'), required=False)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        field_order = [
+            field for field in self.fields if field != self._form_field_name_remember_me
+        ]
+        field_order.append(self._form_field_name_remember_me)
+
+        self.order_fields(field_order=field_order)
+
+
+class AuthenticationFormEmailPassword(
+    AuthenticationFormMixinRememberMe, AuthenticationForm
+):
+    """
+    A form to use email address authentication.
+    """
+    PASSWORD_FIELD = 'email'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        UserModel = get_user_model()
+
+        self.username_field = UserModel._meta.get_field(field_name='email')
+        username_max_length = self.username_field.max_length or 254
+        self.fields['username'].max_length = username_max_length
+        self.fields['username'].widget.attrs['maxlength'] = username_max_length
+        self.fields['username'].label = self.username_field.verbose_name
+
+
+class AuthenticationFormUsernamePassword(
+    AuthenticationFormMixinRememberMe, AuthenticationForm
+):
+    """
+    Modified authentication form to include the "Remember me" field.
+    """
+    PASSWORD_FIELD = 'username'
 
 
 class UserImpersonationOptionsForm(forms.Form):
@@ -99,7 +97,3 @@ class UserImpersonationSelectionForm(
         queryset = get_user_queryset().exclude(pk=kwargs['user'].pk)
         self.fields['user_to_impersonate'].queryset = queryset
         self.order_fields(field_order=('user_to_impersonate', 'permanent'))
-
-
-class UsernameAuthenticationForm(AuthenticationForm):
-    remember_me = forms.BooleanField(label=_('Remember me'), required=False)

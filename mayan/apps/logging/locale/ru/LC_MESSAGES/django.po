@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -36,43 +36,43 @@ msgstr "Ошибки"
 msgid "Clear errors"
 msgstr "Очистить ошибки"
 
-#: models.py:10 models.py:38
+#: models.py:9 models.py:37
 msgid "Internal name"
 msgstr "Внутреннее имя"
 
-#: models.py:15 models.py:35
+#: models.py:14 models.py:34
 msgid "Error log"
 msgstr "Журнал ошибок"
 
-#: models.py:16
+#: models.py:15
 msgid "Error logs"
 msgstr "Журналы ошибок"
 
-#: models.py:25
+#: models.py:24
 msgid "App label"
 msgstr "Заголовок приложения"
 
-#: models.py:43 models.py:60
+#: models.py:42 models.py:52
 msgid "Error log partition"
 msgstr "Раздел журнала ошибок"
 
-#: models.py:44
+#: models.py:43
 msgid "Error log partitions"
 msgstr "Разделы журнала ошибок"
 
-#: models.py:63
+#: models.py:55
 msgid "Date and time"
 msgstr "Дата и время"
 
-#: models.py:65
+#: models.py:57
 msgid "Text"
 msgstr "Текст"
 
-#: models.py:70
+#: models.py:62
 msgid "Error log partition entry"
 msgstr "Запись раздела журнала ошибок"
 
-#: models.py:71
+#: models.py:63
 msgid "Error log partition entries"
 msgstr "Записи раздела журнала ошибок"
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -49,7 +49,7 @@ msgstr ""
 
 #: events.py:10
 msgid "Document file parsed content deleted"
-msgstr ""
+msgstr "Анализираното съдържание на файла с документи е изтрито"
 
 #: events.py:14
 msgid "Document file submitted for parsing"
@@ -194,36 +194,38 @@ msgstr ""
 #, python-format
 msgid "Error deleting document version content \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Грешка при изтриване на съдържанието на версията на документа "
+"&quot;%(instance)s&quot;; %(exception)s"
 
 #: views.py:36
 #, python-format
 msgid "Content of \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Съдържанието на „%(object)s“ е изтрито успешно."
 
 #: views.py:39
 #, python-format
 msgid "Content of %(count)d document version deleted successfully."
-msgstr ""
+msgstr "Съдържанието на %(count)d версия на документа е изтрито успешно."
 
 #: views.py:42
 #, python-format
 msgid "Content of %(count)d document versions deleted successfully."
-msgstr ""
+msgstr "Съдържанието на %(count)d версии на документи е изтрито успешно."
 
 #: views.py:44
 #, python-format
 msgid "Delete the content of: %(object)s."
-msgstr ""
+msgstr "Изтрийте съдържанието на: %(object)s."
 
 #: views.py:46
 #, python-format
 msgid "Delete the content of the %(count)d selected document version."
-msgstr ""
+msgstr "Изтрийте съдържанието на %(count)d избрана версия."
 
 #: views.py:49
 #, python-format
 msgid "Delete the content of the %(count)d selected document versions."
-msgstr ""
+msgstr "Изтрийте съдържанието на %(count)d избрани версии."
 
 #: views.py:87
 #, python-format

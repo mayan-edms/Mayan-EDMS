@@ -15,11 +15,12 @@ from mayan.apps.databases.classes import BaseBackend
 from mayan.apps.task_manager.classes import Worker
 from mayan.settings.literals import (
     DEFAULT_DATABASE_NAME, DEFAULT_DATABASE_PASSWORD, DEFAULT_DATABASE_USER,
-    DEFAULT_DIRECTORY_INSTALLATION, DEFAULT_USER_SETTINGS_FOLDER,
-    DOCKER_DIND_IMAGE_VERSION, DOCKER_LINUX_IMAGE_VERSION,
-    DOCKER_MYSQL_IMAGE_VERSION, DOCKER_POSTGRES_IMAGE_VERSION,
-    GUNICORN_JITTER, GUNICORN_LIMIT_REQUEST_LINE, GUNICORN_MAX_REQUESTS,
-    GUNICORN_TIMEOUT, GUNICORN_WORKER_CLASS, GUNICORN_WORKERS
+    DEFAULT_DIRECTORY_INSTALLATION, DEFAULT_OS_USERNAME,
+    DEFAULT_USER_SETTINGS_FOLDER, DOCKER_DIND_IMAGE_VERSION,
+    DOCKER_LINUX_IMAGE_VERSION, DOCKER_MYSQL_IMAGE_VERSION,
+    DOCKER_POSTGRES_IMAGE_VERSION, GUNICORN_LIMIT_REQUEST_LINE,
+    GUNICORN_MAX_REQUESTS, GUNICORN_REQUESTS_JITTER, GUNICORN_TIMEOUT,
+    GUNICORN_WORKER_CLASS, GUNICORN_WORKERS
 )
 
 from .settings import (
@@ -181,6 +182,7 @@ class PlatformTemplate:
 class PlatformTemplateDockerEntrypoint(PlatformTemplate):
     label = _('Template for entrypoint.sh file inside a Docker image.')
     name = 'docker_entrypoint'
+    template_name = 'platform/docker/entrypoint.tmpl'
 
     def get_context(self):
         context = load_env_file()
@@ -190,7 +192,8 @@ class PlatformTemplateDockerEntrypoint(PlatformTemplate):
 
 class PlatformTemplateDockerfile(PlatformTemplate):
     label = _('Template that generates a Dockerfile file.')
-    name = 'dockerfile'
+    name = 'docker_dockerfile'
+    template_name = 'platform/docker/dockerfile.tmpl'
 
     def __init__(self):
         self.variables = (
@@ -205,9 +208,11 @@ class PlatformTemplateDockerfile(PlatformTemplate):
 class PlatformTemplateDockerSupervisord(PlatformTemplate):
     label = _('Template for Supervisord inside a Docker image.')
     name = 'docker_supervisord'
+    template_name = 'platform/docker/supervisord.tmpl'
 
     def get_context(self):
         return {
+            'OS_USERNAME': DEFAULT_OS_USERNAME,
             'autorestart': 'false',
             'shell_path': '/bin/sh',
             'stderr_logfile': '/dev/fd/2',
@@ -269,9 +274,9 @@ class PlatformTemplateSupervisord(PlatformTemplate):
     def __init__(self):
         self.variables = (
             Variable(
-                name='GUNICORN_JITTER',
-                default=GUNICORN_JITTER,
-                environment_name='MAYAN_GUNICORN_JITTER'
+                name='GUNICORN_REQUESTS_JITTER',
+                default=GUNICORN_REQUESTS_JITTER,
+                environment_name='MAYAN_GUNICORN_REQUESTS_JITTER'
             ),
             Variable(
                 name='GUNICORN_LIMIT_REQUEST_LINE',
@@ -308,6 +313,10 @@ class PlatformTemplateSupervisord(PlatformTemplate):
                 environment_name='MAYAN_INSTALLATION_PATH'
             ),
             Variable(
+                name='OS_USERNAME', default=DEFAULT_OS_USERNAME,
+                environment_name='MAYAN_OS_USERNAME'
+            ),
+            Variable(
                 name='USER_SETTINGS_FOLDER',
                 default=DEFAULT_USER_SETTINGS_FOLDER,
                 environment_name='MAYAN_USER_SETTINGS_FOLDER'
@@ -315,7 +324,7 @@ class PlatformTemplateSupervisord(PlatformTemplate):
             YAMLVariable(
                 name='MEDIA_ROOT', default=settings.MEDIA_ROOT,
                 environment_name='MAYAN_MEDIA_ROOT'
-            ),
+            )
         )
 
     def get_context(self):

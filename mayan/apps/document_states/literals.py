@@ -3,6 +3,16 @@ import os
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
+BASE_WORKFLOW_TEMPLATE_STATE_ACTION_HELP_TEXT = _(
+    'Can be a static value or a template. '
+    'In addition to the workflow instance, the template '
+    'receives the workflow instance context which itself '
+    'includes the "entry_log" (containing '
+    '"workflow_instance", "datetime", "transition", "user", '
+    '"comment") and any values from workflow template '
+    'fields.'
+)
+
 DEFAULT_GRAPHVIZ_DOT_PATH = '/usr/bin/dot'
 DEFAULT_HTTP_ACTION_TIMEOUT = 4  # 4 seconds
 DEFAULT_WORKFLOWS_IMAGE_CACHE_MAXIMUM_SIZE = 50 * 2 ** 20  # 50 Megabytes

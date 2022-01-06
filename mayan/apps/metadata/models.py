@@ -7,6 +7,8 @@ from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.validators import YAMLValidator
+from mayan.apps.common.serialization import yaml_load
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
@@ -20,21 +22,6 @@ from .events import (
     event_metadata_type_edited, event_metadata_type_relationship_updated
 )
 from .managers import DocumentTypeMetadataTypeManager, MetadataTypeManager
-from .settings import setting_available_parsers, setting_available_validators
-
-
-def validation_choices():
-    return zip(
-        setting_available_validators.value,
-        setting_available_validators.value
-    )
-
-
-def parser_choices():
-    return zip(
-        setting_available_parsers.value,
-        setting_available_parsers.value
-    )
 
 
 class MetadataType(ExtraDataModelMixin, models.Model):
@@ -67,17 +54,30 @@ class MetadataType(ExtraDataModelMixin, models.Model):
         ), verbose_name=_('Lookup')
     )
     validation = models.CharField(
-        blank=True, choices=validation_choices(),
-        help_text=_(
+        blank=True, help_text=_(
             'The validator will reject data entry if the value entered does '
             'not conform to the expected format.'
-        ), max_length=64, verbose_name=_('Validator')
+        ), max_length=224, verbose_name=_('Validator')
+    )
+    validation_arguments = models.TextField(
+        blank=True, help_text=_(
+            'Enter the arguments for the validator in YAML format.'
+        ), validators=[YAMLValidator()], verbose_name=_(
+            'Validator arguments'
+        )
     )
     parser = models.CharField(
-        blank=True, choices=parser_choices(), help_text=_(
+        blank=True, help_text=_(
             'The parser will reformat the value entered to conform to the '
             'expected format.'
-        ), max_length=64, verbose_name=_('Parser')
+        ), max_length=224, verbose_name=_('Parser')
+    )
+    parser_arguments = models.TextField(
+        blank=True, help_text=_(
+            'Enter the arguments for the parser in YAML format.'
+        ), validators=[YAMLValidator()], verbose_name=_(
+            'Parser arguments'
+        )
     )
 
     objects = MetadataTypeManager()
@@ -160,11 +160,19 @@ class MetadataType(ExtraDataModelMixin, models.Model):
                 )
 
         if self.validation:
-            validator = import_string(dotted_path=self.validation)()
+            validator_class = import_string(dotted_path=self.validation)
+            validator_arguments = yaml_load(
+                stream=self.validation_arguments or '{}'
+            )
+            validator = validator_class(**validator_arguments)
             validator.validate(value)
 
         if self.parser:
-            parser = import_string(dotted_path=self.parser)()
+            parser_class = import_string(dotted_path=self.parser)
+            parser_arguments = yaml_load(
+                stream=self.parser_arguments or '{}'
+            )
+            parser = parser_class(**parser_arguments)
             value = parser.parse(value)
 
         return value

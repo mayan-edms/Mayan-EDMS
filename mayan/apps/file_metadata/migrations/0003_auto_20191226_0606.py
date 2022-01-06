@@ -9,6 +9,8 @@ def operation_remove_duplicates(apps, schema_editor):
         app_label='file_metadata', model_name='DocumentVersionDriverEntry'
     )
 
+    # This logic assumes only one type of file metadata backend exists at
+    # this point of time.
     driver = StoredDriver.objects.first()
     if driver:
         DocumentVersionDriverEntry.objects.using(alias=schema_editor.connection.alias).update(driver=driver)
@@ -19,7 +21,7 @@ def operation_remove_duplicates(apps, schema_editor):
 class Migration(migrations.Migration):
     atomic = False
     dependencies = [
-        ('file_metadata', '0002_documenttypesettings'),
+        ('file_metadata', '0002_documenttypesettings')
     ]
     operations = [
         migrations.RunPython(
@@ -31,7 +33,7 @@ class Migration(migrations.Migration):
             name='driver_path',
             field=models.CharField(
                 max_length=255, unique=True, verbose_name='Driver path'
-            ),
+            )
         ),
         migrations.AlterField(
             model_name='storeddriver',
@@ -39,9 +41,9 @@ class Migration(migrations.Migration):
             field=models.CharField(
                 db_index=True, max_length=128, unique=True,
                 verbose_name='Internal name'
-            ),
-        ),
+            )
+        )
     ]
     run_before = [
-        ('documents', '0057_auto_20200916_1057'),
+        ('documents', '0057_auto_20200916_1057')
     ]

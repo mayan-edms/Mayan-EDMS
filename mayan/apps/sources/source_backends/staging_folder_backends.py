@@ -10,7 +10,7 @@ from furl import furl
 from django import forms
 from django.core.files import File
 from django.core.files.base import ContentFile
-from django.http import FileResponse, Http404
+from django.http import Http404, StreamingHttpResponse
 from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
@@ -24,6 +24,7 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.appearance.classes import Icon
 from mayan.apps.common.menus import menu_object
 from mayan.apps.converter.classes import ConverterBase
+from mayan.apps.converter.exceptions import InvalidOfficeFormat
 from mayan.apps.converter.transformations import TransformationResize
 from mayan.apps.converter.utils import IndexedDictionary
 from mayan.apps.documents.html_widgets import ThumbnailWidget
@@ -90,7 +91,7 @@ class StagingFolderFile:
 
     @property
     def cache_filename(self):
-        return '{}{}'.format(
+        return '{}-{}'.format(
             self.staging_folder.model_instance_id, self.encoded_filename
         )
 
@@ -113,6 +114,13 @@ class StagingFolderFile:
             image = self.get_image(
                 transformation_instance_list=transformation_instance_list
             )
+
+            # Since open "wb+" doesn't create files, check if the file
+            # exists, if not then create it.
+            self.storage.save(
+                name=self.cache_filename, content=ContentFile(content='')
+            )
+
             with self.storage.open(name=self.cache_filename, mode='wb+') as file_object:
                 file_object.write(image.getvalue())
 
@@ -163,40 +171,29 @@ class StagingFolderFile:
         )
 
     def get_image(self, transformation_instance_list=None):
-        cache_filename = self.cache_filename
-        file_object = None
-
         try:
-            file_object = open(file=self.get_full_path(), mode='rb')
-            converter = ConverterBase.get_converter_class()(
-                file_object=file_object
-            )
-
-            page_image = converter.get_page()
-
-            # Since open "wb+" doesn't create files, check if the file
-            # exists, if not then create it.
-            if not self.storage.exists(cache_filename):
-                self.storage.save(
-                    name=cache_filename, content=ContentFile(content='')
+            with open(file=self.get_full_path(), mode='rb') as file_object:
+                converter = ConverterBase.get_converter_class()(
+                    file_object=file_object
                 )
 
-            with self.storage.open(name=cache_filename, mode='wb+') as file_object:
-                file_object.write(page_image.getvalue())
+                try:
+                    with converter.to_pdf() as pdf_file_object:
+                        image_converter = ConverterBase.get_converter_class()(
+                            file_object=pdf_file_object
+                        )
+                        page_image = image_converter.get_page()
+                except InvalidOfficeFormat:
+                    page_image = converter.get_page()
         except Exception as exception:
             # Cleanup in case of error.
             logger.error(
-                'Error creating staging file cache "%s"; %s',
-                cache_filename, exception
+                'Error getting staging file image for file "%s"; %s',
+                self.get_full_path(), exception
             )
-            self.storage.delete(cache_filename)
-            if file_object:
-                file_object.close()
             raise
-
-        result = converter.get_page()
-        file_object.close()
-        return result
+        else:
+            return page_image
 
     @cached_property
     def storage(self):
@@ -341,6 +338,8 @@ class SourceBackendStagingFolder(
         staging_folder_file.delete()
 
     def action_file_image(self, request, encoded_filename, **kwargs):
+        encoded_filename = encoded_filename[0]
+
         query_dict = request.GET
 
         transformation_instance_list = IndexedDictionary(
@@ -384,7 +383,9 @@ class SourceBackendStagingFolder(
                     else:
                         yield chunk
 
-        response = FileResponse(file_generator(), content_type='image')
+        response = StreamingHttpResponse(
+            streaming_content=file_generator(), content_type='image'
+        )
         return None, response
 
     def action_file_list(self, request):

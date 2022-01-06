@@ -1,4 +1,4 @@
-from rest_framework import serializers
+from mayan.apps.rest_api import serializers
 
 from .models import Key
 
@@ -16,3 +16,7 @@ class KeySerializer(serializers.ModelSerializer):
             'id', 'key_data', 'key_type', 'length', 'url', 'user_id'
         )
         model = Key
+        read_only_fields = (
+            'algorithm', 'creation_date', 'expiration_date', 'fingerprint',
+            'id', 'key_type', 'length', 'url', 'user_id'
+        )

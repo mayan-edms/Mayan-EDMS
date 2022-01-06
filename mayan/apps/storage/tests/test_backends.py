@@ -4,7 +4,7 @@ from unittest import skip
 from django.core.files.base import ContentFile
 from django.utils.encoding import force_bytes
 
-from mayan.apps.mimetype.api import get_mimetype
+from mayan.apps.mime_types.tests.mixins import MIMETypeBackendMixin
 from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 from mayan.apps.testing.tests.base import BaseTestCase
 
@@ -14,7 +14,7 @@ from ..backends.encryptedstorage import EncryptedPassthroughStorage
 from .literals import TEST_CONTENT, TEST_FILE_NAME
 
 
-class EncryptedPassthroughStorageTestCase(BaseTestCase):
+class EncryptedPassthroughStorageTestCase(MIMETypeBackendMixin, BaseTestCase):
     def setUp(self):
         super().setUp()
         self.temporary_directory = mkdtemp()
@@ -41,7 +41,7 @@ class EncryptedPassthroughStorageTestCase(BaseTestCase):
 
         with path_file.open(mode='rb') as file_object:
             self.assertEqual(
-                get_mimetype(file_object=file_object),
+                self.mime_type_backend.get_mime_type(file_object=file_object),
                 ('application/octet-stream', 'binary')
             )
 
@@ -55,7 +55,9 @@ class EncryptedPassthroughStorageTestCase(BaseTestCase):
             self.assertEqual(file_object.read(999), TEST_CONTENT)
 
 
-class ZipCompressedPassthroughStorageTestCase(BaseTestCase):
+class ZipCompressedPassthroughStorageTestCase(
+    MIMETypeBackendMixin, BaseTestCase
+):
     def setUp(self):
         super().setUp()
         self.temporary_directory = mkdtemp()
@@ -64,7 +66,7 @@ class ZipCompressedPassthroughStorageTestCase(BaseTestCase):
         fs_cleanup(filename=self.temporary_directory)
         super().tearDown()
 
-    @skip('get_mimetype() is not recognizing deflated Zips some times.')
+    @skip('get_mime_type() is not recognizing deflated Zips some times.')
     def test_file_save_and_load(self):
         storage = ZipCompressedPassthroughStorage(
             next_storage_backend_arguments={
@@ -80,8 +82,8 @@ class ZipCompressedPassthroughStorageTestCase(BaseTestCase):
 
         with path_file.open(mode='rb') as file_object:
             self.assertTrue(
-                get_mimetype(
-                    file_object=file_object, mime=False, mimetype_only=True
+                self.mime_type_backend.get_mime_type(
+                    file_object=file_object, mime=False, mime_type_only=True
                 )[0].startswith('Zip archive data, made by v2.0')
             )
 
@@ -94,7 +96,9 @@ class ZipCompressedPassthroughStorageTestCase(BaseTestCase):
             self.assertEqual(file_object.read(), TEST_CONTENT)
 
 
-class CombinationPassthroughStorageTestCase(BaseTestCase):
+class CombinationPassthroughStorageTestCase(
+    MIMETypeBackendMixin, BaseTestCase
+):
     def setUp(self):
         super().setUp()
         self.temporary_directory = mkdtemp()
@@ -122,7 +126,7 @@ class CombinationPassthroughStorageTestCase(BaseTestCase):
 
         with path_file.open(mode='rb') as file_object:
             self.assertEqual(
-                get_mimetype(file_object=file_object),
+                self.mime_type_backend.get_mime_type(file_object=file_object),
                 ('application/zip', 'binary')
             )
 

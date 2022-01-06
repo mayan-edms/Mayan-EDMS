@@ -12,6 +12,7 @@ class DashboardsApp(MayanAppConfig):
     app_namespace = 'dashboards'
     app_url = 'dashboards'
     has_rest_api = False
+    has_static_media = True
     has_tests = True
     name = 'mayan.apps.dashboards'
     verbose_name = _('Dashboards')

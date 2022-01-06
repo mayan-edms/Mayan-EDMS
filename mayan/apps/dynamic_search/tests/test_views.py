@@ -1,12 +1,10 @@
-from django.test import override_settings
-
 from mayan.apps.documents.models.document_models import DocumentSearchResult
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
-from ..classes import SearchBackend, SearchModel
+from ..classes import SearchModel
 from ..permissions import permission_search_tools
 
 from .mixins import (
@@ -15,7 +13,7 @@ from .mixins import (
 
 
 class AdvancedSearchViewTestCaseMixin(
-    DocumentTestMixin, SearchViewTestMixin, GenericViewTestCase
+    DocumentTestMixin, SearchViewTestMixin
 ):
     auto_upload_test_document = False
 
@@ -23,19 +21,15 @@ class AdvancedSearchViewTestCaseMixin(
         super().setUp()
         self.test_document_count = 4
 
-        # Upload many instances of the same test document
+        # Upload many instances of the same test document.
         for i in range(self.test_document_count):
             self._upload_test_document()
-
-        self.search_backend = SearchBackend.get_instance()
+            self.grant_access(
+                obj=self.test_document, permission=permission_document_view
+            )
 
     def test_advanced_search_past_first_page(self):
         test_document_label = self.test_documents[0].label
-
-        for document in self.test_documents:
-            self.grant_access(
-                obj=document, permission=permission_document_view
-            )
 
         # Make sure all documents are returned by the search
         queryset = self.search_backend.search(
@@ -86,23 +80,28 @@ class AdvancedSearchViewTestCaseMixin(
             )
 
 
-@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend')
 class DjangoAdvancedSearchViewTestCase(
     AdvancedSearchViewTestCaseMixin, GenericViewTestCase
 ):
+    _test_search_backend_path = 'mayan.apps.dynamic_search.backends.django.DjangoSearchBackend'
     """Test against Django backend."""
 
 
-@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend')
+class ElasticSearchAdvancedSearchViewTestCase(
+    AdvancedSearchViewTestCaseMixin, GenericViewTestCase
+):
+    _test_search_backend_path = 'mayan.apps.dynamic_search.backends.elasticsearch.ElasticSearchBackend'
+    """Test against ElasticSearch backend."""
+
+
 class WhooshAdvancedSearchViewTestCase(
     AdvancedSearchViewTestCaseMixin, GenericViewTestCase
 ):
+    _test_search_backend_path = 'mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend'
     """Test against Whoosh backend."""
 
 
-class SearchViewTestCaseMixin(
-    DocumentTestMixin, SearchViewTestMixin,
-):
+class SearchViewTestCaseMixin(DocumentTestMixin, SearchViewTestMixin):
     def test_result_view_with_search_mode_in_data(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
@@ -119,24 +118,29 @@ class SearchViewTestCaseMixin(
         )
 
 
-@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend')
 class DjangoSearchViewTestCase(
     SearchViewTestCaseMixin, GenericViewTestCase
 ):
+    _test_search_backend_path = 'mayan.apps.dynamic_search.backends.django.DjangoSearchBackend'
     """Test against Django backend."""
 
 
-@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend')
+class ElasticSearchSearchViewTestCase(
+    SearchViewTestCaseMixin, GenericViewTestCase
+):
+    _test_search_backend_path = 'mayan.apps.dynamic_search.backends.elasticsearch.ElasticSearchBackend'
+    """Test against ElasticSearch backend."""
+
+
 class WhooshSearchViewTestCase(
     SearchViewTestCaseMixin, GenericViewTestCase
 ):
+    _test_search_backend_path = 'mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend'
     """Test against Whoosh backend."""
 
 
-@override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend')
-class SearchToolsViewTestCase(
-    DocumentTestMixin, SearchToolsViewTestMixin, SearchTestMixin,
-    GenericViewTestCase
+class SearchToolsViewTestCaseMixin(
+    DocumentTestMixin, SearchToolsViewTestMixin, SearchTestMixin
 ):
     def setUp(self):
         super().setUp()
@@ -146,7 +150,7 @@ class SearchToolsViewTestCase(
         )
 
     def test_search_backend_reindex_view_no_permission(self):
-        self.search_backend.clear_search_model_index(
+        self.search_backend.reset(
             search_model=self.document_search_model
         )
         self.grant_access(
@@ -164,7 +168,7 @@ class SearchToolsViewTestCase(
         self.assertEqual(queryset.count(), 0)
 
     def test_search_backend_reindex_view_with_permission(self):
-        self.search_backend.clear_search_model_index(
+        self.search_backend.reset(
             search_model=self.document_search_model
         )
         self.grant_access(
@@ -181,3 +185,24 @@ class SearchToolsViewTestCase(
             user=self._test_case_user
         )
         self.assertNotEqual(queryset.count(), 0)
+
+
+class DjangoSearchToolViewTestCase(
+    SearchToolsViewTestCaseMixin, GenericViewTestCase
+):
+    _test_search_backend_path = 'mayan.apps.dynamic_search.backends.django.DjangoSearchBackend'
+    """Test against Django backend."""
+
+
+class ElasticSearchToolViewTestCase(
+    SearchToolsViewTestCaseMixin, GenericViewTestCase
+):
+    _test_search_backend_path = 'mayan.apps.dynamic_search.backends.elasticsearch.ElasticSearchBackend'
+    """Test against ElasticSearch backend."""
+
+
+class WhooshSearchToolViewTestCase(
+    SearchToolsViewTestCaseMixin, GenericViewTestCase
+):
+    _test_search_backend_path = 'mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend'
+    """Test against Whoosh backend."""

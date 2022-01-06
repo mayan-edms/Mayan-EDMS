@@ -334,5 +334,15 @@ class IndexIntegrityTestCase(
             IndexInstanceNode.objects.create(
                 parent=index_instance_node.parent,
                 index_template_node=index_instance_node.index_template_node,
-                value=index_instance_node.value,
+                value=index_instance_node.value
             )
+
+        # Reset the failed database write to allow the database manager
+        # to flush the database during the test tear down.
+        IndexInstanceNode.objects.create(
+            parent=index_instance_node.parent,
+            index_template_node=index_instance_node.index_template_node,
+            value='{}_{}'.format(
+                index_instance_node.value, index_instance_node.pk
+            )
+        )

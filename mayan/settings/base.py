@@ -13,7 +13,7 @@ from .literals import DEFAULT_SECRET_KEY, SECRET_KEY_FILENAME, SYSTEM_DIR
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 setting_namespace = SettingNamespaceSingleton(global_symbol_table=globals())
 if 'revertsettings' in sys.argv:
@@ -27,7 +27,6 @@ if 'revertsettings' in sys.argv:
 else:
     setting_namespace.update_globals()
 
-# SECURITY WARNING: keep the secret key used in production secret!
 environment_secret_key = os.environ.get('MAYAN_SECRET_KEY')
 if environment_secret_key:
     SECRET_KEY = environment_secret_key
@@ -38,8 +37,6 @@ else:
             SECRET_KEY = file_object.read().strip()
     except IOError:
         SECRET_KEY = DEFAULT_SECRET_KEY
-
-# SECURITY WARNING: don't run with debug turned on in production!
 
 # Application definition
 
@@ -56,8 +53,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.forms',
-    # Allow using WhiteNoise in development.
-    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     # 3rd party.
     'actstream',
@@ -85,6 +80,7 @@ INSTALLED_APPS = (
     # and User models are properly setup using runtime methods.
     'mayan.apps.user_management',
     'mayan.apps.authentication',
+    'mayan.apps.authentication_otp',
     'mayan.apps.autoadmin',
     'mayan.apps.common',
     'mayan.apps.converter',
@@ -97,7 +93,7 @@ INSTALLED_APPS = (
     'mayan.apps.locales',
     'mayan.apps.lock_manager',
     'mayan.apps.messaging',
-    'mayan.apps.mimetype',
+    'mayan.apps.mime_types',
     'mayan.apps.navigation',
     'mayan.apps.organizations',
     'mayan.apps.permissions',
@@ -180,7 +176,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mayan.wsgi.application'
 
 # Password validation
-# https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -198,7 +194,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.10/topics/i18n/
+# https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -211,7 +207,7 @@ USE_L10N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.10/howto/static-files/
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
 
@@ -246,11 +242,19 @@ LANGUAGES = (
     ('zh-hans', _('Chinese (Simplified)'))
 )
 
+MEDIA_URL = 'media/'
+
 SITE_ID = 1
 
 STATIC_ROOT = os.environ.get(
     'MAYAN_STATIC_ROOT', os.path.join(MEDIA_ROOT, 'static')  # NOQA: F821
 )
+
+MEDIA_URL = 'media/'
+
+# Silence warning and keep default for the time being.
+# https://docs.djangoproject.com/en/3.2/releases/3.2/#customizing-type-of-auto-created-primary-keys
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -332,9 +336,20 @@ for app in INSTALLED_APPS:
             'in https://docs.mayan-edms.com/releases/3.2.html#backward-incompatible-changes'
         )
 
-for APP in (COMMON_EXTRA_APPS or ()):  # NOQA: F821
-    INSTALLED_APPS = INSTALLED_APPS + (APP,)
+repeated_apps = tuple(
+    set(COMMON_EXTRA_APPS_PRE).intersection(set(COMMON_EXTRA_APPS))
+)
+if repeated_apps:
+    raise ImproperlyConfigured(
+        'Apps "{}" cannot be specified in `COMMON_EXTRA_APPS_PRE` and '
+        '`COMMON_EXTRA_APPS` at the same time.'.format(
+            ', '.join(tuple(repeated_apps))
+        )
+    )
 
+INSTALLED_APPS = tuple(COMMON_EXTRA_APPS_PRE or ()) + INSTALLED_APPS  # NOQA: F821
+
+INSTALLED_APPS = INSTALLED_APPS + tuple(COMMON_EXTRA_APPS or ())  # NOQA: F821
 
 INSTALLED_APPS = [
     APP for APP in INSTALLED_APPS if APP not in (COMMON_DISABLED_APPS or ())  # NOQA: F821

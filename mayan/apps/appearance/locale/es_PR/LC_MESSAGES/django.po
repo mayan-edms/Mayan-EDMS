@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
@@ -214,7 +214,7 @@ msgstr ""
 "acceder a ella."
 
 #: templates/500.html:5 templates/500.html:30
-#: templates/appearance/root.html:58
+#: templates/appearance/root.html:48
 msgid "Server error"
 msgstr "Error de servidor"
 
@@ -255,7 +255,7 @@ msgstr ""
 msgid "About"
 msgstr "Sobre"
 
-#: templates/appearance/about.html:73
+#: templates/appearance/about.html:72
 #, python-format
 msgid ""
 "\n"
@@ -266,51 +266,20 @@ msgstr ""
 "                    %(setting_project_title)s se basa en %(project_title)s\n"
 "                "
 
-#: templates/appearance/about.html:78
+#: templates/appearance/about.html:77
 msgid "Version"
 msgstr "Versión"
 
-#: templates/appearance/about.html:80
+#: templates/appearance/about.html:79
 #, python-format
 msgid "Build number: %(build_number)s"
 msgstr "Número de compilación: %(build_number)s"
 
-#: templates/appearance/about.html:93
+#: templates/appearance/about.html:92
 msgid "Released under the license:"
 msgstr "Publicado bajo la licencia:"
 
-#: templates/appearance/about.html:99
-#, python-format
-msgid ""
-"\n"
-"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
-"            "
-msgstr ""
-"\n"
-"                %(project_title)s es un software gratuito y de código abierto realizado con <i class = \"fa fa-heart text-danger\" style = \"transform: rotate (10deg);\"> </i> por Roberto Rosario y colaboradores.\n"
-"            "
-
-#: templates/appearance/about.html:105
-#, python-format
-msgid ""
-"\n"
-"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
-"            "
-msgstr ""
-"\n"
-"Se necesita un gran esfuerzo para hacer que %(project_title)s sea tan rico en funciones como lo es."
-
-#: templates/appearance/about.html:111
-#, python-format
-msgid ""
-"\n"
-"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
-"            "
-msgstr ""
-"\n"
-"Si usa %(project_title)s por favor <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">haga una donación %(icon_social_paypal)s</a>"
-
-#: templates/appearance/about.html:117
+#: templates/appearance/about.html:98
 #, python-format
 msgid ""
 "\n"
@@ -321,7 +290,7 @@ msgstr ""
 "                La lista completa de cambios está disponible a través de <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\"> Notas de la versión %(icon_documentation)s </a> o la versión corta <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\"> Changelog %(icon_documentation)s </a>.\n"
 "            "
 
-#: templates/appearance/about.html:123
+#: templates/appearance/about.html:104
 #, python-format
 msgid ""
 "\n"
@@ -331,7 +300,7 @@ msgstr ""
 "\n"
 "Para preguntas, consulte la <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentación %(icon_documentation)s</a> ."
 
-#: templates/appearance/about.html:129
+#: templates/appearance/about.html:110
 #, python-format
 msgid ""
 "\n"
@@ -342,7 +311,7 @@ msgstr ""
 "                Si encontró un error o tiene una idea característica, visite el <a class=\"new_window\" href=\"https://forum.mayan-edms.com\"> Forum %(icon_forum)s </a> o abra un ticket en el <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\"> Repositorio de código fuente %(icon_source_code)s </a>\n"
 "            "
 
-#: templates/appearance/about.html:134
+#: templates/appearance/about.html:115
 #, python-format
 msgid ""
 "\n"
@@ -352,19 +321,19 @@ msgstr ""
 "\n"
 "Difundir la voz. ¡Habla con tus amigos y colegas sobre lo increíble que es %(project_title)s!"
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:73
 msgid "Object"
 msgstr "Objeto"
 
-#: templates/appearance/generic_confirm.html:14
+#: templates/appearance/generic_confirm.html:13
 msgid "Are you sure?"
 msgstr "¿Está seguro?"
 
-#: templates/appearance/generic_confirm.html:38
+#: templates/appearance/generic_confirm.html:37
 msgid "Yes"
 msgstr "Si"
 
-#: templates/appearance/generic_confirm.html:48
+#: templates/appearance/generic_confirm.html:47
 msgid "No"
 msgstr "No"
 
@@ -460,15 +429,15 @@ msgstr "Alternar desplegable"
 msgid "No results"
 msgstr "Ningún resultado"
 
-#: templates/appearance/root.html:63
+#: templates/appearance/root.html:53
 msgid "Close"
 msgstr "Cerrar"
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:61
 msgid "Server communication error"
 msgstr "Error de comunicación del servidor"
 
-#: templates/appearance/root.html:75
+#: templates/appearance/root.html:63
 msgid "Check you network connection and try again in a few moments."
 msgstr "Verifique su conexión de red y vuelva a intentarlo en unos momentos."
 

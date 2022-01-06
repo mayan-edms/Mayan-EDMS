@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -38,11 +38,11 @@ msgstr "Interne naam"
 msgid "Description"
 msgstr "Beschrijving"
 
-#: apps.py:45 classes.py:140
+#: apps.py:45 classes.py:214
 msgid "Type"
 msgstr "Type"
 
-#: apps.py:49 classes.py:142
+#: apps.py:49 classes.py:216
 msgid "Other data"
 msgstr "Andere gegevens"
 
@@ -50,78 +50,82 @@ msgstr "Andere gegevens"
 msgid "Declared by"
 msgstr "Toegewezen door"
 
-#: apps.py:57 classes.py:140
+#: apps.py:57 classes.py:214
 msgid "Version"
 msgstr "Versie"
 
-#: apps.py:61 classes.py:141 classes.py:781
+#: apps.py:61
 msgid "Environment"
 msgstr "Omgeving"
 
-#: apps.py:64 classes.py:142
+#: apps.py:64 classes.py:216
 msgid "Check"
 msgstr "Controleren"
 
-#: classes.py:140
+#: classes.py:214
 msgid "Name"
 msgstr "Naam"
 
-#: classes.py:141
+#: classes.py:215
 msgid "App"
 msgstr "App"
 
-#: classes.py:256
+#: classes.py:215 classes.py:840
+msgid "Environments"
+msgstr ""
+
+#: classes.py:308
 msgid "Need to specify at least one: app_label or module."
 msgstr "Minstens één specificatie nodig van: app_label of module."
 
-#: classes.py:261
+#: classes.py:313
 #, python-format
 msgid "Dependency \"%s\" already registered."
 msgstr "Afhankelijkheid \"%s\" al vastgelegd."
 
-#: classes.py:287
+#: classes.py:339
 #, python-format
 msgid "Installing package: %s... "
 msgstr "Pakket aan het installeren: %s ..."
 
-#: classes.py:292
+#: classes.py:344
 msgid "Already installed."
 msgstr "Reeds geïnstalleerd."
 
-#: classes.py:295 classes.py:300 classes.py:304
+#: classes.py:347 classes.py:352 classes.py:356
 msgid "Complete."
 msgstr "Voltooid."
 
-#: classes.py:330
+#: classes.py:382
 msgid "Installed and correct version"
 msgstr "Geïnstalleerd en juiste versie"
 
-#: classes.py:332
+#: classes.py:384
 msgid "Missing or incorrect version"
 msgstr "Ontbrekend of onjuiste versie"
 
-#: classes.py:361
+#: classes.py:419
 msgid "None"
 msgstr "Geen"
 
-#: classes.py:370
+#: classes.py:428
 msgid "Not specified"
 msgstr "Niet opgegeven"
 
-#: classes.py:373
+#: classes.py:431
 msgid "Patching files... "
 msgstr "Bestanden aanpassen ..."
 
-#: classes.py:401
+#: classes.py:459
 msgid "Executables that are called directly by the code."
 msgstr ""
 "Uitvoerbare bestanden die rechtstreeks door de code worden aangeroepen."
 
-#: classes.py:403
+#: classes.py:461
 msgid "Binary"
 msgstr "Binair"
 
-#: classes.py:420
+#: classes.py:478
 msgid ""
 "JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
@@ -129,51 +133,51 @@ msgstr ""
 "JavaScript bibliotheken gedownload van het NPM-register en gebruikt voor "
 "front-end functionaliteit."
 
-#: classes.py:423
+#: classes.py:481
 msgid "JavaScript"
 msgstr "JavaScript"
 
-#: classes.py:453 classes.py:694
+#: classes.py:511 classes.py:752
 msgid "Downloading... "
 msgstr "Aan het downloaden..."
 
-#: classes.py:456
+#: classes.py:514
 msgid "Verifying... "
 msgstr "Aan het verifiëren..."
 
-#: classes.py:459 classes.py:697
+#: classes.py:517 classes.py:755
 msgid "Extracting... "
 msgstr "Aan het uitpakken..."
 
-#: classes.py:636
+#: classes.py:694
 msgid "Python packages downloaded from PyPI."
 msgstr "Pythonpakketten gedownload van PyPI."
 
-#: classes.py:638
+#: classes.py:696
 msgid "Python"
 msgstr "Python"
 
-#: classes.py:675
+#: classes.py:733
 msgid "Fonts downloaded from fonts.googleapis.com."
 msgstr "Fonts gedownload van fonts.googleapis.com."
 
-#: classes.py:677
+#: classes.py:735
 msgid "Google font"
 msgstr "Google font"
 
-#: classes.py:763
+#: classes.py:821
 msgid "Declared in app"
 msgstr "Toegewezen in app"
 
-#: classes.py:764
+#: classes.py:822
 msgid "Show dependencies by the app that declared them."
 msgstr "Toon afhankelijkheden door de app die ze heeft toegewezen."
 
-#: classes.py:768
+#: classes.py:826
 msgid "Class"
 msgstr "Klasse"
 
-#: classes.py:769
+#: classes.py:827
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
@@ -181,11 +185,11 @@ msgstr ""
 "Toon de verschillende klassen van afhankelijkheden. Klassen worden meestal "
 "onderverdeeld per taal of de bestandstypen van de afhankelijkheid."
 
-#: classes.py:774
+#: classes.py:832
 msgid "State"
 msgstr "Status"
 
-#: classes.py:775
+#: classes.py:833
 msgid ""
 "Show the different states of the dependencies. True means that the "
 "dependencies is installed and is of a correct version. False means the "
@@ -196,7 +200,7 @@ msgstr ""
 "\"Niet Waar\" betekent dat de afhankelijkheden ontbreken of dat er een "
 "onjuiste versie aanwezig is."
 
-#: classes.py:782
+#: classes.py:841
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."

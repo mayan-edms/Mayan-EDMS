@@ -1,7 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import serializers
-
+from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.serializer_mixins import CreateOnlyFieldSerializerMixin
 from mayan.apps.user_management.serializers import UserSerializer
 

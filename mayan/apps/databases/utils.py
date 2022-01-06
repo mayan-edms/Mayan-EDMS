@@ -1,7 +1,17 @@
+from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
+
+from .literals import DJANGO_SQLITE_BACKEND
+
+
+def check_for_sqlite():
+    return settings.DATABASES['default']['ENGINE'] == DJANGO_SQLITE_BACKEND and settings.DEBUG is False
 
 
 def check_queryset(self, queryset):
+    """
+    Validate that a view queryset is usable.
+    """
     try:
         queryset.query
     except AttributeError:

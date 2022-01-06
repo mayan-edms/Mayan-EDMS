@@ -11,3 +11,6 @@ TEST_SETTING_INITIAL_VALUE = 'test_setting_initial_value'
 TEST_SETTING_DEFAULT_VALUE = 'test_setting_default_value'
 TEST_SETTING_VALUE = 'test_setting_value'
 TEST_SETTING_VALUE_OVERRIDE = 'test value override'
+
+TEST_SETTING_VALIDATION_BAD_VALUE = 'test bad value'
+TEST_SETTING_VALIDATION_GOOD_VALUE = 'test good value'

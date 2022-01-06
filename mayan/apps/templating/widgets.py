@@ -1,4 +1,5 @@
 from django import forms
+from django.apps import apps
 from django.contrib import admindocs
 from django.utils.translation import gettext as _
 from mayan.apps.common.classes import ModelAttribute
@@ -107,9 +108,12 @@ class ModelTemplateWidget(TemplateWidget):
     def decompress(self, value):
         result = super().decompress(value=value)
 
-        attribute_choices = ModelAttribute.get_all_choices_for(
-            model=self.attrs['model']
+        model = apps.get_model(
+            app_label=self.attrs['app_label'],
+            model_name=self.attrs['model_name']
         )
+
+        attribute_choices = ModelAttribute.get_all_choices_for(model=model)
         attribute_choices.insert(
             0, ('', _('<Model attributes>'))
         )

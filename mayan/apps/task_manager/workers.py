@@ -25,11 +25,11 @@ worker_c = Worker(
     concurrency=MAYAN_WORKER_C_CONCURRENCY,
     maximum_memory_per_child=MAYAN_WORKER_C_MAX_MEMORY_PER_CHILD,
     maximum_tasks_per_child=MAYAN_WORKER_C_MAX_TASKS_PER_CHILD,
-    name='worker_c', nice_level=15
+    name='worker_c', nice_level=10
 )
 worker_d = Worker(
     concurrency=MAYAN_WORKER_D_CONCURRENCY,
     maximum_memory_per_child=MAYAN_WORKER_D_MAX_MEMORY_PER_CHILD,
     maximum_tasks_per_child=MAYAN_WORKER_D_MAX_TASKS_PER_CHILD,
-    name='worker_d', nice_level=18
+    name='worker_d', nice_level=15
 )

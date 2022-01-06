@@ -29,6 +29,9 @@ if 'django_extensions' not in INSTALLED_APPS:
             'django_extensions',
         )
 
+# Allow using WhiteNoise in development.
+INSTALLED_APPS.insert(0, 'whitenoise.runserver_nostatic')
+
 LOGGING_LEVEL = 'DEBUG'
 ROOT_URLCONF = 'mayan.urls.development'
 

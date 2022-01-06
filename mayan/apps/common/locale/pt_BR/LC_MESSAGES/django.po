@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Aline Freitas <aline@alinefreitas.com.br>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:129 permissions.py:5 settings.py:14
+#: apps.py:137 permissions.py:5 settings.py:15
 msgid "Common"
 msgstr "Comum"
 
@@ -106,12 +106,12 @@ msgstr "Obtenha ajuda"
 msgid "Tools"
 msgstr "Ferramentas"
 
-#: literals.py:19
+#: literals.py:20
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Essa funcionalidade foi deprecada e será removida numa versão futura"
 
-#: literals.py:22
+#: literals.py:23
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
@@ -119,15 +119,15 @@ msgstr ""
 "Sua base de dados está configurada para utilizar SQLite. SQLite deve ser "
 "usado apenas em ambientes de desenvolvimento e testes, não de produção."
 
-#: literals.py:31
+#: literals.py:32
 msgid "Days"
 msgstr "Dias"
 
-#: literals.py:32
+#: literals.py:33
 msgid "Hours"
 msgstr "Horas"
 
-#: literals.py:33
+#: literals.py:34
 msgid "Minutes"
 msgstr "Minutos"
 
@@ -163,7 +163,7 @@ msgstr "Usuário"
 msgid "Copy object"
 msgstr "Copiar objeto"
 
-#: settings.py:21
+#: settings.py:22
 msgid ""
 "In list mode, show the \"list facet\" menu options as a dropdown menu "
 "instead of individual buttons."
@@ -171,7 +171,7 @@ msgstr ""
 "No modo de lista, mostra as opções do menu \"faceta da lista\" como um menu "
 "suspenso em vez de botões individuais."
 
-#: settings.py:29
+#: settings.py:30
 msgid ""
 "In list mode, show the \"object\" menu options as a dropdown menu instead of"
 " individual buttons."
@@ -179,7 +179,7 @@ msgstr ""
 "No modo de lista, mostra as opções do menu \"objeto\" como um menu suspenso "
 "em vez de botões individuais."
 
-#: settings.py:36
+#: settings.py:37
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -192,7 +192,7 @@ msgstr ""
 "aplicativo (preferencial) ou um pacote contendo um aplicativo. Exemplo: "
 "['app_1', 'app_2']"
 
-#: settings.py:46
+#: settings.py:47
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -205,7 +205,16 @@ msgstr ""
 "(preferencial) ou um pacote contendo um aplicativo. Exemplo: ['app_1', "
 "'app_2']"
 
-#: settings.py:56
+#: settings.py:58
+msgid ""
+"A list of strings designating all applications that are installed beyond "
+"those normally installed by Mayan EDMS. Each string should be a dotted "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. These apps will be installed before the default "
+"apps. Example: ['app_1', 'app_2']"
+msgstr ""
+
+#: settings.py:69
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
@@ -213,15 +222,15 @@ msgstr ""
 "Nome da tela associada à âncora da marca no menu principal. Esta é também a "
 "tela para qual os usuários serão direcionados após o login."
 
-#: settings.py:65
+#: settings.py:78
 msgid "Name of the dashboard to display in the home view."
 msgstr ""
 
-#: settings.py:70
+#: settings.py:83
 msgid "Sets the project's name."
 msgstr ""
 
-#: settings.py:74
+#: settings.py:87
 msgid "URL of the project's homepage."
 msgstr ""
 

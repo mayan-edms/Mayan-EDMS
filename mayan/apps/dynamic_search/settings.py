@@ -4,7 +4,7 @@ from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import (
     DEFAULT_SEARCH_BACKEND, DEFAULT_SEARCH_BACKEND_ARGUMENTS,
-    DEFAULT_SEARCH_DISABLE_SIMPLE_SEARCH,
+    DEFAULT_SEARCH_DISABLE_SIMPLE_SEARCH, DEFAULT_SEARCH_INDEXING_CHUNK_SIZE,
     DEFAULT_SEARCH_MATCH_ALL_DEFAULT_VALUE, DEFAULT_SEARCH_RESULTS_LIMIT
 )
 
@@ -25,6 +25,13 @@ setting_disable_simple_search = namespace.add_setting(
     global_name='SEARCH_DISABLE_SIMPLE_SEARCH', help_text=_(
         'Disables the single term bar search leaving only the advanced '
         'search button.'
+    )
+)
+setting_indexing_chunk_size = namespace.add_setting(
+    default=DEFAULT_SEARCH_INDEXING_CHUNK_SIZE,
+    global_name='SEARCH_INDEXING_CHUNK_SIZE',
+    help_text=_(
+        'Amount of objects to process when performing bulk indexing.'
     )
 )
 setting_match_all_default_value = namespace.add_setting(

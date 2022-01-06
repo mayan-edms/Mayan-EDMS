@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -26,21 +26,21 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:214 apps.py:658 events.py:5 menus.py:8
+#: apps.py:215 apps.py:659 events.py:5 menus.py:8
 #: models/document_models.py:131 permissions.py:5 queues.py:21 settings.py:33
 #: statistics.py:230
 msgid "Documents"
 msgstr "Documentos"
 
-#: apps.py:280
+#: apps.py:281
 msgid "Decorations"
 msgstr "Decorações"
 
-#: apps.py:299
+#: apps.py:300
 msgid "Create a document type"
 msgstr "Criar tipo de documento"
 
-#: apps.py:301
+#: apps.py:302
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
@@ -48,46 +48,46 @@ msgstr ""
 "A cada documento carregado deve ser atribuído um tipo de documento. Esta é "
 "forma básica pela qual o Mayan EDMS categoriza os documentos."
 
-#: apps.py:402
+#: apps.py:403
 msgid "File comments"
 msgstr ""
 
-#: apps.py:406
+#: apps.py:407
 msgid "File encodings"
 msgstr ""
 
-#: apps.py:410
+#: apps.py:411
 msgid "File MIME types"
 msgstr ""
 
-#: apps.py:414
+#: apps.py:415
 msgid "File timestamps"
 msgstr ""
 
-#: apps.py:419 links/document_file_page_links.py:79
+#: apps.py:420 links/document_file_page_links.py:79
 #: models/document_file_models.py:120 models/document_file_page_models.py:34
 #: search.py:52
 msgid "Document file"
 msgstr ""
 
-#: apps.py:423 models/document_file_page_models.py:38
+#: apps.py:424 models/document_file_page_models.py:38
 #: models/document_version_page_models.py:50
 msgid "Page number"
 msgstr "Número da página"
 
-#: apps.py:428
+#: apps.py:429
 msgid "Return the latest file of the document."
 msgstr ""
 
-#: apps.py:429
+#: apps.py:430
 msgid "Latest file"
 msgstr ""
 
-#: apps.py:432
+#: apps.py:433
 msgid "Return the document instance."
 msgstr "Retornar a instância do documento."
 
-#: apps.py:433 links/document_file_links.py:63
+#: apps.py:434 links/document_file_links.py:63
 #: links/document_file_page_links.py:73 links/document_version_links.py:75
 #: links/document_version_page_links.py:102 models/document_file_models.py:76
 #: models/document_models.py:130 models/document_version_models.py:46
@@ -96,25 +96,25 @@ msgstr "Retornar a instância do documento."
 msgid "Document"
 msgstr "Documento"
 
-#: apps.py:563 apps.py:615 apps.py:644 apps.py:678 apps.py:703
+#: apps.py:564 apps.py:616 apps.py:645 apps.py:679 apps.py:704
 msgid "Thumbnail"
 msgstr "Miniatura"
 
-#: apps.py:569
+#: apps.py:570
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:573 apps.py:620 apps.py:683 forms/document_file_forms.py:71
+#: apps.py:574 apps.py:621 apps.py:684 forms/document_file_forms.py:71
 #: links/document_file_page_links.py:122
 #: links/document_version_page_links.py:52
 msgid "Pages"
 msgstr "Páginas"
 
-#: apps.py:582 models/favorite_document_models.py:34
+#: apps.py:583 models/favorite_document_models.py:34
 msgid "Date and time added"
 msgstr ""
 
-#: apps.py:593
+#: apps.py:594
 msgid "Access date and time"
 msgstr ""
 
@@ -701,8 +701,8 @@ msgid "Document files"
 msgstr ""
 
 #: models/document_file_models.py:333 models/document_file_page_models.py:267
-#: models/document_models.py:72 models/document_models.py:319
-#: models/document_models.py:324 models/document_type_models.py:41
+#: models/document_models.py:72 models/document_models.py:318
+#: models/document_models.py:323 models/document_type_models.py:41
 #: models/document_type_models.py:203 models/document_version_models.py:236
 #: models/document_version_page_models.py:347
 msgid "Label"
@@ -786,7 +786,7 @@ msgstr ""
 msgid "Is stub?"
 msgstr "É um rascunho?"
 
-#: models/document_models.py:317 models/document_models.py:322
+#: models/document_models.py:316 models/document_models.py:321
 #, python-format
 msgid "Document stub, id: %d"
 msgstr "Rascunho de documento, id: %d"

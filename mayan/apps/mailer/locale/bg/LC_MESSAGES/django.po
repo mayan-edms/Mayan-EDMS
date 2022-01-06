@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -77,27 +77,27 @@ msgstr "Бекенд"
 
 #: links.py:33 links.py:36
 msgid "Email document link"
-msgstr ""
+msgstr "Връзка към имейл документ"
 
 #: links.py:46 links.py:51
 msgid "Email document file"
-msgstr ""
+msgstr "Файл с документи по имейл"
 
 #: links.py:57 links.py:62
 msgid "Email document file link"
-msgstr ""
+msgstr "Връзка към файл на документ по имейл"
 
 #: links.py:72 links.py:77
 msgid "Email document version"
-msgstr ""
+msgstr "Версия на имейл документ"
 
 #: links.py:83
 msgid "Email document version link"
-msgstr ""
+msgstr "Връзка към версията на имейл документ"
 
 #: links.py:88
 msgid "Email link version"
-msgstr ""
+msgstr "Версия на имейл връзка"
 
 #: links.py:97
 msgid "Create mailing profile"
@@ -131,10 +131,12 @@ msgid ""
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr ""
+"Към този имейл е прикачен {{object_name}}: {{object}} -------- Този имейл е "
+"изпратен от %(project_title)s (%(project_website)s)"
 
 #: literals.py:11
 msgid "{{ object_name }}: {{ object }}"
-msgstr ""
+msgstr "{{object_name}}: {{object}}"
 
 #: literals.py:13
 #, python-format
@@ -144,10 +146,12 @@ msgid ""
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr ""
+"За достъп до този {{object_name}} кликнете върху следната връзка: {{link}} "
+"-------- Този имейл е изпратен от %(project_title)s (%(project_website)s)"
 
 #: literals.py:17
 msgid "Link for {{ object_name }}: {{ object }}"
-msgstr ""
+msgstr "Връзка за {{object_name}}: {{object}}"
 
 #: mailers.py:19 mailers.py:108
 msgid "From"
@@ -313,23 +317,23 @@ msgstr "Изпрати връзка за документа по ел. поща"
 
 #: permissions.py:34
 msgid "Send document file via email"
-msgstr ""
+msgstr "Изпратете файла с документи по имейл"
 
 #: permissions.py:38
 msgid "Send document file link via email"
-msgstr ""
+msgstr "Изпратете връзка към файл с документ по имейл"
 
 #: permissions.py:45
 msgid "Send document version via email"
-msgstr ""
+msgstr "Изпратете версията на документа по имейл"
 
 #: permissions.py:49
 msgid "Send document version link via email"
-msgstr ""
+msgstr "Изпратете връзката към версията на документа по имейл"
 
 #: queues.py:11
 msgid "Send object"
-msgstr ""
+msgstr "Изпратете обект"
 
 #: settings.py:15
 msgid "Template for the document email form subject line."
@@ -363,42 +367,52 @@ msgstr "Файл на документа"
 #: views/document_file_views.py:17
 #, python-format
 msgid "%(count)d document file queued for email delivery"
-msgstr ""
+msgstr "%(count)d файл с документи в опашка за доставка на имейл"
 
 #: views/document_file_views.py:19
 #, python-format
 msgid "%(count)d document files queued for email delivery"
-msgstr ""
+msgstr "%(count)d файлове с документи в опашка за доставка на имейл"
 
 #: views/document_file_views.py:31
 #, python-format
 msgid "%(count)d document file link queued for email delivery"
 msgstr ""
+"%(count)d връзка към файла на документа е поставена на опашка за доставка на"
+" имейл"
 
 #: views/document_file_views.py:34
 #, python-format
 msgid "%(count)d document file links queued for email delivery"
 msgstr ""
+"%(count)d връзки към файлове с документи, поставени на опашка за доставка на"
+" имейл"
 
 #: views/document_version_views.py:18
 #, python-format
 msgid "%(count)d document version queued for email delivery"
 msgstr ""
+"%(count)d версия на документа е поставена на опашка за доставка на имейл"
 
 #: views/document_version_views.py:21
 #, python-format
 msgid "%(count)d document versions queued for email delivery"
 msgstr ""
+"%(count)d версии на документи, поставени на опашка за доставка на имейл"
 
 #: views/document_version_views.py:33
 #, python-format
 msgid "%(count)d document version link queued for email delivery"
 msgstr ""
+"%(count)d връзка към версията на документа е поставена на опашка за доставка"
+" на имейл"
 
 #: views/document_version_views.py:36
 #, python-format
 msgid "%(count)d document version links queued for email delivery"
 msgstr ""
+"%(count)d връзки към версията на документа, поставени на опашка за доставка "
+"на имейл"
 
 #: views/document_views.py:14
 #, python-format
@@ -514,15 +528,15 @@ msgstr "Прикачен файл"
 
 #: workflow_actions.py:96
 msgid "Attach an object to the email."
-msgstr ""
+msgstr "Прикачете обект към имейла."
 
 #: workflow_actions.py:105
 msgid "Send object via email"
-msgstr ""
+msgstr "Изпратете обект по имейл"
 
 #: workflow_actions.py:173
 msgid "Attach the exported document version to the email."
-msgstr ""
+msgstr "Прикачете експортираната версия на документа към имейла."
 
 #: workflow_actions.py:182
 msgid "Send document via email"

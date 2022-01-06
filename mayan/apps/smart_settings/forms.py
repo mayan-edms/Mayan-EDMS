@@ -28,3 +28,5 @@ class SettingForm(forms.Form):
                     '"%s" not a valid entry.'
                 ) % self.cleaned_data['value']
             )
+        else:
+            self.setting.validate(raw_value=self.cleaned_data['value'])

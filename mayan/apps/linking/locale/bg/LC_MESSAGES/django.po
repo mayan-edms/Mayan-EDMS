@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:26+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -227,7 +227,7 @@ msgstr "Пълен етикет"
 
 #: permissions.py:8
 msgid "View resolved smart links"
-msgstr ""
+msgstr "Преглед на разрешените интелигентни връзки"
 
 #: permissions.py:11
 msgid "Create new smart links"
@@ -259,12 +259,12 @@ msgstr ""
 #: views.py:65
 #, python-format
 msgid "Resolved smart link query error: %s"
-msgstr ""
+msgstr "Разрешена грешка в заявката за интелигентна връзка: %s"
 
 #: views.py:92
 #, python-format
 msgid "Resolved smart link dynamic label error: %s"
-msgstr ""
+msgstr "Разрешена грешка в динамичния етикет на интелигентната връзка: %s"
 
 #: views.py:97
 #, python-format
@@ -272,6 +272,8 @@ msgid ""
 "Documents in resolved smart link \"%(resolved_smart_link)s\" for "
 "\"%(document)s\""
 msgstr ""
+"Документи в разрешена интелигентна връзка „%(resolved_smart_link)s“ за "
+"„%(document)s“"
 
 #: views.py:138
 msgid ""
@@ -298,12 +300,12 @@ msgstr ""
 
 #: views.py:171
 msgid "There are no resolved smart links for this document"
-msgstr ""
+msgstr "За този документ няма разрешени интелигентни връзки"
 
 #: views.py:175
 #, python-format
 msgid "Resolved smart links for document: %s"
-msgstr ""
+msgstr "Разрешени интелигентни връзки за документ: %s"
 
 #: views.py:191
 msgid "Available smart links"

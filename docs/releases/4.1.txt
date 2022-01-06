@@ -1,7 +1,7 @@
 Version 4.1
 ===========
 
-Released: October XX, 2021
+Released: October 10, 2021
 
 Status: Stable
 
@@ -672,7 +672,7 @@ Other
   react to the double click event for other purposes.
 - Add a default ordering to the ``TestModel`` to silence warning.
 - Fix ``TestModel.save()`` method.
-
+- Fix workflow template API description text.
 
 Removals
 --------
@@ -693,13 +693,20 @@ Removals
 Upgrade process
 ---------------
 
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
 .. include:: partials/upgrade-3.5-4.0.txt
 
 
 Troubleshooting
 ---------------
 
-Follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.1`
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
 
 
 Backward incompatible changes
@@ -728,6 +735,9 @@ Due to the changes in the index tree generation algorithm and database
 integrity configuration, existing index trees will deleted during upgrade
 and need to be rebuild after upgrade.
 
+Environment variable ``MAYAN_GUNICORN_JITTER`` renamed to
+``MAYAN_GUNICORN_REQUESTS_JITTER``.
+
 
 Issues closed
 -------------
@@ -741,5 +751,7 @@ Issues closed
 - :gitlab-issue:`1024` Error with docker build
 - :gitlab-issue:`1027` Source missing method process_document (4.1a1)
 - :gitlab-issue:`1039` [v4.1b1] Missing requirement
+- :gitlab-issue:`1042` [4.1] [Doc] description typo for APIWorkflowTemplateDocumentTypeRemoveView
+- :gitlab-issue:`1043` [4.1] [API] Feature Request: Endpoint for workflow state action
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

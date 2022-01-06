@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -323,15 +323,15 @@ msgstr ""
 msgid "Document metadata value"
 msgstr ""
 
-#: serializers.py:47
+#: serializers.py:48
 msgid "Primary key of the metadata type to be added."
 msgstr "Cheia primară a tipului de metadate care urmează să fie adăugată."
 
-#: serializers.py:48
+#: serializers.py:49
 msgid "Metadata type ID"
 msgstr ""
 
-#: serializers.py:93
+#: serializers.py:94
 msgid "Primary key of the metadata type to be added to the document."
 msgstr ""
 "Cheia primară a tipului de metadate care urmează să fie adăugată în "
@@ -603,12 +603,9 @@ msgstr ""
 #, python-format
 msgid ""
 "Unable to edit metadata type \"%(metadata_type)s\" from document: "
-"%(document)s. Document does not have the metadata type to be edit. "
+"%(document)s. Document does not have the metadata type to be edited. "
 "Exception: %(exception)s"
 msgstr ""
-"Imposibil de editat metadatele de tip „%(metadata_type)s” din documentul: "
-"%(document)s. Documentul nu are tipul de metadate pentru editare. Excepție: "
-"%(exception)s"
 
 #: workflow_actions.py:172
 msgid "Metadata types to remove from the document."

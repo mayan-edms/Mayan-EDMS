@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -32,7 +32,7 @@ msgstr ""
 msgid "Converter"
 msgstr "Konverter"
 
-#: apps.py:80 forms.py:37
+#: apps.py:82 forms.py:37
 msgid "Transformation"
 msgstr "Transformation"
 
@@ -125,7 +125,7 @@ msgstr "Löschen"
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: links.py:56 models.py:62 storages.py:21 views.py:143
+#: links.py:56 models.py:63 storages.py:21 views.py:143
 msgid "Assets"
 msgstr ""
 
@@ -137,57 +137,57 @@ msgstr "Transformationen"
 msgid "Select new transformation"
 msgstr "Neue Transformation auswählen"
 
-#: models.py:45
+#: models.py:46
 msgid "Label"
 msgstr "Bezeichner"
 
-#: models.py:49
+#: models.py:50
 msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
 msgstr ""
 
-#: models.py:52
+#: models.py:53
 msgid "Internal name"
 msgstr "Interner Name"
 
-#: models.py:56
+#: models.py:57
 msgid "File"
 msgstr "Datei"
 
-#: models.py:61
+#: models.py:62
 msgid "Asset"
 msgstr ""
 
-#: models.py:162 models.py:233
+#: models.py:172 models.py:243
 msgid "Name"
 msgstr "Name"
 
-#: models.py:165 models.py:231
+#: models.py:175 models.py:241
 msgid "Order"
 msgstr "Reihenfolge"
 
-#: models.py:170 models.py:189
+#: models.py:180 models.py:199
 msgid "Stored layer"
 msgstr "Gespeicherte Ebene"
 
-#: models.py:171
+#: models.py:181
 msgid "Stored layers"
 msgstr "Gespeicherte Ebenen"
 
-#: models.py:186 models.py:240
+#: models.py:196 models.py:250
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: models.py:197 models.py:225
+#: models.py:207 models.py:235
 msgid "Object layer"
 msgstr "Objektebene"
 
-#: models.py:198
+#: models.py:208
 msgid "Object layers"
 msgstr "Objektebenen"
 
-#: models.py:229
+#: models.py:239
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
@@ -195,7 +195,7 @@ msgstr ""
 "Reihenfolge in der die Transformationen ausgeführt werden. Ohne Eintrag wird"
 " automatisch eine Reihenfolge zugewiesen."
 
-#: models.py:236 workflow_actions.py:45
+#: models.py:246 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
@@ -203,19 +203,19 @@ msgstr ""
 "Argumemte für die Transformation als YAML dictionary eingeben, z.B: "
 "{\"degrees\": 180}"
 
-#: models.py:238
+#: models.py:248
 msgid "Arguments"
 msgstr "Argumente"
 
-#: models.py:247
+#: models.py:257
 msgid "Layer transformation"
 msgstr "Ebenentransformation"
 
-#: models.py:248
+#: models.py:258
 msgid "Layer transformations"
 msgstr "Ebenentransformationen"
 
-#: models.py:254
+#: models.py:264
 msgid "Unknown transformation class"
 msgstr "Unbekannte Klasse von Transformation"
 
@@ -318,71 +318,71 @@ msgstr ""
 msgid "Assets cache"
 msgstr ""
 
-#: transformations.py:210
+#: transformations.py:226
 msgid "Paste an asset"
 msgstr ""
 
-#: transformations.py:261
+#: transformations.py:277
 msgid "Paste an asset (percents coordinates)"
 msgstr ""
 
-#: transformations.py:304
+#: transformations.py:324
 msgid "Paste an asset as watermark"
 msgstr ""
 
-#: transformations.py:364
+#: transformations.py:384
 msgid "Crop"
 msgstr "Zuschneiden"
 
-#: transformations.py:442
+#: transformations.py:462
 msgid "Draw rectangle"
 msgstr "Zeichne Rechteck"
 
-#: transformations.py:544
+#: transformations.py:564
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Zeichne Rechteck (Prozent-Koordinaten)"
 
-#: transformations.py:641
+#: transformations.py:661
 msgid "Flip"
 msgstr "Drehen"
 
-#: transformations.py:652
+#: transformations.py:672
 msgid "Gaussian blur"
 msgstr "Gaußsche Unschärfe"
 
-#: transformations.py:664
+#: transformations.py:684
 msgid "Line art"
 msgstr "Liniengrafik"
 
-#: transformations.py:678
+#: transformations.py:698
 msgid "Mirror"
 msgstr "Spiegeln"
 
-#: transformations.py:689
+#: transformations.py:709
 msgid "Resize"
 msgstr "Größe ändern"
 
-#: transformations.py:716
+#: transformations.py:736
 msgid "Rotate"
 msgstr "Drehen"
 
-#: transformations.py:746
+#: transformations.py:766
 msgid "Rotate 90 degrees"
 msgstr "Um 90° drehen"
 
-#: transformations.py:757
+#: transformations.py:777
 msgid "Rotate 180 degrees"
 msgstr "Um 180° drehen"
 
-#: transformations.py:768
+#: transformations.py:788
 msgid "Rotate 270 degrees"
 msgstr "Um 270° drehen"
 
-#: transformations.py:778
+#: transformations.py:798
 msgid "Unsharp masking"
 msgstr "Unscharf maskieren"
 
-#: transformations.py:794
+#: transformations.py:814
 msgid "Zoom"
 msgstr "Zoom"
 

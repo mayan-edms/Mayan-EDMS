@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Converter"
 msgstr "Konvertor"
 
-#: apps.py:80 forms.py:37
+#: apps.py:82 forms.py:37
 msgid "Transformation"
 msgstr "Transformace"
 
@@ -121,7 +121,7 @@ msgstr "Odstranit"
 msgid "Edit"
 msgstr "Upravit"
 
-#: links.py:56 models.py:62 storages.py:21 views.py:143
+#: links.py:56 models.py:63 storages.py:21 views.py:143
 msgid "Assets"
 msgstr ""
 
@@ -133,11 +133,11 @@ msgstr "Transformace"
 msgid "Select new transformation"
 msgstr "Vyberte novou transformaci"
 
-#: models.py:45
+#: models.py:46
 msgid "Label"
 msgstr "Jmenovka"
 
-#: models.py:49
+#: models.py:50
 msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
@@ -145,47 +145,47 @@ msgstr ""
 "Tato hodnota bude použita při odkazování na toto dílo. Může obsahovat pouze "
 "písmena, číslice a podtržítka."
 
-#: models.py:52
+#: models.py:53
 msgid "Internal name"
 msgstr "Vnitřní název"
 
-#: models.py:56
+#: models.py:57
 msgid "File"
 msgstr "Soubor"
 
-#: models.py:61
+#: models.py:62
 msgid "Asset"
 msgstr ""
 
-#: models.py:162 models.py:233
+#: models.py:172 models.py:243
 msgid "Name"
 msgstr "název"
 
-#: models.py:165 models.py:231
+#: models.py:175 models.py:241
 msgid "Order"
 msgstr "Třídění"
 
-#: models.py:170 models.py:189
+#: models.py:180 models.py:199
 msgid "Stored layer"
 msgstr "Uložená vrstva"
 
-#: models.py:171
+#: models.py:181
 msgid "Stored layers"
 msgstr "Uložené vrstvy"
 
-#: models.py:186 models.py:240
+#: models.py:196 models.py:250
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: models.py:197 models.py:225
+#: models.py:207 models.py:235
 msgid "Object layer"
 msgstr "Vrstva objektu"
 
-#: models.py:198
+#: models.py:208
 msgid "Object layers"
 msgstr "Vrstvy objektů"
 
-#: models.py:229
+#: models.py:239
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
@@ -193,7 +193,7 @@ msgstr ""
 "Pořadí, ve kterém budou provedeny transformace. Pokud zůstane nezměněna, "
 "bude přiřazena hodnota automatického třídění."
 
-#: models.py:236 workflow_actions.py:45
+#: models.py:246 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
@@ -201,19 +201,19 @@ msgstr ""
 "Zadejte argumenty pro transformaci jako slovník YAML. tj .: "
 "{&quot;stupně&quot;: 180}"
 
-#: models.py:238
+#: models.py:248
 msgid "Arguments"
 msgstr "Argumenty"
 
-#: models.py:247
+#: models.py:257
 msgid "Layer transformation"
 msgstr "Transformace vrstvy"
 
-#: models.py:248
+#: models.py:258
 msgid "Layer transformations"
 msgstr "Transformace vrstev"
 
-#: models.py:254
+#: models.py:264
 msgid "Unknown transformation class"
 msgstr "Neznámá transformační třída"
 
@@ -320,71 +320,71 @@ msgstr ""
 msgid "Assets cache"
 msgstr ""
 
-#: transformations.py:210
+#: transformations.py:226
 msgid "Paste an asset"
 msgstr ""
 
-#: transformations.py:261
+#: transformations.py:277
 msgid "Paste an asset (percents coordinates)"
 msgstr "Vložit aktivum (procentní souřadnice)"
 
-#: transformations.py:304
+#: transformations.py:324
 msgid "Paste an asset as watermark"
 msgstr ""
 
-#: transformations.py:364
+#: transformations.py:384
 msgid "Crop"
 msgstr "Oříznutí"
 
-#: transformations.py:442
+#: transformations.py:462
 msgid "Draw rectangle"
 msgstr "Nakreslit obdélník"
 
-#: transformations.py:544
+#: transformations.py:564
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Nakreslit obdélník (procentuální souřadnice)"
 
-#: transformations.py:641
+#: transformations.py:661
 msgid "Flip"
 msgstr "Překlopit"
 
-#: transformations.py:652
+#: transformations.py:672
 msgid "Gaussian blur"
 msgstr "Gaussovské rozostření"
 
-#: transformations.py:664
+#: transformations.py:684
 msgid "Line art"
 msgstr "Kresba tužkou"
 
-#: transformations.py:678
+#: transformations.py:698
 msgid "Mirror"
 msgstr "Zrcadlo"
 
-#: transformations.py:689
+#: transformations.py:709
 msgid "Resize"
 msgstr "Změnit velikost"
 
-#: transformations.py:716
+#: transformations.py:736
 msgid "Rotate"
 msgstr "Otočit"
 
-#: transformations.py:746
+#: transformations.py:766
 msgid "Rotate 90 degrees"
 msgstr "Otočit o 90 stupňů"
 
-#: transformations.py:757
+#: transformations.py:777
 msgid "Rotate 180 degrees"
 msgstr "Otočit o 180 stupňů"
 
-#: transformations.py:768
+#: transformations.py:788
 msgid "Rotate 270 degrees"
 msgstr "Otočit o 270 stupňů"
 
-#: transformations.py:778
+#: transformations.py:798
 msgid "Unsharp masking"
 msgstr "Neostré maskování "
 
-#: transformations.py:794
+#: transformations.py:814
 msgid "Zoom"
 msgstr "Zoom"
 

@@ -34,7 +34,7 @@ PythonDependency(
         ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    ''', module=__name__, name='django', version_string='==2.2.24'
+    ''', module=__name__, name='django', version_string='==3.2.8'
 )
 PythonDependency(
     copyright_text='''
@@ -203,8 +203,8 @@ PythonDependency(
     version_string='==3.4.2'
 )
 PythonDependency(
-    environment=environment_build, module=__name__, name='wheel',
-    version_string='==0.37.0'
+    environments=(environment_build, environment_documentation),
+    module=__name__, name='wheel', version_string='==0.37.0'
 )
 
 # Documentation

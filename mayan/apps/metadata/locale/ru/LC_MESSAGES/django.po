@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -324,15 +324,15 @@ msgstr "Тип метаданных документа"
 msgid "Document metadata value"
 msgstr "Значение метаданных документа"
 
-#: serializers.py:47
+#: serializers.py:48
 msgid "Primary key of the metadata type to be added."
 msgstr "Первичный ключ добавляемого типа метаданных."
 
-#: serializers.py:48
+#: serializers.py:49
 msgid "Metadata type ID"
 msgstr ""
 
-#: serializers.py:93
+#: serializers.py:94
 msgid "Primary key of the metadata type to be added to the document."
 msgstr "Первичный ключ типа метаданных, который нужно добавить в документ."
 
@@ -601,12 +601,9 @@ msgstr ""
 #, python-format
 msgid ""
 "Unable to edit metadata type \"%(metadata_type)s\" from document: "
-"%(document)s. Document does not have the metadata type to be edit. "
+"%(document)s. Document does not have the metadata type to be edited. "
 "Exception: %(exception)s"
 msgstr ""
-"Невозможно изменить тип метаданных \"%(metadata_type)s\" документа: "
-"%(document)s. В документе нет типа метаданных для редактирования. "
-"Исключение: %(exception)s"
 
 #: workflow_actions.py:172
 msgid "Metadata types to remove from the document."

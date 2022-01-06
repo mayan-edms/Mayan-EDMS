@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "Converter"
 msgstr "Conversor"
 
-#: apps.py:80 forms.py:37
+#: apps.py:82 forms.py:37
 msgid "Transformation"
 msgstr "Transformação"
 
@@ -126,7 +126,7 @@ msgstr "Excluir"
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:56 models.py:62 storages.py:21 views.py:143
+#: links.py:56 models.py:63 storages.py:21 views.py:143
 msgid "Assets"
 msgstr "Recursos"
 
@@ -138,11 +138,11 @@ msgstr "Transformações"
 msgid "Select new transformation"
 msgstr "Selecionar nova transformação"
 
-#: models.py:45
+#: models.py:46
 msgid "Label"
 msgstr "Rótulo"
 
-#: models.py:49
+#: models.py:50
 msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
@@ -150,47 +150,47 @@ msgstr ""
 "Este valor será usado ao fazer referência a este recurso. Só pode conter "
 "letras, números e sublinhados."
 
-#: models.py:52
+#: models.py:53
 msgid "Internal name"
 msgstr "Nome interno"
 
-#: models.py:56
+#: models.py:57
 msgid "File"
 msgstr "Arquivo"
 
-#: models.py:61
+#: models.py:62
 msgid "Asset"
 msgstr "Recurso"
 
-#: models.py:162 models.py:233
+#: models.py:172 models.py:243
 msgid "Name"
 msgstr "Nome"
 
-#: models.py:165 models.py:231
+#: models.py:175 models.py:241
 msgid "Order"
 msgstr "Ordem"
 
-#: models.py:170 models.py:189
+#: models.py:180 models.py:199
 msgid "Stored layer"
 msgstr "Camada armazenada"
 
-#: models.py:171
+#: models.py:181
 msgid "Stored layers"
 msgstr "Camadas armazenadas"
 
-#: models.py:186 models.py:240
+#: models.py:196 models.py:250
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: models.py:197 models.py:225
+#: models.py:207 models.py:235
 msgid "Object layer"
 msgstr "Camada de objeto"
 
-#: models.py:198
+#: models.py:208
 msgid "Object layers"
 msgstr "Camadas de objeto"
 
-#: models.py:229
+#: models.py:239
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
@@ -198,7 +198,7 @@ msgstr ""
 "Ordem de execução das transformações. Se deixar em branco, um valor "
 "automático vai ser atribuído."
 
-#: models.py:236 workflow_actions.py:45
+#: models.py:246 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
@@ -206,19 +206,19 @@ msgstr ""
 "Entre com os argumentos da transformação como um dicionário YAML. ie: "
 "{\"degrees\": 180}"
 
-#: models.py:238
+#: models.py:248
 msgid "Arguments"
 msgstr "Argumentos"
 
-#: models.py:247
+#: models.py:257
 msgid "Layer transformation"
 msgstr "Camada de transformação"
 
-#: models.py:248
+#: models.py:258
 msgid "Layer transformations"
 msgstr "Camadas de transformação"
 
-#: models.py:254
+#: models.py:264
 msgid "Unknown transformation class"
 msgstr "Classe de transformação desconhecida"
 
@@ -331,71 +331,71 @@ msgstr ""
 msgid "Assets cache"
 msgstr "Cache de ativos"
 
-#: transformations.py:210
+#: transformations.py:226
 msgid "Paste an asset"
 msgstr "Colar um recurso"
 
-#: transformations.py:261
+#: transformations.py:277
 msgid "Paste an asset (percents coordinates)"
 msgstr "Colar um recurso (coordenadas de porcentagem)"
 
-#: transformations.py:304
+#: transformations.py:324
 msgid "Paste an asset as watermark"
 msgstr "Colar um recurso como marca d'água"
 
-#: transformations.py:364
+#: transformations.py:384
 msgid "Crop"
 msgstr "Recortar"
 
-#: transformations.py:442
+#: transformations.py:462
 msgid "Draw rectangle"
 msgstr "Desenhar um retângulo"
 
-#: transformations.py:544
+#: transformations.py:564
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Desenhar um retângulo (coordenadas em porcento)"
 
-#: transformations.py:641
+#: transformations.py:661
 msgid "Flip"
 msgstr "Giro"
 
-#: transformations.py:652
+#: transformations.py:672
 msgid "Gaussian blur"
 msgstr "Gaussian blur"
 
-#: transformations.py:664
+#: transformations.py:684
 msgid "Line art"
 msgstr "Desenho de linhas"
 
-#: transformations.py:678
+#: transformations.py:698
 msgid "Mirror"
 msgstr "Espelho"
 
-#: transformations.py:689
+#: transformations.py:709
 msgid "Resize"
 msgstr "Redimensionar"
 
-#: transformations.py:716
+#: transformations.py:736
 msgid "Rotate"
 msgstr "Rotacionar"
 
-#: transformations.py:746
+#: transformations.py:766
 msgid "Rotate 90 degrees"
 msgstr "Girar 90 graus"
 
-#: transformations.py:757
+#: transformations.py:777
 msgid "Rotate 180 degrees"
 msgstr "Girar 180 graus"
 
-#: transformations.py:768
+#: transformations.py:788
 msgid "Rotate 270 degrees"
 msgstr "Girar 270 graus"
 
-#: transformations.py:778
+#: transformations.py:798
 msgid "Unsharp masking"
 msgstr "Unsharp masking"
 
-#: transformations.py:794
+#: transformations.py:814
 msgid "Zoom"
 msgstr "Ampliar"
 

@@ -209,6 +209,7 @@ class DocumentsApp(MayanAppConfig):
     app_namespace = 'documents'
     app_url = 'documents'
     has_rest_api = True
+    has_static_media = True
     has_tests = True
     name = 'mayan.apps.documents'
     verbose_name = _('Documents')

@@ -5,7 +5,7 @@
 #              Mayan EDMS.
 ####
 
-FROM debian:10.10-slim as base_image
+FROM debian:11.1-slim as base_image
 
 LABEL maintainer="Roberto Rosario roberto.rosario@mayan-edms.com"
 
@@ -22,14 +22,9 @@ RUN set -x \
     then echo "Acquire::http { Proxy \"http://${APT_PROXY}\"; };" > /etc/apt/apt.conf.d/01proxy \
 ; fi \
 # Install base OS packages to run Mayan EDMS.
-&& echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list \
-&& echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list \
-&& echo "deb http://deb.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list \
-&& echo "deb-src http://deb.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list \
-&& echo "Package: *\nPin: release n=bullseye\nPin-Priority: 50\n" > /etc/apt/preferences \
 && DEBIAN_FRONTEND=noninteractive \
 apt-get update \
-&& apt-get install --no-install-recommends --target-release buster-backports --yes \
+&& apt-get install --no-install-recommends --yes \
     libreoffice-calc-nogui \
     libreoffice-draw-nogui \
     libreoffice-impress-nogui \
@@ -56,9 +51,8 @@ apt-get update \
     python3-distutils \
     sane-utils \
     sudo \
-    tesseract-ocr \
-&& apt-get install --no-install-recommends --target-release bullseye --yes \
     supervisor \
+    tesseract-ocr \
 # Remove make and build dependencies.
 && apt-get remove --purge --yes \
     make \

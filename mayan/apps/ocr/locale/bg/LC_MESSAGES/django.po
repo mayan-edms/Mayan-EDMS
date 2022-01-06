@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -61,7 +61,7 @@ msgstr "Изтрито е OCR съдържанието на версията н�
 
 #: events.py:12
 msgid "Document version page OCR content edited"
-msgstr ""
+msgstr "Редактирано OCR съдържание на страницата с версия на документа"
 
 #: events.py:16
 msgid "Document version submitted for OCR"
@@ -106,7 +106,7 @@ msgstr "Изпращане за OCR"
 
 #: links.py:92
 msgid "Edit OCR"
-msgstr ""
+msgstr "Редактиране на OCR"
 
 #: models.py:24
 msgid "Document type"
@@ -166,7 +166,7 @@ msgstr "Подаване на документи за OCR"
 
 #: permissions.py:11
 msgid "Edit the transcribed text from document"
-msgstr ""
+msgstr "Редактирайте транскрибирания текст от документа"
 
 #: permissions.py:15
 msgid "View the transcribed text from document"
@@ -206,36 +206,38 @@ msgstr "Пълен път към бекенда, за да се използва
 #, python-format
 msgid "Error deleting document version OCR \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Грешка при изтриване на OCR версия на документа &quot;%(instance)s&quot;; "
+"%(exception)s"
 
 #: views.py:38
 #, python-format
 msgid "OCR content of \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "OCR съдържанието на „%(object)s“ е изтрито успешно."
 
 #: views.py:39
 #, python-format
 msgid "OCR content of %(count)d document version deleted successfully."
-msgstr ""
+msgstr "OCR съдържанието на %(count)d версия на документа е изтрито успешно."
 
 #: views.py:40
 #, python-format
 msgid "OCR content of %(count)d document versions deleted successfully."
-msgstr ""
+msgstr "OCR съдържанието на %(count)d версии на документи е изтрито успешно."
 
 #: views.py:41
 #, python-format
 msgid "Delete the OCR content of: %(object)s."
-msgstr ""
+msgstr "Изтрийте съдържанието на OCR на: %(object)s."
 
 #: views.py:42
 #, python-format
 msgid "Delete the OCR content of the %(count)d selected document version."
-msgstr ""
+msgstr "Изтрийте OCR съдържанието на  на %(count)dизбрана версия."
 
 #: views.py:43
 #, python-format
 msgid "Delete the OCR content of the %(count)d selected document versions."
-msgstr ""
+msgstr "Изтрийте OCR съдържанието на  %(count)dизбрани версии."
 
 #: views.py:69
 #, python-format
@@ -261,7 +263,7 @@ msgstr "OCR резултат за страница с версия на доку
 #: views.py:175
 #, python-format
 msgid "Edit OCR for document version page: %s"
-msgstr ""
+msgstr "Редактирайте OCR за страницата с версия на документа: %s"
 
 #: views.py:195
 msgid "Submit all documents of a type for OCR"

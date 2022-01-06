@@ -1,0 +1,9 @@
+<span class="fa-stack" style="margin-left: -11px; margin-right: -5px; ">
+    {% for entry in data %}
+        {% if entry.type == 'icon' %}
+            <i class="{{ entry.class }} fa-stack-1x" data-fa-transform="grow-3"></i>
+        {% else %}
+            <strong class="fa-stack-1x" style="color:white; font-size: 50%; margin-top: 1px;">{{ entry.text }}</strong>
+        {% endif %}
+    {% endfor %}
+</span>

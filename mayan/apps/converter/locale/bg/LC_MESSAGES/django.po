@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Converter"
 msgstr "Конвертор"
 
-#: apps.py:80 forms.py:37
+#: apps.py:82 forms.py:37
 msgid "Transformation"
 msgstr "Трансформация"
 
@@ -123,7 +123,7 @@ msgstr "Изтрийте"
 msgid "Edit"
 msgstr "Редактиране"
 
-#: links.py:56 models.py:62 storages.py:21 views.py:143
+#: links.py:56 models.py:63 storages.py:21 views.py:143
 msgid "Assets"
 msgstr "Активи"
 
@@ -135,11 +135,11 @@ msgstr "Трансформации"
 msgid "Select new transformation"
 msgstr "Изберете нова трансформация"
 
-#: models.py:45
+#: models.py:46
 msgid "Label"
 msgstr "Етикет"
 
-#: models.py:49
+#: models.py:50
 msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
@@ -147,47 +147,47 @@ msgstr ""
 "Тази стойност ще се използва при препратка към този актив. Може да съдържа "
 "само букви, цифри и долни черти."
 
-#: models.py:52
+#: models.py:53
 msgid "Internal name"
 msgstr "Вътрешно име"
 
-#: models.py:56
+#: models.py:57
 msgid "File"
 msgstr "Файл"
 
-#: models.py:61
+#: models.py:62
 msgid "Asset"
 msgstr "Актив"
 
-#: models.py:162 models.py:233
+#: models.py:172 models.py:243
 msgid "Name"
 msgstr "Име"
 
-#: models.py:165 models.py:231
+#: models.py:175 models.py:241
 msgid "Order"
 msgstr "Поръчка"
 
-#: models.py:170 models.py:189
+#: models.py:180 models.py:199
 msgid "Stored layer"
 msgstr "Съхранен слой"
 
-#: models.py:171
+#: models.py:181
 msgid "Stored layers"
 msgstr "Съхранени слоеве"
 
-#: models.py:186 models.py:240
+#: models.py:196 models.py:250
 msgid "Enabled"
 msgstr "Активиран"
 
-#: models.py:197 models.py:225
+#: models.py:207 models.py:235
 msgid "Object layer"
 msgstr "Обектен слой"
 
-#: models.py:198
+#: models.py:208
 msgid "Object layers"
 msgstr "Обектни слоеве"
 
-#: models.py:229
+#: models.py:239
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
@@ -195,7 +195,7 @@ msgstr ""
 "Ред, в който ще бъдат извършени трансформациите. Ако остане непроменено, ще "
 "бъде назначена автоматична стойност на поръчката."
 
-#: models.py:236 workflow_actions.py:45
+#: models.py:246 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
@@ -203,19 +203,19 @@ msgstr ""
 "Въведете аргументите за преобразуването като YAML речник. т.е.: "
 "{&quot;градуси&quot;: 180}"
 
-#: models.py:238
+#: models.py:248
 msgid "Arguments"
 msgstr "Аргументи"
 
-#: models.py:247
+#: models.py:257
 msgid "Layer transformation"
 msgstr "Трансформация на слоеве"
 
-#: models.py:248
+#: models.py:258
 msgid "Layer transformations"
 msgstr "Трансформации на слоеве"
 
-#: models.py:254
+#: models.py:264
 msgid "Unknown transformation class"
 msgstr "Неизвестен клас на трансформация"
 
@@ -253,7 +253,7 @@ msgstr "Преглед на съществуващите трансформац�
 
 #: queues.py:12
 msgid "Generate a image of an object."
-msgstr ""
+msgstr "Генерирайте изображение на обект."
 
 #: settings.py:30
 msgid ""
@@ -294,6 +294,8 @@ msgstr "Опции за конфигуриране на бекенда за гр
 #: settings.py:77
 msgid "Time in seconds that the browser should cache the supplied image. "
 msgstr ""
+"Време в секунди, когато браузърът трябва да кешира предоставеното "
+"изображение."
 
 #: settings.py:84
 msgid ""
@@ -308,6 +310,8 @@ msgid ""
 "Time in seconds after which the image generation task will stop running and "
 "raise an error."
 msgstr ""
+"Време в секунди, след което задачата за генериране на изображения ще спре да"
+" се изпълнява и ще предизвика грешка."
 
 #: storages.py:15
 msgid ""
@@ -329,71 +333,71 @@ msgstr ""
 msgid "Assets cache"
 msgstr "Кеш на активи"
 
-#: transformations.py:210
+#: transformations.py:226
 msgid "Paste an asset"
 msgstr "Поставете актив"
 
-#: transformations.py:261
+#: transformations.py:277
 msgid "Paste an asset (percents coordinates)"
 msgstr "Поставяне на актив (проценти координати)"
 
-#: transformations.py:304
+#: transformations.py:324
 msgid "Paste an asset as watermark"
 msgstr "Поставете актив като воден знак"
 
-#: transformations.py:364
+#: transformations.py:384
 msgid "Crop"
 msgstr "Изрязване"
 
-#: transformations.py:442
+#: transformations.py:462
 msgid "Draw rectangle"
 msgstr "Начертайте правоъгълник"
 
-#: transformations.py:544
+#: transformations.py:564
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Начертайте правоъгълник (процентни координати)"
 
-#: transformations.py:641
+#: transformations.py:661
 msgid "Flip"
 msgstr "Преобръщане"
 
-#: transformations.py:652
+#: transformations.py:672
 msgid "Gaussian blur"
 msgstr "Гаусово замъгляване"
 
-#: transformations.py:664
+#: transformations.py:684
 msgid "Line art"
 msgstr "Графично изкуство"
 
-#: transformations.py:678
+#: transformations.py:698
 msgid "Mirror"
 msgstr "Огледало"
 
-#: transformations.py:689
+#: transformations.py:709
 msgid "Resize"
 msgstr "Преоразмеряване"
 
-#: transformations.py:716
+#: transformations.py:736
 msgid "Rotate"
 msgstr "Завъртане"
 
-#: transformations.py:746
+#: transformations.py:766
 msgid "Rotate 90 degrees"
 msgstr "Завъртане на 90 градуса"
 
-#: transformations.py:757
+#: transformations.py:777
 msgid "Rotate 180 degrees"
 msgstr "Въртене на 180 градуса"
 
-#: transformations.py:768
+#: transformations.py:788
 msgid "Rotate 270 degrees"
 msgstr "Въртене на 270 градуса"
 
-#: transformations.py:778
+#: transformations.py:798
 msgid "Unsharp masking"
 msgstr "Размазващо маскиране"
 
-#: transformations.py:794
+#: transformations.py:814
 msgid "Zoom"
 msgstr "Увеличаване"
 

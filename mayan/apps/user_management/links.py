@@ -1,5 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.authentication.link_conditions import condition_user_is_authenticated
 from mayan.apps.navigation.classes import Link, Separator, Text
 from mayan.apps.navigation.utils import factory_condition_queryset_access
 
@@ -29,10 +30,12 @@ def condition_user_is_not_admin(context, resolved_object):
 # Current user
 
 link_current_user_details = Link(
+    condition=condition_user_is_authenticated,
     icon=icon_current_user_details, text=_('User details'),
     view='user_management:current_user_details'
 )
 link_current_user_edit = Link(
+    condition=condition_user_is_authenticated,
     icon=icon_current_user_edit, text=_('Edit user details'),
     view='user_management:current_user_edit'
 )

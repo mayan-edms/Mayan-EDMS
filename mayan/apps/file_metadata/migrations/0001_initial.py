@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('documents', '0047_auto_20180917_0737'),
+        ('documents', '0047_auto_20180917_0737')
     ]
 
     operations = [
@@ -53,12 +53,12 @@ class Migration(migrations.Migration):
                         to='documents.DocumentType',
                         verbose_name='Document type'
                     )
-                ),
+                )
             ],
             options={
                 'verbose_name': 'Document type settings',
-                'verbose_name_plural': 'Document types settings',
-            },
+                'verbose_name_plural': 'Document types settings'
+            }
         ),
         migrations.CreateModel(
             name='DocumentVersionDriverEntry',
@@ -76,13 +76,13 @@ class Migration(migrations.Migration):
                         to='documents.DocumentVersion',
                         verbose_name='Document version'
                     )
-                ),
+                )
             ],
             options={
                 'ordering': ('document_version', 'driver'),
                 'verbose_name': 'Document version driver entry',
-                'verbose_name_plural': 'Document version driver entries',
-            },
+                'verbose_name_plural': 'Document version driver entries'
+            }
         ),
         migrations.CreateModel(
             name='FileMetadataEntry',
@@ -112,13 +112,13 @@ class Migration(migrations.Migration):
                         to='file_metadata.DocumentVersionDriverEntry',
                         verbose_name='Document version driver entry'
                     )
-                ),
+                )
             ],
             options={
                 'ordering': ('key', 'value'),
                 'verbose_name': 'File metadata entry',
-                'verbose_name_plural': 'File metadata entries',
-            },
+                'verbose_name_plural': 'File metadata entries'
+            }
         ),
         migrations.CreateModel(
             name='StoredDriver',
@@ -139,13 +139,13 @@ class Migration(migrations.Migration):
                         db_index=True, max_length=128,
                         verbose_name='Internal name'
                     )
-                ),
+                )
             ],
             options={
                 'ordering': ('internal_name',),
                 'verbose_name': 'Driver',
-                'verbose_name_plural': 'Drivers',
-            },
+                'verbose_name_plural': 'Drivers'
+            }
         ),
         migrations.AddField(
             model_name='documentversiondriverentry',
@@ -154,11 +154,11 @@ class Migration(migrations.Migration):
                 on_delete=django.db.models.deletion.CASCADE,
                 related_name='driver_entries',
                 to='file_metadata.StoredDriver', verbose_name='Driver'
-            ),
+            )
         ),
         migrations.AlterUniqueTogether(
             name='documentversiondriverentry',
-            unique_together=set([('driver', 'document_version')]),
+            unique_together=set([('driver', 'document_version')])
         ),
         migrations.RunPython(
             code=operation_initialize_file_metadata_settings,

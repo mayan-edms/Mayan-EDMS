@@ -1,18 +1,29 @@
 from django.conf.urls import url
+from django.urls import path
 
 from .views.authentication_views import (
     MayanLoginView, MayanLogoutView, MayanPasswordChangeDoneView,
     MayanPasswordChangeView, MayanPasswordResetCompleteView,
     MayanPasswordResetConfirmView, MayanPasswordResetDoneView,
-    MayanPasswordResetView, UserSetPasswordView
+    MayanPasswordResetView, MultiFactorAuthenticationView,
+    UserSetPasswordView
 )
 from .views.impersonation_views import (
     UserImpersonateEndView, UserImpersonateFormStartView,
     UserImpersonateStartView
 )
 
+
 urlpatterns_authenticattion = [
-    url(regex=r'^login/$', view=MayanLoginView.as_view(), name='login_view'),
+    url(
+        regex=r'^login/$', name='login_view',
+        view=MayanLoginView.as_view()
+    ),
+    url(
+        regex=r'^login/multi_factor_authentication/$',
+        name='multi_factor_authentication_view',
+        view=MultiFactorAuthenticationView.as_view()
+    ),
     url(
         regex=r'^logout/$', view=MayanLogoutView.as_view(), name='logout_view'
     ),
@@ -32,8 +43,8 @@ urlpatterns_password = [
         name='password_reset_complete_view',
         view=MayanPasswordResetCompleteView.as_view()
     ),
-    url(
-        regex=r'^password/reset/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+    path(
+        'password/reset/confirm/<uidb64>/<token>/',
         name='password_reset_confirm_view',
         view=MayanPasswordResetConfirmView.as_view()
     ),

@@ -1,7 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import serializers
-
+from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.serializer_mixins import CreateOnlyFieldSerializerMixin
 from mayan.apps.storage.models import SharedUploadedFile
 
@@ -47,14 +46,15 @@ class DocumentSerializer(
         }
         fields = (
             'datetime_created', 'description', 'document_change_type_url',
-            'document_type', 'document_type_id', 'file_list_url', 'id', 'label',
-            'language', 'file_latest', 'url', 'uuid', 'version_active',
-            'version_list_url'
+            'document_type', 'document_type_id', 'file_latest',
+            'file_list_url', 'id', 'label', 'language', 'url', 'uuid',
+            'version_active', 'version_list_url'
         )
         model = Document
         read_only_fields = (
-            'document_change_type_url', 'document_type', 'file_latest',
-            'file_list_url', 'id', 'version_active', 'version_list_url', 'url'
+            'datetime_created', 'document_change_type_url', 'document_type',
+            'file_latest', 'file_list_url', 'id', 'uuid', 'url',
+            'version_list_url'
         )
 
 

@@ -29,36 +29,24 @@ Direct deployment
 
    .. code-block:: bash
 
-       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install -U pip
+       sudo --user=|DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install --upgrade pip
 
 
 #. Remove deprecated requirements:
 
    .. code-block:: bash
 
-    sudo -u |DEFAULT_OS_USERNAME| curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
-    && sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+    sudo --user=|DEFAULT_OS_USERNAME| curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt --output /tmp/removals.txt \
+    && sudo --user=|DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| uninstall --requirement /tmp/removals.txt --yes
 
 
 #. Update the Mayan EDMS Python package:
 
    .. code-block:: bash
 
-    sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install mayan-edms==|MAYAN_VERSION|
+    sudo --user=|DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install mayan-edms==|MAYAN_VERSION|
 
    the requirements will also be updated automatically.
-
-
-#. Create the ``|DEFAULT_USER_SETTINGS_FOLDER|`` folder inside the ``media``
-   folder and convert it into a Python module. This folder is used for
-   custom setting modules. Adjust the path of the ``media`` folder for your
-   installation:
-
-   .. code-block:: bash
-
-    sudo -u |DEFAULT_OS_USERNAME| mkdir --parents |MAYAN_MEDIA_ROOT||DEFAULT_USER_SETTINGS_FOLDER|
-    sudo -u |DEFAULT_OS_USERNAME| touch |MAYAN_MEDIA_ROOT||DEFAULT_USER_SETTINGS_FOLDER|__init__.py
-
 
 #. Update the Redis configuration to serve at least 3 databases:
 
@@ -74,6 +62,11 @@ Direct deployment
 
       databases 3
 
+#. Restart Redis for the changes to take effect:
+
+   .. code-block:: bash
+
+      sudo systemctl restart redis
 
 #. Edit the config file at ``|MAYAN_MEDIA_ROOT|config.yml``:
 
@@ -99,7 +92,7 @@ Direct deployment
 
    .. code-block:: bash
 
-       sudo -u |DEFAULT_OS_USERNAME| MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       sudo --user=|DEFAULT_OS_USERNAME| MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
        |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
 
 
@@ -114,7 +107,7 @@ Direct deployment
 
    .. code-block:: bash
 
-       sudo -u |DEFAULT_OS_USERNAME| MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       sudo --user=|DEFAULT_OS_USERNAME| MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
        |MAYAN_BIN| performupgrade
 
 

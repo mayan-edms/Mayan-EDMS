@@ -35,6 +35,7 @@ job_docker_build:
   tags:
     - postgres
   variables:
+    DOCKER_DRIVER: overlay2
     POSTGRES_DB: "{{ DEFAULT_DATABASE_NAME }}"
     POSTGRES_PASSWORD: "{{ DEFAULT_DATABASE_PASSWORD }}"
     POSTGRES_USER: "{{ DEFAULT_DATABASE_USER }}"
@@ -67,6 +68,8 @@ job_docker_push_major:
   services:
     - {{ DOCKER_DIND_IMAGE_VERSION }}
   stage: stage_push_docker
+  variables:
+    DOCKER_DRIVER: overlay2
 
 job_docker_push_minor:
   before_script:
@@ -93,6 +96,8 @@ job_docker_push_minor:
   services:
     - {{ DOCKER_DIND_IMAGE_VERSION }}
   stage: stage_push_docker
+  variables:
+    DOCKER_DRIVER: overlay2
 
 job_docker_nightly:
   before_script:
@@ -108,6 +113,8 @@ job_docker_nightly:
   services:
     - {{ DOCKER_DIND_IMAGE_VERSION }}
   stage: stage_build_docker
+  variables:
+    DOCKER_DRIVER: overlay2
 
 job_docker_testing:
   before_script:
@@ -124,6 +131,8 @@ job_docker_testing:
   services:
     - {{ DOCKER_DIND_IMAGE_VERSION }}
   stage: stage_build_docker
+  variables:
+    DOCKER_DRIVER: overlay2
 
 # Documentation
 
@@ -135,7 +144,7 @@ job_documentation_build:
   before_script:
     - apt-get update
     - if [ "${APT_PROXY}" ]; then echo "Acquire::http { Proxy \"http://${APT_PROXY}\"; };" > /etc/apt/apt.conf.d/01proxy; fi
-    - apt-get install --yes enchant make python3-venv python3-dev
+    - apt-get install --yes enchant gcc make libjpeg-dev libpng-dev python3-venv python3-dev zlib1g-dev
     - python3 -m venv venv
     - . venv/bin/activate
   image: {{ DOCKER_LINUX_IMAGE_VERSION }}
@@ -249,29 +258,8 @@ job_python_push_pypi:
     - releases/staging
     - tests/all
     - tests/python
+    - tests/upgrade
   stage: stage_test
-
-job_mysql_upgrade_test:
-  <<: *job_base_upgrade_test
-  script:
-    - apt-get install --yes default-libmysqlclient-dev default-mysql-client libssl-dev
-    - . venv/bin/activate
-    - pip install mysqlclient==$PYTHON_MYSQL_VERSION
-    - mysql --host="$MYSQL_PORT_3306_TCP_ADDR" --port="$MYSQL_PORT_3306_TCP_PORT" --user=root --password="$MYSQL_ENV_MYSQL_ROOT_PASSWORD" --execute="set global character_set_server=utf8mb4;" --ssl=TRUE
-    - export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.mysql','NAME':'{{ DEFAULT_DATABASE_NAME }}','PASSWORD':'{{ DEFAULT_DATABASE_PASSWORD }}','USER':'{{ DEFAULT_DATABASE_USER }}','HOST':'$MYSQL_PORT_3306_TCP_ADDR','OPTIONS':{'ssl':True}}}"
-    - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
-    - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell
-    - pip install dist/mayan_edms-*.whl
-    - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
-  services:
-    - {{ DOCKER_MYSQL_IMAGE_VERSION }}
-  tags:
-    - mysql
-  variables:
-    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    MYSQL_DATABASE: "{{ DEFAULT_DATABASE_NAME }}"
-    MYSQL_PASSWORD: "{{ DEFAULT_DATABASE_PASSWORD }}"
-    MYSQL_USER: "{{ DEFAULT_DATABASE_USER }}"
 
 job_postgres_upgrade_test:
   <<: *job_base_upgrade_test
@@ -331,6 +319,7 @@ job_sqlite_upgrade_test:
     - releases/python_minor
     - releases/staging
     - tests/all
+    - tests/base
     - tests/python
   stage: stage_test
 

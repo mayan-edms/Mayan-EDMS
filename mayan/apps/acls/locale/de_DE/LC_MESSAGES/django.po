@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:12+0000\n"
 "Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -112,11 +112,11 @@ msgstr "Zugriffsberechtigungen bearbeiten"
 msgid "View ACLs"
 msgstr "Zugriffsberechtigungen anzeigen"
 
-#: serializers.py:125
+#: serializers.py:120
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
 
-#: serializers.py:132
+#: serializers.py:127
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
 
@@ -139,11 +139,11 @@ msgstr "Neue Zugriffsberechtigunglisten für %s"
 msgid "Delete ACL: %s"
 msgstr "Zugriffsberechtigung \"%s\" löschen"
 
-#: views.py:139
+#: views.py:141
 msgid "There are no ACLs for this object"
 msgstr "Keine Zugriffsberechtigungen für dieses Objekt verfügbar"
 
-#: views.py:142 views.py:259
+#: views.py:144 views.py:261
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
@@ -154,25 +154,25 @@ msgstr ""
 " zugewiesen werden, jedoch nur für ein bestimmtes Objekt oder einer Menge "
 "von Objekten. "
 
-#: views.py:149
+#: views.py:151
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "Zugriffsberechtigungen für %s"
 
-#: views.py:163
+#: views.py:165
 msgid "Granted permissions"
 msgstr "Erteilte Berechtigungen"
 
-#: views.py:164
+#: views.py:166
 msgid "Available permissions"
 msgstr "Verfügbare Berechtigungen"
 
-#: views.py:208
+#: views.py:210
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr "Berechtigungen von Rolle \"%(role)s\" für \"%(object)s\"."
 
-#: views.py:217
+#: views.py:219
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -185,11 +185,11 @@ msgstr ""
 "übergeordneten Objekt oder für die Rolle über das Einrichtungsmenü "
 "eingestellt werden."
 
-#: views.py:256
+#: views.py:258
 msgid "There are no ACLs"
 msgstr "Keine Zugriffsberechtigungen vorhanden"
 
-#: views.py:265
+#: views.py:267
 msgid "Global access control lists"
 msgstr ""
 

@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# pyrotech <anastasios@tutamail.com>, 2021
 # Hmayag Antonian <hmayag@freemail.gr>, 2021
+# pyrotech <anastasios@tutamail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:20+0000\n"
+"POT-Creation-Date: 2021-12-01 12:17+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2021\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -120,7 +120,7 @@ msgstr "%(object)s διαγράφηκε επιτυχώς."
 #: generics.py:732
 #, python-format
 msgid "Error retrieving %(object)s; %(error)s"
-msgstr ""
+msgstr "Σφάλμα κατά την ανάκτηση του %(object)s. %(error)s"
 
 #: generics.py:836
 #, python-format
@@ -135,32 +135,32 @@ msgstr "%(object)s ενημερώθηκε επιτυχώς."
 #: generics.py:907
 #, python-format
 msgid "\"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Το \"%(object)s\" διαγράφηκε με επιτυχία."
 
 #: generics.py:908
 #, python-format
 msgid "%(count)d object deleted successfully."
-msgstr ""
+msgstr "%(count)d αντικείμενο διαγράφηκε με επιτυχία."
 
 #: generics.py:909
 #, python-format
 msgid "%(count)d objects deleted successfully."
-msgstr ""
+msgstr " %(count)d αντικείμενα διαγράφηκαν με επιτυχία."
 
 #: generics.py:910
 #, python-format
 msgid "Delete \"%(object)s\"."
-msgstr ""
+msgstr "Διαγραφή του \"%(object)s\"."
 
 #: generics.py:911
 #, python-format
 msgid "Delete %(count)d object."
-msgstr ""
+msgstr "Διαγραφή %(count)d αντικειμένου."
 
 #: generics.py:912
 #, python-format
 msgid "Delete %(count)d objects."
-msgstr ""
+msgstr "Διαγραφή %(count)d αντικειμένων."
 
 #: mixins.py:330
 #, python-format

@@ -57,7 +57,7 @@ class KeyViewTestCase(KeyTestMixin, KeyViewTestMixin, GenericViewTestCase):
         self.assertEqual(events.count(), 0)
 
     def test_key_download_view_with_access(self):
-        self.expected_content_types = ('text/html; charset=utf-8',)
+        self.expected_content_types = ('application/octet-stream',)
 
         self._create_test_key_private()
 

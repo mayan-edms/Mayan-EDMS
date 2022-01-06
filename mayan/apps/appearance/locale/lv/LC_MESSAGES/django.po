@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -210,7 +210,7 @@ msgstr ""
 "tai piekļūtu."
 
 #: templates/500.html:5 templates/500.html:30
-#: templates/appearance/root.html:58
+#: templates/appearance/root.html:48
 msgid "Server error"
 msgstr "Servera kļūda"
 
@@ -251,7 +251,7 @@ msgstr ""
 msgid "About"
 msgstr "Par"
 
-#: templates/appearance/about.html:73
+#: templates/appearance/about.html:72
 #, python-format
 msgid ""
 "\n"
@@ -261,50 +261,20 @@ msgstr ""
 "\n"
 "%(setting_project_title)s ir balstīts uz %(project_title)s"
 
-#: templates/appearance/about.html:78
+#: templates/appearance/about.html:77
 msgid "Version"
 msgstr "Versija"
 
-#: templates/appearance/about.html:80
+#: templates/appearance/about.html:79
 #, python-format
 msgid "Build number: %(build_number)s"
 msgstr "Veidošanas numurs: %(build_number)s"
 
-#: templates/appearance/about.html:93
+#: templates/appearance/about.html:92
 msgid "Released under the license:"
 msgstr "Izdots saskaņā ar licenci:"
 
-#: templates/appearance/about.html:99
-#, python-format
-msgid ""
-"\n"
-"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
-"            "
-msgstr ""
-"\n"
-"%(project_title)s ir bezmaksas un atvērtā pirmkoda programmatūra, kas jums tiek piedāvāta ar <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> Roberto Rosario un ziedotājiem."
-
-#: templates/appearance/about.html:105
-#, python-format
-msgid ""
-"\n"
-"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
-"            "
-msgstr ""
-"\n"
-"Lai padarītu %(project_title)s tikpat bagātu kā tas ir, ir jāpieliek lielas pūles."
-
-#: templates/appearance/about.html:111
-#, python-format
-msgid ""
-"\n"
-"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
-"            "
-msgstr ""
-"\n"
-"Ja izmantojat %(project_title)s, lūdzu, <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">veiciet ziedojumu %(icon_social_paypal)s</a>"
-
-#: templates/appearance/about.html:117
+#: templates/appearance/about.html:98
 #, python-format
 msgid ""
 "\n"
@@ -314,7 +284,7 @@ msgstr ""
 "\n"
 "Pilns izmaiņu saraksts ir pieejams, skatot <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> vai īso versiju <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a> ."
 
-#: templates/appearance/about.html:123
+#: templates/appearance/about.html:104
 #, python-format
 msgid ""
 "\n"
@@ -324,7 +294,7 @@ msgstr ""
 "\n"
 "Ja rodas jautājumi, skatiet <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">dokumentāciju %(icon_documentation)s</a> ."
 
-#: templates/appearance/about.html:129
+#: templates/appearance/about.html:110
 #, python-format
 msgid ""
 "\n"
@@ -334,7 +304,7 @@ msgstr ""
 "\n"
 "Ja atradāt kļūdu vai ir kāda funkcionalitātes ideja, apmeklējiet <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">forumu %(icon_forum)s</a> vai atveriet biļeti <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">pirmkoda repozitorijā %(icon_source_code)s</a> ."
 
-#: templates/appearance/about.html:134
+#: templates/appearance/about.html:115
 #, python-format
 msgid ""
 "\n"
@@ -344,19 +314,19 @@ msgstr ""
 "\n"
 "Izplatiet vārdu. Runājiet ar draugiem un kolēģiem par to, cik satriecošs ir %(project_title)s!"
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:73
 msgid "Object"
 msgstr "Objekts"
 
-#: templates/appearance/generic_confirm.html:14
+#: templates/appearance/generic_confirm.html:13
 msgid "Are you sure?"
 msgstr "Vai esat pārliecināts?"
 
-#: templates/appearance/generic_confirm.html:38
+#: templates/appearance/generic_confirm.html:37
 msgid "Yes"
 msgstr "Jā"
 
-#: templates/appearance/generic_confirm.html:48
+#: templates/appearance/generic_confirm.html:47
 msgid "No"
 msgstr "Nē"
 
@@ -452,15 +422,15 @@ msgstr "Toggle Dropdown"
 msgid "No results"
 msgstr "Nav rezultātu"
 
-#: templates/appearance/root.html:63
+#: templates/appearance/root.html:53
 msgid "Close"
 msgstr "Aizvērt"
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:61
 msgid "Server communication error"
 msgstr "Servera sakaru kļūda"
 
-#: templates/appearance/root.html:75
+#: templates/appearance/root.html:63
 msgid "Check you network connection and try again in a few moments."
 msgstr "Pārbaudiet tīkla savienojumu un pēc brīža mēģiniet vēlreiz."
 

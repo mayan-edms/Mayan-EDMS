@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: yan songwei <yansw@vip.163.com>, 2021\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -58,7 +58,7 @@ msgstr ""
 msgid "Nodes"
 msgstr ""
 
-#: apps.py:185 models.py:437
+#: apps.py:185 models.py:438
 msgid "Documents"
 msgstr "文档"
 
@@ -148,7 +148,7 @@ msgid ""
 "Causes this index to be visible and updated when document data changes."
 msgstr "使文档数据更改时，此索引可见并更新。"
 
-#: models.py:50 models.py:189
+#: models.py:50 models.py:190
 msgid "Enabled"
 msgstr "启用"
 
@@ -156,100 +156,104 @@ msgstr "启用"
 msgid "Index template"
 msgstr ""
 
-#: models.py:174
+#: models.py:169
+msgid "Parent index template node of this node."
+msgstr ""
+
+#: models.py:175
 msgid "Index"
 msgstr "索引"
 
-#: models.py:178
+#: models.py:179
 msgid "Enter a template to render. Use Django's default templating language."
 msgstr ""
 
-#: models.py:181
+#: models.py:182
 msgid "Indexing expression"
 msgstr "索引表达式"
 
-#: models.py:186
+#: models.py:187
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr "使文档数据更改时，此节点可见并更新。"
 
-#: models.py:194
+#: models.py:195
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
 msgstr "选中此选项可使此节点充当文档的容器，而不是其他节点的父节点。"
 
-#: models.py:197
+#: models.py:198
 msgid "Link documents"
 msgstr "链接文件"
 
-#: models.py:201 models.py:430
+#: models.py:202 models.py:431
 msgid "Index template node"
 msgstr "索引模板节点"
 
-#: models.py:202
+#: models.py:203
 msgid "Index template nodes"
 msgstr ""
 
-#: models.py:206
+#: models.py:207
 msgid "Root"
 msgstr "根"
 
-#: models.py:227
+#: models.py:228
 msgid "Index instance"
 msgstr "索引实例"
 
-#: models.py:228
+#: models.py:229
 msgid "Index instances"
 msgstr "索引实例"
 
-#: models.py:309
+#: models.py:310
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr "错误索引文档：%(document)s;表达式：%(expression)s; %(exception)s"
 
-#: models.py:387
+#: models.py:388
 msgid "Total number of nodes with unique values this item contains."
 msgstr ""
 
-#: models.py:396
+#: models.py:397
 msgid "Total number of unique documents this item contains."
 msgstr ""
 
-#: models.py:406
+#: models.py:407
 msgid "Total number of node levels this item contains."
 msgstr ""
 
-#: models.py:433 search.py:26
+#: models.py:434 search.py:26
 msgid "Value"
 msgstr "值"
 
-#: models.py:442 models.py:523
+#: models.py:443 models.py:524
 msgid "Index instance node"
 msgstr ""
 
-#: models.py:443
+#: models.py:444
 msgid "Indexes instances node"
 msgstr ""
 
-#: models.py:490
+#: models.py:491
 msgid "The path to the index including all ancestors."
 msgstr ""
 
-#: models.py:492
+#: models.py:493
 msgid "Full path"
 msgstr "完整路径"
 
-#: models.py:516
+#: models.py:517
 msgid "Document index node instance"
 msgstr "文档索引节点实例"
 
-#: models.py:517
+#: models.py:518
 msgid "Document indexes node instances"
 msgstr "文档索引节点实例"
 
-#: models.py:524
+#: models.py:525
 msgid "Index instance nodes"
 msgstr ""
 
@@ -317,34 +321,26 @@ msgstr "文件UUID"
 msgid "Document checksum"
 msgstr "文件校验和"
 
-#: serializers.py:189
-msgid "Parent cannot be empty."
-msgstr ""
-
-#: serializers.py:196
-msgid "Parent must be from the same index template."
-msgstr ""
-
-#: serializers.py:207
+#: serializers.py:200
 msgid ""
 "URL of the API endpoint showing the list document types associated with this"
 " index template."
 msgstr ""
 
-#: serializers.py:214
+#: serializers.py:207
 msgid "URL of the API endpoint to add document types to this index template."
 msgstr ""
 
-#: serializers.py:221
+#: serializers.py:214
 msgid ""
 "URL of the API endpoint to remove document types from this index template."
 msgstr ""
 
-#: serializers.py:269
+#: serializers.py:271
 msgid "Primary key of the document type to add to the index template."
 msgstr ""
 
-#: serializers.py:278
+#: serializers.py:280
 msgid "Primary key of the document type to remove from the index template."
 msgstr ""
 

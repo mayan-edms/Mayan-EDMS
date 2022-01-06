@@ -1,7 +1,7 @@
-from rest_framework import serializers, status
+from rest_framework import status
 
+from .. import generics, serializers
 from ..api_view_mixins import ExternalObjectAPIViewMixin
-from ..generics import ListCreateAPIView, RetrieveAPIView
 
 from .base import BaseAPITestCase
 from .mixins import APIUserTestCaseMixin
@@ -20,7 +20,7 @@ class ExternalObjectAPIViewMixinTestCase(
         class TestModelSerializer(serializers.Serializer):
             """Empty serializer."""
 
-        class TestView(ExternalObjectAPIViewMixin, RetrieveAPIView):
+        class TestView(ExternalObjectAPIViewMixin, generics.RetrieveAPIView):
             external_object_queryset = self.TestModel.objects.all()
             external_object_pk_url_kwarg = 'test_object_id'
             mayan_external_object_permissions = {
@@ -71,7 +71,7 @@ class ChildExternalObjectAPIViewMixinTestCase(
         class TestModelSerializer(serializers.Serializer):
             """Empty serializer."""
 
-        class TestView(ExternalObjectAPIViewMixin, ListCreateAPIView):
+        class TestView(ExternalObjectAPIViewMixin, generics.ListCreateAPIView):
             external_object_queryset = TestModel.objects.all()
             external_object_pk_url_kwarg = 'test_object_id'
             serializer_class = TestModelSerializer

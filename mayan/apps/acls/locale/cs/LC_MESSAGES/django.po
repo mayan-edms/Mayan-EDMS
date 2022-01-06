@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-07 07:19+0000\n"
+"POT-Creation-Date: 2021-12-01 12:16+0000\n"
 "PO-Revision-Date: 2021-04-11 06:12+0000\n"
 "Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -110,11 +110,11 @@ msgstr "Upravit seznamy ACL"
 msgid "View ACLs"
 msgstr "Zobrazit seznamy ACL"
 
-#: serializers.py:125
+#: serializers.py:120
 msgid "Primary key of the permission to add to the ACL."
 msgstr "Primární klíč oprávnění přidat do seznamu ACL."
 
-#: serializers.py:132
+#: serializers.py:127
 msgid "Primary key of the permission to remove from the ACL."
 msgstr "Primární klíč oprávnění odebrat z ACL."
 
@@ -137,11 +137,11 @@ msgstr "Nové seznamy řízení přístupu pro: %s"
 msgid "Delete ACL: %s"
 msgstr "Odstranit ACL: %s"
 
-#: views.py:139
+#: views.py:141
 msgid "There are no ACLs for this object"
 msgstr "Pro tento objekt neexistují žádné ACL"
 
-#: views.py:142 views.py:259
+#: views.py:144 views.py:261
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
@@ -151,25 +151,25 @@ msgstr ""
 "přístupu uživatelů k objektům v systému. Seznamy ACL umožňují udělit "
 "oprávnění roli, ale pouze pro určitý objekt nebo skupinu objektů."
 
-#: views.py:149
+#: views.py:151
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "Seznamy řízení přístupu pro: %s"
 
-#: views.py:163
+#: views.py:165
 msgid "Granted permissions"
 msgstr "Udělení oprávnění"
 
-#: views.py:164
+#: views.py:166
 msgid "Available permissions"
 msgstr "Dostupná oprávnění"
 
-#: views.py:208
+#: views.py:210
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr "Role „%(role)s“ má oprávnění „%(object)s“."
 
-#: views.py:217
+#: views.py:219
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -181,11 +181,11 @@ msgstr ""
 " z ACL nadřazeného objektu nebo z jeho role prostřednictvím nabídky "
 "Nastavení."
 
-#: views.py:256
+#: views.py:258
 msgid "There are no ACLs"
 msgstr "Neexistují žádné seznamy ACL"
 
-#: views.py:265
+#: views.py:267
 msgid "Global access control lists"
 msgstr "Globální seznamy řízení přístupu"
 

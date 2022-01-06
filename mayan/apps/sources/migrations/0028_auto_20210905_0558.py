@@ -12,16 +12,12 @@ class Migration(migrations.Migration):
             name='emailbasemodel_ptr',
         ),
         migrations.RemoveField(
-            model_name='intervalbasemodel',
-            name='document_type',
-        ),
-        migrations.RemoveField(
-            model_name='intervalbasemodel',
-            name='outofprocesssource_ptr',
-        ),
-        migrations.RemoveField(
             model_name='pop3email',
             name='emailbasemodel_ptr',
+        ),
+        migrations.RemoveField(
+            model_name='emailbasemodel',
+            name='intervalbasemodel_ptr',
         ),
         migrations.RemoveField(
             model_name='sanescanner',
@@ -39,13 +35,13 @@ class Migration(migrations.Migration):
             model_name='webformsource',
             name='interactivesource_ptr',
         ),
-        migrations.AlterField(
-            model_name='source',
-            name='backend_data',
-            field=models.TextField(
-                blank=True, help_text='JSON encoded data for the backend '
-                'class.', verbose_name='Backend data'
-            ),
+        migrations.RemoveField(
+            model_name='intervalbasemodel',
+            name='document_type',
+        ),
+        migrations.RemoveField(
+            model_name='intervalbasemodel',
+            name='outofprocesssource_ptr',
         ),
         migrations.DeleteModel(
             name='EmailBaseModel',
@@ -76,5 +72,13 @@ class Migration(migrations.Migration):
         ),
         migrations.DeleteModel(
             name='WebFormSource',
+        ),
+        migrations.AlterField(
+            model_name='source',
+            name='backend_data',
+            field=models.TextField(
+                blank=True, help_text='JSON encoded data for the backend '
+                'class.', verbose_name='Backend data'
+            ),
         ),
     ]
