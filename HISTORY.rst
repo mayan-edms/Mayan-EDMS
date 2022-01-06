@@ -130,8 +130,9 @@
     and can be subclassed to mix and expand their capabilities.
     Included authentication mixins: ``AuthenticationBackendRememberMeMixin``
     Included authentication backends:
-    ``AuthenticationBackendModelUsernamePassword``,
-    ``AuthenticationBackendModelEmailPassword``.
+    ``AuthenticationBackendModelDjangoDefault``,
+    ``AuthenticationBackendModelEmailPassword``,
+    ``AuthenticationBackendModelUsernamePassword``.
     Apps define authentication backends in the module
     ``authentication_backends.py``.
   - Removed the now unused ``EmailAuthBackend`` class.
@@ -141,6 +142,20 @@
       to the backend used to process user authentication.
     - ``AUTHENTICATION_BACKEND_ARGUMENTS`` which is an optional YAML
       structure to pass to the authentication backend.
+
+- Add Time based One Time Password (TOTP) support. To enable set the
+  setting ``AUTHENTICATION_BACKEND`` to
+  ``mayan.apps.authentication.authentication_backends.AuthenticationBackendModelUsernamePasswordTOTP``
+  for username and TOTP login. For email and TOTP logins use
+  ``mayan.apps.authentication.authentication_backends.AuthenticationBackendModelEmailPasswordTOTP``.
+  New management commands to support OTP:
+
+    - ``authentication_otp_disable``: disables OTP for a user
+    - ``authentication_otp_initialize``: initializes the OTP state data for
+      all users. This command is for debuging and maintenance in case the
+      database migration does not correctly initialize the OTP state data
+      for existing users.
+    - ``authentication_otp_status``: display the OTP status for a user
 
 4.1.4 (2021-12-01)
 ==================
