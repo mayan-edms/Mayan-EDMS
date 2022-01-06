@@ -57,6 +57,12 @@ class URL:
                     # Value is not iterable, add as is.
                     self.query_dict[key] = value
 
+    def __repr__(self):
+        return str(self)
+
+    def __str__(self):
+        return self.to_string()
+
     @property
     def args(self):
         return self.query_dict
