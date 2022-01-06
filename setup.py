@@ -83,7 +83,7 @@ django-widget-tweaks==1.4.9
 djangorestframework==3.12.4
 djangorestframework-recursive==0.1.2
 drf-yasg==1.20.0
-elasticsearch==7.15.2
+elasticsearch==7.16.0
 elasticsearch-dsl==7.4.0
 extract-msg==0.28.7
 flanker==0.9.11
@@ -99,10 +99,12 @@ node-semver==0.8.0
 packaging==21.0
 pycountry==20.7.3
 pycryptodome==3.10.1
+pyotp==2.6.0
 python-dateutil==2.8.2
 python-magic==0.4.24
 python_gnupg==0.4.7
 pytz==2021.1
+qrcode==7.3.1
 requests==2.26.0
 sentry-sdk==1.4.1
 sh==1.14.2
