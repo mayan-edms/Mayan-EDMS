@@ -11,13 +11,19 @@ from .permissions import permission_users_impersonate
 
 class AuthenticationFormBase(forms.Form):
     _label = None
+    PASSWORD_FIELD = 'username'
 
-    def __init__(self, wizard, data, files, prefix, initial, request=None):
+    def __init__(self, data, files, prefix, initial, request=None, wizard=None):
         self.request = request
+        self.user_cache = None
         self.wizard = wizard
+
         super().__init__(
             data=data, files=files, prefix=prefix, initial=initial
         )
+
+    def get_user(self):
+        return self.user_cache
 
 
 class AuthenticationFormMixinRememberMe(forms.Form):
@@ -35,22 +41,14 @@ class AuthenticationFormMixinRememberMe(forms.Form):
         self.order_fields(field_order=field_order)
 
 
-class AuthenticationFormUsernamePassword(
-    AuthenticationFormMixinRememberMe, AuthenticationForm,
-    AuthenticationFormBase
-):
-    """
-    Modified authentication form to include the "Remember me" field.
-    """
-
-
 class AuthenticationFormEmailPassword(
-    AuthenticationFormMixinRememberMe, AuthenticationForm,
-    AuthenticationFormBase
+    AuthenticationFormMixinRememberMe, AuthenticationForm
 ):
     """
     A form to use email address authentication.
     """
+    PASSWORD_FIELD = 'email'
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -61,6 +59,15 @@ class AuthenticationFormEmailPassword(
         self.fields['username'].max_length = username_max_length
         self.fields['username'].widget.attrs['maxlength'] = username_max_length
         self.fields['username'].label = self.username_field.verbose_name
+
+
+class AuthenticationFormUsernamePassword(
+    AuthenticationFormMixinRememberMe, AuthenticationForm
+):
+    """
+    Modified authentication form to include the "Remember me" field.
+    """
+    PASSWORD_FIELD = 'username'
 
 
 class UserImpersonationOptionsForm(forms.Form):

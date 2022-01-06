@@ -7,46 +7,46 @@ from mayan.apps.common.utils import get_class_full_name
 from .classes import (
     AuthenticationBackend, AuthenticationBackendRememberMeMixin
 )
+from .django_authentication_backends import DjangoAuthenticationBackendModelEmail
 from .forms import (
     AuthenticationFormEmailPassword, AuthenticationFormUsernamePassword
 )
+from .literals import SESSION_MULTI_FACTOR_USER_ID_KEY
+
+
+class AuthenticationBackendModelDjangoDefault(
+    AuthenticationBackendRememberMeMixin, AuthenticationBackend
+):
+    """Bare bones backend that preserves Django's default behaviors."""
 
 
 class AuthenticationBackendModelUsernamePassword(
     AuthenticationBackendRememberMeMixin, AuthenticationBackend
 ):
-    form_list = (AuthenticationFormUsernamePassword,)
+    login_form_class = AuthenticationFormUsernamePassword
 
-    def identify(self, form_list, request, kwargs=None):
-        return list(form_list)[0].get_user()
+    def get_user(self, request, form_list=None, kwargs=None):
+        return get_user_model().objects.get(
+            pk=request.session[SESSION_MULTI_FACTOR_USER_ID_KEY]
+        )
 
-
-class EmailModelBackend(ModelBackend):
-    def authenticate(self, request, username=None, password=None, **kwargs):
-        UserModel = get_user_model()
-
-        if username is None or password is None:
-            return
-        try:
-            user = UserModel._default_manager.get(email=username)
-        except UserModel.DoesNotExist:
-            # Run the default password hasher once to reduce the timing
-            # difference between an existing and a nonexistent user (#20760).
-            UserModel().set_password(password)
-        else:
-            if user.check_password(password) and self.user_can_authenticate(user):
-                return user
+    def initialize(self):
+        settings.AUTHENTICATION_BACKENDS = (
+            get_class_full_name(klass=ModelBackend),
+        )
 
 
 class AuthenticationBackendModelEmailPassword(
     AuthenticationBackendRememberMeMixin, AuthenticationBackend
 ):
-    form_list = (AuthenticationFormEmailPassword,)
+    login_form_class = AuthenticationFormEmailPassword
 
-    def identify(self, form_list, request, kwargs=None):
-        return list(form_list)[0].get_user()
+    def get_user(self, request, form_list=None, kwargs=None):
+        return get_user_model().objects.get(
+            pk=request.session[SESSION_MULTI_FACTOR_USER_ID_KEY]
+        )
 
     def initialize(self):
         settings.AUTHENTICATION_BACKENDS = (
-            get_class_full_name(klass=EmailModelBackend),
+            get_class_full_name(klass=DjangoAuthenticationBackendModelEmail),
         )

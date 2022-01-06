@@ -9,9 +9,7 @@ class LoginViewTestMixin:
         return self.get(path=self.authenticated_url)
 
     def _request_login_view(self, data, query=None, follow=False):
-        default_data = {
-            'mayan_multi_step_login_view-current_step': '0'
-        }
+        default_data = {}
 
         default_data.update(data)
 
@@ -22,8 +20,8 @@ class LoginViewTestMixin:
 
     def _request_login_view_with_email(self, extra_data=None):
         data = {
-            '0-username': self._test_case_superuser.email,
-            '0-password': self._test_case_superuser.cleartext_password,
+            'username': self._test_case_superuser.email,
+            'password': self._test_case_superuser.cleartext_password,
         }
 
         if extra_data:
@@ -31,16 +29,37 @@ class LoginViewTestMixin:
 
         return self._request_login_view(data=data)
 
-    def _request_login_view_with_username(self, extra_data=None):
+    def _request_login_view_with_username(
+        self, extra_data=None, follow=None, query=None
+    ):
         data = {
-            '0-username': self._test_case_superuser.username,
-            '0-password': self._test_case_superuser.cleartext_password,
+            'username': self._test_case_superuser.username,
+            'password': self._test_case_superuser.cleartext_password,
         }
 
         if extra_data:
             data.update(extra_data)
 
-        return self._request_login_view(data=data)
+        return self._request_login_view(data=data, follow=follow, query=query)
+
+    def _request_multi_factor_authentication_view(
+        self, data=None, query=None, follow=False
+    ):
+        default_data = {
+            'multi_factor_authentication_view-current_step': '0'
+        }
+
+        default_data.update(data or {})
+
+        return self.post(
+            data=default_data, follow=follow, query=query,
+            viewname='authentication:multi_factor_authentication_view'
+        )
+
+
+class LogoutViewTestMixin:
+    def _request_logout_view(self):
+        return self.post(viewname='authentication:logout_view')
 
 
 class PasswordResetViewTestMixin:

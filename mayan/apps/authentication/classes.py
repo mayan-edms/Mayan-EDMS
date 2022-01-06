@@ -1,3 +1,6 @@
+from django.core.exceptions import ImproperlyConfigured
+from django.utils.module_loading import import_string
+
 from mayan.apps.databases.classes import BaseBackend
 
 from .settings import (
@@ -7,6 +10,9 @@ from .settings import (
 
 class AuthenticationBackend(BaseBackend):
     _loader_module_name = 'authentication_backends'
+    form_list = ()
+    login_form_class = None
+    login_form_class_path = 'django.contrib.auth.forms.AuthenticationForm'
 
     @classmethod
     def cls_get_instance(cls):
@@ -27,16 +33,54 @@ class AuthenticationBackend(BaseBackend):
         Optional subclass initialization method.
         """
 
+    def get_condition_dict(self):
+        result = {}
+
+        for form_index, form in enumerate(iterable=self.form_list):
+            condition = getattr(form, 'condition', None)
+            if condition:
+                def condition_wrapper(authentication_backend):
+                    # SessionWizard form condition method is hard coded
+                    # to receive only the wizard instance. This wrapper
+                    # allows passing also the `authentication_backend`.
+                    def wrapper(wizard):
+                        return condition(
+                            authentication_backend=authentication_backend,
+                            wizard=wizard
+                        )
+
+                    return wrapper
+
+                result[str(form_index)] = condition_wrapper(
+                    authentication_backend=self
+                )
+
+        return result
+
     def get_form_list(self):
         return self.form_list
 
-    def identify(self, form_list, request, kwargs=None):
+    def get_login_form_class(self):
+        if not self.login_form_class:
+            if not self.login_form_class_path:
+                raise ImproperlyConfigured(
+                    'Must specify a `login_form_class` or a '
+                    '`login_form_class_path`.'
+                )
+            else:
+                return import_string(
+                    dotted_path=self.login_form_class_path
+                )
+        else:
+            return self.login_form_class
+
+    def get_user(self, request, form_list=None, kwargs=None):
         """
         Required method to identify the user based on form and request data.
         """
         raise NotImplementedError
 
-    def process(form_list=None, kwargs=None, request=None):
+    def process(request, form_list=None, kwargs=None):
         """
         Optional method to do login related setup based on form data like
         session TTL.
