@@ -562,6 +562,14 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
                 instance_kwargs=self.auto_create_test_object_instance_kwargs
             )
 
+        self._create_test_models()
+
+    def _create_test_models(self):
+        """
+        Optional test class method to have all of its test models created
+        in the proper order.
+        """
+
     def tearDown(self):
         self._delete_test_models()
         super().tearDown()
@@ -623,6 +631,9 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
 
     def _create_test_object(self, instance_kwargs=None):
         instance_kwargs = instance_kwargs or {}
+
+        if not getattr(self, 'TestMode', None):
+            self.TestModel = self._create_test_model()
 
         self.test_object = self.TestModel.objects.create(**instance_kwargs)
         self._inject_test_object_content_type()
