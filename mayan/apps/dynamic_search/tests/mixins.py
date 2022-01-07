@@ -1,6 +1,6 @@
 from mayan.apps.documents.search import document_search
 
-from ..classes import SearchBackend
+from ..classes import SearchBackend, SearchModel
 
 from .backends import TestSearchBackend
 
@@ -31,6 +31,7 @@ class SearchTestMixin:
         super().tearDownClass()
 
     def setUp(self):
+        self._existing_search_models = SearchModel._registry.copy()
         super().setUp()
         # Monkeypatch the search class so that the test behavior is only
         # enabled when called from a search test.
@@ -40,6 +41,7 @@ class SearchTestMixin:
     def tearDown(self):
         SearchBackend._disable()
         super().tearDown()
+        SearchModel._registry = self._existing_search_models
 
 
 class SearchAPIViewTestMixin(SearchTestMixin):
