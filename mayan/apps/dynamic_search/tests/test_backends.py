@@ -1,3 +1,5 @@
+from unittest import skip
+
 from django.db import models
 
 from mayan.apps.documents.permissions import permission_document_view
@@ -10,7 +12,7 @@ from ..classes import SearchModel
 from .mixins import SearchTestMixin
 
 
-class CommonBackendFunctionalityTestCaseMixin(SearchTestMixin, BaseTestCase):
+class CommonBackendFunctionalityTestCaseMixin(SearchTestMixin):
     def _create_test_instances(self):
         self._test_object_grandparent = self.TestModelGrandParent.objects.create(
             label='grandparent'
@@ -79,8 +81,6 @@ class CommonBackendFunctionalityTestCaseMixin(SearchTestMixin, BaseTestCase):
         )
 
     def _setup_test_model_search(self):
-        self._create_test_models()
-
         self._test_search_grandparent = SearchModel(
             app_label=self.TestModelGrandParent._meta.app_label,
             model_name=self.TestModelGrandParent._meta.model_name
@@ -610,6 +610,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
         self.assertEqual(queryset.count(), 0)
 
 
+@skip('Skip until a Mock ElasticSearch server class is added.')
 class ElasticSearchBackendDocumentSearchTestCase(
     CommonBackendFunctionalityTestCaseMixin, DocumentTestMixin,
     BaseTestCase

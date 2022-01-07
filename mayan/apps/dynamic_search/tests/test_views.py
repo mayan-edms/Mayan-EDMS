@@ -1,3 +1,5 @@
+from unittest import skip
+
 from mayan.apps.documents.models.document_models import DocumentSearchResult
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
@@ -87,6 +89,7 @@ class DjangoAdvancedSearchViewTestCase(
     """Test against Django backend."""
 
 
+@skip('Skip until a Mock ElasticSearch server class is added.')
 class ElasticSearchAdvancedSearchViewTestCase(
     AdvancedSearchViewTestCaseMixin, GenericViewTestCase
 ):
@@ -125,6 +128,7 @@ class DjangoSearchViewTestCase(
     """Test against Django backend."""
 
 
+@skip('Skip until a Mock ElasticSearch server class is added.')
 class ElasticSearchSearchViewTestCase(
     SearchViewTestCaseMixin, GenericViewTestCase
 ):
@@ -194,6 +198,7 @@ class DjangoSearchToolViewTestCase(
     """Test against Django backend."""
 
 
+@skip('Skip until a Mock ElasticSearch server class is added.')
 class ElasticSearchToolViewTestCase(
     SearchToolsViewTestCaseMixin, GenericViewTestCase
 ):
