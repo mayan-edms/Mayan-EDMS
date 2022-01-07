@@ -6,6 +6,7 @@ from django.db import connection, models
 from rest_framework import status
 from rest_framework.reverse import reverse
 
+from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from .. import generics, serializers
@@ -47,10 +48,22 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
     def setUp(self):
         super().setUp()
 
-        self._create_test_object(
-            create_test_permission=True, fields={
+        self._create_test_permission()
+
+        self.TestModel = self._create_test_model(
+            fields={
                 'label': models.CharField(max_length=32, unique=True)
-            }, instance_kwargs={
+            }
+        )
+
+        ModelPermission.register(
+            model=self.TestModel, permissions=(
+                self.test_permission,
+            )
+        )
+
+        self._create_test_object(
+            instance_kwargs={
                 'label': TEST_OBJECT_LABEL
             }
         )

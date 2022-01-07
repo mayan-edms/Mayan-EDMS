@@ -3,6 +3,7 @@ from django.utils.encoding import force_text
 from mayan.apps.events.classes import EventModelRegistry
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
+from ..classes import ModelPermission
 from ..events import event_acl_created, event_acl_deleted, event_acl_edited
 from ..models import AccessControlList
 from ..permissions import permission_acl_edit, permission_acl_view
@@ -13,9 +14,11 @@ from .mixins import ACLTestMixin, AccessControlListViewTestMixin
 class AccessControlListViewTestCase(
     AccessControlListViewTestMixin, ACLTestMixin, GenericViewTestCase
 ):
-    def test_acl_create_get_view_no_permission(self):
+    def setUp(self):
+        super().setUp()
         self._create_acl_test_object()
 
+    def test_acl_create_get_view_no_permission(self):
         acl_count = AccessControlList.objects.count()
 
         self._clear_events()
@@ -29,8 +32,6 @@ class AccessControlListViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_acl_create_get_view_with_access(self):
-        self._create_acl_test_object()
-
         self.grant_access(
             obj=self.test_object, permission=permission_acl_edit
         )
@@ -47,8 +48,6 @@ class AccessControlListViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_acl_create_view_post_no_permission(self):
-        self._create_acl_test_object()
-
         acl_count = AccessControlList.objects.count()
 
         self._clear_events()
@@ -62,8 +61,6 @@ class AccessControlListViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_acl_create_view_post_with_access(self):
-        self._create_acl_test_object()
-
         self.grant_access(
             obj=self.test_object, permission=permission_acl_edit
         )
@@ -85,8 +82,6 @@ class AccessControlListViewTestCase(
         self.assertEqual(events[0].verb, event_acl_created.id)
 
     def test_acl_delete_view_no_permission(self):
-        self._create_acl_test_object()
-
         self._create_test_acl()
 
         self._clear_events()
@@ -105,8 +100,6 @@ class AccessControlListViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_acl_delete_view_with_access(self):
-        self._create_acl_test_object()
-
         self._create_test_acl()
 
         self.grant_access(
@@ -130,8 +123,6 @@ class AccessControlListViewTestCase(
         self.assertEqual(events[0].verb, event_acl_deleted.id)
 
     def test_acl_list_view_no_permission(self):
-        self._create_acl_test_object()
-
         self._create_test_acl()
 
         self._clear_events()
@@ -146,8 +137,6 @@ class AccessControlListViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_acl_list_view_with_access(self):
-        self._create_acl_test_object()
-
         self._create_test_acl()
 
         self.grant_access(
@@ -169,11 +158,12 @@ class AccessControlListViewTestCase(
 class AccessControlListPermissionViewTestCase(
     AccessControlListViewTestMixin, ACLTestMixin, GenericViewTestCase
 ):
-    def test_acl_permission_get_no_permission(self):
+    def setUp(self):
+        super().setUp()
         self._create_acl_test_object()
-
         self._create_test_acl()
 
+    def test_acl_permission_get_no_permission(self):
         test_acl_permission_count = self.test_acl.permissions.count()
 
         self._clear_events()
@@ -192,10 +182,6 @@ class AccessControlListPermissionViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_acl_permission_get_with_access(self):
-        self._create_acl_test_object()
-
-        self._create_test_acl()
-
         test_acl_permission_count = self.test_acl.permissions.count()
 
         self.grant_access(
@@ -218,10 +204,6 @@ class AccessControlListPermissionViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_acl_permission_add_view_with_access(self):
-        self._create_acl_test_object()
-
-        self._create_test_acl()
-
         test_acl_permission_count = self.test_acl.permissions.count()
 
         self.grant_access(
@@ -247,9 +229,6 @@ class AccessControlListPermissionViewTestCase(
         self.assertEqual(events[0].verb, event_acl_edited.id)
 
     def test_acl_permission_remove_view_with_access(self):
-        self._create_acl_test_object()
-
-        self._create_test_acl()
         self.test_acl.permissions.add(self.test_permission.stored_permission)
 
         test_acl_permission_count = self.test_acl.permissions.count()
@@ -280,12 +259,12 @@ class AccessControlListPermissionViewTestCase(
 class GlobalAccessControlListViewTestCase(
     AccessControlListViewTestMixin, ACLTestMixin, GenericViewTestCase
 ):
-
-    def test_global_acl_list_view_no_permission(self):
+    def setUp(self):
+        super().setUp()
         self._create_acl_test_object()
-
         self._create_test_acl()
 
+    def test_global_acl_list_view_no_permission(self):
         self._clear_events()
 
         response = self._request_test_global_acl_list_view()
@@ -298,10 +277,6 @@ class GlobalAccessControlListViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_global_acl_list_view_with_access(self):
-        self._create_acl_test_object()
-
-        self._create_test_acl()
-
         self.grant_access(
             obj=self.test_object, permission=permission_acl_view
         )
@@ -326,9 +301,7 @@ class OrphanAccessControlListViewTestCase(
         Test creating an ACL entry for an object with no model permissions.
         Result: Should display a blank permissions list (no optgroup)
         """
-        self._create_acl_test_object(
-            create_test_permission=False, register_model_permissions=False
-        )
+        self._create_acl_test_object()
         EventModelRegistry.register(model=self.TestModel)
 
         self.grant_permission(permission=permission_acl_edit)
