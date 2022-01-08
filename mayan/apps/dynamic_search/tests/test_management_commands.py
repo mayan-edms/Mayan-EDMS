@@ -40,7 +40,15 @@ class SearchIndexObjectManagementCommandTestCaseMixin(SearchTestMixin):
         )
         self._test_model_search.add_model_field(field='test_field')
 
-    def test_command(self):
+    def test_command_calling(self):
+        self._create_test_object(instance_kwargs={'test_field': 'abc'})
+
+        backend = SearchBackend.get_instance()
+        backend.reset()
+
+        self._call_command(id_range_string=self.test_objects[0].pk)
+
+    def test_command_artifacts(self):
         self._create_test_object(instance_kwargs={'test_field': 'abc'})
         self._create_test_object(instance_kwargs={'test_field': 'xyz'})
 
@@ -98,6 +106,10 @@ class DjangoSearchIndexObjectManagementCommandTestCase(
     _test_search_backend_path = 'mayan.apps.dynamic_search.backends.django.DjangoSearchBackend'
     """Test against Django backend."""
 
+    @skip('Backend does not support indexing.')
+    def test_command_artifacts(self):
+        """Backend does not support indexing."""
+
 
 @skip('Skip until a Mock ElasticSearch server class is added.')
 class ElasticSearchIndexObjectManagementCommandTestCase(
@@ -137,6 +149,9 @@ class SearchStatusManagementCommandTestCaseMixin(SearchTestMixin):
         self._test_model_search.add_model_field(field='test_field')
 
     def test_command(self):
+        backend = SearchBackend.get_instance()
+        backend.reset()
+
         self._create_test_object(instance_kwargs={'test_field': 'abc'})
         self._create_test_object(instance_kwargs={'test_field': 'xyz'})
 
