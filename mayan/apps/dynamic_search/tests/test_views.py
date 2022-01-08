@@ -1,3 +1,5 @@
+from unittest import skip
+
 from mayan.apps.documents.models.document_models import DocumentSearchResult
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
@@ -87,6 +89,7 @@ class DjangoAdvancedSearchViewTestCase(
     """Test against Django backend."""
 
 
+@skip('Skip until a Mock ElasticSearch server class is added.')
 class ElasticSearchAdvancedSearchViewTestCase(
     AdvancedSearchViewTestCaseMixin, GenericViewTestCase
 ):
@@ -125,6 +128,7 @@ class DjangoSearchViewTestCase(
     """Test against Django backend."""
 
 
+@skip('Skip until a Mock ElasticSearch server class is added.')
 class ElasticSearchSearchViewTestCase(
     SearchViewTestCaseMixin, GenericViewTestCase
 ):
@@ -160,6 +164,17 @@ class SearchToolsViewTestCaseMixin(
         response = self._request_search_backend_reindex_view()
         self.assertEqual(response.status_code, 403)
 
+    def test_search_backend_reindex_view_artifacts_no_permission(self):
+        self.search_backend.reset(
+            search_model=self.document_search_model
+        )
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        response = self._request_search_backend_reindex_view()
+        self.assertEqual(response.status_code, 403)
+
         queryset = self.search_backend.search(
             search_model=self.document_search_model,
             query={'q': self.test_document.label},
@@ -168,6 +183,18 @@ class SearchToolsViewTestCaseMixin(
         self.assertEqual(queryset.count(), 0)
 
     def test_search_backend_reindex_view_with_permission(self):
+        self.search_backend.reset(
+            search_model=self.document_search_model
+        )
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+        self.grant_permission(permission=permission_search_tools)
+
+        response = self._request_search_backend_reindex_view()
+        self.assertEqual(response.status_code, 302)
+
+    def test_search_backend_reindex_view_artifacts_with_permission(self):
         self.search_backend.reset(
             search_model=self.document_search_model
         )
@@ -193,7 +220,16 @@ class DjangoSearchToolViewTestCase(
     _test_search_backend_path = 'mayan.apps.dynamic_search.backends.django.DjangoSearchBackend'
     """Test against Django backend."""
 
+    skip('Backend does not support indexing.')
+    def test_search_backend_reindex_view_artifacts_no_permission(self):
+        """Backend does not support indexing."""
 
+    skip('Backend does not support indexing.')
+    def test_search_backend_reindex_view_artifacts_with_permission(self):
+        """Backend does not support indexing."""
+
+
+@skip('Skip until a Mock ElasticSearch server class is added.')
 class ElasticSearchToolViewTestCase(
     SearchToolsViewTestCaseMixin, GenericViewTestCase
 ):

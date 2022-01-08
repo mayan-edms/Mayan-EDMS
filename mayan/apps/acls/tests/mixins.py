@@ -141,18 +141,28 @@ class ACLTestMixin(RoleTestMixin):
 
     def _create_acl_test_object(
         self, model_name=None, create_test_permission=True,
-        register_model_permissions=True
+        register_acl_permissions=True, register_test_permission=True
     ):
-        self._create_test_object(
-            create_test_permission=create_test_permission
-        )
+        self.TestModel = self._create_test_model()
 
-        if register_model_permissions:
+        if create_test_permission:
+            self._create_test_permission()
+
+        if register_acl_permissions or 1:
             ModelPermission.register(
                 model=self.TestModel, permissions=(
                     permission_acl_edit, permission_acl_view
                 )
             )
+
+        if register_test_permission or 1:
+            ModelPermission.register(
+                model=self.TestModel, permissions=(
+                    self.test_permission,
+                )
+            )
+
+        self._create_test_object()
 
     def _create_acl_test_object_base(self):
         self.test_object_base = self._create_acl_test_object(

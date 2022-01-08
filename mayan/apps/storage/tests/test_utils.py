@@ -13,7 +13,7 @@ from ..utils import PassthroughStorageProcessor, mkdtemp, patch_files
 from .mixins import StorageProcessorTestMixin
 
 
-class PatchFilesTestCase(MIMETypeBackendMixin, BaseTestCase):
+class PatchFilesTestCase(BaseTestCase):
     test_replace_text = 'replaced_text'
 
     def setUp(self):
@@ -84,7 +84,7 @@ class PatchFilesTestCase(MIMETypeBackendMixin, BaseTestCase):
 
 
 class StorageProcessorTestCase(
-    StorageProcessorTestMixin, GenericDocumentTestCase
+    MIMETypeBackendMixin, StorageProcessorTestMixin, GenericDocumentTestCase
 ):
     auto_upload_test_document = False
 
