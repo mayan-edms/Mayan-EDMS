@@ -1,3 +1,8 @@
+4.1.5 (2022-XX-XX)
+==================
+- Fix CAA document links. Closes GitLab issue #1068. Thanks to 
+  Matthias Löblich (@startmat) for the report.
+
 4.1.4 (2021-12-01)
 ==================
 - Changes merged from versions 4.0.20 and 4.0.21.
