@@ -3,7 +3,6 @@ from django.utils.encoding import force_text
 from mayan.apps.events.classes import EventModelRegistry
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
-from ..classes import ModelPermission
 from ..events import event_acl_created, event_acl_deleted, event_acl_edited
 from ..models import AccessControlList
 from ..permissions import permission_acl_edit, permission_acl_view

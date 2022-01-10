@@ -172,7 +172,7 @@ class MetadataType(ExtraDataModelMixin, models.Model):
                     _(
                         'Metadata type validation error; %(exception)s'
                     ) % {'exception': ','.join(exception)}
-                 ) from exception
+                ) from exception
 
         if self.parser:
             parser_class = import_string(dotted_path=self.parser)
