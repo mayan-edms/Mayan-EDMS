@@ -18,7 +18,8 @@
 - Cleanup markup of the confirmation form.
 - Remove redundant modal close button.
 - Fix search proxies method decorator.
-- Reorganize converte office MIME type list.
+- Reorganize converter office MIME type list.
+- Improve metadata validation error message.
 
 4.0.21 (2021-11-29)
 ===================
