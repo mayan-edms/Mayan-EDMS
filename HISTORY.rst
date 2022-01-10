@@ -157,6 +157,9 @@
       for existing users.
     - ``authentication_otp_status``: display the OTP status for a user
 
+- Add URL links to the first document file and document version pages
+  to the API.
+
 4.1.4 (2021-12-01)
 ==================
 - Changes merged from versions 4.0.20 and 4.0.21.
