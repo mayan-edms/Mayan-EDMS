@@ -165,7 +165,14 @@ class MetadataType(ExtraDataModelMixin, models.Model):
                 stream=self.validation_arguments or '{}'
             )
             validator = validator_class(**validator_arguments)
-            validator.validate(value)
+            try:
+                validator.validate(value)
+            except ValidationError as exception:
+                raise ValidationError(
+                    _(
+                        'Metadata type validation error; %(exception)s'
+                    ) % {'exception': ','.join(exception)}
+                 ) from exception
 
         if self.parser:
             parser_class = import_string(dotted_path=self.parser)
