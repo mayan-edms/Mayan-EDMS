@@ -293,6 +293,10 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
             _user=_user
         )
 
+    @property
+    def pages_first(self):
+        return self.pages.first()
+
     def pages_remap(self, annotated_content_object_list=None, _user=None):
         DocumentVersionPage = apps.get_model(
             app_label='documents', model_name='DocumentVersionPage'
