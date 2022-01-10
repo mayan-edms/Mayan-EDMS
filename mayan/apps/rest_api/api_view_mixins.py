@@ -118,11 +118,11 @@ class ExternalObjectAPIViewMixin(ExternalObjectBaseMixin):
         Add the external object to the serializer context. Useful for the
         create action when there is no instance available.
         """
-        result = {}
+        context = super().get_serializer_extra_context()
         if self.kwargs:
-            result['external_object'] = self.external_object
+            context['external_object'] = self.external_object
 
-        return result
+        return context
 
     def get_external_object(self):
         return get_object_or_404(

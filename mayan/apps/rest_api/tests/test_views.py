@@ -7,13 +7,14 @@ from rest_framework import status
 from rest_framework.reverse import reverse
 
 from mayan.apps.acls.classes import ModelPermission
+from mayan.apps.rest_api.api_view_mixins import ExternalObjectAPIViewMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from .. import generics, serializers
 
 from .base import BaseAPITestCase
 from .literals import TEST_OBJECT_LABEL, TEST_OBJECT_LABEL_EDITED
-from .mixins import RESTAPIViewTestMixin
+from .mixins import DynamicFieldSerializerAPIViewTestCaseMixin, RESTAPIViewTestMixin
 
 
 class RESTAPIViewTestCase(RESTAPIViewTestMixin, GenericViewTestCase):
@@ -373,71 +374,18 @@ class BatchAPIRequestViewTestCase(BaseAPITestCase):
         self.assertEqual(events.count(), 0)
 
 
-class DynamicFieldSerializerAPIViewTestCase(BaseAPITestCase):
-    auto_add_test_view = True
-    auto_create_test_object = False
-    test_view_url = r'^test-view-url/(?P<test_object_id>\d+)/$'
-
-    def _test_view_factory(self, test_object=None):
-        self.TestModelParent = self._create_test_model(
-            fields={
-                'test_field_1': models.CharField(
-                    blank=True, max_length=1
-                ),
-                'test_field_2': models.CharField(
-                    blank=True, max_length=1
-                )
-            }, model_name='TestModelParent'
-        )
-
-        self.TestModelChild = self._create_test_model(
-            fields={
-                'parent': models.ForeignKey(
-                    on_delete=models.CASCADE, related_name='children',
-                    to='TestModelParent',
-                ),
-                'test_field_3': models.CharField(
-                    blank=True, max_length=1
-                ),
-                'test_field_4': models.CharField(
-                    blank=True, max_length=1
-                )
-            }, model_name='TestModelChild'
-        )
-
-        self.test_object_parent = self.TestModelParent.objects.create()
-        self.test_object_child = self.TestModelChild.objects.create(
-            parent=self.test_object_parent
-        )
-
-        TestModelParent = self.TestModelParent
-        TestModelChild = self.TestModelChild
-
-        class TestModelParentSerializer(serializers.ModelSerializer):
-            class Meta:
-                fields = ('id', 'test_field_1', 'test_field_2')
-                model = TestModelParent
-
-        class TestModelChildSerializer(serializers.ModelSerializer):
-            parent = TestModelParentSerializer()
-
-            class Meta:
-                fields = ('parent', 'id', 'test_field_3', 'test_field_4')
-                model = TestModelChild
+class DynamicFieldSerializerAPIViewTestCase(
+    DynamicFieldSerializerAPIViewTestCaseMixin, BaseAPITestCase
+):
+    def _get_test_view_class(self, serializer_class):
+        local_serializer_class = serializer_class
 
         class TestView(generics.RetrieveAPIView):
             lookup_url_kwarg = 'test_object_id'
             queryset = self.TestModelChild.objects.all()
-            serializer_class = TestModelChildSerializer
+            serializer_class = local_serializer_class
 
-        return TestView.as_view()
-
-    def _request_test_api_view(self, query):
-        return self.get(
-            viewname='rest_api:{}'.format(self._test_view_name), kwargs={
-                'test_object_id': self.test_object_child.pk,
-            }, query=query
-        )
+        return TestView
 
     def test_current_model_only_field_single(self):
         response = self._request_test_api_view(
@@ -556,3 +504,35 @@ class DynamicFieldSerializerAPIViewTestCase(BaseAPITestCase):
         self.assertTrue('test_field_2' not in data['parent'])
         self.assertTrue('test_field_3' in data)
         self.assertTrue('test_field_4' in data)
+
+
+class DynamicFieldSerializerWithMixinAPIViewTestCase(
+    DynamicFieldSerializerAPIViewTestCaseMixin, BaseAPITestCase
+):
+    auto_add_test_view = True
+    auto_create_test_object = False
+    test_view_url = r'^test-view-url/(?P<test_object_id>\d+)/$'
+
+    def _get_test_view_class(self, serializer_class):
+        local_serializer_class = serializer_class
+
+        class TestView(ExternalObjectAPIViewMixin, generics.RetrieveAPIView):
+            external_object_queryset = self.TestModelChild.objects.all()
+            external_object_pk_url_kwarg = 'test_object_id'
+            lookup_url_kwarg = 'test_object_id'
+            queryset = self.TestModelChild.objects.all()
+            serializer_class = local_serializer_class
+
+        return TestView
+
+    def test_related_model_only_field_single_with_api_view_mixins(self):
+        response = self._request_test_api_view(
+            query={'_fields_only': 'parent__test_field_1'}
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        data = response.json()
+        self.assertTrue('parent' in data)
+        self.assertTrue('test_field_1' in data['parent'])
+        self.assertTrue('test_field_2' not in data['parent'])
+        self.assertTrue('test_field_3' not in data)
+        self.assertTrue('test_field_4' not in data)
