@@ -49,7 +49,7 @@ services:
     # ports:
     #  - "9200:9200"
     profiles:
-      - elasticsearch_single
+      - elasticsearch
     restart: unless-stopped
     ulimits:
       memlock:
