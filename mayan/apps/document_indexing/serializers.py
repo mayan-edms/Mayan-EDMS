@@ -85,7 +85,7 @@ class IndexInstanceNodeSerializer(serializers.ModelSerializer):
         )
 
     def get_parent_url(self, obj):
-        if obj.parent:
+        if obj.parent and not obj.parent.is_root_node():
             return reverse(
                 viewname='rest_api:indexinstancenode-detail', kwargs={
                     'index_instance_id': obj.index().pk,
@@ -130,7 +130,7 @@ class IndexTemplateNodeSerializer(serializers.ModelSerializer):
         )
 
     def get_parent_url(self, obj):
-        if obj.parent:
+        if obj.parent and not obj.parent.is_root_node():
             return reverse(
                 viewname='rest_api:indextemplatenode-detail', kwargs={
                     'index_template_id': obj.index.pk,

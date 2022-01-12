@@ -20,6 +20,8 @@
 - Fix search proxies method decorator.
 - Reorganize converter office MIME type list.
 - Improve metadata validation error message.
+- Don't display API URL links to indexing instance and template parents that
+  are also root nodes as these are not accessible.
 
 4.0.21 (2021-11-29)
 ===================
