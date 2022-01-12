@@ -1,6 +1,6 @@
 4.2 (2022-XX-XX)
 ================
-- Update Django to version 3.2.8.
+- Update Django to version 3.2.11.
 - Update django-widget-tweaks from version 1.4.8 to 1.4.9.
 - File staging sources updates:
 
