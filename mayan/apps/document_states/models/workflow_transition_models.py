@@ -87,7 +87,8 @@ class WorkflowTransition(ExtraDataModelMixin, models.Model):
             return True
 
     def get_field_display(self):
-        field_list = sorted([str(field) for field in self.fields.all()])
+        field_list = [str(field) for field in self.fields.all()]
+        field_list.sort()
 
         return ', '.join(field_list)
 

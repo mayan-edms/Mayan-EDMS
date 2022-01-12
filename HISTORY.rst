@@ -173,6 +173,8 @@
   but with a different schema. These objects also now have the parent ID
   field with the new schema even if it displays a duplicate value. The old
   ID field is now deprecated and will be removed in version 5.0.
+- Added a workflow state column displaying all created actions labels
+  separated by a comma.
 
 4.1.4 (2021-12-01)
 ==================
