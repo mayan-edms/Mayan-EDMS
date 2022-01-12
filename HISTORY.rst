@@ -163,6 +163,8 @@
   ``DOWNLOAD_FILE_EXPIRATION_INTERVAL`` which defaults to 2 days.
 - Convert the shared uploaded file deletion interval into a setting named
   ``SHARED_UPLOADED_FILE_EXPIRATION_INTERVAL`` which defaults to 7 days.
+- Don't display API URL links to indexing instance and template parents that
+  are also root nodes as these are not accessible.
 
 4.1.4 (2021-12-01)
 ==================
