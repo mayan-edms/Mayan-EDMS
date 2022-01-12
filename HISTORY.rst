@@ -165,6 +165,8 @@
   ``SHARED_UPLOADED_FILE_EXPIRATION_INTERVAL`` which defaults to 7 days.
 - Don't display API URL links to indexing instance and template parents that
   are also root nodes as these are not accessible.
+- Register more models using ``DynamicSerializerField`` to display the
+  canonical serializer of the model when referenced by other objects.
 
 4.1.4 (2021-12-01)
 ==================

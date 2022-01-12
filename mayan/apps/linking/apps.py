@@ -13,6 +13,7 @@ from mayan.apps.common.menus import (
 from mayan.apps.documents.links.document_type_links import link_document_type_list
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .events import event_smart_link_edited
@@ -52,6 +53,11 @@ class LinkingApp(MayanAppConfig):
         ResolvedSmartLink = self.get_model(model_name='ResolvedSmartLink')
         SmartLink = self.get_model(model_name='SmartLink')
         SmartLinkCondition = self.get_model(model_name='SmartLinkCondition')
+
+        DynamicSerializerField.add_serializer(
+            klass=SmartLink,
+            serializer_class='mayan.apps.linking.serializers.SmartLinkSerializer'
+        )
 
         EventModelRegistry.register(model=SmartLink)
         EventModelRegistry.register(model=SmartLinkCondition)

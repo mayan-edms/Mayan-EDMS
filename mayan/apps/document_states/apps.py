@@ -17,6 +17,7 @@ from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.logging.classes import ErrorLog
 from mayan.apps.logging.permissions import permission_error_log_view
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .classes import DocumentStateHelper, WorkflowAction
@@ -102,6 +103,11 @@ class DocumentStatesApp(MayanAppConfig):
 
         Document.add_to_class(
             name='workflow', value=DocumentStateHelper.constructor
+        )
+
+        DynamicSerializerField.add_serializer(
+            klass=Workflow,
+            serializer_class='mayan.apps.document_states.serializers.WorkflowTemplateSerializer'
         )
 
         error_log = ErrorLog(app_config=self)

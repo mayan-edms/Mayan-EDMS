@@ -17,6 +17,7 @@ from mayan.apps.common.signals import signal_perform_upgrade
 from mayan.apps.dashboards.dashboards import dashboard_administrator
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.user_management.links import link_group_list
 
 from .classes import Permission
@@ -48,6 +49,11 @@ class PermissionsApp(MayanAppConfig):
         Role = self.get_model('Role')
         StoredPermission = self.get_model('StoredPermission')
         Group = apps.get_model(app_label='auth', model_name='Group')
+
+        DynamicSerializerField.add_serializer(
+            klass=Role,
+            serializer_class='mayan.apps.permissions.serializers.RoleSerializer'
+        )
 
         Group.add_to_class(name='roles_add', value=method_group_roles_add)
         Group.add_to_class(name='roles_remove', value=method_group_roles_remove)

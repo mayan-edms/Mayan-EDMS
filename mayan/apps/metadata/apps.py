@@ -20,6 +20,7 @@ from mayan.apps.documents.links.document_type_links import link_document_type_li
 from mayan.apps.documents.signals import signal_post_document_type_change
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .classes import (
@@ -100,6 +101,11 @@ class MetadataApp(MayanAppConfig):
         )
         Document.add_to_class(
             name='get_metadata', value=method_document_get_metadata
+        )
+
+        DynamicSerializerField.add_serializer(
+            klass=MetadataType,
+            serializer_class='mayan.apps.metadata.serializers.MetadataTypeSerializer'
         )
 
         EventModelRegistry.register(model=MetadataType)

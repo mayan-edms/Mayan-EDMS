@@ -14,6 +14,7 @@ from mayan.apps.documents.links.document_type_links import link_document_type_li
 from mayan.apps.documents.signals import signal_post_initial_document_type
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .events import event_index_template_created, event_index_template_edited
@@ -71,6 +72,11 @@ class DocumentIndexingApp(MayanAppConfig):
         )
         IndexTemplate = self.get_model(model_name='IndexTemplate')
         IndexTemplateNode = self.get_model(model_name='IndexTemplateNode')
+
+        DynamicSerializerField.add_serializer(
+            klass=IndexTemplate,
+            serializer_class='mayan.apps.document_indexing.serializers.IndexTemplateSerializer'
+        )
 
         EventModelRegistry.register(model=IndexTemplate)
 
