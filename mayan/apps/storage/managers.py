@@ -8,8 +8,9 @@ from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from .events import (
     event_download_file_created, event_download_file_deleted
 )
-from .literals import (
-    INTERVAL_DOWNLOAD_FILE_EXPIRATION, INTERVAL_SHARED_UPLOAD_STALE
+from .settings import (
+    setting_download_file_expiration_interval,
+    setting_shared_uploaded_file_expiration_interval
 )
 
 
@@ -17,7 +18,7 @@ class DownloadFileManager(models.Manager):
     def stale(self):
         return self.filter(
             datetime__lt=now() - timedelta(
-                seconds=INTERVAL_DOWNLOAD_FILE_EXPIRATION
+                seconds=setting_download_file_expiration_interval.value
             )
         )
 
@@ -35,6 +36,6 @@ class SharedUploadedFileManager(models.Manager):
     def stale(self):
         return self.filter(
             datetime__lt=now() - timedelta(
-                seconds=INTERVAL_SHARED_UPLOAD_STALE
+                seconds=setting_shared_uploaded_file_expiration_interval.value
             )
         )

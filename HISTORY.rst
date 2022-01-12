@@ -157,8 +157,12 @@
       for existing users.
     - ``authentication_otp_status``: display the OTP status for a user
 
-- Add URL links to the first document file and document version pages
-  to the API.
+- Add URL links to the document file and document version first pages
+  to the document serializer in the API.
+- Convert the download file deletion interval into a setting named
+  ``DOWNLOAD_FILE_EXPIRATION_INTERVAL`` which defaults to 2 days.
+- Convert the shared uploaded file deletion interval into a setting named
+  ``SHARED_UPLOADED_FILE_EXPIRATION_INTERVAL`` which defaults to 7 days.
 
 4.1.4 (2021-12-01)
 ==================
