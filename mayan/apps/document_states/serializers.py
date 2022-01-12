@@ -109,6 +109,7 @@ class WorkflowTemplateStateSerializer(serializers.HyperlinkedModelSerializer):
         ),
         view_name='rest_api:workflow-template-state-detail'
     )
+    workflow_template_id = serializers.IntegerField(source='workflow_id')
     workflow_template_url = serializers.HyperlinkedIdentityField(
         lookup_field='workflow_id', lookup_url_kwarg='workflow_template_id',
         view_name='rest_api:workflow-template-detail'
@@ -117,10 +118,12 @@ class WorkflowTemplateStateSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         fields = (
             'actions_url', 'completion', 'id', 'initial', 'label', 'url',
-            'workflow_template_url'
+            'workflow_template_id', 'workflow_template_url'
         )
         model = WorkflowState
-        read_only_fields = ('id', 'url', 'workflow_template_url')
+        read_only_fields = (
+            'id', 'url', 'workflow_template_id', 'workflow_template_url'
+        )
 
 
 class WorkflowTemplateStateActionSerializer(serializers.HyperlinkedModelSerializer):
@@ -141,6 +144,7 @@ class WorkflowTemplateStateActionSerializer(serializers.HyperlinkedModelSerializ
         ),
         view_name='rest_api:workflow-template-state-action-detail'
     )
+    workflow_template_state_id = serializers.IntegerField(source='state_id')
     workflow_template_state_url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
@@ -158,10 +162,14 @@ class WorkflowTemplateStateActionSerializer(serializers.HyperlinkedModelSerializ
     class Meta:
         fields = (
             'action_path', 'action_data', 'condition', 'enabled', 'id',
-            'label', 'url', 'when', 'workflow_template_state_url'
+            'label', 'url', 'when', 'workflow_template_state_id',
+            'workflow_template_state_url'
         )
         model = WorkflowStateAction
-        read_only_fields = ('id', 'url', 'workflow_template_state_url')
+        read_only_fields = (
+            'id', 'url', 'workflow_template_state_id',
+            'workflow_template_state_url'
+        )
 
 
 class WorkflowTransitionFieldSerializer(
@@ -193,6 +201,7 @@ class WorkflowTransitionFieldSerializer(
         ),
         view_name='rest_api:workflow-template-detail'
     )
+    workflow_transition_id = serializers.IntegerField(source='transition_id')
     workflow_transition_url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
@@ -211,11 +220,12 @@ class WorkflowTransitionFieldSerializer(
         fields = (
             'field_type', 'name', 'help_text', 'id', 'label', 'required',
             'url', 'widget', 'widget_kwargs', 'workflow_template_url',
-            'workflow_transition_url'
+            'workflow_transition_id', 'workflow_transition_url'
         )
         model = WorkflowTransitionField
         read_only_fields = (
-            'id', 'url', 'workflow_template_url', 'workflow_transition_url'
+            'id', 'url', 'workflow_template_url', 'workflow_transition_id',
+            'workflow_transition_url'
         )
 
 
@@ -238,17 +248,20 @@ class WorkflowTemplateTransitionSerializer(
         write_only=True
     )
     url = serializers.SerializerMethodField()
+    workflow_template_id = serializers.IntegerField(source='workflow_id')
     workflow_template_url = serializers.SerializerMethodField()
 
     class Meta:
         fields = (
             'condition', 'destination_state', 'destination_state_id',
             'field_list_url', 'id', 'label', 'origin_state',
-            'origin_state_id', 'url', 'workflow_template_url'
+            'origin_state_id', 'url', 'workflow_template_id',
+            'workflow_template_url'
         )
         model = WorkflowTransition
         read_only_fields = (
-            'field_list_url', 'id', 'url', 'workflow_template_url'
+            'field_list_url', 'id', 'url', 'workflow_template_id',
+            'workflow_template_url'
         )
 
     def create(self, validated_data):

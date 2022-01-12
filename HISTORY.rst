@@ -167,6 +167,12 @@
   are also root nodes as these are not accessible.
 - Register more models using ``DynamicSerializerField`` to display the
   canonical serializer of the model when referenced by other objects.
+- For object that have children objects or that support nesting, the parent
+  object ID is now added to the serializer. The layout is
+  ``{parent object name}_id``. A few objects already provided the parent ID
+  but with a different schema. These objects also now have the parent ID
+  field with the new schema even if it displays a duplicate value. The old
+  ID field is now deprecated and will be removed in version 5.0.
 
 4.1.4 (2021-12-01)
 ==================

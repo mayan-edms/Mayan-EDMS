@@ -60,10 +60,13 @@ class DocumentFilePageSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         fields = (
-            'document_file_url', 'id', 'image_url', 'page_number', 'url'
+            'document_file_id', 'document_file_url', 'id', 'image_url',
+            'page_number', 'url'
         )
         model = DocumentFilePage
-        read_only_fields = ('document_file_url', 'id', 'image_url', 'url')
+        read_only_fields = (
+            'document_file_id', 'document_file_url', 'id', 'image_url', 'url'
+        )
 
 
 class DocumentFileSerializer(
@@ -129,15 +132,16 @@ class DocumentFileSerializer(
             'file': {'use_url': False},
         }
         fields = (
-            'action', 'checksum', 'comment', 'document_url', 'download_url',
-            'encoding', 'file', 'filename', 'file_new', 'id', 'mimetype',
-            'page_list_url', 'pages_first', 'size', 'timestamp', 'url'
+            'action', 'checksum', 'comment', 'document_id', 'document_url',
+            'download_url', 'encoding', 'file', 'filename', 'file_new', 'id',
+            'mimetype', 'page_list_url', 'pages_first', 'size', 'timestamp',
+            'url'
         )
         model = DocumentFile
         read_only_fields = (
-            'checksum', 'document_url', 'download_url', 'encoding', 'file',
-            'id', 'mimetype', 'page_list_url', 'pages_first', 'size',
-            'timestamp', 'url'
+            'checksum', 'document_id', 'document_url', 'download_url',
+            'encoding', 'file', 'id', 'mimetype', 'page_list_url',
+            'pages_first', 'size', 'timestamp', 'url'
         )
 
     def get_size(self, instance):

@@ -64,12 +64,14 @@ class DocumentVersionPageSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         fields = (
-            'content_type', 'content_type_id', 'document_version_url',
-            'id', 'image_url', 'object_id', 'page_number', 'url'
+            'content_type', 'content_type_id', 'document_version_id',
+            'document_version_url', 'id', 'image_url', 'object_id',
+            'page_number', 'url'
         )
         model = DocumentVersionPage
         read_only_fields = (
-            'content_type', 'document_version_url', 'id', 'image_url', 'url'
+            'content_type', 'document_version_id', 'document_version_url',
+            'id', 'image_url', 'url'
         )
 
 
@@ -122,11 +124,11 @@ class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         fields = (
-            'active', 'comment', 'document_url', 'export_url', 'id',
-            'page_list_url', 'pages_first', 'timestamp', 'url'
+            'active', 'comment', 'document_id', 'document_url', 'export_url',
+            'id', 'page_list_url', 'pages_first', 'timestamp', 'url'
         )
         model = DocumentVersion
         read_only_fields = (
-            'document_url', 'export_url', 'id', 'page_list_url',
-            'pages_first', 'timestamp', 'url'
+            'document_id', 'document_url', 'export_url', 'id',
+            'page_list_url', 'pages_first', 'timestamp', 'url'
         )

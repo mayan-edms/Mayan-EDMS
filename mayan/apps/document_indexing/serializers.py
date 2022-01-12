@@ -102,15 +102,20 @@ class IndexTemplateNodeSerializer(serializers.ModelSerializer):
     parent_url = serializers.SerializerMethodField(read_only=True)
     url = serializers.SerializerMethodField(read_only=True)
 
+    # TODO: Version 5.0, remove 'parent' from GET fields as this is replaced
+    # by 'parent_id'.
+    # TODO: Version 5.0, remove 'index' from GET fields as this is replaced
+    # by 'index_id'.
     class Meta:
         fields = (
-            'children', 'enabled', 'expression', 'id', 'index', 'index_url',
-            'level', 'link_documents', 'parent', 'parent_url', 'url'
+            'children', 'enabled', 'expression', 'id', 'index', 'index_id',
+            'index_url', 'level', 'link_documents', 'parent', 'parent_id',
+            'parent_url', 'url'
         )
         model = IndexTemplateNode
         read_only_fields = (
-            'children', 'id', 'index', 'index_url', 'level', 'parent_url',
-            'url'
+            'children', 'id', 'index', 'index_id', 'index_url', 'level',
+            'parent_id', 'parent_url', 'url'
         )
 
     def get_index_url(self, obj):
