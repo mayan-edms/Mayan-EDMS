@@ -175,6 +175,7 @@
   ID field is now deprecated and will be removed in version 5.0.
 - Added a workflow state column displaying all created actions labels
   separated by a comma.
+- Added the mailing profile created and edited events.
 
 4.1.4 (2021-12-01)
 ==================

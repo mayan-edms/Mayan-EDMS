@@ -11,10 +11,14 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.databases.model_mixins import BackendModelMixin
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
 from mayan.apps.templating.classes import Template
 
 from .classes import NullBackend
-from .events import event_email_sent
+from .events import (
+    event_email_sent, event_profile_created, event_profile_edited
+)
 from .managers import UserMailerManager
 from .utils import split_recipient_list
 
@@ -76,6 +80,17 @@ class UserMailer(BackendModelMixin, models.Model):
     def natural_key(self):
         return (self.label,)
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_profile_created,
+            'target': 'self',
+        },
+        edited={
+            'event': event_profile_edited,
+            'target': 'self',
+        }
+    )
     def save(self, *args, **kwargs):
         if self.default:
             UserMailer.objects.select_for_update().exclude(pk=self.pk).update(

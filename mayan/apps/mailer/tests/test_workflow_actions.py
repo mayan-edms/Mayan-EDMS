@@ -33,7 +33,7 @@ class DocumentEmailActionTestCase(
 
         action = DocumentEmailAction(
             form_data={
-                'mailing_profile': self.test_user_mailer.pk,
+                'mailing_profile': self._test_user_mailer.pk,
                 'recipient': TEST_EMAIL_ADDRESS,
                 'subject': TEST_EMAIL_SUBJECT,
                 'body': TEST_EMAIL_BODY,
@@ -50,7 +50,7 @@ class DocumentEmailActionTestCase(
 
         action = DocumentEmailAction(
             form_data={
-                'mailing_profile': self.test_user_mailer.pk,
+                'mailing_profile': self._test_user_mailer.pk,
                 'recipient': TEST_EMAIL_ADDRESS,
                 'cc': TEST_EMAIL_ADDRESS,
                 'subject': TEST_EMAIL_SUBJECT,
@@ -69,7 +69,7 @@ class DocumentEmailActionTestCase(
 
         action = DocumentEmailAction(
             form_data={
-                'mailing_profile': self.test_user_mailer.pk,
+                'mailing_profile': self._test_user_mailer.pk,
                 'recipient': TEST_EMAIL_ADDRESS,
                 'bcc': TEST_EMAIL_ADDRESS,
                 'subject': TEST_EMAIL_SUBJECT,
@@ -90,7 +90,7 @@ class DocumentEmailActionTestCase(
         self.test_workflow_template_state.actions.create(
             action_data=json.dumps(
                 obj={
-                    'mailing_profile': self.test_user_mailer.pk,
+                    'mailing_profile': self._test_user_mailer.pk,
                     'recipient': TEST_EMAIL_ADDRESS,
                     'subject': TEST_EMAIL_SUBJECT,
                     'body': TEST_EMAIL_BODY,
@@ -130,7 +130,7 @@ class DocumentEmailActionTemplateTestCase(
 
         action = DocumentEmailAction(
             form_data={
-                'mailing_profile': self.test_user_mailer.pk,
+                'mailing_profile': self._test_user_mailer.pk,
                 'recipient': '{{{{ document.metadata_value_of.{} }}}}'.format(
                     self.test_metadata_type.name
                 ),
@@ -158,7 +158,7 @@ class DocumentEmailActionTemplateTestCase(
 
         action = DocumentEmailAction(
             form_data={
-                'mailing_profile': self.test_user_mailer.pk,
+                'mailing_profile': self._test_user_mailer.pk,
                 'recipient': TEST_EMAIL_ADDRESS,
                 'subject': '{{{{ document.metadata_value_of.{} }}}}'.format(
                     self.test_metadata_type.name
@@ -187,7 +187,7 @@ class DocumentEmailActionTemplateTestCase(
 
         action = DocumentEmailAction(
             form_data={
-                'mailing_profile': self.test_user_mailer.pk,
+                'mailing_profile': self._test_user_mailer.pk,
                 'recipient': TEST_EMAIL_ADDRESS,
                 'subject': TEST_EMAIL_SUBJECT,
                 'body': '{{{{ document.metadata_value_of.{} }}}}'.format(
@@ -214,7 +214,7 @@ class DocumentEmailActionTemplateTestCase(
 
         action = DocumentEmailAction(
             form_data={
-                'mailing_profile': self.test_user_mailer.pk,
+                'mailing_profile': self._test_user_mailer.pk,
                 'recipient': TEST_EMAIL_ADDRESS,
                 'subject': '{{{{ document.metadata_value_of.{} }}}}'.format(
                     self.test_metadata_type.name
@@ -261,7 +261,7 @@ class DocumentEmailActionViewTestCase(
         self._create_test_workflow_template_state()
         self._create_test_user_mailer()
         self.grant_access(
-            obj=self.test_user_mailer, permission=permission_user_mailer_use
+            obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
         self.grant_access(
             obj=self.test_workflow_template,
@@ -271,7 +271,7 @@ class DocumentEmailActionViewTestCase(
         response = self._request_test_workflow_template_state_action_create_post_view(
             class_path='mayan.apps.mailer.workflow_actions.DocumentEmailAction',
             extra_data={
-                'mailing_profile': self.test_user_mailer.pk,
+                'mailing_profile': self._test_user_mailer.pk,
                 'recipient': TEST_EMAIL_ADDRESS,
                 'subject': TEST_EMAIL_SUBJECT,
                 'body': TEST_EMAIL_BODY,

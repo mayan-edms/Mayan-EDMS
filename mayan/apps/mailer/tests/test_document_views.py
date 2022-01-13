@@ -61,7 +61,7 @@ class MailDocumentViewTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_user_mailer, permission=permission_user_mailer_use
+            obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
 
         self._clear_events()
@@ -84,7 +84,7 @@ class MailDocumentViewTestCase(
             permission=permission_send_document_link
         )
         self.grant_access(
-            obj=self.test_user_mailer, permission=permission_user_mailer_use
+            obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
 
         self._clear_events()
@@ -101,7 +101,7 @@ class MailDocumentViewTestCase(
 
         self.assertEqual(events[0].action_object, self.test_document)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
     def test_trashed_document_document_mail_link_single_view_with_full_access(self):
@@ -114,7 +114,7 @@ class MailDocumentViewTestCase(
             permission=permission_send_document_link
         )
         self.grant_access(
-            obj=self.test_user_mailer, permission=permission_user_mailer_use
+            obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
 
         self.test_document.delete()
@@ -170,7 +170,7 @@ class MailDocumentViewTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_user_mailer, permission=permission_user_mailer_use
+            obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
 
         self._clear_events()
@@ -193,7 +193,7 @@ class MailDocumentViewTestCase(
             permission=permission_send_document_link
         )
         self.grant_access(
-            obj=self.test_user_mailer, permission=permission_user_mailer_use
+            obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
 
         self._clear_events()
@@ -210,7 +210,7 @@ class MailDocumentViewTestCase(
 
         self.assertEqual(events[0].action_object, self.test_document)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
     def test_trashed_document_document_mail_link_multiple_view_with_full_access(self):
@@ -223,7 +223,7 @@ class MailDocumentViewTestCase(
             permission=permission_send_document_link
         )
         self.grant_access(
-            obj=self.test_user_mailer, permission=permission_user_mailer_use
+            obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
 
         self.test_document.delete()
