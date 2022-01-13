@@ -24,4 +24,4 @@ class Command(BaseCommand):
             else:
                 status_text = 'OTP is disabled.'
 
-        self.stdout.write('OTP state is: {}'.format(status_text))
+        self.stdout.write(msg='OTP state is: {}'.format(status_text))

@@ -24,14 +24,16 @@ class Command(BaseCommand):
         try:
             search_model = SearchModel.get(name=model_name)
         except KeyError:
-            self.stderr.write('Unknown search model `{}`'.format(model_name))
+            self.stderr.write(
+                msg='Unknown search model `{}`'.format(model_name)
+            )
             exit(1)
 
         try:
             id_range = parse_range(range_string=id_range_string)
         except Exception as exception:
             self.stderr.write(
-                'Unknown or invalid range format `{}`; {}'.format(
+                msg='Unknown or invalid range format `{}`; {}'.format(
                     id_range_string, exception
                 )
             )
@@ -45,5 +47,7 @@ class Command(BaseCommand):
         )
 
         self.stdout.write(
-            '\nInstances queued for indexing: {}'.format(len(list(id_range)))
+            msg='\nInstances queued for indexing: {}'.format(
+                len(list(id_range))
+            )
         )
