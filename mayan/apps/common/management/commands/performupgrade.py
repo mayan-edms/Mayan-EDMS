@@ -28,7 +28,7 @@ class Command(management.BaseCommand):
             signal_pre_upgrade.send(sender=self)
         except Exception as exception:
             self.stderr.write(
-                'Error during signal_pre_upgrade signal: %s, %s' % (
+                msg='Error during signal_pre_upgrade signal: %s, %s' % (
                     exception, type(exception)
                 )
             )
@@ -58,7 +58,7 @@ class Command(management.BaseCommand):
             signal_perform_upgrade.send(sender=self)
         except Exception as exception:
             self.stderr.write(
-                'Error during signal_perform_upgrade signal; %s, %s' % (
+                msg='Error during signal_perform_upgrade signal; %s, %s' % (
                     exception, type(exception)
                 )
             )
@@ -68,7 +68,7 @@ class Command(management.BaseCommand):
             signal_post_upgrade.send(sender=self)
         except Exception as exception:
             self.stderr.write(
-                'Error during signal_post_upgrade signal; %s, %s' % (
+                msg='Error during signal_post_upgrade signal; %s, %s' % (
                     exception, type(exception)
                 )
             )

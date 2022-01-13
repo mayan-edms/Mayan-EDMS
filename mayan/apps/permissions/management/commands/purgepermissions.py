@@ -9,4 +9,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         total = StoredPermission.objects.purge_obsolete()
 
-        self.stdout.write('\n{} obsolete permissions purged.'.format(total))
+        self.stdout.write(
+            msg='\n{} obsolete permissions purged.'.format(total)
+        )

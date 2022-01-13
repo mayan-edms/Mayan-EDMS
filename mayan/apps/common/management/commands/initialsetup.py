@@ -80,7 +80,7 @@ class Command(management.BaseCommand):
             settings.SECRET_KEY = secret_key
         else:
             self.stdout.write(
-                self.style.NOTICE(
+                msg=self.style.NOTICE(
                     'Existing media files at: {0}. Backup, remove this folder, '
                     'and try again. Or use the --force argument'.format(
                         settings.MEDIA_ROOT

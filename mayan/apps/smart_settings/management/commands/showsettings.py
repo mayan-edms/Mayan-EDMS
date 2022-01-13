@@ -22,7 +22,7 @@ class Command(management.BaseCommand):
 
     def handle(self, *args, **options):
         self.stdout.write(
-            Setting.dump_data(
+            msg=Setting.dump_data(
                 namespace=options.get('namespace'),
                 filter_term=options.get('filter_term')
             )

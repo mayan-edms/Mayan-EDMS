@@ -19,6 +19,7 @@
   - Update Django version 2.2.24 to 2.2.28.
 
 - Reduce the Sentry client default ``traces_sample_rate`` from 0.25 to 0.05.
+- Add keyword argument to ``self.stderr`` and ``self.stdout`` usage.
 
 4.1.7 (2022-04-01)
 ==================
