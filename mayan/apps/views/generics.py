@@ -184,15 +184,6 @@ class AddRemoveView(
 
     prefixes = {'form_available': 'available', 'form_added': 'added'}
 
-    def __init__(self, *args, **kwargs):
-        self.external_object_class = self.main_object_model
-        self.external_object_permission = self.main_object_permission
-        self.external_object_pk_url_kwarg = self.main_object_pk_url_kwarg
-        self.external_object_pk_url_kwargs = self.main_object_pk_url_kwargs
-        self.external_object_queryset = self.main_object_source_queryset
-
-        super().__init__(*args, **kwargs)
-
     def _action_add(self, queryset):
         kwargs = {'queryset': queryset}
         kwargs.update(self.get_action_add_extra_kwargs())
@@ -230,6 +221,12 @@ class AddRemoveView(
             )
 
     def dispatch(self, request, *args, **kwargs):
+        self.external_object_class = self.main_object_model
+        self.external_object_permission = self.main_object_permission
+        self.external_object_pk_url_kwarg = self.main_object_pk_url_kwarg
+        self.external_object_pk_url_kwargs = self.main_object_pk_url_kwargs
+        self.external_object_queryset = self.get_main_object_source_queryset()
+
         self.main_object = self.get_external_object()
         result = super().dispatch(request=request, *args, **kwargs)
         return result
@@ -369,6 +366,9 @@ class AddRemoveView(
         return self.get_secondary_object_list().exclude(
             pk__in=self.get_list_added_queryset().values('pk')
         )
+
+    def get_main_object_source_queryset(self):
+        return self.main_object_source_queryset
 
     def get_secondary_object_list(self):
         queryset = self.get_secondary_object_source_queryset()

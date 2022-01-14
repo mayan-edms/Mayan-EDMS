@@ -12,8 +12,7 @@ from ..permissions import permission_events_clear
 from ..tasks import task_event_queryset_clear
 
 __all__ = (
-    'CurrentUserEventClearView', 'EventListClearView',
-    'ObjectEventClearView', 'VerbEventClearView'
+    'EventListClearView', 'ObjectEventClearView', 'VerbEventClearView'
 )
 
 
@@ -95,19 +94,19 @@ class ObjectEventClearView(
         }
 
 
-class CurrentUserEventClearView(ObjectEventClearView):
-    object_permission = permission_events_clear
+# ~ class CurrentUserEventClearView(ObjectEventClearView):
+    # ~ object_permission = permission_events_clear
 
-    def get_external_object(self):
-        return self.request.user
+    # ~ def get_external_object(self):
+        # ~ return self.request.user
 
-    def get_queryset_parameters(self):
-        return {
-            '_method_name': 'actor', 'obj': self.external_object
-        }
+    # ~ def get_queryset_parameters(self):
+        # ~ return {
+            # ~ '_method_name': 'actor', 'obj': self.external_object
+        # ~ }
 
-    def get_task_extra_kwargs(self):
-        return {}
+    # ~ def get_task_extra_kwargs(self):
+        # ~ return {}
 
 
 class VerbEventClearView(EventClearBaseView):

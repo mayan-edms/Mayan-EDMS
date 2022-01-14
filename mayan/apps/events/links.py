@@ -1,13 +1,15 @@
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.authentication.link_conditions import condition_user_is_authenticated
+from mayan.apps.authentication.link_conditions import (
+    condition_user_is_authenticated, condition_is_current_user,
+    condition_not_is_current_user
+)
 from mayan.apps.navigation.classes import Link
 from mayan.apps.navigation.utils import get_content_type_kwargs_factory
 
 from .icons import (
-    icon_current_user_events, icon_current_user_events_clear,
-    icon_current_user_events_export, icon_event_types_subscriptions_list,
+    icon_event_types_subscriptions_list,
     icon_events_for_object, icon_events_for_object_clear,
     icon_events_for_object_export, icon_events_list, icon_events_list_clear,
     icon_events_list_export, icon_notification_mark_read,
@@ -36,6 +38,13 @@ def condition_can_be_exported(context, resolved_object):
     )
 
 
+from mayan.apps.authentication.link_conditions import (
+    condition_is_current_user, condition_not_is_current_user
+)
+#def condition_is_not_current_user(context, resolved_object):
+#    return not resolved_object == coontent, 'is_current_user', False)
+
+
 def get_unread_notification_count(context):
     Notification = apps.get_model(
         app_label='events', model_name='Notification'
@@ -46,19 +55,19 @@ def get_unread_notification_count(context):
         ).filter(read=False).count()
 
 
-link_current_user_events = Link(
-    condition=condition_user_is_authenticated,
-    icon=icon_current_user_events, text=_('My events'),
-    view='events:current_user_events'
-)
-link_current_user_events_clear = Link(
-    icon=icon_current_user_events_clear, text=_('Clear events'),
-    view='events:current_user_events_clear'
-)
-link_current_user_events_export = Link(
-    icon=icon_current_user_events_export, text=_('Export events'),
-    view='events:current_user_events_export'
-)
+# ~ link_current_user_events = Link(
+    # ~ condition=condition_user_is_authenticated,
+    # ~ icon=icon_current_user_events, text=_('My events'),
+    # ~ view='events:current_user_events'
+# ~ )
+# ~ link_current_user_events_clear = Link(
+    # ~ icon=icon_current_user_events_clear, text=_('Clear events'),
+    # ~ view='events:current_user_events_clear'
+# ~ )
+# ~ link_current_user_events_export = Link(
+    # ~ icon=icon_current_user_events_export, text=_('Export events'),
+    # ~ view='events:current_user_events_export'
+# ~ )
 link_events_details = Link(
     text=_('Events'), view='events:events_list'
 )
@@ -94,7 +103,7 @@ link_events_list_export = Link(
     view='events:events_list_export'
 )
 link_event_types_subscriptions_list = Link(
-    condition=condition_user_is_authenticated,
+    condition=condition_is_current_user,
     icon=icon_event_types_subscriptions_list,
     text=_('Event subscriptions'),
     view='events:event_types_user_subscriptions_list'
@@ -108,6 +117,7 @@ link_notification_mark_read_all = Link(
     view='events:notification_mark_read_all'
 )
 link_object_event_types_user_subscriptions_list = Link(
+    condition=condition_not_is_current_user,
     icon=icon_object_event_types_user_subscriptions_list,
     kwargs=get_content_type_kwargs_factory(variable_name='resolved_object'),
     permissions=(permission_events_view,), text=_('Subscriptions'),

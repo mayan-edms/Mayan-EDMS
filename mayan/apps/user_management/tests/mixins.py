@@ -13,6 +13,37 @@ from .literals import (
 )
 
 
+class CurrentUserViewTestMixin:
+    def _request_current_user_details_view(self, user=None):
+        user = user or self._test_case_user
+
+        return self.get(
+            viewname='user_management:user_details', kwargs={
+                'user_id': user.pk
+            }
+        )
+
+    def _request_current_user_edit_view(self, user=None):
+        user = user or self._test_case_user
+
+        return self.get(
+            viewname='user_management:user_edit', kwargs={
+                'user_id': user.pk
+            }
+        )
+
+    def _request_current_user_post_view(self, user=None):
+        user = user or self._test_case_user
+
+        return self.post(
+            viewname='user_management:user_edit', kwargs={
+                'user_id': user.pk
+            }, data={
+                'username': 'new_username', 'first_name': 'first name edited'
+            }
+        )
+
+
 class GroupAPIViewTestMixin:
     def _request_test_group_create_api_view(self):
         result = self.post(
@@ -359,9 +390,6 @@ class UserTestMixin:
 
 
 class UserViewTestMixin:
-    def _request_current_user_details_view(self):
-        return self.get(viewname='user_management:current_user_details')
-
     def _request_test_superuser_delete_view(self):
         return self.post(
             viewname='user_management:user_delete_single',

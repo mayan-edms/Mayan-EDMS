@@ -1,11 +1,17 @@
+from django.contrib.auth import get_user_model
 from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.views.generics import (
-    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
-    SingleObjectListView, SimpleView
+from mayan.apps.user_management.permissions import (
+    permission_user_edit, permission_user_view
 )
+from mayan.apps.user_management.querysets import get_user_queryset
+from mayan.apps.views.generics import (
+    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectDetailView,
+    SingleObjectEditView, SingleObjectListView, SimpleView
+)
+
 
 from .forms import ThemeForm, UserThemeSettingForm, UserThemeSettingForm_view
 from .icons import icon_theme_setup
@@ -15,33 +21,6 @@ from .permissions import (
     permission_theme_create, permission_theme_delete, permission_theme_edit,
     permission_theme_view
 )
-
-
-class CurrentUserThemeSettingsDetailsView(SimpleView):
-    template_name = 'appearance/generic_form.html'
-
-    def get_extra_context(self, **kwargs):
-        return {
-            'form': UserThemeSettingForm_view(
-                instance=self.request.user.theme_settings
-            ),
-            'read_only': True,
-            'title': _('Current user theme settings details'),
-        }
-
-
-class CurrentUserThemeSettingsEditView(SingleObjectEditView):
-    extra_context = {
-        'title': _('Edit current user theme settings details')
-    }
-    form_class = UserThemeSettingForm
-    post_action_redirect = reverse_lazy(
-        viewname='appearance:current_user_theme_settings_details'
-    )
-
-    def get_object(self):
-        return self.request.user.theme_settings
-
 
 class ThemeCreateView(SingleObjectCreateView):
     extra_context = {'title': _('Create new theme')}
@@ -110,3 +89,96 @@ class ThemeListView(SingleObjectListView):
             ),
             'title': _('Themes'),
         }
+
+
+
+
+# ~ from .forms import LocaleProfileForm, LocaleProfileForm_view
+        # ~ regex=r'^user/(?P<user_id>\d+)/locale/edit/$',
+
+
+# ~ class UserLocaleProfileDetailView(SingleObjectDetailView):
+    # ~ form_class = LocaleProfileForm_view
+    # ~ #model = get_user_model()
+    # ~ pk_url_kwarg = 'user_id'
+
+    # ~ def get_extra_context(self, **kwargs):
+        # ~ return {
+            # ~ 'form': LocaleProfileForm_view(
+                # ~ instance=self.object.locale_profile
+            # ~ ),
+            # ~ 'object': self.object,
+            # ~ 'read_only': True,
+            # ~ 'title': _('Locale profile for user: %s') % self.object
+        # ~ }
+
+    # ~ def get_object_permission(self):
+        # ~ if self.get_object == self.request.user:
+            # ~ return
+        # ~ else:
+            # ~ return permission_user_view
+
+    # ~ def get_source_queryset(self):
+        # ~ if self.request.user.is_superuser or self.request.user.is_staff:
+            # ~ return get_user_model().objects.all()
+        # ~ else:
+            # ~ return get_user_queryset()
+
+
+class UserThemeSettingsDetailsView(SingleObjectDetailView):
+    # ~ template_name = 'appearance/generic_form.html'
+    form_class = UserThemeSettingForm_view
+    #model = get_user_model()
+    pk_url_kwarg = 'user_id'
+
+    def get_extra_context(self, **kwargs):
+        return {
+            'form': UserThemeSettingForm_view(
+                instance=self.object.theme_settings
+            ),
+            'object': self.object,
+            'read_only': True,
+            'title': _('Theme settings for user: %s') % self.object
+        }
+
+    def get_object_permission(self):
+        if self.get_object == self.request.user:
+            return
+        else:
+            return permission_user_view
+
+    def get_source_queryset(self):
+        if self.request.user.is_superuser or self.request.user.is_staff:
+            return get_user_model().objects.all()
+        else:
+            return get_user_queryset()
+
+
+class UserThemeSettingsEditView(SingleObjectEditView):
+    # ~ extra_context = {
+        # ~ 'title': _('Edit current user theme settings details')
+    # ~ }
+    form_class = UserThemeSettingForm
+    # ~ post_action_redirect = reverse_lazy(
+        # ~ viewname='appearance:user_theme_settings_details'
+    # ~ )
+    pk_url_kwarg = 'user_id'
+
+    def get_extra_context(self, **kwargs):
+        return {
+            'object': self.object,
+            'title': _('Edit theme settings for user: %s') % self.object
+        }
+
+    def get_object_permission(self):
+        if self.get_object == self.request.user:
+            return
+        else:
+            return permission_user_edit
+
+    def get_source_queryset(self):
+        if self.request.user.is_superuser or self.request.user.is_staff:
+            return get_user_model().objects.all()
+        else:
+            return get_user_queryset()
+

@@ -3,8 +3,8 @@ from django.conf.urls import url
 from mayan.apps.views.generics import SimpleView
 
 from .views import (
-    CurrentUserThemeSettingsDetailsView, CurrentUserThemeSettingsEditView,
-    ThemeCreateView, ThemeDeleteView, ThemeEditView, ThemeListView
+    ThemeCreateView, ThemeDeleteView, ThemeEditView, ThemeListView,
+    UserThemeSettingsDetailsView, UserThemeSettingsEditView
 )
 
 
@@ -47,12 +47,14 @@ urlpatterns_themes = [
 
 urlpatterns_user_theme_settings = [
     url(
-        regex=r'^user/theme/$', name='current_user_theme_settings_details',
-        view=CurrentUserThemeSettingsDetailsView.as_view()
+        regex=r'^user/(?P<user_id>\d+)/theme/$',
+        name='user_theme_settings_details',
+        view=UserThemeSettingsDetailsView.as_view()
     ),
     url(
-        regex=r'^user/theme/edit/$', name='current_user_theme_settings_edit',
-        view=CurrentUserThemeSettingsEditView.as_view()
+        regex=r'^user/(?P<user_id>\d+)/theme/edit/$',
+        name='user_theme_settings_edit',
+        view=UserThemeSettingsEditView.as_view()
     )
 ]
 

@@ -1,9 +1,9 @@
 from mayan.apps.appearance.classes import Icon
 
-icon_current_user_theme_settings_details = Icon(
+icon_user_theme_settings_details = Icon(
     driver_name='fontawesome', symbol='palette'
 )
-icon_current_user_theme_settings_edit = Icon(
+icon_user_theme_settings_edit = Icon(
     driver_name='fontawesome-dual', primary_symbol='palette',
     secondary_symbol='pencil-alt'
 )

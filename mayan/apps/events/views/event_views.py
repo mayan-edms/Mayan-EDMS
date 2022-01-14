@@ -10,8 +10,7 @@ from ..icons import icon_events_list
 from ..permissions import permission_events_view
 
 __all__ = (
-    'EventListView', 'ObjectEventListView', 'CurrentUserEventListView',
-    'VerbEventListView'
+    'EventListView', 'ObjectEventListView', 'VerbEventListView'
 )
 
 
@@ -52,12 +51,12 @@ class ObjectEventListView(ExternalContentTypeObjectViewMixin, EventListBaseView)
         return any_stream(obj=self.external_object)
 
 
-class CurrentUserEventListView(ObjectEventListView):
-    def get_external_object(self):
-        return self.request.user
+# ~ class CurrentUserEventListView(ObjectEventListView):
+    # ~ def get_external_object(self):
+        # ~ return self.request.user
 
-    def get_source_queryset(self):
-        return actor_stream(obj=self.external_object)
+    # ~ def get_source_queryset(self):
+        # ~ return actor_stream(obj=self.external_object)
 
 
 class VerbEventListView(EventListBaseView):

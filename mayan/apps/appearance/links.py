@@ -4,24 +4,26 @@ from mayan.apps.authentication.link_conditions import condition_user_is_authenti
 from mayan.apps.navigation.classes import Link
 
 from .icons import (
-    icon_current_user_theme_settings_details,
-    icon_current_user_theme_settings_edit, icon_theme_create,
+    icon_user_theme_settings_details,
+    icon_user_theme_settings_edit, icon_theme_create,
     icon_theme_delete, icon_theme_edit, icon_theme_list, icon_theme_setup
 )
 from .permissions import (
     permission_theme_create, permission_theme_delete, permission_theme_edit,
 )
 
-link_current_user_theme_settings_details = Link(
-    icon=icon_current_user_theme_settings_details,
+link_user_theme_settings_details = Link(
+    args='object.pk',
+    icon=icon_user_theme_settings_details,
     text=_('Theme settings'),
-    view='appearance:current_user_theme_settings_details'
+    view='appearance:user_theme_settings_details'
 )
-link_current_user_theme_settings_edit = Link(
+link_user_theme_settings_edit = Link(
+    args='object.pk',
     condition=condition_user_is_authenticated,
-    icon=icon_current_user_theme_settings_edit,
+    icon=icon_user_theme_settings_edit,
     text=_('Edit theme settings'),
-    view='appearance:current_user_theme_settings_edit'
+    view='appearance:user_theme_settings_edit'
 )
 
 link_theme_create = Link(

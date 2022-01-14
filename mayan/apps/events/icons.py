@@ -1,17 +1,23 @@
 from mayan.apps.appearance.classes import Icon
 
-icon_current_user_events = Icon(
-    driver_name='fontawesome', symbol='file-export'
-)
-icon_current_user_events_clear = Icon(
-    driver_name='fontawesome', symbol='broom'
-)
-icon_current_user_events_export = Icon(
-    driver_name='fontawesome', symbol='file-export'
-)
+# ~ icon_current_user_events = Icon(
+    # ~ driver_name='fontawesome', symbol='file-export'
+# ~ )
+# ~ icon_current_user_events_clear = Icon(
+    # ~ driver_name='fontawesome', symbol='broom'
+# ~ )
+# ~ icon_current_user_events_export = Icon(
+    # ~ driver_name='fontawesome', symbol='file-export'
+# ~ )
 icon_event_types_subscriptions_list = Icon(
     driver_name='fontawesome', symbol='list-ol'
 )
+icon_event_types_subscriptions_list = Icon(
+    driver_name='fontawesome-dual', primary_symbol='list-ol',
+    secondary_symbol='rss'
+)
+
+
 icon_events_for_object = Icon(driver_name='fontawesome', symbol='list-ol')
 icon_events_for_object_clear = Icon(
     driver_name='fontawesome', symbol='broom'

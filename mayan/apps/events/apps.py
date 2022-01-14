@@ -1,11 +1,13 @@
 from django.apps import apps
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
-    menu_object, menu_secondary, menu_tools, menu_topbar, menu_user
+    menu_list_facet, menu_object, menu_secondary, menu_tools, menu_topbar,
+    menu_user
 )
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import ObjectLinkWidget, TwoStateWidget
@@ -13,8 +15,9 @@ from mayan.apps.views.html_widgets import ObjectLinkWidget, TwoStateWidget
 from .classes import EventTypeNamespace
 from .html_widgets import widget_event_actor_link, widget_event_type_link
 from .links import (
-    link_current_user_events, link_current_user_events_clear,
-    link_current_user_events_export, link_event_types_subscriptions_list,
+    #link_current_user_events, link_current_user_events_clear,
+    #link_current_user_events_export, link_event_types_subscriptions_list,
+    link_event_types_subscriptions_list,
     link_events_for_object_clear, link_events_for_object_export,
     link_events_list, link_events_list_clear, link_events_list_export,
     link_notification_mark_read, link_notification_mark_read_all,
@@ -33,11 +36,13 @@ class EventsApp(MayanAppConfig):
     def ready(self):
         super().ready()
 
-        EventTypeNamespace.load_modules()
-
         Action = apps.get_model(app_label='actstream', model_name='Action')
         Notification = self.get_model(model_name='Notification')
         StoredEventType = self.get_model(model_name='StoredEventType')
+
+        User = get_user_model()
+
+        EventTypeNamespace.load_modules()
 
         # Typecast the related field because actstream uses CharFields for
         # the object_id the action_object, actor, and target fields.
@@ -112,13 +117,13 @@ class EventsApp(MayanAppConfig):
 
         # Clear
 
-        menu_secondary.bind_links(
-            links=(link_current_user_events_clear,),
-            sources=(
-                'events:current_user_events',
-                'events:current_user_events_clear',
-            )
-        )
+        # ~ menu_secondary.bind_links(
+            # ~ links=(link_current_user_events_clear,),
+            # ~ sources=(
+                # ~ 'events:current_user_events',
+                # ~ 'events:current_user_events_clear',
+            # ~ )
+        # ~ )
         menu_secondary.bind_links(
             links=(link_events_list_clear,),
             sources=(
@@ -136,13 +141,13 @@ class EventsApp(MayanAppConfig):
 
         # Export
 
-        menu_secondary.bind_links(
-            links=(link_current_user_events_export,),
-            sources=(
-                'events:current_user_events',
-                'events:current_user_events_export',
-            )
-        )
+        # ~ menu_secondary.bind_links(
+            # ~ links=(link_current_user_events_export,),
+            # ~ sources=(
+                # ~ 'events:current_user_events',
+                # ~ 'events:current_user_events_export',
+            # ~ )
+        # ~ )
         menu_secondary.bind_links(
             links=(link_events_list_export,),
             sources=(
@@ -175,11 +180,18 @@ class EventsApp(MayanAppConfig):
 
         # Subscription
 
-        menu_user.bind_links(
+        # ~ menu_user.bind_links(
+            # ~ links=(
+                # ~ link_event_types_subscriptions_list, link_current_user_events
+            # ~ ), position=50
+        # ~ )
+
+        menu_list_facet.bind_links(
             links=(
-                link_event_types_subscriptions_list, link_current_user_events
-            ), position=50
+                link_event_types_subscriptions_list,
+            ), sources=(User,)
         )
+
 
         # Other
 

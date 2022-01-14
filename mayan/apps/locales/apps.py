@@ -1,18 +1,21 @@
 import logging
 
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.contrib.auth.signals import user_logged_in
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.menus import menu_user
+from mayan.apps.common.menus import menu_list_facet, menu_object, menu_user
 
 from .handlers import (
     handler_user_locale_profile_session_config,
     handler_user_locale_profile_create
 )
-from .links import link_current_user_locale_profile_details, link_current_user_locale_profile_edit
+from .links import (
+    link_user_locale_profile_detail, link_user_locale_profile_edit
+)
 from .patches import patchDjangoTranslation
 
 logger = logging.getLogger(name=__name__)
@@ -28,12 +31,20 @@ class LocalesApp(MayanAppConfig):
 
     def ready(self):
         super().ready()
+        User = get_user_model()
+
         patchDjangoTranslation()
 
-        menu_user.bind_links(
+        menu_list_facet.bind_links(
             links=(
-                link_current_user_locale_profile_details, link_current_user_locale_profile_edit,
-            ), position=50
+                link_user_locale_profile_detail,
+            ), sources=(User,)
+        )
+
+        menu_object.bind_links(
+            links=(
+                link_user_locale_profile_edit,
+            ), sources=(User,)
         )
 
         post_save.connect(

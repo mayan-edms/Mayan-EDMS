@@ -72,8 +72,8 @@ class EventTypeSubscriptionListView(FormView):
     def get_object(self):
         return self.request.user
 
-    def get_post_action_redirect(self):
-        return reverse(viewname='user_management:current_user_details')
+    # ~ def get_post_action_redirect(self):
+        # ~ return reverse(viewname='user_management:current_user_details')
 
     def get_queryset(self):
         # Return the queryset by name from the sorted list of the class

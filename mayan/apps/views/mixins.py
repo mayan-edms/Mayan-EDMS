@@ -574,8 +574,8 @@ class SortingViewMixin:
         )
         return context
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
+    def get_queryset(self, *args, **kwargs):
+        queryset = super().get_queryset(*args, **kwargs)
 
         sort_fields = self.get_sort_fields()
         if sort_fields:
