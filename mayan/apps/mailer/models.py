@@ -227,13 +227,15 @@ class UserMailer(BackendModelMixin, models.Model):
             _event_action_object=obj, _user=_user
         )
 
-    def test(self, to):
+    def test(self, to, _user=None):
         """
         Send a test message to make sure the mailing profile settings are
         correct.
         """
         try:
-            self.send(subject=_('Test email from Mayan EDMS'), to=to)
+            self.send(
+                subject=_('Test email from Mayan EDMS'), to=to, _user=_user
+            )
         except Exception as exception:
             self.error_log.create(
                 text='{}; {}'.format(

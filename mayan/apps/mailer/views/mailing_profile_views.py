@@ -68,7 +68,10 @@ class UserMailingCreateView(SingleObjectDynamicFormCreateView):
         return backend.get_form_schema()
 
     def get_instance_extra_data(self):
-        return {'backend_path': self.kwargs['class_path']}
+        return {
+            '_event_actor': self.request.user,
+            'backend_path': self.kwargs['class_path']
+        }
 
 
 class UserMailingDeleteView(SingleObjectDeleteView):
@@ -98,6 +101,9 @@ class UserMailingEditView(SingleObjectDynamicFormEditView):
         backend = self.object.get_backend()
 
         return backend.get_form_schema()
+
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
 
 class UserMailerListView(SingleObjectListView):
@@ -131,7 +137,9 @@ class UserMailerTestView(ExternalObjectViewMixin, FormView):
     form_class = UserMailerTestForm
 
     def form_valid(self, form):
-        self.external_object.test(to=form.cleaned_data['email'])
+        self.external_object.test(
+            to=form.cleaned_data['email'], _user=self.request.user
+        )
         messages.success(
             message=_('Test email sent.'), request=self.request
         )
