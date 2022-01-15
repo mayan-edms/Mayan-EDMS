@@ -16,7 +16,7 @@ from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .classes import MailerBackend
-from .events import event_email_sent
+from .events import event_email_sent, event_profile_edited
 from .links import (
     link_send_document_link_single, link_send_document_link_multiple,
     link_send_document_file_attachment_single,
@@ -80,7 +80,9 @@ class MailerApp(MayanAppConfig):
         )
 
         ModelEventType.register(
-            model=UserMailer, event_types=(event_email_sent,)
+            model=UserMailer, event_types=(
+                event_email_sent, event_profile_edited
+            )
         )
 
         SourceColumn(

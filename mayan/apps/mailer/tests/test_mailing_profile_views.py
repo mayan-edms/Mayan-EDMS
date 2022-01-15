@@ -56,7 +56,7 @@ class MailerViewsTestCase(
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_profile_created.id)
 
@@ -135,7 +135,7 @@ class MailerViewsTestCase(
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_profile_edited.id)
 
@@ -229,7 +229,7 @@ class MailerViewsTestCase(
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
@@ -257,7 +257,7 @@ class MailerViewsTestCase(
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
@@ -285,7 +285,7 @@ class MailerViewsTestCase(
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
@@ -313,6 +313,6 @@ class MailerViewsTestCase(
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
