@@ -48,6 +48,8 @@ Backward incompatible changes
 
     from mayan.apps.mime_types.classes import MIMETypeBackend
     MIMETypeBackend.get_backend_instance().get_mime_type(...)
+- Search model names are now specified in lower case in the user interface
+  URL or in the search API URL.
 
 
 Issues closed
