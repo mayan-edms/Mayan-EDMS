@@ -161,7 +161,7 @@ class CurrentUserSuperUserViewTestCase(
         self.assertEqual(events[0].verb, event_user_edited.id)
 
 
-class SuperUserAccessibilityViewTestCase(
+class SuperUserViewTestCase(
     UserViewTestMixin, GenericViewTestCase
 ):
     def setUp(self):
@@ -672,7 +672,12 @@ class UserOptionsViewTestCase(
         self.assertTrue(self.test_user.user_options.block_password_change)
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_user)
+        self.assertEqual(events[0].verb, event_user_edited.id)
 
 
 class MetadataLookupIntegrationTestCase(

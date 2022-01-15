@@ -365,9 +365,18 @@ class UserTestCaseMixin:
 
 
 class UserTestMixin:
+    auto_create_test_user = False
+    auto_create_test_superuser = False
+
     def setUp(self):
         super().setUp()
         self.test_users = []
+
+        if self.auto_create_test_superuser:
+            self._create_test_superuser()
+
+        if self.auto_create_test_user:
+            self._create_test_user()
 
     def _create_test_superuser(self):
         self.test_superuser = get_user_model().objects.create_superuser(

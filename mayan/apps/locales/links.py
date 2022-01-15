@@ -1,9 +1,8 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.authentication.link_conditions import (
-    condition_is_current_user, condition_user_is_authenticated
+    condition_user_is_authenticated
 )
-
 from mayan.apps.navigation.classes import Link
 
 from .icons import (

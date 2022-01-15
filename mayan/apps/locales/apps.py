@@ -7,8 +7,10 @@ from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.menus import menu_list_facet, menu_object, menu_user
+from mayan.apps.common.menus import menu_list_facet, menu_object
+from mayan.apps.events.classes import ModelEventType
 
+from .events import event_user_locale_profile_edited
 from .handlers import (
     handler_user_locale_profile_session_config,
     handler_user_locale_profile_create
@@ -25,7 +27,7 @@ class LocalesApp(MayanAppConfig):
     app_namespace = 'locales'
     app_url = 'locales'
     has_rest_api = False
-    has_tests = False
+    has_tests = True
     name = 'mayan.apps.locales'
     verbose_name = _('Locales')
 
@@ -34,6 +36,12 @@ class LocalesApp(MayanAppConfig):
         User = get_user_model()
 
         patchDjangoTranslation()
+
+        ModelEventType.register(
+            model=User, event_types=(
+                event_user_locale_profile_edited,
+            )
+        )
 
         menu_list_facet.bind_links(
             links=(

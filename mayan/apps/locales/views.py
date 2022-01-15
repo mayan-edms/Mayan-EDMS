@@ -1,6 +1,4 @@
 from django.conf import settings
-from django.contrib.auth import get_user_model
-from django.urls import reverse_lazy
 from django.utils import timezone, translation
 from django.utils.translation import ugettext_lazy as _
 
@@ -8,84 +6,86 @@ from mayan.apps.user_management.permissions import (
     permission_user_edit, permission_user_view
 )
 from mayan.apps.user_management.querysets import get_user_queryset
+from mayan.apps.user_management.views.view_mixins import DynamicExternalUserViewMixin
 from mayan.apps.views.generics import (
     SingleObjectDetailView, SingleObjectEditView
 )
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import LocaleProfileForm, LocaleProfileForm_view
 
 
-class UserLocaleProfileDetailView(SingleObjectDetailView):
+class UserLocaleProfileDetailView(
+    DynamicExternalUserViewMixin, ExternalObjectViewMixin,
+    SingleObjectDetailView
+):
     form_class = LocaleProfileForm_view
-    #model = get_user_model()
-    pk_url_kwarg = 'user_id'
+    external_object_permission = permission_user_view
+    external_object_pk_url_kwarg = 'user_id'
+
+    def get_external_object_queryset(self):
+        return get_user_queryset(user=self.request.user)
 
     def get_extra_context(self, **kwargs):
         return {
             'form': LocaleProfileForm_view(
-                instance=self.object.locale_profile
+                instance=self.external_object.locale_profile
             ),
-            'object': self.object,
+            'object': self.external_object,
             'read_only': True,
-            'title': _('Locale profile for user: %s') % self.object
+            'title': _('Locale profile for user: %s') % self.external_object
         }
 
-    def get_object_permission(self):
-        if self.get_object == self.request.user:
-            return
-        else:
-            return permission_user_view
-
-    def get_source_queryset(self):
-        if self.request.user.is_superuser or self.request.user.is_staff:
-            return get_user_model().objects.all()
-        else:
-            return get_user_queryset()
+    def get_object(self):
+        return self.external_object.locale_profile
 
 
-class UserLocaleProfileEditView(SingleObjectEditView):
+class UserLocaleProfileEditView(
+    DynamicExternalUserViewMixin, ExternalObjectViewMixin,
+    SingleObjectEditView
+):
     form_class = LocaleProfileForm
-    #model = get_user_model()
-    pk_url_kwarg = 'user_id'
+    external_object_permission = permission_user_edit
+    external_object_pk_url_kwarg = 'user_id'
 
     def form_valid(self, form):
-        form.save()
+        if self.is_current_user:
+            language_value = form.cleaned_data['language']
+            timezone_value = form.cleaned_data['timezone']
 
-        if self.object == self.request.user:
-            timezone.activate(timezone=form.cleaned_data['timezone'])
-            translation.activate(language=form.cleaned_data['language'])
+            timezone.activate(timezone=timezone_value)
+            translation.activate(language=language_value)
 
             if hasattr(self.request, 'session'):
                 self.request.session[
                     translation.LANGUAGE_SESSION_KEY
-                ] = form.cleaned_data['language']
+                ] = language_value
                 self.request.session[
                     settings.TIMEZONE_SESSION_KEY
-                ] = form.cleaned_data['timezone']
+                ] = timezone_value
             else:
                 self.request.set_cookie(
-                    settings.LANGUAGE_COOKIE_NAME, form.cleaned_data['language']
+                    settings.LANGUAGE_COOKIE_NAME, language_value
                 )
                 self.request.set_cookie(
-                    settings.TIMEZONE_COOKIE_NAME, form.cleaned_data['timezone']
+                    settings.TIMEZONE_COOKIE_NAME, timezone_value
                 )
 
         return super().form_valid(form=form)
 
-    def get_extra_context(self, **kwargs):
+    def get_external_object_queryset(self):
+        return get_user_queryset(user=self.request.user)
+
+    def get_extra_context(self):
         return {
-            'object': self.object,
-            'title': _('Edit locale profile for user: %s') % self.object
+            'title': _(
+                'Edit locale profile for user: %s'
+            ) % self.external_object,
+            'object': self.external_object
         }
 
-    def get_object_permission(self):
-        if self.get_object == self.request.user:
-            return
-        else:
-            return permission_user_edit
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
-    def get_source_queryset(self):
-        if self.request.user.is_superuser or self.request.user.is_staff:
-            return get_user_model().objects.all()
-        else:
-            return get_user_queryset()
+    def get_object(self):
+        return self.external_object.locale_profile

@@ -440,6 +440,245 @@ class GroupAddRemoveUserViewTestCase(
         self.assertEqual(events[0].verb, event_group_edited.id)
 
 
+class SuperUserGroupAddRemoveViewTestCase(
+    GroupTestMixin, GroupUserViewTestMixin, GenericViewTestCase
+):
+    def setUp(self):
+        super().setUp()
+        self._create_test_group()
+        self._create_test_superuser()
+        self.test_user = self.test_superuser
+
+    def test_group_user_add_remove_get_view_no_permission(self):
+        self.test_user.groups.add(self.test_group)
+
+        self._clear_events()
+
+        response = self._request_test_group_user_add_remove_get_view()
+        self.assertNotContains(
+            response=response, text=str(self.test_user),
+            status_code=404
+        )
+        self.assertNotContains(
+            response=response, text=str(self.test_group),
+            status_code=404
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_user_add_remove_get_view_with_user_access(self):
+        self.test_user.groups.add(self.test_group)
+
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_user_add_remove_get_view()
+        self.assertNotContains(
+            response=response, text=str(self.test_user),
+            status_code=404
+        )
+        self.assertNotContains(
+            response=response, text=str(self.test_group),
+            status_code=404
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_user_add_remove_get_view_with_group_access(self):
+        self.test_user.groups.add(self.test_group)
+
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_user_add_remove_get_view()
+        self.assertNotContains(
+            response=response, text=str(self.test_user),
+            status_code=200
+        )
+        self.assertContains(
+            response=response, text=str(self.test_group),
+            status_code=200
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_user_add_remove_get_view_with_full_access(self):
+        self.test_user.groups.add(self.test_group)
+
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_edit
+        )
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_user_add_remove_get_view()
+        self.assertNotContains(
+            response=response, text=str(self.test_user),
+            status_code=200
+        )
+        self.assertContains(
+            response=response, text=str(self.test_group),
+            status_code=200
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_user_add_view_no_permission(self):
+        self._clear_events()
+
+        response = self._request_test_group_user_add_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_user not in self.test_group.user_set.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_user_add_view_with_user_access(self):
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_user_add_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_user not in self.test_group.user_set.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_user_add_view_with_group_access(self):
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_user_add_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(
+            self.test_user not in self.test_group.user_set.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_user_add_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_edit
+        )
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_user_add_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(
+            self.test_user not in self.test_group.user_set.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_user_remove_view_no_permission(self):
+        self.test_user.groups.add(self.test_group)
+
+        self._clear_events()
+
+        response = self._request_test_group_user_remove_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_user in self.test_group.user_set.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_user_remove_view_with_user_access(self):
+        self.test_user.groups.add(self.test_group)
+
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_user_remove_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_user in self.test_group.user_set.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_user_remove_view_with_group_access(self):
+        self.test_user.groups.add(self.test_group)
+
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_user_remove_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(
+            self.test_user in self.test_group.user_set.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_user_remove_view_with_full_access(self):
+        self.test_user.groups.add(self.test_group)
+
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_edit
+        )
+        self.grant_access(
+            obj=self.test_group, permission=permission_group_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_user_remove_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(
+            self.test_user in self.test_group.user_set.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+
 class MetadataLookupIntegrationTestCase(
     MetadataTypeTestMixin, GenericDocumentViewTestCase
 ):

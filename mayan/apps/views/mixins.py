@@ -146,9 +146,9 @@ class ExternalObjectBaseMixin:
 
         return result
 
-    def get_external_object(self):
+    def get_external_object(self, queryset=None):
         return get_object_or_404(
-            klass=self.get_external_object_queryset_filtered(),
+            klass=queryset or self.get_external_object_queryset_filtered(),
             **self.get_pk_url_kwargs()
         )
 

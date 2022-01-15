@@ -20,7 +20,7 @@ from ..permissions import (
 )
 from ..querysets import get_user_queryset
 
-from .view_mixins import DynamicUserViewMixin
+from .view_mixins import DynamicUserFormFieldViewMixin
 
 
 class UserCreateView(SingleObjectCreateView):
@@ -62,7 +62,7 @@ class UserDeleteView(MultipleObjectDeleteView):
         return get_user_queryset(user=self.request.user)
 
 
-class UserDetailView(DynamicUserViewMixin, SingleObjectDetailView):
+class UserDetailView(DynamicUserFormFieldViewMixin, SingleObjectDetailView):
     object_permission = permission_user_view
     pk_url_kwarg = 'user_id'
 
@@ -76,7 +76,7 @@ class UserDetailView(DynamicUserViewMixin, SingleObjectDetailView):
         return get_user_queryset(user=self.request.user)
 
 
-class UserEditView(DynamicUserViewMixin, SingleObjectEditView):
+class UserEditView(DynamicUserFormFieldViewMixin, SingleObjectEditView):
     object_permission = permission_user_edit
     pk_url_kwarg = 'user_id'
     post_action_redirect = reverse_lazy(
@@ -160,6 +160,11 @@ class UserOptionsEditView(ExternalObjectViewMixin, SingleObjectEditView):
                 'Edit options for user: %s'
             ) % self.external_object,
             'object': self.external_object
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
         }
 
     def get_object(self):
