@@ -30,7 +30,7 @@ job_docker_build:
     - docker logout $CI_REGISTRY
   services:
     - docker:20-dind
-    - postgres:10.18-alpine
+    - postgres:12.9-alpine
   stage: stage_build_docker
   tags:
     - postgres
@@ -147,7 +147,7 @@ job_documentation_build:
     - apt-get install --yes enchant gcc make libjpeg-dev libpng-dev python3-venv python3-dev zlib1g-dev
     - python3 -m venv venv
     - . venv/bin/activate
-  image: debian:10.10-slim
+  image: debian:11.2-slim
   only:
     - releases/all_major
     - releases/documentation
@@ -168,7 +168,7 @@ job_documentation_push:
     - 'which ssh-agent || ( apt-get update --yes && apt-get install --yes openssh-client rsync )'
     - eval $(ssh-agent -s)
     - echo "$DOCUMENTATION_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
-  image: debian:10.10-slim
+  image: debian:11.2-slim
   only:
     - releases/all_major
     - releases/documentation
@@ -192,7 +192,7 @@ job_python_build:
     - python3 -m venv venv
     - . venv/bin/activate
     - pip install pip==$PYTHON_PIP_VERSION
-  image: debian:10.10-slim
+  image: debian:11.2-slim
   only:
     - releases/all_major
     - releases/all_minor
@@ -213,7 +213,7 @@ job_python_push_pypi:
     - python3 -m venv venv
     - . venv/bin/activate
     - pip install pip==$PYTHON_PIP_VERSION
-  image: debian:10.10-slim
+  image: debian:11.2-slim
   only:
     - releases/all_major
     - releases/all_minor
@@ -247,7 +247,7 @@ job_python_push_pypi:
     paths:
       - ~/.cache/pip/
       - /var/cache/apt/archives/
-  image: debian:10.10-slim
+  image: debian:11.2-slim
   only:
     - releases/all_major
     - releases/all_minor
@@ -273,7 +273,7 @@ job_postgres_upgrade_test:
     - pip install dist/mayan_edms-*.whl
     - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
   services:
-    - postgres:10.18-alpine
+    - postgres:12.9-alpine
   tags:
     - postgres
   variables:
@@ -309,7 +309,7 @@ job_sqlite_upgrade_test:
     paths:
       - ~/.cache/pip/
       - /var/cache/apt/archives/
-  image: debian:10.10-slim
+  image: debian:11.2-slim
   only:
     - releases/all_major
     - releases/all_minor
@@ -333,7 +333,7 @@ job_postgres_test:
     - make test-all SETTINGS=mayan.settings.testing.gitlab-ci
     - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci
   services:
-    - postgres:10.18-alpine
+    - postgres:12.9-alpine
   tags:
     - postgres
   variables:
