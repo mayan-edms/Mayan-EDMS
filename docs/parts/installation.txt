@@ -14,10 +14,10 @@ Minimum
 
 - RAM: 2 GB.
 - CPU: dual core, 64 bit, 1 GHz, Intel Core 2 Duo or similar.
-- Debian 9 GNU/Linux, or a derivative distribution for direct operating system
+- Debian 10 GNU/Linux, or a derivative distribution for direct operating system
   installations. Other distributions or operating systems can be used if
   they serve as host for a virtual machine or have mature Docker support.
-- Python version 3.5.
+- Python version 3.6.
 - PostgreSQL 9.6.
 
 .. note::
@@ -43,9 +43,9 @@ Recommended
 -----------
 
 - RAM: 4 GB or more.
-- CPU: 4 cores or more, 2 GHz or faster, Intel Core i3 or better.
-- Debian 10.
-- Python version 3.8.
+- CPU: 4 cores or more, 2 GHz or faster, Intel Core i5 or better.
+- Debian 11 or derived distribution with kernel version 5.11 or later.
+- Python version 3.9.
 - Storage: solid state storage.
 - PostgreSQL 12 or later.
 
