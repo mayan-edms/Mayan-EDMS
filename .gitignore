@@ -12,6 +12,7 @@
 .vagrant
 _build/
 /build/
+docker/Dockerfile
 coverage.xml
 document_storage/
 gpg_home/
