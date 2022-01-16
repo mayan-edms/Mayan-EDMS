@@ -12,8 +12,7 @@ from ..permissions import permission_events_export
 from ..tasks import task_event_queryset_export
 
 __all__ = (
-    'CurrentUserEventExportView', 'EventListExportView',
-    'ObjectEventExportView', 'VerbEventExportView'
+    'EventListExportView', 'ObjectEventExportView', 'VerbEventExportView'
 )
 
 
@@ -81,18 +80,6 @@ class ObjectEventExportView(
     def get_queryset_parameters(self):
         return {
             '_method_name': 'any', 'obj': self.external_object
-        }
-
-
-class CurrentUserEventExportView(ObjectEventExportView):
-    object_permission = permission_events_export
-
-    def get_external_object(self):
-        return self.request.user
-
-    def get_queryset_parameters(self):
-        return {
-            '_method_name': 'actor', 'obj': self.external_object
         }
 
 

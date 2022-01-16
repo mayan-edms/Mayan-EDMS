@@ -43,8 +43,6 @@ class EventExportViewTestCase(
             )
         )
 
-        self._clear_events()
-
     def test_events_list_export_view_no_permission(self):
         self._clear_events()
 
@@ -313,6 +311,29 @@ class EventExportViewTestCase(
                 str(self.test_object).encode() in file_object.read()
             )
 
+
+class CurrentUsetEventExportViewTestCase(
+    EventTestMixin, EventTypeTestMixin, EventsExportViewTestMixin,
+    GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_event_type()
+        self._create_test_user()
+        self.test_object = self._test_case_user
+
+        content_type = ContentType.objects.get_for_model(
+            model=self.test_object
+        )
+
+        self.view_arguments = {
+            'app_label': content_type.app_label,
+            'model_name': content_type.model,
+            'object_id': self.test_object.pk
+        }
+
     def test_current_user_events_export_view_no_permission(self):
         self._clear_events()
 
@@ -320,7 +341,7 @@ class EventExportViewTestCase(
             actor=self._test_case_user, action_object=self.test_object
         )
 
-        response = self._request_test_current_user_events_export_view()
+        response = self._request_events_for_object_export_view()
         self.assertNotContains(
             response=response, text=str(self.test_event_type), status_code=302
         )
@@ -360,7 +381,7 @@ class EventExportViewTestCase(
 
     def test_current_user_events_export_view_with_access(self):
         self.grant_access(
-            obj=self.test_object, permission=permission_events_export
+            obj=self._test_case_user, permission=permission_events_export
         )
 
         self._clear_events()
@@ -369,7 +390,7 @@ class EventExportViewTestCase(
             actor=self._test_case_user, action_object=self.test_object
         )
 
-        response = self._request_test_current_user_events_export_view()
+        response = self._request_events_for_object_export_view()
         self.assertEqual(response.status_code, 302)
 
         test_download_file = DownloadFile.objects.first()

@@ -17,11 +17,6 @@ from .literals import (
 
 
 class EventsClearViewTestMixin:
-    def _request_test_current_user_events_clear_view(self):
-        return self.post(
-            viewname='events:current_user_events_clear'
-        )
-
     def _request_test_events_by_verb_clear_view(self):
         return self.post(
             viewname='events:events_by_verb_clear', kwargs={
@@ -40,11 +35,6 @@ class EventsClearViewTestMixin:
 
 
 class EventsExportViewTestMixin:
-    def _request_test_current_user_events_export_view(self):
-        return self.post(
-            viewname='events:current_user_events_export'
-        )
-
     def _request_test_events_by_verb_export_view(self):
         return self.post(
             viewname='events:events_by_verb_export', kwargs={
@@ -121,11 +111,6 @@ class EventTypeTestMixin:
 
 
 class EventViewTestMixin:
-    def _request_test_current_user_events_view(self):
-        return self.get(
-            viewname='events:current_user_events'
-        )
-
     def _request_test_events_by_verb_view(self):
         return self.get(
             viewname='events:events_by_verb', kwargs={

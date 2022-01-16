@@ -52,7 +52,7 @@ class EventClearViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events.first(), self.test_event)
+        self.assertEqual(events[0], self.test_event)
 
     def test_events_list_clear_view_with_access(self):
         self.grant_access(
@@ -87,7 +87,7 @@ class EventClearViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events.first(), self.test_event)
+        self.assertEqual(events[0], self.test_event)
 
     def test_events_for_object_clear_view_with_access(self):
         self.grant_access(
@@ -124,7 +124,7 @@ class EventClearViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events.first(), self.test_event)
+        self.assertEqual(events[0], self.test_event)
 
     def test_events_by_verb_view_clear_with_access(self):
         self.grant_access(
@@ -148,6 +148,29 @@ class EventClearViewTestCase(
         self.assertEqual(events[0].target, self._test_case_user)
         self.assertEqual(events[0].verb, event_events_cleared.id)
 
+
+class CurrentUserEventClearViewTestCase(
+    EventTestMixin, EventTypeTestMixin, EventsClearViewTestMixin,
+    GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_event_type()
+        self._create_test_user()
+        self.test_object = self._test_case_user
+
+        content_type = ContentType.objects.get_for_model(
+            model=self.test_object
+        )
+
+        self.view_arguments = {
+            'app_label': content_type.app_label,
+            'model_name': content_type.model,
+            'object_id': self.test_object.pk
+        }
+
     def test_current_user_events_clear_view_no_permission(self):
         self._clear_events()
 
@@ -155,13 +178,13 @@ class EventClearViewTestCase(
             actor=self._test_case_user, action_object=self.test_object
         )
 
-        response = self._request_test_current_user_events_clear_view()
+        response = self._request_events_for_object_clear_view()
         self.assertEqual(response.status_code, 302)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events.first(), self.test_event)
+        self.assertEqual(events[0], self.test_event)
 
     def test_current_user_events_clear_view_with_access(self):
         self.grant_access(
@@ -174,7 +197,7 @@ class EventClearViewTestCase(
             actor=self._test_case_user, action_object=self.test_object
         )
 
-        response = self._request_test_current_user_events_clear_view()
+        response = self._request_events_for_object_clear_view()
         self.assertEqual(response.status_code, 302)
 
         events = self._get_test_events()

@@ -6,14 +6,15 @@ from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event
 
-from .events import event_theme_created, event_theme_edited
+from .events import (
+    event_theme_created, event_theme_edited, event_user_theme_settings_edited
+)
 
 
-class Theme(ExtraDataModelMixin, models.Model):
+class Theme(models.Model):
     label = models.CharField(
         db_index=True, help_text=_('A short text describing the theme.'),
         max_length=128, unique=True, verbose_name=_('Label')
@@ -74,3 +75,13 @@ class UserThemeSetting(models.Model):
 
     def __str__(self):
         return force_text(s=self.user)
+
+    @method_event(
+        event_manager_class=EventManagerSave,
+        edited={
+            'event': event_user_theme_settings_edited,
+            'target': 'user'
+        }
+    )
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)

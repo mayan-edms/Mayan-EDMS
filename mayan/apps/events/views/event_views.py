@@ -1,6 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
-from actstream.models import Action, actor_stream, any_stream
+from actstream.models import Action, any_stream
 
 from mayan.apps.views.generics import SingleObjectListView
 from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
@@ -10,8 +10,7 @@ from ..icons import icon_events_list
 from ..permissions import permission_events_view
 
 __all__ = (
-    'EventListView', 'ObjectEventListView', 'CurrentUserEventListView',
-    'VerbEventListView'
+    'EventListView', 'ObjectEventListView', 'VerbEventListView'
 )
 
 
@@ -50,14 +49,6 @@ class ObjectEventListView(ExternalContentTypeObjectViewMixin, EventListBaseView)
 
     def get_source_queryset(self):
         return any_stream(obj=self.external_object)
-
-
-class CurrentUserEventListView(ObjectEventListView):
-    def get_external_object(self):
-        return self.request.user
-
-    def get_source_queryset(self):
-        return actor_stream(obj=self.external_object)
 
 
 class VerbEventListView(EventListBaseView):

@@ -176,6 +176,13 @@
 - Added a workflow state column displaying all created actions labels
   separated by a comma.
 - Added the mailing profile created and edited events.
+- User menu and views updates:
+
+  - Reorganize all user links under a single "User details" link.
+  - Allow editing the locale profile of users.
+  - Allow editing the theme settings of users.
+  - Unify user data related views.
+  - Add "User theme edited" and "User locale profile edited" events.
 
 4.1.4 (2021-12-01)
 ==================

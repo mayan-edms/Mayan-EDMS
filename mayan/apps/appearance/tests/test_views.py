@@ -5,17 +5,24 @@ from selenium.common.exceptions import NoAlertPresentException
 from django.conf import settings
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
+from mayan.apps.user_management.permissions import (
+    permission_user_edit, permission_user_view
+)
 from mayan.apps.testing.tests.base import GenericViewTestCase
 from mayan.apps.testing.tests.mixins import SeleniumTestMixin
 
-from ..events import event_theme_created, event_theme_edited
+from ..events import (
+    event_theme_created, event_theme_edited, event_user_theme_settings_edited
+)
 from ..models import Theme
 from ..permissions import (
     permission_theme_create, permission_theme_delete, permission_theme_edit,
     permission_theme_view
 )
 
-from .mixins import ThemeTestMixin, ThemeViewTestMixin
+from .mixins import (
+    ThemeTestMixin, ThemeViewTestMixin, UserThemeSettingsViewTestMixin
+)
 
 
 @skip('Skip until a synchronous live server class is added.')
@@ -186,7 +193,7 @@ class ThemeViewTestCase(
         self.assertEqual(events.count(), 0)
 
 
-class ThemedViewsTestCase(ThemeTestMixin, GenericViewTestCase):
+class ThemeEffectViewsTestCase(ThemeTestMixin, GenericViewTestCase):
     def test_normal_view_after_theme_delete(self):
         self._create_test_theme()
 
@@ -197,3 +204,171 @@ class ThemedViewsTestCase(ThemeTestMixin, GenericViewTestCase):
         response = self.get(viewname='common:about_view')
 
         self.assertEqual(response.status_code, 200)
+
+
+class CurrentUserViewTestCase(
+    ThemeTestMixin, UserThemeSettingsViewTestMixin, GenericViewTestCase
+):
+    def setUp(self):
+        super().setUp()
+        self._create_test_theme()
+
+    def test_current_user_theme_settings_detail_view_no_permission(self):
+        self._clear_events()
+
+        response = self._request_test_current_user_theme_settings_detail_view()
+        self.assertEqual(response.status_code, 200)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_current_user_theme_settings_edit_view_no_permission(self):
+        theme = self._test_case_user.theme_settings.theme
+
+        self._clear_events()
+
+        response = self._request_test_current_user_theme_settings_edit_view()
+        self.assertEqual(response.status_code, 302)
+
+        self._test_case_user.refresh_from_db()
+        self.assertNotEqual(self._test_case_user.theme_settings.theme, theme)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self._test_case_user)
+        self.assertEqual(events[0].verb, event_user_theme_settings_edited.id)
+
+
+class SuperUserThemeSettingsViewTestCase(
+    ThemeTestMixin, UserThemeSettingsViewTestMixin, GenericViewTestCase
+):
+    def setUp(self):
+        super().setUp()
+        self._create_test_superuser()
+        self._create_test_theme()
+
+    def test_superuser_theme_settings_detail_view_no_permission(self):
+        self._clear_events()
+
+        response = self._request_test_superuser_theme_settings_detail_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_superuser_theme_settings_detail_view_with_access(self):
+        self.grant_access(
+            obj=self.test_superuser, permission=permission_user_view
+        )
+
+        self._clear_events()
+
+        response = self._request_test_superuser_theme_settings_detail_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_superuser_theme_settings_edit_view_no_permission(self):
+        theme = self.test_superuser.theme_settings.theme
+
+        self._clear_events()
+
+        response = self._request_test_superuser_theme_settings_edit_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_superuser.refresh_from_db()
+        self.assertEqual(self.test_superuser.theme_settings.theme, theme)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_superuser_theme_settings_edit_view_with_access(self):
+        theme = self.test_superuser.theme_settings.theme
+
+        self.grant_access(
+            obj=self.test_superuser, permission=permission_user_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_superuser_theme_settings_edit_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_superuser.refresh_from_db()
+        self.assertEqual(self.test_superuser.theme_settings.theme, theme)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+
+class UserThemeSettingsViewTestCase(
+    ThemeTestMixin, UserThemeSettingsViewTestMixin, GenericViewTestCase
+):
+    auto_create_test_user = True
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_theme()
+
+    def test_user_theme_settings_detail_view_no_permission(self):
+        self._clear_events()
+
+        response = self._request_test_user_theme_settings_detail_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_user_theme_settings_detail_view_with_access(self):
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_view
+        )
+
+        self._clear_events()
+
+        response = self._request_test_user_theme_settings_detail_view()
+        self.assertEqual(response.status_code, 200)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_user_theme_settings_edit_view_no_permission(self):
+        theme = self.test_user.theme_settings.theme
+
+        self._clear_events()
+
+        response = self._request_test_user_theme_settings_edit_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_user.refresh_from_db()
+        self.assertEqual(self.test_user.theme_settings.theme, theme)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_user_theme_settings_edit_view_with_access(self):
+        theme = self.test_user.theme_settings.theme
+
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_user_theme_settings_edit_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_user.refresh_from_db()
+        self.assertNotEqual(self.test_user.theme_settings.theme, theme)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_user)
+        self.assertEqual(events[0].verb, event_user_theme_settings_edited.id)

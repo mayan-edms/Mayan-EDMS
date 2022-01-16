@@ -15,6 +15,7 @@ DEFAULT_STORAGE_SHARED_STORAGE_ARGUMENTS = {
 DEFAULT_STORAGE_TEMPORARY_DIRECTORY = tempfile.gettempdir()
 DEFAULT_DOWNLOAD_FILE_EXPIRATION_INTERVAL = 60 * 24 * 2  # 2 days
 DEFAULT_SHARED_UPLOADED_FILE_EXPIRATION_INTERVAL = 60 * 60 * 24 * 7  # 7 days
+
 MSG_MIME_TYPES = (
     'application/vnd.ms-outlook', 'application/vnd.ms-office',
     'application/x-ole-storage'

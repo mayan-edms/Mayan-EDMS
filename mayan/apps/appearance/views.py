@@ -2,10 +2,16 @@ from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.views.generics import (
-    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
-    SingleObjectListView, SimpleView
+from mayan.apps.user_management.permissions import (
+    permission_user_edit, permission_user_view
 )
+from mayan.apps.user_management.querysets import get_user_queryset
+from mayan.apps.user_management.views.view_mixins import DynamicExternalUserViewMixin
+from mayan.apps.views.generics import (
+    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectDetailView,
+    SingleObjectEditView, SingleObjectListView
+)
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import ThemeForm, UserThemeSettingForm, UserThemeSettingForm_view
 from .icons import icon_theme_setup
@@ -15,32 +21,6 @@ from .permissions import (
     permission_theme_create, permission_theme_delete, permission_theme_edit,
     permission_theme_view
 )
-
-
-class CurrentUserThemeSettingsDetailsView(SimpleView):
-    template_name = 'appearance/generic_form.html'
-
-    def get_extra_context(self, **kwargs):
-        return {
-            'form': UserThemeSettingForm_view(
-                instance=self.request.user.theme_settings
-            ),
-            'read_only': True,
-            'title': _('Current user theme settings details'),
-        }
-
-
-class CurrentUserThemeSettingsEditView(SingleObjectEditView):
-    extra_context = {
-        'title': _('Edit current user theme settings details')
-    }
-    form_class = UserThemeSettingForm
-    post_action_redirect = reverse_lazy(
-        viewname='appearance:current_user_theme_settings_details'
-    )
-
-    def get_object(self):
-        return self.request.user.theme_settings
 
 
 class ThemeCreateView(SingleObjectCreateView):
@@ -110,3 +90,54 @@ class ThemeListView(SingleObjectListView):
             ),
             'title': _('Themes'),
         }
+
+
+class UserThemeSettingsDetailsView(
+    DynamicExternalUserViewMixin, ExternalObjectViewMixin,
+    SingleObjectDetailView
+):
+    form_class = UserThemeSettingForm_view
+    external_object_permission = permission_user_view
+    external_object_pk_url_kwarg = 'user_id'
+
+    def get_external_object_queryset(self):
+        return get_user_queryset(user=self.request.user)
+
+    def get_extra_context(self, **kwargs):
+        return {
+            'form': UserThemeSettingForm_view(
+                instance=self.external_object.theme_settings
+            ),
+            'object': self.external_object,
+            'read_only': True,
+            'title': _('Theme settings for user: %s') % self.external_object
+        }
+
+    def get_object(self):
+        return self.external_object.theme_settings
+
+
+class UserThemeSettingsEditView(
+    DynamicExternalUserViewMixin, ExternalObjectViewMixin,
+    SingleObjectEditView
+):
+    form_class = UserThemeSettingForm
+    external_object_permission = permission_user_edit
+    external_object_pk_url_kwarg = 'user_id'
+
+    def get_external_object_queryset(self):
+        return get_user_queryset(user=self.request.user)
+
+    def get_extra_context(self):
+        return {
+            'title': _(
+                'Edit theme settings for user: %s'
+            ) % self.external_object,
+            'object': self.external_object
+        }
+
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
+
+    def get_object(self):
+        return self.external_object.theme_settings

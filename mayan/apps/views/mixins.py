@@ -146,9 +146,9 @@ class ExternalObjectBaseMixin:
 
         return result
 
-    def get_external_object(self):
+    def get_external_object(self, queryset=None):
         return get_object_or_404(
-            klass=self.get_external_object_queryset_filtered(),
+            klass=queryset or self.get_external_object_queryset_filtered(),
             **self.get_pk_url_kwargs()
         )
 
@@ -574,8 +574,8 @@ class SortingViewMixin:
         )
         return context
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
+    def get_queryset(self, *args, **kwargs):
+        queryset = super().get_queryset(*args, **kwargs)
 
         sort_fields = self.get_sort_fields()
         if sort_fields:

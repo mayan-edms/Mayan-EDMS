@@ -109,12 +109,35 @@ class EventsViewTestCase(
             text=str(self.test_event_type)
         )
 
+
+class CurrentUserEventsViewTestCase(
+    EventTestMixin, EventTypeTestMixin, EventViewTestMixin,
+    GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_event_type()
+        self._create_test_user()
+        self.test_object = self._test_case_user
+
+        content_type = ContentType.objects.get_for_model(
+            model=self.test_object
+        )
+
+        self.view_arguments = {
+            'app_label': content_type.app_label,
+            'model_name': content_type.model,
+            'object_id': self.test_object.pk
+        }
+
     def test_current_user_events_view_no_permission(self):
         self._create_test_event(
             actor=self._test_case_user, action_object=self.test_object
         )
 
-        response = self._request_test_current_user_events_view()
+        response = self._request_events_for_object_view()
         self.assertNotContains(
             response=response, status_code=200,
             text=str(self.test_event_type)
@@ -126,10 +149,10 @@ class EventsViewTestCase(
         )
 
         self.grant_access(
-            obj=self.test_object, permission=permission_events_view
+            obj=self._test_case_user, permission=permission_events_view
         )
 
-        response = self._request_test_current_user_events_view()
+        response = self._request_events_for_object_view()
         self.assertContains(
             response=response, status_code=200,
             text=str(self.test_event_type)
