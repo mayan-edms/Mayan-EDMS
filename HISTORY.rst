@@ -189,6 +189,7 @@
 - Support Django debug JavaScript code.
 - Minor CSS optimization to the Django debug view.
 - Add Docker Compose password randomizer.
+- Include LDAP libraries and Python modules.
 
 4.1.4 (2021-12-01)
 ==================

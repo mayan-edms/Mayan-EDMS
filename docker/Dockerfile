@@ -47,6 +47,8 @@ apt-get update \
     libmagic1 \
     libmariadb3 \
     libpq5 \
+    libldap-2.5-0 \
+    libsasl2-2 \
     poppler-utils \
     python3-distutils \
     sane-utils \
@@ -110,14 +112,16 @@ COPY --chown=mayan:mayan mayan /src/mayan
 RUN DEBIAN_FRONTEND=noninteractive \
 apt-get install --no-install-recommends --yes \
     default-libmysqlclient-dev \
-    libffi-dev \
-    libjpeg-dev \
-    libpng-dev \
-    libpq-dev \
-    libtiff-dev \
-    libssl-dev \
     g++ \
     gcc \
+    libffi-dev \
+    libjpeg-dev \
+    libldap2-dev \
+    libpng-dev \
+    libpq-dev \
+    libsasl2-dev \
+    libssl-dev \
+    libtiff-dev \
     make \
     python3-dev \
     python3-venv \
