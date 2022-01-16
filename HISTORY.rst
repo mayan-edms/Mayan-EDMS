@@ -184,6 +184,11 @@
   - Unify user data related views.
   - Add "User theme edited" and "User locale profile edited" events.
 
+- Update the Django debug view CSS and layout to match Django's original
+  appearance.
+- Support Django debug JavaScript code.
+- Minor CSS optimization to the Django debug view.
+
 4.1.4 (2021-12-01)
 ==================
 - Changes merged from versions 4.0.20 and 4.0.21.
