@@ -32,7 +32,7 @@ class WorkflowRuntimeProxyLinkTestCase(
 
         self._create_test_workflow_template(add_test_document_type=True)
 
-        self._resolve_test_link(test_object=self.test_workflow_runtime_proxy)
+        self._resolve_test_link(test_object=self._test_workflow_runtime_proxy)
 
         self.assertEqual(self.resolved_test_link, None)
 
@@ -42,18 +42,18 @@ class WorkflowRuntimeProxyLinkTestCase(
         self._create_test_workflow_template(add_test_document_type=True)
 
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
 
-        self._resolve_test_link(test_object=self.test_workflow_runtime_proxy)
+        self._resolve_test_link(test_object=self._test_workflow_runtime_proxy)
 
         self.assertNotEqual(self.resolved_test_link, None)
         self.assertEqual(
             self.resolved_test_link.url,
             reverse(
                 viewname=self.test_link.view, kwargs={
-                    'workflow_runtime_proxy_id': self.test_workflow_runtime_proxy.pk
+                    'workflow_runtime_proxy_id': self._test_workflow_runtime_proxy.pk
                 }
             )
         )
@@ -72,7 +72,7 @@ class WorkflowRuntimeProxyLinkTestCase(
         self._create_test_workflow_template(add_test_document_type=True)
 
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
 
@@ -93,7 +93,7 @@ class WorkflowRuntimeProxyLinkTestCase(
         self._create_test_workflow_template_state()
 
         self._resolve_test_link(
-            test_object=self.test_workflow_template_state_runtime_proxy
+            test_object=self._test_workflow_template_state_runtime_proxy
         )
 
         self.assertEqual(self.resolved_test_link, None)
@@ -105,12 +105,12 @@ class WorkflowRuntimeProxyLinkTestCase(
         self._create_test_workflow_template_state()
 
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
 
         self._resolve_test_link(
-            test_object=self.test_workflow_template_state_runtime_proxy
+            test_object=self._test_workflow_template_state_runtime_proxy
         )
 
         self.assertNotEqual(self.resolved_test_link, None)
@@ -118,7 +118,7 @@ class WorkflowRuntimeProxyLinkTestCase(
             self.resolved_test_link.url,
             reverse(
                 viewname=self.test_link.view, kwargs={
-                    'workflow_runtime_proxy_state_id': self.test_workflow_template_state_runtime_proxy.pk
+                    'workflow_runtime_proxy_state_id': self._test_workflow_template_state_runtime_proxy.pk
                 }
             )
         )
@@ -128,7 +128,7 @@ class WorkflowRuntimeProxyLinkTestCase(
 
         self._create_test_workflow_template(add_test_document_type=True)
 
-        self._resolve_test_link(test_object=self.test_workflow_runtime_proxy)
+        self._resolve_test_link(test_object=self._test_workflow_runtime_proxy)
         self.assertEqual(self.resolved_test_link, None)
 
     def test_workflow_runtime_proxy_state_list_link_with_access(self):
@@ -137,18 +137,18 @@ class WorkflowRuntimeProxyLinkTestCase(
         self._create_test_workflow_template(add_test_document_type=True)
 
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
 
-        self._resolve_test_link(test_object=self.test_workflow_runtime_proxy)
+        self._resolve_test_link(test_object=self._test_workflow_runtime_proxy)
 
         self.assertNotEqual(self.resolved_test_link, None)
         self.assertEqual(
             self.resolved_test_link.url,
             reverse(
                 viewname=self.test_link.view, kwargs={
-                    'workflow_runtime_proxy_id': self.test_workflow_runtime_proxy.pk
+                    'workflow_runtime_proxy_id': self._test_workflow_runtime_proxy.pk
                 }
             )
         )

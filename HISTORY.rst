@@ -201,6 +201,9 @@
   - The previous unknown event error message is now available as a literal
     named ``literals.TEXT_UNKNOWN_EVENT_ID``.
 
+- Add workflow template transition trigger API.
+- Fine tune workflow template permissions to require the view permission
+  instead of the edit permission when applicable.
 
 4.1.4 (2021-12-01)
 ==================

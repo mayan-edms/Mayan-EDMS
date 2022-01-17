@@ -211,7 +211,7 @@ class HTTPWorkflowActionViewTestCase(
         self._create_test_workflow_template_state()
 
     def test_http_workflow_state_action_create_post_view_no_permission(self):
-        action_count = self.test_workflow_template_state.actions.count()
+        action_count = self._test_workflow_template_state.actions.count()
 
         response = self._request_test_workflow_template_state_action_create_post_view(
             class_path='mayan.apps.document_states.workflow_actions.HTTPAction',
@@ -222,17 +222,17 @@ class HTTPWorkflowActionViewTestCase(
         )
         self.assertEqual(response.status_code, 404)
 
-        self.test_workflow_template_state.refresh_from_db()
+        self._test_workflow_template_state.refresh_from_db()
         self.assertEqual(
-            self.test_workflow_template_state.actions.count(), action_count
+            self._test_workflow_template_state.actions.count(), action_count
         )
 
     def test_http_workflow_state_action_create_post_view_with_access(self):
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
-        action_count = self.test_workflow_template_state.actions.count()
+        action_count = self._test_workflow_template_state.actions.count()
 
         response = self._request_test_workflow_template_state_action_create_post_view(
             class_path='mayan.apps.document_states.workflow_actions.HTTPAction',
@@ -243,9 +243,9 @@ class HTTPWorkflowActionViewTestCase(
         )
         self.assertEqual(response.status_code, 302)
 
-        self.test_workflow_template_state.refresh_from_db()
+        self._test_workflow_template_state.refresh_from_db()
         self.assertEqual(
-            self.test_workflow_template_state.actions.count(), action_count + 1
+            self._test_workflow_template_state.actions.count(), action_count + 1
         )
 
 
@@ -300,7 +300,7 @@ class DocumentPropertiesEditActionTestCase(
         self._create_test_workflow_template_transition()
         self._create_test_workflow_template_transition()
 
-        self.test_workflow_template_states[1].actions.create(
+        self._test_workflow_template_states[1].actions.create(
             action_data=json.dumps(
                 obj=TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_DATA
             ),
@@ -312,7 +312,7 @@ class DocumentPropertiesEditActionTestCase(
 
         test_workflow_instance = self.test_document.workflows.first()
         test_workflow_instance.do_transition(
-            transition=self.test_workflow_template_transition
+            transition=self._test_workflow_template_transition
         )
 
         self.assertEqual(
@@ -368,17 +368,17 @@ class DocumentWorkflowLaunchActionViewTestCase(
         self._create_test_workflow_template_state()
 
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
 
-        action_count = self.test_workflow_template_state.actions.count()
+        action_count = self._test_workflow_template_state.actions.count()
 
         response = self._request_document_workflow_template_launch_action_create_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_workflow_template_state.actions.count(),
+            self._test_workflow_template_state.actions.count(),
             action_count + 1
         )
 
@@ -393,18 +393,18 @@ class DocumentWorkflowLaunchActionViewTestCase(
         self._create_test_workflow_template_state()
 
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
 
-        action_count = self.test_workflow_template_state.actions.count()
+        action_count = self._test_workflow_template_state.actions.count()
         workflow_instance_count = WorkflowInstance.objects.count()
 
         response = self._request_document_workflow_template_launch_action_create_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_workflow_template_state.actions.count(),
+            self._test_workflow_template_state.actions.count(),
             action_count + 1
         )
 

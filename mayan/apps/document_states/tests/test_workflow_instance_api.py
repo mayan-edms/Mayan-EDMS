@@ -43,7 +43,7 @@ class WorkflowInstanceAPIViewTestCase(
 
     def test_workflow_instance_detail_api_view_with_workflow_access(self):
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
 
@@ -71,7 +71,7 @@ class WorkflowInstanceAPIViewTestCase(
 
     def test_workflow_instance_detail_api_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
         self.grant_access(
@@ -92,7 +92,7 @@ class WorkflowInstanceAPIViewTestCase(
 
     def test_trashed_document_workflow_instance_detail_api_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
         self.grant_access(
@@ -136,7 +136,7 @@ class WorkflowInstanceAPIViewTestCase(
 
     def test_workflow_instance_list_api_view_with_workflow_access(self):
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
 
@@ -150,7 +150,7 @@ class WorkflowInstanceAPIViewTestCase(
 
     def test_workflow_instance_list_api_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
         self.grant_access(
@@ -172,7 +172,7 @@ class WorkflowInstanceAPIViewTestCase(
 
     def test_trashed_document_workflow_instance_list_api_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
         self.grant_access(
@@ -207,7 +207,7 @@ class WorkflowInstanceAPIViewTestCase(
 
     def test_workflow_instance_log_entries_create_api_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_instance_transition
         )
         workflow_instance = self.test_document.workflows.first()
@@ -226,7 +226,7 @@ class WorkflowInstanceAPIViewTestCase(
 
     def test_workflow_instance_log_entries_create_api_view_with_transition_access(self):
         self.grant_access(
-            obj=self.test_workflow_template_transition,
+            obj=self._test_workflow_template_transition,
             permission=permission_workflow_instance_transition
         )
         workflow_instance = self.test_document.workflows.first()
@@ -249,7 +249,7 @@ class WorkflowInstanceAPIViewTestCase(
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
-            obj=self.test_workflow_template_transition,
+            obj=self._test_workflow_template_transition,
             permission=permission_workflow_instance_transition
         )
         workflow_instance = self.test_document.workflows.first()
@@ -272,7 +272,7 @@ class WorkflowInstanceAPIViewTestCase(
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
-            obj=self.test_workflow_template_transition,
+            obj=self._test_workflow_template_transition,
             permission=permission_workflow_instance_transition
         )
         workflow_instance = self.test_document.workflows.first()
@@ -293,7 +293,7 @@ class WorkflowInstanceAPIViewTestCase(
 
     def test_workflow_instance_log_entries_create_api_view_with_workflow_access(self):
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_instance_transition
         )
         workflow_instance = self.test_document.workflows.first()
@@ -316,7 +316,7 @@ class WorkflowInstanceAPIViewTestCase(
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_instance_transition
         )
         workflow_instance = self.test_document.workflows.first()
@@ -339,7 +339,7 @@ class WorkflowInstanceAPIViewTestCase(
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_instance_transition
         )
         workflow_instance = self.test_document.workflows.first()
@@ -364,7 +364,7 @@ class WorkflowInstanceAPIViewTestCase(
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_instance_transition
         )
         workflow_instance = self.test_document.workflows.first()
@@ -423,7 +423,7 @@ class WorkflowInstanceAPIViewTestCase(
         self._create_test_workflow_template_instance_log_entry()
 
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
 
@@ -443,7 +443,7 @@ class WorkflowInstanceAPIViewTestCase(
             permission=permission_workflow_template_view
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
 
@@ -466,7 +466,7 @@ class WorkflowInstanceAPIViewTestCase(
             permission=permission_workflow_template_view
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
 
@@ -495,7 +495,7 @@ class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_transition()
         self._create_test_document_stub()
-        self.test_workflow_instance = self.test_document.workflows.first()
+        self._test_workflow_instance = self.test_document.workflows.first()
 
     def test_workflow_instance_log_entry_transition_list_api_view_no_permission(self):
         self._clear_events()
@@ -523,7 +523,7 @@ class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
 
     def test_workflow_instance_log_entry_transition_list_api_view_with_template_view_access(self):
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
 
@@ -541,7 +541,7 @@ class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
             permission=permission_workflow_template_view
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
 
@@ -556,7 +556,7 @@ class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
 
     def test_workflow_instance_log_entry_transition_list_api_view_with_transition_access(self):
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_instance_transition
         )
 
@@ -574,7 +574,7 @@ class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
             permission=permission_workflow_template_view
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_instance_transition
         )
 
@@ -589,11 +589,11 @@ class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
 
     def test_workflow_instance_log_entry_transition_list_api_view_with_teamplate_and_transition_access(self):
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_instance_transition
         )
 
@@ -611,11 +611,11 @@ class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
             permission=permission_workflow_template_view
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_instance_transition
         )
 
@@ -626,7 +626,7 @@ class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
         self.assertEqual(response.data['count'], 1)
         self.assertEqual(
             response.data['results'][0]['id'],
-            self.test_workflow_template_transition.pk
+            self._test_workflow_template_transition.pk
         )
 
         events = self._get_test_events()
@@ -638,11 +638,11 @@ class WorkflowInstanceLogEntryTransitrionListAPIViewTestCase(
             permission=permission_workflow_template_view
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_instance_transition
         )
 

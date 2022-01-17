@@ -3,7 +3,7 @@ class WorkflowRuntimeProxyStateViewTestMixin:
         return self.get(
             viewname='document_states:workflow_runtime_proxy_state_list',
             kwargs={
-                'workflow_runtime_proxy_id': self.test_workflow_template.pk
+                'workflow_runtime_proxy_id': self._test_workflow_template.pk
             }
         )
 
@@ -11,7 +11,7 @@ class WorkflowRuntimeProxyStateViewTestMixin:
         return self.get(
             viewname='document_states:workflow_runtime_proxy_state_document_list',
             kwargs={
-                'workflow_runtime_proxy_state_id': self.test_workflow_template_states[0].pk
+                'workflow_runtime_proxy_state_id': self._test_workflow_template_states[0].pk
             }
         )
 
@@ -26,6 +26,6 @@ class WorkflowRuntimeProxyViewTestMixin:
         return self.get(
             viewname='document_states:workflow_runtime_proxy_document_list',
             kwargs={
-                'workflow_runtime_proxy_id': self.test_workflow_template.pk
+                'workflow_runtime_proxy_id': self._test_workflow_template.pk
             }
         )

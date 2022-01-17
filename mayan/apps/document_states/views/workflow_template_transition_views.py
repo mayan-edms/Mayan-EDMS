@@ -14,13 +14,18 @@ from mayan.apps.views.mixins import ExternalObjectViewMixin
 from ..forms import (
     WorkflowTransitionForm, WorkflowTransitionTriggerEventRelationshipFormSet
 )
-from ..icons import icon_workflow_template_transition, icon_workflow_template_transition_field
+from ..icons import (
+    icon_workflow_template_transition,
+    icon_workflow_template_transition_field
+)
 from ..links import (
     link_workflow_template_transition_create,
-    link_workflow_template_transition_field_create,
+    link_workflow_template_transition_field_create
 )
 from ..models import Workflow, WorkflowTransition, WorkflowTransitionField
-from ..permissions import permission_workflow_template_edit, permission_workflow_template_view
+from ..permissions import (
+    permission_workflow_template_edit, permission_workflow_template_view
+)
 
 
 class WorkflowTemplateTransitionCreateView(
@@ -160,82 +165,6 @@ class WorkflowTemplateTransitionListView(
         return self.external_object.transitions.all()
 
 
-class WorkflowTemplateTransitionTriggerEventListView(
-    ExternalObjectViewMixin, FormView
-):
-    external_object_class = WorkflowTransition
-    external_object_permission = permission_workflow_template_edit
-    external_object_pk_url_kwarg = 'workflow_template_transition_id'
-    form_class = WorkflowTransitionTriggerEventRelationshipFormSet
-
-    def dispatch(self, *args, **kwargs):
-        EventType.refresh()
-        return super().dispatch(*args, **kwargs)
-
-    def form_valid(self, form):
-        try:
-            for instance in form:
-                instance.save()
-        except Exception as exception:
-            messages.error(
-                message=_(
-                    'Error updating workflow transition trigger events; %s'
-                ) % exception, request=self.request
-
-            )
-        else:
-            messages.success(
-                message=_(
-                    'Workflow transition trigger events updated successfully'
-                ), request=self.request
-            )
-
-        return super().form_valid(form=form)
-
-    def get_extra_context(self):
-        return {
-            'form_display_mode_table': True,
-            'navigation_object_list': ('object', 'workflow'),
-            'object': self.external_object,
-            'subtitle': _(
-                'Triggers are events that cause this transition to execute '
-                'automatically.'
-            ),
-            'title': _(
-                'Workflow transition trigger events for: %s'
-            ) % self.external_object,
-            'workflow': self.external_object.workflow,
-        }
-
-    def get_initial(self):
-        obj = self.external_object
-        initial = []
-
-        # Return the queryset by name from the sorted list of the class
-        event_type_ids = [event_type.id for event_type in EventType.all()]
-        event_type_queryset = StoredEventType.objects.filter(
-            name__in=event_type_ids
-        )
-
-        # Sort queryset in Python by namespace, then by label
-        event_type_queryset = sorted(
-            event_type_queryset, key=lambda x: (x.namespace, x.label)
-        )
-
-        for event_type in event_type_queryset:
-            initial.append({
-                'transition': obj,
-                'event_type': event_type,
-            })
-        return initial
-
-    def get_post_action_redirect(self):
-        return reverse(
-            viewname='document_states:workflow_template_transition_list',
-            kwargs={'workflow_template_id': self.external_object.workflow.pk}
-        )
-
-
 class WorkflowTemplateTransitionFieldCreateView(
     ExternalObjectViewMixin, SingleObjectCreateView
 ):
@@ -343,7 +272,7 @@ class WorkflowTemplateTransitionFieldListView(
     ExternalObjectViewMixin, SingleObjectListView
 ):
     external_object_class = WorkflowTransition
-    external_object_permission = permission_workflow_template_edit
+    external_object_permission = permission_workflow_template_view
     external_object_pk_url_kwarg = 'workflow_template_transition_id'
 
     def get_extra_context(self):
@@ -376,3 +305,79 @@ class WorkflowTemplateTransitionFieldListView(
 
     def get_source_queryset(self):
         return self.external_object.fields.all()
+
+
+class WorkflowTemplateTransitionTriggerEventListView(
+    ExternalObjectViewMixin, FormView
+):
+    external_object_class = WorkflowTransition
+    external_object_permission = permission_workflow_template_view
+    external_object_pk_url_kwarg = 'workflow_template_transition_id'
+    form_class = WorkflowTransitionTriggerEventRelationshipFormSet
+
+    def dispatch(self, *args, **kwargs):
+        EventType.refresh()
+        return super().dispatch(*args, **kwargs)
+
+    def form_valid(self, form):
+        try:
+            for instance in form:
+                instance.save()
+        except Exception as exception:
+            messages.error(
+                message=_(
+                    'Error updating workflow transition trigger events; %s'
+                ) % exception, request=self.request
+
+            )
+        else:
+            messages.success(
+                message=_(
+                    'Workflow transition trigger events updated successfully'
+                ), request=self.request
+            )
+
+        return super().form_valid(form=form)
+
+    def get_extra_context(self):
+        return {
+            'form_display_mode_table': True,
+            'navigation_object_list': ('object', 'workflow'),
+            'object': self.external_object,
+            'subtitle': _(
+                'Triggers are events that cause this transition to execute '
+                'automatically.'
+            ),
+            'title': _(
+                'Workflow transition trigger events for: %s'
+            ) % self.external_object,
+            'workflow': self.external_object.workflow,
+        }
+
+    def get_initial(self):
+        obj = self.external_object
+        initial = []
+
+        # Return the queryset by name from the sorted list of the class
+        event_type_ids = [event_type.id for event_type in EventType.all()]
+        event_type_queryset = StoredEventType.objects.filter(
+            name__in=event_type_ids
+        )
+
+        # Sort queryset in Python by namespace, then by label
+        event_type_queryset = sorted(
+            event_type_queryset, key=lambda x: (x.namespace, x.label)
+        )
+
+        for event_type in event_type_queryset:
+            initial.append({
+                'transition': obj,
+                'event_type': event_type,
+            })
+        return initial
+
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='document_states:workflow_template_transition_list',
+            kwargs={'workflow_template_id': self.external_object.workflow.pk}
+        )

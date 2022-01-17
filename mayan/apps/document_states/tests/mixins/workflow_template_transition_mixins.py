@@ -1,6 +1,11 @@
 from django.db.models import Q
 
-from ...models import WorkflowTransition, WorkflowTransitionField
+from mayan.apps.events.classes import EventType
+
+from ...models import (
+    WorkflowTransition, WorkflowTransitionField,
+    WorkflowTransitionTriggerEvent
+)
 
 from ..literals import (
     TEST_WORKFLOW_TEMPLATE_TRANSITION_FIELD_HELP_TEXT,
@@ -13,16 +18,6 @@ from ..literals import (
 )
 
 
-class WorkflowTransitionEventViewTestMixin:
-    def _request_test_workflow_template_transition_event_list_view(self):
-        return self.get(
-            viewname='document_states:workflow_template_transition_events',
-            kwargs={
-                'workflow_template_transition_id': self.test_workflow_template_transition.pk
-            }
-        )
-
-
 class WorkflowTransitionFieldViewTestMixin:
     def _request_workflow_template_transition_field_create_view(self):
         pk_list = list(
@@ -32,7 +27,7 @@ class WorkflowTransitionFieldViewTestMixin:
         response = self.post(
             viewname='document_states:workflow_template_transition_field_create',
             kwargs={
-                'workflow_template_transition_id': self.test_workflow_template_transition.pk
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk
             }, data={
                 'field_type': TEST_WORKFLOW_TEMPLATE_TRANSITION_FIELD_TYPE,
                 'name': TEST_WORKFLOW_TEMPLATE_TRANSITION_FIELD_NAME,
@@ -42,11 +37,11 @@ class WorkflowTransitionFieldViewTestMixin:
         )
 
         try:
-            self.test_workflow_template_transition_field = WorkflowTransitionField.objects.get(
+            self._test_workflow_template_transition_field = WorkflowTransitionField.objects.get(
                 ~Q(pk__in=pk_list)
             )
         except WorkflowTransitionField.DoesNotExist:
-            self.test_workflow_template_transition_field = None
+            self._test_workflow_template_transition_field = None
 
         return response
 
@@ -54,15 +49,15 @@ class WorkflowTransitionFieldViewTestMixin:
         return self.post(
             viewname='document_states:workflow_template_transition_field_delete',
             kwargs={
-                'workflow_template_transition_field_id': self.test_workflow_template_transition_field.pk
-            },
+                'workflow_template_transition_field_id': self._test_workflow_template_transition_field.pk
+            }
         )
 
     def _request_workflow_template_transition_field_edit_view(self):
         return self.post(
             viewname='document_states:workflow_template_transition_field_edit',
             kwargs={
-                'workflow_template_transition_field_id': self.test_workflow_template_transition_field.pk
+                'workflow_template_transition_field_id': self._test_workflow_template_transition_field.pk
             }, data={
                 'field_type': TEST_WORKFLOW_TEMPLATE_TRANSITION_FIELD_TYPE,
                 'name': TEST_WORKFLOW_TEMPLATE_TRANSITION_FIELD_NAME,
@@ -75,7 +70,7 @@ class WorkflowTransitionFieldViewTestMixin:
         return self.get(
             viewname='document_states:workflow_template_transition_field_list',
             kwargs={
-                'workflow_template_transition_id': self.test_workflow_template_transition.pk
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk
             }
         )
 
@@ -86,8 +81,8 @@ class WorkflowTemplateTransitionAPIViewTestMixin:
     ):
         data = {
             'label': TEST_WORKFLOW_TEMPLATE_TRANSITION_LABEL,
-            'origin_state_id': self.test_workflow_template_states[0].pk,
-            'destination_state_id': self.test_workflow_template_states[1].pk,
+            'origin_state_id': self._test_workflow_template_states[0].pk,
+            'destination_state_id': self._test_workflow_template_states[1].pk
         }
 
         if extra_data:
@@ -99,16 +94,16 @@ class WorkflowTemplateTransitionAPIViewTestMixin:
 
         response = self.post(
             viewname='rest_api:workflow-template-transition-list', kwargs={
-                'workflow_template_id': self.test_workflow_template.pk
+                'workflow_template_id': self._test_workflow_template.pk
             }, data=data
         )
 
         try:
-            self.test_workflow_template_transition = WorkflowTransition.objects.get(
+            self._test_workflow_template_transition = WorkflowTransition.objects.get(
                 ~Q(pk__in=pk_list)
             )
         except WorkflowTransition.DoesNotExist:
-            self.test_workflow_template_transition = None
+            self._test_workflow_template_transition = None
 
         return response
 
@@ -116,8 +111,8 @@ class WorkflowTemplateTransitionAPIViewTestMixin:
         return self.delete(
             viewname='rest_api:workflow-template-transition-detail',
             kwargs={
-                'workflow_template_id': self.test_workflow_template.pk,
-                'workflow_template_transition_id': self.test_workflow_template_transition.pk
+                'workflow_template_id': self._test_workflow_template.pk,
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk
             }
         )
 
@@ -125,27 +120,29 @@ class WorkflowTemplateTransitionAPIViewTestMixin:
         return self.get(
             viewname='rest_api:workflow-template-transition-detail',
             kwargs={
-                'workflow_template_id': self.test_workflow_template.pk,
-                'workflow_template_transition_id': self.test_workflow_template_transition.pk
+                'workflow_template_id': self._test_workflow_template.pk,
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk
             }
         )
 
     def _request_test_workflow_template_transition_list_api_view(self):
         return self.get(
             viewname='rest_api:workflow-template-transition-list',
-            kwargs={'workflow_template_id': self.test_workflow_template.pk}
+            kwargs={
+                'workflow_template_id': self._test_workflow_template.pk
+            }
         )
 
     def _request_test_workflow_template_transition_edit_patch_api_view(self):
         return self.patch(
             viewname='rest_api:workflow-template-transition-detail',
             kwargs={
-                'workflow_template_id': self.test_workflow_template.pk,
-                'workflow_template_transition_id': self.test_workflow_template_transition.pk
+                'workflow_template_id': self._test_workflow_template.pk,
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk
             }, data={
                 'label': TEST_WORKFLOW_TEMPLATE_TRANSITION_LABEL_EDITED,
-                'origin_state_id': self.test_workflow_template_states[1].pk,
-                'destination_state_id': self.test_workflow_template_states[0].pk,
+                'origin_state_id': self._test_workflow_template_states[1].pk,
+                'destination_state_id': self._test_workflow_template_states[0].pk
             }
         )
 
@@ -153,12 +150,12 @@ class WorkflowTemplateTransitionAPIViewTestMixin:
         return self.put(
             viewname='rest_api:workflow-template-transition-detail',
             kwargs={
-                'workflow_template_id': self.test_workflow_template.pk,
-                'workflow_template_transition_id': self.test_workflow_template_transition.pk
+                'workflow_template_id': self._test_workflow_template.pk,
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk
             }, data={
                 'label': TEST_WORKFLOW_TEMPLATE_TRANSITION_LABEL_EDITED,
-                'origin_state_id': self.test_workflow_template_states[1].pk,
-                'destination_state_id': self.test_workflow_template_states[0].pk,
+                'origin_state_id': self._test_workflow_template_states[1].pk,
+                'destination_state_id': self._test_workflow_template_states[0].pk
             }
         )
 
@@ -170,8 +167,8 @@ class WorkflowTransitionFieldAPIViewTestMixin:
         response = self.post(
             viewname='rest_api:workflow-template-transition-field-list',
             kwargs={
-                'workflow_template_id': self.test_workflow_template.pk,
-                'workflow_template_transition_id': self.test_workflow_template_transition.pk,
+                'workflow_template_id': self._test_workflow_template.pk,
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk,
             }, data={
                 'field_type': TEST_WORKFLOW_TEMPLATE_TRANSITION_FIELD_TYPE,
                 'name': TEST_WORKFLOW_TEMPLATE_TRANSITION_FIELD_NAME,
@@ -181,11 +178,11 @@ class WorkflowTransitionFieldAPIViewTestMixin:
         )
 
         try:
-            self.test_workflow_template_transition_field = WorkflowTransitionField.objects.get(
+            self._test_workflow_template_transition_field = WorkflowTransitionField.objects.get(
                 ~Q(pk__in=pk_list)
             )
         except WorkflowTransitionField.DoesNotExist:
-            self.test_workflow_template_transition_field = None
+            self._test_workflow_template_transition_field = None
 
         return response
 
@@ -193,9 +190,9 @@ class WorkflowTransitionFieldAPIViewTestMixin:
         return self.delete(
             viewname='rest_api:workflow-template-transition-field-detail',
             kwargs={
-                'workflow_template_id': self.test_workflow_template.pk,
-                'workflow_template_transition_id': self.test_workflow_template_transition.pk,
-                'workflow_template_transition_field_id': self.test_workflow_template_transition_field.pk,
+                'workflow_template_id': self._test_workflow_template.pk,
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk,
+                'workflow_template_transition_field_id': self._test_workflow_template_transition_field.pk
             }
         )
 
@@ -203,9 +200,9 @@ class WorkflowTransitionFieldAPIViewTestMixin:
         return self.get(
             viewname='rest_api:workflow-template-transition-field-detail',
             kwargs={
-                'workflow_template_id': self.test_workflow_template.pk,
-                'workflow_template_transition_id': self.test_workflow_template_transition.pk,
-                'workflow_template_transition_field_id': self.test_workflow_template_transition_field.pk,
+                'workflow_template_id': self._test_workflow_template.pk,
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk,
+                'workflow_template_transition_field_id': self._test_workflow_template_transition_field.pk
             }
         )
 
@@ -213,12 +210,12 @@ class WorkflowTransitionFieldAPIViewTestMixin:
         return self.patch(
             viewname='rest_api:workflow-template-transition-field-detail',
             kwargs={
-                'workflow_template_id': self.test_workflow_template.pk,
-                'workflow_template_transition_id': self.test_workflow_template_transition.pk,
-                'workflow_template_transition_field_id': self.test_workflow_template_transition_field.pk,
+                'workflow_template_id': self._test_workflow_template.pk,
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk,
+                'workflow_template_transition_field_id': self._test_workflow_template_transition_field.pk
             }, data={
                 'label': '{} edited'.format(
-                    self.test_workflow_template_transition_field
+                    self._test_workflow_template_transition_field
                 )
             }
         )
@@ -227,8 +224,8 @@ class WorkflowTransitionFieldAPIViewTestMixin:
         return self.get(
             viewname='rest_api:workflow-template-transition-field-list',
             kwargs={
-                'workflow_template_id': self.test_workflow_template.pk,
-                'workflow_template_transition_id': self.test_workflow_template_transition.pk,
+                'workflow_template_id': self._test_workflow_template.pk,
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk
             }
         )
 
@@ -243,32 +240,143 @@ class WorkflowTransitionFieldTestMixin:
         }
         kwargs.update(extra_data or {})
 
-        self.test_workflow_template_transition_field = self.test_workflow_template_transition.fields.create(
+        self._test_workflow_template_transition_field = self._test_workflow_template_transition.fields.create(
             **kwargs
         )
 
 
-class WorkflowTransitionViewTestMixin:
+class WorkflowTemplateTransitionTriggerAPIViewTestMixin:
+    def _request_test_workflow_template_transition_trigger_create_api_view(self):
+        data = {
+            'event_type_id': self._test_event_type.id
+        }
+
+        pk_list = list(
+            WorkflowTransitionTriggerEvent.objects.values_list(
+                'pk', flat=True
+            )
+        )
+
+        response = self.post(
+            viewname='rest_api:workflow-template-transition-trigger-list',
+            kwargs={
+                'workflow_template_id': self._test_workflow_template.pk,
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk
+            }, data=data
+        )
+
+        try:
+            self._test_workflow_template_transition_trigger = WorkflowTransitionTriggerEvent.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except WorkflowTransitionTriggerEvent.DoesNotExist:
+            self._test_workflow_template_transition_trigger = None
+
+        return response
+
+    def _request_test_workflow_template_transition_trigger_delete_api_view(self):
+        return self.delete(
+            viewname='rest_api:workflow-template-transition-trigger-detail',
+            kwargs={
+                'workflow_template_id': self._test_workflow_template.pk,
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk,
+                'workflow_template_transition_trigger_id': self._test_workflow_template_transition_trigger.pk
+            }
+        )
+
+    def _request_test_workflow_template_transition_trigger_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:workflow-template-transition-trigger-detail',
+            kwargs={
+                'workflow_template_id': self._test_workflow_template.pk,
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk,
+                'workflow_template_transition_trigger_id': self._test_workflow_template_transition_trigger.pk
+            }
+        )
+
+    def _request_test_workflow_template_transition_trigger_list_api_view(self):
+        return self.get(
+            viewname='rest_api:workflow-template-transition-trigger-list',
+            kwargs={
+                'workflow_template_id': self._test_workflow_template.pk,
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk
+            }
+        )
+
+    def _request_test_workflow_template_transition_trigger_edit_patch_api_view(self):
+        return self.patch(
+            viewname='rest_api:workflow-template-transition-trigger-detail',
+            kwargs={
+                'workflow_template_id': self._test_workflow_template.pk,
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk,
+                'workflow_template_transition_trigger_id': self._test_workflow_template_transition_trigger.pk
+            }, data={
+                'event_type_id': self._test_event_type.id
+            }
+        )
+
+    def _request_test_workflow_template_transition_trigger_edit_put_api_view(self):
+        return self.put(
+            viewname='rest_api:workflow-template-transition-trigger-detail',
+            kwargs={
+                'workflow_template_id': self._test_workflow_template.pk,
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk,
+                'workflow_template_transition_trigger_id': self._test_workflow_template_transition_trigger.pk
+            }, data={
+                'event_type_id': self._test_event_type.id
+            }
+        )
+
+
+class WorkflowTemplateTransitionTriggerTestMixin:
+    def setUp(self):
+        super().setUp()
+        self._test_workflow_template_transition_triggers = []
+
+    def _create_test_workflow_template_transition_trigger(self):
+        event_type = EventType.get(id=self._test_event_type.id)
+
+        self._test_workflow_template_transition_trigger = self._test_workflow_template_transition.trigger_events.create(
+            event_type=event_type.get_stored_event_type()
+        )
+        self._test_workflow_template_transition_triggers.append(
+            self._test_workflow_template_transition_trigger
+        )
+
+
+class WorkflowTemplateTransitionTriggerViewTestMixin:
+    def _request_test_workflow_template_transition_event_list_view(self):
+        return self.get(
+            viewname='document_states:workflow_template_transition_triggers',
+            kwargs={
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk
+            }
+        )
+
+
+class WorkflowTemplateTransitionViewTestMixin:
     def _request_test_workflow_template_transition_create_view(self):
-        pk_list = list(WorkflowTransition.objects.values_list('pk', flat=True))
+        pk_list = list(
+            WorkflowTransition.objects.values_list('pk', flat=True)
+        )
 
         response = self.post(
             viewname='document_states:workflow_template_transition_create',
             kwargs={
-                'workflow_template_id': self.test_workflow_template.pk
+                'workflow_template_id': self._test_workflow_template.pk
             }, data={
                 'label': TEST_WORKFLOW_TEMPLATE_TRANSITION_LABEL,
-                'origin_state': self.test_workflow_template_states[0].pk,
-                'destination_state': self.test_workflow_template_states[1].pk,
+                'origin_state': self._test_workflow_template_states[0].pk,
+                'destination_state': self._test_workflow_template_states[1].pk
             }
         )
 
         try:
-            self.test_workflow_template_transition = WorkflowTransition.objects.get(
+            self._test_workflow_template_transition = WorkflowTransition.objects.get(
                 ~Q(pk__in=pk_list)
             )
         except WorkflowTransition.DoesNotExist:
-            self.test_workflow_template_transition = None
+            self._test_workflow_template_transition = None
 
         return response
 
@@ -276,7 +384,7 @@ class WorkflowTransitionViewTestMixin:
         return self.post(
             viewname='document_states:workflow_template_transition_delete',
             kwargs={
-                'workflow_template_transition_id': self.test_workflow_template_transition.pk
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk
             }
         )
 
@@ -284,16 +392,18 @@ class WorkflowTransitionViewTestMixin:
         return self.post(
             viewname='document_states:workflow_template_transition_edit',
             kwargs={
-                'workflow_template_transition_id': self.test_workflow_template_transition.pk
+                'workflow_template_transition_id': self._test_workflow_template_transition.pk
             }, data={
                 'label': TEST_WORKFLOW_TEMPLATE_TRANSITION_LABEL_EDITED,
-                'origin_state': self.test_workflow_template_states[0].pk,
-                'destination_state': self.test_workflow_template_states[1].pk,
+                'origin_state': self._test_workflow_template_states[0].pk,
+                'destination_state': self._test_workflow_template_states[1].pk
             }
         )
 
     def _request_test_workflow_template_transition_list_view(self):
         return self.get(
             viewname='document_states:workflow_template_transition_list',
-            kwargs={'workflow_template_id': self.test_workflow_template.pk}
+            kwargs={
+                'workflow_template_id': self._test_workflow_template.pk
+            }
         )

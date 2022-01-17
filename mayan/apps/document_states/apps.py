@@ -54,7 +54,7 @@ from .links import (
     link_workflow_template_transition_delete,
     link_workflow_template_transition_edit,
     link_workflow_template_transition_list,
-    link_workflow_template_transition_events,
+    link_workflow_template_transition_triggers,
     link_workflow_template_transition_field_create,
     link_workflow_template_transition_field_delete,
     link_workflow_template_transition_field_edit,
@@ -122,6 +122,7 @@ class DocumentStatesApp(MayanAppConfig):
         EventModelRegistry.register(model=WorkflowStateAction)
         EventModelRegistry.register(model=WorkflowTransition)
         EventModelRegistry.register(model=WorkflowTransitionField)
+        EventModelRegistry.register(model=WorkflowTransitionTriggerEvent)
 
         WorkflowAction.load_modules()
 
@@ -541,7 +542,7 @@ class DocumentStatesApp(MayanAppConfig):
         )
         menu_list_facet.bind_links(
             links=(
-                link_workflow_template_transition_events,
+                link_workflow_template_transition_triggers,
                 link_workflow_template_transition_field_list,
             ), sources=(WorkflowTransition,)
         )

@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.document_indexing.tasks import task_index_instance_document_add
 from mayan.apps.events.classes import EventType
+from mayan.apps.events.literals import TEXT_UNKNOWN_EVENT_ID
 
 from .literals import STORAGE_NAME_WORKFLOW_CACHE
 from .settings import setting_workflow_image_cache_maximum_size
@@ -87,7 +88,12 @@ def handler_trigger_transition(sender, **kwargs):
             )
         )
         if valid_transitions:
+            try:
+                event_type_label = EventType.get(id=action.verb).label
+            except KeyError:
+                event_type_label = TEXT_UNKNOWN_EVENT_ID % action.verb
+
             workflow_instance.do_transition(
-                comment=_('Event trigger: %s') % EventType.get(name=action.verb).label,
+                comment=_('Event trigger: %s') % event_type_label,
                 transition=valid_transitions[0]
             )
