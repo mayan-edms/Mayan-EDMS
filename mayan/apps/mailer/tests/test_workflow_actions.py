@@ -5,9 +5,13 @@ from django.core import mail
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.document_states.literals import WORKFLOW_ACTION_ON_ENTRY
-from mayan.apps.document_states.permissions import permission_workflow_template_edit
+from mayan.apps.document_states.permissions import (
+    permission_workflow_template_edit
+)
 from mayan.apps.document_states.tests.base import ActionTestCase
-from mayan.apps.document_states.tests.mixins.workflow_template_mixins import WorkflowTemplateTestMixin
+from mayan.apps.document_states.tests.mixins.workflow_template_mixins import (
+    WorkflowTemplateTestMixin
+)
 from mayan.apps.document_states.tests.mixins.workflow_template_state_mixins import WorkflowTemplateStateActionViewTestMixin
 from mayan.apps.metadata.tests.mixins import MetadataTypeTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
@@ -36,7 +40,7 @@ class DocumentEmailActionTestCase(
                 'mailing_profile': self._test_user_mailer.pk,
                 'recipient': TEST_EMAIL_ADDRESS,
                 'subject': TEST_EMAIL_SUBJECT,
-                'body': TEST_EMAIL_BODY,
+                'body': TEST_EMAIL_BODY
             }
         )
         action.execute(context={'document': self.test_document})
@@ -54,7 +58,7 @@ class DocumentEmailActionTestCase(
                 'recipient': TEST_EMAIL_ADDRESS,
                 'cc': TEST_EMAIL_ADDRESS,
                 'subject': TEST_EMAIL_SUBJECT,
-                'body': TEST_EMAIL_BODY,
+                'body': TEST_EMAIL_BODY
             }
         )
         action.execute(context={'document': self.test_document})
@@ -73,7 +77,7 @@ class DocumentEmailActionTestCase(
                 'recipient': TEST_EMAIL_ADDRESS,
                 'bcc': TEST_EMAIL_ADDRESS,
                 'subject': TEST_EMAIL_SUBJECT,
-                'body': TEST_EMAIL_BODY,
+                'body': TEST_EMAIL_BODY
             }
         )
         action.execute(context={'document': self.test_document})
@@ -87,22 +91,22 @@ class DocumentEmailActionTestCase(
         self._create_test_workflow_template_state()
         self._create_test_user_mailer()
 
-        self.test_workflow_template_state.actions.create(
+        self._test_workflow_template_state.actions.create(
             action_data=json.dumps(
                 obj={
                     'mailing_profile': self._test_user_mailer.pk,
                     'recipient': TEST_EMAIL_ADDRESS,
                     'subject': TEST_EMAIL_SUBJECT,
-                    'body': TEST_EMAIL_BODY,
+                    'body': TEST_EMAIL_BODY
                 }
             ),
             action_path='mayan.apps.mailer.workflow_actions.DocumentEmailAction',
-            label='test email action', when=WORKFLOW_ACTION_ON_ENTRY,
+            label='test email action', when=WORKFLOW_ACTION_ON_ENTRY
         )
 
-        self.test_workflow_template_state.initial = True
-        self.test_workflow_template_state.save()
-        self.test_workflow_template.document_types.add(
+        self._test_workflow_template_state.initial = True
+        self._test_workflow_template_state.save()
+        self._test_workflow_template.document_types.add(
             self.test_document_type
         )
 
@@ -135,7 +139,7 @@ class DocumentEmailActionTemplateTestCase(
                     self.test_metadata_type.name
                 ),
                 'subject': TEST_EMAIL_SUBJECT,
-                'body': '',
+                'body': ''
             }
         )
         action.execute(context={'document': self.test_document})
@@ -163,7 +167,7 @@ class DocumentEmailActionTemplateTestCase(
                 'subject': '{{{{ document.metadata_value_of.{} }}}}'.format(
                     self.test_metadata_type.name
                 ),
-                'body': '',
+                'body': ''
             }
         )
         action.execute(context={'document': self.test_document})
@@ -245,7 +249,7 @@ class DocumentEmailActionViewTestCase(
         self._create_test_workflow_template_state()
         self._create_test_user_mailer()
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
 
@@ -254,7 +258,9 @@ class DocumentEmailActionViewTestCase(
         )
         self.assertEqual(response.status_code, 200)
 
-        self.assertEqual(self.test_workflow_template_state.actions.count(), 0)
+        self.assertEqual(
+            self._test_workflow_template_state.actions.count(), 0
+        )
 
     def test_email_action_create_post_view(self):
         self._create_test_workflow_template()
@@ -264,7 +270,7 @@ class DocumentEmailActionViewTestCase(
             obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
 
@@ -274,11 +280,11 @@ class DocumentEmailActionViewTestCase(
                 'mailing_profile': self._test_user_mailer.pk,
                 'recipient': TEST_EMAIL_ADDRESS,
                 'subject': TEST_EMAIL_SUBJECT,
-                'body': TEST_EMAIL_BODY,
+                'body': TEST_EMAIL_BODY
             }
         )
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_workflow_template_state.actions.count(), 1
+            self._test_workflow_template_state.actions.count(), 1
         )

@@ -32,13 +32,15 @@ class TagWorkflowActionTestCase(TagTestMixin, ActionTestCase):
 
 
 class TagWorkflowActionViewTestCase(
-    WorkflowTemplateStateActionViewTestMixin, WorkflowTemplateTestMixin, GenericViewTestCase
+    WorkflowTemplateStateActionViewTestMixin, WorkflowTemplateTestMixin,
+    GenericViewTestCase
 ):
     def test_tag_attach_action_create_view(self):
         self._create_test_workflow_template()
         self._create_test_workflow_template_state()
         self.grant_access(
-            obj=self.test_workflow_template, permission=permission_workflow_template_edit
+            obj=self._test_workflow_template,
+            permission=permission_workflow_template_edit
         )
 
         response = self._request_test_workflow_template_state_action_create_post_view(
@@ -50,7 +52,8 @@ class TagWorkflowActionViewTestCase(
         self._create_test_workflow_template()
         self._create_test_workflow_template_state()
         self.grant_access(
-            obj=self.test_workflow_template, permission=permission_workflow_template_edit
+            obj=self._test_workflow_template,
+            permission=permission_workflow_template_edit
         )
 
         response = self._request_test_workflow_template_state_action_create_post_view(

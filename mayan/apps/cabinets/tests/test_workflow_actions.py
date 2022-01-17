@@ -40,14 +40,15 @@ class CabinetWorkflowActionTestCase(CabinetTestMixin, ActionTestCase):
 
 
 class CabinetWorkflowActionViewTestCase(
-    CabinetTestMixin, WorkflowTemplateStateActionViewTestMixin, WorkflowTemplateTestMixin,
-    GenericViewTestCase
+    CabinetTestMixin, WorkflowTemplateStateActionViewTestMixin,
+    WorkflowTemplateTestMixin, GenericViewTestCase
 ):
     def test_cabinet_add_action_create_get_view(self):
         self._create_test_workflow_template()
         self._create_test_workflow_template_state()
         self.grant_access(
-            obj=self.test_workflow_template, permission=permission_workflow_template_edit
+            obj=self._test_workflow_template,
+            permission=permission_workflow_template_edit
         )
 
         response = self._request_test_workflow_template_state_action_create_get_view(
@@ -60,7 +61,8 @@ class CabinetWorkflowActionViewTestCase(
         self._create_test_workflow_template_state()
         self._create_test_cabinet()
         self.grant_access(
-            obj=self.test_workflow_template, permission=permission_workflow_template_edit
+            obj=self._test_workflow_template,
+            permission=permission_workflow_template_edit
         )
 
         response = self._request_test_workflow_template_state_action_create_get_view(

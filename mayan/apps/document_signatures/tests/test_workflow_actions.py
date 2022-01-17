@@ -29,7 +29,8 @@ class DocumentSignatureWorkflowActionTestCase(
         self._create_test_workflow_template(add_test_document_type=True)
         self._create_test_workflow_template_state()
         self.grant_access(
-            obj=self.test_workflow_template, permission=permission_workflow_template_edit
+            obj=self._test_workflow_template,
+            permission=permission_workflow_template_edit
         )
 
         request = self._request_test_workflow_template_state_action_create_get_view(
@@ -41,7 +42,8 @@ class DocumentSignatureWorkflowActionTestCase(
         self._create_test_workflow_template(add_test_document_type=True)
         self._create_test_workflow_template_state()
         self.grant_access(
-            obj=self.test_workflow_template, permission=permission_workflow_template_edit
+            obj=self._test_workflow_template,
+            permission=permission_workflow_template_edit
         )
 
         request = self._request_test_workflow_template_state_action_create_get_view(
@@ -75,7 +77,9 @@ class DocumentSignatureWorkflowActionTestCase(
             }
         )
         action.execute(context={'document': self.test_document})
-        self.assertNotEqual(signature_count, EmbeddedSignature.objects.count())
+        self.assertNotEqual(
+            signature_count, EmbeddedSignature.objects.count()
+        )
 
     def test_document_signature_detached_action_via_workflow(self):
         self._create_test_workflow_template(add_test_document_type=True)
@@ -84,7 +88,7 @@ class DocumentSignatureWorkflowActionTestCase(
         self._create_test_workflow_template_transition()
         self._create_test_key_private()
 
-        self.test_workflow_template_states[1].actions.create(
+        self._test_workflow_template_states[1].actions.create(
             label='test action', when=WORKFLOW_ACTION_ON_ENTRY,
             enabled=True,
             action_path='mayan.apps.document_signatures.workflow_actions.DocumentSignatureDetachedAction',
@@ -97,14 +101,16 @@ class DocumentSignatureWorkflowActionTestCase(
         )
 
         self._upload_test_document()
-        self.test_workflow_instance = self.test_document.workflows.first()
+        self._test_workflow_instance = self.test_document.workflows.first()
 
         signature_count = DetachedSignature.objects.count()
 
-        self.test_workflow_instance.do_transition(
-            transition=self.test_workflow_template_transition
+        self._test_workflow_instance.do_transition(
+            transition=self._test_workflow_template_transition
         )
-        self.assertNotEqual(signature_count, DetachedSignature.objects.count())
+        self.assertNotEqual(
+            signature_count, DetachedSignature.objects.count()
+        )
 
     def test_document_signature_embedded_action_via_workflow(self):
         self._create_test_workflow_template(add_test_document_type=True)
@@ -113,7 +119,7 @@ class DocumentSignatureWorkflowActionTestCase(
         self._create_test_workflow_template_transition()
         self._create_test_key_private()
 
-        self.test_workflow_template_states[1].actions.create(
+        self._test_workflow_template_states[1].actions.create(
             label='test action', when=WORKFLOW_ACTION_ON_ENTRY,
             enabled=True,
             action_path='mayan.apps.document_signatures.workflow_actions.DocumentSignatureEmbeddedAction',
@@ -126,11 +132,13 @@ class DocumentSignatureWorkflowActionTestCase(
         )
 
         self._upload_test_document()
-        self.test_workflow_instance = self.test_document.workflows.first()
+        self._test_workflow_instance = self.test_document.workflows.first()
 
         signature_count = EmbeddedSignature.objects.count()
 
-        self.test_workflow_instance.do_transition(
-            transition=self.test_workflow_template_transition
+        self._test_workflow_instance.do_transition(
+            transition=self._test_workflow_template_transition
         )
-        self.assertNotEqual(signature_count, EmbeddedSignature.objects.count())
+        self.assertNotEqual(
+            signature_count, EmbeddedSignature.objects.count()
+        )
