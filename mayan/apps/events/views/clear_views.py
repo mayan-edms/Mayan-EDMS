@@ -7,9 +7,10 @@ from mayan.apps.common.classes import QuerysetParametersSerializer
 from mayan.apps.views.generics import ConfirmView
 from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
 
-from ..classes import EventType
 from ..permissions import permission_events_clear
 from ..tasks import task_event_queryset_clear
+
+from .mixins import EventViewMixin
 
 __all__ = (
     'EventListClearView', 'ObjectEventClearView', 'VerbEventClearView'
@@ -94,14 +95,14 @@ class ObjectEventClearView(
         }
 
 
-class VerbEventClearView(EventClearBaseView):
+class VerbEventClearView(EventViewMixin, EventClearBaseView):
     def get_extra_context(self):
         context = super().get_extra_context()
         context.update(
             {
                 'title': _(
-                    'Events of type: %s'
-                ) % EventType.get(name=self.kwargs['verb']),
+                    'Clear events of type: %s'
+                ) % self.get_event_type(id=self.kwargs['verb'])
             }
         )
         return context

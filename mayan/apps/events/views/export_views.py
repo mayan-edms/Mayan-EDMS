@@ -7,9 +7,10 @@ from mayan.apps.common.classes import QuerysetParametersSerializer
 from mayan.apps.views.generics import ConfirmView
 from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
 
-from ..classes import EventType
 from ..permissions import permission_events_export
 from ..tasks import task_event_queryset_export
+
+from .mixins import EventViewMixin
 
 __all__ = (
     'EventListExportView', 'ObjectEventExportView', 'VerbEventExportView'
@@ -83,14 +84,14 @@ class ObjectEventExportView(
         }
 
 
-class VerbEventExportView(EventExportBaseView):
+class VerbEventExportView(EventViewMixin, EventExportBaseView):
     def get_extra_context(self):
         context = super().get_extra_context()
         context.update(
             {
                 'title': _(
-                    'Events of type: %s'
-                ) % EventType.get(name=self.kwargs['verb']),
+                    'Export events of type: %s'
+                ) % self.get_event_type(id=self.kwargs['verb'])
             }
         )
         return context

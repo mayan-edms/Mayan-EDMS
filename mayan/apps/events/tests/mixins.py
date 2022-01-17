@@ -20,7 +20,7 @@ class EventsClearViewTestMixin:
     def _request_test_events_by_verb_clear_view(self):
         return self.post(
             viewname='events:events_by_verb_clear', kwargs={
-                'verb': self.test_event_type.id
+                'verb': self._test_event_type.id
             }
         )
 
@@ -38,7 +38,7 @@ class EventsExportViewTestMixin:
     def _request_test_events_by_verb_export_view(self):
         return self.post(
             viewname='events:events_by_verb_export', kwargs={
-                'verb': self.test_event_type.id
+                'verb': self._test_event_type.id
             }
         )
 
@@ -63,7 +63,7 @@ class EventTestMixin:
         self.test_events = []
 
     def _create_test_event(self, action_object=None, actor=None, target=None):
-        self.test_event = self.test_event_type.commit(
+        self.test_event = self._test_event_type.commit(
             action_object=action_object, actor=actor or self._test_case_user,
             target=target
         )
@@ -93,28 +93,47 @@ class EventTypeNamespaceAPITestMixin:
         return self.get(
             viewname='rest_api:event-type-namespace-event-type-list',
             kwargs={
-                'name': self.test_event_type_namespace.name
+                'name': self._test_event_type_namespace.name
             }
         )
 
 
 class EventTypeTestMixin:
+    def setUp(self):
+        super().setUp()
+        self._test_event_types = []
+
     def _create_test_event_type(self):
-        self.test_event_type_namespace = EventTypeNamespace(
-            label=TEST_EVENT_TYPE_NAMESPACE_LABEL,
-            name=TEST_EVENT_TYPE_NAMESPACE_NAME
+        total_test_event_types = len(self._test_event_types)
+        test_namespace_label = '{}_{}'.format(
+            TEST_EVENT_TYPE_NAMESPACE_LABEL, total_test_event_types
         )
-        self.test_event_type = self.test_event_type_namespace.add_event_type(
-            label=TEST_EVENT_TYPE_LABEL,
-            name=TEST_EVENT_TYPE_NAME
+        test_namespace_name = '{}_{}'.format(
+            TEST_EVENT_TYPE_NAMESPACE_NAME, total_test_event_types
         )
+        test_event_label = '{}_{}'.format(
+            TEST_EVENT_TYPE_LABEL, total_test_event_types
+        )
+        test_event_name = '{}_{}'.format(
+            TEST_EVENT_TYPE_NAME, total_test_event_types
+        )
+
+        self._test_event_type_namespace = EventTypeNamespace(
+            label=test_namespace_label,
+            name=test_namespace_name
+        )
+        self._test_event_type = self._test_event_type_namespace.add_event_type(
+            label=test_event_label,
+            name=test_event_name
+        )
+        self._test_event_types.append(self._test_event_type)
 
 
 class EventViewTestMixin:
     def _request_test_events_by_verb_view(self):
         return self.get(
             viewname='events:events_by_verb', kwargs={
-                'verb': self.test_event_type.id
+                'verb': self._test_event_type.id
             }
         )
 
@@ -136,7 +155,7 @@ class NotificationTestMixin(
         EventModelRegistry.register(model=self.TestModel)
 
         ModelEventType.register(
-            event_types=(self.test_event_type,), model=self.TestModel
+            event_types=(self._test_event_type,), model=self.TestModel
         )
 
         EventType.refresh()

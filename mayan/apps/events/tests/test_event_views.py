@@ -40,7 +40,7 @@ class EventsViewTestCase(
 
         self.assertNotContains(
             response=response, status_code=200,
-            text=str(self.test_event_type)
+            text=str(self._test_event_type)
         )
 
     def test_event_list_view_with_access(self):
@@ -54,7 +54,7 @@ class EventsViewTestCase(
 
         self.assertContains(
             response=response, status_code=200,
-            text=str(self.test_event_type)
+            text=str(self._test_event_type)
         )
 
     def test_events_for_object_view_no_permission(self):
@@ -65,7 +65,7 @@ class EventsViewTestCase(
         response = self._request_events_for_object_view()
         self.assertNotContains(
             response=response, status_code=200,
-            text=str(self.test_event_type)
+            text=str(self._test_event_type)
         )
 
     def test_events_for_object_view_with_access(self):
@@ -80,7 +80,7 @@ class EventsViewTestCase(
         response = self._request_events_for_object_view()
         self.assertContains(
             response=response, status_code=200,
-            text=str(self.test_event_type)
+            text=str(self._test_event_type)
         )
 
     def test_events_by_verb_view_no_permission(self):
@@ -91,7 +91,7 @@ class EventsViewTestCase(
         response = self._request_test_events_by_verb_view()
         self.assertContains(
             count=3, response=response, status_code=200,
-            text=str(self.test_event_type)
+            text=str(self._test_event_type)
         )
 
     def test_events_by_verb_view_with_access(self):
@@ -106,7 +106,7 @@ class EventsViewTestCase(
         response = self._request_test_events_by_verb_view()
         self.assertContains(
             count=4, response=response, status_code=200,
-            text=str(self.test_event_type)
+            text=str(self._test_event_type)
         )
 
 
@@ -140,7 +140,7 @@ class CurrentUserEventsViewTestCase(
         response = self._request_events_for_object_view()
         self.assertNotContains(
             response=response, status_code=200,
-            text=str(self.test_event_type)
+            text=str(self._test_event_type)
         )
 
     def test_current_user_events_view_with_access(self):
@@ -155,7 +155,7 @@ class CurrentUserEventsViewTestCase(
         response = self._request_events_for_object_view()
         self.assertContains(
             response=response, status_code=200,
-            text=str(self.test_event_type)
+            text=str(self._test_event_type)
         )
 
 

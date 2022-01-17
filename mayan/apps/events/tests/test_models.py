@@ -18,11 +18,11 @@ class EventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
         notification_count = Notification.objects.count()
 
         EventSubscription.objects.create(
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_user
         )
 
-        self.test_event_type.commit(target=self.test_object)
+        self._test_event_type.commit(target=self.test_object)
 
         self.assertEqual(Notification.objects.count(), notification_count)
 
@@ -30,7 +30,7 @@ class EventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
         notification_count = Notification.objects.count()
 
         EventSubscription.objects.create(
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_user
         )
 
@@ -39,7 +39,7 @@ class EventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
             role=self.test_role
         )
 
-        result = self.test_event_type.commit(target=self.test_object)
+        result = self._test_event_type.commit(target=self.test_object)
 
         self.assertEqual(Notification.objects.count(), notification_count + 1)
         notification = Notification.objects.first()
@@ -52,11 +52,11 @@ class EventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
         notification_count = Notification.objects.count()
 
         EventSubscription.objects.create(
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[0]
         )
         EventSubscription.objects.create(
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[1]
         )
 
@@ -65,7 +65,7 @@ class EventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
             role=self.test_roles[0]
         )
 
-        result = self.test_event_type.commit(target=self.test_object)
+        result = self._test_event_type.commit(target=self.test_object)
 
         self.assertEqual(Notification.objects.count(), notification_count + 1)
         notification = Notification.objects.first()
@@ -78,11 +78,11 @@ class EventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
         notification_count = Notification.objects.count()
 
         EventSubscription.objects.create(
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[0]
         )
         EventSubscription.objects.create(
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[1]
         )
 
@@ -91,7 +91,7 @@ class EventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
             role=self.test_roles[1]
         )
 
-        result = self.test_event_type.commit(target=self.test_object)
+        result = self._test_event_type.commit(target=self.test_object)
 
         self.assertEqual(Notification.objects.count(), notification_count + 1)
         notification = Notification.objects.first()
@@ -104,11 +104,11 @@ class EventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
         notification_count = Notification.objects.count()
 
         EventSubscription.objects.create(
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[0]
         )
         EventSubscription.objects.create(
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[1]
         )
 
@@ -121,7 +121,7 @@ class EventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
             role=self.test_roles[1]
         )
 
-        result = self.test_event_type.commit(target=self.test_object)
+        result = self._test_event_type.commit(target=self.test_object)
 
         self.assertEqual(Notification.objects.count(), notification_count + 2)
         notifications = Notification.objects.all()
@@ -144,11 +144,11 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
 
         ObjectEventSubscription.objects.create(
             content_object=self.test_object,
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_user
         )
 
-        self.test_event_type.commit(target=self.test_object)
+        self._test_event_type.commit(target=self.test_object)
 
         self.assertEqual(Notification.objects.count(), notification_count)
 
@@ -157,7 +157,7 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
 
         ObjectEventSubscription.objects.create(
             content_object=self.test_object,
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_user
         )
 
@@ -166,7 +166,7 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
             role=self.test_role
         )
 
-        result = self.test_event_type.commit(target=self.test_object)
+        result = self._test_event_type.commit(target=self.test_object)
 
         self.assertEqual(Notification.objects.count(), notification_count + 1)
         notification = Notification.objects.first()
@@ -179,12 +179,12 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
 
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[0],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_user
         )
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[1],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_user
         )
 
@@ -193,8 +193,8 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
             role=self.test_role
         )
 
-        result_0 = self.test_event_type.commit(target=self.test_objects[0])
-        self.test_event_type.commit(target=self.test_objects[1])
+        result_0 = self._test_event_type.commit(target=self.test_objects[0])
+        self._test_event_type.commit(target=self.test_objects[1])
 
         self.assertEqual(Notification.objects.count(), notification_count + 1)
         notification = Notification.objects.first()
@@ -207,12 +207,12 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
 
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[0],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_user
         )
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[1],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_user
         )
 
@@ -221,7 +221,7 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
             role=self.test_role
         )
 
-        result_0 = self.test_event_type.commit(
+        result_0 = self._test_event_type.commit(
             target=self.test_objects[0], action_object=self.test_objects[1]
         )
 
@@ -236,12 +236,12 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
 
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[0],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_user
         )
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[1],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_user
         )
 
@@ -250,7 +250,7 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
             role=self.test_role
         )
 
-        result_0 = self.test_event_type.commit(
+        result_0 = self._test_event_type.commit(
             target=self.test_objects[0], action_object=self.test_objects[1]
         )
 
@@ -266,12 +266,12 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
 
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[0],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[0]
         )
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[0],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[1]
         )
 
@@ -280,7 +280,7 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
             role=self.test_roles[0]
         )
 
-        result_0 = self.test_event_type.commit(target=self.test_objects[0])
+        result_0 = self._test_event_type.commit(target=self.test_objects[0])
 
         self.assertEqual(Notification.objects.count(), notification_count + 1)
         notification = Notification.objects.first()
@@ -294,12 +294,12 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
 
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[0],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[0]
         )
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[0],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[1]
         )
 
@@ -308,7 +308,7 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
             role=self.test_roles[1]
         )
 
-        result_0 = self.test_event_type.commit(target=self.test_objects[0])
+        result_0 = self._test_event_type.commit(target=self.test_objects[0])
 
         self.assertEqual(Notification.objects.count(), notification_count + 1)
         notification = Notification.objects.first()
@@ -322,12 +322,12 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
 
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[0],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[0]
         )
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[0],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[1]
         )
 
@@ -340,7 +340,7 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
             role=self.test_roles[1]
         )
 
-        result_0 = self.test_event_type.commit(target=self.test_objects[0])
+        result_0 = self._test_event_type.commit(target=self.test_objects[0])
 
         self.assertEqual(Notification.objects.count(), notification_count + 2)
         notifications = Notification.objects.all()
@@ -358,22 +358,22 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
 
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[0],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[0]
         )
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[1],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[0]
         )
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[0],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[1]
         )
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[1],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[1]
         )
 
@@ -382,8 +382,8 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
             role=self.test_roles[0]
         )
 
-        result_0 = self.test_event_type.commit(target=self.test_objects[0])
-        self.test_event_type.commit(target=self.test_objects[1])
+        result_0 = self._test_event_type.commit(target=self.test_objects[0])
+        self._test_event_type.commit(target=self.test_objects[1])
 
         self.assertEqual(Notification.objects.count(), notification_count + 1)
         notifications = Notification.objects.all()
@@ -398,22 +398,22 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
 
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[0],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[0]
         )
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[1],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[0]
         )
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[0],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[1]
         )
         ObjectEventSubscription.objects.create(
             content_object=self.test_objects[1],
-            stored_event_type=self.test_event_type.stored_event_type,
+            stored_event_type=self._test_event_type.stored_event_type,
             user=self.test_users[1]
         )
 
@@ -422,10 +422,10 @@ class ObjectEventNotificationModelTestCase(NotificationTestMixin, BaseTestCase):
             role=self.test_roles[0]
         )
 
-        result_0 = self.test_event_type.commit(
+        result_0 = self._test_event_type.commit(
             action_object=self.test_objects[1], target=self.test_objects[0]
         )
-        result_1 = self.test_event_type.commit(
+        result_1 = self._test_event_type.commit(
             action_object=self.test_objects[0], target=self.test_objects[1]
         )
 

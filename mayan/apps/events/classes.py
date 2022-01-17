@@ -315,7 +315,7 @@ class EventTypeNamespace(AppsModuleLoaderMixin):
         return event_type
 
     def get_event(self, name):
-        return EventType.get(name='{}.{}'.format(self.name, name))
+        return EventType.get(id='{}.{}'.format(self.name, name))
 
     def get_event_types(self):
         return EventType.sort(event_type_list=self.event_types)
@@ -336,11 +336,8 @@ class EventType:
         return EventType.sort(event_type_list=cls._registry.values())
 
     @classmethod
-    def get(cls, name):
-        try:
-            return cls._registry[name]
-        except KeyError:
-            return _('Unknown or obsolete event type: %s') % name
+    def get(cls, id):
+        return cls._registry[id]
 
     @classmethod
     def refresh(cls):
@@ -473,7 +470,7 @@ class EventType:
 
     @property
     def id(self):
-        return '%s.%s' % (self.namespace.name, self.name)
+        return '{}.{}'.format(self.namespace.name, self.name)
 
 
 class ModelEventType:

@@ -16,7 +16,7 @@ class NotificationViewTestCase(
         self._create_test_event_type()
         self._create_test_user()
 
-        self.test_event_type.commit(
+        self._test_event_type.commit(
             actor=self.test_user, action_object=self.test_document_type
         )
 

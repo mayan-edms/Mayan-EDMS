@@ -343,7 +343,7 @@ class CurrentUsetEventExportViewTestCase(
 
         response = self._request_events_for_object_export_view()
         self.assertNotContains(
-            response=response, text=str(self.test_event_type), status_code=302
+            response=response, text=str(self._test_event_type), status_code=302
         )
 
         test_download_file = DownloadFile.objects.first()

@@ -5,9 +5,10 @@ from actstream.models import Action, any_stream
 from mayan.apps.views.generics import SingleObjectListView
 from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
 
-from ..classes import EventType
 from ..icons import icon_events_list
 from ..permissions import permission_events_view
+
+from .mixins import EventViewMixin
 
 __all__ = (
     'EventListView', 'ObjectEventListView', 'VerbEventListView'
@@ -51,7 +52,7 @@ class ObjectEventListView(ExternalContentTypeObjectViewMixin, EventListBaseView)
         return any_stream(obj=self.external_object)
 
 
-class VerbEventListView(EventListBaseView):
+class VerbEventListView(EventViewMixin, EventListBaseView):
     def get_extra_context(self):
         context = super().get_extra_context()
         context.update(
@@ -59,7 +60,7 @@ class VerbEventListView(EventListBaseView):
                 'no_results_title': _('There are no events of this type'),
                 'title': _(
                     'Events of type: %s'
-                ) % EventType.get(name=self.kwargs['verb']),
+                ) % self.get_event_type(id=self.kwargs['verb'])
             }
         )
         return context

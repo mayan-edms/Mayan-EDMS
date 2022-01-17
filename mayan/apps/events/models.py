@@ -3,11 +3,13 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils.encoding import force_text
+from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from actstream.models import Action
 
 from .classes import EventType
+from .literals import TEXT_UNKNOWN_EVENT_ID
 from .managers import (
     EventSubscriptionManager, NotificationManager,
     ObjectEventSubscriptionManager
@@ -27,18 +29,24 @@ class StoredEventType(models.Model):
         verbose_name_plural = _('Stored event types')
 
     def __str__(self):
-        return force_text(s=self.get_class())
+        return force_text(s=self.event_type)
 
-    def get_class(self):
-        return EventType.get(name=self.name)
+    @cached_property
+    def event_type(self):
+        return EventType.get(id=self.name)
 
     @property
     def label(self):
-        return self.get_class().label
+        try:
+            event_type = self.event_type
+        except KeyError:
+            return TEXT_UNKNOWN_EVENT_ID % self.name
+        else:
+            return event_type.label
 
     @property
     def namespace(self):
-        return self.get_class().namespace
+        return self.event_type.namespace
 
 
 class EventSubscription(models.Model):

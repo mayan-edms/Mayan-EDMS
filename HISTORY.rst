@@ -190,6 +190,17 @@
 - Minor CSS optimization to the Django debug view.
 - Add Docker Compose password randomizer.
 - Include LDAP libraries and Python modules.
+- Events app updates:
+
+  - Use the correct attribute for fetching event types. Use ``id`` instead of
+    ``name``.
+  - Cache the event type instance in the StoredEvent model.
+  - An incorrect event type ID will now return a KeyError instead of masking
+    the exception and returning an error message. It is now up to the calling
+    code which action to take when the event type ID is not correct.
+  - The previous unknown event error message is now available as a literal
+    named ``literals.TEXT_UNKNOWN_EVENT_ID``.
+
 
 4.1.4 (2021-12-01)
 ==================
