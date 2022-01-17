@@ -100,12 +100,12 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     def update(self, instance, validated_data):
         if 'password' in validated_data:
-            instance.set_password(validated_data['password'])
+            instance.set_password(raw_password=validated_data['password'])
             validated_data.pop('password')
 
-        instance = super().update(instance, validated_data)
-
-        return instance
+        return super().update(
+            instance=instance, validated_data=validated_data
+        )
 
     def validate(self, data):
         if 'password' in data:
