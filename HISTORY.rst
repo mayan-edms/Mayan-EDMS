@@ -1,7 +1,8 @@
 4.1.5 (2022-XX-XX)
 ==================
-- Fix CAA document links. Closes GitLab issue #1068. Thanks to 
+- Fix CAA document links. Closes GitLab issue #1068. Thanks to
   Matthias Löblich (@startmat) for the report.
+- Remove superfluous apostrophe character in sort heading markup.
 
 4.1.4 (2021-12-01)
 ==================
