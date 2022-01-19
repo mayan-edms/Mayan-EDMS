@@ -5,7 +5,27 @@ from mayan.apps.views.generics import ConfirmView, SingleObjectListView
 from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
 
 from .icons import icon_object_errors
+from .models import GlobalErrorLogPartitionEntry
 from .permissions import permission_error_log_view
+
+
+class GlobalErrorLogEntryList(SingleObjectListView):
+    model = GlobalErrorLogPartitionEntry
+    object_permission = permission_error_log_view
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'no_results_icon': icon_object_errors,
+            'no_results_text': _(
+                'This view displays the error log of different objects. '
+                'An empty list is a good thing.'
+            ),
+            'no_results_title': _(
+                'There are no error log entries'
+            ),
+            'title': _('Global error log')
+        }
 
 
 class ObjectErrorLogEntryListClearView(
@@ -39,7 +59,7 @@ class ObjectErrorLogEntryListView(
             'hide_object': True,
             'no_results_icon': icon_object_errors,
             'no_results_text': _(
-                'This view displays the error log of different object. '
+                'This view displays the error log of an object. '
                 'An empty list is a good thing.'
             ),
             'no_results_title': _(

@@ -201,9 +201,18 @@
   - The previous unknown event error message is now available as a literal
     named ``literals.TEXT_UNKNOWN_EVENT_ID``.
 
-- Add workflow template transition trigger API.
+- Add workflow template transition trigger API. Closes GitLab
+  issue #1044. Thanks to Ludovic Anterieur (@lanterieur) for
+  the request and research.
 - Fine tune workflow template permissions to require the view permission
   instead of the edit permission when applicable.
+- Error log updates:
+
+    - Added a global error log list to the tools menu.
+    - Error log partitions now link to their underline object via content type
+      too.
+    - Error log partitions are now retrieve or created on demand.
+    - Added cascade permission support to error log partitions and entries.
 
 4.1.4 (2021-12-01)
 ==================

@@ -7,6 +7,10 @@ from .icons import icon_object_error_list, icon_object_error_list_clear
 from .permissions import permission_error_log_view
 
 
+link_global_error_log_partition_entry_list = Link(
+    icon=icon_object_error_list, text=_('Global error log'),
+    view='logging:global_error_log_partition_entry_list'
+)
 link_object_error_list = Link(
     icon=icon_object_error_list,
     kwargs=get_content_type_kwargs_factory(variable_name='resolved_object'),
