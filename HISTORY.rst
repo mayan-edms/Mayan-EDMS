@@ -214,6 +214,9 @@
     - Error log partitions are now retrieve or created on demand.
     - Added cascade permission support to error log partitions and entries.
 
+- Update the ``ObjectActionAPIView`` view to allow passing extra context to
+  serializers.
+
 4.1.4 (2021-12-01)
 ==================
 - Changes merged from versions 4.0.20 and 4.0.21.
