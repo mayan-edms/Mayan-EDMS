@@ -20,6 +20,9 @@
 
 - Reduce the Sentry client default ``traces_sample_rate`` from 0.25 to 0.05.
 - Add keyword argument to ``self.stderr`` and ``self.stdout`` usage.
+- In ``FilteredRelatedFieldMixin``, split retrieval of the queryset to
+  avoid the exception handler from capturing an ``AttributeError`` that it
+  shouldn't.
 
 4.1.7 (2022-04-01)
 ==================
