@@ -9,14 +9,15 @@
 # Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021
 # Roberto Rosario, 2021
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 04:33+0000\n"
+"POT-Creation-Date: 2022-01-18 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,11 +28,11 @@ msgstr ""
 #: apps.py:56 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
 #: settings.py:13 views/source_views.py:164
 msgid "Sources"
-msgstr ""
+msgstr "Fontes"
 
 #: apps.py:81
 msgid "Create a document source"
-msgstr ""
+msgstr "Criar uma fonte de documento"
 
 #: apps.py:83
 msgid ""
@@ -56,11 +57,11 @@ msgstr ""
 
 #: events.py:8
 msgid "Source created"
-msgstr ""
+msgstr "Fonte criada"
 
 #: events.py:11
 msgid "Source edited"
-msgstr ""
+msgstr "Fonte editada"
 
 #: forms.py:26
 msgid "An optional comment to explain the upload."
@@ -72,7 +73,7 @@ msgstr "Comentário"
 
 #: forms.py:31
 msgid "Action"
-msgstr ""
+msgstr "Ação"
 
 #: forms.py:33
 msgid ""
@@ -85,7 +86,7 @@ msgstr ""
 
 #: forms.py:49
 msgid "Backend"
-msgstr ""
+msgstr "Backend"
 
 #: forms.py:99
 msgid "File"
@@ -97,15 +98,15 @@ msgstr "Padrão"
 
 #: links.py:74
 msgid "New document"
-msgstr ""
+msgstr "Novo documento"
 
 #: links.py:82
 msgid "Upload new file"
-msgstr ""
+msgstr "Carregar novo ficheiro"
 
 #: links.py:88
 msgid "Create source"
-msgstr ""
+msgstr "Criar fonte"
 
 #: links.py:94 source_backends/staging_folder_backends.py:311
 msgid "Delete"
@@ -117,11 +118,11 @@ msgstr "Editar"
 
 #: links.py:110
 msgid "Test"
-msgstr ""
+msgstr "Teste"
 
 #: models.py:32
 msgid "A short text to describe this source."
-msgstr ""
+msgstr "Pequeno texto a descrever esta fonte."
 
 #: models.py:33
 msgid "Label"
@@ -129,11 +130,11 @@ msgstr "Nome"
 
 #: models.py:35
 msgid "Enabled"
-msgstr ""
+msgstr "Activado"
 
 #: models.py:41
 msgid "Source"
-msgstr ""
+msgstr "Fonte"
 
 #: permissions.py:6
 msgid "Sources setup"
@@ -157,11 +158,11 @@ msgstr "Ver fontes de documentos existentes"
 
 #: queues.py:10
 msgid "Sources periodic"
-msgstr ""
+msgstr "Fontes periódicas"
 
 #: queues.py:14
 msgid "Sources fast"
-msgstr ""
+msgstr "Fontes rápidas"
 
 #: queues.py:19
 msgid "Check interval source"
@@ -177,7 +178,7 @@ msgstr ""
 
 #: serializers.py:51 source_backends/sane_scanner_backends.py:44
 msgid "Arguments"
-msgstr ""
+msgstr "Argumentos"
 
 #: settings.py:20
 msgid "Arguments to use when creating source backends."
@@ -197,7 +198,7 @@ msgstr ""
 
 #: source_backends/email_backends.py:41
 msgid "Mailbox"
-msgstr ""
+msgstr "Caixa de correio"
 
 #: source_backends/email_backends.py:48
 msgid ""
@@ -207,7 +208,7 @@ msgstr ""
 
 #: source_backends/email_backends.py:52
 msgid "Search criteria"
-msgstr ""
+msgstr "Critérios de pesquisa"
 
 #: source_backends/email_backends.py:60
 msgid ""
@@ -235,11 +236,11 @@ msgstr ""
 
 #: source_backends/email_backends.py:84
 msgid "Destination mailbox"
-msgstr ""
+msgstr "Caixa de correio de destino"
 
 #: source_backends/email_backends.py:90
 msgid "IMAP email"
-msgstr ""
+msgstr "E-mail IMAP"
 
 #: source_backends/email_backends.py:216
 msgid "Timeout"
@@ -247,7 +248,7 @@ msgstr ""
 
 #: source_backends/email_backends.py:219
 msgid "POP3 email"
-msgstr ""
+msgstr "E-mail POP3"
 
 #: source_backends/literals.py:15 source_backends/literals.py:20
 msgid "Always"
@@ -279,11 +280,11 @@ msgstr ""
 
 #: source_backends/mixins.py:202
 msgid "Host"
-msgstr ""
+msgstr "Anfitrião"
 
 #: source_backends/mixins.py:211
 msgid "SSL"
-msgstr ""
+msgstr "SSL"
 
 #: source_backends/mixins.py:216
 msgid ""
@@ -297,7 +298,7 @@ msgstr ""
 
 #: source_backends/mixins.py:229
 msgid "Username"
-msgstr ""
+msgstr "Nome de utilizador"
 
 #: source_backends/mixins.py:236
 msgid "Password"
@@ -349,7 +350,7 @@ msgstr ""
 
 #: source_backends/mixins.py:312
 msgid "Store email body"
-msgstr ""
+msgstr "Armazenar o corpo de e-mail"
 
 #: source_backends/mixins.py:459
 #, python-format
@@ -394,7 +395,7 @@ msgstr ""
 
 #: source_backends/sane_scanner_backends.py:33
 msgid "Device name"
-msgstr ""
+msgstr "Nome do dispositivo"
 
 #: source_backends/sane_scanner_backends.py:39
 msgid ""
@@ -409,7 +410,7 @@ msgstr ""
 
 #: source_backends/sane_scanner_backends.py:106
 msgid "Document properties"
-msgstr ""
+msgstr "Propriedades do documento"
 
 #: source_backends/sane_scanner_backends.py:107
 msgid "Scan"
@@ -460,11 +461,11 @@ msgstr ""
 
 #: source_backends/staging_folder_backends.py:323
 msgid "Created"
-msgstr ""
+msgstr "Criado"
 
 #: source_backends/staging_folder_backends.py:327
 msgid "Thumbnail"
-msgstr ""
+msgstr "Miniatura"
 
 #: source_backends/staging_folder_backends.py:472
 #, python-format
@@ -504,11 +505,11 @@ msgstr ""
 
 #: source_backends/watch_folder_backends.py:50
 msgid "Watch folder"
-msgstr ""
+msgstr "Ver pasta"
 
 #: source_backends/web_form_backends.py:24
 msgid "Web form"
-msgstr ""
+msgstr "Formulário web"
 
 #: storages.py:14
 msgid ""
@@ -522,11 +523,11 @@ msgstr ""
 
 #: templates/sources/app/foot.html:40
 msgid "Cancel upload"
-msgstr ""
+msgstr "Cancelar carregamento"
 
 #: templates/sources/app/foot.html:41
 msgid "Are you sure you want to cancel this upload?"
-msgstr ""
+msgstr "Tem a certeza que quer cancelar este carregamento?"
 
 #: templates/sources/app/foot.html:42
 msgid "Drop files or click here to upload files"
@@ -542,7 +543,7 @@ msgstr ""
 
 #: templates/sources/app/foot.html:45
 msgid "Clear"
-msgstr ""
+msgstr "Limpar"
 
 #: templates/sources/app/foot.html:46
 msgid "Server responded with {{statusCode}} code."
@@ -640,7 +641,7 @@ msgstr ""
 
 #: wizard_steps.py:11
 msgid "Select document type"
-msgstr ""
+msgstr "Selecionar tipo de documento"
 
 #: wizards.py:71
 #, python-format
@@ -653,7 +654,7 @@ msgstr ""
 
 #: wizards.py:85
 msgid "First"
-msgstr ""
+msgstr "Primeiro"
 
 #: wizards.py:91
 msgid "Previous"

@@ -7,14 +7,15 @@
 # Roberto Rosario, 2021
 # Emerson Soares <on.emersonsoares@gmail.com>, 2021
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 04:33+0000\n"
+"POT-Creation-Date: 2022-01-18 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +29,7 @@ msgstr "Nenhum"
 
 #: admin.py:24 links.py:95 models.py:54
 msgid "Document types"
-msgstr ""
+msgstr "Tipos de documento"
 
 #: apps.py:50 events.py:6
 msgid "Document indexing"
@@ -36,27 +37,27 @@ msgstr ""
 
 #: apps.py:128 apps.py:157 apps.py:196 apps.py:229
 msgid "Level"
-msgstr ""
+msgstr "Nível"
 
 #: apps.py:136 apps.py:166
 msgid "Depth"
-msgstr ""
+msgstr "Profundidade"
 
 #: apps.py:140
 msgid "Total nodes"
-msgstr ""
+msgstr "Total de nós"
 
 #: apps.py:147
 msgid "Total documents"
-msgstr ""
+msgstr "Total de documentos"
 
 #: apps.py:149 apps.py:187
 msgid "Number of unique documents this item contains."
-msgstr ""
+msgstr "Número único de documentos que este item contém."
 
 #: apps.py:174
 msgid "Nodes"
-msgstr ""
+msgstr "Nós"
 
 #: apps.py:185 models.py:438
 msgid "Documents"
@@ -64,11 +65,11 @@ msgstr "Documentos"
 
 #: events.py:10
 msgid "Index template created"
-msgstr ""
+msgstr "Template de índice criado"
 
 #: events.py:13
 msgid "Index template edited"
-msgstr ""
+msgstr "Template de índice editado"
 
 #: forms.py:16
 msgid "Index templates to be queued for rebuilding."
@@ -76,15 +77,15 @@ msgstr ""
 
 #: forms.py:17 links.py:36 models.py:62 views/index_template_views.py:96
 msgid "Index templates"
-msgstr ""
+msgstr "Templates de índice"
 
 #: forms.py:32
 msgid "Template"
-msgstr ""
+msgstr "Template"
 
 #: handlers.py:19
 msgid "Creation date"
-msgstr ""
+msgstr "Data de criação"
 
 #: links.py:30 links.py:44 links.py:75 links.py:79
 #: views/index_instance_views.py:43
@@ -93,7 +94,7 @@ msgstr "Índices"
 
 #: links.py:49 queues.py:24
 msgid "Rebuild index"
-msgstr ""
+msgstr "Reconstruir índice"
 
 #: links.py:56 links.py:65
 msgid "Deletes and creates from scratch all the document indexes."
@@ -101,15 +102,15 @@ msgstr "Exclui e cria a partir do zero todos os índices de documentos."
 
 #: links.py:57
 msgid "Rebuild indexes"
-msgstr ""
+msgstr "Reconstruir índices "
 
 #: links.py:66 views/index_template_views.py:347
 msgid "Reset indexes"
-msgstr ""
+msgstr "Redefinir índices"
 
 #: links.py:85 views/index_template_views.py:101
 msgid "Create index"
-msgstr ""
+msgstr "Criar índice"
 
 #: links.py:90 links.py:115
 msgid "Delete"
@@ -121,15 +122,15 @@ msgstr "Editar"
 
 #: links.py:105
 msgid "Tree template"
-msgstr ""
+msgstr "Árvore de template"
 
 #: links.py:110
 msgid "New child node"
-msgstr ""
+msgstr "Novo nó filho"
 
 #: models.py:36
 msgid "Short description of this index."
-msgstr ""
+msgstr "Breve descrição deste índice."
 
 #: models.py:37
 msgid "Label"
@@ -138,6 +139,8 @@ msgstr "Nome"
 #: models.py:41
 msgid "This value will be used by other apps to reference this index."
 msgstr ""
+"Este valor será utilizado por outras aplicações para referenciar este "
+"índice."
 
 #: models.py:42
 msgid "Slug"
@@ -152,11 +155,11 @@ msgstr ""
 
 #: models.py:50 models.py:190
 msgid "Enabled"
-msgstr ""
+msgstr "Activado"
 
 #: models.py:61
 msgid "Index template"
-msgstr ""
+msgstr "Tempplate de índice"
 
 #: models.py:169
 msgid "Parent index template node of this node."
@@ -164,7 +167,7 @@ msgstr ""
 
 #: models.py:175
 msgid "Index"
-msgstr ""
+msgstr "índice"
 
 #: models.py:179
 msgid "Enter a template to render. Use Django's default templating language."
@@ -202,7 +205,7 @@ msgstr ""
 
 #: models.py:207
 msgid "Root"
-msgstr ""
+msgstr "Raiz"
 
 #: models.py:228
 msgid "Index instance"
@@ -221,15 +224,15 @@ msgstr ""
 
 #: models.py:388
 msgid "Total number of nodes with unique values this item contains."
-msgstr ""
+msgstr "Número total de nós com o valor único que este item contém."
 
 #: models.py:397
 msgid "Total number of unique documents this item contains."
-msgstr ""
+msgstr "Número total de documentos únicos que este item contém."
 
 #: models.py:407
 msgid "Total number of node levels this item contains."
-msgstr ""
+msgstr "Número total de níveis de nós que este item contém."
 
 #: models.py:434 search.py:26
 msgid "Value"
@@ -249,7 +252,7 @@ msgstr ""
 
 #: models.py:493
 msgid "Full path"
-msgstr ""
+msgstr "Caminho completo"
 
 #: models.py:517
 msgid "Document index node instance"
@@ -273,31 +276,31 @@ msgstr ""
 
 #: permissions.py:11
 msgid "Create new index templates"
-msgstr ""
+msgstr "Criar novos templates de índice"
 
 #: permissions.py:14
 msgid "Edit index templates"
-msgstr ""
+msgstr "Editar templastes de índice"
 
 #: permissions.py:17
 msgid "Delete index templates"
-msgstr ""
+msgstr "Remover templastes de índice"
 
 #: permissions.py:20
 msgid "View index templates"
-msgstr ""
+msgstr "Ver templates de índice"
 
 #: permissions.py:23 views/index_template_views.py:310
 msgid "Rebuild index templates"
-msgstr ""
+msgstr "Reconstruir templastes de índice"
 
 #: queues.py:12
 msgid "Delete empty index nodes"
-msgstr ""
+msgstr "Remover nós de índice vazios"
 
 #: queues.py:16
 msgid "Remove document"
-msgstr ""
+msgstr "Remover documento"
 
 #: queues.py:20
 msgid "Index document"
@@ -309,23 +312,23 @@ msgstr "Tipo de documento"
 
 #: search.py:33
 msgid "Document MIME type"
-msgstr ""
+msgstr "Documento tipo MIME "
 
 #: search.py:36
 msgid "Document label"
-msgstr ""
+msgstr "Nome do documento"
 
 #: search.py:39
 msgid "Document description"
-msgstr ""
+msgstr "Descrição do documento"
 
 #: search.py:42
 msgid "Document UUID"
-msgstr ""
+msgstr "Documento UUID"
 
 #: search.py:46
 msgid "Document checksum"
-msgstr ""
+msgstr "Soma de controlo do documento"
 
 #: serializers.py:200
 msgid ""
@@ -423,7 +426,7 @@ msgstr ""
 
 #: views/index_template_views.py:136
 msgid "Available document types"
-msgstr ""
+msgstr "Tipos de documento disponíveis"
 
 #: views/index_template_views.py:137
 msgid "Document types linked"

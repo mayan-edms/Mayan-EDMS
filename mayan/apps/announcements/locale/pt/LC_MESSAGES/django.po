@@ -7,14 +7,15 @@
 # Roberto Rosario, 2021
 # Emerson Soares <on.emersonsoares@gmail.com>, 2021
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 04:32+0000\n"
+"POT-Creation-Date: 2022-01-18 07:20+0000\n"
 "PO-Revision-Date: 2021-04-12 03:38+0000\n"
-"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +26,7 @@ msgstr ""
 #: apps.py:35 events.py:5 links.py:40 models.py:42 permissions.py:6
 #: templates/announcements/announcements.html:8 views.py:119
 msgid "Announcements"
-msgstr ""
+msgstr "Anúncios"
 
 #: apps.py:72 apps.py:76
 msgid "None"
@@ -33,19 +34,19 @@ msgstr "Nenhum"
 
 #: events.py:8
 msgid "Announcement created"
-msgstr ""
+msgstr "Anúncios criados"
 
 #: events.py:11
 msgid "Announcement edited"
-msgstr ""
+msgstr "Anúncios editados"
 
 #: links.py:17 views.py:30
 msgid "Create announcement"
-msgstr ""
+msgstr "Criar anúncio"
 
 #: links.py:20 links.py:26
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "Remover"
 
 #: links.py:31
 msgid "Edit"
@@ -53,7 +54,7 @@ msgstr "Editar"
 
 #: models.py:19
 msgid "Short description of this announcement."
-msgstr ""
+msgstr "Descrição breve deste anúncio"
 
 #: models.py:20
 msgid "Label"
@@ -61,7 +62,7 @@ msgstr "Nome"
 
 #: models.py:23
 msgid "The actual text to be displayed."
-msgstr ""
+msgstr "Texto a ser exibido"
 
 #: models.py:24
 msgid "Text"
@@ -69,83 +70,83 @@ msgstr "Texto"
 
 #: models.py:26
 msgid "Enabled"
-msgstr ""
+msgstr "Ativado"
 
 #: models.py:29
 msgid "Date and time after which this announcement will be displayed."
-msgstr ""
+msgstr "Data e hora depois do qual este anúncio será exibido"
 
 #: models.py:30
 msgid "Start date time"
-msgstr ""
+msgstr "Data de início "
 
 #: models.py:34
 msgid "Date and time until when this announcement is to be displayed."
-msgstr ""
+msgstr "Data e hora até quando este anúncio estará em exibição"
 
 #: models.py:35
 msgid "End date time"
-msgstr ""
+msgstr "Data de fim"
 
 #: models.py:41
 msgid "Announcement"
-msgstr ""
+msgstr "Anúncio"
 
 #: permissions.py:10
 msgid "Create announcements"
-msgstr ""
+msgstr "Criar anúncios"
 
 #: permissions.py:13
 msgid "Delete announcements"
-msgstr ""
+msgstr "Remover anúncios"
 
 #: permissions.py:16
 msgid "Edit announcements"
-msgstr ""
+msgstr "Editar anúncios"
 
 #: permissions.py:19
 msgid "View announcements"
-msgstr ""
+msgstr "Ver anúncios"
 
 #: views.py:41
 #, python-format
 msgid "Error deleting announcement \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Erro ao remover anúncio \"1%(instance)s\"; 2%(exception)s"
 
 #: views.py:50
 #, python-format
 msgid "Announcement \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Anúncio \"1%(object)s\" removido com sucesso"
 
 #: views.py:53
 #, python-format
 msgid "%(count)d announcement deleted successfully."
-msgstr ""
+msgstr "1%(count)d anúncio removido com sucesso"
 
 #: views.py:56
 #, python-format
 msgid "%(count)d announcements deleted successfully."
-msgstr ""
+msgstr "1%(count)d anúncios removidos com sucesso"
 
 #: views.py:58
 #, python-format
 msgid "Delete announcement: %(object)s."
-msgstr ""
+msgstr "Remover anúncio %(object)s"
 
 #: views.py:59
 #, python-format
 msgid "Delete the %(count)d selected announcement."
-msgstr ""
+msgstr "Remover 1%(count)d o anúncio selecionado."
 
 #: views.py:60
 #, python-format
 msgid "Delete the %(count)d selected announcements."
-msgstr ""
+msgstr "Remover os 1%(count)d anúncios selecionados."
 
 #: views.py:92
 #, python-format
 msgid "Edit announcement: %s"
-msgstr ""
+msgstr "Editar anúncio 1%s"
 
 #: views.py:114
 msgid ""
@@ -153,7 +154,10 @@ msgid ""
 "convery information about your organzation, announcements or usage "
 "guidelines for your users."
 msgstr ""
+"Os anúncios são exibidos na página de login. Pode utilizar os anúncios para "
+"transmitir informações sobre a sua organização, anúncios ou orientações para"
+" os seus utilizadores."
 
 #: views.py:118
 msgid "No announcements available"
-msgstr ""
+msgstr "Não existem anúncios disponíveis"

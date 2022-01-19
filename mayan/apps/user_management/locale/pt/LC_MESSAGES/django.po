@@ -7,14 +7,15 @@
 # Roberto Rosario, 2021
 # Vítor Figueiró <vfigueiro@gmail.com>, 2021
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 04:33+0000\n"
+"POT-Creation-Date: 2022-01-18 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +29,7 @@ msgstr "Gestão de utilizadores"
 
 #: apps.py:90 search.py:10
 msgid "Group"
-msgstr ""
+msgstr "Grupo"
 
 #: apps.py:91 apps.py:118 links.py:64 links.py:78 links.py:107 search.py:34
 #: views.py:132
@@ -53,15 +54,15 @@ msgstr "Correio eletrónico"
 
 #: apps.py:117 search.py:28
 msgid "First name"
-msgstr ""
+msgstr "Primeiro nome"
 
 #: apps.py:119
 msgid "Is active?"
-msgstr ""
+msgstr "Está ativo?"
 
 #: apps.py:120 search.py:37
 msgid "Last name"
-msgstr ""
+msgstr "Sobrenome"
 
 #: apps.py:121
 msgid "Password"
@@ -69,15 +70,15 @@ msgstr "Senha"
 
 #: apps.py:122
 msgid "Username"
-msgstr ""
+msgstr "Nome de utilizador"
 
 #: apps.py:123
 msgid "Last login"
-msgstr ""
+msgstr "Último login"
 
 #: apps.py:147
 msgid "Has usable password?"
-msgstr ""
+msgstr "Tem uma palavra-passe utilizável?"
 
 #: apps.py:154
 msgid "All the groups."
@@ -89,39 +90,39 @@ msgstr "Todos os utilziadores."
 
 #: dashboard_widgets.py:14
 msgid "Total users"
-msgstr ""
+msgstr "Total de utilizadores"
 
 #: dashboard_widgets.py:29
 msgid "Total groups"
-msgstr ""
+msgstr "Total de grupos"
 
 #: dashboards.py:5
 msgid "User dashboard"
-msgstr ""
+msgstr "Visão geral de utilizador"
 
 #: events.py:10
 msgid "Group created"
-msgstr ""
+msgstr "Grupo criado"
 
 #: events.py:13
 msgid "Group edited"
-msgstr ""
+msgstr "Grupo editado"
 
 #: events.py:17
 msgid "User created"
-msgstr ""
+msgstr "Utilizador criado"
 
 #: events.py:20
 msgid "User edited"
-msgstr ""
+msgstr "Utilizador editado"
 
 #: events.py:25
 msgid "User logged in"
-msgstr ""
+msgstr "Utilizador entrou"
 
 #: events.py:28
 msgid "User logged out"
-msgstr ""
+msgstr "Utilizador saiu"
 
 #: links.py:32
 msgid "User details"
@@ -129,7 +130,7 @@ msgstr "Detalhes do utilizador"
 
 #: links.py:36
 msgid "Edit user details"
-msgstr ""
+msgstr "Editar detalhes de utilizador"
 
 #: links.py:44 views.py:52
 msgid "Create new group"
@@ -149,19 +150,19 @@ msgstr "Criar novo utilziador"
 
 #: links.py:121
 msgid "User options"
-msgstr ""
+msgstr "Opções de utilizador"
 
 #: models.py:20
 msgid "Forbid this user from changing their password."
-msgstr ""
+msgstr "Proibir este utilizador de mudar a sua palavra-passe."
 
 #: models.py:26
 msgid "User settings"
-msgstr ""
+msgstr "Definições de utilizador"
 
 #: models.py:27
 msgid "Users settings"
-msgstr ""
+msgstr "Definições de utilizadores"
 
 #: permissions.py:10
 msgid "Create new groups"
@@ -197,7 +198,7 @@ msgstr "Ver utilizadores existentes"
 
 #: search.py:40
 msgid "username"
-msgstr ""
+msgstr "Nome de utilizador"
 
 #: serializers.py:17
 msgid "URL of the API endpoint showing the list users of this group."
@@ -205,11 +206,11 @@ msgstr ""
 
 #: serializers.py:48
 msgid "Primary key of the user to add to the group."
-msgstr ""
+msgstr "Chave primária do utilizador utilizada para adicionar a grupo."
 
 #: serializers.py:57
 msgid "Primary key of the user to remove from the group."
-msgstr ""
+msgstr "Chave primária do utilizador utilizada para remover do grupo."
 
 #: serializers.py:66
 msgid "URL of the API endpoint showing the list groups this user belongs to."
@@ -221,11 +222,11 @@ msgstr "Anónimo"
 
 #: views.py:33
 msgid "Current user details"
-msgstr ""
+msgstr "Detalhes do utilizador atual"
 
 #: views.py:41
 msgid "Edit current user details"
-msgstr ""
+msgstr "Editar detalhes de utilizador atual"
 
 #: views.py:65
 #, python-format
@@ -281,15 +282,15 @@ msgstr ""
 
 #: views.py:131
 msgid "There are no user groups"
-msgstr ""
+msgstr "Não existem grupos de utilizadores"
 
 #: views.py:144
 msgid "Available users"
-msgstr ""
+msgstr "Utilizadores disponíveis"
 
 #: views.py:145
 msgid "Group users"
-msgstr ""
+msgstr "Utilizadores do grupo"
 
 #: views.py:153
 #, python-format
@@ -349,7 +350,7 @@ msgstr "Grupos disponíveis"
 #. user.
 #: views.py:243
 msgid "User groups"
-msgstr ""
+msgstr "Utilizador de grupos"
 
 #: views.py:251
 #, python-format
@@ -361,10 +362,12 @@ msgid ""
 "User accounts can be create from this view. After creating a user account "
 "you will prompted to set a password for it. "
 msgstr ""
+"Contas de utilizador podem ser criadas através desta visualização. Depois de"
+" criar uma conta de utilizador será necessário criar uma palavra-passe."
 
 #: views.py:276
 msgid "There are no user accounts"
-msgstr ""
+msgstr "Não existem contas de utilizador"
 
 #: views.py:290
 #, python-format

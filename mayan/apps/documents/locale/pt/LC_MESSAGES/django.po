@@ -10,14 +10,15 @@
 # Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021
 # Emerson Soares <on.emersonsoares@gmail.com>, 2021
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 04:33+0000\n"
+"POT-Creation-Date: 2022-01-18 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,7 +34,7 @@ msgstr "Documentos"
 
 #: apps.py:281
 msgid "Decorations"
-msgstr ""
+msgstr "Decorações"
 
 #: apps.py:300
 msgid "Create a document type"
@@ -91,11 +92,11 @@ msgstr ""
 #: models/favorite_document_models.py:31
 #: models/recently_accessed_document_models.py:29 search.py:23
 msgid "Document"
-msgstr ""
+msgstr "Documento"
 
 #: apps.py:564 apps.py:616 apps.py:645 apps.py:679 apps.py:704
 msgid "Thumbnail"
-msgstr ""
+msgstr "Miniatura"
 
 #: apps.py:570
 msgid "Type"
@@ -147,7 +148,7 @@ msgstr ""
 
 #: dashboard_widgets.py:55
 msgid "Total documents"
-msgstr ""
+msgstr "Total de documentos"
 
 #: dashboard_widgets.py:73 views/trashed_document_views.py:151
 msgid "Documents in trash"
@@ -157,7 +158,7 @@ msgstr ""
 #: links/document_type_links.py:85 permissions.py:80
 #: views/document_type_views.py:79
 msgid "Document types"
-msgstr ""
+msgstr "Tipos de documento"
 
 #: dashboard_widgets.py:109
 msgid "New documents this month"
@@ -323,7 +324,7 @@ msgstr ""
 
 #: forms/document_forms.py:110 models/document_models.py:87
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #: forms/document_type_forms.py:47 models/document_models.py:64
 #: models/document_type_models.py:83 models/document_type_models.py:200
@@ -341,7 +342,7 @@ msgstr "ID do Objeto"
 
 #: forms/document_version_page_forms.py:35
 msgid "Source"
-msgstr ""
+msgstr "Fonte"
 
 #: forms/document_version_page_forms.py:40
 msgid "Destination page number"
@@ -393,7 +394,7 @@ msgstr ""
 #: links/document_file_links.py:76 links/document_links.py:38
 #: links/document_version_links.py:65
 msgid "Preview"
-msgstr ""
+msgstr "Pré-visualização"
 
 #: links/document_file_links.py:82 links/document_file_links.py:88
 #: links/document_version_links.py:88 links/document_version_links.py:94
@@ -740,7 +741,7 @@ msgstr ""
 
 #: models/document_models.py:82
 msgid "Created"
-msgstr ""
+msgstr "Criado"
 
 #: models/document_models.py:86
 msgid "The primary language in the document."
@@ -834,7 +835,7 @@ msgstr ""
 
 #: models/document_type_models.py:205
 msgid "Enabled"
-msgstr ""
+msgstr "Activado"
 
 #: models/document_type_models.py:210
 msgid "Quick label"
@@ -1081,15 +1082,15 @@ msgstr ""
 
 #: search.py:67 search.py:99 search.py:144 search.py:175
 msgid "Document label"
-msgstr ""
+msgstr "Nome do documento"
 
 #: search.py:70 search.py:103 search.py:147 search.py:179
 msgid "Document description"
-msgstr ""
+msgstr "Descrição do documento"
 
 #: search.py:73 search.py:109 search.py:150 search.py:182
 msgid "Document UUID"
-msgstr ""
+msgstr "Documento UUID"
 
 #: search.py:106
 msgid "Document file checksum"

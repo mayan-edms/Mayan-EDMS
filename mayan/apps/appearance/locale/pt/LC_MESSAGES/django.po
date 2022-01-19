@@ -9,14 +9,15 @@
 # Vítor Figueiró <vfigueiro@gmail.com>, 2021
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
 # Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 04:32+0000\n"
+"POT-Creation-Date: 2022-01-18 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
-"Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -78,23 +79,23 @@ msgstr "URI.js"
 
 #: events.py:8
 msgid "Theme created"
-msgstr ""
+msgstr "Tema criado"
 
 #: events.py:11
 msgid "Theme edited"
-msgstr ""
+msgstr "Tema editado"
 
 #: links.py:16
 msgid "Theme settings"
-msgstr ""
+msgstr "Configurações do tema"
 
 #: links.py:21
 msgid "Edit theme settings"
-msgstr ""
+msgstr "Editar configurações do tema"
 
 #: links.py:27 views.py:47
 msgid "Create new theme"
-msgstr ""
+msgstr "Criar novo tema"
 
 #: links.py:32
 msgid "Delete"
@@ -106,11 +107,11 @@ msgstr "Editar"
 
 #: links.py:40 links.py:45 models.py:31 views.py:111
 msgid "Themes"
-msgstr ""
+msgstr "Temas"
 
 #: models.py:18
 msgid "A short text describing the theme."
-msgstr ""
+msgstr "Breve texto descrevendo o tema."
 
 #: models.py:19
 msgid "Label"
@@ -121,14 +122,16 @@ msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
 msgstr ""
+"A folha de estilo CSS para alterar a aparência dos diferentes elementos da "
+"interface do utilizador."
 
 #: models.py:25
 msgid "Stylesheet"
-msgstr ""
+msgstr "Folha de estilo"
 
 #: models.py:30 models.py:68
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: models.py:64
 msgid "User"
@@ -136,27 +139,27 @@ msgstr "Utilizador"
 
 #: models.py:72
 msgid "User theme setting"
-msgstr ""
+msgstr "Configuração do tema do utilizador"
 
 #: models.py:73
 msgid "User theme settings"
-msgstr ""
+msgstr "Configurações do tema do utilizador"
 
 #: permissions.py:8
 msgid "Create new themes"
-msgstr ""
+msgstr "Criar novos temas"
 
 #: permissions.py:11
 msgid "Delete themes"
-msgstr ""
+msgstr "Remover temas"
 
 #: permissions.py:14
 msgid "Edit themes"
-msgstr ""
+msgstr "Editar temas"
 
 #: permissions.py:17
 msgid "View existing themes"
-msgstr ""
+msgstr "Ver temas existentes"
 
 #: settings.py:15
 msgid "Maximum number of characters that will be displayed as the view title."
@@ -174,6 +177,8 @@ msgstr ""
 msgid ""
 "Delay in milliseconds after which the menus will be checked for updates."
 msgstr ""
+"Atraso em milésimas de segundo após qual os menus serão verificados para "
+"atualizações."
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
@@ -362,7 +367,7 @@ msgstr "Identificador"
 
 #: templates/appearance/generic_list_subtemplate.html:133
 msgid "Facets"
-msgstr ""
+msgstr "Aspetos"
 
 #: templates/appearance/home.html:27
 msgid "Getting started"
@@ -441,27 +446,29 @@ msgstr "Nenhum"
 
 #: views.py:29
 msgid "Current user theme settings details"
-msgstr ""
+msgstr "Detalhes de configuração do tema do utilizador atual"
 
 #: views.py:35
 msgid "Edit current user theme settings details"
-msgstr ""
+msgstr "Editar detalhes das configurações do tema do utilizador atual"
 
 #: views.py:69
 #, python-format
 msgid "Delete theme: %s"
-msgstr ""
+msgstr "Remover tema: 1%s"
 
 #: views.py:85
 #, python-format
 msgid "Edit theme: %s"
-msgstr ""
+msgstr "Editar tema: 1%s"
 
 #: views.py:105
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
 msgstr ""
+"Os temas permitem alterar a aparência visual sem exigir alterações de "
+"código."
 
 #: views.py:109
 msgid "There are no themes"
-msgstr ""
+msgstr "Não existem temas"

@@ -6,14 +6,15 @@
 # Translators:
 # Renata Oliveira <renatabels@gmail.com>, 2021
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 04:33+0000\n"
+"POT-Creation-Date: 2022-01-18 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,7 +71,7 @@ msgstr ""
 
 #: forms.py:76
 msgid "Backend"
-msgstr ""
+msgstr "Backend"
 
 #: links.py:33 links.py:36
 msgid "Email document link"
@@ -118,7 +119,7 @@ msgstr ""
 
 #: links.py:122 views/mailing_profile_views.py:144
 msgid "Test"
-msgstr ""
+msgstr "Teste"
 
 #: literals.py:7
 #, python-format
@@ -158,7 +159,7 @@ msgstr ""
 
 #: mailers.py:28
 msgid "Host"
-msgstr ""
+msgstr "Anfitrião"
 
 #: mailers.py:30
 msgid "The host to use for sending email."
@@ -198,7 +199,7 @@ msgstr ""
 
 #: mailers.py:60
 msgid "Username"
-msgstr ""
+msgstr "Nome de utilizador"
 
 #: mailers.py:63
 msgid ""
@@ -249,19 +250,19 @@ msgstr "Padrão"
 
 #: models.py:43
 msgid "Enabled"
-msgstr ""
+msgstr "Activado"
 
 #: models.py:46
 msgid "The dotted Python path to the backend class."
-msgstr ""
+msgstr "O caminho pontilhado Python para a classe de backend."
 
 #: models.py:47
 msgid "Backend path"
-msgstr ""
+msgstr "Caminho do backend"
 
 #: models.py:50
 msgid "Backend data"
-msgstr ""
+msgstr "Dados do backend"
 
 #: models.py:221
 msgid "Test email from Mayan EDMS"
