@@ -216,6 +216,7 @@
 
 - Update the ``ObjectActionAPIView`` view to allow passing extra context to
   serializers.
+- Add support for launching workflows from the API.
 
 4.1.4 (2021-12-01)
 ==================

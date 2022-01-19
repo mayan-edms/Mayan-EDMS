@@ -6,12 +6,34 @@ from mayan.apps.rest_api import generics
 
 from ..permissions import (
     permission_workflow_instance_transition,
-    permission_workflow_template_view
+    permission_workflow_template_view, permission_workflow_tools
 )
 from ..serializers import (
-    WorkflowInstanceSerializer, WorkflowInstanceLogEntrySerializer,
-    WorkflowTemplateTransitionSerializer
+    WorkflowInstanceLaunchSerializer, WorkflowInstanceSerializer,
+    WorkflowInstanceLogEntrySerializer, WorkflowTemplateTransitionSerializer
 )
+
+
+class APIWorkflowInstanceLaunchActionView(generics.ObjectActionAPIView):
+    """
+    post: Launch a new workflow instance for the specified document.
+    """
+    lookup_url_kwarg = 'document_id'
+    mayan_object_permissions = {
+        'POST': (permission_workflow_tools,)
+    }
+    serializer_class = WorkflowInstanceLaunchSerializer
+    queryset = Document.valid.all()
+
+    def get_serializer_extra_context(self):
+        obj = self.get_object()
+        return {
+            'document': obj, 'document_type': obj.document_type
+        }
+
+    def object_action(self, request, serializer):
+        workflow_template = serializer.validated_data['workflow_template_id']
+        workflow_template.launch_for(document=self.object)
 
 
 class APIWorkflowInstanceListView(

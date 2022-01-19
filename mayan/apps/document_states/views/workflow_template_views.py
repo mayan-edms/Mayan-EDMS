@@ -23,7 +23,7 @@ from ..models import Workflow
 from ..permissions import (
     permission_workflow_template_create, permission_workflow_template_delete,
     permission_workflow_template_edit, permission_workflow_tools,
-    permission_workflow_template_view,
+    permission_workflow_template_view
 )
 from ..tasks import (
     task_launch_all_workflows, task_launch_workflow, task_launch_workflow_for

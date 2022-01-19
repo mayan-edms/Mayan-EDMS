@@ -20,6 +20,20 @@ from .models import (
     WorkflowStateAction, WorkflowTransition, WorkflowTransitionField,
     WorkflowTransitionTriggerEvent
 )
+from .permissions import permission_workflow_tools
+
+
+class WorkflowInstanceLaunchSerializer(serializers.Serializer):
+    workflow_template_id = FilteredPrimaryKeyRelatedField(
+        help_text=_(
+            'Primary key of the workflow template to launch.'
+        ), source_permission=permission_workflow_tools
+    )
+
+    def get_workflow_template_id_queryset(self):
+        return self.context['document_type'].workflows.exclude(
+            id__in=self.context['document'].workflows.values('id')
+        )
 
 
 class WorkflowTemplateSerializer(serializers.HyperlinkedModelSerializer):

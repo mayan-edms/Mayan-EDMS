@@ -2,6 +2,7 @@ from django.conf.urls import url
 
 from .api_views.workflow_instance_api_views import (
     APIWorkflowInstanceListView, APIWorkflowInstanceDetailView,
+    APIWorkflowInstanceLaunchActionView,
     APIWorkflowInstanceLogEntryDetailView,
     APIWorkflowInstanceLogEntryListView,
     APIWorkflowInstanceLogEntryTransitionListView,
@@ -358,6 +359,11 @@ api_urls = [
         regex=r'^documents/(?P<document_id>[0-9]+)/workflow_instances/$',
         name='workflow-instance-list',
         view=APIWorkflowInstanceListView.as_view()
+    ),
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/workflow_instances/launch/$',
+        name='workflow-instance-launch',
+        view=APIWorkflowInstanceLaunchActionView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/workflow_instances/(?P<workflow_instance_id>[0-9]+)/$',
