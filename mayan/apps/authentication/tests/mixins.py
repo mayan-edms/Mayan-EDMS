@@ -1,7 +1,11 @@
 from django.conf import settings
 from django.contrib.auth.views import PasswordResetConfirmView
+from django.test import override_settings
 
+from ..classes import AuthenticationBackend
 from ..literals import USER_IMPERSONATE_VARIABLE_ID
+
+from .literals import PATH_AUTHENTICATION_BACKEND_USERNAME
 
 
 class LoginViewTestMixin:
@@ -17,6 +21,17 @@ class LoginViewTestMixin:
             follow=follow, viewname=settings.LOGIN_URL, data=default_data,
             query=query
         )
+
+    @override_settings(AUTHENTICATION_BACKEND=PATH_AUTHENTICATION_BACKEND_USERNAME)
+    def _request_simple_login_view(self, follow=None, query=None):
+        AuthenticationBackend.cls_initialize()
+
+        data = {
+            'username': self._test_case_user.username,
+            'password': self._test_case_user.cleartext_password,
+        }
+
+        return self._request_login_view(data=data, follow=follow, query=query)
 
     def _request_login_view_with_email(self, extra_data=None):
         data = {
