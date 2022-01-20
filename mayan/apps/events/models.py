@@ -29,7 +29,7 @@ class StoredEventType(models.Model):
         verbose_name_plural = _('Stored event types')
 
     def __str__(self):
-        return force_text(s=self.event_type)
+        return str(self.label)
 
     @cached_property
     def event_type(self):
