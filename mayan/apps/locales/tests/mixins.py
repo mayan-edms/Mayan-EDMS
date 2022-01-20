@@ -7,9 +7,11 @@ class UserLocaleProfileViewMixin:
             user=self._test_case_user
         )
 
-    def _request_test_current_user_locale_profile_edit_view(self):
+    def _request_test_current_user_locale_profile_edit_view(
+        self, follow=None
+    ):
         return self._request_test_user_locale_profile_edit_view(
-            user=self._test_case_user
+            user=self._test_case_user, follow=follow
         )
 
     def _request_test_superuser_locale_profile_detail_view(self):
@@ -31,7 +33,9 @@ class UserLocaleProfileViewMixin:
             }
         )
 
-    def _request_test_user_locale_profile_edit_view(self, user=None):
+    def _request_test_user_locale_profile_edit_view(
+        self, follow=None, user=None
+    ):
         user = user or self.test_user
 
         return self.post(
@@ -40,5 +44,5 @@ class UserLocaleProfileViewMixin:
             }, data={
                 'language': TEST_USER_LOCALE_LANGUAGE,
                 'timezone': TEST_USER_LOCALE_TIMEZONE
-            }
+            }, follow=follow
         )

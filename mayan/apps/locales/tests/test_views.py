@@ -1,3 +1,4 @@
+from mayan.apps.authentication.tests.mixins import LoginViewTestMixin, LogoutViewTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 from mayan.apps.user_management.permissions import (
     permission_user_edit, permission_user_view
@@ -6,6 +7,7 @@ from mayan.apps.user_management.permissions import (
 from ..events import event_user_locale_profile_edited
 
 from .mixins import UserLocaleProfileViewMixin
+from .literals import TEST_TRANSLATED_WORD
 
 
 class CurrentUserViewTestCase(
@@ -187,3 +189,36 @@ class UserLocaleProfileViewTestCase(
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_user)
         self.assertEqual(events[0].verb, event_user_locale_profile_edited.id)
+
+
+class LanguageSelectionViewTestCase(
+    LoginViewTestMixin, LogoutViewTestMixin, UserLocaleProfileViewMixin,
+    GenericViewTestCase
+):
+    def test_language_change_view(self):
+        response = self._request_test_current_user_locale_profile_edit_view(
+            follow=True
+        )
+        self.assertEqual(response.status_code, 200)
+
+        response = self._request_test_current_user_locale_profile_detail_view()
+        self.assertContains(
+            response=response, text=TEST_TRANSLATED_WORD, status_code=200
+        )
+
+    def test_language_change_after_login_view(self):
+        response = self._request_test_current_user_locale_profile_edit_view(
+            follow=True
+        )
+        self.assertEqual(response.status_code, 200)
+
+        request = self._request_logout_view()
+        self.assertEqual(request.status_code, 302)
+
+        response = self._request_simple_login_view()
+        self.assertEqual(request.status_code, 302)
+
+        response = self._request_test_current_user_locale_profile_detail_view()
+        self.assertContains(
+            response=response, text=TEST_TRANSLATED_WORD, status_code=200
+        )

@@ -36,7 +36,6 @@ MIDDLEWARE = [
         'corsheaders.middleware.CorsMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
-        'django.middleware.locale.LocaleMiddleware',
         'common.middleware.timezone.TimezoneMiddleware',
         'common.middleware.ajax_redirect.AjaxRedirect',
         'whitenoise.middleware.WhiteNoiseMiddleware'

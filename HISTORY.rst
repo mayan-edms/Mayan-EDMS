@@ -217,6 +217,7 @@
 - Update the ``ObjectActionAPIView`` view to allow passing extra context to
   serializers.
 - Add support for launching workflows from the API.
+- Refactor language activation to work with Django 3.2.
 
 4.1.4 (2021-12-01)
 ==================
