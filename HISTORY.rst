@@ -1,4 +1,4 @@
-4.2 (2022-XX-XX)
+4.2 (2022-02-XX)
 ================
 - Update Django to version 3.2.11.
 - Update django-widget-tweaks from version 1.4.8 to 1.4.9.
@@ -218,6 +218,7 @@
   serializers.
 - Add support for launching workflows from the API.
 - Refactor language activation to work with Django 3.2.
+- Added the mailing profile created and edited events.
 
 4.1.4 (2021-12-01)
 ==================
