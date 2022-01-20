@@ -29,13 +29,12 @@ from .events import (
 )
 from .handlers import handler_initialize_new_user_options
 from .links import (
-    link_current_user_details, link_current_user_edit, link_group_create,
-    link_group_delete_single, link_group_delete_multiple, link_group_edit,
-    link_group_list, link_group_user_list, link_group_setup,
-    link_user_create, link_user_delete_single, link_user_edit,
-    link_user_group_list, link_user_list, link_user_delete_multiple,
-    link_user_set_options, link_user_setup, separator_user_label,
-    text_user_label
+    link_current_user_details, link_group_create, link_group_delete_single,
+    link_group_delete_multiple, link_group_edit, link_group_list,
+    link_group_user_list, link_group_setup, link_user_create,
+    link_user_delete_single, link_user_edit, link_user_group_list,
+    link_user_list, link_user_delete_multiple, link_user_set_options,
+    link_user_setup, separator_user_label, text_user_label
 )
 from .methods import (
     get_method_group_init, get_method_group_save, get_method_user_init,
@@ -306,7 +305,9 @@ class UserManagementApp(MayanAppConfig):
         )
 
         menu_object.bind_links(
-            links=(link_user_delete_single, link_user_edit,), sources=(User,)
+            links=(
+                link_user_delete_single, link_user_edit
+            ), sources=(User,)
         )
 
         menu_related.bind_links(
@@ -329,7 +330,7 @@ class UserManagementApp(MayanAppConfig):
         menu_user.bind_links(
             links=(
                 text_user_label, separator_user_label,
-                link_current_user_details, link_current_user_edit,
+                link_current_user_details
             ), position=0
         )
 

@@ -37,10 +37,11 @@ class SmartLinkConditionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         fields = (
             'enabled', 'expression', 'foreign_document_data', 'inclusion',
-            'id', 'negated', 'operator', 'smart_link_url', 'url'
+            'id', 'negated', 'operator', 'smart_link_id', 'smart_link_url',
+            'url'
         )
         model = SmartLinkCondition
-        read_only_fields = ('id', 'url')
+        read_only_fields = ('id', 'smart_link_id', 'smart_link_url', 'url')
 
 
 class SmartLinkDocumentTypeAddSerializer(serializers.Serializer):

@@ -5,10 +5,6 @@ icon_user_setup = Icon(driver_name='fontawesome', symbol='user')
 # Current user
 
 icon_current_user_details = Icon(driver_name='fontawesome', symbol='user')
-icon_current_user_edit = Icon(
-    driver_name='fontawesome-dual', primary_symbol='user',
-    secondary_symbol='pencil-alt'
-)
 
 # Group
 

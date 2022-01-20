@@ -12,12 +12,13 @@ from mayan.apps.smart_settings.classes import SettingNamespace
 
 from ..classes import DefinedStorage
 from ..compressed_files import Archive
-from ..models import DownloadFile
+from ..models import DownloadFile, SharedUploadedFile
 from ..utils import mkdtemp
 
 from .literals import (
     TEST_COMPRESSED_FILE_CONTENTS, TEST_DOWNLOAD_FILE_CONTENT_FILE_NAME,
-    TEST_FILE_CONTENTS_1, TEST_FILE3_PATH, TEST_FILENAME1, TEST_FILENAME3
+    TEST_FILE_CONTENTS_1, TEST_FILE3_PATH, TEST_FILENAME1, TEST_FILENAME3,
+    TEST_SHARED_UPLOADED_FILE_FILENAME
 )
 
 
@@ -137,6 +138,20 @@ class StorageProcessorTestMixin:
         super().tearDown()
         shutil.rmtree(path=self.temporary_directory, ignore_errors=True)
         self.defined_storage.kwargs = self.document_storage_kwargs
+
+
+class SharedUploadedFileTestMixin:
+    def _create_test_shared_uploaded_file(self, content=None):
+        file_content = None
+
+        if content:
+            file_content = ContentFile(
+                content=content, name=TEST_SHARED_UPLOADED_FILE_FILENAME
+            )
+
+        self.test_download_file = SharedUploadedFile.objects.create(
+            file=file_content, filename=TEST_SHARED_UPLOADED_FILE_FILENAME
+        )
 
 
 class StorageSettingTestMixin:

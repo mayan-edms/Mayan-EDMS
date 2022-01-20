@@ -3,7 +3,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.http import Http404
 from django.shortcuts import get_object_or_404
-from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
@@ -71,9 +70,6 @@ class EventTypeSubscriptionListView(FormView):
 
     def get_object(self):
         return self.request.user
-
-    def get_post_action_redirect(self):
-        return reverse(viewname='user_management:current_user_details')
 
     def get_queryset(self):
         # Return the queryset by name from the sorted list of the class

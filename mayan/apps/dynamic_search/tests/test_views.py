@@ -220,11 +220,11 @@ class DjangoSearchToolViewTestCase(
     _test_search_backend_path = 'mayan.apps.dynamic_search.backends.django.DjangoSearchBackend'
     """Test against Django backend."""
 
-    skip('Backend does not support indexing.')
+    @skip('Backend does not support indexing.')
     def test_search_backend_reindex_view_artifacts_no_permission(self):
         """Backend does not support indexing."""
 
-    skip('Backend does not support indexing.')
+    @skip('Backend does not support indexing.')
     def test_search_backend_reindex_view_artifacts_with_permission(self):
         """Backend does not support indexing."""
 

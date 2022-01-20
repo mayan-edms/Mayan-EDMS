@@ -12,6 +12,7 @@ from mayan.apps.common.menus import (
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.rest_api.fields import DynamicSerializerField
 
 from .events import (
     event_cabinet_edited, event_cabinet_document_added,
@@ -75,6 +76,11 @@ class CabinetsApp(MayanAppConfig):
         # effect.
         Document.add_to_class(
             name='get_cabinets', value=method_document_get_cabinets
+        )
+
+        DynamicSerializerField.add_serializer(
+            klass=Cabinet,
+            serializer_class='mayan.apps.cabinets.serializers.CabinetSerializer'
         )
 
         EventModelRegistry.register(model=Cabinet, acl_bind_link=False)

@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.templating.classes import Template
 
 from .classes import EventType
+from .literals import TEXT_UNKNOWN_EVENT_ID
 
 
 def widget_event_actor_link(context, attribute=None):
@@ -47,9 +48,15 @@ def widget_event_type_link(context, attribute=None):
     if attribute:
         entry = getattr(entry, attribute)
 
+    try:
+        event_type_label = EventType.get(id=entry.verb).label
+    except KeyError:
+        event_type_label = TEXT_UNKNOWN_EVENT_ID % entry.verb
+
     return mark_safe(
         '<a href="%(url)s">%(label)s</a>' % {
-            'url': reverse(viewname='events:events_by_verb', kwargs={'verb': entry.verb}),
-            'label': EventType.get(name=entry.verb)
+            'url': reverse(
+                viewname='events:events_by_verb', kwargs={'verb': entry.verb}
+            ), 'label': event_type_label
         }
     )

@@ -7,13 +7,13 @@ from mayan.apps.common.classes import QuerysetParametersSerializer
 from mayan.apps.views.generics import ConfirmView
 from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
 
-from ..classes import EventType
 from ..permissions import permission_events_clear
 from ..tasks import task_event_queryset_clear
 
+from .mixins import EventViewMixin
+
 __all__ = (
-    'CurrentUserEventClearView', 'EventListClearView',
-    'ObjectEventClearView', 'VerbEventClearView'
+    'EventListClearView', 'ObjectEventClearView', 'VerbEventClearView'
 )
 
 
@@ -95,29 +95,14 @@ class ObjectEventClearView(
         }
 
 
-class CurrentUserEventClearView(ObjectEventClearView):
-    object_permission = permission_events_clear
-
-    def get_external_object(self):
-        return self.request.user
-
-    def get_queryset_parameters(self):
-        return {
-            '_method_name': 'actor', 'obj': self.external_object
-        }
-
-    def get_task_extra_kwargs(self):
-        return {}
-
-
-class VerbEventClearView(EventClearBaseView):
+class VerbEventClearView(EventViewMixin, EventClearBaseView):
     def get_extra_context(self):
         context = super().get_extra_context()
         context.update(
             {
                 'title': _(
-                    'Events of type: %s'
-                ) % EventType.get(name=self.kwargs['verb']),
+                    'Clear events of type: %s'
+                ) % self.get_event_type(id=self.kwargs['verb'])
             }
         )
         return context

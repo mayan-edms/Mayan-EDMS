@@ -9,7 +9,7 @@ from mayan.apps.storage.utils import NamedTemporaryFile
 
 from ..classes import MIMETypeBackend
 
-DEFAULT_FILE_PATH = '/usr/bin/file'
+from .literals import DEFAULT_FILE_PATH
 
 
 class MIMETypeBackendFileCommand(MIMETypeBackend):

@@ -46,3 +46,45 @@ class ThemeViewTestMixin:
 
     def _request_test_theme_list_view(self):
         return self.get(viewname='appearance:theme_list')
+
+
+class UserThemeSettingsViewTestMixin:
+    def _request_test_current_user_theme_settings_detail_view(self):
+        return self._request_test_user_theme_settings_detail_view(
+            user=self._test_case_user
+        )
+
+    def _request_test_current_user_theme_settings_edit_view(self):
+        return self._request_test_user_theme_settings_edit_view(
+            user=self._test_case_user
+        )
+
+    def _request_test_superuser_theme_settings_detail_view(self):
+        return self._request_test_user_theme_settings_detail_view(
+            user=self.test_superuser
+        )
+
+    def _request_test_superuser_theme_settings_edit_view(self):
+        return self._request_test_user_theme_settings_edit_view(
+            user=self.test_superuser
+        )
+
+    def _request_test_user_theme_settings_detail_view(self, user=None):
+        user = user or self.test_user
+
+        return self.get(
+            viewname='appearance:user_theme_settings_detail', kwargs={
+                'user_id': user.pk
+            }
+        )
+
+    def _request_test_user_theme_settings_edit_view(self, user=None):
+        user = user or self.test_user
+
+        return self.post(
+            viewname='appearance:user_theme_settings_edit', kwargs={
+                'user_id': user.pk
+            }, data={
+                'theme': self.test_theme.pk
+            }
+        )

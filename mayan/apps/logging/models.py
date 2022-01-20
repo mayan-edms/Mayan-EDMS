@@ -1,3 +1,5 @@
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -36,9 +38,18 @@ class ErrorLogPartition(models.Model):
     name = models.CharField(
         db_index=True, max_length=128, verbose_name=_('Internal name')
     )
+    content_type = models.ForeignKey(
+        on_delete=models.CASCADE, to=ContentType
+    )
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey(
+        ct_field='content_type', fk_field='object_id'
+    )
 
     class Meta:
-        unique_together = ('error_log', 'name')
+        unique_together = (
+            ('error_log', 'name'), ('error_log', 'content_type', 'object_id')
+        )
         verbose_name = _('Error log partition')
         verbose_name_plural = _('Error log partitions')
 
@@ -64,3 +75,13 @@ class ErrorLogPartitionEntry(models.Model):
 
     def __str__(self):
         return '{} {}'.format(self.datetime, self.text)
+
+    def get_object(self):
+        return self.error_log_partition.content_object
+
+    get_object.short_description = _('Object')
+
+
+class GlobalErrorLogPartitionEntry(ErrorLogPartitionEntry):
+    class Meta:
+        proxy = True

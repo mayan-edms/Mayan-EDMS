@@ -152,7 +152,7 @@ a i {
       padding-top: 10px;
       padding-bottom: 10px;
   }
-  .collapse.in{
+  .collapse.in {
       display:block !important;
   }
 }
@@ -250,11 +250,40 @@ a i {
 }
 
 /* Imitate the default look of Django's debug template */
-.pre-server-error {
-    background-color:#ffe7ae;
+#django-server-error {
+    background-color: rgb(255, 255, 204);
     color: black;
-    font-size: 110%;
-    font-weight: bold;
+}
+
+#django-server-error code {
+    overflow-wrap: normal;
+    white-space: normal;
+    word-break: normal;
+}
+
+#django-server-error h1 {
+    font-size: 2em;
+}
+
+#django-server-error h2 {
+    font-size: 1.5em;
+}
+#django-server-error h3 {
+    font-size: 1.17em;
+    margin: 1em 0 .5em 0;
+}
+
+#django-server-error pre {
+    background-color: inherit;
+    border: 0px;
+    color: inherit;
+}
+
+#django-server-error pre.exception_value {
+    font-family: sans-serif;
+    color: #575757;
+    font-size: 1.5em;
+    margin: 10px 0 10px 0;
 }
 
 /*
@@ -576,7 +605,7 @@ a i {
 }
 
 /* appearance - JavaScript server error */
-.banner-server-error {
+#banner-server-error {
     margin-top: 10px;
 }
 

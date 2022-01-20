@@ -41,20 +41,24 @@ class Command(management.BaseCommand):
 
     def handle(self, *args, **options):
         if not options.get('slug') or not options.get('mount_point'):
-            self.stderr.write(self.style.ERROR('Incorrect number of arguments'))
+            self.stderr.write(
+                msg=self.style.ERROR('Incorrect number of arguments')
+            )
             exit(1)
 
         foreground = not options['background']
 
         if foreground:
             self.stdout.write(
-                'Mounting index in the foreground. No further '
+                msg='Mounting index in the foreground. No further '
                 'output will be generated.'
             )
 
         level = getattr(logging, options['log_level'], None)
         if not level:
-            self.stderr.write(self.style.ERROR('Unknown log level {}'.format(level)))
+            self.stderr.write(
+                msg=self.style.ERROR('Unknown log level {}'.format(level))
+            )
             exit(1)
 
         logging.basicConfig(level=level)

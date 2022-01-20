@@ -8,6 +8,9 @@ from mayan.apps.acls.permissions import (
 )
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import MissingItem
+from mayan.apps.common.menus import (
+    menu_list_facet, menu_object, menu_secondary, menu_setup
+)
 from mayan.apps.common.signals import (
     signal_post_initial_setup, signal_post_upgrade
 )
@@ -19,10 +22,8 @@ from mayan.apps.documents.menus import menu_documents
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.logging.classes import ErrorLog
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.views.html_widgets import TwoStateWidget
-from mayan.apps.common.menus import (
-    menu_list_facet, menu_object, menu_secondary, menu_setup
-)
 
 from .classes import DocumentCreateWizardStep, SourceBackend
 from .events import event_source_edited
@@ -67,6 +68,11 @@ class SourcesApp(MayanAppConfig):
         Source = self.get_model(model_name='Source')
 
         SourceBackend.load_modules()
+
+        DynamicSerializerField.add_serializer(
+            klass=Source,
+            serializer_class='mayan.apps.sources.serializers.SourceSerializer'
+        )
 
         error_log = ErrorLog(app_config=self)
         error_log.register_model(model=Source)

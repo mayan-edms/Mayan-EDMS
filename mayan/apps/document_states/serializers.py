@@ -2,10 +2,13 @@ import json
 
 from django.utils.translation import ugettext_lazy as _
 
+from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 
 from mayan.apps.documents.models import DocumentType
 from mayan.apps.documents.permissions import permission_document_type_edit
+from mayan.apps.events.classes import EventType
+from mayan.apps.events.serializers import EventTypeSerializer
 from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import (
     FilteredPrimaryKeyRelatedField, MultiKwargHyperlinkedIdentityField
@@ -14,8 +17,23 @@ from mayan.apps.user_management.serializers import UserSerializer
 
 from .models import (
     Workflow, WorkflowInstance, WorkflowInstanceLogEntry, WorkflowState,
-    WorkflowStateAction, WorkflowTransition, WorkflowTransitionField
+    WorkflowStateAction, WorkflowTransition, WorkflowTransitionField,
+    WorkflowTransitionTriggerEvent
 )
+from .permissions import permission_workflow_tools
+
+
+class WorkflowInstanceLaunchSerializer(serializers.Serializer):
+    workflow_template_id = FilteredPrimaryKeyRelatedField(
+        help_text=_(
+            'Primary key of the workflow template to launch.'
+        ), source_permission=permission_workflow_tools
+    )
+
+    def get_workflow_template_id_queryset(self):
+        return self.context['document_type'].workflows.exclude(
+            id__in=self.context['document'].workflows.values('id')
+        )
 
 
 class WorkflowTemplateSerializer(serializers.HyperlinkedModelSerializer):
@@ -109,6 +127,9 @@ class WorkflowTemplateStateSerializer(serializers.HyperlinkedModelSerializer):
         ),
         view_name='rest_api:workflow-template-state-detail'
     )
+    workflow_template_id = serializers.IntegerField(
+        read_only=True, source='workflow_id'
+    )
     workflow_template_url = serializers.HyperlinkedIdentityField(
         lookup_field='workflow_id', lookup_url_kwarg='workflow_template_id',
         view_name='rest_api:workflow-template-detail'
@@ -117,10 +138,12 @@ class WorkflowTemplateStateSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         fields = (
             'actions_url', 'completion', 'id', 'initial', 'label', 'url',
-            'workflow_template_url'
+            'workflow_template_id', 'workflow_template_url'
         )
         model = WorkflowState
-        read_only_fields = ('id', 'url', 'workflow_template_url')
+        read_only_fields = (
+            'id', 'url', 'workflow_template_id', 'workflow_template_url'
+        )
 
 
 class WorkflowTemplateStateActionSerializer(serializers.HyperlinkedModelSerializer):
@@ -141,6 +164,9 @@ class WorkflowTemplateStateActionSerializer(serializers.HyperlinkedModelSerializ
         ),
         view_name='rest_api:workflow-template-state-action-detail'
     )
+    workflow_template_state_id = serializers.IntegerField(
+        read_only=True, source='state_id'
+    )
     workflow_template_state_url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
@@ -158,10 +184,14 @@ class WorkflowTemplateStateActionSerializer(serializers.HyperlinkedModelSerializ
     class Meta:
         fields = (
             'action_path', 'action_data', 'condition', 'enabled', 'id',
-            'label', 'url', 'when', 'workflow_template_state_url'
+            'label', 'url', 'when', 'workflow_template_state_id',
+            'workflow_template_state_url'
         )
         model = WorkflowStateAction
-        read_only_fields = ('id', 'url', 'workflow_template_state_url')
+        read_only_fields = (
+            'id', 'url', 'workflow_template_state_id',
+            'workflow_template_state_url'
+        )
 
 
 class WorkflowTransitionFieldSerializer(
@@ -193,6 +223,9 @@ class WorkflowTransitionFieldSerializer(
         ),
         view_name='rest_api:workflow-template-detail'
     )
+    workflow_transition_id = serializers.IntegerField(
+        read_only=True, source='transition_id'
+    )
     workflow_transition_url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
@@ -211,11 +244,12 @@ class WorkflowTransitionFieldSerializer(
         fields = (
             'field_type', 'name', 'help_text', 'id', 'label', 'required',
             'url', 'widget', 'widget_kwargs', 'workflow_template_url',
-            'workflow_transition_url'
+            'workflow_transition_id', 'workflow_transition_url'
         )
         model = WorkflowTransitionField
         read_only_fields = (
-            'id', 'url', 'workflow_template_url', 'workflow_transition_url'
+            'id', 'url', 'workflow_template_url', 'workflow_transition_id',
+            'workflow_transition_url'
         )
 
 
@@ -237,18 +271,24 @@ class WorkflowTemplateTransitionSerializer(
         ), source_queryset_method='get_workflow_template_state_queryset',
         write_only=True
     )
+    trigger_list_url = serializers.SerializerMethodField()
     url = serializers.SerializerMethodField()
+    workflow_template_id = serializers.IntegerField(
+        read_only=True, source='workflow_id'
+    )
     workflow_template_url = serializers.SerializerMethodField()
 
     class Meta:
         fields = (
             'condition', 'destination_state', 'destination_state_id',
             'field_list_url', 'id', 'label', 'origin_state',
-            'origin_state_id', 'url', 'workflow_template_url'
+            'origin_state_id', 'trigger_list_url', 'url',
+            'workflow_template_id', 'workflow_template_url'
         )
         model = WorkflowTransition
         read_only_fields = (
-            'field_list_url', 'id', 'url', 'workflow_template_url'
+            'field_list_url', 'id', 'trigger_list_url', 'url',
+            'workflow_template_id', 'workflow_template_url'
         )
 
     def create(self, validated_data):
@@ -266,6 +306,15 @@ class WorkflowTemplateTransitionSerializer(
     def get_field_list_url(self, instance):
         return reverse(
             viewname='rest_api:workflow-template-transition-field-list',
+            kwargs={
+                'workflow_template_id': instance.workflow_id,
+                'workflow_template_transition_id': instance.pk,
+            }, request=self.context['request'], format=self.context['format']
+        )
+
+    def get_trigger_list_url(self, instance):
+        return reverse(
+            viewname='rest_api:workflow-template-transition-trigger-list',
             kwargs={
                 'workflow_template_id': instance.workflow_id,
                 'workflow_template_transition_id': instance.pk,
@@ -301,6 +350,107 @@ class WorkflowTemplateTransitionSerializer(
         return super().update(
             instance=instance, validated_data=validated_data
         )
+
+
+class WorkflowTemplateTransitionTriggerSerializer(
+    serializers.HyperlinkedModelSerializer
+):
+    event_type = EventTypeSerializer(read_only=True)
+    event_type_id = serializers.CharField(
+        label=_('Event Type ID'), source='event_type.event_type.id',
+        write_only=True
+    )
+    url = MultiKwargHyperlinkedIdentityField(
+        view_kwargs=(
+            {
+                'lookup_field': 'transition.workflow_id',
+                'lookup_url_kwarg': 'workflow_template_id',
+            },
+            {
+                'lookup_field': 'transition_id',
+                'lookup_url_kwarg': 'workflow_template_transition_id',
+            },
+            {
+                'lookup_field': 'pk',
+                'lookup_url_kwarg': 'workflow_template_transition_trigger_id',
+            }
+        ),
+        view_name='rest_api:workflow-template-transition-trigger-detail'
+    )
+    workflow_template_url = MultiKwargHyperlinkedIdentityField(
+        view_kwargs=(
+            {
+                'lookup_field': 'transition__workflow_id',
+                'lookup_url_kwarg': 'workflow_template_id',
+            },
+        ),
+        view_name='rest_api:workflow-template-detail'
+    )
+    workflow_transition_id = serializers.IntegerField(
+        read_only=True, source='transition_id'
+    )
+    workflow_transition_url = MultiKwargHyperlinkedIdentityField(
+        view_kwargs=(
+            {
+                'lookup_field': 'transition.workflow_id',
+                'lookup_url_kwarg': 'workflow_template_id',
+            },
+            {
+                'lookup_field': 'transition_id',
+                'lookup_url_kwarg': 'workflow_template_transition_id',
+            },
+        ),
+        view_name='rest_api:workflow-template-transition-detail'
+    )
+
+    class Meta:
+        fields = (
+            'event_type', 'event_type_id', 'id', 'url', 'workflow_template_url',
+            'workflow_transition_id', 'workflow_transition_url'
+        )
+        model = WorkflowTransitionTriggerEvent
+        read_only_fields = (
+            'id', 'url', 'workflow_template_url', 'workflow_transition_id',
+            'workflow_transition_url'
+        )
+
+    def create(self, validated_data):
+        # Unroll nested source "event_type.event_type.id".
+        event_type = validated_data.pop('event_type', None)
+        event_type = event_type.get('event_type', {})
+        event_type_id = event_type.get('id')
+
+        if event_type_id:
+            validated_data['event_type'] = EventType.get(
+                id=event_type_id
+            ).get_stored_event_type()
+
+        return super().create(validated_data=validated_data)
+
+    def update(self, instance, validated_data):
+        # Unroll nested source "event_type.event_type.id".
+        event_type = validated_data.pop('event_type', None)
+        event_type = event_type.get('event_type', {})
+        event_type_id = event_type.get('id')
+
+        if event_type_id:
+            validated_data['event_type'] = EventType.get(
+                id=event_type_id
+            ).get_stored_event_type()
+
+        return super().update(
+            instance=instance, validated_data=validated_data
+        )
+
+    def validate_event_type_id(self, data):
+        try:
+            EventType.get(id=data)
+        except KeyError:
+            raise ValidationError(
+                _('Unknown or invalid event type ID `%s`') % data
+            )
+        else:
+            return data
 
 
 class WorkflowInstanceLogEntrySerializer(serializers.ModelSerializer):

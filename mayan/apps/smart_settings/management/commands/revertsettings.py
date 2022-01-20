@@ -17,7 +17,7 @@ class Command(management.BaseCommand):
         except IOError as exception:
             if exception.errno == errno.ENOENT:
                 self.stdout.write(
-                    self.style.NOTICE(
+                    msg=self.style.NOTICE(
                         'There is no last valid version to restore.'
                     )
                 )

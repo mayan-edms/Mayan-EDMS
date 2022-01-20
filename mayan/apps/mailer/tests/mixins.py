@@ -1,5 +1,7 @@
 import json
 
+from django.db.models import Q
+
 from ..models import UserMailer
 
 from .literals import (
@@ -17,7 +19,7 @@ class DocumentMailerViewTestMixin:
                 'email': getattr(
                     self, 'test_email_address', TEST_EMAIL_ADDRESS
                 ),
-                'user_mailer': self.test_user_mailer.pk
+                'user_mailer': self._test_user_mailer.pk
             },
         )
 
@@ -29,7 +31,7 @@ class DocumentMailerViewTestMixin:
                 'email': getattr(
                     self, 'test_email_address', TEST_EMAIL_ADDRESS
                 ),
-                'user_mailer': self.test_user_mailer.pk
+                'user_mailer': self._test_user_mailer.pk
             },
         )
 
@@ -43,7 +45,7 @@ class DocumentFileMailerViewTestMixin:
                 'email': getattr(
                     self, 'test_email_address', TEST_EMAIL_ADDRESS
                 ),
-                'user_mailer': self.test_user_mailer.pk
+                'user_mailer': self._test_user_mailer.pk
             }
         )
 
@@ -55,7 +57,7 @@ class DocumentFileMailerViewTestMixin:
                 'email': getattr(
                     self, 'test_email_address', TEST_EMAIL_ADDRESS
                 ),
-                'user_mailer': self.test_user_mailer.pk
+                'user_mailer': self._test_user_mailer.pk
             }
         )
 
@@ -67,7 +69,7 @@ class DocumentFileMailerViewTestMixin:
                 'email': getattr(
                     self, 'test_email_address', TEST_EMAIL_ADDRESS
                 ),
-                'user_mailer': self.test_user_mailer.pk
+                'user_mailer': self._test_user_mailer.pk
             }
         )
 
@@ -79,7 +81,7 @@ class DocumentFileMailerViewTestMixin:
                 'email': getattr(
                     self, 'test_email_address', TEST_EMAIL_ADDRESS
                 ),
-                'user_mailer': self.test_user_mailer.pk
+                'user_mailer': self._test_user_mailer.pk
             }
         )
 
@@ -93,7 +95,7 @@ class DocumentVersionMailerViewTestMixin:
                 'email': getattr(
                     self, 'test_email_address', TEST_EMAIL_ADDRESS
                 ),
-                'user_mailer': self.test_user_mailer.pk
+                'user_mailer': self._test_user_mailer.pk
             },
         )
 
@@ -105,7 +107,7 @@ class DocumentVersionMailerViewTestMixin:
                 'email': getattr(
                     self, 'test_email_address', TEST_EMAIL_ADDRESS
                 ),
-                'user_mailer': self.test_user_mailer.pk
+                'user_mailer': self._test_user_mailer.pk
             },
         )
 
@@ -118,7 +120,7 @@ class DocumentVersionMailerViewTestMixin:
                 'email': getattr(
                     self, 'test_email_address', TEST_EMAIL_ADDRESS
                 ),
-                'user_mailer': self.test_user_mailer.pk
+                'user_mailer': self._test_user_mailer.pk
             }
         )
 
@@ -131,14 +133,14 @@ class DocumentVersionMailerViewTestMixin:
                 'email': getattr(
                     self, 'test_email_address', TEST_EMAIL_ADDRESS
                 ),
-                'user_mailer': self.test_user_mailer.pk
+                'user_mailer': self._test_user_mailer.pk
             }
         )
 
 
 class MailerTestMixin:
     def _create_test_user_mailer(self):
-        self.test_user_mailer = UserMailer.objects.create(
+        self._test_user_mailer = UserMailer.objects.create(
             default=True,
             enabled=True,
             label=TEST_USER_MAILER_LABEL,
@@ -153,7 +155,9 @@ class MailerTestMixin:
 
 class MailerViewTestMixin:
     def _request_test_user_mailer_create_view(self):
-        return self.post(
+        pk_list = list(UserMailer.objects.values('pk'))
+
+        response = self.post(
             viewname='mailer:user_mailer_create', kwargs={
                 'class_path': TEST_USER_MAILER_BACKEND_PATH
             }, data={
@@ -163,10 +167,28 @@ class MailerViewTestMixin:
             }
         )
 
+        try:
+            self._test_user_mailer = UserMailer.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except UserMailer.DoesNotExist:
+            self._test_user_mailer = None
+
+        return response
+
     def _request_test_user_mailer_delete_view(self):
         return self.post(
             viewname='mailer:user_mailer_delete', kwargs={
-                'mailer_id': self.test_user_mailer.pk
+                'mailer_id': self._test_user_mailer.pk
+            }
+        )
+
+    def _request_test_user_mailer_edit_view(self):
+        return self.post(
+            viewname='mailer:user_mailer_edit', kwargs={
+                'mailer_id': self._test_user_mailer.pk
+            }, data={
+                'label': '{}_edited'.format(TEST_USER_MAILER_LABEL)
             }
         )
 
@@ -178,14 +200,14 @@ class MailerViewTestMixin:
     def _request_test_user_mailer_log_entry_view(self):
         return self.get(
             viewname='mailer:user_mailer_log', kwargs={
-                'mailer_id': self.test_user_mailer.pk
+                'mailer_id': self._test_user_mailer.pk
             }
         )
 
     def _request_test_user_mailer_test_view(self):
         return self.post(
             viewname='mailer:user_mailer_test', kwargs={
-                'mailer_id': self.test_user_mailer.pk
+                'mailer_id': self._test_user_mailer.pk
             }, data={
                 'email': getattr(
                     self, 'test_email_address', TEST_EMAIL_ADDRESS

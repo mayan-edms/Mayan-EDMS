@@ -38,13 +38,15 @@ class FilteredRelatedFieldMixin:
                 self.field_name
             )
             try:
-                queryset = getattr(self.parent, method_name)()
+                method = getattr(self.parent, method_name)
             except AttributeError:
                 raise ImproperlyConfigured(
                     'Need to provide a source_model, a '
                     'source_queryset, a source_queryset_method, or '
                     'a method named "%s".' % method_name
                 )
+            else:
+                queryset = method()
 
         assert 'request' in self.context, (
             "`%s` requires the request in the serializer"

@@ -2,6 +2,10 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
+
+from .events import event_user_edited
 from .managers import UserOptionsManager
 
 
@@ -29,3 +33,13 @@ class UserOptions(models.Model):
     def natural_key(self):
         return self.user.natural_key()
     natural_key.dependencies = [settings.AUTH_USER_MODEL]
+
+    @method_event(
+        event_manager_class=EventManagerSave,
+        edited={
+            'event': event_user_edited,
+            'target': 'user'
+        }
+    )
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)

@@ -171,15 +171,23 @@ class PartialNavigation {
                 ' \
                     <div class="row">\
                         <div class="col-xs-12">\
-                            <div class="banner-server-error">\
+                            <div id="banner-server-error">\
                                 <div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i> Server error, status code: ' + jqXHR.status + '</div> \
-                                    <pre class="pre-server-error"><code>' +  errorMessage +'</code> \
+                                    <pre id="django-server-error"><code>' +  errorMessage +'</code> \
                                     </pre> \
                                 </div>\
                             </div>\
                     </div>\
                 '
             );
+
+            // Call Django's debug view initial JavaScript.
+            if (jqXHR.status === 500) {
+                  hideAll(document.querySelectorAll('table.vars'));
+                  hideAll(document.querySelectorAll('ol.pre-context'));
+                  hideAll(document.querySelectorAll('ol.post-context'));
+                  hideAll(document.querySelectorAll('div.pastebin'));
+            }
         } else {
             if (jqXHR.status == 0) {
                 $('#modal-server-error .modal-body').html($('#template-error').html());

@@ -21,14 +21,14 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
     def test_method_get_absolute_url(self):
         self._create_test_user_mailer()
 
-        self.assertTrue(self.test_user_mailer.get_absolute_url())
+        self.assertTrue(self._test_user_mailer.get_absolute_url())
 
     def test_send_simple(self):
         self._create_test_user_mailer()
 
         self._clear_events()
 
-        self.test_user_mailer.send(to=TEST_EMAIL_ADDRESS)
+        self._test_user_mailer.send(to=TEST_EMAIL_ADDRESS)
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -38,8 +38,8 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self.test_user_mailer)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
     def test_send_simple_with_html(self):
@@ -47,7 +47,7 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
 
         self._clear_events()
 
-        self.test_user_mailer.send(
+        self._test_user_mailer.send(
             to=TEST_EMAIL_ADDRESS, body=TEST_EMAIL_BODY_HTML
         )
 
@@ -62,8 +62,8 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self.test_user_mailer)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
     def test_send_multiple_recipients_comma(self):
@@ -71,7 +71,7 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
 
         self._clear_events()
 
-        self.test_user_mailer.send(to=TEST_RECIPIENTS_MULTIPLE_COMMA)
+        self._test_user_mailer.send(to=TEST_RECIPIENTS_MULTIPLE_COMMA)
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -83,8 +83,8 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self.test_user_mailer)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
     def test_send_multiple_recipients_semicolon(self):
@@ -92,7 +92,7 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
 
         self._clear_events()
 
-        self.test_user_mailer.send(to=TEST_RECIPIENTS_MULTIPLE_SEMICOLON)
+        self._test_user_mailer.send(to=TEST_RECIPIENTS_MULTIPLE_SEMICOLON)
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -104,8 +104,8 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self.test_user_mailer)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
     def test_send_multiple_recipient_mixed(self):
@@ -113,7 +113,7 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
 
         self._clear_events()
 
-        self.test_user_mailer.send(to=TEST_RECIPIENTS_MULTIPLE_MIXED)
+        self._test_user_mailer.send(to=TEST_RECIPIENTS_MULTIPLE_MIXED)
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -125,8 +125,8 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self.test_user_mailer)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
     def test_send_to_cc(self):
@@ -134,7 +134,7 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
 
         self._clear_events()
 
-        self.test_user_mailer.send(
+        self._test_user_mailer.send(
             cc=TEST_EMAIL_ADDRESS, to=TEST_EMAIL_ADDRESS
         )
 
@@ -147,8 +147,8 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self.test_user_mailer)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
     def test_send_to_bcc(self):
@@ -156,7 +156,7 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
 
         self._clear_events()
 
-        self.test_user_mailer.send(
+        self._test_user_mailer.send(
             bcc=TEST_EMAIL_ADDRESS, to=TEST_EMAIL_ADDRESS
         )
 
@@ -169,8 +169,8 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self.test_user_mailer)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
     def test_send_with_reply_to(self):
@@ -178,7 +178,7 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
 
         self._clear_events()
 
-        self.test_user_mailer.send(
+        self._test_user_mailer.send(
             reply_to=TEST_EMAIL_ADDRESS, to=TEST_EMAIL_ADDRESS
         )
 
@@ -191,8 +191,8 @@ class MailingModelTestCase(MailerTestMixin, BaseTestCase):
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self.test_user_mailer)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
 
@@ -202,7 +202,7 @@ class DocumentMailingTestCase(MailerTestMixin, GenericDocumentTestCase):
 
         self._clear_events()
 
-        self.test_user_mailer.send_object(
+        self._test_user_mailer.send_object(
             obj=self.test_document, to=TEST_EMAIL_ADDRESS
         )
 
@@ -214,8 +214,8 @@ class DocumentMailingTestCase(MailerTestMixin, GenericDocumentTestCase):
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, self.test_document)
-        self.assertEqual(events[0].actor, self.test_user_mailer)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
 
@@ -235,7 +235,7 @@ class DocumentFileMailingTestCase(MailerTestMixin, GenericDocumentTestCase):
             )
         )
 
-        self.test_user_mailer.send_object(**kwargs)
+        self._test_user_mailer.send_object(**kwargs)
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -253,8 +253,8 @@ class DocumentFileMailingTestCase(MailerTestMixin, GenericDocumentTestCase):
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, self.test_document_file)
-        self.assertEqual(events[0].actor, self.test_user_mailer)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
     def test_send_document_file_link(self):
@@ -262,7 +262,7 @@ class DocumentFileMailingTestCase(MailerTestMixin, GenericDocumentTestCase):
 
         self._clear_events()
 
-        self.test_user_mailer.send_object(
+        self._test_user_mailer.send_object(
             obj=self.test_document_file, to=TEST_EMAIL_ADDRESS
         )
 
@@ -275,8 +275,8 @@ class DocumentFileMailingTestCase(MailerTestMixin, GenericDocumentTestCase):
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, self.test_document_file)
-        self.assertEqual(events[0].actor, self.test_user_mailer)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
 
@@ -298,7 +298,7 @@ class DocumentVersionMailingTestCase(
             )
         )
 
-        self.test_user_mailer.send_object(**kwargs)
+        self._test_user_mailer.send_object(**kwargs)
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -316,8 +316,8 @@ class DocumentVersionMailingTestCase(
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, self.test_document_version)
-        self.assertEqual(events[0].actor, self.test_user_mailer)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
     def test_send_document_version_link(self):
@@ -325,7 +325,7 @@ class DocumentVersionMailingTestCase(
 
         self._clear_events()
 
-        self.test_user_mailer.send_object(
+        self._test_user_mailer.send_object(
             obj=self.test_document_version,
             to=TEST_EMAIL_ADDRESS
         )
@@ -339,6 +339,6 @@ class DocumentVersionMailingTestCase(
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, self.test_document_version)
-        self.assertEqual(events[0].actor, self.test_user_mailer)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_user_mailer)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)

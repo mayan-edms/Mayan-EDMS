@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
@@ -9,15 +10,16 @@ from mayan.apps.acls.permissions import (
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_object, menu_secondary, menu_setup, menu_user
+    menu_list_facet, menu_object, menu_secondary, menu_setup
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
-from .events import event_theme_edited
+from .events import event_theme_edited, event_user_theme_settings_edited
 from .links import (
-    link_current_user_theme_settings_edit, link_theme_create,
-    link_theme_delete, link_theme_edit, link_theme_list, link_theme_setup
+    link_theme_create, link_theme_delete, link_theme_edit, link_theme_list,
+    link_theme_setup, link_user_theme_settings_detail,
+    link_user_theme_settings_edit
 )
 from .handlers import handler_user_theme_setting_create
 from .permissions import (
@@ -59,6 +61,8 @@ class AppearanceApp(MayanAppConfig):
 
         Theme = self.get_model(model_name='Theme')
 
+        User = get_user_model()
+
         ModelCopy(
             model=Theme, bind_link=True, register_permission=True
         ).add_fields(
@@ -71,6 +75,11 @@ class AppearanceApp(MayanAppConfig):
             event_types=(
                 event_theme_edited,
             ), model=Theme
+        )
+        ModelEventType.register(
+            event_types=(
+                event_user_theme_settings_edited,
+            ), model=User
         )
 
         ModelPermission.register(
@@ -106,8 +115,14 @@ class AppearanceApp(MayanAppConfig):
         )
         menu_setup.bind_links(links=(link_theme_setup,))
 
-        menu_user.bind_links(
+        menu_list_facet.bind_links(
             links=(
-                link_current_user_theme_settings_edit,
-            ), position=60
+                link_user_theme_settings_detail,
+            ), sources=(User,)
+        )
+
+        menu_object.bind_links(
+            links=(
+                link_user_theme_settings_edit,
+            ), sources=(User,)
         )

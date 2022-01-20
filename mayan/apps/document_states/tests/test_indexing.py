@@ -26,27 +26,27 @@ class DocumentStateIndexingTestCase(
         self.assertEqual(
             list(
                 IndexInstanceNode.objects.values_list('value', flat=True)
-            ), ['', str(self.test_workflow_template_states[0])]
+            ), ['', str(self._test_workflow_template_states[0])]
         )
 
     def test_workflow_indexing_transition(self):
         self._create_test_document_stub()
 
         self.test_document.workflows.first().do_transition(
-            transition=self.test_workflow_template_transition
+            transition=self._test_workflow_template_transition
         )
 
         self.assertEqual(
             list(
                 IndexInstanceNode.objects.values_list('value', flat=True)
-            ), ['', str(self.test_workflow_template_states[1])]
+            ), ['', str(self._test_workflow_template_states[1])]
         )
 
     def test_workflow_indexing_document_delete(self):
         self._create_test_document_stub()
 
         self.test_document.workflows.first().do_transition(
-            transition=self.test_workflow_template_transition
+            transition=self._test_workflow_template_transition
         )
 
         self.test_document.delete(to_trash=False)

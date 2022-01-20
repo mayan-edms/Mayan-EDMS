@@ -1,5 +1,22 @@
-from mayan.apps.dependencies.classes import PythonDependency
+from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.dependencies.classes import BinaryDependency, PythonDependency
+
+from .backends.literals import DEFAULT_FILE_PATH, DEFAULT_MIMETYPE_PATH
+
+
+BinaryDependency(
+    label='File::MimeInfo', help_text=_(
+        'This module can be used to determine the mime type of a file. '
+        'It tries to implement the freedesktop specification for a shared '
+        'MIME database.'
+    ), module=__name__, name='libfile-mimeinfo-perl',
+    path=DEFAULT_MIMETYPE_PATH
+)
+BinaryDependency(
+    label='file', help_text=_('determine file type using content tests'),
+    module=__name__, name='file', path=DEFAULT_FILE_PATH
+)
 PythonDependency(
     copyright_text='''
         The MIT License (MIT)

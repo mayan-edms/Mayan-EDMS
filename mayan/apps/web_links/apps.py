@@ -15,6 +15,7 @@ from mayan.apps.documents.links.document_type_links import (
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .events import event_web_link_edited, event_web_link_navigated
@@ -50,6 +51,11 @@ class WebLinksApp(MayanAppConfig):
 
         ResolvedWebLink = self.get_model(model_name='ResolvedWebLink')
         WebLink = self.get_model(model_name='WebLink')
+
+        DynamicSerializerField.add_serializer(
+            klass=WebLink,
+            serializer_class='mayan.apps.web_links.serializers.WebLinkSerializer'
+        )
 
         EventModelRegistry.register(
             model=ResolvedWebLink, acl_bind_link=False

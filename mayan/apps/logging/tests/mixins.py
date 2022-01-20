@@ -20,7 +20,7 @@ class ErrorLoggingTextMixin:
         self.test_object = self.test_user
 
     def _create_error_log_entry(self):
-        self.error_log_entry = self.test_object.error_log.create(
+        self._test_error_log_entry = self.test_object.error_log.create(
             text=TEST_ERROR_LOG_ENTRY_RESULT
         )
 
@@ -50,4 +50,11 @@ class ErrorLoggingViewTestMixin:
                 'model_name': content_type.model,
                 'object_id': self.test_object.pk
             }
+        )
+
+
+class GlobalErrorLogViewTestMixin:
+    def _request_global_error_log_partition_entry_list_view(self):
+        return self.get(
+            viewname='logging:global_error_log_partition_entry_list'
         )

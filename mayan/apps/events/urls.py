@@ -6,16 +6,13 @@ from .api_views import (
     APINotificationListView, APIObjectEventListView
 )
 from .views.clear_views import (
-    EventListClearView, ObjectEventClearView, VerbEventClearView,
-    CurrentUserEventClearView,
+    EventListClearView, ObjectEventClearView, VerbEventClearView
 )
 from .views.event_views import (
-    CurrentUserEventListView, EventListView, ObjectEventListView,
-    VerbEventListView
+    EventListView, ObjectEventListView, VerbEventListView
 )
 from .views.export_views import (
-    CurrentUserEventExportView, EventListExportView, ObjectEventExportView,
-    VerbEventExportView
+    EventListExportView, ObjectEventExportView, VerbEventExportView
 )
 from .views.notification_views import (
     NotificationListView, NotificationMarkRead, NotificationMarkReadAll
@@ -30,10 +27,6 @@ urlpatterns_events = [
     url(
         regex=r'^object/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/events/$',
         name='events_for_object', view=ObjectEventListView.as_view()
-    ),
-    url(
-        regex=r'^user/events/$', name='current_user_events',
-        view=CurrentUserEventListView.as_view()
     ),
     url(
         regex=r'^verbs/(?P<verb>[\w\-\.]+)/$', name='events_by_verb',
@@ -53,10 +46,6 @@ urlpatterns_events_clear = [
     url(
         regex=r'^verbs/(?P<verb>[\w\-\.]+)/clear/$', name='events_by_verb_clear',
         view=VerbEventClearView.as_view(),
-    ),
-    url(
-        regex=r'^user/events/clear/$', name='current_user_events_clear',
-        view=CurrentUserEventClearView.as_view()
     )
 ]
 
@@ -72,10 +61,6 @@ urlpatterns_events_export = [
     url(
         regex=r'^verbs/(?P<verb>[\w\-\.]+)/export/$', name='events_by_verb_export',
         view=VerbEventExportView.as_view(),
-    ),
-    url(
-        regex=r'^user/events/export/$', name='current_user_events_export',
-        view=CurrentUserEventExportView.as_view()
     )
 ]
 

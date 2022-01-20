@@ -15,6 +15,7 @@ from mayan.apps.common.menus import (
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.rest_api.fields import DynamicSerializerField
 
 from .events import (
     event_tag_attached, event_tag_edited, event_tag_removed
@@ -66,6 +67,11 @@ class TagsApp(MayanAppConfig):
 
         DocumentTag = self.get_model(model_name='DocumentTag')
         Tag = self.get_model(model_name='Tag')
+
+        DynamicSerializerField.add_serializer(
+            klass=Tag,
+            serializer_class='mayan.apps.tags.serializers.TagSerializer'
+        )
 
         Document.add_to_class(name='get_tags', value=method_document_get_tags)
 

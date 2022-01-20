@@ -138,15 +138,15 @@ MIDDLEWARE = (
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'mayan.apps.locales.middleware.locales.UserLocaleProfileMiddleware',
     'mayan.apps.authentication.middleware.impersonate.ImpersonateMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
-    'mayan.apps.locales.middleware.timezone.TimezoneMiddleware',
     'stronghold.middleware.LoginRequiredMiddleware',
     'mayan.apps.common.middleware.ajax_redirect.AjaxRedirect'
 )

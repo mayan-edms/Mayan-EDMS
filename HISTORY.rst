@@ -1,6 +1,6 @@
-4.2 (2022-XX-XX)
+4.2 (2022-02-XX)
 ================
-- Update Django to version 3.2.8.
+- Update Django to version 3.2.11.
 - Update django-widget-tweaks from version 1.4.8 to 1.4.9.
 - File staging sources updates:
 
@@ -156,6 +156,69 @@
       database migration does not correctly initialize the OTP state data
       for existing users.
     - ``authentication_otp_status``: display the OTP status for a user
+
+- Add URL links to the document file and document version first pages
+  to the document serializer in the API.
+- Convert the download file deletion interval into a setting named
+  ``DOWNLOAD_FILE_EXPIRATION_INTERVAL`` which defaults to 2 days.
+- Convert the shared uploaded file deletion interval into a setting named
+  ``SHARED_UPLOADED_FILE_EXPIRATION_INTERVAL`` which defaults to 7 days.
+- Don't display API URL links to indexing instance and template parents that
+  are also root nodes as these are not accessible.
+- Register more models using ``DynamicSerializerField`` to display the
+  canonical serializer of the model when referenced by other objects.
+- For object that have children objects or that support nesting, the parent
+  object ID is now added to the serializer. The layout is
+  ``{parent object name}_id``. A few objects already provided the parent ID
+  but with a different schema. These objects also now have the parent ID
+  field with the new schema even if it displays a duplicate value. The old
+  ID field is now deprecated and will be removed in version 5.0.
+- Added a workflow state column displaying all created actions labels
+  separated by a comma.
+- Added the mailing profile created and edited events.
+- User menu and views updates:
+
+  - Reorganize all user links under a single "User details" link.
+  - Allow editing the locale profile of users.
+  - Allow editing the theme settings of users.
+  - Unify user data related views.
+  - Add "User theme edited" and "User locale profile edited" events.
+
+- Update the Django debug view CSS and layout to match Django's original
+  appearance.
+- Support Django debug JavaScript code.
+- Minor CSS optimization to the Django debug view.
+- Add Docker Compose password randomizer.
+- Include LDAP libraries and Python modules.
+- Events app updates:
+
+  - Use the correct attribute for fetching event types. Use ``id`` instead of
+    ``name``.
+  - Cache the event type instance in the StoredEvent model.
+  - An incorrect event type ID will now return a KeyError instead of masking
+    the exception and returning an error message. It is now up to the calling
+    code which action to take when the event type ID is not correct.
+  - The previous unknown event error message is now available as a literal
+    named ``literals.TEXT_UNKNOWN_EVENT_ID``.
+
+- Add workflow template transition trigger API. Closes GitLab
+  issue #1044. Thanks to Ludovic Anterieur (@lanterieur) for
+  the request and research.
+- Fine tune workflow template permissions to require the view permission
+  instead of the edit permission when applicable.
+- Error log updates:
+
+    - Added a global error log list to the tools menu.
+    - Error log partitions now link to their underline object via content type
+      too.
+    - Error log partitions are now retrieve or created on demand.
+    - Added cascade permission support to error log partitions and entries.
+
+- Update the ``ObjectActionAPIView`` view to allow passing extra context to
+  serializers.
+- Add support for launching workflows from the API.
+- Refactor language activation to work with Django 3.2.
+- Added the mailing profile created and edited events.
 
 4.1.4 (2021-12-01)
 ==================

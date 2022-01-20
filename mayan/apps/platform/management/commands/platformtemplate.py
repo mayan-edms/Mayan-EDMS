@@ -20,8 +20,8 @@ class Command(management.BaseCommand):
 
     def handle(self, *args, **options):
         if options.get('list'):
-            self.stdout.write('\nAvailable platform templates.')
-            self.stdout.write('----')
+            self.stdout.write(msg='\nAvailable platform templates.')
+            self.stdout.write(msg='----')
 
             maximum_name_length = max(
                 [
@@ -34,28 +34,28 @@ class Command(management.BaseCommand):
             for template_class in PlatformTemplate.all():
                 template = template_class()
                 self.stdout.write(
-                    '* {:<{}}{}'.format(
+                    msg='* {:<{}}{}'.format(
                         template.name, space_padding, template.get_label()
                     )
                 )
 
-            self.stdout.write('\n')
+            self.stdout.write(msg='\n')
         else:
             if not options['name']:
-                self.stderr.write('Missing template name.')
+                self.stderr.write(msg='Missing template name.')
                 exit(1)
 
             try:
                 template = PlatformTemplate.get(name=options['name'])
             except KeyError:
                 self.stderr.write(
-                    'Unknown template "{}".'.format(options['name'])
+                    msg='Unknown template "{}".'.format(options['name'])
                 )
                 exit(1)
             else:
                 # Python 2 & 3 way to convert from SafeString to unicode
                 self.stdout.write(
-                    '{}'.format(
+                    msg='{}'.format(
                         template().render(
                             context_string=options.get('context')
                         )

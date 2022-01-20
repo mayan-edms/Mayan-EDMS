@@ -66,7 +66,7 @@ class ListCreateAPIView(
     permission_classes = (MayanPermission,)
 
 
-class ObjectActionAPIView(GenericAPIView):
+class ObjectActionAPIView(SerializerExtraContextAPIViewMixin, GenericAPIView):
     action_response_status = None
     serializer_class = BlankSerializer
 

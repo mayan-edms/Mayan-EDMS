@@ -28,9 +28,9 @@ class WorkflowTemplateTransitionFieldModelTestCase(
         """
         self._transition_test_workflow_instance(
             extra_data={
-                self.test_workflow_template_transition_field.name: 'test'
+                self._test_workflow_template_transition_field.name: 'test'
             }
         )
         self.test_document.workflows.first().log_entries.first().get_extra_data()
-        self.test_workflow_template_transition_field.delete()
+        self._test_workflow_template_transition_field.delete()
         self.test_document.workflows.first().log_entries.first().get_extra_data()

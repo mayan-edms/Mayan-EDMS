@@ -104,13 +104,14 @@ class DocumentMetadataActionViewTestCase(
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type
         )
-        self.test_workflow_template.document_types.add(
+        self._test_workflow_template.document_types.add(
             self.test_document_type
         )
 
     def test_document_metadata_add_action_create_view(self):
         self.grant_access(
-            obj=self.test_workflow_template, permission=permission_workflow_template_edit
+            obj=self._test_workflow_template,
+            permission=permission_workflow_template_edit
         )
         self.grant_access(
             obj=self.test_metadata_type,
@@ -128,7 +129,8 @@ class DocumentMetadataActionViewTestCase(
         self._create_test_document_metadata()
 
         self.grant_access(
-            obj=self.test_workflow_template, permission=permission_workflow_template_edit
+            obj=self._test_workflow_template,
+            permission=permission_workflow_template_edit
         )
         self.grant_access(
             obj=self.test_metadata_type,
@@ -147,7 +149,8 @@ class DocumentMetadataActionViewTestCase(
         self._create_test_document_metadata()
 
         self.grant_access(
-            obj=self.test_workflow_template, permission=permission_workflow_template_edit
+            obj=self._test_workflow_template,
+            permission=permission_workflow_template_edit
         )
         self.grant_access(
             obj=self.test_metadata_type,

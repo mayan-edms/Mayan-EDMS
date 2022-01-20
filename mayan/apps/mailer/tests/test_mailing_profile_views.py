@@ -2,11 +2,14 @@ from django.core import mail
 
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
-from ..events import event_email_sent
+from ..events import (
+    event_email_sent, event_profile_created, event_profile_edited
+)
 from ..models import UserMailer
 from ..permissions import (
     permission_user_mailer_create, permission_user_mailer_delete,
-    permission_user_mailer_use, permission_user_mailer_view
+    permission_user_mailer_edit, permission_user_mailer_use,
+    permission_user_mailer_view
 )
 
 from .literals import (
@@ -50,7 +53,12 @@ class MailerViewsTestCase(
         self.assertEqual(UserMailer.objects.count(), 1)
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self._test_user_mailer)
+        self.assertEqual(events[0].verb, event_profile_created.id)
 
     def test_user_mailer_delete_view_no_permission(self):
         self._create_test_user_mailer()
@@ -61,7 +69,7 @@ class MailerViewsTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertQuerysetEqual(
-            UserMailer.objects.all(), (repr(self.test_user_mailer),)
+            UserMailer.objects.all(), (repr(self._test_user_mailer),)
         )
 
         events = self._get_test_events()
@@ -71,7 +79,7 @@ class MailerViewsTestCase(
         self._create_test_user_mailer()
 
         self.grant_access(
-            obj=self.test_user_mailer,
+            obj=self._test_user_mailer,
             permission=permission_user_mailer_delete
         )
 
@@ -85,6 +93,52 @@ class MailerViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
+    def test_user_mailer_edit_view_no_permission(self):
+        self._create_test_user_mailer()
+
+        test_profile_label = self._test_user_mailer.label
+
+        self._clear_events()
+
+        response = self._request_test_user_mailer_edit_view()
+        self.assertEqual(response.status_code, 404)
+
+        self._test_user_mailer.refresh_from_db()
+        self.assertEqual(
+            self._test_user_mailer.label, test_profile_label
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_user_mailer_edit_view_with_access(self):
+        self._create_test_user_mailer()
+
+        self.grant_access(
+            obj=self._test_user_mailer,
+            permission=permission_user_mailer_edit
+        )
+
+        test_profile_label = self._test_user_mailer.label
+
+        self._clear_events()
+
+        response = self._request_test_user_mailer_edit_view()
+        self.assertEqual(response.status_code, 302)
+
+        self._test_user_mailer.refresh_from_db()
+        self.assertNotEqual(
+            self._test_user_mailer.label, test_profile_label
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self._test_user_mailer)
+        self.assertEqual(events[0].verb, event_profile_edited.id)
+
     def test_user_mailer_list_view_no_permission(self):
         self._create_test_user_mailer()
 
@@ -93,7 +147,7 @@ class MailerViewsTestCase(
         response = self._request_test_user_mailer_list_view()
         self.assertNotContains(
             response=response, status_code=200,
-            text=self.test_user_mailer.label
+            text=self._test_user_mailer.label
         )
 
         events = self._get_test_events()
@@ -103,7 +157,7 @@ class MailerViewsTestCase(
         self._create_test_user_mailer()
 
         self.grant_access(
-            obj=self.test_user_mailer,
+            obj=self._test_user_mailer,
             permission=permission_user_mailer_view
         )
 
@@ -112,7 +166,7 @@ class MailerViewsTestCase(
         response = self._request_test_user_mailer_list_view()
         self.assertContains(
             response=response, status_code=200,
-            text=self.test_user_mailer.label
+            text=self._test_user_mailer.label
         )
 
         events = self._get_test_events()
@@ -122,12 +176,12 @@ class MailerViewsTestCase(
         self._silence_logger(name='mayan.apps.databases.model_mixins')
 
         self._create_test_user_mailer()
-        self.test_user_mailer.backend_path = 'bad.backend.path'
-        self.test_user_mailer.backend_data = '{"bad_field": "bad_data"}'
-        self.test_user_mailer.save()
+        self._test_user_mailer.backend_path = 'bad.backend.path'
+        self._test_user_mailer.backend_data = '{"bad_field": "bad_data"}'
+        self._test_user_mailer.save()
 
         self.grant_access(
-            obj=self.test_user_mailer,
+            obj=self._test_user_mailer,
             permission=permission_user_mailer_view
         )
 
@@ -136,7 +190,7 @@ class MailerViewsTestCase(
         response = self._request_test_user_mailer_list_view()
         self.assertContains(
             response=response, status_code=200,
-            text=self.test_user_mailer.label
+            text=self._test_user_mailer.label
         )
 
         events = self._get_test_events()
@@ -159,7 +213,7 @@ class MailerViewsTestCase(
         self._create_test_user_mailer()
 
         self.grant_access(
-            obj=self.test_user_mailer, permission=permission_user_mailer_use
+            obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
 
         self._clear_events()
@@ -175,15 +229,15 @@ class MailerViewsTestCase(
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self.test_user_mailer)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
     def test_send_multiple_recipients_comma(self):
         self._create_test_user_mailer()
 
         self.grant_access(
-            obj=self.test_user_mailer, permission=permission_user_mailer_use
+            obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
 
         self.test_email_address = TEST_RECIPIENTS_MULTIPLE_COMMA
@@ -203,15 +257,15 @@ class MailerViewsTestCase(
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self.test_user_mailer)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
     def test_send_multiple_recipients_mixed(self):
         self._create_test_user_mailer()
 
         self.grant_access(
-            obj=self.test_user_mailer, permission=permission_user_mailer_use
+            obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
 
         self.test_email_address = TEST_RECIPIENTS_MULTIPLE_MIXED
@@ -231,15 +285,15 @@ class MailerViewsTestCase(
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self.test_user_mailer)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
     def test_send_multiple_recipients_semicolon(self):
         self._create_test_user_mailer()
 
         self.grant_access(
-            obj=self.test_user_mailer, permission=permission_user_mailer_use
+            obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
 
         self.test_email_address = TEST_RECIPIENTS_MULTIPLE_SEMICOLON
@@ -259,6 +313,6 @@ class MailerViewsTestCase(
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self.test_user_mailer)
-        self.assertEqual(events[0].target, self.test_user_mailer)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)

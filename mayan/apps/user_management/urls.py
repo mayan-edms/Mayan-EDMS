@@ -5,23 +5,14 @@ from .api_views import (
     APIGroupUserAddView, APIGroupUserListView, APIGroupUserRemoveView,
     APIUserDetailView, APIUserGroupListView, APIUserListView
 )
-from .views import (
-    CurrentUserDetailView, CurrentUserEditView, GroupCreateView,
-    GroupDeleteView, GroupDetailView, GroupEditView, GroupListView,
-    GroupUsersView, UserCreateView, UserDeleteView, UserDetailView,
+from .views.group_views import (
+    GroupCreateView, GroupDeleteView, GroupDetailView, GroupEditView,
+    GroupListView, GroupUsersView
+)
+from .views.user_views import (
+    UserCreateView, UserDeleteView, UserDetailView,
     UserEditView, UserGroupsView, UserListView, UserOptionsEditView
 )
-
-urlpatterns_current_user = [
-    url(
-        regex=r'^user/$', name='current_user_details',
-        view=CurrentUserDetailView.as_view()
-    ),
-    url(
-        regex=r'^user/edit/$', name='current_user_edit',
-        view=CurrentUserEditView.as_view()
-    )
-]
 
 urlpatterns_groups = [
     url(
@@ -87,7 +78,6 @@ urlpatterns_users = [
 
 urlpatterns = []
 urlpatterns.extend(urlpatterns_groups)
-urlpatterns.extend(urlpatterns_current_user)
 urlpatterns.extend(urlpatterns_users)
 
 api_urls = [

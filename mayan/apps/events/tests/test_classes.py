@@ -18,7 +18,7 @@ class EventManagerTestCase(EventTypeTestMixin, BaseTestCase):
         EventModelRegistry.register(model=self.TestModel)
 
         ModelEventType.register(
-            event_types=(self.test_event_type,), model=self.TestModel
+            event_types=(self._test_event_type,), model=self.TestModel
         )
 
         EventType.refresh()
@@ -30,7 +30,7 @@ class EventManagerTestCase(EventTypeTestMixin, BaseTestCase):
 
         @method_event(
             event_manager_class=EventManagerMethodAfter,
-            event=self.test_event_type,
+            event=self._test_event_type,
             target='self'
         )
         def method_2(self):

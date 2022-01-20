@@ -23,37 +23,37 @@ class WorkflowTemplateStateActionModelTestCase(
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_transition()
-        self.test_workflow_template.document_types.add(self.test_document_type)
+        self._test_workflow_template.document_types.add(self.test_document_type)
 
     def _get_test_workflow_state_action_execute_flag(self):
         return getattr(
-            self.test_workflow_instance,
+            self._test_workflow_instance,
             '_workflow_state_action_executed', False
         )
 
     def test_workflow_initial_state_action_no_condition(self):
         self._create_test_workflow_template_state_action()
-        self.test_workflow_instance = self.test_workflow_template.launch_for(
+        self._test_workflow_instance = self._test_workflow_template.launch_for(
             document=self.test_document
         )
         self.assertTrue(self._get_test_workflow_state_action_execute_flag())
 
     def test_workflow_initial_state_action_false_condition(self):
         self._create_test_workflow_template_state_action()
-        self.test_workflow_template_state_action.condition = '{{ invalid_variable }}'
-        self.test_workflow_template_state_action.save()
+        self._test_workflow_template_state_action.condition = '{{ invalid_variable }}'
+        self._test_workflow_template_state_action.save()
 
-        self.test_workflow_instance = self.test_workflow_template.launch_for(
+        self._test_workflow_instance = self._test_workflow_template.launch_for(
             document=self.test_document
         )
         self.assertFalse(self._get_test_workflow_state_action_execute_flag())
 
     def test_workflow_initial_state_action_true_condition(self):
         self._create_test_workflow_template_state_action()
-        self.test_workflow_template_state_action.condition = '{{ workflow_instance }}'
-        self.test_workflow_template_state_action.save()
+        self._test_workflow_template_state_action.condition = '{{ workflow_instance }}'
+        self._test_workflow_template_state_action.save()
 
-        self.test_workflow_instance = self.test_workflow_template.launch_for(
+        self._test_workflow_instance = self._test_workflow_template.launch_for(
             document=self.test_document
         )
         self.assertTrue(self._get_test_workflow_state_action_execute_flag())
@@ -62,11 +62,11 @@ class WorkflowTemplateStateActionModelTestCase(
         self._create_test_workflow_template_state_action(
             workflow_state_index=1
         )
-        self.test_workflow_instance = self.test_workflow_template.launch_for(
+        self._test_workflow_instance = self._test_workflow_template.launch_for(
             document=self.test_document
         )
-        self.test_workflow_instance.do_transition(
-            transition=self.test_workflow_template_transition
+        self._test_workflow_instance.do_transition(
+            transition=self._test_workflow_template_transition
         )
         self.assertTrue(self._get_test_workflow_state_action_execute_flag())
 
@@ -74,14 +74,14 @@ class WorkflowTemplateStateActionModelTestCase(
         self._create_test_workflow_template_state_action(
             workflow_state_index=1
         )
-        self.test_workflow_template_state_action.condition = '{{ invalid_variable }}'
-        self.test_workflow_template_state_action.save()
+        self._test_workflow_template_state_action.condition = '{{ invalid_variable }}'
+        self._test_workflow_template_state_action.save()
 
-        self.test_workflow_instance = self.test_workflow_template.launch_for(
+        self._test_workflow_instance = self._test_workflow_template.launch_for(
             document=self.test_document
         )
-        self.test_workflow_instance.do_transition(
-            transition=self.test_workflow_template_transition
+        self._test_workflow_instance.do_transition(
+            transition=self._test_workflow_template_transition
         )
         self.assertFalse(self._get_test_workflow_state_action_execute_flag())
 
@@ -89,14 +89,14 @@ class WorkflowTemplateStateActionModelTestCase(
         self._create_test_workflow_template_state_action(
             workflow_state_index=1
         )
-        self.test_workflow_template_state_action.condition = '{{ workflow_instance }}'
-        self.test_workflow_template_state_action.save()
+        self._test_workflow_template_state_action.condition = '{{ workflow_instance }}'
+        self._test_workflow_template_state_action.save()
 
-        self.test_workflow_instance = self.test_workflow_template.launch_for(
+        self._test_workflow_instance = self._test_workflow_template.launch_for(
             document=self.test_document
         )
-        self.test_workflow_instance.do_transition(
-            transition=self.test_workflow_template_transition
+        self._test_workflow_instance.do_transition(
+            transition=self._test_workflow_template_transition
         )
         self.assertTrue(self._get_test_workflow_state_action_execute_flag())
 
@@ -137,11 +137,11 @@ class WorkflowTemplateStateActionModelTestCase(
 
         EventType.refresh()
 
-        self.test_workflow_template_transition.trigger_events.create(
+        self._test_workflow_template_transition.trigger_events.create(
             event_type=event_document_edited.get_stored_event_type()
         )
 
-        self.test_workflow_template.launch_for(
+        self._test_workflow_template.launch_for(
             document=self.test_document
         )
 

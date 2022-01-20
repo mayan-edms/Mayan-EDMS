@@ -17,6 +17,7 @@ from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.logging.classes import ErrorLog
 from mayan.apps.logging.permissions import permission_error_log_view
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .classes import DocumentStateHelper, WorkflowAction
@@ -53,7 +54,7 @@ from .links import (
     link_workflow_template_transition_delete,
     link_workflow_template_transition_edit,
     link_workflow_template_transition_list,
-    link_workflow_template_transition_events,
+    link_workflow_template_transition_triggers,
     link_workflow_template_transition_field_create,
     link_workflow_template_transition_field_delete,
     link_workflow_template_transition_field_edit,
@@ -104,6 +105,11 @@ class DocumentStatesApp(MayanAppConfig):
             name='workflow', value=DocumentStateHelper.constructor
         )
 
+        DynamicSerializerField.add_serializer(
+            klass=Workflow,
+            serializer_class='mayan.apps.document_states.serializers.WorkflowTemplateSerializer'
+        )
+
         error_log = ErrorLog(app_config=self)
         error_log.register_model(model=WorkflowStateAction)
 
@@ -116,6 +122,7 @@ class DocumentStatesApp(MayanAppConfig):
         EventModelRegistry.register(model=WorkflowStateAction)
         EventModelRegistry.register(model=WorkflowTransition)
         EventModelRegistry.register(model=WorkflowTransitionField)
+        EventModelRegistry.register(model=WorkflowTransitionTriggerEvent)
 
         WorkflowAction.load_modules()
 
@@ -342,6 +349,10 @@ class DocumentStatesApp(MayanAppConfig):
             attribute='completion', include_label=True, is_sortable=True,
             source=WorkflowState
         )
+        SourceColumn(
+            attribute='get_actions_display', include_label=True,
+            source=WorkflowState
+        )
 
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
@@ -531,7 +542,7 @@ class DocumentStatesApp(MayanAppConfig):
         )
         menu_list_facet.bind_links(
             links=(
-                link_workflow_template_transition_events,
+                link_workflow_template_transition_triggers,
                 link_workflow_template_transition_field_list,
             ), sources=(WorkflowTransition,)
         )

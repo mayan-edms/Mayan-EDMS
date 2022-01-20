@@ -94,6 +94,14 @@ class WorkflowState(ExtraDataModelMixin, models.Model):
     def exit_actions(self):
         return self.actions.filter(when=WORKFLOW_ACTION_ON_EXIT)
 
+    def get_actions_display(self):
+        field_list = [str(field) for field in self.actions.all()]
+        field_list.sort()
+
+        return ', '.join(field_list)
+
+    get_actions_display.short_description = _('Actions')
+
     def get_documents(self):
         WorkflowInstanceLogEntry = apps.get_model(
             app_label='document_states',

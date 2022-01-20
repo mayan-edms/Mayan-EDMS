@@ -5,13 +5,14 @@ from mayan.apps.navigation.classes import Link, Separator, Text
 from mayan.apps.navigation.utils import factory_condition_queryset_access
 
 from .icons import (
-    icon_current_user_details, icon_current_user_edit, icon_group_create,
-    icon_group_delete_single, icon_group_delete_multiple, icon_group_edit,
-    icon_group_list, icon_group_setup, icon_group_user_list,
-    icon_user_create, icon_user_edit, icon_user_group_list, icon_user_list,
+    icon_current_user_details, icon_group_create, icon_group_delete_single,
+    icon_group_delete_multiple, icon_group_edit, icon_group_list,
+    icon_group_setup, icon_group_user_list, icon_user_create,
+    icon_user_edit, icon_user_group_list, icon_user_list,
     icon_user_delete_single, icon_user_delete_multiple,
     icon_user_set_options, icon_user_setup
 )
+from .link_conditions import condition_user_is_not_super_user
 from .permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
     permission_group_view, permission_user_create, permission_user_delete,
@@ -19,25 +20,13 @@ from .permissions import (
 )
 from .utils import get_user_label_text
 
-
-def condition_user_is_not_admin(context, resolved_object):
-    if hasattr(resolved_object, 'is_staff'):
-        user = resolved_object
-        return not user.is_superuser and not user.is_staff
-    return True
-
-
 # Current user
 
 link_current_user_details = Link(
+    args='request.user.id',
     condition=condition_user_is_authenticated,
     icon=icon_current_user_details, text=_('User details'),
-    view='user_management:current_user_details'
-)
-link_current_user_edit = Link(
-    condition=condition_user_is_authenticated,
-    icon=icon_current_user_edit, text=_('Edit user details'),
-    view='user_management:current_user_edit'
+    view='user_management:user_details'
 )
 
 # Group
@@ -75,7 +64,7 @@ link_group_user_list = Link(
 link_group_setup = Link(
     condition=factory_condition_queryset_access(
         app_label='auth', model_name='Group',
-        callback=condition_user_is_not_admin,
+        callback=condition_user_is_not_super_user,
         object_permission=permission_group_view,
         view_permission=permission_group_create
     ), icon=icon_group_setup, text=_('Groups'),
@@ -85,12 +74,12 @@ link_group_setup = Link(
 # User
 
 link_user_create = Link(
-    condition=condition_user_is_not_admin, icon=icon_user_create,
+    condition=condition_user_is_authenticated, icon=icon_user_create,
     permissions=(permission_user_create,), text=_('Create new user'),
     view='user_management:user_create'
 )
 link_user_delete_single = Link(
-    args='object.id', condition=condition_user_is_not_admin,
+    args='object.id', condition=condition_user_is_authenticated,
     icon=icon_user_delete_single, permissions=(permission_user_delete,),
     tags='dangerous', text=_('Delete'),
     view='user_management:user_delete_single'
@@ -100,12 +89,12 @@ link_user_delete_multiple = Link(
     view='user_management:user_delete_multiple'
 )
 link_user_edit = Link(
-    args='object.id', condition=condition_user_is_not_admin, icon=icon_user_edit,
-    permissions=(permission_user_edit,), text=_('Edit'),
+    args='object.id', condition=condition_user_is_authenticated,
+    icon=icon_user_edit, permissions=(permission_user_edit,), text=_('Edit'),
     view='user_management:user_edit'
 )
 link_user_group_list = Link(
-    args='object.id', condition=condition_user_is_not_admin,
+    args='object.id', condition=condition_user_is_authenticated,
     icon=icon_user_group_list, permissions=(permission_user_edit,),
     text=_('Groups'), view='user_management:user_groups'
 )
@@ -113,13 +102,13 @@ link_user_list = Link(
     icon=icon_user_list, text=_('Users'),
     condition=factory_condition_queryset_access(
         app_label='auth', model_name='User',
-        callback=condition_user_is_not_admin,
+        callback=condition_user_is_authenticated,
         object_permission=permission_user_view,
         view_permission=permission_user_create
     ), view='user_management:user_list'
 )
 link_user_set_options = Link(
-    args='object.id', condition=condition_user_is_not_admin,
+    args='object.id', condition=condition_user_is_authenticated,
     icon=icon_user_set_options, permissions=(permission_user_edit,),
     text=_('User options'), view='user_management:user_options'
 )

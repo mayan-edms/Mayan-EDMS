@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
 
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.metadata.permissions import permission_document_metadata_edit
@@ -7,444 +6,164 @@ from mayan.apps.metadata.tests.mixins import MetadataTypeTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..events import (
-    event_group_created, event_group_edited, event_user_created,
-    event_user_edited
+    event_group_edited, event_user_created, event_user_edited
 )
 from ..permissions import (
-    permission_group_create, permission_group_delete, permission_group_edit,
-    permission_group_view, permission_user_create, permission_user_delete,
+    permission_group_edit, permission_user_create, permission_user_delete,
     permission_user_edit, permission_user_view
 )
 
 from .mixins import (
-    GroupTestMixin, GroupUserViewTestMixin, GroupViewTestMixin,
-    UserGroupViewTestMixin, UserViewTestMixin
+    CurrentUserViewTestMixin, GroupTestMixin, UserGroupViewTestMixin,
+    UserViewTestMixin
 )
 
 
-class GroupViewsTestCase(
-    GroupTestMixin, GroupViewTestMixin, GenericViewTestCase
-):
-    def test_group_create_view_no_permission(self):
-        group_count = Group.objects.count()
-
+class CurrentUserViewTestCase(CurrentUserViewTestMixin, GenericViewTestCase):
+    def test_current_user_detail_view_no_permission(self):
         self._clear_events()
 
-        response = self._request_test_group_create_view()
-        self.assertEqual(response.status_code, 403)
-
-        self.assertEqual(Group.objects.count(), group_count)
+        response = self._request_current_user_details_view()
+        self.assertEqual(response.status_code, 200)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_group_create_view_with_permission(self):
-        self.grant_permission(permission=permission_group_create)
-
-        group_count = Group.objects.count()
-
+    def test_current_user_edit_get_view_no_permission(self):
         self._clear_events()
 
-        response = self._request_test_group_create_view()
-        self.assertEqual(response.status_code, 302)
+        response = self._request_current_user_edit_view()
+        self.assertEqual(response.status_code, 200)
 
-        self.assertEqual(Group.objects.count(), group_count + 1)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 1)
-
-        self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_group)
-        self.assertEqual(events[0].verb, event_group_created.id)
-
-    def test_group_delete_single_view_no_permission(self):
-        self._create_test_group()
-
-        group_count = Group.objects.count()
-
-        self._clear_events()
-
-        response = self._request_test_group_delete_single_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertEqual(Group.objects.count(), group_count)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_group_delete_single_view_with_access(self):
-        self._create_test_group()
-        self.grant_access(
-            obj=self.test_group, permission=permission_group_delete
-        )
-
-        group_count = Group.objects.count()
-
-        self._clear_events()
-
-        response = self._request_test_group_delete_single_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertEqual(Group.objects.count(), group_count - 1)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_group_delete_multiple_view_no_permission(self):
-        self._create_test_group()
-
-        group_count = Group.objects.count()
-
-        self._clear_events()
-
-        response = self._request_test_group_delete_multiple_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertEqual(Group.objects.count(), group_count)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_group_delete_multiple_view_with_access(self):
-        self._create_test_group()
-
-        group_count = Group.objects.count()
-
-        self.grant_access(
-            obj=self.test_group, permission=permission_group_delete
-        )
-
-        self._clear_events()
-
-        response = self._request_test_group_delete_multiple_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertEqual(Group.objects.count(), group_count - 1)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_group_edit_view_no_permission(self):
-        self._create_test_group()
-
-        group_name = self.test_group.name
-
-        self._clear_events()
-
-        response = self._request_test_group_edit_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.test_group.refresh_from_db()
-        self.assertEqual(self.test_group.name, group_name)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_group_edit_view_with_access(self):
-        self._create_test_group()
-        self.grant_access(
-            obj=self.test_group, permission=permission_group_edit
-        )
-
-        group_name = self.test_group.name
-
-        self._clear_events()
-
-        response = self._request_test_group_edit_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.test_group.refresh_from_db()
-        self.assertNotEqual(self.test_group.name, group_name)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 1)
-
-        self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_group)
-        self.assertEqual(events[0].verb, event_group_edited.id)
-
-    def test_group_list_view_no_permission(self):
-        self._create_test_group()
-
-        self._clear_events()
-
-        response = self._request_test_group_list_view()
         self.assertNotContains(
-            response=response, text=self.test_group.name, status_code=200
+            response=response, status_code=200, text='Is active'
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_group_list_view_with_permission(self):
-        self._create_test_group()
-
+    def test_current_user_edit_get_view_with_access(self):
         self.grant_access(
-            obj=self.test_group, permission=permission_group_view
+            obj=self._test_case_user, permission=permission_user_edit
         )
 
         self._clear_events()
 
-        response = self._request_test_group_list_view()
+        response = self._request_current_user_edit_view()
+        self.assertEqual(response.status_code, 200)
+
         self.assertContains(
-            response=response, text=self.test_group.name, status_code=200
+            response=response, status_code=200, text='Is active'
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
+    def test_current_user_edit_post_view_no_permission(self):
+        test_first_name = self._test_case_user.first_name
+        test_username = self._test_case_user.username
 
-class GroupAddRemoveUserViewTestCase(
-    GroupTestMixin, GroupUserViewTestMixin, GenericViewTestCase
+        self._clear_events()
+
+        response = self._request_current_user_post_view()
+        self.assertEqual(response.status_code, 302)
+
+        self._test_case_user.refresh_from_db()
+
+        self.assertEqual(self._test_case_user.username, test_username)
+        self.assertNotEqual(self._test_case_user.first_name, test_first_name)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self._test_case_user)
+        self.assertEqual(events[0].verb, event_user_edited.id)
+
+    def test_current_user_edit_post_view_with_access(self):
+        self.grant_access(
+            obj=self._test_case_user, permission=permission_user_edit
+        )
+
+        test_first_name = self._test_case_user.first_name
+        test_username = self._test_case_user.username
+
+        self._clear_events()
+
+        response = self._request_current_user_post_view()
+        self.assertEqual(response.status_code, 302)
+
+        self._test_case_user.refresh_from_db()
+
+        self.assertNotEqual(self._test_case_user.username, test_username)
+        self.assertNotEqual(self._test_case_user.first_name, test_first_name)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self._test_case_user)
+        self.assertEqual(events[0].verb, event_user_edited.id)
+
+
+class CurrentUserSuperUserViewTestCase(
+    CurrentUserViewTestMixin, GenericViewTestCase
 ):
     def setUp(self):
         super().setUp()
-        self._create_test_group()
-        self._create_test_user()
+        self._test_case_user.is_superuser = True
+        self._test_case_user.save()
 
-    def test_group_user_add_remove_get_view_no_permission(self):
-        self.test_user.groups.add(self.test_group)
-
+    def test_current_user_detail_view_no_permission(self):
         self._clear_events()
 
-        response = self._request_test_group_user_add_remove_get_view()
-        self.assertNotContains(
-            response=response, text=str(self.test_user),
-            status_code=404
-        )
-        self.assertNotContains(
-            response=response, text=str(self.test_group),
-            status_code=404
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_group_user_add_remove_get_view_with_user_access(self):
-        self.test_user.groups.add(self.test_group)
-
-        self.grant_access(
-            obj=self.test_user, permission=permission_user_edit
-        )
-
-        self._clear_events()
-
-        response = self._request_test_group_user_add_remove_get_view()
-        self.assertNotContains(
-            response=response, text=str(self.test_user),
-            status_code=404
-        )
-        self.assertNotContains(
-            response=response, text=str(self.test_group),
-            status_code=404
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_group_user_add_remove_get_view_with_group_access(self):
-        self.test_user.groups.add(self.test_group)
-
-        self.grant_access(
-            obj=self.test_group, permission=permission_group_edit
-        )
-
-        self._clear_events()
-
-        response = self._request_test_group_user_add_remove_get_view()
-        self.assertNotContains(
-            response=response, text=str(self.test_user),
-            status_code=200
-        )
-        self.assertContains(
-            response=response, text=str(self.test_group),
-            status_code=200
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_group_user_add_remove_get_view_with_full_access(self):
-        self.test_user.groups.add(self.test_group)
-
-        self.grant_access(
-            obj=self.test_user, permission=permission_user_edit
-        )
-        self.grant_access(
-            obj=self.test_group, permission=permission_group_edit
-        )
-
-        self._clear_events()
-
-        response = self._request_test_group_user_add_remove_get_view()
-        self.assertContains(
-            response=response, text=str(self.test_user),
-            status_code=200
-        )
-        self.assertContains(
-            response=response, text=str(self.test_group),
-            status_code=200
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_group_user_add_view_no_permission(self):
-        self._clear_events()
-
-        response = self._request_test_group_user_add_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertTrue(
-            self.test_user not in self.test_group.user_set.all()
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_group_user_add_view_with_user_access(self):
-        self.grant_access(
-            obj=self.test_user, permission=permission_user_edit
-        )
-
-        self._clear_events()
-
-        response = self._request_test_group_user_add_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertTrue(
-            self.test_user not in self.test_group.user_set.all()
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_group_user_add_view_with_group_access(self):
-        self.grant_access(
-            obj=self.test_group, permission=permission_group_edit
-        )
-
-        self._clear_events()
-
-        response = self._request_test_group_user_add_view()
+        response = self._request_current_user_details_view()
         self.assertEqual(response.status_code, 200)
 
-        self.assertTrue(
-            self.test_user not in self.test_group.user_set.all()
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_current_user_edit_get_view_no_permission(self):
+        self._clear_events()
+
+        response = self._request_current_user_edit_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertContains(
+            response=response, status_code=200, text='Is active'
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_group_user_add_view_with_full_access(self):
-        self.grant_access(
-            obj=self.test_user, permission=permission_user_edit
-        )
-        self.grant_access(
-            obj=self.test_group, permission=permission_group_edit
-        )
+    def test_current_user_edit_post_view_no_permission(self):
+        test_first_name = self._test_case_user.first_name
+        test_username = self._test_case_user.username
 
         self._clear_events()
 
-        response = self._request_test_group_user_add_view()
+        response = self._request_current_user_post_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertTrue(
-            self.test_user in self.test_group.user_set.all()
-        )
+        self._test_case_user.refresh_from_db()
+
+        self.assertNotEqual(self._test_case_user.username, test_username)
+        self.assertNotEqual(self._test_case_user.first_name, test_first_name)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_user)
+        self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_group)
-        self.assertEqual(events[0].verb, event_group_edited.id)
-
-    def test_group_user_remove_view_no_permission(self):
-        self.test_user.groups.add(self.test_group)
-
-        self._clear_events()
-
-        response = self._request_test_group_user_remove_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertTrue(
-            self.test_user in self.test_group.user_set.all()
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_group_user_remove_view_with_user_access(self):
-        self.test_user.groups.add(self.test_group)
-
-        self.grant_access(
-            obj=self.test_user, permission=permission_user_edit
-        )
-
-        self._clear_events()
-
-        response = self._request_test_group_user_remove_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertTrue(
-            self.test_user in self.test_group.user_set.all()
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_group_user_remove_view_with_group_access(self):
-        self.test_user.groups.add(self.test_group)
-
-        self.grant_access(
-            obj=self.test_group, permission=permission_group_edit
-        )
-
-        self._clear_events()
-
-        response = self._request_test_group_user_remove_view()
-        self.assertEqual(response.status_code, 200)
-
-        self.assertTrue(
-            self.test_user in self.test_group.user_set.all()
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_group_user_remove_view_with_full_access(self):
-        self.test_user.groups.add(self.test_group)
-
-        self.grant_access(
-            obj=self.test_user, permission=permission_user_edit
-        )
-        self.grant_access(
-            obj=self.test_group, permission=permission_group_edit
-        )
-
-        self._clear_events()
-
-        response = self._request_test_group_user_remove_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertTrue(
-            self.test_user not in self.test_group.user_set.all()
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 1)
-
-        self.assertEqual(events[0].action_object, self.test_user)
-        self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_group)
-        self.assertEqual(events[0].verb, event_group_edited.id)
+        self.assertEqual(events[0].target, self._test_case_user)
+        self.assertEqual(events[0].verb, event_user_edited.id)
 
 
-class SuperUserViewTestCase(UserViewTestMixin, GenericViewTestCase):
+class SuperUserViewTestCase(
+    UserViewTestMixin, GenericViewTestCase
+):
     def setUp(self):
         super().setUp()
         self._create_test_superuser()
@@ -953,7 +672,12 @@ class UserOptionsViewTestCase(
         self.assertTrue(self.test_user.user_options.block_password_change)
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_user)
+        self.assertEqual(events[0].verb, event_user_edited.id)
 
 
 class MetadataLookupIntegrationTestCase(
@@ -992,38 +716,6 @@ class MetadataLookupIntegrationTestCase(
         self.assertContains(
             response=response, text='<option value="{}">{}</option>'.format(
                 self._test_case_user.username, self._test_case_user.username
-            ), status_code=200
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_group_list_lookup_render(self):
-        self.test_metadata_type.lookup = '{{ groups }}'
-        self.test_metadata_type.save()
-        self.test_document.metadata.create(
-            metadata_type=self.test_metadata_type
-        )
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_metadata_edit
-        )
-        self.grant_access(
-            obj=self.test_metadata_type,
-            permission=permission_document_metadata_edit
-        )
-
-        self._clear_events()
-
-        response = self.get(
-            viewname='metadata:metadata_edit', kwargs={
-                'document_id': self.test_document.pk
-            }
-        )
-
-        self.assertContains(
-            response=response, text='<option value="{}">{}</option>'.format(
-                self._test_case_group.name, self._test_case_group.name
             ), status_code=200
         )
 

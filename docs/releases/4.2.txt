@@ -1,7 +1,7 @@
 Version 4.2
 ===========
 
-Released: XX, 2022
+Released: February XX, 2022
 
 Status: Stable
 
@@ -9,6 +9,367 @@ Changes
 -------
 
 
+Authentication
+^^^^^^^^^^^^^^
+
+The authentication app was refactored to add several major changes.
+The first major change was adding support for multi factor authentication.
+The implementation builds on top of Django's authentication code to provide
+a secure but at the same time extensible framework with features such as
+unlimited number of authentication factors and forms for login.
+
+With the addition of multi factor authentication, it was possible to add
+two step authentication using time based one time password (TOTP) was added.
+This implementation works in a very similar as most implementations where
+a random secret is generated and presented as a QR code that is scanned using
+mobile apps or hardware tokens. During the next login, a token representing
+the secret will be required to complete the login process.
+
+TOTP authentication can be disabled at anytime either by the user or by an
+administrator. This can be done via the user interface or via new management
+commands.
+
+These commands are:
+
+- ``authentication_otp_disable`` disable OTP authentication for a user
+- ``authentication_otp_initialize`` initialize the OTP state data for
+  all users. This command is for debuging and maintenance in case the
+  database migration does not correctly initialize the OTP state data
+  for existing users.
+- ``authentication_otp_status`` display the OTP status of a user
+
+The new authentication app allows for the easy creation of authentication
+workflows via backends. These are classes passed via the setting
+``AUTHENTICATION_BACKEND``, which must be the dotted path
+to the backend used to process user authentication and
+``AUTHENTICATION_BACKEND_ARGUMENTS`` which is an optional YAML structure
+to pass to the authentication backend.
+
+The authentication backends are able to control and customize the entire
+login process, including the forms presented to the user. Authentication
+backends can use mixins and can be subclassed to mix and expand their
+capabilities.
+
+Included authentication mixins:
+- ``AuthenticationBackendRememberMeMixin``
+
+Included authentication backends:
+- ``AuthenticationBackendModelDjangoDefault``
+- ``AuthenticationBackendModelEmailPassword``
+- ``AuthenticationBackendModelUsernamePassword``
+
+Apps define authentication backends in the module
+``authentication_backends.py``.
+
+With this new system the old ``EmailAuthBackend`` authentication class is
+removed. The same function is now accomplished by the
+``AuthenticationBackendModelEmailPassword`` backend.
+
+To enable TOTP authentication, set ``AUTHENTICATION_BACKEND`` to
+``mayan.apps.authentication.authentication_backends.AuthenticationBackendModelUsernamePasswordTOTP``
+for username and TOTP login. For email and TOTP logins use
+``mayan.apps.authentication.authentication_backends.AuthenticationBackendModelEmailPasswordTOTP``.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+Django 2.2 is approaching end of life status, as such this version used
+Django 3.2 with the next LTS release and will be supported until 2024.
+
+Other packages were updated:
+
+- django-widget-tweaks from version 1.4.8 to 1.4.9.
+- psycopg2 from version 2.8.6 to 2.9.2.
+- redis client from version 3.5.3 to 4.0.2.
+
+The default version of PostgreSQL is now 12.9. Follow the required database
+procedure to migrate your data from the existing version to the new default
+version. This process requires creating a dump of your existing data and then
+importing it to the new version.
+
+
+Docker
+^^^^^^
+
+The ``.env`` and ``env_file`` were unified as a single ``.env`` file. Ensure
+you copy any custom changes your existing ``env_file`` before updating your
+deployment.
+
+The internal Docker network used for the deployment was renamed from
+``bridge`` to ``mayan``. This helps differentiate the network now that
+multiple networks are supported.
+
+The Docker Compose was moved from Debian 10 slim to Debian 11 slim. The build
+image was moved from Python 3.8-slim to Python 3.11-slim.
+
+The command ``run_initialsetup_or_performupgrade`` was added to facilitate
+installations and upgrades in custom Docker deployments.
+
+The default Docker Compose was updated to support more customization. The
+Redis container is now controlled by its own profile, this allows using
+external Redis servers is desired.
+
+The deployment now defaults to using RabbitMQ a the message broker.
+
+The RabbitMQ image tag was changed from 3.9-alpine to 3.9-management-alpine.
+This image includes the management plugins which aid in debugging and
+optimization of custom deployments.
+
+The Traefik configuration was improved and supports more options.
+Additionally, the Traefik profile now runs in its own Docker network.
+
+A Docker Compose password randomizer script is now available.
+
+The necessary LDAP libraries and Python modules are now included in the
+default Docker image. User wanting to use LDAP still need to create a custom
+settings file but do not need to install the LDAP libraries or worry about
+dependency conflicts anymore.
+
+
+Error logging
+^^^^^^^^^^^^^
+
+The error logger now includes a global error log list view in the tool menu.
+This view will display error log messages for all objects in the system that
+have been converted to the unified error logger.
+
+
+Mailing
+^^^^^^^
+
+The events "mailing profile created" and "mailing profile edited" were
+added, enable as workflow triggers and for subscription.
+
+
+Metadata
+^^^^^^^^
+
+A regular expression metadata validator and parser were addeed. These
+offer unlimited verification of user input and transformation of user input.
+
+Support for passing arguments to the metadata validators and parsers
+was added.
+
+The model field used to store the path to the parser and validator was
+extended to 224 characters.
+
+
+MIME types
+^^^^^^^^^^
+
+Support for MIME type detection backends was added. This feature allows
+customizing the MIME type detection. Additionally, arguments can be passed
+to the MIME type backends for things like hardcoding file magic numbers for
+esoteric file types.
+
+The previous MIME type detection code which used the Python Magic library is
+now the default backend.
+
+In addition to the default backend two new backends were added:
+
+- PERL ``mimetype`` backend.
+- Linux ``file`` command line binary backend.
+
+
+REST API
+^^^^^^^^
+
+The batch API feature was updated to add support for binary content. Binary
+content is now returned in the response as a base64 encoded string.
+
+Support for dynamic field API serialization was added. This feature allows
+specifying which fields are to be included in the response. This can be done
+by specifying which fields to include or which to exclude.
+
+To support dynamic API fields, two URL query keys were added. These keys are
+``_fields_only`` and ``_fields_exclude``. Nested objects are supported using
+the double underscore (``__``) separator.
+
+The serialized first page of each document version and document file is now
+included in the serialized document object. This helps reduce API requests
+when attempting to display document thumbnails via the API.
+
+For objects that are children objects, the parent object IDs are now added
+to the serializer. The layout is ``{parent object name}_id``. A few objects
+already provided the parent ID but with a different schema. These objects
+also now have the parent ID field with the new schema even if it displays
+a duplicate value. The old ID field is now deprecated and will be removed
+in version 5.0.
+
+
+Search
+^^^^^^
+
+The Whoosh backend has been completed and is now the default search engine
+backend.
+
+The search indexing code was improve and now all object fields are indexed
+on creation, update or deletion.
+
+Several management commands were added. These are:
+
+  - ``search_index_objects`` to trigger the queuing of search models from
+    the CLI.
+  - ``search_status`` to show indexing status of the search backend.
+  - ``search_initialize`` and ``search_upgrade``. These are called
+    automatically after the initial setup and after upgrades, but were added
+    to aid in maintenance.
+
+Add new settings called ``SEARCH_INDEXING_CHUNK_SIZE`` was added to allow
+setting the number of objects to prepare when performing bulk search
+indexing.
+
+In addition to the Whoosh search backend, support was also added for
+ElasticSearch.
+
+A new queue was added called ``search_slow`` for the long running tasks of
+search indexing.
+
+
+Sources
+^^^^^^^
+
+The sources that provide thumbnails now do so using the unified image serving
+code from the converter app. In addition to reducing duplicated code, the
+sources app also benefits from the improvements in image serving from the
+converter app like the adoption of ``StreamingHttpResponse`` to serve
+previews as streamed responses and allowing showing previews for office
+documents in the staging folders.
+
+Support was added for inclusion and exclusion regular expressions for watch
+folders.
+
+
+Storage
+^^^^^^^
+
+Two new settings were added to allow controlling the interval at which
+expired download files and shared uploaded files are cleaned up. These
+are:
+
+  - ``DOWNLOAD_FILE_EXPIRATION_INTERVAL`` which defaults to 2 days.
+  - ``SHARED_UPLOADED_FILE_EXPIRATION_INTERVAL`` which defaults to 7 days.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+All user menu entries were reorganized to be located under a "User details"
+link.
+
+Support was added for editing the locale profile of users as well as the
+theme settings.
+
+Internally, the views for users, current users and superusers were unified
+resulting in a reduction of code, easier maintenance, and made the user
+view easier to extend.
+
+New user events named "User theme edited" and "User locale profile edited"
+were added events.
+
+
+Workflows
+^^^^^^^^^
+
+The workflow template transitions were exposed via the API.
+
+Support was added for launching workflows from the API.
+
+A small change was made to the workflow template permissions to require
+the view permission instead of the edit permission when attempting to view
+child objects of a workflow template.
+
+The workflow state now has a column displaying all created actions labels
+separated by a comma.
+
+
+Other
+^^^^^
+
+- Hide all links that depend on users being authenticated.
+- Refactor ``ResolverRelatedManager``.
+- Reduce the Sentry client default ``traces_sample_rate`` from 0.25 to 0.05.
+- Move the ``parse_range`` utility from the documents app to the common app.
+- Move SQLite check to the databases app.
+- Add Elasticsearch test container makefile targets.
+- Added the mailing profile created and edited events.
+- Update the Django debug view CSS and layout to match Django's original
+  appearance.
+- Support Django debug JavaScript code.
+- Minor CSS optimization to the Django debug view.
+- Switch all standalone containers to use a ``prefetch-multiplier`` of ``1``.
+- Move Docker templates to their own folder.
+- Move the ``docker-dockerfile-update`` target to the Docker makefile.
+- Error log partitions now link to their underline object via content type
+  too.
+- Error log partitions are now retrieve or created on demand.
+- Added cascade permission support to error log partitions and entries.
+- Events app updates:
+
+  - Use the correct attribute for fetching event types. Use ``id`` instead of
+    ``name``.
+  - Cache the event type instance in the StoredEvent model.
+  - An incorrect event type ID will now return a KeyError instead of masking
+    the exception and returning an error message. It is now up to the calling
+    code which action to take when the event type ID is not correct.
+  - The previous unknown event error message is now available as a literal
+    named ``literals.TEXT_UNKNOWN_EVENT_ID``.
+
+- Update the ``ObjectActionAPIView`` view to allow passing extra context to
+  serializers.
+- Don't display API URL links to indexing instance and template parents that
+  are also root nodes as these are not accessible.
+- Register more models using ``DynamicSerializerField`` to display the
+  canonical serializer of the model when referenced by other objects.
+- Search updates:
+
+  - Ensure all test models are deleted, including intermediate many
+    to many models created automatically.
+  - Update ``DetailForm`` usage for the new interface.
+  - Move `flatten_list` to the common app.
+  - ResolverPipeline updates:
+
+    - Support ``resolver_extra_kwargs``.
+    - Add queryset exclusion support to ``ResolverRelatedManager``.
+
+  - Update related field resolution using pure Django
+  - Solve all search indexing edge cases.
+  - Models are indexed using smaller tasks to improve scalability.
+  - Refactor ``ResolverRelatedManager``. Use Django's internal
+    ``get_fields_from_path`` for related field introspection.
+    Support more related field cases.
+  - Trigger indexing on related model changes
+  - Fix lock manager management command test.
+  - Don't index `None` values in lists.
+  - Unify the search test mixins.
+  - Use ``TemporaryDirectory`` for test search backend. Do automatic
+    clean up of the temporary index directory.
+  - Remove the separate related model index signal handlers.
+  - Support reverse many to many indexing.
+  - Add indexing optimizations.
+  - Rename methods for clarity.
+  - Move the ``any_to_bool`` function to the common app.
+  - Support initializing the search backends.
+  - Add method to reset backends.
+  - Moved ``get_resolved_field_map`` and ``get_search_model_fields`` to the
+    ``SearchBackend`` class.
+  - Normalize true values for scope 0 ``match_all``.
+  - Added a new task ``task_reindex_backend`` to abstract backend reindexing.
+  - Add constant maximum retries value to the ``task_deindex_instance`` and
+    ``task_index_instance`` tasks.
+  - Add ranged search model indexing.
+  - Support backend initialization, reset, and tear down.
+  - Automatically add the ``id`` field as a search field for all search
+    models.
+  - Separate backend initialization from app initialization.
+  - Retry Whoosh LockErrors by encapsulating then in the general app exception
+    ``DynamicSearchRetry``.
+
+- File staging sources updates:
+
+  - Fix extra brackets in the encoded and cached filenames.
+  - Use context manager to ensure preview images are always closed.
 
 
 Removals
@@ -41,7 +402,7 @@ Backward incompatible changes
 
 - Renaming of the ``mimetype`` app to ``mime_types``.
 - Removal of the ``.api.get_mimetype`` function. The process now requires
-  instanciating the configure MIME type backend and calling the
+  instantiating the configure MIME type backend and calling the
   ``get_mime_type`` method:
 
   .. code-block:: python
@@ -49,12 +410,18 @@ Backward incompatible changes
     from mayan.apps.mime_types.classes import MIMETypeBackend
     MIMETypeBackend.get_backend_instance().get_mime_type(...)
 
+- Search model names are now specified in lower case in the user interface
+  URL or in the search API URL.
+
 
 Issues closed
 -------------
 
+- :gitlab-issue:`146` Add support for Elasticsearch
+- :gitlab-issue:`928` Assignment of mimetypes is selecting the wrong type
 - :gitlab-issue:`965` Filter / ignore certain filetypes on watch-folders
 - :gitlab-issue:`983` Quick-Search (the one on the starting page) not working on 4.0.1, advanced search works
 - :gitlab-issue:`1009` [4.0.7] Whoosh backend: searching for metadata values gives wrong/erratic results
+- :gitlab-issue:`1044` [4.1] [API] Feature Request: Endpoint for workflow transition trigger events
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

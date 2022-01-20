@@ -42,10 +42,20 @@ class ErrorLog:
 
         @property
         def method_instance_logs(self):
-            error_log_partition = error_log_instance.stored_error_log.partitions.get(
-                name=ErrorLog.get_model_instance_partition_name(
-                    model_instance=self
-                )
+            ContentType = apps.get_model(
+                app_label='contenttypes', model_name='ContentType'
+            )
+
+            content_type = ContentType.objects.get_for_model(
+                model=self
+            )
+
+            error_log_partition, created = error_log_instance.stored_error_log.partitions.get_or_create(
+                content_type=content_type, object_id=self.pk, defaults={
+                    'name': ErrorLog.get_model_instance_partition_name(
+                        model_instance=self
+                    )
+                }
             )
 
             error_log_partition.entries.exclude(
@@ -66,15 +76,30 @@ class ErrorLog:
             )
 
         def handler_model_instance_delete_partition(sender, instance, **kwargs):
-            return self.stored_error_log.partitions.get(
-                name=ErrorLog.get_model_instance_partition_name(
-                    model_instance=instance
-                )
+            ContentType = apps.get_model(
+                app_label='contenttypes', model_name='ContentType'
+            )
+
+            content_type = ContentType.objects.get_for_model(
+                model=instance
+            )
+
+            return self.stored_error_log.partitions.filter(
+                content_type=content_type, object_id=instance.pk
             ).delete()
 
         def handler_model_instance_create_partition(sender, instance, **kwargs):
             if kwargs['created']:
+                ContentType = apps.get_model(
+                    app_label='contenttypes', model_name='ContentType'
+                )
+
+                content_type = ContentType.objects.get_for_model(
+                    model=instance
+                )
+
                 return self.stored_error_log.partitions.create(
+                    content_type=content_type, object_id=instance.pk,
                     name=ErrorLog.get_model_instance_partition_name(
                         model_instance=instance
                     )

@@ -9,7 +9,7 @@ from mayan.apps.storage.utils import NamedTemporaryFile
 
 from ..classes import MIMETypeBackend
 
-DEFAULT_MIMETYPE_PATH = '/usr/bin/mimetype'
+from .literals import DEFAULT_MIMETYPE_PATH
 
 
 class MIMETypeBackendPerlFileMIMEInfo(MIMETypeBackend):

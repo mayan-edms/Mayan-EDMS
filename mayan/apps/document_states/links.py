@@ -172,12 +172,12 @@ link_workflow_template_transition_edit = Link(
     permissions=(permission_workflow_template_edit,),
     text=_('Edit'), view='document_states:workflow_template_transition_edit',
 )
-link_workflow_template_transition_events = Link(
+link_workflow_template_transition_triggers = Link(
     args='resolved_object.pk',
     icon=icon_workflow_template_transition_triggers,
     permissions=(permission_workflow_template_edit,),
     text=_('Transition triggers'),
-    view='document_states:workflow_template_transition_events'
+    view='document_states:workflow_template_transition_triggers'
 )
 link_workflow_template_transition_list = Link(
     args='resolved_object.pk',

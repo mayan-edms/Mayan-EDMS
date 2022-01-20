@@ -33,7 +33,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
 
     def test_document_type_workflow_template_add_remove_get_view_no_permission(self):
         self.test_document_type.workflows.add(
-            self.test_workflow_template
+            self._test_workflow_template
         )
 
         self._clear_events()
@@ -44,7 +44,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=str(self.test_workflow_template),
+            response=response, text=str(self._test_workflow_template),
             status_code=404
         )
 
@@ -53,7 +53,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
 
     def test_document_type_workflow_template_add_remove_get_view_with_document_type_access(self):
         self.test_document_type.workflows.add(
-            self.test_workflow_template
+            self._test_workflow_template
         )
 
         self.grant_access(
@@ -69,7 +69,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
             status_code=200
         )
         self.assertNotContains(
-            response=response, text=str(self.test_workflow_template),
+            response=response, text=str(self._test_workflow_template),
             status_code=200
         )
 
@@ -78,11 +78,11 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
 
     def test_document_type_workflow_template_add_remove_get_view_with_workflow_template_access(self):
         self.test_document_type.workflows.add(
-            self.test_workflow_template
+            self._test_workflow_template
         )
 
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
 
@@ -94,7 +94,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=str(self.test_workflow_template),
+            response=response, text=str(self._test_workflow_template),
             status_code=404
         )
 
@@ -103,7 +103,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
 
     def test_document_type_workflow_template_add_remove_get_view_with_full_access(self):
         self.test_document_type.workflows.add(
-            self.test_workflow_template
+            self._test_workflow_template
         )
 
         self.grant_access(
@@ -111,7 +111,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
 
@@ -123,7 +123,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
             status_code=200
         )
         self.assertContains(
-            response=response, text=str(self.test_workflow_template),
+            response=response, text=str(self._test_workflow_template),
             status_code=200
         )
 
@@ -137,7 +137,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
-            self.test_workflow_template not in self.test_document_type.workflows.all()
+            self._test_workflow_template not in self.test_document_type.workflows.all()
         )
 
         events = self._get_test_events()
@@ -155,7 +155,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertTrue(
-            self.test_workflow_template not in self.test_document_type.workflows.all()
+            self._test_workflow_template not in self.test_document_type.workflows.all()
         )
 
         events = self._get_test_events()
@@ -163,7 +163,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
 
     def test_document_type_workflow_template_add_view_with_workflow_template_access(self):
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
 
@@ -173,7 +173,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
-            self.test_workflow_template not in self.test_document_type.workflows.all()
+            self._test_workflow_template not in self.test_document_type.workflows.all()
         )
 
         events = self._get_test_events()
@@ -185,7 +185,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
 
@@ -195,7 +195,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(
-            self.test_workflow_template in self.test_document_type.workflows.all()
+            self._test_workflow_template in self.test_document_type.workflows.all()
         )
 
         events = self._get_test_events()
@@ -203,12 +203,12 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
 
         self.assertEqual(events[0].action_object, self.test_document_type)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_workflow_template)
+        self.assertEqual(events[0].target, self._test_workflow_template)
         self.assertEqual(events[0].verb, event_workflow_template_edited.id)
 
     def test_document_type_workflow_template_remove_view_no_permission(self):
         self.test_document_type.workflows.add(
-            self.test_workflow_template
+            self._test_workflow_template
         )
 
         self._clear_events()
@@ -217,7 +217,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
-            self.test_workflow_template in self.test_document_type.workflows.all()
+            self._test_workflow_template in self.test_document_type.workflows.all()
         )
 
         events = self._get_test_events()
@@ -225,7 +225,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
 
     def test_document_type_workflow_template_remove_view_with_document_type_access(self):
         self.test_document_type.workflows.add(
-            self.test_workflow_template
+            self._test_workflow_template
         )
 
         self.grant_access(
@@ -239,7 +239,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertTrue(
-            self.test_workflow_template in self.test_document_type.workflows.all()
+            self._test_workflow_template in self.test_document_type.workflows.all()
         )
 
         events = self._get_test_events()
@@ -247,11 +247,11 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
 
     def test_document_type_workflow_template_remove_view_with_workflow_template_access(self):
         self.test_document_type.workflows.add(
-            self.test_workflow_template
+            self._test_workflow_template
         )
 
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
 
@@ -261,7 +261,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
-            self.test_workflow_template in self.test_document_type.workflows.all()
+            self._test_workflow_template in self.test_document_type.workflows.all()
         )
 
         events = self._get_test_events()
@@ -269,7 +269,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
 
     def test_document_type_workflow_template_remove_view_with_full_access(self):
         self.test_document_type.workflows.add(
-            self.test_workflow_template
+            self._test_workflow_template
         )
 
         self.grant_access(
@@ -277,7 +277,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
 
@@ -287,7 +287,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(
-            self.test_workflow_template not in self.test_document_type.workflows.all()
+            self._test_workflow_template not in self.test_document_type.workflows.all()
         )
 
         events = self._get_test_events()
@@ -295,7 +295,7 @@ class DocumentTypeAddRemoveWorkflowTemplateViewTestCase(
 
         self.assertEqual(events[0].action_object, self.test_document_type)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_workflow_template)
+        self.assertEqual(events[0].target, self._test_workflow_template)
         self.assertEqual(events[0].verb, event_workflow_template_edited.id)
 
 
@@ -307,15 +307,12 @@ class DocumentWorkflowTemplateViewTestCase(
 
     def setUp(self):
         super().setUp()
-        self._create_test_workflow_template()
+        self._create_test_workflow_template(add_test_document_type=True)
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_transition()
-        self.test_workflow_template.document_types.add(
-            self.test_document_type
-        )
-        self.test_workflow_template.auto_launch = False
-        self.test_workflow_template.save()
+        self._test_workflow_template.auto_launch = False
+        self._test_workflow_template.save()
 
     def test_document_single_workflow_launch_view_no_permission(self):
         self._create_test_document_stub()
@@ -359,7 +356,7 @@ class DocumentWorkflowTemplateViewTestCase(
         self._create_test_document_stub()
 
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_tools
         )
 
@@ -384,7 +381,7 @@ class DocumentWorkflowTemplateViewTestCase(
             obj=self.test_document, permission=permission_workflow_tools
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_tools
         )
 
@@ -409,7 +406,7 @@ class DocumentWorkflowTemplateViewTestCase(
             obj=self.test_document, permission=permission_workflow_tools
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_tools
         )
 
@@ -441,11 +438,11 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self._create_test_workflow_template()
 
     def test_workflow_template_document_type_add_remove_get_view_no_permission(self):
-        self.test_workflow_template.document_types.add(
+        self._test_workflow_template.document_types.add(
             self.test_document_type
         )
 
-        test_workflow_template_document_type_count = self.test_workflow_template.document_types.count()
+        test_workflow_template_document_type_count = self._test_workflow_template.document_types.count()
 
         self._clear_events()
 
@@ -455,12 +452,12 @@ class WorkflowTemplateDocumentTypeViewTestCase(
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=str(self.test_workflow_template),
+            response=response, text=str(self._test_workflow_template),
             status_code=404
         )
 
         self.assertEqual(
-            self.test_workflow_template.document_types.count(),
+            self._test_workflow_template.document_types.count(),
             test_workflow_template_document_type_count
         )
 
@@ -468,11 +465,11 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_workflow_template_document_type_add_remove_get_view_with_document_type_access(self):
-        self.test_workflow_template.document_types.add(
+        self._test_workflow_template.document_types.add(
             self.test_document_type
         )
 
-        test_workflow_template_document_type_count = self.test_workflow_template.document_types.count()
+        test_workflow_template_document_type_count = self._test_workflow_template.document_types.count()
 
         self.grant_access(
             obj=self.test_document_type,
@@ -487,12 +484,12 @@ class WorkflowTemplateDocumentTypeViewTestCase(
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=str(self.test_workflow_template),
+            response=response, text=str(self._test_workflow_template),
             status_code=404
         )
 
         self.assertEqual(
-            self.test_workflow_template.document_types.count(),
+            self._test_workflow_template.document_types.count(),
             test_workflow_template_document_type_count
         )
 
@@ -500,14 +497,14 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_workflow_template_document_type_add_remove_get_view_with_workflow_template_access(self):
-        self.test_workflow_template.document_types.add(
+        self._test_workflow_template.document_types.add(
             self.test_document_type
         )
 
-        test_workflow_template_document_type_count = self.test_workflow_template.document_types.count()
+        test_workflow_template_document_type_count = self._test_workflow_template.document_types.count()
 
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
 
@@ -519,12 +516,12 @@ class WorkflowTemplateDocumentTypeViewTestCase(
             status_code=200
         )
         self.assertContains(
-            response=response, text=str(self.test_workflow_template),
+            response=response, text=str(self._test_workflow_template),
             status_code=200
         )
 
         self.assertEqual(
-            self.test_workflow_template.document_types.count(),
+            self._test_workflow_template.document_types.count(),
             test_workflow_template_document_type_count
         )
 
@@ -532,18 +529,18 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_workflow_template_document_type_add_remove_get_view_with_full_access(self):
-        self.test_workflow_template.document_types.add(
+        self._test_workflow_template.document_types.add(
             self.test_document_type
         )
 
-        test_workflow_template_document_type_count = self.test_workflow_template.document_types.count()
+        test_workflow_template_document_type_count = self._test_workflow_template.document_types.count()
 
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
 
@@ -555,12 +552,12 @@ class WorkflowTemplateDocumentTypeViewTestCase(
             status_code=200
         )
         self.assertContains(
-            response=response, text=str(self.test_workflow_template),
+            response=response, text=str(self._test_workflow_template),
             status_code=200
         )
 
         self.assertEqual(
-            self.test_workflow_template.document_types.count(),
+            self._test_workflow_template.document_types.count(),
             test_workflow_template_document_type_count
         )
 
@@ -568,7 +565,7 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_workflow_template_document_type_add_view_no_permission(self):
-        test_workflow_template_document_type_count = self.test_workflow_template.document_types.count()
+        test_workflow_template_document_type_count = self._test_workflow_template.document_types.count()
 
         self.grant_access(
             obj=self.test_document_type,
@@ -581,7 +578,7 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self.test_workflow_template.document_types.count(),
+            self._test_workflow_template.document_types.count(),
             test_workflow_template_document_type_count
         )
 
@@ -589,7 +586,7 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_workflow_template_document_type_add_view_with_document_type_access(self):
-        test_workflow_template_document_type_count = self.test_workflow_template.document_types.count()
+        test_workflow_template_document_type_count = self._test_workflow_template.document_types.count()
 
         self.grant_access(
             obj=self.test_document_type,
@@ -602,7 +599,7 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self.test_workflow_template.document_types.count(),
+            self._test_workflow_template.document_types.count(),
             test_workflow_template_document_type_count
         )
 
@@ -610,10 +607,10 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_workflow_template_document_type_add_view_with_workflow_template_access(self):
-        test_workflow_template_document_type_count = self.test_workflow_template.document_types.count()
+        test_workflow_template_document_type_count = self._test_workflow_template.document_types.count()
 
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
 
@@ -623,7 +620,7 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
-            self.test_workflow_template.document_types.count(),
+            self._test_workflow_template.document_types.count(),
             test_workflow_template_document_type_count
         )
 
@@ -631,14 +628,14 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_workflow_template_document_type_add_view_with_full_access(self):
-        test_workflow_template_document_type_count = self.test_workflow_template.document_types.count()
+        test_workflow_template_document_type_count = self._test_workflow_template.document_types.count()
 
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
 
@@ -648,7 +645,7 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_workflow_template.document_types.count(),
+            self._test_workflow_template.document_types.count(),
             test_workflow_template_document_type_count + 1
         )
 
@@ -657,13 +654,13 @@ class WorkflowTemplateDocumentTypeViewTestCase(
 
         self.assertEqual(events[0].action_object, self.test_document_type)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_workflow_template)
+        self.assertEqual(events[0].target, self._test_workflow_template)
         self.assertEqual(events[0].verb, event_workflow_template_edited.id)
 
     def test_workflow_template_document_type_remove_view_no_permission(self):
-        self.test_workflow_template.document_types.add(self.test_document_type)
+        self._test_workflow_template.document_types.add(self.test_document_type)
 
-        test_workflow_template_document_type_count = self.test_workflow_template.document_types.count()
+        test_workflow_template_document_type_count = self._test_workflow_template.document_types.count()
 
         self.grant_access(
             obj=self.test_document_type,
@@ -676,7 +673,7 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self.test_workflow_template.document_types.count(),
+            self._test_workflow_template.document_types.count(),
             test_workflow_template_document_type_count
         )
 
@@ -684,11 +681,11 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_workflow_template_document_type_remove_view_with_document_type_access(self):
-        self.test_workflow_template.document_types.add(
+        self._test_workflow_template.document_types.add(
             self.test_document_type
         )
 
-        test_workflow_template_document_type_count = self.test_workflow_template.document_types.count()
+        test_workflow_template_document_type_count = self._test_workflow_template.document_types.count()
 
         self.grant_access(
             obj=self.test_document_type,
@@ -701,7 +698,7 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self.test_workflow_template.document_types.count(),
+            self._test_workflow_template.document_types.count(),
             test_workflow_template_document_type_count
         )
 
@@ -709,14 +706,14 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_workflow_template_document_type_remove_view_with_workflow_template_access(self):
-        self.test_workflow_template.document_types.add(
+        self._test_workflow_template.document_types.add(
             self.test_document_type
         )
 
-        test_workflow_template_document_type_count = self.test_workflow_template.document_types.count()
+        test_workflow_template_document_type_count = self._test_workflow_template.document_types.count()
 
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
 
@@ -726,7 +723,7 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
-            self.test_workflow_template.document_types.count(),
+            self._test_workflow_template.document_types.count(),
             test_workflow_template_document_type_count
         )
 
@@ -734,18 +731,18 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_workflow_template_document_type_remove_view_with_full_access(self):
-        self.test_workflow_template.document_types.add(
+        self._test_workflow_template.document_types.add(
             self.test_document_type
         )
 
-        test_workflow_template_document_type_count = self.test_workflow_template.document_types.count()
+        test_workflow_template_document_type_count = self._test_workflow_template.document_types.count()
 
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
         )
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
 
@@ -755,7 +752,7 @@ class WorkflowTemplateDocumentTypeViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_workflow_template.document_types.count(),
+            self._test_workflow_template.document_types.count(),
             test_workflow_template_document_type_count - 1
         )
 
@@ -764,7 +761,7 @@ class WorkflowTemplateDocumentTypeViewTestCase(
 
         self.assertEqual(events[0].action_object, self.test_document_type)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_workflow_template)
+        self.assertEqual(events[0].target, self._test_workflow_template)
         self.assertEqual(events[0].verb, event_workflow_template_edited.id)
 
 
@@ -801,7 +798,7 @@ class WorkflowTemplateViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_workflow_template)
+        self.assertEqual(events[0].target, self._test_workflow_template)
         self.assertEqual(events[0].verb, event_workflow_template_created.id)
 
     def test_workflow_template_delete_view_no_permission(self):
@@ -813,7 +810,7 @@ class WorkflowTemplateViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
-            self.test_workflow_template in Workflow.objects.all()
+            self._test_workflow_template in Workflow.objects.all()
         )
 
         events = self._get_test_events()
@@ -823,7 +820,7 @@ class WorkflowTemplateViewTestCase(
         self._create_test_workflow_template()
 
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_delete
         )
 
@@ -833,7 +830,7 @@ class WorkflowTemplateViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertFalse(
-            self.test_workflow_template in Workflow.objects.all()
+            self._test_workflow_template in Workflow.objects.all()
         )
 
         events = self._get_test_events()
@@ -842,16 +839,16 @@ class WorkflowTemplateViewTestCase(
     def test_workflow_template_edit_view_no_permission(self):
         self._create_test_workflow_template()
 
-        test_workflow_template_label = self.test_workflow_template.label
+        test_workflow_template_label = self._test_workflow_template.label
 
         self._clear_events()
 
         response = self._request_test_workflow_template_edit_view()
         self.assertEqual(response.status_code, 404)
 
-        self.test_workflow_template.refresh_from_db()
+        self._test_workflow_template.refresh_from_db()
         self.assertEqual(
-            self.test_workflow_template.label, test_workflow_template_label
+            self._test_workflow_template.label, test_workflow_template_label
         )
 
         events = self._get_test_events()
@@ -860,10 +857,10 @@ class WorkflowTemplateViewTestCase(
     def test_workflow_template_edit_view_with_access(self):
         self._create_test_workflow_template()
 
-        test_workflow_template_label = self.test_workflow_template.label
+        test_workflow_template_label = self._test_workflow_template.label
 
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_edit
         )
 
@@ -872,9 +869,9 @@ class WorkflowTemplateViewTestCase(
         response = self._request_test_workflow_template_edit_view()
         self.assertEqual(response.status_code, 302)
 
-        self.test_workflow_template.refresh_from_db()
+        self._test_workflow_template.refresh_from_db()
         self.assertNotEqual(
-            self.test_workflow_template.label, test_workflow_template_label
+            self._test_workflow_template.label, test_workflow_template_label
         )
 
         events = self._get_test_events()
@@ -882,7 +879,7 @@ class WorkflowTemplateViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_workflow_template)
+        self.assertEqual(events[0].target, self._test_workflow_template)
         self.assertEqual(events[0].verb, event_workflow_template_edited.id)
 
     def test_workflow_template_list_view_no_permission(self):
@@ -893,7 +890,7 @@ class WorkflowTemplateViewTestCase(
         response = self._request_test_workflow_template_list_view()
 
         self.assertNotContains(
-            response=response, text=self.test_workflow_template.label,
+            response=response, text=self._test_workflow_template.label,
             status_code=200
         )
 
@@ -904,7 +901,7 @@ class WorkflowTemplateViewTestCase(
         self._create_test_workflow_template()
 
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
 
@@ -912,7 +909,7 @@ class WorkflowTemplateViewTestCase(
 
         response = self._request_test_workflow_template_list_view()
         self.assertContains(
-            response=response, text=self.test_workflow_template.label,
+            response=response, text=self._test_workflow_template.label,
             status_code=200
         )
 
@@ -928,7 +925,7 @@ class WorkflowTemplateViewTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
-            self.test_workflow_template in Workflow.objects.all()
+            self._test_workflow_template in Workflow.objects.all()
         )
 
         events = self._get_test_events()
@@ -938,7 +935,7 @@ class WorkflowTemplateViewTestCase(
         self._create_test_workflow_template()
 
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_template_view
         )
 
@@ -982,7 +979,7 @@ class WorkflowTemplateDocumentViewTestCase(
 
     def test_workflows_launch_view_with_permission(self):
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_tools
         )
 
@@ -1002,7 +999,7 @@ class WorkflowTemplateDocumentViewTestCase(
 
     def test_trashed_document_workflows_launch_view_with_permission(self):
         self.grant_access(
-            obj=self.test_workflow_template,
+            obj=self._test_workflow_template,
             permission=permission_workflow_tools
         )
 

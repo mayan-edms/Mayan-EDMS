@@ -73,7 +73,7 @@ class WorkflowTransition(ExtraDataModelMixin, models.Model):
         action_object='self',
         event_manager_class=EventManagerMethodAfter,
         event=event_workflow_template_edited,
-        target='workflow',
+        target='workflow'
     )
     def delete(self, *args, **kwargs):
         return super().delete(*args, **kwargs)
@@ -87,7 +87,8 @@ class WorkflowTransition(ExtraDataModelMixin, models.Model):
             return True
 
     def get_field_display(self):
-        field_list = sorted([str(field) for field in self.fields.all()])
+        field_list = [str(field) for field in self.fields.all()]
+        field_list.sort()
 
         return ', '.join(field_list)
 
@@ -118,12 +119,12 @@ class WorkflowTransition(ExtraDataModelMixin, models.Model):
         created={
             'action_object': 'self',
             'event': event_workflow_template_edited,
-            'target': 'workflow',
+            'target': 'workflow'
         },
         edited={
             'action_object': 'self',
             'event': event_workflow_template_edited,
-            'target': 'workflow',
+            'target': 'workflow'
         }
     )
     def save(self, *args, **kwargs):
@@ -184,7 +185,7 @@ class WorkflowTransitionField(ExtraDataModelMixin, models.Model):
         action_object='self',
         event_manager_class=EventManagerMethodAfter,
         event=event_workflow_template_edited,
-        target='transition.workflow',
+        target='transition.workflow'
     )
     def delete(self, *args, **kwargs):
         return super().delete(*args, **kwargs)
@@ -202,19 +203,19 @@ class WorkflowTransitionField(ExtraDataModelMixin, models.Model):
         created={
             'action_object': 'self',
             'event': event_workflow_template_edited,
-            'target': 'transition.workflow',
+            'target': 'transition.workflow'
         },
         edited={
             'action_object': 'self',
             'event': event_workflow_template_edited,
-            'target': 'transition.workflow',
+            'target': 'transition.workflow'
         }
     )
     def save(self, *args, **kwargs):
         return super().save(*args, **kwargs)
 
 
-class WorkflowTransitionTriggerEvent(models.Model):
+class WorkflowTransitionTriggerEvent(ExtraDataModelMixin, models.Model):
     transition = models.ForeignKey(
         on_delete=models.CASCADE, related_name='trigger_events',
         to=WorkflowTransition, verbose_name=_('Transition')
@@ -225,13 +226,39 @@ class WorkflowTransitionTriggerEvent(models.Model):
     )
 
     class Meta:
+        unique_together = ('transition', 'event_type')
         verbose_name = _('Workflow transition trigger event')
         verbose_name_plural = _('Workflow transitions trigger events')
 
     def __str__(self):
         return force_text(s=self.transition)
 
+    @method_event(
+        action_object='self',
+        event_manager_class=EventManagerMethodAfter,
+        event=event_workflow_template_edited,
+        target='transition.workflow'
+    )
+    def delete(self, *args, **kwargs):
+        return super().delete(*args, **kwargs)
+
     def get_hash(self):
         return hashlib.sha256(
             serializers.serialize(format='json', queryset=(self,)).encode()
         ).hexdigest()
+
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'action_object': 'self',
+            'event': event_workflow_template_edited,
+            'target': 'transition.workflow'
+        },
+        edited={
+            'action_object': 'self',
+            'event': event_workflow_template_edited,
+            'target': 'transition.workflow'
+        }
+    )
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)

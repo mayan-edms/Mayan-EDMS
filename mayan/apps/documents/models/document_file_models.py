@@ -416,6 +416,10 @@ class DocumentFile(
         queryset = ModelQueryFields.get(model=DocumentFilePage).get_queryset()
         return queryset.filter(pk__in=self.file_pages.values('pk'))
 
+    @property
+    def pages_first(self):
+        return self.pages.first()
+
     def save(self, *args, **kwargs):
         """
         Overloaded save method that updates the document file's checksum,

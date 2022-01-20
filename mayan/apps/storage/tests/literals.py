@@ -50,3 +50,5 @@ TEST_ARCHIVE_MSG_STRANGE_DATE_PATH = os.path.join(
     settings.BASE_DIR, 'apps', 'common', 'tests', 'contrib',
     TEST_ARCHIVE_MSG_STRANGE_DATE_FILENAME
 )
+
+TEST_SHARED_UPLOADED_FILE_FILENAME = 'test_shared_uploaded_file_filename'

@@ -38,6 +38,9 @@ class CabinetSerializer(serializers.ModelSerializer):
         allow_null=True, queryset=Cabinet.objects.all(), required=False
     )
 
+    # TODO: Version 5.0, remove 'parent' fields from GET request as it is
+    # replaced by 'parent_id'.
+
     class Meta:
         extra_kwargs = {
             'url': {
@@ -47,12 +50,12 @@ class CabinetSerializer(serializers.ModelSerializer):
         }
         fields = (
             'children', 'documents_url', 'full_path', 'id', 'label',
-            'parent', 'parent_url', 'url'
+            'parent_id', 'parent', 'parent_url', 'url'
         )
         model = Cabinet
         read_only_fields = (
             'children', 'documents_url', 'full_path', 'id',
-            'parent_url', 'url'
+            'parent_id', 'parent_url', 'url'
         )
 
     def get_full_path(self, obj):

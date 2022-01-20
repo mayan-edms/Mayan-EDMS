@@ -5,7 +5,6 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
-from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
@@ -46,7 +45,7 @@ class WorkflowInstance(models.Model):
         verbose_name_plural = _('Workflow instances')
 
     def __str__(self):
-        return force_text(s=getattr(self, 'workflow', 'WI'))
+        return str(self.workflow)
 
     def do_transition(
         self, transition, comment=None, extra_data=None, user=None
@@ -194,7 +193,7 @@ class WorkflowInstanceLogEntry(models.Model):
         verbose_name_plural = _('Workflow instance log entries')
 
     def __str__(self):
-        return force_text(s=self.transition)
+        return str(self.transition)
 
     def clean(self):
         if self.transition not in self.workflow_instance.get_transition_choices(_user=self.user):

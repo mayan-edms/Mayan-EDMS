@@ -60,7 +60,7 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-django==3.2.8
+django==3.2.11
 Pillow==8.3.1
 PyPDF2==1.26.0
 PyYAML==5.4.1
@@ -68,6 +68,7 @@ Whoosh==2.7.4
 bleach==4.0.0
 celery==5.1.2
 django-activity-stream==0.10.0
+django-auth-ldap==4.0.0
 django-celery-beat==2.2.1
 django-colorful==1.3
 django-cors-headers==3.8.0

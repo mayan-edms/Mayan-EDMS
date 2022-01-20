@@ -1,5 +1,3 @@
-from pathlib import Path
-
 from PIL import Image
 import qrcode
 from qrcode.image.styledpil import StyledPilImage

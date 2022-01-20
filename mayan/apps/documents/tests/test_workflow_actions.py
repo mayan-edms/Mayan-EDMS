@@ -42,7 +42,7 @@ class WorkflowActionActionTestCase(
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_transition()
-        self.test_workflow_template_states[1].actions.create(
+        self._test_workflow_template_states[1].actions.create(
             action_data=json.dumps(
                 obj={'document_type': self.test_document_types[1].pk}
             ),
@@ -50,7 +50,7 @@ class WorkflowActionActionTestCase(
             label='', when=WORKFLOW_ACTION_ON_ENTRY,
 
         )
-        self.test_workflow_template.document_types.add(
+        self._test_workflow_template.document_types.add(
             self.test_document_types[0]
         )
 
@@ -61,7 +61,7 @@ class WorkflowActionActionTestCase(
         document_type = self.test_document.document_type
 
         self.test_document.workflows.first().do_transition(
-            transition=self.test_workflow_template_transition
+            transition=self._test_workflow_template_transition
         )
 
         self.assertNotEqual(
@@ -86,18 +86,20 @@ class WorkflowActionActionTestCase(
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_transition()
-        self.test_workflow_template_states[1].actions.create(
+        self._test_workflow_template_states[1].actions.create(
             action_path=TEST_TRASH_DOCUMENT_WORKFLOW_ACTION_DOTTED_PATH,
             label='', when=WORKFLOW_ACTION_ON_ENTRY,
         )
-        self.test_workflow_template.document_types.add(self.test_document_type)
+        self._test_workflow_template.document_types.add(
+            self.test_document_type
+        )
 
         trashed_document_count = TrashedDocument.objects.count()
 
         self._create_test_document_stub()
 
         self.test_document.workflows.first().do_transition(
-            transition=self.test_workflow_template_transition
+            transition=self._test_workflow_template_transition
         )
 
         self.assertEqual(

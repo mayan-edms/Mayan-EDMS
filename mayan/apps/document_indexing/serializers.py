@@ -76,7 +76,7 @@ class IndexInstanceNodeSerializer(serializers.ModelSerializer):
         )
 
     def get_parent_url(self, obj):
-        if obj.parent:
+        if obj.parent and not obj.parent.is_root_node():
             return reverse(
                 viewname='rest_api:indexinstancenode-detail', kwargs={
                     'index_instance_id': obj.index().pk,
@@ -102,15 +102,20 @@ class IndexTemplateNodeSerializer(serializers.ModelSerializer):
     parent_url = serializers.SerializerMethodField(read_only=True)
     url = serializers.SerializerMethodField(read_only=True)
 
+    # TODO: Version 5.0, remove 'parent' from GET fields as this is replaced
+    # by 'parent_id'.
+    # TODO: Version 5.0, remove 'index' from GET fields as this is replaced
+    # by 'index_id'.
     class Meta:
         fields = (
-            'children', 'enabled', 'expression', 'id', 'index', 'index_url',
-            'level', 'link_documents', 'parent', 'parent_url', 'url'
+            'children', 'enabled', 'expression', 'id', 'index', 'index_id',
+            'index_url', 'level', 'link_documents', 'parent', 'parent_id',
+            'parent_url', 'url'
         )
         model = IndexTemplateNode
         read_only_fields = (
-            'children', 'id', 'index', 'index_url', 'level', 'parent_url',
-            'url'
+            'children', 'id', 'index', 'index_id', 'index_url', 'level',
+            'parent_id', 'parent_url', 'url'
         )
 
     def get_index_url(self, obj):
@@ -121,7 +126,7 @@ class IndexTemplateNodeSerializer(serializers.ModelSerializer):
         )
 
     def get_parent_url(self, obj):
-        if obj.parent:
+        if obj.parent and not obj.parent.is_root_node():
             return reverse(
                 viewname='rest_api:indextemplatenode-detail', kwargs={
                     'index_template_id': obj.index.pk,

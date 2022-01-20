@@ -7,13 +7,13 @@ from mayan.apps.common.classes import QuerysetParametersSerializer
 from mayan.apps.views.generics import ConfirmView
 from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
 
-from ..classes import EventType
 from ..permissions import permission_events_export
 from ..tasks import task_event_queryset_export
 
+from .mixins import EventViewMixin
+
 __all__ = (
-    'CurrentUserEventExportView', 'EventListExportView',
-    'ObjectEventExportView', 'VerbEventExportView'
+    'EventListExportView', 'ObjectEventExportView', 'VerbEventExportView'
 )
 
 
@@ -84,26 +84,14 @@ class ObjectEventExportView(
         }
 
 
-class CurrentUserEventExportView(ObjectEventExportView):
-    object_permission = permission_events_export
-
-    def get_external_object(self):
-        return self.request.user
-
-    def get_queryset_parameters(self):
-        return {
-            '_method_name': 'actor', 'obj': self.external_object
-        }
-
-
-class VerbEventExportView(EventExportBaseView):
+class VerbEventExportView(EventViewMixin, EventExportBaseView):
     def get_extra_context(self):
         context = super().get_extra_context()
         context.update(
             {
                 'title': _(
-                    'Events of type: %s'
-                ) % EventType.get(name=self.kwargs['verb']),
+                    'Export events of type: %s'
+                ) % self.get_event_type(id=self.kwargs['verb'])
             }
         )
         return context
