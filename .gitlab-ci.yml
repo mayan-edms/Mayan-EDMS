@@ -139,6 +139,7 @@ job_docker_testing:
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - DOCKER_IMAGE_MAYAN_NAME=$CI_REGISTRY_IMAGE
     - make docker-build
+    - docker tag "mayanedms/mayanedms:$DOCKER_VERSION" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout $CI_REGISTRY
   services:
