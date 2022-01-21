@@ -118,14 +118,27 @@ job_docker_nightly:
 
 job_docker_testing:
   before_script:
-    - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - set -a && . ./config.env && set +a
+    - apk update
+    - apk add gcc libffi-dev libjpeg-turbo-dev make musl-dev python3 python3-dev zlib-dev
+    - python3 -m venv venv
+    - . venv/bin/activate
+    - pip install pip==$PYTHON_PIP_VERSION
+    - cat requirements/base.txt | grep -v 'django-auth-ldap'| pip install -r /dev/stdin
+  cache:
+    paths:
+      - ~/.cache/pip/
+      - /var/cache/apk
   image: docker:20-dind
   only:
     - releases/testing
   script:
-    - PYTHON_BIN=/usr/bin/python3
+    - mkdir -p /etc/docker
+    - if [ "${REGISTRY_MIRRORS}" ]; then echo "{\"registry-mirrors\":\[\"${REGISTRY_MIRRORS}\"\]}" > /etc/docker/daemon.json; fi
     - DOCKER_VERSION=`cat docker/rootfs/version`
-    - docker build --build-arg APT_PROXY=$APT_PROXY --build-arg PIP_INDEX_URL=$PIP_INDEX_URL --build-arg PIP_TRUSTED_HOST=$PIP_TRUSTED_HOST --file docker/Dockerfile --pull --tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" .
+    - DOCKER_IMAGE_MAYAN_NAME=$CI_REGISTRY_IMAGE
+    - make docker-build
+    - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout $CI_REGISTRY
   services:
@@ -232,8 +245,6 @@ job_python_push_pypi:
   before_script:
     - set -a && . ./config.env && set +a
     - if [ "${APT_PROXY}" ]; then echo "Acquire::http { Proxy \"http://${APT_PROXY}\"; };" > /etc/apt/apt.conf.d/01proxy; fi
-    - echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
-    - echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
     - apt-get update
     - apt-get install --yes curl exiftool gcc ghostscript gnupg1 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python3-venv python3-dev tesseract-ocr
     - python3 -m venv venv
@@ -296,11 +307,8 @@ job_sqlite_upgrade_test:
   before_script:
     - set -a && . ./config.env && set +a
     - if [ "${APT_PROXY}" ]; then echo "Acquire::http { Proxy \"http://${APT_PROXY}\"; };" > /etc/apt/apt.conf.d/01proxy; fi
-    - echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
-    - echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
     - apt-get update
-    - apt-get install --yes --no-install-recommends --target-release buster-backports libreoffice-calc-nogui libreoffice-draw-nogui libreoffice-impress-nogui libreoffice-math-nogui libreoffice-writer-nogui
-    - apt-get install --yes --no-install-recommends curl exiftool gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python3-venv python3-dev sane-utils tesseract-ocr tesseract-ocr-deu
+    - apt-get install --yes --no-install-recommends curl exiftool gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libreoffice-calc-nogui libreoffice-draw-nogui libreoffice-impress-nogui libreoffice-math-nogui libreoffice-writer-nogui libtiff-dev make poppler-utils python3-venv python3-dev sane-utils tesseract-ocr tesseract-ocr-deu
     - python3 -m venv venv
     - . venv/bin/activate
     - pip install pip==$PYTHON_PIP_VERSION
