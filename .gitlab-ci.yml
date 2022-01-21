@@ -118,6 +118,7 @@ job_docker_nightly:
 
 job_docker_testing:
   before_script:
+    - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - set -a && . ./config.env && set +a
     - apk update
     - apk add gcc libffi-dev libjpeg-turbo-dev make musl-dev python3 python3-dev zlib-dev
@@ -138,7 +139,6 @@ job_docker_testing:
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - DOCKER_IMAGE_MAYAN_NAME=$CI_REGISTRY_IMAGE
     - make docker-build
-    - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout $CI_REGISTRY
   services:
