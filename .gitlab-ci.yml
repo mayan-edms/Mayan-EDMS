@@ -120,7 +120,7 @@ job_docker_nightly:
   script:
     - mkdir -p /etc/docker
     - if [ "${REGISTRY_MIRRORS}" ]; then echo "{\"registry-mirrors\":\[\"${REGISTRY_MIRRORS}\"\]}" > /etc/docker/daemon.json; fi
-    - DOCKER_VERSION=$CI_COMMIT_REF_SLUG
+    - DOCKER_VERSION=`cat docker/rootfs/version`
     - DOCKER_IMAGE_MAYAN_NAME=$CI_REGISTRY_IMAGE
     - make docker-build
     - docker tag "mayanedms/mayanedms:$DOCKER_VERSION" "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
