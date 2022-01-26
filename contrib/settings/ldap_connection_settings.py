@@ -11,7 +11,7 @@
 import ldap
 
 from django_auth_ldap.config import (
-    LDAPSearch, LDAPSearchUnion, NestedActiveDirectoryGroupType
+    LDAPSearch, LDAPSearchUnion, NestedActiveDirectoryGroupType, GroupOfNamesType
 )
 
 from mayan.settings.production import *  # NOQA
@@ -22,6 +22,7 @@ ldap.set_option(ldap.OPT_REFERRALS, False)
 # Turn of debug output, turn this off when everything is working as expected
 ldap.set_option(ldap.OPT_DEBUG_LEVEL, 1)
 
+# Whether to update the user record on every login
 # Default: True
 AUTH_LDAP_ALWAYS_UPDATE_USER = True
 
@@ -38,6 +39,9 @@ AUTH_LDAP_ALWAYS_UPDATE_USER = True
 # $ echo "+$CERT" >/etc/ca-certificates/update.d/activate_my_cert
 # $ dpkg-reconfigure ca-certificates;
 AUTH_LDAP_START_TLS = False
+# This option disables certificate checking if the method above does not work
+# potentially dangerous!
+# ldap.set_option(ldap.OPT_X_TLS_REQUIRE_CERT, ldap.OPT_X_TLS_NEVER)
 
 LDAP_ADDITIONAL_USER_DN = 'dc=people'
 LDAP_ADMIN_DN = ''
