@@ -95,7 +95,10 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
 
 class WorkflowStateForm(forms.ModelForm):
     class Meta:
-        fields = ('initial', 'label', 'completion')
+        fields = (
+            'initial', 'label', 'completion', 'expiration_enabled',
+            'expiration_unit', 'expiration_amount', 'expiration_transition'
+        )
         model = WorkflowState
 
 

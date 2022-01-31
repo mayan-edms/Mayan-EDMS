@@ -5,7 +5,8 @@ from ...models import (
 )
 from ...tasks import (
     task_launch_all_workflows, task_launch_all_workflow_for,
-    task_launch_workflow, task_launch_workflow_for
+    task_launch_workflow, task_launch_workflow_for,
+    task_workflow_instance_check_expiration_all
 )
 
 from ..literals import (
@@ -75,6 +76,9 @@ class WorkflowTaskTestCaseMixin:
                 'workflow_id': self._test_workflow_template.pk
             }
         ).get()
+
+    def _execute_task_workflow_instance_check_expiration_all(self):
+        task_workflow_instance_check_expiration_all.apply_async().get()
 
 
 class WorkflowTemplateDocumentTypeViewTestMixin:
@@ -294,6 +298,13 @@ class WorkflowTemplateTestMixin:
             transition=self._test_workflow_template_transition,
             user=self._test_case_user
         )
+
+    def _set_test_workflow_template_state_expiration_properties(self):
+        self._test_workflow_template_states[0].expiration_enabled = True
+        self._test_workflow_template_states[0].expiration_unit = 'milliseconds'
+        self._test_workflow_template_states[0].expiration_amount = '1'
+        self._test_workflow_template_states[0].expiration_transition = self._test_workflow_template_transition
+        self._test_workflow_template_states[0].save()
 
     def _transition_test_workflow_instance(self, extra_data=None):
         self.test_document.workflows.first().do_transition(

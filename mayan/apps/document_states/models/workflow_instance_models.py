@@ -1,3 +1,4 @@
+import datetime
 import json
 import logging
 
@@ -5,6 +6,7 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
+from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
@@ -27,6 +29,11 @@ class WorkflowInstance(models.Model):
         on_delete=models.CASCADE, related_name='instances', to=Workflow,
         verbose_name=_('Workflow')
     )
+    datetime = models.DateTimeField(
+        auto_now_add=True, db_index=True, help_text=_(
+            'Workflow instance creation date time.'
+        ), verbose_name=_('Datetime')
+    )
     document = models.ForeignKey(
         on_delete=models.CASCADE, related_name='workflows', to=Document,
         verbose_name=_('Document')
@@ -46,6 +53,22 @@ class WorkflowInstance(models.Model):
 
     def __str__(self):
         return str(self.workflow)
+
+    def check_expiration(self):
+        current_state = self.get_current_state()
+
+        if current_state.expiration_enabled:
+            timedelta = datetime.timedelta(
+                **{
+                    current_state.expiration_unit: current_state.expiration_amount
+                }
+            )
+
+            if now() > self.get_last_log_entry_datetime() + timedelta:
+                self.do_transition(
+                    transition=current_state.expiration_transition,
+                    comment=_('State expiration reached.')
+                )
 
     def do_transition(
         self, transition, comment=None, extra_data=None, user=None
@@ -100,26 +123,30 @@ class WorkflowInstance(models.Model):
         archived; this field will tell at the current state where the
         document is right now.
         """
-        try:
-            return self.get_last_transition().destination_state
-        except AttributeError:
+        last_transition = self.get_last_transition()
+        if last_transition:
+            return last_transition.destination_state
+        else:
             return self.workflow.get_initial_state()
 
     def get_last_log_entry(self):
-        try:
-            return self.log_entries.order_by('datetime').last()
-        except AttributeError:
-            return None
+        return self.log_entries.order_by('datetime').last()
+
+    def get_last_log_entry_datetime(self):
+        last_log_entry = self.get_last_log_entry()
+        if last_log_entry:
+            return last_log_entry.datetime
+        else:
+            return self.datetime
 
     def get_last_transition(self):
         """
         Last Transition - The last transition used by the last user to put
         the document in the actual state.
         """
-        try:
-            return self.get_last_log_entry().transition
-        except AttributeError:
-            return None
+        last_log_entry = self.get_last_log_entry()
+        if last_log_entry:
+            return last_log_entry.transition
 
     def get_runtime_context(self):
         """

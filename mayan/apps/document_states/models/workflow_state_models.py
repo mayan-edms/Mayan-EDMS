@@ -11,6 +11,9 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.literals import (
+    TIME_DELTA_UNIT_CHOICES, TIME_DELTA_UNIT_DAYS
+)
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_view
@@ -66,6 +69,28 @@ class WorkflowState(ExtraDataModelMixin, models.Model):
             'The percent of completion that this state represents in '
             'relation to the workflow. Use numbers without the percent sign.'
         ), verbose_name=_('Completion')
+    )
+    expiration_enabled = models.BooleanField(
+        default=False, help_text=_(
+            'Enable automatic transition the workflow after a specified '
+            'amount of time has elapsed in the state without change.'
+        ), verbose_name=_('Enable expiration')
+    )
+    expiration_unit = models.CharField(
+        blank=True, choices=TIME_DELTA_UNIT_CHOICES,
+        default=TIME_DELTA_UNIT_DAYS, max_length=32, verbose_name=_(
+            'Expiration time unit'
+        )
+    )
+    expiration_amount = models.PositiveIntegerField(
+        blank=True, default=1, help_text=_(
+            'Amount of the selected expiration units of time.'
+        ), verbose_name=_('Expiration amount')
+    )
+    expiration_transition = models.ForeignKey(
+        blank=True, null=True, on_delete=models.SET_NULL,
+        related_name='states', to='WorkflowTransition',
+        verbose_name=_('Expiration transition')
     )
 
     class Meta:

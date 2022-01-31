@@ -17,13 +17,16 @@ class WorkflowTemplateStateActionModelTestCase(
     WorkflowTemplateStateActionTestMixin, WorkflowTemplateTestMixin,
     GenericDocumentTestCase
 ):
+    auto_upload_test_document = False
+
     def setUp(self):
         super().setUp()
-        self._create_test_workflow_template()
+        self._create_test_document_stub()
+
+        self._create_test_workflow_template(add_test_document_type=True)
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_transition()
-        self._test_workflow_template.document_types.add(self.test_document_type)
 
     def _get_test_workflow_state_action_execute_flag(self):
         return getattr(
@@ -153,3 +156,69 @@ class WorkflowTemplateStateActionModelTestCase(
             self.test_document.description,
             TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_DESCRIPTION
         )
+
+
+class WorkflowTemplateStateExpirationModelTestCase(
+    WorkflowTemplateTestMixin, GenericDocumentTestCase
+):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_workflow_template(add_test_document_type=True)
+        self._create_test_workflow_template_state()
+        self._create_test_workflow_template_state()
+        self._create_test_workflow_template_transition()
+
+        self._create_test_document_stub()
+
+    def test_workflow_template_state_expiration(self):
+        test_workflow_instance = self.test_document.workflows.first()
+        test_workflow_instance_state = test_workflow_instance.get_current_state()
+
+        self._set_test_workflow_template_state_expiration_properties()
+
+        self._clear_events()
+
+        test_workflow_instance.check_expiration()
+        self.assertNotEqual(
+            test_workflow_instance.get_current_state(),
+            test_workflow_instance_state
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_workflow_template_state_no_expiration(self):
+        test_workflow_instance = self.test_document.workflows.first()
+        test_workflow_instance_state = test_workflow_instance.get_current_state()
+
+        self._clear_events()
+
+        test_workflow_instance.check_expiration()
+        self.assertEqual(
+            test_workflow_instance.get_current_state(),
+            test_workflow_instance_state
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_workflow_template_state_no_transition(self):
+        test_workflow_instance = self.test_document.workflows.first()
+        test_workflow_instance_state = test_workflow_instance.get_current_state()
+
+        self._set_test_workflow_template_state_expiration_properties()
+        self._test_workflow_template_states[0].expiration_transition = None
+        self._test_workflow_template_states[0].save()
+
+        self._clear_events()
+
+        test_workflow_instance.check_expiration()
+        self.assertEqual(
+            test_workflow_instance.get_current_state(),
+            test_workflow_instance_state
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)

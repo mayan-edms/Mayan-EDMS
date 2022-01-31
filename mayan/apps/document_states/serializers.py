@@ -114,6 +114,7 @@ class WorkflowTemplateStateSerializer(serializers.HyperlinkedModelSerializer):
         ),
         view_name='rest_api:workflow-template-state-action-list'
     )
+    expiration_transition = serializers.SerializerMethodField()
     url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
@@ -124,8 +125,7 @@ class WorkflowTemplateStateSerializer(serializers.HyperlinkedModelSerializer):
                 'lookup_field': 'pk',
                 'lookup_url_kwarg': 'workflow_template_state_id',
             }
-        ),
-        view_name='rest_api:workflow-template-state-detail'
+        ), view_name='rest_api:workflow-template-state-detail'
     )
     workflow_template_id = serializers.IntegerField(
         read_only=True, source='workflow_id'
@@ -137,12 +137,21 @@ class WorkflowTemplateStateSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         fields = (
-            'actions_url', 'completion', 'id', 'initial', 'label', 'url',
+            'actions_url', 'completion',
+
+            'expiration_enabled', 'expiration_unit', 'expiration_amount',
+            'expiration_transition',
+            'id', 'initial', 'label', 'url',
             'workflow_template_id', 'workflow_template_url'
         )
         model = WorkflowState
         read_only_fields = (
             'id', 'url', 'workflow_template_id', 'workflow_template_url'
+        )
+
+    def get_expiration_transition(self, instance):
+        return WorkflowTemplateTransitionSerializer(
+            context=self.context, instance=instance.expiration_transition
         )
 
 
@@ -567,7 +576,7 @@ class WorkflowInstanceSerializer(serializers.ModelSerializer):
 
     class Meta:
         fields = (
-            'context', 'current_state', 'document_url', 'id',
+            'context', 'current_state', 'datetime', 'document_url', 'id',
             'last_log_entry', 'log_entries_url',
             'log_entry_transitions_url', 'url', 'workflow_template',
             'workflow_template_url'

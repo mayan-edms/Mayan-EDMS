@@ -14,8 +14,8 @@ from .mixins.workflow_template_transition_mixins import (
 
 class WorkflowTransitionFieldViewTestCase(
     WorkflowTemplateTestMixin, WorkflowTransitionFieldTestMixin,
-    WorkflowTransitionFieldViewTestMixin, WorkflowTemplateTransitionViewTestMixin,
-    GenericViewTestCase
+    WorkflowTransitionFieldViewTestMixin,
+    WorkflowTemplateTransitionViewTestMixin, GenericViewTestCase
 ):
     def setUp(self):
         super().setUp()
