@@ -18,5 +18,5 @@ queue_checkouts_periodic.add_task_type(
     dotted_path='mayan.apps.checkouts.tasks.task_check_expired_check_outs',
     schedule=timedelta(
         seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL
-    ),
+    )
 )
