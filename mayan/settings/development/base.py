@@ -35,6 +35,8 @@ INSTALLED_APPS.insert(0, 'whitenoise.runserver_nostatic')
 LOGGING_LEVEL = 'DEBUG'
 ROOT_URLCONF = 'mayan.urls.development'
 
+SEARCH_BACKEND = 'mayan.apps.dynamic_search.backends.django.DjangoSearchBackend'
+
 TEMPLATES[0]['OPTIONS']['loaders'] = (  # NOQA: F405
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
