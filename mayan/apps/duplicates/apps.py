@@ -74,14 +74,6 @@ class DuplicatesApp(MayanAppConfig):
             links=(link_duplicated_document_scan,)
         )
 
-        # DuplicateSourceDocument
-
-        menu_multi_item.add_proxy_inclusions(source=DuplicateSourceDocument)
-
-        # DuplicateTargetDocument
-
-        menu_multi_item.add_proxy_inclusions(source=DuplicateTargetDocument)
-
         post_delete.connect(
             dispatch_uid='duplicates_handler_remove_empty_duplicates_lists',
             receiver=handler_remove_empty_duplicates_lists,
