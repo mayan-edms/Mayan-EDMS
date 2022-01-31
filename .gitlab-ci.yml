@@ -11,6 +11,19 @@ stages:
 # Docker
 
 job_docker_build:
+  before_script:
+    - set -a && . ./config.env && set +a
+    - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - apk update
+    - apk add gcc libffi-dev libjpeg-turbo-dev make musl-dev python3 python3-dev zlib-dev
+    - python3 -m venv venv
+    - . venv/bin/activate
+    - pip install pip==$PYTHON_PIP_VERSION
+    - cat requirements/base.txt | grep -v 'django-auth-ldap'| pip install -r /dev/stdin
+  cache:
+    paths:
+      - ~/.cache/pip/
+      - /var/cache/apk
   image: docker:20-dind
   only:
     - releases/all_major
@@ -20,9 +33,12 @@ job_docker_build:
     - tests/all
     - tests/docker
   script:
-    - docker build --build-arg APT_PROXY=$APT_PROXY --build-arg PIP_INDEX_URL=$PIP_INDEX_URL --build-arg PIP_TRUSTED_HOST=$PIP_TRUSTED_HOST --file docker/Dockerfile --pull --tag "mayanedms" .
+    - mkdir -p /etc/docker
+    - if [ "${REGISTRY_MIRRORS}" ]; then echo "{\"registry-mirrors\":\[\"${REGISTRY_MIRRORS}\"\]}" > /etc/docker/daemon.json; fi
     - DOCKER_VERSION=`cat docker/rootfs/version`
-    - docker tag "mayanedms" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
+    - DOCKER_IMAGE_MAYAN_NAME=$CI_REGISTRY_IMAGE
+    - make docker-build
+    - docker tag "mayanedms/mayanedms:$DOCKER_VERSION" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - SERVICE_POSTGRES_IP=$(cat /etc/hosts | awk '{if ($2 == "postgres") print $1;}')
     - docker run --rm --add-host="postgres:$SERVICE_POSTGRES_IP" -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql_psycopg2','NAME':'mayan','USER':'mayan','PASSWORD':'mayanuserpass','HOST':'postgres'}}" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" run_tests
     - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
@@ -101,13 +117,29 @@ job_docker_push_minor:
 
 job_docker_nightly:
   before_script:
+    - set -a && . ./config.env && set +a
     - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - apk update
+    - apk add gcc libffi-dev libjpeg-turbo-dev make musl-dev python3 python3-dev zlib-dev
+    - python3 -m venv venv
+    - . venv/bin/activate
+    - pip install pip==$PYTHON_PIP_VERSION
+    - cat requirements/base.txt | grep -v 'django-auth-ldap'| pip install -r /dev/stdin
+  cache:
+    paths:
+      - ~/.cache/pip/
+      - /var/cache/apk
   image: docker:20-dind
   only:
     - releases/nightly
     - releases/staging
   script:
-    - docker build --build-arg APT_PROXY=$APT_PROXY --build-arg PIP_INDEX_URL=$PIP_INDEX_URL --build-arg PIP_TRUSTED_HOST=$PIP_TRUSTED_HOST --file docker/Dockerfile --pull --tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
+    - mkdir -p /etc/docker
+    - if [ "${REGISTRY_MIRRORS}" ]; then echo "{\"registry-mirrors\":\[\"${REGISTRY_MIRRORS}\"\]}" > /etc/docker/daemon.json; fi
+    - DOCKER_VERSION=`cat docker/rootfs/version`
+    - DOCKER_IMAGE_MAYAN_NAME=$CI_REGISTRY_IMAGE
+    - make docker-build
+    - docker tag "mayanedms/mayanedms:$DOCKER_VERSION" "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
     - docker logout $CI_REGISTRY
   services:
@@ -119,6 +151,7 @@ job_docker_nightly:
 job_docker_testing:
   before_script:
     - set -a && . ./config.env && set +a
+    - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - apk update
     - apk add gcc libffi-dev libjpeg-turbo-dev make musl-dev python3 python3-dev zlib-dev
     - python3 -m venv venv
@@ -138,7 +171,7 @@ job_docker_testing:
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - DOCKER_IMAGE_MAYAN_NAME=$CI_REGISTRY_IMAGE
     - make docker-build
-    - docker login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker tag "mayanedms/mayanedms:$DOCKER_VERSION" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout $CI_REGISTRY
   services:
