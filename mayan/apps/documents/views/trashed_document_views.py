@@ -2,7 +2,7 @@ import logging
 
 from django.contrib import messages
 from django.urls import reverse, reverse_lazy
-from django.utils.translation import ugettext_lazy as _, ungettext
+from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.settings import setting_home_view
@@ -33,21 +33,21 @@ class DocumentTrashView(MultipleObjectConfirmActionView):
     object_permission = permission_document_trash
     pk_url_kwarg = 'document_id'
     source_queryset = Document.valid.all()
+    success_message_single = _(
+        'Document "%(object)s" moved to trash.'
+    )
     success_message_singular = _(
         '%(count)d document moved to the trash.'
     )
     success_message_plural = _(
         '%(count)d documents moved to the trash.'
     )
+    title_single = _('Move the document "%(object)s" to trash?')
+    title_singular = _('Move the selected document to the trash?')
+    title_plural = _('Move the %(count)d selected documents to trash?')
 
     def get_extra_context(self):
-        context = {
-            'title': ungettext(
-                singular='Move the selected document to the trash?',
-                plural='Move the selected documents to the trash?',
-                number=self.object_list.count()
-            )
-        }
+        context = {}
 
         if self.object_list.count() == 1:
             context['object'] = self.object_list.first()
@@ -94,21 +94,21 @@ class TrashedDocumentDeleteView(MultipleObjectConfirmActionView):
     model = TrashedDocument
     object_permission = permission_trashed_document_delete
     pk_url_kwarg = 'document_id'
+    success_message_single = _(
+        'Trash document "%(object)s" submitted for deletion.'
+    )
     success_message_singular = _(
         '%(count)d trashed document submitted for deletion.'
     )
     success_message_plural = _(
         '%(count)d trashed documents submitted for deletion.'
     )
+    title_single = _('Delete the trashed document "%(object)s"?')
+    title_singular = _('Delete the selected trashed document?')
+    title_plural = _('Delete the %(count)d selected trashed documents?')
 
     def get_extra_context(self):
-        context = {
-            'title': ungettext(
-                singular='Delete the selected trashed document?',
-                plural='Delete the selected trashed documents?',
-                number=self.object_list.count()
-            )
-        }
+        context = {}
 
         if self.object_list.count() == 1:
             context['object'] = self.object_list.first()
@@ -158,21 +158,21 @@ class TrashedDocumentRestoreView(MultipleObjectConfirmActionView):
     model = TrashedDocument
     object_permission = permission_trashed_document_restore
     pk_url_kwarg = 'document_id'
+    success_message_single = _(
+        'Trashed document "%(object)s" restored.'
+    )
     success_message_singular = _(
         '%(count)d trashed document restored.'
     )
     success_message_plural = _(
         '%(count)d trashed documents restored.'
     )
+    title_single = _('Restore the trashed document: %(object)s')
+    title_singular = _('Restore the selected trashed document?')
+    title_plural = _('Restore the %(count)d selected trashed documents?')
 
     def get_extra_context(self):
-        context = {
-            'title': ungettext(
-                singular='Restore the selected trashed document?',
-                plural='Restore the selected trashed documents?',
-                number=self.object_list.count()
-            )
-        }
+        context = {}
 
         if self.object_list.count() == 1:
             context['object'] = self.object_list.first()
