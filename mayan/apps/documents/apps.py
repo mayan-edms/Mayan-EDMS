@@ -995,22 +995,7 @@ class DocumentsApp(MayanAppConfig):
                 link_document_multiple_restore, link_document_multiple_delete
             ), sources=(TrashedDocument,)
         )
-
-        # RecentlyAccessedDocument
-
-        menu_multi_item.add_proxy_inclusions(source=RecentlyAccessedDocument)
-
-        # RecentlyCreatedDocument
-
-        menu_multi_item.add_proxy_inclusions(source=RecentlyCreatedDocument)
-
-        # Search proxies
-
-        menu_multi_item.add_proxy_inclusions(source=DocumentSearchResult)
-        menu_multi_item.add_proxy_inclusions(source=DocumentFileSearchResult)
-        menu_multi_item.add_proxy_inclusions(source=DocumentFilePageSearchResult)
-        menu_multi_item.add_proxy_inclusions(source=DocumentVersionSearchResult)
-        menu_multi_item.add_proxy_inclusions(source=DocumentVersionPageSearchResult)
+        menu_multi_item.add_proxy_exclusion(source=TrashedDocument)
 
         post_migrate.connect(
             dispatch_uid='documents_handler_create_document_file_page_image_cache',

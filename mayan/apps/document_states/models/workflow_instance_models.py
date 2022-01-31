@@ -100,26 +100,23 @@ class WorkflowInstance(models.Model):
         archived; this field will tell at the current state where the
         document is right now.
         """
-        try:
-            return self.get_last_transition().destination_state
-        except AttributeError:
+        last_transition = self.get_last_transition()
+        if last_transition:
+            return last_transition.destination_state
+        else:
             return self.workflow.get_initial_state()
 
     def get_last_log_entry(self):
-        try:
-            return self.log_entries.order_by('datetime').last()
-        except AttributeError:
-            return None
+        return self.log_entries.order_by('datetime').last()
 
     def get_last_transition(self):
         """
         Last Transition - The last transition used by the last user to put
         the document in the actual state.
         """
-        try:
-            return self.get_last_log_entry().transition
-        except AttributeError:
-            return None
+        last_log_entry = self.get_last_log_entry()
+        if last_log_entry:
+            return last_log_entry.transition
 
     def get_runtime_context(self):
         """

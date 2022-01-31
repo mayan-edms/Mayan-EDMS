@@ -219,6 +219,10 @@
 - Add support for launching workflows from the API.
 - Refactor language activation to work with Django 3.2.
 - Added the mailing profile created and edited events.
+- Remove workflow instance exception usage. Current state property is now
+  inspected.
+- Remove menu proxy inclusions. Model proxies are now included by default.
+- Add menu proxy exclusions.
 
 4.1.4 (2021-12-01)
 ==================

@@ -64,7 +64,7 @@ queue_documents_periodic.add_task_type(
     name='task_document_type_trashed_document_delete_periods_check',
     schedule=timedelta(
         seconds=CHECK_DELETE_PERIOD_INTERVAL
-    ),
+    )
 )
 
 queue_uploads.add_task_type(
