@@ -74,12 +74,14 @@ class ElasticSearchBackend(SearchBackend):
 
         for search_model in SearchModel.all():
             index_name = self.get_index_name(search_model=search_model)
-            index_stats = stats['indices'][index_name]
+            index_stats = stats['indices'].get(index_name, {})
+            if index_stats:
+                count = index_stats['total']['docs']['count']
+            else:
+                count = '-1'
 
             result.append(
-                '{}: {}'.format(
-                    search_model.label, index_stats['total']['docs']['count']
-                )
+                '{}: {}'.format(search_model.label, count)
             )
 
         return '\n'.join(result)
