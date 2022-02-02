@@ -10,6 +10,9 @@
   available.
 - Use context managers for the IMAP and POP3 sources to remove the
   possibility of orphaned descriptors.
+- Create error log entries for objects that existed before the last error
+  log changes. Fix GitLab issue #1069. Thanks to Will Wright (@fireatwill)
+  for the report.
 
 4.1.4 (2021-12-01)
 ==================

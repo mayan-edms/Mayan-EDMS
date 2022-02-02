@@ -39,7 +39,7 @@ class ObjectErrorLogEntryListView(
             'hide_object': True,
             'no_results_icon': icon_object_errors,
             'no_results_text': _(
-                'This view displays the error log of different object. '
+                'This view displays the error log of an object. '
                 'An empty list is a good thing.'
             ),
             'no_results_title': _(

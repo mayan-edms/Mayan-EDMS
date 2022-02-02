@@ -42,7 +42,7 @@ class ErrorLog:
 
         @property
         def method_instance_logs(self):
-            error_log_partition = error_log_instance.stored_error_log.partitions.get(
+            error_log_partition, created = error_log_instance.stored_error_log.partitions.get_or_create(
                 name=ErrorLog.get_model_instance_partition_name(
                     model_instance=self
                 )
@@ -66,7 +66,7 @@ class ErrorLog:
             )
 
         def handler_model_instance_delete_partition(sender, instance, **kwargs):
-            return self.stored_error_log.partitions.get(
+            return self.stored_error_log.partitions.filter(
                 name=ErrorLog.get_model_instance_partition_name(
                     model_instance=instance
                 )
