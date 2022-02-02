@@ -5,8 +5,7 @@ from .mixins.workflow_template_transition_mixins import WorkflowTransitionFieldT
 
 
 class WorkflowTemplateTransitionFieldModelTestCase(
-    WorkflowTemplateTestMixin,
-    WorkflowTransitionFieldTestMixin,
+    WorkflowTemplateTestMixin, WorkflowTransitionFieldTestMixin,
     GenericDocumentTestCase
 ):
     auto_upload_test_document = False
