@@ -7,14 +7,15 @@
 # Roberto Rosario, 2021
 # Emerson Soares <on.emersonsoares@gmail.com>, 2021
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
+"POT-Creation-Date: 2022-01-18 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:26+0000\n"
-"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -69,7 +70,7 @@ msgstr "Criar nova ligação inteligente"
 
 #: links.py:59 models.py:40
 msgid "Document types"
-msgstr ""
+msgstr "Tipos de documento"
 
 #: links.py:69
 msgid "Documents"
@@ -159,7 +160,7 @@ msgstr ""
 
 #: models.py:37 models.py:188
 msgid "Enabled"
-msgstr ""
+msgstr "Activado"
 
 #: models.py:47 models.py:166
 msgid "Smart link"
@@ -306,7 +307,7 @@ msgstr ""
 
 #: views.py:231
 msgid "Available document types"
-msgstr ""
+msgstr "Tipos de documento disponíveis"
 
 #: views.py:232
 msgid "Document types enabled"

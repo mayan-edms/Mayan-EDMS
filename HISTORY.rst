@@ -224,6 +224,22 @@
 - Remove menu proxy inclusions. Model proxies are now included by default.
 - Add menu proxy exclusions.
 
+4.1.5 (2022-XX-XX)
+==================
+- Fix CAA document links. Closes GitLab issue #1068. Thanks to
+  Matthias Löblich (@startmat) for the report.
+- Remove superfluous apostrophe character in sort heading markup.
+- Fix email sources processing a single message but performing cleanup on
+  multiple messages. The intended behavior is restore which processed one
+  message and cleans up the processed message only.
+- Fix reference to ``shared_uploaded_files`` before the variable being
+  available.
+- Use context managers for the IMAP and POP3 sources to remove the
+  possibility of orphaned descriptors.
+- Create error log entries for objects that existed before the last error
+  log changes. Fix GitLab issue #1069. Thanks to Will Wright (@fireatwill)
+  for the report.
+
 4.1.4 (2021-12-01)
 ==================
 - Changes merged from versions 4.0.20 and 4.0.21.

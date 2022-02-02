@@ -8,14 +8,15 @@
 # Vítor Figueiró <vfigueiro@gmail.com>, 2021
 # Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
+"POT-Creation-Date: 2022-01-18 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,47 +26,47 @@ msgstr ""
 
 #: apps.py:137 permissions.py:5 settings.py:15
 msgid "Common"
-msgstr ""
+msgstr "Comum"
 
 #: classes.py:409
 msgid "Model properties"
-msgstr ""
+msgstr "Propriedades do modelo"
 
 #: classes.py:414
 msgid "Model fields"
-msgstr ""
+msgstr "Campos do modelo"
 
 #: classes.py:457
 msgid "Model related fields"
-msgstr ""
+msgstr "Campos relacionados com o modelo"
 
 #: classes.py:462
 msgid "Model reverse fields"
-msgstr ""
+msgstr "Campos reversos do modelo"
 
 #: dependencies.py:168
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "Usado para permitir a tradução offline das linhas do texto do código."
 
 #: dependencies.py:177
 msgid "Provides style checking."
-msgstr ""
+msgstr "Fornece verificação de estilo."
 
 #: dependencies.py:182
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Ambiente de linha de comando com auto-completamento."
 
 #: dependencies.py:187
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Verifica a formatação adequada do ficheiro README."
 
 #: links.py:29
 msgid "About this"
-msgstr ""
+msgstr "Sobre isto"
 
 #: links.py:32
 msgid "Get the book"
-msgstr ""
+msgstr "Obter o livro"
 
 #: links.py:37
 msgid "Documentation"
@@ -73,7 +74,7 @@ msgstr "Documentação"
 
 #: links.py:40
 msgid "Forum"
-msgstr ""
+msgstr "Fórum"
 
 #: links.py:44 views.py:48
 msgid "License"
@@ -81,7 +82,7 @@ msgstr "Licença"
 
 #: links.py:49
 msgid "Copy"
-msgstr ""
+msgstr "Cópia"
 
 #: links.py:52
 msgid "Setup"
@@ -89,15 +90,15 @@ msgstr "Configuração"
 
 #: links.py:55
 msgid "Source code"
-msgstr ""
+msgstr "Código fonte"
 
 #: links.py:59
 msgid "Online store"
-msgstr ""
+msgstr "Loja online"
 
 #: links.py:63
 msgid "Get support"
-msgstr ""
+msgstr "Obtenha ajuda"
 
 #: links.py:67 queues.py:6 views.py:122
 msgid "Tools"
@@ -107,32 +108,36 @@ msgstr "Ferramentas"
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr ""
+"Esta funcionalidade foi descontinuada e será removida numa versão futura."
 
 #: literals.py:23
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr ""
+"A sua base de dados de backend está configura para utilizar SQLite. SQLite "
+"deverá ser apenas utilizado para desenvolvimento e teste, nunca para "
+"produção. "
 
 #: literals.py:32
 msgid "Days"
-msgstr ""
+msgstr "Dias"
 
 #: literals.py:33
 msgid "Hours"
-msgstr ""
+msgstr "Horas"
 
 #: literals.py:34
 msgid "Minutes"
-msgstr ""
+msgstr "Minutos"
 
 #: menus.py:8
 msgid "System"
-msgstr ""
+msgstr "Sistema"
 
 #: menus.py:10 menus.py:11
 msgid "Facet"
-msgstr ""
+msgstr "Aspeto"
 
 #: menus.py:14
 msgid "Actions"
@@ -140,11 +145,11 @@ msgstr "Ações"
 
 #: menus.py:15
 msgid "Related"
-msgstr ""
+msgstr "Relacionado"
 
 #: menus.py:16
 msgid "Secondary"
-msgstr ""
+msgstr "Secundário"
 
 #: menus.py:18
 msgid "Return"
@@ -156,19 +161,23 @@ msgstr "Utilizador"
 
 #: permissions.py:8
 msgid "Copy object"
-msgstr ""
+msgstr "Copiar objeto"
 
 #: settings.py:22
 msgid ""
 "In list mode, show the \"list facet\" menu options as a dropdown menu "
 "instead of individual buttons."
 msgstr ""
+"Em modo de lista mostrar o menu de opções de \"Aspetos de lista\" como um "
+"menu suspenso em vez de de botões individuais."
 
 #: settings.py:30
 msgid ""
 "In list mode, show the \"object\" menu options as a dropdown menu instead of"
 " individual buttons."
 msgstr ""
+"Em modo de lista mostrar o menu de opções de \"Objeto\" como um menu "
+"suspenso em vez de botões individuais."
 
 #: settings.py:37
 msgid ""
@@ -177,6 +186,11 @@ msgid ""
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
+"Uma lista de linhas que designam todas as aplicações que serão removidas da "
+"lista instalada normalmente pela Mayan EDMS. Cada linha deverá conter um "
+"caminho Python pontilhado para: uma classe de configuração da aplicação "
+"(preferencialmente|) ou uma pasta que contenha a aplicação. Exemplo:  "
+"['app_1', 'app_2']"
 
 #: settings.py:47
 msgid ""
@@ -185,6 +199,11 @@ msgid ""
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
+"Uma lista de linhas que designam todas as aplicações que se encontram "
+"instaladas, para além daquelas já normalmente instaladas pela Mayan EDMS. "
+"Cada linha deverá conter um caminho Python pontilhado para: uma classe de "
+"configuração da aplicação (preferencialmente|) ou uma pasta que contenha a "
+"aplicação. Exemplo: ['app_1', 'app_2']"
 
 #: settings.py:58
 msgid ""
@@ -194,24 +213,33 @@ msgid ""
 " containing an application. These apps will be installed before the default "
 "apps. Example: ['app_1', 'app_2']"
 msgstr ""
+"Uma lista de linhas que designam todas as aplicações que se encontram "
+"instaladas, para além daquelas já normalmente instaladas pela Mayan EDMS. "
+"Cada linha deverá conter um caminho Python pontilhado para: uma classe de "
+"configuração da aplicação (preferencialmente|) ou uma pasta que contenha a "
+"aplicação. Estas aplicações serão instaladas antes das aplicações de "
+"fábrica. Exemplo: ['app_1', 'app_2']"
 
 #: settings.py:69
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
 msgstr ""
+"Nome da visualização ancorada à âncora de marca no menu principal. Esta é "
+"também a visualização para qual os utilizadores serão direcionados depois de"
+" entrarem nas suas contas."
 
 #: settings.py:78
 msgid "Name of the dashboard to display in the home view."
-msgstr ""
+msgstr "Nome do painel a ser exibido na visualização do início. "
 
 #: settings.py:83
 msgid "Sets the project's name."
-msgstr ""
+msgstr "Nomeia o projeto."
 
 #: settings.py:87
 msgid "URL of the project's homepage."
-msgstr ""
+msgstr "url da página inicial do projeto."
 
 #: templates/common/app/viewport.html:9
 msgid "Warning"
@@ -223,17 +251,19 @@ msgstr "Clique aqui para arranjar isto."
 
 #: validators.py:40
 msgid "Enter a valid JSON value."
-msgstr ""
+msgstr "Insira um valor JSON válido."
 
 #: validators.py:64
 msgid "Enter a valid YAML value."
-msgstr ""
+msgstr "Insira um valor YAML válido."
 
 #: validators.py:80
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
 msgstr ""
+"Insira um \"nome interno\" válido que contenha letras, números e "
+"underscores."
 
 #: views.py:22
 msgid "About"
@@ -246,26 +276,28 @@ msgstr "início"
 #: views.py:62
 #, python-format
 msgid "Fields to be copied: %s"
-msgstr ""
+msgstr "Campos a serem copiados: %s"
 
 #: views.py:72
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
-msgstr ""
+msgstr "Copiar %(object_name)s \" %(object)s \"?"
 
 #: views.py:83
 msgid "Object copied successfully."
-msgstr ""
+msgstr "Objeto copiado com sucesso."
 
 #: views.py:100
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr ""
+"Sem resultados significa que não tem as permissões necessárias para realizar"
+" tarefas administrativas."
 
 #: views.py:103
 msgid "No setup options available."
-msgstr ""
+msgstr "Não existem opções de configuração disponíveis."
 
 #: views.py:107
 msgid "Setup items"
@@ -273,8 +305,8 @@ msgstr "Itens de configuração"
 
 #: views.py:109
 msgid "Here you can configure all aspects of the system."
-msgstr ""
+msgstr "Aqui poderá configurar todos os aspetos do sistema."
 
 #: views.py:124
 msgid "These modules are used to do system maintenance."
-msgstr ""
+msgstr "Estes módulos são usados para a manutenção do sistema."

@@ -27,7 +27,7 @@ file instead.
 Code
 ----
 
-1. Complete and mail, or scan and email the corresponding Contributor Assignment Agreement: [Mayan EDMS Individual Contributor Assignment Agreement](https://gitlab.com/mayan-edms/mayan-edms/blob/master/docs/chapters/caa_individual.rst) or [Mayan EDMS Entity Contributor Assignment Agreement](https://gitlab.com/mayan-edms/mayan-edms/blob/master/docs/chapters/caa_entity.rst).
+1. Complete and mail, or scan and email the corresponding Contributor Assignment Agreement: [Mayan EDMS Individual Contributor Assignment Agreement](https://gitlab.com/mayan-edms/mayan-edms/-/blob/master/docs/chapters/development/caa_individual.txt) or [Mayan EDMS Entity Contributor Assignment Agreement](https://gitlab.com/mayan-edms/mayan-edms/-/blob/master/docs/chapters/development/caa_entity.txt).
 1. Fork [the repository](http://gitlab.com/mayan-edms/mayan-edms).
 1. Choose the version for which you want to develop. The code is divided in the
 following branches:

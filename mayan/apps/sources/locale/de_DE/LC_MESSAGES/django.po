@@ -11,14 +11,15 @@
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2021
 # Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
 # Mathias Behrle <mathiasb@m9s.biz>, 2021
+# Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:17+0000\n"
+"POT-Creation-Date: 2022-01-18 07:20+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2021\n"
+"Last-Translator: Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -90,7 +91,7 @@ msgstr ""
 
 #: forms.py:48
 msgid "The backend used to create the new source."
-msgstr "Das für die Erstellung der neuen Quelle verwendete Backend"
+msgstr "Das für die Erstellung der neuen Quelle verwendete Backend."
 
 #: forms.py:49
 msgid "Backend"

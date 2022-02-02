@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Vítor Figueiró <vfigueiro@gmail.com>, 2021
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
+"POT-Creation-Date: 2022-01-18 07:20+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
-"Last-Translator: Vítor Figueiró <vfigueiro@gmail.com>, 2021\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,15 +23,15 @@ msgstr ""
 
 #: apps.py:27
 msgid "Locales"
-msgstr ""
+msgstr "Locais"
 
 #: links.py:13
 msgid "Locale profile"
-msgstr ""
+msgstr "Perfil do local"
 
 #: links.py:18
 msgid "Edit locale profile"
-msgstr ""
+msgstr "Editar perfil do local"
 
 #: models.py:18
 msgid "User"
@@ -38,24 +39,24 @@ msgstr "Utilizador"
 
 #: models.py:22
 msgid "Timezone"
-msgstr ""
+msgstr "Fuso-horário "
 
 #: models.py:25
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #: models.py:31
 msgid "User locale profile"
-msgstr ""
+msgstr "Perfil de utilizador de local"
 
 #: models.py:32
 msgid "User locale profiles"
-msgstr ""
+msgstr "Peril de utilizador de locais"
 
 #: views.py:24
 msgid "Current user locale profile details"
-msgstr ""
+msgstr "Detalhes do perfil de utilizador de local"
 
 #: views.py:30
 msgid "Edit current user locale profile details"
-msgstr ""
+msgstr "Editar perfil de utilizador de local"
