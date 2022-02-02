@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
+"POT-Creation-Date: 2022-02-02 11:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: abc Def <hdogan1974@gmail.com>, 2021\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
@@ -243,11 +243,11 @@ msgstr ""
 msgid "IMAP email"
 msgstr "IMAP e-postası"
 
-#: source_backends/email_backends.py:216
+#: source_backends/email_backends.py:217
 msgid "Timeout"
 msgstr "Zaman aşımı"
 
-#: source_backends/email_backends.py:219
+#: source_backends/email_backends.py:220
 msgid "POP3 email"
 msgstr "POP3 e-postası"
 

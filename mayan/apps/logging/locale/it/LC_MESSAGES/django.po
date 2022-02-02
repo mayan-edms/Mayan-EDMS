@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
+"POT-Creation-Date: 2022-02-02 11:46+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -110,11 +110,9 @@ msgstr "Registro errori oggetto cancellato correttamente"
 
 #: views.py:42
 msgid ""
-"This view displays the error log of different object. An empty list is a "
-"good thing."
+"This view displays the error log of an object. An empty list is a good "
+"thing."
 msgstr ""
-"Questa vista mostra il registro degli errori di un oggetto diverso. Un "
-"elenco vuoto è una buona cosa."
 
 #: views.py:46
 msgid "There are no error log entries"

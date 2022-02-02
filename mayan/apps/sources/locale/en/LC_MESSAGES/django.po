@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
+"POT-Creation-Date: 2022-02-02 11:46+0000\n"
 "PO-Revision-Date: 2020-05-25 06:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -234,11 +234,11 @@ msgstr ""
 msgid "IMAP email"
 msgstr ""
 
-#: source_backends/email_backends.py:216
+#: source_backends/email_backends.py:217
 msgid "Timeout"
 msgstr ""
 
-#: source_backends/email_backends.py:219
+#: source_backends/email_backends.py:220
 msgid "POP3 email"
 msgstr ""
 
