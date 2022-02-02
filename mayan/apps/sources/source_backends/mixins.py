@@ -119,7 +119,7 @@ class SourceBaseMixin:
                 'language': self.get_document_language(),
                 'shared_uploaded_file_id': self.shared_uploaded_file.pk,
                 'source_id': self.model_instance_id,
-                'user_id': user_id,
+                'user_id': user_id
             }
             kwargs.update(self.get_task_extra_kwargs())
 
