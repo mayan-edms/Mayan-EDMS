@@ -13,6 +13,8 @@
 - Remove duplicated ``Document.get_label`` method.
 - Add Docker Compose file port comment to remove when using Traefik.
 - Print the path when failing to access the configuration file.
+- Expose the workflow template ``auto_launch`` field via the REST API.
+  Thanks to forum user @qra for the request.
 
 4.0.21 (2021-11-29)
 ===================
