@@ -223,6 +223,8 @@
   inspected.
 - Remove menu proxy inclusions. Model proxies are now included by default.
 - Add menu proxy exclusions.
+- Update the subject and body fields of the document email workflow action
+  to be optional. 
 
 4.1.5 (2022-XX-XX)
 ==================
