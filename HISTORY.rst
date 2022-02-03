@@ -13,6 +13,8 @@
 - Create error log entries for objects that existed before the last error
   log changes. Fix GitLab issue #1069. Thanks to Will Wright (@fireatwill)
   for the report.
+- Expose the workflow template ``auto_launch`` field via the REST API.
+  Thanks to forum user @qra for the request.
 
 4.1.4 (2021-12-01)
 ==================
