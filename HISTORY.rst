@@ -23,6 +23,8 @@
 - In ``FilteredRelatedFieldMixin``, split retrieval of the queryset to
   avoid the exception handler from capturing an ``AttributeError`` that it
   shouldn't.
+- Updated the ``subject`` and ``body`` fields of the document email
+  workflow action to be optional.
 
 4.1.7 (2022-04-01)
 ==================

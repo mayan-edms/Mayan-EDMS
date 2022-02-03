@@ -76,7 +76,7 @@ class ObjectEmailActionMixin:
                 'help_text': _(
                     'Subject of the email. Can be a string or a template.'
                 ),
-                'required': True
+                'required': False
             }
         },
         'body': {
@@ -86,7 +86,7 @@ class ObjectEmailActionMixin:
                     'Body of the email to send. Can be a string or '
                     'a template.'
                 ),
-                'required': True
+                'required': False
             }
         },
         'attachment': {
