@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# Māris Teivāns <maris.teivans@gmail.com>, 2021
+# Māris Teivāns <maris.teivans@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2022\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +28,7 @@ msgstr ""
 msgid "Key ID"
 msgstr "Atslēgas ID"
 
-#: apps.py:63 forms.py:32 models.py:59
+#: apps.py:63 forms.py:33 models.py:59
 msgid "Type"
 msgstr "Tips"
 
@@ -80,11 +80,11 @@ msgstr ""
 msgid "Algorithm"
 msgstr ""
 
-#: forms.py:45
+#: forms.py:48
 msgid "Term"
 msgstr ""
 
-#: forms.py:46
+#: forms.py:49
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr ""
 

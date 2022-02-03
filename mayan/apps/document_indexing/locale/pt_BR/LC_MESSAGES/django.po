@@ -4,19 +4,21 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
-# Aline Freitas <aline@alinefreitas.com.br>, 2021
-# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2021
-# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
+# Emerson Soares <on.emersonsoares@gmail.com>, 2022
+# Aline Freitas <aline@alinefreitas.com.br>, 2022
+# Roberto Rosario, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
+# Márcia Ferreira, 2022
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,45 +34,45 @@ msgstr "Nenhum"
 msgid "Document types"
 msgstr "Tipos de documentos"
 
-#: apps.py:50 events.py:6
+#: apps.py:51 events.py:6
 msgid "Document indexing"
 msgstr "Indexação de documentos"
 
-#: apps.py:128 apps.py:157 apps.py:196 apps.py:229
+#: apps.py:134 apps.py:163 apps.py:202 apps.py:235
 msgid "Level"
 msgstr "Nível"
 
-#: apps.py:136 apps.py:166
+#: apps.py:142 apps.py:172
 msgid "Depth"
-msgstr ""
+msgstr "Profundidade"
 
-#: apps.py:140
+#: apps.py:146
 msgid "Total nodes"
-msgstr ""
+msgstr "Total de nós"
 
-#: apps.py:147
+#: apps.py:153
 msgid "Total documents"
 msgstr "Total de documentos"
 
-#: apps.py:149 apps.py:187
+#: apps.py:155 apps.py:193
 msgid "Number of unique documents this item contains."
-msgstr ""
+msgstr "Número único de documentos que este item contém."
 
-#: apps.py:174
+#: apps.py:180
 msgid "Nodes"
-msgstr ""
+msgstr "Nós"
 
-#: apps.py:185 models.py:438
+#: apps.py:191 models.py:438
 msgid "Documents"
 msgstr "Documentos"
 
 #: events.py:10
 msgid "Index template created"
-msgstr ""
+msgstr "Template de índice criado"
 
 #: events.py:13
 msgid "Index template edited"
-msgstr ""
+msgstr "Template de índice editado"
 
 #: forms.py:16
 msgid "Index templates to be queued for rebuilding."
@@ -159,7 +161,7 @@ msgstr "Habilitado"
 
 #: models.py:61
 msgid "Index template"
-msgstr ""
+msgstr "Tempplate de índice"
 
 #: models.py:169
 msgid "Parent index template node of this node."
@@ -226,15 +228,15 @@ msgstr ""
 
 #: models.py:388
 msgid "Total number of nodes with unique values this item contains."
-msgstr ""
+msgstr "Número total de nós com o valor único que este item contém."
 
 #: models.py:397
 msgid "Total number of unique documents this item contains."
-msgstr ""
+msgstr "Número total de documentos únicos que este item contém."
 
 #: models.py:407
 msgid "Total number of node levels this item contains."
-msgstr ""
+msgstr "Número total de níveis de nós que este item contém."
 
 #: models.py:434 search.py:26
 msgid "Value"
@@ -278,23 +280,23 @@ msgstr ""
 
 #: permissions.py:11
 msgid "Create new index templates"
-msgstr ""
+msgstr "Criar novos templates de índice"
 
 #: permissions.py:14
 msgid "Edit index templates"
-msgstr ""
+msgstr "Editar templastes de índice"
 
 #: permissions.py:17
 msgid "Delete index templates"
-msgstr ""
+msgstr "Remover templastes de índice"
 
 #: permissions.py:20
 msgid "View index templates"
-msgstr ""
+msgstr "Ver templates de índice"
 
 #: permissions.py:23 views/index_template_views.py:310
 msgid "Rebuild index templates"
-msgstr ""
+msgstr "Reconstruir templastes de índice"
 
 #: queues.py:12
 msgid "Delete empty index nodes"
@@ -332,26 +334,26 @@ msgstr "UUID do documento"
 msgid "Document checksum"
 msgstr "Checksum do documento"
 
-#: serializers.py:200
+#: serializers.py:205
 msgid ""
 "URL of the API endpoint showing the list document types associated with this"
 " index template."
 msgstr ""
 
-#: serializers.py:207
+#: serializers.py:212
 msgid "URL of the API endpoint to add document types to this index template."
 msgstr ""
 
-#: serializers.py:214
+#: serializers.py:219
 msgid ""
 "URL of the API endpoint to remove document types from this index template."
 msgstr ""
 
-#: serializers.py:271
+#: serializers.py:276
 msgid "Primary key of the document type to add to the index template."
 msgstr ""
 
-#: serializers.py:280
+#: serializers.py:285
 msgid "Primary key of the document type to remove from the index template."
 msgstr ""
 

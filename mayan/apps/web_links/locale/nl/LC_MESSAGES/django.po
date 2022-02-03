@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
-# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
-# bwakkie <bwakkie@gmail.com>, 2021
+# bwakkie <bwakkie@gmail.com>, 2022
+# Roberto Rosario, 2022
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: bwakkie <bwakkie@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:14+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:39
+#: apps.py:40
 msgid "Links"
 msgstr "Links"
 

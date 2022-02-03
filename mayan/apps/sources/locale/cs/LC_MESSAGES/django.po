@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Jiri Fait <fait@orkasolutions.cz>, 2021
-# trendspotter <jirka.p@volny.cz>, 2021
-# Michal Švábík <snadno@lehce.cz>, 2021
+# Jiri Fait <fait@orkasolutions.cz>, 2022
+# trendspotter <jirka.p@volny.cz>, 2022
+# Michal Švábík <snadno@lehce.cz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:14+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,16 +22,16 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:56 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
+#: apps.py:57 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
 #: settings.py:13 views/source_views.py:164
 msgid "Sources"
 msgstr "Zdroje"
 
-#: apps.py:81
+#: apps.py:87
 msgid "Create a document source"
 msgstr "Vytvořte zdroj dokumentu"
 
-#: apps.py:83
+#: apps.py:89
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
@@ -41,7 +41,7 @@ msgstr ""
 "EDMS, vytvořte alespoň zdroj webového formuláře, který umožňuje vkládat "
 "dokumenty z prohlížeče."
 
-#: apps.py:106
+#: apps.py:112
 msgid "Type"
 msgstr "Typ"
 
@@ -174,11 +174,11 @@ msgstr "Zkontrolujte interval zdroje"
 msgid "Handle upload"
 msgstr "Popisovač nahrávání"
 
-#: serializers.py:50
+#: serializers.py:51
 msgid "Optional arguments for the action. Must be JSON formatted."
 msgstr ""
 
-#: serializers.py:51 source_backends/sane_scanner_backends.py:44
+#: serializers.py:52 source_backends/sane_scanner_backends.py:44
 msgid "Arguments"
 msgstr "Argumenty"
 
@@ -251,23 +251,23 @@ msgstr "Cílová poštovní schránka"
 msgid "IMAP email"
 msgstr "E-mail IMAP"
 
-#: source_backends/email_backends.py:216
+#: source_backends/email_backends.py:217
 msgid "Timeout"
 msgstr "Časový limit"
 
-#: source_backends/email_backends.py:219
+#: source_backends/email_backends.py:220
 msgid "POP3 email"
 msgstr "POP3 email"
 
-#: source_backends/literals.py:15 source_backends/literals.py:20
+#: source_backends/literals.py:18 source_backends/literals.py:23
 msgid "Always"
 msgstr "Vždy"
 
-#: source_backends/literals.py:16 source_backends/literals.py:21
+#: source_backends/literals.py:19 source_backends/literals.py:24
 msgid "Never"
 msgstr "Nikdy"
 
-#: source_backends/literals.py:22
+#: source_backends/literals.py:25
 msgid "Ask user"
 msgstr "Zeptat se uživatele"
 
@@ -439,17 +439,17 @@ msgid "Scan"
 msgstr "Skenovat"
 
 #: source_backends/staging_folder_backends.py:222
-#: source_backends/staging_folder_backends.py:492
+#: source_backends/staging_folder_backends.py:491
 msgid "Staging file"
 msgstr "Pracovní soubor"
 
 #: source_backends/staging_folder_backends.py:253
-#: source_backends/watch_folder_backends.py:31
+#: source_backends/watch_folder_backends.py:38
 msgid "Server side filesystem path."
 msgstr "Cesta k souborovému systému na straně serveru."
 
 #: source_backends/staging_folder_backends.py:258
-#: source_backends/watch_folder_backends.py:36
+#: source_backends/watch_folder_backends.py:43
 msgid "Folder path"
 msgstr "Cesta ke složce"
 
@@ -489,22 +489,22 @@ msgstr "Vytvořen"
 msgid "Thumbnail"
 msgstr "Náhled"
 
-#: source_backends/staging_folder_backends.py:472
+#: source_backends/staging_folder_backends.py:471
 #, python-format
 msgid "Error deleting staging file; %s"
 msgstr "Chyba při mazání pracovního souboru; %s"
 
-#: source_backends/staging_folder_backends.py:493
+#: source_backends/staging_folder_backends.py:492
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "Odstranit pracovní soubor \"%s\"?"
 
-#: source_backends/staging_folder_backends.py:519
+#: source_backends/staging_folder_backends.py:518
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr "Nelze získat seznam pracovních souborů: %s"
 
-#: source_backends/staging_folder_backends.py:546
+#: source_backends/staging_folder_backends.py:545
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
 "the operating system user account being used for Mayan EDMS doesn't have the"
@@ -514,11 +514,11 @@ msgstr ""
 "že uživatelský účet operačního systému používaný pro Mayský EDMS nemá "
 "potřebná oprávnění systému souborů pro složku."
 
-#: source_backends/staging_folder_backends.py:553
+#: source_backends/staging_folder_backends.py:552
 msgid "No staging files available"
 msgstr "Nejsou k dispozici žádné pracovní soubory"
 
-#: source_backends/watch_folder_backends.py:43
+#: source_backends/watch_folder_backends.py:50
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
@@ -526,11 +526,27 @@ msgstr ""
 "Pokud je zaškrtnuto, bude prohledána nejen cesta ke složce, ale i její "
 "podadresáře."
 
-#: source_backends/watch_folder_backends.py:46
+#: source_backends/watch_folder_backends.py:53
 msgid "Include subdirectories?"
 msgstr "Zahrnout podadresáře?"
 
-#: source_backends/watch_folder_backends.py:50
+#: source_backends/watch_folder_backends.py:60
+msgid "Regular expression used to select which files to upload."
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:62
+msgid "Include regular expression"
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:69
+msgid "Regular expression used to exclude which files to upload."
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:71
+msgid "Exclude regular expression"
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:75
 msgid "Watch folder"
 msgstr "Sledovaná složka"
 
@@ -578,7 +594,7 @@ msgstr "Clear"
 msgid "Server responded with {{statusCode}} code."
 msgstr "Server odpověděl kódem {{statusCode}}."
 
-#: views/base.py:53 wizards.py:52
+#: views/base.py:53 wizards.py:54
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
@@ -674,23 +690,23 @@ msgstr ""
 msgid "Select document type"
 msgstr "Vyberte typ dokumentu"
 
-#: wizards.py:71
+#: wizards.py:73
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr "Krok %(step)d z %(total_steps)d: %(step_label)s"
 
-#: wizards.py:76
+#: wizards.py:78
 msgid "Document upload wizard"
 msgstr "Průvodce nahráváním dokumentů"
 
-#: wizards.py:85
+#: wizards.py:87
 msgid "First"
 msgstr ""
 
-#: wizards.py:91
+#: wizards.py:93
 msgid "Previous"
 msgstr ""
 
-#: wizards.py:98
+#: wizards.py:100
 msgid "Next"
 msgstr ""

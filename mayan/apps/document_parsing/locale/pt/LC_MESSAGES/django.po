@@ -4,17 +4,21 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
-# Emerson Soares <on.emersonsoares@gmail.com>, 2021
+# Rogerio Falcone <rogerio@falconeit.com.br>, 2022
+# Emerson Soares <on.emersonsoares@gmail.com>, 2022
+# Roberto Rosario, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # Márcia Ferreira, 2022
+# Aline Freitas <aline@alinefreitas.com.br>, 2022
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: Márcia Ferreira, 2022\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +28,7 @@ msgstr ""
 
 #: apps.py:53 events.py:6 permissions.py:6 settings.py:10
 msgid "Document parsing"
-msgstr ""
+msgstr "Análise de documentos"
 
 #: apps.py:112
 msgid "A generator returning the document file's pages parsed content."
@@ -36,7 +40,7 @@ msgstr "Conteúdo"
 
 #: apps.py:142 models.py:74
 msgid "Result"
-msgstr ""
+msgstr "Resultado"
 
 #: dependencies.py:9
 msgid ""
@@ -59,7 +63,7 @@ msgstr ""
 #: forms.py:37
 #, python-format
 msgid "Page %(page_number)d"
-msgstr ""
+msgstr "Pagina: %(page_number)d"
 
 #: forms.py:45 forms.py:57
 msgid "Contents"
@@ -67,27 +71,27 @@ msgstr "Conteúdos"
 
 #: links.py:29 links.py:34
 msgid "Delete parsed content"
-msgstr ""
+msgstr "Excluir conteúdo analisado"
 
 #: links.py:40
 msgid "Download content"
-msgstr ""
+msgstr "Baixar conteúdo"
 
 #: links.py:52 links.py:91 views.py:237
 msgid "Parsing errors"
-msgstr ""
+msgstr "Erros de análise"
 
 #: links.py:57 links.py:64
 msgid "Submit for parsing"
-msgstr ""
+msgstr "Enviar para análise"
 
 #: links.py:74
 msgid "Setup parsing"
-msgstr ""
+msgstr "Configurar análise"
 
 #: links.py:83
 msgid "Parse documents per type"
-msgstr ""
+msgstr "Analisar documentos por tipo"
 
 #: models.py:18
 msgid "Document file page"
@@ -96,6 +100,8 @@ msgstr ""
 #: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr ""
+"O conteúdo real do texto, conforme extraído pelo backend de análise do "
+"documento."
 
 #: models.py:30
 msgid "Document file page content"
@@ -112,14 +118,15 @@ msgstr "Tipo de documento"
 #: models.py:47
 msgid "Automatically queue newly created documents for parsing."
 msgstr ""
+"Enfileirar automaticamente documentos criados recentemente para análise."
 
 #: models.py:58
 msgid "Document type settings"
-msgstr ""
+msgstr "Configuração do tipo de documento"
 
 #: models.py:59
 msgid "Document types settings"
-msgstr ""
+msgstr "Configurações de tipos de documentos"
 
 #: models.py:69
 msgid "Document file"
@@ -140,12 +147,12 @@ msgstr ""
 #: parsers.py:93
 #, python-format
 msgid "Exception parsing page; %s"
-msgstr ""
+msgstr "Erro ao analisar página; %s"
 
 #: parsers.py:119
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
-msgstr ""
+msgstr "Executável pdftotext não foi encontrado em: %s"
 
 #: permissions.py:10
 msgid "View the content of a document file"
@@ -157,11 +164,11 @@ msgstr ""
 
 #: permissions.py:16
 msgid "Change document type parsing settings"
-msgstr ""
+msgstr "Mudar configurações de análise do tipo de documento"
 
 #: queues.py:7
 msgid "Parsing"
-msgstr ""
+msgstr "Análise"
 
 #: queues.py:12
 msgid "Document file parsing"
@@ -174,6 +181,8 @@ msgstr ""
 #: settings.py:15
 msgid "Set new document types to perform parsing automatically by default."
 msgstr ""
+"Estabeleça tipos de novos documentos para realizar análise automática por "
+"padrão."
 
 #: settings.py:21
 msgid ""
@@ -258,13 +267,13 @@ msgstr ""
 #: views.py:194
 #, python-format
 msgid "Edit parsing settings for document type: %s."
-msgstr ""
+msgstr "Editar as configurações de análise para o tipo de documento: %s."
 
 #: views.py:204
 msgid "Submit all documents of a type for parsing"
-msgstr ""
+msgstr "Enviar todos os documento de um tipo para análise"
 
 #: views.py:225
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
-msgstr ""
+msgstr "%(count)d documentos adicinados à fila de análise."

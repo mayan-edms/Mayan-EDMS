@@ -4,18 +4,18 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# mic <winterfall24@gmail.com>, 2021
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
-# Tomasz Szymanowicz <alakdae@gmail.com>, 2021
+# mic <winterfall24@gmail.com>, 2022
+# Roberto Rosario, 2022
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2022
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:14+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2022\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,16 +23,16 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:56 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
+#: apps.py:57 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
 #: settings.py:13 views/source_views.py:164
 msgid "Sources"
 msgstr "Źródła"
 
-#: apps.py:81
+#: apps.py:87
 msgid "Create a document source"
 msgstr "Utwórz źródło dokumentu"
 
-#: apps.py:83
+#: apps.py:89
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
@@ -42,7 +42,7 @@ msgstr ""
 "EDMS. Utwórz przynajmniej źródło formularza internetowego, aby móc przesyłać"
 " dokumenty z przeglądarki."
 
-#: apps.py:106
+#: apps.py:112
 msgid "Type"
 msgstr "Typ"
 
@@ -175,11 +175,11 @@ msgstr "Źródło interwału sprawdzania"
 msgid "Handle upload"
 msgstr "Obsługa przesyłania"
 
-#: serializers.py:50
+#: serializers.py:51
 msgid "Optional arguments for the action. Must be JSON formatted."
 msgstr ""
 
-#: serializers.py:51 source_backends/sane_scanner_backends.py:44
+#: serializers.py:52 source_backends/sane_scanner_backends.py:44
 msgid "Arguments"
 msgstr "Argumenty"
 
@@ -252,23 +252,23 @@ msgstr "Docelowa skrzynka"
 msgid "IMAP email"
 msgstr "Adres e-mail IMAP"
 
-#: source_backends/email_backends.py:216
+#: source_backends/email_backends.py:217
 msgid "Timeout"
 msgstr "Koniec czasu"
 
-#: source_backends/email_backends.py:219
+#: source_backends/email_backends.py:220
 msgid "POP3 email"
 msgstr "E-mail POP3"
 
-#: source_backends/literals.py:15 source_backends/literals.py:20
+#: source_backends/literals.py:18 source_backends/literals.py:23
 msgid "Always"
 msgstr "Zawsze"
 
-#: source_backends/literals.py:16 source_backends/literals.py:21
+#: source_backends/literals.py:19 source_backends/literals.py:24
 msgid "Never"
 msgstr "Nigdy"
 
-#: source_backends/literals.py:22
+#: source_backends/literals.py:25
 msgid "Ask user"
 msgstr "Pytaj użytkownika"
 
@@ -440,17 +440,17 @@ msgid "Scan"
 msgstr "Skan"
 
 #: source_backends/staging_folder_backends.py:222
-#: source_backends/staging_folder_backends.py:492
+#: source_backends/staging_folder_backends.py:491
 msgid "Staging file"
 msgstr "Plik przejściowy"
 
 #: source_backends/staging_folder_backends.py:253
-#: source_backends/watch_folder_backends.py:31
+#: source_backends/watch_folder_backends.py:38
 msgid "Server side filesystem path."
 msgstr "Ścieżka do systemu plików po stronie serwera."
 
 #: source_backends/staging_folder_backends.py:258
-#: source_backends/watch_folder_backends.py:36
+#: source_backends/watch_folder_backends.py:43
 msgid "Folder path"
 msgstr "Ścieżka foldera"
 
@@ -490,22 +490,22 @@ msgstr "Utworzony"
 msgid "Thumbnail"
 msgstr "Miniaturka"
 
-#: source_backends/staging_folder_backends.py:472
+#: source_backends/staging_folder_backends.py:471
 #, python-format
 msgid "Error deleting staging file; %s"
 msgstr "Błąd podczas usuwania pliku przejściowego: %s"
 
-#: source_backends/staging_folder_backends.py:493
+#: source_backends/staging_folder_backends.py:492
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "Usunąć plik przejściowy „%s”?"
 
-#: source_backends/staging_folder_backends.py:519
+#: source_backends/staging_folder_backends.py:518
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr "Nie można uzyskać listy plików przejściowych: %s"
 
-#: source_backends/staging_folder_backends.py:546
+#: source_backends/staging_folder_backends.py:545
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
 "the operating system user account being used for Mayan EDMS doesn't have the"
@@ -515,11 +515,11 @@ msgstr ""
 "oznaczać, że konto użytkownika systemu operacyjnego używane w Mayan EDMS nie"
 " ma niezbędnych uprawnień systemu plików dla tego folderu."
 
-#: source_backends/staging_folder_backends.py:553
+#: source_backends/staging_folder_backends.py:552
 msgid "No staging files available"
 msgstr "Brak dostępnych plików przejściowych"
 
-#: source_backends/watch_folder_backends.py:43
+#: source_backends/watch_folder_backends.py:50
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
@@ -527,11 +527,27 @@ msgstr ""
 "Jeśli zaznaczone, będzie skanowany nie tylko folder w poszukiwaniu plików, "
 "ale także w podkatalogach."
 
-#: source_backends/watch_folder_backends.py:46
+#: source_backends/watch_folder_backends.py:53
 msgid "Include subdirectories?"
 msgstr "Czy uwzględnić podkatalogi?"
 
-#: source_backends/watch_folder_backends.py:50
+#: source_backends/watch_folder_backends.py:60
+msgid "Regular expression used to select which files to upload."
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:62
+msgid "Include regular expression"
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:69
+msgid "Regular expression used to exclude which files to upload."
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:71
+msgid "Exclude regular expression"
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:75
 msgid "Watch folder"
 msgstr "Obserwuj folder"
 
@@ -581,7 +597,7 @@ msgstr "Wyczyść"
 msgid "Server responded with {{statusCode}} code."
 msgstr "Serwer odpowiedział kodem {{statusCode}}."
 
-#: views/base.py:53 wizards.py:52
+#: views/base.py:53 wizards.py:54
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
@@ -677,23 +693,23 @@ msgstr ""
 msgid "Select document type"
 msgstr "Wybierz typ dokumentu"
 
-#: wizards.py:71
+#: wizards.py:73
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr "Krok %(step)d z %(total_steps)d: %(step_label)s"
 
-#: wizards.py:76
+#: wizards.py:78
 msgid "Document upload wizard"
 msgstr "Kreator przesyłania dokumentu"
 
-#: wizards.py:85
+#: wizards.py:87
 msgid "First"
 msgstr ""
 
-#: wizards.py:91
+#: wizards.py:93
 msgid "Previous"
 msgstr "Poprzedni"
 
-#: wizards.py:98
+#: wizards.py:100
 msgid "Next"
 msgstr "Następny"

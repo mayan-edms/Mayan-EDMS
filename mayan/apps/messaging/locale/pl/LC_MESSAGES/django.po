@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
+# Roberto Rosario, 2022
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-12 03:39+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2022\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,23 +45,23 @@ msgstr "Wiadomość została zmodyfikowana"
 msgid "Body"
 msgstr "Treść"
 
-#: links.py:37 views.py:33
+#: links.py:38 views.py:33
 msgid "Create message"
 msgstr "Utwórz wiadomość"
 
-#: links.py:40 links.py:46
+#: links.py:41 links.py:47
 msgid "Delete"
 msgstr "Usuń"
 
-#: links.py:54 links.py:65
+#: links.py:56 links.py:67
 msgid "Mark as read"
 msgstr ""
 
-#: links.py:60 links.py:69
+#: links.py:62 links.py:71
 msgid "Mark as unread"
 msgstr ""
 
-#: links.py:73
+#: links.py:75
 msgid "Mark all as read"
 msgstr ""
 

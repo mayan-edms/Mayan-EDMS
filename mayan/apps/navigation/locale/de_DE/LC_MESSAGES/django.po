@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
-# Mathias Behrle <mathiasb@m9s.biz>, 2021
-# Berny <berny@bernhard-marx.de>, 2021
+# Roberto Rosario, 2022
+# Berny <berny@bernhard-marx.de>, 2022
+# Mathias Behrle <mathiasb@m9s.biz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:28+0000\n"
-"Last-Translator: Berny <berny@bernhard-marx.de>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:14+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2022\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Navigation"
 msgstr "Navigation"
 
-#: classes.py:882
+#: classes.py:849
 msgid "Unnamed function"
 msgstr "Unbenannte Funktion"
 

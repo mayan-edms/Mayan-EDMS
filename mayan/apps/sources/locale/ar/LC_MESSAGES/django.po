@@ -4,21 +4,21 @@
 # 
 # Translators:
 # Translators:
-# Bashar Al-Abdulhadi, 2021
-# Yaman Sanobar <yman.snober@gmail.com>, 2021
-# John Kawas <john@clinicalclouds.com>, 2021
-# WM Shinkada <shinkadawasim@gmail.com>, 2021
-# Roberto Rosario, 2021
-# Mohammed ALDOUB <voulnet@gmail.com>, 2021
-# Marwan Rahhal <Marwanr@sssit.net>, 2021
+# WM Shinkada <shinkadawasim@gmail.com>, 2022
+# Bashar Al-Abdulhadi, 2022
+# Mohammed ALDOUB <voulnet@gmail.com>, 2022
+# Yaman Sanobar <yman.snober@gmail.com>, 2022
+# John Kawas <john@clinicalclouds.com>, 2022
+# Roberto Rosario, 2022
+# Marwan Rahhal <Marwanr@sssit.net>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:14+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,16 +26,16 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:56 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
+#: apps.py:57 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
 #: settings.py:13 views/source_views.py:164
 msgid "Sources"
 msgstr "المصادر"
 
-#: apps.py:81
+#: apps.py:87
 msgid "Create a document source"
 msgstr "إنشاء مصدر للوثيقة"
 
-#: apps.py:83
+#: apps.py:89
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
@@ -44,7 +44,7 @@ msgstr ""
 "مصادر الوثائق هي الطريقة التي يتم بها تغذية الوثائق الجديدة إلى ، وإنشاء "
 "مصدر نموذج حتى تتمكن من تحميل الوثائق بسهولة"
 
-#: apps.py:106
+#: apps.py:112
 msgid "Type"
 msgstr "النوع"
 
@@ -176,11 +176,11 @@ msgstr "تحقق من مصدر الفاصل"
 msgid "Handle upload"
 msgstr "التعامل مع التحميل"
 
-#: serializers.py:50
+#: serializers.py:51
 msgid "Optional arguments for the action. Must be JSON formatted."
 msgstr ""
 
-#: serializers.py:51 source_backends/sane_scanner_backends.py:44
+#: serializers.py:52 source_backends/sane_scanner_backends.py:44
 msgid "Arguments"
 msgstr "المحددات"
 
@@ -251,23 +251,23 @@ msgstr "صندوق بريد الوجهة"
 msgid "IMAP email"
 msgstr "بريد IMAP الإلكتروني"
 
-#: source_backends/email_backends.py:216
+#: source_backends/email_backends.py:217
 msgid "Timeout"
 msgstr "انتهاء الوقت"
 
-#: source_backends/email_backends.py:219
+#: source_backends/email_backends.py:220
 msgid "POP3 email"
 msgstr "بريد POP3 الإلكتروني"
 
-#: source_backends/literals.py:15 source_backends/literals.py:20
+#: source_backends/literals.py:18 source_backends/literals.py:23
 msgid "Always"
 msgstr "دائما"
 
-#: source_backends/literals.py:16 source_backends/literals.py:21
+#: source_backends/literals.py:19 source_backends/literals.py:24
 msgid "Never"
 msgstr "لا"
 
-#: source_backends/literals.py:22
+#: source_backends/literals.py:25
 msgid "Ask user"
 msgstr "اسئل المستخدم"
 
@@ -438,17 +438,17 @@ msgid "Scan"
 msgstr "مسح"
 
 #: source_backends/staging_folder_backends.py:222
-#: source_backends/staging_folder_backends.py:492
+#: source_backends/staging_folder_backends.py:491
 msgid "Staging file"
 msgstr "ملف الاعداد"
 
 #: source_backends/staging_folder_backends.py:253
-#: source_backends/watch_folder_backends.py:31
+#: source_backends/watch_folder_backends.py:38
 msgid "Server side filesystem path."
 msgstr "مسار نظام الملفات على الخادم"
 
 #: source_backends/staging_folder_backends.py:258
-#: source_backends/watch_folder_backends.py:36
+#: source_backends/watch_folder_backends.py:43
 msgid "Folder path"
 msgstr "مسار الملف"
 
@@ -488,33 +488,33 @@ msgstr "أنشأت"
 msgid "Thumbnail"
 msgstr "الوثيقة المصغرة"
 
-#: source_backends/staging_folder_backends.py:472
+#: source_backends/staging_folder_backends.py:471
 #, python-format
 msgid "Error deleting staging file; %s"
 msgstr "خطأ في حذف الملف المرحلي ؛ %s"
 
-#: source_backends/staging_folder_backends.py:493
+#: source_backends/staging_folder_backends.py:492
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "هل تريد حذف الملف المرحلي &quot;%s&quot;؟"
 
-#: source_backends/staging_folder_backends.py:519
+#: source_backends/staging_folder_backends.py:518
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr "غير قادر على ايجاد قائمة بملفات الاعداد: %s"
 
-#: source_backends/staging_folder_backends.py:546
+#: source_backends/staging_folder_backends.py:545
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
 "the operating system user account being used for Mayan EDMS doesn't have the"
 " necessary file system permissions for the folder."
 msgstr "المجلد فارغ ! أو لا تمتلك الاذونات الكافية"
 
-#: source_backends/staging_folder_backends.py:553
+#: source_backends/staging_folder_backends.py:552
 msgid "No staging files available"
 msgstr "لا توجد ملفات مرحلية متاحة"
 
-#: source_backends/watch_folder_backends.py:43
+#: source_backends/watch_folder_backends.py:50
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
@@ -522,11 +522,27 @@ msgstr ""
 "إذا تم تحديده ، فلن يتم فحص مسار المجلد للملفات فحسب ، بل سيتم أيضًا فحص "
 "الدلائل الفرعية الخاصة به."
 
-#: source_backends/watch_folder_backends.py:46
+#: source_backends/watch_folder_backends.py:53
 msgid "Include subdirectories?"
 msgstr "تضمين الدلائل الفرعية؟"
 
-#: source_backends/watch_folder_backends.py:50
+#: source_backends/watch_folder_backends.py:60
+msgid "Regular expression used to select which files to upload."
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:62
+msgid "Include regular expression"
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:69
+msgid "Regular expression used to exclude which files to upload."
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:71
+msgid "Exclude regular expression"
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:75
 msgid "Watch folder"
 msgstr "مشاهدة المجلد"
 
@@ -574,7 +590,7 @@ msgstr "مسح "
 msgid "Server responded with {{statusCode}} code."
 msgstr "استجاب الخادم برمز {{statusCode}}."
 
-#: views/base.py:53 wizards.py:52
+#: views/base.py:53 wizards.py:54
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
@@ -672,23 +688,23 @@ msgstr ""
 msgid "Select document type"
 msgstr "نوع الوثيقة"
 
-#: wizards.py:71
+#: wizards.py:73
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr "الخطوة %(step)d من %(total_steps)d: %(step_label)s"
 
-#: wizards.py:76
+#: wizards.py:78
 msgid "Document upload wizard"
 msgstr "تحميل الوثيقة"
 
-#: wizards.py:85
+#: wizards.py:87
 msgid "First"
 msgstr ""
 
-#: wizards.py:91
+#: wizards.py:93
 msgid "Previous"
 msgstr "Previous"
 
-#: wizards.py:98
+#: wizards.py:100
 msgid "Next"
 msgstr "Next"

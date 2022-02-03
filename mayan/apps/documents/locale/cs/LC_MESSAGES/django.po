@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Jiri Fait <fait@orkasolutions.cz>, 2021
-# trendspotter <jirka.p@volny.cz>, 2021
-# Michal Švábík <snadno@lehce.cz>, 2021
+# Jiri Fait <fait@orkasolutions.cz>, 2022
+# Michal Švábík <snadno@lehce.cz>, 2022
+# trendspotter <jirka.p@volny.cz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -549,15 +549,15 @@ msgstr "Verze dokumentu"
 msgid "Document version pages"
 msgstr "Stránky verze dokumentu"
 
-#: links/favorite_links.py:21 views/favorite_document_views.py:36
+#: links/favorite_links.py:23 views/favorite_document_views.py:36
 msgid "Favorites"
 msgstr "Oblíbené"
 
-#: links/favorite_links.py:27 links/favorite_links.py:37
+#: links/favorite_links.py:29 links/favorite_links.py:39
 msgid "Add to favorites"
 msgstr "Přidat k oblíbeným"
 
-#: links/favorite_links.py:33 links/favorite_links.py:41
+#: links/favorite_links.py:35 links/favorite_links.py:43
 msgid "Remove from favorites"
 msgstr "Odstranit z oblíbených"
 
@@ -1124,19 +1124,19 @@ msgstr "Soubor dokumentu typu MIME"
 msgid "Document version comment"
 msgstr "Komentář k verzi dokumentu"
 
-#: serializers/document_file_serializers.py:38
+#: serializers/document_file_serializers.py:97
 msgid "Binary content for the new file."
 msgstr ""
 
-#: serializers/document_serializers.py:23
+#: serializers/document_serializers.py:22
 msgid "Document type ID for the new document."
 msgstr "ID typu dokumentu pro nový dokument."
 
-#: serializers/document_version_serializers.py:72
+#: serializers/document_version_serializers.py:14
 msgid "Content type ID of the source object for the page."
 msgstr "ID typu obsahu zdrojového objektu pro stránku."
 
-#: serializers/favorite_document_serializers.py:18
+#: serializers/favorite_document_serializers.py:17
 msgid "Document ID for the new favorite document."
 msgstr "ID dokumentu pro nový oblíbený dokument."
 
@@ -2018,21 +2018,32 @@ msgstr "Neexistují žádné nedávno vytvořené dokumenty"
 
 #: views/trashed_document_views.py:37
 #, python-format
+msgid "Document \"%(object)s\" moved to trash."
+msgstr ""
+
+#: views/trashed_document_views.py:40
+#, python-format
 msgid "%(count)d document moved to the trash."
 msgstr "Dokument %(count)d byl přesunut do koše."
 
-#: views/trashed_document_views.py:40
+#: views/trashed_document_views.py:43
 #, python-format
 msgid "%(count)d documents moved to the trash."
 msgstr "Dokumenty %(count)d byly přesunuty do koše."
 
+#: views/trashed_document_views.py:45
+#, python-format
+msgid "Move the document \"%(object)s\" to trash?"
+msgstr ""
+
 #: views/trashed_document_views.py:46
 msgid "Move the selected document to the trash?"
-msgid_plural "Move the selected documents to the trash?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr ""
+
+#: views/trashed_document_views.py:47
+#, python-format
+msgid "Move the %(count)d selected documents to trash?"
+msgstr ""
 
 #: views/trashed_document_views.py:76
 msgid "Empty trash?"
@@ -2044,21 +2055,32 @@ msgstr "Úkol vyprázdnění koše byl zařazen do fronty."
 
 #: views/trashed_document_views.py:98
 #, python-format
+msgid "Trash document \"%(object)s\" submitted for deletion."
+msgstr ""
+
+#: views/trashed_document_views.py:101
+#, python-format
 msgid "%(count)d trashed document submitted for deletion."
 msgstr "%(count)d vyhozený dokument předložený k odstranění."
 
-#: views/trashed_document_views.py:101
+#: views/trashed_document_views.py:104
 #, python-format
 msgid "%(count)d trashed documents submitted for deletion."
 msgstr "%(count)d vyhozené dokumenty předložené k odstranění."
 
+#: views/trashed_document_views.py:106
+#, python-format
+msgid "Delete the trashed document \"%(object)s\"?"
+msgstr ""
+
 #: views/trashed_document_views.py:107
 msgid "Delete the selected trashed document?"
-msgid_plural "Delete the selected trashed documents?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr ""
+
+#: views/trashed_document_views.py:108
+#, python-format
+msgid "Delete the %(count)d selected trashed documents?"
+msgstr ""
 
 #: views/trashed_document_views.py:144
 msgid ""
@@ -2075,21 +2097,32 @@ msgstr "V koši nejsou žádné dokumenty"
 
 #: views/trashed_document_views.py:162
 #, python-format
+msgid "Trashed document \"%(object)s\" restored."
+msgstr ""
+
+#: views/trashed_document_views.py:165
+#, python-format
 msgid "%(count)d trashed document restored."
 msgstr "%(count)d dokument byl obnoven z koše."
 
-#: views/trashed_document_views.py:165
+#: views/trashed_document_views.py:168
 #, python-format
 msgid "%(count)d trashed documents restored."
 msgstr "%(count)d dkumenty obnoveny z koše."
 
+#: views/trashed_document_views.py:170
+#, python-format
+msgid "Restore the trashed document: %(object)s"
+msgstr ""
+
 #: views/trashed_document_views.py:171
 msgid "Restore the selected trashed document?"
-msgid_plural "Restore the selected trashed documents?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr ""
+
+#: views/trashed_document_views.py:172
+#, python-format
+msgid "Restore the %(count)d selected trashed documents?"
+msgstr ""
 
 #: workflow_actions.py:13
 msgid "New document type for the workflow document."

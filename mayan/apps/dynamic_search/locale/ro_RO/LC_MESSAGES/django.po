@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Harald Ersch, 2021
+# Roberto Rosario, 2022
+# Harald Ersch, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Harald Ersch, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,14 +21,18 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:19
+#: apps.py:25
 msgid "Dynamic search"
 msgstr "Căutarea dinamică"
 
-#: classes.py:330
+#: classes.py:492
 #, python-format
 msgid "Unknown search model `%s`."
 msgstr ""
+
+#: classes.py:550
+msgid "ID"
+msgstr "ID-ul"
 
 #: forms.py:9
 msgid "Match all"
@@ -47,12 +51,12 @@ msgstr ""
 msgid "Search terms"
 msgstr "Caută termeni"
 
-#: links.py:13 permissions.py:5 queues.py:8 settings.py:11
-#: templates/dynamic_search/search_box.html:45 views.py:126 views.py:139
+#: links.py:13 permissions.py:5 queues.py:7 settings.py:11
+#: templates/dynamic_search/search_box.html:45 views.py:121 views.py:134
 msgid "Search"
 msgstr "Căutare"
 
-#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:156
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:151
 msgid "Advanced search"
 msgstr "Cautare avansată"
 
@@ -68,18 +72,26 @@ msgstr "Reindexare backend de căutare"
 msgid "Execute search tools"
 msgstr "Executați instrumente de căutare"
 
-#: queues.py:13
+#: queues.py:10
+msgid "Search slow"
+msgstr ""
+
+#: queues.py:15
 msgid "Remove a model instance from the search engine."
 msgstr "Eliminați o instanță de model din motorul de căutare."
 
-#: queues.py:18
+#: queues.py:20
 msgid "Index a model instance to the search engine."
 msgstr "Indexați o instanță model la motorul de căutare."
 
-#: queues.py:24
+#: queues.py:25
 msgid "Index all instances of a search model to the search engine."
 msgstr ""
 "Indexați toate instanțele unui model de căutare în motorul de căutare."
+
+#: queues.py:30
+msgid "Reset the search backend indices and index all instances again."
+msgstr ""
 
 #: settings.py:16
 msgid "Full path to the backend to be used to handle the search."
@@ -94,11 +106,15 @@ msgstr ""
 "Dezactivează căutarea în bară cu un singur termen lăsând doar butonul de "
 "căutare avansată."
 
-#: settings.py:33
+#: settings.py:34
+msgid "Amount of objects to process when performing bulk indexing."
+msgstr ""
+
+#: settings.py:40
 msgid "Sets the default state of the \"Match all\" checkbox."
 msgstr ""
 
-#: settings.py:37
+#: settings.py:44
 msgid "Maximum number search results to fetch and display."
 msgstr "Numărul maxim de rezultate de căutare de preluat și afișat."
 
@@ -133,11 +149,11 @@ msgstr ""
 "Acest instrument șterge și completează indexul intern al backend-ului de "
 "căutare."
 
-#: views.py:119
+#: views.py:114
 msgid "Search backend reindexing queued."
 msgstr "Reindexarea backend-ului de căutare a fost pusă la coadă."
 
-#: views.py:141
+#: views.py:136
 #, python-format
 msgid "Search for: %s"
 msgstr "Caută după: %s"

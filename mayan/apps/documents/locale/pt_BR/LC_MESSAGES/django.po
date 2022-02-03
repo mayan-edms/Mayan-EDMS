@@ -4,21 +4,26 @@
 # 
 # Translators:
 # Translators:
-# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2021
-# Roberto Rosario, 2021
-# Rogerio Falcone <rogerio@falconeit.com.br>, 2021
-# Fernando Vieira <fera_br@yahoo.com.br>, 2021
-# Aline Freitas <aline@alinefreitas.com.br>, 2021
-# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
+# Bruno Martins <bruno.martins@bewgpt.com.pt>, 2022
+# Renata Oliveira <renatabels@gmail.com>, 2022
+# Márcia Ferreira, 2022
+# Fernando Vieira <fera_br@yahoo.com.br>, 2022
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
+# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2022
+# Roberto Rosario, 2022
+# Rogerio Falcone <rogerio@falconeit.com.br>, 2022
+# Emerson Soares <on.emersonsoares@gmail.com>, 2022
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
+# Aline Freitas <aline@alinefreitas.com.br>, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -551,15 +556,15 @@ msgstr "Versão do documento"
 msgid "Document version pages"
 msgstr ""
 
-#: links/favorite_links.py:21 views/favorite_document_views.py:36
+#: links/favorite_links.py:23 views/favorite_document_views.py:36
 msgid "Favorites"
 msgstr "Favoritos"
 
-#: links/favorite_links.py:27 links/favorite_links.py:37
+#: links/favorite_links.py:29 links/favorite_links.py:39
 msgid "Add to favorites"
 msgstr "Adicionar aos favoritos"
 
-#: links/favorite_links.py:33 links/favorite_links.py:41
+#: links/favorite_links.py:35 links/favorite_links.py:43
 msgid "Remove from favorites"
 msgstr "Remover dos favoritos"
 
@@ -1121,19 +1126,19 @@ msgstr ""
 msgid "Document version comment"
 msgstr ""
 
-#: serializers/document_file_serializers.py:38
+#: serializers/document_file_serializers.py:97
 msgid "Binary content for the new file."
 msgstr ""
 
-#: serializers/document_serializers.py:23
+#: serializers/document_serializers.py:22
 msgid "Document type ID for the new document."
 msgstr ""
 
-#: serializers/document_version_serializers.py:72
+#: serializers/document_version_serializers.py:14
 msgid "Content type ID of the source object for the page."
 msgstr ""
 
-#: serializers/favorite_document_serializers.py:18
+#: serializers/favorite_document_serializers.py:17
 msgid "Document ID for the new favorite document."
 msgstr ""
 
@@ -1975,19 +1980,32 @@ msgstr ""
 
 #: views/trashed_document_views.py:37
 #, python-format
+msgid "Document \"%(object)s\" moved to trash."
+msgstr ""
+
+#: views/trashed_document_views.py:40
+#, python-format
 msgid "%(count)d document moved to the trash."
 msgstr "%(count)d documento movido para a lixeira."
 
-#: views/trashed_document_views.py:40
+#: views/trashed_document_views.py:43
 #, python-format
 msgid "%(count)d documents moved to the trash."
 msgstr "%(count)d documentos movidos para a lixeira."
 
+#: views/trashed_document_views.py:45
+#, python-format
+msgid "Move the document \"%(object)s\" to trash?"
+msgstr ""
+
 #: views/trashed_document_views.py:46
 msgid "Move the selected document to the trash?"
-msgid_plural "Move the selected documents to the trash?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr ""
+
+#: views/trashed_document_views.py:47
+#, python-format
+msgid "Move the %(count)d selected documents to trash?"
+msgstr ""
 
 #: views/trashed_document_views.py:76
 msgid "Empty trash?"
@@ -1999,19 +2017,32 @@ msgstr "A tarefa de esvaziamento da lixeira foi colocada na fila."
 
 #: views/trashed_document_views.py:98
 #, python-format
+msgid "Trash document \"%(object)s\" submitted for deletion."
+msgstr ""
+
+#: views/trashed_document_views.py:101
+#, python-format
 msgid "%(count)d trashed document submitted for deletion."
 msgstr "%(count)d documento da lixeria enviado para exclusão."
 
-#: views/trashed_document_views.py:101
+#: views/trashed_document_views.py:104
 #, python-format
 msgid "%(count)d trashed documents submitted for deletion."
 msgstr "%(count)d documentos da lixeria enviados para exclusão."
 
+#: views/trashed_document_views.py:106
+#, python-format
+msgid "Delete the trashed document \"%(object)s\"?"
+msgstr ""
+
 #: views/trashed_document_views.py:107
 msgid "Delete the selected trashed document?"
-msgid_plural "Delete the selected trashed documents?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr ""
+
+#: views/trashed_document_views.py:108
+#, python-format
+msgid "Delete the %(count)d selected trashed documents?"
+msgstr ""
 
 #: views/trashed_document_views.py:144
 msgid ""
@@ -2029,19 +2060,32 @@ msgstr "Não há documentos na lixeira"
 
 #: views/trashed_document_views.py:162
 #, python-format
+msgid "Trashed document \"%(object)s\" restored."
+msgstr ""
+
+#: views/trashed_document_views.py:165
+#, python-format
 msgid "%(count)d trashed document restored."
 msgstr "%(count)d documento da lixeira restaurado"
 
-#: views/trashed_document_views.py:165
+#: views/trashed_document_views.py:168
 #, python-format
 msgid "%(count)d trashed documents restored."
 msgstr "%(count)d documentos da lixeira restaurados."
 
+#: views/trashed_document_views.py:170
+#, python-format
+msgid "Restore the trashed document: %(object)s"
+msgstr ""
+
 #: views/trashed_document_views.py:171
 msgid "Restore the selected trashed document?"
-msgid_plural "Restore the selected trashed documents?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr ""
+
+#: views/trashed_document_views.py:172
+#, python-format
+msgid "Restore the %(count)d selected trashed documents?"
+msgstr ""
 
 #: workflow_actions.py:13
 msgid "New document type for the workflow document."

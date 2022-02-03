@@ -4,19 +4,19 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Vítor Figueiró <vfigueiro@gmail.com>, 2021
-# Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021
-# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
+# Vítor Figueiró <vfigueiro@gmail.com>, 2022
+# Roberto Rosario, 2022
+# Bruno Martins <bruno.martins@bewgpt.com.pt>, 2022
 # Márcia Ferreira, 2022
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Márcia Ferreira, 2022\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:137 permissions.py:5 settings.py:15
+#: apps.py:132 permissions.py:5 settings.py:15
 msgid "Common"
 msgstr "Comum"
 
@@ -110,24 +110,15 @@ msgid ""
 msgstr ""
 "Esta funcionalidade foi descontinuada e será removida numa versão futura."
 
-#: literals.py:23
-msgid ""
-"Your database backend is set to use SQLite. SQLite should only be used for "
-"development and testing, not for production."
-msgstr ""
-"A sua base de dados de backend está configura para utilizar SQLite. SQLite "
-"deverá ser apenas utilizado para desenvolvimento e teste, nunca para "
-"produção. "
-
-#: literals.py:32
+#: literals.py:28
 msgid "Days"
 msgstr "Dias"
 
-#: literals.py:33
+#: literals.py:29
 msgid "Hours"
 msgstr "Horas"
 
-#: literals.py:34
+#: literals.py:30
 msgid "Minutes"
 msgstr "Minutos"
 
@@ -241,11 +232,7 @@ msgstr "Nomeia o projeto."
 msgid "URL of the project's homepage."
 msgstr "url da página inicial do projeto."
 
-#: templates/common/app/viewport.html:9
-msgid "Warning"
-msgstr "Aviso"
-
-#: templates/common/app/viewport.html:23
+#: templates/common/app/viewport.html:15
 msgid "Click here to fix this."
 msgstr "Clique aqui para arranjar isto."
 

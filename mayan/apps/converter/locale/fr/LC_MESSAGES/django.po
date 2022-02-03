@@ -4,21 +4,21 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
-# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2021
-# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
-# Yves Dubois <ydubois@gmail.com>, 2021
-# Benoît GROUSSET <benoit@grousset.xyz>, 2021
-# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Benoît GROUSSET <benoit@grousset.xyz>, 2022
+# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2022
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
+# Yves Dubois <ydubois@gmail.com>, 2022
+# Roberto Rosario, 2022
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -46,7 +46,7 @@ msgstr ""
 "Exception lors de la détermination du nombre de pages à l'aide de Pillow ; "
 "%s"
 
-#: classes.py:157
+#: classes.py:158
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice n'est pas installé ou introuvable."
 
@@ -403,8 +403,8 @@ msgstr "Demande de suppression effectuée pour %(count)d éléments"
 #: views.py:62
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] "Supprimer l&#39;élément sélectionné?"
-msgstr[1] "Supprimer les éléments sélectionnés?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:72
 #, python-format
@@ -460,7 +460,7 @@ msgstr ""
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr ""
 "Êtes vous certain de vouloir supprimer la transformation "
-"\"%(transformation)s\" pour : %(content_object)s ?"
+"\"%(transformation)s\" pour : %(content_object)s?"
 
 #: views.py:290
 #, python-format

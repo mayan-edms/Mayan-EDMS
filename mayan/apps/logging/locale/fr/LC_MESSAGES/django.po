@@ -4,22 +4,22 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
-# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2021
-# Olivier W, 2021
-# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
-# Frédéric Escudero <frederic.escudero@gmail.com>, 2021
-# Yves Dubois <ydubois@gmail.com>, 2021
-# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2022
+# Olivier W, 2022
+# Frédéric Escudero <frederic.escudero@gmail.com>, 2022
+# Roberto Rosario, 2022
+# Yves Dubois <ydubois@gmail.com>, 2022
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
+# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,57 +27,65 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:16 permissions.py:5 settings.py:10
+#: apps.py:20 permissions.py:5 settings.py:10
 msgid "Logging"
 msgstr "Événements"
 
-#: links.py:13
+#: links.py:11 views.py:27
+msgid "Global error log"
+msgstr ""
+
+#: links.py:17
 msgid "Errors"
 msgstr "Erreurs"
 
-#: links.py:19
+#: links.py:23
 msgid "Clear errors"
 msgstr "Effacer les erreurs"
 
-#: models.py:9 models.py:37
+#: models.py:11 models.py:39
 msgid "Internal name"
 msgstr "Nom interne"
 
-#: models.py:14 models.py:34
+#: models.py:16 models.py:36
 msgid "Error log"
 msgstr "Journal d'erreur"
 
-#: models.py:15
+#: models.py:17
 msgid "Error logs"
 msgstr "Journal des erreurs"
 
-#: models.py:24
+#: models.py:26
 msgid "App label"
 msgstr "Étiquette de l'application"
 
-#: models.py:42 models.py:52
+#: models.py:53 models.py:63
 msgid "Error log partition"
 msgstr ""
 
-#: models.py:43
+#: models.py:54
 msgid "Error log partitions"
 msgstr "Erreur d'enregistrement d'énévement"
 
-#: models.py:55
+#: models.py:66
 msgid "Date and time"
 msgstr "Date et heure"
 
-#: models.py:57
+#: models.py:68
 msgid "Text"
 msgstr "Texte"
 
-#: models.py:62
+#: models.py:73
 msgid "Error log partition entry"
 msgstr ""
 
-#: models.py:63
+#: models.py:74
 msgid "Error log partition entries"
 msgstr ""
+
+#: models.py:82
+msgid "Object"
+msgstr "Objet"
 
 #: permissions.py:8
 msgid "View error log"
@@ -102,29 +110,33 @@ msgstr ""
 "Chemin d'accès au fichier journal qui enregistrera les erreurs pendant la "
 "production."
 
-#: views.py:20
+#: views.py:21
+msgid ""
+"This view displays the error log of different objects. An empty list is a "
+"good thing."
+msgstr ""
+
+#: views.py:25 views.py:66
+msgid "There are no error log entries"
+msgstr "Il n'y a pas d'entrées dans le journal des erreurs"
+
+#: views.py:40
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr "Effacer les entrées du journal des erreurs pour : %s"
 
-#: views.py:27
+#: views.py:47
 msgid "Object error log cleared successfully"
 msgstr ""
 "Les entrées concernées du journal des erreurs ont été effacées avec succès"
 
-#: views.py:42
+#: views.py:62
 msgid ""
-"This view displays the error log of different object. An empty list is a "
-"good thing."
+"This view displays the error log of an object. An empty list is a good "
+"thing."
 msgstr ""
-"Cette page affiche le journal des erreurs de différents objets. Une liste "
-"vide est une bonne chose."
 
-#: views.py:46
-msgid "There are no error log entries"
-msgstr "Il n'y a pas d'entrées dans le journal des erreurs"
-
-#: views.py:49
+#: views.py:69
 #, python-format
 msgid "Error log entries for: %s"
 msgstr "Entrées du journal des erreurs pour : %s"

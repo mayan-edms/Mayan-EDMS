@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# xisafe <root@xisafe.com>, 2021
+# Roberto Rosario, 2022
+# Ford Guo <agile.guo@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: xisafe <root@xisafe.com>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Ford Guo <agile.guo@gmail.com>, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,40 +21,40 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:31 events.py:11 links.py:61 links.py:66 links.py:84
+#: apps.py:30 events.py:11 links.py:52 links.py:57 links.py:75
 #: permissions.py:5 queues.py:7 views/event_views.py:30
 msgid "Events"
 msgstr "事件"
 
-#: apps.py:59 apps.py:88
+#: apps.py:60 apps.py:89
 msgid "Date and time"
 msgstr "日期和时间"
 
-#: apps.py:63 apps.py:91
+#: apps.py:64 apps.py:92
 msgid "Actor"
 msgstr "操作者"
 
-#: apps.py:67 apps.py:96
+#: apps.py:68 apps.py:97
 msgid "Event"
 msgstr "事件"
 
-#: apps.py:71 apps.py:101
+#: apps.py:72 apps.py:102
 msgid "Target"
 msgstr "目标"
 
-#: apps.py:75 apps.py:105
+#: apps.py:76 apps.py:106
 msgid "Action object"
 msgstr "操作对象"
 
-#: apps.py:80 forms.py:10 forms.py:67
+#: apps.py:81 forms.py:10 forms.py:67
 msgid "Namespace"
 msgstr "命名空间"
 
-#: apps.py:83 forms.py:14 forms.py:71
+#: apps.py:84 forms.py:14 forms.py:71
 msgid "Label"
 msgstr "标签"
 
-#: apps.py:110
+#: apps.py:111
 msgid "Seen"
 msgstr "已见"
 
@@ -72,11 +72,6 @@ msgid ""
 "The event list has been exported and is available for download using the "
 "link: %(download_url)s or from the downloads area (%(download_list_url)s)."
 msgstr ""
-
-#: classes.py:343
-#, python-format
-msgid "Unknown or obsolete event type: %s"
-msgstr "未知或过时的事件类型：%s"
 
 #: events.py:15
 msgid "Events cleared"
@@ -98,83 +93,84 @@ msgstr "否"
 msgid "Subscribed"
 msgstr "已订阅"
 
-#: html_widgets.py:22
+#: html_widgets.py:23
 msgid "System"
 msgstr "系统"
 
-#: links.py:49
-msgid "My events"
-msgstr "我的事件"
-
-#: links.py:53 links.py:73 links.py:87 views/clear_views.py:62
+#: links.py:64 links.py:78 views/clear_views.py:62
 msgid "Clear events"
 msgstr ""
 
-#: links.py:57 links.py:80 links.py:91 views/export_views.py:57
+#: links.py:71 links.py:82 views/export_views.py:57
 msgid "Export events"
 msgstr ""
 
-#: links.py:96 models.py:63 views/subscription_views.py:56
+#: links.py:88 models.py:71 views/subscription_views.py:55
 msgid "Event subscriptions"
 msgstr "活动订阅"
 
-#: links.py:101
+#: links.py:93
 msgid "Mark as seen"
 msgstr "标记为已见"
 
-#: links.py:104
+#: links.py:96
 msgid "Mark all as seen"
 msgstr "标记所有为已见"
 
-#: links.py:110
+#: links.py:103
 msgid "Subscriptions"
 msgstr "订阅"
 
-#: models.py:22
+#: literals.py:12
+#, python-format
+msgid "Unknown or obsolete event type: %s"
+msgstr "未知或过时的事件类型：%s"
+
+#: models.py:24
 msgid "Name"
 msgstr "名称"
 
-#: models.py:26
+#: models.py:28
 msgid "Stored event type"
 msgstr "存储的事件类型"
 
-#: models.py:27
+#: models.py:29
 msgid "Stored event types"
 msgstr "存储的事件类型"
 
-#: models.py:52 models.py:78 models.py:109
+#: models.py:60 models.py:86 models.py:117
 msgid "User"
 msgstr "用户"
 
-#: models.py:56 models.py:113
+#: models.py:64 models.py:121
 msgid "Event type"
 msgstr "事件类型"
 
-#: models.py:62
+#: models.py:70
 msgid "Event subscription"
 msgstr "事件订阅"
 
-#: models.py:82
+#: models.py:90
 msgid "Action"
 msgstr "操作"
 
-#: models.py:84
+#: models.py:92
 msgid "Read"
 msgstr "读取"
 
-#: models.py:90
+#: models.py:98
 msgid "Notification"
 msgstr "通知"
 
-#: models.py:91 views/notification_views.py:30
+#: models.py:99 views/notification_views.py:30
 msgid "Notifications"
 msgstr "通知"
 
-#: models.py:119
+#: models.py:127
 msgid "Object event subscription"
 msgstr "对象事件订阅"
 
-#: models.py:120
+#: models.py:128
 msgid "Object event subscriptions"
 msgstr "对象事件订阅"
 
@@ -213,10 +209,10 @@ msgstr ""
 msgid "Clear events of: %s"
 msgstr ""
 
-#: views/clear_views.py:119 views/event_views.py:70 views/export_views.py:105
+#: views/clear_views.py:104
 #, python-format
-msgid "Events of type: %s"
-msgstr "%s类型的事件："
+msgid "Clear events of type: %s"
+msgstr ""
 
 #: views/event_views.py:26
 msgid "Events track actions that have been performed on, to, or with objects."
@@ -235,9 +231,14 @@ msgstr "此对象没有事件"
 msgid "Events for: %s"
 msgstr "%s的事件"
 
-#: views/event_views.py:68
+#: views/event_views.py:60
 msgid "There are no events of this type"
 msgstr ""
+
+#: views/event_views.py:62
+#, python-format
+msgid "Events of type: %s"
+msgstr "%s类型的事件："
 
 #: views/export_views.py:26
 msgid ""
@@ -252,6 +253,11 @@ msgstr ""
 #: views/export_views.py:76
 #, python-format
 msgid "Export events of: %s"
+msgstr ""
+
+#: views/export_views.py:93
+#, python-format
+msgid "Export events of type: %s"
 msgstr ""
 
 #: views/notification_views.py:25
@@ -278,25 +284,25 @@ msgstr ""
 msgid "All notifications marked as read."
 msgstr ""
 
-#: views/subscription_views.py:40
+#: views/subscription_views.py:39
 #, python-format
 msgid "Error updating event subscription; %s"
 msgstr "更新事件订阅时出错; %s"
 
-#: views/subscription_views.py:45
+#: views/subscription_views.py:44
 msgid "Event subscriptions updated successfully"
 msgstr "事件订阅已成功更新"
 
-#: views/subscription_views.py:114
+#: views/subscription_views.py:110
 #, python-format
 msgid "Error updating object event subscription; %s"
 msgstr "更新对象事件订阅时出错; %s"
 
-#: views/subscription_views.py:120
+#: views/subscription_views.py:116
 msgid "Object event subscriptions updated successfully"
 msgstr "对象事件订阅已成功更新"
 
-#: views/subscription_views.py:131
+#: views/subscription_views.py:127
 #, python-format
 msgid "Event subscriptions for: %s"
 msgstr "%s的事件订阅"

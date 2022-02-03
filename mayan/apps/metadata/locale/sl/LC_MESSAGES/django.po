@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Jože Detečnik <joze.detecnik@3tav.si>, 2021
+# Roberto Rosario, 2022
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:14+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,24 +21,24 @@ msgstr ""
 "Language: sl\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: apps.py:64 apps.py:194 apps.py:200 apps.py:204 apps.py:209 apps.py:213
-#: events.py:5 links.py:52 permissions.py:5 queues.py:7 settings.py:9
+#: apps.py:67 apps.py:205 apps.py:211 apps.py:215 apps.py:220 apps.py:224
+#: events.py:5 links.py:52 permissions.py:5 queues.py:7
 msgid "Metadata"
 msgstr ""
 
-#: apps.py:126
+#: apps.py:137
 msgid "Return the value of a specific document metadata."
 msgstr ""
 
-#: apps.py:127
+#: apps.py:138
 msgid "Metadata value of"
 msgstr ""
 
-#: apps.py:132
+#: apps.py:143
 msgid "Metadata type name"
 msgstr ""
 
-#: apps.py:136
+#: apps.py:147
 msgid "Metadata type value"
 msgstr ""
 
@@ -70,11 +70,11 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
-#: forms.py:17 models.py:52
+#: forms.py:17 models.py:39
 msgid "Name"
 msgstr "Ime"
 
-#: forms.py:26 models.py:189 workflow_actions.py:93
+#: forms.py:26 models.py:204 workflow_actions.py:93
 msgid "Value"
 msgstr ""
 
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: forms.py:52 forms.py:199 models.py:277
+#: forms.py:52 forms.py:208 models.py:292
 msgid "Required"
 msgstr ""
 
@@ -105,7 +105,7 @@ msgstr ""
 msgid "Metadata types to be added to the selected documents."
 msgstr ""
 
-#: forms.py:131 models.py:87 models.py:275 search.py:14 workflow_actions.py:86
+#: forms.py:131 models.py:87 models.py:290 search.py:14 workflow_actions.py:86
 msgid "Metadata type"
 msgstr ""
 
@@ -117,11 +117,11 @@ msgstr "Odstrani"
 msgid " Available template context variables: "
 msgstr ""
 
-#: forms.py:197
+#: forms.py:206
 msgid "None"
 msgstr "Nobenega"
 
-#: forms.py:198
+#: forms.py:207
 msgid "Optional"
 msgstr ""
 
@@ -158,6 +158,42 @@ msgstr "Izbriši"
 msgid "Edit"
 msgstr ""
 
+#: metadata_parsers.py:11
+msgid "Date and time parser"
+msgstr ""
+
+#: metadata_parsers.py:18
+msgid "Date parser"
+msgstr ""
+
+#: metadata_parsers.py:26
+msgid "Regular expression parser"
+msgstr ""
+
+#: metadata_parsers.py:36
+msgid "Time parser"
+msgstr ""
+
+#: metadata_validators.py:12
+msgid "Date and time validator"
+msgstr ""
+
+#: metadata_validators.py:19
+msgid "Date validator"
+msgstr ""
+
+#: metadata_validators.py:27
+msgid "Regular expression validator"
+msgstr ""
+
+#: metadata_validators.py:35
+msgid "The input string does not match the pattern."
+msgstr ""
+
+#: metadata_validators.py:40
+msgid "Time validator"
+msgstr ""
+
 #: methods.py:20
 msgid "Return the metadata of the document."
 msgstr ""
@@ -166,93 +202,114 @@ msgstr ""
 msgid "Selected documents must be of the same type."
 msgstr ""
 
-#: models.py:49
+#: models.py:36
 msgid ""
 "Name used by other apps to reference this metadata type. Do not use python "
 "reserved words, or spaces."
 msgstr ""
 
-#: models.py:55
+#: models.py:42
 msgid "Short description of this metadata type."
 msgstr ""
 
-#: models.py:56
+#: models.py:43
 msgid "Label"
 msgstr "Oznaka"
 
-#: models.py:60
+#: models.py:47
 msgid "Enter a template to render."
 msgstr ""
 
-#: models.py:61
+#: models.py:48
 msgid "Default"
 msgstr ""
 
-#: models.py:65
+#: models.py:52
 msgid "Enter a template to render. Must result in a comma delimited string."
 msgstr ""
 
-#: models.py:67
+#: models.py:54
 msgid "Lookup"
 msgstr ""
 
-#: models.py:72
+#: models.py:58
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
 msgstr ""
 
-#: models.py:74
+#: models.py:60
 msgid "Validator"
 msgstr ""
 
-#: models.py:78
+#: models.py:64
+msgid "Enter the arguments for the validator in YAML format."
+msgstr ""
+
+#: models.py:66
+msgid "Validator arguments"
+msgstr ""
+
+#: models.py:71
 msgid ""
 "The parser will reformat the value entered to conform to the expected "
 "format."
 msgstr ""
 
-#: models.py:80
+#: models.py:73
 msgid "Parser"
+msgstr ""
+
+#: models.py:77
+msgid "Enter the arguments for the parser in YAML format."
+msgstr ""
+
+#: models.py:79
+msgid "Parser arguments"
 msgstr ""
 
 #: models.py:159
 msgid "Value is not one of the provided options."
 msgstr ""
 
-#: models.py:180
+#: models.py:173
+#, python-format
+msgid "Metadata type validation error; %(exception)s"
+msgstr ""
+
+#: models.py:195
 msgid "Document"
 msgstr "Dokument"
 
-#: models.py:183
+#: models.py:198
 msgid "Type"
 msgstr ""
 
-#: models.py:187
+#: models.py:202
 msgid "The actual value stored in the metadata type field for the document."
 msgstr ""
 
-#: models.py:195 models.py:196
+#: models.py:210 models.py:211
 msgid "Document metadata"
 msgstr ""
 
-#: models.py:223
+#: models.py:238
 msgid "Metadata type is required for this document type."
 msgstr ""
 
-#: models.py:258
+#: models.py:273
 msgid "Metadata type is not valid for this document type."
 msgstr ""
 
-#: models.py:271
+#: models.py:286
 msgid "Document type"
 msgstr "Vrsta dokumenta"
 
-#: models.py:284
+#: models.py:299
 msgid "Document type metadata type options"
 msgstr ""
 
-#: models.py:285
+#: models.py:300
 msgid "Document type metadata types options"
 msgstr ""
 

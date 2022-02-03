@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2021
+# Michal Švábík <snadno@lehce.cz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-12 03:39+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,42 +20,52 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:27
+#: apps.py:28 events.py:5
 msgid "Locales"
 msgstr ""
 
-#: links.py:13
+#: events.py:8
+msgid "User locale profile edited"
+msgstr ""
+
+#: links.py:18
 msgid "Locale profile"
 msgstr "Profil národního prostředí"
 
-#: links.py:18
+#: links.py:25
 msgid "Edit locale profile"
 msgstr "Upravit místní nastavení"
 
-#: models.py:18
+#: models.py:21
 msgid "User"
 msgstr "Uživatel"
 
-#: models.py:22
+#: models.py:25
 msgid "Timezone"
 msgstr "Časové pásmo"
 
-#: models.py:25
+#: models.py:28
 msgid "Language"
 msgstr "Jazyk"
 
-#: models.py:31
+#: models.py:34
 msgid "User locale profile"
 msgstr "Profil místního uživatele"
 
-#: models.py:32
+#: models.py:35
 msgid "User locale profiles"
 msgstr "Profily národního prostředí uživatele"
 
-#: views.py:24
-msgid "Current user locale profile details"
-msgstr "Podrobnosti o aktuálním místním profilu uživatele"
+#: models.py:39
+msgid "None"
+msgstr "Žádný"
 
-#: views.py:30
-msgid "Edit current user locale profile details"
-msgstr "Upravit podrobnosti o aktuálním místním profilu uživatele"
+#: views.py:36
+#, python-format
+msgid "Locale profile for user: %s"
+msgstr ""
+
+#: views.py:82
+#, python-format
+msgid "Edit locale profile for user: %s"
+msgstr ""

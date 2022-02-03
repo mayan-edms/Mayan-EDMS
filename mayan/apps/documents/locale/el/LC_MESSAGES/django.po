@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Hmayag Antonian <hmayag@freemail.gr>, 2021
-# pyrotech <anastasios@tutamail.com>, 2021
+# Hmayag Antonian <hmayag@freemail.gr>, 2022
+# pyrotech <anastasios@tutamail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -546,15 +546,15 @@ msgstr "Έκδοση εγγράφου"
 msgid "Document version pages"
 msgstr ""
 
-#: links/favorite_links.py:21 views/favorite_document_views.py:36
+#: links/favorite_links.py:23 views/favorite_document_views.py:36
 msgid "Favorites"
 msgstr "Αγαπημένα"
 
-#: links/favorite_links.py:27 links/favorite_links.py:37
+#: links/favorite_links.py:29 links/favorite_links.py:39
 msgid "Add to favorites"
 msgstr "Προσθήκη στα αγαπημένα"
 
-#: links/favorite_links.py:33 links/favorite_links.py:41
+#: links/favorite_links.py:35 links/favorite_links.py:43
 msgid "Remove from favorites"
 msgstr "Αφαίρεση από τα αγαπημένα"
 
@@ -1120,19 +1120,19 @@ msgstr ""
 msgid "Document version comment"
 msgstr ""
 
-#: serializers/document_file_serializers.py:38
+#: serializers/document_file_serializers.py:97
 msgid "Binary content for the new file."
 msgstr ""
 
-#: serializers/document_serializers.py:23
+#: serializers/document_serializers.py:22
 msgid "Document type ID for the new document."
 msgstr ""
 
-#: serializers/document_version_serializers.py:72
+#: serializers/document_version_serializers.py:14
 msgid "Content type ID of the source object for the page."
 msgstr ""
 
-#: serializers/favorite_document_serializers.py:18
+#: serializers/favorite_document_serializers.py:17
 msgid "Document ID for the new favorite document."
 msgstr ""
 
@@ -1958,9 +1958,8 @@ msgid ""
 "This view will list the latest documents viewed or manipulated in any way by"
 " this user account."
 msgstr ""
-"Σε αυτήν την προβολή θα εμφανίζονται τα πιο πρόσφατα έγγραφα που "
-"προβλήθηκανι ή επεξεργάστηκαν με οποιονδήποτε τρόπο από αυτόν τον λογαριασμό"
-" χρήστη."
+"Σε αυτήν την προβολή θα εμφανίζονται τα πιο πρόσφατα έγγραφα που προβλήθηκαν"
+" ή επεξεργάστηκαν με οποιονδήποτε τρόπο από αυτόν τον λογαριασμό χρήστη."
 
 #: views/recently_accessed_document_views.py:27
 msgid "There are no recently accessed documents"
@@ -1976,19 +1975,32 @@ msgstr "Δεν έχουν δημιουργηθεί προσφάτως έγγρα
 
 #: views/trashed_document_views.py:37
 #, python-format
+msgid "Document \"%(object)s\" moved to trash."
+msgstr ""
+
+#: views/trashed_document_views.py:40
+#, python-format
 msgid "%(count)d document moved to the trash."
 msgstr "%(count)d έγγραφο μετακινήθηκε στα απορρίμματα."
 
-#: views/trashed_document_views.py:40
+#: views/trashed_document_views.py:43
 #, python-format
 msgid "%(count)d documents moved to the trash."
 msgstr "%(count)d έγγραφα μετακινήθηκαν στα απορρίμματα."
 
+#: views/trashed_document_views.py:45
+#, python-format
+msgid "Move the document \"%(object)s\" to trash?"
+msgstr ""
+
 #: views/trashed_document_views.py:46
 msgid "Move the selected document to the trash?"
-msgid_plural "Move the selected documents to the trash?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr ""
+
+#: views/trashed_document_views.py:47
+#, python-format
+msgid "Move the %(count)d selected documents to trash?"
+msgstr ""
 
 #: views/trashed_document_views.py:76
 msgid "Empty trash?"
@@ -2000,19 +2012,32 @@ msgstr "Η εργασία εκκαθάρισης απορριμμάτων έχε
 
 #: views/trashed_document_views.py:98
 #, python-format
+msgid "Trash document \"%(object)s\" submitted for deletion."
+msgstr ""
+
+#: views/trashed_document_views.py:101
+#, python-format
 msgid "%(count)d trashed document submitted for deletion."
 msgstr "%(count)d έγγραφο από τα απορρίμματα υποβλήθηκε για διαγραφή."
 
-#: views/trashed_document_views.py:101
+#: views/trashed_document_views.py:104
 #, python-format
 msgid "%(count)d trashed documents submitted for deletion."
 msgstr "%(count)d έγγραφα από τα απορρίμματα υποβλήθηκαν για διαγραφή."
 
+#: views/trashed_document_views.py:106
+#, python-format
+msgid "Delete the trashed document \"%(object)s\"?"
+msgstr ""
+
 #: views/trashed_document_views.py:107
 msgid "Delete the selected trashed document?"
-msgid_plural "Delete the selected trashed documents?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr ""
+
+#: views/trashed_document_views.py:108
+#, python-format
+msgid "Delete the %(count)d selected trashed documents?"
+msgstr ""
 
 #: views/trashed_document_views.py:144
 msgid ""
@@ -2030,19 +2055,32 @@ msgstr "Δεν υπάρχουν έγγραφα στον κάδο απορριμ�
 
 #: views/trashed_document_views.py:162
 #, python-format
+msgid "Trashed document \"%(object)s\" restored."
+msgstr ""
+
+#: views/trashed_document_views.py:165
+#, python-format
 msgid "%(count)d trashed document restored."
 msgstr "%(count)d έγγραφο απορριμμάτων αποκαταστάθηκε."
 
-#: views/trashed_document_views.py:165
+#: views/trashed_document_views.py:168
 #, python-format
 msgid "%(count)d trashed documents restored."
 msgstr "%(count)dέγγραφα απορριμμάτων αποκαταστάθηκαν."
 
+#: views/trashed_document_views.py:170
+#, python-format
+msgid "Restore the trashed document: %(object)s"
+msgstr ""
+
 #: views/trashed_document_views.py:171
 msgid "Restore the selected trashed document?"
-msgid_plural "Restore the selected trashed documents?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr ""
+
+#: views/trashed_document_views.py:172
+#, python-format
+msgid "Restore the %(count)d selected trashed documents?"
+msgstr ""
 
 #: workflow_actions.py:13
 msgid "New document type for the workflow document."

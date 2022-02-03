@@ -4,15 +4,17 @@
 # 
 # Translators:
 # Translators:
-# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
+# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:14+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,26 +29,26 @@ msgstr "API REST"
 #: fields.py:30
 #, python-format
 msgid "Unable to find serializer class for: %s"
-msgstr ""
+msgstr "Não foi possível encontrar a classe do serializador para: %s"
 
 #: links.py:21
 msgid "API Documentation (Swagger)"
-msgstr ""
+msgstr "Documentação da API (Swagger)"
 
 #: links.py:27
 msgid "API Documentation (ReDoc)"
-msgstr ""
+msgstr "Documentação da API (ReDoc)"
 
-#: relations.py:82
+#: relations.py:84
 msgid "This field is required."
 msgstr ""
 
-#: relations.py:83
+#: relations.py:85
 #, python-brace-format
 msgid "Invalid pk \"{pk_value}\" - object does not exist."
 msgstr ""
 
-#: relations.py:84
+#: relations.py:86
 #, python-brace-format
 msgid "Incorrect type. Expected pk value, received {data_type}."
 msgstr ""
@@ -54,11 +56,11 @@ msgstr ""
 #: schemas.py:11
 #, python-format
 msgid "%s API"
-msgstr ""
+msgstr "API %s"
 
 #: settings.py:17
 msgid "Disable the REST API links in the tools menu."
-msgstr ""
+msgstr "Desabilitar os links de API Rest no menu de ferramentas."
 
 #: settings.py:23
 msgid "The maximum page size that can be requested."

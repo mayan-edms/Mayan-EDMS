@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Jiri Fait <fait@orkasolutions.cz>, 2021
-# Michal Švábík <snadno@lehce.cz>, 2021
-# trendspotter <jirka.p@volny.cz>, 2021
+# Jiri Fait <fait@orkasolutions.cz>, 2022
+# Michal Švábík <snadno@lehce.cz>, 2022
+# trendspotter <jirka.p@volny.cz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:14+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:23 settings.py:12
+#: apps.py:23 settings.py:14
 msgid "Storage"
 msgstr "Úložiště"
 
@@ -136,7 +136,11 @@ msgstr "Odstraňte zastaralá nahrávání"
 msgid "Delete stale download files"
 msgstr ""
 
-#: settings.py:17
+#: settings.py:19
+msgid "Time in seconds, after which download files will be deleted."
+msgstr ""
+
+#: settings.py:25
 msgid ""
 "A storage backend that all workers can use to generate and hold files for "
 "download."
@@ -144,17 +148,21 @@ msgstr ""
 "Backend úložiště, který mohou všichni pracovníci použít ke generování a "
 "uchovávání souborů ke stažení."
 
-#: settings.py:28
+#: settings.py:36
 msgid "A storage backend that all workers can use to share files."
 msgstr "Úložiště, které všichni pracovníci mohou použít ke sdílení souborů."
 
-#: settings.py:38
+#: settings.py:46
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr ""
 "Dočasný adresář používaný na celém webu k ukládání miniatur, náhledů a "
 "dočasných souborů."
+
+#: settings.py:53
+msgid "Time in seconds, after which temporary uploaded files will be deleted."
+msgstr ""
 
 #: storages.py:15
 msgid ""

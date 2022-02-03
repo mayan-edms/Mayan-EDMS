@@ -4,18 +4,20 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
-# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2021
-# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
+# Emerson Soares <on.emersonsoares@gmail.com>, 2022
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
+# Márcia Ferreira, 2022
+# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:17+0000\n"
-"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Jadson Ribeiro <jadsonbr@outlook.com.br>, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,9 +25,9 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
+#: apps.py:51 apps.py:158 apps.py:162 apps.py:166 apps.py:170 apps.py:174
 #: events.py:5 forms.py:14 links.py:30 menus.py:14 models.py:50 models.py:174
-#: permissions.py:5 search.py:56 views.py:155 workflow_actions.py:20
+#: permissions.py:5 search.py:60 views.py:155 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "Pastas"
 
@@ -122,7 +124,7 @@ msgstr "%(model_name)s com estes %(field_labels)s já existem. "
 msgid "Document cabinet"
 msgstr "Pasta de documentos"
 
-#: models.py:186 search.py:63 search.py:70 search.py:77 search.py:84
+#: models.py:186 search.py:67 search.py:74 search.py:81 search.py:88
 msgid "Document cabinets"
 msgstr "Pastas de documentos"
 
@@ -150,29 +152,29 @@ msgstr "Excluir documentos das pastas"
 msgid "View cabinets"
 msgstr "Ver pastas"
 
-#: search.py:33
+#: search.py:35
 msgid "Document type"
 msgstr "Tipo de documento"
 
-#: search.py:36
-msgid "Document MIME type"
-msgstr "MIME type do documento"
-
-#: search.py:39
+#: search.py:38
 msgid "Document label"
 msgstr "Rótulo do documento"
 
-#: search.py:42
+#: search.py:41
 msgid "Document description"
 msgstr "Descrição do documento"
 
-#: search.py:45
+#: search.py:44
 msgid "Document UUID"
 msgstr "UUID do documento"
 
-#: search.py:50
-msgid "Document checksum"
-msgstr "Checksum do documento"
+#: search.py:51
+msgid "Document file checksum"
+msgstr ""
+
+#: search.py:54
+msgid "Document file MIME type"
+msgstr ""
 
 #: serializers.py:18
 msgid "List of children cabinets."
@@ -241,32 +243,32 @@ msgstr "Sem pastas disponíveis"
 #: views.py:178
 #, python-format
 msgid "Document \"%(object)s\" added to cabinets successfully."
-msgstr ""
+msgstr "Documento \"%(object)s\" adicionado com sucesso a pastas."
 
 #: views.py:181
 #, python-format
 msgid "%(count)d document added to cabinets successfully."
-msgstr ""
+msgstr "%(count)d documento adicionado a pastas com sucesso."
 
 #: views.py:184
 #, python-format
 msgid "%(count)d documents added to cabinets successfully."
-msgstr ""
+msgstr "%(count)d documentos adicionado a pastas com sucesso."
 
 #: views.py:186
 #, python-format
 msgid "Add document \"%(object)s\" to cabinets."
-msgstr ""
+msgstr "Adicionar documento \"%(object)s\" a pastas."
 
 #: views.py:187
 #, python-format
 msgid "Add %(count)d document to cabinets."
-msgstr ""
+msgstr "Adicionar %(count)d documento a pastas."
 
 #: views.py:188
 #, python-format
 msgid "Add %(count)d documents to cabinets."
-msgstr ""
+msgstr "Adicionar %(count)d documentos a pastas."
 
 #: views.py:205
 msgid "Cabinets to which the selected documents will be added."
@@ -288,32 +290,32 @@ msgstr "Pasta com documento: %s"
 #: views.py:274
 #, python-format
 msgid "Document \"%(object)s\" removed from cabinets successfully."
-msgstr ""
+msgstr "Documento \"%(object)s\" removidos das pastas com sucesso."
 
 #: views.py:277
 #, python-format
 msgid "%(count)d document removed from cabinets successfully."
-msgstr ""
+msgstr "%(count)d documento removido de pastas com sucesso."
 
 #: views.py:280
 #, python-format
 msgid "%(count)d documents removed from cabinets successfully."
-msgstr ""
+msgstr "%(count)d documentos removidos das pastas com sucesso."
 
 #: views.py:282
 #, python-format
 msgid "Remove document \"%(object)s\" from cabinets."
-msgstr ""
+msgstr "Remover documento \"%(object)s\" de pastas."
 
 #: views.py:283
 #, python-format
 msgid "Remove %(count)d document from cabinets."
-msgstr ""
+msgstr "Remover %(count)d documento de pastas."
 
 #: views.py:284
 #, python-format
 msgid "Remove %(count)d documents from cabinets."
-msgstr ""
+msgstr "Remover %(count)d documentos das pastas."
 
 #: views.py:301
 msgid "Cabinets from which the selected documents will be removed."

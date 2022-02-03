@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
 "PO-Revision-Date: 2020-04-14 08:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Key ID"
 msgstr ""
 
-#: apps.py:63 forms.py:32 models.py:59
+#: apps.py:63 forms.py:33 models.py:59
 msgid "Type"
 msgstr ""
 
@@ -78,11 +78,11 @@ msgstr ""
 msgid "Algorithm"
 msgstr ""
 
-#: forms.py:45
+#: forms.py:48
 msgid "Term"
 msgstr ""
 
-#: forms.py:46
+#: forms.py:49
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr ""
 

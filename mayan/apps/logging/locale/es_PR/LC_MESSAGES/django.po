@@ -4,15 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
+# jmcainzos <jmcainzos@vodafone.es>, 2022
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,57 +21,65 @@ msgstr ""
 "Language: es_PR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:16 permissions.py:5 settings.py:10
+#: apps.py:20 permissions.py:5 settings.py:10
 msgid "Logging"
 msgstr "Registro"
 
-#: links.py:13
+#: links.py:11 views.py:27
+msgid "Global error log"
+msgstr "Registro global de errores"
+
+#: links.py:17
 msgid "Errors"
 msgstr "Errores"
 
-#: links.py:19
+#: links.py:23
 msgid "Clear errors"
 msgstr "Borrar los errores"
 
-#: models.py:9 models.py:37
+#: models.py:11 models.py:39
 msgid "Internal name"
 msgstr "Nombre interno"
 
-#: models.py:14 models.py:34
+#: models.py:16 models.py:36
 msgid "Error log"
 msgstr "Registro de errores"
 
-#: models.py:15
+#: models.py:17
 msgid "Error logs"
 msgstr "Registros de errores"
 
-#: models.py:24
+#: models.py:26
 msgid "App label"
 msgstr "Etiqueta de la aplicación"
 
-#: models.py:42 models.py:52
+#: models.py:53 models.py:63
 msgid "Error log partition"
 msgstr "Partición del registro de errores"
 
-#: models.py:43
+#: models.py:54
 msgid "Error log partitions"
 msgstr "Particiones de registro de errores"
 
-#: models.py:55
+#: models.py:66
 msgid "Date and time"
 msgstr "Fecha y hora"
 
-#: models.py:57
+#: models.py:68
 msgid "Text"
 msgstr "Texto"
 
-#: models.py:62
+#: models.py:73
 msgid "Error log partition entry"
 msgstr "Entrada de partición de registro de errores"
 
-#: models.py:63
+#: models.py:74
 msgid "Error log partition entries"
 msgstr "Entradas de la partición del registro de errores"
+
+#: models.py:82
+msgid "Object"
+msgstr "Objeto"
 
 #: permissions.py:8
 msgid "View error log"
@@ -97,28 +106,36 @@ msgstr ""
 "Ruta de acceso al archivo de registro que va a monitorear errores durante el"
 " uso en producción."
 
-#: views.py:20
-#, python-format
-msgid "Clear error log entries for: %s"
-msgstr "Borrar entradas de registro de errores para: %s"
-
-#: views.py:27
-msgid "Object error log cleared successfully"
-msgstr "El registro de errores del objeto se borró correctamente"
-
-#: views.py:42
+#: views.py:21
 msgid ""
-"This view displays the error log of different object. An empty list is a "
+"This view displays the error log of different objects. An empty list is a "
 "good thing."
 msgstr ""
 "Esta vista muestra el registro de errores de diferentes objetos. Una lista "
 "vacía es algo bueno."
 
-#: views.py:46
+#: views.py:25 views.py:66
 msgid "There are no error log entries"
 msgstr "No hay entradas de registro de errores"
 
-#: views.py:49
+#: views.py:40
+#, python-format
+msgid "Clear error log entries for: %s"
+msgstr "Borrar entradas de registro de errores para: %s"
+
+#: views.py:47
+msgid "Object error log cleared successfully"
+msgstr "El registro de errores del objeto se borró correctamente"
+
+#: views.py:62
+msgid ""
+"This view displays the error log of an object. An empty list is a good "
+"thing."
+msgstr ""
+"Esta vista muestra el registro de errores de un objeto. Una lista vacía es "
+"algo bueno."
+
+#: views.py:69
 #, python-format
 msgid "Error log entries for: %s"
 msgstr "Entradas del registro de errores para: %s"

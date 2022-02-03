@@ -4,20 +4,20 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2021
-# Marco Camplese <marco.camplese.mc@gmail.com>, 2021
-# Giovanni Tricarico <gtricarico92@gmail.com>, 2021
-# Daniele Bortoluzzi <daniele@elkos.it>, 2021
-# Paul Audhep <audhep@gmail.com>, 2021
+# Paul Audhep <audhep@gmail.com>, 2022
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2022
+# Giovanni Tricarico <gtricarico92@gmail.com>, 2022
+# Roberto Rosario, 2022
+# Daniele Bortoluzzi <daniele@elkos.it>, 2022
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:12+0000\n"
-"Last-Translator: Paul Audhep <audhep@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:11+0000\n"
+"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -112,11 +112,11 @@ msgstr "Modifica ACL"
 msgid "View ACLs"
 msgstr "Visualizza ACL"
 
-#: serializers.py:120
+#: serializers.py:119
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
 
-#: serializers.py:127
+#: serializers.py:126
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
 

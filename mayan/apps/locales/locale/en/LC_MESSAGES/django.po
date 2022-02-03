@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,42 +17,52 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27
+#: apps.py:28 events.py:5
 msgid "Locales"
 msgstr ""
 
-#: links.py:13
-msgid "Locale profile"
+#: events.py:8
+msgid "User locale profile edited"
 msgstr ""
 
 #: links.py:18
+msgid "Locale profile"
+msgstr ""
+
+#: links.py:25
 msgid "Edit locale profile"
 msgstr ""
 
-#: models.py:18
+#: models.py:21
 msgid "User"
 msgstr ""
 
-#: models.py:22
+#: models.py:25
 msgid "Timezone"
 msgstr ""
 
-#: models.py:25
+#: models.py:28
 msgid "Language"
 msgstr ""
 
-#: models.py:31
+#: models.py:34
 msgid "User locale profile"
 msgstr ""
 
-#: models.py:32
+#: models.py:35
 msgid "User locale profiles"
 msgstr ""
 
-#: views.py:24
-msgid "Current user locale profile details"
+#: models.py:39
+msgid "None"
 msgstr ""
 
-#: views.py:30
-msgid "Edit current user locale profile details"
+#: views.py:36
+#, python-format
+msgid "Locale profile for user: %s"
+msgstr ""
+
+#: views.py:82
+#, python-format
+msgid "Edit locale profile for user: %s"
 msgstr ""

@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# serhatcan77 <serhat_can@yahoo.com>, 2021
-# abc Def <hdogan1974@gmail.com>, 2021
+# abc Def <hdogan1974@gmail.com>, 2022
+# serhatcan77 <serhat_can@yahoo.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: abc Def <hdogan1974@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,35 +29,35 @@ msgstr "Yok"
 msgid "Document types"
 msgstr "Belge türleri"
 
-#: apps.py:50 events.py:6
+#: apps.py:51 events.py:6
 msgid "Document indexing"
 msgstr ""
 
-#: apps.py:128 apps.py:157 apps.py:196 apps.py:229
+#: apps.py:134 apps.py:163 apps.py:202 apps.py:235
 msgid "Level"
 msgstr "Seviye"
 
-#: apps.py:136 apps.py:166
+#: apps.py:142 apps.py:172
 msgid "Depth"
 msgstr ""
 
-#: apps.py:140
+#: apps.py:146
 msgid "Total nodes"
 msgstr ""
 
-#: apps.py:147
+#: apps.py:153
 msgid "Total documents"
 msgstr ""
 
-#: apps.py:149 apps.py:187
+#: apps.py:155 apps.py:193
 msgid "Number of unique documents this item contains."
 msgstr ""
 
-#: apps.py:174
+#: apps.py:180
 msgid "Nodes"
 msgstr ""
 
-#: apps.py:185 models.py:438
+#: apps.py:191 models.py:438
 msgid "Documents"
 msgstr "Belgeler"
 
@@ -327,26 +327,26 @@ msgstr ""
 msgid "Document checksum"
 msgstr ""
 
-#: serializers.py:200
+#: serializers.py:205
 msgid ""
 "URL of the API endpoint showing the list document types associated with this"
 " index template."
 msgstr ""
 
-#: serializers.py:207
+#: serializers.py:212
 msgid "URL of the API endpoint to add document types to this index template."
 msgstr ""
 
-#: serializers.py:214
+#: serializers.py:219
 msgid ""
 "URL of the API endpoint to remove document types from this index template."
 msgstr ""
 
-#: serializers.py:271
+#: serializers.py:276
 msgid "Primary key of the document type to add to the index template."
 msgstr ""
 
-#: serializers.py:280
+#: serializers.py:285
 msgid "Primary key of the document type to remove from the index template."
 msgstr ""
 

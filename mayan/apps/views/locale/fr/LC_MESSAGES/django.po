@@ -4,22 +4,22 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
-# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2021
-# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
-# Benoît GROUSSET <benoit@grousset.xyz>, 2021
-# Guillaume Trottier <gui.trottier@gmail.com>, 2021
-# Frédéric Sheedy <sheedf@gmail.com>, 2021
-# Yves Dubois <ydubois@gmail.com>, 2021
+# Roberto Rosario, 2022
+# Benoît GROUSSET <benoit@grousset.xyz>, 2022
+# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2022
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2022
+# Yves Dubois <ydubois@gmail.com>, 2022
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
+# Guillaume Trottier <gui.trottier@gmail.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Yves Dubois <ydubois@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:14+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,23 +31,19 @@ msgstr ""
 msgid "Views"
 msgstr "Vues"
 
-#: forms.py:27
+#: forms.py:29
 msgid "Search"
 msgstr "Chercher"
 
-#: forms.py:41
+#: forms.py:43
 msgid "Selection"
 msgstr "Sélection"
 
-#: forms.py:114
-msgid "None"
-msgstr "Aucun"
-
-#: forms.py:354
+#: forms.py:357
 msgid "Label"
 msgstr "Étiquette"
 
-#: forms.py:358
+#: forms.py:361
 msgid "Relationship"
 msgstr "Relation"
 
@@ -71,19 +67,19 @@ msgstr ""
 "sélectionner plusieurs entrées. Une fois la sélection terminée, cliquez sur "
 "le bouton ci-dessous ou double-cliquez sur la liste pour activer l'action."
 
-#: generics.py:293
+#: generics.py:290
 msgid "Add all"
 msgstr "Ajouter tout"
 
-#: generics.py:301
+#: generics.py:298
 msgid "Add"
 msgstr "Ajouter"
 
-#: generics.py:311
+#: generics.py:308
 msgid "Remove all"
 msgstr "Tout retirer"
 
-#: generics.py:319
+#: generics.py:316
 msgid "Remove"
 msgstr "Retirer"
 
@@ -166,48 +162,48 @@ msgstr "Supprimez l'objet %(count)d."
 msgid "Delete %(count)d objects."
 msgstr "Supprimer %(count)d objets ."
 
-#: mixins.py:330
+#: mixins.py:350
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr "Aucun %(verbose_name)s trouvé correspondant à la requête"
 
-#: mixins.py:355
+#: mixins.py:375
 #, python-format
 msgid "Unable to perform operation on object %(instance)s; %(exception)s."
 msgstr ""
 "Impossible d'exécuter l'opération pour l'objet %(instance)s; %(exception)s."
 
-#: mixins.py:357
+#: mixins.py:377
 #, python-format
 msgid "Operation performed on %(object)s."
 msgstr "Opération effectuée pour %(object)s."
 
-#: mixins.py:358
+#: mixins.py:378
 #, python-format
 msgid "Operation performed on %(count)d object."
 msgstr "Opération effectuée pour %(count)d objet."
 
-#: mixins.py:359
+#: mixins.py:379
 #, python-format
 msgid "Operation performed on %(count)d objects."
 msgstr "Opération effectuée pour %(count)d objets ."
 
-#: mixins.py:360
+#: mixins.py:380
 #, python-format
 msgid "Perform operation on %(object)s."
 msgstr "Exécutez l'opération sur %(object)s."
 
-#: mixins.py:361
+#: mixins.py:381
 #, python-format
 msgid "Perform operation on %(count)d object."
 msgstr "Effectuez l'opération sur un %(count)d objet."
 
-#: mixins.py:362
+#: mixins.py:382
 #, python-format
 msgid "Perform operation on %(count)d objects."
 msgstr "Effectuez l'opération sur %(count)d objets."
 
-#: mixins.py:444
+#: mixins.py:464
 msgid "Object"
 msgstr "Objet"
 

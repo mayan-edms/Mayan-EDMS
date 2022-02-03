@@ -4,20 +4,20 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Emerson Soares <on.emersonsoares@gmail.com>, 2021
-# Renata Oliveira <renatabels@gmail.com>, 2021
-# Vítor Figueiró <vfigueiro@gmail.com>, 2021
-# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
-# Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021
+# Bruno Martins <bruno.martins@bewgpt.com.pt>, 2022
+# Renata Oliveira <renatabels@gmail.com>, 2022
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
+# Vítor Figueiró <vfigueiro@gmail.com>, 2022
+# Emerson Soares <on.emersonsoares@gmail.com>, 2022
+# Roberto Rosario, 2022
 # Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:18+0000\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -44,7 +44,7 @@ msgstr "Exceção a determinar o número de páginas PDF; %s"
 msgid "Exception determining page count using Pillow; %s"
 msgstr "Exceção a determinar o número de páginas usando Pillow; %s"
 
-#: classes.py:157
+#: classes.py:158
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice não instalado ou não encontrado."
 
@@ -119,7 +119,7 @@ msgstr "Criar recurso"
 
 #: links.py:38 links.py:44 links.py:64
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "Remover"
 
 #: links.py:48 links.py:72
 msgid "Edit"
@@ -179,7 +179,7 @@ msgstr "Camadas armazenadas"
 
 #: models.py:196 models.py:250
 msgid "Enabled"
-msgstr "Activado"
+msgstr "Ativado"
 
 #: models.py:207 models.py:235
 msgid "Object layer"
@@ -415,8 +415,8 @@ msgstr "Remover pedido realizado em %(count)d recursos"
 #: views.py:62
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] "Remover recurso selecionado?"
-msgstr[1] "Remover os recursos selecionados? "
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:72
 #, python-format

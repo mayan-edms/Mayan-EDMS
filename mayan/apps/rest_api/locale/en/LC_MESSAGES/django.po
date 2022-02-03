@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
+"POT-Creation-Date: 2022-02-03 12:14+0000\n"
 "PO-Revision-Date: 2020-01-31 04:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -35,16 +35,16 @@ msgstr ""
 msgid "API Documentation (ReDoc)"
 msgstr ""
 
-#: relations.py:82
+#: relations.py:84
 msgid "This field is required."
 msgstr ""
 
-#: relations.py:83
+#: relations.py:85
 #, python-brace-format
 msgid "Invalid pk \"{pk_value}\" - object does not exist."
 msgstr ""
 
-#: relations.py:84
+#: relations.py:86
 #, python-brace-format
 msgid "Incorrect type. Expected pk value, received {data_type}."
 msgstr ""

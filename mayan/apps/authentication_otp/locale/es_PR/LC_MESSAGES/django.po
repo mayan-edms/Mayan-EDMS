@@ -1,0 +1,139 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2022
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
+"Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es_PR\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:23 events.py:6
+msgid "Authentication OTP"
+msgstr "Autenticación OTP"
+
+#: events.py:10
+msgid "OTP disabled"
+msgstr "OTP deshabilitado"
+
+#: events.py:13
+msgid "OTP enabled"
+msgstr "OTP habilitado"
+
+#: forms.py:20
+msgid "Token is either invalid or expired."
+msgstr "El código no es válido o ha caducado."
+
+#: forms.py:25
+msgid "TOTP token"
+msgstr "Código TOTP"
+
+#: forms.py:84
+msgid "OTP enabled?"
+msgstr "¿OTP habilitado?"
+
+#: forms.py:85
+msgid "Yes"
+msgstr "Sí"
+
+#: forms.py:85
+msgid "No"
+msgstr "No"
+
+#: forms.py:102
+msgid ""
+"Scan the QR code or enter the secret in your authentication device. Do not "
+"share this secret, treat it like a password."
+msgstr ""
+"Escanee el código QR o ingrese el secreto en su dispositivo de "
+"autenticación. No comparta este secreto, trátelo como una contraseña."
+
+#: forms.py:104 forms.py:109
+msgid "Secret"
+msgstr "Secreto"
+
+#: forms.py:115
+msgid ""
+"Enter the corresponding token to validate that the secret was saved correct."
+msgstr ""
+"Ingrese el código correspondiente para validar que el secreto se guardó "
+"correctamente."
+
+#: forms.py:118
+msgid "Token"
+msgstr "Código"
+
+#: forms.py:152
+msgid "Token is incorrect for the specified secret."
+msgstr "El código es incorrecto para el secreto especificado."
+
+#: links.py:29
+msgid "OTP details"
+msgstr "Detalles de la OTP"
+
+#: links.py:33
+msgid "Disable OTP"
+msgstr "Deshabilitar OTP"
+
+#: links.py:37
+msgid "Enable OTP"
+msgstr "Habilitar OTP"
+
+#: models.py:17
+msgid "User"
+msgstr "Usuario"
+
+#: models.py:21
+msgid "16 character, base32 encoded random string."
+msgstr "Texto aleatorio de 16 caracteres codificado en base32."
+
+#: models.py:26
+msgid "User OTP data"
+msgstr "Datos OTP del usuario"
+
+#: models.py:27
+msgid "Users OTP data"
+msgstr "Datos OTP de los usuarios"
+
+#: views.py:28
+#, python-format
+msgid "One time pad details for user: %s"
+msgstr "Detalles de código de un uso para el usuario: %s"
+
+#: views.py:45
+#, python-format
+msgid "Disable one time pad for user: %s"
+msgstr "Deshabilitar el código de un solo uso para el usuario: %s"
+
+#: views.py:56
+msgid "OTP disable successfully."
+msgstr "OTP deshabilitado con éxito."
+
+#: views.py:78
+msgid "OTP is already enabled."
+msgstr "OTP ya está habilitado."
+
+#: views.py:94
+msgid "OTP enabled successfully."
+msgstr "OTP habilitado con éxito."
+
+#: views.py:103
+#, python-format
+msgid "Enable one time pad for user: %s"
+msgstr "Habilitar código de un solo uso para el usuario: %s"
+
+#: views.py:115
+msgid "OTP secret validation error."
+msgstr "Error de validación de secreto OTP."

@@ -4,20 +4,20 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Sergey Glita <gsv70@mail.ru>, 2021
-# lilo.panic, 2021
-# Panasoft, 2021
-# Alex Chigrin <chalex84@mail.ru>, 2021
-# Ilya Pavlov <spirkaa@gmail.com>, 2021
+# Roberto Rosario, 2022
+# Sergey Glita <gsv70@mail.ru>, 2022
+# Panasoft, 2022
+# Alex Chigrin <chalex84@mail.ru>, 2022
+# lilo.panic, 2022
+# Ilya Pavlov <spirkaa@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -552,15 +552,15 @@ msgstr "Версия документа"
 msgid "Document version pages"
 msgstr "Страницы версии документа"
 
-#: links/favorite_links.py:21 views/favorite_document_views.py:36
+#: links/favorite_links.py:23 views/favorite_document_views.py:36
 msgid "Favorites"
 msgstr "Избранное"
 
-#: links/favorite_links.py:27 links/favorite_links.py:37
+#: links/favorite_links.py:29 links/favorite_links.py:39
 msgid "Add to favorites"
 msgstr "Добавить в избранное"
 
-#: links/favorite_links.py:33 links/favorite_links.py:41
+#: links/favorite_links.py:35 links/favorite_links.py:43
 msgid "Remove from favorites"
 msgstr "Удалить из избранного"
 
@@ -1138,19 +1138,19 @@ msgstr "MIME тип файла документа"
 msgid "Document version comment"
 msgstr "Комментарий к версии документа"
 
-#: serializers/document_file_serializers.py:38
+#: serializers/document_file_serializers.py:97
 msgid "Binary content for the new file."
 msgstr "Двоичное содержимое для нового файла."
 
-#: serializers/document_serializers.py:23
+#: serializers/document_serializers.py:22
 msgid "Document type ID for the new document."
 msgstr "Идентификатор типа документа для нового документа."
 
-#: serializers/document_version_serializers.py:72
+#: serializers/document_version_serializers.py:14
 msgid "Content type ID of the source object for the page."
 msgstr "Идентификатор типа контента исходного объекта для страницы."
 
-#: serializers/favorite_document_serializers.py:18
+#: serializers/favorite_document_serializers.py:17
 msgid "Document ID for the new favorite document."
 msgstr "Идентификатор документа для нового избранного документа."
 
@@ -1386,10 +1386,10 @@ msgstr ""
 #: views/document_file_page_views.py:66
 msgid "Recalculate the page count of the selected document file?"
 msgid_plural "Recalculate the page count of the selected document files?"
-msgstr[0] "Пересчитать количество страниц в выбранном файле документа?"
-msgstr[1] "Пересчитать количество страниц в выбранных файлах документов?"
-msgstr[2] "Пересчитать количество страниц в выбранных файлах документов?"
-msgstr[3] "Пересчитать количество страниц в выбранных файлах документов?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views/document_file_page_views.py:77
 #, python-format
@@ -1526,13 +1526,9 @@ msgid "Clear all the page transformations for the selected document file?"
 msgid_plural ""
 "Clear all the page transformations for the selected document files?"
 msgstr[0] ""
-"Очистить все преобразования страниц для выбранного файла документа?"
 msgstr[1] ""
-"Очистить все преобразования страниц для выбранных файлов документов?"
 msgstr[2] ""
-"Очистить все преобразования страниц для выбранных файлов документов?"
 msgstr[3] ""
-"Очистить все преобразования страниц для выбранных файлов документов?"
 
 #: views/document_file_views.py:280
 #, python-format
@@ -1747,10 +1743,10 @@ msgstr ""
 #: views/document_version_page_views.py:301
 msgid "Reset the page list of the selected document version?"
 msgid_plural "Reset the page list of the selected document versions?"
-msgstr[0] "Сбросить список страниц выбранной версии документа?"
-msgstr[1] "Сбросить список страниц выбранных версий документа?"
-msgstr[2] "Сбросить список страниц выбранных версий документа?"
-msgstr[3] "Сбросить список страниц выбранных версий документа?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views/document_version_page_views.py:312
 #, python-format
@@ -1889,13 +1885,9 @@ msgid "Clear all the page transformations for the selected document version?"
 msgid_plural ""
 "Clear all the page transformations for the selected document version?"
 msgstr[0] ""
-"Очистить все преобразования страниц для выбранной версии документа?"
 msgstr[1] ""
-"Очистить все преобразования страниц для выбранных версий документов?"
 msgstr[2] ""
-"Очистить все преобразования страниц для выбранных версий документов?"
 msgstr[3] ""
-"Очистить все преобразования страниц для выбранных версий документов?"
 
 #: views/document_version_views.py:334
 #, python-format
@@ -1957,10 +1949,10 @@ msgstr "Запрос на изменение типа выполнен для %(
 #: views/document_views.py:93
 msgid "Change the type of the selected document"
 msgid_plural "Change the type of the selected documents"
-msgstr[0] "Изменить тип выбранного документа"
-msgstr[1] "Изменить тип выбранных документов"
-msgstr[2] "Изменить тип выбранных документов"
-msgstr[3] "Изменить тип выбранных документов"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views/document_views.py:104
 #, python-format
@@ -2013,10 +2005,10 @@ msgstr "%(count)d документов добавлено в избранное.
 #: views/favorite_document_views.py:56
 msgid "Add the selected document to favorites?"
 msgid_plural "Add the selected documents to favorites?"
-msgstr[0] "Добавить выбранный документ в избранное?"
-msgstr[1] "Добавить выбранные документы в избранное?"
-msgstr[2] "Добавить выбранные документы в избранное?"
-msgstr[3] "Добавить выбранные документы в избранное?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views/favorite_document_views.py:74
 #, python-format
@@ -2036,10 +2028,10 @@ msgstr "%(count)d документов удалено из избранного.
 #: views/favorite_document_views.py:88
 msgid "Remove the selected document from favorites?"
 msgid_plural "Remove the selected documents from favorites?"
-msgstr[0] "Удалить выбранный документ из избранного?"
-msgstr[1] "Удалить выбранные документы из избранного?"
-msgstr[2] "Удалить выбранные документы из избранного?"
-msgstr[3] "Удалить выбранные документы из избранного?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views/misc_views.py:44
 #, python-format
@@ -2068,21 +2060,32 @@ msgstr "Нет недавно созданных документов"
 
 #: views/trashed_document_views.py:37
 #, python-format
+msgid "Document \"%(object)s\" moved to trash."
+msgstr ""
+
+#: views/trashed_document_views.py:40
+#, python-format
 msgid "%(count)d document moved to the trash."
 msgstr "%(count)d документ перемещен в корзину."
 
-#: views/trashed_document_views.py:40
+#: views/trashed_document_views.py:43
 #, python-format
 msgid "%(count)d documents moved to the trash."
 msgstr "%(count)d документов перемещено в корзину."
 
+#: views/trashed_document_views.py:45
+#, python-format
+msgid "Move the document \"%(object)s\" to trash?"
+msgstr ""
+
 #: views/trashed_document_views.py:46
 msgid "Move the selected document to the trash?"
-msgid_plural "Move the selected documents to the trash?"
-msgstr[0] "Переместить выбранный документ в корзину?"
-msgstr[1] "Переместить выбранные документы в корзину?"
-msgstr[2] "Переместить выбранные документы в корзину?"
-msgstr[3] "Переместить выбранные документы в корзину?"
+msgstr ""
+
+#: views/trashed_document_views.py:47
+#, python-format
+msgid "Move the %(count)d selected documents to trash?"
+msgstr ""
 
 #: views/trashed_document_views.py:76
 msgid "Empty trash?"
@@ -2094,21 +2097,32 @@ msgstr "Задача очистки корзины поставлена в оч�
 
 #: views/trashed_document_views.py:98
 #, python-format
+msgid "Trash document \"%(object)s\" submitted for deletion."
+msgstr ""
+
+#: views/trashed_document_views.py:101
+#, python-format
 msgid "%(count)d trashed document submitted for deletion."
 msgstr "%(count)d документ будет окончательно удален из корзины."
 
-#: views/trashed_document_views.py:101
+#: views/trashed_document_views.py:104
 #, python-format
 msgid "%(count)d trashed documents submitted for deletion."
 msgstr "%(count)d документов будут окончательно удалены из корзины."
 
+#: views/trashed_document_views.py:106
+#, python-format
+msgid "Delete the trashed document \"%(object)s\"?"
+msgstr ""
+
 #: views/trashed_document_views.py:107
 msgid "Delete the selected trashed document?"
-msgid_plural "Delete the selected trashed documents?"
-msgstr[0] "Удалить выбранный документ из корзины?"
-msgstr[1] "Удалить выбранные документы из корзины?"
-msgstr[2] "Удалить выбранные документы из корзины?"
-msgstr[3] "Удалить выбранные документы из корзины?"
+msgstr ""
+
+#: views/trashed_document_views.py:108
+#, python-format
+msgid "Delete the %(count)d selected trashed documents?"
+msgstr ""
 
 #: views/trashed_document_views.py:144
 msgid ""
@@ -2126,21 +2140,32 @@ msgstr "В корзине нет документов"
 
 #: views/trashed_document_views.py:162
 #, python-format
+msgid "Trashed document \"%(object)s\" restored."
+msgstr ""
+
+#: views/trashed_document_views.py:165
+#, python-format
 msgid "%(count)d trashed document restored."
 msgstr "%(count)d документ восстановлен из корзины."
 
-#: views/trashed_document_views.py:165
+#: views/trashed_document_views.py:168
 #, python-format
 msgid "%(count)d trashed documents restored."
 msgstr "%(count)d документов восстановлено из корзины."
 
+#: views/trashed_document_views.py:170
+#, python-format
+msgid "Restore the trashed document: %(object)s"
+msgstr ""
+
 #: views/trashed_document_views.py:171
 msgid "Restore the selected trashed document?"
-msgid_plural "Restore the selected trashed documents?"
-msgstr[0] "Восстановить выбранный документ из корзины?"
-msgstr[1] "Восстановить выбранные документы из корзины?"
-msgstr[2] "Восстановить выбранные документы из корзины?"
-msgstr[3] "Восстановить выбранные документы из корзины?"
+msgstr ""
+
+#: views/trashed_document_views.py:172
+#, python-format
+msgid "Restore the %(count)d selected trashed documents?"
+msgstr ""
 
 #: workflow_actions.py:13
 msgid "New document type for the workflow document."

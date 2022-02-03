@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Adek Lanin, 2021
-# Dzikri Hakim <dzikers@gmail.com>, 2021
+# Dzikri Hakim <dzikers@gmail.com>, 2022
+# Adek Lanin, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Dzikri Hakim <dzikers@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:14+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Adek Lanin, 2022\n"
 "Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,23 +25,19 @@ msgstr ""
 msgid "Views"
 msgstr ""
 
-#: forms.py:27
+#: forms.py:29
 msgid "Search"
 msgstr ""
 
-#: forms.py:41
+#: forms.py:43
 msgid "Selection"
 msgstr ""
 
-#: forms.py:114
-msgid "None"
-msgstr "Nihil"
-
-#: forms.py:354
+#: forms.py:357
 msgid "Label"
 msgstr "Label"
 
-#: forms.py:358
+#: forms.py:361
 msgid "Relationship"
 msgstr ""
 
@@ -59,19 +55,19 @@ msgid ""
 "to activate the action."
 msgstr ""
 
-#: generics.py:293
+#: generics.py:290
 msgid "Add all"
 msgstr ""
 
-#: generics.py:301
+#: generics.py:298
 msgid "Add"
 msgstr "tambah"
 
-#: generics.py:311
+#: generics.py:308
 msgid "Remove all"
 msgstr ""
 
-#: generics.py:319
+#: generics.py:316
 msgid "Remove"
 msgstr "hapus"
 
@@ -154,47 +150,47 @@ msgstr ""
 msgid "Delete %(count)d objects."
 msgstr ""
 
-#: mixins.py:330
+#: mixins.py:350
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr ""
 
-#: mixins.py:355
+#: mixins.py:375
 #, python-format
 msgid "Unable to perform operation on object %(instance)s; %(exception)s."
 msgstr ""
 
-#: mixins.py:357
+#: mixins.py:377
 #, python-format
 msgid "Operation performed on %(object)s."
 msgstr ""
 
-#: mixins.py:358
+#: mixins.py:378
 #, python-format
 msgid "Operation performed on %(count)d object."
 msgstr ""
 
-#: mixins.py:359
+#: mixins.py:379
 #, python-format
 msgid "Operation performed on %(count)d objects."
 msgstr ""
 
-#: mixins.py:360
+#: mixins.py:380
 #, python-format
 msgid "Perform operation on %(object)s."
 msgstr ""
 
-#: mixins.py:361
+#: mixins.py:381
 #, python-format
 msgid "Perform operation on %(count)d object."
 msgstr ""
 
-#: mixins.py:362
+#: mixins.py:382
 #, python-format
 msgid "Perform operation on %(count)d objects."
 msgstr ""
 
-#: mixins.py:444
+#: mixins.py:464
 msgid "Object"
 msgstr ""
 

@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
+# Roberto Rosario, 2022
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 07:20+0000\n"
-"PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
+"POT-Creation-Date: 2022-02-03 12:14+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,16 +21,16 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:56 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
+#: apps.py:57 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
 #: settings.py:13 views/source_views.py:164
 msgid "Sources"
 msgstr "Bronnen"
 
-#: apps.py:81
+#: apps.py:87
 msgid "Create a document source"
 msgstr "Maak een documentbron aan"
 
-#: apps.py:83
+#: apps.py:89
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
@@ -40,7 +40,7 @@ msgstr ""
 "worden aangeboden. Maak ten minste een webformulier aan om documenten te "
 "kunnen uploaden via een webbrowser."
 
-#: apps.py:106
+#: apps.py:112
 msgid "Type"
 msgstr "Type"
 
@@ -173,11 +173,11 @@ msgstr "Controle-interval bron"
 msgid "Handle upload"
 msgstr "Handle upload"
 
-#: serializers.py:50
+#: serializers.py:51
 msgid "Optional arguments for the action. Must be JSON formatted."
 msgstr ""
 
-#: serializers.py:51 source_backends/sane_scanner_backends.py:44
+#: serializers.py:52 source_backends/sane_scanner_backends.py:44
 msgid "Arguments"
 msgstr "Argumenten"
 
@@ -252,23 +252,23 @@ msgstr "Bestemming mailbox"
 msgid "IMAP email"
 msgstr "IMAP e-mail"
 
-#: source_backends/email_backends.py:216
+#: source_backends/email_backends.py:217
 msgid "Timeout"
 msgstr "Timeout"
 
-#: source_backends/email_backends.py:219
+#: source_backends/email_backends.py:220
 msgid "POP3 email"
 msgstr "POP3 e-mail"
 
-#: source_backends/literals.py:15 source_backends/literals.py:20
+#: source_backends/literals.py:18 source_backends/literals.py:23
 msgid "Always"
 msgstr "Altijd"
 
-#: source_backends/literals.py:16 source_backends/literals.py:21
+#: source_backends/literals.py:19 source_backends/literals.py:24
 msgid "Never"
 msgstr "Nooit"
 
-#: source_backends/literals.py:22
+#: source_backends/literals.py:25
 msgid "Ask user"
 msgstr "Vraag gebruiker"
 
@@ -441,17 +441,17 @@ msgid "Scan"
 msgstr "Scan"
 
 #: source_backends/staging_folder_backends.py:222
-#: source_backends/staging_folder_backends.py:492
+#: source_backends/staging_folder_backends.py:491
 msgid "Staging file"
 msgstr "Tijdelijk bestand"
 
 #: source_backends/staging_folder_backends.py:253
-#: source_backends/watch_folder_backends.py:31
+#: source_backends/watch_folder_backends.py:38
 msgid "Server side filesystem path."
 msgstr "Pad naar filesysteem server"
 
 #: source_backends/staging_folder_backends.py:258
-#: source_backends/watch_folder_backends.py:36
+#: source_backends/watch_folder_backends.py:43
 msgid "Folder path"
 msgstr "Mappad"
 
@@ -491,24 +491,24 @@ msgstr "Aangemaakt"
 msgid "Thumbnail"
 msgstr "Thumbnail"
 
-#: source_backends/staging_folder_backends.py:472
+#: source_backends/staging_folder_backends.py:471
 #, python-format
 msgid "Error deleting staging file; %s"
 msgstr "Fout bij verwijderen bestand in netwerkmap; %s"
 
-#: source_backends/staging_folder_backends.py:493
+#: source_backends/staging_folder_backends.py:492
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "Verwijder tijdelijk bestand \"%s\"?"
 
-#: source_backends/staging_folder_backends.py:519
+#: source_backends/staging_folder_backends.py:518
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr ""
 "Het is niet mogelijk om een lijst van bestanden in netwerkmap aan te "
 "maken:%s"
 
-#: source_backends/staging_folder_backends.py:546
+#: source_backends/staging_folder_backends.py:545
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
 "the operating system user account being used for Mayan EDMS doesn't have the"
@@ -518,11 +518,11 @@ msgstr ""
 "besturingssysteem van het gebruikersaccount dat voor Mayan EDMS gebruikt "
 "wordt, over onvoldoende gebruiksrechten voor de map beschikt."
 
-#: source_backends/staging_folder_backends.py:553
+#: source_backends/staging_folder_backends.py:552
 msgid "No staging files available"
 msgstr "Geen bestanden in netwerkmap beschikbaar"
 
-#: source_backends/watch_folder_backends.py:43
+#: source_backends/watch_folder_backends.py:50
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
@@ -530,11 +530,27 @@ msgstr ""
 "Indien aangevinkt, wordt niet alleen het mappad gescand op bestanden, maar "
 "ook de submappen."
 
-#: source_backends/watch_folder_backends.py:46
+#: source_backends/watch_folder_backends.py:53
 msgid "Include subdirectories?"
 msgstr "Inclusief submappen?"
 
-#: source_backends/watch_folder_backends.py:50
+#: source_backends/watch_folder_backends.py:60
+msgid "Regular expression used to select which files to upload."
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:62
+msgid "Include regular expression"
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:69
+msgid "Regular expression used to exclude which files to upload."
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:71
+msgid "Exclude regular expression"
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:75
 msgid "Watch folder"
 msgstr "Bewaakte map"
 
@@ -582,7 +598,7 @@ msgstr "Wissen"
 msgid "Server responded with {{statusCode}} code."
 msgstr "Server antwoordde met {{statusCode}} code."
 
-#: views/base.py:53 wizards.py:52
+#: views/base.py:53 wizards.py:54
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
@@ -679,23 +695,23 @@ msgstr ""
 msgid "Select document type"
 msgstr "Documentsoort selecteren"
 
-#: wizards.py:71
+#: wizards.py:73
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr "Stap %(step)d van %(total_steps)d: %(step_label)s"
 
-#: wizards.py:76
+#: wizards.py:78
 msgid "Document upload wizard"
 msgstr "Document uploadwizard"
 
-#: wizards.py:85
+#: wizards.py:87
 msgid "First"
 msgstr ""
 
-#: wizards.py:91
+#: wizards.py:93
 msgid "Previous"
 msgstr ""
 
-#: wizards.py:98
+#: wizards.py:100
 msgid "Next"
 msgstr ""
