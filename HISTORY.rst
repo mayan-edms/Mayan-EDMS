@@ -15,6 +15,8 @@
   for the report.
 - Expose the workflow template ``auto_launch`` field via the REST API.
   Thanks to forum user @qra for the request.
+- Add ``EmailAction`` subclass for backwards compatibility with existing
+  workflow state actions.
 
 4.1.4 (2021-12-01)
 ==================
