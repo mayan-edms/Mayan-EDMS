@@ -1,4 +1,4 @@
-4.1.5 (2022-XX-XX)
+4.1.5 (2022-02-03)
 ==================
 - Fix CAA document links. Closes GitLab issue #1068. Thanks to
   Matthias Löblich (@startmat) for the report.
