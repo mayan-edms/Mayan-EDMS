@@ -6,15 +6,15 @@
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2021
 # JAIRO DAVILA <jdavilaco@gmail.com>, 2021
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-02 11:46+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -112,7 +112,7 @@ msgstr "Fecha y hora agregadas"
 
 #: apps.py:594
 msgid "Access date and time"
-msgstr ""
+msgstr "Fecha y hora agregadas"
 
 #: classes.py:57
 msgid "Original"
@@ -527,7 +527,7 @@ msgstr "Versiones"
 
 #: links/document_version_page_links.py:57
 msgid "Append all pages"
-msgstr ""
+msgstr "Todas las páginas"
 
 #: links/document_version_page_links.py:62
 msgid "Remap pages"
@@ -761,7 +761,7 @@ msgstr "Descripción"
 
 #: models/document_models.py:81
 msgid "The date and time of the document creation."
-msgstr ""
+msgstr "La fecha y hora del servidor en que se creó la versión del documento."
 
 #: models/document_models.py:82
 msgid "Created"
@@ -952,11 +952,11 @@ msgstr "Documentos recientes"
 
 #: models/recently_accessed_document_models.py:54
 msgid "Recently accessed document"
-msgstr ""
+msgstr "Recientemente accedido"
 
 #: models/recently_accessed_document_models.py:55
 msgid "Recently accessed documents"
-msgstr ""
+msgstr "No hay documentos a los que se haya accedido recientemente."
 
 #: permissions.py:10
 msgid "Create documents"
@@ -1076,7 +1076,7 @@ msgstr "Eliminar un documento"
 
 #: queues.py:34
 msgid "Append all document file pages to a document version"
-msgstr ""
+msgstr "Reiniciar la lista de páginas de una versión de documento"
 
 #: queues.py:38
 msgid "Reset the page list of a document version"
@@ -1084,7 +1084,7 @@ msgstr "Reiniciar la lista de páginas de una versión de documento"
 
 #: queues.py:42
 msgid "Delete a document version"
-msgstr ""
+msgstr "Eliminar versiones de documentos"
 
 #: queues.py:46
 msgid "Export a document version"
@@ -1112,7 +1112,7 @@ msgstr "Subir archivo de documento nuevo"
 
 #: queues.py:80
 msgid "Upload new document"
-msgstr ""
+msgstr "Subir archivo de documento nuevo"
 
 #: search.py:31 search.py:64 search.py:96 search.py:141 search.py:169
 msgid "Document type label"
@@ -1704,17 +1704,23 @@ msgstr "Páginas de la versión del documento: %s"
 #, python-format
 msgid "%(count)d document version queued for page list append."
 msgstr ""
+"%(count)d versión del documento en cola para restablecer la lista de "
+"páginas."
 
 #: views/document_version_page_views.py:132
 #, python-format
 msgid "%(count)d document versions queued for page list append."
 msgstr ""
+"%(count)d versiones de documentos en cola para restablecer la lista de "
+"páginas."
 
 #: views/document_version_page_views.py:140
 msgid ""
 "The current pages will be deleted and then all the document file pages will "
 "be appended as pages of this document version."
 msgstr ""
+"Las páginas actuales se eliminarán y luego todas las páginas del archivo del"
+" documento se agregarán como páginas de esta versión del documento."
 
 #: views/document_version_page_views.py:145
 msgid "Append all the document file pages to the selected document version?"
@@ -1726,7 +1732,7 @@ msgstr[1] ""
 #: views/document_version_page_views.py:156
 #, python-format
 msgid "Append all the document file pages to document version: %s?"
-msgstr ""
+msgstr "¿Restablecer la lista de páginas de la versión del documento: %s?"
 
 #: views/document_version_page_views.py:205
 msgid "None"
@@ -1796,17 +1802,17 @@ msgstr "Crear una versión de documento para el documento: %s"
 #: views/document_version_views.py:103
 #, python-format
 msgid "Document version \"%(object)s\" deletion queued successfully."
-msgstr ""
+msgstr "La versión del documento \"%(object)s\" se eliminó correctamente."
 
 #: views/document_version_views.py:106
 #, python-format
 msgid "%(count)d document version deletion queued successfully."
-msgstr ""
+msgstr "%(count)d versión de documento eliminada correctamente."
 
 #: views/document_version_views.py:109
 #, python-format
 msgid "%(count)d document version deletions queued successfully."
-msgstr ""
+msgstr "%(count)d versión de documento eliminada correctamente."
 
 #: views/document_version_views.py:111
 #, python-format
@@ -1826,6 +1832,8 @@ msgstr "Eliminar %(count)d versiones de documento."
 #: views/document_version_views.py:118
 msgid "The process will be performed in the background. "
 msgstr ""
+"El proceso se realizará en segundo plano. El archivo exportado estará "
+"disponible en el área de descargas."
 
 #: views/document_version_views.py:156
 #, python-format

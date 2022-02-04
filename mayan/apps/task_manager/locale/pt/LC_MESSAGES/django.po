@@ -7,14 +7,16 @@
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
 # Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021
 # Márcia Ferreira, 2022
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-02 11:46+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Márcia Ferreira, 2022\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +26,7 @@ msgstr ""
 
 #: apps.py:24 links.py:10 permissions.py:5
 msgid "Task manager"
-msgstr ""
+msgstr "Gerenciador de tarefas"
 
 #: apps.py:83
 msgid "Label"
@@ -36,11 +38,11 @@ msgstr "Nome"
 
 #: apps.py:92
 msgid "Default queue?"
-msgstr ""
+msgstr "Fila padrão?"
 
 #: apps.py:97
 msgid "Is transient?"
-msgstr ""
+msgstr "É transiente?"
 
 #: apps.py:101
 msgid "Type"
@@ -48,7 +50,7 @@ msgstr "Tipo"
 
 #: apps.py:106
 msgid "Start time"
-msgstr ""
+msgstr "Hora de início"
 
 #: apps.py:110
 msgid "Host"
@@ -60,23 +62,23 @@ msgstr "Argumentos"
 
 #: apps.py:118
 msgid "Keyword arguments"
-msgstr ""
+msgstr "Argumentos keywords"
 
 #: apps.py:122
 msgid "Worker process ID"
-msgstr ""
+msgstr "Id do processo worker"
 
 #: permissions.py:8
 msgid "View tasks"
-msgstr ""
+msgstr "Ver tarefas"
 
 #: settings.py:10
 msgid "Celery"
-msgstr ""
+msgstr "Celery"
 
 #: settings.py:15
 msgid "Default: \"AMQPLAIN\". Set custom amqp login method."
-msgstr ""
+msgstr "\"AMQPLAIN\" default. Defina o método de login personalizado do amqp."
 
 #: settings.py:21
 msgid ""
@@ -85,12 +87,19 @@ msgid ""
 " (transport://) is required, the rest is optional, and defaults to the "
 "specific transports default values."
 msgstr ""
+"Valor padrão: \"amqp://\". URL do intermediário padrão. Deve ser uma URL em "
+"forma de: \"transport://userid:password@hostname:port/virtual_host\". Apenas"
+" a parte de esquema (transport://) é requerida, o resto é opcional e "
+"determina os valores padrão específicos de transportes."
 
 #: settings.py:30
 msgid ""
 "Default: \"Disabled\". Toggles SSL usage on broker connection and SSL "
 "settings. The valid values for this option vary by transport."
 msgstr ""
+"\"Desativado\" por padrão. Ativa o uso de SSL na conexão do broker e nas "
+"configurações de SSL. Os valores válidos para esta opção variam de acordo "
+"com o transporte."
 
 #: settings.py:38
 msgid ""
@@ -99,11 +108,15 @@ msgid ""
 "http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
 "backend"
 msgstr ""
+"Valor padrão: Sem back-end de resultado habilitado por padrão. O back-end "
+"usado para armazenar resultados de tarefas (tombstones). Consulte "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend. "
 
 #: tests/literals.py:3
 msgid "Test queue"
-msgstr ""
+msgstr "Fila de teste"
 
 #: views.py:12
 msgid "Background task queues"
-msgstr ""
+msgstr "Filas de tarefas em background"

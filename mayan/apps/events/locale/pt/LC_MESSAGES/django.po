@@ -7,14 +7,15 @@
 # Vítor Figueiró <vfigueiro@gmail.com>, 2021
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
 # Márcia Ferreira, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-02 11:46+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Márcia Ferreira, 2022\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,11 +46,11 @@ msgstr "Destino"
 
 #: apps.py:75 apps.py:105
 msgid "Action object"
-msgstr ""
+msgstr "Objeto de ação"
 
 #: apps.py:80 forms.py:10 forms.py:67
 msgid "Namespace"
-msgstr ""
+msgstr "Namespace"
 
 #: apps.py:83 forms.py:14 forms.py:71
 msgid "Label"
@@ -77,7 +78,7 @@ msgstr ""
 #: classes.py:343
 #, python-format
 msgid "Unknown or obsolete event type: %s"
-msgstr ""
+msgstr "Tipo de evento desconhecido ou obsoleto: %s"
 
 #: events.py:15
 msgid "Events cleared"
@@ -137,11 +138,11 @@ msgstr "Nome"
 
 #: models.py:26
 msgid "Stored event type"
-msgstr ""
+msgstr "Tipo de evento armazenado"
 
 #: models.py:27
 msgid "Stored event types"
-msgstr ""
+msgstr "Tipos de eventos armazenados"
 
 #: models.py:52 models.py:78 models.py:109
 msgid "User"
@@ -173,11 +174,11 @@ msgstr "Notificações"
 
 #: models.py:119
 msgid "Object event subscription"
-msgstr ""
+msgstr "Inscrição em evento de objeto"
 
 #: models.py:120
 msgid "Object event subscriptions"
-msgstr ""
+msgstr "Inscrições em eventos de objetos"
 
 #: permissions.py:8
 msgid "Clear the events of an object"
@@ -229,7 +230,7 @@ msgstr "Não existem eventos"
 
 #: views/event_views.py:44
 msgid "There are no events for this object"
-msgstr ""
+msgstr "Não há eventos para este objeto."
 
 #: views/event_views.py:46
 #, python-format
@@ -258,6 +259,7 @@ msgstr ""
 #: views/notification_views.py:25
 msgid "Subscribe to global or object events to receive notifications."
 msgstr ""
+"Inscrever para global ou para eventos de objeto para receber notificações."
 
 #: views/notification_views.py:28
 msgid "There are no notifications"
@@ -282,22 +284,22 @@ msgstr "Todas as notificações marcadas como lidas."
 #: views/subscription_views.py:40
 #, python-format
 msgid "Error updating event subscription; %s"
-msgstr ""
+msgstr "Erro ao atualizar a inscrição do evento %s"
 
 #: views/subscription_views.py:45
 msgid "Event subscriptions updated successfully"
-msgstr ""
+msgstr "Inscrições de eventos atualizadas com sucesso"
 
 #: views/subscription_views.py:114
 #, python-format
 msgid "Error updating object event subscription; %s"
-msgstr ""
+msgstr "Erro ao atualizar a inscrição em evento de objeto %s"
 
 #: views/subscription_views.py:120
 msgid "Object event subscriptions updated successfully"
-msgstr ""
+msgstr "Evento de objeto atualizado com sucesso"
 
 #: views/subscription_views.py:131
 #, python-format
 msgid "Event subscriptions for: %s"
-msgstr ""
+msgstr "Inscrições de evento para: %s"

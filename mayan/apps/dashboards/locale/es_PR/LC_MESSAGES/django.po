@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-02 11:46+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,11 +22,11 @@ msgstr ""
 
 #: apps.py:18 links.py:9 views.py:11
 msgid "Dashboards"
-msgstr "Tablero"
+msgstr "Tableros"
 
 #: apps.py:25
 msgid "Widgets"
-msgstr ""
+msgstr "Componentes"
 
 #: apps.py:29
 msgid "Label"
@@ -38,7 +38,7 @@ msgstr "Tablero del administrador"
 
 #: links.py:14
 msgid "Details"
-msgstr "Ver detalles"
+msgstr "Detalles"
 
 #: templates/dashboards/numeric_widget.html:27
 #: templates/dashboards/widget_list.html:47
@@ -47,4 +47,4 @@ msgstr "Ver detalles"
 
 #: views.py:27
 msgid "Dashboard detail"
-msgstr "Tablero"
+msgstr "Detalles de tablero"

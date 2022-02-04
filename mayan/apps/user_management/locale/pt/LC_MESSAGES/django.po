@@ -8,14 +8,15 @@
 # Vítor Figueiró <vfigueiro@gmail.com>, 2021
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
 # Márcia Ferreira, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-02 11:46+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Márcia Ferreira, 2022\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -279,6 +280,10 @@ msgid ""
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
 msgstr ""
+"Grupos de usuários são unidades organizacionais. Eles devem espelhar as "
+"unidades reais de sua organização. Grupos não podem ser usados para controle"
+" de acesso. Use papéis para controle de permissões e acesso e adicione "
+"grupos a esses."
 
 #: views.py:131
 msgid "There are no user groups"
@@ -295,7 +300,7 @@ msgstr "Utilizadores do grupo"
 #: views.py:153
 #, python-format
 msgid "Users of group: %s"
-msgstr ""
+msgstr "Usuários do grupo: %s"
 
 #: views.py:184
 #, python-format
@@ -335,7 +340,7 @@ msgstr ""
 #: views.py:209
 #, python-format
 msgid "Details of user: %s"
-msgstr ""
+msgstr "Detalhes do usuários: %s"
 
 #: views.py:225
 #, python-format
@@ -372,4 +377,4 @@ msgstr "Não existem contas de utilizador"
 #: views.py:290
 #, python-format
 msgid "Edit options for user: %s"
-msgstr ""
+msgstr "Editar opções para o usuário: %s"

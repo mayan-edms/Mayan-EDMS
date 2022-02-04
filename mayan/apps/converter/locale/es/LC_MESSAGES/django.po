@@ -6,15 +6,15 @@
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2021
 # Lory977 <helga.carrero@gmail.com>, 2021
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-02 11:46+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -251,7 +251,7 @@ msgstr "Ver transformaciones existentes"
 
 #: queues.py:12
 msgid "Generate a image of an object."
-msgstr ""
+msgstr "Genera una imagen de un activo."
 
 #: settings.py:30
 msgid ""
@@ -292,6 +292,9 @@ msgstr "Opciones de configuración para el modulo de conversión de gráficos."
 #: settings.py:77
 msgid "Time in seconds that the browser should cache the supplied image. "
 msgstr ""
+"Tiempo en segundos que el navegador debe almacenar en caché el activo "
+"proporcionado. El valor predeterminado de 31559626 segundos corresponde a 1 "
+"año."
 
 #: settings.py:84
 msgid ""
@@ -306,6 +309,8 @@ msgid ""
 "Time in seconds after which the image generation task will stop running and "
 "raise an error."
 msgstr ""
+"Tiempo en segundos después del cual la tarea de generación de imágenes "
+"dejará de ejecutarse y generará un error."
 
 #: storages.py:15
 msgid ""

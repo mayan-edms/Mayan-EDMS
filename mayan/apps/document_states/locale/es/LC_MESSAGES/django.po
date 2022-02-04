@@ -6,15 +6,15 @@
 # Translators:
 # Lory977 <helga.carrero@gmail.com>, 2021
 # JAIRO DAVILA <jdavilaco@gmail.com>, 2021
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-02 11:46+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -283,6 +283,12 @@ msgid ""
 "\"transition\", \"user\", \"comment\") and any values from workflow template"
 " fields."
 msgstr ""
+"Puede ser un valor estático o una plantilla. Además de la instancia del "
+"flujo de trabajo, la plantilla recibe el contexto de la instancia del flujo "
+"de trabajo, que a su vez incluye el \"entry_log\" (que contiene "
+"\"workflow_instance\", \"datetime\", \"transición\", \"usuario\", "
+"\"comentario\") y cualquier valor de los campos de la plantilla del flujo de"
+" trabajo. ."
 
 #: literals.py:27
 msgid "Character"
@@ -658,33 +664,33 @@ msgstr "Lanzar un flujo de trabajo"
 msgid "Document workflow transition comment"
 msgstr "Comentario de transición del flujo de trabajo del documento"
 
-#: serializers.py:70
+#: serializers.py:71
 msgid "Primary key of the document type to add to the workflow."
 msgstr ""
 "Llave principal del tipo de documento para agregar al flujo de trabajo."
 
-#: serializers.py:79
+#: serializers.py:80
 msgid "Primary key of the document type to remove from the workflow."
 msgstr ""
 "Llave principal del tipo de documento que se eliminará del flujo de trabajo."
 
-#: serializers.py:228
+#: serializers.py:229
 msgid "Primary key of the destination state to be added."
 msgstr "Llave primaria del estado de destino a ser agregado."
 
-#: serializers.py:236
+#: serializers.py:237
 msgid "Primary key of the origin state to be added."
 msgstr "Llave primaria del estado inicial a ser agregado."
 
-#: serializers.py:319
+#: serializers.py:320
 msgid "Primary key of the transition to be added."
 msgstr "Llave primaria de la transición a añadir."
 
-#: serializers.py:403
+#: serializers.py:404
 msgid "A link to the entire history of this workflow."
 msgstr "Un enlace a la historia completa de este flujo de trabajo."
 
-#: serializers.py:412
+#: serializers.py:413
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
@@ -856,6 +862,8 @@ msgstr "Estados del flujo de trabajo: %s"
 #, python-format
 msgid "Create a \"%(action_class)s\" workflow action for: %(workflow_state)s"
 msgstr ""
+"Cree una acción de flujo de trabajo \"%(action_class)s\" para: "
+"%(workflow_state)s"
 
 #: views/workflow_template_state_views.py:93
 #, python-format
@@ -887,7 +895,7 @@ msgstr "Acciones para el estado de flujo de trabajo: %s"
 #: views/workflow_template_state_views.py:205
 #, python-format
 msgid "New workflow state action selection for: %s"
-msgstr ""
+msgstr "Nueva selección de acción de estado de flujo de trabajo para: %s"
 
 #: views/workflow_template_state_views.py:234
 #, python-format
@@ -1190,7 +1198,7 @@ msgstr "Etiqueta de documento"
 
 #: workflow_actions.py:31
 msgid "The new label to be assigned to the document."
-msgstr ""
+msgstr "La nueva etiqueta que se asignará al documento."
 
 #: workflow_actions.py:40
 msgid "Document description"
@@ -1198,7 +1206,7 @@ msgstr "Descripción del documento"
 
 #: workflow_actions.py:47
 msgid "The new description to be assigned to the document."
-msgstr ""
+msgstr "La nueva descripción que se asignará al documento."
 
 #: workflow_actions.py:59
 msgid "Modify document properties"
@@ -1214,7 +1222,7 @@ msgstr "URL"
 
 #: workflow_actions.py:140
 msgid "The URL to access."
-msgstr ""
+msgstr "La URL para acceder."
 
 #: workflow_actions.py:149
 msgid "Timeout"
@@ -1230,7 +1238,7 @@ msgstr "Datos a enviar"
 
 #: workflow_actions.py:171
 msgid "A JSON document to include in the request."
-msgstr ""
+msgstr "Un documento JSON para incluir en la solicitud."
 
 #: workflow_actions.py:180
 msgid "Username"
@@ -1239,6 +1247,8 @@ msgstr "Nombre de usuario"
 #: workflow_actions.py:187
 msgid "Username to use for making the request with HTTP Basic Auth."
 msgstr ""
+"Nombre de usuario que se utilizará para realizar la solicitud con HTTP Basic"
+" Auth."
 
 #: workflow_actions.py:198
 msgid "Password"
@@ -1247,6 +1257,7 @@ msgstr "Contraseña"
 #: workflow_actions.py:205
 msgid "Password to use for making the request with HTTP Basic Auth."
 msgstr ""
+"Contraseña que se utilizará para realizar la solicitud con HTTP Basic Auth."
 
 #: workflow_actions.py:216
 msgid "Method"
@@ -1257,6 +1268,8 @@ msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE."
 msgstr ""
+"El método HTTP que se utilizará para la solicitud. Las opciones típicas son "
+"OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE."
 
 #: workflow_actions.py:234
 msgid "Headers"
@@ -1265,6 +1278,7 @@ msgstr "Encabezados"
 #: workflow_actions.py:241
 msgid "Headers to send with the HTTP request. Must be in JSON format."
 msgstr ""
+"Encabezados para enviar con la solicitud HTTP. Debe estar en formato JSON."
 
 #: workflow_actions.py:256
 msgid "Perform an HTTP request"

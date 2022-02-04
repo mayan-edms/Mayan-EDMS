@@ -5,15 +5,15 @@
 # Translators:
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2021
-# Harald Ersch, 2021
+# Harald Ersch, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-02 11:46+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Harald Ersch, 2021\n"
+"Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,7 +71,7 @@ msgstr "Ora expirării consemnării ieșirii"
 
 #: forms.py:51
 msgid "New files allowed?"
-msgstr ""
+msgstr "Fișiere noi permise?"
 
 #: forms.py:52
 msgid "Yes"
@@ -129,11 +129,11 @@ msgstr "Data și ora expirării consemnării ieșirii"
 
 #: models.py:51
 msgid "Do not allow new file of this document to be uploaded."
-msgstr ""
+msgstr "Nu permiteți încărcarea unui fișier nou din acest document."
 
 #: models.py:53
 msgid "Block new file upload"
-msgstr ""
+msgstr "Blocați încărcarea de fișiere noi"
 
 #: models.py:61 permissions.py:5
 msgid "Document checkout"
@@ -187,72 +187,73 @@ msgstr "Cheia primară a documentului care urmează să fie consemnat ca ieșit.
 #: views.py:25
 #, python-format
 msgid "Unable to check in document \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Nu se poate înregistra documentul „%(instance)s”; %(exception)s"
 
 #: views.py:29
 #, python-format
 msgid "Document \"%(object)s\" checked in successfully."
-msgstr ""
+msgstr "Documentul „%(object)s” a fost consemnat ca intrat cu succes."
 
 #: views.py:32
 #, python-format
 msgid "%(count)d document checked in successfully."
-msgstr ""
+msgstr "Documentul  %(count)d a fost ca intrat cu succes."
 
 #: views.py:35
 #, python-format
 msgid "%(count)d documents checked in successfully."
-msgstr ""
+msgstr "%(count)d documente au fost consemnate ca intrate cu succes."
 
 #: views.py:37
 #, python-format
 msgid "Check in document \"%(object)s\"."
-msgstr ""
+msgstr "Consemnați documentul „%(object)s” ca intrat."
 
 #: views.py:38
 #, python-format
 msgid "Check in %(count)d document."
-msgstr ""
+msgstr "Consemnați documentul %(count)d ca fiind intrat."
 
 #: views.py:39
 #, python-format
 msgid "Check in %(count)d documents."
-msgstr ""
+msgstr "Consemnați %(count)d documente ca fiind intrate."
 
 #: views.py:91
 #, python-format
 msgid "Unable to checkout document \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Nu se poate consemna ca ieșit documentul „%(instance)s”; %(exception)s"
 
 #: views.py:98
 #, python-format
 msgid "Document \"%(object)s\" checked out successfully."
-msgstr ""
+msgstr "Documentul „%(object)s” a fost consemnat ca ieșit cu succes."
 
 #: views.py:101
 #, python-format
 msgid "%(count)d document checked out successfully."
-msgstr ""
+msgstr "Documentul %(count)d a fost consemnat ca ieșit cu succes."
 
 #: views.py:104
 #, python-format
 msgid "%(count)d documents checked out successfully."
-msgstr ""
+msgstr "%(count)d documente au fost consemnate ca fiind ieșite, cu succes."
 
 #: views.py:106
 #, python-format
 msgid "Checkout document \"%(object)s\"."
-msgstr ""
+msgstr "Consemnați ca ieșit documentul „%(object)s”."
 
 #: views.py:107
 #, python-format
 msgid "Checkout %(count)d document."
-msgstr ""
+msgstr "Consemnați ca ieșit documentul %(count)d."
 
 #: views.py:108
 #, python-format
 msgid "Checkout %(count)d documents."
-msgstr ""
+msgstr "Consemnați ca fiind ieșite %(count)d documente."
 
 #: views.py:154
 #, python-format

@@ -9,14 +9,15 @@
 # Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
 # Aline Freitas <aline@alinefreitas.com.br>, 2021
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-02 11:46+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Aline Freitas <aline@alinefreitas.com.br>, 2021\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,7 +75,7 @@ msgstr "Expiração da retirada"
 
 #: forms.py:51
 msgid "New files allowed?"
-msgstr ""
+msgstr "Novos ficheiros permitidos?"
 
 #: forms.py:52
 msgid "Yes"
@@ -130,11 +131,11 @@ msgstr "Data e hora da expiração da retirada."
 
 #: models.py:51
 msgid "Do not allow new file of this document to be uploaded."
-msgstr ""
+msgstr "Não permitir que nova versão deste documento seja submetida."
 
 #: models.py:53
 msgid "Block new file upload"
-msgstr ""
+msgstr "Bloquear submissão de novos ficheiros."
 
 #: models.py:61 permissions.py:5
 msgid "Document checkout"
@@ -187,72 +188,72 @@ msgstr "Chave primária do documento que será retirado."
 #: views.py:25
 #, python-format
 msgid "Unable to check in document \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Erro ao devolver documento \"%(instance)s\"; %(exception)s"
 
 #: views.py:29
 #, python-format
 msgid "Document \"%(object)s\" checked in successfully."
-msgstr ""
+msgstr "Documento \"%(object)s\" devolvidos com sucesso"
 
 #: views.py:32
 #, python-format
 msgid "%(count)d document checked in successfully."
-msgstr ""
+msgstr "%(count)d documento devolvido com sucesso."
 
 #: views.py:35
 #, python-format
 msgid "%(count)d documents checked in successfully."
-msgstr ""
+msgstr "%(count)d documentos devolvidos com sucesso."
 
 #: views.py:37
 #, python-format
 msgid "Check in document \"%(object)s\"."
-msgstr ""
+msgstr "Devolver documento %(object)s."
 
 #: views.py:38
 #, python-format
 msgid "Check in %(count)d document."
-msgstr ""
+msgstr "Devolver %(count)d documento."
 
 #: views.py:39
 #, python-format
 msgid "Check in %(count)d documents."
-msgstr ""
+msgstr "Devolver %(count)d documentos."
 
 #: views.py:91
 #, python-format
 msgid "Unable to checkout document \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Erro ao requisitar documento \"%(instance)s \"; %(exception)s"
 
 #: views.py:98
 #, python-format
 msgid "Document \"%(object)s\" checked out successfully."
-msgstr ""
+msgstr "Documento \" 1%(object)s \" requisitado com sucesso."
 
 #: views.py:101
 #, python-format
 msgid "%(count)d document checked out successfully."
-msgstr ""
+msgstr "%(count)d documento requisitado com sucesso."
 
 #: views.py:104
 #, python-format
 msgid "%(count)d documents checked out successfully."
-msgstr ""
+msgstr "%(count)d documentos requisitados com sucesso."
 
 #: views.py:106
 #, python-format
 msgid "Checkout document \"%(object)s\"."
-msgstr ""
+msgstr "Requisitar documento \" %(object)s \""
 
 #: views.py:107
 #, python-format
 msgid "Checkout %(count)d document."
-msgstr ""
+msgstr "Requisitar %(count)d documentos"
 
 #: views.py:108
 #, python-format
 msgid "Checkout %(count)d documents."
-msgstr ""
+msgstr "Requisitar %(count)d documentos"
 
 #: views.py:154
 #, python-format

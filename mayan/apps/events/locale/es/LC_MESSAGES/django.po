@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-02 11:46+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,7 +82,7 @@ msgstr "Tipo de evento desconocido u obsoleto: %s"
 
 #: events.py:15
 msgid "Events cleared"
-msgstr ""
+msgstr "Eventos exportados"
 
 #: events.py:18
 msgid "Events exported"
@@ -110,7 +110,7 @@ msgstr "Mis eventos"
 
 #: links.py:53 links.py:73 links.py:87 views/clear_views.py:62
 msgid "Clear events"
-msgstr ""
+msgstr "Mis eventos"
 
 #: links.py:57 links.py:80 links.py:91 views/export_views.py:57
 msgid "Export events"
@@ -182,7 +182,7 @@ msgstr "Suscripciones a eventos de objetos"
 
 #: permissions.py:8
 msgid "Clear the events of an object"
-msgstr ""
+msgstr "Exportar los eventos de un objeto"
 
 #: permissions.py:11
 msgid "Export the events of an object"
@@ -190,11 +190,11 @@ msgstr "Exportar los eventos de un objeto"
 
 #: permissions.py:14
 msgid "View the events of an object"
-msgstr ""
+msgstr "Acceder a los eventos de un objeto"
 
 #: queues.py:13
 msgid "Clear event querysets"
-msgstr ""
+msgstr "Exportar conjuntos de consultas de eventos"
 
 #: queues.py:17
 msgid "Export event querysets"
@@ -205,15 +205,18 @@ msgid ""
 "This action is not reversible. The process will be performed in the "
 "background. "
 msgstr ""
+"Esta acción no es reversible. El proceso se realizará como una tarea de "
+"fondo."
 
 #: views/clear_views.py:50
 msgid "Event list clear task queued successfully."
 msgstr ""
+"La tarea de exportación de la lista de eventos se puso en cola con éxito."
 
 #: views/clear_views.py:81
 #, python-format
 msgid "Clear events of: %s"
-msgstr ""
+msgstr "Exportar eventos para: %s"
 
 #: views/clear_views.py:119 views/event_views.py:70 views/export_views.py:105
 #, python-format
@@ -259,7 +262,7 @@ msgstr ""
 #: views/export_views.py:76
 #, python-format
 msgid "Export events of: %s"
-msgstr ""
+msgstr "Exportar eventos para: %s"
 
 #: views/notification_views.py:25
 msgid "Subscribe to global or object events to receive notifications."

@@ -6,14 +6,18 @@
 # Translators:
 # Vítor Figueiró <vfigueiro@gmail.com>, 2021
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
+# Aline Freitas <aline@alinefreitas.com.br>, 2022
+# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
+# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-02 11:46+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021\n"
+"Last-Translator: Jadson Ribeiro <jadsonbr@outlook.com.br>, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +27,7 @@ msgstr ""
 
 #: apps.py:19
 msgid "Dynamic search"
-msgstr ""
+msgstr "Busca dinâmica"
 
 #: classes.py:330
 #, python-format
@@ -32,13 +36,16 @@ msgstr ""
 
 #: forms.py:9
 msgid "Match all"
-msgstr ""
+msgstr "Corresponder a todos"
 
 #: forms.py:10
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
 msgstr ""
+"Quando marcado, somente os resultados que correspondem a todos os campos "
+"serão retornados. Quando os resultados não verificados correspondentes a "
+"pelo menos um campo serão retornados."
 
 #: forms.py:30 templates/dynamic_search/search_box.html:41
 msgid "Search terms"
@@ -55,77 +62,83 @@ msgstr "Procura Avançada"
 
 #: links.py:21
 msgid "Search again"
-msgstr ""
+msgstr "Buscar novamente"
 
 #: links.py:25 views.py:99
 msgid "Reindex search backend"
-msgstr ""
+msgstr "Reindexar backend de pesquisa"
 
 #: permissions.py:8
 msgid "Execute search tools"
-msgstr ""
+msgstr "Executar ferramentas de pesquisa"
 
 #: queues.py:13
 msgid "Remove a model instance from the search engine."
-msgstr ""
+msgstr "Remova uma instância de modelo do mecanismo de pesquisa."
 
 #: queues.py:18
 msgid "Index a model instance to the search engine."
-msgstr ""
+msgstr "Indexar uma instância de modelo para o mecanismo de pesquisa."
 
 #: queues.py:24
 msgid "Index all instances of a search model to the search engine."
 msgstr ""
+"Indexar todas as instâncias de um modelo de pesquisa para o mecanismo de "
+"pesquisa."
 
 #: settings.py:16
 msgid "Full path to the backend to be used to handle the search."
-msgstr ""
+msgstr "Caminho completo do backend usado para manipular a busca."
 
 #: settings.py:26
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
-msgstr ""
+msgstr "Desabilita a busca por termo único e deixa apenas a busca avançada."
 
 #: settings.py:33
 msgid "Sets the default state of the \"Match all\" checkbox."
-msgstr ""
+msgstr "Define o estado padrão da caixa de seleção \"Corresponder a todos\"."
 
 #: settings.py:37
 msgid "Maximum number search results to fetch and display."
-msgstr ""
+msgstr "Número máximo de resultados de pesquisa para buscar e exibir."
 
 #: templates/dynamic_search/search_box.html:47
 msgid "Advanced"
-msgstr ""
+msgstr "Avançada"
 
 #: views.py:40
 msgid "Try again using different terms. "
-msgstr ""
+msgstr "Tentar novamente usando termos diferentes."
 
 #: views.py:42
 msgid "No search results"
-msgstr ""
+msgstr "Não há resultados de busca"
 
 #: views.py:44
 #, python-format
 msgid "Search results for: %s"
-msgstr ""
+msgstr "Resultados da pesquisa para: %s"
 
 #: views.py:95
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
 msgstr ""
+"Essa ferramenta é necessária apenas para alguns back-ends de pesquisa. Os "
+"resultados da pesquisa serão afetados enquanto o backend está sendo "
+"reindexado."
 
 #: views.py:101
 msgid "This tool erases and populates the search backend's internal index."
 msgstr ""
+"Essa ferramenta apaga e preenche o índice interno do backend de pesquisa."
 
 #: views.py:119
 msgid "Search backend reindexing queued."
-msgstr ""
+msgstr "Reindexação de backend da pesquisa enfileirada."
 
 #: views.py:141
 #, python-format
 msgid "Search for: %s"
-msgstr ""
+msgstr "Buscar por: %s"

@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
 # Lory977 <helga.carrero@gmail.com>, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-02 11:46+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: Lory977 <helga.carrero@gmail.com>, 2021\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,7 +39,7 @@ msgstr "Nível"
 
 #: apps.py:136 apps.py:166
 msgid "Depth"
-msgstr ""
+msgstr "Profundidad"
 
 #: apps.py:140
 msgid "Total nodes"
@@ -51,7 +51,7 @@ msgstr "Total de documentos"
 
 #: apps.py:149 apps.py:187
 msgid "Number of unique documents this item contains."
-msgstr ""
+msgstr "Número de documentos únicos que contiene este elemento."
 
 #: apps.py:174
 msgid "Nodes"
@@ -157,11 +157,11 @@ msgstr "Habilitado"
 
 #: models.py:61
 msgid "Index template"
-msgstr ""
+msgstr "Plantillas de índice"
 
 #: models.py:169
 msgid "Parent index template node of this node."
-msgstr ""
+msgstr "Nodo de plantilla de índice principal de este nodo."
 
 #: models.py:175
 msgid "Index"
@@ -170,6 +170,9 @@ msgstr "Índice"
 #: models.py:179
 msgid "Enter a template to render. Use Django's default templating language."
 msgstr ""
+"Ingrese una plantilla para renderizar. Utilice el lenguaje de plantillas "
+"predeterminado de Django "
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
 #: models.py:182
 msgid "Indexing expression"
@@ -199,7 +202,7 @@ msgstr "Nodo de plantilla de indice"
 
 #: models.py:203
 msgid "Index template nodes"
-msgstr ""
+msgstr "Nodo de plantilla de indice"
 
 #: models.py:207
 msgid "Root"
@@ -224,15 +227,15 @@ msgstr ""
 
 #: models.py:388
 msgid "Total number of nodes with unique values this item contains."
-msgstr ""
+msgstr "Número total de nodos con valores únicos que contiene este elemento."
 
 #: models.py:397
 msgid "Total number of unique documents this item contains."
-msgstr ""
+msgstr "Número total de documentos únicos que contiene este elemento."
 
 #: models.py:407
 msgid "Total number of node levels this item contains."
-msgstr ""
+msgstr "Número total de niveles de nodo que contiene este elemento."
 
 #: models.py:434 search.py:26
 msgid "Value"
@@ -488,7 +491,7 @@ msgstr "¿Borrar el nodo de plantilla de indice: %s?"
 #: views/index_template_views.py:261
 #, python-format
 msgid "Edit the index template node: %s"
-msgstr ""
+msgstr "¿Editar el nodo de plantilla de indice: %s?"
 
 #: views/index_template_views.py:281
 #, python-format
