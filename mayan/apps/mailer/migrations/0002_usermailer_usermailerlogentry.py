@@ -4,7 +4,7 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('mailer', '0001_initial'),
+        ('mailer', '0001_initial')
     ]
 
     operations = [
@@ -76,6 +76,6 @@ class Migration(migrations.Migration):
                 'get_latest_by': 'datetime',
                 'verbose_name': 'User mailer log entry',
                 'verbose_name_plural': 'User mailer log entries',
-            },
-        ),
+            }
+        )
     ]
