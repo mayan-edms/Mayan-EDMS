@@ -17,6 +17,8 @@
   Thanks to forum user @qra for the request.
 - Add ``EmailAction`` subclass for backwards compatibility with existing
   workflow state actions.
+- Expose the checkout datetime, expiration datetime and user fields via the
+  REST API. Thanks to forum user @qra for the request.
 
 4.1.4 (2021-12-01)
 ==================

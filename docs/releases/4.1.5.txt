@@ -45,6 +45,8 @@ Other
 - Fix CAA document links. Closes GitLab issue #1068. Thanks to
   Matthias Löblich (@startmat) for the report.
 - Remove superfluous apostrophe character in sort heading markup.
+- Expose the checkout datetime, expiration datetime and user fields via
+  the REST API. Thanks to forum user @qra for the request.
 
 
 Removals
