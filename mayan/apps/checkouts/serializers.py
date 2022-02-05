@@ -6,6 +6,7 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.serializers.document_serializers import DocumentSerializer
 from mayan.apps.rest_api import serializers
+from mayan.apps.user_management.serializers import UserSerializer
 
 from .models import DocumentCheckout
 from .permissions import permission_document_check_out
@@ -13,6 +14,7 @@ from .permissions import permission_document_check_out
 
 class DocumentCheckoutSerializer(serializers.ModelSerializer):
     document = DocumentSerializer()
+    user = UserSerializer()
 
     class Meta:
         extra_kwargs = {
@@ -21,9 +23,14 @@ class DocumentCheckoutSerializer(serializers.ModelSerializer):
                 'view_name': 'rest_api:checkedout-document-view'
             },
         }
-        fields = ('document', 'id', 'url')
+        fields = (
+            'checkout_datetime', 'document', 'expiration_datetime', 'id',
+            'url', 'user'
+        )
         model = DocumentCheckout
-        read_only_fields = ('document', 'id', 'url')
+        read_only_fields = (
+            'checkout_datetime', 'document', 'id', 'url'
+        )
 
 
 class NewDocumentCheckoutSerializer(serializers.ModelSerializer):

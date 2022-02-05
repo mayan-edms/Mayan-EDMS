@@ -16,11 +16,9 @@ from .mixins.workflow_template_transition_mixins import (
 
 
 class WorkflowTemplateTransitionAPIViewTestCase(
-    DocumentTestMixin, WorkflowTemplateTestMixin,
-    WorkflowTemplateTransitionAPIViewTestMixin, BaseAPITestCase
+    WorkflowTemplateTestMixin, WorkflowTemplateTransitionAPIViewTestMixin,
+    BaseAPITestCase
 ):
-    auto_upload_test_document = False
-
     def setUp(self):
         super().setUp()
         self._create_test_workflow_template()

@@ -224,9 +224,9 @@
 - Remove menu proxy inclusions. Model proxies are now included by default.
 - Add menu proxy exclusions.
 - Update the subject and body fields of the document email workflow action
-  to be optional. 
+  to be optional.
 
-4.1.5 (2022-XX-XX)
+4.1.5 (2022-02-03)
 ==================
 - Fix CAA document links. Closes GitLab issue #1068. Thanks to
   Matthias Löblich (@startmat) for the report.
@@ -241,6 +241,14 @@
 - Create error log entries for objects that existed before the last error
   log changes. Fix GitLab issue #1069. Thanks to Will Wright (@fireatwill)
   for the report.
+- Expose the workflow template ``auto_launch`` field via the REST API.
+  Thanks to forum user @qra for the request.
+- Add ``EmailAction`` subclass for backwards compatibility with existing
+  workflow state actions.
+- Expose the checkout datetime, expiration datetime and user fields via the
+  REST API. Thanks to forum user @qra for the request.
+- Update the GitLab CI template to specify the settings file to use when
+  uploading the test document.
 
 4.1.4 (2021-12-01)
 ==================

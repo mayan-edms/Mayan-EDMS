@@ -313,7 +313,7 @@ job_postgres_upgrade_test:
     - pip install psycopg2==$PYTHON_PSYCOPG2_VERSION
     - export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'{{ DEFAULT_DATABASE_NAME }}','PASSWORD':'{{ DEFAULT_DATABASE_PASSWORD }}','USER':'{{ DEFAULT_DATABASE_USER }}','HOST':'postgres'}}"
     - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
-    - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell
+    - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell --settings=mayan.settings.testing.gitlab-ci
     - pip install dist/mayan_edms-*.whl
     - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
   services:
@@ -330,7 +330,7 @@ job_sqlite_upgrade_test:
   script:
     - . venv/bin/activate
     - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
-    - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell
+    - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell --settings=mayan.settings.testing.gitlab-ci
     - pip install dist/mayan_edms-*.whl
     - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
 

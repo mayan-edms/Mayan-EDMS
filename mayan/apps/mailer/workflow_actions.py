@@ -206,3 +206,10 @@ class DocumentEmailAction(ObjectEmailActionMixin, WorkflowAction):
 
     def get_object(self, context):
         return context['document']
+
+
+class EmailAction(DocumentEmailAction):
+    """
+    Sub class for backwards compatibility with existing workflow state
+    actions.
+    """
