@@ -19,6 +19,8 @@
   workflow state actions.
 - Expose the checkout datetime, expiration datetime and user fields via the
   REST API. Thanks to forum user @qra for the request.
+- Update the GitLab CI template to specify the settings file to use when
+  uploading the test document.
 
 4.1.4 (2021-12-01)
 ==================
