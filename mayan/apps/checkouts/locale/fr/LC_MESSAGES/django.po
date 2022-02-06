@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"POT-Creation-Date: 2022-02-05 10:35+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -183,7 +183,7 @@ msgstr "Verrouillages périodiques"
 msgid "Check expired checkouts"
 msgstr "Vérifier les verrouillages expirés"
 
-#: serializers.py:32
+#: serializers.py:39
 msgid "Primary key of the document to be checked out."
 msgstr "Clé primaire du document devant être verrouillé."
 

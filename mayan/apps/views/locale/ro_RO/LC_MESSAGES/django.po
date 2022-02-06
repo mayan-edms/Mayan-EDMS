@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-03 12:14+0000\n"
+"POT-Creation-Date: 2022-02-05 10:35+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -115,7 +115,7 @@ msgstr "Obiectul tip %(object)s a fost șters cu succes."
 #: generics.py:732
 #, python-format
 msgid "Error retrieving %(object)s; %(error)s"
-msgstr ""
+msgstr "Eroare la preluarea %(object)s; %(error)s"
 
 #: generics.py:836
 #, python-format
@@ -130,32 +130,32 @@ msgstr "Obiectul tip %(object)s a fost actualizat cu succes."
 #: generics.py:907
 #, python-format
 msgid "\"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "„%(object)s” a fost șters cu succes."
 
 #: generics.py:908
 #, python-format
 msgid "%(count)d object deleted successfully."
-msgstr ""
+msgstr "%(count)d obiect a fost șters cu succes."
 
 #: generics.py:909
 #, python-format
 msgid "%(count)d objects deleted successfully."
-msgstr ""
+msgstr "%(count)d obiecte șterse cu succes."
 
 #: generics.py:910
 #, python-format
 msgid "Delete \"%(object)s\"."
-msgstr ""
+msgstr "Șterge „%(object)s”."
 
 #: generics.py:911
 #, python-format
 msgid "Delete %(count)d object."
-msgstr ""
+msgstr "Ștergeți %(count)d obiect."
 
 #: generics.py:912
 #, python-format
 msgid "Delete %(count)d objects."
-msgstr ""
+msgstr "Ștergeți %(count)d obiecte."
 
 #: mixins.py:350
 #, python-format

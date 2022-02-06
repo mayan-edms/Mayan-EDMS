@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"POT-Creation-Date: 2022-02-05 10:35+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -176,7 +176,7 @@ msgstr "Reservas periódicas"
 msgid "Check expired checkouts"
 msgstr "Comprobar reservaciones caducadas"
 
-#: serializers.py:32
+#: serializers.py:39
 msgid "Primary key of the document to be checked out."
 msgstr "Llave primaria del documento que se va a reservar."
 

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-03 12:14+0000\n"
+"POT-Creation-Date: 2022-02-05 10:35+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -59,11 +59,11 @@ msgstr "Motor OCR Open Source"
 
 #: events.py:8
 msgid "Document version OCR content deleted"
-msgstr ""
+msgstr "Conținutul OCR al versiunii documentului a fost șters"
 
 #: events.py:12
 msgid "Document version page OCR content edited"
-msgstr ""
+msgstr "Conținutul OCR din pagina de versiune a documentului a fost editat"
 
 #: events.py:16
 msgid "Document version submitted for OCR"
@@ -108,7 +108,7 @@ msgstr "Trimiteți pentru OCR"
 
 #: links.py:92
 msgid "Edit OCR"
-msgstr ""
+msgstr "Editați OCR"
 
 #: models.py:24
 msgid "Document type"
@@ -144,7 +144,7 @@ msgstr "Erori OCR de versiune a documentului"
 
 #: models.py:71
 msgid "Document version page"
-msgstr ""
+msgstr "Pagina versiunii documentului"
 
 #: models.py:75
 msgid "The actual text content extracted by the OCR backend."
@@ -156,11 +156,11 @@ msgstr "Conținut"
 
 #: models.py:82
 msgid "Document version page OCR content"
-msgstr ""
+msgstr "Conținutul OCR din pagina de versiune a documentului"
 
 #: models.py:83
 msgid "Document version pages OCR contents"
-msgstr ""
+msgstr "Conținutul OCR a paginilor versiunii documentului"
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
@@ -168,7 +168,7 @@ msgstr "Trimiteti documentele pentru OCR"
 
 #: permissions.py:11
 msgid "Edit the transcribed text from document"
-msgstr ""
+msgstr "Editați textul transcris din document"
 
 #: permissions.py:15
 msgid "View the transcribed text from document"
@@ -180,15 +180,15 @@ msgstr "Modificați setările OCR de tip document"
 
 #: queues.py:10
 msgid "Finish document file OCR"
-msgstr ""
+msgstr "Terminați OCR pentru fișierul document"
 
 #: queues.py:14
 msgid "Document file page OCR"
-msgstr ""
+msgstr "OCR pentru pagină fișier document"
 
 #: queues.py:18
 msgid "Document file OCR"
-msgstr ""
+msgstr "OCR pentru fișier document"
 
 #: search.py:11 search.py:23
 msgid "Document version OCR"
@@ -209,36 +209,41 @@ msgstr ""
 #, python-format
 msgid "Error deleting document version OCR \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Eroare la ștergerea OCR  pentru versiunea documentului „%(instance)s”; "
+"%(exception)s"
 
 #: views.py:38
 #, python-format
 msgid "OCR content of \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Conținutul OCR al „%(object)s” a fost șters cu succes."
 
 #: views.py:39
 #, python-format
 msgid "OCR content of %(count)d document version deleted successfully."
 msgstr ""
+"Conținutul OCR al versiunii documentului %(count)d a fost șters cu succes."
 
 #: views.py:40
 #, python-format
 msgid "OCR content of %(count)d document versions deleted successfully."
 msgstr ""
+"Conținutul OCR al %(count)d versiuni de document a fost șters cu succes."
 
 #: views.py:41
 #, python-format
 msgid "Delete the OCR content of: %(object)s."
-msgstr ""
+msgstr "Ștergeți conținutul OCR al: %(object)s."
 
 #: views.py:42
 #, python-format
 msgid "Delete the OCR content of the %(count)d selected document version."
-msgstr ""
+msgstr "Ștergeți conținutul OCR al versiunii documentului selectat %(count)d."
 
 #: views.py:43
 #, python-format
 msgid "Delete the OCR content of the %(count)d selected document versions."
 msgstr ""
+"Ștergeți conținutul OCR al versiunilor de document %(count)d selectate."
 
 #: views.py:69
 #, python-format
@@ -253,19 +258,19 @@ msgstr "Erori OCR pentru document: %s"
 #: views.py:113
 msgid "Submit the selected document version to the OCR queue?"
 msgid_plural "Submit the selected document versions to the OCR queue?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Trimiteți versiunea documentului selectat în coada OCR?"
+msgstr[1] "Trimiteți versiunile de document selectate în coada OCR?"
+msgstr[2] "Trimiteți versiunile de document selectate în coada OCR?"
 
 #: views.py:148
 #, python-format
 msgid "OCR result for document version page: %s"
-msgstr ""
+msgstr "Rezultat OCR pentru pagina versiunii documentului: %s"
 
 #: views.py:175
 #, python-format
 msgid "Edit OCR for document version page: %s"
-msgstr ""
+msgstr "Editați OCR pentru pagina versiunii documentului: %s"
 
 #: views.py:195
 msgid "Submit all documents of a type for OCR"

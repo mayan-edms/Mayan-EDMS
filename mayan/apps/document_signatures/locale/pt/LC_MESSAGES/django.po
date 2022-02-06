@@ -8,18 +8,18 @@
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
-# Márcia Ferreira, 2022
 # Roberto Rosario, 2022
 # Vítor Figueiró <vfigueiro@gmail.com>, 2022
 # Aline Freitas <aline@alinefreitas.com.br>, 2022
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"POT-Creation-Date: 2022-02-05 10:35+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Aline Freitas <aline@alinefreitas.com.br>, 2022\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -167,7 +167,7 @@ msgstr "Assinaturas"
 
 #: models.py:46
 msgid "Document file"
-msgstr ""
+msgstr "Ficheiro do documento"
 
 #: models.py:51
 msgid "Date and time signed"

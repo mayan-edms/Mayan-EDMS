@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-03 12:14+0000\n"
+"POT-Creation-Date: 2022-02-05 10:35+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -28,10 +28,11 @@ msgstr "Platformă"
 #: classes.py:183
 msgid "Template for entrypoint.sh file inside a Docker image."
 msgstr ""
+"Șablon pentru fișierul entrypoint.sh în interiorul unei imagini Docker."
 
 #: classes.py:194
 msgid "Template that generates a Dockerfile file."
-msgstr ""
+msgstr "Șablon care generează un fișier Dockerfile."
 
 #: classes.py:209
 msgid "Template for Supervisord inside a Docker image."
@@ -39,7 +40,7 @@ msgstr "Șablon pentru Supervisord în interiorul unei imagini Docker."
 
 #: classes.py:227
 msgid "Template that generates a GitLab CI config file."
-msgstr ""
+msgstr "Șablon care generează un fișier de configurare GitLab CI."
 
 #: classes.py:271
 msgid "Template for Supervisord."
@@ -54,9 +55,14 @@ msgid ""
 "List of client backends to launch after startup. Use full dotted path to the"
 " client backend classes."
 msgstr ""
+"Lista de backend-uri client care trebuie lansate după pornire. Utilizați "
+"calea completă punctată către clasele de backend client."
 
 #: settings.py:23
 msgid ""
 "Arguments for the client backends. Use the client backend dotted path as the"
 " dictionary key for the arguments in dictionary format."
 msgstr ""
+"Argumente pentru backend-urile clientului. Utilizați calea punctată de "
+"backend client ca și cheie de dicționar pentru argumentele în format "
+"dicționar."

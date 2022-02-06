@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"POT-Creation-Date: 2022-02-05 10:35+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -159,12 +159,16 @@ msgid ""
 "In list mode, show the \"list facet\" menu options as a dropdown menu "
 "instead of individual buttons."
 msgstr ""
+"În modul listă, afișați opțiunile de meniu „listă fațete” ca meniu vertical "
+"în loc de butoane individuale."
 
 #: settings.py:30
 msgid ""
 "In list mode, show the \"object\" menu options as a dropdown menu instead of"
 " individual buttons."
 msgstr ""
+"În modul listă, afișați opțiunile meniului „obiect” ca meniu vertical în loc"
+" de butoane individuale."
 
 #: settings.py:37
 msgid ""
@@ -173,6 +177,11 @@ msgid ""
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
+"O listă de șiruri care desemnează toate aplicațiile care urmează să fie "
+"eliminate din lista instalată în mod normal de Mayan EDMS. Fiecare șir ar "
+"trebui să fie o cale Python punctată către: o clasă de configurare a "
+"aplicației (de preferat) sau un pachet care conține o aplicație. Exemplu: "
+"[&#39;app_1&#39;, &#39;app_2&#39;]"
 
 #: settings.py:47
 msgid ""
@@ -181,6 +190,11 @@ msgid ""
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
+"O listă de șiruri care desemnează toate aplicațiile care sunt instalate în "
+"afara celor instalate în mod normal de Mayan EDMS. Fiecare șir ar trebui să "
+"fie o cale Python punctată către: o clasă de configurare a aplicației (de "
+"preferat) sau un pachet care conține o aplicație. Exemplu: ['app_1', "
+"'app_2']"
 
 #: settings.py:58
 msgid ""
@@ -190,6 +204,11 @@ msgid ""
 " containing an application. These apps will be installed before the default "
 "apps. Example: ['app_1', 'app_2']"
 msgstr ""
+"O listă de șiruri care desemnează toate aplicațiile care sunt instalate în "
+"afara celor instalate în mod normal de Mayan EDMS. Fiecare șir ar trebui să "
+"fie o cale Python punctată către: o clasă de configurare a aplicației (de "
+"preferat) sau un pachet care conține o aplicație. Aceste aplicații vor fi "
+"instalate înaintea aplicațiilor implicite. Exemplu: ['app_1', 'app_2']"
 
 #: settings.py:69
 msgid ""
@@ -201,15 +220,15 @@ msgstr ""
 
 #: settings.py:78
 msgid "Name of the dashboard to display in the home view."
-msgstr ""
+msgstr "Numele tabloului de bord de afișat în vizualizarea principală."
 
 #: settings.py:83
 msgid "Sets the project's name."
-msgstr ""
+msgstr "Setează numele proiectului."
 
 #: settings.py:87
 msgid "URL of the project's homepage."
-msgstr ""
+msgstr "URL-ul paginii de start a proiectului."
 
 #: templates/common/app/viewport.html:15
 msgid "Click here to fix this."

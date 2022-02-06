@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-03 12:14+0000\n"
+"POT-Creation-Date: 2022-02-05 10:35+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -121,19 +121,19 @@ msgstr "Numele grupului"
 
 #: serializers.py:30
 msgid "Primary key of the group to add to the role."
-msgstr ""
+msgstr "Cheia primară a grupului de adăugat la rol."
 
 #: serializers.py:38
 msgid "Primary key of the group to remove from the role."
-msgstr ""
+msgstr "Cheia primară a grupului de eliminat din rol."
 
 #: serializers.py:46
 msgid "Primary key of the permission to add to the role."
-msgstr ""
+msgstr "Cheia primară a permisiunii de adăugat la rol."
 
 #: serializers.py:53
 msgid "Primary key of the permission to remove from the role."
-msgstr ""
+msgstr "Cheia primară a permisiunii de eliminat din rol."
 
 #: views.py:31
 msgid "Available roles"
@@ -151,37 +151,37 @@ msgstr "Rolurile grupului: %s"
 #: views.py:59
 #, python-format
 msgid "Error deleting role \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Eroare la ștergerea rolului „%(instance)s”; %(exception)s"
 
 #: views.py:64
 #, python-format
 msgid "Role \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Rolul „%(object)s” a fost șters cu succes."
 
 #: views.py:65
 #, python-format
 msgid "%(count)d role deleted successfully."
-msgstr ""
+msgstr "Rolul %(count)d a fost șters cu succes."
 
 #: views.py:66
 #, python-format
 msgid "%(count)d roles deleted successfully."
-msgstr ""
+msgstr "%(count)d roluri au fost șterse cu succes."
 
 #: views.py:67
 #, python-format
 msgid "Delete role: %(object)s."
-msgstr ""
+msgstr "Șterge rol: %(object)s."
 
 #: views.py:68
 #, python-format
 msgid "Delete the %(count)d selected role."
-msgstr ""
+msgstr "Ștergeți rolul selectat %(count)d."
 
 #: views.py:69
 #, python-format
 msgid "Delete the %(count)d selected roles."
-msgstr ""
+msgstr "Ștergeți %(count)d roluri selectate."
 
 #: views.py:95
 msgid ""
@@ -244,4 +244,4 @@ msgstr "Permisiuni pentru rolul: %s"
 #: views.py:198
 #, python-format
 msgid "Details of permission: %s"
-msgstr ""
+msgstr "Detalii privind permisiunea: %s"

@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"POT-Creation-Date: 2022-02-05 10:35+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -947,11 +947,11 @@ msgstr "Documents récents"
 
 #: models/recently_accessed_document_models.py:54
 msgid "Recently accessed document"
-msgstr ""
+msgstr "Document récemment accédé"
 
 #: models/recently_accessed_document_models.py:55
 msgid "Recently accessed documents"
-msgstr ""
+msgstr "Documents récemment accédés"
 
 #: permissions.py:10
 msgid "Create documents"
@@ -1107,7 +1107,7 @@ msgstr "Téléverser un nouveau fichier"
 
 #: queues.py:80
 msgid "Upload new document"
-msgstr ""
+msgstr "Téléverser un nouveau document"
 
 #: search.py:31 search.py:64 search.py:96 search.py:141 search.py:169
 msgid "Document type label"
@@ -2016,7 +2016,7 @@ msgstr "Il n'y a pas de document récemment créé"
 #: views/trashed_document_views.py:37
 #, python-format
 msgid "Document \"%(object)s\" moved to trash."
-msgstr ""
+msgstr "Le document \"%(object)s\" a été transféré dans la corbeille."
 
 #: views/trashed_document_views.py:40
 #, python-format

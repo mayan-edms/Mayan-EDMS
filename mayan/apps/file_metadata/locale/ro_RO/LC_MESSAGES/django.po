@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"POT-Creation-Date: 2022-02-05 10:35+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -59,11 +59,11 @@ msgstr "Instrument EXIF"
 
 #: events.py:10
 msgid "Document file submitted for file metadata processing"
-msgstr ""
+msgstr "Fișier de document trimis pentru procesarea metadatelor fișierului"
 
 #: events.py:14
 msgid "Document file file metadata processing finished"
-msgstr ""
+msgstr "Procesarea metadatelor fișierului documentului s-a încheiat"
 
 #: links.py:25
 msgid "Attributes"
@@ -91,7 +91,7 @@ msgstr "Returnați intrarea specificată a metadatelor fișierului ."
 
 #: methods.py:71
 msgid "Return the specified document file file metadata entry."
-msgstr ""
+msgstr "Returnează intrarea de metadate a fișierului document specificat."
 
 #: models.py:18
 msgid "Driver path"
@@ -131,11 +131,11 @@ msgstr "Fișier document"
 
 #: models.py:80 models.py:95
 msgid "Document file driver entry"
-msgstr ""
+msgstr "Intrare pentru driverului fișierului de document"
 
 #: models.py:81
 msgid "Document file driver entries"
-msgstr ""
+msgstr "Intrări ale driverului fișierului de document"
 
 #: models.py:88
 msgid "Attribute count"
@@ -179,7 +179,7 @@ msgstr "Vizualizați metadatele fișierelor"
 
 #: queues.py:11
 msgid "Process document file"
-msgstr ""
+msgstr "Procesați fișierul documentului"
 
 #: settings.py:18
 msgid ""
@@ -230,20 +230,27 @@ msgstr ""
 
 #: views.py:86
 msgid "No file metadata available for this driver."
-msgstr ""
+msgstr "Nu sunt disponibile metadate ale fișierului pentru acest driver."
 
 #: views.py:90
 #, python-format
 msgid ""
 "File metadata attributes for: %(document_file)s with driver: %(driver)s"
 msgstr ""
+"Atributele metadate ale fișierului pentru: %(document_file)s cu driver: "
+"%(driver)s"
 
 #: views.py:119
 msgid "Submit the selected document file to the file metadata queue?"
 msgid_plural "Submit the selected documents files to the file metadata queue?"
 msgstr[0] ""
+"Trimiteți fișierul document selectat în coada de metadate ale fișierului?"
 msgstr[1] ""
+"Trimiteți fișierele documentelor selectate în coada de metadate ale "
+"fișierelor?"
 msgstr[2] ""
+"Trimiteți fișierele documentelor selectate în coada de metadate ale "
+"fișierelor?"
 
 #: views.py:147
 #, python-format

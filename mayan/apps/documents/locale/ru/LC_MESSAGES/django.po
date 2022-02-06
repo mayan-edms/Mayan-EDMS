@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"POT-Creation-Date: 2022-02-05 10:35+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -115,7 +115,7 @@ msgstr "Дата и время добавления"
 
 #: apps.py:594
 msgid "Access date and time"
-msgstr ""
+msgstr "Дата и время доступа"
 
 #: classes.py:57
 msgid "Original"
@@ -761,7 +761,7 @@ msgstr "Описание"
 
 #: models/document_models.py:81
 msgid "The date and time of the document creation."
-msgstr ""
+msgstr "Дата и время создания документа."
 
 #: models/document_models.py:82
 msgid "Created"
@@ -948,11 +948,11 @@ msgstr "Недавние документы"
 
 #: models/recently_accessed_document_models.py:54
 msgid "Recently accessed document"
-msgstr ""
+msgstr "Недавно просмотренный документ"
 
 #: models/recently_accessed_document_models.py:55
 msgid "Recently accessed documents"
-msgstr ""
+msgstr "Недавно просмотренные документы"
 
 #: permissions.py:10
 msgid "Create documents"
@@ -1072,7 +1072,7 @@ msgstr "Удалить документ"
 
 #: queues.py:34
 msgid "Append all document file pages to a document version"
-msgstr ""
+msgstr "Добавить все страницы файла документа к версии документа"
 
 #: queues.py:38
 msgid "Reset the page list of a document version"
@@ -1080,7 +1080,7 @@ msgstr "Сбросить список страниц версии докумен
 
 #: queues.py:42
 msgid "Delete a document version"
-msgstr ""
+msgstr "Удалить версию документа"
 
 #: queues.py:46
 msgid "Export a document version"
@@ -1108,7 +1108,7 @@ msgstr "Загрузить новый файл документа"
 
 #: queues.py:80
 msgid "Upload new document"
-msgstr ""
+msgstr "Загрузить новый документ"
 
 #: search.py:31 search.py:64 search.py:96 search.py:141 search.py:169
 msgid "Document type label"
@@ -1386,15 +1386,15 @@ msgstr ""
 #: views/document_file_page_views.py:66
 msgid "Recalculate the page count of the selected document file?"
 msgid_plural "Recalculate the page count of the selected document files?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Пересчитать количество страниц выбранного файла документа?"
+msgstr[1] "Пересчитать количество страниц выбранных файлов документа?"
+msgstr[2] "Пересчитать количество страниц выбранных файлов документа?"
+msgstr[3] "Пересчитать количество страниц выбранных файлов документа?"
 
 #: views/document_file_page_views.py:77
 #, python-format
 msgid "Recalculate the page count of the document file: %s?"
-msgstr "Пересчитайте количество страниц файла документа: %s?"
+msgstr "Пересчитать количество страниц файла документа: %s?"
 
 #: views/document_file_page_views.py:107
 msgid ""
@@ -1526,9 +1526,13 @@ msgid "Clear all the page transformations for the selected document file?"
 msgid_plural ""
 "Clear all the page transformations for the selected document files?"
 msgstr[0] ""
+"Очистить все преобразования страниц для выбранного файла документа?"
 msgstr[1] ""
+"Очистить все преобразования страниц для выбранных файлов документа?"
 msgstr[2] ""
+"Очистить все преобразования страниц для выбранных файлов документа?"
 msgstr[3] ""
+"Очистить все преобразования страниц для выбранных файлов документа?"
 
 #: views/document_file_views.py:280
 #, python-format
@@ -1799,7 +1803,7 @@ msgstr "Удалить %(count)d версий документов."
 
 #: views/document_version_views.py:118
 msgid "The process will be performed in the background. "
-msgstr ""
+msgstr "Процесс будет выполняться в фоновом режиме."
 
 #: views/document_version_views.py:156
 #, python-format
@@ -2061,7 +2065,7 @@ msgstr "Нет недавно созданных документов"
 #: views/trashed_document_views.py:37
 #, python-format
 msgid "Document \"%(object)s\" moved to trash."
-msgstr ""
+msgstr "Документ \"%(object)s\" перемещен в корзину."
 
 #: views/trashed_document_views.py:40
 #, python-format
@@ -2076,16 +2080,16 @@ msgstr "%(count)d документов перемещено в корзину."
 #: views/trashed_document_views.py:45
 #, python-format
 msgid "Move the document \"%(object)s\" to trash?"
-msgstr ""
+msgstr "Переместить документ \"%(object)s\" в корзину?"
 
 #: views/trashed_document_views.py:46
 msgid "Move the selected document to the trash?"
-msgstr ""
+msgstr "Переместить выбранный документ в корзину?"
 
 #: views/trashed_document_views.py:47
 #, python-format
 msgid "Move the %(count)d selected documents to trash?"
-msgstr ""
+msgstr "Переместить %(count)d выбранных документов в корзину?"
 
 #: views/trashed_document_views.py:76
 msgid "Empty trash?"

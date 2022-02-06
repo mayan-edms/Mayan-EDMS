@@ -6,16 +6,16 @@
 # Translators:
 # Roberto Rosario, 2022
 # Badea Gabriel <gcbadea@gmail.com>, 2022
-# Harald Ersch, 2022
 # Stefaniu Criste <gupi@hangar.ro>, 2022
+# Harald Ersch, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"POT-Creation-Date: 2022-02-05 10:35+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2022\n"
+"Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -73,7 +73,7 @@ msgstr "Schimb de rol a utilizatorului"
 
 #: links.py:50
 msgid "Impersonate"
-msgstr ""
+msgstr "Preluarea identității"
 
 #: links.py:55 links.py:60
 msgid "Set password"
@@ -94,10 +94,12 @@ msgstr ""
 #: settings.py:23
 msgid "Dotted path to the backend used to process user authentication."
 msgstr ""
+"Calea punctată către backend folosită pentru a procesa autentificarea "
+"utilizatorului."
 
 #: settings.py:29
 msgid "Arguments for the AUTHENTICATION_BACKEND."
-msgstr ""
+msgstr "Argumente pentru AUTHENTICATION_BACKEND."
 
 #: templates/authentication/app/viewport.html:11
 #, python-format
@@ -106,6 +108,8 @@ msgid ""
 "                Impersonating user \"%(user)s\".\n"
 "            "
 msgstr ""
+"\n"
+"Preluarea identității utilizatorului „%(user)s”."
 
 #: templates/authentication/app/viewport.html:14
 msgid "Click here when finished"
@@ -191,9 +195,9 @@ msgstr ""
 #: views/authentication_views.py:433
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Schimbați parola utilizatorului"
+msgstr[1] "Schimbați parolele utilizatorilor"
+msgstr[2] "Schimbați parolele utilizatorilor"
 
 #: views/authentication_views.py:444
 #, python-format
@@ -213,4 +217,4 @@ msgstr "Eroare resetarea parola pentru utilizatorul %(user)s\": %(error)s"
 #: views/impersonation_views.py:78
 #, python-format
 msgid "Impersonate user: %s"
-msgstr ""
+msgstr "Preluați identitatea utilizatorului: %s"

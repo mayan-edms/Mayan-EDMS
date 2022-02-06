@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"POT-Creation-Date: 2022-02-05 10:35+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -65,11 +65,11 @@ msgstr "Gestionare chei"
 
 #: events.py:8
 msgid "Key created"
-msgstr ""
+msgstr "Cheia creată"
 
 #: events.py:12
 msgid "Key downloaded"
-msgstr ""
+msgstr "Cheia descărcată"
 
 #: forms.py:26
 msgid "None"

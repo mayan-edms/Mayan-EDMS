@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"POT-Creation-Date: 2022-02-05 10:35+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -167,11 +167,11 @@ msgstr "UUID al documentului"
 
 #: search.py:51
 msgid "Document file checksum"
-msgstr ""
+msgstr "Suma de control a fișierului documentului"
 
 #: search.py:54
 msgid "Document file MIME type"
-msgstr ""
+msgstr "Tipul MIME al fișierului document"
 
 #: serializers.py:18
 msgid "List of children cabinets."
@@ -241,32 +241,32 @@ msgstr "Nu există fișete disponibile"
 #: views.py:178
 #, python-format
 msgid "Document \"%(object)s\" added to cabinets successfully."
-msgstr ""
+msgstr "Documentul „%(object)s” a fost adăugat cu succes în fișete."
 
 #: views.py:181
 #, python-format
 msgid "%(count)d document added to cabinets successfully."
-msgstr ""
+msgstr "%(count)d document a fost adăugat cu succes în fișete."
 
 #: views.py:184
 #, python-format
 msgid "%(count)d documents added to cabinets successfully."
-msgstr ""
+msgstr "%(count)d documente adăugate cu succes în fișete."
 
 #: views.py:186
 #, python-format
 msgid "Add document \"%(object)s\" to cabinets."
-msgstr ""
+msgstr "Adăugați documentul „%(object)s” în fișete."
 
 #: views.py:187
 #, python-format
 msgid "Add %(count)d document to cabinets."
-msgstr ""
+msgstr "Adăugați documentul %(count)d în fișete."
 
 #: views.py:188
 #, python-format
 msgid "Add %(count)d documents to cabinets."
-msgstr ""
+msgstr "Adăugați %(count)ddocumente  în fișete."
 
 #: views.py:205
 msgid "Cabinets to which the selected documents will be added."
@@ -288,32 +288,32 @@ msgstr "Fișete care conțin documentul: %s"
 #: views.py:274
 #, python-format
 msgid "Document \"%(object)s\" removed from cabinets successfully."
-msgstr ""
+msgstr "Documentul „%(object)s” a fost eliminat cu succes din fișete."
 
 #: views.py:277
 #, python-format
 msgid "%(count)d document removed from cabinets successfully."
-msgstr ""
+msgstr "Documentul %(count)d a fost eliminat cu succes din fișete."
 
 #: views.py:280
 #, python-format
 msgid "%(count)d documents removed from cabinets successfully."
-msgstr ""
+msgstr "%(count)d documente eliminate din fișete cu succes."
 
 #: views.py:282
 #, python-format
 msgid "Remove document \"%(object)s\" from cabinets."
-msgstr ""
+msgstr "Scoateți documentul „%(object)s” din fișete."
 
 #: views.py:283
 #, python-format
 msgid "Remove %(count)d document from cabinets."
-msgstr ""
+msgstr "Scoateți documentul %(count)d din fișete."
 
 #: views.py:284
 #, python-format
 msgid "Remove %(count)d documents from cabinets."
-msgstr ""
+msgstr "Scoateți documentele %(count)d din fișete."
 
 #: views.py:301
 msgid "Cabinets from which the selected documents will be removed."

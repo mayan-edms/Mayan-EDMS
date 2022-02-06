@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"POT-Creation-Date: 2022-02-05 10:35+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -646,40 +646,40 @@ msgstr ""
 msgid "Primary key of the workflow template to launch."
 msgstr ""
 
-#: serializers.py:88
+#: serializers.py:89
 msgid "Primary key of the document type to add to the workflow."
 msgstr ""
 
-#: serializers.py:97
+#: serializers.py:98
 msgid "Primary key of the document type to remove from the workflow."
 msgstr ""
 
-#: serializers.py:262
+#: serializers.py:263
 msgid "Primary key of the destination state to be added."
 msgstr "المفتاح الأساسي للدولة الوجهة المراد إضافتها."
 
-#: serializers.py:270
+#: serializers.py:271
 msgid "Primary key of the origin state to be added."
 msgstr "المفتاح الأساسي لحالة الأصل المراد إضافتها."
 
-#: serializers.py:360
+#: serializers.py:361
 msgid "Event Type ID"
 msgstr ""
 
-#: serializers.py:450
+#: serializers.py:451
 #, python-format
 msgid "Unknown or invalid event type ID `%s`"
 msgstr ""
 
-#: serializers.py:469
+#: serializers.py:470
 msgid "Primary key of the transition to be added."
 msgstr "سيتم إضافة المفتاح الأساسي للانتقال."
 
-#: serializers.py:553
+#: serializers.py:554
 msgid "A link to the entire history of this workflow."
 msgstr "ربط سجل المسار"
 
-#: serializers.py:562
+#: serializers.py:563
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-03 12:13+0000\n"
+"POT-Creation-Date: 2022-02-05 10:35+0000\n"
 "PO-Revision-Date: 2022-02-03 10:11+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -85,7 +85,7 @@ msgstr "Temă editată"
 
 #: events.py:14
 msgid "User theme edited"
-msgstr ""
+msgstr "Tema utilizatorului a fost editată"
 
 #: links.py:18
 msgid "Theme settings"
@@ -181,6 +181,8 @@ msgstr ""
 msgid ""
 "Delay in milliseconds after which the menus will be checked for updates."
 msgstr ""
+"Întârziere în milisecunde după care meniurile vor fi verificate pentru "
+"actualizări."
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
@@ -371,7 +373,7 @@ msgstr "ID"
 
 #: templates/appearance/generic_list_subtemplate.html:133
 msgid "Facets"
-msgstr ""
+msgstr "Fațete"
 
 #: templates/appearance/home.html:27
 msgid "Getting started"
@@ -474,9 +476,9 @@ msgstr "Nu există teme"
 #: views.py:113
 #, python-format
 msgid "Theme settings for user: %s"
-msgstr ""
+msgstr "Configurarea temei pentru utilizator: %s"
 
 #: views.py:134
 #, python-format
 msgid "Edit theme settings for user: %s"
-msgstr ""
+msgstr "Editați configurația temei pentru utilizator: %s"
