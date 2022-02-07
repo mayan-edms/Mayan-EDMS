@@ -44,6 +44,7 @@ services:
       - "traefik.http.routers.mayan.entrypoints=web"
     profiles:
       - all_in_one
+    # Disable ports if using Traefik.       
     ports:
       - "80:8000"
 
@@ -109,6 +110,7 @@ services:
     <<: *mayan-container
     command:
       - run_frontend
+    # Disable ports if using Traefik.
     ports:
       - "80:8000"
     profiles:
