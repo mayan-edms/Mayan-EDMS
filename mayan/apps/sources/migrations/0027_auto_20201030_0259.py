@@ -13,7 +13,7 @@ SOURCE_BACKEND_MAPPING_LIST = [
         'model_name': 'POP3Email'
     },
     {
-        'backend_path': 'mayan.apps.sources.source_backends.SourceBackendSaneScanner',
+        'backend_path': 'mayan.apps.sources.source_backends.SourceBackendSANEScanner',
         'model_name': 'SaneScanner'
     },
     {
