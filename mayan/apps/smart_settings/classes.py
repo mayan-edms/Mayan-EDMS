@@ -264,8 +264,9 @@ class Setting:
         except IOError as exception:
             if exception.errno == errno.ENOENT:
                 logger.warning(
-                    'The path to the configuration file doesn\'t '
-                    'exist. It is not possible to save the backup file.'
+                    'The path to the configuration file `{}` doesn\'t '
+                    'exist. It is not possible to save the backup file.',
+                    path
                 )
 
     @classmethod
