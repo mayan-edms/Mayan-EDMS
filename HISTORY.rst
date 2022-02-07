@@ -23,7 +23,7 @@
   uploading the test document.
 - Fix GitLab CI upgrade test stage.
 - Add integrations settings module.
-- Print configuration path valuwewhen failing to access error is raised.
+- Print configuration path value when failing to access error is raised.
 - Fix references to the ``SourceBackendSANEScanner`` source backend class.
 
 4.1.4 (2021-12-01)
