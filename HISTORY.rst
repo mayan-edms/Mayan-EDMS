@@ -11,6 +11,7 @@
 - Fix document file signature serializer label.
 - Add restart policy to the Traefik container definition.
 - Remove duplicated ``Document.get_label`` method.
+- Add Docker Compose file port comment to remove when using Traefik.
 
 4.0.21 (2021-11-29)
 ===================

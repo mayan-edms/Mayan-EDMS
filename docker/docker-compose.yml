@@ -42,6 +42,7 @@ services:
       - "traefik.http.routers.app.rule=Host(`www.example.com`)"  # Replace this with your published URL
       - "traefik.http.routers.mayan.rule=Host(`mayan.app`)"
       - "traefik.http.routers.mayan.entrypoints=web"
+    # Disable ports if using Traefik.
     ports:
       - "80:8000"
 
@@ -116,6 +117,7 @@ services:
     <<: *mayan-container
     command:
       - run_frontend
+    # Disable ports if using Traefik.
     ports:
       - "81:8000"
     profiles:
