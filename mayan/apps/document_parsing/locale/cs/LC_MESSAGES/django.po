@@ -5,15 +5,15 @@
 # 
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2021
-# trendspotter <jirka.p@volny.cz>, 2021
+# trendspotter <jirka.p@volny.cz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-04 04:10+0000\n"
+"POT-Creation-Date: 2022-02-08 09:54+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -55,7 +55,7 @@ msgstr "Soubor dokumentu odeslán k analýze"
 
 #: events.py:17
 msgid "Document file parsing finished"
-msgstr ""
+msgstr "Analýza souboru dokumentu byla dokončena"
 
 #: forms.py:37
 #, python-format
@@ -132,7 +132,7 @@ msgstr "Datum a čas odeslání"
 
 #: models.py:78
 msgid "Document file parse error"
-msgstr ""
+msgstr "Chyba analýzy souboru dokumentu"
 
 #: models.py:79
 msgid "Document file parse errors"

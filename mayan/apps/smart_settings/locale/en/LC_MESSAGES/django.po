@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-04 04:10+0000\n"
+"POT-Creation-Date: 2022-02-08 09:55+0000\n"
 "PO-Revision-Date: 2020-05-25 06:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -34,11 +34,11 @@ msgstr ""
 msgid "Value"
 msgstr ""
 
-#: classes.py:347
+#: classes.py:348
 msgid "Overridden"
 msgstr ""
 
-#: classes.py:349
+#: classes.py:350
 msgid "Is this settings being overridden by an environment variable?"
 msgstr ""
 

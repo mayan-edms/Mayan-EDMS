@@ -11,14 +11,15 @@
 # Aline Freitas <aline@alinefreitas.com.br>, 2021
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-04 04:10+0000\n"
+"POT-Creation-Date: 2022-02-08 09:54+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -50,25 +51,25 @@ msgstr ""
 
 #: apps.py:403
 msgid "File comments"
-msgstr ""
+msgstr "Arquivar comentários"
 
 #: apps.py:407
 msgid "File encodings"
-msgstr ""
+msgstr "Arquivar codificações"
 
 #: apps.py:411
 msgid "File MIME types"
-msgstr ""
+msgstr "Arquivar tipos de MIME"
 
 #: apps.py:415
 msgid "File timestamps"
-msgstr ""
+msgstr "Arquivar carimbos de data e hora"
 
 #: apps.py:420 links/document_file_page_links.py:79
 #: models/document_file_models.py:120 models/document_file_page_models.py:34
 #: search.py:52
 msgid "Document file"
-msgstr ""
+msgstr "Ficheiro do documento"
 
 #: apps.py:424 models/document_file_page_models.py:38
 #: models/document_version_page_models.py:50
@@ -112,11 +113,11 @@ msgstr "Páginas"
 
 #: apps.py:583 models/favorite_document_models.py:34
 msgid "Date and time added"
-msgstr ""
+msgstr "Data e hora adicionada"
 
 #: apps.py:594
 msgid "Access date and time"
-msgstr ""
+msgstr "Aceder a data e hora"
 
 #: classes.py:57
 msgid "Original"
@@ -184,15 +185,15 @@ msgstr "Documento visualizado"
 
 #: events.py:22
 msgid "Document file created"
-msgstr ""
+msgstr "Ficheiro de documento criado"
 
 #: events.py:25
 msgid "Document file deleted"
-msgstr ""
+msgstr "Arquivo de documento eliminado"
 
 #: events.py:28
 msgid "Document file downloaded"
-msgstr ""
+msgstr "Arquivo de documento descarregado."
 
 #: events.py:31
 msgid "Document file edited"
@@ -711,7 +712,7 @@ msgstr "Rótulo"
 #: models/document_file_page_models.py:45
 #: models/document_file_page_models.py:307 search.py:84
 msgid "Document file page"
-msgstr ""
+msgstr "Página do documento."
 
 #: models/document_file_page_models.py:261
 #, python-format

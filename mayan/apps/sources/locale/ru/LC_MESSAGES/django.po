@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-04 04:10+0000\n"
+"POT-Creation-Date: 2022-02-08 09:55+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -51,7 +51,7 @@ msgstr "Тип"
 msgid "Null backend"
 msgstr "Пустой бэкэнд"
 
-#: dependencies.py:11
+#: dependencies.py:12
 msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
@@ -182,7 +182,7 @@ msgstr "Обработать загрузку"
 msgid "Optional arguments for the action. Must be JSON formatted."
 msgstr ""
 
-#: serializers.py:51 source_backends/sane_scanner_backends.py:44
+#: serializers.py:51 source_backends/sane_scanner_backends.py:45
 msgid "Arguments"
 msgstr "Аргументы"
 
@@ -420,30 +420,30 @@ msgstr "Интервал в секундах между проверками н�
 msgid "Interval"
 msgstr "Интервал"
 
-#: source_backends/sane_scanner_backends.py:30
+#: source_backends/sane_scanner_backends.py:31
 msgid "Device name as returned by the SANE backend."
 msgstr "Имя устройства, возвращаемое бэкэндом SANE."
 
-#: source_backends/sane_scanner_backends.py:33
+#: source_backends/sane_scanner_backends.py:34
 msgid "Device name"
 msgstr "Имя устройства"
 
-#: source_backends/sane_scanner_backends.py:39
+#: source_backends/sane_scanner_backends.py:40
 msgid ""
 "YAML formatted arguments to pass to the `scanimage` command. The arguments "
 "will change depending on the device. Execute `scanimage --help --device-"
 "name=DEVICE` for the list of supported arguments."
 msgstr ""
 
-#: source_backends/sane_scanner_backends.py:48
+#: source_backends/sane_scanner_backends.py:49
 msgid "SANE Scanner"
 msgstr "Сканер SANE"
 
-#: source_backends/sane_scanner_backends.py:106
+#: source_backends/sane_scanner_backends.py:108
 msgid "Document properties"
 msgstr "Свойства документа"
 
-#: source_backends/sane_scanner_backends.py:107
+#: source_backends/sane_scanner_backends.py:109
 msgid "Scan"
 msgstr "Сканировать"
 

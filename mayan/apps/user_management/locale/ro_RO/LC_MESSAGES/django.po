@@ -6,16 +6,16 @@
 # Translators:
 # Roberto Rosario, 2021
 # Badea Gabriel <gcbadea@gmail.com>, 2021
-# Harald Ersch, 2021
 # Stefaniu Criste <gupi@hangar.ro>, 2021
+# Harald Ersch, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-04 04:10+0000\n"
+"POT-Creation-Date: 2022-02-08 09:55+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
+"Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,7 +74,7 @@ msgstr "Nume de utilizator"
 
 #: apps.py:123
 msgid "Last login"
-msgstr ""
+msgstr "Ultima logare"
 
 #: apps.py:147
 msgid "Has usable password?"
@@ -98,7 +98,7 @@ msgstr "Total grupuri"
 
 #: dashboards.py:5
 msgid "User dashboard"
-msgstr ""
+msgstr "Tabloul de bord utilizator"
 
 #: events.py:10
 msgid "Group created"
@@ -130,7 +130,7 @@ msgstr "Detalii utilizator"
 
 #: links.py:36
 msgid "Edit user details"
-msgstr ""
+msgstr "Editați detaliile utilizatorului"
 
 #: links.py:44 views.py:52
 msgid "Create new group"
@@ -203,18 +203,22 @@ msgstr "nume de utilizator"
 #: serializers.py:17
 msgid "URL of the API endpoint showing the list users of this group."
 msgstr ""
+"Adresa URL a punctului final API care arată lista de utilizatori ai acestui "
+"grup."
 
 #: serializers.py:48
 msgid "Primary key of the user to add to the group."
-msgstr ""
+msgstr "Cheia primară a utilizatorului de adăugat la grup."
 
 #: serializers.py:57
 msgid "Primary key of the user to remove from the group."
-msgstr ""
+msgstr "Cheia primară a utilizatorului de eliminat din grup."
 
 #: serializers.py:66
 msgid "URL of the API endpoint showing the list groups this user belongs to."
 msgstr ""
+"Adresa URL a punctului final API care arată lista grupurilor cărora le "
+"aparține acest utilizator."
 
 #: utils.py:6
 msgid "Anonymous"
@@ -231,42 +235,42 @@ msgstr "Editați detaliile utilizatorului curent"
 #: views.py:65
 #, python-format
 msgid "Error deleting group \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Eroare la ștergerea grupului „%(instance)s”; %(exception)s"
 
 #: views.py:72
 #, python-format
 msgid "Group \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Grupul „%(object)s” a fost șters cu succes."
 
 #: views.py:73
 #, python-format
 msgid "%(count)d group deleted successfully."
-msgstr ""
+msgstr " %(count)d grup a fost șters cu succes."
 
 #: views.py:74
 #, python-format
 msgid "%(count)d groups deleted successfully."
-msgstr ""
+msgstr "%(count)d grupuri au fost șterse cu succes."
 
 #: views.py:75
 #, python-format
 msgid "Delete group: %(object)s."
-msgstr ""
+msgstr "Ștergeți grupul: %(object)s."
 
 #: views.py:76
 #, python-format
 msgid "Delete the %(count)d selected group."
-msgstr ""
+msgstr "Ștergeți %(count)d grup selectat ."
 
 #: views.py:77
 #, python-format
 msgid "Delete the %(count)d selected groups."
-msgstr ""
+msgstr "Ștergeți %(count)d grupuri selectate."
 
 #: views.py:89
 #, python-format
 msgid "Details of group: %s"
-msgstr ""
+msgstr "Detalii grup: %s"
 
 #: views.py:105
 #, python-format
@@ -304,37 +308,37 @@ msgstr "Utilizatorii din grupul: %s"
 #: views.py:184
 #, python-format
 msgid "Error deleting user \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Eroare la ștergerea utilizatorului „%(instance)s”; %(exception)s"
 
 #: views.py:189
 #, python-format
 msgid "User \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Utilizatorul „%(object)s” a fost șters cu succes."
 
 #: views.py:190
 #, python-format
 msgid "%(count)d user deleted successfully."
-msgstr ""
+msgstr "%(count)d utilizator a fost șters cu succes."
 
 #: views.py:191
 #, python-format
 msgid "%(count)d users deleted successfully."
-msgstr ""
+msgstr "%(count)d utilizatori au fost șterși cu succes."
 
 #: views.py:192
 #, python-format
 msgid "Delete user: %(object)s."
-msgstr ""
+msgstr "Ștergeți utilizatorul: %(object)s."
 
 #: views.py:193
 #, python-format
 msgid "Delete the %(count)d selected user."
-msgstr ""
+msgstr "Ștergeți %(count)d utilizator selectat."
 
 #: views.py:194
 #, python-format
 msgid "Delete the %(count)d selected users."
-msgstr ""
+msgstr "Ștergeți %(count)d utilizatori  selectați."
 
 #: views.py:209
 #, python-format

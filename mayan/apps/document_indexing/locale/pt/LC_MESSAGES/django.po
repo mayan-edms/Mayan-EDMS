@@ -6,19 +6,19 @@
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2021
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
-# Márcia Ferreira, 2022
 # Roberto Rosario, 2022
 # Aline Freitas <aline@alinefreitas.com.br>, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-04 04:10+0000\n"
+"POT-Creation-Date: 2022-02-08 09:54+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -166,7 +166,7 @@ msgstr "Tempplate de índice"
 
 #: models.py:169
 msgid "Parent index template node of this node."
-msgstr ""
+msgstr "Modelo de nó de índice principal, deste nó."
 
 #: models.py:175
 msgid "Index"
@@ -175,6 +175,8 @@ msgstr "índice"
 #: models.py:179
 msgid "Enter a template to render. Use Django's default templating language."
 msgstr ""
+"Insira um modelo para a prestar. Utilize o modelo de linguagem pré-definido "
+"do Django."
 
 #: models.py:182
 msgid "Indexing expression"
@@ -204,7 +206,7 @@ msgstr "Nó de template de índice"
 
 #: models.py:203
 msgid "Index template nodes"
-msgstr ""
+msgstr "Modelos de nós de índice "
 
 #: models.py:207
 msgid "Root"
@@ -277,7 +279,7 @@ msgstr "Indexação"
 
 #: permissions.py:8
 msgid "View index instances"
-msgstr ""
+msgstr "Ver exemplos de índice. "
 
 #: permissions.py:11
 msgid "Create new index templates"
@@ -340,29 +342,37 @@ msgid ""
 "URL of the API endpoint showing the list document types associated with this"
 " index template."
 msgstr ""
+"URL do endpoint API que mostra a lista de tipos de documentos associados a "
+"este modelo de índice."
 
 #: serializers.py:207
 msgid "URL of the API endpoint to add document types to this index template."
 msgstr ""
+"URL do endpoint API a adicionar aos tipos de documento a este modelo de "
+"índice."
 
 #: serializers.py:214
 msgid ""
 "URL of the API endpoint to remove document types from this index template."
 msgstr ""
+"URL do endpoint API a remover dos tipos de documentos deste modelo de "
+"índice. "
 
 #: serializers.py:271
 msgid "Primary key of the document type to add to the index template."
-msgstr ""
+msgstr "Chave primário do tipo de documento a adicionar ao modelo de índice."
 
 #: serializers.py:280
 msgid "Primary key of the document type to remove from the index template."
-msgstr ""
+msgstr "Chave primária do tipo de documento a remover dest modelo de índice."
 
 #: views/index_instance_views.py:38
 msgid ""
 "This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
 msgstr ""
+"Isto pode significar que não há modelos de índice criados ou que existem mas"
+" não estão definidos corretamente."
 
 #: views/index_instance_views.py:42
 msgid "There are no index instances available."
@@ -424,10 +434,14 @@ msgid ""
 "template whose markers are replaced with direct properties of documents like"
 " label or description, or that of extended properties like metadata."
 msgstr ""
+"índices agrupam documentos automaticamente em níveis. Os índices são "
+"definidos usando modelos dos quais os marcadores são substituídos com "
+"propriedades diretas de documentos como o nome ou descrição, ou propriedades"
+" avançadas como metadata. "
 
 #: views/index_template_views.py:95
 msgid "There are no index templates."
-msgstr ""
+msgstr "Não existem modelos de índice."
 
 #: views/index_template_views.py:124
 #, python-format
@@ -480,30 +494,30 @@ msgstr "Excluir o nó de template de índice: %s?"
 #: views/index_template_views.py:261
 #, python-format
 msgid "Edit the index template node: %s"
-msgstr ""
+msgstr "Editar o nó do modelo de índice: %s"
 
 #: views/index_template_views.py:281
 #, python-format
 msgid "Rebuild index template: %s"
-msgstr ""
+msgstr "Reconstruir modelo de índice: %s"
 
 #: views/index_template_views.py:303
 msgid "Index template queued for rebuild."
-msgstr ""
+msgstr "Modelo de índice em linha para reconstrução. "
 
 #: views/index_template_views.py:326
 #, python-format
 msgid "%(count)d index template queued for rebuild."
 msgid_plural "%(count)d index templates queued for rebuild."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(count)d modelo de índice em linha para reconstrução "
+msgstr[1] "%(count)d modelos de índice em linha para reconstrução "
 
 #: views/index_template_views.py:359
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(count)d índice redefinido."
+msgstr[1] "%(count)d índices redefinidos."
 
 #: views/index_template_views.py:372
 msgid "Index templates for which their instances will be deleted."

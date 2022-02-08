@@ -7,14 +7,15 @@
 # Roberto Rosario, 2021
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-04 04:10+0000\n"
+"POT-Creation-Date: 2022-02-08 09:55+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -111,6 +112,7 @@ msgid ""
 "This view displays the error log of an object. An empty list is a good "
 "thing."
 msgstr ""
+"Esta vista mostra o erro log de um objeto. Uma lista vazia é algo bom."
 
 #: views.py:46
 msgid "There are no error log entries"
