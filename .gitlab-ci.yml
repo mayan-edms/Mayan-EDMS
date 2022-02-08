@@ -284,9 +284,7 @@ job_python_push_pypi:
     - . venv/bin/activate
     - pip install pip==$PYTHON_PIP_VERSION
     - DOCKER_VERSION=`cat docker/rootfs/version`
-    - pip install "mayan-edms<$DOCKER_VERSION"
-    - pip install --requirement requirements/build.txt --requirement requirements/testing-base.txt --requirement requirements/build.txt
-    - make python-wheel
+    - pip install "mayan-edms<${DOCKER_VERSION}"
   cache:
     paths:
       - ~/.cache/pip/
@@ -309,13 +307,14 @@ job_postgres_upgrade_test:
   <<: *job_base_upgrade_test
   script:
     - apt-get install --yes libpq-dev
-    - . venv/bin/activate
     - pip install psycopg2==$PYTHON_PSYCOPG2_VERSION
     - export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'postgres'}}"
-    - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
-    - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell --settings=mayan.settings.testing.gitlab-ci
+    - mayan-edms.py initialsetup --no-dependencies
+    - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell
+    - pip install --requirement requirements/build.txt --requirement requirements/testing-base.txt
+    - make python-wheel
     - pip install dist/mayan_edms-*.whl
-    - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
+    - mayan-edms.py performupgrade --no-dependencies
   services:
     - postgres:12.9-alpine
   tags:
@@ -328,11 +327,12 @@ job_postgres_upgrade_test:
 job_sqlite_upgrade_test:
   <<: *job_base_upgrade_test
   script:
-    - . venv/bin/activate
-    - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
-    - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell --settings=mayan.settings.testing.gitlab-ci
+    - mayan-edms.py initialsetup --no-dependencies
+    - echo "from mayan.apps.documents.models import DocumentType;from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH;DocumentType.objects.first().new_document(file_object=open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb'))" | mayan-edms.py shell
+    - pip install --requirement requirements/build.txt --requirement requirements/testing-base.txt
+    - make python-wheel
     - pip install dist/mayan_edms-*.whl
-    - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
+    - mayan-edms.py performupgrade --no-dependencies
 
 # Run the test suit
 
@@ -371,8 +371,8 @@ job_postgres_test:
     - . venv/bin/activate
     - pip install psycopg2==$PYTHON_PSYCOPG2_VERSION
     - export MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayanuserpass','USER':'mayan','HOST':'postgres'}}"
-    - make test-all SETTINGS=mayan.settings.testing.gitlab-ci
-    - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci
+    - make test-all SETTINGS=mayan.settings.integration.gitlab-ci
+    - make test-all-migrations SETTINGS=mayan.settings.integration.gitlab-ci
   services:
     - postgres:12.9-alpine
   tags:
@@ -386,8 +386,8 @@ job_sqlite_test:
   <<: *job_base_test
   script:
     - . venv/bin/activate
-    - make test-all SETTINGS=mayan.settings.testing.gitlab-ci
-    - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci
+    - make test-all SETTINGS=mayan.settings.integration.gitlab-ci
+    - make test-all-migrations SETTINGS=mayan.settings.integration.gitlab-ci
 
 # Deploy
 

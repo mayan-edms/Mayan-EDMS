@@ -47,6 +47,10 @@ Other
 - Remove superfluous apostrophe character in sort heading markup.
 - Expose the checkout datetime, expiration datetime and user fields via
   the REST API. Thanks to forum user @qra for the request.
+- Fix GitLab CI upgrade test stage.
+- Add integrations settings module.
+- Print configuration path value when failing to access error is raised.
+- Fix references to the ``SourceBackendSANEScanner`` source backend class.
 
 
 Removals

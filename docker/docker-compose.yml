@@ -31,6 +31,7 @@ services:
     <<: *mayan-container
     profiles:
       - all_in_one
+    # Disable ports if using Traefik.
     ports:
       - "80:8000"
 
@@ -134,6 +135,7 @@ services:
       - "traefik.http.routers.mayan_frontend_https.tls=true"
       - "traefik.http.routers.mayan_frontend_https.tls.certresolver=letsencrypt"
       - "traefik.http.services.mayan_frontend.loadbalancer.server.port=8000"
+    # Disable ports if using Traefik.
     ports:
       - "80:8000"
     profiles:
