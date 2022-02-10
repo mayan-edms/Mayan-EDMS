@@ -1,7 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.rest_api import serializers
-from mayan.apps.rest_api.serializer_mixins import CreateOnlyFieldSerializerMixin
 from mayan.apps.user_management.serializers import UserSerializer
 
 from ..models.favorite_document_models import FavoriteDocument
@@ -9,9 +8,7 @@ from ..models.favorite_document_models import FavoriteDocument
 from .document_serializers import DocumentSerializer
 
 
-class FavoriteDocumentSerializer(
-    CreateOnlyFieldSerializerMixin, serializers.HyperlinkedModelSerializer
-):
+class FavoriteDocumentSerializer(serializers.HyperlinkedModelSerializer):
     document = DocumentSerializer(read_only=True)
     document_id = serializers.IntegerField(
         help_text=_('Document ID for the new favorite document.'),
