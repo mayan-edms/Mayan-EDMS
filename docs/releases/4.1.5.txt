@@ -21,8 +21,8 @@ Sources
 ^^^^^^^
 
 Fixed email sources processing a single message but performing cleanup on
-multiple messages. The intended behavior is restore which processed one
-message and cleans up the processed message only.
+multiple messages. The intended behavior is restored which is to processed
+one message and clean up the processed message only.
 
 Context managers are now used for the IMAP and POP3 sources to perform
 automatic cleanup and remove the possibility of orphaned descriptors. This
