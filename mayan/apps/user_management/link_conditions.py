@@ -1,6 +1,10 @@
 def condition_user_is_not_super_user(context, resolved_object):
-    #TODO: Use a subclass test instead
-    if hasattr(resolved_object, 'is_staff'):
-        user = resolved_object
-        return not user.is_superuser and not user.is_staff
-    return True
+    return not condition_user_is_superuser(
+        context=context, resolved_object=resolved_object
+    )
+
+
+def condition_user_is_superuser(context, resolved_object):
+    is_staff = getattr(resolved_object, 'is_staff', False)
+    is_superuser = getattr(resolved_object, 'is_superuser', False)
+    return is_staff or is_superuser
