@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-05 10:35+0000\n"
+"POT-Creation-Date: 2022-02-11 08:39+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: trendspotter <jirka.p@volny.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: apps.py:34 apps.py:74 layers.py:15 permissions.py:5
 msgid "Redactions"
-msgstr ""
+msgstr "Redakce"
 
 #: dependencies.py:6
 msgid "JavaScript image cropper"
@@ -38,24 +38,24 @@ msgstr ""
 
 #: permissions.py:8
 msgid "Create new redactions"
-msgstr ""
+msgstr "Vytvoření nové redakce"
 
 #: permissions.py:11
 msgid "Delete redactions"
-msgstr ""
+msgstr "Smazat redakce"
 
 #: permissions.py:14
 msgid "Edit redactions"
-msgstr ""
+msgstr "Upravit redakce"
 
 #: permissions.py:17
 msgid "Exclude redactions"
-msgstr ""
+msgstr "Vyloučit redakce"
 
 #: permissions.py:20
 msgid "View existing redactions"
-msgstr ""
+msgstr "Zobrazit stávající úpravy"
 
 #: transformations.py:12
 msgid "Redaction"
-msgstr ""
+msgstr "Redakce"

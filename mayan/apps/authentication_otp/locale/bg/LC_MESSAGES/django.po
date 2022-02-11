@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-05 10:35+0000\n"
+"POT-Creation-Date: 2022-02-11 08:39+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -23,27 +23,27 @@ msgstr ""
 
 #: apps.py:23 events.py:6
 msgid "Authentication OTP"
-msgstr ""
+msgstr "OTP за удостоверяване"
 
 #: events.py:10
 msgid "OTP disabled"
-msgstr ""
+msgstr "OTP е деактивиран"
 
 #: events.py:13
 msgid "OTP enabled"
-msgstr ""
+msgstr "OTP е активиран"
 
 #: forms.py:20
 msgid "Token is either invalid or expired."
-msgstr ""
+msgstr "Маркерът е или невалиден, или изтекъл."
 
 #: forms.py:25
 msgid "TOTP token"
-msgstr ""
+msgstr "TOTP маркер"
 
 #: forms.py:84
 msgid "OTP enabled?"
-msgstr ""
+msgstr "Активиран ли е OTP?"
 
 #: forms.py:85
 msgid "Yes"
@@ -58,6 +58,8 @@ msgid ""
 "Scan the QR code or enter the secret in your authentication device. Do not "
 "share this secret, treat it like a password."
 msgstr ""
+"Сканирайте QR кода или въведете тайния код във вашето устройство за "
+"удостоверяване. Не споделяйте този таен код, третирайте го като парола."
 
 #: forms.py:104 forms.py:109
 msgid "Secret"
@@ -67,26 +69,28 @@ msgstr "Тайни"
 msgid ""
 "Enter the corresponding token to validate that the secret was saved correct."
 msgstr ""
+"Въведете съответния маркер, за да потвърдите, че тайният код е запазен "
+"правилно."
 
 #: forms.py:118
 msgid "Token"
-msgstr ""
+msgstr "Маркер"
 
 #: forms.py:152
 msgid "Token is incorrect for the specified secret."
-msgstr ""
+msgstr "Маркерът е неправилен за посоченият таен код."
 
 #: links.py:29
 msgid "OTP details"
-msgstr ""
+msgstr "Подробности за OTP"
 
 #: links.py:33
 msgid "Disable OTP"
-msgstr ""
+msgstr "Деактивирайте OTP"
 
 #: links.py:37
 msgid "Enable OTP"
-msgstr ""
+msgstr "Активирайте OTP"
 
 #: models.py:17
 msgid "User"
@@ -94,43 +98,43 @@ msgstr "Потребител"
 
 #: models.py:21
 msgid "16 character, base32 encoded random string."
-msgstr ""
+msgstr "16 знаков произволен низ, кодиран с base32."
 
 #: models.py:26
 msgid "User OTP data"
-msgstr ""
+msgstr "Потребителски OTP данни"
 
 #: models.py:27
 msgid "Users OTP data"
-msgstr ""
+msgstr "OTP данни на потребителите"
 
 #: views.py:28
 #, python-format
 msgid "One time pad details for user: %s"
-msgstr ""
+msgstr "Подробности за временната клавиатура за потребителя: %s"
 
 #: views.py:45
 #, python-format
 msgid "Disable one time pad for user: %s"
-msgstr ""
+msgstr "Деактивирайте временната клавиатура за потребител: %s"
 
 #: views.py:56
 msgid "OTP disable successfully."
-msgstr ""
+msgstr "OTP деактивиране успешно."
 
 #: views.py:78
 msgid "OTP is already enabled."
-msgstr ""
+msgstr "OTP вече е активиран."
 
 #: views.py:94
 msgid "OTP enabled successfully."
-msgstr ""
+msgstr "OTP е активиран успешно."
 
 #: views.py:103
 #, python-format
 msgid "Enable one time pad for user: %s"
-msgstr ""
+msgstr "Активиране на временната клавиатура за потребител: %s"
 
 #: views.py:115
 msgid "OTP secret validation error."
-msgstr ""
+msgstr "Грешка при валидиране на тайния код на OTP."

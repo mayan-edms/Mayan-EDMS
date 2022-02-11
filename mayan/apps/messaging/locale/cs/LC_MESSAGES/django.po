@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-05 10:35+0000\n"
+"POT-Creation-Date: 2022-02-11 08:39+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: trendspotter <jirka.p@volny.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -126,14 +126,14 @@ msgstr "Upravovat zprávy"
 msgid "View messages"
 msgstr "Zobrazit zprávy"
 
-#: serializers.py:22
+#: serializers.py:19
 msgid "Primary key of the recipient user of this message."
-msgstr ""
+msgstr "Primární klíč uživatele příjemce této zprávy."
 
 #: views.py:44
 #, python-format
 msgid "Error deleting message \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Chyba při mazání zprávy \"%(instance)s\"; %(exception)s"
 
 #: views.py:48
 #, python-format
@@ -168,7 +168,7 @@ msgstr ""
 #: views.py:92
 #, python-format
 msgid "Details of message: %s"
-msgstr ""
+msgstr "Podrobnosti zprávy: %s"
 
 #: views.py:115
 msgid "Here you will find text messages from other users or from the system."

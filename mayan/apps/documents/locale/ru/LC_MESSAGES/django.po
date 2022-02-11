@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-05 10:35+0000\n"
+"POT-Creation-Date: 2022-02-11 08:39+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -25,21 +25,21 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:215 apps.py:659 events.py:5 menus.py:8
+#: apps.py:215 apps.py:647 events.py:5 menus.py:8
 #: models/document_models.py:131 permissions.py:5 queues.py:21 settings.py:33
 #: statistics.py:230
 msgid "Documents"
 msgstr "Документы"
 
-#: apps.py:281
+#: apps.py:269
 msgid "Decorations"
 msgstr "Декорации"
 
-#: apps.py:300
+#: apps.py:288
 msgid "Create a document type"
 msgstr "Создать тип документа"
 
-#: apps.py:302
+#: apps.py:290
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
@@ -47,46 +47,46 @@ msgstr ""
 "Каждому загруженному документу должен быть присвоен тип документа. Это "
 "основной способ категоризации документов в Mayan EDMS."
 
-#: apps.py:403
+#: apps.py:391
 msgid "File comments"
 msgstr "Комментарии к файлу"
 
-#: apps.py:407
+#: apps.py:395
 msgid "File encodings"
 msgstr "Кодировки файла"
 
-#: apps.py:411
+#: apps.py:399
 msgid "File MIME types"
 msgstr "MIME типы файла"
 
-#: apps.py:415
+#: apps.py:403
 msgid "File timestamps"
 msgstr "Отметки времени файла"
 
-#: apps.py:420 links/document_file_page_links.py:79
+#: apps.py:408 links/document_file_page_links.py:79
 #: models/document_file_models.py:120 models/document_file_page_models.py:34
 #: search.py:52
 msgid "Document file"
 msgstr "Файл документа"
 
-#: apps.py:424 models/document_file_page_models.py:38
+#: apps.py:412 models/document_file_page_models.py:38
 #: models/document_version_page_models.py:50
 msgid "Page number"
 msgstr "Номер страницы"
 
-#: apps.py:429
+#: apps.py:417
 msgid "Return the latest file of the document."
 msgstr "Возвращает последний файл документа."
 
-#: apps.py:430
+#: apps.py:418
 msgid "Latest file"
 msgstr "Последний файл"
 
-#: apps.py:433
+#: apps.py:421
 msgid "Return the document instance."
 msgstr "Возвращает экземпляр документа."
 
-#: apps.py:434 links/document_file_links.py:63
+#: apps.py:422 links/document_file_links.py:63
 #: links/document_file_page_links.py:73 links/document_version_links.py:75
 #: links/document_version_page_links.py:102 models/document_file_models.py:76
 #: models/document_models.py:130 models/document_version_models.py:46
@@ -95,25 +95,25 @@ msgstr "Возвращает экземпляр документа."
 msgid "Document"
 msgstr "Документ"
 
-#: apps.py:564 apps.py:616 apps.py:645 apps.py:679 apps.py:704
+#: apps.py:552 apps.py:604 apps.py:633 apps.py:667 apps.py:692
 msgid "Thumbnail"
 msgstr "Миниатюра"
 
-#: apps.py:570
+#: apps.py:558
 msgid "Type"
 msgstr "Тип"
 
-#: apps.py:574 apps.py:621 apps.py:684 forms/document_file_forms.py:71
+#: apps.py:562 apps.py:609 apps.py:672 forms/document_file_forms.py:71
 #: links/document_file_page_links.py:122
 #: links/document_version_page_links.py:52
 msgid "Pages"
 msgstr "Страницы"
 
-#: apps.py:583 models/favorite_document_models.py:34
+#: apps.py:571 models/favorite_document_models.py:34
 msgid "Date and time added"
 msgstr "Дата и время добавления"
 
-#: apps.py:594
+#: apps.py:582
 msgid "Access date and time"
 msgstr "Дата и время доступа"
 
@@ -1138,11 +1138,11 @@ msgstr "MIME тип файла документа"
 msgid "Document version comment"
 msgstr "Комментарий к версии документа"
 
-#: serializers/document_file_serializers.py:97
+#: serializers/document_file_serializers.py:94
 msgid "Binary content for the new file."
 msgstr "Двоичное содержимое для нового файла."
 
-#: serializers/document_serializers.py:22
+#: serializers/document_serializers.py:19
 msgid "Document type ID for the new document."
 msgstr "Идентификатор типа документа для нового документа."
 
@@ -1150,7 +1150,7 @@ msgstr "Идентификатор типа документа для новог
 msgid "Content type ID of the source object for the page."
 msgstr "Идентификатор типа контента исходного объекта для страницы."
 
-#: serializers/favorite_document_serializers.py:17
+#: serializers/favorite_document_serializers.py:14
 msgid "Document ID for the new favorite document."
 msgstr "Идентификатор документа для нового избранного документа."
 

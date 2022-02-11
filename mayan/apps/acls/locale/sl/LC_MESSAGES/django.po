@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-05 10:35+0000\n"
+"POT-Creation-Date: 2022-02-11 08:39+0000\n"
 "PO-Revision-Date: 2022-02-03 10:11+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
@@ -106,11 +106,11 @@ msgstr "Uredi dostopne pravice"
 msgid "View ACLs"
 msgstr "Preglej dostopne pravice"
 
-#: serializers.py:119
+#: serializers.py:116
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
 
-#: serializers.py:126
+#: serializers.py:123
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
 

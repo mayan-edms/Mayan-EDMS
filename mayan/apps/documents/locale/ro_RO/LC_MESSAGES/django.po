@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-05 10:35+0000\n"
+"POT-Creation-Date: 2022-02-11 08:39+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -23,21 +23,21 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:215 apps.py:659 events.py:5 menus.py:8
+#: apps.py:215 apps.py:647 events.py:5 menus.py:8
 #: models/document_models.py:131 permissions.py:5 queues.py:21 settings.py:33
 #: statistics.py:230
 msgid "Documents"
 msgstr "Documente"
 
-#: apps.py:281
+#: apps.py:269
 msgid "Decorations"
 msgstr "Decorațiuni"
 
-#: apps.py:300
+#: apps.py:288
 msgid "Create a document type"
 msgstr "Creați un tip de document"
 
-#: apps.py:302
+#: apps.py:290
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
@@ -45,46 +45,46 @@ msgstr ""
 "Fiecare document încărcat trebuie să fie atribuit unui tip de document, "
 "acesta este modul de bază în care Mayan EDMS categorizează documente."
 
-#: apps.py:403
+#: apps.py:391
 msgid "File comments"
 msgstr "Comentarii despre fișier"
 
-#: apps.py:407
+#: apps.py:395
 msgid "File encodings"
 msgstr "Codificări de fișiere"
 
-#: apps.py:411
+#: apps.py:399
 msgid "File MIME types"
 msgstr "Tipuri MIME de fișiere"
 
-#: apps.py:415
+#: apps.py:403
 msgid "File timestamps"
 msgstr "Marcaje temporale pentru fișiere "
 
-#: apps.py:420 links/document_file_page_links.py:79
+#: apps.py:408 links/document_file_page_links.py:79
 #: models/document_file_models.py:120 models/document_file_page_models.py:34
 #: search.py:52
 msgid "Document file"
 msgstr "Fișier document"
 
-#: apps.py:424 models/document_file_page_models.py:38
+#: apps.py:412 models/document_file_page_models.py:38
 #: models/document_version_page_models.py:50
 msgid "Page number"
 msgstr "Numărul paginii"
 
-#: apps.py:429
+#: apps.py:417
 msgid "Return the latest file of the document."
 msgstr "Returnează cel mai recent fișier al documentului."
 
-#: apps.py:430
+#: apps.py:418
 msgid "Latest file"
 msgstr "Cel mai recent fișier"
 
-#: apps.py:433
+#: apps.py:421
 msgid "Return the document instance."
 msgstr "Întoarce instanța documentului."
 
-#: apps.py:434 links/document_file_links.py:63
+#: apps.py:422 links/document_file_links.py:63
 #: links/document_file_page_links.py:73 links/document_version_links.py:75
 #: links/document_version_page_links.py:102 models/document_file_models.py:76
 #: models/document_models.py:130 models/document_version_models.py:46
@@ -93,25 +93,25 @@ msgstr "Întoarce instanța documentului."
 msgid "Document"
 msgstr "Document"
 
-#: apps.py:564 apps.py:616 apps.py:645 apps.py:679 apps.py:704
+#: apps.py:552 apps.py:604 apps.py:633 apps.py:667 apps.py:692
 msgid "Thumbnail"
 msgstr "Miniatură"
 
-#: apps.py:570
+#: apps.py:558
 msgid "Type"
 msgstr "Tip"
 
-#: apps.py:574 apps.py:621 apps.py:684 forms/document_file_forms.py:71
+#: apps.py:562 apps.py:609 apps.py:672 forms/document_file_forms.py:71
 #: links/document_file_page_links.py:122
 #: links/document_version_page_links.py:52
 msgid "Pages"
 msgstr "Pagini"
 
-#: apps.py:583 models/favorite_document_models.py:34
+#: apps.py:571 models/favorite_document_models.py:34
 msgid "Date and time added"
 msgstr "Data și ora adăugate"
 
-#: apps.py:594
+#: apps.py:582
 msgid "Access date and time"
 msgstr "Data și ora accesului"
 
@@ -1140,11 +1140,11 @@ msgstr "Tipul MIME al fișierului document"
 msgid "Document version comment"
 msgstr "Comentariu la versiunea documentului"
 
-#: serializers/document_file_serializers.py:97
+#: serializers/document_file_serializers.py:94
 msgid "Binary content for the new file."
 msgstr "Conținut binar pentru noul fișier."
 
-#: serializers/document_serializers.py:22
+#: serializers/document_serializers.py:19
 msgid "Document type ID for the new document."
 msgstr "ID tip document pentru noul document."
 
@@ -1152,7 +1152,7 @@ msgstr "ID tip document pentru noul document."
 msgid "Content type ID of the source object for the page."
 msgstr "ID-ul tipului de conținut al obiectului sursă pentru pagină."
 
-#: serializers/favorite_document_serializers.py:17
+#: serializers/favorite_document_serializers.py:14
 msgid "Document ID for the new favorite document."
 msgstr "ID document pentru noul document preferat."
 

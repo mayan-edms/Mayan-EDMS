@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-05 10:35+0000\n"
+"POT-Creation-Date: 2022-02-11 08:39+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: trendspotter <jirka.p@volny.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -28,7 +28,7 @@ msgstr "Úložiště"
 
 #: apps.py:56
 msgid "Source object"
-msgstr ""
+msgstr "Zdrojový objekt"
 
 #: classes.py:86 classes.py:107
 #, python-format
@@ -134,11 +134,11 @@ msgstr "Odstraňte zastaralá nahrávání"
 
 #: queues.py:26
 msgid "Delete stale download files"
-msgstr ""
+msgstr "Odstranění neaktuálních souborů ke stažení"
 
 #: settings.py:19
 msgid "Time in seconds, after which download files will be deleted."
-msgstr ""
+msgstr "Doba v sekundách, po které budou stažené soubory odstraněny."
 
 #: settings.py:25
 msgid ""
@@ -162,7 +162,7 @@ msgstr ""
 
 #: settings.py:53
 msgid "Time in seconds, after which temporary uploaded files will be deleted."
-msgstr ""
+msgstr "Doba v sekundách, po které budou dočasně nahrané soubory odstraněny."
 
 #: storages.py:15
 msgid ""
@@ -192,7 +192,7 @@ msgstr ""
 
 #: views.py:59
 msgid "There are no files to download."
-msgstr ""
+msgstr "Nejsou zde žádné soubory ke stažení."
 
 #: views.py:60
 msgid "Downloads"

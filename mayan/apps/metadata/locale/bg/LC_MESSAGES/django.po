@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-05 10:35+0000\n"
+"POT-Creation-Date: 2022-02-11 08:39+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -379,15 +379,15 @@ msgstr "Тип на метаданните на документа"
 msgid "Document metadata value"
 msgstr "Стойност на метаданните на документа"
 
-#: serializers.py:48
+#: serializers.py:47
 msgid "Primary key of the metadata type to be added."
 msgstr "Основен ключ на типа метаданни, които трябва да се добавят."
 
-#: serializers.py:49
+#: serializers.py:48
 msgid "Metadata type ID"
 msgstr "Идент. № на типа метаданни"
 
-#: serializers.py:94
+#: serializers.py:93
 msgid "Primary key of the metadata type to be added to the document."
 msgstr ""
 "Основен ключ на типа метаданни, които трябва да се добавят към документа."

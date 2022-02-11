@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-05 10:35+0000\n"
+"POT-Creation-Date: 2022-02-11 08:39+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -510,15 +510,16 @@ msgstr "Шаблонът на индекса е на опашка за възс�
 #, python-format
 msgid "%(count)d index template queued for rebuild."
 msgid_plural "%(count)d index templates queued for rebuild."
-msgstr[0] ""
+msgstr[0] "%(count)d индексен шаблон е на опашка за повторно изграждане."
 msgstr[1] ""
+"%(count)d индексни шаблони, поставени на опашка за повторно изграждане."
 
 #: views/index_template_views.py:359
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(count)d нулиране на индекса."
+msgstr[1] "%(count)d нулиране на индексите."
 
 #: views/index_template_views.py:372
 msgid "Index templates for which their instances will be deleted."

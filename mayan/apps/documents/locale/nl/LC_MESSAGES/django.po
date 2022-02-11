@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-05 10:35+0000\n"
+"POT-Creation-Date: 2022-02-11 08:39+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -21,21 +21,21 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:215 apps.py:659 events.py:5 menus.py:8
+#: apps.py:215 apps.py:647 events.py:5 menus.py:8
 #: models/document_models.py:131 permissions.py:5 queues.py:21 settings.py:33
 #: statistics.py:230
 msgid "Documents"
 msgstr "Documenten"
 
-#: apps.py:281
+#: apps.py:269
 msgid "Decorations"
 msgstr ""
 
-#: apps.py:300
+#: apps.py:288
 msgid "Create a document type"
 msgstr "Een documenttype aanmaken"
 
-#: apps.py:302
+#: apps.py:290
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
@@ -43,46 +43,46 @@ msgstr ""
 "Ieder geüpload document krijgt een documenttype toegewezen, dit is de manier"
 " waarop MAYAN EDMS documenten indeelt."
 
-#: apps.py:403
+#: apps.py:391
 msgid "File comments"
 msgstr ""
 
-#: apps.py:407
+#: apps.py:395
 msgid "File encodings"
 msgstr ""
 
-#: apps.py:411
+#: apps.py:399
 msgid "File MIME types"
 msgstr ""
 
-#: apps.py:415
+#: apps.py:403
 msgid "File timestamps"
 msgstr ""
 
-#: apps.py:420 links/document_file_page_links.py:79
+#: apps.py:408 links/document_file_page_links.py:79
 #: models/document_file_models.py:120 models/document_file_page_models.py:34
 #: search.py:52
 msgid "Document file"
 msgstr ""
 
-#: apps.py:424 models/document_file_page_models.py:38
+#: apps.py:412 models/document_file_page_models.py:38
 #: models/document_version_page_models.py:50
 msgid "Page number"
 msgstr "Paginanummer"
 
-#: apps.py:429
+#: apps.py:417
 msgid "Return the latest file of the document."
 msgstr ""
 
-#: apps.py:430
+#: apps.py:418
 msgid "Latest file"
 msgstr ""
 
-#: apps.py:433
+#: apps.py:421
 msgid "Return the document instance."
 msgstr ""
 
-#: apps.py:434 links/document_file_links.py:63
+#: apps.py:422 links/document_file_links.py:63
 #: links/document_file_page_links.py:73 links/document_version_links.py:75
 #: links/document_version_page_links.py:102 models/document_file_models.py:76
 #: models/document_models.py:130 models/document_version_models.py:46
@@ -91,25 +91,25 @@ msgstr ""
 msgid "Document"
 msgstr "Document"
 
-#: apps.py:564 apps.py:616 apps.py:645 apps.py:679 apps.py:704
+#: apps.py:552 apps.py:604 apps.py:633 apps.py:667 apps.py:692
 msgid "Thumbnail"
 msgstr "Thumbnail"
 
-#: apps.py:570
+#: apps.py:558
 msgid "Type"
 msgstr "Type"
 
-#: apps.py:574 apps.py:621 apps.py:684 forms/document_file_forms.py:71
+#: apps.py:562 apps.py:609 apps.py:672 forms/document_file_forms.py:71
 #: links/document_file_page_links.py:122
 #: links/document_version_page_links.py:52
 msgid "Pages"
 msgstr "Pagina's"
 
-#: apps.py:583 models/favorite_document_models.py:34
+#: apps.py:571 models/favorite_document_models.py:34
 msgid "Date and time added"
 msgstr ""
 
-#: apps.py:594
+#: apps.py:582
 msgid "Access date and time"
 msgstr ""
 
@@ -1117,11 +1117,11 @@ msgstr ""
 msgid "Document version comment"
 msgstr ""
 
-#: serializers/document_file_serializers.py:97
+#: serializers/document_file_serializers.py:94
 msgid "Binary content for the new file."
 msgstr ""
 
-#: serializers/document_serializers.py:22
+#: serializers/document_serializers.py:19
 msgid "Document type ID for the new document."
 msgstr ""
 
@@ -1129,7 +1129,7 @@ msgstr ""
 msgid "Content type ID of the source object for the page."
 msgstr ""
 
-#: serializers/favorite_document_serializers.py:17
+#: serializers/favorite_document_serializers.py:14
 msgid "Document ID for the new favorite document."
 msgstr ""
 

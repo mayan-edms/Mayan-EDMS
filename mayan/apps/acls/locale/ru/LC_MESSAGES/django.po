@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-05 10:35+0000\n"
+"POT-Creation-Date: 2022-02-11 08:39+0000\n"
 "PO-Revision-Date: 2022-02-03 10:11+0000\n"
 "Last-Translator: Panasoft, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -112,11 +112,11 @@ msgstr "Редактировать списки контроля доступа"
 msgid "View ACLs"
 msgstr "Просмотр списков контроля доступа"
 
-#: serializers.py:119
+#: serializers.py:116
 msgid "Primary key of the permission to add to the ACL."
 msgstr "Первичный ключ разрешения для добавления в список контроля доступа."
 
-#: serializers.py:126
+#: serializers.py:123
 msgid "Primary key of the permission to remove from the ACL."
 msgstr "Первичный ключ разрешения для удаления из списка контроля доступа."
 

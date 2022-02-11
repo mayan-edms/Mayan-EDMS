@@ -11,19 +11,19 @@
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2022
 # Aline Freitas <aline@alinefreitas.com.br>, 2022
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2022
-# Márcia Ferreira, 2022
 # Vítor Figueiró <vfigueiro@gmail.com>, 2022
 # Roberto Rosario, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-05 10:35+0000\n"
+"POT-Creation-Date: 2022-02-11 08:39+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -614,19 +614,19 @@ msgstr "Workflows do documento"
 
 #: permissions.py:10
 msgid "Create workflow templates"
-msgstr ""
+msgstr "Criar modelo de workflow"
 
 #: permissions.py:13
 msgid "Delete workflow templates"
-msgstr ""
+msgstr "Eliminar modelos de workflow"
 
 #: permissions.py:16
 msgid "Edit workflow templates"
-msgstr ""
+msgstr "Editar modelos de workflow"
 
 #: permissions.py:19
 msgid "View workflow templates"
-msgstr ""
+msgstr "Ver modelos de workflow"
 
 #: permissions.py:25
 msgid "Transition workflow instances"
@@ -638,7 +638,7 @@ msgstr "Executar ferramentas de workflow"
 
 #: queues.py:8
 msgid "Document states medium"
-msgstr ""
+msgstr "Estados médios de documento"
 
 #: queues.py:13
 msgid "Launch a workflow for a document"
@@ -658,7 +658,7 @@ msgstr "Implantar um workflow"
 
 #: search.py:12 search.py:19 search.py:26 search.py:33 search.py:40
 msgid "Document workflow transition comment"
-msgstr ""
+msgstr "Comentário de transição do documento de workflow"
 
 #: serializers.py:29
 msgid "Primary key of the workflow template to launch."
@@ -666,11 +666,11 @@ msgstr ""
 
 #: serializers.py:89
 msgid "Primary key of the document type to add to the workflow."
-msgstr ""
+msgstr "Chave-primária do tipo de documento a adicionar ao workflow."
 
 #: serializers.py:98
 msgid "Primary key of the document type to remove from the workflow."
-msgstr ""
+msgstr "Chave-primária do tipo de documento a remover do workflow."
 
 #: serializers.py:263
 msgid "Primary key of the destination state to be added."
@@ -1208,7 +1208,7 @@ msgstr "URL"
 
 #: workflow_actions.py:140
 msgid "The URL to access."
-msgstr ""
+msgstr "O URL de acesso."
 
 #: workflow_actions.py:149
 msgid "Timeout"

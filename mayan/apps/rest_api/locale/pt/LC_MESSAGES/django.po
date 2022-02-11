@@ -7,14 +7,15 @@
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-05 10:35+0000\n"
+"POT-Creation-Date: 2022-02-11 08:39+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
-"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -41,17 +42,17 @@ msgstr "Documentação da API (ReDoc)"
 
 #: relations.py:84
 msgid "This field is required."
-msgstr ""
+msgstr " Este campo é obrigatório."
 
 #: relations.py:85
 #, python-brace-format
 msgid "Invalid pk \"{pk_value}\" - object does not exist."
-msgstr ""
+msgstr "pk Inválido \"{pk_value}\" - objeto não existe"
 
 #: relations.py:86
 #, python-brace-format
 msgid "Incorrect type. Expected pk value, received {data_type}."
-msgstr ""
+msgstr "Tipo incorreto. Valor pk esperado recebido {data_type}."
 
 #: schemas.py:11
 #, python-format
@@ -64,8 +65,8 @@ msgstr "Desabilitar os links de API Rest no menu de ferramentas."
 
 #: settings.py:23
 msgid "The maximum page size that can be requested."
-msgstr ""
+msgstr "O tamanho máximo da página que pode ser pedido. "
 
 #: settings.py:29
 msgid "The default page size if none is specified."
-msgstr ""
+msgstr "O tamanho de página pré-definido se nenhum for especificado. "

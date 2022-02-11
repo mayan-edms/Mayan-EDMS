@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-05 10:35+0000\n"
+"POT-Creation-Date: 2022-02-11 08:39+0000\n"
 "PO-Revision-Date: 2022-02-03 10:11+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -84,7 +84,7 @@ msgstr "Темата е редактирана"
 
 #: events.py:14
 msgid "User theme edited"
-msgstr ""
+msgstr "Потребителската тема е редактирана"
 
 #: links.py:18
 msgid "Theme settings"
@@ -474,9 +474,9 @@ msgstr "Няма теми"
 #: views.py:113
 #, python-format
 msgid "Theme settings for user: %s"
-msgstr ""
+msgstr "Настройки на темата за потребителя: %s"
 
 #: views.py:134
 #, python-format
 msgid "Edit theme settings for user: %s"
-msgstr ""
+msgstr "Редактиране на настройките на потребителската тема: %s"
