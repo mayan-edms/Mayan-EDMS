@@ -6,15 +6,15 @@
 # Translators:
 # Jiri Fait <fait@orkasolutions.cz>, 2021
 # Michal Švábík <snadno@lehce.cz>, 2021
-# trendspotter <jirka.p@volny.cz>, 2021
+# trendspotter <jirka.p@volny.cz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-04 04:10+0000\n"
+"POT-Creation-Date: 2022-02-11 06:23+0000\n"
 "PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +28,7 @@ msgstr "Úložiště"
 
 #: apps.py:56
 msgid "Source object"
-msgstr ""
+msgstr "Zdrojový objekt"
 
 #: classes.py:86 classes.py:107
 #, python-format
@@ -134,7 +134,7 @@ msgstr "Odstraňte zastaralá nahrávání"
 
 #: queues.py:26
 msgid "Delete stale download files"
-msgstr ""
+msgstr "Odstranění neaktuálních souborů ke stažení"
 
 #: settings.py:17
 msgid ""
@@ -184,7 +184,7 @@ msgstr ""
 
 #: views.py:59
 msgid "There are no files to download."
-msgstr ""
+msgstr "Nejsou zde žádné soubory ke stažení."
 
 #: views.py:60
 msgid "Downloads"

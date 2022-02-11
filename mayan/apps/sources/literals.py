@@ -2,9 +2,10 @@ import os
 
 from django.conf import settings
 
+DEFAULT_BINARY_SCANIMAGE_PATH = '/usr/bin/scanimage'
 DEFAULT_SOURCES_BACKEND_ARGUMENTS = {
-    'mayan.apps.sources.source_backends.SourceBackendSaneScanner': {
-        'scanimage_path': '/usr/bin/scanimage'
+    'mayan.apps.sources.source_backends.SourceBackendSANEScanner': {
+        'scanimage_path': DEFAULT_BINARY_SCANIMAGE_PATH
     }
 }
 DEFAULT_SOURCES_CACHE_STORAGE_BACKEND = 'django.core.files.storage.FileSystemStorage'

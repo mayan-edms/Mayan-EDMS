@@ -21,8 +21,8 @@ Sources
 ^^^^^^^
 
 Fixed email sources processing a single message but performing cleanup on
-multiple messages. The intended behavior is restore which processed one
-message and cleans up the processed message only.
+multiple messages. The intended behavior is restored which is to processed
+one message and clean up the processed message only.
 
 Context managers are now used for the IMAP and POP3 sources to perform
 automatic cleanup and remove the possibility of orphaned descriptors. This
@@ -45,6 +45,12 @@ Other
 - Fix CAA document links. Closes GitLab issue #1068. Thanks to
   Matthias Löblich (@startmat) for the report.
 - Remove superfluous apostrophe character in sort heading markup.
+- Expose the checkout datetime, expiration datetime and user fields via
+  the REST API. Thanks to forum user @qra for the request.
+- Fix GitLab CI upgrade test stage.
+- Add integrations settings module.
+- Print configuration path value when failing to access error is raised.
+- Fix references to the ``SourceBackendSANEScanner`` source backend class.
 
 
 Removals

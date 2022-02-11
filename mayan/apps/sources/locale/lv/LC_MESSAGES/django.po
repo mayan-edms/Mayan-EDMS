@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-04 04:10+0000\n"
+"POT-Creation-Date: 2022-02-11 06:23+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -44,7 +44,7 @@ msgstr "Tips"
 msgid "Null backend"
 msgstr ""
 
-#: dependencies.py:11
+#: dependencies.py:12
 msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
@@ -171,7 +171,7 @@ msgstr ""
 msgid "Optional arguments for the action. Must be JSON formatted."
 msgstr ""
 
-#: serializers.py:51 source_backends/sane_scanner_backends.py:44
+#: serializers.py:51 source_backends/sane_scanner_backends.py:45
 msgid "Arguments"
 msgstr "Argumenti"
 
@@ -390,30 +390,30 @@ msgstr ""
 msgid "Interval"
 msgstr ""
 
-#: source_backends/sane_scanner_backends.py:30
+#: source_backends/sane_scanner_backends.py:31
 msgid "Device name as returned by the SANE backend."
 msgstr ""
 
-#: source_backends/sane_scanner_backends.py:33
+#: source_backends/sane_scanner_backends.py:34
 msgid "Device name"
 msgstr ""
 
-#: source_backends/sane_scanner_backends.py:39
+#: source_backends/sane_scanner_backends.py:40
 msgid ""
 "YAML formatted arguments to pass to the `scanimage` command. The arguments "
 "will change depending on the device. Execute `scanimage --help --device-"
 "name=DEVICE` for the list of supported arguments."
 msgstr ""
 
-#: source_backends/sane_scanner_backends.py:48
+#: source_backends/sane_scanner_backends.py:49
 msgid "SANE Scanner"
 msgstr ""
 
-#: source_backends/sane_scanner_backends.py:106
+#: source_backends/sane_scanner_backends.py:108
 msgid "Document properties"
 msgstr ""
 
-#: source_backends/sane_scanner_backends.py:107
+#: source_backends/sane_scanner_backends.py:109
 msgid "Scan"
 msgstr ""
 
