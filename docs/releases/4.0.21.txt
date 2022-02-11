@@ -1,0 +1,97 @@
+Version 4.0.21
+==============
+
+Released: November 29, 2021
+
+Status: Maintenance
+
+Changes
+--------
+
+This release consists mostly of fixes and improvements backported from
+version 4.1.
+
+
+Converter
+^^^^^^^^^
+
+The transformation ``cache_hash`` method was split into two functions to
+allow sub classes to modify how the cache hash is calculated.
+
+Added asset image cache invalidation. Changing the asset image of an existing
+decoration will now invalidate the page image cache so that the new image
+is used.
+
+An a asset duplication issue was fixed.
+
+The asset percentage position calculation was also fixed.
+
+
+Docker
+^^^^^^
+
+A standalone Celery beat container was added to the default Docker Compose
+file.
+
+
+Lock manager
+^^^^^^^^^^^^
+
+Improvements to the lock manager test cases were merged.
+
+
+Testing
+^^^^^^^
+
+Test models now perform more strict cleanup. The test model app config cache
+is cleaned after the test unit ends. All test models instances are deleted
+before deleting the actual test models.
+
+
+Other
+^^^^^
+
+- Add an explicit default value for ``MEDIA_URL``. Ensures forward
+  compatibility with future login dependency versions.
+- Move meta tags to their own partial template.
+- Add libjpeg and libpng to the dev setup target.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+If you observe the errors:
+
+- ``mayan.apps.file_caching.models.CachePartitionFile.DoesNotExist: CachePartitionFile matching query does not exist.``
+
+or:
+
+- ``FileNotFoundError: [Errno 2] No such file or directory: '/var/lib/mayan/document_file_storage/...``
+
+follow the solution outlined in the troubleshooting section: :ref:`troubleshooting-version-4.0`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- None
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

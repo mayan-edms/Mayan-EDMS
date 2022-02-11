@@ -10,14 +10,15 @@
 # Berny <berny@bernhard-marx.de>, 2021
 # Jesaja Everling <jeverling@gmail.com>, 2021
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2021
+# Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2021\n"
+"Last-Translator: Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -325,15 +326,15 @@ msgstr ""
 msgid "Document metadata value"
 msgstr ""
 
-#: serializers.py:47
+#: serializers.py:48
 msgid "Primary key of the metadata type to be added."
 msgstr "Primärschlüssel des hinzuzufügenden Metadatentyps."
 
-#: serializers.py:48
+#: serializers.py:49
 msgid "Metadata type ID"
 msgstr ""
 
-#: serializers.py:93
+#: serializers.py:94
 msgid "Primary key of the metadata type to be added to the document."
 msgstr "Primärschlüssel des zum Dokument hinzuzufügenden Metadatentyps."
 
@@ -498,22 +499,22 @@ msgstr ""
 #: views/metadata_type_views.py:52
 #, python-format
 msgid "Metadata type \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Metadatentyp \"%(object)s\" erfolgreich gelöscht."
 
 #: views/metadata_type_views.py:55
 #, python-format
 msgid "%(count)d metadata type deleted successfully."
-msgstr ""
+msgstr "%(count)d Metadatentyp erfolgreich gelöscht."
 
 #: views/metadata_type_views.py:58
 #, python-format
 msgid "%(count)d metadata types deleted successfully."
-msgstr ""
+msgstr "%(count)d Metadatentypen erfolgreich gelöscht."
 
 #: views/metadata_type_views.py:60
 #, python-format
 msgid "Delete metadata type: %(object)s."
-msgstr ""
+msgstr "Lösche Metadatentyp: %(object)s."
 
 #: views/metadata_type_views.py:61
 #, python-format
@@ -596,7 +597,7 @@ msgstr ""
 #, python-format
 msgid ""
 "Unable to edit metadata type \"%(metadata_type)s\" from document: "
-"%(document)s. Document does not have the metadata type to be edit. "
+"%(document)s. Document does not have the metadata type to be edited. "
 "Exception: %(exception)s"
 msgstr ""
 

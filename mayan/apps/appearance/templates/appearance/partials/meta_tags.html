@@ -1,0 +1,12 @@
+{% load i18n %}
+
+{% load common_tags %}
+
+<meta charset="utf-8"/>
+<meta content="{% common_project_information '__author__' %}" name="author" />
+<meta content="{% common_project_information '__copyright__' %}" name="copyright" />
+<meta content="{% common_project_information '__description__' as project_description %}{% trans project_description %}" name="description" >
+<meta content="{% common_project_information '__title__' %}" name="title" />
+<meta content="width=device-width, initial-scale=1, maximum-scale=5" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />

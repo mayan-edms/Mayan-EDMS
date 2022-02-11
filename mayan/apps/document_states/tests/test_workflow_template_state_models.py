@@ -17,13 +17,15 @@ class WorkflowTemplateStateActionModelTestCase(
     WorkflowTemplateStateActionTestMixin, WorkflowTemplateTestMixin,
     GenericDocumentTestCase
 ):
+    auto_upload_test_document = False
+
     def setUp(self):
         super().setUp()
-        self._create_test_workflow_template()
+        self._create_test_document_stub()
+        self._create_test_workflow_template(add_test_document_type=True)
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_transition()
-        self.test_workflow_template.document_types.add(self.test_document_type)
 
     def _get_test_workflow_state_action_execute_flag(self):
         return getattr(

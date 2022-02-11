@@ -4,18 +4,22 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
 # Vítor Figueiró <vfigueiro@gmail.com>, 2021
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
 # Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021
+# Márcia Ferreira, 2022
+# Roberto Rosario, 2022
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
+# Aline Freitas <aline@alinefreitas.com.br>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021\n"
+"Last-Translator: Aline Freitas <aline@alinefreitas.com.br>, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +33,7 @@ msgstr "Assinaturas do documento"
 
 #: apps.py:112
 msgid "Date and time"
-msgstr ""
+msgstr "Data e Hora"
 
 #: apps.py:116 models.py:56
 msgid "Key ID"
@@ -41,7 +45,7 @@ msgstr "Nenhum"
 
 #: apps.py:121 forms.py:60 models.py:61
 msgid "Signature ID"
-msgstr ""
+msgstr "ID de assinatura"
 
 #: apps.py:126
 msgid "Type"
@@ -65,7 +69,7 @@ msgstr ""
 
 #: forms.py:17 forms.py:31 workflow_actions.py:19
 msgid "Key"
-msgstr ""
+msgstr "Chave"
 
 #: forms.py:22 serializers.py:66 workflow_actions.py:30
 msgid ""
@@ -75,7 +79,7 @@ msgstr ""
 
 #: forms.py:24 workflow_actions.py:27
 msgid "Passphrase"
-msgstr ""
+msgstr "Senha"
 
 #: forms.py:33
 msgid "Private key that will be used to sign this document file."
@@ -83,47 +87,47 @@ msgstr ""
 
 #: forms.py:44
 msgid "Signature is embedded?"
-msgstr ""
+msgstr "Assinatura integrada?"
 
 #: forms.py:46
 msgid "Signature date"
-msgstr ""
+msgstr "Data de assinatura"
 
 #: forms.py:49
 msgid "Signature key ID"
-msgstr ""
+msgstr "ID da chave da assinatura"
 
 #: forms.py:51
 msgid "Signature key present?"
-msgstr ""
+msgstr "Chave da assinatura presente?"
 
 #: forms.py:62
 msgid "Key fingerprint"
-msgstr ""
+msgstr "Key fingerprint"
 
 #: forms.py:66
 msgid "Key creation date"
-msgstr ""
+msgstr "Data de criação da chave"
 
 #: forms.py:71
 msgid "Key expiration date"
-msgstr ""
+msgstr "Data de expiração da chave"
 
 #: forms.py:76
 msgid "Key length"
-msgstr ""
+msgstr "Tamanho da chave"
 
 #: forms.py:80
 msgid "Key algorithm"
-msgstr ""
+msgstr "Algoritmo da chave"
 
 #: forms.py:84
 msgid "Key user ID"
-msgstr ""
+msgstr "ID de usuário da chave"
 
 #: forms.py:88
 msgid "Key type"
-msgstr ""
+msgstr "Tipo de chave"
 
 #: links.py:42
 msgid "Refresh all signatures"
@@ -131,11 +135,11 @@ msgstr ""
 
 #: links.py:48
 msgid "Verify all documents"
-msgstr ""
+msgstr "Verificar todos os documentos"
 
 #: links.py:58
 msgid "Sign detached"
-msgstr ""
+msgstr "Assinatura destacada"
 
 #: links.py:65
 msgid "Delete"
@@ -147,11 +151,11 @@ msgstr "Descarregar"
 
 #: links.py:79
 msgid "Upload signature"
-msgstr ""
+msgstr "Upload da assinatura"
 
 #: links.py:89
 msgid "Sign embedded"
-msgstr ""
+msgstr "Assinatura integrada"
 
 #: links.py:99
 msgid "Details"
@@ -171,11 +175,11 @@ msgstr ""
 
 #: models.py:55
 msgid "ID of the key that will be used to sign the document."
-msgstr ""
+msgstr "ID da chave que será usada para assinar o documento."
 
 #: models.py:65
 msgid "Public key fingerprint"
-msgstr ""
+msgstr "Public key fingerprint"
 
 #: models.py:72
 msgid "Document file signature"
@@ -187,15 +191,15 @@ msgstr ""
 
 #: models.py:92
 msgid "Detached"
-msgstr ""
+msgstr "Destacado"
 
 #: models.py:94
 msgid "Embedded"
-msgstr ""
+msgstr "Embutido"
 
 #: models.py:159
 msgid "Signature file previously generated."
-msgstr ""
+msgstr "Arquivo de chave previamente gerado."
 
 #: models.py:162
 msgid "Signature file"
@@ -211,7 +215,7 @@ msgstr ""
 
 #: models.py:172
 msgid "signature"
-msgstr ""
+msgstr "assinatura"
 
 #: models.py:222
 msgid "Document file embedded signature"
@@ -223,23 +227,23 @@ msgstr ""
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
-msgstr ""
+msgstr "Assinar documentos com assinaturas destacadas"
 
 #: permissions.py:14
 msgid "Sign documents with embedded signatures"
-msgstr ""
+msgstr "Assinar documentos com assinaturas integradas"
 
 #: permissions.py:18
 msgid "Delete detached signatures"
-msgstr ""
+msgstr "Excluir assinaturas destacada"
 
 #: permissions.py:22
 msgid "Download detached document signatures"
-msgstr ""
+msgstr "Baixar assinatura destacada de documentos"
 
 #: permissions.py:26
 msgid "Upload detached document signatures"
-msgstr ""
+msgstr "Carregar assinaturas destacadas de documentos"
 
 #: permissions.py:30
 msgid "Verify document signatures"
@@ -247,15 +251,15 @@ msgstr "Verificar as assinaturas do documento"
 
 #: permissions.py:34
 msgid "View details of document signatures"
-msgstr ""
+msgstr "Ver detalhes da assinatura de documentos"
 
 #: queues.py:13
 msgid "Verify key signatures"
-msgstr ""
+msgstr "Verificar assinaturas com chave"
 
 #: queues.py:17
 msgid "Unverify key signatures"
-msgstr ""
+msgstr "Anular verificações de assinaturas com chave"
 
 #: queues.py:21
 msgid "Verify document file"
@@ -263,7 +267,7 @@ msgstr ""
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
-msgstr ""
+msgstr "Verificar assinatura integrada faltante"
 
 #: queues.py:30
 msgid "Refresh existing signature information"
@@ -276,28 +280,32 @@ msgstr ""
 #: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."
 msgstr ""
+"Caminho para a subclasse Storage que será usada para armazenar assinaturas "
+"destacadas."
 
 #: settings.py:27
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argumentos a serem passados para SIGNATURE_STORAGE_BACKEND."
 
 #: storages.py:13
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
 msgstr ""
+"Não foi possível inicializar o armazenamento de assinaturas destacadas. "
+"Verifique as configurações {} e {} para erros de formatação."
 
 #: storages.py:20
 msgid "Detached signatures"
-msgstr ""
+msgstr "Assinaturas destacadas"
 
 #: views.py:62 views.py:129
 msgid "Passphrase is needed to unlock this key."
-msgstr ""
+msgstr "É preciso senha para acessar a chave."
 
 #: views.py:75 views.py:142
 msgid "Passphrase is incorrect."
-msgstr ""
+msgstr "Senha incorreta."
 
 #: views.py:88 views.py:155
 msgid "Document file signed successfully."
@@ -316,7 +324,7 @@ msgstr ""
 #: views.py:188
 #, python-format
 msgid "Delete detached signature: %s"
-msgstr ""
+msgstr "Excluir assinatura destacada: %s"
 
 #: views.py:238
 #, python-format
@@ -326,7 +334,7 @@ msgstr ""
 #: views.py:267
 #, python-format
 msgid "Details for signature: %s"
-msgstr ""
+msgstr "Detalhes para a assinatura: %s"
 
 #: views.py:291
 msgid ""
@@ -334,6 +342,9 @@ msgid ""
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr ""
+"Assinaturas ajudam a proporcionar evidência de autoria e detecção de "
+"manipulação. São muito seguras e difíceis de falsificar. Uma assinatura pode"
+" ser integrada ao próprio documento ou carregada como um arquivo destacado."
 
 #: views.py:320
 msgid "There are no signatures for this document file."
@@ -358,11 +369,11 @@ msgstr ""
 
 #: views.py:355
 msgid "Verify all document for signatures?"
-msgstr ""
+msgstr "Verificar todos os documentos para assinaturas?"
 
 #: views.py:365
 msgid "Signature verification queued successfully."
-msgstr ""
+msgstr "Verificação de assinaturas colocada em fila."
 
 #: workflow_actions.py:22
 msgid "Private key that will be used to sign the document file."
@@ -370,7 +381,7 @@ msgstr ""
 
 #: workflow_actions.py:37
 msgid "Sign document (detached)"
-msgstr ""
+msgstr "Assinar o documento (destacado)"
 
 #: workflow_actions.py:49
 msgid ""
@@ -380,4 +391,4 @@ msgstr ""
 
 #: workflow_actions.py:80
 msgid "Sign document (embedded)"
-msgstr ""
+msgstr "Assinar o documento (embutido)"

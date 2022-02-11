@@ -106,99 +106,100 @@ class SourceBackendIMAPEmail(
         logger.debug('ssl: %s', self.kwargs['ssl'])
 
         if self.kwargs['ssl']:
-            server = imaplib.IMAP4_SSL(
-                host=self.kwargs['host'], port=self.kwargs['port']
-            )
+            imap_module_name = 'IMAP4_SSL'
         else:
-            server = imaplib.IMAP4(
-                host=self.kwargs['host'], port=self.kwargs['port']
+            imap_module_name = 'IMAP4'
+
+        imap_module = getattr(imaplib, imap_module_name)
+
+        kwargs = {
+            'host': self.kwargs['host'], 'port': self.kwargs['port']
+        }
+
+        with imap_module(**kwargs) as server:
+            server.login(
+                user=self.kwargs['username'], password=self.kwargs['password']
             )
 
-        server.login(
-            user=self.kwargs['username'], password=self.kwargs['password']
-        )
-        try:
-            server.select(mailbox=self.kwargs['mailbox'])
-        except Exception as exception:
-            raise SourceException(
-                'Error selecting mailbox: {}; {}'.format(
-                    self.kwargs['mailbox'], exception
+            try:
+                server.select(mailbox=self.kwargs['mailbox'])
+            except Exception as exception:
+                raise SourceException(
+                    'Error selecting mailbox: {}; {}'.format(
+                        self.kwargs['mailbox'], exception
+                    )
                 )
-            )
-
-        try:
-            status, data = server.uid(
-                'SEARCH', None, *self.kwargs['search_criteria'].strip().split()
-            )
-        except Exception as exception:
-            raise SourceException(
-                'Error executing search command; {}'.format(exception)
-            )
-
-        if data:
-            # data is a space separated sequence of message uids.
-            uids = data[0].split()
-            logger.debug('messages count: %s', len(uids))
-            logger.debug('message uids: %s', uids)
-
-            for uid in uids:
-                logger.debug('message uid: %s', uid)
-
+            else:
                 try:
-                    status, data = server.uid('FETCH', uid, '(RFC822)')
-                except Exception as exception:
-                    raise SourceException(
-                        'Error fetching message uid: {}; {}'.format(
-                            uid, exception
-                        )
-                    )
-
-                try:
-                    shared_uploaded_files = self.process_message(
-                        message=data[0][1]
+                    status, data = server.uid(
+                        'SEARCH', None, *self.kwargs['search_criteria'].strip().split()
                     )
                 except Exception as exception:
                     raise SourceException(
-                        'Error processing message uid: {}; {}'.format(
-                            uid, exception
-                        )
+                        'Error executing search command; {}'.format(exception)
                     )
+                else:
+                    if data:
+                        # data is a space separated sequence of message uids.
+                        uids = data[0].split()
+                        logger.debug('messages count: %s', len(uids))
+                        logger.debug('message uids: %s', uids)
 
-                if not dry_run:
-                    if self.kwargs['store_commands']:
-                        for command in self.kwargs['store_commands'].split('\n'):
+                        for uid in uids:
+                            logger.debug('message uid: %s', uid)
+
                             try:
-                                args = [uid]
-                                args.extend(command.strip().split(' '))
-                                server.uid('STORE', *args)
+                                status, data = server.uid('FETCH', uid, '(RFC822)')
                             except Exception as exception:
                                 raise SourceException(
-                                    'Error executing IMAP store command "{}" '
-                                    'on message uid {}; {}'.format(
-                                        command, uid, exception
+                                    'Error fetching message uid: {}; {}'.format(
+                                        uid, exception
                                     )
                                 )
+                            else:
+                                try:
+                                    shared_uploaded_files = self.process_message(
+                                        message=data[0][1]
+                                    )
+                                except Exception as exception:
+                                    raise SourceException(
+                                        'Error processing message uid: {}; {}'.format(
+                                            uid, exception
+                                        )
+                                    )
+                                else:
+                                    if not dry_run:
+                                        if self.kwargs['store_commands']:
+                                            for command in self.kwargs['store_commands'].split('\n'):
+                                                try:
+                                                    args = [uid]
+                                                    args.extend(command.strip().split(' '))
+                                                    server.uid('STORE', *args)
+                                                except Exception as exception:
+                                                    raise SourceException(
+                                                        'Error executing IMAP store command "{}" '
+                                                        'on message uid {}; {}'.format(
+                                                            command, uid, exception
+                                                        )
+                                                    )
 
-                    if self.kwargs['mailbox_destination']:
-                        try:
-                            server.uid(
-                                'COPY', uid, self.kwargs['mailbox_destination']
-                            )
-                        except Exception as exception:
-                            raise SourceException(
-                                'Error copying message uid {} to mailbox {}; '
-                                '{}'.format(
-                                    uid, self.kwargs['mailbox_destination'], exception
-                                )
-                            )
+                                        if self.kwargs['mailbox_destination']:
+                                            try:
+                                                server.uid(
+                                                    'COPY', uid, self.kwargs['mailbox_destination']
+                                                )
+                                            except Exception as exception:
+                                                raise SourceException(
+                                                    'Error copying message uid {} to mailbox {}; '
+                                                    '{}'.format(
+                                                        uid, self.kwargs['mailbox_destination'], exception
+                                                    )
+                                                )
 
-                    if self.kwargs['execute_expunge']:
-                        server.expunge()
+                                        if self.kwargs['execute_expunge']:
+                                            server.expunge()
 
-        server.close()
-        server.logout()
-
-        return shared_uploaded_files
+                                    return shared_uploaded_files
 
 
 class SourceBackendPOP3Email(
@@ -226,38 +227,42 @@ class SourceBackendPOP3Email(
         logger.debug('ssl: %s', self.kwargs['ssl'])
 
         if self.kwargs['ssl']:
-            server = poplib.POP3_SSL(host=self.kwargs['host'], port=self.kwargs['port'])
+            pop3_module_name = 'POP3_SSL'
         else:
-            server = poplib.POP3(
-                host=self.kwargs['host'], port=self.kwargs['port'], timeout=self.kwargs['timeout']
-            )
+            pop3_module_name = 'POP3'
 
-        server.getwelcome()
-        server.user(self.kwargs['username'])
-        server.pass_(self.kwargs['password'])
+        pop3_module = getattr(poplib, pop3_module_name)
 
-        messages_info = server.list()
+        kwargs = {
+            'host': self.kwargs['host'], 'port': self.kwargs['port'],
+            'timeout': self.kwargs['timeout']
+        }
 
-        logger.debug(msg='messages_info:')
-        logger.debug(msg=messages_info)
-        logger.debug('messages count: %s', len(messages_info[1]))
+        with pop3_module(**kwargs) as server:
+            server.getwelcome()
+            server.user(self.kwargs['username'])
+            server.pass_(self.kwargs['password'])
 
-        for message_info in messages_info[1]:
-            message_number, message_size = message_info.split()
-            message_number = int(message_number)
+            messages_info = server.list()
 
-            logger.debug('message_number: %s', message_number)
-            logger.debug('message_size: %s', message_size)
+            logger.debug(msg='messages_info:')
+            logger.debug(msg=messages_info)
+            logger.debug('messages count: %s', len(messages_info[1]))
 
-            message_lines = server.retr(which=message_number)[1]
-            message_complete = force_text(s=b'\n'.join(message_lines))
+            for message_info in messages_info[1]:
+                message_number, message_size = message_info.split()
+                message_number = int(message_number)
 
-            shared_uploaded_files = self.process_message(
-                message=message_complete
-            )
-            if not dry_run:
-                server.dele(which=message_number)
+                logger.debug('message_number: %s', message_number)
+                logger.debug('message_size: %s', message_size)
 
-        server.quit()
+                message_lines = server.retr(which=message_number)[1]
+                message_complete = force_text(s=b'\n'.join(message_lines))
 
-        return shared_uploaded_files
+                shared_uploaded_files = self.process_message(
+                    message=message_complete
+                )
+                if not dry_run:
+                    server.dele(which=message_number)
+
+                return shared_uploaded_files

@@ -1,3 +1,73 @@
+4.1.5 (2022-02-03)
+==================
+- Fix CAA document links. Closes GitLab issue #1068. Thanks to
+  Matthias Löblich (@startmat) for the report.
+- Remove superfluous apostrophe character in sort heading markup.
+- Fix email sources processing a single message but performing cleanup on
+  multiple messages. The intended behavior is restore which processed one
+  message and cleans up the processed message only.
+- Fix reference to ``shared_uploaded_files`` before the variable being
+  available.
+- Use context managers for the IMAP and POP3 sources to remove the
+  possibility of orphaned descriptors.
+- Create error log entries for objects that existed before the last error
+  log changes. Fix GitLab issue #1069. Thanks to Will Wright (@fireatwill)
+  for the report.
+- Expose the workflow template ``auto_launch`` field via the REST API.
+  Thanks to forum user @qra for the request.
+- Add ``EmailAction`` subclass for backwards compatibility with existing
+  workflow state actions.
+
+4.1.4 (2021-12-01)
+==================
+- Changes merged from versions 4.0.20 and 4.0.21.
+
+  - Perform more strict cleanup of test models.
+  - Clean up the test model app config cache after the test
+    end not before the test model is created.
+  - Improve lock manager test cases.
+  - Add standalone Celery beat container.
+
+- Fix document version first page thumbnail image resolution.
+  Closes GitLab issue #1063. Thanks to Will Wright (@fireatwill)
+  for the report and the patch.
+- Add libjpeg and libpng to the dev setup target.
+- Fix editing OCR content via the API.
+- Fix the ``AdvancedSearchViewTestCaseMixin`` class. It had
+  ``GenericViewTestCase`` as a base class when it is supposed to be a mixin
+  and not have any.
+- Add ``AutoHelpTextLabelFieldMixin``. This mixin tries to extract the
+  label and help text from the model field when the serializer field does
+  not specify any.
+- Add filtering to the ``parent`` field of the index template node
+  serializers. Restrict options to the current index template and allows
+  removing the now redundant validation.
+- Add ``index_template_root_node_id`` field to the index template
+  serializer. Closes GitLab issue #1061. Thanks to
+  Ludovic Anterieur(@lanterieur) for the report and initial implementation.
+- Fix responsive menu close button triggering home navigation. Closes
+  GitLab issue #1057. Thanks to Raimar Sandner (@PiQuer) for the report and
+  debug information.
+- JavaScript optimizations:
+
+  - Cache argument length when in ``.fn.hasAnyClass``.
+  - Configure fancybox just once.
+  - Set converter image functions as ``async``.
+  - Remove jQuery's ``one`` usage.
+
+- Remove the error logger model locking and cache the model value instead
+  at the time of registration. Closes GitLab issue #1065. Thanks to
+  Will Wright (@fireatwill) for the report and debug information.
+- Rename ``ErrorLog`` model to ``StoredErrorLog``. This change follow the
+  normal paradigm when a service is provided by a model and a runtime class.
+- Make the ``StoredErrorLog`` name field unique to ensure ``get_or_create``
+  works in an atomic way.
+- Create the error log partition when the model instance is created.
+- Normalize the error log partition name format using a static method.
+- Delete the error log partition on model instance deletion and not just the
+  error log partition entries.
+- Ensure a memory database is used when running the tests.
+
 4.1.3 (2021-11-02)
 ==================
 - Vagrant updates
@@ -529,6 +599,39 @@
 - Add document template state action API endpoints. Closes GitLab issue #1043
   Thanks to Ludovic Anterieur (@lanterieur) for the request.
 - Pin jsonschema to version 3.2.0 to avoid errors with
+
+4.0.21 (2021-11-29)
+===================
+- Perform more strict cleanup of test models.
+- Clean up the test model app config cache after the test
+  end not before the test model is created.
+- Improve lock manager test cases.
+- Add standalone Celery beat container.
+- Backport transformation ``cache_hash`` method split.
+  Moved to two functions to allow subclasses to modify
+  how the cache hash is calculated.
+- Backport asset image cache invalidation.
+- Backport asset duplication fix.
+- Backport asset percentage position calculation fix.
+- Add an explicit default value for ``MEDIA_URL``. Ensures forward
+  compatibility with future login dependency versions.
+- Move meta tags to their own partial template.
+- Add libjpeg and libpng to the dev setup target.
+
+4.0.20 (2021-11-08)
+===================
+- Use overlay2 driver when using Docker in Docker
+  in the GitLab CD/CI stages.
+- Update gevent from version 20.4.0 to 21.8.0.
+- Update gunicorn from version 20.0.4 to 20.1.0.
+- Add more explicit serializer read only fields.
+
+4.0.19 (2021-10-27)
+===================
+- Backported fixes from version 4.1.2:
+
+  - ``ORGANIZATIONS_URL_BASE_PATH`` null value fix.
+  - Fix ``ModelTemplateField`` not displaying the ``initial_help_text``.
 
 4.0.18 (2021-10-21)
 ===================

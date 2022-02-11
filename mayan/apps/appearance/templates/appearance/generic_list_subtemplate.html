@@ -39,7 +39,7 @@
                                                     {% if source_columns_identifier.0.is_sortable %}
                                                         <a href="{% navigation_get_sort_field_querystring column=source_columns_identifier.0 %}">{{ source_columns_identifier.0.label }}</a>
                                                             {% navigation_source_column_get_sort_icon column=source_columns_identifier.0 as icon_sort %}
-                                                            {% if icon_sort %}`
+                                                            {% if icon_sort %}
                                                                 <span class="appearance-list-column-sort-icon">
                                                                     {{ icon_sort.render }}
                                                                 </span>

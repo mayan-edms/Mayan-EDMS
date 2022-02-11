@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:55+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:12+0000\n"
 "Last-Translator: Çağlar Yeşilyurt <grch@mm.st>, 2021\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
@@ -107,11 +107,11 @@ msgstr "Erişim Kontrolünü Düzenle"
 msgid "View ACLs"
 msgstr "Erişim Kontrolünü Görüntüle"
 
-#: serializers.py:125
+#: serializers.py:120
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
 
-#: serializers.py:132
+#: serializers.py:127
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
 
@@ -132,36 +132,36 @@ msgstr ""
 msgid "Delete ACL: %s"
 msgstr "Erişim Kontrol Listesi sil: %s"
 
-#: views.py:139
+#: views.py:141
 msgid "There are no ACLs for this object"
 msgstr ""
 
-#: views.py:142 views.py:259
+#: views.py:144 views.py:261
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
 msgstr ""
 
-#: views.py:149
+#: views.py:151
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "%s için Erişim kontrol listeleri"
 
-#: views.py:163
+#: views.py:165
 msgid "Granted permissions"
 msgstr "İzinler izin verildi"
 
-#: views.py:164
+#: views.py:166
 msgid "Available permissions"
 msgstr "Kullanılabilir izinler"
 
-#: views.py:208
+#: views.py:210
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr ""
 
-#: views.py:217
+#: views.py:219
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -169,11 +169,11 @@ msgid ""
 "menu."
 msgstr ""
 
-#: views.py:256
+#: views.py:258
 msgid "There are no ACLs"
 msgstr ""
 
-#: views.py:265
+#: views.py:267
 msgid "Global access control lists"
 msgstr ""
 

@@ -6,16 +6,16 @@
 # Translators:
 # Roberto Rosario, 2021
 # Badea Gabriel <gcbadea@gmail.com>, 2021
-# Harald Ersch, 2021
 # Stefaniu Criste <gupi@hangar.ro>, 2021
+# Harald Ersch, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:55+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:12+0000\n"
-"Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
+"Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,6 +32,8 @@ msgid ""
 "Object for which the access is granted. When sorting objects, only the type "
 "is used and not the actual label of the object."
 msgstr ""
+"Obiect pentru care este acordat accesul. La sortarea obiectelor, se "
+"folosește doar tipul și nu eticheta reală a obiectului."
 
 #: apps.py:65
 msgid "Object"
@@ -47,7 +49,7 @@ msgstr "ACL-ul a fost creat"
 
 #: events.py:13
 msgid "ACL deleted"
-msgstr ""
+msgstr "ACL a fost șters"
 
 #: events.py:16
 msgid "ACL edited"
@@ -71,7 +73,7 @@ msgstr "Permisiuni"
 
 #: links.py:35
 msgid "Global ACLs"
-msgstr ""
+msgstr "ACL-uri globale"
 
 #: managers.py:243
 #, python-format
@@ -85,7 +87,7 @@ msgstr "Acces insuficient pentru: %s"
 
 #: models.py:49
 msgid "Role to which the access is granted for the specified object."
-msgstr ""
+msgstr "Rolul căruia i se acordă accesul pentru obiectul specificat."
 
 #: models.py:59
 msgid "Access entry"
@@ -108,13 +110,13 @@ msgstr "Editați ACL-uri"
 msgid "View ACLs"
 msgstr "Vezi ACL-uri"
 
-#: serializers.py:125
+#: serializers.py:120
 msgid "Primary key of the permission to add to the ACL."
-msgstr ""
+msgstr "Cheia primară a permisiunii de adăugat la ACL."
 
-#: serializers.py:132
+#: serializers.py:127
 msgid "Primary key of the permission to remove from the ACL."
-msgstr ""
+msgstr "Cheia primară a permisiunii de eliminat din ACL."
 
 #: views.py:40
 #, python-format
@@ -135,11 +137,11 @@ msgstr "Noi liste de control acces pentru: %s"
 msgid "Delete ACL: %s"
 msgstr "Șterge ACL: %s"
 
-#: views.py:139
+#: views.py:141
 msgid "There are no ACLs for this object"
 msgstr "Nu există ACL-uri pentru acest obiect"
 
-#: views.py:142 views.py:259
+#: views.py:144 views.py:261
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
@@ -150,25 +152,25 @@ msgstr ""
 "acordarea unei permisiuni pentru un rol, dar numai pentru un anumit obiect "
 "sau un set de obiecte."
 
-#: views.py:149
+#: views.py:151
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "Listele de control al accesului pentru: %s"
 
-#: views.py:163
+#: views.py:165
 msgid "Granted permissions"
 msgstr "Permisiuni acordate"
 
-#: views.py:164
+#: views.py:166
 msgid "Available permissions"
 msgstr "Permisiuni disponibile"
 
-#: views.py:208
+#: views.py:210
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr "Permisiunile rolului \"%(role)s\" pentru \"%(object)s\""
 
-#: views.py:217
+#: views.py:219
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -180,13 +182,13 @@ msgstr ""
 "Prerogativele moștenite trebuie să fie eliminate din ACL-ul obiectului "
 "părinte sau din rolul acestora prin meniul Setup (Configurare)."
 
-#: views.py:256
+#: views.py:258
 msgid "There are no ACLs"
-msgstr ""
+msgstr "Nu există ACL-uri"
 
-#: views.py:265
+#: views.py:267
 msgid "Global access control lists"
-msgstr ""
+msgstr "Liste globale de control al accesului"
 
 #: workflow_actions.py:23
 msgid "Object type"

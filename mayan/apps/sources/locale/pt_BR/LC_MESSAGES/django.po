@@ -11,14 +11,15 @@
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2021
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
 # Aline Freitas <aline@alinefreitas.com.br>, 2021
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: Aline Freitas <aline@alinefreitas.com.br>, 2021\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,11 +64,11 @@ msgstr ""
 
 #: events.py:8
 msgid "Source created"
-msgstr ""
+msgstr "Fonte criada"
 
 #: events.py:11
 msgid "Source edited"
-msgstr ""
+msgstr "Fonte editada"
 
 #: forms.py:26
 msgid "An optional comment to explain the upload."
@@ -114,7 +115,7 @@ msgstr "Carregar novo arquivo"
 
 #: links.py:88
 msgid "Create source"
-msgstr ""
+msgstr "Criar fonte"
 
 #: links.py:94 source_backends/staging_folder_backends.py:311
 msgid "Delete"
@@ -260,11 +261,11 @@ msgstr "Caixa de destino"
 msgid "IMAP email"
 msgstr "E-mail IMAP"
 
-#: source_backends/email_backends.py:216
+#: source_backends/email_backends.py:217
 msgid "Timeout"
 msgstr "Timeout"
 
-#: source_backends/email_backends.py:219
+#: source_backends/email_backends.py:220
 msgid "POP3 email"
 msgstr "E-mail POP3"
 
@@ -441,11 +442,11 @@ msgstr ""
 msgid "SANE Scanner"
 msgstr "Scanner SANE"
 
-#: source_backends/sane_scanner_backends.py:102
+#: source_backends/sane_scanner_backends.py:106
 msgid "Document properties"
 msgstr "Propriedades do documento"
 
-#: source_backends/sane_scanner_backends.py:103
+#: source_backends/sane_scanner_backends.py:107
 msgid "Scan"
 msgstr "Escanear"
 
@@ -626,16 +627,16 @@ msgstr ""
 msgid "Submit"
 msgstr "Enviar"
 
-#: views/document_views.py:39
+#: views/document_views.py:38
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
 msgstr ""
 
-#: views/document_views.py:58
+#: views/document_views.py:57
 msgid "New document queued for upload and will be available shortly."
 msgstr "O novo documento enfileirado para upload estará disponível em breve."
 
-#: views/document_views.py:84
+#: views/document_views.py:83
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr "Carregue um documento do tipo \"%(document_type)s\" da fonte: %(source)s"
@@ -702,7 +703,7 @@ msgstr "Assistente de upload de documentos"
 
 #: wizards.py:85
 msgid "First"
-msgstr ""
+msgstr "Primeiro"
 
 #: wizards.py:91
 msgid "Previous"

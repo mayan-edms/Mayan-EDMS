@@ -7,14 +7,18 @@
 # Roberto Rosario, 2021
 # Vítor Figueiró <vfigueiro@gmail.com>, 2021
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
+# Márcia Ferreira, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
+# Fernando Vieira <fera_br@yahoo.com.br>, 2022
+# Aline Freitas <aline@alinefreitas.com.br>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
-"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021\n"
+"Last-Translator: Aline Freitas <aline@alinefreitas.com.br>, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,11 +40,11 @@ msgstr ""
 
 #: events.py:8
 msgid "Message created"
-msgstr ""
+msgstr "Mensagem criada"
 
 #: events.py:11
 msgid "Message edited"
-msgstr ""
+msgstr "Mensagem editada"
 
 #: forms.py:26 models.py:38
 msgid "Body"
@@ -48,7 +52,7 @@ msgstr "Corpo"
 
 #: links.py:37 views.py:33
 msgid "Create message"
-msgstr ""
+msgstr "Criar mensagem"
 
 #: links.py:40 links.py:46
 msgid "Delete"
@@ -72,7 +76,7 @@ msgstr "Utilizador"
 
 #: models.py:33
 msgid "Short description of this message."
-msgstr ""
+msgstr "Breve descrição da mensagem"
 
 #: models.py:34
 msgid "Subject"
@@ -88,7 +92,7 @@ msgstr ""
 
 #: models.py:43
 msgid "Read"
-msgstr ""
+msgstr "Ler"
 
 #: models.py:47
 msgid "Date and time of the message creation."
@@ -96,15 +100,15 @@ msgstr ""
 
 #: models.py:48
 msgid "Creation date and time"
-msgstr ""
+msgstr "Data e hora de criação"
 
 #: models.py:53
 msgid "Message"
-msgstr ""
+msgstr "Mensagem"
 
 #: models.py:54 views.py:119
 msgid "Messages"
-msgstr ""
+msgstr "Mensagens"
 
 #: models.py:70
 msgid "Label"
@@ -112,19 +116,19 @@ msgstr "Nome"
 
 #: permissions.py:8
 msgid "Create messages"
-msgstr ""
+msgstr "Criar mensagens"
 
 #: permissions.py:11
 msgid "Delete messages"
-msgstr ""
+msgstr "Apagar mensagens"
 
 #: permissions.py:14
 msgid "Edit messages"
-msgstr ""
+msgstr "Editar mensagens"
 
 #: permissions.py:17
 msgid "View messages"
-msgstr ""
+msgstr "Visualizar mensagens"
 
 #: serializers.py:22
 msgid "Primary key of the recipient user of this message."

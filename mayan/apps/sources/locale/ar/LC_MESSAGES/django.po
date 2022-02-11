@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -251,11 +251,11 @@ msgstr "صندوق بريد الوجهة"
 msgid "IMAP email"
 msgstr "بريد IMAP الإلكتروني"
 
-#: source_backends/email_backends.py:216
+#: source_backends/email_backends.py:217
 msgid "Timeout"
 msgstr "انتهاء الوقت"
 
-#: source_backends/email_backends.py:219
+#: source_backends/email_backends.py:220
 msgid "POP3 email"
 msgstr "بريد POP3 الإلكتروني"
 
@@ -429,11 +429,11 @@ msgstr ""
 msgid "SANE Scanner"
 msgstr "ماسح ضوئي"
 
-#: source_backends/sane_scanner_backends.py:102
+#: source_backends/sane_scanner_backends.py:106
 msgid "Document properties"
 msgstr "خصائص المستند"
 
-#: source_backends/sane_scanner_backends.py:103
+#: source_backends/sane_scanner_backends.py:107
 msgid "Scan"
 msgstr "مسح"
 
@@ -605,17 +605,17 @@ msgstr ""
 msgid "Submit"
 msgstr "اعتماد"
 
-#: views/document_views.py:39
+#: views/document_views.py:38
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
 msgstr ""
 
-#: views/document_views.py:58
+#: views/document_views.py:57
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 "إصدار جديد في قائمة الانتظار من الوثيقة قيد التحميل وسيكون متاحًا قريبًا"
 
-#: views/document_views.py:84
+#: views/document_views.py:83
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""

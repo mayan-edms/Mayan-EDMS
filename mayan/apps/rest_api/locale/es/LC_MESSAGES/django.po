@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,19 +37,19 @@ msgstr "Documentación API (Swagger)"
 msgid "API Documentation (ReDoc)"
 msgstr "Documentación API (ReDoc)"
 
-#: relations.py:78
+#: relations.py:82
 msgid "This field is required."
-msgstr ""
+msgstr "Este campo es requerido."
 
-#: relations.py:79
+#: relations.py:83
 #, python-brace-format
 msgid "Invalid pk \"{pk_value}\" - object does not exist."
-msgstr ""
+msgstr "Llave primaria \"{pk_value}\" es es válida: el objeto no existe."
 
-#: relations.py:80
+#: relations.py:84
 #, python-brace-format
 msgid "Incorrect type. Expected pk value, received {data_type}."
-msgstr ""
+msgstr "Tipo incorrecto. Valor pk esperado, recibido {data_type}."
 
 #: schemas.py:11
 #, python-format
@@ -62,8 +62,8 @@ msgstr "Deshabilita los enlaces de la API REST en el menú de herramientas."
 
 #: settings.py:23
 msgid "The maximum page size that can be requested."
-msgstr ""
+msgstr "El tamaño máximo de página que se puede solicitar."
 
 #: settings.py:29
 msgid "The default page size if none is specified."
-msgstr ""
+msgstr "El tamaño de página predeterminado si no se especifica ninguno."

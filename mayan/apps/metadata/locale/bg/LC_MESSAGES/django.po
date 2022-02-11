@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -322,15 +322,15 @@ msgstr "Тип на метаданните на документа"
 msgid "Document metadata value"
 msgstr "Стойност на метаданните на документа"
 
-#: serializers.py:47
+#: serializers.py:48
 msgid "Primary key of the metadata type to be added."
 msgstr "Основен ключ на типа метаданни, които трябва да се добавят."
 
-#: serializers.py:48
+#: serializers.py:49
 msgid "Metadata type ID"
 msgstr "Идент. № на типа метаданни"
 
-#: serializers.py:93
+#: serializers.py:94
 msgid "Primary key of the metadata type to be added to the document."
 msgstr ""
 "Основен ключ на типа метаданни, които трябва да се добавят към документа."
@@ -600,12 +600,12 @@ msgstr ""
 #, python-format
 msgid ""
 "Unable to edit metadata type \"%(metadata_type)s\" from document: "
-"%(document)s. Document does not have the metadata type to be edit. "
+"%(document)s. Document does not have the metadata type to be edited. "
 "Exception: %(exception)s"
 msgstr ""
-"Не можете да редактирате тип метаданни &quot;%(metadata_type)s&quot; от "
-"документ: %(document)s. Документът няма типа метаданни за редактиране. "
-"Изключение: %(exception)s"
+"Не може да се редактира тип метаданни „%(metadata_type)s“ от документ: "
+"%(document)s. Документът няма типа метаданни за редактиране. Изключение: "
+"%(exception)s"
 
 #: workflow_actions.py:172
 msgid "Metadata types to remove from the document."

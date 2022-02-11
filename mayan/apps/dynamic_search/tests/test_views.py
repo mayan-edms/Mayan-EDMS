@@ -15,7 +15,7 @@ from .mixins import (
 
 
 class AdvancedSearchViewTestCaseMixin(
-    DocumentTestMixin, SearchViewTestMixin, GenericViewTestCase
+    DocumentTestMixin, SearchViewTestMixin
 ):
     auto_upload_test_document = False
 

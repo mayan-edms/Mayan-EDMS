@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -102,7 +102,7 @@ msgstr "Particiones de caché"
 
 #: models.py:313
 msgid "Current size of the cache partition."
-msgstr ""
+msgstr "Tamaño actual de la caché."
 
 #: models.py:334
 msgid "Date time"
@@ -164,7 +164,7 @@ msgstr ""
 #: views.py:45
 #, python-format
 msgid "Details of cache: %s"
-msgstr ""
+msgstr "Detalles de la caché: %s"
 
 #: views.py:56
 msgid "File caches list"

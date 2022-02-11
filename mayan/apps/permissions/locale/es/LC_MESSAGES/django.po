@@ -5,15 +5,15 @@
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2021
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:28+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -149,37 +149,37 @@ msgstr "Roles del grupo: %s"
 #: views.py:59
 #, python-format
 msgid "Error deleting role \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Error eliminando el rol \"%(instance)s\"; %(exception)s"
 
 #: views.py:64
 #, python-format
 msgid "Role \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "El rol \"%(object)s\" se eliminó con éxito."
 
 #: views.py:65
 #, python-format
 msgid "%(count)d role deleted successfully."
-msgstr ""
+msgstr " %(count)d rol se eliminó con éxito."
 
 #: views.py:66
 #, python-format
 msgid "%(count)d roles deleted successfully."
-msgstr ""
+msgstr "%(count)d roles eliminados con éxito."
 
 #: views.py:67
 #, python-format
 msgid "Delete role: %(object)s."
-msgstr ""
+msgstr "Eliminar rol: %(object)s."
 
 #: views.py:68
 #, python-format
 msgid "Delete the %(count)d selected role."
-msgstr ""
+msgstr "Eliminar %(count)d rol seleccionado."
 
 #: views.py:69
 #, python-format
 msgid "Delete the %(count)d selected roles."
-msgstr ""
+msgstr "Elimimar los %(count)d roles seleccionados."
 
 #: views.py:95
 msgid ""
@@ -242,4 +242,4 @@ msgstr "Permisos para el rol: %s"
 #: views.py:198
 #, python-format
 msgid "Details of permission: %s"
-msgstr ""
+msgstr "Detalles del permiso: %s"

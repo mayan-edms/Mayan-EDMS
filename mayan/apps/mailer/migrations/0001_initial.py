@@ -31,6 +31,6 @@ class Migration(migrations.Migration):
                 'verbose_name': 'Log entry',
                 'verbose_name_plural': 'Log entries',
             },
-            bases=(models.Model,),
-        ),
+            bases=(models.Model,)
+        )
     ]

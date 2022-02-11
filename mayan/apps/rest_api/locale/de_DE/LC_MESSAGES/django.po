@@ -7,14 +7,15 @@
 # Roberto Rosario, 2021
 # Mathias Behrle <mathiasb@m9s.biz>, 2021
 # 847f3f05406324d125c568a4b098bddb, 2021
+# Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: 847f3f05406324d125c568a4b098bddb, 2021\n"
+"Last-Translator: Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,16 +40,16 @@ msgstr "API Dokumentation (Swagger)"
 msgid "API Documentation (ReDoc)"
 msgstr "API Dokumentation (ReDoc)"
 
-#: relations.py:78
+#: relations.py:82
 msgid "This field is required."
-msgstr ""
+msgstr "Dieses Feld ist erforderlich."
 
-#: relations.py:79
+#: relations.py:83
 #, python-brace-format
 msgid "Invalid pk \"{pk_value}\" - object does not exist."
 msgstr ""
 
-#: relations.py:80
+#: relations.py:84
 #, python-brace-format
 msgid "Incorrect type. Expected pk value, received {data_type}."
 msgstr ""

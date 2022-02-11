@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -282,6 +282,12 @@ msgid ""
 "\"transition\", \"user\", \"comment\") and any values from workflow template"
 " fields."
 msgstr ""
+"Може да бъде статична стойност или шаблон. В допълнение към екземпляра на "
+"работния поток, шаблонът получава контекста на екземпляра на работния поток,"
+" който сам по себе си включва &quot;entry_log&quot; (съдържащ "
+"&quot;workflow_instance&quot;, &quot;datetime&quot;, &quot;transition&quot;,"
+" &quot;user&quot;, &quot;comment&quot;) и всякакви стойности от полетата на "
+"шаблон на работния поток ."
 
 #: literals.py:27
 msgid "Character"
@@ -656,33 +662,33 @@ msgstr "Стартира работен поток"
 msgid "Document workflow transition comment"
 msgstr "Коментар за преход на работен поток на документ"
 
-#: serializers.py:65
+#: serializers.py:71
 msgid "Primary key of the document type to add to the workflow."
 msgstr "Първичен ключ от типа документ, който да добавите към работния поток."
 
-#: serializers.py:74
+#: serializers.py:80
 msgid "Primary key of the document type to remove from the workflow."
 msgstr ""
 "Първичен ключ от типа документ, който да се премахне от работния поток."
 
-#: serializers.py:219
+#: serializers.py:229
 msgid "Primary key of the destination state to be added."
 msgstr ""
 "Основен ключ на състоянието на местоназначение, което трябва да се добави."
 
-#: serializers.py:227
+#: serializers.py:237
 msgid "Primary key of the origin state to be added."
 msgstr "Основен ключ на първоначалното състояние, което трябва да се добави."
 
-#: serializers.py:313
+#: serializers.py:320
 msgid "Primary key of the transition to be added."
 msgstr "Основен ключ на прехода, който трябва да бъде добавен."
 
-#: serializers.py:393
+#: serializers.py:404
 msgid "A link to the entire history of this workflow."
 msgstr "Връзка към цялата история на този работен поток."
 
-#: serializers.py:402
+#: serializers.py:413
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
@@ -1182,7 +1188,7 @@ msgstr "Етикет на документа"
 
 #: workflow_actions.py:31
 msgid "The new label to be assigned to the document."
-msgstr ""
+msgstr "Новият етикет, който трябва да бъде присвоен на документа."
 
 #: workflow_actions.py:40
 msgid "Document description"
@@ -1190,7 +1196,7 @@ msgstr "Описание на документа"
 
 #: workflow_actions.py:47
 msgid "The new description to be assigned to the document."
-msgstr ""
+msgstr "Новото описание, което да бъде присвоено на документа."
 
 #: workflow_actions.py:59
 msgid "Modify document properties"
@@ -1206,7 +1212,7 @@ msgstr "URL"
 
 #: workflow_actions.py:140
 msgid "The URL to access."
-msgstr ""
+msgstr "URL адресът за достъп."
 
 #: workflow_actions.py:149
 msgid "Timeout"
@@ -1214,7 +1220,7 @@ msgstr "Изтичане на времето"
 
 #: workflow_actions.py:156
 msgid "Time in seconds to wait for a response."
-msgstr "Време за секунди за изчакване на отговор."
+msgstr "Време в секунди за изчакване на отговор."
 
 #: workflow_actions.py:165
 msgid "Payload"
@@ -1222,7 +1228,7 @@ msgstr "Полезен товар"
 
 #: workflow_actions.py:171
 msgid "A JSON document to include in the request."
-msgstr ""
+msgstr "JSON документ, който да включите в заявката."
 
 #: workflow_actions.py:180
 msgid "Username"
@@ -1231,6 +1237,8 @@ msgstr "Име на потребител"
 #: workflow_actions.py:187
 msgid "Username to use for making the request with HTTP Basic Auth."
 msgstr ""
+"Потребителско име, което да използвате за отправяне на заявката с HTTP Basic"
+" Auth."
 
 #: workflow_actions.py:198
 msgid "Password"
@@ -1239,6 +1247,7 @@ msgstr "Парола"
 #: workflow_actions.py:205
 msgid "Password to use for making the request with HTTP Basic Auth."
 msgstr ""
+"Парола, която да използвате за извършване на заявката с HTTP Basic Auth."
 
 #: workflow_actions.py:216
 msgid "Method"
@@ -1249,6 +1258,8 @@ msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE."
 msgstr ""
+"HTTP методът, който да се използва за заявката. Типичните възможности за "
+"избор са OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE."
 
 #: workflow_actions.py:234
 msgid "Headers"
@@ -1256,7 +1267,7 @@ msgstr "Заглавки"
 
 #: workflow_actions.py:241
 msgid "Headers to send with the HTTP request. Must be in JSON format."
-msgstr ""
+msgstr "Заглавки за изпращане с HTTP заявката. Трябва да е във формат JSON."
 
 #: workflow_actions.py:256
 msgid "Perform an HTTP request"

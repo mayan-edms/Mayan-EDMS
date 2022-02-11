@@ -9,6 +9,8 @@ from rest_framework.relations import HyperlinkedIdentityField
 
 from mayan.apps.common.utils import resolve_attribute
 
+from .field_mixins import AutoHelpTextLabelFieldMixin
+
 
 class FilteredRelatedFieldMixin:
     def __init__(self, **kwargs):
@@ -62,13 +64,15 @@ class FilteredRelatedFieldMixin:
 
 
 class FilteredPrimaryKeyRelatedField(
-    FilteredRelatedFieldMixin, serializers.PrimaryKeyRelatedField
+    AutoHelpTextLabelFieldMixin, FilteredRelatedFieldMixin,
+    serializers.PrimaryKeyRelatedField
 ):
     """PrimaryKeyRelatedField that allows runtime queryset filtering by ACL."""
 
 
 class FilteredSimplePrimaryKeyRelatedField(
-    FilteredRelatedFieldMixin, serializers.RelatedField
+    AutoHelpTextLabelFieldMixin, FilteredRelatedFieldMixin,
+    serializers.RelatedField
 ):
     """
     PrimaryKeyRelatedField that allows runtime queryset filtering by ACL

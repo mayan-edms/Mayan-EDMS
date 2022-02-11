@@ -6,16 +6,16 @@
 # Translators:
 # Roberto Rosario, 2021
 # Badea Gabriel <gcbadea@gmail.com>, 2021
-# Harald Ersch, 2021
 # Stefaniu Criste <gupi@hangar.ro>, 2021
+# Harald Ersch, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:55+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
+"Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -253,22 +253,26 @@ msgstr "Vizualizați transformările existente"
 
 #: queues.py:12
 msgid "Generate a image of an object."
-msgstr ""
+msgstr "Generați o imagine a unui obiect."
 
 #: settings.py:30
 msgid ""
 "The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest asset cache files. Specify the size in bytes."
 msgstr ""
+"Pragul la care CONVERTER_ASSET_CACHE_STORAGE_BACKEND va începe să șteargă "
+"cele mai vechi fișiere cache de active. Specificați dimensiunea în octeți."
 
 #: settings.py:38
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
 msgstr ""
+"Calea către subclasa Stocare pe care să o utilizați la stocarea fișierelor "
+"de active din cache."
 
 #: settings.py:46
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argumente de transmis către CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
 
 #: settings.py:52
 msgid "Path to the Storage subclass to use when storing assets."
@@ -289,18 +293,24 @@ msgstr "Opțiuni de configurare pentru backend-ul de conversie grafică."
 #: settings.py:77
 msgid "Time in seconds that the browser should cache the supplied image. "
 msgstr ""
+"Timpul în secunde în care browserul ar trebui să memoreze în cache imaginea "
+"furnizată."
 
 #: settings.py:84
 msgid ""
 "Maximum number of retries before giving up. A value of None means the task "
 "will retry forever."
 msgstr ""
+"Numărul maxim de încercări înainte de a renunța. O valoare None înseamnă că "
+"sarcina va reîncerca pentru totdeauna."
 
 #: settings.py:92
 msgid ""
 "Time in seconds after which the image generation task will stop running and "
 "raise an error."
 msgstr ""
+"Timp în secunde după care sarcina de generare a imaginii se va opri și va "
+"genera o eroare."
 
 #: storages.py:15
 msgid ""
@@ -315,10 +325,12 @@ msgid ""
 "Unable to initialize the converter asset cachestorage. Check the settings {}"
 " and {} for formatting errors."
 msgstr ""
+"Nu se poate inițializa stocarea în cache a activelor convertorului. "
+"Verificați setările {} și {} pentru erori de formatare."
 
 #: storages.py:34
 msgid "Assets cache"
-msgstr ""
+msgstr "Cache de active"
 
 #: transformations.py:226
 msgid "Paste an asset"
@@ -401,9 +413,9 @@ msgstr "Solicitare de ștergere efectuată asupra %(count)d elemente"
 #: views.py:62
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Ștergeți materialul selectat?"
+msgstr[1] "Ștergeți elementele selectate?"
+msgstr[2] "Ștergeți activele selectate?"
 
 #: views.py:72
 #, python-format
@@ -423,7 +435,7 @@ msgstr "Eroare la ștergerea elementului„%(asset)s”: %(error)s"
 #: views.py:103
 #, python-format
 msgid "Details asset: %s"
-msgstr ""
+msgstr "Detalii activ: %s"
 
 #: views.py:117
 #, python-format

@@ -6,14 +6,17 @@
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2021
 # Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021
+# Márcia Ferreira, 2022
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>, 2021\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,97 +26,99 @@ msgstr ""
 
 #: apps.py:16 permissions.py:5 settings.py:10
 msgid "Logging"
-msgstr ""
+msgstr "Logging"
 
 #: links.py:13
 msgid "Errors"
-msgstr ""
+msgstr "Erros"
 
 #: links.py:19
 msgid "Clear errors"
-msgstr ""
+msgstr "Limpar erros"
 
-#: models.py:10 models.py:38
+#: models.py:9 models.py:37
 msgid "Internal name"
 msgstr "Nome interno"
 
-#: models.py:15 models.py:35
+#: models.py:14 models.py:34
 msgid "Error log"
-msgstr ""
+msgstr "Log de erros"
 
-#: models.py:16
+#: models.py:15
 msgid "Error logs"
-msgstr ""
+msgstr "Logs de erros"
 
-#: models.py:25
+#: models.py:24
 msgid "App label"
-msgstr ""
+msgstr "Rótulo do aplicativo"
 
-#: models.py:43 models.py:60
+#: models.py:42 models.py:52
 msgid "Error log partition"
-msgstr ""
+msgstr "Partição de log de erros"
 
-#: models.py:44
+#: models.py:43
 msgid "Error log partitions"
-msgstr ""
+msgstr "Partições de log de erros"
 
-#: models.py:63
+#: models.py:55
 msgid "Date and time"
-msgstr ""
+msgstr "Data e Hora"
 
-#: models.py:65
+#: models.py:57
 msgid "Text"
 msgstr "Texto"
 
-#: models.py:70
+#: models.py:62
 msgid "Error log partition entry"
-msgstr ""
+msgstr "Entrada de partição de log de erros"
 
-#: models.py:71
+#: models.py:63
 msgid "Error log partition entries"
-msgstr ""
+msgstr "Entradas de partição de registro de erros"
 
 #: permissions.py:8
 msgid "View error log"
-msgstr ""
+msgstr "Ver log de erros"
 
 #: settings.py:14
 msgid "Automatically enable logging to all apps."
-msgstr ""
+msgstr "Ativar automaticamente o logging de todos as apps."
 
 #: settings.py:19
 msgid ""
 "List of handlers to which logging messages will be sent. Options are: {}"
 msgstr ""
+"Lista de handlers para os quais as mensagens de registro serão enviadas. As "
+"opções são: {}"
 
 #: settings.py:25
 msgid "Level for the logging system."
-msgstr ""
+msgstr "Nível de logging do sistema."
 
 #: settings.py:31
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
+msgstr "Caminho para o arquivo de log que rastreará erros durante a produção."
 
 #: views.py:20
 #, python-format
 msgid "Clear error log entries for: %s"
-msgstr ""
+msgstr "Limpar entradas de log de erros para: %s"
 
 #: views.py:27
 msgid "Object error log cleared successfully"
-msgstr ""
+msgstr "O log de erros do objeto foi apagado com sucesso."
 
 #: views.py:42
 msgid ""
-"This view displays the error log of different object. An empty list is a "
-"good thing."
+"This view displays the error log of an object. An empty list is a good "
+"thing."
 msgstr ""
 
 #: views.py:46
 msgid "There are no error log entries"
-msgstr ""
+msgstr "Não há entradas no log de erros"
 
 #: views.py:49
 #, python-format
 msgid "Error log entries for: %s"
-msgstr ""
+msgstr "Entradas de log de erros para: %s"

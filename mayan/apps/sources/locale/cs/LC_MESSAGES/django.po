@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -251,11 +251,11 @@ msgstr "Cílová poštovní schránka"
 msgid "IMAP email"
 msgstr "E-mail IMAP"
 
-#: source_backends/email_backends.py:216
+#: source_backends/email_backends.py:217
 msgid "Timeout"
 msgstr "Časový limit"
 
-#: source_backends/email_backends.py:219
+#: source_backends/email_backends.py:220
 msgid "POP3 email"
 msgstr "POP3 email"
 
@@ -430,11 +430,11 @@ msgstr ""
 msgid "SANE Scanner"
 msgstr "Skener SANE"
 
-#: source_backends/sane_scanner_backends.py:102
+#: source_backends/sane_scanner_backends.py:106
 msgid "Document properties"
 msgstr "Vlastnosti dokumentu"
 
-#: source_backends/sane_scanner_backends.py:103
+#: source_backends/sane_scanner_backends.py:107
 msgid "Scan"
 msgstr "Skenovat"
 
@@ -609,16 +609,16 @@ msgstr ""
 msgid "Submit"
 msgstr "Odeslat"
 
-#: views/document_views.py:39
+#: views/document_views.py:38
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
 msgstr ""
 
-#: views/document_views.py:58
+#: views/document_views.py:57
 msgid "New document queued for upload and will be available shortly."
 msgstr "Nový dokument zařazený do fronty k nahrání bude brzy k dispozici."
 
-#: views/document_views.py:84
+#: views/document_views.py:83
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr "Nahrajte dokument typu \"%(document_type)s\" ze zdroje: %(source)s"

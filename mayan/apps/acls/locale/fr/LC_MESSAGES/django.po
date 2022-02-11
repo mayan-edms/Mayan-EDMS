@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:55+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:12+0000\n"
 "Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -114,11 +114,11 @@ msgstr "Modifier les droits"
 msgid "View ACLs"
 msgstr "Voir les droits"
 
-#: serializers.py:125
+#: serializers.py:120
 msgid "Primary key of the permission to add to the ACL."
 msgstr "Clé primaire de l'autorisation à ajouter à l'ACL."
 
-#: serializers.py:132
+#: serializers.py:127
 msgid "Primary key of the permission to remove from the ACL."
 msgstr "Clé primaire de l'autorisation à supprimer de l'ACL."
 
@@ -141,11 +141,11 @@ msgstr "Nouvelle liste de contrôle d'accès pour : %s"
 msgid "Delete ACL: %s"
 msgstr "Supprimer le droit : %s"
 
-#: views.py:139
+#: views.py:141
 msgid "There are no ACLs for this object"
 msgstr "Aucun droit pour cet objet"
 
-#: views.py:142 views.py:259
+#: views.py:144 views.py:261
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
@@ -156,25 +156,25 @@ msgstr ""
 "l'application. Les ACL permettent de donner les droits à un rôle mais "
 "uniquement pour un objet ou un ensemble d'objet."
 
-#: views.py:149
+#: views.py:151
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "Liste de contrôle d'accès pour : %s"
 
-#: views.py:163
+#: views.py:165
 msgid "Granted permissions"
 msgstr "Autorisations accordées"
 
-#: views.py:164
+#: views.py:166
 msgid "Available permissions"
 msgstr "Autorisations disponibles"
 
-#: views.py:208
+#: views.py:210
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr "Role \"%(role)s\" permissions pour \"%(object)s\"."
 
-#: views.py:217
+#: views.py:219
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -186,11 +186,11 @@ msgstr ""
 "autorisations héritées doivent être supprimées de l'ACL de l'objet parent ou"
 " de leur rôle via le menu Configuration."
 
-#: views.py:256
+#: views.py:258
 msgid "There are no ACLs"
 msgstr "Il n'y a pas d'ACL."
 
-#: views.py:265
+#: views.py:267
 msgid "Global access control lists"
 msgstr "Listes globales de contrôle d'accès"
 

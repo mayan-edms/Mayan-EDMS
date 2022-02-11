@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -33,43 +33,43 @@ msgstr "الأخطاء"
 msgid "Clear errors"
 msgstr "حذف الاخطاء"
 
-#: models.py:10 models.py:38
+#: models.py:9 models.py:37
 msgid "Internal name"
 msgstr "الإسم الداخلي"
 
-#: models.py:15 models.py:35
+#: models.py:14 models.py:34
 msgid "Error log"
 msgstr "الخطأ"
 
-#: models.py:16
+#: models.py:15
 msgid "Error logs"
 msgstr "الأخطاء"
 
-#: models.py:25
+#: models.py:24
 msgid "App label"
 msgstr "اسم التطبيق"
 
-#: models.py:43 models.py:60
+#: models.py:42 models.py:52
 msgid "Error log partition"
 msgstr "خطأ التقسيم"
 
-#: models.py:44
+#: models.py:43
 msgid "Error log partitions"
 msgstr "خطأ في التقسيمات"
 
-#: models.py:63
+#: models.py:55
 msgid "Date and time"
 msgstr "الوقت والتاريخ"
 
-#: models.py:65
+#: models.py:57
 msgid "Text"
 msgstr "النص"
 
-#: models.py:70
+#: models.py:62
 msgid "Error log partition entry"
 msgstr "إدخال خاطيء "
 
-#: models.py:71
+#: models.py:63
 msgid "Error log partition entries"
 msgstr "إدخالات خاطئة"
 
@@ -105,9 +105,9 @@ msgstr "تم مسح السجل بنجاح"
 
 #: views.py:42
 msgid ""
-"This view displays the error log of different object. An empty list is a "
-"good thing."
-msgstr "القائمة فارغة ، لايوجد أخطاء في النظام"
+"This view displays the error log of an object. An empty list is a good "
+"thing."
+msgstr ""
 
 #: views.py:46
 msgid "There are no error log entries"

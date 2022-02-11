@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:55+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:12+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -107,11 +107,11 @@ msgstr "Authorisatielijsten bewerken"
 msgid "View ACLs"
 msgstr "Authorisatielijsten bekijken"
 
-#: serializers.py:125
+#: serializers.py:120
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
 
-#: serializers.py:132
+#: serializers.py:127
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
 
@@ -134,11 +134,11 @@ msgstr "Nieuwe authorisatielijsten voor: %s"
 msgid "Delete ACL: %s"
 msgstr "Verwijder authorisatielijst: %s"
 
-#: views.py:139
+#: views.py:141
 msgid "There are no ACLs for this object"
 msgstr "Er zijn geen authorisatielijsten voor dit object"
 
-#: views.py:142 views.py:259
+#: views.py:144 views.py:261
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
@@ -148,25 +148,25 @@ msgstr ""
 "het systeem te beheren. Authorisatielijsten kennen een permissie toe aan een"
 " rol maar enkel voor een bepaald object of verzamelingen van objecten."
 
-#: views.py:149
+#: views.py:151
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "Authorisatielijsten voor: %s"
 
-#: views.py:163
+#: views.py:165
 msgid "Granted permissions"
 msgstr "Toegekende permissies"
 
-#: views.py:164
+#: views.py:166
 msgid "Available permissions"
 msgstr "Beschikbare permissies"
 
-#: views.py:208
+#: views.py:210
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
 msgstr "Rol \"%(role)s\" permissies voor \"%(object)s\"."
 
-#: views.py:217
+#: views.py:219
 msgid ""
 "Disabled permissions are inherited from a parent object or directly granted "
 "to the role and can't be removed from this view. Inherited permissions need "
@@ -178,11 +178,11 @@ msgstr ""
 "Geërfde rechten moeten verwijderd worden vanaf het hogere niveau of via de "
 "gebruikersrol via het Instellingen menu. "
 
-#: views.py:256
+#: views.py:258
 msgid "There are no ACLs"
 msgstr ""
 
-#: views.py:265
+#: views.py:267
 msgid "Global access control lists"
 msgstr ""
 

@@ -5,16 +5,16 @@
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2021
-# Roberto Rosario, 2021
 # Lory977 <helga.carrero@gmail.com>, 2021
+# Roberto Rosario, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: Lory977 <helga.carrero@gmail.com>, 2021\n"
+"Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -59,11 +59,11 @@ msgstr ""
 
 #: events.py:8
 msgid "Source created"
-msgstr ""
+msgstr "Fuente creada"
 
 #: events.py:11
 msgid "Source edited"
-msgstr ""
+msgstr "Fuente editada"
 
 #: forms.py:26
 msgid "An optional comment to explain the upload."
@@ -86,7 +86,7 @@ msgstr ""
 
 #: forms.py:48
 msgid "The backend used to create the new source."
-msgstr ""
+msgstr "El backend utilizado para crear la nueva fuente."
 
 #: forms.py:49
 msgid "Backend"
@@ -110,7 +110,7 @@ msgstr "Subir archivo nuevo"
 
 #: links.py:88
 msgid "Create source"
-msgstr ""
+msgstr "Crear fuente"
 
 #: links.py:94 source_backends/staging_folder_backends.py:311
 msgid "Delete"
@@ -178,7 +178,7 @@ msgstr "Manejar la carga"
 
 #: serializers.py:50
 msgid "Optional arguments for the action. Must be JSON formatted."
-msgstr ""
+msgstr "Argumentos opcionales para la acción. Debe tener formato JSON."
 
 #: serializers.py:51 source_backends/sane_scanner_backends.py:44
 msgid "Arguments"
@@ -186,15 +186,17 @@ msgstr "Argumentos"
 
 #: settings.py:20
 msgid "Arguments to use when creating source backends."
-msgstr ""
+msgstr "Argumentos para usar al crear backends de origen."
 
 #: settings.py:26
 msgid "Path to the Storage subclass used to store cached source image files."
 msgstr ""
+"Ruta a la subclase de almacenamiento utilizada para almacenar archivos de "
+"imagen de origen almacenados en caché."
 
 #: settings.py:34
 msgid "Arguments to pass to the SOURCES_SOURCE_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argumentos para pasar a SOURCES_SOURCE_CACHE_STORAGE_BACKEND."
 
 #: source_backends/email_backends.py:37
 msgid "IMAP Mailbox from which to check for messages."
@@ -254,11 +256,11 @@ msgstr "Buzón de destino"
 msgid "IMAP email"
 msgstr "Correo electrónico IMAP"
 
-#: source_backends/email_backends.py:216
+#: source_backends/email_backends.py:217
 msgid "Timeout"
 msgstr "Tiempo de expiración"
 
-#: source_backends/email_backends.py:219
+#: source_backends/email_backends.py:220
 msgid "POP3 email"
 msgstr "Correo electrónico POP3"
 
@@ -364,10 +366,13 @@ msgid ""
 "Select a metadata type to store the email's message ID value. Must be a "
 "valid metadata type for the document type selected previously."
 msgstr ""
+"Seleccione un tipo de metadatos para almacenar el valor de ID del mensaje de"
+" correo electrónico. Debe ser un tipo de metadatos válido para el tipo de "
+"documento seleccionado anteriormente."
 
 #: source_backends/mixins.py:302
 msgid "Message ID metadata type"
-msgstr ""
+msgstr "ID de tipo de metadatos de mensaje"
 
 #: source_backends/mixins.py:310
 msgid "Store the body of the email as a text document."
@@ -402,6 +407,8 @@ msgid ""
 "Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
 " type: %(document_type)s"
 msgstr ""
+"El ID de tipo de metadatos de mensaje \"%(metadata_type)s\" no es válido "
+"para el tipo de documento: %(document_type)s"
 
 #: source_backends/mixins.py:588
 msgid "Assign a document type to documents uploaded from this source."
@@ -434,16 +441,19 @@ msgid ""
 "will change depending on the device. Execute `scanimage --help --device-"
 "name=DEVICE` for the list of supported arguments."
 msgstr ""
+"Argumentos con formato YAML para pasar al comando `scanimage`. Los "
+"argumentos cambiarán según el dispositivo. Ejecute `scanimage --help "
+"--device-name = DEVICE` para obtener la lista de argumentos admitidos."
 
 #: source_backends/sane_scanner_backends.py:48
 msgid "SANE Scanner"
 msgstr "Escáner SANE"
 
-#: source_backends/sane_scanner_backends.py:102
+#: source_backends/sane_scanner_backends.py:106
 msgid "Document properties"
 msgstr "Propiedades de documento"
 
-#: source_backends/sane_scanner_backends.py:103
+#: source_backends/sane_scanner_backends.py:107
 msgid "Scan"
 msgstr "Escanear"
 
@@ -630,17 +640,17 @@ msgstr ""
 msgid "Submit"
 msgstr "Enviar"
 
-#: views/document_views.py:39
+#: views/document_views.py:38
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
-msgstr ""
+msgstr "Error al procesar la carga del documento de fuente; %(exception)s"
 
-#: views/document_views.py:58
+#: views/document_views.py:57
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 "Nuevo documento puesto en cola para su carga y estará disponible en breve."
 
-#: views/document_views.py:84
+#: views/document_views.py:83
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
@@ -648,12 +658,12 @@ msgstr ""
 
 #: views/source_views.py:37
 msgid "New source backend selection"
-msgstr ""
+msgstr "Nueva selección de backend de fuente"
 
 #: views/source_views.py:93
 #, python-format
 msgid "Create a \"%s\" source"
-msgstr ""
+msgstr "Cree una fuente \"%s\""
 
 #: views/source_views.py:118
 #, python-format
@@ -671,6 +681,10 @@ msgid ""
 "and require user input to operate. Others are automatic and run in the "
 "background without user intervention."
 msgstr ""
+"Las fuentes proporcionan los medios para cargar documentos. Algunas fuentes "
+"son interactivas y requieren la participación del usuario para funcionar. "
+"Otros son automáticas y se ejecutan en segundo plano sin la intervención del"
+" usuario."
 
 #: views/source_views.py:163
 msgid "No sources available"
@@ -683,6 +697,11 @@ msgid ""
 "Check the source's error log for information during testing. A successful "
 "test will clear the error log."
 msgstr ""
+"Esto ejecutará el código de la fuente incluso si la fuente no está "
+"habilitada. Las fuentes que eliminan contenido después de la descarga no lo "
+"harán mientras se prueban. Consulte el registro de errores de la fuente para"
+" obtener información durante la prueba. Una prueba exitosa borrará el "
+"registro de errores."
 
 #: views/source_views.py:187
 #, python-format
@@ -691,7 +710,7 @@ msgstr "¿Lanzar chequeo para la fuenta \"%s\"? "
 
 #: views/source_views.py:199
 msgid "Source test queued."
-msgstr ""
+msgstr "Prueba de fuente en cola."
 
 #: wizard_steps.py:11
 msgid "Select document type"
@@ -708,7 +727,7 @@ msgstr "Asistente de carga de documentos"
 
 #: wizards.py:85
 msgid "First"
-msgstr ""
+msgstr "Primero"
 
 #: wizards.py:91
 msgid "Previous"

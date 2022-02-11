@@ -5,7 +5,8 @@ $.fn.hasAnyClass = function() {
      *  Return true is an element has any of the passed classes
      *  The classes are bassed as an array
      */
-    for (let i = 0; i < arguments[0].length; i++) {
+    const length = arguments[0].length;
+    for (let i = 0; i < length; i++) {
         if (this.hasClass(arguments[0][i])) {
             return true;
         }
@@ -117,7 +118,8 @@ class PartialNavigation {
         }
 
         if ($this.hasAnyClass(this.disabledAnchorClasses)) {
-            return false;
+            event.preventDefault();
+            return;
         }
 
         if ($this.parents().hasAnyClass(this.disabledAnchorClasses)) {
@@ -130,12 +132,12 @@ class PartialNavigation {
         }
 
         if (url.indexOf('javascript:;') > -1) {
-            // Ignore links meant to execute javascript on click.
+            // Ignore/exclude links meant to execute javascript on click.
             return true;
         }
 
         if (url === '#') {
-            // Ignore links with hash at the.
+            // Ignore/exclude links with only a hash .
             return true;
         }
 

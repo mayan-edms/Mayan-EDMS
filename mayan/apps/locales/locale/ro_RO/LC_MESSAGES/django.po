@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Harald Ersch, 2021
+# Harald Ersch, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-12 03:39+0000\n"
-"Last-Translator: Harald Ersch, 2021\n"
+"Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: apps.py:27
 msgid "Locales"
-msgstr ""
+msgstr "Profiluri de localizare"
 
 #: links.py:13
 msgid "Locale profile"
@@ -50,11 +50,11 @@ msgstr "Profilul de localizare utilizator"
 
 #: models.py:32
 msgid "User locale profiles"
-msgstr "Profile de localizare pentru utilizatori"
+msgstr "Profiluri de localizare pentru utilizatori"
 
 #: views.py:24
 msgid "Current user locale profile details"
-msgstr "Detaliile  profilului locației utilizatorului curent"
+msgstr "Detaliile profilului de localizare a utilizatorului curent"
 
 #: views.py:30
 msgid "Edit current user locale profile details"

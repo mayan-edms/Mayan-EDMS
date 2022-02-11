@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:55+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:13+0000\n"
 "Last-Translator: Andrea Evangelisti <Andrea.Evangelisti@gmail.com>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -217,7 +217,7 @@ msgstr ""
 "necessaria per accedervi."
 
 #: templates/500.html:5 templates/500.html:30
-#: templates/appearance/root.html:52
+#: templates/appearance/root.html:48
 msgid "Server error"
 msgstr "Errore del server"
 
@@ -429,15 +429,15 @@ msgstr "Apri dropdown"
 msgid "No results"
 msgstr "Nessun risultato"
 
-#: templates/appearance/root.html:57
+#: templates/appearance/root.html:53
 msgid "Close"
 msgstr "Chiudi"
 
-#: templates/appearance/root.html:65
+#: templates/appearance/root.html:61
 msgid "Server communication error"
 msgstr "Errore di comunicazione del Server"
 
-#: templates/appearance/root.html:67
+#: templates/appearance/root.html:63
 msgid "Check you network connection and try again in a few moments."
 msgstr "Controlla la connessione di rete e riprova"
 

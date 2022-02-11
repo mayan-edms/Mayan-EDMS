@@ -6,15 +6,15 @@
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2021
 # JAIRO DAVILA <jdavilaco@gmail.com>, 2021
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:55+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -212,6 +212,12 @@ msgid ""
 " containing an application. These apps will be installed before the default "
 "apps. Example: ['app_1', 'app_2']"
 msgstr ""
+"Una lista de textos que designan todas las aplicaciones que están instaladas"
+" más allá de las que normalmente instala Mayan EDMS. Cada entrada debe ser "
+"una ruta de Python separada por puntos a: una clase de configuración de la "
+"aplicación (preferida), o un paquete que contiene una aplicación. Estas "
+"aplicaciones se instalarán antes que las aplicaciones predeterminadas. "
+"Ejemplo: [\"app_1\", \"app_2\"]"
 
 #: settings.py:69
 msgid ""
@@ -224,7 +230,7 @@ msgstr ""
 
 #: settings.py:78
 msgid "Name of the dashboard to display in the home view."
-msgstr ""
+msgstr "Nombre del tablero que se mostrará en la vista inicial."
 
 #: settings.py:83
 msgid "Sets the project's name."

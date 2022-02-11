@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2020-04-02 07:08+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Nodes"
 msgstr ""
 
-#: apps.py:185 models.py:437
+#: apps.py:185 models.py:438
 msgid "Documents"
 msgstr ""
 
@@ -143,7 +143,7 @@ msgstr ""
 msgid "Causes this index to be visible and updated when document data changes."
 msgstr ""
 
-#: models.py:50 models.py:189
+#: models.py:50 models.py:190
 msgid "Enabled"
 msgstr ""
 
@@ -151,100 +151,104 @@ msgstr ""
 msgid "Index template"
 msgstr ""
 
-#: models.py:174
+#: models.py:169
+msgid "Parent index template node of this node."
+msgstr ""
+
+#: models.py:175
 msgid "Index"
 msgstr ""
 
-#: models.py:178
+#: models.py:179
 msgid "Enter a template to render. Use Django's default templating language."
 msgstr ""
 
-#: models.py:181
+#: models.py:182
 msgid "Indexing expression"
 msgstr ""
 
-#: models.py:186
+#: models.py:187
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr ""
 
-#: models.py:194
+#: models.py:195
 msgid ""
 "Check this option to have this node act as a container for documents and not "
 "as a parent for further nodes."
 msgstr ""
 
-#: models.py:197
+#: models.py:198
 msgid "Link documents"
 msgstr ""
 
-#: models.py:201 models.py:430
+#: models.py:202 models.py:431
 msgid "Index template node"
 msgstr ""
 
-#: models.py:202
+#: models.py:203
 msgid "Index template nodes"
 msgstr ""
 
-#: models.py:206
+#: models.py:207
 msgid "Root"
 msgstr ""
 
-#: models.py:227
+#: models.py:228
 msgid "Index instance"
 msgstr ""
 
-#: models.py:228
+#: models.py:229
 msgid "Index instances"
 msgstr ""
 
-#: models.py:309
+#: models.py:310
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr ""
 
-#: models.py:387
+#: models.py:388
 msgid "Total number of nodes with unique values this item contains."
 msgstr ""
 
-#: models.py:396
+#: models.py:397
 msgid "Total number of unique documents this item contains."
 msgstr ""
 
-#: models.py:406
+#: models.py:407
 msgid "Total number of node levels this item contains."
 msgstr ""
 
-#: models.py:433 search.py:26
+#: models.py:434 search.py:26
 msgid "Value"
 msgstr ""
 
-#: models.py:442 models.py:523
+#: models.py:443 models.py:524
 msgid "Index instance node"
 msgstr ""
 
-#: models.py:443
+#: models.py:444
 msgid "Indexes instances node"
 msgstr ""
 
-#: models.py:490
+#: models.py:491
 msgid "The path to the index including all ancestors."
 msgstr ""
 
-#: models.py:492
+#: models.py:493
 msgid "Full path"
 msgstr ""
 
-#: models.py:516
+#: models.py:517
 msgid "Document index node instance"
 msgstr ""
 
-#: models.py:517
+#: models.py:518
 msgid "Document indexes node instances"
 msgstr ""
 
-#: models.py:524
+#: models.py:525
 msgid "Index instance nodes"
 msgstr ""
 
@@ -312,34 +316,26 @@ msgstr ""
 msgid "Document checksum"
 msgstr ""
 
-#: serializers.py:189
-msgid "Parent cannot be empty."
-msgstr ""
-
-#: serializers.py:196
-msgid "Parent must be from the same index template."
-msgstr ""
-
-#: serializers.py:207
+#: serializers.py:200
 msgid ""
 "URL of the API endpoint showing the list document types associated with this "
 "index template."
 msgstr ""
 
-#: serializers.py:214
+#: serializers.py:207
 msgid "URL of the API endpoint to add document types to this index template."
 msgstr ""
 
-#: serializers.py:221
+#: serializers.py:214
 msgid ""
 "URL of the API endpoint to remove document types from this index template."
 msgstr ""
 
-#: serializers.py:269
+#: serializers.py:271
 msgid "Primary key of the document type to add to the index template."
 msgstr ""
 
-#: serializers.py:278
+#: serializers.py:280
 msgid "Primary key of the document type to remove from the index template."
 msgstr ""
 

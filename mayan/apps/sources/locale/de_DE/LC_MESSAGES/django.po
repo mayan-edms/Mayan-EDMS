@@ -11,14 +11,15 @@
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2021
 # Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021
 # Mathias Behrle <mathiasb@m9s.biz>, 2021
+# Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2021\n"
+"Last-Translator: Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -90,7 +91,7 @@ msgstr ""
 
 #: forms.py:48
 msgid "The backend used to create the new source."
-msgstr "Das für die Erstellung der neuen Quelle verwendete Backend"
+msgstr "Das für die Erstellung der neuen Quelle verwendete Backend."
 
 #: forms.py:49
 msgid "Backend"
@@ -259,11 +260,11 @@ msgstr "Ziel-Postfach "
 msgid "IMAP email"
 msgstr "IMAP"
 
-#: source_backends/email_backends.py:216
+#: source_backends/email_backends.py:217
 msgid "Timeout"
 msgstr "Timeout"
 
-#: source_backends/email_backends.py:219
+#: source_backends/email_backends.py:220
 msgid "POP3 email"
 msgstr "POP3"
 
@@ -439,11 +440,11 @@ msgstr ""
 msgid "SANE Scanner"
 msgstr "SANE Scanner"
 
-#: source_backends/sane_scanner_backends.py:102
+#: source_backends/sane_scanner_backends.py:106
 msgid "Document properties"
 msgstr "Dokumenteneigenschaften"
 
-#: source_backends/sane_scanner_backends.py:103
+#: source_backends/sane_scanner_backends.py:107
 msgid "Scan"
 msgstr "Scannen"
 
@@ -626,18 +627,18 @@ msgstr ""
 msgid "Submit"
 msgstr "Absenden"
 
-#: views/document_views.py:39
+#: views/document_views.py:38
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
 msgstr ""
 
-#: views/document_views.py:58
+#: views/document_views.py:57
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 "Das neue Dokument wurde in die Warteschlange eingestellt und wird in Kürze "
 "verfügbar sein."
 
-#: views/document_views.py:84
+#: views/document_views.py:83
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""

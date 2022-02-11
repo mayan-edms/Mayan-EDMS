@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-02 20:56+0000\n"
+"POT-Creation-Date: 2022-02-04 04:10+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
 "Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2021\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -37,43 +37,43 @@ msgstr "Fehler"
 msgid "Clear errors"
 msgstr "Fehler löschen"
 
-#: models.py:10 models.py:38
+#: models.py:9 models.py:37
 msgid "Internal name"
 msgstr "Interner Name"
 
-#: models.py:15 models.py:35
+#: models.py:14 models.py:34
 msgid "Error log"
 msgstr "Fehlerprotokoll"
 
-#: models.py:16
+#: models.py:15
 msgid "Error logs"
 msgstr "Fehlerprotokolle"
 
-#: models.py:25
+#: models.py:24
 msgid "App label"
 msgstr "App-Label"
 
-#: models.py:43 models.py:60
+#: models.py:42 models.py:52
 msgid "Error log partition"
 msgstr ""
 
-#: models.py:44
+#: models.py:43
 msgid "Error log partitions"
 msgstr ""
 
-#: models.py:63
+#: models.py:55
 msgid "Date and time"
 msgstr "Datum und Uhrzeit"
 
-#: models.py:65
+#: models.py:57
 msgid "Text"
 msgstr "Text"
 
-#: models.py:70
+#: models.py:62
 msgid "Error log partition entry"
 msgstr ""
 
-#: models.py:71
+#: models.py:63
 msgid "Error log partition entries"
 msgstr ""
 
@@ -111,11 +111,9 @@ msgstr "Objektfehlerlog erfolgreich gelöscht"
 
 #: views.py:42
 msgid ""
-"This view displays the error log of different object. An empty list is a "
-"good thing."
+"This view displays the error log of an object. An empty list is a good "
+"thing."
 msgstr ""
-"Diese Ansicht zeigt das Fehlerprotokoll verschiedener Objekte an. Eine leere"
-" Liste ist eine gute Sache."
 
 #: views.py:46
 msgid "There are no error log entries"
