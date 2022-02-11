@@ -1,4 +1,4 @@
-def condition_user_is_not_super_user(context, resolved_object):
+def condition_user_is_not_superuser(context, resolved_object):
     return not condition_user_is_superuser(
         context=context, resolved_object=resolved_object
     )
