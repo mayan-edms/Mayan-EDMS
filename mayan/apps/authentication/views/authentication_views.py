@@ -335,7 +335,7 @@ class MayanPasswordChangeDoneView(PasswordChangeDoneView):
             message=_('Your password has been successfully changed.'),
             request=self.request
         )
-        return redirect(to='user_management:current_user_details')
+        return redirect(to=self.request.user.get_absolute_url())
 
 
 class MayanPasswordChangeView(PasswordChangeView):

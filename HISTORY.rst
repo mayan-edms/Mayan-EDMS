@@ -225,6 +225,7 @@
 - Add menu proxy exclusions.
 - Update the subject and body fields of the document email workflow action
   to be optional.
+- Redirect to current user to user detail view after password change.
 
 4.1.5 (2022-02-03)
 ==================
