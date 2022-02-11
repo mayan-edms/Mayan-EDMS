@@ -1,6 +1,5 @@
 from rest_framework import status
 
-from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..events import event_workflow_template_edited

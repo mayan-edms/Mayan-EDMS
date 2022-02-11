@@ -3,9 +3,7 @@ from django.db.models.signals import post_delete
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.menus import (
-    menu_list_facet, menu_multi_item, menu_tools
-)
+from mayan.apps.common.menus import menu_list_facet, menu_tools
 from mayan.apps.documents.menus import menu_documents
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.signals import signal_post_document_file_upload

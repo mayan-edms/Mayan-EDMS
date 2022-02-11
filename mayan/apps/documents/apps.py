@@ -218,25 +218,13 @@ class DocumentsApp(MayanAppConfig):
         super().ready()
 
         Document = self.get_model(model_name='Document')
-        DocumentSearchResult = self.get_model(
-            model_name='DocumentSearchResult'
-        )
         DocumentFile = self.get_model(model_name='DocumentFile')
         DocumentFilePage = self.get_model(model_name='DocumentFilePage')
-        DocumentFileSearchResult = self.get_model(
-            model_name='DocumentFileSearchResult'
-        )
-        DocumentFilePageSearchResult = self.get_model(
-            model_name='DocumentFilePageSearchResult'
-        )
         DocumentType = self.get_model(model_name='DocumentType')
         DocumentTypeFilename = self.get_model(
             model_name='DocumentTypeFilename'
         )
         DocumentVersion = self.get_model(model_name='DocumentVersion')
-        DocumentVersionSearchResult = self.get_model(
-            model_name='DocumentVersionSearchResult'
-        )
         DocumentVersionPage = self.get_model(model_name='DocumentVersionPage')
         DocumentVersionPageSearchResult = self.get_model(
             model_name='DocumentVersionPageSearchResult'

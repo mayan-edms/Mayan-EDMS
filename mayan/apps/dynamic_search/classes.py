@@ -491,7 +491,6 @@ class SearchModel(AppsModuleLoaderMixin):
         except KeyError:
             raise KeyError(_('Unknown search model `%s`.') % name)
         else:
-            #if not hasattr(result, 'serializer'):
             if getattr(result, 'serializer_path', None):
                 result.serializer = import_string(
                     dotted_path=result.serializer_path
