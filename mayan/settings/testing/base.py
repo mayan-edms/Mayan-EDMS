@@ -8,13 +8,6 @@ CELERY_TASK_EAGER_PROPAGATES = True
 
 COMMON_HOME_VIEW_DASHBOARD_NAME = None
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:'
-    }
-}
-
 DOCUMENT_PARSING_AUTO_PARSING = False
 
 FILE_METADATA_AUTO_PROCESS = False
@@ -26,7 +19,7 @@ INSTALLED_APPS = [
 LOGGING_LOG_FILE_PATH = '/tmp/mayan-errors.log'
 LOGGING_LEVEL = 'WARNING'
 
-# Remove middlewares not used for tests
+# Remove middlewares not used for tests.
 # Remove whitenoise from middlewares. Causes out of memory errors during test
 # suit.
 MIDDLEWARE = [

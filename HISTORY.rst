@@ -249,12 +249,10 @@
   workflow state actions.
 - Expose the checkout datetime, expiration datetime and user fields via the
   REST API. Thanks to forum user @qra for the request.
-- Update the GitLab CI template to specify the settings file to use when
-  uploading the test document.
-- Fix GitLab CI upgrade test stage.
-- Add integrations settings module.
 - Print configuration path value when failing to access error is raised.
 - Fix references to the ``SourceBackendSANEScanner`` source backend class.
+- Reorganize the testing setting modules.
+- Remove unused MySQL testing setting module.
 
 4.1.4 (2021-12-01)
 ==================
