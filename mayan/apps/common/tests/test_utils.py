@@ -77,7 +77,7 @@ class ResolverRelatedManagerTestCase(BaseTestCase):
         self.TestModelAttribute = self._create_test_model(
             fields={
                 'label': models.CharField(
-                    max_length=1
+                    max_length=64
                 )
             }, model_name='TestModelAttribute'
         )
