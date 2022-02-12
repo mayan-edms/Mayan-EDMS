@@ -190,7 +190,7 @@ job_documentation_build:
   before_script:
     - apt-get update
     - if [ "${APT_PROXY}" ]; then echo "Acquire::http { Proxy \"http://${APT_PROXY}\"; };" > /etc/apt/apt.conf.d/01proxy; fi
-    - apt-get install --yes enchant gcc make libjpeg-dev libpng-dev python3-venv python3-dev zlib1g-dev
+    - apt-get install --yes enchant-2 gcc make libjpeg-dev libpng-dev python3-venv python3-dev zlib1g-dev
     - python3 -m venv venv
     - . venv/bin/activate
   image: debian:11.2-slim
