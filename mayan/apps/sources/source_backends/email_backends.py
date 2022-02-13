@@ -63,7 +63,7 @@ class SourceBackendIMAPEmail(
                 'the custom commands for your IMAP server.'
             ),
             'label': _('Store commands'),
-            'null': True,
+            'null': True, 'required': False
         },
         'execute_expunge': {
             'class': 'django.forms.fields.BooleanField',
