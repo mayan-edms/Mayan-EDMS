@@ -2,6 +2,10 @@
 ==================
 - Append the text "signed" to the label of a signed document file instead
   of using the temporary filename used during signing.
+- Ensure the signed document file is used when the file downloaded is
+  requested and when calculating the signed document file checksum.
+  Solves issue in forum post 6149. Thanks to forum user @qra for the report
+  and debug information.
 
 4.1.5 (2022-02-03)
 ==================
