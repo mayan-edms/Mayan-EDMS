@@ -1,3 +1,8 @@
+4.1.6 (2022-XX-XX)
+==================
+- Append the text "signed" to the label of a signed document file instead
+  of using the temporary filename used during signing.
+
 4.1.5 (2022-02-03)
 ==================
 - Fix CAA document links. Closes GitLab issue #1068. Thanks to
