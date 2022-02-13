@@ -193,7 +193,7 @@ class DocumentFile(
 
         if self.exists():
             hash_object = DocumentFile.hash_function()
-            with self.open() as file_object:
+            with self.open(raw=True) as file_object:
                 while (True):
                     data = file_object.read(block_size)
                     if not data:
@@ -274,7 +274,7 @@ class DocumentFile(
     def get_download_file_object(self):
         # Thin wrapper to make sure the normal views and API views trigger
         # then download event in the same way.
-        return self.open()
+        return self.open(raw=True)
 
     def get_intermediate_file(self):
         cache_filename = 'intermediate_file'

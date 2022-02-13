@@ -24,6 +24,10 @@
   are also root nodes as these are not accessible.
 - Append the text "signed" to the label of a signed document file instead
   of using the temporary filename used during signing.
+- Ensure the signed document file is used when the file downloaded is
+  requested and when calculating the signed document file checksum.
+  Solves issue in forum post 6149. Thanks to forum user @qra for the report
+  and debug information.
 
 4.0.21 (2021-11-29)
 ===================
