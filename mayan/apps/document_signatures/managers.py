@@ -3,6 +3,7 @@ import os
 
 from django.core.files import File
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.django_gpg.exceptions import DecryptionError
 from mayan.apps.django_gpg.models import Key
@@ -81,7 +82,10 @@ class EmbeddedSignatureManager(models.Manager):
 
             with open(file=temporary_filename, mode='rb') as file_object:
                 document_file.document.file_new(
-                    file_object=file_object, _user=user
+                    file_object=temporary_file_object,
+                    filename='{}_{}'.format(
+                        str(document_file), _('signed')
+                    ), _user=user
                 )
             instance = self.get(signature_id=result.signature_id)
             event_embedded_signature_created.commit(

@@ -22,6 +22,8 @@
 - Improve metadata validation error message.
 - Don't display API URL links to indexing instance and template parents that
   are also root nodes as these are not accessible.
+- Append the text "signed" to the label of a signed document file instead
+  of using the temporary filename used during signing.
 
 4.0.21 (2021-11-29)
 ===================
