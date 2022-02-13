@@ -240,12 +240,6 @@ class MockPOP3Mailbox:
             self._message_index_base + len(self.messages)
         ] = [TEST_EMAIL_BASE64_FILENAME]
 
-    def __enter__(self):
-        return self
-
-    def __exit__(self, *args, **kwargs):
-        self.quit()
-
     def dele(self, which):
         return self.messages.pop(which)
 

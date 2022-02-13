@@ -1,6 +1,7 @@
 from ..classes import SourceBackend
+from ..source_backends.email_backends import SourceBackendEmailMixin
 from ..source_backends.mixins import (
-    SourceBaseMixin, SourceBackendEmailMixin, SourceBackendPeriodicMixin
+    SourceBaseMixin, SourceBackendPeriodicMixin
 )
 
 __all__ = (
