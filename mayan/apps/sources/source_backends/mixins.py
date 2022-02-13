@@ -208,7 +208,8 @@ class SourceBackendEmailMixin:
                 'ssl': {
                     'class': 'django.forms.BooleanField',
                     'default': True,
-                    'label': _('SSL')
+                    'label': _('SSL'),
+                    'required': False
                 },
                 'port': {
                     'class': 'django.forms.IntegerField',

@@ -7,6 +7,7 @@
   Solves issue in forum post 6149. Thanks to forum user @qra for the report
   and debug information.
 - Update IMAP source ``store commands`` to be optional.
+- Update email sources ``SSL`` checkbox to be optional.
 
 4.1.5 (2022-02-03)
 ==================
