@@ -1,5 +1,6 @@
 import mock
 
+from mayan.apps.lock_manager.exceptions import LockError
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..exceptions import FileCachingException
@@ -159,6 +160,16 @@ class CacheModelTestCase(CacheTestMixin, BaseTestCase):
         self.test_cache.maximum_size = 1
         self.test_cache.save()
         self.assertTrue(mock_cache_prune_method.called)
+
+    def test_cache_partition_file_context_manager_locking(self):
+        self._create_test_cache()
+        self._create_test_cache_partition()
+        self._create_test_cache_partition_file()
+
+        with self.test_cache_partition_file.open():
+            with self.assertRaises(expected_exception=LockError):
+                with self.test_cache_partition_file.open():
+                    """Trigger LockError."""
 
     def test_incremental_file_index_cache_prune(self):
         self._create_test_cache(

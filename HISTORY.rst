@@ -28,6 +28,7 @@
   requested and when calculating the signed document file checksum.
   Solves issue in forum post 6149. Thanks to forum user @qra for the report
   and debug information.
+- Remove repeated partition file close call.
 
 4.0.21 (2021-11-29)
 ===================

@@ -400,7 +400,6 @@ class CachePartitionFile(models.Model):
                 raise
             else:
                 yield self._storage_object
-                self.close(_acquire_lock=False)
             finally:
                 self.close(_acquire_lock=False)
                 self._lock.release()
