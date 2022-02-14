@@ -10,8 +10,8 @@
 - Update email sources ``SSL`` checkbox to be optional.
 - Undo POP3 source context manager changes from commit
   c19040491e20c9a783ae6191613bc8c5f7acb038. It seems Python's email libraries
-  do have feature parity. ``imaplib`` was updated to support context managers
-  but ``poplib`` was not.
+  do not have feature parity. ``imaplib`` was updated to support context
+  managers but ``poplib`` was not.
 
 4.1.5 (2022-02-03)
 ==================
