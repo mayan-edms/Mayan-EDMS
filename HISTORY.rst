@@ -1,4 +1,4 @@
-4.1.6 (2022-XX-XX)
+4.1.6 (2022-02-15)
 ==================
 - Append the text "signed" to the label of a signed document file instead
   of using the temporary filename used during signing.
