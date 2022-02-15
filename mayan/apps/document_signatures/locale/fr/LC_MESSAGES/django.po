@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-11 08:39+0000\n"
+"POT-Creation-Date: 2022-02-15 09:21+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Baptiste GAILLET <baptiste.gaillet@cstb.fr>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -169,6 +169,10 @@ msgstr "Détails"
 #: links.py:105 queues.py:8
 msgid "Signatures"
 msgstr "Signatures"
+
+#: managers.py:95
+msgid "signed"
+msgstr ""
 
 #: models.py:46
 msgid "Document file"

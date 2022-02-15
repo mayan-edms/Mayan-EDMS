@@ -7,16 +7,16 @@
 # Yves Dubois <ydubois@gmail.com>, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
 # Roberto Rosario, 2022
-# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-11 08:39+0000\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>, 2022\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +30,7 @@ msgstr "Langues"
 
 #: events.py:8
 msgid "User locale profile edited"
-msgstr ""
+msgstr "Profil de paramètres régionaux de l'utilisateur modifié"
 
 #: links.py:18
 msgid "Locale profile"
@@ -67,7 +67,7 @@ msgstr "Aucun"
 #: views.py:36
 #, python-format
 msgid "Locale profile for user: %s"
-msgstr ""
+msgstr "Profil de paramètres régionaux pour l'utilisateur: %s"
 
 #: views.py:82
 #, python-format

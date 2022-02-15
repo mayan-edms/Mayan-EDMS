@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-11 08:39+0000\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -193,15 +193,124 @@ msgstr ""
 msgid "Arguments to pass to the SOURCES_SOURCE_CACHE_STORAGE_BACKEND."
 msgstr ""
 
-#: source_backends/email_backends.py:37
+#: source_backends/email_backends.py:45
+msgid "Host"
+msgstr "Διακομιστής"
+
+#: source_backends/email_backends.py:54
+msgid "SSL"
+msgstr "SSL"
+
+#: source_backends/email_backends.py:60
+msgid ""
+"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
+"for IMAP over SSL."
+msgstr ""
+"Τυπικές τιμές είναι 110 για POP3, 995 για POP3 με χρήση SSL, 143 για IMAP, "
+"993 για IMAP με χρήση SSL."
+
+#: source_backends/email_backends.py:66
+msgid "Port"
+msgstr "Θύρα"
+
+#: source_backends/email_backends.py:73
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+#: source_backends/email_backends.py:80
+msgid "Password"
+msgstr "Κωδικός πρόσβασης"
+
+#: source_backends/email_backends.py:87
+msgid ""
+"Name of the attachment that will contains the metadata type names and value "
+"pairs to be assigned to the rest of the downloaded attachments."
+msgstr ""
+"Όνομα του συνημμένου που θα περιέχει ονόματα τύπων μεταδεδομένων και ζεύγη "
+"τιμών που θα αντιστοιχιστούν στα υπόλοιπα συνημμένα που έχουν ληφθεί."
+
+#: source_backends/email_backends.py:94
+msgid "Metadata attachment name"
+msgstr "Όνομα συνημμένου μεταδεδομένων"
+
+#: source_backends/email_backends.py:100
+msgid ""
+"Select a metadata type to store the email's \"from\" value. Must be a valid "
+"metadata type for the document type selected previously."
+msgstr ""
+"Επιλέξτε έναν τύπο μεταδεδομένων για την αποθήκευση της τιμής  \"Από\" του "
+"email. Θα πρέπει να είναι  ένας έγκυρος τύπος μεταδεδομένων για τον "
+"επιλεγμένο τύπο εγγράφου."
+
+#: source_backends/email_backends.py:110
+msgid "From metadata type"
+msgstr "Από τον τύπο μεταδεδομένων"
+
+#: source_backends/email_backends.py:118
+msgid ""
+"Select a metadata type to store the email's subject value. Must be a valid "
+"metadata type for the document type selected previously."
+msgstr ""
+"Επιλέξτε έναν τύπο μεταδεδομένων για την αποθήκευση του θέματος του email. "
+"Θα πρέπει να είναι ένας έγκυρος τύπος μεταδεδομένων για τον επιλεγμένο τύπο "
+"εγγράφου."
+
+#: source_backends/email_backends.py:128
+msgid "Subject metadata type"
+msgstr "Τύπος μεταδεδομένων θέματος"
+
+#: source_backends/email_backends.py:136
+msgid ""
+"Select a metadata type to store the email's message ID value. Must be a "
+"valid metadata type for the document type selected previously."
+msgstr ""
+
+#: source_backends/email_backends.py:146
+msgid "Message ID metadata type"
+msgstr ""
+
+#: source_backends/email_backends.py:154
+msgid "Store the body of the email as a text document."
+msgstr "Αποθήκευση του σώματος του μηνύματος ως έγγραφο κειμένου."
+
+#: source_backends/email_backends.py:156
+msgid "Store email body"
+msgstr "Αποθήκευση σώματος μηνύματος "
+
+#: source_backends/email_backends.py:303
+#, python-format
+msgid ""
+"\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr ""
+"Ο \"Από\" τύπος μεταδεδομένων \"%(metadata_type)s\" δεν είναι έγκυρος για "
+"τον τύπο εγγράφου: %(document_type)s"
+
+#: source_backends/email_backends.py:317
+#, python-format
+msgid ""
+"Subject metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr ""
+"Ο τύπος μεταδεδομένων θέματος \"%(metadata_type)s\" δεν είναι έγκυρος για "
+"τον τύπο εγγράφου: %(document_type)s"
+
+#: source_backends/email_backends.py:331
+#, python-format
+msgid ""
+"Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
+" type: %(document_type)s"
+msgstr ""
+
+#: source_backends/email_backends.py:379
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "Θυρίδα IMAP που θα ελέγχεται για μηνύματα."
 
-#: source_backends/email_backends.py:41
+#: source_backends/email_backends.py:383
 msgid "Mailbox"
 msgstr "Θυρίδα"
 
-#: source_backends/email_backends.py:48
+#: source_backends/email_backends.py:390
 msgid ""
 "Criteria to use when searching for messages to process. Use the format "
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
@@ -210,11 +319,11 @@ msgstr ""
 "Χρησιμοποιήστε τη μορφή που καθορίζεται στο "
 "https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
-#: source_backends/email_backends.py:52
+#: source_backends/email_backends.py:394
 msgid "Search criteria"
 msgstr "Κριτήρια αναζήτησης"
 
-#: source_backends/email_backends.py:60
+#: source_backends/email_backends.py:402
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
 "command per line. Use the commands specified in "
@@ -226,37 +335,37 @@ msgstr ""
 "https://tools.ietf.org/html/rfc2060.html#section-6.4.6 ή τις προσαρμοσμένες "
 "εντολές για τον διακομιστή IMAP."
 
-#: source_backends/email_backends.py:65
+#: source_backends/email_backends.py:407
 msgid "Store commands"
 msgstr "Αποθήκευση εντολών"
 
-#: source_backends/email_backends.py:72
+#: source_backends/email_backends.py:414
 msgid "Execute the IMAP expunge command after processing each email message."
 msgstr ""
 "Εκτέλεση της εντολής διαγραφής IMAP μετά την επεξεργασία κάθε μηνύματος "
 "email."
 
-#: source_backends/email_backends.py:75
+#: source_backends/email_backends.py:417
 msgid "Execute expunge"
 msgstr "Εκτέλεση διαγραφής"
 
-#: source_backends/email_backends.py:82
+#: source_backends/email_backends.py:424
 msgid "IMAP Mailbox to which processed messages will be copied."
 msgstr "Γραμματοκιβώτιο IMAP στο οποίο θα αντιγραφούν επεξεργασμένα μηνύματα"
 
-#: source_backends/email_backends.py:84
+#: source_backends/email_backends.py:426
 msgid "Destination mailbox"
 msgstr "Γραμματοκιβώτιο προορισμού"
 
-#: source_backends/email_backends.py:90
+#: source_backends/email_backends.py:432
 msgid "IMAP email"
 msgstr "Λογαριασμός IMAP"
 
-#: source_backends/email_backends.py:217
+#: source_backends/email_backends.py:559
 msgid "Timeout"
 msgstr "Λήξη χρονικού ορίου"
 
-#: source_backends/email_backends.py:220
+#: source_backends/email_backends.py:562
 msgid "POP3 email"
 msgstr "Λογαριασμός POP3"
 
@@ -272,148 +381,39 @@ msgstr "Ποτέ"
 msgid "Ask user"
 msgstr "Ρώτησε χρήστη"
 
-#: source_backends/mixins.py:139
+#: source_backends/mixins.py:132
 msgid "Uncompress"
 msgstr "Αποσυμπίεση"
 
-#: source_backends/mixins.py:143
+#: source_backends/mixins.py:136
 msgid "Whether to expand or not compressed archives."
 msgstr "Αν θα αποσυμπιέζονται ή όχι συμπιεσμένα αρχεία."
 
-#: source_backends/mixins.py:167
+#: source_backends/mixins.py:160
 msgid "Expand compressed files"
 msgstr "Αποσυμπίεση αρχείου"
 
-#: source_backends/mixins.py:169
+#: source_backends/mixins.py:162
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr ""
 "Ανάρτηση των περιεχόμενων αρχείων ενός συμπιεσμένου αρχείου ως μεμονωμένα "
 "έγγραφα."
 
-#: source_backends/mixins.py:202
-msgid "Host"
-msgstr "Διακομιστής"
-
-#: source_backends/mixins.py:211
-msgid "SSL"
-msgstr "SSL"
-
-#: source_backends/mixins.py:216
-msgid ""
-"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
-"for IMAP over SSL."
-msgstr ""
-"Τυπικές τιμές είναι 110 για POP3, 995 για POP3 με χρήση SSL, 143 για IMAP, "
-"993 για IMAP με χρήση SSL."
-
-#: source_backends/mixins.py:222
-msgid "Port"
-msgstr "Θύρα"
-
-#: source_backends/mixins.py:229
-msgid "Username"
-msgstr "Όνομα χρήστη"
-
-#: source_backends/mixins.py:236
-msgid "Password"
-msgstr "Κωδικός πρόσβασης"
-
-#: source_backends/mixins.py:243
-msgid ""
-"Name of the attachment that will contains the metadata type names and value "
-"pairs to be assigned to the rest of the downloaded attachments."
-msgstr ""
-"Όνομα του συνημμένου που θα περιέχει ονόματα τύπων μεταδεδομένων και ζεύγη "
-"τιμών που θα αντιστοιχιστούν στα υπόλοιπα συνημμένα που έχουν ληφθεί."
-
-#: source_backends/mixins.py:250
-msgid "Metadata attachment name"
-msgstr "Όνομα συνημμένου μεταδεδομένων"
-
-#: source_backends/mixins.py:256
-msgid ""
-"Select a metadata type to store the email's \"from\" value. Must be a valid "
-"metadata type for the document type selected previously."
-msgstr ""
-"Επιλέξτε έναν τύπο μεταδεδομένων για την αποθήκευση της τιμής  \"Από\" του "
-"email. Θα πρέπει να είναι  ένας έγκυρος τύπος μεταδεδομένων για τον "
-"επιλεγμένο τύπο εγγράφου."
-
-#: source_backends/mixins.py:266
-msgid "From metadata type"
-msgstr "Από τον τύπο μεταδεδομένων"
-
-#: source_backends/mixins.py:274
-msgid ""
-"Select a metadata type to store the email's subject value. Must be a valid "
-"metadata type for the document type selected previously."
-msgstr ""
-"Επιλέξτε έναν τύπο μεταδεδομένων για την αποθήκευση του θέματος του email. "
-"Θα πρέπει να είναι ένας έγκυρος τύπος μεταδεδομένων για τον επιλεγμένο τύπο "
-"εγγράφου."
-
-#: source_backends/mixins.py:284
-msgid "Subject metadata type"
-msgstr "Τύπος μεταδεδομένων θέματος"
-
-#: source_backends/mixins.py:292
-msgid ""
-"Select a metadata type to store the email's message ID value. Must be a "
-"valid metadata type for the document type selected previously."
-msgstr ""
-
-#: source_backends/mixins.py:302
-msgid "Message ID metadata type"
-msgstr ""
-
-#: source_backends/mixins.py:310
-msgid "Store the body of the email as a text document."
-msgstr "Αποθήκευση του σώματος του μηνύματος ως έγγραφο κειμένου."
-
-#: source_backends/mixins.py:312
-msgid "Store email body"
-msgstr "Αποθήκευση σώματος μηνύματος "
-
-#: source_backends/mixins.py:459
-#, python-format
-msgid ""
-"\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
-"type: %(document_type)s"
-msgstr ""
-"Ο \"Από\" τύπος μεταδεδομένων \"%(metadata_type)s\" δεν είναι έγκυρος για "
-"τον τύπο εγγράφου: %(document_type)s"
-
-#: source_backends/mixins.py:473
-#, python-format
-msgid ""
-"Subject metadata type \"%(metadata_type)s\" is not valid for the document "
-"type: %(document_type)s"
-msgstr ""
-"Ο τύπος μεταδεδομένων θέματος \"%(metadata_type)s\" δεν είναι έγκυρος για "
-"τον τύπο εγγράφου: %(document_type)s"
-
-#: source_backends/mixins.py:487
-#, python-format
-msgid ""
-"Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
-" type: %(document_type)s"
-msgstr ""
-
-#: source_backends/mixins.py:588
+#: source_backends/mixins.py:251
 msgid "Assign a document type to documents uploaded from this source."
 msgstr ""
 "Ορισμός ενός τύπου εγγράφου για τα έγγραφα που μεταφορτώθηκαν από αυτή την "
 "πηγή."
 
-#: source_backends/mixins.py:594
+#: source_backends/mixins.py:257
 msgid "Document type"
 msgstr "Τύπος εγγράφου"
 
-#: source_backends/mixins.py:601
+#: source_backends/mixins.py:264
 msgid "Interval in seconds between checks for new documents."
 msgstr "Χρονικό διάστημα μεταξύ ελέγχων για νέα έγγραφα."
 
-#: source_backends/mixins.py:607
+#: source_backends/mixins.py:270
 msgid "Interval"
 msgstr "Χρονικό διάστημα"
 

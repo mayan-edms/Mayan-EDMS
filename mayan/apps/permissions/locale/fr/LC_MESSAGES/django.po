@@ -6,19 +6,19 @@
 # Translators:
 # Olivier W, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
-# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # Roberto Rosario, 2022
 # Yves Dubois <ydubois@gmail.com>, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-11 08:39+0000\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -154,37 +154,37 @@ msgstr "Rôles du groupe : %s"
 #: views.py:59
 #, python-format
 msgid "Error deleting role \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Erreur lors de la suppression du rôle \"%(instance)s\"; %(exception)s"
 
 #: views.py:64
 #, python-format
 msgid "Role \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Rôle \"%(object)s\" supprimé avec succès."
 
 #: views.py:65
 #, python-format
 msgid "%(count)d role deleted successfully."
-msgstr ""
+msgstr "%(count)d rôle supprimé avec succès."
 
 #: views.py:66
 #, python-format
 msgid "%(count)d roles deleted successfully."
-msgstr ""
+msgstr "%(count)d rôles supprimés avec succès."
 
 #: views.py:67
 #, python-format
 msgid "Delete role: %(object)s."
-msgstr ""
+msgstr "Supprimer le rôle: %(object)s."
 
 #: views.py:68
 #, python-format
 msgid "Delete the %(count)d selected role."
-msgstr ""
+msgstr "Supprimez %(count)d rôle sélectionné."
 
 #: views.py:69
 #, python-format
 msgid "Delete the %(count)d selected roles."
-msgstr ""
+msgstr "Supprimez les %(count)d rôles sélectionnés."
 
 #: views.py:95
 msgid ""
@@ -248,4 +248,4 @@ msgstr "Autorisations pour le rôle : %s"
 #: views.py:198
 #, python-format
 msgid "Details of permission: %s"
-msgstr ""
+msgstr "Détails des droits: %s"

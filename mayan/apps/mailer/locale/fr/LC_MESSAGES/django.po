@@ -7,18 +7,18 @@
 # Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
 # Roberto Rosario, 2022
-# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Yves Dubois <ydubois@gmail.com>, 2022
 # Olivier W, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-11 08:39+0000\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -161,7 +161,7 @@ msgstr ""
 
 #: literals.py:17
 msgid "Link for {{ object_name }}: {{ object }}"
-msgstr ""
+msgstr "Lien pour {{ object_name }}: {{ object }}"
 
 #: mailers.py:19 mailers.py:108
 msgid "From"
@@ -537,7 +537,7 @@ msgstr ""
 
 #: workflow_actions.py:105
 msgid "Send object via email"
-msgstr ""
+msgstr "Envoyer l'objet par courriel"
 
 #: workflow_actions.py:173
 msgid "Attach the exported document version to the email."
