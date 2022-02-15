@@ -1,3 +1,23 @@
+4.2.1 (2022-02-XX)
+==================
+- Merge improvements from version 4.1.6.
+
+  - Append the text "signed" to the label of a signed document file instead
+    of using the temporary filename used during signing.
+  - Ensure the signed document file is used when the file downloaded is
+    requested and when calculating the signed document file checksum.
+    Solves issue in forum post 6149. Thanks to forum user @qra for the report
+    and debug information.
+  - Update IMAP source ``store commands`` to be optional.
+  - Update email sources ``SSL`` checkbox to be optional.
+  - Undo POP3 source context manager changes from commit
+    c19040491e20c9a783ae6191613bc8c5f7acb038. It seems Python's email libraries
+    do not have feature parity. ``imaplib`` was updated to support context
+    managers but ``poplib`` was not.
+
+- Update requirements to specify Python version 3.6 to 3.9.
+- Update Django version 3.2.11 to 3.2.12.
+
 4.2 (2022-02-12)
 ================
 - Update Django to version 3.2.11.
