@@ -12,6 +12,7 @@
   c19040491e20c9a783ae6191613bc8c5f7acb038. It seems Python's email libraries
   do not have feature parity. ``imaplib`` was updated to support context
   managers but ``poplib`` was not.
+- Update requirements to specify Python version 3.5 to 3.9.
 
 4.1.5 (2022-02-03)
 ==================

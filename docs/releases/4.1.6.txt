@@ -30,6 +30,12 @@ The IMAP source ``store commands`` field is now optional.
 The ``SSL`` checkbox field of all email sources is now optional.
 
 
+Other
+^^^^^
+
+- Update requirements to specify Python version 3.5 to 3.9.
+
+
 Removals
 --------
 
