@@ -13,6 +13,7 @@
   do not have feature parity. ``imaplib`` was updated to support context
   managers but ``poplib`` was not.
 - Update requirements to specify Python version 3.5 to 3.9.
+- Update Django version 2.2.24 to 2.2.27.
 
 4.1.5 (2022-02-03)
 ==================

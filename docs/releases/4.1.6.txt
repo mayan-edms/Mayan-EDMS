@@ -34,7 +34,7 @@ Other
 ^^^^^
 
 - Update requirements to specify Python version 3.5 to 3.9.
-
+- Update Django version 2.2.24 to 2.2.27.
 
 Removals
 --------
