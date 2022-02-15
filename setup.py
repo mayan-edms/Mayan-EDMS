@@ -60,7 +60,7 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-django==2.2.24
+django==2.2.27
 Pillow==8.3.1
 PyPDF2==1.26.0
 PyYAML==5.4.1
@@ -132,6 +132,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: WSGI :: Application',
         'Topic :: Communications :: File Sharing',
