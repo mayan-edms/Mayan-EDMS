@@ -1,7 +1,7 @@
 Version 4.2
 ===========
 
-Released: February XX, 2022
+Released: February 12, 2022
 
 Status: Stable
 
