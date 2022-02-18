@@ -29,9 +29,9 @@ The installation steps will be performed on |DEFAULT_OS_DISTRIBUTION|.
        libarchive-zip-perl libimage-exiftool-perl libmagic1 \
        libreoffice-calc-nogui libreoffice-draw-nogui libreoffice-impress-nogui \
        libreoffice-math-nogui libreoffice-writer-nogui libfile-mimeinfo-perl \
-       libldap-2.4-2 libldap-dev libmariadb3 libpq-dev libpq5 libsasl2-dev \
-       libsasl2-2 poppler-utils postgresql python3-dev python3-venv \
-       rabbitmq-server redis-server sane-utils supervisor tesseract-ocr
+       libldap-2.4-2 libldap-dev libpq-dev libpq5 libsasl2-dev libsasl2-2 \
+       poppler-utils postgresql python3-dev python3-venv rabbitmq-server \
+       redis-server sane-utils supervisor tesseract-ocr
 
 
    .. important::
