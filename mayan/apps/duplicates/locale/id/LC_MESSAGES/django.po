@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# Adek Lanin, 2021
+# Adek Lanin, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-12 03:39+0000\n"
-"Last-Translator: Adek Lanin, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Adek Lanin, 2022\n"
 "Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,11 +20,11 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:30 apps.py:56 links.py:14 queues.py:9
+#: apps.py:28 apps.py:54 links.py:14 queues.py:9
 msgid "Duplicates"
 msgstr "Duplikat"
 
-#: apps.py:62
+#: apps.py:60
 msgid "Duplicate backend"
 msgstr ""
 

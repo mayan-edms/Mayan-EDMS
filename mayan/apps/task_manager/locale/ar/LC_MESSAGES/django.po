@@ -4,19 +4,19 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
-# Yaman Sanobar <yman.snober@gmail.com>, 2021
-# Ali Alahnomy <ashari@open-alt.com>, 2021
-# Marwan Rahhal <Marwanr@sssit.net>, 2021
-# WM Shinkada <shinkadawasim@gmail.com>, 2021
+# Ali Alahnomy <ashari@open-alt.com>, 2022
+# WM Shinkada <shinkadawasim@gmail.com>, 2022
+# Yaman Sanobar <yman.snober@gmail.com>, 2022
+# Roberto Rosario, 2022
+# Marwan Rahhal <Marwanr@sssit.net>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:17+0000\n"
-"PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

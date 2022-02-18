@@ -4,17 +4,17 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
-# Tomasz Szymanowicz <alakdae@gmail.com>, 2021
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2022
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2022
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:26+0000\n"
-"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,11 +22,11 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:40
+#: apps.py:41
 msgid "Linking"
 msgstr "Łącza"
 
-#: apps.py:100 models.py:29
+#: apps.py:106 models.py:29
 msgid "Label"
 msgstr "Etykieta"
 
@@ -244,11 +244,11 @@ msgstr "Edytuj łącza"
 msgid "View existing smart links"
 msgstr "Przeglądaj istniejące łącza"
 
-#: serializers.py:49
+#: serializers.py:50
 msgid "Primary key of the document type to add to the smart link."
 msgstr ""
 
-#: serializers.py:58
+#: serializers.py:59
 msgid "Primary key of the document type to remove from the smart link."
 msgstr ""
 

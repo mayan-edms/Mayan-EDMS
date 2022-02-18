@@ -3,9 +3,7 @@ from django.db.models.signals import post_delete
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.menus import (
-    menu_list_facet, menu_multi_item, menu_tools
-)
+from mayan.apps.common.menus import menu_list_facet, menu_tools
 from mayan.apps.documents.menus import menu_documents
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.signals import signal_post_document_file_upload
@@ -73,14 +71,6 @@ class DuplicatesApp(MayanAppConfig):
         menu_tools.bind_links(
             links=(link_duplicated_document_scan,)
         )
-
-        # DuplicateSourceDocument
-
-        menu_multi_item.add_proxy_inclusions(source=DuplicateSourceDocument)
-
-        # DuplicateTargetDocument
-
-        menu_multi_item.add_proxy_inclusions(source=DuplicateTargetDocument)
 
         post_delete.connect(
             dispatch_uid='duplicates_handler_remove_empty_duplicates_lists',

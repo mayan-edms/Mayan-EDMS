@@ -341,6 +341,7 @@ class EmbeddedSignaturesTestCase(
 
         self.test_document_path = TEST_DOCUMENT_PATH
         self._upload_test_document()
+        test_document_file_count = self.test_document.files.count()
 
         with self.test_document.file_latest.open() as file_object:
             file_object.seek(0, 2)
@@ -364,6 +365,37 @@ class EmbeddedSignaturesTestCase(
 
         self.assertEqual(original_size, new_size)
         self.assertEqual(original_hash, new_hash)
+        self.assertEqual(
+            self.test_document.files.count(), test_document_file_count + 1
+        )
+
+        test_document_file_signed = self.test_document.files.last()
+        self.assertNotEqual(
+            self.test_document_file.checksum,
+            test_document_file_signed.checksum
+        )
+        self.assertEqual(
+            self.test_document_file.mimetype,
+            test_document_file_signed.mimetype
+        )
+        self.assertEqual(
+            self.test_document_file.pages.count(),
+            test_document_file_signed.pages.count()
+        )
+        self.assertNotEqual(
+            self.test_document_file.size,
+            test_document_file_signed.size
+        )
+
+        with test_document_file_signed.get_download_file_object() as file_object:
+            test_document_file_signed_download_file_checksum = hashlib.sha256(
+                file_object.read()
+            ).hexdigest()
+
+        self.assertEqual(
+            test_document_file_signed.checksum,
+            test_document_file_signed_download_file_checksum
+        )
 
     def test_document_no_signature(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH

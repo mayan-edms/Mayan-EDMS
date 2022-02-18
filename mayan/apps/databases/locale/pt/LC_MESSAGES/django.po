@@ -3,12 +3,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Bruno Martins <bruno.martins@bewgpt.com.pt>, 2022
+# Márcia Ferreira, 2022
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-10-07 06:42+0000\n"
+"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,26 +21,43 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: apps.py:16
+msgid "Databases"
+msgstr ""
+
+#: literals.py:10
+msgid ""
+"Your database backend is set to use SQLite. SQLite should only be used for "
+"development and testing, not for production."
+msgstr ""
+"A sua base de dados de backend está configura para utilizar SQLite. SQLite "
+"deverá ser apenas utilizado para desenvolvimento e teste, nunca para "
+"produção. "
+
 #: model_mixins.py:18
 msgid "The dotted Python path to the backend class."
-msgstr ""
+msgstr "O caminho pontilhado Python para a classe de backend."
 
 #: model_mixins.py:19
 msgid "Backend path"
-msgstr ""
+msgstr "Caminho do backend"
 
 #: model_mixins.py:23
 msgid "JSON encoded data for the backend class."
-msgstr ""
+msgstr "Dados JSON codificado para a classe de backend."
 
 #: model_mixins.py:24
 msgid "Backend data"
-msgstr ""
+msgstr "Dados do backend"
 
 #: model_mixins.py:72
 msgid "Backend"
-msgstr ""
+msgstr "Backend"
 
 #: model_mixins.py:73
 msgid "The backend class for this entry."
-msgstr ""
+msgstr "Classe de backend para esta entrada"
+
+#: templates/databases/app/viewport.html:11
+msgid "Warning"
+msgstr "Aviso"

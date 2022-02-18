@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:17+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,9 +20,9 @@ msgstr ""
 "Language: es_PR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
+#: apps.py:51 apps.py:158 apps.py:162 apps.py:166 apps.py:170 apps.py:174
 #: events.py:5 forms.py:14 links.py:30 menus.py:14 models.py:50 models.py:174
-#: permissions.py:5 search.py:56 views.py:155 workflow_actions.py:20
+#: permissions.py:5 search.py:60 views.py:155 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "Gabinetes"
 
@@ -72,7 +72,7 @@ msgstr "Todos"
 
 #: links.py:85
 msgid "Details"
-msgstr "Detalles"
+msgstr "Ver detalles"
 
 #: methods.py:20
 msgid "Return a list of cabinets containing the document."
@@ -119,7 +119,7 @@ msgstr "%(model_name)s con este %(field_labels)s ya existe."
 msgid "Document cabinet"
 msgstr "Gabinete del documento"
 
-#: models.py:186 search.py:63 search.py:70 search.py:77 search.py:84
+#: models.py:186 search.py:67 search.py:74 search.py:81 search.py:88
 msgid "Document cabinets"
 msgstr "Gabinetes de documentos"
 
@@ -147,29 +147,29 @@ msgstr "Quitar documentos de los gabinetes"
 msgid "View cabinets"
 msgstr "Ver gabinetes"
 
-#: search.py:33
+#: search.py:35
 msgid "Document type"
 msgstr "Tipo de documento"
 
-#: search.py:36
-msgid "Document MIME type"
-msgstr "Tipo MIME del documento"
-
-#: search.py:39
+#: search.py:38
 msgid "Document label"
 msgstr "Etiqueta de documento"
 
-#: search.py:42
+#: search.py:41
 msgid "Document description"
 msgstr "Descripción del documento"
 
-#: search.py:45
+#: search.py:44
 msgid "Document UUID"
-msgstr "UUID del documento"
+msgstr "Documento"
 
-#: search.py:50
-msgid "Document checksum"
-msgstr "Suma de comprobación del documento"
+#: search.py:51
+msgid "Document file checksum"
+msgstr "Suma de comprobación del archivo de documento"
+
+#: search.py:54
+msgid "Document file MIME type"
+msgstr "Codificación MIME del archivo de documento "
 
 #: serializers.py:18
 msgid "List of children cabinets."

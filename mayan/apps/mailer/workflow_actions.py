@@ -76,7 +76,7 @@ class ObjectEmailActionMixin:
                 'help_text': _(
                     'Subject of the email. Can be a string or a template.'
                 ),
-                'required': True
+                'required': False
             }
         },
         'body': {
@@ -86,7 +86,7 @@ class ObjectEmailActionMixin:
                     'Body of the email to send. Can be a string or '
                     'a template.'
                 ),
-                'required': True
+                'required': False
             }
         },
         'attachment': {
@@ -206,3 +206,10 @@ class DocumentEmailAction(ObjectEmailActionMixin, WorkflowAction):
 
     def get_object(self, context):
         return context['document']
+
+
+class EmailAction(DocumentEmailAction):
+    """
+    Sub class for backwards compatibility with existing workflow state
+    actions.
+    """

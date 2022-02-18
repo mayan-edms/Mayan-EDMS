@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Nurgül Özkan <nurgulozkan@hotmail.com>, 2021
-# serhatcan77 <serhat_can@yahoo.com>, 2021
+# Nurgül Özkan <nurgulozkan@hotmail.com>, 2022
+# serhatcan77 <serhat_can@yahoo.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:17+0000\n"
-"PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2022\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,11 +37,11 @@ msgstr "İsim"
 msgid "Value"
 msgstr "Değer"
 
-#: classes.py:347
+#: classes.py:348
 msgid "Overridden"
 msgstr ""
 
-#: classes.py:349
+#: classes.py:350
 msgid "Is this settings being overridden by an environment variable?"
 msgstr ""
 

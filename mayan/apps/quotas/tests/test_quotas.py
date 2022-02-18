@@ -99,7 +99,7 @@ class DocumentCountQuotaTestCase(GroupTestMixin, GenericDocumentTestCase):
 
         self._upload_test_document(_user=self._test_case_user)
 
-    def test_super_user_restriction(self):
+    def test_superuser_restriction(self):
         self._create_test_superuser()
 
         self.test_quota = DocumentCountQuota.create(
@@ -189,7 +189,7 @@ class DocumentSizeQuotaTestCase(GroupTestMixin, GenericDocumentTestCase):
 
         self._upload_test_document(_user=self._test_case_user)
 
-    def test_super_user_restriction(self):
+    def test_superuser_restriction(self):
         self._create_test_superuser()
 
         self.test_quota = DocumentSizeQuota.create(

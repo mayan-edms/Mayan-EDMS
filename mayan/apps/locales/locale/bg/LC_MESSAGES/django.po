@@ -4,16 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# Roberto Rosario, 2022
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2022
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-12 03:39+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,42 +22,52 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27
+#: apps.py:28 events.py:5
 msgid "Locales"
 msgstr "Места"
 
-#: links.py:13
+#: events.py:8
+msgid "User locale profile edited"
+msgstr ""
+
+#: links.py:18
 msgid "Locale profile"
 msgstr "Локален профил"
 
-#: links.py:18
+#: links.py:25
 msgid "Edit locale profile"
 msgstr "Редактиране на локален профил"
 
-#: models.py:18
+#: models.py:21
 msgid "User"
 msgstr "Потребител"
 
-#: models.py:22
+#: models.py:25
 msgid "Timezone"
 msgstr "Часова зона"
 
-#: models.py:25
+#: models.py:28
 msgid "Language"
 msgstr "Език"
 
-#: models.py:31
+#: models.py:34
 msgid "User locale profile"
 msgstr "Профил на местоположението на потребителя"
 
-#: models.py:32
+#: models.py:35
 msgid "User locale profiles"
 msgstr "Профили на местоположението на потребителя"
 
-#: views.py:24
-msgid "Current user locale profile details"
-msgstr "Данни от текущия локален потребителски профил "
+#: models.py:39
+msgid "None"
+msgstr "Няма"
 
-#: views.py:30
-msgid "Edit current user locale profile details"
-msgstr "Редактиране на данни за текущия локален потребителски профил"
+#: views.py:36
+#, python-format
+msgid "Locale profile for user: %s"
+msgstr ""
+
+#: views.py:82
+#, python-format
+msgid "Edit locale profile for user: %s"
+msgstr ""

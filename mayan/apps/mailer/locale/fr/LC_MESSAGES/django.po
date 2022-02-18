@@ -4,21 +4,21 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
-# Olivier W, 2021
-# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
-# Yves Dubois <ydubois@gmail.com>, 2021
-# Guillaume Trottier <gui.trottier@gmail.com>, 2021
-# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Guillaume Trottier <gui.trottier@gmail.com>, 2022
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2022
+# Roberto Rosario, 2022
+# Yves Dubois <ydubois@gmail.com>, 2022
+# Olivier W, 2022
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,6 +42,14 @@ msgstr "Liste de diffusion"
 msgid "Email sent"
 msgstr "Courriel envoyé"
 
+#: events.py:11
+msgid "Mailing profile created"
+msgstr ""
+
+#: events.py:14
+msgid "Mailing profile edited"
+msgstr ""
+
 #: forms.py:58 forms.py:93
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
@@ -60,7 +68,7 @@ msgstr "Sujet"
 
 #: forms.py:64 workflow_actions.py:83
 msgid "Body"
-msgstr "Corps"
+msgstr "Contenu"
 
 #: forms.py:68
 msgid "The email profile that will be used to send this email."
@@ -68,7 +76,7 @@ msgstr ""
 "Le profil de messagerie qui sera utilisé pour envoyer ce courrier "
 "électronique."
 
-#: forms.py:69 models.py:57 views/mailing_profile_views.py:120
+#: forms.py:69 models.py:61 views/mailing_profile_views.py:126
 #: workflow_actions.py:19
 msgid "Mailing profile"
 msgstr "Profil de la liste de diffusion"
@@ -121,11 +129,11 @@ msgstr "Modifier"
 msgid "Mailing profiles list"
 msgstr "Liste des profils de diffusion"
 
-#: links.py:117 models.py:58
+#: links.py:117 models.py:62
 msgid "Mailing profiles"
 msgstr "Profil de diffusion"
 
-#: links.py:122 views/mailing_profile_views.py:144
+#: links.py:122 views/mailing_profile_views.py:152
 msgid "Test"
 msgstr "Test"
 
@@ -153,7 +161,7 @@ msgstr ""
 
 #: literals.py:17
 msgid "Link for {{ object_name }}: {{ object }}"
-msgstr ""
+msgstr "Lien pour {{ object_name }}: {{ object }}"
 
 #: mailers.py:19 mailers.py:108
 msgid "From"
@@ -255,15 +263,15 @@ msgstr "Chemin du fichier"
 msgid "Django file based backend"
 msgstr "Backend Django basé sur un fichier"
 
-#: models.py:34
+#: models.py:38
 msgid "A short text describing the mailing profile."
 msgstr "Un court texte décrivant le profil de courriel."
 
-#: models.py:35
+#: models.py:39
 msgid "Label"
 msgstr "Étiquette"
 
-#: models.py:39
+#: models.py:43
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
@@ -271,27 +279,27 @@ msgstr ""
 "Si \"Défaut\", ce profil de liste de diffusion sera présélectionné sur le "
 "formulaire de diffusion du document."
 
-#: models.py:41
+#: models.py:45
 msgid "Default"
 msgstr "Défaut"
 
-#: models.py:43
+#: models.py:47
 msgid "Enabled"
 msgstr "Activé"
 
-#: models.py:46
+#: models.py:50
 msgid "The dotted Python path to the backend class."
 msgstr "Un chemin Python séparé par des point vers la classe de support."
 
-#: models.py:47
+#: models.py:51
 msgid "Backend path"
 msgstr "Chemin du backend"
 
-#: models.py:50
+#: models.py:54
 msgid "Backend data"
 msgstr "Données du backend"
 
-#: models.py:221
+#: models.py:237
 msgid "Test email from Mayan EDMS"
 msgstr "Tester le courriel depuis Mayan EDMS"
 
@@ -428,17 +436,17 @@ msgstr "Sélection du backend de nouveau profil de liste de diffusion"
 msgid "Create a \"%s\" mailing profile"
 msgstr "Créer un profil de diffusion \"%s\""
 
-#: views/mailing_profile_views.py:82
+#: views/mailing_profile_views.py:85
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Supprimer un profil de diffusion %s"
 
-#: views/mailing_profile_views.py:94
+#: views/mailing_profile_views.py:97
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Modifier un profile de liste de diffusion %s"
 
-#: views/mailing_profile_views.py:115
+#: views/mailing_profile_views.py:121
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
@@ -447,15 +455,15 @@ msgstr ""
 "de courriel permettent d'envoyer des documents sous forme de pièces jointes "
 "ou de liens par courriel."
 
-#: views/mailing_profile_views.py:119
+#: views/mailing_profile_views.py:125
 msgid "No mailing profiles available"
 msgstr "Aucun profil d'envoi de courriels disponible"
 
-#: views/mailing_profile_views.py:136
+#: views/mailing_profile_views.py:144
 msgid "Test email sent."
 msgstr "Courriel de test envoyé."
 
-#: views/mailing_profile_views.py:145
+#: views/mailing_profile_views.py:153
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Tester le profil de diffusion: %s"
@@ -529,7 +537,7 @@ msgstr ""
 
 #: workflow_actions.py:105
 msgid "Send object via email"
-msgstr ""
+msgstr "Envoyer l'objet par courriel"
 
 #: workflow_actions.py:173
 msgid "Attach the exported document version to the email."

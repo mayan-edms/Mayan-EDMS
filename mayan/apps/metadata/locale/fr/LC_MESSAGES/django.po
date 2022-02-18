@@ -4,22 +4,22 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
-# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2021
-# Olivier W, 2021
-# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
-# Yves Dubois <ydubois@gmail.com>, 2021
-# Frédéric Sheedy <sheedf@gmail.com>, 2021
-# Guillaume Trottier <gui.trottier@gmail.com>, 2021
+# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2022
+# Olivier W, 2022
+# Roberto Rosario, 2022
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
+# Guillaume Trottier <gui.trottier@gmail.com>, 2022
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2022
+# Yves Dubois <ydubois@gmail.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,24 +27,24 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:64 apps.py:194 apps.py:200 apps.py:204 apps.py:209 apps.py:213
-#: events.py:5 links.py:52 permissions.py:5 queues.py:7 settings.py:9
+#: apps.py:67 apps.py:205 apps.py:211 apps.py:215 apps.py:220 apps.py:224
+#: events.py:5 links.py:52 permissions.py:5 queues.py:7
 msgid "Metadata"
 msgstr "Métadonnées"
 
-#: apps.py:126
+#: apps.py:137
 msgid "Return the value of a specific document metadata."
 msgstr "Renvoie la valeur d'une métadonnée de document spécifique."
 
-#: apps.py:127
+#: apps.py:138
 msgid "Metadata value of"
 msgstr "Valeur de la métadonnée de"
 
-#: apps.py:132
+#: apps.py:143
 msgid "Metadata type name"
 msgstr "Nom du type de métadonnée"
 
-#: apps.py:136
+#: apps.py:147
 msgid "Metadata type value"
 msgstr "Valeur du type de métadonnée"
 
@@ -76,11 +76,11 @@ msgstr "Relation du type de métadonnées mise à jour"
 msgid "ID"
 msgstr "ID"
 
-#: forms.py:17 models.py:52
+#: forms.py:17 models.py:39
 msgid "Name"
 msgstr "Nom"
 
-#: forms.py:26 models.py:189 workflow_actions.py:93
+#: forms.py:26 models.py:204 workflow_actions.py:93
 msgid "Value"
 msgstr "Valeur"
 
@@ -88,7 +88,7 @@ msgstr "Valeur"
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: forms.py:52 forms.py:199 models.py:277
+#: forms.py:52 forms.py:208 models.py:292
 msgid "Required"
 msgstr "Obligatoire"
 
@@ -111,7 +111,7 @@ msgstr "\"%s\" est obligatoire pour ce type de document."
 msgid "Metadata types to be added to the selected documents."
 msgstr "Types de métadonnées à ajouter aux documents sélectionnés."
 
-#: forms.py:131 models.py:87 models.py:275 search.py:14 workflow_actions.py:86
+#: forms.py:131 models.py:87 models.py:290 search.py:14 workflow_actions.py:86
 msgid "Metadata type"
 msgstr "Type de métadonnée"
 
@@ -123,11 +123,11 @@ msgstr "Retirer"
 msgid " Available template context variables: "
 msgstr "Variables de contexte disponibles pour ce modèle :"
 
-#: forms.py:197
+#: forms.py:206
 msgid "None"
 msgstr "Aucun"
 
-#: forms.py:198
+#: forms.py:207
 msgid "Optional"
 msgstr "Optionnel"
 
@@ -164,6 +164,42 @@ msgstr "Supprimer"
 msgid "Edit"
 msgstr "Modifier"
 
+#: metadata_parsers.py:11
+msgid "Date and time parser"
+msgstr ""
+
+#: metadata_parsers.py:18
+msgid "Date parser"
+msgstr ""
+
+#: metadata_parsers.py:26
+msgid "Regular expression parser"
+msgstr ""
+
+#: metadata_parsers.py:36
+msgid "Time parser"
+msgstr ""
+
+#: metadata_validators.py:12
+msgid "Date and time validator"
+msgstr ""
+
+#: metadata_validators.py:19
+msgid "Date validator"
+msgstr ""
+
+#: metadata_validators.py:27
+msgid "Regular expression validator"
+msgstr ""
+
+#: metadata_validators.py:35
+msgid "The input string does not match the pattern."
+msgstr ""
+
+#: metadata_validators.py:40
+msgid "Time validator"
+msgstr "Validateur de temps"
+
 #: methods.py:20
 msgid "Return the metadata of the document."
 msgstr "Renvoie les métadonnées du document."
@@ -172,7 +208,7 @@ msgstr "Renvoie les métadonnées du document."
 msgid "Selected documents must be of the same type."
 msgstr "Les documents sélectionnés doivent être du même type."
 
-#: models.py:49
+#: models.py:36
 msgid ""
 "Name used by other apps to reference this metadata type. Do not use python "
 "reserved words, or spaces."
@@ -180,33 +216,33 @@ msgstr ""
 "Nom utilisé par d'autres applications pour faire référence à ce type de "
 "métadonnées. N'utilisez pas de mots réservés Python, ni d'espace."
 
-#: models.py:55
+#: models.py:42
 msgid "Short description of this metadata type."
 msgstr "Courte description de ce type de métadonnées."
 
-#: models.py:56
+#: models.py:43
 msgid "Label"
 msgstr "Étiquette"
 
-#: models.py:60
+#: models.py:47
 msgid "Enter a template to render."
 msgstr "Entrez un modèle à interpréter."
 
-#: models.py:61
+#: models.py:48
 msgid "Default"
 msgstr "Défaut"
 
-#: models.py:65
+#: models.py:52
 msgid "Enter a template to render. Must result in a comma delimited string."
 msgstr ""
 "Entrez un modèle à interpréter. Doit avoir pour résultat une chaîne "
 "délimitée par des virgules."
 
-#: models.py:67
+#: models.py:54
 msgid "Lookup"
 msgstr "Consultation de table"
 
-#: models.py:72
+#: models.py:58
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
@@ -214,11 +250,19 @@ msgstr ""
 "Le système de validation rejettera les données saisies si elles ne sont pas "
 "conformes au format attendu."
 
-#: models.py:74
+#: models.py:60
 msgid "Validator"
 msgstr "Validateur"
 
-#: models.py:78
+#: models.py:64
+msgid "Enter the arguments for the validator in YAML format."
+msgstr ""
+
+#: models.py:66
+msgid "Validator arguments"
+msgstr ""
+
+#: models.py:71
 msgid ""
 "The parser will reformat the value entered to conform to the expected "
 "format."
@@ -226,49 +270,62 @@ msgstr ""
 "L'analyseur syntaxique reformatera la valeur saisie pour la rendre conforme "
 "au format attendu."
 
-#: models.py:80
+#: models.py:73
 msgid "Parser"
 msgstr "Analyseur"
+
+#: models.py:77
+msgid "Enter the arguments for the parser in YAML format."
+msgstr ""
+
+#: models.py:79
+msgid "Parser arguments"
+msgstr ""
 
 #: models.py:159
 msgid "Value is not one of the provided options."
 msgstr "La valeur saisie ne fait pas partie des options proposées."
 
-#: models.py:180
+#: models.py:173
+#, python-format
+msgid "Metadata type validation error; %(exception)s"
+msgstr ""
+
+#: models.py:195
 msgid "Document"
 msgstr "Document"
 
-#: models.py:183
+#: models.py:198
 msgid "Type"
 msgstr "Type"
 
-#: models.py:187
+#: models.py:202
 msgid "The actual value stored in the metadata type field for the document."
 msgstr ""
 "La valeur actuellement enregistrée dans le champ de type de métadonnées du "
 "document."
 
-#: models.py:195 models.py:196
+#: models.py:210 models.py:211
 msgid "Document metadata"
 msgstr "Métadonnées du document"
 
-#: models.py:223
+#: models.py:238
 msgid "Metadata type is required for this document type."
 msgstr "Le type de métadonnées est obligatoire pour ce type de document."
 
-#: models.py:258
+#: models.py:273
 msgid "Metadata type is not valid for this document type."
 msgstr "Le type de métadonnées n'est pas valide pour ce type de document."
 
-#: models.py:271
+#: models.py:286
 msgid "Document type"
 msgstr "Type de document"
 
-#: models.py:284
+#: models.py:299
 msgid "Document type metadata type options"
 msgstr "Options de type de métadonnées du type de document "
 
-#: models.py:285
+#: models.py:300
 msgid "Document type metadata types options"
 msgstr "Options de types de métadonnées du type de document"
 
@@ -328,15 +385,15 @@ msgstr "Type de métadonnée de document"
 msgid "Document metadata value"
 msgstr "Valeur de la métadonnée de document"
 
-#: serializers.py:48
+#: serializers.py:47
 msgid "Primary key of the metadata type to be added."
 msgstr "Clé primaire du type de métadonnées à ajouter."
 
-#: serializers.py:49
+#: serializers.py:48
 msgid "Metadata type ID"
-msgstr ""
+msgstr "ID du type de métadonnées"
 
-#: serializers.py:94
+#: serializers.py:93
 msgid "Primary key of the metadata type to be added to the document."
 msgstr "Clé primaire du type de métadonnées à ajouter au document."
 
@@ -521,17 +578,17 @@ msgstr ""
 #: views/metadata_type_views.py:60
 #, python-format
 msgid "Delete metadata type: %(object)s."
-msgstr ""
+msgstr "Supprimer le type de métadonnées: %(object)s."
 
 #: views/metadata_type_views.py:61
 #, python-format
 msgid "Delete the %(count)d selected metadata type."
-msgstr ""
+msgstr "Supprimez %(count)d type de métadonnées sélectionné."
 
 #: views/metadata_type_views.py:62
 #, python-format
 msgid "Delete the %(count)d selected metadata types."
-msgstr ""
+msgstr "Supprimez les %(count)d types de métadonnées sélectionnés."
 
 #: views/metadata_type_views.py:77
 #, python-format
@@ -614,6 +671,9 @@ msgid ""
 "%(document)s. Document does not have the metadata type to be edited. "
 "Exception: %(exception)s"
 msgstr ""
+"Impossible de modifier le type de métadonnées \"%(metadata_type)s\" du "
+"document: %(document)s. Le document n'a pas le type de métadonnées à "
+"modifier. Exception: %(exception)s"
 
 #: workflow_actions.py:172
 msgid "Metadata types to remove from the document."

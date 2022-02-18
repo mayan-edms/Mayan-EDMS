@@ -4,18 +4,18 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2021
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# Roberto Rosario, 2022
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2022
+# 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2022
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:28+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,11 +23,11 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:43 events.py:6 models.py:37 models.py:157 permissions.py:5
+#: apps.py:44 events.py:6 models.py:37 models.py:157 permissions.py:5
 msgid "Permissions"
 msgstr "Разрешения"
 
-#: apps.py:100 models.py:75
+#: apps.py:106 models.py:75
 msgid "Group count"
 msgstr "Брой групи"
 
@@ -119,19 +119,19 @@ msgstr "Преглед на роли"
 msgid "Group name"
 msgstr "Име на групата"
 
-#: serializers.py:31
+#: serializers.py:30
 msgid "Primary key of the group to add to the role."
 msgstr "Основен ключ на групата, който да добавите към ролята."
 
-#: serializers.py:39
+#: serializers.py:38
 msgid "Primary key of the group to remove from the role."
 msgstr "Основен ключ на групата за премахване от ролята."
 
-#: serializers.py:47
+#: serializers.py:46
 msgid "Primary key of the permission to add to the role."
 msgstr "Основен ключ на разрешението за добавяне към ролята."
 
-#: serializers.py:54
+#: serializers.py:53
 msgid "Primary key of the permission to remove from the role."
 msgstr "Основен ключ на разрешението за премахване от ролята."
 

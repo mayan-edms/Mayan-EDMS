@@ -7,14 +7,11 @@ from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import (
     FilteredPrimaryKeyRelatedField, MultiKwargHyperlinkedIdentityField
 )
-from mayan.apps.rest_api.serializer_mixins import CreateOnlyFieldSerializerMixin
 
 from .models import AccessControlList
 
 
-class ACLSerializer(
-    CreateOnlyFieldSerializerMixin, serializers.ModelSerializer
-):
+class ACLSerializer(serializers.ModelSerializer):
     content_type = ContentTypeSerializer(read_only=True)
     permissions_add_url = MultiKwargHyperlinkedIdentityField(
         view_name='rest_api:accesscontrollist-permission-add',

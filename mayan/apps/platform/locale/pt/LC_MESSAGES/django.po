@@ -4,15 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:28+0000\n"
-"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,36 +28,41 @@ msgstr "Platforma"
 
 #: classes.py:183
 msgid "Template for entrypoint.sh file inside a Docker image."
-msgstr ""
+msgstr "Modelo para o ficheiro entrypoint.sh dentro de uma imagem Docker."
 
-#: classes.py:193
+#: classes.py:194
 msgid "Template that generates a Dockerfile file."
-msgstr ""
+msgstr "Modelo que gera um ficheiro Dockerfile."
 
-#: classes.py:207
+#: classes.py:209
 msgid "Template for Supervisord inside a Docker image."
-msgstr ""
+msgstr "Template para o Supervisord dentro de uma imagem do Docker"
 
-#: classes.py:224
+#: classes.py:227
 msgid "Template that generates a GitLab CI config file."
-msgstr ""
+msgstr "Modelo que gera um ficheiro GitLab CI config."
 
-#: classes.py:268
+#: classes.py:271
 msgid "Template for Supervisord."
-msgstr ""
+msgstr "Template para Supervisord"
 
-#: classes.py:341
+#: classes.py:344
 msgid "Template showing the queues of a worker."
-msgstr ""
+msgstr "Template exibindo as filas de um worker"
 
 #: settings.py:16
 msgid ""
 "List of client backends to launch after startup. Use full dotted path to the"
 " client backend classes."
 msgstr ""
+"Lista de backends de clientes a carregar depois do arranque. Utilize todo o "
+"caminho pontilhado para as classes backend do cliente."
 
 #: settings.py:23
 msgid ""
 "Arguments for the client backends. Use the client backend dotted path as the"
 " dictionary key for the arguments in dictionary format."
 msgstr ""
+"Argumentos para backends de clientes. Utilize o caminho pontilhado do "
+"cliente como a chave de dicionário para os argumentos em formato de "
+"dicionário."

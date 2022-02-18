@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
 "PO-Revision-Date: 2019-12-13 05:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:40
+#: apps.py:41
 msgid "Linking"
 msgstr ""
 
-#: apps.py:100 models.py:29
+#: apps.py:106 models.py:29
 msgid "Label"
 msgstr ""
 
@@ -236,11 +236,11 @@ msgstr ""
 msgid "View existing smart links"
 msgstr ""
 
-#: serializers.py:49
+#: serializers.py:50
 msgid "Primary key of the document type to add to the smart link."
 msgstr ""
 
-#: serializers.py:58
+#: serializers.py:59
 msgid "Primary key of the document type to remove from the smart link."
 msgstr ""
 

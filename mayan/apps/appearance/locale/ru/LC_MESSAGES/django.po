@@ -4,20 +4,20 @@
 # 
 # Translators:
 # Translators:
-# Sergey Glita <gsv70@mail.ru>, 2021
-# lilo.panic, 2021
-# mizhgan <i@mizhgan.ru>, 2021
-# Panasoft, 2021
-# OLeg Si <olegsm35@gmail.com>, 2021
-# Ilya Pavlov <spirkaa@gmail.com>, 2021
+# Oleg Sizov <olegsm35@gmail.com>, 2022
+# Sergey Glita <gsv70@mail.ru>, 2022
+# mizhgan <i@mizhgan.ru>, 2022
+# lilo.panic, 2022
+# Panasoft, 2022
+# Ilya Pavlov <spirkaa@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:13+0000\n"
-"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"PO-Revision-Date: 2022-02-03 10:11+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:55 events.py:5 permissions.py:5 settings.py:10
+#: apps.py:57 events.py:5 permissions.py:5 settings.py:10
 msgid "Appearance"
 msgstr "Внешний вид"
 
@@ -85,61 +85,65 @@ msgstr "Тема создана"
 msgid "Theme edited"
 msgstr "Тема изменена"
 
-#: links.py:16
+#: events.py:14
+msgid "User theme edited"
+msgstr ""
+
+#: links.py:18
 msgid "Theme settings"
 msgstr "Настройки темы"
 
-#: links.py:21
+#: links.py:25
 msgid "Edit theme settings"
 msgstr "Редактировать настройки темы"
 
-#: links.py:27 views.py:47
+#: links.py:31 views.py:27
 msgid "Create new theme"
 msgstr "Создать тему"
 
-#: links.py:32
+#: links.py:36
 msgid "Delete"
 msgstr "Удалить"
 
-#: links.py:36
+#: links.py:40
 msgid "Edit"
 msgstr "Редактировать"
 
-#: links.py:40 links.py:45 models.py:31 views.py:111
+#: links.py:44 links.py:49 models.py:32 views.py:91
 msgid "Themes"
 msgstr "Темы"
 
-#: models.py:18
+#: models.py:19
 msgid "A short text describing the theme."
 msgstr "Краткое описание темы."
 
-#: models.py:19
+#: models.py:20
 msgid "Label"
 msgstr "Заголовок"
 
-#: models.py:23
+#: models.py:24
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
 msgstr "Стили CSS для изменения внешнего вида различных элементов интерфейса."
 
-#: models.py:25
+#: models.py:26
 msgid "Stylesheet"
 msgstr "Таблица стилей"
 
-#: models.py:30 models.py:68
+#: models.py:31 models.py:69
 msgid "Theme"
 msgstr "Тема"
 
-#: models.py:64
+#: models.py:65
 msgid "User"
 msgstr "Пользователь"
 
-#: models.py:72
+#: models.py:73
 msgid "User theme setting"
 msgstr "Настройка темы пользователя"
 
-#: models.py:73
+#: models.py:74
 msgid "User theme settings"
 msgstr "Настройки темы пользователя"
 
@@ -443,29 +447,31 @@ msgstr "Проверьте ваше подключение к сети и пов
 msgid "None"
 msgstr "Нет"
 
-#: views.py:29
-msgid "Current user theme settings details"
-msgstr "Настройки темы для текущего пользователя"
-
-#: views.py:35
-msgid "Edit current user theme settings details"
-msgstr "Редактировать настройки темы для текущего пользователя"
-
-#: views.py:69
+#: views.py:49
 #, python-format
 msgid "Delete theme: %s"
 msgstr "Удалить тему: %s"
 
-#: views.py:85
+#: views.py:65
 #, python-format
 msgid "Edit theme: %s"
 msgstr "Редактировать тему: %s"
 
-#: views.py:105
+#: views.py:85
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
 msgstr "Темы позволяют изменять внешний вид без изменения исходного кода."
 
-#: views.py:109
+#: views.py:89
 msgid "There are no themes"
 msgstr "Нет тем"
+
+#: views.py:113
+#, python-format
+msgid "Theme settings for user: %s"
+msgstr ""
+
+#: views.py:134
+#, python-format
+msgid "Edit theme settings for user: %s"
+msgstr ""

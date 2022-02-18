@@ -1,4 +1,24 @@
-4.2 (2022-02-XX)
+4.2.1 (2022-02-16)
+==================
+- Merge improvements from version 4.1.6.
+
+  - Append the text "signed" to the label of a signed document file instead
+    of using the temporary filename used during signing.
+  - Ensure the signed document file is used when the file downloaded is
+    requested and when calculating the signed document file checksum.
+    Solves issue in forum post 6149. Thanks to forum user @qra for the report
+    and debug information.
+  - Update IMAP source ``store commands`` to be optional.
+  - Update email sources ``SSL`` checkbox to be optional.
+  - Undo POP3 source context manager changes from commit
+    c19040491e20c9a783ae6191613bc8c5f7acb038. It seems Python's email libraries
+    do not have feature parity. ``imaplib`` was updated to support context
+    managers but ``poplib`` was not.
+
+- Update requirements to specify Python version 3.6 to 3.9.
+- Update Django version 3.2.11 to 3.2.12.
+
+4.2 (2022-02-12)
 ================
 - Update Django to version 3.2.11.
 - Update django-widget-tweaks from version 1.4.8 to 1.4.9.
@@ -219,6 +239,57 @@
 - Add support for launching workflows from the API.
 - Refactor language activation to work with Django 3.2.
 - Added the mailing profile created and edited events.
+- Remove workflow instance exception usage. Current state property is now
+  inspected.
+- Remove menu proxy inclusions. Model proxies are now included by default.
+- Add menu proxy exclusions.
+- Update the subject and body fields of the document email workflow action
+  to be optional.
+- Redirect to current user to user detail view after password change.
+- Support two different ``psycopg2`` versions for upgrade testing.
+
+4.1.6 (2022-02-15)
+==================
+- Append the text "signed" to the label of a signed document file instead
+  of using the temporary filename used during signing.
+- Ensure the signed document file is used when the file downloaded is
+  requested and when calculating the signed document file checksum.
+  Solves issue in forum post 6149. Thanks to forum user @qra for the report
+  and debug information.
+- Update IMAP source ``store commands`` to be optional.
+- Update email sources ``SSL`` checkbox to be optional.
+- Undo POP3 source context manager changes from commit
+  c19040491e20c9a783ae6191613bc8c5f7acb038. It seems Python's email libraries
+  do not have feature parity. ``imaplib`` was updated to support context
+  managers but ``poplib`` was not.
+- Update requirements to specify Python version 3.5 to 3.9.
+- Update Django version 2.2.24 to 2.2.27.
+
+4.1.5 (2022-02-03)
+==================
+- Fix CAA document links. Closes GitLab issue #1068. Thanks to
+  Matthias Löblich (@startmat) for the report.
+- Remove superfluous apostrophe character in sort heading markup.
+- Fix email sources processing a single message but performing cleanup on
+  multiple messages. The intended behavior is restore which processed one
+  message and cleans up the processed message only.
+- Fix reference to ``shared_uploaded_files`` before the variable being
+  available.
+- Use context managers for the IMAP and POP3 sources to remove the
+  possibility of orphaned descriptors.
+- Create error log entries for objects that existed before the last error
+  log changes. Fix GitLab issue #1069. Thanks to Will Wright (@fireatwill)
+  for the report.
+- Expose the workflow template ``auto_launch`` field via the REST API.
+  Thanks to forum user @qra for the request.
+- Add ``EmailAction`` subclass for backwards compatibility with existing
+  workflow state actions.
+- Expose the checkout datetime, expiration datetime and user fields via the
+  REST API. Thanks to forum user @qra for the request.
+- Print configuration path value when failing to access error is raised.
+- Fix references to the ``SourceBackendSANEScanner`` source backend class.
+- Reorganize the testing setting modules.
+- Remove unused MySQL testing setting module.
 
 4.1.4 (2021-12-01)
 ==================

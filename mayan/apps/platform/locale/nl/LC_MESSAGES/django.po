@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
-# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021
+# Roberto Rosario, 2022
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:28+0000\n"
-"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,23 +29,23 @@ msgstr "Platform"
 msgid "Template for entrypoint.sh file inside a Docker image."
 msgstr ""
 
-#: classes.py:193
+#: classes.py:194
 msgid "Template that generates a Dockerfile file."
 msgstr ""
 
-#: classes.py:207
+#: classes.py:209
 msgid "Template for Supervisord inside a Docker image."
 msgstr "Sjabloon voor Supervisord binnen een Docker-image."
 
-#: classes.py:224
+#: classes.py:227
 msgid "Template that generates a GitLab CI config file."
 msgstr ""
 
-#: classes.py:268
+#: classes.py:271
 msgid "Template for Supervisord."
 msgstr "Sjabloon voor Supervisord."
 
-#: classes.py:341
+#: classes.py:344
 msgid "Template showing the queues of a worker."
 msgstr "Sjabloon dat de wachtrij van een gebruiker toont."
 

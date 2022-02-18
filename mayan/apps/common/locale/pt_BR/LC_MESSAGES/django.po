@@ -4,21 +4,24 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Rogerio Falcone <rogerio@falconeit.com.br>, 2021
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2021
-# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2021
-# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
-# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021
-# Aline Freitas <aline@alinefreitas.com.br>, 2021
+# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2022
+# Aline Freitas <aline@alinefreitas.com.br>, 2022
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
+# Roberto Rosario, 2022
+# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2022
+# Bruno Martins <bruno.martins@bewgpt.com.pt>, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
+# Márcia Ferreira, 2022
+# Rogerio Falcone <rogerio@falconeit.com.br>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Aline Freitas <aline@alinefreitas.com.br>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +29,7 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:137 permissions.py:5 settings.py:15
+#: apps.py:132 permissions.py:5 settings.py:15
 msgid "Common"
 msgstr "Comum"
 
@@ -111,23 +114,15 @@ msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Essa funcionalidade foi deprecada e será removida numa versão futura"
 
-#: literals.py:23
-msgid ""
-"Your database backend is set to use SQLite. SQLite should only be used for "
-"development and testing, not for production."
-msgstr ""
-"Sua base de dados está configurada para utilizar SQLite. SQLite deve ser "
-"usado apenas em ambientes de desenvolvimento e testes, não de produção."
-
-#: literals.py:32
+#: literals.py:28
 msgid "Days"
 msgstr "Dias"
 
-#: literals.py:33
+#: literals.py:29
 msgid "Hours"
 msgstr "Horas"
 
-#: literals.py:34
+#: literals.py:30
 msgid "Minutes"
 msgstr "Minutos"
 
@@ -213,6 +208,12 @@ msgid ""
 " containing an application. These apps will be installed before the default "
 "apps. Example: ['app_1', 'app_2']"
 msgstr ""
+"Uma lista de linhas que designam todas as aplicações que se encontram "
+"instaladas, para além daquelas já normalmente instaladas pela Mayan EDMS. "
+"Cada linha deverá conter um caminho Python pontilhado para: uma classe de "
+"configuração da aplicação (preferencialmente|) ou uma pasta que contenha a "
+"aplicação. Estas aplicações serão instaladas antes das aplicações de "
+"fábrica. Exemplo: ['app_1', 'app_2']"
 
 #: settings.py:69
 msgid ""
@@ -224,21 +225,17 @@ msgstr ""
 
 #: settings.py:78
 msgid "Name of the dashboard to display in the home view."
-msgstr ""
+msgstr "Nome do painel a ser exibido na visualização do início. "
 
 #: settings.py:83
 msgid "Sets the project's name."
-msgstr ""
+msgstr "Nomeia o projeto."
 
 #: settings.py:87
 msgid "URL of the project's homepage."
-msgstr ""
+msgstr "url da página inicial do projeto."
 
-#: templates/common/app/viewport.html:9
-msgid "Warning"
-msgstr "Advertência"
-
-#: templates/common/app/viewport.html:23
+#: templates/common/app/viewport.html:15
 msgid "Click here to fix this."
 msgstr "Clique aqui para corrigir isso"
 

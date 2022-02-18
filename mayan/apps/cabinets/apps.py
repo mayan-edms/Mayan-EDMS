@@ -191,7 +191,6 @@ class CabinetsApp(MayanAppConfig):
             ),
             sources=(Cabinet,)
         )
-        menu_list_facet.add_proxy_inclusions(source=CabinetSearchResult)
 
         menu_main.bind_links(links=(menu_cabinets,), position=30)
 
@@ -207,7 +206,6 @@ class CabinetsApp(MayanAppConfig):
                 link_cabinet_delete, link_cabinet_edit, link_cabinet_child_add
             ), sources=(Cabinet,)
         )
-        menu_object.add_proxy_inclusions(source=CabinetSearchResult)
         menu_object.unbind_links(
             links=(
                 link_cabinet_delete, link_cabinet_edit, link_cabinet_child_add

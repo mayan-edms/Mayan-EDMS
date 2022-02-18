@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2021
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2022
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:17+0000\n"
-"PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,16 +21,16 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:56 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
+#: apps.py:57 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
 #: settings.py:13 views/source_views.py:164
 msgid "Sources"
 msgstr "منابع"
 
-#: apps.py:81
+#: apps.py:87
 msgid "Create a document source"
 msgstr "یک منبع مستند ایجاد کنید"
 
-#: apps.py:83
+#: apps.py:89
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
@@ -39,7 +39,7 @@ msgstr ""
 "منابع سندي روشي است که اسناد جديد به EDMS ميان تغيير مي کند و حداقل يک منبع "
 "فرم وب را قادر مي سازد تا اسناد را از يک مرورگر آپلود کند."
 
-#: apps.py:106
+#: apps.py:112
 msgid "Type"
 msgstr "نوع"
 
@@ -47,7 +47,7 @@ msgstr "نوع"
 msgid "Null backend"
 msgstr ""
 
-#: dependencies.py:11
+#: dependencies.py:12
 msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
@@ -170,11 +170,11 @@ msgstr "بررسی منبع فاصله"
 msgid "Handle upload"
 msgstr "آپلود دسته"
 
-#: serializers.py:50
+#: serializers.py:51
 msgid "Optional arguments for the action. Must be JSON formatted."
 msgstr ""
 
-#: serializers.py:51 source_backends/sane_scanner_backends.py:44
+#: serializers.py:52 source_backends/sane_scanner_backends.py:45
 msgid "Arguments"
 msgstr "استدلال"
 
@@ -190,101 +190,15 @@ msgstr ""
 msgid "Arguments to pass to the SOURCES_SOURCE_CACHE_STORAGE_BACKEND."
 msgstr ""
 
-#: source_backends/email_backends.py:37
-msgid "IMAP Mailbox from which to check for messages."
-msgstr "صندوق پستی IMAP که از آن برای بررسی پیام ها است."
-
-#: source_backends/email_backends.py:41
-msgid "Mailbox"
-msgstr "صندوق پستی"
-
-#: source_backends/email_backends.py:48
-msgid ""
-"Criteria to use when searching for messages to process. Use the format "
-"specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
-msgstr ""
-
-#: source_backends/email_backends.py:52
-msgid "Search criteria"
-msgstr ""
-
-#: source_backends/email_backends.py:60
-msgid ""
-"IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
-"commands for your IMAP server."
-msgstr ""
-
-#: source_backends/email_backends.py:65
-msgid "Store commands"
-msgstr ""
-
-#: source_backends/email_backends.py:72
-msgid "Execute the IMAP expunge command after processing each email message."
-msgstr ""
-
-#: source_backends/email_backends.py:75
-msgid "Execute expunge"
-msgstr ""
-
-#: source_backends/email_backends.py:82
-msgid "IMAP Mailbox to which processed messages will be copied."
-msgstr ""
-
-#: source_backends/email_backends.py:84
-msgid "Destination mailbox"
-msgstr ""
-
-#: source_backends/email_backends.py:90
-msgid "IMAP email"
-msgstr "ایمیل IMAP"
-
-#: source_backends/email_backends.py:216
-msgid "Timeout"
-msgstr "وقفه"
-
-#: source_backends/email_backends.py:219
-msgid "POP3 email"
-msgstr "ایمیل POP3"
-
-#: source_backends/literals.py:15 source_backends/literals.py:20
-msgid "Always"
-msgstr "همیشه"
-
-#: source_backends/literals.py:16 source_backends/literals.py:21
-msgid "Never"
-msgstr "هرگز"
-
-#: source_backends/literals.py:22
-msgid "Ask user"
-msgstr "از کاربر بپرس"
-
-#: source_backends/mixins.py:139
-msgid "Uncompress"
-msgstr "فشرده نشده"
-
-#: source_backends/mixins.py:143
-msgid "Whether to expand or not compressed archives."
-msgstr "گسترش و یا آرشیوهای غیر فشرده"
-
-#: source_backends/mixins.py:167
-msgid "Expand compressed files"
-msgstr "فایلهای فشرده را گسترش دهید"
-
-#: source_backends/mixins.py:169
-msgid "Upload a compressed file's contained files as individual documents."
-msgstr ""
-
-#: source_backends/mixins.py:202
+#: source_backends/email_backends.py:45
 msgid "Host"
 msgstr "میزبان"
 
-#: source_backends/mixins.py:211
+#: source_backends/email_backends.py:54
 msgid "SSL"
 msgstr "SSL"
 
-#: source_backends/mixins.py:216
+#: source_backends/email_backends.py:60
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
@@ -292,67 +206,67 @@ msgstr ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 
-#: source_backends/mixins.py:222
+#: source_backends/email_backends.py:66
 msgid "Port"
 msgstr "Port"
 
-#: source_backends/mixins.py:229
+#: source_backends/email_backends.py:73
 msgid "Username"
 msgstr "نام کاربری"
 
-#: source_backends/mixins.py:236
+#: source_backends/email_backends.py:80
 msgid "Password"
 msgstr "کلمه عبور"
 
-#: source_backends/mixins.py:243
+#: source_backends/email_backends.py:87
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
 msgstr ""
 
-#: source_backends/mixins.py:250
+#: source_backends/email_backends.py:94
 msgid "Metadata attachment name"
 msgstr "نام دلبستگی متاداده"
 
-#: source_backends/mixins.py:256
+#: source_backends/email_backends.py:100
 msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
 msgstr ""
 
-#: source_backends/mixins.py:266
+#: source_backends/email_backends.py:110
 msgid "From metadata type"
 msgstr "از نوع ابرداده"
 
-#: source_backends/mixins.py:274
+#: source_backends/email_backends.py:118
 msgid ""
 "Select a metadata type to store the email's subject value. Must be a valid "
 "metadata type for the document type selected previously."
 msgstr ""
 
-#: source_backends/mixins.py:284
+#: source_backends/email_backends.py:128
 msgid "Subject metadata type"
 msgstr "نوع Metadata موضوع"
 
-#: source_backends/mixins.py:292
+#: source_backends/email_backends.py:136
 msgid ""
 "Select a metadata type to store the email's message ID value. Must be a "
 "valid metadata type for the document type selected previously."
 msgstr ""
 
-#: source_backends/mixins.py:302
+#: source_backends/email_backends.py:146
 msgid "Message ID metadata type"
 msgstr ""
 
-#: source_backends/mixins.py:310
+#: source_backends/email_backends.py:154
 msgid "Store the body of the email as a text document."
 msgstr "بدن ایمیل را به عنوان یک سند متن ذخیره کنید."
 
-#: source_backends/mixins.py:312
+#: source_backends/email_backends.py:156
 msgid "Store email body"
 msgstr "فروشگاه الکترونیکی ذخیره کنید"
 
-#: source_backends/mixins.py:459
+#: source_backends/email_backends.py:303
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
@@ -361,7 +275,7 @@ msgstr ""
 "\"از\" نوع ابرداده \"%(metadata_type)s\" برای نوع سند معتبر نیست: "
 "%(document_type)s"
 
-#: source_backends/mixins.py:473
+#: source_backends/email_backends.py:317
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
@@ -370,68 +284,154 @@ msgstr ""
 "نوع Metadata موضوع \"%(metadata_type)s\" برای نوع سند معتبر نیست: "
 "%(document_type)s"
 
-#: source_backends/mixins.py:487
+#: source_backends/email_backends.py:331
 #, python-format
 msgid ""
 "Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
 " type: %(document_type)s"
 msgstr ""
 
-#: source_backends/mixins.py:588
+#: source_backends/email_backends.py:379
+msgid "IMAP Mailbox from which to check for messages."
+msgstr "صندوق پستی IMAP که از آن برای بررسی پیام ها است."
+
+#: source_backends/email_backends.py:383
+msgid "Mailbox"
+msgstr "صندوق پستی"
+
+#: source_backends/email_backends.py:390
+msgid ""
+"Criteria to use when searching for messages to process. Use the format "
+"specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
+msgstr ""
+
+#: source_backends/email_backends.py:394
+msgid "Search criteria"
+msgstr ""
+
+#: source_backends/email_backends.py:402
+msgid ""
+"IMAP STORE command to execute on messages after they are processed. One "
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
+msgstr ""
+
+#: source_backends/email_backends.py:407
+msgid "Store commands"
+msgstr ""
+
+#: source_backends/email_backends.py:414
+msgid "Execute the IMAP expunge command after processing each email message."
+msgstr ""
+
+#: source_backends/email_backends.py:417
+msgid "Execute expunge"
+msgstr ""
+
+#: source_backends/email_backends.py:424
+msgid "IMAP Mailbox to which processed messages will be copied."
+msgstr ""
+
+#: source_backends/email_backends.py:426
+msgid "Destination mailbox"
+msgstr ""
+
+#: source_backends/email_backends.py:432
+msgid "IMAP email"
+msgstr "ایمیل IMAP"
+
+#: source_backends/email_backends.py:559
+msgid "Timeout"
+msgstr "وقفه"
+
+#: source_backends/email_backends.py:562
+msgid "POP3 email"
+msgstr "ایمیل POP3"
+
+#: source_backends/literals.py:18 source_backends/literals.py:23
+msgid "Always"
+msgstr "همیشه"
+
+#: source_backends/literals.py:19 source_backends/literals.py:24
+msgid "Never"
+msgstr "هرگز"
+
+#: source_backends/literals.py:25
+msgid "Ask user"
+msgstr "از کاربر بپرس"
+
+#: source_backends/mixins.py:132
+msgid "Uncompress"
+msgstr "فشرده نشده"
+
+#: source_backends/mixins.py:136
+msgid "Whether to expand or not compressed archives."
+msgstr "گسترش و یا آرشیوهای غیر فشرده"
+
+#: source_backends/mixins.py:160
+msgid "Expand compressed files"
+msgstr "فایلهای فشرده را گسترش دهید"
+
+#: source_backends/mixins.py:162
+msgid "Upload a compressed file's contained files as individual documents."
+msgstr ""
+
+#: source_backends/mixins.py:251
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "این نوع را به اسناد آپلود شده از این آدرس تخصیص دهید."
 
-#: source_backends/mixins.py:594
+#: source_backends/mixins.py:257
 msgid "Document type"
 msgstr "نوع سند"
 
-#: source_backends/mixins.py:601
+#: source_backends/mixins.py:264
 msgid "Interval in seconds between checks for new documents."
 msgstr "مدت زمان بین بررسی جهت سند جدید."
 
-#: source_backends/mixins.py:607
+#: source_backends/mixins.py:270
 msgid "Interval"
 msgstr "فاصله"
 
-#: source_backends/sane_scanner_backends.py:30
+#: source_backends/sane_scanner_backends.py:31
 msgid "Device name as returned by the SANE backend."
 msgstr "نام دستگاه به عنوان پشت صحنه SANE بازگشت."
 
-#: source_backends/sane_scanner_backends.py:33
+#: source_backends/sane_scanner_backends.py:34
 msgid "Device name"
 msgstr "نام دستگاه"
 
-#: source_backends/sane_scanner_backends.py:39
+#: source_backends/sane_scanner_backends.py:40
 msgid ""
 "YAML formatted arguments to pass to the `scanimage` command. The arguments "
 "will change depending on the device. Execute `scanimage --help --device-"
 "name=DEVICE` for the list of supported arguments."
 msgstr ""
 
-#: source_backends/sane_scanner_backends.py:48
+#: source_backends/sane_scanner_backends.py:49
 msgid "SANE Scanner"
 msgstr "SANE اسکنر"
 
-#: source_backends/sane_scanner_backends.py:106
+#: source_backends/sane_scanner_backends.py:108
 msgid "Document properties"
 msgstr "خواص سند"
 
-#: source_backends/sane_scanner_backends.py:107
+#: source_backends/sane_scanner_backends.py:109
 msgid "Scan"
 msgstr "اسکن کردن"
 
 #: source_backends/staging_folder_backends.py:222
-#: source_backends/staging_folder_backends.py:492
+#: source_backends/staging_folder_backends.py:491
 msgid "Staging file"
 msgstr "مرحله گذاری فایل"
 
 #: source_backends/staging_folder_backends.py:253
-#: source_backends/watch_folder_backends.py:31
+#: source_backends/watch_folder_backends.py:38
 msgid "Server side filesystem path."
 msgstr "محل قرارگیری برروی سیستم فایل سمت سرور"
 
 #: source_backends/staging_folder_backends.py:258
-#: source_backends/watch_folder_backends.py:36
+#: source_backends/watch_folder_backends.py:43
 msgid "Folder path"
 msgstr "محل پرونده"
 
@@ -471,43 +471,59 @@ msgstr "ایجاد شده"
 msgid "Thumbnail"
 msgstr "بند انگشتی"
 
-#: source_backends/staging_folder_backends.py:472
+#: source_backends/staging_folder_backends.py:471
 #, python-format
 msgid "Error deleting staging file; %s"
 msgstr "خطای حذف فایل مرحله ای : %s"
 
-#: source_backends/staging_folder_backends.py:493
+#: source_backends/staging_folder_backends.py:492
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr ""
 
-#: source_backends/staging_folder_backends.py:519
+#: source_backends/staging_folder_backends.py:518
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr "قادر به گرفتن لیست فایلهای مرحله ای نیست. %s"
 
-#: source_backends/staging_folder_backends.py:546
+#: source_backends/staging_folder_backends.py:545
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
 "the operating system user account being used for Mayan EDMS doesn't have the"
 " necessary file system permissions for the folder."
 msgstr ""
 
-#: source_backends/staging_folder_backends.py:553
+#: source_backends/staging_folder_backends.py:552
 msgid "No staging files available"
 msgstr ""
 
-#: source_backends/watch_folder_backends.py:43
+#: source_backends/watch_folder_backends.py:50
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
 msgstr ""
 
-#: source_backends/watch_folder_backends.py:46
+#: source_backends/watch_folder_backends.py:53
 msgid "Include subdirectories?"
 msgstr ""
 
-#: source_backends/watch_folder_backends.py:50
+#: source_backends/watch_folder_backends.py:60
+msgid "Regular expression used to select which files to upload."
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:62
+msgid "Include regular expression"
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:69
+msgid "Regular expression used to exclude which files to upload."
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:71
+msgid "Exclude regular expression"
+msgstr ""
+
+#: source_backends/watch_folder_backends.py:75
 msgid "Watch folder"
 msgstr "پوشه تماشا کنید"
 
@@ -553,7 +569,7 @@ msgstr "پاک کردن"
 msgid "Server responded with {{statusCode}} code."
 msgstr ""
 
-#: views/base.py:53 wizards.py:52
+#: views/base.py:53 wizards.py:54
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
@@ -649,23 +665,23 @@ msgstr ""
 msgid "Select document type"
 msgstr ""
 
-#: wizards.py:71
+#: wizards.py:73
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr ""
 
-#: wizards.py:76
+#: wizards.py:78
 msgid "Document upload wizard"
 msgstr "جادوگر بارگذاری سند"
 
-#: wizards.py:85
+#: wizards.py:87
 msgid "First"
 msgstr ""
 
-#: wizards.py:91
+#: wizards.py:93
 msgid "Previous"
 msgstr "قبلی"
 
-#: wizards.py:98
+#: wizards.py:100
 msgid "Next"
 msgstr "بعدی"

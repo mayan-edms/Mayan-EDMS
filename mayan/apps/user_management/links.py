@@ -12,7 +12,7 @@ from .icons import (
     icon_user_delete_single, icon_user_delete_multiple,
     icon_user_set_options, icon_user_setup
 )
-from .link_conditions import condition_user_is_not_super_user
+from .link_conditions import condition_user_is_not_superuser
 from .permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
     permission_group_view, permission_user_create, permission_user_delete,
@@ -64,7 +64,7 @@ link_group_user_list = Link(
 link_group_setup = Link(
     condition=factory_condition_queryset_access(
         app_label='auth', model_name='Group',
-        callback=condition_user_is_not_super_user,
+        callback=condition_user_is_not_superuser,
         object_permission=permission_group_view,
         view_permission=permission_group_create
     ), icon=icon_group_setup, text=_('Groups'),

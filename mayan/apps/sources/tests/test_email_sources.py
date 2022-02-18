@@ -295,9 +295,21 @@ class IMAPSourceBackendTestCase(
     def _process_test_document(self, mock_imaplib):
         mock_imaplib.return_value = MockIMAPServer()
 
+        mock_imaplib.return_value._add_test_message()
+        mock_imaplib.return_value._add_test_message()
+
+        test_imap_message_count = len(
+            mock_imaplib.return_value.mailboxes['INBOX'].messages
+        )
+
         source_backend_instance = self.test_source.get_backend_instance()
 
         source_backend_instance.process_documents()
+
+        self.assertEqual(
+            len(mock_imaplib.return_value.mailboxes['INBOX'].messages),
+            test_imap_message_count - 1
+        )
 
     def test_upload_simple_file(self):
         document_count = Document.objects.count()
@@ -319,9 +331,19 @@ class POP3SourceTestCase(
     def _process_test_document(self, mock_poplib):
         mock_poplib.return_value = MockPOP3Mailbox()
 
+        mock_poplib.return_value._add_test_message()
+        mock_poplib.return_value._add_test_message()
+
+        test_imap_message_count = len(mock_poplib.return_value.messages)
+
         source_backend_instance = self.test_source.get_backend_instance()
 
         source_backend_instance.process_documents()
+
+        self.assertEqual(
+            len(mock_poplib.return_value.messages),
+            test_imap_message_count - 1
+        )
 
     def test_upload_simple_file(self):
         document_count = Document.objects.count()

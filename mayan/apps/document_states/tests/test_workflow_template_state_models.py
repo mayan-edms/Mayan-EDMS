@@ -22,7 +22,6 @@ class WorkflowTemplateStateActionModelTestCase(
     def setUp(self):
         super().setUp()
         self._create_test_document_stub()
-
         self._create_test_workflow_template(add_test_document_type=True)
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_state()

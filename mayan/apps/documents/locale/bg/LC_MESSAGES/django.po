@@ -4,18 +4,18 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
-# 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2021
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2022
+# Roberto Rosario, 2022
+# 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2022
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,21 +23,21 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:215 apps.py:659 events.py:5 menus.py:8
+#: apps.py:215 apps.py:647 events.py:5 menus.py:8
 #: models/document_models.py:131 permissions.py:5 queues.py:21 settings.py:33
 #: statistics.py:230
 msgid "Documents"
 msgstr "Документи"
 
-#: apps.py:281
+#: apps.py:269
 msgid "Decorations"
 msgstr "Декорации"
 
-#: apps.py:300
+#: apps.py:288
 msgid "Create a document type"
 msgstr "Създайте тип документ"
 
-#: apps.py:302
+#: apps.py:290
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
@@ -45,46 +45,46 @@ msgstr ""
 "На всеки качен документ трябва да бъде присвоен тип документ, това е "
 "основният начин, по който Mayan EDMS категоризира документите."
 
-#: apps.py:403
+#: apps.py:391
 msgid "File comments"
 msgstr "Файлови коментари"
 
-#: apps.py:407
+#: apps.py:395
 msgid "File encodings"
 msgstr "Файлови кодирания"
 
-#: apps.py:411
+#: apps.py:399
 msgid "File MIME types"
 msgstr "Файлови MIME типове"
 
-#: apps.py:415
+#: apps.py:403
 msgid "File timestamps"
 msgstr "Файлови времеви печати"
 
-#: apps.py:420 links/document_file_page_links.py:79
+#: apps.py:408 links/document_file_page_links.py:79
 #: models/document_file_models.py:120 models/document_file_page_models.py:34
 #: search.py:52
 msgid "Document file"
 msgstr "Файл на документа"
 
-#: apps.py:424 models/document_file_page_models.py:38
+#: apps.py:412 models/document_file_page_models.py:38
 #: models/document_version_page_models.py:50
 msgid "Page number"
 msgstr "Номер на страница"
 
-#: apps.py:429
+#: apps.py:417
 msgid "Return the latest file of the document."
 msgstr "Върнете най-новия файл на документа."
 
-#: apps.py:430
+#: apps.py:418
 msgid "Latest file"
 msgstr "Последен файл"
 
-#: apps.py:433
+#: apps.py:421
 msgid "Return the document instance."
 msgstr "Върнете екземпляра на документа."
 
-#: apps.py:434 links/document_file_links.py:63
+#: apps.py:422 links/document_file_links.py:63
 #: links/document_file_page_links.py:73 links/document_version_links.py:75
 #: links/document_version_page_links.py:102 models/document_file_models.py:76
 #: models/document_models.py:130 models/document_version_models.py:46
@@ -93,25 +93,25 @@ msgstr "Върнете екземпляра на документа."
 msgid "Document"
 msgstr "Документ"
 
-#: apps.py:564 apps.py:616 apps.py:645 apps.py:679 apps.py:704
+#: apps.py:552 apps.py:604 apps.py:633 apps.py:667 apps.py:692
 msgid "Thumbnail"
 msgstr "Умалено изображение"
 
-#: apps.py:570
+#: apps.py:558
 msgid "Type"
 msgstr "Тип"
 
-#: apps.py:574 apps.py:621 apps.py:684 forms/document_file_forms.py:71
+#: apps.py:562 apps.py:609 apps.py:672 forms/document_file_forms.py:71
 #: links/document_file_page_links.py:122
 #: links/document_version_page_links.py:52
 msgid "Pages"
 msgstr "Страници"
 
-#: apps.py:583 models/favorite_document_models.py:34
+#: apps.py:571 models/favorite_document_models.py:34
 msgid "Date and time added"
 msgstr "Добавени дата и час"
 
-#: apps.py:594
+#: apps.py:582
 msgid "Access date and time"
 msgstr "Дата и час на достъп"
 
@@ -550,15 +550,15 @@ msgstr "Версия на документа"
 msgid "Document version pages"
 msgstr "Страници на версията на документа"
 
-#: links/favorite_links.py:21 views/favorite_document_views.py:36
+#: links/favorite_links.py:23 views/favorite_document_views.py:36
 msgid "Favorites"
 msgstr "Любими"
 
-#: links/favorite_links.py:27 links/favorite_links.py:37
+#: links/favorite_links.py:29 links/favorite_links.py:39
 msgid "Add to favorites"
 msgstr "Добави към предпочитани"
 
-#: links/favorite_links.py:33 links/favorite_links.py:41
+#: links/favorite_links.py:35 links/favorite_links.py:43
 msgid "Remove from favorites"
 msgstr "Премахни от предпочитани"
 
@@ -1131,20 +1131,20 @@ msgstr "MIME тип на файл с документ"
 msgid "Document version comment"
 msgstr "Коментар към версията на документа"
 
-#: serializers/document_file_serializers.py:38
+#: serializers/document_file_serializers.py:94
 msgid "Binary content for the new file."
 msgstr "Двоично съдържание за новия файл."
 
-#: serializers/document_serializers.py:23
+#: serializers/document_serializers.py:19
 msgid "Document type ID for the new document."
 msgstr "Идентификатор на типа на документа за новия документ."
 
-#: serializers/document_version_serializers.py:72
+#: serializers/document_version_serializers.py:14
 msgid "Content type ID of the source object for the page."
 msgstr ""
 "Идентификатор за типа на съдържанието на изходния обект за страницата."
 
-#: serializers/favorite_document_serializers.py:18
+#: serializers/favorite_document_serializers.py:14
 msgid "Document ID for the new favorite document."
 msgstr "Идентификатор на документа за новия предпочитан документ."
 
@@ -1382,9 +1382,8 @@ msgstr ""
 #: views/document_file_page_views.py:66
 msgid "Recalculate the page count of the selected document file?"
 msgid_plural "Recalculate the page count of the selected document files?"
-msgstr[0] "Да се преизчисли броят на страниците на избрания файл с документ?"
+msgstr[0] ""
 msgstr[1] ""
-"Да се преизчисли ли броят на страниците на избраните файлове с документи?"
 
 #: views/document_file_page_views.py:77
 #, python-format
@@ -1519,11 +1518,7 @@ msgid "Clear all the page transformations for the selected document file?"
 msgid_plural ""
 "Clear all the page transformations for the selected document files?"
 msgstr[0] ""
-"Да се изчистят ли всички трансформации на страници за избрания файл на "
-"документа?"
 msgstr[1] ""
-"Да се изчистят ли всички преобразувания на страници за избраните файлове на "
-"документи?"
 
 #: views/document_file_views.py:280
 #, python-format
@@ -1702,11 +1697,7 @@ msgid "Append all the document file pages to the selected document version?"
 msgid_plural ""
 "Append all the document file pages to the selected document versions?"
 msgstr[0] ""
-"Да се добавят ли всички страници с файлове с документи към избраната версия "
-"на документа?"
 msgstr[1] ""
-"Да се добавят ли всички страници с файлове с документи към избраните версии "
-"на документа?"
 
 #: views/document_version_page_views.py:156
 #, python-format
@@ -1754,8 +1745,8 @@ msgstr ""
 #: views/document_version_page_views.py:301
 msgid "Reset the page list of the selected document version?"
 msgid_plural "Reset the page list of the selected document versions?"
-msgstr[0] "Нулиране на списъка със страници на избраната версия на документа?"
-msgstr[1] "Нулиране на списъка със страници на избраните версии на документа?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views/document_version_page_views.py:312
 #, python-format
@@ -1905,11 +1896,7 @@ msgid "Clear all the page transformations for the selected document version?"
 msgid_plural ""
 "Clear all the page transformations for the selected document version?"
 msgstr[0] ""
-"Да изчистите ли всички преобразувания на страници за избраната версия на "
-"документа?"
 msgstr[1] ""
-"Да изчистите ли всички преобразувания на страници за избраната версия на "
-"документа?"
 
 #: views/document_version_views.py:334
 #, python-format
@@ -1973,8 +1960,8 @@ msgstr "Заявка за промяна на типа документ, изв�
 #: views/document_views.py:93
 msgid "Change the type of the selected document"
 msgid_plural "Change the type of the selected documents"
-msgstr[0] "Променете типа на избрания документ"
-msgstr[1] "Променете типа на избраните документи"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views/document_views.py:104
 #, python-format
@@ -2027,8 +2014,8 @@ msgstr "%(count)d документи добавени към предпочит�
 #: views/favorite_document_views.py:56
 msgid "Add the selected document to favorites?"
 msgid_plural "Add the selected documents to favorites?"
-msgstr[0] "Да добавите избрания документ към любими?"
-msgstr[1] "Да добавите ли избраните документи към предпочитани?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views/favorite_document_views.py:74
 #, python-format
@@ -2048,8 +2035,8 @@ msgstr "%(count)d документи премахнати от предпочи�
 #: views/favorite_document_views.py:88
 msgid "Remove the selected document from favorites?"
 msgid_plural "Remove the selected documents from favorites?"
-msgstr[0] "Да се премахне ли избрания документ от любимите?"
-msgstr[1] "Да се премахнат ли избраните документи от предпочитаните?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views/misc_views.py:44
 #, python-format
@@ -2079,19 +2066,32 @@ msgstr "Няма наскоро създадени документи"
 
 #: views/trashed_document_views.py:37
 #, python-format
+msgid "Document \"%(object)s\" moved to trash."
+msgstr ""
+
+#: views/trashed_document_views.py:40
+#, python-format
 msgid "%(count)d document moved to the trash."
 msgstr " %(count)d документ бе преместен в кошчето."
 
-#: views/trashed_document_views.py:40
+#: views/trashed_document_views.py:43
 #, python-format
 msgid "%(count)d documents moved to the trash."
 msgstr "%(count)d документи бяха преместени в кошчето."
 
+#: views/trashed_document_views.py:45
+#, python-format
+msgid "Move the document \"%(object)s\" to trash?"
+msgstr ""
+
 #: views/trashed_document_views.py:46
 msgid "Move the selected document to the trash?"
-msgid_plural "Move the selected documents to the trash?"
-msgstr[0] "Преместване на избрания документ в кошчето?"
-msgstr[1] "Да преместите ли избраните документи в кошчето?"
+msgstr ""
+
+#: views/trashed_document_views.py:47
+#, python-format
+msgid "Move the %(count)d selected documents to trash?"
+msgstr ""
 
 #: views/trashed_document_views.py:76
 msgid "Empty trash?"
@@ -2103,19 +2103,32 @@ msgstr "Задачата за изпразване на боклука е на �
 
 #: views/trashed_document_views.py:98
 #, python-format
+msgid "Trash document \"%(object)s\" submitted for deletion."
+msgstr ""
+
+#: views/trashed_document_views.py:101
+#, python-format
 msgid "%(count)d trashed document submitted for deletion."
 msgstr "%(count)d бракуван документ, предназначен за изтриване."
 
-#: views/trashed_document_views.py:101
+#: views/trashed_document_views.py:104
 #, python-format
 msgid "%(count)d trashed documents submitted for deletion."
 msgstr "%(count)d бракувани документи предназначени за изтриване."
 
+#: views/trashed_document_views.py:106
+#, python-format
+msgid "Delete the trashed document \"%(object)s\"?"
+msgstr ""
+
 #: views/trashed_document_views.py:107
 msgid "Delete the selected trashed document?"
-msgid_plural "Delete the selected trashed documents?"
-msgstr[0] "Да се изтрие ли избраният документ в кошчето?"
-msgstr[1] "Да се изтрият ли избраните документи в кошчето?"
+msgstr ""
+
+#: views/trashed_document_views.py:108
+#, python-format
+msgid "Delete the %(count)d selected trashed documents?"
+msgstr ""
 
 #: views/trashed_document_views.py:144
 msgid ""
@@ -2133,19 +2146,32 @@ msgstr "В кошчето няма документи"
 
 #: views/trashed_document_views.py:162
 #, python-format
+msgid "Trashed document \"%(object)s\" restored."
+msgstr ""
+
+#: views/trashed_document_views.py:165
+#, python-format
 msgid "%(count)d trashed document restored."
 msgstr "%(count)d изхвърлен документ е възстановен."
 
-#: views/trashed_document_views.py:165
+#: views/trashed_document_views.py:168
 #, python-format
 msgid "%(count)d trashed documents restored."
 msgstr "%(count)d изхвърлени документи са възстановени."
 
+#: views/trashed_document_views.py:170
+#, python-format
+msgid "Restore the trashed document: %(object)s"
+msgstr ""
+
 #: views/trashed_document_views.py:171
 msgid "Restore the selected trashed document?"
-msgid_plural "Restore the selected trashed documents?"
-msgstr[0] "Възстановяване на избрания документ в кошчето?"
-msgstr[1] "Да се възстановят ли избраните документи в кошчето?"
+msgstr ""
+
+#: views/trashed_document_views.py:172
+#, python-format
+msgid "Restore the %(count)d selected trashed documents?"
+msgstr ""
 
 #: workflow_actions.py:13
 msgid "New document type for the workflow document."

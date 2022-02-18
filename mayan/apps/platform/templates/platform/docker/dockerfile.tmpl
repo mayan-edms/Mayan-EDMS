@@ -28,12 +28,6 @@ RUN set -x \
 && DEBIAN_FRONTEND=noninteractive \
 apt-get update \
 && apt-get install --no-install-recommends --yes \
-    libreoffice-calc-nogui \
-    libreoffice-draw-nogui \
-    libreoffice-impress-nogui \
-    libreoffice-math-nogui \
-    libreoffice-writer-nogui \
-&& apt-get install --no-install-recommends --yes \
     ca-certificates \
     exiftool \
     fonts-arphic-uming \
@@ -46,6 +40,11 @@ apt-get update \
     gnupg1 \
     graphviz \
     libarchive-zip-perl \
+    libreoffice-calc-nogui \
+    libreoffice-draw-nogui \
+    libreoffice-impress-nogui \
+    libreoffice-math-nogui \
+    libreoffice-writer-nogui \
     libfile-mimeinfo-perl \
     libfuse2 \
     libldap-2.4-2 \

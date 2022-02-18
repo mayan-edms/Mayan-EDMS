@@ -4,18 +4,18 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2021
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2021
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2021
+# 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2022
+# Roberto Rosario, 2022
+# Pavlin Koldamov <pkoldamov@gmail.com>, 2022
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:21+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -158,11 +158,15 @@ msgstr "Подпис вграден"
 
 #: links.py:99
 msgid "Details"
-msgstr "Детайли"
+msgstr "Подробности"
 
 #: links.py:105 queues.py:8
 msgid "Signatures"
 msgstr "Подписи"
+
+#: managers.py:95
+msgid "signed"
+msgstr ""
 
 #: models.py:46
 msgid "Document file"
@@ -276,7 +280,7 @@ msgstr "Опреснете съществуващата информация з�
 
 #: serializers.py:60
 msgid "Primary key of the tag to add to the document."
-msgstr "Първичен ключ на маркера, който да добавите към документа."
+msgstr "Основен ключ на маркера, който да добавите към документа."
 
 #: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."

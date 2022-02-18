@@ -4,18 +4,18 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Badea Gabriel <gcbadea@gmail.com>, 2021
-# Harald Ersch, 2021
-# Stefaniu Criste <gupi@hangar.ro>, 2021
+# Stefaniu Criste <gupi@hangar.ro>, 2022
+# Roberto Rosario, 2022
+# Badea Gabriel <gcbadea@gmail.com>, 2022
+# Harald Ersch, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:137 permissions.py:5 settings.py:15
+#: apps.py:132 permissions.py:5 settings.py:15
 msgid "Common"
 msgstr "Comune"
 
@@ -110,23 +110,15 @@ msgstr ""
 "Această caracteristică a fost depreciată și va fi eliminată într-o versiune "
 "viitoare."
 
-#: literals.py:23
-msgid ""
-"Your database backend is set to use SQLite. SQLite should only be used for "
-"development and testing, not for production."
-msgstr ""
-"Backendul bazei de date este setat să utilizeze SQLite. SQLite ar trebui "
-"folosit numai pentru dezvoltare și testare, nu pentru producție."
-
-#: literals.py:32
+#: literals.py:28
 msgid "Days"
 msgstr "Zile"
 
-#: literals.py:33
+#: literals.py:29
 msgid "Hours"
 msgstr "Ore"
 
-#: literals.py:34
+#: literals.py:30
 msgid "Minutes"
 msgstr "Minute"
 
@@ -167,12 +159,16 @@ msgid ""
 "In list mode, show the \"list facet\" menu options as a dropdown menu "
 "instead of individual buttons."
 msgstr ""
+"În modul listă, afișați opțiunile de meniu „listă fațete” ca meniu vertical "
+"în loc de butoane individuale."
 
 #: settings.py:30
 msgid ""
 "In list mode, show the \"object\" menu options as a dropdown menu instead of"
 " individual buttons."
 msgstr ""
+"În modul listă, afișați opțiunile meniului „obiect” ca meniu vertical în loc"
+" de butoane individuale."
 
 #: settings.py:37
 msgid ""
@@ -181,6 +177,11 @@ msgid ""
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
+"O listă de șiruri care desemnează toate aplicațiile care urmează să fie "
+"eliminate din lista instalată în mod normal de Mayan EDMS. Fiecare șir ar "
+"trebui să fie o cale Python punctată către: o clasă de configurare a "
+"aplicației (de preferat) sau un pachet care conține o aplicație. Exemplu: "
+"[&#39;app_1&#39;, &#39;app_2&#39;]"
 
 #: settings.py:47
 msgid ""
@@ -189,6 +190,11 @@ msgid ""
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
+"O listă de șiruri care desemnează toate aplicațiile care sunt instalate în "
+"afara celor instalate în mod normal de Mayan EDMS. Fiecare șir ar trebui să "
+"fie o cale Python punctată către: o clasă de configurare a aplicației (de "
+"preferat) sau un pachet care conține o aplicație. Exemplu: ['app_1', "
+"'app_2']"
 
 #: settings.py:58
 msgid ""
@@ -198,6 +204,11 @@ msgid ""
 " containing an application. These apps will be installed before the default "
 "apps. Example: ['app_1', 'app_2']"
 msgstr ""
+"O listă de șiruri care desemnează toate aplicațiile care sunt instalate în "
+"afara celor instalate în mod normal de Mayan EDMS. Fiecare șir ar trebui să "
+"fie o cale Python punctată către: o clasă de configurare a aplicației (de "
+"preferat) sau un pachet care conține o aplicație. Aceste aplicații vor fi "
+"instalate înaintea aplicațiilor implicite. Exemplu: ['app_1', 'app_2']"
 
 #: settings.py:69
 msgid ""
@@ -209,21 +220,17 @@ msgstr ""
 
 #: settings.py:78
 msgid "Name of the dashboard to display in the home view."
-msgstr ""
+msgstr "Numele tabloului de bord de afișat în vizualizarea principală."
 
 #: settings.py:83
 msgid "Sets the project's name."
-msgstr ""
+msgstr "Setează numele proiectului."
 
 #: settings.py:87
 msgid "URL of the project's homepage."
-msgstr ""
+msgstr "URL-ul paginii de start a proiectului."
 
-#: templates/common/app/viewport.html:9
-msgid "Warning"
-msgstr "Alertă"
-
-#: templates/common/app/viewport.html:23
+#: templates/common/app/viewport.html:15
 msgid "Click here to fix this."
 msgstr "Faceți clic aici pentru a remedia această problemă."
 

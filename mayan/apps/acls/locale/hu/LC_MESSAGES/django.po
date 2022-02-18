@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# molnars <szabolcs.molnar@gmail.com>, 2021
+# molnars <szabolcs.molnar@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:12+0000\n"
-"Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"PO-Revision-Date: 2022-02-03 10:11+0000\n"
+"Last-Translator: molnars <szabolcs.molnar@gmail.com>, 2022\n"
 "Language-Team: Hungarian (https://www.transifex.com/rosarior/teams/13584/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -105,11 +105,11 @@ msgstr "Hozzáférési listák szerkesztése"
 msgid "View ACLs"
 msgstr "Hozzáférési listák megtekintése"
 
-#: serializers.py:120
+#: serializers.py:116
 msgid "Primary key of the permission to add to the ACL."
 msgstr ""
 
-#: serializers.py:127
+#: serializers.py:123
 msgid "Primary key of the permission to remove from the ACL."
 msgstr ""
 

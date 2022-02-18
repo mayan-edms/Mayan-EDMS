@@ -4,15 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
+# Márcia Ferreira, 2022
+# Roberto Rosario, 2022
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:17+0000\n"
-"PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +24,7 @@ msgstr ""
 
 #: apps.py:19 permissions.py:5
 msgid "Templating"
-msgstr ""
+msgstr "Templating"
 
 #: fields.py:19
 #, python-format
@@ -31,6 +33,8 @@ msgid ""
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 " "
 msgstr ""
+"Use a linguagem de template padrão do Django "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 
 #: fields.py:37
 #, python-format
@@ -39,44 +43,47 @@ msgid ""
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 " The {{ %(variable)s }} variable is available to the template."
 msgstr ""
+"Use a linguagem de template padrão do Django "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" A {{ %(variable)s}} está disponível para o template."
 
 #: forms.py:9
 msgid "Resulting text from the evaluated template."
-msgstr ""
+msgstr "Testo resultante do template avaliado."
 
 #: forms.py:10
 msgid "Result"
-msgstr ""
+msgstr "Resultado"
 
 #: forms.py:20
 msgid "The template string to be evaluated."
-msgstr ""
+msgstr "A string do template a ser avaliada."
 
 #: forms.py:21
 msgid "Template"
-msgstr ""
+msgstr "Template"
 
 #: links.py:11
 msgid "Sandbox"
-msgstr ""
+msgstr "Sandbox"
 
 #: permissions.py:8
 msgid "Use the template sandbox"
-msgstr ""
+msgstr "Usar a sandbox de template"
 
 #: views.py:38
 #, python-format
 msgid "Template sandbox for: %s"
-msgstr ""
+msgstr "Sandbox do template para: %s"
 
 #: views.py:59
 #, python-format
 msgid "Template error; %(exception)s"
-msgstr ""
+msgstr "Erro do template; %(exception)s"
 
 #: widgets.py:64
 msgid "Filters"
-msgstr ""
+msgstr "Filtros"
 
 #: widgets.py:71
 msgid "Tags"
@@ -84,8 +91,8 @@ msgstr "Etiquetas"
 
 #: widgets.py:77
 msgid "<Filters and tags>"
-msgstr ""
+msgstr "<Filters and tags>"
 
 #: widgets.py:118
 msgid "<Model attributes>"
-msgstr ""
+msgstr "<Model attributes>"

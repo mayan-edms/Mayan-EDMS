@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Māris Teivāns <maris.teivans@gmail.com>, 2021
+# Māris Teivāns <maris.teivans@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-12 03:39+0000\n"
-"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2022\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,42 +20,52 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:27
+#: apps.py:28 events.py:5
 msgid "Locales"
 msgstr ""
 
-#: links.py:13
+#: events.py:8
+msgid "User locale profile edited"
+msgstr ""
+
+#: links.py:18
 msgid "Locale profile"
 msgstr "Lokalizācijas profils"
 
-#: links.py:18
+#: links.py:25
 msgid "Edit locale profile"
 msgstr "Rediģēt lokalizācijas profilu"
 
-#: models.py:18
+#: models.py:21
 msgid "User"
 msgstr "Lietotājs"
 
-#: models.py:22
+#: models.py:25
 msgid "Timezone"
 msgstr "Laika zona"
 
-#: models.py:25
+#: models.py:28
 msgid "Language"
 msgstr "Valoda"
 
-#: models.py:31
+#: models.py:34
 msgid "User locale profile"
 msgstr "Lietotāja lokalizācijas profils"
 
-#: models.py:32
+#: models.py:35
 msgid "User locale profiles"
 msgstr "Lietotāja lokalizācijas profili"
 
-#: views.py:24
-msgid "Current user locale profile details"
+#: models.py:39
+msgid "None"
+msgstr "Nav neviens"
+
+#: views.py:36
+#, python-format
+msgid "Locale profile for user: %s"
 msgstr ""
 
-#: views.py:30
-msgid "Edit current user locale profile details"
+#: views.py:82
+#, python-format
+msgid "Edit locale profile for user: %s"
 msgstr ""

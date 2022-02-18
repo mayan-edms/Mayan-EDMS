@@ -4,19 +4,19 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2021
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2021
-# Thierry Schott <DarkDare@users.noreply.github.com>, 2021
-# Baptiste GAILLET <baptiste.gaillet@cstb.fr>, 2021
-# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Baptiste GAILLET <baptiste.gaillet@cstb.fr>, 2022
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
+# Roberto Rosario, 2022
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"PO-Revision-Date: 2022-02-03 10:13+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -78,7 +78,7 @@ msgstr "Soumettre pour les métadonnées de fichier"
 
 #: links.py:47
 msgid "Setup file metadata"
-msgstr "Métadonnées du fichier d'installation"
+msgstr "Métadonnées du fichier"
 
 #: links.py:52
 msgid "File metadata processing per type"

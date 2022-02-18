@@ -3,7 +3,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('mailer', '0004_auto_20170714_2133'),
+        ('mailer', '0004_auto_20170714_2133')
     ]
 
     operations = [
@@ -12,6 +12,6 @@ class Migration(migrations.Migration):
             name='label',
             field=models.CharField(
                 max_length=128, unique=True, verbose_name='Label'
-            ),
-        ),
+            )
+        )
     ]

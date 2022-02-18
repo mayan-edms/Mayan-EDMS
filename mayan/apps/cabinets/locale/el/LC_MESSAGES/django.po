@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Hmayag Antonian <hmayag@freemail.gr>, 2021
-# pyrotech <anastasios@tutamail.com>, 2021
+# pyrotech <anastasios@tutamail.com>, 2022
+# Hmayag Antonian <hmayag@freemail.gr>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:17+0000\n"
-"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,9 +21,9 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:50 apps.py:152 apps.py:156 apps.py:160 apps.py:164 apps.py:168
+#: apps.py:51 apps.py:158 apps.py:162 apps.py:166 apps.py:170 apps.py:174
 #: events.py:5 forms.py:14 links.py:30 menus.py:14 models.py:50 models.py:174
-#: permissions.py:5 search.py:56 views.py:155 workflow_actions.py:20
+#: permissions.py:5 search.py:60 views.py:155 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "Ερμάρια"
 
@@ -120,7 +120,7 @@ msgstr "%(model_name)s με την ετικέτα %(field_labels)s υπάρχε�
 msgid "Document cabinet"
 msgstr "Ερμάριο εγγράφων"
 
-#: models.py:186 search.py:63 search.py:70 search.py:77 search.py:84
+#: models.py:186 search.py:67 search.py:74 search.py:81 search.py:88
 msgid "Document cabinets"
 msgstr "Ερμάρια εγγράφων"
 
@@ -148,29 +148,29 @@ msgstr "Αφαίρεση εγγράφων από ερμάρια"
 msgid "View cabinets"
 msgstr "Εμφάνιση ερμαρίων"
 
-#: search.py:33
+#: search.py:35
 msgid "Document type"
 msgstr "Τύπος εγγράφου"
 
-#: search.py:36
-msgid "Document MIME type"
-msgstr "MIME τύπος εγγράφου"
-
-#: search.py:39
+#: search.py:38
 msgid "Document label"
 msgstr "Ετικέτα εγγράφου"
 
-#: search.py:42
+#: search.py:41
 msgid "Document description"
 msgstr "Περιγραφή εγγράφου"
 
-#: search.py:45
+#: search.py:44
 msgid "Document UUID"
 msgstr "UUID εγγράφου"
 
-#: search.py:50
-msgid "Document checksum"
-msgstr "Άθροισμα ελέγχου εγγράφου"
+#: search.py:51
+msgid "Document file checksum"
+msgstr ""
+
+#: search.py:54
+msgid "Document file MIME type"
+msgstr ""
 
 #: serializers.py:18
 msgid "List of children cabinets."

@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2021
+# Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:18+0000\n"
-"Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2022\n"
 "Language-Team: Vietnamese (https://www.transifex.com/rosarior/teams/13584/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:137 permissions.py:5 settings.py:15
+#: apps.py:132 permissions.py:5 settings.py:15
 msgid "Common"
 msgstr ""
 
@@ -105,21 +105,15 @@ msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr ""
 
-#: literals.py:23
-msgid ""
-"Your database backend is set to use SQLite. SQLite should only be used for "
-"development and testing, not for production."
-msgstr ""
-
-#: literals.py:32
+#: literals.py:28
 msgid "Days"
 msgstr ""
 
-#: literals.py:33
+#: literals.py:29
 msgid "Hours"
 msgstr ""
 
-#: literals.py:34
+#: literals.py:30
 msgid "Minutes"
 msgstr ""
 
@@ -210,11 +204,7 @@ msgstr ""
 msgid "URL of the project's homepage."
 msgstr ""
 
-#: templates/common/app/viewport.html:9
-msgid "Warning"
-msgstr ""
-
-#: templates/common/app/viewport.html:23
+#: templates/common/app/viewport.html:15
 msgid "Click here to fix this."
 msgstr ""
 

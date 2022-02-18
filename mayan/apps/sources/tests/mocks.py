@@ -5,22 +5,28 @@ from .literals import TEST_EMAIL_BASE64_FILENAME, TEST_STAGING_PREVIEW_WIDTH
 
 class MockIMAPMessage:
     def __init__(self, uid):
-        self.flags = []
+        self.flags = set()
         self.mailbox = None
         self.uid = uid
 
     def flags_add(self, flags_string):
-        for flag in flags_string.split():
-            if flag in self.flags:
-                self.flags.remove(flag)
+        for flag_string in flags_string.split():
+            # Remove parenthesis.
+            flag_string = flag_string[1:-1]
+            self.flags.add(flag_string)
 
     def flags_remove(self, flags_string):
-        for flag in flags_string.split():
-            if flag not in self.flags:
-                self.flags.append(flag)
+        for flag_string in flags_string.split():
+            # Remove parenthesis.
+            flag_string = flag_string[1:-1]
+            self.flags.discard(flag_string)
 
     def flags_set(self, flags_string):
-        self.flags = flags_string.split()
+        self.flags = set()
+        for flag_string in flags_string.split():
+            # Remove parenthesis.
+            flag_string = flag_string[1:-1]
+            self.flags.add(flag_string)
 
     def delete(self):
         self.mailbox.messages.pop(self.uid)
@@ -56,12 +62,22 @@ class MockIMAPMailbox:
 
 
 class MockIMAPServer:
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args, **kwargs):
+        self.logout()
+        self.close()
+
     def __init__(self):
         self.mailboxes = {
             'INBOX': MockIMAPMailbox(name='INBOX')
         }
-        self.mailboxes['INBOX'].messages_add(uid='999')
         self.mailbox_selected = None
+
+    def _add_test_message(self, uid=None):
+        uid = uid or str(len(self.mailboxes['INBOX'].messages))
+        self.mailboxes['INBOX'].messages_add(uid=uid)
 
     def _fetch(self, messages):
         flag = '\\Seen'
@@ -216,12 +232,16 @@ class MockIMAPServer:
 
 class MockPOP3Mailbox:
     """RFC 1725"""
-    messages = {
-        1: [TEST_EMAIL_BASE64_FILENAME]
-    }
+    _message_index_base = 1
+    messages = {}
+
+    def _add_test_message(self):
+        self.messages[
+            self._message_index_base + len(self.messages)
+        ] = [TEST_EMAIL_BASE64_FILENAME]
 
     def dele(self, which):
-        return
+        return self.messages.pop(which)
 
     def getwelcome(self):
         return force_bytes(

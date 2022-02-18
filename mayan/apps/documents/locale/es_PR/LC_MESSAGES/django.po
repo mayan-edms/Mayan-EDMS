@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:23+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,21 +20,21 @@ msgstr ""
 "Language: es_PR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:215 apps.py:659 events.py:5 menus.py:8
+#: apps.py:215 apps.py:647 events.py:5 menus.py:8
 #: models/document_models.py:131 permissions.py:5 queues.py:21 settings.py:33
 #: statistics.py:230
 msgid "Documents"
 msgstr "Documentos"
 
-#: apps.py:281
+#: apps.py:269
 msgid "Decorations"
 msgstr "Decoraciones"
 
-#: apps.py:300
+#: apps.py:288
 msgid "Create a document type"
 msgstr "Crear tipo de documento"
 
-#: apps.py:302
+#: apps.py:290
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
@@ -42,46 +42,46 @@ msgstr ""
 "Cada documento cargado debe tener asignado un tipo de documento, es la forma"
 " básica en que Mayan EDMS clasifica los documentos."
 
-#: apps.py:403
+#: apps.py:391
 msgid "File comments"
 msgstr "Comentarios de archivo"
 
-#: apps.py:407
+#: apps.py:395
 msgid "File encodings"
 msgstr "Codificaciones del archivo"
 
-#: apps.py:411
+#: apps.py:399
 msgid "File MIME types"
 msgstr "Tipos MIME de archivos "
 
-#: apps.py:415
+#: apps.py:403
 msgid "File timestamps"
 msgstr "Marcas de tiempo del archivo"
 
-#: apps.py:420 links/document_file_page_links.py:79
+#: apps.py:408 links/document_file_page_links.py:79
 #: models/document_file_models.py:120 models/document_file_page_models.py:34
 #: search.py:52
 msgid "Document file"
 msgstr "Archivo de documento"
 
-#: apps.py:424 models/document_file_page_models.py:38
+#: apps.py:412 models/document_file_page_models.py:38
 #: models/document_version_page_models.py:50
 msgid "Page number"
 msgstr "Número de página"
 
-#: apps.py:429
+#: apps.py:417
 msgid "Return the latest file of the document."
 msgstr "Devuelve el último archivo del documento."
 
-#: apps.py:430
+#: apps.py:418
 msgid "Latest file"
 msgstr "Último archivo"
 
-#: apps.py:433
+#: apps.py:421
 msgid "Return the document instance."
 msgstr "Devuelve la instancia del documento."
 
-#: apps.py:434 links/document_file_links.py:63
+#: apps.py:422 links/document_file_links.py:63
 #: links/document_file_page_links.py:73 links/document_version_links.py:75
 #: links/document_version_page_links.py:102 models/document_file_models.py:76
 #: models/document_models.py:130 models/document_version_models.py:46
@@ -90,25 +90,25 @@ msgstr "Devuelve la instancia del documento."
 msgid "Document"
 msgstr "Documento"
 
-#: apps.py:564 apps.py:616 apps.py:645 apps.py:679 apps.py:704
+#: apps.py:552 apps.py:604 apps.py:633 apps.py:667 apps.py:692
 msgid "Thumbnail"
 msgstr "Foto miniatura"
 
-#: apps.py:570
+#: apps.py:558
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:574 apps.py:621 apps.py:684 forms/document_file_forms.py:71
+#: apps.py:562 apps.py:609 apps.py:672 forms/document_file_forms.py:71
 #: links/document_file_page_links.py:122
 #: links/document_version_page_links.py:52
 msgid "Pages"
 msgstr "Páginas"
 
-#: apps.py:583 models/favorite_document_models.py:34
+#: apps.py:571 models/favorite_document_models.py:34
 msgid "Date and time added"
 msgstr "Fecha y hora agregadas"
 
-#: apps.py:594
+#: apps.py:582
 msgid "Access date and time"
 msgstr "Fecha y hora agregadas"
 
@@ -547,15 +547,15 @@ msgstr "Versión del documento"
 msgid "Document version pages"
 msgstr "Páginas de la versión del documento"
 
-#: links/favorite_links.py:21 views/favorite_document_views.py:36
+#: links/favorite_links.py:23 views/favorite_document_views.py:36
 msgid "Favorites"
 msgstr "Favoritos"
 
-#: links/favorite_links.py:27 links/favorite_links.py:37
+#: links/favorite_links.py:29 links/favorite_links.py:39
 msgid "Add to favorites"
 msgstr "Agregar a los favoritos"
 
-#: links/favorite_links.py:33 links/favorite_links.py:41
+#: links/favorite_links.py:35 links/favorite_links.py:43
 msgid "Remove from favorites"
 msgstr "Remover de favoritos"
 
@@ -1140,19 +1140,19 @@ msgstr "Codificación MIME del archivo de documento "
 msgid "Document version comment"
 msgstr "Comentario de la versión del documento"
 
-#: serializers/document_file_serializers.py:38
+#: serializers/document_file_serializers.py:94
 msgid "Binary content for the new file."
 msgstr "Contenido binario para el nuevo archivo."
 
-#: serializers/document_serializers.py:23
+#: serializers/document_serializers.py:19
 msgid "Document type ID for the new document."
 msgstr "ID de tipo de documento para el nuevo documento."
 
-#: serializers/document_version_serializers.py:72
+#: serializers/document_version_serializers.py:14
 msgid "Content type ID of the source object for the page."
 msgstr "ID de tipo de contenido del objeto de origen de la página."
 
-#: serializers/favorite_document_serializers.py:18
+#: serializers/favorite_document_serializers.py:14
 msgid "Document ID for the new favorite document."
 msgstr "ID de documento para el nuevo documento favorito."
 
@@ -1395,10 +1395,10 @@ msgstr ""
 msgid "Recalculate the page count of the selected document file?"
 msgid_plural "Recalculate the page count of the selected document files?"
 msgstr[0] ""
-"¿Volver a calcular el total de páginas del archivo de documento "
+"¿Volver a calcular el número de páginas del archivo de documento "
 "seleccionado?"
 msgstr[1] ""
-"¿Volver a calcular el total de páginas de los archivos de documentos "
+"¿Volver a calcular el número de páginas de los archivos de documentos "
 "seleccionados?"
 
 #: views/document_file_page_views.py:77
@@ -1725,10 +1725,11 @@ msgid "Append all the document file pages to the selected document version?"
 msgid_plural ""
 "Append all the document file pages to the selected document versions?"
 msgstr[0] ""
-"¿Restablecer la lista de páginas de la versión del documento seleccionada?"
+"¿Adjuntar todas las páginas del archivo del documento a la versión del "
+"documento seleccionado?"
 msgstr[1] ""
-"¿Restablecer la lista de páginas de las versiones de documentos "
-"seleccionadas?"
+"¿Adjuntar todas las páginas del archivo del documento a las versiones del "
+"documento seleccionadas?"
 
 #: views/document_version_page_views.py:156
 #, python-format
@@ -1776,10 +1777,9 @@ msgstr ""
 msgid "Reset the page list of the selected document version?"
 msgid_plural "Reset the page list of the selected document versions?"
 msgstr[0] ""
-"¿Restablecer la lista de páginas de la versión del documento seleccionada?"
+"¿Reiniciar la lista de páginas de la versión de documento seleccionada?"
 msgstr[1] ""
-"¿Restablecer la lista de páginas de las versiones de documentos "
-"seleccionadas?"
+"¿Reiniciar la lista de páginas de las versiones de documentos seleccionadas?"
 
 #: views/document_version_page_views.py:312
 #, python-format
@@ -1928,10 +1928,10 @@ msgid_plural ""
 "Clear all the page transformations for the selected document version?"
 msgstr[0] ""
 "¿Borrar todas las transformaciones de página para la versión del documento "
-"seleccionada?"
+"seleccionado?"
 msgstr[1] ""
 "¿Borrar todas las transformaciones de página para la versión del documento "
-"seleccionada?"
+"seleccionado?"
 
 #: views/document_version_views.py:334
 #, python-format
@@ -2051,7 +2051,7 @@ msgstr "%(count)d documentos agregados a favoritos."
 #: views/favorite_document_views.py:56
 msgid "Add the selected document to favorites?"
 msgid_plural "Add the selected documents to favorites?"
-msgstr[0] "¿Agregar el documento seleccionado a favoritos?"
+msgstr[0] "¿Añadir el documento seleccionado a favoritos?"
 msgstr[1] "¿Agregar los documentos seleccionados a favoritos?"
 
 #: views/favorite_document_views.py:74
@@ -2104,19 +2104,32 @@ msgstr "No hay documentos creados recientemente."
 
 #: views/trashed_document_views.py:37
 #, python-format
+msgid "Document \"%(object)s\" moved to trash."
+msgstr "Documento \"%(object)s\" movido a la papelera."
+
+#: views/trashed_document_views.py:40
+#, python-format
 msgid "%(count)d document moved to the trash."
 msgstr "Documento %(count)d movido a la papelera."
 
-#: views/trashed_document_views.py:40
+#: views/trashed_document_views.py:43
 #, python-format
 msgid "%(count)d documents moved to the trash."
 msgstr "%(count)d documentos movidos a la papelera."
 
+#: views/trashed_document_views.py:45
+#, python-format
+msgid "Move the document \"%(object)s\" to trash?"
+msgstr "¿Mover el documento \"%(object)s\" a la papelera?"
+
 #: views/trashed_document_views.py:46
 msgid "Move the selected document to the trash?"
-msgid_plural "Move the selected documents to the trash?"
-msgstr[0] "¿Mover el documento seleccionado a la papelera?"
-msgstr[1] "¿Mover los documentos seleccionados a la papelera?"
+msgstr "¿Mover el documento seleccionado a la papelera?"
+
+#: views/trashed_document_views.py:47
+#, python-format
+msgid "Move the %(count)d selected documents to trash?"
+msgstr "¿Mover los %(count)d documentos seleccionados a la papelera?"
 
 #: views/trashed_document_views.py:76
 msgid "Empty trash?"
@@ -2128,20 +2141,33 @@ msgstr "La tarea de vaciado de la papelera se ha puesto en cola."
 
 #: views/trashed_document_views.py:98
 #, python-format
+msgid "Trash document \"%(object)s\" submitted for deletion."
+msgstr "Documento desechado \"%(object)s\" sometido para eliminación."
+
+#: views/trashed_document_views.py:101
+#, python-format
 msgid "%(count)d trashed document submitted for deletion."
 msgstr "%(count)d documento en la papelera fue enviado para su eliminación."
 
-#: views/trashed_document_views.py:101
+#: views/trashed_document_views.py:104
 #, python-format
 msgid "%(count)d trashed documents submitted for deletion."
 msgstr ""
 "%(count)d documentos en la papelera fueron enviados para su eliminación."
 
+#: views/trashed_document_views.py:106
+#, python-format
+msgid "Delete the trashed document \"%(object)s\"?"
+msgstr "¿Eliminar el documento desechado \"%(object)s\"?"
+
 #: views/trashed_document_views.py:107
 msgid "Delete the selected trashed document?"
-msgid_plural "Delete the selected trashed documents?"
-msgstr[0] "¿Eliminar el documento enviado a la papelera seleccionado?"
-msgstr[1] "¿Eliminar los documentos seleccionados en la papelera?"
+msgstr "¿Eliminar el documento desechado seleccionado?"
+
+#: views/trashed_document_views.py:108
+#, python-format
+msgid "Delete the %(count)d selected trashed documents?"
+msgstr "¿Eliminar los %(count)d documentos desechados seleccionados?"
 
 #: views/trashed_document_views.py:144
 msgid ""
@@ -2159,19 +2185,32 @@ msgstr "No hay documentos en la papelera"
 
 #: views/trashed_document_views.py:162
 #, python-format
+msgid "Trashed document \"%(object)s\" restored."
+msgstr "Documento desechado \"%(object)s\" restaurado."
+
+#: views/trashed_document_views.py:165
+#, python-format
 msgid "%(count)d trashed document restored."
 msgstr "%(count)d documento restaurado."
 
-#: views/trashed_document_views.py:165
+#: views/trashed_document_views.py:168
 #, python-format
 msgid "%(count)d trashed documents restored."
 msgstr "%(count)d documentos restaurados."
 
+#: views/trashed_document_views.py:170
+#, python-format
+msgid "Restore the trashed document: %(object)s"
+msgstr "Restaurar el documento desechado: %(object)s"
+
 #: views/trashed_document_views.py:171
 msgid "Restore the selected trashed document?"
-msgid_plural "Restore the selected trashed documents?"
-msgstr[0] "¿Restaurar el documento seleccionado de la papelera?"
-msgstr[1] "¿Restaurar los documentos seleccionados de la papelera?"
+msgstr "¿Restaurar el documento desechado seleccionado?"
+
+#: views/trashed_document_views.py:172
+#, python-format
+msgid "Restore the %(count)d selected trashed documents?"
+msgstr "¿Restaurar los %(count)d documentos desechados seleccionados?"
 
 #: workflow_actions.py:13
 msgid "New document type for the workflow document."

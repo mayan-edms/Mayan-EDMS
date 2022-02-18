@@ -4,16 +4,16 @@
 # 
 # Translators:
 # Translators:
-# Michal Švábík <snadno@lehce.cz>, 2021
-# trendspotter <jirka.p@volny.cz>, 2021
+# Michal Švábík <snadno@lehce.cz>, 2022
+# Jiří Podhorecký <jirka.p@volny.cz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:17+0000\n"
-"PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Jiří Podhorecký <jirka.p@volny.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,11 +37,11 @@ msgstr "název"
 msgid "Value"
 msgstr "Hodnota"
 
-#: classes.py:347
+#: classes.py:348
 msgid "Overridden"
 msgstr "Přepsáno"
 
-#: classes.py:349
+#: classes.py:350
 msgid "Is this settings being overridden by an environment variable?"
 msgstr "Je toto nastavení potlačeno proměnnou prostředí?"
 
@@ -184,7 +184,7 @@ msgid ""
 "error messages sent to ADMINS and MANAGERS; for that, see SERVER_EMAIL."
 msgstr ""
 "Výchozí: 'webmaster@localhost'  Výchozí e -mailová adresa, kterou lze použít"
-" pro různé automatizované korespondence od správců webu. To nezahrnuje "
+" pro různé automatizované korespondence od správce(ů) webu. To nezahrnuje "
 "chybové zprávy odeslané ADMINS a MANAGERS; viz SERVER_EMAIL."
 
 #: settings.py:111
@@ -273,9 +273,9 @@ msgid ""
 "setting EMAIL_USE_SSL."
 msgstr ""
 "Výchozí nastavení: False. Zda má být při komunikaci se serverem SMTP použito"
-" zabezpečené připojení TLS. Používá se pro explicitní připojení TLS, obvykle"
-" na portu 587. Pokud dochází k váznutí spojení, podívejte se na implicitní "
-"nastavení TLS EMAIL_USE_SSL"
+" zabezpečené připojení TLS (zabezpečené). Používá se pro explicitní "
+"připojení TLS, obvykle na portu 587. Pokud dochází k váznutí spojení, "
+"podívejte se na implicitní nastavení TLS EMAIL_USE_SSL"
 
 #: settings.py:179
 msgid ""
@@ -461,8 +461,8 @@ msgid ""
 "a proxy which sets this header is in use. USE_X_FORWARDED_HOST takes "
 "priority over this setting."
 msgstr ""
-"Logická hodnota, která určuje, zda se má přednostně používat hlavička X"
-"-Forwarded-Port před proměnnou SERVER_PORT META. To by mělo být povoleno "
+"Logická hodnota, která určuje, zda se má přednostně používat hlavička "
+"X-Forwarded-Port před proměnnou SERVER_PORT META. To by mělo být povoleno "
 "pouze v případě, že se používá proxy, který nastavuje toto záhlaví. "
 "USE_X_FORWARDED_HOST má přednost před tímto nastavením."
 
@@ -492,7 +492,7 @@ msgstr ""
 
 #: tests/test_classes.py:162
 msgid "English"
-msgstr ""
+msgstr "Angličtina"
 
 #: views.py:21
 msgid "Setting updated successfully."

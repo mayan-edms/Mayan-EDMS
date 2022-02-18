@@ -4,18 +4,18 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
-# Badea Gabriel <gcbadea@gmail.com>, 2021
-# Harald Ersch, 2021
-# Stefaniu Criste <gupi@hangar.ro>, 2021
+# Stefaniu Criste <gupi@hangar.ro>, 2022
+# Badea Gabriel <gcbadea@gmail.com>, 2022
+# Roberto Rosario, 2022
+# Harald Ersch, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:17+0000\n"
-"PO-Revision-Date: 2021-04-11 06:32+0000\n"
-"Last-Translator: Stefaniu Criste <gupi@hangar.ro>, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"PO-Revision-Date: 2022-02-03 10:14+0000\n"
+"Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,13 +23,13 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:23 settings.py:12
+#: apps.py:23 settings.py:14
 msgid "Storage"
 msgstr "Stocare"
 
 #: apps.py:56
 msgid "Source object"
-msgstr ""
+msgstr "Obiect sursă"
 
 #: classes.py:86 classes.py:107
 #, python-format
@@ -42,19 +42,19 @@ msgstr ""
 
 #: events.py:6 links.py:19 models.py:64 storages.py:22
 msgid "Download files"
-msgstr ""
+msgstr "Descărcați fișiere"
 
 #: events.py:10
 msgid "Download file created"
-msgstr ""
+msgstr "Fișierul de descărcat a fost creat"
 
 #: events.py:13
 msgid "Download file deleted"
-msgstr ""
+msgstr "Fișierul de descărcat a fost șters"
 
 #: events.py:16
 msgid "Download file downloaded"
-msgstr ""
+msgstr "Fișierul de descărcat a fost descărcat"
 
 #: links.py:12
 msgid "Delete"
@@ -101,7 +101,7 @@ msgstr "Data și ora"
 
 #: model_mixins.py:70
 msgid "Unnamed file"
-msgstr ""
+msgstr "Fișier fără nume"
 
 #: models.py:42 models.py:116
 msgid "File"
@@ -117,7 +117,7 @@ msgstr "Permisiune"
 
 #: models.py:63
 msgid "Download file"
-msgstr ""
+msgstr "Descărcare fișier"
 
 #: models.py:125
 msgid "Shared uploaded file"
@@ -137,21 +137,27 @@ msgstr "Ștergeți încărcările învechite"
 
 #: queues.py:26
 msgid "Delete stale download files"
-msgstr ""
+msgstr "Ștergeți fișierele de descărcare învechite"
 
-#: settings.py:17
+#: settings.py:19
+msgid "Time in seconds, after which download files will be deleted."
+msgstr "Timp în secunde, după care fișierele descărcate vor fi șterse."
+
+#: settings.py:25
 msgid ""
 "A storage backend that all workers can use to generate and hold files for "
 "download."
 msgstr ""
+"Un backend de stocare pe care toți lucrătorii îl pot folosi pentru a genera "
+"și păstra fișiere pentru descărcare."
 
-#: settings.py:28
+#: settings.py:36
 msgid "A storage backend that all workers can use to share files."
 msgstr ""
 "Un backend de stocare pe care toți lucrătorii îl pot folosi pentru "
 "partajarea fișierelor."
 
-#: settings.py:38
+#: settings.py:46
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
@@ -159,11 +165,18 @@ msgstr ""
 "Directorul temporar a folosit în server pentru a stoca miniaturi, "
 "previzualizări și fișiere temporare."
 
+#: settings.py:53
+msgid "Time in seconds, after which temporary uploaded files will be deleted."
+msgstr ""
+"Timp în secunde, după care fișierele temporare încărcate vor fi șterse."
+
 #: storages.py:15
 msgid ""
 "Unable to initialize the download file storage. Check the settings {} and {}"
 " for formatting errors."
 msgstr ""
+"Nu se poate inițializa stocarea fișierelor de descărcare. Verificați "
+"setările {} și {} pentru erori de formatare."
 
 #: storages.py:29
 msgid ""
@@ -179,11 +192,14 @@ msgid ""
 "export. Download files are retained over a span of time and then removed "
 "automatically."
 msgstr ""
+"Fișierele de descărcare sunt create ca rezultat al unui proces extern, cum "
+"ar fi un export. Fișierele de descărcare sunt păstrate pe o perioadă de timp"
+" și apoi eliminate automat."
 
 #: views.py:59
 msgid "There are no files to download."
-msgstr ""
+msgstr "Nu există fișiere de descărcat."
 
 #: views.py:60
 msgid "Downloads"
-msgstr ""
+msgstr "Descărcări"

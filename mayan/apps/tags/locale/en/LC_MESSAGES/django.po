@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:17+0000\n"
+"POT-Creation-Date: 2022-02-15 09:22+0000\n"
 "PO-Revision-Date: 2020-08-18 07:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -18,13 +18,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:46 apps.py:125 apps.py:129 apps.py:133 apps.py:138 apps.py:142
+#: apps.py:47 apps.py:131 apps.py:135 apps.py:139 apps.py:144 apps.py:148
 #: events.py:5 forms.py:15 links.py:28 menus.py:14 models.py:41
 #: permissions.py:5 views.py:171 workflow_actions.py:18 workflow_actions.py:61
 msgid "Tags"
 msgstr ""
 
-#: apps.py:163 models.py:35
+#: apps.py:169 models.py:35
 msgid "Documents"
 msgstr ""
 
@@ -108,7 +108,7 @@ msgstr ""
 msgid "Document tag"
 msgstr ""
 
-#: models.py:113 search.py:19 search.py:25 search.py:31 search.py:37
+#: models.py:113 search.py:28 search.py:34 search.py:40 search.py:46
 msgid "Document tags"
 msgstr ""
 
@@ -136,19 +136,43 @@ msgstr ""
 msgid "Remove tags from documents"
 msgstr ""
 
-#: search.py:13
+#: search.py:22
 msgid "Tag label"
 msgstr ""
 
-#: search.py:14
+#: search.py:23
 msgid "Tag color"
 msgstr ""
 
-#: serializers.py:33
+#: search.py:60
+msgid "Document type"
+msgstr ""
+
+#: search.py:63
+msgid "Document label"
+msgstr ""
+
+#: search.py:66
+msgid "Document description"
+msgstr ""
+
+#: search.py:69
+msgid "Document UUID"
+msgstr ""
+
+#: search.py:74
+msgid "Document file checksum"
+msgstr ""
+
+#: search.py:77
+msgid "Document file MIME type"
+msgstr ""
+
+#: serializers.py:32
 msgid "Primary key of the tag to add to the document."
 msgstr ""
 
-#: serializers.py:41
+#: serializers.py:40
 msgid "Primary key of the tag to remove from the document."
 msgstr ""
 

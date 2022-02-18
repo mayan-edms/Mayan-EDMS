@@ -5,9 +5,7 @@ from mayan.apps.metadata.permissions import permission_document_metadata_edit
 from mayan.apps.metadata.tests.mixins import MetadataTypeTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
-from ..events import (
-    event_group_edited, event_user_created, event_user_edited
-)
+from ..events import event_user_created, event_user_edited
 from ..permissions import (
     permission_group_edit, permission_user_create, permission_user_delete,
     permission_user_edit, permission_user_view

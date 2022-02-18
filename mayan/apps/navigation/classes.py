@@ -24,45 +24,11 @@ from mayan.apps.views.literals import (
     TEXT_SORT_FIELD_PARAMETER, TEXT_SORT_FIELD_VARIABLE_NAME
 )
 
+from .class_mixins import TemplateObjectMixin
 from .html_widgets import SourceColumnLinkWidget
 from .utils import get_current_view_name
 
 logger = logging.getLogger(name=__name__)
-
-
-class TemplateObjectMixin:
-    def check_condition(self, context, resolved_object=None):
-        """
-        Check to see if menu has a conditional display function and return
-        the result of the condition function against the context.
-        """
-        if self.condition:
-            return self.condition(
-                context=context, resolved_object=resolved_object
-            )
-        else:
-            return True
-
-    def get_request(self, context, request=None):
-        if not request:
-            # Try to get the request object the faster way and fallback to
-            # the slower method.
-            try:
-                request = context.request
-            except AttributeError:
-                # Simple request extraction failed. Might not be a view
-                # context. Try alternate method.
-                try:
-                    request = Variable(var='request').resolve(context=context)
-                except VariableDoesNotExist:
-                    # There is no request variable, most probable a 500 in
-                    # a test view. Don't return any resolved links then.
-                    logger.warning(
-                        'No request variable, aborting `{}` resolution'.format(self.__class__.__name__)
-                    )
-                    raise
-
-        return request
 
 
 class Link(TemplateObjectMixin):
@@ -292,7 +258,7 @@ class Menu(TemplateObjectMixin):
         self.link_positions = {}
         self.name = name
         self.non_sorted_sources = non_sorted_sources or []
-        self.proxy_inclusions = set()
+        self.proxy_exclusions = set()
         self.unbound_links = {}
         self.__class__._registry[name] = self
 
@@ -308,8 +274,8 @@ class Menu(TemplateObjectMixin):
             source_links.append(link)
             self.link_positions[link] = position + link_index
 
-    def add_proxy_inclusions(self, source):
-        self.proxy_inclusions.add(source)
+    def add_proxy_exclusion(self, source):
+        self.proxy_exclusions.add(source)
 
     def add_unsorted_source(self, source):
         self.non_sorted_sources.append(source)
@@ -441,17 +407,18 @@ class Menu(TemplateObjectMixin):
 
                             # Get proxy results.
                             # Remove the results explicitly excluded.
-                            # Execute after the root model results to allow a proxy
-                            # to override an existing results.
-                            matched_links.update(
-                                set(
-                                    self.bound_links.get(model._meta.proxy_for_model, ())
-                                ) - set(
-                                    self.unbound_links.get(model._meta.proxy_for_model, ())
-                                ) - set(
-                                    self.excluded_links.get(model, ())
+                            # Execute after the root model results to allow
+                            # a proxy to override an existing results.
+                            if model._meta.proxy_for_model and model not in self.proxy_exclusions:
+                                matched_links.update(
+                                    set(
+                                        self.bound_links.get(model._meta.proxy_for_model, ())
+                                    ) - set(
+                                        self.unbound_links.get(model._meta.proxy_for_model, ())
+                                    ) - set(
+                                        self.excluded_links.get(model, ())
+                                    )
                                 )
-                            )
                 else:
                     # It was is a list.
                     return self.get_links_for(

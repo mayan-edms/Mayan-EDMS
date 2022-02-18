@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# Roberto Rosario, 2021
+# Roberto Rosario, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-01 12:16+0000\n"
-"PO-Revision-Date: 2021-04-11 06:17+0000\n"
-"Last-Translator: Roberto Rosario, 2021\n"
+"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"PO-Revision-Date: 2022-02-03 10:12+0000\n"
+"Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:35 events.py:6 permissions.py:6 settings.py:10
+#: apps.py:36 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr "Autentikacija"
 
@@ -40,39 +40,19 @@ msgstr ""
 msgid "User logged out"
 msgstr ""
 
-#: forms.py:20
-msgid "Email"
-msgstr "Email"
-
-#: forms.py:23
-msgid "Password"
-msgstr "Lozinka"
-
-#: forms.py:25 forms.py:105
+#: forms.py:31
 msgid "Remember me"
 msgstr "Zapamti"
 
-#: forms.py:28
-msgid ""
-"Please enter a correct email and password. Note that the password field is "
-"case-sensitive."
-msgstr ""
-"Molimo unesite ispravan e-mail i lozinku. Imajte na umu da je polje za "
-"lozinku osetljivo na slovo."
-
-#: forms.py:30
-msgid "This account is inactive."
-msgstr "Ovaj account nije aktivan."
-
-#: forms.py:79
+#: forms.py:77
 msgid "Permanent"
 msgstr ""
 
-#: forms.py:80
+#: forms.py:78
 msgid "If selected, disables ending impersonation."
 msgstr ""
 
-#: forms.py:91
+#: forms.py:89
 msgid "User"
 msgstr "Korisnik"
 
@@ -102,22 +82,16 @@ msgstr ""
 
 #: settings.py:15
 msgid ""
-"Controls the mechanism used to authenticated user. Options are: username, "
-"email"
+"Remove the \"Forgot your password?\" link on the login form used to trigger "
+"the password reset."
 msgstr ""
-"Kontroliše mehanizam koji se koristi za autentifikaciju korisnika. Opcije "
-"su: korisničko ime, e-pošta"
 
-#: settings.py:22
-msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
-" in. Value is time in seconds."
+#: settings.py:23
+msgid "Dotted path to the backend used to process user authentication."
 msgstr ""
 
 #: settings.py:29
-msgid ""
-"Remove the \"Forgot your password?\" link on the login form used to trigger "
-"the password reset."
+msgid "Arguments for the AUTHENTICATION_BACKEND."
 msgstr ""
 
 #: templates/authentication/app/viewport.html:11
@@ -137,11 +111,20 @@ msgid "Login"
 msgstr "Prijava"
 
 #: templates/authentication/login.html:21
-#: templates/authentication/login.html:30
 msgid "Sign in"
 msgstr "Prijavite se"
 
-#: templates/authentication/login.html:37
+#: templates/authentication/login.html:57
+msgid "Save"
+msgstr "Sačuvati"
+
+#: templates/authentication/login.html:57
+#: templates/authentication/password_reset_confirm.html:29
+#: templates/authentication/password_reset_form.html:29
+msgid "Submit"
+msgstr "Podnijeti"
+
+#: templates/authentication/login.html:67
 msgid "Forgot your password?"
 msgstr "Zaboravili lozinku?"
 
@@ -164,55 +147,59 @@ msgstr ""
 msgid "Login page"
 msgstr "Prijava na stranicu"
 
-#: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29
-msgid "Submit"
-msgstr "Podnijeti"
-
 #: templates/authentication/password_reset_done.html:15
 msgid "Password reset email sent!"
 msgstr "Resetovana lozinka poslata na vaš email!"
 
-#: views/authentication_views.py:75
+#: views/authentication_views.py:153 views/authentication_views.py:287
+msgid "Next"
+msgstr ""
+
+#: views/authentication_views.py:159 views/authentication_views.py:293
+#, python-format
+msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
+msgstr "Korak %(step)d od %(total_steps)d: %(step_label)s"
+
+#: views/authentication_views.py:335
 msgid "Your password has been successfully changed."
 msgstr "Vaš password je uspješno promjenjen"
 
-#: views/authentication_views.py:82
+#: views/authentication_views.py:342
 msgid "Current user password change"
 msgstr "Promjeniti trenutni pasvord"
 
-#: views/authentication_views.py:90
+#: views/authentication_views.py:350
 msgid "Changing the password is not allowed for this account."
 msgstr ""
 
-#: views/authentication_views.py:157
+#: views/authentication_views.py:422
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Zahtev za promjenu lozinke izvršen %(count)d korisnika"
 
-#: views/authentication_views.py:159
+#: views/authentication_views.py:425
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Zahtev za promjenu lozinke izvršen %(count)d korisnika"
 
-#: views/authentication_views.py:167
+#: views/authentication_views.py:433
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: views/authentication_views.py:177
+#: views/authentication_views.py:444
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Izmjenite lozinku korisnika: %s"
 
-#: views/authentication_views.py:198
+#: views/authentication_views.py:466
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Uspešno resetovanje lozinke za korisnika: %s"
 
-#: views/authentication_views.py:204
+#: views/authentication_views.py:472
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Greška resetovanja lozinke za korisnika \"%(user)s\": %(error)s"
