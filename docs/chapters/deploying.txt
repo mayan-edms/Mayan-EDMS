@@ -210,6 +210,52 @@ For another setup that offers more performance and scalability refer to the
 
        sudo apt-get remove --purge --yes libjpeg-dev libpq-dev libpng-dev libtiff-dev zlib1g-dev
 
+#. Sample configuration file for Nginx
+
+   ::
+
+      server {
+          listen 80;
+
+          location ~ \.(cgi|fcgi|rb)$  { deny all; }
+          location ~ /\.ht             { deny all; }
+
+          location /media {
+              alias /opt/mayan-edms/media;
+          }
+
+          location /static {
+              alias /opt/mayan-edms/media/static;
+              # Make Browsers Cache Static Files On nginx
+              # See: http://www.howtoforge.com/make-browsers-cache-static-files-on-nginx
+              # and  http://serverfault.com/questions/370525/nginxdjango-serving-static-files
+              access_log   off;
+              expires modified 1m;
+          }
+
+          location /favicon.ico {
+              alias /opt/mayan-edms/media/static/appearance/images/favicon.ico;
+          }
+
+          location / {
+              proxy_connect_timeout 300s;
+              proxy_read_timeout 300s;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header Host $host:$server_port;
+              client_max_body_size 10m;
+              #proxy_pass http://unix://home/mayan/run/gunicorn.sock;
+              proxy_pass http://127.0.0.1:8000;
+              proxy_http_version 1.1;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection "upgrade";
+              proxy_redirect     off;
+          }
+
+          #access_log /home/mayan/logs/access.log;
+          #error_log /home/mayan/logs/error.log;
+      }
+
 
 .. _deployment_advanced:
 
