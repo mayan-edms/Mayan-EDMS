@@ -28,23 +28,31 @@ class BackendMetaclass(type):
                 'only one.'
             )
 
-        if base_backend_class:
+        _loader_module_name = getattr(new_class, '_loader_module_name')
+
+        # Check if `_loader_module_name` is set as to not process the
+        # metaclass.
+        if _loader_module_name and base_backend_class:
             base_backend_class = base_backend_class[0]
 
             if base_backend_class != new_class:
                 # Get this new child class full name, to be used as the
                 # registry key.
                 new_class_full_name = get_class_full_name(klass=new_class)
+                if _loader_module_name in new_class_full_name:
+                    # Only load classed defined in the loader module.
+                    # This ensurer miscellaneous classes like NullBackends
+                    # are not registered.
 
-                # Initialize the app backend class registry.
-                base_backend_class._registry.setdefault(
-                    base_backend_class, {}
-                )
+                    # Initialize the app backend class registry.
+                    base_backend_class._registry.setdefault(
+                        base_backend_class, {}
+                    )
 
-                # Add the new child class to the app backend class registry.
-                base_backend_class._registry[
-                    base_backend_class
-                ][new_class_full_name] = new_class
+                    # Add the new child class to the app backend class registry.
+                    base_backend_class._registry[
+                        base_backend_class
+                    ][new_class_full_name] = new_class
 
         return new_class
 
