@@ -28,7 +28,7 @@ class StoredDuplicateBackendManager(models.Manager):
                     app_label='duplicates', model_name='DuplicateBackendEntry'
                 )
 
-                for backend_path, backend_class in DuplicateBackend.get_all():
+                for backend_path, backend_class in DuplicateBackend.get_all().items():
                     if backend_class.verify(document=document):
 
                         stored_backend, created = self.get_or_create(

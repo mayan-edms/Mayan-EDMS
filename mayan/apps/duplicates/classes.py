@@ -3,50 +3,14 @@ import logging
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
-
+from mayan.apps.databases.classes import BaseBackend
 
 __all__ = ('DuplicateBackend',)
 logger = logging.getLogger(name=__name__)
 
 
-class DuplicateBackendMetaclass(type):
-    _registry = {}
-
-    def __new__(mcs, name, bases, attrs):
-        new_class = super().__new__(
-            mcs, name, bases, attrs
-        )
-        if not new_class.__module__ == 'mayan.apps.duplicates.classes':
-            mcs._registry[
-                '{}.{}'.format(new_class.__module__, name)
-            ] = new_class
-
-        return new_class
-
-
-class DuplicateBackend(
-    AppsModuleLoaderMixin, metaclass=DuplicateBackendMetaclass
-):
+class DuplicateBackend(BaseBackend):
     _loader_module_name = 'duplicate_backends'
-
-    @classmethod
-    def get(cls, name):
-        return cls._registry[name]
-
-    @classmethod
-    def get_all(cls):
-        return cls._registry.items()
-
-    @classmethod
-    def get_choices(cls):
-        return sorted(
-            [
-                (
-                    key, backend.label
-                ) for key, backend in cls.get_all().items()
-            ], key=lambda x: x[1]
-        )
 
     @classmethod
     def get_class_path(cls):
@@ -88,3 +52,6 @@ class DuplicateBackend(
 
 class NullBackend(DuplicateBackend):
     label = _('Null backend')
+
+    def _process(self, document):
+        pass
