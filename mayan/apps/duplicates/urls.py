@@ -21,7 +21,7 @@ urlpatterns = [
         view=DocumentDuplicateBackendListView.as_view()
     ),
     url(
-        regex=r'^backends/(?P<document_id>\d+)/backends/(?P<backend_id>\d+)/$',
+        regex=r'^backends/(?P<document_id>\d+)/backends/(?P<stored_backend_id>\d+)/$',
         name='document_backend_detail',
         view=DocumentDuplicateBackendDetailView.as_view()
     ),
@@ -30,8 +30,8 @@ urlpatterns = [
         view=DuplicateBackendListView.as_view()
     ),
     url(
-        regex=r'^backends/(?P<backend_id>\d+)/$', name='backend_detail',
-        view=DuplicateBackendDetailView.as_view()
+        regex=r'^backends/(?P<stored_backend_id>\d+)/$',
+        name='backend_detail', view=DuplicateBackendDetailView.as_view()
     )
 ]
 

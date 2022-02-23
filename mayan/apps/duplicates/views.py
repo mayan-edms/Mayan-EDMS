@@ -47,7 +47,9 @@ class DocumentDuplicateBackendDetailView(ExternalObjectViewMixin, DocumentListVi
 
     def get_stored_backend(self):
         #TODO Add get_object_or_404
-        return StoredDuplicateBackend.objects.get(pk=self.kwargs['backend_id'])
+        return StoredDuplicateBackend.objects.get(
+            pk=self.kwargs['stored_backend_id']
+        )
 
     def get_extra_context(self):
         context = super().get_extra_context()
@@ -86,7 +88,7 @@ class DuplicateBackendListView(SingleObjectListView):
 
 class DuplicateBackendDetailView(ExternalObjectViewMixin, DocumentListView):
     external_object_class = StoredDuplicateBackend
-    external_object_pk_url_kwarg = 'backend_id'
+    external_object_pk_url_kwarg = 'stored_backend_id'
 
     def get_document_queryset(self):
         return self.external_object.get_duplicated_documents()

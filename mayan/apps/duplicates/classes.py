@@ -1,15 +1,16 @@
 import logging
 
-from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.databases.classes import BaseBackend
+from mayan.apps.databases.classes import StoredBaseBackend
 
 __all__ = ('DuplicateBackend',)
 logger = logging.getLogger(name=__name__)
 
 
-class DuplicateBackend(BaseBackend):
+class DuplicateBackend(StoredBaseBackend):
+    _backend_app_label = 'duplicates'
+    _backend_model_name = 'StoredDuplicateBackend'
     _loader_module_name = 'duplicate_backends'
 
     @classmethod
@@ -25,16 +26,6 @@ class DuplicateBackend(BaseBackend):
         Returns either a true (True or anything) or false value (False, None).
         """
         return True
-
-    def __init__(self, model_instance_id, **kwargs):
-        self.model_instance_id = model_instance_id
-        self.kwargs = kwargs
-
-    def get_model_instance(self):
-        StoredDuplicateBackend = apps.get_model(
-            app_label='duplicated', model_name='StoredDuplicateBackend'
-        )
-        return StoredDuplicateBackend.objects.get(pk=self.model_instance_id)
 
     def process(self, document):
         logger.info(

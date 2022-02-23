@@ -3,12 +3,14 @@ from mayan.apps.documents.permissions import (
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
+from ..classes import DuplicateBackend
 from ..models import DuplicateBackendEntry
 
 from .mixins import (
     DuplicatedDocumentTestMixin, DuplicatedDocumentToolViewTestMixin,
     DuplicatedDocumentViewTestMixin
 )
+from .mocks import TestDuplicateBackend
 
 
 class DocumentsDuplicateListViewsTestCase(
@@ -114,6 +116,87 @@ class DuplicatedDocumentListViewsTestCase(
     DuplicatedDocumentTestMixin, DuplicatedDocumentViewTestMixin,
     GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        DuplicateBackend.register(klass=TestDuplicateBackend)
+
+    def _request_duplicate_backend_list_view(self):
+        return self.get(viewname='duplicates:backend_list')
+
+    def _request_duplicate_backend_detail_view(self):
+        return self.get(
+            viewname='duplicates:backend_detail', kwargs={
+                'backend_id': TestDuplicateBackend.get_model_instance().pk
+            }
+        )
+
+    def test_duplicate_backend_list_view(self):
+        response = self._request_duplicate_backend_list_view()
+        self.assertContains(
+            response=response, text=TestDuplicateBackend.label,
+            status_code=200
+        )
+
+    def test_duplicate_backend_detail_view_no_permission(self):
+        self._create_test_document_stub()
+        self._create_test_document_stub()
+
+        response = self._request_duplicate_backend_detail_view()
+        self.assertNotContains(
+            response=response, text=self.test_documents[0].label,
+            status_code=200
+        )
+        self.assertNotContains(
+            response=response, text=self.test_documents[1].label,
+            status_code=200
+        )
+
+    def test_duplicate_backend_detail_view_with_access(self):
+        self._create_test_document_stub()
+        self._create_test_document_stub()
+
+        self.grant_access(
+            obj=self.test_documents[0], permission=permission_document_view
+        )
+        self.grant_access(
+            obj=self.test_documents[1], permission=permission_document_view
+        )
+
+        response = self._request_duplicate_backend_detail_view()
+        self.assertContains(
+            response=response, text=self.test_documents[0].label,
+            status_code=200
+        )
+        self.assertContains(
+            response=response, text=self.test_documents[1].label,
+            status_code=200
+        )
+
+    def test_trashed_document_duplicate_backend_detail_view_with_access(self):
+        self._create_test_document_stub()
+        self._create_test_document_stub()
+
+        self.test_documents[0].delete()
+
+        self.grant_access(
+            obj=self.test_documents[0], permission=permission_document_view
+        )
+        self.grant_access(
+            obj=self.test_documents[1], permission=permission_document_view
+        )
+
+        response = self._request_duplicate_backend_detail_view()
+        self.assertNotContains(
+            response=response, text=self.test_documents[0].label,
+            status_code=200
+        )
+        self.assertNotContains(
+            response=response, text=self.test_documents[1].label,
+            status_code=200
+        )
+
     def test_duplicated_document_list_no_permission(self):
         self._upload_duplicate_document()
 
