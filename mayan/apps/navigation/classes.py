@@ -694,10 +694,16 @@ class SourceColumn(TemplateObjectMixin):
                     model = source._meta.model
                 except AttributeError:
                     # Not a model instance.
+                    try:
+                        # Try as a subclass
+                        for super_class in source.mro():
+                            columns.extend(cls._registry.get(super_class, ()))
+                    except AttributeError:
+                        # Not a subclass
 
-                    # Try as subclass instance, check the class hierarchy.
-                    for super_class in source.__class__.__mro__[:-1]:
-                        columns.extend(cls._registry.get(super_class, ()))
+                        # Try as subclass instance, check the class hierarchy.
+                        for super_class in source.__class__.__mro__[:-1]:
+                            columns.extend(cls._registry.get(super_class, ()))
 
                     return columns
                 else:
