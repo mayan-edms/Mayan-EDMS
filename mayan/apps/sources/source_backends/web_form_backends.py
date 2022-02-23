@@ -24,6 +24,13 @@ class SourceBackendWebForm(
     label = _('Web form')
     upload_form_class = WebFormUploadFormHTML5
 
+    def get_shared_uploaded_files(self):
+        return (
+            SharedUploadedFile.objects.create(
+                file=self.process_kwargs['forms']['source_form'].cleaned_data['file']
+            ),
+        )
+
     def get_view_context(self, context, request):
         return {
             'subtemplates_list': [
@@ -45,10 +52,3 @@ class SourceBackendWebForm(
                 }
             ]
         }
-
-    def get_shared_uploaded_files(self):
-        return (
-            SharedUploadedFile.objects.create(
-                file=self.process_kwargs['forms']['source_form'].cleaned_data['file']
-            ),
-        )

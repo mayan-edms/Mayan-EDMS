@@ -2,13 +2,13 @@ import logging
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.databases.classes import ModelBaseBackend
+from mayan.apps.databases.classes import BaseBackend
 
 __all__ = ('MailerBackend',)
 logger = logging.getLogger(name=__name__)
 
 
-class MailerBackend(ModelBaseBackend):
+class MailerBackend(BaseBackend):
     """
     Base class for the mailing backends. This class is mainly a wrapper
     for other Django backends that adds a few metadata to specify the

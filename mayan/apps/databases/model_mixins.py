@@ -11,6 +11,10 @@ logger = logging.getLogger(name=__name__)
 
 
 class BackendModelMixin(models.Model):
+    """
+    Backends here represent drivers. This model allows storing multiple
+    instances of a single backend.
+    """
     _backend_model_null_backend = None
 
     backend_path = models.CharField(

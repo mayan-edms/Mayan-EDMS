@@ -1,10 +1,10 @@
 import collections
 import logging
 
-from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
+from mayan.apps.databases.classes import ModelBaseBackend
 
 logger = logging.getLogger(name=__name__)
 
@@ -105,22 +105,7 @@ class SourceBackendAction(SourceBackendActionNamedTuple):
         )
 
 
-class SourceBackendMetaclass(type):
-    _registry = {}
-
-    def __new__(mcs, name, bases, attrs):
-        new_class = super().__new__(
-            mcs, name, bases, attrs
-        )
-        if not new_class.__module__ == 'mayan.apps.sources.classes':
-            mcs._registry[
-                '{}.{}'.format(new_class.__module__, name)
-            ] = new_class
-
-        return new_class
-
-
-class SourceBackend(AppsModuleLoaderMixin, metaclass=SourceBackendMetaclass):
+class SourceBackend(ModelBaseBackend):
     """
     Base class for the source backends.
 
@@ -132,16 +117,14 @@ class SourceBackend(AppsModuleLoaderMixin, metaclass=SourceBackendMetaclass):
         'default': ''  # Default value.
     }
     """
+    _backend_app_label = 'sources'
+    _backend_model_name = 'Source'
     _loader_module_name = 'source_backends'
 
     @classmethod
     def post_load_modules(cls):
-        for name, source_backend in cls.get_all().items():
+        for backend_path, source_backend in cls.get_all().items():
             source_backend.intialize()
-
-    @classmethod
-    def get(cls, name):
-        return cls._registry[name]
 
     @classmethod
     def get_action(cls, name):
@@ -154,26 +137,6 @@ class SourceBackend(AppsModuleLoaderMixin, metaclass=SourceBackendMetaclass):
     @classmethod
     def get_actions(cls):
         return getattr(cls, 'actions', ())
-
-    @classmethod
-    def get_all(cls):
-        return cls._registry
-
-    @classmethod
-    def get_choices(cls):
-        return sorted(
-            [
-                (
-                    key, backend.label
-                ) for key, backend in cls.get_all().items()
-            ], key=lambda x: x[1]
-        )
-
-    @classmethod
-    def get_class_path(cls):
-        for path, klass in cls.get_all().items():
-            if klass is cls:
-                return path
 
     @classmethod
     def get_fields(cls):
@@ -207,9 +170,10 @@ class SourceBackend(AppsModuleLoaderMixin, metaclass=SourceBackendMetaclass):
         code.
         """
 
-    def __init__(self, model_instance_id, **kwargs):
-        self.model_instance_id = model_instance_id
-        self.kwargs = kwargs
+    def clean(self):
+        """
+        Optional method to validate backend data before saving.
+        """
 
     def create(self):
         """
@@ -247,10 +211,6 @@ class SourceBackend(AppsModuleLoaderMixin, metaclass=SourceBackendMetaclass):
             )(**clean_kwargs)
         except AttributeError:
             """Non fatal. The context method is optional."""
-
-    def get_model_instance(self):
-        Source = apps.get_model(app_label='sources', model_name='Source')
-        return Source.objects.get(pk=self.model_instance_id)
 
     def get_task_extra_kwargs(self):
         return {}
