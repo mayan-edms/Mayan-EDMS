@@ -76,19 +76,19 @@ permission_document_version_view = namespace.add_permission(
 
 # Document type
 
-setup_namespace = PermissionNamespace(
+document_type_namespace = PermissionNamespace(
     label=_('Document types'), name='documents_types'
 )
-permission_document_type_create = setup_namespace.add_permission(
+permission_document_type_create = document_type_namespace.add_permission(
     label=_('Create document types'), name='document_type_create'
 )
-permission_document_type_delete = setup_namespace.add_permission(
+permission_document_type_delete = document_type_namespace.add_permission(
     label=_('Delete document types'), name='document_type_delete'
 )
-permission_document_type_edit = setup_namespace.add_permission(
+permission_document_type_edit = document_type_namespace.add_permission(
     label=_('Edit document types'), name='document_type_edit'
 )
-permission_document_type_view = setup_namespace.add_permission(
+permission_document_type_view = document_type_namespace.add_permission(
     label=_('View document types'), name='document_type_view'
 )
 
