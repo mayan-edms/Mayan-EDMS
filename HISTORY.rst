@@ -1,3 +1,8 @@
+4.0.22 (2022-XX-XX)
+===================
+- Filter unread message count badge by message read permission.
+
+
 4.0.21 (2021-11-29)
 ===================
 - Perform more strict cleanup of test models.

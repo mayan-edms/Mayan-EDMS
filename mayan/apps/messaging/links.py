@@ -23,13 +23,24 @@ def condition_is_unread(context):
 
 
 def get_unread_message_count(context):
+    AccessControlList = apps.get_model(
+        app_label='acls', model_name='AccessControlList'
+    )
     Message = apps.get_model(
         app_label='messaging', model_name='Message'
     )
+
     if context.request.user.is_authenticated:
-        return Message.objects.filter(
+        queryset = Message.objects.filter(
             user=context.request.user
-        ).filter(read=False).count()
+        ).filter(read=False)
+
+        queryset = AccessControlList.objects.restrict_queryset(
+            permission=permission_message_view, queryset=queryset,
+            user=context.request.user
+        )
+
+        return queryset.count()
 
 
 link_message_create = Link(
