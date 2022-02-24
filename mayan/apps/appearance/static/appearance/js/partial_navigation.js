@@ -35,6 +35,12 @@ class PartialNavigation {
         // formBeforeSerializeCallbacks - Callbacks to execute before submitting an ajaxForm
         this.formBeforeSerializeCallbacks = parameters.formBeforeSerializeCallbacks || [];
 
+        this.redirectionCode = parameters.redirectionCode;
+
+        if (!this.redirectionCode) {
+            alert('Need to setup redirectionCode');
+        }
+
         if (!this.initialURL) {
             alert('Need to setup initialURL');
         }
@@ -84,7 +90,7 @@ class PartialNavigation {
             url: url,
             type: 'GET',
             success: function (data, textStatus, response){
-                if (response.status == 278) {
+                if (response.status == app.redirectionCode) {
                     // Handle redirects
                     const newLocation = response.getResponseHeader('Location');
 
@@ -292,8 +298,8 @@ class PartialNavigation {
                 app.processAjaxRequestError(jqXHR);
             },
             mimeType: 'text/html; charset=utf-8', // ! Need set mimeType only when run from local file
-            success: function(data, textStatus, request){
-                if (request.status == 278) {
+            success: function(data, textStatus, request) {
+                if (request.status == app.redirectionCode) {
                     // Handle redirects after submitting the form
                     let newLocation = request.getResponseHeader('Location');
                     let uri = new URI(newLocation);

@@ -1,3 +1,13 @@
+4.3 (2022-XX-XX)
+================
+- Partials navigation updates:
+
+  - Streamline JavaScript partials navigation code.
+  - Make the AJAX response redirect code configurable. New setting
+    ``APPEARANCE_AJAX_REDIRECTION_CODE`` added.
+  - Remove repeated AJAX redirection middleware.
+
+
 4.2.1 (2022-02-16)
 ==================
 - Merge improvements from version 4.1.6.

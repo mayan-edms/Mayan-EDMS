@@ -148,7 +148,7 @@ MIDDLEWARE = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'stronghold.middleware.LoginRequiredMiddleware',
-    'mayan.apps.common.middleware.ajax_redirect.AjaxRedirect'
+    'mayan.apps.views.middleware.ajax_redirect.AjaxRedirect'
 )
 
 ROOT_URLCONF = 'mayan.urls'
@@ -320,10 +320,6 @@ SWAGGER_SETTINGS = {
     'DEFAULT_MODEL_DEPTH': 1,
     'DOC_EXPANSION': 'None'
 }
-
-# ----- AJAX REDIRECT -----
-
-AJAX_REDIRECT_CODE = 278
 
 # ------ End -----
 

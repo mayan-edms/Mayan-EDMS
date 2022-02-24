@@ -3,12 +3,18 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import (
-    DEFAULT_MAXIMUM_TITLE_LENGTH, DEFAULT_MESSAGE_POSITION,
-    DEFAULT_MENU_POLLING_INTERVAL
+    DEFAULT_AJAX_REDIRECTION_CODE, DEFAULT_MAXIMUM_TITLE_LENGTH,
+    DEFAULT_MESSAGE_POSITION, DEFAULT_MENU_POLLING_INTERVAL
 )
 
 namespace = SettingNamespace(label=_('Appearance'), name='appearance')
 
+setting_ajax_redirection_code = namespace.add_setting(
+    default=DEFAULT_AJAX_REDIRECTION_CODE,
+    global_name='APPEARANCE_AJAX_REDIRECTION_CODE', help_text=_(
+        'Custom HTTP response code for AJAX redirections.'
+    )
+)
 setting_max_title_length = namespace.add_setting(
     default=DEFAULT_MAXIMUM_TITLE_LENGTH,
     global_name='APPEARANCE_MAXIMUM_TITLE_LENGTH', help_text=_(
