@@ -27,8 +27,14 @@
   workflow action to be optional.
 - Migrate old workflow ``EmailAction`` instances instead of sub-classing
   for backwards compatibility. Improves commit
-  b522dac80f7f6cfb8c5db8a74d6d2d22bc8b281a and avoids a double entry in the
-  workflow state action selection dropbox.
+  ``b522dac80f7f6cfb8c5db8a74d6d2d22bc8b281a`` and avoids a double entry in
+  the workflow state action selection dropbox.
+- Partials navigation updates:
+
+  - Streamline JavaScript partials navigation code.
+  - Make the AJAX response redirect code configurable. New setting
+    ``APPEARANCE_AJAX_REDIRECTION_CODE`` added.
+  - Remove repeated AJAX redirection middleware.
 
 4.1.7 (2022-04-01)
 ==================
