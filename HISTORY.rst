@@ -7,6 +7,7 @@
     ``APPEARANCE_AJAX_REDIRECTION_CODE`` added.
   - Remove repeated AJAX redirection middleware.
 
+- Filter unread message count badge by message read permission.
 
 4.2.1 (2022-02-16)
 ==================
