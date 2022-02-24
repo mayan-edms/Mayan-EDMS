@@ -8,6 +8,7 @@
   - Remove repeated AJAX redirection middleware.
 
 - Filter unread message count badge by message read permission.
+- Add white outline to favicon.
 
 4.2.1 (2022-02-16)
 ==================
