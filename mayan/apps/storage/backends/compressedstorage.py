@@ -33,7 +33,7 @@ class BufferedZipFile(BufferedFile):
         )
 
     def _get_file_object_chunk(self):
-        chunk = self.zip_file_object.read(ZIP_CHUNK_SIZE)
+        chunk = self.zip_file_object.read(n=ZIP_CHUNK_SIZE)
 
         if chunk:
             if self.binary_mode:
@@ -50,7 +50,7 @@ class BufferedZipFile(BufferedFile):
         return self.zip_file_object.tell()
 
     def write(self, data):
-        return self.zip_file_object.write(data)
+        return self.zip_file_object.write(data=data)
 
 
 class ZipCompressedPassthroughStorage(PassthroughStorage):
@@ -107,7 +107,10 @@ class ZipCompressedPassthroughStorage(PassthroughStorage):
             ) as file_object:
                 # From Python: ZipFile requires mode 'r', 'w', 'x', or 'a'
                 with zipfile.ZipFile(file=file_object, mode='w', compression=COMPRESSION) as zip_file_object:
-                    zip_file_object.writestr(ZIP_MEMBER_FILENAME, content.read())
+                    zip_file_object.writestr(
+                        zinfo_or_arcname=ZIP_MEMBER_FILENAME,
+                        data=content.read()
+                    )
 
                     for file in zip_file_object.filelist:
                         file.create_system = 0
