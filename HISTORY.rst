@@ -36,6 +36,8 @@
     ``APPEARANCE_AJAX_REDIRECTION_CODE`` added.
   - Remove repeated AJAX redirection middleware.
 
+- Add keyword arguments to zip file calls.
+
 4.1.7 (2022-04-01)
 ==================
 - Backport fixes from version 4.2.3
