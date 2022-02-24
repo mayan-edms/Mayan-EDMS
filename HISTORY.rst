@@ -9,6 +9,7 @@
   - Fix document file signature serializer label.
   - Update document metadata model field label from "Metadata type value"
     to "Metadata value".
+  - Filter unread message count badge by message read permission.
 
 
 4.1.6 (2022-02-15)
