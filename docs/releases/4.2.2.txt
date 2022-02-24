@@ -20,6 +20,12 @@ functionality avoids a double entry in the workflow state action selection
 dropdown list.
 
 
+Messaging
+^^^^^^^^^
+
+Filter unread message count badge by message read permission.
+
+
 Sources
 ^^^^^^^
 

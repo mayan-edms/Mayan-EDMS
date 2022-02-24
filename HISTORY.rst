@@ -8,6 +8,7 @@
 - Ensure new document and file links access works like their respective
   views. The links will be active when the access is granted for the source
   as well as the document/document type.
+- Filter unread message count badge by message read permission.
 
 4.2.1 (2022-02-16)
 ==================
