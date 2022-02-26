@@ -9,6 +9,9 @@
 
 - Filter unread message count badge by message read permission.
 - Add white outline to favicon.
+- Add support for optional ``get_mayan_object_permissions`` and
+  ``get_mayan_view_permissions`` methods to allow API views to customize
+  how required permissions are calculated.
 
 4.2.1 (2022-02-16)
 ==================
