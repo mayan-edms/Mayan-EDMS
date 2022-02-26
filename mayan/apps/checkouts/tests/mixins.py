@@ -8,8 +8,8 @@ from mayan.apps.testing.tests.utils import as_id_list
 from ..models import DocumentCheckout
 
 
-class DocumentCheckoutsAPIViewTestMixin:
-    def _request_test_document_check_out_create_api_view(self):
+class CheckoutAPIViewTestMixin:
+    def _request_test_check_out_create_api_view(self):
         return self.post(
             viewname='rest_api:checkout-document-list', data={
                 'document_pk': self.test_document.pk,
@@ -17,20 +17,34 @@ class DocumentCheckoutsAPIViewTestMixin:
             }
         )
 
-    def _request_test_document_check_out_delete_api_view(self):
+    def _request_test_check_out_detail_delete_api_view(self):
         return self.delete(
             viewname='rest_api:checkedout-document-view',
             kwargs={'checkout_id': self.test_check_out.pk}
         )
 
-    def _request_test_document_check_out_detail_api_view(self):
+    def _request_test_check_out_detail_api_view(self):
         return self.get(
             viewname='rest_api:checkedout-document-view',
             kwargs={'checkout_id': self.test_check_out.pk}
         )
 
-    def _request_test_document_check_out_list_api_view(self):
+    def _request_test_check_out_list_api_view(self):
         return self.get(viewname='rest_api:checkout-document-list')
+
+
+class DocumentCheckoutAPIViewTestMixin:
+    def _request_test_document_check_out_detail_delete_api_view(self):
+        return self.delete(
+            viewname='rest_api:document-checkout-view',
+            kwargs={'document_id': self.test_document.pk}
+        )
+
+    def _request_test_document_check_out_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:document-checkout-view',
+            kwargs={'document_id': self.test_document.pk}
+        )
 
 
 class DocumentCheckoutTestMixin:

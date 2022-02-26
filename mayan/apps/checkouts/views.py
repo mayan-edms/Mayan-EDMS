@@ -157,12 +157,10 @@ class DocumentCheckOutDetailView(SingleObjectDetailView):
 
 
 class DocumentCheckOutListView(DocumentListView):
+    object_permission = permission_document_check_out_detail_view
+
     def get_document_queryset(self):
-        queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_document_check_out_detail_view,
-            queryset=DocumentCheckout.objects.checked_out_documents(),
-            user=self.request.user
-        )
+        queryset = DocumentCheckout.objects.checked_out_documents()
         return Document.valid.filter(pk__in=queryset.values('pk'))
 
     def get_extra_context(self):

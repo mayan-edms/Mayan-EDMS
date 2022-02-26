@@ -2,8 +2,7 @@ from django.utils.encoding import force_text
 
 from mayan.apps.documents.models import DocumentFile
 from mayan.apps.documents.permissions import (
-    permission_document_file_new, permission_document_file_view,
-    permission_document_view
+    permission_document_file_new, permission_document_file_view
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
@@ -464,11 +463,6 @@ class DocumentCheckoutViewTestCase(
     def test_document_check_out_list_view_no_permission(self):
         self._check_out_test_document()
 
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_view
-        )
-
         self._clear_events()
 
         response = self._request_test_document_check_out_list_view()
@@ -485,10 +479,6 @@ class DocumentCheckoutViewTestCase(
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_check_out_detail_view
-        )
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_view
         )
 
         self._clear_events()
@@ -507,10 +497,6 @@ class DocumentCheckoutViewTestCase(
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_check_out_detail_view
-        )
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_view
         )
 
         self.test_document.delete()
