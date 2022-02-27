@@ -14,7 +14,7 @@ from django.views.generic import (
 from django.views.generic.base import View
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import (
-    CreateView, DeleteView, FormMixin, ModelFormMixin, UpdateView
+    CreateView, DeleteView, FormMixin, UpdateView
 )
 from django.views.generic.list import ListView
 
@@ -30,9 +30,10 @@ from .icons import (
 from .mixins import (
     ExtraDataDeleteViewMixin, DownloadViewMixin, DynamicFormViewMixin,
     ExternalObjectViewMixin, ExtraContextViewMixin, FormExtraKwargsViewMixin,
-    ListModeViewMixin, MultipleObjectViewMixin, ObjectActionViewMixin,
-    ObjectNameViewMixin, RedirectionViewMixin, RestrictedQuerysetViewMixin,
-    SortingViewMixin, ViewPermissionCheckViewMixin
+    ListModeViewMixin, ModelFormFieldsetsViewMixin, MultipleObjectViewMixin,
+    ObjectActionViewMixin, ObjectNameViewMixin, RedirectionViewMixin,
+    RestrictedQuerysetViewMixin, SortingViewMixin,
+    ViewPermissionCheckViewMixin
 )
 
 from .settings import setting_paginate_by
@@ -571,7 +572,8 @@ class SimpleView(ViewPermissionCheckViewMixin, ExtraContextViewMixin, TemplateVi
 
 class SingleObjectCreateView(
     ObjectNameViewMixin, ViewPermissionCheckViewMixin, ExtraContextViewMixin,
-    RedirectionViewMixin, FormExtraKwargsViewMixin, CreateView
+    RedirectionViewMixin, FormExtraKwargsViewMixin,
+    ModelFormFieldsetsViewMixin, CreateView
 ):
     error_message_duplicate = None
     template_name = 'appearance/generic_form.html'
@@ -639,8 +641,9 @@ class SingleObjectCreateView(
 
 
 class SingleObjectDeleteView(
-    ObjectNameViewMixin, ExtraDataDeleteViewMixin, ViewPermissionCheckViewMixin,
-    RestrictedQuerysetViewMixin, ExtraContextViewMixin, RedirectionViewMixin, DeleteView
+    ObjectNameViewMixin, ExtraDataDeleteViewMixin,
+    ViewPermissionCheckViewMixin, RestrictedQuerysetViewMixin,
+    ExtraContextViewMixin, RedirectionViewMixin, DeleteView
 ):
     template_name = 'appearance/generic_confirm.html'
 
@@ -698,7 +701,7 @@ class SingleObjectDeleteView(
 class SingleObjectDetailView(
     ObjectNameViewMixin, ViewPermissionCheckViewMixin,
     RestrictedQuerysetViewMixin, FormExtraKwargsViewMixin,
-    ExtraContextViewMixin, ModelFormMixin, DetailView
+    ExtraContextViewMixin, ModelFormFieldsetsViewMixin, DetailView
 ):
     template_name = 'appearance/generic_form.html'
 
@@ -804,8 +807,10 @@ class SingleObjectDynamicFormCreateView(
 
 
 class SingleObjectEditView(
-    ObjectNameViewMixin, ViewPermissionCheckViewMixin, RestrictedQuerysetViewMixin,
-    ExtraContextViewMixin, FormExtraKwargsViewMixin, RedirectionViewMixin, UpdateView
+    ObjectNameViewMixin, ViewPermissionCheckViewMixin,
+    RestrictedQuerysetViewMixin, ExtraContextViewMixin,
+    FormExtraKwargsViewMixin, RedirectionViewMixin,
+    ModelFormFieldsetsViewMixin, UpdateView
 ):
     template_name = 'appearance/generic_form.html'
 

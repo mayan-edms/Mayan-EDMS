@@ -10,6 +10,7 @@ from django.core.exceptions import FieldDoesNotExist, ImproperlyConfigured
 from django.db import models
 from django.db.models import Model
 from django.db.models.query import QuerySet
+from django.forms import Form as DjangoForm, ModelForm as DjangoModelForm
 from django.forms.models import ModelFormMetaclass
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
@@ -18,6 +19,30 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.utils import resolve_attribute
 
 from .widgets import DisableableSelectWidget, PlainWidget, TextAreaDiv
+
+
+class FormFieldsetMixin:
+    fieldsets = None
+
+    def get_fieldsets(self):
+        if self.fieldsets:
+            return self.fieldsets
+        else:
+            return (
+                (
+                    None, {
+                        'fields': tuple(self.fields)
+                    }
+                ),
+            )
+
+
+class Form(FormFieldsetMixin, DjangoForm):
+    """Mayan's default form class."""
+
+
+class ModelForm(FormFieldsetMixin, DjangoModelForm):
+    """Mayan's default model form class."""
 
 
 class ChoiceForm(forms.Form):
@@ -89,7 +114,7 @@ class DetailFormOption(FormOptions):
     option_definitions = {'extra_fields': []}
 
 
-class DetailForm(forms.ModelForm):
+class DetailForm(ModelForm):
     def __init__(self, *args, **kwargs):
         self.opts = DetailFormOption(
             form=self, kwargs=kwargs, options=getattr(self, 'Meta', None)

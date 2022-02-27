@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ImproperlyConfigured
+from django.forms import models as model_forms
 from django.db.models.query import QuerySet
 from django.http import Http404, HttpResponseRedirect
 from django.http.response import FileResponse
@@ -8,6 +9,7 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.utils.translation import ungettext, ugettext_lazy as _
 from django.views.generic.detail import SingleObjectMixin
+from django.views.generic.edit import ModelFormMixin
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.models import AccessControlList
@@ -17,7 +19,7 @@ from mayan.apps.mime_types.classes import MIMETypeBackend
 from mayan.apps.permissions import Permission
 
 from .exceptions import ActionError
-from .forms import DynamicForm
+from .forms import DynamicForm, ModelForm
 from .literals import (
     PK_LIST_SEPARATOR, TEXT_CHOICE_ITEMS, TEXT_CHOICE_LIST,
     TEXT_LIST_AS_ITEMS_PARAMETER, TEXT_LIST_AS_ITEMS_VARIABLE_NAME,
@@ -259,6 +261,45 @@ class ListModeViewMixin:
             }
         )
         return context
+
+
+class ModelFormFieldsetsViewMixin(ModelFormMixin):
+    """Provide a way to show and handle a ModelForm in a request."""
+    fields = None
+
+    def get_form_class(self):
+        """Return the form class to use in this view."""
+        if self.fields is not None and self.form_class:
+            raise ImproperlyConfigured(
+                "Specifying both 'fields' and 'form_class' is not permitted."
+            )
+        if self.form_class:
+            return self.form_class
+        else:
+            if self.model is not None:
+                # If a model has been explicitly provided, use it
+                model = self.model
+            elif getattr(self, 'object', None) is not None:
+                # If this view is operating on a single object, use
+                # the class of that object
+                model = self.object.__class__
+            else:
+                # Try to get a queryset and extract the model class
+                # from that
+                model = self.get_queryset().model
+
+            if self.fields is None:
+                raise ImproperlyConfigured(
+                    "Using ModelFormMixin (base class of %s) without "
+                    "the 'fields' attribute is prohibited." % self.__class__.__name__
+                )
+
+            form_class = model_forms.modelform_factory(
+                model, form=ModelForm, fields=self.fields
+            )
+            form_class.fieldsets = getattr(self, 'fieldsets', None)
+
+            return form_class
 
 
 class MultipleObjectViewMixin(SingleObjectMixin):
