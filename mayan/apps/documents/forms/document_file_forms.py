@@ -40,6 +40,26 @@ class DocumentFilePropertiesForm(DetailForm):
     """
     Detail class form to display a document file properties
     """
+    fieldsets = (
+        (
+            _('Original'), {
+                'fields': ('filename', 'size'),
+            }
+        ), (
+            _('Detected'), {
+                'fields': ('mimetype', 'encoding', 'pages'),
+            }
+        ), (
+            _('Storage'), {
+                'fields': ('file', 'exists', 'checksum'),
+            }
+        ), (
+            _('Other'), {
+                'fields': ('timestamp', 'comment'),
+            }
+        ),
+    )
+
     class Meta:
         extra_fields = [
             {
@@ -59,7 +79,7 @@ class DocumentFilePropertiesForm(DetailForm):
                 'label': _('Size'),
                 'func': lambda document_file: filesizeformat(
                     document_file.size
-                ) if document_file.size else '-'
+                ) if document_file.size else '-', 'field': 'size'
             },
             {'label': _('Exists in storage'), 'field': 'exists'},
             {
@@ -69,7 +89,8 @@ class DocumentFilePropertiesForm(DetailForm):
             {'label': _('Checksum'), 'field': 'checksum'},
             {
                 'label': _('Pages'),
-                'func': lambda document_file: document_file.pages.count()
+                'func': lambda document_file: document_file.pages.count(),
+                'field': 'pages'
             },
         ]
         fields = ('filename', 'comment',)

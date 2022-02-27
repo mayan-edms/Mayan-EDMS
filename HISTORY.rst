@@ -12,6 +12,13 @@
 - Add support for optional ``get_mayan_object_permissions`` and
   ``get_mayan_view_permissions`` methods to allow API views to customize
   how required permissions are calculated.
+- Added support for form fieldsets.
+- Added fieldsets to the following forms:
+
+    - document file properties
+    - document type deletion policies
+    - metadata type
+    - user
 
 4.2.1 (2022-02-16)
 ==================

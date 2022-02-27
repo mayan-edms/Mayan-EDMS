@@ -2,7 +2,7 @@ from django.http import Http404
 
 from mayan.apps.acls.models import AccessControlList
 
-from ..literals import FIELDS_ALL, FIELDS_USER
+from ..literals import FIELDS_ALL, FIELDS_USER, FIELDSETS_ALL, FIELDSETS_USER
 
 
 class DynamicUserViewMixin:
@@ -37,10 +37,13 @@ class DynamicUserFormFieldViewMixin(DynamicUserViewMixin):
         if self.is_current_user:
             if self.user_has_access:
                 self.fields = FIELDS_ALL
+                self.fieldsets = FIELDSETS_ALL
             else:
                 self.fields = FIELDS_USER
+                self.fieldsets = FIELDSETS_USER
         else:
             self.fields = FIELDS_ALL
+            self.fieldsets = FIELDSETS_ALL
 
         return super().get_form_class()
 

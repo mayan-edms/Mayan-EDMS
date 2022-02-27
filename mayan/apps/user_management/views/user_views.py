@@ -14,6 +14,7 @@ from mayan.apps.views.mixins import ExternalObjectViewMixin
 from ..icons import icon_user_setup
 from ..links import link_user_create
 from ..literals import FIELDS_ALL
+from ..literals import FIELDSETS_ALL, FIELDSETS_USER
 from ..permissions import (
     permission_group_edit, permission_user_create, permission_user_delete,
     permission_user_edit, permission_user_view
@@ -27,8 +28,8 @@ class UserCreateView(SingleObjectCreateView):
     extra_context = {
         'title': _('Create new user'),
     }
-
     fields = FIELDS_ALL
+    fieldsets = FIELDSETS_ALL
     model = get_user_model()
     view_permission = permission_user_create
 
@@ -77,6 +78,7 @@ class UserDetailView(DynamicUserFormFieldViewMixin, SingleObjectDetailView):
 
 
 class UserEditView(DynamicUserFormFieldViewMixin, SingleObjectEditView):
+    fieldsets = FIELDSETS_USER
     object_permission = permission_user_edit
     pk_url_kwarg = 'user_id'
     post_action_redirect = reverse_lazy(

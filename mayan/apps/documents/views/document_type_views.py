@@ -141,6 +141,17 @@ class DocumentTypeDeletionPoliciesEditView(SingleObjectEditView):
         'trash_time_unit', 'trash_time_period', 'delete_time_unit',
         'delete_time_period'
     )
+    fieldsets = (
+        (
+            _('Trash'), {
+                'fields': ('trash_time_unit', 'trash_time_period'),
+            }
+        ), (
+            _('Delete'), {
+                'fields': ('delete_time_unit', 'delete_time_period')
+            },
+        )
+    )
     model = DocumentType
     object_permission = permission_document_type_edit
     pk_url_kwarg = 'document_type_id'
