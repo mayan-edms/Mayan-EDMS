@@ -32,7 +32,7 @@ class AccessControlListViewTestCase(
 
     def test_acl_create_get_view_with_access(self):
         self.grant_access(
-            obj=self.test_object, permission=permission_acl_edit
+            obj=self._test_object, permission=permission_acl_edit
         )
         acl_count = AccessControlList.objects.count()
 
@@ -61,7 +61,7 @@ class AccessControlListViewTestCase(
 
     def test_acl_create_view_post_with_access(self):
         self.grant_access(
-            obj=self.test_object, permission=permission_acl_edit
+            obj=self._test_object, permission=permission_acl_edit
         )
 
         acl_count = AccessControlList.objects.count()
@@ -75,9 +75,9 @@ class AccessControlListViewTestCase(
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
-        self.assertEqual(events[0].action_object, self.test_object)
+        self.assertEqual(events[0].action_object, self._test_object)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_acl)
+        self.assertEqual(events[0].target, self._test_acl)
         self.assertEqual(events[0].verb, event_acl_created.id)
 
     def test_acl_delete_view_no_permission(self):
@@ -87,12 +87,12 @@ class AccessControlListViewTestCase(
 
         response = self._request_test_acl_delete_view()
         self.assertNotContains(
-            response=response, text=force_text(s=self.test_object),
+            response=response, text=force_text(s=self._test_object),
             status_code=404
         )
 
         self.assertTrue(
-            self.test_object.acls.filter(role=self.test_role).exists()
+            self._test_object.acls.filter(role=self._test_role).exists()
         )
 
         events = self._get_test_events()
@@ -102,7 +102,7 @@ class AccessControlListViewTestCase(
         self._create_test_acl()
 
         self.grant_access(
-            obj=self.test_object, permission=permission_acl_edit
+            obj=self._test_object, permission=permission_acl_edit
         )
 
         self._clear_events()
@@ -111,14 +111,14 @@ class AccessControlListViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertFalse(
-            self.test_object.acls.filter(role=self.test_role).exists()
+            self._test_object.acls.filter(role=self._test_role).exists()
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_object)
+        self.assertEqual(events[0].target, self._test_object)
         self.assertEqual(events[0].verb, event_acl_deleted.id)
 
     def test_acl_list_view_no_permission(self):
@@ -128,7 +128,7 @@ class AccessControlListViewTestCase(
 
         response = self._request_test_acl_list_view()
         self.assertNotContains(
-            response=response, text=force_text(s=self.test_object),
+            response=response, text=force_text(s=self._test_object),
             status_code=404
         )
 
@@ -139,14 +139,14 @@ class AccessControlListViewTestCase(
         self._create_test_acl()
 
         self.grant_access(
-            obj=self.test_object, permission=permission_acl_view
+            obj=self._test_object, permission=permission_acl_view
         )
 
         self._clear_events()
 
         response = self._request_test_acl_list_view()
         self.assertContains(
-            response=response, text=force_text(s=self.test_object),
+            response=response, text=force_text(s=self._test_object),
             status_code=200
         )
 
@@ -163,52 +163,52 @@ class AccessControlListPermissionViewTestCase(
         self._create_test_acl()
 
     def test_acl_permission_get_no_permission(self):
-        test_acl_permission_count = self.test_acl.permissions.count()
+        test_acl_permission_count = self._test_acl.permissions.count()
 
         self._clear_events()
 
         response = self._request_test_acl_permission_list_get_view()
         self.assertNotContains(
-            response=response, text=force_text(s=self.test_object),
+            response=response, text=force_text(s=self._test_object),
             status_code=404
         )
 
         self.assertEqual(
-            self.test_acl.permissions.count(), test_acl_permission_count
+            self._test_acl.permissions.count(), test_acl_permission_count
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_acl_permission_get_with_access(self):
-        test_acl_permission_count = self.test_acl.permissions.count()
+        test_acl_permission_count = self._test_acl.permissions.count()
 
         self.grant_access(
-            obj=self.test_object, permission=permission_acl_edit
+            obj=self._test_object, permission=permission_acl_edit
         )
 
         self._clear_events()
 
         response = self._request_test_acl_permission_list_get_view()
         self.assertContains(
-            response=response, text=force_text(s=self.test_object),
+            response=response, text=force_text(s=self._test_object),
             status_code=200
         )
 
         self.assertEqual(
-            self.test_acl.permissions.count(), test_acl_permission_count
+            self._test_acl.permissions.count(), test_acl_permission_count
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_acl_permission_add_view_with_access(self):
-        test_acl_permission_count = self.test_acl.permissions.count()
+        test_acl_permission_count = self._test_acl.permissions.count()
 
         self.grant_access(
-            obj=self.test_object, permission=permission_acl_edit
+            obj=self._test_object, permission=permission_acl_edit
         )
-        test_acl_permission_count = self.test_acl.permissions.count()
+        test_acl_permission_count = self._test_acl.permissions.count()
 
         self._clear_events()
 
@@ -216,26 +216,28 @@ class AccessControlListPermissionViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_acl.permissions.count(), test_acl_permission_count + 1
+            self._test_acl.permissions.count(), test_acl_permission_count + 1
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_object)
+        self.assertEqual(events[0].action_object, self._test_object)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_acl)
+        self.assertEqual(events[0].target, self._test_acl)
         self.assertEqual(events[0].verb, event_acl_edited.id)
 
     def test_acl_permission_remove_view_with_access(self):
-        self.test_acl.permissions.add(self.test_permission.stored_permission)
+        self._test_acl.permissions.add(
+            self._test_permission.stored_permission
+        )
 
-        test_acl_permission_count = self.test_acl.permissions.count()
+        test_acl_permission_count = self._test_acl.permissions.count()
 
         self.grant_access(
-            obj=self.test_object, permission=permission_acl_edit
+            obj=self._test_object, permission=permission_acl_edit
         )
-        test_acl_permission_count = self.test_acl.permissions.count()
+        test_acl_permission_count = self._test_acl.permissions.count()
 
         self._clear_events()
 
@@ -243,15 +245,15 @@ class AccessControlListPermissionViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_acl.permissions.count(), test_acl_permission_count - 1
+            self._test_acl.permissions.count(), test_acl_permission_count - 1
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_object)
+        self.assertEqual(events[0].action_object, self._test_object)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_acl)
+        self.assertEqual(events[0].target, self._test_acl)
         self.assertEqual(events[0].verb, event_acl_edited.id)
 
 
@@ -268,7 +270,7 @@ class GlobalAccessControlListViewTestCase(
 
         response = self._request_test_global_acl_list_view()
         self.assertNotContains(
-            response=response, text=force_text(s=self.test_object),
+            response=response, text=force_text(s=self._test_object),
             status_code=200
         )
 
@@ -277,14 +279,14 @@ class GlobalAccessControlListViewTestCase(
 
     def test_global_acl_list_view_with_access(self):
         self.grant_access(
-            obj=self.test_object, permission=permission_acl_view
+            obj=self._test_object, permission=permission_acl_view
         )
 
         self._clear_events()
 
         response = self._request_test_global_acl_list_view()
         self.assertContains(
-            response=response, text=force_text(s=self.test_object),
+            response=response, text=force_text(s=self._test_object),
             status_code=200
         )
 
@@ -324,7 +326,7 @@ class OrphanAccessControlListViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_object)
+        self.assertEqual(events[0].action_object, self._test_object)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_acl)
+        self.assertEqual(events[0].target, self._test_acl)
         self.assertEqual(events[0].verb, event_acl_created.id)

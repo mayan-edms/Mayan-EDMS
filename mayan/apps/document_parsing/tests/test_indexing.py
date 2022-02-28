@@ -10,27 +10,27 @@ from .literals import TEST_PARSING_INDEX_NODE_TEMPLATE
 
 
 class DocumentFileParsingIndexingTestCase(DocumentTestMixin, BaseTestCase):
+    _test_document_filename = TEST_HYBRID_DOCUMENT
     auto_upload_test_document = False
-    test_document_filename = TEST_HYBRID_DOCUMENT
 
     def test_parsing_indexing(self):
-        self.test_index_template = IndexTemplate.objects.create(
+        self._test_index_template = IndexTemplate.objects.create(
             label=TEST_INDEX_TEMPLATE_LABEL
         )
 
-        self.test_index_template.document_types.add(self.test_document_type)
+        self._test_index_template.document_types.add(self._test_document_type)
 
-        root = self.test_index_template.index_template_root_node
-        self.test_index_template.index_template_nodes.create(
+        root = self._test_index_template.index_template_root_node
+        self._test_index_template.index_template_nodes.create(
             parent=root, expression=TEST_PARSING_INDEX_NODE_TEMPLATE,
             link_documents=True
         )
 
         self._upload_test_document()
-        self.test_document_file.submit_for_parsing()
+        self._test_document_file.submit_for_parsing()
 
         self.assertTrue(
-            self.test_document in IndexInstanceNode.objects.get(
+            self._test_document in IndexInstanceNode.objects.get(
                 value='sample'
             ).documents.all()
         )

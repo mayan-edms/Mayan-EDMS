@@ -15,7 +15,7 @@ class CabinetTestCase(CabinetTestMixin, BaseTestCase):
 
         self.assertEqual(Cabinet.objects.all().count(), 1)
         self.assertQuerysetEqual(
-            Cabinet.objects.all(), (repr(self.test_cabinet),)
+            Cabinet.objects.all(), (repr(self._test_cabinet),)
         )
 
     def test_cabinet_duplicate_creation(self):
@@ -28,26 +28,26 @@ class CabinetTestCase(CabinetTestMixin, BaseTestCase):
 
         self.assertEqual(Cabinet.objects.all().count(), 1)
         self.assertQuerysetEqual(
-            Cabinet.objects.all(), (repr(self.test_cabinet),)
+            Cabinet.objects.all(), (repr(self._test_cabinet),)
         )
 
     def test_inner_cabinet_creation(self):
         self._create_test_cabinet()
 
         inner_cabinet = Cabinet.objects.create(
-            parent=self.test_cabinet, label=TEST_CABINET_LABEL
+            parent=self._test_cabinet, label=TEST_CABINET_LABEL
         )
 
         self.assertEqual(Cabinet.objects.all().count(), 2)
         self.assertQuerysetEqual(
             Cabinet.objects.all(),
-            map(repr, (self.test_cabinet, inner_cabinet))
+            map(repr, (self._test_cabinet, inner_cabinet))
         )
 
     def test_method_get_absolute_url(self):
         self._create_test_cabinet()
 
-        self.assertTrue(self.test_cabinet.get_absolute_url())
+        self.assertTrue(self._test_cabinet.get_absolute_url())
 
 
 class CabinetDocumentTestCase(
@@ -59,22 +59,22 @@ class CabinetDocumentTestCase(
         self._create_test_cabinet()
 
     def test_addition_of_documents(self):
-        self.test_cabinet.documents.add(self.test_document)
+        self._test_cabinet.documents.add(self._test_document)
 
-        self.assertEqual(self.test_cabinet.documents.count(), 1)
+        self.assertEqual(self._test_cabinet.documents.count(), 1)
         self.assertQuerysetEqual(
-            self.test_cabinet.documents.all(), (repr(self.test_document),)
+            self._test_cabinet.documents.all(), (repr(self._test_document),)
         )
 
     def test_addition_and_deletion_of_documents(self):
-        self.test_cabinet.documents.add(self.test_document)
+        self._test_cabinet.documents.add(self._test_document)
 
-        self.assertEqual(self.test_cabinet.documents.count(), 1)
+        self.assertEqual(self._test_cabinet.documents.count(), 1)
         self.assertQuerysetEqual(
-            self.test_cabinet.documents.all(), (repr(self.test_document),)
+            self._test_cabinet.documents.all(), (repr(self._test_document),)
         )
 
-        self.test_cabinet.documents.remove(self.test_document)
+        self._test_cabinet.documents.remove(self._test_document)
 
-        self.assertEqual(self.test_cabinet.documents.count(), 0)
-        self.assertQuerysetEqual(self.test_cabinet.documents.all(), ())
+        self.assertEqual(self._test_cabinet.documents.count(), 0)
+        self.assertQuerysetEqual(self._test_cabinet.documents.all(), ())

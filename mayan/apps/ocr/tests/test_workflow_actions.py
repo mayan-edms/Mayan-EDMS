@@ -27,7 +27,7 @@ class UpdateDocumentPageOCRActionTestCase(
     def test_workflow_action_document_version_page_update_action_no_page_condition_execution(self):
         self._upload_test_document()
 
-        document_version_page = self.test_document_version.pages.first()
+        document_version_page = self._test_document_version.pages.first()
         DocumentVersionPageOCRContent.objects.create(
             document_version_page=document_version_page,
             content=TEST_DOCUMENT_VERSION_PAGE_OCR_CONTENT
@@ -40,7 +40,7 @@ class UpdateDocumentPageOCRActionTestCase(
             }
         )
 
-        action.execute(context={'document': self.test_document})
+        action.execute(context={'document': self._test_document})
 
         document_version_page.refresh_from_db()
         self.assertEqual(
@@ -51,7 +51,7 @@ class UpdateDocumentPageOCRActionTestCase(
     def test_workflow_action_document_version_page_update_action_template_page_content_execution(self):
         self._upload_test_document()
 
-        document_version_page = self.test_document_version.pages.first()
+        document_version_page = self._test_document_version.pages.first()
         DocumentVersionPageOCRContent.objects.create(
             document_version_page=document_version_page,
             content=TEST_DOCUMENT_VERSION_PAGE_OCR_CONTENT
@@ -63,7 +63,7 @@ class UpdateDocumentPageOCRActionTestCase(
                 'page_content': TEST_DOCUMENT_VERSION_PAGE_OCR_CONTENT_UPDATED
             }
         )
-        action.execute(context={'document': self.test_document})
+        action.execute(context={'document': self._test_document})
 
         document_version_page.refresh_from_db()
         self.assertEqual(
@@ -74,7 +74,7 @@ class UpdateDocumentPageOCRActionTestCase(
     def test_workflow_action_update_document_version_page_action_template_page_content_execution(self):
         self._upload_test_document()
 
-        document_version_page = self.test_document_version.pages.first()
+        document_version_page = self._test_document_version.pages.first()
         DocumentVersionPageOCRContent.objects.create(
             document_version_page=document_version_page,
             content=TEST_DOCUMENT_VERSION_PAGE_OCR_CONTENT
@@ -86,7 +86,7 @@ class UpdateDocumentPageOCRActionTestCase(
                 'page_content': '{{ document_version_page.ocr_content.content }}+update'
             }
         )
-        action.execute(context={'document': self.test_document})
+        action.execute(context={'document': self._test_document})
 
         document_version_page.refresh_from_db()
         self.assertEqual(
@@ -109,17 +109,17 @@ class UpdateDocumentPageOCRActionTestCase(
             label='', when=WORKFLOW_ACTION_ON_ENTRY
         )
         self._test_workflow_template.document_types.add(
-            self.test_document_type
+            self._test_document_type
         )
 
         self._upload_test_document()
 
-        self.test_document.workflows.first().do_transition(
+        self._test_document.workflows.first().do_transition(
             transition=self._test_workflow_template_transition
         )
 
         self.assertEqual(
-            ''.join(self.test_document.ocr_content()), self.test_document.label
+            ''.join(self._test_document.ocr_content()), self._test_document.label
         )
 
 

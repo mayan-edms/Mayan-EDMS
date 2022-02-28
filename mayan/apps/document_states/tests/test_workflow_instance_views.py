@@ -25,7 +25,7 @@ class WorkflowInstanceTransitionViewTestCase(
         self._create_test_workflow_template_state()
         self._create_test_workflow_template_transition()
         self._create_test_document_stub()
-        self._test_workflow_instance = self.test_document.workflows.first()
+        self._test_workflow_instance = self._test_document.workflows.first()
 
     def test_document_workflow_instance_list_view_no_permission(self):
         self._clear_events()
@@ -38,7 +38,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_document_workflow_instance_list_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
 
@@ -69,7 +69,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_document_workflow_instance_list_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
         self.grant_access(
@@ -90,7 +90,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_trashed_document_workflow_instance_list_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
         self.grant_access(
@@ -98,7 +98,7 @@ class WorkflowInstanceTransitionViewTestCase(
             permission=permission_workflow_template_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -119,7 +119,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_workflow_instance_detail_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
 
@@ -147,7 +147,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_workflow_instance_detail_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
         self.grant_access(
@@ -168,7 +168,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_trashed_document_workflow_instance_detail_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_template_view
         )
         self.grant_access(
@@ -176,7 +176,7 @@ class WorkflowInstanceTransitionViewTestCase(
             permission=permission_workflow_template_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -202,7 +202,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_workflow_instance_transition_selection_get_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
 
@@ -210,7 +210,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
         response = self._request_test_workflow_instance_transition_selection_get_view()
         self.assertContains(
-            response=response, text=str(self.test_document), status_code=200
+            response=response, text=str(self._test_document), status_code=200
         )
         self.assertNotContains(
             response=response,
@@ -247,7 +247,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_workflow_instance_transition_selection_get_view_with_document_and_transition_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
@@ -259,7 +259,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
         response = self._request_test_workflow_instance_transition_selection_get_view()
         self.assertContains(
-            response=response, text=str(self.test_document), status_code=200
+            response=response, text=str(self._test_document), status_code=200
         )
         self.assertContains(
             response=response,
@@ -296,7 +296,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_workflow_instance_transition_selection_get_view_with_document_and_workflow_template_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
@@ -308,7 +308,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
         response = self._request_test_workflow_instance_transition_selection_get_view()
         self.assertContains(
-            response=response, text=str(self.test_document), status_code=200
+            response=response, text=str(self._test_document), status_code=200
         )
         self.assertContains(
             response=response,
@@ -326,7 +326,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_trashed_document_workflow_instance_transition_selection_get_view_with_document_and_workflow_template_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
@@ -334,7 +334,7 @@ class WorkflowInstanceTransitionViewTestCase(
             permission=permission_workflow_instance_transition
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -365,7 +365,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_workflow_instance_transition_selection_post_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
 
@@ -384,7 +384,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_workflow_instance_transition_selection_post_view_with_document_and_transition_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
@@ -426,7 +426,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_workflow_instance_transition_selection_post_view_with_document_and_workflow_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
@@ -449,7 +449,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_trashed_document_workflow_instance_transition_selection_post_view_with_document_and_workflow_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
@@ -457,7 +457,7 @@ class WorkflowInstanceTransitionViewTestCase(
             permission=permission_workflow_instance_transition
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -488,7 +488,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_workflow_instance_transition_execute_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
 
@@ -526,7 +526,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_workflow_instance_transition_execute_view_with_document_and_transition_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
@@ -568,7 +568,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_workflow_instance_transition_execute_view_with_document_and_workflow_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
@@ -591,7 +591,7 @@ class WorkflowInstanceTransitionViewTestCase(
 
     def test_trashed_document_workflow_instance_transition_execute_view_with_document_and_workflow_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
@@ -599,7 +599,7 @@ class WorkflowInstanceTransitionViewTestCase(
             permission=permission_workflow_instance_transition
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -634,11 +634,11 @@ class WorkflowInstanceTransitionFieldViewTestCase(
         )
         self._create_test_document_stub()
 
-        self._test_workflow_instance = self.test_document.workflows.first()
+        self._test_workflow_instance = self._test_document.workflows.first()
 
     def test_workflow_instance_transition_text_area_widget_execute_view_with_document_and_transition_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
@@ -661,7 +661,7 @@ class WorkflowInstanceTransitionFieldViewTestCase(
 
     def test_trashed_document_workflow_instance_transition_text_area_widget_execute_view_with_document_and_transition_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_workflow_instance_transition
         )
         self.grant_access(
@@ -669,7 +669,7 @@ class WorkflowInstanceTransitionFieldViewTestCase(
             permission=permission_workflow_instance_transition
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 

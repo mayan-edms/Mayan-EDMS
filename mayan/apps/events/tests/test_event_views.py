@@ -21,20 +21,20 @@ class EventsViewTestCase(
         super().setUp()
         self._create_test_event_type()
         self._create_test_user()
-        self.test_object = self.test_document_type
+        self._test_object = self._test_document_type
 
         content_type = ContentType.objects.get_for_model(
-            model=self.test_object
+            model=self._test_object
         )
 
         self.view_arguments = {
             'app_label': content_type.app_label,
             'model_name': content_type.model,
-            'object_id': self.test_object.pk
+            'object_id': self._test_object.pk
         }
 
     def test_event_list_view_no_permission(self):
-        self._create_test_event(target=self.test_object)
+        self._create_test_event(target=self._test_object)
 
         response = self._request_test_events_list_view()
 
@@ -44,10 +44,10 @@ class EventsViewTestCase(
         )
 
     def test_event_list_view_with_access(self):
-        self._create_test_event(target=self.test_object)
+        self._create_test_event(target=self._test_object)
 
         self.grant_access(
-            obj=self.test_object, permission=permission_events_view
+            obj=self._test_object, permission=permission_events_view
         )
 
         response = self._request_test_events_list_view()
@@ -59,7 +59,7 @@ class EventsViewTestCase(
 
     def test_events_for_object_view_no_permission(self):
         self._create_test_event(
-            actor=self.test_user, action_object=self.test_object
+            actor=self._test_user, action_object=self._test_object
         )
 
         response = self._request_events_for_object_view()
@@ -70,11 +70,11 @@ class EventsViewTestCase(
 
     def test_events_for_object_view_with_access(self):
         self._create_test_event(
-            actor=self.test_user, action_object=self.test_object
+            actor=self._test_user, action_object=self._test_object
         )
 
         self.grant_access(
-            obj=self.test_object, permission=permission_events_view
+            obj=self._test_object, permission=permission_events_view
         )
 
         response = self._request_events_for_object_view()
@@ -85,7 +85,7 @@ class EventsViewTestCase(
 
     def test_events_by_verb_view_no_permission(self):
         self._create_test_event(
-            actor=self.test_user, action_object=self.test_object
+            actor=self._test_user, action_object=self._test_object
         )
 
         response = self._request_test_events_by_verb_view()
@@ -96,11 +96,11 @@ class EventsViewTestCase(
 
     def test_events_by_verb_view_with_access(self):
         self._create_test_event(
-            actor=self.test_user, action_object=self.test_object
+            actor=self._test_user, action_object=self._test_object
         )
 
         self.grant_access(
-            obj=self.test_object, permission=permission_events_view
+            obj=self._test_object, permission=permission_events_view
         )
 
         response = self._request_test_events_by_verb_view()
@@ -120,21 +120,21 @@ class CurrentUserEventsViewTestCase(
         super().setUp()
         self._create_test_event_type()
         self._create_test_user()
-        self.test_object = self._test_case_user
+        self._test_object = self._test_case_user
 
         content_type = ContentType.objects.get_for_model(
-            model=self.test_object
+            model=self._test_object
         )
 
         self.view_arguments = {
             'app_label': content_type.app_label,
             'model_name': content_type.model,
-            'object_id': self.test_object.pk
+            'object_id': self._test_object.pk
         }
 
     def test_current_user_events_view_no_permission(self):
         self._create_test_event(
-            actor=self._test_case_user, action_object=self.test_object
+            actor=self._test_case_user, action_object=self._test_object
         )
 
         response = self._request_events_for_object_view()
@@ -145,7 +145,7 @@ class CurrentUserEventsViewTestCase(
 
     def test_current_user_events_view_with_access(self):
         self._create_test_event(
-            actor=self._test_case_user, action_object=self.test_object
+            actor=self._test_case_user, action_object=self._test_object
         )
 
         self.grant_access(

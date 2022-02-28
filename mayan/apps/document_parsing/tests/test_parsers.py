@@ -7,13 +7,13 @@ from .literals import TEST_DOCUMENT_CONTENT
 
 
 class ParserTestCase(GenericDocumentTestCase):
-    test_document_filename = TEST_HYBRID_DOCUMENT
+    _test_document_filename = TEST_HYBRID_DOCUMENT
 
     def test_poppler_parser(self):
         parser = PopplerParser()
 
-        parser.process_document_file(self.test_document_file)
+        parser.process_document_file(self._test_document_file)
 
         self.assertTrue(
-            TEST_DOCUMENT_CONTENT in self.test_document_file.pages.first().content.content
+            TEST_DOCUMENT_CONTENT in self._test_document_file.pages.first().content.content
         )

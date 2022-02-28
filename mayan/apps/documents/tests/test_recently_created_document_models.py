@@ -8,10 +8,10 @@ class RecentlyCreatedDocumentModelTestCase(GenericDocumentTestCase):
 
     def test_trashed_document_created_document_add(self):
         self._create_test_document_stub()
-        self.test_document.delete()
+        self._test_document.delete()
 
         self.assertFalse(
             RecentlyCreatedDocument.valid.filter(
-                pk=self.test_document.pk
+                pk=self._test_document.pk
             ).exists()
         )

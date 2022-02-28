@@ -28,7 +28,7 @@ class IndexTemplateTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
 
     def test_method_get_absolute_url(self):
         self._create_test_index_template()
-        self.assertTrue(self.test_index_template.get_absolute_url())
+        self.assertTrue(self._test_index_template.get_absolute_url())
 
 
 class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
@@ -40,13 +40,13 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
         self._create_test_document_stub()
 
     def test_date_based_index(self):
-        level_year = self.test_index_template.index_template_nodes.create(
-            parent=self.test_index_template.index_template_root_node,
+        level_year = self._test_index_template.index_template_nodes.create(
+            parent=self._test_index_template.index_template_root_node,
             expression='{{ document.datetime_created|date:"Y" }}',
             link_documents=False
         )
 
-        self.test_index_template.index_template_nodes.create(
+        self._test_index_template.index_template_nodes.create(
             parent=level_year,
             expression='{{ document.datetime_created|date:"m" }}',
             link_documents=True
@@ -54,7 +54,7 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
         # Index the document created by default.
         IndexTemplate.objects.rebuild()
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         # Uploading a new should not trigger an error.
         self._upload_test_document()
@@ -62,13 +62,13 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
         self.assertEqual(
             list(IndexInstanceNode.objects.values_list('value', flat=True)),
             [
-                '', str(self.test_document.datetime_created.year),
-                '{:02}'.format(self.test_document.datetime_created.month)
+                '', str(self._test_document.datetime_created.year),
+                '{:02}'.format(self._test_document.datetime_created.month)
             ]
         )
 
         self.assertTrue(
-            self.test_document in IndexInstanceNode.objects.last().documents.all()
+            self._test_document in IndexInstanceNode.objects.last().documents.all()
         )
 
     def test_dual_level_dual_document_index(self):
@@ -80,12 +80,12 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
         self._create_test_document_stub()
 
         # Create simple index template
-        level_1 = self.test_index_template.index_template_nodes.create(
+        level_1 = self._test_index_template.index_template_nodes.create(
             expression='{{ document.uuid }}', link_documents=False,
-            parent=self.test_index_template_root_node
+            parent=self._test_index_template_root_node
         )
 
-        self.test_index_template.index_template_nodes.create(
+        self._test_index_template.index_template_nodes.create(
             expression='{{ document.label }}', link_documents=True,
             parent=level_1
         )
@@ -97,8 +97,8 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
             set(IndexInstanceNode.objects.values_list('value', flat=True)),
             set(
                 [
-                    '', str(self.test_documents[1].uuid), self.test_documents[1].label,
-                    str(self.test_documents[0].uuid), self.test_documents[0].label
+                    '', str(self._test_documents[1].uuid), self._test_documents[1].label,
+                    str(self._test_documents[0].uuid), self._test_documents[0].label
                 ]
             )
         )
@@ -108,21 +108,21 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
             expression=TEST_INDEX_TEMPLATE_DOCUMENT_DESCRIPTION_EXPRESSION
         )
 
-        self.test_document.description = TEST_DOCUMENT_DESCRIPTION
-        self.test_document.save()
+        self._test_document.description = TEST_DOCUMENT_DESCRIPTION
+        self._test_document.save()
 
-        self.test_index_template.rebuild()
+        self._test_index_template.rebuild()
 
         self.assertEqual(
             IndexInstanceNode.objects.last().value,
-            self.test_document.description
+            self._test_document.description
         )
-        self.test_document.description = TEST_DOCUMENT_DESCRIPTION_EDITED
-        self.test_document.save()
+        self._test_document.description = TEST_DOCUMENT_DESCRIPTION_EDITED
+        self._test_document.save()
 
         self.assertEqual(
             IndexInstanceNode.objects.last().value,
-            self.test_document.description
+            self._test_document.description
         )
 
     def test_document_label_index(self):
@@ -130,16 +130,16 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
             expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION
         )
 
-        self.test_index_template.rebuild()
+        self._test_index_template.rebuild()
 
         self.assertEqual(
-            IndexInstanceNode.objects.last().value, self.test_document.label
+            IndexInstanceNode.objects.last().value, self._test_document.label
         )
-        self.test_document.label = TEST_DOCUMENT_LABEL_EDITED
-        self.test_document.save()
+        self._test_document.label = TEST_DOCUMENT_LABEL_EDITED
+        self._test_document.save()
 
         self.assertEqual(
-            IndexInstanceNode.objects.last().value, self.test_document.label
+            IndexInstanceNode.objects.last().value, self._test_document.label
         )
 
     def test_document_type_index(self):
@@ -147,23 +147,23 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
             expression=TEST_INDEX_TEMPLATE_DOCUMENT_TYPE_EXPRESSION
         )
 
-        self.test_index_template.rebuild()
+        self._test_index_template.rebuild()
 
         self.assertEqual(
             IndexInstanceNode.objects.last().value,
-            self.test_document_types[0].label
+            self._test_document_types[0].label
         )
 
         self._create_test_document_type()
-        self.test_index_template.document_types.add(self.test_document_type)
+        self._test_index_template.document_types.add(self._test_document_type)
 
-        self.test_document.document_type_change(
-            document_type=self.test_document_type
+        self._test_document.document_type_change(
+            document_type=self._test_document_type
         )
 
         self.assertEqual(
             IndexInstanceNode.objects.last().value,
-            self.test_document_types[1].label
+            self._test_document_types[1].label
         )
 
     def test_metadata_indexing(self):
@@ -171,7 +171,7 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
             name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
         )
         DocumentTypeMetadataType.objects.create(
-            document_type=self.test_document_type,
+            document_type=self._test_document_type,
             metadata_type=metadata_type
         )
 
@@ -181,7 +181,7 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
 
         # Add document metadata value to trigger index node instance
         # creation.
-        self.test_document.metadata.create(
+        self._test_document.metadata.create(
             metadata_type=metadata_type, value='0001'
         )
         self.assertEqual(
@@ -193,12 +193,12 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
         # Check that document is in instance node.
         instance_node = IndexInstanceNode.objects.get(value='0001')
         self.assertQuerysetEqual(
-            instance_node.documents.all(), [repr(self.test_document)]
+            instance_node.documents.all(), [repr(self._test_document)]
         )
 
         # Change document metadata value to trigger index node instance
         # update.
-        document_metadata = self.test_document.metadata.get(
+        document_metadata = self._test_document.metadata.get(
             metadata_type=metadata_type
         )
         document_metadata.value = '0002'
@@ -212,11 +212,11 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
         # Check that document is in new instance node.
         instance_node = IndexInstanceNode.objects.get(value='0002')
         self.assertQuerysetEqual(
-            instance_node.documents.all(), [repr(self.test_document)]
+            instance_node.documents.all(), [repr(self._test_document)]
         )
 
         # Check node instance is destoyed when no metadata is available.
-        self.test_document.metadata.get(metadata_type=metadata_type).delete()
+        self._test_document.metadata.get(metadata_type=metadata_type).delete()
         self.assertEqual(
             list(
                 IndexInstanceNode.objects.values_list('value', flat=True)
@@ -225,7 +225,7 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
 
         # Add document metadata value again to trigger index node instance
         # creation.
-        self.test_document.metadata.create(
+        self._test_document.metadata.create(
             metadata_type=metadata_type, value='0003'
         )
         self.assertEqual(
@@ -235,7 +235,7 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
         )
 
         # Check node instance is destroyed when no documents are contained.
-        self.test_document.delete()
+        self._test_document.delete()
 
         # Document is in trash, index structure should remain unchanged.
         self.assertEqual(
@@ -245,7 +245,7 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
         )
 
         # Document deleted, index structure should update.
-        self.test_document.delete()
+        self._test_document.delete()
         self.assertEqual(
             list(
                 IndexInstanceNode.objects.values_list('value', flat=True)
@@ -261,12 +261,12 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
         On a two level template if the first level doesn't return a result
         the indexing should stop. GitLab issue #391.
         """
-        level_1 = self.test_index_template.index_template_nodes.create(
+        level_1 = self._test_index_template.index_template_nodes.create(
             expression='', link_documents=True,
-            parent=self.test_index_template_root_node,
+            parent=self._test_index_template_root_node,
         )
 
-        self.test_index_template.index_template_nodes.create(
+        self._test_index_template.index_template_nodes.create(
             expression='{{ document.label }}', link_documents=True,
             parent=level_1
         )
@@ -279,12 +279,12 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
             name='test', label='test'
         )
         DocumentTypeMetadataType.objects.create(
-            document_type=self.test_document_type,
+            document_type=self._test_document_type,
             metadata_type=metadata_type
         )
 
         # Add document metadata value.
-        self.test_document.metadata.create(
+        self._test_document.metadata.create(
             metadata_type=metadata_type, value='0001'
         )
 
@@ -308,7 +308,7 @@ class IndexInstanceTestCase(IndexTemplateTestMixin, GenericDocumentTestCase):
         # Check that document is in instance node.
         instance_node = IndexInstanceNode.objects.get(value='0001')
         self.assertQuerysetEqual(
-            instance_node.documents.all(), [repr(self.test_document)]
+            instance_node.documents.all(), [repr(self._test_document)]
         )
 
 
@@ -326,7 +326,7 @@ class IndexIntegrityTestCase(
             expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION
         )
 
-        self.test_index_template.rebuild()
+        self._test_index_template.rebuild()
 
         index_instance_node = IndexInstanceNode.objects.last()
 

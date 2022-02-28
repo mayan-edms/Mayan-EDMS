@@ -90,13 +90,13 @@ class DownloadFileTestMixin(PermissionTestMixin):
 
         ModelPermission.register(
             model=DownloadFile, permissions=(
-                self.test_permission,
+                self._test_permission,
             )
         )
 
         self.test_download_file = DownloadFile.objects.create(
             file=file_content,
-            permission=self.test_permission.stored_permission
+            permission=self._test_permission.stored_permission
         )
 
 

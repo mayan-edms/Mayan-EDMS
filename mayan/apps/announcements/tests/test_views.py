@@ -43,7 +43,7 @@ class AnnouncementViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_announcement)
+        self.assertEqual(events[0].target, self._test_announcement)
         self.assertEqual(events[0].verb, event_announcement_created.id)
 
     def test_announcement_delete_view_no_permission(self):
@@ -65,7 +65,7 @@ class AnnouncementViewTestCase(
         self._create_test_announcement()
 
         self.grant_access(
-            obj=self.test_announcement, permission=permission_announcement_delete
+            obj=self._test_announcement, permission=permission_announcement_delete
         )
 
         announcement_count = Announcement.objects.count()
@@ -83,15 +83,15 @@ class AnnouncementViewTestCase(
     def test_announcement_edit_view_no_permission(self):
         self._create_test_announcement()
 
-        announcement_label = self.test_announcement.label
+        announcement_label = self._test_announcement.label
 
         self._clear_events()
 
         response = self._request_test_announcement_edit_view()
         self.assertEqual(response.status_code, 404)
 
-        self.test_announcement.refresh_from_db()
-        self.assertEqual(self.test_announcement.label, announcement_label)
+        self._test_announcement.refresh_from_db()
+        self.assertEqual(self._test_announcement.label, announcement_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -100,25 +100,25 @@ class AnnouncementViewTestCase(
         self._create_test_announcement()
 
         self.grant_access(
-            obj=self.test_announcement, permission=permission_announcement_edit
+            obj=self._test_announcement, permission=permission_announcement_edit
         )
 
-        announcement_label = self.test_announcement.label
+        announcement_label = self._test_announcement.label
 
         self._clear_events()
 
         response = self._request_test_announcement_edit_view()
         self.assertEqual(response.status_code, 302)
 
-        self.test_announcement.refresh_from_db()
-        self.assertNotEqual(self.test_announcement.label, announcement_label)
+        self._test_announcement.refresh_from_db()
+        self.assertNotEqual(self._test_announcement.label, announcement_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_announcement)
+        self.assertEqual(events[0].target, self._test_announcement)
         self.assertEqual(events[0].verb, event_announcement_edited.id)
 
     def test_announcement_list_view_with_no_permission(self):
@@ -128,7 +128,7 @@ class AnnouncementViewTestCase(
 
         response = self._request_test_announcement_list_view()
         self.assertNotContains(
-            response=response, text=self.test_announcement.label, status_code=200
+            response=response, text=self._test_announcement.label, status_code=200
         )
 
         events = self._get_test_events()
@@ -138,14 +138,14 @@ class AnnouncementViewTestCase(
         self._create_test_announcement()
 
         self.grant_access(
-            obj=self.test_announcement, permission=permission_announcement_view
+            obj=self._test_announcement, permission=permission_announcement_view
         )
 
         self._clear_events()
 
         response = self._request_test_announcement_list_view()
         self.assertContains(
-            response=response, text=self.test_announcement.label, status_code=200
+            response=response, text=self._test_announcement.label, status_code=200
         )
 
         events = self._get_test_events()

@@ -16,16 +16,16 @@ class UserLocaleProfileViewMixin:
 
     def _request_test_superuser_locale_profile_detail_view(self):
         return self._request_test_user_locale_profile_detail_view(
-            user=self.test_superuser
+            user=self._test_superuser
         )
 
     def _request_test_superuser_locale_profile_edit_view(self):
         return self._request_test_user_locale_profile_edit_view(
-            user=self.test_superuser
+            user=self._test_superuser
         )
 
     def _request_test_user_locale_profile_detail_view(self, user=None):
-        user = user or self.test_user
+        user = user or self._test_user
 
         return self.get(
             viewname='locales:user_locale_profile_detail', kwargs={
@@ -36,7 +36,7 @@ class UserLocaleProfileViewMixin:
     def _request_test_user_locale_profile_edit_view(
         self, follow=None, user=None
     ):
-        user = user or self.test_user
+        user = user or self._test_user
 
         return self.post(
             viewname='locales:user_locale_profile_edit', kwargs={

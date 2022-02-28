@@ -39,7 +39,7 @@ class DownloadFileViewTestCase(
     def test_download_file_no_permission_with_content_object_delete_view(self):
         self._create_test_object()
         DownloadFile.objects.register_content_object(model=self.TestModel)
-        self._create_test_download_file(content_object=self.test_object)
+        self._create_test_download_file(content_object=self._test_object)
 
         download_file_count = DownloadFile.objects.count()
 
@@ -57,7 +57,7 @@ class DownloadFileViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_object)
+        self.assertEqual(events[0].target, self._test_object)
         self.assertEqual(events[0].verb, event_download_file_deleted.id)
 
     def test_download_file_with_permission_delete_view_no_permission(self):
@@ -82,7 +82,7 @@ class DownloadFileViewTestCase(
 
         self.grant_access(
             obj=self.test_download_file,
-            permission=self.test_permission
+            permission=self._test_permission
         )
 
         download_file_count = DownloadFile.objects.count()
@@ -151,7 +151,7 @@ class DownloadFileViewTestCase(
 
         self.grant_access(
             obj=self.test_download_file,
-            permission=self.test_permission
+            permission=self._test_permission
         )
 
         self._clear_events()
@@ -209,7 +209,7 @@ class DownloadFileViewTestCase(
 
         self.grant_access(
             obj=self.test_download_file,
-            permission=self.test_permission
+            permission=self._test_permission
         )
 
         self._clear_events()

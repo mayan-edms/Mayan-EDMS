@@ -13,5 +13,5 @@ class WebLinkCopyTestCase(
     def setUp(self):
         super().setUp()
         self._create_test_web_link()
-        self.test_web_link.document_types.add(self.test_document_type)
-        self.test_object = self.test_web_link
+        self._test_web_link.document_types.add(self._test_document_type)
+        self._test_object = self._test_web_link

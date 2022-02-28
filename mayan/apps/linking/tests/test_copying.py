@@ -14,5 +14,5 @@ class SmartLinkCopyTestCase(
         super().setUp()
         self._create_test_smart_link()
         self._create_test_smart_link_condition()
-        self.test_smart_link.document_types.add(self.test_document_type)
-        self.test_object = self.test_smart_link
+        self._test_smart_link.document_types.add(self._test_document_type)
+        self._test_object = self._test_smart_link

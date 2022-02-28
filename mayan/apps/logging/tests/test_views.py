@@ -25,7 +25,7 @@ class GlobalErrorLogViewTestCase(
 
     def test_global_error_log_partition_entry_list_view_with_access(self):
         self.grant_access(
-            obj=self.test_object, permission=permission_error_log_view
+            obj=self._test_object, permission=permission_error_log_view
         )
 
         response = self._request_global_error_log_partition_entry_list_view()
@@ -52,7 +52,7 @@ class ErrorLoggingViewTestCase(
 
     def test_object_error_list_view_with_access(self):
         self.grant_access(
-            obj=self.test_object, permission=permission_error_log_view
+            obj=self._test_object, permission=permission_error_log_view
         )
 
         response = self._request_object_error_log_list_view()
@@ -65,14 +65,14 @@ class ErrorLoggingViewTestCase(
         response = self._request_object_error_log_list_clear_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertNotEqual(self.test_object.error_log.count(), 0)
+        self.assertNotEqual(self._test_object.error_log.count(), 0)
 
     def test_object_error_list_clear_view_with_access(self):
         self.grant_access(
-            obj=self.test_object, permission=permission_error_log_view
+            obj=self._test_object, permission=permission_error_log_view
         )
 
         response = self._request_object_error_log_list_clear_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(self.test_object.error_log.count(), 0)
+        self.assertEqual(self._test_object.error_log.count(), 0)

@@ -17,18 +17,18 @@ class TagWorkflowActionTestCase(TagTestMixin, ActionTestCase):
 
     def test_tag_attach_action(self):
         action = AttachTagAction(form_data={'tags': Tag.objects.all()})
-        action.execute(context={'document': self.test_document})
+        action.execute(context={'document': self._test_document})
 
-        self.assertEqual(self.test_tag.documents.count(), 1)
-        self.assertTrue(self.test_document in self.test_tag.documents.all())
+        self.assertEqual(self._test_tag.documents.count(), 1)
+        self.assertTrue(self._test_document in self._test_tag.documents.all())
 
     def test_tag_remove_action(self):
-        self.test_tag.attach_to(document=self.test_document)
+        self._test_tag.attach_to(document=self._test_document)
 
         action = RemoveTagAction(form_data={'tags': Tag.objects.all()})
-        action.execute(context={'document': self.test_document})
+        action.execute(context={'document': self._test_document})
 
-        self.assertEqual(self.test_tag.documents.count(), 0)
+        self.assertEqual(self._test_tag.documents.count(), 0)
 
 
 class TagWorkflowActionViewTestCase(

@@ -42,7 +42,7 @@ class DocumentTrashViewTestCase(
 
     def test_document_trash_get_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_trash
+            obj=self._test_document, permission=permission_document_trash
         )
 
         document_count = Document.valid.count()
@@ -63,10 +63,10 @@ class DocumentTrashViewTestCase(
 
     def test_trashed_document_trash_get_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_trash
+            obj=self._test_document, permission=permission_document_trash
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         document_count = Document.valid.count()
         trashed_document_count = TrashedDocument.objects.count()
@@ -103,7 +103,7 @@ class DocumentTrashViewTestCase(
 
     def test_document_trash_post_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_trash
+            obj=self._test_document, permission=permission_document_trash
         )
 
         document_count = Document.valid.count()
@@ -124,15 +124,15 @@ class DocumentTrashViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].target, self._test_document)
         self.assertEqual(events[0].verb, event_document_trashed.id)
 
     def test_trashed_document_trash_post_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_trash
+            obj=self._test_document, permission=permission_document_trash
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         document_count = Document.valid.count()
         trashed_document_count = TrashedDocument.objects.count()
@@ -161,7 +161,7 @@ class TrashedDocumentViewTestCase(
         self._create_test_document_stub()
 
     def test_trashed_document_delete_get_view_no_permission(self):
-        self.test_document.delete()
+        self._test_document.delete()
 
         document_count = Document.valid.count()
         trashed_document_count = TrashedDocument.objects.count()
@@ -182,12 +182,12 @@ class TrashedDocumentViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_delete_get_view_with_access(self):
-        self.test_document.delete()
+        self._test_document.delete()
         document_count = Document.valid.count()
         trashed_document_count = TrashedDocument.objects.count()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_trashed_document_delete
         )
 
@@ -207,7 +207,7 @@ class TrashedDocumentViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_delete_post_view_no_permission(self):
-        self.test_document.delete()
+        self._test_document.delete()
         document_count = Document.valid.count()
         trashed_document_count = TrashedDocument.objects.count()
 
@@ -225,12 +225,12 @@ class TrashedDocumentViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_delete_post_view_with_access(self):
-        self.test_document.delete()
+        self._test_document.delete()
         document_count = Document.valid.count()
         trashed_document_count = TrashedDocument.objects.count()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_trashed_document_delete
         )
 
@@ -249,41 +249,41 @@ class TrashedDocumentViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document_type)
+        self.assertEqual(events[0].target, self._test_document_type)
         self.assertEqual(events[0].verb, event_trashed_document_deleted.id)
 
     def test_trashed_document_list_view_no_permission(self):
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         response = self._request_test_trashed_document_list_view()
         self.assertNotContains(
-            response=response, text=self.test_document.label, status_code=200
+            response=response, text=self._test_document.label, status_code=200
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_list_view_with_access(self):
-        self.test_document.delete()
+        self._test_document.delete()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         self._clear_events()
 
         response = self._request_test_trashed_document_list_view()
         self.assertContains(
-            response=response, text=self.test_document.label, status_code=200
+            response=response, text=self._test_document.label, status_code=200
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_restore_get_view_no_permission(self):
-        self.test_document.delete()
+        self._test_document.delete()
         document_count = Document.valid.count()
         trashed_document_count = TrashedDocument.objects.count()
 
@@ -301,12 +301,12 @@ class TrashedDocumentViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_restore_get_view_with_access(self):
-        self.test_document.delete()
+        self._test_document.delete()
         document_count = Document.valid.count()
         trashed_document_count = TrashedDocument.objects.count()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_trashed_document_restore
         )
 
@@ -326,7 +326,7 @@ class TrashedDocumentViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_restore_post_view_no_permission(self):
-        self.test_document.delete()
+        self._test_document.delete()
         document_count = Document.valid.count()
         trashed_document_count = TrashedDocument.objects.count()
 
@@ -344,12 +344,12 @@ class TrashedDocumentViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_restore_post_view_with_access(self):
-        self.test_document.delete()
+        self._test_document.delete()
         document_count = Document.valid.count()
         trashed_document_count = TrashedDocument.objects.count()
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_trashed_document_restore
         )
 
@@ -368,7 +368,7 @@ class TrashedDocumentViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].target, self._test_document)
         self.assertEqual(events[0].verb, event_trashed_document_restored.id)
 
 
@@ -382,7 +382,7 @@ class TrashCanViewTestCase(
         self._create_test_document_stub()
 
     def test_trash_can_empty_view_no_permission(self):
-        self.test_document.delete()
+        self._test_document.delete()
 
         document_count = Document.valid.count()
         trashed_document_count = TrashedDocument.objects.count()
@@ -401,7 +401,7 @@ class TrashCanViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_trash_can_empty_view_with_permission(self):
-        self.test_document.delete()
+        self._test_document.delete()
 
         document_count = Document.valid.count()
         trashed_document_count = TrashedDocument.objects.count()
@@ -423,5 +423,5 @@ class TrashCanViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_document_type)
+        self.assertEqual(events[0].target, self._test_document_type)
         self.assertEqual(events[0].verb, event_trashed_document_deleted.id)

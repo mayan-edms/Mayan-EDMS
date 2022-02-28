@@ -41,7 +41,7 @@ class EventManagerTestCase(EventTypeTestMixin, BaseTestCase):
 
         self._clear_events()
 
-        self.test_object.method_1()
+        self._test_object.method_1()
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)

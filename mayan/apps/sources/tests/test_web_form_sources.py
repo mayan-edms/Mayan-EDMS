@@ -21,18 +21,18 @@ class WebFormSourceBackendTestCase(
     auto_upload_test_document = False
 
     def _process_test_document(self, test_file_path=TEST_SMALL_DOCUMENT_PATH):
-        source_backend_instance = self.test_source.get_backend_instance()
+        source_backend_instance = self._test_source.get_backend_instance()
 
         with open(file=test_file_path, mode='rb') as file_object:
             self.test_forms = {
-                'document_form': self.test_document_form,
+                'document_form': self._test_document_form,
                 'source_form': InteractiveSourceBackendTestMixin.MockSourceForm(
                     file=File(file=file_object)
                 ),
             }
 
             source_backend_instance.process_documents(
-                document_type=self.test_document_type, forms=self.test_forms,
+                document_type=self._test_document_type, forms=self.test_forms,
                 request=self.get_test_request()
             )
 

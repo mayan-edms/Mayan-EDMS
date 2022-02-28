@@ -20,7 +20,7 @@ class TagDocumentAPIViewTestCase(
         self._create_test_document_stub()
 
     def test_tag_document_list_api_view_no_permission(self):
-        self.test_tag.documents.add(self.test_document)
+        self._test_tag.documents.add(self._test_document)
 
         self._clear_events()
 
@@ -31,9 +31,9 @@ class TagDocumentAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_tag_document_list_api_view_with_tag_access(self):
-        self.test_tag.documents.add(self.test_document)
+        self._test_tag.documents.add(self._test_document)
 
-        self.grant_access(obj=self.test_tag, permission=permission_tag_view)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_view)
 
         self._clear_events()
 
@@ -46,12 +46,12 @@ class TagDocumentAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_tag_document_list_api_view_with_document_access(self):
-        self.test_tag.documents.add(self.test_document)
+        self._test_tag.documents.add(self._test_document)
 
         self._clear_events()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         self._clear_events()
@@ -63,11 +63,11 @@ class TagDocumentAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_tag_document_list_api_view_with_full_access(self):
-        self.test_tag.documents.add(self.test_document)
+        self._test_tag.documents.add(self._test_document)
 
-        self.grant_access(obj=self.test_tag, permission=permission_tag_view)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_view)
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         self._clear_events()
@@ -77,21 +77,21 @@ class TagDocumentAPIViewTestCase(
 
         self.assertEqual(
             response.data['results'][0]['uuid'],
-            str(self.test_document.uuid)
+            str(self._test_document.uuid)
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_tag_trashed_document_list_api_view_with_full_access(self):
-        self.test_tag.documents.add(self.test_document)
+        self._test_tag.documents.add(self._test_document)
 
-        self.grant_access(obj=self.test_tag, permission=permission_tag_view)
+        self.grant_access(obj=self._test_tag, permission=permission_tag_view)
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 

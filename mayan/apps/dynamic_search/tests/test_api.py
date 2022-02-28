@@ -32,13 +32,13 @@ class SearchAPIViewTestCase(
 
     def test_search_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         response = self._request_search_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            response.data['results'][0]['label'], self.test_document.label
+            response.data['results'][0]['label'], self._test_document.label
         )
         self.assertEqual(response.data['count'], 1)
 
@@ -49,12 +49,12 @@ class SearchAPIViewTestCase(
 
     def test_advanced_search_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         response = self._request_advanced_search_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            response.data['results'][0]['label'], self.test_document.label
+            response.data['results'][0]['label'], self._test_document.label
         )
         self.assertEqual(response.data['count'], 1)

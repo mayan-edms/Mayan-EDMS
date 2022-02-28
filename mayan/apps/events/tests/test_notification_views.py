@@ -17,7 +17,7 @@ class NotificationViewTestCase(
         self._create_test_user()
 
         self._test_event_type.commit(
-            actor=self.test_user, action_object=self.test_document_type
+            actor=self._test_user, action_object=self._test_document_type
         )
 
     def test_notification_list_view(self):

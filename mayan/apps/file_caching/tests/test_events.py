@@ -27,7 +27,7 @@ class CacheEventsTestCase(CacheTestMixin, BaseTestCase):
 
         self._clear_events()
 
-        self.test_cache.purge()
+        self._test_cache.purge()
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)

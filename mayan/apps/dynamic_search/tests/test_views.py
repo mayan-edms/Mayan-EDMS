@@ -21,17 +21,17 @@ class AdvancedSearchViewTestCaseMixin(
 
     def setUp(self):
         super().setUp()
-        self.test_document_count = 4
+        self._test_document_count = 4
 
         # Upload many instances of the same test document.
-        for i in range(self.test_document_count):
+        for i in range(self._test_document_count):
             self._upload_test_document()
             self.grant_access(
-                obj=self.test_document, permission=permission_document_view
+                obj=self._test_document, permission=permission_document_view
             )
 
     def test_advanced_search_past_first_page(self):
-        test_document_label = self.test_documents[0].label
+        test_document_label = self._test_documents[0].label
 
         # Make sure all documents are returned by the search
         queryset = self.search_backend.search(
@@ -39,7 +39,7 @@ class AdvancedSearchViewTestCaseMixin(
             query={'label': test_document_label},
             user=self._test_case_user
         )
-        self.assertEqual(queryset.count(), self.test_document_count)
+        self.assertEqual(queryset.count(), self._test_document_count)
 
         with self.settings(VIEWS_PAGINATE_BY=2):
             # Functional test for the first page of advanced results
@@ -107,17 +107,17 @@ class WhooshAdvancedSearchViewTestCase(
 class SearchViewTestCaseMixin(DocumentTestMixin, SearchViewTestMixin):
     def test_result_view_with_search_mode_in_data(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         response = self._request_search_results_view(
             data={
-                'label': self.test_document.label,
+                'label': self._test_document.label,
                 '_search_model_name': document_search.get_full_name()
             }
         )
         self.assertContains(
-            response=response, status_code=200, text=self.test_document.label
+            response=response, status_code=200, text=self._test_document.label
         )
 
 
@@ -158,7 +158,7 @@ class SearchToolsViewTestCaseMixin(
             search_model=self.document_search_model
         )
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         response = self._request_search_backend_reindex_view()
@@ -169,7 +169,7 @@ class SearchToolsViewTestCaseMixin(
             search_model=self.document_search_model
         )
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         response = self._request_search_backend_reindex_view()
@@ -177,7 +177,7 @@ class SearchToolsViewTestCaseMixin(
 
         queryset = self.search_backend.search(
             search_model=self.document_search_model,
-            query={'q': self.test_document.label},
+            query={'q': self._test_document.label},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
@@ -187,7 +187,7 @@ class SearchToolsViewTestCaseMixin(
             search_model=self.document_search_model
         )
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
         self.grant_permission(permission=permission_search_tools)
 
@@ -199,7 +199,7 @@ class SearchToolsViewTestCaseMixin(
             search_model=self.document_search_model
         )
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
         self.grant_permission(permission=permission_search_tools)
 
@@ -208,7 +208,7 @@ class SearchToolsViewTestCaseMixin(
 
         queryset = self.search_backend.search(
             search_model=self.document_search_model,
-            query={'q': self.test_document.label},
+            query={'q': self._test_document.label},
             user=self._test_case_user
         )
         self.assertNotEqual(queryset.count(), 0)

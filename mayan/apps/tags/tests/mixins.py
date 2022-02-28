@@ -14,9 +14,9 @@ class DocumentTagViewTestMixin:
     def _request_test_document_tag_attach_view(self):
         return self.post(
             viewname='tags:tag_attach', kwargs={
-                'document_id': self.test_document.pk
+                'document_id': self._test_document.pk
             }, data={
-                'tags': self.test_tag.pk,
+                'tags': self._test_tag.pk,
                 'user': self._test_case_user.pk
             }
         )
@@ -24,7 +24,7 @@ class DocumentTagViewTestMixin:
     def _request_test_document_multiple_tag_multiple_attach_view(self):
         return self.post(
             viewname='tags:multiple_documents_tag_attach', data={
-                'id_list': self.test_document.pk, 'tags': self.test_tag.pk,
+                'id_list': self._test_document.pk, 'tags': self._test_tag.pk,
                 'user': self._test_case_user.pk
             }
         )
@@ -32,31 +32,31 @@ class DocumentTagViewTestMixin:
     def _request_test_document_tag_multiple_remove_view(self):
         return self.post(
             viewname='tags:single_document_multiple_tag_remove', kwargs={
-                'document_id': self.test_document.pk
+                'document_id': self._test_document.pk
             }, data={
-                'tags': self.test_tag.pk,
+                'tags': self._test_tag.pk,
             }
         )
 
     def _request_test_document_multiple_tag_remove_view(self):
         return self.post(
             viewname='tags:multiple_documents_selection_tag_remove', data={
-                'id_list': self.test_document.pk,
-                'tags': self.test_tag.pk,
+                'id_list': self._test_document.pk,
+                'tags': self._test_tag.pk,
             }
         )
 
     def _request_test_document_tag_list_view(self):
         return self.get(
             viewname='tags:document_tag_list', kwargs={
-                'document_id': self.test_document.pk
+                'document_id': self._test_document.pk
             }
         )
 
     def _request_test_tag_document_list_view(self):
         return self.get(
             viewname='tags:tag_document_list', kwargs={
-                'tag_id': self.test_tag.pk
+                'tag_id': self._test_tag.pk
             }
         )
 
@@ -65,22 +65,22 @@ class TagAPIViewTestMixin:
     def _request_test_document_tag_attach_api_view(self):
         return self.post(
             viewname='rest_api:document-tag-attach', kwargs={
-                'document_id': self.test_document.pk
-            }, data={'tag': self.test_tag.pk}
+                'document_id': self._test_document.pk
+            }, data={'tag': self._test_tag.pk}
         )
 
     def _request_test_document_tag_list_api_view(self):
         return self.get(
             viewname='rest_api:document-tag-list', kwargs={
-                'document_id': self.test_document.pk
+                'document_id': self._test_document.pk
             }
         )
 
     def _request_test_document_tag_remove_api_view(self):
         return self.post(
             viewname='rest_api:document-tag-remove', kwargs={
-                'document_id': self.test_document.pk
-            }, data={'tag': self.test_tag.pk}
+                'document_id': self._test_document.pk
+            }, data={'tag': self._test_tag.pk}
         )
 
     def _request_test_tag_create_api_view(self):
@@ -93,30 +93,30 @@ class TagAPIViewTestMixin:
         )
 
         try:
-            self.test_tag = Tag.objects.get(
+            self._test_tag = Tag.objects.get(
                 ~Q(pk__in=pk_list)
             )
         except Tag.DoesNotExist:
-            self.test_tag = None
+            self._test_tag = None
 
         return response
 
     def _request_test_tag_delete_api_view(self):
         return self.delete(
             viewname='rest_api:tag-detail',
-            kwargs={'tag_id': self.test_tag.pk}
+            kwargs={'tag_id': self._test_tag.pk}
         )
 
     def _request_test_tag_detail_api_view(self):
         return self.get(
             viewname='rest_api:tag-detail',
-            kwargs={'tag_id': self.test_tag.pk}
+            kwargs={'tag_id': self._test_tag.pk}
         )
 
     def _request_test_tag_document_list_api_view(self):
         return self.get(
             viewname='rest_api:tag-document-list', kwargs={
-                'tag_id': self.test_tag.pk
+                'tag_id': self._test_tag.pk
             }
         )
 
@@ -131,7 +131,7 @@ class TagAPIViewTestMixin:
 
         return getattr(self, verb)(
             viewname='rest_api:tag-detail',
-            kwargs={'tag_id': self.test_tag.pk},
+            kwargs={'tag_id': self._test_tag.pk},
             data=data
         )
 
@@ -140,29 +140,29 @@ class TagAPIViewTestMixin:
 
 
 class TagTestMixin:
+    _test_tag_add_test_document = False
     auto_create_test_tag = False
-    test_tag_add_test_document = False
 
     def setUp(self):
         super().setUp()
-        self.test_tags = []
+        self._test_tags = []
         if self.auto_create_test_tag:
             self._create_test_tag(
-                add_test_document=self.test_tag_add_test_document
+                add_test_document=self._test_tag_add_test_document
             )
 
     def _create_test_tag(self, add_test_document=False):
-        total_test_labels = len(self.test_tags)
+        total_test_labels = len(self._test_tags)
         label = '{}_{}'.format(TEST_TAG_LABEL, total_test_labels)
 
-        self.test_tag = Tag.objects.create(
+        self._test_tag = Tag.objects.create(
             color=TEST_TAG_COLOR, label=label
         )
 
-        self.test_tags.append(self.test_tag)
+        self._test_tags.append(self._test_tag)
 
         if add_test_document:
-            self.test_tag.documents.add(self.test_document)
+            self._test_tag.documents.add(self._test_document)
 
 
 class TagViewTestMixin:
@@ -177,32 +177,32 @@ class TagViewTestMixin:
         )
 
         try:
-            self.test_tag = Tag.objects.get(
+            self._test_tag = Tag.objects.get(
                 ~Q(pk__in=pk_list)
             )
         except Tag.DoesNotExist:
-            self.test_tag = None
+            self._test_tag = None
 
         return response
 
     def _request_test_tag_delete_view(self):
         return self.post(
             viewname='tags:tag_delete_single', kwargs={
-                'tag_id': self.test_tag.pk
+                'tag_id': self._test_tag.pk
             }
         )
 
     def _request_test_tag_delete_multiple_view(self):
         return self.post(
             viewname='tags:tag_delete_multiple', data={
-                'id_list': self.test_tag.pk
+                'id_list': self._test_tag.pk
             }
         )
 
     def _request_test_tag_edit_view(self):
         return self.post(
             viewname='tags:tag_edit', kwargs={
-                'tag_id': self.test_tag.pk
+                'tag_id': self._test_tag.pk
             }, data={
                 'label': TEST_TAG_LABEL_EDITED, 'color': TEST_TAG_COLOR_EDITED
             }
@@ -217,9 +217,9 @@ class TaggedDocumentUploadWizardStepViewTestMixin:
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='sources:document_upload_interactive', kwargs={
-                    'source_id': self.test_source.pk
+                    'source_id': self._test_source.pk
                 }, data={
-                    'document_type_id': self.test_document_type.pk,
+                    'document_type_id': self._test_document_type.pk,
                     'source-file': file_object,
                     'tags': Tag.objects.values_list('pk', flat=True)
                 }

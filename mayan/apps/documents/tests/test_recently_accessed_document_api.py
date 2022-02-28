@@ -31,7 +31,7 @@ class RecentlyAccessedDocumentAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_recently_accessed_document_api_list_view_with_activity_no_permission(self):
-        self.test_document.add_as_recent_document_for_user(
+        self._test_document.add_as_recent_document_for_user(
             user=self._test_case_user
         )
 
@@ -45,12 +45,12 @@ class RecentlyAccessedDocumentAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_recently_accessed_document_api_list_view_with_activity_with_access(self):
-        self.test_document.add_as_recent_document_for_user(
+        self._test_document.add_as_recent_document_for_user(
             user=self._test_case_user
         )
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         self._clear_events()
@@ -59,22 +59,22 @@ class RecentlyAccessedDocumentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['document']['id'],
-            self.test_document.pk
+            self._test_document.pk
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_recently_accessed_document_api_list_view_with_activity_with_access(self):
-        self.test_document.add_as_recent_document_for_user(
+        self._test_document.add_as_recent_document_for_user(
             user=self._test_case_user
         )
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 

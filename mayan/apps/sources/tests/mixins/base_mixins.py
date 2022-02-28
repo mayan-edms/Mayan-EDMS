@@ -23,8 +23,8 @@ class DocumentFileUploadViewTestMixin:
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='sources:document_file_upload', kwargs={
-                    'document_id': self.test_document.pk,
-                    'source_id': self.test_source.pk,
+                    'document_id': self._test_document.pk,
+                    'source_id': self._test_source.pk,
                 }, data={
                     'document-action': DOCUMENT_FILE_ACTION_PAGES_NEW,
                     'source-file': file_object
@@ -35,7 +35,7 @@ class DocumentFileUploadViewTestMixin:
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='sources:document_file_upload', kwargs={
-                    'document_id': self.test_document.pk,
+                    'document_id': self._test_document.pk,
                 }, data={
                     'document-action': DOCUMENT_FILE_ACTION_PAGES_NEW,
                     'source-file': file_object
@@ -47,7 +47,7 @@ class DocumentUploadWizardViewTestMixin:
     def _request_upload_interactive_view(self):
         return self.get(
             viewname='sources:document_upload_interactive', data={
-                'document_type_id': self.test_document_type.pk,
+                'document_type_id': self._test_document_type.pk,
             }
         )
 
@@ -55,10 +55,10 @@ class DocumentUploadWizardViewTestMixin:
         with open(file=document_path, mode='rb') as file_object:
             return self.post(
                 viewname='sources:document_upload_interactive', kwargs={
-                    'source_id': self.test_source.pk
+                    'source_id': self._test_source.pk
                 }, data={
                     'source-file': file_object,
-                    'document_type_id': self.test_document_type.pk,
+                    'document_type_id': self._test_document_type.pk,
                 }
             )
 
@@ -70,11 +70,11 @@ class InteractiveSourceBackendTestMixin:
 
     def setUp(self):
         super().setUp()
-        self.test_document_form = self.get_test_document_form()
+        self._test_document_form = self.get_test_document_form()
 
     def get_test_document_form(self):
         document_form = NewDocumentForm(
-            data={}, document_type=self.test_document_type
+            data={}, document_type=self._test_document_type
         )
         document_form.full_clean()
 
@@ -102,36 +102,36 @@ class SourceAPIViewTestMixin:
         response = self.post(viewname='rest_api:source-list', data=data)
 
         try:
-            self.test_source = Source.objects.get(~Q(pk__in=pk_list))
+            self._test_source = Source.objects.get(~Q(pk__in=pk_list))
         except Source.DoesNotExist:
-            self.test_source = None
+            self._test_source = None
 
         return response
 
     def _request_test_source_delete_api_view(self):
         return self.delete(
             viewname='rest_api:source-detail', kwargs={
-                'source_id': self.test_source.pk
+                'source_id': self._test_source.pk
             }
         )
 
     def _request_test_source_edit_api_view_via_patch(self):
         return self.patch(
             viewname='rest_api:source-detail', kwargs={
-                'source_id': self.test_source.pk
+                'source_id': self._test_source.pk
             }, data={'label': TEST_SOURCE_LABEL_EDITED}
         )
 
     def _request_test_source_edit_api_view_via_put(self):
         data = {
-            'backend_path': self.test_source.backend_path,
-            'enabled': self.test_source.enabled,
+            'backend_path': self._test_source.backend_path,
+            'enabled': self._test_source.enabled,
             'label': TEST_SOURCE_LABEL_EDITED
         }
 
         return self.put(
             viewname='rest_api:source-detail', kwargs={
-                'source_id': self.test_source.pk
+                'source_id': self._test_source.pk
             }, data=data
         )
 
@@ -154,12 +154,12 @@ class SourceTestMixin:
         total_test_sources = len(self._test_sources)
         label = '{}_{}'.format(TEST_SOURCE_LABEL, total_test_sources)
 
-        self.test_source = Source.objects.create(
+        self._test_source = Source.objects.create(
             backend_path=backend_path or TEST_SOURCE_BACKEND_PATH,
             backend_data=json.dumps(obj=backend_data or {}),
             label=label
         )
-        self._test_sources.append(self.test_source)
+        self._test_sources.append(self._test_source)
 
 
 class PeriodicSourceBackendTestMixin(SourceTestMixin):
@@ -206,23 +206,23 @@ class SourceViewTestMixin:
         )
 
         try:
-            self.test_source = Source.objects.get(~Q(pk__in=pk_list))
+            self._test_source = Source.objects.get(~Q(pk__in=pk_list))
         except Source.DoesNotExist:
-            self.test_source = None
+            self._test_source = None
 
         return response
 
     def _request_test_source_delete_view(self):
         return self.post(
             viewname='sources:source_delete', kwargs={
-                'source_id': self.test_source.pk
+                'source_id': self._test_source.pk
             }
         )
 
     def _request_test_source_edit_view(self):
         return self.post(
             viewname='sources:source_edit', kwargs={
-                'source_id': self.test_source.pk
+                'source_id': self._test_source.pk
             }, data={
                 'label': TEST_SOURCE_LABEL_EDITED
             }
@@ -234,13 +234,13 @@ class SourceViewTestMixin:
     def _request_test_source_test_get_view(self):
         return self.get(
             viewname='sources:source_test', kwargs={
-                'source_id': self.test_source.pk
+                'source_id': self._test_source.pk
             }
         )
 
     def _request_test_source_test_post_view(self):
         return self.post(
             viewname='sources:source_test', kwargs={
-                'source_id': self.test_source.pk
+                'source_id': self._test_source.pk
             }
         )

@@ -25,7 +25,7 @@ class DocumentTypeOCRSettingsAPIViewTestCase(
 
     def test_document_type_ocr_settings_details_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_ocr_setup
         )
 
@@ -49,7 +49,7 @@ class DocumentTypeOCRSettingsAPIViewTestCase(
 
     def test_document_type_ocr_settings_patch_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_ocr_setup
         )
 
@@ -73,7 +73,7 @@ class DocumentTypeOCRSettingsAPIViewTestCase(
 
     def test_document_type_ocr_settings_put_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_ocr_setup
         )
 

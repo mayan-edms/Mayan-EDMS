@@ -37,7 +37,7 @@ class UserImpersonationViewTestCase(
         self._create_test_user()
 
         self.grant_access(
-            obj=self.test_user, permission=permission_users_impersonate
+            obj=self._test_user, permission=permission_users_impersonate
         )
 
         self._clear_events()
@@ -50,7 +50,7 @@ class UserImpersonationViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_user)
+        self.assertEqual(events[0].target, self._test_user)
         self.assertEqual(events[0].verb, event_user_impersonation_started.id)
 
         self.expected_content_types = ('application/json',)
@@ -58,7 +58,7 @@ class UserImpersonationViewTestCase(
         self._clear_events()
 
         response = self.get(viewname='rest_api:user-current')
-        self.assertEqual(response.data['id'], self.test_user.pk)
+        self.assertEqual(response.data['id'], self._test_user.pk)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -69,7 +69,7 @@ class UserImpersonationViewTestCase(
         self._impersonate_test_user()
 
         self.grant_access(
-            obj=self.test_user, permission=permission_users_impersonate
+            obj=self._test_user, permission=permission_users_impersonate
         )
 
         self.expected_content_types = ('application/json',)
@@ -77,13 +77,13 @@ class UserImpersonationViewTestCase(
         self._clear_events()
 
         response = self.get(viewname='rest_api:user-current')
-        self.assertEqual(response.data['id'], self.test_user.pk)
+        self.assertEqual(response.data['id'], self._test_user.pk)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
         self.revoke_access(
-            obj=self.test_user, permission=permission_users_impersonate
+            obj=self._test_user, permission=permission_users_impersonate
         )
 
         self.expected_content_types = ('text/html; charset=utf-8',)
@@ -112,7 +112,7 @@ class UserImpersonationViewTestCase(
         self._impersonate_test_user()
 
         self.grant_access(
-            obj=self.test_user, permission=permission_users_impersonate
+            obj=self._test_user, permission=permission_users_impersonate
         )
 
         self.expected_content_types = ('application/json',)
@@ -120,7 +120,7 @@ class UserImpersonationViewTestCase(
         self._clear_events()
 
         response = self.get(viewname='rest_api:user-current')
-        self.assertEqual(response.data['id'], self.test_user.pk)
+        self.assertEqual(response.data['id'], self._test_user.pk)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -137,7 +137,7 @@ class UserImpersonationViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_user)
+        self.assertEqual(events[0].target, self._test_user)
         self.assertEqual(events[0].verb, event_user_impersonation_ended.id)
 
         self.expected_content_types = ('application/json',)
@@ -154,7 +154,7 @@ class UserImpersonationViewTestCase(
         self._create_test_user()
 
         self.grant_access(
-            obj=self.test_user, permission=permission_users_impersonate
+            obj=self._test_user, permission=permission_users_impersonate
         )
 
         self._impersonate_test_user()
@@ -164,7 +164,7 @@ class UserImpersonationViewTestCase(
         self._clear_events()
 
         response = self.get(viewname='rest_api:user-current')
-        self.assertEqual(response.data['id'], self.test_user.pk)
+        self.assertEqual(response.data['id'], self._test_user.pk)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -172,7 +172,7 @@ class UserImpersonationViewTestCase(
     def test_session_impersonate_unset_with_access(self):
         self._create_test_user()
         self.grant_access(
-            obj=self.test_user, permission=permission_users_impersonate
+            obj=self._test_user, permission=permission_users_impersonate
         )
 
         self._impersonate_test_user()
@@ -193,7 +193,7 @@ class UserImpersonationViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_user)
+        self.assertEqual(events[0].target, self._test_user)
         self.assertEqual(events[0].verb, event_user_impersonation_ended.id)
 
     def test_user_impersonate_start_view_no_permission(self):
@@ -221,7 +221,7 @@ class UserImpersonationViewTestCase(
         self._create_test_user()
 
         self.grant_access(
-            obj=self.test_user, permission=permission_users_impersonate
+            obj=self._test_user, permission=permission_users_impersonate
         )
 
         self._clear_events()
@@ -234,7 +234,7 @@ class UserImpersonationViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_user)
+        self.assertEqual(events[0].target, self._test_user)
         self.assertEqual(events[0].verb, event_user_impersonation_started.id)
 
         self.expected_content_types = ('application/json',)
@@ -242,7 +242,7 @@ class UserImpersonationViewTestCase(
         self._clear_events()
 
         response = self.get(viewname='rest_api:user-current')
-        self.assertEqual(response.data['id'], self.test_user.pk)
+        self.assertEqual(response.data['id'], self._test_user.pk)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)

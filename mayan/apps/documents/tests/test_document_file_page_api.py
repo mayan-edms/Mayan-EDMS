@@ -22,7 +22,7 @@ class DocumentFilePageAPIViewTestCase(
 
     def test_document_file_page_detail_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_document_file,
+            obj=self._test_document_file,
             permission=permission_document_file_view
         )
 
@@ -36,11 +36,11 @@ class DocumentFilePageAPIViewTestCase(
 
     def test_trashed_document_file_page_detail_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_document_file,
+            obj=self._test_document_file,
             permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -61,7 +61,7 @@ class DocumentFilePageAPIViewTestCase(
 
     def test_document_file_page_image_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         self._clear_events()
@@ -74,10 +74,10 @@ class DocumentFilePageAPIViewTestCase(
 
     def test_trashed_document_file_page_image_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -98,7 +98,7 @@ class DocumentFilePageAPIViewTestCase(
 
     def test_document_file_page_list_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_document_file,
+            obj=self._test_document_file,
             permission=permission_document_file_view
         )
 
@@ -109,7 +109,7 @@ class DocumentFilePageAPIViewTestCase(
 
         self.assertEqual(
             response.data['results'][0]['id'],
-            self.test_document_file_page.id
+            self._test_document_file_page.id
         )
 
         events = self._get_test_events()
@@ -117,11 +117,11 @@ class DocumentFilePageAPIViewTestCase(
 
     def test_trashed_document_file_page_list_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_document_file,
+            obj=self._test_document_file,
             permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 

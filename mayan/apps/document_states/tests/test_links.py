@@ -25,10 +25,10 @@ class WorkflowRuntimeProxyLinkTestCase(
     def _resolve_test_link(self, test_object=None):
         self.add_test_view(test_object=test_object)
         context = self.get_test_view()
-        self.resolved_test_link = self.test_link.resolve(context=context)
+        self.resolved_test_link = self._test_link.resolve(context=context)
 
     def test_workflow_runtime_proxy_document_list_link_no_permission(self):
-        self.test_link = link_workflow_runtime_proxy_document_list
+        self._test_link = link_workflow_runtime_proxy_document_list
 
         self._create_test_workflow_template(add_test_document_type=True)
 
@@ -37,7 +37,7 @@ class WorkflowRuntimeProxyLinkTestCase(
         self.assertEqual(self.resolved_test_link, None)
 
     def test_workflow_runtime_proxy_document_list_link_with_access(self):
-        self.test_link = link_workflow_runtime_proxy_document_list
+        self._test_link = link_workflow_runtime_proxy_document_list
 
         self._create_test_workflow_template(add_test_document_type=True)
 
@@ -52,14 +52,14 @@ class WorkflowRuntimeProxyLinkTestCase(
         self.assertEqual(
             self.resolved_test_link.url,
             reverse(
-                viewname=self.test_link.view, kwargs={
+                viewname=self._test_link.view, kwargs={
                     'workflow_runtime_proxy_id': self._test_workflow_runtime_proxy.pk
                 }
             )
         )
 
     def test_workflow_runtime_proxy_link_no_permission(self):
-        self.test_link = link_workflow_runtime_proxy_list
+        self._test_link = link_workflow_runtime_proxy_list
 
         self._create_test_workflow_template(add_test_document_type=True)
 
@@ -67,7 +67,7 @@ class WorkflowRuntimeProxyLinkTestCase(
         self.assertEqual(self.resolved_test_link, None)
 
     def test_workflow_runtime_proxy_link_with_access(self):
-        self.test_link = link_workflow_runtime_proxy_list
+        self._test_link = link_workflow_runtime_proxy_list
 
         self._create_test_workflow_template(add_test_document_type=True)
 
@@ -82,12 +82,12 @@ class WorkflowRuntimeProxyLinkTestCase(
         self.assertEqual(
             self.resolved_test_link.url,
             reverse(
-                viewname=self.test_link.view,
+                viewname=self._test_link.view,
             )
         )
 
     def test_workflow_runtime_proxy_state_document_list_link_no_permission(self):
-        self.test_link = link_workflow_runtime_proxy_state_document_list
+        self._test_link = link_workflow_runtime_proxy_state_document_list
 
         self._create_test_workflow_template(add_test_document_type=True)
         self._create_test_workflow_template_state()
@@ -99,7 +99,7 @@ class WorkflowRuntimeProxyLinkTestCase(
         self.assertEqual(self.resolved_test_link, None)
 
     def test_workflow_runtime_proxy_state_document_list_link_with_access(self):
-        self.test_link = link_workflow_runtime_proxy_state_document_list
+        self._test_link = link_workflow_runtime_proxy_state_document_list
 
         self._create_test_workflow_template(add_test_document_type=True)
         self._create_test_workflow_template_state()
@@ -117,14 +117,14 @@ class WorkflowRuntimeProxyLinkTestCase(
         self.assertEqual(
             self.resolved_test_link.url,
             reverse(
-                viewname=self.test_link.view, kwargs={
+                viewname=self._test_link.view, kwargs={
                     'workflow_runtime_proxy_state_id': self._test_workflow_template_state_runtime_proxy.pk
                 }
             )
         )
 
     def test_workflow_runtime_proxy_state_list_link_no_permission(self):
-        self.test_link = link_workflow_runtime_proxy_state_list
+        self._test_link = link_workflow_runtime_proxy_state_list
 
         self._create_test_workflow_template(add_test_document_type=True)
 
@@ -132,7 +132,7 @@ class WorkflowRuntimeProxyLinkTestCase(
         self.assertEqual(self.resolved_test_link, None)
 
     def test_workflow_runtime_proxy_state_list_link_with_access(self):
-        self.test_link = link_workflow_runtime_proxy_state_list
+        self._test_link = link_workflow_runtime_proxy_state_list
 
         self._create_test_workflow_template(add_test_document_type=True)
 
@@ -147,7 +147,7 @@ class WorkflowRuntimeProxyLinkTestCase(
         self.assertEqual(
             self.resolved_test_link.url,
             reverse(
-                viewname=self.test_link.view, kwargs={
+                viewname=self._test_link.view, kwargs={
                     'workflow_runtime_proxy_id': self._test_workflow_runtime_proxy.pk
                 }
             )

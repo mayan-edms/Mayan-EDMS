@@ -22,26 +22,26 @@ class TagSignalIndexingTestCase(
 
     def test_tag_indexing_not_tag(self):
         self.assertTrue(
-            self.test_document in IndexInstanceNode.objects.get(
+            self._test_document in IndexInstanceNode.objects.get(
                 value=TEST_TAG_INDEX_NO_TAG
             ).documents.all()
         )
 
     def test_tag_indexing_tag_attach(self):
-        self.test_tag.documents.add(self.test_document)
+        self._test_tag.documents.add(self._test_document)
 
         self.assertTrue(
-            self.test_document in IndexInstanceNode.objects.get(
+            self._test_document in IndexInstanceNode.objects.get(
                 value=TEST_TAG_INDEX_HAS_TAG
             ).documents.all()
         )
 
     def test_tag_indexing_tag_remove(self):
-        self.test_tag.documents.add(self.test_document)
-        self.test_tag.delete()
+        self._test_tag.documents.add(self._test_document)
+        self._test_tag.delete()
 
         self.assertTrue(
-            self.test_document in IndexInstanceNode.objects.get(
+            self._test_document in IndexInstanceNode.objects.get(
                 value=TEST_TAG_INDEX_NO_TAG
             ).documents.all()
         )

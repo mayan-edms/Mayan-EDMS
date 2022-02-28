@@ -42,15 +42,15 @@ class StorageProcessManagementCommandTestCase(
     def test_storage_processor_command_forwards(self):
         self._upload_and_call()
 
-        with open(file=self.test_document.file_latest.file.path, mode='rb') as file_object:
+        with open(file=self._test_document.file_latest.file.path, mode='rb') as file_object:
             self.assertEqual(
                 self.mime_type_backend.get_mime_type(file_object=file_object),
                 ('application/zip', 'binary')
             )
 
         self.assertEqual(
-            self.test_document.file_latest.checksum,
-            self.test_document.file_latest.checksum_update(save=False)
+            self._test_document.file_latest.checksum,
+            self._test_document.file_latest.checksum_update(save=False)
         )
 
     def test_processor_forwards_and_reverse(self):
@@ -63,13 +63,13 @@ class StorageProcessManagementCommandTestCase(
             'location': self.document_storage_kwargs['location']
         }
 
-        with open(file=self.test_document.file_latest.file.path, mode='rb') as file_object:
+        with open(file=self._test_document.file_latest.file.path, mode='rb') as file_object:
             self.assertNotEqual(
                 self.mime_type_backend.get_mime_type(file_object=file_object),
                 ('application/zip', 'binary')
             )
 
         self.assertEqual(
-            self.test_document.file_latest.checksum,
-            self.test_document.file_latest.checksum_update(save=False)
+            self._test_document.file_latest.checksum,
+            self._test_document.file_latest.checksum_update(save=False)
         )

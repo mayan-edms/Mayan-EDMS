@@ -37,7 +37,7 @@ class MailDocumentVersionViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_send_document_version_link
         )
 
@@ -76,7 +76,7 @@ class MailDocumentVersionViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_send_document_version_link
         )
         self.grant_access(
@@ -95,7 +95,7 @@ class MailDocumentVersionViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_version)
+        self.assertEqual(events[0].action_object, self._test_document_version)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
@@ -106,14 +106,14 @@ class MailDocumentVersionViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_send_document_version_link
         )
         self.grant_access(
             obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -146,7 +146,7 @@ class MailDocumentVersionViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_send_document_version_link
         )
 
@@ -185,7 +185,7 @@ class MailDocumentVersionViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_send_document_version_link
         )
         self.grant_access(
@@ -204,7 +204,7 @@ class MailDocumentVersionViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_version)
+        self.assertEqual(events[0].action_object, self._test_document_version)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
@@ -215,14 +215,14 @@ class MailDocumentVersionViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_send_document_version_link
         )
         self.grant_access(
             obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -255,7 +255,7 @@ class MailDocumentVersionViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_send_document_version_attachment
         )
 
@@ -294,7 +294,7 @@ class MailDocumentVersionViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_send_document_version_attachment
         )
         self.grant_access(
@@ -314,7 +314,7 @@ class MailDocumentVersionViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_version)
+        self.assertEqual(events[0].action_object, self._test_document_version)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
@@ -325,14 +325,14 @@ class MailDocumentVersionViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_send_document_version_attachment
         )
         self.grant_access(
             obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -365,7 +365,7 @@ class MailDocumentVersionViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_send_document_version_attachment
         )
 
@@ -404,7 +404,7 @@ class MailDocumentVersionViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_send_document_version_attachment
         )
         self.grant_access(
@@ -424,7 +424,7 @@ class MailDocumentVersionViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_document_version)
+        self.assertEqual(events[0].action_object, self._test_document_version)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
@@ -435,14 +435,14 @@ class MailDocumentVersionViewsTestCase(
         mail_messages = len(mail.outbox)
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_send_document_version_attachment
         )
         self.grant_access(
             obj=self._test_user_mailer, permission=permission_user_mailer_use
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 

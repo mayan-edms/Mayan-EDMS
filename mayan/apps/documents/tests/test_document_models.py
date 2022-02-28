@@ -13,36 +13,36 @@ from .literals import (
 class DocumentTestCase(GenericDocumentTestCase):
     def test_document_creation(self):
         self.assertEqual(
-            self.test_document.document_type.label,
-            self.test_document_type.label
+            self._test_document.document_type.label,
+            self._test_document_type.label
         )
 
-        self.assertEqual(self.test_document.file_latest.exists(), True)
+        self.assertEqual(self._test_document.file_latest.exists(), True)
         self.assertEqual(
-            self.test_document.file_latest.size,
+            self._test_document.file_latest.size,
             TEST_SMALL_DOCUMENT_SIZE
         )
 
         self.assertEqual(
-            self.test_document.file_latest.mimetype,
+            self._test_document.file_latest.mimetype,
             TEST_SMALL_DOCUMENT_MIMETYPE
         )
         self.assertEqual(
-            self.test_document.file_latest.encoding, 'binary'
+            self._test_document.file_latest.encoding, 'binary'
         )
         self.assertEqual(
-            self.test_document.file_latest.checksum,
+            self._test_document.file_latest.checksum,
             TEST_SMALL_DOCUMENT_CHECKSUM
         )
-        self.assertEqual(self.test_document.file_latest.pages.count(), 1)
+        self.assertEqual(self._test_document.file_latest.pages.count(), 1)
         self.assertEqual(
-            self.test_document.label, TEST_SMALL_DOCUMENT_FILENAME
+            self._test_document.label, TEST_SMALL_DOCUMENT_FILENAME
         )
 
     def test_method_get_absolute_url(self):
         self._create_test_document_stub()
 
-        self.assertTrue(self.test_document.get_absolute_url())
+        self.assertTrue(self._test_document.get_absolute_url())
 
 
 class DocumentManagerTestCase(GenericDocumentTestCase):
@@ -50,7 +50,7 @@ class DocumentManagerTestCase(GenericDocumentTestCase):
 
     def test_document_stubs_deletion(self):
         document_stub = Document.objects.create(
-            document_type=self.test_document_type
+            document_type=self._test_document_type
         )
 
         Document.objects.delete_stubs()

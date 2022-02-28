@@ -17,9 +17,9 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
     def test_document_file_delete_link_no_permission(self):
         self._upload_test_document_file()
 
-        self.assertTrue(self.test_document.files.count(), 2)
+        self.assertTrue(self._test_document.files.count(), 2)
 
-        self.add_test_view(test_object=self.test_document.files.first())
+        self.add_test_view(test_object=self._test_document.files.first())
         context = self.get_test_view()
         resolved_link = link_document_file_delete.resolve(context=context)
 
@@ -28,14 +28,14 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
     def test_document_file_delete_link_with_permission(self):
         self._upload_test_document_file()
 
-        self.assertTrue(self.test_document.files.count(), 2)
+        self.assertTrue(self._test_document.files.count(), 2)
 
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_delete
         )
 
-        self.add_test_view(test_object=self.test_document.files.first())
+        self.add_test_view(test_object=self._test_document.files.first())
         context = self.get_test_view()
         resolved_link = link_document_file_delete.resolve(context=context)
 
@@ -44,12 +44,12 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
             resolved_link.url,
             reverse(
                 viewname=link_document_file_delete.view,
-                args=(self.test_document.files.first().pk,)
+                args=(self._test_document.files.first().pk,)
             )
         )
 
     def test_document_file_download_link_no_permission(self):
-        self.add_test_view(test_object=self.test_document.file_latest)
+        self.add_test_view(test_object=self._test_document.file_latest)
         context = self.get_test_view()
         resolved_link = link_document_file_download_quick.resolve(context=context)
 
@@ -57,11 +57,11 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
 
     def test_document_file_download_link_with_permission(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_download
         )
 
-        self.add_test_view(test_object=self.test_document.file_latest)
+        self.add_test_view(test_object=self._test_document.file_latest)
         context = self.get_test_view()
         resolved_link = link_document_file_download_quick.resolve(context=context)
 
@@ -70,7 +70,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
             resolved_link.url,
             reverse(
                 viewname=link_document_file_download_quick.view,
-                args=(self.test_document.file_latest.pk,)
+                args=(self._test_document.file_latest.pk,)
             )
         )
 
@@ -78,9 +78,9 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
 class TrashedDocumentsLinksTestCase(GenericDocumentViewTestCase):
     def setUp(self):
         super().setUp()
-        self.test_document.delete()
+        self._test_document.delete()
         self.test_trashed_document = TrashedDocument.objects.get(
-            pk=self.test_document.pk
+            pk=self._test_document.pk
         )
         self.add_test_view(test_object=self.test_trashed_document)
         self.context = self.get_test_view()
@@ -91,7 +91,7 @@ class TrashedDocumentsLinksTestCase(GenericDocumentViewTestCase):
 
     def test_trashed_document_restore_link_with_permission(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_trashed_document_restore
+            obj=self._test_document, permission=permission_trashed_document_restore
         )
         resolved_link = link_document_restore.resolve(context=self.context)
         self.assertNotEqual(resolved_link, None)

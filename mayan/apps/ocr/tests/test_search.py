@@ -18,7 +18,7 @@ class DocumentOCRSearchTestCase(
     def _do_test_search(self):
         return self.search_backend.search(
             search_model=document_search, query={
-                'versions__version_pages__ocr_content__content': self.test_document_version_page.ocr_content.content
+                'versions__version_pages__ocr_content__content': self._test_document_version_page.ocr_content.content
             }, user=self._test_case_user
         )
 
@@ -26,35 +26,35 @@ class DocumentOCRSearchTestCase(
         self._clear_events()
 
         queryset = self._do_test_search()
-        self.assertTrue(self.test_document not in queryset)
+        self.assertTrue(self._test_document not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_search_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         self._clear_events()
 
         queryset = self._do_test_search()
-        self.assertTrue(self.test_document in queryset)
+        self.assertTrue(self._test_document in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_search_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         queryset = self._do_test_search()
-        self.assertTrue(self.test_document not in queryset)
+        self.assertTrue(self._test_document not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -68,7 +68,7 @@ class DocumentVersionOCRSearchTestCase(
     def _do_test_search(self):
         return self.search_backend.search(
             search_model=document_version_search, query={
-                'version_pages__ocr_content__content': self.test_document_version_page.ocr_content.content
+                'version_pages__ocr_content__content': self._test_document_version_page.ocr_content.content
             }, user=self._test_case_user
         )
 
@@ -76,37 +76,37 @@ class DocumentVersionOCRSearchTestCase(
         self._clear_events()
 
         queryset = self._do_test_search()
-        self.assertTrue(self.test_document_version not in queryset)
+        self.assertTrue(self._test_document_version not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_version_search_with_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_version_view
         )
 
         self._clear_events()
 
         queryset = self._do_test_search()
-        self.assertTrue(self.test_document_version in queryset)
+        self.assertTrue(self._test_document_version in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_version_search_with_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_version_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         queryset = self._do_test_search()
-        self.assertTrue(self.test_document_version not in queryset)
+        self.assertTrue(self._test_document_version not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -120,7 +120,7 @@ class DocumentVersionPageOCRSearchTestCase(
     def _do_test_search(self):
         return self.search_backend.search(
             search_model=document_version_page_search, query={
-                'ocr_content__content': self.test_document_version_page.ocr_content.content
+                'ocr_content__content': self._test_document_version_page.ocr_content.content
             }, user=self._test_case_user
         )
 
@@ -128,37 +128,37 @@ class DocumentVersionPageOCRSearchTestCase(
         self._clear_events()
 
         queryset = self._do_test_search()
-        self.assertTrue(self.test_document_version_page not in queryset)
+        self.assertTrue(self._test_document_version_page not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_version_search_with_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_version_view
         )
 
         self._clear_events()
 
         queryset = self._do_test_search()
-        self.assertTrue(self.test_document_version_page in queryset)
+        self.assertTrue(self._test_document_version_page in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_version_search_with_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_version_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         queryset = self._do_test_search()
-        self.assertTrue(self.test_document_version_page not in queryset)
+        self.assertTrue(self._test_document_version_page not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)

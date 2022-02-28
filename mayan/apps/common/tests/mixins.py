@@ -18,7 +18,7 @@ class ObjectCopyTestMixin:
         exclude_fields = exclude_fields or ()
 
         if not test_object:
-            test_object = self.test_object
+            test_object = self._test_object
 
         model_copy = ModelCopy.get(model=test_object._meta.model)
         if not test_object_copy:
@@ -118,5 +118,5 @@ class ObjectCopyTestMixin:
 class ObjectCopyViewTestMixin:
     def _request_object_copy_view(self):
         return self.post(
-            kwargs=self.test_object_view_kwargs, viewname='common:object_copy'
+            kwargs=self._test_object_view_kwargs, viewname='common:object_copy'
         )

@@ -16,7 +16,7 @@ class DocumentOCRLinkTestCase(
 
     def test_document_version_ocr_content_delete_single_link_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_version_ocr
+            obj=self._test_document, permission=permission_document_version_ocr
         )
         resolved_link = self._resolve_test_document_version_link(
             test_link=link_document_version_ocr_content_delete_single

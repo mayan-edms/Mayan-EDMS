@@ -171,7 +171,7 @@ class UserPasswordViewTestCase(
     def test_user_set_password_view_no_permission(self):
         self._create_test_user()
 
-        password_hash = self.test_user.password
+        password_hash = self._test_user.password
 
         self._clear_events()
 
@@ -180,17 +180,17 @@ class UserPasswordViewTestCase(
         )
         self.assertEqual(response.status_code, 404)
 
-        self.test_user.refresh_from_db()
-        self.assertEqual(self.test_user.password, password_hash)
+        self._test_user.refresh_from_db()
+        self.assertEqual(self._test_user.password, password_hash)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_user_set_password_view_with_access(self):
         self._create_test_user()
-        self.grant_access(obj=self.test_user, permission=permission_user_edit)
+        self.grant_access(obj=self._test_user, permission=permission_user_edit)
 
-        password_hash = self.test_user.password
+        password_hash = self._test_user.password
 
         self._clear_events()
 
@@ -199,20 +199,20 @@ class UserPasswordViewTestCase(
         )
         self.assertEqual(response.status_code, 302)
 
-        self.test_user.refresh_from_db()
-        self.assertNotEqual(self.test_user.password, password_hash)
+        self._test_user.refresh_from_db()
+        self.assertNotEqual(self._test_user.password, password_hash)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self.test_user)
-        self.assertEqual(events[0].target, self.test_user)
+        self.assertEqual(events[0].actor, self._test_user)
+        self.assertEqual(events[0].target, self._test_user)
         self.assertEqual(events[0].verb, event_user_edited.id)
 
     def test_user_multiple_set_password_view_no_permission(self):
         self._create_test_user()
-        password_hash = self.test_user.password
+        password_hash = self._test_user.password
 
         self._clear_events()
 
@@ -221,17 +221,17 @@ class UserPasswordViewTestCase(
         )
         self.assertEqual(response.status_code, 404)
 
-        self.test_user.refresh_from_db()
-        self.assertEqual(self.test_user.password, password_hash)
+        self._test_user.refresh_from_db()
+        self.assertEqual(self._test_user.password, password_hash)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_user_multiple_set_password_view_with_access(self):
         self._create_test_user()
-        self.grant_access(obj=self.test_user, permission=permission_user_edit)
+        self.grant_access(obj=self._test_user, permission=permission_user_edit)
 
-        password_hash = self.test_user.password
+        password_hash = self._test_user.password
 
         self._clear_events()
 
@@ -240,13 +240,13 @@ class UserPasswordViewTestCase(
         )
         self.assertEqual(response.status_code, 302)
 
-        self.test_user.refresh_from_db()
-        self.assertNotEqual(self.test_user.password, password_hash)
+        self._test_user.refresh_from_db()
+        self.assertNotEqual(self._test_user.password, password_hash)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self.test_user)
-        self.assertEqual(events[0].target, self.test_user)
+        self.assertEqual(events[0].actor, self._test_user)
+        self.assertEqual(events[0].target, self._test_user)
         self.assertEqual(events[0].verb, event_user_edited.id)

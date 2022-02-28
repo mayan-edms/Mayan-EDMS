@@ -16,4 +16,4 @@ class DocumentCommentModelTestCase(
     def test_method_get_absolute_url(self):
         self._create_test_comment()
 
-        self.assertTrue(self.test_document_comment.get_absolute_url())
+        self.assertTrue(self._test_document_comment.get_absolute_url())

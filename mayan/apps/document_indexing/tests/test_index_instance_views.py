@@ -29,7 +29,7 @@ class DocumentIndexInstanceViewTestCase(
 
     def test_document_index_instance_list_view_with_index_access(self):
         self.grant_access(
-            obj=self.test_index_template,
+            obj=self._test_index_template,
             permission=permission_index_instance_view
         )
 
@@ -43,7 +43,7 @@ class DocumentIndexInstanceViewTestCase(
 
     def test_document_index_instance_list_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_index_instance_view
         )
 
@@ -56,7 +56,7 @@ class DocumentIndexInstanceViewTestCase(
         )
         self.assertContains(
             response=response, status_code=200,
-            text=self.test_documents[1].pk
+            text=self._test_documents[1].pk
         )
 
         events = self._get_test_events()
@@ -64,11 +64,11 @@ class DocumentIndexInstanceViewTestCase(
 
     def test_document_index_instance_list_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_index_template,
+            obj=self._test_index_template,
             permission=permission_index_instance_view
         )
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_index_instance_view
         )
 
@@ -81,7 +81,7 @@ class DocumentIndexInstanceViewTestCase(
         )
         self.assertContains(
             response=response, status_code=200,
-            text=self.test_documents[1].pk
+            text=self._test_documents[1].pk
         )
 
         events = self._get_test_events()
@@ -89,15 +89,15 @@ class DocumentIndexInstanceViewTestCase(
 
     def test_trashed_document_index_list_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_index_template,
+            obj=self._test_index_template,
             permission=permission_index_instance_view
         )
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_index_instance_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -116,7 +116,7 @@ class IndexInstanceViewTestCase(
         self._clear_events()
 
         response = self._request_test_index_instance_node_view(
-            index_instance_node=self.test_index_instance_root_node
+            index_instance_node=self._test_index_instance_root_node
         )
         self.assertEqual(response.status_code, 403)
 
@@ -125,14 +125,14 @@ class IndexInstanceViewTestCase(
 
     def test_index_instance_root_node_view_with_access(self):
         self.grant_access(
-            obj=self.test_index_template,
+            obj=self._test_index_template,
             permission=permission_index_instance_view
         )
 
         self._clear_events()
 
         response = self._request_test_index_instance_node_view(
-            index_instance_node=self.test_index_instance_root_node
+            index_instance_node=self._test_index_instance_root_node
         )
         self.assertContains(
             response=response, text=TEST_INDEX_TEMPLATE_LABEL, status_code=200
@@ -145,7 +145,7 @@ class IndexInstanceViewTestCase(
         self._clear_events()
 
         response = self._request_test_index_instance_node_view(
-            index_instance_node=self.test_index_instance_node
+            index_instance_node=self._test_index_instance_node
         )
         self.assertEqual(response.status_code, 403)
 
@@ -154,20 +154,20 @@ class IndexInstanceViewTestCase(
 
     def test_index_instance_document_node_view_with_index_access(self):
         self.grant_access(
-            obj=self.test_index_template,
+            obj=self._test_index_template,
             permission=permission_index_instance_view
         )
 
         self._clear_events()
 
         response = self._request_test_index_instance_node_view(
-            index_instance_node=self.test_index_instance_node
+            index_instance_node=self._test_index_instance_node
         )
         self.assertContains(
             response=response, text=TEST_INDEX_TEMPLATE_LABEL, status_code=200
         )
         self.assertNotContains(
-            response=response, text=self.test_document.label, status_code=200
+            response=response, text=self._test_document.label, status_code=200
         )
 
         events = self._get_test_events()
@@ -175,13 +175,13 @@ class IndexInstanceViewTestCase(
 
     def test_index_instance_document_node_view_with_document_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         self._clear_events()
 
         response = self._request_test_index_instance_node_view(
-            index_instance_node=self.test_index_instance_node
+            index_instance_node=self._test_index_instance_node
         )
         self.assertEqual(response.status_code, 403)
 
@@ -190,24 +190,24 @@ class IndexInstanceViewTestCase(
 
     def test_index_instance_document_node_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_index_template,
+            obj=self._test_index_template,
             permission=permission_index_instance_view
         )
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         self._clear_events()
 
         response = self._request_test_index_instance_node_view(
-            index_instance_node=self.test_index_instance_node
+            index_instance_node=self._test_index_instance_node
         )
 
         self.assertContains(
             response=response, text=TEST_INDEX_TEMPLATE_LABEL, status_code=200
         )
         self.assertContains(
-            response=response, text=self.test_document.label, status_code=200
+            response=response, text=self._test_document.label, status_code=200
         )
 
         events = self._get_test_events()
@@ -215,26 +215,26 @@ class IndexInstanceViewTestCase(
 
     def test_index_instance_trashed_document_node_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_index_template,
+            obj=self._test_index_template,
             permission=permission_index_instance_view
         )
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         response = self._request_test_index_instance_node_view(
-            index_instance_node=self.test_index_instance_node
+            index_instance_node=self._test_index_instance_node
         )
 
         self.assertContains(
             response=response, text=TEST_INDEX_TEMPLATE_LABEL, status_code=200
         )
         self.assertNotContains(
-            response=response, text=self.test_document.label, status_code=200
+            response=response, text=self._test_document.label, status_code=200
         )
 
         events = self._get_test_events()

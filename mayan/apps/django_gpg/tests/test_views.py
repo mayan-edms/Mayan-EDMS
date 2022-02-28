@@ -32,7 +32,7 @@ class KeyViewTestCase(KeyTestMixin, KeyViewTestMixin, GenericViewTestCase):
         test_key_count = Key.objects.count()
 
         self.grant_access(
-            obj=self.test_key_private, permission=permission_key_delete
+            obj=self._test_key_private, permission=permission_key_delete
         )
 
         self._clear_events()
@@ -62,15 +62,15 @@ class KeyViewTestCase(KeyTestMixin, KeyViewTestMixin, GenericViewTestCase):
         self._create_test_key_private()
 
         self.grant_access(
-            obj=self.test_key_private, permission=permission_key_download
+            obj=self._test_key_private, permission=permission_key_download
         )
 
         self._clear_events()
 
         response = self._request_test_key_download_view()
         self.assert_download_response(
-            response=response, content=self.test_key_private.key_data,
-            filename=self.test_key_private.key_id,
+            response=response, content=self._test_key_private.key_data,
+            filename=self._test_key_private.key_id,
         )
 
         events = self._get_test_events()
@@ -78,7 +78,7 @@ class KeyViewTestCase(KeyTestMixin, KeyViewTestMixin, GenericViewTestCase):
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_key_private)
+        self.assertEqual(events[0].target, self._test_key_private)
         self.assertEqual(events[0].verb, event_key_downloaded.id)
 
     def test_key_upload_view_no_permission(self):
@@ -110,5 +110,5 @@ class KeyViewTestCase(KeyTestMixin, KeyViewTestMixin, GenericViewTestCase):
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_key_private)
+        self.assertEqual(events[0].target, self._test_key_private)
         self.assertEqual(events[0].verb, event_key_created.id)

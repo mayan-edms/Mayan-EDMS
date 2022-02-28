@@ -39,7 +39,7 @@ class RecentlyCreatedDocumentAPIViewTestCase(
         recently_created_document_count = RecentlyCreatedDocument.valid.count()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         self._clear_events()
@@ -50,7 +50,7 @@ class RecentlyCreatedDocumentAPIViewTestCase(
             response.data['count'], recently_created_document_count
         )
         self.assertEqual(
-            response.data['results'][0]['id'], self.test_document.pk
+            response.data['results'][0]['id'], self._test_document.pk
         )
 
         events = self._get_test_events()
@@ -60,10 +60,10 @@ class RecentlyCreatedDocumentAPIViewTestCase(
         recently_created_document_count = RecentlyCreatedDocument.valid.count()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 

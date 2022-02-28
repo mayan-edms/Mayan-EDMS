@@ -14,6 +14,6 @@ class SmartLinkTestCase(SmartLinkTestMixin, GenericDocumentTestCase):
 
     def test_smart_link_dynamic_label(self):
         self.assertEqual(
-            self.test_smart_link.get_dynamic_label(document=self.test_document),
-            str(self.test_document.uuid)
+            self._test_smart_link.get_dynamic_label(document=self._test_document),
+            str(self._test_document.uuid)
         )

@@ -478,7 +478,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
     def test_meta_only(self):
         self._upload_test_document(label='first_doc')
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
@@ -491,29 +491,29 @@ class DjangoSearchBackendDocumentSearchTestCase(
     def test_simple_or_search(self):
         self._upload_test_document(label='first_doc')
         self.grant_access(
-            obj=self.test_documents[0], permission=permission_document_view
+            obj=self._test_documents[0], permission=permission_document_view
         )
         self._upload_test_document(label='second_doc')
         self.grant_access(
-            obj=self.test_documents[1], permission=permission_document_view
+            obj=self._test_documents[1], permission=permission_document_view
         )
         queryset = self.search_backend.search(
             search_model=document_search,
             query={'q': 'first OR second'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
-        self.assertTrue(self.test_documents[0] in queryset)
-        self.assertTrue(self.test_documents[1] in queryset)
+        self.assertTrue(self._test_documents[0] in queryset)
+        self.assertTrue(self._test_documents[1] in queryset)
 
     def test_advanced_or_search(self):
         self._upload_test_document(label='first_doc')
         self.grant_access(
-            obj=self.test_documents[0], permission=permission_document_view
+            obj=self._test_documents[0], permission=permission_document_view
         )
 
         self._upload_test_document(label='second_doc')
         self.grant_access(
-            obj=self.test_documents[1], permission=permission_document_view
+            obj=self._test_documents[1], permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
@@ -522,14 +522,14 @@ class DjangoSearchBackendDocumentSearchTestCase(
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
-        self.assertTrue(self.test_documents[0] in queryset)
-        self.assertTrue(self.test_documents[1] in queryset)
+        self.assertTrue(self._test_documents[0] in queryset)
+        self.assertTrue(self._test_documents[1] in queryset)
 
     def test_simple_and_search(self):
         self._upload_test_document(label='second_doc')
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
@@ -550,7 +550,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
         self._upload_test_document(label='second_doc')
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
@@ -592,7 +592,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
         self._upload_test_document(label='second-document')
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
@@ -622,7 +622,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
         self._upload_test_document(label='first_doc')
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
@@ -631,7 +631,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
         )
 
         self.assertEqual(queryset.count(), 1)
-        self.assertTrue(self.test_document in queryset)
+        self.assertTrue(self._test_document in queryset)
 
 
 class WhooshSearchBackendDocumentSearchTestCase(
@@ -645,7 +645,7 @@ class WhooshSearchBackendDocumentSearchTestCase(
         self._upload_test_document(label='first_doc')
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
@@ -654,12 +654,12 @@ class WhooshSearchBackendDocumentSearchTestCase(
         )
 
         self.assertEqual(queryset.count(), 1)
-        self.assertTrue(self.test_document in queryset)
+        self.assertTrue(self._test_document in queryset)
 
     def test_meta_only(self):
         self._upload_test_document(label='first_doc')
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
@@ -672,29 +672,29 @@ class WhooshSearchBackendDocumentSearchTestCase(
     def test_simple_or_search(self):
         self._upload_test_document(label='first_doc')
         self.grant_access(
-            obj=self.test_documents[0], permission=permission_document_view
+            obj=self._test_documents[0], permission=permission_document_view
         )
         self._upload_test_document(label='second_doc')
         self.grant_access(
-            obj=self.test_documents[1], permission=permission_document_view
+            obj=self._test_documents[1], permission=permission_document_view
         )
         queryset = self.search_backend.search(
             search_model=document_search,
             query={'q': 'first* OR second*'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
-        self.assertTrue(self.test_documents[0] in queryset)
-        self.assertTrue(self.test_documents[1] in queryset)
+        self.assertTrue(self._test_documents[0] in queryset)
+        self.assertTrue(self._test_documents[1] in queryset)
 
     def test_advanced_or_search(self):
         self._upload_test_document(label='first_doc')
         self.grant_access(
-            obj=self.test_documents[0], permission=permission_document_view
+            obj=self._test_documents[0], permission=permission_document_view
         )
 
         self._upload_test_document(label='second_doc')
         self.grant_access(
-            obj=self.test_documents[1], permission=permission_document_view
+            obj=self._test_documents[1], permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
@@ -703,14 +703,14 @@ class WhooshSearchBackendDocumentSearchTestCase(
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
-        self.assertTrue(self.test_documents[0] in queryset)
-        self.assertTrue(self.test_documents[1] in queryset)
+        self.assertTrue(self._test_documents[0] in queryset)
+        self.assertTrue(self._test_documents[1] in queryset)
 
     def test_simple_and_search(self):
         self._upload_test_document(label='second_doc')
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self._test_document, permission=permission_document_view
         )
 
         queryset = self.search_backend.search(

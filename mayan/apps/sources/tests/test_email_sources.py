@@ -35,7 +35,7 @@ class EmailSourceBackendTestCase(
         Test decoding of base64 encoded e-mail attachment filename.
         """
         self._create_test_email_source_backend()
-        source_backend_instance = self.test_source.get_backend_instance()
+        source_backend_instance = self._test_source.get_backend_instance()
         source_backend_instance.content = TEST_EMAIL_BASE64_FILENAME
 
         source_backend_instance.process_documents()
@@ -49,7 +49,7 @@ class EmailSourceBackendTestCase(
         self._create_test_email_source_backend(
             extra_data={'store_body': True}
         )
-        source_backend_instance = self.test_source.get_backend_instance()
+        source_backend_instance = self._test_source.get_backend_instance()
 
         source_backend_instance.content = TEST_EMAIL_NO_CONTENT_TYPE
 
@@ -61,7 +61,7 @@ class EmailSourceBackendTestCase(
 
     def test_decode_email_zero_length_attachment(self):
         self._create_test_email_source_backend()
-        source_backend_instance = self.test_source.get_backend_instance()
+        source_backend_instance = self._test_source.get_backend_instance()
 
         source_backend_instance.content = TEST_EMAIL_ZERO_LENGTH_ATTACHMENT
 
@@ -73,7 +73,7 @@ class EmailSourceBackendTestCase(
         self._create_test_email_source_backend(
             extra_data={'store_body': True}
         )
-        source_backend_instance = self.test_source.get_backend_instance()
+        source_backend_instance = self._test_source.get_backend_instance()
 
         source_backend_instance.content = TEST_EMAIL_INLINE_IMAGE
 
@@ -93,7 +93,7 @@ class EmailSourceBackendTestCase(
         self._create_test_email_source_backend(
             extra_data={'store_body': True}
         )
-        source_backend_instance = self.test_source.get_backend_instance()
+        source_backend_instance = self._test_source.get_backend_instance()
 
         # Silence expected errors in other apps.
         self._silence_logger(name='mayan.apps.converter.backends')
@@ -110,7 +110,7 @@ class EmailSourceBackendTestCase(
 
     def test_document_upload_no_body(self):
         self._create_test_email_source_backend()
-        source_backend_instance = self.test_source.get_backend_instance()
+        source_backend_instance = self._test_source.get_backend_instance()
 
         # Silence expected errors in other apps.
         self._silence_logger(name='mayan.apps.converter.backends')
@@ -125,7 +125,7 @@ class EmailSourceBackendTestCase(
         self._create_test_email_source_backend(
             extra_data={'store_body': True}
         )
-        source_backend_instance = self.test_source.get_backend_instance()
+        source_backend_instance = self._test_source.get_backend_instance()
 
         # Silence expected errors in other apps.
         self._silence_logger(name='mayan.apps.converter.backends')
@@ -151,10 +151,10 @@ class EmailSourceBackendMedatadataTestCase(
     def test_email_from_value_as_metadata(self):
         self._create_test_email_source_backend(
             extra_data={
-                'from_metadata_type_id': self.test_metadata_type.pk,
+                'from_metadata_type_id': self._test_metadata_type.pk,
             }
         )
-        source_backend_instance = self.test_source.get_backend_instance()
+        source_backend_instance = self._test_source.get_backend_instance()
 
         source_backend_instance.content = TEST_EMAIL_BASE64_FILENAME
         source_backend_instance.process_documents()
@@ -165,17 +165,17 @@ class EmailSourceBackendMedatadataTestCase(
             document.label, 'Ampelm\xe4nnchen.txt'
         )
         self.assertEqual(
-            document.metadata.get(metadata_type=self.test_metadata_type).value,
+            document.metadata.get(metadata_type=self._test_metadata_type).value,
             TEST_EMAIL_BASE64_FILENAME_FROM
         )
 
     def test_email_subjet_value_as_metadata(self):
         self._create_test_email_source_backend(
             extra_data={
-                'subject_metadata_type_id': self.test_metadata_type.pk,
+                'subject_metadata_type_id': self._test_metadata_type.pk,
             }
         )
-        source_backend_instance = self.test_source.get_backend_instance()
+        source_backend_instance = self._test_source.get_backend_instance()
 
         source_backend_instance.content = TEST_EMAIL_BASE64_FILENAME
         source_backend_instance.process_documents()
@@ -186,17 +186,17 @@ class EmailSourceBackendMedatadataTestCase(
             document.label, 'Ampelm\xe4nnchen.txt'
         )
         self.assertEqual(
-            document.metadata.get(metadata_type=self.test_metadata_type).value,
+            document.metadata.get(metadata_type=self._test_metadata_type).value,
             TEST_EMAIL_BASE64_FILENAME_SUBJECT
         )
 
     def test_message_id_subjet_value_as_metadata(self):
         self._create_test_email_source_backend(
             extra_data={
-                'message_id_metadata_type_id': self.test_metadata_type.pk,
+                'message_id_metadata_type_id': self._test_metadata_type.pk,
             }
         )
-        source_backend_instance = self.test_source.get_backend_instance()
+        source_backend_instance = self._test_source.get_backend_instance()
 
         source_backend_instance.content = TEST_EMAIL_BASE64_FILENAME
         source_backend_instance.process_documents()
@@ -207,7 +207,7 @@ class EmailSourceBackendMedatadataTestCase(
             document.label, 'Ampelm\xe4nnchen.txt'
         )
         self.assertEqual(
-            document.metadata.get(metadata_type=self.test_metadata_type).value,
+            document.metadata.get(metadata_type=self._test_metadata_type).value,
             TEST_EMAIL_BASE64_MESSAGE_ID
         )
 
@@ -228,10 +228,10 @@ class EmailSourceBackendMetadataYAMLAttachmentTestCase(
         test_metadata_type_2 = MetadataType.objects.create(
             name='test_metadata_type_2'
         )
-        self.test_document_type.metadata.create(
+        self._test_document_type.metadata.create(
             metadata_type=test_metadata_type_1
         )
-        self.test_document_type.metadata.create(
+        self._test_document_type.metadata.create(
             metadata_type=test_metadata_type_2
         )
 
@@ -267,7 +267,7 @@ class EmailSourceBackendMetadataYAMLAttachmentTestCase(
         self._create_test_email_source_backend(
             extra_data={'store_body': True}
         )
-        source_backend_instance = self.test_source.get_backend_instance()
+        source_backend_instance = self._test_source.get_backend_instance()
 
         source_backend_instance.content = mail.outbox[0].message()
 
@@ -302,7 +302,7 @@ class IMAPSourceBackendTestCase(
             mock_imaplib.return_value.mailboxes['INBOX'].messages
         )
 
-        source_backend_instance = self.test_source.get_backend_instance()
+        source_backend_instance = self._test_source.get_backend_instance()
 
         source_backend_instance.process_documents()
 
@@ -336,7 +336,7 @@ class POP3SourceTestCase(
 
         test_imap_message_count = len(mock_poplib.return_value.messages)
 
-        source_backend_instance = self.test_source.get_backend_instance()
+        source_backend_instance = self._test_source.get_backend_instance()
 
         source_backend_instance.process_documents()
 

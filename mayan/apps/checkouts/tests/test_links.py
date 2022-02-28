@@ -20,13 +20,13 @@ class CheckoutLinksTestCase(
         self._create_test_document_stub()
 
     def _resolve_document_check_out_link(self):
-        self.add_test_view(test_object=self.test_document)
+        self.add_test_view(test_object=self._test_document)
         context = self.get_test_view()
         context['user'] = self._test_case_user
         return link_check_out_document.resolve(context=context)
 
     def _resolve_document_check_out_info_link(self):
-        self.add_test_view(test_object=self.test_document)
+        self.add_test_view(test_object=self._test_document)
         context = self.get_test_view()
         context['user'] = self._test_case_user
         return link_check_out_info.resolve(context=context)
@@ -37,7 +37,7 @@ class CheckoutLinksTestCase(
 
     def test_document_check_out_link_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_check_out
+            obj=self._test_document, permission=permission_document_check_out
         )
         resolved_link = self._resolve_document_check_out_link()
         self.assertNotEqual(resolved_link, None)
@@ -48,7 +48,7 @@ class CheckoutLinksTestCase(
 
     def test_document_check_out_info_link_with_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_check_out_detail_view
         )
         resolved_link = self._resolve_document_check_out_info_link()
@@ -66,11 +66,11 @@ class DocumentFileListViewTestCase(
 
     def _get_document_new_file_link(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_new
         )
 
-        self.add_test_view(test_object=self.test_document)
+        self.add_test_view(test_object=self._test_document)
         context = self.get_test_view()
         return link_document_file_upload.resolve(context=context)
 
@@ -82,7 +82,7 @@ class DocumentFileListViewTestCase(
         self._silence_logger(name='mayan.apps.sources.links')
 
         self._create_test_user()
-        self._check_out_test_document(user=self.test_user)
+        self._check_out_test_document(user=self._test_user)
 
         resolved_link = self._get_document_new_file_link()
         self.assertEqual(resolved_link, None)

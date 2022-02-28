@@ -17,10 +17,10 @@ class ErrorLoggingTextMixin:
         )
 
         self._create_test_user()
-        self.test_object = self.test_user
+        self._test_object = self._test_user
 
     def _create_error_log_entry(self):
-        self._test_error_log_entry = self.test_object.error_log.create(
+        self._test_error_log_entry = self._test_object.error_log.create(
             text=TEST_ERROR_LOG_ENTRY_RESULT
         )
 
@@ -28,27 +28,27 @@ class ErrorLoggingTextMixin:
 class ErrorLoggingViewTestMixin:
     def _request_object_error_log_list_view(self):
         content_type = ContentType.objects.get_for_model(
-            model=self.test_object
+            model=self._test_object
         )
 
         return self.get(
             viewname='logging:object_error_list', kwargs={
                 'app_label': content_type.app_label,
                 'model_name': content_type.model,
-                'object_id': self.test_object.pk
+                'object_id': self._test_object.pk
             }
         )
 
     def _request_object_error_log_list_clear_view(self):
         content_type = ContentType.objects.get_for_model(
-            model=self.test_object
+            model=self._test_object
         )
 
         return self.post(
             viewname='logging:object_error_list_clear', kwargs={
                 'app_label': content_type.app_label,
                 'model_name': content_type.model,
-                'object_id': self.test_object.pk
+                'object_id': self._test_object.pk
             }
         )
 

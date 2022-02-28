@@ -28,7 +28,7 @@ class DocumentFilePageContentAPITestCase(
 
     def test_document_file_page_content_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_content_view
         )
 
@@ -42,11 +42,11 @@ class DocumentFilePageContentAPITestCase(
 
     def test_trashed_document_file_page_content_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_document,
+            obj=self._test_document,
             permission=permission_document_file_content_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
@@ -74,7 +74,7 @@ class DocumentTypeParsingSettingsAPIViewTestCase(
 
     def test_document_type_parsing_settings_details_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_parsing_setup
         )
 
@@ -98,7 +98,7 @@ class DocumentTypeParsingSettingsAPIViewTestCase(
 
     def test_document_type_parsing_settings_patch_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_parsing_setup
         )
 
@@ -122,7 +122,7 @@ class DocumentTypeParsingSettingsAPIViewTestCase(
 
     def test_document_type_parsing_settings_put_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self._test_document_type,
             permission=permission_document_type_parsing_setup
         )
 

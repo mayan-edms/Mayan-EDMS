@@ -43,7 +43,7 @@ class EmailSourceViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_source)
+        self.assertEqual(events[0].target, self._test_source)
         self.assertEqual(events[0].verb, event_source_created.id)
 
     def test_metadata_type_validation_invalid_from(self):
@@ -78,7 +78,7 @@ class EmailSourceViewTestCase(
             name='test_metadata_type'
         )
 
-        self.test_document_type.metadata.create(
+        self._test_document_type.metadata.create(
             metadata_type=test_metadata_type
         )
 
@@ -102,7 +102,7 @@ class EmailSourceViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_source)
+        self.assertEqual(events[0].target, self._test_source)
         self.assertEqual(events[0].verb, event_source_created.id)
 
     def test_metadata_type_validation_invalid_subject(self):
@@ -137,7 +137,7 @@ class EmailSourceViewTestCase(
             name='test_metadata_type'
         )
 
-        self.test_document_type.metadata.create(
+        self._test_document_type.metadata.create(
             metadata_type=test_metadata_type
         )
 
@@ -161,7 +161,7 @@ class EmailSourceViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_source)
+        self.assertEqual(events[0].target, self._test_source)
         self.assertEqual(events[0].verb, event_source_created.id)
 
     def test_email_source_test_view_no_permission(self):
@@ -181,7 +181,7 @@ class EmailSourceViewTestCase(
         self._silence_logger(name='mayan.apps.converter')
 
         self.grant_access(
-            obj=self.test_source, permission=permission_sources_edit
+            obj=self._test_source, permission=permission_sources_edit
         )
 
         document_count = Document.objects.count()
@@ -200,7 +200,7 @@ class EmailSourceViewTestCase(
         test_document_file = test_document.file_latest
         test_document_version = test_document.version_active
 
-        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].action_object, self._test_document_type)
         self.assertEqual(events[0].actor, test_document)
         self.assertEqual(events[0].target, test_document)
         self.assertEqual(events[0].verb, event_document_created.id)

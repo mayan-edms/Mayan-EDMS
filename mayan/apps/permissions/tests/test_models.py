@@ -26,17 +26,17 @@ class PermissionTestCase(GroupTestMixin, RoleTestMixin, BaseTestCase):
     def test_no_permission(self):
         with self.assertRaises(expected_exception=PermissionDenied):
             Permission.check_user_permissions(
-                permissions=(self.test_permission,), user=self.test_user
+                permissions=(self._test_permission,), user=self._test_user
             )
 
     def test_with_permissions(self):
-        self.test_group.user_set.add(self.test_user)
-        self.test_role.grant(permission=self.test_permission)
-        self.test_role.groups.add(self.test_group)
+        self._test_group.user_set.add(self._test_user)
+        self._test_role.grant(permission=self._test_permission)
+        self._test_role.groups.add(self._test_group)
 
         try:
             Permission.check_user_permissions(
-                permissions=(self.test_permission,), user=self.test_user
+                permissions=(self._test_permission,), user=self._test_user
             )
         except PermissionDenied:
             self.fail('PermissionDenied exception was not expected.')
@@ -47,7 +47,7 @@ class PermissionTestCase(GroupTestMixin, RoleTestMixin, BaseTestCase):
 
         with self.assertRaises(expected_exception=PermissionDenied):
             Permission.check_user_permissions(
-                permissions=(self.test_permission,), user=test_anonymous_user
+                permissions=(self._test_permission,), user=test_anonymous_user
             )
 
 
@@ -55,7 +55,7 @@ class RoleModelTestCase(RoleTestMixin, BaseTestCase):
     def test_method_get_absolute_url(self):
         self._create_test_role()
 
-        self.assertTrue(self.test_role.get_absolute_url())
+        self.assertTrue(self._test_role.get_absolute_url())
 
 
 class StoredPermissionManagerTestCase(BaseTestCase):

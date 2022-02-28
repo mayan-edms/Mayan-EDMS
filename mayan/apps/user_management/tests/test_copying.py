@@ -11,8 +11,8 @@ class GroupCopyTestCase(
         super().setUp()
         self._create_test_group()
         self._create_test_user()
-        self.test_user.groups.add(self.test_group)
-        self.test_object = self.test_group
+        self._test_user.groups.add(self._test_group)
+        self._test_object = self._test_group
 
 
 class UserCopyTestCase(
@@ -22,5 +22,5 @@ class UserCopyTestCase(
         super().setUp()
         self._create_test_group()
         self._create_test_user()
-        self.test_user.groups.add(self.test_group)
-        self.test_object = self.test_user
+        self._test_user.groups.add(self._test_group)
+        self._test_object = self._test_user

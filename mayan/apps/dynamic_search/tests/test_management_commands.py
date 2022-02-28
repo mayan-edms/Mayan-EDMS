@@ -46,58 +46,58 @@ class SearchIndexObjectManagementCommandTestCaseMixin(SearchTestMixin):
         backend = SearchBackend.get_instance()
         backend.reset()
 
-        self._call_command(id_range_string=self.test_objects[0].pk)
+        self._call_command(id_range_string=self._test_objects[0].pk)
 
     def test_command_artifacts(self):
         self._create_test_object(instance_kwargs={'test_field': 'abc'})
         self._create_test_object(instance_kwargs={'test_field': 'xyz'})
 
         queryset = self._do_search(
-            search_terms=self.test_objects[0].test_field
+            search_terms=self._test_objects[0].test_field
         )
-        self.assertTrue(self.test_objects[0] in queryset)
+        self.assertTrue(self._test_objects[0] in queryset)
 
         queryset = self._do_search(
-            search_terms=self.test_objects[1].test_field
+            search_terms=self._test_objects[1].test_field
         )
-        self.assertTrue(self.test_objects[1] in queryset)
+        self.assertTrue(self._test_objects[1] in queryset)
 
         backend = SearchBackend.get_instance()
         backend.reset()
 
         queryset = self._do_search(
-            search_terms=self.test_objects[0].test_field
+            search_terms=self._test_objects[0].test_field
         )
-        self.assertTrue(self.test_objects[0] not in queryset)
+        self.assertTrue(self._test_objects[0] not in queryset)
 
         queryset = self._do_search(
-            search_terms=self.test_objects[1].test_field
+            search_terms=self._test_objects[1].test_field
         )
-        self.assertTrue(self.test_objects[1] not in queryset)
+        self.assertTrue(self._test_objects[1] not in queryset)
 
-        self._call_command(id_range_string=self.test_objects[0].pk)
+        self._call_command(id_range_string=self._test_objects[0].pk)
 
         queryset = self._do_search(
-            search_terms=self.test_objects[0].test_field
+            search_terms=self._test_objects[0].test_field
         )
-        self.assertTrue(self.test_objects[0] in queryset)
+        self.assertTrue(self._test_objects[0] in queryset)
 
         queryset = self._do_search(
-            search_terms=self.test_objects[1].test_field
+            search_terms=self._test_objects[1].test_field
         )
-        self.assertTrue(self.test_objects[1] not in queryset)
+        self.assertTrue(self._test_objects[1] not in queryset)
 
-        self._call_command(id_range_string=self.test_objects[1].pk)
-
-        queryset = self._do_search(
-            search_terms=self.test_objects[0].test_field
-        )
-        self.assertTrue(self.test_objects[0] in queryset)
+        self._call_command(id_range_string=self._test_objects[1].pk)
 
         queryset = self._do_search(
-            search_terms=self.test_objects[1].test_field
+            search_terms=self._test_objects[0].test_field
         )
-        self.assertTrue(self.test_objects[1] in queryset)
+        self.assertTrue(self._test_objects[0] in queryset)
+
+        queryset = self._do_search(
+            search_terms=self._test_objects[1].test_field
+        )
+        self.assertTrue(self._test_objects[1] in queryset)
 
 
 class DjangoSearchIndexObjectManagementCommandTestCase(
@@ -156,9 +156,9 @@ class SearchStatusManagementCommandTestCaseMixin(SearchTestMixin):
         self._create_test_object(instance_kwargs={'test_field': 'xyz'})
 
         queryset = self._do_search(
-            search_terms=self.test_objects[0].test_field
+            search_terms=self._test_objects[0].test_field
         )
-        self.assertTrue(self.test_objects[0] in queryset)
+        self.assertTrue(self._test_objects[0] in queryset)
 
         output = StringIO()
         options = {
@@ -177,7 +177,7 @@ class SearchStatusManagementCommandTestCaseMixin(SearchTestMixin):
                 model_name, count = line.split(':')
                 count = int(count)
 
-        self.assertEqual(count, len(self.test_objects))
+        self.assertEqual(count, len(self._test_objects))
 
 
 class DjangoSearchStatusManagementCommandTestCase(

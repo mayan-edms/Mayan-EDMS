@@ -30,19 +30,19 @@ class WatchFolderSourceBackendTestCase(
 
         document_count = Document.objects.count()
 
-        temporary_directory = self.test_source.get_backend_data()['folder_path']
+        temporary_directory = self._test_source.get_backend_data()['folder_path']
 
         shutil.copy(src=TEST_SMALL_DOCUMENT_PATH, dst=temporary_directory)
 
-        self.test_source.get_backend_instance().process_documents()
+        self._test_source.get_backend_instance().process_documents()
 
         self.assertEqual(Document.objects.count(), document_count)
 
-        backend_data = self.test_source.get_backend_data()
+        backend_data = self._test_source.get_backend_data()
         backend_data['exclude_regex'] = ''
-        self.test_source.set_backend_data(obj=backend_data)
+        self._test_source.set_backend_data(obj=backend_data)
 
-        self.test_source.get_backend_instance().process_documents()
+        self._test_source.get_backend_instance().process_documents()
 
         self.assertEqual(Document.objects.count(), document_count + 1)
 
@@ -55,19 +55,19 @@ class WatchFolderSourceBackendTestCase(
 
         document_count = Document.objects.count()
 
-        temporary_directory = self.test_source.get_backend_data()['folder_path']
+        temporary_directory = self._test_source.get_backend_data()['folder_path']
 
         shutil.copy(src=TEST_SMALL_DOCUMENT_PATH, dst=temporary_directory)
 
-        self.test_source.get_backend_instance().process_documents()
+        self._test_source.get_backend_instance().process_documents()
 
         self.assertEqual(Document.objects.count(), document_count)
 
-        backend_data = self.test_source.get_backend_data()
+        backend_data = self._test_source.get_backend_data()
         backend_data['include_regex'] = path.name
-        self.test_source.set_backend_data(obj=backend_data)
+        self._test_source.set_backend_data(obj=backend_data)
 
-        self.test_source.get_backend_instance().process_documents()
+        self._test_source.get_backend_instance().process_documents()
 
         self.assertEqual(Document.objects.count(), document_count + 1)
 
@@ -76,11 +76,11 @@ class WatchFolderSourceBackendTestCase(
 
         document_count = Document.objects.count()
 
-        temporary_directory = self.test_source.get_backend_data()['folder_path']
+        temporary_directory = self._test_source.get_backend_data()['folder_path']
 
         shutil.copy(src=TEST_SMALL_DOCUMENT_PATH, dst=temporary_directory)
 
-        self.test_source.get_backend_instance().process_documents()
+        self._test_source.get_backend_instance().process_documents()
 
         self.assertEqual(Document.objects.count(), document_count + 1)
         self.assertEqual(
@@ -91,7 +91,7 @@ class WatchFolderSourceBackendTestCase(
     def test_subfolder_disabled(self):
         self._create_test_watch_folder()
 
-        temporary_directory = self.test_source.get_backend_data()['folder_path']
+        temporary_directory = self._test_source.get_backend_data()['folder_path']
 
         test_path = Path(temporary_directory)
         test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
@@ -103,7 +103,7 @@ class WatchFolderSourceBackendTestCase(
 
         document_count = Document.objects.count()
 
-        self.test_source.get_backend_instance().process_documents()
+        self._test_source.get_backend_instance().process_documents()
         self.assertEqual(Document.objects.count(), document_count)
 
     def test_subfolder_enabled(self):
@@ -111,7 +111,7 @@ class WatchFolderSourceBackendTestCase(
             extra_data={'include_subdirectories': True}
         )
 
-        temporary_directory = self.test_source.get_backend_data()['folder_path']
+        temporary_directory = self._test_source.get_backend_data()['folder_path']
 
         test_path = Path(temporary_directory)
         test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
@@ -121,7 +121,7 @@ class WatchFolderSourceBackendTestCase(
 
         document_count = Document.objects.count()
 
-        self.test_source.get_backend_instance().process_documents()
+        self._test_source.get_backend_instance().process_documents()
 
         self.assertEqual(Document.objects.count(), document_count + 1)
 
@@ -140,7 +140,7 @@ class WatchFolderSourceBackendTestCase(
             extra_data={'uncompress': SOURCE_UNCOMPRESS_CHOICE_ALWAYS}
         )
 
-        temporary_directory = self.test_source.get_backend_data()['folder_path']
+        temporary_directory = self._test_source.get_backend_data()['folder_path']
 
         shutil.copy(
             src=TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH,
@@ -149,7 +149,7 @@ class WatchFolderSourceBackendTestCase(
 
         document_count = Document.objects.count()
 
-        self.test_source.get_backend_instance().process_documents()
+        self._test_source.get_backend_instance().process_documents()
 
         self.assertEqual(Document.objects.count(), document_count + 1)
 

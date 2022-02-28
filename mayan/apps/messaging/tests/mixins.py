@@ -23,24 +23,24 @@ class MessageAPIViewTestMixin:
         )
 
         try:
-            self.test_message = Message.objects.get(
+            self._test_message = Message.objects.get(
                 ~Q(pk__in=pk_list)
             )
         except Message.DoesNotExist:
-            self.test_message = None
+            self._test_message = None
 
         return response
 
     def _request_test_message_delete_api_view(self):
         return self.delete(
             viewname='rest_api:message-detail',
-            kwargs={'message_id': self.test_message.pk}
+            kwargs={'message_id': self._test_message.pk}
         )
 
     def _request_test_message_detail_api_view(self):
         return self.get(
             viewname='rest_api:message-detail',
-            kwargs={'message_id': self.test_message.pk}
+            kwargs={'message_id': self._test_message.pk}
         )
 
     def _request_test_message_edit_api_view(
@@ -55,7 +55,7 @@ class MessageAPIViewTestMixin:
 
         return getattr(self, verb)(
             viewname='rest_api:message-detail',
-            kwargs={'message_id': self.test_message.pk},
+            kwargs={'message_id': self._test_message.pk},
             data=data
         )
 
@@ -65,7 +65,7 @@ class MessageAPIViewTestMixin:
 
 class MessageTestMixin:
     def _create_test_message(self):
-        self.test_message = Message.objects.create(
+        self._test_message = Message.objects.create(
             body=TEST_MESSAGE_BODY, subject=TEST_MESSAGE_SUBJECT,
             user=self._test_case_user
         )
@@ -89,23 +89,23 @@ class MessageViewTestMixin:
         )
 
         try:
-            self.test_message = Message.objects.get(~Q(pk__in=pk_list))
+            self._test_message = Message.objects.get(~Q(pk__in=pk_list))
         except Message.DoesNotExist:
-            self.test_message = None
+            self._test_message = None
 
         return response
 
     def _request_test_message_delete_view(self):
         return self.post(
             viewname='messaging:message_single_delete', kwargs={
-                'message_id': self.test_message.pk
+                'message_id': self._test_message.pk
             }
         )
 
     def _request_test_message_detail_view(self):
         return self.get(
             viewname='messaging:message_detail', kwargs={
-                'message_id': self.test_message.pk
+                'message_id': self._test_message.pk
             }
         )
 
@@ -118,13 +118,13 @@ class MessageViewTestMixin:
     def _request_test_message_mark_read_view(self):
         return self.post(
             viewname='messaging:message_single_mark_read', kwargs={
-                'message_id': self.test_message.pk
+                'message_id': self._test_message.pk
             }
         )
 
     def _request_test_message_mark_unread_view(self):
         return self.post(
             viewname='messaging:message_single_mark_unread', kwargs={
-                'message_id': self.test_message.pk
+                'message_id': self._test_message.pk
             }
         )

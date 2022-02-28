@@ -60,14 +60,14 @@ class EventListAPIViewTestMixin:
 class EventTestMixin:
     def setUp(self):
         super().setUp()
-        self.test_events = []
+        self._test_events = []
 
     def _create_test_event(self, action_object=None, actor=None, target=None):
-        self.test_event = self._test_event_type.commit(
+        self._test_event = self._test_event_type.commit(
             action_object=action_object, actor=actor or self._test_case_user,
             target=target
         )
-        self.test_events.append(self.test_event)
+        self._test_events.append(self._test_event)
 
 
 class EventTestCaseMixin:
@@ -168,8 +168,8 @@ class NotificationTestMixin(
 
     def _create_local_test_user(self):
         self._create_test_user()
-        self._create_test_group(add_users=(self.test_user,))
-        self._create_test_role(add_groups=(self.test_group,))
+        self._create_test_group(add_users=(self._test_user,))
+        self._create_test_role(add_groups=(self._test_group,))
 
     def _create_test_notification(self):
         self.test_notification = Notification.objects.create(

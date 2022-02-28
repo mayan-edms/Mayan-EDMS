@@ -32,7 +32,7 @@ class DocumentStateIndexingTestCase(
     def test_workflow_indexing_transition(self):
         self._create_test_document_stub()
 
-        self.test_document.workflows.first().do_transition(
+        self._test_document.workflows.first().do_transition(
             transition=self._test_workflow_template_transition
         )
 
@@ -45,11 +45,11 @@ class DocumentStateIndexingTestCase(
     def test_workflow_indexing_document_delete(self):
         self._create_test_document_stub()
 
-        self.test_document.workflows.first().do_transition(
+        self._test_document.workflows.first().do_transition(
             transition=self._test_workflow_template_transition
         )
 
-        self.test_document.delete(to_trash=False)
+        self._test_document.delete(to_trash=False)
 
         self.assertEqual(
             list(

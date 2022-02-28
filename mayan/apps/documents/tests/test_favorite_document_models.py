@@ -16,7 +16,7 @@ class FavoriteDocumentModelTestCase(
         self._create_test_document_stub()
         self._test_document_favorite_add()
 
-        first_favorite_document = self.test_favorite_document.document
+        first_favorite_document = self._test_favorite_document.document
 
         self._create_test_document_stub()
         self._test_document_favorite_add()
@@ -30,9 +30,9 @@ class FavoriteDocumentModelTestCase(
 
     def test_trashed_document_favorite_document_add(self):
         self._create_test_document_stub()
-        self.test_document.delete()
+        self._test_document.delete()
         self._test_document_favorite_add()
 
         self.assertFalse(
-            FavoriteDocument.valid.filter(document=self.test_document).exists()
+            FavoriteDocument.valid.filter(document=self._test_document).exists()
         )

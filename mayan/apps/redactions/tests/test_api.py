@@ -21,15 +21,15 @@ from ..permissions import permission_redaction_exclude
 class LayerMaximumOrderAPIViewTestCase(
     DocumentFilePageAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
 ):
-    test_document_path = TEST_TRANSFORMATION_DOCUMENT_PATH
+    _test_document_path = TEST_TRANSFORMATION_DOCUMENT_PATH
 
     def test_redaction_maximum_layer_order_exclude_transformation(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         layer_saved_transformations.add_transformation_to(
-            obj=self.test_document_file_page,
+            obj=self._test_document_file_page,
             transformation_class=TransformationRotate270
         )
 
@@ -50,11 +50,11 @@ class LayerMaximumOrderAPIViewTestCase(
 
     def test_image_request_with_layer_below_redaction_no_permission(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         layer_redactions.add_transformation_to(
-            obj=self.test_document_file_page,
+            obj=self._test_document_file_page,
             transformation_class=TransformationRedactionPercent(
                 left=0, top=0, right=95, bottom=95
             )
@@ -77,14 +77,14 @@ class LayerMaximumOrderAPIViewTestCase(
 
     def test_image_request_with_layer_below_redaction_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
         self.grant_access(
-            obj=self.test_document, permission=permission_redaction_exclude
+            obj=self._test_document, permission=permission_redaction_exclude
         )
 
         layer_redactions.add_transformation_to(
-            obj=self.test_document_file_page,
+            obj=self._test_document_file_page,
             transformation_class=TransformationRedactionPercent(
                 left=0, top=0, right=95, bottom=95
             )

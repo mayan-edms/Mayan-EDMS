@@ -23,8 +23,8 @@ class DocumentMetadataFormTestCase(
         form = DocumentMetadataForm(
             data={'update': True},
             initial={
-                'document_type': self.test_document_type,
-                'metadata_type': self.test_metadata_type
+                'document_type': self._test_document_type,
+                'metadata_type': self._test_metadata_type
             }
         )
 

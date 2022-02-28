@@ -39,7 +39,7 @@ class SourceViewTestCase(
         response = self._request_test_source_create_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(self.test_source.label, TEST_SOURCE_LABEL)
+        self.assertEqual(self._test_source.label, TEST_SOURCE_LABEL)
         self.assertEqual(Source.objects.count(), source_count + 1)
 
         events = self._get_test_events()
@@ -47,7 +47,7 @@ class SourceViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_source)
+        self.assertEqual(events[0].target, self._test_source)
         self.assertEqual(events[0].verb, event_source_created.id)
 
     def test_source_delete_view_no_permission(self):
@@ -69,7 +69,7 @@ class SourceViewTestCase(
         self._create_test_source()
 
         self.grant_access(
-            obj=self.test_source, permission=permission_sources_delete
+            obj=self._test_source, permission=permission_sources_delete
         )
 
         source_count = Source.objects.count()
@@ -87,7 +87,7 @@ class SourceViewTestCase(
     def test_source_edit_view_no_permission(self):
         self._create_test_source()
         test_instance_values = self._model_instance_to_dictionary(
-            instance=self.test_source
+            instance=self._test_source
         )
 
         self._clear_events()
@@ -95,10 +95,10 @@ class SourceViewTestCase(
         response = self._request_test_source_edit_view()
         self.assertEqual(response.status_code, 404)
 
-        self.test_source.refresh_from_db()
+        self._test_source.refresh_from_db()
         self.assertEqual(
             self._model_instance_to_dictionary(
-                instance=self.test_source
+                instance=self._test_source
             ), test_instance_values
         )
 
@@ -108,10 +108,10 @@ class SourceViewTestCase(
     def test_source_edit_view_with_access(self):
         self._create_test_source()
         test_instance_values = self._model_instance_to_dictionary(
-            instance=self.test_source
+            instance=self._test_source
         )
         self.grant_access(
-            obj=self.test_source, permission=permission_sources_edit
+            obj=self._test_source, permission=permission_sources_edit
         )
 
         self._clear_events()
@@ -119,10 +119,10 @@ class SourceViewTestCase(
         response = self._request_test_source_edit_view()
         self.assertEqual(response.status_code, 302)
 
-        self.test_source.refresh_from_db()
+        self._test_source.refresh_from_db()
         self.assertNotEqual(
             self._model_instance_to_dictionary(
-                instance=self.test_source
+                instance=self._test_source
             ), test_instance_values
         )
 
@@ -131,7 +131,7 @@ class SourceViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_source)
+        self.assertEqual(events[0].target, self._test_source)
         self.assertEqual(events[0].verb, event_source_edited.id)
 
     def test_source_list_view_no_permission(self):
@@ -149,14 +149,14 @@ class SourceViewTestCase(
         self._create_test_source()
 
         self.grant_access(
-            obj=self.test_source, permission=permission_sources_view
+            obj=self._test_source, permission=permission_sources_view
         )
 
         self._clear_events()
 
         response = self._request_test_source_list_view()
         self.assertContains(
-            response=response, text=self.test_source.label, status_code=200
+            response=response, text=self._test_source.label, status_code=200
         )
 
         events = self._get_test_events()
@@ -177,7 +177,7 @@ class SourceViewTestCase(
         self._create_test_source()
 
         self.grant_access(
-            obj=self.test_source, permission=permission_sources_edit
+            obj=self._test_source, permission=permission_sources_edit
         )
 
         self._clear_events()
@@ -203,7 +203,7 @@ class SourceViewTestCase(
         self._create_test_source()
 
         self.grant_access(
-            obj=self.test_source, permission=permission_sources_edit
+            obj=self._test_source, permission=permission_sources_edit
         )
 
         self._clear_events()

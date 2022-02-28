@@ -16,34 +16,34 @@ class TaggedDocumentUploadViewTestCase(
         self._create_test_tag()
 
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_create
+            obj=self._test_document_type, permission=permission_document_create
         )
         self.grant_access(
-            obj=self.test_source, permission=permission_document_create
+            obj=self._test_source, permission=permission_document_create
         )
 
         response = self._request_upload_interactive_document_create_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertTrue(self.test_tag in Document.objects.first().tags.all())
+        self.assertTrue(self._test_tag in Document.objects.first().tags.all())
 
     def test_upload_interactive_multiple_tags_view_full_access(self):
         self._create_test_tag()
         self._create_test_tag()
 
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_create
+            obj=self._test_document_type, permission=permission_document_create
         )
         self.grant_access(
-            obj=self.test_source, permission=permission_document_create
+            obj=self._test_source, permission=permission_document_create
         )
 
         response = self._request_upload_interactive_document_create_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(
-            self.test_tags[0] in Document.objects.first().tags.all()
+            self._test_tags[0] in Document.objects.first().tags.all()
         )
         self.assertTrue(
-            self.test_tags[1] in Document.objects.first().tags.all()
+            self._test_tags[1] in Document.objects.first().tags.all()
         )

@@ -14,17 +14,17 @@ class TagDocumentTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
     def test_document_addition(self):
         self._create_test_tag()
 
-        self.test_tag.attach_to(document=self.test_document)
+        self._test_tag.attach_to(document=self._test_document)
 
-        self.assertTrue(self.test_document in self.test_tag.documents.all())
+        self.assertTrue(self._test_document in self._test_tag.documents.all())
 
     def test_document_remove(self):
         self._create_test_tag(add_test_document=True)
 
-        self.test_tag.remove_from(document=self.test_document)
+        self._test_tag.remove_from(document=self._test_document)
 
         self.assertTrue(
-            self.test_document not in self.test_tag.documents.all()
+            self._test_document not in self._test_tag.documents.all()
         )
 
 
@@ -32,4 +32,4 @@ class TagModuleTestCase(TagTestMixin, BaseTestCase):
     def test_method_get_absolute_url(self):
         self._create_test_tag()
 
-        self.assertTrue(self.test_tag.get_absolute_url())
+        self.assertTrue(self._test_tag.get_absolute_url())

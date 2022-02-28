@@ -13,6 +13,6 @@ class RoleCopyTestCase(
         self._create_test_permission()
         self._create_test_role()
         self._create_test_group()
-        self.test_role.grant(permission=self.test_permission)
-        self.test_role.groups.add(self.test_group)
-        self.test_object = self.test_role
+        self._test_role.grant(permission=self._test_permission)
+        self._test_role.groups.add(self._test_group)
+        self._test_object = self._test_role

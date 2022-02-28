@@ -10,4 +10,4 @@ class AnnouncementCopyTestCase(
     def setUp(self):
         super().setUp()
         self._create_test_announcement()
-        self.test_object = self.test_announcement
+        self._test_object = self._test_announcement

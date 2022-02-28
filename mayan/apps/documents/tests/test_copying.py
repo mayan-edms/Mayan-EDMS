@@ -11,4 +11,4 @@ class DocumentTypeCopyTestCase(
 
     def setUp(self):
         super().setUp()
-        self.test_object = self.test_document_type
+        self._test_object = self._test_document_type

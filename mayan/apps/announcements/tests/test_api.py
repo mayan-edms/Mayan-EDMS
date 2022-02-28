@@ -49,7 +49,7 @@ class AnnouncementAPIViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_announcement)
+        self.assertEqual(events[0].target, self._test_announcement)
         self.assertEqual(events[0].verb, event_announcement_created.id)
 
     def test_announcement_delete_api_view_no_permission(self):
@@ -68,7 +68,7 @@ class AnnouncementAPIViewTestCase(
     def test_announcement_delete_api_view_with_access(self):
         self._create_test_announcement()
         self.grant_access(
-            obj=self.test_announcement,
+            obj=self._test_announcement,
             permission=permission_announcement_delete
         )
 
@@ -96,7 +96,7 @@ class AnnouncementAPIViewTestCase(
     def test_announcement_detail_api_view_with_access(self):
         self._create_test_announcement()
         self.grant_access(
-            obj=self.test_announcement,
+            obj=self._test_announcement,
             permission=permission_announcement_view
         )
 
@@ -105,7 +105,7 @@ class AnnouncementAPIViewTestCase(
         response = self._request_announcement_detail_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(response.data['label'], self.test_announcement.label)
+        self.assertEqual(response.data['label'], self._test_announcement.label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -113,19 +113,19 @@ class AnnouncementAPIViewTestCase(
     def test_announcement_edit_api_view_via_patch_view_no_permission(self):
         self._create_test_announcement()
 
-        test_announcement_label = self.test_announcement.label
-        test_announcement_text = self.test_announcement.text
+        test_announcement_label = self._test_announcement.label
+        test_announcement_text = self._test_announcement.text
 
         self._clear_events()
 
         response = self._request_announcement_edit_via_patch_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.test_announcement.refresh_from_db()
+        self._test_announcement.refresh_from_db()
         self.assertEqual(
-            self.test_announcement.label, test_announcement_label
+            self._test_announcement.label, test_announcement_label
         )
-        self.assertEqual(self.test_announcement.text, test_announcement_text)
+        self.assertEqual(self._test_announcement.text, test_announcement_text)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -133,47 +133,47 @@ class AnnouncementAPIViewTestCase(
     def test_announcement_edit_api_view_via_patch_view_with_access(self):
         self._create_test_announcement()
         self.grant_access(
-            obj=self.test_announcement, permission=permission_announcement_edit
+            obj=self._test_announcement, permission=permission_announcement_edit
         )
 
-        test_announcement_label = self.test_announcement.label
-        test_announcement_text = self.test_announcement.text
+        test_announcement_label = self._test_announcement.label
+        test_announcement_text = self._test_announcement.text
 
         self._clear_events()
 
         response = self._request_announcement_edit_via_patch_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.test_announcement.refresh_from_db()
+        self._test_announcement.refresh_from_db()
         self.assertNotEqual(
-            self.test_announcement.label, test_announcement_label
+            self._test_announcement.label, test_announcement_label
         )
-        self.assertNotEqual(self.test_announcement.text, test_announcement_text)
+        self.assertNotEqual(self._test_announcement.text, test_announcement_text)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_announcement)
+        self.assertEqual(events[0].target, self._test_announcement)
         self.assertEqual(events[0].verb, event_announcement_edited.id)
 
     def test_announcement_edit_api_view_via_put_view_no_permission(self):
         self._create_test_announcement()
 
-        test_announcement_label = self.test_announcement.label
-        test_announcement_text = self.test_announcement.text
+        test_announcement_label = self._test_announcement.label
+        test_announcement_text = self._test_announcement.text
 
         self._clear_events()
 
         response = self._request_announcement_edit_via_put_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.test_announcement.refresh_from_db()
+        self._test_announcement.refresh_from_db()
         self.assertEqual(
-            self.test_announcement.label, test_announcement_label
+            self._test_announcement.label, test_announcement_label
         )
-        self.assertEqual(self.test_announcement.text, test_announcement_text)
+        self.assertEqual(self._test_announcement.text, test_announcement_text)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -181,28 +181,28 @@ class AnnouncementAPIViewTestCase(
     def test_announcement_edit_api_view_via_put_view_with_access(self):
         self._create_test_announcement()
         self.grant_access(
-            obj=self.test_announcement, permission=permission_announcement_edit
+            obj=self._test_announcement, permission=permission_announcement_edit
         )
 
-        test_announcement_label = self.test_announcement.label
-        test_announcement_text = self.test_announcement.text
+        test_announcement_label = self._test_announcement.label
+        test_announcement_text = self._test_announcement.text
 
         self._clear_events()
 
         response = self._request_announcement_edit_via_put_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.test_announcement.refresh_from_db()
-        self.test_announcement.refresh_from_db()
+        self._test_announcement.refresh_from_db()
+        self._test_announcement.refresh_from_db()
         self.assertNotEqual(
-            self.test_announcement.label, test_announcement_label
+            self._test_announcement.label, test_announcement_label
         )
-        self.assertNotEqual(self.test_announcement.text, test_announcement_text)
+        self.assertNotEqual(self._test_announcement.text, test_announcement_text)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_announcement)
+        self.assertEqual(events[0].target, self._test_announcement)
         self.assertEqual(events[0].verb, event_announcement_edited.id)

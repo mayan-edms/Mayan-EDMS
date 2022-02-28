@@ -23,7 +23,7 @@ class DependencyClassTestCase(BaseTestCase):
             file_object.write(
                 '@import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic");'
             )
-        self.test_dependency = TestDependency(
+        self._test_dependency = TestDependency(
             name='test_dependency', module=__name__
         )
 
@@ -45,7 +45,7 @@ class DependencyClassTestCase(BaseTestCase):
         ]
 
         with mute_stdout():
-            self.test_dependency.patch_files(
+            self._test_dependency.patch_files(
                 path=self.temporary_directory, replace_list=replace_list
             )
 

@@ -18,11 +18,11 @@ class StagingFolderActionAPIViewTestMixin:
     def _request_test_staging_folder_file_delete_action_api_view(self):
         return self.post(
             viewname='rest_api:source-action', kwargs={
-                'action_name': 'file_delete', 'source_id': self.test_source.pk
+                'action_name': 'file_delete', 'source_id': self._test_source.pk
             }, data={
                 'arguments': json.dumps(
                     obj={
-                        'encoded_filename': self.test_staging_folder_file.encoded_filename
+                        'encoded_filename': self._test_staging_folder_file.encoded_filename
                     }
                 )
             }
@@ -31,26 +31,26 @@ class StagingFolderActionAPIViewTestMixin:
     def _request_test_staging_folder_file_image_action_api_view(self):
         return self.get(
             viewname='rest_api:source-action', kwargs={
-                'action_name': 'file_image', 'source_id': self.test_source.pk
-            }, query={'encoded_filename': self.test_staging_folder_file.encoded_filename}
+                'action_name': 'file_image', 'source_id': self._test_source.pk
+            }, query={'encoded_filename': self._test_staging_folder_file.encoded_filename}
         )
 
     def _request_test_staging_folder_file_list_action_api_view(self):
         return self.get(
             viewname='rest_api:source-action', kwargs={
-                'action_name': 'file_list', 'source_id': self.test_source.pk
+                'action_name': 'file_list', 'source_id': self._test_source.pk
             }
         )
 
     def _request_test_staging_folder_file_upload_action_api_view(self):
         return self.post(
             viewname='rest_api:source-action', kwargs={
-                'action_name': 'file_upload', 'source_id': self.test_source.pk
+                'action_name': 'file_upload', 'source_id': self._test_source.pk
             }, data={
                 'arguments': json.dumps(
                     obj={
-                        'document_type_id': self.test_document_type.pk,
-                        'encoded_filename': self.test_staging_folder_file.encoded_filename
+                        'document_type_id': self._test_document_type.pk,
+                        'encoded_filename': self._test_staging_folder_file.encoded_filename
                     }
                 )
             }
@@ -63,7 +63,7 @@ class StagingFolderTestMixin(SourceTestMixin):
     def setUp(self):
         self._temporary_folders = []
         super().setUp()
-        self.test_staging_folder_files = []
+        self._test_staging_folder_files = []
 
     def tearDown(self):
         for temporary_folders in self._temporary_folders:
@@ -92,31 +92,31 @@ class StagingFolderTestMixin(SourceTestMixin):
     def _copy_test_staging_folder_document(self):
         shutil.copy(
             src=TEST_SMALL_DOCUMENT_PATH,
-            dst=self.test_source.get_backend_data()['folder_path']
+            dst=self._test_source.get_backend_data()['folder_path']
         )
-        self.test_staging_folder_file = list(
-            self.test_source.get_backend_instance().get_files()
+        self._test_staging_folder_file = list(
+            self._test_source.get_backend_instance().get_files()
         )[0]
-        self.test_staging_folder_files.append(self.test_staging_folder_file)
+        self._test_staging_folder_files.append(self._test_staging_folder_file)
 
 
 class StagingFolderViewTestMixin:
     def _request_staging_folder_action_file_delete_view_via_get(self):
         return self.get(
             viewname='sources:source_action', kwargs={
-                'source_id': self.test_source.pk,
+                'source_id': self._test_source.pk,
                 'action_name': 'file_delete'
             }, query={
-                'encoded_filename': self.test_staging_folder_file.encoded_filename
+                'encoded_filename': self._test_staging_folder_file.encoded_filename
             }
         )
 
     def _request_staging_folder_action_file_delete_view_via_post(self):
         return self.post(
             viewname='sources:source_action', kwargs={
-                'source_id': self.test_source.pk,
+                'source_id': self._test_source.pk,
                 'action_name': 'file_delete'
             }, query={
-                'encoded_filename': self.test_staging_folder_file.encoded_filename
+                'encoded_filename': self._test_staging_folder_file.encoded_filename
             }
         )

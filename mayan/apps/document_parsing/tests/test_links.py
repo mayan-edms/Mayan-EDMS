@@ -16,7 +16,7 @@ class DocumentFileContentLinkTestCase(
 
     def test_document_file_parsing_errors_list_link_with_access(self):
         self.grant_access(
-            obj=self.test_document_file,
+            obj=self._test_document_file,
             permission=permission_document_file_parse
         )
         resolved_link = self._resolve_test_document_file_link(

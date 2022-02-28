@@ -14,10 +14,10 @@ class DocumentMailerViewTestMixin:
     def _request_test_document_send_link_single_view(self):
         return self.post(
             viewname='mailer:send_document_link_single', kwargs={
-                'document_id': self.test_document.pk
+                'document_id': self._test_document.pk
             }, data={
                 'email': getattr(
-                    self, 'test_email_address', TEST_EMAIL_ADDRESS
+                    self, '_test_email_address', TEST_EMAIL_ADDRESS
                 ),
                 'user_mailer': self._test_user_mailer.pk
             },
@@ -26,10 +26,10 @@ class DocumentMailerViewTestMixin:
     def _request_test_document_send_link_multiple_view(self):
         return self.post(
             viewname='mailer:send_document_link_multiple', query={
-                'id_list': self.test_document.pk
+                'id_list': self._test_document.pk
             }, data={
                 'email': getattr(
-                    self, 'test_email_address', TEST_EMAIL_ADDRESS
+                    self, '_test_email_address', TEST_EMAIL_ADDRESS
                 ),
                 'user_mailer': self._test_user_mailer.pk
             },
@@ -40,10 +40,10 @@ class DocumentFileMailerViewTestMixin:
     def _request_test_document_file_send_link_single_view(self):
         return self.post(
             viewname='mailer:send_document_file_link_single', kwargs={
-                'document_file_id': self.test_document_file.pk
+                'document_file_id': self._test_document_file.pk
             }, data={
                 'email': getattr(
-                    self, 'test_email_address', TEST_EMAIL_ADDRESS
+                    self, '_test_email_address', TEST_EMAIL_ADDRESS
                 ),
                 'user_mailer': self._test_user_mailer.pk
             }
@@ -52,10 +52,10 @@ class DocumentFileMailerViewTestMixin:
     def _request_test_document_file_send_link_multiple_view(self):
         return self.post(
             viewname='mailer:send_document_file_link_multiple', query={
-                'id_list': self.test_document_file.pk
+                'id_list': self._test_document_file.pk
             }, data={
                 'email': getattr(
-                    self, 'test_email_address', TEST_EMAIL_ADDRESS
+                    self, '_test_email_address', TEST_EMAIL_ADDRESS
                 ),
                 'user_mailer': self._test_user_mailer.pk
             }
@@ -64,10 +64,10 @@ class DocumentFileMailerViewTestMixin:
     def _request_test_document_file_attachment_send_single_view(self):
         return self.post(
             viewname='mailer:send_document_file_attachment_single', kwargs={
-                'document_file_id': self.test_document_file.pk
+                'document_file_id': self._test_document_file.pk
             }, data={
                 'email': getattr(
-                    self, 'test_email_address', TEST_EMAIL_ADDRESS
+                    self, '_test_email_address', TEST_EMAIL_ADDRESS
                 ),
                 'user_mailer': self._test_user_mailer.pk
             }
@@ -76,10 +76,10 @@ class DocumentFileMailerViewTestMixin:
     def _request_test_document_file_attachment_send_multiple_view(self):
         return self.post(
             viewname='mailer:send_document_file_attachment_multiple', query={
-                'id_list': self.test_document_file.pk
+                'id_list': self._test_document_file.pk
             }, data={
                 'email': getattr(
-                    self, 'test_email_address', TEST_EMAIL_ADDRESS
+                    self, '_test_email_address', TEST_EMAIL_ADDRESS
                 ),
                 'user_mailer': self._test_user_mailer.pk
             }
@@ -90,10 +90,10 @@ class DocumentVersionMailerViewTestMixin:
     def _request_test_document_version_send_link_single_view(self):
         return self.post(
             viewname='mailer:send_document_version_link_single', kwargs={
-                'document_version_id': self.test_document_version.pk
+                'document_version_id': self._test_document_version.pk
             }, data={
                 'email': getattr(
-                    self, 'test_email_address', TEST_EMAIL_ADDRESS
+                    self, '_test_email_address', TEST_EMAIL_ADDRESS
                 ),
                 'user_mailer': self._test_user_mailer.pk
             },
@@ -102,10 +102,10 @@ class DocumentVersionMailerViewTestMixin:
     def _request_test_document_version_send_link_multiple_view(self):
         return self.post(
             viewname='mailer:send_document_version_link_multiple', query={
-                'id_list': self.test_document_version.pk
+                'id_list': self._test_document_version.pk
             }, data={
                 'email': getattr(
-                    self, 'test_email_address', TEST_EMAIL_ADDRESS
+                    self, '_test_email_address', TEST_EMAIL_ADDRESS
                 ),
                 'user_mailer': self._test_user_mailer.pk
             },
@@ -115,10 +115,10 @@ class DocumentVersionMailerViewTestMixin:
         return self.post(
             viewname='mailer:send_document_version_attachment_single',
             kwargs={
-                'document_version_id': self.test_document_version.pk
+                'document_version_id': self._test_document_version.pk
             }, data={
                 'email': getattr(
-                    self, 'test_email_address', TEST_EMAIL_ADDRESS
+                    self, '_test_email_address', TEST_EMAIL_ADDRESS
                 ),
                 'user_mailer': self._test_user_mailer.pk
             }
@@ -128,10 +128,10 @@ class DocumentVersionMailerViewTestMixin:
         return self.post(
             viewname='mailer:send_document_version_attachment_multiple',
             query={
-                'id_list': self.test_document_version.pk
+                'id_list': self._test_document_version.pk
             }, data={
                 'email': getattr(
-                    self, 'test_email_address', TEST_EMAIL_ADDRESS
+                    self, '_test_email_address', TEST_EMAIL_ADDRESS
                 ),
                 'user_mailer': self._test_user_mailer.pk
             }
@@ -210,7 +210,7 @@ class MailerViewTestMixin:
                 'mailer_id': self._test_user_mailer.pk
             }, data={
                 'email': getattr(
-                    self, 'test_email_address', TEST_EMAIL_ADDRESS
+                    self, '_test_email_address', TEST_EMAIL_ADDRESS
                 )
             }
         )

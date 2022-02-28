@@ -6,7 +6,7 @@ from ..links import link_document_create_multiple
 
 class SourcesLinksTestCase(GenericDocumentViewTestCase):
     def _get_document_create_link(self):
-        self.add_test_view(test_object=self.test_document)
+        self.add_test_view(test_object=self._test_document)
         context = self.get_test_view()
         context['user'] = self._test_case_user
         return link_document_create_multiple.resolve(context=context)
@@ -17,7 +17,7 @@ class SourcesLinksTestCase(GenericDocumentViewTestCase):
 
     def test_document_create_link_with_access(self):
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_create
+            obj=self._test_document_type, permission=permission_document_create
         )
         resolved_link = self._get_document_create_link()
         self.assertNotEqual(resolved_link, None)

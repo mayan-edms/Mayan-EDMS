@@ -68,7 +68,7 @@ class RoleAPIViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_role)
+        self.assertEqual(events[0].target, self._test_role)
         self.assertEqual(events[0].verb, event_role_created.id)
 
     def test_role_delete_api_view_no_permission(self):
@@ -89,7 +89,7 @@ class RoleAPIViewTestCase(
     def test_role_delete_api_view_with_access(self):
         self._create_test_role()
 
-        self.grant_access(obj=self.test_role, permission=permission_role_delete)
+        self.grant_access(obj=self._test_role, permission=permission_role_delete)
 
         role_count = Role.objects.count()
 
@@ -106,39 +106,39 @@ class RoleAPIViewTestCase(
     def test_role_edit_api_view_via_patch_no_permission(self):
         self._create_test_role()
 
-        role_label = self.test_role.label
+        role_label = self._test_role.label
 
         self._clear_events()
 
         response = self._request_test_role_edit_api_view(request_type='patch')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.test_role.refresh_from_db()
-        self.assertEqual(self.test_role.label, role_label)
+        self._test_role.refresh_from_db()
+        self.assertEqual(self._test_role.label, role_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_role_edit_api_view_via_patch_with_access(self):
         self._create_test_role()
-        self.grant_access(obj=self.test_role, permission=permission_role_edit)
+        self.grant_access(obj=self._test_role, permission=permission_role_edit)
 
-        role_label = self.test_role.label
+        role_label = self._test_role.label
 
         self._clear_events()
 
         response = self._request_test_role_edit_api_view(request_type='patch')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.test_role.refresh_from_db()
-        self.assertNotEqual(self.test_role.label, role_label)
+        self._test_role.refresh_from_db()
+        self.assertNotEqual(self._test_role.label, role_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_role)
+        self.assertEqual(events[0].target, self._test_role)
         self.assertEqual(events[0].verb, event_role_edited.id)
 
     def test_role_edit_api_view_via_put_no_permission(self):
@@ -148,36 +148,36 @@ class RoleAPIViewTestCase(
 
         response = self._request_test_role_edit_api_view(request_type='put')
 
-        role_label = self.test_role.label
+        role_label = self._test_role.label
 
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.test_role.refresh_from_db()
-        self.assertEqual(self.test_role.label, role_label)
+        self._test_role.refresh_from_db()
+        self.assertEqual(self._test_role.label, role_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_role_edit_api_view_via_put_with_access(self):
         self._create_test_role()
-        self.grant_access(obj=self.test_role, permission=permission_role_edit)
+        self.grant_access(obj=self._test_role, permission=permission_role_edit)
 
-        role_label = self.test_role.label
+        role_label = self._test_role.label
 
         self._clear_events()
 
         response = self._request_test_role_edit_api_view(request_type='put')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.test_role.refresh_from_db()
-        self.assertNotEqual(self.test_role.label, role_label)
+        self._test_role.refresh_from_db()
+        self.assertNotEqual(self._test_role.label, role_label)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_role)
+        self.assertEqual(events[0].target, self._test_role)
         self.assertEqual(events[0].verb, event_role_edited.id)
 
     def test_roles_list_api_view_no_permission(self):
@@ -196,7 +196,7 @@ class RoleAPIViewTestCase(
     def test_roles_list_api_view_with_access(self):
         self._create_test_role()
         self.grant_access(
-            obj=self.test_role, permission=permission_role_view
+            obj=self._test_role, permission=permission_role_view
         )
 
         self._clear_events()
@@ -205,7 +205,7 @@ class RoleAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 1)
         self.assertEqual(
-            response.data['results'][0]['label'], self.test_role.label
+            response.data['results'][0]['label'], self._test_role.label
         )
 
         events = self._get_test_events()
@@ -229,14 +229,14 @@ class RoleGroupAPIViewTestCase(
         response = self._request_test_role_group_add_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.assertFalse(self.test_group in self.test_role.groups.all())
+        self.assertFalse(self._test_group in self._test_role.groups.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_role_group_add_api_view_with_group_access(self):
         self.grant_access(
-            obj=self.test_group, permission=permission_group_edit
+            obj=self._test_group, permission=permission_group_edit
         )
 
         self._clear_events()
@@ -244,14 +244,14 @@ class RoleGroupAPIViewTestCase(
         response = self._request_test_role_group_add_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.assertFalse(self.test_group in self.test_role.groups.all())
+        self.assertFalse(self._test_group in self._test_role.groups.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_role_group_add_api_view_with_role_access(self):
         self.grant_access(
-            obj=self.test_role, permission=permission_role_edit
+            obj=self._test_role, permission=permission_role_edit
         )
 
         self._clear_events()
@@ -259,17 +259,17 @@ class RoleGroupAPIViewTestCase(
         response = self._request_test_role_group_add_api_view()
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
-        self.assertFalse(self.test_group in self.test_role.groups.all())
+        self.assertFalse(self._test_group in self._test_role.groups.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_role_group_add_api_view_with_full_access(self):
         self.grant_access(
-            obj=self.test_group, permission=permission_group_edit
+            obj=self._test_group, permission=permission_group_edit
         )
         self.grant_access(
-            obj=self.test_role, permission=permission_role_edit
+            obj=self._test_role, permission=permission_role_edit
         )
 
         self._clear_events()
@@ -277,18 +277,18 @@ class RoleGroupAPIViewTestCase(
         response = self._request_test_role_group_add_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertTrue(self.test_group in self.test_role.groups.all())
+        self.assertTrue(self._test_group in self._test_role.groups.all())
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_group)
+        self.assertEqual(events[0].action_object, self._test_group)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_role)
+        self.assertEqual(events[0].target, self._test_role)
         self.assertEqual(events[0].verb, event_role_edited.id)
 
     def test_role_group_list_api_view_no_group(self):
-        self.test_role.groups.add(self.test_group)
+        self._test_role.groups.add(self._test_group)
 
         self._clear_events()
 
@@ -299,10 +299,10 @@ class RoleGroupAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_role_group_list_api_view_with_group_access(self):
-        self.test_role.groups.add(self.test_group)
+        self._test_role.groups.add(self._test_group)
 
         self.grant_access(
-            obj=self.test_group, permission=permission_group_view
+            obj=self._test_group, permission=permission_group_view
         )
 
         self._clear_events()
@@ -314,10 +314,10 @@ class RoleGroupAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_role_group_list_api_view_with_role_access(self):
-        self.test_role.groups.add(self.test_group)
+        self._test_role.groups.add(self._test_group)
 
         self.grant_access(
-            obj=self.test_role, permission=permission_role_view
+            obj=self._test_role, permission=permission_role_view
         )
 
         self._clear_events()
@@ -330,13 +330,13 @@ class RoleGroupAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_role_group_list_api_view_with_full_access(self):
-        self.test_role.groups.add(self.test_group)
+        self._test_role.groups.add(self._test_group)
 
         self.grant_access(
-            obj=self.test_group, permission=permission_group_view
+            obj=self._test_group, permission=permission_group_view
         )
         self.grant_access(
-            obj=self.test_role, permission=permission_role_view
+            obj=self._test_role, permission=permission_role_view
         )
 
         self._clear_events()
@@ -345,16 +345,16 @@ class RoleGroupAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['id'],
-            self.test_group.pk
+            self._test_group.pk
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_role_group_remove_api_view_no_group(self):
-        self.test_role.groups.add(self.test_group)
+        self._test_role.groups.add(self._test_group)
 
-        role_group_count = self.test_role.groups.count()
+        role_group_count = self._test_role.groups.count()
 
         self._clear_events()
 
@@ -362,20 +362,20 @@ class RoleGroupAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(
-            self.test_role.groups.count(), role_group_count
+            self._test_role.groups.count(), role_group_count
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_role_group_remove_api_view_with_group_access(self):
-        self.test_role.groups.add(self.test_group)
+        self._test_role.groups.add(self._test_group)
 
         self.grant_access(
-            obj=self.test_group, permission=permission_group_edit
+            obj=self._test_group, permission=permission_group_edit
         )
 
-        role_group_count = self.test_role.groups.count()
+        role_group_count = self._test_role.groups.count()
 
         self._clear_events()
 
@@ -383,20 +383,20 @@ class RoleGroupAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(
-            self.test_role.groups.count(), role_group_count
+            self._test_role.groups.count(), role_group_count
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_role_group_remove_api_view_with_role_access(self):
-        self.test_role.groups.add(self.test_group)
+        self._test_role.groups.add(self._test_group)
 
         self.grant_access(
-            obj=self.test_role, permission=permission_role_edit
+            obj=self._test_role, permission=permission_role_edit
         )
 
-        role_group_count = self.test_role.groups.count()
+        role_group_count = self._test_role.groups.count()
 
         self._clear_events()
 
@@ -404,23 +404,23 @@ class RoleGroupAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
         self.assertEqual(
-            self.test_role.groups.count(), role_group_count
+            self._test_role.groups.count(), role_group_count
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_role_group_remove_api_view_with_full_access(self):
-        self.test_role.groups.add(self.test_group)
+        self._test_role.groups.add(self._test_group)
 
         self.grant_access(
-            obj=self.test_group, permission=permission_group_edit
+            obj=self._test_group, permission=permission_group_edit
         )
         self.grant_access(
-            obj=self.test_role, permission=permission_role_edit
+            obj=self._test_role, permission=permission_role_edit
         )
 
-        role_group_count = self.test_role.groups.count()
+        role_group_count = self._test_role.groups.count()
 
         self._clear_events()
 
@@ -428,15 +428,15 @@ class RoleGroupAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(
-            self.test_role.groups.count(), role_group_count - 1
+            self._test_role.groups.count(), role_group_count - 1
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
-        self.assertEqual(events[0].action_object, self.test_group)
+        self.assertEqual(events[0].action_object, self._test_group)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_role)
+        self.assertEqual(events[0].target, self._test_role)
         self.assertEqual(events[0].verb, event_role_edited.id)
 
 
@@ -457,7 +457,7 @@ class RolePermissionAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertFalse(
-            self.test_permission.stored_permission in self.test_role.permissions.all()
+            self._test_permission.stored_permission in self._test_role.permissions.all()
         )
 
         events = self._get_test_events()
@@ -465,7 +465,7 @@ class RolePermissionAPIViewTestCase(
 
     def test_role_permission_add_api_view_with_access(self):
         self.grant_access(
-            obj=self.test_role, permission=permission_role_edit
+            obj=self._test_role, permission=permission_role_edit
         )
 
         self._clear_events()
@@ -474,21 +474,21 @@ class RolePermissionAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertTrue(
-            self.test_permission.stored_permission in self.test_role.permissions.all()
+            self._test_permission.stored_permission in self._test_role.permissions.all()
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(
-            events[0].action_object, self.test_permission.stored_permission
+            events[0].action_object, self._test_permission.stored_permission
         )
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_role)
+        self.assertEqual(events[0].target, self._test_role)
         self.assertEqual(events[0].verb, event_role_edited.id)
 
     def test_role_permission_list_api_view_no_permission(self):
-        self.test_role.permissions.add(self.test_permission.stored_permission)
+        self._test_role.permissions.add(self._test_permission.stored_permission)
 
         self._clear_events()
 
@@ -499,10 +499,10 @@ class RolePermissionAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_role_permission_list_api_view_with_access(self):
-        self.test_role.permissions.add(self.test_permission.stored_permission)
+        self._test_role.permissions.add(self._test_permission.stored_permission)
 
         self.grant_access(
-            obj=self.test_role, permission=permission_role_view
+            obj=self._test_role, permission=permission_role_view
         )
 
         self._clear_events()
@@ -511,18 +511,18 @@ class RolePermissionAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['pk'],
-            self.test_permission.pk
+            self._test_permission.pk
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_role_permission_remove_api_view_no_permission(self):
-        self.test_role.permissions.add(
-            self.test_permission.stored_permission
+        self._test_role.permissions.add(
+            self._test_permission.stored_permission
         )
 
-        role_permission_count = self.test_role.permissions.count()
+        role_permission_count = self._test_role.permissions.count()
 
         self._clear_events()
 
@@ -530,22 +530,22 @@ class RolePermissionAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(
-            self.test_role.permissions.count(), role_permission_count
+            self._test_role.permissions.count(), role_permission_count
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_role_permission_remove_api_view_with_access(self):
-        self.test_role.permissions.add(
-            self.test_permission.stored_permission
+        self._test_role.permissions.add(
+            self._test_permission.stored_permission
         )
 
         self.grant_access(
-            obj=self.test_role, permission=permission_role_edit
+            obj=self._test_role, permission=permission_role_edit
         )
 
-        role_permission_count = self.test_role.permissions.count()
+        role_permission_count = self._test_role.permissions.count()
 
         self._clear_events()
 
@@ -553,15 +553,15 @@ class RolePermissionAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(
-            self.test_role.permissions.count(), role_permission_count - 1
+            self._test_role.permissions.count(), role_permission_count - 1
         )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(
-            events[0].action_object, self.test_permission.stored_permission
+            events[0].action_object, self._test_permission.stored_permission
         )
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_role)
+        self.assertEqual(events[0].target, self._test_role)
         self.assertEqual(events[0].verb, event_role_edited.id)

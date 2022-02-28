@@ -24,25 +24,25 @@ class DocumentsDuplicateListViewsTestCase(
     def test_document_duplicates_list_with_source_access(self):
         self._upload_duplicate_document()
         self.grant_access(
-            obj=self.test_documents[0],
+            obj=self._test_documents[0],
             permission=permission_document_view
         )
 
         response = self._request_test_document_duplicates_list_view()
         self.assertContains(
             response=response, status_code=200,
-            text=self.test_documents[0].label
+            text=self._test_documents[0].label
         )
         self.assertNotContains(
             response=response, status_code=200,
-            text=self.test_documents[1].label
+            text=self._test_documents[1].label
         )
 
     def test_document_duplicates_list_with_target_access(self):
         self._upload_duplicate_document()
 
         self.grant_access(
-            obj=self.test_documents[1],
+            obj=self._test_documents[1],
             permission=permission_document_view
         )
 
@@ -52,36 +52,36 @@ class DocumentsDuplicateListViewsTestCase(
     def test_document_duplicates_list_with_full_access(self):
         self._upload_duplicate_document()
         self.grant_access(
-            obj=self.test_documents[0],
+            obj=self._test_documents[0],
             permission=permission_document_view
         )
         self.grant_access(
-            obj=self.test_documents[1],
+            obj=self._test_documents[1],
             permission=permission_document_view
         )
 
         response = self._request_test_document_duplicates_list_view()
         self.assertContains(
             response=response, status_code=200,
-            text=self.test_documents[0].label
+            text=self._test_documents[0].label
         )
         self.assertContains(
             response=response, status_code=200,
-            text=self.test_documents[1].label
+            text=self._test_documents[1].label
         )
 
     def test_document_duplicates_list_trashed_source_with_full_access(self):
         self._upload_duplicate_document()
         self.grant_access(
-            obj=self.test_documents[0],
+            obj=self._test_documents[0],
             permission=permission_document_view
         )
         self.grant_access(
-            obj=self.test_documents[1],
+            obj=self._test_documents[1],
             permission=permission_document_view
         )
 
-        self.test_documents[0].delete()
+        self._test_documents[0].delete()
 
         response = self._request_test_document_duplicates_list_view()
         self.assertEqual(response.status_code, 404)
@@ -89,24 +89,24 @@ class DocumentsDuplicateListViewsTestCase(
     def test_document_duplicates_list_trashed_target_with_full_access(self):
         self._upload_duplicate_document()
         self.grant_access(
-            obj=self.test_documents[0],
+            obj=self._test_documents[0],
             permission=permission_document_view
         )
         self.grant_access(
-            obj=self.test_documents[1],
+            obj=self._test_documents[1],
             permission=permission_document_view
         )
 
-        self.test_documents[1].delete()
+        self._test_documents[1].delete()
 
         response = self._request_test_document_duplicates_list_view()
         self.assertContains(
             response=response, status_code=200,
-            text=self.test_documents[0].label
+            text=self._test_documents[0].label
         )
         self.assertNotContains(
             response=response, status_code=200,
-            text=self.test_documents[1].label
+            text=self._test_documents[1].label
         )
 
 
@@ -120,108 +120,108 @@ class DuplicatedDocumentListViewsTestCase(
         response = self._request_test_duplicated_document_list_view()
         self.assertNotContains(
             response=response, status_code=200,
-            text=self.test_documents[0].label
+            text=self._test_documents[0].label
         )
 
     def test_duplicated_document_list_with_source_access(self):
         self._upload_duplicate_document()
         self.grant_access(
-            obj=self.test_documents[0],
+            obj=self._test_documents[0],
             permission=permission_document_view
         )
 
         response = self._request_test_duplicated_document_list_view()
         self.assertNotContains(
             response=response, status_code=200,
-            text=self.test_documents[0].label
+            text=self._test_documents[0].label
         )
         self.assertNotContains(
             response=response, status_code=200,
-            text=self.test_documents[1].label
+            text=self._test_documents[1].label
         )
 
     def test_duplicated_document_list_with_target_access(self):
         self._upload_duplicate_document()
         self.grant_access(
-            obj=self.test_documents[1],
+            obj=self._test_documents[1],
             permission=permission_document_view
         )
 
         response = self._request_test_duplicated_document_list_view()
         self.assertNotContains(
             response=response, status_code=200,
-            text=self.test_documents[0].label
+            text=self._test_documents[0].label
         )
         self.assertNotContains(
             response=response, status_code=200,
-            text=self.test_documents[1].label
+            text=self._test_documents[1].label
         )
 
     def test_duplicated_document_list_with_full_access(self):
         self._upload_duplicate_document()
         self.grant_access(
-            obj=self.test_documents[0],
+            obj=self._test_documents[0],
             permission=permission_document_view
         )
         self.grant_access(
-            obj=self.test_documents[1],
+            obj=self._test_documents[1],
             permission=permission_document_view
         )
 
         response = self._request_test_duplicated_document_list_view()
         self.assertContains(
             response=response, status_code=200,
-            text=self.test_documents[0].label
+            text=self._test_documents[0].label
         )
         self.assertContains(
             response=response, status_code=200,
-            text=self.test_documents[1].label
+            text=self._test_documents[1].label
         )
 
     def test_duplicated_document_list_trashed_source_with_full_access(self):
         self._upload_duplicate_document()
         self.grant_access(
-            obj=self.test_documents[0],
+            obj=self._test_documents[0],
             permission=permission_document_view
         )
         self.grant_access(
-            obj=self.test_documents[1],
+            obj=self._test_documents[1],
             permission=permission_document_view
         )
 
-        self.test_documents[0].delete()
+        self._test_documents[0].delete()
 
         response = self._request_test_duplicated_document_list_view()
         self.assertNotContains(
             response=response, status_code=200,
-            text=self.test_documents[0].label
+            text=self._test_documents[0].label
         )
         self.assertNotContains(
             response=response, status_code=200,
-            text=self.test_documents[1].label
+            text=self._test_documents[1].label
         )
 
     def test_duplicated_document_list_trashed_target_with_full_access(self):
         self._upload_duplicate_document()
         self.grant_access(
-            obj=self.test_documents[0],
+            obj=self._test_documents[0],
             permission=permission_document_view
         )
         self.grant_access(
-            obj=self.test_documents[1],
+            obj=self._test_documents[1],
             permission=permission_document_view
         )
 
-        self.test_documents[1].delete()
+        self._test_documents[1].delete()
 
         response = self._request_test_duplicated_document_list_view()
         self.assertNotContains(
             response=response, status_code=200,
-            text=self.test_documents[0].label
+            text=self._test_documents[0].label
         )
         self.assertNotContains(
             response=response, status_code=200,
-            text=self.test_documents[1].label
+            text=self._test_documents[1].label
         )
 
 
@@ -237,8 +237,8 @@ class DuplicatedDocumentToolsViewsTestCase(
         self.assertEqual(response.status_code, 403)
 
         self.assertFalse(
-            self.test_documents[1] in DuplicateBackendEntry.objects.get_duplicates_of(
-                document=self.test_documents[0]
+            self._test_documents[1] in DuplicateBackendEntry.objects.get_duplicates_of(
+                document=self._test_documents[0]
             )
         )
 
@@ -252,7 +252,7 @@ class DuplicatedDocumentToolsViewsTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(
-            self.test_documents[1] in DuplicateBackendEntry.objects.get_duplicates_of(
-                document=self.test_documents[0]
+            self._test_documents[1] in DuplicateBackendEntry.objects.get_duplicates_of(
+                document=self._test_documents[0]
             )
         )

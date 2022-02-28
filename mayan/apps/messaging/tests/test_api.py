@@ -45,7 +45,7 @@ class MessageAPIViewTestCase(
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_message)
+        self.assertEqual(events[0].target, self._test_message)
         self.assertEqual(events[0].verb, event_message_created.id)
 
     def test_message_create_api_view_for_superuser_with_permission(self):
@@ -58,7 +58,7 @@ class MessageAPIViewTestCase(
         self._clear_events()
 
         response = self._request_test_message_create_api_view(
-            extra_data={'user': self.test_superuser.pk}
+            extra_data={'user': self._test_superuser.pk}
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
@@ -86,7 +86,7 @@ class MessageAPIViewTestCase(
         self._create_test_message()
 
         self.grant_access(
-            obj=self.test_message, permission=permission_message_delete
+            obj=self._test_message, permission=permission_message_delete
         )
 
         message_count = Message.objects.count()
@@ -115,7 +115,7 @@ class MessageAPIViewTestCase(
     def test_message_detail_api_view_with_access(self):
         self._create_test_message()
         self.grant_access(
-            obj=self.test_message, permission=permission_message_view
+            obj=self._test_message, permission=permission_message_view
         )
 
         self._clear_events()
@@ -123,7 +123,7 @@ class MessageAPIViewTestCase(
         response = self._request_test_message_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(response.data['id'], self.test_message.pk)
+        self.assertEqual(response.data['id'], self._test_message.pk)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -131,15 +131,15 @@ class MessageAPIViewTestCase(
     def test_message_edit_api_view_via_patch_no_permission(self):
         self._create_test_message()
 
-        message_read = self.test_message.read
+        message_read = self._test_message.read
 
         self._clear_events()
 
         response = self._request_test_message_edit_api_view(verb='patch')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.test_message.refresh_from_db()
-        self.assertEqual(self.test_message.read, message_read)
+        self._test_message.refresh_from_db()
+        self.assertEqual(self._test_message.read, message_read)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -148,39 +148,39 @@ class MessageAPIViewTestCase(
         self._create_test_message()
 
         self.grant_access(
-            obj=self.test_message, permission=permission_message_edit
+            obj=self._test_message, permission=permission_message_edit
         )
 
-        message_read = self.test_message.read
+        message_read = self._test_message.read
 
         self._clear_events()
 
         response = self._request_test_message_edit_api_view(verb='patch')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.test_message.refresh_from_db()
-        self.assertNotEqual(self.test_message.read, message_read)
+        self._test_message.refresh_from_db()
+        self.assertNotEqual(self._test_message.read, message_read)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_message)
+        self.assertEqual(events[0].target, self._test_message)
         self.assertEqual(events[0].verb, event_message_edited.id)
 
     def test_message_edit_api_view_via_put_no_permission(self):
         self._create_test_message()
 
-        message_read = self.test_message.read
+        message_read = self._test_message.read
 
         self._clear_events()
 
         response = self._request_test_message_edit_api_view(verb='put')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.test_message.refresh_from_db()
-        self.assertEqual(self.test_message.read, message_read)
+        self._test_message.refresh_from_db()
+        self.assertEqual(self._test_message.read, message_read)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -189,25 +189,25 @@ class MessageAPIViewTestCase(
         self._create_test_message()
 
         self.grant_access(
-            obj=self.test_message, permission=permission_message_edit
+            obj=self._test_message, permission=permission_message_edit
         )
 
-        message_read = self.test_message.read
+        message_read = self._test_message.read
 
         self._clear_events()
 
         response = self._request_test_message_edit_api_view(verb='put')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.test_message.refresh_from_db()
-        self.assertNotEqual(self.test_message.read, message_read)
+        self._test_message.refresh_from_db()
+        self.assertNotEqual(self._test_message.read, message_read)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
 
         self.assertEqual(events[0].action_object, None)
         self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_message)
+        self.assertEqual(events[0].target, self._test_message)
         self.assertEqual(events[0].verb, event_message_edited.id)
 
     def test_message_list_api_view_no_permission(self):
@@ -225,7 +225,7 @@ class MessageAPIViewTestCase(
     def test_message_list_api_view_with_access(self):
         self._create_test_message()
         self.grant_access(
-            obj=self.test_message, permission=permission_message_view
+            obj=self._test_message, permission=permission_message_view
         )
 
         self._clear_events()
@@ -234,7 +234,7 @@ class MessageAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['id'],
-            self.test_message.pk
+            self._test_message.pk
         )
 
         events = self._get_test_events()

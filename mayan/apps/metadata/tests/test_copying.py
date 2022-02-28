@@ -14,7 +14,7 @@ class MetadataTypeCopyTestCase(
     def setUp(self):
         super().setUp()
         self._create_test_metadata_type()
-        self.test_metadata_type.document_types.create(
-            document_type=self.test_document_type
+        self._test_metadata_type.document_types.create(
+            document_type=self._test_document_type
         )
-        self.test_object = self.test_metadata_type
+        self._test_object = self._test_metadata_type

@@ -33,46 +33,46 @@ class DocumentFileSearchTestCase(
 
         queryset = self._do_test_search(
             query={
-                'checksum': self.test_document_file.checksum
+                'checksum': self._test_document_file.checksum
             }
         )
-        self.assertTrue(self.test_document_file not in queryset)
+        self.assertTrue(self._test_document_file not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_file_search_by_checksum_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'checksum': self.test_document_file.checksum
+                'checksum': self._test_document_file.checksum
             }
         )
-        self.assertTrue(self.test_document_file in queryset)
+        self.assertTrue(self._test_document_file in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_file_search_by_checksum_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'checksum': self.test_document_file.checksum
+                'checksum': self._test_document_file.checksum
             }
         )
-        self.assertTrue(self.test_document_file not in queryset)
+        self.assertTrue(self._test_document_file not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -82,46 +82,46 @@ class DocumentFileSearchTestCase(
 
         queryset = self._do_test_search(
             query={
-                'comment': self.test_document_file.comment
+                'comment': self._test_document_file.comment
             }
         )
-        self.assertTrue(self.test_document_file not in queryset)
+        self.assertTrue(self._test_document_file not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_file_search_by_comment_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'comment': self.test_document_file.comment
+                'comment': self._test_document_file.comment
             }
         )
-        self.assertTrue(self.test_document_file in queryset)
+        self.assertTrue(self._test_document_file in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_file_search_by_comment_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'comment': self.test_document_file.comment
+                'comment': self._test_document_file.comment
             }
         )
-        self.assertTrue(self.test_document_file not in queryset)
+        self.assertTrue(self._test_document_file not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -131,46 +131,46 @@ class DocumentFileSearchTestCase(
 
         queryset = self._do_test_search(
             query={
-                'filename': self.test_document_file.filename
+                'filename': self._test_document_file.filename
             }
         )
-        self.assertTrue(self.test_document_file not in queryset)
+        self.assertTrue(self._test_document_file not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_file_search_by_filename_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'filename': self.test_document_file.filename
+                'filename': self._test_document_file.filename
             }
         )
-        self.assertTrue(self.test_document_file in queryset)
+        self.assertTrue(self._test_document_file in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_file_search_by_filename_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'filename': self.test_document_file.filename
+                'filename': self._test_document_file.filename
             }
         )
-        self.assertTrue(self.test_document_file not in queryset)
+        self.assertTrue(self._test_document_file not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -180,46 +180,46 @@ class DocumentFileSearchTestCase(
 
         queryset = self._do_test_search(
             query={
-                'mimetype': self.test_document_file.mimetype
+                'mimetype': self._test_document_file.mimetype
             }
         )
-        self.assertTrue(self.test_document_file not in queryset)
+        self.assertTrue(self._test_document_file not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_file_search_by_mime_type_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'mimetype': self.test_document_file.mimetype
+                'mimetype': self._test_document_file.mimetype
             }
         )
-        self.assertTrue(self.test_document_file in queryset)
+        self.assertTrue(self._test_document_file in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_file_search_by_mime_type_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'mimetype': self.test_document_file.mimetype
+                'mimetype': self._test_document_file.mimetype
             }
         )
-        self.assertTrue(self.test_document_file not in queryset)
+        self.assertTrue(self._test_document_file not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -229,46 +229,46 @@ class DocumentFileSearchTestCase(
 
         queryset = self._do_test_search(
             query={
-                'document__description': self.test_document.description
+                'document__description': self._test_document.description
             }
         )
-        self.assertTrue(self.test_document_file not in queryset)
+        self.assertTrue(self._test_document_file not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_file_search_by_document_description_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document__description': self.test_document.description
+                'document__description': self._test_document.description
             }
         )
-        self.assertTrue(self.test_document_file in queryset)
+        self.assertTrue(self._test_document_file in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_file_search_by_document_description_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document__description': self.test_document.description
+                'document__description': self._test_document.description
             }
         )
-        self.assertTrue(self.test_document_file not in queryset)
+        self.assertTrue(self._test_document_file not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -278,46 +278,46 @@ class DocumentFileSearchTestCase(
 
         queryset = self._do_test_search(
             query={
-                'document__label': self.test_document.label
+                'document__label': self._test_document.label
             }
         )
-        self.assertTrue(self.test_document_file not in queryset)
+        self.assertTrue(self._test_document_file not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_file_search_by_document_label_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document__label': self.test_document.label
+                'document__label': self._test_document.label
             }
         )
-        self.assertTrue(self.test_document_file in queryset)
+        self.assertTrue(self._test_document_file in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_file_search_by_document_label_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document__label': self.test_document.label
+                'document__label': self._test_document.label
             }
         )
-        self.assertTrue(self.test_document_file not in queryset)
+        self.assertTrue(self._test_document_file not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -327,46 +327,46 @@ class DocumentFileSearchTestCase(
 
         queryset = self._do_test_search(
             query={
-                'document__uuid': self.test_document.uuid
+                'document__uuid': self._test_document.uuid
             }
         )
-        self.assertTrue(self.test_document_file not in queryset)
+        self.assertTrue(self._test_document_file not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_file_search_by_document_uuid_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document__uuid': self.test_document.uuid
+                'document__uuid': self._test_document.uuid
             }
         )
-        self.assertTrue(self.test_document_file in queryset)
+        self.assertTrue(self._test_document_file in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_file_search_by_document_uuid_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document__uuid': self.test_document.uuid
+                'document__uuid': self._test_document.uuid
             }
         )
-        self.assertTrue(self.test_document_file not in queryset)
+        self.assertTrue(self._test_document_file not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -376,46 +376,46 @@ class DocumentFileSearchTestCase(
 
         queryset = self._do_test_search(
             query={
-                'document__document_type__label': self.test_document_type.label
+                'document__document_type__label': self._test_document_type.label
             }
         )
-        self.assertTrue(self.test_document_file not in queryset)
+        self.assertTrue(self._test_document_file not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_file_search_by_document_type_label_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document__document_type__label': self.test_document_type.label
+                'document__document_type__label': self._test_document_type.label
             }
         )
-        self.assertTrue(self.test_document_file in queryset)
+        self.assertTrue(self._test_document_file in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_file_search_by_document_type_label_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document__document_type__label': self.test_document_type.label
+                'document__document_type__label': self._test_document_type.label
             }
         )
-        self.assertTrue(self.test_document_file not in queryset)
+        self.assertTrue(self._test_document_file not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -445,46 +445,46 @@ class DocumentFilePageSearchTestCase(
 
         queryset = self._do_test_search(
             query={
-                'document_file__document__label': self.test_document.label
+                'document_file__document__label': self._test_document.label
             }
         )
-        self.assertTrue(self.test_document_file_page not in queryset)
+        self.assertTrue(self._test_document_file_page not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_file_page_search_by_document_label_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document_file__document__label': self.test_document.label
+                'document_file__document__label': self._test_document.label
             }
         )
-        self.assertTrue(self.test_document_file_page in queryset)
+        self.assertTrue(self._test_document_file_page in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_file_page_search_by_document_label_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document_file__document__label': self.test_document.label
+                'document_file__document__label': self._test_document.label
             }
         )
-        self.assertTrue(self.test_document_file_page not in queryset)
+        self.assertTrue(self._test_document_file_page not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -494,46 +494,46 @@ class DocumentFilePageSearchTestCase(
 
         queryset = self._do_test_search(
             query={
-                'document_file__document__description': self.test_document.description
+                'document_file__document__description': self._test_document.description
             }
         )
-        self.assertTrue(self.test_document_file_page not in queryset)
+        self.assertTrue(self._test_document_file_page not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_file_page_search_by_document_description_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document_file__document__description': self.test_document.description
+                'document_file__document__description': self._test_document.description
             }
         )
-        self.assertTrue(self.test_document_file_page in queryset)
+        self.assertTrue(self._test_document_file_page in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_file_page_search_by_document_description_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document_file__document__description': self.test_document.description
+                'document_file__document__description': self._test_document.description
             }
         )
-        self.assertTrue(self.test_document_file_page not in queryset)
+        self.assertTrue(self._test_document_file_page not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -543,46 +543,46 @@ class DocumentFilePageSearchTestCase(
 
         queryset = self._do_test_search(
             query={
-                'document_file__checksum': self.test_document_file.checksum
+                'document_file__checksum': self._test_document_file.checksum
             }
         )
-        self.assertTrue(self.test_document_file_page not in queryset)
+        self.assertTrue(self._test_document_file_page not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_file_page_search_by_document_file_checksum_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document_file__checksum': self.test_document_file.checksum
+                'document_file__checksum': self._test_document_file.checksum
             }
         )
-        self.assertTrue(self.test_document_file_page in queryset)
+        self.assertTrue(self._test_document_file_page in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_file_page_search_by_document_file_checksum_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document_file__checksum': self.test_document_file.checksum
+                'document_file__checksum': self._test_document_file.checksum
             }
         )
-        self.assertTrue(self.test_document_file_page not in queryset)
+        self.assertTrue(self._test_document_file_page not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -592,46 +592,46 @@ class DocumentFilePageSearchTestCase(
 
         queryset = self._do_test_search(
             query={
-                'document_file__mimetype': self.test_document_file.mimetype
+                'document_file__mimetype': self._test_document_file.mimetype
             }
         )
-        self.assertTrue(self.test_document_file_page not in queryset)
+        self.assertTrue(self._test_document_file_page not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_file_page_search_by_document_file_mime_type_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document_file__mimetype': self.test_document_file.mimetype
+                'document_file__mimetype': self._test_document_file.mimetype
             }
         )
-        self.assertTrue(self.test_document_file_page in queryset)
+        self.assertTrue(self._test_document_file_page in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_file_page_search_by_document_file_mime_type_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document_file__mimetype': self.test_document_file.mimetype
+                'document_file__mimetype': self._test_document_file.mimetype
             }
         )
-        self.assertTrue(self.test_document_file_page not in queryset)
+        self.assertTrue(self._test_document_file_page not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -641,46 +641,46 @@ class DocumentFilePageSearchTestCase(
 
         queryset = self._do_test_search(
             query={
-                'document_file__document__uuid': self.test_document.uuid
+                'document_file__document__uuid': self._test_document.uuid
             }
         )
-        self.assertTrue(self.test_document_file_page not in queryset)
+        self.assertTrue(self._test_document_file_page not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_file_page_search_by_document_uuid_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document_file__document__uuid': self.test_document.uuid
+                'document_file__document__uuid': self._test_document.uuid
             }
         )
-        self.assertTrue(self.test_document_file_page in queryset)
+        self.assertTrue(self._test_document_file_page in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_file_page_search_by_document_uuid_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document_file__document__uuid': self.test_document.uuid
+                'document_file__document__uuid': self._test_document.uuid
             }
         )
-        self.assertTrue(self.test_document_file_page not in queryset)
+        self.assertTrue(self._test_document_file_page not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -690,46 +690,46 @@ class DocumentFilePageSearchTestCase(
 
         queryset = self._do_test_search(
             query={
-                'document_file__document__document_type__label': self.test_document_type.label
+                'document_file__document__document_type__label': self._test_document_type.label
             }
         )
-        self.assertTrue(self.test_document_file_page not in queryset)
+        self.assertTrue(self._test_document_file_page not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_file_page_search_by_document_type_label_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document_file__document__document_type__label': self.test_document_type.label
+                'document_file__document__document_type__label': self._test_document_type.label
             }
         )
-        self.assertTrue(self.test_document_file_page in queryset)
+        self.assertTrue(self._test_document_file_page in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_trashed_document_file_page_search_by_document_type_label_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_file_view
+            obj=self._test_document, permission=permission_document_file_view
         )
 
-        self.test_document.delete()
+        self._test_document.delete()
 
         self._clear_events()
 
         queryset = self._do_test_search(
             query={
-                'document_file__document__document_type__label': self.test_document_type.label
+                'document_file__document__document_type__label': self._test_document_type.label
             }
         )
-        self.assertTrue(self.test_document_file_page not in queryset)
+        self.assertTrue(self._test_document_file_page not in queryset)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)

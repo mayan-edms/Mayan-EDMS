@@ -21,22 +21,22 @@ class LinkClassTestCase(GenericViewTestCase):
     def setUp(self):
         super().setUp()
 
-        self.test_object = self._test_case_group
+        self._test_object = self._test_case_group
 
-        self.add_test_view(test_object=self.test_object)
+        self.add_test_view(test_object=self._test_object)
 
         self.namespace = PermissionNamespace(
             label=TEST_PERMISSION_NAMESPACE_TEXT,
             name=TEST_PERMISSION_NAMESPACE_NAME
         )
 
-        self.test_permission = self.namespace.add_permission(
+        self._test_permission = self.namespace.add_permission(
             name=TEST_PERMISSION_NAME, label=TEST_PERMISSION_LABEL
         )
 
         ModelPermission.register(
-            model=self.test_object._meta.model,
-            permissions=(self.test_permission,)
+            model=self._test_object._meta.model,
+            permissions=(self._test_permission,)
         )
 
         self.link = Link(text=TEST_LINK_TEXT, view=self._test_view_name)
@@ -54,7 +54,7 @@ class LinkClassTestCase(GenericViewTestCase):
 
     def test_link_permission_resolve_no_permission(self):
         link = Link(
-            permissions=(self.test_permission,), text=TEST_LINK_TEXT,
+            permissions=(self._test_permission,), text=TEST_LINK_TEXT,
             view=self._test_view_name
         )
 
@@ -68,11 +68,11 @@ class LinkClassTestCase(GenericViewTestCase):
 
     def test_link_permission_resolve_with_permission(self):
         link = Link(
-            permissions=(self.test_permission,), text=TEST_LINK_TEXT,
+            permissions=(self._test_permission,), text=TEST_LINK_TEXT,
             view=self._test_view_name
         )
 
-        self.grant_access(obj=self.test_object, permission=self.test_permission)
+        self.grant_access(obj=self._test_object, permission=self._test_permission)
 
         response = self.get(viewname=self._test_view_name)
         response.context.update({'request': response.wsgi_request})
@@ -85,11 +85,11 @@ class LinkClassTestCase(GenericViewTestCase):
     def test_link_permission_resolve_with_acl(self):
         # ACL is tested agains the resolved_object or just {{ object }} if not
         link = Link(
-            permissions=(self.test_permission,), text=TEST_LINK_TEXT,
+            permissions=(self._test_permission,), text=TEST_LINK_TEXT,
             view=self._test_view_name
         )
 
-        self.grant_access(obj=self.test_object, permission=self.test_permission)
+        self.grant_access(obj=self._test_object, permission=self._test_permission)
 
         response = self.get(viewname=self._test_view_name)
         response.context.update({'request': response.wsgi_request})
@@ -155,13 +155,13 @@ class MenuClassTestCase(GenericViewTestCase):
 
         self._create_test_object()
 
-        self.add_test_view(test_object=self.test_object)
+        self.add_test_view(test_object=self._test_object)
 
         self.namespace = PermissionNamespace(
             TEST_PERMISSION_NAMESPACE_NAME, TEST_PERMISSION_NAMESPACE_TEXT
         )
 
-        self.test_permission = self.namespace.add_permission(
+        self._test_permission = self.namespace.add_permission(
             name=TEST_PERMISSION_NAME, label=TEST_PERMISSION_LABEL
         )
 
@@ -184,7 +184,7 @@ class MenuClassTestCase(GenericViewTestCase):
         response = self.get(viewname=self._test_view_name)
         context = Context(
             {
-                'object': self.test_object,
+                'object': self._test_object,
                 'request': response.wsgi_request
             }
         )

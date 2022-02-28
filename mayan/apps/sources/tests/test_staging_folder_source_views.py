@@ -15,7 +15,7 @@ class StagingFolderViewTestCase(
 
         staging_folder_file_count = len(
             list(
-                self.test_source.get_backend_instance().get_files()
+                self._test_source.get_backend_instance().get_files()
             )
         )
 
@@ -27,7 +27,7 @@ class StagingFolderViewTestCase(
         self.assertEqual(
             len(
                 list(
-                    self.test_source.get_backend_instance().get_files()
+                    self._test_source.get_backend_instance().get_files()
                 )
             ), staging_folder_file_count
         )
@@ -37,13 +37,13 @@ class StagingFolderViewTestCase(
 
     def test_staging_folder_file_delete_get_view_with_access(self):
         self.grant_access(
-            obj=self.test_source, permission=permission_document_create
+            obj=self._test_source, permission=permission_document_create
         )
         self._copy_test_staging_folder_document()
 
         staging_folder_file_count = len(
             list(
-                self.test_source.get_backend_instance().get_files()
+                self._test_source.get_backend_instance().get_files()
             )
         )
 
@@ -55,7 +55,7 @@ class StagingFolderViewTestCase(
         self.assertEqual(
             len(
                 list(
-                    self.test_source.get_backend_instance().get_files()
+                    self._test_source.get_backend_instance().get_files()
                 )
             ), staging_folder_file_count
         )
@@ -68,7 +68,7 @@ class StagingFolderViewTestCase(
 
         staging_folder_file_count = len(
             list(
-                self.test_source.get_backend_instance().get_files()
+                self._test_source.get_backend_instance().get_files()
             )
         )
 
@@ -80,7 +80,7 @@ class StagingFolderViewTestCase(
         self.assertEqual(
             len(
                 list(
-                    self.test_source.get_backend_instance().get_files()
+                    self._test_source.get_backend_instance().get_files()
                 )
             ), staging_folder_file_count
         )
@@ -90,13 +90,13 @@ class StagingFolderViewTestCase(
 
     def test_staging_folder_file_delete_post_view_with_access(self):
         self.grant_access(
-            obj=self.test_source, permission=permission_document_create
+            obj=self._test_source, permission=permission_document_create
         )
         self._copy_test_staging_folder_document()
 
         staging_folder_file_count = len(
             list(
-                self.test_source.get_backend_instance().get_files()
+                self._test_source.get_backend_instance().get_files()
             )
         )
 
@@ -108,7 +108,7 @@ class StagingFolderViewTestCase(
         self.assertEqual(
             len(
                 list(
-                    self.test_source.get_backend_instance().get_files()
+                    self._test_source.get_backend_instance().get_files()
                 )
             ), staging_folder_file_count - 1
         )
