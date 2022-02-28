@@ -1,7 +1,8 @@
 4.0.22 (2022-XX-XX)
 ===================
 - Filter unread message count badge by message read permission.
-- Remove usage of flat values list in Document checkout manager.
+- Remove usage of flat values list in document checkout manager.
+- Remove usage of flat ``values_list`` queryset in metadata managers module.
 
 4.0.21 (2021-11-29)
 ===================
