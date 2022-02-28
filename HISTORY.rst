@@ -20,6 +20,8 @@
     - metadata type
     - user
 
+- Remove usage of flat ``values_list`` queryset in metadata managers module.
+
 4.2.1 (2022-02-16)
 ==================
 - Merge improvements from version 4.1.6.
