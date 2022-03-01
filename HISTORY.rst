@@ -37,6 +37,11 @@
   - Remove repeated AJAX redirection middleware.
 
 - Add keyword arguments to zip file calls.
+- ``PartialNavigation.js`` improvements.
+
+  - Clean URL query on form submit and use form data as the URL query.
+  - Remove dead code.
+  - Use constants where appropriate.
 
 4.1.7 (2022-04-01)
 ==================
