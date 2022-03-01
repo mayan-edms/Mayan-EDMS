@@ -137,7 +137,6 @@ class TagEditView(SingleObjectEditView):
     model = Tag
     object_permission = permission_tag_edit
     pk_url_kwarg = 'tag_id'
-    post_action_redirect = reverse_lazy(viewname='tags:tag_list')
 
     def get_extra_context(self):
         return {
