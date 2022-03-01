@@ -23,6 +23,11 @@
 - Remove usage of flat ``values_list`` queryset in metadata managers module.
 - Prefix all test objects with an underscore to avoid clashes with test
   methods.
+- ``PartialNavigation.js`` improvements.
+
+  - Clean URL query on form submit and use form data as the URL query.
+  - Remove dead code.
+  - Use constants where appropriate.
 
 4.2.1 (2022-02-16)
 ==================
