@@ -22,7 +22,7 @@
                 {% else %}
                     <div class="col-sm-8">
                 {% endif %}
-                    <select class="form-control" id="selectSearchModel" name="_search_model_name">
+                    <select class="form-control" id="search-select-search-model" name="_search_model_name">
                         {% for search_model in search_models %}
                         {{ search_model.self.get_full_name }}
                             <option {% if search_model.get_full_name == default_search_model.get_full_name %}selected{% endif %} value="{{ search_model.get_full_name }}">{{ search_model }}</option>
@@ -44,7 +44,7 @@
                             {% if setting_disable_simple_search == False %}
                                 <button class="btn btn-default" type="submit">{% trans 'Search' %}</button>
                                 {% endif %}
-                            <a class="btn btn-primary" href="" id="btnSearchAdvanced">{% if setting_disable_simple_search == False %}{% trans 'Advanced' %}{% else %}{% trans 'Advanced search' %}{% endif %}</a>
+                            <a class="btn btn-primary" href="" id="search-button-search-advanced">{% if setting_disable_simple_search == False %}{% trans 'Advanced' %}{% else %}{% trans 'Advanced search' %}{% endif %}</a>
                         </span>
                     </div>
                 </div>
@@ -61,8 +61,8 @@
 
 <script>
     jQuery(document).ready(function() {
-        const $selectSearchModel = $('#selectSearchModel');
-        const $btnSearchAdvanced = $('#btnSearchAdvanced');
+        const $selectSearchModel = $('#search-select-search-model');
+        const $btnSearchAdvanced = $('#search-button-search-advanced');
         $btnSearchAdvanced.attr('href', "{% url 'search:search_advanced' %}?{% search_get_search_model_name_query_variable %}=" + $selectSearchModel.val());
         $selectSearchModel.change(function () {
             $btnSearchAdvanced.attr('href', "{% url 'search:search_advanced' %}?{% search_get_search_model_name_query_variable %}=" + $(this).val());

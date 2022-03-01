@@ -14,6 +14,8 @@ DELIMITER = '_'
 
 MESSAGE_FEATURE_NO_STATUS = 'This backend does not provide status information.'
 
+QUERY_PARAMETER_ANY_FIELD = 'q'
+
 SEARCH_MODEL_NAME_KWARG = 'search_model_name'
 
 SCOPE_MARKER = '__'

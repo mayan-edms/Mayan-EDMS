@@ -7,6 +7,7 @@ from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..classes import SearchModel
+from ..literals import QUERY_PARAMETER_ANY_FIELD
 from ..permissions import permission_search_tools
 
 from .mixins import (
@@ -177,7 +178,7 @@ class SearchToolsViewTestCaseMixin(
 
         queryset = self.search_backend.search(
             search_model=self.document_search_model,
-            query={'q': self._test_document.label},
+            query={QUERY_PARAMETER_ANY_FIELD: self._test_document.label},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
@@ -208,7 +209,7 @@ class SearchToolsViewTestCaseMixin(
 
         queryset = self.search_backend.search(
             search_model=self.document_search_model,
-            query={'q': self._test_document.label},
+            query={QUERY_PARAMETER_ANY_FIELD: self._test_document.label},
             user=self._test_case_user
         )
         self.assertNotEqual(queryset.count(), 0)

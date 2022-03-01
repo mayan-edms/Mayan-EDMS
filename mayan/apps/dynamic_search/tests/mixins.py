@@ -1,6 +1,7 @@
 from mayan.apps.documents.search import document_search
 
 from ..classes import SearchBackend, SearchModel
+from ..literals import QUERY_PARAMETER_ANY_FIELD
 
 from .backends import TestSearchBackend
 
@@ -46,7 +47,7 @@ class SearchTestMixin:
 
 class SearchAPIViewTestMixin(SearchTestMixin):
     def _request_search_view(self):
-        query = {'q': self._test_document.label}
+        query = {QUERY_PARAMETER_ANY_FIELD: self._test_document.label}
         return self.get(
             viewname='rest_api:search-view', kwargs={
                 'search_model_name': document_search.get_full_name()

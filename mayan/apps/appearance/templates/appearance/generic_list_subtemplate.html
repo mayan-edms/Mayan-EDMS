@@ -9,6 +9,7 @@
 <div class="row">
     <div class="col-xs-12">
         {% if not object_list %}
+            {% include 'appearance/partials/list_header.html' %}
             <div class="well center-block">
                 {% include 'appearance/partials/no_results.html' %}
             </div>

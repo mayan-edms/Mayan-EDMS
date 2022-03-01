@@ -20,6 +20,7 @@ class DynamicSearchApp(MayanAppConfig):
     app_namespace = 'search'
     app_url = 'search'
     has_rest_api = True
+    has_static_media = True
     has_tests = True
     name = 'mayan.apps.dynamic_search'
     verbose_name = _('Dynamic search')

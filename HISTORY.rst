@@ -29,6 +29,17 @@
   - Remove dead code.
   - Use constants where appropriate.
 
+- Search updates:
+
+  - Add filtering support to list views. All list view that show instances of
+    models with a corresponding defined search model, will show a text box
+    for filtering the list. The syntax is the same as the standard simple
+    search.
+  - Empty list views now show the toolbar for cases where the list is empty
+    due to a filtering term.
+  - Define the ``q`` URL query key as an internal literal named
+    ``QUERY_PARAMETER_ANY_FIELD``.
+
 4.2.1 (2022-02-16)
 ==================
 - Merge improvements from version 4.1.6.
