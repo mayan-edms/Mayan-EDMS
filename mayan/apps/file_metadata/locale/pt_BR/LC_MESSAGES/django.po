@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-11 06:23+0000\n"
+"POT-Creation-Date: 2022-03-03 10:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:23+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -63,10 +63,11 @@ msgstr "Ferramenta EXIF"
 #: events.py:10
 msgid "Document file submitted for file metadata processing"
 msgstr ""
+"Ficheiro do documento submetido para processamento de armazenar metadata."
 
 #: events.py:14
 msgid "Document file file metadata processing finished"
-msgstr ""
+msgstr "Processamento do arquivo do ficheiro de documento metadata terminado."
 
 #: links.py:25
 msgid "Attributes"
@@ -96,6 +97,7 @@ msgstr "Retorne a entrada dos metadados do documento especificado."
 #: methods.py:71
 msgid "Return the specified document file file metadata entry."
 msgstr ""
+"Devolver a entrada do arquivo do ficheiro de documento metadata especifico. "
 
 #: models.py:18
 msgid "Driver path"
@@ -136,11 +138,11 @@ msgstr "Ficheiro do documento"
 
 #: models.py:80 models.py:95
 msgid "Document file driver entry"
-msgstr ""
+msgstr "Entrada de driver do ficheiro do documento"
 
 #: models.py:81
 msgid "Document file driver entries"
-msgstr ""
+msgstr "Entradas de drive do ficheiro do documento"
 
 #: models.py:88
 msgid "Attribute count"
@@ -184,7 +186,7 @@ msgstr "Ver metadados do arquivo"
 
 #: queues.py:11
 msgid "Process document file"
-msgstr ""
+msgstr "Processar ficheiro do documento"
 
 #: settings.py:18
 msgid ""
@@ -234,13 +236,14 @@ msgstr ""
 
 #: views.py:86
 msgid "No file metadata available for this driver."
-msgstr ""
+msgstr "Não existem ficheiros metadata para este driver."
 
 #: views.py:90
 #, python-format
 msgid ""
 "File metadata attributes for: %(document_file)s with driver: %(driver)s"
 msgstr ""
+"Arquivar atributos metadata para: %(document_file)scom driver: %(driver)s"
 
 #: views.py:119
 msgid "Submit the selected document file to the file metadata queue?"

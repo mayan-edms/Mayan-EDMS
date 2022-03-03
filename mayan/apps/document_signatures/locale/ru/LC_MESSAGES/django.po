@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-11 06:23+0000\n"
+"POT-Creation-Date: 2022-03-03 10:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:21+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -166,6 +166,10 @@ msgstr "Подробности"
 #: links.py:105 queues.py:8
 msgid "Signatures"
 msgstr "Подписи"
+
+#: managers.py:95
+msgid "signed"
+msgstr ""
 
 #: models.py:46
 msgid "Document file"

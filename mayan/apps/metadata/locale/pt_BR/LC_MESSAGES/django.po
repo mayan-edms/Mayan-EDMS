@@ -11,14 +11,15 @@
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2021
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
 # Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-11 06:23+0000\n"
+"POT-Creation-Date: 2022-03-03 10:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -332,7 +333,7 @@ msgstr "Chave primária do tipo de metadados a ser adicionado."
 
 #: serializers.py:49
 msgid "Metadata type ID"
-msgstr ""
+msgstr "Tipo de ID metadata"
 
 #: serializers.py:94
 msgid "Primary key of the metadata type to be added to the document."
@@ -494,37 +495,37 @@ msgstr "Criar tipo de metadado"
 #: views/metadata_type_views.py:43
 #, python-format
 msgid "Error deleting metadata type \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Erro ao eliminar o tipo de metadata \"%(instance)s\"; %(exception)s"
 
 #: views/metadata_type_views.py:52
 #, python-format
 msgid "Metadata type \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Tipo de metadata \"%(object)s\" eliminado com sucesso"
 
 #: views/metadata_type_views.py:55
 #, python-format
 msgid "%(count)d metadata type deleted successfully."
-msgstr ""
+msgstr "%(count)dtipo de metadata eliminado com sucesso"
 
 #: views/metadata_type_views.py:58
 #, python-format
 msgid "%(count)d metadata types deleted successfully."
-msgstr ""
+msgstr "%(count)dtipos de metadata eliminados com sucesso"
 
 #: views/metadata_type_views.py:60
 #, python-format
 msgid "Delete metadata type: %(object)s."
-msgstr ""
+msgstr "Eliminar tipo de metadata: %(object)s"
 
 #: views/metadata_type_views.py:61
 #, python-format
 msgid "Delete the %(count)d selected metadata type."
-msgstr ""
+msgstr "Eliminar %(count)dtipo de metadata selecionado"
 
 #: views/metadata_type_views.py:62
 #, python-format
 msgid "Delete the %(count)d selected metadata types."
-msgstr ""
+msgstr "Eliminar %(count)dtipos de metadata selecionados"
 
 #: views/metadata_type_views.py:77
 #, python-format
@@ -606,6 +607,9 @@ msgid ""
 "%(document)s. Document does not have the metadata type to be edited. "
 "Exception: %(exception)s"
 msgstr ""
+"Não foi possível editar o tipo de metadata \"%(metadata_type)s\" do "
+"documento: %(document)s. O documento não tem o tipo de metadata a ser "
+"editado. Exceção: %(exception)s"
 
 #: workflow_actions.py:172
 msgid "Metadata types to remove from the document."

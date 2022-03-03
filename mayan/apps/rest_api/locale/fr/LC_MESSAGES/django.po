@@ -6,15 +6,15 @@
 # Translators:
 # Roberto Rosario, 2021
 # Yves Dubois <ydubois@gmail.com>, 2021
-# Frédéric Sheedy <sheedf@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-11 06:23+0000\n"
+"POT-Creation-Date: 2022-03-03 10:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2021\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -41,7 +41,7 @@ msgstr "Documentation API (ReDoc)"
 
 #: relations.py:82
 msgid "This field is required."
-msgstr ""
+msgstr "Ce champ est requis."
 
 #: relations.py:83
 #, python-brace-format
@@ -64,8 +64,8 @@ msgstr "Désactivez les liens de l'API REST dans le menu des outils."
 
 #: settings.py:23
 msgid "The maximum page size that can be requested."
-msgstr ""
+msgstr "La taille de page maximale qui peut être demandée."
 
 #: settings.py:29
 msgid "The default page size if none is specified."
-msgstr ""
+msgstr "La taille de page par défaut si aucune n'est spécifiée."

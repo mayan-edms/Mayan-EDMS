@@ -10,16 +10,16 @@
 # Olivier W, 2021
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2021
 # Yves Dubois <ydubois@gmail.com>, 2021
-# Frédéric Sheedy <sheedf@gmail.com>, 2021
 # Guillaume Trottier <gui.trottier@gmail.com>, 2021
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-11 06:23+0000\n"
+"POT-Creation-Date: 2022-03-03 10:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:27+0000\n"
-"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>, 2021\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -334,7 +334,7 @@ msgstr "Clé primaire du type de métadonnées à ajouter."
 
 #: serializers.py:49
 msgid "Metadata type ID"
-msgstr ""
+msgstr "ID du type de métadonnées"
 
 #: serializers.py:94
 msgid "Primary key of the metadata type to be added to the document."
@@ -521,17 +521,17 @@ msgstr ""
 #: views/metadata_type_views.py:60
 #, python-format
 msgid "Delete metadata type: %(object)s."
-msgstr ""
+msgstr "Supprimer le type de métadonnées: %(object)s."
 
 #: views/metadata_type_views.py:61
 #, python-format
 msgid "Delete the %(count)d selected metadata type."
-msgstr ""
+msgstr "Supprimez %(count)d type de métadonnées sélectionné."
 
 #: views/metadata_type_views.py:62
 #, python-format
 msgid "Delete the %(count)d selected metadata types."
-msgstr ""
+msgstr "Supprimez les %(count)d types de métadonnées sélectionnés."
 
 #: views/metadata_type_views.py:77
 #, python-format
@@ -614,6 +614,9 @@ msgid ""
 "%(document)s. Document does not have the metadata type to be edited. "
 "Exception: %(exception)s"
 msgstr ""
+"Impossible de modifier le type de métadonnées \"%(metadata_type)s\" du "
+"document: %(document)s. Le document n'a pas le type de métadonnées à "
+"modifier. Exception: %(exception)s"
 
 #: workflow_actions.py:172
 msgid "Metadata types to remove from the document."

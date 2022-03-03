@@ -9,14 +9,15 @@
 # Aline Freitas <aline@alinefreitas.com.br>, 2021
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2021
 # Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-11 06:23+0000\n"
+"POT-Creation-Date: 2022-03-03 10:18+0000\n"
 "PO-Revision-Date: 2021-04-11 06:26+0000\n"
-"Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2021\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -229,7 +230,7 @@ msgstr "Rótulo completo"
 
 #: permissions.py:8
 msgid "View resolved smart links"
-msgstr ""
+msgstr "Ver smart links solucionados"
 
 #: permissions.py:11
 msgid "Create new smart links"
@@ -260,12 +261,12 @@ msgstr ""
 #: views.py:65
 #, python-format
 msgid "Resolved smart link query error: %s"
-msgstr ""
+msgstr "Erro na consulta de smart link solucionado: %s"
 
 #: views.py:92
 #, python-format
 msgid "Resolved smart link dynamic label error: %s"
-msgstr ""
+msgstr "Erro de nome dinâmico de smart link solucionado: %s"
 
 #: views.py:97
 #, python-format
@@ -273,6 +274,8 @@ msgid ""
 "Documents in resolved smart link \"%(resolved_smart_link)s\" for "
 "\"%(document)s\""
 msgstr ""
+"Documentos em smart link solucionado \"%(resolved_smart_link)s\" para "
+"\"%(document)s\""
 
 #: views.py:138
 msgid ""
@@ -299,12 +302,12 @@ msgstr ""
 
 #: views.py:171
 msgid "There are no resolved smart links for this document"
-msgstr ""
+msgstr "Não existem smart links solucionados para este documento"
 
 #: views.py:175
 #, python-format
 msgid "Resolved smart links for document: %s"
-msgstr ""
+msgstr "Solucionados smart links para o documento: %s"
 
 #: views.py:191
 msgid "Available smart links"

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-11 06:23+0000\n"
+"POT-Creation-Date: 2022-03-03 10:19+0000\n"
 "PO-Revision-Date: 2021-04-11 06:29+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -198,15 +198,123 @@ msgstr ""
 msgid "Arguments to pass to the SOURCES_SOURCE_CACHE_STORAGE_BACKEND."
 msgstr ""
 
-#: source_backends/email_backends.py:37
+#: source_backends/email_backends.py:45
+msgid "Host"
+msgstr "Сервер"
+
+#: source_backends/email_backends.py:54
+msgid "SSL"
+msgstr "SSL"
+
+#: source_backends/email_backends.py:60
+msgid ""
+"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
+"for IMAP over SSL."
+msgstr ""
+"Обычно выбирают 110 для POP3, 995 для POP3 с SSL, 143 для IMAP, 993 для IMAP"
+" с SSL"
+
+#: source_backends/email_backends.py:66
+msgid "Port"
+msgstr "Порт"
+
+#: source_backends/email_backends.py:73
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: source_backends/email_backends.py:80
+msgid "Password"
+msgstr "Пароль"
+
+#: source_backends/email_backends.py:87
+msgid ""
+"Name of the attachment that will contains the metadata type names and value "
+"pairs to be assigned to the rest of the downloaded attachments."
+msgstr ""
+"Имя вложения, которое будет содержать пары \"имя типа метаданных: "
+"значение\", которые будут присвоены остальным загруженным вложениям."
+
+#: source_backends/email_backends.py:94
+msgid "Metadata attachment name"
+msgstr "Имя файла с метаданными"
+
+#: source_backends/email_backends.py:100
+msgid ""
+"Select a metadata type to store the email's \"from\" value. Must be a valid "
+"metadata type for the document type selected previously."
+msgstr ""
+"Выберите тип метаданных, в который будет сохранено значение поля \"От\" "
+"письма. Должен быть допустимый тип метаданных для выбранного ранее типа "
+"документа."
+
+#: source_backends/email_backends.py:110
+msgid "From metadata type"
+msgstr "Тип метаданных для отправителя письма"
+
+#: source_backends/email_backends.py:118
+msgid ""
+"Select a metadata type to store the email's subject value. Must be a valid "
+"metadata type for the document type selected previously."
+msgstr ""
+"Выберите тип метаданных, в который будет сохранена тема письма. Должен быть "
+"допустимый тип метаданных для выбранного ранее типа документа."
+
+#: source_backends/email_backends.py:128
+msgid "Subject metadata type"
+msgstr "Тип метаданных для темы письма"
+
+#: source_backends/email_backends.py:136
+msgid ""
+"Select a metadata type to store the email's message ID value. Must be a "
+"valid metadata type for the document type selected previously."
+msgstr ""
+
+#: source_backends/email_backends.py:146
+msgid "Message ID metadata type"
+msgstr ""
+
+#: source_backends/email_backends.py:154
+msgid "Store the body of the email as a text document."
+msgstr "Сохранять тело письма как текстовый документ."
+
+#: source_backends/email_backends.py:156
+msgid "Store email body"
+msgstr "Сохранять тело письма"
+
+#: source_backends/email_backends.py:303
+#, python-format
+msgid ""
+"\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr ""
+"Тип метаданных \"От\" \"%(metadata_type)s\" недопустим для типа документа: "
+"%(document_type)s"
+
+#: source_backends/email_backends.py:317
+#, python-format
+msgid ""
+"Subject metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr ""
+"Тип метаданных темы \"%(metadata_type)s\" недопустим для типа документа: "
+"%(document_type)s"
+
+#: source_backends/email_backends.py:331
+#, python-format
+msgid ""
+"Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
+" type: %(document_type)s"
+msgstr ""
+
+#: source_backends/email_backends.py:379
 msgid "IMAP Mailbox from which to check for messages."
 msgstr "Папка почтового ящика IMAP, в которой нужно проверять сообщения."
 
-#: source_backends/email_backends.py:41
+#: source_backends/email_backends.py:383
 msgid "Mailbox"
 msgstr "Папка"
 
-#: source_backends/email_backends.py:48
+#: source_backends/email_backends.py:390
 msgid ""
 "Criteria to use when searching for messages to process. Use the format "
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
@@ -215,11 +323,11 @@ msgstr ""
 "Используйте формат, указанный в "
 "https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
-#: source_backends/email_backends.py:52
+#: source_backends/email_backends.py:394
 msgid "Search criteria"
 msgstr "Критерии поиска"
 
-#: source_backends/email_backends.py:60
+#: source_backends/email_backends.py:402
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
 "command per line. Use the commands specified in "
@@ -231,39 +339,39 @@ msgstr ""
 "https://tools.ietf.org/html/rfc2060.html#section-6.4.6, или пользовательские"
 " команды для вашего сервера IMAP."
 
-#: source_backends/email_backends.py:65
+#: source_backends/email_backends.py:407
 msgid "Store commands"
 msgstr "Команды STORE"
 
-#: source_backends/email_backends.py:72
+#: source_backends/email_backends.py:414
 msgid "Execute the IMAP expunge command after processing each email message."
 msgstr ""
 "Выполнить команду EXPUNGE после обработки каждого сообщения электронной "
 "почты. Команда EXPUNGE используется для удаления из почтового ящика всех "
 "сообщений, помеченных флагом \\Deleted"
 
-#: source_backends/email_backends.py:75
+#: source_backends/email_backends.py:417
 msgid "Execute expunge"
 msgstr "Выполнить EXPUNGE"
 
-#: source_backends/email_backends.py:82
+#: source_backends/email_backends.py:424
 msgid "IMAP Mailbox to which processed messages will be copied."
 msgstr ""
 "Почтовый ящик IMAP, в который будут скопированы обработанные сообщения."
 
-#: source_backends/email_backends.py:84
+#: source_backends/email_backends.py:426
 msgid "Destination mailbox"
 msgstr "Целевой почтовый ящик"
 
-#: source_backends/email_backends.py:90
+#: source_backends/email_backends.py:432
 msgid "IMAP email"
 msgstr "Почтовый ящик IMAP"
 
-#: source_backends/email_backends.py:217
+#: source_backends/email_backends.py:559
 msgid "Timeout"
 msgstr "Тайм-аут"
 
-#: source_backends/email_backends.py:220
+#: source_backends/email_backends.py:562
 msgid "POP3 email"
 msgstr "Почтовый ящик POP3"
 
@@ -279,144 +387,36 @@ msgstr "Никогда"
 msgid "Ask user"
 msgstr "Спросить пользователя"
 
-#: source_backends/mixins.py:139
+#: source_backends/mixins.py:132
 msgid "Uncompress"
 msgstr "Распаковать"
 
-#: source_backends/mixins.py:143
+#: source_backends/mixins.py:136
 msgid "Whether to expand or not compressed archives."
 msgstr "Нужно ли распаковывать архивы."
 
-#: source_backends/mixins.py:167
+#: source_backends/mixins.py:160
 msgid "Expand compressed files"
 msgstr "Извлечь из архивов"
 
-#: source_backends/mixins.py:169
+#: source_backends/mixins.py:162
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr "Загрузить файлы, содержащиеся в архивах, как отдельные документы."
 
-#: source_backends/mixins.py:202
-msgid "Host"
-msgstr "Сервер"
-
-#: source_backends/mixins.py:211
-msgid "SSL"
-msgstr "SSL"
-
-#: source_backends/mixins.py:216
-msgid ""
-"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
-"for IMAP over SSL."
-msgstr ""
-"Обычно выбирают 110 для POP3, 995 для POP3 с SSL, 143 для IMAP, 993 для IMAP"
-" с SSL"
-
-#: source_backends/mixins.py:222
-msgid "Port"
-msgstr "Порт"
-
-#: source_backends/mixins.py:229
-msgid "Username"
-msgstr "Имя пользователя"
-
-#: source_backends/mixins.py:236
-msgid "Password"
-msgstr "Пароль"
-
-#: source_backends/mixins.py:243
-msgid ""
-"Name of the attachment that will contains the metadata type names and value "
-"pairs to be assigned to the rest of the downloaded attachments."
-msgstr ""
-"Имя вложения, которое будет содержать пары \"имя типа метаданных: "
-"значение\", которые будут присвоены остальным загруженным вложениям."
-
-#: source_backends/mixins.py:250
-msgid "Metadata attachment name"
-msgstr "Имя файла с метаданными"
-
-#: source_backends/mixins.py:256
-msgid ""
-"Select a metadata type to store the email's \"from\" value. Must be a valid "
-"metadata type for the document type selected previously."
-msgstr ""
-"Выберите тип метаданных, в который будет сохранено значение поля \"От\" "
-"письма. Должен быть допустимый тип метаданных для выбранного ранее типа "
-"документа."
-
-#: source_backends/mixins.py:266
-msgid "From metadata type"
-msgstr "Тип метаданных для отправителя письма"
-
-#: source_backends/mixins.py:274
-msgid ""
-"Select a metadata type to store the email's subject value. Must be a valid "
-"metadata type for the document type selected previously."
-msgstr ""
-"Выберите тип метаданных, в который будет сохранена тема письма. Должен быть "
-"допустимый тип метаданных для выбранного ранее типа документа."
-
-#: source_backends/mixins.py:284
-msgid "Subject metadata type"
-msgstr "Тип метаданных для темы письма"
-
-#: source_backends/mixins.py:292
-msgid ""
-"Select a metadata type to store the email's message ID value. Must be a "
-"valid metadata type for the document type selected previously."
-msgstr ""
-
-#: source_backends/mixins.py:302
-msgid "Message ID metadata type"
-msgstr ""
-
-#: source_backends/mixins.py:310
-msgid "Store the body of the email as a text document."
-msgstr "Сохранять тело письма как текстовый документ."
-
-#: source_backends/mixins.py:312
-msgid "Store email body"
-msgstr "Сохранять тело письма"
-
-#: source_backends/mixins.py:459
-#, python-format
-msgid ""
-"\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
-"type: %(document_type)s"
-msgstr ""
-"Тип метаданных \"От\" \"%(metadata_type)s\" недопустим для типа документа: "
-"%(document_type)s"
-
-#: source_backends/mixins.py:473
-#, python-format
-msgid ""
-"Subject metadata type \"%(metadata_type)s\" is not valid for the document "
-"type: %(document_type)s"
-msgstr ""
-"Тип метаданных темы \"%(metadata_type)s\" недопустим для типа документа: "
-"%(document_type)s"
-
-#: source_backends/mixins.py:487
-#, python-format
-msgid ""
-"Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
-" type: %(document_type)s"
-msgstr ""
-
-#: source_backends/mixins.py:588
+#: source_backends/mixins.py:251
 msgid "Assign a document type to documents uploaded from this source."
 msgstr ""
 "Назначить тип документа для документов, загружаемых из этого источника."
 
-#: source_backends/mixins.py:594
+#: source_backends/mixins.py:257
 msgid "Document type"
 msgstr "Тип документа"
 
-#: source_backends/mixins.py:601
+#: source_backends/mixins.py:264
 msgid "Interval in seconds between checks for new documents."
 msgstr "Интервал в секундах между проверками на наличие новых документов."
 
-#: source_backends/mixins.py:607
+#: source_backends/mixins.py:270
 msgid "Interval"
 msgstr "Интервал"
 
