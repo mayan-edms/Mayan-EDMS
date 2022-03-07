@@ -24,24 +24,29 @@
         const $filterInputTerms = $('#search-filter-input-terms');
         const $formFilter = $('#search-form-filter');
 
-        function updateFilterButtonClear () {
-            const filterValue = $filterInputTerms.val().trim();
-            if (filterValue) {
-                $filterButtonClear.show();
-            } else {
-                $filterButtonClear.hide();
+        // Enable the event handlers only if the filter is present.
+        // Otherwise it means that the displayed objects does not support
+        // searching.
+        if ($filterInputTerms.length) {
+            function updateFilterButtonClear () {
+                const filterValue = $filterInputTerms.val().trim();
+                if (filterValue) {
+                    $filterButtonClear.show();
+                } else {
+                    $filterButtonClear.hide();
+                }
             }
-        }
 
-        updateFilterButtonClear();
-
-        $filterInputTerms.keyup(function () {
             updateFilterButtonClear();
-        });
 
-        $filterButtonClear.click(function(){
-            $filterInputTerms.val('');
-            $formFilter.submit();
-        });
+            $filterInputTerms.keyup(function () {
+                updateFilterButtonClear();
+            });
+
+            $filterButtonClear.click(function(){
+                $filterInputTerms.val('');
+                $formFilter.submit();
+            });
+        }
     });
 </script>
