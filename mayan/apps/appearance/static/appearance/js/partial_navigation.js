@@ -44,6 +44,14 @@ class PartialNavigation {
         if (!this.initialURL) {
             alert('Need to setup initialURL');
         }
+
+        // AJAX request throttling and pending request cancellation.
+        // Default is 10 requests in 5 seconds of less.
+        this.maximumAjaxRequests = parameters.maximumAjaxRequests || 10;
+        this.ajaxRequestTimeout = parameters.ajaxRequestTimeout || 5000;
+
+        this.currentAjaxRequest = null;
+        this.AjaxRequestTimeOutList = [];
     }
 
     initialize () {
@@ -84,14 +92,36 @@ class PartialNavigation {
         const app = this;
 
         url = this.filterLocation(url);
-        $.ajax({
+
+        this.AjaxRequestTimeOutList.push(
+            setTimeout(function() {
+                app.AjaxRequestTimeOutList.shift();
+            }, 5000)
+        );
+
+        // Request exceeded maximum, ignoring.
+        if (this.AjaxRequestTimeOutList.length >= 10) {
+            return;
+        }
+
+        // Another Ajax request is being processed. Cancel them previous
+        // one.
+        if (this.currentAjaxRequest) {
+            this.currentAjaxRequest.abort();
+            // Clear the content area to avoid an '0' status server error
+            // message.
+            $('#ajax-content').empty('');
+        }
+
+        this.currentAjaxRequest = $.ajax({
             async: true,
-            mimeType: 'text/html; charset=utf-8', // ! Need set mimeType only when run from local file
+            // Need to set mimeType only when run from local file.
+            mimeType: 'text/html; charset=utf-8',
             url: url,
             type: 'GET',
             success: function (data, textStatus, response){
                 if (response.status == app.redirectionCode) {
-                    // Handle redirects
+                    // Handle redirects.
                     const newLocation = response.getResponseHeader('Location');
 
                     app.setLocation(newLocation);
@@ -104,6 +134,15 @@ class PartialNavigation {
                         $('#ajax-content').html(data).change();
                     }
                 }
+
+                // Enable requests again.
+                app.currentAjaxRequest = null;
+
+                // Reset throttling.
+                for (let item of app.AjaxRequestTimeOutList) {
+                    clearTimeout(item);
+                }
+                app.AjaxRequestTimeOutList = [];
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 app.processAjaxRequestError(jqXHR);

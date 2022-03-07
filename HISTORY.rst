@@ -40,6 +40,13 @@
   - Define the ``q`` URL query key as an internal literal named
     ``QUERY_PARAMETER_ANY_FIELD``.
 
+- Support AJAX request cancelation. This avoid the user interface from
+  appearing to unresponsive when the backend is overloaded.
+- Support AJAX request throttling. Prevents users from requesting too many
+  consecutive page loads. Defaults to a maximum of 10 requests in 5 seconds
+  of less. This applies only to the user interface. The AJAX throttling
+  resets the moment the last pending AJAX request is completed.
+
 4.2.1 (2022-02-16)
 ==================
 - Merge improvements from version 4.1.6.
