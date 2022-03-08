@@ -401,13 +401,12 @@ shell-plus: ## Run the shell_plus command.
 
 docker-elastic-start: ## Start an Elastic Search test container.
 docker-elastic-start:
-	@docker run --detach -e ES_JAVA_OPTS="-Xms256m -Xmx256m" -e "discovery.type=single-node" --name $(TEST_ELASTIC_CONTAINER_NAME) --publish 9200:9200 --publish 9300:9300 $(DOCKER_ELASTIC_IMAGE_VERSION)
+	@docker run --detach -e ES_JAVA_OPTS="-Xms256m -Xmx256m" -e "discovery.type=single-node" -e "network.host=0.0.0.0" -e "ingest.geoip.downloader.enabled=false" --name $(TEST_ELASTIC_CONTAINER_NAME) --publish 9200:9200 --publish 9300:9300 $(DOCKER_ELASTIC_IMAGE_VERSION)
 	@while ! nc -z 127.0.0.1 9200; do echo -n .; sleep 1; done
 
 docker-elastic-stop: ## Stop and delete the Elastic Search container.
 docker-elastic-stop:
 	@docker rm --force $(TEST_ELASTIC_CONTAINER_NAME) >/dev/null 2>&1
-
 
 docker-mysql-start: ## Start a MySQL Docker test container.
 	@docker run --detach --name $(TEST_MYSQL_CONTAINER_NAME) --publish 3306:3306 --env MYSQL_ALLOW_EMPTY_PASSWORD="yes" --env MYSQL_USER=$(DEFAULT_DATABASE_USER) --env MYSQL_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) --env MYSQL_DATABASE=$(DEFAULT_DATABASE_NAME) --volume $(TEST_MYSQL_CONTAINER_NAME):/var/lib/mysql $(DOCKER_MYSQL_IMAGE_VERSION) --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
