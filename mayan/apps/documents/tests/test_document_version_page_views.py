@@ -7,10 +7,10 @@ from mayan.apps.converter.permissions import (
 from mayan.apps.converter.tests.mixins import LayerTestMixin
 from mayan.apps.documents.tests.literals import TEST_MULTI_PAGE_TIFF
 
+from ..document_file_actions import DocumentFileActionNothing
 from ..events import (
     event_document_version_page_created, event_document_version_page_deleted
 )
-from ..literals import DOCUMENT_FILE_ACTION_PAGES_KEEP
 from ..permissions import (
     permission_document_version_edit, permission_document_version_view
 )
@@ -349,7 +349,7 @@ class DocumentVersionPageAppendViewTestCase(
     def setUp(self):
         super().setUp()
         self._upload_test_document_file(
-            action=DOCUMENT_FILE_ACTION_PAGES_KEEP
+            action=DocumentFileActionNothing.backend_id
         )
         self._test_document_file_pages = []
         self.source_content_types = []
@@ -627,7 +627,7 @@ class DocumentVersionPageResetViewTestCase(
     def setUp(self):
         super().setUp()
         self._upload_test_document_file(
-            action=DOCUMENT_FILE_ACTION_PAGES_KEEP
+            action=DocumentFileActionNothing.backend_id
         )
         self._test_document_file_pages = []
         self.source_content_types = []

@@ -2,6 +2,7 @@ import logging
 
 from django.apps import apps
 from django.core.exceptions import ImproperlyConfigured
+from django.utils.functional import classproperty
 
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.utils import get_class_full_name
@@ -59,7 +60,16 @@ class BackendMetaclass(type):
 
 
 class BaseBackend(AppsModuleLoaderMixin, metaclass=BackendMetaclass):
+    _backend_identifier = 'backend_class_path'
     _registry = {}
+
+    @classproperty
+    def backend_class_path(cls):
+        return cls.get_class_path()
+
+    @classproperty
+    def backend_id(cls):
+        return getattr(cls, cls._backend_identifier)
 
     @classmethod
     def get(cls, name):
@@ -67,14 +77,14 @@ class BaseBackend(AppsModuleLoaderMixin, metaclass=BackendMetaclass):
 
     @classmethod
     def get_all(cls):
-        return cls._registry.get(cls, {})
+        return list(cls._registry.get(cls, {}).values())
 
     @classmethod
     def get_choices(cls):
         choices = [
             (
-                backend_path, backend.label
-            ) for backend_path, backend in cls.get_all().items()
+                backend.backend_id, backend.label
+            ) for backend in cls.get_all()
         ]
 
         choices.sort(key=lambda x: x[1])
@@ -94,12 +104,10 @@ class BaseBackend(AppsModuleLoaderMixin, metaclass=BackendMetaclass):
 
         # Get this new child class full name, to be used as the
         # registry key.
-        class_full_name = get_class_full_name(klass=klass)
+        registry_key = klass.backend_id
 
         # Add the new child class to the app backend class registry.
-        cls._registry[
-            cls
-        ][class_full_name] = klass
+        cls._registry[cls][registry_key] = klass
 
 
 class ModelBaseBackend(BaseBackend):

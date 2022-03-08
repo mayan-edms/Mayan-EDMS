@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import MultiKwargHyperlinkedIdentityField
 
-from ..literals import DOCUMENT_FILE_ACTION_PAGE_CHOICES
+from ..classes import DocumentFileAction
 from ..models.document_file_models import DocumentFile
 from ..models.document_file_page_models import DocumentFilePage
 
@@ -70,7 +70,7 @@ class DocumentFilePageSerializer(serializers.HyperlinkedModelSerializer):
 
 class DocumentFileSerializer(serializers.HyperlinkedModelSerializer):
     action = serializers.ChoiceField(
-        choices=DOCUMENT_FILE_ACTION_PAGE_CHOICES, write_only=True
+        choices=DocumentFileAction.get_choices(), write_only=True
     )
     document_url = serializers.HyperlinkedIdentityField(
         lookup_field='document_id',

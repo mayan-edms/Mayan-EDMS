@@ -32,6 +32,7 @@ from mayan.apps.templating.classes import AJAXTemplate
 from mayan.apps.user_management.dashboards import dashboard_user
 from mayan.apps.views.html_widgets import TwoStateWidget
 
+from .classes import DocumentFileAction
 from .dashboard_widgets import (
     DashboardWidgetDocumentFilePagesTotal, DashboardWidgetDocumentsInTrash,
     DashboardWidgetDocumentsNewThisMonth,
@@ -267,6 +268,8 @@ class DocumentsApp(MayanAppConfig):
             layer=layer_decorations
         )
         link_decorations_list.text = _('Decorations')
+
+        DocumentFileAction.load_modules()
 
         DownloadFile.objects.register_content_object(model=DocumentVersion)
 

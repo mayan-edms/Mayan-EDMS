@@ -1,7 +1,8 @@
 from django.conf.urls import url
 
 from .api_views.document_api_views import (
-    APIDocumentDetailView, APIDocumentListView, APIDocumentChangeTypeView,
+    APIDocumentDetailView, APIDocumentChangeTypeView,
+    APIDocumentFileActionListView, APIDocumentListView,
     APIDocumentUploadView
 )
 from .api_views.document_file_api_views import (
@@ -524,9 +525,12 @@ urlpatterns.extend(urlpatterns_trashed_documents)
 
 api_urls_documents = [
     url(
+        regex=r'^document_file_actions/$', name='document-file-action-list',
+        view=APIDocumentFileActionListView.as_view()
+    ),
+    url(
         regex=r'^documents/$', name='document-list',
         view=APIDocumentListView.as_view()
-
     ),
     url(
         regex=r'^documents/upload/$', name='document-upload',

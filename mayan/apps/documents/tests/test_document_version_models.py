@@ -3,11 +3,12 @@ from mayan.apps.messaging.models import Message
 from mayan.apps.storage.events import event_download_file_created
 from mayan.apps.storage.models import DownloadFile
 
-from ..events import event_document_version_exported
-from ..literals import (
-    DOCUMENT_FILE_ACTION_PAGES_NEW, DOCUMENT_FILE_ACTION_PAGES_APPEND,
-    DOCUMENT_FILE_ACTION_PAGES_KEEP, DOCUMENT_VERSION_EXPORT_MESSAGE_SUBJECT
+from ..document_file_actions import (
+    DocumentFileActionAppendNewPages, DocumentFileActionNothing,
+    DocumentFileActionUseNewPages
 )
+from ..events import event_document_version_exported
+from ..literals import DOCUMENT_VERSION_EXPORT_MESSAGE_SUBJECT
 
 from .base import GenericDocumentTestCase
 
@@ -18,7 +19,9 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
 
         self.assertEqual(self._test_document.versions.count(), 1)
 
-        self._upload_test_document_file(action=DOCUMENT_FILE_ACTION_PAGES_NEW)
+        self._upload_test_document_file(
+            action=DocumentFileActionUseNewPages.backend_id
+        )
 
         self.assertEqual(self._test_document.versions.count(), 2)
 
@@ -36,7 +39,9 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
 
         self.assertEqual(self._test_document.versions.count(), 1)
 
-        self._upload_test_document_file(action=DOCUMENT_FILE_ACTION_PAGES_KEEP)
+        self._upload_test_document_file(
+            action=DocumentFileActionNothing.backend_id
+        )
 
         self.assertEqual(self._test_document.versions.count(), 1)
 
@@ -55,7 +60,9 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
         self.assertEqual(self._test_document.versions.count(), 1)
         self.assertEqual(self._test_document.files.count(), 1)
 
-        self._upload_test_document_file(action=DOCUMENT_FILE_ACTION_PAGES_APPEND)
+        self._upload_test_document_file(
+            action=DocumentFileActionAppendNewPages.backend_id
+        )
 
         self.assertEqual(self._test_document.files.count(), 2)
         self.assertEqual(self._test_document.versions.count(), 2)

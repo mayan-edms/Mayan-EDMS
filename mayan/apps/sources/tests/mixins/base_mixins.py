@@ -2,7 +2,7 @@ import json
 
 from django.db.models import Q
 
-from mayan.apps.documents.literals import DOCUMENT_FILE_ACTION_PAGES_NEW
+from mayan.apps.documents.document_file_actions import DocumentFileActionUseNewPages
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
 
 from ...forms import NewDocumentForm
@@ -26,7 +26,7 @@ class DocumentFileUploadViewTestMixin:
                     'document_id': self._test_document.pk,
                     'source_id': self._test_source.pk,
                 }, data={
-                    'document-action': DOCUMENT_FILE_ACTION_PAGES_NEW,
+                    'document-action': DocumentFileActionUseNewPages.backend_id,
                     'source-file': file_object
                 }
             )
@@ -37,7 +37,7 @@ class DocumentFileUploadViewTestMixin:
                 viewname='sources:document_file_upload', kwargs={
                     'document_id': self._test_document.pk,
                 }, data={
-                    'document-action': DOCUMENT_FILE_ACTION_PAGES_NEW,
+                    'document-action': DocumentFileActionUseNewPages.backend_id,
                     'source-file': file_object
                 }
             )

@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.documents.literals import DOCUMENT_FILE_ACTION_PAGES_NEW
+from mayan.apps.documents.document_file_actions import DocumentFileActionUseNewPages
 from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.models.document_file_models import DocumentFile
 from mayan.apps.documents.permissions import permission_document_file_new
@@ -145,4 +145,4 @@ class DocumentFileUploadInteractiveView(
         }
 
     def get_initial__document_form(self):
-        return {'action': DOCUMENT_FILE_ACTION_PAGES_NEW}
+        return {'action': DocumentFileActionUseNewPages.backend_id}

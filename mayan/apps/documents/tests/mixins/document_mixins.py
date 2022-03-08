@@ -5,7 +5,8 @@ from django.db.models import Q
 
 from mayan.apps.converter.classes import Layer
 
-from ...literals import DOCUMENT_FILE_ACTION_PAGES_NEW, PAGE_RANGE_ALL
+from ...document_file_actions import DocumentFileActionUseNewPages
+from ...literals import PAGE_RANGE_ALL
 from ...models import Document, DocumentType
 
 from ..literals import (
@@ -194,7 +195,7 @@ class DocumentTestMixin:
         self._calculate_test_document_file_path()
 
         if not action:
-            action = DOCUMENT_FILE_ACTION_PAGES_NEW
+            action = DocumentFileActionUseNewPages.backend_id
 
         with open(file=self._test_document_path, mode='rb') as file_object:
             self._test_document_file = self._test_document.file_new(

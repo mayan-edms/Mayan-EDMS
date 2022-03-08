@@ -2,14 +2,14 @@ from django.db.models import Q
 
 from mayan.apps.converter.layers import layer_saved_transformations
 
+from ...document_file_actions import DocumentFileActionUseNewPages
 from ...literals import PAGE_RANGE_ALL
 from ...models.document_file_models import DocumentFile
 
 from ..literals import (
-    TEST_DOCUMENT_FILE_ACTION, TEST_DOCUMENT_FILE_COMMENT,
-    TEST_DOCUMENT_FILE_COMMENT_EDITED, TEST_DOCUMENT_FILE_FILENAME_EDITED,
-    TEST_SMALL_DOCUMENT_PATH, TEST_TRANSFORMATION_ARGUMENT,
-    TEST_TRANSFORMATION_CLASS
+    TEST_DOCUMENT_FILE_COMMENT, TEST_DOCUMENT_FILE_COMMENT_EDITED,
+    TEST_DOCUMENT_FILE_FILENAME_EDITED, TEST_SMALL_DOCUMENT_PATH,
+    TEST_TRANSFORMATION_ARGUMENT, TEST_TRANSFORMATION_CLASS
 )
 
 
@@ -53,8 +53,8 @@ class DocumentFileAPIViewTestMixin:
                 viewname='rest_api:documentfile-list', kwargs={
                     'document_id': self._test_document.pk,
                 }, data={
-                    'action': TEST_DOCUMENT_FILE_ACTION, 'comment': '',
-                    'file_new': file_descriptor,
+                    'action': DocumentFileActionUseNewPages.backend_id,
+                    'comment': '', 'file_new': file_descriptor,
                 }
             )
 

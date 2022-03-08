@@ -4,7 +4,7 @@ from mayan.apps.converter.transformations import (
 from mayan.apps.converter.models import LayerTransformation
 from mayan.apps.converter.tests.mixins import LayerTestMixin
 
-from ..literals import DOCUMENT_FILE_ACTION_PAGES_APPEND
+from ..document_file_actions import DocumentFileActionAppendNewPages
 
 from .base import GenericDocumentTestCase
 
@@ -22,7 +22,9 @@ class DocumentVersionPageTestCase(LayerTestMixin, GenericDocumentTestCase):
         self._test_document_version.pages_reset()
 
     def test_version_pages_reset(self):
-        self._upload_test_document_file(action=DOCUMENT_FILE_ACTION_PAGES_APPEND)
+        self._upload_test_document_file(
+            action=DocumentFileActionAppendNewPages.backend_id
+        )
 
         test_document_version_page_content_objects = self._test_document.versions.last().page_content_objects
 

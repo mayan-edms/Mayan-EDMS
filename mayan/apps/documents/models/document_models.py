@@ -17,16 +17,14 @@ from mayan.apps.events.decorators import method_event
 from mayan.apps.storage.compressed_files import Archive
 from mayan.apps.storage.exceptions import NoMIMETypeMatch
 
+from ..classes import DocumentFileAction
+from ..document_file_actions import DocumentFileActionUseNewPages
 from ..events import (
     event_document_created, event_document_edited,
     event_document_trashed, event_document_type_changed,
     event_trashed_document_deleted
 )
-from ..literals import (
-    DEFAULT_LANGUAGE, DOCUMENT_FILE_ACTION_PAGES_APPEND,
-    DOCUMENT_FILE_ACTION_PAGES_KEEP, DOCUMENT_FILE_ACTION_PAGES_NEW,
-    IMAGE_ERROR_NO_ACTIVE_VERSION
-)
+from ..literals import DEFAULT_LANGUAGE, IMAGE_ERROR_NO_ACTIVE_VERSION
 from ..managers import (
     DocumentManager, TrashCanManager, ValidDocumentManager,
     ValidRecentlyCreatedDocumentManager
@@ -195,7 +193,7 @@ class Document(
         logger.info('Creating new document file for document: %s', self)
 
         if not action:
-            action = DOCUMENT_FILE_ACTION_PAGES_NEW
+            action = DocumentFileActionUseNewPages.backend_id
 
         if not comment:
             comment = ''
@@ -229,10 +227,6 @@ class Document(
                 # Fall through to same code path as expand=False to avoid
                 # duplicating code.
 
-        DocumentVersion = apps.get_model(
-            app_label='documents', model_name='DocumentVersion'
-        )
-
         try:
             document_file = DocumentFile(
                 document=self, comment=comment, file=File(file=file_object),
@@ -249,52 +243,10 @@ class Document(
         else:
             logger.info('New document file queued for document: %s', self)
 
-            DocumentVersion = apps.get_model(
-                app_label='documents', model_name='DocumentVersion'
+            DocumentFileAction.get(name=action).execute(
+                document=self, document_file=document_file, comment=comment,
+                _user=_user
             )
-
-            if action == DOCUMENT_FILE_ACTION_PAGES_NEW:
-                document_version = DocumentVersion(
-                    document=self, comment=comment
-                )
-                document_version._event_actor = _user
-                document_version.save()
-
-                annotated_content_object_list = DocumentVersion.annotate_content_object_list(
-                    content_object_list=document_file.pages.all()
-                )
-
-                document_version.pages_remap(
-                    annotated_content_object_list=annotated_content_object_list,
-                    _user=_user
-                )
-            elif action == DOCUMENT_FILE_ACTION_PAGES_APPEND:
-                annotated_content_object_list = []
-                annotated_content_object_list.extend(
-                    DocumentVersion.annotate_content_object_list(
-                        content_object_list=self.version_active.page_content_objects
-                    )
-                )
-
-                annotated_content_object_list.extend(
-                    DocumentVersion.annotate_content_object_list(
-                        content_object_list=document_file.pages.all(),
-                        start_page_number=self.version_active.pages.count() + 1
-                    )
-                )
-
-                document_version = DocumentVersion(
-                    document=self, comment=comment
-                )
-                document_version._event_actor = _user
-                document_version.save()
-
-                document_version.pages_remap(
-                    annotated_content_object_list=annotated_content_object_list,
-                    _user=_user
-                )
-            elif action == DOCUMENT_FILE_ACTION_PAGES_KEEP:
-                return document_file
 
             return document_file
 

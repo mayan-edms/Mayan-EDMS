@@ -46,6 +46,20 @@
   consecutive page loads. Defaults to a maximum of 10 requests in 5 seconds
   of less. This applies only to the user interface. The AJAX throttling
   resets the moment the last pending AJAX request is completed.
+- ``BaseBackend`` class improvements.
+
+  - Selectable identifier via the ``_backend_identifier`` property. Defaults
+    to ``backend_class_path`` for compatibility.
+  - Update ``.get_all`` to return a list and not a dictionary.
+  - Add property ``backend_id`` that returns the value of the class
+    ``_backend_identifier`` property.
+
+- Convert document file actions from hardcoded logic to an extensible class
+  using the ``BaseBackend`` class. Available classes will be loaded from the
+  ``document_file_actions`` module. The id of the class defaults to the
+  existing literal values for compatility.
+- Add API endpoint called ``document_file_actions`` to list the available
+  actions and their properties.
 
 4.2.1 (2022-02-16)
 ==================

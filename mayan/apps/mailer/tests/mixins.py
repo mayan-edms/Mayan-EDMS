@@ -5,9 +5,9 @@ from django.db.models import Q
 from ..models import UserMailer
 
 from .literals import (
-    TEST_EMAIL_ADDRESS, TEST_EMAIL_FROM_ADDRESS,
-    TEST_USER_MAILER_BACKEND_PATH, TEST_USER_MAILER_LABEL
+    TEST_EMAIL_ADDRESS, TEST_EMAIL_FROM_ADDRESS, TEST_USER_MAILER_LABEL
 )
+from .mailers import TestBackend
 
 
 class DocumentMailerViewTestMixin:
@@ -144,7 +144,7 @@ class MailerTestMixin:
             default=True,
             enabled=True,
             label=TEST_USER_MAILER_LABEL,
-            backend_path=TEST_USER_MAILER_BACKEND_PATH,
+            backend_path=TestBackend.backend_id,
             backend_data=json.dumps(
                 obj={
                     'from': TEST_EMAIL_FROM_ADDRESS
@@ -159,7 +159,7 @@ class MailerViewTestMixin:
 
         response = self.post(
             viewname='mailer:user_mailer_create', kwargs={
-                'class_path': TEST_USER_MAILER_BACKEND_PATH
+                'class_path': TestBackend.backend_id
             }, data={
                 'default': True,
                 'enabled': True,

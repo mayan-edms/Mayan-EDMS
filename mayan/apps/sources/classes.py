@@ -123,7 +123,7 @@ class SourceBackend(ModelBaseBackend):
 
     @classmethod
     def post_load_modules(cls):
-        for backend_path, source_backend in cls.get_all().items():
+        for source_backend in cls.get_all():
             source_backend.intialize()
 
     @classmethod
