@@ -4,8 +4,31 @@ from mayan.apps.common.serializers import ContentTypeSerializer
 from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import MultiKwargHyperlinkedIdentityField
 
+from ..classes import DocumentVersionAction
 from ..models.document_version_models import DocumentVersion
 from ..models.document_version_page_models import DocumentVersionPage
+
+
+class DocumentVersionActionSerializer(serializers.Serializer):
+    id = serializers.CharField(
+        label=_('ID'), read_only=True, source='backend_class_path'
+    )
+    label = serializers.CharField(label=_('Label'), read_only=True)
+    description = serializers.CharField(
+        label=_('Description'), read_only=True
+    )
+
+
+class DocumentVersionActionExecuteSerializer(serializers.Serializer):
+    action_id = serializers.ChoiceField(
+        choices=(), label=_('Action ID'), help_text=_(
+            'Primary key of the action to perform.'
+        )
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['action_id'].choices = DocumentVersionAction.get_choices()
 
 
 class DocumentVersionPageSerializer(serializers.HyperlinkedModelSerializer):

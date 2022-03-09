@@ -49,7 +49,9 @@ class APIDocumentFileActionListView(generics.ListAPIView):
     get: Returns a list of the available document file actions.
     """
     serializer_class = DocumentFileActionSerializer
-    queryset = DocumentFileAction.get_all()
+
+    def get_queryset(self):
+        return DocumentFileAction.get_all()
 
     def get_serializer_context(self):
         return {

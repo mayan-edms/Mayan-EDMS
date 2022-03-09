@@ -5,12 +5,14 @@ from rest_framework import status
 from mayan.apps.converter.api_view_mixins import APIImageViewMixin
 from mayan.apps.rest_api import generics
 
+from ..classes import DocumentVersionAction
 from ..permissions import (
     permission_document_version_create, permission_document_version_delete,
     permission_document_version_edit, permission_document_version_export,
     permission_document_version_view
 )
 from ..serializers.document_version_serializers import (
+    DocumentVersionActionSerializer, DocumentVersionActionExecuteSerializer,
     DocumentVersionSerializer, DocumentVersionPageSerializer
 )
 from ..tasks import task_document_version_export
@@ -20,6 +22,23 @@ from .mixins import (
 )
 
 logger = logging.getLogger(name=__name__)
+
+
+class APIDocumentVersionActionListView(generics.ListAPIView):
+    """
+    get: Returns a list of the available document version actions.
+    """
+    serializer_class = DocumentVersionActionSerializer
+
+    def get_queryset(self):
+        return DocumentVersionAction.get_all()
+
+    def get_serializer_context(self):
+        return {
+            'format': self.format_kwarg,
+            'request': self.request,
+            'view': self
+        }
 
 
 class APIDocumentVersionDetailView(
@@ -47,6 +66,31 @@ class APIDocumentVersionDetailView(
 
     def get_queryset(self):
         return self.get_document().versions.all()
+
+
+class APIDocumentVersionActionView(
+    ParentObjectDocumentAPIViewMixin, generics.ObjectActionAPIView
+):
+    """
+    post: Execute an action on the selected document version.
+    """
+    action_response_status = status.HTTP_202_ACCEPTED
+    lookup_url_kwarg = 'document_version_id'
+    mayan_object_permissions = {
+        'POST': (permission_document_version_edit,),
+    }
+    serializer_class = DocumentVersionActionExecuteSerializer
+
+    def get_queryset(self):
+        return self.get_document().versions.all()
+
+    def object_action(self, request, serializer):
+        DocumentVersionAction.get(
+            name=serializer.validated_data['action_id']
+        ).execute(
+            document_version=self.object,
+            _user=request.user
+        )
 
 
 class APIDocumentVersionExportView(

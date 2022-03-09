@@ -15,6 +15,7 @@ from .api_views.document_type_api_views import (
     APIDocumentTypeQuickLabelDetailView, APIDocumentTypeQuickLabelListView
 )
 from .api_views.document_version_api_views import (
+    APIDocumentVersionActionListView, APIDocumentVersionActionView,
     APIDocumentVersionDetailView, APIDocumentVersionExportView,
     APIDocumentVersionListView, APIDocumentVersionPageDetailView,
     APIDocumentVersionPageImageView, APIDocumentVersionPageListView
@@ -622,6 +623,11 @@ api_urls_document_types = [
 
 api_urls_document_versions = [
     url(
+        regex=r'^document_version_actions/$',
+        name='document-version-action-list',
+        view=APIDocumentVersionActionListView.as_view()
+    ),
+    url(
         regex=r'^documents/(?P<document_id>[0-9]+)/versions/$',
         name='documentversion-list',
         view=APIDocumentVersionListView.as_view()
@@ -630,6 +636,11 @@ api_urls_document_versions = [
         regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/$',
         name='documentversion-detail',
         view=APIDocumentVersionDetailView.as_view()
+    ),
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/actions/$',
+        name='documentversion-action',
+        view=APIDocumentVersionActionView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/export/$',
