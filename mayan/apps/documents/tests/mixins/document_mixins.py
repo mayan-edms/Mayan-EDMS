@@ -102,6 +102,8 @@ class DocumentTestMixin:
         Layer.invalidate_cache()
 
         self._test_documents = []
+        self._test_document_files = []
+        self._test_document_file_pages = []
         self._test_document_types = []
 
         if self.auto_create_test_document_type:
@@ -175,6 +177,8 @@ class DocumentTestMixin:
         self._test_documents.append(document)
 
         self._test_document_file = document_file
+        self._test_document_files.append(document_file)
+        self._test_document_file_pages = list(document_file.file_pages.all())
         self._test_document_file_page = document_file.file_pages.first()
         self._test_document_version = self._test_document.version_active
         self._test_document_version_page = self._test_document_version.version_pages.first()
@@ -190,20 +194,6 @@ class DocumentTestMixin:
                 setattr(self._test_document_version, key, value)
 
             self._test_document_version.save()
-
-    def _upload_test_document_file(self, action=None, _user=None):
-        self._calculate_test_document_file_path()
-
-        if not action:
-            action = DocumentFileActionUseNewPages.backend_id
-
-        with open(file=self._test_document_path, mode='rb') as file_object:
-            self._test_document_file = self._test_document.file_new(
-                action=action, file_object=file_object, _user=_user
-            )
-
-        self._test_document_file_page = self._test_document_file.pages.first()
-        self._test_document_version = self._test_document.version_active
 
 
 class DocumentViewTestMixin:

@@ -57,8 +57,8 @@ class DocumentFileAction(BaseBackend):
     _loader_module_name = 'document_file_actions'
 
 
-class DocumentVersionAction(BaseBackend):
-    _loader_module_name = 'document_version_actions'
+class DocumentVersionModification(BaseBackend):
+    _loader_module_name = 'document_version_modifications'
 
 
 class OriginalDocumentFilenameGenerator(BaseDocumentFilenameGenerator):

@@ -3,7 +3,10 @@ from django.db.models import Q
 
 from mayan.apps.converter.layers import layer_saved_transformations
 
-from ...document_version_actions import DocumentVersionActionPagesReset
+from ...document_version_modifications import (
+    DocumentVersionModificationPagesAppend,
+    DocumentVersionModificationPagesReset
+)
 from ...literals import PAGE_RANGE_ALL
 from ...models.document_version_models import DocumentVersion
 from ...models.document_version_page_models import DocumentVersionPage
@@ -14,14 +17,24 @@ from ..literals import (
 )
 
 
-class DocumentVersionActionAPIViewTestMixin:
+class DocumentVersionModificationAPIViewTestMixin:
+    def _request_test_document_version_action_page_append_api_view(self):
+        return self.post(
+            viewname='rest_api:documentversion-action', kwargs={
+                'document_id': self._test_document.pk,
+                'document_version_id': self._test_document_version.pk
+            }, data={
+                'action_id': DocumentVersionModificationPagesAppend.backend_id
+            }
+        )
+
     def _request_test_document_version_action_page_reset_api_view(self):
         return self.post(
             viewname='rest_api:documentversion-action', kwargs={
                 'document_id': self._test_document.pk,
                 'document_version_id': self._test_document_version.pk
             }, data={
-                'action_id': DocumentVersionActionPagesReset.backend_id
+                'action_id': DocumentVersionModificationPagesReset.backend_id
             }
         )
 
