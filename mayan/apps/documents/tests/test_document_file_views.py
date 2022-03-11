@@ -32,7 +32,7 @@ class DocumentFileViewTestCase(
 ):
     def test_document_file_delete_no_permission(self):
         first_file = self._test_document.file_latest
-        self._upload_new_file()
+        self._upload_test_document_file()
 
         test_document_file_count = self._test_document.files.count()
 
@@ -52,7 +52,7 @@ class DocumentFileViewTestCase(
 
     def test_document_file_delete_with_access(self):
         first_file = self._test_document.file_latest
-        self._upload_new_file()
+        self._upload_test_document_file()
 
         self.grant_access(
             obj=self._test_document,
@@ -82,7 +82,7 @@ class DocumentFileViewTestCase(
 
     def test_trashed_document_file_delete_with_access(self):
         first_file = self._test_document.file_latest
-        self._upload_new_file()
+        self._upload_test_document_file()
 
         self.grant_access(
             obj=self._test_document,
@@ -108,7 +108,7 @@ class DocumentFileViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_file_delete_multiple_no_permission(self):
-        self._upload_new_file()
+        self._upload_test_document_file()
 
         test_document_file_count = self._test_document.files.count()
 
@@ -126,7 +126,7 @@ class DocumentFileViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_document_file_delete_multiple_with_access(self):
-        self._upload_new_file()
+        self._upload_test_document_file()
 
         self.grant_access(
             obj=self._test_document,

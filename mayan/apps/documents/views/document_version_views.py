@@ -19,9 +19,11 @@ from mayan.apps.views.generics import (
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
+from ..classes import DocumentVersionModification
 from ..events import event_document_viewed
 from ..forms.document_version_forms import (
-    DocumentVersionForm, DocumentVersionPreviewForm
+    DocumentVersionModificationBackendForm, DocumentVersionForm,
+    DocumentVersionPreviewForm
 )
 from ..forms.misc_forms import PageNumberForm
 from ..icons import icon_document_version_list
@@ -242,6 +244,47 @@ class DocumentVersionListView(
 
     def get_source_queryset(self):
         return self.external_object.versions.order_by('-timestamp')
+
+
+class DocumentVersionModifyView(ExternalObjectViewMixin, FormView):
+    external_object_permission = permission_document_version_edit
+    external_object_pk_url_kwarg = 'document_version_id'
+    external_object_queryset = DocumentVersion.valid.all()
+    form_class = DocumentVersionModificationBackendForm
+
+    def dispatch(self, request, *args, **kwargs):
+        results = super().dispatch(request=request, *args, **kwargs)
+        self.external_object.document.add_as_recent_document_for_user(
+            user=request.user
+        )
+
+        return results
+
+    def form_valid(self, form):
+        DocumentVersionModification.get(
+            name=form.cleaned_data['backend']
+        ).execute(
+            document_version=self.external_object,
+            _user=self.request.user
+        )
+
+        messages.success(
+            message=_(
+                'Document version modification backend queued successfully.'
+            ), request=self.request
+        )
+
+        return super().form_valid(form=form)
+
+    def get_extra_context(self):
+        context = {
+            'object': self.external_object,
+            'title': _(
+                'Execute version modification action for document version: %s'
+            ) % self.external_object
+        }
+
+        return context
 
 
 class DocumentVersionPreviewView(SingleObjectDetailView):

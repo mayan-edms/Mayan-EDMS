@@ -11,9 +11,12 @@ from ..permissions import (
 )
 
 from .base import GenericDocumentViewTestCase
+from .mixins.document_file_mixins import DocumentFileTestMixin
 
 
-class DocumentsLinksTestCase(GenericDocumentViewTestCase):
+class DocumentsLinksTestCase(
+    DocumentFileTestMixin, GenericDocumentViewTestCase
+):
     def test_document_file_delete_link_no_permission(self):
         self._upload_test_document_file()
 

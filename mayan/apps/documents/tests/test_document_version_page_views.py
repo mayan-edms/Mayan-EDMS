@@ -7,7 +7,6 @@ from mayan.apps.converter.permissions import (
 from mayan.apps.converter.tests.mixins import LayerTestMixin
 from mayan.apps.documents.tests.literals import TEST_MULTI_PAGE_TIFF
 
-from ..document_file_actions import DocumentFileActionNothing
 from ..events import (
     event_document_version_page_created, event_document_version_page_deleted
 )
@@ -16,10 +15,10 @@ from ..permissions import (
 )
 
 from .base import GenericDocumentViewTestCase
+from .mixins.document_file_mixins import DocumentFileTestMixin
 from .mixins.document_version_mixins import (
-    DocumentVersionPageAppendViewTestMixin,
     DocumentVersionPageRemapViewTestMixin,
-    DocumentVersionPageResetViewTestMixin, DocumentVersionPageViewTestMixin,
+    DocumentVersionPageViewTestMixin,
     DocumentVersionTransformationTestMixin,
     DocumentVersionTransformationViewTestMixin
 )
@@ -343,121 +342,9 @@ class DocumentVersionPageViewTestCase(
         self.assertEqual(events.count(), 0)
 
 
-class DocumentVersionPageAppendViewTestCase(
-    DocumentVersionPageAppendViewTestMixin, GenericDocumentViewTestCase
-):
-    def setUp(self):
-        super().setUp()
-        self._upload_test_document_file(
-            action=DocumentFileActionNothing.backend_id
-        )
-        self._test_document_file_pages = []
-        self.source_content_types = []
-        self.source_object_ids = []
-
-        for test_document_file in self._test_document.files.all():
-            for test_document_file_page in test_document_file.pages.all():
-                self._test_document_file_pages.append(test_document_file_page)
-                self.source_content_types.append(
-                    ContentType.objects.get_for_model(
-                        model=test_document_file_page
-                    )
-                )
-                self.source_object_ids.append(test_document_file_page.pk)
-
-    def test_document_version_append_view_no_permission(self):
-        document_version_page_count = self._test_document_version.pages.count()
-
-        self._clear_events()
-
-        response = self._request_test_document_version_page_list_append_view()
-        self.assertEqual(response.status_code, 404)
-
-        self._test_document_version.refresh_from_db()
-
-        self.assertEqual(
-            self._test_document_version.pages.count(),
-            document_version_page_count
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_document_version_append_view_with_access(self):
-        self.grant_access(
-            obj=self._test_document_version,
-            permission=permission_document_version_edit
-        )
-
-        document_version_page_count = self._test_document_version.pages.count()
-
-        self._clear_events()
-
-        response = self._request_test_document_version_page_list_append_view()
-        self.assertEqual(response.status_code, 302)
-
-        self._test_document_version.refresh_from_db()
-
-        self.assertEqual(
-            self._test_document_version.pages.count(),
-            document_version_page_count + 1
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 3)
-
-        self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self._test_document_version)
-        self.assertEqual(
-            events[0].verb, event_document_version_page_deleted.id
-        )
-
-        self.assertEqual(events[1].action_object, self._test_document_version)
-        self.assertEqual(events[1].actor, self._test_case_user)
-        self.assertEqual(
-            events[1].target, self._test_document_version.pages[0]
-        )
-        self.assertEqual(
-            events[1].verb, event_document_version_page_created.id
-        )
-        self.assertEqual(events[2].action_object, self._test_document_version)
-        self.assertEqual(events[2].actor, self._test_case_user)
-        self.assertEqual(
-            events[2].target, self._test_document_version.pages[1]
-        )
-        self.assertEqual(
-            events[2].verb, event_document_version_page_created.id
-        )
-
-    def test_trashed_document_version_append_view_with_access(self):
-        self.grant_access(
-            obj=self._test_document_version,
-            permission=permission_document_version_edit
-        )
-
-        document_version_page_count = self._test_document_version.pages.count()
-
-        self._test_document.delete()
-
-        self._clear_events()
-
-        response = self._request_test_document_version_page_list_append_view()
-        self.assertEqual(response.status_code, 404)
-
-        self._test_document_version.refresh_from_db()
-
-        self.assertEqual(
-            self._test_document_version.pages.count(),
-            document_version_page_count
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-
 class DocumentVersionPageRemapViewTestCase(
-    DocumentVersionPageRemapViewTestMixin, GenericDocumentViewTestCase
+    DocumentVersionPageRemapViewTestMixin, DocumentFileTestMixin,
+    GenericDocumentViewTestCase
 ):
     def setUp(self):
         super().setUp()
@@ -615,105 +502,6 @@ class DocumentVersionPageRemapViewTestCase(
         self.assertEqual(
             self._test_document_version.pages.first().content_object,
             self._test_document_file_pages[1]
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-
-class DocumentVersionPageResetViewTestCase(
-    DocumentVersionPageResetViewTestMixin, GenericDocumentViewTestCase
-):
-    def setUp(self):
-        super().setUp()
-        self._upload_test_document_file(
-            action=DocumentFileActionNothing.backend_id
-        )
-        self._test_document_file_pages = []
-        self.source_content_types = []
-        self.source_object_ids = []
-
-        for test_document_file in self._test_document.files.all():
-            for test_document_file_page in test_document_file.pages.all():
-                self._test_document_file_pages.append(test_document_file_page)
-                self.source_content_types.append(
-                    ContentType.objects.get_for_model(
-                        model=test_document_file_page
-                    )
-                )
-                self.source_object_ids.append(test_document_file_page.pk)
-
-    def test_document_version_reset_view_no_permission(self):
-        self._clear_events()
-
-        response = self._request_test_document_version_page_list_reset_view()
-        self.assertEqual(response.status_code, 404)
-
-        self._test_document_version.refresh_from_db()
-
-        self.assertEqual(
-            self._test_document_version.pages.all()[0].content_object,
-            self._test_document_file_pages[0]
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_document_version_reset_view_with_access(self):
-        self.grant_access(
-            obj=self._test_document_version,
-            permission=permission_document_version_edit
-        )
-
-        self._clear_events()
-
-        response = self._request_test_document_version_page_list_reset_view()
-        self.assertEqual(response.status_code, 302)
-
-        self._test_document_version.refresh_from_db()
-
-        self.assertEqual(
-            self._test_document_version.pages.all()[0].content_object,
-            self._test_document_file_pages[1]
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 2)
-
-        self.assertEqual(events[0].action_object, None)
-        self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self._test_document_version)
-        self.assertEqual(
-            events[0].verb, event_document_version_page_deleted.id
-        )
-
-        self.assertEqual(events[1].action_object, self._test_document_version)
-        self.assertEqual(events[1].actor, self._test_case_user)
-        self.assertEqual(
-            events[1].target, self._test_document_version.pages[0]
-        )
-        self.assertEqual(
-            events[1].verb, event_document_version_page_created.id
-        )
-
-    def test_trashed_document_version_reset_view_with_access(self):
-        self.grant_access(
-            obj=self._test_document_version,
-            permission=permission_document_version_edit
-        )
-
-        self._test_document.delete()
-
-        self._clear_events()
-
-        response = self._request_test_document_version_page_list_reset_view()
-        self.assertEqual(response.status_code, 404)
-
-        self._test_document_version.refresh_from_db()
-
-        self.assertEqual(
-            self._test_document_version.pages.all()[0].content_object,
-            self._test_document_file_pages[0]
         )
 
         events = self._get_test_events()

@@ -26,7 +26,7 @@ class DocumentFileAPIViewTestCase(
 
     def test_document_file_delete_api_view_no_permission(self):
         self._upload_test_document()
-        self._upload_new_file()
+        self._upload_test_document_file()
 
         document_file_count = self._test_document.files.count()
 
@@ -44,7 +44,7 @@ class DocumentFileAPIViewTestCase(
 
     def test_document_file_delete_api_view_with_access(self):
         self._upload_test_document()
-        self._upload_new_file()
+        self._upload_test_document_file()
         self.grant_access(
             obj=self._test_document,
             permission=permission_document_file_delete
@@ -75,7 +75,7 @@ class DocumentFileAPIViewTestCase(
 
     def test_trashed_document_file_delete_api_view_with_access(self):
         self._upload_test_document()
-        self._upload_new_file()
+        self._upload_test_document_file()
         self.grant_access(
             obj=self._test_document,
             permission=permission_document_file_delete

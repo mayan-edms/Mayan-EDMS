@@ -3,6 +3,10 @@ from django.db.models import Q
 
 from mayan.apps.converter.layers import layer_saved_transformations
 
+from ...document_version_modifications import (
+    DocumentVersionModificationPagesAppend,
+    DocumentVersionModificationPagesReset
+)
 from ...literals import PAGE_RANGE_ALL
 from ...models.document_version_models import DocumentVersion
 from ...models.document_version_page_models import DocumentVersionPage
@@ -96,6 +100,48 @@ class DocumentVersionLinkTestMixin:
         self.add_test_view(test_object=self._test_document_version)
         context = self.get_test_view()
         return test_link.resolve(context=context)
+
+
+class DocumentVersionModificationAPIViewTestMixin:
+    def _request_test_document_version_action_page_append_api_view(self):
+        return self.post(
+            viewname='rest_api:documentversion-modify', kwargs={
+                'document_id': self._test_document.pk,
+                'document_version_id': self._test_document_version.pk
+            }, data={
+                'backend_id': DocumentVersionModificationPagesAppend.backend_id
+            }
+        )
+
+    def _request_test_document_version_action_page_reset_api_view(self):
+        return self.post(
+            viewname='rest_api:documentversion-modify', kwargs={
+                'document_id': self._test_document.pk,
+                'document_version_id': self._test_document_version.pk
+            }, data={
+                'backend_id': DocumentVersionModificationPagesReset.backend_id
+            }
+        )
+
+
+class DocumentVersionModificationViewTestMixin:
+    def _request_test_document_version_action_page_append_view(self):
+        return self.post(
+            viewname='documents:document_version_modify', kwargs={
+                'document_version_id': self._test_document_version.pk
+            }, data={
+                'backend': DocumentVersionModificationPagesAppend.backend_id
+            }
+        )
+
+    def _request_test_document_version_action_page_reset_view(self):
+        return self.post(
+            viewname='documents:document_version_modify', kwargs={
+                'document_version_id': self._test_document_version.pk
+            }, data={
+                'backend': DocumentVersionModificationPagesReset.backend_id
+            }
+        )
 
 
 class DocumentVersionPageAPIViewTestMixin:
@@ -314,30 +360,12 @@ class DocumentVersionPageViewTestMixin:
         )
 
 
-class DocumentVersionPageAppendViewTestMixin:
-    def _request_test_document_version_page_list_append_view(self):
-        return self.post(
-            viewname='documents:document_version_page_list_append', kwargs={
-                'document_version_id': self._test_document_version.pk
-            }
-        )
-
-
 class DocumentVersionPageRemapViewTestMixin:
     def _request_test_document_version_page_list_remap_view(self, data):
         return self.post(
             viewname='documents:document_version_page_list_remap', kwargs={
                 'document_version_id': self._test_document_version.pk
             }, data=data
-        )
-
-
-class DocumentVersionPageResetViewTestMixin:
-    def _request_test_document_version_page_list_reset_view(self):
-        return self.post(
-            viewname='documents:document_version_page_list_reset', kwargs={
-                'document_version_id': self._test_document_version.pk
-            }
         )
 
 

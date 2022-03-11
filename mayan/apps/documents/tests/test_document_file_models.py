@@ -2,9 +2,10 @@ from pathlib import Path
 
 from .base import GenericDocumentTestCase
 from .literals import TEST_SMALL_DOCUMENT_CHECKSUM
+from .mixins.document_file_mixins import DocumentFileTestMixin
 
 
-class DocumentFileTestCase(GenericDocumentTestCase):
+class DocumentFileTestCase(DocumentFileTestMixin, GenericDocumentTestCase):
     def test_file_create(self):
         document_file_count = self._test_document.files.count()
 

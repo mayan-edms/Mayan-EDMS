@@ -210,6 +210,9 @@ icon_document_version_export = Icon(
 icon_document_version_list = Icon(
     driver_name='fontawesome', symbol='code-branch'
 )
+icon_document_version_modification = Icon(
+    driver_name='fontawesome', symbol='wrench'
+)
 icon_document_version_return_document = icon_document_return
 icon_document_version_return_list = Icon(
     driver_name='fontawesome-dual', primary_symbol='code-branch',
@@ -249,14 +252,8 @@ icon_document_version_page_return_to_document_version_page_list = Icon(
 icon_document_version_page_list = Icon(
     driver_name='fontawesome', symbol='copy'
 )
-icon_document_version_page_list_append = Icon(
-    driver_name='fontawesome', symbol='layer-group'
-)
 icon_document_version_page_list_remap = Icon(
     driver_name='fontawesome', symbol='project-diagram'
-)
-icon_document_version_page_list_reset = Icon(
-    driver_name='fontawesome', symbol='copy'
 )
 icon_document_version_page_navigation_first = Icon(
     driver_name='fontawesome', symbol='step-backward'

@@ -11,9 +11,12 @@ from ..events import event_document_version_exported
 from ..literals import DOCUMENT_VERSION_EXPORT_MESSAGE_SUBJECT
 
 from .base import GenericDocumentTestCase
+from .mixins.document_file_mixins import DocumentFileTestMixin
 
 
-class DocumentVersionTestCase(GenericDocumentTestCase):
+class DocumentVersionTestCase(
+    DocumentFileTestMixin, GenericDocumentTestCase
+):
     def test_version_new_file_new_pages(self):
         test_document_version_page_content_objects = self._test_document_version.page_content_objects
 

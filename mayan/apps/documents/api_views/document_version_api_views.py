@@ -5,12 +5,14 @@ from rest_framework import status
 from mayan.apps.converter.api_view_mixins import APIImageViewMixin
 from mayan.apps.rest_api import generics
 
+from ..classes import DocumentVersionModification
 from ..permissions import (
     permission_document_version_create, permission_document_version_delete,
     permission_document_version_edit, permission_document_version_export,
     permission_document_version_view
 )
 from ..serializers.document_version_serializers import (
+    DocumentVersionModificationSerializer, DocumentVersionModificationExecuteSerializer,
     DocumentVersionSerializer, DocumentVersionPageSerializer
 )
 from ..tasks import task_document_version_export
@@ -99,6 +101,48 @@ class APIDocumentVersionListView(
         return self.get_document(
             permission=permission_document_version_view
         ).versions.all()
+
+
+class APIDocumentVersionModificationView(
+    ParentObjectDocumentAPIViewMixin, generics.ObjectActionAPIView
+):
+    """
+    post: Execute a modification backend on the selected document version.
+    """
+    action_response_status = status.HTTP_202_ACCEPTED
+    lookup_url_kwarg = 'document_version_id'
+    mayan_object_permissions = {
+        'POST': (permission_document_version_edit,),
+    }
+    serializer_class = DocumentVersionModificationExecuteSerializer
+
+    def get_queryset(self):
+        return self.get_document().versions.all()
+
+    def object_action(self, request, serializer):
+        DocumentVersionModification.get(
+            name=serializer.validated_data['backend_id']
+        ).execute(
+            document_version=self.object,
+            _user=request.user
+        )
+
+
+class APIDocumentVersionModificationBackendListView(generics.ListAPIView):
+    """
+    get: Returns a list of the available document version modification backends.
+    """
+    serializer_class = DocumentVersionModificationSerializer
+
+    def get_queryset(self):
+        return DocumentVersionModification.get_all()
+
+    def get_serializer_context(self):
+        return {
+            'format': self.format_kwarg,
+            'request': self.request,
+            'view': self
+        }
 
 
 class APIDocumentVersionPageDetailView(

@@ -76,11 +76,24 @@ class DocumentFileLinkTestMixin:
 
 
 class DocumentFileTestMixin:
-    def _upload_new_file(self):
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self._test_document.file_new(
-                comment=TEST_DOCUMENT_FILE_COMMENT, file_object=file_object
+    def _upload_test_document_file(self, action=None, _user=None):
+        self._calculate_test_document_file_path()
+
+        if not action:
+            action = DocumentFileActionUseNewPages.backend_id
+
+        with open(file=self._test_document_path, mode='rb') as file_object:
+            self._test_document_file = self._test_document.file_new(
+                action=action, comment=TEST_DOCUMENT_FILE_COMMENT,
+                file_object=file_object, _user=_user
             )
+
+        self._test_document_file_page = self._test_document_file.pages.first()
+        self._test_document_file_pages.extend(
+            list(self._test_document_file.pages.all())
+        )
+        self._test_document_files.append(self._test_document_file)
+        self._test_document_version = self._test_document.version_active
 
 
 class DocumentFileViewTestMixin:

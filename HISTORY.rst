@@ -59,7 +59,14 @@
   ``document_file_actions`` module. The id of the class defaults to the
   existing literal values for compatility.
 - Add API endpoint called ``document_file_actions`` to list the available
-  actions and their properties.
+  actions and their properties. API endpoint URL: /api/v4/document_file_actions/
+- Add document version modification backend. Convert the document version
+  page reset and append functions into document version modication backends.
+  Update document version views and API endpoints to use document version
+  modification backends.
+  Adds new API endpoints:
+    - /api/v4/documents/{ ID }/versions/{ ID }/modify/
+    - /api/v4/document_version_modification_backends/
 
 4.2.1 (2022-02-16)
 ==================

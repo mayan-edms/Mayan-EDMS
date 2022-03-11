@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
 from django.utils.encoding import force_text
-from django.utils.translation import ugettext_lazy as _, ungettext
+from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView
 
 from mayan.apps.common.classes import ModelQueryFields
@@ -16,8 +16,7 @@ from mayan.apps.converter.transformations import (
     TransformationResize, TransformationRotate, TransformationZoom
 )
 from mayan.apps.views.generics import (
-    FormView, MultipleObjectConfirmActionView, SingleObjectDeleteView,
-    SingleObjectListView, SimpleView
+    FormView, SingleObjectDeleteView, SingleObjectListView, SimpleView
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 from mayan.apps.views.utils import resolve
@@ -28,10 +27,8 @@ from ..forms.document_version_page_forms import (
 from ..icons import (
     icon_document_version_page_list, icon_document_version_page_list_remap
 )
-from ..links.document_version_page_links import (
-    link_document_version_page_list_remap,
-    link_document_version_page_list_reset
-)
+from ..links.document_version_links import link_document_version_modification
+from ..links.document_version_page_links import link_document_version_page_list_remap
 from ..models.document_version_models import DocumentVersion
 from ..models.document_version_page_models import DocumentVersionPage
 from ..permissions import (
@@ -41,10 +38,6 @@ from ..settings import (
     setting_display_height, setting_display_width, setting_rotation_step,
     setting_zoom_percent_step, setting_zoom_max_level,
     setting_zoom_min_level
-)
-from ..tasks import (
-    task_document_version_page_list_append,
-    task_document_version_page_list_reset
 )
 
 __all__ = (
@@ -98,7 +91,7 @@ class DocumentVersionPageListView(ExternalObjectViewMixin, SingleObjectListView)
             'hide_object': True,
             'list_as_items': True,
             'no_results_icon': icon_document_version_page_list,
-            'no_results_main_link': link_document_version_page_list_reset.resolve(
+            'no_results_main_link': link_document_version_modification.resolve(
                 request=self.request, resolved_object=self.external_object
             ),
             'no_results_secondary_links': [
@@ -108,8 +101,8 @@ class DocumentVersionPageListView(ExternalObjectViewMixin, SingleObjectListView)
             ],
             'no_results_text': _(
                 'Document version pages are links to actual content pages. '
-                'Create them using the page remap actions or the page '
-                'reset action.'
+                'Create them using the page remap actions or the version '
+                'modification action.'
             ),
             'no_results_title': _('No document version pages available'),
             'object': self.external_object,
@@ -119,54 +112,6 @@ class DocumentVersionPageListView(ExternalObjectViewMixin, SingleObjectListView)
     def get_source_queryset(self):
         queryset = ModelQueryFields.get(model=DocumentVersionPage).get_queryset()
         return queryset.filter(pk__in=self.external_object.pages.all())
-
-
-class DocumentVersionPageListAppendView(MultipleObjectConfirmActionView):
-    object_permission = permission_document_version_edit
-    pk_url_kwarg = 'document_version_id'
-    source_queryset = DocumentVersion.valid.all()
-    success_message = _(
-        '%(count)d document version queued for page list append.'
-    )
-    success_message_plural = _(
-        '%(count)d document versions queued for page list append.'
-    )
-
-    def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
-            'message': _(
-                'The current pages will be deleted and then all the '
-                'document file pages will be appended as pages of this '
-                'document version.'
-            ),
-            'title': ungettext(
-                singular='Append all the document file pages to the selected document version?',
-                plural='Append all the document file pages to the selected document versions?',
-                number=queryset.count()
-            )
-        }
-
-        if queryset.count() == 1:
-            result.update(
-                {
-                    'object': queryset.first(),
-                    'title': _(
-                        'Append all the document file pages to document version: %s?'
-                    ) % queryset.first()
-                }
-            )
-
-        return result
-
-    def object_action(self, form, instance):
-        task_document_version_page_list_append.apply_async(
-            kwargs={
-                'document_version_id': instance.pk,
-                'user_id': self.request.user.pk
-            }
-        )
 
 
 class DocumentVersionPageListRemapView(ExternalObjectViewMixin, FormView):
@@ -275,52 +220,6 @@ class DocumentVersionPageListRemapView(ExternalObjectViewMixin, FormView):
         return reverse(
             viewname='documents:document_version_page_list', kwargs={
                 'document_version_id': self.external_object.pk
-            }
-        )
-
-
-class DocumentVersionPageListResetView(MultipleObjectConfirmActionView):
-    object_permission = permission_document_version_edit
-    pk_url_kwarg = 'document_version_id'
-    source_queryset = DocumentVersion.valid.all()
-    success_message = _(
-        '%(count)d document version queued for page list reset.'
-    )
-    success_message_plural = _(
-        '%(count)d document versions queued for page list reset.'
-    )
-
-    def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
-            'message': _(
-                'The page list will match that of the latest document file.'
-            ),
-            'title': ungettext(
-                singular='Reset the page list of the selected document version?',
-                plural='Reset the page list of the selected document versions?',
-                number=queryset.count()
-            )
-        }
-
-        if queryset.count() == 1:
-            result.update(
-                {
-                    'object': queryset.first(),
-                    'title': _(
-                        'Reset the page list of document version: %s?'
-                    ) % queryset.first()
-                }
-            )
-
-        return result
-
-    def object_action(self, form, instance):
-        task_document_version_page_list_reset.apply_async(
-            kwargs={
-                'document_version_id': instance.pk,
-                'user_id': self.request.user.pk
             }
         )
 

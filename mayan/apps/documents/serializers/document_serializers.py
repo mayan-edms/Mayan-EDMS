@@ -14,8 +14,10 @@ from .document_version_serializers import DocumentVersionSerializer
 
 
 class DocumentFileActionSerializer(serializers.Serializer):
-    id = serializers.CharField(read_only=True, source='backend_id')
-    label = serializers.CharField(read_only=True)
+    id = serializers.CharField(
+        label=_('ID'), read_only=True, source='backend_id'
+    )
+    label = serializers.CharField(label=_('Label'), read_only=True)
 
 
 class DocumentSerializer(serializers.HyperlinkedModelSerializer):

@@ -7,9 +7,12 @@ from mayan.apps.converter.tests.mixins import LayerTestMixin
 from ..document_file_actions import DocumentFileActionAppendNewPages
 
 from .base import GenericDocumentTestCase
+from .mixins.document_file_mixins import DocumentFileTestMixin
 
 
-class DocumentVersionPageTestCase(LayerTestMixin, GenericDocumentTestCase):
+class DocumentVersionPageTestCase(
+    DocumentFileTestMixin, LayerTestMixin, GenericDocumentTestCase
+):
     def _get_test_document_version_page_cached_image(self):
         cache_file = self._test_document_version_page.cache_partition.get_file(
             filename=self._test_document_version_page.get_combined_cache_filename()
