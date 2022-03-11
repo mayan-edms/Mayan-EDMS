@@ -4,8 +4,8 @@ from django.apps import apps
 from django.db.utils import OperationalError, ProgrammingError
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.classes import PropertyHelper
+from mayan.apps.databases.classes import BaseBackend
 from mayan.apps.templating.classes import Template
 
 from .exceptions import WorkflowStateActionError
@@ -24,25 +24,7 @@ class DocumentStateHelper(PropertyHelper):
         return self.instance.workflows.get(workflow__internal_name=name)
 
 
-class WorkflowActionMetaclass(type):
-    _registry = {}
-
-    def __new__(mcs, name, bases, attrs):
-        new_class = super().__new__(
-            mcs, name, bases, attrs
-        )
-
-        if not new_class.__module__ == __name__:
-            mcs._registry[
-                '{}.{}'.format(new_class.__module__, name)
-            ] = new_class
-
-        return new_class
-
-
-class WorkflowAction(
-    AppsModuleLoaderMixin, metaclass=WorkflowActionMetaclass
-):
+class WorkflowAction(BaseBackend):
     _loader_module_name = 'workflow_actions'
     fields = {}
     previous_dotted_paths = ()
@@ -57,14 +39,6 @@ class WorkflowAction(
     @classmethod
     def clean(cls, request, form_data=None):
         return form_data
-
-    @classmethod
-    def get(cls, name):
-        return cls._registry[name]
-
-    @classmethod
-    def get_all(cls):
-        return sorted(cls._registry.values(), key=lambda x: x.label)
 
     @classmethod
     def get_choices(cls):
@@ -92,7 +66,7 @@ class WorkflowAction(
 
     @classmethod
     def id(cls):
-        return '{}.{}'.format(cls.__module__, cls.__name__)
+        return cls.backend_id
 
     @classmethod
     def migrate(cls):
