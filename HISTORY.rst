@@ -67,6 +67,7 @@
   Adds new API endpoints:
     - /api/v4/documents/{ ID }/versions/{ ID }/modify/
     - /api/v4/document_version_modification_backends/
+- Add workflow action to send user messages.
 
 4.2.1 (2022-02-16)
 ==================
