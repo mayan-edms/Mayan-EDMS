@@ -1,3 +1,7 @@
+4.2.2 (2022-XX-XX)
+==================
+- Ensure the object copy permission is required for the object copy link.
+
 4.2.1 (2022-02-16)
 ==================
 - Merge improvements from version 4.1.6.
