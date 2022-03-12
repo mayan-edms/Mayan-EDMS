@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.appearance.settings import setting_max_title_length
 
 from ..icons import icon_list_mode_items, icon_list_mode_list
+from ..settings import setting_paging_argument
 
 logger = logging.getLogger(name=__name__)
 register = Library()
@@ -61,6 +62,54 @@ def views_get_list_mode_icon(context):
 
 @register.simple_tag(takes_context=True)
 def views_get_list_mode_querystring(context):
+    list_as_items = context.get('list_as_items', False)
+
+    if list_as_items:
+        list_mode = 'list'
+    else:
+        list_mode = 'items'
+
+    return views_update_query_string(context=context, _list_mode=list_mode)
+
+
+@register.simple_tag(takes_context=True)
+def views_get_paging_query_string(context, page_number):
+    kwargs = {
+        setting_paging_argument.value: page_number
+    }
+    return views_update_query_string(context=context, **kwargs)
+
+
+@register.simple_tag
+def views_get_proper_elided_page_range(
+    paginator, number, on_each_side=None, on_ends=None
+):
+    kwargs = {
+        'number': number
+    }
+
+    if on_each_side:
+        kwargs['on_each_side'] = on_each_side
+
+    if on_ends:
+        kwargs['on_ends'] = on_ends
+
+    return paginator.get_elided_page_range(**kwargs)
+
+
+@register.simple_tag(takes_context=True)
+def views_render_subtemplate(context, template_name, template_context):
+    """
+    Renders the specified template with the mixed parent and
+    subtemplate contexts.
+    """
+    new_context = Context(context.flatten())
+    new_context.update(Context(template_context))
+    return get_template(template_name).render(new_context.flatten())
+
+
+@register.simple_tag(takes_context=True)
+def views_update_query_string(context, **kwargs):
     try:
         request = context.request
     except AttributeError:
@@ -75,24 +124,9 @@ def views_get_list_mode_querystring(context):
             return ''
 
     # We do this to get an mutable copy we can modify.
-    querystring = request.GET.copy()
+    query = request.GET.copy()
 
-    list_as_items = context.get('list_as_items', False)
+    for key, value in kwargs.items():
+        query[key] = value
 
-    if list_as_items:
-        querystring['_list_mode'] = 'list'
-    else:
-        querystring['_list_mode'] = 'items'
-
-    return '?{}'.format(querystring.urlencode())
-
-
-@register.simple_tag(takes_context=True)
-def views_render_subtemplate(context, template_name, template_context):
-    """
-    Renders the specified template with the mixed parent and
-    subtemplate contexts.
-    """
-    new_context = Context(context.flatten())
-    new_context.update(Context(template_context))
-    return get_template(template_name).render(new_context.flatten())
+    return '?{}'.format(query.urlencode())

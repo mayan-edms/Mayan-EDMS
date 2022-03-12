@@ -1,9 +1,8 @@
 {% load i18n %}
 
+{% load appearance_tags %}
 {% load navigation_tags %}
 {% load views_tags %}
-
-{% load appearance_tags %}
 
 <div id="list-toolbar-spacer"></div>
 <nav id="list-toolbar">
@@ -23,32 +22,32 @@
             </div>
         </div>
 
-        {% if is_paginated %}
+        {% views_get_proper_elided_page_range paginator page_obj.number 2 as page_range %}
+
+        {% if page_obj %}
             <div class="pull-left">
                 <div class="btn-toolbar" role="toolbar" style="margin-right: 10px;">
                     <div class="btn-group">
                         {% if page_obj.has_previous %}
-                            <a class="btn btn-default btn-sm" href="?{{ page_obj.previous_page_number.querystring }}">&lsaquo;&lsaquo;</a>
+                            <a class="btn btn-default btn-sm" href="{% views_get_paging_query_string page_number=page_obj.previous_page_number %}">&lsaquo;&lsaquo;</a>
                         {% else %}
                             <a class="btn btn-default btn-sm disabled" href="#">&lsaquo;&lsaquo;</a>
                         {% endif %}
 
-                        {% for page in page_obj.pages %}
-
-                            {% if page %}
-
-                                {% ifequal page page_obj.number %}
-                                    <a class="active btn btn-default btn-sm pagination-disabled" href="#">{{ page }}</a>
-                                {% else %}
-                                    <a class="btn btn-default btn-sm" href="?{{ page.querystring }}">{{ page }}</a>
-                                {% endifequal %}
+                        {% for page_number in page_range %}
+                            {% if page_number == paginator.ELLIPSIS %}
+                                <a class="btn btn-default btn-sm disabled" href="#">{{ paginator.ELLIPSIS }}</a>
                             {% else %}
-                                <a class="btn btn-default btn-sm disabled" href="#">...</a>
+                                {% if page_number == page_obj.number %}
+                                    <a class="active btn btn-default btn-sm pagination-disabled" href="#">{{ page_number }}</a>
+                                {% else %}
+                                    <a class="btn btn-default btn-sm" href="{% views_get_paging_query_string page_number=page_number %}">{{ page_number }}</a>
+                                {% endif %}
                             {% endif %}
-
                         {% endfor %}
+
                         {% if page_obj.has_next %}
-                            <a class="btn btn-default btn-sm" href="?{{ page_obj.next_page_number.querystring }}">&rsaquo;&rsaquo;</a>
+                            <a class="btn btn-default btn-sm" href="{% views_get_paging_query_string page_number=page_obj.next_page_number %}">&rsaquo;&rsaquo;</a>
                         {% else %}
                             <a class="btn btn-default btn-sm disabled" href="#">&rsaquo;&rsaquo;</a>
                         {% endif %}

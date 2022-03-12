@@ -18,8 +18,6 @@ from django.views.generic.edit import (
 )
 from django.views.generic.list import ListView
 
-from pure_pagination.mixins import PaginationMixin
-
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.dynamic_search.view_mixins import SearchEnabledListViewMixin
 
@@ -874,10 +872,9 @@ class SingleObjectDynamicFormEditView(
 
 
 class SingleObjectListView(
-    SortingViewMixin, ListModeViewMixin, PaginationMixin,
-    ViewPermissionCheckViewMixin, SearchEnabledListViewMixin,
-    RestrictedQuerysetViewMixin, ExtraContextViewMixin, RedirectionViewMixin,
-    ListView
+    SortingViewMixin, ListModeViewMixin, ViewPermissionCheckViewMixin,
+    SearchEnabledListViewMixin, RestrictedQuerysetViewMixin,
+    ExtraContextViewMixin, RedirectionViewMixin, ListView
 ):
     """
     A view that will generate a list of instances from a queryset.

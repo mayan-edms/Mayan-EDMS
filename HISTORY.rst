@@ -69,6 +69,14 @@
     - /api/v4/document_version_modification_backends/
 - Add workflow action to send user messages.
 - Update ``WorkflowAction`` to user ``common.classes.BaseBackend``.
+- Pagination refactor:
+
+  - Remove ``django-pure-pagination`` package.
+  - Use Django's 3.2 new ``get_proper_elided_page_range`` for paging.
+  - Remove duplicate URL query string manipulation.
+  - Remove duplicated pagination template.
+  - Make pagination argument conigurable. Added the setting
+    ``VIEWS_PAGING_ARGUMENT``. Defaults to ``page`` for compatibility.
 
 4.2.1 (2022-02-16)
 ==================

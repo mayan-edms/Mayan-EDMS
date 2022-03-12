@@ -62,7 +62,6 @@ INSTALLED_APPS = (
     'formtools',
     'mathfilters',
     'mptt',
-    'pure_pagination',
     'rest_framework',
     'rest_framework.authtoken',
     'solo',
