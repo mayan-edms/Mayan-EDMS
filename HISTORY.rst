@@ -3,6 +3,7 @@
 - Filter unread message count badge by message read permission.
 - Remove usage of flat values list in document checkout manager.
 - Remove usage of flat ``values_list`` queryset in metadata managers module.
+- Ensure the object copy permission is required for the object copy link.
 
 4.0.21 (2021-11-29)
 ===================
