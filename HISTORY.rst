@@ -78,6 +78,8 @@
   - Make pagination argument conigurable. Added the setting
     ``VIEWS_PAGING_ARGUMENT``. Defaults to ``page`` for compatibility.
 
+- Update the default pagination size from 40 items to 30.
+
 4.2.1 (2022-02-16)
 ==================
 - Merge improvements from version 4.1.6.
