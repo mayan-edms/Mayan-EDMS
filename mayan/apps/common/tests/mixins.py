@@ -1,4 +1,5 @@
 from ..classes import ModelCopy
+from ..links import link_object_copy
 
 
 class CommonAPITestMixin:
@@ -9,6 +10,14 @@ class CommonAPITestMixin:
 class CommonViewTestMixin:
     def _request_about_view(self):
         return self.get(viewname='common:about_view')
+
+
+class ObjectCopyLinkTestMixin:
+    def _resolve_test_object_copy_link(self):
+        self.add_test_view(test_object=self.test_object)
+
+        context = self.get_test_view()
+        return link_object_copy.resolve(context=context)
 
 
 class ObjectCopyTestMixin:
