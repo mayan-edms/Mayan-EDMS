@@ -25,6 +25,10 @@
   shouldn't.
 - Updated the ``subject`` and ``body`` fields of the document email
   workflow action to be optional.
+- Migrate old workflow ``EmailAction`` instances instead of sub-classing
+  for backwards compatibility. Improves commit
+  b522dac80f7f6cfb8c5db8a74d6d2d22bc8b281a and avoids a double entry in the
+  workflow state action selection dropbox.
 
 4.1.7 (2022-04-01)
 ==================

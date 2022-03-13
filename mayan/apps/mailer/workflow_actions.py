@@ -180,6 +180,9 @@ class DocumentEmailAction(ObjectEmailActionMixin, WorkflowAction):
         ObjectEmailActionMixin.field_order
     ).append('attachment')
     label = _('Send document via email')
+    previous_dotted_paths = (
+        'mayan.apps.mailer.workflow_actions.EmailAction',
+    )
 
     def get_execute_data(self, context):
         result = super().get_execute_data(context=context)
@@ -206,10 +209,3 @@ class DocumentEmailAction(ObjectEmailActionMixin, WorkflowAction):
 
     def get_object(self, context):
         return context['document']
-
-
-class EmailAction(DocumentEmailAction):
-    """
-    Sub class for backwards compatibility with existing workflow state
-    actions.
-    """
