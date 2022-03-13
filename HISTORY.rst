@@ -43,6 +43,12 @@
   - Remove dead code.
   - Use constants where appropriate.
 
+- Backport new document link condition logic. Ensure new document and file
+  links access works like their respective views. The links will be active
+  when the access is granted for the source as well as the document/document
+  type. Closes GitLab issue #1102. Thanks to Julian Marié (@Angelfs) for the
+  report and debug information.
+
 4.1.7 (2022-04-01)
 ==================
 - Backport fixes from version 4.2.3

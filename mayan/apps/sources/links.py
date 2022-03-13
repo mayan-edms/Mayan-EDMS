@@ -35,17 +35,38 @@ def condition_document_creation_access(context, resolved_object):
     DocumentType = apps.get_model(
         app_label='documents', model_name='DocumentType'
     )
+    Source = apps.get_model(
+        app_label='sources', model_name='Source'
+    )
 
-    return AccessControlList.objects.restrict_queryset(
+    document_type_access = AccessControlList.objects.restrict_queryset(
         permission=permission_document_create,
         queryset=DocumentType.objects.all(), user=context['user']
     ).exists()
 
+    source_access = AccessControlList.objects.restrict_queryset(
+        permission=permission_document_create,
+        queryset=Source.objects.all(), user=context['user']
+    ).exists()
+
+    return document_type_access and source_access
+
 
 def condition_document_new_files_allowed(context, resolved_object):
+    AccessControlList = apps.get_model(
+        app_label='acls', model_name='AccessControlList'
+    )
     DocumentFile = apps.get_model(
         app_label='documents', model_name='DocumentFile'
     )
+    DocumentType = apps.get_model(
+        app_label='documents', model_name='DocumentType'
+    )
+    Source = apps.get_model(
+        app_label='sources', model_name='Source'
+    )
+
+    new_document_files_allowed = False
 
     try:
         DocumentFile.execute_pre_create_hooks(
@@ -60,7 +81,19 @@ def condition_document_new_files_allowed(context, resolved_object):
             'execute_pre_create_hooks raised and exception: %s', exception
         )
     else:
-        return True
+        new_document_files_allowed = True
+
+    document_type_access = AccessControlList.objects.restrict_queryset(
+        permission=permission_document_file_new,
+        queryset=DocumentType.objects.all(), user=context['user']
+    ).exists()
+
+    source_access = AccessControlList.objects.restrict_queryset(
+        permission=permission_document_file_new,
+        queryset=Source.objects.all(), user=context['user']
+    ).exists()
+
+    return new_document_files_allowed and document_type_access and source_access
 
 
 def condition_source_is_not_interactive(context, resolved_object):
@@ -78,7 +111,6 @@ link_document_file_upload = Link(
     condition=condition_document_new_files_allowed,
     kwargs={'document_id': 'resolved_object.pk'},
     icon=icon_document_file_upload,
-    permissions=(permission_document_file_new,),
     text=_('Upload new file'), view='sources:document_file_upload',
 )
 
