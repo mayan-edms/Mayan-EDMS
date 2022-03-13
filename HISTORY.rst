@@ -5,6 +5,9 @@
   for backwards compatibility. Improves commit
   b522dac80f7f6cfb8c5db8a74d6d2d22bc8b281a and avoids a double entry in the
   workflow state action selection dropbox.
+- Ensure new document and file links access works like their respective
+  views. The links will be active when the access is granted for the source
+  as well as the document/document type.
 
 4.2.1 (2022-02-16)
 ==================
