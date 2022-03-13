@@ -1,6 +1,10 @@
 4.2.2 (2022-XX-XX)
 ==================
 - Ensure the object copy permission is required for the object copy link.
+- Migrate old workflow ``EmailAction`` instances instead of sub-classing
+  for backwards compatibility. Improves commit
+  b522dac80f7f6cfb8c5db8a74d6d2d22bc8b281a and avoids a double entry in the
+  workflow state action selection dropbox.
 
 4.2.1 (2022-02-16)
 ==================
