@@ -4,6 +4,8 @@
 - Remove usage of flat values list in document checkout manager.
 - Remove usage of flat ``values_list`` queryset in metadata managers module.
 - Ensure the object copy permission is required for the object copy link.
+- Update signature view permission label from
+  "View details of document signature" to "View document signatures".
 
 4.0.21 (2021-11-29)
 ===================
