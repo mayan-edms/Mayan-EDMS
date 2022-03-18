@@ -3,7 +3,7 @@ import logging
 
 import elasticsearch
 from elasticsearch import Elasticsearch, helpers
-from elasticsearch_dsl import Q, Search
+from elasticsearch_dsl import Q, Search, analyzer, char_filter
 
 from mayan.apps.common.utils import parse_range
 
@@ -112,6 +112,8 @@ class ElasticSearchBackend(SearchBackend):
                     name_or_query='regexp', _expand__to_dot=False, **{key: value}
                 ) | Q(
                     name_or_query='wildcard', _expand__to_dot=False, **{key: value}
+                ) | Q(
+                    name_or_query='term', _expand__to_dot=False, **{key: value}
                 )
             )
 
@@ -179,7 +181,12 @@ class ElasticSearchBackend(SearchBackend):
 
             field_map = self.get_resolved_field_map(search_model=search_model)
             for field_name, search_field_data in field_map.items():
-                mappings[field_name] = {'type': search_field_data['field'].name}
+                mappings[field_name] = {
+                    'type': search_field_data['field'].name
+                }
+
+                if 'analyzer' in search_field_data:
+                    mappings[field_name]['analyzer'] = search_field_data['analyzer']
 
             self.__class__._search_model_mappings[search_model] = mappings
         return mappings
@@ -238,6 +245,15 @@ class ElasticSearchBackend(SearchBackend):
             )
 
     def update_mappings(self, search_model=None):
+        hyphen_filter = char_filter(
+            name_or_instance='hyphen_filter', type='mapping',
+            mappings=['- => _']
+        )
+        hyphen_analyzer = analyzer(
+            name_or_instance='hyphen_analyzer', char_filter=hyphen_filter,
+            tokenizer='standard'
+        )
+
         client = self.get_client()
 
         if search_model:
@@ -253,16 +269,32 @@ class ElasticSearchBackend(SearchBackend):
             try:
                 client.indices.create(
                     index=index_name,
-                    body={'mappings': {'properties': mappings}}
+                    body={
+                        'settings': {
+                            'analysis': hyphen_analyzer.get_analysis_definition(),
+                        }, 'mappings': {
+                            'properties': mappings
+                        },
+                    }
                 )
+
             except elasticsearch.exceptions.RequestError:
                 try:
+                    client.indices.put_settings(
+                        index=index_name,
+                        body={
+                            'analysis': hyphen_analyzer.get_analysis_definition()
+                        }
+                    )
                     client.indices.put_mapping(
                         index=index_name,
-                        body={'properties': mappings}
+                        body={
+                            'properties': mappings
+                        }
                     )
                 except elasticsearch.exceptions.RequestError:
-                    """There a mapping changes that were not allowed.
+                    """
+                    There a mapping changes that were not allowed.
                     Example: Text to Keyword.
                     Boot up regardless and allow user to reindex to delete
                     old indices.

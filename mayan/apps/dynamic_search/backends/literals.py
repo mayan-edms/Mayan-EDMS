@@ -28,13 +28,18 @@ TEXT_LOCK_INSTANCE_INDEX = 'dynamic_search_index_instance'
 DJANGO_TO_ELASTICSEARCH_FIELD_MAP = {
     models.AutoField: {'field': elasticsearch_dsl.field.Keyword},
     models.BooleanField: {'field': elasticsearch_dsl.field.Keyword},
-    models.CharField: {'field': elasticsearch_dsl.field.Text},
+    models.CharField: {
+        'analyzer': 'hyphen_analyzer',
+        'field': elasticsearch_dsl.field.Text
+    },
     models.EmailField: {'field': elasticsearch_dsl.field.Keyword},
     models.DateTimeField: {
         'field': elasticsearch_dsl.field.Keyword,
         'transformation': lambda value: value.isoformat()
     },
-    models.TextField: {'field': elasticsearch_dsl.field.Text},
+    models.TextField: {
+        'analyzer': 'hyphen_analyzer', 'field': elasticsearch_dsl.field.Text
+    },
     models.UUIDField: {
         'field': elasticsearch_dsl.field.Keyword, 'transformation': str
     },

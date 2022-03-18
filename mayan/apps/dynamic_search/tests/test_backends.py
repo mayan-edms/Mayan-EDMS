@@ -619,7 +619,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
     auto_upload_test_document = False
 
     def test_simple_document_search(self):
-        self._upload_test_document(label='first_doc')
+        self._create_test_document_stub(label='first_doc')
 
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
@@ -632,6 +632,100 @@ class ElasticSearchBackendDocumentSearchTestCase(
 
         self.assertEqual(queryset.count(), 1)
         self.assertTrue(self.test_document in queryset)
+
+    def test_hyphenated_value(self):
+        self._create_test_document_stub(label='P01208-06')
+        self._create_test_document_stub(label='P00025-06')
+        self._create_test_document_stub(label='P00934-06')
+
+        self.grant_access(
+            obj=self.test_documents[0], permission=permission_document_view
+        )
+        self.grant_access(
+            obj=self.test_documents[1], permission=permission_document_view
+        )
+        self.grant_access(
+            obj=self.test_documents[2], permission=permission_document_view
+        )
+
+        queryset = self.search_backend.search(
+            search_model=document_search,
+            query={'q': 'P01208*'}, user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.test_documents[0] in queryset)
+
+        queryset = self.search_backend.search(
+            search_model=document_search,
+            query={'q': 'P01208'}, user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 0)
+
+        queryset = self.search_backend.search(
+            search_model=document_search,
+            query={'q': '*06'}, user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 3)
+        self.assertTrue(self.test_documents[0] in queryset)
+
+        queryset = self.search_backend.search(
+            search_model=document_search,
+            query={'q': 'P00025-06'}, user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.test_documents[1] in queryset)
+
+    def test_hyphenated_value_mixed(self):
+        self._create_test_document_stub(label='first-doc word')
+        self._create_test_document_stub(label='second-doc word')
+        self._create_test_document_stub(label='third-doc word')
+
+        self.grant_access(
+            obj=self.test_documents[0], permission=permission_document_view
+        )
+        self.grant_access(
+            obj=self.test_documents[1], permission=permission_document_view
+        )
+        self.grant_access(
+            obj=self.test_documents[2], permission=permission_document_view
+        )
+
+        queryset = self.search_backend.search(
+            search_model=document_search,
+            query={'q': 'first*'}, user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.test_documents[0] in queryset)
+
+        queryset = self.search_backend.search(
+            search_model=document_search,
+            query={'q': 'first-doc'}, user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.test_documents[0] in queryset)
+
+        queryset = self.search_backend.search(
+            search_model=document_search,
+            query={'q': 'second-doc'}, user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 1)
+        self.assertTrue(self.test_documents[1] in queryset)
+
+        queryset = self.search_backend.search(
+            search_model=document_search,
+            query={'q': 'word'}, user=self._test_case_user
+        )
+
+        self.assertEqual(queryset.count(), 3)
+        self.assertTrue(self.test_documents[0] in queryset)
+        self.assertTrue(self.test_documents[1] in queryset)
 
 
 class WhooshSearchBackendDocumentSearchTestCase(
