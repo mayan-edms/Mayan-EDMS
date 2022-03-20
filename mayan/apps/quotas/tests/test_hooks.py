@@ -8,7 +8,7 @@ from mayan.apps.documents.tests.base import DocumentTestMixin
 from mayan.apps.sources.tests.mixins.base_mixins import (
     DocumentFileUploadViewTestMixin, DocumentUploadWizardViewTestMixin
 )
-from mayan.apps.sources.tests.mixins.web_form_source_mixins import WebFormSourceTestMixin
+from mayan.apps.sources.tests.mixins.web_form_source_mixins import WebFormSourceBackendTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..classes import QuotaBackend
@@ -18,7 +18,7 @@ from ..quota_backends import DocumentCountQuota, DocumentSizeQuota
 
 class QuotaHooksTestCase(
     DocumentFileUploadViewTestMixin, DocumentTestMixin,
-    DocumentUploadWizardViewTestMixin, WebFormSourceTestMixin,
+    DocumentUploadWizardViewTestMixin, WebFormSourceBackendTestMixin,
     GenericViewTestCase
 ):
     auto_upload_test_document = False

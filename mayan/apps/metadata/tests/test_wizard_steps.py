@@ -4,7 +4,7 @@ from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_create
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
-from mayan.apps.sources.tests.mixins.web_form_source_mixins import WebFormSourceTestMixin
+from mayan.apps.sources.tests.mixins.web_form_source_mixins import WebFormSourceBackendTestMixin
 from mayan.apps.views.http import URL
 
 from .literals import (
@@ -14,7 +14,7 @@ from .mixins import MetadataTypeTestMixin
 
 
 class DocumentUploadMetadataTestCase(
-    MetadataTypeTestMixin, WebFormSourceTestMixin,
+    MetadataTypeTestMixin, WebFormSourceBackendTestMixin,
     GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False

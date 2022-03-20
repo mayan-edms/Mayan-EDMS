@@ -17,11 +17,11 @@ from ..source_backends.literals import SOURCE_UNCOMPRESS_CHOICE_ALWAYS
 from .mixins.base_mixins import (
     DocumentFileUploadViewTestMixin, DocumentUploadWizardViewTestMixin
 )
-from .mixins.web_form_source_mixins import WebFormSourceTestMixin
+from .mixins.web_form_source_mixins import WebFormSourceBackendTestMixin
 
 
 class WebFormDocumentUploadWizardViewTestCase(
-    WebFormSourceTestMixin, DocumentUploadWizardViewTestMixin,
+    WebFormSourceBackendTestMixin, DocumentUploadWizardViewTestMixin,
     GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
@@ -329,7 +329,7 @@ class WebFormDocumentUploadWizardViewTestCase(
 
 
 class WebFormDocumentFileUploadViewTestCase(
-    DocumentFileUploadViewTestMixin, WebFormSourceTestMixin,
+    DocumentFileUploadViewTestMixin, WebFormSourceBackendTestMixin,
     GenericDocumentViewTestCase
 ):
     def test_document_file_upload_view_no_permission(self):

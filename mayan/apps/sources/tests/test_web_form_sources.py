@@ -10,11 +10,11 @@ from mayan.apps.documents.tests.literals import (
 from ..source_backends.literals import SOURCE_UNCOMPRESS_CHOICE_ALWAYS
 
 from .mixins.base_mixins import InteractiveSourceBackendTestMixin
-from .mixins.web_form_source_mixins import WebFormSourceTestMixin
+from .mixins.web_form_source_mixins import WebFormSourceBackendTestMixin
 
 
 class WebFormSourceBackendTestCase(
-    InteractiveSourceBackendTestMixin, WebFormSourceTestMixin,
+    InteractiveSourceBackendTestMixin, WebFormSourceBackendTestMixin,
     GenericDocumentTestCase
 ):
     auto_create_test_source = False

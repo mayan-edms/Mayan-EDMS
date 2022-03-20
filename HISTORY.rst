@@ -82,6 +82,8 @@
 - Add support for supplying files to source backend via the API. Add the
   ``accept_files`` property to ``SourceBackendAction`` which dynamically add
   a ``file`` serializer field for the corresponding action.
+- Add an ``upload`` action to the web form source. This allows using web form
+  sources to upload documents from the API.
 
 4.2.1 (2022-02-16)
 ==================
