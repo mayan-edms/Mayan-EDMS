@@ -8,7 +8,7 @@
                     {# Reset the paging on every filter update #}
                     {# Avoids invalid page errors when the current page nubmer is higher that the filter page count results #}
                     <input class="form-control" id="search-filter-page" name="page" type="hidden" value="1">
-                    <input class="form-control" id="search-filter-input-terms" name="q" placeholder="{% trans 'Filter terms' %}" type="search" value="{{ filter_terms|default:'' }}">
+                    <input class="form-control" id="search-filter-input-terms" name="q" placeholder="{% trans 'List filter' %}" type="search" value="{{ filter_terms|default:'' }}">
                     <span class="glyphicon glyphicon-remove-circle" id="search-filter-button-clear"></span>
                 </div>
             </form>
