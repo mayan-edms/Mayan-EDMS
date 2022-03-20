@@ -84,6 +84,10 @@
   a ``file`` serializer field for the corresponding action.
 - Add an ``upload`` action to the web form source. This allows using web form
   sources to upload documents from the API.
+- Support REST API list filtering. Filtering is done using similar logic
+  to that of the user interface list filtering. However, the API list
+  filtering also support filtering by any field and not just using the
+  special "any field" ``q`` query key.
 
 4.2.1 (2022-02-16)
 ==================

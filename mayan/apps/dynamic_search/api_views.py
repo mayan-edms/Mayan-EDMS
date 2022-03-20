@@ -13,6 +13,8 @@ class APISearchView(SearchModelAPIViewMixin, generics.ListAPIView):
     """
     get: Perform a search operation
     """
+    search_disable_list_filtering = True
+
     def get_queryset(self):
         search_model = self.get_search_model()
 
@@ -49,6 +51,8 @@ class APIAdvancedSearchView(SearchModelAPIViewMixin, generics.ListAPIView):
     """
     get: Perform an advanced search operation
     """
+    search_disable_list_filtering = True
+
     def get_queryset(self):
         self.search_model = self.get_search_model()
 

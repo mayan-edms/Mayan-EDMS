@@ -22,15 +22,6 @@ class SearchEnabledListViewMixin:
             except KeyError:
                 return
 
-    def get_search_model_name(self):
-        return self.kwargs.get(
-            SEARCH_MODEL_NAME_KWARG, self.request.GET.get(
-                '_{}'.format(SEARCH_MODEL_NAME_KWARG), self.request.POST.get(
-                    '_{}'.format(SEARCH_MODEL_NAME_KWARG)
-                )
-            )
-        )
-
     def get_context_data(self):
         context = super().get_context_data()
 
