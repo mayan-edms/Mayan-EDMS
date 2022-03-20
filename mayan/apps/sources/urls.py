@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from .api_views import APISourceActionView, APISourceListView, APISourceView
+from .api_views import APISourceActionDetailView, APISourceListView, APISourceView
 from .views.document_file_views import DocumentFileUploadInteractiveView
 from .views.document_views import DocumentUploadInteractiveView
 from .views.source_views import (
@@ -81,6 +81,6 @@ api_urls = [
     ),
     url(
         regex=r'^sources/(?P<source_id>[0-9]+)/actions/(?P<action_name>[a-zA-Z0-9_.]+)/$',
-        name='source-action', view=APISourceActionView.as_view()
+        name='source-action', view=APISourceActionDetailView.as_view()
     )
 ]

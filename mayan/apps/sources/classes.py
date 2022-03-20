@@ -90,18 +90,21 @@ class DocumentCreateWizardStep(AppsModuleLoaderMixin):
 
 SourceBackendActionNamedTuple = collections.namedtuple(
     typename='SourceBackendAction', field_names=(
-        'name', 'arguments', 'confirmation', 'method'
+        'name', 'accept_files', 'arguments', 'confirmation', 'method'
     )
 )
 
 
 class SourceBackendAction(SourceBackendActionNamedTuple):
-    def __new__(cls, name, arguments=None, confirmation=True, method=None):
+    def __new__(
+        cls, name, accept_files=False, arguments=None, confirmation=True, method=None
+    ):
         if not method:
             method = 'action_{}'.format(name)
         return super().__new__(
-            cls, name=name, arguments=arguments or (),
-            confirmation=confirmation, method=method
+            cls, name=name, accept_files=accept_files,
+            arguments=arguments or (), confirmation=confirmation,
+            method=method
         )
 
 
@@ -197,6 +200,9 @@ class SourceBackend(ModelBaseBackend):
         clean_kwargs = {}
         for argument in action.arguments:
             clean_kwargs[argument] = kwargs.get(argument)
+
+        if action.accept_files:
+            clean_kwargs['file'] = kwargs.get('file')
 
         return clean_kwargs
 
