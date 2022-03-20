@@ -79,6 +79,7 @@
     ``VIEWS_PAGING_ARGUMENT``. Defaults to ``page`` for compatibility.
 
 - Update the default pagination size from 40 items to 30.
+- Support hyphenated text when using the ElasticSearch backend.
 - Add support for supplying files to source backend via the API. Add the
   ``accept_files`` property to ``SourceBackendAction`` which dynamically add
   a ``file`` serializer field for the corresponding action.
