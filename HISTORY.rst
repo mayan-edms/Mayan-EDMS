@@ -7,6 +7,8 @@
   - Fix an issue where a staging folder would not tag uploaded
     documents.
   - Fix document file signature serializer label.
+  - Update document metadata model field label from "Metadata type value"
+    to "Metadata value".
 
 
 4.1.6 (2022-02-15)
