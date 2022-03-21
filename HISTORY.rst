@@ -8,6 +8,7 @@
   "View details of document signature" to "View document signatures".
 - Update document metadata model field label from "Metadata type value"
   to "Metadata value".
+- Fix document file signature serializer label.
 
 4.0.21 (2021-11-29)
 ===================
