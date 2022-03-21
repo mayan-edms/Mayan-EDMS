@@ -45,6 +45,7 @@ Other
 ^^^^^
 
 - Ensure the object copy permission is required for the object copy link.
+- Fix document file signature serializer label.
 
 
 Removals
