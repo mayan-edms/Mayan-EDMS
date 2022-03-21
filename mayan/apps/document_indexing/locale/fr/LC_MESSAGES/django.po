@@ -8,17 +8,17 @@
 # Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2022
 # Roberto Rosario, 2022
-# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Yves Dubois <ydubois@gmail.com>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
+# Frédéric Sheedy <sheedf@gmail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"POT-Creation-Date: 2022-03-21 06:43+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>, 2022\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -44,7 +44,7 @@ msgstr "Niveau"
 
 #: apps.py:142 apps.py:172
 msgid "Depth"
-msgstr ""
+msgstr "Profondeur"
 
 #: apps.py:146
 msgid "Total nodes"
@@ -230,14 +230,15 @@ msgstr ""
 #: models.py:388
 msgid "Total number of nodes with unique values this item contains."
 msgstr ""
+"Nombre total de nœuds avec des valeurs uniques que cet élément contient."
 
 #: models.py:397
 msgid "Total number of unique documents this item contains."
-msgstr ""
+msgstr "Nombre total de documents uniques que cet élément contient."
 
 #: models.py:407
 msgid "Total number of node levels this item contains."
-msgstr ""
+msgstr "Nombre total de niveaux de nœuds que cet élément contient."
 
 #: models.py:434 search.py:26
 msgid "Value"

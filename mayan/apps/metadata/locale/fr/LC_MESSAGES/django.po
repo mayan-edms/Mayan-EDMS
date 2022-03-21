@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"POT-Creation-Date: 2022-03-21 06:44+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -44,9 +44,9 @@ msgstr "Valeur de la métadonnée de"
 msgid "Metadata type name"
 msgstr "Nom du type de métadonnée"
 
-#: apps.py:147
-msgid "Metadata type value"
-msgstr "Valeur du type de métadonnée"
+#: apps.py:147 search.py:17
+msgid "Metadata value"
+msgstr "Valeur de la métadonnée"
 
 #: events.py:8
 msgid "Document metadata added"
@@ -372,10 +372,6 @@ msgstr "Retirer le type de métadonnées"
 #: queues.py:15
 msgid "Add required metadata type"
 msgstr "Ajouter le type de métadonnées obligatoire"
-
-#: search.py:17
-msgid "Metadata value"
-msgstr "Valeur de la métadonnée"
 
 #: search.py:24 search.py:35 search.py:46 search.py:57
 msgid "Document metadata type"

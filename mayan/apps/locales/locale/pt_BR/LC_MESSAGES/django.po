@@ -6,16 +6,16 @@
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
-# Márcia Ferreira, 2022
 # Roberto Rosario, 2022
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"POT-Creation-Date: 2022-03-21 06:44+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +29,7 @@ msgstr "Locais"
 
 #: events.py:8
 msgid "User locale profile edited"
-msgstr ""
+msgstr "Perfil de utilizador local editado"
 
 #: links.py:18
 msgid "Locale profile"
@@ -66,9 +66,9 @@ msgstr "Nenhum"
 #: views.py:36
 #, python-format
 msgid "Locale profile for user: %s"
-msgstr ""
+msgstr "Perfil local para o utilizador: %s"
 
 #: views.py:82
 #, python-format
 msgid "Edit locale profile for user: %s"
-msgstr ""
+msgstr "Editar perfil local para o utilizador: %s"

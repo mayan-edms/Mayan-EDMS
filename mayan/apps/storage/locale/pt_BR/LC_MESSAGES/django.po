@@ -8,14 +8,15 @@
 # Aline Freitas <aline@alinefreitas.com.br>, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # Roberto Rosario, 2022
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"POT-Creation-Date: 2022-03-21 06:44+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +30,7 @@ msgstr "Armazenamento"
 
 #: apps.py:56
 msgid "Source object"
-msgstr ""
+msgstr "Objeto fonte"
 
 #: classes.py:86 classes.py:107
 #, python-format
@@ -42,19 +43,19 @@ msgstr ""
 
 #: events.py:6 links.py:19 models.py:64 storages.py:22
 msgid "Download files"
-msgstr ""
+msgstr "Descarregar ficheiros"
 
 #: events.py:10
 msgid "Download file created"
-msgstr ""
+msgstr "Arquivo de documento criado"
 
 #: events.py:13
 msgid "Download file deleted"
-msgstr ""
+msgstr "Arquivo de ficheiro eliminado"
 
 #: events.py:16
 msgid "Download file downloaded"
-msgstr ""
+msgstr "Arquivo de ficheiro descarregado"
 
 #: links.py:12
 msgid "Delete"
@@ -101,7 +102,7 @@ msgstr "Data e hora"
 
 #: model_mixins.py:70
 msgid "Unnamed file"
-msgstr ""
+msgstr "Ficheiro sem nome"
 
 #: models.py:42 models.py:116
 msgid "File"
@@ -117,7 +118,7 @@ msgstr "Permissão"
 
 #: models.py:63
 msgid "Download file"
-msgstr ""
+msgstr "Descarregar ficheiro"
 
 #: models.py:125
 msgid "Shared uploaded file"
@@ -137,17 +138,19 @@ msgstr "Excluir uploads caducos"
 
 #: queues.py:26
 msgid "Delete stale download files"
-msgstr ""
+msgstr "Eliminar arquivos de descargas ultrapassados"
 
 #: settings.py:19
 msgid "Time in seconds, after which download files will be deleted."
-msgstr ""
+msgstr "Tempo em segundos em que os ficheiros descarregados serão elimiados"
 
 #: settings.py:25
 msgid ""
 "A storage backend that all workers can use to generate and hold files for "
 "download."
 msgstr ""
+"Backend de armazenamento que todos os trabalhadores podem utilizar para "
+"gerar e manter ficheiros para descarga."
 
 #: settings.py:36
 msgid "A storage backend that all workers can use to share files."
@@ -166,12 +169,16 @@ msgstr ""
 #: settings.py:53
 msgid "Time in seconds, after which temporary uploaded files will be deleted."
 msgstr ""
+"Tempo em segundos em que os ficheiros carregados temporariamente serão "
+"eliminados"
 
 #: storages.py:15
 msgid ""
 "Unable to initialize the download file storage. Check the settings {} and {}"
 " for formatting errors."
 msgstr ""
+"Não é possível iniciar o download do armazenamento de ficheiro. Verifique as"
+" configurações {} e {} para formatar erros. "
 
 #: storages.py:29
 msgid ""
@@ -187,11 +194,14 @@ msgid ""
 "export. Download files are retained over a span of time and then removed "
 "automatically."
 msgstr ""
+"Ficheiros descarregados são criados como resultados de um processo externo "
+"como exportação. Download ficheiros são mantidos durante algum tempo e "
+"depois removidos automaticamente."
 
 #: views.py:59
 msgid "There are no files to download."
-msgstr ""
+msgstr "Não há ficheiros para descarregar"
 
 #: views.py:60
 msgid "Downloads"
-msgstr ""
+msgstr "Descargas"
