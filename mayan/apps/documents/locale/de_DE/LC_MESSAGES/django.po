@@ -16,14 +16,15 @@
 # Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2022
 # Berny <berny@bernhard-marx.de>, 2022
 # Mathias Behrle <mathiasb@m9s.biz>, 2022
+# Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"POT-Creation-Date: 2022-03-21 06:44+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2022\n"
+"Last-Translator: Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2022\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -121,7 +122,7 @@ msgstr ""
 
 #: apps.py:582
 msgid "Access date and time"
-msgstr ""
+msgstr "Datum und Zeit des Zugriffs"
 
 #: classes.py:57
 msgid "Original"
@@ -759,7 +760,7 @@ msgstr "Beschreibung"
 
 #: models/document_models.py:81
 msgid "The date and time of the document creation."
-msgstr ""
+msgstr "Datum und Zeit der Dokumenterstellung"
 
 #: models/document_models.py:82
 msgid "Created"
@@ -950,11 +951,11 @@ msgstr "Letzte Dokumente"
 
 #: models/recently_accessed_document_models.py:54
 msgid "Recently accessed document"
-msgstr ""
+msgstr "Kürzlich abgerufenes Dokument"
 
 #: models/recently_accessed_document_models.py:55
 msgid "Recently accessed documents"
-msgstr ""
+msgstr "Kürzlich abgerufene Dokumente"
 
 #: permissions.py:10
 msgid "Create documents"

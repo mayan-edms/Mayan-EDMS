@@ -421,6 +421,7 @@ Issues closed
 - :gitlab-issue:`928` Assignment of mimetypes is selecting the wrong type
 - :gitlab-issue:`965` Filter / ignore certain filetypes on watch-folders
 - :gitlab-issue:`983` Quick-Search (the one on the starting page) not working on 4.0.1, advanced search works
+- :gitlab-issue:`991` PDFs from DocuSign upload but cannot be viewed or searched
 - :gitlab-issue:`1009` [4.0.7] Whoosh backend: searching for metadata values gives wrong/erratic results
 - :gitlab-issue:`1044` [4.1] [API] Feature Request: Endpoint for workflow transition trigger events
 

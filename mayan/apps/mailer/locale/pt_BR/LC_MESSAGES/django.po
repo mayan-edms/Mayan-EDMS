@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"POT-Creation-Date: 2022-03-21 06:44+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -45,11 +45,11 @@ msgstr "E-mail enviado"
 
 #: events.py:11
 msgid "Mailing profile created"
-msgstr ""
+msgstr "Perfil de envio criado"
 
 #: events.py:14
 msgid "Mailing profile edited"
-msgstr ""
+msgstr "Perfil de envio editado"
 
 #: forms.py:58 forms.py:93
 msgid ""
@@ -90,27 +90,27 @@ msgstr "Backend"
 
 #: links.py:33 links.py:36
 msgid "Email document link"
-msgstr ""
+msgstr "Link do documento do e-mail"
 
 #: links.py:46 links.py:51
 msgid "Email document file"
-msgstr ""
+msgstr "Ficheiro do documento de e-mail"
 
 #: links.py:57 links.py:62
 msgid "Email document file link"
-msgstr ""
+msgstr "Link de ficheiro de documento de e-mail"
 
 #: links.py:72 links.py:77
 msgid "Email document version"
-msgstr ""
+msgstr "Versão do documento de e-mail"
 
 #: links.py:83
 msgid "Email document version link"
-msgstr ""
+msgstr "Link de versão de documento de e-mail"
 
 #: links.py:88
 msgid "Email link version"
-msgstr ""
+msgstr "Versão de link de e-mail"
 
 #: links.py:97
 msgid "Create mailing profile"
@@ -144,10 +144,14 @@ msgid ""
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr ""
+"Anexado a este e-mail está {{ object_name }}: {{ object }}\n"
+"\n"
+"--------\n"
+"Este e-mail foi enviado de %(project_title)s(%(project_website)s)"
 
 #: literals.py:11
 msgid "{{ object_name }}: {{ object }}"
-msgstr ""
+msgstr "{{ nome_objeto }}: {{ objecto }}"
 
 #: literals.py:13
 #, python-format
@@ -157,10 +161,14 @@ msgid ""
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr ""
+"Para aceder a {{ nome_objeto }} clique no link seguinte : {{ link }}\n"
+"\n"
+"--------\n"
+"este e-mail foi enviado de %(project_title)s(%(project_website)s)"
 
 #: literals.py:17
 msgid "Link for {{ object_name }}: {{ object }}"
-msgstr ""
+msgstr "Link para {{ nome_objeto }}: {{ objecto }} "
 
 #: mailers.py:19 mailers.py:108
 msgid "From"
@@ -325,23 +333,23 @@ msgstr "Enviar link do documento por e-mail"
 
 #: permissions.py:34
 msgid "Send document file via email"
-msgstr ""
+msgstr "Enviar ficheiro de documento por e-mail"
 
 #: permissions.py:38
 msgid "Send document file link via email"
-msgstr ""
+msgstr "Enviar link do ficheiro de documento por e-mail"
 
 #: permissions.py:45
 msgid "Send document version via email"
-msgstr ""
+msgstr "Enviar versão de documento por e-mail"
 
 #: permissions.py:49
 msgid "Send document version link via email"
-msgstr ""
+msgstr "Enviar link de versão de documento por e-mail"
 
 #: queues.py:11
 msgid "Send object"
-msgstr ""
+msgstr "Enviar objeto"
 
 #: settings.py:15
 msgid "Template for the document email form subject line."
@@ -376,41 +384,51 @@ msgstr "Ficheiro do documento"
 #, python-format
 msgid "%(count)d document file queued for email delivery"
 msgstr ""
+"%(count)d ficheiro de documento em lista de espera para entrega de e-mail"
 
 #: views/document_file_views.py:19
 #, python-format
 msgid "%(count)d document files queued for email delivery"
-msgstr ""
+msgstr "%(count)dlink de ficheiros em lista de espera para entrega de e-mailf"
 
 #: views/document_file_views.py:31
 #, python-format
 msgid "%(count)d document file link queued for email delivery"
 msgstr ""
+"%(count)dlink de ficheiro de documento em lista de espera para entrega de "
+"e-mail"
 
 #: views/document_file_views.py:34
 #, python-format
 msgid "%(count)d document file links queued for email delivery"
 msgstr ""
+"%(count)dlinks de ficheiro de documento em lista de espera para entrega de "
+"e-mail"
 
 #: views/document_version_views.py:18
 #, python-format
 msgid "%(count)d document version queued for email delivery"
 msgstr ""
+"%(count)dversão de documento em lista de espera para entrega de e-mail"
 
 #: views/document_version_views.py:21
 #, python-format
 msgid "%(count)d document versions queued for email delivery"
-msgstr ""
+msgstr "%(count)dversões de documento em lista de espera de e-mail"
 
 #: views/document_version_views.py:33
 #, python-format
 msgid "%(count)d document version link queued for email delivery"
 msgstr ""
+"%(count)dlink de versão de documento em lista de espera para entrega de "
+"e-mail"
 
 #: views/document_version_views.py:36
 #, python-format
 msgid "%(count)d document version links queued for email delivery"
 msgstr ""
+"%(count)dlinks de versão de documento em lista de espera para entrega de "
+"e-mail"
 
 #: views/document_views.py:14
 #, python-format
@@ -526,15 +544,15 @@ msgstr "Anexo"
 
 #: workflow_actions.py:96
 msgid "Attach an object to the email."
-msgstr ""
+msgstr "Anexar um objeto ao e-mail"
 
 #: workflow_actions.py:105
 msgid "Send object via email"
-msgstr ""
+msgstr "Enviar objeto por e-mail"
 
 #: workflow_actions.py:173
 msgid "Attach the exported document version to the email."
-msgstr ""
+msgstr "Anexar a versão do documento exportada para o e-mail"
 
 #: workflow_actions.py:182
 msgid "Send document via email"

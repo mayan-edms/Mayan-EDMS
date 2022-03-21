@@ -5,20 +5,20 @@
 # 
 # Translators:
 # Vítor Figueiró <vfigueiro@gmail.com>, 2022
-# Márcia Ferreira, 2022
 # Roberto Rosario, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # Fernando Vieira <fera_br@yahoo.com.br>, 2022
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
 # Aline Freitas <aline@alinefreitas.com.br>, 2022
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"POT-Creation-Date: 2022-03-21 06:44+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: Aline Freitas <aline@alinefreitas.com.br>, 2022\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +28,7 @@ msgstr ""
 
 #: apps.py:39 events.py:5 permissions.py:5
 msgid "Messaging"
-msgstr ""
+msgstr "Envio de mensagens"
 
 #: apps.py:61
 msgid "None"
@@ -36,7 +36,7 @@ msgstr "Nenhum"
 
 #: apps.py:67
 msgid "Sender"
-msgstr ""
+msgstr "Remetente"
 
 #: events.py:8
 msgid "Message created"
@@ -50,25 +50,25 @@ msgstr "Mensagem editada"
 msgid "Body"
 msgstr "Corpo"
 
-#: links.py:38 views.py:33
+#: links.py:49 views.py:33
 msgid "Create message"
 msgstr "Criar mensagem"
 
-#: links.py:41 links.py:47
+#: links.py:52 links.py:58
 msgid "Delete"
 msgstr "Remover"
 
-#: links.py:56 links.py:67
+#: links.py:67 links.py:78
 msgid "Mark as read"
-msgstr ""
+msgstr "Marcar como lida"
 
-#: links.py:62 links.py:71
+#: links.py:73 links.py:82
 msgid "Mark as unread"
-msgstr ""
+msgstr "Marcar como não lida"
 
-#: links.py:75
+#: links.py:86
 msgid "Mark all as read"
-msgstr ""
+msgstr "Marcar todas como lidas"
 
 #: models.py:30
 msgid "User"
@@ -84,11 +84,11 @@ msgstr "Assunto"
 
 #: models.py:37
 msgid "The actual content of the message."
-msgstr ""
+msgstr "O conteúdo real da mensagem"
 
 #: models.py:42
 msgid "This field determines if the message has been read or not."
-msgstr ""
+msgstr "Este campo determina se a mensagem foi lida ou não"
 
 #: models.py:43
 msgid "Read"
@@ -96,7 +96,7 @@ msgstr "Ler"
 
 #: models.py:47
 msgid "Date and time of the message creation."
-msgstr ""
+msgstr "Data e hora da criação da mensagem"
 
 #: models.py:48
 msgid "Creation date and time"
@@ -132,130 +132,131 @@ msgstr "Visualizar mensagens"
 
 #: serializers.py:19
 msgid "Primary key of the recipient user of this message."
-msgstr ""
+msgstr "Chave primária do utilizador destinado desta mensagem "
 
 #: views.py:44
 #, python-format
 msgid "Error deleting message \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Erro ao eliminar mensagem \"%(instance)s\"; %(exception)s"
 
 #: views.py:48
 #, python-format
 msgid "Message \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Mensagem \"%(object)s\" eliminada com sucesso"
 
 #: views.py:49
 #, python-format
 msgid "%(count)d message deleted successfully."
-msgstr ""
+msgstr "%(count)dmensagem eliminada com sucesso"
 
 #: views.py:50
 #, python-format
 msgid "%(count)d messages deleted successfully."
-msgstr ""
+msgstr "%(count)dmensagens eliminadas com sucesso"
 
 #: views.py:51
 #, python-format
 msgid "Delete message: %(object)s."
-msgstr ""
+msgstr "Eliminar mensagem: %(object)s."
 
 #: views.py:52
 #, python-format
 msgid "Delete the %(count)d selected message."
-msgstr ""
+msgstr "Eliminar %(count)dmensagem selecionada"
 
 #: views.py:53
 #, python-format
 msgid "Delete the %(count)d selected messages."
-msgstr ""
+msgstr "Eliminar %(count)dmensagens selecionadas"
 
 #: views.py:92
 #, python-format
 msgid "Details of message: %s"
-msgstr ""
+msgstr "Detalhes da mensagem: %s"
 
 #: views.py:115
 msgid "Here you will find text messages from other users or from the system."
 msgstr ""
+"Aqui irá encontrar mensagens de textos de outros utilizadores ou do sistema"
 
 #: views.py:118
 msgid "There are no messages"
-msgstr ""
+msgstr "Não há mensagens"
 
 #: views.py:128
 #, python-format
 msgid "Error marking message \"%(instance)s\" as read; %(exception)s"
-msgstr ""
+msgstr "Erro ao marcar a mensagem \"%(instance)s\" como lida; %(exception)s"
 
 #: views.py:134
 #, python-format
 msgid "Message \"%(object)s\" marked as read successfully."
-msgstr ""
+msgstr "Mensagem \"%(object)s\" marcada como lida com sucesso "
 
 #: views.py:137
 #, python-format
 msgid "%(count)d message marked as read successfully."
-msgstr ""
+msgstr "%(count)dmensagem marcada como lida com sucesso"
 
 #: views.py:140
 #, python-format
 msgid "%(count)d messages marked as read successfully."
-msgstr ""
+msgstr "%(count)dmensagens marcadas como lidas com sucesso"
 
 #: views.py:142
 #, python-format
 msgid "Mark the message \"%(object)s\" as read."
-msgstr ""
+msgstr "Marcar a mensagem \"%(object)s\" como lida"
 
 #: views.py:143
 #, python-format
 msgid "Mark the %(count)d selected message as read."
-msgstr ""
+msgstr "Marcar %(count)dmensagem selecionada como lida"
 
 #: views.py:144
 #, python-format
 msgid "Mark the %(count)d selected messages as read."
-msgstr ""
+msgstr "Marcar %(count)dmensagens selecionadas como lidas."
 
 #: views.py:171
 msgid "Mark all message as read?"
-msgstr ""
+msgstr "Marcar todas as mensagem como lidas?"
 
 #: views.py:188
 msgid "All messages marked as read."
-msgstr ""
+msgstr "Todas as mensagens marcadas como lidas."
 
 #: views.py:195
 #, python-format
 msgid "Error marking message \"%(instance)s\" as unread; %(exception)s"
-msgstr ""
+msgstr "Erro ao marcar mensagem \"%(instance)s\" como não lida; %(exception)s"
 
 #: views.py:201
 #, python-format
 msgid "Message \"%(object)s\" marked as unread successfully."
-msgstr ""
+msgstr "Mensagem \"%(object)s\" marcada como não lida com sucesso"
 
 #: views.py:204
 #, python-format
 msgid "%(count)d message marked as unread successfully."
-msgstr ""
+msgstr "%(count)dmensagem marcada como não lida com sucesso"
 
 #: views.py:207
 #, python-format
 msgid "%(count)d messages marked as unread successfully."
-msgstr ""
+msgstr "%(count)dmensagens marcadas como não lidas com sucesso"
 
 #: views.py:209
 #, python-format
 msgid "Mark the message \"%(object)s\" as unread."
-msgstr ""
+msgstr "Marcar a mensagem \"%(object)s\" como não lida"
 
 #: views.py:210
 #, python-format
 msgid "Mark the %(count)d selected message as unread."
-msgstr ""
+msgstr "Marcar %(count)dmensagem selecionada como não lida."
 
 #: views.py:211
 #, python-format
 msgid "Mark the %(count)d selected messages as unread."
-msgstr ""
+msgstr "Marcar %(count)dmensagens selecionadas como não lidas."

@@ -11,18 +11,18 @@
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
 # Emerson Soares <on.emersonsoares@gmail.com>, 2022
 # Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2022
-# Márcia Ferreira, 2022
 # Aline Freitas <aline@alinefreitas.com.br>, 2022
 # Roberto Rosario, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"POT-Creation-Date: 2022-03-21 06:44+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
-"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:57 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
+#: apps.py:57 events.py:5 links.py:135 menus.py:5 models.py:42 queues.py:7
 #: settings.py:13 views/source_views.py:164
 msgid "Sources"
 msgstr "Fontes"
@@ -94,7 +94,7 @@ msgstr ""
 
 #: forms.py:48
 msgid "The backend used to create the new source."
-msgstr ""
+msgstr "O backend utilizado para criar a nova fonte."
 
 #: forms.py:49
 msgid "Backend"
@@ -108,27 +108,27 @@ msgstr "Arquivo"
 msgid "Default"
 msgstr "Padrão"
 
-#: links.py:74
+#: links.py:107
 msgid "New document"
 msgstr "Novo documento"
 
-#: links.py:82
+#: links.py:114
 msgid "Upload new file"
 msgstr "Carregar novo arquivo"
 
-#: links.py:88
+#: links.py:120
 msgid "Create source"
 msgstr "Criar fonte"
 
-#: links.py:94 source_backends/staging_folder_backends.py:311
+#: links.py:126 source_backends/staging_folder_backends.py:311
 msgid "Delete"
 msgstr "Excluir"
 
-#: links.py:98
+#: links.py:130
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:110
+#: links.py:142
 msgid "Test"
 msgstr "Teste"
 
@@ -186,7 +186,7 @@ msgstr "Manusear upload"
 
 #: serializers.py:51
 msgid "Optional arguments for the action. Must be JSON formatted."
-msgstr ""
+msgstr "Argumentos opcionais para a ação. Deve ser formatado em JSON."
 
 #: serializers.py:52 source_backends/sane_scanner_backends.py:45
 msgid "Arguments"
@@ -194,15 +194,17 @@ msgstr "Argumentos"
 
 #: settings.py:20
 msgid "Arguments to use when creating source backends."
-msgstr ""
+msgstr "Argumentos a utilizar quando se cria fontes de backends."
 
 #: settings.py:26
 msgid "Path to the Storage subclass used to store cached source image files."
 msgstr ""
+"Caminho para a subclasse de Armazenamento utilizado para armazenar fontes de"
+" ficheiros de imagens em cache."
 
 #: settings.py:34
 msgid "Arguments to pass to the SOURCES_SOURCE_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argumentos a passar para FONTES_FONTE_CACHE_ARMAZENAMENTO_BACKEND."
 
 #: source_backends/email_backends.py:45
 msgid "Host"
@@ -273,10 +275,13 @@ msgid ""
 "Select a metadata type to store the email's message ID value. Must be a "
 "valid metadata type for the document type selected previously."
 msgstr ""
+"Selecionar um tipo de metadata para armazenar o ID do valor da mensagens do "
+"email. Deve ser um tipo de metadata cálido para o tipo de documento "
+"selecionado prviamente."
 
 #: source_backends/email_backends.py:146
 msgid "Message ID metadata type"
-msgstr ""
+msgstr "Tipo de metadata do ID de mensagem"
 
 #: source_backends/email_backends.py:154
 msgid "Store the body of the email as a text document."
@@ -310,6 +315,8 @@ msgid ""
 "Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
 " type: %(document_type)s"
 msgstr ""
+"Tipo de metadata do ID de mensagem \"%(metadata_type)s\" não é válido para o"
+" tipo de documento: %(document_type)s"
 
 #: source_backends/email_backends.py:379
 msgid "IMAP Mailbox from which to check for messages."
@@ -440,6 +447,9 @@ msgid ""
 "will change depending on the device. Execute `scanimage --help --device-"
 "name=DEVICE` for the list of supported arguments."
 msgstr ""
+"Argumentos YAML formatados a passar à ordem `scanimage`. Os argumentos irão "
+"ser modificados dependendo do dispositivo. Executar `scanimage --ajuda "
+"--dispositivo-nome=DISPOSITIVO` para a lista de argumentos suportados."
 
 #: source_backends/sane_scanner_backends.py:49
 msgid "SANE Scanner"
@@ -548,18 +558,20 @@ msgstr "Incluir subdiretórios?"
 #: source_backends/watch_folder_backends.py:60
 msgid "Regular expression used to select which files to upload."
 msgstr ""
+"Expressão regular utilizado para selecionar quais ficheiros a carregar."
 
 #: source_backends/watch_folder_backends.py:62
 msgid "Include regular expression"
-msgstr ""
+msgstr "Incluir expressão regular. "
 
 #: source_backends/watch_folder_backends.py:69
 msgid "Regular expression used to exclude which files to upload."
 msgstr ""
+"Expressão regular utilizada para excluir quais os ficheiros a carregar."
 
 #: source_backends/watch_folder_backends.py:71
 msgid "Exclude regular expression"
-msgstr ""
+msgstr "Excluir expressão regular."
 
 #: source_backends/watch_folder_backends.py:75
 msgid "Watch folder"
@@ -649,7 +661,7 @@ msgstr "Enviar"
 #: views/document_views.py:38
 #, python-format
 msgid "Error processing source document upload; %(exception)s"
-msgstr ""
+msgstr "Erro ao processar à fonte do carregamento do documento; %(exception)s"
 
 #: views/document_views.py:57
 msgid "New document queued for upload and will be available shortly."
@@ -662,12 +674,12 @@ msgstr "Carregue um documento do tipo \"%(document_type)s\" da fonte: %(source)s
 
 #: views/source_views.py:37
 msgid "New source backend selection"
-msgstr ""
+msgstr "Nova fonte de seleção de backend"
 
 #: views/source_views.py:93
 #, python-format
 msgid "Create a \"%s\" source"
-msgstr ""
+msgstr "Criar a fonte \"%s\""
 
 #: views/source_views.py:118
 #, python-format
@@ -685,6 +697,9 @@ msgid ""
 "and require user input to operate. Others are automatic and run in the "
 "background without user intervention."
 msgstr ""
+"Fontes fornecem os meios para carregar os documentos. Algumas fontes são "
+"interativas e demandem entradas de utilizador a funcionar. Outras são "
+"automáticas e são executadas em background sem a intervenção do utilizador."
 
 #: views/source_views.py:163
 msgid "No sources available"
@@ -697,6 +712,10 @@ msgid ""
 "Check the source's error log for information during testing. A successful "
 "test will clear the error log."
 msgstr ""
+"Isto irá executar o código da fonte, mesmo se a fonte não estiver "
+"habilitada. Fontes que removem conteúdo depois de do download, não o farão "
+"enquanto são testadas. Verifique o log do erro da fonte para informações "
+"durante os testes. Um teste bem sucedido irá limpar o log de erros."
 
 #: views/source_views.py:187
 #, python-format
@@ -705,7 +724,7 @@ msgstr "Verificar a origem \"%s\"?"
 
 #: views/source_views.py:199
 msgid "Source test queued."
-msgstr ""
+msgstr "Teste de fonte em linha."
 
 #: wizard_steps.py:11
 msgid "Select document type"

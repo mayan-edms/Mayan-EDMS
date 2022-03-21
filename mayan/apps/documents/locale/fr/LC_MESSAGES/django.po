@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"POT-Creation-Date: 2022-03-21 06:44+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -766,7 +766,7 @@ msgstr "Créée"
 
 #: models/document_models.py:86
 msgid "The primary language in the document."
-msgstr "La langue principale utilisée dans document."
+msgstr "La langue principalement utilisée dans document."
 
 #: models/document_models.py:91
 msgid "Whether or not this document is in the trash."
@@ -2008,7 +2008,7 @@ msgid ""
 " this user account."
 msgstr ""
 "Cette page affiche la liste des derniers documents consultés ou manipulés de"
-" quelque manière que ce soit par ce compte d'utilisateur."
+" quelque manière que ce soit par ce compte utilisateur."
 
 #: views/recently_accessed_document_views.py:27
 msgid "There are no recently accessed documents"

@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"POT-Creation-Date: 2022-03-21 06:43+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
@@ -289,6 +289,11 @@ msgid ""
 "\"transition\", \"user\", \"comment\") and any values from workflow template"
 " fields."
 msgstr ""
+"Pode ser um valor estático ou um modelo. Em adição à ocorrência do workflow,"
+" o modelo recebe o contexto que inclui em si próprio o \"entry_log\" da "
+"ocorrência do workflow  (contém \"workflow_instance\", \"datahora\", "
+"\"transição\", \"utilizador\", \"comentário\") e quaisquer valores dos "
+"campos do modelo do workflow."
 
 #: literals.py:27
 msgid "Character"
@@ -630,7 +635,7 @@ msgstr "Ver modelos de workflow"
 
 #: permissions.py:25
 msgid "Transition workflow instances"
-msgstr ""
+msgstr "Ocorrências da transição do workflow. "
 
 #: permissions.py:28
 msgid "Execute workflow tools"
@@ -662,7 +667,7 @@ msgstr "Comentário de transição do documento de workflow"
 
 #: serializers.py:29
 msgid "Primary key of the workflow template to launch."
-msgstr ""
+msgstr "Chave primária do modelo de workflow a ser lançado"
 
 #: serializers.py:89
 msgid "Primary key of the document type to add to the workflow."
@@ -682,12 +687,12 @@ msgstr "Chave primária do estado de origem a ser adicionado."
 
 #: serializers.py:361
 msgid "Event Type ID"
-msgstr ""
+msgstr "Tipo de ID do evento"
 
 #: serializers.py:451
 #, python-format
 msgid "Unknown or invalid event type ID `%s`"
-msgstr ""
+msgstr "Tipo de ID do evento desconhecido ou inválido `%s`"
 
 #: serializers.py:470
 msgid "Primary key of the transition to be added."
@@ -805,6 +810,8 @@ msgstr "Selecionar"
 #, python-format
 msgid "Select transition for workflow \"%(workflow)s\" of document \"%(document)s\""
 msgstr ""
+"Selecione a transição para o workflow \"%(workflow)s\" do documento "
+"\"%(document)s\""
 
 #: views/workflow_proxy_views.py:32
 msgid ""
@@ -863,7 +870,7 @@ msgstr "Estado do workflow: %s"
 #: views/workflow_template_state_views.py:48
 #, python-format
 msgid "Create a \"%(action_class)s\" workflow action for: %(workflow_state)s"
-msgstr ""
+msgstr "Criar a \"%(action_class)s\" acção do workflow para: %(workflow_state)s"
 
 #: views/workflow_template_state_views.py:93
 #, python-format
@@ -895,7 +902,7 @@ msgstr "Ações para o estado do workflow: %s"
 #: views/workflow_template_state_views.py:205
 #, python-format
 msgid "New workflow state action selection for: %s"
-msgstr ""
+msgstr "Nova seleção do estado de ação do workflow para: %s"
 
 #: views/workflow_template_state_views.py:234
 #, python-format
@@ -1027,36 +1034,37 @@ msgstr "Workflows atribuídos ao tipo de documento %s"
 #, python-format
 msgid "Error launching workflows for document \"%(instance)s\"; %(exception)s"
 msgstr ""
+"Erro ao lançar os workflows para o documento \"%(instance)s\"; %(exception)s"
 
 #: views/workflow_template_views.py:81
 #, python-format
 msgid "Workflows launched successfully for document \"%(object)s\"."
-msgstr ""
+msgstr "Workflows lançados com sucesso para o documento \"%(object)s\"."
 
 #: views/workflow_template_views.py:82
 #, python-format
 msgid "Workflows launched successfully for %(count)d document."
-msgstr ""
+msgstr "Workflows lançados com sucesso para %(count)d documento "
 
 #: views/workflow_template_views.py:83
 #, python-format
 msgid "Workflows launched successfully for %(count)d documents."
-msgstr ""
+msgstr "Workflows lançados com sucesso para %(count)ddocumentos."
 
 #: views/workflow_template_views.py:84
 #, python-format
 msgid "Launch workflow: %(object)s."
-msgstr ""
+msgstr "Lançar workflow: %(object)s."
 
 #: views/workflow_template_views.py:85
 #, python-format
 msgid "Launch workflows for the selected %(count)d document."
-msgstr ""
+msgstr "lançar workflows para %(count)ddocumento selecionado."
 
 #: views/workflow_template_views.py:86
 #, python-format
 msgid "Launch workflows for the selected %(count)d documents."
-msgstr ""
+msgstr "Lançar workflows para %(count)ddocumentos selecionados."
 
 #: views/workflow_template_views.py:91
 msgid ""
@@ -1074,37 +1082,37 @@ msgstr "Workflows a serem disparados."
 #: views/workflow_template_views.py:141
 #, python-format
 msgid "Error deleting workflow \"%(instance)s\"; %(exception)s"
-msgstr ""
+msgstr "Erro ao eliminar o workflow \"%(instance)s\"; %(exception)s"
 
 #: views/workflow_template_views.py:148
 #, python-format
 msgid "Workflow \"%(object)s\" deleted successfully."
-msgstr ""
+msgstr "Workflow \"%(object)s\" eliminados com sucesso."
 
 #: views/workflow_template_views.py:149
 #, python-format
 msgid "%(count)d workflow deleted successfully."
-msgstr ""
+msgstr "%(count)dworkflow eliminado com sucesso."
 
 #: views/workflow_template_views.py:150
 #, python-format
 msgid "%(count)d workflows deleted successfully."
-msgstr ""
+msgstr "%(count)dworkflows eliminados com sucesso."
 
 #: views/workflow_template_views.py:151
 #, python-format
 msgid "Delete workflow: %(object)s."
-msgstr ""
+msgstr "Eliminar o workflow: %(object)s."
 
 #: views/workflow_template_views.py:152
 #, python-format
 msgid "Delete the %(count)d selected workflow."
-msgstr ""
+msgstr "Eliminar %(count)dworkflow selecionado."
 
 #: views/workflow_template_views.py:153
 #, python-format
 msgid "Delete the %(count)d selected workflows."
-msgstr ""
+msgstr "Eliminar %(count)dworkflows selecionados."
 
 #: views/workflow_template_views.py:157
 msgid "All workflow instances will also be deleted."
@@ -1184,7 +1192,7 @@ msgstr "Nome do documento"
 
 #: workflow_actions.py:31
 msgid "The new label to be assigned to the document."
-msgstr ""
+msgstr "O novo nome a ser atribuído ao documento."
 
 #: workflow_actions.py:40
 msgid "Document description"
@@ -1192,7 +1200,7 @@ msgstr "Descrição do documento"
 
 #: workflow_actions.py:47
 msgid "The new description to be assigned to the document."
-msgstr ""
+msgstr "A nova descrição a ser atribuído ao documento."
 
 #: workflow_actions.py:59
 msgid "Modify document properties"
@@ -1224,7 +1232,7 @@ msgstr "Carga de dados"
 
 #: workflow_actions.py:171
 msgid "A JSON document to include in the request."
-msgstr ""
+msgstr "Um documento JSON a incluir no pedido."
 
 #: workflow_actions.py:180
 msgid "Username"
@@ -1233,6 +1241,7 @@ msgstr "Nome de utilizador"
 #: workflow_actions.py:187
 msgid "Username to use for making the request with HTTP Basic Auth."
 msgstr ""
+"Nome de utilizador a utilizar para realizar o pedido com HTTP Basic Auth."
 
 #: workflow_actions.py:198
 msgid "Password"
@@ -1240,7 +1249,7 @@ msgstr "Palavra-passe"
 
 #: workflow_actions.py:205
 msgid "Password to use for making the request with HTTP Basic Auth."
-msgstr ""
+msgstr "Palavra-passe a utilizar para realizar o pedido com HTTP Basic Auth."
 
 #: workflow_actions.py:216
 msgid "Method"
@@ -1251,6 +1260,8 @@ msgid ""
 "The HTTP method to use for the request. Typical choices are OPTIONS, HEAD, "
 "POST, GET, PUT, PATCH, DELETE."
 msgstr ""
+"O método HTTP a utilizar para o pedido. Decisões frequentes são OPÇÕES, "
+"CABEÇALHO, POST, GET, PUT, PATCH, ELIMINAR."
 
 #: workflow_actions.py:234
 msgid "Headers"
@@ -1258,7 +1269,7 @@ msgstr "Cabeçalhos"
 
 #: workflow_actions.py:241
 msgid "Headers to send with the HTTP request. Must be in JSON format."
-msgstr ""
+msgstr "Cabeçalhos a enviar com o pedido HTTP. Deve ser em formato JSON."
 
 #: workflow_actions.py:256
 msgid "Perform an HTTP request"
