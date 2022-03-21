@@ -1,7 +1,7 @@
 Version 4.2.2
 =============
 
-Released: XX XX, 2022
+Released: March 21, 2022
 
 Status: Stable
 
@@ -24,6 +24,13 @@ Messaging
 ^^^^^^^^^
 
 Filter unread message count badge by message read permission.
+
+
+Metadata
+^^^^^^^^
+
+Update document metadata model field label from "Metadata type value"
+to "Metadata value".
 
 
 Sources
