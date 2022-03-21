@@ -88,6 +88,7 @@
   to that of the user interface list filtering. However, the API list
   filtering also support filtering by any field and not just using the
   special "any field" ``q`` query key.
+- Merge fixes from version 4.2.2.
 
 4.2.1 (2022-02-16)
 ==================
