@@ -72,9 +72,9 @@ class SourcesNewDocumentFileLinkTestCase(
         resolved_link = self._get_document_file_upload_link()
         self.assertEqual(resolved_link, None)
 
-    def test_document_file_upload_link_with_document_type_access(self):
+    def test_document_file_upload_link_with_document_access(self):
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self.test_document,
             permission=permission_document_file_new
         )
 
@@ -91,7 +91,7 @@ class SourcesNewDocumentFileLinkTestCase(
 
     def test_document_file_upload_link_with_full_access(self):
         self.grant_access(
-            obj=self.test_document_type,
+            obj=self.test_document,
             permission=permission_document_file_new
         )
         self.grant_access(
