@@ -9,6 +9,8 @@
   views. The links will be active when the access is granted for the source
   as well as the document/document type.
 - Filter unread message count badge by message read permission.
+- Update document metadata model field label from "Metadata type value"
+  to "Metadata value".
 
 4.2.1 (2022-02-16)
 ==================
