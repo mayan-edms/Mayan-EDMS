@@ -1,6 +1,8 @@
 from mayan.apps.documents.permissions import permission_document_file_new
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.sources.links import link_document_file_upload
+from mayan.apps.sources.tests.mixins.base_mixins import SourceTestMixin
+
 
 from ..links import link_check_out_document, link_check_out_info
 from ..permissions import (
@@ -56,7 +58,7 @@ class CheckoutLinksTestCase(
 
 
 class DocumentFileListViewTestCase(
-    DocumentCheckoutTestMixin, GenericDocumentViewTestCase
+    DocumentCheckoutTestMixin, SourceTestMixin, GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
 
@@ -66,8 +68,10 @@ class DocumentFileListViewTestCase(
 
     def _get_document_new_file_link(self):
         self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_file_new
+            obj=self.test_document, permission=permission_document_file_new
+        )
+        self.grant_access(
+            obj=self.test_source, permission=permission_document_file_new
         )
 
         self.add_test_view(test_object=self.test_document)

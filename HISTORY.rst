@@ -48,6 +48,13 @@
   when the access is granted for the source as well as the document/document
   type. Closes GitLab issue #1102. Thanks to Julian Marié (@Angelfs) for the
   report and debug information.
+- Improve logic of the new document file link
+
+  - Access the view user in a more reliable way.
+  - Test the new file permission of the document and not
+    of the document type.
+  - If no document is present in the view exit fast.
+  - Update tests.
 
 4.1.7 (2022-04-01)
 ==================
