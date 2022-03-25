@@ -1,3 +1,7 @@
+4.2.3 (2022-XX-XX)
+==================
+- Add restart policy to the Traefik container definition.
+
 4.2.2 (2022-03-21)
 ==================
 - Ensure the object copy permission is required for the object copy link.
