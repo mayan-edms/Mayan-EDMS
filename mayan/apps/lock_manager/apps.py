@@ -22,8 +22,9 @@ class LockManagerApp(MayanAppConfig):
 
         if PURGE_LOCKS_COMMAND not in sys.argv:
             logger.debug('Starting lock backend connectivity test')
-            # Don't test for locks during the `purgelocks` command as there
-            # may be some stuck locks which will block the command.
+            # Don't test for locks during the `task_manager_purge_locks`
+            # command as there may be some stuck locks which will block
+            # the command.
             lock_instance = LockingBackend.get_backend()
             try:
                 lock = lock_instance.acquire_lock(

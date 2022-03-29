@@ -94,6 +94,7 @@
   task_manager app.
 - Rename the ``purgeperiodictasks`` command to
   ``task_manager_purge_periodic_tasks``.
+- Rename the ``purgelocks`` command to ``lock_manager_purge_locks``.
 
 4.2.2 (2022-03-21)
 ==================

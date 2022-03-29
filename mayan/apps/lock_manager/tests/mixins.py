@@ -6,6 +6,7 @@ from django.utils.module_loading import import_string
 from mayan.apps.smart_settings.classes import SettingNamespace
 
 from ..exceptions import LockError
+from ..literals import PURGE_LOCKS_COMMAND
 from ..settings import setting_default_lock_timeout
 
 from .literals import TEST_LOCK_1
@@ -21,7 +22,7 @@ class LockBackendManagementCommandTestCaseMixin:
 
         os.environ['MAYAN_LOCK_MANAGER_BACKEND'] = self._test_locking_backend_string
         SettingNamespace.invalidate_cache_all()
-        management.call_command(command_name='purgelocks')
+        management.call_command(command_name=PURGE_LOCKS_COMMAND)
 
         # lock_1 not release but has expired, should not raise LockError
         lock_2 = self._test_locking_backend.acquire_lock(name=TEST_LOCK_1)
