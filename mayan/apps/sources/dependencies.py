@@ -16,7 +16,7 @@ BinaryDependency(
     ).get('scanimage_path', DEFAULT_BINARY_SCANIMAGE_PATH)
 )
 JavaScriptDependency(
-    module=__name__, name='dropzone', version_string='=5.9.2'
+    module=__name__, name='dropzone', version_string='=5.9.3'
 )
 PythonDependency(
     module=__name__, name='flanker', version_string='==0.9.11'

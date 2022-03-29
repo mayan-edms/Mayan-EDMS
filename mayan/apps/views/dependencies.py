@@ -1,7 +1,7 @@
 from mayan.apps.dependencies.classes import PythonDependency
 
 PythonDependency(
-    module=__name__, name='django-formtools', version_string='==2.2'
+    module=__name__, name='django-formtools', version_string='==2.3'
 )
 PythonDependency(
     module=__name__, name='django-stronghold', version_string='==0.4.0'
@@ -27,8 +27,9 @@ PythonDependency(
         LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
         THE SOFTWARE.
-    ''', module=__name__, name='django-widget-tweaks', version_string='==1.4.9'
+    ''', module=__name__, name='django-widget-tweaks',
+    version_string='==1.4.12'
 )
 PythonDependency(
-    module=__name__, name='furl', version_string='==2.1.2'
+    module=__name__, name='furl', version_string='==2.1.3'
 )

@@ -78,7 +78,7 @@ services:
       POSTGRES_DB: ${MAYAN_DATABASE_NAME:-mayan}
       POSTGRES_PASSWORD: ${MAYAN_DATABASE_PASSWORD:-mayandbpass}
       POSTGRES_USER: ${MAYAN_DATABASE_USER:-mayan}
-    image: postgres:${MAYAN_DOCKER_POSTGRES_TAG:-12.9-alpine}
+    image: postgres:${MAYAN_DOCKER_POSTGRES_TAG:-12.10-alpine}
     networks:
       - mayan
     # Enable to allow external access to the database.
@@ -230,7 +230,7 @@ services:
     restart: "no"
 
   rabbitmq:
-    image: rabbitmq:${MAYAN_DOCKER_RABBITMQ_TAG:-3.9-management-alpine}
+    image: rabbitmq:${MAYAN_DOCKER_RABBITMQ_TAG:-3.10-management-alpine}
     environment:
       RABBITMQ_DEFAULT_USER: ${MAYAN_RABBITMQ_USER:-mayan}
       RABBITMQ_DEFAULT_PASS: ${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}

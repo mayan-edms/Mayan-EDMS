@@ -95,6 +95,59 @@
 - Rename the ``purgeperiodictasks`` command to
   ``task_manager_purge_periodic_tasks``.
 - Rename the ``purgelocks`` command to ``lock_manager_purge_locks``.
+- Drop support for Python 3.6.
+- Dependencies update:
+
+  - ElasticSearch from 7.16.0 to 7.17.0.
+  - Debian from 11.2-slim to 11.3-slim.
+  - PostgreSQL from 12.9-alpine to 12.10-alpine.
+  - RabbitMQ from 3.9-alpine to 3.10-alpine.
+  - amqp from 5.0.9 to 5.1.0.
+  - pip from 21.3.1 to 22.0.4.
+  - psycopg2 from 2.9.2 to 2.9.3.
+  - redis from 4.0.2 to 4.2.0.
+  - FontAwesome from 5.6.3 to 5.15.4.
+  - urijs from 1.19.7 to 1.19.10.
+  - bleach from 4.0.0 to 4.1.0.
+  - django-solo from 1.1.5 to 2.0.0.
+  - jstree from 3.3.11 to 3.3.12.
+  - PyYAML from 5.4.1 to 6.0.
+  - django-model-utils from 4.1.1 to 4.2.0.
+  - django-mptt from 0.12.0 to 0.13.4.
+  - pycountry from 20.7.3 to 22.3.5.
+  - requests from 2.26.0 to 2.27.0.
+  - devpi-server from 6.2.0 to 6.5.0.
+  - django-debug-toolbar from 3.2.2 to 3.2.4.
+  - django-extensions from 3.1.3 to 3.1.5.
+  - django-rosetta from 0.9.7 to 0.9.8.
+  - django-silk from 4.1.0 to 4.3.0.
+  - flake8 from 3.9.2 to 4.0.1.
+  - ipython from 7.26.0 to 7.32.0.
+  - transifex-client from 0.14.3 to 0.14.4.
+  - twine from 3.4.2 to 3.8.0.
+  - wheel from 0.37.0 to 0.37.1.
+  - Pillow from 8.3.1 to 8.4.0.
+  - node-semver from 0.8.0 to 0.8.1.
+  - packaging from 21.0 to 21.3.
+  - python_gnupg from 0.4.7 to 0.4.8.
+  - elasticsearch from 7.16.0 to 7.17.1.
+  - django-activity-stream from 0.10.0 to 1.4.0.
+  - chart.js from 2.7.3 to 2.8.0.
+  - python-magic from 0.4.24 to 0.4.25.
+  - gevent from 21.8.0 to 21.12.0.
+  - sentry-sdk from 1.4.1 to 1.5.8.
+  - whitenoise from 5.3.0 to 6.0.0.
+  - cropperjs from 1.5.2 to 1.5.12.
+  - django-cors-headers from 3.8.0 to 3.10.0.
+  - djangorestframework from 3.12.4 to 3.13.1.
+  - jsonschema from 3.2.0 to 4.4.0.
+  - swagger-spec-validator from 2.7.3 to 2.7.4.
+  - dropzone from 5.9.2 to 5.9.3.
+  - pycryptodome from 3.10.1 to 3.10.4.
+  - celery from 5.1.2 to 5.2.3.
+  - django-formtools from 2.2 to 2.3.
+  - django-widget-tweaks from 1.4.9 to 1.4.12.
+  - furl from 2.1.2 to 2.1.3.
 
 4.2.2 (2022-03-21)
 ==================

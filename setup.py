@@ -61,56 +61,55 @@ def find_packages(directory):
 
 install_requires = """
 django==3.2.12
-Pillow==8.3.1
+Pillow==8.4.0
 PyPDF2==1.26.0
-PyYAML==5.4.1
+PyYAML==6.0
 Whoosh==2.7.4
-bleach==4.0.0
-celery==5.1.2
-django-activity-stream==0.10.0
+bleach==4.1.0
+celery==5.2.3
+django-activity-stream==1.4.0
 django-auth-ldap==4.0.0
 django-celery-beat==2.2.1
 django-colorful==1.3
-django-cors-headers==3.8.0
-django-formtools==2.2
+django-cors-headers==3.10.0
+django-formtools==2.3
 django-mathfilters==1.0.0
-django-model-utils==4.1.1
-django-mptt==0.12.0
-django-pure-pagination==0.3.0
+django-model-utils==4.2.0
+django-mptt==0.13.4
 django-qsstats-magic==1.1.0
-django-solo==1.1.5
+django-solo==2.0.0
 django-stronghold==0.4.0
-django-widget-tweaks==1.4.9
-djangorestframework==3.12.4
+django-widget-tweaks==1.4.12
+djangorestframework==3.13.1
 djangorestframework-recursive==0.1.2
 drf-yasg==1.20.0
-elasticsearch==7.16.0
+elasticsearch==7.17.1
 elasticsearch-dsl==7.4.0
 extract-msg==0.28.7
 flanker==0.9.11
 flex==6.14.1
-furl==2.1.2
+furl==2.1.3
 fusepy==3.0.1
-gevent==21.8.0
+gevent==21.12.0
 graphviz==0.17
 gunicorn==20.1.0
-jsonschema==3.2.0
+jsonschema==4.4.0
 mock==4.0.3
-node-semver==0.8.0
-packaging==21.0
-pycountry==20.7.3
-pycryptodome==3.10.1
+node-semver==0.8.1
+packaging==21.3
+pycountry==22.3.5
+pycryptodome==3.10.4
 pyotp==2.6.0
 python-dateutil==2.8.2
-python-magic==0.4.24
-python_gnupg==0.4.7
-pytz==2021.1
+python-magic==0.4.25
+python_gnupg==0.4.8
+pytz==2022.1
 qrcode==7.3.1
-requests==2.26.0
-sentry-sdk==1.4.1
+requests==2.27.1
+sentry-sdk==1.5.8
 sh==1.14.2
-swagger-spec-validator==2.7.3
-whitenoise==5.3.0
+swagger-spec-validator==2.7.4
+whitenoise==6.0.0
 """.split()
 
 with open(file='README.rst') as file_object:
@@ -133,7 +132,6 @@ setup(
         'Natural Language :: English',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
