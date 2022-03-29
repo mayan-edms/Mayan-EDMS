@@ -34,7 +34,7 @@ class SourcesNewDocumentLinkTestCase(
 
     def test_document_create_link_with_source_access(self):
         self.grant_access(
-            obj=self.test_source, permission=permission_document_create
+            obj=self._test_source, permission=permission_document_create
         )
 
         resolved_link = self._get_document_create_link()
@@ -46,7 +46,7 @@ class SourcesNewDocumentLinkTestCase(
             permission=permission_document_create
         )
         self.grant_access(
-            obj=self.test_source, permission=permission_document_create
+            obj=self._test_source, permission=permission_document_create
         )
 
         resolved_link = self._get_document_create_link()
@@ -63,7 +63,7 @@ class SourcesNewDocumentFileLinkTestCase(
         self._create_test_document_stub()
 
     def _get_document_file_upload_link(self):
-        self.add_test_view(test_object=self.test_document)
+        self.add_test_view(test_object=self._test_document)
         context = self.get_test_view()
         context['user'] = self._test_case_user
         return link_document_file_upload.resolve(context=context)
@@ -72,9 +72,9 @@ class SourcesNewDocumentFileLinkTestCase(
         resolved_link = self._get_document_file_upload_link()
         self.assertEqual(resolved_link, None)
 
-    def test_document_file_upload_link_with_document_type_access(self):
+    def test_document_file_upload_link_with_document_access(self):
         self.grant_access(
-            obj=self._test_document_type,
+            obj=self._test_document,
             permission=permission_document_file_new
         )
 
@@ -83,7 +83,7 @@ class SourcesNewDocumentFileLinkTestCase(
 
     def test_document_file_upload_link_with_source_access(self):
         self.grant_access(
-            obj=self.test_source, permission=permission_document_file_new
+            obj=self._test_source, permission=permission_document_file_new
         )
 
         resolved_link = self._get_document_file_upload_link()
@@ -91,11 +91,10 @@ class SourcesNewDocumentFileLinkTestCase(
 
     def test_document_file_upload_link_with_full_access(self):
         self.grant_access(
-            obj=self._test_document_type,
-            permission=permission_document_file_new
+            obj=self._test_document, permission=permission_document_file_new
         )
         self.grant_access(
-            obj=self.test_source, permission=permission_document_file_new
+            obj=self._test_source, permission=permission_document_file_new
         )
 
         resolved_link = self._get_document_file_upload_link()

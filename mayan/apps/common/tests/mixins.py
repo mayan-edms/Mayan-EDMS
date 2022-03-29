@@ -14,7 +14,7 @@ class CommonViewTestMixin:
 
 class ObjectCopyLinkTestMixin:
     def _resolve_test_object_copy_link(self):
-        self.add_test_view(test_object=self.test_object)
+        self.add_test_view(test_object=self._test_object)
 
         context = self.get_test_view()
         return link_object_copy.resolve(context=context)

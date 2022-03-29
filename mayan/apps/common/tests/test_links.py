@@ -32,7 +32,7 @@ class ObjectCopyLinkTestCase(
 
     def test_object_copy_link_with_access(self):
         self.grant_access(
-            obj=self.test_object, permission=permission_object_copy
+            obj=self._test_object, permission=permission_object_copy
         )
         resolved_link = self._resolve_test_object_copy_link()
         self.assertNotEqual(resolved_link, None)
