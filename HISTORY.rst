@@ -92,6 +92,8 @@
 - Rename the ``preparestatic`` command to ``appearance_prepare_static``.
 - Move the ``purgeperiodictasks`` command from the common app to the
   task_manager app.
+- Rename the ``purgeperiodictasks`` command to
+  ``task_manager_purge_periodic_tasks``.
 
 4.2.2 (2022-03-21)
 ==================
