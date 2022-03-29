@@ -7,7 +7,9 @@ from django.core import management
 from mayan.settings.literals import DEFAULT_USER_SETTINGS_FOLDER
 from mayan.apps.storage.utils import touch
 
-from ...signals import signal_perform_upgrade, signal_post_upgrade, signal_pre_upgrade
+from ...signals import (
+    signal_perform_upgrade, signal_post_upgrade, signal_pre_upgrade
+)
 
 
 class Command(management.BaseCommand):

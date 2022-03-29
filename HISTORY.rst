@@ -90,6 +90,8 @@
   special "any field" ``q`` query key.
 - Merge fixes from version 4.2.2.
 - Rename the ``preparestatic`` command to ``appearance_prepare_static``.
+- Move the ``purgeperiodictasks`` command from the common app to the
+  task_manager app.
 
 4.2.2 (2022-03-21)
 ==================

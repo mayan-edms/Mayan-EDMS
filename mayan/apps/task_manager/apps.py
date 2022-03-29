@@ -6,11 +6,14 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_tools
+from mayan.apps.common.signals import signal_perform_upgrade
+
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 from mayan.celery import app as celery_app
 
 from .classes import CeleryQueue, Task
+from .handlers import handler_perform_upgrade
 from .links import link_task_manager
 from .literals import TEST_CELERY_RESULT_KEY, TEST_CELERY_RESULT_VALUE
 
@@ -123,3 +126,8 @@ class TaskManagerApp(MayanAppConfig):
         )
 
         menu_tools.bind_links(links=(link_task_manager,))
+
+        signal_perform_upgrade.connect(
+            dispatch_uid='task_manager_handler_perform_upgrade',
+            receiver=handler_perform_upgrade
+        )

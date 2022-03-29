@@ -9,4 +9,3 @@ def handler_pre_upgrade(sender, **kwargs):
     management.call_command(
         command_name='migrate', fake_initial=True, interactive=False
     )
-    management.call_command(command_name='purgeperiodictasks')

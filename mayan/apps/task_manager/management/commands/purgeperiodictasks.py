@@ -1,11 +1,10 @@
 from django.core import management
 
-from django_celery_beat.models import IntervalSchedule, PeriodicTask
+from ...utils import purge_periodic_tasks
 
 
 class Command(management.BaseCommand):
     help = 'Removes all periodic tasks.'
 
     def handle(self, *args, **options):
-        PeriodicTask.objects.all().delete()
-        IntervalSchedule.objects.all().delete()
+        purge_periodic_tasks()
