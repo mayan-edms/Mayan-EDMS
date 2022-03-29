@@ -160,7 +160,7 @@ RUN set -a \
 && pip install --no-cache-dir dist/mayan_edms-*.whl \
 # Install the static content.
 && mayan-edms.py installdependencies \
-&& mayan-edms.py preparestatic --link --noinput
+&& mayan-edms.py appearance_prepare_static --link --noinput
 
 COPY --chown=mayan:mayan requirements/testing-base.txt "${PROJECT_INSTALL_DIR}"
 

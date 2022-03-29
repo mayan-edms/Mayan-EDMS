@@ -1,0 +1,49 @@
+Version 4.3
+===========
+
+Released: XX, 2022
+
+Status: Stable
+
+Changes
+-------
+
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- The ``preparestatic`` command is now named ``appearance_prepare_static``.
+
+
+Issues closed
+-------------
+
+- None
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

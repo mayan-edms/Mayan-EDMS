@@ -89,6 +89,7 @@
   filtering also support filtering by any field and not just using the
   special "any field" ``q`` query key.
 - Merge fixes from version 4.2.2.
+- Rename the ``preparestatic`` command to ``appearance_prepare_static``.
 
 4.2.2 (2022-03-21)
 ==================
