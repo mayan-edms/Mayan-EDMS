@@ -18,7 +18,7 @@ Minimum
   doing a direct operating system installations. Other distributions or
   operating systems can be used if they serve as host for a virtual machine
   or have mature Docker and/or Docker Compose support.
-- Python version 3.6-3.9
+- Python version 3.7
 - PostgreSQL 9.6.
 
 .. note::
