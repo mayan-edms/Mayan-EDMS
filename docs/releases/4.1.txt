@@ -56,7 +56,7 @@ Comments
 ^^^^^^^^
 
 The comments API was updated to exclude trashed documents. The serializers
-in use was reduced by consolidation. The API permission filter was updated
+in use were reduced by consolidation. The API permission filter was updated
 to return error 404 and not 403 on insufficient access for function parity
 with the rest of the API.
 
