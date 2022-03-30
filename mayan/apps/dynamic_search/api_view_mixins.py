@@ -13,7 +13,7 @@ class SearchModelAPIViewMixin:
                     '_{}'.format(SEARCH_MODEL_NAME_KWARG)
                 )
             )
-        )
+        ).lower()
 
     def get_search_model(self):
         try:

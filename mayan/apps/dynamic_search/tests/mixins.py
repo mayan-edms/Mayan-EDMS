@@ -46,20 +46,29 @@ class SearchTestMixin:
 
 
 class SearchAPIViewTestMixin(SearchTestMixin):
-    def _request_search_view(self):
-        query = {QUERY_PARAMETER_ANY_FIELD: self._test_document.label}
+    def _request_search_view(self, search_model_name=None, search_term=None):
+        query = {
+            QUERY_PARAMETER_ANY_FIELD: search_term or self._test_document.label
+        }
+        search_model_name = search_model_name or document_search.get_full_name()
+
         return self.get(
             viewname='rest_api:search-view', kwargs={
-                'search_model_name': document_search.get_full_name()
+                'search_model_name': search_model_name
             }, query=query
         )
 
-    def _request_advanced_search_view(self):
-        query = {'document_type__label': self._test_document.document_type.label}
+    def _request_advanced_search_view(
+        self, search_model_name=None, search_term=None
+    ):
+        query = {
+            'document_type__label': search_term or self._test_document.document_type.label
+        }
+        search_model_name = search_model_name or document_search.get_full_name()
 
         return self.get(
             viewname='rest_api:advanced-search-view', kwargs={
-                'search_model_name': document_search.get_full_name()
+                'search_model_name': search_model_name
             }, query=query
         )
 

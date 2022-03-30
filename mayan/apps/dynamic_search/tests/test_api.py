@@ -9,17 +9,17 @@ from ..classes import SearchModel
 from .mixins import SearchAPIViewTestMixin, SearchTestMixin
 
 
-class SearchModelAPIViewTestCase(BaseAPITestCase):
-    def test_search_models_api_view(self):
-        response = self.get(
-            viewname='rest_api:searchmodel-list', query={'page_size': 50}
+class SearchAPIViewBackwardCompatilityTestCase(
+    SearchAPIViewTestMixin, BaseAPITestCase
+):
+    auto_upload_test_document = False
+
+    def test_search_model_name_uppercase_api_view_with_access(self):
+        response = self._request_search_view(
+            search_model_name='documents.Document', search_term='_'
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-        self.assertEqual(
-            [search_model['pk'] for search_model in response.data['results']],
-            [search_model.pk for search_model in SearchModel.all()]
-        )
+        self.assertEqual(response.data['count'], 0)
 
 
 class SearchAPIViewTestCase(
@@ -58,6 +58,19 @@ class SearchAPIViewTestCase(
             response.data['results'][0]['label'], self._test_document.label
         )
         self.assertEqual(response.data['count'], 1)
+
+
+class SearchModelAPIViewTestCase(BaseAPITestCase):
+    def test_search_models_api_view(self):
+        response = self.get(
+            viewname='rest_api:searchmodel-list', query={'page_size': 50}
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(
+            [search_model['pk'] for search_model in response.data['results']],
+            [search_model.pk for search_model in SearchModel.all()]
+        )
 
 
 class RESTAPISearchFilterTestCase(

@@ -157,6 +157,10 @@
   - File caches
   - Quotas
 
+- Convert API search model names to lowercase to revert backward incompatible
+  change in version 4.2. Search model names via the API can now be specified
+  in either lowercase (version 4.2) or hybrid case (version <4.2).
+
 4.2.3 (2022-XX-XX)
 ==================
 - Add restart policy to the Traefik container definition.
