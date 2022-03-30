@@ -226,6 +226,7 @@ class WorkflowTransitionTriggerEvent(ExtraDataModelMixin, models.Model):
     )
 
     class Meta:
+        ordering = ('event_type__name',)
         unique_together = ('transition', 'event_type')
         verbose_name = _('Workflow transition trigger event')
         verbose_name_plural = _('Workflow transitions trigger events')

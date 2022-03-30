@@ -439,6 +439,7 @@ class IndexInstanceNode(MPTTModel):
     )
 
     class Meta:
+        ordering = ('value',)
         unique_together = ('index_template_node', 'parent', 'value')
         verbose_name = _('Index instance node')
         verbose_name_plural = _('Indexes instances node')

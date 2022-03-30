@@ -48,6 +48,7 @@ class Cache(ValueChangeModelMixin, models.Model):
     )
 
     class Meta:
+        ordering = ('id',)
         verbose_name = _('Cache')
         verbose_name_plural = _('Caches')
 

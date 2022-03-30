@@ -149,6 +149,14 @@
   - django-widget-tweaks from 1.4.9 to 1.4.12.
   - furl from 2.1.2 to 2.1.3.
 
+- Silence warning about unordered object pagination for:
+
+  - Announcements
+  - Document index instance nodes
+  - Workflow transition triggers
+  - File caches
+  - Quotas
+
 4.2.3 (2022-XX-XX)
 ==================
 - Add restart policy to the Traefik container definition.
