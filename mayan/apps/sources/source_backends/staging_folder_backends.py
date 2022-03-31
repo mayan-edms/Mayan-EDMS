@@ -456,6 +456,8 @@ class SourceBackendStagingFolder(
         return None, Response(status=status.HTTP_202_ACCEPTED)
 
     def callback(self, document_file, **kwargs):
+        super().callback(document_file=document_file, **kwargs)
+
         if self.kwargs.get('delete_after_upload'):
             path = Path(
                 self.kwargs['folder_path'], kwargs['staging_folder_file_filename']

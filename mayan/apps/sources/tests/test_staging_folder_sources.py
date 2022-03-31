@@ -1,4 +1,5 @@
 from pathlib import Path
+from unittest.mock import patch
 
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
@@ -46,6 +47,24 @@ class StagingFolderSourceBackendTestCase(
             Document.objects.first().file_latest.checksum,
             TEST_SMALL_DOCUMENT_CHECKSUM
         )
+
+    @patch('mayan.apps.sources.source_backends.mixins.SourceBackendInteractiveMixin.callback')
+    def test_super_class_callback(self, mocked_super):
+        self._create_test_staging_folder()
+
+        self._copy_test_staging_folder_document()
+
+        document_count = Document.objects.count()
+
+        self._process_test_document()
+
+        self.assertEqual(Document.objects.count(), document_count + 1)
+        self.assertEqual(
+            Document.objects.first().file_latest.checksum,
+            TEST_SMALL_DOCUMENT_CHECKSUM
+        )
+
+        self.assertTrue(mocked_super.called)
 
     def test_delete_after_upload(self):
         self._create_test_staging_folder(

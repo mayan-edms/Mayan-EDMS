@@ -1,3 +1,10 @@
+4.1.7 (2022-XX-XX)
+==================
+- Backport fixes from version 4.2.3
+
+  - Fix an issue where a staging folder would not tag uploaded
+    documents.
+
 4.1.6 (2022-02-15)
 ==================
 - Append the text "signed" to the label of a signed document file instead
