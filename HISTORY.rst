@@ -2,6 +2,7 @@
 ==================
 - Backport fixes from version 4.2.3
 
+  - Remove duplicated ``Document.get_label`` method.
   - Fix an issue where a staging folder would not tag uploaded
     documents.
 
