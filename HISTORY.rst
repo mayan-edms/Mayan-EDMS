@@ -160,6 +160,17 @@
 - Convert API search model names to lowercase to revert backward incompatible
   change in version 4.2. Search model names via the API can now be specified
   in either lowercase (version 4.2) or hybrid case (version <4.2).
+- ``mkdtemp`` now accepts a ``dir`` argument like the upstream version.
+  However the ``dir`` value is appended to the system wide value of
+  ``STORAGE_TEMPORARY_DIRECTORY``.
+- Staging folder updates:
+
+  - Support inclusion regular expression.
+  - Support exclusion regular expression.
+  - Support subfolders.
+  - Update scan code to user ``pathlib.Path``.
+  - Support pagination.
+
 
 4.2.3 (2022-XX-XX)
 ==================
