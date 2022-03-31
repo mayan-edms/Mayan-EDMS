@@ -10,6 +10,7 @@
   to "Metadata value".
 - Fix document file signature serializer label.
 - Add restart policy to the Traefik container definition.
+- Remove duplicated ``Document.get_label`` method.
 
 4.0.21 (2021-11-29)
 ===================
