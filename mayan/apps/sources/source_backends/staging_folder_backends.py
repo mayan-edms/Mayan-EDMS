@@ -2,18 +2,22 @@ import base64
 import logging
 import os
 from pathlib import Path
+import re
 import time
 from urllib.parse import quote_plus, unquote_plus
 
 from furl import furl
 
 from django import forms
+from django.conf import settings
+from django.contrib import messages
 from django.core.files import File
 from django.core.files.base import ContentFile
 from django.http import Http404, StreamingHttpResponse
 from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
+from django.views.generic.list import MultipleObjectMixin
 
 from rest_framework import status
 from rest_framework.generics import get_object_or_404 as rest_get_object_or_404
@@ -40,9 +44,14 @@ from mayan.apps.sources.source_backends.mixins import (
 )
 from mayan.apps.storage.classes import DefinedStorage
 from mayan.apps.storage.models import SharedUploadedFile
+from mayan.apps.views.settings import setting_paginate_by
 
 from ..classes import SourceBackendAction
 from ..tasks import task_process_document_upload
+
+from .literals import (
+    REGULAR_EXPRESSION_MATCH_EVERYTHING, REGULAR_EXPRESSION_MATCH_NOTHING
+)
 
 __all__ = ('SourceBackendStagingFolder',)
 logger = logging.getLogger(name=__name__)
@@ -243,7 +252,8 @@ class SourceBackendStagingFolder(
     )
     field_order = (
         'folder_path', 'preview_width', 'preview_height',
-        'delete_after_upload'
+        'delete_after_upload', 'include_subdirectories', 'include_regex',
+        'exclude_regex'
     )
     fields = {
         'folder_path': {
@@ -286,6 +296,34 @@ class SourceBackendStagingFolder(
                 'Delete the file after is has been successfully uploaded.'
             ),
             'label': _('Delete after upload'),
+            'required': False
+        },
+        'include_subdirectories': {
+            'class': 'django.forms.BooleanField',
+            'default': '',
+            'help_text': _(
+                'If checked, not only will the folder path be scanned for '
+                'files but also its subdirectories.'
+            ),
+            'label': _('Include subdirectories?'),
+            'required': False
+        },
+        'include_regex': {
+            'class': 'django.forms.CharField',
+            'default': '',
+            'help_text': _(
+                'Regular expression used to select which files to upload.'
+            ),
+            'label': _('Include regular expression'),
+            'required': False
+        },
+        'exclude_regex': {
+            'class': 'django.forms.CharField',
+            'default': '',
+            'help_text': _(
+                'Regular expression used to exclude which files to upload.'
+            ),
+            'label': _('Exclude regular expression'),
             'required': False
         }
     }
@@ -455,6 +493,8 @@ class SourceBackendStagingFolder(
         return None, Response(status=status.HTTP_202_ACCEPTED)
 
     def callback(self, document_file, **kwargs):
+        super().callback(document_file=document_file, **kwargs)
+
         if self.kwargs.get('delete_after_upload'):
             path = Path(
                 self.kwargs['folder_path'], kwargs['staging_folder_file_filename']
@@ -506,17 +546,35 @@ class SourceBackendStagingFolder(
             raise Http404
 
     def get_files(self):
-        try:
-            for entry in sorted([os.path.normcase(f) for f in os.listdir(self.kwargs['folder_path']) if os.path.isfile(os.path.join(self.kwargs['folder_path'], f))]):
-                yield self.get_file(filename=entry)
-        except OSError as exception:
-            logger.error(
-                'Unable get list of staging files from source: %s; %s',
-                self, exception
+        include_regex = re.compile(
+            pattern=self.kwargs.get(
+                'include_regex', REGULAR_EXPRESSION_MATCH_EVERYTHING
             )
-            raise Exception(
-                _('Unable get list of staging files: %s') % exception
-            )
+        )
+        exclude_regex = re.compile(
+            pattern=self.kwargs.get(
+                'exclude_regex', REGULAR_EXPRESSION_MATCH_NOTHING
+            ) or REGULAR_EXPRESSION_MATCH_NOTHING
+        )
+
+        path = Path(self.kwargs['folder_path'])
+
+        # Force path check to trigger any error.
+        path.lstat()
+
+        if self.kwargs.get('include_subdirectories', False):
+            iterator = path.rglob(pattern='*')
+        else:
+            iterator = path.glob(pattern='*')
+
+        for entry in sorted(iterator):
+            if entry.is_file() and include_regex.match(string=entry.name) and not exclude_regex.match(string=entry.name):
+                relative_filename = str(
+                    entry.relative_to(self.kwargs['folder_path'])
+                )
+                yield self.get_file(
+                    filename=relative_filename
+                )
 
     def get_shared_uploaded_files(self):
         staging_folder_file = self.get_file(
@@ -525,10 +583,48 @@ class SourceBackendStagingFolder(
         self.process_kwargs['staging_folder_file_filename'] = staging_folder_file.filename
 
         return (
-            SharedUploadedFile.objects.create(file=staging_folder_file.as_file()),
+            SharedUploadedFile.objects.create(
+                file=staging_folder_file.as_file()
+            ),
         )
 
     def get_view_context(self, context, request):
+        try:
+            staging_files = list(self.get_files())
+        except Exception as exception:
+            messages.error(
+                message=_(
+                    'Unable get list of staging files; %s'
+                ) % exception, request=request
+            )
+            staging_files = ()
+            if settings.DEBUG or settings.TESTING:
+                raise
+
+        # Instantiate a fake list view to populate the pagination data for
+        # the staging folder file list.
+        view = SourceBackendStagingFolderFileListView()
+        view.kwargs = self.kwargs
+        view.object_list = staging_files
+        view.request = request
+
+        template_staging_file_list_context = {
+            'hide_link': True,
+            'no_results_icon': SourceBackendStagingFolder.icon_staging_folder_file,
+            'no_results_text': _(
+                'This could mean that the staging folder is '
+                'empty. It could also mean that the '
+                'operating system user account being used '
+                'for Mayan EDMS doesn\'t have the necessary '
+                'file system permissions for the folder.'
+            ),
+            'no_results_title': _(
+                'No staging files available'
+            )
+        }
+
+        template_staging_file_list_context.update(view.get_context_data())
+
         subtemplates_list = [
             {
                 'name': 'appearance/generic_multiform_subtemplate.html',
@@ -538,24 +634,15 @@ class SourceBackendStagingFolder(
             },
             {
                 'name': 'appearance/generic_list_subtemplate.html',
-                'context': {
-                    'hide_link': True,
-                    'no_results_icon': SourceBackendStagingFolder.icon_staging_folder_file,
-                    'no_results_text': _(
-                        'This could mean that the staging folder is '
-                        'empty. It could also mean that the '
-                        'operating system user account being used '
-                        'for Mayan EDMS doesn\'t have the necessary '
-                        'file system permissions for the folder.'
-                    ),
-                    'no_results_title': _(
-                        'No staging files available'
-                    ),
-                    'object_list': list(self.get_files()),
-                }
-            },
+                'context': template_staging_file_list_context
+            }
         ]
 
         return {
             'subtemplates_list': subtemplates_list
         }
+
+
+class SourceBackendStagingFolderFileListView(MultipleObjectMixin):
+    def get_paginate_by(self, queryset):
+        return setting_paginate_by.value

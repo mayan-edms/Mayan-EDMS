@@ -162,6 +162,17 @@ class SourceTestMixin:
         self._test_sources.append(self._test_source)
 
 
+class SourceDocumentUploadViewTestMixin:
+    def _request_source_document_upload_view_via_get(self):
+        return self.get(
+            viewname='sources:document_upload_interactive', kwargs={
+                'source_id': self._test_source.pk
+            }, data={
+                'document_type_id': self._test_document_type.pk,
+            }
+        )
+
+
 class PeriodicSourceBackendTestMixin(SourceTestMixin):
     _create_source_method = '_create_test_periodic_source_backend'
 

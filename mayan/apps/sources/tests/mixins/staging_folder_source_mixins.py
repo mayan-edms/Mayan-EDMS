@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 import shutil
 
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
@@ -71,9 +72,16 @@ class StagingFolderTestMixin(SourceTestMixin):
 
         super().tearDown()
 
-    def _create_test_staging_folder(self, extra_data=None):
+    def _create_test_staging_folder(
+        self, extra_data=None, add_subdirectory=False
+    ):
         temporary_folder = mkdtemp()
         self._temporary_folders.append(temporary_folder)
+
+        if add_subdirectory:
+            self._temporary_subfolder = mkdtemp(dir=str(temporary_folder))
+            self._temporary_folders.append(self._temporary_subfolder)
+
         backend_data = {
             'folder_path': temporary_folder,
             'preview_width': TEST_STAGING_PREVIEW_WIDTH,
@@ -89,15 +97,22 @@ class StagingFolderTestMixin(SourceTestMixin):
             backend_data=backend_data
         )
 
-    def _copy_test_staging_folder_document(self):
+    def _copy_test_staging_folder_document(self, filename=None, to_subfolder=False):
+        path = Path(self._test_source.get_backend_data()['folder_path'])
+
+        if to_subfolder:
+            path = Path(self._temporary_subfolder)
+
         shutil.copy(
-            src=TEST_SMALL_DOCUMENT_PATH,
-            dst=self._test_source.get_backend_data()['folder_path']
+            src=TEST_SMALL_DOCUMENT_PATH, dst=str(path / (filename or ''))
         )
-        self._test_staging_folder_file = list(
+
+        test_staging_folder_file_list = list(
             self._test_source.get_backend_instance().get_files()
-        )[0]
-        self._test_staging_folder_files.append(self._test_staging_folder_file)
+        )
+        if test_staging_folder_file_list:
+            self._test_staging_folder_file = test_staging_folder_file_list[0]
+            self._test_staging_folder_files.append(self._test_staging_folder_file)
 
 
 class StagingFolderViewTestMixin:

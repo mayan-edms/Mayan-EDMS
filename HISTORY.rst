@@ -171,7 +171,6 @@
   - Update scan code to user ``pathlib.Path``.
   - Support pagination.
 
-
 4.2.3 (2022-XX-XX)
 ==================
 - Add restart policy to the Traefik container definition.
