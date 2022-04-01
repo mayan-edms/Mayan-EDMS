@@ -10,7 +10,8 @@
   - Update document metadata model field label from "Metadata type value"
     to "Metadata value".
   - Filter unread message count badge by message read permission.
-
+  - Update signature view permission label from
+    "View details of document signatures" to "View document signature".
 
 4.1.6 (2022-02-15)
 ==================
