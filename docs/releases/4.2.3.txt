@@ -1,0 +1,66 @@
+Version 4.2.3
+=============
+
+Released: April 1, 2022
+
+Status: Stable
+
+Changes
+-------
+
+Docker
+^^^^^^
+
+Add a restart policy to the Traefik container definition. The policy is the
+same as the rest of the containers, ``unless-stopped``.
+
+
+Sources
+^^^^^^^
+
+Fixed an issue where a staging folder would not tag uploaded documents.
+
+
+Other
+^^^^^
+
+- Remove duplicated ``Document.get_label`` method.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- None
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

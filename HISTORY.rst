@@ -1,4 +1,4 @@
-4.2.3 (2022-XX-XX)
+4.2.3 (2022-04-01)
 ==================
 - Add restart policy to the Traefik container definition.
 - Remove duplicated ``Document.get_label`` method.
