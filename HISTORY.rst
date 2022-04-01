@@ -13,6 +13,7 @@
   - Update signature view permission label from
     "View details of document signatures" to "View document signature".
   - Ensure the object copy permission is required for the object copy link.
+  - Fix ``GUNICORN_REQUESTS_JITTER`` documentation setting name reference.
 
 4.1.6 (2022-02-15)
 ==================
