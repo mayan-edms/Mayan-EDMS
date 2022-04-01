@@ -171,9 +171,12 @@
   - Update scan code to user ``pathlib.Path``.
   - Support pagination.
 
-4.2.3 (2022-XX-XX)
+4.2.3 (2022-04-01)
 ==================
 - Add restart policy to the Traefik container definition.
+- Remove duplicated ``Document.get_label`` method.
+- Fix an issue where a staging folder would not tag uploaded
+  documents.
 
 4.2.2 (2022-03-21)
 ==================

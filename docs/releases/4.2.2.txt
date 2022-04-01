@@ -8,9 +8,6 @@ Status: Stable
 Changes
 -------
 
-Dependencies
-^^^^^^^^^^^^
-
 Emailing
 ^^^^^^^^
 

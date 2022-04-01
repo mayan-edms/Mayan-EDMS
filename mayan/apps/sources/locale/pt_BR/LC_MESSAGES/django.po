@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-21 06:44+0000\n"
+"POT-Creation-Date: 2022-04-01 05:54+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:57 events.py:5 links.py:135 menus.py:5 models.py:42 queues.py:7
+#: apps.py:57 events.py:5 links.py:137 menus.py:5 models.py:42 queues.py:7
 #: settings.py:13 views/source_views.py:164
 msgid "Sources"
 msgstr "Fontes"
@@ -108,27 +108,27 @@ msgstr "Arquivo"
 msgid "Default"
 msgstr "Padrão"
 
-#: links.py:107
+#: links.py:109
 msgid "New document"
 msgstr "Novo documento"
 
-#: links.py:114
+#: links.py:116
 msgid "Upload new file"
 msgstr "Carregar novo arquivo"
 
-#: links.py:120
+#: links.py:122
 msgid "Create source"
 msgstr "Criar fonte"
 
-#: links.py:126 source_backends/staging_folder_backends.py:311
+#: links.py:128 source_backends/staging_folder_backends.py:311
 msgid "Delete"
 msgstr "Excluir"
 
-#: links.py:130
+#: links.py:132
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:142
+#: links.py:144
 msgid "Test"
 msgstr "Teste"
 
@@ -464,7 +464,7 @@ msgid "Scan"
 msgstr "Escanear"
 
 #: source_backends/staging_folder_backends.py:222
-#: source_backends/staging_folder_backends.py:491
+#: source_backends/staging_folder_backends.py:493
 msgid "Staging file"
 msgstr "Arquivo temporário"
 
@@ -514,22 +514,22 @@ msgstr "Criado"
 msgid "Thumbnail"
 msgstr "Miniatura"
 
-#: source_backends/staging_folder_backends.py:471
+#: source_backends/staging_folder_backends.py:473
 #, python-format
 msgid "Error deleting staging file; %s"
 msgstr "Error removendo arquivo temporário; %s"
 
-#: source_backends/staging_folder_backends.py:492
+#: source_backends/staging_folder_backends.py:494
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "Excluir o arquivo temporário \"%s\"?"
 
-#: source_backends/staging_folder_backends.py:518
+#: source_backends/staging_folder_backends.py:520
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr "Não foi possível obter a lista de arquivos temporários: %s"
 
-#: source_backends/staging_folder_backends.py:545
+#: source_backends/staging_folder_backends.py:547
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
 "the operating system user account being used for Mayan EDMS doesn't have the"
@@ -539,7 +539,7 @@ msgstr ""
 "significar que o usuário do sistema operacional usado para o Mayan EDMS nao "
 "possui permissões nesta pasta."
 
-#: source_backends/staging_folder_backends.py:552
+#: source_backends/staging_folder_backends.py:554
 msgid "No staging files available"
 msgstr "Não há arquivos temporários disponíveis."
 

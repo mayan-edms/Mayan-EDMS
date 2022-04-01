@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-21 06:44+0000\n"
+"POT-Creation-Date: 2022-04-01 05:54+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Indonesian (https://www.transifex.com/rosarior/teams/13584/id/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:57 events.py:5 links.py:135 menus.py:5 models.py:42 queues.py:7
+#: apps.py:57 events.py:5 links.py:137 menus.py:5 models.py:42 queues.py:7
 #: settings.py:13 views/source_views.py:164
 msgid "Sources"
 msgstr ""
@@ -94,27 +94,27 @@ msgstr "File"
 msgid "Default"
 msgstr "Bawaan"
 
-#: links.py:107
+#: links.py:109
 msgid "New document"
 msgstr ""
 
-#: links.py:114
+#: links.py:116
 msgid "Upload new file"
 msgstr ""
 
-#: links.py:120
+#: links.py:122
 msgid "Create source"
 msgstr ""
 
-#: links.py:126 source_backends/staging_folder_backends.py:311
+#: links.py:128 source_backends/staging_folder_backends.py:311
 msgid "Delete"
 msgstr "Hapus"
 
-#: links.py:130
+#: links.py:132
 msgid "Edit"
 msgstr "Sunting"
 
-#: links.py:142
+#: links.py:144
 msgid "Test"
 msgstr ""
 
@@ -415,7 +415,7 @@ msgid "Scan"
 msgstr ""
 
 #: source_backends/staging_folder_backends.py:222
-#: source_backends/staging_folder_backends.py:491
+#: source_backends/staging_folder_backends.py:493
 msgid "Staging file"
 msgstr ""
 
@@ -465,29 +465,29 @@ msgstr ""
 msgid "Thumbnail"
 msgstr ""
 
-#: source_backends/staging_folder_backends.py:471
+#: source_backends/staging_folder_backends.py:473
 #, python-format
 msgid "Error deleting staging file; %s"
 msgstr ""
 
-#: source_backends/staging_folder_backends.py:492
+#: source_backends/staging_folder_backends.py:494
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr ""
 
-#: source_backends/staging_folder_backends.py:518
+#: source_backends/staging_folder_backends.py:520
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr ""
 
-#: source_backends/staging_folder_backends.py:545
+#: source_backends/staging_folder_backends.py:547
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
 "the operating system user account being used for Mayan EDMS doesn't have the"
 " necessary file system permissions for the folder."
 msgstr ""
 
-#: source_backends/staging_folder_backends.py:552
+#: source_backends/staging_folder_backends.py:554
 msgid "No staging files available"
 msgstr ""
 
