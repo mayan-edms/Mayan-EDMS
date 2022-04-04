@@ -66,9 +66,9 @@ removed. The same function is now accomplished by the
 ``AuthenticationBackendModelEmailPassword`` backend.
 
 To enable TOTP authentication, set ``AUTHENTICATION_BACKEND`` to
-``mayan.apps.authentication.authentication_backends.AuthenticationBackendModelUsernamePasswordTOTP``
+``mayan.apps.authentication_otp.authentication_backends.AuthenticationBackendModelUsernamePasswordTOTP``
 for username and TOTP login. For email and TOTP logins use
-``mayan.apps.authentication.authentication_backends.AuthenticationBackendModelEmailPasswordTOTP``.
+``mayan.apps.authentication_otp.authentication_backends.AuthenticationBackendModelEmailPasswordTOTP``.
 
 
 Dependencies

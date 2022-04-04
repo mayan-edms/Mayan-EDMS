@@ -1,3 +1,9 @@
+4.2.4 (2022-XX-XX)
+==================
+- Fix the documentation paths to the OTP backends. Closes GitLab
+  issue #1099. Thanks to Matthias Löblich (@startmat) for the
+  report.
+
 4.2.3 (2022-04-01)
 ==================
 - Add restart policy to the Traefik container definition.
@@ -187,9 +193,9 @@
 
 - Add Time based One Time Password (TOTP) support. To enable set the
   setting ``AUTHENTICATION_BACKEND`` to
-  ``mayan.apps.authentication.authentication_backends.AuthenticationBackendModelUsernamePasswordTOTP``
+  ``mayan.apps.authentication_otp.authentication_backends.AuthenticationBackendModelUsernamePasswordTOTP``
   for username and TOTP login. For email and TOTP logins use
-  ``mayan.apps.authentication.authentication_backends.AuthenticationBackendModelEmailPasswordTOTP``.
+  ``mayan.apps.authentication_otp.authentication_backends.AuthenticationBackendModelEmailPasswordTOTP``.
   New management commands to support OTP:
 
     - ``authentication_otp_disable``: disables OTP for a user
