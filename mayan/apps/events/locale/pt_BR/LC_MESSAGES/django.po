@@ -6,17 +6,17 @@
 # Translators:
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
 # Roberto Rosario, 2022
-# Márcia Ferreira, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"POT-Creation-Date: 2022-04-01 05:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -75,10 +75,12 @@ msgid ""
 "The event list has been exported and is available for download using the "
 "link: %(download_url)s or from the downloads area (%(download_list_url)s)."
 msgstr ""
+"A lista do evento foi exportada e está disponível para download utilizando o"
+" link: %(download_url)s ou da área de descargas (%(download_list_url)s)."
 
 #: events.py:15
 msgid "Events cleared"
-msgstr ""
+msgstr "Eventos eliminados"
 
 #: events.py:18
 msgid "Events exported"
@@ -179,47 +181,50 @@ msgstr "Inscrições em eventos de objetos"
 
 #: permissions.py:8
 msgid "Clear the events of an object"
-msgstr ""
+msgstr "Eliminar os eventos de um objeto"
 
 #: permissions.py:11
 msgid "Export the events of an object"
-msgstr ""
+msgstr "Exportar os eventos de um objeto"
 
 #: permissions.py:14
 msgid "View the events of an object"
-msgstr ""
+msgstr "Visualizar os eventos de um objeto"
 
 #: queues.py:13
 msgid "Clear event querysets"
-msgstr ""
+msgstr "Eliminar querysets do evento"
 
 #: queues.py:17
 msgid "Export event querysets"
-msgstr ""
+msgstr "Exportar querysets do evento"
 
 #: views/clear_views.py:26
 msgid ""
 "This action is not reversible. The process will be performed in the "
 "background. "
 msgstr ""
+"Esta ação não é reversível. O processo irá acontecer em segundo plano."
 
 #: views/clear_views.py:50
 msgid "Event list clear task queued successfully."
-msgstr ""
+msgstr "Tarefa de eliminar a lista de evento em linha com sucesso."
 
 #: views/clear_views.py:81
 #, python-format
 msgid "Clear events of: %s"
-msgstr ""
+msgstr "Eliminar os eventos de: %s"
 
 #: views/clear_views.py:104
 #, python-format
 msgid "Clear events of type: %s"
-msgstr ""
+msgstr "Limpar eventos do tipo: %s"
 
 #: views/event_views.py:26
 msgid "Events track actions that have been performed on, to, or with objects."
 msgstr ""
+"Ações de acompanhamento de eventos que foram realizadas em, para ou com "
+"objetos."
 
 #: views/event_views.py:29
 msgid "There are no events"
@@ -236,7 +241,7 @@ msgstr "Eventos para: %s"
 
 #: views/event_views.py:60
 msgid "There are no events of this type"
-msgstr ""
+msgstr "Não existem eventos deste tipo."
 
 #: views/event_views.py:62
 #, python-format
@@ -248,20 +253,22 @@ msgid ""
 "The process will be performed in the background. The exported events will be"
 " available in the downloads area."
 msgstr ""
+"O processo trabalhará em segundo plano. Os eventos exportados estarão "
+"disponíveis na área de descarragas."
 
 #: views/export_views.py:45
 msgid "Event list export task queued successfully."
-msgstr ""
+msgstr "Tarefa de exportação da lista de evento em linha com sucesso."
 
 #: views/export_views.py:76
 #, python-format
 msgid "Export events of: %s"
-msgstr ""
+msgstr "Exportar eventos de: %s"
 
 #: views/export_views.py:93
 #, python-format
 msgid "Export events of type: %s"
-msgstr ""
+msgstr "Exportar eventos do tipo: %s"
 
 #: views/notification_views.py:25
 msgid "Subscribe to global or object events to receive notifications."
@@ -274,7 +281,7 @@ msgstr "Não há notificações"
 
 #: views/notification_views.py:44
 msgid "Mark the selected notification as read?"
-msgstr ""
+msgstr "Marcar a notificação selecionada como lida?"
 
 #: views/notification_views.py:56
 msgid "Notification marked as read."
@@ -282,7 +289,7 @@ msgstr "Notificação marcada como lida."
 
 #: views/notification_views.py:67
 msgid "Mark all notification as read?"
-msgstr ""
+msgstr "Marcar todas as notificações como lidas?"
 
 #: views/notification_views.py:77
 msgid "All notifications marked as read."

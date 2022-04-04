@@ -1,3 +1,31 @@
+4.2.4 (2022-XX-XX)
+==================
+- Fix the documentation paths to the OTP backends. Closes GitLab
+  issue #1099. Thanks to Matthias Löblich (@startmat) for the
+  report.
+
+4.2.3 (2022-04-01)
+==================
+- Add restart policy to the Traefik container definition.
+- Remove duplicated ``Document.get_label`` method.
+- Fix an issue where a staging folder would not tag uploaded
+  documents.
+
+4.2.2 (2022-03-21)
+==================
+- Ensure the object copy permission is required for the object copy link.
+- Migrate old workflow ``EmailAction`` instances instead of sub-classing
+  for backwards compatibility. Improves commit
+  ``b522dac80f7f6cfb8c5db8a74d6d2d22bc8b281a`` and avoids a double entry in
+  the workflow state action selection downdown list.
+- Ensure new document and file links access works like their respective
+  views. The links will be active when the access is granted for the source
+  as well as the document/document type.
+- Filter unread message count badge by message read permission.
+- Update document metadata model field label from "Metadata type value"
+  to "Metadata value".
+- Fix document file signature serializer label.
+
 4.2.1 (2022-02-16)
 ==================
 - Merge improvements from version 4.1.6.
@@ -165,9 +193,9 @@
 
 - Add Time based One Time Password (TOTP) support. To enable set the
   setting ``AUTHENTICATION_BACKEND`` to
-  ``mayan.apps.authentication.authentication_backends.AuthenticationBackendModelUsernamePasswordTOTP``
+  ``mayan.apps.authentication_otp.authentication_backends.AuthenticationBackendModelUsernamePasswordTOTP``
   for username and TOTP login. For email and TOTP logins use
-  ``mayan.apps.authentication.authentication_backends.AuthenticationBackendModelEmailPasswordTOTP``.
+  ``mayan.apps.authentication_otp.authentication_backends.AuthenticationBackendModelEmailPasswordTOTP``.
   New management commands to support OTP:
 
     - ``authentication_otp_disable``: disables OTP for a user

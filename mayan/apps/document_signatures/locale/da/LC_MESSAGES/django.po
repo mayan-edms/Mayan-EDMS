@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"POT-Creation-Date: 2022-04-01 05:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Mads L. Nielsen <sirlundgaard@gmail.com>, 2022\n"
 "Language-Team: Danish (https://www.transifex.com/rosarior/teams/13584/da/)\n"
@@ -65,7 +65,7 @@ msgstr ""
 msgid "Key"
 msgstr ""
 
-#: forms.py:22 serializers.py:66 workflow_actions.py:30
+#: forms.py:22 serializers.py:67 workflow_actions.py:30
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document file."
@@ -248,7 +248,7 @@ msgid "Verify document signatures"
 msgstr ""
 
 #: permissions.py:34
-msgid "View details of document signatures"
+msgid "View document signatures"
 msgstr ""
 
 #: queues.py:13
@@ -272,7 +272,7 @@ msgid "Refresh existing signature information"
 msgstr ""
 
 #: serializers.py:60
-msgid "Primary key of the tag to add to the document."
+msgid "Primary key of the secret key used to sign the document file."
 msgstr ""
 
 #: settings.py:20

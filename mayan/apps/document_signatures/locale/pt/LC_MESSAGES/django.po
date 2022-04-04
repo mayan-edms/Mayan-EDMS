@@ -6,20 +6,21 @@
 # Translators:
 # Bruno Martins <bruno.martins@bewgpt.com.pt>, 2022
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
-# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
 # Roberto Rosario, 2022
 # Vítor Figueiró <vfigueiro@gmail.com>, 2022
 # Aline Freitas <aline@alinefreitas.com.br>, 2022
 # Márcia Ferreira, 2022
+# Paulo Loureiro, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"POT-Creation-Date: 2022-04-01 05:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
-"Last-Translator: Márcia Ferreira, 2022\n"
+"Last-Translator: Paulo Loureiro, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,7 +72,7 @@ msgstr "Assinatura integrada criada."
 msgid "Key"
 msgstr "Chave"
 
-#: forms.py:22 serializers.py:66 workflow_actions.py:30
+#: forms.py:22 serializers.py:67 workflow_actions.py:30
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document file."
@@ -126,7 +127,7 @@ msgstr "Algoritmo da chave"
 
 #: forms.py:84
 msgid "Key user ID"
-msgstr "ID de usuário da chave"
+msgstr "ID do utilizador da chave"
 
 #: forms.py:88
 msgid "Key type"
@@ -170,7 +171,7 @@ msgstr "Assinaturas"
 
 #: managers.py:95
 msgid "signed"
-msgstr ""
+msgstr "assinado"
 
 #: models.py:46
 msgid "Document file"
@@ -186,7 +187,7 @@ msgstr "ID da chave que será usada para assinar o documento."
 
 #: models.py:65
 msgid "Public key fingerprint"
-msgstr "Public key fingerprint"
+msgstr "Impressão digital da chave pública"
 
 #: models.py:72
 msgid "Document file signature"
@@ -242,7 +243,7 @@ msgstr "Assinar documentos com assinaturas integradas"
 
 #: permissions.py:18
 msgid "Delete detached signatures"
-msgstr "Excluir assinaturas destacada"
+msgstr "Eliminar assinaturas destacadas"
 
 #: permissions.py:22
 msgid "Download detached document signatures"
@@ -257,8 +258,8 @@ msgid "Verify document signatures"
 msgstr "Verificar as assinaturas do documento"
 
 #: permissions.py:34
-msgid "View details of document signatures"
-msgstr "Ver detalhes da assinatura de documentos"
+msgid "View document signatures"
+msgstr "Visualizar assinaturas do documento"
 
 #: queues.py:13
 msgid "Verify key signatures"
@@ -281,8 +282,9 @@ msgid "Refresh existing signature information"
 msgstr "Atualizar informação de assinaturas existentes"
 
 #: serializers.py:60
-msgid "Primary key of the tag to add to the document."
-msgstr "Chave primária da etiqueta a adicionar ao documento"
+msgid "Primary key of the secret key used to sign the document file."
+msgstr ""
+"Chave primária da senha secreta usada para assinar o ficheiro do documento."
 
 #: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."
@@ -308,7 +310,7 @@ msgstr "Assinaturas destacadas"
 
 #: views.py:62 views.py:129
 msgid "Passphrase is needed to unlock this key."
-msgstr "É preciso senha para acessar a chave."
+msgstr "É preciso senha para aceder à chave."
 
 #: views.py:75 views.py:142
 msgid "Passphrase is incorrect."

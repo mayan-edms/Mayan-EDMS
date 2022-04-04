@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"POT-Creation-Date: 2022-04-01 05:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -712,8 +712,8 @@ msgstr "Archivos de documentos"
 
 #: models/document_file_models.py:333 models/document_file_page_models.py:267
 #: models/document_models.py:72 models/document_models.py:318
-#: models/document_models.py:323 models/document_type_models.py:41
-#: models/document_type_models.py:203 models/document_version_models.py:236
+#: models/document_type_models.py:41 models/document_type_models.py:203
+#: models/document_version_models.py:236
 #: models/document_version_page_models.py:347
 msgid "Label"
 msgstr "Etiqueta"
@@ -800,7 +800,7 @@ msgstr ""
 msgid "Is stub?"
 msgstr "¿Es un recibo?"
 
-#: models/document_models.py:316 models/document_models.py:321
+#: models/document_models.py:316
 #, python-format
 msgid "Document stub, id: %d"
 msgstr "Recibo de documento, id: %d"

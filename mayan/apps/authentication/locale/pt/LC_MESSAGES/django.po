@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"POT-Creation-Date: 2022-04-01 05:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
@@ -96,10 +96,12 @@ msgstr ""
 #: settings.py:23
 msgid "Dotted path to the backend used to process user authentication."
 msgstr ""
+"Caminho pontilhado para o backend utilizado para processar autenticação de "
+"utilizador"
 
 #: settings.py:29
 msgid "Arguments for the AUTHENTICATION_BACKEND."
-msgstr ""
+msgstr "Argumentos para o AUTENTICACAO_BACKEND"
 
 #: templates/authentication/app/viewport.html:11
 #, python-format
@@ -196,8 +198,8 @@ msgstr ""
 #: views/authentication_views.py:433
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Alterar palavra-passe de utilizador"
+msgstr[1] "Alterar palavra-passe de utilizadores"
 
 #: views/authentication_views.py:444
 #, python-format

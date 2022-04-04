@@ -1,0 +1,84 @@
+Version 4.2.2
+=============
+
+Released: March 21, 2022
+
+Status: Stable
+
+Changes
+-------
+
+Emailing
+^^^^^^^^
+
+Migrate old workflow ``EmailAction`` instances instead of sub-classing
+for backwards compatibility. Using the official workflow migration
+functionality avoids a double entry in the workflow state action selection
+dropdown list.
+
+
+Messaging
+^^^^^^^^^
+
+Filter unread message count badge by message read permission.
+
+
+Metadata
+^^^^^^^^
+
+Update document metadata model field label from "Metadata type value"
+to "Metadata value".
+
+
+Sources
+^^^^^^^
+
+Ensure new document and file links access works like their respective
+views. The links will be active when the access is granted for the source
+as well as the document/document type.
+
+
+Other
+^^^^^
+
+- Ensure the object copy permission is required for the object copy link.
+- Fix document file signature serializer label.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- None
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

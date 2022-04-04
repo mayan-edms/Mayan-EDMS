@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"POT-Creation-Date: 2022-04-01 05:54+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
@@ -44,23 +44,23 @@ msgstr ""
 msgid "Body"
 msgstr "Telo"
 
-#: links.py:38 views.py:33
+#: links.py:49 views.py:33
 msgid "Create message"
 msgstr "Kreirajte poruku"
 
-#: links.py:41 links.py:47
+#: links.py:52 links.py:58
 msgid "Delete"
 msgstr "Obriši"
 
-#: links.py:56 links.py:67
+#: links.py:67 links.py:78
 msgid "Mark as read"
 msgstr ""
 
-#: links.py:62 links.py:71
+#: links.py:73 links.py:82
 msgid "Mark as unread"
 msgstr ""
 
-#: links.py:75
+#: links.py:86
 msgid "Mark all as read"
 msgstr ""
 

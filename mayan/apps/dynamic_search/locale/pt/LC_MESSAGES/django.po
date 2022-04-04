@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"POT-Creation-Date: 2022-04-01 05:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
@@ -80,7 +80,7 @@ msgstr "Executar ferramentas de pesquisa"
 
 #: queues.py:10
 msgid "Search slow"
-msgstr ""
+msgstr "Pesquisa lenta"
 
 #: queues.py:15
 msgid "Remove a model instance from the search engine."
@@ -99,6 +99,8 @@ msgstr ""
 #: queues.py:30
 msgid "Reset the search backend indices and index all instances again."
 msgstr ""
+"Restaurar os índices backend de pesquisa e classificar todos os recursos "
+"novamente"
 
 #: settings.py:16
 msgid "Full path to the backend to be used to handle the search."
@@ -111,7 +113,7 @@ msgstr "Desabilita a busca por termo único e deixa apenas a busca avançada."
 
 #: settings.py:34
 msgid "Amount of objects to process when performing bulk indexing."
-msgstr ""
+msgstr "Quantidade de objetos a processar quando se classifica em massa"
 
 #: settings.py:40
 msgid "Sets the default state of the \"Match all\" checkbox."

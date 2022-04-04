@@ -8,6 +8,7 @@ from .icons import (
     icon_object_copy, icon_setup, icon_source_code, icon_store, icon_support,
     icon_tools
 )
+from .permissions import permission_object_copy
 
 
 def object_copy_conditional_disable(context, resolved_object):
@@ -46,7 +47,8 @@ link_license = Link(
 link_object_copy = Link(
     condition=object_copy_conditional_disable,
     icon=icon_object_copy, kwargs=get_content_type_kwargs_factory(),
-    text=_('Copy'), view='common:object_copy'
+    text=_('Copy'), permissions=(permission_object_copy,),
+    view='common:object_copy'
 )
 link_setup = Link(
     icon=icon_setup, text=_('Setup'), view='common:setup_list'

@@ -35,32 +35,67 @@ def condition_document_creation_access(context, resolved_object):
     DocumentType = apps.get_model(
         app_label='documents', model_name='DocumentType'
     )
+    Source = apps.get_model(
+        app_label='sources', model_name='Source'
+    )
 
-    return AccessControlList.objects.restrict_queryset(
+    document_type_access = AccessControlList.objects.restrict_queryset(
         permission=permission_document_create,
-        queryset=DocumentType.objects.all(), user=context['user']
+        queryset=DocumentType.objects.all(), user=context.request.user
     ).exists()
+
+    source_access = AccessControlList.objects.restrict_queryset(
+        permission=permission_document_create,
+        queryset=Source.objects.all(), user=context.request.user
+    ).exists()
+
+    return document_type_access and source_access
 
 
 def condition_document_new_files_allowed(context, resolved_object):
-    DocumentFile = apps.get_model(
-        app_label='documents', model_name='DocumentFile'
-    )
+    if resolved_object:
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+        DocumentFile = apps.get_model(
+            app_label='documents', model_name='DocumentFile'
+        )
+        Source = apps.get_model(
+            app_label='sources', model_name='Source'
+        )
 
-    try:
-        DocumentFile.execute_pre_create_hooks(
-            kwargs={
-                'document': context['object'],
-                'file_object': None,
-                'user': context.request.user
-            }
-        )
-    except Exception as exception:
-        logger.warning(
-            'execute_pre_create_hooks raised and exception: %s', exception
-        )
-    else:
-        return True
+        new_document_files_allowed = False
+
+        try:
+            DocumentFile.execute_pre_create_hooks(
+                kwargs={
+                    'document': context['object'],
+                    'file_object': None,
+                    'user': context.request.user
+                }
+            )
+        except Exception as exception:
+            logger.warning(
+                'execute_pre_create_hooks raised and exception: %s', exception
+            )
+        else:
+            new_document_files_allowed = True
+
+        document_access = AccessControlList.objects.restrict_queryset(
+            permission=permission_document_file_new,
+            queryset=Document.valid.filter(pk__in=(resolved_object.pk,)),
+            user=context.request.user
+        ).exists()
+
+        source_access = AccessControlList.objects.restrict_queryset(
+            permission=permission_document_file_new,
+            queryset=Source.objects.all(), user=context.request.user
+        ).exists()
+
+        return new_document_files_allowed and document_access and source_access
 
 
 def condition_source_is_not_interactive(context, resolved_object):
@@ -78,7 +113,6 @@ link_document_file_upload = Link(
     condition=condition_document_new_files_allowed,
     kwargs={'document_id': 'resolved_object.pk'},
     icon=icon_document_file_upload,
-    permissions=(permission_document_file_new,),
     text=_('Upload new file'), view='sources:document_file_upload',
 )
 

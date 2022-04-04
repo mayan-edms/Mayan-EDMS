@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"POT-Creation-Date: 2022-04-01 05:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -63,47 +63,47 @@ msgstr "Среда командной строки с автодополнени
 msgid "Checks proper formatting of the README file."
 msgstr "Проверяет правильность форматирования файла README."
 
-#: links.py:29
+#: links.py:30
 msgid "About this"
 msgstr "О программе"
 
-#: links.py:32
+#: links.py:33
 msgid "Get the book"
 msgstr "Купить книгу"
 
-#: links.py:37
+#: links.py:38
 msgid "Documentation"
 msgstr "Документация"
 
-#: links.py:40
+#: links.py:41
 msgid "Forum"
 msgstr "Форум"
 
-#: links.py:44 views.py:48
+#: links.py:45 views.py:48
 msgid "License"
 msgstr "Лицензия"
 
-#: links.py:49
+#: links.py:50
 msgid "Copy"
 msgstr "Копировать"
 
-#: links.py:52
+#: links.py:54
 msgid "Setup"
 msgstr "Настройки"
 
-#: links.py:55
+#: links.py:57
 msgid "Source code"
 msgstr "Исходный код"
 
-#: links.py:59
+#: links.py:61
 msgid "Online store"
 msgstr "Магазин"
 
-#: links.py:63
+#: links.py:65
 msgid "Get support"
 msgstr "Получить поддержку"
 
-#: links.py:67 queues.py:6 views.py:122
+#: links.py:69 queues.py:6 views.py:122
 msgid "Tools"
 msgstr "Инструменты"
 

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"POT-Creation-Date: 2022-04-01 05:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
@@ -30,7 +30,7 @@ msgstr "Logging"
 
 #: links.py:11 views.py:27
 msgid "Global error log"
-msgstr ""
+msgstr "Erro global de registo"
 
 #: links.py:17
 msgid "Errors"
@@ -112,6 +112,8 @@ msgid ""
 "This view displays the error log of different objects. An empty list is a "
 "good thing."
 msgstr ""
+"Esta visualização mostra o erro de registo de diferentes objetos. Uma lista "
+"vazia é bom."
 
 #: views.py:25 views.py:66
 msgid "There are no error log entries"

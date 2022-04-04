@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"POT-Creation-Date: 2022-04-01 05:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
@@ -509,15 +509,15 @@ msgstr "Modelo de índice em linha para reconstrução. "
 #, python-format
 msgid "%(count)d index template queued for rebuild."
 msgid_plural "%(count)d index templates queued for rebuild."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(count)dmodelo de índice em linha para reconstrução "
+msgstr[1] "%(count)dmodelos de índice em linha para reconstrução "
 
 #: views/index_template_views.py:359
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(count)díndice redefinidos."
+msgstr[1] "%(count)d índices redefinidos."
 
 #: views/index_template_views.py:372
 msgid "Index templates for which their instances will be deleted."

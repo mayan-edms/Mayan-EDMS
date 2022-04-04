@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"POT-Creation-Date: 2022-04-01 05:54+0000\n"
 "PO-Revision-Date: 2020-01-28 07:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -35,8 +35,8 @@ msgstr ""
 msgid "Metadata type name"
 msgstr ""
 
-#: apps.py:147
-msgid "Metadata type value"
+#: apps.py:147 search.py:17
+msgid "Metadata value"
 msgstr ""
 
 #: events.py:8
@@ -351,10 +351,6 @@ msgstr ""
 
 #: queues.py:15
 msgid "Add required metadata type"
-msgstr ""
-
-#: search.py:17
-msgid "Metadata value"
 msgstr ""
 
 #: search.py:24 search.py:35 search.py:46 search.py:57

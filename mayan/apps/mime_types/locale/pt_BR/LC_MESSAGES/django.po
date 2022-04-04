@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
+# Márcia Ferreira, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"POT-Creation-Date: 2022-04-01 05:54+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
-"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022\n"
+"Last-Translator: Márcia Ferreira, 2022\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,26 +27,30 @@ msgstr "MIME types"
 
 #: backends/file_command.py:26
 msgid "file command not installed or not found."
-msgstr ""
+msgstr "Ação do arquivo não instalado ou não encontrado."
 
 #: backends/perl_file_mimeinfo.py:26
 msgid "mimetype not installed or not found."
-msgstr ""
+msgstr "mimetype não instalado ou não encontrado"
 
 #: dependencies.py:10
 msgid ""
 "This module can be used to determine the MIME type of a file. It tries to "
 "implement the freedesktop specification for a shared MIME database."
 msgstr ""
+"Este módulo pode ser utilizado para o tipo MIME de um ficheiro. Este tenta "
+"implementar a especificação freedesktop para uma base de dados partilha de "
+"MIME"
 
 #: dependencies.py:17
 msgid "determine file type using content tests"
-msgstr ""
+msgstr "Determinar o tipo de ficheiro utilizando teste de conteúdo"
 
 #: settings.py:14
 msgid "Path to the class to use when to detect file MIME types."
 msgstr ""
+"Caminho para a classe a utilizar quando a detetar ficheiros do tipo MIME"
 
 #: settings.py:20
 msgid "Arguments to pass to the MIME_TYPE_BACKEND."
-msgstr ""
+msgstr "Argumentos a passar para MIME_TIPO_BACKEND"

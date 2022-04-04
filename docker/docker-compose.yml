@@ -274,6 +274,7 @@ services:
       - "8080:8080"
     profiles:
       - traefik
+    restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - traefik-certificates-letsencrypt:/traefik-certificates-letsencrypt

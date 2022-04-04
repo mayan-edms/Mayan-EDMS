@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:22+0000\n"
+"POT-Creation-Date: 2022-04-01 05:54+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:57 events.py:5 links.py:103 menus.py:5 models.py:42 queues.py:7
+#: apps.py:57 events.py:5 links.py:137 menus.py:5 models.py:42 queues.py:7
 #: settings.py:13 views/source_views.py:164
 msgid "Sources"
 msgstr "Πηγές"
@@ -97,27 +97,27 @@ msgstr "Αρχείο"
 msgid "Default"
 msgstr "Προεπιλογή"
 
-#: links.py:74
+#: links.py:109
 msgid "New document"
 msgstr "Νέο έγγραφο"
 
-#: links.py:82
+#: links.py:116
 msgid "Upload new file"
 msgstr ""
 
-#: links.py:88
+#: links.py:122
 msgid "Create source"
 msgstr ""
 
-#: links.py:94 source_backends/staging_folder_backends.py:311
+#: links.py:128 source_backends/staging_folder_backends.py:311
 msgid "Delete"
 msgstr "Διαγραφή"
 
-#: links.py:98
+#: links.py:132
 msgid "Edit"
 msgstr "Τροποποίηση"
 
-#: links.py:110
+#: links.py:144
 msgid "Test"
 msgstr "Δοκιμή"
 
@@ -445,7 +445,7 @@ msgid "Scan"
 msgstr "Σάρωση"
 
 #: source_backends/staging_folder_backends.py:222
-#: source_backends/staging_folder_backends.py:491
+#: source_backends/staging_folder_backends.py:493
 msgid "Staging file"
 msgstr "Αρχείο σε ενδιάμεσο στάδιο"
 
@@ -497,22 +497,22 @@ msgstr "Δημιουργήθηκε"
 msgid "Thumbnail"
 msgstr "Μικρογραφία"
 
-#: source_backends/staging_folder_backends.py:471
+#: source_backends/staging_folder_backends.py:473
 #, python-format
 msgid "Error deleting staging file; %s"
 msgstr "Σφάλμα κατά τη διαγραφή του αρχείου σε ενδιάμεσο στάδιο. %s"
 
-#: source_backends/staging_folder_backends.py:492
+#: source_backends/staging_folder_backends.py:494
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "Διαγραφή αρχείου σε ενδιάμεσο στάδιο \"%s\";"
 
-#: source_backends/staging_folder_backends.py:518
+#: source_backends/staging_folder_backends.py:520
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr "Αδυναμία λήψης λίστας αρχείων σε ενδιάμεσο στάδιο: %s"
 
-#: source_backends/staging_folder_backends.py:545
+#: source_backends/staging_folder_backends.py:547
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
 "the operating system user account being used for Mayan EDMS doesn't have the"
@@ -523,7 +523,7 @@ msgstr ""
 "συστήματος που χρησιμοποιείται για το Mayan EDMS δεν έχει τα απαραίτητα "
 "δικαιώματα για το φάκελο."
 
-#: source_backends/staging_folder_backends.py:552
+#: source_backends/staging_folder_backends.py:554
 msgid "No staging files available"
 msgstr "Μη διαθέσιμα αρχεία ενδιάμεσου σταδίου"
 

@@ -4,14 +4,14 @@
 # 
 # Translators:
 # Translators:
-# Jiří Podhorecký <jirka.p@volny.cz>, 2022
+# trendspotter <jirka.p@volny.cz>, 2022
 # Michal Švábík <snadno@lehce.cz>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-15 09:21+0000\n"
+"POT-Creation-Date: 2022-04-01 05:53+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -57,47 +57,47 @@ msgstr "Prostředí příkazového řádku s automatickým dokončováním."
 msgid "Checks proper formatting of the README file."
 msgstr "Zkontroluje správné formátování souboru README."
 
-#: links.py:29
+#: links.py:30
 msgid "About this"
 msgstr "O Mayan EDMS"
 
-#: links.py:32
+#: links.py:33
 msgid "Get the book"
 msgstr "Získejte knihu"
 
-#: links.py:37
+#: links.py:38
 msgid "Documentation"
 msgstr "Dokumentace"
 
-#: links.py:40
+#: links.py:41
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:44 views.py:48
+#: links.py:45 views.py:48
 msgid "License"
 msgstr "Licence"
 
-#: links.py:49
+#: links.py:50
 msgid "Copy"
 msgstr "kopírovat"
 
-#: links.py:52
+#: links.py:54
 msgid "Setup"
 msgstr "Nastavení"
 
-#: links.py:55
+#: links.py:57
 msgid "Source code"
 msgstr "Zdrojový kód"
 
-#: links.py:59
+#: links.py:61
 msgid "Online store"
 msgstr "Internetový obchod"
 
-#: links.py:63
+#: links.py:65
 msgid "Get support"
 msgstr "Získat podporu"
 
-#: links.py:67 queues.py:6 views.py:122
+#: links.py:69 queues.py:6 views.py:122
 msgid "Tools"
 msgstr "Nástroje"
 
