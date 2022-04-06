@@ -14,7 +14,6 @@ from mayan.apps.events.classes import (
 )
 from mayan.apps.events.decorators import method_event
 from mayan.apps.events.models import StoredEventType
-
 from mayan.apps.templating.classes import Template
 
 from ..events import event_workflow_template_edited

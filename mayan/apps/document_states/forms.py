@@ -13,8 +13,8 @@ from mayan.apps.views.forms import DynamicModelForm, FilteredSelectionForm
 from .classes import WorkflowAction
 from .fields import WorfklowImageField
 from .models import (
-    Workflow, WorkflowInstance, WorkflowState, WorkflowStateAction,
-    WorkflowTransition
+    Workflow, WorkflowStateEscalation, WorkflowInstance, WorkflowState,
+    WorkflowStateAction, WorkflowTransition
 )
 
 
@@ -91,6 +91,29 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
         data['action_data'] = json.dumps(obj=action_data)
 
         return data
+
+
+class WorkflowStateEscalationForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        workflow_template_state = kwargs.pop('workflow_template_state')
+        super().__init__(*args, **kwargs)
+
+        self.fields[
+            'transition'
+        ].queryset = workflow_template_state.workflow.transitions.all()
+
+        self.fields['condition'] = ModelTemplateField(
+            initial_help_text=self.fields['condition'].help_text,
+            label=self.fields['condition'].label, model=WorkflowInstance,
+            model_variable='workflow_instance', required=False
+        )
+
+    class Meta:
+        fields = (
+            'enabled', 'transition', 'priority', 'unit', 'amount',
+            'condition'
+        )
+        model = WorkflowStateEscalation
 
 
 class WorkflowStateForm(forms.ModelForm):

@@ -45,6 +45,12 @@ from .views.workflow_template_state_views import (
     WorkflowTemplateStateDeleteView, WorkflowTemplateStateEditView,
     WorkflowTemplateStateListView
 )
+from .views.workflow_template_state_escalation_views import (
+    WorkflowTemplateStateEscalationCreateView,
+    WorkflowTemplateStateEscalationDeleteView,
+    WorkflowTemplateStateEscalationEditView,
+    WorkflowTemplateStateEscalationListView
+)
 from .views.workflow_template_transition_views import (
     WorkflowTemplateTransitionCreateView, WorkflowTemplateTransitionDeleteView,
     WorkflowTemplateTransitionEditView, WorkflowTemplateTransitionListView,
@@ -80,7 +86,7 @@ urlpatterns_workflow_instances = [
 
 urlpatterns_workflow_runtime_proxies = [
     url(
-        regex=r'workflow_runtime_proxies/$',
+        regex=r'^workflow_runtime_proxies/$',
         name='workflow_runtime_proxy_list',
         view=WorkflowRuntimeProxyListView.as_view()
     ),
@@ -149,6 +155,29 @@ urlpatterns_workflow_state_actions = [
         regex=r'^workflow_templates/states/actions/(?P<workflow_template_state_action_id>\d+)/edit/$',
         name='workflow_template_state_action_edit',
         view=WorkflowTemplateStateActionEditView.as_view()
+    )
+]
+
+urlpatterns_workflow_state_escalations = [
+    url(
+        regex=r'^workflow_templates/states/(?P<workflow_template_state_id>\d+)/escalations/$',
+        name='workflow_template_state_escalation_list',
+        view=WorkflowTemplateStateEscalationListView.as_view()
+    ),
+    url(
+        regex=r'^workflow_templates/states/(?P<workflow_template_state_id>\d+)/escalations/create/$',
+        name='workflow_template_state_escalation_create',
+        view=WorkflowTemplateStateEscalationCreateView.as_view()
+    ),
+    url(
+        regex=r'^workflow_templates/states/escalations/(?P<workflow_template_state_escalation_id>\d+)/delete/$',
+        name='workflow_template_state_escalation_delete',
+        view=WorkflowTemplateStateEscalationDeleteView.as_view()
+    ),
+    url(
+        regex=r'^workflow_templates/states/escalations/(?P<workflow_template_state_escalation_id>\d+)/edit/$',
+        name='workflow_template_state_escalation_edit',
+        view=WorkflowTemplateStateEscalationEditView.as_view()
     )
 ]
 
@@ -272,6 +301,7 @@ urlpatterns.extend(urlpatterns_workflow_instances)
 urlpatterns.extend(urlpatterns_workflow_runtime_proxies)
 urlpatterns.extend(urlpatterns_workflow_states)
 urlpatterns.extend(urlpatterns_workflow_state_actions)
+urlpatterns.extend(urlpatterns_workflow_state_escalations)
 urlpatterns.extend(urlpatterns_workflow_templates)
 urlpatterns.extend(urlpatterns_workflow_transitions)
 urlpatterns.extend(urlpatterns_workflow_transition_fields)

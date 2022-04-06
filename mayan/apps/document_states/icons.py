@@ -57,14 +57,18 @@ icon_workflow_template_state_create = Icon(
     driver_name='fontawesome-dual', primary_symbol='circle',
     secondary_symbol='plus'
 )
-icon_workflow_template_state_delete = Icon(driver_name='fontawesome', symbol='times')
+icon_workflow_template_state_delete = Icon(
+    driver_name='fontawesome', symbol='times'
+)
 icon_workflow_template_state_edit = Icon(
     driver_name='fontawesome', symbol='pencil-alt'
 )
 
-# Workflow transition state actions
+# Workflow template state actions
 
-icon_workflow_template_state_action = Icon(driver_name='fontawesome', symbol='code')
+icon_workflow_template_state_action = Icon(
+    driver_name='fontawesome', symbol='code'
+)
 icon_workflow_template_state_action_delete = Icon(
     driver_name='fontawesome', symbol='times'
 )
@@ -77,6 +81,25 @@ icon_workflow_template_state_action_selection = Icon(
 )
 icon_workflow_template_state_action_list = Icon(
     driver_name='fontawesome', symbol='code'
+)
+
+# Workflow template state transitions
+
+icon_workflow_template_state_escalation = Icon(
+    driver_name='fontawesome', symbol='hourglass'
+)
+icon_workflow_template_state_escalation_create = Icon(
+    driver_name='fontawesome-dual', primary_symbol='hourglass',
+    secondary_symbol='plus'
+)
+icon_workflow_template_state_escalation_delete = Icon(
+    driver_name='fontawesome', symbol='times'
+)
+icon_workflow_template_state_escalation_edit = Icon(
+    driver_name='fontawesome', symbol='pencil-alt'
+)
+icon_workflow_template_state_escalation_list = Icon(
+    driver_name='fontawesome', symbol='hourglass'
 )
 
 # Workflow transitions

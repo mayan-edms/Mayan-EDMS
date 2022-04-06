@@ -76,3 +76,31 @@ def task_launch_all_workflow_for(document_id):
     logger.info(
         'Finished launching all workflows for document: %d', document_id
     )
+
+
+@app.task(ignore_result=True)
+def task_workflow_instance_check_expiration(workflow_instance_id):
+    WorkflowInstance = apps.get_model(
+        app_label='document_states', model_name='WorkflowInstance'
+    )
+
+    workflow_instance = WorkflowInstance.objects.get(pk=workflow_instance_id)
+    workflow_instance.check_expiration()
+
+
+@app.task(ignore_result=True)
+def task_workflow_instance_check_expiration_all():
+    WorkflowInstance = apps.get_model(
+        app_label='document_states', model_name='WorkflowInstance'
+    )
+
+    # Filter workflow instances whose workflow template have at least
+    # one state with expiration enabled.
+    queryset = WorkflowInstance.valid.filter(
+        workflow__states__expiration_enabled=True
+    )
+
+    for workflow_instance in queryset:
+        task_workflow_instance_check_expiration.apply_async(
+            kwargs={'workflow_instance_id': workflow_instance.pk}
+        )
