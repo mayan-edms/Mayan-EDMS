@@ -28,6 +28,68 @@ from .permissions import (
 from .utils import get_instance_ocr_content
 
 
+class DocumentTypeSubmitView(FormView):
+    extra_context = {
+        'title': _('Submit all documents of a type for OCR')
+    }
+    form_class = DocumentTypeFilteredSelectForm
+    post_action_redirect = reverse_lazy(viewname='common:tools_list')
+
+    def form_valid(self, form):
+        count = 0
+
+        valid_documents_queryset = Document.valid.all()
+
+        for document_type in form.cleaned_data['document_type']:
+            for document in document_type.documents.filter(pk__in=valid_documents_queryset.values('pk')):
+                document.submit_for_ocr(_user=self.request.user)
+                count += 1
+
+        messages.success(
+            message=_(
+                '%(count)d documents added to the OCR queue.'
+            ) % {
+                'count': count,
+            }, request=self.request
+        )
+
+        return HttpResponseRedirect(redirect_to=self.get_success_url())
+
+    def get_form_extra_kwargs(self):
+        return {
+            'allow_multiple': True,
+            'permission': permission_document_version_ocr,
+            'user': self.request.user
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(viewname='common:tools_list')
+
+
+class DocumentTypeSettingsEditView(ExternalObjectViewMixin, SingleObjectEditView):
+    external_object_class = DocumentType
+    external_object_permission = permission_document_type_ocr_setup
+    external_object_pk_url_kwarg = 'document_type_id'
+    fields = ('auto_ocr',)
+    post_action_redirect = reverse_lazy(
+        viewname='documents:document_type_list'
+    )
+
+    def get_document_type(self):
+        return self.external_object
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_document_type(),
+            'title': _(
+                'Edit OCR settings for document type: %s.'
+            ) % self.get_document_type()
+        }
+
+    def get_object(self, queryset=None):
+        return self.get_document_type().ocr_settings
+
+
 class DocumentVersionOCRContentDeleteView(MultipleObjectDeleteView):
     error_message = _(
         'Error deleting document version OCR "%(instance)s"; %(exception)s'
@@ -188,68 +250,6 @@ class DocumentVersionPageOCRContentEditView(
             return DocumentVersionPageOCRContent(
                 document_version_page=self.external_object
             )
-
-
-class DocumentTypeSubmitView(FormView):
-    extra_context = {
-        'title': _('Submit all documents of a type for OCR')
-    }
-    form_class = DocumentTypeFilteredSelectForm
-    post_action_redirect = reverse_lazy(viewname='common:tools_list')
-
-    def form_valid(self, form):
-        count = 0
-
-        valid_documents_queryset = Document.valid.all()
-
-        for document_type in form.cleaned_data['document_type']:
-            for document in document_type.documents.filter(pk__in=valid_documents_queryset.values('pk')):
-                document.submit_for_ocr(_user=self.request.user)
-                count += 1
-
-        messages.success(
-            message=_(
-                '%(count)d documents added to the OCR queue.'
-            ) % {
-                'count': count,
-            }, request=self.request
-        )
-
-        return HttpResponseRedirect(redirect_to=self.get_success_url())
-
-    def get_form_extra_kwargs(self):
-        return {
-            'allow_multiple': True,
-            'permission': permission_document_version_ocr,
-            'user': self.request.user
-        }
-
-    def get_post_action_redirect(self):
-        return reverse(viewname='common:tools_list')
-
-
-class DocumentTypeSettingsEditView(ExternalObjectViewMixin, SingleObjectEditView):
-    external_object_class = DocumentType
-    external_object_permission = permission_document_type_ocr_setup
-    external_object_pk_url_kwarg = 'document_type_id'
-    fields = ('auto_ocr',)
-    post_action_redirect = reverse_lazy(
-        viewname='documents:document_type_list'
-    )
-
-    def get_document_type(self):
-        return self.external_object
-
-    def get_extra_context(self):
-        return {
-            'object': self.get_document_type(),
-            'title': _(
-                'Edit OCR settings for document type: %s.'
-            ) % self.get_document_type()
-        }
-
-    def get_object(self, queryset=None):
-        return self.get_document_type().ocr_settings
 
 
 class EntryListView(SingleObjectListView):
