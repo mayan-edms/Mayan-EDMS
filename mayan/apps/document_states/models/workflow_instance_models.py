@@ -54,21 +54,24 @@ class WorkflowInstance(models.Model):
     def __str__(self):
         return str(self.workflow)
 
-    def check_expiration(self):
+    def check_escalation(self):
         current_state = self.get_current_state()
 
-        if current_state.expiration_enabled:
+        for escalation in current_state.escalations.filter(enabled=True):
             timedelta = datetime.timedelta(
                 **{
-                    current_state.expiration_unit: current_state.expiration_amount
+                    escalation.unit: escalation.amount
                 }
             )
 
             if now() > self.get_last_log_entry_datetime() + timedelta:
-                self.do_transition(
-                    transition=current_state.expiration_transition,
-                    comment=_('State expiration reached.')
-                )
+                condition_context = {'workflow_instance': self}
+
+                if escalation.evaluate_condition(context=condition_context):
+                    self.do_transition(
+                        transition=escalation.transition,
+                        comment=escalation.get_comment()
+                    )
 
     def do_transition(
         self, transition, comment=None, extra_data=None, user=None

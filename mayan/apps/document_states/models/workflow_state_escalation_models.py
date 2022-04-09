@@ -5,12 +5,11 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.literals import (
     TIME_DELTA_UNIT_CHOICES, TIME_DELTA_UNIT_DAYS
 )
-from mayan.apps.databases.model_mixins import ExtraDataModelMixin
+from mayan.apps.databases.model_mixins import ModelMixinConditionField
 from mayan.apps.events.classes import (
     EventManagerMethodAfter, EventManagerSave
 )
 from mayan.apps.events.decorators import method_event
-from mayan.apps.templating.classes import Template
 
 from ..events import event_workflow_template_edited
 
@@ -20,7 +19,7 @@ from .workflow_transition_models import WorkflowTransition
 __all__ = ('WorkflowStateEscalation',)
 
 
-class WorkflowStateEscalation(models.Model):
+class WorkflowStateEscalation(ModelMixinConditionField, models.Model):
     state = models.ForeignKey(
         on_delete=models.CASCADE, related_name='escalations',
         to=WorkflowState, verbose_name=_('Workflow state')
@@ -31,7 +30,9 @@ class WorkflowStateEscalation(models.Model):
     )
     priority = models.IntegerField(
         blank=True, db_index=True, default=0, help_text=_(
-            'Determine the order in which the escalations will be evaluated.'
+            'Determine the order in which the escalations will be '
+            'evaluated. Escalations with a lower priority number are '
+            'executed before escalations with a higher priority number.'
         ), verbose_name=_('Priority')
     )
     enabled = models.BooleanField(
@@ -51,15 +52,11 @@ class WorkflowStateEscalation(models.Model):
             'Amount of the selected expiration units of time.'
         ), verbose_name=_('Expiration amount')
     )
-    condition = models.TextField(
+    comment = models.TextField(
         blank=True, help_text=_(
-            'The condition that will determine if this state escalation '
-            'is executed or not. The condition is evaluated against the '
-            'workflow instance. Conditions that do not return any value, '
-            'that return the Python logical None, or an empty string (\'\') '
-            'are considered to be logical false, any other value is '
-            'considered to be the logical true.'
-        ), verbose_name=_('Condition')
+            'Comment to save to the workflow instance when the escalation '
+            'is executed.'
+        ), verbose_name=_('Comment')
     )
 
     class Meta:
@@ -82,14 +79,6 @@ class WorkflowStateEscalation(models.Model):
     def delete(self, *args, **kwargs):
         return super().delete(*args, **kwargs)
 
-    def evaluate_condition(self, workflow_instance):
-        if self.has_condition():
-            return Template(template_string=self.condition).render(
-                context={'workflow_instance': workflow_instance}
-            ).strip()
-        else:
-            return True
-
     def execute(self, context, workflow_instance):
         if self.evaluate_condition(workflow_instance=workflow_instance):
             try:
@@ -106,13 +95,8 @@ class WorkflowStateEscalation(models.Model):
             else:
                 self.error_log.all().delete()
 
-    def has_condition(self):
-        return self.condition.strip()
-    has_condition.help_text = _(
-        'The state escalation will be executed, depending on the condition '
-        'return value.'
-    )
-    has_condition.short_description = _('Has a condition?')
+    def get_comment(self):
+        return self.comment or _('Workflow escalation.')
 
     @method_event(
         event_manager_class=EventManagerSave,
