@@ -112,7 +112,7 @@ class DocumentStatesApp(MayanAppConfig):
 
         DynamicSerializerField.add_serializer(
             klass=Workflow,
-            serializer_class='mayan.apps.document_states.serializers.WorkflowTemplateSerializer'
+            serializer_class='mayan.apps.document_states.serializers.workflow_template_serializers.WorkflowTemplateSerializer'
         )
 
         error_log = ErrorLog(app_config=self)
