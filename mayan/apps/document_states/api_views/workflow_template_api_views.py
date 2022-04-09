@@ -13,10 +13,14 @@ from ..permissions import (
     permission_workflow_template_create, permission_workflow_template_delete,
     permission_workflow_template_edit, permission_workflow_template_view
 )
-from ..serializers import (
+from ..serializers.workflow_template_serializers import (
     WorkflowTemplateDocumentTypeAddSerializer,
-    WorkflowTemplateDocumentTypeRemoveSerializer, WorkflowTemplateSerializer,
-    WorkflowTemplateStateActionSerializer, WorkflowTemplateStateSerializer,
+    WorkflowTemplateDocumentTypeRemoveSerializer, WorkflowTemplateSerializer
+)
+from ..serializers.workflow_template_state_serializers import (
+    WorkflowTemplateStateActionSerializer, WorkflowTemplateStateSerializer
+)
+from ..serializers.workflow_template_transition_serializers import (
     WorkflowTemplateTransitionSerializer, WorkflowTransitionFieldSerializer,
     WorkflowTemplateTransitionTriggerSerializer
 )

@@ -8,10 +8,11 @@ from ..permissions import (
     permission_workflow_instance_transition,
     permission_workflow_template_view, permission_workflow_tools
 )
-from ..serializers import (
+from ..serializers.workflow_instance_serializers import (
     WorkflowInstanceLaunchSerializer, WorkflowInstanceSerializer,
-    WorkflowInstanceLogEntrySerializer, WorkflowTemplateTransitionSerializer
+    WorkflowInstanceLogEntrySerializer
 )
+from ..serializers.workflow_template_transition_serializers import WorkflowTemplateTransitionSerializer
 
 
 class APIWorkflowInstanceLaunchActionView(generics.ObjectActionAPIView):
