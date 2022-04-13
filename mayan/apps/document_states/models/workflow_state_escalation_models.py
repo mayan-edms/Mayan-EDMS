@@ -5,7 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.literals import (
     TIME_DELTA_UNIT_CHOICES, TIME_DELTA_UNIT_DAYS
 )
-from mayan.apps.databases.model_mixins import ModelMixinConditionField
+from mayan.apps.databases.model_mixins import (
+    ExtraDataModelMixin, ModelMixinConditionField
+)
 from mayan.apps.events.classes import (
     EventManagerMethodAfter, EventManagerSave
 )
@@ -19,7 +21,9 @@ from .workflow_transition_models import WorkflowTransition
 __all__ = ('WorkflowStateEscalation',)
 
 
-class WorkflowStateEscalation(ModelMixinConditionField, models.Model):
+class WorkflowStateEscalation(
+    ExtraDataModelMixin, ModelMixinConditionField, models.Model
+):
     state = models.ForeignKey(
         on_delete=models.CASCADE, related_name='escalations',
         to=WorkflowState, verbose_name=_('Workflow state')
@@ -39,18 +43,18 @@ class WorkflowStateEscalation(ModelMixinConditionField, models.Model):
         default=True, help_text=_(
             'Enable automatic transition the workflow after a specified '
             'amount of time has elapsed in the state without change.'
-        ), verbose_name=_('Enable escalation')
+        ), verbose_name=_('Enabled')
     )
     unit = models.CharField(
         blank=True, choices=TIME_DELTA_UNIT_CHOICES,
         default=TIME_DELTA_UNIT_DAYS, max_length=32, verbose_name=_(
-            'Expiration time unit'
+            'Time unit'
         )
     )
     amount = models.PositiveIntegerField(
         blank=True, default=1, help_text=_(
-            'Amount of the selected expiration units of time.'
-        ), verbose_name=_('Expiration amount')
+            'Amount of the selected escalation units of time.'
+        ), verbose_name=_('Amount')
     )
     comment = models.TextField(
         blank=True, help_text=_(

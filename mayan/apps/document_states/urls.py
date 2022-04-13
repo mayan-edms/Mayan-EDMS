@@ -306,6 +306,8 @@ urlpatterns.extend(urlpatterns_workflow_templates)
 urlpatterns.extend(urlpatterns_workflow_transitions)
 urlpatterns.extend(urlpatterns_workflow_transition_fields)
 
+
+from .api_views.workflow_template_api_views import APIWorkflowTemplateStateEscalationListView, APIWorkflowTemplateStateEscalationDetailView
 api_urls = [
     url(
         regex=r'^workflow_templates/$', name='workflow-template-list',
@@ -414,5 +416,17 @@ api_urls = [
         regex=r'^documents/(?P<document_id>[0-9]+)/workflow_instances/(?P<workflow_instance_id>[0-9]+)/log_entries/(?P<workflow_instance_log_entry_id>[0-9]+)/$',
         name='workflow-instance-log-entry-detail',
         view=APIWorkflowInstanceLogEntryDetailView.as_view()
-    )
+    ),
+
+    url(
+        regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/states/(?P<workflow_template_state_id>[0-9]+)/escalations/$',
+        name='workflow-template-state-escalation-list',
+        view=APIWorkflowTemplateStateEscalationListView.as_view()
+    ),
+    url(
+        regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/states/(?P<workflow_template_state_id>[0-9]+)/escalations/(?P<workflow_template_state_escalation_id>[0-9]+)/$',
+        name='workflow-template-state-escalation-detail',
+        view=APIWorkflowTemplateStateEscalationDetailView.as_view()
+    ),
+
 ]

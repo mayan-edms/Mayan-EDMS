@@ -529,3 +529,131 @@ class APIWorkflowTemplateTransitionTriggerDetailView(
             klass=Workflow.objects.all(),
             pk=self.kwargs['workflow_template_id']
         )
+
+
+
+
+# ~ ExternalObjectAPIViewMixin, generics.ListCreateAPIView
+# ~ ):
+    # ~ """
+    # ~ get: Returns a list of all the workflow template transitions.
+    # ~ post: Create a new workflow template transition.
+    # ~ """
+    # ~ external_object_class = Workflow
+    # ~ external_object_pk_url_kwarg = 'workflow_template_id'
+    # ~ mayan_external_object_permissions = {
+        # ~ 'GET': (permission_workflow_template_view,),
+        # ~ 'POST': (permission_workflow_template_edit,),
+    # ~ }
+    # ~ ordering_fields = ('destination_state', 'id', 'label', 'origin_state')
+    # ~ serializer_class = WorkflowTemplateTransitionSerializer
+
+
+
+
+from ..serializers.workflow_template_state_escalation_serializers import WorkflowTemplateStateEscalationSerializer
+
+
+
+class APIWorkflowTemplateStateEscalationListView(ExternalObjectAPIViewMixin, generics.ListCreateAPIView):
+    """
+    get: Returns a list of all the workflow template state escalations.
+    post: Create a new workflow template state escalation.
+    """
+    external_object_class = WorkflowState
+    external_object_pk_url_kwarg = 'workflow_template_state_id'
+    mayan_external_object_permissions = {
+        'GET': (permission_workflow_template_view,),
+        'POST': (permission_workflow_template_edit,),
+    }
+
+    ordering_fields = ('priority', 'id')
+    serializer_class = WorkflowTemplateStateEscalationSerializer
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
+            'state': self.get_workflow_template_state()
+        }
+
+    def get_queryset(self):
+        return self.external_object.escalations.all()
+
+    # ~ def get_workflow_template_state(self):
+        # ~ if self.request.method == 'GET':
+            # ~ permission_required = permission_workflow_template_view
+        # ~ else:
+            # ~ permission_required = permission_workflow_template_edit
+
+        # ~ queryset = AccessControlList.objects.restrict_queryset(
+            # ~ permission=permission_required,
+            # ~ queryset=self.get_workflow_template().states.all(),
+            # ~ user=self.request.user
+        # ~ )
+
+        # ~ return get_object_or_404(
+            # ~ klass=queryset, pk=self.kwargs['workflow_template_state_id']
+        # ~ )
+
+    def get_workflow_template(self):
+        return get_object_or_404(
+            klass=Workflow.objects.all(),
+            pk=self.kwargs['workflow_template_id']
+        )
+
+
+class APIWorkflowTemplateStateEscalationDetailView(
+    ExternalObjectAPIViewMixin, generics.RetrieveUpdateDestroyAPIView
+):
+    """
+    delete: Delete the selected workflow template state escalation.
+    get: Return the details of the selected workflow template state escalation.
+    patch: Edit the selected workflow template state escalation.
+    put: Edit the selected workflow template state escalation.
+    """
+
+    external_object_class = WorkflowState
+    external_object_pk_url_kwarg = 'workflow_template_state_id'
+    mayan_external_object_permissions = {
+        'GET': (permission_workflow_template_view,),
+        'POST': (permission_workflow_template_edit,),
+    }
+
+
+    mayan_object_permissions = {
+        'DELETE': (permission_workflow_template_edit,),
+        'GET': (permission_workflow_template_view,),
+        'PATCH': (permission_workflow_template_edit,),
+        'PUT': (permission_workflow_template_edit,),
+    }
+    lookup_url_kwarg = 'workflow_template_state_escalation_id'
+    serializer_class = WorkflowTemplateStateEscalationSerializer
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
+        }
+
+    def get_queryset(self):
+        return self.external_object.escalations.all()
+
+    # ~ def get_workflow_template_state(self):
+        # ~ if self.request.method == 'GET':
+            # ~ permission_required = permission_workflow_template_view
+        # ~ else:
+            # ~ permission_required = permission_workflow_template_edit
+
+        # ~ queryset = AccessControlList.objects.restrict_queryset(
+            # ~ permission=permission_required,
+            # ~ queryset=self.get_workflow_template().states.all(),
+            # ~ user=self.request.user
+        # ~ )
+        # ~ return get_object_or_404(
+            # ~ klass=queryset, pk=self.kwargs['workflow_template_state_id']
+        # ~ )
+
+    def get_workflow_template(self):
+        return get_object_or_404(
+            klass=Workflow.objects.all(),
+            pk=self.kwargs['workflow_template_id']
+        )
