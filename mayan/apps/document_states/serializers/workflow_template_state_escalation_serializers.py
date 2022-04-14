@@ -5,15 +5,10 @@ from mayan.apps.rest_api.relations import (
     FilteredPrimaryKeyRelatedField, MultiKwargHyperlinkedIdentityField
 )
 
-from ..models import WorkflowState, WorkflowStateEscalation
-
-from .workflow_template_state_serializers import WorkflowTemplateStateSerializer
-from .workflow_template_transition_serializers import WorkflowTemplateTransitionSerializer
+from ..models import WorkflowStateEscalation
 
 
 class WorkflowTemplateStateEscalationSerializer(serializers.HyperlinkedModelSerializer):
-    state = WorkflowTemplateStateSerializer(read_only=True)
-    transition = WorkflowTemplateTransitionSerializer(read_only=True)
     url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
@@ -47,14 +42,11 @@ class WorkflowTemplateStateEscalationSerializer(serializers.HyperlinkedModelSeri
         ),
         view_name='rest_api:workflow-template-state-detail'
     )
-    # ~ workflow_template_transition_id = serializers.IntegerField(
-        # ~ read_only=True, source='transition_id'
-    # ~ )
     workflow_template_transition_id = FilteredPrimaryKeyRelatedField(
         help_text=_(
             'Primary key of the workflow template transition to be added.'
-        ), source_queryset_method='get_workflow_template_transition_queryset',
-        write_only=True
+        ), source='transition_id',
+        source_queryset_method='get_workflow_template_transition_queryset',
     )
     workflow_template_transition_url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
@@ -72,26 +64,21 @@ class WorkflowTemplateStateEscalationSerializer(serializers.HyperlinkedModelSeri
 
     class Meta:
         fields = (
-            'amount', 'comment', 'condition', 'enabled', 'id',
-            'priority',
-            'state', 'transition',
+            'amount', 'comment', 'condition', 'enabled', 'id', 'priority',
             'url', 'unit', 'workflow_template_state_id',
             'workflow_template_state_url', 'workflow_template_transition_id',
             'workflow_template_transition_url'
         )
         model = WorkflowStateEscalation
         read_only_fields = (
-            'id',
-            'state', 'transition',
-
-            'url', 'workflow_template_state_id',
-            'workflow_template_state_url', #'workflow_template_transition_id',
+            'id', 'url', 'workflow_template_state_id',
+            'workflow_template_state_url',
             'workflow_template_transition_url'
         )
 
     def create(self, validated_data):
         validated_data['transition'] = validated_data.pop(
-            'workflow_template_state_id'
+            'transition_id'
         )
 
         return super().create(
@@ -99,11 +86,11 @@ class WorkflowTemplateStateEscalationSerializer(serializers.HyperlinkedModelSeri
         )
 
     def get_workflow_template_transition_queryset(self):
-        return self.context['external_object'].transitions.all()
+        return self.context['workflow_template'].transitions.all()
 
     def update(self, instance, validated_data):
         validated_data['transition'] = validated_data.pop(
-            'workflow_template_state_id'
+            'transition_id'
         )
 
         return super().update(
