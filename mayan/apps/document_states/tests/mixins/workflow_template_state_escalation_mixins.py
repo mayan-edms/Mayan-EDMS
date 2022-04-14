@@ -1,12 +1,13 @@
 from django.db.models import Q
 
+from ...models.workflow_state_escalation_models import WorkflowStateEscalation
+
 from ..literals import (
     TEST_WORKFLOW_TEMPLATE_STATE_ESCALATION_AMOUNT,
     TEST_WORKFLOW_TEMPLATE_STATE_ESCALATION_AMOUNT_EDITED,
     TEST_WORKFLOW_TEMPLATE_STATE_ESCALATION_COMMENT,
     TEST_WORKFLOW_TEMPLATE_STATE_ESCALATION_UNIT
 )
-from ..models.workflow_state_escalation_models import WorkflowStateEscalation
 
 
 class WorkflowTemplateStateEscalationAPIViewTestMixin:
