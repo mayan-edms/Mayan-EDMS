@@ -235,6 +235,9 @@ class DocumentStatesApp(MayanAppConfig):
             model=WorkflowStateAction, related='state__workflow',
         )
         ModelPermission.register_inheritance(
+            model=WorkflowStateEscalation, related='state__workflow',
+        )
+        ModelPermission.register_inheritance(
             model=WorkflowTransition, related='workflow',
         )
         ModelPermission.register_inheritance(

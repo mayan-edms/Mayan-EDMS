@@ -2,11 +2,11 @@ from mayan.apps.documents.tests.base import GenericDocumentTestCase
 
 
 from .mixins.workflow_template_mixins import WorkflowTemplateTestMixin
-from .mixins.workflow_template_state_escalation.mixins import WorkflowTemplateStateEscalationModelTestMixin
+from .mixins.workflow_template_state_escalation_mixins import WorkflowTemplateStateEscalationTestMixin
 
 
 class WorkflowTemplateStateEscalationModelTestCase(
-    WorkflowTemplateStateEscalationModelTestMixin, WorkflowTemplateTestMixin,
+    WorkflowTemplateStateEscalationTestMixin, WorkflowTemplateTestMixin,
     GenericDocumentTestCase
 ):
     auto_upload_test_document = False
@@ -35,7 +35,7 @@ class WorkflowTemplateStateEscalationModelTestCase(
         )
         self.assertEqual(
             test_workflow_instance.get_last_log_entry().comment,
-            self._create_test_workflow_template_state_escalation.comment
+            self._test_workflow_template_state_escalation.comment
         )
 
         events = self._get_test_events()
@@ -58,7 +58,7 @@ class WorkflowTemplateStateEscalationModelTestCase(
         )
         self.assertEqual(
             test_workflow_instance.get_last_log_entry().comment,
-            self._create_test_workflow_template_state_escalation.comment
+            self._test_workflow_template_state_escalation.comment
         )
 
         events = self._get_test_events()

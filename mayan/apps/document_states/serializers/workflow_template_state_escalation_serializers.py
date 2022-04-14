@@ -1,11 +1,14 @@
+from django.core.exceptions import ValidationError as DjangoValidationError
 from django.utils.translation import ugettext_lazy as _
+
+from rest_framework.exceptions import ValidationError
 
 from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import (
     FilteredPrimaryKeyRelatedField, MultiKwargHyperlinkedIdentityField
 )
 
-from ..models import WorkflowStateEscalation
+from ..models.workflow_state_escalation_models import WorkflowStateEscalation
 
 
 class WorkflowTemplateStateEscalationSerializer(serializers.HyperlinkedModelSerializer):
@@ -45,8 +48,9 @@ class WorkflowTemplateStateEscalationSerializer(serializers.HyperlinkedModelSeri
     workflow_template_transition_id = FilteredPrimaryKeyRelatedField(
         help_text=_(
             'Primary key of the workflow template transition to be added.'
-        ), source='transition_id',
-        source_queryset_method='get_workflow_template_transition_queryset',
+        ), label=_('Workflow template transition ID'),
+        source='transition_id',
+        source_queryset_method='get_workflow_template_transition_queryset'
     )
     workflow_template_transition_url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
@@ -89,10 +93,27 @@ class WorkflowTemplateStateEscalationSerializer(serializers.HyperlinkedModelSeri
         return self.context['workflow_template'].transitions.all()
 
     def update(self, instance, validated_data):
-        validated_data['transition'] = validated_data.pop(
-            'transition_id'
-        )
+        if 'transition_id' in validated_data:
+            validated_data['transition'] = validated_data.pop(
+                'transition_id'
+            )
 
         return super().update(
             instance=instance, validated_data=validated_data
         )
+
+    def validate(self, attrs):
+        if self.instance:
+            return attrs
+
+        kwargs = attrs.copy()
+        kwargs['state'] = self.context['workflow_template_state']
+        kwargs['transition_id'] = attrs['transition_id'].pk
+
+        instance = WorkflowStateEscalation(**kwargs)
+        try:
+            instance.full_clean()
+        except DjangoValidationError as exception:
+            raise ValidationError(exception)
+
+        return attrs

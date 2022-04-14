@@ -56,23 +56,3 @@ class ParentObjectWorkflowTemplateStateAPIViewMixin(
 
     def get_workflow_template_state_queryset(self):
         return self.get_workflow_template().states.all()
-
-
-class ParentObjectWorkflowTemplateStateEscalationAPIViewMixin(
-    ParentObjectWorkflowTemplateStateAPIViewMixin
-):
-    def get_workflow_template_state_escalation(self, permission=None):
-        queryset = self.get_workflow_template_state_escalation_queryset()
-
-        if permission:
-            queryset = AccessControlList.objects.restrict_queryset(
-                permission=permission, queryset=queryset,
-                user=self.request.user
-            )
-
-        return get_object_or_404(
-            queryset=queryset, pk=self.kwargs['workflow_template_state_escalation_id']
-        )
-
-    def get_workflow_template_state_escalation_queryset(self):
-        return self.get_workflow_template_state().pages.all()

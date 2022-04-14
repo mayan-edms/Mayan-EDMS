@@ -1,5 +1,3 @@
-from django.utils.translation import ugettext_lazy as _
-
 from mayan.apps.rest_api import serializers
 from mayan.apps.rest_api.relations import MultiKwargHyperlinkedIdentityField
 

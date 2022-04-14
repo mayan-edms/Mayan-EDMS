@@ -15,9 +15,9 @@ class APIWorkflowTemplateStateEscalationListView(
     get: Returns a list of all the workflow template state escalations.
     post: Create a new workflow template state escalation.
     """
-    mayan_object_permissions = {
+    mayan_external_object_permissions = {
         'GET': (permission_workflow_template_view,),
-        'POST': (permission_workflow_template_edit,),
+        'POST': (permission_workflow_template_edit,)
     }
     ordering_fields = ('priority', 'id')
     serializer_class = WorkflowTemplateStateEscalationSerializer
@@ -45,7 +45,7 @@ class APIWorkflowTemplateStateEscalationDetailView(
         'DELETE': (permission_workflow_template_edit,),
         'GET': (permission_workflow_template_view,),
         'PATCH': (permission_workflow_template_edit,),
-        'PUT': (permission_workflow_template_edit,),
+        'PUT': (permission_workflow_template_edit,)
     }
     lookup_url_kwarg = 'workflow_template_state_escalation_id'
     serializer_class = WorkflowTemplateStateEscalationSerializer
