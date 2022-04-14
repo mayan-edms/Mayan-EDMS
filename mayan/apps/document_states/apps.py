@@ -50,6 +50,10 @@ from .links import (
     link_workflow_template_state_action_selection,
     link_workflow_template_state_create, link_workflow_template_state_delete,
     link_workflow_template_state_edit,
+    link_workflow_template_state_escalation_create,
+    link_workflow_template_state_escalation_delete,
+    link_workflow_template_state_escalation_edit,
+    link_workflow_template_state_escalation_list,
     link_workflow_template_transition_create,
     link_workflow_template_transition_delete,
     link_workflow_template_transition_edit,
@@ -94,6 +98,7 @@ class DocumentStatesApp(MayanAppConfig):
         WorkflowRuntimeProxy = self.get_model('WorkflowRuntimeProxy')
         WorkflowState = self.get_model('WorkflowState')
         WorkflowStateAction = self.get_model('WorkflowStateAction')
+        WorkflowStateEscalation = self.get_model('WorkflowStateEscalation')
         WorkflowStateRuntimeProxy = self.get_model('WorkflowStateRuntimeProxy')
         WorkflowTransition = self.get_model('WorkflowTransition')
         WorkflowTransitionField = self.get_model('WorkflowTransitionField')
@@ -120,6 +125,7 @@ class DocumentStatesApp(MayanAppConfig):
             exclude=(WorkflowStateRuntimeProxy,), model=WorkflowState
         )
         EventModelRegistry.register(model=WorkflowStateAction)
+        EventModelRegistry.register(model=WorkflowStateEscalation)
         EventModelRegistry.register(model=WorkflowTransition)
         EventModelRegistry.register(model=WorkflowTransitionField)
         EventModelRegistry.register(model=WorkflowTransitionTriggerEvent)
@@ -227,6 +233,9 @@ class DocumentStatesApp(MayanAppConfig):
         )
         ModelPermission.register_inheritance(
             model=WorkflowStateAction, related='state__workflow',
+        )
+        ModelPermission.register_inheritance(
+            model=WorkflowStateEscalation, related='state__workflow',
         )
         ModelPermission.register_inheritance(
             model=WorkflowTransition, related='workflow',
@@ -375,6 +384,31 @@ class DocumentStatesApp(MayanAppConfig):
             source=WorkflowStateAction, widget=TwoStateWidget
         )
 
+        # Workflow Template State Escalation
+
+        SourceColumn(
+            attribute='priority', is_identifier=True, is_sortable=True,
+            source=WorkflowStateEscalation
+        )
+        SourceColumn(
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=WorkflowStateEscalation, widget=TwoStateWidget
+        )
+        SourceColumn(
+            attribute='unit', include_label=True,
+            source=WorkflowStateEscalation
+        )
+        SourceColumn(
+            attribute='amount', include_label=True,
+            source=WorkflowStateEscalation
+        )
+        SourceColumn(
+            attribute='has_condition', include_label=True,
+            source=WorkflowStateEscalation, widget=TwoStateWidget
+        )
+
+        # Workflow transition
+
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
             source=WorkflowTransition,
@@ -522,6 +556,12 @@ class DocumentStatesApp(MayanAppConfig):
                 link_workflow_template_state_action_delete,
             ), sources=(WorkflowStateAction,)
         )
+        menu_object.bind_links(
+            links=(
+                link_workflow_template_state_escalation_edit,
+                link_workflow_template_state_escalation_delete,
+            ), sources=(WorkflowStateEscalation,)
+        )
 
         menu_list_facet.bind_links(
             links=(
@@ -533,6 +573,7 @@ class DocumentStatesApp(MayanAppConfig):
             exclude=(WorkflowStateRuntimeProxy,),
             links=(
                 link_workflow_template_state_action_list,
+                link_workflow_template_state_escalation_list
             ), sources=(WorkflowState,)
         )
         menu_list_facet.bind_links(
@@ -577,8 +618,10 @@ class DocumentStatesApp(MayanAppConfig):
             )
         )
         menu_secondary.bind_links(
-            links=(link_workflow_template_state_action_selection,),
-            sources=(
+            links=(
+                link_workflow_template_state_action_selection,
+                link_workflow_template_state_escalation_create
+            ), sources=(
                 WorkflowState,
             )
         )

@@ -15,13 +15,17 @@ from ..forms import (
     WorkflowActionSelectionForm, WorkflowStateActionDynamicForm,
     WorkflowStateForm
 )
-from ..icons import icon_workflow_template_state, icon_workflow_template_state_action
+from ..icons import (
+    icon_workflow_template_state, icon_workflow_template_state_action
+)
 from ..links import (
     link_workflow_template_state_create,
-    link_workflow_template_state_action_selection,
+    link_workflow_template_state_action_selection
 )
 from ..models import Workflow, WorkflowState, WorkflowStateAction
-from ..permissions import permission_workflow_template_edit, permission_workflow_template_view
+from ..permissions import (
+    permission_workflow_template_edit, permission_workflow_template_view
+)
 
 
 class WorkflowTemplateStateActionCreateView(
@@ -315,7 +319,7 @@ class WorkflowTemplateStateListView(
     ExternalObjectViewMixin, SingleObjectListView
 ):
     external_object_class = Workflow
-    external_object_permission = permission_workflow_template_view
+    #external_object_permission = permission_workflow_template_view
     external_object_pk_url_kwarg = 'workflow_template_id'
     object_permission = permission_workflow_template_view
 

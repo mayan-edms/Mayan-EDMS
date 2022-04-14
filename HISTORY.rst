@@ -171,6 +171,11 @@
   - Update scan code to user ``pathlib.Path``.
   - Support pagination.
 
+- Add support for workflow escalation. This feature allows moving a workflow
+  forward after the workflow has remained in a certain state after a
+  pre-determined amount of time. Multiple escalations are supported for
+  each state. Conditions using the templating language are supported.
+
 4.2.3 (2022-04-01)
 ==================
 - Add restart policy to the Traefik container definition.
