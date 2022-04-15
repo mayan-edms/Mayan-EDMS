@@ -4,12 +4,13 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import (
-    ModelCopy, ModelField, ModelProperty, ModelReverseField
-)
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
     menu_list_facet, menu_main, menu_multi_item, menu_object, menu_related,
     menu_secondary, menu_setup, menu_tools
+)
+from mayan.apps.databases.classes import (
+    ModelField, ModelProperty, ModelReverseField
 )
 from mayan.apps.documents.links.document_type_links import link_document_type_list
 from mayan.apps.documents.signals import signal_post_document_type_change

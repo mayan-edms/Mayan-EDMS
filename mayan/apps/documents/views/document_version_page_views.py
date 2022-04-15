@@ -9,12 +9,12 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView
 
-from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.settings import setting_home_view
 from mayan.apps.converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 from mayan.apps.converter.transformations import (
     TransformationResize, TransformationRotate, TransformationZoom
 )
+from mayan.apps.databases.classes import ModelQueryFields
 from mayan.apps.views.generics import (
     FormView, SingleObjectDeleteView, SingleObjectListView, SimpleView
 )

@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.classes import ModelField, ModelFieldRelated
+from mayan.apps.databases.classes import ModelField, ModelFieldRelated
 from mayan.apps.documents.models import Document
 from mayan.apps.templating.fields import ModelTemplateField
 

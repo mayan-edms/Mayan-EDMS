@@ -11,7 +11,7 @@ from .warnings import DatabaseWarning
 
 
 class DatabasesApp(MayanAppConfig):
-    has_tests = False
+    has_tests = True
     name = 'mayan.apps.databases'
     verbose_name = _('Databases')
 

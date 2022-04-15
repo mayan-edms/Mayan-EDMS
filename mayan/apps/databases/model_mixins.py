@@ -111,7 +111,7 @@ class ModelMixinConditionField(models.Model):
 
     def evaluate_condition(self, context):
         if self.has_condition():
-            result =  Template(template_string=self.condition).render(
+            result = Template(template_string=self.condition).render(
                 context=context
             ).strip()
             return result

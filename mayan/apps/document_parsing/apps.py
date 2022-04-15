@@ -6,10 +6,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import ModelFieldRelated, ModelProperty
 from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_secondary, menu_tools
 )
+from mayan.apps.databases.classes import ModelFieldRelated, ModelProperty
 from mayan.apps.documents.signals import signal_post_document_file_upload
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn

@@ -7,7 +7,7 @@ from django.db import models
 from django.utils.encoding import force_text
 from django.utils.timezone import now
 
-from mayan.apps.common.classes import ModelQueryFields
+from mayan.apps.databases.classes import ModelQueryFields
 
 from .settings import (
     setting_favorite_count, setting_recently_accessed_document_count,

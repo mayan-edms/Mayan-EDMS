@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from actstream.models import Action
 
-from mayan.apps.common.classes import QuerysetParametersSerializer
+from mayan.apps.databases.classes import QuerysetParametersSerializer
 from mayan.apps.views.generics import ConfirmView
 from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
 

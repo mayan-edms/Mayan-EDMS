@@ -175,6 +175,15 @@
   forward after the workflow has remained in a certain state after a
   pre-determined amount of time. Multiple escalations are supported for
   each state. Conditions using the templating language are supported.
+- Move model based classes to the databases app. Move the classes:
+
+  - ``ModelQueryFields``
+  - ``ModelAttribute``
+  - ``ModelProperty``
+  - ``ModelField``
+  - ``ModelFieldRelated``
+  - ``ModelReverseField``
+  - ``QuerysetParametersSerializer``
 
 4.2.3 (2022-04-01)
 ==================

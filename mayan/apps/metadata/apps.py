@@ -9,12 +9,13 @@ from mayan.apps.acls.permissions import (
     permission_acl_edit, permission_acl_view
 )
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import (
-    ModelCopy, ModelFieldRelated, ModelProperty, ModelQueryFields
-)
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_object, menu_related,
     menu_secondary, menu_setup
+)
+from mayan.apps.databases.classes import (
+    ModelFieldRelated, ModelProperty, ModelQueryFields
 )
 from mayan.apps.documents.links.document_type_links import link_document_type_list
 from mayan.apps.documents.signals import signal_post_document_type_change

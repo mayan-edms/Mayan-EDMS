@@ -2,7 +2,7 @@ from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
 
-from mayan.apps.common.classes import QuerysetParametersSerializer
+from mayan.apps.databases.classes import QuerysetParametersSerializer
 from mayan.celery import app
 
 from .classes import ActionExporter

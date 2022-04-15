@@ -5,10 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import (
-    MissingItem, ModelCopy, ModelField, ModelFieldRelated, ModelProperty,
-    ModelQueryFields
-)
+from mayan.apps.common.classes import MissingItem, ModelCopy
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_object, menu_return,
     menu_secondary, menu_setup, menu_multi_item
@@ -23,6 +20,9 @@ from mayan.apps.converter.permissions import (
     permission_transformation_view,
 )
 from mayan.apps.dashboards.dashboards import dashboard_administrator
+from mayan.apps.databases.classes import (
+    ModelField, ModelFieldRelated, ModelProperty, ModelQueryFields
+)
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.file_caching.links import link_cache_partition_purge
 from mayan.apps.file_caching.permissions import permission_cache_partition_purge
