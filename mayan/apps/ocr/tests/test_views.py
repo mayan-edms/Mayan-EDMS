@@ -501,43 +501,6 @@ class DocumentVersionOCRViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_version_ocr_error_list_view_no_permission(self):
-        self._clear_events()
-
-        response = self._request_test_document_version_ocr_error_list_view()
-        self.assertEqual(response.status_code, 404)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_document_version_ocr_error_list_view_with_access(self):
-        self.grant_access(
-            obj=self._test_document, permission=permission_document_version_ocr
-        )
-
-        self._clear_events()
-
-        response = self._request_test_document_version_ocr_error_list_view()
-        self.assertEqual(response.status_code, 200)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_trashed_document_version_ocr_error_list_view_with_access(self):
-        self.grant_access(
-            obj=self._test_document, permission=permission_document_version_ocr
-        )
-
-        self._test_document.delete()
-
-        self._clear_events()
-
-        response = self._request_test_document_version_ocr_error_list_view()
-        self.assertEqual(response.status_code, 404)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
 
 class DocumentVersionPageOCRViewsTestCase(
     DocumentVersionOCRTestMixin, DocumentVersionPageOCRViewTestMixin,

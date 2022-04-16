@@ -10,8 +10,7 @@ from mayan.apps.documents.models.document_version_models import DocumentVersion
 from mayan.apps.documents.models.document_version_page_models import DocumentVersionPage
 from mayan.apps.views.generics import (
     FormView, MultipleObjectConfirmActionView, MultipleObjectDeleteView,
-    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView,
-    SingleObjectListView
+    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
@@ -19,7 +18,7 @@ from .forms import (
     DocumentVersionPageOCRContentDetailForm,
     DocumentVersionPageOCRContentEditForm, DocumentVersionOCRContentForm
 )
-from .models import DocumentVersionPageOCRContent, DocumentVersionOCRError
+from .models import DocumentVersionPageOCRContent
 from .permissions import (
     permission_document_version_ocr_content_edit,
     permission_document_version_ocr_content_view,
@@ -144,22 +143,6 @@ class DocumentVersionOCRDownloadView(SingleObjectDownloadView):
         return '{}-OCR'.format(self.object)
 
 
-class DocumentVersionOCRErrorsListView(ExternalObjectViewMixin, SingleObjectListView):
-    external_object_permission = permission_document_version_ocr
-    external_object_pk_url_kwarg = 'document_version_id'
-    external_object_queryset = DocumentVersion.valid.all()
-
-    def get_extra_context(self):
-        return {
-            'hide_object': True,
-            'object': self.external_object,
-            'title': _('OCR errors for document: %s') % self.external_object,
-        }
-
-    def get_source_queryset(self):
-        return self.external_object.ocr_errors.all()
-
-
 class DocumentVersionOCRSubmitView(MultipleObjectConfirmActionView):
     object_permission = permission_document_version_ocr
     pk_url_kwarg = 'document_version_id'
@@ -250,14 +233,3 @@ class DocumentVersionPageOCRContentEditView(
             return DocumentVersionPageOCRContent(
                 document_version_page=self.external_object
             )
-
-
-class EntryListView(SingleObjectListView):
-    extra_context = {
-        'hide_object': True,
-        'title': _('OCR errors'),
-    }
-    view_permission = permission_document_type_ocr_setup
-
-    def get_source_queryset(self):
-        return DocumentVersionOCRError.objects.all()

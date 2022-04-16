@@ -43,7 +43,9 @@ def task_document_version_ocr_process(self, document_version_id, user_id=None):
             )
         )
     except Exception as exception:
-        document_version.ocr_errors.create(result=exception)
+        document_version.error_log.create(
+            text=str(exception)
+        )
         raise
 
 
@@ -101,7 +103,7 @@ def task_document_version_ocr_finished(
     )
     document_version = DocumentVersion.objects.get(pk=document_version_id)
 
-    document_version.ocr_errors.all().delete()
+    document_version.error_log.all().delete()
 
     User = get_user_model()
 

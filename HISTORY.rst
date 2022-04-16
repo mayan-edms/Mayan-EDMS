@@ -185,6 +185,10 @@
   - ``ModelReverseField``
   - ``QuerysetParametersSerializer``
 
+- OCR app converted to the new error log system. The permission
+  "View error log" is now required to view the document version OCR error
+  log.
+
 4.2.3 (2022-04-01)
 ==================
 - Add restart policy to the Traefik container definition.

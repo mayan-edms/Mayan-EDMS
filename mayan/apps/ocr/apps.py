@@ -12,7 +12,7 @@ from mayan.apps.common.menus import (
 from mayan.apps.databases.classes import ModelFieldRelated, ModelProperty
 from mayan.apps.documents.signals import signal_post_document_version_remap
 from mayan.apps.events.classes import ModelEventType
-from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.logging.classes import ErrorLog
 
 from .events import (
     event_ocr_document_version_content_deleted,
@@ -30,11 +30,10 @@ from .links import (
     link_document_version_ocr_content_delete_single,
     link_document_version_ocr_content_delete_multiple,
     link_document_version_ocr_download,
-    link_document_version_ocr_errors_list,
     link_document_version_ocr_submit_single,
     link_document_version_ocr_submit_multiple,
     link_document_type_ocr_settings,
-    link_document_type_submit, link_entry_list
+    link_document_type_submit
 )
 from .methods import (
     method_document_ocr_submit, method_document_version_ocr_submit
@@ -75,10 +74,6 @@ class OCRApp(MayanAppConfig):
         )
         DocumentVersionPage = apps.get_model(
             app_label='documents', model_name='DocumentVersionPage'
-        )
-
-        DocumentVersionOCRError = self.get_model(
-            model_name='DocumentVersionOCRError'
         )
 
         Document.add_to_class(
@@ -146,19 +141,8 @@ class OCRApp(MayanAppConfig):
             model=DocumentTypeOCRSettings, related='document_type',
         )
 
-        SourceColumn(
-            attribute='document_version__document',
-            is_attribute_absolute_url=True, is_identifier=True,
-            is_sortable=True, source=DocumentVersionOCRError
-        )
-        SourceColumn(
-            attribute='datetime_submitted', is_sortable=True,
-            label=_('Date and time'), source=DocumentVersionOCRError
-        )
-        SourceColumn(
-            source=DocumentVersionOCRError, label=_('Result'),
-            attribute='result'
-        )
+        error_log = ErrorLog(app_config=self)
+        error_log.register_model(model=DocumentVersion)
 
         # Document type
 
@@ -184,7 +168,6 @@ class OCRApp(MayanAppConfig):
             links=(
                 link_document_version_ocr_content_delete_single,
                 link_document_version_ocr_download,
-                link_document_version_ocr_errors_list,
                 link_document_version_ocr_submit_single
             ),
             sources=(
@@ -193,14 +176,6 @@ class OCRApp(MayanAppConfig):
                 'ocr:document_version_ocr_download',
                 'ocr:document_version_ocr_error_list',
                 'ocr:document_version_ocr_submit_single'
-            )
-        )
-
-        menu_secondary.bind_links(
-            links=(link_entry_list,),
-            sources=(
-                'ocr:entry_list', 'ocr:entry_delete_multiple',
-                'ocr:entry_re_queue_multiple', DocumentVersionOCRError
             )
         )
 
@@ -223,7 +198,7 @@ class OCRApp(MayanAppConfig):
 
         menu_tools.bind_links(
             links=(
-                link_document_type_submit, link_entry_list
+                link_document_type_submit,
             )
         )
 

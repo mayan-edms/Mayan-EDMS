@@ -135,13 +135,6 @@ class DocumentVersionOCRViewTestMixin:
             }
         )
 
-    def _request_test_document_version_ocr_error_list_view(self):
-        return self.get(
-            viewname='ocr:document_version_ocr_error_list', kwargs={
-                'document_version_id': self._test_document_version.pk
-            }
-        )
-
     def _request_test_document_version_ocr_submit_single_view(self):
         return self.post(
             viewname='ocr:document_version_ocr_submit_single', kwargs={

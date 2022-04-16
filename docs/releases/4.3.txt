@@ -42,7 +42,8 @@ Backward incompatible changes
 - The ``purgeperiodictasks`` command is now named
   ``task_manager_purge_periodic_tasks``.
 - The ``purgelocks`` command is now named ``lock_manager_purge_locks``.
-
+- The permission "View error log" is now required to view document version
+  OCR error logs.
 
 Issues closed
 -------------

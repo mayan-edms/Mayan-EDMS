@@ -7,10 +7,9 @@ from .api_views import (
 )
 from .views import (
     DocumentVersionOCRContentDeleteView, DocumentVersionOCRContentView,
-    DocumentVersionOCRDownloadView,
-    DocumentVersionOCRErrorsListView, DocumentVersionPageOCRContentEditView,
+    DocumentVersionOCRDownloadView, DocumentVersionPageOCRContentEditView,
     DocumentVersionPageOCRContentDetailView, DocumentVersionOCRSubmitView,
-    DocumentTypeSettingsEditView, DocumentTypeSubmitView, EntryListView
+    DocumentTypeSettingsEditView, DocumentTypeSubmitView
 )
 
 urlpatterns_document_types = [
@@ -47,11 +46,6 @@ urlpatterns_document_versions = [
         view=DocumentVersionOCRDownloadView.as_view()
     ),
     url(
-        regex=r'^documents/versions/(?P<document_version_id>\d+)/ocr/errors/$',
-        name='document_version_ocr_error_list',
-        view=DocumentVersionOCRErrorsListView.as_view()
-    ),
-    url(
         regex=r'^documents/versions/(?P<document_version_id>\d+)/submit/$',
         name='document_version_ocr_submit_single',
         view=DocumentVersionOCRSubmitView.as_view()
@@ -70,8 +64,7 @@ urlpatterns_document_versions = [
         regex=r'^documents/versions/pages/(?P<document_version_page_id>\d+)/content/$',
         name='document_version_page_ocr_content_detail_view',
         view=DocumentVersionPageOCRContentDetailView.as_view()
-    ),
-    url(regex=r'^logs/$', name='entry_list', view=EntryListView.as_view())
+    )
 ]
 
 urlpatterns = []
