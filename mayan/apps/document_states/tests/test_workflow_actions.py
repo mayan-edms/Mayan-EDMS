@@ -1,5 +1,5 @@
 import json
-import mock
+from unittest import mock
 
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.testing.tests.base import GenericViewTestCase

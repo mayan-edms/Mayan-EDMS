@@ -1,4 +1,4 @@
-import mock
+from unittest import mock
 
 from mayan.apps.testing.tests.base import BaseTestCase
 from mayan.apps.file_caching.models import CachePartition

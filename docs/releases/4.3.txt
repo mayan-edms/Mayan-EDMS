@@ -13,7 +13,7 @@ Changes
 Removals
 --------
 
-- None
+- Python package ``mock``.
 
 
 Upgrade process

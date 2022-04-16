@@ -191,6 +191,8 @@
 - Convert the document parsing app to the new error log system. The
   permission "View error log" is now required to view the document file
   parsing error log.
+- Remove the Python package ``mock``. This package is now available as
+  unittest.mock in Python 3.3 onwards.
 
 4.2.3 (2022-04-01)
 ==================

@@ -1,4 +1,4 @@
-import mock
+from uniitest import mock
 
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.apps.testing.tests.base import BaseTestCase
