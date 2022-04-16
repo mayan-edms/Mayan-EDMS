@@ -12,7 +12,7 @@ from mayan.apps.common.menus import (
 from mayan.apps.databases.classes import ModelFieldRelated, ModelProperty
 from mayan.apps.documents.signals import signal_post_document_file_upload
 from mayan.apps.events.classes import ModelEventType
-from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.logging.classes import ErrorLog
 
 from .events import (
     event_parsing_document_file_content_deleted,
@@ -26,10 +26,10 @@ from .handlers import (
 from .links import (
     link_document_file_content, link_document_file_content_delete_single,
     link_document_file_content_delete_multiple, link_document_file_page_content,
-    link_document_file_content_download, link_document_file_parsing_errors_list,
-    link_document_file_metadata_submit_multiple, link_document_file_metadata_submit_single,
-    link_document_type_parsing_settings, link_document_type_submit,
-    link_error_list
+    link_document_file_content_download,
+    link_document_file_metadata_submit_multiple,
+    link_document_file_metadata_submit_single,
+    link_document_type_parsing_settings, link_document_type_submit
 )
 from .methods import (
     method_document_parsing_submit, method_document_file_parsing_submit
@@ -60,9 +60,6 @@ class DocumentParsingApp(MayanAppConfig):
         )
         DocumentFile = apps.get_model(
             app_label='documents', model_name='DocumentFile'
-        )
-        DocumentFileParseError = self.get_model(
-            model_name='DocumentFileParseError'
         )
         DocumentFilePage = apps.get_model(
             app_label='documents', model_name='DocumentFilePage'
@@ -129,19 +126,8 @@ class DocumentParsingApp(MayanAppConfig):
             model=DocumentTypeSettings, related='document_type',
         )
 
-        SourceColumn(
-            attribute='document_file__document',
-            is_attribute_absolute_url=True, is_identifier=True,
-            is_sortable=True, source=DocumentFileParseError
-        )
-        SourceColumn(
-            attribute='datetime_submitted', is_sortable=True,
-            source=DocumentFileParseError
-        )
-        SourceColumn(
-            source=DocumentFileParseError, label=_('Result'),
-            attribute='result'
-        )
+        error_log = ErrorLog(app_config=self)
+        error_log.register_model(model=DocumentFile)
 
         menu_list_facet.bind_links(
             links=(link_document_file_content,), sources=(DocumentFile,)
@@ -164,20 +150,18 @@ class DocumentParsingApp(MayanAppConfig):
             links=(
                 link_document_file_content_delete_single,
                 link_document_file_content_download,
-                link_document_file_parsing_errors_list,
                 link_document_file_metadata_submit_single
             ),
             sources=(
                 'document_parsing:document_file_content_view',
                 'document_parsing:document_file_content_delete_single',
                 'document_parsing:document_file_content_download',
-                'document_parsing:document_file_parsing_error_list',
-                'document_parsing:document_file_submit_single',
+                'document_parsing:document_file_submit_single'
             )
         )
         menu_tools.bind_links(
             links=(
-                link_document_type_submit, link_error_list,
+                link_document_type_submit,
             )
         )
 

@@ -234,44 +234,6 @@ class DocumentFilePageContentViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_parsing_error_list_view_no_permission(self):
-        self._clear_events()
-
-        response = self._request_test_document_file_parsing_error_list_view()
-
-        self.assertEqual(response.status_code, 404)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_document_file_parsing_error_list_view_with_access(self):
-        self.grant_access(
-            obj=self._test_document, permission=permission_document_file_parse
-        )
-
-        self._clear_events()
-
-        response = self._request_test_document_file_parsing_error_list_view()
-        self.assertEqual(response.status_code, 200)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_trashed_document_file_parsing_error_list_view_with_access(self):
-        self.grant_access(
-            obj=self._test_document, permission=permission_document_file_parse
-        )
-
-        self._test_document.delete()
-
-        self._clear_events()
-
-        response = self._request_test_document_file_parsing_error_list_view()
-        self.assertEqual(response.status_code, 404)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
 
 class DocumentFileContentParsingViewsTestCase(
     DocumentFileContentViewTestMixin, GenericDocumentViewTestCase
@@ -448,26 +410,6 @@ class DocumentTypeParsingViewsTestCase(
                 )
             )
         )
-
-    def test_document_parsing_error_list_view_no_permission(self):
-        self._clear_events()
-
-        response = self._request_document_parsing_error_list_view()
-        self.assertEqual(response.status_code, 403)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_document_parsing_error_list_view_with_permission(self):
-        self.grant_permission(permission=permission_document_file_parse)
-
-        self._clear_events()
-
-        response = self._request_document_parsing_error_list_view()
-        self.assertEqual(response.status_code, 200)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
 
     def test_document_type_parsing_view_no_permission(self):
         self._upload_test_document()

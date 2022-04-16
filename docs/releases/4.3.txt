@@ -44,6 +44,8 @@ Backward incompatible changes
 - The ``purgelocks`` command is now named ``lock_manager_purge_locks``.
 - The permission "View error log" is now required to view document version
   OCR error logs.
+- The permission "View error log" is now required to view document file
+  parsing error logs.
 
 Issues closed
 -------------

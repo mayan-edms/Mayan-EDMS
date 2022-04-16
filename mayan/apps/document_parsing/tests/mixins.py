@@ -4,9 +4,6 @@ from .literals import TEST_DOCUMENT_CONTENT
 
 
 class DocumentFileContentToolsViewsTestMixin:
-    def _request_document_parsing_error_list_view(self):
-        return self.get(viewname='document_parsing:error_list')
-
     def _request_document_type_parsing_view(self):
         return self.post(
             viewname='document_parsing:document_type_submit', data={
@@ -64,14 +61,6 @@ class DocumentFileContentViewTestMixin:
             viewname='document_parsing:document_file_page_content_view',
             kwargs={
                 'document_file_page_id': self._test_document_file.pages.first().pk,
-            }
-        )
-
-    def _request_test_document_file_parsing_error_list_view(self):
-        return self.get(
-            viewname='document_parsing:document_file_parsing_error_list',
-            kwargs={
-                'document_file_id': self._test_document_file.pk,
             }
         )
 

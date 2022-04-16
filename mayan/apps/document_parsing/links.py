@@ -7,9 +7,8 @@ from .icons import (
     icon_document_file_content, icon_document_file_content_delete_single,
     icon_document_file_content_delete_multiple,
     icon_document_file_content_download, icon_document_file_page_content,
-    icon_document_file_parsing_errors_list, icon_document_file_submit,
-    icon_document_type_parsing_settings, icon_document_type_submit,
-    icon_error_list
+    icon_document_file_submit, icon_document_type_parsing_settings,
+    icon_document_type_submit
 )
 from .permissions import (
     permission_document_file_content_view, permission_document_type_parsing_setup,
@@ -46,12 +45,6 @@ link_document_file_page_content = Link(
     permissions=(permission_document_file_content_view,), text=_('Content'),
     view='document_parsing:document_file_page_content_view'
 )
-link_document_file_parsing_errors_list = Link(
-    args='resolved_object.id',
-    icon=icon_document_file_parsing_errors_list,
-    permissions=(permission_document_file_parse,), text=_('Parsing errors'),
-    view='document_parsing:document_file_parsing_error_list'
-)
 link_document_file_metadata_submit_multiple = Link(
     icon=icon_document_file_submit,
     text=_('Submit for parsing'),
@@ -82,12 +75,4 @@ link_document_type_submit = Link(
     icon=icon_document_type_submit,
     text=_('Parse documents per type'),
     view='document_parsing:document_type_submit'
-)
-
-# Errors
-
-link_error_list = Link(
-    icon=icon_error_list,
-    permissions=(permission_document_file_parse,), text=_('Parsing errors'),
-    view='document_parsing:error_list'
 )

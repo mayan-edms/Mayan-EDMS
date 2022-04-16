@@ -11,13 +11,12 @@ from mayan.apps.documents.models.document_file_page_models import DocumentFilePa
 from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.views.generics import (
     FormView, MultipleObjectConfirmActionView, MultipleObjectDeleteView,
-    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView,
-    SingleObjectListView
+    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import DocumentFileContentForm, DocumentFilePageContentForm
-from .models import DocumentFileParseError, DocumentFilePageContent
+from .models import DocumentFilePageContent
 from .permissions import (
     permission_document_file_content_view, permission_document_type_parsing_setup,
     permission_document_file_parse
@@ -115,26 +114,6 @@ class DocumentFilePageContentView(SingleObjectDetailView):
         )
 
 
-class DocumentFileParsingErrorsListView(
-    ExternalObjectViewMixin, SingleObjectListView
-):
-    external_object_permission = permission_document_file_parse
-    external_object_pk_url_kwarg = 'document_file_id'
-    external_object_queryset = DocumentFile.valid.all()
-
-    def get_extra_context(self):
-        return {
-            'hide_object': True,
-            'object': self.external_object,
-            'title': _(
-                'Parsing errors for document file: %s'
-            ) % self.external_object,
-        }
-
-    def get_source_queryset(self):
-        return self.external_object.parsing_errors.all()
-
-
 class DocumentFileSubmitView(MultipleObjectConfirmActionView):
     object_permission = permission_document_file_parse
     pk_url_kwarg = 'document_file_id'
@@ -229,14 +208,3 @@ class DocumentTypeSubmitView(FormView):
         )
 
         return HttpResponseRedirect(redirect_to=self.get_success_url())
-
-
-class ParseErrorListView(SingleObjectListView):
-    extra_context = {
-        'hide_object': True,
-        'title': _('Parsing errors'),
-    }
-    view_permission = permission_document_file_parse
-
-    def get_source_queryset(self):
-        return DocumentFileParseError.objects.all()

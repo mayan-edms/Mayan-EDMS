@@ -6,8 +6,8 @@ from .api_views import (
 from .views import (
     DocumentFileContentView, DocumentFileContentDeleteView,
     DocumentFileContentDownloadView, DocumentFilePageContentView,
-    DocumentFileParsingErrorsListView, DocumentFileSubmitView,
-    DocumentTypeSettingsEditView, DocumentTypeSubmitView, ParseErrorListView
+    DocumentFileSubmitView, DocumentTypeSettingsEditView,
+    DocumentTypeSubmitView
 )
 
 urlpatterns_document_files = [
@@ -41,18 +41,9 @@ urlpatterns_document_files = [
         view=DocumentFileSubmitView.as_view()
     ),
     url(
-        regex=r'^documents/files/(?P<document_file_id>\d+)/errors/$',
-        name='document_file_parsing_error_list',
-        view=DocumentFileParsingErrorsListView.as_view()
-    ),
-    url(
         regex=r'^documents/files/pages/(?P<document_file_page_id>\d+)/content/$',
         name='document_file_page_content_view',
         view=DocumentFilePageContentView.as_view()
-    ),
-    url(
-        regex=r'^errors/all/$', name='error_list',
-        view=ParseErrorListView.as_view()
     )
 ]
 

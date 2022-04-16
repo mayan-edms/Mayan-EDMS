@@ -38,7 +38,7 @@ class DocumentFilePageContentManager(models.Manager):
             logger.info(
                 'Parsing complete for document file: %s', document_file
             )
-            document_file.parsing_errors.all().delete()
+            document_file.error_log.all().delete()
 
             signal_post_document_file_parsing.send(
                 sender=document_file.__class__,
@@ -60,11 +60,11 @@ class DocumentFilePageContentManager(models.Manager):
                 type, value, tb = sys.exc_info()
                 result.append('%s: %s' % (type.__name__, value))
                 result.extend(traceback.format_tb(tb))
-                document_file.parsing_errors.create(
+                document_file.error_log.create(
                     result='\n'.join(result)
                 )
             else:
-                document_file.parsing_errors.create(result=exception)
+                document_file.error_log.create(result=exception)
 
 
 class DocumentTypeSettingsManager(models.Manager):
