@@ -319,9 +319,8 @@ class WorkflowTemplateStateListView(
     ExternalObjectViewMixin, SingleObjectListView
 ):
     external_object_class = Workflow
-    #external_object_permission = permission_workflow_template_view
+    external_object_permission = permission_workflow_template_view
     external_object_pk_url_kwarg = 'workflow_template_id'
-    object_permission = permission_workflow_template_view
 
     def get_extra_context(self):
         return {
