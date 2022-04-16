@@ -2,7 +2,7 @@ from mayan.apps.document_indexing.models import (
     IndexInstanceNode, IndexTemplate
 )
 from mayan.apps.document_indexing.tests.literals import TEST_INDEX_TEMPLATE_LABEL
-from mayan.apps.documents.tests.base import DocumentTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from .literals import (

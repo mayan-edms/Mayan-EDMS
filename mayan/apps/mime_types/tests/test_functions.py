@@ -4,8 +4,8 @@ import unittest
 from django.test import override_settings, tag
 
 from mayan.apps.documents.models import Document
-from mayan.apps.documents.tests.base import DocumentTestMixin
 from mayan.apps.documents.tests.literals import TEST_PDF_DOCUMENT_FILENAME
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.testing.literals import EXCLUDE_TEST_TAG
 from mayan.apps.testing.tests.base import BaseTestCase
 
