@@ -13,6 +13,7 @@ Changes
 Removals
 --------
 
+- Python package ``django-pure-pagination``.
 - Python package ``mock``.
 
 
