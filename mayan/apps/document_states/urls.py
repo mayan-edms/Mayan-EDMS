@@ -11,9 +11,15 @@ from .api_views.workflow_template_api_views import (
     APIWorkflowTemplateDetailView, APIWorkflowTemplateDocumentTypeAddView,
     APIWorkflowTemplateDocumentTypeListView,
     APIWorkflowTemplateDocumentTypeRemoveView, APIWorkflowTemplateImageView,
-    APIWorkflowTemplateListView, APIWorkflowTemplateStateActionDetailView,
+    APIWorkflowTemplateListView
+)
+from .api_views.workflow_template_state_api_views import (
+    APIWorkflowTemplateStateActionDetailView,
     APIWorkflowTemplateStateActionListView, APIWorkflowTemplateStateListView,
-    APIWorkflowTemplateStateView, APIWorkflowTemplateTransitionListView,
+    APIWorkflowTemplateStateView
+)
+from .api_views.workflow_template_transition_api_views import (
+    APIWorkflowTemplateTransitionListView,
     APIWorkflowTemplateTransitionView,
     APIWorkflowTemplateTransitionFieldDetailView,
     APIWorkflowTemplateTransitionFieldListView,

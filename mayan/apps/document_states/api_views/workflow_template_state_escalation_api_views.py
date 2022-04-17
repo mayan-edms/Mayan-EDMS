@@ -25,15 +25,16 @@ class APIWorkflowTemplateStateEscalationListView(
     def get_instance_extra_data(self):
         return {
             '_event_actor': self.request.user,
-            'state': self.get_workflow_template_state()
+            'state': self.workflow_template_state
         }
 
     def get_queryset(self):
-        return self.get_workflow_template_state().escalations.all()
+        return self.workflow_template_state.escalations.all()
 
 
 class APIWorkflowTemplateStateEscalationDetailView(
-    ParentObjectWorkflowTemplateStateAPIViewMixin, generics.RetrieveUpdateDestroyAPIView
+    ParentObjectWorkflowTemplateStateAPIViewMixin,
+    generics.RetrieveUpdateDestroyAPIView
 ):
     """
     delete: Delete the selected workflow template state escalation.
@@ -56,4 +57,4 @@ class APIWorkflowTemplateStateEscalationDetailView(
         }
 
     def get_queryset(self):
-        return self.get_workflow_template_state().escalations.all()
+        return self.workflow_template_state.escalations.all()

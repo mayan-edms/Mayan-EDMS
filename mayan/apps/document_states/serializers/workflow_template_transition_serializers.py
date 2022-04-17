@@ -154,7 +154,7 @@ class WorkflowTemplateTransitionSerializer(
         )
 
     def get_workflow_template_state_queryset(self):
-        return self.context['external_object'].states.all()
+        return self.context['workflow_template'].states.all()
 
     def get_workflow_template_url(self, instance):
         return reverse(
