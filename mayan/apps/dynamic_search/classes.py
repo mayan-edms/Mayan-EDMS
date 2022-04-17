@@ -424,11 +424,13 @@ class SearchField:
     SearchModel.
     """
     def __init__(
-        self, search_model, field, label=None, transformation_function=None
+        self, search_model, field, help_text=None, label=None,
+        transformation_function=None
     ):
-        self.search_model = search_model
-        self.field = field
         self._label = label
+        self.field = field
+        self.help_text = help_text
+        self.search_model = search_model
         self.transformation_function = transformation_function
 
     def __repr__(self):
@@ -442,6 +444,11 @@ class SearchField:
 
     def get_full_name(self):
         return self.field
+
+    def get_help_text(self):
+        return self.help_text or getattr(
+            self.get_model_field(), 'help_text', ''
+        )
 
     def get_model(self):
         return self.search_model.model

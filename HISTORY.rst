@@ -195,6 +195,8 @@
   unittest.mock in Python 3.3 onwards.
 - Unify and remove repeated workflow API views code using parent resolution
   mixins.
+- Support adding help text to search model fields. By default the help text
+  from the model fields will be used.
 
 4.2.3 (2022-04-01)
 ==================
