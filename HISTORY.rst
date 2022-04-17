@@ -197,6 +197,8 @@
   mixins.
 - Support adding help text to search model fields. By default the help text
   from the model fields will be used.
+- Increase the document type label size from 96 characters to 196.
+- Update the document type label field help text.
 
 4.2.3 (2022-04-01)
 ==================
