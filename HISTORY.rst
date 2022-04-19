@@ -3,6 +3,7 @@
 - Fix the documentation paths to the OTP backends. Closes GitLab
   issue #1099. Thanks to Matthias Löblich (@startmat) for the
   report.
+- Fix Docker pull counter.
 
 4.2.3 (2022-04-01)
 ==================
