@@ -4,6 +4,7 @@
   issue #1099. Thanks to Matthias Löblich (@startmat) for the
   report.
 - Fix Docker pull counter.
+- Remove repeated Whoosh backend line of code from merge.
 
 4.2.3 (2022-04-01)
 ==================

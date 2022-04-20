@@ -217,8 +217,6 @@ class WhooshSearchBackend(SearchBackend):
     def index_search_model(self, search_model, range_string=None):
         queryset = search_model.get_queryset()
 
-        queryset = search_model.get_queryset()
-
         if range_string:
             queryset = queryset.filter(
                 pk__in=list(parse_range(range_string=range_string))
