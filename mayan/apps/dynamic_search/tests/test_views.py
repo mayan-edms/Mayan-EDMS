@@ -2,7 +2,7 @@ from unittest import skip
 
 from mayan.apps.documents.models.document_models import DocumentSearchResult
 from mayan.apps.documents.permissions import permission_document_view
-from mayan.apps.documents.search import document_search
+from mayan.apps.documents.search import search_model_document
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
@@ -36,7 +36,7 @@ class AdvancedSearchViewTestCaseMixin(
 
         # Make sure all documents are returned by the search
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'label': test_document_label},
             user=self._test_case_user
         )
@@ -46,7 +46,7 @@ class AdvancedSearchViewTestCaseMixin(
             # Functional test for the first page of advanced results
             response = self._request_search_results_view(
                 data={'label': test_document_label}, kwargs={
-                    'search_model_name': document_search.get_full_name()
+                    'search_model_name': search_model_document.get_full_name()
                 }
             )
 
@@ -66,7 +66,7 @@ class AdvancedSearchViewTestCaseMixin(
             # Functional test for the second page of advanced results
             response = self._request_search_results_view(
                 data={'label': test_document_label, 'page': 2}, kwargs={
-                    'search_model_name': document_search.get_full_name()
+                    'search_model_name': search_model_document.get_full_name()
                 }
             )
             # Total (3 - 4 out of 4) (Page 2 of 2)
@@ -114,7 +114,7 @@ class SearchViewTestCaseMixin(DocumentTestMixin, SearchViewTestMixin):
         response = self._request_search_results_view(
             data={
                 'label': self._test_document.label,
-                '_search_model_name': document_search.get_full_name()
+                '_search_model_name': search_model_document.get_full_name()
             }
         )
         self.assertContains(
@@ -150,13 +150,13 @@ class SearchToolsViewTestCaseMixin(
     def setUp(self):
         super().setUp()
 
-        self.document_search_model = SearchModel.get_for_model(
+        self.search_model_document_model = SearchModel.get_for_model(
             instance=DocumentSearchResult
         )
 
     def test_search_backend_reindex_view_no_permission(self):
         self.search_backend.reset(
-            search_model=self.document_search_model
+            search_model=self.search_model_document_model
         )
         self.grant_access(
             obj=self._test_document, permission=permission_document_view
@@ -167,7 +167,7 @@ class SearchToolsViewTestCaseMixin(
 
     def test_search_backend_reindex_view_artifacts_no_permission(self):
         self.search_backend.reset(
-            search_model=self.document_search_model
+            search_model=self.search_model_document_model
         )
         self.grant_access(
             obj=self._test_document, permission=permission_document_view
@@ -177,7 +177,7 @@ class SearchToolsViewTestCaseMixin(
         self.assertEqual(response.status_code, 403)
 
         queryset = self.search_backend.search(
-            search_model=self.document_search_model,
+            search_model=self.search_model_document_model,
             query={QUERY_PARAMETER_ANY_FIELD: self._test_document.label},
             user=self._test_case_user
         )
@@ -185,7 +185,7 @@ class SearchToolsViewTestCaseMixin(
 
     def test_search_backend_reindex_view_with_permission(self):
         self.search_backend.reset(
-            search_model=self.document_search_model
+            search_model=self.search_model_document_model
         )
         self.grant_access(
             obj=self._test_document, permission=permission_document_view
@@ -197,7 +197,7 @@ class SearchToolsViewTestCaseMixin(
 
     def test_search_backend_reindex_view_artifacts_with_permission(self):
         self.search_backend.reset(
-            search_model=self.document_search_model
+            search_model=self.search_model_document_model
         )
         self.grant_access(
             obj=self._test_document, permission=permission_document_view
@@ -208,7 +208,7 @@ class SearchToolsViewTestCaseMixin(
         self.assertEqual(response.status_code, 302)
 
         queryset = self.search_backend.search(
-            search_model=self.document_search_model,
+            search_model=self.search_model_document_model,
             query={QUERY_PARAMETER_ANY_FIELD: self._test_document.label},
             user=self._test_case_user
         )

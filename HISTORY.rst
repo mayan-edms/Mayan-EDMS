@@ -199,6 +199,15 @@
   from the model fields will be used.
 - Increase the document type label size from 96 characters to 196.
 - Update the document type label field help text.
+- Search updates:
+
+  - Rename search model instances from '..._search' to 'search_model_...'.
+  - Add support for removing search fields from third party apps. The method
+    is called ``.remove_search_field(search_field=)`` and requires the
+    search field instance obtained from the method ``.get_search_fields()``.
+  - Remove the ``search_fields`` list and use the ``search_fields_dict``
+    instead for both purposes. The conical method to obtain the search
+    field or a search model is now using the method ``.get_search_fields()``.
 
 4.2.3 (2022-04-01)
 ==================

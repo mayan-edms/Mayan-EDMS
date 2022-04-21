@@ -3,7 +3,7 @@ from unittest import skip
 from django.db import models
 
 from mayan.apps.documents.permissions import permission_document_view
-from mayan.apps.documents.search import document_search
+from mayan.apps.documents.search import search_model_document
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 
@@ -483,7 +483,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={QUERY_PARAMETER_ANY_FIELD: 'OR first'}, user=self._test_case_user
         )
 
@@ -499,7 +499,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
             obj=self._test_documents[1], permission=permission_document_view
         )
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={QUERY_PARAMETER_ANY_FIELD: 'first OR second'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
@@ -518,7 +518,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'label': 'first OR second'},
             user=self._test_case_user
         )
@@ -534,14 +534,14 @@ class DjangoSearchBackendDocumentSearchTestCase(
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={QUERY_PARAMETER_ANY_FIELD: 'non_valid second'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={QUERY_PARAMETER_ANY_FIELD: 'second non_valid'},
             user=self._test_case_user
         )
@@ -555,35 +555,35 @@ class DjangoSearchBackendDocumentSearchTestCase(
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={QUERY_PARAMETER_ANY_FIELD: '-non_valid second'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'label': '-second'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'label': '-second -Mayan'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'label': '-second OR -Mayan'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'label': '-non_valid -second'},
             user=self._test_case_user
         )
@@ -597,14 +597,14 @@ class DjangoSearchBackendDocumentSearchTestCase(
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'label': '-second-document'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'label': '-"second-document"'},
             user=self._test_case_user
         )
@@ -619,7 +619,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
     _test_search_backend_path = 'mayan.apps.dynamic_search.backends.elasticsearch.ElasticSearchBackend'
     auto_upload_test_document = False
 
-    def test_simple_document_search(self):
+    def test_simple_search_model_document(self):
         self._create_test_document_stub(label='first_doc')
 
         self.grant_access(
@@ -627,7 +627,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={QUERY_PARAMETER_ANY_FIELD: 'first*'}, user=self._test_case_user
         )
 
@@ -650,7 +650,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'q': 'P01208*'}, user=self._test_case_user
         )
 
@@ -658,14 +658,14 @@ class ElasticSearchBackendDocumentSearchTestCase(
         self.assertTrue(self.test_documents[0] in queryset)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'q': 'P01208'}, user=self._test_case_user
         )
 
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'q': '*06'}, user=self._test_case_user
         )
 
@@ -673,7 +673,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
         self.assertTrue(self.test_documents[0] in queryset)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'q': 'P00025-06'}, user=self._test_case_user
         )
 
@@ -696,7 +696,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'q': 'first*'}, user=self._test_case_user
         )
 
@@ -704,7 +704,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
         self.assertTrue(self.test_documents[0] in queryset)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'q': 'first-doc'}, user=self._test_case_user
         )
 
@@ -712,7 +712,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
         self.assertTrue(self.test_documents[0] in queryset)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'q': 'second-doc'}, user=self._test_case_user
         )
 
@@ -720,7 +720,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
         self.assertTrue(self.test_documents[1] in queryset)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'q': 'word'}, user=self._test_case_user
         )
 
@@ -744,7 +744,7 @@ class WhooshSearchBackendDocumentSearchTestCase(
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={QUERY_PARAMETER_ANY_FIELD: 'first*'}, user=self._test_case_user
         )
 
@@ -758,7 +758,7 @@ class WhooshSearchBackendDocumentSearchTestCase(
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={QUERY_PARAMETER_ANY_FIELD: 'OR first*'}, user=self._test_case_user
         )
 
@@ -774,7 +774,7 @@ class WhooshSearchBackendDocumentSearchTestCase(
             obj=self._test_documents[1], permission=permission_document_view
         )
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={QUERY_PARAMETER_ANY_FIELD: 'first* OR second*'}, user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
@@ -793,7 +793,7 @@ class WhooshSearchBackendDocumentSearchTestCase(
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={'label': 'first* OR second*'},
             user=self._test_case_user
         )
@@ -809,14 +809,14 @@ class WhooshSearchBackendDocumentSearchTestCase(
         )
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={QUERY_PARAMETER_ANY_FIELD: 'non_valid AND second*'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
-            search_model=document_search,
+            search_model=search_model_document,
             query={QUERY_PARAMETER_ANY_FIELD: 'second* AND non_valid'},
             user=self._test_case_user
         )

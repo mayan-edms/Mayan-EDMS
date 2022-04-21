@@ -1,10 +1,10 @@
 from mayan.apps.documents.permissions import permission_document_view
-from mayan.apps.documents.search import document_search
+from mayan.apps.documents.search import search_model_document
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.dynamic_search.tests.mixins import SearchTestMixin
 
 from ..permissions import permission_cabinet_view
-from ..search import cabinet_search
+from ..search import search_model_cabinet
 
 from .mixins import CabinetTestMixin
 
@@ -17,12 +17,12 @@ class CabinetSearchTestCase(
 
     def _do_test_search(self):
         return self.search_backend.search(
-            search_model=cabinet_search, query={
+            search_model=search_model_cabinet, query={
                 'documents__label': self._test_document.label
             }, user=self._test_case_user
         )
 
-    def test_cabinet_search_no_permission(self):
+    def test_search_model_cabinet_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search()
@@ -31,7 +31,7 @@ class CabinetSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_cabinet_search_with_access(self):
+    def test_search_model_cabinet_with_access(self):
         self.grant_access(
             obj=self._test_cabinet, permission=permission_cabinet_view
         )
@@ -44,7 +44,7 @@ class CabinetSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_cabinet_search_with_access(self):
+    def test_trashed_search_model_document_model_cabinet_with_access(self):
         self.grant_access(
             obj=self._test_cabinet, permission=permission_cabinet_view
         )
@@ -68,12 +68,12 @@ class DocumentCabinetSearchTestCase(
 
     def _do_test_search(self):
         return self.search_backend.search(
-            search_model=document_search, query={
+            search_model=search_model_document, query={
                 'cabinets__label': self._test_cabinet.label
             }, user=self._test_case_user
         )
 
-    def test_document_search_no_permission(self):
+    def test_search_model_document_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search()
@@ -82,7 +82,7 @@ class DocumentCabinetSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_search_with_access(self):
+    def test_search_model_document_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_view
         )
@@ -95,7 +95,7 @@ class DocumentCabinetSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_search_with_access(self):
+    def test_trashed_search_model_document_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_view
         )

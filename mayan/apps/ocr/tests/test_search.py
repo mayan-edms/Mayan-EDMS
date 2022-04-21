@@ -3,7 +3,8 @@ from mayan.apps.documents.permissions import (
     permission_document_version_view, permission_document_view
 )
 from mayan.apps.documents.search import (
-    document_version_page_search, document_search, document_version_search
+    search_model_document, search_model_document_version,
+    search_model_document_version_page
 )
 from mayan.apps.dynamic_search.tests.mixins import SearchTestMixin
 
@@ -17,12 +18,12 @@ class DocumentOCRSearchTestCase(
 
     def _do_test_search(self):
         return self.search_backend.search(
-            search_model=document_search, query={
+            search_model=search_model_document, query={
                 'versions__version_pages__ocr_content__content': self._test_document_version_page.ocr_content.content
             }, user=self._test_case_user
         )
 
-    def test_document_search_no_permission(self):
+    def test_search_model_document_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search()
@@ -31,7 +32,7 @@ class DocumentOCRSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_search_with_access(self):
+    def test_search_model_document_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_view
         )
@@ -44,7 +45,7 @@ class DocumentOCRSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_search_with_access(self):
+    def test_trashed_search_model_document_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_view
         )
@@ -67,12 +68,12 @@ class DocumentVersionOCRSearchTestCase(
 
     def _do_test_search(self):
         return self.search_backend.search(
-            search_model=document_version_search, query={
+            search_model=search_model_document_version, query={
                 'version_pages__ocr_content__content': self._test_document_version_page.ocr_content.content
             }, user=self._test_case_user
         )
 
-    def test_document_version_search_no_permission(self):
+    def test_search_model_document_version_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search()
@@ -81,7 +82,7 @@ class DocumentVersionOCRSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_version_search_with_access(self):
+    def test_search_model_document_version_with_access(self):
         self.grant_access(
             obj=self._test_document,
             permission=permission_document_version_view
@@ -95,7 +96,7 @@ class DocumentVersionOCRSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_version_search_with_access(self):
+    def test_trashed_search_model_document_version_with_access(self):
         self.grant_access(
             obj=self._test_document,
             permission=permission_document_version_view
@@ -119,12 +120,12 @@ class DocumentVersionPageOCRSearchTestCase(
 
     def _do_test_search(self):
         return self.search_backend.search(
-            search_model=document_version_page_search, query={
+            search_model=search_model_document_version_page, query={
                 'ocr_content__content': self._test_document_version_page.ocr_content.content
             }, user=self._test_case_user
         )
 
-    def test_document_version_search_no_permission(self):
+    def test_search_model_document_version_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search()
@@ -133,7 +134,7 @@ class DocumentVersionPageOCRSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_version_search_with_access(self):
+    def test_search_model_document_version_with_access(self):
         self.grant_access(
             obj=self._test_document,
             permission=permission_document_version_view
@@ -147,7 +148,7 @@ class DocumentVersionPageOCRSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_version_search_with_access(self):
+    def test_trashed_search_model_document_version_with_access(self):
         self.grant_access(
             obj=self._test_document,
             permission=permission_document_version_view

@@ -1,6 +1,6 @@
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.permissions import permission_document_view
-from mayan.apps.documents.search import document_search
+from mayan.apps.documents.search import search_model_document
 from mayan.apps.dynamic_search.tests.mixins import SearchTestMixin
 
 from .mixins import TagTestMixin
@@ -14,12 +14,12 @@ class DocumentTagSearchTestCase(
 
     def _do_test_search(self):
         return self.search_backend.search(
-            search_model=document_search, query={
+            search_model=search_model_document, query={
                 'tags__label': self._test_tag.label
             }, user=self._test_case_user
         )
 
-    def test_document_search_no_permission(self):
+    def test_search_model_document_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search()
@@ -28,7 +28,7 @@ class DocumentTagSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_search_with_access(self):
+    def test_search_model_document_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_view
         )
@@ -41,7 +41,7 @@ class DocumentTagSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_search_with_access(self):
+    def test_trashed_search_model_document_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_view
         )

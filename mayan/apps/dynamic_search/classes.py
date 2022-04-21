@@ -160,7 +160,7 @@ class SearchBackend:
 
     def cleanup_query(self, query, search_model):
         search_field_names = [
-            search_field.get_full_name() for search_field in search_model.search_fields
+            search_field.field for search_field in search_model.get_search_fields()
         ]
 
         clean_query = {}
@@ -262,11 +262,11 @@ class SearchBackend:
             )
 
             if backend_field_type:
-                result[search_field.get_full_name()] = backend_field_type
+                result[search_field.field] = backend_field_type
             else:
                 logger.warning(
                     'Unknown field type "%s" for model "%s"',
-                    search_field.get_full_name(),
+                    search_field.field,
                     search_model.get_full_name()
                 )
 
@@ -287,7 +287,7 @@ class SearchBackend:
         return self.__class__._search_field_transformations[search_field]
 
     def get_search_model_fields(self, search_model):
-        result = search_model.search_fields.copy()
+        result = list(search_model.search_fields_dict.values())
         result.append(
             SearchField(search_model=search_model, field='id', label='ID')
         )
@@ -442,9 +442,6 @@ class SearchField:
     def field_type(self):
         return self.get_model_field().__class__
 
-    def get_full_name(self):
-        return self.field
-
     def get_help_text(self):
         return self.help_text or getattr(
             self.get_model_field(), 'help_text', ''
@@ -454,7 +451,9 @@ class SearchField:
         return self.search_model.model
 
     def get_model_field(self):
-        return get_fields_from_path(model=self.get_model(), path=self.field)[-1]
+        return get_fields_from_path(
+            model=self.get_model(), path=self.field
+        )[-1]
 
     @property
     def label(self):
@@ -549,7 +548,6 @@ class SearchModel(AppsModuleLoaderMixin):
         self._proxies = []  # Lazy
         self.permission = permission
         self.queryset = queryset
-        self.search_fields = []
         self.search_fields_dict = {}
         self.serializer_path = serializer_path
 
@@ -576,8 +574,8 @@ class SearchModel(AppsModuleLoaderMixin):
         Add a search field that directly belongs to the parent SearchModel.
         """
         search_field = SearchField(self, *args, **kwargs)
-        self.search_fields.append(search_field)
-        self.search_fields_dict[search_field.get_full_name()] = search_field
+        self.search_fields_dict[search_field.field] = search_field
+        return search_field
 
     def add_proxy_model(self, app_label, model_name):
         model_name = model_name.lower()
@@ -593,7 +591,7 @@ class SearchModel(AppsModuleLoaderMixin):
     def fields_direct(self):
         result = []
 
-        for search_field in self.search_fields:
+        for search_field in self.get_search_fields():
             field_name = search_field.field
 
             if '__' not in field_name:
@@ -605,7 +603,7 @@ class SearchModel(AppsModuleLoaderMixin):
     def fields_related(self):
         result = []
 
-        for search_field in self.search_fields:
+        for search_field in self.get_search_fields():
             field_name = search_field.field
 
             if '__' in field_name:
@@ -618,9 +616,9 @@ class SearchModel(AppsModuleLoaderMixin):
         Returns a list of the fields for the SearchModel.
         """
         result = []
-        for search_field in self.search_fields:
+        for search_field in self.get_search_fields():
             result.append(
-                (search_field.get_full_name(), search_field.label)
+                (search_field.field, search_field.label)
             )
 
         return sorted(result, key=lambda x: x[1])
@@ -636,7 +634,7 @@ class SearchModel(AppsModuleLoaderMixin):
 
     def get_related_models(self):
         result = set()
-        for search_field in self.search_fields:
+        for search_field in self.get_search_fields():
             obj, path = reverse_field_path(
                 model=self.model, path=search_field.field
             )
@@ -646,11 +644,14 @@ class SearchModel(AppsModuleLoaderMixin):
 
         return result
 
-    def get_search_field(self, full_name):
+    def get_search_field(self, field):
         try:
-            return self.search_fields_dict[full_name]
+            return self.search_fields_dict[field]
         except KeyError:
-            raise KeyError('No search field named: %s' % full_name)
+            raise KeyError('No search field named: %s' % field)
+
+    def get_search_fields(self):
+        return list(self.search_fields_dict.values())
 
     @cached_property
     def label(self):
@@ -735,3 +736,6 @@ class SearchModel(AppsModuleLoaderMixin):
                 )
             )
         return result
+
+    def remove_search_field(self, search_field):
+        self.search_fields_dict.pop(search_field.field)

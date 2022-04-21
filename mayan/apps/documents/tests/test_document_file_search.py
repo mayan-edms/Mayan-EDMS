@@ -1,7 +1,7 @@
 from mayan.apps.dynamic_search.tests.mixins import SearchTestMixin
 
 from ..permissions import permission_document_file_view
-from ..search import document_file_page_search, document_file_search
+from ..search import search_model_document_file_page, search_model_document_file
 
 from .base import GenericDocumentViewTestCase
 from .literals import TEST_DOCUMENT_FILE_COMMENT
@@ -18,7 +18,7 @@ class DocumentFileSearchTestCase(
         self.assertTrue(terms != '')
 
         return self.search_backend.search(
-            search_model=document_file_search, query=query,
+            search_model=search_model_document_file, query=query,
             user=self._test_case_user
         )
 
@@ -28,7 +28,7 @@ class DocumentFileSearchTestCase(
             document_file_attributes={'comment': TEST_DOCUMENT_FILE_COMMENT}
         )
 
-    def test_document_file_search_by_checksum_no_permission(self):
+    def test_search_model_document_file_by_checksum_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search(
@@ -41,7 +41,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_search_by_checksum_with_access(self):
+    def test_search_model_document_file_by_checksum_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -58,7 +58,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_file_search_by_checksum_with_access(self):
+    def test_trashed_search_model_document_file_by_checksum_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -77,7 +77,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_search_by_comment_no_permission(self):
+    def test_search_model_document_file_by_comment_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search(
@@ -90,7 +90,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_search_by_comment_with_access(self):
+    def test_search_model_document_file_by_comment_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -107,7 +107,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_file_search_by_comment_with_access(self):
+    def test_trashed_search_model_document_file_by_comment_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -126,7 +126,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_search_by_filename_no_permission(self):
+    def test_search_model_document_file_by_filename_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search(
@@ -139,7 +139,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_search_by_filename_with_access(self):
+    def test_search_model_document_file_by_filename_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -156,7 +156,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_file_search_by_filename_with_access(self):
+    def test_trashed_search_model_document_file_by_filename_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -175,7 +175,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_search_by_mime_type_no_permission(self):
+    def test_search_model_document_file_by_mime_type_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search(
@@ -188,7 +188,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_search_by_mime_type_with_access(self):
+    def test_search_model_document_file_by_mime_type_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -205,7 +205,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_file_search_by_mime_type_with_access(self):
+    def test_trashed_search_model_document_file_by_mime_type_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -224,7 +224,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_search_by_document_description_no_permission(self):
+    def test_search_model_document_file_by_document_description_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search(
@@ -237,7 +237,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_search_by_document_description_with_access(self):
+    def test_search_model_document_file_by_document_description_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -254,7 +254,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_file_search_by_document_description_with_access(self):
+    def test_trashed_search_model_document_file_by_document_description_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -273,7 +273,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_search_by_document_label_no_permission(self):
+    def test_search_model_document_file_by_document_label_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search(
@@ -286,7 +286,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_search_by_document_label_with_access(self):
+    def test_search_model_document_file_by_document_label_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -303,7 +303,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_file_search_by_document_label_with_access(self):
+    def test_trashed_search_model_document_file_by_document_label_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -322,7 +322,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_search_by_document_uuid_no_permission(self):
+    def test_search_model_document_file_by_document_uuid_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search(
@@ -335,7 +335,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_search_by_document_uuid_with_access(self):
+    def test_search_model_document_file_by_document_uuid_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -352,7 +352,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_file_search_by_document_uuid_with_access(self):
+    def test_trashed_search_model_document_file_by_document_uuid_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -371,7 +371,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_search_by_document_type_label_no_permission(self):
+    def test_search_model_document_file_by_document_type_label_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search(
@@ -384,7 +384,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_search_by_document_type_label_with_access(self):
+    def test_search_model_document_file_by_document_type_label_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -401,7 +401,7 @@ class DocumentFileSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_file_search_by_document_type_label_with_access(self):
+    def test_trashed_search_model_document_file_by_document_type_label_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -432,7 +432,7 @@ class DocumentFilePageSearchTestCase(
         self.assertTrue(terms != '')
 
         return self.search_backend.search(
-            search_model=document_file_page_search, query=query,
+            search_model=search_model_document_file_page, query=query,
             user=self._test_case_user
         )
 
@@ -440,7 +440,7 @@ class DocumentFilePageSearchTestCase(
         super().setUp()
         self._upload_test_document()
 
-    def test_document_file_page_search_by_document_label_no_permission(self):
+    def test_search_model_document_file_page_by_document_label_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search(
@@ -453,7 +453,7 @@ class DocumentFilePageSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_page_search_by_document_label_with_access(self):
+    def test_search_model_document_file_page_by_document_label_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -470,7 +470,7 @@ class DocumentFilePageSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_file_page_search_by_document_label_with_access(self):
+    def test_trashed_search_model_document_file_page_by_document_label_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -489,7 +489,7 @@ class DocumentFilePageSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_page_search_by_document_description_no_permission(self):
+    def test_search_model_document_file_page_by_document_description_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search(
@@ -502,7 +502,7 @@ class DocumentFilePageSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_page_search_by_document_description_with_access(self):
+    def test_search_model_document_file_page_by_document_description_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -519,7 +519,7 @@ class DocumentFilePageSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_file_page_search_by_document_description_with_access(self):
+    def test_trashed_search_model_document_file_page_by_document_description_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -538,7 +538,7 @@ class DocumentFilePageSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_page_search_by_document_file_checksum_no_permission(self):
+    def test_search_model_document_file_page_by_document_file_checksum_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search(
@@ -551,7 +551,7 @@ class DocumentFilePageSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_page_search_by_document_file_checksum_with_access(self):
+    def test_search_model_document_file_page_by_document_file_checksum_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -568,7 +568,7 @@ class DocumentFilePageSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_file_page_search_by_document_file_checksum_with_access(self):
+    def test_trashed_search_model_document_file_page_by_document_file_checksum_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -587,7 +587,7 @@ class DocumentFilePageSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_page_search_by_document_file_mime_type_no_permission(self):
+    def test_search_model_document_file_page_by_document_file_mime_type_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search(
@@ -600,7 +600,7 @@ class DocumentFilePageSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_page_search_by_document_file_mime_type_with_access(self):
+    def test_search_model_document_file_page_by_document_file_mime_type_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -617,7 +617,7 @@ class DocumentFilePageSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_file_page_search_by_document_file_mime_type_with_access(self):
+    def test_trashed_search_model_document_file_page_by_document_file_mime_type_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -636,7 +636,7 @@ class DocumentFilePageSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_page_search_by_document_uuid_no_permission(self):
+    def test_search_model_document_file_page_by_document_uuid_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search(
@@ -649,7 +649,7 @@ class DocumentFilePageSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_page_search_by_document_uuid_with_access(self):
+    def test_search_model_document_file_page_by_document_uuid_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -666,7 +666,7 @@ class DocumentFilePageSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_file_page_search_by_document_uuid_with_access(self):
+    def test_trashed_search_model_document_file_page_by_document_uuid_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -685,7 +685,7 @@ class DocumentFilePageSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_page_search_by_document_type_label_no_permission(self):
+    def test_search_model_document_file_page_by_document_type_label_no_permission(self):
         self._clear_events()
 
         queryset = self._do_test_search(
@@ -698,7 +698,7 @@ class DocumentFilePageSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_page_search_by_document_type_label_with_access(self):
+    def test_search_model_document_file_page_by_document_type_label_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )
@@ -715,7 +715,7 @@ class DocumentFilePageSearchTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_trashed_document_file_page_search_by_document_type_label_with_access(self):
+    def test_trashed_search_model_document_file_page_by_document_type_label_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_view
         )

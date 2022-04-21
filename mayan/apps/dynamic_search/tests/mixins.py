@@ -1,4 +1,4 @@
-from mayan.apps.documents.search import document_search
+from mayan.apps.documents.search import search_model_document
 
 from ..classes import SearchBackend, SearchModel
 from ..literals import QUERY_PARAMETER_ANY_FIELD
@@ -50,7 +50,7 @@ class SearchAPIViewTestMixin(SearchTestMixin):
         query = {
             QUERY_PARAMETER_ANY_FIELD: search_term or self._test_document.label
         }
-        search_model_name = search_model_name or document_search.get_full_name()
+        search_model_name = search_model_name or search_model_document.get_full_name()
 
         return self.get(
             viewname='rest_api:search-view', kwargs={
@@ -64,7 +64,7 @@ class SearchAPIViewTestMixin(SearchTestMixin):
         query = {
             'document_type__label': search_term or self._test_document.document_type.label
         }
-        search_model_name = search_model_name or document_search.get_full_name()
+        search_model_name = search_model_name or search_model_document.get_full_name()
 
         return self.get(
             viewname='rest_api:advanced-search-view', kwargs={

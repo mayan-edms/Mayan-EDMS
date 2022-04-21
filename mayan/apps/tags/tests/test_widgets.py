@@ -1,12 +1,13 @@
 from django.utils.encoding import force_text
 
 from mayan.apps.documents.permissions import (
-    permission_document_file_view, permission_document_version_view,
-    permission_document_view
+    permission_document_view, permission_document_file_view,
+    permission_document_version_view
 )
 from mayan.apps.documents.search import (
-    document_file_page_search, document_file_search, document_search,
-    document_version_page_search, document_version_search
+    search_model_document, search_model_document_file,
+    search_model_document_file_page, search_model_document_version,
+    search_model_document_version_page
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentViewTestMixin
@@ -155,7 +156,7 @@ class DocumentSearchResultWidgetViewTestCase(
         self._create_test_tag(add_test_document=True)
         self._test_object_permission = permission_document_view
         self._test_object_text = self._test_document.label
-        self._test_search_model = document_search
+        self._test_search_model = search_model_document
         self._test_search_term_data = {'uuid': self._test_document.uuid}
 
     def test_document_tag_widget_no_permission(self):
@@ -294,7 +295,7 @@ class DocumentFileSearchResultWidgetViewTestCase(
         super().setUp()
         self._test_object_text = self._test_document_file.filename
         self._test_object_permission = permission_document_file_view
-        self._test_search_model = document_file_search
+        self._test_search_model = search_model_document_file
         self._test_search_term_data = {
             'document__uuid': self._test_document.uuid
         }
@@ -307,7 +308,7 @@ class DocumentFilePageSearchResultWidgetViewTestCase(
         super().setUp()
         self._test_object_text = force_text(s=self._test_document_file.pages.first())
         self._test_object_permission = permission_document_file_view
-        self._test_search_model = document_file_page_search
+        self._test_search_model = search_model_document_file_page
         self._test_search_term_data = {
             'document_file__document__uuid': self._test_document.uuid
         }
@@ -320,7 +321,7 @@ class DocumentVersionSearchResultWidgetViewTestCase(
         super().setUp()
         self._test_object_text = force_text(s=self._test_document_version)
         self._test_object_permission = permission_document_version_view
-        self._test_search_model = document_version_search
+        self._test_search_model = search_model_document_version
         self._test_search_term_data = {
             'document__uuid': self._test_document.uuid
         }
@@ -333,7 +334,7 @@ class DocumentVersionPageSearchResultWidgetViewTestCase(
         super().setUp()
         self._test_object_text = force_text(s=self._test_document_version.pages.first())
         self._test_object_permission = permission_document_version_view
-        self._test_search_model = document_version_page_search
+        self._test_search_model = search_model_document_version_page
         self._test_search_term_data = {
             'document_version__document__uuid': self._test_document.uuid
         }

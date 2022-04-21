@@ -212,7 +212,9 @@ class ElasticSearchBackend(SearchBackend):
             queryset = search_model.get_queryset()
 
             if range_string:
-                queryset = queryset.filter(pk__in=list(parse_range(range_string=range_string)))
+                queryset = queryset.filter(
+                    pk__in=list(parse_range(range_string=range_string))
+                )
 
             for instance in queryset:
                 kwargs = search_model.populate(
