@@ -1,7 +1,7 @@
 from mayan.apps.documents.search import search_model_document
 
 from ..classes import SearchBackend, SearchModel
-from ..literals import QUERY_PARAMETER_ANY_FIELD
+from ..literals import QUERY_PARAMETER_ANY_FIELD, SEARCH_MODEL_NAME_KWARG
 
 from .backends import TestSearchBackend
 
@@ -54,7 +54,7 @@ class SearchAPIViewTestMixin(SearchTestMixin):
 
         return self.get(
             viewname='rest_api:search-view', kwargs={
-                'search_model_name': search_model_name
+                SEARCH_MODEL_NAME_KWARG: search_model_name
             }, query=query
         )
 
@@ -68,7 +68,7 @@ class SearchAPIViewTestMixin(SearchTestMixin):
 
         return self.get(
             viewname='rest_api:advanced-search-view', kwargs={
-                'search_model_name': search_model_name
+                SEARCH_MODEL_NAME_KWARG: search_model_name
             }, query=query
         )
 

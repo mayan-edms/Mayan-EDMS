@@ -16,7 +16,7 @@ MESSAGE_FEATURE_NO_STATUS = 'This backend does not provide status information.'
 
 QUERY_PARAMETER_ANY_FIELD = 'q'
 
-SEARCH_MODEL_NAME_KWARG = 'search_model_name'
+SEARCH_MODEL_NAME_KWARG = 'search_model_pk'
 
 SCOPE_MARKER = '__'
 SCOPE_MATCH_ALL = 'match_all'

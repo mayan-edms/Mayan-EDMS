@@ -7,7 +7,7 @@ from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..classes import SearchModel
-from ..literals import QUERY_PARAMETER_ANY_FIELD
+from ..literals import QUERY_PARAMETER_ANY_FIELD, SEARCH_MODEL_NAME_KWARG
 from ..permissions import permission_search_tools
 
 from .mixins import (
@@ -46,7 +46,7 @@ class AdvancedSearchViewTestCaseMixin(
             # Functional test for the first page of advanced results
             response = self._request_search_results_view(
                 data={'label': test_document_label}, kwargs={
-                    'search_model_name': search_model_document.get_full_name()
+                    SEARCH_MODEL_NAME_KWARG: search_model_document.get_full_name()
                 }
             )
 
@@ -66,7 +66,7 @@ class AdvancedSearchViewTestCaseMixin(
             # Functional test for the second page of advanced results
             response = self._request_search_results_view(
                 data={'label': test_document_label, 'page': 2}, kwargs={
-                    'search_model_name': search_model_document.get_full_name()
+                    SEARCH_MODEL_NAME_KWARG: search_model_document.get_full_name()
                 }
             )
             # Total (3 - 4 out of 4) (Page 2 of 2)
@@ -114,7 +114,7 @@ class SearchViewTestCaseMixin(DocumentTestMixin, SearchViewTestMixin):
         response = self._request_search_results_view(
             data={
                 'label': self._test_document.label,
-                '_search_model_name': search_model_document.get_full_name()
+                '_{}'.format(SEARCH_MODEL_NAME_KWARG): search_model_document.get_full_name()
             }
         )
         self.assertContains(

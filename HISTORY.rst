@@ -209,6 +209,11 @@
     instead for both purposes. The conical method to obtain the search
     field or a search model is now using the method ``.get_search_fields()``.
 
+- Fix the search model API URL reference. Closes GitLab issue #1098. Thanks
+  to Bastian (@Basti-Fantasti) for the report.
+- Use the ``SEARCH_MODEL_NAME_KWARG`` instead of hard coding the search model
+  API URL reference.
+
 4.2.3 (2022-04-01)
 ==================
 - Add restart policy to the Traefik container definition.
