@@ -1,0 +1,32 @@
+.. index:: Portainer
+
+=========
+Portainer
+=========
+
+From the Portainer website:
+
+    Portainer is a Universal Container Management System for Kubernetes,
+    Docker/Swarm, and Nomad that simplifies container operations so you can
+    deliver software to more places, faster
+
+
+By default, the entire software stack is deployed as a single container. This
+provides an easy way to get started and will be sufficient for several
+thousand documents.
+
+
+.. note::
+
+   Portainer installations are not officially supported and are meant
+   for small/personal/demo installations. This might change as the body of
+   knowledge regarding the Portainer system increases.
+
+
+- Installation: :doc:`installation`
+
+
+.. toctree::
+    :hidden:
+
+    installation

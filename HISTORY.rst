@@ -5,6 +5,7 @@
   report.
 - Fix Docker pull counter.
 - Remove repeated Whoosh backend line of code from merge.
+- Add portainer installation files and documentation.
 
 4.2.3 (2022-04-01)
 ==================

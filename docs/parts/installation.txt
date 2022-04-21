@@ -92,4 +92,19 @@ For users with knowledge of Python, Django, Ubuntu, and databases.
     ../chapters/deploying
 
 
+Portainer
+---------
+
+For users with an existing installation of Portainer.
+
+- :doc:`../chapters/portainer/installation`
+
+.. toctree::
+    :hidden:
+
+    ../chapters/portainer/installation
+
+
+
+
 .. _Docker: https://www.docker.com/
