@@ -10,11 +10,11 @@ from .views import (
 
 urlpatterns_search = [
     url(
-        regex=r'^again/(?P<search_model_name>[\.\w]+)/$', name='search_again',
+        regex=r'^again/(?P<search_model_pk>[\.\w]+)/$', name='search_again',
         view=SearchAgainView.as_view()
     ),
     url(
-        regex=r'^advanced/(?P<search_model_name>[\.\w]+)/$',
+        regex=r'^advanced/(?P<search_model_pk>[\.\w]+)/$',
         name='search_advanced', view=AdvancedSearchView.as_view()
     ),
     url(
@@ -25,11 +25,11 @@ urlpatterns_search = [
         regex=r'^results/$', name='results', view=ResultsView.as_view()
     ),
     url(
-        regex=r'^results/(?P<search_model_name>[\.\w]+)/$', name='results',
+        regex=r'^results/(?P<search_model_pk>[\.\w]+)/$', name='results',
         view=ResultsView.as_view()
     ),
     url(
-        regex=r'^search/(?P<search_model_name>[\.\w]+)/$', name='search',
+        regex=r'^search/(?P<search_model_pk>[\.\w]+)/$', name='search',
         view=SearchView.as_view()
     )
 ]
@@ -47,11 +47,11 @@ urlpatterns.extend(urlpatterns_tools)
 
 api_urls = [
     url(
-        regex=r'^search/(?P<search_model_name>[\.\w]+)/$', name='search-view',
+        regex=r'^search/(?P<search_model_pk>[\.\w]+)/$', name='search-view',
         view=APISearchView.as_view()
     ),
     url(
-        regex=r'^search/advanced/(?P<search_model_name>[\.\w]+)/$',
+        regex=r'^search/advanced/(?P<search_model_pk>[\.\w]+)/$',
         name='advanced-search-view', view=APIAdvancedSearchView.as_view()
     ),
     url(
