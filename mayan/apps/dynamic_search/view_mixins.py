@@ -89,13 +89,18 @@ class SearchModelViewMixin:
         return super().dispatch(*args, **kwargs)
 
     def get_search_model_name(self):
-        return self.kwargs.get(
+        search_model_name = self.kwargs.get(
             SEARCH_MODEL_NAME_KWARG, self.request.GET.get(
                 '_{}'.format(SEARCH_MODEL_NAME_KWARG), self.request.POST.get(
                     '_{}'.format(SEARCH_MODEL_NAME_KWARG)
                 )
             )
         )
+
+        if search_model_name:
+            search_model_name = search_model_name.lower()
+
+        return search_model_name
 
     def get_search_model(self):
         try:
