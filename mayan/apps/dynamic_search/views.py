@@ -17,6 +17,7 @@ from .exceptions import DynamicSearchException
 from .forms import SearchForm, AdvancedSearchForm
 from .icons import icon_search_submit
 from .links import link_search_again
+from .literals import QUERY_PARAMETER_ANY_FIELD, SEARCH_MODEL_NAME_KWARG
 from .permissions import permission_search_tools
 from .tasks import task_reindex_backend
 from .view_mixins import SearchModelViewMixin
@@ -81,7 +82,7 @@ class SearchAgainView(RedirectView):
         query_dict = self.request.GET.copy()
         query_dict.update(self.request.POST)
 
-        if ('q' in query_dict) and query_dict['q'].strip():
+        if (QUERY_PARAMETER_ANY_FIELD in query_dict) and query_dict[QUERY_PARAMETER_ANY_FIELD].strip():
             self.pattern_name = 'search:search'
         else:
             self.pattern_name = 'search:search_advanced'
@@ -126,7 +127,7 @@ class SearchView(SearchModelViewMixin, FormView):
             'form': self.get_form(),
             'form_action': reverse(
                 viewname='search:results', kwargs={
-                    'search_model_name': self.search_model.get_full_name()
+                    SEARCH_MODEL_NAME_KWARG: self.search_model.get_full_name()
                 }
             ),
             'search_model': self.search_model,
@@ -140,9 +141,11 @@ class SearchView(SearchModelViewMixin, FormView):
         query_dict = self.request.GET.copy()
         query_dict.update(self.request.POST)
 
-        if ('q' in query_dict) and query_dict['q'].strip():
-            query_string = query_dict['q']
-            return SearchForm(initial={'q': query_string})
+        if (QUERY_PARAMETER_ANY_FIELD in query_dict) and query_dict[QUERY_PARAMETER_ANY_FIELD].strip():
+            query_string = query_dict[QUERY_PARAMETER_ANY_FIELD]
+            return SearchForm(
+                initial={QUERY_PARAMETER_ANY_FIELD: query_string}
+            )
         else:
             return SearchForm()
 

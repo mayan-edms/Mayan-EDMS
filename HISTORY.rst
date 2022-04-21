@@ -6,6 +6,10 @@
 - Fix Docker pull counter.
 - Remove repeated Whoosh backend line of code from merge.
 - Add portainer installation files and documentation.
+- Fix the search model API URL reference. Closes GitLab issue #1098. Thanks
+  to Bastian (@Basti-Fantasti) for the report.
+- Use the ``SEARCH_MODEL_NAME_KWARG`` instead of hard coding the search model
+  API URL reference.
 
 4.2.3 (2022-04-01)
 ==================

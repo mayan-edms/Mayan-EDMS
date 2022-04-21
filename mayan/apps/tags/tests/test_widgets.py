@@ -10,6 +10,7 @@ from mayan.apps.documents.search import (
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentViewTestMixin
+from mayan.apps.dynamic_search.literals import SEARCH_MODEL_NAME_KWARG
 from mayan.apps.dynamic_search.tests.mixins import (
     SearchTestMixin, SearchViewTestMixin
 )
@@ -161,7 +162,7 @@ class DocumentSearchResultWidgetViewTestCase(
     def test_document_tag_widget_no_permission(self):
         response = self._request_search_results_view(
             data=self._test_search_term_data, kwargs={
-                'search_model_name': self._test_search_model.get_full_name()
+                SEARCH_MODEL_NAME_KWARG: self._test_search_model.get_full_name()
             }
         )
         self.assertNotContains(
@@ -178,7 +179,7 @@ class DocumentSearchResultWidgetViewTestCase(
 
         response = self._request_search_results_view(
             data=self._test_search_term_data, kwargs={
-                'search_model_name': self._test_search_model.get_full_name()
+                SEARCH_MODEL_NAME_KWARG: self._test_search_model.get_full_name()
             }
         )
         self.assertNotContains(
@@ -195,7 +196,7 @@ class DocumentSearchResultWidgetViewTestCase(
 
         response = self._request_search_results_view(
             data=self._test_search_term_data, kwargs={
-                'search_model_name': self._test_search_model.get_full_name()
+                SEARCH_MODEL_NAME_KWARG: self._test_search_model.get_full_name()
             }
         )
         self.assertContains(
@@ -212,7 +213,7 @@ class DocumentSearchResultWidgetViewTestCase(
 
         response = self._request_search_results_view(
             data=self._test_search_term_data, kwargs={
-                'search_model_name': self._test_search_model.get_full_name()
+                SEARCH_MODEL_NAME_KWARG: self._test_search_model.get_full_name()
             }
         )
         self.assertNotContains(
@@ -232,7 +233,7 @@ class DocumentSearchResultWidgetViewTestCase(
 
         response = self._request_search_results_view(
             data=self._test_search_term_data, kwargs={
-                'search_model_name': self._test_search_model.get_full_name()
+                SEARCH_MODEL_NAME_KWARG: self._test_search_model.get_full_name()
             }
         )
         self.assertContains(
@@ -252,7 +253,7 @@ class DocumentSearchResultWidgetViewTestCase(
 
         response = self._request_search_results_view(
             data=self._test_search_term_data, kwargs={
-                'search_model_name': self._test_search_model.get_full_name()
+                SEARCH_MODEL_NAME_KWARG: self._test_search_model.get_full_name()
             }
         )
         self.assertContains(
@@ -276,7 +277,7 @@ class DocumentSearchResultWidgetViewTestCase(
 
         response = self._request_search_results_view(
             data=self._test_search_term_data, kwargs={
-                'search_model_name': self._test_search_model.get_full_name()
+                SEARCH_MODEL_NAME_KWARG: self._test_search_model.get_full_name()
             }
         )
         self.assertContains(

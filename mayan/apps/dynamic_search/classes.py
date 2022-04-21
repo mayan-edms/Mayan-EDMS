@@ -16,7 +16,8 @@ from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
 from .exceptions import DynamicSearchException
 from .literals import (
-    DEFAULT_SCOPE_ID, DELIMITER, MESSAGE_FEATURE_NO_STATUS, SCOPE_MATCH_ALL,
+    DEFAULT_SCOPE_ID, DELIMITER, MESSAGE_FEATURE_NO_STATUS,
+    QUERY_PARAMETER_ANY_FIELD, SCOPE_MATCH_ALL,
     SCOPE_MARKER, SCOPE_OPERATOR_CHOICES, SCOPE_OPERATOR_MARKER,
     SCOPE_RESULT_MAKER
 )
@@ -165,8 +166,8 @@ class SearchBackend:
 
         clean_query = {}
 
-        if 'q' in query:
-            value = query['q']
+        if QUERY_PARAMETER_ANY_FIELD in query:
+            value = query[QUERY_PARAMETER_ANY_FIELD]
             if value:
                 clean_query = {key: value for key in search_field_names}
         else:

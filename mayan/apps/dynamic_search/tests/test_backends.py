@@ -8,6 +8,7 @@ from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..classes import SearchModel
+from ..literals import QUERY_PARAMETER_ANY_FIELD
 
 from .mixins import SearchTestMixin
 
@@ -483,7 +484,8 @@ class DjangoSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query={'q': 'OR first'}, user=self._test_case_user
+            query={QUERY_PARAMETER_ANY_FIELD: 'OR first'},
+            user=self._test_case_user
         )
 
         self.assertEqual(queryset.count(), 1)
@@ -499,7 +501,8 @@ class DjangoSearchBackendDocumentSearchTestCase(
         )
         queryset = self.search_backend.search(
             search_model=document_search,
-            query={'q': 'first OR second'}, user=self._test_case_user
+            query={QUERY_PARAMETER_ANY_FIELD: 'first OR second'},
+            user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
         self.assertTrue(self.test_documents[0] in queryset)
@@ -534,14 +537,14 @@ class DjangoSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query={'q': 'non_valid second'},
+            query={QUERY_PARAMETER_ANY_FIELD: 'non_valid second'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query={'q': 'second non_valid'},
+            query={QUERY_PARAMETER_ANY_FIELD: 'second non_valid'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
@@ -555,7 +558,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query={'q': '-non_valid second'},
+            query={QUERY_PARAMETER_ANY_FIELD: '-non_valid second'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)
@@ -627,7 +630,8 @@ class ElasticSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query={'q': 'first*'}, user=self._test_case_user
+            query={QUERY_PARAMETER_ANY_FIELD: 'first*'},
+            user=self._test_case_user
         )
 
         self.assertEqual(queryset.count(), 1)
@@ -650,7 +654,8 @@ class WhooshSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query={'q': 'first*'}, user=self._test_case_user
+            query={QUERY_PARAMETER_ANY_FIELD: 'first*'},
+            user=self._test_case_user
         )
 
         self.assertEqual(queryset.count(), 1)
@@ -664,7 +669,8 @@ class WhooshSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query={'q': 'OR first*'}, user=self._test_case_user
+            query={QUERY_PARAMETER_ANY_FIELD: 'OR first*'},
+            user=self._test_case_user
         )
 
         self.assertEqual(queryset.count(), 1)
@@ -680,7 +686,8 @@ class WhooshSearchBackendDocumentSearchTestCase(
         )
         queryset = self.search_backend.search(
             search_model=document_search,
-            query={'q': 'first* OR second*'}, user=self._test_case_user
+            query={QUERY_PARAMETER_ANY_FIELD: 'first* OR second*'},
+            user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
         self.assertTrue(self.test_documents[0] in queryset)
@@ -715,14 +722,14 @@ class WhooshSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query={'q': 'non_valid AND second*'},
+            query={QUERY_PARAMETER_ANY_FIELD: 'non_valid AND second*'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query={'q': 'second* AND non_valid'},
+            query={QUERY_PARAMETER_ANY_FIELD: 'second* AND non_valid'},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 0)
