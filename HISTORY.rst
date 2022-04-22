@@ -29,6 +29,7 @@
   Solves issue in forum post 6149. Thanks to forum user @qra for the report
   and debug information.
 - Remove repeated partition file close call.
+- Update Django version 2.2.24 to 2.2.28.
 
 4.0.21 (2021-11-29)
 ===================
