@@ -4,6 +4,19 @@
   to Bastian (@Basti-Fantasti) for the report.
 - Use the ``SEARCH_MODEL_NAME_KWARG`` instead of hard coding the search model
   API URL reference.
+- Merged changes from version 4.0.22:
+
+  - Remove usage of flat values list in document checkout manager.
+  - Remove usage of flat ``values_list`` queryset in metadata managers module.
+  - Cleanup markup of the confirmation form.
+  - Remove redundant modal close button.
+  - Fix search proxies method decorator.
+  - Reorganize converter office MIME type list.
+  - Improve metadata validation error message.
+  - Don't display API URL links to indexing instance and template parents that
+    are also root nodes as these are not accessible.
+  - Remove repeated partition file close call.
+  - Update Django version 2.2.24 to 2.2.28.
 
 4.1.7 (2022-04-01)
 ==================
