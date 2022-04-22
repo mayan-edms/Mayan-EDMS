@@ -649,6 +649,33 @@
   Thanks to Ludovic Anterieur (@lanterieur) for the request.
 - Pin jsonschema to version 3.2.0 to avoid errors with
 
+4.0.22 (2022-04-22)
+===================
+- Filter unread message count badge by message read permission.
+- Remove usage of flat values list in document checkout manager.
+- Remove usage of flat ``values_list`` queryset in metadata managers module.
+- Ensure the object copy permission is required for the object copy link.
+- Update signature view permission label from
+  "View details of document signature" to "View document signatures".
+- Update document metadata model field label from "Metadata type value"
+  to "Metadata value".
+- Fix document file signature serializer label.
+- Add restart policy to the Traefik container definition.
+- Remove duplicated ``Document.get_label`` method.
+- Add Docker Compose file port comment to remove when using Traefik.
+- Print the path when failing to access the configuration file.
+- Expose the workflow template ``auto_launch`` field via the REST API.
+  Thanks to forum user @qra for the request.
+- Cleanup markup of the confirmation form.
+- Remove redundant modal close button.
+- Fix search proxies method decorator.
+- Reorganize converter office MIME type list.
+- Improve metadata validation error message.
+- Don't display API URL links to indexing instance and template parents that
+  are also root nodes as these are not accessible.
+- Remove repeated partition file close call.
+- Update Django version 2.2.24 to 2.2.28.
+
 4.0.21 (2021-11-29)
 ===================
 - Perform more strict cleanup of test models.

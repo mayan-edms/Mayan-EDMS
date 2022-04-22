@@ -459,7 +459,7 @@ class SearchModel(AppsModuleLoaderMixin):
     def pk(self):
         return self.get_full_name()
 
-    @cached_property
+    @property
     def proxies(self):
         result = []
         for proxy in self._proxies:
