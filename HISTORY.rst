@@ -1,4 +1,4 @@
-4.0.22 (2022-XX-XX)
+4.0.22 (2022-04-22)
 ===================
 - Filter unread message count badge by message read permission.
 - Remove usage of flat values list in document checkout manager.
