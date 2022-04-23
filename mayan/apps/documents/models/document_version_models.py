@@ -13,7 +13,9 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.databases.classes import ModelQueryFields
 from mayan.apps.converter.exceptions import AppImageError
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
-from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
+from mayan.apps.events.classes import (
+    EventManagerMethodAfter, EventManagerSave
+)
 from mayan.apps.events.decorators import method_event
 from mayan.apps.locales.utils import to_language
 from mayan.apps.messaging.models import Message
@@ -70,7 +72,9 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
     valid = ValidDocumentVersionManager()
 
     @staticmethod
-    def annotate_content_object_list(content_object_list, start_page_number=None):
+    def annotate_content_object_list(
+        content_object_list, start_page_number=None
+    ):
         def content_object_to_dictionary(entry):
             # Argument order based on the return value of enumerate.
             return {
@@ -80,7 +84,8 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
 
         return map(
             content_object_to_dictionary, enumerate(
-                iterable=content_object_list or (), start=start_page_number or 1
+                iterable=content_object_list or (),
+                start=start_page_number or 1
             )
         )
 
@@ -132,7 +137,9 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
             for page in self.pages[1:]:
                 page.export(append=True, file_object=file_object)
 
-    def export_to_download_file(self, organization_installation_url='', user=None):
+    def export_to_download_file(
+        self, organization_installation_url='', user=None
+    ):
         download_file = DownloadFile(
             content_object=self, filename='{}.pdf'.format(self),
             label=_('Document version export to PDF'),
@@ -202,7 +209,8 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
         first_page = self.pages.first()
         if first_page:
             return first_page.get_api_image_url(
-                maximum_layer_order=maximum_layer_order, transformation_instance_list=transformation_instance_list,
+                maximum_layer_order=maximum_layer_order,
+                transformation_instance_list=transformation_instance_list,
                 user=user
             )
         else:
@@ -270,7 +278,9 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
         DocumentVersionPage = apps.get_model(
             app_label='documents', model_name='DocumentVersionPage'
         )
-        queryset = ModelQueryFields.get(model=DocumentVersionPage).get_queryset()
+        queryset = ModelQueryFields.get(
+            model=DocumentVersionPage
+        ).get_queryset()
         return queryset.filter(pk__in=self.version_pages.all())
 
     def pages_append_all(self, _user=None):

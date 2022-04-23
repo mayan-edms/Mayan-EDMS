@@ -14,7 +14,6 @@ from .events import (
     event_embedded_signature_created
 )
 
-
 logger = logging.getLogger(name=__name__)
 
 
