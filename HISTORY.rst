@@ -1,3 +1,8 @@
+4.1.9 (2022-04-24)
+==================
+- Remove hardcoded search model variable name from ``search_box.html``
+  template.
+
 4.1.8 (2022-04-23)
 ==================
 - Fix the search model API URL reference. Closes GitLab issue #1098. Thanks

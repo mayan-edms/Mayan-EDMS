@@ -22,7 +22,7 @@
                 {% else %}
                     <div class="col-sm-8">
                 {% endif %}
-                    <select class="form-control" id="selectSearchModel" name="_search_model_name">
+                    <select class="form-control" id="selectSearchModel" name="{% search_get_search_model_name_query_variable %}">
                         {% for search_model in search_models %}
                         {{ search_model.self.get_full_name }}
                             <option {% if search_model.get_full_name == default_search_model.get_full_name %}selected{% endif %} value="{{ search_model.get_full_name }}">{{ search_model }}</option>
