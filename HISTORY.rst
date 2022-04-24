@@ -1,4 +1,4 @@
-4.1.8 (2022-XX-XX)
+4.1.8 (2022-04-23)
 ==================
 - Fix the search model API URL reference. Closes GitLab issue #1098. Thanks
   to Bastian (@Basti-Fantasti) for the report.
