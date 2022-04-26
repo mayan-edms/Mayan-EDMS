@@ -1,6 +1,10 @@
 from django.db.models import Q
 
 from ...models.workflow_state_escalation_models import WorkflowStateEscalation
+from ...tasks import (
+    task_workflow_instance_check_escalation,
+    task_workflow_instance_check_escalation_all
+)
 
 from ..literals import (
     TEST_WORKFLOW_TEMPLATE_STATE_ESCALATION_AMOUNT,
@@ -88,6 +92,20 @@ class WorkflowTemplateStateEscalationAPIViewTestMixin:
                 'workflow_template_state_id': self._test_workflow_template_states[0].pk
             }
         )
+
+
+class WorkflowTemplateStateEscalationTaskTestMixin:
+    def _execute_task_workflow_instance_check_escalation(
+        self, test_workflow_instance_id
+    ):
+        task_workflow_instance_check_escalation.apply_async(
+            kwargs={
+                'workflow_instance_id': test_workflow_instance_id
+            }
+        ).get()
+
+    def _execute_task_workflow_instance_check_escalation_all(self):
+        task_workflow_instance_check_escalation_all.apply_async().get()
 
 
 class WorkflowTemplateStateEscalationTestMixin:

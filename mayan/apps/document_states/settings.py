@@ -7,7 +7,7 @@ from .literals import (
     DEFAULT_GRAPHVIZ_DOT_PATH, DEFAULT_WORKFLOWS_IMAGE_CACHE_MAXIMUM_SIZE,
     DEFAULT_WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND,
     DEFAULT_WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS,
-    DEFAULT_WORKFLOWS_WORKFLOW_STATE_EXPIRATION_CHECK_INTERVAL
+    DEFAULT_WORKFLOWS_WORKFLOW_STATE_ESCALATION_CHECK_INTERVAL
 )
 from .setting_callbacks import callback_update_workflow_image_cache_size
 
@@ -44,9 +44,9 @@ setting_workflow_image_cache_storage_backend_arguments = namespace.add_setting(
         'Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND.'
     )
 )
-setting_workflow_state_expiration_check_interval = namespace.add_setting(
-    default=DEFAULT_WORKFLOWS_WORKFLOW_STATE_EXPIRATION_CHECK_INTERVAL,
-    global_name='WORKFLOWS_WORKFLOW_STATE_EXPIRATION_CHECK_INTERVAL',
+setting_workflow_state_escalation_check_interval = namespace.add_setting(
+    default=DEFAULT_WORKFLOWS_WORKFLOW_STATE_ESCALATION_CHECK_INTERVAL,
+    global_name='WORKFLOWS_WORKFLOW_STATE_ESCALATION_CHECK_INTERVAL',
     help_text=_(
         'Interval in seconds on which the task to check for expired '
         'workflow states will be launched.'
