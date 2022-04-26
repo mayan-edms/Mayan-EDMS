@@ -1,4 +1,3 @@
-from collections import Iterable
 from distutils import util
 from functools import reduce
 import logging
@@ -6,6 +5,8 @@ import types
 
 from django.core.exceptions import FieldDoesNotExist
 from django.db.models.constants import LOOKUP_SEP
+
+from mayan.apps.common.compatibility import Iterable
 
 from .exceptions import ResolverError, ResolverPipelineError
 
