@@ -213,6 +213,8 @@
   to Bastian (@Basti-Fantasti) for the report.
 - Use the ``SEARCH_MODEL_NAME_KWARG`` instead of hard coding the search model
   API URL reference.
+- Update the ElasticSearch backend default settings to match those of the
+  official Python client.
 
 4.2.3 (2022-04-01)
 ==================
