@@ -1,5 +1,4 @@
-from collections import Iterable
-
+from mayan.apps.common.compatibility import Iterable
 from mayan.apps.common.utils import (
     ResolverPipelineModelAttribute, flatten_list
 )
