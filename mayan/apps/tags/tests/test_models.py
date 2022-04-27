@@ -42,7 +42,7 @@ class TagDocumentTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
 
     def test_trashed_document_tag_document_count_method(self):
         self._create_test_tag(add_test_document=True)
-        self._test_document.delete()
+        self.test_document.delete()
 
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
@@ -50,7 +50,7 @@ class TagDocumentTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
 
         self.assertEqual(
             self.test_tag.get_document_count(user=self._test_case_user),
-            len(self._test_documents) - 1
+            len(self.test_documents) - 1
         )
 
 
