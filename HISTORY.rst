@@ -217,6 +217,7 @@
   official Python client.
 - Don't introspect document file MIME type at download. Instead pass the
   stored values.
+- Filter trashed documents from the tag document count column.
 
 4.2.3 (2022-04-01)
 ==================
