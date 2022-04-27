@@ -88,7 +88,9 @@ class CabinetDetailView(ExternalObjectViewMixin, DocumentListView):
     template_name = 'cabinets/cabinet_details.html'
 
     def get_document_queryset(self):
-        return self.external_object.get_documents_queryset()
+        return self.external_object.get_documents_queryset(
+            user=self.request.user
+        )
 
     def get_extra_context(self, **kwargs):
         context = super().get_extra_context(**kwargs)
