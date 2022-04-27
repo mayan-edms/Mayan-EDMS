@@ -1,6 +1,7 @@
 from django.core.exceptions import ValidationError
 
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
+from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..models import Cabinet
@@ -53,6 +54,8 @@ class CabinetTestCase(CabinetTestMixin, BaseTestCase):
 class CabinetDocumentTestCase(
     CabinetTestMixin, DocumentTestMixin, BaseTestCase
 ):
+    auto_upload_test_document = False
+
     def setUp(self):
         super().setUp()
         self._create_test_document_stub()
@@ -78,3 +81,28 @@ class CabinetDocumentTestCase(
 
         self.assertEqual(self.test_cabinet.documents.count(), 0)
         self.assertQuerysetEqual(self.test_cabinet.documents.all(), ())
+
+    def test_cabinet_get_document_count_method(self):
+        self.test_cabinet.documents.add(self.test_document)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        self.assertEqual(
+            self.test_cabinet.get_document_count(user=self._test_case_user),
+            len(self.test_documents)
+        )
+
+    def test_trashed_document_cabinet_document_count_method(self):
+        self.test_cabinet.documents.add(self.test_document)
+        self.test_document.delete()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        self.assertEqual(
+            self.test_cabinet.get_document_count(user=self._test_case_user),
+            len(self.test_documents) - 1
+        )

@@ -11,6 +11,8 @@
 - Use the ``SEARCH_MODEL_NAME_KWARG`` instead of hard coding the search model
   API URL reference.
 - Filter trashed documents from the tag document count column.
+- Filter trashed documents from the cabinet document retrieval method. This
+  brings code parity with tags which work in a very similar way.
 
 4.2.3 (2022-04-01)
 ==================
