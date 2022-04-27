@@ -10,6 +10,7 @@
   to Bastian (@Basti-Fantasti) for the report.
 - Use the ``SEARCH_MODEL_NAME_KWARG`` instead of hard coding the search model
   API URL reference.
+- Filter trashed documents from the tag document count column.
 
 4.2.3 (2022-04-01)
 ==================

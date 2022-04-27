@@ -62,13 +62,15 @@ class Tag(ExtraDataModelMixin, models.Model):
         Return the numeric count of documents that have this tag attached.
         The count is filtered by access.
         """
-        return self.get_documents(permission=permission_document_view, user=user).count()
+        return self.get_documents(
+            permission=permission_document_view, user=user
+        ).count()
 
     def get_documents(self, user, permission=None):
         """
         Return a filtered queryset documents that have this tag attached.
         """
-        queryset = self.documents.all()
+        queryset = Document.valid.filter(pk__in=self.documents.all())
 
         if permission:
             queryset = AccessControlList.objects.restrict_queryset(
