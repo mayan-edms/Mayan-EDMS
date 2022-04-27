@@ -13,6 +13,9 @@
 - Filter trashed documents from the tag document count column.
 - Filter trashed documents from the cabinet document retrieval method. This
   brings code parity with tags which work in a very similar way.
+- Improve Python 3.10 compatibility. Add a compatibility module to
+  encapsulate import of the ``Iterable`` class. Improves GitLab issue #1083.
+  Thanks to Bw (@bwakkie) for the report and code samples.
 
 4.2.3 (2022-04-01)
 ==================
