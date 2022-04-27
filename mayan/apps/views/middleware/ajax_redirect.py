@@ -1,9 +1,7 @@
-from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.utils.deprecation import MiddlewareMixin
 
 from mayan.apps.appearance.settings import setting_ajax_redirection_code
-
 
 
 class AjaxRedirect(MiddlewareMixin):
