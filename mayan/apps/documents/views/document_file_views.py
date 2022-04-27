@@ -107,6 +107,9 @@ class DocumentFileDownloadView(SingleObjectDownloadView):
     def get_download_filename(self):
         return self.object.filename
 
+    def get_download_mime_type_and_encoding(self, file_object):
+        return self.object.mimetype, self.object.encoding
+
 
 class DocumentFileEditView(SingleObjectEditView):
     form_class = DocumentFileForm

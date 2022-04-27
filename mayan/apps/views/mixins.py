@@ -84,6 +84,13 @@ class DownloadViewMixin:
     def get_download_filename(self):
         return None
 
+    def get_download_mime_type_and_encoding(self, file_object):
+        mime_type, encoding = MIMETypeBackend.get_backend_instance().get_mime_type(
+            file_object=file_object, mime_type_only=True
+        )
+
+        return mime_type, encoding
+
     def render_to_response(self, **response_kwargs):
         response = FileResponse(
             as_attachment=self.get_as_attachment(),
@@ -94,17 +101,17 @@ class DownloadViewMixin:
         encoding_map = {
             'bzip2': 'application/x-bzip',
             'gzip': 'application/gzip',
-            'xz': 'application/x-xz',
+            'xz': 'application/x-xz'
         }
 
         if response.file_to_stream:
-            content_type, encoding = MIMETypeBackend.get_backend_instance().get_mime_type(
-                file_object=response.file_to_stream, mime_type_only=True
+            mime_type, encoding = self.get_download_mime_type_and_encoding(
+                file_object=response.file_to_stream
             )
             # Encoding isn't set to prevent browsers from automatically
             # uncompressing files.
-            content_type = encoding_map.get(encoding, content_type)
-            response.headers['Content-Type'] = content_type or 'application/octet-stream'
+            mime_type = encoding_map.get(encoding, mime_type)
+            response.headers['Content-Type'] = mime_type or 'application/octet-stream'
         else:
             response.headers['Content-Type'] = 'application/octet-stream'
 

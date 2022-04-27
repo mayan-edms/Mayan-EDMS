@@ -215,6 +215,8 @@
   API URL reference.
 - Update the ElasticSearch backend default settings to match those of the
   official Python client.
+- Don't introspect document file MIME type at download. Instead pass the
+  stored values.
 
 4.2.3 (2022-04-01)
 ==================
