@@ -6,8 +6,7 @@ import types
 from django.core.exceptions import FieldDoesNotExist
 from django.db.models.constants import LOOKUP_SEP
 
-from mayan.apps.common.compatibility import Iterable
-
+from .compatibility import Iterable
 from .exceptions import ResolverError, ResolverPipelineError
 
 logger = logging.getLogger(name=__name__)
