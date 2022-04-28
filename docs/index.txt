@@ -28,6 +28,7 @@ repository for electronic documents.
     parts/storage
     chapters/rest_api
     chapters/docker/index
+    chapters/portainer/index
     parts/advanced
     parts/administration
     parts/troubleshooting/index

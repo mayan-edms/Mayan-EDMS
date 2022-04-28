@@ -1,25 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # trendspotter <jirka.p@volny.cz>, 2022
 # Michal Švábík <snadno@lehce.cz>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:132 permissions.py:5 settings.py:15
 msgid "Common"
@@ -160,8 +161,8 @@ msgstr ""
 
 #: settings.py:30
 msgid ""
-"In list mode, show the \"object\" menu options as a dropdown menu instead of"
-" individual buttons."
+"In list mode, show the \"object\" menu options as a dropdown menu instead of "
+"individual buttons."
 msgstr ""
 "V režimu seznamu místo jednotlivých tlačítek zobrazte možnosti nabídky "
 "„objekt“ jako rozevírací nabídku."
@@ -170,39 +171,39 @@ msgstr ""
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 "Seznam řetězců označujících všechny aplikace, které mají být odebrány ze "
 "seznamu normálně nainstalovaného Mayan EDMS. Každý řetězec by měl být "
-"tečkovaná cesta Pythonu k: třídě konfigurace aplikace (upřednostňované) nebo"
-" balíčku, který obsahuje aplikaci. Příklad: ['app_1', 'app_2']"
+"tečkovaná cesta Pythonu k: třídě konfigurace aplikace (upřednostňované) nebo "
+"balíčku, který obsahuje aplikaci. Příklad: ['app_1', 'app_2']"
 
 #: settings.py:47
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 "Seznam řetězců označujících všechny aplikace, které jsou nainstalovány nad "
-"rámec těch, které normálně nainstaloval Mayan EDMS. Každý řetězec by měl být"
-" tečkovaná cesta Pythonu k: třídě konfigurace aplikace (upřednostňované) "
-"nebo balíčku, který obsahuje aplikaci. Příklad:  ['app_1', 'app_2']"
+"rámec těch, které normálně nainstaloval Mayan EDMS. Každý řetězec by měl být "
+"tečkovaná cesta Pythonu k: třídě konfigurace aplikace (upřednostňované) nebo "
+"balíčku, který obsahuje aplikaci. Příklad:  ['app_1', 'app_2']"
 
 #: settings.py:58
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application. These apps will be installed before the default "
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. These apps will be installed before the default "
 "apps. Example: ['app_1', 'app_2']"
 msgstr ""
 
 #: settings.py:69
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also"
-" the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also "
+"the view to which users will be redirected after log in."
 msgstr ""
 "Název pohledu připojeného ke kotvě značky v hlavní nabídce. Toto je také "
 "pohled, na který budou uživatelé přesměrováni po přihlášení."

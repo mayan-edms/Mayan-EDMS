@@ -53,6 +53,31 @@ class TagDocumentTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
             len(self._test_documents) - 1
         )
 
+    def test_tag_document_count_method(self):
+        self._create_test_tag(add_test_document=True)
+
+        self.grant_access(
+            obj=self._test_document, permission=permission_document_view
+        )
+
+        self.assertEqual(
+            self._test_tag.get_document_count(user=self._test_case_user),
+            len(self._test_documents)
+        )
+
+    def test_trashed_document_tag_document_count_method(self):
+        self._create_test_tag(add_test_document=True)
+        self._test_document.delete()
+
+        self.grant_access(
+            obj=self._test_document, permission=permission_document_view
+        )
+
+        self.assertEqual(
+            self._test_tag.get_document_count(user=self._test_case_user),
+            len(self._test_documents) - 1
+        )
+
 
 class TagModuleTestCase(TagTestMixin, BaseTestCase):
     def test_method_get_absolute_url(self):

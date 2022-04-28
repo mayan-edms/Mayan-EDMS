@@ -484,7 +484,8 @@ class DjangoSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=search_model_document,
-            query={QUERY_PARAMETER_ANY_FIELD: 'OR first'}, user=self._test_case_user
+            query={QUERY_PARAMETER_ANY_FIELD: 'OR first'},
+            user=self._test_case_user
         )
 
         self.assertEqual(queryset.count(), 1)
@@ -500,7 +501,8 @@ class DjangoSearchBackendDocumentSearchTestCase(
         )
         queryset = self.search_backend.search(
             search_model=search_model_document,
-            query={QUERY_PARAMETER_ANY_FIELD: 'first OR second'}, user=self._test_case_user
+            query={QUERY_PARAMETER_ANY_FIELD: 'first OR second'},
+            user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
         self.assertTrue(self._test_documents[0] in queryset)
@@ -697,7 +699,8 @@ class ElasticSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=search_model_document,
-            query={'q': 'first*'}, user=self._test_case_user
+            query={QUERY_PARAMETER_ANY_FIELD: 'first*'},
+            user=self._test_case_user
         )
 
         self.assertEqual(queryset.count(), 1)
@@ -745,7 +748,8 @@ class WhooshSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=search_model_document,
-            query={QUERY_PARAMETER_ANY_FIELD: 'first*'}, user=self._test_case_user
+            query={QUERY_PARAMETER_ANY_FIELD: 'first*'},
+            user=self._test_case_user
         )
 
         self.assertEqual(queryset.count(), 1)
@@ -759,7 +763,8 @@ class WhooshSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=search_model_document,
-            query={QUERY_PARAMETER_ANY_FIELD: 'OR first*'}, user=self._test_case_user
+            query={QUERY_PARAMETER_ANY_FIELD: 'OR first*'},
+            user=self._test_case_user
         )
 
         self.assertEqual(queryset.count(), 1)
@@ -775,7 +780,8 @@ class WhooshSearchBackendDocumentSearchTestCase(
         )
         queryset = self.search_backend.search(
             search_model=search_model_document,
-            query={QUERY_PARAMETER_ANY_FIELD: 'first* OR second*'}, user=self._test_case_user
+            query={QUERY_PARAMETER_ANY_FIELD: 'first* OR second*'},
+            user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 2)
         self.assertTrue(self._test_documents[0] in queryset)

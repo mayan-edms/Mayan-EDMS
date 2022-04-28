@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Olivier W, 2022
@@ -11,31 +11,31 @@
 # Guillaume Trottier <gui.trottier@gmail.com>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
 # Roberto Rosario, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:25
 msgid "Dynamic search"
 msgstr "Recherche dynamique"
 
-#: classes.py:492
+#: classes.py:493
 #, python-format
 msgid "Unknown search model `%s`."
 msgstr ""
 
-#: classes.py:549
+#: classes.py:550
 msgid "ID"
 msgstr "ID"
 
@@ -57,11 +57,11 @@ msgid "Search terms"
 msgstr "Termes de recherche"
 
 #: links.py:13 permissions.py:5 queues.py:7 settings.py:11
-#: templates/dynamic_search/search_box.html:45 views.py:121 views.py:134
+#: templates/dynamic_search/search_box.html:45 views.py:122 views.py:135
 msgid "Search"
 msgstr "Chercher"
 
-#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:151
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:154
 msgid "Advanced search"
 msgstr "Recherche avancée"
 
@@ -69,7 +69,7 @@ msgstr "Recherche avancée"
 msgid "Search again"
 msgstr "Rechercher à nouveau"
 
-#: links.py:25 views.py:99
+#: links.py:25 views.py:100
 msgid "Reindex search backend"
 msgstr "Réindexer le backend de recherche"
 
@@ -126,36 +126,36 @@ msgstr "Nombre maximum de résultats de recherche à récupérer et afficher."
 msgid "Advanced"
 msgstr "Avancé"
 
-#: views.py:40
+#: views.py:41
 msgid "Try again using different terms. "
 msgstr "Essayez à nouveau en utilisant des termes différents."
 
-#: views.py:42
+#: views.py:43
 msgid "No search results"
 msgstr "Aucun résultat trouvé"
 
-#: views.py:44
+#: views.py:45
 #, python-format
 msgid "Search results for: %s"
 msgstr "Résultats de recherche pour : %s"
 
-#: views.py:95
+#: views.py:96
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
 msgstr ""
-"Cet outil n'est requis que pour certains moteurs de recherche. Les résultats"
-" de la recherche seront affectés pendant la réindexation du backend."
+"Cet outil n'est requis que pour certains moteurs de recherche. Les résultats "
+"de la recherche seront affectés pendant la réindexation du backend."
 
-#: views.py:101
+#: views.py:102
 msgid "This tool erases and populates the search backend's internal index."
 msgstr "Cet outil efface et recharge l'index interne du moteur de recherche."
 
-#: views.py:114
+#: views.py:115
 msgid "Search backend reindexing queued."
 msgstr "Réindexation du backend de recherche mis en file d'attente."
 
-#: views.py:136
+#: views.py:137
 #, python-format
 msgid "Search for: %s"
 msgstr "Recherche pour : %s"

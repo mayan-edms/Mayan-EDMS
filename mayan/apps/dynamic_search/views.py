@@ -145,7 +145,9 @@ class SearchView(SearchModelViewMixin, FormView):
 
         if (QUERY_PARAMETER_ANY_FIELD in query_dict) and query_dict[QUERY_PARAMETER_ANY_FIELD].strip():
             query_string = query_dict[QUERY_PARAMETER_ANY_FIELD]
-            return SearchForm(initial={QUERY_PARAMETER_ANY_FIELD: query_string})
+            return SearchForm(
+                initial={QUERY_PARAMETER_ANY_FIELD: query_string}
+            )
         else:
             return SearchForm()
 

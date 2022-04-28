@@ -209,17 +209,10 @@
     instead for both purposes. The conical method to obtain the search
     field or a search model is now using the method ``.get_search_fields()``.
 
-- Fix the search model API URL reference. Closes GitLab issue #1098. Thanks
-  to Bastian (@Basti-Fantasti) for the report.
-- Use the ``SEARCH_MODEL_NAME_KWARG`` instead of hard coding the search model
-  API URL reference.
 - Update the ElasticSearch backend default settings to match those of the
   official Python client.
 - Don't introspect document file MIME type at download. Instead pass the
   stored values.
-- Filter trashed documents from the tag document count column.
-- Filter trashed documents from the cabinet document retrieval method. This
-  brings code parity with tags which work in a very similar way.
 - Support empty ranges for ``parse_range``.
 - Add ``group_iterator`` to group iterators in to lists of tuples.
 - Refactor bulk object search indexing:
@@ -232,6 +225,29 @@
     ``task_index_instances`` tasks instead of just one.
   - Add max retry value to ``task_index_instances``.
   - Improve tasks error logging.
+
+4.2.4 (2022-XX-XX)
+==================
+- Fix the documentation paths to the OTP backends. Closes GitLab
+  issue #1099. Thanks to Matthias Löblich (@startmat) for the
+  report.
+- Fix Docker pull counter.
+- Remove repeated Whoosh backend line of code from merge.
+- Add portainer installation files and documentation.
+- Remove hardcoded search model variable name from ``search_box.html``
+  template.
+- Fix the search model API URL reference. Closes GitLab issue #1098. Thanks
+  to Bastian (@Basti-Fantasti) for the report.
+- Use the ``SEARCH_MODEL_NAME_KWARG`` instead of hard coding the search model
+  API URL reference.
+- Filter trashed documents from the tag document count column.
+- Filter trashed documents from the cabinet document retrieval method. This
+  brings code parity with tags which work in a very similar way.
+- Improve Python 3.10 compatibility. Add a compatibility module to
+  encapsulate import of the ``Iterable`` class. Improves GitLab issue #1083.
+  Thanks to Bw (@bwakkie) for the report and code samples.
+- Type cast LUT values when masking an asset for pasting via Pillow's
+  ``point()``.
 
 4.2.3 (2022-04-01)
 ==================
@@ -422,9 +438,9 @@
 
 - Add Time based One Time Password (TOTP) support. To enable set the
   setting ``AUTHENTICATION_BACKEND`` to
-  ``mayan.apps.authentication.authentication_backends.AuthenticationBackendModelUsernamePasswordTOTP``
+  ``mayan.apps.authentication_otp.authentication_backends.AuthenticationBackendModelUsernamePasswordTOTP``
   for username and TOTP login. For email and TOTP logins use
-  ``mayan.apps.authentication.authentication_backends.AuthenticationBackendModelEmailPasswordTOTP``.
+  ``mayan.apps.authentication_otp.authentication_backends.AuthenticationBackendModelEmailPasswordTOTP``.
   New management commands to support OTP:
 
     - ``authentication_otp_disable``: disables OTP for a user
@@ -504,6 +520,86 @@
   to be optional.
 - Redirect to current user to user detail view after password change.
 - Support two different ``psycopg2`` versions for upgrade testing.
+
+4.1.9 (2022-04-24)
+==================
+- Remove hardcoded search model variable name from ``search_box.html``
+  template.
+
+4.1.8 (2022-04-23)
+==================
+- Fix the search model API URL reference. Closes GitLab issue #1098. Thanks
+  to Bastian (@Basti-Fantasti) for the report.
+- Use the ``SEARCH_MODEL_NAME_KWARG`` instead of hard coding the search model
+  API URL reference.
+- Merged changes from version 4.0.22:
+
+  - Remove usage of flat values list in document checkout manager.
+  - Remove usage of flat ``values_list`` queryset in metadata managers module.
+  - Cleanup markup of the confirmation form.
+  - Remove redundant modal close button.
+  - Fix search proxies method decorator.
+  - Reorganize converter office MIME type list.
+  - Improve metadata validation error message.
+  - Don't display API URL links to indexing instance and template parents that
+    are also root nodes as these are not accessible.
+  - Remove repeated partition file close call.
+  - Update Django version 2.2.24 to 2.2.28.
+
+- Reduce the Sentry client default ``traces_sample_rate`` from 0.25 to 0.05.
+- Add keyword argument to ``self.stderr`` and ``self.stdout`` usage.
+- In ``FilteredRelatedFieldMixin``, split retrieval of the queryset to
+  avoid the exception handler from capturing an ``AttributeError`` that it
+  shouldn't.
+- Updated the ``subject`` and ``body`` fields of the document email
+  workflow action to be optional.
+- Migrate old workflow ``EmailAction`` instances instead of sub-classing
+  for backwards compatibility. Improves commit
+  ``b522dac80f7f6cfb8c5db8a74d6d2d22bc8b281a`` and avoids a double entry in
+  the workflow state action selection dropbox.
+- Partials navigation updates:
+
+  - Streamline JavaScript partials navigation code.
+  - Make the AJAX response redirect code configurable. New setting
+    ``APPEARANCE_AJAX_REDIRECTION_CODE`` added.
+  - Remove repeated AJAX redirection middleware.
+
+- Add keyword arguments to zip file calls.
+- ``PartialNavigation.js`` improvements.
+
+  - Clean URL query on form submit and use form data as the URL query.
+  - Remove dead code.
+  - Use constants where appropriate.
+
+- Backport new document link condition logic. Ensure new document and file
+  links access works like their respective views. The links will be active
+  when the access is granted for the source as well as the document/document
+  type. Closes GitLab issue #1102. Thanks to Julian Marié (@Angelfs) for the
+  report and debug information.
+- Improve logic of the new document file link
+
+  - Access the view user in a more reliable way.
+  - Test the new file permission of the document and not
+    of the document type.
+  - If no document is present in the view exit fast.
+  - Update tests.
+
+4.1.7 (2022-04-01)
+==================
+- Backport fixes from version 4.2.3
+
+  - Add restart policy to the Traefik container definition.
+  - Remove duplicated ``Document.get_label`` method.
+  - Fix an issue where a staging folder would not tag uploaded
+    documents.
+  - Fix document file signature serializer label.
+  - Update document metadata model field label from "Metadata type value"
+    to "Metadata value".
+  - Filter unread message count badge by message read permission.
+  - Update signature view permission label from
+    "View details of document signatures" to "View document signature".
+  - Ensure the object copy permission is required for the object copy link.
+  - Fix ``GUNICORN_REQUESTS_JITTER`` documentation setting name reference.
 
 4.1.6 (2022-02-15)
 ==================
@@ -1129,6 +1225,33 @@
 - Add document template state action API endpoints. Closes GitLab issue #1043
   Thanks to Ludovic Anterieur (@lanterieur) for the request.
 - Pin jsonschema to version 3.2.0 to avoid errors with
+
+4.0.22 (2022-04-22)
+===================
+- Filter unread message count badge by message read permission.
+- Remove usage of flat values list in document checkout manager.
+- Remove usage of flat ``values_list`` queryset in metadata managers module.
+- Ensure the object copy permission is required for the object copy link.
+- Update signature view permission label from
+  "View details of document signature" to "View document signatures".
+- Update document metadata model field label from "Metadata type value"
+  to "Metadata value".
+- Fix document file signature serializer label.
+- Add restart policy to the Traefik container definition.
+- Remove duplicated ``Document.get_label`` method.
+- Add Docker Compose file port comment to remove when using Traefik.
+- Print the path when failing to access the configuration file.
+- Expose the workflow template ``auto_launch`` field via the REST API.
+  Thanks to forum user @qra for the request.
+- Cleanup markup of the confirmation form.
+- Remove redundant modal close button.
+- Fix search proxies method decorator.
+- Reorganize converter office MIME type list.
+- Improve metadata validation error message.
+- Don't display API URL links to indexing instance and template parents that
+  are also root nodes as these are not accessible.
+- Remove repeated partition file close call.
+- Update Django version 2.2.24 to 2.2.28.
 
 4.0.21 (2021-11-29)
 ===================

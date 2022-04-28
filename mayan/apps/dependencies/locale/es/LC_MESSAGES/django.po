@@ -2,22 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:24 links.py:38 permissions.py:5
@@ -124,11 +124,11 @@ msgstr "Binario"
 
 #: classes.py:478
 msgid ""
-"JavaScript libraries downloaded the from NPM registry and used for front-end"
-" functionality."
+"JavaScript libraries downloaded the from NPM registry and used for front-end "
+"functionality."
 msgstr ""
-"Las librerias de JavaScript descargadas el registro de NPM y utilizadas para"
-" la funcionalidad de front-end."
+"Las librerias de JavaScript descargadas el registro de NPM y utilizadas para "
+"la funcionalidad de front-end."
 
 #: classes.py:481
 msgid "JavaScript"
@@ -192,8 +192,8 @@ msgid ""
 "dependencies is installed and is of a correct version. False means the "
 "dependencies is missing or an incorrect version is present."
 msgstr ""
-"Mostrar los diferentes estados de las dependencias. \"Cierto\" significa que"
-" las dependencias están instaladas y son de una versión correcta. \"Falso\" "
+"Mostrar los diferentes estados de las dependencias. \"Cierto\" significa que "
+"las dependencias están instaladas y son de una versión correcta. \"Falso\" "
 "significa que faltan las dependencias o que existe una versión incorrecta."
 
 #: classes.py:841
@@ -210,8 +210,8 @@ msgid ""
 "users can ignore missing dependencies under this environment."
 msgstr ""
 "Entorno utilizado para la construcción de paquetes distribuibles del "
-"software. Los usuarios finales pueden ignorar las dependencias que faltan en"
-" este entorno."
+"software. Los usuarios finales pueden ignorar las dependencias que faltan en "
+"este entorno."
 
 #: environments.py:21
 msgid "Build"
@@ -261,8 +261,8 @@ msgid ""
 "usage."
 msgstr ""
 "Entorno usado para la ejecución del conjunto de pruebas para verificar la "
-"funcionalidad del código. Las dependencias en este entorno no son necesarias"
-" para el uso normal de producción."
+"funcionalidad del código. Las dependencias en este entorno no son necesarias "
+"para el uso normal de producción."
 
 #: environments.py:46
 msgid "Testing"
@@ -305,8 +305,8 @@ msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
 msgstr ""
-"Nombres separados por comas de las dependencias se muestran en la lista y se"
-" excluyen todos los demás."
+"Nombres separados por comas de las dependencias se muestran en la lista y se "
+"excluyen todos los demás."
 
 #: management/commands/installdependencies.py:13
 msgid "Process a specific app."

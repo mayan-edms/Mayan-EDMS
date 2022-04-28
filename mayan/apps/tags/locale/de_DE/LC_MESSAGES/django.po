@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Jesaja Everling <jeverling@gmail.com>, 2022
@@ -10,19 +10,20 @@
 # Mathias Behrle <mathiasb@m9s.biz>, 2022
 # Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2022
 # Berny <berny@bernhard-marx.de>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:54+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Berny <berny@bernhard-marx.de>, 2022\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
+"teams/13584/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:47 apps.py:131 apps.py:135 apps.py:139 apps.py:144 apps.py:148
@@ -107,15 +108,15 @@ msgstr "Farbe"
 msgid "Tag"
 msgstr "Tag"
 
-#: models.py:83
+#: models.py:85
 msgid "Preview"
 msgstr "Vorschau"
 
-#: models.py:112
+#: models.py:114
 msgid "Document tag"
 msgstr "Tag"
 
-#: models.py:113 search.py:28 search.py:34 search.py:40 search.py:46
+#: models.py:115 search.py:28 search.py:34 search.py:40 search.py:46
 msgid "Document tags"
 msgstr "Tags"
 

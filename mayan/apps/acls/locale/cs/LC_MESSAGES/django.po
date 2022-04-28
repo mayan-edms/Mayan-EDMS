@@ -1,26 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # trendspotter <jirka.p@volny.cz>, 2022
 # Michal Švábík <snadno@lehce.cz>, 2022
 # Jiri Fait <fait@orkasolutions.cz>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:11+0000\n"
 "Last-Translator: Jiri Fait <fait@orkasolutions.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:26 classes.py:175 links.py:27
 msgid "ACLs"
@@ -177,9 +178,8 @@ msgid ""
 "menu."
 msgstr ""
 "Zakázaná oprávnění jsou zděděna z nadřazeného objektu nebo přímo udělena "
-"roli a nelze je z tohoto pohledu odebrat. Zděděná oprávnění je třeba odebrat"
-" z ACL nadřazeného objektu nebo z jeho role prostřednictvím nabídky "
-"Nastavení."
+"roli a nelze je z tohoto pohledu odebrat. Zděděná oprávnění je třeba odebrat "
+"z ACL nadřazeného objektu nebo z jeho role prostřednictvím nabídky Nastavení."
 
 #: views.py:258
 msgid "There are no ACLs"
@@ -202,8 +202,7 @@ msgid "Object ID"
 msgstr "ID objektu"
 
 #: workflow_actions.py:35
-msgid ""
-"Numeric identifier of the object for which the access will be modified."
+msgid "Numeric identifier of the object for which the access will be modified."
 msgstr "Numerický identifikátor objektu, pro který bude přístup upraven."
 
 #: workflow_actions.py:40 workflow_actions.py:155

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Sergey Glita <gsv70@mail.ru>, 2022
@@ -9,20 +9,22 @@
 # lilo.panic, 2022
 # mizhgan <i@mizhgan.ru>, 2022
 # Ilya Pavlov <spirkaa@gmail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:54+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:59 events.py:5 links.py:56 links.py:86 permissions.py:5 queues.py:6
 #: search.py:17 settings.py:11
@@ -206,8 +208,7 @@ msgstr ""
 #: settings.py:22
 msgid "Full path to the backend to be used to do OCR."
 msgstr ""
-"Полный путь к бэкэнду, который будет использоваться для распознавания "
-"текста."
+"Полный путь к бэкэнду, который будет использоваться для распознавания текста."
 
 #: views.py:33
 #, python-format
@@ -301,8 +302,8 @@ msgstr ""
 "Условие, которое определяет, будет ли изменено распознанное содержимое "
 "страницы или нет. Условие оценивается по итерированной странице документа. "
 "Условия, которые не возвращают никакого значения, которые возвращают "
-"логическое значение Python None или пустую строку (''), считаются логическим"
-" ЛОЖЬ, любое другое значение считается логическим ИСТИНА."
+"логическое значение Python None или пустую строку (''), считаются логическим "
+"ЛОЖЬ, любое другое значение считается логическим ИСТИНА."
 
 #: workflow_actions.py:31
 msgid "Page content"

@@ -1,26 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # trendspotter <jirka.p@volny.cz>, 2022
 # Jiri Fait <fait@orkasolutions.cz>, 2022
 # Michal Švábík <snadno@lehce.cz>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:36 events.py:5 permissions.py:5 queues.py:7 settings.py:21
 msgid "Converter"
@@ -198,8 +199,8 @@ msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
 msgstr ""
-"Zadejte argumenty pro transformaci jako slovník YAML. tj .: "
-"{&quot;stupně&quot;: 180}"
+"Zadejte argumenty pro transformaci jako slovník YAML. tj .: {&quot;"
+"stupně&quot;: 180}"
 
 #: models.py:248
 msgid "Arguments"
@@ -307,13 +308,13 @@ msgid ""
 "Unable to initialize the converter asset storage. Check the settings {} and "
 "{} for formatting errors."
 msgstr ""
-"Nelze inicializovat úložiště prostředků převaděče. Zkontrolujte nastavení {}"
-" a {}, zda neobsahují chyby formátování."
+"Nelze inicializovat úložiště prostředků převaděče. Zkontrolujte nastavení {} "
+"a {}, zda neobsahují chyby formátování."
 
 #: storages.py:28
 msgid ""
-"Unable to initialize the converter asset cachestorage. Check the settings {}"
-" and {} for formatting errors."
+"Unable to initialize the converter asset cachestorage. Check the settings {} "
+"and {} for formatting errors."
 msgstr ""
 
 #: storages.py:34
@@ -433,8 +434,7 @@ msgstr ""
 
 #: views.py:139
 msgid ""
-"Assets are files that can be used in conjuction with certain "
-"transformations."
+"Assets are files that can be used in conjuction with certain transformations."
 msgstr ""
 
 #: views.py:142
@@ -452,8 +452,8 @@ msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
 msgstr ""
-"Vytvořte vrstvu &quot;%(layer)s&quot; transformace "
-"&quot;%(transformation)s&quot; pro: %(object)s"
+"Vytvořte vrstvu &quot;%(layer)s&quot; transformace &quot;"
+"%(transformation)s&quot; pro: %(object)s"
 
 #: views.py:241
 #, python-format
@@ -496,12 +496,12 @@ msgstr "Strany"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas "
-"and/or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas and/"
+"or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
 "Stránky, na které budou přidány nové transformace. Pro rozsahy oddělte "
-"čárkami a/nebo použijte pomlčky. Chcete -li vybrat všechny stránky, ponechte"
-" prázdné."
+"čárkami a/nebo použijte pomlčky. Chcete -li vybrat všechny stránky, ponechte "
+"prázdné."
 
 #: workflow_actions.py:32
 msgid "Transformation class"

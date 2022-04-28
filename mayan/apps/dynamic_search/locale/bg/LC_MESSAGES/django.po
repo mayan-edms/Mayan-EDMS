@@ -1,37 +1,38 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2022
 # Roberto Rosario, 2022
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
+"bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:25
 msgid "Dynamic search"
 msgstr "Динамично търсене"
 
-#: classes.py:492
+#: classes.py:493
 #, python-format
 msgid "Unknown search model `%s`."
 msgstr "Неизвестен модел за търсене `%s`."
 
-#: classes.py:549
+#: classes.py:550
 msgid "ID"
 msgstr "ID"
 
@@ -44,8 +45,8 @@ msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
 msgstr ""
-"При отметка ще бъдат върнати само резултати, които съвпадат с всички полета."
-" Когато не е отметнато ще бъдат показани резултати, които съвпадат поне с "
+"При отметка ще бъдат върнати само резултати, които съвпадат с всички полета. "
+"Когато не е отметнато ще бъдат показани резултати, които съвпадат поне с "
 "едно поле."
 
 #: forms.py:30 templates/dynamic_search/search_box.html:41
@@ -53,11 +54,11 @@ msgid "Search terms"
 msgstr "Термини на търсене"
 
 #: links.py:13 permissions.py:5 queues.py:7 settings.py:11
-#: templates/dynamic_search/search_box.html:45 views.py:121 views.py:134
+#: templates/dynamic_search/search_box.html:45 views.py:122 views.py:135
 msgid "Search"
 msgstr "Търсене"
 
-#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:151
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:154
 msgid "Advanced search"
 msgstr "Подробно търсене"
 
@@ -65,7 +66,7 @@ msgstr "Подробно търсене"
 msgid "Search again"
 msgstr "Потърсете отново"
 
-#: links.py:25 views.py:99
+#: links.py:25 views.py:100
 msgid "Reindex search backend"
 msgstr "Реиндексиране на търсения бекенд"
 
@@ -120,20 +121,20 @@ msgstr "Максимален брой резултати от търсенето
 msgid "Advanced"
 msgstr "Подробно"
 
-#: views.py:40
+#: views.py:41
 msgid "Try again using different terms. "
 msgstr "Опитайте отново, като използвате различни термини."
 
-#: views.py:42
+#: views.py:43
 msgid "No search results"
 msgstr "Няма резултати от търсенето"
 
-#: views.py:44
+#: views.py:45
 #, python-format
 msgid "Search results for: %s"
 msgstr "Резултати от търсенето за: %s"
 
-#: views.py:95
+#: views.py:96
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
@@ -141,16 +142,16 @@ msgstr ""
 "Този инструмент се изисква само за някои бекендове за търсене. Резултатите "
 "от търсенето ще бъдат засегнати, докато бекендът се преиндексира."
 
-#: views.py:101
+#: views.py:102
 msgid "This tool erases and populates the search backend's internal index."
 msgstr ""
 "Този инструмент изтрива и попълва вътрешния индекс на бекенда за търсене."
 
-#: views.py:114
+#: views.py:115
 msgid "Search backend reindexing queued."
 msgstr "Преиндексиране на бекенда за търсене в опашката."
 
-#: views.py:136
+#: views.py:137
 #, python-format
 msgid "Search for: %s"
 msgstr "Търсене за: %s"

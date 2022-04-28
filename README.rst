@@ -52,9 +52,9 @@ Important links
 .. |python| image:: https://img.shields.io/pypi/pyversions/mayan-edms.svg
 .. |license| image:: https://img.shields.io/pypi/l/mayan-edms.svg?style=flat
    :target: https://gitlab.com/mayan-edms/mayan-edms/blob/master/LICENSE
-.. |docker_pulls| image:: https://img.shields.io/docker/pulls/mayanedms/mayanedms.svg?maxAge=3600
+.. |docker_pulls| image:: https://img.shields.io/docker/pulls/mayanedms/mayanedms.svg
    :target: https://hub.docker.com/r/mayanedms/mayanedms/
-.. |docker_stars| image:: https://img.shields.io/docker/stars/mayanedms/mayanedms.svg?maxAge=3600
+.. |docker_stars| image:: https://img.shields.io/docker/stars/mayanedms/mayanedms.svg
    :target: https://hub.docker.com/r/mayanedms/mayanedms/
 .. |docker_layers| image:: https://images.microbadger.com/badges/image/mayanedms/mayanedms.svg
    :target: https://microbadger.com/images/mayanedms/mayanedms

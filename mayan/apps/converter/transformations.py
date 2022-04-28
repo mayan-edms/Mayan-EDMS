@@ -213,7 +213,7 @@ class AssetTransformationMixin:
             )
 
         paste_mask = image_asset.getchannel(channel='A').point(
-            lambda i: i * transparency / 100.0
+            lut=lambda pixel: int(pixel * transparency / 100)
         )
 
         return {

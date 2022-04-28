@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:76 events.py:6 forms.py:42 links.py:46 links.py:87 links.py:240
@@ -160,9 +160,8 @@ msgstr "Actie"
 msgid "Namespace"
 msgstr "Namespace"
 
-#: forms.py:135 models/workflow_models.py:54
-#: models/workflow_state_models.py:55 models/workflow_state_models.py:180
-#: models/workflow_transition_models.py:40
+#: forms.py:135 models/workflow_models.py:54 models/workflow_state_models.py:55
+#: models/workflow_state_models.py:180 models/workflow_transition_models.py:40
 #: models/workflow_transition_models.py:151
 msgid "Label"
 msgstr "Label"
@@ -279,8 +278,8 @@ msgid ""
 "Can be a static value or a template. In addition to the workflow instance, "
 "the template receives the workflow instance context which itself includes "
 "the \"entry_log\" (containing \"workflow_instance\", \"datetime\", "
-"\"transition\", \"user\", \"comment\") and any values from workflow template"
-" fields."
+"\"transition\", \"user\", \"comment\") and any values from workflow template "
+"fields."
 msgstr ""
 
 #: literals.py:27
@@ -316,8 +315,7 @@ msgstr "Document"
 msgid "Context"
 msgstr "Context"
 
-#: models/workflow_instance_models.py:44
-#: models/workflow_instance_models.py:171
+#: models/workflow_instance_models.py:44 models/workflow_instance_models.py:171
 msgid "Workflow instance"
 msgstr "Workflowinstantie"
 
@@ -394,8 +392,8 @@ msgid ""
 "The state at which the workflow will start in. Only one state can be the "
 "initial state."
 msgstr ""
-"De status waarin de workflow zal starten. Slechts één status kan de initiële"
-" status zijn."
+"De status waarin de workflow zal starten. Slechts één status kan de initiële "
+"status zijn."
 
 #: models/workflow_state_models.py:62
 msgid "Initial"
@@ -444,14 +442,14 @@ msgstr "Invoer actiegegevens"
 #: models/workflow_state_models.py:199
 msgid ""
 "The condition that will determine if this state action is executed or not. "
-"The condition is evaluated against the workflow instance. Conditions that do"
-" not return any value, that return the Python logical None, or an empty "
+"The condition is evaluated against the workflow instance. Conditions that do "
+"not return any value, that return the Python logical None, or an empty "
 "string ('') are considered to be logical false, any other value is "
 "considered to be the logical true."
 msgstr ""
 "De voorwaarde die bepaalt of deze staat actie wordt uitgevoerd of niet. De "
-"voorwaarde wordt beoordeeld tegenover de workflow instantie. Voorwaarden die"
-" geen waarde teruggeven, of de Python logische None, of een lege tekenreeks "
+"voorwaarde wordt beoordeeld tegenover de workflow instantie. Voorwaarden die "
+"geen waarde teruggeven, of de Python logische None, of een lege tekenreeks "
 "('') worden beschouwd als logisch false, iedere andere waarde wordt "
 "beschouwd als logisch true."
 
@@ -478,8 +476,7 @@ msgstr ""
 "De staat actie zal worden uitgevoerd afhankelijk van het resultaat van de "
 "voorwaarde."
 
-#: models/workflow_state_models.py:277
-#: models/workflow_transition_models.py:115
+#: models/workflow_state_models.py:277 models/workflow_transition_models.py:115
 msgid "Has a condition?"
 msgstr "Heeft een voorwaarde?"
 
@@ -506,14 +503,14 @@ msgstr "Bestemmingsstatus"
 #: models/workflow_transition_models.py:52
 msgid ""
 "The condition that will determine if this transition is enabled or not. The "
-"condition is evaluated against the workflow instance. Conditions that do not"
-" return any value, that return the Python logical None, or an empty string "
-"('') are considered to be logical false, any other value is considered to be"
-" the logical true."
+"condition is evaluated against the workflow instance. Conditions that do not "
+"return any value, that return the Python logical None, or an empty string "
+"('') are considered to be logical false, any other value is considered to be "
+"the logical true."
 msgstr ""
 "De voorwaarde die bepaalt of deze transitie wordt ingeschakeld of niet. De "
-"voorwaarde wordt beoordeeld tegenover de workflow instantie. Voorwaarden die"
-" geen waarde teruggeven, of de Python logische None, of een lege tekenreeks "
+"voorwaarde wordt beoordeeld tegenover de workflow instantie. Voorwaarden die "
+"geen waarde teruggeven, of de Python logische None, of een lege tekenreeks "
 "('') worden beschouwd als logisch false, iedere andere waarde wordt "
 "beschouwd als logisch true."
 
@@ -726,13 +723,12 @@ msgstr ""
 
 #: settings.py:43
 msgid "Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
-msgstr ""
-"Argumenten om door te geven aan WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
+msgstr "Argumenten om door te geven aan WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 
 #: storages.py:14
 msgid ""
-"Unable to initialize the workflow preview storage. Check the settings {} and"
-" {} for formatting errors."
+"Unable to initialize the workflow preview storage. Check the settings {} and "
+"{} for formatting errors."
 msgstr ""
 "Niet mogelijk de workflow voorbeeldafbeelding opslag te initialiseren. "
 "Controleer de instellingen {} en {} op opmaakfouten."
@@ -747,11 +743,11 @@ msgstr "Workflow voorbeeldweergave"
 
 #: views/workflow_instance_views.py:35
 msgid ""
-"Assign workflows to the document type of this document to have this document"
-" execute those workflows. "
+"Assign workflows to the document type of this document to have this document "
+"execute those workflows. "
 msgstr ""
-"Workflows toewijzen aan het documenttype van dit document om de workflows te"
-" laten uitvoeren door dit document."
+"Workflows toewijzen aan het documenttype van dit document om de workflows te "
+"laten uitvoeren door dit document."
 
 #: views/workflow_instance_views.py:39
 msgid "There are no workflows for this document"
@@ -764,8 +760,7 @@ msgstr "Workflows voor document: %s"
 
 #: views/workflow_instance_views.py:68
 msgid ""
-"This view will show the state changes as a workflow instance is "
-"transitioned."
+"This view will show the state changes as a workflow instance is transitioned."
 msgstr ""
 "Dit overzicht toont de statuswijzigingen wanneer een werkstroominstantie "
 "wordt overgezet."
@@ -799,7 +794,8 @@ msgstr "Selecteren"
 
 #: views/workflow_instance_views.py:218
 #, python-format
-msgid "Select transition for workflow \"%(workflow)s\" of document \"%(document)s\""
+msgid ""
+"Select transition for workflow \"%(workflow)s\" of document \"%(document)s\""
 msgstr ""
 
 #: views/workflow_proxy_views.py:32
@@ -807,8 +803,8 @@ msgid ""
 "Associate a workflow with some document types and documents of those types "
 "will be listed in this view."
 msgstr ""
-"Een workflow aan een documenttype verbinden zodat de documenten van dat type"
-" in dit overzicht getoond worden."
+"Een workflow aan een documenttype verbinden zodat de documenten van dat type "
+"in dit overzicht getoond worden."
 
 #: views/workflow_proxy_views.py:36
 msgid "There are no documents executing this workflow"
@@ -824,8 +820,8 @@ msgid ""
 "Create some workflows and associated them with a document type. Active "
 "workflows will be shown here and the documents for which they are executing."
 msgstr ""
-"Workflows aanmaken en deze verbinden aan een documenttype. Actieve workflows"
-" en de documenten waarvoor ze worden uitgevoerd, worden hier getoond."
+"Workflows aanmaken en deze verbinden aan een documenttype. Actieve workflows "
+"en de documenten waarvoor ze worden uitgevoerd, worden hier getoond."
 
 #: views/workflow_proxy_views.py:63
 msgid "There are no workflows"
@@ -840,8 +836,7 @@ msgstr "Er zijn geen documenten in deze workflowstatus"
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "Documenten in de workflow \"%s\", status \"%s\""
 
-#: views/workflow_proxy_views.py:117
-#: views/workflow_template_state_views.py:332
+#: views/workflow_proxy_views.py:117 views/workflow_template_state_views.py:332
 msgid "Create states and link them using transitions."
 msgstr "Status aanmaken en linken door transities te gebruiken."
 
@@ -849,8 +844,7 @@ msgstr "Status aanmaken en linken door transities te gebruiken."
 msgid "This workflow doesn't have any state"
 msgstr "Deze workflow bevat geen enkele status"
 
-#: views/workflow_proxy_views.py:123
-#: views/workflow_template_state_views.py:338
+#: views/workflow_proxy_views.py:123 views/workflow_template_state_views.py:338
 #, python-format
 msgid "States of workflow: %s"
 msgstr "Statussen van workflow: %s"
@@ -872,8 +866,8 @@ msgstr "Bewerk workflow status actie: %s"
 
 #: views/workflow_template_state_views.py:174
 msgid ""
-"Workflow state actions are macros that get executed when documents enters or"
-" leaves the state in which they reside."
+"Workflow state actions are macros that get executed when documents enters or "
+"leaves the state in which they reside."
 msgstr ""
 "Workflow staat acties zijn macro's die worden uitgevoerd wanneer documenten "
 "in deze staat geraken of deze staat juist verlaten."
@@ -928,8 +922,7 @@ msgstr "Bewerk workflowtransitie: %s"
 
 #: views/workflow_template_transition_views.py:151
 msgid ""
-"Create a transition and use it to move a workflow from  one state to "
-"another."
+"Create a transition and use it to move a workflow from  one state to another."
 msgstr ""
 "Maak een transitie en gebruik die om een workflow van de ene in de andere "
 "status te brengen."
@@ -960,14 +953,13 @@ msgstr "Bewerk workflowtransitie veld: %s"
 
 #: views/workflow_template_transition_views.py:291
 msgid ""
-"Workflow transition fields allow adding data to the workflow's context. This"
-" additional context data can then be used by other elements of the workflow "
+"Workflow transition fields allow adding data to the workflow's context. This "
+"additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
 msgstr ""
-"Met workflow-transitievelden kunt u gegevens toevoegen aan de context van de"
-" workflow. Deze aanvullende contextgegevens kunnen vervolgens worden "
-"gebruikt door andere elementen van het workflowsysteem, zoals de "
-"workflowstatusacties."
+"Met workflow-transitievelden kunt u gegevens toevoegen aan de context van de "
+"workflow. Deze aanvullende contextgegevens kunnen vervolgens worden gebruikt "
+"door andere elementen van het workflowsysteem, zoals de workflowstatusacties."
 
 #: views/workflow_template_transition_views.py:297
 msgid "There are no fields for this workflow transition"
@@ -1011,8 +1003,8 @@ msgid ""
 "Removing a workflow from a document type will also remove all running "
 "instances of that workflow."
 msgstr ""
-"De verwijdering van een workflow van een documenttype verwijdert tevens alle"
-" lopende instanties van die workflow."
+"De verwijdering van een workflow van een documenttype verwijdert tevens alle "
+"lopende instanties van die workflow."
 
 #: views/workflow_template_views.py:68
 #, python-format
@@ -1121,8 +1113,8 @@ msgid ""
 "Removing a document type from a workflow will also remove all running "
 "instances of that workflow for documents of the document type just removed."
 msgstr ""
-"De verwijdering van een documenttype van een workflow verwijdert tevens alle"
-" lopende instanties van die workflow voor documenten van het juist "
+"De verwijdering van een documenttype van een workflow verwijdert tevens alle "
+"lopende instanties van die workflow voor documenten van het juist "
 "verwijderde documenttype."
 
 #: views/workflow_template_views.py:210

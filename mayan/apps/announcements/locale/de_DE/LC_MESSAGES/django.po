@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
@@ -9,19 +9,20 @@
 # Mathias Behrle <mathiasb@m9s.biz>, 2022
 # Berny <berny@bernhard-marx.de>, 2022
 # Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:11+0000\n"
 "Last-Translator: Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2022\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
+"teams/13584/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:36 events.py:5 links.py:40 models.py:42 permissions.py:6
@@ -155,8 +156,8 @@ msgid ""
 "convery information about your organzation, announcements or usage "
 "guidelines for your users."
 msgstr ""
-"Ankündigungen werden bei der Anmeldung angezeigt. Sie können dies nutzen, um"
-" Informationen zu Ihrem Unternehmen, Ankündigungen oder Nutzungsrichtlinien "
+"Ankündigungen werden bei der Anmeldung angezeigt. Sie können dies nutzen, um "
+"Informationen zu Ihrem Unternehmen, Ankündigungen oder Nutzungsrichtlinien "
 "anzuzeigen. "
 
 #: views.py:118

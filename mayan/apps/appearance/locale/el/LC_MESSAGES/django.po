@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # dkstiler <dkstiler@gmail.com>, 2022
 # Hmayag Antonian <hmayag@freemail.gr>, 2022
 # pyrotech <anastasios@tutamail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:11+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:57 events.py:5 permissions.py:5 settings.py:10
@@ -163,10 +163,14 @@ msgid "View existing themes"
 msgstr "Προβολή υπαρχόντων θεμάτων"
 
 #: settings.py:15
+msgid "Custom HTTP response code for AJAX redirections."
+msgstr ""
+
+#: settings.py:21
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "Μέγιστος αριθμός χαρακτήρων που θα προβληθών ως τίτλος προβολής."
 
-#: settings.py:22
+#: settings.py:28
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
@@ -174,7 +178,7 @@ msgstr ""
 "Θέση στην οποία θα προβληθεί το μήνυμα συστήματος. Διαθέσιμες επιλογές: top-"
 "left, top-center, top-right, bottom-left, bottom-center, bottom-right."
 
-#: settings.py:30
+#: settings.py:36
 msgid ""
 "Delay in milliseconds after which the menus will be checked for updates."
 msgstr ""
@@ -215,8 +219,7 @@ msgstr ""
 "Η τοποθεσία είναι σωστή, όμως ο λογαριασμός σας δεν έχει το απαιτούμενο "
 "δικαίωμα πρόσβασης."
 
-#: templates/500.html:5 templates/500.html:30
-#: templates/appearance/root.html:48
+#: templates/500.html:5 templates/500.html:30 templates/appearance/root.html:47
 msgid "Server error"
 msgstr "Σφάλμα διακομηστή"
 
@@ -241,7 +244,9 @@ msgid "Contact your system administrator."
 msgstr "Επικοινωνήστε με τον διαχειριστή του συστήματος."
 
 #: templates/500.html:47
-msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgid ""
+"Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or "
+"\"FATAL\"."
 msgstr ""
 "Ελέγξτε τις καταγραφές - logs - για μηνύματα με τις ακόλουθες επισημάνσεις "
 "\"ERROR\", \"CRITICAL\" or \"FATAL\"."
@@ -265,7 +270,8 @@ msgid ""
 "                "
 msgstr ""
 "\n"
-"                    το %(setting_project_title)s βασίζεται στο %(project_title)s\n"
+"                    το %(setting_project_title)s βασίζεται στο "
+"%(project_title)s\n"
 "                "
 
 #: templates/appearance/about.html:77
@@ -285,44 +291,67 @@ msgstr "Διανέμεται υπό την άδεια:"
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a "
+"class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index."
+"html\">Release notes %(icon_documentation)s</a> or the short version <a "
+"class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/"
+"master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"                Η πλήρης λίστα αλλαγών είναι διαθέσιμη στις <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Σημειώσεις έκδοσης %(icon_documentation)s</a> ενώ η σύντομη έκδοση των αλλαγών στις <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Αλλαγές έκδοσης %(icon_documentation)s</a>.\n"
+"                Η πλήρης λίστα αλλαγών είναι διαθέσιμη στις <a "
+"class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index."
+"html\">Σημειώσεις έκδοσης %(icon_documentation)s</a> ενώ η σύντομη έκδοση "
+"των αλλαγών στις <a class=\"new_window\" href=\"https://gitlab.com/mayan-"
+"edms/mayan-edms/blob/master/HISTORY.rst\">Αλλαγές έκδοσης "
+"%(icon_documentation)s</a>.\n"
 "            "
 
 #: templates/appearance/about.html:104
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
+"                For questions check the <a class=\"new_window\" "
+"href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</"
+"a>.\n"
 "            "
 msgstr ""
 "\n"
-"                Για ερωτήματα ελέγξτε την <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Τεκμηρίωση %(icon_documentation)s</a>.\n"
+"                Για ερωτήματα ελέγξτε την <a class=\"new_window\" "
+"href=\"https://docs.mayan-edms.com\">Τεκμηρίωση %(icon_documentation)s</a>.\n"
 "            "
 
 #: templates/appearance/about.html:110
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a "
+"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
+"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" "
+"href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
+"%(icon_source_code)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"                Εάν έχετε εντοπίσει κάποιο σφάλμα (bug) ή έχετε προτάσεις για νέα χαρακτηριστικά, επισκεφθείτε το <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Φόρουμ %(icon_forum)s</a> ή δημιουργήστε ένα νέο ticket στο <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Αποθετήριο κώδικα %(icon_source_code)s</a>.\n"
+"                Εάν έχετε εντοπίσει κάποιο σφάλμα (bug) ή έχετε προτάσεις "
+"για νέα χαρακτηριστικά, επισκεφθείτε το <a class=\"new_window\" "
+"href=\"https://forum.mayan-edms.com\">Φόρουμ %(icon_forum)s</a> ή "
+"δημιουργήστε ένα νέο ticket στο <a class=\"new_window\" href=\"https://"
+"gitlab.com/mayan-edms/mayan-edms\">Αποθετήριο κώδικα %(icon_source_code)s</"
+"a>.\n"
 "            "
 
 #: templates/appearance/about.html:115
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
+"                Spread the word. Talk to your friends and colleagues about "
+"how awesome %(project_title)s is!\n"
 "            "
 msgstr ""
 "\n"
-"                Διαδώστε. Μιλήστε στους φίλους και συναδέλφους για το %(project_title)s! \n"
+"                Διαδώστε. Μιλήστε στους φίλους και συναδέλφους για το "
+"%(project_title)s! \n"
 "            "
 
 #: templates/appearance/base.html:73
@@ -432,15 +461,15 @@ msgstr "Εναλλαγή αναδυόμενης λίστας"
 msgid "No results"
 msgstr "Κανένα αποτέλεσμα"
 
-#: templates/appearance/root.html:53
+#: templates/appearance/root.html:52
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: templates/appearance/root.html:61
+#: templates/appearance/root.html:60
 msgid "Server communication error"
 msgstr "Σφάλμα επικοινωνίας διακομιστή"
 
-#: templates/appearance/root.html:63
+#: templates/appearance/root.html:62
 msgid "Check you network connection and try again in a few moments."
 msgstr "Ελέγξτε την σύνδεση δικτύου σας και δοκιμάστε ξανά σε λίγα λεπτά."
 

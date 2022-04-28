@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # pyrotech <anastasios@tutamail.com>, 2022
 # Hmayag Antonian <hmayag@freemail.gr>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:22
@@ -146,8 +146,7 @@ msgid "Slug"
 msgstr "Slug"
 
 #: models.py:47
-msgid ""
-"Causes this index to be visible and updated when document data changes."
+msgid "Causes this index to be visible and updated when document data changes."
 msgstr ""
 "Κάνει το ευρετήριο ορατό και το ενημερώνει όταν αλλάζουν τα δεδομένα των "
 "εγγράφων."
@@ -179,13 +178,13 @@ msgstr "Έκφραση ευρετηριασμού"
 #: models.py:187
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr ""
-"Κάνει αυτόν τον κόμβο ορατό και τον ενημερώνει όταν αλλάζουν τα δεδομένα των"
-" εγγράφων."
+"Κάνει αυτόν τον κόμβο ορατό και τον ενημερώνει όταν αλλάζουν τα δεδομένα των "
+"εγγράφων."
 
 #: models.py:195
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
 msgstr ""
 "Επιλέξτε εδώ αν θέλετε ο κόμβος να περιλαμβάνει έγγραφα και να μην "
 "χρησιμοποιηθεί ως γονέας για άλλους κόμβους."
@@ -333,8 +332,8 @@ msgstr "Άθροισμα ελέγχου εγγράφου"
 
 #: serializers.py:205
 msgid ""
-"URL of the API endpoint showing the list document types associated with this"
-" index template."
+"URL of the API endpoint showing the list document types associated with this "
+"index template."
 msgstr ""
 
 #: serializers.py:212
@@ -359,8 +358,8 @@ msgid ""
 "This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
 msgstr ""
-"Αυτό θα μπορούσε να σημαίνει ότι δεν έχουν δημιουργηθεί πρότυπα ευρετηρίου ή"
-" ότι υπάρχουν πρότυπα ευρετηρίου αλλά δεν έχουν καθοριστεί σωστά."
+"Αυτό θα μπορούσε να σημαίνει ότι δεν έχουν δημιουργηθεί πρότυπα ευρετηρίου ή "
+"ότι υπάρχουν πρότυπα ευρετηρίου αλλά δεν έχουν καθοριστεί σωστά."
 
 #: views/index_instance_views.py:42
 msgid "There are no index instances available."
@@ -419,8 +418,8 @@ msgstr "Ευρετήρια συνδεδεμένα σε τύπο εγγράφου
 #: views/index_template_views.py:90
 msgid ""
 "Indexes group document automatically into levels. Indexes are defined using "
-"template whose markers are replaced with direct properties of documents like"
-" label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like "
+"label or description, or that of extended properties like metadata."
 msgstr ""
 "Τα ευρετήρια ομαδοποιούν τα έγγραφα αυτόματα σε επίπεδα. Τα ευρετήρια "
 "ορίζονται χρησιμοποιώντας πρότυπα των οποίων οι δείκτες αντικαθίστανται με "
@@ -450,9 +449,9 @@ msgid ""
 "built. Only the events of the documents of the types select will trigger "
 "updates in the index."
 msgstr ""
-"Μόνο τα έγγραφα των επιλεγμένων τύπων θα εμφανιστούν στο ευρετήριο όταν αυτό"
-" δομηθεί. Μόνο τα γεγονότα των εγγράφων των επιλεγμένων τύπων θα προκαλέσουν"
-" ανανεώσεις στο ευρετήριο."
+"Μόνο τα έγγραφα των επιλεγμένων τύπων θα εμφανιστούν στο ευρετήριο όταν αυτό "
+"δομηθεί. Μόνο τα γεγονότα των εγγράφων των επιλεγμένων τύπων θα προκαλέσουν "
+"ανανεώσεις στο ευρετήριο."
 
 #: views/index_template_views.py:151
 #, python-format
