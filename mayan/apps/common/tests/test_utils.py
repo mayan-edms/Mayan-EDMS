@@ -2,7 +2,9 @@ from django.db import models
 
 from mayan.apps.testing.tests.base import BaseTestCase
 
-from ..utils import ResolverPipelineModelAttribute, flatten_list, parse_range
+from ..utils import (
+    ResolverPipelineModelAttribute, flatten_list, group_iterator, parse_range
+)
 
 
 class FlattenListTestCase(BaseTestCase):
@@ -36,37 +38,73 @@ class FlattenListTestCase(BaseTestCase):
         )
 
 
+class GroupIteratorTestCase(BaseTestCase):
+    def test_basic(self):
+        self.assertEqual(
+            list(
+                group_iterator(
+                    iterable=parse_range(range_string='1')
+                )
+            ),
+            [(1)]
+        )
+
+        self.assertEqual(
+            list(
+                group_iterator(
+                    iterable=parse_range(range_string='1,5-10'), group_size=2
+                )
+            ),
+            [(1, 5), (6, 7), (8, 9), (10,)]
+        )
+
+    def test_empty_range(self):
+        self.assertEqual(
+            list(
+                group_iterator(
+                    iterable=parse_range(range_string='')
+                )
+            ),
+            []
+        )
+
+
 class ParseRangeTestCase(BaseTestCase):
     def test_parse_range(self):
         self.assertEqual(
-            list(parse_range('1')), [1]
+            list(parse_range(range_string='1')), [1]
         )
 
         self.assertEqual(
-            list(parse_range('1-5')), [1, 2, 3, 4, 5]
+            list(parse_range(range_string='1-5')), [1, 2, 3, 4, 5]
         )
 
         self.assertEqual(
-            list(parse_range('2,4,6')), [2, 4, 6]
+            list(parse_range(range_string='2,4,6')), [2, 4, 6]
         )
 
         self.assertEqual(
-            list(parse_range('2,4,6-8')), [2, 4, 6, 7, 8]
+            list(parse_range(range_string='2,4,6-8')), [2, 4, 6, 7, 8]
         )
 
     def test_repeated_numbers(self):
         self.assertEqual(
-            list(parse_range('1,2,3,1,2,3')), [1, 2, 3, 1, 2, 3]
+            list(parse_range(range_string='1,2,3,1,2,3')), [1, 2, 3, 1, 2, 3]
         )
 
     def test_reverse(self):
         self.assertEqual(
-            list(parse_range('9-5')), [9, 8, 7, 6, 5]
+            list(parse_range(range_string='9-5')), [9, 8, 7, 6, 5]
         )
 
     def test_unsorted_range(self):
         self.assertEqual(
-            list(parse_range('9,2,4,6-8')), [9, 2, 4, 6, 7, 8]
+            list(parse_range(range_string='9,2,4,6-8')), [9, 2, 4, 6, 7, 8]
+        )
+
+    def test_empty_range(self):
+        self.assertEqual(
+            list(parse_range(range_string='')), []
         )
 
 

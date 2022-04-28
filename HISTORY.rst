@@ -220,6 +220,8 @@
 - Filter trashed documents from the tag document count column.
 - Filter trashed documents from the cabinet document retrieval method. This
   brings code parity with tags which work in a very similar way.
+- Support empty ranges for ``parse_range``.
+- Add ``group_iterator`` to group iterators in to lists of tuples.
 
 4.2.3 (2022-04-01)
 ==================
