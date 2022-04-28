@@ -91,7 +91,8 @@ class APIDocumentFileDetailView(
 
 
 class APIDocumentFileDownloadView(
-    DownloadViewMixin, ParentObjectDocumentAPIViewMixin, generics.RetrieveAPIView
+    DownloadViewMixin, ParentObjectDocumentAPIViewMixin,
+    generics.RetrieveAPIView
 ):
     """
     get: Download a document file.

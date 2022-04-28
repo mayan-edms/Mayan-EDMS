@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:36 events.py:5 permissions.py:5 queues.py:7 settings.py:21
@@ -51,8 +51,8 @@ msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
 msgstr ""
-"Las transformaciones permiten cambiar la apariencia visual de los documentos"
-" sin realizar cambios permanentes en el archivo del documento."
+"Las transformaciones permiten cambiar la apariencia visual de los documentos "
+"sin realizar cambios permanentes en el archivo del documento."
 
 #: classes.py:443
 msgid "transformation"
@@ -96,8 +96,8 @@ msgstr "\"%s\" no es una entrada válida."
 msgid ""
 "Decorations are visual elements that add contextual information to images."
 msgstr ""
-"Las decoraciones son elementos visuales que agregan información contextual a"
-" las imágenes."
+"Las decoraciones son elementos visuales que agregan información contextual a "
+"las imágenes."
 
 #: layers.py:13
 msgid "Decorations"
@@ -320,8 +320,8 @@ msgstr ""
 
 #: storages.py:28
 msgid ""
-"Unable to initialize the converter asset cachestorage. Check the settings {}"
-" and {} for formatting errors."
+"Unable to initialize the converter asset cachestorage. Check the settings {} "
+"and {} for formatting errors."
 msgstr ""
 "No se puede inicializar el almacenamiento en caché del activo del "
 "convertidor. Verifique la configuración {} y {} para ver si hay errores de "
@@ -442,8 +442,7 @@ msgstr "Editar activo: %s"
 
 #: views.py:139
 msgid ""
-"Assets are files that can be used in conjuction with certain "
-"transformations."
+"Assets are files that can be used in conjuction with certain transformations."
 msgstr ""
 "Los activos son archivos que se pueden utilizar junto con determinadas "
 "transformaciones."
@@ -469,7 +468,8 @@ msgstr ""
 #: views.py:241
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr "¿Borrar transformación \"%(transformation)s\" para: %(content_object)s?"
+msgstr ""
+"¿Borrar transformación \"%(transformation)s\" para: %(content_object)s?"
 
 #: views.py:290
 #, python-format
@@ -497,7 +497,8 @@ msgstr "Seleccionar"
 #: views.py:418
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
-msgstr "Seleccione la nueva transformación de capa \"%(layer)s\" para: %(object)s"
+msgstr ""
+"Seleccione la nueva transformación de capa \"%(layer)s\" para: %(object)s"
 
 #: workflow_actions.py:22
 msgid "Pages"
@@ -505,11 +506,11 @@ msgstr "Páginas"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas "
-"and/or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas and/"
+"or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
-"Páginas a las que se agregarán las nuevas transformaciones. Separe por comas"
-" y / o use guiones para rangos. Déjelo en blanco para seleccionar todas las "
+"Páginas a las que se agregarán las nuevas transformaciones. Separe por comas "
+"y / o use guiones para rangos. Déjelo en blanco para seleccionar todas las "
 "páginas."
 
 #: workflow_actions.py:32

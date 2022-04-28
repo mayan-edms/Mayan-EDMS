@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2022
 # Roberto Rosario, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:54+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Persian (https://www.transifex.com/rosarior/teams/13584/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:48
@@ -47,8 +47,8 @@ msgstr ""
 
 #: forms.py:58 forms.py:93
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma"
-" or semicolon."
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon."
 msgstr ""
 
 #: forms.py:60 forms.py:95
@@ -160,8 +160,8 @@ msgstr ""
 
 #: mailers.py:22 mailers.py:111
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value"
-" is not set."
+"The sender's address. Some system will refuse to send messages if this value "
+"is not set."
 msgstr ""
 
 #: mailers.py:28
@@ -200,8 +200,8 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
-" True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
+"True."
 msgstr ""
 
 #: mailers.py:60
@@ -221,8 +221,8 @@ msgstr "کلمه عبور"
 #: mailers.py:72
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these"
-" settings is empty, authentication won't be attempted."
+"with the username when authenticating to the SMTP server. If either of these "
+"settings is empty, authentication won't be attempted."
 msgstr ""
 
 #: mailers.py:81
@@ -442,9 +442,8 @@ msgstr ""
 
 #: workflow_actions.py:30
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma"
-" or semicolon. A template can be used to reference properties of the "
-"document."
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon. A template can be used to reference properties of the document."
 msgstr ""
 
 #: workflow_actions.py:38

@@ -46,11 +46,7 @@ class AdvancedSearchViewTestCaseMixin(
             # Functional test for the first page of advanced results
             response = self._request_search_results_view(
                 data={'label': test_document_label}, kwargs={
-<<<<<<< HEAD
-                    'search_model_name': document_search.get_full_name()
-=======
-                    SEARCH_MODEL_NAME_KWARG: search_model_document.get_full_name()
->>>>>>> e084cb74f9 (Fix the search model API URL reference)
+                    SEARCH_MODEL_NAME_KWARG: document_search.get_full_name()
                 }
             )
 
@@ -70,11 +66,7 @@ class AdvancedSearchViewTestCaseMixin(
             # Functional test for the second page of advanced results
             response = self._request_search_results_view(
                 data={'label': test_document_label, 'page': 2}, kwargs={
-<<<<<<< HEAD
-                    'search_model_name': document_search.get_full_name()
-=======
-                    SEARCH_MODEL_NAME_KWARG: search_model_document.get_full_name()
->>>>>>> e084cb74f9 (Fix the search model API URL reference)
+                    SEARCH_MODEL_NAME_KWARG: document_search.get_full_name()
                 }
             )
             # Total (3 - 4 out of 4) (Page 2 of 2)
@@ -121,7 +113,7 @@ class SearchViewTestCaseMixin(DocumentTestMixin, SearchViewTestMixin):
 
         response = self._request_search_results_view(
             data={
-                'label': self._test_document.label,
+                'label': self.test_document.label,
                 '_{}'.format(SEARCH_MODEL_NAME_KWARG): document_search.get_full_name()
             }
         )

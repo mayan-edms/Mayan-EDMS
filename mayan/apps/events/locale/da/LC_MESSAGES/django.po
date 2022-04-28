@@ -1,29 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Allan Møller <it@brandts.dk>, 2022
 # René Rovsing Bach <reroba@outlook.com>, 2022
 # Mads L. Nielsen <sirlundgaard@gmail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Mads L. Nielsen <sirlundgaard@gmail.com>, 2022\n"
 "Language-Team: Danish (https://www.transifex.com/rosarior/teams/13584/da/)\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:30 events.py:11 links.py:52 links.py:57 links.py:75
-#: permissions.py:5 queues.py:7 views/event_views.py:30
+#: apps.py:30 events.py:11 links.py:52 links.py:57 links.py:75 permissions.py:5
+#: queues.py:7 views/event_views.py:30
 msgid "Events"
 msgstr ""
 
@@ -243,8 +243,8 @@ msgstr ""
 
 #: views/export_views.py:26
 msgid ""
-"The process will be performed in the background. The exported events will be"
-" available in the downloads area."
+"The process will be performed in the background. The exported events will be "
+"available in the downloads area."
 msgstr ""
 
 #: views/export_views.py:45

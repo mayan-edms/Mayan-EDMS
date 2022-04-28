@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:132 permissions.py:5 settings.py:15
@@ -43,8 +43,7 @@ msgstr "Campos inversos de modelo"
 #: dependencies.py:168
 msgid "Used to allow offline translation of the code text strings."
 msgstr ""
-"Se utiliza para permitir la traducción sin conexión de los textos del "
-"código."
+"Se utiliza para permitir la traducción sin conexión de los textos del código."
 
 #: dependencies.py:177
 msgid "Provides style checking."
@@ -162,8 +161,8 @@ msgstr ""
 
 #: settings.py:30
 msgid ""
-"In list mode, show the \"object\" menu options as a dropdown menu instead of"
-" individual buttons."
+"In list mode, show the \"object\" menu options as a dropdown menu instead of "
+"individual buttons."
 msgstr ""
 "En el modo de lista, muestra las opciones del menú \"objeto\" como un menú "
 "desplegable en lugar de botones individuales."
@@ -172,8 +171,8 @@ msgstr ""
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 "Una lista de nombres que designan todas las aplicaciones que se eliminarán "
 "de la lista normalmente activas para Mayan EDMS. Cada cadena debe ser una "
@@ -185,25 +184,25 @@ msgstr ""
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
-"Una lista de nombres que designan todas las aplicaciones a ser activadas más"
-" allá de las que normalmente se activan para Mayan EDMS. Cada cadena debe "
-"ser una ruta de Python con puntos a: una clase de configuración de la "
-"aplicación (preferida), o un paquete que contiene una aplicación. Ejemplo: "
-"['app_1', 'app_2']"
+"Una lista de nombres que designan todas las aplicaciones a ser activadas más "
+"allá de las que normalmente se activan para Mayan EDMS. Cada cadena debe ser "
+"una ruta de Python con puntos a: una clase de configuración de la aplicación "
+"(preferida), o un paquete que contiene una aplicación. Ejemplo: ['app_1', "
+"'app_2']"
 
 #: settings.py:58
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application. These apps will be installed before the default "
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. These apps will be installed before the default "
 "apps. Example: ['app_1', 'app_2']"
 msgstr ""
-"Una lista de textos que designan todas las aplicaciones que están instaladas"
-" más allá de las que normalmente instala Mayan EDMS. Cada entrada debe ser "
+"Una lista de textos que designan todas las aplicaciones que están instaladas "
+"más allá de las que normalmente instala Mayan EDMS. Cada entrada debe ser "
 "una ruta de Python separada por puntos a: una clase de configuración de la "
 "aplicación (preferida), o un paquete que contiene una aplicación. Estas "
 "aplicaciones se instalarán antes que las aplicaciones predeterminadas. "
@@ -211,8 +210,8 @@ msgstr ""
 
 #: settings.py:69
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also"
-" the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also "
+"the view to which users will be redirected after log in."
 msgstr ""
 "Nombre de la vista adjunta al ancla de la marca en el menú principal. Esta "
 "es también la vista a la que los usuarios serán redirigidos después de "

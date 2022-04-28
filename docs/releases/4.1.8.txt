@@ -1,0 +1,129 @@
+Version 4.1.8
+=============
+
+Released: April 23, 2022
+
+Status: End of life
+
+Changes
+-------
+
+
+Dependencies
+^^^^^^^^^^^^
+
+Update Django from version 2.2.24 to 2.2.28.
+
+
+Mailing
+^^^^^^^
+
+Updated the ``subject`` and ``body`` fields of the document email
+workflow action to be optional.
+
+The ``WorkflowAction`` added an official way to migrate old workflow actions.
+This this method to migrate existing ``EmailAction`` workflow actions. This
+removes the need to a subclass and avoids a double entry in the workflow
+state action selection dropdown.
+
+
+Navigation
+^^^^^^^^^^
+
+Several patches were backported for the partial navigation code used to
+implement the single page app behavior. The URL provided for redirection
+after POST actions is now processed and cleaned up instead of being used
+as-is. Dead code and repeated logic was unified along with some JavaScript
+ES6 updates.
+
+The custom status code used for AJAX redirection is now configurable via the
+``APPEARANCE_AJAX_REDIRECTION_CODE`` settings. The default value of the
+setting is 278 to retain backward compatibility.
+
+
+Search
+^^^^^^
+
+The search model reference used for the search view and API are now unified
+and well defined using new ``SEARCH_MODEL_NAME_KWARG`` constant.
+
+The search model attribute to be passed to the search view and API is the
+primary key (``pk``) and not the name.
+
+
+Sentry
+^^^^^^
+
+The default Sentry client ``traces_sample_rate`` was reduced from 0.25 to
+0.05.
+
+
+Source
+^^^^^^
+
+Improvement to the new document link condition logic we backported from the
+4.2 branch. These changes ensure that the new document and file links access
+work like their respective views. The links will be active only when the
+access is granted for the source as well as the document/document type.
+
+
+Other
+^^^^^
+
+- Merged changes from version 4.0.22:
+
+  - Remove usage of flat values list in document checkout manager.
+  - Remove usage of flat ``values_list`` queryset in metadata managers module.
+  - Cleanup markup of the confirmation form.
+  - Remove redundant modal close button.
+  - Fix search proxies method decorator.
+  - Reorganize converter office MIME type list.
+  - Improve metadata validation error message.
+  - Don't display API URL links to indexing instance and template parents that
+    are also root nodes as these are not accessible.
+  - Remove repeated partition file close call.
+
+- Add keyword argument to ``self.stderr`` and ``self.stdout`` usage.
+- In ``FilteredRelatedFieldMixin``, split retrieval of the queryset to
+  avoid the exception handler from capturing an ``AttributeError`` that it
+  shouldn't.
+- Add keyword arguments to zip file calls.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrade process
+---------------
+
+.. important::
+
+  If using a direct deployment, Supervisord must be upgraded to version
+  4.2.2. See troubleshooting section: :ref:`troubleshooting-version-4.1`
+
+
+.. include:: partials/upgrade-3.5-4.0.txt
+
+
+Troubleshooting
+---------------
+
+Follow the solutions outlined in the troubleshooting section:
+:ref:`troubleshooting-version-4.1`
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`1102` Decrease acl functionnaility from version 4.0.15 to 4.1.x 4.2.x when add create document right
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

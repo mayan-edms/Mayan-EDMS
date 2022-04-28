@@ -2,24 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # Márcia Ferreira, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:54+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
-"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
+"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/"
+"pt/)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:14 settings.py:11
@@ -52,16 +53,16 @@ msgstr "Template exibindo as filas de um worker"
 
 #: settings.py:16
 msgid ""
-"List of client backends to launch after startup. Use full dotted path to the"
-" client backend classes."
+"List of client backends to launch after startup. Use full dotted path to the "
+"client backend classes."
 msgstr ""
 "Lista de backends de clientes a carregar depois do arranque. Utilize todo o "
 "caminho pontilhado para as classes backend do cliente."
 
 #: settings.py:23
 msgid ""
-"Arguments for the client backends. Use the client backend dotted path as the"
-" dictionary key for the arguments in dictionary format."
+"Arguments for the client backends. Use the client backend dotted path as the "
+"dictionary key for the arguments in dictionary format."
 msgstr ""
 "Argumentos para backends de clientes. Utilize o caminho pontilhado do "
 "cliente como a chave de dicionário para os argumentos em formato de "

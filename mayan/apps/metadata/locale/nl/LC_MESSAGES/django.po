@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:54+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:67 apps.py:205 apps.py:211 apps.py:215 apps.py:220 apps.py:224
@@ -256,8 +256,7 @@ msgstr ""
 
 #: models.py:71
 msgid ""
-"The parser will reformat the value entered to conform to the expected "
-"format."
+"The parser will reformat the value entered to conform to the expected format."
 msgstr ""
 "De parser maakt de ingevoerde waarde opnieuw op zodat die voldoet aan de "
 "verwachte opmaak."
@@ -419,8 +418,7 @@ msgstr ""
 #: views/document_views.py:157
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document "
-"%(document)s."
+"Metadata type: %(metadata_type)s successfully added to document %(document)s."
 msgstr ""
 "Metadatatype: %(metadata_type)s met succes toegevoegd aan document "
 "%(document)s."
@@ -468,8 +466,7 @@ msgstr "Bewerk metadata voor document: %s"
 #: views/document_views.py:319
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
-msgstr ""
-"Fout bij bewerken metadata voor document: %(document)s; %(exception)s."
+msgstr "Fout bij bewerken metadata voor document: %(document)s; %(exception)s."
 
 #: views/document_views.py:332
 #, python-format
@@ -478,9 +475,8 @@ msgstr "Metadata voor document %s met succes bewerkt."
 
 #: views/document_views.py:357
 msgid ""
-"Add metadata types this document's type to be able to add them to individual"
-" documents. Once added to individual document, you can then edit their "
-"values."
+"Add metadata types this document's type to be able to add them to individual "
+"documents. Once added to individual document, you can then edit their values."
 msgstr ""
 "Metadatatypes toevoegen aan dit documenttype om ze toe te voegen aan "
 "individuele documenten. Eenmaal toegevoegd aan een individueel document, "

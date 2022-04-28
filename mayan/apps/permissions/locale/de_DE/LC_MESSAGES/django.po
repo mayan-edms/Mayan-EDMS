@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2022
@@ -10,19 +10,20 @@
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2022
 # Roberto Rosario, 2022
 # Mathias Behrle <mathiasb@m9s.biz>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:54+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2022\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
+"teams/13584/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:44 events.py:6 models.py:37 models.py:157 permissions.py:5
@@ -192,8 +193,8 @@ msgid ""
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
 msgstr ""
-"Rolle sind Autorisierungseinheiten. Sie sind Benutzergruppen zugeordnet, die"
-" die Rollenberechtigungen für das gesamte System erben. Rollen können auch "
+"Rolle sind Autorisierungseinheiten. Sie sind Benutzergruppen zugeordnet, die "
+"die Rollenberechtigungen für das gesamte System erben. Rollen können auch "
 "Bestandteil von Zugriffsberechtigungslisten sein. "
 "Zugriffsberechtigungslisten beinhalten Berechtigungen für spezifische "
 "Objekte."

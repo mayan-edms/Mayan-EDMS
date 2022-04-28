@@ -1,23 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:54+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
-"Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
+"Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/"
+"teams/13584/es_PR/)\n"
+"Language: es_PR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es_PR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:57 events.py:5 links.py:137 menus.py:5 models.py:42 queues.py:7
@@ -278,8 +279,7 @@ msgstr "Tipo de metadatos de asunto "
 
 #: source_backends/email_backends.py:154
 msgid "Store the body of the email as a text document."
-msgstr ""
-"Almacenar el cuerpo del correo electrónico como un documento de texto."
+msgstr "Almacenar el cuerpo del correo electrónico como un documento de texto."
 
 #: source_backends/email_backends.py:156
 msgid "Store email body"
@@ -300,17 +300,17 @@ msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
 msgstr ""
-"El tipo de metadatos de tema \"%(metadata_type)s\" no es válido para el tipo"
-" de documento: %(document_type)s"
+"El tipo de metadatos de tema \"%(metadata_type)s\" no es válido para el tipo "
+"de documento: %(document_type)s"
 
 #: source_backends/email_backends.py:331
 #, python-format
 msgid ""
-"Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
-" type: %(document_type)s"
+"Message ID metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
 msgstr ""
-"El tipo de metadatos de tema \"%(metadata_type)s\" no es válido para el tipo"
-" de documento: %(document_type)s"
+"El tipo de metadatos de tema \"%(metadata_type)s\" no es válido para el tipo "
+"de documento: %(document_type)s"
 
 #: source_backends/email_backends.py:379
 msgid "IMAP Mailbox from which to check for messages."
@@ -335,14 +335,13 @@ msgstr "Criterio de búsqueda"
 #: source_backends/email_backends.py:402
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
-"commands for your IMAP server."
+"command per line. Use the commands specified in https://tools.ietf.org/html/"
+"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
 msgstr ""
 "Comando IMAP STORE para ejecutar en mensajes después de que se procesan. Un "
-"comando por línea. Use los comandos especificados en "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 o los comandos "
-"personalizados para su servidor IMAP."
+"comando por línea. Use los comandos especificados en https://tools.ietf.org/"
+"html/rfc2060.html#section-6.4.6 o los comandos personalizados para su "
+"servidor IMAP."
 
 #: source_backends/email_backends.py:407
 msgid "Store commands"
@@ -440,8 +439,8 @@ msgid ""
 "name=DEVICE` for the list of supported arguments."
 msgstr ""
 "Argumentos con formato YAML para pasar al comando `scanimage`. Los "
-"argumentos cambiarán según el dispositivo. Ejecute `scanimage --help "
-"--device-name = DEVICE` para obtener la lista de argumentos admitidos."
+"argumentos cambiarán según el dispositivo. Ejecute `scanimage --help --"
+"device-name = DEVICE` para obtener la lista de argumentos admitidos."
 
 #: source_backends/sane_scanner_backends.py:49
 msgid "SANE Scanner"
@@ -524,11 +523,11 @@ msgstr "¿Eliminar archivo provisional \"%s\"?"
 #: source_backends/staging_folder_backends.py:547
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the"
-" necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the "
+"necessary file system permissions for the folder."
 msgstr ""
-"Esto podría significar que la carpeta provisional está vacía. También podría"
-" significar que la cuenta de usuario del sistema operativo que se utiliza "
+"Esto podría significar que la carpeta provisional está vacía. También podría "
+"significar que la cuenta de usuario del sistema operativo que se utiliza "
 "para Mayan EDMS no tiene los permisos necesarios del sistema de archivos "
 "para la carpeta."
 
@@ -618,8 +617,8 @@ msgstr "El servidor respondió con el código {{statusCode}}."
 
 #: views/base.py:53 wizards.py:54
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr ""
 "No se han definido fuentes de documentos interactivos o no hay ninguna "
 "habilitada, cree una antes de continuar."
@@ -695,8 +694,8 @@ msgid ""
 "and require user input to operate. Others are automatic and run in the "
 "background without user intervention."
 msgstr ""
-"Las fuentes proporcionan los medios para cargar documentos. Algunas fuentes,"
-" como el formulario web, son interactivas y requieren la intervención del "
+"Las fuentes proporcionan los medios para cargar documentos. Algunas fuentes, "
+"como el formulario web, son interactivas y requieren la intervención del "
 "usuario para operar. Otros, como las fuentes de correo electrónico, son "
 "automáticos y se ejecutan en segundo plano sin la intervención del usuario."
 
@@ -706,8 +705,8 @@ msgstr "No hay fuentes disponibles"
 
 #: views/source_views.py:181
 msgid ""
-"This will execute the source code even if the source is not enabled. Sources"
-" that delete content after downloading will not do so while being tested. "
+"This will execute the source code even if the source is not enabled. Sources "
+"that delete content after downloading will not do so while being tested. "
 "Check the source's error log for information during testing. A successful "
 "test will clear the error log."
 msgstr ""

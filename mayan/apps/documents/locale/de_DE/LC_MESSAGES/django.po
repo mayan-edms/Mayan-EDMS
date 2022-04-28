@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # 847f3f05406324d125c568a4b098bddb, 2022
@@ -17,24 +17,24 @@
 # Berny <berny@bernhard-marx.de>, 2022
 # Mathias Behrle <mathiasb@m9s.biz>, 2022
 # Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2022\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
+"teams/13584/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:215 apps.py:647 events.py:5 menus.py:8
-#: models/document_models.py:131 permissions.py:5 queues.py:21 settings.py:33
-#: statistics.py:230
+#: apps.py:215 apps.py:647 events.py:5 menus.py:8 models/document_models.py:131
+#: permissions.py:5 queues.py:21 settings.py:33 statistics.py:230
 msgid "Documents"
 msgstr "Dokumente"
 
@@ -51,8 +51,8 @@ msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr ""
-"Jedes hochgeladene Dokument muss einen Dokumententyp zugewiesen bekommen, da"
-" Mayan EDMS Dokumente auf der Grundlage von Dokumententypen kategorisiert."
+"Jedes hochgeladene Dokument muss einen Dokumententyp zugewiesen bekommen, da "
+"Mayan EDMS Dokumente auf der Grundlage von Dokumententypen kategorisiert."
 
 #: apps.py:391
 msgid "File comments"
@@ -147,11 +147,11 @@ msgstr "UUID plus ursprünglicher Name"
 
 #: classes.py:82
 msgid ""
-"Generates an immutable, random UUID (RFC 4122) for each file and appends the"
-" original filename of the uploaded file."
+"Generates an immutable, random UUID (RFC 4122) for each file and appends the "
+"original filename of the uploaded file."
 msgstr ""
-"Generiert eine unveränderliche, zufällige UUID (RFC 4122) für jede Datei und"
-" hängt den ursprünglichen Dateinamen der hochgeladenen Datei an."
+"Generiert eine unveränderliche, zufällige UUID (RFC 4122) für jede Datei und "
+"hängt den ursprünglichen Dateinamen der hochgeladenen Datei an."
 
 #: dashboard_widgets.py:32
 msgid "Total pages"
@@ -329,8 +329,8 @@ msgid ""
 "operating systems that rely on file extensions to open document correctly."
 msgstr ""
 "Setzt die Dateierweiterung an das Ende des Dateinamens. Dies erlaubt es "
-"Betriebssystemen, die Dateierweiterungen für die Verarbeitung benötigen, das"
-" Dokument korrekt zu öffnen."
+"Betriebssystemen, die Dateierweiterungen für die Verarbeitung benötigen, das "
+"Dokument korrekt zu öffnen."
 
 #: forms/document_forms.py:104
 msgid "Date created"
@@ -421,23 +421,19 @@ msgstr "Transformationen löschen"
 msgid "Clone transformations"
 msgstr "Transformationen übernehmen"
 
-#: links/document_file_page_links.py:46
-#: links/document_version_page_links.py:74
+#: links/document_file_page_links.py:46 links/document_version_page_links.py:74
 msgid "First page"
 msgstr "Erste Seite"
 
-#: links/document_file_page_links.py:52
-#: links/document_version_page_links.py:80
+#: links/document_file_page_links.py:52 links/document_version_page_links.py:80
 msgid "Last page"
 msgstr "Letzte Seite"
 
-#: links/document_file_page_links.py:60
-#: links/document_version_page_links.py:88
+#: links/document_file_page_links.py:60 links/document_version_page_links.py:88
 msgid "Previous page"
 msgstr "Vorherige Seite"
 
-#: links/document_file_page_links.py:66
-#: links/document_version_page_links.py:94
+#: links/document_file_page_links.py:66 links/document_version_page_links.py:94
 msgid "Next page"
 msgstr "Nächste Seite"
 
@@ -608,8 +604,8 @@ msgstr ""
 #: literals.py:86
 #, python-format
 msgid ""
-"Document version \"%(document_version)s\" has been exported and is available"
-" for download using the link: %(download_url)s or from the downloads area "
+"Document version \"%(document_version)s\" has been exported and is available "
+"for download using the link: %(download_url)s or from the downloads area "
 "(%(download_list_url)s)."
 msgstr ""
 
@@ -697,8 +693,8 @@ msgstr "Dateiname"
 
 #: models/document_file_models.py:98
 msgid ""
-"The document file's file mimetype. MIME types are a standard way to describe"
-" the format of a file, in this case the file format of the document. Some "
+"The document file's file mimetype. MIME types are a standard way to describe "
+"the format of a file, in this case the file format of the document. Some "
 "examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
@@ -812,8 +808,7 @@ msgstr "Name des Dokumententyps."
 
 #: models/document_type_models.py:45
 msgid ""
-"Amount of time after which documents of this type will be moved to the "
-"trash."
+"Amount of time after which documents of this type will be moved to the trash."
 msgstr ""
 "Zeitspanne nach der Dokumente dieses Typs in den Papierkorb verschoben "
 "werden."
@@ -847,8 +842,8 @@ msgid ""
 "The class responsible for producing the actual filename used to store the "
 "uploaded documents."
 msgstr ""
-"Die für die Erzeugung verantwortliche Klasse des aktuellen Dateinamens, der"
-"  für hochgeladene Dokumente verwendet wird.."
+"Die für die Erzeugung verantwortliche Klasse des aktuellen Dateinamens, der  "
+"für hochgeladene Dokumente verwendet wird.."
 
 #: models/document_type_models.py:68
 msgid "Filename generator backend"
@@ -879,8 +874,7 @@ msgstr "Schnellbezeichner"
 #: models/document_version_models.py:50
 msgid "The server date and time when the document version was created."
 msgstr ""
-"Datum und Uhrzeit des Servers, zu denen die Dokumentenversion erstellt "
-"wurde."
+"Datum und Uhrzeit des Servers, zu denen die Dokumentenversion erstellt wurde."
 
 #: models/document_version_models.py:55
 msgid "An optional short text describing the document version."
@@ -1160,8 +1154,8 @@ msgstr ""
 #: settings.py:49
 msgid ""
 "The threshold at which the DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND "
-"will start deleting the oldest document file page image cache files. Specify"
-" the size in bytes."
+"will start deleting the oldest document file page image cache files. Specify "
+"the size in bytes."
 msgstr ""
 
 #: settings.py:57
@@ -1191,9 +1185,9 @@ msgstr "Maximale Anzahl von Favoriten pro Benutzer."
 
 #: settings.py:90
 msgid ""
-"Size of blocks to use when calculating the document file's checksum. A value"
-" of 0 disables the block calculation and the entire file will be loaded into"
-" memory."
+"Size of blocks to use when calculating the document file's checksum. A value "
+"of 0 disables the block calculation and the entire file will be loaded into "
+"memory."
 msgstr ""
 "Blockgröße die für die Berechnung der Dokumentenprüfsumme verwendet wird. "
 "Der Wert 0 verhindert die Berücksichtigung von Blöcken und das gesamte "
@@ -1209,15 +1203,15 @@ msgstr "Liste der unterstützten Dokumentensprachen. In ISO639-3 Format."
 
 #: settings.py:107
 msgid ""
-"The threshold at which the DOCUMENT_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND"
-" will start deleting the oldest document version page image cache versions. "
+"The threshold at which the DOCUMENT_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND "
+"will start deleting the oldest document version page image cache versions. "
 "Specify the size in bytes."
 msgstr ""
 
 #: settings.py:116
 msgid ""
-"Path to the Storage subclass to use when storing the cached document version"
-" page image versions."
+"Path to the Storage subclass to use when storing the cached document version "
+"page image versions."
 msgstr ""
 
 #: settings.py:124
@@ -1234,8 +1228,7 @@ msgstr ""
 #: settings.py:153
 msgid "Maximum number of recently created documents to show."
 msgstr ""
-"Maximale Anzahl der letztens erstellten Dokumente, die angezeigt werden "
-"soll."
+"Maximale Anzahl der letztens erstellten Dokumente, die angezeigt werden soll."
 
 #: settings.py:159
 msgid "Amount in degrees to rotate a document page per user interaction."
@@ -1295,8 +1288,8 @@ msgstr "Summe der Dokumentenseiten im Monat"
 
 #: storages.py:21
 msgid ""
-"Unable to initialize the document file storage. Check the settings {} and {}"
-" for formatting errors."
+"Unable to initialize the document file storage. Check the settings {} and {} "
+"for formatting errors."
 msgstr ""
 
 #: storages.py:35
@@ -1374,8 +1367,8 @@ msgstr ""
 
 #: views/document_file_page_views.py:107
 msgid ""
-"This could mean that the document file is of a format that is not supported,"
-" that it is corrupted or that the upload process was interrupted. Use the "
+"This could mean that the document file is of a format that is not supported, "
+"that it is corrupted or that the upload process was interrupted. Use the "
 "document file page recalculation action to attempt to introspect the page "
 "count again."
 msgstr ""
@@ -1508,8 +1501,8 @@ msgstr ""
 #: views/document_file_views.py:333
 #, python-format
 msgid ""
-"Error cloning the page transformations for document file: %(document_file)s;"
-" %(error)s."
+"Error cloning the page transformations for document file: %(document_file)s; "
+"%(error)s."
 msgstr ""
 
 #: views/document_file_views.py:342 views/document_version_views.py:396
@@ -1529,13 +1522,13 @@ msgstr "Dokumente des Typs: %s"
 #: views/document_type_views.py:72
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical"
-" document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical "
+"document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 "Dokumententypen sind grundlegensten Elemente der Konfiguration. Alle "
-"weiteren Programmeinheiten des Systems hängen davon ab. Definieren Sie einen"
-" Dokumententyp für jede Dokumentenart, die Sie hochzuladen beabsichtigen. "
+"weiteren Programmeinheiten des Systems hängen davon ab. Definieren Sie einen "
+"Dokumententyp für jede Dokumentenart, die Sie hochzuladen beabsichtigen. "
 "Beispiele sind: Rechnung, Beleg, Handbuch, Vorschrift, Bilanz."
 
 #: views/document_type_views.py:78
@@ -1575,7 +1568,8 @@ msgstr ""
 
 #: views/document_type_views.py:223
 #, python-format
-msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgid ""
+"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
 "Schnellbezeichner \"%(filename)s\" von Dokumententyp \"%(document_type)s\" "
 "bearbeiten"
@@ -1817,8 +1811,7 @@ msgstr ""
 
 #: views/document_version_views.py:317
 #, python-format
-msgid ""
-"Transformation clear request processed for %(count)d document versions."
+msgid "Transformation clear request processed for %(count)d document versions."
 msgstr ""
 
 #: views/document_version_views.py:323
@@ -1969,8 +1962,8 @@ msgstr "%s drucken"
 
 #: views/recently_accessed_document_views.py:23
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by"
-" this user account."
+"This view will list the latest documents viewed or manipulated in any way by "
+"this user account."
 msgstr ""
 "Diese Sicht zeigt die letzten in diesem Benutzerkonto angesehenen oder "
 "irgendwie bearbeiteten Bilder."
@@ -2023,8 +2016,7 @@ msgstr "Papierkorb leeren?"
 #: views/trashed_document_views.py:88
 msgid "The trash emptying task has been queued."
 msgstr ""
-"Die Aufgabe zum Leeren des Papierkorbs wurde in die Warteschlange "
-"eingereiht."
+"Die Aufgabe zum Leeren des Papierkorbs wurde in die Warteschlange eingereiht."
 
 #: views/trashed_document_views.py:98
 #, python-format
@@ -2062,8 +2054,8 @@ msgid ""
 "restored."
 msgstr ""
 "Um Datenverlust zu verhindern werden Dokumente nicht sofort gelöscht, "
-"sondern in den Papierkorb verschoben. Von hier aus können sie dann endgültig"
-" gelöscht oder wiederhergestellt werden."
+"sondern in den Papierkorb verschoben. Von hier aus können sie dann endgültig "
+"gelöscht oder wiederhergestellt werden."
 
 #: views/trashed_document_views.py:149
 msgid "There are no documents in the trash can"

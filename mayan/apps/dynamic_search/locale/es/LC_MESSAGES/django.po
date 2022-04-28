@@ -1,35 +1,35 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:25
 msgid "Dynamic search"
 msgstr "Búsqueda dinámica "
 
-#: classes.py:492
+#: classes.py:493
 #, python-format
 msgid "Unknown search model `%s`."
 msgstr "Modelo de búsqueda desconocido `%s`."
 
-#: classes.py:549
+#: classes.py:550
 msgid "ID"
 msgstr "ID"
 
@@ -51,11 +51,11 @@ msgid "Search terms"
 msgstr "Términos de búsqueda"
 
 #: links.py:13 permissions.py:5 queues.py:7 settings.py:11
-#: templates/dynamic_search/search_box.html:45 views.py:121 views.py:134
+#: templates/dynamic_search/search_box.html:45 views.py:122 views.py:135
 msgid "Search"
 msgstr "Búsqueda"
 
-#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:151
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:154
 msgid "Advanced search"
 msgstr "Búsqueda avanzada"
 
@@ -63,7 +63,7 @@ msgstr "Búsqueda avanzada"
 msgid "Search again"
 msgstr "Volver a buscar"
 
-#: links.py:25 views.py:99
+#: links.py:25 views.py:100
 msgid "Reindex search backend"
 msgstr "Volver a indexar el backend de búsqueda"
 
@@ -86,14 +86,13 @@ msgstr "Indexar una instancia de modelo en el motor de búsqueda."
 #: queues.py:25
 msgid "Index all instances of a search model to the search engine."
 msgstr ""
-"Indexa todas las instancias de un modelo de búsqueda en el motor de "
-"búsqueda."
+"Indexa todas las instancias de un modelo de búsqueda en el motor de búsqueda."
 
 #: queues.py:30
 msgid "Reset the search backend indices and index all instances again."
 msgstr ""
-"Restablece los índices de back-end de búsqueda e indexa todas las instancias"
-" nuevamente."
+"Restablece los índices de back-end de búsqueda e indexa todas las instancias "
+"nuevamente."
 
 #: settings.py:16
 msgid "Full path to the backend to be used to handle the search."
@@ -114,8 +113,8 @@ msgstr "Cantidad de objetos a procesar al realizar la indexación masiva."
 #: settings.py:40
 msgid "Sets the default state of the \"Match all\" checkbox."
 msgstr ""
-"Establece el estado predeterminado de la casilla de verificación \"Coincidir"
-" con todos\"."
+"Establece el estado predeterminado de la casilla de verificación \"Coincidir "
+"con todos\"."
 
 #: settings.py:44
 msgid "Maximum number search results to fetch and display."
@@ -125,38 +124,37 @@ msgstr "Número máximo de resultados de búsqueda para obtener y mostrar."
 msgid "Advanced"
 msgstr "Avanzada"
 
-#: views.py:40
+#: views.py:41
 msgid "Try again using different terms. "
 msgstr "Inténtalo de nuevo usando diferentes términos."
 
-#: views.py:42
+#: views.py:43
 msgid "No search results"
 msgstr "No hay resultados de búsqueda"
 
-#: views.py:44
+#: views.py:45
 #, python-format
 msgid "Search results for: %s"
 msgstr "Resultados de la búsqueda para: %s"
 
-#: views.py:95
+#: views.py:96
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
 msgstr ""
 "Esta herramienta es necesaria solo para algunos backends de búsqueda. Los "
-"resultados de la búsqueda se verán afectados mientras se reindexa el "
-"backend."
+"resultados de la búsqueda se verán afectados mientras se reindexa el backend."
 
-#: views.py:101
+#: views.py:102
 msgid "This tool erases and populates the search backend's internal index."
 msgstr ""
 "Esta herramienta borra y llena el índice interno del backend de búsqueda."
 
-#: views.py:114
+#: views.py:115
 msgid "Search backend reindexing queued."
 msgstr "Indexación de backend de búsqueda en cola."
 
-#: views.py:136
+#: views.py:137
 #, python-format
 msgid "Search for: %s"
 msgstr "Búsqueda para: %s"

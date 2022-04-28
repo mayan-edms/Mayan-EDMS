@@ -1,26 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # bwakkie <bwakkie@gmail.com>, 2022
 # e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2022
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022
 # Roberto Rosario, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:11+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:57 events.py:5 permissions.py:5 settings.py:10
@@ -162,18 +162,23 @@ msgid "View existing themes"
 msgstr ""
 
 #: settings.py:15
+msgid "Custom HTTP response code for AJAX redirections."
+msgstr ""
+
+#: settings.py:21
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "Mamximum aantal tekens dat in de titel wordt weergegeven."
 
-#: settings.py:22
+#: settings.py:28
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
 msgstr ""
 "Positie waar systeemberichten worden weergegeven.\n"
-"Opties zijn: links-boven, rechts-boven, links-onder, midden-onder, rechts-onder."
+"Opties zijn: links-boven, rechts-boven, links-onder, midden-onder, rechts-"
+"onder."
 
-#: settings.py:30
+#: settings.py:36
 msgid ""
 "Delay in milliseconds after which the menus will be checked for updates."
 msgstr ""
@@ -214,8 +219,7 @@ msgstr ""
 "De locatie is juist, maar uw account mist de benodigde permissies om het te "
 "benaderen."
 
-#: templates/500.html:5 templates/500.html:30
-#: templates/appearance/root.html:48
+#: templates/500.html:5 templates/500.html:30 templates/appearance/root.html:47
 msgid "Server error"
 msgstr "Server fout"
 
@@ -240,8 +244,12 @@ msgid "Contact your system administrator."
 msgstr "Neem contact op met uw systeembeheerder."
 
 #: templates/500.html:47
-msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
-msgstr "Bekijk de logs voor berichten met de labels \"ERROR\", \"CRITICAL\" of \"FATAL\"."
+msgid ""
+"Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or "
+"\"FATAL\"."
+msgstr ""
+"Bekijk de logs voor berichten met de labels \"ERROR\", \"CRITICAL\" of "
+"\"FATAL\"."
 
 #: templates/500.html:48
 #, python-format
@@ -279,41 +287,61 @@ msgstr "Uitgegeven onder de licentie:"
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a "
+"class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index."
+"html\">Release notes %(icon_documentation)s</a> or the short version <a "
+"class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/"
+"master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"De complete lijst met aanpassingen is beschikbaar via de <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> of de verkorte versie <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>."
+"De complete lijst met aanpassingen is beschikbaar via de <a "
+"class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index."
+"html\">Release notes %(icon_documentation)s</a> of de verkorte versie <a "
+"class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/"
+"master/HISTORY.rst\">Changelog %(icon_documentation)s</a>."
 
 #: templates/appearance/about.html:104
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
+"                For questions check the <a class=\"new_window\" "
+"href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</"
+"a>.\n"
 "            "
 msgstr ""
 "\n"
-"Voor vragen bekijk de  <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentatie %(icon_documentation)s</a>."
+"Voor vragen bekijk de  <a class=\"new_window\" href=\"https://docs.mayan-"
+"edms.com\">Documentatie %(icon_documentation)s</a>."
 
 #: templates/appearance/about.html:110
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a "
+"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
+"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" "
+"href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
+"%(icon_source_code)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"Ziet u een fout of heeft u ideeën? Bezoek het <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> of open een melding via het <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Broncode opslagplaats %(icon_source_code)s</a>."
+"Ziet u een fout of heeft u ideeën? Bezoek het <a class=\"new_window\" "
+"href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> of open een "
+"melding via het <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/"
+"mayan-edms\">Broncode opslagplaats %(icon_source_code)s</a>."
 
 #: templates/appearance/about.html:115
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
+"                Spread the word. Talk to your friends and colleagues about "
+"how awesome %(project_title)s is!\n"
 "            "
 msgstr ""
 "\n"
-"Vertel het verder. Laat je vrienden en collega's weten hoe fantastisch %(project_title)s is!"
+"Vertel het verder. Laat je vrienden en collega's weten hoe fantastisch "
+"%(project_title)s is!"
 
 #: templates/appearance/base.html:73
 msgid "Object"
@@ -425,15 +453,15 @@ msgstr "Toggle Dropdown"
 msgid "No results"
 msgstr "Geen resultaten"
 
-#: templates/appearance/root.html:53
+#: templates/appearance/root.html:52
 msgid "Close"
 msgstr "Sluiten"
 
-#: templates/appearance/root.html:61
+#: templates/appearance/root.html:60
 msgid "Server communication error"
 msgstr "Server communicatie probleem"
 
-#: templates/appearance/root.html:63
+#: templates/appearance/root.html:62
 msgid "Check you network connection and try again in a few moments."
 msgstr "Controleer uw netwerkverbinding en probeer het later nog eens."
 

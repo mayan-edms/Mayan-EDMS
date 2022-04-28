@@ -1,26 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # malijie <tonymlj2008@126.com>, 2022
 # yan songwei <yansw@vip.163.com>, 2022
 # Ford Guo <agile.guo@gmail.com>, 2022
 # Roberto Rosario, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:54+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
-"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/"
+"teams/13584/zh-Hans/)\n"
+"Language: zh-Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:23 settings.py:14
@@ -159,14 +160,14 @@ msgstr ""
 
 #: storages.py:15
 msgid ""
-"Unable to initialize the download file storage. Check the settings {} and {}"
-" for formatting errors."
+"Unable to initialize the download file storage. Check the settings {} and {} "
+"for formatting errors."
 msgstr ""
 
 #: storages.py:29
 msgid ""
-"Unable to initialize the shared uploaded file storage. Check the settings {}"
-" and {} for formatting errors."
+"Unable to initialize the shared uploaded file storage. Check the settings {} "
+"and {} for formatting errors."
 msgstr ""
 
 #: views.py:55

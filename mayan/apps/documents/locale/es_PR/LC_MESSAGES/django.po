@@ -1,28 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
-"Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
+"Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/"
+"teams/13584/es_PR/)\n"
+"Language: es_PR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es_PR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:215 apps.py:647 events.py:5 menus.py:8
-#: models/document_models.py:131 permissions.py:5 queues.py:21 settings.py:33
-#: statistics.py:230
+#: apps.py:215 apps.py:647 events.py:5 menus.py:8 models/document_models.py:131
+#: permissions.py:5 queues.py:21 settings.py:33 statistics.py:230
 msgid "Documents"
 msgstr "Documentos"
 
@@ -39,8 +39,8 @@ msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr ""
-"Cada documento cargado debe tener asignado un tipo de documento, es la forma"
-" básica en que Mayan EDMS clasifica los documentos."
+"Cada documento cargado debe tener asignado un tipo de documento, es la forma "
+"básica en que Mayan EDMS clasifica los documentos."
 
 #: apps.py:391
 msgid "File comments"
@@ -134,8 +134,8 @@ msgstr "UUID más original"
 
 #: classes.py:82
 msgid ""
-"Generates an immutable, random UUID (RFC 4122) for each file and appends the"
-" original filename of the uploaded file."
+"Generates an immutable, random UUID (RFC 4122) for each file and appends the "
+"original filename of the uploaded file."
 msgstr ""
 "Genera un UUID aleatorio e inmutable (RFC 4122) para cada archivo y agrega "
 "el nombre de archivo original del archivo cargado."
@@ -408,23 +408,19 @@ msgstr "Borrar transformaciones"
 msgid "Clone transformations"
 msgstr "Clonar transformaciones"
 
-#: links/document_file_page_links.py:46
-#: links/document_version_page_links.py:74
+#: links/document_file_page_links.py:46 links/document_version_page_links.py:74
 msgid "First page"
 msgstr "Primera página"
 
-#: links/document_file_page_links.py:52
-#: links/document_version_page_links.py:80
+#: links/document_file_page_links.py:52 links/document_version_page_links.py:80
 msgid "Last page"
 msgstr "Última página"
 
-#: links/document_file_page_links.py:60
-#: links/document_version_page_links.py:88
+#: links/document_file_page_links.py:60 links/document_version_page_links.py:88
 msgid "Previous page"
 msgstr "Pagina anterior"
 
-#: links/document_file_page_links.py:66
-#: links/document_version_page_links.py:94
+#: links/document_file_page_links.py:66 links/document_version_page_links.py:94
 msgid "Next page"
 msgstr "Siguiente página"
 
@@ -598,8 +594,8 @@ msgstr ""
 #: literals.py:86
 #, python-format
 msgid ""
-"Document version \"%(document_version)s\" has been exported and is available"
-" for download using the link: %(download_url)s or from the downloads area "
+"Document version \"%(document_version)s\" has been exported and is available "
+"for download using the link: %(download_url)s or from the downloads area "
 "(%(download_list_url)s)."
 msgstr ""
 "La versión del documento \"%(document_version)s\" se ha exportado y está "
@@ -689,12 +685,12 @@ msgstr "Nombre del archivo"
 
 #: models/document_file_models.py:98
 msgid ""
-"The document file's file mimetype. MIME types are a standard way to describe"
-" the format of a file, in this case the file format of the document. Some "
+"The document file's file mimetype. MIME types are a standard way to describe "
+"the format of a file, in this case the file format of the document. Some "
 "examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
-"La codificación MIME del archivo del documento. Los tipos MIME son una forma"
-" estándar de describir el formato de un archivo, en este caso el formato de "
+"La codificación MIME del archivo del documento. Los tipos MIME son una forma "
+"estándar de describir el formato de un archivo, en este caso el formato de "
 "archivo del documento. Algunos ejemplos: \"texto / plano\" o \"imagen / "
 "jpeg\"."
 
@@ -811,11 +807,10 @@ msgstr "El nombre del tipo de documento."
 
 #: models/document_type_models.py:45
 msgid ""
-"Amount of time after which documents of this type will be moved to the "
-"trash."
+"Amount of time after which documents of this type will be moved to the trash."
 msgstr ""
-"Cantidad de tiempo tras el cual se enviaran los documentos de este tipo a la"
-" papelera."
+"Cantidad de tiempo tras el cual se enviaran los documentos de este tipo a la "
+"papelera."
 
 #: models/document_type_models.py:47
 msgid "Trash time period"
@@ -830,8 +825,8 @@ msgid ""
 "Amount of time after which documents of this type in the trash will be "
 "deleted."
 msgstr ""
-"Cantidad de tiempo tras el cual se eliminarán los documentos de este tipo de"
-" la papelera."
+"Cantidad de tiempo tras el cual se eliminarán los documentos de este tipo de "
+"la papelera."
 
 #: models/document_type_models.py:57
 msgid "Delete time period"
@@ -1159,8 +1154,8 @@ msgstr "ID de documento para el nuevo documento favorito."
 #: settings.py:49
 msgid ""
 "The threshold at which the DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND "
-"will start deleting the oldest document file page image cache files. Specify"
-" the size in bytes."
+"will start deleting the oldest document file page image cache files. Specify "
+"the size in bytes."
 msgstr ""
 "El umbral en el que DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND "
 "comenzará a eliminar los archivos de caché de imagenes de páginas de "
@@ -1196,9 +1191,9 @@ msgstr "Número máximo de documentos favoritos para recordar por usuario."
 
 #: settings.py:90
 msgid ""
-"Size of blocks to use when calculating the document file's checksum. A value"
-" of 0 disables the block calculation and the entire file will be loaded into"
-" memory."
+"Size of blocks to use when calculating the document file's checksum. A value "
+"of 0 disables the block calculation and the entire file will be loaded into "
+"memory."
 msgstr ""
 "Tamaño de los bloques que se utilizarán al calcular la suma de comprobación "
 "del archivo de documento. Un valor de 0 desactiva el cálculo de bloque y "
@@ -1214,8 +1209,8 @@ msgstr "Lista de idiomas de documentos apoyados. En formato ISO639-3."
 
 #: settings.py:107
 msgid ""
-"The threshold at which the DOCUMENT_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND"
-" will start deleting the oldest document version page image cache versions. "
+"The threshold at which the DOCUMENT_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND "
+"will start deleting the oldest document version page image cache versions. "
 "Specify the size in bytes."
 msgstr ""
 "El umbral en el que DOCUMENT_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND "
@@ -1225,8 +1220,8 @@ msgstr ""
 
 #: settings.py:116
 msgid ""
-"Path to the Storage subclass to use when storing the cached document version"
-" page image versions."
+"Path to the Storage subclass to use when storing the cached document version "
+"page image versions."
 msgstr ""
 "Ruta a la subclase de almacenamiento que se utilizará al almacenar las "
 "versiones de la imagen de la página de la versión del documento en caché."
@@ -1252,15 +1247,15 @@ msgstr "Número máximo de documentos creados recientemente para mostrar."
 #: settings.py:159
 msgid "Amount in degrees to rotate a document page per user interaction."
 msgstr ""
-"Cantidad de grados que se va a girar una página de documento por cada acción"
-" del usuario."
+"Cantidad de grados que se va a girar una página de documento por cada acción "
+"del usuario."
 
 #: settings.py:165
 msgid ""
 "Time after which a document stub will be considered invalid and deleted."
 msgstr ""
-"Tiempo después del cual un recibo de documento se considerará no válido y se"
-" eliminará."
+"Tiempo después del cual un recibo de documento se considerará no válido y se "
+"eliminará."
 
 #: settings.py:172
 msgid "Height in pixels of the document thumbnail image."
@@ -1314,8 +1309,8 @@ msgstr "Total de páginas de documentos cada mes"
 
 #: storages.py:21
 msgid ""
-"Unable to initialize the document file storage. Check the settings {} and {}"
-" for formatting errors."
+"Unable to initialize the document file storage. Check the settings {} and {} "
+"for formatting errors."
 msgstr ""
 "No se puede inicializar el almacenamiento del archivo del documento. "
 "Verifique la configuración {} y {} para ver si hay errores de formato."
@@ -1388,8 +1383,7 @@ msgstr ""
 #, python-format
 msgid "%(count)d document files queued for page count recalculation."
 msgstr ""
-"%(count)d archivos de documentos en cola para recalcular el total de "
-"páginas."
+"%(count)d archivos de documentos en cola para recalcular el total de páginas."
 
 #: views/document_file_page_views.py:66
 msgid "Recalculate the page count of the selected document file?"
@@ -1408,15 +1402,15 @@ msgstr "¿Vuelva a calcular el total de páginas del archivo del documento: %s?"
 
 #: views/document_file_page_views.py:107
 msgid ""
-"This could mean that the document file is of a format that is not supported,"
-" that it is corrupted or that the upload process was interrupted. Use the "
+"This could mean that the document file is of a format that is not supported, "
+"that it is corrupted or that the upload process was interrupted. Use the "
 "document file page recalculation action to attempt to introspect the page "
 "count again."
 msgstr ""
 "Esto podría significar que el archivo del documento tiene un formato que no "
 "es compatible, que está dañado o que se interrumpió el proceso de carga. "
-"Utilice la acción de recalculo de total de páginas del archivo del documento"
-" para intentar inspeccionar el total de páginas nuevamente."
+"Utilice la acción de recalculo de total de páginas del archivo del documento "
+"para intentar inspeccionar el total de páginas nuevamente."
 
 #: views/document_file_page_views.py:113
 msgid "No document file pages available"
@@ -1446,7 +1440,8 @@ msgstr "Imágen de: %s"
 #: views/document_file_views.py:48
 #, python-format
 msgid "Error deleting document file \"%(instance)s\"; %(exception)s"
-msgstr "Error al eliminar el archivo de documento \"%(instance)s\"; %(exception)s"
+msgstr ""
+"Error al eliminar el archivo de documento \"%(instance)s\"; %(exception)s"
 
 #: views/document_file_views.py:54
 #, python-format
@@ -1542,8 +1537,8 @@ msgstr[0] ""
 "¿Borrar todas las transformaciones de página para el archivo de documento "
 "seleccionado?"
 msgstr[1] ""
-"¿Borrar todas las transformaciones de página para los archivos de documentos"
-" seleccionados?"
+"¿Borrar todas las transformaciones de página para los archivos de documentos "
+"seleccionados?"
 
 #: views/document_file_views.py:280
 #, python-format
@@ -1564,11 +1559,11 @@ msgstr ""
 #: views/document_file_views.py:333
 #, python-format
 msgid ""
-"Error cloning the page transformations for document file: %(document_file)s;"
-" %(error)s."
+"Error cloning the page transformations for document file: %(document_file)s; "
+"%(error)s."
 msgstr ""
-"Error al clonar las transformaciones de página para el archivo de documento:"
-" %(document_file)s; %(error)s."
+"Error al clonar las transformaciones de página para el archivo de documento: "
+"%(document_file)s; %(error)s."
 
 #: views/document_file_views.py:342 views/document_version_views.py:396
 msgid "Transformations cloned successfully."
@@ -1587,13 +1582,13 @@ msgstr "Documentos de tipo: %s"
 #: views/document_type_views.py:72
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical"
-" document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical "
+"document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 "Los tipos de documentos son las unidades de configuración más básicas. Todo "
-"en el sistema dependerá de ellos. Defina un tipo de documento para cada tipo"
-" de documento físico que desee cargar. Tipos de documentos de ejemplo: "
+"en el sistema dependerá de ellos. Defina un tipo de documento para cada tipo "
+"de documento físico que desee cargar. Tipos de documentos de ejemplo: "
 "factura, recibo, manual, receta, balance."
 
 #: views/document_type_views.py:78
@@ -1634,7 +1629,8 @@ msgstr ""
 
 #: views/document_type_views.py:223
 #, python-format
-msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgid ""
+"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
 "Editar etiqueta rápida \"%(filename)s\" del tipo de documento "
 "\"%(document_type)s\""
@@ -1645,8 +1641,8 @@ msgid ""
 "documents as they are uploaded by selecting them from a list. Quick labels "
 "can also be used after the documents have been uploaded."
 msgstr ""
-"Las etiquetas rápidas son nombres de archivo predeterminados que permiten el"
-" cambio de nombre rápido de documentos a medida que se cargan al "
+"Las etiquetas rápidas son nombres de archivo predeterminados que permiten el "
+"cambio de nombre rápido de documentos a medida que se cargan al "
 "seleccionarlos de una lista. Las etiquetas rápidas también se pueden usar "
 "después de cargar los documentos."
 
@@ -1702,8 +1698,7 @@ msgstr "Páginas de la versión del documento: %s"
 #, python-format
 msgid "%(count)d document version queued for page list append."
 msgstr ""
-"%(count)d versión del documento en cola para restablecer la lista de "
-"páginas."
+"%(count)d versión del documento en cola para restablecer la lista de páginas."
 
 #: views/document_version_page_views.py:132
 #, python-format
@@ -1717,8 +1712,8 @@ msgid ""
 "The current pages will be deleted and then all the document file pages will "
 "be appended as pages of this document version."
 msgstr ""
-"Las páginas actuales se eliminarán y luego todas las páginas del archivo del"
-" documento se agregarán como páginas de esta versión del documento."
+"Las páginas actuales se eliminarán y luego todas las páginas del archivo del "
+"documento se agregarán como páginas de esta versión del documento."
 
 #: views/document_version_page_views.py:145
 msgid "Append all the document file pages to the selected document version?"
@@ -1758,8 +1753,7 @@ msgstr "Reasignar páginas de la versión del documento: %s"
 #, python-format
 msgid "%(count)d document version queued for page list reset."
 msgstr ""
-"%(count)d versión del documento en cola para restablecer la lista de "
-"páginas."
+"%(count)d versión del documento en cola para restablecer la lista de páginas."
 
 #: views/document_version_page_views.py:290
 #, python-format
@@ -1845,8 +1839,8 @@ msgstr "Editar versión de documento: %s"
 #, python-format
 msgid "Document version \"%(object)s\" export successfully queued."
 msgstr ""
-"Exportación de la versión del documento \"%(object)s\" enviada a la cola con"
-" éxito."
+"Exportación de la versión del documento \"%(object)s\" enviada a la cola con "
+"éxito."
 
 #: views/document_version_views.py:180
 #, python-format
@@ -1916,8 +1910,7 @@ msgstr ""
 
 #: views/document_version_views.py:317
 #, python-format
-msgid ""
-"Transformation clear request processed for %(count)d document versions."
+msgid "Transformation clear request processed for %(count)d document versions."
 msgstr ""
 "Solicitud de borrado de transformación procesada para %(count)d versiones "
 "del documento."
@@ -2082,8 +2075,8 @@ msgstr "Imprimir: %s"
 
 #: views/recently_accessed_document_views.py:23
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by"
-" this user account."
+"This view will list the latest documents viewed or manipulated in any way by "
+"this user account."
 msgstr ""
 "Esta vista enumerará los últimos documentos visualizados o manipulados de "
 "alguna manera por esta cuenta de usuario."

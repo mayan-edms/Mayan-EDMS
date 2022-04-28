@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:54+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:57 events.py:5 links.py:137 menus.py:5 models.py:42 queues.py:7
@@ -296,8 +296,8 @@ msgstr ""
 #: source_backends/email_backends.py:331
 #, python-format
 msgid ""
-"Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
-" type: %(document_type)s"
+"Message ID metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
 msgstr ""
 
 #: source_backends/email_backends.py:379
@@ -313,9 +313,9 @@ msgid ""
 "Criteria to use when searching for messages to process. Use the format "
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 msgstr ""
-"Criteria om te gebruiken wanneer gezocht wordt op berichten om te verwerken."
-" Gebruik opmaak zoals vastgelegd in "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
+"Criteria om te gebruiken wanneer gezocht wordt op berichten om te verwerken. "
+"Gebruik opmaak zoals vastgelegd in https://tools.ietf.org/html/rfc2060."
+"html#section-6.4.4"
 
 #: source_backends/email_backends.py:394
 msgid "Search criteria"
@@ -324,14 +324,13 @@ msgstr "Zoekcriteria"
 #: source_backends/email_backends.py:402
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
-"commands for your IMAP server."
+"command per line. Use the commands specified in https://tools.ietf.org/html/"
+"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
 msgstr ""
 "IMAP STORE opdracht om uit te voeren op berichten nadat ze zijn verwerkt. "
-"Een opdracht per regel. Gebruik de opdrachten zoals beschreven in "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 of de aangepaste "
-"opdrachten voor uw IMAP-server."
+"Een opdracht per regel. Gebruik de opdrachten zoals beschreven in https://"
+"tools.ietf.org/html/rfc2060.html#section-6.4.6 of de aangepaste opdrachten "
+"voor uw IMAP-server."
 
 #: source_backends/email_backends.py:407
 msgid "Store commands"
@@ -340,8 +339,8 @@ msgstr "Opdrachten opslaan"
 #: source_backends/email_backends.py:414
 msgid "Execute the IMAP expunge command after processing each email message."
 msgstr ""
-"Voer de IMAP-verwijderingsopdracht uit na het verwerken van elk "
-"e-mailbericht. "
+"Voer de IMAP-verwijderingsopdracht uit na het verwerken van elk e-"
+"mailbericht. "
 
 #: source_backends/email_backends.py:417
 msgid "Execute expunge"
@@ -505,14 +504,13 @@ msgstr "Verwijder tijdelijk bestand \"%s\"?"
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr ""
-"Het is niet mogelijk om een lijst van bestanden in netwerkmap aan te "
-"maken:%s"
+"Het is niet mogelijk om een lijst van bestanden in netwerkmap aan te maken:%s"
 
 #: source_backends/staging_folder_backends.py:547
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the"
-" necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the "
+"necessary file system permissions for the folder."
 msgstr ""
 "Dit kan betekenen dat de netwerkmap leeg is. Het is ook mogelijk dat het "
 "besturingssysteem van het gebruikersaccount dat voor Mayan EDMS gebruikt "
@@ -600,8 +598,8 @@ msgstr "Server antwoordde met {{statusCode}} code."
 
 #: views/base.py:53 wizards.py:54
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr ""
 "Er zijn geen interactieve documentbronnen gedefinieerd of ze zijn niet "
 "ingeschakeld. Maak er een aan voordat u verdergaat."
@@ -642,7 +640,8 @@ msgstr ""
 #: views/document_views.py:83
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr "Een document upload van soort \"%(document_type)s\" van bron: %(source)s"
+msgstr ""
+"Een document upload van soort \"%(document_type)s\" van bron: %(source)s"
 
 #: views/source_views.py:37
 msgid "New source backend selection"
@@ -676,8 +675,8 @@ msgstr "Geen bronnen beschikbaar"
 
 #: views/source_views.py:181
 msgid ""
-"This will execute the source code even if the source is not enabled. Sources"
-" that delete content after downloading will not do so while being tested. "
+"This will execute the source code even if the source is not enabled. Sources "
+"that delete content after downloading will not do so while being tested. "
 "Check the source's error log for information during testing. A successful "
 "test will clear the error log."
 msgstr ""

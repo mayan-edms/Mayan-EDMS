@@ -144,19 +144,20 @@ class TarArchive(Archive):
 
 class ZipArchive(Archive):
     def _open(self, file_object):
-        self._archive = zipfile.ZipFile(file_object)
+        self._archive = zipfile.ZipFile(file=file_object)
 
     def add_file(self, file_object, filename):
         self._archive.writestr(
-            filename, file_object.read(), compress_type=COMPRESSION
+            zinfo_or_arcname=filename, data=file_object.read(),
+            compress_type=COMPRESSION
         )
 
     def create(self):
         self.string_buffer = BytesIO()
-        self._archive = zipfile.ZipFile(self.string_buffer, mode='w')
+        self._archive = zipfile.ZipFile(file=self.string_buffer, mode='w')
 
     def member_contents(self, filename):
-        return self._archive.read(filename)
+        return self._archive.read(name=filename)
 
     def members(self):
         results = []
@@ -189,7 +190,7 @@ class ZipArchive(Archive):
         return results
 
     def open_member(self, filename):
-        return self._archive.open(filename)
+        return self._archive.open(name=filename)
 
     def write(self, filename=None):
         # fix for Linux zip files read in Windows

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2022
@@ -15,19 +15,20 @@
 # Roberto Rosario, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # Márcia Ferreira, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:54+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
+"teams/13584/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:57 events.py:5 links.py:137 menus.py:5 models.py:42 queues.py:7
@@ -45,8 +46,8 @@ msgid ""
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr ""
-"Fontes de documentos são a forma como os novos documentos são alimentados ao"
-" Mayan EDMS. Crie pelo menos uma fonte de formulário da web para poder "
+"Fontes de documentos são a forma como os novos documentos são alimentados ao "
+"Mayan EDMS. Crie pelo menos uma fonte de formulário da web para poder "
 "carregar documentos a partir de um navegador."
 
 #: apps.py:112
@@ -199,8 +200,8 @@ msgstr "Argumentos a utilizar quando se cria fontes de backends."
 #: settings.py:26
 msgid "Path to the Storage subclass used to store cached source image files."
 msgstr ""
-"Caminho para a subclasse de Armazenamento utilizado para armazenar fontes de"
-" ficheiros de imagens em cache."
+"Caminho para a subclasse de Armazenamento utilizado para armazenar fontes de "
+"ficheiros de imagens em cache."
 
 #: settings.py:34
 msgid "Arguments to pass to the SOURCES_SOURCE_CACHE_STORAGE_BACKEND."
@@ -251,8 +252,8 @@ msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
 msgstr ""
-"Selecione um tipo de metadado para armazenar o \"de\" do e-mail. Deve ser um"
-" tipo de metadado válido para o tipo de documento previamente selecionado."
+"Selecione um tipo de metadado para armazenar o \"de\" do e-mail. Deve ser um "
+"tipo de metadado válido para o tipo de documento previamente selecionado."
 
 #: source_backends/email_backends.py:110
 msgid "From metadata type"
@@ -312,11 +313,11 @@ msgstr ""
 #: source_backends/email_backends.py:331
 #, python-format
 msgid ""
-"Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
-" type: %(document_type)s"
+"Message ID metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
 msgstr ""
-"Tipo de metadata do ID de mensagem \"%(metadata_type)s\" não é válido para o"
-" tipo de documento: %(document_type)s"
+"Tipo de metadata do ID de mensagem \"%(metadata_type)s\" não é válido para o "
+"tipo de documento: %(document_type)s"
 
 #: source_backends/email_backends.py:379
 msgid "IMAP Mailbox from which to check for messages."
@@ -332,8 +333,8 @@ msgid ""
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 msgstr ""
 "Critérios a serem usados ao buscar mensagens para processamento. Use o "
-"formato especificado em "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
+"formato especificado em https://tools.ietf.org/html/rfc2060."
+"html#section-6.4.4"
 
 #: source_backends/email_backends.py:394
 msgid "Search criteria"
@@ -342,14 +343,13 @@ msgstr "Critérios de busca"
 #: source_backends/email_backends.py:402
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
-"commands for your IMAP server."
+"command per line. Use the commands specified in https://tools.ietf.org/html/"
+"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
 msgstr ""
 "Comando IMAP STORE a ser executado em mensagens após seu processamento. Um "
-"comando por linha. Use os comandos especificados em "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 ou comandos "
-"customizados do seu servidor IMAP."
+"comando por linha. Use os comandos especificados em https://tools.ietf.org/"
+"html/rfc2060.html#section-6.4.6 ou comandos customizados do seu servidor "
+"IMAP."
 
 #: source_backends/email_backends.py:407
 msgid "Store commands"
@@ -358,8 +358,8 @@ msgstr "Armazenar comandos"
 #: source_backends/email_backends.py:414
 msgid "Execute the IMAP expunge command after processing each email message."
 msgstr ""
-"Executar o comando IMAP expunge após o processamento de cada mensagem de "
-"e-mail."
+"Executar o comando IMAP expunge após o processamento de cada mensagem de e-"
+"mail."
 
 #: source_backends/email_backends.py:417
 msgid "Execute expunge"
@@ -448,8 +448,8 @@ msgid ""
 "name=DEVICE` for the list of supported arguments."
 msgstr ""
 "Argumentos YAML formatados a passar à ordem `scanimage`. Os argumentos irão "
-"ser modificados dependendo do dispositivo. Executar `scanimage --ajuda "
-"--dispositivo-nome=DISPOSITIVO` para a lista de argumentos suportados."
+"ser modificados dependendo do dispositivo. Executar `scanimage --ajuda --"
+"dispositivo-nome=DISPOSITIVO` para a lista de argumentos suportados."
 
 #: source_backends/sane_scanner_backends.py:49
 msgid "SANE Scanner"
@@ -532,8 +532,8 @@ msgstr "Não foi possível obter a lista de arquivos temporários: %s"
 #: source_backends/staging_folder_backends.py:547
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the"
-" necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the "
+"necessary file system permissions for the folder."
 msgstr ""
 "Isso pode significar que a pasta temporária está vazia. Também pode "
 "significar que o usuário do sistema operacional usado para o Mayan EDMS nao "
@@ -623,8 +623,8 @@ msgstr "O servidor responder com o código {{statusCode}}."
 
 #: views/base.py:53 wizards.py:54
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr ""
 "Nenhuma fonte interativa de documentos fora definida ou nenhum foi ativada. "
 "Criar uma antes de prosseguir."
@@ -670,7 +670,8 @@ msgstr "O novo documento enfileirado para upload estará disponível em breve."
 #: views/document_views.py:83
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr "Carregue um documento do tipo \"%(document_type)s\" da fonte: %(source)s"
+msgstr ""
+"Carregue um documento do tipo \"%(document_type)s\" da fonte: %(source)s"
 
 #: views/source_views.py:37
 msgid "New source backend selection"
@@ -707,8 +708,8 @@ msgstr "Não há fontes disponíveis"
 
 #: views/source_views.py:181
 msgid ""
-"This will execute the source code even if the source is not enabled. Sources"
-" that delete content after downloading will not do so while being tested. "
+"This will execute the source code even if the source is not enabled. Sources "
+"that delete content after downloading will not do so while being tested. "
 "Check the source's error log for information during testing. A successful "
 "test will clear the error log."
 msgstr ""

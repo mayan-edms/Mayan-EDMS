@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # WM Shinkada <shinkadawasim@gmail.com>, 2022
@@ -9,20 +9,21 @@
 # Marwan Rahhal <Marwanr@sssit.net>, 2022
 # Roberto Rosario, 2022
 # Yaman Sanobar <yman.snober@gmail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:53+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Yaman Sanobar <yman.snober@gmail.com>, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:36 events.py:5 permissions.py:5 queues.py:7 settings.py:21
 msgid "Converter"
@@ -299,8 +300,8 @@ msgstr "تعذر تهيئة تخزين التغيرات. تحقق من إعدا�
 
 #: storages.py:28
 msgid ""
-"Unable to initialize the converter asset cachestorage. Check the settings {}"
-" and {} for formatting errors."
+"Unable to initialize the converter asset cachestorage. Check the settings {} "
+"and {} for formatting errors."
 msgstr ""
 
 #: storages.py:34
@@ -422,8 +423,7 @@ msgstr "تعديل الأصل: %s"
 
 #: views.py:139
 msgid ""
-"Assets are files that can be used in conjuction with certain "
-"transformations."
+"Assets are files that can be used in conjuction with certain transformations."
 msgstr "الأصول هي ملفات يمكن استخدامها ."
 
 #: views.py:142
@@ -486,8 +486,8 @@ msgstr "صفحات"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas "
-"and/or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas and/"
+"or use a dashes for a ranges. Leave blank to select all pages."
 msgstr "الصفحات التي ستضاف إليها التحولات الجديدة."
 
 #: workflow_actions.py:32

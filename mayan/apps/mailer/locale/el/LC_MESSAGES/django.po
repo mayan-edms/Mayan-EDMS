@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # pyrotech <anastasios@tutamail.com>, 2022
 # Hmayag Antonian <hmayag@freemail.gr>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:54+0000\n"
+"POT-Creation-Date: 2022-04-28 08:57+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:48
@@ -47,11 +47,11 @@ msgstr ""
 
 #: forms.py:58 forms.py:93
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma"
-" or semicolon."
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon."
 msgstr ""
-"Διεύθυνση του παραλήπτη. Μπορεί να περιέχει πολλαπλές διευθύνσεις χωρισμένες"
-" με κόμμα (,) ή ελληνικό ερωτηματικό (;)"
+"Διεύθυνση του παραλήπτη. Μπορεί να περιέχει πολλαπλές διευθύνσεις χωρισμένες "
+"με κόμμα (,) ή ελληνικό ερωτηματικό (;)"
 
 #: forms.py:60 forms.py:95
 msgid "Email address"
@@ -164,8 +164,8 @@ msgstr "Από"
 
 #: mailers.py:22 mailers.py:111
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value"
-" is not set."
+"The sender's address. Some system will refuse to send messages if this value "
+"is not set."
 msgstr ""
 "Η διεύθυνση του αποστολέα. Εάν αυτή η τιμή δεν έχει οριστεί κάποιο σύστημα "
 "μπορεί να αρνηθεί την αποστολή μηνυμάτων."
@@ -209,16 +209,16 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
-" True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
+"True."
 msgstr ""
-"Αν θα γίνει χρήση (ασφαλούς) σύνδεσης TLS κατά την σύνδεση με τον διακομιστή"
-" αλληλογραφίας SMTP. Στα περισσότερα εγχειρίδια χρήσης αυτός ο τύπος "
-"σύνδεσης TLS αναφέρεται ως SSL. Ως επι το πλείστον κάνει χρήση της θύρας "
-"465. Αν συναντήσετε προβλήματα κατά την σύνδεση, δοκιμάστε να ρυθμίσετε ρητή"
-" χρήση του πρωτοκόλου TLS. Σημειωτέον ότι οι επιλογές  \"Χρήση TLS\" και "
-"\"Χρήση SSL\" δεν μπορούν να χρησιμοποιηθούν ταυτόχρονα, οπότε ενεργοποιήστε"
-" μόνο μια."
+"Αν θα γίνει χρήση (ασφαλούς) σύνδεσης TLS κατά την σύνδεση με τον διακομιστή "
+"αλληλογραφίας SMTP. Στα περισσότερα εγχειρίδια χρήσης αυτός ο τύπος σύνδεσης "
+"TLS αναφέρεται ως SSL. Ως επι το πλείστον κάνει χρήση της θύρας 465. Αν "
+"συναντήσετε προβλήματα κατά την σύνδεση, δοκιμάστε να ρυθμίσετε ρητή χρήση "
+"του πρωτοκόλου TLS. Σημειωτέον ότι οι επιλογές  \"Χρήση TLS\" και \"Χρήση "
+"SSL\" δεν μπορούν να χρησιμοποιηθούν ταυτόχρονα, οπότε ενεργοποιήστε μόνο "
+"μια."
 
 #: mailers.py:60
 msgid "Username"
@@ -239,8 +239,8 @@ msgstr "Κωδικός πρόσβασης"
 #: mailers.py:72
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these"
-" settings is empty, authentication won't be attempted."
+"with the username when authenticating to the SMTP server. If either of these "
+"settings is empty, authentication won't be attempted."
 msgstr ""
 "Κωδικός πρόσβασης που θα χρησιμοποιηθεί για τον διακομιστή SMTP. Αυτή η "
 "επιλογή χρησιμοποιείται σε συνδιασμό με το όνομα χρήστη για την ταυτοποίηση "
@@ -479,12 +479,11 @@ msgstr "Παραλήπτης"
 
 #: workflow_actions.py:30
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma"
-" or semicolon. A template can be used to reference properties of the "
-"document."
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon. A template can be used to reference properties of the document."
 msgstr ""
-"Διεύθυνση ηλεκτρονικού ταχυδρομείου του παραλήπτη. Μπορεί να είναι πολλαπλές"
-" διευθύνσεις διαχωρισμένες με κόμμα ή ερωτηματικό. Ένα πρότυπο μπορεί να "
+"Διεύθυνση ηλεκτρονικού ταχυδρομείου του παραλήπτη. Μπορεί να είναι πολλαπλές "
+"διευθύνσεις διαχωρισμένες με κόμμα ή ερωτηματικό. Ένα πρότυπο μπορεί να "
 "χρησιμοποιηθεί για την αναφορά στις ιδιότητες του εγγράφου."
 
 #: workflow_actions.py:38
