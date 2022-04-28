@@ -9,7 +9,7 @@ from whoosh.query import Every
 
 from django.conf import settings
 
-from mayan.apps.common.utils import any_to_bool, parse_range
+from mayan.apps.common.utils import any_to_bool
 from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError
 
@@ -214,15 +214,9 @@ class WhooshSearchBackend(SearchBackend):
             finally:
                 lock.release()
 
-    def index_search_model(self, search_model, range_string=None):
+    def index_instances(self, search_model, id_list):
         queryset = search_model.get_queryset()
-
-        queryset = search_model.get_queryset()
-
-        if range_string:
-            queryset = queryset.filter(
-                pk__in=list(parse_range(range_string=range_string))
-            )
+        queryset = queryset.filter(pk__in=id_list)
 
         for instance in queryset:
             self.index_instance(instance=instance)

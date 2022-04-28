@@ -640,13 +640,13 @@ class ElasticSearchBackendDocumentSearchTestCase(
         self._create_test_document_stub(label='P00934-06')
 
         self.grant_access(
-            obj=self.test_documents[0], permission=permission_document_view
+            obj=self._test_documents[0], permission=permission_document_view
         )
         self.grant_access(
-            obj=self.test_documents[1], permission=permission_document_view
+            obj=self._test_documents[1], permission=permission_document_view
         )
         self.grant_access(
-            obj=self.test_documents[2], permission=permission_document_view
+            obj=self._test_documents[2], permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
@@ -655,7 +655,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
         )
 
         self.assertEqual(queryset.count(), 1)
-        self.assertTrue(self.test_documents[0] in queryset)
+        self.assertTrue(self._test_documents[0] in queryset)
 
         queryset = self.search_backend.search(
             search_model=search_model_document,
@@ -670,7 +670,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
         )
 
         self.assertEqual(queryset.count(), 3)
-        self.assertTrue(self.test_documents[0] in queryset)
+        self.assertTrue(self._test_documents[0] in queryset)
 
         queryset = self.search_backend.search(
             search_model=search_model_document,
@@ -678,7 +678,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
         )
 
         self.assertEqual(queryset.count(), 1)
-        self.assertTrue(self.test_documents[1] in queryset)
+        self.assertTrue(self._test_documents[1] in queryset)
 
     def test_hyphenated_value_mixed(self):
         self._create_test_document_stub(label='first-doc word')
@@ -686,13 +686,13 @@ class ElasticSearchBackendDocumentSearchTestCase(
         self._create_test_document_stub(label='third-doc word')
 
         self.grant_access(
-            obj=self.test_documents[0], permission=permission_document_view
+            obj=self._test_documents[0], permission=permission_document_view
         )
         self.grant_access(
-            obj=self.test_documents[1], permission=permission_document_view
+            obj=self._test_documents[1], permission=permission_document_view
         )
         self.grant_access(
-            obj=self.test_documents[2], permission=permission_document_view
+            obj=self._test_documents[2], permission=permission_document_view
         )
 
         queryset = self.search_backend.search(
@@ -701,7 +701,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
         )
 
         self.assertEqual(queryset.count(), 1)
-        self.assertTrue(self.test_documents[0] in queryset)
+        self.assertTrue(self._test_documents[0] in queryset)
 
         queryset = self.search_backend.search(
             search_model=search_model_document,
@@ -709,7 +709,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
         )
 
         self.assertEqual(queryset.count(), 1)
-        self.assertTrue(self.test_documents[0] in queryset)
+        self.assertTrue(self._test_documents[0] in queryset)
 
         queryset = self.search_backend.search(
             search_model=search_model_document,
@@ -717,7 +717,7 @@ class ElasticSearchBackendDocumentSearchTestCase(
         )
 
         self.assertEqual(queryset.count(), 1)
-        self.assertTrue(self.test_documents[1] in queryset)
+        self.assertTrue(self._test_documents[1] in queryset)
 
         queryset = self.search_backend.search(
             search_model=search_model_document,
@@ -725,8 +725,8 @@ class ElasticSearchBackendDocumentSearchTestCase(
         )
 
         self.assertEqual(queryset.count(), 3)
-        self.assertTrue(self.test_documents[0] in queryset)
-        self.assertTrue(self.test_documents[1] in queryset)
+        self.assertTrue(self._test_documents[0] in queryset)
+        self.assertTrue(self._test_documents[1] in queryset)
 
 
 class WhooshSearchBackendDocumentSearchTestCase(

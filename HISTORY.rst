@@ -222,6 +222,16 @@
   brings code parity with tags which work in a very similar way.
 - Support empty ranges for ``parse_range``.
 - Add ``group_iterator`` to group iterators in to lists of tuples.
+- Refactor bulk object search indexing:
+
+  - Rename ``mayan.apps.dynamic_search.tasks.task_index_search_model`` to
+    ``mayan.apps.dynamic_search.tasks.task_index_instances``.
+  - Index only objects that exists instead of using blind ranges.
+  - Retry failed bulk indexing tasks.
+  - Update ``search_index_objects`` management command to trigger multiple
+    ``task_index_instances`` tasks instead of just one.
+  - Add max retry value to ``task_index_instances``.
+  - Improve tasks error logging.
 
 4.2.3 (2022-04-01)
 ==================

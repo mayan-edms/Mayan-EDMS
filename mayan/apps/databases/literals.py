@@ -1,5 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
+DATABASE_MINIMUM_ID = 1
+
 DJANGO_SQLITE_BACKEND = 'django.db.backends.sqlite3'
 
 IMPORT_ERROR_EXCLUSION_TEXTS = (

@@ -1,9 +1,11 @@
+import itertools
 import logging
 
 from django.apps import apps
 from django.contrib.admin.utils import (
     get_fields_from_path, reverse_field_path
 )
+from django.db.models.aggregates import Max, Min
 from django.db.models.signals import m2m_changed, post_save, pre_delete
 from django.utils.encoding import force_text
 from django.utils.functional import cached_property
@@ -11,7 +13,10 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext as _
 
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
-from mayan.apps.common.utils import get_class_full_name
+from mayan.apps.common.utils import (
+    get_class_full_name, group_iterator, parse_range
+)
+from mayan.apps.databases.literals import DATABASE_MINIMUM_ID
 from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
 from .exceptions import DynamicSearchException
@@ -22,7 +27,7 @@ from .literals import (
 )
 from .settings import (
     setting_backend, setting_backend_arguments,
-    setting_results_limit
+    setting_indexing_chunk_size, setting_results_limit
 )
 logger = logging.getLogger(name=__name__)
 
@@ -308,7 +313,7 @@ class SearchBackend:
         index.
         """
 
-    def index_search_model(self, search_model, range_string=None):
+    def index_instances(self, search_model, id_list=None):
         """
         Optional method to add or update all instance of a model.
         """
@@ -588,6 +593,10 @@ class SearchModel(AppsModuleLoaderMixin):
         self.__class__._registry['{}.{}'.format(app_label, model_name)] = self
 
     @cached_property
+    def base_model(self):
+        return self.model._meta.proxy_for_model or self.model
+
+    @cached_property
     def fields_direct(self):
         result = []
 
@@ -626,6 +635,40 @@ class SearchModel(AppsModuleLoaderMixin):
     def get_full_name(self):
         return '{}.{}'.format(self.app_label, self.model_name)
 
+    def get_id_groups(self, range_string=None):
+        queryset = self.model._meta.managers_map[self.manager_name].all()
+
+        # Part 1 - Split the user requested range into blind groups.
+        if not range_string:
+            # If range is not specified it will be the minimum and maximum
+            # IDs of the queryset.
+            queryset_id_values = queryset.aggregate(
+                min_id=Min('id'), max_id=Max('id')
+            )
+            range_string = '{}-{}'.format(
+                queryset_id_values['min_id'] or DATABASE_MINIMUM_ID,
+                queryset_id_values['max_id'] or DATABASE_MINIMUM_ID
+            )
+
+        # Part 2 - Validate the blind groups by querying them and retrieve
+        # the valid ID values.
+        id_list_groups = group_iterator(
+            iterable=parse_range(range_string=range_string),
+            group_size=setting_indexing_chunk_size.value
+        )
+
+        generator_valid_id_groups = (
+            queryset.filter(pk__in=id_list).values_list('id', flat=True) for id_list in id_list_groups
+        )
+
+        # Part 3 - Chain the valid ID groups into a single sequence and
+        # split them again into groups.
+        return group_iterator(
+            iterable=itertools.chain.from_iterable(
+                generator_valid_id_groups
+            ), group_size=setting_indexing_chunk_size.value
+        )
+
     def get_queryset(self):
         if self.queryset is not None:
             return self.queryset()
@@ -658,10 +701,6 @@ class SearchModel(AppsModuleLoaderMixin):
         if not self._label:
             self._label = self.model._meta.verbose_name
         return self._label
-
-    @cached_property
-    def base_model(self):
-        return self.model._meta.proxy_for_model or self.model
 
     @cached_property
     def model(self):

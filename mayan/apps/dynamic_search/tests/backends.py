@@ -73,8 +73,8 @@ class TestSearchBackend(SearchBackend):
         if self._test_class:
             return self._backend.index_instance(*args, **kwargs)
 
-    def index_search_model(self, *args, **kwargs):
-        return self._backend.index_search_model(*args, **kwargs)
+    def index_instances(self, *args, **kwargs):
+        return self._backend.index_instances(*args, **kwargs)
 
     def reset(self, *args, **kwargs):
         return self._backend.reset(*args, **kwargs)

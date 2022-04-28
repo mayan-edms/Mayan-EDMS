@@ -2,8 +2,22 @@ from mayan.apps.documents.search import search_model_document
 
 from ..classes import SearchBackend, SearchModel
 from ..literals import QUERY_PARAMETER_ANY_FIELD, SEARCH_MODEL_NAME_KWARG
+from ..tasks import task_reindex_backend, task_index_instances
 
 from .backends import TestSearchBackend
+
+
+class SearchTaskTestMixin:
+    def _execute_task_reindex_backend(self):
+        task_reindex_backend.apply_async().get()
+
+    def _execute_task_index_instances(self):
+        task_index_instances.apply_async(
+            kwargs={
+                'id_list': (self._test_object.pk,),
+                'search_model_full_name': self._test_model_search.get_full_name()
+            }
+        ).get()
 
 
 class SearchTestMixin:
