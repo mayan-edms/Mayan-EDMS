@@ -18,6 +18,8 @@
 - Improve Python 3.10 compatibility. Add a compatibility module to
   encapsulate import of the ``Iterable`` class. Improves GitLab issue #1083.
   Thanks to Bw (@bwakkie) for the report and code samples.
+- Type cast LUT values when masking an asset for pasting via Pillow's
+  ``point()``.
 
 4.2.3 (2022-04-01)
 ==================
