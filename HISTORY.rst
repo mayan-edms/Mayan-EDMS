@@ -1,4 +1,4 @@
-4.2.4 (2022-XX-XX)
+4.2.4 (2022-04-29)
 ==================
 - Fix the documentation paths to the OTP backends. Closes GitLab
   issue #1099. Thanks to Matthias Löblich (@startmat) for the
