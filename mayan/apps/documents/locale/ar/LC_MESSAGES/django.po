@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # WM Shinkada <shinkadawasim@gmail.com>, 2022
@@ -11,24 +11,24 @@
 # Roberto Rosario, 2022
 # Mohammed ALDOUB <voulnet@gmail.com>, 2022
 # Marwan Rahhal <Marwanr@sssit.net>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
-"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:215 apps.py:647 events.py:5 menus.py:8 models/document_models.py:131
-#: permissions.py:5 queues.py:21 settings.py:33 statistics.py:230
+#: apps.py:215 apps.py:647 events.py:5 menus.py:8
+#: models/document_models.py:131 permissions.py:5 queues.py:21 settings.py:33
+#: statistics.py:230
 msgid "Documents"
 msgstr "الوثائق"
 
@@ -140,8 +140,8 @@ msgstr ""
 
 #: classes.py:82
 msgid ""
-"Generates an immutable, random UUID (RFC 4122) for each file and appends the "
-"original filename of the uploaded file."
+"Generates an immutable, random UUID (RFC 4122) for each file and appends the"
+" original filename of the uploaded file."
 msgstr ""
 
 #: dashboard_widgets.py:32
@@ -409,19 +409,23 @@ msgstr "تغيرات واضحة"
 msgid "Clone transformations"
 msgstr "نسخ التعديلات"
 
-#: links/document_file_page_links.py:46 links/document_version_page_links.py:74
+#: links/document_file_page_links.py:46
+#: links/document_version_page_links.py:74
 msgid "First page"
 msgstr "الصفحة الأولى"
 
-#: links/document_file_page_links.py:52 links/document_version_page_links.py:80
+#: links/document_file_page_links.py:52
+#: links/document_version_page_links.py:80
 msgid "Last page"
 msgstr "الصفحة الأخيرة"
 
-#: links/document_file_page_links.py:60 links/document_version_page_links.py:88
+#: links/document_file_page_links.py:60
+#: links/document_version_page_links.py:88
 msgid "Previous page"
 msgstr "الصفحة السابقة"
 
-#: links/document_file_page_links.py:66 links/document_version_page_links.py:94
+#: links/document_file_page_links.py:66
+#: links/document_version_page_links.py:94
 msgid "Next page"
 msgstr "الصفحة التالية"
 
@@ -591,8 +595,8 @@ msgstr ""
 #: literals.py:86
 #, python-format
 msgid ""
-"Document version \"%(document_version)s\" has been exported and is available "
-"for download using the link: %(download_url)s or from the downloads area "
+"Document version \"%(document_version)s\" has been exported and is available"
+" for download using the link: %(download_url)s or from the downloads area "
 "(%(download_list_url)s)."
 msgstr ""
 
@@ -678,8 +682,8 @@ msgstr "اسم الملف"
 
 #: models/document_file_models.py:98
 msgid ""
-"The document file's file mimetype. MIME types are a standard way to describe "
-"the format of a file, in this case the file format of the document. Some "
+"The document file's file mimetype. MIME types are a standard way to describe"
+" the format of a file, in this case the file format of the document. Some "
 "examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 
@@ -769,8 +773,8 @@ msgid ""
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
 msgstr ""
-"كعب المستند هو مستند به إدخال في قاعدة البيانات ولكن لم يتم تحميل أي ملف. قد "
-"يكون هذا تحميلًا متقطعًا أو تحميلًا مؤجلًا عبر واجهة برمجة التطبيقات."
+"كعب المستند هو مستند به إدخال في قاعدة البيانات ولكن لم يتم تحميل أي ملف. قد"
+" يكون هذا تحميلًا متقطعًا أو تحميلًا مؤجلًا عبر واجهة برمجة التطبيقات."
 
 #: models/document_models.py:105
 msgid "Is stub?"
@@ -787,7 +791,8 @@ msgstr "اسم نوع الوثيقة."
 
 #: models/document_type_models.py:45
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
 msgstr "الوقت اللازم لنقل الوثائق الى الإتلاف"
 
 #: models/document_type_models.py:47
@@ -1125,8 +1130,8 @@ msgstr ""
 #: settings.py:49
 msgid ""
 "The threshold at which the DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND "
-"will start deleting the oldest document file page image cache files. Specify "
-"the size in bytes."
+"will start deleting the oldest document file page image cache files. Specify"
+" the size in bytes."
 msgstr ""
 
 #: settings.py:57
@@ -1154,9 +1159,9 @@ msgstr "الحد الأقصى لعدد المستندات المفضلة الت�
 
 #: settings.py:90
 msgid ""
-"Size of blocks to use when calculating the document file's checksum. A value "
-"of 0 disables the block calculation and the entire file will be loaded into "
-"memory."
+"Size of blocks to use when calculating the document file's checksum. A value"
+" of 0 disables the block calculation and the entire file will be loaded into"
+" memory."
 msgstr ""
 "حجم الكتل المراد استخدامها عند حساب المجموع الاختباري لملف المستند. تؤدي "
 "القيمة 0 إلى تعطيل حساب الكتلة وسيتم تحميل الملف بأكمله في الذاكرة."
@@ -1171,15 +1176,15 @@ msgstr "قائمة لغات المستند المدعومة. بتنسيق ISO639
 
 #: settings.py:107
 msgid ""
-"The threshold at which the DOCUMENT_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND "
-"will start deleting the oldest document version page image cache versions. "
+"The threshold at which the DOCUMENT_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND"
+" will start deleting the oldest document version page image cache versions. "
 "Specify the size in bytes."
 msgstr ""
 
 #: settings.py:116
 msgid ""
-"Path to the Storage subclass to use when storing the cached document version "
-"page image versions."
+"Path to the Storage subclass to use when storing the cached document version"
+" page image versions."
 msgstr ""
 
 #: settings.py:124
@@ -1252,8 +1257,8 @@ msgstr "إجمالي صفحات المستند في كل شهر"
 
 #: storages.py:21
 msgid ""
-"Unable to initialize the document file storage. Check the settings {} and {} "
-"for formatting errors."
+"Unable to initialize the document file storage. Check the settings {} and {}"
+" for formatting errors."
 msgstr ""
 
 #: storages.py:35
@@ -1335,8 +1340,8 @@ msgstr ""
 
 #: views/document_file_page_views.py:107
 msgid ""
-"This could mean that the document file is of a format that is not supported, "
-"that it is corrupted or that the upload process was interrupted. Use the "
+"This could mean that the document file is of a format that is not supported,"
+" that it is corrupted or that the upload process was interrupted. Use the "
 "document file page recalculation action to attempt to introspect the page "
 "count again."
 msgstr ""
@@ -1473,8 +1478,8 @@ msgstr ""
 #: views/document_file_views.py:333
 #, python-format
 msgid ""
-"Error cloning the page transformations for document file: %(document_file)s; "
-"%(error)s."
+"Error cloning the page transformations for document file: %(document_file)s;"
+" %(error)s."
 msgstr ""
 
 #: views/document_file_views.py:342 views/document_version_views.py:396
@@ -1494,8 +1499,8 @@ msgstr "نوع الوثائق: %s"
 #: views/document_type_views.py:72
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical "
-"document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical"
+" document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 "أنواع المستندات هي أبسط وحدات التكوين. كل شيء في النظام سيعتمد عليهم. حدد "
@@ -1535,16 +1540,15 @@ msgstr "قم بإنشاء ملصق سريع لنوع المستند: %s"
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
 msgstr ""
-"هل تريد حذف التسمية السريعة: %(label)s ، من نوع المستند &quot;"
-"%(document_type)s&quot;؟"
+"هل تريد حذف التسمية السريعة: %(label)s ، من نوع المستند "
+"&quot;%(document_type)s&quot;؟"
 
 #: views/document_type_views.py:223
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
-"تحرير التسمية السريعة &quot;%(filename)s&quot; من نوع المستند &quot;"
-"%(document_type)s&quot;"
+"تحرير التسمية السريعة &quot;%(filename)s&quot; من نوع المستند "
+"&quot;%(document_type)s&quot;"
 
 #: views/document_type_views.py:261
 msgid ""
@@ -1790,7 +1794,8 @@ msgstr ""
 
 #: views/document_version_views.py:317
 #, python-format
-msgid "Transformation clear request processed for %(count)d document versions."
+msgid ""
+"Transformation clear request processed for %(count)d document versions."
 msgstr ""
 
 #: views/document_version_views.py:323
@@ -1956,8 +1961,8 @@ msgstr "طباعة: %s"
 
 #: views/recently_accessed_document_views.py:23
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by "
-"this user account."
+"This view will list the latest documents viewed or manipulated in any way by"
+" this user account."
 msgstr ""
 "سيعرض هذا العرض قائمة بأحدث المستندات التي تم عرضها أو معالجتها بأي شكل من "
 "الأشكال بواسطة حساب المستخدم هذا."

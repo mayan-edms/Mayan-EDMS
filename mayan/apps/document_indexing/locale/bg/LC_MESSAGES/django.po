@@ -1,27 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2022
 # Roberto Rosario, 2022
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2022
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
-"bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:22
@@ -150,7 +149,8 @@ msgid "Slug"
 msgstr "Калъп"
 
 #: models.py:47
-msgid "Causes this index to be visible and updated when document data changes."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
 msgstr ""
 "Предизвиква този индекс да бъдат видим и актуализиран, когато данните в "
 "документа се променят."
@@ -189,8 +189,8 @@ msgstr ""
 
 #: models.py:195
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 msgstr ""
 "Поставете отметка в тази опция, за да може този възел да действа като "
 "контейнер за документи, а не като родител за други възли."
@@ -338,8 +338,8 @@ msgstr "Контролна сума за документ"
 
 #: serializers.py:205
 msgid ""
-"URL of the API endpoint showing the list document types associated with this "
-"index template."
+"URL of the API endpoint showing the list document types associated with this"
+" index template."
 msgstr ""
 "URL на крайната точка на API, показващ типовете документи в списъка, "
 "свързани с този шаблон за индекс."
@@ -347,8 +347,8 @@ msgstr ""
 #: serializers.py:212
 msgid "URL of the API endpoint to add document types to this index template."
 msgstr ""
-"URL на крайната точка на API за добавяне на типове документи към този шаблон "
-"за индекс."
+"URL на крайната точка на API за добавяне на типове документи към този шаблон"
+" за индекс."
 
 #: serializers.py:219
 msgid ""
@@ -432,8 +432,8 @@ msgstr "Индекси, свързани с типа документ: %s"
 #: views/index_template_views.py:90
 msgid ""
 "Indexes group document automatically into levels. Indexes are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
 "Индексира автоматично групиране на документ по нива. Индексите се дефинират "
 "с помощта на шаблон, чиито маркери се заменят с директни свойства на "

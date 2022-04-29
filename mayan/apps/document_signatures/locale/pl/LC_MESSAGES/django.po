@@ -1,28 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
 # Tomasz Szymanowicz <alakdae@gmail.com>, 2022
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2022\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
-"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
-"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
-"n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:54 events.py:6 permissions.py:6 settings.py:12
 msgid "Document signatures"
@@ -293,8 +291,8 @@ msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
 msgstr ""
-"Nie można zainicjować magazynu odłączonych podpisów. Sprawdź ustawienia {} i "
-"{} pod kątem błędów formatowania."
+"Nie można zainicjować magazynu odłączonych podpisów. Sprawdź ustawienia {} i"
+" {} pod kątem błędów formatowania."
 
 #: storages.py:20
 msgid "Detached signatures"
@@ -344,8 +342,8 @@ msgid ""
 "document itself or uploaded as a separate file."
 msgstr ""
 "Podpisy pomagają zapewnić dowody autorstwa i wykrywanie sabotażu. Są bardzo "
-"bezpieczne i trudne do zafałszowania. Podpis może zostać osadzony jako część "
-"samego dokumentu lub przesłany jako osobny plik."
+"bezpieczne i trudne do zafałszowania. Podpis może zostać osadzony jako część"
+" samego dokumentu lub przesłany jako osobny plik."
 
 #: views.py:320
 msgid "There are no signatures for this document file."

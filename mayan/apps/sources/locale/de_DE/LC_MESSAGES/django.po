@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Thomas Lauterbach <lauterbachthomas@googlemail.com>, 2022
@@ -12,20 +12,19 @@
 # Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2022
 # Roberto Rosario, 2022
 # Mathias Behrle <mathiasb@m9s.biz>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2022\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
-"teams/13584/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:57 events.py:5 links.py:137 menus.py:5 models.py:42 queues.py:7
@@ -44,8 +43,8 @@ msgid ""
 "browser."
 msgstr ""
 "Dokumentenquellen definieren verschiedene Möglichkeiten für die Einspeisung "
-"in Mayan EDMS. Minimal ein Webformular für das Hochladen mittels Browser ist "
-"erforderlich."
+"in Mayan EDMS. Minimal ein Webformular für das Hochladen mittels Browser ist"
+" erforderlich."
 
 #: apps.py:112
 msgid "Type"
@@ -307,8 +306,8 @@ msgstr ""
 #: source_backends/email_backends.py:331
 #, python-format
 msgid ""
-"Message ID metadata type \"%(metadata_type)s\" is not valid for the document "
-"type: %(document_type)s"
+"Message ID metadata type \"%(metadata_type)s\" is not valid for the document"
+" type: %(document_type)s"
 msgstr ""
 
 #: source_backends/email_backends.py:379
@@ -335,13 +334,14 @@ msgstr "Suchkriterien"
 #: source_backends/email_backends.py:402
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 "IMAP STORE-Befehl, der für Nachrichten ausgeführt wird, nachdem diese "
-"verarbeitet wurden. Ein Befehl pro Zeile. Verwenden Sie die in https://tools."
-"ietf.org/html/rfc2060.html#section-6.4.6 angegebenen Befehle oder die "
-"benutzerdefinierten Befehle für Ihren IMAP-Server."
+"verarbeitet wurden. Ein Befehl pro Zeile. Verwenden Sie die in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 angegebenen Befehle "
+"oder die benutzerdefinierten Befehle für Ihren IMAP-Server."
 
 #: source_backends/email_backends.py:407
 msgid "Store commands"
@@ -517,8 +517,8 @@ msgstr "Die Liste der Arbeitsdateien kann nicht ermittelt werden: %s"
 #: source_backends/staging_folder_backends.py:547
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
 "Dies könnte bedeuten, dass der Staging-Ordner leer ist. Es könnte auch "
 "bedeuten, dass das Betriebssystem-Benutzerkonto, das für Mayan EDMS "
@@ -608,18 +608,18 @@ msgstr "Der Server antwortete mit Code {{statusCode}}."
 
 #: views/base.py:53 wizards.py:54
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
-"Es wurden keine interaktiven Dokumentenquellen konfiguriert. Bitte erstellen "
-"oder aktivieren Sie eine bevor Sie fortsetzen."
+"Es wurden keine interaktiven Dokumentenquellen konfiguriert. Bitte erstellen"
+" oder aktivieren Sie eine bevor Sie fortsetzen."
 
 #: views/document_file_views.py:49
 #, python-format
 msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
 msgstr ""
-"Hochladen neuer Dateien für das Dokument \"%(document)s\" nicht möglich."
-"%(exception)s"
+"Hochladen neuer Dateien für das Dokument \"%(document)s\" nicht "
+"möglich.%(exception)s"
 
 #: views/document_file_views.py:73
 #, python-format
@@ -692,8 +692,8 @@ msgstr "Keine Quellen verfügbar"
 
 #: views/source_views.py:181
 msgid ""
-"This will execute the source code even if the source is not enabled. Sources "
-"that delete content after downloading will not do so while being tested. "
+"This will execute the source code even if the source is not enabled. Sources"
+" that delete content after downloading will not do so while being tested. "
 "Check the source's error log for information during testing. A successful "
 "test will clear the error log."
 msgstr ""

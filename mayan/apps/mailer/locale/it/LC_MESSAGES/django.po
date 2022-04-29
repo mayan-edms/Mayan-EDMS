@@ -1,26 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2022
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2022
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2022
 # Roberto Rosario, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
-"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:48
@@ -49,8 +49,8 @@ msgstr ""
 
 #: forms.py:58 forms.py:93
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
 msgstr ""
 "Indirizzo e-mail del destinatario. Possono essere più indirizzi separati da "
 "virgola o punto e virgola."
@@ -164,11 +164,11 @@ msgstr "A partire dal"
 
 #: mailers.py:22 mailers.py:111
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value "
-"is not set."
+"The sender's address. Some system will refuse to send messages if this value"
+" is not set."
 msgstr ""
-"L'indirizzo del mittente. Alcuni sistemi rifiuteranno di inviare messaggi se "
-"questo valore non è impostato."
+"L'indirizzo del mittente. Alcuni sistemi rifiuteranno di inviare messaggi se"
+" questo valore non è impostato."
 
 #: mailers.py:28
 msgid "Host"
@@ -209,8 +209,8 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
-"True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
 msgstr ""
 "Indica se utilizzare una connessione TLS (sicura) implicita quando si parla "
 "con il server SMTP. Nella maggior parte della documentazione e-mail, questo "
@@ -228,8 +228,8 @@ msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
 msgstr ""
-"Nome utente da utilizzare per il server SMTP. Se vuoto, l'autenticazione non "
-"verrà tentata."
+"Nome utente da utilizzare per il server SMTP. Se vuoto, l'autenticazione non"
+" verrà tentata."
 
 #: mailers.py:69
 msgid "Password"
@@ -238,8 +238,8 @@ msgstr "Password"
 #: mailers.py:72
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these "
-"settings is empty, authentication won't be attempted."
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
 msgstr ""
 "Password da utilizzare per il server SMTP. Questa impostazione viene "
 "utilizzata insieme al nome utente durante l'autenticazione sul server SMTP. "
@@ -473,8 +473,9 @@ msgstr "Destinatario"
 
 #: workflow_actions.py:30
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon. A template can be used to reference properties of the document."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon. A template can be used to reference properties of the "
+"document."
 msgstr ""
 "Indirizzo e-mail del destinatario. Possono essere più indirizzi separati da "
 "virgola o punto e virgola. È possibile utilizzare un modello per fare "

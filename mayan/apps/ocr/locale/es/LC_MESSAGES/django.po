@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
-"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:59 events.py:5 links.py:56 links.py:86 permissions.py:5 queues.py:6
@@ -113,7 +113,8 @@ msgstr "Tipo de documento"
 
 #: models.py:28
 msgid "Automatically queue newly created documents for OCR."
-msgstr "Poner en lista automáticamente los documentos recién creados para OCR."
+msgstr ""
+"Poner en lista automáticamente los documentos recién creados para OCR."
 
 #: models.py:34
 msgid "Document type settings"
@@ -221,8 +222,8 @@ msgstr ""
 #, python-format
 msgid "OCR content of %(count)d document versions deleted successfully."
 msgstr ""
-"%(count)d contenidos de OCR de las versiones del documento se eliminaron con "
-"éxito."
+"%(count)d contenidos de OCR de las versiones del documento se eliminaron con"
+" éxito."
 
 #: views.py:41
 #, python-format

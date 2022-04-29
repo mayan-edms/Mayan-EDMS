@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Bruno Martins <bruno.martins@bewgpt.com.pt>, 2022
@@ -16,24 +16,24 @@
 # Aline Freitas <aline@alinefreitas.com.br>, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
 # Márcia Ferreira, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
-"teams/13584/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:215 apps.py:647 events.py:5 menus.py:8 models/document_models.py:131
-#: permissions.py:5 queues.py:21 settings.py:33 statistics.py:230
+#: apps.py:215 apps.py:647 events.py:5 menus.py:8
+#: models/document_models.py:131 permissions.py:5 queues.py:21 settings.py:33
+#: statistics.py:230
 msgid "Documents"
 msgstr "Documentos"
 
@@ -145,8 +145,8 @@ msgstr "UUID mais original"
 
 #: classes.py:82
 msgid ""
-"Generates an immutable, random UUID (RFC 4122) for each file and appends the "
-"original filename of the uploaded file."
+"Generates an immutable, random UUID (RFC 4122) for each file and appends the"
+" original filename of the uploaded file."
 msgstr ""
 "Gera um imutável e aleatório UUID /RFC 4122) para cada ficheiro e anexa o "
 "nome do ficheiro original do ficheiro carregado."
@@ -419,19 +419,23 @@ msgstr "Remover transformações"
 msgid "Clone transformations"
 msgstr "Clonar transformações"
 
-#: links/document_file_page_links.py:46 links/document_version_page_links.py:74
+#: links/document_file_page_links.py:46
+#: links/document_version_page_links.py:74
 msgid "First page"
 msgstr "Primeira página"
 
-#: links/document_file_page_links.py:52 links/document_version_page_links.py:80
+#: links/document_file_page_links.py:52
+#: links/document_version_page_links.py:80
 msgid "Last page"
 msgstr "Última pagina"
 
-#: links/document_file_page_links.py:60 links/document_version_page_links.py:88
+#: links/document_file_page_links.py:60
+#: links/document_version_page_links.py:88
 msgid "Previous page"
 msgstr "Página anterior"
 
-#: links/document_file_page_links.py:66 links/document_version_page_links.py:94
+#: links/document_file_page_links.py:66
+#: links/document_version_page_links.py:94
 msgid "Next page"
 msgstr "Próxima pagina"
 
@@ -588,7 +592,8 @@ msgstr "Padrão"
 
 #: literals.py:80
 msgid "Replace. Create a new version and use the new file pages."
-msgstr "Substituir. Criar nova versão e utilizar as novas páginas do ficheiro."
+msgstr ""
+"Substituir. Criar nova versão e utilizar as novas páginas do ficheiro."
 
 #: literals.py:81
 msgid "Append. Create a new version and append the new file pages."
@@ -596,18 +601,19 @@ msgstr "Anexar. Criar nova versão e anexar novas páginas do ficheiro."
 
 #: literals.py:82
 msgid "Keep. Do not create a new version and keep the current version pages."
-msgstr "Manter. Não criar uma nova versão e manter a versão atual das páginas."
+msgstr ""
+"Manter. Não criar uma nova versão e manter a versão atual das páginas."
 
 #: literals.py:86
 #, python-format
 msgid ""
-"Document version \"%(document_version)s\" has been exported and is available "
-"for download using the link: %(download_url)s or from the downloads area "
+"Document version \"%(document_version)s\" has been exported and is available"
+" for download using the link: %(download_url)s or from the downloads area "
 "(%(download_list_url)s)."
 msgstr ""
-"Versão do documento \"%(document_version)s\" foi exportada e está disponível "
-"para descarregar utilizando o link: %(download_url)s ou a área de descargas "
-"(%(download_list_url)s)."
+"Versão do documento \"%(document_version)s\" foi exportada e está disponível"
+" para descarregar utilizando o link: %(download_url)s ou a área de descargas"
+" (%(download_list_url)s)."
 
 #: literals.py:91
 msgid "Document version exported."
@@ -692,8 +698,8 @@ msgstr "Nome do arquivo"
 
 #: models/document_file_models.py:98
 msgid ""
-"The document file's file mimetype. MIME types are a standard way to describe "
-"the format of a file, in this case the file format of the document. Some "
+"The document file's file mimetype. MIME types are a standard way to describe"
+" the format of a file, in this case the file format of the document. Some "
 "examples: \"text/plain\" or \"image/jpeg\". "
 msgstr ""
 "O mimetype do arquivo do ficheiro do documento. Tipos MIME são uma forma "
@@ -705,8 +711,8 @@ msgid ""
 "The document file file encoding. binary 7-bit, binary 8-bit, text, base64, "
 "etc."
 msgstr ""
-"A codificação do arquivo do ficheiro do documento. binary 7-bit, binary 8-"
-"bit, texto, base64, etc."
+"A codificação do arquivo do ficheiro do documento. binary 7-bit, binary "
+"8-bit, texto, base64, etc."
 
 #: models/document_file_models.py:121 storages.py:27
 msgid "Document files"
@@ -811,8 +817,10 @@ msgstr "O nome do tipo de documento."
 
 #: models/document_type_models.py:45
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
-msgstr "Tempo após o qual documentos deste tipo serão enviados para a lixeira."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
+msgstr ""
+"Tempo após o qual documentos deste tipo serão enviados para a lixeira."
 
 #: models/document_type_models.py:47
 msgid "Trash time period"
@@ -1154,8 +1162,8 @@ msgstr "ID do documento para o novo ficheiro favorito."
 #: settings.py:49
 msgid ""
 "The threshold at which the DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND "
-"will start deleting the oldest document file page image cache files. Specify "
-"the size in bytes."
+"will start deleting the oldest document file page image cache files. Specify"
+" the size in bytes."
 msgstr ""
 "O limite onde o "
 "DOCUMENTOS_FICHEIRO_PAGINA_IMAGEM_CACHE_ARMAZENAMENTO_BACKEND irá começar a "
@@ -1194,9 +1202,9 @@ msgstr "Número máximo de documentos favoritos por usuário."
 
 #: settings.py:90
 msgid ""
-"Size of blocks to use when calculating the document file's checksum. A value "
-"of 0 disables the block calculation and the entire file will be loaded into "
-"memory."
+"Size of blocks to use when calculating the document file's checksum. A value"
+" of 0 disables the block calculation and the entire file will be loaded into"
+" memory."
 msgstr ""
 "Tamanhos dos blocos a serem usados ao se calcular o checksum do arquivo do "
 "documento. Um valor 0 irá desabilitar o cálculo em blocos e todo arquivo "
@@ -1212,18 +1220,18 @@ msgstr "Lista de idiomas de documento suportados. Em formato ISO639-3."
 
 #: settings.py:107
 msgid ""
-"The threshold at which the DOCUMENT_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND "
-"will start deleting the oldest document version page image cache versions. "
+"The threshold at which the DOCUMENT_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND"
+" will start deleting the oldest document version page image cache versions. "
 "Specify the size in bytes."
 msgstr ""
 "O limite onde o DOCUMENTO_VERSAO_PAGINA_IMAGEM_CACHE_ARMAZENAMENTO_BACKEND "
-"irá começar a eliminar as versões mais antigas da imagem da página de versão "
-"do documento. Especifique o tamanho em bytes. "
+"irá começar a eliminar as versões mais antigas da imagem da página de versão"
+" do documento. Especifique o tamanho em bytes. "
 
 #: settings.py:116
 msgid ""
-"Path to the Storage subclass to use when storing the cached document version "
-"page image versions."
+"Path to the Storage subclass to use when storing the cached document version"
+" page image versions."
 msgstr ""
 "Caminho para a subclasse de armazenamento a ser utilizado para armazenar as "
 "versões da imagem da página de versão do documento."
@@ -1256,8 +1264,8 @@ msgstr ""
 msgid ""
 "Time after which a document stub will be considered invalid and deleted."
 msgstr ""
-"Tempo até que um rascunho de um documento seja considerado inválido e deverá "
-"ser apagado."
+"Tempo até que um rascunho de um documento seja considerado inválido e deverá"
+" ser apagado."
 
 #: settings.py:172
 msgid "Height in pixels of the document thumbnail image."
@@ -1311,19 +1319,19 @@ msgstr "Total de páginas de documentos por mês"
 
 #: storages.py:21
 msgid ""
-"Unable to initialize the document file storage. Check the settings {} and {} "
-"for formatting errors."
+"Unable to initialize the document file storage. Check the settings {} and {}"
+" for formatting errors."
 msgstr ""
-"Não foi possível iniciar o armazenamento do ficheiro do documento. Verifique "
-"as configurações {} e {} para formatar erros."
+"Não foi possível iniciar o armazenamento do ficheiro do documento. Verifique"
+" as configurações {} e {} para formatar erros."
 
 #: storages.py:35
 msgid ""
 "Unable to initialize the document file image storage. Check the settings {} "
 "and {} for formatting errors."
 msgstr ""
-"Não foi possível iniciar o armazenamento da imagem do ficheiro do documento. "
-"Verifique as configurações {} e {} para formatar erros."
+"Não foi possível iniciar o armazenamento da imagem do ficheiro do documento."
+" Verifique as configurações {} e {} para formatar erros."
 
 #: storages.py:41
 msgid "Document file page images"
@@ -1400,14 +1408,14 @@ msgstr "Recalcular o número de páginas do ficheiro de documento: %s?"
 
 #: views/document_file_page_views.py:107
 msgid ""
-"This could mean that the document file is of a format that is not supported, "
-"that it is corrupted or that the upload process was interrupted. Use the "
+"This could mean that the document file is of a format that is not supported,"
+" that it is corrupted or that the upload process was interrupted. Use the "
 "document file page recalculation action to attempt to introspect the page "
 "count again."
 msgstr ""
 "Isto pode significar que o ficheiro do documento está num formato que não é "
-"suportado ou que o ficheiro foi corrompido ou que o processo de carregamento "
-"foi interrompido. Utilize a ação de recalcular a página do ficheiro do "
+"suportado ou que o ficheiro foi corrompido ou que o processo de carregamento"
+" foi interrompido. Utilize a ação de recalcular a página do ficheiro do "
 "documento para tentar analisar a contagem de página novamente."
 
 #: views/document_file_page_views.py:113
@@ -1438,8 +1446,7 @@ msgstr "Imagem de: %s"
 #: views/document_file_views.py:48
 #, python-format
 msgid "Error deleting document file \"%(instance)s\"; %(exception)s"
-msgstr ""
-"Erro ao eliminar o ficheiro do documento \"%(instance)s\"; %(exception)s"
+msgstr "Erro ao eliminar o ficheiro do documento \"%(instance)s\"; %(exception)s"
 
 #: views/document_file_views.py:54
 #, python-format
@@ -1476,8 +1483,8 @@ msgid ""
 "All document files pages from this document file and the document version "
 "pages linked to them will be deleted too."
 msgstr ""
-"Todas as páginas de ficheiros de documento deste ficheiro de documento e das "
-"páginas de versão do documento associadas às mesma serão eliminadas também."
+"Todas as páginas de ficheiros de documento deste ficheiro de documento e das"
+" páginas de versão do documento associadas às mesma serão eliminadas também."
 
 #: views/document_file_views.py:119
 #, python-format
@@ -1551,8 +1558,8 @@ msgstr ""
 #: views/document_file_views.py:333
 #, python-format
 msgid ""
-"Error cloning the page transformations for document file: %(document_file)s; "
-"%(error)s."
+"Error cloning the page transformations for document file: %(document_file)s;"
+" %(error)s."
 msgstr ""
 "Erro ao clonar as transformações da página para o ficheiro de documento: "
 "%(document_file)s;%(error)s."
@@ -1574,8 +1581,8 @@ msgstr "Documentos do tipo: %s"
 #: views/document_type_views.py:72
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical "
-"document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical"
+" document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
 msgstr ""
 "Tipos de documentos são a unidade mais básica de configuração. Tudo no "
@@ -1616,12 +1623,12 @@ msgstr "Criar uma etiqueta rápida para o documento tipo: %s"
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
 msgstr ""
-"Apagar a etiqueta rápida: %(label)s, do documento tipo \"%(document_type)s\"?"
+"Apagar a etiqueta rápida: %(label)s, do documento tipo "
+"\"%(document_type)s\"?"
 
 #: views/document_type_views.py:223
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
 "Editar etiqueta rápida \"%(filename)s\" para documento do tipo "
 "\"%(document_type)s\""
@@ -1670,8 +1677,8 @@ msgid ""
 "the page remap actions or the page reset action."
 msgstr ""
 "Páginas de versão do documento são links para páginas de conteúdo. Crie as "
-"páginas de versão utilizando as ações de remapeamento da página ou a ação de "
-"repor a página."
+"páginas de versão utilizando as ações de remapeamento da página ou a ação de"
+" repor a página."
 
 #: views/document_version_page_views.py:114
 msgid "No document version pages available"
@@ -1685,12 +1692,14 @@ msgstr "Páginas de versão de documento: %s"
 #: views/document_version_page_views.py:129
 #, python-format
 msgid "%(count)d document version queued for page list append."
-msgstr "%(count)dversão do documento em linha para o anexo da lista de página."
+msgstr ""
+"%(count)dversão do documento em linha para o anexo da lista de página."
 
 #: views/document_version_page_views.py:132
 #, python-format
 msgid "%(count)d document versions queued for page list append."
-msgstr "%(count)dversões do documento em lina para o anexo da lista de página."
+msgstr ""
+"%(count)dversões do documento em lina para o anexo da lista de página."
 
 #: views/document_version_page_views.py:140
 msgid ""
@@ -1878,7 +1887,8 @@ msgstr ""
 
 #: views/document_version_views.py:317
 #, python-format
-msgid "Transformation clear request processed for %(count)d document versions."
+msgid ""
+"Transformation clear request processed for %(count)d document versions."
 msgstr ""
 "Pedido de remoção de transformação processado para %(count)dversões de "
 "documento "
@@ -2037,8 +2047,8 @@ msgstr "Imprimir: %s"
 
 #: views/recently_accessed_document_views.py:23
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by "
-"this user account."
+"This view will list the latest documents viewed or manipulated in any way by"
+" this user account."
 msgstr ""
 "Esta visualização irá listar os últimos documentos vistos ou manuseados de "
 "qualquer forma por esta conta de usuário."

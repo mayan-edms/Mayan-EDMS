@@ -2,26 +2,26 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2022
 # valleymanbs <mrvalleyman@gmail.com>, 2022
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2022
 # Roberto Rosario, 2022
 # Paul Audhep <audhep@gmail.com>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Paul Audhep <audhep@gmail.com>, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
-"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:40
@@ -165,9 +165,7 @@ msgid ""
 "Web links allow generating HTTP links from documents to external resources. "
 "The link URL's can contain document properties values."
 msgstr ""
-" I collegamenti Web consentono di generare collegamenti HTTP tra i "
-"documenti  e le risorse esterne. Gli URL dei collegamenti possono contenere "
-"valori delle proprietà del documento.\n"
+" I collegamenti Web consentono di generare collegamenti HTTP tra i documenti  e le risorse esterne. Gli URL dei collegamenti possono contenere valori delle proprietà del documento.\n"
 " "
 
 #: views.py:180

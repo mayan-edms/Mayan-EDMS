@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
@@ -10,20 +10,19 @@
 # Vítor Figueiró <vfigueiro@gmail.com>, 2022
 # Bruno Martins <bruno.martins@bewgpt.com.pt>, 2022
 # Márcia Ferreira, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:11+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
-"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/"
-"pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:57 events.py:5 permissions.py:5 settings.py:10
@@ -179,8 +178,8 @@ msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
 msgstr ""
-"Posição em que será mostrada a mensagem de sistema. As opções são: top-left, "
-"top-center, top-right, bottom-left, bottom-center, bottom-right."
+"Posição em que será mostrada a mensagem de sistema. As opções são: top-left,"
+" top-center, top-right, bottom-left, bottom-center, bottom-right."
 
 #: settings.py:36
 msgid ""
@@ -225,7 +224,8 @@ msgstr ""
 "A localização está correta, mas a sua conta não tem as permissões "
 "necessárias."
 
-#: templates/500.html:5 templates/500.html:30 templates/appearance/root.html:47
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:47
 msgid "Server error"
 msgstr "Erro do servidor"
 
@@ -250,9 +250,7 @@ msgid "Contact your system administrator."
 msgstr "Contacte o seu administrador de sistemas."
 
 #: templates/500.html:47
-msgid ""
-"Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or "
-"\"FATAL\"."
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
 msgstr ""
 "Verifique os logs por mensagens com as etiquetas \"ERROR\", \"CRITICAL\" ou "
 "\"FATAL\"."
@@ -293,63 +291,41 @@ msgstr "Publicado sob a licença: "
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a "
-"class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index."
-"html\">Release notes %(icon_documentation)s</a> or the short version <a "
-"class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/"
-"master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"A lista de modificações completa encontra-se disponível nas <a "
-"class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index."
-"html\">Notas de Publicação %(icon_documentation)s</a> ou na versão mais "
-"curta <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-"
-"edms/blob/master/HISTORY.rst\">Registo de alterações %(icon_documentation)s</"
-"a>."
+"A lista de modificações completa encontra-se disponível nas <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Notas de Publicação %(icon_documentation)s</a> ou na versão mais curta <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Registo de alterações %(icon_documentation)s</a>."
 
 #: templates/appearance/about.html:104
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" "
-"href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</"
-"a>.\n"
+"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"Para questões, aceda à <a class=\"new_window\" href=\"https://docs.mayan-"
-"edms.com\">Documentação %(icon_documentation)s</a>."
+"Para questões, aceda à <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentação %(icon_documentation)s</a>."
 
 #: templates/appearance/about.html:110
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a "
-"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
-"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" "
-"href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
-"%(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"Se encontrou um problema ou tem uma ideia para uma funcionalidade, visite o "
-"<a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
-"%(icon_forum)s</a> ou crie um pedido no <a class=\"new_window\" "
-"href=\"https://gitlab.com/mayan-edms/mayan-edms\">Repositório de código "
-"%(icon_source_code)s</a>."
+"Se encontrou um problema ou tem uma ideia para uma funcionalidade, visite o <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> ou crie um pedido no <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Repositório de código %(icon_source_code)s</a>."
 
 #: templates/appearance/about.html:115
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about "
-"how awesome %(project_title)s is!\n"
+"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
 msgstr ""
 "\n"
-"Espalhe a palavra. fale com os seus amigos e colegas sobre o quão fantástico "
-"o %(project_title)s é."
+"Espalhe a palavra. fale com os seus amigos e colegas sobre o quão fantástico o %(project_title)s é."
 
 #: templates/appearance/base.html:73
 msgid "Object"
@@ -490,7 +466,8 @@ msgstr "Editar tema: 1%s"
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
 msgstr ""
-"Os temas permitem alterar a aparência visual sem exigir alterações de código."
+"Os temas permitem alterar a aparência visual sem exigir alterações de "
+"código."
 
 #: views.py:89
 msgid "There are no themes"

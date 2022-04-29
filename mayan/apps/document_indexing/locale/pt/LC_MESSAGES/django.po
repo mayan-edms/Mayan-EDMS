@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2022
@@ -11,20 +11,19 @@
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2022
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2022
 # Márcia Ferreira, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Márcia Ferreira, 2022\n"
-"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/"
-"pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:22
@@ -143,14 +142,16 @@ msgstr "Nome"
 #: models.py:41
 msgid "This value will be used by other apps to reference this index."
 msgstr ""
-"Este valor será utilizado por outras aplicações para referenciar este índice."
+"Este valor será utilizado por outras aplicações para referenciar este "
+"índice."
 
 #: models.py:42
 msgid "Slug"
 msgstr "Slug"
 
 #: models.py:47
-msgid "Causes this index to be visible and updated when document data changes."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
 msgstr ""
 "Faz com que este índice seja visível e atualizado quando os dados do "
 "documento forem alterados."
@@ -189,8 +190,8 @@ msgstr ""
 
 #: models.py:195
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 msgstr ""
 "Escolha esta opção para que este nó atue como contentor para documentos e "
 "não como pai de outros nós."
@@ -338,8 +339,8 @@ msgstr "Soma de controlo do documento"
 
 #: serializers.py:205
 msgid ""
-"URL of the API endpoint showing the list document types associated with this "
-"index template."
+"URL of the API endpoint showing the list document types associated with this"
+" index template."
 msgstr ""
 "URL do API endpoint que mostra a lista de tipos de documentos associados a "
 "este modelo de índice."
@@ -370,8 +371,8 @@ msgid ""
 "This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
 msgstr ""
-"Isto pode significar que não há modelos de índice criados ou que existem mas "
-"não estão definidos corretamente."
+"Isto pode significar que não há modelos de índice criados ou que existem mas"
+" não estão definidos corretamente."
 
 #: views/index_instance_views.py:42
 msgid "There are no index instances available."
@@ -419,8 +420,8 @@ msgid ""
 "linked indexes."
 msgstr ""
 "Documentos dete tipo aparecerão nos índices associados quando estes forem "
-"atualizados. Eventos de documentos deste tipo irão disparar atualizações nos "
-"índices associados."
+"atualizados. Eventos de documentos deste tipo irão disparar atualizações nos"
+" índices associados."
 
 #: views/index_template_views.py:74
 #, python-format
@@ -430,13 +431,13 @@ msgstr "Índices associados ao tipo de documento: %s"
 #: views/index_template_views.py:90
 msgid ""
 "Indexes group document automatically into levels. Indexes are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
 "índices agrupam documentos automaticamente em níveis. Os índices são "
 "definidos usando modelos dos quais os marcadores são substituídos com "
-"propriedades diretas de documentos como o nome ou descrição, ou propriedades "
-"avançadas como metadata. "
+"propriedades diretas de documentos como o nome ou descrição, ou propriedades"
+" avançadas como metadata. "
 
 #: views/index_template_views.py:95
 msgid "There are no index templates."

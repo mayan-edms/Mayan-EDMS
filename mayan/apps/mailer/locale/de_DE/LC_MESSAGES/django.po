@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Dennis M. Pöpperl <free-software@dm-poepperl.de>, 2022
@@ -10,20 +10,19 @@
 # Berny <berny@bernhard-marx.de>, 2022
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2022
 # Mathias Behrle <mathiasb@m9s.biz>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2022\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
-"teams/13584/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:48
@@ -52,11 +51,11 @@ msgstr ""
 
 #: forms.py:58 forms.py:93
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
 msgstr ""
-"E-Mailadresse des Empfängers. Es können mehrere Adressen eingetragen werden, "
-"getrennt durch Komma oder Semikolon."
+"E-Mailadresse des Empfängers. Es können mehrere Adressen eingetragen werden,"
+" getrennt durch Komma oder Semikolon."
 
 #: forms.py:60 forms.py:95
 msgid "Email address"
@@ -167,8 +166,8 @@ msgstr "Von"
 
 #: mailers.py:22 mailers.py:111
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value "
-"is not set."
+"The sender's address. Some system will refuse to send messages if this value"
+" is not set."
 msgstr ""
 "Die Adresse des Absenders. Einige Systeme verweigern die Verarbeitung von "
 "Nachrichten, wenn dieser Wert nicht gesetzt ist."
@@ -211,13 +210,13 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
-"True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
 msgstr ""
 "Ob eine implizite gesicherte TLS-Verbindung zum SMTP-Server benutzt werden "
 "soll. In den meisten Dokumentationen wird dieser Typ der TLS-Verbindung als "
-"SSL referenziert. Er wird üblicherweise an Port 465 bereitgestellt. Wenn Sie "
-"Probleme feststellen, sehen Sie auch die explizite Einstellung \"TLS "
+"SSL referenziert. Er wird üblicherweise an Port 465 bereitgestellt. Wenn Sie"
+" Probleme feststellen, sehen Sie auch die explizite Einstellung \"TLS "
 "benutzen\". TLS und SSL schließen sich gegenseitig aus, also setzen Sie nur "
 "eine der beiden Einstellungen."
 
@@ -240,8 +239,8 @@ msgstr "Passwort"
 #: mailers.py:72
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these "
-"settings is empty, authentication won't be attempted."
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
 msgstr ""
 "Passwort für den SMTP-Server. Diese Einstellung wird in Verbindung mit dem "
 "Benutzernamen für die Authentifizierung am SMTP-Server verwendet. Wenn eine "
@@ -350,7 +349,8 @@ msgstr ""
 
 #: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
-msgstr "Vorlage für den Textkörper einer Dokumenten-Mail. Kann HTML enthalten."
+msgstr ""
+"Vorlage für den Textkörper einer Dokumenten-Mail. Kann HTML enthalten."
 
 #: settings.py:27
 msgid "Template for the document link email form subject line."
@@ -471,8 +471,9 @@ msgstr "Empfänger"
 
 #: workflow_actions.py:30
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon. A template can be used to reference properties of the document."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon. A template can be used to reference properties of the "
+"document."
 msgstr ""
 "E-Mail-Adresse des Empfängers. Kann aus mehreren durch Komma oder Semikolon "
 "getrennten Adressen bestehen. Eine Vorlage kann verwendet werden, um auf "
@@ -511,8 +512,8 @@ msgstr "Betreff der E-Mail. Kann eine Zeichenfolge oder eine Vorlage sein."
 #: workflow_actions.py:86
 msgid "Body of the email to send. Can be a string or a template."
 msgstr ""
-"Textkörper der zu sendenden E-Mail. Kann eine Zeichenfolge oder eine Vorlage "
-"sein."
+"Textkörper der zu sendenden E-Mail. Kann eine Zeichenfolge oder eine Vorlage"
+" sein."
 
 #: workflow_actions.py:93 workflow_actions.py:170
 msgid "Attachment"
