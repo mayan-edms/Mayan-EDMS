@@ -20,6 +20,20 @@
   Thanks to Bw (@bwakkie) for the report and code samples.
 - Type cast LUT values when masking an asset for pasting via Pillow's
   ``point()``.
+- Document metadata edit form validation updates:
+
+  - Remove ``disabled`` attribute from the metadata type label field to
+    avoid having its value removed when there is a validation error.
+  - Remove the ``required`` flag from the value field when there is a
+    required metadata for a document. The previous behavior cause the tabular
+    form to display "(required)" in column title confusing users and causing
+    them to think that all metadata type fields were required.
+  - Raise validation error for specific required metadata entries and no for
+    the entire form. This help users better understand which metadata field
+    needs to be corrected.
+  - Improve the required metadata validation logic to take into account
+    existing values and empty forms when data was entered into the field
+    but the update checkbox was left unchecked.
 
 4.2.3 (2022-04-01)
 ==================
