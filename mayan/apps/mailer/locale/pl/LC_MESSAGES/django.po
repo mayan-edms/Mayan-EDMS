@@ -1,28 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
 # Tomasz Szymanowicz <alakdae@gmail.com>, 2022
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2022\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
-"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
-"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
-"n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:48
 msgid "Mailer"
@@ -50,8 +48,8 @@ msgstr ""
 
 #: forms.py:58 forms.py:93
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
 msgstr ""
 "Adres e-mail odbiorcy. Możesz podać wiele adresów oddzielonych przecinkiem "
 "lub średnikiem."
@@ -165,8 +163,8 @@ msgstr "Od"
 
 #: mailers.py:22 mailers.py:111
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value "
-"is not set."
+"The sender's address. Some system will refuse to send messages if this value"
+" is not set."
 msgstr ""
 "Adres nadawcy. Niektóre systemy odmówią wysłania wiadomości, jeśli ta "
 "wartość nie zostanie ustawiona."
@@ -197,7 +195,8 @@ msgid ""
 "This is used for explicit TLS connections, generally on port 587."
 msgstr ""
 "Określa, czy używać połączenia TLS (bezpiecznego) podczas połaczenia z "
-"serwerem SMTP. Służy to do wymuszonych połączeń TLS, zazwyczaj na porcie 587."
+"serwerem SMTP. Służy to do wymuszonych połączeń TLS, zazwyczaj na porcie "
+"587."
 
 #: mailers.py:48
 msgid "Use SSL"
@@ -209,8 +208,8 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
-"True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
 msgstr ""
 "Określa, czy używać domniemanego połączenia TLS (bezpiecznego) podczas "
 "połączenia z serwerem SMTP. W większości dokumentów e-mail ten typ "
@@ -228,8 +227,8 @@ msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
 msgstr ""
-"Nazwa użytkownika dla serwera SMTP. Jeśli nie podano, próba uwierzytelnienia "
-"nie zostanie podjęta."
+"Nazwa użytkownika dla serwera SMTP. Jeśli nie podano, próba uwierzytelnienia"
+" nie zostanie podjęta."
 
 #: mailers.py:69
 msgid "Password"
@@ -238,8 +237,8 @@ msgstr "Hasło"
 #: mailers.py:72
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these "
-"settings is empty, authentication won't be attempted."
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
 msgstr ""
 "Hasło dla serwera SMTP. W połączeniu z nazwą użytkownika używane jest "
 "podczas uwierzytelnienia do serwera SMTP. Jeśli nie podano hasła lub nazwy "
@@ -415,7 +414,8 @@ msgstr "%(count)d łącze dokumentu w kolejce do dostarczenia wiadomości e-mail
 #: views/document_views.py:16
 #, python-format
 msgid "%(count)d document links queued for email delivery"
-msgstr "%(count)d łącza dokumentów w kolejce do dostarczenia wiadomości e-mail"
+msgstr ""
+"%(count)d łącza dokumentów w kolejce do dostarczenia wiadomości e-mail"
 
 #: views/mailing_profile_views.py:29
 msgid "New mailing profile backend selection"
@@ -468,8 +468,9 @@ msgstr "Odbiorca"
 
 #: workflow_actions.py:30
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon. A template can be used to reference properties of the document."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon. A template can be used to reference properties of the "
+"document."
 msgstr ""
 "Adres e-mail odbiorcy. Może być wieloma adresami oddzielonymi przecinkiem "
 "lub średnikiem. Szablon może służyć do odwoływania się do właściwości "

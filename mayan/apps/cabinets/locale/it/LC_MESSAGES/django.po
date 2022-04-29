@@ -2,25 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2022
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2022
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2022
 # Roberto Rosario, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
-"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:51 apps.py:158 apps.py:162 apps.py:166 apps.py:170 apps.py:174
@@ -179,7 +179,8 @@ msgid "List of children cabinets."
 msgstr "Elenco degli livelli di schedario"
 
 #: serializers.py:22
-msgid "URL of the API endpoint showing the list documents inside this cabinet."
+msgid ""
+"URL of the API endpoint showing the list documents inside this cabinet."
 msgstr ""
 "URL dell'endpoint API che mostra i documenti dell'elenco all'interno di "
 "questo schedario."
@@ -209,8 +210,8 @@ msgid ""
 "Cabinet levels can contain documents or other cabinet sub levels. To add "
 "documents to a cabinet, select the cabinet view of a document view."
 msgstr ""
-"I livelli del schedario possono contenere documenti o altri sottolivelli del "
-"schedario. Per aggiungere documenti a un schedario, selezionare la vista "
+"I livelli del schedario possono contenere documenti o altri sottolivelli del"
+" schedario. Per aggiungere documenti a un schedario, selezionare la vista "
 "cabinet di una vista documento."
 
 #: views.py:122

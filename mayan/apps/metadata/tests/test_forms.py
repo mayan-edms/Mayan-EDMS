@@ -32,12 +32,38 @@ class DocumentMetadataFormTestCase(
         errors = form.errors
 
         self.assertEqual(
-            errors['__all__'],
-            ['"test metadata type label_0" is required for this document type.']
+            errors['value'], [
+                '"{}" is required for this document type.'.format(
+                    self.test_metadata_type.label
+                )
+            ]
         )
         self.assertEqual(
             errors['metadata_type_id'], ['This field is required.']
         )
+
+    def test_document_metadata_form_required_with_value_no_checkbox(self):
+        form = DocumentMetadataForm(
+            data={
+                'update': False,
+                'value': 'test value'
+            },
+            initial={
+                'document_type': self.test_document_type,
+                'metadata_type': self.test_metadata_type
+            }
+        )
+
+        # Trigger clean method.
+        errors = form.errors
+
         self.assertEqual(
-            errors['value'], ['This field is required.']
+            errors['value'], [
+                '"{}" is required for this document type.'.format(
+                    self.test_metadata_type.label
+                )
+            ]
+        )
+        self.assertEqual(
+            errors['metadata_type_id'], ['This field is required.']
         )

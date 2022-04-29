@@ -1,24 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
-"Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/"
-"teams/13584/es_PR/)\n"
-"Language: es_PR\n"
+"Language-Team: Spanish (Puerto Rico) (https://www.transifex.com/rosarior/teams/13584/es_PR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_PR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:25
@@ -87,13 +86,14 @@ msgstr "Indexar una instancia de modelo en el motor de búsqueda."
 #: queues.py:25
 msgid "Index all instances of a search model to the search engine."
 msgstr ""
-"Indexa todas las instancias de un modelo de búsqueda en el motor de búsqueda."
+"Indexa todas las instancias de un modelo de búsqueda en el motor de "
+"búsqueda."
 
 #: queues.py:30
 msgid "Reset the search backend indices and index all instances again."
 msgstr ""
-"Restablece los índices de back-end de búsqueda e indexa todas las instancias "
-"nuevamente."
+"Restablece los índices de back-end de búsqueda e indexa todas las instancias"
+" nuevamente."
 
 #: settings.py:16
 msgid "Full path to the backend to be used to handle the search."
@@ -114,8 +114,8 @@ msgstr "Cantidad de objetos a procesar al realizar la indexación masiva."
 #: settings.py:40
 msgid "Sets the default state of the \"Match all\" checkbox."
 msgstr ""
-"Establece el estado predeterminado de la casilla de verificación \"Coincidir "
-"con todos\"."
+"Establece el estado predeterminado de la casilla de verificación \"Coincidir"
+" con todos\"."
 
 #: settings.py:44
 msgid "Maximum number search results to fetch and display."
@@ -144,7 +144,8 @@ msgid ""
 "affected while the backend is being reindexed."
 msgstr ""
 "Esta herramienta es necesaria solo para algunos backends de búsqueda. Los "
-"resultados de la búsqueda se verán afectados mientras se reindexa el backend."
+"resultados de la búsqueda se verán afectados mientras se reindexa el "
+"backend."
 
 #: views.py:102
 msgid "This tool erases and populates the search backend's internal index."

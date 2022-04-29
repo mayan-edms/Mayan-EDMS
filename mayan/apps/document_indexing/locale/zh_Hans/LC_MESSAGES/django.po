@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2022
@@ -9,20 +9,19 @@
 # yan songwei <yansw@vip.163.com>, 2022
 # xisafe <root@xisafe.com>, 2022
 # Roberto Rosario, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
-"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/"
-"teams/13584/zh-Hans/)\n"
-"Language: zh-Hans\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: admin.py:22
@@ -147,7 +146,8 @@ msgid "Slug"
 msgstr "标称"
 
 #: models.py:47
-msgid "Causes this index to be visible and updated when document data changes."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
 msgstr "使文档数据更改时，此索引可见并更新。"
 
 #: models.py:50 models.py:190
@@ -180,8 +180,8 @@ msgstr "使文档数据更改时，此节点可见并更新。"
 
 #: models.py:195
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 msgstr "选中此选项可使此节点充当文档的容器，而不是其他节点的父节点。"
 
 #: models.py:198
@@ -325,8 +325,8 @@ msgstr "文件校验和"
 
 #: serializers.py:205
 msgid ""
-"URL of the API endpoint showing the list document types associated with this "
-"index template."
+"URL of the API endpoint showing the list document types associated with this"
+" index template."
 msgstr ""
 
 #: serializers.py:212
@@ -404,8 +404,8 @@ msgstr ""
 #: views/index_template_views.py:90
 msgid ""
 "Indexes group document automatically into levels. Indexes are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views/index_template_views.py:95
@@ -430,9 +430,7 @@ msgid ""
 "Only the documents of the types selected will be shown in the index when "
 "built. Only the events of the documents of the types select will trigger "
 "updates in the index."
-msgstr ""
-"构建时，只有所选类型的文档才会显示在索引中。只有所选类型的文档的事件才会触发"
-"索引中的更新。"
+msgstr "构建时，只有所选类型的文档才会显示在索引中。只有所选类型的文档的事件才会触发索引中的更新。"
 
 #: views/index_template_views.py:151
 #, python-format

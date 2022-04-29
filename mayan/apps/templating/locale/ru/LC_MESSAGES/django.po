@@ -2,29 +2,27 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Alex Chigrin <chalex84@mail.ru>, 2022
 # Roberto Rosario, 2022
 # lilo.panic, 2022
 # Oleg Sizov <olegsm35@gmail.com>, 2022
 # Ilya Pavlov <spirkaa@gmail.com>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
-"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:19 permissions.py:5
 msgid "Templating"
@@ -33,22 +31,23 @@ msgstr "Шаблоны"
 #: fields.py:19
 #, python-format
 msgid ""
-"Use Django's default templating language (https://docs.djangoproject.com/en/"
-"%(django_version)s/ref/templates/builtins/). "
+"Use Django's default templating language "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" "
 msgstr ""
-"Используйте стандартный язык шаблонов Django (https://docs.djangoproject.com/"
-"en/%(django_version)s/ref/templates/builtins/)."
+"Используйте стандартный язык шаблонов Django "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 
 #: fields.py:37
 #, python-format
 msgid ""
-"Use Django's default templating language (https://docs.djangoproject.com/en/"
-"%(django_version)s/ref/templates/builtins/). The {{ %(variable)s }} variable "
-"is available to the template."
+"Use Django's default templating language "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" The {{ %(variable)s }} variable is available to the template."
 msgstr ""
-"Используйте стандартный язык шаблонов Django (https://docs.djangoproject.com/"
-"en/%(django_version)s/ref/templates/builtins/). В этом шаблоне доступна "
-"переменная {{ %(variable)s }}."
+"Используйте стандартный язык шаблонов Django "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" В этом шаблоне доступна переменная {{ %(variable)s }}."
 
 #: forms.py:9
 msgid "Resulting text from the evaluated template."

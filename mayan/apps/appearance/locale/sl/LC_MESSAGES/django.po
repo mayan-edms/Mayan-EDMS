@@ -1,27 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Jože Detečnik <joze.detecnik@3tav.si>, 2022
 # Roberto Rosario, 2022
-#
+# Jože Detečnik <joze.detecnik@3tav.si>, 2022
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:11+0000\n"
-"Last-Translator: Roberto Rosario, 2022\n"
-"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/"
-"sl/)\n"
-"Language: sl\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2022\n"
+"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
-"n%100==4 ? 2 : 3);\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #: apps.py:57 events.py:5 permissions.py:5 settings.py:10
 msgid "Appearance"
@@ -214,7 +212,8 @@ msgid ""
 "permission to access it."
 msgstr ""
 
-#: templates/500.html:5 templates/500.html:30 templates/appearance/root.html:47
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:47
 msgid "Server error"
 msgstr "Napaka strežnika"
 
@@ -239,9 +238,7 @@ msgid "Contact your system administrator."
 msgstr ""
 
 #: templates/500.html:47
-msgid ""
-"Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or "
-"\"FATAL\"."
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
 msgstr ""
 
 #: templates/500.html:48
@@ -281,66 +278,44 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a "
-"class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index."
-"html\">Release notes %(icon_documentation)s</a> or the short version <a "
-"class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/"
-"master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"                Celoten seznam sprememb je na voljo na <a "
-"class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index."
-"html\">Opombe ob izdaji %(icon_documentation)s</a> oziroma v kratki "
-"različici <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-"
-"edms/blob/master/HISTORY.rst\">Spremembe %(icon_documentation)s</a>.\n"
+"                Celoten seznam sprememb je na voljo na <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Opombe ob izdaji %(icon_documentation)s</a> oziroma v kratki različici <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Spremembe %(icon_documentation)s</a>.\n"
 "            "
 
 #: templates/appearance/about.html:104
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" "
-"href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</"
-"a>.\n"
+"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"                Za vprašanja preverite <a class=\"new_window\" "
-"href=\"https://docs.mayan-edms.com\">dokumentacijo%(icon_documentation)s</"
-"a>.\n"
+"                Za vprašanja preverite <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">dokumentacijo%(icon_documentation)s</a>.\n"
 "            "
 
 #: templates/appearance/about.html:110
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a "
-"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
-"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" "
-"href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
-"%(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"                Če ste našli napako ali imate idejo za funkcijo, obiščite <a "
-"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
-"%(icon_forum)s</a> ali odprite zahtevek <a class=\"new_window\" "
-"href=\"https://gitlab.com/mayan-edms/mayan-edms\">Izvorna koda "
-"%(icon_source_code)s</a>.\n"
+"                Če ste našli napako ali imate idejo za funkcijo, obiščite <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> ali odprite zahtevek <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Izvorna koda %(icon_source_code)s</a>.\n"
 "            "
 
 #: templates/appearance/about.html:115
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about "
-"how awesome %(project_title)s is!\n"
+"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
 msgstr ""
 "\n"
-"              Razširi besedo. Pogovorite se s prijatelji in sodelavci o tem, "
-"kako čudovit je%(project_title)s !\n"
+"              Razširi besedo. Pogovorite se s prijatelji in sodelavci o tem, kako čudovit je%(project_title)s !\n"
 "            "
 
 #: templates/appearance/base.html:73
@@ -349,7 +324,7 @@ msgstr "Predmet"
 
 #: templates/appearance/generic_confirm.html:13
 msgid "Are you sure?"
-msgstr ""
+msgstr "Ali si prepričani?"
 
 #: templates/appearance/generic_confirm.html:37
 msgid "Yes"

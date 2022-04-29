@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
@@ -10,19 +10,19 @@
 # Olivier W, 2022
 # Frédéric Sheedy <sheedf@gmail.com>, 2022
 # Roberto Rosario, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:41
@@ -155,8 +155,8 @@ msgid ""
 "Use this field to show a unique label depending on the document from which "
 "the smart link is being accessed."
 msgstr ""
-"Utilisez ce champ pour afficher une étiquette unique en fonction du document "
-"à partir duquel le lien intelligent est accessible."
+"Utilisez ce champ pour afficher une étiquette unique en fonction du document"
+" à partir duquel le lien intelligent est accessible."
 
 #: models.py:35
 msgid "Dynamic label"
@@ -194,8 +194,8 @@ msgstr "Attribut étranger du document "
 
 #: models.py:180
 msgid ""
-"The expression using document properties to be evaluated against the foreign "
-"document field."
+"The expression using document properties to be evaluated against the foreign"
+" document field."
 msgstr ""
 "Expression utilisant des propriétés de document à évaluer par rapport au "
 "champ de document étranger."

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Przemysław Bodio <przemyslawbodio.dev@gmail.com>, 2022
@@ -9,22 +9,20 @@
 # mic <winterfall24@gmail.com>, 2022
 # Roberto Rosario, 2022
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2022\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
-"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
-"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
-"n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:76 events.py:6 forms.py:42 links.py:46 links.py:87 links.py:240
 #: links.py:264 models/workflow_models.py:67 settings.py:13
@@ -161,8 +159,9 @@ msgstr "Akcja"
 msgid "Namespace"
 msgstr "Przestrzeń nazw"
 
-#: forms.py:135 models/workflow_models.py:54 models/workflow_state_models.py:55
-#: models/workflow_state_models.py:180 models/workflow_transition_models.py:40
+#: forms.py:135 models/workflow_models.py:54
+#: models/workflow_state_models.py:55 models/workflow_state_models.py:180
+#: models/workflow_transition_models.py:40
 #: models/workflow_transition_models.py:151
 msgid "Label"
 msgstr "Etykieta"
@@ -279,8 +278,8 @@ msgid ""
 "Can be a static value or a template. In addition to the workflow instance, "
 "the template receives the workflow instance context which itself includes "
 "the \"entry_log\" (containing \"workflow_instance\", \"datetime\", "
-"\"transition\", \"user\", \"comment\") and any values from workflow template "
-"fields."
+"\"transition\", \"user\", \"comment\") and any values from workflow template"
+" fields."
 msgstr ""
 
 #: literals.py:27
@@ -316,7 +315,8 @@ msgstr "Dokument"
 msgid "Context"
 msgstr "Kontekst"
 
-#: models/workflow_instance_models.py:44 models/workflow_instance_models.py:171
+#: models/workflow_instance_models.py:44
+#: models/workflow_instance_models.py:171
 msgid "Workflow instance"
 msgstr "Instancja przepływu pracy"
 
@@ -444,8 +444,8 @@ msgstr "Wpis danych działania"
 #: models/workflow_state_models.py:199
 msgid ""
 "The condition that will determine if this state action is executed or not. "
-"The condition is evaluated against the workflow instance. Conditions that do "
-"not return any value, that return the Python logical None, or an empty "
+"The condition is evaluated against the workflow instance. Conditions that do"
+" not return any value, that return the Python logical None, or an empty "
 "string ('') are considered to be logical false, any other value is "
 "considered to be the logical true."
 msgstr ""
@@ -476,7 +476,8 @@ msgid ""
 msgstr ""
 "Działanie zostanie wykonane w zależności od wartości zwracanej warunku."
 
-#: models/workflow_state_models.py:277 models/workflow_transition_models.py:115
+#: models/workflow_state_models.py:277
+#: models/workflow_transition_models.py:115
 msgid "Has a condition?"
 msgstr "Ma warunek?"
 
@@ -503,10 +504,10 @@ msgstr "Stan docelowy"
 #: models/workflow_transition_models.py:52
 msgid ""
 "The condition that will determine if this transition is enabled or not. The "
-"condition is evaluated against the workflow instance. Conditions that do not "
-"return any value, that return the Python logical None, or an empty string "
-"('') are considered to be logical false, any other value is considered to be "
-"the logical true."
+"condition is evaluated against the workflow instance. Conditions that do not"
+" return any value, that return the Python logical None, or an empty string "
+"('') are considered to be logical false, any other value is considered to be"
+" the logical true."
 msgstr ""
 "Warunek określający czy przejście przepływu pracy jest aktywowane. Warunek "
 "jest wyliczany względem wystąpienia przepływu pracy. Warunki nie zwracające "
@@ -722,8 +723,8 @@ msgstr "Argumenty do przekazania do WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 
 #: storages.py:14
 msgid ""
-"Unable to initialize the workflow preview storage. Check the settings {} and "
-"{} for formatting errors."
+"Unable to initialize the workflow preview storage. Check the settings {} and"
+" {} for formatting errors."
 msgstr ""
 "Nie można zainicjować magazynu podglądu przepływu pracy. Sprawdź ustawienia "
 "{} i {} pod kątem błędów formatowania."
@@ -738,8 +739,8 @@ msgstr "Podgląd przepływu pracy"
 
 #: views/workflow_instance_views.py:35
 msgid ""
-"Assign workflows to the document type of this document to have this document "
-"execute those workflows. "
+"Assign workflows to the document type of this document to have this document"
+" execute those workflows. "
 msgstr ""
 "Przypisz przepływy pracy do typu dokumentu tego dokumentu, aby ten dokument "
 "mógł wykonać przepływy pracy."
@@ -755,7 +756,8 @@ msgstr "Obiegi dokumentu: %s"
 
 #: views/workflow_instance_views.py:68
 msgid ""
-"This view will show the state changes as a workflow instance is transitioned."
+"This view will show the state changes as a workflow instance is "
+"transitioned."
 msgstr ""
 "Ten widok pokaże zmiany stanu po przeniesieniu instancji przepływu pracy."
 
@@ -788,8 +790,7 @@ msgstr "Wybierz"
 
 #: views/workflow_instance_views.py:218
 #, python-format
-msgid ""
-"Select transition for workflow \"%(workflow)s\" of document \"%(document)s\""
+msgid "Select transition for workflow \"%(workflow)s\" of document \"%(document)s\""
 msgstr ""
 
 #: views/workflow_proxy_views.py:32
@@ -830,7 +831,8 @@ msgstr "Brak dokumentów w tym stanie przepływu pracy"
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "Dokumenty w przepływie pracy „%s”, wpisz „%s”"
 
-#: views/workflow_proxy_views.py:117 views/workflow_template_state_views.py:332
+#: views/workflow_proxy_views.py:117
+#: views/workflow_template_state_views.py:332
 msgid "Create states and link them using transitions."
 msgstr "Twórz stany i łącz je za pomocą przejść."
 
@@ -838,7 +840,8 @@ msgstr "Twórz stany i łącz je za pomocą przejść."
 msgid "This workflow doesn't have any state"
 msgstr "Ten przepływ pracy nie ma żadnego stanu"
 
-#: views/workflow_proxy_views.py:123 views/workflow_template_state_views.py:338
+#: views/workflow_proxy_views.py:123
+#: views/workflow_template_state_views.py:338
 #, python-format
 msgid "States of workflow: %s"
 msgstr "Stany obiegu dokumentów: %s"
@@ -860,8 +863,8 @@ msgstr "Edytuj działanie stanu przepływu pracy: %s"
 
 #: views/workflow_template_state_views.py:174
 msgid ""
-"Workflow state actions are macros that get executed when documents enters or "
-"leaves the state in which they reside."
+"Workflow state actions are macros that get executed when documents enters or"
+" leaves the state in which they reside."
 msgstr ""
 "Akcje stanu przepływu pracy to makra, które są wykonywane, gdy dokumenty "
 "wchodzą lub wychodzą ze stanu, w którym się znajdują."
@@ -916,7 +919,8 @@ msgstr "Edytuj przejście do przepływu pracy: %s"
 
 #: views/workflow_template_transition_views.py:151
 msgid ""
-"Create a transition and use it to move a workflow from  one state to another."
+"Create a transition and use it to move a workflow from  one state to "
+"another."
 msgstr ""
 "Utwórz przejście i użyj go, aby przenieść przepływ pracy z jednego stanu do "
 "drugiego."
@@ -947,8 +951,8 @@ msgstr "Edytuj pole przejścia przepływu pracy: %s"
 
 #: views/workflow_template_transition_views.py:291
 msgid ""
-"Workflow transition fields allow adding data to the workflow's context. This "
-"additional context data can then be used by other elements of the workflow "
+"Workflow transition fields allow adding data to the workflow's context. This"
+" additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
 msgstr ""
 "Pola przejścia przepływu pracy umożliwiają dodawanie danych do kontekstu "

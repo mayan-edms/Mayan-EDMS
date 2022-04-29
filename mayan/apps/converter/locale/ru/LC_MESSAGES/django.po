@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
@@ -9,22 +9,20 @@
 # Panasoft, 2022
 # lilo.panic, 2022
 # Ilya Pavlov <spirkaa@gmail.com>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
-"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:36 events.py:5 permissions.py:5 queues.py:7 settings.py:21
 msgid "Converter"
@@ -67,7 +65,8 @@ msgstr "преобразование"
 #: dependencies.py:14
 msgid "Utility from the poppler-utils package used to inspect PDF files."
 msgstr ""
-"Утилита из пакета poppler-utils, используемая для инспектирования файлов PDF."
+"Утилита из пакета poppler-utils, используемая для инспектирования файлов "
+"PDF."
 
 #: dependencies.py:19
 msgid ""
@@ -146,8 +145,8 @@ msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
 msgstr ""
-"Это значение будет использоваться для ссылки на этот ресурс. Может содержать "
-"только латинские буквы, цифры и знак подчеркивания."
+"Это значение будет использоваться для ссылки на этот ресурс. Может содержать"
+" только латинские буквы, цифры и знак подчеркивания."
 
 #: models.py:53
 msgid "Internal name"
@@ -270,7 +269,8 @@ msgstr ""
 msgid ""
 "Path to the Storage subclass to use when storing the cached asset files."
 msgstr ""
-"Путь к подклассу Storage для использования при хранении файлов кэша ресурсов."
+"Путь к подклассу Storage для использования при хранении файлов кэша "
+"ресурсов."
 
 #: settings.py:46
 msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
@@ -318,8 +318,8 @@ msgstr ""
 
 #: storages.py:28
 msgid ""
-"Unable to initialize the converter asset cachestorage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the converter asset cachestorage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""
 "Невозможно инициализировать хранилище кеша ресурсов конвертера. Проверьте "
 "настройки {} и {} на наличие ошибок форматирования."
@@ -441,7 +441,8 @@ msgstr "Редактировать ресурс: %s"
 
 #: views.py:139
 msgid ""
-"Assets are files that can be used in conjuction with certain transformations."
+"Assets are files that can be used in conjuction with certain "
+"transformations."
 msgstr ""
 "Ресурсы - это файлы, которые можно использовать в сочетании с определенными "
 "преобразованиями."
@@ -504,8 +505,8 @@ msgstr "Страницы"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas and/"
-"or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
 "Номера страниц, на которые будет добавлено преобразование. Используйте "
 "запятую для разделения или дефис для указания диапазона. Оставьте поле "

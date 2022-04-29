@@ -1,27 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Yaman Sanobar <yman.snober@gmail.com>, 2022
 # Bashar Al-Abdulhadi, 2022
 # Marwan Rahhal <Marwanr@sssit.net>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
-"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:48
 msgid "Mailer"
@@ -49,8 +48,8 @@ msgstr ""
 
 #: forms.py:58 forms.py:93
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
 msgstr ""
 "يمكن إضافة أكثر من عنوان بريدي مع التأكد من إضافة فاصلة او فاصة منقوطة "
 
@@ -164,8 +163,8 @@ msgstr "من عند"
 
 #: mailers.py:22 mailers.py:111
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value "
-"is not set."
+"The sender's address. Some system will refuse to send messages if this value"
+" is not set."
 msgstr "لا يمكن اتمام عملية الإرسال دون تعبئة القيم الإجبارية"
 
 #: mailers.py:28
@@ -193,8 +192,8 @@ msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
 msgstr ""
-"ما إذا كنت تريد استخدام اتصال TLS (آمن) عند التحدث إلى خادم SMTP. يستخدم هذا "
-"لاتصالات TLS الصريحة ، بشكل عام على المنفذ 587."
+"ما إذا كنت تريد استخدام اتصال TLS (آمن) عند التحدث إلى خادم SMTP. يستخدم هذا"
+" لاتصالات TLS الصريحة ، بشكل عام على المنفذ 587."
 
 #: mailers.py:48
 msgid "Use SSL"
@@ -206,14 +205,15 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
-"True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
 msgstr ""
 "ما إذا كنت تريد استخدام اتصال TLS ضمني (آمن) عند التحدث إلى خادم SMTP. في "
-"معظم وثائق البريد الإلكتروني ، يُشار إلى هذا النوع من اتصال TLS باسم SSL. يتم "
-"استخدامه بشكل عام على المنفذ 465. إذا كنت تواجه مشكلات ، فراجع إعداد TLS "
-"الصريح &quot;استخدام TLS&quot;. لاحظ أن &quot;Use TLS&quot; و &quot;Use "
-"SSL&quot; هما حصريان متبادلان ، لذلك عيِّن واحدًا فقط من هذه الإعدادات على True."
+"معظم وثائق البريد الإلكتروني ، يُشار إلى هذا النوع من اتصال TLS باسم SSL. "
+"يتم استخدامه بشكل عام على المنفذ 465. إذا كنت تواجه مشكلات ، فراجع إعداد TLS"
+" الصريح &quot;استخدام TLS&quot;. لاحظ أن &quot;Use TLS&quot; و &quot;Use "
+"SSL&quot; هما حصريان متبادلان ، لذلك عيِّن واحدًا فقط من هذه الإعدادات على "
+"True."
 
 #: mailers.py:60
 msgid "Username"
@@ -234,12 +234,12 @@ msgstr "كلمة المرور"
 #: mailers.py:72
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these "
-"settings is empty, authentication won't be attempted."
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
 msgstr ""
 "كلمة المرور المراد استخدامها لخادم SMTP. يتم استخدام هذا الإعداد مع اسم "
-"المستخدم عند المصادقة على خادم SMTP. إذا كان أي من هذه الإعدادات فارغًا ، فلن "
-"تتم محاولة المصادقة."
+"المستخدم عند المصادقة على خادم SMTP. إذا كان أي من هذه الإعدادات فارغًا ، "
+"فلن تتم محاولة المصادقة."
 
 #: mailers.py:81
 msgid "Django SMTP backend"
@@ -266,7 +266,8 @@ msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
 msgstr ""
-"سيتم تحديد ملف التعريف هذا مسبقًا في نموذج إرسال االوثائق  بالبريد الإلكتروني."
+"سيتم تحديد ملف التعريف هذا مسبقًا في نموذج إرسال االوثائق  بالبريد "
+"الإلكتروني."
 
 #: models.py:45
 msgid "Default"
@@ -342,7 +343,8 @@ msgstr "قالب لسطر موضوع نموذج البريد الإلكترون�
 
 #: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
-msgstr "قالب للنص الأساسي لنموذج البريد الإلكتروني للمستند. يمكن أن تشمل HTML."
+msgstr ""
+"قالب للنص الأساسي لنموذج البريد الإلكتروني للمستند. يمكن أن تشمل HTML."
 
 #: settings.py:27
 msgid "Template for the document link email form subject line."
@@ -462,8 +464,9 @@ msgstr "مستلم"
 
 #: workflow_actions.py:30
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma "
-"or semicolon. A template can be used to reference properties of the document."
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon. A template can be used to reference properties of the "
+"document."
 msgstr ""
 "يمكن إضافة أكثر من عنوان بريدي مع التأكد من إضافة فاصلة او فاصة منقوطة كما "
 "يمكن إضافة قالب محدد للإيميل"

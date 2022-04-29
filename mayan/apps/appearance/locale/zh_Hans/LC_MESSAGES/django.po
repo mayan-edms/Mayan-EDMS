@@ -1,26 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # yan songwei <yansw@vip.163.com>, 2022
 # Ford Guo <agile.guo@gmail.com>, 2022
 # Roberto Rosario, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:11+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
-"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/"
-"teams/13584/zh-Hans/)\n"
-"Language: zh-Hans\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:57 events.py:5 permissions.py:5 settings.py:10
@@ -173,8 +172,7 @@ msgstr "显示视图标题的最大字符数。"
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr ""
-"显示系统消息的位置。选项包括：左上，顶部居中，右上，左下，底部居中，右下。"
+msgstr "显示系统消息的位置。选项包括：左上，顶部居中，右上，左下，底部居中，右下。"
 
 #: settings.py:36
 msgid ""
@@ -215,7 +213,8 @@ msgid ""
 "permission to access it."
 msgstr "位置正确，但是您的帐户没有访问权限。"
 
-#: templates/500.html:5 templates/500.html:30 templates/appearance/root.html:47
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:47
 msgid "Server error"
 msgstr "服务器错误"
 
@@ -240,11 +239,8 @@ msgid "Contact your system administrator."
 msgstr "请与系统管理员联系。"
 
 #: templates/500.html:47
-msgid ""
-"Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or "
-"\"FATAL\"."
-msgstr ""
-"检查日志中是否带有标签“ ERROR”-错误，“ CRITICAL”-关键或“ FATAL”-致命的消息。"
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgstr "检查日志中是否带有标签“ ERROR”-错误，“ CRITICAL”-关键或“ FATAL”-致命的消息。"
 
 #: templates/500.html:48
 #, python-format
@@ -283,27 +279,18 @@ msgstr "根据许可证发布："
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a "
-"class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index."
-"html\">Release notes %(icon_documentation)s</a> or the short version <a "
-"class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/"
-"master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"                完整的更改列表可见于<a class=\"new_window\" href=\"https://"
-"docs.mayan-edms.com/releases/index.html\">发行说明%(icon_documentation)s </a>"
-"或简短版本<a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-"
-"edms/blob/master/HISTORY.rst\">更改日志%(icon_documentation)s </a>。\n"
+"                完整的更改列表可见于<a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">发行说明%(icon_documentation)s </a>或简短版本<a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">更改日志%(icon_documentation)s </a>。\n"
 "            "
 
 #: templates/appearance/about.html:104
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" "
-"href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</"
-"a>.\n"
+"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 
@@ -311,26 +298,18 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a "
-"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
-"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" "
-"href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
-"%(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"                如果您发现了bug或有功能创意，请访问<a class=\"new_window\" "
-"href=\"https://forum.mayan-edms.com\">论坛%(icon_forum)s </a>或在<a "
-"class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">源代码"
-"仓库%(icon_source_code)s </a>提交问题。\n"
+"                如果您发现了bug或有功能创意，请访问<a class=\"new_window\" href=\"https://forum.mayan-edms.com\">论坛%(icon_forum)s </a>或在<a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">源代码仓库%(icon_source_code)s </a>提交问题。\n"
 "            "
 
 #: templates/appearance/about.html:115
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about "
-"how awesome %(project_title)s is!\n"
+"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
 msgstr ""
 
@@ -406,8 +385,7 @@ msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
 msgstr ""
-"总计（%(start)s  -  %(end)s，%(total)s）（第%(page_number)s页，"
-"总%(total_pages)s页）"
+"总计（%(start)s  -  %(end)s，%(total)s）（第%(page_number)s页，总%(total_pages)s页）"
 
 #: templates/appearance/partials/list_header.html:14
 #: templates/appearance/partials/list_header.html:17

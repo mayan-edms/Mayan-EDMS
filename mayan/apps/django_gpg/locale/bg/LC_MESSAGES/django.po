@@ -1,26 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2022
 # Roberto Rosario, 2022
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
-"bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:31
@@ -157,7 +156,8 @@ msgstr "Грешка в подписа."
 
 #: literals.py:72
 msgid "Document is signed but no public key is available for verification."
-msgstr "Документът е подписан, но не е наличен публичен ключ за удостоверение."
+msgstr ""
+"Документът е подписан, но не е наличен публичен ключ за удостоверение."
 
 #: literals.py:77
 msgid "Document is signed, and signature is good."
@@ -285,8 +285,8 @@ msgstr "Качване на нов ключ"
 
 #: views.py:182
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded "
-"by the user. The view to upload private and public keys is the same."
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user. The view to upload private and public keys is the same."
 msgstr ""
 "Личните ключове се използват за подписване на документи. Личните ключове "
 "могат да бъдат качени само от потребителя. Изгледът за качване на лични и "
@@ -298,14 +298,14 @@ msgstr "Няма лични ключове"
 
 #: views.py:205
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded "
-"by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr ""
 "Публичните ключове се използват за проверка на подписани документи. "
 "Публичните ключове могат да бъдат качени от потребителя или изтеглени от "
-"сървъри на ключове. Изгледът за качване на лични и публични ключове е един и "
-"същ."
+"сървъри на ключове. Изгледът за качване на лични и публични ключове е един и"
+" същ."
 
 #: views.py:211
 msgid "There no public keys"

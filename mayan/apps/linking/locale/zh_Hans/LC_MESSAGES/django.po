@@ -1,25 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2022
 # Roberto Rosario, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
-"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/"
-"teams/13584/zh-Hans/)\n"
-"Language: zh-Hans\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:41
@@ -188,8 +187,8 @@ msgstr "外部文档属性"
 
 #: models.py:180
 msgid ""
-"The expression using document properties to be evaluated against the foreign "
-"document field."
+"The expression using document properties to be evaluated against the foreign"
+" document field."
 msgstr ""
 
 #: models.py:182
@@ -270,9 +269,7 @@ msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
-msgstr ""
-"索引将文档分组为单元，通常具有相似的属性和相同或相似的类型。智能链接允许定义"
-"文档之间的关系，即使它们位于不同的索引中且属于不同类型。"
+msgstr "索引将文档分组为单元，通常具有相似的属性和相同或相似的类型。智能链接允许定义文档之间的关系，即使它们位于不同的索引中且属于不同类型。"
 
 #: views.py:145
 msgid "There are no smart links"
@@ -282,8 +279,7 @@ msgstr "没有智能链接"
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
-msgstr ""
-"智能链接允许定义文档之间的关系，即使它们位于不同的索引中且属于不同类型。"
+msgstr "智能链接允许定义文档之间的关系，即使它们位于不同的索引中且属于不同类型。"
 
 #: views.py:171
 msgid "There are no resolved smart links for this document"

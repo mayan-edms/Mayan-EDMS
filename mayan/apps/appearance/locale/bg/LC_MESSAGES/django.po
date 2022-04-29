@@ -1,26 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2022
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2022
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:11+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
-"bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:57 events.py:5 permissions.py:5 settings.py:10
@@ -223,7 +222,8 @@ msgstr ""
 "Местоположението е правилно, но акаунтът ви няма необходимото разрешение за "
 "достъп до него."
 
-#: templates/500.html:5 templates/500.html:30 templates/appearance/root.html:47
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:47
 msgid "Server error"
 msgstr "Грешка в сървъра"
 
@@ -248,9 +248,7 @@ msgid "Contact your system administrator."
 msgstr "Свържете се с вашия системен администратор."
 
 #: templates/500.html:47
-msgid ""
-"Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or "
-"\"FATAL\"."
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
 msgstr ""
 "Проверете дневниците за съобщения с маркери \"ERROR\", \"CRITICAL\" или "
 "\"FATAL\"."
@@ -274,8 +272,7 @@ msgid ""
 "                "
 msgstr ""
 "\n"
-"                    %(setting_project_title)s се основава "
-"на%(project_title)s\n"
+"                    %(setting_project_title)s се основава на%(project_title)s\n"
 "                "
 
 #: templates/appearance/about.html:77
@@ -295,64 +292,43 @@ msgstr "Издаден под лиценз:"
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a "
-"class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index."
-"html\">Release notes %(icon_documentation)s</a> or the short version <a "
-"class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/"
-"master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"                Пълният списък на промените е наличен чрез <a "
-"class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index."
-"html\">Бележки към версията %(icon_documentation)s</a> или кратката версия "
-"<a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/"
-"master/HISTORY.rst\">Дневник на промените%(icon_documentation)s</a>.\n"
+"                Пълният списък на промените е наличен чрез <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Бележки към версията %(icon_documentation)s</a> или кратката версия <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Дневник на промените%(icon_documentation)s</a>.\n"
 "            "
 
 #: templates/appearance/about.html:104
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" "
-"href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</"
-"a>.\n"
+"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"За въпроси проверете <a class=\"new_window\" href=\"https://docs.mayan-edms."
-"com\">Документация %(icon_documentation)s</a> ."
+"За въпроси проверете <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Документация %(icon_documentation)s</a> ."
 
 #: templates/appearance/about.html:110
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a "
-"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
-"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" "
-"href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
-"%(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"                Ако намерите бъг или имате идея за прибавка, посетете <a "
-"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Форум "
-"%(icon_forum)s</a> или направете заявка в <a class=\"new_window\" "
-"href=\"https://gitlab.com/mayan-edms/mayan-edms\">Хранилище на изходен код "
-"%(icon_source_code)s</a>.\n"
+"                Ако намерите бъг или имате идея за прибавка, посетете <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Форум %(icon_forum)s</a> или направете заявка в <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Хранилище на изходен код %(icon_source_code)s</a>.\n"
 "            "
 
 #: templates/appearance/about.html:115
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about "
-"how awesome %(project_title)s is!\n"
+"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
 msgstr ""
 "\n"
-"Разпространете информация за този проект. Говорете с вашите приятели и "
-"колеги за това колко страхотен е %(project_title)s!"
+"Разпространете информация за този проект. Говорете с вашите приятели и колеги за това колко страхотен е %(project_title)s!"
 
 #: templates/appearance/base.html:73
 msgid "Object"

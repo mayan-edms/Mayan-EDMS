@@ -1,26 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2022
 # Daniele Bortoluzzi <daniele@elkos.it>, 2022
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2022
 # Roberto Rosario, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
-"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:28 apps.py:54 links.py:14 queues.py:9
@@ -82,7 +82,8 @@ msgstr "Cerca duplicati del documento"
 #: views.py:32
 msgid "Only exact copies of this document will be shown in the this list."
 msgstr ""
-"In questo elenco verranno visualizzate solo copie esatte di questo documento."
+"In questo elenco verranno visualizzate solo copie esatte di questo "
+"documento."
 
 #: views.py:36
 msgid "There are no duplicates for this document"
@@ -96,12 +97,12 @@ msgstr "Duplicati per il documento: %s"
 #: views.py:64
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
 msgstr ""
 "I duplicati sono documenti composti dallo stesso file esatto, fino "
-"all'ultimo byte. I file che hanno lo stesso testo o OCR ma non sono identici "
-"o sono stati salvati utilizzando un formato di file diverso non verranno "
+"all'ultimo byte. I file che hanno lo stesso testo o OCR ma non sono identici"
+" o sono stati salvati utilizzando un formato di file diverso non verranno "
 "visualizzati come duplicati."
 
 #: views.py:71

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Tobias Paepke <tobias.paepke@paepke.net>, 2022
@@ -11,20 +11,19 @@
 # Jesaja Everling <jeverling@gmail.com>, 2022
 # Roberto Rosario, 2022
 # Mathias Behrle <mathiasb@m9s.biz>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2022\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
-"teams/13584/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:67 apps.py:205 apps.py:211 apps.py:215 apps.py:220 apps.py:224
@@ -72,62 +71,62 @@ msgstr "Metadatentyp bearbeitet"
 msgid "Metadata type relationship updated"
 msgstr "Metadatentypbeziehung aktualisiert"
 
-#: forms.py:15
+#: forms.py:16
 msgid "ID"
 msgstr "ID"
 
-#: forms.py:17 models.py:39
+#: forms.py:19 models.py:39
 msgid "Name"
 msgstr "Name"
 
-#: forms.py:26 models.py:204 workflow_actions.py:93
+#: forms.py:27 models.py:204 workflow_actions.py:93
 msgid "Value"
 msgstr "Wert"
 
-#: forms.py:31
+#: forms.py:32
 msgid "Update"
 msgstr "Aktualisieren"
 
-#: forms.py:52 forms.py:208 models.py:292
+#: forms.py:52 forms.py:211 models.py:292
 msgid "Required"
 msgstr "Erforderlich"
 
-#: forms.py:81
+#: forms.py:80
 #, python-format
 msgid "Lookup value error: %s"
 msgstr "Fehler für Suchwert: %s"
 
-#: forms.py:94
+#: forms.py:93
 #, python-format
 msgid "Default value error: %s"
 msgstr "Fehler für Standardwert: %s"
 
-#: forms.py:112 models.py:151
+#: forms.py:114 models.py:151
 #, python-format
 msgid "\"%s\" is required for this document type."
 msgstr "\"%s\" wird für diesen Dokumententyp benötigt."
 
-#: forms.py:130
+#: forms.py:133
 msgid "Metadata types to be added to the selected documents."
 msgstr "Metadatentypen für die ausgewählten Dokumente."
 
-#: forms.py:131 models.py:87 models.py:290 search.py:14 workflow_actions.py:86
+#: forms.py:134 models.py:87 models.py:290 search.py:14 workflow_actions.py:86
 msgid "Metadata type"
 msgstr "Metadatentyp"
 
-#: forms.py:156
+#: forms.py:159
 msgid "Remove"
 msgstr "Entfernen"
 
-#: forms.py:182
+#: forms.py:185
 msgid " Available template context variables: "
 msgstr "Verfügbare Kontextvariablen: "
 
-#: forms.py:206
+#: forms.py:209
 msgid "None"
 msgstr "Keine"
 
-#: forms.py:207
+#: forms.py:210
 msgid "Optional"
 msgstr "Optional"
 
@@ -263,7 +262,8 @@ msgstr ""
 
 #: models.py:71
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
+"The parser will reformat the value entered to conform to the expected "
+"format."
 msgstr ""
 "Der Parser wird den eingegebenen Wert so reformatieren, dass er dem "
 "geforderten Format entspricht."
@@ -424,7 +424,8 @@ msgstr ""
 #: views/document_views.py:157
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
 msgstr ""
 "Metadatentyp %(metadata_type)s erfolgreich hinzugefügt zu Dokument "
 "%(document)s."
@@ -469,58 +470,59 @@ msgstr[1] ""
 msgid "Edit metadata for document: %s"
 msgstr "Metadaten des Dokuments %s bearbeiten"
 
-#: views/document_views.py:319
+#: views/document_views.py:322
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
 msgstr ""
 "Fehler bei der Bearbeitung der Metadaten für Dokument %(document)s: "
 "%(exception)s."
 
-#: views/document_views.py:332
+#: views/document_views.py:335
 #, python-format
 msgid "Metadata for document %s edited successfully."
 msgstr "Metadaten des Dokuments %s erfolgreich bearbeitet."
 
-#: views/document_views.py:357
+#: views/document_views.py:360
 msgid ""
-"Add metadata types this document's type to be able to add them to individual "
-"documents. Once added to individual document, you can then edit their values."
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
 msgstr ""
 "Fügen Sie Metadatentype für diesen Dokumententyp hinzu, um sie zu "
 "individuellen Dokumenten dieses Typs hinzufügen zu können. Sobald sie "
 "individuellen Dokumenten zugeordnet sind, lassen sich ihre Werte eintragen."
 
-#: views/document_views.py:362
+#: views/document_views.py:365
 msgid "This document doesn't have any metadata"
 msgstr "Keine Metadaten für dieses Dokument vorhanden"
 
-#: views/document_views.py:363
+#: views/document_views.py:366
 #, python-format
 msgid "Metadata for document: %s"
 msgstr "Metadaten von Dokument %s"
 
-#: views/document_views.py:378
+#: views/document_views.py:381
 #, python-format
 msgid "Metadata remove request performed on %(count)d document"
 msgstr "Metadaten für %(count)d Dokument gelöscht"
 
-#: views/document_views.py:381
+#: views/document_views.py:384
 #, python-format
 msgid "Metadata remove request performed on %(count)d documents"
 msgstr "Metadaten für %(count)d Dokumente gelöscht"
 
-#: views/document_views.py:390
+#: views/document_views.py:393
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views/document_views.py:401
+#: views/document_views.py:404
 #, python-format
 msgid "Remove metadata types from the document: %s"
 msgstr "Metadatentypen von Dokument %s entfernen"
 
-#: views/document_views.py:467
+#: views/document_views.py:470
 #, python-format
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
@@ -529,7 +531,7 @@ msgstr ""
 "Metadatentyp \"%(metadata_type)s\" erfolgreich entfernt von Dokument "
 "%(document)s."
 
-#: views/document_views.py:476
+#: views/document_views.py:479
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "

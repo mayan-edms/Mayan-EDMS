@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # tetjarediske <tetja.rediske@googlemail.com>, 2022
@@ -15,20 +15,19 @@
 # Roberto Rosario, 2022
 # Niklas Maurer <niklas.maurer@web.energy>, 2022
 # Mathias Behrle <mathiasb@m9s.biz>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:11+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2022\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
-"teams/13584/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:57 events.py:5 permissions.py:5 settings.py:10
@@ -186,8 +185,8 @@ msgid ""
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
 msgstr ""
 "Position, an der die Systemmeldung angezeigt wird. Optionen sind: top-left "
-"(oben links), top-center (oben mittig), top-right (oben rechts), bottom-left "
-"(unten links), bottom-center (unten mittig), bottom-right (unten rechts)."
+"(oben links), top-center (oben mittig), top-right (oben rechts), bottom-left"
+" (unten links), bottom-center (unten mittig), bottom-right (unten rechts)."
 
 #: settings.py:36
 msgid ""
@@ -231,7 +230,8 @@ msgstr ""
 "Der Speicherort ist korrekt, aber Ihr Konto verfügt nicht über die "
 "erforderliche Berechtigung, um darauf zuzugreifen."
 
-#: templates/500.html:5 templates/500.html:30 templates/appearance/root.html:47
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:47
 msgid "Server error"
 msgstr "Serverfehler"
 
@@ -256,9 +256,7 @@ msgid "Contact your system administrator."
 msgstr "Wenden Sie sich an Ihren Systemadministrator."
 
 #: templates/500.html:47
-msgid ""
-"Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or "
-"\"FATAL\"."
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
 msgstr ""
 "Überprüfen Sie die Protokolldateien und suchen Sie nach Nachrichten mit dem "
 "Kennzeichen \"ERROR\", \"CRITICAL\" oder \"FATAL\"."
@@ -302,64 +300,42 @@ msgstr "Veröffentlicht unter der Lizenz:"
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a "
-"class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index."
-"html\">Release notes %(icon_documentation)s</a> or the short version <a "
-"class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/"
-"master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"Eine umfassende Liste der Neuerungen ist einsehbar in den <a "
-"class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index."
-"html\">Release Notes %(icon_documentation)s oder als Kurzversion<a "
-"class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/"
-"master/HISTORY.rst\">im Changelog %(icon_documentation)s</a>."
+"Eine umfassende Liste der Neuerungen ist einsehbar in den <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release Notes %(icon_documentation)s oder als Kurzversion<a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">im Changelog %(icon_documentation)s</a>."
 
 #: templates/appearance/about.html:104
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" "
-"href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</"
-"a>.\n"
+"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"Bei Fragen schauen Sie bitte zunächst in die <a class=\"new_window\" "
-"href=\"https://docs.mayan-edms.com\">Dokumentation %(icon_documentation)s</"
-"a>.\n"
+"Bei Fragen schauen Sie bitte zunächst in die <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Dokumentation %(icon_documentation)s</a>.\n"
 " "
 
 #: templates/appearance/about.html:110
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a "
-"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
-"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" "
-"href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
-"%(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
 msgstr ""
 "\n"
-"Sollten Sie einen Bug gefunden oder eine Idee für eine neue Funktion haben, "
-"dann besuchen Sie entweder das<a class=\"new_window\" href=\"https://forum."
-"mayan-edms.com\"> Forum %(icon_forum)s</a> oder erstellen Sie ein Ticket in "
-"der <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-"
-"edms\"> Quellenverwaltung %(icon_source_code)s</a>. "
+"Sollten Sie einen Bug gefunden oder eine Idee für eine neue Funktion haben, dann besuchen Sie entweder das<a class=\"new_window\" href=\"https://forum.mayan-edms.com\"> Forum %(icon_forum)s</a> oder erstellen Sie ein Ticket in der <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\"> Quellenverwaltung %(icon_source_code)s</a>. "
 
 #: templates/appearance/about.html:115
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about "
-"how awesome %(project_title)s is!\n"
+"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
 msgstr ""
 "\n"
-"Geben Sie den Tipp weiter. Erzählen Sie Ihren Freunden und Kollegen, wie "
-"toll %(project_title)s ist!"
+"Geben Sie den Tipp weiter. Erzählen Sie Ihren Freunden und Kollegen, wie toll %(project_title)s ist!"
 
 #: templates/appearance/base.html:73
 msgid "Object"
@@ -499,8 +475,8 @@ msgstr "Bearbeite Thema %s"
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
 msgstr ""
-"Themen erlauben es das Erscheinungsbild zu verändern, ohne Code zu verändern "
-"zu müssen"
+"Themen erlauben es das Erscheinungsbild zu verändern, ohne Code zu verändern"
+" zu müssen"
 
 #: views.py:89
 msgid "There are no themes"

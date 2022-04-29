@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2022
@@ -9,19 +9,19 @@
 # Roberto Rosario, 2022
 # Daniele Bortoluzzi <daniele@elkos.it>, 2022
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
-"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:132 permissions.py:5 settings.py:15
@@ -163,39 +163,39 @@ msgstr ""
 
 #: settings.py:30
 msgid ""
-"In list mode, show the \"object\" menu options as a dropdown menu instead of "
-"individual buttons."
+"In list mode, show the \"object\" menu options as a dropdown menu instead of"
+" individual buttons."
 msgstr ""
 
 #: settings.py:37
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
 #: settings.py:47
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. Example: ['app_1', 'app_2']"
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
 #: settings.py:58
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application. These apps will be installed before the default "
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application. These apps will be installed before the default "
 "apps. Example: ['app_1', 'app_2']"
 msgstr ""
 
 #: settings.py:69
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
 msgstr ""
 "Nome della vista collegata all'ancora brand nel menù principale. Questa è "
 "anche la vista alla quale gli utenti verranno reindirizzati dopo il login."
@@ -229,7 +229,8 @@ msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
 msgstr ""
-"Inserisci un 'internal name' valido composto da lettere, numeri e underscore."
+"Inserisci un 'internal name' valido composto da lettere, numeri e "
+"underscore."
 
 #: views.py:22
 msgid "About"

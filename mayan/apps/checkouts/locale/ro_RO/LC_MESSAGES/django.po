@@ -1,27 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2022
 # Harald Ersch, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:22+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
-"Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/"
-"teams/13584/ro_RO/)\n"
-"Language: ro_RO\n"
+"Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:41 events.py:5 links.py:32
 msgid "Checkouts"
@@ -179,7 +177,8 @@ msgstr "Consemnări de ieșire periodice"
 
 #: queues.py:16
 msgid "Check expired checkouts"
-msgstr "Consemnați drept intrate documentele cu consemnarea de ieșire expirată"
+msgstr ""
+"Consemnați drept intrate documentele cu consemnarea de ieșire expirată"
 
 #: serializers.py:39
 msgid "Primary key of the document to be checked out."
@@ -223,7 +222,8 @@ msgstr "Consemnați %(count)d documente ca fiind intrate."
 #: views.py:91
 #, python-format
 msgid "Unable to checkout document \"%(instance)s\"; %(exception)s"
-msgstr "Nu se poate consemna ca ieșit documentul „%(instance)s”; %(exception)s"
+msgstr ""
+"Nu se poate consemna ca ieșit documentul „%(instance)s”; %(exception)s"
 
 #: views.py:98
 #, python-format

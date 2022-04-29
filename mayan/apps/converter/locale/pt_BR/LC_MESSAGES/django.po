@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Bruno Martins <bruno.martins@bewgpt.com.pt>, 2022
@@ -16,20 +16,19 @@
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2022
 # Roberto Rosario, 2022
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2022\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
-"teams/13584/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:36 events.py:5 permissions.py:5 queues.py:7 settings.py:21
@@ -72,7 +71,8 @@ msgstr "transformação"
 
 #: dependencies.py:14
 msgid "Utility from the poppler-utils package used to inspect PDF files."
-msgstr "Utilidade do pacote poppler-utils usada para inspecionar arquivos PDF."
+msgstr ""
+"Utilidade do pacote poppler-utils usada para inspecionar arquivos PDF."
 
 #: dependencies.py:19
 msgid ""
@@ -267,8 +267,8 @@ msgid ""
 "The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest asset cache files. Specify the size in bytes."
 msgstr ""
-"O limite no qual CONVERTER_ASSET_CACHE_STORAGE_BACKEND começará a excluir os "
-"arquivos de cache de ativos mais antigos. Especifique o tamanho em bytes."
+"O limite no qual CONVERTER_ASSET_CACHE_STORAGE_BACKEND começará a excluir os"
+" arquivos de cache de ativos mais antigos. Especifique o tamanho em bytes."
 
 #: settings.py:38
 msgid ""
@@ -329,11 +329,11 @@ msgstr ""
 
 #: storages.py:28
 msgid ""
-"Unable to initialize the converter asset cachestorage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the converter asset cachestorage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""
-"Não foi possível inicializar o armazenamento em cache do ativo do conversor. "
-"Verifique as configurações {} e {} para erros de formatação."
+"Não foi possível inicializar o armazenamento em cache do ativo do conversor."
+" Verifique as configurações {} e {} para erros de formatação."
 
 #: storages.py:34
 msgid "Assets cache"
@@ -450,7 +450,8 @@ msgstr "Editar recurso: %s"
 
 #: views.py:139
 msgid ""
-"Assets are files that can be used in conjuction with certain transformations."
+"Assets are files that can be used in conjuction with certain "
+"transformations."
 msgstr ""
 "Recursos são arquivos que podem ser usados em conjunto com certas "
 "transformações."
@@ -504,8 +505,7 @@ msgstr "Selecionar"
 #: views.py:418
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
-msgstr ""
-"Selecionar nova transformação de camada \"%(layer)s\"  para: %(object)s"
+msgstr "Selecionar nova transformação de camada \"%(layer)s\"  para: %(object)s"
 
 #: workflow_actions.py:22
 msgid "Pages"
@@ -513,8 +513,8 @@ msgstr "Páginas"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas and/"
-"or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
 "Páginas às quais as novas transformações serão adicionadas. Separe por "
 "vírgulas e / ou use travessões para os intervalos. Deixe em branco para "

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Olivier W, 2022
@@ -11,19 +11,19 @@
 # Yves Dubois <ydubois@gmail.com>, 2022
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2022
 # Frédéric Sheedy <sheedf@gmail.com>, 2022
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-28 08:57+0000\n"
+"POT-Creation-Date: 2022-04-29 10:23+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: admin.py:22
@@ -150,7 +150,8 @@ msgid "Slug"
 msgstr "Jeton"
 
 #: models.py:47
-msgid "Causes this index to be visible and updated when document data changes."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
 msgstr ""
 "Permet à cet index d'être à la fois visible et mis à jour quand le contenu "
 "d'un document est modifié."
@@ -182,13 +183,13 @@ msgstr "Expression d'indexation"
 #: models.py:187
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr ""
-"Permet à ce nœud d'être visible et mis à jour quand le contenu d'un document "
-"est modifié."
+"Permet à ce nœud d'être visible et mis à jour quand le contenu d'un document"
+" est modifié."
 
 #: models.py:195
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 msgstr ""
 "Cochez cette option pour permettre à ce nœud d'être un conteneur de "
 "documents et pas seulement un nœud parent d'autres nœuds enfants."
@@ -337,8 +338,8 @@ msgstr "Somme de contrôle du document"
 
 #: serializers.py:205
 msgid ""
-"URL of the API endpoint showing the list document types associated with this "
-"index template."
+"URL of the API endpoint showing the list document types associated with this"
+" index template."
 msgstr ""
 
 #: serializers.py:212
@@ -363,8 +364,8 @@ msgid ""
 "This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
 msgstr ""
-"Cela peut signifier qu'aucun modèle d'index n'a été créé ou qu'il existe des "
-"modèles d'index mais qu'ils ne sont pas correctement définis."
+"Cela peut signifier qu'aucun modèle d'index n'a été créé ou qu'il existe des"
+" modèles d'index mais qu'ils ne sont pas correctement définis."
 
 #: views/index_instance_views.py:42
 msgid "There are no index instances available."
@@ -423,8 +424,8 @@ msgstr "Index liés au type de document: %s"
 #: views/index_template_views.py:90
 msgid ""
 "Indexes group document automatically into levels. Indexes are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
 msgstr ""
 
 #: views/index_template_views.py:95
@@ -450,8 +451,8 @@ msgid ""
 "built. Only the events of the documents of the types select will trigger "
 "updates in the index."
 msgstr ""
-"Seuls les documents des types sélectionnés seront affichés dans l'index lors "
-"de la construction. Seuls les événements des documents des types "
+"Seuls les documents des types sélectionnés seront affichés dans l'index lors"
+" de la construction. Seuls les événements des documents des types "
 "sélectionnés déclencheront des mises à jour dans l'index."
 
 #: views/index_template_views.py:151

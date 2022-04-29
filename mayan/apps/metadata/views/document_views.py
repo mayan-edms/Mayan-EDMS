@@ -261,11 +261,14 @@ class DocumentMetadataEditView(
                     ].add(document_metadata.value)
 
         for key, value in metadata_dict.items():
-            initial.append({
-                'document_type': document.document_type,
-                'metadata_type': key,
-                'value': ', '.join(value) if value else '',
-            })
+            initial.append(
+                {
+                    'document_type': document.document_type,
+                    'metadata_type': key,
+                    'value': ', '.join(value) if value else '',
+                    'value_existing': ', '.join(value) if value else ''
+                }
+            )
 
         return initial
 
