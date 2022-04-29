@@ -220,11 +220,8 @@
   - Rename ``mayan.apps.dynamic_search.tasks.task_index_search_model`` to
     ``mayan.apps.dynamic_search.tasks.task_index_instances``.
   - Index only objects that exists instead of using blind ranges.
-  - Retry failed bulk indexing tasks.
   - Update ``search_index_objects`` management command to trigger multiple
     ``task_index_instances`` tasks instead of just one.
-  - Add max retry value to ``task_index_instances``.
-  - Improve tasks error logging.
 
 - Add date manipulation template tags. The new tags are ``date_parse`` to
   convert a string into a datetime object and ``timedelta`` to apply time
