@@ -41,6 +41,9 @@
   - Add max retry value to ``task_index_search_models``.
   - Improve tasks error logging.
 
+- Update the Debian Docker image from version 11.2-slim to 11.3-slim.
+- Downgrade the Python Docker image from version 3.11-slim to 3.10-slim.
+
 4.2.3 (2022-04-01)
 ==================
 - Add restart policy to the Traefik container definition.
