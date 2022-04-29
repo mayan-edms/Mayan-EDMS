@@ -35,6 +35,12 @@
     existing values and empty forms when data was entered into the field
     but the update checkbox was left unchecked.
 
+- Bulk object search indexing updates:
+
+  - Retry failed bulk indexing tasks.
+  - Add max retry value to ``task_index_search_models``.
+  - Improve tasks error logging.
+
 4.2.3 (2022-04-01)
 ==================
 - Add restart policy to the Traefik container definition.
