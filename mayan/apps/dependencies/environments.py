@@ -32,6 +32,14 @@ environment_documentation = DependencyEnvironment(
         'can ignore missing dependencies under this environment.'
     ), label=_('Documentation'), name='documentation'
 )
+environment_documentation_override = DependencyEnvironment(
+    help_text=_(
+        'Environment used to specify direct documentation depedencies to '
+        'workaround unpinned or immutable depedency bugs in third party '
+        'libraries. End users can ignore missing dependencies under this '
+        'environment.'
+    ), label=_('Documentation (override)'), name='documentation_override'
+)
 environment_production = DependencyEnvironment(
     help_text=_(
         'Normal environment for end users. A missing dependency under this '

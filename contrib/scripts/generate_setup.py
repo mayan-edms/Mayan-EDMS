@@ -75,7 +75,9 @@ if __name__ == '__main__':
     with open(file=SETUP_TEMPLATE) as file_object:
         template = file_object.read()
         result = Template(template).render(
-            context=Context({'requirements': requirements})
+            context=Context(
+                {'requirements': requirements}
+            )
         )
 
     with open(file='setup.py', mode='w') as file_object:

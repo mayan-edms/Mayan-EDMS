@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.dependencies.classes import PythonDependency
 from mayan.apps.dependencies.environments import (
     environment_build, environment_development, environment_documentation,
+    environment_documentation_override
 )
 
 PythonDependency(
@@ -236,4 +237,8 @@ PythonDependency(
 PythonDependency(
     environment=environment_documentation, module=__name__, name='tornado',
     version_string='==6.1'
+)
+PythonDependency(
+    environment=environment_documentation_override, module=__name__,
+    name='jinja2', version_string='==3.0.3'
 )

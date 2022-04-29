@@ -43,6 +43,9 @@
 
 - Update the Debian Docker image from version 11.2-slim to 11.3-slim.
 - Downgrade the Python Docker image from version 3.11-slim to 3.10-slim.
+- Pin Jinja2 version to workaround Sphinx bug. Sphinx Jinja2 dependency is
+  not pinned or immutable, and causes the installation of an incompatible
+  version breaking builds.
 
 4.2.3 (2022-04-01)
 ==================
