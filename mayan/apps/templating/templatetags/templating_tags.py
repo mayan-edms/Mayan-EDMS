@@ -1,4 +1,7 @@
+from datetime import timedelta
 import re
+
+from dateutil.parser import parse
 
 from django.template import Library, Node, TemplateSyntaxError
 
@@ -28,6 +31,14 @@ def process_regex_flags(**kwargs):
                 )
 
     return result
+
+
+@register.filter
+def date_parse(date_string):
+    """
+    Takes a string and converts it into a datetime object.
+    """
+    return parse(date_string)
 
 
 @register.filter
@@ -135,3 +146,11 @@ def spaceless_plus(parser, token):
     nodelist = parser.parse(('endspaceless_plus',))
     parser.delete_first_token()
     return SpacelessPlusNode(nodelist)
+
+
+@register.simple_tag(name='timedelta')
+def tag_timedelta(date, **kwargs):
+    """
+    Takes a datetime object and applies a timedelta.
+    """
+    return date + timedelta(**kwargs)

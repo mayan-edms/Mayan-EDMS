@@ -226,6 +226,10 @@
   - Add max retry value to ``task_index_instances``.
   - Improve tasks error logging.
 
+- Add date manipulation template tags. The new tags are ``date_parse`` to
+  convert a string into a datetime object and ``timedelta`` to apply time
+  transformations to a datetime object.
+
 4.2.4 (2022-XX-XX)
 ==================
 - Fix the documentation paths to the OTP backends. Closes GitLab
