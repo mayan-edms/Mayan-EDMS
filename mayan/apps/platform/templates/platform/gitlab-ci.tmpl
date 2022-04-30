@@ -201,6 +201,7 @@ job_documentation_build:
     - tests/documentation
   script:
     - pip install --requirement requirements/documentation.txt
+    - pip install --requirement requirements/documentation_override.txt
     - cd docs
     - make html
   stage: stage_build_documentation

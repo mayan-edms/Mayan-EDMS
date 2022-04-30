@@ -34,7 +34,7 @@ class DocumentMetadataFormTestCase(
         self.assertEqual(
             errors['value'], [
                 '"{}" is required for this document type.'.format(
-                    self.test_metadata_type.label
+                    self._test_metadata_type.label
                 )
             ]
         )
@@ -49,8 +49,8 @@ class DocumentMetadataFormTestCase(
                 'value': 'test value'
             },
             initial={
-                'document_type': self.test_document_type,
-                'metadata_type': self.test_metadata_type
+                'document_type': self._test_document_type,
+                'metadata_type': self._test_metadata_type
             }
         )
 
@@ -60,7 +60,7 @@ class DocumentMetadataFormTestCase(
         self.assertEqual(
             errors['value'], [
                 '"{}" is required for this document type.'.format(
-                    self.test_metadata_type.label
+                    self._test_metadata_type.label
                 )
             ]
         )
