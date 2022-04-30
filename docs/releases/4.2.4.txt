@@ -25,6 +25,19 @@ The LUT values used when masking an asset for pasting via Pillow's
 expects.
 
 
+Dependencies
+^^^^^^^^^^^^
+
+Updated the Debian Docker image from version 11.2-slim to 11.3-slim.
+
+
+Downgraded the Python Docker image from version 3.11-slim to 3.10-slim.
+
+Pin Jinja2 version to workaround Sphinx bug. Sphinx Jinja2 dependency is
+not pinned or immutable, and causes the installation of an incompatible
+version breaking builds.
+
+
 Documentation
 ^^^^^^^^^^^^^
 
@@ -82,6 +95,12 @@ the same variable to reference the search model.
 
 Used the ``SEARCH_MODEL_NAME_KWARG`` instead of hard coding the search model
 API URL reference.
+
+Retry failed bulk indexing tasks.
+
+Add max retry value to ``task_index_search_models``.
+
+Added improved search tasks error logging.
 
 
 Tags
