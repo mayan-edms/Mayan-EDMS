@@ -229,6 +229,8 @@
 - Add a ``size`` field to the document file model. Since this value is not
   expected to change, it is now a persistent field and not calculated on
   demand by querying the storage layer.
+- Support searching messages. Make the ``subject``, ``body``, ``date_time``
+  fields searchable.
 
 4.2.4 (2022-04-29)
 ==================
