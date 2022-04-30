@@ -114,6 +114,11 @@ class DocumentFile(
             'checksum.'
         ), max_length=64, null=True, verbose_name=_('Checksum')
     )
+    size = models.PositiveIntegerField(
+        blank=True, db_index=True, editable=False, help_text=(
+            'The size of the file in bytes.'
+        ), null=True, verbose_name=_('Size')
+    )
 
     class Meta:
         ordering = ('timestamp',)
@@ -332,6 +337,10 @@ class DocumentFile(
         return self.filename
     get_label.short_description = _('Label')
 
+    @property
+    def is_in_trash(self):
+        return self.document.is_in_trash
+
     def mimetype_update(self, save=True):
         """
         Read a document verions's file and determine the mimetype by using
@@ -354,10 +363,6 @@ class DocumentFile(
     def natural_key(self):
         return (self.checksum, self.document.natural_key())
     natural_key.dependencies = ['documents.Document']
-
-    @property
-    def is_in_trash(self):
-        return self.document.is_in_trash
 
     def open(self, raw=False):
         """
@@ -461,6 +466,7 @@ class DocumentFile(
                 with transaction.atomic():
                     self.checksum_update(save=False)
                     self.mimetype_update(save=False)
+                    self.size_update(save=False)
                     self._event_actor = user
                     self.save()
                     self.page_count_update(save=False)
@@ -505,14 +511,18 @@ class DocumentFile(
         with self.open() as input_file_object:
             shutil.copyfileobj(fsrc=input_file_object, fdst=file_object)
 
-    @property
-    def size(self):
+    def size_update(self, save=True):
+        """
+        Get a document version's file size from the storage layer and store
+        it into the model.
+        """
         if self.exists():
             name = self.file.name
             self.file.close()
-            return self.file.storage.size(name=name)
-        else:
-            return None
+            self.size = self.file.storage.size(name=name)
+
+            if save:
+                self.save(update_fields=('size',))
 
     @property
     def uuid(self):

@@ -226,6 +226,9 @@
 - Add date manipulation template tags. The new tags are ``date_parse`` to
   convert a string into a datetime object and ``timedelta`` to apply time
   transformations to a datetime object.
+- Add a ``size`` field to the document file model. Since this value is not
+  expected to change, it is now a persistent field and not calculated on
+  demand by querying the storage layer.
 
 4.2.4 (2022-04-29)
 ==================
