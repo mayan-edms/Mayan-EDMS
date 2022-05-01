@@ -231,6 +231,14 @@
   demand by querying the storage layer.
 - Support searching messages. Make the ``subject``, ``body``, ``date_time``
   fields searchable.
+- Error logging updates:
+
+  - Add error log entry delete permission.
+  - Add support deleting individual error log entries or the complete error
+    log of an object.
+  - Add the error log entry delete event.
+  - Support subscribing to the error log entry delete event of an object.
+  - Add API views. Support added to view the error log of objects.
 
 4.2.4 (2022-04-29)
 ==================

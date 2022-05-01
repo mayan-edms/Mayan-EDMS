@@ -3,7 +3,12 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.events.classes import EventManagerMethodAfter
+from mayan.apps.events.decorators import method_event
+
 from .classes import ErrorLog as ErrorLogProxy
+from .events import event_error_log_deleted
+from .managers import ErrorLogPartitionEntryManager
 
 
 class StoredErrorLog(models.Model):
@@ -67,6 +72,8 @@ class ErrorLogPartitionEntry(models.Model):
     )
     text = models.TextField(blank=True, null=True, verbose_name=_('Text'))
 
+    objects = ErrorLogPartitionEntryManager()
+
     class Meta:
         get_latest_by = 'datetime'
         ordering = ('datetime',)
@@ -75,6 +82,14 @@ class ErrorLogPartitionEntry(models.Model):
 
     def __str__(self):
         return '{} {}'.format(self.datetime, self.text)
+
+    @method_event(
+        event_manager_class=EventManagerMethodAfter,
+        event=event_error_log_deleted,
+        target='error_log_partition.content_object'
+    )
+    def delete(self, *args, **kwargs):
+        return super().delete(*args, **kwargs)
 
     def get_object(self):
         return self.error_log_partition.content_object

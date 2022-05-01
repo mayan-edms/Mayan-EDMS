@@ -5,10 +5,14 @@ from django.db.models.signals import post_save, pre_delete
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.menus import menu_list_facet
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 
-from .links import link_object_error_list
+from .events import event_error_log_deleted
+from .links import link_object_error_log_entry_list
 from .literals import DEFAULT_ERROR_LOG_PARTITION_ENTRY_LIMIT
-from .permissions import permission_error_log_view
+from .permissions import (
+    permission_error_log_entry_delete, permission_error_log_entry_view
+)
 
 logger = logging.getLogger(name=__name__)
 
@@ -64,15 +68,23 @@ class ErrorLog:
 
             return error_log_partition.entries
 
+        EventModelRegistry.register(model=model)
+
+        ModelEventType.register(
+            event_types=(event_error_log_deleted,), model=model
+        )
+
         model.add_to_class(name='error_log', value=method_instance_logs)
 
         menu_list_facet.bind_links(
-            links=(link_object_error_list,), sources=(model,)
+            links=(link_object_error_log_entry_list,), sources=(model,)
         )
 
         if register_permission:
             ModelPermission.register(
-                model=model, permissions=(permission_error_log_view,)
+                model=model, permissions=(
+                    permission_error_log_entry_delete, permission_error_log_entry_view
+                )
             )
 
         def handler_model_instance_delete_partition(sender, instance, **kwargs):
