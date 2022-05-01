@@ -16,7 +16,7 @@ from mayan.apps.documents.links.document_type_links import link_document_type_li
 from mayan.apps.documents.signals import signal_post_document_type_change
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.logging.classes import ErrorLog
-from mayan.apps.logging.permissions import permission_error_log_view
+from mayan.apps.logging.permissions import permission_error_log_entry_view
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.views.html_widgets import TwoStateWidget
@@ -211,7 +211,7 @@ class DocumentStatesApp(MayanAppConfig):
         )
         ModelPermission.register(
             model=Workflow, permissions=(
-                permission_error_log_view, permission_workflow_template_delete,
+                permission_error_log_entry_view, permission_workflow_template_delete,
                 permission_workflow_template_edit, permission_workflow_tools,
                 permission_workflow_instance_transition,
                 permission_workflow_template_view
