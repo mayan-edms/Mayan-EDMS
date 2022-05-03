@@ -1,7 +1,7 @@
 from django.db import migrations
 
 
-def operation_create_file_metadata_setting_for_existing_document_types(apps, schema_editor):
+def code_create_file_metadata_setting_for_existing_document_types(apps, schema_editor):
     DocumentType = apps.get_model(
         app_label='documents', model_name='DocumentType'
     )
@@ -18,7 +18,7 @@ def operation_create_file_metadata_setting_for_existing_document_types(apps, sch
             pass
 
 
-def operation_delete_file_metadata_setting_for_existing_document_types(apps, schema_editor):
+def code_delete_file_metadata_setting_for_existing_document_types(apps, schema_editor):
     DocumentType = apps.get_model(
         app_label='documents', model_name='DocumentType'
     )
@@ -43,7 +43,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunPython(
-            code=operation_create_file_metadata_setting_for_existing_document_types,
-            reverse_code=operation_delete_file_metadata_setting_for_existing_document_types
+            code=code_create_file_metadata_setting_for_existing_document_types,
+            reverse_code=code_delete_file_metadata_setting_for_existing_document_types
         )
     ]

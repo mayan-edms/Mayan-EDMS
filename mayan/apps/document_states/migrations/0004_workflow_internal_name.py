@@ -4,7 +4,7 @@ from django.utils.text import slugify
 from mayan.apps.common.validators import validate_internal_name
 
 
-def operation_generate_internal_name(apps, schema_editor):
+def code_generate_internal_name(apps, schema_editor):
     Workflow = apps.get_model(
         app_label='document_states', model_name='Workflow'
     )
@@ -26,7 +26,7 @@ def operation_generate_internal_name(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('document_states', '0003_auto_20170325_0447'),
+        ('document_states', '0003_auto_20170325_0447')
     ]
 
     operations = [
@@ -38,20 +38,19 @@ class Migration(migrations.Migration):
             name='internal_name',
             field=models.CharField(
                 db_index=False, default=' ',
-                help_text='This value will be used by other apps to reference '
-                'this workflow. Can only contain letters, numbers, and '
-                'underscores.', max_length=255, unique=False, validators=[
+                help_text='This value will be used by other apps to '
+                'reference this workflow. Can only contain letters, '
+                'numbers, and underscores.', max_length=255, unique=False,
+                validators=[
                     validate_internal_name
                 ], verbose_name='Internal name'
-            ),
+            )
         ),
-
         # Generate the slugs based on the labels
         migrations.RunPython(
-            code=operation_generate_internal_name,
+            code=code_generate_internal_name,
             reverse_code=migrations.RunPython.noop
         ),
-
         # Make the internal name field unique
         # Add the internal name field but make it non unique
         # https://docs.djangoproject.com/en/1.10/howto/
@@ -61,11 +60,12 @@ class Migration(migrations.Migration):
             name='internal_name',
             field=models.CharField(
                 db_index=True,
-                help_text='This value will be used by other apps to reference '
-                'this workflow. Can only contain letters, numbers, and '
-                'underscores.', max_length=255, unique=True, validators=[
+                help_text='This value will be used by other apps to '
+                'reference this workflow. Can only contain letters, '
+                'numbers, and underscores.', max_length=255, unique=True,
+                validators=[
                     validate_internal_name
                 ], verbose_name='Internal name'
-            ),
-        ),
+            )
+        )
     ]

@@ -1,7 +1,7 @@
 from django.db import migrations, models
 
 
-def operation_remove_duplicates(apps, schema_editor):
+def code_remove_duplicates(apps, schema_editor):
     StoredDriver = apps.get_model(
         app_label='file_metadata', model_name='StoredDriver'
     )
@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
     ]
     operations = [
         migrations.RunPython(
-            code=operation_remove_duplicates,
+            code=code_remove_duplicates,
             reverse_code=migrations.RunPython.noop,
         ),
         migrations.AlterField(

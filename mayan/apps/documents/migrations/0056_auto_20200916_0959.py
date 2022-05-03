@@ -7,7 +7,7 @@ from mayan.apps.documents import settings
 STORAGE_NAME_DOCUMENT_IMAGE = 'documents__documentimagecache'
 
 
-def operation_purge_and_delete_file_cache(apps, schema_editor):
+def code_purge_and_delete_file_cache(apps, schema_editor):
     Cache = apps.get_model(app_label='file_caching', model_name='Cache')
 
     try:
@@ -34,7 +34,7 @@ def operation_purge_and_delete_file_cache(apps, schema_editor):
         cache.delete()
 
 
-def operation_purge_and_delete_file_cache_reverse(apps, schema_editor):
+def code_purge_and_delete_file_cache_reverse(apps, schema_editor):
     Cache = apps.get_model(app_label='file_caching', model_name='Cache')
 
     # Protect against future rename of setting_document_cache_maximum_size
@@ -55,12 +55,12 @@ def operation_purge_and_delete_file_cache_reverse(apps, schema_editor):
 class Migration(migrations.Migration):
     dependencies = [
         ('documents', '0055_auto_20200814_0626'),
-        ('file_caching', '0006_auto_20200322_0626'),
+        ('file_caching', '0006_auto_20200322_0626')
     ]
 
     operations = [
         migrations.RunPython(
-            code=operation_purge_and_delete_file_cache,
-            reverse_code=operation_purge_and_delete_file_cache_reverse
-        ),
+            code=code_purge_and_delete_file_cache,
+            reverse_code=code_purge_and_delete_file_cache_reverse
+        )
     ]

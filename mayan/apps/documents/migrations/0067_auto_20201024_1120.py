@@ -3,7 +3,7 @@ from django.db.models import Max
 from django.db.models.functions import Concat
 
 
-def operation_document_file_filename_copy(apps, schema_editor):
+def code_document_file_filename_copy(apps, schema_editor):
     cursor_main = schema_editor.connection.cursor()
     cursor_document_file = schema_editor.connection.cursor()
 
@@ -47,7 +47,7 @@ def operation_document_file_filename_copy(apps, schema_editor):
         )
 
 
-def operation_set_active_versions(apps, schema_editor):
+def code_set_active_versions(apps, schema_editor):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
     )
@@ -85,7 +85,8 @@ def operation_set_active_versions(apps, schema_editor):
     # Set all version as not active.
     DocumentVersion.objects.update(active=False)
 
-    # Workaround MySQL: (1093, "You can't specify target table 'documents_documentversion' for update in FROM clause")
+    # Workaround MySQL: (1093, "You can't specify target table
+    # 'documents_documentversion' for update in FROM clause")
     document_version_queryset = document_version_queryset.filter(
         version_identifier__in=document_queryset.values('version_identifier')
     ).values('id')
@@ -124,23 +125,24 @@ def operation_set_active_versions(apps, schema_editor):
         query_argument_placeholders = ('%s',) * len(rows)
         values_query = '({})'.format(', '.join(query_argument_placeholders))
         cursor_document_version.execute(
-            query_document_version_active_update.format(values_query), document_version_values
+            query_document_version_active_update.format(values_query),
+            document_version_values
         )
         reset_queries()
 
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('documents', '0066_documentfile_filename'),
+        ('documents', '0066_documentfile_filename')
     ]
 
     operations = [
         migrations.RunPython(
-            code=operation_document_file_filename_copy,
+            code=code_document_file_filename_copy,
             reverse_code=migrations.RunPython.noop
         ),
         migrations.RunPython(
-            code=operation_set_active_versions,
+            code=code_set_active_versions,
             reverse_code=migrations.RunPython.noop
-        ),
+        )
     ]

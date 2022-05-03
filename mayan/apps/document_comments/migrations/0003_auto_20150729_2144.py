@@ -2,7 +2,7 @@ from django.db import migrations
 from django.conf import settings
 
 
-def operation_migrate_old_comments(apps, schema_editor):
+def code_migrate_old_comments(apps, schema_editor):
     # https://code.djangoproject.com/ticket/24282
     # If someone has a better solution until Django 1.8, would appreciate
     # a pull-request :)
@@ -44,5 +44,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(code=operation_migrate_old_comments),
+        migrations.RunPython(code=code_migrate_old_comments)
     ]

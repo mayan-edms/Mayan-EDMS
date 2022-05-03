@@ -2,7 +2,7 @@ from django.db import migrations, models
 import django.db.models.deletion
 
 
-def operation_initialize_file_metadata_settings(apps, schema_editor):
+def code_initialize_file_metadata_settings(apps, schema_editor):
     DocumentType = apps.get_model(
         app_label='documents', model_name='DocumentType'
     )
@@ -16,11 +16,13 @@ def operation_initialize_file_metadata_settings(apps, schema_editor):
         ).create(document_type=document_type)
 
 
-def operation_initialize_file_metadata_settings_reverse(apps, schema_editor):
+def code_initialize_file_metadata_settings_reverse(apps, schema_editor):
     DocumentTypeSettings = apps.get_model(
         app_label='file_metadata', model_name='DocumentTypeSettings'
     )
-    DocumentTypeSettings.objects.using(alias=schema_editor.connection.alias).delete()
+    DocumentTypeSettings.objects.using(
+        alias=schema_editor.connection.alias
+    ).delete()
 
 
 class Migration(migrations.Migration):
@@ -161,7 +163,7 @@ class Migration(migrations.Migration):
             unique_together=set([('driver', 'document_version')])
         ),
         migrations.RunPython(
-            code=operation_initialize_file_metadata_settings,
-            reverse_code=operation_initialize_file_metadata_settings_reverse
+            code=code_initialize_file_metadata_settings,
+            reverse_code=code_initialize_file_metadata_settings_reverse
         )
     ]

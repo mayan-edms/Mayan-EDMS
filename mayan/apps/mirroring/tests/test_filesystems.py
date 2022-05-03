@@ -97,15 +97,18 @@ class IndexFilesystemTestCase(
 
         # Delete the physical document file without deleting the document
         # database entry.
-        document_file = self._test_document.file_latest.file
-        document_file.storage.delete(document_file.name)
+        document_file = self._test_document.file_latest
+        document_file.file.storage.delete(document_file.file.name)
 
+        # Document file disk size is immutable since
+        # 8733e07974c9ecce4880fb1fa19a14f6416c5fe6
+        # 2022-04-30.
         self.assertEqual(
             index_filesystem.getattr(
                 path='/{}/{}'.format(
                     TEST_NODE_EXPRESSION, self._test_document.label
                 )
-            )['st_size'], 0
+            )['st_size'], document_file.size
         )
 
     def test_document_open(self):

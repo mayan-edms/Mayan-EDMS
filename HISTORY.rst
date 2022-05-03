@@ -227,8 +227,10 @@
   convert a string into a datetime object and ``timedelta`` to apply time
   transformations to a datetime object.
 - Add a ``size`` field to the document file model. Since this value is not
-  expected to change, it is now a persistent field and not calculated on
-  demand by querying the storage layer.
+  expected to change, it is now a persistent model field and not calculated
+  on demand by querying the storage layer. This change also improves document
+  mirroring performance by removing one disk access per document and using
+  the database stored size value which is immutable.
 - Support searching messages. Make the ``subject``, ``body``, ``date_time``
   fields searchable.
 - Error logging updates:
@@ -239,6 +241,12 @@
   - Add the error log entry delete event.
   - Support subscribing to the error log entry delete event of an object.
   - Add API views. Support added to view the error log of objects.
+
+- Migrations code style cleanup.
+
+  - Rename code migrations functions prefix from ``operation_`` to ``code_``.
+  - Add keyword arguments.
+  - PEP8 code style cleanups.
 
 4.2.4 (2022-04-29)
 ==================

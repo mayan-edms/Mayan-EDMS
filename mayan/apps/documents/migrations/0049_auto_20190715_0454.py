@@ -12,7 +12,7 @@ from ..settings import (
 logger = logging.getLogger(name=__name__)
 
 
-def operation_clear_old_cache(apps, schema_editor):
+def code_clear_old_cache(apps, schema_editor):
     try:
         storage_documentimagecache = get_storage_subclass(
             dotted_path=setting_document_file_page_image_cache_storage_backend.value
@@ -42,19 +42,19 @@ def operation_clear_old_cache(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('documents', '0048_auto_20190711_0544'),
+        ('documents', '0048_auto_20190711_0544')
     ]
 
     operations = [
         migrations.RunPython(
-            code=operation_clear_old_cache,
+            code=code_clear_old_cache,
             reverse_code=migrations.RunPython.noop
         ),
         migrations.RemoveField(
             model_name='documentpagecachedimage',
-            name='document_page',
+            name='document_page'
         ),
         migrations.DeleteModel(
-            name='DocumentPageCachedImage',
-        ),
+            name='DocumentPageCachedImage'
+        )
     ]
