@@ -9,7 +9,8 @@ from django.test import tag
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.document_indexing.tests.mixins import IndexTemplateTestMixin
 
-from ..filesystems import IndexFilesystem
+from ..filesystems import MirrorFilesystem
+from ..runtime import cache
 
 from .literals import (
     TEST_NODE_EXPRESSION, TEST_NODE_EXPRESSION_INVALID,
@@ -21,11 +22,24 @@ from .literals import (
 
 @tag('mirroring')
 @unittest.skipIf(connection.vendor == 'mysql', 'Known to fail due to unsupported feature of database manager.')
-class IndexFilesystemTestCase(
+class IndexInstanceNodeMirroringTestCase(
     IndexTemplateTestMixin, GenericDocumentTestCase
 ):
     auto_create_test_index_template_node = False
     auto_upload_test_document = False
+
+    def tearDown(self):
+        cache.clear_all()
+        super().tearDown()
+
+    def _get_test_filesystem(self):
+        def func_document_container_node():
+            return self._test_index_template.index_template_root_node.get_index_instance_root_node()
+
+        return MirrorFilesystem(
+            func_document_container_node=func_document_container_node,
+            node_text_attribute='value'
+        )
 
     def test_document_access(self):
         self._create_test_index_template_node(
@@ -33,12 +47,10 @@ class IndexFilesystemTestCase(
         )
 
         self._create_test_document_stub()
-        index_filesystem = IndexFilesystem(
-            index_slug=self._test_index_template.slug
-        )
 
+        test_filesystem = self._get_test_filesystem()
         self.assertEqual(
-            index_filesystem.access(
+            test_filesystem.access(
                 '/{}/{}'.format(
                     TEST_NODE_EXPRESSION, self._test_document.label
                 )
@@ -54,13 +66,10 @@ class IndexFilesystemTestCase(
 
         self._test_document.delete()
 
-        index_filesystem = IndexFilesystem(
-            index_slug=self._test_index_template.slug
-        )
-
+        test_filesystem = self._get_test_filesystem()
         with self.assertRaises(expected_exception=FuseOSError):
             self.assertEqual(
-                index_filesystem.access(
+                test_filesystem.access(
                     '/{}/{}'.format(
                         TEST_NODE_EXPRESSION, self._test_document.label
                     )
@@ -73,12 +82,9 @@ class IndexFilesystemTestCase(
         )
         self._create_test_document_stub()
 
-        index_filesystem = IndexFilesystem(
-            index_slug=self._test_index_template.slug
-        )
-
+        test_filesystem = self._get_test_filesystem()
         with self.assertRaises(expected_exception=FuseOSError):
-            index_filesystem.access(
+            test_filesystem.access(
                 '/{}/{}_non_valid'.format(
                     TEST_NODE_EXPRESSION, self._test_document.label
                 )
@@ -89,9 +95,7 @@ class IndexFilesystemTestCase(
             expression=TEST_NODE_EXPRESSION
         )
 
-        index_filesystem = IndexFilesystem(
-            index_slug=self._test_index_template.slug
-        )
+        test_filesystem = self._get_test_filesystem()
 
         self._upload_test_document()
 
@@ -104,7 +108,7 @@ class IndexFilesystemTestCase(
         # 8733e07974c9ecce4880fb1fa19a14f6416c5fe6
         # 2022-04-30.
         self.assertEqual(
-            index_filesystem.getattr(
+            test_filesystem.getattr(
                 path='/{}/{}'.format(
                     TEST_NODE_EXPRESSION, self._test_document.label
                 )
@@ -117,11 +121,10 @@ class IndexFilesystemTestCase(
         )
 
         self._upload_test_document()
-        index_filesystem = IndexFilesystem(
-            index_slug=self._test_index_template.slug
-        )
 
-        file_handle = index_filesystem.open(
+        test_filesystem = self._get_test_filesystem()
+
+        file_handle = test_filesystem.open(
             path='/{}/{}'.format(
                 TEST_NODE_EXPRESSION, self._test_document.label
             ), flags='rb'
@@ -129,7 +132,7 @@ class IndexFilesystemTestCase(
 
         self.assertEqual(
             hashlib.sha256(
-                index_filesystem.read(
+                test_filesystem.read(
                     fh=file_handle, offset=0, path=None,
                     size=self._test_document.file_latest.size
                 )
@@ -144,12 +147,9 @@ class IndexFilesystemTestCase(
 
         self._create_test_document_stub()
 
-        index_filesystem = IndexFilesystem(
-            index_slug=self._test_index_template.slug
-        )
-
+        test_filesystem = self._get_test_filesystem()
         self.assertEqual(
-            list(index_filesystem.readdir('/', ''))[2:],
+            list(test_filesystem.readdir('/', ''))[2:],
             [TEST_NODE_EXPRESSION_MULTILINE_EXPECTED]
         )
 
@@ -160,12 +160,9 @@ class IndexFilesystemTestCase(
 
         self._create_test_document_stub()
 
-        index_filesystem = IndexFilesystem(
-            index_slug=self._test_index_template.slug
-        )
-
+        test_filesystem = self._get_test_filesystem()
         self.assertEqual(
-            list(index_filesystem.readdir('/', ''))[2:],
+            list(test_filesystem.readdir('/', ''))[2:],
             [TEST_NODE_EXPRESSION_MULTILINE_2_EXPECTED]
         )
 
@@ -175,14 +172,14 @@ class IndexFilesystemTestCase(
         )
 
         self._create_test_document_stub()
-        index_filesystem = IndexFilesystem(
-            index_slug=self._test_index_template.slug
-        )
+
+        test_filesystem = self._get_test_filesystem()
+
         self._test_index_template.rebuild()
 
         self.assertEqual(
             list(
-                index_filesystem.readdir('/', '')
+                test_filesystem.readdir('/', '')
             )[2:], [TEST_NODE_EXPRESSION]
         )
 
@@ -194,9 +191,7 @@ class IndexFilesystemTestCase(
         self._create_test_document_stub()
         self._create_test_document_stub(label=self._test_document.label)
 
-        index_filesystem = IndexFilesystem(
-            index_slug=self._test_index_template.slug
-        )
+        test_filesystem = self._get_test_filesystem()
 
         self._test_index_template.rebuild()
 
@@ -204,14 +199,14 @@ class IndexFilesystemTestCase(
             '{}({})'.format(
                 self._test_documents[0].label, self._test_documents[0].pk
             ) in list(
-                index_filesystem.readdir('/level_1', '')
+                test_filesystem.readdir('/level_1', '')
             )
         )
         self.assertTrue(
             '{}({})'.format(
                 self._test_documents[0].label, self._test_documents[1].pk
             ) in list(
-                index_filesystem.readdir('/level_1', '')
+                test_filesystem.readdir('/level_1', '')
             )
         )
 
@@ -223,9 +218,7 @@ class IndexFilesystemTestCase(
         self._upload_test_document()
         self._upload_test_document()
 
-        index_filesystem = IndexFilesystem(
-            index_slug=self._test_index_template.slug
-        )
+        test_filesystem = self._get_test_filesystem()
 
         self._test_index_template.rebuild()
 
@@ -236,29 +229,29 @@ class IndexFilesystemTestCase(
             self._test_documents[1].label, self._test_documents[1].pk
         )
 
-        file_handle = index_filesystem.open(
+        file_handle = test_filesystem.open(
             path=test_document_1_path, flags=None
         )
 
         self.assertEqual(
-            index_filesystem.read(
+            test_filesystem.read(
                 path=None, size=-1, offset=0, fh=file_handle
             ), self._test_documents[0].file_latest.open().read()
         )
 
-        index_filesystem.release(path=None, fh=file_handle)
+        test_filesystem.release(path=None, fh=file_handle)
 
-        file_handle = index_filesystem.open(
+        file_handle = test_filesystem.open(
             path=test_document_2_path, flags=None
         )
 
         self.assertEqual(
-            index_filesystem.read(
+            test_filesystem.read(
                 path=None, size=-1, offset=0, fh=file_handle
             ), self._test_documents[1].file_latest.open().read()
         )
 
-        index_filesystem.release(path=None, fh=file_handle)
+        test_filesystem.release(path=None, fh=file_handle)
 
     def test_invalid_document_label_character_open(self):
         self._create_test_index_template_node(
@@ -267,9 +260,7 @@ class IndexFilesystemTestCase(
 
         self._upload_test_document()
 
-        index_filesystem = IndexFilesystem(
-            index_slug=self._test_index_template.slug
-        )
+        test_filesystem = self._get_test_filesystem()
 
         self._test_document.label = 'Document of 2019/12'
         self._test_document.save()
@@ -278,17 +269,17 @@ class IndexFilesystemTestCase(
 
         test_document_path = '/level_1/Document of 2019_12'
 
-        file_handle = index_filesystem.open(
+        file_handle = test_filesystem.open(
             path=test_document_path, flags=None
         )
 
         self.assertEqual(
-            index_filesystem.read(
+            test_filesystem.read(
                 path=None, size=-1, offset=0, fh=file_handle
             ), self._test_document.file_latest.open().read()
         )
 
-        index_filesystem.release(path=None, fh=file_handle)
+        test_filesystem.release(path=None, fh=file_handle)
 
     def test_invalid_document_label_character_readdir(self):
         self._create_test_index_template_node(
@@ -297,9 +288,7 @@ class IndexFilesystemTestCase(
 
         self._upload_test_document()
 
-        index_filesystem = IndexFilesystem(
-            index_slug=self._test_index_template.slug
-        )
+        test_filesystem = self._get_test_filesystem()
 
         self._test_document.label = 'Document of 2019/12'
         self._test_document.save()
@@ -308,7 +297,7 @@ class IndexFilesystemTestCase(
 
         self.assertEqual(
             list(
-                index_filesystem.readdir('/level_1', '')
+                test_filesystem.readdir('/level_1', '')
             )[2], 'Document of 2019_12'
         )
 
@@ -319,25 +308,23 @@ class IndexFilesystemTestCase(
 
         self._upload_test_document()
 
-        index_filesystem = IndexFilesystem(
-            index_slug=self._test_index_template.slug
-        )
+        test_filesystem = self._get_test_filesystem()
 
         self._test_index_template.rebuild()
 
         test_document_path = '/level_1/{}'.format(self._test_document.label)
 
-        file_handle = index_filesystem.open(
+        file_handle = test_filesystem.open(
             path=test_document_path, flags=None
         )
 
         self.assertEqual(
-            index_filesystem.read(
+            test_filesystem.read(
                 path=None, size=-1, offset=0, fh=file_handle
             ), self._test_document.file_latest.open().read()
         )
 
-        index_filesystem.release(path=None, fh=file_handle)
+        test_filesystem.release(path=None, fh=file_handle)
 
     def test_invalid_directory_name_character_readdir(self):
         self._create_test_index_template_node(
@@ -346,20 +333,18 @@ class IndexFilesystemTestCase(
 
         self._create_test_document_stub()
 
-        index_filesystem = IndexFilesystem(
-            index_slug=self._test_index_template.slug
-        )
+        test_filesystem = self._get_test_filesystem()
 
         self._test_index_template.rebuild()
 
         self.assertEqual(
             list(
-                index_filesystem.readdir('/', '')
+                test_filesystem.readdir('/', '')
             )[2], 'level_1'
         )
 
         self.assertEqual(
             list(
-                index_filesystem.readdir('/level_1', '')
+                test_filesystem.readdir('/level_1', '')
             )[2], self._test_document.label
         )

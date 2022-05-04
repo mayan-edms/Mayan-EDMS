@@ -106,17 +106,20 @@ class CabinetTestMixin:
                 add_test_document=self._test_cabinet_add_test_document
             )
 
-    def _create_test_cabinet(self, add_test_document=False):
-        self._test_cabinet = Cabinet.objects.create(label=TEST_CABINET_LABEL)
+    def _create_test_cabinet(self, label=None, add_test_document=False):
+        self._test_cabinet = Cabinet.objects.create(
+            label=label or TEST_CABINET_LABEL
+        )
 
         if add_test_document:
             self._test_cabinet.documents.add(self._test_document)
 
         self._test_cabinets.append(self._test_cabinet)
 
-    def _create_test_cabinet_child(self):
+    def _create_test_cabinet_child(self, label=None):
         self._test_cabinet_child = Cabinet.objects.create(
-            label=TEST_CABINET_CHILD_LABEL, parent=self._test_cabinet
+            label=label or TEST_CABINET_CHILD_LABEL,
+            parent=self._test_cabinet
         )
 
 

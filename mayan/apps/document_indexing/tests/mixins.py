@@ -195,7 +195,7 @@ class IndexTemplateTestMixin:
                 )
 
     def _create_test_index_template(
-        self, add_test_document_type=True, extra_data=None
+        self, add_test_document_type=False, extra_data=None
     ):
         data = self._test_index_template_data[len(self._test_index_templates)]
 

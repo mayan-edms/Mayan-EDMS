@@ -12,9 +12,6 @@ from django.db.models import (
 )
 from django.db.models.functions import Concat
 
-from mayan.apps.document_indexing.models import (
-    IndexInstance, IndexInstanceNode, IndexTemplate
-)
 from mayan.apps.documents.models import Document
 
 from .literals import (
@@ -30,26 +27,25 @@ class Trim(Transform):
     lookup_name = 'trim'
 
 
-class IndexFilesystem(LoggingMixIn, Operations):
+class MirrorFilesystem(LoggingMixIn, Operations):
     @staticmethod
     def _clean_queryset(queryset, source_field_name, destination_field_name):
-        queryset = IndexFilesystem._clean_queryset_end_of_lines(
+        queryset = MirrorFilesystem._clean_queryset_end_of_lines(
             queryset=queryset, source_field_name=source_field_name,
             destination_field_name='_no_newline'
         )
 
-        queryset = IndexFilesystem._clean_queryset_slashes(
+        queryset = MirrorFilesystem._clean_queryset_slashes(
             queryset=queryset, source_field_name='_no_newline'
         )
 
-        return IndexFilesystem._clean_queryset_duplicates(
+        return MirrorFilesystem._clean_queryset_duplicates(
             queryset=queryset, destination_field_name=destination_field_name
         )
 
     @staticmethod
     def _clean_queryset_end_of_lines(
-        queryset, source_field_name='value',
-        destination_field_name='clean_value'
+        queryset, source_field_name, destination_field_name='clean_value'
     ):
         # Remove newline carriage returns and the first and last space
         # to make multiline indexes valid directoy names
@@ -91,7 +87,8 @@ class IndexFilesystem(LoggingMixIn, Operations):
 
     @staticmethod
     def _clean_queryset_duplicates(
-        queryset, source_field_name='_no_slashes', destination_field_name='_deduplicated'
+        queryset, source_field_name='_no_slashes',
+        destination_field_name='_deduplicated'
     ):
         # Make second queryset of all duplicates
         repeats = queryset.values(source_field_name).annotate(
@@ -138,7 +135,7 @@ class IndexFilesystem(LoggingMixIn, Operations):
 
         logger.debug('parts: %s', parts)
 
-        node = self.index_instance.index_instance_root_node
+        node = self.func_document_container_node()
 
         if len(parts) > 1 and parts[1] != '':
             path_cache = cache.get_path(path=path)
@@ -149,7 +146,7 @@ class IndexFilesystem(LoggingMixIn, Operations):
                     if access_only:
                         return True
                     else:
-                        return IndexInstanceNode.objects.get(pk=node_pk)
+                        return self.func_document_container_node().get_descendants(include_self=True).get(pk=node_pk)
 
                 document_pk = path_cache.get('document_pk')
                 if document_pk:
@@ -160,37 +157,31 @@ class IndexFilesystem(LoggingMixIn, Operations):
 
             for count, part in enumerate(iterable=parts[1:]):
                 try:
-                    node = IndexFilesystem._clean_queryset(
-                        queryset=node.get_children(),
-                        source_field_name='value',
+                    node_queryset = MirrorFilesystem._clean_queryset(
+                        queryset=node.get_descendants(include_self=True),
+                        source_field_name=self.node_text_attribute,
                         destination_field_name='value_clean'
-                    ).get(value_clean=part)
-                except IndexInstanceNode.DoesNotExist:
+                    )
+                    node = node_queryset.get(value_clean=part)
+                except self.func_document_container_node()._meta.model.DoesNotExist:
                     logger.debug('%s does not exists', part)
 
                     if directory_only:
                         return None
                     else:
                         try:
-                            if node.index_template_node.link_documents:
-                                queryset = Document.valid.filter(
-                                    pk__in=node.documents.values('pk')
-                                )
+                            document = MirrorFilesystem._clean_queryset(
+                                queryset=node.get_documents(),
+                                source_field_name='label',
+                                destination_field_name='label_clean'
+                            ).get(label_clean=part)
 
-                                document = IndexFilesystem._clean_queryset(
-                                    queryset=queryset,
-                                    source_field_name='label',
-                                    destination_field_name='label_clean'
-                                ).get(label_clean=part)
+                            logger.debug(
+                                'path %s is a valid file path', path
+                            )
+                            cache.set_path(path=path, document=document)
 
-                                logger.debug(
-                                    'path %s is a valid file path', path
-                                )
-                                cache.set_path(path=path, document=document)
-
-                                return document
-                            else:
-                                return None
+                            return document
                         except Document.DoesNotExist:
                             logger.debug(
                                 'path %s is a file, but is not found', path
@@ -208,16 +199,11 @@ class IndexFilesystem(LoggingMixIn, Operations):
 
         return node
 
-    def __init__(self, index_slug):
+    def __init__(self, func_document_container_node, node_text_attribute):
         self.file_descriptor_count = MIN_FILE_DESCRIPTOR
         self.file_descriptors = {}
-
-        try:
-            self.index_instance = IndexInstance.objects.get(slug=index_slug)
-            self.index_template = IndexTemplate.objects.get(slug=index_slug)
-        except IndexTemplate.DoesNotExist:
-            print('Unknown index slug: {}.'.format(index_slug))
-            exit(1)
+        self.func_document_container_node = func_document_container_node
+        self.node_text_attribute = node_text_attribute
 
     def access(self, path, fh=None):
         result = self._path_to_node(
@@ -239,12 +225,7 @@ class IndexFilesystem(LoggingMixIn, Operations):
         # st_nlink tracks the number of hard links to a file.
         # Must be 2 for directories and at least 1 for files
         # https://www.gnu.org/software/libc/manual/html_node/Attribute-Meanings.html
-        if isinstance(result, IndexInstanceNode):
-            function_result = {
-                'st_mode': (S_IFDIR | DIRECTORY_MODE), 'st_ctime': now,
-                'st_mtime': now, 'st_atime': now, 'st_nlink': 2
-            }
-        else:
+        if isinstance(result, Document):
             function_result = {
                 'st_mode': (S_IFREG | FILE_MODE),
                 'st_ctime': (
@@ -256,6 +237,11 @@ class IndexFilesystem(LoggingMixIn, Operations):
                 'st_atime': now,
                 'st_size': result.file_latest.size or 0,
                 'st_nlink': 1
+            }
+        else:
+            function_result = {
+                'st_mode': (S_IFDIR | DIRECTORY_MODE), 'st_ctime': now,
+                'st_mtime': now, 'st_atime': now, 'st_nlink': 2
             }
 
         logger.debug('function_result: %s', function_result)
@@ -286,28 +272,24 @@ class IndexFilesystem(LoggingMixIn, Operations):
         yield '.'
         yield '..'
 
-        # Index instance nodes to directories
-        queryset = IndexFilesystem._clean_queryset(
-            queryset=node.get_children(), source_field_name='value',
+        # Serve nodes as directories.
+        queryset = MirrorFilesystem._clean_queryset(
+            queryset=node.get_children(),
+            source_field_name=self.node_text_attribute,
             destination_field_name='value_clean'
         )
 
         for value in queryset.values_list('value_clean', flat=True):
             yield value
 
-        # Documents
-        if node.index_template_node.link_documents:
-            queryset = Document.valid.filter(
-                pk__in=node.documents.values('pk')
-            )
+        # Then serve nodes documents as files.
+        queryset = MirrorFilesystem._clean_queryset(
+            queryset=node.get_documents(), source_field_name='label',
+            destination_field_name='label_clean'
+        )
 
-            queryset = IndexFilesystem._clean_queryset(
-                queryset=queryset, source_field_name='label',
-                destination_field_name='label_clean'
-            )
-
-            for value in queryset.values_list('label_clean', flat=True):
-                yield value
+        for value in queryset.values_list('label_clean', flat=True):
+            yield value
 
     def release(self, path, fh):
         self.file_descriptors[fh] = None

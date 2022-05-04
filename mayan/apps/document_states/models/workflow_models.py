@@ -310,13 +310,26 @@ class WorkflowRuntimeProxy(Workflow):
         verbose_name = _('Workflow runtime proxy')
         verbose_name_plural = _('Workflow runtime proxies')
 
+    def get_documents(self, permission=None, user=None):
+        """
+        Provide a queryset of the documents. The queryset is optionally
+        filtered by access.
+        """
+        queryset = Document.valid.filter(workflows__workflow=self)
+
+        if permission and user:
+            queryset = AccessControlList.objects.restrict_queryset(
+                permission=permission, queryset=queryset,
+                user=user
+            )
+
+        return queryset
+
     def get_document_count(self, user):
         """
         Return the numeric count of documents executing this workflow.
         The count is filtered by access.
         """
-        return AccessControlList.objects.restrict_queryset(
-            permission=permission_document_view,
-            queryset=Document.valid.filter(workflows__workflow=self),
-            user=user
+        return self.get_documents(
+            permission=permission_document_view, user=user
         ).count()

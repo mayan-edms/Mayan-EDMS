@@ -77,16 +77,7 @@ class Cabinet(ExtraDataModelMixin, MPTTModel):
             }
         )
 
-    def get_document_count(self, user):
-        """
-        Return numeric count of the total documents in a cabinet. The count
-        is filtered by access.
-        """
-        return self.get_documents_queryset(
-            permission=permission_document_view, user=user
-        ).count()
-
-    def get_documents_queryset(self, user, permission=None):
+    def get_documents(self, permission=None, user=None):
         """
         Provide a queryset of the documents in a cabinet. The queryset is
         filtered by access.
@@ -100,6 +91,15 @@ class Cabinet(ExtraDataModelMixin, MPTTModel):
             )
 
         return queryset
+
+    def get_document_count(self, user):
+        """
+        Return numeric count of the total documents in a cabinet. The count
+        is filtered by access.
+        """
+        return self.get_documents(
+            permission=permission_document_view, user=user
+        ).count()
 
     def get_full_path(self):
         """

@@ -48,6 +48,14 @@ Backward incompatible changes
 - The permission "View error log" is now required to view document file
   parsing error logs.
 
+
+Deprecations
+------------
+
+- The ``mountindex`` management command will be removed in an upcoming
+  version. Use the ``mirroring_mount_index`` command instead.
+
+
 Issues closed
 -------------
 

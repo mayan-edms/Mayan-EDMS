@@ -407,6 +407,10 @@ class IndexInstance(IndexTemplate):
         'Total number of node levels this item contains.'
     )
 
+    def get_root(self):
+        """Compatibility method."""
+        return self.index_instance_root_node
+
     @property
     def index_instance_root_node(self):
         return self.index_template_root_node.get_index_instance_root_node()

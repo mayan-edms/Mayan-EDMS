@@ -248,6 +248,8 @@
   - Add keyword arguments.
   - PEP8 code style cleanups.
 
+- Add support for cabinet mirroring.
+
 4.2.4 (2022-04-29)
 ==================
 - Fix the documentation paths to the OTP backends. Closes GitLab

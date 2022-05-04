@@ -175,7 +175,6 @@ class WorkflowInstanceTransitionExecuteView(ExternalObjectViewMixin, FormView):
         queryset = super().get_external_object_queryset_filtered()
 
         # Filter further down by document access.
-
         document_queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_workflow_instance_transition,
             queryset=Document.valid.all(),
@@ -227,7 +226,6 @@ class WorkflowInstanceTransitionSelectView(ExternalObjectViewMixin, FormView):
         queryset = super().get_external_object_queryset_filtered()
 
         # Filter further down by document access.
-
         document_queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_workflow_instance_transition,
             queryset=Document.valid.all(),
