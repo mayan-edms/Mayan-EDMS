@@ -8,7 +8,7 @@ from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
 from mayan.apps.documents.models import DocumentFile
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.literals import (
-    TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
+    TEST_FILE_PDF_PATH, TEST_FILE_SMALL_PATH
 )
 
 from ..events import (
@@ -70,7 +70,7 @@ class DetachedSignaturesTestCase(
         self.assertEqual(events[0].verb, event_detached_signature_deleted.id)
 
     def test_detached_signature_upload_no_key(self):
-        self._test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
 
         self._clear_events()
@@ -96,7 +96,7 @@ class DetachedSignaturesTestCase(
 
     def test_detached_signature_upload_with_key(self):
         self._create_test_key_public()
-        self._test_document_path = TEST_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_PDF_PATH
         self._upload_test_document()
 
         self._clear_events()
@@ -124,7 +124,7 @@ class DetachedSignaturesTestCase(
         self.assertEqual(events[0].verb, event_detached_signature_uploaded.id)
 
     def test_detached_signature_upload_post_key_verify(self):
-        self._test_document_path = TEST_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_PDF_PATH
         self._upload_test_document()
 
         self._clear_events()
@@ -163,7 +163,7 @@ class DetachedSignaturesTestCase(
 
     def test_detached_signature_upload_post_no_key_verify(self):
         self._create_test_key_public()
-        self._test_document_path = TEST_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_PDF_PATH
         self._upload_test_document()
 
         self._clear_events()
@@ -206,7 +206,7 @@ class DocumentSignaturesTestCase(
         TEST_UNSIGNED_DOCUMENT_COUNT = 2
         TEST_SIGNED_DOCUMENT_COUNT = 2
 
-        self._test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
             self._upload_test_document()
 
@@ -314,7 +314,7 @@ class EmbeddedSignaturesTestCase(
         TEST_UNSIGNED_DOCUMENT_COUNT = 2
         TEST_SIGNED_DOCUMENT_COUNT = 2
 
-        self._test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
             self._upload_test_document()
 
@@ -339,7 +339,7 @@ class EmbeddedSignaturesTestCase(
     def test_embedded_signing(self):
         self._create_test_key_private()
 
-        self._test_document_path = TEST_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_PDF_PATH
         self._upload_test_document()
         test_document_file_count = self._test_document.files.count()
 
@@ -398,13 +398,13 @@ class EmbeddedSignaturesTestCase(
         )
 
     def test_document_no_signature(self):
-        self._test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
 
         self.assertEqual(EmbeddedSignature.objects.count(), 0)
 
     def test_new_signed_file(self):
-        self._test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
 
         with open(file=TEST_SIGNED_DOCUMENT_PATH, mode='rb') as file_object:

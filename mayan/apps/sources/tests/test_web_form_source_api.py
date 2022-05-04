@@ -7,7 +7,7 @@ from mayan.apps.documents.events import (
 )
 from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.permissions import permission_document_create
-from mayan.apps.documents.tests.literals import TEST_COMPRESSED_DOCUMENT_PATH
+from mayan.apps.documents.tests.literals import TEST_FILE_COMPRESSED_PATH
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
@@ -158,7 +158,7 @@ class WebFormSourceBackendAPITestCase(
 
         self._clear_events()
 
-        response = self._request_test_web_form_file_upload_action_api_view(test_file_path=TEST_COMPRESSED_DOCUMENT_PATH)
+        response = self._request_test_web_form_file_upload_action_api_view(test_file_path=TEST_FILE_COMPRESSED_PATH)
         self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
 
         self.assertEqual(Document.objects.count(), document_count + 2)

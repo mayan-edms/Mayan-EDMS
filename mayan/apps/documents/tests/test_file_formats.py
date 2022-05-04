@@ -1,9 +1,9 @@
 from .base import GenericDocumentTestCase
-from .literals import TEST_MULTI_PAGE_TIFF, TEST_OFFICE_DOCUMENT
+from .literals import TEST_FILE_MULTI_PAGE_TIFF_FILENAME, TEST_FILE_OFFICE
 
 
 class OfficeTextDocumentTestCase(GenericDocumentTestCase):
-    _test_document_filename = TEST_OFFICE_DOCUMENT
+    _test_document_filename = TEST_FILE_OFFICE
 
     def test_document_creation(self):
         self.assertEqual(
@@ -20,7 +20,7 @@ class OfficeTextDocumentTestCase(GenericDocumentTestCase):
 
 
 class MultiPageTiffTestCase(GenericDocumentTestCase):
-    _test_document_filename = TEST_MULTI_PAGE_TIFF
+    _test_document_filename = TEST_FILE_MULTI_PAGE_TIFF_FILENAME
 
     def test_document_creation(self):
         self.assertEqual(self._test_document.file_latest.mimetype, 'image/tiff')

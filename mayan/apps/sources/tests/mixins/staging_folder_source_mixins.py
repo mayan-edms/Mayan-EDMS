@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 import shutil
 
-from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.documents.tests.literals import TEST_FILE_SMALL_PATH
 from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
 from ...source_backends.literals import SOURCE_UNCOMPRESS_CHOICE_NEVER
@@ -104,7 +104,7 @@ class StagingFolderTestMixin(SourceTestMixin):
             path = Path(self._temporary_subfolder)
 
         shutil.copy(
-            src=TEST_SMALL_DOCUMENT_PATH, dst=str(path / (filename or ''))
+            src=TEST_FILE_SMALL_PATH, dst=str(path / (filename or ''))
         )
 
         test_staging_folder_file_list = list(

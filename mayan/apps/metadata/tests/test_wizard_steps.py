@@ -3,7 +3,7 @@ from django.urls import reverse
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_create
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
-from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.documents.tests.literals import TEST_FILE_SMALL_PATH
 from mayan.apps.sources.tests.mixins.web_form_source_mixins import WebFormSourceBackendTestMixin
 from mayan.apps.views.http import URL
 
@@ -41,7 +41,7 @@ class DocumentUploadMetadataTestCase(
         )
 
         # Upload the test document
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_FILE_SMALL_PATH, mode='rb') as file_object:
             response = self.post(
                 path=url.to_string(), data={
                     'document-language': 'eng', 'source-file': file_object,
@@ -71,7 +71,7 @@ class DocumentUploadMetadataTestCase(
         )
 
         # Upload the test document
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_FILE_SMALL_PATH, mode='rb') as file_object:
             response = self.post(
                 path=url.to_string(), data={
                     'document-language': 'eng', 'source-file': file_object,

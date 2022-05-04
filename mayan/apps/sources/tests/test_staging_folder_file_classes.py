@@ -1,7 +1,7 @@
 import os
 import shutil
 
-from mayan.apps.documents.tests.literals import TEST_NON_ASCII_DOCUMENT_PATH
+from mayan.apps.documents.tests.literals import TEST_FILE_NON_ASCII_PATH
 from mayan.apps.storage.utils import mkdtemp
 from mayan.apps.testing.tests.base import BaseTestCase
 
@@ -15,9 +15,9 @@ class StagingFolderFileTestCase(BaseTestCase):
         super().setUp()
         self.temporary_directory = mkdtemp()
         shutil.copy(
-            src=TEST_NON_ASCII_DOCUMENT_PATH, dst=self.temporary_directory
+            src=TEST_FILE_NON_ASCII_PATH, dst=self.temporary_directory
         )
-        self.test_filename = os.path.basename(TEST_NON_ASCII_DOCUMENT_PATH)
+        self.test_filename = os.path.basename(TEST_FILE_NON_ASCII_PATH)
         self._test_staging_folder = MockStagingFolder()
         self._test_staging_folder.kwargs['folder_path'] = self.temporary_directory
         self._test_staging_folder_files = []

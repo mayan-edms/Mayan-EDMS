@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from .base import GenericDocumentTestCase
-from .literals import TEST_SMALL_DOCUMENT_CHECKSUM
+from .literals import TEST_DOCUMENT_SMALL_CHECKSUM
 from .mixins.document_file_mixins import DocumentFileTestMixin
 
 
@@ -16,7 +16,7 @@ class DocumentFileTestCase(DocumentFileTestMixin, GenericDocumentTestCase):
         )
         self.assertEqual(
             self._test_document.file_latest.checksum,
-            TEST_SMALL_DOCUMENT_CHECKSUM
+            TEST_DOCUMENT_SMALL_CHECKSUM
         )
 
     def test_document_file_delete(self):

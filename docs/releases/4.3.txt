@@ -59,6 +59,6 @@ Deprecations
 Issues closed
 -------------
 
-- None
+- :gitlab-issue:`957` Add document parser test to ensure office files are parsed for content
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

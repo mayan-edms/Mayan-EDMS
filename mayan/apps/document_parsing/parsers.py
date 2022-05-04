@@ -7,6 +7,8 @@ from django.apps import apps
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.converter.classes import ConverterBase
+from mayan.apps.converter.literals import CONVERTER_OFFICE_FILE_MIMETYPES
 from mayan.apps.storage.utils import NamedTemporaryFile
 
 from .exceptions import ParserError
@@ -17,7 +19,7 @@ logger = logging.getLogger(name=__name__)
 
 class Parser:
     """
-    Parser base class
+    Parser base class.
     """
     _registry = {}
 
@@ -76,25 +78,24 @@ class Parser:
             document_file_page.page_number, document_file_page.document_file
         )
 
-        file_object = document_file_page.document_file.get_intermediate_file()
+        with document_file_page.document_file.open() as file_object:
+            try:
+                parsed_content = self.execute(
+                    file_object=file_object, page_number=document_file_page.page_number
+                )
 
-        try:
-            parsed_content = self.execute(
-                file_object=file_object, page_number=document_file_page.page_number
-            )
+                DocumentFilePageContent.objects.update_or_create(
+                    document_file_page=document_file_page, defaults={
+                        'content': parsed_content
+                    }
+                )
 
-            DocumentFilePageContent.objects.update_or_create(
-                document_file_page=document_file_page, defaults={
-                    'content': parsed_content
-                }
-            )
-
-        except Exception as exception:
-            error_message = _('Exception parsing page; %s') % exception
-            logger.error(error_message, exc_info=True)
-            raise ParserError(error_message)
-        finally:
-            file_object.close()
+            except Exception as exception:
+                error_message = _('Exception parsing page; %s') % exception
+                logger.error(error_message, exc_info=True)
+                raise ParserError(error_message)
+            finally:
+                file_object.close()
 
         logger.info(
             'Finished processing page: %d of document file: %s',
@@ -110,7 +111,7 @@ class Parser:
 
 class PopplerParser(Parser):
     """
-    PDF parser using the pdftotext execute from the poppler package
+    PDF parser using the pdftotext execute from the poppler package.
     """
     def __init__(self):
         self.pdftotext_path = setting_pdftotext_path.value
@@ -161,7 +162,22 @@ class PopplerParser(Parser):
             return force_text(s=output)
 
 
+class OfficePopplerParser(PopplerParser):
+    def execute(self, file_object, page_number):
+        converter = ConverterBase.get_converter_class()(
+            file_object=file_object
+        )
+        with converter.to_pdf() as pdf_file_object:
+            return super().execute(
+                file_object=pdf_file_object, page_number=page_number
+            )
+
+
 Parser.register(
     mimetypes=('application/pdf',),
     parser_classes=(PopplerParser,)
+)
+Parser.register(
+    mimetypes=CONVERTER_OFFICE_FILE_MIMETYPES,
+    parser_classes=(OfficePopplerParser,)
 )

@@ -1,7 +1,7 @@
 from django.urls import reverse
 
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
-from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.documents.tests.literals import TEST_FILE_SMALL_PATH
 
 from ..links import (
     link_document_file_signature_detached_delete,
@@ -61,7 +61,7 @@ class DocumentSignatureLinksTestCase(
         )
 
     def test_document_file_signature_detached_delete_link_no_permission(self):
-        self._test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
 
         self._upload_test_detached_signature()
@@ -76,7 +76,7 @@ class DocumentSignatureLinksTestCase(
         self.assertEqual(resolved_link, None)
 
     def test_document_file_signature_detached_delete_link_with_permission(self):
-        self._test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
 
         self._upload_test_detached_signature()

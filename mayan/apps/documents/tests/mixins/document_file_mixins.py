@@ -8,7 +8,7 @@ from ...models.document_file_models import DocumentFile
 
 from ..literals import (
     TEST_DOCUMENT_FILE_COMMENT, TEST_DOCUMENT_FILE_COMMENT_EDITED,
-    TEST_DOCUMENT_FILE_FILENAME_EDITED, TEST_SMALL_DOCUMENT_PATH,
+    TEST_DOCUMENT_FILE_FILENAME_EDITED, TEST_FILE_SMALL_PATH,
     TEST_TRANSFORMATION_ARGUMENT, TEST_TRANSFORMATION_CLASS
 )
 
@@ -48,7 +48,7 @@ class DocumentFileAPIViewTestMixin:
     def _request_test_document_file_upload_api_view(self):
         pk_list = list(DocumentFile.objects.values_list('pk', flat=True))
 
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_descriptor:
+        with open(file=TEST_FILE_SMALL_PATH, mode='rb') as file_descriptor:
             response = self.post(
                 viewname='rest_api:documentfile-list', kwargs={
                     'document_id': self._test_document.pk,

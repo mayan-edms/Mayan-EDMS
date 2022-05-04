@@ -251,6 +251,14 @@
 - Add support for cabinet mirroring.
 - Remove ``django-colorful``. Use HTML5 color field instead.
 - Add support to randomize the tag color.
+- Document parsing updates. Closes GitLab issue #957. Thanks to
+  LeVon Smoker (@lsmoker) for the report and initial suggestions.
+
+  - Pass the original document file to parsers instead of attempting to
+    pre-processing the document file to PDF.
+  - Add parsing support for office document files and text files.
+
+- Rename test file literals for uniformity.
 
 4.2.4 (2022-04-29)
 ==================

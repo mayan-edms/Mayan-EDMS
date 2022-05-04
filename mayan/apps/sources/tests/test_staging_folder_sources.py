@@ -4,7 +4,7 @@ from unittest.mock import patch
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.literals import (
-    TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
+    TEST_DOCUMENT_SMALL_CHECKSUM, TEST_FILE_SMALL_PATH
 )
 
 from .mixins.base_mixins import InteractiveSourceBackendTestMixin
@@ -18,7 +18,7 @@ class StagingFolderSourceBackendTestCase(
     auto_create_test_source = False
     auto_upload_test_document = False
 
-    def _process_test_document(self, test_file_path=TEST_SMALL_DOCUMENT_PATH):
+    def _process_test_document(self, test_file_path=TEST_FILE_SMALL_PATH):
         source_backend_instance = self._test_source.get_backend_instance()
 
         self.test_forms = {
@@ -45,7 +45,7 @@ class StagingFolderSourceBackendTestCase(
         self.assertEqual(Document.objects.count(), document_count + 1)
         self.assertEqual(
             Document.objects.first().file_latest.checksum,
-            TEST_SMALL_DOCUMENT_CHECKSUM
+            TEST_DOCUMENT_SMALL_CHECKSUM
         )
 
     @patch('mayan.apps.sources.source_backends.mixins.SourceBackendInteractiveMixin.callback')
@@ -61,7 +61,7 @@ class StagingFolderSourceBackendTestCase(
         self.assertEqual(Document.objects.count(), document_count + 1)
         self.assertEqual(
             Document.objects.first().file_latest.checksum,
-            TEST_SMALL_DOCUMENT_CHECKSUM
+            TEST_DOCUMENT_SMALL_CHECKSUM
         )
 
         self.assertTrue(mocked_super.called)
@@ -80,7 +80,7 @@ class StagingFolderSourceBackendTestCase(
         self.assertEqual(Document.objects.count(), document_count + 1)
         self.assertEqual(
             Document.objects.first().file_latest.checksum,
-            TEST_SMALL_DOCUMENT_CHECKSUM
+            TEST_DOCUMENT_SMALL_CHECKSUM
         )
 
         path = Path(self._test_source.get_backend_data()['folder_path'])

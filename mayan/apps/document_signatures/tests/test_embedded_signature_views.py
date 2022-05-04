@@ -5,7 +5,7 @@ from mayan.apps.documents.events import (
     event_document_version_created, event_document_version_page_created
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
-from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.documents.tests.literals import TEST_FILE_SMALL_PATH
 
 from ..events import event_embedded_signature_created
 from ..permissions import permission_document_file_sign_embedded
@@ -19,7 +19,7 @@ class EmbeddedSignaturesViewTestCase(
     auto_upload_test_document = False
 
     def test_embedded_signature_create_view_with_no_permission(self):
-        self._test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
         self._create_test_key_private()
 
@@ -39,7 +39,7 @@ class EmbeddedSignaturesViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_embedded_signature_create_view_with_document_access(self):
-        self._test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
         self._create_test_key_private()
 
@@ -64,7 +64,7 @@ class EmbeddedSignaturesViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_embedded_signature_create_view_with_key_access(self):
-        self._test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
         self._create_test_key_private()
 
@@ -89,7 +89,7 @@ class EmbeddedSignaturesViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_embedded_signature_create_view_with_full_access(self):
-        self._test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
         self._create_test_key_private()
 
@@ -154,7 +154,7 @@ class EmbeddedSignaturesViewTestCase(
         self.assertEqual(events[4].verb, event_embedded_signature_created.id)
 
     def test_trashed_document_embedded_signature_create_view_with_full_access(self):
-        self._test_document_path = TEST_SMALL_DOCUMENT_PATH
+        self._test_document_path = TEST_FILE_SMALL_PATH
         self._upload_test_document()
         self._create_test_key_private()
 

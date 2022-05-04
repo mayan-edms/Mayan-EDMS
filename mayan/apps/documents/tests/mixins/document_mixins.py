@@ -11,7 +11,7 @@ from ...models import Document, DocumentType
 from ..literals import (
     DEFAULT_DOCUMENT_STUB_LABEL, TEST_DOCUMENT_DESCRIPTION,
     TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_DOCUMENT_TYPE_LABEL,
-    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH
+    TEST_FILE_SMALL_FILENAME, TEST_FILE_SMALL_PATH
 )
 
 
@@ -68,7 +68,7 @@ class DocumentAPIViewTestMixin:
     def _request_test_document_upload_api_view(self):
         pk_list = list(Document.objects.values_list('pk', flat=True))
 
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_FILE_SMALL_PATH, mode='rb') as file_object:
             response = self.post(
                 viewname='rest_api:document-upload', data={
                     'document_type_id': self._test_document_type.pk,
@@ -89,9 +89,9 @@ class DocumentAPIViewTestMixin:
 class DocumentTestMixin:
     auto_create_test_document_type = True
     auto_upload_test_document = True
-    _test_document_file_filename = TEST_SMALL_DOCUMENT_FILENAME
+    _test_document_file_filename = TEST_FILE_SMALL_FILENAME
     _test_document_file_path = None
-    _test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
+    _test_document_filename = TEST_FILE_SMALL_FILENAME
     _test_document_language = None
     _test_document_path = None
     auto_delete_test_document_type = True

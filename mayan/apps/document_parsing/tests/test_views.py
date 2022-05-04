@@ -1,5 +1,7 @@
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
-from mayan.apps.documents.tests.literals import TEST_HYBRID_DOCUMENT
+from mayan.apps.documents.tests.literals import (
+    TEST_FILE_HYBRID_PDF_CONTENT, TEST_FILE_HYBRID_PDF_FILENAME
+)
 
 from ..events import (
     event_parsing_document_file_content_deleted,
@@ -12,7 +14,6 @@ from ..permissions import (
 )
 from ..utils import get_document_file_content
 
-from .literals import TEST_DOCUMENT_CONTENT
 from .mixins import (
     DocumentFileContentTestMixin, DocumentFileContentToolsViewsTestMixin,
     DocumentFileContentViewTestMixin, DocumentTypeContentViewsTestMixin
@@ -42,7 +43,7 @@ class DocumentFileContentViewsTestCase(
 
         response = self._request_test_document_file_content_view()
         self.assertContains(
-            response=response, text=TEST_DOCUMENT_CONTENT, status_code=200
+            response=response, text=TEST_FILE_HYBRID_PDF_CONTENT, status_code=200
         )
 
         events = self._get_test_events()
@@ -212,7 +213,7 @@ class DocumentFilePageContentViewsTestCase(
 
         response = self._request_test_document_file_page_content_view()
         self.assertContains(
-            response=response, text=TEST_DOCUMENT_CONTENT, status_code=200
+            response=response, text=TEST_FILE_HYBRID_PDF_CONTENT, status_code=200
         )
 
         events = self._get_test_events()
@@ -399,7 +400,7 @@ class DocumentTypeParsingViewsTestCase(
 ):
     _skip_file_descriptor_test = True
     # Ensure we use a PDF file
-    _test_document_filename = TEST_HYBRID_DOCUMENT
+    _test_document_filename = TEST_FILE_HYBRID_PDF_FILENAME
     auto_upload_test_document = False
 
     def _get_document_file_content(self):
@@ -424,7 +425,7 @@ class DocumentTypeParsingViewsTestCase(
         )
 
         self.assertNotEqual(
-            self._get_document_file_content(), TEST_DOCUMENT_CONTENT
+            self._get_document_file_content(), TEST_FILE_HYBRID_PDF_CONTENT
         )
 
         events = self._get_test_events()
@@ -441,7 +442,7 @@ class DocumentTypeParsingViewsTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self._get_document_file_content(), TEST_DOCUMENT_CONTENT
+            self._get_document_file_content(), TEST_FILE_HYBRID_PDF_CONTENT
         )
 
         events = self._get_test_events()

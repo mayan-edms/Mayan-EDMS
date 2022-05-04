@@ -1,6 +1,6 @@
 import shutil
 
-from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.documents.tests.literals import TEST_FILE_SMALL_PATH
 from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
 from ...source_backends.literals import (
@@ -46,6 +46,6 @@ class WatchFolderSourceTestMixin(SourceTestMixin):
 
     def _copy_test_watch_folder_document(self):
         shutil.copy(
-            src=TEST_SMALL_DOCUMENT_PATH,
+            src=TEST_FILE_SMALL_PATH,
             dst=self._test_source.get_backend_data()['folder_path']
         )

@@ -1,13 +1,13 @@
 from django.test import override_settings
 
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
-from mayan.apps.documents.tests.literals import TEST_HYBRID_DOCUMENT
-
-from .literals import TEST_DOCUMENT_CONTENT
+from mayan.apps.documents.tests.literals import (
+    TEST_FILE_HYBRID_PDF_CONTENT, TEST_FILE_HYBRID_PDF_FILENAME
+)
 
 
 class DocumentAutoParsingTestCase(GenericDocumentTestCase):
-    _test_document_filename = TEST_HYBRID_DOCUMENT
+    _test_document_filename = TEST_FILE_HYBRID_PDF_FILENAME
     auto_create_test_document_type = False
 
     def test_disable_auto_parsing(self):
@@ -21,5 +21,7 @@ class DocumentAutoParsingTestCase(GenericDocumentTestCase):
         self._create_test_document_type()
         self._upload_test_document()
         self.assertTrue(
-            TEST_DOCUMENT_CONTENT in next(self._test_document_file.content())
+            TEST_FILE_HYBRID_PDF_CONTENT in next(
+                self._test_document_file.content()
+            )
         )

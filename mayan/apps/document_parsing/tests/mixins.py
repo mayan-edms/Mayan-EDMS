@@ -1,6 +1,6 @@
-from ..models import DocumentFilePageContent
+from mayan.apps.documents.tests.literals import TEST_FILE_HYBRID_PDF_CONTENT
 
-from .literals import TEST_DOCUMENT_CONTENT
+from ..models import DocumentFilePageContent
 
 
 class DocumentFileContentToolsViewsTestMixin:
@@ -20,7 +20,7 @@ class DocumentFileContentTestMixin:
     def _create_test_document_file_parsed_content(self):
         DocumentFilePageContent.objects.create(
             document_file_page=self._test_document_file_page,
-            content=TEST_DOCUMENT_CONTENT
+            content=TEST_FILE_HYBRID_PDF_CONTENT
         )
 
 

@@ -5,7 +5,7 @@ from django.core.files import File
 from django.db.models.signals import post_migrate, post_save
 
 from mayan.apps.documents.signals import signal_post_document_file_upload
-from mayan.apps.documents.tests.literals import TEST_DOCUMENT_PATH
+from mayan.apps.documents.tests.literals import TEST_FILE_PDF_PATH
 from mayan.apps.testing.tests.base import MayanMigratorTestCase
 
 from .mixins.document_mixins import DocumentTestMixin
@@ -119,7 +119,7 @@ class DocumentFileSizeCopyMigrationTestCase(
             document_type=self._test_document_type, label='test document'
         )
 
-        with open(file=TEST_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_FILE_PDF_PATH, mode='rb') as file_object:
             self._test_document_file = DocumentFile(
                 document=self._test_document, file=File(file=file_object),
                 filename=Path(file_object.name).name

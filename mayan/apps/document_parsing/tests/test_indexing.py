@@ -1,4 +1,4 @@
-from mayan.apps.documents.tests.literals import TEST_HYBRID_DOCUMENT
+from mayan.apps.documents.tests.literals import TEST_FILE_HYBRID_PDF_FILENAME
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.document_indexing.models import (
     IndexInstanceNode, IndexTemplate
@@ -10,7 +10,7 @@ from .literals import TEST_PARSING_INDEX_NODE_TEMPLATE
 
 
 class DocumentFileParsingIndexingTestCase(DocumentTestMixin, BaseTestCase):
-    _test_document_filename = TEST_HYBRID_DOCUMENT
+    _test_document_filename = TEST_FILE_HYBRID_PDF_FILENAME
     auto_upload_test_document = False
 
     def test_parsing_indexing(self):

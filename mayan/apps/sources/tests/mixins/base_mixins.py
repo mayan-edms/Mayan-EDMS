@@ -3,7 +3,7 @@ import json
 from django.db.models import Q
 
 from mayan.apps.documents.document_file_actions import DocumentFileActionUseNewPages
-from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.documents.tests.literals import TEST_FILE_SMALL_PATH
 
 from ...forms import NewDocumentForm
 from ...models import Source
@@ -20,7 +20,7 @@ from ..mocks import MockRequest
 
 class DocumentFileUploadViewTestMixin:
     def _request_document_file_upload_view(self):
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_FILE_SMALL_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='sources:document_file_upload', kwargs={
                     'document_id': self._test_document.pk,
@@ -32,7 +32,7 @@ class DocumentFileUploadViewTestMixin:
             )
 
     def _request_document_file_upload_no_source_view(self):
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_FILE_SMALL_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='sources:document_file_upload', kwargs={
                     'document_id': self._test_document.pk,
@@ -51,7 +51,7 @@ class DocumentUploadWizardViewTestMixin:
             }
         )
 
-    def _request_upload_wizard_view(self, document_path=TEST_SMALL_DOCUMENT_PATH):
+    def _request_upload_wizard_view(self, document_path=TEST_FILE_SMALL_PATH):
         with open(file=document_path, mode='rb') as file_object:
             return self.post(
                 viewname='sources:document_upload_interactive', kwargs={

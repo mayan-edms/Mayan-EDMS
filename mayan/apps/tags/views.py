@@ -133,6 +133,7 @@ class TagDeleteView(MultipleObjectDeleteView):
 
 class TagEditView(SingleObjectEditView):
     form_class = TagForm
+    model = Tag
     object_permission = permission_tag_edit
     pk_url_kwarg = 'tag_id'
 

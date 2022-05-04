@@ -1,5 +1,5 @@
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
-from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.documents.tests.literals import TEST_FILE_SMALL_PATH
 
 from ..exceptions import (
     DocumentAlreadyCheckedOut, DocumentNotCheckedOut,
@@ -77,7 +77,7 @@ class DocumentCheckoutTestCase(
         self._check_out_test_document()
 
         with self.assertRaises(expected_exception=NewDocumentFileNotAllowed):
-            with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            with open(file=TEST_FILE_SMALL_PATH, mode='rb') as file_object:
                 self._test_document.file_new(file_object=file_object)
 
     def test_file_creation_blocking(self):
@@ -89,5 +89,5 @@ class DocumentCheckoutTestCase(
         self._check_out_test_document()
 
         with self.assertRaises(expected_exception=NewDocumentFileNotAllowed):
-            with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            with open(file=TEST_FILE_SMALL_PATH, mode='rb') as file_object:
                 self._test_document.file_new(file_object=file_object)

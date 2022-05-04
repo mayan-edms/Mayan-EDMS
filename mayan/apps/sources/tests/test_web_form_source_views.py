@@ -10,7 +10,7 @@ from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_file_new
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
-from mayan.apps.documents.tests.literals import TEST_COMPRESSED_DOCUMENT_PATH
+from mayan.apps.documents.tests.literals import TEST_FILE_COMPRESSED_PATH
 
 from ..source_backends.literals import SOURCE_UNCOMPRESS_CHOICE_ALWAYS
 
@@ -66,7 +66,7 @@ class WebFormDocumentUploadWizardViewTestCase(
         self._clear_events()
 
         response = self._request_upload_wizard_view(
-            document_path=TEST_COMPRESSED_DOCUMENT_PATH
+            document_path=TEST_FILE_COMPRESSED_PATH
         )
         self.assertEqual(response.status_code, 302)
 

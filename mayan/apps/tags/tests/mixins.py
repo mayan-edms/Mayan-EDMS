@@ -1,4 +1,4 @@
-from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.documents.tests.literals import TEST_FILE_SMALL_PATH
 
 from django.db.models import Q
 
@@ -214,7 +214,7 @@ class TagViewTestMixin:
 
 class TaggedDocumentUploadWizardStepViewTestMixin:
     def _request_upload_interactive_document_create_view(self):
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_FILE_SMALL_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='sources:document_upload_interactive', kwargs={
                     'source_id': self._test_source.pk
