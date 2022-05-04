@@ -25,6 +25,7 @@ icon_document_tag_list = Icon(driver_name='fontawesome', symbol='tags')
 
 # Tags
 
+icon_tag_color_random = Icon(driver_name='fontawesome', symbol='random')
 icon_tag_create = Icon(
     driver_name='fontawesome-dual', primary_symbol='tag',
     secondary_symbol='plus'

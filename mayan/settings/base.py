@@ -56,7 +56,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # 3rd party.
     'actstream',
-    'colorful',
     'corsheaders',
     'django_celery_beat',
     'formtools',

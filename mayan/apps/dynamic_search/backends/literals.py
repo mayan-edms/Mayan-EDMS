@@ -1,4 +1,3 @@
-from colorful.fields import RGBColorField
 import elasticsearch_dsl
 import whoosh
 from whoosh import qparser  # NOQA Used to initialize the whoosh.fields module.
@@ -42,8 +41,7 @@ DJANGO_TO_ELASTICSEARCH_FIELD_MAP = {
     },
     models.UUIDField: {
         'field': elasticsearch_dsl.field.Keyword, 'transformation': str
-    },
-    RGBColorField: {'field': elasticsearch_dsl.field.Keyword},
+    }
 }
 
 # Whoosh specific.
@@ -59,8 +57,7 @@ DJANGO_TO_WHOOSH_FIELD_MAP = {
     },
     models.EmailField: {'field': whoosh.fields.TEXT},
     models.TextField: {'field': whoosh.fields.TEXT},
-    models.UUIDField: {'field': whoosh.fields.TEXT, 'transformation': str},
-    RGBColorField: {'field': whoosh.fields.TEXT},
+    models.UUIDField: {'field': whoosh.fields.TEXT, 'transformation': str}
 }
 
 WHOOSH_INDEX_DIRECTORY_NAME = 'whoosh'

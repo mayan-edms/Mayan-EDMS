@@ -1,6 +1,6 @@
 from django.db import migrations, models
 
-import colorful.fields
+from ..compatibility import RGBColorField
 
 
 class Migration(migrations.Migration):
@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='tag',
             name='color',
-            field=colorful.fields.RGBColorField(
+            field=RGBColorField(
                 help_text='The RGB color values for the tag.',
                 verbose_name='Color'
             ),

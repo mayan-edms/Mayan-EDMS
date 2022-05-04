@@ -249,6 +249,8 @@
   - PEP8 code style cleanups.
 
 - Add support for cabinet mirroring.
+- Remove ``django-colorful``. Use HTML5 color field instead.
+- Add support to randomize the tag color.
 
 4.2.4 (2022-04-29)
 ==================

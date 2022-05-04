@@ -1,8 +1,19 @@
+from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.views.forms import FilteredSelectionForm
 
-from .widgets import TagFormWidget
+from .models import Tag
+from .widgets import ColorWidget, TagFormWidget
+
+
+class TagForm(forms.ModelForm):
+    class Meta:
+        fields = ('label', 'color')
+        model = Tag
+        widgets = {
+            'color': ColorWidget()
+        }
 
 
 class TagMultipleSelectionForm(FilteredSelectionForm):

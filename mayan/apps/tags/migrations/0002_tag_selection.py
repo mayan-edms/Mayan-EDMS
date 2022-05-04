@@ -1,7 +1,6 @@
 from django.db import migrations
 
-import colorful.fields
-
+from ..compatibility import RGBColorField
 
 COLOR_BLUE = 'blu'
 COLOR_CORAL = 'crl'
@@ -45,7 +44,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='tag',
             name='selection',
-            field=colorful.fields.RGBColorField(default='#FFFFFF'),
+            field=RGBColorField(default='#FFFFFF'),
             preserve_default=False,
         ),
         migrations.RunPython(code=code_convert_color_names_to_rgb)

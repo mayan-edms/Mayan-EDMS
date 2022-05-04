@@ -3,6 +3,7 @@ codecov
 cssmin
 django-autoadmin
 django-celery
+django-colorful
 django-compressor
 django-downloadview
 django-environ

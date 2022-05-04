@@ -15,7 +15,7 @@ from mayan.apps.views.generics import (
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
-from .forms import TagMultipleSelectionForm
+from .forms import TagForm, TagMultipleSelectionForm
 from .icons import icon_menu_tags
 from .links import link_document_tag_multiple_attach, link_tag_create
 from .models import DocumentTag, Tag
@@ -99,8 +99,7 @@ class TagAttachActionView(MultipleObjectFormActionView):
 
 class TagCreateView(SingleObjectCreateView):
     extra_context = {'title': _('Create tag')}
-    fields = ('label', 'color')
-    model = Tag
+    form_class = TagForm
     post_action_redirect = reverse_lazy(viewname='tags:tag_list')
     view_permission = permission_tag_create
 
@@ -133,8 +132,7 @@ class TagDeleteView(MultipleObjectDeleteView):
 
 
 class TagEditView(SingleObjectEditView):
-    fields = ('label', 'color')
-    model = Tag
+    form_class = TagForm
     object_permission = permission_tag_edit
     pk_url_kwarg = 'tag_id'
 
