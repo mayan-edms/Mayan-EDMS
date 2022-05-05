@@ -1,6 +1,12 @@
 4.2.5 (2022-XX-XX)
 ==================
 - Remove unused authentication view.
+- Task manager app updates:
+
+  - Add backend Celery queue deduplication to the ``CeleryQueue``.
+  - Enable app tests.
+  - Add and improve tests.
+  - Add support for runtime removal of queues.
 
 4.2.4 (2022-04-29)
 ==================

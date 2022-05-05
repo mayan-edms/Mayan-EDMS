@@ -20,6 +20,7 @@ logger = logging.getLogger(name=__name__)
 class TaskManagerApp(MayanAppConfig):
     app_namespace = 'task_manager'
     app_url = 'task_manager'
+    has_tests = True
     name = 'mayan.apps.task_manager'
     verbose_name = _('Task manager')
 
