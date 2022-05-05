@@ -286,6 +286,9 @@
   - Add and improve tests.
   - Add support for runtime removal of queues.
 
+- Show item count even if the list is empty. This change prevents the list
+  toolbar from "jumping" visually when there are no results.
+
 4.2.4 (2022-04-29)
 ==================
 - Fix the documentation paths to the OTP backends. Closes GitLab
