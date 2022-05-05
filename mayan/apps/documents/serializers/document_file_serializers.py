@@ -108,7 +108,6 @@ class DocumentFileSerializer(serializers.HyperlinkedModelSerializer):
         view_name='rest_api:documentfilepage-list'
     )
     pages_first = DocumentFilePageSerializer(many=False, read_only=True)
-    size = serializers.SerializerMethodField()
     url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
@@ -140,6 +139,3 @@ class DocumentFileSerializer(serializers.HyperlinkedModelSerializer):
             'encoding', 'file', 'id', 'mimetype', 'page_list_url',
             'pages_first', 'size', 'timestamp', 'url'
         )
-
-    def get_size(self, instance):
-        return instance.size
