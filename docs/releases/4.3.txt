@@ -52,8 +52,6 @@ Backward incompatible changes
 Deprecations
 ------------
 
-- The ``mountindex`` management command will be removed in an upcoming
-  minor version. Use the ``mirroring_mount_index`` command instead.
 - The Cabinet API serializer field named ``parent``, will be removed in
   version 5.0. Use the ``parent_id`` instead which is functionally identical.
 - The ``IndexTemplateNodeSerializer`` serializer fields ``parent`` and ``index``
@@ -62,6 +60,13 @@ Deprecations
 - The ``WorkflowInstanceSerializer`` field named ``workflow_template_url``
   will be removed in version 5.0. Use the ``url`` attribute of the
   ``workflow_template`` instead.
+- Several management command will be remove in the next minor release. Use
+  the corresponding replacement commands instead:
+
+    - ``mountindex``, use ``mirroring_mount_index`` instead.
+    - ``preparestatic``, use ``appearance_prepare_static`` instead.
+    - ``purgeperiodictasks``, use ``task_manager_purge_periodic_tasks`` instead.
+    - ``purgelocks``, use ``lock_manager_purge_locks`` instead.
 
 
 Issues closed

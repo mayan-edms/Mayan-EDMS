@@ -89,12 +89,17 @@
   filtering also support filtering by any field and not just using the
   special "any field" ``q`` query key.
 - Merge fixes from version 4.2.2.
-- Rename the ``preparestatic`` command to ``appearance_prepare_static``.
+- Added the command ``appearance_prepare_static`` to replace
+  ``preparestatic`` command. The command ``preparestatic`` will continue to
+  until the next minor release.
 - Move the ``purgeperiodictasks`` command from the common app to the
   task_manager app.
-- Rename the ``purgeperiodictasks`` command to
-  ``task_manager_purge_periodic_tasks``.
-- Rename the ``purgelocks`` command to ``lock_manager_purge_locks``.
+- Added the command ``task_manager_purge_periodic_tasks`` to replace
+  ``purgeperiodictasks``. The command ``purgeperiodictasks`` will continue
+  to work until the next minor release.
+- Added the command ``lock_manager_purge_locks`` to replace ``purgelocks``.
+  The command ``purgelocks`` will continue to work until the next minor
+  release.
 - Drop support for Python 3.6.
 - Dependencies update:
 
