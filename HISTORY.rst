@@ -279,6 +279,12 @@
 
 - Split the document indexing models module. Module is split into index
   template and instance models.
+- Task manager app updates:
+
+  - Add backend Celery queue deduplication to the ``CeleryQueue``.
+  - Enable app tests.
+  - Add and improve tests.
+  - Add support for runtime removal of queues.
 
 4.2.4 (2022-04-29)
 ==================
