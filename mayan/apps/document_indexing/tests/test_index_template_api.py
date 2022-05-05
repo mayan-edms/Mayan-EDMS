@@ -6,7 +6,7 @@ from mayan.apps.documents.permissions import (
 )
 
 from ..events import event_index_template_created, event_index_template_edited
-from ..models import IndexInstanceNode, IndexTemplate, IndexTemplateNode
+from ..models.index_instance_models import IndexInstanceNode, IndexTemplate, IndexTemplateNode
 from ..permissions import (
     permission_index_template_create, permission_index_template_delete,
     permission_index_template_edit, permission_index_template_rebuild,

@@ -1,6 +1,7 @@
 from django.db.models import Q
 
-from ..models import IndexInstance, IndexTemplate, IndexTemplateNode
+from ..models.index_instance_models import IndexInstance
+from ..models.index_template_models import IndexTemplate, IndexTemplateNode
 
 from .literals import (
     TEST_INDEX_TEMPLATE_LABEL, TEST_INDEX_TEMPLATE_LABEL_EDITED,

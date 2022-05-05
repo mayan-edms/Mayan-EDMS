@@ -277,6 +277,9 @@
   - ``showsettings`` replaced by ``settings_show``.
   - ``showversion`` replaced by ``dependencies_show_version``.
 
+- Split the document indexing models module. Module is split into index
+  template and instance models.
+
 4.2.4 (2022-04-29)
 ==================
 - Fix the documentation paths to the OTP backends. Closes GitLab

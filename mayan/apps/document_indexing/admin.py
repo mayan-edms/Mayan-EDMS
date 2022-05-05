@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
-from .models import IndexTemplate, IndexTemplateNode
+from .models.index_template_models import IndexTemplate, IndexTemplateNode
 
 
 class IndexTemplateNodeInline(admin.StackedInline):

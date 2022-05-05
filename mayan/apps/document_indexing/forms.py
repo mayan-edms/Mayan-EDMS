@@ -5,7 +5,7 @@ from mayan.apps.documents.models import Document
 from mayan.apps.templating.fields import ModelTemplateField
 from mayan.apps.views.forms import FilteredSelectionForm
 
-from .models import IndexTemplate, IndexTemplateNode
+from .models.index_template_models import IndexTemplate, IndexTemplateNode
 from .permissions import permission_index_template_rebuild
 
 

@@ -17,7 +17,7 @@ from ..events import event_index_template_edited
 from ..forms import IndexTemplateFilteredForm, IndexTemplateNodeForm
 from ..icons import icon_index
 from ..links import link_index_template_create
-from ..models import IndexTemplate, IndexTemplateNode
+from ..models.index_template_models import IndexTemplate, IndexTemplateNode
 from ..permissions import (
     permission_index_template_create, permission_index_template_delete,
     permission_index_template_edit, permission_index_template_rebuild,

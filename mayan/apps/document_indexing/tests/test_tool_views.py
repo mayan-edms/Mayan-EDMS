@@ -1,6 +1,6 @@
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
-from ..models import IndexInstanceNode
+from ..models.index_instance_models import IndexInstanceNode
 from ..permissions import permission_index_template_rebuild
 
 from .mixins import (

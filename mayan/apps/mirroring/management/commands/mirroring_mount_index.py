@@ -1,6 +1,6 @@
 from django.core import management
 
-from mayan.apps.document_indexing.models import IndexInstance
+from mayan.apps.document_indexing.models.index_instance_models import IndexInstance
 
 from ..base import MountCommandMixin
 
