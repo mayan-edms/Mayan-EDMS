@@ -53,7 +53,15 @@ Deprecations
 ------------
 
 - The ``mountindex`` management command will be removed in an upcoming
-  version. Use the ``mirroring_mount_index`` command instead.
+  minor version. Use the ``mirroring_mount_index`` command instead.
+- The Cabinet API serializer field named ``parent``, will be removed in
+  version 5.0. Use the ``parent_id`` instead which is functionally identical.
+- The ``IndexTemplateNodeSerializer`` serializer fields ``parent`` and ``index``
+  will be removed in version 5.0. Use fields ``parent_id`` and ``index_id``
+  which are functionally identical.
+- The ``WorkflowInstanceSerializer`` field named ``workflow_template_url``
+  will be removed in version 5.0. Use the ``url`` attribute of the
+  ``workflow_template`` instead.
 
 
 Issues closed

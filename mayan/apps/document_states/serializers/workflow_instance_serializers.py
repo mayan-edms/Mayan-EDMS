@@ -133,7 +133,7 @@ class WorkflowInstanceSerializer(serializers.ModelSerializer):
     log_entry_transitions_url = serializers.SerializerMethodField(
         read_only=True
     )
-    # TODO: Remove in version 5.0.
+    # DEPRECATION: Remove in version 5.0.
     workflow_template_url = serializers.SerializerMethodField()
     url = serializers.SerializerMethodField(
         help_text=_(

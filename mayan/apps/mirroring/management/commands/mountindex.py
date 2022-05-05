@@ -1,2 +1,2 @@
-# DEPRECATED: Remove in version 5.0.
+# DEPRECATION: Remove in version >= 4.4.
 from .mountindex import *  # NOQA

@@ -38,8 +38,8 @@ class CabinetSerializer(serializers.ModelSerializer):
         allow_null=True, queryset=Cabinet.objects.all(), required=False
     )
 
-    # TODO: Version 5.0, remove 'parent' fields from GET request as it is
-    # replaced by 'parent_id'.
+    # DEPRECATION: Version 5.0, remove 'parent' fields from GET request as
+    # it is replaced by 'parent_id'.
 
     class Meta:
         extra_kwargs = {
