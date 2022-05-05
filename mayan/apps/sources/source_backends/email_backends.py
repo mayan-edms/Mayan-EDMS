@@ -3,6 +3,8 @@ import itertools
 import logging
 import poplib
 
+from flanker import mime
+
 from django.core.exceptions import ValidationError
 from django.core.files.base import ContentFile
 from django.utils.encoding import force_bytes, force_text
@@ -197,8 +199,6 @@ class SourceBackendEmailMixin:
         self.document_metadata = {}
 
     def process_message(self, message):
-        from flanker import mime
-
         message = mime.from_string(string=force_bytes(s=message))
 
         shared_uploaded_files = self._process_message(message=message)
