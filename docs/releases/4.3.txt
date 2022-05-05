@@ -63,10 +63,24 @@ Deprecations
 - Several management command will be remove in the next minor release. Use
   the corresponding replacement commands instead:
 
-    - ``mountindex``, use ``mirroring_mount_index`` instead.
-    - ``preparestatic``, use ``appearance_prepare_static`` instead.
-    - ``purgeperiodictasks``, use ``task_manager_purge_periodic_tasks`` instead.
-    - ``purgelocks``, use ``lock_manager_purge_locks`` instead.
+    - ``checkdependencies`` replaced by ``dependencies_check``.
+    - ``checkversion`` replaced by ``dependencies_check_version``.
+    - ``createautoadmin`` replaced by ``autoadmin_create``.
+    - ``generaterequirements`` replaced by ``dependencies_generate_requirements``.
+    - ``initialsetup`` replaced by ``initial_setup``.
+    - ``installdependencies`` replaced by ``dependencies_install``.
+    - ``mountindex`` replaced by ``mirroring_mount_index``.
+    - ``performupgrade`` replaced by ``perform_upgrade``.
+    - ``platformtemplate`` replaced by ``platform_template``.
+    - ``preparestatic`` replaced by ``appearance_prepare_static``.
+    - ``purgelocks`` replaced by ``lock_manager_purge_locks``.
+    - ``purgepermissions`` replaced by ``permissions_purge``.
+    - ``purgeperiodictasks`` replaced by ``task_manager_purge_periodic_tasks``.
+    - ``purgestatistics`` replaced by ``statistics_purge``.
+    - ``revertsettings`` replaced by ``settings_revert``.
+    - ``savesettings`` replaced by ``settings_save``.
+    - ``showsettings`` replaced by ``settings_show``.
+    - ``showversion`` replaced by ``dependencies_show_version``.
 
 
 Issues closed

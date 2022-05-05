@@ -89,17 +89,8 @@
   filtering also support filtering by any field and not just using the
   special "any field" ``q`` query key.
 - Merge fixes from version 4.2.2.
-- Added the command ``appearance_prepare_static`` to replace
-  ``preparestatic`` command. The command ``preparestatic`` will continue to
-  until the next minor release.
 - Move the ``purgeperiodictasks`` command from the common app to the
   task_manager app.
-- Added the command ``task_manager_purge_periodic_tasks`` to replace
-  ``purgeperiodictasks``. The command ``purgeperiodictasks`` will continue
-  to work until the next minor release.
-- Added the command ``lock_manager_purge_locks`` to replace ``purgelocks``.
-  The command ``purgelocks`` will continue to work until the next minor
-  release.
 - Drop support for Python 3.6.
 - Dependencies update:
 
@@ -264,6 +255,27 @@
   - Add parsing support for office document files and text files.
 
 - Rename test file literals for uniformity.
+- Rename management commands to include the app name where they are defined.
+  Add a stub command for backwards compatibility.
+
+  - ``checkdependencies`` replaced by ``dependencies_check``.
+  - ``checkversion`` replaced by ``dependencies_check_version``.
+  - ``createautoadmin`` replaced by ``autoadmin_create``.
+  - ``generaterequirements`` replaced by ``dependencies_generate_requirements``.
+  - ``initialsetup`` replaced by ``initial_setup``.
+  - ``installdependencies`` replaced by ``dependencies_install``.
+  - ``mountindex`` replaced by ``mirroring_mount_index``.
+  - ``performupgrade`` replaced by ``perform_upgrade``.
+  - ``platformtemplate`` replaced by ``platform_template``.
+  - ``preparestatic`` replaced by ``appearance_prepare_static``.
+  - ``purgelocks`` replaced by ``lock_manager_purge_locks``.
+  - ``purgepermissions`` replaced by ``permissions_purge``.
+  - ``purgeperiodictasks`` replaced by ``task_manager_purge_periodic_tasks``.
+  - ``purgestatistics`` replaced by ``statistics_purge``.
+  - ``revertsettings`` replaced by ``settings_revert``.
+  - ``savesettings`` replaced by ``settings_save``.
+  - ``showsettings`` replaced by ``settings_show``.
+  - ``showversion`` replaced by ``dependencies_show_version``.
 
 4.2.4 (2022-04-29)
 ==================
