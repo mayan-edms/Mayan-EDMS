@@ -1,3 +1,7 @@
+4.2.5 (2022-XX-XX)
+==================
+- Remove unused authentication view.
+
 4.2.4 (2022-04-29)
 ==================
 - Fix the documentation paths to the OTP backends. Closes GitLab
