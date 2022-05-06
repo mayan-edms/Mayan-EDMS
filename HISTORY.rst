@@ -288,6 +288,8 @@
 
 - Show item count even if the list is empty. This change prevents the list
   toolbar from "jumping" visually when there are no results.
+- Simplify how the view title is copied to the window title. Escaping is now
+  performed by jQuery.
 
 4.2.4 (2022-04-29)
 ==================

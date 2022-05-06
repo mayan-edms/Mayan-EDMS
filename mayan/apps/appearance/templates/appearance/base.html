@@ -98,9 +98,7 @@
 {% block javascript %}{% endblock %}
 
 <script>
-    document.title = '{% filter escapejs %}{% spaceless %}{% block title %}{% endblock %} :: {% block project_name %}{% smart_setting "COMMON_PROJECT_TITLE" %}{% endblock %}{% endspaceless %}{% endfilter %}';
-    // Strip HTML entities from the title
-    document.title = document.title.replace(/&(?:[a-z\d]+|#\d+|#x[a-f\d]+);/ig, '');
+    document.title = $('#appearance-title-text').text() + ' :: {% block project_name %}{% smart_setting "COMMON_PROJECT_TITLE" %}{% endblock %}';
 
     jQuery(document).ready(function() {
         $('[data-toggle="tooltip"]').tooltip();
