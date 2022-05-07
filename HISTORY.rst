@@ -11,6 +11,7 @@
 - Remove unused event link.
 - Make document version OCR submit view messages translatable.
 - Make file caching purge view messages translatable.
+- Make document file metadata submit view messages translatable.
 
 4.2.4 (2022-04-29)
 ==================
