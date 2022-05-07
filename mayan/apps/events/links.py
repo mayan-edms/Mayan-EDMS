@@ -48,9 +48,6 @@ def get_unread_notification_count(context):
         ).filter(read=False).count()
 
 
-link_events_details = Link(
-    text=_('Events'), view='events:events_list'
-)
 link_events_for_object = Link(
     icon=icon_events_for_object,
     kwargs=get_content_type_kwargs_factory(variable_name='resolved_object'),
