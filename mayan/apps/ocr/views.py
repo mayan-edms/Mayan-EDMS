@@ -102,8 +102,12 @@ class DocumentVersionOCRSubmitView(MultipleObjectConfirmActionView):
     object_permission = permission_document_version_ocr
     pk_url_kwarg = 'document_version_id'
     source_queryset = DocumentVersion.valid.all()
-    success_message = '%(count)d document version submitted to the OCR queue.'
-    success_message_plural = '%(count)d document versions submitted to the OCR queue.'
+    success_message = _(
+        '%(count)d document version submitted to the OCR queue.'
+    )
+    success_message_plural = _(
+        '%(count)d document versions submitted to the OCR queue.'
+    )
 
     def get_extra_context(self):
         queryset = self.object_list

@@ -9,6 +9,7 @@
   - Add support for runtime removal of queues.
 
 - Remove unused event link.
+- Make document version OCR submit view messages translatable.
 
 4.2.4 (2022-04-29)
 ==================
