@@ -294,6 +294,7 @@
   displayed with the title.
 - Normalize icon, link and view names. Follow the pattern
   object_sub_object_action.
+- Add warning message when user attempting to delete their own accounts.
 
 4.2.4 (2022-04-29)
 ==================
