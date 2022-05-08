@@ -58,6 +58,16 @@ class UserDeleteView(MultipleObjectDeleteView):
     title_singular = _('Delete the %(count)d selected user.')
     title_plural = _('Delete the %(count)d selected users.')
 
+    def get_extra_context(self, **kwargs):
+        if self.request.user in self.object_list:
+            return {
+                'message': _(
+                    'Warning! You are about to delete your own user '
+                    'account. You will lose access to the system. This '
+                    'process is not reversible.'
+                )
+            }
+
     def get_source_queryset(self):
         return get_user_queryset(user=self.request.user)
 

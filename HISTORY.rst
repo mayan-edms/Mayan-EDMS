@@ -23,6 +23,8 @@
   - Add sanity check to reject negative zoom values for the
     ``TransformationZoom`` transformation.
 
+- Add warning message when users attempting to delete their own accounts.
+
 4.2.4 (2022-04-29)
 ==================
 - Fix the documentation paths to the OTP backends. Closes GitLab
