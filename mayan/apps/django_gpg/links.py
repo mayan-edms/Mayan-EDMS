@@ -4,8 +4,8 @@ from mayan.apps.navigation.classes import Link
 
 from .icons import (
     icon_key_delete, icon_key_detail, icon_key_download, icon_key_setup,
-    icon_key_upload, icon_keyserver_search, icon_private_keys,
-    icon_public_keys
+    icon_key_upload, icon_keyserver_search, icon_private_key_list,
+    icon_public_key_list
 )
 from .permissions import (
     permission_key_delete, permission_key_download, permission_key_receive,
@@ -45,11 +45,11 @@ link_key_upload = Link(
     icon=icon_key_upload, permissions=(permission_key_upload,),
     text=_('Upload key'), view='django_gpg:key_upload'
 )
-link_private_keys = Link(
-    icon=icon_private_keys, permissions=(permission_key_view,),
+link_private_key_list = Link(
+    icon=icon_private_key_list, permissions=(permission_key_view,),
     text=_('Private keys'), view='django_gpg:key_private_list'
 )
-link_public_keys = Link(
-    icon=icon_public_keys, permissions=(permission_key_view,),
+link_public_key_list = Link(
+    icon=icon_public_key_list, permissions=(permission_key_view,),
     text=_('Public keys'), view='django_gpg:key_public_list'
 )
