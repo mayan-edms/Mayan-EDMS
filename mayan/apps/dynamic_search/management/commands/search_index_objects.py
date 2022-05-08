@@ -43,7 +43,7 @@ class Command(BaseCommand):
             task_index_instances.apply_async(
                 kwargs={
                     'id_list': id_list,
-                    'search_model_full_name': search_model.get_full_name(),
+                    'search_model_full_name': search_model.get_full_name()
                 }
             )
 

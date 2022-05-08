@@ -295,6 +295,11 @@
 - Normalize icon, link and view names. Follow the pattern
   object_sub_object_action.
 - Add warning message when user attempting to delete their own accounts.
+- Add support for Whoosh bulk indexing using the ``BufferedWriter`` class.
+  When reindexing the search indexes, for every lock obtained, a group of
+  object will be written as a single operation. The number of objects
+  written concurrently is controlled by the settings
+  ``SEARCH_INDEXING_CHUNK_SIZE``.
 
 4.2.4 (2022-04-29)
 ==================
