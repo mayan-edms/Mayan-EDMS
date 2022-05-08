@@ -6,6 +6,9 @@ icon_documentation = Icon(driver_name='fontawesome', symbol='book')
 icon_forum = Icon(
     driver_name='fontawesome', symbol='life-ring'
 )
+icon_home = Icon(
+    driver_name='fontawesome', symbol='home'
+)
 icon_license = Icon(
     driver_name='fontawesome', symbol='certificate'
 )

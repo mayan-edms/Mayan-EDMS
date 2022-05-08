@@ -107,14 +107,14 @@ class DocumentFileViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_delete_multiple_no_permission(self):
+    def test_document_file_multiple_delete_no_permission(self):
         self._upload_test_document_file()
 
         test_document_file_count = self._test_document.files.count()
 
         self._clear_events()
 
-        response = self._request_test_document_file_delete_multiple_view()
+        response = self._request_test_document_file_multiple_delete_view()
 
         self.assertEqual(response.status_code, 404)
 
@@ -125,7 +125,7 @@ class DocumentFileViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_delete_multiple_with_access(self):
+    def test_document_file_multiple_delete_with_access(self):
         self._upload_test_document_file()
 
         self.grant_access(
@@ -137,7 +137,7 @@ class DocumentFileViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_file_delete_multiple_view()
+        response = self._request_test_document_file_multiple_delete_view()
 
         self.assertEqual(response.status_code, 302)
 

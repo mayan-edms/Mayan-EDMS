@@ -3,7 +3,8 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.navigation.classes import Link
 
 from .icons import (
-    icon_check_in_document, icon_check_out_document, icon_check_out_info
+    icon_check_in_document, icon_check_out_document, icon_check_out_info,
+    icon_check_out_list
 )
 from .permissions import (
     permission_document_check_out, permission_document_check_in,
@@ -29,7 +30,7 @@ def condition_is_not_checked_out(context, resolved_object):
 
 
 link_check_out_list = Link(
-    icon=icon_check_out_info, text=_('Checkouts'),
+    icon=icon_check_out_list, text=_('Checkouts'),
     view='checkouts:check_out_list'
 )
 link_check_out_document = Link(

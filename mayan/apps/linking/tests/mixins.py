@@ -311,7 +311,7 @@ class ResolvedSmartLinkDocumentViewTestMixin:
 
     def _request_test_document_resolved_smart_link_list_view(self):
         return self.get(
-            viewname='linking:smart_link_instances_for_document', kwargs={
+            viewname='linking:document_smart_link_instance_list', kwargs={
                 'document_id': self._test_documents[0].pk
             }
         )

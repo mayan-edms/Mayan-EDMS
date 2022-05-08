@@ -20,7 +20,7 @@ class SignaturesViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_file_signature_details_view()
+        response = self._request_test_document_file_signature_detail_view()
         self.assertEqual(response.status_code, 404)
 
         events = self._get_test_events()
@@ -40,7 +40,7 @@ class SignaturesViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_file_signature_details_view()
+        response = self._request_test_document_file_signature_detail_view()
         self.assertContains(
             response=response, text=self._test_signature.signature_id,
             status_code=200
@@ -65,7 +65,7 @@ class SignaturesViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_file_signature_details_view()
+        response = self._request_test_document_file_signature_detail_view()
         self.assertEqual(response.status_code, 404)
 
         events = self._get_test_events()

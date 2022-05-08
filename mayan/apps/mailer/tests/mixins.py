@@ -11,7 +11,7 @@ from .mailers import TestBackend
 
 
 class DocumentMailerViewTestMixin:
-    def _request_test_document_send_link_single_view(self):
+    def _request_test_document_link_send_single_view(self):
         return self.post(
             viewname='mailer:send_document_link_single', kwargs={
                 'document_id': self._test_document.pk
@@ -23,7 +23,7 @@ class DocumentMailerViewTestMixin:
             },
         )
 
-    def _request_test_document_send_link_multiple_view(self):
+    def _request_test_document_link_send_multiple_view(self):
         return self.post(
             viewname='mailer:send_document_link_multiple', query={
                 'id_list': self._test_document.pk
@@ -37,7 +37,7 @@ class DocumentMailerViewTestMixin:
 
 
 class DocumentFileMailerViewTestMixin:
-    def _request_test_document_file_send_link_single_view(self):
+    def _request_test_document_file_link_send_single_view(self):
         return self.post(
             viewname='mailer:send_document_file_link_single', kwargs={
                 'document_file_id': self._test_document_file.pk
@@ -49,7 +49,7 @@ class DocumentFileMailerViewTestMixin:
             }
         )
 
-    def _request_test_document_file_send_link_multiple_view(self):
+    def _request_test_document_file_link_send_multiple_view(self):
         return self.post(
             viewname='mailer:send_document_file_link_multiple', query={
                 'id_list': self._test_document_file.pk
@@ -87,7 +87,7 @@ class DocumentFileMailerViewTestMixin:
 
 
 class DocumentVersionMailerViewTestMixin:
-    def _request_test_document_version_send_link_single_view(self):
+    def _request_test_document_version_link_send_single_view(self):
         return self.post(
             viewname='mailer:send_document_version_link_single', kwargs={
                 'document_version_id': self._test_document_version.pk
@@ -99,7 +99,7 @@ class DocumentVersionMailerViewTestMixin:
             },
         )
 
-    def _request_test_document_version_send_link_multiple_view(self):
+    def _request_test_document_version_link_send_multiple_view(self):
         return self.post(
             viewname='mailer:send_document_version_link_multiple', query={
                 'id_list': self._test_document_version.pk

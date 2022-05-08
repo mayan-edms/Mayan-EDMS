@@ -10,8 +10,8 @@ from mayan.apps.navigation.classes import Link
 
 from .icons import (
     icon_document_create_multiple, icon_document_file_upload,
-    icon_source_backend_selection, icon_source_test,
-    icon_source_delete, icon_source_edit, icon_source_list,
+    icon_source_backend_selection, icon_source_delete, icon_source_edit,
+    icon_source_list, icon_source_test
 )
 from .permissions import (
     permission_sources_create, permission_sources_delete,
@@ -104,6 +104,8 @@ def condition_source_is_not_interactive(context, resolved_object):
         return not getattr(source.get_backend(), 'is_interactive', False)
 
 
+# Document
+
 link_document_create_multiple = Link(
     condition=condition_document_creation_access,
     icon=icon_document_create_multiple, text=_('New document'),
@@ -115,6 +117,8 @@ link_document_file_upload = Link(
     icon=icon_document_file_upload,
     text=_('Upload new file'), view='sources:document_file_upload',
 )
+
+# Source
 
 link_source_backend_selection = Link(
     icon=icon_source_backend_selection,

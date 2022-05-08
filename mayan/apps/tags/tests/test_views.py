@@ -122,20 +122,25 @@ class DocumentTagViewTestCase(
             obj=self._test_document, permission=permission_tag_view
         )
         self.grant_access(
-            obj=self._test_tag, permission=permission_tag_view
+            obj=self._test_tag, permission=permission_tag_edit
         )
         self.grant_access(
-            obj=self._test_tag, permission=permission_tag_edit
+            obj=self._test_tag, permission=permission_tag_view
         )
 
         self._clear_events()
 
         response = self._request_test_document_tag_list_view()
 
-        link_context = response.context[-1]
-        link_context['object'] = self._test_tag
+        # Get the first context item that correspond to an an item in the
+        # response nexted context list.
+        for context in response.context:
+            if 'object' in context:
+                break
 
-        result = link_tag_edit.resolve(context=link_context)
+        context['object'] = self._test_tag
+
+        result = link_tag_edit.resolve(context=context)
 
         self.assertNotContains(
             response=response, text=result.url,
@@ -682,7 +687,7 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
 
         self._clear_events()
 
-        response = self._request_test_tag_delete_multiple_view()
+        response = self._request_test_tag_multiple_delete_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(Tag.objects.count(), tag_count)
@@ -699,7 +704,7 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
 
         self._clear_events()
 
-        response = self._request_test_tag_delete_multiple_view()
+        response = self._request_test_tag_multiple_delete_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(Tag.objects.count(), tag_count - 1)

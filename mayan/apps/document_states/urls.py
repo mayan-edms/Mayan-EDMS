@@ -41,11 +41,11 @@ from .views.workflow_proxy_views import (
     WorkflowRuntimeProxyStateListView
 )
 from .views.workflow_template_views import (
-    DocumentTypeWorkflowTemplatesView, DocumentWorkflowTemplatesLaunchView,
+    DocumentTypeWorkflowTemplateAddRemoveView, DocumentWorkflowTemplatesLaunchView,
     ToolLaunchWorkflows, WorkflowTemplateCreateView,
     WorkflowTemplateDeleteView, WorkflowTemplateEditView,
     WorkflowTemplateLaunchView, WorkflowTemplateListView,
-    WorkflowTemplatePreviewView, WorkflowTemplateDocumentTypesView
+    WorkflowTemplatePreviewView, WorkflowTemplateDocumentTypeAddRemoveView
 )
 from .views.workflow_template_state_views import (
     WorkflowTemplateStateActionCreateView,
@@ -195,7 +195,7 @@ urlpatterns_workflow_templates = [
     url(
         regex=r'^document_types/(?P<document_type_id>\d+)/workflow_templates/$',
         name='document_type_workflow_templates',
-        view=DocumentTypeWorkflowTemplatesView.as_view()
+        view=DocumentTypeWorkflowTemplateAddRemoveView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/workflow_templates/launch/$',
@@ -229,7 +229,7 @@ urlpatterns_workflow_templates = [
     url(
         regex=r'^workflow_templates/(?P<workflow_template_id>\d+)/document_types/$',
         name='workflow_template_document_types',
-        view=WorkflowTemplateDocumentTypesView.as_view()
+        view=WorkflowTemplateDocumentTypeAddRemoveView.as_view()
     ),
     url(
         regex=r'^workflow_templates/(?P<workflow_template_id>\d+)/edit/$',
@@ -247,6 +247,7 @@ urlpatterns_workflow_templates = [
         view=WorkflowTemplatePreviewView.as_view()
     )
 ]
+
 urlpatterns_workflow_transitions = [
     url(
         regex=r'^workflow_templates/(?P<workflow_template_id>\d+)/transitions/$',

@@ -16,6 +16,15 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import DocumentFileContentForm, DocumentFilePageContentForm
+from .icons import (
+    icon_document_file_content_single_delete,
+    icon_document_file_content_detail,
+    icon_document_file_content_download,
+    icon_document_file_parsing_single_submit,
+    icon_document_file_page_content_detail,
+    icon_document_type_parsing_settings,
+    icon_document_type_parsing_submit
+)
 from .models import DocumentFilePageContent
 from .permissions import (
     permission_document_file_content_view, permission_document_type_parsing_setup,
@@ -47,6 +56,7 @@ class DocumentFileContentDeleteView(MultipleObjectDeleteView):
     title_plural = _(
         'Delete the content of the %(count)d selected document versions.'
     )
+    view_icon = icon_document_file_content_single_delete
 
     def object_action(self, form, instance):
         DocumentFilePageContent.objects.delete_content_for(
@@ -58,6 +68,7 @@ class DocumentFileContentDownloadView(SingleObjectDownloadView):
     object_permission = permission_document_file_content_view
     pk_url_kwarg = 'document_file_id'
     source_queryset = DocumentFile.valid.all()
+    view_icon = icon_document_file_content_download
 
     def get_download_file_object(self):
         return get_document_file_content(document_file=self.object)
@@ -71,6 +82,7 @@ class DocumentFileContentView(SingleObjectDetailView):
     object_permission = permission_document_file_content_view
     pk_url_kwarg = 'document_file_id'
     source_queryset = DocumentFile.valid.all()
+    view_icon = icon_document_file_content_detail
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request=request, *args, **kwargs)
@@ -92,6 +104,7 @@ class DocumentFilePageContentView(SingleObjectDetailView):
     object_permission = permission_document_file_content_view
     pk_url_kwarg = 'document_file_page_id'
     source_queryset = DocumentFilePage.valid.all()
+    view_icon = icon_document_file_page_content_detail
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request=request, *args, **kwargs)
@@ -124,6 +137,7 @@ class DocumentFileSubmitView(MultipleObjectConfirmActionView):
     success_message_plural = _(
         '%(count)d documents files added to the parsing queue'
     )
+    view_icon = icon_document_file_parsing_single_submit
 
     def get_extra_context(self):
         queryset = self.object_list
@@ -162,6 +176,7 @@ class DocumentTypeSettingsEditView(ExternalObjectViewMixin, SingleObjectEditView
     post_action_redirect = reverse_lazy(
         viewname='documents:document_type_list'
     )
+    view_icon = icon_document_type_parsing_settings
 
     def get_document_type(self):
         return self.external_object
@@ -184,6 +199,7 @@ class DocumentTypeSubmitView(FormView):
     }
     form_class = DocumentTypeFilteredSelectForm
     post_action_redirect = reverse_lazy(viewname='common:tools_list')
+    view_icon = icon_document_type_parsing_submit
 
     def get_form_extra_kwargs(self):
         return {

@@ -50,14 +50,14 @@ class RoleViewsTestCase(
         self.assertEqual(events[0].target, self._test_role)
         self.assertEqual(events[0].verb, event_role_created.id)
 
-    def test_role_delete_single_view_no_permission(self):
+    def test_role_single_delete_view_no_permission(self):
         self._create_test_role()
 
         role_count = Role.objects.count()
 
         self._clear_events()
 
-        response = self._request_test_role_delete_single_view()
+        response = self._request_test_role_single_delete_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(Role.objects.count(), role_count)
@@ -65,7 +65,7 @@ class RoleViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_role_delete_single_view_with_access(self):
+    def test_role_single_delete_view_with_access(self):
         self._create_test_role()
 
         self.grant_access(
@@ -76,7 +76,7 @@ class RoleViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_test_role_delete_single_view()
+        response = self._request_test_role_single_delete_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(Role.objects.count(), role_count - 1)
@@ -84,14 +84,14 @@ class RoleViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_role_delete_multiple_view_no_permission(self):
+    def test_role_multiple_delete_view_no_permission(self):
         self._create_test_role()
 
         role_count = Role.objects.count()
 
         self._clear_events()
 
-        response = self._request_test_role_delete_multiple_view()
+        response = self._request_test_role_multiple_delete_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(Role.objects.count(), role_count)
@@ -99,7 +99,7 @@ class RoleViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_role_delete_multiple_view_with_access(self):
+    def test_role_multiple_delete_view_with_access(self):
         self._create_test_role()
 
         role_count = Role.objects.count()
@@ -110,7 +110,7 @@ class RoleViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_test_role_delete_multiple_view()
+        response = self._request_test_role_multiple_delete_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(Role.objects.count(), role_count - 1)

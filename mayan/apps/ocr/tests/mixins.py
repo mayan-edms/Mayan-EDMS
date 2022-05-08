@@ -112,46 +112,46 @@ class DocumentVersionOCRTestMixin:
 
 
 class DocumentVersionOCRViewTestMixin:
-    def _request_test_document_version_ocr_content_view(self):
+    def _request_test_document_version_ocr_content_detail_view(self):
         return self.get(
             viewname='ocr:document_version_ocr_content_view', kwargs={
                 'document_version_id': self._test_document_version.pk
             }
         )
 
-    def _request_test_document_version_ocr_content_delete_single_view(self):
+    def _request_test_document_version_ocr_content_single_delete_view(self):
         return self.post(
-            viewname='ocr:document_version_ocr_content_delete_single',
+            viewname='ocr:document_version_ocr_content_single_delete',
             kwargs={
                 'document_version_id': self._test_document_version.pk
             }
         )
 
-    def _request_test_document_version_ocr_content_delete_multiple_view(self):
+    def _request_test_document_version_ocr_content_multiple_delete_view(self):
         return self.post(
-            viewname='ocr:document_version_ocr_content_delete_multiple',
+            viewname='ocr:document_version_ocr_content_multiple_delete',
             data={
                 'id_list': self._test_document_version.pk
             }
         )
 
-    def _request_test_document_version_ocr_submit_single_view(self):
+    def _request_test_document_version_ocr_single_submit_view(self):
         return self.post(
-            viewname='ocr:document_version_ocr_submit_single', kwargs={
+            viewname='ocr:document_version_ocr_single_submit', kwargs={
                 'document_version_id': self._test_document_version.pk
             }
         )
 
-    def _request_test_document_version_ocr_submit_multiple_view(self):
+    def _request_test_document_version_ocr_multiple_submit_view(self):
         return self.post(
-            viewname='ocr:document_version_ocr_submit_multiple', data={
+            viewname='ocr:document_version_ocr_multiple_submit', data={
                 'id_list': self._test_document_version.pk,
             }
         )
 
-    def _request_test_document_version_ocr_download_view(self):
+    def _request_test_document_version_ocr_content_download_view(self):
         return self.get(
-            viewname='ocr:document_version_ocr_download', kwargs={
+            viewname='ocr:document_version_ocr_content_download', kwargs={
                 'document_version_id': self._test_document_version.pk
             }
         )

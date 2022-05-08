@@ -26,14 +26,13 @@ from .handlers import (
 from .links import (
     link_document_version_page_ocr_content_detail_view,
     link_document_version_page_ocr_content_edit_view,
-    link_document_version_ocr_content_view,
-    link_document_version_ocr_content_delete_single,
-    link_document_version_ocr_content_delete_multiple,
-    link_document_version_ocr_download,
-    link_document_version_ocr_submit_single,
-    link_document_version_ocr_submit_multiple,
-    link_document_type_ocr_settings,
-    link_document_type_submit
+    link_document_version_ocr_content_detail,
+    link_document_version_ocr_content_single_delete,
+    link_document_version_ocr_content_multiple_delete,
+    link_document_version_ocr_content_download,
+    link_document_version_ocr_single_submit,
+    link_document_version_ocr_multiple_submit,
+    link_document_type_ocr_settings, link_document_type_submit
 )
 from .methods import (
     method_document_ocr_submit, method_document_version_ocr_submit
@@ -153,29 +152,28 @@ class OCRApp(MayanAppConfig):
         # Document version
 
         menu_list_facet.bind_links(
-            links=(link_document_version_ocr_content_view,),
+            links=(link_document_version_ocr_content_detail,),
             sources=(DocumentVersion,)
         )
 
         menu_multi_item.bind_links(
             links=(
-                link_document_version_ocr_content_delete_multiple,
-                link_document_version_ocr_submit_multiple
+                link_document_version_ocr_content_multiple_delete,
+                link_document_version_ocr_multiple_submit
             ), sources=(DocumentVersion,)
         )
 
         menu_secondary.bind_links(
             links=(
-                link_document_version_ocr_content_delete_single,
-                link_document_version_ocr_download,
-                link_document_version_ocr_submit_single
+                link_document_version_ocr_content_single_delete,
+                link_document_version_ocr_content_download,
+                link_document_version_ocr_single_submit
             ),
             sources=(
                 'ocr:document_version_ocr_content_view_delete',
                 'ocr:document_version_ocr_content_view',
-                'ocr:document_version_ocr_download',
-                'ocr:document_version_ocr_error_list',
-                'ocr:document_version_ocr_submit_single'
+                'ocr:document_version_ocr_content_download',
+                'ocr:document_version_ocr_single_submit'
             )
         )
 

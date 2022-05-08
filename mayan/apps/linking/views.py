@@ -19,7 +19,15 @@ from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .events import event_smart_link_edited
 from .forms import SmartLinkConditionForm, SmartLinkForm
-from .icons import icon_smart_link_setup, icon_smart_link_condition
+from .icons import (
+    icon_document_smart_link_instance_list, icon_document_type_smart_links,
+    icon_smart_link_create, icon_smart_link_condition,
+    icon_smart_link_condition_create, icon_smart_link_condition_delete,
+    icon_smart_link_condition_edit, icon_smart_link_condition_list,
+    icon_smart_link_delete, icon_smart_link_document_type_list,
+    icon_smart_link_edit, icon_smart_link_instance_detail,
+    icon_smart_link_list, icon_smart_link_setup
+)
 from .links import link_smart_link_create, link_smart_link_condition_create
 from .models import ResolvedSmartLink, SmartLink, SmartLinkCondition
 from .permissions import (
@@ -31,10 +39,13 @@ from .permissions import (
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentResolvedSmartLinkDocumentListView(ExternalObjectViewMixin, DocumentListView):
+class DocumentResolvedSmartLinkDocumentListView(
+    ExternalObjectViewMixin, DocumentListView
+):
     external_object_permission = permission_resolved_smart_link_view
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid.all()
+    view_icon = icon_smart_link_instance_detail
 
     def dispatch(self, request, *args, **kwargs):
         self.resolved_smart_link = self.get_resolved_smart_link()
@@ -125,6 +136,7 @@ class DocumentResolvedSmartLinkDocumentListView(ExternalObjectViewMixin, Documen
 class SmartLinkListView(SingleObjectListView):
     model = SmartLink
     object_permission = permission_smart_link_view
+    view_icon = icon_smart_link_list
 
     def get_extra_context(self):
         return {
@@ -155,6 +167,7 @@ class DocumentResolvedSmartLinkListView(
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid.all()
     object_permission = permission_resolved_smart_link_view
+    view_icon = icon_document_smart_link_instance_list
 
     def get_extra_context(self):
         return {
@@ -191,6 +204,7 @@ class DocumentTypeSmartLinkAddRemoveView(AddRemoveView):
     list_available_title = _('Available smart links')
     list_added_title = _('Smart links enabled')
     related_field = 'smart_links'
+    view_icon = icon_document_type_smart_links
 
     def action_add(self, queryset, _event_actor):
         for obj in queryset:
@@ -231,6 +245,7 @@ class SmartLinkDocumentTypeAddRemoveView(AddRemoveView):
     list_available_title = _('Available document types')
     list_added_title = _('Document types enabled')
     related_field = 'document_types'
+    view_icon = icon_smart_link_document_type_list
 
     def get_actions_extra_kwargs(self):
         return {'_event_actor': self.request.user}
@@ -250,6 +265,7 @@ class SmartLinkCreateView(SingleObjectCreateView):
     post_action_redirect = reverse_lazy(
         viewname='linking:smart_link_list'
     )
+    view_icon = icon_smart_link_create
     view_permission = permission_smart_link_create
 
     def get_instance_extra_data(self):
@@ -263,6 +279,7 @@ class SmartLinkDeleteView(SingleObjectDeleteView):
     post_action_redirect = reverse_lazy(
         viewname='linking:smart_link_list'
     )
+    view_icon = icon_smart_link_delete
 
     def get_extra_context(self):
         return {
@@ -279,6 +296,7 @@ class SmartLinkEditView(SingleObjectEditView):
     post_action_redirect = reverse_lazy(
         viewname='linking:smart_link_list'
     )
+    view_icon = icon_smart_link_edit
 
     def get_extra_context(self):
         return {
@@ -294,6 +312,7 @@ class SmartLinkConditionListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_class = SmartLink
     external_object_permission = permission_smart_link_edit
     external_object_pk_url_kwarg = 'smart_link_id'
+    view_icon = icon_smart_link_condition_list
 
     def get_extra_context(self):
         return {
@@ -331,6 +350,7 @@ class SmartLinkConditionCreateView(
     external_object_permission = permission_smart_link_edit
     external_object_pk_url_kwarg = 'smart_link_id'
     form_class = SmartLinkConditionForm
+    view_icon = icon_smart_link_condition_create
 
     def get_extra_context(self):
         return {
@@ -361,6 +381,7 @@ class SmartLinkConditionDeleteView(SingleObjectDeleteView):
     model = SmartLinkCondition
     object_permission = permission_smart_link_edit
     pk_url_kwarg = 'smart_link_condition_id'
+    view_icon = icon_smart_link_condition_delete
 
     def get_extra_context(self):
         return {
@@ -388,6 +409,7 @@ class SmartLinkConditionEditView(SingleObjectEditView):
     model = SmartLinkCondition
     object_permission = permission_smart_link_edit
     pk_url_kwarg = 'smart_link_condition_id'
+    view_icon = icon_smart_link_condition_edit
 
     def get_extra_context(self):
         return {

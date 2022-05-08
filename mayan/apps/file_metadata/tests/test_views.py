@@ -21,7 +21,7 @@ class DocumentTypeViewsTestCase(
     def test_document_type_settings_view_no_permission(self):
         self._clear_events()
 
-        response = self._request_document_type_settings_view()
+        response = self._request_document_type_file_metadata_settings_view()
         self.assertEqual(response.status_code, 404)
 
         events = self._get_test_events()
@@ -35,7 +35,7 @@ class DocumentTypeViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_document_type_settings_view()
+        response = self._request_document_type_file_metadata_settings_view()
         self.assertEqual(response.status_code, 200)
 
         events = self._get_test_events()
@@ -46,7 +46,7 @@ class DocumentTypeViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_document_type_submit_view()
+        response = self._request_document_type_file_metadata_submit_view()
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
@@ -66,7 +66,7 @@ class DocumentTypeViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_document_type_submit_view()
+        response = self._request_document_type_file_metadata_submit_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
@@ -103,7 +103,7 @@ class DocumentTypeViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_document_type_submit_view()
+        response = self._request_document_type_file_metadata_submit_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
@@ -126,7 +126,7 @@ class FileMetadataViewsTestCase(
     def test_document_file_driver_list_view_no_permission(self):
         self._clear_events()
 
-        response = self._request_document_file_driver_list_view()
+        response = self._request_document_file_metadata_driver_list_view()
         self.assertEqual(response.status_code, 404)
 
         events = self._get_test_events()
@@ -139,7 +139,7 @@ class FileMetadataViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_driver_list_view()
+        response = self._request_document_file_metadata_driver_list_view()
         self.assertContains(
             response=response, text=self._test_document.label, status_code=200
         )
@@ -156,7 +156,7 @@ class FileMetadataViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_driver_list_view()
+        response = self._request_document_file_metadata_driver_list_view()
         self.assertEqual(response.status_code, 404)
 
         events = self._get_test_events()
@@ -210,7 +210,7 @@ class FileMetadataViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_submit_single_view()
+        response = self._request_document_file_metadata_single_submit_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
@@ -231,7 +231,7 @@ class FileMetadataViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_submit_single_view()
+        response = self._request_document_file_metadata_single_submit_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
@@ -269,7 +269,7 @@ class FileMetadataViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_submit_single_view()
+        response = self._request_document_file_metadata_single_submit_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
@@ -287,7 +287,7 @@ class FileMetadataViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_submit_multiple_view()
+        response = self._request_document_file_multiple_submit_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
@@ -308,7 +308,7 @@ class FileMetadataViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_submit_multiple_view()
+        response = self._request_document_file_multiple_submit_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
@@ -346,7 +346,7 @@ class FileMetadataViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_document_file_submit_multiple_view()
+        response = self._request_document_file_multiple_submit_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(

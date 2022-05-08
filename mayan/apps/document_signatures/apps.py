@@ -28,7 +28,7 @@ from .links import (
     link_document_file_signature_detached_delete,
     link_document_file_signature_detached_create,
     link_document_file_signature_embedded_create,
-    link_document_file_signature_details,
+    link_document_file_signature_detail,
     link_document_file_signature_detached_download,
     link_document_file_signature_list,
     link_document_file_signature_detached_upload,
@@ -138,7 +138,7 @@ class DocumentSignaturesApp(MayanAppConfig):
 
         menu_object.bind_links(
             links=(
-                link_document_file_signature_details,
+                link_document_file_signature_detail,
                 link_document_file_signature_detached_download,
                 link_document_file_signature_detached_delete,
             ), sources=(SignatureBaseModel,)
@@ -155,7 +155,7 @@ class DocumentSignaturesApp(MayanAppConfig):
                 'signatures:document_file_signature_upload',
                 'signatures:document_file_signature_embedded_create',
                 'signatures:document_file_signature_detached_delete',
-                'signatures:document_file_signature_details',
+                'signatures:document_file_signature_detail',
                 'signatures:document_file_signature_detached_download',
             )
         )

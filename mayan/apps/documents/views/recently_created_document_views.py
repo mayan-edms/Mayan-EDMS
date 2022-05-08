@@ -9,6 +9,8 @@ __all__ = ('RecentCreatedDocumentListView',)
 
 
 class RecentCreatedDocumentListView(DocumentListView):
+    view_icon = icon_document_recently_created_list
+
     def get_document_queryset(self):
         return RecentlyCreatedDocument.valid.all()
 

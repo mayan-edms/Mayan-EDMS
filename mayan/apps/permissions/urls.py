@@ -8,15 +8,15 @@ from .api_views import (
 )
 
 from .views import (
-    GroupRolesView, RoleCreateView, RoleDeleteView, RoleEditView,
-    RoleListView, RoleMembersView, RolePermissionsView,
+    GroupRoleAddRemoveView, RoleCreateView, RoleDeleteView, RoleEditView,
+    RoleListView, RoleGroupAddRemoveView, RolePermissionAddRemoveView,
     StoredPermissionDetailView
 )
 
 urlpatterns = [
     url(
-        regex=r'^groups/(?P<group_id>\d+)/roles/$', name='group_roles',
-        view=GroupRolesView.as_view()
+        regex=r'^groups/(?P<group_id>\d+)/roles/$', name='group_role_list',
+        view=GroupRoleAddRemoveView.as_view()
     ),
     url(regex=r'^roles/$', name='role_list', view=RoleListView.as_view()),
     url(
@@ -24,7 +24,7 @@ urlpatterns = [
         view=RoleCreateView.as_view()
     ),
     url(
-        regex=r'^roles/(?P<role_id>\d+)/delete/$', name='role_delete_single',
+        regex=r'^roles/(?P<role_id>\d+)/delete/$', name='role_single_delete',
         view=RoleDeleteView.as_view()
     ),
     url(
@@ -32,15 +32,16 @@ urlpatterns = [
         view=RoleEditView.as_view()
     ),
     url(
-        regex=r'^roles/(?P<role_id>\d+)/groups/$', name='role_groups',
-        view=RoleMembersView.as_view()
+        regex=r'^roles/(?P<role_id>\d+)/groups/$', name='role_group_list',
+        view=RoleGroupAddRemoveView.as_view()
     ),
     url(
         regex=r'^roles/(?P<role_id>\d+)/permissions/$',
-        name='role_permissions', view=RolePermissionsView.as_view()
+        name='role_permission_list',
+        view=RolePermissionAddRemoveView.as_view()
     ),
     url(
-        regex=r'^roles/multiple/delete/$', name='role_delete_multiple',
+        regex=r'^roles/multiple/delete/$', name='role_multiple_delete',
         view=RoleDeleteView.as_view()
     ),
     url(
@@ -84,6 +85,5 @@ api_urls = [
         regex=r'^roles/(?P<role_id>[0-9]+)/permissions/remove/$',
         name='role-permission-remove',
         view=APIRolePermissionRemoveView.as_view()
-    ),
-
+    )
 ]

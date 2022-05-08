@@ -10,11 +10,11 @@ urlpatterns = [
         name='setting_edit_view', view=SettingEditView.as_view()
     ),
     url(
-        regex=r'^namespaces/$', name='namespace_list',
+        regex=r'^namespaces/$', name='setting_namespace_list',
         view=SettingNamespaceListView.as_view()
     ),
     url(
         regex=r'^namespaces/(?P<namespace_name>\w+)/$',
-        name='namespace_detail', view=SettingNamespaceDetailView.as_view()
+        name='setting_namespace_detail', view=SettingNamespaceDetailView.as_view()
     )
 ]

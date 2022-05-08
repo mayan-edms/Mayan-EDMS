@@ -593,7 +593,7 @@ class DocumentMetadataViewTestCase(
         response = self._request_test_document_metadata_edit_post_view()
         self.assertRedirects(
             response=response, expected_url=reverse(
-                viewname='metadata:metadata_view', kwargs={
+                viewname='metadata:metadata_list', kwargs={
                     'document_id': self._test_document.pk
                 }
             ), status_code=302,
@@ -958,7 +958,7 @@ class DocumentMetadataViewTestCase(
 
         self.assertRedirects(
             response=response, expected_url=reverse(
-                viewname='metadata:metadata_view', kwargs={
+                viewname='metadata:metadata_list', kwargs={
                     'document_id': self._test_document.pk
                 }
             ), status_code=302,

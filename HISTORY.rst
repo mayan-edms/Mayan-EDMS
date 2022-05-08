@@ -290,6 +290,10 @@
   toolbar from "jumping" visually when there are no results.
 - Simplify how the view title is copied to the window title. Escaping is now
   performed by jQuery.
+- Add icons to all views. Every view now has a corresponding icon to be
+  displayed with the title.
+- Normalize icon, link and view names. Follow the pattern
+  object_sub_object_action.
 
 4.2.4 (2022-04-29)
 ==================

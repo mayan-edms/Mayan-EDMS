@@ -27,7 +27,7 @@ class MailDocumentViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_send_link_single_view()
+        response = self._request_test_document_link_send_single_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(len(mail.outbox), mail_messages)
@@ -47,7 +47,7 @@ class MailDocumentViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_send_link_single_view()
+        response = self._request_test_document_link_send_single_view()
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(len(mail.outbox), mail_messages)
@@ -66,7 +66,7 @@ class MailDocumentViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_send_link_single_view()
+        response = self._request_test_document_link_send_single_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(len(mail.outbox), mail_messages)
@@ -89,7 +89,7 @@ class MailDocumentViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_send_link_single_view()
+        response = self._request_test_document_link_send_single_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(len(mail.outbox), mail_messages + 1)
@@ -121,7 +121,7 @@ class MailDocumentViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_send_link_single_view()
+        response = self._request_test_document_link_send_single_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(len(mail.outbox), mail_messages)
@@ -136,7 +136,7 @@ class MailDocumentViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_send_link_multiple_view()
+        response = self._request_test_document_link_send_multiple_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(len(mail.outbox), mail_messages)
@@ -156,7 +156,7 @@ class MailDocumentViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_send_link_multiple_view()
+        response = self._request_test_document_link_send_multiple_view()
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(len(mail.outbox), mail_messages)
@@ -175,7 +175,7 @@ class MailDocumentViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_send_link_multiple_view()
+        response = self._request_test_document_link_send_multiple_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(len(mail.outbox), mail_messages)
@@ -198,7 +198,7 @@ class MailDocumentViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_send_link_multiple_view()
+        response = self._request_test_document_link_send_multiple_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(len(mail.outbox), mail_messages + 1)
@@ -230,7 +230,7 @@ class MailDocumentViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_send_link_multiple_view()
+        response = self._request_test_document_link_send_multiple_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(len(mail.outbox), mail_messages)

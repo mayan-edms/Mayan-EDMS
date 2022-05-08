@@ -15,7 +15,15 @@ from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..events import event_index_template_edited
 from ..forms import IndexTemplateFilteredForm, IndexTemplateNodeForm
-from ..icons import icon_index
+from ..icons import (
+    icon_document_type_index_templates, icon_index,
+    icon_index_instances_rebuild, icon_index_instances_reset,
+    icon_index_template_create, icon_index_template_delete,
+    icon_index_template_document_types, icon_index_template_edit,
+    icon_index_template_list, icon_index_template_node_create,
+    icon_index_template_node_delete, icon_index_template_node_edit,
+    icon_index_template_node_tree_view
+)
 from ..links import link_index_template_create
 from ..models.index_template_models import IndexTemplate, IndexTemplateNode
 from ..permissions import (
@@ -26,9 +34,9 @@ from ..permissions import (
 from ..tasks import task_index_template_rebuild
 
 __all__ = (
-    'DocumentTypeIndexTemplateListView', 'IndexTemplateListView',
+    'DocumentTypeIndexTemplateAddRemoveView', 'IndexTemplateListView',
     'IndexTemplateCreateView', 'IndexTemplateDeleteView',
-    'IndexTemplateDocumentTypesView', 'IndexTemplateEditView',
+    'IndexTemplateDocumentTypeAddRemoveView', 'IndexTemplateEditView',
     'IndexTemplateNodeListView', 'IndexTemplateNodeCreateView',
     'IndexTemplateNodeDeleteView', 'IndexTemplateNodeEditView',
     'IndexTemplateAllRebuildView', 'IndexTemplateRebuildView',
@@ -36,7 +44,7 @@ __all__ = (
 )
 
 
-class DocumentTypeIndexTemplateListView(AddRemoveView):
+class DocumentTypeIndexTemplateAddRemoveView(AddRemoveView):
     main_object_permission = permission_document_type_edit
     main_object_model = DocumentType
     main_object_pk_url_kwarg = 'document_type_id'
@@ -45,6 +53,7 @@ class DocumentTypeIndexTemplateListView(AddRemoveView):
     list_available_title = _('Available indexes')
     list_added_title = _('Indexes linked')
     related_field = 'index_templates'
+    view_icon = icon_document_type_index_templates
 
     def action_add(self, queryset, _event_actor):
         for obj in queryset:
@@ -78,6 +87,7 @@ class DocumentTypeIndexTemplateListView(AddRemoveView):
 class IndexTemplateListView(SingleObjectListView):
     model = IndexTemplate
     object_permission = permission_index_template_view
+    view_icon = icon_index_template_list
 
     def get_extra_context(self):
         return {
@@ -104,6 +114,7 @@ class IndexTemplateCreateView(SingleObjectCreateView):
     post_action_redirect = reverse_lazy(
         viewname='indexing:index_template_list'
     )
+    view_icon = icon_index_template_create
     view_permission = permission_index_template_create
 
     def get_instance_extra_data(self):
@@ -117,6 +128,7 @@ class IndexTemplateDeleteView(SingleObjectDeleteView):
     post_action_redirect = reverse_lazy(
         viewname='indexing:index_template_list'
     )
+    view_icon = icon_index_template_delete
 
     def get_extra_context(self):
         return {
@@ -125,7 +137,7 @@ class IndexTemplateDeleteView(SingleObjectDeleteView):
         }
 
 
-class IndexTemplateDocumentTypesView(AddRemoveView):
+class IndexTemplateDocumentTypeAddRemoveView(AddRemoveView):
     main_object_method_add_name = 'document_types_add'
     main_object_method_remove_name = 'document_types_remove'
     main_object_permission = permission_index_template_edit
@@ -136,6 +148,7 @@ class IndexTemplateDocumentTypesView(AddRemoveView):
     list_available_title = _('Available document types')
     list_added_title = _('Document types linked')
     related_field = 'document_types'
+    view_icon = icon_index_template_document_types
 
     def get_actions_extra_kwargs(self):
         return {'_event_actor': self.request.user}
@@ -160,6 +173,7 @@ class IndexTemplateEditView(SingleObjectEditView):
     post_action_redirect = reverse_lazy(
         viewname='indexing:index_template_list'
     )
+    view_icon = icon_index_template_edit
 
     def get_extra_context(self):
         return {
@@ -177,6 +191,7 @@ class IndexTemplateNodeListView(
     external_object_class = IndexTemplate
     external_object_permission = permission_index_template_edit
     external_object_pk_url_kwarg = 'index_template_id'
+    view_icon = icon_index_template_node_tree_view
 
     def get_extra_context(self):
         return {
@@ -196,6 +211,7 @@ class IndexTemplateNodeListView(
 class IndexTemplateNodeCreateView(SingleObjectCreateView):
     form_class = IndexTemplateNodeForm
     model = IndexTemplateNode
+    view_icon = icon_index_template_node_create
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
@@ -227,6 +243,7 @@ class IndexTemplateNodeDeleteView(SingleObjectDeleteView):
     model = IndexTemplateNode
     object_permission = permission_index_template_edit
     pk_url_kwarg = 'index_template_node_id'
+    view_icon = icon_index_template_node_delete
 
     def get_extra_context(self):
         return {
@@ -251,6 +268,7 @@ class IndexTemplateNodeEditView(SingleObjectEditView):
     model = IndexTemplateNode
     object_permission = permission_index_template_edit
     pk_url_kwarg = 'index_template_node_id'
+    view_icon = icon_index_template_node_edit
 
     def get_extra_context(self):
         return {
@@ -274,6 +292,7 @@ class IndexTemplateRebuildView(ConfirmView):
     post_action_redirect = reverse_lazy(
         viewname='indexing:index_template_list'
     )
+    view_icon = icon_index_instances_rebuild
 
     def get_extra_context(self):
         return {
@@ -310,6 +329,7 @@ class IndexTemplateAllRebuildView(FormView):
         'title': _('Rebuild index templates'),
     }
     form_class = IndexTemplateFilteredForm
+    view_icon = icon_index_instances_rebuild
 
     def form_valid(self, form):
         count = 0
@@ -347,6 +367,7 @@ class IndexTemplateResetView(FormView):
         'title': _('Reset indexes'),
     }
     form_class = IndexTemplateFilteredForm
+    view_icon = icon_index_instances_reset
 
     def form_valid(self, form):
         count = 0

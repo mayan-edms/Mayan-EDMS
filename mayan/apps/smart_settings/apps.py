@@ -7,7 +7,7 @@ from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .classes import SettingNamespace, Setting
 from .links import (
-    link_namespace_detail, link_namespace_list, link_namespace_root_list,
+    link_setting_namespace_detail, link_setting_namespace_list, link_namespace_root_list,
     link_setting_edit
 )
 from .widgets import setting_widget
@@ -44,16 +44,16 @@ class SmartSettingsApp(MayanAppConfig):
         )
 
         menu_object.bind_links(
-            links=(link_namespace_detail,), sources=(SettingNamespace,)
+            links=(link_setting_namespace_detail,), sources=(SettingNamespace,)
         )
         menu_object.bind_links(
             links=(link_setting_edit,), sources=(Setting,)
         )
         menu_secondary.bind_links(
             links=(link_namespace_root_list,), sources=(
-                SettingNamespace, Setting, 'settings:namespace_list',
+                SettingNamespace, Setting, 'settings:setting_namespace_list',
             )
         )
-        menu_setup.bind_links(links=(link_namespace_list,))
+        menu_setup.bind_links(links=(link_setting_namespace_list,))
 
         Setting.save_last_known_good()

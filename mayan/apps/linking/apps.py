@@ -23,7 +23,7 @@ from .links import (
     link_smart_link_condition_edit, link_smart_link_condition_list,
     link_smart_link_delete, link_smart_link_document_types,
     link_smart_link_edit, link_smart_link_instance_view,
-    link_smart_link_instances_for_document, link_smart_link_list,
+    link_document_smart_link_instance_list, link_smart_link_list,
     link_smart_link_setup
 )
 from .permissions import (
@@ -138,7 +138,7 @@ class LinkingApp(MayanAppConfig):
         # Document
 
         menu_list_facet.bind_links(
-            links=(link_smart_link_instances_for_document,),
+            links=(link_document_smart_link_instance_list,),
             sources=(Document,)
         )
 

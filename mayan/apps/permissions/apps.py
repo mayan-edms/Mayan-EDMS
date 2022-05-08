@@ -25,9 +25,9 @@ from .dashboard_widgets import DashboardWidgetRoleTotal
 from .events import event_role_created, event_role_edited
 from .handlers import handler_permission_initialize, handler_purge_permissions
 from .links import (
-    link_group_roles, link_role_create, link_role_delete_single,
-    link_role_delete_multiple, link_role_edit, link_role_groups,
-    link_role_list, link_role_permissions
+    link_group_role_list, link_role_create, link_role_single_delete,
+    link_role_multiple_delete, link_role_edit, link_role_group_list,
+    link_role_list, link_role_permission_list
 )
 from .methods import method_group_roles_add, method_group_roles_remove
 from .permissions import (
@@ -115,7 +115,7 @@ class PermissionsApp(MayanAppConfig):
         # Group
 
         menu_list_facet.bind_links(
-            links=(link_group_roles,), sources=(Group,)
+            links=(link_group_role_list,), sources=(Group,)
         )
 
         menu_related.bind_links(
@@ -130,25 +130,25 @@ class PermissionsApp(MayanAppConfig):
 
         menu_list_facet.bind_links(
             links=(
-                link_role_groups, link_role_permissions
+                link_role_group_list, link_role_permission_list
             ), sources=(Role,)
         )
 
         menu_multi_item.bind_links(
-            links=(link_role_delete_multiple,),
+            links=(link_role_multiple_delete,),
             sources=('permissions:role_list',)
         )
 
         menu_object.bind_links(
             links=(
-                link_role_delete_single, link_role_edit
+                link_role_single_delete, link_role_edit
             ), sources=(Role,)
         )
 
         menu_related.bind_links(
             links=(link_group_list,), sources=(
                 'permissions:role_create',
-                'permissions:role_delete_multiple',
+                'permissions:role_multiple_delete',
                 'permissions:role_list', Role
             )
         )
@@ -156,7 +156,7 @@ class PermissionsApp(MayanAppConfig):
         menu_secondary.bind_links(
             links=(link_role_list, link_role_create), sources=(
                 'permissions:role_create',
-                'permissions:role_delete_multiple',
+                'permissions:role_multiple_delete',
                 'permissions:role_list', Role
             )
         )

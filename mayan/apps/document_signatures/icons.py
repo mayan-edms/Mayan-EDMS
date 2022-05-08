@@ -33,7 +33,7 @@ icon_document_file_signature_embedded_create = Icon(
 
 # All signatures
 
-icon_document_file_signature_details = Icon(
+icon_document_file_signature_detail = Icon(
     driver_name='fontawesome', symbol='file-signature'
 )
 icon_document_file_signature_list = Icon(

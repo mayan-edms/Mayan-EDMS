@@ -13,6 +13,9 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import LocaleProfileForm, LocaleProfileForm_view
+from .icons import (
+    icon_user_locale_profile_detail, icon_user_locale_profile_edit
+)
 
 
 class UserLocaleProfileDetailView(
@@ -22,6 +25,7 @@ class UserLocaleProfileDetailView(
     form_class = LocaleProfileForm_view
     external_object_permission = permission_user_view
     external_object_pk_url_kwarg = 'user_id'
+    view_icon = icon_user_locale_profile_detail
 
     def get_external_object_queryset(self):
         return get_user_queryset(user=self.request.user)
@@ -47,6 +51,7 @@ class UserLocaleProfileEditView(
     form_class = LocaleProfileForm
     external_object_permission = permission_user_edit
     external_object_pk_url_kwarg = 'user_id'
+    view_icon = icon_user_locale_profile_edit
 
     def form_valid(self, form):
         if self.is_current_user:

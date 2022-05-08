@@ -18,12 +18,12 @@ urlpatterns_document_files = [
     ),
     url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/content/delete/$',
-        name='document_file_content_delete_single',
+        name='document_file_content_single_delete',
         view=DocumentFileContentDeleteView.as_view()
     ),
     url(
         regex=r'^documents/files/multiple/content/delete/$',
-        name='document_file_content_delete_multiple',
+        name='document_file_content_multiple_delete',
         view=DocumentFileContentDeleteView.as_view()
     ),
     url(
@@ -33,11 +33,12 @@ urlpatterns_document_files = [
     ),
     url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/submit/$',
-        name='document_file_submit', view=DocumentFileSubmitView.as_view()
+        name='document_file_parsing_single_submit',
+        view=DocumentFileSubmitView.as_view()
     ),
     url(
         regex=r'^documents/files/multiple/submit/$',
-        name='document_file_multiple_submit',
+        name='document_file_parsing_multiple_submit',
         view=DocumentFileSubmitView.as_view()
     ),
     url(

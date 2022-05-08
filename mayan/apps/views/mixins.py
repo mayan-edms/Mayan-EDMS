@@ -635,6 +635,21 @@ class SortingViewMixin:
         return self.request.GET.get(TEXT_SORT_FIELD_PARAMETER)
 
 
+class ViewIconMixin:
+    view_icon = None
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        view_icon = self.get_view_icon()
+        if view_icon:
+            context['view_icon'] = view_icon
+
+        return context
+
+    def get_view_icon(self):
+        return self.view_icon
+
+
 class ViewPermissionCheckViewMixin:
     """
     Restrict access to the view based on the user's direct permissions from

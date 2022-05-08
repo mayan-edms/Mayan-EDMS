@@ -16,7 +16,12 @@ from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
 from .forms import (
     AssetDetailForm, LayerTransformationForm, LayerTransformationSelectForm
 )
-from .icons import icon_asset_list
+from .icons import (
+    icon_asset_create, icon_asset_delete, icon_asset_detail, icon_asset_edit,
+    icon_asset_list, icon_transformation_create, icon_transformation_delete,
+    icon_transformation_edit, icon_transformation_list,
+    icon_transformation_select
+)
 from .links import link_asset_create, link_transformation_select
 from .models import Asset, LayerTransformation, ObjectLayer
 from .permissions import (
@@ -32,6 +37,7 @@ logger = logging.getLogger(name=__name__)
 class AssetCreateView(SingleObjectCreateView):
     fields = ('label', 'internal_name', 'file')
     model = Asset
+    view_icon = icon_asset_create
     view_permission = permission_asset_create
 
     def get_extra_context(self):
@@ -54,6 +60,7 @@ class AssetDeleteView(MultipleObjectConfirmActionView):
     success_asset_plural = _(
         'Delete request performed on %(count)d assets'
     )
+    view_icon = icon_asset_delete
 
     def get_extra_context(self):
         result = {
@@ -96,6 +103,7 @@ class AssetDetailView(SingleObjectDetailView):
     model = Asset
     object_permission = permission_asset_view
     pk_url_kwarg = 'asset_id'
+    view_icon = icon_asset_detail
 
     def get_extra_context(self):
         return {
@@ -110,6 +118,7 @@ class AssetEditView(SingleObjectEditView):
     object_permission = permission_asset_edit
     pk_url_kwarg = 'asset_id'
     post_action_redirect = reverse_lazy(viewname='converter:asset_list')
+    view_icon = icon_asset_edit
 
     def get_extra_context(self):
         return {
@@ -126,6 +135,7 @@ class AssetEditView(SingleObjectEditView):
 class AssetListView(SingleObjectListView):
     model = Asset
     object_permission = permission_asset_view
+    view_icon = icon_asset_list
 
     def get_extra_context(self):
         return {
@@ -148,6 +158,7 @@ class TransformationCreateView(
     LayerViewMixin, ExternalContentTypeObjectViewMixin, SingleObjectCreateView
 ):
     form_class = LayerTransformationForm
+    view_icon = icon_transformation_create
 
     def form_valid(self, form):
         object_layer, created = ObjectLayer.objects.get_for(
@@ -230,6 +241,7 @@ class TransformationCreateView(
 class TransformationDeleteView(LayerViewMixin, SingleObjectDeleteView):
     model = LayerTransformation
     pk_url_kwarg = 'transformation_id'
+    view_icon = icon_transformation_delete
 
     def get_extra_context(self):
         return {
@@ -265,6 +277,7 @@ class TransformationEditView(LayerViewMixin, SingleObjectEditView):
     form_class = LayerTransformationForm
     model = LayerTransformation
     pk_url_kwarg = 'transformation_id'
+    view_icon = icon_transformation_edit
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -321,6 +334,8 @@ class TransformationEditView(LayerViewMixin, SingleObjectEditView):
 class TransformationListView(
     LayerViewMixin, ExternalContentTypeObjectViewMixin, SingleObjectListView
 ):
+    view_icon = icon_transformation_list
+
     def get_external_object_permission(self):
         return self.layer.get_permission(action='view')
 
@@ -360,6 +375,7 @@ class TransformationSelectView(
 ):
     form_class = LayerTransformationSelectForm
     template_name = 'appearance/generic_form.html'
+    view_icon = icon_transformation_select
 
     def form_valid(self, form):
         transformation_class = BaseTransformation.get(

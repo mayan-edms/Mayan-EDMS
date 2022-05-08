@@ -23,7 +23,7 @@ from .literals import (
     EVENT_EVENTS_EXPORTED_NAME
 )
 from .links import (
-    link_events_for_object, link_object_event_types_user_subscriptions_list
+    link_object_event_list, link_object_event_type_user_subscription_list
 )
 from .permissions import (
     permission_events_clear, permission_events_export, permission_events_view
@@ -250,7 +250,7 @@ class EventModelRegistry:
                 menu.bind_links(
                     exclude=exclude,
                     links=(
-                        link_events_for_object,
+                        link_object_event_list,
                     ), sources=(model,)
                 )
 
@@ -258,7 +258,7 @@ class EventModelRegistry:
                 menu.bind_links(
                     exclude=exclude,
                     links=(
-                        link_object_event_types_user_subscriptions_list,
+                        link_object_event_type_user_subscription_list,
                     ), sources=(model,)
                 )
 

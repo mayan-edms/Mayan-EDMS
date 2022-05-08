@@ -5,12 +5,18 @@ from mayan.apps.views.generics import SimpleView, SingleObjectListView
 
 from .classes import DependencyGroup
 from .forms import DependenciesLicensesForm
+from .icons import (
+    icon_check_version, icon_dependency_group_list,
+    icon_dependency_group_entry_detail, icon_dependency_group_entry_list,
+    icon_dependency_licenses
+)
 from .permissions import permission_dependencies_view
 from .utils import PyPIClient
 
 
 class CheckVersionView(SimpleView):
     template_name = 'appearance/generic_template.html'
+    view_icon = icon_check_version
     view_permission = permission_dependencies_view
 
     def get_extra_context(self):
@@ -21,6 +27,7 @@ class CheckVersionView(SimpleView):
 
 
 class DependencyGroupEntryListView(SingleObjectListView):
+    view_icon = icon_dependency_group_entry_list
     view_permission = permission_dependencies_view
 
     def get_extra_context(self):
@@ -49,6 +56,7 @@ class DependencyGroupEntryListView(SingleObjectListView):
 
 
 class DependencyGroupListView(SingleObjectListView):
+    view_icon = icon_dependency_group_list
     view_permission = permission_dependencies_view
 
     def get_extra_context(self):
@@ -63,6 +71,7 @@ class DependencyGroupListView(SingleObjectListView):
 
 
 class DependencyGroupEntryDetailView(SingleObjectListView):
+    view_icon = icon_dependency_group_entry_detail
     view_permission = permission_dependencies_view
 
     def get_extra_context(self):
@@ -110,6 +119,7 @@ class DependencyGroupEntryDetailView(SingleObjectListView):
 
 class DependencyLicensesView(SimpleView):
     template_name = 'appearance/generic_form.html'
+    view_icon = icon_dependency_licenses
 
     def get_extra_context(self):
         # Use a function so that DependenciesLicensesForm get initialized

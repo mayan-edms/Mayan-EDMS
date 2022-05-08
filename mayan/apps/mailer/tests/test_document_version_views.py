@@ -16,14 +16,14 @@ class MailDocumentVersionViewsTestCase(
     DocumentVersionMailerViewTestMixin, MailerTestMixin,
     GenericDocumentViewTestCase
 ):
-    def test_document_version_send_link_single_view_no_permission(self):
+    def test_document_version_link_send_single_view_no_permission(self):
         self._create_test_user_mailer()
 
         mail_messages = len(mail.outbox)
 
         self._clear_events()
 
-        response = self._request_test_document_version_send_link_single_view()
+        response = self._request_test_document_version_link_send_single_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(len(mail.outbox), mail_messages)
@@ -31,7 +31,7 @@ class MailDocumentVersionViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_version_send_link_single_view_with_document_access(self):
+    def test_document_version_link_send_single_view_with_document_access(self):
         self._create_test_user_mailer()
 
         mail_messages = len(mail.outbox)
@@ -43,7 +43,7 @@ class MailDocumentVersionViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_version_send_link_single_view()
+        response = self._request_test_document_version_link_send_single_view()
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(len(mail.outbox), mail_messages)
@@ -51,7 +51,7 @@ class MailDocumentVersionViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_version_send_link_single_view_with_mailer_access(self):
+    def test_document_version_link_send_single_view_with_mailer_access(self):
         self._create_test_user_mailer()
 
         mail_messages = len(mail.outbox)
@@ -62,7 +62,7 @@ class MailDocumentVersionViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_version_send_link_single_view()
+        response = self._request_test_document_version_link_send_single_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(len(mail.outbox), mail_messages)
@@ -70,7 +70,7 @@ class MailDocumentVersionViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_version_send_link_single_view_with_full_access(self):
+    def test_document_version_link_send_single_view_with_full_access(self):
         self._create_test_user_mailer()
 
         mail_messages = len(mail.outbox)
@@ -85,7 +85,7 @@ class MailDocumentVersionViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_version_send_link_single_view()
+        response = self._request_test_document_version_link_send_single_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(len(mail.outbox), mail_messages + 1)
@@ -100,7 +100,7 @@ class MailDocumentVersionViewsTestCase(
         self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
-    def test_trashed_document_version_send_link_single_view_with_full_access(self):
+    def test_trashed_document_version_link_send_single_view_with_full_access(self):
         self._create_test_user_mailer()
 
         mail_messages = len(mail.outbox)
@@ -117,7 +117,7 @@ class MailDocumentVersionViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_version_send_link_single_view()
+        response = self._request_test_document_version_link_send_single_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(len(mail.outbox), mail_messages)
@@ -125,14 +125,14 @@ class MailDocumentVersionViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_version_send_link_multiple_view_no_permission(self):
+    def test_document_version_link_send_multiple_view_no_permission(self):
         self._create_test_user_mailer()
 
         mail_messages = len(mail.outbox)
 
         self._clear_events()
 
-        response = self._request_test_document_version_send_link_multiple_view()
+        response = self._request_test_document_version_link_send_multiple_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(len(mail.outbox), mail_messages)
@@ -140,7 +140,7 @@ class MailDocumentVersionViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_version_send_link_multiple_view_with_document_access(self):
+    def test_document_version_link_send_multiple_view_with_document_access(self):
         self._create_test_user_mailer()
 
         mail_messages = len(mail.outbox)
@@ -152,7 +152,7 @@ class MailDocumentVersionViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_version_send_link_multiple_view()
+        response = self._request_test_document_version_link_send_multiple_view()
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(len(mail.outbox), mail_messages)
@@ -160,7 +160,7 @@ class MailDocumentVersionViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_version_send_link_multiple_view_with_mailer_access(self):
+    def test_document_version_link_send_multiple_view_with_mailer_access(self):
         self._create_test_user_mailer()
 
         mail_messages = len(mail.outbox)
@@ -171,7 +171,7 @@ class MailDocumentVersionViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_version_send_link_multiple_view()
+        response = self._request_test_document_version_link_send_multiple_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(len(mail.outbox), mail_messages)
@@ -179,7 +179,7 @@ class MailDocumentVersionViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_version_send_link_multiple_view_with_full_access(self):
+    def test_document_version_link_send_multiple_view_with_full_access(self):
         self._create_test_user_mailer()
 
         mail_messages = len(mail.outbox)
@@ -194,7 +194,7 @@ class MailDocumentVersionViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_version_send_link_multiple_view()
+        response = self._request_test_document_version_link_send_multiple_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(len(mail.outbox), mail_messages + 1)
@@ -209,7 +209,7 @@ class MailDocumentVersionViewsTestCase(
         self.assertEqual(events[0].target, self._test_user_mailer)
         self.assertEqual(events[0].verb, event_email_sent.id)
 
-    def test_trashed_document_version_send_link_multiple_view_with_full_access(self):
+    def test_trashed_document_version_link_send_multiple_view_with_full_access(self):
         self._create_test_user_mailer()
 
         mail_messages = len(mail.outbox)
@@ -226,7 +226,7 @@ class MailDocumentVersionViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_version_send_link_multiple_view()
+        response = self._request_test_document_version_link_send_multiple_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(len(mail.outbox), mail_messages)

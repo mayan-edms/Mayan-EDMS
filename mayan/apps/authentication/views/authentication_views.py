@@ -32,10 +32,12 @@ from mayan.apps.common.settings import (
 from mayan.apps.user_management.permissions import permission_user_edit
 from mayan.apps.user_management.querysets import get_user_queryset
 from mayan.apps.views.generics import MultipleObjectFormActionView
+from mayan.apps.views.mixins import ViewIconMixin
 from mayan.apps.views.http import URL
 
 from ..classes import AuthenticationBackend
 from ..forms import AuthenticationFormBase
+from ..icons import icon_password_change
 from ..literals import SESSION_MULTI_FACTOR_USER_ID_KEY
 from ..settings import setting_disable_password_reset
 
@@ -338,10 +340,11 @@ class MayanPasswordChangeDoneView(PasswordChangeDoneView):
         return redirect(to=self.request.user.get_absolute_url())
 
 
-class MayanPasswordChangeView(PasswordChangeView):
+class MayanPasswordChangeView(ViewIconMixin, PasswordChangeView):
     extra_context = {'title': _('Current user password change')}
     success_url = reverse_lazy(viewname='authentication:password_change_done')
     template_name = 'appearance/generic_form.html'
+    view_icon = icon_password_change
 
     def dispatch(self, *args, **kwargs):
         if self.request.user.user_options.block_password_change:
@@ -424,6 +427,7 @@ class UserSetPasswordView(MultipleObjectFormActionView):
     success_message_plural = _(
         'Password change request performed on %(count)d users'
     )
+    view_icon = icon_password_change
 
     def get_extra_context(self):
         queryset = self.object_list

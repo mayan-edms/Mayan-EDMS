@@ -5,7 +5,10 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 from mayan.apps.views.exceptions import ActionError
 from mayan.apps.views.generics import MultipleObjectConfirmActionView
 
-from ..icons import icon_favorite_document_list
+from ..icons import (
+    icon_favorite_document_add, icon_favorite_document_list,
+    icon_favorite_document_remove
+)
 from ..models.document_models import Document
 from ..models.favorite_document_models import FavoriteDocument
 from ..permissions import permission_document_view
@@ -20,6 +23,8 @@ logger = logging.getLogger(name=__name__)
 
 
 class FavoriteDocumentListView(DocumentListView):
+    view_icon = icon_favorite_document_list
+
     def get_document_queryset(self):
         return FavoriteDocument.valid.get_for_user(user=self.request.user)
 
@@ -49,6 +54,7 @@ class FavoriteAddView(MultipleObjectConfirmActionView):
     success_message_plural = _(
         '%(count)d documents added to favorites.'
     )
+    view_icon = icon_favorite_document_add
 
     def get_extra_context(self):
         context = {
@@ -81,6 +87,7 @@ class FavoriteRemoveView(MultipleObjectConfirmActionView):
     success_message_plural = _(
         '%(count)d documents removed from favorites.'
     )
+    view_icon = icon_favorite_document_remove
 
     def get_extra_context(self):
         context = {

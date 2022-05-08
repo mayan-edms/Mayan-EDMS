@@ -12,6 +12,7 @@ from ..classes import EventType, ModelEventType
 from ..forms import (
     EventTypeUserRelationshipFormSet, ObjectEventTypeUserRelationshipFormSet
 )
+from ..icons import icon_object_event_type_user_subscription_list
 from ..models import StoredEventType
 from ..permissions import permission_events_view
 
@@ -95,6 +96,7 @@ class EventTypeSubscriptionListView(FormView):
 
 class ObjectEventTypeSubscriptionListView(FormView):
     form_class = ObjectEventTypeUserRelationshipFormSet
+    view_icon = icon_object_event_type_user_subscription_list
 
     def dispatch(self, *args, **kwargs):
         EventType.refresh()

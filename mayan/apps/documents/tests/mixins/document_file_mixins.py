@@ -104,9 +104,9 @@ class DocumentFileViewTestMixin:
             }
         )
 
-    def _request_test_document_file_delete_multiple_view(self):
+    def _request_test_document_file_multiple_delete_view(self):
         return self.post(
-            viewname='documents:document_file_delete_multiple', data={
+            viewname='documents:document_file_multiple_delete', data={
                 'id_list': self._test_document_file.pk
             }
         )

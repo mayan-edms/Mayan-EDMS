@@ -22,7 +22,10 @@ from ..forms import (
     DocumentMetadataAddForm, DocumentMetadataFormSet,
     DocumentMetadataRemoveFormSet
 )
-from ..icons import icon_metadata
+from ..icons import (
+    icon_document_metadata_add, icon_document_metadata_edit,
+    icon_document_metadata_list, icon_document_metadata_remove, icon_metadata
+)
 from ..links import link_metadata_add, link_metadata_multiple_add
 from ..mixins import DocumentMetadataSameTypeViewMixin
 from ..models import DocumentMetadata, MetadataType
@@ -43,6 +46,7 @@ class DocumentMetadataAddView(
     success_message_plural = _(
         'Metadata add request performed on %(count)d documents'
     )
+    view_icon = icon_document_metadata_add
 
     def get_extra_context(self):
         queryset = self.object_list
@@ -186,6 +190,7 @@ class DocumentMetadataEditView(
     success_message_plural = _(
         'Metadata edit request performed on %(count)d documents'
     )
+    view_icon = icon_document_metadata_edit
 
     def get_extra_context(self):
         queryset = self.object_list
@@ -275,7 +280,7 @@ class DocumentMetadataEditView(
     def get_post_object_action_url(self):
         if self.action_count == 1:
             return reverse(
-                viewname='metadata:metadata_view', kwargs={
+                viewname='metadata:metadata_list', kwargs={
                     'document_id': self.action_id_list[0]
                 }
             )
@@ -342,6 +347,7 @@ class DocumentMetadataListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid.all()
     object_permission = permission_document_metadata_view
+    view_icon = icon_document_metadata_list
 
     def get_extra_context(self):
         return {
@@ -383,6 +389,7 @@ class DocumentMetadataRemoveView(
     success_message_plural = _(
         'Metadata remove request performed on %(count)d documents'
     )
+    view_icon = icon_document_metadata_remove
 
     def get_extra_context(self):
         queryset = self.object_list
@@ -443,7 +450,7 @@ class DocumentMetadataRemoveView(
     def get_post_object_action_url(self):
         if self.action_count == 1:
             return reverse(
-                viewname='metadata:metadata_view', kwargs={
+                viewname='metadata:metadata_list', kwargs={
                     'document_id': self.action_id_list[0]
                 }
             )

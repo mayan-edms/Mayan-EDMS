@@ -1,5 +1,8 @@
 from mayan.apps.appearance.classes import Icon
 
+icon_global_error_log_entry_list = Icon(
+    driver_name='fontawesome', symbol='exclamation-triangle'
+)
 icon_object_errors = Icon(
     driver_name='fontawesome', symbol='exclamation-triangle'
 )

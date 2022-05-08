@@ -16,7 +16,13 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import TagForm, TagMultipleSelectionForm
-from .icons import icon_menu_tags
+from .icons import (
+    icon_document_tag_list, icon_document_tag_multiple_attach,
+    icon_document_tag_multiple_remove, icon_menu_tags, icon_tag_create,
+    icon_tag_document_list, icon_tag_edit, icon_tag_list,
+    icon_tag_single_delete
+)
+
 from .links import link_document_tag_multiple_attach, link_tag_create
 from .models import DocumentTag, Tag
 from .permissions import (
@@ -44,6 +50,7 @@ class TagAttachActionView(MultipleObjectFormActionView):
     title_single = _('Attach tags to document: %(object)s')
     title_singular = _('Attach tags to %(count)d document.')
     title_plural = _('Attach tags to %(count)d documents.')
+    view_icon = icon_document_tag_multiple_attach
 
     def get_extra_context(self):
         context = {}
@@ -101,6 +108,7 @@ class TagCreateView(SingleObjectCreateView):
     extra_context = {'title': _('Create tag')}
     form_class = TagForm
     post_action_redirect = reverse_lazy(viewname='tags:tag_list')
+    view_icon = icon_tag_create
     view_permission = permission_tag_create
 
     def get_instance_extra_data(self):
@@ -121,6 +129,7 @@ class TagDeleteView(MultipleObjectDeleteView):
     title_single = _('Delete tag: %(object)s.')
     title_singular = _('Delete the %(count)d selected tag.')
     title_plural = _('Delete the %(count)d selected tags.')
+    view_icon = icon_tag_single_delete
 
     def get_extra_context(self):
         context = super().get_extra_context()
@@ -136,6 +145,7 @@ class TagEditView(SingleObjectEditView):
     model = Tag
     object_permission = permission_tag_edit
     pk_url_kwarg = 'tag_id'
+    view_icon = icon_tag_edit
 
     def get_extra_context(self):
         return {
@@ -152,6 +162,7 @@ class TagEditView(SingleObjectEditView):
 class TagListView(SingleObjectListView):
     object_permission = permission_tag_view
     tag_model = Tag
+    view_icon = icon_tag_list
 
     def get_extra_context(self):
         return {
@@ -166,7 +177,7 @@ class TagListView(SingleObjectListView):
                 'removed from documents.'
             ),
             'no_results_title': _('No tags available'),
-            'title': _('Tags'),
+            'title': _('Tags')
         }
 
     def get_source_queryset(self):
@@ -181,6 +192,7 @@ class TagDocumentListView(ExternalObjectViewMixin, DocumentListView):
     external_object_class = Tag
     external_object_permission = permission_tag_view
     external_object_pk_url_kwarg = 'tag_id'
+    view_icon = icon_tag_document_list
 
     def get_document_queryset(self):
         return Document.valid.filter(
@@ -208,6 +220,7 @@ class DocumentTagListView(ExternalObjectViewMixin, TagListView):
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid.all()
     tag_model = DocumentTag
+    view_icon = icon_document_tag_list
 
     def get_extra_context(self):
         context = super().get_extra_context()
@@ -251,6 +264,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
     title_single = _('Remove tags from document: %(object)s')
     title_singular = _('Remove tags from %(count)d document.')
     title_plural = _('Remove tags from %(count)d documents.')
+    view_icon = icon_document_tag_multiple_remove
 
     def get_extra_context(self):
         context = {}

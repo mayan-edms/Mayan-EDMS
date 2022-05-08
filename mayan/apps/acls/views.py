@@ -16,7 +16,10 @@ from mayan.apps.views.mixins import (
 
 from .classes import ModelPermission
 from .forms import ACLCreateForm
-from .icons import icon_acl_list
+from .icons import (
+    icon_acl_create, icon_acl_delete, icon_acl_list, icon_acl_permissions,
+    icon_global_acl_list
+)
 from .links import link_acl_create
 from .models import AccessControlList, GlobalAccessControlListProxy
 from .permissions import permission_acl_edit, permission_acl_view
@@ -34,6 +37,7 @@ class ACLCreateView(
     external_object_permission = permission_acl_edit
     external_object_pk_url_kwarg = 'object_id'
     form_class = ACLCreateForm
+    view_icon = icon_acl_create
 
     def get_error_message_duplicate(self):
         return _(
@@ -87,6 +91,7 @@ class ACLDeleteView(SingleObjectDeleteView):
     model = AccessControlList
     object_permission = permission_acl_edit
     pk_url_kwarg = 'acl_id'
+    view_icon = icon_acl_delete
 
     def get_extra_context(self):
         return {
@@ -120,6 +125,7 @@ class ACLListView(
     }
     external_object_permission = permission_acl_view
     external_object_pk_url_kwarg = 'object_id'
+    view_icon = icon_acl_list
 
     def get_external_object_queryset(self):
         # Here we get a queryset the object model for which an ACL will be
@@ -156,7 +162,7 @@ class ACLListView(
         return self.external_object.acls.all()
 
 
-class ACLPermissionsView(AddRemoveView):
+class ACLPermissionAddRemoveView(AddRemoveView):
     main_object_method_add_name = 'permissions_add'
     main_object_method_remove_name = 'permissions_remove'
     main_object_model = AccessControlList
@@ -165,6 +171,7 @@ class ACLPermissionsView(AddRemoveView):
     list_added_title = _('Granted permissions')
     list_available_title = _('Available permissions')
     related_field = 'permissions'
+    view_icon = icon_acl_permissions
 
     def generate_choices(self, queryset):
         namespaces_dictionary = {}
@@ -249,6 +256,7 @@ class ACLPermissionsView(AddRemoveView):
 class GlobalACLListView(SingleObjectListView):
     model = GlobalAccessControlListProxy
     object_permission = permission_acl_view
+    view_icon = icon_global_acl_list
 
     def get_extra_context(self):
         return {

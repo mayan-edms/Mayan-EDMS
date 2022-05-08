@@ -27,7 +27,7 @@ def widget_event_actor_link(context, attribute=None):
         content_type = ContentType.objects.get_for_model(model=entry.actor)
 
         url = reverse(
-            viewname='events:events_for_object', kwargs={
+            viewname='events:object_event_list', kwargs={
                 'app_label': content_type.app_label,
                 'model_name': content_type.model,
                 'object_id': entry.actor.pk
@@ -56,7 +56,7 @@ def widget_event_type_link(context, attribute=None):
     return mark_safe(
         '<a href="%(url)s">%(label)s</a>' % {
             'url': reverse(
-                viewname='events:events_by_verb', kwargs={'verb': entry.verb}
+                viewname='events:verb_event_list', kwargs={'verb': entry.verb}
             ), 'label': event_type_label
         }
     )

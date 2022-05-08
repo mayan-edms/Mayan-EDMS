@@ -45,16 +45,11 @@ class PrintFormView(ExternalObjectViewMixin, FormView):
         }
 
 
-class DocumentPrintView(ExternalObjectViewMixin, SimpleView):
+class DocumentPrintBaseView(ExternalObjectViewMixin, SimpleView):
     external_object_class = None
     external_object_permission = None
     external_object_pk_url_kwarg = None
     template_name = 'documents/document_print.html'
-
-    def _add_recent_document(self):
-        self.external_object.add_as_recent_document_for_user(
-            user=self.request.user
-        )
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request, *args, **kwargs)

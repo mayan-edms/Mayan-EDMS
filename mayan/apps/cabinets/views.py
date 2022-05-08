@@ -14,7 +14,12 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import CabinetListForm
-from .icons import icon_cabinet
+from .icons import (
+    icon_cabinet, icon_cabinet_child_add, icon_cabinet_create,
+    icon_cabinet_delete, icon_cabinet_detail, icon_cabinet_edit,
+    icon_cabinet_list, icon_document_cabinet_add, icon_document_cabinet_list,
+    icon_document_cabinet_remove
+)
 from .links import (
     link_document_cabinet_add, link_cabinet_child_add, link_cabinet_create
 )
@@ -33,6 +38,7 @@ class CabinetCreateView(SingleObjectCreateView):
     fields = ('label',)
     model = Cabinet
     post_action_redirect = reverse_lazy(viewname='cabinets:cabinet_list')
+    view_icon = icon_cabinet_create
     view_permission = permission_cabinet_create
 
     def get_extra_context(self):
@@ -49,6 +55,7 @@ class CabinetChildAddView(ExternalObjectViewMixin, SingleObjectCreateView):
     external_object_class = Cabinet
     external_object_permission = permission_cabinet_edit
     external_object_pk_url_kwarg = 'cabinet_id'
+    view_icon = icon_cabinet_child_add
 
     def get_extra_context(self):
         return {
@@ -73,6 +80,7 @@ class CabinetDeleteView(SingleObjectDeleteView):
     object_permission = permission_cabinet_delete
     post_action_redirect = reverse_lazy(viewname='cabinets:cabinet_list')
     pk_url_kwarg = 'cabinet_id'
+    view_icon = icon_cabinet_delete
 
     def get_extra_context(self):
         return {
@@ -86,6 +94,7 @@ class CabinetDetailView(ExternalObjectViewMixin, DocumentListView):
     external_object_permission = permission_cabinet_view
     external_object_pk_url_kwarg = 'cabinet_id'
     template_name = 'cabinets/cabinet_details.html'
+    view_icon = icon_cabinet_detail
 
     def get_document_queryset(self):
         return self.external_object.get_documents(
@@ -136,6 +145,7 @@ class CabinetEditView(SingleObjectEditView):
     object_permission = permission_cabinet_edit
     post_action_redirect = reverse_lazy(viewname='cabinets:cabinet_list')
     pk_url_kwarg = 'cabinet_id'
+    view_icon = icon_cabinet_edit
 
     def get_extra_context(self):
         return {
@@ -149,6 +159,7 @@ class CabinetEditView(SingleObjectEditView):
 
 class CabinetListView(SingleObjectListView):
     object_permission = permission_cabinet_view
+    view_icon = icon_cabinet_list
 
     def get_extra_context(self):
         return {
@@ -188,6 +199,7 @@ class DocumentCabinetAddView(MultipleObjectFormActionView):
     title_single = _('Add document "%(object)s" to cabinets.')
     title_singular = _('Add %(count)d document to cabinets.')
     title_plural = _('Add %(count)d documents to cabinets.')
+    view_icon = icon_document_cabinet_add
 
     def get_extra_context(self):
         context = {}
@@ -237,6 +249,7 @@ class DocumentCabinetListView(ExternalObjectViewMixin, CabinetListView):
     external_object_permission = permission_cabinet_view
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid.all()
+    view_icon = icon_document_cabinet_list
 
     def get_extra_context(self):
         return {
@@ -284,6 +297,7 @@ class DocumentCabinetRemoveView(MultipleObjectFormActionView):
     title_single = _('Remove document "%(object)s" from cabinets.')
     title_singular = _('Remove %(count)d document from cabinets.')
     title_plural = _('Remove %(count)d documents from cabinets.')
+    view_icon = icon_document_cabinet_remove
 
     def get_extra_context(self):
         context = {}

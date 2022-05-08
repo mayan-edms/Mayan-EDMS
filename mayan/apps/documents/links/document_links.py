@@ -3,8 +3,8 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.navigation.classes import Link
 
 from ..icons import (
-    icon_document_edit, icon_document_recently_accessed_list, icon_document_list,
-    icon_document_preview, icon_document_properties,
+    icon_document_properties_edit, icon_document_recently_accessed_list, icon_document_list,
+    icon_document_preview, icon_document_properties_detail,
     icon_document_type_change, icon_document_recently_created_list
 )
 from ..permissions import (
@@ -39,13 +39,13 @@ link_document_preview = Link(
     view='documents:document_preview'
 )
 link_document_properties = Link(
-    args='resolved_object.id', icon=icon_document_properties,
+    args='resolved_object.id', icon=icon_document_properties_detail,
     permissions=(permission_document_view,), text=_('Properties'),
     view='documents:document_properties'
 )
 link_document_properties_edit = Link(
     args='resolved_object.id',
-    icon=icon_document_edit,
+    icon=icon_document_properties_edit,
     permissions=(permission_document_properties_edit,),
     text=_('Edit properties'), view='documents:document_properties_edit'
 )

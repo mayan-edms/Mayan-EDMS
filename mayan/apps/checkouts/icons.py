@@ -12,3 +12,6 @@ icon_check_out_info = Icon(driver_name='fontawesome', symbol='shopping-cart')
 icon_dashboard_check_outs = Icon(
     driver_name='fontawesome', symbol='shopping-cart'
 )
+icon_check_out_list = Icon(
+    driver_name='fontawesome', symbol='shopping-cart'
+)

@@ -41,12 +41,12 @@ class EventClearViewTestCase(
 
         self._clear_events()
 
-    def test_events_list_clear_view_no_permission(self):
+    def test_event_list_clear_view_no_permission(self):
         self._clear_events()
 
         self._create_test_event(target=self._test_object)
 
-        response = self._request_test_events_list_clear_view()
+        response = self._request_test_event_list_clear_view()
         self.assertEqual(response.status_code, 302)
 
         events = self._get_test_events()
@@ -54,7 +54,7 @@ class EventClearViewTestCase(
 
         self.assertEqual(events[0], self._test_event)
 
-    def test_events_list_clear_view_with_access(self):
+    def test_event_list_clear_view_with_access(self):
         self.grant_access(
             obj=self._test_object, permission=permission_events_clear
         )
@@ -63,7 +63,7 @@ class EventClearViewTestCase(
 
         self._create_test_event(target=self._test_object)
 
-        response = self._request_test_events_list_clear_view()
+        response = self._request_test_event_list_clear_view()
         self.assertEqual(response.status_code, 302)
 
         events = self._get_test_events()
@@ -74,14 +74,14 @@ class EventClearViewTestCase(
         self.assertEqual(events[0].target, self._test_case_user)
         self.assertEqual(events[0].verb, event_events_cleared.id)
 
-    def test_events_for_object_clear_view_no_permission(self):
+    def test_object_event_list_clear_view_no_permission(self):
         self._clear_events()
 
         self._create_test_event(
             actor=self._test_user, action_object=self._test_object
         )
 
-        response = self._request_events_for_object_clear_view()
+        response = self._request_object_event_list_clear_view()
         self.assertEqual(response.status_code, 302)
 
         events = self._get_test_events()
@@ -89,7 +89,7 @@ class EventClearViewTestCase(
 
         self.assertEqual(events[0], self._test_event)
 
-    def test_events_for_object_clear_view_with_access(self):
+    def test_object_event_list_clear_view_with_access(self):
         self.grant_access(
             obj=self._test_object, permission=permission_events_clear
         )
@@ -100,7 +100,7 @@ class EventClearViewTestCase(
             actor=self._test_user, action_object=self._test_object
         )
 
-        response = self._request_events_for_object_clear_view()
+        response = self._request_object_event_list_clear_view()
         self.assertEqual(response.status_code, 302)
 
         events = self._get_test_events()
@@ -111,14 +111,14 @@ class EventClearViewTestCase(
         self.assertEqual(events[0].target, self._test_object)
         self.assertEqual(events[0].verb, event_events_cleared.id)
 
-    def test_events_by_verb_clear_view_no_permission(self):
+    def test_verb_event_list_clear_view_no_permission(self):
         self._clear_events()
 
         self._create_test_event(
             actor=self._test_user, action_object=self._test_object
         )
 
-        response = self._request_test_events_by_verb_clear_view()
+        response = self._request_test_verb_event_list_clear_view()
         self.assertEqual(response.status_code, 302)
 
         events = self._get_test_events()
@@ -126,7 +126,7 @@ class EventClearViewTestCase(
 
         self.assertEqual(events[0], self._test_event)
 
-    def test_events_by_verb_view_clear_with_access(self):
+    def test_verb_event_list_view_clear_with_access(self):
         self.grant_access(
             obj=self._test_object, permission=permission_events_clear
         )
@@ -137,7 +137,7 @@ class EventClearViewTestCase(
             actor=self._test_user, action_object=self._test_object
         )
 
-        response = self._request_test_events_by_verb_clear_view()
+        response = self._request_test_verb_event_list_clear_view()
         self.assertEqual(response.status_code, 302)
 
         events = self._get_test_events()
@@ -178,7 +178,7 @@ class CurrentUserEventClearViewTestCase(
             actor=self._test_case_user, action_object=self._test_object
         )
 
-        response = self._request_events_for_object_clear_view()
+        response = self._request_object_event_list_clear_view()
         self.assertEqual(response.status_code, 302)
 
         events = self._get_test_events()
@@ -197,7 +197,7 @@ class CurrentUserEventClearViewTestCase(
             actor=self._test_case_user, action_object=self._test_object
         )
 
-        response = self._request_events_for_object_clear_view()
+        response = self._request_object_event_list_clear_view()
         self.assertEqual(response.status_code, 302)
 
         events = self._get_test_events()

@@ -67,7 +67,7 @@ urlpatterns = [
     url(
         regex=r'^sources/(?P<source_id>\d+)/test/$',
         name='source_test', view=SourceTestView.as_view()
-    ),
+    )
 ]
 
 api_urls = [

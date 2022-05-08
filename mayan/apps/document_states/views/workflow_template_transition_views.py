@@ -16,7 +16,16 @@ from ..forms import (
 )
 from ..icons import (
     icon_workflow_template_transition,
-    icon_workflow_template_transition_field
+    icon_workflow_template_transition_create,
+    icon_workflow_template_transition_delete,
+    icon_workflow_template_transition_edit,
+    icon_workflow_template_transition_list,
+    icon_workflow_template_transition_triggers,
+    icon_workflow_template_transition_field,
+    icon_workflow_template_transition_field_create,
+    icon_workflow_template_transition_field_delete,
+    icon_workflow_template_transition_field_edit,
+    icon_workflow_template_transition_field_list
 )
 from ..links import (
     link_workflow_template_transition_create,
@@ -35,6 +44,7 @@ class WorkflowTemplateTransitionCreateView(
     external_object_permission = permission_workflow_template_edit
     external_object_pk_url_kwarg = 'workflow_template_id'
     form_class = WorkflowTransitionForm
+    view_icon = icon_workflow_template_transition_create
 
     def get_extra_context(self):
         return {
@@ -74,6 +84,7 @@ class WorkflowTemplateTransitionDeleteView(SingleObjectDeleteView):
     model = WorkflowTransition
     object_permission = permission_workflow_template_edit
     pk_url_kwarg = 'workflow_template_transition_id'
+    view_icon = icon_workflow_template_transition_delete
 
     def get_extra_context(self):
         return {
@@ -102,6 +113,7 @@ class WorkflowTemplateTransitionEditView(SingleObjectEditView):
     model = WorkflowTransition
     object_permission = permission_workflow_template_edit
     pk_url_kwarg = 'workflow_template_transition_id'
+    view_icon = icon_workflow_template_transition_edit
 
     def get_extra_context(self):
         return {
@@ -137,6 +149,7 @@ class WorkflowTemplateTransitionListView(
     external_object_permission = permission_workflow_template_view
     external_object_pk_url_kwarg = 'workflow_template_id'
     object_permission = permission_workflow_template_view
+    view_icon = icon_workflow_template_transition_list
 
     def get_extra_context(self):
         return {
@@ -175,6 +188,7 @@ class WorkflowTemplateTransitionFieldCreateView(
         'name', 'label', 'field_type', 'help_text', 'required', 'widget',
         'widget_kwargs'
     )
+    view_icon = icon_workflow_template_transition_field_create
 
     def get_extra_context(self):
         return {
@@ -208,6 +222,7 @@ class WorkflowTemplateTransitionFieldDeleteView(SingleObjectDeleteView):
     model = WorkflowTransitionField
     object_permission = permission_workflow_template_edit
     pk_url_kwarg = 'workflow_template_transition_field_id'
+    view_icon = icon_workflow_template_transition_field_delete
 
     def get_extra_context(self):
         return {
@@ -242,6 +257,7 @@ class WorkflowTemplateTransitionFieldEditView(SingleObjectEditView):
     model = WorkflowTransitionField
     object_permission = permission_workflow_template_edit
     pk_url_kwarg = 'workflow_template_transition_field_id'
+    view_icon = icon_workflow_template_transition_field_edit
 
     def get_extra_context(self):
         return {
@@ -274,6 +290,7 @@ class WorkflowTemplateTransitionFieldListView(
     external_object_class = WorkflowTransition
     external_object_permission = permission_workflow_template_view
     external_object_pk_url_kwarg = 'workflow_template_transition_id'
+    view_icon = icon_workflow_template_transition_field_list
 
     def get_extra_context(self):
         return {
@@ -314,6 +331,7 @@ class WorkflowTemplateTransitionTriggerEventListView(
     external_object_permission = permission_workflow_template_view
     external_object_pk_url_kwarg = 'workflow_template_transition_id'
     form_class = WorkflowTransitionTriggerEventRelationshipFormSet
+    view_icon = icon_workflow_template_transition_triggers
 
     def dispatch(self, *args, **kwargs):
         EventType.refresh()

@@ -4,7 +4,7 @@ from mayan.apps.navigation.classes import Link
 from mayan.apps.navigation.utils import get_content_type_kwargs_factory
 
 from .icons import (
-    icon_object_error_log_entry_delete,
+    icon_global_error_log_entry_list, icon_object_error_log_entry_delete,
     icon_object_error_log_entry_list, icon_object_error_log_entry_list_clear
 )
 from .permissions import (
@@ -12,7 +12,7 @@ from .permissions import (
 )
 
 link_global_error_log_partition_entry_list = Link(
-    icon=icon_object_error_log_entry_list, text=_('Global error log'),
+    icon=icon_global_error_log_entry_list, text=_('Global error log'),
     view='logging:global_error_log_partition_entry_list'
 )
 link_object_error_log_entry_delete = Link(

@@ -1,5 +1,9 @@
 from mayan.apps.appearance.classes import Icon
 
+icon_quota_backend_selection = Icon(
+    driver_name='fontawesome-dual', primary_symbol='tachometer-alt',
+    secondary_symbol='plus'
+)
 icon_quota_create = Icon(
     driver_name='fontawesome-dual', primary_symbol='tachometer-alt',
     secondary_symbol='plus'

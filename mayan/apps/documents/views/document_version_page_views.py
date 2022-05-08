@@ -25,7 +25,8 @@ from ..forms.document_version_page_forms import (
     DocumentVersionPageForm, DocumentVersionPageMappingFormSet
 )
 from ..icons import (
-    icon_document_version_page_list, icon_document_version_page_list_remap
+    icon_document_version_page_delete, icon_document_version_page_list,
+    icon_document_version_page_list_remap, icon_document_version_page_detail
 )
 from ..links.document_version_links import link_document_version_modification
 from ..links.document_version_page_links import link_document_version_page_list_remap
@@ -56,6 +57,7 @@ class DocumentVersionPageDeleteView(SingleObjectDeleteView):
     object_permission = permission_document_version_edit
     pk_url_kwarg = 'document_version_page_id'
     source_queryset = DocumentVersionPage.valid.all()
+    view_icon = icon_document_version_page_delete
 
     def get_extra_context(self):
         return {
@@ -85,6 +87,7 @@ class DocumentVersionPageListView(ExternalObjectViewMixin, SingleObjectListView)
     external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_version_id'
     external_object_queryset = DocumentVersion.valid.all()
+    view_icon = icon_document_version_page_list
 
     def get_extra_context(self):
         return {
@@ -119,6 +122,7 @@ class DocumentVersionPageListRemapView(ExternalObjectViewMixin, FormView):
     external_object_pk_url_kwarg = 'document_version_id'
     external_object_queryset = DocumentVersion.valid.all()
     form_class = DocumentVersionPageMappingFormSet
+    view_icon = icon_document_version_page_list_remap
 
     def form_valid(self, form):
         annotated_content_object_list = []
@@ -208,7 +212,10 @@ class DocumentVersionPageListRemapView(ExternalObjectViewMixin, FormView):
                 'source_content_type': content_object_dictionary['content_type'].pk,
                 'source_object_id': content_object_dictionary['object_id'],
                 'source_thumbnail': content_object,
-                'source_label': '{}: {}'.format(content_object_dictionary['content_type'].name, content_object),
+                'source_label': '{}: {}'.format(
+                    content_object_dictionary['content_type'].name,
+                    content_object
+                ),
                 'target_page_number': document_version_page_page_number
             }
 
@@ -224,7 +231,9 @@ class DocumentVersionPageListRemapView(ExternalObjectViewMixin, FormView):
         )
 
 
-class DocumentVersionPageNavigationBase(ExternalObjectViewMixin, RedirectView):
+class DocumentVersionPageNavigationBase(
+    ExternalObjectViewMixin, RedirectView
+):
     external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_version_page_id'
     external_object_queryset = DocumentVersionPage.valid.all()
@@ -317,6 +326,7 @@ class DocumentVersionPageView(ExternalObjectViewMixin, SimpleView):
     external_object_pk_url_kwarg = 'document_version_page_id'
     external_object_queryset = DocumentVersionPage.valid.all()
     template_name = 'appearance/generic_form.html'
+    view_icon = icon_document_version_page_detail
 
     def get_extra_context(self):
         zoom = int(self.request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))

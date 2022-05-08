@@ -9,7 +9,13 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..forms import WorkflowStateEscalationForm
-from ..icons import icon_workflow_template_state_escalation
+from ..icons import (
+    icon_workflow_template_state_escalation_create,
+    icon_workflow_template_state_escalation_delete,
+    icon_workflow_template_state_escalation_edit,
+    icon_workflow_template_state_escalation_list,
+    icon_workflow_template_state_escalation
+)
 from ..links import link_workflow_template_state_escalation_create
 from ..models import WorkflowState, WorkflowStateEscalation
 from ..permissions import (
@@ -24,6 +30,7 @@ class WorkflowTemplateStateEscalationCreateView(
     external_object_permission = permission_workflow_template_edit
     external_object_pk_url_kwarg = 'workflow_template_state_id'
     form_class = WorkflowStateEscalationForm
+    view_icon = icon_workflow_template_state_escalation_create
 
     def get_extra_context(self):
         return {
@@ -62,38 +69,11 @@ class WorkflowTemplateStateEscalationCreateView(
         )
 
 
-class WorkflowTemplateStateEscalationEditView(SingleObjectEditView):
-    form_class = WorkflowStateEscalationForm
-    model = WorkflowStateEscalation
-    object_permission = permission_workflow_template_edit
-    pk_url_kwarg = 'workflow_template_state_escalation_id'
-
-    def get_extra_context(self):
-        return {
-            'navigation_object_list': (
-                'object', 'workflow_template_state', 'workflow_template',
-            ),
-            'object': self.object,
-            'title': _('Edit workflow state escalation: %s') % self.object,
-            'workflow_template': self.object.state.workflow,
-            'workflow_template_state': self.object.state,
-        }
-
-    def get_form_extra_kwargs(self):
-        return {
-            'workflow_template_state': self.object.state
-        }
-
-    def get_instance_extra_data(self):
-        return {
-            '_event_actor': self.request.user
-        }
-
-
 class WorkflowTemplateStateEscalationDeleteView(SingleObjectDeleteView):
     model = WorkflowStateEscalation
     object_permission = permission_workflow_template_edit
     pk_url_kwarg = 'workflow_template_state_escalation_id'
+    view_icon = icon_workflow_template_state_escalation_delete
 
     def get_extra_context(self):
         return {
@@ -120,12 +100,42 @@ class WorkflowTemplateStateEscalationDeleteView(SingleObjectDeleteView):
         )
 
 
+class WorkflowTemplateStateEscalationEditView(SingleObjectEditView):
+    form_class = WorkflowStateEscalationForm
+    model = WorkflowStateEscalation
+    object_permission = permission_workflow_template_edit
+    pk_url_kwarg = 'workflow_template_state_escalation_id'
+    view_icon = icon_workflow_template_state_escalation_edit
+
+    def get_extra_context(self):
+        return {
+            'navigation_object_list': (
+                'object', 'workflow_template_state', 'workflow_template',
+            ),
+            'object': self.object,
+            'title': _('Edit workflow state escalation: %s') % self.object,
+            'workflow_template': self.object.state.workflow,
+            'workflow_template_state': self.object.state,
+        }
+
+    def get_form_extra_kwargs(self):
+        return {
+            'workflow_template_state': self.object.state
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
+
+
 class WorkflowTemplateStateEscalationListView(
     ExternalObjectViewMixin, SingleObjectListView
 ):
     external_object_class = WorkflowState
     external_object_permission = permission_workflow_template_view
     external_object_pk_url_kwarg = 'workflow_template_state_id'
+    view_icon = icon_workflow_template_state_escalation_list
 
     def get_extra_context(self):
         return {

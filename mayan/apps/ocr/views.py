@@ -18,6 +18,15 @@ from .forms import (
     DocumentVersionPageOCRContentDetailForm,
     DocumentVersionPageOCRContentEditForm, DocumentVersionOCRContentForm
 )
+from .icons import (
+    icon_document_type_ocr_settings, icon_document_type_ocr_submit,
+    icon_document_version_ocr_content_single_delete,
+    icon_document_version_ocr_content_detail,
+    icon_document_version_ocr_content_download,
+    icon_document_version_ocr_single_submit,
+    icon_document_version_page_ocr_content_detail,
+    icon_document_version_page_ocr_content_edit
+)
 from .models import DocumentVersionPageOCRContent
 from .permissions import (
     permission_document_version_ocr_content_edit,
@@ -27,12 +36,40 @@ from .permissions import (
 from .utils import get_instance_ocr_content
 
 
-class DocumentTypeSubmitView(FormView):
+class DocumentTypeOCRSettingsEditView(
+    ExternalObjectViewMixin, SingleObjectEditView
+):
+    external_object_class = DocumentType
+    external_object_permission = permission_document_type_ocr_setup
+    external_object_pk_url_kwarg = 'document_type_id'
+    fields = ('auto_ocr',)
+    post_action_redirect = reverse_lazy(
+        viewname='documents:document_type_list'
+    )
+    view_icon = icon_document_type_ocr_settings
+
+    def get_document_type(self):
+        return self.external_object
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_document_type(),
+            'title': _(
+                'Edit OCR settings for document type: %s.'
+            ) % self.get_document_type()
+        }
+
+    def get_object(self, queryset=None):
+        return self.get_document_type().ocr_settings
+
+
+class DocumentTypeOCRSubmitView(FormView):
     extra_context = {
         'title': _('Submit all documents of a type for OCR')
     }
     form_class = DocumentTypeFilteredSelectForm
     post_action_redirect = reverse_lazy(viewname='common:tools_list')
+    view_icon = icon_document_type_ocr_submit
 
     def form_valid(self, form):
         count = 0
@@ -65,30 +102,6 @@ class DocumentTypeSubmitView(FormView):
         return reverse(viewname='common:tools_list')
 
 
-class DocumentTypeSettingsEditView(ExternalObjectViewMixin, SingleObjectEditView):
-    external_object_class = DocumentType
-    external_object_permission = permission_document_type_ocr_setup
-    external_object_pk_url_kwarg = 'document_type_id'
-    fields = ('auto_ocr',)
-    post_action_redirect = reverse_lazy(
-        viewname='documents:document_type_list'
-    )
-
-    def get_document_type(self):
-        return self.external_object
-
-    def get_extra_context(self):
-        return {
-            'object': self.get_document_type(),
-            'title': _(
-                'Edit OCR settings for document type: %s.'
-            ) % self.get_document_type()
-        }
-
-    def get_object(self, queryset=None):
-        return self.get_document_type().ocr_settings
-
-
 class DocumentVersionOCRContentDeleteView(MultipleObjectDeleteView):
     error_message = _(
         'Error deleting document version OCR "%(instance)s"; %(exception)s'
@@ -96,12 +109,23 @@ class DocumentVersionOCRContentDeleteView(MultipleObjectDeleteView):
     object_permission = permission_document_version_ocr
     pk_url_kwarg = 'document_version_id'
     source_queryset = DocumentVersion.valid.all()
-    success_message_single = _('OCR content of "%(object)s" deleted successfully.')
-    success_message_singular = _('OCR content of %(count)d document version deleted successfully.')
-    success_message_plural = _('OCR content of %(count)d document versions deleted successfully.')
+    success_message_single = _(
+        'OCR content of "%(object)s" deleted successfully.'
+    )
+    success_message_singular = _(
+        'OCR content of %(count)d document version deleted successfully.'
+    )
+    success_message_plural = _(
+        'OCR content of %(count)d document versions deleted successfully.'
+    )
     title_single = _('Delete the OCR content of: %(object)s.')
-    title_singular = _('Delete the OCR content of the %(count)d selected document version.')
-    title_plural = _('Delete the OCR content of the %(count)d selected document versions.')
+    title_singular = _(
+        'Delete the OCR content of the %(count)d selected document version.'
+    )
+    title_plural = _(
+        'Delete the OCR content of the %(count)d selected document versions.'
+    )
+    view_icon = icon_document_version_ocr_content_single_delete
 
     def object_action(self, form, instance):
         DocumentVersionPageOCRContent.objects.delete_content_for(
@@ -114,12 +138,15 @@ class DocumentVersionOCRContentView(SingleObjectDetailView):
     object_permission = permission_document_version_ocr_content_view
     pk_url_kwarg = 'document_version_id'
     source_queryset = DocumentVersion.valid.all()
+    view_icon = icon_document_version_ocr_content_detail
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(
             request, *args, **kwargs
         )
-        self.object.document.add_as_recent_document_for_user(user=request.user)
+        self.object.document.add_as_recent_document_for_user(
+            user=request.user
+        )
         return result
 
     def get_extra_context(self):
@@ -135,6 +162,7 @@ class DocumentVersionOCRDownloadView(SingleObjectDownloadView):
     object_permission = permission_document_version_ocr_content_view
     pk_url_kwarg = 'document_version_id'
     source_queryset = DocumentVersion.valid.all()
+    view_icon = icon_document_version_ocr_content_download
 
     def get_download_file_object(self):
         return get_instance_ocr_content(instance=self.object)
@@ -147,8 +175,13 @@ class DocumentVersionOCRSubmitView(MultipleObjectConfirmActionView):
     object_permission = permission_document_version_ocr
     pk_url_kwarg = 'document_version_id'
     source_queryset = DocumentVersion.valid.all()
-    success_message = '%(count)d document version submitted to the OCR queue.'
-    success_message_plural = '%(count)d document versions submitted to the OCR queue.'
+    success_message = _(
+        '%(count)d document version submitted to the OCR queue.'
+    )
+    success_message_plural = (
+        '%(count)d document versions submitted to the OCR queue.'
+    )
+    view_icon = icon_document_version_ocr_single_submit
 
     def get_extra_context(self):
         queryset = self.object_list
@@ -175,6 +208,7 @@ class DocumentVersionPageOCRContentDetailView(SingleObjectDetailView):
     object_permission = permission_document_version_ocr_content_view
     pk_url_kwarg = 'document_version_page_id'
     source_queryset = DocumentVersionPage.valid.all()
+    view_icon = icon_document_version_page_ocr_content_detail
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(
@@ -202,6 +236,7 @@ class DocumentVersionPageOCRContentEditView(
     external_object_permission = permission_document_version_ocr_content_edit
     external_object_pk_url_kwarg = 'document_version_page_id'
     form_class = DocumentVersionPageOCRContentEditForm
+    view_icon = icon_document_version_page_ocr_content_edit
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(

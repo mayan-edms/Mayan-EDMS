@@ -43,12 +43,12 @@ class EventExportViewTestCase(
             )
         )
 
-    def test_events_list_export_view_no_permission(self):
+    def test_event_list_export_view_no_permission(self):
         self._clear_events()
 
         self._create_test_event(target=self._test_object)
 
-        response = self._request_test_events_list_export_view()
+        response = self._request_test_event_list_export_view()
         self.assertEqual(response.status_code, 302)
 
         test_download_file = DownloadFile.objects.first()
@@ -86,7 +86,7 @@ class EventExportViewTestCase(
                 str(self._test_object).encode() not in file_object.read()
             )
 
-    def test_events_list_export_view_with_access(self):
+    def test_event_list_export_view_with_access(self):
         self.grant_access(
             obj=self._test_object, permission=permission_events_export
         )
@@ -95,7 +95,7 @@ class EventExportViewTestCase(
 
         self._create_test_event(target=self._test_object)
 
-        response = self._request_test_events_list_export_view()
+        response = self._request_test_event_list_export_view()
         self.assertEqual(response.status_code, 302)
 
         test_download_file = DownloadFile.objects.first()
@@ -131,14 +131,14 @@ class EventExportViewTestCase(
                 str(self._test_object).encode() in file_object.read()
             )
 
-    def test_events_for_object_export_view_no_permission(self):
+    def test_object_event_list_export_view_no_permission(self):
         self._clear_events()
 
         self._create_test_event(
             actor=self._test_user, action_object=self._test_object
         )
 
-        response = self._request_events_for_object_export_view()
+        response = self._request_object_event_list_export_view()
         self.assertEqual(response.status_code, 302)
 
         test_download_file = DownloadFile.objects.first()
@@ -174,7 +174,7 @@ class EventExportViewTestCase(
                 str(self._test_object).encode() not in file_object.read()
             )
 
-    def test_events_for_object_export_view_with_access(self):
+    def test_object_event_list_export_view_with_access(self):
         self.grant_access(
             obj=self._test_object, permission=permission_events_export
         )
@@ -185,7 +185,7 @@ class EventExportViewTestCase(
             actor=self._test_user, action_object=self._test_object
         )
 
-        response = self._request_events_for_object_export_view()
+        response = self._request_object_event_list_export_view()
         self.assertEqual(response.status_code, 302)
 
         test_download_file = DownloadFile.objects.first()
@@ -221,14 +221,14 @@ class EventExportViewTestCase(
                 str(self._test_object).encode() in file_object.read()
             )
 
-    def test_events_by_verb_export_view_no_permission(self):
+    def test_verb_event_list_export_view_no_permission(self):
         self._clear_events()
 
         self._create_test_event(
             actor=self._test_user, action_object=self._test_object
         )
 
-        response = self._request_test_events_by_verb_export_view()
+        response = self._request_test_verb_event_list_export_view()
         self.assertEqual(response.status_code, 302)
 
         test_download_file = DownloadFile.objects.first()
@@ -264,7 +264,7 @@ class EventExportViewTestCase(
                 str(self._test_object).encode() not in file_object.read()
             )
 
-    def test_events_by_verb_view_export_with_access(self):
+    def test_verb_event_list_view_export_with_access(self):
         self.grant_access(
             obj=self._test_object, permission=permission_events_export
         )
@@ -275,7 +275,7 @@ class EventExportViewTestCase(
             actor=self._test_user, action_object=self._test_object
         )
 
-        response = self._request_test_events_by_verb_export_view()
+        response = self._request_test_verb_event_list_export_view()
         self.assertEqual(response.status_code, 302)
 
         test_download_file = DownloadFile.objects.first()
@@ -341,7 +341,7 @@ class CurrentUsetEventExportViewTestCase(
             actor=self._test_case_user, action_object=self._test_object
         )
 
-        response = self._request_events_for_object_export_view()
+        response = self._request_object_event_list_export_view()
         self.assertNotContains(
             response=response, text=str(self._test_event_type), status_code=302
         )
@@ -390,7 +390,7 @@ class CurrentUsetEventExportViewTestCase(
             actor=self._test_case_user, action_object=self._test_object
         )
 
-        response = self._request_events_for_object_export_view()
+        response = self._request_object_event_list_export_view()
         self.assertEqual(response.status_code, 302)
 
         test_download_file = DownloadFile.objects.first()

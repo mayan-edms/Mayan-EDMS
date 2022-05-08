@@ -51,7 +51,7 @@ from .views.document_file_page_views import (
 from .views.document_type_views import (
     DocumentTypeCreateView, DocumentTypeDeleteView,
     DocumentTypeDeletionPoliciesEditView, DocumentTypeDocumentListView,
-    DocumentTypeEditView, DocumentTypeFileGeneratorEditView,
+    DocumentTypeEditView, DocumentTypeFilenameGeneratorEditView,
     DocumentTypeFilenameCreateView, DocumentTypeFilenameDeleteView,
     DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
     DocumentTypeListView
@@ -108,7 +108,7 @@ urlpatterns_document_files = [
     ),
     url(
         regex=r'^documents/files/multiple/delete/$',
-        name='document_file_delete_multiple',
+        name='document_file_multiple_delete',
         view=DocumentFileDeleteView.as_view()
     ),
     url(
@@ -246,7 +246,7 @@ urlpatterns_document_types = [
     url(
         regex=r'^document_types/(?P<document_type_id>\d+)/filename_generator/$',
         name='document_type_filename_generator',
-        view=DocumentTypeFileGeneratorEditView.as_view()
+        view=DocumentTypeFilenameGeneratorEditView.as_view()
     ),
     url(
         regex=r'^document_types/(?P<document_type_id>\d+)/filenames/$',
@@ -287,7 +287,7 @@ urlpatterns_document_version = [
     ),
     url(
         regex=r'^documents/versions/(?P<document_version_id>\d+)/delete/$',
-        name='document_version_delete_single',
+        name='document_version_single_delete',
         view=DocumentVersionDeleteView.as_view()
     ),
     url(
@@ -302,7 +302,7 @@ urlpatterns_document_version = [
     ),
     url(
         regex=r'^documents/versions/multiple/delete/$',
-        name='document_version_delete_multiple',
+        name='document_version_multiple_delete',
         view=DocumentVersionDeleteView.as_view()
     ),
     url(

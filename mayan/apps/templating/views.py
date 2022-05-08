@@ -12,6 +12,7 @@ from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .classes import Template
 from .forms import DocumentTemplateSandboxForm
+from .icons import icon_template_sandbox
 from .permissions import permission_template_sandbox
 
 
@@ -20,6 +21,7 @@ class DocumentTemplateSandboxView(ExternalObjectViewMixin, FormView):
     external_object_permission = permission_template_sandbox
     external_object_pk_url_kwarg = 'document_id'
     form_class = DocumentTemplateSandboxForm
+    view_icon = icon_template_sandbox
 
     def form_valid(self, form):
         path = reverse(

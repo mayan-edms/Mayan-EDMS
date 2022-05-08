@@ -7,10 +7,14 @@ from mayan.apps.databases.classes import QuerysetParametersSerializer
 from mayan.apps.views.generics import ConfirmView
 from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
 
+from ..icons import (
+    icon_event_list_clear, icon_object_event_list_clear,
+    icon_verb_event_list_clear
+)
 from ..permissions import permission_events_clear
 from ..tasks import task_event_queryset_clear
 
-from .mixins import EventViewMixin
+from .mixins import VerbEventViewMixin
 
 __all__ = (
     'EventListClearView', 'ObjectEventClearView', 'VerbEventClearView'
@@ -19,6 +23,7 @@ __all__ = (
 
 class EventClearBaseView(ConfirmView):
     object_permission = permission_events_clear
+    view_icon = icon_event_list_clear
 
     def get_extra_context(self):
         return {
@@ -73,6 +78,8 @@ class EventListClearView(EventClearBaseView):
 class ObjectEventClearView(
     ExternalContentTypeObjectViewMixin, EventClearBaseView
 ):
+    view_icon = icon_object_event_list_clear
+
     def get_extra_context(self):
         context = super().get_extra_context()
         context.update(
@@ -95,19 +102,21 @@ class ObjectEventClearView(
         }
 
 
-class VerbEventClearView(EventViewMixin, EventClearBaseView):
+class VerbEventClearView(VerbEventViewMixin, EventClearBaseView):
+    view_icon = icon_verb_event_list_clear
+
     def get_extra_context(self):
         context = super().get_extra_context()
         context.update(
             {
                 'title': _(
                     'Clear events of type: %s'
-                ) % self.get_event_type(id=self.kwargs['verb'])
+                ) % self.event_type
             }
         )
         return context
 
     def get_queryset_parameters(self):
         return {
-            '_method_name': 'filter', 'verb': self.kwargs['verb']
+            '_method_name': 'filter', 'verb': self.event_type.id
         }

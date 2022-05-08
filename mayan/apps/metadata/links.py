@@ -5,9 +5,9 @@ from mayan.apps.navigation.classes import Link
 
 from .icons import (
     icon_document_metadata_add, icon_document_metadata_edit,
-    icon_document_metadata_remove, icon_document_metadata_view,
-    icon_metadata_type_create, icon_metadata_type_delete_single,
-    icon_metadata_type_delete_multiple,
+    icon_document_metadata_remove, icon_document_metadata_list,
+    icon_metadata_type_create, icon_metadata_type_single_delete,
+    icon_metadata_type_multiple_delete,
     icon_metadata_type_document_type_list, icon_metadata_type_edit,
     icon_metadata_type_list, icon_document_type_metadata_type_list
 )
@@ -47,10 +47,10 @@ link_metadata_remove = Link(
     permissions=(permission_document_metadata_remove,),
     text=_('Remove metadata'), view='metadata:metadata_remove',
 )
-link_metadata_view = Link(
-    args='resolved_object.pk', icon=icon_document_metadata_view,
+link_metadata_list = Link(
+    args='resolved_object.pk', icon=icon_document_metadata_list,
     permissions=(permission_document_metadata_view,), text=_('Metadata'),
-    view='metadata:metadata_view',
+    view='metadata:metadata_list',
 )
 
 # Document type
@@ -75,15 +75,15 @@ link_metadata_type_create = Link(
     permissions=(permission_metadata_type_create,), text=_('Create new'),
     view='metadata:metadata_type_create'
 )
-link_metadata_type_delete_single = Link(
-    args='object.pk', icon=icon_metadata_type_delete_single,
+link_metadata_type_single_delete = Link(
+    args='object.pk', icon=icon_metadata_type_single_delete,
     permissions=(permission_metadata_type_delete,),
     tags='dangerous', text=_('Delete'),
-    view='metadata:metadata_type_delete_single',
+    view='metadata:metadata_type_single_delete',
 )
-link_metadata_type_delete_multiple = Link(
-    icon=icon_metadata_type_delete_multiple,
-    text=_('Delete'), view='metadata:metadata_type_delete_multiple'
+link_metadata_type_multiple_delete = Link(
+    icon=icon_metadata_type_multiple_delete,
+    text=_('Delete'), view='metadata:metadata_type_multiple_delete'
 )
 link_metadata_type_edit = Link(
     args='object.pk', icon=icon_metadata_type_edit,

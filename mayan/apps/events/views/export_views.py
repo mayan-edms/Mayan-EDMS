@@ -7,10 +7,14 @@ from mayan.apps.databases.classes import QuerysetParametersSerializer
 from mayan.apps.views.generics import ConfirmView
 from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
 
+from ..icons import (
+    icon_event_list_export, icon_object_event_list_export,
+    icon_verb_event_list_export
+)
 from ..permissions import permission_events_export
 from ..tasks import task_event_queryset_export
 
-from .mixins import EventViewMixin
+from .mixins import VerbEventViewMixin
 
 __all__ = (
     'EventListExportView', 'ObjectEventExportView', 'VerbEventExportView'
@@ -19,6 +23,7 @@ __all__ = (
 
 class EventExportBaseView(ConfirmView):
     object_permission = permission_events_export
+    view_icon = icon_event_list_export
 
     def get_extra_context(self):
         return {
@@ -49,6 +54,7 @@ class EventExportBaseView(ConfirmView):
 
 class EventListExportView(EventExportBaseView):
     object_permission = permission_events_export
+    view_icon = icon_event_list_export
 
     def get_extra_context(self):
         context = super().get_extra_context()
@@ -68,6 +74,8 @@ class EventListExportView(EventExportBaseView):
 class ObjectEventExportView(
     ExternalContentTypeObjectViewMixin, EventExportBaseView
 ):
+    view_icon = icon_object_event_list_export
+
     def get_extra_context(self):
         context = super().get_extra_context()
         context.update(
@@ -84,19 +92,21 @@ class ObjectEventExportView(
         }
 
 
-class VerbEventExportView(EventViewMixin, EventExportBaseView):
+class VerbEventExportView(VerbEventViewMixin, EventExportBaseView):
+    view_icon = icon_verb_event_list_export
+
     def get_extra_context(self):
         context = super().get_extra_context()
         context.update(
             {
                 'title': _(
                     'Export events of type: %s'
-                ) % self.get_event_type(id=self.kwargs['verb'])
+                ) % self.event_type
             }
         )
         return context
 
     def get_queryset_parameters(self):
         return {
-            '_method_name': 'filter', 'verb': self.kwargs['verb']
+            '_method_name': 'filter', 'verb': self.event_type.id
         }

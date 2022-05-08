@@ -20,21 +20,21 @@ from .events import (
 )
 from .handlers import (
     handler_index_document_file,
-    handler_initialize_new_document_type_settings,
-    handler_process_document_file
+    handler_initialize_new_document_type_file_metadata_settings,
+    process_document_file_metadata
 )
 from .links import (
     link_document_file_metadata_driver_list,
-    link_document_file_metadata_list,
-    link_document_file_metadata_submit_single,
+    link_document_file_metadata_driver_attribute_list,
+    link_document_file_metadata_single_submit,
     link_document_file_metadata_submit_multiple,
     link_document_type_file_metadata_settings,
-    link_document_type_submit
+    link_document_type_file_metadata_submit
 )
 from .methods import (
-    method_document_submit, method_document_file_submit_single,
-    method_get_document_file_metadata,
-    method_get_document_file_file_metadata
+    method_document_file_metadata_submit,
+    method_document_file_metadata_submit_single,
+    method_get_document_file_metadata, method_get_document_file_file_metadata
 )
 from .permissions import (
     permission_document_type_file_metadata_setup,
@@ -80,7 +80,7 @@ class FileMetadataApp(MayanAppConfig):
         )
         Document.add_to_class(
             name='submit_for_file_metadata_processing',
-            value=method_document_submit
+            value=method_document_file_metadata_submit
         )
         DocumentFile.add_to_class(
             name='get_file_metadata',
@@ -88,7 +88,7 @@ class FileMetadataApp(MayanAppConfig):
         )
         DocumentFile.add_to_class(
             name='submit_for_file_metadata_processing',
-            value=method_document_file_submit_single
+            value=method_document_file_metadata_submit_single
         )
 
         ModelEventType.register(
@@ -155,7 +155,7 @@ class FileMetadataApp(MayanAppConfig):
         )
 
         menu_tools.bind_links(
-            links=(link_document_type_submit,)
+            links=(link_document_type_file_metadata_submit,)
         )
 
         # Document file
@@ -171,16 +171,16 @@ class FileMetadataApp(MayanAppConfig):
         )
 
         menu_secondary.bind_links(
-            links=(link_document_file_metadata_submit_single,), sources=(
-                'file_metadata:document_file_driver_list',
-                'file_metadata:document_file_driver_file_metadata_list'
+            links=(link_document_file_metadata_single_submit,), sources=(
+                'file_metadata:document_file_metadata_driver_list',
+                'file_metadata:document_file_metadata_driver_attribute_list'
             )
         )
 
         # Document file driver
 
         menu_object.bind_links(
-            links=(link_document_file_metadata_list,),
+            links=(link_document_file_metadata_driver_attribute_list,),
             sources=(DocumentFileDriverEntry,)
         )
 
@@ -192,8 +192,8 @@ class FileMetadataApp(MayanAppConfig):
         )
 
         post_save.connect(
-            dispatch_uid='file_metadata_handler_initialize_new_document_type_settings',
-            receiver=handler_initialize_new_document_type_settings,
+            dispatch_uid='file_metadata_handler_initialize_new_document_type_file_metadata_settings',
+            receiver=handler_initialize_new_document_type_file_metadata_settings,
             sender=DocumentType
         )
         signal_post_document_file_file_metadata_processing.connect(
@@ -202,7 +202,7 @@ class FileMetadataApp(MayanAppConfig):
             sender=DocumentFile
         )
         signal_post_document_file_upload.connect(
-            dispatch_uid='file_metadata_handler_process_document_file',
-            receiver=handler_process_document_file,
+            dispatch_uid='file_metadata_process_document_file_metadata',
+            receiver=process_document_file_metadata,
             sender=DocumentFile
         )

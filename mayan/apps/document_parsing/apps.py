@@ -24,12 +24,13 @@ from .handlers import (
     handler_parse_document_file
 )
 from .links import (
-    link_document_file_content, link_document_file_content_delete_single,
-    link_document_file_content_delete_multiple, link_document_file_page_content,
-    link_document_file_content_download,
-    link_document_file_metadata_submit_multiple,
-    link_document_file_metadata_submit_single,
-    link_document_type_parsing_settings, link_document_type_submit
+    link_document_file_content_detail, link_document_file_content_download,
+    link_document_file_content_multiple_delete,
+    link_document_file_content_single_delete,
+    link_document_file_page_content_detail,
+    link_document_file_parsing_multiple_submit,
+    link_document_file_parsing_single_submit,
+    link_document_type_parsing_settings, link_document_type_parsing_submit
 )
 from .methods import (
     method_document_parsing_submit, method_document_file_parsing_submit
@@ -130,10 +131,10 @@ class DocumentParsingApp(MayanAppConfig):
         error_log.register_model(model=DocumentFile)
 
         menu_list_facet.bind_links(
-            links=(link_document_file_content,), sources=(DocumentFile,)
+            links=(link_document_file_content_detail,), sources=(DocumentFile,)
         )
         menu_list_facet.bind_links(
-            links=(link_document_file_page_content,),
+            links=(link_document_file_page_content_detail,),
             sources=(DocumentFilePage,)
         )
         menu_list_facet.bind_links(
@@ -142,26 +143,26 @@ class DocumentParsingApp(MayanAppConfig):
         )
         menu_multi_item.bind_links(
             links=(
-                link_document_file_content_delete_multiple,
-                link_document_file_metadata_submit_multiple,
+                link_document_file_content_multiple_delete,
+                link_document_file_parsing_multiple_submit
             ), sources=(DocumentFile,)
         )
         menu_secondary.bind_links(
             links=(
-                link_document_file_content_delete_single,
+                link_document_file_content_single_delete,
                 link_document_file_content_download,
-                link_document_file_metadata_submit_single
+                link_document_file_parsing_single_submit
             ),
             sources=(
                 'document_parsing:document_file_content_view',
-                'document_parsing:document_file_content_delete_single',
+                'document_parsing:document_file_content_single_delete',
                 'document_parsing:document_file_content_download',
-                'document_parsing:document_file_submit_single'
+                'document_parsing:document_file_parsing_single_submit'
             )
         )
         menu_tools.bind_links(
             links=(
-                link_document_type_submit,
+                link_document_type_parsing_submit,
             )
         )
 

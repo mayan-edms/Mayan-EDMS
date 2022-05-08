@@ -36,11 +36,12 @@ urlpatterns_document_metadata = [
     ),
     url(
         regex=r'^documents/multiple/metadata/edit/$',
-        name='metadata_multiple_edit', view=DocumentMetadataEditView.as_view()
+        name='metadata_multiple_edit',
+        view=DocumentMetadataEditView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/metadata/view/$',
-        name='metadata_view', view=DocumentMetadataListView.as_view()
+        name='metadata_list', view=DocumentMetadataListView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/metadata/add/$',
@@ -72,7 +73,7 @@ urlpatterns_metadata_type = [
     ),
     url(
         regex=r'^metadata_types/(?P<metadata_type_id>\d+)/delete/$',
-        name='metadata_type_delete_single',
+        name='metadata_type_single_delete',
         view=MetadataTypeDeleteView.as_view()
     ),
     url(
@@ -86,7 +87,7 @@ urlpatterns_metadata_type = [
     ),
     url(
         regex=r'^metadata_types/multiple/delete/$',
-        name='metadata_type_delete_multiple',
+        name='metadata_type_multiple_delete',
         view=MetadataTypeDeleteView.as_view()
     )
 ]

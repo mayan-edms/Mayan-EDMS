@@ -15,26 +15,27 @@ from .icons import (
     icon_workflow_template_create, icon_workflow_template_delete,
     icon_workflow_template_document_type_list, icon_workflow_template_edit,
     icon_workflow_template_launch, icon_workflow_template_list,
-    icon_workflow_template_preview, icon_workflow_template_state,
-    icon_workflow_template_state_action,
+    icon_workflow_template_preview,
     icon_workflow_template_state_action_delete,
     icon_workflow_template_state_action_edit,
     icon_workflow_template_state_action_list,
+    icon_workflow_template_state_action_selection,
     icon_workflow_template_state_create, icon_workflow_template_state_delete,
     icon_workflow_template_state_edit,
+    link_workflow_template_state_list,
     icon_workflow_template_state_escalation_create,
     icon_workflow_template_state_escalation_delete,
     icon_workflow_template_state_escalation_edit,
     icon_workflow_template_state_escalation_list,
-    icon_workflow_template_transition,
     icon_workflow_template_transition_create,
     icon_workflow_template_transition_delete,
     icon_workflow_template_transition_edit,
     icon_workflow_template_transition_triggers,
-    icon_workflow_template_transition_field,
+    icon_workflow_template_transition_field_create,
     icon_workflow_template_transition_field_delete,
     icon_workflow_template_transition_field_edit,
     icon_workflow_template_transition_field_list,
+    icon_workflow_template_transition_list,
     icon_document_workflow_templates_launch
 )
 from .permissions import (
@@ -43,7 +44,7 @@ from .permissions import (
     permission_workflow_template_view
 )
 
-# Workflow templates
+# Workflow template
 
 link_document_type_workflow_templates = Link(
     args='resolved_object.pk',
@@ -99,7 +100,7 @@ link_workflow_template_preview = Link(
     text=_('Preview'), view='document_states:workflow_template_preview'
 )
 
-# Workflow template state actions
+# Workflow template state action
 
 link_workflow_template_state_action_delete = Link(
     args='resolved_object.pk',
@@ -124,13 +125,13 @@ link_workflow_template_state_action_list = Link(
 )
 link_workflow_template_state_action_selection = Link(
     args='resolved_object.pk',
-    icon=icon_workflow_template_state_action,
+    icon=icon_workflow_template_state_action_selection,
     permissions=(permission_workflow_template_edit,),
     text=_('Create action'),
     view='document_states:workflow_template_state_action_selection'
 )
 
-# Workflow template state actions
+# Workflow template state escalation
 
 link_workflow_template_state_escalation_create = Link(
     args='resolved_object.pk',
@@ -161,7 +162,7 @@ link_workflow_template_state_escalation_list = Link(
     view='document_states:workflow_template_state_escalation_list'
 )
 
-# Workflow template states
+# Workflow template state
 
 link_workflow_template_state_create = Link(
     args='workflow.pk',
@@ -184,12 +185,12 @@ link_workflow_template_state_edit = Link(
 )
 link_workflow_template_state_list = Link(
     args='resolved_object.pk',
-    icon=icon_workflow_template_state,
+    icon=link_workflow_template_state_list,
     permissions=(permission_workflow_template_view,), text=_('States'),
     view='document_states:workflow_template_state_list'
 )
 
-# Workflow template transitions
+# Workflow template transition
 
 link_workflow_template_transition_create = Link(
     args='workflow.pk',
@@ -220,12 +221,12 @@ link_workflow_template_transition_triggers = Link(
 )
 link_workflow_template_transition_list = Link(
     args='resolved_object.pk',
-    icon=icon_workflow_template_transition,
+    icon=icon_workflow_template_transition_list,
     permissions=(permission_workflow_template_view,), text=_('Transitions'),
     view='document_states:workflow_template_transition_list'
 )
 
-# Workflow transition fields
+# Workflow transition field
 
 link_document_multiple_workflow_templates_launch = Link(
     icon=icon_document_workflow_templates_launch,
@@ -240,7 +241,7 @@ link_document_single_workflow_templates_launch = Link(
 )
 link_workflow_template_transition_field_create = Link(
     args='resolved_object.pk',
-    icon=icon_workflow_template_transition_field,
+    icon=icon_workflow_template_transition_field_create,
     permissions=(permission_workflow_template_edit,), text=_('Create field'),
     view='document_states:workflow_template_transition_field_create'
 )
@@ -266,7 +267,7 @@ link_workflow_template_transition_field_list = Link(
     view='document_states:workflow_template_transition_field_list'
 )
 
-# Document workflow instances
+# Document workflow instance
 
 link_workflow_instance_detail = Link(
     args='resolved_object.pk',
@@ -287,7 +288,7 @@ link_workflow_instance_transition = Link(
     view='document_states:workflow_instance_transition_selection'
 )
 
-# Runtime proxies
+# Runtime proxy
 
 link_workflow_runtime_proxy_document_list = Link(
     args='resolved_object.pk',

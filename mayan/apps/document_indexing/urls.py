@@ -19,9 +19,9 @@ from .views.index_instance_views import (
     IndexInstanceListView
 )
 from .views.index_template_views import (
-    DocumentTypeIndexTemplateListView, IndexTemplateAllRebuildView,
+    DocumentTypeIndexTemplateAddRemoveView, IndexTemplateAllRebuildView,
     IndexTemplateCreateView, IndexTemplateDeleteView,
-    IndexTemplateDocumentTypesView, IndexTemplateEditView,
+    IndexTemplateDocumentTypeAddRemoveView, IndexTemplateEditView,
     IndexTemplateListView, IndexTemplateNodeListView,
     IndexTemplateNodeCreateView, IndexTemplateNodeDeleteView,
     IndexTemplateNodeEditView, IndexTemplateRebuildView,
@@ -32,7 +32,7 @@ urlpatterns_templates = [
     url(
         regex=r'^document_types/(?P<document_type_id>\d+)/index_templates/$',
         name='document_type_index_templates',
-        view=DocumentTypeIndexTemplateListView.as_view()
+        view=DocumentTypeIndexTemplateAddRemoveView.as_view()
     ),
     url(
         regex=r'^templates/$', name='index_template_list',
@@ -49,7 +49,7 @@ urlpatterns_templates = [
     url(
         regex=r'^templates/(?P<index_template_id>\d+)/document_types/$',
         name='index_template_document_types',
-        view=IndexTemplateDocumentTypesView.as_view()
+        view=IndexTemplateDocumentTypeAddRemoveView.as_view()
     ),
     url(
         regex=r'^templates/(?P<index_template_id>\d+)/edit/$',

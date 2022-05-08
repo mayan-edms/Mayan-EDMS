@@ -9,18 +9,18 @@ from .views import (
     DocumentVersionOCRContentDeleteView, DocumentVersionOCRContentView,
     DocumentVersionOCRDownloadView, DocumentVersionPageOCRContentEditView,
     DocumentVersionPageOCRContentDetailView, DocumentVersionOCRSubmitView,
-    DocumentTypeSettingsEditView, DocumentTypeSubmitView
+    DocumentTypeOCRSettingsEditView, DocumentTypeOCRSubmitView
 )
 
 urlpatterns_document_types = [
     url(
         regex=r'^document_types/submit/$', name='document_type_submit',
-        view=DocumentTypeSubmitView.as_view()
+        view=DocumentTypeOCRSubmitView.as_view()
     ),
     url(
-        regex=r'^document_types/(?P<document_type_id>\d+)/ocr/settings/$',
+        regex=r'^document_types/(?P<document_type_id>\d+)/settings/$',
         name='document_type_ocr_settings',
-        view=DocumentTypeSettingsEditView.as_view()
+        view=DocumentTypeOCRSettingsEditView.as_view()
     )
 ]
 
@@ -32,27 +32,27 @@ urlpatterns_document_versions = [
     ),
     url(
         regex=r'^documents/versions/(?P<document_version_id>\d+)/content/delete/$',
-        name='document_version_ocr_content_delete_single',
+        name='document_version_ocr_content_single_delete',
         view=DocumentVersionOCRContentDeleteView.as_view()
     ),
     url(
         regex=r'^documents/versions/multiple/content/delete/$',
-        name='document_version_ocr_content_delete_multiple',
+        name='document_version_ocr_content_multiple_delete',
         view=DocumentVersionOCRContentDeleteView.as_view()
     ),
     url(
-        regex=r'^documents/versions/(?P<document_version_id>\d+)/ocr/download/$',
-        name='document_version_ocr_download',
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/download/$',
+        name='document_version_ocr_content_download',
         view=DocumentVersionOCRDownloadView.as_view()
     ),
     url(
         regex=r'^documents/versions/(?P<document_version_id>\d+)/submit/$',
-        name='document_version_ocr_submit_single',
+        name='document_version_ocr_single_submit',
         view=DocumentVersionOCRSubmitView.as_view()
     ),
     url(
         regex=r'^documents/versions/multiple/submit/$',
-        name='document_version_ocr_submit_multiple',
+        name='document_version_ocr_multiple_submit',
         view=DocumentVersionOCRSubmitView.as_view()
     ),
     url(

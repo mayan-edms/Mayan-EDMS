@@ -5,7 +5,7 @@ from mayan.apps.documents.tests.literals import TEST_FILE_SMALL_PATH
 
 from ..links import (
     link_document_file_signature_detached_delete,
-    link_document_file_signature_details,
+    link_document_file_signature_detail,
 )
 from ..permissions import (
     permission_document_file_signature_delete,
@@ -26,7 +26,7 @@ class DocumentSignatureLinksTestCase(
             test_object=self._test_document.file_latest.signatures.first()
         )
         context = self.get_test_view()
-        resolved_link = link_document_file_signature_details.resolve(
+        resolved_link = link_document_file_signature_detail.resolve(
             context=context
         )
 
@@ -45,7 +45,7 @@ class DocumentSignatureLinksTestCase(
             test_object=self._test_document.file_latest.signatures.first()
         )
         context = self.get_test_view()
-        resolved_link = link_document_file_signature_details.resolve(
+        resolved_link = link_document_file_signature_detail.resolve(
             context=context
         )
 
@@ -53,7 +53,7 @@ class DocumentSignatureLinksTestCase(
         self.assertEqual(
             resolved_link.url,
             reverse(
-                viewname=link_document_file_signature_details.view,
+                viewname=link_document_file_signature_detail.view,
                 kwargs={
                     'signature_id': self._test_document.file_latest.signatures.first().pk,
                 }

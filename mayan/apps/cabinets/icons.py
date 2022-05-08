@@ -3,14 +3,12 @@ from mayan.apps.appearance.classes import Icon
 icon_cabinet = Icon(driver_name='fontawesome', symbol='columns')
 icon_cabinet_add = Icon(driver_name='fontawesome', symbol='plus')
 icon_cabinet_child_add = Icon(driver_name='fontawesome', symbol='plus')
-icon_cabinet_create = Icon(driver_name='fontawesome', symbol='plus')
-
 icon_cabinet_create = Icon(
     driver_name='fontawesome-dual', primary_symbol='columns',
     secondary_symbol='plus'
 )
-
 icon_cabinet_delete = Icon(driver_name='fontawesome', symbol='times')
+icon_cabinet_detail = Icon(driver_name='fontawesome', symbol='columns')
 icon_cabinet_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')
 icon_cabinet_list = Icon(driver_name='fontawesome', symbol='columns')
 icon_cabinet_view = Icon(driver_name='fontawesome', symbol='columns')

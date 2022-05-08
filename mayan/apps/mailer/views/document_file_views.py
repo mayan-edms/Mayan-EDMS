@@ -2,6 +2,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.models.document_file_models import DocumentFile
 
+from ..icons import (
+    icon_document_file_attachment_send_single,
+    icon_document_file_link_send_single
+)
 from ..permissions import (
     permission_send_document_file_attachment,
     permission_send_document_file_link
@@ -21,6 +25,7 @@ class MailDocumentFileAttachmentView(ObjectAttachmentMailView):
     title = 'Email document file'
     title_plural = 'Email document files'
     title_document = 'Email document file: %s'
+    view_icon = icon_document_file_attachment_send_single
 
 
 class MailDocumentFileLinkView(ObjectLinkMailView):
@@ -36,3 +41,4 @@ class MailDocumentFileLinkView(ObjectLinkMailView):
     title = 'Email document file link'
     title_plural = 'Email document file links'
     title_document = 'Email link for document file: %s'
+    view_icon = icon_document_file_link_send_single

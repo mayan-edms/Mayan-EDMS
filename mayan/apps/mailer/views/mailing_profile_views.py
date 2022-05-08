@@ -14,7 +14,11 @@ from ..classes import MailerBackend
 from ..forms import (
     UserMailerBackendSelectionForm, UserMailerDynamicForm, UserMailerTestForm
 )
-from ..icons import icon_user_mailer_setup
+from ..icons import (
+    icon_user_mailer_backend_select, icon_user_mailer_create,
+    icon_user_mailer_delete, icon_user_mailer_edit, icon_user_mailer_list,
+    icon_user_mailer_setup, icon_user_mailer_test
+)
 from ..links import link_user_mailer_create
 from ..models import UserMailer
 from ..permissions import (
@@ -29,6 +33,7 @@ class UserMailerBackendSelectionView(FormView):
         'title': _('New mailing profile backend selection'),
     }
     form_class = UserMailerBackendSelectionForm
+    view_icon = icon_user_mailer_backend_select
     view_permission = permission_user_mailer_create
 
     def form_valid(self, form):
@@ -45,6 +50,7 @@ class UserMailerBackendSelectionView(FormView):
 class UserMailingCreateView(SingleObjectDynamicFormCreateView):
     form_class = UserMailerDynamicForm
     post_action_redirect = reverse_lazy(viewname='mailer:user_mailer_list')
+    view_icon = icon_user_mailer_create
     view_permission = permission_user_mailer_create
 
     def get_backend(self):
@@ -79,6 +85,7 @@ class UserMailingDeleteView(SingleObjectDeleteView):
     object_permission = permission_user_mailer_delete
     pk_url_kwarg = 'mailer_id'
     post_action_redirect = reverse_lazy(viewname='mailer:user_mailer_list')
+    view_icon = icon_user_mailer_delete
 
     def get_extra_context(self):
         return {
@@ -91,6 +98,7 @@ class UserMailingEditView(SingleObjectDynamicFormEditView):
     model = UserMailer
     object_permission = permission_user_mailer_edit
     pk_url_kwarg = 'mailer_id'
+    view_icon = icon_user_mailer_edit
 
     def get_extra_context(self):
         return {
@@ -109,6 +117,7 @@ class UserMailingEditView(SingleObjectDynamicFormEditView):
 class UserMailerListView(SingleObjectListView):
     model = UserMailer
     object_permission = permission_user_mailer_view
+    view_icon = icon_user_mailer_list
 
     def get_extra_context(self):
         return {
@@ -135,6 +144,7 @@ class UserMailerTestView(ExternalObjectViewMixin, FormView):
     external_object_permission = permission_user_mailer_use
     external_object_pk_url_kwarg = 'mailer_id'
     form_class = UserMailerTestForm
+    view_icon = icon_user_mailer_test
 
     def form_valid(self, form):
         self.external_object.test(

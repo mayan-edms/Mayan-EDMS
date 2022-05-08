@@ -2,6 +2,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.models.document_version_models import DocumentVersion
 
+from ..icons import (
+    icon_document_version_attachment_send_single,
+    icon_document_version_link_send_single
+)
 from ..permissions import (
     permission_send_document_version_attachment,
     permission_send_document_version_link
@@ -23,6 +27,7 @@ class MailDocumentVersionAttachmentView(ObjectAttachmentMailView):
     title = 'Email document version'
     title_plural = 'Email documents version'
     title_document = 'Email document version: %s'
+    view_icon = icon_document_version_attachment_send_single
 
 
 class MailDocumentVersionLinkView(ObjectLinkMailView):
@@ -38,3 +43,4 @@ class MailDocumentVersionLinkView(ObjectLinkMailView):
     title = 'Email document version link'
     title_plural = 'Email document version links'
     title_document = 'Email link for document version: %s'
+    view_icon = icon_document_version_link_send_single

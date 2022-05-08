@@ -9,6 +9,8 @@ __all__ = ('RecentlyAccessedDocumentListView',)
 
 
 class RecentlyAccessedDocumentListView(DocumentListView):
+    view_icon = icon_document_recently_accessed_list
+
     def get_document_queryset(self):
         return RecentlyAccessedDocument.valid.get_for_user(
             user=self.request.user

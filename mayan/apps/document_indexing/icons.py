@@ -6,10 +6,11 @@ icon_document_index_instance_list = Icon(
     driver_name='fontawesome', symbol='list-ul'
 )
 icon_document_type_index_templates = icon_index
+
 icon_index_level_up = Icon(
     driver_name='fontawesomecss', css_classes='fa-level-up-alt fa-rotate-90'
 )
-
+icon_index_instance_list = Icon(driver_name='fontawesome', symbol='list-ul')
 icon_index_instance_node_with_documents = Icon(
     driver_name='fontawesome', symbol='folder'
 )

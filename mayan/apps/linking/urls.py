@@ -19,12 +19,13 @@ from .views import (
 urlpatterns = [
     url(
         regex=r'^documents/(?P<document_id>\d+)/smart_links/$',
-        name='smart_link_instances_for_document',
+        name='document_smart_link_instance_list',
         view=DocumentResolvedSmartLinkListView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/smart_links/(?P<smart_link_id>\d+)/$',
-        name='smart_link_instance_view', view=DocumentResolvedSmartLinkDocumentListView.as_view()
+        name='smart_link_instance_view',
+        view=DocumentResolvedSmartLinkDocumentListView.as_view()
     ),
     url(
         regex=r'^document_types/(?P<document_type_id>\d+)/smart_links/$',

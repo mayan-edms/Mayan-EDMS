@@ -17,37 +17,37 @@ from .literals import (
 
 
 class EventsClearViewTestMixin:
-    def _request_test_events_by_verb_clear_view(self):
+    def _request_test_verb_event_list_clear_view(self):
         return self.post(
-            viewname='events:events_by_verb_clear', kwargs={
+            viewname='events:verb_event_list_clear', kwargs={
                 'verb': self._test_event_type.id
             }
         )
 
-    def _request_test_events_list_clear_view(self):
-        return self.post(viewname='events:events_list_clear')
+    def _request_test_event_list_clear_view(self):
+        return self.post(viewname='events:event_list_clear')
 
-    def _request_events_for_object_clear_view(self):
+    def _request_object_event_list_clear_view(self):
         return self.post(
-            viewname='events:events_for_object_clear',
+            viewname='events:object_event_list_clear',
             kwargs=self.view_arguments
         )
 
 
 class EventsExportViewTestMixin:
-    def _request_test_events_by_verb_export_view(self):
+    def _request_test_verb_event_list_export_view(self):
         return self.post(
-            viewname='events:events_by_verb_export', kwargs={
+            viewname='events:verb_event_list_export', kwargs={
                 'verb': self._test_event_type.id
             }
         )
 
-    def _request_test_events_list_export_view(self):
-        return self.post(viewname='events:events_list_export')
+    def _request_test_event_list_export_view(self):
+        return self.post(viewname='events:event_list_export')
 
-    def _request_events_for_object_export_view(self):
+    def _request_object_event_list_export_view(self):
         return self.post(
-            viewname='events:events_for_object_export',
+            viewname='events:object_event_list_export',
             kwargs=self.view_arguments
         )
 
@@ -130,19 +130,19 @@ class EventTypeTestMixin:
 
 
 class EventViewTestMixin:
-    def _request_test_events_by_verb_view(self):
+    def _request_test_verb_event_list_view(self):
         return self.get(
-            viewname='events:events_by_verb', kwargs={
+            viewname='events:verb_event_list', kwargs={
                 'verb': self._test_event_type.id
             }
         )
 
-    def _request_test_events_list_view(self):
-        return self.get(viewname='events:events_list')
+    def _request_test_event_list_view(self):
+        return self.get(viewname='events:event_list')
 
-    def _request_events_for_object_view(self):
+    def _request_test_object_event_list_view(self):
         return self.get(
-            viewname='events:events_for_object', kwargs=self.view_arguments
+            viewname='events:object_event_list', kwargs=self.view_arguments
         )
 
 
@@ -203,4 +203,4 @@ class ObjectEventAPITestMixin:
 
 class UserEventViewsTestMixin:
     def _request_test_user_event_type_subscription_list_view(self):
-        return self.get(viewname='events:event_types_user_subscriptions_list')
+        return self.get(viewname='events:event_type_user_subscription_list')

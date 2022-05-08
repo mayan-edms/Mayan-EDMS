@@ -134,7 +134,7 @@ class DocumentMetadataViewTestMixin:
 
     def _request_test_document_metadata_list_view(self):
         return self.get(
-            viewname='metadata:metadata_view', kwargs={
+            viewname='metadata:metadata_list', kwargs={
                 'document_id': self._test_document.pk
             }
         )
@@ -421,16 +421,16 @@ class MetadataTypeViewTestMixin:
 
         return response
 
-    def _request_test_metadata_type_delete_single_view(self):
+    def _request_test_metadata_type_single_delete_view(self):
         return self.post(
-            viewname='metadata:metadata_type_delete_single', kwargs={
+            viewname='metadata:metadata_type_single_delete', kwargs={
                 'metadata_type_id': self._test_metadata_type.pk
             }
         )
 
-    def _request_test_metadata_type_delete_multiple_view(self):
+    def _request_test_metadata_type_multiple_delete_view(self):
         return self.post(
-            viewname='metadata:metadata_type_delete_multiple', data={
+            viewname='metadata:metadata_type_multiple_delete', data={
                 'id_list': self._test_metadata_type.pk
             }
         )

@@ -65,10 +65,10 @@ class DocumentFileContentViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_content_delete_single_view_no_permission(self):
+    def test_document_file_content_single_delete_view_no_permission(self):
         self._clear_events()
 
-        response = self._request_test_document_file_content_delete_single_view()
+        response = self._request_test_document_file_content_single_delete_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
@@ -80,14 +80,14 @@ class DocumentFileContentViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_content_delete_single_view_with_access(self):
+    def test_document_file_content_single_delete_view_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_parse
         )
 
         self._clear_events()
 
-        response = self._request_test_document_file_content_delete_single_view()
+        response = self._request_test_document_file_content_single_delete_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertFalse(
@@ -106,7 +106,7 @@ class DocumentFileContentViewsTestCase(
             events[0].verb, event_parsing_document_file_content_deleted.id
         )
 
-    def test_trashed_document_file_content_delete_single_view_with_access(self):
+    def test_trashed_document_file_content_single_delete_view_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_parse
         )
@@ -115,7 +115,7 @@ class DocumentFileContentViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_file_content_delete_single_view()
+        response = self._request_test_document_file_content_single_delete_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
@@ -127,10 +127,10 @@ class DocumentFileContentViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_content_delete_multiple_view_no_permission(self):
+    def test_document_file_content_multiple_delete_view_no_permission(self):
         self._clear_events()
 
-        response = self._request_test_document_file_content_delete_multiple_view()
+        response = self._request_test_document_file_content_multiple_delete_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(
@@ -142,14 +142,14 @@ class DocumentFileContentViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_document_file_content_delete_multiple_view_with_access(self):
+    def test_document_file_content_multiple_delete_view_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_parse
         )
 
         self._clear_events()
 
-        response = self._request_test_document_file_content_delete_multiple_view()
+        response = self._request_test_document_file_content_multiple_delete_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertFalse(
@@ -168,7 +168,7 @@ class DocumentFileContentViewsTestCase(
             events[0].verb, event_parsing_document_file_content_deleted.id
         )
 
-    def test_trashed_document_file_content_delete_multiple_view_with_access(self):
+    def test_trashed_document_file_content_multiple_delete_view_with_access(self):
         self.grant_access(
             obj=self._test_document, permission=permission_document_file_parse
         )
@@ -177,7 +177,7 @@ class DocumentFileContentViewsTestCase(
 
         self._clear_events()
 
-        response = self._request_test_document_file_content_delete_multiple_view()
+        response = self._request_test_document_file_content_multiple_delete_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertTrue(

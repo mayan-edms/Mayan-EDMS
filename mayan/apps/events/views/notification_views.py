@@ -5,8 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.views.generics import ConfirmView, SingleObjectListView
 
-from ..icons import icon_user_notifications_list
-from ..links import link_event_types_subscriptions_list
+from ..icons import icon_notification_list
+from ..links import link_event_type_subscription_list
 
 __all__ = (
     'NotificationListView', 'NotificationMarkRead', 'NotificationMarkReadAll'
@@ -17,8 +17,8 @@ class NotificationListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'no_results_icon': icon_user_notifications_list,
-            'no_results_main_link': link_event_types_subscriptions_list.resolve(
+            'no_results_icon': icon_notification_list,
+            'no_results_main_link': link_event_type_subscription_list.resolve(
                 context=RequestContext(request=self.request)
             ),
             'no_results_text': _(

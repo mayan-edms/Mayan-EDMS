@@ -26,7 +26,15 @@ from ..forms.document_version_forms import (
     DocumentVersionPreviewForm
 )
 from ..forms.misc_forms import PageNumberForm
-from ..icons import icon_document_version_list
+from ..icons import (
+    icon_document_version_active, icon_document_version_create,
+    icon_document_version_delete, icon_document_version_edit,
+    icon_document_version_export, icon_document_version_list,
+    icon_document_version_modification, icon_document_version_preview,
+    icon_document_version_print,
+    icon_document_version_transformation_list_clear,
+    icon_document_version_transformation_list_clone
+)
 from ..links.document_version_links import link_document_version_create
 from ..models.document_models import Document
 from ..models.document_version_models import DocumentVersion
@@ -40,7 +48,7 @@ from ..tasks import (
     task_document_version_delete, task_document_version_export
 )
 
-from .misc_views import PrintFormView, DocumentPrintView
+from .misc_views import PrintFormView, DocumentPrintBaseView
 from .mixins import RecentDocumentViewMixin
 
 __all__ = (
@@ -54,6 +62,7 @@ class DocumentVersionActiveView(ExternalObjectViewMixin, ConfirmView):
     external_object_permission = permission_document_version_edit
     external_object_pk_url_kwarg = 'document_version_id'
     external_object_queryset = DocumentVersion.valid.all()
+    view_icon = icon_document_version_active
 
     def get_extra_context(self):
         return {
@@ -78,6 +87,7 @@ class DocumentVersionCreateView(ExternalObjectViewMixin, SingleObjectCreateView)
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid.all()
     form_class = DocumentVersionForm
+    view_icon = icon_document_version_create
 
     def get_extra_context(self):
         return {
@@ -113,6 +123,7 @@ class DocumentVersionDeleteView(MultipleObjectDeleteView):
     title_single = _('Delete document version "%(object)s".')
     title_singular = _('Delete %(count)d document version.')
     title_plural = _('Delete %(count)d document versions.')
+    view_icon = icon_document_version_delete
 
     def get_extra_context(self, **kwargs):
         context = {
@@ -152,6 +163,7 @@ class DocumentVersionEditView(SingleObjectEditView):
     object_permission = permission_document_version_edit
     pk_url_kwarg = 'document_version_id'
     source_queryset = DocumentVersion.valid.all()
+    view_icon = icon_document_version_edit
 
     def get_extra_context(self):
         return {
@@ -187,6 +199,7 @@ class DocumentVersionExportView(MultipleObjectConfirmActionView):
     title_single = _('Export document version "%(object)s".')
     title_singular = _('Export %(count)d document version.')
     title_plural = _('Export %(count)d document versions.')
+    view_icon = icon_document_version_export
 
     def get_extra_context(self):
         context = {
@@ -220,6 +233,7 @@ class DocumentVersionListView(
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid.all()
     recent_document_view_document_property_name = 'external_object'
+    view_icon = icon_document_version_list
 
     def get_extra_context(self):
         return {
@@ -251,6 +265,7 @@ class DocumentVersionModifyView(ExternalObjectViewMixin, FormView):
     external_object_pk_url_kwarg = 'document_version_id'
     external_object_queryset = DocumentVersion.valid.all()
     form_class = DocumentVersionModificationBackendForm
+    view_icon = icon_document_version_modification
 
     def dispatch(self, request, *args, **kwargs):
         results = super().dispatch(request=request, *args, **kwargs)
@@ -292,6 +307,7 @@ class DocumentVersionPreviewView(SingleObjectDetailView):
     object_permission = permission_document_version_view
     pk_url_kwarg = 'document_version_id'
     source_queryset = DocumentVersion.valid.all()
+    view_icon = icon_document_version_preview
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request, *args, **kwargs)
@@ -331,6 +347,7 @@ class DocumentVersionPrintFormView(PrintFormView):
     external_object_queryset = DocumentVersion.valid.all()
     print_view_name = 'documents:document_version_print_view'
     print_view_kwarg = 'document_version_id'
+    view_icon = icon_document_version_print
 
     def _add_recent_document(self):
         self.external_object.document.add_as_recent_document_for_user(
@@ -338,10 +355,11 @@ class DocumentVersionPrintFormView(PrintFormView):
         )
 
 
-class DocumentVersionPrintView(DocumentPrintView):
+class DocumentVersionPrintView(DocumentPrintBaseView):
     external_object_permission = permission_document_version_print
     external_object_pk_url_kwarg = 'document_version_id'
     external_object_queryset = DocumentVersion.valid.all()
+    view_icon = icon_document_version_print
 
     def _add_recent_document(self):
         self.external_object.document.add_as_recent_document_for_user(
@@ -359,6 +377,7 @@ class DocumentVersionTransformationsClearView(MultipleObjectConfirmActionView):
     success_message_plural = _(
         'Transformation clear request processed for %(count)d document versions.'
     )
+    view_icon = icon_document_version_transformation_list_clear
 
     def get_extra_context(self):
         result = {
@@ -404,6 +423,7 @@ class DocumentVersionTransformationsCloneView(ExternalObjectViewMixin, FormView)
     external_object_pk_url_kwarg = 'document_version_id'
     external_object_queryset = DocumentVersion.valid.all()
     form_class = PageNumberForm
+    view_icon = icon_document_version_transformation_list_clone
 
     def dispatch(self, request, *args, **kwargs):
         results = super().dispatch(request=request, *args, **kwargs)

@@ -13,6 +13,7 @@ from mayan.apps.views.mixins import (
 from ..forms import (
     UserImpersonationOptionsForm, UserImpersonationSelectionForm
 )
+from ..icons import icon_impersonate_start
 from ..literals import (
     USER_IMPERSONATE_VARIABLE_ID, USER_IMPERSONATE_VARIABLE_DISABLE,
     USER_IMPERSONATE_VARIABLE_PERMANENT
@@ -32,6 +33,7 @@ class UserImpersonateEndView(RedirectionViewMixin, View):
 
 class UserImpersonateFormStartView(FormView):
     form_class = UserImpersonationSelectionForm
+    view_icon = icon_impersonate_start
 
     def form_valid(self, form):
         query = {
@@ -61,6 +63,7 @@ class UserImpersonateStartView(ExternalObjectViewMixin, FormView):
     external_object_permission = permission_users_impersonate
     external_object_pk_url_kwarg = 'user_id'
     form_class = UserImpersonationOptionsForm
+    view_icon = icon_impersonate_start
 
     def form_valid(self, form):
         query = {USER_IMPERSONATE_VARIABLE_ID: self.external_object.pk}

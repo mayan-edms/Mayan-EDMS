@@ -256,7 +256,7 @@ class UserViewTestCase(UserViewTestMixin, GenericViewTestCase):
 
         self._clear_events()
 
-        response = self._request_test_user_delete_single_view()
+        response = self._request_test_user_single_delete_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(get_user_model().objects.count(), user_count)
@@ -275,7 +275,7 @@ class UserViewTestCase(UserViewTestMixin, GenericViewTestCase):
 
         self._clear_events()
 
-        response = self._request_test_user_delete_single_view()
+        response = self._request_test_user_single_delete_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(get_user_model().objects.count(), user_count - 1)
@@ -283,14 +283,14 @@ class UserViewTestCase(UserViewTestMixin, GenericViewTestCase):
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_user_delete_multiple_view_no_permission(self):
+    def test_user_multiple_delete_view_no_permission(self):
         self._create_test_user()
 
         user_count = get_user_model().objects.count()
 
         self._clear_events()
 
-        response = self._request_test_user_delete_multiple_view()
+        response = self._request_test_user_multiple_delete_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(get_user_model().objects.count(), user_count)
@@ -298,7 +298,7 @@ class UserViewTestCase(UserViewTestMixin, GenericViewTestCase):
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_user_delete_multiple_view_with_access(self):
+    def test_user_multiple_delete_view_with_access(self):
         self._create_test_user()
 
         user_count = get_user_model().objects.count()
@@ -309,7 +309,7 @@ class UserViewTestCase(UserViewTestMixin, GenericViewTestCase):
 
         self._clear_events()
 
-        response = self._request_test_user_delete_multiple_view()
+        response = self._request_test_user_multiple_delete_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(get_user_model().objects.count(), user_count - 1)

@@ -6,7 +6,11 @@ from mayan.apps.views.generics import (
 )
 from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
 
-from .icons import icon_object_errors
+from .icons import (
+    icon_global_error_log_entry_list, icon_object_errors,
+    icon_object_error_log_entry_delete, icon_object_error_log_entry_list,
+    icon_object_error_log_entry_list_clear
+)
 from .models import GlobalErrorLogPartitionEntry
 from .permissions import (
     permission_error_log_entry_delete, permission_error_log_entry_view
@@ -16,6 +20,7 @@ from .permissions import (
 class GlobalErrorLogEntryList(SingleObjectListView):
     model = GlobalErrorLogPartitionEntry
     object_permission = permission_error_log_entry_view
+    view_icon = icon_global_error_log_entry_list
 
     def get_extra_context(self):
         return {
@@ -36,6 +41,7 @@ class ObjectErrorLogEntryListClearView(
     ExternalContentTypeObjectViewMixin, ConfirmView
 ):
     external_object_permission = permission_error_log_entry_delete
+    view_icon = icon_object_error_log_entry_list_clear
 
     def get_extra_context(self):
         return {
@@ -59,6 +65,7 @@ class ObjectErrorLogEntryDeleteView(
     external_object_permission = permission_error_log_entry_delete
     object_permission = permission_error_log_entry_delete
     pk_url_kwarg = 'error_log_partition_entry_id'
+    view_icon = icon_object_error_log_entry_delete
 
     def get_extra_context(self):
         return {
@@ -80,6 +87,7 @@ class ObjectErrorLogEntryListView(
     ExternalContentTypeObjectViewMixin, SingleObjectListView
 ):
     external_object_permission = permission_error_log_entry_view
+    view_icon = icon_object_error_log_entry_list
 
     def get_extra_context(self):
         return {

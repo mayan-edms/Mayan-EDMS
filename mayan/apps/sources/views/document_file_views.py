@@ -13,6 +13,7 @@ from mayan.apps.documents.permissions import permission_document_file_new
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..forms import NewDocumentFileForm
+from ..icons import icon_document_file_upload
 from ..models import Source
 
 from .base import UploadBaseView
@@ -29,6 +30,7 @@ class DocumentFileUploadInteractiveView(
     external_object_permission = permission_document_file_new
     external_object_pk_url_kwarg = 'document_id'
     object_permission = permission_document_file_new
+    view_icon = icon_document_file_upload
 
     def dispatch(self, request, *args, **kwargs):
         self.subtemplates_list = []

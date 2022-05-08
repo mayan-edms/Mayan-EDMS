@@ -14,7 +14,11 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import ThemeForm, UserThemeSettingForm, UserThemeSettingForm_view
-from .icons import icon_theme_setup
+from .icons import (
+    icon_theme_create, icon_theme_delete, icon_theme_edit, icon_theme_list,
+    icon_theme_setup, icon_user_theme_settings_detail,
+    icon_user_theme_settings_edit
+)
 from .links import link_theme_create
 from .models import Theme
 from .permissions import (
@@ -30,6 +34,7 @@ class ThemeCreateView(SingleObjectCreateView):
         viewname='appearance:theme_list'
     )
     view_permission = permission_theme_create
+    view_icon = icon_theme_create
 
     def get_instance_extra_data(self):
         return {'_event_actor': self.request.user}
@@ -42,6 +47,7 @@ class ThemeDeleteView(SingleObjectDeleteView):
     post_action_redirect = reverse_lazy(
         viewname='appearance:theme_list'
     )
+    view_icon = icon_theme_delete
 
     def get_extra_context(self):
         return {
@@ -58,6 +64,7 @@ class ThemeEditView(SingleObjectEditView):
     post_action_redirect = reverse_lazy(
         viewname='appearance:theme_list'
     )
+    view_icon = icon_theme_edit
 
     def get_extra_context(self):
         return {
@@ -72,6 +79,7 @@ class ThemeEditView(SingleObjectEditView):
 class ThemeListView(SingleObjectListView):
     model = Theme
     object_permission = permission_theme_view
+    view_icon = icon_theme_list
 
     def get_extra_context(self):
         return {
@@ -99,6 +107,7 @@ class UserThemeSettingsDetailsView(
     form_class = UserThemeSettingForm_view
     external_object_permission = permission_user_view
     external_object_pk_url_kwarg = 'user_id'
+    view_icon = icon_user_theme_settings_detail
 
     def get_external_object_queryset(self):
         return get_user_queryset(user=self.request.user)
@@ -124,6 +133,7 @@ class UserThemeSettingsEditView(
     form_class = UserThemeSettingForm
     external_object_permission = permission_user_edit
     external_object_pk_url_kwarg = 'user_id'
+    view_icon = icon_user_theme_settings_edit
 
     def get_external_object_queryset(self):
         return get_user_queryset(user=self.request.user)

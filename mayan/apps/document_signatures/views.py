@@ -19,7 +19,17 @@ from .forms import (
     DocumentFileSignatureCreateForm,
     DocumentFileSignatureDetailForm
 )
-from .icons import icon_document_file_signature_list
+from .icons import (
+    icon_document_file_all_signature_refresh,
+    icon_document_file_all_signature_verify,
+    icon_document_file_signature_detached_delete,
+    icon_document_file_signature_detached_create,
+    icon_document_file_signature_detail,
+    icon_document_file_signature_detached_download,
+    icon_document_file_signature_detached_upload,
+    icon_document_file_signature_embedded_create,
+    icon_document_file_signature_list
+)
 from .links import (
     link_document_file_signature_detached_create,
     link_document_file_signature_embedded_create,
@@ -47,6 +57,7 @@ class DocumentFileDetachedSignatureCreateView(ExternalObjectViewMixin, FormView)
     external_object_pk_url_kwarg = 'document_file_id'
     external_object_queryset = DocumentFile.valid.all()
     form_class = DocumentFileSignatureCreateForm
+    view_icon = icon_document_file_signature_detached_create
 
     def form_valid(self, form):
         key = form.cleaned_data['key']
@@ -114,6 +125,7 @@ class DocumentFileEmbeddedSignatureCreateView(ExternalObjectViewMixin, FormView)
     external_object_pk_url_kwarg = 'document_file_id'
     external_object_queryset = DocumentFile.valid.all()
     form_class = DocumentFileSignatureCreateForm
+    view_icon = icon_document_file_signature_embedded_create
 
     def form_valid(self, form):
         key = form.cleaned_data['key']
@@ -180,6 +192,7 @@ class DocumentFileEmbeddedSignatureCreateView(ExternalObjectViewMixin, FormView)
 class DocumentFileDetachedSignatureDeleteView(SingleObjectDeleteView):
     object_permission = permission_document_file_signature_delete
     pk_url_kwarg = 'signature_id'
+    view_icon = icon_document_file_signature_detached_delete
 
     def get_extra_context(self):
         return {
@@ -207,6 +220,7 @@ class DocumentFileDetachedSignatureDeleteView(SingleObjectDeleteView):
 class DocumentFileDetachedSignatureDownloadView(SingleObjectDownloadView):
     object_permission = permission_document_file_signature_download
     pk_url_kwarg = 'signature_id'
+    view_icon = icon_document_file_signature_detached_download
 
     def get_download_file_object(self):
         return self.object.signature_file
@@ -230,6 +244,7 @@ class DocumentFileDetachedSignatureUploadView(
     external_object_queryset = DocumentFile.valid.all()
     fields = ('signature_file',)
     model = DetachedSignature
+    view_icon = icon_document_file_signature_detached_upload
 
     def get_extra_context(self):
         return {
@@ -257,6 +272,7 @@ class DocumentFileSignatureDetailView(SingleObjectDetailView):
     form_class = DocumentFileSignatureDetailForm
     object_permission = permission_document_file_signature_view
     pk_url_kwarg = 'signature_id'
+    view_icon = icon_document_file_signature_detail
 
     def get_extra_context(self):
         return {
@@ -282,6 +298,7 @@ class DocumentFileSignatureListView(
     external_object_permission = permission_document_file_signature_view
     external_object_pk_url_kwarg = 'document_file_id'
     external_object_queryset = DocumentFile.valid.all()
+    view_icon = icon_document_file_signature_list
 
     def get_extra_context(self):
         return {
@@ -335,6 +352,7 @@ class AllDocumentSignatureRefreshView(ConfirmView):
             'On large databases this operation may take some time to execute.'
         ), 'title': _('Refresh all signatures information?'),
     }
+    view_icon = icon_document_file_all_signature_refresh
     view_permission = permission_document_file_signature_verify
 
     def get_post_action_redirect(self):
@@ -354,6 +372,7 @@ class AllDocumentSignatureVerifyView(ConfirmView):
             'On large databases this operation may take some time to execute.'
         ), 'title': _('Verify all document for signatures?'),
     }
+    view_icon = icon_document_file_all_signature_verify
     view_permission = permission_document_file_signature_verify
 
     def get_post_action_redirect(self):

@@ -41,9 +41,9 @@ from .html_widgets import DocumentMetadataWidget
 from .links import (
     link_metadata_add, link_metadata_edit, link_metadata_multiple_add,
     link_metadata_multiple_edit, link_metadata_multiple_remove,
-    link_metadata_remove, link_metadata_view,
+    link_metadata_remove, link_metadata_list,
     link_document_type_metadata_type_relationship, link_metadata_type_create,
-    link_metadata_type_delete_multiple, link_metadata_type_delete_single,
+    link_metadata_type_multiple_delete, link_metadata_type_single_delete,
     link_metadata_type_document_type_relationship, link_metadata_type_edit,
     link_metadata_type_list
 )
@@ -252,7 +252,7 @@ class MetadataApp(MayanAppConfig):
         # Document metadata
 
         menu_list_facet.bind_links(
-            links=(link_metadata_view,), sources=(Document,)
+            links=(link_metadata_list,), sources=(Document,)
         )
         menu_multi_item.bind_links(
             links=(
@@ -266,7 +266,7 @@ class MetadataApp(MayanAppConfig):
                 link_metadata_add, link_metadata_edit, link_metadata_remove
             ), sources=(
                 'metadata:metadata_add', 'metadata:metadata_edit',
-                'metadata:metadata_remove', 'metadata:metadata_view'
+                'metadata:metadata_list', 'metadata:metadata_remove'
             )
         )
 
@@ -296,13 +296,13 @@ class MetadataApp(MayanAppConfig):
 
         menu_multi_item.bind_links(
             links=(
-                link_metadata_type_delete_multiple,
+                link_metadata_type_multiple_delete,
             ), sources=(MetadataType,)
         )
 
         menu_object.bind_links(
             links=(
-                link_metadata_type_delete_single, link_metadata_type_edit
+                link_metadata_type_single_delete, link_metadata_type_edit
             ), sources=(MetadataType,)
         )
 
