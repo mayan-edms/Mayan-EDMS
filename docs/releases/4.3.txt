@@ -47,7 +47,9 @@ Backward incompatible changes
   OCR error logs.
 - The permission "View error log" is now required to view document file
   parsing error logs.
-
+- Several view, link, and icons names were modified. Third party app that
+  import links or icons, or redirects to any view, must be updated to match
+  the updated names.
 
 Deprecations
 ------------
