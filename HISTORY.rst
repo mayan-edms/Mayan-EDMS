@@ -300,6 +300,7 @@
   object will be written as a single operation. The number of objects
   written concurrently is controlled by the settings
   ``SEARCH_INDEXING_CHUNK_SIZE``.
+- Split converter app views into separate modules.
 
 4.2.4 (2022-04-29)
 ==================
