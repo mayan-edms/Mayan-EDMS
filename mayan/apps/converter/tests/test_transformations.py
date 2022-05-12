@@ -2,9 +2,10 @@ from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..transformations import (
-    BaseTransformation, TransformationCrop, TransformationLineArt,
-    TransformationResize, TransformationRotate, TransformationRotate90,
-    TransformationRotate180, TransformationRotate270, TransformationZoom
+    BaseTransformation, TransformationCrop, TransformationDrawRectangle,
+    TransformationLineArt, TransformationResize, TransformationRotate,
+    TransformationRotate90, TransformationRotate180, TransformationRotate270,
+    TransformationZoom
 )
 
 from .literals import (
@@ -178,6 +179,22 @@ class TransformationTestCase(LayerTestMixin, GenericDocumentTestCase):
 
         self.assertTrue(document_page.generate_image())
 
+    def test_draw_rectangle_transformation(self):
+        BaseTransformation.register(
+            layer=self._test_layer,
+            transformation=TransformationDrawRectangle
+        )
+
+        document_page = self._test_document.pages.first()
+
+        self._test_layer.add_transformation_to(
+            obj=document_page,
+            transformation_class=TransformationDrawRectangle,
+            arguments={}
+        )
+
+        self.assertTrue(document_page.generate_image())
+
     def test_lineart_transformations(self):
         BaseTransformation.register(
             layer=self._test_layer, transformation=TransformationLineArt
@@ -216,6 +233,38 @@ class TransformationTestCase(LayerTestMixin, GenericDocumentTestCase):
         self._test_layer.add_transformation_to(
             obj=document_page, transformation_class=TransformationRotate270,
             arguments={}
+        )
+
+        self.assertTrue(document_page.generate_image())
+
+    def test_zoom_transformation(self):
+        BaseTransformation.register(
+            layer=self._test_layer,
+            transformation=TransformationZoom
+        )
+
+        document_page = self._test_document.pages.first()
+
+        self._test_layer.add_transformation_to(
+            obj=document_page,
+            transformation_class=TransformationZoom,
+            arguments={'percent': 200}
+        )
+
+        self.assertTrue(document_page.generate_image())
+
+    def test_zoom_transformation_with_negative_value(self):
+        BaseTransformation.register(
+            layer=self._test_layer,
+            transformation=TransformationZoom
+        )
+
+        document_page = self._test_document.pages.first()
+
+        self._test_layer.add_transformation_to(
+            obj=document_page,
+            transformation_class=TransformationZoom,
+            arguments={'percent': -50}
         )
 
         self.assertTrue(document_page.generate_image())

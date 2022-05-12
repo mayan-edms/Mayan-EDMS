@@ -12,7 +12,7 @@ from mayan.apps.views.generics import (
 )
 from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
 
-from ..forms import LayerTransformationForm, LayerTransformationSelectForm
+from ..forms import LayerTransformationSelectForm
 from ..icons import (
     icon_transformation_create, icon_transformation_delete,
     icon_transformation_edit, icon_transformation_list,
@@ -21,16 +21,16 @@ from ..icons import (
 from ..links import link_transformation_select
 from ..models import LayerTransformation, ObjectLayer
 from ..transformations import BaseTransformation
-from ..view_mixins import LayerViewMixin
+
+from .view_mixins import DynamicTransformationFormClassMixin, LayerViewMixin
 
 logger = logging.getLogger(name=__name__)
 
 
 class TransformationCreateView(
-    LayerViewMixin, ExternalContentTypeObjectViewMixin,
-    SingleObjectCreateView
+    DynamicTransformationFormClassMixin, LayerViewMixin,
+    ExternalContentTypeObjectViewMixin, SingleObjectCreateView
 ):
-    form_class = LayerTransformationForm
     view_icon = icon_transformation_create
 
     def form_valid(self, form):
@@ -146,8 +146,9 @@ class TransformationDeleteView(LayerViewMixin, SingleObjectDeleteView):
         )
 
 
-class TransformationEditView(LayerViewMixin, SingleObjectEditView):
-    form_class = LayerTransformationForm
+class TransformationEditView(
+    DynamicTransformationFormClassMixin, LayerViewMixin, SingleObjectEditView
+):
     model = LayerTransformation
     pk_url_kwarg = 'transformation_id'
     view_icon = icon_transformation_edit
@@ -202,6 +203,9 @@ class TransformationEditView(LayerViewMixin, SingleObjectEditView):
                 self.template_name
             )
         ]
+
+    def get_transformation_class(self):
+        return self.object.get_transformation_class()
 
 
 class TransformationListView(

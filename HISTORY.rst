@@ -301,6 +301,11 @@
   written concurrently is controlled by the settings
   ``SEARCH_INDEXING_CHUNK_SIZE``.
 - Split converter app views into separate modules.
+- Add support for transformation argument forms.
+- Improve transformation argument column display.
+- Fix argument handling for the transformation
+  ``TransformationDrawRectangle``.
+- Check and reject negative percent values for the zoom transformation.
 
 4.2.4 (2022-04-29)
 ==================
