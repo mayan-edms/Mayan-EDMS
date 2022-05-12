@@ -1,7 +1,8 @@
 import json
 import os
 
-from django import forms
+from django import forms as django_forms
+from django.apps import apps
 from django.conf import settings
 from django.contrib.admin.utils import (
     get_fields_from_path, help_text_for_field, label_for_field
@@ -15,7 +16,6 @@ from django.forms.models import ModelFormMetaclass
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.utils import resolve_attribute
 
 from .widgets import DisableableSelectWidget, PlainWidget, TextAreaDiv
@@ -45,13 +45,13 @@ class ModelForm(FormFieldsetMixin, DjangoModelForm):
     """Mayan's default model form class."""
 
 
-class ChoiceForm(forms.Form):
+class ChoiceForm(Form):
     """
     Form to be used in side by side templates used to add or remove
     items from a many to many field.
     """
-    search = forms.CharField(
-        label=_('Search'), required=False, widget=forms.widgets.TextInput(
+    search = django_forms.CharField(
+        label=_('Search'), required=False, widget=django_forms.widgets.TextInput(
             attrs={
                 'autocomplete': 'off',
                 'class': 'views-select-search',
@@ -59,7 +59,7 @@ class ChoiceForm(forms.Form):
             }
         )
     )
-    selection = forms.MultipleChoiceField(
+    selection = django_forms.MultipleChoiceField(
         required=False, widget=DisableableSelectWidget()
     )
 
@@ -168,11 +168,11 @@ class DetailForm(ModelForm):
             field = field or 'anonymous_field_{}'.format(field_index)
 
             if isinstance(value, models.query.QuerySet):
-                self.fields[field] = forms.ModelMultipleChoiceField(
+                self.fields[field] = django_forms.ModelMultipleChoiceField(
                     queryset=value, label=label
                 )
             else:
-                self.fields[field] = forms.CharField(
+                self.fields[field] = django_forms.CharField(
                     initial=value, label=label, help_text=help_text,
                     widget=extra_field.get('widget', PlainWidget)
                 )
@@ -217,15 +217,15 @@ class DynamicFormMixin:
         Append the media of the dynamic fields to the normal fields' media.
         """
         media = super().media
-        media = media + forms.Media(**self.schema.get('media', {}))
+        media = media + django_forms.Media(**self.schema.get('media', {}))
         return media
 
 
-class DynamicForm(DynamicFormMixin, forms.Form):
+class DynamicForm(DynamicFormMixin, Form):
     """Normal dynamic form."""
 
 
-class DynamicModelForm(DynamicFormMixin, forms.ModelForm):
+class DynamicModelForm(DynamicFormMixin, ModelForm):
     """Dynamic model form."""
 
 
@@ -238,7 +238,7 @@ class DynamicFormMetaclass(ModelFormMetaclass):
         if new_class._meta.fields:
             new_class._meta.fields += ('backend_data',)
             widgets = getattr(new_class._meta, 'widgets', {}) or {}
-            widgets['backend_data'] = forms.widgets.HiddenInput
+            widgets['backend_data'] = django_forms.widgets.HiddenInput
             new_class._meta.widgets = widgets
 
         return new_class
@@ -281,11 +281,11 @@ class BackendDynamicForm(DynamicModelForm, metaclass=DynamicFormMetaclass):
         return data
 
 
-class FileDisplayForm(forms.Form):
+class FileDisplayForm(Form):
     DIRECTORY = None
     FILENAME = None
 
-    text = forms.CharField(
+    text = django_forms.CharField(
         label='',
         widget=TextAreaDiv(
             attrs={
@@ -322,7 +322,7 @@ class FilteredSelectionFormOptions(FormOptions):
     }
 
 
-class FilteredSelectionForm(forms.Form):
+class FilteredSelectionForm(Form):
     """
     Form to select the from a list of choice filtered by access. Can be
     configure to allow single or multiple selection.
@@ -347,17 +347,20 @@ class FilteredSelectionForm(forms.Form):
 
         if opts.allow_multiple:
             extra_kwargs = {}
-            field_class = forms.ModelMultipleChoiceField
-            widget_class = forms.widgets.SelectMultiple
+            field_class = django_forms.ModelMultipleChoiceField
+            widget_class = django_forms.widgets.SelectMultiple
         else:
             extra_kwargs = {'empty_label': None}
-            field_class = forms.ModelChoiceField
-            widget_class = forms.widgets.Select
+            field_class = django_forms.ModelChoiceField
+            widget_class = django_forms.widgets.Select
 
         if opts.widget_class:
             widget_class = opts.widget_class
 
         if opts.permission:
+            AccessControlList = apps.get_model(
+                app_label='acls', model_name='AccessControlList'
+            )
             queryset = AccessControlList.objects.restrict_queryset(
                 permission=opts.permission, queryset=queryset,
                 user=opts.user
@@ -373,18 +376,18 @@ class FilteredSelectionForm(forms.Form):
         )
 
 
-class RelationshipForm(forms.Form):
+class RelationshipForm(Form):
     def __init__(self, *args, **kwargs):
         self._event_actor = kwargs.pop('_event_actor')
         super().__init__(*args, **kwargs)
 
-        self.fields['label'] = forms.CharField(
+        self.fields['label'] = django_forms.CharField(
             label=_('Label'), required=False,
-            widget=forms.TextInput(attrs={'readonly': 'readonly'})
+            widget=django_forms.TextInput(attrs={'readonly': 'readonly'})
         )
-        self.fields['relationship_type'] = forms.ChoiceField(
+        self.fields['relationship_type'] = django_forms.ChoiceField(
             label=_('Relationship'),
-            widget=forms.RadioSelect(), choices=self.RELATIONSHIP_CHOICES
+            widget=django_forms.RadioSelect(), choices=self.RELATIONSHIP_CHOICES
         )
 
         self.sub_object = self.initial.get('sub_object')
