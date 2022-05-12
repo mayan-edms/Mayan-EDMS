@@ -154,7 +154,15 @@ class AssetTransformationMixin:
     def _update_hash(self):
         result = super()._update_hash()
         asset = self.get_asset()
-        result = hashlib.sha256(force_bytes(s=asset.get_hash()))
+        # Add the asset image hash to the transformation hash. Ensures
+        # that the content object image is updated if the asset image is
+        # updated even if the transformation itself is not updated.
+        result.update(
+            force_bytes(
+                s=asset.get_hash()
+            )
+        )
+
         return result
 
     def get_asset(self):
