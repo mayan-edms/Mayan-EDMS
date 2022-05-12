@@ -4,6 +4,15 @@ from django import forms
 from django.utils.safestring import mark_safe
 
 
+class ColorWidget(forms.TextInput):
+    template_name = 'views/widget_color_picker.html'
+
+    def __init__(self, attrs=None):
+        attrs = attrs or {}
+        attrs['type'] = 'color'
+        super().__init__(attrs=attrs)
+
+
 class DisableableSelectWidget(forms.widgets.SelectMultiple):
     def create_option(self, *args, **kwargs):
         result = super().create_option(*args, **kwargs)

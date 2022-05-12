@@ -2,9 +2,10 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.views.forms import FilteredSelectionForm
+from mayan.apps.views.widgets import ColorWidget
 
 from .models import Tag
-from .widgets import ColorWidget, TagFormWidget
+from .widgets import TagFormWidget
 
 
 class TagForm(forms.ModelForm):
