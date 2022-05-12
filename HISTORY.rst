@@ -307,6 +307,10 @@
   ``TransformationDrawRectangle``.
 - Check and reject negative percent values for the zoom transformation.
 - Fix asset transformations hash calculation.
+- Use a lower layer that the redaction layer to allow seeing the entire
+  document when editing redactions. This is more natural as it gives the
+  impression the redaction is actually being edited by being moved instead
+  of showing two redactions (old in the image plus the interactive one).
 
 4.2.4 (2022-04-29)
 ==================
