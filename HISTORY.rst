@@ -306,6 +306,7 @@
 - Fix argument handling for the transformation
   ``TransformationDrawRectangle``.
 - Check and reject negative percent values for the zoom transformation.
+- Fix asset transformations hash calculation.
 
 4.2.4 (2022-04-29)
 ==================

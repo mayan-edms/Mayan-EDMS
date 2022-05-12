@@ -2,10 +2,10 @@ from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..transformations import (
-    BaseTransformation, TransformationCrop, TransformationDrawRectangle,
-    TransformationLineArt, TransformationResize, TransformationRotate,
-    TransformationRotate90, TransformationRotate180, TransformationRotate270,
-    TransformationZoom
+    BaseTransformation, TransformationAssetPaste, TransformationCrop,
+    TransformationDrawRectangle, TransformationLineArt, TransformationResize,
+    TransformationRotate, TransformationRotate90, TransformationRotate180,
+    TransformationRotate270, TransformationZoom
 )
 
 from .literals import (
@@ -18,7 +18,34 @@ from .literals import (
     TEST_TRANSFORMATION_ROTATE_DEGRESS, TEST_TRANSFORMATION_ZOOM_CACHE_HASH,
     TEST_TRANSFORMATION_ZOOM_PERCENT
 )
-from .mixins import LayerTestMixin
+from .mixins import AssetTestMixin, LayerTestMixin
+
+
+class AssetTransformationTestCase(AssetTestMixin, BaseTestCase):
+    def test_asset_hash_update(self):
+        self._create_test_asset()
+
+        test_transformation_0 = TransformationAssetPaste(
+            asset_name=self._test_asset.internal_name, rotation=0
+        )
+
+        test_transformation_1 = TransformationAssetPaste(
+            asset_name=self._test_asset.internal_name, rotation=10
+        )
+
+        test_transformation_2 = TransformationAssetPaste(
+            asset_name=self._test_asset.internal_name, rotation=0
+        )
+
+        self.assertNotEqual(
+            test_transformation_0.cache_hash(),
+            test_transformation_1.cache_hash()
+        )
+
+        self.assertEqual(
+            test_transformation_0.cache_hash(),
+            test_transformation_2.cache_hash()
+        )
 
 
 class TransformationBaseTestCase(BaseTestCase):

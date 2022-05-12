@@ -167,7 +167,9 @@ class AssetViewTestCase(
     def test_asset_list_view_with_access(self):
         self._create_test_asset()
 
-        self.grant_access(obj=self._test_asset, permission=permission_asset_view)
+        self.grant_access(
+            obj=self._test_asset, permission=permission_asset_view
+        )
 
         self._clear_events()
 
