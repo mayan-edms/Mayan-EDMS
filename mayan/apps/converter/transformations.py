@@ -696,8 +696,8 @@ class TransformationDrawRectangle(BaseTransformation):
 
 class TransformationDrawRectanglePercent(BaseTransformation):
     arguments = (
-        'left', 'top', 'right', 'bottom', 'fillcolor', 'outlinecolor',
-        'outlinewidth'
+        'left', 'top', 'right', 'bottom', 'fillcolor', 'fill_transparency',
+        'outlinecolor', 'outlinewidth'
     )
     label = _('Draw rectangle (percents coordinates)')
     name = 'draw_rectangle_percent'
@@ -722,6 +722,10 @@ class TransformationDrawRectanglePercent(BaseTransformation):
         fillcolor = forms.CharField(
             help_text=_('Color used to fill the rectangle.'),
             label=_('Fill color'), required=False, widget=ColorWidget()
+        )
+        fill_transparency = forms.IntegerField(
+            help_text=_('Opacity level of the fill color in percent'),
+            label=_('Fill transparency'), required=False
         )
         outlinecolor = forms.CharField(
             help_text=_('Color used for the outline of the rectangle.'),
@@ -784,11 +788,31 @@ class TransformationDrawRectanglePercent(BaseTransformation):
             bottom
         )
 
+        try:
+            fill_transparency = int(
+                getattr(self, 'fill_transparency', None) or '0'
+            )
+        except ValueError:
+            fill_transparency = 100
+        else:
+            if fill_transparency < 0:
+                fill_transparency = 0
+            elif fill_transparency > 100:
+                fill_transparency = 100
+
         fillcolor_value = getattr(self, 'fillcolor', None)
         if fillcolor_value:
             fill_color = ImageColor.getrgb(color=fillcolor_value)
         else:
-            fill_color = 0
+            fill_color = (0, 0, 0)
+
+        # Convert transparency to opacity. Invert intensity logic, transpose
+        # from percent to 8-bit value.
+        opacity = int(
+            (100 - fill_transparency) / 100 * 255
+        )
+
+        fill_color += (opacity,)
 
         outlinecolor_value = getattr(self, 'outlinecolor', None)
         if outlinecolor_value:
@@ -815,10 +839,10 @@ class TransformationDrawRectanglePercent(BaseTransformation):
         right = self.image.size[0] - (right / 100.0 * self.image.size[0])
         bottom = self.image.size[1] - (bottom / 100.0 * self.image.size[1])
 
-        draw = ImageDraw.Draw(im=self.image)
+        draw = ImageDraw.Draw(im=self.image, mode='RGBA')
         draw.rectangle(
-            xy=(left, top, right, bottom), fill=fill_color, outline=outline_color,
-            width=outline_width
+            xy=(left, top, right, bottom), fill=fill_color,
+            outline=outline_color, width=outline_width
         )
 
         return self.image

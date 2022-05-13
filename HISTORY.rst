@@ -311,6 +311,8 @@
   document when editing redactions. This is more natural as it gives the
   impression the redaction is actually being edited by being moved instead
   of showing two redactions (old in the image plus the interactive one).
+- Add transparency support to the ``TransformationDrawRectanglePercent``
+  transformation.
 
 4.2.4 (2022-04-29)
 ==================
