@@ -313,6 +313,9 @@
   of showing two redactions (old in the image plus the interactive one).
 - Add transparency support to the ``TransformationDrawRectanglePercent``
   transformation.
+- Unify the ``TransformationDrawRectangle`` and
+  ``TransformationDrawRectanglePercent`` transformations.
+- Move transformation mixins to their own module.
 
 4.2.4 (2022-04-29)
 ==================
