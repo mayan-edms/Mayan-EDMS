@@ -101,7 +101,6 @@ class DocumentMetadataAddView(
                     'document_id': self.action_id_list[0]
                 }
             )
-
         elif self.action_count > 1:
             url = furl(
                 path=reverse(
