@@ -2,11 +2,11 @@ from django.db import models
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.events.classes import EventManagerSave
-from mayan.apps.events.decorators import method_event
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.documents.models.document_version_page_models import DocumentVersionPage
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
 
 from .events import event_ocr_document_version_page_content_edited
 from .managers import (
