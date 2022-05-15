@@ -24,6 +24,9 @@ class APIImageViewMixin:
     def get_content_type(self):
         return ContentType.objects.get_for_model(model=self.obj)
 
+    def get_stream_mime_type(self):
+        return 'image'
+
     def retrieve(self, request, **kwargs):
         self.set_object()
         query_dict = request.GET
@@ -69,7 +72,8 @@ class APIImageViewMixin:
                         yield chunk
 
         response = StreamingHttpResponse(
-            streaming_content=file_generator(), content_type='image'
+            streaming_content=file_generator(),
+            content_type=self.get_stream_mime_type()
         )
 
         if '_hash' in request.GET:

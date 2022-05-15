@@ -316,6 +316,8 @@
 - Unify the ``TransformationDrawRectangle`` and
   ``TransformationDrawRectanglePercent`` transformations.
 - Move transformation mixins to their own module.
+- Allow classes using ``APIImageViewMixin`` to specify the stream MIME type
+  via ``get_stream_mime_type``.
 
 4.2.4 (2022-04-29)
 ==================
