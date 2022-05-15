@@ -63,13 +63,13 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
         ), verbose_name=_('Active')
     )
 
+    objects = models.Manager()
+    valid = ValidDocumentVersionManager()
+
     class Meta:
         ordering = ('timestamp',)
         verbose_name = _('Document version')
         verbose_name_plural = _('Document versions')
-
-    objects = models.Manager()
-    valid = ValidDocumentVersionManager()
 
     @staticmethod
     def annotate_content_object_list(
