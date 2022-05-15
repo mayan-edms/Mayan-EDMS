@@ -39,14 +39,12 @@ class DocumentFilePage(PagedModelMixin, models.Model):
     )
 
     objects = DocumentFilePageManager()
+    valid = ValidDocumentFilePageManager()
 
     class Meta:
         ordering = ('page_number',)
         verbose_name = _('Document file page')
         verbose_name_plural = _('Document file pages')
-
-    objects = DocumentFilePageManager()
-    valid = ValidDocumentFilePageManager()
 
     def __str__(self):
         return self.get_label()

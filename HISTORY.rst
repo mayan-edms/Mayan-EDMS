@@ -14,6 +14,8 @@
 - Make document file metadata submit view messages translatable.
 - Fix asset transformations hash calculation.
 - Fix asset image API view docstring.
+- Fix repeated model manager definition in ``DocumentFilePage``
+  models.
 
 4.2.4 (2022-04-29)
 ==================
