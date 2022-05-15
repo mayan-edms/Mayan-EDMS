@@ -13,6 +13,7 @@
 - Make file caching purge view messages translatable.
 - Make document file metadata submit view messages translatable.
 - Fix asset transformations hash calculation.
+- Fix asset image API view docstring.
 
 4.2.4 (2022-04-29)
 ==================
