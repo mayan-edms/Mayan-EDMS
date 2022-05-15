@@ -6,7 +6,8 @@ from ..links import link_group_setup, link_user_setup
 from .literals import (
     TEST_CASE_GROUP_NAME, TEST_CASE_SUPERUSER_EMAIL,
     TEST_CASE_SUPERUSER_PASSWORD, TEST_CASE_SUPERUSER_USERNAME,
-    TEST_CASE_USER_EMAIL, TEST_CASE_USER_PASSWORD, TEST_CASE_USER_USERNAME,
+    TEST_CASE_USER_EMAIL, TEST_CASE_USER_FIRST_NAME, TEST_CASE_USER_LAST_NAME,
+    TEST_CASE_USER_PASSWORD, TEST_CASE_USER_USERNAME,
     TEST_GROUP_NAME, TEST_GROUP_NAME_EDITED, TEST_USER_EMAIL,
     TEST_USER_PASSWORD, TEST_USER_PASSWORD_EDITED, TEST_USER_USERNAME,
     TEST_USER_USERNAME_EDITED
@@ -333,16 +334,18 @@ class UserTestCaseMixin:
 
     def _create_test_case_superuser(self):
         self._test_case_superuser = get_user_model().objects.create_superuser(
-            username=TEST_CASE_SUPERUSER_USERNAME,
             email=TEST_CASE_SUPERUSER_EMAIL,
-            password=TEST_CASE_SUPERUSER_PASSWORD
+            password=TEST_CASE_SUPERUSER_PASSWORD,
+            username=TEST_CASE_SUPERUSER_USERNAME
         )
         self._test_case_superuser.cleartext_password = TEST_CASE_SUPERUSER_PASSWORD
 
     def _create_test_case_user(self):
         self._test_case_user = get_user_model().objects.create_user(
-            username=TEST_CASE_USER_USERNAME, email=TEST_CASE_USER_EMAIL,
-            password=TEST_CASE_USER_PASSWORD
+            email=TEST_CASE_USER_EMAIL, first_name=TEST_CASE_USER_FIRST_NAME,
+            last_name=TEST_CASE_USER_LAST_NAME,
+            password=TEST_CASE_USER_PASSWORD,
+            username=TEST_CASE_USER_USERNAME
         )
         self._test_case_user.cleartext_password = TEST_CASE_USER_PASSWORD
 
@@ -351,13 +354,14 @@ class UserTestCaseMixin:
 
     def login_superuser(self):
         return self.login(
-            username=TEST_CASE_SUPERUSER_USERNAME,
-            password=TEST_CASE_SUPERUSER_PASSWORD
+            password=TEST_CASE_SUPERUSER_PASSWORD,
+            username=TEST_CASE_SUPERUSER_USERNAME
         )
 
     def login_user(self):
         return self.login(
-            username=TEST_CASE_USER_USERNAME, password=TEST_CASE_USER_PASSWORD
+            password=TEST_CASE_USER_PASSWORD,
+            username=TEST_CASE_USER_USERNAME
         )
 
     def logout(self):
@@ -380,9 +384,9 @@ class UserTestMixin:
 
     def _create_test_superuser(self):
         self._test_superuser = get_user_model().objects.create_superuser(
-            username=TEST_CASE_SUPERUSER_USERNAME,
             email=TEST_CASE_SUPERUSER_EMAIL,
-            password=TEST_CASE_SUPERUSER_PASSWORD
+            password=TEST_CASE_SUPERUSER_PASSWORD,
+            username=TEST_CASE_SUPERUSER_USERNAME
         )
         self._test_superuser.cleartext_password = TEST_USER_PASSWORD
 
@@ -391,8 +395,8 @@ class UserTestMixin:
         username = '{}_{}'.format(TEST_USER_USERNAME, total_test_users)
 
         self._test_user = get_user_model().objects.create_user(
-            username=username, email=TEST_USER_EMAIL,
-            password=TEST_USER_PASSWORD
+            email=TEST_USER_EMAIL, password=TEST_USER_PASSWORD,
+            username=username
         )
         self._test_user.cleartext_password = TEST_USER_PASSWORD
         self._test_users.append(self._test_user)
@@ -414,8 +418,8 @@ class UserViewTestMixin:
     def _request_test_user_create_view(self):
         reponse = self.post(
             viewname='user_management:user_create', data={
-                'username': TEST_USER_USERNAME,
-                'password': TEST_USER_PASSWORD
+                'password': TEST_USER_PASSWORD,
+                'username': TEST_USER_USERNAME
             }
         )
 

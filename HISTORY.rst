@@ -323,6 +323,7 @@
   ``auto_create_test_document_stub``. It is mutually exclusive with
   ``auto_create_test_document_stub`` and requires settings
   ``auto_upload_test_document`` to False.
+- Add first name and last name fields to the test case user.
 
 4.2.4 (2022-04-29)
 ==================
