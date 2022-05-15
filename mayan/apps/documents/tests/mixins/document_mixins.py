@@ -87,6 +87,7 @@ class DocumentAPIViewTestMixin:
 
 
 class DocumentTestMixin:
+    auto_create_test_document_stub = False
     auto_create_test_document_type = True
     auto_upload_test_document = True
     _test_document_file_filename = TEST_FILE_SMALL_FILENAME
@@ -110,6 +111,8 @@ class DocumentTestMixin:
 
             if self.auto_upload_test_document:
                 self._upload_test_document()
+            elif self.auto_create_test_document_stub:
+                self._create_test_document_stub()
 
     def tearDown(self):
         if self.auto_delete_test_document_type:

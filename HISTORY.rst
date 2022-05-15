@@ -319,6 +319,10 @@
 - Allow classes using ``APIImageViewMixin`` to specify the stream MIME type
   via ``get_stream_mime_type``.
 - Fix repeated model manager definition in the ``DocumentFilePage`` model.
+- Support easier test document stub creation via the new
+  ``auto_create_test_document_stub``. It is mutually exclusive with
+  ``auto_create_test_document_stub`` and requires settings
+  ``auto_upload_test_document`` to False.
 
 4.2.4 (2022-04-29)
 ==================
