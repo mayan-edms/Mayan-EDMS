@@ -7,11 +7,11 @@ from django.forms.formsets import formset_factory
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.converter.fields import ImageField
 from mayan.apps.templating.fields import ModelTemplateField
 from mayan.apps.views.forms import DynamicModelForm, FilteredSelectionForm
 
 from .classes import WorkflowAction
-from .fields import WorfklowImageField
 from .models import (
     Workflow, WorkflowStateEscalation, WorkflowInstance, WorkflowState,
     WorkflowStateAction, WorkflowTransition
@@ -216,7 +216,9 @@ class WorkflowInstanceTransitionSelectForm(forms.Form):
 
 
 class WorkflowPreviewForm(forms.Form):
-    workflow = WorfklowImageField()
+    workflow = ImageField(
+        image_alt_text=_('Workflow template preview image')
+    )
 
     def __init__(self, *args, **kwargs):
         instance = kwargs.pop('instance', None)

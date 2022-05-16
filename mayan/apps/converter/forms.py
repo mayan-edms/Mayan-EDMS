@@ -7,13 +7,15 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.serialization import yaml_dump, yaml_load
 from mayan.apps.views.forms import DetailForm, ModelForm
 
-from .fields import AssetImageField
+from .fields import ImageField
 from .models import Asset, LayerTransformation
 from .transformations import BaseTransformation
 
 
 class AssetDetailForm(DetailForm):
-    preview = AssetImageField(label=_('Preview'))
+    preview = ImageField(
+        image_alt_text=_('Asset preview image'), label=_('Preview')
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
