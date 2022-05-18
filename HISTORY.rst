@@ -328,6 +328,12 @@
   ``ImagePasteCoordinatesAbsoluteTransformationMixin``,
   ``ImagePasteCoordinatesPercentTransformationMixin``,
   ``ImageWatermarkPercentTransformationMixin``.
+- Add support for signature capture. The signature capture app allows
+  capture of handwritten signatures. The original point data as well as
+  an SVG version of the signature is store. The point data represents the
+  raw signature primitives that allows reloading them into the signature
+  pad library. The SVG version allows for rendering as an image for preview.
+  A transformation is added to allow pasting a signature as a page image.
 
 4.2.4 (2022-04-29)
 ==================

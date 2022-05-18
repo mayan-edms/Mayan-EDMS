@@ -124,6 +124,7 @@ INSTALLED_APPS = (
     'mayan.apps.mirroring',
     'mayan.apps.ocr',
     'mayan.apps.redactions',
+    'mayan.apps.signature_captures',
     'mayan.apps.sources',
     'mayan.apps.tags',
     'mayan.apps.web_links',

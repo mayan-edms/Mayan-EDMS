@@ -1,0 +1,122 @@
+{% load i18n %}
+
+<style>
+.signature-pad-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+    font-size: 10px;
+    height: 460px;
+    padding: 2px;
+    position: relative;
+}
+
+.signature-pad-body {
+    -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+    border: 1px solid #f4f4f4;
+    position: relative;
+}
+
+.signature-pad-body canvas {
+    border-radius: 4px;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.signature-pad-footer {
+    margin-top: 8px;
+}
+
+.form-control {
+    height: 100%;
+    width: 100%;
+}
+
+.input-group {
+    width: 100%;
+}
+
+#id_data {
+    display: none;
+    position: absolute;
+    visibility: hidden;
+}
+</style>
+
+<div class="input-group">
+    {% include 'django/forms/widgets/input.html'  %}
+
+    <div class="form-control">
+        <div id="signature-pad-wrapper" class="signature-pad-wrapper">
+            <div class="signature-pad-body">
+                <canvas></canvas>
+            </div>
+            <div class="signature-pad-footer">
+                <div class="description text-center text-small">{% trans 'Sign above' %}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    jQuery(document).ready(function() {
+        $('#id_data').hide();
+
+        const $fieldPointValues = $('.signature-captures-capture-data');
+        const $fieldSVG = $('.signature-captures-capture-svg');
+
+        const elementSignaturePadWrapper = document.getElementById('signature-pad-wrapper');
+        const elementSignaturePadCanvas = elementSignaturePadWrapper.querySelector('canvas');
+
+        const signaturePad = new SignaturePad(elementSignaturePadCanvas, {});
+
+        function doSignatureReload() {
+            if ($fieldPointValues.val()) {
+                let signaturePadPointValues = $fieldPointValues.val();
+                if (signaturePadPointValues) {
+                    signaturePad.fromData(
+                        JSON.parse(signaturePadPointValues)
+                    );
+                }
+            }
+        }
+
+        function doSignatureDownload() {
+            $fieldPointValues.val(
+                JSON.stringify(
+                    signaturePad.toData()
+                )
+            );
+
+            $fieldSVG.val(
+                signaturePad.toDataURL('image/svg+xml')
+            );
+        }
+
+        function resizeCanvas() {
+          let windowRatio =  Math.max(window.devicePixelRatio || 1, 1);
+
+          elementSignaturePadCanvas.width = elementSignaturePadCanvas.offsetWidth * windowRatio;
+          elementSignaturePadCanvas.height = elementSignaturePadCanvas.offsetHeight * windowRatio;
+          elementSignaturePadCanvas.getContext('2d').scale(windowRatio, windowRatio);
+          signaturePad.clear();
+          doSignatureReload();
+        }
+
+        signaturePad.addEventListener('endStroke', () => {
+            doSignatureDownload();
+        });
+        window.onresize = resizeCanvas;
+
+        resizeCanvas();
+    });
+</script>
