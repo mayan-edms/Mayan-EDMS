@@ -115,10 +115,12 @@ class LayerTransformationManager(models.Manager):
                         else:
                             kwargs = {}
 
+                        tranformation_instance = transformation_class(
+                            **kwargs
+                        )
+                        tranformation_instance.object_layer = transformation.object_layer
                         result.append(
-                            transformation_class(
-                                **kwargs
-                            )
+                            tranformation_instance
                         )
                     except Exception as exception:
                         logger.error(

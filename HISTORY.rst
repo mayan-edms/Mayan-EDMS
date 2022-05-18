@@ -324,6 +324,10 @@
   ``auto_create_test_document_stub`` and requires settings
   ``auto_upload_test_document`` to False.
 - Add first name and last name fields to the test case user.
+- Generalize image transformations into reusable mixins:
+  ``ImagePasteCoordinatesAbsoluteTransformationMixin``,
+  ``ImagePasteCoordinatesPercentTransformationMixin``,
+  ``ImageWatermarkPercentTransformationMixin``.
 
 4.2.4 (2022-04-29)
 ==================

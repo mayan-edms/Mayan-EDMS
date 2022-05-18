@@ -265,7 +265,7 @@ class LayerTransformation(models.Model):
             return ugettext('Unknown transformation class')
 
     def get_arguments_column(self):
-        arguments = yaml_load(stream=self.arguments)
+        arguments = yaml_load(stream=self.arguments or '{}')
         result = []
         for key, value in arguments.items():
             result.append('{}: {}'.format(key, value))

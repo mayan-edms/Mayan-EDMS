@@ -14,7 +14,11 @@ from mayan.apps.views.widgets import ColorWidget
 
 from .layers import layer_decorations, layer_saved_transformations
 from .transformation_mixins import (
-    AssetTransformationMixin, TransformationDrawRectangleMixin
+    AssetTransformationMixin,
+    ImagePasteCoordinatesAbsoluteTransformationMixin,
+    ImagePasteCoordinatesPercentTransformationMixin,
+    ImageWatermarkPercentTransformationMixin,
+    TransformationDrawRectangleMixin
 )
 
 logger = logging.getLogger(name=__name__)
@@ -40,7 +44,13 @@ class BaseTransformation(metaclass=BaseTransformationType):
         result = hashlib.sha256()
 
         for transformation in transformations or ():
-            result.update(transformation.cache_hash())
+            try:
+                result.update(transformation.cache_hash())
+            except Exception as exception:
+                logger.error(
+                    'Unable to compute hash for transformation: %s; %s',
+                    transformation, exception
+                )
 
         return result.hexdigest()
 
@@ -72,6 +82,10 @@ class BaseTransformation(metaclass=BaseTransformationType):
         for layer, transformations in cls._layer_transformations.items():
             if cls in transformations:
                 return layer
+
+    @classmethod
+    def get_form_class(cls):
+        return getattr(cls, 'Form', None)
 
     @classmethod
     def get_label(cls):
@@ -148,208 +162,28 @@ class BaseTransformation(metaclass=BaseTransformationType):
         self.aspect = 1.0 * image.size[0] / image.size[1]
 
 
-class TransformationAssetPaste(AssetTransformationMixin, BaseTransformation):
-    arguments = ('left', 'top')
-    label = _('Paste an asset')
+class TransformationAssetPaste(
+    ImagePasteCoordinatesAbsoluteTransformationMixin,
+    AssetTransformationMixin, BaseTransformation
+):
+    label = _('Paste an asset (absolute coordinates)')
     name = 'paste_asset'
 
-    class Form(AssetTransformationMixin.Form):
-        left = forms.IntegerField(
-            help_text=_('Horizontal position in pixels from the left.'),
-            label=_('Left'), required=False
-        )
-        top = forms.IntegerField(
-            help_text=_('Vertical position in pixels from the top.'),
-            label=_('Top'), required=False
-        )
 
-    def _execute_on(self, *args, **kwargs):
-        try:
-            left = int(self.left or '0')
-        except ValueError:
-            left = 0
-
-        try:
-            top = int(self.top or '0')
-        except ValueError:
-            top = 0
-
-        asset_name = getattr(self, 'asset_name', None)
-
-        if asset_name:
-            align_horizontal = getattr(self, 'align_horizontal', 'left')
-            align_vertical = getattr(self, 'align_vertical', 'top')
-
-            result = self.get_asset_images()
-            if result:
-                if align_horizontal == 'left':
-                    left = left
-                elif align_horizontal == 'center':
-                    left = int(left - result['image_asset'].size[0] / 2)
-                elif align_horizontal == 'right':
-                    left = int(left - result['image_asset'].size[0])
-
-                if align_vertical == 'top':
-                    top = top
-                elif align_vertical == 'middle':
-                    top = int(top - result['image_asset'].size[1] / 2)
-                elif align_vertical == 'bottom':
-                    top = int(top - result['image_asset'].size[1])
-
-                self.image.paste(
-                    im=result['image_asset'], box=(left, top),
-                    mask=result['paste_mask']
-                )
-        else:
-            logger.error('No asset name specified.')
-
-        return self.image
-
-    def execute_on(self, *args, **kwargs):
-        super().execute_on(*args, **kwargs)
-        return self._execute_on(self, *args, **kwargs)
-
-
-class TransformationAssetPastePercent(TransformationAssetPaste):
+class TransformationAssetPastePercent(
+    ImagePasteCoordinatesPercentTransformationMixin,
+    AssetTransformationMixin, BaseTransformation
+):
     label = _('Paste an asset (percents coordinates)')
     name = 'paste_asset_percent'
 
-    class Form(AssetTransformationMixin.Form):
-        left = forms.FloatField(
-            help_text=_('Horizontal position in percent from the left.'),
-            label=_('Left'), required=False
-        )
-        top = forms.FloatField(
-            help_text=_('Vertical position in percent from the top.'),
-            label=_('Top'), required=False
-        )
-
-    def _execute_on(self, *args, **kwargs):
-        try:
-            left = float(self.left or '0')
-        except ValueError:
-            left = 0
-
-        try:
-            top = float(self.top or '0')
-        except ValueError:
-            top = 0
-
-        if left < 0:
-            left = 0
-
-        if left > 100:
-            left = 100
-
-        if top < 0:
-            top = 0
-
-        if top > 100:
-            top = 100
-
-        result = self.get_asset_images()
-
-        self.left = left / 100.0 * (
-            self.image.size[0] - result['image_asset'].size[0]
-        )
-        self.top = top / 100.0 * (
-            self.image.size[1] - result['image_asset'].size[1]
-        )
-        self.align_horizontal = 'left'
-        self.align_vertical = 'top'
-
-        return super()._execute_on(self, *args, **kwargs)
-
 
 class TransformationAssetWatermark(
-    AssetTransformationMixin, BaseTransformation
+    ImageWatermarkPercentTransformationMixin, AssetTransformationMixin,
+    BaseTransformation
 ):
-    arguments = (
-        'left', 'top', 'right', 'bottom', 'horizontal_increment',
-        'vertical_increment'
-    )
     label = _('Paste an asset as watermark')
     name = 'paste_asset_watermark'
-
-    class Form(AssetTransformationMixin.Form):
-        left = forms.IntegerField(
-            help_text=_('Horizontal start position in pixels from the left.'),
-            label=_('Left'), required=False
-        )
-        right = forms.IntegerField(
-            help_text=_('Horizontal end position in pixels from the right.'),
-            label=_('Right'), required=False
-        )
-        top = forms.IntegerField(
-            help_text=_('Vertical start position in pixels from the top.'),
-            label=_('Top'), required=False
-        )
-        bottom = forms.IntegerField(
-            help_text=_('Vertical end position in pixels from the top.'),
-            label=_('Bottom'), required=False
-        )
-        horizontal_increment = forms.IntegerField(
-            help_text=_('Horizontal position increments in pixels.'),
-            label=_('Horizontal increment'), required=False
-        )
-        vertical_increment = forms.IntegerField(
-            help_text=_('Vertical position increments in pixels.'),
-            label=_('Vertical increment'), required=False
-        )
-
-    def execute_on(self, *args, **kwargs):
-        super().execute_on(*args, **kwargs)
-        try:
-            left = int(self.left or '0')
-        except ValueError:
-            left = 0
-
-        try:
-            top = int(self.top or '0')
-        except ValueError:
-            top = 0
-
-        try:
-            right = int(self.right or '0')
-        except ValueError:
-            right = 0
-
-        try:
-            bottom = int(self.bottom or '0')
-        except ValueError:
-            bottom = 0
-
-        asset_name = getattr(self, 'asset_name', None)
-
-        if asset_name:
-            result = self.get_asset_images()
-            if result:
-                try:
-                    horizontal_increment = int(self.horizontal_increment or '0')
-                except ValueError:
-                    horizontal_increment = 0
-
-                try:
-                    vertical_increment = int(self.vertical_increment or '0')
-                except ValueError:
-                    vertical_increment = 0
-
-                if horizontal_increment == 0:
-                    horizontal_increment = result['paste_mask'].size[0]
-
-                if vertical_increment == 0:
-                    vertical_increment = result['paste_mask'].size[1]
-
-                for x in range(left, right or self.image.size[0], horizontal_increment):
-                    for y in range(top, bottom or self.image.size[1], vertical_increment):
-                        self.image.paste(
-                            im=result['image_asset'], box=(x, y),
-                            mask=result['paste_mask']
-                        )
-        else:
-            logger.error('No asset name specified.')
-
-        return self.image
 
 
 class TransformationCrop(BaseTransformation):
