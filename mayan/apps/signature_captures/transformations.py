@@ -45,10 +45,9 @@ class SignatureCapturePasteTransformation(
                 super().__init__(*args, **kwargs)
 
                 def get_choices():
-
                     try:
                         page_object = self.view.external_object
-                    except ValueError:
+                    except AttributeError:
                         page_object = self.view.object.object_layer.content_object
 
                     document = SignatureCapturePasteTransformation.get_document(
