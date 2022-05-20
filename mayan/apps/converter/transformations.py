@@ -555,7 +555,7 @@ class TransformationDrawRectangle(BaseTransformation):
         else:
             outline_width = 0
 
-        draw = ImageDraw.Draw(image=self.image)
+        draw = ImageDraw.Draw(im=self.image)
         draw.rectangle(
             xy=(left, top, right, bottom), fill=fill_color,
             outline=outline_color, width=outline_width
@@ -831,11 +831,17 @@ class TransformationZoom(BaseTransformation):
             return self.image
 
         decimal_value = percent / 100
+
+        width = int(self.image.size[0] * decimal_value)
+        if width < 1:
+            width = 1
+
+        height = int(self.image.size[1] * decimal_value)
+        if height < 1:
+            height = 1
+
         return self.image.resize(
-            size=(
-                int(self.image.size[0] * decimal_value),
-                int(self.image.size[1] * decimal_value)
-            ), resample=Image.ANTIALIAS
+            size=(width, height), resample=Image.ANTIALIAS
         )
 
 

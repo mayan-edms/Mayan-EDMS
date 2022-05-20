@@ -16,6 +16,12 @@
 - Fix asset image API view docstring.
 - Fix repeated model manager definition in ``DocumentFilePage``
   models.
+- Transformation improvements:
+
+  - Fix wrong parameter in the ``ImageDraw.Draw`` usage of the
+    ``TransformationDrawRectangle`` transformation.
+  - Add sanity check to reject negative zoom values for the
+    ``TransformationZoom`` transformation.
 
 4.2.4 (2022-04-29)
 ==================
