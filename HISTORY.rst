@@ -28,6 +28,7 @@
   fields changes into a background task. Solves user interface blocking
   when changing the document type to index template association on large
   installations.
+- Update Django from version 3.2.12 to 3.2.13.
 
 4.2.4 (2022-04-29)
 ==================
