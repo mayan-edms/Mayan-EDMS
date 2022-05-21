@@ -1,4 +1,4 @@
-4.2.5 (2022-XX-XX)
+4.2.5 (2022-05-21)
 ==================
 - Remove unused authentication view.
 - Task manager app updates:
