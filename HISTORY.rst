@@ -32,6 +32,9 @@
 - Retry search indexing task when the object is not found. There are
   situations where the broker will route the message to the workers faster
   than the database can commit the data.
+- Fix favorite document links reacting to favorite documents beyond the
+  active user. Closes GitLab issue #1104. Thanks to
+  Biel Frontera (@bielfrontera) for the report and initial implementation.
 
 4.2.4 (2022-04-29)
 ==================

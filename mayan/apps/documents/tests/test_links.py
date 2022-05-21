@@ -3,14 +3,98 @@ from django.urls import reverse
 from ..links.document_file_links import (
     link_document_file_delete, link_document_file_download_quick
 )
+from ..links.favorite_links import (
+    link_document_favorites_add, link_document_favorites_remove
+)
 from ..links.trashed_document_links import link_document_restore
 from ..models import TrashedDocument
 from ..permissions import (
     permission_document_file_delete, permission_document_file_download,
-    permission_trashed_document_restore
+    permission_document_view, permission_trashed_document_restore
 )
 
 from .base import GenericDocumentViewTestCase
+from .mixins.favorite_document_mixins import FavoriteDocumentTestMixin
+
+
+class FavoriteDocumentLinkTestCase(
+    FavoriteDocumentTestMixin, GenericDocumentViewTestCase
+):
+    def test_favorite_document_add_link_no_permission(self):
+        self._create_test_document_stub()
+
+        self.add_test_view(test_object=self.test_document)
+        context = self.get_test_view()
+        resolved_link = link_document_favorites_add.resolve(context=context)
+
+        self.assertEqual(resolved_link, None)
+
+    def test_favorite_document_add_link_with_access(self):
+        self._create_test_document_stub()
+        self.grant_access(
+            obj=self.test_document_stub, permission=permission_document_view
+        )
+
+        self.add_test_view(test_object=self.test_document)
+        context = self.get_test_view()
+        resolved_link = link_document_favorites_add.resolve(context=context)
+
+        self.assertNotEqual(resolved_link, None)
+
+    def test_favorite_document_add_link_external_user_with_access(self):
+        self._create_test_user()
+        self._create_test_document_stub()
+        self.grant_access(
+            obj=self.test_document_stub, permission=permission_document_view
+        )
+
+        self._test_document_favorite_add(user=self.test_user)
+
+        self.add_test_view(test_object=self.test_document)
+        context = self.get_test_view()
+        resolved_link = link_document_favorites_add.resolve(context=context)
+
+        self.assertNotEqual(resolved_link, None)
+
+    def test_favorite_document_remove_link_no_permission(self):
+        self._create_test_document_stub()
+
+        self._test_document_favorite_add()
+
+        self.add_test_view(test_object=self.test_document)
+        context = self.get_test_view()
+        resolved_link = link_document_favorites_remove.resolve(context=context)
+
+        self.assertEqual(resolved_link, None)
+
+    def test_favorite_document_remove_link_with_access(self):
+        self._create_test_document_stub()
+        self.grant_access(
+            obj=self.test_document_stub, permission=permission_document_view
+        )
+
+        self._test_document_favorite_add()
+
+        self.add_test_view(test_object=self.test_document)
+        context = self.get_test_view()
+        resolved_link = link_document_favorites_remove.resolve(context=context)
+
+        self.assertNotEqual(resolved_link, None)
+
+    def test_favorite_document_remove_link_external_user_with_access(self):
+        self._create_test_user()
+        self._create_test_document_stub()
+        self.grant_access(
+            obj=self.test_document_stub, permission=permission_document_view
+        )
+
+        self._test_document_favorite_add(user=self.test_user)
+
+        self.add_test_view(test_object=self.test_document)
+        context = self.get_test_view()
+        resolved_link = link_document_favorites_remove.resolve(context=context)
+
+        self.assertEqual(resolved_link, None)
 
 
 class DocumentsLinksTestCase(GenericDocumentViewTestCase):
