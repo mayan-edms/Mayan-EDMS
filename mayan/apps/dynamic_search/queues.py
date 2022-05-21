@@ -25,6 +25,15 @@ queue_search.add_task_type(
     label=_('Index all instances of a search model to the search engine.'),
     name='task_index_search_model',
 )
+queue_search.add_task_type(
+    dotted_path='mayan.apps.dynamic_search.tasks.task_index_related_instance_m2m',
+    label=_(
+        'Index all related instances of a search model after a many to many '
+        'event.'
+    ),
+    name='task_index_related_instance_m2m',
+)
+
 queue_search_slow.add_task_type(
     dotted_path='mayan.apps.dynamic_search.tasks.task_reindex_backend',
     label=_('Reset the search backend indices and index all instances again.'),

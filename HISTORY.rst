@@ -24,6 +24,10 @@
     ``TransformationZoom`` transformation.
 
 - Add warning message when users attempting to delete their own accounts.
+- Convert the signal handler that triggers search indexing on many to many
+  fields changes into a background task. Solves user interface blocking
+  when changing the document type to index template association on large
+  installations.
 
 4.2.4 (2022-04-29)
 ==================
