@@ -29,6 +29,9 @@
   when changing the document type to index template association on large
   installations.
 - Update Django from version 3.2.12 to 3.2.13.
+- Retry search indexing task when the object is not found. There are
+  situations where the broker will route the message to the workers faster
+  than the database can commit the data.
 
 4.2.4 (2022-04-29)
 ==================

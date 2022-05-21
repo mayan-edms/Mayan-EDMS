@@ -79,7 +79,10 @@ def task_index_instance(
     else:
         ExcludeModel = None
 
-    instance = Model._meta.default_manager.get(pk=object_id)
+    try:
+        instance = Model._meta.default_manager.get(pk=object_id)
+    except Model.DoesNotExist as exception:
+        raise self.retry(exc=exception)
 
     try:
         SearchBackend.get_instance().index_instance(
