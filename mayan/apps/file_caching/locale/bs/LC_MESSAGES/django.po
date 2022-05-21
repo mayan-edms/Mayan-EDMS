@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-29 20:29+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
@@ -177,6 +177,16 @@ msgstr ""
 
 #: views.py:108
 msgid "Object cache partitions submitted for purging."
+msgstr ""
+
+#: views.py:117
+#, python-format
+msgid "%(count)d cache submitted for purging."
+msgstr ""
+
+#: views.py:118
+#, python-format
+msgid "%(count)d caches submitted for purging."
 msgstr ""
 
 #: views.py:125

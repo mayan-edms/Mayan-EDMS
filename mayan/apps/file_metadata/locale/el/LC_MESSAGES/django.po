@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-29 20:29+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -224,22 +224,32 @@ msgid ""
 "File metadata attributes for: %(document_file)s with driver: %(driver)s"
 msgstr ""
 
-#: views.py:119
+#: views.py:112
+#, python-format
+msgid "%(count)d document file submitted to the file metadata queue."
+msgstr ""
+
+#: views.py:115
+#, python-format
+msgid "%(count)d documents files submitted to the file metadata queue."
+msgstr ""
+
+#: views.py:123
 msgid "Submit the selected document file to the file metadata queue?"
 msgid_plural "Submit the selected documents files to the file metadata queue?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:147
+#: views.py:151
 #, python-format
 msgid "Edit file metadata settings for document type: %s"
 msgstr ""
 
-#: views.py:158
+#: views.py:162
 msgid "Submit all documents of a type for file metadata processing."
 msgstr ""
 
-#: views.py:184
+#: views.py:188
 #, python-format
 msgid "%(count)d documents added to the file metadata processing queue."
 msgstr ""

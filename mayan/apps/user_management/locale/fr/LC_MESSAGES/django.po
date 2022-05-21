@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-29 20:29+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -48,7 +48,7 @@ msgid "User"
 msgstr "Utilisateur"
 
 #: apps.py:112 apps.py:216 links.py:61 links.py:102 links.py:120
-#: views/user_views.py:145
+#: views/user_views.py:155
 msgid "Users"
 msgstr "Utilisateurs"
 
@@ -330,32 +330,38 @@ msgstr "Supprimez %(count)d utilisateur sélectionné."
 msgid "Delete the %(count)d selected users."
 msgstr "Supprimez les %(count)d utilisateurs sélectionnés."
 
-#: views/user_views.py:72
+#: views/user_views.py:65
+msgid ""
+"Warning! You are about to delete your own user account. You will lose access"
+" to the system. This process is not reversible."
+msgstr ""
+
+#: views/user_views.py:82
 #, python-format
 msgid "Details of user: %s"
 msgstr "Détails pour l'utilisateur: %s"
 
-#: views/user_views.py:89
+#: views/user_views.py:99
 #, python-format
 msgid "Edit user: %s"
 msgstr "Modifier l'utilisateur : %s"
 
-#: views/user_views.py:106
+#: views/user_views.py:116
 msgid "Available groups"
 msgstr "Groupes disponibles"
 
 #. Translators: "User groups" here refer to the list of groups of a
 #. specific user. The user's group membership.
-#: views/user_views.py:109
+#: views/user_views.py:119
 msgid "User groups"
 msgstr "Groupes d'utilisateurs"
 
-#: views/user_views.py:117
+#: views/user_views.py:127
 #, python-format
 msgid "Groups of user: %s"
 msgstr "Membre des groupes : %s"
 
-#: views/user_views.py:141
+#: views/user_views.py:151
 msgid ""
 "User accounts can be create from this view. After creating a user account "
 "you will prompted to set a password for it. "
@@ -364,11 +370,11 @@ msgstr ""
 "avoir créé un compte d'utilisateur, vous serez invité à définir un mot de "
 "passe pour ce compte."
 
-#: views/user_views.py:144
+#: views/user_views.py:154
 msgid "There are no user accounts"
 msgstr "Il n'y a pas de compte utilisateur"
 
-#: views/user_views.py:160
+#: views/user_views.py:170
 #, python-format
 msgid "Edit options for user: %s"
 msgstr "Options de modification pour l'utilisateur: %s"

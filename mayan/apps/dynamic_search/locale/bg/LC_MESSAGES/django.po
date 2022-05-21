@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-29 20:29+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2022\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -26,12 +26,12 @@ msgstr ""
 msgid "Dynamic search"
 msgstr "Динамично търсене"
 
-#: classes.py:493
+#: classes.py:562
 #, python-format
 msgid "Unknown search model `%s`."
 msgstr "Неизвестен модел за търсене `%s`."
 
-#: classes.py:550
+#: classes.py:619
 msgid "ID"
 msgstr "ID"
 
@@ -89,7 +89,12 @@ msgstr "Индексирайте екземпляр на модел в търс�
 msgid "Index all instances of a search model to the search engine."
 msgstr "Индексирайте всички екземпляри на модел за търсене в търсачката."
 
-#: queues.py:30
+#: queues.py:31
+msgid ""
+"Index all related instances of a search model after a many to many event."
+msgstr ""
+
+#: queues.py:39
 msgid "Reset the search backend indices and index all instances again."
 msgstr ""
 

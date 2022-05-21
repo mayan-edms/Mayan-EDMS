@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-29 20:29+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Harald Ersch, 2022\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -432,8 +432,8 @@ msgstr "Pagina precedentă"
 msgid "Next page"
 msgstr "Pagina următoare"
 
-#: links/document_file_page_links.py:86 models/document_file_page_models.py:46
-#: models/document_file_page_models.py:308
+#: links/document_file_page_links.py:86 models/document_file_page_models.py:47
+#: models/document_file_page_models.py:306
 msgid "Document file pages"
 msgstr "Pagini de fișiere de documente"
 
@@ -551,15 +551,15 @@ msgstr "Versiune document"
 msgid "Document version pages"
 msgstr "Paginile versiunii documentului"
 
-#: links/favorite_links.py:23 views/favorite_document_views.py:36
+#: links/favorite_links.py:28 views/favorite_document_views.py:36
 msgid "Favorites"
 msgstr "Preferate"
 
-#: links/favorite_links.py:29 links/favorite_links.py:39
+#: links/favorite_links.py:34 links/favorite_links.py:44
 msgid "Add to favorites"
 msgstr "Adaugă la favorite"
 
-#: links/favorite_links.py:35 links/favorite_links.py:43
+#: links/favorite_links.py:40 links/favorite_links.py:48
 msgid "Remove from favorites"
 msgstr "Eliminați de la favorite"
 
@@ -711,7 +711,7 @@ msgstr ""
 msgid "Document files"
 msgstr "Fișiere de documente"
 
-#: models/document_file_models.py:333 models/document_file_page_models.py:267
+#: models/document_file_models.py:333 models/document_file_page_models.py:265
 #: models/document_models.py:72 models/document_models.py:318
 #: models/document_type_models.py:41 models/document_type_models.py:203
 #: models/document_version_models.py:236
@@ -719,12 +719,12 @@ msgstr "Fișiere de documente"
 msgid "Label"
 msgstr "Conținut etichetă"
 
-#: models/document_file_page_models.py:45
-#: models/document_file_page_models.py:307 search.py:84
+#: models/document_file_page_models.py:46
+#: models/document_file_page_models.py:305 search.py:84
 msgid "Document file page"
 msgstr "Pagina fișierului documentului"
 
-#: models/document_file_page_models.py:261
+#: models/document_file_page_models.py:259
 #, python-format
 msgid "%(document_file)s - page %(page_num)d of %(total_pages)d"
 msgstr "%(document_file)s - pagina %(page_num)d din %(total_pages)d"

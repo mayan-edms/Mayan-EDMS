@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-29 20:29+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2022\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -24,47 +24,47 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:24 links.py:10 permissions.py:5
+#: apps.py:25 links.py:10 permissions.py:5
 msgid "Task manager"
 msgstr "مدير المهام "
 
-#: apps.py:83
+#: apps.py:84
 msgid "Label"
 msgstr "العنوان"
 
-#: apps.py:87
+#: apps.py:88
 msgid "Name"
 msgstr "اسم"
 
-#: apps.py:92
+#: apps.py:93
 msgid "Default queue?"
 msgstr "قائمة الانتظار"
 
-#: apps.py:97
+#: apps.py:98
 msgid "Is transient?"
 msgstr "هل تم الإضافة؟"
 
-#: apps.py:101
+#: apps.py:102
 msgid "Type"
 msgstr "النوع"
 
-#: apps.py:106
+#: apps.py:107
 msgid "Start time"
 msgstr "وقت البداية"
 
-#: apps.py:110
+#: apps.py:111
 msgid "Host"
 msgstr "مضيف"
 
-#: apps.py:114
+#: apps.py:115
 msgid "Arguments"
 msgstr "المحددات"
 
-#: apps.py:118
+#: apps.py:119
 msgid "Keyword arguments"
 msgstr "المحددات الرئيسية"
 
-#: apps.py:122
+#: apps.py:123
 msgid "Worker process ID"
 msgstr "رقم العمل للعميل"
 

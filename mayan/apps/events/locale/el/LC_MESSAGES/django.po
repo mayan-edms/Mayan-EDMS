@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-29 20:29+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -21,8 +21,8 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:30 events.py:11 links.py:52 links.py:57 links.py:75
-#: permissions.py:5 queues.py:7 views/event_views.py:30
+#: apps.py:30 events.py:11 links.py:54 links.py:72 permissions.py:5
+#: queues.py:7 views/event_views.py:30
 msgid "Events"
 msgstr "Συμβάντα"
 
@@ -97,27 +97,27 @@ msgstr "Εγγεγραμμένος"
 msgid "System"
 msgstr "Σύστημα"
 
-#: links.py:64 links.py:78 views/clear_views.py:62
+#: links.py:61 links.py:75 views/clear_views.py:62
 msgid "Clear events"
 msgstr ""
 
-#: links.py:71 links.py:82 views/export_views.py:57
+#: links.py:68 links.py:79 views/export_views.py:57
 msgid "Export events"
 msgstr ""
 
-#: links.py:88 models.py:71 views/subscription_views.py:55
+#: links.py:85 models.py:71 views/subscription_views.py:55
 msgid "Event subscriptions"
 msgstr "Εγγραφές σε συμβάντα"
 
-#: links.py:93
+#: links.py:90
 msgid "Mark as seen"
 msgstr "Σημείωση ως αναγνωσμένο"
 
-#: links.py:96
+#: links.py:93
 msgid "Mark all as seen"
 msgstr "Σημείωση όλων ως αναγνωσμένα"
 
-#: links.py:103
+#: links.py:100
 msgid "Subscriptions"
 msgstr "Εγγραφές"
 

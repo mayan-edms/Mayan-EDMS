@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-29 20:28+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -322,71 +322,71 @@ msgstr ""
 msgid "Assets cache"
 msgstr "Cache des éléments"
 
-#: transformations.py:226
+#: transformations.py:234
 msgid "Paste an asset"
 msgstr "Coller un élément"
 
-#: transformations.py:277
+#: transformations.py:285
 msgid "Paste an asset (percents coordinates)"
 msgstr "Coller un élément (coordonnées en pourcentage)"
 
-#: transformations.py:324
+#: transformations.py:332
 msgid "Paste an asset as watermark"
 msgstr "Coller un élément sous forme de filigrane"
 
-#: transformations.py:384
+#: transformations.py:392
 msgid "Crop"
 msgstr "Découper"
 
-#: transformations.py:462
+#: transformations.py:470
 msgid "Draw rectangle"
 msgstr "Dessiner un rectangle"
 
-#: transformations.py:564
+#: transformations.py:572
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Dessiner un rectangle (coordonnées en pourcentage)"
 
-#: transformations.py:661
+#: transformations.py:669
 msgid "Flip"
 msgstr "Retourner"
 
-#: transformations.py:672
+#: transformations.py:680
 msgid "Gaussian blur"
 msgstr "Flou gaussien"
 
-#: transformations.py:684
+#: transformations.py:692
 msgid "Line art"
 msgstr "Line art"
 
-#: transformations.py:698
+#: transformations.py:706
 msgid "Mirror"
 msgstr "Mirroir"
 
-#: transformations.py:709
+#: transformations.py:717
 msgid "Resize"
 msgstr "Redimensionner"
 
-#: transformations.py:736
+#: transformations.py:744
 msgid "Rotate"
 msgstr "Rotation"
 
-#: transformations.py:766
+#: transformations.py:774
 msgid "Rotate 90 degrees"
 msgstr "Rotation à 90 degrées"
 
-#: transformations.py:777
+#: transformations.py:785
 msgid "Rotate 180 degrees"
 msgstr "Rotation à 180 degrées"
 
-#: transformations.py:788
+#: transformations.py:796
 msgid "Rotate 270 degrees"
 msgstr "Rotation à 270 degrées"
 
-#: transformations.py:798
+#: transformations.py:806
 msgid "Unsharp masking"
 msgstr "Masquage flou"
 
-#: transformations.py:814
+#: transformations.py:822
 msgid "Zoom"
 msgstr "Agrandir"
 

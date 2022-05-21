@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-29 20:29+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
 "PO-Revision-Date: 2022-02-03 10:14+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -22,47 +22,47 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:24 links.py:10 permissions.py:5
+#: apps.py:25 links.py:10 permissions.py:5
 msgid "Task manager"
 msgstr "Диспетчер задач"
 
-#: apps.py:83
+#: apps.py:84
 msgid "Label"
 msgstr "Заголовок"
 
-#: apps.py:87
+#: apps.py:88
 msgid "Name"
 msgstr "Имя"
 
-#: apps.py:92
+#: apps.py:93
 msgid "Default queue?"
 msgstr "Очередь по умолчанию?"
 
-#: apps.py:97
+#: apps.py:98
 msgid "Is transient?"
 msgstr "Переходная?"
 
-#: apps.py:101
+#: apps.py:102
 msgid "Type"
 msgstr "Тип"
 
-#: apps.py:106
+#: apps.py:107
 msgid "Start time"
 msgstr "Время начала"
 
-#: apps.py:110
+#: apps.py:111
 msgid "Host"
 msgstr "Сервер"
 
-#: apps.py:114
+#: apps.py:115
 msgid "Arguments"
 msgstr "Аргументы"
 
-#: apps.py:118
+#: apps.py:119
 msgid "Keyword arguments"
 msgstr "Аргументы ключевого слова"
 
-#: apps.py:122
+#: apps.py:123
 msgid "Worker process ID"
 msgstr "ID процесса"
 
