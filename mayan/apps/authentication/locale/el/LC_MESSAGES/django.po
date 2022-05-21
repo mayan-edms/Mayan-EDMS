@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-29 20:28+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -155,54 +155,54 @@ msgstr "Σελίδα σύνδεσης"
 msgid "Password reset email sent!"
 msgstr "Μήνυμα ηλεκτρονικού ταχυδρομείου επαναφοράς κωδικού εστάλει!"
 
-#: views/authentication_views.py:153 views/authentication_views.py:287
+#: views/authentication_views.py:153
 msgid "Next"
 msgstr ""
 
-#: views/authentication_views.py:159 views/authentication_views.py:293
+#: views/authentication_views.py:159
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr "Βήμα %(step)d από %(total_steps)d: %(step_label)s"
 
-#: views/authentication_views.py:335
+#: views/authentication_views.py:221
 msgid "Your password has been successfully changed."
 msgstr "Η αλλαγή κωδικού πραγματοποιήθηκε με επιτυχία."
 
-#: views/authentication_views.py:342
+#: views/authentication_views.py:228
 msgid "Current user password change"
 msgstr "Αλλαγή κωδικού πρόσβασης του συνδεδεμένου χρήστη."
 
-#: views/authentication_views.py:350
+#: views/authentication_views.py:236
 msgid "Changing the password is not allowed for this account."
 msgstr "Η αλλαγή κωδικού πρόσβασης δεν επιτρέπεται για αυτόν τον χρήστη."
 
-#: views/authentication_views.py:422
+#: views/authentication_views.py:308
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Αίτημα αλλαγής κωδικού πραγματοποιήθηκε για %(count)d χρήστη"
 
-#: views/authentication_views.py:425
+#: views/authentication_views.py:311
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Αίτημα αλλαγής κωδικού πραγματοποιήθηκε για %(count)d χρήστες"
 
-#: views/authentication_views.py:433
+#: views/authentication_views.py:319
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views/authentication_views.py:444
+#: views/authentication_views.py:330
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Αλλαγή κωδικού για τον χρήστη: %s"
 
-#: views/authentication_views.py:466
+#: views/authentication_views.py:352
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Επιτυχής επαναφορά κωδικού για τον χρήστη: %s"
 
-#: views/authentication_views.py:472
+#: views/authentication_views.py:358
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr ""

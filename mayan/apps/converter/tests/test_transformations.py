@@ -273,6 +273,7 @@ class TransformationTestCase(LayerTestMixin, GenericDocumentTestCase):
         document_page = self._test_document.pages.first()
 
         self._test_layer.add_transformation_to(
+
             obj=document_page,
             transformation_class=TransformationZoom,
             arguments={'percent': 200}

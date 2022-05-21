@@ -40,7 +40,7 @@ class SignatureCaptureSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         fields = (
             'data', 'document_id', 'document_url', 'id', 'image_url',
-            'intenal_name', 'text', 'url'
+            'internal_name', 'text', 'url'
         )
         model = SignatureCapture
         read_only_fields = (

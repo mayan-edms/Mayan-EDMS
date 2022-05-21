@@ -16,10 +16,7 @@ class FavoriteDocumentAPIViewTestCase(
     DocumentTestMixin, BaseAPITestCase
 ):
     auto_upload_test_document = False
-
-    def setUp(self):
-        super().setUp()
-        self._create_test_document_stub()
+    auto_create_test_document_stub = True
 
     def test_favorite_document_create_api_view_no_permission(self):
         favorite_document_count = FavoriteDocument.valid.count()

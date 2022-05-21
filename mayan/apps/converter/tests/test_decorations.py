@@ -57,9 +57,9 @@ class DecorationTestCase(AssetTestMixin, GenericDocumentTestCase):
             as_classes=True, obj=self._test_document_version_page
         )
 
-        test_asset_images = transformations[0].get_asset_images()
-        position_x = test_asset_images['image_asset'].size[0] / 2
-        position_y = test_asset_images['image_asset'].size[1] / 2
+        test_asset_images = transformations[0].get_images()
+        position_x = test_asset_images['instance_image'].size[0] / 2
+        position_y = test_asset_images['instance_image'].size[1] / 2
 
         test_document_version_page_image = self._get_test_document_version_page_image()
 

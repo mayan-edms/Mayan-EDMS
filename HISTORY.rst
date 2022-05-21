@@ -279,13 +279,6 @@
 
 - Split the document indexing models module. Module is split into index
   template and instance models.
-- Task manager app updates:
-
-  - Add backend Celery queue deduplication to the ``CeleryQueue``.
-  - Enable app tests.
-  - Add and improve tests.
-  - Add support for runtime removal of queues.
-
 - Show item count even if the list is empty. This change prevents the list
   toolbar from "jumping" visually when there are no results.
 - Simplify how the view title is copied to the window title. Escaping is now
@@ -334,6 +327,44 @@
   raw signature primitives that allows reloading them into the signature
   pad library. The SVG version allows for rendering as an image for preview.
   A transformation is added to allow pasting a signature as a page image.
+
+4.2.5 (2022-05-21)
+==================
+- Remove unused authentication view.
+- Task manager app updates:
+
+  - Add backend Celery queue deduplication to the ``CeleryQueue``.
+  - Enable app tests.
+  - Add and improve tests.
+  - Add support for runtime removal of queues.
+
+- Remove unused event link.
+- Make document version OCR submit view messages translatable.
+- Make file caching purge view messages translatable.
+- Make document file metadata submit view messages translatable.
+- Fix asset transformations hash calculation.
+- Fix asset image API view docstring.
+- Fix repeated model manager definition in ``DocumentFilePage``
+  models.
+- Transformation improvements:
+
+  - Fix wrong parameter in the ``ImageDraw.Draw`` usage of the
+    ``TransformationDrawRectangle`` transformation.
+  - Add sanity check to reject negative zoom values for the
+    ``TransformationZoom`` transformation.
+
+- Add warning message when users attempting to delete their own accounts.
+- Convert the signal handler that triggers search indexing on many to many
+  fields changes into a background task. Solves user interface blocking
+  when changing the document type to index template association on large
+  installations.
+- Update Django from version 3.2.12 to 3.2.13.
+- Retry search indexing task when the object is not found. There are
+  situations where the broker will route the message to the workers faster
+  than the database can commit the data.
+- Fix favorite document links reacting to favorite documents beyond the
+  active user. Closes GitLab issue #1104. Thanks to
+  Biel Frontera (@bielfrontera) for the report and initial implementation.
 
 4.2.4 (2022-04-29)
 ==================

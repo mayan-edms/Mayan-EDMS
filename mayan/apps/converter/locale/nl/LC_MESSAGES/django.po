@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-29 20:28+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -312,71 +312,71 @@ msgstr ""
 msgid "Assets cache"
 msgstr ""
 
-#: transformations.py:226
+#: transformations.py:234
 msgid "Paste an asset"
 msgstr ""
 
-#: transformations.py:277
+#: transformations.py:285
 msgid "Paste an asset (percents coordinates)"
 msgstr ""
 
-#: transformations.py:324
+#: transformations.py:332
 msgid "Paste an asset as watermark"
 msgstr ""
 
-#: transformations.py:384
+#: transformations.py:392
 msgid "Crop"
 msgstr "Bijsnijden"
 
-#: transformations.py:462
+#: transformations.py:470
 msgid "Draw rectangle"
 msgstr "Rechthoek tekenen"
 
-#: transformations.py:564
+#: transformations.py:572
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Vierkant tekenen (procentuele coördinaten)"
 
-#: transformations.py:661
+#: transformations.py:669
 msgid "Flip"
 msgstr "Spiegelen"
 
-#: transformations.py:672
+#: transformations.py:680
 msgid "Gaussian blur"
 msgstr "Gaussiaanse vervaging"
 
-#: transformations.py:684
+#: transformations.py:692
 msgid "Line art"
 msgstr "Zwart-wit"
 
-#: transformations.py:698
+#: transformations.py:706
 msgid "Mirror"
 msgstr "Spiegelen"
 
-#: transformations.py:709
+#: transformations.py:717
 msgid "Resize"
 msgstr "Herschalen"
 
-#: transformations.py:736
+#: transformations.py:744
 msgid "Rotate"
 msgstr "Roteren"
 
-#: transformations.py:766
+#: transformations.py:774
 msgid "Rotate 90 degrees"
 msgstr "90 graden draaien"
 
-#: transformations.py:777
+#: transformations.py:785
 msgid "Rotate 180 degrees"
 msgstr "180 graden draaien"
 
-#: transformations.py:788
+#: transformations.py:796
 msgid "Rotate 270 degrees"
 msgstr "270 graden draaien"
 
-#: transformations.py:798
+#: transformations.py:806
 msgid "Unsharp masking"
 msgstr "Onscherpe maskering"
 
-#: transformations.py:814
+#: transformations.py:822
 msgid "Zoom"
 msgstr "Inzoomen"
 

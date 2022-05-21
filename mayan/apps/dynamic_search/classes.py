@@ -14,7 +14,8 @@ from django.utils.translation import ugettext as _
 
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.utils import (
-    get_class_full_name, group_iterator, parse_range
+    ResolverPipelineModelAttribute, flatten_list, get_class_full_name,
+    group_iterator, parse_range
 )
 from mayan.apps.databases.literals import DATABASE_MINIMUM_ID
 from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
@@ -134,12 +135,11 @@ class SearchBackend:
         for through_model, data in SearchModel.get_through_models().items():
             m2m_changed.connect(
                 dispatch_uid='search_handler_index_related_instance_m2m_{}'.format(
-                    get_class_full_name(klass=through_model),
+                    get_class_full_name(klass=through_model)
                 ),
                 receiver=handler_factory_index_related_instance_m2m(
-                    data=data,
-                ),
-                sender=through_model, weak=False
+                    data=data
+                ), sender=through_model, weak=False
             )
 
     @staticmethod
@@ -156,6 +156,74 @@ class SearchBackend:
     def limit_queryset(queryset):
         pk_list = queryset.values('pk')[:setting_results_limit.value]
         return queryset.filter(pk__in=pk_list)
+
+    @staticmethod
+    def index_related_instance_m2m(
+        action, instance, model, pk_set, search_model_related_paths
+    ):
+        # Hidden import
+        from .tasks import task_index_instance
+
+        if action in ('post_add', 'pre_remove'):
+            instance_paths = search_model_related_paths.get(instance._meta.model, ())
+            model_paths = search_model_related_paths.get(model, ())
+
+            if action == 'pre_remove':
+                exclude_kwargs = {
+                    'exclude_app_label': instance._meta.app_label,
+                    'exclude_model_name': instance._meta.model_name,
+                    'exclude_kwargs': {'id': instance.pk}
+                }
+            else:
+                exclude_kwargs = {}
+
+            for instance_path in instance_paths:
+                result = ResolverPipelineModelAttribute.resolve(
+                    attribute=instance_path, obj=instance
+                )
+
+                entries = flatten_list(value=result)
+
+                for entry in entries:
+                    task_kwargs = {
+                        'app_label': entry._meta.app_label,
+                        'model_name': entry._meta.model_name,
+                        'object_id': entry.pk
+                    }
+                    task_kwargs.update(exclude_kwargs)
+
+                    task_index_instance.apply_async(
+                        kwargs=task_kwargs
+                    )
+
+            if action == 'pre_remove':
+                exclude_kwargs = {
+                    'exclude_app_label': model._meta.app_label,
+                    'exclude_model_name': model._meta.model_name,
+                    'exclude_kwargs': {'id__in': pk_set}
+                }
+            else:
+                exclude_kwargs = {}
+
+            for model_instance in model._meta.default_manager.filter(pk__in=pk_set):
+                for instance_path in model_paths:
+                    result = ResolverPipelineModelAttribute.resolve(
+                        attribute=instance_path, obj=model_instance
+                    )
+
+                    entries = flatten_list(value=result)
+
+                    for entry in entries:
+                        task_kwargs = {
+                            'app_label': entry._meta.app_label,
+                            'model_name': entry._meta.model_name,
+                            'object_id': entry.pk
+                        }
+                        task_kwargs.update(exclude_kwargs)
+
+                        task_index_instance.apply_async(
+                            kwargs=task_kwargs
+                        )
 
     def __init__(self, **kwargs):
         self.kwargs = kwargs

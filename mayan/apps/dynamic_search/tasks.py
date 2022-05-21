@@ -9,7 +9,8 @@ from .classes import SearchBackend, SearchModel
 from .exceptions import DynamicSearchException, DynamicSearchRetry
 from .literals import (
     TASK_DEINDEX_INSTANCE_MAX_RETRIES, TASK_INDEX_INSTANCE_MAX_RETRIES,
-    TASK_INDEX_INSTANCES_MAX_RETRIES
+    TASK_INDEX_INSTANCES_MAX_RETRIES,
+    TASK_INDEX_RELATED_INSTANCE_M2M_MAX_RETRIES
 )
 
 logger = logging.getLogger(name=__name__)
@@ -51,7 +52,10 @@ def task_index_instance(
     else:
         ExcludeModel = None
 
-    instance = Model._meta.default_manager.get(pk=object_id)
+    try:
+        instance = Model._meta.default_manager.get(pk=object_id)
+    except Model.DoesNotExist as exception:
+        raise self.retry(exc=exception)
 
     try:
         SearchBackend.get_instance().index_instance(
@@ -103,6 +107,40 @@ def task_index_instances(self, search_model_full_name, id_list):
 
         logger.error(error_message)
         raise DynamicSearchException(error_message) from exception
+
+
+@app.task(
+    bind=True, ignore_result=True,
+    max_retries=TASK_INDEX_RELATED_INSTANCE_M2M_MAX_RETRIES,
+    retry_backoff=True
+)
+def task_index_related_instance_m2m(
+    self, action, instance_app_label, instance_model_name,
+    instance_object_id, model_app_label, model_model_name, pk_set,
+    serialized_search_model_related_paths
+):
+    InstanceModel = apps.get_model(
+        app_label=instance_app_label, model_name=instance_model_name
+    )
+    instance = InstanceModel.objects.get(pk=instance_object_id)
+
+    Model = apps.get_model(
+        app_label=model_app_label, model_name=model_model_name
+    )
+
+    search_model_related_paths = {}
+
+    for key, value in serialized_search_model_related_paths.items():
+        app_label, model_name = key.split('.')
+        DeserializedModel = apps.get_model(
+            app_label=app_label, model_name=model_name
+        )
+        search_model_related_paths[DeserializedModel] = value
+
+    SearchBackend.index_related_instance_m2m(
+        action=action, instance=instance, model=Model, pk_set=pk_set,
+        search_model_related_paths=search_model_related_paths
+    )
 
 
 @app.task(ignore_result=True)

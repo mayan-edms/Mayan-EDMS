@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-29 20:28+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -321,71 +321,71 @@ msgstr ""
 msgid "Assets cache"
 msgstr ""
 
-#: transformations.py:226
+#: transformations.py:234
 msgid "Paste an asset"
 msgstr "Incolla una risorsa visiva"
 
-#: transformations.py:277
+#: transformations.py:285
 msgid "Paste an asset (percents coordinates)"
 msgstr "Incolla una risorsa visiva (coordinate percentuali)"
 
-#: transformations.py:324
+#: transformations.py:332
 msgid "Paste an asset as watermark"
 msgstr "Incolla una risorsa visiva come filigrana"
 
-#: transformations.py:384
+#: transformations.py:392
 msgid "Crop"
 msgstr "Taglia"
 
-#: transformations.py:462
+#: transformations.py:470
 msgid "Draw rectangle"
 msgstr "Disegna un rettangolo"
 
-#: transformations.py:564
+#: transformations.py:572
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Disegna rettangolo (coordinate percentuali)"
 
-#: transformations.py:661
+#: transformations.py:669
 msgid "Flip"
 msgstr "Capovolgi"
 
-#: transformations.py:672
+#: transformations.py:680
 msgid "Gaussian blur"
 msgstr "Sfocatura gaussiana"
 
-#: transformations.py:684
+#: transformations.py:692
 msgid "Line art"
 msgstr "Line art"
 
-#: transformations.py:698
+#: transformations.py:706
 msgid "Mirror"
 msgstr "Specchio"
 
-#: transformations.py:709
+#: transformations.py:717
 msgid "Resize"
 msgstr "Ridimensiona"
 
-#: transformations.py:736
+#: transformations.py:744
 msgid "Rotate"
 msgstr "Ruotare"
 
-#: transformations.py:766
+#: transformations.py:774
 msgid "Rotate 90 degrees"
 msgstr "Ruota di 90 Gradi"
 
-#: transformations.py:777
+#: transformations.py:785
 msgid "Rotate 180 degrees"
 msgstr "Ruota di 180 gradi"
 
-#: transformations.py:788
+#: transformations.py:796
 msgid "Rotate 270 degrees"
 msgstr "Ruota di 270 gradi"
 
-#: transformations.py:798
+#: transformations.py:806
 msgid "Unsharp masking"
 msgstr "Maschera di contrasto"
 
-#: transformations.py:814
+#: transformations.py:822
 msgid "Zoom"
 msgstr "Zoom"
 

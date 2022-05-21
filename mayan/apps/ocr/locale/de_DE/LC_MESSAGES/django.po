@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-29 20:29+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -101,7 +101,7 @@ msgstr "OCR-Inhalt löschen"
 msgid "Download OCR text"
 msgstr "OCR-Text herunterladen"
 
-#: links.py:67 links.py:99 views.py:258
+#: links.py:67 links.py:99 views.py:262
 msgid "OCR errors"
 msgstr "OCR Fehler"
 
@@ -254,32 +254,42 @@ msgstr "Ergebnis der OCR-Texterkennung für Dokument %s"
 msgid "OCR errors for document: %s"
 msgstr "Fehler in der OCR-Schrifterkennung für Dokument: %s"
 
-#: views.py:113
+#: views.py:106
+#, python-format
+msgid "%(count)d document version submitted to the OCR queue."
+msgstr ""
+
+#: views.py:109
+#, python-format
+msgid "%(count)d document versions submitted to the OCR queue."
+msgstr ""
+
+#: views.py:117
 msgid "Submit the selected document version to the OCR queue?"
 msgid_plural "Submit the selected document versions to the OCR queue?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:148
+#: views.py:152
 #, python-format
 msgid "OCR result for document version page: %s"
 msgstr ""
 
-#: views.py:175
+#: views.py:179
 #, python-format
 msgid "Edit OCR for document version page: %s"
 msgstr ""
 
-#: views.py:195
+#: views.py:199
 msgid "Submit all documents of a type for OCR"
 msgstr "Alle Dokumente eines Typs in die OCR-Verarbeitung einstellen"
 
-#: views.py:212
+#: views.py:216
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
 msgstr "%(count)d Dokumente zur OCR-Warteschlange hinzugefügt."
 
-#: views.py:247
+#: views.py:251
 #, python-format
 msgid "Edit OCR settings for document type: %s."
 msgstr "OCR-Einstellungen für Dokumententyp %s bearbeiten."

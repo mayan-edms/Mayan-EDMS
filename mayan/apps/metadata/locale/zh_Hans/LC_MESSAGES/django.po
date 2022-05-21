@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-29 20:29+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
 "PO-Revision-Date: 2022-02-03 10:13+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -400,110 +400,110 @@ msgstr[0] ""
 msgid "Add metadata types to document: %s"
 msgstr "将元数据类型添加到文档：%s"
 
-#: views/document_views.py:142
+#: views/document_views.py:141
 #, python-format
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
 msgstr "将元数据类型“%(metadata_type)s”添加到文档时出错：%(document)s; %(exception)s"
 
-#: views/document_views.py:157
+#: views/document_views.py:156
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s successfully added to document "
 "%(document)s."
 msgstr "元数据类型：%(metadata_type)s已成功添加到文档%(document)s。"
 
-#: views/document_views.py:167
+#: views/document_views.py:166
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
 msgstr "元数据类型：%(metadata_type)s已存在于文档%(document)s中。"
 
-#: views/document_views.py:184
+#: views/document_views.py:183
 #, python-format
 msgid "Metadata edit request performed on %(count)d document"
 msgstr "在%(count)d文档上执行的元数据编辑请求"
 
-#: views/document_views.py:187
+#: views/document_views.py:186
 #, python-format
 msgid "Metadata edit request performed on %(count)d documents"
 msgstr "在%(count)d文档上执行的元数据编辑请求"
 
-#: views/document_views.py:218
+#: views/document_views.py:217
 msgid ""
 "Add metadata types available for this document's type and assign them "
 "corresponding values."
 msgstr "添加可用于此文档类型的元数据类型，并为其分配相应的值。"
 
-#: views/document_views.py:221
+#: views/document_views.py:220
 msgid "There is no metadata to edit"
 msgstr "没有要编辑的元数据"
 
-#: views/document_views.py:223
+#: views/document_views.py:222
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
 msgstr[0] ""
 
-#: views/document_views.py:234
+#: views/document_views.py:233
 #, python-format
 msgid "Edit metadata for document: %s"
 msgstr "编辑%s文档的元数据"
 
-#: views/document_views.py:322
+#: views/document_views.py:321
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
 msgstr "编辑文档元数据时出错：%(document)s; %(exception)s。"
 
-#: views/document_views.py:335
+#: views/document_views.py:334
 #, python-format
 msgid "Metadata for document %s edited successfully."
 msgstr "文档%s的元数据已成功编辑。"
 
-#: views/document_views.py:360
+#: views/document_views.py:359
 msgid ""
 "Add metadata types this document's type to be able to add them to individual"
 " documents. Once added to individual document, you can then edit their "
 "values."
 msgstr "添加元数据类型至此文档的类型，以便能够将它们添加到单个文档中。一旦添加到单个文档，您就可以编辑它们的值。"
 
-#: views/document_views.py:365
+#: views/document_views.py:364
 msgid "This document doesn't have any metadata"
 msgstr "本文档没有任何元数据"
 
-#: views/document_views.py:366
+#: views/document_views.py:365
 #, python-format
 msgid "Metadata for document: %s"
 msgstr "文档%s的元数据"
 
-#: views/document_views.py:381
+#: views/document_views.py:380
 #, python-format
 msgid "Metadata remove request performed on %(count)d document"
 msgstr "在%(count)d文档上执行的元数据删除请求"
 
-#: views/document_views.py:384
+#: views/document_views.py:383
 #, python-format
 msgid "Metadata remove request performed on %(count)d documents"
 msgstr "在%(count)d文档上执行的元数据删除请求"
 
-#: views/document_views.py:393
+#: views/document_views.py:392
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
 msgstr[0] ""
 
-#: views/document_views.py:404
+#: views/document_views.py:403
 #, python-format
 msgid "Remove metadata types from the document: %s"
 msgstr "从文档中删除元数据类型：%s"
 
-#: views/document_views.py:470
+#: views/document_views.py:469
 #, python-format
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
 msgstr "从文档:%(document)s中成功删除元数据类型“%(metadata_type)s”。"
 
-#: views/document_views.py:479
+#: views/document_views.py:478
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "

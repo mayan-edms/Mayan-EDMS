@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-29 20:29+0000\n"
+"POT-Creation-Date: 2022-05-21 08:49+0000\n"
 "PO-Revision-Date: 2022-02-03 10:12+0000\n"
 "Last-Translator: Roberto Rosario, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -24,12 +24,12 @@ msgstr ""
 msgid "Dynamic search"
 msgstr "Búsqueda dinámica "
 
-#: classes.py:493
+#: classes.py:562
 #, python-format
 msgid "Unknown search model `%s`."
 msgstr "Modelo de búsqueda desconocido `%s`."
 
-#: classes.py:550
+#: classes.py:619
 msgid "ID"
 msgstr "ID"
 
@@ -89,7 +89,14 @@ msgstr ""
 "Indexa todas las instancias de un modelo de búsqueda en el motor de "
 "búsqueda."
 
-#: queues.py:30
+#: queues.py:31
+msgid ""
+"Index all related instances of a search model after a many to many event."
+msgstr ""
+"Indexa todas las instancias relacionadas de un modelo de búsqueda después de"
+" un evento de cambio de campo tipo muchos a muchos."
+
+#: queues.py:39
 msgid "Reset the search backend indices and index all instances again."
 msgstr ""
 "Restablece los índices de back-end de búsqueda e indexa todas las instancias"

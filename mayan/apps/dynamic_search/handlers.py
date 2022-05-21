@@ -4,7 +4,10 @@ from mayan.apps.common.utils import (
 )
 
 from .classes import SearchBackend
-from .tasks import task_deindex_instance, task_index_instance
+from .tasks import (
+    task_deindex_instance, task_index_instance,
+    task_index_related_instance_m2m
+)
 
 
 def handler_deindex_instance(sender, **kwargs):
@@ -79,71 +82,33 @@ def handler_factory_index_related_instance_save(reverse_field_path):
 
 
 def handler_factory_index_related_instance_m2m(data):
+    # Serialize search model field paths.
+    serialized_search_model_related_paths = {}
+
+    for key, value in data.items():
+        serialized_search_model_related_paths[
+            '{}.{}'.format(key._meta.app_label, key._meta.model_name)
+        ] = tuple(value)
+
     def handler_index_related_instance_m2m(sender, **kwargs):
         action = kwargs.get('action')
         instance = kwargs['instance']
         model = kwargs.get('model')
 
-        if action in ('post_add', 'pre_remove'):
-            instance_paths = data.get(instance._meta.model, ())
-            model_paths = data.get(model, ())
+        kwargs = {
+            'action': action,
+            'instance_app_label': instance._meta.app_label,
+            'instance_model_name': instance._meta.model_name,
+            'instance_object_id': instance.pk,
+            'model_app_label': model._meta.app_label,
+            'model_model_name': model._meta.model_name,
+            'pk_set': tuple(kwargs['pk_set']),
+            'serialized_search_model_related_paths': serialized_search_model_related_paths
+        }
 
-            if action == 'pre_remove':
-                exclude_kwargs = {
-                    'exclude_app_label': instance._meta.app_label,
-                    'exclude_model_name': instance._meta.model_name,
-                    'exclude_kwargs': {'id': instance.pk}
-                }
-            else:
-                exclude_kwargs = {}
-
-            for instance_path in instance_paths:
-                result = ResolverPipelineModelAttribute.resolve(
-                    attribute=instance_path, obj=instance
-                )
-
-                entries = flatten_list(value=result)
-
-                for entry in entries:
-                    task_kwargs = {
-                        'app_label': entry._meta.app_label,
-                        'model_name': entry._meta.model_name,
-                        'object_id': entry.pk
-                    }
-                    task_kwargs.update(exclude_kwargs)
-
-                    task_index_instance.apply_async(
-                        kwargs=task_kwargs
-                    )
-
-            if action == 'pre_remove':
-                exclude_kwargs = {
-                    'exclude_app_label': model._meta.app_label,
-                    'exclude_model_name': model._meta.model_name,
-                    'exclude_kwargs': {'id__in': list(kwargs['pk_set'])}
-                }
-            else:
-                exclude_kwargs = {}
-
-            for model_instance in model._meta.default_manager.filter(pk__in=kwargs['pk_set']):
-                for instance_path in model_paths:
-                    result = ResolverPipelineModelAttribute.resolve(
-                        attribute=instance_path, obj=model_instance
-                    )
-
-                    entries = flatten_list(value=result)
-
-                    for entry in entries:
-                        task_kwargs = {
-                            'app_label': entry._meta.app_label,
-                            'model_name': entry._meta.model_name,
-                            'object_id': entry.pk
-                        }
-                        task_kwargs.update(exclude_kwargs)
-
-                        task_index_instance.apply_async(
-                            kwargs=task_kwargs
-                        )
+        task_index_related_instance_m2m.apply_async(
+            kwargs=kwargs
+        )
 
     return handler_index_related_instance_m2m
 

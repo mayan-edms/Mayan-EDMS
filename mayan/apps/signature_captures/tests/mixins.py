@@ -55,6 +55,7 @@ class SignatureCaptureAPIViewTestMixin:
         self, extra_data=None, verb='patch'
     ):
         data = {
+            'internal_name': self._test_signature_capture.internal_name,
             'text': TEST_SIGNATURE_CAPTURE_TEXT_EDITED
         }
 

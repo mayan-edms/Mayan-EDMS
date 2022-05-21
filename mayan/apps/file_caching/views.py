@@ -122,8 +122,8 @@ class CachePurgeView(MultipleObjectConfirmActionView):
     model = Cache
     object_permission = permission_cache_purge
     pk_url_kwarg = 'cache_id'
-    success_message_singular = '%(count)d cache submitted for purging.'
-    success_message_plural = '%(count)d caches submitted for purging.'
+    success_message_singular = _('%(count)d cache submitted for purging.')
+    success_message_plural = _('%(count)d caches submitted for purging.')
     view_icon = icon_cache_purge
 
     def get_extra_context(self):

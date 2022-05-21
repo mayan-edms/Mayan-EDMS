@@ -178,7 +178,7 @@ class DocumentVersionOCRSubmitView(MultipleObjectConfirmActionView):
     success_message = _(
         '%(count)d document version submitted to the OCR queue.'
     )
-    success_message_plural = (
+    success_message_plural = _(
         '%(count)d document versions submitted to the OCR queue.'
     )
     view_icon = icon_document_version_ocr_single_submit

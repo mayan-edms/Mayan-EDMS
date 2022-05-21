@@ -41,9 +41,11 @@ class FavoriteDocumentAPIViewTestMixin:
 
 
 class FavoriteDocumentTestMixin:
-    def _test_document_favorite_add(self):
+    def _test_document_favorite_add(self, user=None):
+        user = user or self._test_case_user
+
         self._test_favorite_document = FavoriteDocument.valid.add_for_user(
-            document=self._test_document, user=self._test_case_user
+            document=self._test_document, user=user
         )
 
 
