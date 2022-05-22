@@ -20,9 +20,13 @@ from .mixins.favorite_document_mixins import FavoriteDocumentTestMixin
 class FavoriteDocumentLinkTestCase(
     FavoriteDocumentTestMixin, GenericDocumentViewTestCase
 ):
-    def test_favorite_document_add_link_no_permission(self):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
         self._create_test_document_stub()
 
+    def test_favorite_document_add_link_no_permission(self):
         self.add_test_view(test_object=self.test_document)
         context = self.get_test_view()
         resolved_link = link_document_favorites_add.resolve(context=context)
@@ -30,9 +34,8 @@ class FavoriteDocumentLinkTestCase(
         self.assertEqual(resolved_link, None)
 
     def test_favorite_document_add_link_with_access(self):
-        self._create_test_document_stub()
         self.grant_access(
-            obj=self.test_document_stub, permission=permission_document_view
+            obj=self.test_document, permission=permission_document_view
         )
 
         self.add_test_view(test_object=self.test_document)
@@ -43,9 +46,8 @@ class FavoriteDocumentLinkTestCase(
 
     def test_favorite_document_add_link_external_user_with_access(self):
         self._create_test_user()
-        self._create_test_document_stub()
         self.grant_access(
-            obj=self.test_document_stub, permission=permission_document_view
+            obj=self.test_document, permission=permission_document_view
         )
 
         self._test_document_favorite_add(user=self.test_user)
@@ -57,8 +59,6 @@ class FavoriteDocumentLinkTestCase(
         self.assertNotEqual(resolved_link, None)
 
     def test_favorite_document_remove_link_no_permission(self):
-        self._create_test_document_stub()
-
         self._test_document_favorite_add()
 
         self.add_test_view(test_object=self.test_document)
@@ -68,9 +68,8 @@ class FavoriteDocumentLinkTestCase(
         self.assertEqual(resolved_link, None)
 
     def test_favorite_document_remove_link_with_access(self):
-        self._create_test_document_stub()
         self.grant_access(
-            obj=self.test_document_stub, permission=permission_document_view
+            obj=self.test_document, permission=permission_document_view
         )
 
         self._test_document_favorite_add()
@@ -83,9 +82,8 @@ class FavoriteDocumentLinkTestCase(
 
     def test_favorite_document_remove_link_external_user_with_access(self):
         self._create_test_user()
-        self._create_test_document_stub()
         self.grant_access(
-            obj=self.test_document_stub, permission=permission_document_view
+            obj=self.test_document, permission=permission_document_view
         )
 
         self._test_document_favorite_add(user=self.test_user)
