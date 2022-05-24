@@ -8,12 +8,15 @@ from .api_views import (
     APISmartLinkDocumentTypeAddView, APISmartLinkDocumentTypeListView,
     APISmartLinkDocumentTypeRemoveView
 )
-from .views import (
+from .views.smart_link_condition_views import (
+    SmartLinkConditionCreateView, SmartLinkConditionDeleteView,
+    SmartLinkConditionEditView, SmartLinkConditionListView
+)
+from .views.smart_link_views import (
     DocumentResolvedSmartLinkListView, DocumentTypeSmartLinkAddRemoveView,
-    DocumentResolvedSmartLinkDocumentListView, SmartLinkConditionListView,
-    SmartLinkConditionCreateView, SmartLinkConditionEditView,
-    SmartLinkConditionDeleteView, SmartLinkCreateView, SmartLinkDeleteView,
-    SmartLinkDocumentTypeAddRemoveView, SmartLinkEditView, SmartLinkListView
+    DocumentResolvedSmartLinkDocumentListView, SmartLinkCreateView,
+    SmartLinkDeleteView, SmartLinkDocumentTypeAddRemoveView,
+    SmartLinkEditView, SmartLinkListView
 )
 
 urlpatterns = [
