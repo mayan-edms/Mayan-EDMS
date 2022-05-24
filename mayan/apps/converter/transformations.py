@@ -109,22 +109,24 @@ class BaseTransformation(metaclass=BaseTransformationType):
                 klass for name, klass in transformation_list
             ]
 
-            result = {}
+            layer_transformation_choices = {}
             for layer, transformations in cls._layer_transformations.items():
                 for transformation in transformations:
                     if transformation in flat_transformation_list:
-                        result.setdefault(layer, [])
-                        result[layer].append(
+                        layer_transformation_choices.setdefault(layer, [])
+                        layer_transformation_choices[layer].append(
                             (transformation.name, transformation.get_label())
                         )
 
+                # Sort the transformation for each layer group.
+                layer_transformation_choices[layer].sort(key=lambda x: x[1])
+
             result = [
-                (layer.label, transformations) for layer, transformations in result.items()
+                (layer.label, transformations) for layer, transformations in layer_transformation_choices.items()
             ]
 
-            # Sort by transformation group, then each transformation in the
-            # group.
-            return sorted(result, key=lambda x: (x[0], x[1]))
+            # Finally sort by transformation layer group.
+            return sorted(result, key=lambda x: x[0])
         else:
             return sorted(
                 [
