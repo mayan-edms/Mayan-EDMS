@@ -329,6 +329,7 @@
   A transformation is added to allow pasting a signature as a page image.
 - Remove trailing new lines from the MIME type and encoding returned by the
   ``MIMETypeBackendFileCommand``.
+- Make ``MIMETypeBackendFileCommand`` the default MIME backend.
 
 4.2.5 (2022-05-21)
 ==================
