@@ -327,6 +327,8 @@
   raw signature primitives that allows reloading them into the signature
   pad library. The SVG version allows for rendering as an image for preview.
   A transformation is added to allow pasting a signature as a page image.
+- Remove trailing new lines from the MIME type and encoding returned by the
+  ``MIMETypeBackendFileCommand``.
 
 4.2.5 (2022-05-21)
 ==================
