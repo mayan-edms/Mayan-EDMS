@@ -61,6 +61,7 @@ def find_packages(directory):
 
 install_requires = """
 django==3.2.13
+CairoSVG==2.5.2
 Pillow==8.4.0
 PyPDF2==1.26.0
 PyYAML==6.0
@@ -70,7 +71,6 @@ celery==5.2.3
 django-activity-stream==1.4.0
 django-auth-ldap==4.0.0
 django-celery-beat==2.2.1
-django-colorful==1.3
 django-cors-headers==3.10.0
 django-formtools==2.3
 django-mathfilters==1.0.0
@@ -94,14 +94,13 @@ gevent==21.12.0
 graphviz==0.17
 gunicorn==20.1.0
 jsonschema==4.4.0
-mock==4.0.3
 node-semver==0.8.1
 packaging==21.3
 pycountry==22.3.5
 pycryptodome==3.10.4
 pyotp==2.6.0
 python-dateutil==2.8.2
-python-magic==0.4.25
+python-magic==0.4.26
 python_gnupg==0.4.8
 pytz==2022.1
 qrcode==7.3.1

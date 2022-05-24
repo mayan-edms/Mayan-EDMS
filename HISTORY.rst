@@ -129,7 +129,7 @@
   - elasticsearch from 7.16.0 to 7.17.1.
   - django-activity-stream from 0.10.0 to 1.4.0.
   - chart.js from 2.7.3 to 2.8.0.
-  - python-magic from 0.4.24 to 0.4.25.
+  - python-magic from 0.4.24 to 0.4.26.
   - gevent from 21.8.0 to 21.12.0.
   - sentry-sdk from 1.4.1 to 1.5.8.
   - whitenoise from 5.3.0 to 6.0.0.
