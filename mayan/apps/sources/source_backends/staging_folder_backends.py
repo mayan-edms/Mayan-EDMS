@@ -328,17 +328,19 @@ class SourceBackendStagingFolder(
         }
     }
     icon_staging_folder_file = Icon(driver_name='fontawesome', symbol='file')
+    icon_staging_folder_file_delete = Icon(
+        driver_name='fontawesome', symbol='times'
+    )
+    icon_staging_folder_file_select = Icon(
+        driver_name='fontawesome', symbol='check'
+    )
     label = _('Staging folder')
     upload_form_class = StagingUploadForm
 
     @classmethod
     def intialize(cls):
-        icon_staging_folder_file_delete = Icon(
-            driver_name='fontawesome', symbol='times'
-        )
-
         link_staging_folder_file_delete = Link(
-            icon=icon_staging_folder_file_delete, kwargs={
+            icon=cls.icon_staging_folder_file_delete, kwargs={
                 'source_id': 'source.pk',
                 'action_name': '"file_delete"'
             }, permissions=(permission_document_create,), query={
@@ -348,6 +350,12 @@ class SourceBackendStagingFolder(
                 'encoded_filename': 'object.encoded_filename'
             }, tags='dangerous', text=_('Delete'),
             view='sources:source_action'
+        )
+        link_staging_folder_file_select = Link(
+            html_data={'encoded_filename': 'object.encoded_filename'},
+            html_extra_classes='sources-staging_folder-select',
+            icon=cls.icon_staging_folder_file_select, text=_('Select'),
+            url=''
         )
 
         class StagingFolderFileThumbnailWidget(ThumbnailWidget):
@@ -368,7 +376,10 @@ class SourceBackendStagingFolder(
         )
 
         menu_object.bind_links(
-            links=(link_staging_folder_file_delete,), sources=(StagingFolderFile,)
+            links=(
+                link_staging_folder_file_delete,
+                link_staging_folder_file_select
+            ), sources=(StagingFolderFile,)
         )
 
     def action_file_delete(self, request, encoded_filename):

@@ -341,6 +341,10 @@
   - Support empty URL values. When empty, the link is rendered without a
     href attribute.
 
+- Add link to make staging folder file selection easier. Closes GitLab
+  issue #341. Thanks to Leroy Förster (@gersilex) for the report and
+  initial idea.
+
 4.2.5 (2022-05-21)
 ==================
 - Remove unused authentication view.
