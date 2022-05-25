@@ -103,9 +103,7 @@ class GrantAccessAction(WorkflowAction):
         self.fields['content_type']['kwargs']['queryset'] = ModelPermission.get_classes(
             as_content_type=True
         ).order_by('model')
-        self.fields['permissions']['kwargs']['choices'] = Permission.all(
-            as_choices=True
-        )
+        self.fields['permissions']['kwargs']['choices'] = Permission.get_choices()
         return super().get_form_schema(*args, **kwargs)
 
     def get_execute_data(self):
@@ -184,8 +182,8 @@ class GrantDocumentAccessAction(WorkflowAction):
     }
 
     def get_form_schema(self, *args, **kwargs):
-        self.fields['permissions']['kwargs']['choices'] = ModelPermission.get_for_class(
-            klass=Document, as_choices=True
+        self.fields['permissions']['kwargs']['choices'] = ModelPermission.get_choices_for_class(
+            klass=Document
         )
         return super().get_form_schema(*args, **kwargs)
 
