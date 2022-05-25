@@ -19,7 +19,7 @@ class QuotaBackendSelectionForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['backend'].choices = QuotaBackend.as_choices()
+        self.fields['backend'].choices = QuotaBackend.get_choices()
 
 
 class QuotaDynamicForm(DynamicModelForm):

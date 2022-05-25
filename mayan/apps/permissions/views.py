@@ -165,8 +165,7 @@ class RolePermissionAddRemoveView(AddRemoveView):
         # Group permissions by namespace.
         for permission in object_list:
             namespaces_dictionary.setdefault(
-                permission.volatile_permission.namespace.label,
-                []
+                permission.volatile_permission.namespace.label, []
             )
             namespaces_dictionary[
                 permission.volatile_permission.namespace.label
