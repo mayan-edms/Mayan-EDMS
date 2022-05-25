@@ -332,6 +332,7 @@
 - Make ``MIMETypeBackendFileCommand`` the default MIME backend.
 - Fix sorting and grouping of permissions in the workflow action to grant
   or revoke document access.
+- Remove ``SearchModel`` unused class method and improve result sorting.
 
 4.2.5 (2022-05-21)
 ==================

@@ -555,13 +555,10 @@ class SearchModel(AppsModuleLoaderMixin):
 
     @classmethod
     def all(cls):
-        return sorted(
-            list(set(cls._registry.values())), key=lambda x: x.label
-        )
-
-    @classmethod
-    def as_choices(cls):
-        return cls._registry
+        result = set(cls._registry.values())
+        result = list(result)
+        result.sort(key=lambda entry: entry.label)
+        return result
 
     @classmethod
     def get(cls, name):
