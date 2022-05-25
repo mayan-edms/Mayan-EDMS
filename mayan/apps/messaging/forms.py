@@ -26,7 +26,7 @@ class MessageDetailForm(forms.Form):
         label=_('Body'),
         widget=TextAreaDiv(
             attrs={
-                'class': 'views-text-wrap text_area_div full-height',
+                'class': 'views-text-wrap full-height',
                 'data-height-difference': 360,
             }
         )

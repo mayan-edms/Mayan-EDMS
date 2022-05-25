@@ -126,7 +126,7 @@ class NamedMultiWidget(forms.widgets.Widget):
 class PlainWidget(forms.widgets.Widget):
     """
     Class to define a form widget that effectively nulls the htmls of a
-    widget and reduces the output to only it's value
+    widget and reduces the output to only it's value.
     """
     def render(self, name, value, attrs=None, renderer=None):
         return mark_safe(s='%s' % value)
@@ -135,13 +135,6 @@ class PlainWidget(forms.widgets.Widget):
 class TextAreaDiv(forms.widgets.Widget):
     """
     Class to define a form widget that simulates the behavior of a
-    Textarea widget but using a div tag instead
+    Textarea widget but using a div tag instead.
     """
     template_name = 'appearance/forms/widgets/textareadiv.html'
-
-    def __init__(self, attrs=None):
-        # The 'rows' and 'cols' attributes are required for HTML correctness.
-        default_attrs = {'class': 'text_area_div'}
-        if attrs:
-            default_attrs.update(attrs)
-        super().__init__(default_attrs)

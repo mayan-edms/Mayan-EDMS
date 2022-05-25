@@ -45,7 +45,7 @@ class DocumentFileContentForm(forms.Form):
         label=_('Contents'),
         widget=TextAreaDiv(
             attrs={
-                'class': 'text_area_div full-height',
+                'class': 'full-height',
                 'data-height-difference': 360
             }
         )
@@ -57,7 +57,7 @@ class DocumentFilePageContentForm(forms.Form):
         label=_('Contents'),
         widget=TextAreaDiv(
             attrs={
-                'class': 'text_area_div full-height',
+                'class': 'full-height',
                 'data-height-difference': 360
             }
         )
