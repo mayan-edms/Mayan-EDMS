@@ -25,6 +25,8 @@ class SearchEnabledListViewMixin:
     def get_context_data(self):
         context = super().get_context_data()
 
+        context['search_disable_list_filtering'] = self.search_disable_list_filtering
+
         if not self.search_disable_list_filtering:
             queryset = super().get_queryset()
 

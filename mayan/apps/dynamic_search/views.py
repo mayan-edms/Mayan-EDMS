@@ -109,8 +109,8 @@ class SearchBackendReindexView(ConfirmView):
             'internal index.'
         ),
     }
-    view_permission = permission_search_tools
     view_icon = icon_search_backend_reindex
+    view_permission = permission_search_tools
 
     def get_post_action_redirect(self):
         return reverse(viewname='common:tools_list')
