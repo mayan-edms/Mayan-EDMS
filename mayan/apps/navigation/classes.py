@@ -49,8 +49,8 @@ class Link(TemplateObjectMixin):
     def __init__(
         self, text=None, view=None, args=None, badge_text=None, condition=None,
         conditional_active=None, conditional_disable=None, description=None,
-        html_data=None, html_extra_classes=None, icon=None,
-        keep_query=False, kwargs=None, name=None, permissions=None,
+        html_data=None, html_extra_attributes=None, html_extra_classes=None,
+        icon=None, keep_query=False, kwargs=None, name=None, permissions=None,
         query=None, remove_from_query=None, tags=None, url=None
     ):
         self.args = args or []
@@ -60,6 +60,8 @@ class Link(TemplateObjectMixin):
         self.conditional_disable = conditional_disable
         self.description = description
         self.html_data = html_data
+        self.html_data_resolved = None
+        self.html_extra_attributes = html_extra_attributes
         self.html_extra_classes = html_extra_classes
         self.icon = icon
         self.keep_query = keep_query
@@ -170,8 +172,21 @@ class Link(TemplateObjectMixin):
                     'Error resolving link "%s" URL; %s', self.text, exception,
                     exc_info=True
                 )
-        elif self.url:
+        elif self.url is not None:
             resolved_link.url = self.url
+
+        if self.html_data:
+            result = {}
+            for key, value in self.html_data.items():
+                try:
+                    resolved_value = Variable(var=value).resolve(context=context)
+                except VariableDoesNotExist:
+                    """No object variable in the context"""
+                    resolved_value = value
+
+                result[key] = resolved_value
+
+            self.html_data_resolved = result
 
         # This is for links that should be displayed but that are not
         # clickable.
@@ -219,6 +234,8 @@ class Link(TemplateObjectMixin):
             resolved_link.url = new_url.url
 
         resolved_link.context = context
+        resolved_link.html_extra_attributes = self.html_extra_attributes
+
         return resolved_link
 
 
@@ -581,10 +598,11 @@ class Menu(TemplateObjectMixin):
 
 
 class ResolvedLink:
-    def __init__(self, link, current_view_name):
+    def __init__(self, link, current_view_name, html_extra_attributes=None):
         self.context = None
         self.current_view_name = current_view_name
         self.disabled = False
+        self.html_extra_attributes = html_extra_attributes
         self.link = link
         self.request = None
         self.url = '#'
@@ -611,7 +629,7 @@ class ResolvedLink:
 
     @property
     def html_data(self):
-        return self.link.html_data
+        return self.link.html_data_resolved
 
     @property
     def html_extra_classes(self):

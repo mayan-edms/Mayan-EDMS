@@ -333,6 +333,13 @@
 - Fix sorting and grouping of permissions in the workflow action to grant
   or revoke document access.
 - Remove ``SearchModel`` unused class method and improve result sorting.
+- Navigation updates:
+
+  - Add support for extra HTML attributes.
+  - Improve HTML data by allowing the entries to be resolved against the
+    context.
+  - Support empty URL values. When empty, the link is rendered without a
+    href attribute.
 
 4.2.5 (2022-05-21)
 ==================
