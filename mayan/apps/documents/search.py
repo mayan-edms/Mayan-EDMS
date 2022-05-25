@@ -25,7 +25,15 @@ search_model_document = SearchModel(
     model_name='DocumentSearchResult', permission=permission_document_view,
     serializer_path='mayan.apps.documents.serializers.document_serializers.DocumentSerializer'
 )
-search_model_document.add_proxy_model(app_label='documents', model_name='Document')
+search_model_document.add_proxy_model(
+    app_label='documents', model_name='Document'
+)
+search_model_document.add_proxy_model(
+    app_label='documents', model_name='RecentlyAccessedDocument'
+)
+search_model_document.add_proxy_model(
+    app_label='documents', model_name='RecentlyCreatedDocument'
+)
 
 search_model_document.add_model_field(
     field='document_type__label', label=_('Document type label')
